@@ -4,7 +4,7 @@ theme: ladder
 description: '分享一些自己的笔记和感悟'
 homepage: 'https://naodeng.tech'
 defaultContentLanguage: 'en'
-googleAnalytics: G-V47Y9D316D
+googleAnalytics: G-JBX883ZDJJ
 paginate: 10
 params:
   brand: HOME
