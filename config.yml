@@ -5,7 +5,7 @@ license: MIT
 licenselink: 'https://github.com/guangzhengli/hugo-theme-ladder/blob/master/LICENSE'
 description: 'A fast, clean Hugo theme'
 homepage: 'https://naodeng.tech'
-defaultContentLanguage: 'en'
+defaultContentLanguage: 'ZH'
 googleAnalytics: G-xxx
 paginate: 10
 params:
@@ -56,7 +56,7 @@ params:
       url: 'https://xxx'
 languages:
   en:
-    languageName: EN
+    languageName: ZH
     menu:
       main:
         - name: Blog
