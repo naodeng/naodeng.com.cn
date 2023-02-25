@@ -1,19 +1,17 @@
 baseURL: 'https://naodeng.tech'
 title: Nao Share More
 theme: ladder
-license: MIT
-licenselink: 'https://github.com/guangzhengli/hugo-theme-ladder/blob/master/LICENSE'
-description: 'A fast, clean Hugo theme'
+description: '分享一些自己的笔记和感悟'
 homepage: 'https://naodeng.tech'
-defaultContentLanguage: 'ZH'
-googleAnalytics: G-xxx
+defaultContentLanguage: 'en'
+googleAnalytics: G-V47Y9D316D
 paginate: 10
 params:
   brand: HOME
   avatarURL: /images/avatar.png
-  author: Hugo Ladder
-  authorDescription: A clean, fast hugo theme focused on Reading
-  info: Build a free and beautiful blog site to record your thoughts and increase your influence
+  author: Nao Deng
+  authorDescription: 专注于QA领域，但不仅限于QA领域
+  info: 分享一些自己工作的感悟和学习笔记
   favicon: /images/avatar.png
   options:
     showDarkMode: true
@@ -56,7 +54,7 @@ params:
       url: 'https://xxx'
 languages:
   en:
-    languageName: ZH
+    languageName: EN
     menu:
       main:
         - name: Blog
