@@ -1,7 +1,6 @@
 ---
 title: "新技术分享：Mac OS 下 edge 浏览器开启新 UI"
 date: 2023-02-15T22:19:54+08:00
-featured: true
 tags:
 - 浏览器工具
 
@@ -14,9 +13,6 @@ categories: [
 description: 文章介绍 Mac OS 下 edge 浏览器开启新 UI
 ---
 
-文章介绍 Mac OS 下 edge 浏览器开启新 UI
-
-<!--more-->
 - 打开 edge 浏览器
 - 在地址栏输入命令
   `edge://flags/`
