@@ -19,7 +19,11 @@ cy.get('：radio').should('be.checked')`
 cy.get('.completed').should('have.css','text-decoration','line-through')`
 </code></pre><h2 id=运行出错问题记录>运行出错问题记录</h2><h4 id=运行-npm-run-cypressopen-报错提示-no-version-of-cypress-is-installed>运行 npm run cypress:open 报错，提示 No version of Cypress is installed</h4><h5 id=报错截图如下>报错截图如下：</h5><p><img src=https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601150230.png alt></p><h5 id=修复方式>修复方式</h5><p><code>//项目根目录下运行如下命令即可解决 ./node_modules/.bin/cypress install</code></p><h5 id=原因>原因</h5><p>电脑使用过清理软件，安装的 cypress 缓存信息被删除了，重新安装就好</p><h4 id=运行-npm-run-cypressopen-报错提示-cypress-verification-timed-out>运行 npm run cypress:open 报错，提示 Cypress verification timed out</h4><h5 id=报错截图如下-1>报错截图如下：</h5><p><img src=https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601151647.png alt></p><h5 id=修复方式-1>修复方式</h5><p>重新运行 npm run cypress:open 尝试即可</p><h5 id=原因-1>原因</h5><p>电脑 cypress 验证超时了，一般重新操作即可恢复</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
 <span class=item-content>NaoDeng</span></p><p class=copyright-item><span class=item-title>上次更新</span>
-<span class=item-content>2022-05-10</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/>自动化测试</a>
+<span class=item-content>2022-05-10</span></p></div><div class=post-reward><input type=checkbox name=reward id=reward hidden>
+<label class=reward-button for=reward>赞赏支持</label><div class=qr-code><label class=qr-code-image for=reward><img class=image src=/images/wechat-qr-code.png>
+<span>微信打赏</span></label>
+<label class=qr-code-image for=reward><img class=image src=/images/alipay-qr-code.png>
+<span>支付宝打赏</span></label></div></div><footer class=post-footer><div class=post-tags><a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/>自动化测试</a>
 <a href=/tags/cypress/>cypress</a></div><nav class=post-nav><a class=prev href=/post/cypress-demo4/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架</span>
 <span class="prev-text nav-mobile">上一篇</span></a>
