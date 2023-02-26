@@ -1,0 +1,99 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Cypress UI 自动化测试框架学习（1）- 上手 - 专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="NaoDeng"><meta name=description content="文章介绍 Cypress UI 自动化测试框架学习（1）- 上手，Cypress 自动化测试框架的新手入门介绍"><meta name=keywords content="naodeng,dengnao,nao,naodeng.tech,nao,软件测试,自动化测试,敏捷测试"><meta name=baidu-site-verification content="a9ccac71d6f95040ce100a854bbd3c90"><meta name=google-site-verification content="google5e9a7c9479924ed2"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://naodeng.tech/post/cypress-demo1/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Cypress UI 自动化测试框架学习（1）- 上手"><meta property="og:description" content="文章介绍 Cypress UI 自动化测试框架学习（1）- 上手，Cypress 自动化测试框架的新手入门介绍"><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.tech/post/cypress-demo1/"><meta property="article:section" content="post"><meta property="article:published_time" content="2022-05-05T09:49:24+08:00"><meta property="article:modified_time" content="2022-05-05T09:49:24+08:00"><meta itemprop=name content="Cypress UI 自动化测试框架学习（1）- 上手"><meta itemprop=description content="文章介绍 Cypress UI 自动化测试框架学习（1）- 上手，Cypress 自动化测试框架的新手入门介绍"><meta itemprop=datePublished content="2022-05-05T09:49:24+08:00"><meta itemprop=dateModified content="2022-05-05T09:49:24+08:00"><meta itemprop=wordCount content="1104"><meta itemprop=keywords content="自动化测试,cypress,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Cypress UI 自动化测试框架学习（1）- 上手"><meta name=twitter:description content="文章介绍 Cypress UI 自动化测试框架学习（1）- 上手，Cypress 自动化测试框架的新手入门介绍"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Nao share more</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>主页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Nao share more</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>主页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Cypress UI 自动化测试框架学习（1）- 上手</h1><div class=post-meta><span class=post-time>2022-05-05</span><div class=post-category><a href=/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/>软件测试</a></div><span class=more-meta>约 1104 字</span>
+<span class=more-meta>预计阅读 3 分钟</span>
+<span id=busuanzi_container_page_pv class=more-meta><span id=busuanzi_value_page_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次阅读</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#introduction>Introduction</a></li><li><a href=#getting-started>Getting Started</a><ul><li><a href=#operating-system>Operating System</a></li><li><a href=#before-started>Before Started</a></li><li><a href=#started-and-run>Started and Run</a></li><li><a href=#started-screenshot>Started Screenshot</a></li></ul></li><li><a href=#try-first-testscript>Try First Testscript</a><ul><li><a href=#testcase>Testcase</a></li><li><a href=#testscript>Testscript</a></li><li><a href=#run-screenshot>Run Screenshot</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><p>下面的信息是对 Cypress 自动化测试框架的新手入门介绍。如果你想要学习更多关于 playwright 自动化测试框架的信息，请参阅它的文档。运行测试：打开测试界面，选择"运行测试"。下面会显示一个非常简单的测试画面。你可以选择任何一个测试项目。你可以通过键盘或者鼠标来调试测试。查看测试报告：在测试结束后，单击"查看测试报告"按钮。测试报告会显示在测试结束后的浏览器中。</p><h2 id=introduction>Introduction</h2><p>基于 JavaScript 的前端自动化测试工具，可以对浏览器中运行的任何内容进行快速、简单、可靠的测试</p><p>Cypress 是自集成的，提供了一套完整的端到端测试，无须借助其他外部工具，安装后即可快速地创建、编写、运行测试用例，且对每一步操作都支持回看</p><p>不同于其他只能测试 UI 层的前端测试工具，Cypress 允许编写所有类型的测试，覆盖了测试金字塔模型的所有测试类型【界面测试，集成测试，单元测试】</p><p>Cypress 官网：https://www.cypress.io/</p><h2 id=getting-started>Getting Started</h2><blockquote><p>下面以 MacOS 来进行介绍，其他系统可参考官网信息</p></blockquote><h3 id=operating-system>Operating System</h3><ul><li>macOS 10.9 and above (64-bit only)</li><li>Node.js 12 or 14 and above</li></ul><h3 id=before-started>Before Started</h3><ul><li>已安装好 node.js 和 npm</li></ul><p><img src=https://tva1.sinaimg.cn/large/008i3skNgy1gqvntxlww1j30k406waau.jpg alt></p><ul><li>已安装好 vs code 或者其他代码编辑器</li></ul><h3 id=started-and-run>Started and Run</h3><ul><li>Step1：通过 npm 新建项目</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># 新建项目文件夹
+</span></span><span class=line><span class=cl>$ mkdir cypress-demo
+</span></span><span class=line><span class=cl># 进入项目文件夹
+</span></span><span class=line><span class=cl>$ cd cypress-demo
+</span></span><span class=line><span class=cl># npm项目环境准备
+</span></span><span class=line><span class=cl>$ npm init
+</span></span></code></pre></td></tr></table></div></div><ul><li>Step2：安装 cypress</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># 项目安装cypress包
+</span></span><span class=line><span class=cl>$ npm install cypress --save-dev
+</span></span></code></pre></td></tr></table></div></div><ul><li>Step3：运行 cypress 程序</li></ul><blockquote><p>若提示：npm ERR! missing script: cypress:open，可在项目根目录 package.json 文件的 scripts 下新增"cypress:open": &ldquo;cypress open&rdquo;，保存后再次运行命令即可</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># 启动demo
+</span></span><span class=line><span class=cl>$ npm run cypress:open
+</span></span></code></pre></td></tr></table></div></div><h3 id=started-screenshot>Started Screenshot</h3><ul><li><p>运行截图
+<img src=https://tva1.sinaimg.cn/large/008i3skNgy1gqvsqw8ytcj323h0u0qp2.jpg alt></p></li><li><p>demo 用例执行截图
+<img src=https://tva1.sinaimg.cn/large/008i3skNgy1gqvsshqeflj31gl0u0nbf.jpg alt></p></li></ul><h2 id=try-first-testscript>Try First Testscript</h2><h3 id=testcase>Testcase</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>1.访问光谷社区主页http://www.guanggoo.com/
+</span></span><span class=line><span class=cl>2.验证是否正确跳转到光谷社区页面
+</span></span><span class=line><span class=cl>3.验证网页标题是否正确
+</span></span><span class=line><span class=cl>4.点击登录按钮，验证正确跳转到登录页面
+</span></span><span class=line><span class=cl>5.在登录页面输入用户名和输入密码
+</span></span><span class=line><span class=cl>6.点击登录按钮，验证登录成功
+</span></span></code></pre></td></tr></table></div></div><h3 id=testscript>Testscript</h3><ul><li><p>在项目 cypress/integration 下新建 demo 文件夹</p></li><li><p>在 demo 文件夹下新建 demo-guanggoo.js</p></li><li><p>demo-guanggoo.js 编写测试脚本</p></li></ul><blockquote><p>脚本中账号密码需换成自己的账号密码</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>describe(&#39;first testcase for cypress&#39;,function(){
+</span></span><span class=line><span class=cl>    it(&#39;visit guanggoo homepage and login for guanggoo:&#39;,function(){
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        // 访问并登录光谷社区
+</span></span><span class=line><span class=cl>        cy.visit(&#39;http://www.guanggoo.com/&#39;) //访问url
+</span></span><span class=line><span class=cl>        cy.url().should(&#39;include&#39;,&#39;www.guanggoo.com&#39;)     //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+</span></span><span class=line><span class=cl>        cy.title().should(&#39;contain&#39;,&#39;光谷社区&#39;)  //验证页面 title 是否正确
+</span></span><span class=line><span class=cl>        cy.get(&#39;:nth-child(1) &gt; .nav-collapse&#39;).click()   //点击登录按钮
+</span></span><span class=line><span class=cl>        cy.url().should(&#39;include&#39;,&#39;login&#39;)  //验证正确跳转到登录页面
+</span></span><span class=line><span class=cl>        cy.get(&#39;#email&#39;) //根据 css 定位用户名输入框
+</span></span><span class=line><span class=cl>        .type(&#39;dengnao.123@163.com&#39;)        //输入用户名
+</span></span><span class=line><span class=cl>        cy.get(&#39;#password&#39;) //根据 css 定位密码输入框
+</span></span><span class=line><span class=cl>        .type(&#39;xxxxxxx&#39;)        //输入密码
+</span></span><span class=line><span class=cl>        cy.get(&#39;.btn-success&#39;).click()   //点击登录按钮
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    })
+</span></span><span class=line><span class=cl>})
+</span></span></code></pre></td></tr></table></div></div><h3 id=run-screenshot>Run Screenshot</h3><ul><li>运行 cypress 程序</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># 启动
+</span></span><span class=line><span class=cl>$ npm run cypress:open
+</span></span></code></pre></td></tr></table></div></div><p><img src=https://tva1.sinaimg.cn/large/008i3skNgy1gqvtcq43csj323f0u0qn9.jpg alt></p><ul><li>页面上选择点击运行 demo-guanggoo.js 即可</li></ul><p><img src=https://tva1.sinaimg.cn/large/008i3skNgy1gqvtjib8jdj31g80u0e81.jpg alt></p><ul><li>运行通过无报错，代表用例编写成功</li></ul></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>NaoDeng</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2022-05-05</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/>自动化测试</a>
+<a href=/tags/cypress/>cypress</a></div><nav class=post-nav><a class=prev href=/post/cypress-demo2/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Cypress UI 自动化测试框架学习（2）- 测试报告</span>
+<span class="prev-text nav-mobile">上一篇</span></a></nav></footer></article></div><script src=https://utteranc.es/client.js repo=naodeng/naodeng.tech issue-term=pathname theme=github-light crossorigin=anonymous async></script><noscript>Please enable JavaScript to view the <a href=https://github.com/utterance>comments powered by utterances.</a></noscript></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:dengnao@email.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/naodeng class="iconfont icon-github" title=github></a>
+<a href=https://weibo.com/u/1651778270 class="iconfont icon-weibo" title=weibo></a>
+<a href=https://naodeng.tech/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次</span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>本站总访客数 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人</span></div><span class=copyright-year>&copy;
+2022 -
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span>naodeng.tech</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-JBX883ZDJJ","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
+<script id=baidu_analytics>var _hmt=_hmt||[];(function(){if(window.location.hostname==="localhost")return;var t,e=document.createElement("script");e.async=!0,e.src="https://hm.baidu.com/hm.js?13a59e30369e228e85ec4d65c048aa95",t=document.getElementsByTagName("script")[0],t.parentNode.insertBefore(e,t)})()</script><script id=baidu_push>(function(){if(window.location.hostname==="localhost")return;var t,n,e=document.createElement("script");e.async=!0,n=window.location.protocol.split(":")[0],n==="https"?e.src="https://zz.bdstatic.com/linksubmit/push.js":e.src="http://push.zhanzhang.baidu.com/push.js",t=document.getElementsByTagName("script")[0],t.parentNode.insertBefore(e,t)})()</script></body></html>
