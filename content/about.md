@@ -41,4 +41,3 @@ weight: 50
 <a href="/https://naodeng.tech" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/rss.svg" alt="https://naodeng.tech" height="30" width="40" /></a>
 </p>
 
-# 💻 Tech Stack:
