@@ -1,14 +1,12 @@
----
-title: "Cypress UI 自动化测试框架学习（5）- 命令大全"
-date: 2022-05-12T16:40:11+08:00
-tags:
-  - 自动化测试
-  - cypress
-categories : [
-"软件测试",
++++
+author = "nao.deng"
+title = "Cypress UI 自动化测试框架学习（5）- 命令大全"
+date = "2022-05-12"
+description = "文章介绍 UI 自动化测试框架学习（5）- 命令大全"
+tags = [
+"自动化测试","cypress"
 ]
-description: 文章介绍 UI 自动化测试框架学习（5）- 命令大全
----
++++
 
 # Cypress UI 自动化测试框架学习（5）- 命令大全
 

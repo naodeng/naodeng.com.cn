@@ -1,11 +1,11 @@
 baseURL = "https://naodeng.tech/"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟"
+title = "naodeng.Tech"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
-theme = "even"
+theme = "paper"
 enableGitInfo = false # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
@@ -38,25 +38,24 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   weight = 20
   identifier = "archives"
   url = "/post/"
-[[menu.main]]
-  name = "标签"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
-[[menu.main]]
-  name = "分类"
-  weight = 40
-  identifier = "categories"
-  url = "/categories/"
 
 [params]
-  version = "4.x"           # Used to give a friendly message when you have an incompatible update
-  debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
 
-  since = "2022"            # Site creation time          # 站点建立时间
-  # use public git repo url to link lastmod git commit, enableGitInfo should be true.
-  # 指定 git 仓库地址，可以生成指向最近更新的 git commit 的链接，需要将 enableGitInfo 设置成 true.
-  gitRepo = ""
+ # header social icons
+  twitter = 'naodeng0_0'               # twitter.com/YOUR_TWITTER_ID
+  github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
+
+
+# home page profile
+  avatar = 'https://avatars.githubusercontent.com/u/7599466?v=4'                 # gravatar email or image url
+  name = 'NaoDeng'
+  bio = '专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟'
+
+  comments = true 
+
+  rss = true 
+  
+  enableInlineShortcodes = true
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
   logoTitle = "Nao share more"        # default: the title value    # 默认值：上面设置的 title 值
@@ -94,10 +93,6 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到 markdown 原始文件（仅当允许 hugo 生成 markdown 文件时有效）
   contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
-  changyanAppid = ""        # Changyan app id             # 畅言
-  changyanAppkey = ""       # Changyan app key
-
-  livereUID = ""            # LiveRe UID                  # 来必力
 
   baiduPush = true        # baidu push                  # 百度
   baiduAnalytics = "13a59e30369e228e85ec4d65c048aa95"      # Baidu Analytics
@@ -125,67 +120,6 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
     flowchartDiagramsJS = '<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script>'
     sequenceDiagramsCSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">'
     sequenceDiagramsJS = '<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>'
-
-  # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
-  # 在文章开头显示提示信息，提醒读者文章内容可能过时。
-  [params.outdatedInfoWarning]
-    enable = false
-    hint = 30               # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
-    warn = 180              # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告
-
-  [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
-
-  [params.utterances]       # https://utteranc.es/
-    owner = "naodeng"              # Your GitHub ID
-    repo = "naodeng.tech"               # The repo to store comments
-
-  [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
-
-  # Valine.
-  # You can get your appid and appkey from https://leancloud.cn
-  # more info please open https://valine.js.org
-  [params.valine]
-    enable = false
-    appId = '你的appId'
-    appKey = '你的appKey'
-    notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
-    verify = false # Verification code
-    avatar = 'mm'
-    placeholder = '说点什么吧...'
-    visitor = false
-
-  [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
-    enable = false
-    options = ""
-
-  [params.sequenceDiagrams] # see https://blog.olowolo.com/example-site/post/js-sequence-diagrams/
-    enable = false
-    options = ""            # default: "{theme: 'simple'}"
-
-  [params.busuanzi]         # count web traffic by busuanzi                             # 是否使用不蒜子统计站点访问量
-    enable = true
-    siteUV = true
-    sitePV = true
-    pagePV = true
-
-  [params.reward]                                         # 文章打赏
-    enable = true
-    wechat = "/images/wechat-qr-code.png"           # 微信二维码
-    alipay = "/images/alipay-qr-code.png"           # 支付宝二维码
-
-  [params.social]                                         # 社交链接
-    a-email = "mailto:dengnao@email.com"
-    g-github = "https://github.com/naodeng"
-    h-weibo = "https://weibo.com/u/1651778270"
-    c-twitter = "https://twitter.com/naodeng0_0"
 
 
 # See https://gohugo.io/about/hugo-and-gdpr/

@@ -1,14 +1,12 @@
----
-title: "Cypress UI 自动化测试框架学习（2）- 测试报告"
-date: 2022-05-09T09:49:24+08:00
-tags:
-  - 自动化测试
-  - cypress
-categories : [
-"软件测试",
++++
+author = "nao.deng"
+title = "Cypress UI 自动化测试框架学习（2）- 测试报告"
+date = "2022-05-09"
+description = "文章介绍 Cypress UI 自动化测试框架学习如何去使用不同格式的 cypress 自动化测试报告模版"
+tags = [
+"自动化测试","cypress"
 ]
-description: 文章介绍 Cypress UI 自动化测试框架学习如何去使用不同格式的 cypress 自动化测试报告模版
----
++++
 
 下面的信息是介绍 cypress 自动化测试框架学习第 3 篇的测试报告的内容
 主要介绍一下如何去使用不同格式的 cypress 自动化测试报告模版

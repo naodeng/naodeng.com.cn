@@ -1,14 +1,12 @@
----
-title: "Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架"
-date: 2022-05-11T09:49:24+08:00
-tags:
-  - 自动化测试
-  - cypress
-categories : [
-"软件测试",
++++
+author = "nao.deng"
+title = "Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架"
+date = "2022-05-11"
+description = "文章介绍如何去使用 cypress 的数据驱动方法封装参数化和测试框架"
+tags = [
+"自动化测试","cypress"
 ]
-description: 文章介绍如何去使用 cypress 的数据驱动方法封装参数化和测试框架
----
++++
 
 下面的信息是自动化测试框架学习第四篇数据驱动方法封装参数化和测试框架的介绍。
 在自动化测试框架学习中，有很多方法可以用来驱动测试框架。例如，数据驱动方法封装参数化和测试框架。这两个方法都可以将测试框架的数据处理和预设环境等现有模型结合起来。这样就可以方便地开发、测试和运行新的测试框架。
@@ -31,8 +29,7 @@ description: 文章介绍如何去使用 cypress 的数据驱动方法封装参�
 
 - testLogin.data.js 示例代码如下：
 
-```
-//账号密码记得换成自己的
+```//账号密码记得换成自己的
 export const testLoginUserEmail = [
 
     {
@@ -41,7 +38,6 @@ export const testLoginUserEmail = [
         password:"xxxx"
     }
 ]
-
 export const testLoginUserId = [
 
     {
@@ -66,14 +62,12 @@ export const testLoginUserMobilephone = [
 
 - 示例代码如下：
 
-```
-// 导入js文件获取测试数据
+```// 导入 js 文件获取测试数据
 import {
-    testLoginUserEmail,
-    testLoginUserId,
-    testLoginUserMobilephone
+testLoginUserEmail,
+testLoginUserId,
+testLoginUserMobilephone
 } from "./testData/testLogin.data";
-
 
 // 测试用例
 describe("光谷社区登录验证", function () {
@@ -157,23 +151,22 @@ Cypress 使用 cypress/fixture 目录存放 json 文件数据，cy.fixture() 加
 
 - testLoginData.json 示例代码如下（账号密码记得换成自己的）：
 
-```
-{
-    "testLoginUserEmail": {
-        "summary": "正确邮箱账号登录验证",
-        "username": "dengnao.123@163.com",
-        "password": "xxxx"
-    },
-    "testLoginUserId": {
-        "summary": "正确id账号登录验证",
-        "username": "waitnoww",
-        "password": "xxxx"
-    },
-    "testLoginUserMobilephone": {
-        "summary": "正确手机号账号登录验证",
-        "username": "18888889031",
-        "password": "xxxx"
-    }
+```{
+"testLoginUserEmail": {
+"summary": "正确邮箱账号登录验证",
+"username": "dengnao.123@163.com",
+"password": "xxxx"
+},
+"testLoginUserId": {
+"summary": "正确 id 账号登录验证",
+"username": "waitnoww",
+"password": "xxxx"
+},
+"testLoginUserMobilephone": {
+"summary": "正确手机号账号登录验证",
+"username": "18888889031",
+"password": "xxxx"
+}
 }
 ```
 
@@ -183,8 +176,7 @@ Cypress 使用 cypress/fixture 目录存放 json 文件数据，cy.fixture() 加
 
 - 示例代码如下：
 
-```
-// 测试用例
+```// 测试用例
 describe("光谷社区登录验证", function () {
 
     // 执行用例执行用例之前先进入首页
@@ -241,6 +233,7 @@ describe("光谷社区登录验证", function () {
             // 清除cookies
             cy.clearCookies()
         })
+
 })
 ```
 
@@ -269,30 +262,28 @@ cypress 框架提供了一个 commands.js 可以自定义各种命令，用来�
 - 打开 cypress/support/commands.js 文件
 - 输入如下代码：
 
-```
-//将用户名和密码进行登录参数化
+```//将用户名和密码进行登录参数化
 Cypress.Commands.add("login",(username,password) => {
-    cy.clearCookies() //清除cookies,保证页面为未登录状态
-    cy.visit('http://www.guanggoo.com/') //访问url
-    cy.url().should('include', 'www.guanggoo.com') //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
-    cy.title().should('contain', '光谷社区') //验证页面 title 是否正确
-    cy.get(':nth-child(1) > .nav-collapse').click() //点击登录按钮
-    cy.url().should('include', 'login') //验证正确跳转到登录页面
-    cy.get('#email') //根据 css 定位用户名输入框
-    .type(username) //输入参数化的用户名
-    cy.get('#password') //根据 css 定位密码输入框
-    .type(password) //输入参数化的密码
-    cy.get('.btn-success').click() //点击登录按钮
-    cy.get(':nth-child(2) > .nav-collapse').should('contain', '设置') //验证登录成功回到首页，设置按钮展示正确
-    })
+cy.clearCookies() //清除 cookies,保证页面为未登录状态
+cy.visit('http://www.guanggoo.com/') //访问 url
+cy.url().should('include', 'www.guanggoo.com') //验证目标 url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+cy.title().should('contain', '光谷社区') //验证页面 title 是否正确
+cy.get(':nth-child(1) > .nav-collapse').click() //点击登录按钮
+cy.url().should('include', 'login') //验证正确跳转到登录页面
+cy.get('#email') //根据 css 定位用户名输入框
+.type(username) //输入参数化的用户名
+cy.get('#password') //根据 css 定位密码输入框
+.type(password) //输入参数化的密码
+cy.get('.btn-success').click() //点击登录按钮
+cy.get(':nth-child(2) > .nav-collapse').should('contain', '设置') //验证登录成功回到首页，设置按钮展示正确
+})
 ```
 
 #### 代码使用
 
 - 在测试用例中可直接进行方法调用 cy.login(username,password) 换成自己的账号密码进行登录操作了
 
-```
-// 账号密码须换成正确可用的
+```// 账号密码须换成正确可用的
 cy.login("dengnao.123@163.com","xxxx")
 ```
 
@@ -303,12 +294,11 @@ cy.login("dengnao.123@163.com","xxxx")
 - 打开 cypress/support/commands.js 文件
 - 输入如下代码：
 
-```
-//进入首页
+```//进入首页
 Cypress.Commands.add("initHomePage",() => {
-    cy.visit('http://www.guanggoo.com/') //访问url
-    cy.url().should('include', 'www.guanggoo.com') //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
-    cy.title().should('contain', '光谷社区') //验证页面 title 是否正确
+cy.visit('http://www.guanggoo.com/') //访问 url
+cy.url().should('include', 'www.guanggoo.com') //验证目标 url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+cy.title().should('contain', '光谷社区') //验证页面 title 是否正确
 })
 ```
 
@@ -316,8 +306,7 @@ Cypress.Commands.add("initHomePage",() => {
 
 - 在测试用例中可直接进行方法调用 cy.initHomePage() 即可进入首页
 
-```
-// 进入首页
+```// 进入首页
 cy.initHomePage()
 ```
 
@@ -345,18 +334,16 @@ Cypress 框架采用了 Mocha 框架的语法，故 Mocha 框架的测试语法�
 
 在一个测试套件中的所有测试用例之前执行，设置一些运行 testcase 的前置条件
 
-```
-before(function() {
-    // runs once before the first test in this block
-  });
+```before(function() {
+// runs once before the first test in this block
+});
 ```
 
 #### beforeEach()
 
 在每个测试用例之前执行
 
-```
-    beforeEach(function () {
+```beforeEach(function () {
         // 访问并登录光谷社区
         cy.visit('http://www.guanggoo.com/') //访问url
         cy.url().should('include', 'www.guanggoo.com') //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
@@ -368,9 +355,8 @@ before(function() {
 
 在每个测试用例之后执行，可以执行清除数据等操作
 
-```
-afterEach(function () {
-// 清除cookies
+```afterEach(function () {
+// 清除 cookies
 cy.clearCookies()
 })
 ```
@@ -379,21 +365,20 @@ cy.clearCookies()
 
 在一个测试套件中的所有测试用例之后执行
 
-```
-  after(function() {
-    // runs once after the last test in this block
-  });
+```after(function() {
+// runs once after the last test in this block
+});
+
 ```
 
 #### .only()
 
 设置只执行某个 testcase/testsuite
 
-```
-describe('Array', function() {
-  describe.only('#indexOf()', function() {
-    // ...
-  });
+```describe('Array', function() {
+describe.only('#indexOf()', function() {
+// ...
+});
 });
 ```
 
@@ -401,17 +386,17 @@ describe('Array', function() {
 
 设置跳过执行某个 testcase/testsuite
 
-```
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it.skip('should return -1 unless present', function() {
-      // this test will not be run
-    });
+```describe('Array', function() {
+describe('#indexOf()', function() {
+it.skip('should return -1 unless present', function() {
+// this test will not be run
+});
 
     it('should return the index when present', function() {
       // this test will be run
     });
-  });
+
+});
 });
 ```
 

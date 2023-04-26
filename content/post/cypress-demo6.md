@@ -1,14 +1,12 @@
----
-title: "Cypress UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍"
-date: 2022-06-11T18:17:02+08:00
-tags:
-  - 自动化测试
-  - cypress
-categories : [
-"软件测试",
++++
+author = "nao.deng"
+title = "Cypress UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍"
+date = "2022-05-13"
+description = "文章介绍 UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍"
+tags = [
+"自动化测试","cypress"
 ]
-description: 文章介绍 UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍
----
++++
 
 Cypress Studio 提供了一种在测试运行程序中生成测试的可视化方法，通过记录与被测应用程序的交互。支持.click（）、.type（）、.check（）、.uncheck（）和.select（）Cypress 命令，这些命令将在与 Cypress Studio 内部的 DOM 交互时生成测试代码
 
@@ -29,18 +27,14 @@ _Cypress Studio 通过记录与_ 被测应用程序的交互，提供了一种�
 Cypress Studio 是一项实验性功能，可以通过将 experimentalStudio 属性添加到您的配置文件来启用（ `cypress.json` 默认情况下）。
 
 ```
-{  "experimentalStudio": true}
+{ "experimentalStudio": true}
 ```
 
 Cypress Real World App (RWA) 是一个开源项目，它实现了一个支付应用程序，以展示 Cypress 测试方法、模式和工作流程的实际使用情况。下面将使用它来演示 Cypress Studio 的功能。
 
 ### 扩展测试
 
-您可以扩展任何预先存在的测试，或者通过使用以下测试脚手架在您的 integrationFolder（默认情况下）中创建一个新测试来开始。 `cypress/integration`
-
-```
-// Code from Real World App (RWA)describe('Cypress Studio Demo', () => {  beforeEach(() => {    // Seed database with test data    cy.task('db:seed')    // Login test user    cy.database('find', 'users').then((user) => {      cy.login(user.username, 's3cret', true)    })  })  it('create new transaction', () => {    // Extend test with Cypress Studio  })})
-```
+您可以扩展任何预先存在的测试，或者通过使用以下测试脚手架在您的 integrationFolder（默认情况下）中创建一个新测试来开始。
 
 #### 第 1 步 - 运行用例
 
@@ -99,10 +93,6 @@ Cypress 将自动执行所有挂钩和当前存在的测试代码，然后可以
 
 查看我们的测试代码，我们可以看到在点击“Save Commands”后测试更新了我们在 Cypress Studio 中记录的操作。
 
-```
-// Code from Real World App (RWA)describe('Cypress Studio Demo', () => {  beforeEach(() => {    // Seed database with test data    cy.task('db:seed')    // Login test user    cy.database('find', 'users').then((user) => {      cy.login(user.username, 's3cret', true)    })  })  it('create new transaction', () => {    /* ==== Generated with Cypress Studio ==== */    cy.get('[data-test=nav-top-new-transaction]').click()    cy.get('[data-test=user-list-search-input]').clear()    cy.get('[data-test=user-list-search-input]').type('dev')    cy.get(      '[data-test=user-list-item-tsHF6_D5oQ] > .MuiListItemText-root > .MuiListItemText-primary'    ).should('have.text', 'Devon Becker')    cy.get('[data-test=user-list-item-tsHF6_D5oQ]').click()    cy.get('#amount').clear()    cy.get('#amount').type('$25')    cy.get('#transaction-create-description-input').clear()    cy.get('#transaction-create-description-input').type('Sushi dinner')    cy.get('[data-test=transaction-create-submit-payment]').should('be.enabled')    cy.get('[data-test=transaction-create-submit-payment]').click()    /* ==== End Cypress Studio ==== */  })})
-```
-
 ### 添加新测试
 
 您可以通过单击我们定义的块上的“Add New Test”来向任何现有 `describe` 或块添加新测试。 `context ` ` describe`
@@ -140,7 +130,3 @@ Cypress 将自动执行所有挂钩和当前存在的测试代码，然后可以
 [image:560BE965-9C4C-4E9A-A17F-4992200B053B-665-000000B8AF4BF3D8/_______________640.jpeg]
 
 最后，查看我们的测试代码，我们可以看到点击“Save Commands”后测试更新了我们在 Cypress Studio 中记录的操作。
-
-```
-// Code from Real World App (RWA)import { User } from 'models'describe('Cypress Studio Demo', () => {  beforeEach(() => {    cy.task('db:seed')    cy.database('find', 'users').then((user: User) => {      cy.login(user.username, 's3cret', true)    })  })  it('create new transaction', () => {    // Extend test with Cypress Studio  })  /* === Test Created with Cypress Studio === */  it('create bank account', function () {    /* ==== Generated with Cypress Studio ==== */    cy.get('[data-test=sidenav-bankaccounts]').click()    cy.get('[data-test=bankaccount-new] > .MuiButton-label').click()    cy.get('#bankaccount-bankName-input').click()    cy.get('#bankaccount-bankName-input').type('Test Bank Account')    cy.get('#bankaccount-routingNumber-input').click()    cy.get('#bankaccount-routingNumber-input').type('987654321')    cy.get('#bankaccount-accountNumber-input').click()    cy.get('#bankaccount-accountNumber-input').type('123456789')    cy.get('[data-test=bankaccount-submit] > .MuiButton-label').click()    /* ==== End Cypress Studio ==== */  })})
-```
