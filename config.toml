@@ -51,7 +51,9 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   name = 'NaoDeng'
   bio = '专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟'
 
-  comments = true 
+  comments = true
+
+  disqusShortname = 'naodeng-tech'   # use disqus comments
 
   rss = true 
   
