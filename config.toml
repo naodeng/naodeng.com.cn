@@ -41,7 +41,11 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   weight = 20
   identifier = "archives"
   url = "/post/"
-
+[[menu.main]]
+  name = "网站统计"
+  weight = 20
+  identifier = "dashboard"
+  url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"
 [params]
 
  # header social icons
