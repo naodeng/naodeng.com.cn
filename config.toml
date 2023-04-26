@@ -16,7 +16,10 @@ pygmentsCodefencesGuessSyntax = true
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
 paginate = 5                                              # 首页每页显示的文章数
-disqusShortname = ""      # disqus_shortname
+comments = true
+rss = true 
+enableInlineShortcodes = true
+disqusShortname = "naodeng-tech"      # disqus_shortname
 googleAnalytics = "G-JBX883ZDJJ"      # UA-XXXXXXXX-X
 copyright = "naodeng.tech"            # default: author.name ↓        # 默认为下面配置的 author.name ↓
 
@@ -51,13 +54,6 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   name = 'NaoDeng'
   bio = '专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟'
 
-  comments = true
-
-  disqusShortname = 'naodeng-tech'   # use disqus comments
-
-  rss = true 
-  
-  enableInlineShortcodes = true
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
   logoTitle = "Nao share more"        # default: the title value    # 默认值：上面设置的 title 值
