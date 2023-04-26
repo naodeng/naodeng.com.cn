@@ -1,7 +1,7 @@
 baseURL = "https://naodeng.tech/"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "naodeng.Tech"
+title = "NaoDeng.Tech"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
