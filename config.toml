@@ -20,11 +20,6 @@ comments = true
 rss = true 
 enableInlineShortcodes = true
 disqusShortname = "naodeng-tech"      # disqus_shortname
-analytics:
-  umami:
-    enable: true
-    website_id: b3b285c9-3c35-4398-9252-91bb70560b84
-    url: https://naodeng-umami.vercel.app/hugo.js
 googleAnalytics = "G-JBX883ZDJJ"      # UA-XXXXXXXX-X
 copyright = "naodeng.tech"            # default: author.name ↓        # 默认为下面配置的 author.name ↓
 
@@ -53,6 +48,10 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   twitter = 'naodeng0_0'               # twitter.com/YOUR_TWITTER_ID
   github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
 
+[[analytics.umami]]
+  enable = 'true'  
+  website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
+  url = 'https://naodeng-umami.vercel.app/hugo.js'  
 
 # home page profile
   avatar = 'https://avatars.githubusercontent.com/u/7599466?v=4'                 # gravatar email or image url
