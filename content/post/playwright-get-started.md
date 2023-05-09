@@ -1,15 +1,3 @@
----
-title: "Playwright Get Started"
-date: 2023-01-18T20:37:52+08:00
-tags:
-  - 自动化测试
-  - Playwright
-categories : [
-"软件测试",
-]
-description: 文章介绍 playwright 自动化测试框架的新手入门介绍 
----
-
 +++
 author = "nao.deng"
 title = "Playwright 自动化框架入门"
