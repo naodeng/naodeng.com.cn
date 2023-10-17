@@ -1,7 +1,7 @@
 +++
 author = "nao.deng"
-title: "postman替换工具bruno使用介绍"
-date: 2023-10-17T11:31:43+08:00
+title = "postman替换工具bruno使用介绍"
+date = "2023-10-17T11:31:43+08:00"
 description = "文章介绍postman替换工具bruno的新手入门介绍,如何迁移postman脚本到bruno"
 tags = [
 "API测试","postman","bruno"
