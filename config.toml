@@ -1,6 +1,6 @@
 baseURL = "https://naodeng.tech/"
-languageCode = "zh-cn"
-defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
+languageCode = "en-us"
+defaultContentLanguage = "en-us"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "NaoDeng.Tech"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
@@ -31,6 +31,11 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   priority = 0.5
   filename = "sitemap.xml"
 
+[[menu.main]]
+  name = "EN"
+  weight = 20
+  identifier = "English"
+  url = "/post-en/"
 [params]
   # color style
   color = 'linen'  
