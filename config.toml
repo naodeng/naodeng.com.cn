@@ -5,7 +5,7 @@ title = "NaoDeng.Tech"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
-theme = "lowkey"
+theme = "paper"
 enableGitInfo = false # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
@@ -31,39 +31,23 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   priority = 0.5
   filename = "sitemap.xml"
 
-[[menu.main]]             # config your menu              # 配置目录
-  name = "主页"
-  weight = 10
-  identifier = "home"
-  url = "/"
-[[menu.main]]
-  name = "归档"
-  weight = 20
-  identifier = "archives"
-  url = "/post/"
-[[menu.main]]
-  name = "网站统计"
-  weight = 20
-  identifier = "dashboard"
-  url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"
 [params]
   # color style
-  color = 'linen'                           # linen, wheat, gray, light
-
+  color = 'linen'  
+                           # linen, wheat, gray, light
+# home page profile
+  avatar = 'https://avatars.githubusercontent.com/u/7599466?v=4'                 # gravatar email or image url
+  name = 'NaoDeng'
+  bio = 'A Quality Analyst, Not A Quality Assurance'
  # header social icons
   twitter = 'naodeng0_0'               # twitter.com/YOUR_TWITTER_ID
   github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
   rss = true 
   
-[params.analytics.umami]
-  enable = true  
-  website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-  url = 'https://naodeng-umami.vercel.app/hugo.js'  
-
-# home page profile
-  avatar = 'https://avatars.githubusercontent.com/u/7599466?v=4'                 # gravatar email or image url
-  name = 'NaoDeng'
-  bio = '专注于QA领域，但不仅限于QA领域,分享一些自己的笔记和感悟'
+# [params.analytics.umami]
+#   enable = true  
+#   website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
+#   url = 'https://naodeng-umami.vercel.app/hugo.js'  
 
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
