@@ -58,7 +58,7 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
   logoTitle = "Nao share more"        # default: the title value    # 默认值：上面设置的 title 值
   keywords = ["naodeng", "dengnao","nao", "naodeng.tech","nao","API testing","performance testing","automation testing", "软件测试","自动化测试","敏捷测试"]
-  description = "naodeng.tech 个人博客 分享软件测试，自动化测试，敏捷测试，测试管理，测试资讯"
+  description = "naodeng.tech 个人博客 分享软件测试，自动化测试，敏捷测试，测试管理，测试资讯,API testing,performance testing,automation testing"
 
   # paginate of archives, tags and categories             # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
   archivePaginate = 50
