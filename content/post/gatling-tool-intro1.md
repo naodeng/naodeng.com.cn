@@ -60,7 +60,7 @@ git clone git@github.com:gatling/gatling-gradle-plugin-demo-scala.git
 gradle build
 ```
 
-![readme-build](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-build.png)
+![readme-build](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-build.png)
 
 - 运行工程中的 demo
 
@@ -70,11 +70,11 @@ gradle gatlingRun
 
 - 查看命令行运行结果
 
-![readme-report](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report.png)
+![readme-report](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report.png)
 
 - 点击命令行报告中的 html 报告链接，并使用浏览器打开，即可查看详细的报告信息
 
-![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report1.png)
+![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report1.png)
 
 ### VSCode + Maven + Scala 版本
 
@@ -109,11 +109,11 @@ mvn gatling:test
 
 - 查看命令行运行结果
 
-![readme-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report2.png)
+![readme-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report2.png)
 
 - 点击命令行报告中的 html 报告链接，并使用浏览器打开，即可查看详细的报告信息
 
-![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report1.png)
+![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report1.png)
 
 ### IDEA + Gradle + Scala 版本
 

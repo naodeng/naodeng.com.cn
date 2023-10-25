@@ -60,7 +60,7 @@ git clone git@github.com:gatling/gatling-gradle-plugin-demo-scala.git
 gradle build
 ```
 
-![readme-build](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-build.png)
+![readme-build](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-build.png)
 
 - Run the demo in the project
 
@@ -70,11 +70,11 @@ gradle gatlingRun
 
 - Viewing the results of a command line run
 
-![readme-report](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report.png)
+![readme-report](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report.png)
 
 - Click on the html report link in the command line report and open it with your browser to view the detailed report information
 
-![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report1.png)
+![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report1.png)
 
 ### VSCode + Maven + Scala version
 
@@ -109,11 +109,11 @@ mvn gatling:test
 
 - Viewing the results of a command line run
 
-![readme-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report2.png)
+![readme-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report2.png)
 
 - Click on the html report link in the command line report and open it with your browser to view the detailed report information
 
-![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/blob/main/readme-pic/readme-report1.png)
+![readme-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report1.png)
 
 ### IDEA + Gradle + Scala version
 
