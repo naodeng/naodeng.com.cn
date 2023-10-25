@@ -3,7 +3,7 @@ author = "nao.deng"
 title = "postman 替换工具 bruno 使用介绍"
 date = "2023-10-17T11:31:43+08:00"
 description = "文章介绍 postman 替换工具 bruno 的新手入门介绍，如何迁移 postman 脚本到 bruno"
-keywords = ["API 测试","postman"，"API 测试工具","bruno","bruno cli"]
+keywords = ["API 测试","postman","API 测试工具","bruno","bruno cli"]
 tags = [
 "API 测试","postman","bruno","bruno cli"
 ]

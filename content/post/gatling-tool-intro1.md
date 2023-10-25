@@ -2,7 +2,9 @@
 author = "nao.deng"
 title = "gatling 性能测试工具入门介绍"
 date = "2023-10-24T17:44:53+08:00"
-keywords = ["性能测试","gatling"，"性能测试工具"]
+keywords = [
+    "性能测试","gatling","性能测试工具"
+    ]
 description = "文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来"
 tags = [
 "性能测试","gatling"

@@ -3,7 +3,7 @@ author = "nao.deng"
 title = "接口测试简介"
 date = "2023-04-20"
 description = "文章介绍接口测试的简介，类型和工具"
-keywords = ["API 测试","postman"，"API 测试工具","bruno","bruno cli"]
+keywords = ["API 测试","postman","API 测试工具","bruno","bruno cli"]
 tags = [
 "接口测试"
 ]
