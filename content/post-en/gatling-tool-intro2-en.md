@@ -1,11 +1,11 @@
 
 +++
 author = "nao.deng"
-title = "gatling 性能测试工具：从 0 到 1 搭建自己的 Gatling 工程"
+title = "gatling performance testing tools: building your own gatling project from 0 to 1"
 date = "2023-10-25T11:05:45+08:00"
-description = "文章介绍性能测试工具 gatling 的进阶介绍：从 0 到 1 搭建自己的 Gatling 工程，介绍了 Gatling 的基本使用方法，以及如何搭建自己的 Gatling 工程，编写性能测试脚本，查看测试报告等"
+description = "The article introduces the performance testing tool gatling advanced introduction: from 0 to 1 build your own Gatling project, introduces the basic use of Gatling, and how to build your own Gatling project, write performance test scripts, view the test report and so on."
 tags = [
-"性能测试","gatling"
+"Performance Testing","gatling"
 ]
 +++
 
