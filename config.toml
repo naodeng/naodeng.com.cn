@@ -54,10 +54,10 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
   rss = true 
   
-# [params.analytics.umami]
-#   enable = true  
-#   website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-#   url = 'https://naodeng-umami.vercel.app/hugo.js'  
+[params.analytics.umami]
+  enable = true  
+  website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
+  url = 'https://naodeng-umami.vercel.app/hugo.js'  
 
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
