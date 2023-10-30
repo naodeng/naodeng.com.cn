@@ -2,7 +2,7 @@
 title: "About"  
 date: 2023-02-26T12:26:14+08:00
 menu: "main"
-weight: 50
+weight: 30
 ---
 
 

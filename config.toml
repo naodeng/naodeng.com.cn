@@ -36,6 +36,11 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   weight = 20
   identifier = "English"
   url = "/post-en/"
+[[menu.main]]
+  name = "Dashboard"
+  weight = 40
+  identifier = "dashboard"
+  url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"
 [params]
   # color style
   color = 'linen'  
