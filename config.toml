@@ -52,7 +52,9 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
  # header social icons
   twitter = 'naodeng0_0'               # twitter.com/YOUR_TWITTER_ID
   github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
-  rss = true 
+  rss = true
+  keywords = ["naodeng", "dengnao","nao", "naodeng.tech","nao","API testing","performance testing","automation testing", "软件测试","自动化测试","敏捷测试"]
+  description = "naodeng.tech 个人博客 分享软件测试，自动化测试，敏捷测试，测试管理，测试资讯,API testing,performance testing,automation testing"
   
 [params.analytics.umami]
   enable = true  
