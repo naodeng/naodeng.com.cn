@@ -1,7 +1,7 @@
 baseURL = "https://naodeng.tech/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "QA Blog"                                             # 网站标题
+title = "Quality Assurance Discovery"                                             # 网站标题
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
