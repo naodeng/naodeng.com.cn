@@ -54,7 +54,7 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   github = 'naodeng'                 # github.com/YOUR_GITHUB_ID
   rss = true
   keywords = ["naodeng", "dengnao","nao", "naodeng.tech","nao","API testing","performance testing","automation testing", "软件测试","自动化测试","敏捷测试"]
-  description = "naodeng.tech 个人博客 分享软件测试，自动化测试，敏捷测试，测试管理，测试资讯,API testing,performance testing,automation testing"
+  description = "naodeng,naodeng.tech,邓闹,dengnao,个人博客,软件测试，性能测试，接口测试，接口自动化测试，测试教程，API测试，API自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯,API testing,performance testing,automation testing"
   
 [params.analytics.umami]
   enable = true  
