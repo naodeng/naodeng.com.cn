@@ -1,0 +1,163 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>REST Assured Tutorial: Getting Started and Setting Up Your Environment - QA Discovery</title>
+<meta name=theme-color><meta name=description content="Introduction of RestAssured REST Assured is a Java testing framework for testing RESTful APIs that enables developers/testers to easily write and execute API tests. It is designed to make API testing simple and intuitive, while providing rich functionality and flexibility. The following are some of the key features and uses of REST Assured:
+Initiating HTTP requests: REST Assured allows you to easily build and initiate HTTP GET, POST, PUT, DELETE and other types of requests."><meta name=author content="nao.deng"><script async defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://naodeng-umami.vercel.app/hugo.js></script><link rel="preload stylesheet" as=style href=https://naodeng.tech/main.min.css><link rel=preload as=image href=https://naodeng.tech/theme.png><link rel=preload as=image href="https://avatars.githubusercontent.com/u/7599466?v=4"><link rel=preload as=image href=https://naodeng.tech/twitter.svg><link rel=preload as=image href=https://naodeng.tech/github.svg><link rel=preload as=image href=https://naodeng.tech/rss.svg><script defer src=https://naodeng.tech/highlight.min.js onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://naodeng.tech/favicon.ico><link rel=apple-touch-icon href=https://naodeng.tech/apple-touch-icon.png><meta name=generator content="Hugo 0.120.2"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ",{anonymize_ip:!0})}</script><meta itemprop=name content="REST Assured Tutorial: Getting Started and Setting Up Your Environment"><meta itemprop=description content="The content of this blog will be a tutorial on REST Assured, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what REST Assured is and how to start using it for API testing. The tutorial will cover the basic concepts of REST Assured, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use REST Assured for API testing to get started and prepare their development environment."><meta itemprop=datePublished content="2023-11-01T16:24:49+08:00"><meta itemprop=dateModified content="2023-11-01T16:24:49+08:00"><meta itemprop=wordCount content="1058"><meta itemprop=keywords content="API Testing,REST Assured,Interface Automation Testing,Automation Testing,"><meta property="og:title" content="REST Assured Tutorial: Getting Started and Setting Up Your Environment"><meta property="og:description" content="The content of this blog will be a tutorial on REST Assured, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what REST Assured is and how to start using it for API testing. The tutorial will cover the basic concepts of REST Assured, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use REST Assured for API testing to get started and prepare their development environment."><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.tech/post-en/rest-assured-intro-and-environment-preparation-en/"><meta property="article:section" content="post-en"><meta property="article:published_time" content="2023-11-01T16:24:49+08:00"><meta property="article:modified_time" content="2023-11-01T16:24:49+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="REST Assured Tutorial: Getting Started and Setting Up Your Environment"><meta name=twitter:description content="The content of this blog will be a tutorial on REST Assured, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what REST Assured is and how to start using it for API testing. The tutorial will cover the basic concepts of REST Assured, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use REST Assured for API testing to get started and prepare their development environment."><link rel=canonical href=https://naodeng.tech/post-en/rest-assured-intro-and-environment-preparation-en/></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://naodeng.tech/>QA Discovery</a><div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg="#faf8f1".replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/post-en/>EN</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/contact/>Contact</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng>Dashboard</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/naodeng0_0 target=_blank rel=me>twitter
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naodeng target=_blank rel=me>github
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://naodeng.tech/index.xml target=_blank rel=alternate>rss</a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"><article><header class=mb-16><h1 class="!my-0 pb-2.5">REST Assured Tutorial: Getting Started and Setting Up Your Environment</h1><div class="text-sm antialiased opacity-60"><time>Nov 1, 2023</time>
+<span class=mx-1>&#183;</span>
+<span>nao.deng</span></div></header><section><h2 id=introduction-of-restassured>Introduction of RestAssured</h2><p>REST Assured is a Java testing framework for testing RESTful APIs that enables developers/testers to easily write and execute API tests. It is designed to make API testing simple and intuitive, while providing rich functionality and flexibility. The following are some of the key features and uses of REST Assured:</p><ol><li><p>Initiating HTTP requests: REST Assured allows you to easily build and initiate HTTP GET, POST, PUT, DELETE and other types of requests. You can specify the request&rsquo;s URL, headers, parameters, body, and other information.</p></li><li><p>Chained Syntax: REST Assured uses chained syntax to make test code more readable and easy to write. You can describe your test cases in a natural way without writing tons of code.</p></li><li><p>Assertions and Checksums: REST Assured provides a rich set of checksums that can be used to validate API response status codes, response bodies, response headers, and so on. You can add multiple assertions according to your testing needs.</p></li><li><p>Support for multiple data formats: REST Assured supports a variety of data formats, including JSON, XML, HTML, Text and so on. You can use appropriate methods to handle different formats of response data.</p></li><li><p>Integration with BDD (Behavior-Driven Development): REST Assured can be used in conjunction with BDD frameworks (such as Cucumber), allowing you to better describe and manage test cases.</p></li><li><p>Simulate HTTP Server: REST Assured also includes a simulation of an HTTP server, allowing you to simulate the behavior of an API for end-to-end testing.</p></li><li><p>Extensibility: REST Assured can be customized with plug-ins and extensions to meet specific testing needs.</p></li></ol><p>Overall, REST Assured is a powerful and easy-to-use API testing framework that helps you easily perform RESTful API testing and provides many tools to verify the correctness and performance of an API. Whether you are a beginner or an experienced developer/tester, REST Assured is a valuable tool for quickly getting started with API automation testing.</p><h2 id=project-structure>Project structure</h2><h3 id=gradle-built-versions>Gradle-built versions</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>- src
+</span></span><span class=line><span class=cl>  - main
+</span></span><span class=line><span class=cl>    - java
+</span></span><span class=line><span class=cl>      - (The main source code of the application)
+</span></span><span class=line><span class=cl>  - test
+</span></span><span class=line><span class=cl>    - test
+</span></span><span class=line><span class=cl>      - api
+</span></span><span class=line><span class=cl>        - (REST Assured test code)
+</span></span><span class=line><span class=cl>          - UsersAPITest.java
+</span></span><span class=line><span class=cl>          - ProductsAPITest.java
+</span></span><span class=line><span class=cl>        - TestConfig.java
+</span></span><span class=line><span class=cl>          - TestConfig.java
+</span></span><span class=line><span class=cl>    - resources
+</span></span><span class=line><span class=cl>      - (configuration files, test data, etc.)
+</span></span><span class=line><span class=cl>  - (other project files and resources)
+</span></span><span class=line><span class=cl>- build.gradle (Gradle project configuration file)
+</span></span></code></pre></td></tr></table></div></div><p>In this example directory structure:</p><ul><li>src/test/java/api directory is used to hold REST Assured test classes, each of which typically involves tests for one or more related API endpoints. For example, UsersAPITest.java and ProductsAPITest.java could contain tests for user management and product management.</li><li>The src/test/java/util directory can be used to store tool classes that are shared among tests, such as TestConfig.java for configuring REST Assured.</li><li>The src/test/resources directory can contain test data files, configuration files, and other resources that can be used in tests.</li><li>build.gradle is the gradle project&rsquo;s configuration file, which is used to define the project&rsquo;s dependencies, build configuration, and other project settings.</li></ul><h3 id=maven-built-versions>Maven-built versions</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>- src
+</span></span><span class=line><span class=cl>  - main
+</span></span><span class=line><span class=cl>    - java
+</span></span><span class=line><span class=cl>      - (The main source code of the application)
+</span></span><span class=line><span class=cl>  - test
+</span></span><span class=line><span class=cl>    - java
+</span></span><span class=line><span class=cl>      - api
+</span></span><span class=line><span class=cl>        - (REST Assured test code)
+</span></span><span class=line><span class=cl>          - UsersAPITest.java
+</span></span><span class=line><span class=cl>          - ProductsAPITest.java
+</span></span><span class=line><span class=cl>        - util
+</span></span><span class=line><span class=cl>          - TestConfig.java
+</span></span><span class=line><span class=cl>    - resources
+</span></span><span class=line><span class=cl>      - (configuration files, test data, etc.)
+</span></span><span class=line><span class=cl>  - (other project files and resources)
+</span></span><span class=line><span class=cl>- pom.xml (Maven project configuration file)
+</span></span></code></pre></td></tr></table></div></div><p>In this example directory structure:</p><ul><li>src/test/java/api directory is used to hold REST Assured test classes, each of which typically involves tests for one or more related API endpoints. For example, UsersAPITest.java and ProductsAPITest.java could contain tests for user management and product management.</li><li>The src/test/java/util directory can be used to store tool classes that are shared among tests, such as TestConfig.java for configuring REST Assured.</li><li>The src/test/resources directory can contain test data files, configuration files, and other resources that can be used in the tests.</li><li>pom.xml is a Maven project configuration file that is used to define project dependencies, build configurations, and other project settings.</li></ul><h2 id=project-dependency>Project dependency</h2><ul><li>JDK 1.8+, I&rsquo;m using JDK 19</li><li>Gradle 6.0+ or Maven 3.0+, I&rsquo;m using Gradle 8.44 and Maven 3.9.5</li><li>RestAssured 4.3.3+, I&rsquo;m using the latest version 5.3.2</li></ul><h2 id=syntax-example>Syntax Example</h2><p>Here&rsquo;s a simple example of RestAssured syntax that demonstrates how to perform a GET request and validate the response: First, make sure you have added a RestAssured dependency to your Gradle or Maven project.</p><p>First, make sure you have added a RestAssured dependency to your Gradle or Maven project.</p><p>Gradle dependency:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-groovy data-lang=groovy><span class=line><span class=cl><span class=n>dependency</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>implementation</span> <span class=s1>&#39;io.rest-assured:rest-assured:5.3.1&#39;</span> <span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>Maven dependency:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>io.rest-assured<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>rest-assured<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;version&gt;</span>5.3.1<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>Next, create a test class and write the following code:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>import</span><span class=w> </span><span class=nn>io.restassured.RestAssured</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import</span><span class=w> </span><span class=nn>io.restassured.response.Response</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import</span><span class=w> </span><span class=nn>org.testng.annotations.Test</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>io.restassured.RestAssured.given</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>org.hamcrest.Matchers.equalTo</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kd>public</span><span class=w> </span><span class=kd>class</span> <span class=nc>RestAssuredDemo</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nd>@Test</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=kd>public</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>testGetRequest</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=c1>// Set the base URI, using JSONPlaceholder as an example</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>RestAssured</span><span class=p>.</span><span class=na>baseURI</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>&#34;https://jsonplaceholder.typicode.com&#34;</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=c1>// Send a GET request and save the response</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>Response</span><span class=w> </span><span class=n>response</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>given</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=p>.</span><span class=na>when</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=p>.</span><span class=na>get</span><span class=p>(</span><span class=s>&#34;/posts/1&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=p>.</span><span class=na>then</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=p>.</span><span class=na>extract</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=p>.</span><span class=na>response</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=c1>// Print the JSON content of the response</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>System</span><span class=p>.</span><span class=na>out</span><span class=p>.</span><span class=na>println</span><span class=p>(</span><span class=s>&#34;Response JSON: &#34;</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=n>response</span><span class=p>.</span><span class=na>asString</span><span class=p>());</span><span class=w> </span><span class=c1>// Verify that the status code is 200.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=c1>// Validate that the status code is 200</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>response</span><span class=p>.</span><span class=na>then</span><span class=p>().</span><span class=na>statusCode</span><span class=p>(</span><span class=n>200</span><span class=p>);</span><span class=w> </span><span class=c1>// validate that the response has a status code of 200.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=c1>// Validate a specific field value in the response</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>response</span><span class=p>.</span><span class=na>then</span><span class=p>().</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;userId&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>response</span><span class=p>.</span><span class=na>then</span><span class=p>().</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;id&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>response</span><span class=p>.</span><span class=na>then</span><span class=p>().</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;title&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>response</span><span class=p>.</span><span class=na>then</span><span class=p>().</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;body&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><p>The above code executes a GET request to JSONPlaceholder&rsquo;s <code>/posts/1</code> endpoint and validates the response with a status code and values for specific fields. You can modify the base URI and validation conditions to suit your needs.</p><p>In this example, we&rsquo;re using the TestNG testing framework, but you can also use other testing frameworks such as JUnit. make sure your test classes contain the appropriate import statements and configure them appropriately as needed.</p><p>This is a simple example of RestAssured syntax for performing a GET request and validating the response. You can build more complex test cases based on the needs of your project and the complexity of your interface.</p></section><footer class="mt-12 flex flex-wrap"><a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/api-testing>API Testing</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/rest-assured>REST Assured</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/interface-automation-testing>Interface Automation Testing</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/automation-testing>Automation Testing</a></footer><div class=mt-24 id=disqus_thread></div><script>const disqusShortname="naodeng-tech",script=document.createElement("script");script.src="https://"+disqusShortname+".disqus.com/embed.js",script.setAttribute("data-timestamp",+new Date),document.head.appendChild(script)</script></article></main><footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2023
+<a class=link href=https://naodeng.tech/>QA Discovery</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a></footer></body></html>
