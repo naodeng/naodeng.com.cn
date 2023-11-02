@@ -1,0 +1,488 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目 - QA Discovery</title>
+<meta name=theme-color><meta name=description content="从 0 到 1 搭建 REST Assured 接口测试项目 Gradle 版本 创建一个空的 Gradle 工程 配置项目 build.gradle testng.xml 配置 gradle build 项目并初始化 初始化目录 demo 测试接口 Get 接口 Post 接口 编写脚本 调试脚本 查看测试"><meta name=author content="nao.deng"><script async defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://naodeng-umami.vercel.app/hugo.js></script><link rel="preload stylesheet" as=style href=https://naodeng.tech/main.min.css><link rel=preload as=image href=https://naodeng.tech/theme.png><link rel=preload as=image href="https://avatars.githubusercontent.com/u/7599466?v=4"><link rel=preload as=image href=https://naodeng.tech/twitter.svg><link rel=preload as=image href=https://naodeng.tech/github.svg><link rel=preload as=image href=https://naodeng.tech/rss.svg><script defer src=https://naodeng.tech/highlight.min.js onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://naodeng.tech/favicon.ico><link rel=apple-touch-icon href=https://naodeng.tech/apple-touch-icon.png><meta name=generator content="Hugo 0.120.3"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ",{anonymize_ip:!0})}</script><meta itemprop=name content="REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"><meta itemprop=description content="在这篇博客中，我们将深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。REST Assured 是一个流行的 Java 库，用于进行 REST API 接口测试，提供了强大的工具，让你能够轻松编写自动化测试脚本，以验证 API 的行为。无论你是一个有经验的测试工程师，还是一个刚刚入门的开发者，这个教程都将为你提供有关 REST Assured 和接口自动化测试的宝贵知识。"><meta itemprop=datePublished content="2023-11-02T10:03:38+08:00"><meta itemprop=dateModified content="2023-11-02T10:03:38+08:00"><meta itemprop=wordCount content="2787"><meta itemprop=keywords content="API 测试,REST Assured,接口自动化测试,自动化测试,"><meta property="og:title" content="REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"><meta property="og:description" content="在这篇博客中，我们将深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。REST Assured 是一个流行的 Java 库，用于进行 REST API 接口测试，提供了强大的工具，让你能够轻松编写自动化测试脚本，以验证 API 的行为。无论你是一个有经验的测试工程师，还是一个刚刚入门的开发者，这个教程都将为你提供有关 REST Assured 和接口自动化测试的宝贵知识。"><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.tech/post/rest-assured-tutorial-building-your-own-project-from-0-to-1/"><meta property="article:section" content="post"><meta property="article:published_time" content="2023-11-02T10:03:38+08:00"><meta property="article:modified_time" content="2023-11-02T10:03:38+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"><meta name=twitter:description content="在这篇博客中，我们将深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。REST Assured 是一个流行的 Java 库，用于进行 REST API 接口测试，提供了强大的工具，让你能够轻松编写自动化测试脚本，以验证 API 的行为。无论你是一个有经验的测试工程师，还是一个刚刚入门的开发者，这个教程都将为你提供有关 REST Assured 和接口自动化测试的宝贵知识。"><link rel=canonical href=https://naodeng.tech/post/rest-assured-tutorial-building-your-own-project-from-0-to-1/></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://naodeng.tech/>QA Discovery</a><div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg="#faf8f1".replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/post-en/>EN</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/contact/>Contact</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng>Dashboard</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/naodeng0_0 target=_blank rel=me>twitter
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naodeng target=_blank rel=me>github
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://naodeng.tech/index.xml target=_blank rel=alternate>rss</a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"><article><header class=mb-16><h1 class="!my-0 pb-2.5">REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目</h1><div class="text-sm antialiased opacity-60"><time>Nov 2, 2023</time>
+<span class=mx-1>&#183;</span>
+<span>nao.deng</span></div></header><section><ul><li><a href=#%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA-rest-assured-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE>从 0 到 1 搭建 REST Assured 接口测试项目</a><ul><li><a href=#gradle-%E7%89%88%E6%9C%AC>Gradle 版本</a><ul><li><a href=#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84-gradle-%E5%B7%A5%E7%A8%8B>创建一个空的 Gradle 工程</a></li><li><a href=#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-buildgradle>配置项目 build.gradle</a></li><li><a href=#testngxml-%E9%85%8D%E7%BD%AE>testng.xml 配置</a></li><li><a href=#gradle-build-%E9%A1%B9%E7%9B%AE%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96>gradle build 项目并初始化</a></li><li><a href=#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E5%BD%95>初始化目录</a></li><li><a href=#demo-%E6%B5%8B%E8%AF%95%E6%8E%A5%E5%8F%A3>demo 测试接口</a><ul><li><a href=#get-%E6%8E%A5%E5%8F%A3>Get 接口</a></li><li><a href=#post-%E6%8E%A5%E5%8F%A3>Post 接口</a></li></ul></li><li><a href=#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC>编写脚本</a></li><li><a href=#%E8%B0%83%E8%AF%95%E8%84%9A%E6%9C%AC>调试脚本</a></li><li><a href=#%E6%9F%A5%E7%9C%8B%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A>查看测试报告</a><ul><li><a href=#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%A5%E5%91%8A>命令行报告</a></li><li><a href=#testng-html-%E6%8A%A5%E5%91%8A>testng html 报告</a></li></ul></li></ul></li><li><a href=#maven-%E7%89%88%E6%9C%AC>Maven 版本</a><ul><li><a href=#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84-maven-%E5%B7%A5%E7%A8%8B>创建一个空的 Maven 工程</a></li><li><a href=#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-pomxml>配置项目 pom.xml</a></li><li><a href=#testngxml-%E9%85%8D%E7%BD%AE-1>testng.xml 配置</a></li><li><a href=#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E5%BD%95-1>初始化目录</a></li><li><a href=#demo-%E6%B5%8B%E8%AF%95%E6%8E%A5%E5%8F%A3-1>demo 测试接口</a><ul><li><a href=#get-%E6%8E%A5%E5%8F%A3-1>Get 接口</a></li><li><a href=#post-%E6%8E%A5%E5%8F%A3-1>Post 接口</a></li></ul></li><li><a href=#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC-1>编写脚本</a></li><li><a href=#%E8%B0%83%E8%AF%95%E8%84%9A%E6%9C%AC-1>调试脚本</a></li><li><a href=#%E6%9F%A5%E7%9C%8B%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A-1>查看测试报告</a><ul><li><a href=#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%A5%E5%91%8A-1>命令行报告</a></li><li><a href=#testng-html-%E6%8A%A5%E5%91%8A-1>testng html 报告</a></li></ul></li></ul></li></ul></li><li><a href=#%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF>更多信息</a></li></ul><h2 id=从-0-到-1-搭建-rest-assured-接口测试项目>从 0 到 1 搭建 REST Assured 接口测试项目</h2><p>REST Assured 支持 Gradle 和 Maven 两种构建工具，你可以根据自己的喜好选择其中一种。下面分别介绍 Gradle 和 Maven 两种构建工具的项目初始化过程。</p><p>本项目使用 Gradle 8.44 和 Maven 3.9.5 进行构建，如果你使用的是其他版本，可能会有不同。</p><h3 id=gradle-版本>Gradle 版本</h3><p>可参考 demo 项目：<a href=https://github.com/Automation-Test-Starter/RestAssured-gradle-demo>https://github.com/Automation-Test-Starter/RestAssured-gradle-demo</a></p><h4 id=创建一个空的-gradle-工程>创建一个空的 Gradle 工程</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir RestAssured-gradle-demo
+</span></span><span class=line><span class=cl><span class=nb>cd</span> RestAssured-gradle-demo
+</span></span><span class=line><span class=cl>gradle init
+</span></span></code></pre></td></tr></table></div></div><h4 id=配置项目-buildgradle>配置项目 build.gradle</h4><p>demo 项目引入了 testNG 测试框架，仅供参考</p><ul><li>在项目根目录下创建一个 build.gradle 文件，用于配置项目</li><li>示例配置如下，可供参考</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-groovy data-lang=groovy><span class=line><span class=cl><span class=c1>// 插件配置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>plugins</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>id</span> <span class=s1>&#39;java&#39;</span> <span class=c1>// 使用 java 插件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 仓库资源配置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>repositories</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>mavenCentral</span><span class=o>()</span> <span class=c1>// 使用 maven中央版本库源
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 项目依赖配置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>dependencies</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>testImplementation</span> <span class=s1>&#39;io.rest-assured:rest-assured:5.3.1&#39;</span> <span class=c1>// 添加rest-assured依赖
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>testImplementation</span> <span class=s1>&#39;org.testng:testng:7.8.0&#39;</span> <span class=c1>// 添加TestNG测试框架依赖
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>implementation</span> <span class=s1>&#39;org.uncommons:reportng:1.1.4&#39;</span> <span class=c1>// 添加testng 测试报告依赖
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>implementation</span> <span class=s1>&#39;org.slf4j:slf4j-api:2.0.9&#39;</span> <span class=c1>// 添加测试日志依赖
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>implementation</span> <span class=s1>&#39;org.slf4j:slf4j-simple:2.0.9&#39;</span> <span class=c1>// 添加测试日志依赖
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>implementation</span> <span class=nl>group:</span> <span class=s1>&#39;com.google.inject&#39;</span><span class=o>,</span> <span class=nl>name:</span> <span class=s1>&#39;guice&#39;</span><span class=o>,</span> <span class=nl>version:</span> <span class=s1>&#39;7.0.0&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 项目测试配置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>test</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>reports</span><span class=o>.</span><span class=na>html</span><span class=o>.</span><span class=na>required</span> <span class=o>=</span> <span class=kc>false</span> <span class=c1>// 禁用 gradle 原生HTML 报告生成
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>reports</span><span class=o>.</span><span class=na>junitXml</span><span class=o>.</span><span class=na>required</span> <span class=o>=</span> <span class=kc>false</span> <span class=c1>// 禁用 gradle 原生 JUnit XML 报告生成
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>// 告诉 Gradle 使用 TestNG 作为测试框架
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>useTestNG</span><span class=o>()</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>useDefaultListeners</span> <span class=o>=</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl>        <span class=n>suites</span> <span class=s1>&#39;src/test/resources/testng.xml&#39;</span> <span class=c1>// 声明 testng 的 xml 配置文件路径
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>testLogging</span><span class=o>.</span><span class=na>showStandardStreams</span> <span class=o>=</span> <span class=kc>true</span> <span class=c1>// 将测试日志输出到控制台
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>testLogging</span><span class=o>.</span><span class=na>events</span> <span class=s2>&#34;passed&#34;</span><span class=o>,</span> <span class=s2>&#34;skipped&#34;</span><span class=o>,</span> <span class=s2>&#34;failed&#34;</span> <span class=c1>// 定义测试日志事件类型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>可 copy 本项目中的 build.gradle 文件内容，更多配置可参考<a href=https://github.com/rest-assured/rest-assured/wiki/GettingStarted#rest-assured>官方文档</a></p></blockquote><h4 id=testngxml-配置>testng.xml 配置</h4><ul><li><p>在 src/test目录下创建一个 resources 目录，用于存放测试配置文件</p></li><li><p>在 resources 目录下创建一个 testng.xml 文件，用于配置 TestNG 测试框架</p></li><li><p>示例配置如下，可供参考</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE suite SYSTEM &#34;http://testng.org/testng-1.0.dtd&#34;&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;suite</span> <span class=na>name=</span><span class=s>&#34;restAssured-gradleTestSuite&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;test</span> <span class=na>thread-count=</span><span class=s>&#34;1&#34;</span> <span class=na>name=</span><span class=s>&#34;Demo&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;classes&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;class</span> <span class=na>name=</span><span class=s>&#34;com.example.TestDemo&#34;</span><span class=nt>/&gt;</span> <span class=c>&lt;!-- 测试脚本 class--&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/classes&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/test&gt;</span> <span class=c>&lt;!-- Test --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/suite&gt;</span> <span class=c>&lt;!-- Suite --&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=gradle-build-项目并初始化>gradle build 项目并初始化</h4><ul><li>用编辑器打开本项目 Terminal 窗口，执行以下命令确认项目 build 成功</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>gradle build
+</span></span></code></pre></td></tr></table></div></div><ul><li>初始化完成：完成向导后，Gradle 将在项目目录中生成一个基本的 Gradle 项目结构</li></ul><h4 id=初始化目录>初始化目录</h4><p>目录结构可参考 &#187; <a href=#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84>项目结构</a></p><p>在项目的测试源目录下创建一个新的测试类。默认情况下，Gradle 通常将测试源代码放在 src/test/java 目录中。你可以在该目录下创建测试类的包，并在包中创建新的测试类</p><p>创建一个 TestDemo 的测试类，可以按以下结构创建文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>src
+</span></span><span class=line><span class=cl>└── test
+</span></span><span class=line><span class=cl>    └── java
+</span></span><span class=line><span class=cl>        └── com
+</span></span><span class=line><span class=cl>            └── example
+</span></span><span class=line><span class=cl>                └── TestDemo.java
+</span></span></code></pre></td></tr></table></div></div><h4 id=demo-测试接口>demo 测试接口</h4><h5 id=get-接口>Get 接口</h5><ul><li>HOST: <a href=https://jsonplaceholder.typicode.com>https://jsonplaceholder.typicode.com</a></li><li>接口地址：/posts/1</li><li>请求方式：GET</li><li>请求参数：无</li><li>请求头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>请求体：无</li><li>返回状态码：200</li><li>返回头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>返回 body：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=post-接口>Post 接口</h5><ul><li>HOST: <a href=https://jsonplaceholder.typicode.com>https://jsonplaceholder.typicode.com</a></li><li>接口地址：/posts</li><li>请求方式：POST</li><li>请求参数：无</li><li>请求头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>请求体：raw json 格式 body 内容如下：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>返回状态码：201</li><li>返回头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>返回 body：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=mi>101</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=编写脚本>编写脚本</h4><ul><li><p>打开 TestDemo.java 文件，开始编写测试脚本</p></li><li><p>示例脚本如下，可供参考</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>package</span><span class=w> </span><span class=nn>com.example</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import</span><span class=w> </span><span class=nn>org.testng.annotations.Test</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>io.restassured.RestAssured.given</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>org.hamcrest.Matchers.equalTo</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kd>public</span><span class=w> </span><span class=kd>class</span> <span class=nc>TestDemo</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=nd>@Test</span><span class=p>(</span><span class=n>description</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>&#34;Verify that the Get Post API returns correctly&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=kd>public</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>verifyGetAPI</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Given</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>given</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>baseUri</span><span class=p>(</span><span class=s>&#34;https://jsonplaceholder.typicode.com&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>             </span><span class=p>.</span><span class=na>header</span><span class=p>(</span><span class=s>&#34;Content-Type&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;application/json&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// When</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=p>.</span><span class=na>when</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>get</span><span class=p>(</span><span class=s>&#34;/posts/1&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Then</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=p>.</span><span class=na>then</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>statusCode</span><span class=p>(</span><span class=n>200</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// To verify correct value</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;userId&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;id&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;title&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;body&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=nd>@Test</span><span class=p>(</span><span class=n>description</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>&#34;Verify that the publish post API returns correctly&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=kd>public</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>verifyPostAPI</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Given</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>given</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>baseUri</span><span class=p>(</span><span class=s>&#34;https://jsonplaceholder.typicode.com&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>header</span><span class=p>(</span><span class=s>&#34;Content-Type&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;application/json&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// When</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>when</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;{\&#34;title\&#34;: \&#34;foo\&#34;, \&#34;body\&#34;: \&#34;bar\&#34;, \&#34;userId\&#34;: 1\n}&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>post</span><span class=p>(</span><span class=s>&#34;/posts&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// Then</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>then</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>statusCode</span><span class=p>(</span><span class=n>201</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// To verify correct value</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;userId&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;id&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>101</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;title&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;foo&#34;</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;body&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;bar&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><h4 id=调试脚本>调试脚本</h4><ul><li>打开本项目的 Terminal 窗口，执行以下命令运行测试脚本</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>gradle <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=查看测试报告>查看测试报告</h4><h5 id=命令行报告>命令行报告</h5><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report1.png alt=gradle-test-report1></p><h5 id=testng-html-报告>testng html 报告</h5><ul><li>打开项目 build/reports/tests/test 目录</li><li>点击 index.html 文件，查看测试报告</li></ul><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report2.png alt=gradle-test-report2></p><h3 id=maven-版本>Maven 版本</h3><p>可参考 demo 项目：<a href=https://github.com/Automation-Test-Starter/RestAssured-maven-demo>https://github.com/Automation-Test-Starter/RestAssured-maven-demo</a></p><h4 id=创建一个空的-maven-工程>创建一个空的 Maven 工程</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mvn archetype:generate -DgroupId<span class=o>=</span>com.example -DartifactId<span class=o>=</span>RestAssured-maven-demo -DarchetypeArtifactId<span class=o>=</span>maven-archetype-quickstart -DinteractiveMode<span class=o>=</span><span class=nb>false</span>
+</span></span></code></pre></td></tr></table></div></div><p>初始化完成：完成向导后，Maven 将在新建项目目录并生成一个基本的 Maven 项目结构</p><h4 id=配置项目-pomxml>配置项目 pom.xml</h4><p>在 项目中 pom.xml 文件中添加以下内容</p><blockquote><p>可 copy 本项目中的 pom.xml 文件内容，更多配置可参考<a href=https://github.com/rest-assured/rest-assured/wiki/GettingStarted#rest-assured>官方文档</a></p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=c>&lt;!-- 依赖配置 --&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;dependencies&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=c>&lt;!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured --&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;groupId&gt;</span>io.rest-assured<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;artifactId&gt;</span>rest-assured<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;version&gt;</span>5.3.1<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;scope&gt;</span>test<span class=nt>&lt;/scope&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=c>&lt;!-- https://mvnrepository.com/artifact/org.testng/testng --&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;groupId&gt;</span>org.testng<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;artifactId&gt;</span>testng<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;version&gt;</span>7.8.0<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;scope&gt;</span>test<span class=nt>&lt;/scope&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/dependencies&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=c>&lt;!-- 插件配置 --&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;plugin&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;groupId&gt;</span>org.apache.maven.plugins<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;artifactId&gt;</span>maven-surefire-plugin<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;version&gt;</span>3.2.1<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;configuration&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&lt;suiteXmlFiles&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;suiteXmlFile&gt;</span>src/test/resources/testng.xml<span class=nt>&lt;/suiteXmlFile&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&lt;/suiteXmlFiles&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/configuration&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/plugin&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=testngxml-配置-1>testng.xml 配置</h4><ul><li><p>在 src/test目录下创建一个 resources 目录，用于存放测试配置文件</p></li><li><p>在 resources 目录下创建一个 testng.xml 文件，用于配置 TestNG 测试框架</p></li><li><p>示例配置如下，可供参考</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE suite SYSTEM &#34;http://testng.org/testng-1.0.dtd&#34;&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;suite</span> <span class=na>name=</span><span class=s>&#34;restAssured-gradleTestSuite&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;test</span> <span class=na>thread-count=</span><span class=s>&#34;1&#34;</span> <span class=na>name=</span><span class=s>&#34;Demo&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;classes&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;class</span> <span class=na>name=</span><span class=s>&#34;com.example.TestDemo&#34;</span><span class=nt>/&gt;</span> <span class=c>&lt;!-- 测试脚本 class--&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/classes&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/test&gt;</span> <span class=c>&lt;!-- Test --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/suite&gt;</span> <span class=c>&lt;!-- Suite --&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=初始化目录-1>初始化目录</h4><p>目录结构可参考 &#187; <a href=#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84>项目结构</a></p><p>在项目的测试源目录下创建一个新的测试类。默认情况下，Gradle 通常将测试源代码放在 src/test/java 目录中。你可以在该目录下创建测试类的包，并在包中创建新的测试类</p><p>创建一个 TestDemo 的测试类，可以按以下结构创建文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>src
+</span></span><span class=line><span class=cl>└── test
+</span></span><span class=line><span class=cl>    └── java
+</span></span><span class=line><span class=cl>        └── com
+</span></span><span class=line><span class=cl>            └── example
+</span></span><span class=line><span class=cl>                └── TestDemo.java
+</span></span></code></pre></td></tr></table></div></div><h4 id=demo-测试接口-1>demo 测试接口</h4><h5 id=get-接口-1>Get 接口</h5><ul><li>HOST: <a href=https://jsonplaceholder.typicode.com>https://jsonplaceholder.typicode.com</a></li><li>接口地址：/posts/1</li><li>请求方式：GET</li><li>请求参数：无</li><li>请求头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>请求体：无</li><li>返回状态码：200</li><li>返回头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>返回 body：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=post-接口-1>Post 接口</h5><ul><li>HOST: <a href=https://jsonplaceholder.typicode.com>https://jsonplaceholder.typicode.com</a></li><li>接口地址：/posts</li><li>请求方式：POST</li><li>请求参数：无</li><li>请求头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>请求体：raw json 格式 body 内容如下：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>返回状态码：201</li><li>返回头：&ldquo;Content-Type&rdquo;: &ldquo;application/json; charset=utf-8&rdquo;</li><li>返回 body：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;userId&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=mi>101</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=编写脚本-1>编写脚本</h4><ul><li><p>打开 TestDemo.java 文件，开始编写测试脚本</p></li><li><p>示例脚本如下，可供参考</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>package</span><span class=w> </span><span class=nn>com.example</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import</span><span class=w> </span><span class=nn>org.testng.annotations.Test</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>io.restassured.RestAssured.given</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kn>import static</span><span class=w> </span><span class=nn>org.hamcrest.Matchers.equalTo</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kd>public</span><span class=w> </span><span class=kd>class</span> <span class=nc>TestDemo</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=nd>@Test</span><span class=p>(</span><span class=n>description</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>&#34;Verify that the Get Post API returns correctly&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=kd>public</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>verifyGetAPI</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Given</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>given</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>baseUri</span><span class=p>(</span><span class=s>&#34;https://jsonplaceholder.typicode.com&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>             </span><span class=p>.</span><span class=na>header</span><span class=p>(</span><span class=s>&#34;Content-Type&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;application/json&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// When</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=p>.</span><span class=na>when</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>get</span><span class=p>(</span><span class=s>&#34;/posts/1&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Then</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=p>.</span><span class=na>then</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>statusCode</span><span class=p>(</span><span class=n>200</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// To verify correct value</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;userId&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;id&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;title&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;body&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=nd>@Test</span><span class=p>(</span><span class=n>description</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>&#34;Verify that the publish post API returns correctly&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=kd>public</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>verifyPostAPI</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Given</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>given</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>baseUri</span><span class=p>(</span><span class=s>&#34;https://jsonplaceholder.typicode.com&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>header</span><span class=p>(</span><span class=s>&#34;Content-Type&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;application/json&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// When</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>when</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;{\&#34;title\&#34;: \&#34;foo\&#34;, \&#34;body\&#34;: \&#34;bar\&#34;, \&#34;userId\&#34;: 1\n}&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>post</span><span class=p>(</span><span class=s>&#34;/posts&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// Then</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>then</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>statusCode</span><span class=p>(</span><span class=n>201</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=c1>// To verify correct value</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;userId&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>1</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;id&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=n>101</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;title&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;foo&#34;</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>body</span><span class=p>(</span><span class=s>&#34;body&#34;</span><span class=p>,</span><span class=w> </span><span class=n>equalTo</span><span class=p>(</span><span class=s>&#34;bar&#34;</span><span class=p>));</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w> </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><h4 id=调试脚本-1>调试脚本</h4><ul><li>打开本项目的 Terminal 窗口，执行以下命令运行测试脚本</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mvn <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=查看测试报告-1>查看测试报告</h4><h5 id=命令行报告-1>命令行报告</h5><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report1.png alt=maven-test-report1></p><h5 id=testng-html-报告-1>testng html 报告</h5><ul><li>打开项目 target/surefire-reports 目录</li><li>点击 index.html 文件，查看测试报告</li></ul><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report2.png alt=maven-test-report2></p><h2 id=更多信息>更多信息</h2><ul><li>访问我的个人博客：<a href=https://naodeng.tech/>https://naodeng.tech/</a></li><li>我的 QA 自动化快速启动项目页面：<a href=https://github.com/Automation-Test-Starter>https://github.com/Automation-Test-Starter</a></li></ul></section><footer class="mt-12 flex flex-wrap"><a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/api-%E6%B5%8B%E8%AF%95>API 测试</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/rest-assured>REST Assured</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95>接口自动化测试</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95>自动化测试</a></footer><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href=https://naodeng.tech/post/rest-assured-tutorial-and-environment-preparation/><span>REST Assured 教程：入门介绍和环境搭建准备</span><span class=ml-1.5>→</span></a></nav><div class=mt-24 id=disqus_thread></div><script>const disqusShortname="naodeng-tech",script=document.createElement("script");script.src="https://"+disqusShortname+".disqus.com/embed.js",script.setAttribute("data-timestamp",+new Date),document.head.appendChild(script)</script></article></main><footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2023
+<a class=link href=https://naodeng.tech/>QA Discovery</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a></footer></body></html>
