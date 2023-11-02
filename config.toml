@@ -37,6 +37,11 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   identifier = "English"
   url = "/post-en/"
 [[menu.main]]
+  name = "About"
+  weight = 30
+  identifier = "about"
+  url = "https://github.com/naodeng"
+[[menu.main]]
   name = "Dashboard"
   weight = 40
   identifier = "dashboard"
