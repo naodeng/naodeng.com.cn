@@ -1,6 +1,6 @@
 +++
 author = "nao.deng"
-title = "Getting Started with gatling Performance Testing Tools"
+title = "Gatling tutorial: Getting Started"
 date = "2023-10-24T17:44:53+08:00"
 description = "This article describes how to get started with the performance testing tool gatling, how to set up the environment, and how to get the official demo up and running."
 tags = [

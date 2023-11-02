@@ -1,6 +1,6 @@
 +++
 author = "nao.deng"
-title = "gatling performance testing tool advanced usage: Test report analysis and Performance Scenario Setting"
+title = "Gatling tutorial and advanced usage: Test report analysis and Performance Scenario Setting"
 date = "2023-10-26T18:07:44+08:00"
 keywords = ["Performance Testing","gatling","Performance Testing tool"]
 description = "This article introduces the advanced usage of the performance testing tool gatling: analysis of performance test reports, introduction of different types of test report reports, and configuration of performance test scenarios under different business types."
