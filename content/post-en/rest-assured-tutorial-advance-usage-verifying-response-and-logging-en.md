@@ -117,7 +117,9 @@ then().
 ```
 
 ```java
-with().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML").then().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe"));
+with().parameters("firstName", "John", "lastName", "Doe")
+.when().post("/greetXML")
+.then().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe"));
 ```
 
 #### Cookie 断言
@@ -131,13 +133,15 @@ get("/x").then().assertThat().cookie("cookieName", "cookieValue")
 - Asserts whether the value of multiple cookies is equal to the cookieValue at the same time. For example:
 
 ```java
-get("/x").then().assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2")
+get("/x").then()
+.assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2")
 ```
 
 - Asserts whether the value of the cookie contains a cookieValue. For example:
 
 ```java
-get("/x").then().assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2"))
+get("/x").then()
+.assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2"))
 ```
 
 #### Status Code Assertion
@@ -171,13 +175,15 @@ get("/x").then().assertThat().header("headerName", "headerValue")
 - Asserts whether the value of multiple Headers is equal to HeaderValue at the same time. For example:
 
 ```java
-get("/x").then().assertThat().headers("headerName1", "headerValue1", "headerName2", "headerValue2")
+get("/x").then()
+.assertThat().headers("headerName1", "headerValue1", "headerName2", "headerValue2")
 ```
 
 - Asserts whether the value of the Header contains a HeaderValue. For example:
 
 ```java
-get("/x").then().assertThat().headers("headerName1", "headerValue1", "headerName2", containsString("Value2"))
+get("/x").then().assertThat()
+.headers("headerName1", "headerValue1", "headerName2", containsString("Value2"))
 ```
 
 - Assert that the "Content-Length" of the Header is less than 1000. For example:
@@ -438,7 +444,8 @@ In Rest-Assured, you can use the `LogConfig` class to configure logging of reque
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL));;
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL));;
    ```
 
    This will enable logging of requests and responses only if validation fails.
@@ -447,7 +454,8 @@ In Rest-Assured, you can use the `LogConfig` class to configure logging of reque
 
    ``` java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.HEADERS));;
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.HEADERS));;
    ```
 
    This will log only the request and response headers.
@@ -456,9 +464,10 @@ In Rest-Assured, you can use the `LogConfig` class to configure logging of reque
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
            .enablePrettyPrinting(true)
-           .defaultStream(FileOutputStream("log.txt"))); ;enablePrettyPrinting(true).enablePrettyPrinting(true)
+           .defaultStream(FileOutputStream("log.txt"))); 
    ```
 
    This outputs the log records to a file named "log.txt".
@@ -467,7 +476,8 @@ In Rest-Assured, you can use the `LogConfig` class to configure logging of reque
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
            .enablePrettyPrinting(true));
    ```
 
@@ -544,7 +554,8 @@ then().log().ifValidationFails()
 - It can be enabled for both requests and responses using LogConfig, for example:
 
 ```java
-given().config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS)))
+given().config(RestAssured.config().logConfig(logConfig()
+.enableLoggingOfRequestAndResponseIfValidationFails(HEADERS)))
 ```
 
 > If authentication fails, the log only records the request header.
@@ -600,5 +611,6 @@ As of REST Assured 3.0.2 you can implement the `io.restassured.filter.OrderedFil
 If you need to change the Response from a filter you can use the ResponseBuilder to create a new Response based on the original response. For example if you want to change the body of the original response to something else you can do:
 
 ```java
-Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
+Response newResponse = new ResponseBuilder()
+.clone(originalResponse).setBody("Something").build();
 ```

@@ -117,7 +117,9 @@ then().
 ```
 
 ```java
-with().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML").then().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe"));
+with().parameters("firstName", "John", "lastName", "Doe")
+.when().post("/greetXML")
+.then().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe"));
 ```
 
 #### Cookie 断言
@@ -131,13 +133,15 @@ get("/x").then().assertThat().cookie("cookieName", "cookieValue")
 - 同时断言 多个 cookie 的值是否等于 cookieValue，示例：
 
 ```java
-get("/x").then().assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2")
+get("/x").then()
+.assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2")
 ```
 
 - 断言 cookie 的值是否包含 cookieValue，示例：
 
 ```java
-get("/x").then().assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2"))
+get("/x").then()
+.assertThat().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2"))
 ```
 
 #### 状态码 Status Code 断言
@@ -171,13 +175,15 @@ get("/x").then().assertThat().header("headerName", "headerValue")
 - 同时断言 多个 Header 的值是否等于 HeaderValue，示例：
 
 ```java
-get("/x").then().assertThat().headers("headerName1", "headerValue1", "headerName2", "headerValue2")
+get("/x").then()
+.assertThat().headers("headerName1", "headerValue1", "headerName2", "headerValue2")
 ```
 
 - 断言 Header 的值是否包含 HeaderValue，示例：
 
 ```java
-get("/x").then().assertThat().headers("headerName1", "headerValue1", "headerName2", containsString("Value2"))
+get("/x").then()
+.assertThat().headers("headerName1", "headerValue1", "headerName2", containsString("Value2"))
 ```
 
 - 断言 Header 的“Content-Length”小于 1000，示例：
@@ -185,7 +191,8 @@ get("/x").then().assertThat().headers("headerName1", "headerValue1", "headerName
 > 可以先使用映射函数首先将头值转换为 int，然后在使用 Hamcrest 验证前使用“整数”匹配器进行断言：
 
 ```java
-get("/something").then().assertThat().header("Content-Length", Integer::parseInt, lessThan(1000));
+get("/something").then()
+.assertThat().header("Content-Length", Integer::parseInt, lessThan(1000));
 ```
 
 #### Content-Type 断言
@@ -299,7 +306,8 @@ then().
 >[MultiPartConfig](http://static.javadoc.io/io.rest-assured/rest-assured/3.0.1/io/restassured/config/MultiPartConfig.html)可用来指定默认的 control 名和文件名
 
 ```java
-given().config(config().multiPartConfig(multiPartConfig().defaultControlName("something-else")))  
+given().config(config().multiPartConfig(multiPartConfig()
+.defaultControlName("something-else")))  
 ```
 
 > 默认把 control 名配置为"something-else"而不是"file"。
@@ -438,7 +446,8 @@ public class TestDemo {
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL));
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL));
    ```
 
    这将启用请求和响应的日志记录，只有当验证失败时才记录。
@@ -447,7 +456,8 @@ public class TestDemo {
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.HEADERS));
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.HEADERS));
    ```
 
    这将只记录请求和响应的头部信息。
@@ -456,7 +466,8 @@ public class TestDemo {
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
            .enablePrettyPrinting(true)
            .defaultStream(FileOutputStream("log.txt")));
    ```
@@ -467,7 +478,8 @@ public class TestDemo {
 
    ```java
    RestAssured.config = RestAssured.config()
-       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+       .logConfig(LogConfig.logConfig()
+       .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
            .enablePrettyPrinting(true));
    ```
 
@@ -544,7 +556,8 @@ then().log().ifValidationFails()
 - 可以使用 LogConfig 同时为请求和响应启用此功能，示例：
 
 ```java
-given().config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS)))
+given().config(RestAssured.config().logConfig(logConfig()
+.enableLoggingOfRequestAndResponseIfValidationFails(HEADERS)))
 ```
 
 > 如果验证失败，日志仅记录请求头。
@@ -600,5 +613,6 @@ REST Assured 提供了几个可供使用的过滤器：
 如果需要更改筛选器中的响应内容，可以使用 ResponseBuilder 基于原始响应创建新的响应。例如，如果要将原始响应的正文更改为其他内容，可以执行以下操作：
 
 ```java
-Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
+Response newResponse = new ResponseBuilder()
+.clone(originalResponse).setBody("Something").build();
 ```
