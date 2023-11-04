@@ -1,13 +1,14 @@
 +++
 author = "nao.deng"
-title: "REST Assured Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report"
-date: 2023-11-04T10:21:19+08:00
+title = "REST Assured Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report"
+date = 2023-11-04T10:21:19+08:00
 description = "This blog will dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports. Readers will learn how to integrate REST Assured test automation processes into CI/CD processes for automated testing and continuous integration. In addition, the blog will explore how to integrate the Allure Test Reporting framework to generate detailed, easy-to-understand test reports that help better analyze and visualize test results. This blog will help readers to further improve the automation of API testing, as well as the quality and visualization of test reports."
 keywords = ["API Testing", "REST Assured", "API Automation Testing Framework", "Interface Automation Testing", "Automation Testing"]
 tags = [
 "API Testing", "REST Assured", "Interface Automation Testing", "Automation Testing"
 ]
 +++
+
 - [CI/CD integration](#cicd-integration)
   - [integration github action](#integration-github-action)
     - [The Gradle version integration github action](#the-gradle-version-integration-github-action)
