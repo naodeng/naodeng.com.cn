@@ -242,7 +242,8 @@ public class TestDemo {
     @Description("Test Description : Verify that the post API returns correctly")
     public void verifyPostAPI() {        // Given
         given()
-                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .filter(new AllureRestAssured()) 
+                // Set up the AllureRestAssured filter to display request and response information in the test report
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -328,7 +329,8 @@ public class TestDemo {
 
         // Given
         given()
-                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .filter(new AllureRestAssured()) 
+                // Set up the AllureRestAssured filter to display request and response information in the test report
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -352,7 +354,8 @@ public class TestDemo {
     @Description("Test Description : Verify that the post API returns correctly")
     public void verifyPostAPI() {        // Given
         given()
-                .filter(new AllureRestAssured())                 .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .filter(new AllureRestAssured())
+                // Set up the AllureRestAssured filter to display request and response information in the test report
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 

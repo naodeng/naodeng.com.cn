@@ -218,7 +218,8 @@ public class TestDemo {
 
         // Given
         given()
-                .filter(new AllureRestAssured()) //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -242,7 +243,8 @@ public class TestDemo {
     @Description("Test Description : Verify that the post API returns correctly")
     public void verifyPostAPI() {        // Given
         given()
-                .filter(new AllureRestAssured()) //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -328,7 +330,8 @@ public class TestDemo {
 
         // Given
         given()
-                .filter(new AllureRestAssured()) //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -352,7 +355,8 @@ public class TestDemo {
     @Description("Test Description : Verify that the post API returns correctly")
     public void verifyPostAPI() {        // Given
         given()
-                .filter(new AllureRestAssured()) //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
