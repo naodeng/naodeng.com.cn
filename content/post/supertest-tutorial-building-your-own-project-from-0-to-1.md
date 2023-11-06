@@ -99,7 +99,8 @@ describe('Verify that the Get and POST API returns correctly', function(){
                     expect(res.body.id).to.equal(1  )
                     expect(res.body.userId).to.equal(1)
                     expect(res.body.title).to.equal("sunt aut facere repellat provident occaecati excepturi optio reprehenderit")
-                    expect(res.body.body).to.equal("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
+                    expect(res.body.body).
+                    to.equal("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
                 }) // expected response body
                 .end(done) // end the test case
 
@@ -267,8 +268,10 @@ describe('Verify that the Get and POST API returns correctly', () => {
         expect(res.status).toBe(200); // Verify that the status code is 200
         expect(res.body.id).toEqual(1); // Verify that the id is 1
         expect(res.body.userId).toEqual(1); // Verify that the userId is 1
-        expect(res.body.title).toEqual("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
-        expect(res.body.body).toEqual("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto");
+        expect(res.body.title)
+        .toEqual("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+        expect(res.body.body)
+        .toEqual("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto");
     });
 
     // Test case 2
