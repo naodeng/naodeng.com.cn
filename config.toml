@@ -32,7 +32,7 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   filename = "sitemap.xml"
 
 [[menu.main]]
-  name = "EN"
+  name = "English"
   weight = 20
   identifier = "English"
   url = "/post-en/"
