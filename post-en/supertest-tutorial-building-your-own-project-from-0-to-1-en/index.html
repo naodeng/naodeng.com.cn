@@ -1,0 +1,353 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Supertest Tutorial: Building a Supertest API Automation Test Program from 0 to 1 - QA Discovery</title>
+<meta name=theme-color><meta name=description content="Build a SuperTest API automation test project from 0 to 1 Mocha version Create a new project folder Project Initialization Install dependencies Create new test folder and test cases Writing Test Cases Configuring mocha config files Updating test scripts for mocha Running test cases Test Report Terminal Test Report Integrated mochawesome test report Jest version Create a new jest project folder Jest demo project initialization Jest demo install dependencies Create new Jest demo project test folder and test cases Writing Jest demo Test Cases Configuring Jest config files Adapting Jest Test Scripts Runing test case Jest test report Jest terminal Test Report Integrating jest-html-reporters test reports Build a SuperTest API automation test project from 0 to 1 The following is a demo of building a SuperTest API automation test project from 0 to 1, using either Jest or Mocha as the test framework."><meta name=author content="nao.deng"><script async defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://naodeng-umami.vercel.app/hugo.js></script><link rel="preload stylesheet" as=style href=https://naodeng.tech/main.min.css><link rel=preload as=image href=https://naodeng.tech/theme.png><link rel=preload as=image href="https://avatars.githubusercontent.com/u/7599466?v=4"><link rel=preload as=image href=https://naodeng.tech/twitter.svg><link rel=preload as=image href=https://naodeng.tech/github.svg><link rel=preload as=image href=https://naodeng.tech/rss.svg><script defer src=https://naodeng.tech/highlight.min.js onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://naodeng.tech/favicon.ico><link rel=apple-touch-icon href=https://naodeng.tech/apple-touch-icon.png><meta name=generator content="Hugo 0.120.3"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ",{anonymize_ip:!0})}</script><meta itemprop=name content="Supertest Tutorial: Building a Supertest API Automation Test Program from 0 to 1"><meta itemprop=description content="In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing."><meta itemprop=datePublished content="2023-11-06T12:30:26+08:00"><meta itemprop=dateModified content="2023-11-06T12:30:26+08:00"><meta itemprop=wordCount content="1286"><meta itemprop=keywords content="API Testing,Supertest,Interface Automation Testing,Automation Testing,"><meta property="og:title" content="Supertest Tutorial: Building a Supertest API Automation Test Program from 0 to 1"><meta property="og:description" content="In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing."><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.tech/post-en/supertest-tutorial-building-your-own-project-from-0-to-1-en/"><meta property="article:section" content="post-en"><meta property="article:published_time" content="2023-11-06T12:30:26+08:00"><meta property="article:modified_time" content="2023-11-06T12:30:26+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Supertest Tutorial: Building a Supertest API Automation Test Program from 0 to 1"><meta name=twitter:description content="In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing."><link rel=canonical href=https://naodeng.tech/post-en/supertest-tutorial-building-your-own-project-from-0-to-1-en/></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://naodeng.tech/>QA Discovery</a><div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg="#faf8f1".replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/post-en/>EN</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=https://github.com/naodeng>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng>Dashboard</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/naodeng0_0 target=_blank rel=me>twitter
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naodeng target=_blank rel=me>github
+</a><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://naodeng.tech/index.xml target=_blank rel=alternate>rss</a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"><article><header class=mb-16><h1 class="!my-0 pb-2.5">Supertest Tutorial: Building a Supertest API Automation Test Program from 0 to 1</h1><div class="text-sm antialiased opacity-60"><time>Nov 6, 2023</time>
+<span class=mx-1>&#183;</span>
+<span>nao.deng</span></div></header><section><ul><li><a href=#build-a-supertest-api-automation-test-project-from-0-to-1>Build a SuperTest API automation test project from 0 to 1</a><ul><li><a href=#mocha-version>Mocha version</a><ul><li><a href=#create-a-new-project-folder>Create a new project folder</a></li><li><a href=#project-initialization>Project Initialization</a></li><li><a href=#install-dependencies>Install dependencies</a></li><li><a href=#create-new-test-folder-and-test-cases>Create new test folder and test cases</a></li><li><a href=#writing-test-cases>Writing Test Cases</a></li><li><a href=#configuring-mocha-config-files>Configuring mocha config files</a></li><li><a href=#updating-test-scripts-for-mocha>Updating test scripts for mocha</a></li><li><a href=#running-test-cases>Running test cases</a></li><li><a href=#test-report>Test Report</a><ul><li><a href=#terminal-test-report>Terminal Test Report</a></li><li><a href=#integrated-mochawesome-test-report>Integrated mochawesome test report</a></li></ul></li></ul></li><li><a href=#jest-version>Jest version</a><ul><li><a href=#create-a-new-jest-project-folder>Create a new jest project folder</a></li><li><a href=#jest-demo-project-initialization>Jest demo project initialization</a></li><li><a href=#jest-demo-install-dependencies>Jest demo install dependencies</a></li><li><a href=#create-new-jest-demo-project-test-folder-and-test-cases>Create new Jest demo project test folder and test cases</a></li><li><a href=#writing-jest-demo-test-cases>Writing Jest demo Test Cases</a></li><li><a href=#configuring-jest-config-files>Configuring Jest config files</a></li><li><a href=#adapting-jest-test-scripts>Adapting Jest Test Scripts</a></li><li><a href=#runing-test-case>Runing test case</a></li><li><a href=#jest-test-report>Jest test report</a><ul><li><a href=#jest-terminal-test-report>Jest terminal Test Report</a></li><li><a href=#integrating-jest-html-reporters-test-reports>Integrating jest-html-reporters test reports</a></li></ul></li></ul></li></ul></li></ul><h2 id=build-a-supertest-api-automation-test-project-from-0-to-1>Build a SuperTest API automation test project from 0 to 1</h2><p>The following is a demo of building a SuperTest API automation test project from 0 to 1, using either Jest or Mocha as the test framework.</p><h3 id=mocha-version>Mocha version</h3><p>You can refer to the demo project at <a href=https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a>.</p><h4 id=create-a-new-project-folder>Create a new project folder</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir SuperTest-Mocha-demo
+</span></span></code></pre></td></tr></table></div></div><h4 id=project-initialization>Project Initialization</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// enter the project folder
+</span></span><span class=line><span class=cl><span class=nb>cd</span> SuperTest-Mocha-demo
+</span></span><span class=line><span class=cl>// nodejs project initialization
+</span></span><span class=line><span class=cl>npm init -y
+</span></span></code></pre></td></tr></table></div></div><h4 id=install-dependencies>Install dependencies</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// install supertest library
+</span></span><span class=line><span class=cl>npm install supertest --save-dev
+</span></span><span class=line><span class=cl>// install mocha <span class=nb>test</span> framework
+</span></span><span class=line><span class=cl>npm install mocha --save-dev
+</span></span><span class=line><span class=cl>// install chai assertion library
+</span></span><span class=line><span class=cl>npm install chai --save-dev
+</span></span></code></pre></td></tr></table></div></div><h4 id=create-new-test-folder-and-test-cases>Create new test folder and test cases</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// create <span class=nb>test</span> folder
+</span></span><span class=line><span class=cl>mkdir Specs
+</span></span><span class=line><span class=cl>// create <span class=nb>test</span> <span class=k>case</span> file
+</span></span><span class=line><span class=cl><span class=nb>cd</span> Specs
+</span></span><span class=line><span class=cl>touch test.spec.js
+</span></span></code></pre></td></tr></table></div></div><h4 id=writing-test-cases>Writing Test Cases</h4><blockquote><p>The test API can be found in the demoAPI.md file in the project.</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// Test: test.spec.js
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>request</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;supertest&#39;</span><span class=p>);</span> <span class=c1>// import supertest
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>chai</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;chai&#39;</span><span class=p>);</span> <span class=c1>// import chai
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>expect</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;chai&#39;</span><span class=p>).</span><span class=nx>expect</span><span class=p>;</span> <span class=c1>// import expect
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// Test Suite
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>describe</span><span class=p>(</span><span class=s1>&#39;Verify that the Get and POST API returns correctly&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Test case 1
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>it</span><span class=p>(</span><span class=s1>&#39;Verify that the GET API returns correctly&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>done</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>request</span><span class=p>(</span><span class=s1>&#39;https://jsonplaceholder.typicode.com&#39;</span><span class=p>)</span> <span class=c1>// Test endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;/posts/1&#39;</span><span class=p>)</span> <span class=c1>// API endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=mi>200</span><span class=p>)</span> <span class=c1>// expected response status code
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>id</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=mi>1</span>  <span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>userId</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>title</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=s2>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>body</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=s2>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=p>})</span> <span class=c1>// expected response body
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=nx>done</span><span class=p>)</span> <span class=c1>// end the test case
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Test case 2
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>it</span><span class=p>(</span><span class=s1>&#39;Verify that the POST API returns correctly&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>done</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>request</span><span class=p>(</span><span class=s1>&#39;https://jsonplaceholder.typicode.com&#39;</span><span class=p>)</span> <span class=c1>// Test endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=s1>&#39;/posts&#39;</span><span class=p>)</span> <span class=c1>// API endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>send</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;title&#34;</span><span class=o>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;body&#34;</span><span class=o>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;userId&#34;</span><span class=o>:</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>                <span class=p>})</span> <span class=c1>// request body
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=mi>201</span><span class=p>)</span> <span class=c1>// expected response status code
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>id</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=mi>101</span>  <span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>userId</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>title</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=s2>&#34;foo&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>body</span><span class=p>).</span><span class=nx>to</span><span class=p>.</span><span class=nx>equal</span><span class=p>(</span><span class=s2>&#34;bar&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=p>})</span> <span class=c1>// expected response body
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=nx>done</span><span class=p>)</span> <span class=c1>// end the test case
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=configuring-mocha-config-files>Configuring mocha config files</h4><ul><li>Create a new mocha configuration file</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// create configuration file in the project root directory
+</span></span><span class=line><span class=cl>touch .mocharc.js
+</span></span></code></pre></td></tr></table></div></div><ul><li>Updating configuration files</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// mocha config
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>timeout</span><span class=o>:</span> <span class=mi>5000</span><span class=p>,</span> <span class=c1>// set the default timeout for test cases (milliseconds)
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>spec</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;Specs/**/*.js&#39;</span><span class=p>],</span> <span class=c1>// specify the location of the test file
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=updating-test-scripts-for-mocha>Updating test scripts for mocha</h4><p>Add test scripts to the package.json file</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;mocha&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span><span class=err>,</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=running-test-cases>Running test cases</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// run <span class=nb>test</span> cases
+</span></span><span class=line><span class=cl>npm run <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=test-report>Test Report</h4><h5 id=terminal-test-report>Terminal Test Report</h5><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png alt=RbdVs7></p><h5 id=integrated-mochawesome-test-report>Integrated mochawesome test report</h5><ul><li>Install mochawesome library</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm install --save-dev mochawesome
+</span></span></code></pre></td></tr></table></div></div><ul><li>Updating mocha configuration files</li></ul><blockquote><p>You can refer to the demo project at<a href=https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a></p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// mocha config
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>timeout</span><span class=o>:</span> <span class=mi>5000</span><span class=p>,</span> <span class=c1>// Set the default timeout for test cases (milliseconds)
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>reporter</span><span class=o>:</span> <span class=s1>&#39;mochawesome&#39;</span><span class=p>,</span> <span class=c1>// Use mochawesome as the test report generator
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=s1>&#39;reporter-option&#39;</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;reportDir=Report&#39;</span><span class=p>,</span> <span class=c1>// Report directory
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=s1>&#39;reportFilename=[status]_[datetime]-[name]-report&#39;</span><span class=p>,</span> <span class=c1>//Report file name
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=s1>&#39;html=true&#39;</span><span class=p>,</span> <span class=c1>// enable html report
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=s1>&#39;json=false&#39;</span><span class=p>,</span> <span class=c1>// disable json report
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=s1>&#39;overwrite=false&#39;</span><span class=p>,</span> <span class=c1>// disable report file overwrite
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=s1>&#39;timestamp=longDate&#39;</span><span class=p>,</span> <span class=c1>// add timestamp to report file name
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span> <span class=c1>// mochawesome report generator options
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>spec</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;Specs/**/*.js&#39;</span><span class=p>],</span> <span class=c1>// Specify the location of the test file
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>Running test cases</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// Run <span class=nb>test</span> cases
+</span></span><span class=line><span class=cl>npm run <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>View test report</li></ul><blockquote><p>Test report folder: Report, click to open the latest html report file with your browser</p></blockquote><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png alt=BseOQ8></p><h3 id=jest-version>Jest version</h3><p>You can refer to the demo project at<a href=https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p><h4 id=create-a-new-jest-project-folder>Create a new jest project folder</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir SuperTest-Jest-demo
+</span></span></code></pre></td></tr></table></div></div><h4 id=jest-demo-project-initialization>Jest demo project initialization</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// enter the project folder
+</span></span><span class=line><span class=cl><span class=nb>cd</span> SuperTest-Mocha-demo
+</span></span><span class=line><span class=cl>// nodejs project initialization
+</span></span><span class=line><span class=cl>npm init -y
+</span></span></code></pre></td></tr></table></div></div><h4 id=jest-demo-install-dependencies>Jest demo install dependencies</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// install supertest library
+</span></span><span class=line><span class=cl>npm install supertest --save-dev
+</span></span><span class=line><span class=cl>// install jest <span class=nb>test</span> framework
+</span></span><span class=line><span class=cl>npm install jest --save-dev
+</span></span></code></pre></td></tr></table></div></div><h4 id=create-new-jest-demo-project-test-folder-and-test-cases>Create new Jest demo project test folder and test cases</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// create <span class=nb>test</span> folder
+</span></span><span class=line><span class=cl>mkdir Specs
+</span></span><span class=line><span class=cl>// enter <span class=nb>test</span> folder and create <span class=nb>test</span> <span class=k>case</span> file
+</span></span><span class=line><span class=cl><span class=nb>cd</span> Specs
+</span></span><span class=line><span class=cl>touch test.spec.js
+</span></span></code></pre></td></tr></table></div></div><h4 id=writing-jest-demo-test-cases>Writing Jest demo Test Cases</h4><blockquote><p>The test API can be found in the demoAPI.md file in the project.</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>request</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;supertest&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Test Suite
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>describe</span><span class=p>(</span><span class=s1>&#39;Verify that the Get and POST API returns correctly&#39;</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Test case 1
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>it</span><span class=p>(</span><span class=s1>&#39;Verify that the GET API returns correctly&#39;</span><span class=p>,</span> <span class=kr>async</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kr>const</span> <span class=nx>res</span> <span class=o>=</span> <span class=kr>await</span> <span class=nx>request</span><span class=p>(</span><span class=s1>&#39;https://jsonplaceholder.typicode.com&#39;</span><span class=p>)</span> <span class=c1>// Test endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;/posts/1&#39;</span><span class=p>)</span> <span class=c1>// API endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>send</span><span class=p>()</span> <span class=c1>// request body
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=mi>200</span><span class=p>);</span> <span class=c1>// use supertest&#39;s expect to verify that the status code is 200
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>// user jest&#39;s expect to verify the response body
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>status</span><span class=p>).</span><span class=nx>toBe</span><span class=p>(</span><span class=mi>200</span><span class=p>);</span> <span class=c1>// Verify that the status code is 200
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>id</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span> <span class=c1>// Verify that the id is 1
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>userId</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span> <span class=c1>// Verify that the userId is 1
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>title</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=s2>&#34;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>body</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=s2>&#34;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Test case 2
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>it</span><span class=p>(</span><span class=s1>&#39;Verify that the POST API returns correctly&#39;</span><span class=p>,</span> <span class=kr>async</span><span class=p>()</span> <span class=p>=&gt;{</span>
+</span></span><span class=line><span class=cl>        <span class=kr>const</span> <span class=nx>res</span> <span class=o>=</span> <span class=kr>await</span> <span class=nx>request</span><span class=p>(</span><span class=s1>&#39;https://jsonplaceholder.typicode.com&#39;</span><span class=p>)</span> <span class=c1>// Test endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=s1>&#39;/posts&#39;</span><span class=p>)</span> <span class=c1>// API endpoint
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>send</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;title&#34;</span><span class=o>:</span> <span class=s2>&#34;foo&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;body&#34;</span><span class=o>:</span> <span class=s2>&#34;bar&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;userId&#34;</span><span class=o>:</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>            <span class=p>})</span> <span class=c1>// request body
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>.</span><span class=nx>expect</span><span class=p>(</span><span class=mi>201</span><span class=p>);</span> <span class=c1>// use supertest&#39;s expect to verify that the status code is 201
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>// user jest&#39;s expect to verify the response body
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>statusCode</span><span class=p>).</span><span class=nx>toBe</span><span class=p>(</span><span class=mi>201</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>id</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=mi>101</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>userId</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>title</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=s2>&#34;foo&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>expect</span><span class=p>(</span><span class=nx>res</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>body</span><span class=p>).</span><span class=nx>toEqual</span><span class=p>(</span><span class=s2>&#34;bar&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>});</span> 
+</span></span></code></pre></td></tr></table></div></div><h4 id=configuring-jest-config-files>Configuring Jest config files</h4><ul><li>Creating a new configuration file</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// Create a new configuration file in the project root directory
+</span></span><span class=line><span class=cl>touch jest.config.js
+</span></span></code></pre></td></tr></table></div></div><ul><li>Updating configuration files</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// Desc: Jest configuration file
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Specify the location of the test file
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>testMatch</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;**/Specs/*.spec.js&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=adapting-jest-test-scripts>Adapting Jest Test Scripts</h4><p>Add the test script to the package.json file</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;jest&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span><span class=err>,</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=runing-test-case>Runing test case</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// run <span class=nb>test</span> <span class=k>case</span>
+</span></span><span class=line><span class=cl>npm run <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=jest-test-report>Jest test report</h4><h5 id=jest-terminal-test-report>Jest terminal Test Report</h5><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png alt=ItJf6N></p><h5 id=integrating-jest-html-reporters-test-reports>Integrating jest-html-reporters test reports</h5><ul><li>Install jest-html-reporters library</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm install --save-dev jest-html-reporters
+</span></span></code></pre></td></tr></table></div></div><ul><li>Updating jest configuration files</li></ul><blockquote><p>You can refer to the demo project at<a href=ttps://github.com/Automation-Test-Starter/SuperTest-Jest-demo>ttps://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// Desc: Jest configuration file
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// specify the location of the test file
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>testMatch</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;**/Specs/*.spec.js&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// test report generator
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>reporters</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;default&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;jest-html-reporters&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>publicPath</span><span class=o>:</span> <span class=s1>&#39;./Report&#39;</span><span class=p>,</span> <span class=c1>// report directory
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;report.html&#39;</span><span class=p>,</span> <span class=c1>// report file name
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=nx>pageTitle</span><span class=o>:</span> <span class=s1>&#39;SuperTest and Jest API Test Report&#39;</span><span class=p>,</span> <span class=c1>// report title
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=nx>overwrite</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span> <span class=c1>// enable report file overwrite
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=nx>expand</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span> <span class=c1>// enable report file expansion
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>Running test cases</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>// run <span class=nb>test</span> <span class=k>case</span>
+</span></span><span class=line><span class=cl>npm run <span class=nb>test</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>View test report</li></ul><blockquote><p>Test report folder: Report, click on the browser to open the latest html report file</p></blockquote><p><img src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png alt=12ZreT></p></section><footer class="mt-12 flex flex-wrap"><a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/api-testing>API Testing</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/supertest>Supertest</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/interface-automation-testing>Interface Automation Testing</a>
+<a class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]" href=https://naodeng.tech/tags/automation-testing>Automation Testing</a></footer><div class=mt-24 id=disqus_thread></div><script>const disqusShortname="naodeng-tech",script=document.createElement("script");script.src="https://"+disqusShortname+".disqus.com/embed.js",script.setAttribute("data-timestamp",+new Date),document.head.appendChild(script)</script></article></main><footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2023
+<a class=link href=https://naodeng.tech/>QA Discovery</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a></footer></body></html>
