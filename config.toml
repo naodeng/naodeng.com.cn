@@ -19,7 +19,7 @@ paginate = 5                                              # 首页每页显示�
 comments = true
 rss = true 
 enableInlineShortcodes = true
-disqusShortname = "naodeng-tech"      # disqus_shortname
+disqusShortname = ""      # disqus_shortname
 googleAnalytics = "G-JBX883ZDJJ"      # UA-XXXXXXXX-X
 copyright = "naodeng.tech"            # default: author.name ↓        # 默认为下面配置的 author.name ↓
 
@@ -149,6 +149,16 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
     startLevel = 1
   [markup.goldmark.renderer]
     unsafe = true
+
+  # giscus
+[params.giscus]
+  repo = 'naodeng/naodeng.tech'                 # see https://giscus.app for more details
+  repoId = 'R_kgDOHntNtg'
+  category = 'Show and tell'
+  categoryId = 'DIC_kwDOHntNts4Cavst'
+  mapping = 'pathname'
+  theme = 'light'
+  lang = 'zh-CN'
 
 # 将下面这段配置取消注释可以使 hugo 生成 .md 文件
 # Uncomment these options to make hugo output .md files.
