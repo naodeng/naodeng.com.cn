@@ -64,7 +64,11 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
 [params.analytics.umami]
   enable = true  
   website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-  url = 'https://naodeng-umami.vercel.app/hugo.js'  
+  url = 'https://naodeng-umami.vercel.app/hugo.js'
+
+[params.analytics.cloudflare]
+  enable = true  
+  token = 'baa460bb003847e184ad7cbf459449e9'  
 
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
