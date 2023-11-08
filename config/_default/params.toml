@@ -74,3 +74,6 @@ url = "mailto:dengnao@gmail.com"
 
 [mermaid]
 # enable = true
+
+[enableRobotsTXT]
+enable = true

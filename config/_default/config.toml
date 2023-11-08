@@ -16,7 +16,7 @@ enableRobotsTXT = true
 disqusShortname = "naodeng-tech"
 
 # Google Analytics
-googleAnalytics = "G-JBX883ZDJJ"
+gtagId = "G-JBX883ZDJJ"
 
 # Syntax highlighting
 pygmentsUseClasses = true   
