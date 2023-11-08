@@ -4,7 +4,7 @@ weight = 1
 LanguageName = "🇬🇧EN"
 contentDir = "content/english"
 
-[zh-CN]
+[zh]
 title = "QA Discovery"
 description = "质量分析师，而非质量保证师"
 contentDir = "content/zh" 
