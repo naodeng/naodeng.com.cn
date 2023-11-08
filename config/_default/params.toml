@@ -45,7 +45,7 @@ reversepagetitle = true # When set to 'true', the Window Title will be reversed 
 # serverURL = "https://analytics.example.com"
 
 [umami]
-serverURL = "https://naodeng-umami.vercel.app"
+serverURL = "naodeng-umami.vercel.app"
 id = "b3b285c9-3c35-4398-9252-91bb70560b84"
 trackerScriptName = "hugo.js"
 
