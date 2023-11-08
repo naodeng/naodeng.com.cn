@@ -1,6 +1,6 @@
 +++
 author = "nao.deng"
-title = "Supertest Tutorial: Advanced Usage - Integration CI CD and Github action"
+title = "SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action"
 date = "2023-11-07T18:09:43+08:00"
 description = "This blog will dive into advanced usage of Supertest, focusing on how to integrate Supertest into a CI/CD process and how to automate tests using GitHub Actions. Readers will learn how to automate the execution of the Supertest test suite through CI/CD tools, ensuring comprehensive interface testing after every code change. We will also discuss in detail how to configure and orchestrate GitHub Actions workflows for continuous integration and automated testing. This blog will help you improve your use of Supertest for more efficient automated testing and a more stable CI/CD process!"
 keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "Interface Automation Testing", "Automation Testing"]
