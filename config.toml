@@ -15,11 +15,11 @@ pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 5                                              # 首页每页显示的文章数
+paginate = 8                                              # 首页每页显示的文章数
 comments = true
 rss = true 
 enableInlineShortcodes = true
-disqusShortname = "naodeng-tech"      # disqus_shortname
+disqusShortname = ""      # disqus_shortname
 googleAnalytics = "G-JBX883ZDJJ"      # UA-XXXXXXXX-X
 copyright = "naodeng.tech"            # default: author.name ↓        # 默认为下面配置的 author.name ↓
 
@@ -32,7 +32,7 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   filename = "sitemap.xml"
 
 [[menu.main]]
-  name = "EN"
+  name = "English"
   weight = 20
   identifier = "English"
   url = "/post-en/"
@@ -60,11 +60,20 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
   rss = true
   keywords = ["naodeng", "dengnao","nao", "naodeng.tech","nao","API testing","performance testing","automation testing", "软件测试","自动化测试","敏捷测试"]
   description = "naodeng,naodeng.tech,邓闹,dengnao,个人博客,软件测试，性能测试，接口测试，接口自动化测试，测试教程，API测试，API自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯,API testing,performance testing,automation testing"
-  
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
 [params.analytics.umami]
   enable = true  
   website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-  url = 'https://naodeng-umami.vercel.app/hugo.js'  
+  url = 'https://naodeng-umami.vercel.app/hugo.js'
+
+[params.analytics.cloudflare]
+  enable = true  
+  token = 'baa460bb003847e184ad7cbf459449e9'  
 
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
@@ -145,6 +154,16 @@ copyright = "naodeng.tech"            # default: author.name ↓        # 默认
     startLevel = 1
   [markup.goldmark.renderer]
     unsafe = true
+
+  # giscus
+[params.giscus]
+  repo = 'naodeng/naodeng.tech'                 # see https://giscus.app for more details
+  repoId = 'R_kgDOHntNtg'
+  category = 'Show and tell'
+  categoryId = 'DIC_kwDOHntNts4Cavst'
+  mapping = 'pathname'
+  theme = 'light'
+  lang = 'zh-CN'
 
 # 将下面这段配置取消注释可以使 hugo 生成 .md 文件
 # Uncomment these options to make hugo output .md files.
