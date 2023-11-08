@@ -20,7 +20,7 @@
   name = "About"
   weight = 300
   identifier = "about"
-  url = "https://github.com/naodeng/naodeng/blob/master/README_CN.md"
+  url = "https://github.com/naodeng/naodeng"
 
   [[main]]
   name = "Dashboard"

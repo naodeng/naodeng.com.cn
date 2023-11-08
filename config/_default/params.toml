@@ -20,9 +20,9 @@ doNotLoadAnimations = false
 #googleFonts = ["Indie+Flower", "Roboto:ital,wght@0,100;0,400;0,700;1,400"]
 # Google Site Verify
 googleSiteVerify = "google5e9a7c9479924ed2"
-singleDateFormat = "2/1/2006"
-indexDateFormat = "2/1/2006"
-listDateFormat = "2/1/2006"
+singleDateFormat = "Mon, Jan 2, 2006"
+indexDateFormat = "Mon, Jan 2, 2006"
+listDateFormat = "Mon, Jan 2, 2006"
 # Commento Comments
 # CommentoURL = "https://commento.example.com/js/commento.js"
 # Read More links for truncated summaries
