@@ -14,11 +14,11 @@ toc = true
 
 <!--more-->
 
-### 常用断言
+## 常用断言
 
 下面会一次介绍一下 SuperTest,CHAI 和 Jest 常用的断言。
 
-#### SuperTest 的内置断言
+### SuperTest 的内置断言
 
 Supertest 是基于[SuperAgent](https://github.com/ladjs/superagent) 构建的一个更高级的库，所以 Supertest 可以很轻松的使用 SuperAgent 的 HTTP 断言。
 
@@ -36,7 +36,7 @@ Supertest 是基于[SuperAgent](https://github.com/ladjs/superagent) 构建的�
 .expect(function(res) {}) // 传递一个自定义断言函数。它将得到要检查的响应对象。如果检查失败，则抛出错误。
 ```
 
-#### CHAI 的常用断言
+### CHAI 的常用断言
 
 - 相等性断言（Equality Assertions）
 
@@ -108,7 +108,7 @@ expect(array).to.have.members(subset) // 验证数组是否包含指定的成员
 
 更多 chai 的断言，请查看<https://www.chaijs.com/api/assert/>
 
-#### Jest 的常用断言
+### Jest 的常用断言
 
 - 相等性断言（Equality Assertions）
 

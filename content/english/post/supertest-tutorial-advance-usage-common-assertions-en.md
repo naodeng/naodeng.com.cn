@@ -14,11 +14,11 @@ This blog focuses on advanced usage of Supertest, with a particular focus on com
 
 <!--more-->
 
-### Common Assertions
+## Common Assertions
 
 The following is an overview of common assertions used by SuperTest, CHAI and Jest.
 
-#### SuperTest's built-in assertions
+### SuperTest's built-in assertions
 
 Supertest is a more advanced library built on [SuperAgent](https://github.com/ladjs/superagent), so Supertest can easily use SuperAgent's HTTP assertions.
 
@@ -36,7 +36,7 @@ Examples are as follows:
 .expect(function(res) {}) // Pass a custom assertion function. It'll be given the response object to check. If the check fails, throw an error.
 ```
 
-#### Common Assertions for CHAI
+### Common Assertions for CHAI
 
 - Equality Assertions
 
@@ -108,7 +108,7 @@ expect(array).to.have.members(subset) // Verify that the array contains the spec
 
 For more chai assertions, see <https://www.chaijs.com/api/assert/>
 
-#### Common Assertions for Jest
+### Common Assertions for Jest
 
 - Equality Assertions
 
