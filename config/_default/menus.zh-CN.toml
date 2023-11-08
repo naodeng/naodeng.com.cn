@@ -1,0 +1,23 @@
+  [[main]]
+  name = "首页"
+  identifier = "main"
+  weight = 100
+  url = "/zh/"
+
+  [[main]]
+  name = "文章"
+  weight = 200
+  identifier = "posts"
+  url = "/zh/post/"
+
+  [[main]]
+  name = "关于"
+  weight = 300
+  identifier = "about"
+  url = "https://github.com/naodeng/naodeng/blob/master/README_CN.md"
+
+  [[main]]
+  name = "网站统计"
+  weight = 400
+  identifier = "dashboard"
+  url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"

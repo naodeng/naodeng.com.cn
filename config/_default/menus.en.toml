@@ -1,0 +1,29 @@
+  [[main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+
+  # [[main]]
+  # name = "Portfolio"
+  # weight = 300
+  # identifier = "portfolio"
+  # url = "/portfolio/"
+
+  [[main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "https://github.com/naodeng/naodeng"
+
+  [[main]]
+  name = "Dashboard"
+  weight = 400
+  identifier = "dashboard"
+  url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"
