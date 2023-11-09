@@ -11,13 +11,25 @@
   url = "/zh/post/"
 
   [[main]]
-  name = "关于"
+  name = "分类"
   weight = 300
+  identifier = "Categories"
+  url = "/zh/categories/"
+
+  [[main]]
+  name = "标签"
+  weight = 400
+  identifier = "Tags"
+  url = "/zh/tags/"
+
+  [[main]]
+  name = "关于"
+  weight = 500
   identifier = "about"
   url = "https://github.com/naodeng/naodeng/blob/master/README_CN.md"
 
   [[main]]
   name = "网站统计"
-  weight = 400
+  weight = 600
   identifier = "dashboard"
   url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"

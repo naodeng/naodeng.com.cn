@@ -10,6 +10,18 @@
   identifier = "posts"
   url = "/post/"
 
+  [[main]]
+  name = "Categories"
+  weight = 300
+  identifier = "Categories"
+  url = "/categories/"
+
+  [[main]]
+  name = "Tags"
+  weight = 400
+  identifier = "Tags"
+  url = "/tags/"
+
   # [[main]]
   # name = "Portfolio"
   # weight = 300
@@ -18,12 +30,12 @@
 
   [[main]]
   name = "About"
-  weight = 300
+  weight = 500
   identifier = "about"
   url = "https://github.com/naodeng/naodeng"
 
   [[main]]
   name = "Dashboard"
-  weight = 400
+  weight = 600
   identifier = "dashboard"
   url = "https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng"
