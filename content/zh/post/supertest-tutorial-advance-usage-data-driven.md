@@ -15,27 +15,27 @@ toc = true
 
 <!--more-->
 
-## Data Driven
+### 数据驱动
 
-Data-driven for API testing is a testing methodology in which the input data and expected output data for test cases are stored in data files, and the testing framework executes multiple tests against these data files to validate various aspects of the API. Data-driven testing can help you effectively cover multiple scenarios and ensure that the API works properly with a variety of input data.
+API 测试的数据驱动是一种测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。
 
-The Mocha version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>.
+Mocha 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
-The Jest version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>.
+Jest 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
-> The mocha version is similar to the Jest version, so here is an example of the mocha version.
+> mocha 版本和 Jest 版本类似，这里以 Mocha 版本为例
 
-### Create test configuration files
+#### 新建测试配置文件
 
 ```bash
-// create test configuration folder
+// 新建测试配置文件夹
 mkdir Config
-// create test configuration file
+// 新建测试配置文件
 cd Config
 touch config.js
 ```
 
-### Edit test configuration files
+#### 编写测试配置文件
 
 ```javascript
 // Test config file
@@ -46,22 +46,22 @@ module.exports = {
 };
 ```
 
-### Create test data files
+#### 新建测试数据文件
 
 ```bash
-// create test data folder
+// 新建测试数据文件夹
 mkdir testData
-// enter test data folder
+// 进入测试数据文件夹
 cd testData
-// create request data file
+// 新建请求数据文件
 touch requestData.js
-// create response data file
+// 新建响应数据文件
 touch responseData.js
 ```
 
-### Edit test data files
+#### 编写测试数据文件
 
-- Edit request data files
+- 编写请求数据文件
 
 ```javascript
 // Test request data file
@@ -75,7 +75,7 @@ module.exports = {
 };
 ```
 
-- Edit response data files
+- 编写响应数据文件
 
 ```javascript
 // Test response data file
@@ -95,9 +95,9 @@ module.exports = {
 };
 ```
 
-### Update test cases to support data-driven
+#### 更新测试用例来支持数据驱动
 
-> To differentiate, create a new test case file named dataDrivingTest.spec.js.
+> 为做区分，这里新建测试用例文件，文件名为 dataDrivingTest.spec.js
 
 ```javascript
 // Test: dataDrivingTest.spec.js
@@ -143,8 +143,8 @@ describe('Data Driving-Verify that the Get and POST API returns correctly', func
 });
 ```
 
-### Run the test case to check whether the data driver is effective.
+#### 运行该测试用例确认数据驱动是否生效
 
-> If you run the data driver support test case: dataDrivingTest.spec.js with the demo project, it is recommended to skip the test.spec.js test case first, otherwise it will report an error.
+> 若用 demo 项目运行数据驱动支持测试用例：dataDrivingTest.spec.js，建议先屏蔽掉 test.spec.js 测试用例，否则会报错
 
 ![OCDzLr](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OCDzLr.png)
