@@ -4,10 +4,17 @@ title = "SuperTest Tutorial: Getting Started and Setting Up Your Environment"
 date = "2023-11-05T10:36:26+08:00"
 description = "The content of this blog will be a tutorial on Supertest, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what Supertest is and how to start using it for API testing. The tutorial will cover the basic concepts of Supertest, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use Supertest for API testing to get started and prepare their development environment."
 keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "Supertest", "API automation testing", "Automation Testing"
+tags = [ "Getting Started"
 ]
+Categories =  ["API automation testing", "SuperTest"]
 +++
+
+SuperTest is a popular JavaScript library for testing Node.js applications.
+✅ Key Features of SuperTest: Initiating HTTP requests, Chained Syntax, Assertions and Expectations, Authentication Testing, Asynchronous support, Easy Integration
+✅ Introduction of Jest: Jest is a popular JavaScript testing framework for writing and running tests for JavaScript applications.
+✅ Introduction of Mocha: Mocha is a popular JavaScript testing framework for writing and running tests for JavaScript applications.
+
+<!--more-->
 
 - [Introduction](#introduction)
   - [Introduction of SuperTest](#introduction-of-supertest)

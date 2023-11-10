@@ -4,23 +4,30 @@ title = "SuperTest Tutorial: Advanced Usage - Integration CI CD and Github actio
 date = "2023-11-07T18:09:43+08:00"
 description = "This blog will dive into advanced usage of Supertest, focusing on how to integrate Supertest into a CI/CD process and how to automate tests using GitHub Actions. Readers will learn how to automate the execution of the Supertest test suite through CI/CD tools, ensuring comprehensive interface testing after every code change. We will also discuss in detail how to configure and orchestrate GitHub Actions workflows for continuous integration and automated testing. This blog will help you improve your use of Supertest for more efficient automated testing and a more stable CI/CD process!"
 keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "Supertest", "API automation testing", "Automation Testing"
+tags = [ "CI/CD Integration"
 ]
+Categories =  ["API automation testing", "SuperTest"]
 +++
+
+Learn how to integrate SuperTest with CI/CD and GitHub Actions
+🔗 CI/CD integration Use GitHub Actions as an example
+🔗 The mocha version integration GitHub Action Create a workflow file and view test reports
+🔗 The jest version integration GitHub Action Create a workflow file and view test reports
+
+<!--more-->
 
 - [CI/CD integration](#cicd-integration)
   - [Integration github action](#integration-github-action)
     - [The mocha version integration github action](#the-mocha-version-integration-github-action)
     - [The jest version integration github action](#the-jest-version-integration-github-action)
 
-### CI/CD integration
+## CI/CD integration
 
-#### Integration github action
+### Integration github action
 
 Use github action as an example, and other CI tools similarly
 
-##### The mocha version integration github action
+#### The mocha version integration github action
 
 See the demo at <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
@@ -81,7 +88,7 @@ jobs:
 
 ![dgfyaS](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dgfyaS.png)
 
-##### The jest version integration github action
+#### The jest version integration github action
 
 See the demo at <https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 

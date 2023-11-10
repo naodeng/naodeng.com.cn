@@ -4,11 +4,16 @@ title = "SuperTest Tutorial: Building a Supertest API Automation Test project fr
 date = "2023-11-06T12:30:26+08:00"
 description = "In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing."
 keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "Supertest", "API automation testing", "Automation Testing"
+tags = [ "Building a API Automation Test project from 0 to 1"
 ]
+Categories =  ["API automation testing", "SuperTest"]
 +++
 
+Tutorial on building a SuperTest API automation test project from scratch using either Jest or Mocha as the test framework.
+📄 Mocha version Step-by-step guide on building a SuperTest API automation test project using Mocha.
+📄 Jest version Step-by-step guide on building a SuperTest API automation test project using Jest.
+
+<!--more-->
 - [Build a SuperTest API automation test project from 0 to 1](#build-a-supertest-api-automation-test-project-from-0-to-1)
   - [Mocha version](#mocha-version)
     - [Create a new project folder](#create-a-new-project-folder)
