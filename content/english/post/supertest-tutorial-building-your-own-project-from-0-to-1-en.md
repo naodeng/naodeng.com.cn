@@ -3,7 +3,7 @@ author = "nao.deng"
 title = "SuperTest Tutorial: Building a Supertest API Automation Test project from 0 to 1"
 date = "2023-11-06T12:30:26+08:00"
 description = "In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing."
-keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
+keywords = ["API Testing", "SuperTest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
 tags = [ "Building a API Automation Test project from 0 to 1"
 ]
 Categories =  ["API automation testing", "SuperTest"]

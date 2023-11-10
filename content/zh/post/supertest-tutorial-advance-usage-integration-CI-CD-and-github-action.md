@@ -3,10 +3,11 @@ author = "nao.deng"
 title = "SuperTest 教程：进阶用法 - 集成 CI/CD 和 Github action"
 date = "2023-11-07T18:09:43+08:00"
 description = "这篇博客将深入探讨 Supertest 的高级用法，着重介绍如何将 Supertest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。读者将学习如何通过 CI/CD 工具自动执行 Supertest 测试套件，确保每次代码更改后都进行全面的接口测试。我们还将详细讨论如何配置和编排 GitHub Actions 工作流程，以实现持续集成和自动测试。这篇博客将帮助您提高 Supertest 的应用水平，实现更高效的自动化测试和更稳定的 CI/CD 流程。"
-keywords = ["API 测试","Supertest","API 自动化测试框架","接口自动化测试","自动化测试"]
+keywords = ["API 测试","SuperTest","API 自动化测试框架","接口自动化测试","自动化测试"]
 tags = [
-"API 测试","Supertest","接口自动化测试","自动化测试"
+"集成 CI/CD"
 ]
+Categories =  ["接口自动化测试","SuperTest"]
 +++
 
 - [持续集成](#持续集成)
