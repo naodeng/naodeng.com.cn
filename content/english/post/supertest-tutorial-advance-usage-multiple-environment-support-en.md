@@ -4,11 +4,18 @@ title = "SuperTest Tutorial Advance Usage - Multiple Environment Support"
 date = "2023-11-10T12:37:59+08:00"
 description = "This blog focuses on advanced usage of SuperTest with an emphasis on multi-environment support. You will learn how to configure and manage multiple test environments for different stages of development and deployment. We will discuss how to easily switch between different environments within the same test suite to ensure that your API tests run stably in a variety of situations. This tutorial will help you better organize and maintain your test code, improve test coverage, and ensure test adaptability and reliability. Whether you are a beginner or an experienced tester, this blog will provide you with valuable information that will enable you to be more flexible in meeting the challenges of supporting multiple environments."
 keywords = ["API Testing", "SuperTest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [ "Data Driven"
+tags = [ "Multiple Environment Support"
 ]
 Categories =  ["API automation testing", "SuperTest"]
 toc = true
 +++
+
+Configure multiple environments for API testing with SuperTest
+📄 Test Configuration Files Create and edit test configuration files for different environments
+📄 Test Data Files Create and edit test data files for different environments
+📄 Update Test Cases Update test cases to support multiple environments
+
+<!--more-->
 
 ## Multiple Environment Support
 
