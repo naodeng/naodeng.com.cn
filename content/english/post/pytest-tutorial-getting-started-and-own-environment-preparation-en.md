@@ -126,7 +126,7 @@ By using a virtual environment, you can maintain clean dependencies between proj
 
 > The following environments need to be installed in advance
 
-- [x] python, demo 版本为 v3.11.6
+- [x] python, demo version is v3.11.6
 
 > Just install python 3.x or higher.
 
