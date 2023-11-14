@@ -1,1 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Building a API Automation Test project from 0 to 1 on QA Discovery</title><link>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</link><description>Recent content in Building a API Automation Test project from 0 to 1 on QA Discovery</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/index.xml" rel="self" type="application/rss+xml"/><item><title>Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1</title><link>https://naodeng.tech/post/pytest-tutorial-building-your-own-project-from-0-to-1-en/</link><pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate><guid>https://naodeng.tech/post/pytest-tutorial-building-your-own-project-from-0-to-1-en/</guid><description>In this blog, we'll dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Pytest and API automation testing.</description></item><item><title>SuperTest Tutorial: Building a Supertest API Automation Test project from 0 to 1</title><link>https://naodeng.tech/post/supertest-tutorial-building-your-own-project-from-0-to-1-en/</link><pubDate>Mon, 06 Nov 2023 12:30:26 +0800</pubDate><guid>https://naodeng.tech/post/supertest-tutorial-building-your-own-project-from-0-to-1-en/</guid><description>In this blog, we'll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Building a API Automation Test project from 0 to 1 on Nao&#39;s Blog</title>
+    <link>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</link>
+    <description>Recent content in Building a API Automation Test project from 0 to 1 on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.tech/papermod-cover.png</url>
+      <link>https://naodeng.tech/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</link>
+      <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</guid>
+      <description>In this blog, we&amp;#39;ll dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&amp;#39;sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Pytest and API automation testing.</description>
+    </item>
+    
+    <item>
+      <title>SuperTest Tutorial: Building a Supertest API Automation Test project from 0 to 1</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</link>
+      <pubDate>Mon, 06 Nov 2023 12:30:26 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</guid>
+      <description>In this blog, we&amp;#39;ll dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&amp;#39;sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Supertest and API automation testing.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Data Driven on QA Discovery</title><link>https://naodeng.tech/tags/data-driven/</link><description>Recent content in Data Driven on QA Discovery</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 18:06:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/data-driven/index.xml" rel="self" type="application/rss+xml"/><item><title>SuperTest Tutorial Advance Usage - Data Driven</title><link>https://naodeng.tech/post/supertest-tutorial-advance-usage-data-driven-en/</link><pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate><guid>https://naodeng.tech/post/supertest-tutorial-advance-usage-data-driven-en/</guid><description>This blog focuses on advanced usage of Supertest, focusing on data-driven testing. You will learn how to extend and optimize your Supertest test suite with data parameterization to improve test coverage. We will cover loading from data files into test cases and how to use different test data in different scenarios. Data-driven testing allows you to examine all aspects of your application more thoroughly while increasing testing efficiency. Whether you are a beginner or an experienced tester, this blog will help you gain insight into how to effectively use Supertest for data-driven API testing.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data Driven on Nao&#39;s Blog</title>
+    <link>https://naodeng.tech/tags/data-driven/</link>
+    <description>Recent content in Data Driven on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.tech/papermod-cover.png</url>
+      <link>https://naodeng.tech/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 09 Nov 2023 18:06:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/data-driven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SuperTest Tutorial Advance Usage - Data Driven</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
+      <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</guid>
+      <description>This blog focuses on advanced usage of Supertest, focusing on data-driven testing. You will learn how to extend and optimize your Supertest test suite with data parameterization to improve test coverage. We will cover loading from data files into test cases and how to use different test data in different scenarios. Data-driven testing allows you to examine all aspects of your application more thoroughly while increasing testing efficiency. Whether you are a beginner or an experienced tester, this blog will help you gain insight into how to effectively use Supertest for data-driven API testing.</description>
+    </item>
+    
+  </channel>
+</rss>
