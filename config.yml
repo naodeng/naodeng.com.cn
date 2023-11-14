@@ -94,7 +94,7 @@ params:
     ShowToc: true
     comments: true
     images: ["papermod-cover.png"]
-
+    
     analytics:
       umami:
         enable: true
@@ -102,7 +102,9 @@ params:
         url: 'https://naodeng-umami.vercel.app/hugo.js'
       cloudflare:
         enable: true
-        token: 'baa460bb003847e184ad7cbf459449e9'  
+        token: 'baa460bb003847e184ad7cbf459449e9'
+      google:
+        SiteVerificationTag: "google5e9a7c9479924ed2"
 
     homeInfoParams:
         Title: "Nao's Blog"
@@ -136,10 +138,6 @@ params:
     #     text: "Home"
     #     icon: icon.png
     #     iconHeight: 35
-
-    analytics:
-        google:
-            SiteVerificationTag: "google5e9a7c9479924ed2"
 
     assets:
         disableHLJS: true
