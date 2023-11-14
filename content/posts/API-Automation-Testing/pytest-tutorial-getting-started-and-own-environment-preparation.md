@@ -9,13 +9,6 @@ tags = [ "Getting Started"
 Categories =  ["API automation testing", "Pytest"]
 +++
 
-- [Introduction](#introduction)
-  - [Introducing Pytest](#introducing-pytest)
-  - [Introduction to python virtual environments](#introduction-to-python-virtual-environments)
-- [Project dependencies](#project-dependencies)
-- [Project directory structure](#project-directory-structure)
-- [reference](#reference)
-
 ## Introduction
 
 ### Introducing Pytest

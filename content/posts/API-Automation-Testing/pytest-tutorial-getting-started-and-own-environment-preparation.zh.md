@@ -9,12 +9,6 @@ tags = [
 ]
 Categories =  ["API automation testing", "Pytest"]
 +++
-- [介绍](#介绍)
-  - [Pytest 介绍](#pytest-介绍)
-  - [python 虚拟环境介绍](#python-虚拟环境介绍)
-- [项目依赖](#项目依赖)
-- [项目目录结构](#项目目录结构)
-- [参考](#参考)
 
 ## 介绍
 

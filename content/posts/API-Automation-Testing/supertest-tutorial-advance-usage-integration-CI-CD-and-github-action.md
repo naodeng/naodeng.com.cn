@@ -16,11 +16,6 @@ Learn how to integrate SuperTest with CI/CD and GitHub Actions
 
 <!--more-->
 
-- [CI/CD integration](#cicd-integration)
-  - [Integration github action](#integration-github-action)
-    - [The mocha version integration github action](#the-mocha-version-integration-github-action)
-    - [The jest version integration github action](#the-jest-version-integration-github-action)
-
 ## CI/CD integration
 
 ### Integration github action

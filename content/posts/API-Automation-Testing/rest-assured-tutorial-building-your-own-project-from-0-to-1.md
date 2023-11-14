@@ -8,33 +8,6 @@ tags = [
 "API Testing", "REST Assured", "API automation testing", "Automation Testing"
 ]
 +++
-- [Building a REST Assured API test project from 0 to 1](#building-a-rest-assured-api-test-project-from-0-to-1)
-  - [Gradle version](#gradle-version)
-    - [Initialize an empty Gradle project](#initialize-an-empty-gradle-project)
-    - [Configuration build.gradle](#configuration-buildgradle)
-    - [testng.xml configuration](#testngxml-configuration)
-    - [gradle build project and initialize](#gradle-build-project-and-initialize)
-    - [initialization project directory](#initialization-project-directory)
-    - [Introduction of demo test API](#introduction-of-demo-test-api)
-      - [Get API](#get-api)
-      - [Post API](#post-api)
-    - [Writing Test cases](#writing-test-cases)
-    - [Debugging test cases](#debugging-test-cases)
-    - [Viewing Test Reports](#viewing-test-reports)
-      - [Command Line Report](#command-line-report)
-      - [testng html Report](#testng-html-report)
-  - [Maven version](#maven-version)
-    - [Initialize an empty Maven project](#initialize-an-empty-maven-project)
-    - [Configuration pom.xml](#configuration-pomxml)
-    - [Configuration testng.xml](#configuration-testngxml)
-    - [initialization maven project directory](#initialization-maven-project-directory)
-    - [The api used by Demo](#the-api-used-by-demo)
-    - [Writing Test cases](#writing-test-cases-1)
-    - [Debugging test cases](#debugging-test-cases-1)
-    - [Viewing Test Reports](#viewing-test-reports-1)
-      - [terminal report](#terminal-report)
-      - [testng html report](#testng-html-report-1)
-- [More info](#more-info)
 
 ## Building a REST Assured API test project from 0 to 1
 

@@ -9,14 +9,6 @@ tags = [
 ]
 Categories =  ["API automation testing", "SuperTest"]
 +++
-- [介绍](#介绍)
-  - [SuperTest 介绍](#supertest-介绍)
-  - [Jest 介绍](#jest-介绍)
-  - [Mocha 介绍](#mocha-介绍)
-  - [CHAI 简介](#chai-简介)
-- [项目依赖](#项目依赖)
-- [项目文件结构](#项目文件结构)
-- [Next](#next)
 
 ## 介绍
 

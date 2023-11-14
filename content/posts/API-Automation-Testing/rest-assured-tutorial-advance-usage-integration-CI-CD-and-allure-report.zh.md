@@ -1,41 +1,30 @@
 +++
 author = "nao.deng"
-title = "REST Assured Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report"
-date = 2023-11-04T10:21:19+08:00
-description = "This blog will dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports. Readers will learn how to integrate REST Assured test automation processes into CI/CD processes for automated testing and continuous integration. In addition, the blog will explore how to integrate the Allure Test Reporting framework to generate detailed, easy-to-understand test reports that help better analyze and visualize test results. This blog will help readers to further improve the automation of API testing, as well as the quality and visualization of test reports."
-keywords = ["API Testing", "REST Assured", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
+title = "REST Assured 教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告"
+date = "2023-11-04T10:21:19+08:00"
+description = "这篇博客将深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。读者将学习如何将 REST Assured 测试自动化流程集成到 CI/CD 流程中，以实现自动化测试和持续集成。此外，博客还将探讨如何整合 Allure 测试报告框架，以生成详细的、易于理解的测试报告，有助于更好地分析和可视化测试结果。这篇博客将帮助读者进一步提升 API 测试的自动化水平，以及测试报告的质量和可视化效果。"
+keywords = ["API 测试","REST Assured","API 自动化测试框架","接口自动化测试","自动化测试"]
 tags = [
-"API Testing", "REST Assured", "API automation testing", "Automation Testing"
+"API 测试","REST Assured","接口自动化测试","自动化测试"
 ]
 +++
 
-- [CI/CD integration](#cicd-integration)
-  - [integration github action](#integration-github-action)
-    - [The Gradle version integration github action](#the-gradle-version-integration-github-action)
-    - [The Maven version integration github action](#the-maven-version-integration-github-action)
-- [Integrating allure test reports](#integrating-allure-test-reports)
-  - [allure Introduction](#allure-introduction)
-  - [Integration steps](#integration-steps)
-    - [The Maven version integration of allure](#the-maven-version-integration-of-allure)
-    - [The Gradle version of allure integration](#the-gradle-version-of-allure-integration)
-- [Reference](#reference)
+## 持续集成
 
-## CI/CD integration
+### 接入 github action
 
-### integration github action
+以 github action 为例，其他 CI 工具类似
 
-Use github action as an example, and other CI tools similarly
+#### Gradle 版本接入 github action
 
-#### The Gradle version integration github action
+可参考 demo：<https://github.com/Automation-Test-Starter/RestAssured-gradle-demo>
 
-See the demo at <https://github.com/Automation-Test-Starter/RestAssured-gradle-demo>
+创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
 
-- Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.
+创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 gradle.yml。
 
-- Create a workflow file: Create a YAML-formatted workflow file, such as gradle.yml, in the .github/workflows directory.
-
-- Edit the gradle.yml file: Copy the following into the file
-
+编辑 gradle.yml 文件：将以下内容复制到文件中
+  
 ```yaml
 name: Gradle and REST Assured Tests
 
@@ -77,20 +66,20 @@ jobs:
           path: build/reports/tests/test
 ```
 
-- Commit the code: Add the gradle.yml file to your repository and commit.
-- View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Gradle and REST Assured Tests workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
+- 提交代码：将 gradle.yml 文件添加到仓库中并提交。
+- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Gradle and REST Assured Tests 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
 
 ![gradle-test-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report3.png)
 
-#### The Maven version integration github action
+#### Maven 版本接入 github action
 
-See the demo at <https://github.com/Automation-Test-Starter/RestAssured-maven-demo>
+可参考 demo：<https://github.com/Automation-Test-Starter/RestAssured-maven-demo>
 
-- Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.
+创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
 
-- Create a workflow file: Create a YAML-formatted workflow file, such as maven.yml, in the .github/workflows directory.
+创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 maven.yml。
 
-- Edit the maven.yml file: Copy the following into the file
+编辑 maven.yml 文件：将以下内容复制到文件中
   
 ```yaml
 name: Maven and REST Assured Tests
@@ -131,39 +120,39 @@ jobs:
         path: target/surefire-reports
 ```
 
-- Commit the code: Add the maven.yml file to the repository and commit.
-- View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Maven and REST Assured Tests workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
+- 提交代码：将 maven.yml 文件添加到仓库中并提交。
+- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Maven and REST Assured Tests 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
 
 ![maven-test-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report3.png)
 
-## Integrating allure test reports
+## 集成 allure 测试报告
 
-### allure Introduction
+### allure 简介
 
-Allure is an open source testing framework for generating beautiful, interactive test reports. It can be used with a variety of testing frameworks (e.g. JUnit, TestNG, Cucumber, etc.) and a variety of programming languages (e.g. Java, Python, C#, etc.).
+Allure是一个用于生成漂亮、交互式测试报告的开源测试框架。它可以与多种测试框架（如JUnit、TestNG、Cucumber等）和多种编程语言（如Java、Python、C#等）一起使用。
 
-Allure test reports have the following features:
+Allure 测试报告具有以下特点：
 
-- Aesthetically pleasing and interactive: Allure test reports present test results in an aesthetically pleasing and interactive way, including graphs, charts and animations. This makes test reports easier to read and understand.
-- Multi-language support: Allure supports multiple programming languages, so you can write tests in different languages and generate uniform test reports.
-Test case level details: Allure allows you to add detailed information to each test case, including descriptions, categories, labels, attachments, historical data, and more. This information helps provide a more complete picture of the test results.
-- Historical Trend Analysis: Allure supports test historical trend analysis, which allows you to view the historical performance of test cases, identify issues and improve test quality.
-- Categories and Tags: You can add categories and tags to test cases to better organize and categorize test cases. This makes reporting more readable.
-- Attachments and Screenshots: Allure allows you to attach files, screenshots, and other attachments to better document information during testing.
-- Integration: Allure seamlessly integrates with a variety of testing frameworks and build tools (e.g. Maven, Gradle), making it easy to generate reports.
-- Open Source Community Support: Allure is an open source project with an active community that provides extensive documentation and support. This makes it the tool of choice for many automated testing teams.
+- 美观和交互式：Allure 测试报告以美观和交互式的方式呈现测试结果，包括图形、图表和动画。这使得测试报告更容易阅读和理解。
+- 多语言支持：Allure 支持多种编程语言，因此您可以在不同的语言中编写测试，并生成统一的测试报告。
+测试用例级别的详细信息：Allure 允许您为每个测试用例添加详细信息，包括描述、类别、标签、附件、历史数据等。这些信息有助于更全面地了解测试结果。
+- 历史趋势分析：Allure 支持测试历史趋势分析，您可以查看测试用例的历史表现，识别问题和改进测试质量。
+- 类别和标签：您可以为测试用例添加类别和标签，以更好地组织和分类测试用例。这使得报告更具可读性。
+- 附件和截图：Allure 允许您附加文件、截图和其他附件，以便更好地记录测试过程中的信息。
+- 集成性：Allure 可以与各种测试框架和构建工具（如 Maven、Gradle）无缝集成，使得生成报告变得简单。
+- 开源社区支持：Allure 是一个开源项目，拥有一个活跃的社区，提供了广泛的文档和支持。这使得它成为许多自动化测试团队的首选工具。
 
-The main goal of Allure test reports is to provide a clear, easy-to-read way to present test results to help development teams better understand the status and quality of their tests, quickly identify problems, and take the necessary action. Whether you are a developer, tester, or project manager, Allure test reports provide you with useful information to improve software quality and reliability.
+Allure 测试报告的主要目标是提供一个清晰、易于阅读的方式来展示测试结果，以帮助开发团队更好地理解测试的状态和质量，快速识别问题，并采取必要的行动。无论您是开发人员、测试人员还是项目经理，Allure 测试报告都能为您提供有用的信息，以改进软件质量和可靠性。
 
-Official Website: <https://docs.qameta.io/allure/>
+官方网站：<https://docs.qameta.io/allure/>
 
-### Integration steps
+### 集成步骤
 
-#### The Maven version integration of allure
+#### Maven 版本集成 allure
 
-- Add allure dependency in POM.xml
+- 在 POM.xml 中添加 allure 依赖
 
-> Copy the contents of the pom.xml file in this project
+>可 copy 本项目中的 pom.xml 文件内容
 
 ```xml
     <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
@@ -180,7 +169,7 @@ Official Website: <https://docs.qameta.io/allure/>
     </dependency>
 ```
 
-- Add allure plugin to POM.xml
+- 在 POM.xml 中添加 allure 插件
 
 ```xml
       <plugin>
@@ -193,9 +182,9 @@ Official Website: <https://docs.qameta.io/allure/>
       </plugin>
 ```
 
-- Create test code for testing the REST API under src/test/java.
+- 在 src/test/java 下创建用于测试 REST API 的测试代码
 
-> The following is an example of a demo, see the project for details: <https://github.com/Automation-Test-Starter/RestAssured-maven-demo>.
+> 以下为 demo 示例，详细部分可参考 项目：<https://github.com/Automation-Test-Starter/RestAssured-maven-demo>
 
 ```java
 package com.example;
@@ -218,7 +207,8 @@ public class TestDemo {
 
         // Given
         given()
-                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -243,7 +233,7 @@ public class TestDemo {
     public void verifyPostAPI() {        // Given
         given()
                 .filter(new AllureRestAssured()) 
-                // Set up the AllureRestAssured filter to display request and response information in the test report
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -265,48 +255,48 @@ public class TestDemo {
 }
 ```
 
-- Run tests and generate Allure reports
+- 运行测试并生成 Allure 报告
 
 ```bash
 mvn clean test
 ```
 
-> The generated Allure report is in the allure-results file in the project root directory.
+> 生成的 Allure 报告在项目根目录的 allure-results 文件下
 
-- Preview of the Allure Report
+- 预览 Allure 报告
 
 ```bash
 mvn allure:serve
 ```
 
-> Running the command automatically opens a browser to preview the Allure report.
+> 运行命令会自动打开浏览器，预览 Allure 报告
 
 ![allure-report](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JsHrOQ.png)
 
 ![allure-report1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZXgnOD.png)
 
-#### The Gradle version of allure integration
+#### Gradle 版本集成 allure
 
-- Add the allure plugin to your build.gradle.
+- 在 build.gradle 中添加 allure 插件
 
-> Copy the contents of the build.gradle file in this project
+>可 copy 本项目中的 build.gradle 文件内容
 
 ```groovy
 id("io.qameta.allure") version "2.11.2"
 ```
 
-- Add allure dependency to build.gradle
+- 在 build.gradle 中添加 allure 依赖
 
-> Copy the contents of the build.gradle file in this project
+>可 copy 本项目中的 build.gradle 文件内容
 
 ```groovy
     implementation 'io.qameta.allure:allure-testng:2.24.0' // Add allure report dependency
     implementation 'io.qameta.allure:allure-rest-assured:2.24.0' // Add allure report dependency
 ```
 
-- Create test code for testing the REST API under src/test/java.
+- 在 src/test/java 下创建用于测试 REST API 的测试代码
 
-> The following is an example of a demo, see the project for details: <https://github.com/Automation-Test-Starter/RestAssured-gradle-demo>.
+> 以下为 demo 示例，详细部分可参考 项目：<https://github.com/Automation-Test-Starter/RestAssured-gradle-demo>
 
 ```java
 package com.example;
@@ -330,7 +320,7 @@ public class TestDemo {
         // Given
         given()
                 .filter(new AllureRestAssured()) 
-                // Set up the AllureRestAssured filter to display request and response information in the test report
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -354,8 +344,8 @@ public class TestDemo {
     @Description("Test Description : Verify that the post API returns correctly")
     public void verifyPostAPI() {        // Given
         given()
-                .filter(new AllureRestAssured())
-                // Set up the AllureRestAssured filter to display request and response information in the test report
+                .filter(new AllureRestAssured()) 
+                //设置 AllureRestAssured 过滤器，用来在测试报告中展示请求和响应信息
                 .baseUri("https://jsonplaceholder.typicode.com")
                 .header("Content-Type", "application/json")
 
@@ -377,30 +367,30 @@ public class TestDemo {
 }
 ```
 
-- Run the test and generate the Allure report
+- 运行测试并生成 Allure 报告
 
 ```bash
 gradle clean test 
-``
+```
 
-> The generated Allure report is in the build/allure-results file in the project root directory.
+> 生成的 Allure 报告在项目根目录的 build/allure-results 文件下
 
-- Preview the Allure report
+- 预览 Allure 报告
 
 ```bash
 gradle allureServe
 ```
 
-> Running the command automatically opens a browser to preview the Allure report.
+> 运行命令会自动打开浏览器，预览 Allure 报告
 
 ![allure-report](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JsHrOQ.png)
 
 ![allure-report1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZXgnOD.png)
 
-## Reference
+## 参考资料
 
-- Rest assured official documentation: <https://rest-assured.io/>
+- Rest assured 官方文档：<https://rest-assured.io/>
 
-- Rest assured official github:<https://github.com/rest-assured/rest-assured>
+- Rest assured 官方 github：<https://github.com/rest-assured/rest-assured>
 
-- Rest assured official docs in Chinese: <https://github.com/RookieTester/rest-assured-doc>
+- Rest assured 官方文档中文翻译：<https://github.com/RookieTester/rest-assured-doc>

@@ -9,35 +9,6 @@ tags = [
 ]
 +++
 
-- [进阶用法](#进阶用法)
-  - [验证响应数据](#验证响应数据)
-    - [响应体断言](#响应体断言)
-      - [json 格式断言](#json-格式断言)
-      - [xml 格式断言](#xml-格式断言)
-    - [Cookie 断言](#cookie-断言)
-    - [状态码 Status Code 断言](#状态码-status-code-断言)
-    - [Header 断言](#header-断言)
-    - [Content-Type 断言](#content-type-断言)
-    - [内容全匹配断言](#内容全匹配断言)
-    - [响应时间断言](#响应时间断言)
-  - [文件上传](#文件上传)
-  - [Logging 日志](#logging-日志)
-    - [全局日志配置](#全局日志配置)
-      - [添加全局日志步骤](#添加全局日志步骤)
-      - [全局日志代码示例](#全局日志代码示例)
-      - [查看全局日志输出](#查看全局日志输出)
-    - [局部日志配置](#局部日志配置)
-      - [添加日志步骤](#添加日志步骤)
-      - [查看局部日志输出](#查看局部日志输出)
-    - [LogConfig 配置说明](#logconfig-配置说明)
-    - [Request Logging 请求日志记录](#request-logging-请求日志记录)
-    - [Response Logging 响应日志记录](#response-logging-响应日志记录)
-    - [只在验证失败时记录日志](#只在验证失败时记录日志)
-    - [Header 黑名单配置](#header-黑名单配置)
-  - [Filters 过滤器](#filters-过滤器)
-    - [Ordered Filters 有序过滤器](#ordered-filters-有序过滤器)
-    - [Response Builder 响应生成器](#response-builder-响应生成器)
-
 ## 进阶用法
 
 ### 验证响应数据
