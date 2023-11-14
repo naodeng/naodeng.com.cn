@@ -94,16 +94,6 @@ params:
     ShowToc: true
     comments: true
     images: ["papermod-cover.png"]
-    # giscus
-    giscus:
-      repo : 'naodeng/naodeng.tech'                 # see https://giscus.app for more details
-      repoId : 'R_kgDOHntNtg'
-      category : 'Show and tell'
-      categoryId : 'DIC_kwDOHntNts4Cavst'
-      mapping : 'pathname'
-      theme : 'light'
-      lang : 'en-US'
-      crossorigin : 'anonymous'
 
     homeInfoParams:
         Title: "Nao's Blog"
