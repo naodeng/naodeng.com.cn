@@ -103,6 +103,7 @@ params:
       mapping : 'pathname'
       theme : 'light'
       lang : 'en-US'
+      crossorigin : 'anonymous'
 
     homeInfoParams:
         Title: "Nao's Blog"
