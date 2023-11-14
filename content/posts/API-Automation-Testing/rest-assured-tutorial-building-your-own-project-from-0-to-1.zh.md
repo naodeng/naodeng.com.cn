@@ -9,36 +9,6 @@ tags = [
 ]
 +++
 
-- [从 0 到 1 搭建 REST Assured 接口测试项目](#从-0-到-1-搭建-rest-assured-接口测试项目)
-  - [Gradle 版本](#gradle-版本)
-    - [创建一个空的 Gradle 工程](#创建一个空的-gradle-工程)
-    - [配置项目 build.gradle](#配置项目-buildgradle)
-    - [testng.xml 配置](#testngxml-配置)
-    - [gradle build 项目并初始化](#gradle-build-项目并初始化)
-    - [初始化目录](#初始化目录)
-    - [demo 测试接口](#demo-测试接口)
-      - [Get 接口](#get-接口)
-      - [Post 接口](#post-接口)
-    - [编写脚本](#编写脚本)
-    - [调试脚本](#调试脚本)
-    - [查看测试报告](#查看测试报告)
-      - [命令行报告](#命令行报告)
-      - [testng html 报告](#testng-html-报告)
-  - [Maven 版本](#maven-版本)
-    - [创建一个空的 Maven 工程](#创建一个空的-maven-工程)
-    - [配置项目 pom.xml](#配置项目-pomxml)
-    - [testng.xml 配置](#testngxml-配置-1)
-    - [初始化目录](#初始化目录-1)
-    - [demo 测试接口](#demo-测试接口-1)
-      - [Get 接口](#get-接口-1)
-      - [Post 接口](#post-接口-1)
-    - [编写脚本](#编写脚本-1)
-    - [调试脚本](#调试脚本-1)
-    - [查看测试报告](#查看测试报告-1)
-      - [命令行报告](#命令行报告-1)
-      - [testng html 报告](#testng-html-报告-1)
-- [更多信息](#更多信息)
-
 ## 从 0 到 1 搭建 REST Assured 接口测试项目
 
 REST Assured 支持 Gradle 和 Maven 两种构建工具，你可以根据自己的喜好选择其中一种。下面分别介绍 Gradle 和 Maven 两种构建工具的项目初始化过程。

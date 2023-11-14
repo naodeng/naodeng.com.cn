@@ -14,32 +14,6 @@ Tutorial on building a SuperTest API automation test project from scratch using 
 📄 Jest version Step-by-step guide on building a SuperTest API automation test project using Jest.
 
 <!--more-->
-- [Build a SuperTest API automation test project from 0 to 1](#build-a-supertest-api-automation-test-project-from-0-to-1)
-  - [Mocha version](#mocha-version)
-    - [Create a new project folder](#create-a-new-project-folder)
-    - [Project Initialization](#project-initialization)
-    - [Install dependencies](#install-dependencies)
-    - [Create new test folder and test cases](#create-new-test-folder-and-test-cases)
-    - [Writing Test Cases](#writing-test-cases)
-    - [Configuring mocha config files](#configuring-mocha-config-files)
-    - [Updating test scripts for mocha](#updating-test-scripts-for-mocha)
-    - [Running test cases](#running-test-cases)
-    - [Test Report](#test-report)
-      - [Terminal Test Report](#terminal-test-report)
-      - [Integrated mochawesome test report](#integrated-mochawesome-test-report)
-  - [Jest version](#jest-version)
-    - [Create a new jest project folder](#create-a-new-jest-project-folder)
-    - [Jest demo project initialization](#jest-demo-project-initialization)
-    - [Jest demo install dependencies](#jest-demo-install-dependencies)
-    - [Create new Jest demo project test folder and test cases](#create-new-jest-demo-project-test-folder-and-test-cases)
-    - [Writing Jest demo Test Cases](#writing-jest-demo-test-cases)
-    - [Configuring Jest config files](#configuring-jest-config-files)
-    - [Adapting Jest Test Scripts](#adapting-jest-test-scripts)
-    - [Runing test case](#runing-test-case)
-    - [Jest test report](#jest-test-report)
-      - [Jest terminal Test Report](#jest-terminal-test-report)
-      - [Integrating jest-html-reporters test reports](#integrating-jest-html-reporters-test-reports)
-
 
 ## Build a SuperTest API automation test project from 0 to 1
 

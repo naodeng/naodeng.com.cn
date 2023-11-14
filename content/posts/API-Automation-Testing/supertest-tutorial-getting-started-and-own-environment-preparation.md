@@ -16,15 +16,6 @@ SuperTest is a popular JavaScript library for testing Node.js applications.
 
 <!--more-->
 
-- [Introduction](#introduction)
-  - [Introduction of SuperTest](#introduction-of-supertest)
-  - [Introduction of Jest](#introduction-of-jest)
-  - [Introduction of Mocha](#introduction-of-mocha)
-  - [Introduction of CHAI](#introduction-of-chai)
-- [Project dependencies](#project-dependencies)
-- [Project Structure](#project-structure)
-- [Next](#next)
-
 ## Introduction
 
 This project is a quick start tutorial for API automation testing using SuperTest, and will use Jest or Mocha as the testing framework for demo demonstration.

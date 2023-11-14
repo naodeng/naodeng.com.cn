@@ -1,0 +1,201 @@
+baseURL: "https://naodeng.tech/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
+title: Nao's Blog
+paginate: 7
+defaultContentLanguage: en
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+googleAnalytics: G-JBX883ZDJJ
+
+minify:
+    disableXML: true
+    # minifyOutput: true
+
+languages:
+    en:
+        languageName: "🇬🇧English"
+        weight: 1
+        taxonomies:
+          category: categories
+          tag: tags
+          series: series
+        menu:
+            main:
+                - name: Archive
+                  url: archives
+                  weight: 5
+                - name: Search
+                  url: search/
+                  weight: 10
+                - name: Tags
+                  url: tags/
+                  weight: 10
+                - name: Series
+                  url: series/
+                  weight: 10
+                - name: Dashboard
+                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+
+    zh:
+        languageName: "🇨🇳中文"
+        weight: 2
+        title: Nao's Blog
+        taxonomies:
+          category: ZHcategories
+          tag: ZHtags
+          series: ZHseries
+        menu:
+            main:
+                - name: 归档
+                  url: archives/
+                  weight: 5
+                - name: 标签
+                  url: zhtags
+                  weight: 10
+                - name: 搜索
+                  url: search/
+                  weight: 10
+                - name: 分类
+                  url: zhcategories
+                  weight: 10
+                - name: 系列
+                  url: zhseries
+                  weight: 10
+                - name: 网站统计
+                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    description: "naodeng,naodeng.tech，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"
+    author: NaoDeng
+
+    defaultTheme: auto
+    # disableThemeToggle: true
+    ShowShareButtons: true
+    ShowReadingTime: true
+    # disableSpecial1stPost: true
+    displayFullLangName: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    ShowRssButtonInSectionTermList: true
+    ShowToc: true
+    comments: true
+    images: ["papermod-cover.png"]
+    # giscus
+    giscus:
+      repo : 'naodeng/naodeng.tech'                 # see https://giscus.app for more details
+      repoId : 'R_kgDOHntNtg'
+      category : 'Show and tell'
+      categoryId : 'DIC_kwDOHntNts4Cavst'
+      mapping : 'pathname'
+      theme : 'light'
+      lang : 'en-US'
+
+    homeInfoParams:
+        Title: "Nao's Blog"
+        Content: >
+            Welcome to Nao's Blog.
+
+            - 🔭 I’m currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
+            
+            - 🌱 I’m currently learning [SuperTest](https://www.npmjs.com/package/supertest)
+            
+            - 📝 I regularly write articles on [https://naodeng.tech/](https://naodeng.tech)
+            
+            - 📫 How to reach me **dengnao@gmail.com**
+            
+            - ⚡ Fun fact **Quality Analyst**
+
+    socialIcons:
+        - name: github
+          url: "https://github.com/naodeng"
+        - name: KoFi
+          url: "https://ko-fi.com/naodeng"
+        - name: Rss
+          url: "index.xml"
+
+    editPost:
+        URL: "https://github.com/naodeng/naodeng.tech/tree/main/content"
+        Text: "Suggest Changes" # edit text
+        appendFilePath: true # to append file path to Edit link
+
+    # label:
+    #     text: "Home"
+    #     icon: icon.png
+    #     iconHeight: 35
+
+    analytics:
+        google:
+            SiteVerificationTag: "google5e9a7c9479924ed2"
+
+    assets:
+        disableHLJS: true
+    #     favicon: "<link / abs url>"
+    #     favicon16x16: "<link / abs url>"
+    #     favicon32x32: "<link / abs url>"
+    #     apple_touch_icon: "<link / abs url>"
+    #     safari_pinned_tab: "<link / abs url>"
+
+    # cover:
+    #     hidden: true # hide everywhere but not in structured data
+    #     hiddenInList: true # hide on list pages and home
+    #     hiddenInSingle: true # hide on single page
+
+    # fuseOpts:
+    #     isCaseSensitive: false
+    #     shouldSort: true
+    #     location: 0
+    #     distance: 1000
+    #     threshold: 0.4
+    #     minMatchCharLength: 0
+    #     limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    #     keys: ["title", "permalink", "summary", "content"]
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        noClasses: false
+        # anchorLineNos: true
+        # codeFences: true
+        # guessSyntax: true
+        # lineNos: true
+        # style: monokai
+
+privacy:
+    vimeo:
+        disabled: false
+        simple: true
+
+    twitter:
+        disabled: false
+        enableDNT: true
+        simple: true
+
+    instagram:
+        disabled: false
+        simple: true
+
+    youtube:
+        disabled: false
+        privacyEnhanced: true
+
+services:
+    instagram:
+        disableInlineCSS: true
+    twitter:
+        disableInlineCSS: true

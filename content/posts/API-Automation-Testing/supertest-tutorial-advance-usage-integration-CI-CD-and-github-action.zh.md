@@ -10,11 +10,6 @@ tags = [
 Categories =  ["接口自动化测试","SuperTest"]
 +++
 
-- [持续集成](#持续集成)
-  - [接入 github action](#接入-github-action)
-    - [Mocha 版本接入 github action](#mocha-版本接入-github-action)
-    - [Jest 版本接入 github action](#jest-版本接入-github-action)
-
 ### 持续集成
 
 #### 接入 github action

@@ -9,31 +9,6 @@ tags = [
 ]
 Categories =  ["API automation testing", "SuperTest"]
 +++
-- [从 0 到 1 搭建 SuperTest 接口自动化测试项目](#从-0-到-1-搭建-supertest-接口自动化测试项目)
-  - [Mocha 版本](#mocha-版本)
-    - [新建项目文件夹](#新建项目文件夹)
-    - [项目初始化](#项目初始化)
-    - [安装依赖](#安装依赖)
-    - [新建测试文件及测试用例](#新建测试文件及测试用例)
-    - [编写测试用例](#编写测试用例)
-    - [配置 mocha 配置文件](#配置-mocha-配置文件)
-    - [调整测试脚本](#调整测试脚本)
-    - [运行测试用例](#运行测试用例)
-    - [测试报告](#测试报告)
-      - [命令行测试报告](#命令行测试报告)
-      - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
-  - [Jest 版本](#jest-版本)
-    - [新建 Jest demo 项目文件夹](#新建-jest-demo-项目文件夹)
-    - [Jest demo 项目初始化](#jest-demo-项目初始化)
-    - [Jest demo 安装依赖](#jest-demo-安装依赖)
-    - [新建 Jest demo 项目的测试文件及测试用例](#新建-jest-demo-项目的测试文件及测试用例)
-    - [编写 Jest demo 测试用例](#编写-jest-demo-测试用例)
-    - [配置 Jest 配置文件](#配置-jest-配置文件)
-    - [调整 Jest 测试脚本](#调整-jest-测试脚本)
-    - [运行 Jest 测试用例](#运行-jest-测试用例)
-    - [Jest 测试报告](#jest-测试报告)
-      - [Jest 命令行测试报告](#jest-命令行测试报告)
-      - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
 
 ## 从 0 到 1 搭建 SuperTest 接口自动化测试项目
 

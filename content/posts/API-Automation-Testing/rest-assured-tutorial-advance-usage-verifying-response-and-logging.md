@@ -9,35 +9,6 @@ tags = [
 ]
 +++
 
-- [Advanced Usage](#advanced-usage)
-  - [Verifying Response Data](#verifying-response-data)
-    - [response body assertion](#response-body-assertion)
-      - [json assertion](#json-assertion)
-      - [XML assertion](#xml-assertion)
-    - [Cookie assertion](#cookie-assertion)
-    - [Status Code Assertion](#status-code-assertion)
-    - [Header Assertion](#header-assertion)
-    - [Content-Type Assertion](#content-type-assertion)
-    - [Full body/content matching Assertion](#full-bodycontent-matching-assertion)
-    - [Measuring Response Time](#measuring-response-time)
-  - [File Upload](#file-upload)
-  - [Logging](#logging)
-    - [Global logging configuration](#global-logging-configuration)
-      - [Steps to add global logging configuration](#steps-to-add-global-logging-configuration)
-      - [Global Logging Code Example](#global-logging-code-example)
-      - [Viewing Global Log Output](#viewing-global-log-output)
-    - [Localized logging configuration](#localized-logging-configuration)
-      - [Steps to add Localized logging configuration](#steps-to-add-localized-logging-configuration)
-      - [Viewing Localized Log Output](#viewing-localized-log-output)
-    - [LogConfig Configuration Description](#logconfig-configuration-description)
-    - [Request Logging](#request-logging)
-    - [Response Logging](#response-logging)
-    - [Log if validation fails](#log-if-validation-fails)
-    - [Header Blacklist Configuration](#header-blacklist-configuration)
-  - [Filters](#filters)
-    - [Ordered Filters](#ordered-filters)
-    - [Response Builder](#response-builder)
-
 ## Advanced Usage
 
 ### Verifying Response Data
