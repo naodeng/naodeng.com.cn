@@ -96,13 +96,13 @@ params:
     images: ["papermod-cover.png"]
 
     analytics.umami:
-      enable = true  
-      website_id = 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-      url = 'https://naodeng-umami.vercel.app/hugo.js'
+      enable: true
+      website_id : 'b3b285c9-3c35-4398-9252-91bb70560b84'  
+      url : 'https://naodeng-umami.vercel.app/hugo.js'
 
     analytics.cloudflare:
-      enable = true  
-      token = 'baa460bb003847e184ad7cbf459449e9'  
+      enable:  true
+      token : 'baa460bb003847e184ad7cbf459449e9'  
 
     homeInfoParams:
         Title: "Nao's Blog"
