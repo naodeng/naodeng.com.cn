@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"
-date = "2023-11-02T10:03:38+08:00"
-description = "在这篇博客中，我们将深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。REST Assured 是一个流行的 Java 库，用于进行 REST API 接口测试，提供了强大的工具，让你能够轻松编写自动化测试脚本，以验证 API 的行为。无论你是一个有经验的测试工程师，还是一个刚刚入门的开发者，这个教程都将为你提供有关 REST Assured 和接口自动化测试的宝贵知识。"
-keywords = ["API 测试","REST Assured","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
-"API 测试","REST Assured","接口自动化测试","自动化测试"
-]
-+++
+---
+author: "nao.deng"
+title: "REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"
+date: "2023-11-02T10:03:38+08:00"
+summary:  "深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。"
+ZHtags: ["从 0 到 1 搭建接口自动化测试项目"]
+ZHcategories:  ["接口自动化测试", "REST Assured"]
+ZHseries: ["REST Assured 教程"]
+ShowWordCount: true
+---
 
 ## 从 0 到 1 搭建 REST Assured 接口测试项目
 

@@ -1,13 +1,14 @@
-+++
-author = "nao.deng"
-title = "Pytest Tutorial: Getting Started and Setting Up Your Environment"
-date = "2023-11-13T18:11:15+08:00"
-description = "The content of this blog will be a tutorial on Pytest, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what Pytest is and how to start using it for API testing. The tutorial will cover the basic concepts of Pytest, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use Pytest for API testing to get started and prepare their development environment."
-keywords = ["API Testing", "Pytest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [ "Getting Started"
+---
+author: "nao.deng"
+title: "Pytest Tutorial: Getting Started and Setting Up Your Environment"
+date: "2023-11-13T18:11:15+08:00"
+summary: "a tutorial on Pytest, focusing on getting started and preparing the environment to be built."
+tags: [ "Getting Started"
 ]
-Categories =  ["API automation testing", "Pytest"]
-+++
+Categories: ["API automation testing", "Pytest"]
+series: ["Pytest Guide"]
+ShowWordCount: true
+---
 
 ## Introduction
 
@@ -15,25 +16,45 @@ Categories =  ["API automation testing", "Pytest"]
 
 Pytest is a popular Python testing framework for writing, organizing, and running various types of automated tests. It provides a rich set of features that make it easy to write and manage test cases, as well as generate detailed test reports. Here are some of the key features and benefits of Pytest:
 
-1. **Simple and easy to use**: Pytest is designed to make writing test cases simple and easy to understand. You can write test assertions using Python's standard `assert` statement without having to learn a new assertion syntax.
+#### **Simple and easy to use**
 
-2. **Automatic Discovery of Test Cases**: Pytest can automatically discover and run test cases in your project without explicitly configuring the test suite. Test case files can be named `test_*.py` or `*_test.py`, or use a specific test function naming convention.
+Pytest is designed to make writing test cases simple and easy to understand. You can write test assertions using Python's standard `assert` statement without having to learn a new assertion syntax.
 
-3. **Rich plugin ecosystem**: Pytest can be extended with plugins. There are many third-party plug-ins available to meet different testing needs, such as Allure reporting, parameterization, coverage analysis, and so on.
+#### **Automatic Discovery of Test Cases**
 
-4. **Parameterized Testing**: Pytest supports parameterized testing, which allows you to run the same test case multiple times, but with different parameters. This reduces code duplication and improves test coverage.
+Pytest can automatically discover and run test cases in your project without explicitly configuring the test suite. Test case files can be named `test_*.py` or `*_test.py`, or use a specific test function naming convention.
 
-5. **Exception and fault localization**: Pytest provides detailed error and exception information that helps you locate and resolve problems more easily. It also provides detailed traceback information.
+#### **Rich plugin ecosystem**
 
-6. **Parallel Test Execution**: Pytest supports parallel execution of test cases, which increases the speed of test execution, especially in large projects.
+Pytest can be extended with plugins. There are many third-party plug-ins available to meet different testing needs, such as Allure reporting, parameterization, coverage analysis, and so on.
 
-7. **Multiple Report Formats**: Pytest supports multiple test report formats, including terminal output, JUnit XML, HTML reports and Allure reports. These reports can help you visualize test results.
+#### **Parameterized Testing**
 
-8. **Command Line Options**: Pytest provides a rich set of command line options to customize the behavior of test runs, including filtering, retrying, coverage analysis, and more.
+Pytest supports parameterized testing, which allows you to run the same test case multiple times, but with different parameters. This reduces code duplication and improves test coverage.
 
-9. **Integration**: Pytest can be easily integrated with other testing frameworks and tools (e.g. Selenium, Django, Flask, etc.) as well as continuous integration systems (e.g. Jenkins, Travis CI, etc.).
+#### **Exception and fault localization**
 
-10. **Active Community**: Pytest has an active community with extensive documentation and tutorials for learning and reference. You can also get support and solve problems in the community.
+Pytest provides detailed error and exception information that helps you locate and resolve problems more easily. It also provides detailed traceback information.
+
+#### **Parallel Test Execution**
+
+Pytest supports parallel execution of test cases, which increases the speed of test execution, especially in large projects.
+
+#### **Multiple Report Formats**
+
+Pytest supports multiple test report formats, including terminal output, JUnit XML, HTML reports and Allure reports. These reports can help you visualize test results.
+
+#### **Command Line Options**
+
+Pytest provides a rich set of command line options to customize the behavior of test runs, including filtering, retrying, coverage analysis, and more.
+
+#### **Integration**
+
+Pytest can be easily integrated with other testing frameworks and tools (e.g. Selenium, Django, Flask, etc.) as well as continuous integration systems (e.g. Jenkins, Travis CI, etc.).
+
+#### **Active Community**
+
+Pytest has an active community with extensive documentation and tutorials for learning and reference. You can also get support and solve problems in the community.
 
 In short, Pytest is a powerful and flexible testing framework for projects of all sizes and types. Its ease of use, automation capabilities, and rich set of plugins make it one of the go-to tools in Python testing.
 
@@ -43,75 +64,81 @@ Official website: [https://docs.pytest.org/en/latest/](https://docs.pytest.org/e
 
 A Python virtual environment is a mechanism for creating and managing multiple isolated development environments within a single Python installation. Virtual environments help resolve dependency conflicts between different projects by ensuring that each project can use its own independent Python packages and libraries without interfering with each other. Here are the steps on how to create and use a Python virtual environment:
 
-1. **Install the Virtual Environment Tool**.
-   Before you begin, make sure you have installed Python's virtual environment tools. In Python 3.3 and later, the `venv` module is built-in and can be used to create virtual environments. If you're using an older version of Python, you can install the `virtualenv` tool.
+#### **Install the Virtual Environment Tool**
 
-   For Python 3.3+, the `venv` tool is built-in and does not require additional installation.
+Before you begin, make sure you have installed Python's virtual environment tools. In Python 3.3 and later, the `venv` module is built-in and can be used to create virtual environments. If you're using an older version of Python, you can install the `virtualenv` tool.
 
-   For Python 2.x, you can install the `virtualenv` tool with the following command:
+For Python 3.3+, the `venv` tool is built-in and does not require additional installation.
 
-   ```bash
-   pip install virtualenv
-   ```
+For Python 2.x, you can install the `virtualenv` tool with the following command:
 
-2. **Creating a virtual environment**.
-   Open a terminal, move to the directory where you wish to create the virtual environment, and run the following command to create the virtual environment:
+```bash
+pip install virtualenv
+```
 
-   Use `venv` (for Python 3.3+):
+#### **Creating a virtual environment**
 
-   ```bash
-   python -m venv myenv
-   ```
+Open a terminal, move to the directory where you wish to create the virtual environment, and run the following command to create the virtual environment:
 
-   Use `virtualenv` (for Python 2.x):
+Use `venv` (for Python 3.3+):
 
-   ```bash
-   virtualenv myenv
-   ```
+```bash
+python -m venv myenv
+```
 
-   In the above command, `myenv` is the name of the virtual environment and you can customize the name.
+Use `virtualenv` (for Python 2.x):
 
-3. **Activate virtual environment**.
-   To start using the virtual environment, you need to activate it. The activation command is slightly different for different operating systems:
+```bash
+virtualenv myenv
+```
 
-   - on macOS and Linux:
+In the above command, `myenv` is the name of the virtual environment and you can customize the name.
 
-    ```bash
-     source myenv/bin/activate
-    ```
+#### **Activate virtual environment**
 
-   - On Windows (using Command Prompt):
+To start using the virtual environment, you need to activate it. The activation command is slightly different for different operating systems:
 
-    ```bash
-     myenv\Scripts\activate
-    ```
+- on macOS and Linux:
 
-   - On Windows (using PowerShell):
+```bash
+source myenv/bin/activate
+```
 
-    ```bash
-     .\myenv\Scripts\Activate.ps1
-    ```
+- On Windows (using Command Prompt):
 
-   Once the virtual environment is activated, you will see the name of the virtual environment in front of the terminal prompt, indicating that you are in the virtual environment.
+```bash
+myenv\Scripts\activate
+```
 
-4. **Installing dependencies in a virtual environment**.
-   In a virtual environment, you can use `pip` to install any Python packages and libraries required by your project, and these dependencies will be associated with that virtual environment. Example:
+- On Windows (using PowerShell):
 
-   ```bash
-   pip install requests
-   ```
+```bash
+.\myenv\Scripts\Activate.ps1
+```
 
-5. **Using a virtual environment**.
-   When working in a virtual environment, you can run Python scripts and use packages installed in the virtual environment. This ensures that your project runs in a separate environment and does not conflict with the global Python installation.
+Once the virtual environment is activated, you will see the name of the virtual environment in front of the terminal prompt, indicating that you are in the virtual environment.
 
-6. **Exiting the virtual environment**.
-   To exit the virtual environment, simply run the following command in a terminal:
+#### **Installing dependencies in a virtual environment**
 
-   ```bash
-   deactivate
-   ```
+In a virtual environment, you can use `pip` to install any Python packages and libraries required by your project, and these dependencies will be associated with that virtual environment. Example:
 
-   This returns you to the global Python environment.
+```bash
+pip install requests
+```
+
+#### **Using a virtual environment**
+
+When working in a virtual environment, you can run Python scripts and use packages installed in the virtual environment. This ensures that your project runs in a separate environment and does not conflict with the global Python installation.
+
+#### **Exiting the virtual environment**
+
+To exit the virtual environment, simply run the following command in a terminal:
+
+```bash
+deactivate
+```
+
+This returns you to the global Python environment.
 
 By using a virtual environment, you can maintain clean dependencies between projects and ensure project stability and isolation. This is a good practice in Python development.
 

@@ -1,13 +1,15 @@
-+++
-author = "nao.deng"
-title = "REST Assured Tutorial: Getting Started and Setting Up Your Environment"
-date = "2023-11-01T16:24:49+08:00"
-description = "The content of this blog will be a tutorial on REST Assured, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what REST Assured is and how to start using it for API testing. The tutorial will cover the basic concepts of REST Assured, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use REST Assured for API testing to get started and prepare their development environment."
-keywords = ["API Testing", "REST Assured", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "REST Assured", "API automation testing", "Automation Testing"
+---
+author: "nao.deng"
+title:  "REST Assured Tutorial: Getting Started and Setting Up Your Environment"
+date:  "2023-11-01T16:24:49+08:00"
+summary:  "a tutorial on REST Assured, focusing on getting started and preparing the environment to be built."
+tags:   [
+"Getting Started", "Setting Up Environment"
 ]
-+++
+Categories:   ["API automation testing", "REST Assured"]
+series: ["REST Assured Guide"]
+ShowWordCount: true
+---
 
 
 ## Introduction of RestAssured

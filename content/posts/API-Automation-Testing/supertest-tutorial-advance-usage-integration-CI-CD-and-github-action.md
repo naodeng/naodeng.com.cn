@@ -1,20 +1,13 @@
-+++
-author = "nao.deng"
-title = "SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action"
-date = "2023-11-07T18:09:43+08:00"
-description = "This blog will dive into advanced usage of Supertest, focusing on how to integrate Supertest into a CI/CD process and how to automate tests using GitHub Actions. Readers will learn how to automate the execution of the Supertest test suite through CI/CD tools, ensuring comprehensive interface testing after every code change. We will also discuss in detail how to configure and orchestrate GitHub Actions workflows for continuous integration and automated testing. This blog will help you improve your use of Supertest for more efficient automated testing and a more stable CI/CD process!"
-keywords = ["API Testing", "SuperTest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [ "CI/CD Integration"
-]
-Categories =  ["API automation testing", "SuperTest"]
-+++
-
-Learn how to integrate SuperTest with CI/CD and GitHub Actions
-🔗 CI/CD integration Use GitHub Actions as an example
-🔗 The mocha version integration GitHub Action Create a workflow file and view test reports
-🔗 The jest version integration GitHub Action Create a workflow file and view test reports
-
-<!--more-->
+---
+author: "nao.deng"
+title: "SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action"
+date: "2023-11-07T18:09:43+08:00"
+summary: "dive into advanced usage of Supertest, focusing on how to integrate Supertest into a CI/CD process and how to automate tests using GitHub Actions."
+tags: [ "CI/CD Integration"]
+Categories:  ["API automation testing", "SuperTest"]
+series: ["SuperTest Guide"]
+ShowWordCount: true
+---
 
 ## CI/CD integration
 

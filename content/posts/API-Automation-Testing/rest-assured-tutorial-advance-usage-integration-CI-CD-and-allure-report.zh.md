@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "REST Assured 教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告"
-date = "2023-11-04T10:21:19+08:00"
-description = "这篇博客将深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。读者将学习如何将 REST Assured 测试自动化流程集成到 CI/CD 流程中，以实现自动化测试和持续集成。此外，博客还将探讨如何整合 Allure 测试报告框架，以生成详细的、易于理解的测试报告，有助于更好地分析和可视化测试结果。这篇博客将帮助读者进一步提升 API 测试的自动化水平，以及测试报告的质量和可视化效果。"
-keywords = ["API 测试","REST Assured","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
-"API 测试","REST Assured","接口自动化测试","自动化测试"
-]
-+++
+---
+author:  "nao.deng"
+title:  "REST Assured 教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告"
+date: "2023-11-04T10:21:19+08:00"
+summary:  "深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。"
+ZHtags:  ["集成 CI/CD","集成 allure 测试报告"]
+ZHcategories:  ["接口自动化测试", "REST Assured"]
+ZHseries: ["REST Assured 教程"]
+ShowWordCount: true
+---
 
 ## 持续集成
 

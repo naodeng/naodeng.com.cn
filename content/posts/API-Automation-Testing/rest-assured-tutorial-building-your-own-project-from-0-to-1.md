@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "REST Assured Tutorial: Building a REST Assured API Automation Test project from 0 to 1"
-date = "2023-11-02T10:03:38+08:00"
-description = "In this blog, we'll dive into how to build a REST Assured API automation testing project from scratch.REST Assured is a popular Java library for performing REST API interface testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about REST Assured and API automation testing."
-keywords = ["API Testing", "REST Assured", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "REST Assured", "API automation testing", "Automation Testing"
-]
-+++
+---
+author:  "nao.deng"
+title:  "REST Assured Tutorial: Building a REST Assured API Automation Test project from 0 to 1"
+date:  "2023-11-02T10:03:38+08:00"
+summary:  "dive into how to build a REST Assured API automation testing project from scratch."
+tags:  [ "Building a API Automation Test project from 0 to 1"]
+Categories:   ["API automation testing", "REST Assured"]
+series: ["REST Assured Guide"]
+ShowWordCount: true
+---
 
 ## Building a REST Assured API test project from 0 to 1
 

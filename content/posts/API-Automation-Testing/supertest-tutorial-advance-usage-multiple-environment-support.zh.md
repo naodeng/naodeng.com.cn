@@ -1,14 +1,14 @@
-+++
-author = "nao.deng"
-title = "SuperTest 教程：进阶用法 - 多环境支持"
-date = "2023-11-10T12:37:59+08:00"
-description = "这篇博客专注于 SuperTest 的高级用法，着重介绍多环境支持。您将学习如何配置和管理多个测试环境，以适应不同开发和部署阶段。我们将讨论如何在同一测试套件中轻松切换不同环境，确保您的 API 测试在各种情况下都能稳定运行。这个教程将帮助您更好地组织和维护测试代码，提高测试覆盖范围，并确保测试的适应性和可靠性。不论您是初学者还是有经验的测试人员，这篇博客都将为您提供有价值的信息，使您能够更灵活地应对多环境支持的挑战。"
-keywords = ["API 测试","SuperTest","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [ "多环境支持"
+---
+author:  "nao.deng"
+title:  "SuperTest 教程：进阶用法 - 多环境支持"
+date:  "2023-11-10T12:37:59+08:00"
+summary:  "专注于 SuperTest 的高级用法，着重介绍多环境支持。您将学习如何配置和管理多个测试环境，以适应不同开发和部署阶段。"
+ZHtags: [ "多环境支持"
 ]
-Categories =  ["API automation testing", "SuperTest"]
-toc = true
-+++
+ZHcategories: ["接口自动化测试", "SuperTest"]
+ZHseries: ["SuperTest 教程"]
+ShowWordCount: true
+---
 
 ## 多环境支持
 

@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1"
-date = "2023-11-14T09:58:14+08:00"
-description = "In this blog, we'll dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Pytest and API automation testing."
-keywords = ["API Testing", "Pytest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [ "Building a API Automation Test project from 0 to 1"
-]
-Categories =  ["API automation testing", "Pytest"]
-+++
+---
+author:  "nao.deng"
+title:  "Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1"
+date: "2023-11-14T09:58:14+08:00"
+summary: "dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. "
+tags:  [ "Building a API Automation Test project from 0 to 1"]
+Categories:   ["API automation testing", "Pytest"]
+series: ["Pytest Guide"]
+ShowWordCount: true
+---
 
 ## Build a Pytest API Automation Test Project from 0 to 1
 
@@ -56,7 +56,6 @@ touch test_demo.py
 ```python
 import requests
 
-
 class TestPytestDemo:
 
     def test_get_demo(self):
@@ -98,13 +97,13 @@ pytest
 
 > <https://github.com/prashanth-sams/pytest-html-reporter>
 
-#### Install pytest-html-reporter dependency
+#### 8.1 Install pytest-html-reporter dependency
 
 ```shell
 pip install pytest-html-reporter 
 ```
 
-#### Configuring Test Report Parameters
+#### 8.2 Configuring Test Report Parameters
 
 - Create a new pytest.ini file in the project root directory.
 - Add the following
@@ -114,14 +113,18 @@ pip install pytest-html-reporter
 addopts = -vs -rf --html-report=./report --title='PYTEST REPORT' --self-contained-html
 ```
 
-#### Run test cases
+#### 8.3 Run test cases
 
 ```shell
 pytest
 ```
 
-#### Viewing the test report
+#### 8.4 Viewing the test report
 
 The report is located in the report directory in the project root directory, use your browser to open the pytest_html_report.html file to view it.
 
 ![8JdxbA](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8JdxbA.png)
+
+## reference
+
+- pytest: [https://docs.pytest.org/en/latest/](https://docs.pytest.org/en/latest/)

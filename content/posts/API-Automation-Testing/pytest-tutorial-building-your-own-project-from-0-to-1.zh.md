@@ -1,14 +1,13 @@
-+++
-author = "nao.deng"
-title = "Pytest 教程：从 0 到 1 搭建 Pytest 接口自动化测试项目"
-date = "2023-11-14T09:58:14+08:00"
-description = "这篇博客将从零开始教您如何建立 Pytest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。无论您是初学者还是经验丰富的开发者，这篇教程都将帮助您迅速入门 Pytest API 自动化测试项目。"
-keywords = ["API 测试","Pytest","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
-"从 0 到 1 搭建接口自动化测试项目"
-]
-Categories =  ["API automation testing", "Pytest"]
-+++
+---
+author:  "nao.deng"
+title: "Pytest 教程：从 0 到 1 搭建 Pytest 接口自动化测试项目"
+date: "2023-11-14T09:58:14+08:00"
+summary: "将从零开始教您如何建立 Pytest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。"
+ZHtags: ["从 0 到 1 搭建接口自动化测试项目"]
+ZHcategories:  ["接口自动化测试", "Pytest"]
+ZHseries: ["Pytest 教程"]
+ShowWordCount: true
+---
 
 ## 从 0 到 1 搭建 Pytest 接口自动化测试项目
 

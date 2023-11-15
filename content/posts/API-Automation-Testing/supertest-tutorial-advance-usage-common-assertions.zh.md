@@ -1,14 +1,13 @@
-+++
-author = "nao.deng"
-title = "SuperTest 教程：进阶用法 - 常用断言"
-date = "2023-11-08T17:38:34+08:00"
-description = "这篇博客聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。这些断言是确保您的 API 测试用例准确和可靠的关键工具，帮助您捕捉潜在问题并确保 API 的预期行为。无论您是初学者还是有经验的测试人员，这篇博客将为您提供宝贵的信息，以更好地利用 Supertest 来加强您的 API 测试和自动化流程。"
-keywords = ["API 测试","Supertest","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
-"API 测试","Supertest","接口自动化测试","自动化测试"
-]
-toc = true
-+++
+---
+author:  "nao.deng"
+title:  "SuperTest 教程：进阶用法 - 常用断言"
+date:  "2023-11-08T17:38:34+08:00"
+summary: "聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。"
+ZHtags:  ["断言"]
+ZHcategories:  ["接口自动化测试", "REST Assured"]
+ZHseries: ["REST Assured 教程"]
+ShowWordCount: true
+---
 
 这篇博客聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。这些断言是确保您的 API 测试用例准确和可靠的关键工具，帮助您捕捉潜在问题并确保 API 的预期行为。无论您是初学者还是有经验的测试人员，这篇博客将为您提供宝贵的信息，以更好地利用 Supertest 来加强您的 API 测试和自动化流程。
 

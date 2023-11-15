@@ -1,13 +1,15 @@
-+++
-author = "nao.deng"
-title = "REST Assured 教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传"
-date = "2023-11-03T09:25:19+08:00"
-description = "这个博客将深入介绍 REST Assured 的进阶用法，重点放在验证 API 响应、日志记录和过滤器的应用上。读者将学习如何使用 REST Assured 来有效地验证 API 响应，包括状态码、响应内容和响应头部信息。此外，博客还将涵盖如何记录 API 请求和响应的日志，以便进行调试和故障排除。最后，博客还将介绍如何使用 REST Assured 的过滤器来处理和转换 API 响应，以满足特定需求或执行进一步的操作。这个博客将帮助那些已经熟悉基本 REST Assured 用法的人深入了解如何利用这个工具的高级功能来更有效地进行 API 测试和自动化。"
-keywords = ["API 测试","REST Assured","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
+---
+author:  "nao.deng"
+title:  "REST Assured 教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传"
+date:  "2023-11-03T09:25:19+08:00"
+summary:  "深入介绍 REST Assured 的进阶用法，重点放在验证 API 响应、日志记录和过滤器的应用上。"
+ZHtags:  [
 "API 测试","REST Assured","接口自动化测试","自动化测试"
 ]
-+++
+ZHcategories:  ["接口自动化测试", "REST Assured"]
+ZHseries: ["REST Assured 教程"]
+ShowWordCount: true
+---
 
 ## 进阶用法
 

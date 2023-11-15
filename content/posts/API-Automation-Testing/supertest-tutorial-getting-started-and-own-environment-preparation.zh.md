@@ -1,14 +1,14 @@
-+++
-author = "nao.deng"
-title = "SuperTest 教程：入门介绍和环境搭建准备"
-date = "2023-11-05T10:36:26+08:00"
-description = "这个博客的内容将是关于 Supertest 的教程，主要包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Supertest 以及如何开始使用它来进行 API 测试。教程将涵盖 Supertest 的基本概念，包括如何设置测试环境，准备所需的工具和资源，以便读者可以开始编写和执行他们自己的 API 测试。这个教程将有助于那些想要学习如何使用 Supertest 进行 API 测试的初学者入门并准备好他们的开发环境。"
-keywords = ["API 测试","SuperTest","API 自动化测试框架","接口自动化测试","自动化测试"]
-tags = [
-"入门介绍"
+---
+author: "nao.deng"
+title: "SuperTest 教程：入门介绍和环境搭建准备"
+date: "2023-11-05T10:36:26+08:00"
+summary: "关于 Supertest 的教程，主要包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Supertest 以及如何开始使用它来进行 API 测试。"
+ZHtags: [ "入门介绍", "环境搭建"
 ]
-Categories =  ["API automation testing", "SuperTest"]
-+++
+ZHcategories: ["接口自动化测试", "SuperTest"]
+ZHseries: ["SuperTest 教程"]
+ShowWordCount: true
+---
 
 ## 介绍
 

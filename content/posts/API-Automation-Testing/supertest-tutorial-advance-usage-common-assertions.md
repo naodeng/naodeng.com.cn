@@ -1,18 +1,14 @@
-+++
-author = "nao.deng"
-title = "SuperTest Tutorial: Advanced Usage - Common Assertions"
-date = "2023-11-08T17:38:34+08:00"
-description = "This blog focuses on advanced usage of Supertest, with a particular focus on commonly used assertions. You will learn how to use these assertions to validate API responses, including status codes, response content, and response headers. These assertions are a key tool for ensuring that your API test cases are accurate and reliable, helping you to catch potential problems and ensure that the API behaves as expected. Whether you are a beginner or an experienced tester, this blog will provide you with valuable information to better utilize Supertest to enhance your API testing and automation processes."
-keywords = ["API Testing", "Supertest", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = ["Assertions"
+---
+author: "nao.deng"
+title: "SuperTest Tutorial: Advanced Usage - Common Assertions"
+date: "2023-11-08T17:38:34+08:00"
+summary: "This blog focuses on advanced usage of Supertest, with a particular focus on commonly used assertions. "
+tags: ["Assertions"
 ]
-Categories =  ["API automation testing", "SuperTest"]
-toc = true
-+++
-
-This blog focuses on advanced usage of Supertest, with a particular focus on commonly used assertions. You will learn how to use these assertions to validate API responses, including status codes, response content, and response headers. These assertions are a key tool for ensuring that your API test cases are accurate and reliable, helping you to catch potential problems and ensure that the API behaves as expected. Whether you are a beginner or an experienced tester, this blog will provide you with valuable information to better utilize Supertest to enhance your API testing and automation processes.
-
-<!--more-->
+Categories:  ["API automation testing", "SuperTest"]
+series: ["SuperTest Guide"]
+ShowWordCount: true
+---
 
 ## Common Assertions
 

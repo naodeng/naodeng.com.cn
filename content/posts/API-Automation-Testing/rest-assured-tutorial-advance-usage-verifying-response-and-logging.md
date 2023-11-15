@@ -1,13 +1,15 @@
-+++
-author = "nao.deng"
-title = "REST Assured Tutorial: Advanced Usage - Validating Responses and Logging, Filters, File Uploads"
-date = "2023-11-03T09:25:19+08:00"
-description = "This blog will provide an in-depth look at advanced uses of REST Assured, with a focus on validating API responses, logging, and the application of filters.Readers will learn how to use REST Assured to effectively validate API responses, including status codes, response content, and response headers. In addition, the blog will cover how to log API requests and responses for debugging and troubleshooting purposes. Finally, the blog will also cover how to use REST Assured's filters to process and transform API responses to meet specific requirements or perform further actions. This blog will help those who are already familiar with basic REST Assured usage to gain insight into how to utilize the advanced features of the tool for more effective API testing and automation!"
-keywords = ["API Testing", "REST Assured", "API Automation Testing Framework", "API automation testing", "Automation Testing"]
-tags = [
-"API Testing", "REST Assured", "API automation testing", "Automation Testing"
+---
+author:  "nao.deng"
+title:  "REST Assured Tutorial: Advanced Usage - Validating Responses and Logging, Filters, File Uploads"
+date:  "2023-11-03T09:25:19+08:00"
+description:  "provide an in-depth look at advanced uses of REST Assured, with a focus on validating API responses, logging, and the application of filters."
+tags:  [
+"Advanced Usage", "Validating Responses", "Logging", "Filters"
 ]
-+++
+Categories:   ["API automation testing", "REST Assured"]
+series: ["REST Assured Guide"]
+ShowWordCount: true
+---
 
 ## Advanced Usage
 
