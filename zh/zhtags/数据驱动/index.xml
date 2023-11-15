@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>数据驱动 on Nao&#39;s Blog</title>
+    <link>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
+    <description>Recent content in 数据驱动 on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.tech/papermod-cover.png</url>
+      <link>https://naodeng.tech/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 09 Nov 2023 18:06:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SuperTest 教程：进阶用法 - 数据驱动</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
+      <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</guid>
+      <description>专注于 SuperTest 的高级用法，侧重于数据驱动测试。您将学习如何通过数据参数化来扩展和优化您的 SuperTest 测试套件，提高测试覆盖率。</description>
+    </item>
+    
+  </channel>
+</rss>

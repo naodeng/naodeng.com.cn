@@ -10,6 +10,34 @@
       <link>https://naodeng.tech/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language><atom:link href="https://naodeng.tech/zh/zhseries/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh</language>
+    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhseries/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest 教程</title>
+      <link>https://naodeng.tech/zh/zhseries/pytest-%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/zhseries/pytest-%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SuperTest 教程</title>
+      <link>https://naodeng.tech/zh/zhseries/supertest-%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/zhseries/supertest-%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>REST Assured 教程</title>
+      <link>https://naodeng.tech/zh/zhseries/rest-assured-%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/zhseries/rest-assured-%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

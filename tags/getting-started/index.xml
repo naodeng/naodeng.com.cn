@@ -18,7 +18,7 @@
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</guid>
-      <description>The content of this blog will be a tutorial on Pytest, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what Pytest is and how to start using it for API testing. The tutorial will cover the basic concepts of Pytest, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use Pytest for API testing to get started and prepare their development environment.</description>
+      <description>a tutorial on Pytest, focusing on getting started and preparing the environment to be built.</description>
     </item>
     
     <item>
@@ -27,7 +27,16 @@
       <pubDate>Sun, 05 Nov 2023 10:36:26 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</guid>
-      <description>The content of this blog will be a tutorial on Supertest, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what Supertest is and how to start using it for API testing. The tutorial will cover the basic concepts of Supertest, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use Supertest for API testing to get started and prepare their development environment.</description>
+      <description>a tutorial on Supertest, focusing on getting started and preparing the environment to be built.</description>
+    </item>
+    
+    <item>
+      <title>REST Assured Tutorial: Getting Started and Setting Up Your Environment</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
+      <pubDate>Wed, 01 Nov 2023 16:24:49 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</guid>
+      <description>a tutorial on REST Assured, focusing on getting started and preparing the environment to be built.</description>
     </item>
     
   </channel>

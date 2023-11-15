@@ -18,7 +18,10 @@
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</guid>
-      <description>This blog focuses on advanced usage of SuperTest with an emphasis on multi-environment support. You will learn how to configure and manage multiple test environments for different stages of development and deployment. We will discuss how to easily switch between different environments within the same test suite to ensure that your API tests run stably in a variety of situations. This tutorial will help you better organize and maintain your test code, improve test coverage, and ensure test adaptability and reliability. Whether you are a beginner or an experienced tester, this blog will provide you with valuable information that will enable you to be more flexible in meeting the challenges of supporting multiple environments.</description>
+      <description>&lt;p&gt;Configure multiple environments for API testing with SuperTest
+📄 Test Configuration Files Create and edit test configuration files for different environments
+📄 Test Data Files Create and edit test data files for different environments
+📄 Update Test Cases Update test cases to support multiple environments&lt;/p&gt;</description>
     </item>
     
   </channel>

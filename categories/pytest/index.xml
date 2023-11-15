@@ -18,7 +18,7 @@
       <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</guid>
-      <description>In this blog, we&amp;#39;ll dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&amp;#39;sbehavior. Whether you are an experienced test engineer or a developer just getting started, this tutorial will provide you with valuable knowledge about Pytest and API automation testing.</description>
+      <description>dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&amp;rsquo;sbehavior.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</guid>
-      <description>The content of this blog will be a tutorial on Pytest, focusing on getting started and preparing the environment to be built. In the blog, readers will learn what Pytest is and how to start using it for API testing. The tutorial will cover the basic concepts of Pytest, including how to set up a test environment and prepare the tools and resources needed so that readers can start writing and executing their own API tests. This tutorial will help beginners who want to learn how to use Pytest for API testing to get started and prepare their development environment.</description>
+      <description>a tutorial on Pytest, focusing on getting started and preparing the environment to be built.</description>
     </item>
     
   </channel>

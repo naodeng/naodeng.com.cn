@@ -40,6 +40,9 @@
     <loc>https://naodeng.tech/categories/pytest/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/series/pytest-guide/</loc>
+    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
     <xhtml:link
@@ -52,6 +55,9 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
+  </url><url>
+    <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
@@ -76,6 +82,9 @@
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/supertest/</loc>
+    <lastmod>2023-11-10T12:37:59+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/supertest-guide/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</loc>
@@ -149,6 +158,9 @@
                 href="https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
+    <loc>https://naodeng.tech/tags/setting-up-environment/</loc>
+    <lastmod>2023-11-05T10:36:26+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</loc>
     <lastmod>2023-11-05T10:36:26+08:00</lastmod>
     <xhtml:link
@@ -162,16 +174,10 @@
                 href="https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/tags/api-automation-testing/</loc>
+    <loc>https://naodeng.tech/categories/rest-assured/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/tags/api-testing/</loc>
-    <lastmod>2023-11-04T10:21:19+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/automation-testing/</loc>
-    <lastmod>2023-11-04T10:21:19+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/rest-assured/</loc>
+    <loc>https://naodeng.tech/series/rest-assured-guide/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</loc>
@@ -187,6 +193,15 @@
                 href="https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/"
                 />
   </url><url>
+    <loc>https://naodeng.tech/tags/advanced-usage/</loc>
+    <lastmod>2023-11-03T09:25:19+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/filters/</loc>
+    <lastmod>2023-11-03T09:25:19+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/logging/</loc>
+    <lastmod>2023-11-03T09:25:19+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <xhtml:link
@@ -199,6 +214,9 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/"
                 />
+  </url><url>
+    <loc>https://naodeng.tech/tags/validating-responses/</loc>
+    <lastmod>2023-11-03T09:25:19+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-02T10:03:38+08:00</lastmod>
@@ -243,6 +261,9 @@
   </url><url>
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial1/</loc>
     <lastmod>2023-10-24T17:44:53+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/api-testing/</loc>
+    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/bruno/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
@@ -291,7 +312,5 @@
                 hreflang="en"
                 href="https://naodeng.tech/search/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/series/</loc>
   </url>
 </urlset>

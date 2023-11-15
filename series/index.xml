@@ -10,6 +10,34 @@
       <link>https://naodeng.tech/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://naodeng.tech/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest Guide</title>
+      <link>https://naodeng.tech/series/pytest-guide/</link>
+      <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/series/pytest-guide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SuperTest Guide</title>
+      <link>https://naodeng.tech/series/supertest-guide/</link>
+      <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/series/supertest-guide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>REST Assured Guide</title>
+      <link>https://naodeng.tech/series/rest-assured-guide/</link>
+      <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/series/rest-assured-guide/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

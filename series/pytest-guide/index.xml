@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Pytest Guide on Nao&#39;s Blog</title>
+    <link>https://naodeng.tech/series/pytest-guide/</link>
+    <description>Recent content in Pytest Guide on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.tech/papermod-cover.png</url>
+      <link>https://naodeng.tech/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/series/pytest-guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</link>
+      <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</guid>
+      <description>dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&amp;rsquo;sbehavior.</description>
+    </item>
+    
+    <item>
+      <title>Pytest Tutorial: Getting Started and Setting Up Your Environment</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</link>
+      <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</guid>
+      <description>a tutorial on Pytest, focusing on getting started and preparing the environment to be built.</description>
+    </item>
+    
+  </channel>
+</rss>
