@@ -29,5 +29,14 @@
       <description>dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports.</description>
     </item>
     
+    <item>
+      <title>Gatling tutorial and advanced usage: CI/CD Integration</title>
+      <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</link>
+      <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</guid>
+      <description>This article introduces the advanced usage of the performance testing tool gatling: CI/CD integration, using github action as an example to introduce how to integrate gatling into the CI/CD process.</description>
+    </item>
+    
   </channel>
 </rss>

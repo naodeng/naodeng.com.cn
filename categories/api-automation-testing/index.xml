@@ -123,5 +123,14 @@
       <description>a tutorial on REST Assured, focusing on getting started and preparing the environment to be built.</description>
     </item>
     
+    <item>
+      <title>Introducing Bruno for Replacement Postman</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/introduction_of_bruno/</link>
+      <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/introduction_of_bruno/</guid>
+      <description>Article introduces postman replacement tool bruno beginner&amp;rsquo;s introduction, how to migrate postman scripts to bruno</description>
+    </item>
+    
   </channel>
 </rss>

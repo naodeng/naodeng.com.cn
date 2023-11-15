@@ -30,5 +30,14 @@
       <description>a tutorial on REST Assured, focusing on getting started and preparing the environment to be built.</description>
     </item>
     
+    <item>
+      <title>Gatling tutorial: Getting Started</title>
+      <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial1/</link>
+      <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial1/</guid>
+      <description>This article describes how to get started with the performance testing tool gatling, how to set up the environment, and how to get the official demo up and running.</description>
+    </item>
+    
   </channel>
 </rss>

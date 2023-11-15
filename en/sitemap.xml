@@ -244,17 +244,29 @@
                 href="https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/tags/gatling/</loc>
+    <loc>https://naodeng.tech/categories/gatling/</loc>
+    <lastmod>2023-10-30T10:36:24+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/gatling-guide/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/tags/performance-testing/</loc>
+    <loc>https://naodeng.tech/categories/performance-testing/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-advanced-usage/</loc>
     <lastmod>2023-10-26T18:07:44+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/performance-scenario-setting/</loc>
+    <lastmod>2023-10-26T18:07:44+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/test-report/</loc>
+    <lastmod>2023-10-26T18:07:44+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/building-a-performance-test-project-from-0-to-1/</loc>
+    <lastmod>2023-10-25T11:05:45+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial2/</loc>
     <lastmod>2023-10-25T11:05:45+08:00</lastmod>
@@ -262,13 +274,16 @@
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial1/</loc>
     <lastmod>2023-10-24T17:44:53+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/tags/api-testing/</loc>
-    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/tags/bruno/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/categories/bruno/</loc>
+    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/tags/bruno-cli/</loc>
+    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/bruno-guide/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/introduction_of_bruno/</loc>
@@ -285,6 +300,12 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/tags/postman/</loc>
+    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/postman-migration/</loc>
+    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/postman-replacement/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/archives/</loc>

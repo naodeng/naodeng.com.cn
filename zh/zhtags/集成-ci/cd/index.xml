@@ -29,5 +29,14 @@
       <description>深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。</description>
     </item>
     
+    <item>
+      <title>gatling 性能测试工具进阶用法：CI/CD 集成</title>
+      <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-ci-cd-integration/</link>
+      <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-ci-cd-integration/</guid>
+      <description>文章介绍性能测试工具 gatling 的进阶用法：CI/CD 集成，以 github action 为例来介绍如何集成 gatling 到 CI/CD 流程中</description>
+    </item>
+    
   </channel>
 </rss>

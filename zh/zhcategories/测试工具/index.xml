@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>测试工具 on Nao&#39;s Blog</title>
+    <link>https://naodeng.tech/zh/zhcategories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 测试工具 on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.tech/papermod-cover.png</url>
+      <link>https://naodeng.tech/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhcategories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>接口测试简介</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_api_test/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_api_test/</guid>
+      <description>文章介绍接口测试的简介，类型和工具</description>
+    </item>
+    
+  </channel>
+</rss>

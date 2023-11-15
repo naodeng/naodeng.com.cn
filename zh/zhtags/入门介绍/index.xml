@@ -30,5 +30,23 @@
       <description>关于 Supertest 的教程，主要包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Supertest 以及如何开始使用它来进行 API 测试。</description>
     </item>
     
+    <item>
+      <title>REST Assured 教程：入门介绍和环境搭建准备</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
+      <pubDate>Wed, 01 Nov 2023 16:24:49 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</guid>
+      <description>包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 REST Assured 以及如何开始使用它来进行 API 测试。教程将涵盖 REST Assured 的基本概念，包括如何设置测试环境，准备所需的工具和资源，以便读者可以开始编写和执行他们自己的 API 测试。</description>
+    </item>
+    
+    <item>
+      <title>gatling 性能测试工具入门介绍</title>
+      <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</link>
+      <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</guid>
+      <description>文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来</description>
+    </item>
+    
   </channel>
 </rss>
