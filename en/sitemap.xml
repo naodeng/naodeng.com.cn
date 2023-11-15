@@ -3,16 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://naodeng.tech/categories/api-automation-testing/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -25,7 +22,7 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/posts/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -38,9 +35,18 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/categories/pytest/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/series/pytest-guide/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
@@ -55,9 +61,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/series/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>

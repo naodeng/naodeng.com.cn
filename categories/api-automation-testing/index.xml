@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/api-automation-testing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/api-automation-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest Tutorial Advance Usage Integration CI CD and Github Action</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</guid>
+      <description>dive into advanced usage of Pytest, focusing on how to integrate Pytest into a CI/CD process and how to automate tests using GitHub Actions.</description>
+    </item>
+    
     <item>
       <title>Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</link>

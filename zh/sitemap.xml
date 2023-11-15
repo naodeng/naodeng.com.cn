@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://naodeng.tech/zh/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/zh/posts/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,10 +29,22 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/pytest/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhseries/pytest-%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action-copy/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhcategories/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhseries/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
@@ -47,19 +59,10 @@
                 href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/zh/zhcategories/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhseries/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/zh/zhtags/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhtags/%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</loc>

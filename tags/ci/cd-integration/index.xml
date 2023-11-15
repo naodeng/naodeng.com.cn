@@ -12,6 +12,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language><atom:link href="https://naodeng.tech/tags/ci/cd-integration/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Pytest Tutorial Advance Usage Integration CI CD and Github Action</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</guid>
+      <description>dive into advanced usage of Pytest, focusing on how to integrate Pytest into a CI/CD process and how to automate tests using GitHub Actions.</description>
+    </item>
+    
+    <item>
       <title>SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Tue, 07 Nov 2023 18:09:43 +0800</pubDate>
