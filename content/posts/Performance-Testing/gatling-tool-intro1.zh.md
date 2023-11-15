@@ -1,15 +1,14 @@
-+++
-author = "nao.deng"
-title = "gatling 性能测试工具入门介绍"
-date = "2023-10-24T17:44:53+08:00"
-keywords = [
-    "性能测试","gatling","性能测试工具"
-    ]
-description = "文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来"
-tags = [
-"性能测试","gatling"
-]
-+++
+---
+author:  "nao.deng"
+title:  "gatling 性能测试工具入门介绍"
+date:  "2023-10-24T17:44:53+08:00"
+summary:  "文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来"
+ZHtags: [
+"入门介绍","环境搭建"]
+ZHcategories:  ["性能测试", "Gatling"]
+ZHseries: ["Gatling 教程"]
+ShowWordCount: true
+---
 
 ## Gatling 介绍
 

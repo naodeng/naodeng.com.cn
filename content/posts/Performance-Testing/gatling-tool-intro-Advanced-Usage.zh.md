@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "gatling 性能测试工具进阶用法：报告解析和场景设置"
-date = "2023-10-26T18:07:44+08:00"
-keywords = ["性能测试","gatling","性能测试工具"]
-description = "文章介绍性能测试工具 gatling 的进阶用法：性能测试报告的解析，不同类型的测试报告报表介绍，不同业务类型下的性能测试场景配置"
-tags = [
-"性能测试","gatling"
-]
-+++
+---
+author: "nao.deng"
+title:  "gatling 性能测试工具进阶用法：报告解析和场景设置"
+date:  "2023-10-26T18:07:44+08:00"
+summary:  "文章介绍性能测试工具 gatling 的进阶用法：性能测试报告的解析，不同类型的测试报告报表介绍，不同业务类型下的性能测试场景配置"
+ZHtags: ["测试报告"]
+ZHcategories:  ["性能测试", "Gatling"]
+ZHseries: ["Gatling 教程"]
+ShowWordCount: true
+---
 
 ### 测试报告解析
 

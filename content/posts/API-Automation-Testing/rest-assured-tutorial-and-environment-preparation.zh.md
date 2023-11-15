@@ -4,7 +4,7 @@ title: "REST Assured 教程：入门介绍和环境搭建准备"
 date:  "2023-11-01T16:24:49+08:00"
 summary:  "包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 REST Assured 以及如何开始使用它来进行 API 测试。教程将涵盖 REST Assured 的基本概念，包括如何设置测试环境，准备所需的工具和资源，以便读者可以开始编写和执行他们自己的 API 测试。"
 ZHtags: [
-"入门","环境搭建"]
+"入门介绍","环境搭建"]
 ZHcategories:  ["接口自动化测试", "REST Assured"]
 ZHseries: ["REST Assured 教程"]
 ShowWordCount: true

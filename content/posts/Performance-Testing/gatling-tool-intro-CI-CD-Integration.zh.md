@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "gatling 性能测试工具进阶用法：CI/CD 集成"
-date = "2023-10-30T10:36:24+08:00"
-keywords = ["性能测试","gatling","性能测试工具"]
-description = "文章介绍性能测试工具 gatling 的进阶用法：CI/CD 集成，以 github action 为例来介绍如何集成 gatling 到 CI/CD 流程中"
-tags = [
-"性能测试","gatling"
-]
-+++
+---
+author: "nao.deng"
+title:  "gatling 性能测试工具进阶用法：CI/CD 集成"
+date:  "2023-10-30T10:36:24+08:00"
+summary: "文章介绍性能测试工具 gatling 的进阶用法：CI/CD 集成，以 github action 为例来介绍如何集成 gatling 到 CI/CD 流程中"
+ZHtags:  ["集成 CI/CD"]
+ZHcategories:  ["性能测试", "Gatling"]
+ZHseries: ["Gatling 教程"]
+ShowWordCount: true
+---
 
 ### 持续集成
 

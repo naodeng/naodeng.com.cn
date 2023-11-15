@@ -1,18 +1,13 @@
-+++
-author = "nao.deng"
-title = "postman 替换工具 bruno 使用介绍"
-date = "2023-10-17T11:31:43+08:00"
-description = "文章介绍 postman 替换工具 bruno 的新手入门介绍，如何迁移 postman 脚本到 bruno"
-keywords = ["API 测试","postman","API 测试工具","bruno","bruno cli"]
-tags = [
-"API 测试","postman","bruno","bruno cli"
-]
-+++
-
-自从 Postman 在 2023 年 5 月宣布将逐渐淘汰具有离线功能的 Scratch Pad 模式以后，需要将 API 工作区数据
-从第三方服务器上隔离的团队不得不寻找替代方案。bruno 就是可选的替代方案之一：这是一款专为 API 测
-试、开发和调试而设计的开源桌面应用程序。为什么选择 bruno，使用入门，如何迁移 postman 脚本，文章将一一介绍
-<!-- more -->
+---
+author: "nao.deng"
+title: "postman 替换工具 bruno 使用介绍"
+date: "2023-10-17T11:31:43+08:00"
+summary: "文章介绍 postman 替换工具 Bruno 的新手入门介绍，如何迁移 postman 脚本到 Bruno"
+ZHtags: ["迁移 postman", "Bruno cli", "Bruno"]
+ZHcategories:  ["接口自动化测试", "Bruno"]
+ZHseries: ["Bruno 教程"]
+ShowWordCount: true
+---
 
 ## 为什么选择 bruno
 

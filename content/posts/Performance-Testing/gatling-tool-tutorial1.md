@@ -1,12 +1,15 @@
-+++
-author = "nao.deng"
-title = "Gatling tutorial: Getting Started"
-date = "2023-10-24T17:44:53+08:00"
-description = "This article describes how to get started with the performance testing tool gatling, how to set up the environment, and how to get the official demo up and running."
-tags = [
-"Performance Testing","gatling"
+---
+author: "nao.deng"
+title: "Gatling tutorial: Getting Started"
+date: "2023-10-24T17:44:53+08:00"
+summary: "This article describes how to get started with the performance testing tool gatling, how to set up the environment, and how to get the official demo up and running."
+tags: [
+"Getting Started", "Setting Up Environment"
 ]
-+++
+Categories: ["Performance testing", "Gatling"]
+series: ["Gatling Guide"]
+ShowWordCount: true
+---
 
 ## Gatling Introduction
 

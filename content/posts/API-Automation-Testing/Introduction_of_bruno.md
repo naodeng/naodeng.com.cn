@@ -1,12 +1,15 @@
-+++
-author = "nao.deng"
-title = "Introducing Bruno for Replacement Postman"
-date = "2023-10-17T11:31:43+08:00"
-description = "Article introduces postman replacement tool bruno beginner's introduction, how to migrate postman scripts to bruno"
-tags = [
-"API-testing","postman","bruno","bruno cli"
+---
+author: "nao.deng"
+title: "Introducing Bruno for Replacement Postman"
+date: "2023-10-17T11:31:43+08:00"
+summary: "Article introduces postman replacement tool bruno beginner's introduction, how to migrate postman scripts to bruno"
+tags: [
+"postman migration","postman replacement","postman","Bruno","Bruno cli"
 ]
-+++
+Categories:   ["API automation testing", "Bruno"]
+series: ["Bruno Guide"]
+ShowWordCount: true
+---
 
 Since Postman announced in May 2023 that it will phase out the Scratch Pad model with offline capabilities, teams that need to isolate API workspace data from third-party servers have been looking for alternatives.
 Teams that need to isolate API workspace data from third-party servers have had to look for alternatives. bruno is one of those alternatives: an open source desktop application designed for API testing, development, and debugging.

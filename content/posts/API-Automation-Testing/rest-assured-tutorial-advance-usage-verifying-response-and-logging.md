@@ -2,7 +2,7 @@
 author:  "nao.deng"
 title:  "REST Assured Tutorial: Advanced Usage - Validating Responses and Logging, Filters, File Uploads"
 date:  "2023-11-03T09:25:19+08:00"
-description:  "provide an in-depth look at advanced uses of REST Assured, with a focus on validating API responses, logging, and the application of filters."
+summary:  "provide an in-depth look at advanced uses of REST Assured, with a focus on validating API responses, logging, and the application of filters."
 tags:  [
 "Advanced Usage", "Validating Responses", "Logging", "Filters"
 ]

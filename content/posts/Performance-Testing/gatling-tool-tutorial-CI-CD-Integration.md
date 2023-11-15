@@ -1,13 +1,13 @@
-+++
-author = "nao.deng"
-title = "Gatling tutorial and advanced usage: CI/CD Integration"
-date = "2023-10-30T10:36:24+08:00"
-keywords = ["Performance Testing","gatling","Performance Testing tool"]
-description = "This article introduces the advanced usage of the performance testing tool gatling: CI/CD integration, using github action as an example to introduce how to integrate gatling into the CI/CD process."
-tags = [
-"Performance Testing","gatling"
-]
-+++
+---
+author: "nao.deng"
+title: "Gatling tutorial and advanced usage: CI/CD Integration"
+date: "2023-10-30T10:36:24+08:00"
+summary: "This article introduces the advanced usage of the performance testing tool gatling: CI/CD integration, using github action as an example to introduce how to integrate gatling into the CI/CD process."
+tags: ["CI/CD integration"]
+Categories: ["Performance testing", "Gatling"]
+series: ["Gatling Guide"]
+ShowWordCount: true
+---
 
 ### CI/CD Integration
 
