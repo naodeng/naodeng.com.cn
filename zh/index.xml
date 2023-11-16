@@ -13,6 +13,15 @@
     <language>zh</language>
     <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Pytest 教程：进阶用法 - 常用断言和数据驱动</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</guid>
+      <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 常用断言和数据驱动。</description>
+    </item>
+    
+    <item>
       <title>Pytest 教程：进阶用法 - 集成 CI/CD 和 Github action</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action-copy/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
