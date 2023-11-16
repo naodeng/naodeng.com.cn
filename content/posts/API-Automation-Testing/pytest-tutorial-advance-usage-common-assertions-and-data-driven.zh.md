@@ -242,7 +242,7 @@ touch response_data.json
 
 > 请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据
 
-'''json
+```json
 {
   "getAPI": "",
   "postAPI":{
@@ -251,7 +251,7 @@ touch response_data.json
     "userId": 1
   }
 }
-'''
+```
 
 - 编写响应数据文件
 
