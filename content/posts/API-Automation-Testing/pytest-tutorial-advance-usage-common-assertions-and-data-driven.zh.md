@@ -328,4 +328,3 @@ class TestPytestDemo:
 ## 参考
 
 - [pytest 文档](https://docs.pytest.org/en/6.2.x/)
-- [gitHub action 文档](https://docs.github.com/en/actions)
