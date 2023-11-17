@@ -13,7 +13,7 @@
     <language>en</language>
     <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pytest Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
       <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>Pytest Tutorial Advance Usage Common Assertions and Data Driven</title>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Common Assertions and Data Driven</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>Pytest Tutorial Advance Usage Integration CI CD and Github Action</title>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Integration CI CD and Github Action</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1</title>
+      <title>Pytest API Automation Testing Tutorial: Building a Pytest API Automation Test project from 0 to 1</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
       
@@ -49,7 +49,7 @@
     </item>
     
     <item>
-      <title>Pytest Tutorial: Getting Started and Setting Up Your Environment</title>
+      <title>Pytest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
       
@@ -58,7 +58,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial Advance Usage - Multiple Environment Support</title>
+      <title>SuperTest API Automation Testing Tutorial Advance Usage - Multiple Environment Support</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</link>
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
@@ -67,7 +67,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial Advance Usage - Data Driven</title>
+      <title>SuperTest API Automation Testing Tutorial Advance Usage - Data Driven</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
       <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
       
@@ -76,7 +76,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial: Advanced Usage - Common Assertions</title>
+      <title>SuperTest API Automation Testing Tutorial: Advanced Usage - Common Assertions</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</link>
       <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
       
@@ -85,7 +85,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action</title>
+      <title>SuperTest API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Github action</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Tue, 07 Nov 2023 18:09:43 +0800</pubDate>
       
@@ -94,7 +94,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial: Building a Supertest API Automation Test project from 0 to 1</title>
+      <title>SuperTest API Automation Testing Tutorial: Building a Supertest API Automation Test project from 0 to 1</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Mon, 06 Nov 2023 12:30:26 +0800</pubDate>
       
@@ -103,7 +103,7 @@
     </item>
     
     <item>
-      <title>SuperTest Tutorial: Getting Started and Setting Up Your Environment</title>
+      <title>SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment</title>
       <link>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Sun, 05 Nov 2023 10:36:26 +0800</pubDate>
       
@@ -112,7 +112,7 @@
     </item>
     
     <item>
-      <title>REST Assured Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report</title>
+      <title>REST Assured API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report</title>
       <link>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</link>
       <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
       
@@ -121,7 +121,7 @@
     </item>
     
     <item>
-      <title>REST Assured Tutorial: Advanced Usage - Validating Responses and Logging, Filters, File Uploads</title>
+      <title>REST Assured API Automation Testing Tutorial: Advanced Usage - Validating Responses and Logging, Filters, File Uploads</title>
       <link>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
       
@@ -130,7 +130,7 @@
     </item>
     
     <item>
-      <title>REST Assured Tutorial: Building a REST Assured API Automation Test project from 0 to 1</title>
+      <title>REST Assured API Automation Testing Tutorial: Building a REST Assured API Automation Test project from 0 to 1</title>
       <link>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Thu, 02 Nov 2023 10:03:38 +0800</pubDate>
       
@@ -139,7 +139,7 @@
     </item>
     
     <item>
-      <title>REST Assured Tutorial: Getting Started and Setting Up Your Environment</title>
+      <title>REST Assured API Automation Testing Tutorial: Getting Started and Setting Up Your Environment</title>
       <link>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
       <pubDate>Wed, 01 Nov 2023 16:24:49 +0800</pubDate>
       
@@ -148,7 +148,7 @@
     </item>
     
     <item>
-      <title>Gatling tutorial and advanced usage: CI/CD Integration</title>
+      <title>Gatling Performance Testing Tutorial advanced usage: CI/CD Integration</title>
       <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
       
@@ -157,7 +157,7 @@
     </item>
     
     <item>
-      <title>Gatling tutorial and advanced usage: Test report analysis and Performance Scenario Setting</title>
+      <title>Gatling Performance Testing Tutorial advanced usage: Test report analysis and Performance Scenario Setting</title>
       <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-advanced-usage/</link>
       <pubDate>Thu, 26 Oct 2023 18:07:44 +0800</pubDate>
       
@@ -166,7 +166,7 @@
     </item>
     
     <item>
-      <title>gatling tutorial: building your own gatling project from 0 to 1</title>
+      <title>gatling Performance Testing Tutorial: building your own gatling project from 0 to 1</title>
       <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial2/</link>
       <pubDate>Wed, 25 Oct 2023 11:05:45 +0800</pubDate>
       
@@ -175,7 +175,7 @@
     </item>
     
     <item>
-      <title>Gatling tutorial: Getting Started</title>
+      <title>Gatling Performance Testing Tutorial: Getting Started</title>
       <link>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial1/</link>
       <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
       

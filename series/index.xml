@@ -13,38 +13,38 @@
     <language>en</language>
     <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pytest Guide</title>
-      <link>https://naodeng.tech/series/pytest-guide/</link>
+      <title>Pytest API Automation Testing Tutorial</title>
+      <link>https://naodeng.tech/series/pytest-api-automation-testing-tutorial/</link>
       <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
       
-      <guid>https://naodeng.tech/series/pytest-guide/</guid>
+      <guid>https://naodeng.tech/series/pytest-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>SuperTest Guide</title>
-      <link>https://naodeng.tech/series/supertest-guide/</link>
+      <title>SuperTest API Automation Testing Tutorial</title>
+      <link>https://naodeng.tech/series/supertest-api-automation-testing-tutorial/</link>
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
-      <guid>https://naodeng.tech/series/supertest-guide/</guid>
+      <guid>https://naodeng.tech/series/supertest-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>REST Assured Guide</title>
-      <link>https://naodeng.tech/series/rest-assured-guide/</link>
+      <title>REST Assured API Automation Testing Tutorial</title>
+      <link>https://naodeng.tech/series/rest-assured-api-automation-testing-tutorial/</link>
       <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
       
-      <guid>https://naodeng.tech/series/rest-assured-guide/</guid>
+      <guid>https://naodeng.tech/series/rest-assured-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Gatling Guide</title>
-      <link>https://naodeng.tech/series/gatling-guide/</link>
+      <title>Gatling Performance Testing Tutorial</title>
+      <link>https://naodeng.tech/series/gatling-performance-testing-tutorial/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
       
-      <guid>https://naodeng.tech/series/gatling-guide/</guid>
+      <guid>https://naodeng.tech/series/gatling-performance-testing-tutorial/</guid>
       <description></description>
     </item>
     

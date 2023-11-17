@@ -13,7 +13,7 @@
     <language>zh</language>
     <lastBuildDate>Mon, 30 Oct 2023 10:36:24 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhcategories/gatling/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>gatling 性能测试工具进阶用法：CI/CD 集成</title>
+      <title>gatling 性能测试教程 - 进阶用法：CI/CD 集成</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-ci-cd-integration/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具进阶用法：报告解析和场景设置</title>
+      <title>gatling 性能测试教程 - 进阶用法：报告解析和场景设置</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-advanced-usage/</link>
       <pubDate>Thu, 26 Oct 2023 18:07:44 +0800</pubDate>
       
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具：从 0 到 1 搭建自己的 Gatling 工程</title>
+      <title>gatling 性能测试教程：从 0 到 1 搭建自己的 Gatling 工程</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro2/</link>
       <pubDate>Wed, 25 Oct 2023 11:05:45 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具入门介绍</title>
+      <title>gatling 性能测试教程：入门介绍</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</link>
       <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
       

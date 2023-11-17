@@ -13,7 +13,7 @@
     <language>zh</language>
     <lastBuildDate>Fri, 10 Nov 2023 12:37:59 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhcategories/supertest/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SuperTest 教程：进阶用法 - 多环境支持</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 多环境支持</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</link>
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 数据驱动</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
       <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
       
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 集成 CI/CD 和 Github action</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Tue, 07 Nov 2023 18:09:43 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：从 0 到 1 搭建 Supertest 接口自动化测试项目</title>
+      <title>SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Mon, 06 Nov 2023 12:30:26 +0800</pubDate>
       
@@ -49,7 +49,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：入门介绍和环境搭建准备</title>
+      <title>SuperTest 接口自动化测试教程：入门介绍和环境搭建准备</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Sun, 05 Nov 2023 10:36:26 +0800</pubDate>
       

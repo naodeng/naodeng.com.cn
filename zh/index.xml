@@ -13,7 +13,7 @@
     <language>zh</language>
     <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pytest 教程：进阶用法 - 多环境支持 和 集成 allure 报告</title>
+      <title>Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
       <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>Pytest 教程：进阶用法 - 常用断言和数据驱动</title>
+      <title>Pytest 接口自动化测试教程：进阶用法 - 常用断言和数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>Pytest 教程：进阶用法 - 集成 CI/CD 和 Github action</title>
+      <title>Pytest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>Pytest 教程：从 0 到 1 搭建 Pytest 接口自动化测试项目</title>
+      <title>Pytest 接口自动化测试教程：从 0 到 1 搭建 Pytest 接口自动化测试项目</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Tue, 14 Nov 2023 09:58:14 +0800</pubDate>
       
@@ -49,7 +49,7 @@
     </item>
     
     <item>
-      <title>Pytest 教程：入门介绍和环境搭建准备</title>
+      <title>Pytest 接口自动化测试教程：入门介绍和环境搭建准备</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
       
@@ -58,7 +58,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 多环境支持</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 多环境支持</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</link>
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
@@ -67,7 +67,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 数据驱动</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
       <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
       
@@ -76,7 +76,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 常用断言</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 常用断言</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</link>
       <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
       
@@ -85,7 +85,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：进阶用法 - 集成 CI/CD 和 Github action</title>
+      <title>SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Tue, 07 Nov 2023 18:09:43 +0800</pubDate>
       
@@ -94,7 +94,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：从 0 到 1 搭建 Supertest 接口自动化测试项目</title>
+      <title>SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Mon, 06 Nov 2023 12:30:26 +0800</pubDate>
       
@@ -103,7 +103,7 @@
     </item>
     
     <item>
-      <title>SuperTest 教程：入门介绍和环境搭建准备</title>
+      <title>SuperTest 接口自动化测试教程：入门介绍和环境搭建准备</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Sun, 05 Nov 2023 10:36:26 +0800</pubDate>
       
@@ -112,7 +112,7 @@
     </item>
     
     <item>
-      <title>REST Assured 教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告</title>
+      <title>REST Assured 接口自动化测试教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</link>
       <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
       
@@ -121,7 +121,7 @@
     </item>
     
     <item>
-      <title>REST Assured 教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传</title>
+      <title>REST Assured 接口自动化测试教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
       
@@ -130,7 +130,7 @@
     </item>
     
     <item>
-      <title>REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目</title>
+      <title>REST Assured 接口自动化测试教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</link>
       <pubDate>Thu, 02 Nov 2023 10:03:38 +0800</pubDate>
       
@@ -139,7 +139,7 @@
     </item>
     
     <item>
-      <title>REST Assured 教程：入门介绍和环境搭建准备</title>
+      <title>REST Assured 接口自动化测试教程：入门介绍和环境搭建准备</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
       <pubDate>Wed, 01 Nov 2023 16:24:49 +0800</pubDate>
       
@@ -148,7 +148,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具进阶用法：CI/CD 集成</title>
+      <title>gatling 性能测试教程 - 进阶用法：CI/CD 集成</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-ci-cd-integration/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
       
@@ -157,7 +157,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具进阶用法：报告解析和场景设置</title>
+      <title>gatling 性能测试教程 - 进阶用法：报告解析和场景设置</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro-advanced-usage/</link>
       <pubDate>Thu, 26 Oct 2023 18:07:44 +0800</pubDate>
       
@@ -166,7 +166,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具：从 0 到 1 搭建自己的 Gatling 工程</title>
+      <title>gatling 性能测试教程：从 0 到 1 搭建自己的 Gatling 工程</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro2/</link>
       <pubDate>Wed, 25 Oct 2023 11:05:45 +0800</pubDate>
       
@@ -175,7 +175,7 @@
     </item>
     
     <item>
-      <title>gatling 性能测试工具入门介绍</title>
+      <title>gatling 性能测试教程：入门介绍</title>
       <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</link>
       <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
       

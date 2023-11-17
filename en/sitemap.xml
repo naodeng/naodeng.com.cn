@@ -43,7 +43,7 @@
     <loc>https://naodeng.tech/categories/pytest/</loc>
     <lastmod>2023-11-17T16:32:55+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/series/pytest-guide/</loc>
+    <loc>https://naodeng.tech/series/pytest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-17T16:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</loc>
@@ -132,7 +132,7 @@
     <loc>https://naodeng.tech/categories/supertest/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/series/supertest-guide/</loc>
+    <loc>https://naodeng.tech/series/supertest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</loc>
@@ -219,7 +219,7 @@
     <loc>https://naodeng.tech/categories/rest-assured/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/series/rest-assured-guide/</loc>
+    <loc>https://naodeng.tech/series/rest-assured-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</loc>
@@ -289,7 +289,7 @@
     <loc>https://naodeng.tech/categories/gatling/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/series/gatling-guide/</loc>
+    <loc>https://naodeng.tech/series/gatling-performance-testing-tutorial/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</loc>
