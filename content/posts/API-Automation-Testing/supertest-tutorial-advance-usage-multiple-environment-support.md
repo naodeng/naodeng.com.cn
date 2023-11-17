@@ -10,13 +10,6 @@ series: ["SuperTest Guide"]
 ShowWordCount: true
 ---
 
-Configure multiple environments for API testing with SuperTest
-📄 Test Configuration Files Create and edit test configuration files for different environments
-📄 Test Data Files Create and edit test data files for different environments
-📄 Update Test Cases Update test cases to support multiple environments
-
-<!--more-->
-
 ## Multiple Environment Support
 
 When using Jest or Mocha for API testing, you may need to support testing different environments, such as development, test and production environments. This can be achieved by configuring different test scripts and environment variables.
