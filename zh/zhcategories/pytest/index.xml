@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhcategories/pytest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhcategories/pytest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest 教程：进阶用法 - 多环境支持 和 集成 allure 报告</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
+      <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</guid>
+      <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。</description>
+    </item>
+    
     <item>
       <title>Pytest 教程：进阶用法 - 常用断言和数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>

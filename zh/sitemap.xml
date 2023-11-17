@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://naodeng.tech/zh/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/zh/posts/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,10 +29,41 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/pytest/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhseries/pytest-%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhcategories/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhseries/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%94%AF%E6%8C%81/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%8A%A5%E5%91%8A/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
@@ -60,19 +91,7 @@
                 href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/zh/zhcategories/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhseries/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhtags/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/zh/zhtags/%E6%96%AD%E8%A8%80/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</loc>
@@ -131,9 +150,6 @@
                 hreflang="zh"
                 href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/zh/zhtags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%94%AF%E6%8C%81/</loc>
-    <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</loc>
     <lastmod>2023-11-09T18:06:50+08:00</lastmod>

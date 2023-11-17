@@ -27,7 +27,7 @@
       <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
       
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</guid>
-      <description>&lt;p&gt;这篇博客聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。这些断言是确保您的 API 测试用例准确和可靠的关键工具，帮助您捕捉潜在问题并确保 API 的预期行为。无论您是初学者还是有经验的测试人员，这篇博客将为您提供宝贵的信息，以更好地利用 Supertest 来加强您的 API 测试和自动化流程。&lt;/p&gt;</description>
+      <description>聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。</description>
     </item>
     
   </channel>

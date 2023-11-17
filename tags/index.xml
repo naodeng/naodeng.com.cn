@@ -11,7 +11,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Integration Allure Report</title>
+      <link>https://naodeng.tech/tags/integration-allure-report/</link>
+      <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/tags/integration-allure-report/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multiple Environment Support</title>
+      <link>https://naodeng.tech/tags/multiple-environment-support/</link>
+      <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/tags/multiple-environment-support/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Assertions</title>
       <link>https://naodeng.tech/tags/assertions/</link>
@@ -45,15 +63,6 @@
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
       
       <guid>https://naodeng.tech/tags/getting-started/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Multiple Environment Support</title>
-      <link>https://naodeng.tech/tags/multiple-environment-support/</link>
-      <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
-      
-      <guid>https://naodeng.tech/tags/multiple-environment-support/</guid>
       <description></description>
     </item>
     

@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest 教程：进阶用法 - 多环境支持 和 集成 allure 报告</title>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
+      <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</guid>
+      <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。</description>
+    </item>
+    
     <item>
       <title>Pytest 教程：进阶用法 - 常用断言和数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
@@ -72,7 +81,7 @@
       <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
       
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</guid>
-      <description>&lt;p&gt;这篇博客聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。这些断言是确保您的 API 测试用例准确和可靠的关键工具，帮助您捕捉潜在问题并确保 API 的预期行为。无论您是初学者还是有经验的测试人员，这篇博客将为您提供宝贵的信息，以更好地利用 Supertest 来加强您的 API 测试和自动化流程。&lt;/p&gt;</description>
+      <description>聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。</description>
     </item>
     
     <item>
