@@ -1,12 +1,12 @@
 ---
 author:  "nao.deng"
-title:  "gatling 性能测试工具入门介绍"
+title:  "gatling 性能测试教程：入门介绍"
 date:  "2023-10-24T17:44:53+08:00"
 summary:  "文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来"
 ZHtags: [
 "入门介绍","环境搭建"]
 ZHcategories:  ["性能测试", "Gatling"]
-ZHseries: ["Gatling 教程"]
+ZHseries: ["Gatling 性能测试教程"]
 ShowWordCount: true
 ---
 

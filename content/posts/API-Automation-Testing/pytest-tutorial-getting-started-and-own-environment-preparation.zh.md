@@ -1,12 +1,12 @@
 ---
 author:  "nao.deng"
-title: "Pytest 教程：入门介绍和环境搭建准备"
+title: "Pytest 接口自动化测试教程：入门介绍和环境搭建准备"
 date: "2023-11-13T18:11:15+08:00"
 summary: "包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Pytest 以及如何开始使用它来进行 API 测试。"
 ZHtags: [
 "入门介绍","环境搭建"]
 ZHcategories:  ["接口自动化测试", "Pytest"]
-ZHseries: ["Pytest 教程"]
+ZHseries: ["Pytest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

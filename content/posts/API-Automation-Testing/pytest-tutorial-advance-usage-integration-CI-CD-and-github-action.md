@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest Tutorial Advance Usage Integration CI CD and Github Action"
+title:  "Pytest API Automation Testing Tutorial Advance Usage Integration CI CD and Github Action"
 date: "2023-11-15T18:32:55+08:00"
 summary: "dive into advanced usage of Pytest, focusing on how to integrate Pytest into a CI/CD process and how to automate tests using GitHub Actions. "
 tags: [ "CI/CD Integration"]
 Categories:   ["API automation testing", "Pytest"]
-series: ["Pytest Guide"]
+series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

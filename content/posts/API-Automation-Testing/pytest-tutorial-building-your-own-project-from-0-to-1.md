@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest Tutorial: Building a Pytest API Automation Test project from 0 to 1"
+title:  "Pytest API Automation Testing Tutorial: Building a Pytest API Automation Test project from 0 to 1"
 date: "2023-11-14T09:58:14+08:00"
 summary: "dive into how to build a Pytest API automation testing project from scratch.Pytest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. "
 tags:  [ "Building a API Automation Test project from 0 to 1"]
 Categories:   ["API automation testing", "Pytest"]
-series: ["Pytest Guide"]
+series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

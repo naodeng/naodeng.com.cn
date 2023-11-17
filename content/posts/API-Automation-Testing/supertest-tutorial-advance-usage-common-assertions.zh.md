@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "SuperTest 教程：进阶用法 - 常用断言"
+title:  "SuperTest 接口自动化测试教程：进阶用法 - 常用断言"
 date:  "2023-11-08T17:38:34+08:00"
 summary: "聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。"
 ZHtags:  ["断言"]
 ZHcategories:  ["接口自动化测试", "REST Assured"]
-ZHseries: ["REST Assured 教程"]
+ZHseries: ["REST Assured 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

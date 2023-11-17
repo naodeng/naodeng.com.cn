@@ -1,12 +1,12 @@
 ---
 author:  "nao.deng"
-title:  "SuperTest 教程：进阶用法 - 多环境支持"
+title:  "SuperTest 接口自动化测试教程：进阶用法 - 多环境支持"
 date:  "2023-11-10T12:37:59+08:00"
 summary:  "专注于 SuperTest 的高级用法，着重介绍多环境支持。您将学习如何配置和管理多个测试环境，以适应不同开发和部署阶段。"
 ZHtags: [ "多环境支持"
 ]
 ZHcategories: ["接口自动化测试", "SuperTest"]
-ZHseries: ["SuperTest 教程"]
+ZHseries: ["SuperTest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

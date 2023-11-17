@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest Tutorial Advance Usage Multiple Environment Support and Integration Allure Report"
+title:  "Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report"
 date: "2023-11-17T16:32:55+08:00"
 summary:  "A deep dive into advanced Pytest usage, focusing on how Pytest is support multiple environment and integration allure report."
 tags: ["Multiple Environment Support", "Integration Allure Report"]
 Categories:   ["API automation testing", "Pytest"]
-series: ["Pytest Guide"]
+series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

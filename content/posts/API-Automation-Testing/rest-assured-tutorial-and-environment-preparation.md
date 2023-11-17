@@ -1,13 +1,13 @@
 ---
 author: "nao.deng"
-title:  "REST Assured Tutorial: Getting Started and Setting Up Your Environment"
+title:  "REST Assured API Automation Testing Tutorial: Getting Started and Setting Up Your Environment"
 date:  "2023-11-01T16:24:49+08:00"
 summary:  "a tutorial on REST Assured, focusing on getting started and preparing the environment to be built."
 tags:   [
 "Getting Started", "Setting Up Environment"
 ]
 Categories:   ["API automation testing", "REST Assured"]
-series: ["REST Assured Guide"]
+series: ["REST Assured API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

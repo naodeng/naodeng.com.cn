@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "REST Assured 教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告"
+title:  "REST Assured 接口自动化测试教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告"
 date: "2023-11-04T10:21:19+08:00"
 summary:  "深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。"
 ZHtags:  ["集成 CI/CD","集成 allure 测试报告"]
 ZHcategories:  ["接口自动化测试", "REST Assured"]
-ZHseries: ["REST Assured 教程"]
+ZHseries: ["REST Assured 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

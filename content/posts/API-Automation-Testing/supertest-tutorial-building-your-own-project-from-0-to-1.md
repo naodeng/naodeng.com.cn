@@ -1,12 +1,12 @@
 ---
 author: "nao.deng"
-title: "SuperTest Tutorial: Building a Supertest API Automation Test project from 0 to 1"
+title: "SuperTest API Automation Testing Tutorial: Building a Supertest API Automation Test project from 0 to 1"
 date: "2023-11-06T12:30:26+08:00"
 summary: "dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API'sbehavior. "
 tags: [ "Building a API Automation Test project from 0 to 1"
 ]
 Categories: ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

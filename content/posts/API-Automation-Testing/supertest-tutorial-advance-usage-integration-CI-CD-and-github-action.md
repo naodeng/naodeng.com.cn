@@ -1,11 +1,11 @@
 ---
 author: "nao.deng"
-title: "SuperTest Tutorial: Advanced Usage - Integration CI CD and Github action"
+title: "SuperTest API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Github action"
 date: "2023-11-07T18:09:43+08:00"
 summary: "dive into advanced usage of Supertest, focusing on how to integrate Supertest into a CI/CD process and how to automate tests using GitHub Actions."
 tags: [ "CI/CD Integration"]
 Categories:  ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest 教程：进阶用法 - 多环境支持 和 集成 allure 报告"
+title:  "Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告"
 date: "2023-11-17T16:32:55+08:00"
 summary:  "深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。"
 ZHtags:  ["多环境支持","集成 allure 报告"]
 ZHcategories: ["接口自动化测试", "Pytest"]
-ZHseries: ["Pytest 教程"]
+ZHseries: ["Pytest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

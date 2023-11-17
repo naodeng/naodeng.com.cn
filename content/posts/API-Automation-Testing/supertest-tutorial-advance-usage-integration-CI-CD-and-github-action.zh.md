@@ -1,13 +1,13 @@
 ---
 author:  "nao.deng"
-title:  "SuperTest 教程：进阶用法 - 集成 CI/CD 和 Github action"
+title:  "SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action"
 date:  "2023-11-07T18:09:43+08:00"
 summary:  "深入探讨 Supertest 的高级用法，着重介绍如何将 Supertest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。"
 ZHtags:  [
 "集成 CI/CD"
 ]
 ZHcategories: ["接口自动化测试", "SuperTest"]
-ZHseries: ["SuperTest 教程"]
+ZHseries: ["SuperTest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

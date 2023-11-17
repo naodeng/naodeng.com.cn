@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "REST Assured Tutorial: Building a REST Assured API Automation Test project from 0 to 1"
+title:  "REST Assured API Automation Testing Tutorial: Building a REST Assured API Automation Test project from 0 to 1"
 date:  "2023-11-02T10:03:38+08:00"
 summary:  "dive into how to build a REST Assured API automation testing project from scratch."
 tags:  [ "Building a API Automation Test project from 0 to 1"]
 Categories:   ["API automation testing", "REST Assured"]
-series: ["REST Assured Guide"]
+series: ["REST Assured API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

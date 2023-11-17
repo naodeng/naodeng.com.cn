@@ -1,11 +1,11 @@
 ---
 author: "nao.deng"
-title: "SuperTest Tutorial Advance Usage - Data Driven"
+title: "SuperTest API Automation Testing Tutorial Advance Usage - Data Driven"
 date: "2023-11-09T18:06:50+08:00"
 summary: "advanced usage of Supertest, focusing on data-driven testing. You will learn how to extend and optimize your Supertest test suite with data parameterization to improve test coverage. "
 tags: [ "Data Driven"]
 Categories:  ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest Tutorial Advance Usage Common Assertions and Data Driven"
+title:  "Pytest API Automation Testing Tutorial Advance Usage Common Assertions and Data Driven"
 date: "2023-11-15T18:32:55+08:00"
 summary:  "A deep dive into advanced Pytest usage, focusing on how Pytest is commonly asserted and data-driven."
 tags: ["Assertions", "Data Driven"]
 Categories:   ["API automation testing", "Pytest"]
-series: ["Pytest Guide"]
+series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

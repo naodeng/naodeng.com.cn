@@ -1,11 +1,11 @@
 ---
 author:  "nao.deng"
-title:  "Pytest 教程：进阶用法 - 常用断言和数据驱动"
+title:  "Pytest 接口自动化测试教程：进阶用法 - 常用断言和数据驱动"
 date: "2023-11-15T18:32:55+08:00"
 summary:  "深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 常用断言和数据驱动。"
 ZHtags: ["断言", "数据驱动"]
 ZHcategories: ["接口自动化测试", "Pytest"]
-ZHseries: ["Pytest 教程"]
+ZHseries: ["Pytest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

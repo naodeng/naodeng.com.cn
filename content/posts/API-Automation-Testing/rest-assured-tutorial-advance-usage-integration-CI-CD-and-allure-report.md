@@ -1,11 +1,11 @@
 ---
 author: "nao.deng"
-title: "REST Assured Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report"
+title: "REST Assured API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report"
 date: "2023-11-04T10:21:19+08:00"
 summary: "dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports."
 tags: [ "CI/CD Integration","Integration Allure Report"]
 Categories:   ["API automation testing", "REST Assured"]
-series: ["REST Assured Guide"]
+series: ["REST Assured API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

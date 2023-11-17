@@ -1,13 +1,13 @@
 ---
 author:  "nao.deng"
-title:  "Pytest 教程：进阶用法 - 集成 CI/CD 和 Github action"
+title:  "Pytest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action"
 date: "2023-11-15T18:32:55+08:00"
 summary:  "深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。"
 ZHtags:  [
 "集成 CI/CD"
 ]
 ZHcategories: ["接口自动化测试", "Pytest"]
-ZHseries: ["Pytest 教程"]
+ZHseries: ["Pytest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

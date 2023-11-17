@@ -1,13 +1,13 @@
 ---
 author:  "nao.deng"
-title:  "SuperTest Tutorial: Getting Started and Setting Up Your Environment"
+title:  "SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment"
 date:  "2023-11-05T10:36:26+08:00"
 summary:  " a tutorial on Supertest, focusing on getting started and preparing the environment to be built."
 tags: [
 "Getting Started", "Setting Up Environment"
 ]
 Categories: ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

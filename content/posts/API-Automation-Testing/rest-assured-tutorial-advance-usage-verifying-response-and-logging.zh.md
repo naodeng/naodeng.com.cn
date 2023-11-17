@@ -1,13 +1,13 @@
 ---
 author:  "nao.deng"
-title:  "REST Assured 教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传"
+title:  "REST Assured 接口自动化测试教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传"
 date:  "2023-11-03T09:25:19+08:00"
 summary:  "深入介绍 REST Assured 的进阶用法，重点放在验证 API 响应、日志记录和过滤器的应用上。"
 ZHtags:  [
 "API 测试","REST Assured","接口自动化测试","自动化测试"
 ]
 ZHcategories:  ["接口自动化测试", "REST Assured"]
-ZHseries: ["REST Assured 教程"]
+ZHseries: ["REST Assured 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

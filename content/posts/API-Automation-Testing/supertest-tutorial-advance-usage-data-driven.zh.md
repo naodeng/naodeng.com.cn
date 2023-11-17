@@ -1,11 +1,11 @@
 ---
 author: "nao.deng"
-title: "SuperTest 教程：进阶用法 - 数据驱动"
+title: "SuperTest 接口自动化测试教程：进阶用法 - 数据驱动"
 date: "2023-11-09T18:06:50+08:00"
 summary: "专注于 SuperTest 的高级用法，侧重于数据驱动测试。您将学习如何通过数据参数化来扩展和优化您的 SuperTest 测试套件，提高测试覆盖率。"
 ZHtags: ["数据驱动"]
 ZHcategories: ["接口自动化测试", "SuperTest"]
-ZHseries: ["SuperTest 教程"]
+ZHseries: ["SuperTest 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

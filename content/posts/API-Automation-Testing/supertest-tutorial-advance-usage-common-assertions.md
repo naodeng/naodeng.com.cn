@@ -1,12 +1,12 @@
 ---
 author: "nao.deng"
-title: "SuperTest Tutorial: Advanced Usage - Common Assertions"
+title: "SuperTest API Automation Testing Tutorial: Advanced Usage - Common Assertions"
 date: "2023-11-08T17:38:34+08:00"
 summary: "This blog focuses on advanced usage of Supertest, with a particular focus on commonly used assertions. "
 tags: ["Assertions"
 ]
 Categories:  ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

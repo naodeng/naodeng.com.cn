@@ -1,12 +1,12 @@
 ---
 author: "nao.deng"
-title: "Pytest Tutorial: Getting Started and Setting Up Your Environment"
+title: "Pytest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment"
 date: "2023-11-13T18:11:15+08:00"
 summary: "a tutorial on Pytest, focusing on getting started and preparing the environment to be built."
 tags: [ "Getting Started"
 ]
 Categories: ["API automation testing", "Pytest"]
-series: ["Pytest Guide"]
+series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 

@@ -1,13 +1,13 @@
 ---
 author: "nao.deng"
-title: "Gatling tutorial and advanced usage: Test report analysis and Performance Scenario Setting"
+title: "Gatling Performance Testing Tutorial advanced usage: Test report analysis and Performance Scenario Setting"
 date: "2023-10-26T18:07:44+08:00"
 summary: "This article introduces the advanced usage of the performance testing tool gatling: analysis of performance test reports, introduction of different types of test report reports, and configuration of performance test scenarios under different business types."
 tags: [
 "Test report", "Performance Scenario Setting"
 ]
 Categories:   ["Performance testing", "Gatling"]
-series: ["Gatling Guide"]
+series: ["Gatling Performance Testing Tutorial"]
 ShowWordCount: true
 ---
 

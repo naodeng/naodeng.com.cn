@@ -1,11 +1,11 @@
 ---
 author: "nao.deng"
-title: "REST Assured 教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"
+title: "REST Assured 接口自动化测试教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"
 date: "2023-11-02T10:03:38+08:00"
 summary:  "深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。"
 ZHtags: ["从 0 到 1 搭建接口自动化测试项目"]
 ZHcategories:  ["接口自动化测试", "REST Assured"]
-ZHseries: ["REST Assured 教程"]
+ZHseries: ["REST Assured 接口自动化测试教程"]
 ShowWordCount: true
 ---
 

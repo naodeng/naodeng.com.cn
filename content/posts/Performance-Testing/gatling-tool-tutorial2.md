@@ -1,12 +1,12 @@
 ---
 author: "nao.deng"
-title: "gatling tutorial: building your own gatling project from 0 to 1"
+title: "gatling Performance Testing Tutorial: building your own gatling project from 0 to 1"
 date: "2023-10-25T11:05:45+08:00"
 summary: "The article introduces the performance testing tool gatling advanced introduction: from 0 to 1 build your own Gatling project, introduces the basic use of Gatling, and how to build your own Gatling project, write performance test scripts, view the test report and so on."
 tags: [ "Building a performance Test project from 0 to 1"
 ]
 Categories: ["Performance testing", "Gatling"]
-series: ["Gatling Guide"]
+series: ["Gatling Performance Testing Tutorial"]
 ShowWordCount: true
 ---
 

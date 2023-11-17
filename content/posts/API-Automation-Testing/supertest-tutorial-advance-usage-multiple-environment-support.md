@@ -1,12 +1,12 @@
 ---
 author: "nao.deng"
-title: "SuperTest Tutorial Advance Usage - Multiple Environment Support"
+title: "SuperTest API Automation Testing Tutorial Advance Usage - Multiple Environment Support"
 date: "2023-11-10T12:37:59+08:00"
 summary:  "focuses on advanced usage of SuperTest with an emphasis on multi-environment support. You will learn how to configure and manage multiple test environments for different stages of development and deployment."
 tags: [ "Multiple Environment Support"
 ]
 Categories: ["API automation testing", "SuperTest"]
-series: ["SuperTest Guide"]
+series: ["SuperTest API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 
