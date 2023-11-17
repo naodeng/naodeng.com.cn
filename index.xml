@@ -13,6 +13,15 @@
     <language>en</language>
     <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Pytest Tutorial Advance Usage Common Assertions and Data Driven</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</guid>
+      <description>A deep dive into advanced Pytest usage, focusing on how Pytest is commonly asserted and data-driven.</description>
+    </item>
+    
+    <item>
       <title>Pytest Tutorial Advance Usage Integration CI CD and Github Action</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>

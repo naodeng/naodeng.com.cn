@@ -5,7 +5,13 @@
     <loc>https://naodeng.tech/categories/api-automation-testing/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/tags/assertions/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/categories/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/data-driven/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/</loc>
@@ -40,10 +46,36 @@
     <loc>https://naodeng.tech/series/pytest-guide/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
+                />
+  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
   </url><url>
     <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
@@ -61,9 +93,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/tags/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/getting-started/</loc>
     <lastmod>2023-11-13T18:11:15+08:00</lastmod>
@@ -103,9 +132,6 @@
                 href="https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/tags/data-driven/</loc>
-    <lastmod>2023-11-09T18:06:50+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</loc>
     <lastmod>2023-11-09T18:06:50+08:00</lastmod>
     <xhtml:link
@@ -118,9 +144,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/tags/assertions/</loc>
-    <lastmod>2023-11-08T17:38:34+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</loc>
     <lastmod>2023-11-08T17:38:34+08:00</lastmod>

@@ -36,9 +36,29 @@
   </url><url>
     <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
+                />
   </url><url>
-    <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action-copy/</loc>
+    <loc>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
   </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>

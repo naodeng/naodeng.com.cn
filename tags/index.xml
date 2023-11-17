@@ -11,7 +11,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Nov 2023 09:58:14 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assertions</title>
+      <link>https://naodeng.tech/tags/assertions/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/tags/assertions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Driven</title>
+      <link>https://naodeng.tech/tags/data-driven/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/tags/data-driven/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Building a API Automation Test project from 0 to 1</title>
       <link>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</link>
@@ -36,24 +54,6 @@
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
       
       <guid>https://naodeng.tech/tags/multiple-environment-support/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Driven</title>
-      <link>https://naodeng.tech/tags/data-driven/</link>
-      <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
-      
-      <guid>https://naodeng.tech/tags/data-driven/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Assertions</title>
-      <link>https://naodeng.tech/tags/assertions/</link>
-      <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
-      
-      <guid>https://naodeng.tech/tags/assertions/</guid>
       <description></description>
     </item>
     

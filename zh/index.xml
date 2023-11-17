@@ -23,10 +23,10 @@
     
     <item>
       <title>Pytest 教程：进阶用法 - 集成 CI/CD 和 Github action</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action-copy/</link>
+      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action-copy/</guid>
+      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</guid>
       <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。</description>
     </item>
     
