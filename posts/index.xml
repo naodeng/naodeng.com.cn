@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 15:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Filtering test case execution and Concurrent testing</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</link>
+      <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</guid>
+      <description>Focus on test case screening, concurrency testing and distributed testing. Learn how to execute test cases in a targeted manner to improve testing efficiency. Explore Pytest concurrent testing features and learn how to execute multiple test cases at the same time to reduce testing time.</description>
+    </item>
+    
     <item>
       <title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
