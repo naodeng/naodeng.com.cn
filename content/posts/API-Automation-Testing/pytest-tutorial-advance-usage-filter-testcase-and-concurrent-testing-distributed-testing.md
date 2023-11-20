@@ -1,9 +1,9 @@
 ---
 author:  "nao.deng"
-title:  "Pytest API Automation Testing Tutorial Advance Usage Filtering test case execution, Concurrent testing and Distributed testing"
+title: "Pytest API Automation Testing Tutorial Advance Usage Filtering test case execution, Concurrent testing and Distributed testing"
 date: "2023-11-20T15:32:55+08:00"
-summary:  "Focus on test case screening, concurrency testing and distributed testing. Learn how to execute test cases in a targeted manner to improve testing efficiency. Explore Pytest's concurrent testing features and learn how to execute multiple test cases at the same time to reduce testing time."
-tags: ["Filtering test case", "Concurrent testing"，"Distributed testing"]
+summary:  "Focus on test case screening, concurrency testing and distributed testing. Learn how to execute test cases in a targeted manner to improve testing efficiency. Explore Pytest concurrent testing features and learn how to execute multiple test cases at the same time to reduce testing time."
+tags: ["Filtering test case", "Concurrent testing","Distributed testing"]
 Categories:   ["API automation testing", "Pytest"]
 series: ["Pytest API Automation Testing Tutorial"]
 ShowWordCount: true
