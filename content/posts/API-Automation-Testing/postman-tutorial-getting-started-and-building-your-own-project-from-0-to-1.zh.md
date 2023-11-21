@@ -276,3 +276,8 @@ npm run test
 ```
 
 ![2023112117lt8FW9](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png)
+
+## 参考文档
+
+- [Postman 官方文档](https://learning.postman.com/docs/getting-started/introduction/)
+- [newman 官方文档](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
