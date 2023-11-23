@@ -11,13 +11,22 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 20 Nov 2023 15:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>API automation testing</title>
       <link>https://naodeng.tech/categories/api-automation-testing/</link>
-      <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/api-automation-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Postman</title>
+      <link>https://naodeng.tech/categories/postman/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/categories/postman/</guid>
       <description></description>
     </item>
     

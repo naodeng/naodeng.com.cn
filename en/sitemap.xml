@@ -3,22 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://naodeng.tech/categories/api-automation-testing/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/tags/concurrent-testing/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/distributed-testing/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/filtering-test-case/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+    <loc>https://naodeng.tech/tags/integration-allure-report/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -30,8 +24,27 @@
                 href="https://naodeng.tech/"
                 />
   </url><url>
+    <loc>https://naodeng.tech/categories/postman/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/postman-api-automation-testing-tutorial/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
+                />
+  </url><url>
     <loc>https://naodeng.tech/posts/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -42,6 +55,40 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/"
                 />
+  </url><url>
+    <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/</loc>
+    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
+    <lastmod>2023-11-21T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/getting-started/</loc>
+    <lastmod>2023-11-21T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</loc>
+    <lastmod>2023-11-21T17:37:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/tags/concurrent-testing/</loc>
+    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/distributed-testing/</loc>
+    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/filtering-test-case/</loc>
+    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/pytest/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
@@ -61,15 +108,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/series/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/integration-allure-report/</loc>
-    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/multiple-environment-support/</loc>
     <lastmod>2023-11-17T16:32:55+08:00</lastmod>
@@ -119,9 +157,6 @@
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
-    <lastmod>2023-11-14T09:58:14+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
     <xhtml:link
@@ -134,9 +169,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/tags/getting-started/</loc>
-    <lastmod>2023-11-13T18:11:15+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</loc>
     <lastmod>2023-11-13T18:11:15+08:00</lastmod>

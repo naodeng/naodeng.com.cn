@@ -11,7 +11,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 20 Nov 2023 15:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/api-automation-testing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/api-automation-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage Integration CI CD and allure test report</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <description>This advanced guide focuses on the integration of Postman API automation testing with CI/CD and GitHub Actions, along with the incorporation of Allure test reports. Learn how to seamlessly integrate Postman tests into the CI/CD process, achieving automated testing through GitHub Actions. Additionally, understand how to integrate the Allure test report framework to generate detailed test result reports.</description>
+    </item>
+    
+    <item>
+      <title>Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
+      <pubDate>Tue, 21 Nov 2023 17:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
+      <description>This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up.</description>
+    </item>
+    
     <item>
       <title>Pytest API Automation Testing Tutorial Advance Usage Filtering test case execution and Concurrent testing</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</link>

@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Nov 2023 16:32:55 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/integration-allure-report/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/tags/integration-allure-report/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage Integration CI CD and allure test report</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <description>This advanced guide focuses on the integration of Postman API automation testing with CI/CD and GitHub Actions, along with the incorporation of Allure test reports. Learn how to seamlessly integrate Postman tests into the CI/CD process, achieving automated testing through GitHub Actions. Additionally, understand how to integrate the Allure test report framework to generate detailed test result reports.</description>
+    </item>
+    
     <item>
       <title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title>
       <link>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
