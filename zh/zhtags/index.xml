@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 23 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Nov 2023 19:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据驱动</title>
+      <link>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
+      <pubDate>Fri, 24 Nov 2023 19:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>常用测试脚本</title>
       <link>https://naodeng.tech/zh/zhtags/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
@@ -108,15 +117,6 @@
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
       
       <guid>https://naodeng.tech/zh/zhtags/%E6%96%AD%E8%A8%80/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>数据驱动</title>
-      <link>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
-      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
-      
-      <guid>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
       <description></description>
     </item>
     
