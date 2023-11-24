@@ -105,6 +105,8 @@ params:
         token: 'baa460bb003847e184ad7cbf459449e9'
       google:
         SiteVerificationTag: "google5e9a7c9479924ed2"
+      baidu:
+        SiteVerificationTag: "codeva-ZaSrtvcdb8"
 
     homeInfoParams:
         Title: "Nao's Blog"
