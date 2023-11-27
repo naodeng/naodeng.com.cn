@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://naodeng.tech/zh/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,16 +16,16 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/postman/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <loc>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/posts/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -37,16 +37,28 @@
                 href="https://naodeng.tech/zh/posts/"
                 />
   </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/ssl-%E8%AF%81%E4%B9%A6/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhseries/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhtags/</loc>
-    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%80%89%E9%A1%B9/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/zhtags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</loc>
     <lastmod>2023-11-24T19:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</loc>
