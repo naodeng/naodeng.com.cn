@@ -89,8 +89,62 @@
     <loc>https://naodeng.tech/tags/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/tags/command-line-option/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/file-upload/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/series/postman-api-automation-testing-tutorial/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/tags/ssl-certificate/</loc>
+    <lastmod>2023-11-27T12:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</loc>
+    <lastmod>2023-11-24T19:37:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/tags/common-test-scripts/</loc>
+    <lastmod>2023-11-23T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</loc>
+    <lastmod>2023-11-23T17:37:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/tags/third-party-packages/</loc>
+    <lastmod>2023-11-23T17:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</loc>
     <lastmod>2023-11-22T17:37:00+08:00</lastmod>

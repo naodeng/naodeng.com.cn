@@ -18,7 +18,34 @@
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
-      <description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of interface automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description>
+      <description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description>
+    </item>
+    
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage common command line options and file upload</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</link>
+      <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</guid>
+      <description>This blog post takes a deep dive into the advanced usage of Postman API automation testing, focusing on common command line options, file upload scenarios, and SSL certificate scenarios. Learn how to use common command line options to optimize the testing process and solve the testing challenges of special scenarios such as file upload and SSL certificate.</description>
+    </item>
+    
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage Data Driven</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</link>
+      <pubDate>Fri, 24 Nov 2023 19:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</guid>
+      <description>This blog post dives into advanced techniques for Postman API automation testing, focusing on data file driving and environment variable data driving. Learn how to elegantly perform test data driving and improve test coverage with external data files and flexible environment variables. The blog post will show you how to manage and utilize data in a smarter way to make test cases more scalable and flexible.</description>
+    </item>
+    
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages</title>
+      <link>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</link>
+      <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</guid>
+      <description>A deep dive into advanced usage of Postman API automation testing, focusing on commonly used test scripts and third-party package examples. Explores how to write powerful test scripts that cover a variety of testing scenarios and introduces some common third-party packages that optimize the testing process.</description>
     </item>
     
     <item>
