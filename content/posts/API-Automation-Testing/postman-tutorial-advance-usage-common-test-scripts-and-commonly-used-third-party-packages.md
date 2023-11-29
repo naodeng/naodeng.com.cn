@@ -147,14 +147,6 @@ In the "Tests" section of Postman, you can use Chai's BDD style assertions, for 
    assert.equal(pm.response.code, 200, 'Status code should be 200');
    ```
 
-##### 4. Some Common Chai Assertions
-
-- **Equality:**
-
-   ```javascript
-   expect(actual).to.equal(expected);
-   ```
-
 ### 4. Common Assertions Supported by Chai
 
 - **Equality:**

@@ -88,7 +88,6 @@ ShowWordCount: true
 - Demo Project Repository: [SuperTest-API-Test-Starterhttps://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter](https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter)
 - SuperTest Documentation: [https://github.com/ladjs/supertest](https://github.com/ladjs/supertest)
 - Jest Documentation: [https://jestjs.io/docs/en/getting-started](<https://jestjs.io/docs/en/getting-started>)
-
 - Mocha Documentation: [https://mochajs.org/](https://mochajs.org/)
 - Chai Documentation: [https://www.chaijs.com/](https://www.chaijs.com/)
 - Allure Documentation: [https://docs.qameta.io/allure/](https://docs.qameta.io/allure/)
@@ -135,8 +134,6 @@ ShowWordCount: true
 - Allure Documentation: [https://docs.qameta.io/allure/](https://docs.qameta.io/allure/)
 - GitHub Action Documentation: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 
-Certainly! The provided translation retains the original markdown format:
-
 ## Implementation of API Automation Testing with Testing Tools
 
 ### Postman API Automation Testing
@@ -168,6 +165,7 @@ Certainly! The provided translation retains the original markdown format:
     - [Bruno Framework Tutorial Reference Documents](#bruno-framework-tutorial-reference-documents)
     - [Recommended Reading](#recommended-reading)
 <!-- markdownlint-disable MD051 -->
+
 #### Postman Framework Tutorial Articles
 
 - Postman API Automation Testing Tutorial: Advanced Usage - Common Command Line Options, File Upload Scenarios, and SSL Certificate Scenarios: https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/
@@ -227,4 +225,3 @@ Certainly! The provided translation retains the original markdown format:
 - [Quick Start Series for API Automation Testing Using SuperTest](https://naodeng.tech/series/rest-assured-api-automation-testing-tutorial/)
 - [Quick Start Series for API Automation Testing Using Rest Assured](https://naodeng.tech/series/supertest-api-automation-testing-tutorial/)
 - [Quick Start Series for Performance Testing Using Gatling](https://naodeng.tech/series/gatling-performance-testing-tutorial/)
-
