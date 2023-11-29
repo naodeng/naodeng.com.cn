@@ -152,7 +152,7 @@ By using a virtual environment, you can maintain clean dependencies between proj
 
 ## Project directory structure
 
-The following is an example of the directory structure of a Pytest interface automation test project:
+The following is an example of the directory structure of a Pytest API automation test project:
 
 > Subsequent demo projects will introduce allure reports, so there will be an additional allure-report directory.
 

@@ -42,7 +42,7 @@ Mac computer recommended brew command download
 
 ## Getting Started
 
-### Default main interface
+### Default main API
 
 ![homepage](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/homepage.png)
 
@@ -60,32 +60,32 @@ Mac computer recommended brew command download
 
   Folder Name: you can enter the name of the API request set (a folder with the corresponding name will be created under the path you just selected).
 
-- Click Create button to finish creating the API request set and display it on the interface (the list of newly created API request set will be displayed on the left side).
+- Click Create button to finish creating the API request set and display it on the API (the list of newly created API request set will be displayed on the left side).
 
 ![create-collection](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/create-collection.png)
 
 #### Open API collection
 
 - Click on the 'Open Collection' link on the home page to open the folder of the selected API request collection in bruno format.
-- Click open to complete the selection and display it in the interface (the collection list on the left side will display the selected API request collection information).
+- Click open to complete the selection and display it in the API (the collection list on the left side will display the selected API request collection information).
 
 #### Import API collection
 
 - Click the 'Import Collection' link on the home page to open the popup window for importing API collections (Bruno/Postman/Insomnia are supported).
 - On the popup window, select the link of the corresponding format, and then select the path of the existing file of the corresponding format.
-- Click open to complete the selection and display it on the interface (the collection list on the left side will display the information of the selected API collection).
+- Click open to complete the selection and display it on the API (the collection list on the left side will display the information of the selected API collection).
 
 ![import-collection](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/import-collection.png)
 
 #### RUN API collection
 
-- Select the API request set you want to run from the collection list on the left side of the main interface.
-- Select Run on the menu, the Runner tab will be opened on the right side of the interface, it will show some information about the requests in the selected API request collection.
+- Select the API request set you want to run from the collection list on the left side of the main API.
+- Select Run on the menu, the Runner tab will be opened on the right side of the API, it will show some information about the requests in the selected API request collection.
 - Click on the Run Collection button to run it locally (you will see the allowed results on the screen after running).
 
 #### Export API collection
 
-- Select the API request set you want to run from the collection list on the left side of the main interface, and right-click to open the menu.
+- Select the API request set you want to run from the collection list on the left side of the main API, and right-click to open the menu.
 - Select Export on the menu, and then select the path of the file you want to export to complete the export (the exported file is also in json format).
 
 ### API request
@@ -93,19 +93,19 @@ Mac computer recommended brew command download
 #### Create API request
 
 - Pre-requisite: An API request collection has already been created (see Creating an API Request Collection above).
-- Select the API request set you want to create a new API request from the collection list on the left side of the main interface.
-- Select New Request on the menu, the right interface will open the Request tab, it will show some information of requests in the selected API request set.
+- Select the API request set you want to create a new API request from the collection list on the left side of the main API.
+- Select New Request on the menu, the right API will open the Request tab, it will show some information of requests in the selected API request set.
 - On the new Request window, first select the request type: HTTP/GraphQL.
 - In the new Request window, first select the request type: HTTP/GraphQL.
 Name: Enter the name of the API request.
 URL: enter the URL of the API request
 Method: Select the Method of the API request.
-- Click Create button to finish creating the API request and display it on the interface (the left request set list will display the information of the newly created API request).
+- Click Create button to finish creating the API request and display it on the API (the left request set list will display the information of the newly created API request).
 
 #### Edit API request
 
 - Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
-- Select the API request collection you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
+- Select the API request collection you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.
 - Then you can edit different fields of the request according to the type of API request.
   Body: Enter the Body of the API request.
 
@@ -123,18 +123,18 @@ Method: Select the Method of the API request.
   
   Tests: Enter the Tests of the API request.
 
-- Click the Save button to finish editing the API request and display it on the interface (the list of request sets on the left side will display the information of the edited API request).
+- Click the Save button to finish editing the API request and display it on the API (the list of request sets on the left side will display the information of the edited API request).
 
 #### RUN API request
 
 - Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
-- In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
-- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
+- In the collection list on the left side of the main API, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).
 
 #### API request generate code
 
 - Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
-- In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
+- In the collection list on the left side of the main API, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
 - Right click on the menu and select Generate Code, then select the language you want to generate code for.
 - The Generate Code window will show the request code of different languages.
 
@@ -185,8 +185,8 @@ Value: provider
 ##### Debug Assert
 
 - Pre-requisite: you have already created an API request set and an API request (refer to Creating an API request set and New API request above), and you have also written the corresponding Assert according to the demo.
-- Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
-- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
+- Select the API request set you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).
 - Switch to the Tests tab to display the Tests information of the API request, which also includes the Assert information of the request.
 
 ![assert-demo](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/assert-demo.png)
@@ -232,8 +232,8 @@ expect(data.title).to.contains('provident');
 ##### Debugging Tests
 
 - Prerequisites: You have already created an API request set and an API request (refer to Creating an API Request Set and New API Request above), and you have also written the corresponding Tests according to the demo.
-- Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
-- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
+- Select the API request set you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).
 - Switch to the Tests tab, it will show the Tests information of the API request, which will also include the requested Tests information.
 
 ![tests-demo](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/tests-demo.png)

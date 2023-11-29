@@ -85,11 +85,11 @@ Create a simulation directory in the src/gatling/scala directory to hold test sc
 - For reference, the following is a sample script
 
 > The script contains two scenarios, one for get requests and one for post requests.
-> The get interface validates that the interface returns a status code of 200 and the post interface validates that the interface returns a status code of 201.
-> The get interface uses rampUsers, the post interface uses constantConcurrentUsers.
+> The get API validates that the API returns a status code of 200 and the post API validates that the API returns a status code of 201.
+> The get API uses rampUsers, the post API uses constantConcurrentUsers.
 > rampUsers: incrementally increase the number of concurrent users over a specified period of time, constantConcurrentUsers: keep the number of concurrent users constant over a specified period of time.
-> The number of concurrent users is 10 for both interfaces, and the duration is 10 seconds for both interfaces.
-> The request interval is 2 seconds for both interfaces.
+> The number of concurrent users is 10 for both APIs, and the duration is 10 seconds for both APIs.
+> The request interval is 2 seconds for both APIs.
 
 ```scala
 package simulation 
@@ -212,11 +212,11 @@ Create a simulation directory in the src/test/scala directory to hold the test s
 - For reference, the following is a sample script
 
 > The script contains two scenarios, one for get requests and one for post requests.
-> The get interface validates that the interface returns a status code of 200 and the post interface validates that the interface returns a status code of 201.
-> The get interface uses rampUsers, the post interface uses constantConcurrentUsers.
+> The get API validates that the API returns a status code of 200 and the post API validates that the API returns a status code of 201.
+> The get API uses rampUsers, the post API uses constantConcurrentUsers.
 > rampUsers: incrementally increase the number of concurrent users over a specified period of time, constantConcurrentUsers: keep the number of concurrent users constant over a specified period of time.
-> The number of concurrent users is 10 for both interfaces, and the duration is 10 seconds for both interfaces.
-> The request interval is 2 seconds for both interfaces.
+> The number of concurrent users is 10 for both APIs, and the duration is 10 seconds for both APIs.
+> The request interval is 2 seconds for both APIs.
 
 ```scala
 package simulation 

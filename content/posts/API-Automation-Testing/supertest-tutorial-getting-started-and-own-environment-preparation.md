@@ -96,7 +96,7 @@ Here are some of the key features and uses of Mocha:
 - Parallel Testing: Mocha allows you to run test cases in your test suite in parallel, improving the efficiency of test execution.
 - Rich Plug-ins and Extensions: Mocha has a rich ecosystem of plug-ins that can be used to extend its functionality, such as test coverage reporting, test report generation, and so on.
 - Easy to Integrate: Mocha can be used with various assertion libraries, test runners (such as Karma and Jest), browsers (using the browser test runner), etc. to suit different project and testing needs.
-- Command Line Interface: Mocha provides an easy-to-use command line interface for running test suites, generating reports, and other test-related operations.
+- Command Line API: Mocha provides an easy-to-use command line API for running test suites, generating reports, and other test-related operations.
 - Continuous Integration Support: Mocha can be easily integrated into Continuous Integration (CI) tools such as Jenkins, Travis CI, CircleCI, etc. to ensure that code is tested after every commit.
 
 Mocha's flexibility and extensibility make it a popular testing framework for a variety of JavaScript projects, including front-end and back-end applications. Developers can choose the testing tools, assertion libraries, and other extensions to meet the requirements of their projects based on their needs and preferences. Whether you are writing browser-side code or server-side code, Mocha is a powerful testing tool to help you ensure code quality and reliability.
@@ -161,7 +161,7 @@ const expect = chai.expect;
 
 ## Project Structure
 
-The following is the file structure of a SuperTest Interface Automation Test project, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.
+The following is the file structure of a SuperTest API Automation Test project, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.
 
 ```Text
 SuperTest-Jest-demo
@@ -184,4 +184,4 @@ SuperTest-Jest-demo
 
 ## Next
 
-In the next post, we will introduce how to build a SuperTest interface automation test project from 0 to 1 using Supertest, so stay tuned.
+In the next post, we will introduce how to build a SuperTest API automation test project from 0 to 1 using Supertest, so stay tuned.

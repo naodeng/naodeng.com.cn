@@ -286,7 +286,7 @@ given().config(config().multiPartConfig(multiPartConfig().defaultControlName("so
 
 ### Logging
 
-When we are writing interface test scripts, we may need to print some logs during the test process so that we can view the request and response information of the interface and some other information during the test process.RestAssured provides some methods to print logs.
+When we are writing API test scripts, we may need to print some logs during the test process so that we can view the request and response information of the API and some other information during the test process.RestAssured provides some methods to print logs.
 
 - RestAssured provides a global logging configuration method that allows you to configure logging before the test starts and then print the logs during the test. This method is applicable to all test cases, but it can only print request and response information, not other information.
 
@@ -561,7 +561,7 @@ given().config(config().logConfig(logConfig().blacklistHeader("Accept")))
 
 In RestAssured, you can use filters to modify requests and responses. Filters allow you to modify requests and responses at different stages of the request and response process. For example, you can modify the request before the request or the response after the response. You can use filters to add request headers, request parameters, request bodies, response headers, response bodies, and so on.
 
-Filters can be used to implement custom authentication schemes, session management, logging, and so on. To create a filter, you need to implement the io.restassured.filter.Filter interface. To use a filter, you can do the following:
+Filters can be used to implement custom authentication schemes, session management, logging, and so on. To create a filter, you need to implement the io.restassured.filter.Filter API. To use a filter, you can do the following:
 
 ```java
 given().filter(new MyFilter())  
@@ -575,7 +575,7 @@ There are a couple of filters provided by REST-Assured that are ready to use:
 
 #### Ordered Filters
 
-As of REST Assured 3.0.2 you can implement the `io.restassured.filter.OrderedFilter` interface if you need to control the filter ordering. Here you implement the getOrder method to return an integer representing the precedence of the filter. A lower value gives higher precedence. The highest precedence you can define is Integer.MIN_VALUE and the lowest precedence is Integer.MAX_VALUE. Filters not implementing `io.restassured.filter.OrderedFilter` will have a default precedence of 1000.
+As of REST Assured 3.0.2 you can implement the `io.restassured.filter.OrderedFilter` API if you need to control the filter ordering. Here you implement the getOrder method to return an integer representing the precedence of the filter. A lower value gives higher precedence. The highest precedence you can define is Integer.MIN_VALUE and the lowest precedence is Integer.MAX_VALUE. Filters not implementing `io.restassured.filter.OrderedFilter` will have a default precedence of 1000.
 
 [examples](https://github.com/rest-assured/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/io/restassured/itest/java/OrderedFilterITest.java)
 

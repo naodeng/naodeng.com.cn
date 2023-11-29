@@ -163,4 +163,4 @@ The above code executes a GET request to JSONPlaceholder's `/posts/1` endpoint a
 
 In this example, we're using the TestNG testing framework, but you can also use other testing frameworks such as JUnit. make sure your test classes contain the appropriate import statements and configure them appropriately as needed.
 
-This is a simple example of RestAssured syntax for performing a GET request and validating the response. You can build more complex test cases based on the needs of your project and the complexity of your interface.
+This is a simple example of RestAssured syntax for performing a GET request and validating the response. You can build more complex test cases based on the needs of your project and the complexity of your API.

@@ -13,11 +13,11 @@ ShowWordCount: true
 
 ### Common Assertions
 
-Using Pytest During the writing of interface automation test cases, we need to use various assertions to verify the expected results of the tests.
+Using Pytest During the writing of API automation test cases, we need to use various assertions to verify the expected results of the tests.
 
 Pytest provides more assertions and a flexible library of assertions to fulfill various testing needs.
 
-The following are some of the commonly used Pytest interface automation test assertions:
+The following are some of the commonly used Pytest API automation test assertions:
 
 - **Equality assertion**: checks whether two values are equal.
 
@@ -211,8 +211,8 @@ The configuration file stores the configuration information of the test environm
 The contents of the test configuration file in the demo are as follows:
 
 - Configure host information
-- Configure the getAPI interface information.
-- Configure the postAPI interface information.
+- Configure the getAPI API information.
+- Configure the postAPI API information.
 
 ```json
 {

@@ -2,14 +2,14 @@
 author:  "nao.deng"
 title:  "A collection of tutorials on API automation testing for different frameworks and different development languages"
 date: "2023-11-29T11:23:00+08:00"
-summary: "This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you're a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of interface automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing."
+summary: "This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you're a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing."
 tags: ["Getting Started","Setting Up Environment","Building a API Automation Test project from 0 to 1","Multiple Environment Support","Integration Allure Report","Data Driven","CI/CD Integration"]
 categories: ["API Automation Testing", "Postman", "SuperTest", "RestAssured", "Pytest", "Bruno"]
 series: ["API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 
-## Implementation of Interface Automation Projects with Java and REST Assured Framework
+## Implementation of API Automation Projects with Java and REST Assured Framework
 
 ### REST Assured Framework Tutorial Table of Contents
 
@@ -51,7 +51,7 @@ ShowWordCount: true
 - Allure Documentation: [https://docs.qameta.io/allure/](https://docs.qameta.io/allure/)
 - GitHub Action Documentation: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 
-## Implementation of Interface Automation Projects with JavaScript and SuperTest Framework
+## Implementation of API Automation Projects with JavaScript and SuperTest Framework
 
 ### SuperTest Framework Tutorial Table of Contents
 
@@ -94,7 +94,7 @@ ShowWordCount: true
 - Allure Documentation: [https://docs.qameta.io/allure/](https://docs.qameta.io/allure/)
 - GitHub Action Documentation: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 
-## Implementation of Interface Automation Projects with Python and Pytest Framework
+## Implementation of API Automation Projects with Python and Pytest Framework
 
 ### Pytest Framework Tutorial Table of Contents
 
@@ -137,7 +137,7 @@ ShowWordCount: true
 
 Certainly! The provided translation retains the original markdown format:
 
-## Implementation of Interface Automation Testing with Testing Tools
+## Implementation of API Automation Testing with Testing Tools
 
 ### Postman API Automation Testing
 
@@ -145,19 +145,19 @@ Certainly! The provided translation retains the original markdown format:
 
 > The directory is not clickable, only for displaying the structure
 <!-- markdownlint-disable MD051 -->
-- [Implementation of Interface Automation Projects with Java and REST Assured Framework](#implementation-of-interface-automation-projects-with-java-and-rest-assured-framework)
+- [Implementation of API Automation Projects with Java and REST Assured Framework](#implementation-of-api-automation-projects-with-java-and-rest-assured-framework)
   - [REST Assured Framework Tutorial Table of Contents](#rest-assured-framework-tutorial-table-of-contents)
   - [Corresponding Articles for REST Assured Framework Tutorial](#corresponding-articles-for-rest-assured-framework-tutorial)
   - [Reference Documents for REST Assured Framework Tutorial](#reference-documents-for-rest-assured-framework-tutorial)
-- [Implementation of Interface Automation Projects with JavaScript and SuperTest Framework](#implementation-of-interface-automation-projects-with-javascript-and-supertest-framework)
+- [Implementation of API Automation Projects with JavaScript and SuperTest Framework](#implementation-of-api-automation-projects-with-javascript-and-supertest-framework)
   - [SuperTest Framework Tutorial Table of Contents](#supertest-framework-tutorial-table-of-contents)
   - [Corresponding Articles for SuperTest Framework Tutorial](#corresponding-articles-for-supertest-framework-tutorial)
   - [Reference Documents for SuperTest Framework Tutorial](#reference-documents-for-supertest-framework-tutorial)
-- [Implementation of Interface Automation Projects with Python and Pytest Framework](#implementation-of-interface-automation-projects-with-python-and-pytest-framework)
+- [Implementation of API Automation Projects with Python and Pytest Framework](#implementation-of-api-automation-projects-with-python-and-pytest-framework)
   - [Pytest Framework Tutorial Table of Contents](#pytest-framework-tutorial-table-of-contents)
   - [Corresponding Articles for Pytest Framework Tutorial](#corresponding-articles-for-pytest-framework-tutorial)
   - [Reference Documents for Pytest Framework Tutorial](#reference-documents-for-pytest-framework-tutorial)
-- [Implementation of Interface Automation Testing with Testing Tools](#implementation-of-interface-automation-testing-with-testing-tools)
+- [Implementation of API Automation Testing with Testing Tools](#implementation-of-api-automation-testing-with-testing-tools)
   - [Postman API Automation Testing](#postman-api-automation-testing)
     - [Postman Framework Tutorial Directory](#postman-framework-tutorial-directory)
     - [Postman Framework Tutorial Articles](#postman-framework-tutorial-articles)
@@ -194,12 +194,12 @@ Certainly! The provided translation retains the original markdown format:
   - [Why Choose Bruno](#why-choose-bruno)
   - [Installing Bruno](#installing-bruno)
   - [Getting Started with the Client](#getting-started-with-the-client)
-    - [Default Main Interface](#default-main-interface)
+    - [Default Main API](#default-main-API)
     - [API Request Collections](#api-request-collections)
     - [API Requests](#api-requests)
     - [Writing API Request Test Scripts](#writing-api-request-test-scripts)
   - [Environment Variables](#environment-variables)
-  - [API Script Interface Automation](#api-script-interface-automation)
+  - [API Script API Automation](#api-script-API-automation)
     - [Preconditions](#preconditions)
     - [Demo of API Automation Project](#demo-of-api-automation-project)
   - [Integration with CI](#integration-with-ci)
