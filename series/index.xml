@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API Automation Testing Tutorial</title>
+      <link>https://naodeng.tech/series/api-automation-testing-tutorial/</link>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/series/api-automation-testing-tutorial/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Postman API Automation Testing Tutorial</title>
       <link>https://naodeng.tech/series/postman-api-automation-testing-tutorial/</link>

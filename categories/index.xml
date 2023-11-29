@@ -11,20 +11,29 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>API automation testing</title>
+      <title>API Automation Testing</title>
       <link>https://naodeng.tech/categories/api-automation-testing/</link>
-      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/api-automation-testing/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Bruno</title>
+      <link>https://naodeng.tech/categories/bruno/</link>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/categories/bruno/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Postman</title>
       <link>https://naodeng.tech/categories/postman/</link>
-      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/postman/</guid>
       <description></description>
@@ -33,16 +42,25 @@
     <item>
       <title>Pytest</title>
       <link>https://naodeng.tech/categories/pytest/</link>
-      <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/pytest/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>RestAssured</title>
+      <link>https://naodeng.tech/categories/restassured/</link>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/categories/restassured/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>SuperTest</title>
       <link>https://naodeng.tech/categories/supertest/</link>
-      <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/supertest/</guid>
       <description></description>
@@ -72,15 +90,6 @@
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
       
       <guid>https://naodeng.tech/categories/performance-testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bruno</title>
-      <link>https://naodeng.tech/categories/bruno/</link>
-      <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      
-      <guid>https://naodeng.tech/categories/bruno/</guid>
       <description></description>
     </item>
     

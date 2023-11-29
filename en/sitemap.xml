@@ -2,17 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
+                />
+  </url><url>
     <loc>https://naodeng.tech/categories/api-automation-testing/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/api-automation-testing-tutorial/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/categories/bruno/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/data-driven/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/getting-started/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/integration-allure-report/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/multiple-environment-support/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -25,7 +56,38 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/categories/postman/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/categories/pytest/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/categories/restassured/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/setting-up-environment/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/categories/supertest/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/</loc>
+    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/series/postman-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-22T17:37:00+08:00</lastmod>
@@ -42,31 +104,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/posts/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.tech/zh/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.tech/posts/"
-                />
-  </url><url>
-    <loc>https://naodeng.tech/series/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/</loc>
-    <lastmod>2023-11-22T17:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
-    <lastmod>2023-11-21T17:37:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/getting-started/</loc>
-    <lastmod>2023-11-21T17:37:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-21T17:37:00+08:00</lastmod>
@@ -90,9 +127,6 @@
     <loc>https://naodeng.tech/tags/filtering-test-case/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/categories/pytest/</loc>
-    <lastmod>2023-11-20T15:37:00+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/series/pytest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
   </url><url>
@@ -109,9 +143,6 @@
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
                 />
   </url><url>
-    <loc>https://naodeng.tech/tags/multiple-environment-support/</loc>
-    <lastmod>2023-11-17T16:32:55+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</loc>
     <lastmod>2023-11-17T16:32:55+08:00</lastmod>
     <xhtml:link
@@ -126,9 +157,6 @@
                 />
   </url><url>
     <loc>https://naodeng.tech/tags/assertions/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/data-driven/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
@@ -182,9 +210,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/categories/supertest/</loc>
-    <lastmod>2023-11-10T12:37:59+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/series/supertest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
@@ -253,9 +278,6 @@
                 hreflang="en"
                 href="https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
                 />
-  </url><url>
-    <loc>https://naodeng.tech/tags/setting-up-environment/</loc>
-    <lastmod>2023-11-05T10:36:26+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</loc>
     <lastmod>2023-11-05T10:36:26+08:00</lastmod>
@@ -371,9 +393,6 @@
     <lastmod>2023-10-24T17:44:53+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/bruno/</loc>
-    <lastmod>2023-10-17T11:31:43+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/categories/bruno/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/bruno-cli/</loc>
