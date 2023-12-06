@@ -2,6 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://naodeng.tech/tags/article-copyright/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/categories/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/others/article-plagiarism-statement/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/others/article-plagiarism-statement/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/others/article-plagiarism-statement/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/series/others/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/categories/others/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/posts/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/"
+                />
+  </url><url>
+    <loc>https://naodeng.tech/series/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
+    <loc>https://naodeng.tech/tags/</loc>
+    <lastmod>2023-12-06T14:22:50+08:00</lastmod>
+  </url><url>
     <loc>https://naodeng.tech/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <xhtml:link
@@ -27,9 +84,6 @@
     <loc>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/categories/</loc>
-    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/tags/data-driven/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
@@ -42,34 +96,8 @@
     <loc>https://naodeng.tech/tags/multiple-environment-support/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/</loc>
-    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.tech/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.tech/"
-                />
-  </url><url>
     <loc>https://naodeng.tech/categories/postman/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/posts/</loc>
-    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.tech/zh/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.tech/posts/"
-                />
   </url><url>
     <loc>https://naodeng.tech/categories/pytest/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
@@ -77,16 +105,10 @@
     <loc>https://naodeng.tech/categories/restassured/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
-    <loc>https://naodeng.tech/series/</loc>
-    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-  </url><url>
     <loc>https://naodeng.tech/tags/setting-up-environment/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/categories/supertest/</loc>
-    <lastmod>2023-11-29T11:23:00+08:00</lastmod>
-  </url><url>
-    <loc>https://naodeng.tech/tags/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
   </url><url>
     <loc>https://naodeng.tech/tags/command-line-option/</loc>

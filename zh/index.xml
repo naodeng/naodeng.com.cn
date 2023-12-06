@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于我的文章被抄袭的声明</title>
+      <link>https://naodeng.tech/zh/posts/others/article-plagiarism-statement/</link>
+      <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/zh/posts/others/article-plagiarism-statement/</guid>
+      <description>这篇博文是关于我的文章被抄袭的声明。</description>
+    </item>
+    
     <item>
       <title>一个针对于不同框架和不同开发语言的接口自动化测试教程合集</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>

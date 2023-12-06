@@ -11,7 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Declaration Regarding Plagiarism of My Articles</title>
+      <link>https://naodeng.tech/posts/others/article-plagiarism-statement/</link>
+      <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
+      
+      <guid>https://naodeng.tech/posts/others/article-plagiarism-statement/</guid>
+      <description>This blog post is a statement on the plagiarism of my articles.</description>
+    </item>
+    
     <item>
       <title>A collection of tutorials on API automation testing for different frameworks and different development languages</title>
       <link>https://naodeng.tech/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
