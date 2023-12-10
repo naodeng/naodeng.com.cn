@@ -499,6 +499,18 @@
     <loc>https://naodeng.tech/tags/postman-replacement/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
   </url><url>
+    <loc>https://naodeng.tech/posts/api-automation-testing/introduction_of_api_test/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_api_test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.tech/posts/api-automation-testing/introduction_of_api_test/"
+                />
+  </url><url>
     <loc>https://naodeng.tech/archives/</loc>
     <xhtml:link
                 rel="alternate"
