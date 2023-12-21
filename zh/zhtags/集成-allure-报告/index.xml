@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>集成 allure 报告 on Nao&#39;s Blog</title>
     <link>https://naodeng.tech/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%8A%A5%E5%91%8A/</link>
@@ -11,24 +11,21 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%8A%A5%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.tech/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%8A%A5%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个针对于不同框架和不同开发语言的接口自动化测试教程合集</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
       <description>这篇博文汇总了关于不同框架和开发语言的接口自动化测试教程，为读者提供全面的学习资源。涵盖了各种流行测试框架和编程语言，让您能够选择适合自己项目的最佳方案。无论您是 Python、Java、JavaScript 还是其他语言的开发者，无论您偏好使用的是 REST Assured、SuperTest 还是其他框架，这个合集都将为您提供深入的学习指南，帮助您在接口自动化测试领域更加游刃有余。不容错过的资源，助您全面掌握接口自动化测试的各种工具和技术。</description>
     </item>
-    
     <item>
       <title>Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
       <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</guid>
       <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。</description>
     </item>
-    
   </channel>
 </rss>

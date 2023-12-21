@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据驱动 on Nao&#39;s Blog</title>
     <link>https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
@@ -11,42 +11,35 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.tech/zh/zhtags/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个针对于不同框架和不同开发语言的接口自动化测试教程合集</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
       <description>这篇博文汇总了关于不同框架和开发语言的接口自动化测试教程，为读者提供全面的学习资源。涵盖了各种流行测试框架和编程语言，让您能够选择适合自己项目的最佳方案。无论您是 Python、Java、JavaScript 还是其他语言的开发者，无论您偏好使用的是 REST Assured、SuperTest 还是其他框架，这个合集都将为您提供深入的学习指南，帮助您在接口自动化测试领域更加游刃有余。不容错过的资源，助您全面掌握接口自动化测试的各种工具和技术。</description>
     </item>
-    
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</link>
       <pubDate>Fri, 24 Nov 2023 19:37:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</guid>
       <description>这篇博文深入研究 Postman 接口自动化测试的高级技巧，专注于数据文件驱动和环境变量数据驱动。学习如何通过外部数据文件和灵活的环境变量，优雅地进行测试数据的驱动，提高测试覆盖率。博文将为您展示如何以更智能的方式管理和利用数据，使测试用例更具可扩展性和灵活性。</description>
     </item>
-    
     <item>
       <title>Pytest 接口自动化测试教程：进阶用法 - 常用断言和数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</guid>
       <description>深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 常用断言和数据驱动。</description>
     </item>
-    
     <item>
       <title>SuperTest 接口自动化测试教程：进阶用法 - 数据驱动</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</link>
       <pubDate>Thu, 09 Nov 2023 18:06:50 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</guid>
       <description>专注于 SuperTest 的高级用法，侧重于数据驱动测试。您将学习如何通过数据参数化来扩展和优化您的 SuperTest 测试套件，提高测试覆盖率。</description>
     </item>
-    
   </channel>
 </rss>

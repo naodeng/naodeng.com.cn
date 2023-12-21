@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Nao&#39;s Blog</title>
     <link>https://naodeng.tech/categories/</link>
@@ -11,114 +11,91 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.tech/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Others</title>
       <link>https://naodeng.tech/categories/others/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/others/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>API Automation Testing</title>
       <link>https://naodeng.tech/categories/api-automation-testing/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/api-automation-testing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bruno</title>
       <link>https://naodeng.tech/categories/bruno/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/bruno/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Postman</title>
       <link>https://naodeng.tech/categories/postman/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/postman/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Pytest</title>
       <link>https://naodeng.tech/categories/pytest/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/pytest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>RestAssured</title>
       <link>https://naodeng.tech/categories/restassured/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/restassured/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SuperTest</title>
       <link>https://naodeng.tech/categories/supertest/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/supertest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>REST Assured</title>
       <link>https://naodeng.tech/categories/rest-assured/</link>
       <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/rest-assured/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Gatling</title>
       <link>https://naodeng.tech/categories/gatling/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/gatling/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Performance testing</title>
       <link>https://naodeng.tech/categories/performance-testing/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
-      
       <guid>https://naodeng.tech/categories/performance-testing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>接口测试</title>
       <link>https://naodeng.tech/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://naodeng.tech/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>测试工具</title>
       <link>https://naodeng.tech/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://naodeng.tech/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

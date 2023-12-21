@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>常用测试脚本 on Nao&#39;s Blog</title>
     <link>https://naodeng.tech/zh/zhtags/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
@@ -11,15 +11,14 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 23 Nov 2023 17:37:00 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Nov 2023 17:37:00 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.tech/zh/zhtags/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例</title>
       <link>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</link>
       <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</guid>
       <description>深入研究 Postman 接口自动化测试的高级用法，专注于常用的测试脚本和第三方包示例。探讨如何编写强大的测试脚本，涵盖各种测试场景，并介绍一些常用的第三方包，优化测试流程。</description>
     </item>
-    
   </channel>
 </rss>

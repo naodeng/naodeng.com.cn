@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>文章版权 on Nao&#39;s Blog</title>
     <link>https://naodeng.tech/zh/zhtags/%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83/</link>
@@ -11,15 +11,14 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate><atom:link href="https://naodeng.tech/zh/zhtags/%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.tech/zh/zhtags/%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于我的文章被抄袭的声明</title>
       <link>https://naodeng.tech/zh/posts/others/article-plagiarism-statement/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
-      
       <guid>https://naodeng.tech/zh/posts/others/article-plagiarism-statement/</guid>
       <description>这篇博文是关于我的文章被抄袭的声明。</description>
     </item>
-    
   </channel>
 </rss>
