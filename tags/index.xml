@@ -2,225 +2,225 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Nao&#39;s Blog</title>
-    <link>https://naodeng.tech/tags/</link>
+    <link>https://naodeng.com.cn/tags/</link>
     <description>Recent content in Tags on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.tech/papermod-cover.png</url>
-      <link>https://naodeng.tech/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Article copyright</title>
-      <link>https://naodeng.tech/tags/article-copyright/</link>
+      <link>https://naodeng.com.cn/tags/article-copyright/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/article-copyright/</guid>
+      <guid>https://naodeng.com.cn/tags/article-copyright/</guid>
       <description></description>
     </item>
     <item>
       <title>Building a API Automation Test project from 0 to 1</title>
-      <link>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</link>
+      <link>https://naodeng.com.cn/tags/building-a-api-automation-test-project-from-0-to-1/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/building-a-api-automation-test-project-from-0-to-1/</guid>
+      <guid>https://naodeng.com.cn/tags/building-a-api-automation-test-project-from-0-to-1/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Driven</title>
-      <link>https://naodeng.tech/tags/data-driven/</link>
+      <link>https://naodeng.com.cn/tags/data-driven/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/data-driven/</guid>
+      <guid>https://naodeng.com.cn/tags/data-driven/</guid>
       <description></description>
     </item>
     <item>
       <title>Getting Started</title>
-      <link>https://naodeng.tech/tags/getting-started/</link>
+      <link>https://naodeng.com.cn/tags/getting-started/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/getting-started/</guid>
+      <guid>https://naodeng.com.cn/tags/getting-started/</guid>
       <description></description>
     </item>
     <item>
       <title>Integration Allure Report</title>
-      <link>https://naodeng.tech/tags/integration-allure-report/</link>
+      <link>https://naodeng.com.cn/tags/integration-allure-report/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/integration-allure-report/</guid>
+      <guid>https://naodeng.com.cn/tags/integration-allure-report/</guid>
       <description></description>
     </item>
     <item>
       <title>Multiple Environment Support</title>
-      <link>https://naodeng.tech/tags/multiple-environment-support/</link>
+      <link>https://naodeng.com.cn/tags/multiple-environment-support/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/multiple-environment-support/</guid>
+      <guid>https://naodeng.com.cn/tags/multiple-environment-support/</guid>
       <description></description>
     </item>
     <item>
       <title>Setting Up Environment</title>
-      <link>https://naodeng.tech/tags/setting-up-environment/</link>
+      <link>https://naodeng.com.cn/tags/setting-up-environment/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/setting-up-environment/</guid>
+      <guid>https://naodeng.com.cn/tags/setting-up-environment/</guid>
       <description></description>
     </item>
     <item>
       <title>command line option</title>
-      <link>https://naodeng.tech/tags/command-line-option/</link>
+      <link>https://naodeng.com.cn/tags/command-line-option/</link>
       <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/command-line-option/</guid>
+      <guid>https://naodeng.com.cn/tags/command-line-option/</guid>
       <description></description>
     </item>
     <item>
       <title>file upload</title>
-      <link>https://naodeng.tech/tags/file-upload/</link>
+      <link>https://naodeng.com.cn/tags/file-upload/</link>
       <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/file-upload/</guid>
+      <guid>https://naodeng.com.cn/tags/file-upload/</guid>
       <description></description>
     </item>
     <item>
       <title>SSL certificate</title>
-      <link>https://naodeng.tech/tags/ssl-certificate/</link>
+      <link>https://naodeng.com.cn/tags/ssl-certificate/</link>
       <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/ssl-certificate/</guid>
+      <guid>https://naodeng.com.cn/tags/ssl-certificate/</guid>
       <description></description>
     </item>
     <item>
       <title>Common Test Scripts</title>
-      <link>https://naodeng.tech/tags/common-test-scripts/</link>
+      <link>https://naodeng.com.cn/tags/common-test-scripts/</link>
       <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/common-test-scripts/</guid>
+      <guid>https://naodeng.com.cn/tags/common-test-scripts/</guid>
       <description></description>
     </item>
     <item>
       <title>Third-Party Packages</title>
-      <link>https://naodeng.tech/tags/third-party-packages/</link>
+      <link>https://naodeng.com.cn/tags/third-party-packages/</link>
       <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/third-party-packages/</guid>
+      <guid>https://naodeng.com.cn/tags/third-party-packages/</guid>
       <description></description>
     </item>
     <item>
       <title>Concurrent testing</title>
-      <link>https://naodeng.tech/tags/concurrent-testing/</link>
+      <link>https://naodeng.com.cn/tags/concurrent-testing/</link>
       <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/concurrent-testing/</guid>
+      <guid>https://naodeng.com.cn/tags/concurrent-testing/</guid>
       <description></description>
     </item>
     <item>
       <title>Distributed testing</title>
-      <link>https://naodeng.tech/tags/distributed-testing/</link>
+      <link>https://naodeng.com.cn/tags/distributed-testing/</link>
       <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/distributed-testing/</guid>
+      <guid>https://naodeng.com.cn/tags/distributed-testing/</guid>
       <description></description>
     </item>
     <item>
       <title>Filtering test case</title>
-      <link>https://naodeng.tech/tags/filtering-test-case/</link>
+      <link>https://naodeng.com.cn/tags/filtering-test-case/</link>
       <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/filtering-test-case/</guid>
+      <guid>https://naodeng.com.cn/tags/filtering-test-case/</guid>
       <description></description>
     </item>
     <item>
       <title>Assertions</title>
-      <link>https://naodeng.tech/tags/assertions/</link>
+      <link>https://naodeng.com.cn/tags/assertions/</link>
       <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/assertions/</guid>
+      <guid>https://naodeng.com.cn/tags/assertions/</guid>
       <description></description>
     </item>
     <item>
       <title>Advanced Usage</title>
-      <link>https://naodeng.tech/tags/advanced-usage/</link>
+      <link>https://naodeng.com.cn/tags/advanced-usage/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/advanced-usage/</guid>
+      <guid>https://naodeng.com.cn/tags/advanced-usage/</guid>
       <description></description>
     </item>
     <item>
       <title>Filters</title>
-      <link>https://naodeng.tech/tags/filters/</link>
+      <link>https://naodeng.com.cn/tags/filters/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/filters/</guid>
+      <guid>https://naodeng.com.cn/tags/filters/</guid>
       <description></description>
     </item>
     <item>
       <title>Logging</title>
-      <link>https://naodeng.tech/tags/logging/</link>
+      <link>https://naodeng.com.cn/tags/logging/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/logging/</guid>
+      <guid>https://naodeng.com.cn/tags/logging/</guid>
       <description></description>
     </item>
     <item>
       <title>Validating Responses</title>
-      <link>https://naodeng.tech/tags/validating-responses/</link>
+      <link>https://naodeng.com.cn/tags/validating-responses/</link>
       <pubDate>Fri, 03 Nov 2023 09:25:19 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/validating-responses/</guid>
+      <guid>https://naodeng.com.cn/tags/validating-responses/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance Scenario Setting</title>
-      <link>https://naodeng.tech/tags/performance-scenario-setting/</link>
+      <link>https://naodeng.com.cn/tags/performance-scenario-setting/</link>
       <pubDate>Thu, 26 Oct 2023 18:07:44 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/performance-scenario-setting/</guid>
+      <guid>https://naodeng.com.cn/tags/performance-scenario-setting/</guid>
       <description></description>
     </item>
     <item>
       <title>Test report</title>
-      <link>https://naodeng.tech/tags/test-report/</link>
+      <link>https://naodeng.com.cn/tags/test-report/</link>
       <pubDate>Thu, 26 Oct 2023 18:07:44 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/test-report/</guid>
+      <guid>https://naodeng.com.cn/tags/test-report/</guid>
       <description></description>
     </item>
     <item>
       <title>Building a performance Test project from 0 to 1</title>
-      <link>https://naodeng.tech/tags/building-a-performance-test-project-from-0-to-1/</link>
+      <link>https://naodeng.com.cn/tags/building-a-performance-test-project-from-0-to-1/</link>
       <pubDate>Wed, 25 Oct 2023 11:05:45 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/building-a-performance-test-project-from-0-to-1/</guid>
+      <guid>https://naodeng.com.cn/tags/building-a-performance-test-project-from-0-to-1/</guid>
       <description></description>
     </item>
     <item>
       <title>Bruno</title>
-      <link>https://naodeng.tech/tags/bruno/</link>
+      <link>https://naodeng.com.cn/tags/bruno/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/bruno/</guid>
+      <guid>https://naodeng.com.cn/tags/bruno/</guid>
       <description></description>
     </item>
     <item>
       <title>Bruno cli</title>
-      <link>https://naodeng.tech/tags/bruno-cli/</link>
+      <link>https://naodeng.com.cn/tags/bruno-cli/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/bruno-cli/</guid>
+      <guid>https://naodeng.com.cn/tags/bruno-cli/</guid>
       <description></description>
     </item>
     <item>
       <title>postman</title>
-      <link>https://naodeng.tech/tags/postman/</link>
+      <link>https://naodeng.com.cn/tags/postman/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/postman/</guid>
+      <guid>https://naodeng.com.cn/tags/postman/</guid>
       <description></description>
     </item>
     <item>
       <title>postman migration</title>
-      <link>https://naodeng.tech/tags/postman-migration/</link>
+      <link>https://naodeng.com.cn/tags/postman-migration/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/postman-migration/</guid>
+      <guid>https://naodeng.com.cn/tags/postman-migration/</guid>
       <description></description>
     </item>
     <item>
       <title>postman replacement</title>
-      <link>https://naodeng.tech/tags/postman-replacement/</link>
+      <link>https://naodeng.com.cn/tags/postman-replacement/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>https://naodeng.tech/tags/postman-replacement/</guid>
+      <guid>https://naodeng.com.cn/tags/postman-replacement/</guid>
       <description></description>
     </item>
     <item>
       <title>接口测试介绍</title>
-      <link>https://naodeng.tech/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://naodeng.com.cn/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://naodeng.tech/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://naodeng.com.cn/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</guid>
       <description></description>
     </item>
     <item>
       <title>CI/CD Integration</title>
-      <link>https://naodeng.tech/tags/ci/cd-integration/</link>
+      <link>https://naodeng.com.cn/tags/ci/cd-integration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://naodeng.tech/tags/ci/cd-integration/</guid>
+      <guid>https://naodeng.com.cn/tags/ci/cd-integration/</guid>
       <description></description>
     </item>
   </channel>

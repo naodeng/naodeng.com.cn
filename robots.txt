@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://naodeng.tech/sitemap.xml
+Sitemap: https://naodeng.com.cn/sitemap.xml

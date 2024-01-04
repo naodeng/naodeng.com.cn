@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Article copyright on Nao&#39;s Blog</title>
-    <link>https://naodeng.tech/tags/article-copyright/</link>
+    <link>https://naodeng.com.cn/tags/article-copyright/</link>
     <description>Recent content in Article copyright on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.tech/papermod-cover.png</url>
-      <link>https://naodeng.tech/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 06 Dec 2023 14:22:50 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.tech/tags/article-copyright/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/article-copyright/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Declaration Regarding Plagiarism of My Articles</title>
-      <link>https://naodeng.tech/posts/others/article-plagiarism-statement/</link>
+      <link>https://naodeng.com.cn/posts/others/article-plagiarism-statement/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
-      <guid>https://naodeng.tech/posts/others/article-plagiarism-statement/</guid>
+      <guid>https://naodeng.com.cn/posts/others/article-plagiarism-statement/</guid>
       <description>This blog post is a statement on the plagiarism of my articles.</description>
     </item>
   </channel>

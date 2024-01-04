@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>入门介绍 on Nao&#39;s Blog</title>
-    <link>https://naodeng.tech/zh/zhtags/%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/</link>
+    <link>https://naodeng.com.cn/zh/zhtags/%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/</link>
     <description>Recent content in 入门介绍 on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.tech/papermod-cover.png</url>
-      <link>https://naodeng.tech/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.tech/zh/zhtags/%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个针对于不同框架和不同开发语言的接口自动化测试教程合集</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
       <description>这篇博文汇总了关于不同框架和开发语言的接口自动化测试教程，为读者提供全面的学习资源。涵盖了各种流行测试框架和编程语言，让您能够选择适合自己项目的最佳方案。无论您是 Python、Java、JavaScript 还是其他语言的开发者，无论您偏好使用的是 REST Assured、SuperTest 还是其他框架，这个合集都将为您提供深入的学习指南，帮助您在接口自动化测试领域更加游刃有余。不容错过的资源，助您全面掌握接口自动化测试的各种工具和技术。</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
       <pubDate>Tue, 21 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
       <description>关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写</description>
     </item>
     <item>
       <title>Pytest 接口自动化测试教程：入门介绍和环境搭建准备</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Mon, 13 Nov 2023 18:11:15 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</guid>
       <description>包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Pytest 以及如何开始使用它来进行 API 测试。</description>
     </item>
     <item>
       <title>SuperTest 接口自动化测试教程：入门介绍和环境搭建准备</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</link>
       <pubDate>Sun, 05 Nov 2023 10:36:26 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</guid>
       <description>关于 Supertest 的教程，主要包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 Supertest 以及如何开始使用它来进行 API 测试。</description>
     </item>
     <item>
       <title>REST Assured 接口自动化测试教程：入门介绍和环境搭建准备</title>
-      <link>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</link>
       <pubDate>Wed, 01 Nov 2023 16:24:49 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</guid>
       <description>包括入门介绍和环境搭建准备。在博客中，读者将了解什么是 REST Assured 以及如何开始使用它来进行 API 测试。教程将涵盖 REST Assured 的基本概念，包括如何设置测试环境，准备所需的工具和资源，以便读者可以开始编写和执行他们自己的 API 测试。</description>
     </item>
     <item>
       <title>gatling 性能测试教程：入门介绍</title>
-      <link>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</link>
+      <link>https://naodeng.com.cn/zh/posts/performance-testing/gatling-tool-intro1/</link>
       <pubDate>Tue, 24 Oct 2023 17:44:53 +0800</pubDate>
-      <guid>https://naodeng.tech/zh/posts/performance-testing/gatling-tool-intro1/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/performance-testing/gatling-tool-intro1/</guid>
       <description>文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来</description>
     </item>
   </channel>
