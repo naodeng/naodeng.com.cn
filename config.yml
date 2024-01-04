@@ -1,4 +1,4 @@
-baseURL: "https://naodeng.tech/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
+baseURL: "https://naodeng.com.cn/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 title: Nao's Blog
 paginate: 7
 defaultContentLanguage: en
@@ -117,7 +117,7 @@ params:
             
             - 🌱 I’m currently learning **Airtest**
             
-            - 📝 I regularly write articles on [https://naodeng.tech/](https://naodeng.tech)
+            - 📝 I regularly write articles on [https://naodeng.com.cn/](https://naodeng.com.cn)
             
             - 📫 How to reach me **dengnao@gmail.com**
             
@@ -134,7 +134,7 @@ params:
           url: "index.xml"
 
     editPost:
-        URL: "https://github.com/naodeng/naodeng.tech/tree/main/content"
+        URL: "https://github.com/naodeng/naodeng.com.cn/tree/main/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
