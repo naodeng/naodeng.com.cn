@@ -14,7 +14,7 @@ pygmentsUseClasses: true
 googleAnalytics: G-JBX883ZDJJ
 
 minify:
-    disableXML: true
+    disableXML: false
     # minifyOutput: true
 
 languages:
