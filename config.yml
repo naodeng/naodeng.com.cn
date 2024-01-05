@@ -75,6 +75,7 @@ outputs:
         - HTML
         - RSS
         - JSON
+        - sitemap
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
