@@ -13,6 +13,10 @@ enableEmoji: true
 pygmentsUseClasses: true
 googleAnalytics: G-JBX883ZDJJ
 
+sitemap:
+  changefreq: daily
+  priority: 0.8
+
 minify:
   disableCSS: false
   disableHTML: false
