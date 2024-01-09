@@ -111,13 +111,13 @@ languages:
             Content: >
               欢迎来到软件测试同学的博客。
 
-              - 🔭 我目前参与的自动化测试启动项目 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
+              - 我目前参与的自动化测试启动项目 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
               
-              - 🌱 我目前正在学习 **K6**
+              - 我目前正在学习 **K6**
 
-              - 📝 微信公众号: **软件测试同学**
+              - 微信公众号: **软件测试同学**
               
-              - 📫 联系我 **dengnao@gmail.com**
+              - 联系我 **dengnao@gmail.com**
 
 outputs:
     home:
@@ -162,15 +162,15 @@ params:
         Content: >
             Welcome to Nao's Blog.
 
-            - 🔭 I’m currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
+            - I’m currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
             
-            - 🌱 I’m currently learning **K6**
+            - I’m currently learning **K6**
             
-            - 📝 I regularly write articles on [https://naodeng.com.cn/](https://naodeng.com.cn)
+            - I regularly write articles on [https://naodeng.com.cn/](https://naodeng.com.cn)
             
-            - 📫 How to reach me **dengnao@gmail.com**
+            - How to reach me **dengnao@gmail.com**
             
-            - ⚡ Fun fact **Quality Analyst**
+            - Fun fact **Quality Analyst**
 
     socialIcons:
         - name: github
