@@ -75,13 +75,13 @@ languages:
                 - name: Series
                   url: series/
                   weight: 10
-                - name: Dashboard
-                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+                # - name: Dashboard
+                #   url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
 
     zh:
         languageName: "🇨🇳中文"
         weight: 2
-        title: Nao's Blog
+        title: 软件测试同学
         taxonomies:
           category: ZHcategories
           tag: ZHtags
@@ -103,15 +103,27 @@ languages:
                 - name: 系列
                   url: zhseries
                   weight: 10
-                - name: 网站统计
-                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+                # - name: 网站统计
+                #   url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+        Params:
+         homeInfoParams:
+            Title: "软件测试同学的博客"
+            Content: >
+              欢迎来到软件测试同学的博客。
+
+              - 🔭 我目前参与的自动化测试启动项目 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
+              
+              - 🌱 我目前正在学习 **K6**
+
+              - 📝 微信公众号: **软件测试同学**
+              
+              - 📫 联系我 **dengnao@gmail.com**
 
 outputs:
     home:
         - HTML
         - RSS
         - JSON
-        - sitemap
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -152,7 +164,7 @@ params:
 
             - 🔭 I’m currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
             
-            - 🌱 I’m currently learning **Airtest**
+            - 🌱 I’m currently learning **K6**
             
             - 📝 I regularly write articles on [https://naodeng.com.cn/](https://naodeng.com.cn)
             
