@@ -1,6 +1,6 @@
 ---
 author:  "nao.deng"
-title:  "A collection of tutorials on API automation testing for different frameworks and different development languages"
+title:  "API Testing Tutorial for Beginners: different frameworks and different development languages"
 date: "2023-11-29T11:23:00+08:00"
 summary: "This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you're a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing."
 tags: ["Getting Started","Setting Up Environment","Building a API Automation Test project from 0 to 1","Multiple Environment Support","Integration Allure Report","Data Driven","CI/CD Integration"]
