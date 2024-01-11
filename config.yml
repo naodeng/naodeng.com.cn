@@ -156,6 +156,7 @@ params:
         SiteVerificationTag: "google5e9a7c9479924ed2"
       baidu:
         SiteVerificationTag: "codeva-2siuZUJUWf"
+        tongjicode: "93a34d905469b810e5bae990720e7139"
 
     homeInfoParams:
         Title: "Nao's Blog"
