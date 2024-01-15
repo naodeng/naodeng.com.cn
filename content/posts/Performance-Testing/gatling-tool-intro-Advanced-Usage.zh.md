@@ -18,7 +18,7 @@ ShowWordCount: true
 > 性能测试执行结束后打开详细的 html 报告，可以看到详细的性能测试报告；
 > 可通过指标、活跃用户和随时间变化的请求/响应以及分布来分析您的报告
 
-![readme-test-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report1.png)
+![readme-test-report1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report1.png)
 
 - 页面中间标题处显示 Simulation 的名字
 - 左侧的列表展示不同类型的报告菜单，可点击切换
@@ -28,7 +28,7 @@ ShowWordCount: true
 
 ##### 请求数&响应时间分布图
 
-![readme-test-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report2.png)
+![readme-test-report2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report2.png)
 
 此图表展示了响应时间在标准范围内的分布情况
 左侧的列表显示所有的请求以及请求响应的时间分布，红色代表失败的请求
@@ -38,7 +38,7 @@ ShowWordCount: true
 
 ##### 请求标准统计分析图
 
-![readme-test-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report3.png)
+![readme-test-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report3.png)
 
 此图表显示了一些标准统计数据，例如全局和每个请求的最小值、最大值、平均值、标准差和百分位数。
 stats 显示了所有请求具体的成功失败情况 OK 代表成功，KO 代表失败，百分比 99th pct 代表对于这一个 API 总的请求中有百分之 99 的请求 response time 是这个数值
@@ -47,31 +47,31 @@ stats 显示了所有请求具体的成功失败情况 OK 代表成功，KO 代�
 
 ##### 活跃用户数统计图
 
-![readme-test-report4](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report4.png)
+![readme-test-report4](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report4.png)
 
 此图表展示了活跃用户数指的是在测试时间段内，正在进行请求的用户数。在测试开始时，活跃用户数为 0。当用户开始发送请求时，活跃用户数开始增加。当用户完成请求时，活跃用户数开始减少。活跃用户数的最大值是在测试期间同时发送请求的用户数。
 
 ##### 响应时间分布图
 
-![readme-test-report5](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report5.png)
+![readme-test-report5](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report5.png)
 
 此图表显示了响应时间的分布，包括请求成功的响应时间和请求失败的响应时间。
 
 ##### 响应时间百分位对比图
 
-![readme-test-report6](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report6.png)
+![readme-test-report6](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report6.png)
 
 此图表显示一段时间内的各种响应时间百分位数，但仅适用于成功的请求。由于失败的请求可能会提前结束或由超时引起，因此它们会对百分位数的计算产生巨大影响。
 
 ##### 每秒请求数图
 
-![readme-test-report7](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report7.png)
+![readme-test-report7](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report7.png)
 
 此图表展示了每秒的请求数，包括成功的请求数和失败的请求数。
 
 ##### 每秒响应数图
 
-![readme-test-report8](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report8.png)
+![readme-test-report8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report8.png)
 
 此图表展示了每秒的响应数，包括成功的响应数和失败的响应数。
 
@@ -79,7 +79,7 @@ stats 显示了所有请求具体的成功失败情况 OK 代表成功，KO 代�
 
 > 可点击报告页面上的 details 菜单切换到 details tab 页面，查看单个请求的详细报告
 
-![readme-test-report9](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report9.png)
+![readme-test-report9](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report9.png)
 
 Details 页面主要展示了每个请求的统计数据，与全局报告相似地包括了响应时间分布图，响应时间百分位图，每秒请求数图，每秒响应数图。不同的是最底下有一张图是描述单个请求相对于全局所有请求的响应时间。该图横坐标是每秒全局所有请求数，纵坐标是单个请求的响应时间。
 

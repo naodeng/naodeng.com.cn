@@ -20,7 +20,7 @@ ShowWordCount: true
 > Open the detailed html report after the performance test execution is finished;
 > Your report can be analyzed by metrics, active users and requests/responses over time, as well as distributions
 
-![readme-test-report1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report1.png)
+![readme-test-report1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report1.png)
 
 - The name of Simulation is displayed in the center of the page in the header
 - The list on the left side shows a menu of different types of reports, which can be switched by clicking on them.
@@ -30,7 +30,7 @@ ShowWordCount: true
 
 ##### Response time ranges
 
-![readme-test-report2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report2.png)
+![readme-test-report2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report2.png)
 
 This chart shows the distribution of response times within the standard range
 The list on the left shows all requests and the distribution of request response times, with the red color representing failed requests.
@@ -40,7 +40,7 @@ On the right, Number of requests represents the number of concurrent users, as w
 
 ##### Summary
 
-![readme-test-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report3.png)
+![readme-test-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report3.png)
 
 This chart shows some standard statistics such as minimum, maximum, average, standard deviation and percentile for global and per request.
 stats shows the specific success and failure of all requests OK for success, KO for failure, and 99th pct for 99th percentile response time for total requests for this API.
@@ -49,31 +49,31 @@ stats shows the specific success and failure of all requests OK for success, KO 
 
 ##### Active users over time
 
-![readme-test-report4](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report4.png)
+![readme-test-report4](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report4.png)
 
 This chart shows that the number of active users refers to the number of users who are making requests during the test time period. At the beginning of the test, the number of active users is 0. When users start sending requests, the number of active users starts to increase. When a user completes a request, the number of active users begins to decrease. The maximum number of active users is the number of users sending requests at the same time during the test period.
 
 ##### Response time distribution
 
-![readme-test-report5](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report5.png)
+![readme-test-report5](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report5.png)
 
 This chart shows the distribution of response times, including response times for successful requests and response times for failed requests.
 
 ##### Response time percentiles over time
 
-![readme-test-report6](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report6.png)
+![readme-test-report6](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report6.png)
 
 This chart shows various response time percentiles over time, but only for successful requests. Since failed requests may end early or be caused by timeouts, they can have a huge impact on the percentile calculation.
 
 ##### Requests per second over time
 
-![readme-test-report7](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report7.png)
+![readme-test-report7](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report7.png)
 
 This chart shows the number of requests per second, including the number of successful requests and the number of failed requests.
 
 ##### Response per second over time
 
-![readme-test-report8](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report8.png)
+![readme-test-report8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report8.png)
 
 This chart shows the number of responses per second, including the number of successful responses and the number of failed responses.
 
@@ -81,7 +81,7 @@ This chart shows the number of responses per second, including the number of suc
 
 > You can click the details menu on the report page to switch to the details tab and view a detailed report for a single request.
 
-![readme-test-report9](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-test-report9.png)
+![readme-test-report9](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report9.png)
 
 The Details page primarily shows per-request statistics, and similarly to the global report includes a graph of response time distribution, response time percentile, requests per second, and responses per second. The difference is that there is a graph at the bottom that depicts the response time of a single request relative to all requests globally. The horizontal coordinate of this graph is the number of all requests per second globally, and the vertical coordinate is the response time of a single request.
 

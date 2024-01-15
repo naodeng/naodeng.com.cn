@@ -68,7 +68,7 @@ jobs:
 - Commit the code: Add the gatling.yml file to your repository and commit.
 - View the test report: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Performance Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
 
-![readme-github-action-gradle](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-github-action-gradle.png)
+![readme-github-action-gradle](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-gradle.png)
 
 ##### Maven + Scala version
 
@@ -123,7 +123,7 @@ jobs:
 - Commit the code: Add the gatling.yml file to your repository and commit.
 - View the test report: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Performance Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
 
-![readme-github-action-maven](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-github-action-maven.png)
+![readme-github-action-maven](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-maven.png)
 
 ## reference
 

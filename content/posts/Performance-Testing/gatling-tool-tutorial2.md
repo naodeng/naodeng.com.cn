@@ -70,7 +70,7 @@ gradle build
 
 - Initialization complete: After completing the wizard, Gradle will generate a basic Gradle project structure in the project directory
   
-![readme-project-tree1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-project-tree1.png)
+![readme-project-tree1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree1.png)
 
 #### Initialization Directory
   
@@ -130,7 +130,7 @@ Execute the following command to run the test script and view the report
 gradle gatlingRun
 ```
 
-![readme-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report3.png)
+![readme-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png)
 
 ### Maven + Scala version
 
@@ -142,7 +142,7 @@ mvn archetype:generate -DgroupId=demo.gatlin.maven -DartifactId=gatling-maven-de
 
 Initialization complete: After completing the wizard, Maven will create a new project directory and generate a basic Maven project structure in the
   
-![readme-project-tree2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-project-tree2.png)
+![readme-project-tree2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree2.png)
 
 #### Configure the project pom.xml
 
@@ -257,4 +257,4 @@ Execute the following command to run the test script and view the report
 mvn gatling:test
 ```
 
-![readme-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report3.png)
+![readme-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png)

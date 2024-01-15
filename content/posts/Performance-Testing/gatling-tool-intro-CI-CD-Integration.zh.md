@@ -68,7 +68,7 @@ jobs:
 - 提交代码：将 gatling.yml 文件添加到仓库中并提交。
 - 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Performance Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
 
-![readme-github-action-gradle](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-github-action-gradle.png)
+![readme-github-action-gradle](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-gradle.png)
 
 ##### Maven + Scala 版本
 
@@ -123,7 +123,7 @@ jobs:
 - 提交代码：将 gatling.yml 文件添加到仓库中并提交。
 - 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Performance Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
 
-![readme-github-action-maven](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-github-action-maven.png)
+![readme-github-action-maven](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-maven.png)
 
 
 ## 参考

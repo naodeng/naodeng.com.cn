@@ -69,7 +69,7 @@ gradle build
 
 - 初始化完成：完成向导后，Gradle 将在项目目录中生成一个基本的 Gradle 项目结构
   
-![readme-project-tree1](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-project-tree1.png)
+![readme-project-tree1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree1.png)
 
 #### 初始化目录
   
@@ -129,7 +129,7 @@ class demo extends Simulation {
 gradle gatlingRun
 ```
 
-![readme-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report3.png)
+![readme-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png)
 
 ### Maven + Scala 版本
 
@@ -141,7 +141,7 @@ mvn archetype:generate -DgroupId=demo.gatlin.maven -DartifactId=gatling-maven-de
 
 初始化完成：完成向导后，Maven 将在新建项目目录并生成一个基本的 Maven 项目结构
   
-![readme-project-tree2](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-project-tree2.png)
+![readme-project-tree2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree2.png)
 
 #### 配置项目 pom.xml
 
@@ -256,4 +256,4 @@ class demo extends Simulation {
 mvn gatling:test
 ```
 
-![readme-report3](https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter/raw/main/readme-pic/readme-report3.png)
+![readme-report3](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png)
