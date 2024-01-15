@@ -10,19 +10,10 @@ ShareButtons: false
 hideMeta: true
 showToC: false
 ---
-### Sponsors 赞助者
-
-Support me by becoming a sponsor
-
-If you like my Website content, you can buy me a coffee.
-
-支持我来成为一个赞助者
-
-如果您喜欢我的网站内容，可以请我喝咖啡。
+## How to Sponsor 如何赞助
 
 <!-- markdownlint-disable MD033 -->
 <p align="center">
-<!-- markdownlint-disable MD033 -->
 <a href="https://www.buymeacoffee.com/naodeng" target="_blank" rel="noopener noreferrer" align="center"><img src="https://cdn.buymeacoffee.com/buttons/lato-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;"></a>
 <!-- markdownlint-enable MD033 -->
 </p>
@@ -34,19 +25,27 @@ If you like my Website content, you can buy me a coffee.
 
 <p align="center">
   buy me a coffee<br>
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bmc_qr.png" width="500" height="500" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bmc_qr.png" width="400" height="400" />
 </p>
 
 <p align="center">
   微信<br>
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/IMG_4374.jpg" width="500" height="500" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/IMG_4374.jpg" width="400" height="400" />
 </p>
 <p align="center">
   支付宝<br>
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/IMG_4376.jpg" width="500" height="500" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/IMG_4376.jpg" width="400" height="400" />
 </p>
 
-### Sponsor List 赞助者列表
+Support me by becoming a sponsor
+
+If you like my Website content, you can buy me a coffee.
+
+支持我来成为一个赞助者
+
+如果您喜欢我的网站内容，可以请我喝咖啡。
+
+## Sponsor List 赞助者列表
 
 The stage is set, thanks for the support!
 
