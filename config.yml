@@ -119,6 +119,8 @@ languages:
               
               - 联系我 **dengnao@gmail.com**
 
+              - 赞助我[**成为一个支持者**](https://naodeng.com.cn/sponsor)
+
 outputs:
     home:
         - HTML
@@ -172,6 +174,8 @@ params:
             - How to reach me **dengnao@gmail.com**
             
             - Fun fact **Quality Analyst**
+
+            - Support me by [**becoming a sponsor**](https://naodeng.com.cn/sponsor)
 
     socialIcons:
         - name: github
