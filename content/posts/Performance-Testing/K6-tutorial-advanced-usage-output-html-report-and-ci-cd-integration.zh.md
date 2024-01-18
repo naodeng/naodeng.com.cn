@@ -3,9 +3,9 @@ author:  "nao.deng"
 title:  "K6 性能测试教程 - 进阶用法：输出 html 报告和 集成 CI/CD"
 date: "2024-01-20T17:10:00+08:00"
 summary:  "这篇博文深入介绍了 K6 性能测试工具的进阶用法，特别聚焦在输出 HTML 报告和 CI/CD 集成方面。读者将学到如何利用 K6 生成详细的 HTML 测试报告，以直观展示性能测试结果和趋势。此外，博文还涵盖了如何在 CI/CD 流程中集成 K6，确保性能测试成为开发流程的一部分，提前发现和解决潜在性能问题。通过学习这些高级用法，读者能够更全面地利用 K6 来进行性能测试，有效地提升应用程序的性能和稳定性。"
-tags: ["进阶用法", "html 报告", "集成 CI/CD", "github actions"]
-categories: ["性能测试", "k6"]
-series: ["K6 性能测试教程"]
+ZHtags: ["进阶用法", "html 报告", "集成 CI/CD", "github actions"]
+ZHcategories: ["性能测试", "k6"]
+ZHseries: ["K6 性能测试教程"]
 ShowWordCount: true
 ---
 
