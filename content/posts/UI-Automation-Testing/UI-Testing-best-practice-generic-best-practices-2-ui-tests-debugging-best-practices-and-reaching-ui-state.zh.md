@@ -13,7 +13,7 @@ ShowWordCount: true
 
 ## UI 测试调试最佳实践
 
-原文链接：<https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/ui-tests-debugging-best-practices.md>
+原文链接：<https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/ui-tests-debugging-best-practices.md>
 
 在转向 Cypress 之前，我通常使用 Puppeteer 编写 UI 测试。理解浏览器中发生的事情、了解正在运行的测试以及调试测试都不是简单的任务，因此我开始采取一系列解决方案来帮助我应对整个流程。
 
@@ -133,7 +133,7 @@ await page.evaluate(() => {debugger;});
 
 ## 在测试中达到 UI 状态而无需使用 UI
 
-原文链接：<https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/reaching-ui-state.md>
+原文链接：<https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/reaching-ui-state.md>
 
 ### 一段简要说明
 

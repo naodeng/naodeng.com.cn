@@ -13,7 +13,7 @@ ShowWordCount: true
 
 ## 等待，不要休眠
 
-原文链接：<https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.md>
+原文链接：<https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.md>
 
 ### 一段简要说明
 
@@ -97,7 +97,7 @@ _由 [NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/a
 
 ## 明智地为测试文件命名
 
-原文链接：<https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/name-test-files-wisely.md>
+原文链接：<https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/name-test-files-wisely.md>
 
 ### 一段简要说明
 
