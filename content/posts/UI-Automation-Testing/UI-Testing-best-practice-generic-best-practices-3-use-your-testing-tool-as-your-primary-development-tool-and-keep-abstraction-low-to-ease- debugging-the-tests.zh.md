@@ -72,15 +72,15 @@ ShowWordCount: true
 将其与出色的用户界面结合起来，你就可以准备好直接使用 Cypress 开发应用程序。下面你可以看到 Cypress 用户界面的一些截图，展示了将其作为主要开发工具使用的简便性。
 
 **浏览器选择**
-![Cypress 浏览器选择](../../assets/images/use-your-testing-tool-as-your-primary-development-tool/browser-selection.png
+![Cypress 浏览器选择](https://github.com/naodeng/ui-testing-best-practices/blob/master/assets/images/use-your-testing-tool-as-your-primary-development-tool/browser-selection.png?raw=true
 "Cypress 浏览器选择")
 
 **Cypress 控制的浏览器开发者工具**
-![Cypress 浏览器开发者工具](../../assets/images/use-your-testing-tool-as-your-primary-development-tool/devtools.jpg
+![Cypress 浏览器开发者工具](https://github.com/naodeng/ui-testing-best-practices/blob/master/assets/images/use-your-testing-tool-as-your-primary-development-tool/devtools.jpg?raw=true
 "Cypress 浏览器开发者工具")
 
 **Cypress [Skip 和 Only UI 插件](https://github.com/bahmutov/cypress-skip-and-only-ui)** 这个工具让你可以直接在 Cypress UI 中为测试添加`.only`或`.skip`。
-![Cypress Skip 和 Only UI](../../assets/images/use-your-testing-tool-as-your-primary-development-tool/skip-and-only.gif
+![Cypress Skip 和 Only UI](https://github.com/naodeng/ui-testing-best-practices/blob/master/assets/images/use-your-testing-tool-as-your-primary-development-tool/skip-and-only.gif?raw=true
 "Cypress Skip 和 Only UI")
 
 **Cypress [观察和重新加载插件](https://github.com/bahmutov/cypress-watch-and-reload)** 此功能使您能够在每次源代码编译时重新运行 Cypress 测试。
@@ -166,7 +166,7 @@ const statements = {
 
 上述每个元素都可能出现问题，即使是经验丰富的开发人员也可能在理解测试失败的原因时感到困扰。
 
-因此，端到端测试是复杂的。Cypress 提高了开发人员的生活质量（在 [一些 UI 测试问题和 Cypress 方法](../tools/ui-testing-problems-cypress.zh.md) 章节中了解更多），但直截了当的代码会极大地帮助。
+因此，端到端测试是复杂的。Cypress 提高了开发人员的生活质量（在 [一些 UI 测试问题和 Cypress 方法](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/tools/ui-testing-problems-cypress.md) 章节中了解更多），但直截了当的代码会极大地帮助。
 
 ### 不使用任何抽象
 
@@ -401,13 +401,13 @@ cy.get('[data-test="Actions list"]').within(() => { // <-- reduce the scope
 - 获取 7 并点击
 - 获取 8 并点击
 
-![Cypress 界面展示 cy.within](https://github.com/naodeng/ui-testing-best-practices/blob/master/assets/images/test-code-with-debugging-in-mind/cy-within.png)
+![Cypress 界面展示 cy.within](https://github.com/naodeng/ui-testing-best-practices/blob/master/assets/images/test-code-with-debugging-in-mind/cy-within.png?raw=true)
 
 再强调一下：Storybook 和 Playwright 已经引入了“步骤（step）”实用程序的概念，该实用程序可以将操作进行分组，而上述建议在 Cypress 中非常实用。
 
 ### 相关章节
 
-- 🔗 [从晦涩难懂的 React 组件测试到简单、易读的版本](/sections//real-life-examples/from-unreadable-react-component-tests-to-simple-ones.md)
+- 🔗 [从晦涩难懂的 React 组件测试到简单、易读的版本](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/from-unreadable-react-component-tests-to-simple-ones.md)
 
 *由 [NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/improving-ui-testss-code-to-ease-debugging-them-later-2478j)进行发表.*
 
