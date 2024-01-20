@@ -127,7 +127,7 @@ await page.evaluate(() => {debugger;});
 
 如果你需要编写 UI 测试，你应该考虑切换到 Cypress 或 TestCafé，因为它们已经被设计成简化你的测试工作。如何实现的呢？通过一系列实用工具和默认行为，以及一系列一流的解决方案，使你能够理解并调试浏览器中发生的情况。请注意，本章中提到的所有 Puppeteer **最佳实践**... **在 Cypress 或 TestCafé 中完全无用** 😉
 
-[一些 UI 测试问题及 Cypress 方法](https://github.com/naodeng/ui-testing-best-practices/blob/master/tools/ui-testing-problems-cypress.zh.md) 和 [前端生产力提升：将 Cypress 作为你的主要开发浏览器](./use-your-testing-tool-as-your-primary-development-tool.zh.md) 这两章包括了 Cypress 一流工具的概述。
+[一些 UI 测试问题及 Cypress 方法](https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/tools/ui-testing-problems-cypress.zh.md) 和 [前端生产力提升：将 Cypress 作为你的主要开发浏览器](https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md) 这两章包括了 Cypress 一流工具的概述。
 
 由[NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/ui-tests-debugging-best-practices-1eg3) 和 [Medium](https://medium.com/@NoriSte/ui-tests-debugging-best-practices-789c4ed4daf6?sk=c6056f124f40b15e09669e5839e9f814)上进行联合发表._
 
@@ -261,7 +261,7 @@ it('Component test: delete right pane and then left', () => {
 
 ### 网络存根记录和回放
 
-这是一种与 UI 集成测试密切相关的高级技术。回顾 UI 集成参考 [1](https://github.com/naodeng/ui-testing-best-practices/blob/master/testing-strategy/component-vs-integration-vs-e2e-testing.zh.md), [2](https://github.com/naodeng/ui-testing-best-practices/blob/master/real-life-examples/test-front-end-with-integration-back-end-with-e2e.zh.md)。
+这是一种与 UI 集成测试密切相关的高级技术。回顾 UI 集成参考 [1](https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/testing-strategy/component-vs-integration-vs-e2e-testing.zh.md), [2](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/test-front-end-with-integration-back-end-with-e2e.md)。
 
 Cypress 允许你对所有网络流量进行存根。我们可以记录来自一个端点的网络数据，并在 UI 每次调用任意服务器时存根该响应。
 
