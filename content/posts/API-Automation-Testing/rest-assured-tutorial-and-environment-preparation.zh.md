@@ -163,3 +163,13 @@ public class RestAssuredDemo {
 在这个示例中，我们使用了 TestNG 测试框架，但你也可以使用其他测试框架，例如 JUnit。确保你的测试类中包含了合适的导入语句，并根据需要进行适当的配置。
 
 这是一个简单的 RestAssured 语法示例，用于执行 GET 请求和验证响应。你可以根据项目的需求和接口的复杂性来构建更复杂的测试用例。
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

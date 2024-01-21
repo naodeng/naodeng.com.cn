@@ -520,4 +520,13 @@ export default function () {
 - [k6 官方网站：https://k6.io/](https://k6.io/)
 - [K6 性能测试快速启动项目：https://github.com/Automation-Test-Starter/K6-Performance-Test-starter/](https://github.com/Automation-Test-Starter/K6-Performance-Test-starter)
 - [K6 性能测试教程：常用功能（1）- HTTP 请求，指标和检查:https://naodeng.com.cn/zh/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/](https://naodeng.com.cn/zh/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/)
-  
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

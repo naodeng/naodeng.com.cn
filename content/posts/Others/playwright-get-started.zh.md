@@ -23,7 +23,7 @@ tags = [
 - 按照提示进行项目初始化
 - 安装完成后的目录结构为
 
-```
+```TEXT
 playwright.config.ts //playwright.config.ts的配置文件
 package.json //node项目的配置文件
 package-lock.json //node项目的配置文件
@@ -116,15 +116,20 @@ demo-todo-app.spec.ts //todo app的测试demo
 ### 命令行调试
 
 - 调试所有测试：
-  ```
+
+  ```Shell
   npx playwright test --debug
   ```
+
 - 调试一个测试文件：
-  ```
+
+  ```Shell
   npx playwright test example.spec.ts --debug
   ```
+
 - 从`test(..`定义的行号调试测试：
-  ```
+
+  ```Shell
   npx playwright test example.spec.ts:42 --debug
   ```
 
@@ -148,6 +153,16 @@ demo-todo-app.spec.ts //todo app的测试demo
 
 - 命令行输入如下命令，就可以打开 html 版本的测试报告
 
-```
+```Shell
 npx playwright show-report
 ```
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

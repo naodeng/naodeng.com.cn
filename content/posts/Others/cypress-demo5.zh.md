@@ -8,9 +8,9 @@ tags = [
 ]
 +++
 
-# Cypress UI 自动化测试框架学习（5）- 命令大全
+## Cypress UI 自动化测试框架学习（5）- 命令大全
 
-## 命令大全
+### 命令大全
 
 - and：创建断言
 - as：创建别名
@@ -92,3 +92,13 @@ tags = [
 - within：将后续命令限制在此元素内
 - wrap：产生传递给 `.wrap()` 的对象
 - writeFile：写入指定内容到文件
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

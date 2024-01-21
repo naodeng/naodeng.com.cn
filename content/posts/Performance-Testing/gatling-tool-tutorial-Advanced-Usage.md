@@ -145,7 +145,6 @@ setUp(
 
 The elements of the Meta DSL can be used to write tests in a simpler way. If you want to link levels and ramps to reach the limits of your application (a test sometimes referred to as a capacity load test), you can do this manually using the regular DSL and looping with map and flatMap.
 
-
 - incrementUsersPerSec
 
 ```scala

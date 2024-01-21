@@ -58,4 +58,14 @@ tags = [
 | Day 28 | What learning culture exist in your company? How can you contribute to it?<br>公司的学习文化是什么样的？你如何为此贡献？                         |
 | Day 29 | What columns do you have on your work tracker or kanban board?<br>你们的看板上有哪些 column？                                                    |
 | Day 30 | What action does your team take on a red build?<br>build 红了团队会采取什么 action？                                                             |
-| Day 31 | BONUS: Debrief your whole team on your last session of testing<br>跟整个团队汇报你的测试                                                         |
+| Day 31 | BONUS: Debrief your whole team on your last session of testing<br>跟整个团队汇报你的测试
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->                                                    |

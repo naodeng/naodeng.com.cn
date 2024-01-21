@@ -142,3 +142,13 @@ describe('Data Driving-Verify that the Get and POST API returns correctly', func
 > 若用 demo 项目运行数据驱动支持测试用例：dataDrivingTest.spec.js，建议先屏蔽掉 test.spec.js 测试用例，否则会报错
 
 ![OCDzLr](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OCDzLr.png)
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

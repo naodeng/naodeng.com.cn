@@ -409,9 +409,19 @@ cy.get('[data-test="Actions list"]').within(() => { // <-- reduce the scope
 
 - 🔗 [从晦涩难懂的 React 组件测试到简单、易读的版本](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/from-unreadable-react-component-tests-to-simple-ones.md)
 
-*由 [NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/improving-ui-testss-code-to-ease-debugging-them-later-2478j)进行发表.*
+*由 [NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/improving-ui-testss-code-to-ease-debugging-them-later-2478j)进行发表。*
 
 ## 参考资料
 
 - UI 测试最佳实践项目:<https://github.com/NoriSte/ui-testing-best-practices>
 - UI 测试最佳实践项目中文翻译:<https://github.com/naodeng/ui-testing-best-practices>
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

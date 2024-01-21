@@ -157,10 +157,20 @@ $ allure serve results
 
 - 运行命令
 
-```
-$ npx cypress run --record --key 7aaee33b-f67b-4993-8d6c-2c392a1bd1c8
+```SHELL
+npx cypress run --record --key 7aaee33b-f67b-4993-8d6c-2c392a1bd1c8
 ```
 
 - 报告截图
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqya4w0n7xj31op0u0do2.jpg)
+![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqya4w0n7xj31op0u0do2.jpg)
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

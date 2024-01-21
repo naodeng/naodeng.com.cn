@@ -35,7 +35,7 @@ Cypress 官网：https://www.cypress.io/
 
 - 已安装好 node.js 和 npm
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvntxlww1j30k406waau.jpg)
+![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqvntxlww1j30k406waau.jpg)
 
 - 已安装好 vs code 或者其他代码编辑器
 
@@ -43,7 +43,7 @@ Cypress 官网：https://www.cypress.io/
 
 - Step1：通过 npm 新建项目
 
-```
+```JavaScript
 # 新建项目文件夹
 $ mkdir cypress-demo
 # 进入项目文件夹
@@ -54,7 +54,7 @@ $ npm init
 
 - Step2：安装 cypress
 
-```
+```JavaScript
 # 项目安装cypress包
 $ npm install cypress --save-dev
 ```
@@ -63,7 +63,7 @@ $ npm install cypress --save-dev
 
 > 若提示：npm ERR! missing script: cypress:open，可在项目根目录 package.json 文件的 scripts 下新增"cypress:open": "cypress open"，保存后再次运行命令即可
 
-```
+```JavaScript
 # 启动demo
 $ npm run cypress:open
 ```
@@ -71,16 +71,16 @@ $ npm run cypress:open
 ### Started Screenshot
 
 - 运行截图
-  ![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvsqw8ytcj323h0u0qp2.jpg)
+  ![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqvsqw8ytcj323h0u0qp2.jpg)
 
 - demo 用例执行截图
-  ![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvsshqeflj31gl0u0nbf.jpg)
+  ![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqvsshqeflj31gl0u0nbf.jpg)
 
 ## Try First Testscript
 
 ### Testcase
 
-```
+```Text
 1.访问光谷社区主页http://www.guanggoo.com/
 2.验证是否正确跳转到光谷社区页面
 3.验证网页标题是否正确
@@ -99,7 +99,7 @@ $ npm run cypress:open
 
 > 脚本中账号密码需换成自己的账号密码
 
-```
+```JavaScript
 describe('first testcase for cypress',function(){
     it('visit guanggoo homepage and login for guanggoo:',function(){
 
@@ -123,15 +123,25 @@ describe('first testcase for cypress',function(){
 
 - 运行 cypress 程序
 
-```
+```JavaScript
 # 启动
 $ npm run cypress:open
 ```
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvtcq43csj323f0u0qn9.jpg)
+![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqvtcq43csj323f0u0qn9.jpg)
 
 - 页面上选择点击运行 demo-guanggoo.js 即可
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvtjib8jdj31g80u0e81.jpg)
+![ ](https://tva1.sinaimg.cn/large/008i3skNgy1gqvtjib8jdj31g80u0e81.jpg)
 
 - 运行通过无报错，代表用例编写成功
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

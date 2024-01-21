@@ -62,3 +62,13 @@ ShowWordCount: true
 *由[NoriSte](https://github.com/NoriSte)在[dev.to](https://dev.to/noriste/component-vs-ui-integration-vs-e2e-tests-3i0d)和[Medium](https://medium.com/@NoriSte/component-vs-ui-integration-vs-e2e-tests-f02b575339dc)上进行了跨发表。*
 
   翻译自：[Component vs (UI) Integration vs E2E Tests](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/testing-strategy/component-vs-integration-vs-e2e-testing.md)*
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->

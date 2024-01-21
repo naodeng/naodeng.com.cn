@@ -130,3 +130,13 @@ Cypress 将自动执行所有挂钩和当前存在的测试代码，然后可以
 [image:560BE965-9C4C-4E9A-A17F-4992200B053B-665-000000B8AF4BF3D8/_______________640.jpeg]
 
 最后，查看我们的测试代码，我们可以看到点击“Save Commands”后测试更新了我们在 Cypress Studio 中记录的操作。
+
+---
+欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
