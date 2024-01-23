@@ -55,8 +55,8 @@ Bruno-demo
 │   └── bruno.json // bruno COLLECTION 配置文件
 │   └── environments // 不同测试环境文件夹
 │       └── dev.bru // 测试环境配置文件
-├── Report // 测试报告文件
-│   └── report.json //json 格式报告文件
+│   └── Report // 测试报告文件
+│       └── report.json //json 格式报告文件
 ├── .gitignore
 └── node_modules // 项目依赖
 ```
