@@ -98,7 +98,7 @@ npm install @usebruno/cli --save-dev
 #### 新建 Get 请求测试用例
 
 - 点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 GET 请求
-- 输入请求名称为 GetDemo，输入请求地址为 <https://jsonplaceholder.typicode.com/get/1>
+- 输入请求名称为 GetDemo，输入请求地址为 <https://jsonplaceholder.typicode.com/posts/1>
 
 ![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png)
 
@@ -208,7 +208,7 @@ expect(data.title).to.equal('foo');
 ##### 在测试用例中使用环境变量
 
 - 点击 Testcase 的 COLLECTION 下的 GetDemo 请求，进入 GetDemo 请求编辑页面
-- 将 GetDemo 请求的请求地址修改为 `{{host}}/get/1`，点击右上角的 SAVE 按钮保存 GetDemo 请求
+- 将 GetDemo 请求的请求地址修改为 `{{host}}/posts/1`，点击右上角的 SAVE 按钮保存 GetDemo 请求
 - 点击 Testcase 的 COLLECTION 下的 PostDemo 请求，进入 PostDemo 请求编辑页面
 - 将 PostDemo 请求的请求地址修改为 `{{host}}/posts`，点击右上角的 SAVE 按钮保存 PostDemo 请求
 
