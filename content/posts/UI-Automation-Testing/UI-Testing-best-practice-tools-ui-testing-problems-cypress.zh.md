@@ -3,8 +3,8 @@ author: "nao.deng"
 title:  "UI 测试最佳实践的工具篇（一）：一些 UI 测试问题及 Cypress 的解决方案"
 date:  "2024-01-25T17:06:44+08:00"
 summary:  "这篇博文聚焦于 UI 测试最佳实践的工具，首篇介绍一些 UI 测试问题及 Cypress 的解决方案。文章探讨了常见 UI 测试难题，详细介绍了 Cypress 框架如何提供强大的解决方案，包括实时查看、可靠性、速度等方面的优势。通过这些解决方案，读者能够更好地应对 UI 测试中的挑战，提高测试效率和可靠性。"
-ZHtags: ["工具"]
-ZHcategories:  ["UI 测试", "通用最佳实践"]
+ZHtags: ["UI 测试问题", "Cypress 解决方案"]
+ZHcategories:  ["UI 测试", "工具"]
 ZHseries: ["UI 测试最佳实践"]
 ShowWordCount: true
 ---
