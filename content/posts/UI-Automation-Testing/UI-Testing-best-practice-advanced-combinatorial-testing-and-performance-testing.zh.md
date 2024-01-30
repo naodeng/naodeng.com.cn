@@ -303,7 +303,7 @@ Cypress.Commands.add('forceVisit', url => {
 
 在这一点上，我们已经满足了明确说明的性能要求。然而，在复杂的应用程序中，我们还需要注意非功能性需求（NFRs）。但是，什么是 NFRs 呢？下面是它们在一瞥之下的高层次视图 - 来自双重标准的[ISO/IEC 25010 产品质量模型](https://www.iso.org/standard/35733.html)。
 
-![ISO/IEC标准](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/ISO_IEC_25010.jpg)
+![ISO/IEC标准](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/ISO_IEC_25010.jpg?raw=true)
 
 在下一节中，让我们专注于 NFRs 如何帮助我们进行非功能性能测试的方法。
 
