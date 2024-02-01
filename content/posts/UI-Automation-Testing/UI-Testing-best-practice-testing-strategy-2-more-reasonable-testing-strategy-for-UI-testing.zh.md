@@ -80,9 +80,9 @@ ShowWordCount: true
 
 - 研究 [Playwright 在调试方面的优势](https://playwright.dev/docs/trace-viewer-intro)。Playwright 非常快速稳定，最近其开发体验有了很大改进。
 
-- 跨浏览器测试通常涉及到视觉测试（CSS 浏览器差异），但这与功能测试不同。视觉测试得益于许多专用插件和工具的支持。详细了解 [视觉测试对应的章节](../tools/visual-regression-testing.zh.md) [Applitools](https://applitools.com)，其中我们讨论了一些专用产品，这些产品可以与几乎所有测试工具集成，通过将被测试页面的快照上传到其服务器并进行呈现来进行工作。
+- 跨浏览器测试通常涉及到视觉测试（CSS 浏览器差异），但这与功能测试不同。视觉测试得益于许多专用插件和工具的支持。详细了解 [视觉测试对应的章节](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/tools/visual-regression-testing.zh.md) [Applitools](https://applitools.com)，其中我们讨论了一些专用产品，这些产品可以与几乎所有测试工具集成，通过将被测试页面的快照上传到其服务器并进行呈现来进行工作。
 
-你还可以在 [等待，不是休眠](/sections/generic-best-practices/await-dont-sleep.zh.md) 章节中了解各种测试工具之间的一些差异。
+你还可以在 [等待，不是休眠](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.zh.md) 章节中了解各种测试工具之间的一些差异。
 
 ### 发现了 bug？先编写测试，然后再着手修复
 
@@ -96,7 +96,7 @@ ShowWordCount: true
 
 为什么要采用这种方法？为什么要编写测试呢？我知道直接修复错误可能看起来更快，但请考虑以下几点：
 
-- 通常情况下，你的测试工具比你更快地达到显示错误的应用程序状态（参见[使用测试工具作为主要开发工具](/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md) 章节）。
+- 通常情况下，你的测试工具比你更快地达到显示错误的应用程序状态（参见[使用测试工具作为主要开发工具](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md) 章节）。
 
 - 有时你认为你能够系统地复现错误，但这并不总是正确的。编写一个揭示错误的测试可以确保你百分之百确定错误是可重现的，**排除了许多偏差变量**，如现有的会话、缓存、服务工作者、浏览器扩展、浏览器版本等，这些可能会影响你的信心。有时你可能会发现你并没有完全正确地识别错误。
 
@@ -109,8 +109,6 @@ ShowWordCount: true
 - 成功的测试可以作为你所做工作的验证轨迹。
 
 最后但同样重要的是：确保你编写的测试一开始是失败的！而且它之所以失败是因为有错误！
-
-<br/>
 
 测试不仅仅是为了重现错误并在视觉上检查它，而是必须在修复错误后获得积极的反馈。**与错误相关的测试如果一开始就没有失败，那真的非常危险**，因为你可能认为你做得很好，而实际上你从一开始就没有完全正确地重现错误。
 
@@ -127,8 +125,6 @@ ShowWordCount: true
 3. **有一个执行所有操作的扩展 E2E 测试** - 对于本文介绍的案例来说，这是一个很好的折中方案。
 
 这取决于情况，我提到的大多数问题与 E2E 测试的隐含问题有关，这是我们应该尽量减少这类测试的强烈信号。作为前端工程师，我更喜欢投资时间编写无需服务器的测试，而不是 E2E 测试。继续阅读，你将了解原因。
-
-<br/><br/>
 
 #### 1 - 有三个小的 E2E 测试，依赖于执行顺序（测试 B 假设测试 A 已运行）
 
@@ -392,8 +388,8 @@ export function createLoginAction() {
 
 #### 相关章节
 
-- 🔗 [从金字塔的顶端着手构建测试！](/sections/beginners/top-to-bottom-approach.zh.md)
-- 🔗 [把你的测试工具当作主要的开发工具来使用](/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md)
+- 🔗 [从金字塔的顶端着手构建测试！](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.zh.md)
+- 🔗 [把你的测试工具当作主要的开发工具来使用](https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md)
 <br/><br/>
 
 *由 [NoriSte](https://github.com/NoriSte) 在 [dev.to](https://dev.to/noriste/decouple-the-back-end-and-front-end-test-through-contract-testing-112k)上进行了跨发表。*
