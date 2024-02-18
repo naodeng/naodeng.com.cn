@@ -1,6 +1,7 @@
 ---
 author: "nao.deng"
 title: "Introduce of API Testing"
+draft: true
 date: "2023-04-20"
 summary: "文章介绍接口测试的简介，类型和工具"
 tags: ["接口测试介绍"]
