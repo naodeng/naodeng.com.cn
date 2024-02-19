@@ -21,11 +21,11 @@ A/B 测试涉及创建一个或多个网页变体，以与当前版本进行比�
 
 #### 什么是 A/B 测试？
 
-A/B 测试，又称为分割测试，是一种比较网页或应用程序的两个版本以确定哪个性能更好的方法。它涉及在随机向用户展示两个变体（A 和 B），并使用统计分析来确定哪个版本在实现预定义目标方面更有效，比如增加点击率、转化率或其他关键[性能指标](../P/performance-indicator.md)。
+A/B 测试，又称为分割测试，是一种比较网页或应用程序的两个版本以确定哪个性能更好的方法。它涉及在随机向用户展示两个变体（A 和 B），并使用统计分析来确定哪个版本在实现预定义目标方面更有效，比如增加点击率、转化率或其他关键[性能指标](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-indicator.md)。
 
-在软件[测试自动化](../T/test-automation.md)的背景下，A/B 测试可以被自动化以在不需要手动干预的情况下运行对特性或界面的不同变体的测试。自动化的 A/B 测试可以集成到持续集成/持续部署（CI/CD）流水线中，以确保对应用程序所做的任何更改都经过评估，了解其对用户行为和转化率的影响。
+在软件[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)的背景下，A/B 测试可以被自动化以在不需要手动干预的情况下运行对特性或界面的不同变体的测试。自动化的 A/B 测试可以集成到持续集成/持续部署（CI/CD）流水线中，以确保对应用程序所做的任何更改都经过评估，了解其对用户行为和转化率的影响。
 
-为了自动化 A/B 测试，工程师通常使用特性标志和[测试自动化](../T/test-automation.md)框架的组合。特性标志允许在不同版本的特性之间进行切换，而[测试自动化](../T/test-automation.md)框架执行测试并收集有关用户交互的数据。
+为了自动化 A/B 测试，工程师通常使用特性标志和[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)框架的组合。特性标志允许在不同版本的特性之间进行切换，而[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)框架执行测试并收集有关用户交互的数据。
 
 ```java
 // 代码中的特性标志示例
@@ -36,15 +36,15 @@ if (featureFlagService.isFeatureEnabled('new-checkout-flow')) {
 }
 ```
 
-自动化的 A/B 测试实现了在软件开发中的快速[迭代](../I/iteration.md)和数据驱动的决策。通过利用自动化，团队可以扩展他们的测试工作，减少人为错误，并加速反馈循环，最终实现更用户中心化和成功的产品。
+自动化的 A/B 测试实现了在软件开发中的快速[迭代](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md)和数据驱动的决策。通过利用自动化，团队可以扩展他们的测试工作，减少人为错误，并加速反馈循环，最终实现更用户中心化和成功的产品。
 
 #### 为什么 A/B 测试很重要？
 
 A/B 测试的重要性在于，它为我们提供了有关更改对用户行为和转化率影响的实证证据。通过将控制版本（A）与变体（B）进行比较，我们可以做出数据驱动的决策，从而优化性能并提高用户满意度。这种测试方法对于验证关于用户偏好的假设以及确定软件应用中最有效元素（如按钮、图像或工作流程）非常有价值。
 
-在软件[测试自动化](../T/test-automation.md)的背景下，A/B 测试对于迭代式开发至关重要，使团队能够基于用户反馈逐步改进功能。它还有助于在全面推出新功能之前在较小的受众群体上进行测试，从而减小与其相关的风险。此外，A/B 测试有助于通过确保仅实施最有影响的更改，从而最大化投资回报，节省资源并集中精力于对最终用户真正重要的事物。
+在软件[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)的背景下，A/B 测试对于迭代式开发至关重要，使团队能够基于用户反馈逐步改进功能。它还有助于在全面推出新功能之前在较小的受众群体上进行测试，从而减小与其相关的风险。此外，A/B 测试有助于通过确保仅实施最有影响的更改，从而最大化投资回报，节省资源并集中精力于对最终用户真正重要的事物。
 
-对于[测试自动化](../T/test-automation.md)工程师而言，将 A/B 测试整合到自动化策略中可以产生更强大和以用户为中心的[测试用例](../T/test-case.md)，确保自动化测试不仅检查功能，还检查真实世界的用户参与和转化。
+对于[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师而言，将 A/B 测试整合到自动化策略中可以产生更强大和以用户为中心的[测试用例](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md)，确保自动化测试不仅检查功能，还检查真实世界的用户参与和转化。
 
 #### A/B 测试的关键组成部分有哪些？
 
@@ -61,7 +61,7 @@ A/B 测试的关键组成部分包括：
 - **分析（Analysis）**：使用统计方法评估数据，并确定性能差异是否显著。
 - **分割（Segmentation）**：按用户人口统计信息或行为分解数据，以了解对亚组的不同影响。
 
-在实践中，这些组成部分被整合到一个结构化过程中，以评估变更的影响并做出数据驱动的决策。[测试自动化](../T/test-automation.md)工程师应重点确保[测试环境](../T/test-environment.md)稳定，数据收集准确，并且分析工具正确配置以有效解释结果。
+在实践中，这些组成部分被整合到一个结构化过程中，以评估变更的影响并做出数据驱动的决策。[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师应重点确保[测试环境](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md)稳定，数据收集准确，并且分析工具正确配置以有效解释结果。
 
 #### A/B 测试与用户体验有何关联？
 
@@ -81,7 +81,7 @@ A/B 测试通过使团队能够做出**数据驱动的决策**，在产品开发
 
 此外，A/B 测试可以集成到**敏捷工作流**中，其中短周期的开发和频繁的发布很常见。它允许进行快速的实验和适应，这在快节奏的开发环境中至关重要。
 
-对于[测试自动化](../T/test-automation.md)工程师来说，A/B 测试需要设置对用户交互进行**自动跟踪**和**分析**以测量不同变体的性能。工程师必须确保[测试环境](../T/test-environment.md)稳定，并且收集的数据可靠，以进行准确的决策。
+对于[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师来说，A/B 测试需要设置对用户交互进行**自动跟踪**和**分析**以测量不同变体的性能。工程师必须确保[测试环境](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md)稳定，并且收集的数据可靠，以进行准确的决策。
 
 总而言之，A/B 测试是产品开发中的**战略性工具**，它指导用户体验的增强，验证产品决策，并促进实验性文化以持续改进。
 
@@ -99,7 +99,7 @@ A/B 测试通过使团队能够做出**数据驱动的决策**，在产品开发
 
 4. **分割受众：** 决定如何将用户分组，确保他们被随机分配到对照组或变体组。
 
-5. **确定度量标准：** 选择将衡量变体影响的关键[性能指标](../P/performance-indicator.md)（KPI）。
+5. **确定度量标准：** 选择将衡量变体影响的关键[性能指标](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-indicator.md)（KPI）。
 
 6. **确保正确追踪：** 设置追踪工具，收集对照组和变体组用户行为的数据。
 
@@ -178,7 +178,7 @@ function assignGroup(user) {
 
 有时将控制组称为'A'版本，而将变体称为'B'版本。在进行 A/B 测试时，流量或用户会被随机分配到控制组和变体中，确保每个组在统计上是相似的。这种随机化有助于将变量变化的影响与其他外部因素隔离开来。
 
-然后，根据预定义的指标，如转化率或点击率，监控和测量每个组的性能。通过比较这些指标，[测试自动化](../T/test-automation.md)工程师可以确定变体是否比控制组更有效地影响用户行为。如果变体在统计上显著优于控制组，可能会将其作为所有用户的新默认选项实施。
+然后，根据预定义的指标，如转化率或点击率，监控和测量每个组的性能。通过比较这些指标，[测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师可以确定变体是否比控制组更有效地影响用户行为。如果变体在统计上显著优于控制组，可能会将其作为所有用户的新默认选项实施。
 
 ### 分析与解释
 
@@ -247,9 +247,9 @@ function assignGroup(user) {
 
 #### 在 A/B 测试中如何处理误报或漏报？
 
-处理 A/B 测试中的[误报](../F/false-positive.md)或漏报涉及到一些关键步骤：
+处理 A/B 测试中的[误报](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md)或漏报涉及到一些关键步骤：
 
-- **验证测试[设置](../S/setup.md)**：确保跟踪代码正确实施，变体组和对照组正确配置。
+- **验证测试[设置](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md)**：确保跟踪代码正确实施，变体组和对照组正确配置。
 - **检查外部因素**：识别可能影响测试结果的任何外部事件或更改，例如假期、中断或营销活动。
 - **审核细分**：确保受众细分被正确定义，并且组之间没有重叠或污染。
 - **分析数据收集**：确认数据在对照组和变体组之间准确且一致地收集。
@@ -257,7 +257,7 @@ function assignGroup(user) {
 - **使用测试后分析**：应用分割分析或队列分析等技术，深入研究结果并了解不同用户组的行为。
 - **进行后续测试**：如果结果不明确或存在假阳性或假阴性的怀疑，进行后续测试以验证结果。
 
-通过系统地审查这些领域，您可以识别和纠正[误报](../F/false-positive.md)或漏报，确保您的 A/B 测试结果是可靠且可操作的。
+通过系统地审查这些领域，您可以识别和纠正[误报](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md)或漏报，确保您的 A/B 测试结果是可靠且可操作的。
 
 ### 深层理解
 
@@ -267,7 +267,7 @@ function assignGroup(user) {
 
 在 MVT 中，您可能会同时测试多个元素的不同变体，例如标题、图像和呼叫到操作按钮。这样就创造了一个可能组合的矩阵，每个组合都会展示给用户的一个子集。其主要优势在于观察不同元素如何相互作用以及对用户行为的综合影响。
 
-由于 MVT 涉及更多变量，因此为了达到统计显著性，需要更大的样本大小。此外，在[设置](../S/setup.md)和分析方面，MVT 也需要更多资源。然而，它可以提供更全面的洞察，了解各种更改如何相互作用，从而潜在地导致更优化的结果。
+由于 MVT 涉及更多变量，因此为了达到统计显著性，需要更大的样本大小。此外，在[设置](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md)和分析方面，MVT 也需要更多资源。然而，它可以提供更全面的洞察，了解各种更改如何相互作用，从而潜在地导致更优化的结果。
 
 相比之下，A/B 测试更简单、更快速实施，重点是一次性进行一个更改的影响。通常用于对单个更改做出决策或者在资源有限的情况下。
 
@@ -320,21 +320,21 @@ A/B 测试，尽管功能强大，但存在一些限制：
 
 - **局部最大值**：A/B 测试对于优化效果很好，但可能导致渐进式改进，可能会忽略创新思想，这些思想可能导致显著更好的结果。
 
-- **实施错误**：不正确的[设置](../S/setup.md)可能导致错误的结果。正确的技术实施至关重要。
+- **实施错误**：不正确的[设置](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md)可能导致错误的结果。正确的技术实施至关重要。
 
 - **数据解释**：数据的错误解释可能发生，特别是如果在统计分析方面缺乏专业知识。
 
-了解这些限制对于 [测试自动化](../T/test-automation.md)工程师至关重要，以确保有效使用 A/B 测试，并正确解释其结果。
+了解这些限制对于 [测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师至关重要，以确保有效使用 A/B 测试，并正确解释其结果。
 
 #### 如何将 A/B 测试与其他测试方法结合使用？
 
-A/B 测试可以与各种测试方法结合，以提升[软件质量](../S/software-quality.md)和用户体验。比如，**[单元测试](../U/unit-testing.md)** 确保各个组件在 A/B 测试比较不同用户流程之前正常运作。**[集成测试](../I/integration-testing.md)** 则检查组合部分是否协同工作，这在 A/B 测试评估更改对集成系统影响之前显得至关重要。
+A/B 测试可以与各种测试方法结合，以提升[软件质量](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md)和用户体验。比如，**[单元测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/unit-testing.md)** 确保各个组件在 A/B 测试比较不同用户流程之前正常运作。**[集成测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/integration-testing.md)** 则检查组合部分是否协同工作，这在 A/B 测试评估更改对集成系统影响之前显得至关重要。
 
-将 **自动化的 [回归测试](../R/regression-testing.md)** 与 A/B 测试结合使用是很有益的，可以确保新功能或更改不会破坏现有功能。自动化测试可以快速验证控制组和变体版本在暴露给用户之前是否稳定且按预期运行。
+将 **自动化的 [回归测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md)** 与 A/B 测试结合使用是很有益的，可以确保新功能或更改不会破坏现有功能。自动化测试可以快速验证控制组和变体版本在暴露给用户之前是否稳定且按预期运行。
 
-**[可用性测试](../U/usability-testing.md)** 可以与 A/B 测试结合使用，以获得对用户行为和偏好的定性洞察。而 A/B 测试能够量化更改的影响，而 [可用性测试](../U/usability-testing.md)可以解释为何某些更改表现更佳。
+**[可用性测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/usability-testing.md)** 可以与 A/B 测试结合使用，以获得对用户行为和偏好的定性洞察。而 A/B 测试能够量化更改的影响，而 [可用性测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/usability-testing.md)可以解释为何某些更改表现更佳。
 
-在进行 A/B 测试之前，应进行 **[性能测试](../P/performance-testing.md)** 以确保两个变体提供可接受的响应时间并能处理预期负载。这是至关重要的，因为性能可以显著影响用户行为，从而影响 A/B 测试的结果。
+在进行 A/B 测试之前，应进行 **[性能测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-testing.md)** 以确保两个变体提供可接受的响应时间并能处理预期负载。这是至关重要的，因为性能可以显著影响用户行为，从而影响 A/B 测试的结果。
 
 最后，应在 A/B 测试过程中使用 **监控和日志工具** 来跟踪错误、性能指标和用户交互。这些数据对解释 A/B 测试结果以及诊断可能与正在测试的更改无直接关系的问题非常宝贵。
 
@@ -353,7 +353,7 @@ A/B 测试可以与各种测试方法结合，以提升[软件质量](../S/softw
 - 使用足够大的样本量，以最小化离群值的影响。
 - 控制尽可能多的外部变量，以确保一致的测试条件。
 
-通过了解回归到均值， [测试自动化](../T/test-automation.md)工程师可以避免基于初始 A/B 测试结果而做出过早结论，从而更准确地评估更改的有效性。
+通过了解回归到均值， [测试自动化](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md)工程师可以避免基于初始 A/B 测试结果而做出过早结论，从而更准确地评估更改的有效性。
 
 ## 参考资料
 
