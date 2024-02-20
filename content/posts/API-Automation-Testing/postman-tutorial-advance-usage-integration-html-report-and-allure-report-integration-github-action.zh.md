@@ -16,7 +16,7 @@ ShowWordCount: true
 
 ### 输出 html 测试报告
 
-demo 会以集成[newman-reporter-htmlextra]([https://npm](https://github.com/DannyDainton/newman-reporter-htmlextra))为例，介绍如何输出 html 测试报告。
+demo 会以集成[newman-reporter-htmlextra]([https://github.com/DannyDainton/newman-reporter-htmlextra)为例，介绍如何输出 html 测试报告。
 
 #### 安装 newman-reporter-htmlextra 依赖包
 
