@@ -153,7 +153,7 @@ params:
         url: 'https://naodeng-umami.vercel.app/hugo.js'
       cloudflare:
         enable: true
-        token: 'baa460bb003847e184ad7cbf459449e9'
+        token: '56f727a52e3349f6947d888452fecc8a'
       google:
         SiteVerificationTag: "google5e9a7c9479924ed2"
       baidu:
