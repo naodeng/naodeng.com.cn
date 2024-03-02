@@ -56,7 +56,7 @@ ShowWordCount: true
 
 我们走吧！ 🚀 欢迎来到 30 天人工智能测试的第一天！我很高兴能够开始这一旅程，我们一起探索人工智能在测试中的潜力。
 
-### 第一天任务
+### 任务详情
 
 对于今天的任务，我们邀请您向社区介绍自己并分享您对人工智能的兴趣。这是一个表达您的好奇心、愿望以及您希望在这个为期一个月的挑战中实现的目标的机会。
 
@@ -72,7 +72,9 @@ ShowWordCount: true
 
 <https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/312>
 
-## 我的第一天
+## 我的第一天任务
+
+<https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/291>
 
 大家好，我是 dengnao。你可以叫我 nao，我现在是 thoughtworks 中国的一名资深 QA.
 我最开始从硬件测试，系统测试到入行软件测试，也从手工测试，到接口自动化测试，UI 自动化测试，移动端自动化测试，性能测试到最后的全流程项目质量保障，截止到目前已经有十二年的 QA 工作经验了。
