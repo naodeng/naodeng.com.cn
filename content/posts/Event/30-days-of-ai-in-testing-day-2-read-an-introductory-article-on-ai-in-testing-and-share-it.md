@@ -69,3 +69,12 @@ I think it can be used to do exploratory testing of mobile apps, by giving the e
 - Project link: <https://github.com/mnotgod96/AppAgent>
 
 - Paper link: <https://arxiv.org/abs/2312.13771>
+
+## About Event
+
+The "30 Days of AI in Testing Challenge" is an initiative by the Ministry of Testing community. The last time I came across this community was during their "30 Days of Agile Testing" event.
+
+Community Website: <https://www.ministryoftesting.com>
+
+Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+

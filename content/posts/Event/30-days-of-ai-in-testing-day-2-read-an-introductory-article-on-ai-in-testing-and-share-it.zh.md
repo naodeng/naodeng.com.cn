@@ -76,3 +76,11 @@ ShowWordCount: true
 - 项目链接：<https://github.com/mnotgod96/AppAgent>
 
 - 论文链接：<https://arxiv.org/abs/2312.13771>
+
+## 关于活动
+
+30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。
+
+社区官网：<https://www.ministryoftesting.com>
+
+活动链接：<https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
