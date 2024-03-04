@@ -2,7 +2,7 @@
 author: "nao.deng"
 title: "30 Days of AI in Testing Challenge: Day 3: List ways in which AI is used in testing"
 date: "2024-03-04T13:06:44+08:00"
-summary: "This blog post is the second day of the 30-Day AI in Testing Challenge and focuses on a session where participants read and share introductory articles related to AI in testing. The blog post may contain the author's summary and personal opinion of the article read, sharing the potential benefits and challenges of applying AI in testing. By sharing in this way, readers are able to better understand the application of AI in testing and prompt other participants to share their insights, facilitating the interactivity of the blog posts. This series promises to provide a platform for testing professionals to gain insights into AI testing."
+summary: "This blog post is the third day of the 30-Day AI Testing Challenge and focuses on the many ways AI can be used in testing. The post may include an introduction to the various uses of AI in testing, such as automated testing, defect analysis, performance test optimization, and more. Readers will learn how AI can improve the testing process and increase testing efficiency, as well as the potential benefits of applying AI in testing. This series promises to provide a platform for testing professionals to comprehensively understand and discuss the use of AI in testing."
 tags: ["List ways in which AI is used in testing"]
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
