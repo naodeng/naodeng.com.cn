@@ -9,7 +9,7 @@ series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
 ---
 
-## Day 3: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway
+## Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway
 
 On Day 4 of the 30 Days of AI in Testing challenge, we’d like you to watch this [Ask Me Anything on Artificial intelligence in Testing](https://t.gistmail1.com/c/Lz1N1a0EsC0XPKrzNU2AqoSC0ckfvPk6/click?signature=0d4d9b42b4cf4407130542b43896174c1a8b5cf0&url=https%3A%2F%2Fwww.ministryoftesting.com%2Ftestbash-sessions%2Fask-me-anything-artificial-intelligence-in-testing%3Fcf_id%3DyMP2dO1uPoA)with the incredibly knowledgeable Carlos Kidman, a seasoned expert in AI and Testing.
 
