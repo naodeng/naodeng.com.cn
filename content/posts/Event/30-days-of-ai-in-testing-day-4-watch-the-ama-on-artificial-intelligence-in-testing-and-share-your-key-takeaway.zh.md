@@ -1,6 +1,6 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第四天：观看有关测试中人工智能的问我任何问题视频并分享主要收获"
+title: "30 天 AI 测试挑战活动：第四天：观看有关测试中人工智能的任何问题视频并分享主要收获"
 date: "2024-03-05T13:06:44+08:00"
 summary: "这篇博文是 30 天 AI 测试挑战活动的第四天，要求参与者观看关于测试中人工智能的视频或演讲，并分享他们的主要收获。博文可能包括作者对所观看内容的总结，提到对于人工智能在测试中的理解和应用的新见解。通过这个系列活动，读者可以通过观看视频等形式不断扩展对 AI 测试领域的了解，同时分享这些知识，促进参与者之间的互动。"
 ZHtags: ["观看有关测试中人工智能的问我任何问题视频并分享主要收获"]
@@ -9,7 +9,7 @@ ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 ---
 
-## 第四天任务：观看有关测试中人工智能的问我任何问题视频并分享主要收获
+## 第四天任务：观看有关测试中人工智能的任何问题视频并分享主要收获
 
 在 30 天人工智能测试挑战赛的第 4 天，我们希望你观看由知识渊博的 Carlos Kidman（一位经验丰富的人工智能和测试专家）主持的[有关测试中人工智能的任何问题](https://t.gistmail1.com/c/Lz1N1a0EsC0XPKrzNU2AqoSC0ckfvPk6/click?signature=0d4d9b42b4cf4407130542b43896174c1a8b5cf0&url=https%3A%2F%2Fwww.ministryoftesting.com%2Ftestbash-sessions%2Fask-me-anything-artificial-intelligence-in-testing%3Fcf_id%3DyMP2dO1uPoA)。
 
