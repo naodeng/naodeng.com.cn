@@ -9,7 +9,7 @@ ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 ---
 
-## Day 4:观看有关测试中人工智能的问我任何问题视频并分享主要收获
+## 第四天任务：观看有关测试中人工智能的问我任何问题视频并分享主要收获
 
 在 30 天人工智能测试挑战赛的第 4 天，我们希望你观看由知识渊博的 Carlos Kidman（一位经验丰富的人工智能和测试专家）主持的[有关测试中人工智能的任何问题](https://t.gistmail1.com/c/Lz1N1a0EsC0XPKrzNU2AqoSC0ckfvPk6/click?signature=0d4d9b42b4cf4407130542b43896174c1a8b5cf0&url=https%3A%2F%2Fwww.ministryoftesting.com%2Ftestbash-sessions%2Fask-me-anything-artificial-intelligence-in-testing%3Fcf_id%3DyMP2dO1uPoA)。
 
@@ -21,7 +21,7 @@ ShowWordCount: true
 
 - 观看后，反思会议并通过单击“参加”按钮并回复俱乐部主题来分享对你影响最大的要点。例如，这可能是对人工智能在测试中的潜力的新理解，或者是对你来说突出的任何道德考虑。
 
-### Why Take Part
+### 为什么参加
 
 - **加深你的人工智能知识**：Carlos 的经验和 AMA 中涵盖的许多主题提供了丰富的信息来源，可帮助你快速了解人工智能在测试中可以发挥的巨大作用。
 - **与同行互动**：发布你在 AMA 中的重要见解，看看其他人的想法。这是获得不同观点的好方法。
@@ -73,10 +73,10 @@ Carlos 还分享了他对 AI 在未来软件开发和测试中的作用的看法
 
 如何通过提示词和上下文的提供，来更大程度上的利用 AI 的能力来帮助我们更高效率和高质量的完成工作，可能是我们后续需要思考的方向。
 
-## About Event
+## 关于活动
 
-The "30 Days of AI in Testing Challenge" is an initiative by the Ministry of Testing community. The last time I came across this community was during their "30 Days of Agile Testing" event.
+30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。
 
-Community Website: <https://www.ministryoftesting.com>
+社区官网：<https://www.ministryoftesting.com>
 
-Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+活动链接：<https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
