@@ -30,9 +30,9 @@ ShowWordCount: true
 
 ### 参与原因
 
-- **增强与人工智能的交互：** 学习并应用提示工程技术可以改善你使用人工智能工具的方式，实现更准确和相关的输出。
+- **增强与人工智能的交互：** 学习并应用提示词工程技术可以改善你使用人工智能工具的方式，实现更准确和相关的输出。
 
-- **分享与学习：** 通过分享你的发现并讨论提示工程策略，你为整个社区的知识库做出了贡献，帮助其他人完善他们与人工智能的交互。
+- **分享与学习：** 通过分享你的发现并讨论提示词工程策略，你为整个社区的知识库做出了贡献，帮助其他人完善他们与人工智能的交互。
 
 ### 任务链接
 
@@ -86,6 +86,15 @@ ShowWordCount: true
 社区官网：<https://www.ministryoftesting.com>
 
 活动链接：<https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+
+**挑战**：
+
+- [第一天：介绍你自己以及你对人工智能的兴趣](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/)
+- [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
+- [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
+- [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 
 ## 推荐阅读
 

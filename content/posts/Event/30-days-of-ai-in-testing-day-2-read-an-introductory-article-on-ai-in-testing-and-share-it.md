@@ -78,3 +78,6 @@ Community Website: <https://www.ministryoftesting.com>
 
 Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
 
+**Challenges**:
+
+- [Day 1: Introduce yourself and your interest in AI](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/)

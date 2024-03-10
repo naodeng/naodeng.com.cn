@@ -79,3 +79,9 @@ The "30 Days of AI in Testing Challenge" is an initiative by the Ministry of Tes
 Community Website: <https://www.ministryoftesting.com>
 
 Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+
+**Challenges**:
+
+- [Day 1: Introduce yourself and your interest in AI](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/)
+- [Day 2: Read an introductory article on AI in testing and share it](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
+- [Day 3: List ways in which AI is used in testing](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)

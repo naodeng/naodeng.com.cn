@@ -9,7 +9,6 @@ ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 ---
 
-
 ## 第二天任务
 
 阅读有关测试中的 AI 的介绍性文章并分享
@@ -84,6 +83,10 @@ ShowWordCount: true
 社区官网：<https://www.ministryoftesting.com>
 
 活动链接：<https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+
+**挑战**：
+
+- [第一天：介绍你自己以及你对人工智能的兴趣](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/)
 
 ## 推荐阅读
 
