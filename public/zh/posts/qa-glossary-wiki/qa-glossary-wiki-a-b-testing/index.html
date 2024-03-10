@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>软件测试术语分享:A/B 测试 | 软件测试同学</title>
+<meta name="keywords" content="">
+<meta name="description" content="这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。">
+<meta name="author" content="nao.deng">
+<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
+</script>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+<meta name="sogou_site_verification" content="iwkYDJrzfK" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
+     crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="软件测试术语分享:A/B 测试" />
+<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-05T16:06:44+08:00" />
+<meta property="article:modified_time" content="2024-02-05T16:06:44+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
+
+<meta name="twitter:title" content="软件测试术语分享:A/B 测试"/>
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "软件测试术语分享:A/B 测试",
+      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软件测试术语分享:A/B 测试",
+  "name": "软件测试术语分享:A\/B 测试",
+  "description": "这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。",
+  "keywords": [
+    
+  ],
+  "articleBody": "A/B 测试 A/B 测试涉及创建一个或多个网页变体，以与当前版本进行比较。其目标是根据特定指标（如每访问者收入或转化率）确定哪个版本的性能最佳。 详见： Wikipedia\n关于 A/B 测试的一些问题 基础知识和重要性 什么是 A/B 测试？ A/B 测试，又称为分割测试，是一种比较网页或应用程序的两个版本以确定哪个性能更好的方法。它涉及在随机向用户展示两个变体（A 和 B），并使用统计分析来确定哪个版本在实现预定义目标方面更有效，比如增加点击率、转化率或其他关键性能指标。\n在软件测试自动化的背景下，A/B 测试可以被自动化以在不需要手动干预的情况下运行对特性或界面的不同变体的测试。自动化的 A/B 测试可以集成到持续集成/持续部署（CI/CD）流水线中，以确保对应用程序所做的任何更改都经过评估，了解其对用户行为和转化率的影响。\n为了自动化 A/B 测试，工程师通常使用特性标志和测试自动化框架的组合。特性标志允许在不同版本的特性之间进行切换，而测试自动化框架执行测试并收集有关用户交互的数据。\n// 代码中的特性标志示例 if (featureFlagService.isFeatureEnabled('new-checkout-flow')) { // 变体 B 的代码 } else { // 变体 A 的代码（对照组） } 自动化的 A/B 测试实现了在软件开发中的快速迭代和数据驱动的决策。通过利用自动化，团队可以扩展他们的测试工作，减少人为错误，并加速反馈循环，最终实现更用户中心化和成功的产品。\n为什么 A/B 测试很重要？ A/B 测试的重要性在于，它为我们提供了有关更改对用户行为和转化率影响的实证证据。通过将控制版本（A）与变体（B）进行比较，我们可以做出数据驱动的决策，从而优化性能并提高用户满意度。这种测试方法对于验证关于用户偏好的假设以及确定软件应用中最有效元素（如按钮、图像或工作流程）非常有价值。\n在软件测试自动化的背景下，A/B 测试对于迭代式开发至关重要，使团队能够基于用户反馈逐步改进功能。它还有助于在全面推出新功能之前在较小的受众群体上进行测试，从而减小与其相关的风险。此外，A/B 测试有助于通过确保仅实施最有影响的更改，从而最大化投资回报，节省资源并集中精力于对最终用户真正重要的事物。\n对于测试自动化工程师而言，将 A/B 测试整合到自动化策略中可以产生更强大和以用户为中心的测试用例，确保自动化测试不仅检查功能，还检查真实世界的用户参与和转化。\nA/B 测试的关键组成部分有哪些？ A/B 测试的关键组成部分包括：\n假设（Hypothesis）：对测试结果的清晰预测性陈述。 变量（Variables）：在变体中更改的元素，例如按钮颜色、文本或布局。 测试组（Test Group）：接收变体（B）的受众群体。 对照组（Control Group）：接收原始版本（A）的受众群体。 随机化（Randomization）：确保参与者被随机分配到测试组和对照组，以消除偏见。 成功指标（Success Metrics）：用于确定测试结果的具体可衡量标准，如转化率或点击率。 持续时间（Duration）：测试运行的时间段，确保足够长以收集到重要数据。 数据收集（Data Collection）：跟踪用户互动并根据成功指标衡量性能的机制。 分析（Analysis）：使用统计方法评估数据，并确定性能差异是否显著。 分割（Segmentation）：按用户人口统计信息或行为分解数据，以了解对亚组的不同影响。 在实践中，这些组成部分被整合到一个结构化过程中，以评估变更的影响并做出数据驱动的决策。测试自动化工程师应重点确保测试环境稳定，数据收集准确，并且分析工具正确配置以有效解释结果。\nA/B 测试与用户体验有何关联？ A/B 测试通过允许团队对软件产品的更改做出数据驱动的决策，直接影响用户体验（UX）。通过比较一个功能或界面的两个版本（A 和 B），团队可以衡量每个变体在用户参与、满意度和转化率方面的表现。表现更好的用户体验变体，由增加的页面停留时间、更高的点击率或完成所需操作的改善等指标表示，随后可以为所有用户实施。\n这个过程确保变更不是基于假设或个人偏好，而是基于实际用户行为。它有助于优化用户界面、工作流程和内容，以提高可用性和可访问性。A/B 测试还可以在完全推出之前识别潜在的用户体验问题，减少负面用户反馈的风险以及昂贵的发布后修复的需求。\n通过根据 A/B 测试结果持续迭代和改进产品，公司可以提高用户满意度和忠诚度，这对于长期成功至关重要。本质上，A/B 测试作为用户反馈和产品演进之间的桥梁，促进了以用户为中心的开发方法。\nA/B 测试在产品开发中的角色是什么？ A/B 测试通过使团队能够做出数据驱动的决策，在产品开发中发挥了至关重要的作用。它通过比较产品的两个版本来优化功能，通过特定指标（如转化率或用户参与）确定哪个版本的性能更好。\n在产品开发的背景下，A/B 测试用于验证产品决策并降低与新功能发布相关的风险。通过将新功能（变体）与当前版本（控制）进行测试，开发人员和产品经理可以在将其推向整个用户群之前评估更改的影响。\n这种测试方法还支持迭代式开发，允许根据用户反馈和行为持续改进产品。它可以通过提供用户喜好或拒绝的证据来影响产品路线图，从而指导未来的开发优先级。\n此外，A/B 测试可以集成到敏捷工作流中，其中短周期的开发和频繁的发布很常见。它允许进行快速的实验和适应，这在快节奏的开发环境中至关重要。\n对于测试自动化工程师来说，A/B 测试需要设置对用户交互进行自动跟踪和分析以测量不同变体的性能。工程师必须确保测试环境稳定，并且收集的数据可靠，以进行准确的决策。\n总而言之，A/B 测试是产品开发中的战略性工具，它指导用户体验的增强，验证产品决策，并促进实验性文化以持续改进。\n实施执行 如何设置 A/B 测试？ 设置 A/B 测试涉及以下步骤：\n明确目标： 充分说明您的改进目标（例如，提高转化率、点击率）。\n提出假设： 根据数据，对可能导致改进的变化进行合理猜测。\n创建变体： 在一个或多个变体中实施更改，同时将原始版本作为对照。\n分割受众： 决定如何将用户分组，确保他们被随机分配到对照组或变体组。\n确定度量标准： 选择将衡量变体影响的关键性能指标（KPI）。\n确保正确追踪： 设置追踪工具，收集对照组和变体组用户行为的数据。\n运行测试： 启动实验，允许用户与两个版本互动的足够时间。\n监控测试： 检查任何技术问题，并确保准确收集数据。\n分析结果： 在测试结束后，使用统计方法比较变体与对照的性能。\n做决策： 基于分析结果，决定是否实施更改、进行其他测试或放弃变体。\n这里有一个简单的代码片段，用于说明您可能如何在 Web 应用程序中将用户分配到不同组：\nfunction assignGroup(user) { const randomNumber = Math.random(); return randomNumber \u003c 0.5 ? 'control' : 'variant'; } 这个函数使用一个随机数将用户分配到’对照’或’变体’组，分配比例为 50/50。根据需要调整阈值以更改用户在组之间的分布。\nA/B 测试的进行涉及哪些步骤？ 进行 A/B 测试的步骤：\n定义目标： 清晰地说明您希望通过测试实现的目标，例如提高点击率或改善转化率。\n制定假设： 根据您的目标，创建一个预测测试结果的假设。\n确定变量： 确定您将在变体中更改的元素，与对照组进行比较。\n创建变体： 开发产品的替代版本，其中包括您想要测试的更改。\n选择受众： 选择测试的目标受众，确保其代表您的用户群。\n确定分配： 决定如何在对照组和变体组之间分配受众。\n确保有效性： 检查测试是否没有偏见和可能影响结果的混杂变量。\n运行测试： 部署 A/B 测试给选定的受众，监控每个组的性能。\n收集数据： 收集有关每个组如何与产品的相应版本互动的数据。\n分析结果： 使用统计方法确定对照组和变体之间是否存在显著差异。\n做决策： 基于分析结果，决定是否实施更改、进行其他测试或放弃变体。\n记录发现： 记录测试的结果和见解以供将来参考和组织学习。\n实施更改： 如果变体成功，将更改推广给所有用户。\n请确保运行足够长的测试以收集足够的数据，并避免基于不完整的结果做出决策。\n如何确定 A/B 测试的样本大小？ 确定 A/B 测试的样本大小对确保测试具有足够能力以检测两个变体之间的有意义差异至关重要。以下是一个简明的指南：\n定义基线转化率（BCR）：使用历史数据为控制组建立基线转化率（BCR）。\n确定最小可检测效应（MDE）：确定对您的业务而言在转化率上最小的实质性变化。\n选择显著性水平（alpha）：通常设置为 0.05，这是拒绝零假设为真的概率（第一类错误）。\n设定功效（1 - beta）：通常为 0.80，功效是在零假设为真时正确拒绝零假设的概率（1 - 第二类错误）。\n计算样本大小：使用样本大小计算器或统计软件。输入 BCR、MDE、alpha 和功效，以获取每组所需的样本大小。\n调整实际考虑因素：考虑您可用的流量和测试的持续时间。如果计算得到的样本大小过大，您可能需要增加 MDE 或降低功效，以获得可行的样本大小。\n请记住，样本大小越大，结果越精确，但获取这些结果的时间和成本也会越长。这涉及在特定背景下找到合适平衡的问题。\nA/B 测试中的控制组和变体是什么？ 在 A/B 测试中，控制组是被测试的变量的原始版本，通常代表当前的用户体验或产品功能集。它作为一个基准，用于与新的变体或变体进行比较。变体体现了正在测试的更改，比如调用动作按钮的不同颜色或替代的结账流程。\n有时将控制组称为’A’版本，而将变体称为’B’版本。在进行 A/B 测试时，流量或用户会被随机分配到控制组和变体中，确保每个组在统计上是相似的。这种随机化有助于将变量变化的影响与其他外部因素隔离开来。\n然后，根据预定义的指标，如转化率或点击率，监控和测量每个组的性能。通过比较这些指标，测试自动化工程师可以确定变体是否比控制组更有效地影响用户行为。如果变体在统计上显著优于控制组，可能会将其作为所有用户的新默认选项实施。\n分析与解释 如何分析 A/B 测试的结果？ 分析 A/B 测试结果的过程涉及比较控制组（A）和变体组（B）的性能指标，以确定行为或结果是否存在统计学上的显著差异。主要步骤如下：\n数据收集： 在测试期间从两个组中收集数据。 数据清理： 通过去除异常值和离群值来确保数据质量。 计算性能指标： 计算关键指标，如转化率、点击率或其他相关的关键绩效指标，分别应用于两个组。 统计分析： 进行假设检验（例如 t 检验、卡方检验）来比较两组之间的指标。 计算p 值以评估观察到的差异发生的概率。 确定 p 值是否低于预定义的显著水平（通常为 0.05），表明存在统计学上显著的差异。 置信区间： 计算估计效应大小的置信区间，以了解真实效应在一定置信水平下的范围（通常为 95%）。 如果变体在统计学上显著优于控制，表明所做的改变产生了积极影响。然而，还需要考虑实际意义；即使结果在统计学上显著，其影响可能不足以值得实施。此外，审查测试以查看可能影响结果有效性的潜在偏见或错误。经过深入分析后，基于数据做出是否将变体中的更改应用于产品的决策。\nA/B 测试中使用的统计方法有哪些？ 统计方法在A/B 测试中扮演着重要的角色，为制定数据驱动的决策提供了框架。主要的统计方法包括：\n假设检验： 用于确定控制组和变体组之间性能差异是否具有统计学意义。通常包括零假设（无差异）和备择假设（存在差异）。\np 值计算： 用于衡量在零假设为真的情况下观察到结果的概率。较低的 p 值（通常低于 0.05）表示观察到的差异不太可能是偶然发生的，从而导致零假设被拒绝。\n置信区间： 提供了在一定置信水平下真实效应大小可能的范围（通常为 95%）。如果置信区间不包含零，则认为结果在统计学上是显著的。\nt 检验： 用于在正态分布的数据和相似的方差情况下比较两组的均值。在方差不相等的情况下，会使用 Welch’s t-test 等变体。\n卡方检验： 用于评估分类数据，以了解变量之间是否存在显著关联。\n贝叶斯方法： 提供了传统频率统计的替代方案，它根据数据给出了假设成立的概率，而不是在给定假设的情况下数据发生的概率。\n功效分析： 用于确定以期望功效（通常为 0.8）和显著水平检测到给定大小效应所需的最小样本量。\n这些方法被应用于从 A/B 测试中收集的数据，以得出关于变体相对于控制的影响的结论。正确的应用确保结果可靠且具有实际指导意义，从而指导产品开发中的明智决策。\n如何解释 A/B 测试的结果？ 解释 A/B 测试的结果涉及比较控制组（A）和变体组（B）的性能指标，以确定是否存在统计学上的显著差异。在测试结束后，您通常会获得一个包含每个组的关键指标（例如转化率、点击率或其他相关 KPI）的数据集。\n首先，计算两组之间的差异。例如，如果您正在测量转化率，请从 A 组的转化率中减去 B 组的转化率。\n接下来，执行统计显著性检验，例如 t 检验或卡方检验，以确定观察到的差异是由偶然发生还是由变体中的更改引起的。您将获得一个 p 值，将其与预先确定的显著性水平（通常为 0.05）进行比较。如果 p 值低于显著性水平，则结果被认为是统计学上显著的。\n此外，计算置信区间，以了解在一定置信水平下两组之间真实差异的范围（通常为 95%）。\n最后，考虑结果的实际意义。即使结果在统计学上显著，也可能不足以证明对产品进行更改。查看效应大小并考虑业务影响，包括潜在的投资回报，然后再做出决策。\n记得考虑可能影响结果的外部因素，并确保测试运行了足够长的时间以捕捉典型用户行为。\n在 A/B 测试的背景下，统计显著性是什么？ 在 A/B 测试的背景下，统计显著性是什么？\n在 A/B 测试的背景下，统计显著性是我们对观察到的测试组（控制组和变体组）之间的差异是否是由于所做的更改而不是由于随机机会而感到有信心的度量。这是用p 值来量化的，它表示在没有实际差异的情况下，获得观察到的结果或更极端结果的概率（零假设）。\n通常，如果p 值低于预定义的阈值，通常为 0.05，结果就被认为具有统计显著性。这意味着观察到的差异由于随机变化的可能性不到 5%。p 值越低，统计显著性就越大。\n为了确定统计显著性，通常会使用统计测试，如t 检验或卡方检验，具体取决于您正在分析的数据类型。这些测试根据 A/B 测试的数据计算 p 值。\n统计显著性有助于做出关于是否实施所测试更改的明智决策。然而，还必须考虑实际显著性或更改对用户行为的实际影响，这可能并不总是仅通过统计显著性来反映。\n在 A/B 测试中如何处理误报或漏报？ 处理 A/B 测试中的误报或漏报涉及到一些关键步骤：\n验证测试设置：确保跟踪代码正确实施，变体组和对照组正确配置。 检查外部因素：识别可能影响测试结果的任何外部事件或更改，例如假期、中断或营销活动。 审核细分：确保受众细分被正确定义，并且组之间没有重叠或污染。 分析数据收集：确认数据在对照组和变体组之间准确且一致地收集。 重新评估样本大小：确保样本大小足够大，能够检测到有意义的差异，并且测试运行时间足够长以达到统计显著性。 使用测试后分析：应用分割分析或队列分析等技术，深入研究结果并了解不同用户组的行为。 进行后续测试：如果结果不明确或存在假阳性或假阴性的怀疑，进行后续测试以验证结果。 通过系统地审查这些领域，您可以识别和纠正误报或漏报，确保您的 A/B 测试结果是可靠且可操作的。\n深层理解 多变量测试是什么，与 A/B 测试有何区别？ 多变量测试（MVT）是一种用于同时测试多个变量以确定如何最好地改善特定结果的技术。与 A/B 测试不同，A/B 测试专注于比较一个变量的两个版本，而 MVT 可以涉及多个变量及其各种排列组合。\n在 MVT 中，您可能会同时测试多个元素的不同变体，例如标题、图像和呼叫到操作按钮。这样就创造了一个可能组合的矩阵，每个组合都会展示给用户的一个子集。其主要优势在于观察不同元素如何相互作用以及对用户行为的综合影响。\n由于 MVT 涉及更多变量，因此为了达到统计显著性，需要更大的样本大小。此外，在设置和分析方面，MVT 也需要更多资源。然而，它可以提供更全面的洞察，了解各种更改如何相互作用，从而潜在地导致更优化的结果。\n相比之下，A/B 测试更简单、更快速实施，重点是一次性进行一个更改的影响。通常用于对单个更改做出决策或者在资源有限的情况下。\n总的来说，虽然 A/B 测试专注于比较一个更改的两个版本，但多变量测试评估多个更改及其相互作用的性能，需要更多资源，但提供对修改的最佳组合更深入的洞察。\n什么是分流 URL 测试？ 分流 URL 测试是 A/B 测试的一种变体，它将流量分配到两个不同的 URL，而不是相同 URL 中的不同版本。这种方法在比较两个不同的页面设计、后端流程或整个网站时特别有用。\n在分流 URL 测试中，用户被随机重定向到其中一个 URL，跟踪他们与页面的互动，以确定哪个版本在预定义的指标（如转化率、停留时间或点击率）方面的表现更好。\n与传统的 A/B 测试相比，主要区别包括：\n独立的 URLs：每个测试版本都存在于自己的 URL 上。 后端更改：它允许测试涉及可能涉及后端修改的重大更改。 复杂更改：适用于测试完全不同的布局或工作流程。 要执行分流 URL 测试，通常会在服务器上使用重定向机制或使用测试工具，根据预定义的规则将流量引导到不同的 URL。重要的是要确保流量的分流是随机的，并且其他因素（如用户的位置、设备等）不会影响结果。\n分析结果涉及比较两个 URL 的性能指标，以确定哪一个更有效地实现了预期的目标。与 A/B 测试一样，统计显著性至关重要，以确保结果不是偶然产生的。\n以下是在 .htaccess 文件中设置分流 URL 测试重定向的基本示例：\nRewriteEngine On RewriteCond %{QUERY_STRING} ^version=a$ RewriteRule ^page$ http://example.com/page-version-a [R=302,L] RewriteCond %{QUERY_STRING} ^version=b$ RewriteRule ^page$ http://example.com/page-version-b [R=302,L] A/B 测试有哪些局限性？ A/B 测试，尽管功能强大，但存在一些限制：\n有限变量：测试通常比较两个版本，只更改一个变量。要同时测试多个变量，需要使用更为复杂的多元测试方法。\n耗时：实现统计显著性可能需要较长时间，尤其是对于流量较低的站点或较小的更改。\n分割挑战：结果可能无法考虑不同用户段的行为，如果样本不具代表性，可能导致误导性的结论。\n外部因素：季节性、市场变化或其他外部因素可能影响测试结果，使得难以将用户行为的变化归因于测试变量本身。\n交互效应：用户体验的一个部分的变化可能会影响另一个部分，如果设计时未考虑这种交互，A/B 测试可能无法检测到。\n资源密集：需要资源来设计、实施、监控和分析，这对于较小的团队或预算较小的项目可能构成制约。\n伦理考虑：未经用户同意或涉及敏感变量的测试可能引发伦理关切。\n局部最大值：A/B 测试对于优化效果很好，但可能导致渐进式改进，可能会忽略创新思想，这些思想可能导致显著更好的结果。\n实施错误：不正确的设置可能导致错误的结果。正确的技术实施至关重要。\n数据解释：数据的错误解释可能发生，特别是如果在统计分析方面缺乏专业知识。\n了解这些限制对于 测试自动化工程师至关重要，以确保有效使用 A/B 测试，并正确解释其结果。\n如何将 A/B 测试与其他测试方法结合使用？ A/B 测试可以与各种测试方法结合，以提升软件质量和用户体验。比如，单元测试 确保各个组件在 A/B 测试比较不同用户流程之前正常运作。集成测试 则检查组合部分是否协同工作，这在 A/B 测试评估更改对集成系统影响之前显得至关重要。\n将 自动化的 回归测试 与 A/B 测试结合使用是很有益的，可以确保新功能或更改不会破坏现有功能。自动化测试可以快速验证控制组和变体版本在暴露给用户之前是否稳定且按预期运行。\n可用性测试 可以与 A/B 测试结合使用，以获得对用户行为和偏好的定性洞察。而 A/B 测试能够量化更改的影响，而 可用性测试可以解释为何某些更改表现更佳。\n在进行 A/B 测试之前，应进行 性能测试 以确保两个变体提供可接受的响应时间并能处理预期负载。这是至关重要的，因为性能可以显著影响用户行为，从而影响 A/B 测试的结果。\n最后，应在 A/B 测试过程中使用 监控和日志工具 来跟踪错误、性能指标和用户交互。这些数据对解释 A/B 测试结果以及诊断可能与正在测试的更改无直接关系的问题非常宝贵。\n通过将 A/B 测试与这些方法结合使用，可以确保对软件更改进行全面评估，从而做出更明智的决策，提供更高质量的产品。\nA/B 测试中 “回归均值 “的概念是什么？ 在 A/B 测试的情境中，回归到均值指的是极端结果在随后的测量中趋于不那么极端的现象。当一个变体（A 或 B）在初始测试中与控制组显示出显著差异时，这种差异在随后的测试中可能会减小或消失。\n这种效应在分析 A/B 测试结果时尤为重要。如果初始测试显示新功能或设计（变体）表现出色，人们可能会认为这种成功是由于所做的更改。然而，如果初始结果受到不一致的变量的影响，比如临时用户行为、季节效应或其他外部因素，随后的测试可能会显示性能优势并非由于变体本身，而是由于这些外部影响。\n为了减轻由于回归到均值而误解结果的风险，关键是：\n以足够的持续时间运行测试，以平均异常。 当结果异常高或低时，重复测试以确认结果。 使用足够大的样本量，以最小化离群值的影响。 控制尽可能多的外部变量，以确保一致的测试条件。 通过了解回归到均值， 测试自动化工程师可以避免基于初始 A/B 测试结果而做出过早结论，从而更准确地评估更改的有效性。\n参考资料 A/B 测试 Wikipedia https://zh.wikipedia.org/zh-cn/A/B%E6%B8%AC%E8%A9%A6 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
+  "wordCount" : "507",
+  "inLanguage": "zh",
+  "datePublished": "2024-02-05T16:06:44+08:00",
+  "dateModified": "2024-02-05T16:06:44+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nao.deng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "软件测试同学",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/" title="🇬🇧English"
+                            aria-label="🇬🇧English">🇬🇧English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/zh/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                    <span>系列</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      软件测试术语分享:A/B 测试
+    </h1>
+    <div class="post-meta"><span title='2024-02-05 16:06:44 +0800 CST'>二月 5, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;507 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-a-b-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95" aria-label="A/B 测试">A/B 测试</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e-ab-%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" aria-label="关于 A/B 测试的一些问题">关于 A/B 测试的一些问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-ab-%e6%b5%8b%e8%af%95" aria-label="什么是 A/B 测试？">什么是 A/B 测试？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-ab-%e6%b5%8b%e8%af%95%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 A/B 测试很重要？">为什么 A/B 测试很重要？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="A/B 测试的关键组成部分有哪些？">A/B 测试的关键组成部分有哪些？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e4%b8%8e%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c%e6%9c%89%e4%bd%95%e5%85%b3%e8%81%94" aria-label="A/B 测试与用户体验有何关联？">A/B 测试与用户体验有何关联？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e5%9c%a8%e4%ba%a7%e5%93%81%e5%bc%80%e5%8f%91%e4%b8%ad%e7%9a%84%e8%a7%92%e8%89%b2%e6%98%af%e4%bb%80%e4%b9%88" aria-label="A/B 测试在产品开发中的角色是什么？">A/B 测试在产品开发中的角色是什么？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%ae%9e%e6%96%bd%e6%89%a7%e8%a1%8c" aria-label="实施执行">实施执行</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%ae-ab-%e6%b5%8b%e8%af%95" aria-label="如何设置 A/B 测试？">如何设置 A/B 测试？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e7%9a%84%e8%bf%9b%e8%a1%8c%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="A/B 测试的进行涉及哪些步骤？">A/B 测试的进行涉及哪些步骤？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e5%ae%9a-ab-%e6%b5%8b%e8%af%95%e7%9a%84%e6%a0%b7%e6%9c%ac%e5%a4%a7%e5%b0%8f" aria-label="如何确定 A/B 测试的样本大小？">如何确定 A/B 测试的样本大小？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e6%8e%a7%e5%88%b6%e7%bb%84%e5%92%8c%e5%8f%98%e4%bd%93%e6%98%af%e4%bb%80%e4%b9%88" aria-label="A/B 测试中的控制组和变体是什么？">A/B 测试中的控制组和变体是什么？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%88%86%e6%9e%90%e4%b8%8e%e8%a7%a3%e9%87%8a" aria-label="分析与解释">分析与解释</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%88%86%e6%9e%90-ab-%e6%b5%8b%e8%af%95%e7%9a%84%e7%bb%93%e6%9e%9c" aria-label="如何分析 A/B 测试的结果？">如何分析 A/B 测试的结果？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e4%b8%ad%e4%bd%bf%e7%94%a8%e7%9a%84%e7%bb%9f%e8%ae%a1%e6%96%b9%e6%b3%95%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="A/B 测试中使用的统计方法有哪些？">A/B 测试中使用的统计方法有哪些？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%a7%a3%e9%87%8a-ab-%e6%b5%8b%e8%af%95%e7%9a%84%e7%bb%93%e6%9e%9c" aria-label="如何解释 A/B 测试的结果？">如何解释 A/B 测试的结果？</a></li>
+                <li>
+                    <a href="#%e5%9c%a8-ab-%e6%b5%8b%e8%af%95%e7%9a%84%e8%83%8c%e6%99%af%e4%b8%8b%e7%bb%9f%e8%ae%a1%e6%98%be%e8%91%97%e6%80%a7%e6%98%af%e4%bb%80%e4%b9%88" aria-label="在 A/B 测试的背景下，统计显著性是什么？">在 A/B 测试的背景下，统计显著性是什么？</a></li>
+                <li>
+                    <a href="#%e5%9c%a8-ab-%e6%b5%8b%e8%af%95%e4%b8%ad%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e8%af%af%e6%8a%a5%e6%88%96%e6%bc%8f%e6%8a%a5" aria-label="在 A/B 测试中如何处理误报或漏报？">在 A/B 测试中如何处理误报或漏报？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b7%b1%e5%b1%82%e7%90%86%e8%a7%a3" aria-label="深层理解">深层理解</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a4%9a%e5%8f%98%e9%87%8f%e6%b5%8b%e8%af%95%e6%98%af%e4%bb%80%e4%b9%88%e4%b8%8e-ab-%e6%b5%8b%e8%af%95%e6%9c%89%e4%bd%95%e5%8c%ba%e5%88%ab" aria-label="多变量测试是什么，与 A/B 测试有何区别？">多变量测试是什么，与 A/B 测试有何区别？</a></li>
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e6%b5%81-url-%e6%b5%8b%e8%af%95" aria-label="什么是分流 URL 测试？">什么是分流 URL 测试？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b1%80%e9%99%90%e6%80%a7" aria-label="A/B 测试有哪些局限性？">A/B 测试有哪些局限性？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%b0%86-ab-%e6%b5%8b%e8%af%95%e4%b8%8e%e5%85%b6%e4%bb%96%e6%b5%8b%e8%af%95%e6%96%b9%e6%b3%95%e7%bb%93%e5%90%88%e4%bd%bf%e7%94%a8" aria-label="如何将 A/B 测试与其他测试方法结合使用？">如何将 A/B 测试与其他测试方法结合使用？</a></li>
+                <li>
+                    <a href="#ab-%e6%b5%8b%e8%af%95%e4%b8%ad-%e5%9b%9e%e5%bd%92%e5%9d%87%e5%80%bc-%e7%9a%84%e6%a6%82%e5%bf%b5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="A/B 测试中 &ldquo;回归均值 &ldquo;的概念是什么？">A/B 测试中 &ldquo;回归均值 &ldquo;的概念是什么？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="ab-测试">A/B 测试<a hidden class="anchor" aria-hidden="true" href="#ab-测试">#</a></h2>
+<p>A/B 测试涉及创建一个或多个网页变体，以与当前版本进行比较。其目标是根据特定指标（如每访问者收入或转化率）确定哪个版本的性能最佳。
+详见：
+<a href="https://zh.wikipedia.org/zh-cn/A/B%E6%B8%AC%E8%A9%A6">Wikipedia</a></p>
+<h2 id="关于-ab-测试的一些问题">关于 A/B 测试的一些问题<a hidden class="anchor" aria-hidden="true" href="#关于-ab-测试的一些问题">#</a></h2>
+<h3 id="基础知识和重要性">基础知识和重要性<a hidden class="anchor" aria-hidden="true" href="#基础知识和重要性">#</a></h3>
+<h4 id="什么是-ab-测试">什么是 A/B 测试？<a hidden class="anchor" aria-hidden="true" href="#什么是-ab-测试">#</a></h4>
+<p>A/B 测试，又称为分割测试，是一种比较网页或应用程序的两个版本以确定哪个性能更好的方法。它涉及在随机向用户展示两个变体（A 和 B），并使用统计分析来确定哪个版本在实现预定义目标方面更有效，比如增加点击率、转化率或其他关键<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-indicator.md">性能指标</a>。</p>
+<p>在软件<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>的背景下，A/B 测试可以被自动化以在不需要手动干预的情况下运行对特性或界面的不同变体的测试。自动化的 A/B 测试可以集成到持续集成/持续部署（CI/CD）流水线中，以确保对应用程序所做的任何更改都经过评估，了解其对用户行为和转化率的影响。</p>
+<p>为了自动化 A/B 测试，工程师通常使用特性标志和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>框架的组合。特性标志允许在不同版本的特性之间进行切换，而<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>框架执行测试并收集有关用户交互的数据。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 代码中的特性标志示例</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">featureFlagService</span><span class="p">.</span><span class="na">isFeatureEnabled</span><span class="p">(</span><span class="err">&#39;</span><span class="k">new</span><span class="o">-</span><span class="n">checkout</span><span class="o">-</span><span class="n">flow</span><span class="err">&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// 变体 B 的代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// 变体 A 的代码（对照组）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>自动化的 A/B 测试实现了在软件开发中的快速<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md">迭代</a>和数据驱动的决策。通过利用自动化，团队可以扩展他们的测试工作，减少人为错误，并加速反馈循环，最终实现更用户中心化和成功的产品。</p>
+<h4 id="为什么-ab-测试很重要">为什么 A/B 测试很重要？<a hidden class="anchor" aria-hidden="true" href="#为什么-ab-测试很重要">#</a></h4>
+<p>A/B 测试的重要性在于，它为我们提供了有关更改对用户行为和转化率影响的实证证据。通过将控制版本（A）与变体（B）进行比较，我们可以做出数据驱动的决策，从而优化性能并提高用户满意度。这种测试方法对于验证关于用户偏好的假设以及确定软件应用中最有效元素（如按钮、图像或工作流程）非常有价值。</p>
+<p>在软件<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>的背景下，A/B 测试对于迭代式开发至关重要，使团队能够基于用户反馈逐步改进功能。它还有助于在全面推出新功能之前在较小的受众群体上进行测试，从而减小与其相关的风险。此外，A/B 测试有助于通过确保仅实施最有影响的更改，从而最大化投资回报，节省资源并集中精力于对最终用户真正重要的事物。</p>
+<p>对于<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师而言，将 A/B 测试整合到自动化策略中可以产生更强大和以用户为中心的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，确保自动化测试不仅检查功能，还检查真实世界的用户参与和转化。</p>
+<h4 id="ab-测试的关键组成部分有哪些">A/B 测试的关键组成部分有哪些？<a hidden class="anchor" aria-hidden="true" href="#ab-测试的关键组成部分有哪些">#</a></h4>
+<p>A/B 测试的关键组成部分包括：</p>
+<ul>
+<li><strong>假设（Hypothesis）</strong>：对测试结果的清晰预测性陈述。</li>
+<li><strong>变量（Variables）</strong>：在变体中更改的元素，例如按钮颜色、文本或布局。</li>
+<li><strong>测试组（Test Group）</strong>：接收变体（B）的受众群体。</li>
+<li><strong>对照组（Control Group）</strong>：接收原始版本（A）的受众群体。</li>
+<li><strong>随机化（Randomization）</strong>：确保参与者被随机分配到测试组和对照组，以消除偏见。</li>
+<li><strong>成功指标（Success Metrics）</strong>：用于确定测试结果的具体可衡量标准，如转化率或点击率。</li>
+<li><strong>持续时间（Duration）</strong>：测试运行的时间段，确保足够长以收集到重要数据。</li>
+<li><strong>数据收集（Data Collection）</strong>：跟踪用户互动并根据成功指标衡量性能的机制。</li>
+<li><strong>分析（Analysis）</strong>：使用统计方法评估数据，并确定性能差异是否显著。</li>
+<li><strong>分割（Segmentation）</strong>：按用户人口统计信息或行为分解数据，以了解对亚组的不同影响。</li>
+</ul>
+<p>在实践中，这些组成部分被整合到一个结构化过程中，以评估变更的影响并做出数据驱动的决策。<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师应重点确保<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>稳定，数据收集准确，并且分析工具正确配置以有效解释结果。</p>
+<h4 id="ab-测试与用户体验有何关联">A/B 测试与用户体验有何关联？<a hidden class="anchor" aria-hidden="true" href="#ab-测试与用户体验有何关联">#</a></h4>
+<p>A/B 测试通过允许团队对软件产品的更改做出数据驱动的决策，直接影响<strong>用户体验（UX）</strong>。通过比较一个功能或界面的两个版本（A 和 B），团队可以衡量每个变体在用户参与、满意度和转化率方面的表现。表现更好的用户体验变体，由增加的页面停留时间、更高的点击率或完成所需操作的改善等指标表示，随后可以为所有用户实施。</p>
+<p>这个过程确保变更不是基于假设或个人偏好，而是基于实际用户行为。它有助于优化用户界面、工作流程和内容，以提高可用性和可访问性。A/B 测试还可以在完全推出之前识别潜在的用户体验问题，减少负面用户反馈的风险以及昂贵的发布后修复的需求。</p>
+<p>通过根据 A/B 测试结果持续迭代和改进产品，公司可以提高用户满意度和忠诚度，这对于长期成功至关重要。本质上，A/B 测试作为用户反馈和产品演进之间的桥梁，促进了以用户为中心的开发方法。</p>
+<h4 id="ab-测试在产品开发中的角色是什么">A/B 测试在产品开发中的角色是什么？<a hidden class="anchor" aria-hidden="true" href="#ab-测试在产品开发中的角色是什么">#</a></h4>
+<p>A/B 测试通过使团队能够做出<strong>数据驱动的决策</strong>，在产品开发中发挥了<strong>至关重要的作用</strong>。它通过比较产品的两个版本来优化功能，通过特定指标（如转化率或用户参与）确定哪个版本的性能更好。</p>
+<p>在产品开发的背景下，A/B 测试用于<strong>验证产品决策</strong>并<strong>降低</strong>与新功能发布相关的风险。通过将新功能（变体）与当前版本（控制）进行测试，开发人员和产品经理可以在将其推向整个用户群之前评估更改的影响。</p>
+<p>这种测试方法还支持<strong>迭代式开发</strong>，允许根据用户反馈和行为持续改进产品。它可以通过提供用户喜好或拒绝的证据来影响产品路线图，从而指导未来的开发优先级。</p>
+<p>此外，A/B 测试可以集成到<strong>敏捷工作流</strong>中，其中短周期的开发和频繁的发布很常见。它允许进行快速的实验和适应，这在快节奏的开发环境中至关重要。</p>
+<p>对于<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师来说，A/B 测试需要设置对用户交互进行<strong>自动跟踪</strong>和<strong>分析</strong>以测量不同变体的性能。工程师必须确保<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>稳定，并且收集的数据可靠，以进行准确的决策。</p>
+<p>总而言之，A/B 测试是产品开发中的<strong>战略性工具</strong>，它指导用户体验的增强，验证产品决策，并促进实验性文化以持续改进。</p>
+<h3 id="实施执行">实施执行<a hidden class="anchor" aria-hidden="true" href="#实施执行">#</a></h3>
+<h4 id="如何设置-ab-测试">如何设置 A/B 测试？<a hidden class="anchor" aria-hidden="true" href="#如何设置-ab-测试">#</a></h4>
+<p>设置 A/B 测试涉及以下步骤：</p>
+<ol>
+<li>
+<p><strong>明确目标：</strong> 充分说明您的改进目标（例如，提高转化率、点击率）。</p>
+</li>
+<li>
+<p><strong>提出假设：</strong> 根据数据，对可能导致改进的变化进行合理猜测。</p>
+</li>
+<li>
+<p><strong>创建变体：</strong> 在一个或多个变体中实施更改，同时将原始版本作为对照。</p>
+</li>
+<li>
+<p><strong>分割受众：</strong> 决定如何将用户分组，确保他们被随机分配到对照组或变体组。</p>
+</li>
+<li>
+<p><strong>确定度量标准：</strong> 选择将衡量变体影响的关键<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-indicator.md">性能指标</a>（KPI）。</p>
+</li>
+<li>
+<p><strong>确保正确追踪：</strong> 设置追踪工具，收集对照组和变体组用户行为的数据。</p>
+</li>
+<li>
+<p><strong>运行测试：</strong> 启动实验，允许用户与两个版本互动的足够时间。</p>
+</li>
+<li>
+<p><strong>监控测试：</strong> 检查任何技术问题，并确保准确收集数据。</p>
+</li>
+<li>
+<p><strong>分析结果：</strong> 在测试结束后，使用统计方法比较变体与对照的性能。</p>
+</li>
+<li>
+<p><strong>做决策：</strong> 基于分析结果，决定是否实施更改、进行其他测试或放弃变体。</p>
+</li>
+</ol>
+<p>这里有一个简单的代码片段，用于说明您可能如何在 Web 应用程序中将用户分配到不同组：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">function</span><span class="w"> </span><span class="nf">assignGroup</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="n">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">randomNumber</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">0</span><span class="p">.</span><span class="na">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="err">&#39;</span><span class="n">control</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="n">variant</span><span class="err">&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这个函数使用一个随机数将用户分配到&rsquo;对照&rsquo;或&rsquo;变体&rsquo;组，分配比例为 50/50。根据需要调整阈值以更改用户在组之间的分布。</p>
+<h4 id="ab-测试的进行涉及哪些步骤">A/B 测试的进行涉及哪些步骤？<a hidden class="anchor" aria-hidden="true" href="#ab-测试的进行涉及哪些步骤">#</a></h4>
+<p>进行 A/B 测试的步骤：</p>
+<ol>
+<li>
+<p><strong>定义目标：</strong> 清晰地说明您希望通过测试实现的目标，例如提高点击率或改善转化率。</p>
+</li>
+<li>
+<p><strong>制定假设：</strong> 根据您的目标，创建一个预测测试结果的假设。</p>
+</li>
+<li>
+<p><strong>确定变量：</strong> 确定您将在变体中更改的元素，与对照组进行比较。</p>
+</li>
+<li>
+<p><strong>创建变体：</strong> 开发产品的替代版本，其中包括您想要测试的更改。</p>
+</li>
+<li>
+<p><strong>选择受众：</strong> 选择测试的目标受众，确保其代表您的用户群。</p>
+</li>
+<li>
+<p><strong>确定分配：</strong> 决定如何在对照组和变体组之间分配受众。</p>
+</li>
+<li>
+<p><strong>确保有效性：</strong> 检查测试是否没有偏见和可能影响结果的混杂变量。</p>
+</li>
+<li>
+<p><strong>运行测试：</strong> 部署 A/B 测试给选定的受众，监控每个组的性能。</p>
+</li>
+<li>
+<p><strong>收集数据：</strong> 收集有关每个组如何与产品的相应版本互动的数据。</p>
+</li>
+<li>
+<p><strong>分析结果：</strong> 使用统计方法确定对照组和变体之间是否存在显著差异。</p>
+</li>
+<li>
+<p><strong>做决策：</strong> 基于分析结果，决定是否实施更改、进行其他测试或放弃变体。</p>
+</li>
+<li>
+<p><strong>记录发现：</strong> 记录测试的结果和见解以供将来参考和组织学习。</p>
+</li>
+<li>
+<p><strong>实施更改：</strong> 如果变体成功，将更改推广给所有用户。</p>
+</li>
+</ol>
+<p>请确保运行足够长的测试以收集足够的数据，并避免基于不完整的结果做出决策。</p>
+<h4 id="如何确定-ab-测试的样本大小">如何确定 A/B 测试的样本大小？<a hidden class="anchor" aria-hidden="true" href="#如何确定-ab-测试的样本大小">#</a></h4>
+<p>确定 A/B 测试的<strong>样本大小</strong>对确保测试具有足够能力以检测两个变体之间的有意义差异至关重要。以下是一个简明的指南：</p>
+<ol>
+<li>
+<p><strong>定义基线转化率（BCR）</strong>：使用历史数据为控制组建立基线转化率（BCR）。</p>
+</li>
+<li>
+<p><strong>确定最小可检测效应（MDE）</strong>：确定对您的业务而言在转化率上最小的实质性变化。</p>
+</li>
+<li>
+<p><strong>选择显著性水平（alpha）</strong>：通常设置为 0.05，这是拒绝零假设为真的概率（第一类错误）。</p>
+</li>
+<li>
+<p><strong>设定功效（1 - beta）</strong>：通常为 0.80，功效是在零假设为真时正确拒绝零假设的概率（1 - 第二类错误）。</p>
+</li>
+<li>
+<p><strong>计算样本大小</strong>：使用样本大小计算器或统计软件。输入 BCR、MDE、alpha 和功效，以获取每组所需的样本大小。</p>
+</li>
+<li>
+<p><strong>调整实际考虑因素</strong>：考虑您可用的流量和测试的持续时间。如果计算得到的样本大小过大，您可能需要增加 MDE 或降低功效，以获得可行的样本大小。</p>
+</li>
+</ol>
+<p>请记住，样本大小越大，结果越精确，但获取这些结果的时间和成本也会越长。这涉及在特定背景下找到合适平衡的问题。</p>
+<h4 id="ab-测试中的控制组和变体是什么">A/B 测试中的控制组和变体是什么？<a hidden class="anchor" aria-hidden="true" href="#ab-测试中的控制组和变体是什么">#</a></h4>
+<p>在 A/B 测试中，<strong>控制组</strong>是被测试的变量的原始版本，通常代表当前的用户体验或产品功能集。它作为一个基准，用于与新的变体或<strong>变体</strong>进行比较。变体体现了正在测试的更改，比如调用动作按钮的不同颜色或替代的结账流程。</p>
+<p>有时将控制组称为&rsquo;A&rsquo;版本，而将变体称为&rsquo;B&rsquo;版本。在进行 A/B 测试时，流量或用户会被随机分配到控制组和变体中，确保每个组在统计上是相似的。这种随机化有助于将变量变化的影响与其他外部因素隔离开来。</p>
+<p>然后，根据预定义的指标，如转化率或点击率，监控和测量每个组的性能。通过比较这些指标，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师可以确定变体是否比控制组更有效地影响用户行为。如果变体在统计上显著优于控制组，可能会将其作为所有用户的新默认选项实施。</p>
+<h3 id="分析与解释">分析与解释<a hidden class="anchor" aria-hidden="true" href="#分析与解释">#</a></h3>
+<h4 id="如何分析-ab-测试的结果">如何分析 A/B 测试的结果？<a hidden class="anchor" aria-hidden="true" href="#如何分析-ab-测试的结果">#</a></h4>
+<p>分析 A/B 测试结果的过程涉及比较控制组（A）和变体组（B）的性能指标，以确定行为或结果是否存在统计学上的显著差异。主要步骤如下：</p>
+<ol>
+<li><strong>数据收集：</strong> 在测试期间从两个组中收集数据。</li>
+<li><strong>数据清理：</strong> 通过去除异常值和离群值来确保数据质量。</li>
+<li><strong>计算性能指标：</strong> 计算关键指标，如转化率、点击率或其他相关的关键绩效指标，分别应用于两个组。</li>
+<li><strong>统计分析：</strong></li>
+</ol>
+<ul>
+<li>进行<strong>假设检验</strong>（例如 t 检验、卡方检验）来比较两组之间的指标。</li>
+<li>计算<strong>p 值</strong>以评估观察到的差异发生的概率。</li>
+<li>确定 p 值是否低于预定义的<strong>显著水平</strong>（通常为 0.05），表明存在统计学上显著的差异。</li>
+</ul>
+<ol start="5">
+<li><strong>置信区间：</strong> 计算估计效应大小的置信区间，以了解真实效应在一定置信水平下的范围（通常为 95%）。</li>
+</ol>
+<p>如果变体在统计学上显著优于控制，表明所做的改变产生了积极影响。然而，还需要考虑<strong>实际意义</strong>；即使结果在统计学上显著，其影响可能不足以值得实施。此外，审查测试以查看可能影响结果有效性的潜在偏见或错误。经过深入分析后，基于数据做出是否将变体中的更改应用于产品的决策。</p>
+<h4 id="ab-测试中使用的统计方法有哪些">A/B 测试中使用的统计方法有哪些？<a hidden class="anchor" aria-hidden="true" href="#ab-测试中使用的统计方法有哪些">#</a></h4>
+<p>统计方法在<strong>A/B 测试</strong>中扮演着重要的角色，为制定数据驱动的决策提供了框架。主要的统计方法包括：</p>
+<ul>
+<li>
+<p><strong>假设检验：</strong> 用于确定控制组和变体组之间性能差异是否具有统计学意义。通常包括零假设（无差异）和备择假设（存在差异）。</p>
+</li>
+<li>
+<p><strong>p 值计算：</strong> 用于衡量在零假设为真的情况下观察到结果的概率。较低的 p 值（通常低于 0.05）表示观察到的差异不太可能是偶然发生的，从而导致零假设被拒绝。</p>
+</li>
+<li>
+<p><strong>置信区间：</strong> 提供了在一定置信水平下真实效应大小可能的范围（通常为 95%）。如果置信区间不包含零，则认为结果在统计学上是显著的。</p>
+</li>
+<li>
+<p><strong>t 检验：</strong> 用于在正态分布的数据和相似的方差情况下比较两组的均值。在方差不相等的情况下，会使用 Welch&rsquo;s t-test 等变体。</p>
+</li>
+<li>
+<p><strong>卡方检验：</strong> 用于评估分类数据，以了解变量之间是否存在显著关联。</p>
+</li>
+<li>
+<p><strong>贝叶斯方法：</strong> 提供了传统频率统计的替代方案，它根据数据给出了假设成立的概率，而不是在给定假设的情况下数据发生的概率。</p>
+</li>
+<li>
+<p><strong>功效分析：</strong> 用于确定以期望功效（通常为 0.8）和显著水平检测到给定大小效应所需的最小样本量。</p>
+</li>
+</ul>
+<p>这些方法被应用于从 A/B 测试中收集的数据，以得出关于变体相对于控制的影响的结论。正确的应用确保结果可靠且具有实际指导意义，从而指导产品开发中的明智决策。</p>
+<h4 id="如何解释-ab-测试的结果">如何解释 A/B 测试的结果？<a hidden class="anchor" aria-hidden="true" href="#如何解释-ab-测试的结果">#</a></h4>
+<p>解释 A/B 测试的结果涉及比较控制组（A）和变体组（B）的性能指标，以确定是否存在统计学上的显著差异。在测试结束后，您通常会获得一个包含每个组的关键指标（例如转化率、点击率或其他相关 KPI）的数据集。</p>
+<p>首先，计算两组之间的<strong>差异</strong>。例如，如果您正在测量转化率，请从 A 组的转化率中减去 B 组的转化率。</p>
+<p>接下来，执行<strong>统计显著性检验</strong>，例如 t 检验或卡方检验，以确定观察到的差异是由偶然发生还是由变体中的更改引起的。您将获得一个 p 值，将其与预先确定的显著性水平（通常为 0.05）进行比较。如果 p 值低于显著性水平，则结果被认为是统计学上显著的。</p>
+<p>此外，计算<strong>置信区间</strong>，以了解在一定置信水平下两组之间真实差异的范围（通常为 95%）。</p>
+<p>最后，考虑结果的<strong>实际意义</strong>。即使结果在统计学上显著，也可能不足以证明对产品进行更改。查看效应大小并考虑业务影响，包括潜在的投资回报，然后再做出决策。</p>
+<p>记得考虑可能影响结果的外部因素，并确保测试运行了足够长的时间以捕捉典型用户行为。</p>
+<h4 id="在-ab-测试的背景下统计显著性是什么">在 A/B 测试的背景下，统计显著性是什么？<a hidden class="anchor" aria-hidden="true" href="#在-ab-测试的背景下统计显著性是什么">#</a></h4>
+<p><strong>在 A/B 测试的背景下，统计显著性是什么？</strong></p>
+<p>在 A/B 测试的背景下，统计显著性是我们对观察到的测试组（控制组和变体组）之间的差异是否是由于所做的更改而不是由于随机机会而感到有信心的度量。这是用<strong>p 值</strong>来量化的，它表示在没有实际差异的情况下，获得观察到的结果或更极端结果的概率（零假设）。</p>
+<p>通常，如果<strong>p 值低于预定义的阈值</strong>，通常为 0.05，结果就被认为具有统计显著性。这意味着观察到的差异由于随机变化的可能性不到 5%。p 值越低，统计显著性就越大。</p>
+<p>为了确定统计显著性，通常会使用统计测试，如<strong>t 检验</strong>或<strong>卡方检验</strong>，具体取决于您正在分析的数据类型。这些测试根据 A/B 测试的数据计算 p 值。</p>
+<p>统计显著性有助于做出关于是否实施所测试更改的明智决策。然而，还必须考虑<strong>实际显著性</strong>或更改对用户行为的实际影响，这可能并不总是仅通过统计显著性来反映。</p>
+<h4 id="在-ab-测试中如何处理误报或漏报">在 A/B 测试中如何处理误报或漏报？<a hidden class="anchor" aria-hidden="true" href="#在-ab-测试中如何处理误报或漏报">#</a></h4>
+<p>处理 A/B 测试中的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md">误报</a>或漏报涉及到一些关键步骤：</p>
+<ul>
+<li><strong>验证测试<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md">设置</a></strong>：确保跟踪代码正确实施，变体组和对照组正确配置。</li>
+<li><strong>检查外部因素</strong>：识别可能影响测试结果的任何外部事件或更改，例如假期、中断或营销活动。</li>
+<li><strong>审核细分</strong>：确保受众细分被正确定义，并且组之间没有重叠或污染。</li>
+<li><strong>分析数据收集</strong>：确认数据在对照组和变体组之间准确且一致地收集。</li>
+<li><strong>重新评估样本大小</strong>：确保样本大小足够大，能够检测到有意义的差异，并且测试运行时间足够长以达到统计显著性。</li>
+<li><strong>使用测试后分析</strong>：应用分割分析或队列分析等技术，深入研究结果并了解不同用户组的行为。</li>
+<li><strong>进行后续测试</strong>：如果结果不明确或存在假阳性或假阴性的怀疑，进行后续测试以验证结果。</li>
+</ul>
+<p>通过系统地审查这些领域，您可以识别和纠正<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md">误报</a>或漏报，确保您的 A/B 测试结果是可靠且可操作的。</p>
+<h3 id="深层理解">深层理解<a hidden class="anchor" aria-hidden="true" href="#深层理解">#</a></h3>
+<h4 id="多变量测试是什么与-ab-测试有何区别">多变量测试是什么，与 A/B 测试有何区别？<a hidden class="anchor" aria-hidden="true" href="#多变量测试是什么与-ab-测试有何区别">#</a></h4>
+<p>多变量测试（MVT）是一种用于同时测试多个变量以确定如何最好地改善特定结果的技术。与 A/B 测试不同，A/B 测试专注于比较一个变量的两个版本，而 MVT 可以涉及多个变量及其各种排列组合。</p>
+<p>在 MVT 中，您可能会同时测试多个元素的不同变体，例如标题、图像和呼叫到操作按钮。这样就创造了一个可能组合的矩阵，每个组合都会展示给用户的一个子集。其主要优势在于观察不同元素如何相互作用以及对用户行为的综合影响。</p>
+<p>由于 MVT 涉及更多变量，因此为了达到统计显著性，需要更大的样本大小。此外，在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md">设置</a>和分析方面，MVT 也需要更多资源。然而，它可以提供更全面的洞察，了解各种更改如何相互作用，从而潜在地导致更优化的结果。</p>
+<p>相比之下，A/B 测试更简单、更快速实施，重点是一次性进行一个更改的影响。通常用于对单个更改做出决策或者在资源有限的情况下。</p>
+<p>总的来说，虽然 A/B 测试专注于比较一个更改的两个版本，但多变量测试评估多个更改及其相互作用的性能，需要更多资源，但提供对修改的最佳组合更深入的洞察。</p>
+<h4 id="什么是分流-url-测试">什么是分流 URL 测试？<a hidden class="anchor" aria-hidden="true" href="#什么是分流-url-测试">#</a></h4>
+<p>分流 URL 测试是 A/B 测试的一种变体，它将流量分配到两个不同的 URL，而不是相同 URL 中的不同版本。这种方法在比较两个不同的页面设计、后端流程或整个网站时特别有用。</p>
+<p>在分流 URL 测试中，用户被随机重定向到其中一个 URL，跟踪他们与页面的互动，以确定哪个版本在预定义的指标（如转化率、停留时间或点击率）方面的表现更好。</p>
+<p>与传统的 A/B 测试相比，主要区别包括：</p>
+<ul>
+<li><strong>独立的 URLs</strong>：每个测试版本都存在于自己的 URL 上。</li>
+<li><strong>后端更改</strong>：它允许测试涉及可能涉及后端修改的重大更改。</li>
+<li><strong>复杂更改</strong>：适用于测试完全不同的布局或工作流程。</li>
+</ul>
+<p>要执行分流 URL 测试，通常会在服务器上使用重定向机制或使用测试工具，根据预定义的规则将流量引导到不同的 URL。重要的是要确保流量的分流是随机的，并且其他因素（如用户的位置、设备等）不会影响结果。</p>
+<p>分析结果涉及比较两个 URL 的性能指标，以确定哪一个更有效地实现了预期的目标。与 A/B 测试一样，统计显著性至关重要，以确保结果不是偶然产生的。</p>
+<p>以下是在 <code>.htaccess</code> 文件中设置分流 URL 测试重定向的基本示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-apache" data-lang="apache"><span class="line"><span class="cl"><span class="nb">RewriteEngine</span> <span class="k">On</span>
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteCond</span> %{QUERY_STRING} ^version=a$
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteRule</span> ^page$ http://example.com/page-version-a [R=302,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteCond</span> %{QUERY_STRING} ^version=b$
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteRule</span> ^page$ http://example.com/page-version-b [R=302,L]
+</span></span></code></pre></div><h4 id="ab-测试有哪些局限性">A/B 测试有哪些局限性？<a hidden class="anchor" aria-hidden="true" href="#ab-测试有哪些局限性">#</a></h4>
+<p>A/B 测试，尽管功能强大，但存在一些限制：</p>
+<ul>
+<li>
+<p><strong>有限变量</strong>：测试通常比较两个版本，只更改一个变量。要同时测试多个变量，需要使用更为复杂的多元测试方法。</p>
+</li>
+<li>
+<p><strong>耗时</strong>：实现统计显著性可能需要较长时间，尤其是对于流量较低的站点或较小的更改。</p>
+</li>
+<li>
+<p><strong>分割挑战</strong>：结果可能无法考虑不同用户段的行为，如果样本不具代表性，可能导致误导性的结论。</p>
+</li>
+<li>
+<p><strong>外部因素</strong>：季节性、市场变化或其他外部因素可能影响测试结果，使得难以将用户行为的变化归因于测试变量本身。</p>
+</li>
+<li>
+<p><strong>交互效应</strong>：用户体验的一个部分的变化可能会影响另一个部分，如果设计时未考虑这种交互，A/B 测试可能无法检测到。</p>
+</li>
+<li>
+<p><strong>资源密集</strong>：需要资源来设计、实施、监控和分析，这对于较小的团队或预算较小的项目可能构成制约。</p>
+</li>
+<li>
+<p><strong>伦理考虑</strong>：未经用户同意或涉及敏感变量的测试可能引发伦理关切。</p>
+</li>
+<li>
+<p><strong>局部最大值</strong>：A/B 测试对于优化效果很好，但可能导致渐进式改进，可能会忽略创新思想，这些思想可能导致显著更好的结果。</p>
+</li>
+<li>
+<p><strong>实施错误</strong>：不正确的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/setup.md">设置</a>可能导致错误的结果。正确的技术实施至关重要。</p>
+</li>
+<li>
+<p><strong>数据解释</strong>：数据的错误解释可能发生，特别是如果在统计分析方面缺乏专业知识。</p>
+</li>
+</ul>
+<p>了解这些限制对于 <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师至关重要，以确保有效使用 A/B 测试，并正确解释其结果。</p>
+<h4 id="如何将-ab-测试与其他测试方法结合使用">如何将 A/B 测试与其他测试方法结合使用？<a hidden class="anchor" aria-hidden="true" href="#如何将-ab-测试与其他测试方法结合使用">#</a></h4>
+<p>A/B 测试可以与各种测试方法结合，以提升<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>和用户体验。比如，<strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/unit-testing.md">单元测试</a></strong> 确保各个组件在 A/B 测试比较不同用户流程之前正常运作。<strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/integration-testing.md">集成测试</a></strong> 则检查组合部分是否协同工作，这在 A/B 测试评估更改对集成系统影响之前显得至关重要。</p>
+<p>将 <strong>自动化的 <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a></strong> 与 A/B 测试结合使用是很有益的，可以确保新功能或更改不会破坏现有功能。自动化测试可以快速验证控制组和变体版本在暴露给用户之前是否稳定且按预期运行。</p>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/usability-testing.md">可用性测试</a></strong> 可以与 A/B 测试结合使用，以获得对用户行为和偏好的定性洞察。而 A/B 测试能够量化更改的影响，而 <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/usability-testing.md">可用性测试</a>可以解释为何某些更改表现更佳。</p>
+<p>在进行 A/B 测试之前，应进行 <strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-testing.md">性能测试</a></strong> 以确保两个变体提供可接受的响应时间并能处理预期负载。这是至关重要的，因为性能可以显著影响用户行为，从而影响 A/B 测试的结果。</p>
+<p>最后，应在 A/B 测试过程中使用 <strong>监控和日志工具</strong> 来跟踪错误、性能指标和用户交互。这些数据对解释 A/B 测试结果以及诊断可能与正在测试的更改无直接关系的问题非常宝贵。</p>
+<p>通过将 A/B 测试与这些方法结合使用，可以确保对软件更改进行全面评估，从而做出更明智的决策，提供更高质量的产品。</p>
+<h4 id="ab-测试中-回归均值-的概念是什么">A/B 测试中 &ldquo;回归均值 &ldquo;的概念是什么？<a hidden class="anchor" aria-hidden="true" href="#ab-测试中-回归均值-的概念是什么">#</a></h4>
+<p>在 A/B 测试的情境中，<strong>回归到均值</strong>指的是极端结果在随后的测量中趋于不那么极端的现象。当一个变体（A 或 B）在初始测试中与控制组显示出显著差异时，这种差异在随后的测试中可能会减小或消失。</p>
+<p>这种效应在分析 A/B 测试结果时尤为重要。如果初始测试显示新功能或设计（变体）表现出色，人们可能会认为这种成功是由于所做的更改。然而，如果初始结果受到不一致的变量的影响，比如临时用户行为、季节效应或其他外部因素，随后的测试可能会显示性能优势并非由于变体本身，而是由于这些外部影响。</p>
+<p>为了减轻由于回归到均值而误解结果的风险，关键是：</p>
+<ul>
+<li>以足够的持续时间运行测试，以平均异常。</li>
+<li>当结果异常高或低时，重复测试以确认结果。</li>
+<li>使用足够大的样本量，以最小化离群值的影响。</li>
+<li>控制尽可能多的外部变量，以确保一致的测试条件。</li>
+</ul>
+<p>通过了解回归到均值， <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师可以避免基于初始 A/B 测试结果而做出过早结论，从而更准确地评估更改的有效性。</p>
+<h2 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h2>
+<ul>
+<li>A/B 测试 Wikipedia <a href="https://zh.wikipedia.org/zh-cn/A/B%E6%B8%AC%E8%A9%A6">https://zh.wikipedia.org/zh-cn/A/B%E6%B8%AC%E8%A9%A6</a></li>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<hr>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>软件测试术语分享:ATDD 验收测试驱动开发</span>
+  </a>
+  <a class="next" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>UI 测试最佳实践的真实案例篇（二）：从难以理解的 React 组件测试到简单愚蠢的测试</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on x"
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on telegram"
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:A/B 测试 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aA%2fB%20%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-a-b-testing%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="naodeng/naodeng.tech"
+        data-repo-id="R_kgDOHntNtg"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOHntNts4Cavst"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

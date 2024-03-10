@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Assertions on Nao&#39;s Blog</title>
+    <link>http://localhost:1313/tags/assertions/</link>
+    <description>Recent content in Assertions on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 Nov 2023 18:32:55 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/assertions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Common Assertions and Data Driven</title>
+      <link>http://localhost:1313/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</link>
+      <pubDate>Wed, 15 Nov 2023 18:32:55 +0800</pubDate>
+      <guid>http://localhost:1313/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</guid>
+      <description>A deep dive into advanced Pytest usage, focusing on how Pytest is commonly asserted and data-driven.</description>
+    </item>
+    <item>
+      <title>SuperTest API Automation Testing Tutorial: Advanced Usage - Common Assertions</title>
+      <link>http://localhost:1313/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</link>
+      <pubDate>Wed, 08 Nov 2023 17:38:34 +0800</pubDate>
+      <guid>http://localhost:1313/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</guid>
+      <description>This blog focuses on advanced usage of Supertest, with a particular focus on commonly used assertions.</description>
+    </item>
+  </channel>
+</rss>

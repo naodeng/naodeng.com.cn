@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>集成 Allure 测试报告 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/</link>
+    <description>Recent content in 集成 Allure 测试报告 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 Nov 2023 17:37:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/%E9%9B%86%E6%88%90-allure-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <description>Postman 接口自动化测试的进阶应用，专注于 CI/CD 和 GitHub Actions 的集成，以及 Allure 测试报告的接入。学习如何将 Postman 测试无缝整合到 CI/CD 流程中，通过 GitHub Actions 实现自动化测试。此外，了解如何集成 Allure 测试报告框架，生成详尽的测试结果报告</description>
+    </item>
+    <item>
+      <title>REST Assured 接口自动化测试教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</link>
+      <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</guid>
+      <description>深入研究 REST Assured 的高级应用，侧重于如何集成 CI/CD（持续集成/持续交付）工具和整合 Allure 测试报告。</description>
+    </item>
+  </channel>
+</rss>

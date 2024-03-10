@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>常用功能 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/</link>
+    <description>Recent content in 常用功能 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 18 Jan 2024 17:10:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K6 性能测试教程：常用功能（2）- 阈值，测试生命周期和场景</title>
+      <link>http://localhost:1313/zh/posts/performance-testing/k6-tutorial-common-functions-2-thresholds-test-lifecycle-and-scenarios/</link>
+      <pubDate>Thu, 18 Jan 2024 17:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/performance-testing/k6-tutorial-common-functions-2-thresholds-test-lifecycle-and-scenarios/</guid>
+      <description>这篇博文深入介绍了 K6 性能测试工具的常用功能，主要聚焦在阈值设置、测试生命周期和场景设计方面。阐述了如何利用 K6 在性能测试中设定合理的阈值，以便有效监测系统的性能表现。同时，探讨了测试生命周期的重要性，以及如何在不同阶段进行有针对性的性能测试。此外，博文还详细解释了 K6 中场景的概念，以及如何根据实际需求设计和配置场景，确保测试全面覆盖各种使用情景。通过本文，读者能够更深入地了解 K6 性能测试工具在项目中的实际应用，提高性能测试的效果和准确性。</description>
+    </item>
+    <item>
+      <title>K6 性能测试教程：常用功能（1）- HTTP 请求，指标和检查</title>
+      <link>http://localhost:1313/zh/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/</link>
+      <pubDate>Thu, 11 Jan 2024 17:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/</guid>
+      <description>这篇文章详细介绍了 K6 中的 HTTP 请求（http request）功能，解析了常用的性能指标和检查功能。学会如何使用 K6 进行强大的性能测试，通过 HTTP 请求模拟用户行为，了解性能指标以评估系统响应。文章还深入讲解了如何配置和执行检查，确保性能符合预期标准。无论您是初学者还是经验丰富的性能测试专业人员，这篇教程将为您提供实用知识，助您充分发挥 K6 的性能测试潜力。点击链接，开启高效性能测试之旅！</description>
+    </item>
+  </channel>
+</rss>

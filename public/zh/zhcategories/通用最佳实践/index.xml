@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>通用最佳实践 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhcategories/%E9%80%9A%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+    <description>Recent content in 通用最佳实践 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 20 Jan 2024 17:06:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhcategories/%E9%80%9A%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UI 测试最佳实践的通用最佳实践（三）：将你的测试工具用作主要的开发工具和保持低抽象度以便于调试测试</title>
+      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-3-use-your-testing-tool-as-your-primary-development-tool-and-keep-abstraction-low-to-ease--debugging-the-tests/</link>
+      <pubDate>Sat, 20 Jan 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-3-use-your-testing-tool-as-your-primary-development-tool-and-keep-abstraction-low-to-ease--debugging-the-tests/</guid>
+      <description>这篇博文深入研究 UI 测试的通用最佳实践之三：将测试工具作为主要开发工具，并保持低抽象度以便于调试。文章强调将测试工具纳入主要开发过程，加强测试与开发的协同，提高代码质量。另外，博文建议保持测试脚本的低抽象度，以便更容易调试和理解。这种做法有助于加速问题排查和测试脚本的维护，从而提高 UI 测试的效率和可靠性。通过采用这些通用最佳实践，读者将能够更好地整合 UI 测试到开发流程中，实现更高效的软件开发。</description>
+    </item>
+    <item>
+      <title>UI 测试最佳实践的通用最佳实践（二）：UI 测试调试最佳实践和在测试中达到 UI 状态而无需使用 UI</title>
+      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/</link>
+      <pubDate>Fri, 19 Jan 2024 13:05:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/</guid>
+      <description>这篇博文探讨了 UI 测试的通用最佳实践之二：UI 测试调试和无需使用 UI 达到 UI 状态。博文详细介绍了在 UI 测试中的调试技巧，包括使用断点、日志和交互式调试工具等方法，提高测试脚本的调试效率。此外，文章强调了通过直接设置应用程序状态而无需依赖 UI 元素来达到 UI 状态的方法，以提高测试速度和稳定性。通过这些实践，读者能够更好地应对 UI 测试中的调试挑战，同时优化测试脚本的执行效率。</description>
+    </item>
+    <item>
+      <title>UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名</title>
+      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/</link>
+      <pubDate>Thu, 18 Jan 2024 17:05:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/</guid>
+      <description>这篇博文探讨了 UI 测试的通用最佳实践之一：等待策略。强调了在 UI 测试中避免使用休眠（sleep）方法，而是采用等待机制来确保测试脚本与应用程序的同步。此外，博文提倡为测试文件采用明智的命名规范，以提高代码可维护性和可读性。通过这些最佳实践，读者将更有效地编写稳健的 UI 测试脚本，确保测试的准确性和可靠性，提升整个软件开发过程的质量。</description>
+    </item>
+  </channel>
+</rss>

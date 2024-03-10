@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>测试监控 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/%E6%B5%8B%E8%AF%95%E7%9B%91%E6%8E%A7/</link>
+    <description>Recent content in 测试监控 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 21 Jan 2024 17:06:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/%E6%B5%8B%E8%AF%95%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控</title>
+      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/</link>
+      <pubDate>Sun, 21 Jan 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/</guid>
+      <description>这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。</description>
+    </item>
+  </channel>
+</rss>

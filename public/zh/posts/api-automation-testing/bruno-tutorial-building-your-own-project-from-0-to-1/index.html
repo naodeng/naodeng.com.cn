@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 | 软件测试同学</title>
+<meta name="keywords" content="">
+<meta name="description" content="这篇博文是 Bruno 接口自动化测试教程，从零开始搭建 Bruno 接口自动化测试项目。文章详细指导读者如何建立测试项目的基础结构，配置环境，以及编写第一个接口测试用例。通过这个教程，读者能够逐步了解 Bruno 框架的使用方法，从零到一地构建起完整的接口自动化测试项目，提高测试效率和可维护性。">
+<meta name="author" content="nao.deng">
+<link rel="canonical" href="http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
+</script>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+<meta name="sogou_site_verification" content="iwkYDJrzfK" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
+     crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目" />
+<meta property="og:description" content="这篇博文是 Bruno 接口自动化测试教程，从零开始搭建 Bruno 接口自动化测试项目。文章详细指导读者如何建立测试项目的基础结构，配置环境，以及编写第一个接口测试用例。通过这个教程，读者能够逐步了解 Bruno 框架的使用方法，从零到一地构建起完整的接口自动化测试项目，提高测试效率和可维护性。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-23T17:58:14+08:00" />
+<meta property="article:modified_time" content="2024-01-23T17:58:14+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目"/>
+<meta name="twitter:description" content="这篇博文是 Bruno 接口自动化测试教程，从零开始搭建 Bruno 接口自动化测试项目。文章详细指导读者如何建立测试项目的基础结构，配置环境，以及编写第一个接口测试用例。通过这个教程，读者能够逐步了解 Bruno 框架的使用方法，从零到一地构建起完整的接口自动化测试项目，提高测试效率和可维护性。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目",
+      "item": "http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目",
+  "name": "Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目",
+  "description": "这篇博文是 Bruno 接口自动化测试教程，从零开始搭建 Bruno 接口自动化测试项目。文章详细指导读者如何建立测试项目的基础结构，配置环境，以及编写第一个接口测试用例。通过这个教程，读者能够逐步了解 Bruno 框架的使用方法，从零到一地构建起完整的接口自动化测试项目，提高测试效率和可维护性。",
+  "keywords": [
+    
+  ],
+  "articleBody": "写在前面 为什么不用 postman 和 insomnia 关于 Postman：Postman 于 2023 年 5 月宣布将逐步淘汰具有离线功能的 Scratch Pad 模型，大部分功能将转移到云端，这意味着用户必须登录才能使用 Postman。（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估） 关于 Insomnia：Insomnia 在 2023 年 9 月 28 日发布的 8.0 版本中开始加重了对云端的依赖，用户必须登录才能使用全功能的 Insomnia。现有的 Scratch Pad 功能有限（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估） 所以需要一个将 API 工作区数据与第三方服务器隔离的替代方案，Bruno 就是可行的替代方案之一。\n为什么选择 Bruno 官方说明：https://github.com/usebruno/bruno/discussions/269\n与 postman 的对比：https://www.usebruno.com/compare/bruno-vs-postman\n开源，MIT License\n客户端全平台支持 (Mac/linux/Windows)\n离线客户端，无云同步功能计划\n支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）\n社区相对活跃，产品开发路线图清晰\n从 0 到 1 搭建 Bruno 接口自动化测试项目 这篇文章会更聚焦如何使用 Bruno 提供的功能，从零开始搭建一个接口自动化测试项目。\nBruno 程序的安装和基本使用请参考：postman 替换工具 bruno 使用介绍\n项目结构 Bruno 接口自动化测试项目的基础结构如下：\nBruno-demo ├── README.md // 项目说明文件 ├── package.json ├── package-lock.json ├── Testcase // 测试用例文件夹 │ └── APITestDemo1.bru // 测试用例文件 1 │ └── APITestDemo2.bru // 测试用例文件 2 │ └── bruno.json // bruno COLLECTION 配置文件 │ └── environments // 不同测试环境文件夹 │ └── dev.bru // 测试环境配置文件 │ └── Report // 测试报告文件 │ └── report.json //json 格式报告文件 ├── .gitignore └── node_modules // 项目依赖 项目搭建准备 新建项目文件夹 mkdir Bruno-demo 项目初始化 // 进入项目文件夹下 cd Bruno-demo // nodejs 项目初始化 npm init -y 安装 Bruno CLI 依赖 // 安装 Bruno CLI npm install @usebruno/cli --save-dev Bruno CLI 是 Bruno 官方提供的命令行工具，可以通过简单的命令行命令轻松运行 API 集合。我们可以更轻松地在不同环境中测试 API、自动化测试流程，并将 API 测试与持续集成和部署工作流程集成。\n使用 Bruno 编写接口测试用例 新建测试用例目录 运行 Bruno app 到首页 新建名称为 Testcase 的 COLLECTION，且选择 COLLECTION 的目录为上面创建的项目文件夹 新建 Get 请求测试用例 点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 GET 请求 输入请求名称为 GetDemo，输入请求地址为 https://jsonplaceholder.typicode.com/posts/1 给 Get 请求添加测试断言 使用 Bruno 自带的 Assert 编写测试断言 点击 GetDemo 请求下的 Assert 按钮，进入测试断言编辑页面\n输入断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期 使用 JavaScript 编写测试断言 点击 GetDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面 输入脚本代码，断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident test(\"res.status should be 200\", function() { const data = res.getBody(); expect(res.getStatus()).to.equal(200); }); test(\"res.body should be correct\", function() { const data = res.getBody(); expect(data.title).to.contains('provident'); }); 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期 新建 Post 请求测试用例 点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 POST 请求\n输入请求名称为 PostDemo，输入请求地址为 https://jsonplaceholder.typicode.com/posts 点击新建的 PostDemo 请求下的 Body 按钮，进入请求体编辑页面\n选择 Body 类型为 JSON，输入请求体内容为\n{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } 给 Post 请求添加测试断言 使用 Bruno 自带的 Assert 编写 Post 请求测试断言 点击 PostDemo 请求下的 Assert 按钮，进入测试断言编辑页面\n输入断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期 使用 JavaScript 编写 Post 请求测试断言 点击 PostDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面 输入脚本代码，断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo test(\"res.status should be 200\", function() { const data = res.getBody(); expect(res.getStatus()).to.equal(201); }); test(\"res.body should be correct\", function() { const data = res.getBody(); expect(data.title).to.equal('foo'); }); 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期 本地运行两个测试用例 点击 Testcase 的 COLLECTION 下的 Run 按钮，运行所有测试用例 确认运行结果是否符合预期 至此，两个接口的测试用例和断言已经编写完成\n环境变量配置 通过查看上面两个测试用例的运行结果，我们发现两个测试用例的请求地址都是 https://jsonplaceholder.typicode.com，如果我们需要在不同的测试环境中运行这两个测试用例，那么我们需要修改两个测试用例的请求地址，这样的话，如果测试用例很多，那么修改起来就很麻烦。Bruno 提供了环境变量的功能，我们可以将测试用例中的请求地址配置为环境变量，这样的话，我们只需要在不同的测试环境中配置不同的环境变量，就可以实现在不同的测试环境中运行测试用例。\n新建环境变量配置文件 点击 Testcase 的 COLLECTION 下的 Environments 按钮，进入环境变量配置页面 点击右上角的 ADD ENVIRONMENT 按钮，新建一个环境变量配置文件，输入名称为 dev，点击右上角的 SAVE 按钮保存配置文件 点击新建的 dev 环境变量配置文件，进入环境变量配置页面 点击右上角的 ADD VARIABLE 按钮，新建一个环境变量，输入名称为 host，输入值为 https://jsonplaceholder.typicode.com，点击右上角的 SAVE 按钮保存环境变量 在测试用例中使用环境变量 点击 Testcase 的 COLLECTION 下的 GetDemo 请求，进入 GetDemo 请求编辑页面 将 GetDemo 请求的请求地址修改为 {{host}}/posts/1，点击右上角的 SAVE 按钮保存 GetDemo 请求 点击 Testcase 的 COLLECTION 下的 PostDemo 请求，进入 PostDemo 请求编辑页面 将 PostDemo 请求的请求地址修改为 {{host}}/posts，点击右上角的 SAVE 按钮保存 PostDemo 请求 调试环境变量 点击 Testcase 的 COLLECTION 下的 Environments 按钮，选择 dev 环境变量 点击右上角的 RUN 按钮，运行所有测试用例，确认运行结果是否符合预期 至此，环境变量配置和调试已经完成\n命令行运行测试用例 前置检查 刚才我们已经测试用例的存储目录设置为了之前创建的项目文件夹，所以我们需要在项目文件夹下检查用例文件和环境变量配置文件是否已经创建成功。\n目前我们的项目文件夹目录结构如下：\nBruno-demo ├── package.json ├── package-lock.json ├── Testcase // 测试用例文件夹 │ └── APITestDemo1.bru // 测试用例文件 1 │ └── APITestDemo2.bru // 测试用例文件 2 │ └── bruno.json // bruno COLLECTION 配置文件 │ └── environments // 不同测试环境文件夹 │ └── dev.bru // 测试环境配置文件 └── node_modules // 项目依赖 命令行调试运行测试用例 在项目文件下的 Testcase 文件夹，运行命令行命令 bru run --env dev，运行所有测试用例\n确认运行结果是否符合预期\n输出 json 格式报告 在项目文件下的 Testcase 文件夹下新建 Report 文件夹，用于存放测试报告文件\n在项目文件下的 Testcase 文件夹，运行命令行命令 bru run --env dev --output Report/results.json，运行所有测试用例\n确认测试报告文件正常输出 至此，Bruno 接口自动化测试项目的搭建已经完成。\n集成到 CI/CD 流程 Bruno 程序的安装和基本使用请参考：postman 替换工具 bruno 使用介绍#接入 CI\n参考资料 Bruno 官方文档 https://docs.usebruno.com/ postman 替换工具 bruno 使用介绍 https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/ 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
+  "wordCount" : "547",
+  "inLanguage": "zh",
+  "datePublished": "2024-01-23T17:58:14+08:00",
+  "dateModified": "2024-01-23T17:58:14+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nao.deng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "软件测试同学",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/" title="🇬🇧English"
+                            aria-label="🇬🇧English">🇬🇧English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/zh/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                    <span>系列</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目
+    </h1>
+    <div class="post-meta"><span title='2024-01-23 17:58:14 +0800 CST'>一月 23, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;547 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;语言:
+<ul class="i18n_list">
+    <li>
+        <a href="http://localhost:1313/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/">🇬🇧English</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/bruno-tutorial-building-your-own-project-from-0-to-1.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2" aria-label="写在前面">写在前面</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e7%94%a8-postman-%e5%92%8c-insomnia" aria-label="为什么不用 postman 和 insomnia">为什么不用 postman 和 insomnia</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-bruno" aria-label="为什么选择 Bruno">为什么选择 Bruno</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e4%bb%8e-0-%e5%88%b0-1-%e6%90%ad%e5%bb%ba-bruno-%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae" aria-label="从 0 到 1 搭建 Bruno 接口自动化测试项目">从 0 到 1 搭建 Bruno 接口自动化测试项目</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e7%bb%93%e6%9e%84" aria-label="项目结构">项目结构</a></li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e6%90%ad%e5%bb%ba%e5%87%86%e5%a4%87" aria-label="项目搭建准备">项目搭建准备</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="新建项目文件夹">新建项目文件夹</a></li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="项目初始化">项目初始化</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85-bruno-cli-%e4%be%9d%e8%b5%96" aria-label="安装 Bruno CLI 依赖">安装 Bruno CLI 依赖</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-bruno-%e7%bc%96%e5%86%99%e6%8e%a5%e5%8f%a3%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="使用 Bruno 编写接口测试用例">使用 Bruno 编写接口测试用例</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e7%9b%ae%e5%bd%95" aria-label="新建测试用例目录">新建测试用例目录</a></li>
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba-get-%e8%af%b7%e6%b1%82%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="新建 Get 请求测试用例">新建 Get 请求测试用例</a></li>
+                <li>
+                    <a href="#%e7%bb%99-get-%e8%af%b7%e6%b1%82%e6%b7%bb%e5%8a%a0%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="给 Get 请求添加测试断言">给 Get 请求添加测试断言</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-bruno-%e8%87%aa%e5%b8%a6%e7%9a%84-assert-%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="使用 Bruno 自带的 Assert 编写测试断言">使用 Bruno 自带的 Assert 编写测试断言</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-javascript-%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="使用 JavaScript 编写测试断言">使用 JavaScript 编写测试断言</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba-post-%e8%af%b7%e6%b1%82%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="新建 Post 请求测试用例">新建 Post 请求测试用例</a></li>
+                <li>
+                    <a href="#%e7%bb%99-post-%e8%af%b7%e6%b1%82%e6%b7%bb%e5%8a%a0%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="给 Post 请求添加测试断言">给 Post 请求添加测试断言</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-bruno-%e8%87%aa%e5%b8%a6%e7%9a%84-assert-%e7%bc%96%e5%86%99-post-%e8%af%b7%e6%b1%82%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="使用 Bruno 自带的 Assert 编写 Post 请求测试断言">使用 Bruno 自带的 Assert 编写 Post 请求测试断言</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-javascript-%e7%bc%96%e5%86%99-post-%e8%af%b7%e6%b1%82%e6%b5%8b%e8%af%95%e6%96%ad%e8%a8%80" aria-label="使用 JavaScript 编写 Post 请求测试断言">使用 JavaScript 编写 Post 请求测试断言</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%9c%ac%e5%9c%b0%e8%bf%90%e8%a1%8c%e4%b8%a4%e4%b8%aa%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="本地运行两个测试用例">本地运行两个测试用例</a></li>
+                <li>
+                    <a href="#%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e9%85%8d%e7%bd%ae" aria-label="环境变量配置">环境变量配置</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="新建环境变量配置文件">新建环境变量配置文件</a></li>
+                <li>
+                    <a href="#%e5%9c%a8%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e4%b8%ad%e4%bd%bf%e7%94%a8%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="在测试用例中使用环境变量">在测试用例中使用环境变量</a></li>
+                <li>
+                    <a href="#%e8%b0%83%e8%af%95%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="调试环境变量">调试环境变量</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="命令行运行测试用例">命令行运行测试用例</a><ul>
+                        
+                <li>
+                    <a href="#%e5%89%8d%e7%bd%ae%e6%a3%80%e6%9f%a5" aria-label="前置检查">前置检查</a></li>
+                <li>
+                    <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%b0%83%e8%af%95%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="命令行调试运行测试用例">命令行调试运行测试用例</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%be%93%e5%87%ba-json-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="输出 json 格式报告">输出 json 格式报告</a></li>
+                <li>
+                    <a href="#%e9%9b%86%e6%88%90%e5%88%b0-cicd-%e6%b5%81%e7%a8%8b" aria-label="集成到 CI/CD 流程">集成到 CI/CD 流程</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="写在前面">写在前面<a hidden class="anchor" aria-hidden="true" href="#写在前面">#</a></h2>
+<h3 id="为什么不用-postman-和-insomnia">为什么不用 postman 和 insomnia<a hidden class="anchor" aria-hidden="true" href="#为什么不用-postman-和-insomnia">#</a></h3>
+<ul>
+<li>关于 Postman：Postman 于 2023 年 5 月宣布将逐步淘汰具有离线功能的 Scratch Pad 模型，大部分功能将转移到云端，这意味着用户必须登录才能使用 Postman。（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估）</li>
+<li>关于 Insomnia：Insomnia 在 2023 年 9 月 28 日发布的 8.0 版本中开始加重了对云端的依赖，用户必须登录才能使用全功能的 Insomnia。现有的 Scratch Pad 功能有限（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估）</li>
+</ul>
+<p>所以需要一个将 API 工作区数据与第三方服务器隔离的替代方案，Bruno 就是可行的替代方案之一。</p>
+<h3 id="为什么选择-bruno">为什么选择 Bruno<a hidden class="anchor" aria-hidden="true" href="#为什么选择-bruno">#</a></h3>
+<p>官方说明：<a href="https://github.com/usebruno/bruno/discussions/269">https://github.com/usebruno/bruno/discussions/269</a></p>
+<p>与 postman 的对比：<a href="https://www.usebruno.com/compare/bruno-vs-postman">https://www.usebruno.com/compare/bruno-vs-postman</a></p>
+<p>开源，MIT License</p>
+<p>客户端全平台支持 (Mac/linux/Windows)</p>
+<p>离线客户端，无云同步功能计划</p>
+<p>支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）</p>
+<p>社区相对活跃，<a href="https://github.com/usebruno/bruno/discussions/384">产品开发路线图</a>清晰</p>
+<h2 id="从-0-到-1-搭建-bruno-接口自动化测试项目">从 0 到 1 搭建 Bruno 接口自动化测试项目<a hidden class="anchor" aria-hidden="true" href="#从-0-到-1-搭建-bruno-接口自动化测试项目">#</a></h2>
+<p>这篇文章会更聚焦如何使用 Bruno 提供的功能，从零开始搭建一个接口自动化测试项目。</p>
+<p>Bruno 程序的安装和基本使用请参考：<a href="https://github.com/naodeng/Bruno-API-Test-Starter/blob/main/README_ZH.md">postman 替换工具 bruno 使用介绍</a></p>
+<h3 id="项目结构">项目结构<a hidden class="anchor" aria-hidden="true" href="#项目结构">#</a></h3>
+<p>Bruno 接口自动化测试项目的基础结构如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Bruno-demo
+</span></span><span class="line"><span class="cl">├── README.md // 项目说明文件
+</span></span><span class="line"><span class="cl">├── package.json
+</span></span><span class="line"><span class="cl">├── package-lock.json
+</span></span><span class="line"><span class="cl">├── Testcase // 测试用例文件夹
+</span></span><span class="line"><span class="cl">│   └── APITestDemo1.bru // 测试用例文件 1
+</span></span><span class="line"><span class="cl">│   └── APITestDemo2.bru // 测试用例文件 2
+</span></span><span class="line"><span class="cl">│   └── bruno.json // bruno COLLECTION 配置文件
+</span></span><span class="line"><span class="cl">│   └── environments // 不同测试环境文件夹
+</span></span><span class="line"><span class="cl">│       └── dev.bru // 测试环境配置文件
+</span></span><span class="line"><span class="cl">│   └── Report // 测试报告文件
+</span></span><span class="line"><span class="cl">│       └── report.json //json 格式报告文件
+</span></span><span class="line"><span class="cl">├── .gitignore
+</span></span><span class="line"><span class="cl">└── node_modules // 项目依赖
+</span></span></code></pre></div><h3 id="项目搭建准备">项目搭建准备<a hidden class="anchor" aria-hidden="true" href="#项目搭建准备">#</a></h3>
+<h4 id="新建项目文件夹">新建项目文件夹<a hidden class="anchor" aria-hidden="true" href="#新建项目文件夹">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir Bruno-demo
+</span></span></code></pre></div><h4 id="项目初始化">项目初始化<a hidden class="anchor" aria-hidden="true" href="#项目初始化">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// 进入项目文件夹下
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Bruno-demo
+</span></span><span class="line"><span class="cl">// nodejs 项目初始化
+</span></span><span class="line"><span class="cl">npm init -y
+</span></span></code></pre></div><h4 id="安装-bruno-cli-依赖">安装 Bruno CLI 依赖<a hidden class="anchor" aria-hidden="true" href="#安装-bruno-cli-依赖">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// 安装 Bruno CLI
+</span></span><span class="line"><span class="cl">npm install @usebruno/cli --save-dev
+</span></span></code></pre></div><blockquote>
+<p>Bruno CLI 是 Bruno 官方提供的命令行工具，可以通过简单的命令行命令轻松运行 API 集合。我们可以更轻松地在不同环境中测试 API、自动化测试流程，并将 API 测试与持续集成和部署工作流程集成。</p>
+</blockquote>
+<h3 id="使用-bruno-编写接口测试用例">使用 Bruno 编写接口测试用例<a hidden class="anchor" aria-hidden="true" href="#使用-bruno-编写接口测试用例">#</a></h3>
+<h4 id="新建测试用例目录">新建测试用例目录<a hidden class="anchor" aria-hidden="true" href="#新建测试用例目录">#</a></h4>
+<ul>
+<li>运行 Bruno app 到首页</li>
+<li>新建名称为 Testcase 的 COLLECTION，且选择 COLLECTION 的目录为上面创建的项目文件夹
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png" alt=" "  />
+</li>
+</ul>
+<h4 id="新建-get-请求测试用例">新建 Get 请求测试用例<a hidden class="anchor" aria-hidden="true" href="#新建-get-请求测试用例">#</a></h4>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 GET 请求</li>
+<li>输入请求名称为 GetDemo，输入请求地址为 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a></li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png" alt=" "  />
+</p>
+<h4 id="给-get-请求添加测试断言">给 Get 请求添加测试断言<a hidden class="anchor" aria-hidden="true" href="#给-get-请求添加测试断言">#</a></h4>
+<h5 id="使用-bruno-自带的-assert-编写测试断言">使用 Bruno 自带的 Assert 编写测试断言<a hidden class="anchor" aria-hidden="true" href="#使用-bruno-自带的-assert-编写测试断言">#</a></h5>
+<ul>
+<li>
+<p>点击 GetDemo 请求下的 Assert 按钮，进入测试断言编辑页面</p>
+</li>
+<li>
+<p>输入断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png" alt=" "  />
+</p>
+</li>
+<li>
+<p>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png" alt=" "  />
+</p>
+</li>
+</ul>
+<h5 id="使用-javascript-编写测试断言">使用 JavaScript 编写测试断言<a hidden class="anchor" aria-hidden="true" href="#使用-javascript-编写测试断言">#</a></h5>
+<ul>
+<li>点击 GetDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面</li>
+<li>输入脚本代码，断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;res.status should be 200&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">getBody</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;res.body should be correct&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">getBody</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;provident&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png" alt=" "  />
+</p>
+<ul>
+<li>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png" alt=" "  />
+</li>
+</ul>
+<h4 id="新建-post-请求测试用例">新建 Post 请求测试用例<a hidden class="anchor" aria-hidden="true" href="#新建-post-请求测试用例">#</a></h4>
+<ul>
+<li>
+<p>点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 POST 请求</p>
+</li>
+<li>
+<p>输入请求名称为 PostDemo，输入请求地址为 <a href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a>
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png" alt=" "  />
+</p>
+</li>
+<li>
+<p>点击新建的 PostDemo 请求下的 Body 按钮，进入请求体编辑页面</p>
+</li>
+<li>
+<p>选择 Body 类型为 JSON，输入请求体内容为</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;foo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="s2">&#34;bar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;userId&#34;</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png" alt=" "  />
+</p>
+<h4 id="给-post-请求添加测试断言">给 Post 请求添加测试断言<a hidden class="anchor" aria-hidden="true" href="#给-post-请求添加测试断言">#</a></h4>
+<h5 id="使用-bruno-自带的-assert-编写-post-请求测试断言">使用 Bruno 自带的 Assert 编写 Post 请求测试断言<a hidden class="anchor" aria-hidden="true" href="#使用-bruno-自带的-assert-编写-post-请求测试断言">#</a></h5>
+<ul>
+<li>
+<p>点击 PostDemo 请求下的 Assert 按钮，进入测试断言编辑页面</p>
+</li>
+<li>
+<p>输入断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png" alt=" "  />
+</p>
+</li>
+<li>
+<p>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png" alt=" "  />
+</p>
+</li>
+</ul>
+<h5 id="使用-javascript-编写-post-请求测试断言">使用 JavaScript 编写 Post 请求测试断言<a hidden class="anchor" aria-hidden="true" href="#使用-javascript-编写-post-请求测试断言">#</a></h5>
+<ul>
+<li>点击 PostDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面</li>
+<li>输入脚本代码，断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;res.status should be 200&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">getBody</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;res.body should be correct&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">getBody</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><ul>
+<li>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png" alt=" "  />
+</li>
+</ul>
+<h4 id="本地运行两个测试用例">本地运行两个测试用例<a hidden class="anchor" aria-hidden="true" href="#本地运行两个测试用例">#</a></h4>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Run 按钮，运行所有测试用例</li>
+<li>确认运行结果是否符合预期</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png" alt=" "  />
+</p>
+<p>至此，两个接口的测试用例和断言已经编写完成</p>
+<h4 id="环境变量配置">环境变量配置<a hidden class="anchor" aria-hidden="true" href="#环境变量配置">#</a></h4>
+<p>通过查看上面两个测试用例的运行结果，我们发现两个测试用例的请求地址都是 <code>https://jsonplaceholder.typicode.com</code>，如果我们需要在不同的测试环境中运行这两个测试用例，那么我们需要修改两个测试用例的请求地址，这样的话，如果测试用例很多，那么修改起来就很麻烦。Bruno 提供了环境变量的功能，我们可以将测试用例中的请求地址配置为环境变量，这样的话，我们只需要在不同的测试环境中配置不同的环境变量，就可以实现在不同的测试环境中运行测试用例。</p>
+<h5 id="新建环境变量配置文件">新建环境变量配置文件<a hidden class="anchor" aria-hidden="true" href="#新建环境变量配置文件">#</a></h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Environments 按钮，进入环境变量配置页面</li>
+<li>点击右上角的 ADD ENVIRONMENT 按钮，新建一个环境变量配置文件，输入名称为 dev，点击右上角的 SAVE 按钮保存配置文件</li>
+<li>点击新建的 dev 环境变量配置文件，进入环境变量配置页面</li>
+<li>点击右上角的 ADD VARIABLE 按钮，新建一个环境变量，输入名称为 host，输入值为 <code>https://jsonplaceholder.typicode.com</code>，点击右上角的 SAVE 按钮保存环境变量</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png" alt=" "  />
+</p>
+<h5 id="在测试用例中使用环境变量">在测试用例中使用环境变量<a hidden class="anchor" aria-hidden="true" href="#在测试用例中使用环境变量">#</a></h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 GetDemo 请求，进入 GetDemo 请求编辑页面</li>
+<li>将 GetDemo 请求的请求地址修改为 <code>{{host}}/posts/1</code>，点击右上角的 SAVE 按钮保存 GetDemo 请求</li>
+<li>点击 Testcase 的 COLLECTION 下的 PostDemo 请求，进入 PostDemo 请求编辑页面</li>
+<li>将 PostDemo 请求的请求地址修改为 <code>{{host}}/posts</code>，点击右上角的 SAVE 按钮保存 PostDemo 请求</li>
+</ul>
+<h5 id="调试环境变量">调试环境变量<a hidden class="anchor" aria-hidden="true" href="#调试环境变量">#</a></h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Environments 按钮，选择 dev 环境变量</li>
+<li>点击右上角的 RUN 按钮，运行所有测试用例，确认运行结果是否符合预期</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png" alt=" "  />
+</p>
+<p>至此，环境变量配置和调试已经完成</p>
+<h4 id="命令行运行测试用例">命令行运行测试用例<a hidden class="anchor" aria-hidden="true" href="#命令行运行测试用例">#</a></h4>
+<h5 id="前置检查">前置检查<a hidden class="anchor" aria-hidden="true" href="#前置检查">#</a></h5>
+<p>刚才我们已经测试用例的存储目录设置为了之前创建的项目文件夹，所以我们需要在项目文件夹下检查用例文件和环境变量配置文件是否已经创建成功。</p>
+<p>目前我们的项目文件夹目录结构如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Bruno-demo
+</span></span><span class="line"><span class="cl">├── package.json
+</span></span><span class="line"><span class="cl">├── package-lock.json
+</span></span><span class="line"><span class="cl">├── Testcase // 测试用例文件夹
+</span></span><span class="line"><span class="cl">│   └── APITestDemo1.bru // 测试用例文件 1
+</span></span><span class="line"><span class="cl">│   └── APITestDemo2.bru // 测试用例文件 2
+</span></span><span class="line"><span class="cl">│   └── bruno.json // bruno COLLECTION 配置文件
+</span></span><span class="line"><span class="cl">│   └── environments // 不同测试环境文件夹
+</span></span><span class="line"><span class="cl">│       └── dev.bru // 测试环境配置文件
+</span></span><span class="line"><span class="cl">└── node_modules // 项目依赖
+</span></span></code></pre></div><h5 id="命令行调试运行测试用例">命令行调试运行测试用例<a hidden class="anchor" aria-hidden="true" href="#命令行调试运行测试用例">#</a></h5>
+<ul>
+<li>
+<p>在项目文件下的 Testcase 文件夹，运行命令行命令 <code>bru run --env dev</code>，运行所有测试用例</p>
+</li>
+<li>
+<p>确认运行结果是否符合预期</p>
+</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png" alt=" "  />
+</p>
+<h4 id="输出-json-格式报告">输出 json 格式报告<a hidden class="anchor" aria-hidden="true" href="#输出-json-格式报告">#</a></h4>
+<ul>
+<li>
+<p>在项目文件下的 Testcase 文件夹下新建 Report 文件夹，用于存放测试报告文件</p>
+</li>
+<li>
+<p>在项目文件下的 Testcase 文件夹，运行命令行命令 <code>bru run --env dev --output Report/results.json</code>，运行所有测试用例</p>
+</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png" alt=" "  />
+</p>
+<ul>
+<li>确认测试报告文件正常输出
+<img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png" alt=" "  />
+</li>
+</ul>
+<p>至此，Bruno 接口自动化测试项目的搭建已经完成。</p>
+<h4 id="集成到-cicd-流程">集成到 CI/CD 流程<a hidden class="anchor" aria-hidden="true" href="#集成到-cicd-流程">#</a></h4>
+<p>Bruno 程序的安装和基本使用请参考：<a href="https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter/blob/main/README_ZH.md#%E6%8E%A5%E5%85%A5-ci">postman 替换工具 bruno 使用介绍#接入 CI</a></p>
+<h2 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h2>
+<ul>
+<li>Bruno 官方文档 <a href="https://docs.usebruno.com/">https://docs.usebruno.com/</a></li>
+<li>postman 替换工具 bruno 使用介绍 <a href="https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/">https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/</a></li>
+</ul>
+<hr>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>UI 测试最佳实践的通用测试的好处篇：将测试视为文档工具</span>
+  </a>
+  <a class="next" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on x"
+            href="https://x.com/intent/tweet/?text=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f&amp;title=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;summary=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f&title=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on whatsapp"
+            href="https://api.whatsapp.com/send?text=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on telegram"
+            href="https://telegram.me/share/url?text=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Bruno%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fbruno-tutorial-building-your-own-project-from-0-to-1%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="naodeng/naodeng.tech"
+        data-repo-id="R_kgDOHntNtg"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOHntNts4Cavst"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

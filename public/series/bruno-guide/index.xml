@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Bruno Guide on Nao&#39;s Blog</title>
+    <link>http://localhost:1313/series/bruno-guide/</link>
+    <description>Recent content in Bruno Guide on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 17 Oct 2023 11:31:43 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/bruno-guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing Bruno for Replacement Postman</title>
+      <link>http://localhost:1313/posts/api-automation-testing/introduction_of_bruno/</link>
+      <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
+      <guid>http://localhost:1313/posts/api-automation-testing/introduction_of_bruno/</guid>
+      <description>Article introduces postman replacement tool bruno beginner&amp;rsquo;s introduction, how to migrate postman scripts to bruno</description>
+    </item>
+  </channel>
+</rss>

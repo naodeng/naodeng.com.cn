@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Research and Share Prompt Engineering Techniques on Nao&#39;s Blog</title>
+    <link>http://localhost:1313/tags/research-and-share-prompt-engineering-techniques/</link>
+    <description>Recent content in Research and Share Prompt Engineering Techniques on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 08 Mar 2024 13:06:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/research-and-share-prompt-engineering-techniques/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 Days of AI in Testing Challenge: Day 7: Research and share prompt engineering techniques</title>
+      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</link>
+      <pubDate>Fri, 08 Mar 2024 13:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</guid>
+      <description>This blog post is the seventh day of the 30-Days AI Testing Challenge, which requires participants to research and share real-time engineering technology. The post may include a definition of real-time engineering technology, its applications in the testing domain, introductions to relevant tools and technologies, and the author&amp;rsquo;s perspective on real-time engineering technology. By sharing research on real-time engineering technology, readers will gain insights into its potential value in testing and how to effectively apply this technology. This series of activities aims to provide a platform for testing professionals to deeply understand and discuss emerging technologies.</description>
+    </item>
+  </channel>
+</rss>

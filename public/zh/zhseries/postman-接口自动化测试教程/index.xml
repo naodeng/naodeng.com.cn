@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Postman 接口自动化测试教程 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in Postman 接口自动化测试教程 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 27 Nov 2023 12:37:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - 常用命令行选项，文件上传场景和 SSL 证书场景</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</link>
+      <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</guid>
+      <description>这篇博文深度挖掘 Postman 接口自动化测试的进阶用法，集中讨论常用命令行选项、文件上传场景和 SSL 证书场景。学会如何运用常用命令行选项优化测试流程，解决文件上传和 SSL 证书等特殊场景的测试挑战</description>
+    </item>
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - 数据驱动</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</link>
+      <pubDate>Fri, 24 Nov 2023 19:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</guid>
+      <description>这篇博文深入研究 Postman 接口自动化测试的高级技巧，专注于数据文件驱动和环境变量数据驱动。学习如何通过外部数据文件和灵活的环境变量，优雅地进行测试数据的驱动，提高测试覆盖率。博文将为您展示如何以更智能的方式管理和利用数据，使测试用例更具可扩展性和灵活性。</description>
+    </item>
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</link>
+      <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</guid>
+      <description>深入研究 Postman 接口自动化测试的高级用法，专注于常用的测试脚本和第三方包示例。探讨如何编写强大的测试脚本，涵盖各种测试场景，并介绍一些常用的第三方包，优化测试流程。</description>
+    </item>
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <description>Postman 接口自动化测试的进阶应用，专注于 CI/CD 和 GitHub Actions 的集成，以及 Allure 测试报告的接入。学习如何将 Postman 测试无缝整合到 CI/CD 流程中，通过 GitHub Actions 实现自动化测试。此外，了解如何集成 Allure 测试报告框架，生成详尽的测试结果报告</description>
+    </item>
+    <item>
+      <title>Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
+      <pubDate>Tue, 21 Nov 2023 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
+      <description>关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写</description>
+    </item>
+  </channel>
+</rss>
