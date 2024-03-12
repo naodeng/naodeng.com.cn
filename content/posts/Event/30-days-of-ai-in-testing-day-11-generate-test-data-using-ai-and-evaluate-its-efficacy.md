@@ -113,7 +113,7 @@ Business scenario: Integration of auth0 registration page, including email-passw
 | Apple Account Registration                  | Apple Account: user@apple.com, Terms: Checked                             |
 | Duplicate Email Registration                | Email: user@example.com (already registered), Password: Password123!, Terms: Checked |
 | SQL Injection Attack Registration           | Email: user@example.com', DROP TABLE users;--, Password: Password123!, Terms: Checked |
-| XSS Attack in Registration                  | Email: <script>alert('XSS')</script>@example.com, Password: Password123!, Terms: Checked |
+| XSS Attack in Registration                  | Email: .script>alert('XSS')</script.@example.com, Password: Password123!, Terms: Checked |
 | Performance Test with High Volume Users     | Email: Load test with generated emails, Password: Standard password, Terms: Checked |
 | Email Format Validation                     | Email: "user"@example.com, Password: Password123!, Terms: Checked         |
 | Special Characters in Password              | Email: user@example.com, Password: P@$$w0rd!#, Terms: Checked             |

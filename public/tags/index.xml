@@ -11,27 +11,41 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 Mar 2024 10:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Evaluate Prompt Quality and Try to Improve It</title>
-      <link>http://localhost:1313/tags/evaluate-prompt-quality-and-try-to-improve-it/</link>
-      <pubDate>Sun, 10 Mar 2024 10:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/tags/evaluate-prompt-quality-and-try-to-improve-it/</guid>
+      <title>Generate Test Data Using AI and Evaluate Its Efficacy</title>
+      <link>http://localhost:1313/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
+      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</guid>
       <description></description>
     </item>
     <item>
       <title>Prompt</title>
       <link>http://localhost:1313/tags/prompt/</link>
-      <pubDate>Sun, 10 Mar 2024 10:06:44 +0800</pubDate>
+      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
       <guid>http://localhost:1313/tags/prompt/</guid>
       <description></description>
     </item>
     <item>
       <title>Prompt Engineering</title>
       <link>http://localhost:1313/tags/prompt-engineering/</link>
-      <pubDate>Sun, 10 Mar 2024 10:06:44 +0800</pubDate>
+      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
       <guid>http://localhost:1313/tags/prompt-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Critically Analyse AI-Generated Tests</title>
+      <link>http://localhost:1313/tags/critically-analyse-ai-generated-tests/</link>
+      <pubDate>Mon, 11 Mar 2024 10:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/critically-analyse-ai-generated-tests/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Evaluate Prompt Quality and Try to Improve It</title>
+      <link>http://localhost:1313/tags/evaluate-prompt-quality-and-try-to-improve-it/</link>
+      <pubDate>Sun, 10 Mar 2024 10:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/evaluate-prompt-quality-and-try-to-improve-it/</guid>
       <description></description>
     </item>
     <item>

@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/zh/posts/</loc>
-    <lastmod>2024-03-11T10:06:44+08:00</lastmod>
+    <lastmod>2024-03-13T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/</loc>
-    <lastmod>2024-03-11T10:06:44+08:00</lastmod>
+    <lastmod>2024-03-13T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
@@ -33,7 +33,77 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/zhseries/30-%E5%A4%A9-ai-%E6%B5%8B%E8%AF%95%E6%8C%91%E6%88%98%E6%B4%BB%E5%8A%A8/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/zhtags/prompt/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhcategories/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhseries/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhtags/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhcategories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B4%BB%E5%8A%A8/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhtags/%E4%BD%BF%E7%94%A8-ai-%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%AF%84%E4%BC%B0%E5%85%B6%E5%8A%9F%E6%95%88/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/zhtags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
+    <lastmod>2024-03-12T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/</loc>
+    <lastmod>2024-03-11T10:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/zhtags/%E6%89%B9%E5%88%A4%E6%80%A7%E5%88%86%E6%9E%90%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%94%9F%E6%88%90%E7%9A%84%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2024-03-11T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
@@ -52,37 +122,7 @@
                 href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/zhtags/prompt/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh/zhcategories/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh/zhseries/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh/zhtags/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
     <loc>http://localhost:1313/zh/zhtags/%E8%AF%84%E4%BC%B0%E6%8F%90%E7%A4%BA%E8%AF%8D%E8%B4%A8%E9%87%8F%E5%B9%B6%E5%8A%AA%E5%8A%9B%E5%8A%A0%E4%BB%A5%E6%94%B9%E8%BF%9B/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh/zhcategories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B4%BB%E5%8A%A8/</loc>
-    <lastmod>2024-03-10T10:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh/zhtags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
     <lastmod>2024-03-10T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
