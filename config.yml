@@ -76,7 +76,7 @@ languages:
                   url: series/
                   weight: 10
                 - name: Dashboard
-                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+                  url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
 
     zh:
         languageName: "🇨🇳中文"
@@ -104,7 +104,7 @@ languages:
                   url: zhseries
                   weight: 10
                 - name: 网站统计
-                  url: https://naodeng-umami.vercel.app/share/OksEL34H/nao.deng
+                  url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
         Params:
          homeInfoParams:
             Title: "软件测试同学的博客"
@@ -150,7 +150,7 @@ params:
       umami:
         enable: true
         website_id: 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-        url: 'https://naodeng-umami.vercel.app/hugo'
+        url: 'https://analytics.naodeng.com.cn/hugo'
       cloudflare:
         enable: true
         token: '56f727a52e3349f6947d888452fecc8a'
