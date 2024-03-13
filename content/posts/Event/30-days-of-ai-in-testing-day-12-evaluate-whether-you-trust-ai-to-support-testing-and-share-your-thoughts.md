@@ -7,7 +7,6 @@ tags: ["Evaluate whether you trust AI to support testing and share your thoughts
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
-draft: true
 ---
 
 ## Day 12: Evaluate whether you trust AI to support testing and share your thoughts
@@ -54,6 +53,52 @@ These issues (to name a few) impact our trust in AI, but this is contextual, so 
 <https://club.ministryoftesting.com/t/day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/75102>
 
 ## My Day 12 Task
+
+### 1. About **Research on AI Risks**
+
+I quickly read through the two recommended articles and summarized their key points:
+
+#### Summary of the article [The 15 Biggest Risks of Artificial Intelligence](https://www.forbes.com/sites/bernardmarr/2023/06/02/the-15-biggest-risks-of-artificial-intelligence/):
+
+Artificial intelligence poses significant dangers and ethical challenges.
+
+- ❓ Lack of Transparency: Complex AI decisions may lead to distrust.
+- 👥 Bias and Discrimination: AI may perpetuate societal biases.
+- 🔒 Privacy Issues: AI can collect personal data, leading to privacy concerns.
+- 🛡️ Security Risks: AI can be used for cyberattacks and autonomous weapons.
+
+#### Summary of the article [Challenges of AI](https://www.chathamhouse.org/2022/03/challenges-ai):
+
+Artificial intelligence carries potential benefits and risks but lacks unified regulation.
+
+- ℹ️ Definition of AI: AI is defined as technology that performs tasks requiring human intelligence.
+- ❗️ Risks and Benefits of AI: It offers enormous potential advantages but also poses ethical, security, and societal risks.
+- ⚖️ Regulation of AI: There's a lack of unified regulation due to private sector dominance and government catching up.
+- ✋ Ethical Issues with AI: Identifying and mitigating moral risks in design and ongoing usage is crucial.
+
+#### Personal Thoughts
+
+In general, from the theoretical proposal of AI to the implementation of related models and tools, there have always been unclear ethical dilemmas, inadequate regulation, and insecure data privacy. The risks of AI persist and, personally, I believe they won't disappear.
+
+Both articles address these points. Although AI is believed to be the future, many people still question the accuracy, data security, and fairness of results while using it. After all, the companies behind the operation of these AI tools face pressure from both governments and revenue.
+
+### 2. About **Reflection on the Role of AI in Testing** and **Sharing Your Insights**
+
+I believe there are risks associated with AI's role in responding to testing-related results:
+
+- The risk of ethical bias will undoubtedly affect the integrity of AI-generated testing data and scenarios. A biased AI may intentionally discard results that should be included.
+- Data privacy and security risks make me cautious when interacting with AI, as I refrain from providing real contexts to prevent data collection. In our industry of internet software development, leaking data during the early stages of product release poses significant risks.
+
+To mitigate these risks:
+
+- Regarding ethical bias: My habit has always been to not entirely rely on or trust AI results. Instead, I use AI results to expand my thinking and generally perform a secondary human review of AI-generated testing data and scenarios to confirm their usability.
+- Regarding data privacy risk: I apply partial obfuscation to the prompts and contexts when interacting with AI, reducing the exposure of real project and business information.
+
+As I work in developing new internet products for clients, data privacy and security have always been red-line issues. Therefore, I am cautious when using AI in projects, and I use it to assist in repetitive or predictable tasks under the premise of avoiding risks.
+
+My trust in AI results depends on the certainty of my current requirements. If my requirements are clear enough, I use AI more for time-saving and efficiency purposes, and I fully trust the results.
+
+By using different AI tools for daily testing tasks and then manually judging the AI-generated responses, trust in the testing capabilities of certain AI tools is gradually enhanced.
 
 ## About Event
 
