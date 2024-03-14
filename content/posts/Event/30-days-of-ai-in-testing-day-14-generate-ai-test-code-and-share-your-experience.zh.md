@@ -1,9 +1,9 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第十四天：Generate AI test code and share your experience"
+title: "30 天 AI 测试挑战活动：第十四天：生成 AI 测试代码并分享你的体验"
 date: "2024-03-15T10:06:44+08:00"
-summary: "This blog post is day eleven of the 30 Days of AI Testing Challenge, focusing on the use of AI to generate test data and evaluating its effectiveness. The post may include the author's real-world application of AI-generated test data and an assessment of its effectiveness and applicability. By sharing the application and evaluation of AI-generated test data, readers will understand how the author leverages AI technology to generate valid test data and enhance the efficiency of the testing process in real testing environments. This series of events is expected to provide testing professionals with cases of practical application of AI-generated test data and encourage them to experiment with this emerging technology."
-ZHtags: ["开发你的测试方法并成为 AI 测试的先行者","提示词","Prompt"]
+summary: "这篇博文是关于30天AI测试挑战活动的第十四天，旨在生成AI测试代码并分享体验。博文可能包括作者使用AI工具生成测试代码的过程、工具的选择、生成的代码质量评估以及在实际测试中的应用体验。通过分享生成AI测试代码的过程和体验，读者将了解到AI在测试领域的应用实例，以及作者对AI生成代码的效果和可靠性的看法。这个系列活动有望为测试专业人士提供一个了解和尝试使用AI测试工具的机会，并分享使用体验和见解。"
+ZHtags: ["生成 AI 测试代码并分享你的体验","提示词","Prompt"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
