@@ -3,7 +3,7 @@ author:  "nao.deng"
 title: "Bruno API Automation Testing Tutorial: Building a Bruno API Automation Test project from 0 to 1"
 date: "2024-01-23T17:58:14+08:00"
 summary: "This blog post serves as a tutorial on Bruno API automation testing, guiding readers on constructing a Bruno API automation test project from scratch. The article provides detailed instructions on establishing the foundational structure of a test project, configuring the environment, and writing the first API test case. Through this tutorial, readers will progressively grasp the usage of the Bruno framework, building a comprehensive API automation test project from inception to completion. This process aims to enhance testing efficiency and maintainability."
-tags:  [ "Building a API Automation Test project from 0 to 1"]
+tags:  [ "Building a API Automation Test project from 0 to 1", "Bruno"]
 categories:  ["API automation testing", "Bruno"]
 series: ["Bruno API Automation Testing Tutorial"]
 ShowWordCount: true

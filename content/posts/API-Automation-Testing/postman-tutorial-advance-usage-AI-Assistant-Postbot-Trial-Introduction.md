@@ -1,52 +1,19 @@
 ---
-author: "nao.deng"
-title: "30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience"
-date: "2024-03-15T10:06:44+08:00"
-summary: "This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author's process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author's views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights."
-tags: ["Generate AI test code and share your experience","prompt engineering","Prompt"]
-categories: ["Testing Challenge"]
-series: ["30 Days of AI in Testing Challenge"]
+author:  "nao.deng"
+title:  "Postman API Automation Testing Tutorial Advance Usage AI Assistant Postbot Trial Introduction"
+date: "2024-03-17T10:05:00+08:00"
+summary:  "This blog post is about the advanced usage of the Postman API Automation Testing tutorial, focusing on the trial of the AI assistant Postbot. The article may include the author's introduction to Postbot's features, how to use it, advantages and scenarios. By sharing the trial experience of Postbot, readers can learn how to optimize the API automation testing process with the help of AI technology to improve testing efficiency and accuracy. This tutorial is expected to provide Postman users with an opportunity to learn more about and try out the AI assistant, as well as provide guidance and inspiration for applying new technologies in API testing."
+tags: ["AI Assistant", "Postbot", "AI"]
+categories: ["API Automation Testing", "Postman"]
+series: ["Postman API Automation Testing Tutorial"]
 ShowWordCount: true
 ---
 
-## Day 14: Generate AI test code and share your experience
+## Advanced Usage
 
-Nearly at the halfway mark! For Day 14, we want to focus on how AI is being used to build automation. In recent times, there has been a growth in automation tools using AI to simplify the creation or improvement of test code or to (nearly) eliminate the need for knowledge of coding all together (so called Low-Code or No-Code tools). They represent a potentially different way of building automation that could be faster and more robust.
+The following is an introduction to Postman's advanced usage: AI Assistant Postbot Trial Introduction Report.
 
-For today’s task, let’s focus on building test code for functional testing… we have other challenges coming up that focus on AI’s impact on other types of testing and topics such as self-healing tests.
-
-### Task Steps
-
-- **Select a tool**: Early in the challenge, we created lists of tools and their features, so review those posts and find a tool that interests you. Here are some tips:
-  - If you are not comfortable with building automation, pick a No-Code or Low-Code tool and try creating automation with it. Some examples might be:
-    - [Testim](https://www.testim.io/fast-authoring/)
-    - [Kalton](https://katalon.com/web-testing)
-    - [Postman AI Assistant](https://blog.postman.com/introducing-postbot-postmans-new-ai-assistant/)
-  - If are experienced with building automation, why not try using a code assistant such as CoPilot or Cody AI to assist you in writing some automation.
-  - If you have already evaluated a functional automation tool earlier in the challenge, why not pick a different tool and compare the two?
-- **Create some test code**: Set a timebox (such as 20-30 mins) and try to build a small example of automation using your tool of choice:
-  - Not sure what to use? Try one of these demo applications:
-    - Restful Booker [https://automationintesting.online](https://automationintesting.online/)
-    - Evil Tester’s [Web Testing and Automation Practice Application Pages](https://testpages.eviltester.com/styled/index.html)
-    - Applitools [ACME demo app](https://demo.applitools.com/app.html)
-    - Swag Labs [https://www.saucedemo.com](https://www.saucedemo.com/)
-    - Petstore [https://petstore.octoperf.com](https://petstore.octoperf.com/)
-- **Share your thoughts**: Reply to this post and share your findings and insights such as:
-  - What level of experience you have with functional automation.
-  - Which tool you used and the automation you were trying to create.
-  - How you found working with the tool to build and update your automation.
-  - Did the code work the first time, or did you need further refinement?
-  - Did you find any limitations or frustrations with the tool?
-
-### Why Take Part
-
-- **Better understand the direction of AI for automation**: The use of AI in functional automation is expanding, and taking part in this task allows you to gain exposure to these new ways of building automation and their limitations. Sharing your experiences with the community makes us all smarter.
-
-### Task Link
-
-<https://club.ministryoftesting.com/t/day-14-generate-ai-test-code-and-share-your-experience/75133?cf_id=MaBzyqDC5xq>
-
-## My Day 14 Task
+> Recently, when I participated in the 30-day AI testing challenge launched by Ministry testing community, one of the challenges was to choose different AI testing tools to use, and I just chose Postman's AI Assistant Postbot, which I'll send out separately for your reference.
 
 ### 1. About **Choosing a Tool**
 
@@ -254,26 +221,12 @@ In addition, Postbot's interface documentation generation is also quite useful. 
 
 However, Postbot currently does not seem to support custom commands. I want to try to output different types of test cases for the demo interface through Postbot, such as empty request body interface test cases, illegal request body interface test cases, etc., but Postbot cannot give the correct response.
 
-## About Event
+## Reference
 
-The "30 Days of AI in Testing Challenge" is an initiative by the Ministry of Testing community. The last time I came across this community was during their "30 Days of Agile Testing" event.
-
-Community Website: <https://www.ministryoftesting.com>
-
-Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
-
-**Challenges**:
-
-- [Day 1: Introduce yourself and your interest in AI](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/)
-- [Day 2: Read an introductory article on AI in testing and share it](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
-- [Day 3: List ways in which AI is used in testing](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
-- [Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [Day 5:Identify a case study on AI in testing and share your findings](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
-- [Day 6:Explore and share insights on AI testing tools](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
-- [Day 7: Research and share prompt engineering techniques](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
-- [Day 8: Craft a detailed prompt to support test activities](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
-- [Day 9: Evaluate prompt quality and try to improve it](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
-- [Day 10: Critically Analyse AI-Generated Tests](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
-- [Day 11: Generate test data using AI and evaluate its efficacy](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [Day 12: Evaluate whether you trust AI to support testing and share your thoughts](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
-- [Day 13: Develop a testing approach and become an AI in testing champion](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
+- <https://learning.postman.com/docs/getting-started/introduction/>
+- <https://github.com/postmanlabs/newman?tab=readme-ov-file#command-line-options>
+- <https://blog.postman.com/introducing-postbot-postmans-new-ai-assistant/>
+- <https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/>
+- <https://naodeng.com.cn/zh/zhseries/30-%E5%A4%A9-ai-%E6%B5%8B%E8%AF%95%E6%8C%91%E6%88%98%E6%B4%BB%E5%8A%A8/>
+- <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
+- <https://club.ministryoftesting.com/t/day-14-generate-ai-test-code-and-share-your-experience/75133>
