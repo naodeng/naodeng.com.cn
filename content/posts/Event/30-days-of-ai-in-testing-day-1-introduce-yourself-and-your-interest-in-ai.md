@@ -96,3 +96,15 @@ I discovered this community during the 30 Days of Agile Testing event.
 AI testing has been a topic of continuous interest to me, from the early days of accurate testing to the current generative AI and big models. I aim to learn and invest in the field of AI testing, and implement effective tools or methods to enhance the efficiency of manual and automated testing, including performance testing and improving quality management efficiency.
 
 The purpose of attending this event is to gain ideas and practical experience from other community members about AI testing, and to explore feasible directions for AI testing with the community.
+
+## Recommended Readings
+
+- [API Automation Testing Tutorial](https://naodeng.com.cn/series/api-automation-testing-tutorial/)
+- [Bruno API Automation Testing Tutorial](https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/)
+- [Gatling Performance Testing Tutorial](https://naodeng.com.cn/series/gatling-performance-testing-tutorial/)
+- [K6 Performance Testing Tutorial](https://naodeng.com.cn/series/k6-performance-testing-tutorial/)
+- [Postman API Automation Testing Tutorial](https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/)
+- [Pytest API Automation Testing Tutorial](https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/)
+- [REST Assured API Automation Testing Tutorial](https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/)
+- [SuperTest API Automation Testing Tutorial](https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/)
+- [30 Days of AI in Testing Challenge](https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/)
