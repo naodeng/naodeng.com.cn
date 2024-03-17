@@ -1,66 +1,51 @@
 ---
 author: "nao.deng"
-title: "30 Days of AI in Testing Challenge: Day 15: Gauge your short-term AI in testing plans"
-date: "2024-03-15T14:06:44+08:00"
-summary: "This blog post is Day 15 of the 30 Day AI Testing Challenge and looks at measuring short-term AI in test programs. The article may include criteria for evaluating short-term AI applications in a test program, as well as methods on how to determine their success. By sharing methods and hands-on experience in measuring short-term AI applications, readers will gain insights and guidance from the authors on practical applications of using AI in test programs. This series promises to provide a platform for testing professionals to understand how to measure and evaluate short-term AI applications and to foster broader industry discussions."
-tags: ["Gauge your short-term AI in testing plans","prompt engineering","Prompt"]
+title: "30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings"
+date: "2024-03-17T19:06:44+08:00"
+summary: "This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author's experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors' applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation."
+tags: ["Evaluate adopting AI for accessibility testing and share your findings","prompt engineering","Prompt","accessibility testing","AI"]
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
+Draft: true
 ---
 
-## Day 15: Gauge your short-term AI in testing plans
+## Day 16: Evaluate adopting AI for accessibility testing and share your findings
 
-Well done! You’ve made it halfway through our 30 Days of AI in Testing challenge! :tada:
+Welcome to day 16! Today we turn our focus towards the potential of AI to enhance accessibility testing.
 
-After covering so much content, the midpoint is a great time to take a breather and reflect on our individual readiness to adopt AI in our testing practices. As we’ve discovered in recent tasks, the path to integrating AI into our testing workflows is not a one-size-fits-all approach. Each individual tester may have unique circumstances, priorities, and constraints that shape their adoption readiness.
-
-Today’s task aims to provide a snapshot of our community’s AI adoption readiness by asking a straightforward yet insightful poll.
+Accessibility testing helps ensure that applications are usable and inclusive for individuals with diverse abilities, such as visual, auditory, cognitive, or motor impairments. Ensuring applications are accessible to a wide range of users is, in many cases, a legal requirement but also a moral imperative. As we have seen throughout this challenge, AI can offer advantages in various areas of testing, and its potential to enhance accessibility testing is no different. Let’s dive in and discover how AI can be leveraged to improve accessibility testing!
 
 ### Task Steps
 
-- **1. Answer this question**:
+- **Research AI and Accessibility Testing**: Research how AI is currently being used to support accessibility testing. Explore resources like articles, whitepapers, or case studies that discuss:
 
-    [**How likely are you to use AI in Testing within the next 6 months?**](https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L#how-likely-are-you-to-use-ai-in-testing-within-the-next-6-months-2)
+  - Tools that leverage AI to automate accessibility checks, analyse user interfaces for compliance with accessibility standards, or even generate alternative text descriptions for images.
+  - How AI can be used to address accessibility challenges beyond basic UI checks, such as testing for screen reader compatibility or detecting colour contrast issues.
 
-  - I already use AI in my testing activities
-  - Likely
-  - Very likely
-  - Unlikely
-  - Very unlikely
+- **Evaluate Applicability in Your Context**: Consider your context and reflect on:
+  - **Accessibility testing needs**: Identify areas where accessibility testing is crucial for your projects
+  - **Potential benefits of AI**: Evaluate how AI-powered accessibility testing tools or techniques could improve your current testing process.
+  - **Potential limitations**: Be mindful of the potential limitations of AI for accessibility testing.
 
-> vote link:<https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L>
+- **Share Your Findings**: Respond to this post with your insights and learnings. Consider sharing:
 
-- **2. Bonus Step**: If you’re open to sharing, share your answer to the poll by replying to this post. Explain the reasons behind your choice, such as organisational priorities or resource availability. What specific areas or use cases are you considering, if any?
+  - Links to the resources you found helpful
+  - How AI could benefit accessibility testing in your context
+  - Potential limitations you identified and how they could be mitigated
+  - Your overall perspective on the role of AI in accessibility testing
 
 ### Why Take Part
 
-- **Share Your Perspective**: By contributing your stance and rationale, you contribute to the collective understanding of the community’s inclination towards AI adoption, which can inspire, motivate, and perhaps even shift perspectives on readiness and the pace of change.
-- **Learn from Others**: Engage in the discussion to gain insights from others’ plans, experiences, and strategies, which can inform and refine your own approach to AI in testing adoption.
+- **Improve Accessibility Testing**: Gain valuable knowledge about how AI can contribute to creating inclusive applications.
+- **Identify Opportunities**: Discover potential ways to enhance accessibility testing in your projects.
+- **Sharing Your Thoughts**: By sharing, you contribute to the collective understanding of AI’s role in accessibility testing.
 
 ### Task Link
 
-<https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L>
+<https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy>
 
-## My Day 15 Task
-
-### 1. About **Voting**
-
-I emphatically cast my vote for "**I have already used AI in my testing activities**."
-
-### 2. About **Sharing My Thoughts**
-
-Here are the full results of the current vote:
-
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/h4Aiw3.png)
-
-From the results, it appears that most people have already used AI in their testing activities or are planning to use AI.
-
-It's undeniable, AI is the future, despite the risks and controversies that currently exist.
-
-For me personally, I’ve been using AI in my daily work and life, not just in testing work. From what we've seen so far, AI can greatly improve our work efficiency, provided that you use AI correctly, and not just as a simple search tool.
-
-Understanding AI, accepting AI, using AI correctly, and eventually excelling at using AI is a journey we must embark on. I have reason to believe that most job postings in the future will require proficiency in using AI.
+## My Day 16 Task
 
 ## About Event
 
@@ -87,6 +72,8 @@ Event Link: <https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
 - [Day 13: Develop a testing approach and become an AI in testing champion](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 
 - [Day 14: Generate AI test code and share your experience](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
+
+- [Day 15: Gauge your short-term AI in testing plans](https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/)
 
 ## Recommended Readings
 
