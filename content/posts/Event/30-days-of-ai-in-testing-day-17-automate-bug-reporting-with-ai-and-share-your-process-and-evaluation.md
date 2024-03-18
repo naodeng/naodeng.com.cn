@@ -7,7 +7,6 @@ tags: ["Automate bug reporting with AI and share your process and evaluation","p
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
-Draft: true
 ---
 
 ## Day 17: Automate bug reporting with AI and share your process and evaluation
@@ -63,6 +62,28 @@ However, like any AI technology, it’s important to critically evaluate the eff
 <https://club.ministryoftesting.com/t/day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/75214?cf_id=vP97XO6Uv94>
 
 ## My Day 17 Task
+
+Today's task has been somewhat challenging for me, as I have not yet fully utilized AI testing tools for defect reporting. Currently, most AI tools require registration and application for trial use after logging in, and the majority of data will be collected by these tool platforms. I have been cautious in trying these tools, worried about data privacy leaks. Due to the restrictions on use and considerations of data security, the trial period was not sufficient to fully evaluate the quality of the tools or to share detailed findings.
+
+1.**Evaluating AI Report Quality**
+
+Previously, I tried the Applitools Eyes tool, which reports defects by comparing clear screenshots, saving us the time needed to reproduce and construct scenarios.
+
+2.**Identifying Risks and Limitations**
+
+Due to the limited trial time, I have not yet identified any risks of missed or false reports.
+
+3.**Data Use and Protection**
+
+At present, it seems that the security risks and data protection provided by Applitools Eyes are mediocre. After configuring the API key locally and running tests, the Applitools Eyes platform can access screenshots and results of the testing process. I am personally concerned about potential data privacy breaches.
+
+4.**Sharing Your Findings**
+
+Based on my previous use of other AI testing tools and this time using Applitools Eyes, the differences from manual defect reporting include:
+
+- AI tools provide direct feedback on defects as soon as they are identified, unlike manual processes which may involve multiple reproductions and identifications to confirm the validity and reality of defects.
+- AI tool defect reports come with clear steps for reproduction, whereas manual defect reports often miss sporadic defects due to forgotten reproduction steps.
+- Defects reported by AI tools tend to be relatively rigid, which may confuse developers tasked with fixing them.
 
 ## About Event
 
