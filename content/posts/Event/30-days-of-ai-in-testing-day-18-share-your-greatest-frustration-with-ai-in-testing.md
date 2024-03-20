@@ -7,7 +7,6 @@ tags: ["Share your greatest frustration with AI in Testing","prompt engineering"
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
-Draft: true
 ---
 
 ## Day 18: Share your greatest frustration with AI in Testing
@@ -42,6 +41,23 @@ Feel free to add your own frustration if the above prompts don’t resonate with
 
 ## My Day 18 Task
 
+### **My Concerns and Challenges Using AI Tools for Testing Activities**
+
+#### **Data Privacy and Security Concerns with AI Tools**
+
+In the challenges of the past several days, I've mentioned my concerns about data privacy and security regarding AI tools. Due to these concerns, I've been cautious about using AI tools for testing activities, carefully filtering out any context related to the project. This cautious approach makes the process more difficult and results in some discrepancies between the outcomes provided by the AI tools and the expected results. Consequently, it's challenging to directly apply these results to current project testing work, which hinders direct and real improvements in testing efficiency.
+
+#### **Functional Limitations of AI Tools**
+
+During the recent days of the AI testing challenge, I've experimented with various AI testing tools, including Applitools Eyes, Katalon, Testim, and Postman's API testing AI assistant, Postbot. While most tools' AI features can indeed enhance testing efficiency, the improvement is still limited. There is a significant discrepancy between the AI testing functionality and the descriptions in official promotional materials. It feels like the hype is greater than the actual performance.
+
+#### **Learning Curve Challenges with AI Tools**
+
+Here, I'd like to discuss the comprehension capabilities of different large AI models, such as ChatGPT-3.5, ChatGPT-4, Gemini Pro, and Claude 3. The results produced by these different AI models for the same prompts can vary, requiring time to adapt when applying these AI models to daily testing activities. It involves comparing and learning about different AI model tools to determine which testing activities are better suited for which AI models.
+
+#### **Difficulty in Accessing AI Tools**
+
+For many IT professionals outside of China, accessing the latest AI testing tools and large AI model tools is relatively straightforward. However, for IT personnel in mainland China, it is exceptionally difficult to access these tools. The first hurdle often encountered is in applying for an account and the subsequent challenge of paying for the service.
 
 ## About Event
 

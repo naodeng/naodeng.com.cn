@@ -20,8 +20,7 @@ Welcome to Day 3 of 30 Days of AI in Testing! Today, we're going to go deeper in
 - Research to discover information on how AI is applied in testing.
 
 - List three or more different AI uses you discover and note any useful tools you find as well as how they can enhance testing, for example:
-   - Test Automation: 
-Self-healing tests - AI tools evaluate changes in the code base and automatically update with new attributes to ensure tests are stable - Katalon, Functionize, Testim, Virtuoso, etc.
+- Test Automation: Self-healing tests - AI tools evaluate changes in the code base and automatically update with new attributes to ensure tests are stable - Katalon, Functionize, Testim, Virtuoso, etc.
 
 - Reflect and write a summary of which AI uses/features would be most useful in your context and why.
 
