@@ -1,13 +1,12 @@
 ---
 author: "nao.deng"
 title: "30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks"
-date: "2024-03-20T16:06:44+08:00"
+date: "2024-03-21T22:22:44+08:00"
 summary: "This blog post is about Day 19 of the 30-Day AI Testing Challenge, focusing on exploring the role of AI in test priority sorting and evaluating its pros and cons. The article may include the author's practical application cases of AI in test priority sorting, as well as the benefits and challenges brought by using AI. By sharing experiences and evaluations of applying AI in test priority sorting, readers will gain insights into the author's views on the actual effects and impacts of AI in the testing process. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the role of AI in test priority sorting, and to promote further discussions about the application of AI in testing."
 tags: ["Experiment with AI for test prioritisation and evaluate the benefits and risks","prompt engineering","Prompt","AI"]
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
-Draft: true
 ---
 
 ## Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks
@@ -62,13 +61,13 @@ You have two options for today’s task (you can do both if you want):
 
 ## My Day 19 Task
 
-基于我当前的工作状态，第 19 天的任务我选择了**选项 2**
+Based on my current work status, for Day 19's task, I chose **Option 2**
 
-### 关于**阅读一篇讨论在测试优先级排序和选择中使用 AI 的文章**
+### Regarding **Reading an Article Discussing the Use of AI in Test Prioritization and Selection**
 
-我阅读的是[AI 驱动的测试优先级](https://www.linkedin.com/pulse/ai-driven-test-prioritization-amit-khullaar)
+The article I read is [AI-Driven Test Prioritization](https://www.linkedin.com/pulse/ai-driven-test-prioritization-amit-khullaar)
 
-文章的主要内容如下：
+The main content of the article is as follows:
 
 AI-driven test prioritization enhances efficiency and reduces costs in software testing.
 
@@ -79,9 +78,9 @@ AI-driven test prioritization enhances efficiency and reduces costs in software 
 
 AI-driven test prioritization revolutionizes software testing by utilizing machine learning to rank test cases based on their likelihood to fail, enhancing efficiency and coverage while optimizing resources. This method relies on analyzing vast data, including historical test results and code changes. Implementations by giants like Google and Microsoft illustrate its value in reducing testing times and accelerating development. By integrating AI prioritization with testing tools, organizations can significantly improve their software quality and reduce costs, underscoring the transformative impact of AI in software development.
 
-### 关于**使用 AI 工具总结当前在测试优先级排序和选择中使用 AI 的方法和好处**
+### Regarding **Summarizing the Methods and Benefits of Using AI Tools in Test Prioritization and Selection**
 
-我选择了 ChatGPT4，它的回答是：
+I chose ChatGPT-4, and its response was:
 
 ```Markdown
 AI in test prioritisation and selection, particularly within the context of software development and quality assurance, is a rapidly evolving area that leverages machine learning (ML), natural language processing (NLP), and other AI methodologies to enhance the efficiency and effectiveness of testing processes. Here's a summary of the current approaches and benefits:
@@ -114,6 +113,42 @@ AI in test prioritisation and selection, particularly within the context of soft
 
 These AI-driven approaches represent a significant shift from manual and static methods to dynamic, efficient, and intelligent test management strategies, aiming at improving software quality, reducing costs, and accelerating development cycles.
 ```
+
+### Regarding **Reflecting on How You or Your Team Currently Execute This Task**
+
+#### Background and Available Information of My Current Project
+
+- The current project has tight delivery timelines, with significant pressure on task delivery and a risk of scope creep.
+- Existing project SOPs require compatibility with different browsers, resolutions, and devices.
+- The project is an e-commerce online shopping website, primarily for the web platform.
+
+#### The Necessity of Test Priority Sorting
+
+It is necessary. From the beginning of the project, based on the background and SOP, an initial testing strategy was developed. It included test priorities: business functionality testing first, followed by compatibility testing, then performance and network testing, and finally usability and ease-of-use testing.
+
+#### Factors Relied Upon for Choosing/Prioritizing Tests
+
+Mostly quantitative, with some qualitative aspects
+
+- Project team background
+- Project delivery pressure
+- Project SOPs
+- Team personnel configuration, more about the ratio of developers to testers
+- Results of negotiations and communications with the team
+
+#### Decision-Making in the Absence of Data
+
+Refer to useful information from past projects, negotiate and confirm with the team, and then make a decision.
+
+> Here, I must mention that the testing strategy and priorities are always iterative and updated, not set in stone. They can be adjusted based on the project situation and more information obtained.
+
+### Regarding **The Value of Test Priority Selection to AI Models**
+
+There would definitely be value. AI could provide more reasonable and lower-risk outcomes based on known qualitative and quantitative historical data within the model.
+
+### Regarding **The Risks of Test Priority Selection to AI Models**
+
+Risks are inevitable, mainly because of my concerns about data privacy and security with AI model tools. I would not transmit 100% of the project's context and known information to AI. Therefore, the results generated by AI without full information might significantly differ from the team's expectations. If the project is executed based on the outcomes provided by the AI model, it might not be possible to complete the project's delivery on time.
 
 ## About Event
 
