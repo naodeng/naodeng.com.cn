@@ -1,7 +1,7 @@
 ---
 author: "nao.deng"
 title: "30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto"
-date: "2024-03-22T10:06:44+08:00"
+date: "2024-03-24T10:06:44+08:00"
 summary: "This blog post is about Day 21 of the 30-Day AI Testing Challenge, encouraging participants to create their own AI Testing Manifesto. The article may include the author's elaboration on the core values, vision, and commitments related to AI testing, as well as reflections on the principles and guidelines for the application of AI in testing. By sharing a personal AI Testing Manifesto, readers will gain a profound understanding of the author's views on the significance and application value of AI in the testing field, along with a vision and expectations for the future development of AI testing. This series of activities hopes to provide a platform for testing professionals to express their personal opinions and values, and to promote in-depth discussions within the industry regarding the development and application of AI in testing."
 tags: ["Develop your AI in testing manifesto","prompt engineering","Prompt","AI"]
 categories: ["Testing Challenge"]

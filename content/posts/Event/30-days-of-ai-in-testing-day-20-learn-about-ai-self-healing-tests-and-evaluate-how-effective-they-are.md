@@ -1,7 +1,7 @@
 ---
 author: "nao.deng"
 title: "30 Days of AI in Testing Challenge: Day 20: Learn about AI self-healing tests and evaluate how effective they are"
-date: "2024-03-21T16:06:44+08:00"
+date: "2024-03-23T21:06:44+08:00"
 summary: "This blog post is about Day 20 of the 30-Day AI Testing Challenge,exploring the effectiveness of AI self-healing tests. The article may include the author's definition, purpose, and methods of AI self-healing testing, as well as an evaluation of its effectiveness and practical experience. By sharing explorations and evaluations of AI self-healing testing, readers will understand the author's views and insights on this emerging testing method, as well as its application effects in real testing environments. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the potential and limitations of AI in self-healing testing, and to promote further research and application of AI testing in the industry."
 tags: ["Learn about AI self-healing tests and evaluate how effective they are","prompt engineering","Prompt","AI"]
 categories: ["Testing Challenge"]
