@@ -7,7 +7,6 @@ ZHtags: ["探索 AI 自愈测试的有效性","提示词","Prompt","AI"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
-Draft: true
 ---
 
 ## 第 20 天：探索 AI 自愈测试的有效性
@@ -56,6 +55,62 @@ Draft: true
 <https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314>
 
 ## 我的第 20 天任务
+
+基于之前任务中尝试试用了支持 AI 自愈测试的工具 Katalon Studio，所以今天的任务我选择**选项 1**
+
+### 1. **你的工具声称能解决哪类问题？**
+
+Katalon Studio 的 AI 自愈测试官方文档中宣传能解决 WebUI 自动化测试中 UI 定位导致的测试失败问题
+
+Katalon Studio 的 AI 自愈测试的工作机制：
+
+- 启用自我修复后，当 Katalon Studio 无法使用默认定位器找到对象时，Katalon 会尝试与该对象关联的其他预配置定位器。
+- 如果 Katalon Studio 通过任何替代定位器找到对象，测试将继续运行。一旦损坏的对象自我修复，成功找到该对象的替代定位器将用于剩余的执行。这有助于防止同一损坏对象反复发生自我修复，从而缩短执行时间。
+- 测试执行结束后，Katalon Studio 建议用找到该对象的定位器替换损坏的定位器。除非 Katalon Studio 可以找到目标对象，否则根据设计的故障处理选项，测试执行可能会停止或继续进行。
+
+对应文章链接为：<https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio>
+
+### 2. **验证其中一个声明**
+
+为了验证 Katalon Studio 的 AI 自愈测试功能，我使用 Katalon Studio 录制了 [Swag Labs](https://www.saucedemo.com/)在线购物网站的登录，选择商品，加入购物车，并下单成功的流程，Katalon Studio 生成的代码如下
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png)
+
+> 当前的 demo 测试用例能运行通过
+
+#### 2.1 故意更改定位符验证 AI 自愈测试功能
+
+为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了两处错误定位，调整后的用例如下：
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png)
+
+运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议
+
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png)
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png)
+
+#### 2.2 故意调换测试中的两个步骤验证 AI 自愈测试功能
+
+为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了 测试步骤的顺序，调整后的用例如下：
+
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png)
+
+运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议
+
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png)
+
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png)
+
+### 3.**这项功能可能在哪里失效？**
+
+目前看起来我验证的两次都失效了，AI 自愈测试都没给出定位的修复建议，与官方宣传中的存在较大差异。
+
+之后我也尝试运行错误的 demo 用例多次，Katalon Studio 的 AI 自愈测试功能在某一次确实给出一条建议，但是我使用它的建议，并没有修复错误的用例。
+
+目前还不太确认 Katalon Studio 的 AI 自愈测试功能是不是有什么限制条件或者我使用的方法不太对。
+> 声明一下，我使用的版本也是试用版本，且 AI 自愈测试功能配置为默认配置
+
+### 4.谈谈我的看法
+
+最近参加这个 30 天 AI 测试挑战任务，也试用了好多新的关于 AI 测试的工具，发现大部分工具都名不符实，都有夸张宣传的嫌疑，建议大家在选择 AI 测试工具时，还是要多试用，以试用结果为参考来选择合适的工具。
 
 ## 关于活动
 

@@ -7,7 +7,6 @@ tags: ["Learn about AI self-healing tests and evaluate how effective they are","
 categories: ["Testing Challenge"]
 series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
-Draft: true
 ---
 
 ## Day 20: Learn about AI self-healing tests and evaluate how effective they are
@@ -55,6 +54,58 @@ We know that not everyone is interested in learning new automation tools, so sim
 <https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314>
 
 ## My Day 20 Task
+
+Based on my previous task of trying out the AI self-healing testing feature in Katalon Studio, today I chose **Option 1**.
+
+### 1. **What kind of problems does your tool claim to solve?**
+
+Katalon Studio's AI-driven self-healing testing feature claims to address issues related to test failures caused by UI locator changes in WebUI automation testing.
+
+The working mechanism of Katalon Studio's AI self-healing testing:
+
+- Once self-healing is enabled, if Katalon Studio can't find an object using the default locator, it attempts to find the object with other pre-configured locators associated with that object.
+- If Katalon Studio finds the object using any alternative locator, the test continues. The alternative locator that successfully found the object is used for the remainder of the execution. This helps prevent repeated self-healing of the same broken object, thus reducing execution time.
+- After test execution, Katalon Studio suggests replacing the broken locator with the one that found the object. Unless Katalon Studio can find the target object, based on designed failure handling options, the test execution may stop or proceed.
+
+The corresponding article link is: <https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio>
+
+### 2. **Verifying one of the claims**
+
+To verify Katalon Studio's AI self-healing testing functionality, I recorded a process on the [Swag Labs](https://www.saucedemo.com/) online shopping website with Katalon Studio, including login, selecting products, adding them to the cart, and successfully placing an order. Katalon Studio generated the following code:
+![Generated Code](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png)
+
+> The current demo test case runs successfully.
+
+#### 2.1 Intentionally changing locators to verify the AI self-healing functionality
+
+To test the tool's ability to detect and repair changes in element locators, I intentionally altered two locators in the test script. The adjusted example is as follows:
+![Adjusted Example](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png)
+
+After the test failed, I checked the tool's AI self-healing functionality and found no suggestions for locator repair failures.
+![No Suggestions](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png)
+![No Suggestions](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png)
+
+#### 2.2 Intentionally changing the order of steps in the test to verify the AI self-healing functionality
+
+To further test the tool's ability to repair after detecting changes in element locators, I changed the order of the test steps. The adjusted example is as follows:
+![Adjusted Order](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png)
+
+After the test failed, I checked the tool's AI self-healing functionality and again found no suggestions for locator repair failures.
+![No Suggestions](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png)
+![No Suggestions](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png)
+
+### 3. **Where might this feature fail?**
+
+From what I've observed, both of my verifications failed; the AI self-healing testing did not provide any locator repair suggestions, which is a significant deviation from the official claims.
+
+I also attempted to run incorrect demo cases multiple times, and on one occasion, Katalon Studio's AI self-healing testing feature did provide a suggestion. However, using its advice did not correct the faulty case.
+
+At this point, I'm not entirely sure if there are any specific conditions or limitations to Katalon Studio's AI self-healing testing feature, or if I'm using it incorrectly.
+> Note that I am using a trial version, and the AI self-healing testing feature is set to default configuration.
+
+### 4. **My Opinion**
+
+Having participated in this 30-day AI testing challenge and trying out many new AI testing tools, I've found that most tools do not live up to their claims and often exaggerate their capabilities. I suggest that everyone thoroughly test these AI testing tools themselves and use those trial results as a basis for selecting the appropriate tool.
 
 ## About Event
 
