@@ -1,7 +1,350 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>30 Days of AI in Testing Challenge | Nao's Blog</title>
-<meta name=keywords content><meta name=description content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"><meta name=author content="NaoDeng"><link rel=canonical href=https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/><meta name=google-site-verification content="google5e9a7c9479924ed2"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://naodeng.com.cn/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://naodeng.com.cn/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://naodeng.com.cn/favicon-32x32.png><link rel=apple-touch-icon href=https://naodeng.com.cn/apple-touch-icon.png><link rel=mask-icon href=https://naodeng.com.cn/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/index.xml><link rel=alternate hreflang=en href=https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta name=baidu-site-verification content="codeva-2siuZUJUWf"><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'></script><script defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://naodeng-umami.vercel.app/hugo.js></script><meta http-equiv=Content-Type content="text/html;charset=gb2312"><meta name=sogou_site_verification content="iwkYDJrzfK"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin=anonymous></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ",{anonymize_ip:!1})}</script><meta property="og:title" content="30 Days of AI in Testing Challenge"><meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"><meta property="og:type" content="website"><meta property="og:url" content="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/"><meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://naodeng.com.cn/papermod-cover.png"><meta name=twitter:title content="30 Days of AI in Testing Challenge"><meta name=twitter:description content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"></head><body class=list id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://naodeng.com.cn/ accesskey=h title="Nao's Blog (Alt + H)">Nao's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://naodeng.com.cn/zh/ title=🇨🇳中文 aria-label=🇨🇳中文>🇨🇳中文</a></li></ul></div></div><ul id=menu><li><a href=https://naodeng.com.cn/archives title=Archive><span>Archive</span></a></li><li><a href=https://naodeng.com.cn/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://naodeng.com.cn/series/ title=Series><span>Series</span></a></li><li><a href=https://naodeng.com.cn/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://naodeng.com.cn/>Home</a>&nbsp;»&nbsp;<a href=https://naodeng.com.cn/series/>Series</a></div><h1>30 Days of AI in Testing Challenge
-<a href=/series/30-days-of-ai-in-testing-challenge/index.xml title=RSS aria-label=RSS><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 11: Generate test data using AI and evaluate its efficacy</h2></header><div class=entry-content><p>This blog post is day eleven of the 30 Days of AI Testing Challenge, focusing on the use of AI to generate test data and evaluating its effectiveness. The post may include the author’s real-world application of AI-generated test data and an assessment of its effectiveness and applicability. By sharing the application and evaluation of AI-generated test data, readers will understand how the author leverages AI technology to generate valid test data and enhance the efficiency of the testing process in real testing environments. This series of events is expected to provide testing professionals with cases of practical application of AI-generated test data and encourage them to experiment with this emerging technology.</p></div><footer class=entry-footer><span title='2024-03-12 10:06:44 +0800 CST'>March 12, 2024</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;1850 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 11: Generate test data using AI and evaluate its efficacy" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 10: Critically Analyse AI-Generated Tests</h2></header><div class=entry-content><p>This blog post is day ten of the 30 Days of AI Testing Challenge,which calls for participants to critically analyze tests generated by artificial intelligence. The blog post may include the author’s evaluation of AI-generated tests, covering aspects like accuracy, completeness, and coverage. By sharing the results of the critical analysis, readers will gain insight into the author’s deep understanding and views on AI-generated testing. This series of events aims to provide testing professionals with practical cases to deepen their knowledge of AI test generation outcomes and to stimulate further discussions on improving the quality of AI-generated tests.</p></div><footer class=entry-footer><span title='2024-03-11 10:06:44 +0800 CST'>March 11, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;2604 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 10: Critically Analyse AI-Generated Tests" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 9: Evaluate prompt quality and try to improve it</h2></header><div class=entry-content><p>This blog post is the eighth day of the 30-day AI Testing Challenge, focusing on creating detailed prompts to support the testing activities. The post may include the author’s reflections on how to design and build prompts necessary for the testing activities, as well as insights gained during this process. By sharing detailed prompt designs, readers will be able to understand how the author uses prompts in testing activities and effectively guides AI in tasks related to testing. This series of activities is expected to provide practical examples and experiences for testing professionals applying AI testing.</p></div><footer class=entry-footer><span title='2024-03-10 10:06:44 +0800 CST'>March 10, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1114 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 9: Evaluate prompt quality and try to improve it" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 8: Craft a detailed prompt to support test activities</h2></header><div class=entry-content><p>This blog post is the eighth day of the 30-day AI Testing Challenge, focusing on creating detailed prompts to support the testing activities. The post may include the author’s reflections on how to design and build prompts necessary for the testing activities, as well as insights gained during this process. By sharing detailed prompt designs, readers will be able to understand how the author uses prompts in testing activities and effectively guides AI in tasks related to testing. This series of activities is expected to provide practical examples and experiences for testing professionals applying AI testing.</p></div><footer class=entry-footer><span title='2024-03-09 13:06:44 +0800 CST'>March 9, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;2578 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 8: Craft a detailed prompt to support test activities" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 7: Research and share prompt engineering techniques</h2></header><div class=entry-content><p>This blog post is the seventh day of the 30-Days AI Testing Challenge, which requires participants to research and share real-time engineering technology. The post may include a definition of real-time engineering technology, its applications in the testing domain, introductions to relevant tools and technologies, and the author’s perspective on real-time engineering technology. By sharing research on real-time engineering technology, readers will gain insights into its potential value in testing and how to effectively apply this technology. This series of activities aims to provide a platform for testing professionals to deeply understand and discuss emerging technologies.</p></div><footer class=entry-footer><span title='2024-03-08 13:06:44 +0800 CST'>March 8, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;632 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 7: Research and share prompt engineering techniques" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 6:Explore and share insights on AI testing tools</h2></header><div class=entry-content><p>This blog post is day six of the 30 Days of AI Testing Challenge, encouraging participants to explore and share insights about artificial intelligence testing tools. The blog post may include an introduction to different AI testing tools, an assessment of their features and applicable scenarios, and sharing the author’s experiences and opinions on these tools. Through such sharing, readers can better understand the AI testing tools available on the market and their roles in the testing process. This series of events hopes to provide testing professionals with a comprehensive understanding of AI testing tools and prompt them to more flexibly choose the tools that are suitable for their projects.</p></div><footer class=entry-footer><span title='2024-03-07 13:06:44 +0800 CST'>March 7, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;645 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 6:Explore and share insights on AI testing tools" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>30 Days of AI in Testing Challenge: Day 5:Identify a case study on AI in testing and share your findings</h2></header><div class=entry-content><p>This blog post is for the fifth day of the 30-day AI testing challenge event, which requires participants to identify a case study of artificial intelligence in testing and share their findings. The blog post may include the background, objectives, and methods of the case study, as well as key insights discovered during the research process. By sharing the case study, the author is able to demonstrate the application of AI in real-world testing scenarios to the readers, promoting the exchange of knowledge and learning. This series of events is expected to provide testing professionals with an in-depth understanding of AI testing and encourage them to actively participate in the research of actual cases.</p></div><footer class=entry-footer><span title='2024-03-06 13:06:44 +0800 CST'>March 6, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;760 words&nbsp;·&nbsp;nao.deng</footer><a class=entry-link aria-label="post link to 30 Days of AI in Testing Challenge: Day 5:Identify a case study on AI in testing and share your findings" href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2024 <a href=https://naodeng.com.cn/>Nao's Blog</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>30 Days of AI in Testing Challenge | Nao&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+<meta name="author" content="NaoDeng">
+<link rel="canonical" href="http://localhost:1313/series/30-days-of-ai-in-testing-challenge/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/series/30-days-of-ai-in-testing-challenge/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/series/30-days-of-ai-in-testing-challenge/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
+</script>
+
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+<meta name="sogou_site_verification" content="iwkYDJrzfK" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="30 Days of AI in Testing Challenge" />
+<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/series/30-days-of-ai-in-testing-challenge/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
+<meta name="twitter:title" content="30 Days of AI in Testing Challenge"/>
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/zh/" title="🇨🇳中文"
+                            aria-label="🇨🇳中文">🇨🇳中文</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="Dashboard">
+                    <span>Dashboard</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/series/">Series</a></div>
+  <h1>
+    30 Days of AI in Testing Challenge
+    <a href="/series/30-days-of-ai-in-testing-challenge/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 23 of the 30-Day AI Testing Challenge, focusing on assessing the effectiveness of Artificial Intelligence in visual testing and discussing its advantages. The article may include the author’s practical application experience of using AI for visual testing, as well as thoughts and evaluations on the advantages and challenges AI brings to visual testing. By sharing evaluations of the application effects and advantages of AI in visual testing, readers will gain insight into the author’s understanding and perspective on this emerging testing method, as well as a forecast for the application prospects in the visual testing field. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the application effects and advantages of AI in visual testing, and to promote deeper research and application of AI in the testing field within the industry.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-26 20:06:44 +0800 CST'>March 26, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;832 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 22: Reflect on what skills a team needs to succeed with AI-assisted testing
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 22 of the 30-Day AI Testing Challenge, discussing the skills necessary for a team to succeed in AI-assisted testing. The article might include the author’s reflections on the skills and qualities team members need to possess, as well as the key factors and challenges to success in AI testing. By sharing the required skills and qualities for teams in AI testing, readers will gain insights into the author’s views on building an efficient AI testing team and advice on how to develop and enhance team members’ professional abilities in the AI testing field. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the skills needed for teams in AI-assisted testing and to offer guidance and references for team building.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-24 20:06:44 +0800 CST'>March 24, 2024</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1377 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 22: Reflect on what skills a team needs to succeed with AI-assisted testing" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 21 of the 30-Day AI Testing Challenge, encouraging participants to create their own AI Testing Manifesto. The article may include the author’s elaboration on the core values, vision, and commitments related to AI testing, as well as reflections on the principles and guidelines for the application of AI in testing. By sharing a personal AI Testing Manifesto, readers will gain a profound understanding of the author’s views on the significance and application value of AI in the testing field, along with a vision and expectations for the future development of AI testing. This series of activities hopes to provide a platform for testing professionals to express their personal opinions and values, and to promote in-depth discussions within the industry regarding the development and application of AI in testing.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-24 10:06:44 +0800 CST'>March 24, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1139 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 20: Learn about AI self-healing tests and evaluate how effective they are
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 20 of the 30-Day AI Testing Challenge,exploring the effectiveness of AI self-healing tests. The article may include the author’s definition, purpose, and methods of AI self-healing testing, as well as an evaluation of its effectiveness and practical experience. By sharing explorations and evaluations of AI self-healing testing, readers will understand the author’s views and insights on this emerging testing method, as well as its application effects in real testing environments. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the potential and limitations of AI in self-healing testing, and to promote further research and application of AI testing in the industry.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-23 21:06:44 +0800 CST'>March 23, 2024</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1493 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 20: Learn about AI self-healing tests and evaluate how effective they are" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 19 of the 30-Day AI Testing Challenge, focusing on exploring the role of AI in test priority sorting and evaluating its pros and cons. The article may include the author’s practical application cases of AI in test priority sorting, as well as the benefits and challenges brought by using AI. By sharing experiences and evaluations of applying AI in test priority sorting, readers will gain insights into the author’s views on the actual effects and impacts of AI in the testing process. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the role of AI in test priority sorting, and to promote further discussions about the application of AI in testing.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-21 22:22:44 +0800 CST'>March 21, 2024</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;1936 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 18: Share your greatest frustration with AI in Testing
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 18 of the 30-Day AI Testing Challenge, aimed at sharing the biggest challenges participants face in AI testing. The article may include difficulties, challenges, and obstacles encountered by the author in practice, as well as corresponding solutions or coping strategies. By sharing the difficulties and challenges encountered, readers can understand the problems others may face in AI testing and gain inspiration and assistance from them. This series of activities hopes to provide a platform for testing professionals to exchange, learn, and solve problems together, promoting progress and development in the field of AI testing.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-19 17:06:44 +0800 CST'>March 19, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;1021 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 18: Share your greatest frustration with AI in Testing" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">30 Days of AI in Testing Challenge: Day 17: Automate bug reporting with AI and share your process and evaluation
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post is about Day 17 of the 30-Day AI Testing Challenge, looking at automating bug reporting with AI and sharing your personal process and evaluation results. The article may cover the author’s process for automating defect reporting using AI technology, including tool selection, implementation methodology, benefits of automating the process, and evaluation results. By sharing the process and evaluation results of automated defect reporting, readers will learn about the authors’ experiences and lessons learned in practice, as well as the potential of AI technologies to improve the efficiency of defect management. This series promises to provide an opportunity for testing professionals to understand and explore the use of AI to automate defect reporting and to promote technological advancement and innovation in the industry.</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-18 10:06:44 +0800 CST'>March 18, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;1057 words&nbsp;·&nbsp;nao.deng</footer>
+  <a class="entry-link" aria-label="post link to 30 Days of AI in Testing Challenge: Day 17: Automate bug reporting with AI and share your process and evaluation" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/series/30-days-of-ai-in-testing-challenge/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

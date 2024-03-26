@@ -62,11 +62,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -80,13 +78,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="UI 测试最佳实践的真实案例篇（二）：从难以理解的 React 组件测试到简单愚蠢的测试" />
 <meta property="og:description" content="这篇博文是 UI 测试最佳实践的真实案例篇，第二篇从难以理解的 React 组件测试到简单愚蠢的测试。文章分享了在 React 组件测试中遇到的挑战，并提供了简化和优化测试的实际案例。通过这个真实案例，读者将学到如何通过简单愚蠢的测试方法，更轻松地理解和维护 React 组件的测试代码，提高测试的可读性和可维护性。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-02T16:37:44+08:00" />
 <meta property="article:modified_time" content="2024-02-02T16:37:44+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="UI 测试最佳实践的真实案例篇（二）：从难以理解的 React 组件测试到简单愚蠢的测试"/>
 <meta name="twitter:description" content="这篇博文是 UI 测试最佳实践的真实案例篇，第二篇从难以理解的 React 组件测试到简单愚蠢的测试。文章分享了在 React 组件测试中遇到的挑战，并提供了简化和优化测试的实际案例。通过这个真实案例，读者将学到如何通过简单愚蠢的测试方法，更轻松地理解和维护 React 组件的测试代码，提高测试的可读性和可维护性。"/>
 
@@ -124,7 +123,7 @@ if (!doNotTrack) {
   "articleBody": "文章由 UI 测试最佳实践项目 内容翻译而来，大家有条件的话可以去 UI 测试最佳实践项目阅读原文。\n真实案例：从难以理解的 React 组件测试到简单愚蠢的测试 原文链接：https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/from-unreadable-react-component-tests-to-simple-ones.md\n一段简要说明 测试的代码应该尽量清晰易懂。这样做的好处是在需要理解、更新、重构或修复代码时，能够节省大量时间。相反，如果你连自己写的测试都读不懂，那可就是个糟糕的场景了！\n这里我将分享一下我对一些旧的 React 组件测试进行重构的原因、思考过程和模式。\n问题 在添加了“使用 Cypress 和 Storybook 测试虚拟列表组件”章节和“使用 Cypress 进行 React 组件单元测试”章节一年后，我发现我的测试几乎无法阅读。许多抽象层次使我无法仔细理解测试在做什么，导致花费很长时间阅读它们。这是无法接受的阻力。\n如何提高测试的可读性？ TDD 之父 Kent Beck 曾说：\n测试代码不是生产代码。它必须简单且小 1000 倍。\n但是，如何做到呢？是什么导致我的测试如此难以阅读？是什么使可读性变差？\n我将分析一堆我的测试，对它们进行思考，并提出更为直观的方法。被测试的组件是前文提到的 VirtualList。\n测试 1，复杂度低 接下来的测试是最简单的一个：检查当没有传递任何内容时，VirtualList 是否不渲染任何东西。以下是原始测试\nit('When there are no items, then nothing is showed', () =\u003e { const itemsAmount = 0 const itemHeight = 30 const listHeight = 300 const items = getStoryItems({ amount: itemsAmount }) mount( \u003cVirtualList items={items} getItemHeights={() =\u003e itemHeight} RenderItem={createRenderItem({ height: itemHeight })} listHeight={listHeight} /\u003e, ) cy.findByTestId('VirtualList') .then($el =\u003e $el.text()) .should('be.empty') }) 考虑到测试的简单性，谈论可读性是否有点过于琐碎？不，我已经对此有一些疑问，比如：\ngetStoryItems 是做什么的？ createRenderItem 是做什么的？ 我这里没有贴出 getStoryItems 的代码，但它只是一个生成包含 X 个项目的数组的函数，形式为 [{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }, /* 等等 */]。它的目的是轻松生成数千个项目，但我编写它的初衷是为了更轻松地编写没有测试意识的 Storybook 故事！然后，我将其重新用于测试，但故事和测试有完全不同的需求和目的！\n与此同时，createRenderItem 是一个工厂，生成列表项（一些 React 组件）。同样，我为 Storybook 设计它是为了使其更具动态性，而测试并不是我最初考虑的。\n这两个函数都很容易阅读，但为什么要强迫读者跟随这些抽象？它们是必需的吗？答案是否定的。\n以下是测试的简化代码，列出了其中的差异。\nit('When there are no items, then nothing is showed', () =\u003e { // ------------------------------------------ // Arrange const items = []; mount( \u003cVirtualList items={items} listHeight={90} getItemHeights={() =\u003e 30} RenderItem={RenderItem} /\u003e ); // ------------------------------------------ // Assert cy.findByTestId('VirtualList') .then(($el) =\u003e $el.text()) .should('be.empty'); }); -const itemsAmount = 0 -const itemHeight = 30 -const listHeight = 300 -const items = getStoryItems({ amount: itemsAmount }) +const items = []; mount( ",
   "wordCount" : "1990",
   "inLanguage": "zh",
-  "datePublished": "2024-02-02T16:37:44+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-02-02T16:37:44+08:00",
   "dateModified": "2024-02-02T16:37:44+08:00",
   "author":{
     "@type": "Person",
@@ -215,6 +214,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 23 Jan 2024 17:58:14 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2024 10:05:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhcategories/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍</title>
+      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</link>
+      <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</guid>
+      <description>这篇博文是关于 Postman 接口自动化测试教程的进阶用法，重点介绍了 AI 助手 Postbot 的试用。文章可能包括作者对 Postbot 功能的介绍、使用方法、优势和适用场景等方面的详细说明。通过分享 Postbot 的试用体验，读者可以了解到如何借助 AI 技术来优化接口自动化测试流程，提高测试效率和准确性。这个教程有望为 Postman 用户提供一个深入了解和尝试 AI 助手的机会，并为他们在接口测试中应用新技术提供指导和灵感。</description>
+    </item>
     <item>
       <title>Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目</title>
       <link>http://localhost:1313/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/</link>

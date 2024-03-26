@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目" />
 <meta property="og:description" content="从零开始教您如何建立 SuperTest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-06T12:30:26+08:00" />
 <meta property="article:modified_time" content="2023-11-06T12:30:26+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目"/>
 <meta name="twitter:description" content="从零开始教您如何建立 SuperTest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "从 0 到 1 搭建 SuperTest 接口自动化测试项目 下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。\nMocha 版本 可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo\n新建项目文件夹 mkdir SuperTest-Mocha-demo 项目初始化 // 进入项目文件夹下 cd SuperTest-Mocha-demo // nodejs 项目初始化 npm init -y 安装依赖 // 安装 supertest npm install supertest --save-dev // 安装 mocha测试框架 npm install mocha --save-dev // 安装 chai断言库 npm install chai --save-dev 新建测试文件及测试用例 // 新建测试文件夹 mkdir Specs // 新建测试用例文件 cd Specs touch test.spec.js 编写测试用例 测试接口可参考项目中 demoAPI.md 文件\n// Test: test.spec.js const request = require('supertest'); // import supertest const chai = require('chai'); // import chai const expect = require('chai').expect; // import expect // Test Suite describe('Verify that the Get and POST API returns correctly', function(){ // Test case 1 it('Verify that the GET API returns correctly', function(done){ request('https://jsonplaceholder.typicode.com') // Test endpoint .get('/posts/1') // API endpoint .expect(200) // expected response status code .expect(function (res) { expect(res.body.id).to.equal(1 ) expect(res.body.userId).to.equal(1) expect(res.body.title).to.equal(\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\") expect(res.body.body). to.equal(\"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\") }) // expected response body .end(done) // end the test case }); // Test case 2 it('Verify that the POST API returns correctly', function(done){ request('https://jsonplaceholder.typicode.com') // Test endpoint .post('/posts') // API endpoint .send({ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 }) // request body .expect(201) // expected response status code .expect(function (res) { expect(res.body.id).to.equal(101 ) expect(res.body.userId).to.equal(1) expect(res.body.title).to.equal(\"foo\") expect(res.body.body).to.equal(\"bar\") }) // expected response body .end(done) // end the test case }); }); 配置 mocha 配置文件 新建配置文件 // 项目根目录下新建配置文件 touch .mocharc.js 更新配置文件 // mocha config module.exports = { timeout: 5000, // 设置测试用例的默认超时时间（毫秒） spec: ['Specs/**/*.js'], // 指定测试文件的位置 }; 调整测试脚本 在 package.json 文件中添加测试脚本\n\"scripts\": { \"test\": \"mocha\" }, 运行测试用例 // 运行测试用例 npm run test 测试报告 命令行测试报告 集成 mochawesome 测试报告 安装 mochawesome npm install --save-dev mochawesome 更新 mocha 配置文件 可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo\n// mocha config module.exports = { timeout: 5000, // 设置测试用例的默认超时时间（毫秒） reporter: 'mochawesome', // 使用 mochawesome 报告生成器 'reporter-option': [ 'reportDir=Report', // 报告生成路径 'reportFilename=[status]_[datetime]-[name]-report', //报告名称 'html=true', // 生成 html 格式报告 'json=false', // 不生成 json 格式报告 'overwrite=false', // 不覆盖已经存在的报告 'timestamp=longDate', // 给报告添加时间戳 ], // 传递给报告生成器的参数 spec: ['Specs/**/*.js'], // 指定测试文件的位置 }; 运行测试用例 // 运行测试用例 npm run test 查看测试报告 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件\nJest 版本 可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Jest-demo\n新建 Jest demo 项目文件夹 mkdir SuperTest-Jest-demo Jest demo 项目初始化 // 进入项目文件夹下 cd SuperTest-Mocha-demo // nodejs 项目初始化 npm init -y Jest demo 安装依赖 // 安装 supertest npm install supertest --save-dev // 安装 Jest测试框架 npm install jest --save-dev 新建 Jest demo 项目的测试文件及测试用例 // 新建测试文件夹 mkdir Specs // 新建测试用例文件 cd Specs touch test.spec.js 编写 Jest demo 测试用例 测试接口可参考项目中 demoAPI.md 文件\nconst request = require('supertest'); // Test Suite describe('Verify that the Get and POST API returns correctly', () =\u003e { // Test case 1 it('Verify that the GET API returns correctly', async () =\u003e { const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint .get('/posts/1') // API endpoint .send() // request body .expect(200); // use supertest's expect to verify that the status code is 200 // user jest's expect to verify the response body expect(res.status).toBe(200); // Verify that the status code is 200 expect(res.body.id).toEqual(1); // Verify that the id is 1 expect(res.body.userId).toEqual(1); // Verify that the userId is 1 expect(res.body.title) .toEqual(\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\"); expect(res.body.body) .toEqual(\"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"); }); // Test case 2 it('Verify that the POST API returns correctly', async() =\u003e{ const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint .post('/posts') // API endpoint .send({ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 }) // request body .expect(201); // use supertest's expect to verify that the status code is 201 // user jest's expect to verify the response body expect(res.statusCode).toBe(201); expect(res.body.id).toEqual(101); expect(res.body.userId).toEqual(1); expect(res.body.title).toEqual(\"foo\"); expect(res.body.body).toEqual(\"bar\"); }); }); 配置 Jest 配置文件 新建配置文件 // 项目根目录下新建配置文件 touch jest.config.js 更新配置文件 // Desc: Jest configuration file module.exports = { // 测试文件的匹配规则 testMatch: ['**/Specs/*.spec.js'], }; 调整 Jest 测试脚本 在 package.json 文件中添加测试脚本\n\"scripts\": { \"test\": \"jest\" }, 运行 Jest 测试用例 // 运行测试用例 npm run test Jest 测试报告 Jest 命令行测试报告 集成 jest-html-reporters 测试报告 安装 jest-html-reporters npm install --save-dev jest-html-reporters 更新 Jest 配置文件 可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Jest-demo\n// Desc: Jest configuration file module.exports = { // 测试文件的匹配规则 testMatch: ['**/Specs/*.spec.js'], // 测试报告生成器 reporters: [ 'default', [ 'jest-html-reporters', { publicPath: './Report', // 报告生成路径 filename: 'report.html', // 报告名称 pageTitle: 'SuperTest and Jest API Test Report', // 报告标题 overwrite: true, // 报告文件是否覆盖 expand: true, // 展开所有测试套件 }, ], ], }; 运行 Jest 测试用例 // 运行测试用例 npm run test 查看测试报告 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件\n欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "738",
   "inLanguage": "zh",
-  "datePublished": "2023-11-06T12:30:26+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-06T12:30:26+08:00",
   "dateModified": "2023-11-06T12:30:26+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

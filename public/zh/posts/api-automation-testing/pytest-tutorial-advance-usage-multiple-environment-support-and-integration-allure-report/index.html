@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告" />
 <meta property="og:description" content="深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-17T16:32:55+08:00" />
 <meta property="article:modified_time" content="2023-11-17T16:32:55+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告"/>
 <meta name="twitter:description" content="深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 如何支持不同环境测试用例执行，以及如何集成 allure 报告来实现测试报告多样化。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "进阶用法 多环境支持 在实际的 API 自动化测试过程中，我们需要在不同的环境中运行测试用例，以确保 API 在各个环境中都能正常运行。\n通过使用 Pytest 的 fixture 功能，我们可以轻松地实现多环境支持。\n可参考 demo：https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo\n新建不同环境测试配置文件 配置文件会以 json 格式存储为例，其他格式如 YAML、CSV 等类似，均可参考\n// 新建测试配置文件夹 mkdir config // 进入测试配置文件夹 cd config // 新建开发环境测试配置文件 touch dev_config.json // 新建生产环境测试配置文件 touch prod_config.json 编写不同环境测试配置文件 编写开发环境测试配置文件 根据实际情况配置开发环境测试配置文件\n{ \"host\": \"https://jsonplaceholder.typicode.com\", \"getAPI\": \"/posts/1\", \"postAPI\":\"/posts\" } 编写生产环境测试配置文件 根据实际情况配置生产环境测试配置文件\n{ \"host\": \"https://jsonplaceholder.typicode.com\", \"getAPI\": \"/posts/1\", \"postAPI\":\"/posts\" } 新建不同环境测试数据文件 不同环境请求数据文件和响应数据文件分别存储测试用例的不同环境请求数据和不同环境预期响应数据。\n// 新建测试数据文件夹 mkdir data // 进入测试数据文件夹 cd data // 新建开发环境请求数据文件 touch dev_request_data.json // 新建开发环境响应数据文件 touch dev_response_data.json // 新建生产环境请求数据文件 touch prod_request_data.json // 新建生产环境响应数据文件 touch prod_response_data.json 编写不同环境测试数据文件 编写开发环境请求数据文件 开发环境请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据\n{ \"getAPI\": \"\", \"postAPI\":{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } } 编写开发环境响应数据文件 开发环境响应数据文件中配置了 getAPI 接口的响应数据和 postAPI 接口的响应数据\n{ \"getAPI\": { \"userId\": 1, \"id\": 1, \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\", \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\" }, \"postAPI\":{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1, \"id\": 101 } } 编写生产环境请求数据文件 生产环境请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据\n{ \"getAPI\": \"\", \"postAPI\":{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } } 编写生产环境响应数据文件 生产环境响应数据文件中配置了 getAPI 接口的响应数据和 postAPI 接口的响应数据\n{ \"getAPI\": { \"userId\": 1, \"id\": 1, \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\", \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\" }, \"postAPI\":{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1, \"id\": 101 } } 配置支持多环境的 fixture fixture 会以 conftest.py 文件存储为例，其他格式如 YAML、CSV 等类似，均可参考\n项目根目录新建 conftest.py 文件 mkdrir conftest.py 编写 conftest.py 文件 import pytest import json import json import os @pytest.fixture(scope=\"session\") def env_config(request): # get config file from different env env = os.getenv('ENV', 'dev') with open(f'config/{env}_config.json', 'r') as config_file: config = json.load(config_file) return config @pytest.fixture(scope=\"session\") def env_request_data(request): # get request data file from different env env = os.getenv('ENV', 'dev') with open(f'data/{env}_request_data.json', 'r') as request_data_file: request_data = json.load(request_data_file) return request_data @pytest.fixture (scope=\"session\") def env_response_data(request): # get response data file from different env env = os.getenv('ENV', 'dev') with open(f'data/{env}_response_data.json', 'r') as response_data_file: response_data = json.load(response_data_file) return response_data 更新测试用例来支持多环境 为做区分，这里新建测试用例文件，文件名为 test_demo_multi_environment.py\nimport requests import json class TestPytestMultiEnvDemo: def test_get_demo_multi_env(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] get_api = env_config[\"getAPI\"] get_api_response_data = env_response_data[\"getAPI\"] # send request response = requests.get(host+get_api) # assert assert response.status_code == 200 assert response.json() == get_api_response_data def test_post_demo_multi_env(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] post_api = env_config[\"postAPI\"] post_api_request_data = env_request_data[\"postAPI\"] post_api_response_data = env_response_data[\"postAPI\"] # send request response = requests.post(host + post_api, post_api_request_data) # assert assert response.status_code == 201 assert response.json() == post_api_response_data 运行该测试用例确认多环境支持是否生效 运行开发环境测试用例 ENV=dev pytest test_case/test_demo_multi_environment.py 运行生产环境测试用例 ENV=prod pytest test_case/test_demo_multi_environment.py 集成 allure 报告 allure 是一个轻量级的、灵活的、易于扩展的测试报告工具，它提供了丰富的报告类型和功能，可以帮助您更好地可视化测试结果。\nallure 报告可以与 Pytest 集成，以生成详细的测试报告。\n可参考 demo：https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo\n安装 allure-pytest 依赖 pip install allure-pytest 避免之前安装的 pytest-html-reporter 与 allure-pytest 冲突，建议先卸载 pytest-html-reporter\npip uninstall pytest-html-reporter 配置 allure-pytest 更新 pytest.ini 文件来指定 allure 报告的存储位置\n[pytest] # allure addopts = --alluredir ./allure-results 调整测试用例来支持 allure 报告 为做区分，这里新建测试用例文件，文件名为 test_demo_allure.py\nimport allure import requests @allure.feature(\"Test example API\") class TestPytestAllureDemo: @allure.story(\"Test example get endpoint\") @allure.title(\"Verify the get API\") @allure.description(\"verify the get API response status code and data\") @allure.severity(\"blocker\") def test_get_example_endpoint_allure(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] get_api = env_config[\"getAPI\"] get_api_request_data = env_request_data[\"getAPI\"] get_api_response_data = env_response_data[\"getAPI\"] # send get request response = requests.get(host + get_api) # assert print(\"response status code is\" + str(response.status_code)) assert response.status_code == 200 print(\"response data is\" + str(response.json())) assert response.json() == get_api_response_data @allure.story(\"Test example POST API\") @allure.title(\"Verify the POST API\") @allure.description(\"verify the POST API response status code and data\") @allure.severity(\"Critical\") def test_post_example_endpoint_allure(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] post_api = env_config[\"postAPI\"] post_api_request_data = env_request_data[\"postAPI\"] post_api_response_data = env_response_data[\"postAPI\"] # send request response = requests.post(host + post_api, json=post_api_request_data) # assert print(\"response status code is\" + str(response.status_code)) assert response.status_code == 201 print(\"response data is\" + str(response.json())) assert response.json() == post_api_response_data 运行测试用例生成 allure 报告 ENV=dev pytest test_case/test_demo_allure.py 查看 allure 报告 输入以下命令来启动 allure 服务并浏览器中查看 allure 报告\nallure serve allure-results 调整 CI/CD 流程来支持 allure 报告 以 github action 为例，其他 CI 工具类似\n更新.github/workflows/pytest.yml 文件内容来上传 allure 报告到 GitHub\nname: Pytest API Testing on: push: branches: [ \"main\" ] pull_request: branches: [ \"main\" ] permissions: contents: read jobs: Pytes-API-Testing: runs-on: ubuntu-latest steps: - uses: actions/checkout@v3 - name: Set up Python 3.10 uses: actions/setup-python@v3 with: python-version: \"3.10\" - name: Install dependencies run: | python -m pip install --upgrade pip pip install -r requirements.txt - name: Test with pytest run: | ENV=dev pytest - name: Archive Pytest allure test report uses: actions/upload-artifact@v3 with: name: Pytest-allure-report path: allure-results - name: Upload Pytest allure report to GitHub uses: actions/upload-artifact@v3 with: name: Pytest-allure-report path: allure-results 查看 github action allure 报告 在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Pytest API Testing 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。\n参考 Pytest 文档 Allure 文档 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "743",
   "inLanguage": "zh",
-  "datePublished": "2023-11-17T16:32:55+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-17T16:32:55+08:00",
   "dateModified": "2023-11-17T16:32:55+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -11,20 +11,27 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 20:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Testing Challenge</title>
       <link>http://localhost:1313/categories/testing-challenge/</link>
-      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
+      <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
       <guid>http://localhost:1313/categories/testing-challenge/</guid>
       <description></description>
     </item>
     <item>
       <title>API Automation Testing</title>
       <link>http://localhost:1313/categories/api-automation-testing/</link>
-      <pubDate>Tue, 23 Jan 2024 17:58:14 +0800</pubDate>
+      <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
       <guid>http://localhost:1313/categories/api-automation-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Postman</title>
+      <link>http://localhost:1313/categories/postman/</link>
+      <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/postman/</guid>
       <description></description>
     </item>
     <item>
@@ -53,13 +60,6 @@
       <link>http://localhost:1313/categories/others/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
       <guid>http://localhost:1313/categories/others/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Postman</title>
-      <link>http://localhost:1313/categories/postman/</link>
-      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/postman/</guid>
       <description></description>
     </item>
     <item>

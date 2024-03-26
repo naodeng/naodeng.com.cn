@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试" />
 <meta property="og:description" content="聚焦于测试用例筛选、并发测试和分布式测试。学会如何有针对性地执行测试用例，提高测试效率。探索 Pytest 的并发测试特性，了解如何同时执行多个测试用例，缩短测试时间。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-20T15:37:00+08:00" />
 <meta property="article:modified_time" content="2023-11-20T15:37:00+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试"/>
 <meta name="twitter:description" content="聚焦于测试用例筛选、并发测试和分布式测试。学会如何有针对性地执行测试用例，提高测试效率。探索 Pytest 的并发测试特性，了解如何同时执行多个测试用例，缩短测试时间。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "进阶用法 并发测试和分布式测试 在日常的接口自动化测试过程中，需要并发执行测试用例，以提高测试效率。\n有时候也需要引入分布式测试，以便在多台机器上同时运行测试用例，也能更好的提升测试效率。\npytest-xdist 是 Pytest 的一个插件，能提供了一些对应的功能，主要用于支持并发测试和分布式测试。\npytest-xdist 功能介绍 并发执行测试：\n使用 -n 选项：pytest -n NUM 允许并发运行测试，其中 NUM 是并发 worker 的数量。这可以加速测试执行，特别是在拥有多个 CPU 内核的计算机上。 pytest -n 3 # 启动 3 个并发 worker 执行测试 分布式测试：\n使用 pytest --dist=loadscope：允许在多个节点上执行测试，通过分布式测试可以更快地完成测试运行。 pytest --dist=loadscope 使用 pytest --dist=each：每个节点运行一组测试，适用于分布式测试。 pytest --dist=each 参数化测试和并发：\n使用 pytest.mark.run：结合 pytest.mark.run 标记，可以选择在不同的进程或节点上运行具有不同标记的测试。 @pytest.mark.run(processes=2) def test_example(): pass 分布式环境设置：\n使用 pytest_configure_node：可以在节点上运行测试之前进行配置。 def pytest_configure_node(node): node.slaveinput['my_option'] = 'some value' 使用 pytest_configure_node：可以在节点上运行测试之前进行配置。 def pytest_configure_node(node): node.slaveinput['my_option'] = 'some value' 分布式测试环境销毁：\n使用 pytest_configure_node：可以在节点上运行测试之后进行清理。 def pytest_configure_node(node): # 配置节点 yield # 在节点上运行测试后执行清理 print(\"Cleaning up after test run on node %s\" % node.gateway.id) 这些是 pytest-xdist 提供的一些功能，可以帮助您更有效地执行并发测试和分布式测试，以加速测试执行并提高效率。确保在使用前查阅 pytest-xdist 的文档以获取更详细的信息和用法示例。\n安装 pytest-xdist 依赖 pip install pytest-xdist 并发运行测试用例示例 并发 3 个 worker 执行测试用例 分别运行以下命令，查看测试用例的执行时长\n并发执行 pytest -n 3 默认串行执行 pytest 串行执行耗时 9.81s，而并发执行耗时 1.63s，可以看到并发执行测试用例可以大大提高测试效率。\n并发 3 个 worker 执行测试用例，并且每个 worker 都会打印测试用例的进度 pytest -n 3 -v 测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。\n分布式测试示例 分布式测试，每个节点运行一组测试 pytest --dist=each 分布式测试可以更快地完成测试运行。\n分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度 pytest --dist=each -v 测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。\n分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度，同时打印测试日志的输出 pytest --dist=each -v --capture=no 测试结果中会打印测试日志的输出，可以更好的了解测试用例的执行情况。\n筛选用例执行 在日常的接口测试过程中，我们需要根据实际情况来选择性地执行测试用例，以提高测试效率。\n一般我们使用 allure 测试报告的时候，可以使用 Allure 标签特性来进行筛选对应标签的的用例来执行测试，但 Pytest 框架不直接支持运行基于 Allure 标签的测试。所以可以使用 Pytest 标记来实现这一点。\nPytest 提供 marks标记功能可以用来标记不同类型的测试用例，然后进行筛选对应类型的测试用例进行执行。\n大致流程为你可以用自定义标记（如 Regression/Smoke）来标记测试，然后使用 pytest 的 -m 选项只运行这些测试。\n定义 Pytest 标记 编辑 pytest.ini 文件，添加以下内容：自定义标记的类型\nRegression:标记为回归测试的用例 Smoke:标记为冒烟测试的用例 markers = Regression: marks tests as Regression Smoke: marks tests as Smoke 标记用例 操作步骤为：\n引入 pytest 使用 @pytest.mark 标记测试用例 为做区分，这里新建测试用例文件，文件名为 test_demo_filter.py\nimport pytest import requests import json class TestPytestMultiEnvDemo: @pytest.mark.Regression # mark the test case as regression def test_get_demo_filter(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] get_api = env_config[\"getAPI\"] get_api_response_data = env_response_data[\"getAPI\"] # send request response = requests.get(host+get_api) # assert assert response.status_code == 200 assert response.json() == get_api_response_data @pytest.mark.Smoke # mark the test case as smoke def test_post_demo_filter(self, env_config, env_request_data, env_response_data): host = env_config[\"host\"] post_api = env_config[\"postAPI\"] post_api_request_data = env_request_data[\"postAPI\"] print(\"make the request\") post_api_response_data = env_response_data[\"postAPI\"] # Your test code here response = requests.post(host + post_api, json=post_api_request_data) print(\"verify the response status code\") assert response.status_code == 201 print(\"verify the response data\") assert response.json() == post_api_response_data 筛选测试用例执行 运行 Regression 标记的测试用例 pytest -m Regression 这条命令告诉 pytest 只运行标有 Regression 的测试。\n运行 Smoke 标记的测试用例 pytest -m Smoke 这条命令告诉 pytest 只运行标有 Smoke 的测试。\n参考资料 pytest-xdist 文档:https://pytest-xdist.readthedocs.io/en/stable/ pytest makers 文档:https://docs.pytest.org/en/6.2.x/example/markers.html pytest 文档:https://docs.pytest.org/en/6.2.x/ 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "335",
   "inLanguage": "zh",
-  "datePublished": "2023-11-20T15:37:00+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-20T15:37:00+08:00",
   "dateModified": "2023-11-20T15:37:00+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="SuperTest 接口自动化测试教程：进阶用法 - 数据驱动" />
 <meta property="og:description" content="专注于 SuperTest 的高级用法，侧重于数据驱动测试。您将学习如何通过数据参数化来扩展和优化您的 SuperTest 测试套件，提高测试覆盖率。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-09T18:06:50+08:00" />
 <meta property="article:modified_time" content="2023-11-09T18:06:50+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="SuperTest 接口自动化测试教程：进阶用法 - 数据驱动"/>
 <meta name="twitter:description" content="专注于 SuperTest 的高级用法，侧重于数据驱动测试。您将学习如何通过数据参数化来扩展和优化您的 SuperTest 测试套件，提高测试覆盖率。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "数据驱动 API 测试的数据驱动是一种测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。\nMocha 版本可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo\nJest 版本可参考 demo 项目：https://github.com/Automation-Test-Starter/SuperTest-Jest-demo\nmocha 版本和 Jest 版本类似，这里以 Mocha 版本为例\n新建测试配置文件 // 新建测试配置文件夹 mkdir Config // 新建测试配置文件 cd Config touch config.js 编写测试配置文件 // Test config file module.exports = { host: 'https://jsonplaceholder.typicode.com', // Test endpoint getAPI: '/posts/1', // Test GET API URL postAPI: '/posts', // Test POST API URL }; 新建测试数据文件 // 新建测试数据文件夹 mkdir testData // 进入测试数据文件夹 cd testData // 新建请求数据文件 touch requestData.js // 新建响应数据文件 touch responseData.js 编写测试数据文件 编写请求数据文件 // Test request data file module.exports = { getAPI: '', // request data for GET API postAPI:{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 }, // request data for POST API }; 编写响应数据文件 // Test response data file module.exports = { getAPI: { \"userId\": 1, \"id\": 1, \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\", \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\" }, // response data for GET API postAPI:{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1, \"id\": 101 }, // response data for POST API }; 更新测试用例来支持数据驱动 为做区分，这里新建测试用例文件，文件名为 dataDrivingTest.spec.js\n// Test: dataDrivingTest.spec.js const request = require('supertest'); // import supertest require('chai'); // import chai const expect = require('chai').expect; // import expect const config = require('../Config/testConfig'); // import test config const requestData = require('../TestData/requestData'); // import request data const responseData = require('../TestData/responseData'); // import response data // Test Suite describe('Data Driving-Verify that the Get and POST API returns correctly', function(){ // Test case 1 it('Data Driving-Verify that the GET API returns correctly', function(done){ request(config.host) // Test endpoint .get(config.getAPI) // API endpoint .expect(200) // expected response status code .expect(function (res) { expect(res.body.id).to.equal(responseData.getAPI.id) expect(res.body.userId).to.equal(responseData.getAPI.userId) expect(res.body.title).to.equal(responseData.getAPI.title) expect(res.body.body).to.equal(responseData.getAPI.body) }) // expected response body .end(done) // end the test case }); // Test case 2 it('Data Driving-Verify that the POST API returns correctly', function(done){ request(config.host) // Test endpoint .post(config.postAPI) // API endpoint .send(requestData.postAPI) // request body .expect(201) // expected response status code .expect(function (res) { expect(res.body.id).to.equal(responseData.postAPI.id ) expect(res.body.userId).to.equal(responseData.postAPI.userId ) expect(res.body.title).to.equal(responseData.postAPI.title ) expect(res.body.body).to.equal(responseData.postAPI.body ) }) // expected response body .end(done) // end the test case }); }); 运行该测试用例确认数据驱动是否生效 若用 demo 项目运行数据驱动支持测试用例：dataDrivingTest.spec.js，建议先屏蔽掉 test.spec.js 测试用例，否则会报错\n欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "352",
   "inLanguage": "zh",
-  "datePublished": "2023-11-09T18:06:50+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-09T18:06:50+08:00",
   "dateModified": "2023-11-09T18:06:50+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="Pytest 接口自动化测试教程：从 0 到 1 搭建 Pytest 接口自动化测试项目" />
 <meta property="og:description" content="将从零开始教您如何建立 Pytest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-14T09:58:14+08:00" />
 <meta property="article:modified_time" content="2023-11-14T09:58:14+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="Pytest 接口自动化测试教程：从 0 到 1 搭建 Pytest 接口自动化测试项目"/>
 <meta name="twitter:description" content="将从零开始教您如何建立 Pytest 接口自动化测试项目。您将学习如何创建项目的基础结构，设置环境，编写测试用例，以及执行自动化测试。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "从 0 到 1 搭建 Pytest 接口自动化测试项目 1.创建项目目录 mkdir Pytest-API-Testing-Demo 2.项目初始化 // 进入项目文件夹下 cd Pytest-API-Testing-Demo // 创建项目 python 项目虚拟环境 python -m venv .env // 启用项目 python 项目虚拟环境 source .env/bin/activate 3.安装项目依赖 // 安装 requests 包 pip install requests // 安装pytest 包 pip install pytest // 将项目依赖项保存到 requirements.txt 文件中 pip freeze \u003e requirements.txt 4.新建测试文件及测试用例 // 新建测试文件夹 mkdir tests // 新建测试用例文件 cd tests touch test_demo.py 5.编写测试用例 测试接口可参考项目中 demoAPI.md 文件\nimport requests class TestPytestDemo: def test_get_demo(self): base_url = \"https://jsonplaceholder.typicode.com\" # 发起请求 response = requests.get(f\"{base_url}/posts/1\") # 断言 assert response.status_code == 200 assert response.json()['userId'] == 1 assert response.json()['id'] == 1 def test_post_demo(self): base_url = \"https://jsonplaceholder.typicode.com\" requests_data = { \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } # 发起请求 response = requests.post(f\"{base_url}/posts\", requests_data) # 断言 assert response.status_code == 201 print(response.json()) assert response.json()['userId'] == '1' assert response.json()['id'] == 101 6.运行测试用例 pytest 7.查看测试报告 8.接入 pytest-html-reporter 测试报告 https://github.com/prashanth-sams/pytest-html-reporter\n安装 pytest-html-reporter 依赖 pip install pytest-html-reporter 配置测试报告参数 项目根目录下新建 pytest.ini 文件 添加以下内容 [pytest] addopts = -vs -rf --html-report=./report --title='PYTEST REPORT' --self-contained-html 运行测试用例 pytest 查看测试报告 报告在项目根目录下的 report 目录下，使用浏览器打开 pytest_html_report.html 文件即可查看\n欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "168",
   "inLanguage": "zh",
-  "datePublished": "2023-11-14T09:58:14+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-14T09:58:14+08:00",
   "dateModified": "2023-11-14T09:58:14+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="REST Assured 接口自动化测试教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目" />
 <meta property="og:description" content="深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-02T10:03:38+08:00" />
 <meta property="article:modified_time" content="2023-11-02T10:03:38+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="REST Assured 接口自动化测试教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目"/>
 <meta name="twitter:description" content="深入探讨如何从零开始构建一个 REST Assured 接口自动化测试项目。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "从 0 到 1 搭建 REST Assured 接口测试项目 REST Assured 支持 Gradle 和 Maven 两种构建工具，你可以根据自己的喜好选择其中一种。下面分别介绍 Gradle 和 Maven 两种构建工具的项目初始化过程。\n本项目使用 Gradle 8.44 和 Maven 3.9.5 进行构建，如果你使用的是其他版本，可能会有不同。\nGradle 版本 可参考 demo 项目：https://github.com/Automation-Test-Starter/RestAssured-gradle-demo\n创建一个空的 Gradle 工程 mkdir RestAssured-gradle-demo cd RestAssured-gradle-demo gradle init 配置项目 build.gradle demo 项目引入了 testNG 测试框架，仅供参考\n在项目根目录下创建一个 build.gradle 文件，用于配置项目 示例配置如下，可供参考 // 插件配置 plugins { id 'java' // 使用 java 插件 } // 仓库资源配置 repositories { mavenCentral() // 使用 maven中央版本库源 } // 项目依赖配置 dependencies { testImplementation 'io.rest-assured:rest-assured:5.3.1' // 添加rest-assured依赖 testImplementation 'org.testng:testng:7.8.0' // 添加TestNG测试框架依赖 implementation 'org.uncommons:reportng:1.1.4' // 添加testng 测试报告依赖 implementation 'org.slf4j:slf4j-api:2.0.9' // 添加测试日志依赖 implementation 'org.slf4j:slf4j-simple:2.0.9' // 添加测试日志依赖 implementation group: 'com.google.inject', name: 'guice', version: '7.0.0' } // 项目测试配置 test { reports.html.required = false // 禁用 gradle 原生HTML 报告生成 reports.junitXml.required = false // 禁用 gradle 原生 JUnit XML 报告生成 // 告诉 Gradle 使用 TestNG 作为测试框架 useTestNG() { useDefaultListeners = true suites 'src/test/resources/testng.xml' // 声明 testng 的 xml 配置文件路径 } testLogging.showStandardStreams = true // 将测试日志输出到控制台 testLogging.events \"passed\", \"skipped\", \"failed\" // 定义测试日志事件类型 } 可 copy 本项目中的 build.gradle 文件内容，更多配置可参考官方文档\ntestng.xml 配置 在 src/test目录下创建一个 resources 目录，用于存放测试配置文件\n在 resources 目录下创建一个 testng.xml 文件，用于配置 TestNG 测试框架\n示例配置如下，可供参考\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e \u003c!DOCTYPE suite SYSTEM \"http://testng.org/testng-1.0.dtd\"\u003e ",
   "wordCount" : "873",
   "inLanguage": "zh",
-  "datePublished": "2023-11-02T10:03:38+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-02T10:03:38+08:00",
   "dateModified": "2023-11-02T10:03:38+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

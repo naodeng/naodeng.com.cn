@@ -62,11 +62,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -80,13 +78,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="UI 测试最佳实践的通用最佳实践（二）：UI 测试调试最佳实践和在测试中达到 UI 状态而无需使用 UI" />
 <meta property="og:description" content="这篇博文探讨了 UI 测试的通用最佳实践之二：UI 测试调试和无需使用 UI 达到 UI 状态。博文详细介绍了在 UI 测试中的调试技巧，包括使用断点、日志和交互式调试工具等方法，提高测试脚本的调试效率。此外，文章强调了通过直接设置应用程序状态而无需依赖 UI 元素来达到 UI 状态的方法，以提高测试速度和稳定性。通过这些实践，读者能够更好地应对 UI 测试中的调试挑战，同时优化测试脚本的执行效率。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-19T13:05:44+08:00" />
 <meta property="article:modified_time" content="2024-01-19T13:05:44+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="UI 测试最佳实践的通用最佳实践（二）：UI 测试调试最佳实践和在测试中达到 UI 状态而无需使用 UI"/>
 <meta name="twitter:description" content="这篇博文探讨了 UI 测试的通用最佳实践之二：UI 测试调试和无需使用 UI 达到 UI 状态。博文详细介绍了在 UI 测试中的调试技巧，包括使用断点、日志和交互式调试工具等方法，提高测试脚本的调试效率。此外，文章强调了通过直接设置应用程序状态而无需依赖 UI 元素来达到 UI 状态的方法，以提高测试速度和稳定性。通过这些实践，读者能够更好地应对 UI 测试中的调试挑战，同时优化测试脚本的执行效率。"/>
 
@@ -124,7 +123,7 @@ if (!doNotTrack) {
   "articleBody": "文章由 UI 测试最佳实践项目 内容翻译而来，大家有条件的话可以去 UI 测试最佳实践项目阅读原文。\nUI 测试调试最佳实践 原文链接：https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/ui-tests-debugging-best-practices.md\n在转向 Cypress 之前，我通常使用 Puppeteer 编写 UI 测试。理解浏览器中发生的事情、了解正在运行的测试以及调试测试都不是简单的任务，因此我开始采取一系列解决方案来帮助我应对整个流程。\n诸如 Cypress 和 TestCafé 的工具几乎使下面列出的最佳实践变得无关紧要，但除非你之前使用过 Selenium 或 Puppeteer 等工具进行测试，否则你不会意识到专为测试而设计的工具对简化生活有多么重要。\n第零步是以非无头模式启动浏览器，然后…\n在 console.log 中记录/显示测试的描述 由于在浏览器内部无法获得有关正在运行的测试的视觉反馈，请务必在浏览器控制台中记录测试的名称。在测试速度很快的情况下（少于 1 秒），这可能没有太多用处，但在测试时间较长或在使用 test.skip 和 test.only 进行测试时，这是有帮助的，可以对正在运行的测试进行双重检查。\n在 Puppeteer 中，可以通过以下方式实现：\ntest('Test description', async () =\u003e { await page.evaluate(() =\u003e console.log('Test description')); // ... the test code... }) 如果你需要更为显眼的反馈，甚至可以考虑在页面的左上角添加一个固定的 div，每个测试都会用自己的描述填充…\n将浏览器的 console.log 转发到 Node.js 使用 Puppeteer 的一个简单例子：\npage.on('console', msg =\u003e console.log('BROWSER LOG:', msg.text())); 允许你在同一终端窗口中查看测试日志和浏览器日志。简单而有效。\n启动浏览器时已经打开开发者工具 就像在经典的前端开发中一样，在页面加载已经开始后再打开开发者工具可能会导致你错过重要的信息，特别是在网络选项卡中。在调试测试时，启动浏览器时已经打开开发者工具可以节省宝贵的时间和信息。\nconst browser = await puppeteer.launch({ headless: false, devtools: true }); 减缓模拟用户操作速度 浏览器自动化工具速度非常快，这使得我们能在几秒钟内运行大量测试。然而，在调试过程中，这可能是一个劣势，因为你需要用眼睛跟踪页面上发生的情况。减缓每个动作可能会适得其反——因为整个测试变得很慢——但通常这是执行一些快速检查的最简单方法。在 Puppeteer 中，有一个全局设置可以实现这一点。\nconst browser = await puppeteer.launch({ headless: false, slowMo: 250, // slow down every action by 250ms }); 一些动作，比如输入，允许你添加更具体的延迟（这会叠加在全局 slowMo 设置之上）\nawait page.type('.username', 'admin', {delay: 10}); 使用调试器语句暂停测试 另一方面，就像在标准的 Web 开发中一样，你可以在运行在页面上的代码中添加一个调试器语句来“暂停”JavaScript 执行。请注意：该语句仅在已打开控制浏览器的开发者工具时有效。\nawait page.evaluate(() =\u003e {debugger;}); 通过点击“继续执行脚本”或按下 F8 键（调试器是一个“飞行”断点），将恢复测试的执行。\n延长测试超时时间 类似 Jest、Jasmine 等的测试运行器都设有测试超时时间。这个超时时间的作用在于，在测试中发生问题导致测试无法正常结束时，及时终止测试。在 UI 测试中，这种行为相对繁琐，因为你需要在测试开始时打开浏览器，在测试结束时关闭浏览器。在正常的测试生命周期中，设定过高的超时时间并不实际，因为一旦测试失败就会导致大量时间的浪费，而过低的超时时间可能在测试完成之前就提前“截断”了测试。\n相反，你需要设定较长的超时时间，因为你不希望测试结束的时候在你检查浏览器时关闭它。这就是为什么在调试受控浏览器时，设定为 10 分钟的超时时间可能会很有帮助。\n当然，也可以…\n避免在测试结束时关闭浏览器 测试开始时，打开浏览器，而在测试结束时不关闭它。避免关闭浏览器可让你自由地检查前端应用，而无需担心测试超时。这仅在本地运行测试时有效，但在运行测试于 CI 管道之前，必须还原自动关闭以避免由于未关闭的浏览器实例导致内存不足。\n使用截图 在以无头模式运行测试时，这在测试稳定且仅在出现回归时才失败的阶段尤其有帮助。如果测试失败，很多时候截图能让你了解你正在开发的功能是如何影响之前正常工作的功能的。最有效的解决方案是在测试失败时截图，否则，你可以在 UI 测试中确定一些检查点，并在这些步骤中截图。\n频繁使用断言 一个经验法则：如果测试失败，它必须直接带你理解出了什么问题，而不是重新启动测试并手动调试。尝试在你的代码库中手动引入一些错误（改变请求有效载荷，移除元素等），并查看测试报告。错误是否与你引入的错误相关联？阅读失败报告的人是否能够理解需要修复什么？\n你需要在测试中添加很多断言，这是完全可以的！单元测试通常只包含一个步骤和一个或两个断言，但 UI 测试不同，它们有很多步骤，因此你需要很多断言。将它们视为一系列单元测试，其中前一个测试对第二个测试的创建是必要的，以此类推。\n使用 test.skip 和 test.only 这是每个测试运行器的基础之一，但你可能不知道：如果你不习惯使用 skip 和 only，请从现在开始吧！否则，你将浪费很多时间，即使你的测试文件只包含两三个测试。始终仅运行你正在工作或需要调试的最小数量的测试！\n串行运行测试 如果你正在使用 Puppeteer 结合 Jest，请记住 Jest 有一个专门的 runInBand 选项，它防止测试的执行在你的 CPU 核心上分散。将测试并行化可以加快执行速度，但在你需要用眼睛跟踪测试操作时可能会让人感到烦扰。runInBand 选项使测试串行运行。将它与 test.skip、test.only 以及 jest-watch-typeahead 结合使用可以避免很多调试的麻烦。\n保持测试代码简单 宁愿有些重复，也不要过度抽象。努力让测试代码简单易读。你调试 UI 测试越多，就越能体会到其中的困难。当你需要理解底层发生了什么，以及哪一步不按预期工作时，你那超度抽象、完全符合 DRY 原则（不重复自己）的测试代码就会变得令人头痛。\n更一般而言，测试是小型脚本，它们必须比它们测试的代码简单两个数量级，将其视为一个盟友，而不是更复杂的程序。\n选择专门设计的工具 上述提到的解决方案都是有效的，但它们有一个共同点：它们都是变通方法。这是因为我在示例中使用的工具 Puppeteer 并非为 UI 测试而创建的，而是为通用浏览器自动化而设计的，然后，通过一些外部工具的帮助，并在测试中使用 Puppeteer，使其可以用于 UI 测试。测试 Web 应用有不同的需求，需要不同的工具，而不仅仅是自动化操作。\n如果你需要编写 UI 测试，你应该考虑切换到 Cypress 或 TestCafé，因为它们已经被设计成简化你的测试工作。如何实现的呢？通过一系列实用工具和默认行为，以及一系列一流的解决方案，使你能够理解并调试浏览器中发生的情况。请注意，本章中提到的所有 Puppeteer 最佳实践… 在 Cypress 或 TestCafé 中完全无用 😉\n一些 UI 测试问题及 Cypress 方法 和 前端生产力提升：将 Cypress 作为你的主要开发浏览器 这两章包括了 Cypress 一流工具的概述。\n由NoriSte 在 dev.to 和 Medium上进行联合发表._\n在测试中达到 UI 状态而无需使用 UI 原文链接：https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/reaching-ui-state.md\n一段简要说明 在 UI 场景中覆盖一次是有价值的，而在其他测试中复制其中任何部分提供的价值很小；这些测试可能需要系统的相关状态。假设在一个新测试中，你需要一种状态，而那种状态 - 部分或全部 - 与 UI 测试中的某些部分重复。在这种情况下，可以考虑以下几种技术：\n直接导航 网络存根记录和播放 应用程序动作 数据库种子 免责声明：整个技术包的应用仅在 Cypress 中可能（据我们所知），因此以下代码示例是在 Cypress 上下文中。\n直接导航 这是最简单的技术，适用于任何框架。假设测试的意图与你的应用程序中的某个页面有关。与其进行点击导航，直接访问 URL。一旦到达，你可以等待 UI 元素（任何测试框架）或网络调用（一些测试框架），或两者兼而有之。\n// Test A covers click-navigation to a certain page. // This is Test B, and navigating to that page is the prerequisite step. // assuming baseUrl is set in cypress.json or config file // directly navigate to the page. cy.visit('/endpoint'); // to ensure stability, wait for network (preferred), ui elements, or both // note: checking the endpoint you are at is entirely optional, only for sanity that you are at the right page cy.url().should('contain', 'endpoint'); // cy.url().should('match', /endpoint/); // there are many, some more complex, ways of doing it // network wait: this is in addition to the sanity url check, and it is more important // because you want the page to \"settle\" before you start running assertions on it // usually a GET request. Is aliased so we can wait for it. cy.intercept('some-xhr-call-that-happens-upon-landing').as('crutcXHR'); // The default Cypress timeout is 4 seconds. 15 seconds here is arbitrary. // Most pages load faster, but if you need more time then increase the timeout. // The only caveat to increasing timeout is that the tests will take longer to fail, but still run as fast as possible when things work. cy.wait('@crutchXHR', {timeout: 15000}); // ui-element wait is straightforward, and may be optional, as well as less stable) cy.get('element-on-page').should('exist').and('be.visible'); 直接导航的优缺点 优点：不进行点击导航可以节省测试时间，并减少测试维护的工作量。\n缺点：这种技术忽略了用户通过应用程序的端到端点击方式。确保在其他测试中至少有一个工作流程覆盖与点击导航相同的工作流程，以确保点击导航功能不会出现回归问题。通常，点击导航可以成为一个独立的测试；在设置其他测试的状态时，不要重复已经在其他地方覆盖的 UI 测试。思考模式类似于登录；如果在一个测试中进行 UI 登录，在其他测试中可以实现程序化登录，这既快速又经济。\n应用程序操作 Cypress 为你提供了对应用程序的完全控制权。你可以绕过页面对象的抽象层（与你的应用程序分离），通过 cy.get() 直接访问 UI，还可以访问 API、数据库，甚至可以访问源代码。\n应用程序操作是一种快捷方式，允许你访问内部工具以节省时间。一个简单的例子可以是一个 cy.signup() 自定义命令，该命令进入注册表单并调用注册表单的回调，而不是填写表单并点击注册按钮。\n以下是一个快速示例，演示了在 Angular 应用程序中如何允许 Cypress 访问源代码。\n// Angular Component file example /* setup: 1. Identify the component in the DOM; inspect and find the corresponding ",
   "wordCount" : "1070",
   "inLanguage": "zh",
-  "datePublished": "2024-01-19T13:05:44+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-01-19T13:05:44+08:00",
   "dateModified": "2024-01-19T13:05:44+08:00",
   "author":{
     "@type": "Person",
@@ -215,6 +214,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action" />
 <meta property="og:description" content="深入探讨 Supertest 的高级用法，着重介绍如何将 Supertest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-07T18:09:43+08:00" />
 <meta property="article:modified_time" content="2023-11-07T18:09:43+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action"/>
 <meta name="twitter:description" content="深入探讨 Supertest 的高级用法，着重介绍如何将 Supertest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "持续集成 接入 github action 以 github action 为例，其他 CI 工具类似\nMocha 版本接入 github action 可参考 demo：https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo\n创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。\n创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 mocha.yml。\n编辑 mocha.yml 文件：将以下内容复制到文件中\nname: RUN SuperTest API Test CI on: push: branches: [ \"main\" ] pull_request: branches: [ \"main\" ] jobs: RUN-SuperTest-API-Test: runs-on: ubuntu-latest strategy: matrix: node-version: [ 18.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/ steps: - uses: actions/checkout@v3 - name: Use Node.js ${{ matrix.node-version }} uses: actions/setup-node@v3 with: node-version: ${{ matrix.node-version }} cache: 'npm' - name: Installation of related packages run: npm ci - name: RUN SuperTest API Testing run: npm test - name: Archive SuperTest mochawesome test report uses: actions/upload-artifact@v3 with: name: SuperTest-mochawesome-test-report path: Report - name: Upload SuperTest mochawesome report to GitHub uses: actions/upload-artifact@v3 with: name: SuperTest-mochawesome-test-report path: Report 提交代码：将 mocha.yml 文件添加到仓库中并提交。 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN SuperTest API Test CI 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。 Jest 版本接入 github action 可参考 demo：https://github.com/Automation-Test-Starter/SuperTest-Jest-demo\n创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。\n创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 jest.yml。\n编辑 jest.yml 文件：将以下内容复制到文件中\nname: RUN SuperTest API Test CI on: push: branches: [ \"main\" ] pull_request: branches: [ \"main\" ] jobs: RUN-SuperTest-API-Test: runs-on: ubuntu-latest strategy: matrix: node-version: [ 18.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/ steps: - uses: actions/checkout@v3 - name: Use Node.js ${{ matrix.node-version }} uses: actions/setup-node@v3 with: node-version: ${{ matrix.node-version }} cache: 'npm' - name: Installation of related packages run: npm ci - name: RUN SuperTest API Testing run: npm test - name: Archive SuperTest test report uses: actions/upload-artifact@v3 with: name: SuperTest-test-report path: Report - name: Upload SuperTest report to GitHub uses: actions/upload-artifact@v3 with: name: SuperTest-test-report path: Report 提交代码：将 jest.yml 文件添加到仓库中并提交。 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-SuperTest-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "283",
   "inLanguage": "zh",
-  "datePublished": "2023-11-07T18:09:43+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-07T18:09:43+08:00",
   "dateModified": "2023-11-07T18:09:43+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

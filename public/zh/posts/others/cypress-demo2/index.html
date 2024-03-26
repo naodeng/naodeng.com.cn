@@ -62,11 +62,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -80,13 +78,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="Cypress UI 自动化测试框架学习（2）- 测试报告" />
 <meta property="og:description" content="文章介绍 Cypress UI 自动化测试框架学习如何去使用不同格式的 cypress 自动化测试报告模版" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/others/cypress-demo2/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/others/cypress-demo2/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-09T00:00:00+00:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="Cypress UI 自动化测试框架学习（2）- 测试报告"/>
 <meta name="twitter:description" content="文章介绍 Cypress UI 自动化测试框架学习如何去使用不同格式的 cypress 自动化测试报告模版"/>
 
@@ -124,7 +123,7 @@ if (!doNotTrack) {
   "articleBody": "下面的信息是介绍 cypress 自动化测试框架学习第 3 篇的测试报告的内容 主要介绍一下如何去使用不同格式的 cypress 自动化测试报告模版\n写在前面 由于 Cypress 测试报告是建立在 Mocha 测试报告之上的，这意味着任何为 Mocha 构建的报告程序都可以与 Cypress 一起使用。\n以下是内置的 Mocha 测试类型列表（Cypress 也同样支持）：https://mochajs.org/#reporters\n前置准备工作 在 package.json 文件的 scripts 模块加入了如下脚本：“cypress:run”:“cypress run”，便于后面生成报告\n不同运行脚本的区别：\ncypress run：是以无头浏览器模式跑测试用例文件夹下的所有测试用例 cypress open：会打开测试用例集的界面，需要手动运行 常用报告类型 spec 格式报告 运行命令 $ npm run cypress:run --reporter=spec 报告截图 Dot 格式报告 前置：在 cypress.json 文件新增\"reporter\": “dot\"信息\n运行方式：\n$ npm run cypress:run 报告截图 json 格式报告 前置：在 cypress.json 文件新增\"reporter”: “json\"信息\n运行方式：\n$ npm run cypress:run 报告截图 List 格式报告 前置：在 cypress.json 文件新增\"reporter”: “list\"信息\n运行方式：\n$ npm run cypress:run 报告截图 NYAN 格式报告 前置：在 cypress.json 文件新增\"reporter”: “nyan\"信息\n运行方式：\n$ npm run cypress:run 报告截图 高大上报告类型 Mochawesome 格式报告 前置：安装 Mocha、Mochawesome 至项目中 npm install --save-dev mocha npm install --save-dev mochawesome 在 cypress.json 文件新增\"reporter”: “mochawesome\"信息\n运行命令\n$ npm run cypress:run 报告截图 allure 格式报告 前置：安装 allure（推荐使用 brew 安装） $ brew install allure 在 cypress.json 文件新增如下信息 \"reporter\": \"junit\", \"reporterOptions\": { \"mochaFile\": \"results/test_report_[hash].xml\", \"toConsole\": true } 运行命令 $ npm run cypress:run 生成报告 $ allure serve results 报告截图 Dashboard 格式报告 待完善，参考资料：https://docs.cypress.io/guides/dashboard/introduction#Features\n运行命令 npx cypress run --record --key 7aaee33b-f67b-4993-8d6c-2c392a1bd1c8 报告截图 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "163",
   "inLanguage": "zh",
-  "datePublished": "2022-05-09T00:00:00Z",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2022-05-09T00:00:00Z",
   "dateModified": "2022-05-09T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -215,6 +214,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>软件测试术语分享:Analytical Test Strategy 分析性测试策略 | 软件测试同学</title>
+<meta name="keywords" content="">
+<meta name="description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。">
+<meta name="author" content="nao.deng">
+<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
+</script>
+
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+<meta name="sogou_site_verification" content="iwkYDJrzfK" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="软件测试术语分享:Analytical Test Strategy 分析性测试策略" />
+<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-26T12:50:44+08:00" />
+<meta property="article:modified_time" content="2024-03-26T12:50:44+08:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
+<meta name="twitter:title" content="软件测试术语分享:Analytical Test Strategy 分析性测试策略"/>
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "软件测试术语分享:Analytical Test Strategy 分析性测试策略",
+      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软件测试术语分享:Analytical Test Strategy 分析性测试策略",
+  "name": "软件测试术语分享:Analytical Test Strategy 分析性测试策略",
+  "description": "这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。",
+  "keywords": [
+    
+  ],
+  "articleBody": "Analytical Test Strategy 分析性测试策略 分析性测试策略涉及在执行测试之前分析测试基础。这种策略有助于在早期发现潜在问题，确保测试过程更加有效。\n关于分析性测试策略的问题 基础知识和重要性 什么是分析型测试策略？ 分析型测试策略是一种基于数据分析来指导决策的测试方法，它要求深入考虑风险、成本、时间和资源等多方面因素，以找出最高效的测试活动方案。\n实施这种策略时，工程师需要先收集并分析有关待测应用的相关数据，包括了解业务背景、用户行为及技术架构等。接着，他们会根据缺陷出现的可能性及其潜在影响来对测试工作进行排序。\n在分析型测试策略中融入自动化，意味着要挑选那些能带来最大价值和投资回报的测试进行自动化处理。自动化测试通常应用于回归测试、性能测试等需要重复执行且要求一致性的测试场景中。\n对测试结果进行分析至关重要，这一过程涉及到寻找数据中的模式和异常，以便发现值得关注的问题区域。为了支持这一过程，通常会使用测试管理系统、缺陷跟踪系统和分析平台等工具。\n为了提高策略效率，可能需要采取持续集成和持续交付实践，确保自动化测试能够早期并频繁地运行，以便快速获取反馈。\n最佳实践建议定期回顾和更新测试策略，以适应应用及其环境的变化，并促进开发人员、测试人员与业务利益相关方之间的合作。\n应避免的常见错误包括过度依赖自动化、忽略探索性测试以及未能随项目条件变化而调整策略。\n为何分析型测试策略在软件测试中至关重要？ 分析型测试策略对软件测试至关重要，因为它提供了一种有组织的方法来明确测试的目标、方法和时机。它确保测试工作与业务风险和目标保持一致，允许测试人员根据风险和影响来优先安排测试案例。这种针对性的关注帮助集中资源于可能对产品质量和用户满意度影响最大的领域，从而最大化测试工作的价值。\n通过采用分析方法，测试人员能够系统地将复杂系统分解为更易管理的部分，从而更容易识别潜在的故障点。这种有条不紊的分析能够实现更全面的测试覆盖率，并且更有可能发现那些隐蔽但影响重大的缺陷。\n此外，分析型策略促进了测试过程的持续改进。通过分析以往的测试结果并整合反馈，团队能够改善他们的方法，实现更高效和更有效的测试周期，这在快速迭代和反馈是常态的敏捷和 DevOps 环境中尤为重要。\n将自动化集成到此策略中，通过自动化重复性高和耗时的任务来进一步提高效率，使测试人员能够专注于需要人工洞察的探索性测试和其他高价值活动。\n总的来说，分析型测试策略对于以成本效益的方式及时交付高质量软件是必不可少的。它能够促进明智的决策制定，优化资源配置，并在测试过程中培养持续改进的文化成为可能。\n分析型测试策略的关键组成部分包括： 风险分析：识别可能影响质量的潜在风险，并根据此分析优先安排测试。 测试覆盖率：明确需要测试的内容，包括功能、代码路径和用户场景，以确保全面测试。 测试设计：针对已识别的风险和覆盖领域，创建详细的测试用例和场景。 测试数据管理：规划测试数据的创建、维护和处置，这些数据对执行测试用例是必需的。 测试环境：确保一个稳定且一致的环境，该环境模拟生产设置以获得准确的测试结果。 工具和框架：选择与技术栈和测试需求相匹配的适当自动化工具和框架。 指标和报告：定义关键绩效指标（KPIs）来衡量测试的有效性，并报告进度和结果。 反馈循环：建立快速反馈测试结果的机制，以便快速采取行动并持续改进。 维护计划：随着软件的演进，制定维护和更新测试用例及自动化脚本的策略。 合规性和标准：遵守影响测试流程和结果的相关行业标准和法规要求。 这些组成部分共同形成了一个健壮有效的分析型测试策略，指导测试自动化工程师高效地交付高质量软件。\n执行 如何实施分析测试策略？ 实施分析型测试策略涉及到一个系统的方法，该方法利用数据驱动的决策来优先安排和执行测试。这里是一个简明的指南：\n收集数据：从需求、用户故事和缺陷日志等多种来源收集信息。 风险分析：识别最高风险的领域，并相应地优先安排测试工作。 定义指标：建立关键绩效指标（KPIs）来衡量测试过程的有效性。 选择测试用例：基于风险、影响和失败可能性选择测试用例，使用等价划分和边界值分析等技术。 明智地自动化：自动化那些重复的、需要精确度的或对回归测试至关重要的测试。 执行测试：在控制环境中运行测试，确保结果是可靠和可复制的。 分析结果：使用工具分析测试结果，寻找可以为未来测试提供信息的模式和趋势。 报告发现：向利益相关者传达结果，突出风险、问题和建议。 迭代：基于反馈和结果优化策略，为未来的测试周期优化。 在整个过程中，保持对持续改进的关注，利用工具提高效率，并确保策略与整个项目目标保持一致。与开发团队的协作和沟通至关重要，以确保测试策略保持相关性和有效性。\n创建分析测试策略涉及哪些步骤？ 创建分析型测试策略涉及到一系列确保测试系统化方法的步骤：\n定义目标：明确表达测试的目标，与业务目标和项目要求保持一致。 评估风险：识别待测试应用中的潜在风险，根据可能性和影响进行排序。 选择测试技术：为每个风险区域选择合适的测试设计技术，考虑手动和自动化方法。 确定测试指标：决定将衡量测试活动效果和进度的指标。 规划测试环境：确保测试环境尽可能模拟生产环境，并满足执行测试所需的所有要求。 分配资源：分配角色和责任，并为测试执行分配必要的工具和人员。 开发测试用例：根据所选技术创建详细的测试用例和脚本，确保它们能追溯到要求和风险。 安排测试执行：定义测试周期的时间表，包括设置、执行和分析的时间。 执行测试：根据计划运行测试，监控进度并根据需要进行调整。 分析结果：根据定义的指标和目标评估测试执行的结果。 报告和沟通：记录发现，向利益相关者报告状态，并沟通任何出现的问题或洞察。 审查和调整：持续评估策略的有效性，并进行调整以改善未来的测试周期。 实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？ 实施分析型测试策略常见的挑战包括：\n数据复杂性：处理大型数据集可能会让人感到不知所措。通过使用数据管理工具并专注于与测试目标最相关的数据子集来克服这一挑战。\n工具集成：不同的工具可能无法无缝协作。选择具有兼容 API 的工具，并考虑使用中间件或自定义集成来弥补差距。\n维护测试相关性：随着软件的发展，测试可能会过时。定期回顾和更新测试，确保它们与当前需求保持一致。\n资源分配：决定如何分配时间和人员可能很困难。使用风险分析来优先安排测试工作，并在可能的情况下实施自动化，以释放人力资源用于复杂任务。\n自动化测试的不稳定性：不稳定的测试可能会破坏对测试结果的信心。通过改善测试隔离、审慎使用重试，并确保稳定的测试环境来解决不稳定性问题。\n技术更新迅速：快速的技术变化可能会使测试策略过时。保持对新趋势的了解，并不断调整你的策略。\n速度与覆盖度之间的平衡：测试的深度与执行速度之间通常存在权衡。通过识别需要深入测试的最关键路径并使用冒烟测试来覆盖不那么关键的区域来进行优化。\n技能差距：团队成员可能缺乏新工具或技术的专业知识。投资于培训并鼓励团队内部的知识共享。\n为了缓解这些挑战，专注于持续改进，明智地利用自动化，并在团队成员之间保持清晰的沟通。\n工具和技术 分析测试策略中常用哪些工具？ 在分析型测试策略中常用的工具包括：\n静态分析工具：如 SonarQube 或 Coverity 等工具在运行前扫描代码，寻找潜在问题。 测试管理工具：如 TestRail 或 qTest 等工具管理测试用例、计划和执行，提供测试覆盖率和效果的分析。 自动化测试框架：用于 UI 测试的 Selenium、Appium 和 Cypress；用于单元测试的 JUnit、TestNG；用于 API 测试的 Postman、RestAssured。 性能测试工具：JMeter 或 LoadRunner 模拟用户负载并测量系统性能。 安全测试工具：OWASP ZAP 或 Burp Suite 识别安全漏洞。 代码覆盖工具：JaCoCo 或 Istanbul 监控测试期间执行的代码量。 缺陷跟踪系统：JIRA 或 Bugzilla 跟踪和管理报告的问题。 持续集成/持续部署（CI/CD）工具：Jenkins、GitLab CI 或 CircleCI 自动化构建和部署过程，在各个阶段集成测试。 数据分析和可视化工具：Grafana 或 Tableau 帮助可视化测试数据，以获得更好的洞察力。 人工智能和机器学习工具：如 Testim.io 或 mabl 等工具使用 AI 来改善测试的创建、执行和维护。 // Example of integrating a tool within an automation script const { Builder, By, Key, until } = require('selenium-webdriver'); (async function example() { let driver = await new Builder().forBrowser('firefox').build(); try { await driver.get('http://www.example.com'); await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN); await driver.wait(until.titleIs('webdriver - Google Search'), 1000); } finally { await driver.quit(); } })(); 这些工具通过提供数据驱动的洞察、自动化重复任务和在测试生命周期中实现持续反馈，支持分析型方法。例如，通过集成一个工具到自动化脚本中，如使用 Selenium 在 Firefox 浏览器中自动执行一系列动作，从打开网页到输入搜索关键字并等待页面标题变更，这样的脚本可以有效地自动化测试流程，提高测试效率和准确性。\n使用哪些技术来分析分析测试策略中的测试结果？ 在分析型测试策略中分析测试结果涉及到多种技术：\n结果汇总：汇总测试结果以识别模式和趋势。工具如仪表板和报告总结通过/失败率、测试覆盖率和缺陷密度。 根本原因分析：当测试失败时，调查以确定潜在问题。技术如五次为什么或鱼骨图帮助确定测试失败的确切原因。 不稳定性检测：识别产生不一致结果的非确定性测试。使用历史测试数据来发现不稳定的测试，并优先稳定它们。 性能趋势分析：监控测试执行时间以检测性能下降。自动化工具可以在测试超过某个阈值时提醒团队。 测试覆盖率分析：使用代码覆盖工具确保足够的代码库被测试。寻找未测试的路径或条件以提高测试效果。 缺陷聚类：将类似的失败分组以识别常见缺陷或应用程序易出问题的区域。这可以帮助将测试工作集中在高风险组件上。 历史分析：将当前结果与历史数据进行比较，以追踪进度和回归。这可以为分配测试资源的决策提供信息。 预测分析：应用机器学习算法基于历史测试数据预测结果。这可以帮助优先安排测试用例和优化测试套件。 启发式评估：使用基于经验的技术评估测试失败的重要性及其对产品质量的潜在影响。 如何将自动化纳入分析测试策略？ 将自动化纳入分析型测试策略涉及识别可以从自动化中受益的重复性高、体量大的任务，从而使人类测试人员能够专注于更复杂的测试场景。首先分析测试用例，以确定哪些适合自动化，基于它们的稳定性、频率和复杂性。\n优先考虑对应用程序的质量和用户体验有高影响的测试用例。自动化冒烟测试、回归测试和其他需要频繁运行的关键测试套件。使用基于风险的测试来决定哪些应用程序的区域最容易受到攻击，应该首先自动化。\n利用数据驱动测试自动化不同输入值的场景。这种方法允许更广泛的测试覆盖率并有助于发现边缘情况。实施持续集成（CI）和持续交付（CD）流水线，以在代码检入时触发自动化测试，确保立即反馈应用程序的健康状况。\n优化测试脚本以实现可维护性和可重用性。使用模块化框架和设计模式，如页面对象模型（POM），创建易于更新的可维护测试脚本，以适应应用程序的变化。\n集成与应用程序的技术栈和团队技能集相匹配的测试自动化工具。确保工具支持报告和分析，以便于测试结果的分析。\n最后，根据反馈和测试结果定期审查和完善自动化策略，确保它与不断变化的测试要求保持一致，并继续为测试过程增值。\n最佳实践 制定分析测试策略的最佳实践有哪些？ 开发分析型测试策略的最佳实践包括：\n基于风险、影响和失败可能性优先排序测试用例。使用基于风险的测试等技术，专注于最关键的区域。 利用指标和 KPIs 来衡量测试工作的有效性，并做出数据驱动的决策。 根据反馈和测试结果不断完善测试策略。适应软件及其环境的变化。 促进团队成员之间的协作，共享见解，共同改进测试策略。 与 CI/CD 流水线集成，确保测试成为持续集成和交付过程的一部分，允许立即反馈。 为测试工件使用版本控制，跟踪变化并维护测试策略演化的历史。 实现测试用例的独立性，确保一个测试的失败不会影响其他测试的执行。 设计可重用性，通过创建模块化和参数化的测试，可以轻松地在不同场景中重用。 选择尽早测试，在开发生命周期中向左移动，以更早捕捉缺陷并降低成本。 定期审查和更新测试环境，使其尽可能接近生产环境，避免特定于环境的问题。 清晰记录假设和依赖，确保测试策略对所有利益相关者透明且易于理解。 平衡手动和自动化测试，利用每种方法的优势，确保全面的覆盖率。 记住，一个健全的分析型测试策略不是静态的；它随着项目的发展而演变，需要持续的关注和完善。\n如何优化分析测试策略以提高效率？ 为了提高分析型测试策略的效率，请考虑以下建议：\n基于风险、影响和失败可能性优先排序测试用例。使用风险基础测试等技术专注于最关键的区域。 利用测试自动化处理重复性和回归任务。自动化最稳定和高价值的测试以节省时间并减少人为错误。 在 CI/CD 流水线中实施持续测试。这确保了即时反馈和快速识别问题。 利用测试数据管理确保有高质量、相关的测试数据可用，避免瓶颈。 采用并行测试同时运行多个测试，减少总体测试执行时间。 定期审查和维护测试，移除过时或冗余的测试，保持测试套件精简且相关。 应用静态代码分析在不执行代码的情况下尽早捕获缺陷。 使用仪表盘和报告工具监控和分析测试结果，快速识别趋势和关注区域。 收集利益相关者的反馈，持续完善测试策略，专注于提供最大价值的领域。 投资于培训和知识分享，让团队了解最佳实践和新工具，以提高效率。 通过关注这些领域，你可以简化你的分析型测试策略，确保它随着时间的推移保持有效和高效。\n制定分析测试策略时需要避免哪些常见错误？ 在制定分析型测试策略时，应避免以下常见错误：\n忽视非功能性需求：仅关注功能性需求可能会错失性能、安全性和可用性测试的机会。 风险分析不足：未能正确评估风险可能导致关键区域的测试覆盖不足。 忽略测试环境差异：确保测试对生产环境相关，避免因差异导致的误报/漏报。 忽视数据质量：使用质量差或不现实的测试数据可能会扭曲测试结果，无法揭示问题。 低估维护工作：自动化测试需要定期更新才能保持有效；未规划维护可能会使测试套件过时。 缺乏协作：未让所有利益相关者，包括开发人员、业务分析师和运营人员参与，可能导致测试目标不一致。 测试设计僵化：创建过于僵硬的测试可能会因应用程序的轻微变化而轻易失效。 过度自动化：试图自动化所有测试可能适得其反；根据价值和稳定性优先安排测试。 忽略手动测试：某些测试更适合手动执行；认识到何时手动测试更合适。 跳过测试审查：未与同伴审查测试可能导致遗漏缺陷和知识孤岛。 糟糕的报告习惯：测试结果的无效沟通可能阻碍识别和解决可操作的见解。 记住，分析型测试策略是一份随项目演进而变化的活文档。定期回顾和调整你的策略，确保它保持有效且与项目目标一致。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 推荐阅读 使用 Bruno 进行接口自动化测试快速开启教程系列 使用 Postman 进行接口自动化测试快速开启教程系列 使用 Pytest 进行接口自动化测试快速开启教程系列 使用 SuperTest 进行接口自动化测试快速开启教程系列 使用 Rest Assured 进行接口自动化测试快速开启教程系列 使用 Galting 进行性能测试快速开启教程系列 使用 K6 进行性能测试快速开启教程系列 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
+  "wordCount" : "288",
+  "inLanguage": "zh",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-03-26T12:50:44+08:00",
+  "dateModified": "2024-03-26T12:50:44+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nao.deng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "软件测试同学",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/" title="🇬🇧English"
+                            aria-label="🇬🇧English">🇬🇧English</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/zh/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                    <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      软件测试术语分享:Analytical Test Strategy 分析性测试策略
+    </h1>
+    <div class="post-meta"><span title='2024-03-26 12:50:44 +0800 CST'>三月 26, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;288 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-analytical-test-strategy.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#analytical-test-strategy-%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="Analytical Test Strategy 分析性测试策略">Analytical Test Strategy 分析性测试策略</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于分析性测试策略的问题">关于分析性测试策略的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="什么是分析型测试策略？">什么是分析型测试策略？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bd%95%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e5%9c%a8%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81" aria-label="为何分析型测试策略在软件测试中至关重要？">为何分析型测试策略在软件测试中至关重要？</a></li>
+                <li>
+                    <a href="#%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e5%8c%85%e6%8b%ac" aria-label="分析型测试策略的关键组成部分包括：">分析型测试策略的关键组成部分包括：</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%89%a7%e8%a1%8c" aria-label="执行">执行</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何实施分析测试策略？">如何实施分析测试策略？</a></li>
+                <li>
+                    <a href="#%e5%88%9b%e5%bb%ba%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="创建分析测试策略涉及哪些步骤？">创建分析测试策略涉及哪些步骤？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e5%ad%98%e5%9c%a8%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98%e4%bb%a5%e5%8f%8a%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？">实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%b7%a5%e5%85%b7%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="工具和技术">工具和技术</a><ul>
+                        
+                <li>
+                    <a href="#%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%93%aa%e4%ba%9b%e5%b7%a5%e5%85%b7" aria-label="分析测试策略中常用哪些工具？">分析测试策略中常用哪些工具？</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af%e6%9d%a5%e5%88%86%e6%9e%90%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e7%9a%84%e6%b5%8b%e8%af%95%e7%bb%93%e6%9e%9c" aria-label="使用哪些技术来分析分析测试策略中的测试结果？">使用哪些技术来分析分析测试策略中的测试结果？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%b0%86%e8%87%aa%e5%8a%a8%e5%8c%96%e7%ba%b3%e5%85%a5%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何将自动化纳入分析测试策略？">如何将自动化纳入分析测试策略？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="最佳实践">最佳实践</a><ul>
+                        
+                <li>
+                    <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="制定分析测试策略的最佳实践有哪些？">制定分析测试策略的最佳实践有哪些？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%bb%a5%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87" aria-label="如何优化分析测试策略以提高效率？">如何优化分析测试策略以提高效率？</a></li>
+                <li>
+                    <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e9%9c%80%e8%a6%81%e9%81%bf%e5%85%8d%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="制定分析测试策略时需要避免哪些常见错误？">制定分析测试策略时需要避免哪些常见错误？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a></li>
+                <li>
+                    <a href="#%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb" aria-label="推荐阅读">推荐阅读</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="analytical-test-strategy-分析性测试策略">Analytical Test Strategy 分析性测试策略<a hidden class="anchor" aria-hidden="true" href="#analytical-test-strategy-分析性测试策略">#</a></h2>
+<p>分析性测试策略涉及在执行测试之前分析测试基础。这种策略有助于在早期发现潜在问题，确保测试过程更加有效。</p>
+<h2 id="关于分析性测试策略的问题">关于分析性测试策略的问题<a hidden class="anchor" aria-hidden="true" href="#关于分析性测试策略的问题">#</a></h2>
+<h3 id="基础知识和重要性">基础知识和重要性<a hidden class="anchor" aria-hidden="true" href="#基础知识和重要性">#</a></h3>
+<h4 id="什么是分析型测试策略">什么是分析型测试策略？<a hidden class="anchor" aria-hidden="true" href="#什么是分析型测试策略">#</a></h4>
+<p>分析型测试策略是一种基于数据分析来指导决策的测试方法，它要求深入考虑风险、成本、时间和资源等多方面因素，以找出最高效的测试活动方案。</p>
+<p>实施这种策略时，工程师需要先收集并分析有关待测应用的相关数据，包括了解业务背景、用户行为及技术架构等。接着，他们会根据缺陷出现的可能性及其潜在影响来对测试工作进行排序。</p>
+<p>在分析型测试策略中融入自动化，意味着要挑选那些能带来最大价值和投资回报的测试进行自动化处理。自动化测试通常应用于回归测试、性能测试等需要重复执行且要求一致性的测试场景中。</p>
+<p>对测试结果进行分析至关重要，这一过程涉及到寻找数据中的模式和异常，以便发现值得关注的问题区域。为了支持这一过程，通常会使用测试管理系统、缺陷跟踪系统和分析平台等工具。</p>
+<p>为了提高策略效率，可能需要采取持续集成和持续交付实践，确保自动化测试能够早期并频繁地运行，以便快速获取反馈。</p>
+<p>最佳实践建议定期回顾和更新测试策略，以适应应用及其环境的变化，并促进开发人员、测试人员与业务利益相关方之间的合作。</p>
+<p>应避免的常见错误包括过度依赖自动化、忽略探索性测试以及未能随项目条件变化而调整策略。</p>
+<h4 id="为何分析型测试策略在软件测试中至关重要">为何分析型测试策略在软件测试中至关重要？<a hidden class="anchor" aria-hidden="true" href="#为何分析型测试策略在软件测试中至关重要">#</a></h4>
+<p>分析型测试策略对软件测试至关重要，因为它提供了一种有组织的方法来明确测试的目标、方法和时机。它确保测试工作与业务风险和目标保持一致，允许测试人员根据风险和影响来优先安排测试案例。这种针对性的关注帮助集中资源于可能对产品质量和用户满意度影响最大的领域，从而最大化测试工作的价值。</p>
+<p>通过采用分析方法，测试人员能够系统地将复杂系统分解为更易管理的部分，从而更容易识别潜在的故障点。这种有条不紊的分析能够实现更全面的测试覆盖率，并且更有可能发现那些隐蔽但影响重大的缺陷。</p>
+<p>此外，分析型策略促进了测试过程的持续改进。通过分析以往的测试结果并整合反馈，团队能够改善他们的方法，实现更高效和更有效的测试周期，这在快速迭代和反馈是常态的敏捷和 DevOps 环境中尤为重要。</p>
+<p>将自动化集成到此策略中，通过自动化重复性高和耗时的任务来进一步提高效率，使测试人员能够专注于需要人工洞察的探索性测试和其他高价值活动。</p>
+<p>总的来说，分析型测试策略对于以成本效益的方式及时交付高质量软件是必不可少的。它能够促进明智的决策制定，优化资源配置，并在测试过程中培养持续改进的文化成为可能。</p>
+<h4 id="分析型测试策略的关键组成部分包括">分析型测试策略的关键组成部分包括：<a hidden class="anchor" aria-hidden="true" href="#分析型测试策略的关键组成部分包括">#</a></h4>
+<ul>
+<li><strong>风险分析</strong>：识别可能影响质量的潜在风险，并根据此分析优先安排测试。</li>
+<li><strong>测试覆盖率</strong>：明确需要测试的内容，包括功能、代码路径和用户场景，以确保全面测试。</li>
+<li><strong>测试设计</strong>：针对已识别的风险和覆盖领域，创建详细的测试用例和场景。</li>
+<li><strong>测试数据管理</strong>：规划测试数据的创建、维护和处置，这些数据对执行测试用例是必需的。</li>
+<li><strong>测试环境</strong>：确保一个稳定且一致的环境，该环境模拟生产设置以获得准确的测试结果。</li>
+<li><strong>工具和框架</strong>：选择与技术栈和测试需求相匹配的适当自动化工具和框架。</li>
+<li><strong>指标和报告</strong>：定义关键绩效指标（KPIs）来衡量测试的有效性，并报告进度和结果。</li>
+<li><strong>反馈循环</strong>：建立快速反馈测试结果的机制，以便快速采取行动并持续改进。</li>
+<li><strong>维护计划</strong>：随着软件的演进，制定维护和更新测试用例及自动化脚本的策略。</li>
+<li><strong>合规性和标准</strong>：遵守影响测试流程和结果的相关行业标准和法规要求。</li>
+</ul>
+<p>这些组成部分共同形成了一个健壮有效的分析型测试策略，指导测试自动化工程师高效地交付高质量软件。</p>
+<h3 id="执行">执行<a hidden class="anchor" aria-hidden="true" href="#执行">#</a></h3>
+<h4 id="如何实施分析测试策略">如何实施分析测试策略？<a hidden class="anchor" aria-hidden="true" href="#如何实施分析测试策略">#</a></h4>
+<p>实施分析型测试策略涉及到一个系统的方法，该方法利用数据驱动的决策来优先安排和执行测试。这里是一个简明的指南：</p>
+<ul>
+<li><strong>收集数据</strong>：从需求、用户故事和缺陷日志等多种来源收集信息。</li>
+<li><strong>风险分析</strong>：识别最高风险的领域，并相应地优先安排测试工作。</li>
+<li><strong>定义指标</strong>：建立关键绩效指标（KPIs）来衡量测试过程的有效性。</li>
+<li><strong>选择测试用例</strong>：基于风险、影响和失败可能性选择测试用例，使用等价划分和边界值分析等技术。</li>
+<li><strong>明智地自动化</strong>：自动化那些重复的、需要精确度的或对回归测试至关重要的测试。</li>
+<li><strong>执行测试</strong>：在控制环境中运行测试，确保结果是可靠和可复制的。</li>
+<li><strong>分析结果</strong>：使用工具分析测试结果，寻找可以为未来测试提供信息的模式和趋势。</li>
+<li><strong>报告发现</strong>：向利益相关者传达结果，突出风险、问题和建议。</li>
+<li><strong>迭代</strong>：基于反馈和结果优化策略，为未来的测试周期优化。</li>
+</ul>
+<p>在整个过程中，保持对持续改进的关注，利用工具提高效率，并确保策略与整个项目目标保持一致。与开发团队的协作和沟通至关重要，以确保测试策略保持相关性和有效性。</p>
+<h4 id="创建分析测试策略涉及哪些步骤">创建分析测试策略涉及哪些步骤？<a hidden class="anchor" aria-hidden="true" href="#创建分析测试策略涉及哪些步骤">#</a></h4>
+<p>创建分析型测试策略涉及到一系列确保测试系统化方法的步骤：</p>
+<ul>
+<li><strong>定义目标</strong>：明确表达测试的目标，与业务目标和项目要求保持一致。</li>
+<li><strong>评估风险</strong>：识别待测试应用中的潜在风险，根据可能性和影响进行排序。</li>
+<li><strong>选择测试技术</strong>：为每个风险区域选择合适的测试设计技术，考虑手动和自动化方法。</li>
+<li><strong>确定测试指标</strong>：决定将衡量测试活动效果和进度的指标。</li>
+<li><strong>规划测试环境</strong>：确保测试环境尽可能模拟生产环境，并满足执行测试所需的所有要求。</li>
+<li><strong>分配资源</strong>：分配角色和责任，并为测试执行分配必要的工具和人员。</li>
+<li><strong>开发测试用例</strong>：根据所选技术创建详细的测试用例和脚本，确保它们能追溯到要求和风险。</li>
+<li><strong>安排测试执行</strong>：定义测试周期的时间表，包括设置、执行和分析的时间。</li>
+<li><strong>执行测试</strong>：根据计划运行测试，监控进度并根据需要进行调整。</li>
+<li><strong>分析结果</strong>：根据定义的指标和目标评估测试执行的结果。</li>
+<li><strong>报告和沟通</strong>：记录发现，向利益相关者报告状态，并沟通任何出现的问题或洞察。</li>
+<li><strong>审查和调整</strong>：持续评估策略的有效性，并进行调整以改善未来的测试周期。</li>
+</ul>
+<h4 id="实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战">实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？<a hidden class="anchor" aria-hidden="true" href="#实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战">#</a></h4>
+<p>实施分析型测试策略常见的挑战包括：</p>
+<ul>
+<li>
+<p><strong>数据复杂性</strong>：处理大型数据集可能会让人感到不知所措。通过使用数据管理工具并专注于与测试目标最相关的数据子集来克服这一挑战。</p>
+</li>
+<li>
+<p><strong>工具集成</strong>：不同的工具可能无法无缝协作。选择具有兼容 API 的工具，并考虑使用中间件或自定义集成来弥补差距。</p>
+</li>
+<li>
+<p><strong>维护测试相关性</strong>：随着软件的发展，测试可能会过时。定期回顾和更新测试，确保它们与当前需求保持一致。</p>
+</li>
+<li>
+<p><strong>资源分配</strong>：决定如何分配时间和人员可能很困难。使用风险分析来优先安排测试工作，并在可能的情况下实施自动化，以释放人力资源用于复杂任务。</p>
+</li>
+<li>
+<p><strong>自动化测试的不稳定性</strong>：不稳定的测试可能会破坏对测试结果的信心。通过改善测试隔离、审慎使用重试，并确保稳定的测试环境来解决不稳定性问题。</p>
+</li>
+<li>
+<p><strong>技术更新迅速</strong>：快速的技术变化可能会使测试策略过时。保持对新趋势的了解，并不断调整你的策略。</p>
+</li>
+<li>
+<p><strong>速度与覆盖度之间的平衡</strong>：测试的深度与执行速度之间通常存在权衡。通过识别需要深入测试的最关键路径并使用冒烟测试来覆盖不那么关键的区域来进行优化。</p>
+</li>
+<li>
+<p><strong>技能差距</strong>：团队成员可能缺乏新工具或技术的专业知识。投资于培训并鼓励团队内部的知识共享。</p>
+</li>
+</ul>
+<p>为了缓解这些挑战，专注于持续改进，明智地利用自动化，并在团队成员之间保持清晰的沟通。</p>
+<h3 id="工具和技术">工具和技术<a hidden class="anchor" aria-hidden="true" href="#工具和技术">#</a></h3>
+<h4 id="分析测试策略中常用哪些工具">分析测试策略中常用哪些工具？<a hidden class="anchor" aria-hidden="true" href="#分析测试策略中常用哪些工具">#</a></h4>
+<p>在分析型测试策略中常用的工具包括：</p>
+<ul>
+<li><strong>静态分析工具</strong>：如 SonarQube 或 Coverity 等工具在运行前扫描代码，寻找潜在问题。</li>
+<li><strong>测试管理工具</strong>：如 TestRail 或 qTest 等工具管理测试用例、计划和执行，提供测试覆盖率和效果的分析。</li>
+<li><strong>自动化测试框架</strong>：用于 UI 测试的 Selenium、Appium 和 Cypress；用于单元测试的 JUnit、TestNG；用于 API 测试的 Postman、RestAssured。</li>
+<li><strong>性能测试工具</strong>：JMeter 或 LoadRunner 模拟用户负载并测量系统性能。</li>
+<li><strong>安全测试工具</strong>：OWASP ZAP 或 Burp Suite 识别安全漏洞。</li>
+<li><strong>代码覆盖工具</strong>：JaCoCo 或 Istanbul 监控测试期间执行的代码量。</li>
+<li><strong>缺陷跟踪系统</strong>：JIRA 或 Bugzilla 跟踪和管理报告的问题。</li>
+<li><strong>持续集成/持续部署（CI/CD）工具</strong>：Jenkins、GitLab CI 或 CircleCI 自动化构建和部署过程，在各个阶段集成测试。</li>
+<li><strong>数据分析和可视化工具</strong>：Grafana 或 Tableau 帮助可视化测试数据，以获得更好的洞察力。</li>
+<li><strong>人工智能和机器学习工具</strong>：如 Testim.io 或 mabl 等工具使用 AI 来改善测试的创建、执行和维护。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Typescript" data-lang="Typescript"><span class="line"><span class="cl"><span class="c1">// Example of integrating a tool within an automation script
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">Builder</span><span class="p">,</span> <span class="nx">By</span><span class="p">,</span> <span class="nx">Key</span><span class="p">,</span> <span class="nx">until</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">require</span><span class="p">(</span><span class="s1">&#39;selenium-webdriver&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">example() {</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">driver</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">Builder</span><span class="p">().</span><span class="nx">forBrowser</span><span class="p">(</span><span class="s1">&#39;firefox&#39;</span><span class="p">).</span><span class="nx">build</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">driver</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)).</span><span class="nx">sendKeys</span><span class="p">(</span><span class="s1">&#39;webdriver&#39;</span><span class="p">,</span> <span class="nx">Key</span><span class="p">.</span><span class="nx">RETURN</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="nx">until</span><span class="p">.</span><span class="nx">titleIs</span><span class="p">(</span><span class="s1">&#39;webdriver - Google Search&#39;</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})();</span>
+</span></span></code></pre></div><p>这些工具通过提供数据驱动的洞察、自动化重复任务和在测试生命周期中实现持续反馈，支持分析型方法。例如，通过集成一个工具到自动化脚本中，如使用 Selenium 在 Firefox 浏览器中自动执行一系列动作，从打开网页到输入搜索关键字并等待页面标题变更，这样的脚本可以有效地自动化测试流程，提高测试效率和准确性。</p>
+<h4 id="使用哪些技术来分析分析测试策略中的测试结果">使用哪些技术来分析分析测试策略中的测试结果？<a hidden class="anchor" aria-hidden="true" href="#使用哪些技术来分析分析测试策略中的测试结果">#</a></h4>
+<p>在分析型测试策略中分析测试结果涉及到多种技术：</p>
+<ul>
+<li><strong>结果汇总</strong>：汇总测试结果以识别模式和趋势。工具如仪表板和报告总结通过/失败率、测试覆盖率和缺陷密度。</li>
+<li><strong>根本原因分析</strong>：当测试失败时，调查以确定潜在问题。技术如五次为什么或鱼骨图帮助确定测试失败的确切原因。</li>
+<li><strong>不稳定性检测</strong>：识别产生不一致结果的非确定性测试。使用历史测试数据来发现不稳定的测试，并优先稳定它们。</li>
+<li><strong>性能趋势分析</strong>：监控测试执行时间以检测性能下降。自动化工具可以在测试超过某个阈值时提醒团队。</li>
+<li><strong>测试覆盖率分析</strong>：使用代码覆盖工具确保足够的代码库被测试。寻找未测试的路径或条件以提高测试效果。</li>
+<li><strong>缺陷聚类</strong>：将类似的失败分组以识别常见缺陷或应用程序易出问题的区域。这可以帮助将测试工作集中在高风险组件上。</li>
+<li><strong>历史分析</strong>：将当前结果与历史数据进行比较，以追踪进度和回归。这可以为分配测试资源的决策提供信息。</li>
+<li><strong>预测分析</strong>：应用机器学习算法基于历史测试数据预测结果。这可以帮助优先安排测试用例和优化测试套件。</li>
+<li><strong>启发式评估</strong>：使用基于经验的技术评估测试失败的重要性及其对产品质量的潜在影响。</li>
+</ul>
+<h4 id="如何将自动化纳入分析测试策略">如何将自动化纳入分析测试策略？<a hidden class="anchor" aria-hidden="true" href="#如何将自动化纳入分析测试策略">#</a></h4>
+<p>将自动化纳入分析型测试策略涉及识别可以从自动化中受益的重复性高、体量大的任务，从而使人类测试人员能够专注于更复杂的测试场景。首先分析测试用例，以确定哪些适合自动化，基于它们的稳定性、频率和复杂性。</p>
+<p>优先考虑对应用程序的质量和用户体验有高影响的测试用例。自动化冒烟测试、回归测试和其他需要频繁运行的关键测试套件。使用基于风险的测试来决定哪些应用程序的区域最容易受到攻击，应该首先自动化。</p>
+<p>利用数据驱动测试自动化不同输入值的场景。这种方法允许更广泛的测试覆盖率并有助于发现边缘情况。实施持续集成（CI）和持续交付（CD）流水线，以在代码检入时触发自动化测试，确保立即反馈应用程序的健康状况。</p>
+<p>优化测试脚本以实现可维护性和可重用性。使用模块化框架和设计模式，如页面对象模型（POM），创建易于更新的可维护测试脚本，以适应应用程序的变化。</p>
+<p>集成与应用程序的技术栈和团队技能集相匹配的测试自动化工具。确保工具支持报告和分析，以便于测试结果的分析。</p>
+<p>最后，根据反馈和测试结果定期审查和完善自动化策略，确保它与不断变化的测试要求保持一致，并继续为测试过程增值。</p>
+<h3 id="最佳实践">最佳实践<a hidden class="anchor" aria-hidden="true" href="#最佳实践">#</a></h3>
+<h4 id="制定分析测试策略的最佳实践有哪些">制定分析测试策略的最佳实践有哪些？<a hidden class="anchor" aria-hidden="true" href="#制定分析测试策略的最佳实践有哪些">#</a></h4>
+<p>开发分析型测试策略的最佳实践包括：</p>
+<ul>
+<li><strong>基于风险、影响和失败可能性优先排序测试用例</strong>。使用基于风险的测试等技术，专注于最关键的区域。</li>
+<li><strong>利用指标和 KPIs 来衡量测试工作的有效性，并做出数据驱动的决策</strong>。</li>
+<li><strong>根据反馈和测试结果不断完善测试策略</strong>。适应软件及其环境的变化。</li>
+<li><strong>促进团队成员之间的协作，共享见解，共同改进测试策略</strong>。</li>
+<li><strong>与 CI/CD 流水线集成，确保测试成为持续集成和交付过程的一部分</strong>，允许立即反馈。</li>
+<li><strong>为测试工件使用版本控制</strong>，跟踪变化并维护测试策略演化的历史。</li>
+<li><strong>实现测试用例的独立性</strong>，确保一个测试的失败不会影响其他测试的执行。</li>
+<li><strong>设计可重用性</strong>，通过创建模块化和参数化的测试，可以轻松地在不同场景中重用。</li>
+<li><strong>选择尽早测试</strong>，在开发生命周期中向左移动，以更早捕捉缺陷并降低成本。</li>
+<li><strong>定期审查和更新测试环境</strong>，使其尽可能接近生产环境，避免特定于环境的问题。</li>
+<li><strong>清晰记录假设和依赖</strong>，确保测试策略对所有利益相关者透明且易于理解。</li>
+<li><strong>平衡手动和自动化测试</strong>，利用每种方法的优势，确保全面的覆盖率。</li>
+</ul>
+<p>记住，一个健全的分析型测试策略不是静态的；它随着项目的发展而演变，需要持续的关注和完善。</p>
+<h4 id="如何优化分析测试策略以提高效率">如何优化分析测试策略以提高效率？<a hidden class="anchor" aria-hidden="true" href="#如何优化分析测试策略以提高效率">#</a></h4>
+<p>为了提高分析型测试策略的效率，请考虑以下建议：</p>
+<ul>
+<li><strong>基于风险、影响和失败可能性优先排序测试用例</strong>。使用风险基础测试等技术专注于最关键的区域。</li>
+<li><strong>利用测试自动化处理重复性和回归任务</strong>。自动化最稳定和高价值的测试以节省时间并减少人为错误。</li>
+<li><strong>在 CI/CD 流水线中实施持续测试</strong>。这确保了即时反馈和快速识别问题。</li>
+<li><strong>利用测试数据管理确保有高质量、相关的测试数据可用，避免瓶颈</strong>。</li>
+<li><strong>采用并行测试同时运行多个测试</strong>，减少总体测试执行时间。</li>
+<li><strong>定期审查和维护测试</strong>，移除过时或冗余的测试，保持测试套件精简且相关。</li>
+<li><strong>应用静态代码分析在不执行代码的情况下尽早捕获缺陷</strong>。</li>
+<li><strong>使用仪表盘和报告工具监控和分析测试结果</strong>，快速识别趋势和关注区域。</li>
+<li><strong>收集利益相关者的反馈，持续完善测试策略</strong>，专注于提供最大价值的领域。</li>
+<li><strong>投资于培训和知识分享</strong>，让团队了解最佳实践和新工具，以提高效率。</li>
+</ul>
+<p>通过关注这些领域，你可以简化你的分析型测试策略，确保它随着时间的推移保持有效和高效。</p>
+<h4 id="制定分析测试策略时需要避免哪些常见错误">制定分析测试策略时需要避免哪些常见错误？<a hidden class="anchor" aria-hidden="true" href="#制定分析测试策略时需要避免哪些常见错误">#</a></h4>
+<p>在制定分析型测试策略时，应避免以下常见错误：</p>
+<ul>
+<li><strong>忽视非功能性需求</strong>：仅关注功能性需求可能会错失性能、安全性和可用性测试的机会。</li>
+<li><strong>风险分析不足</strong>：未能正确评估风险可能导致关键区域的测试覆盖不足。</li>
+<li><strong>忽略测试环境差异</strong>：确保测试对生产环境相关，避免因差异导致的误报/漏报。</li>
+<li><strong>忽视数据质量</strong>：使用质量差或不现实的测试数据可能会扭曲测试结果，无法揭示问题。</li>
+<li><strong>低估维护工作</strong>：自动化测试需要定期更新才能保持有效；未规划维护可能会使测试套件过时。</li>
+<li><strong>缺乏协作</strong>：未让所有利益相关者，包括开发人员、业务分析师和运营人员参与，可能导致测试目标不一致。</li>
+<li><strong>测试设计僵化</strong>：创建过于僵硬的测试可能会因应用程序的轻微变化而轻易失效。</li>
+<li><strong>过度自动化</strong>：试图自动化所有测试可能适得其反；根据价值和稳定性优先安排测试。</li>
+<li><strong>忽略手动测试</strong>：某些测试更适合手动执行；认识到何时手动测试更合适。</li>
+<li><strong>跳过测试审查</strong>：未与同伴审查测试可能导致遗漏缺陷和知识孤岛。</li>
+<li><strong>糟糕的报告习惯</strong>：测试结果的无效沟通可能阻碍识别和解决可操作的见解。</li>
+</ul>
+<p>记住，分析型测试策略是一份随项目演进而变化的活文档。定期回顾和调整你的策略，确保它保持有效且与项目目标一致。</p>
+<h2 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h2>
+<ul>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读<a hidden class="anchor" aria-hidden="true" href="#推荐阅读">#</a></h2>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/zhcategories/bruno/">使用 Bruno 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 K6 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>30 天 AI 测试挑战活动：第二十三天：评估 AI 在视觉测试中的有效性并讨论其优势</span>
+  </a>
+  <a class="next" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>30 天 AI 测试挑战活动：第二十二天：思考团队需要哪些技能才能在 AI 辅助测试中取得成功</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on x"
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on telegram"
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Analytical Test Strategy 分析性测试策略 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAnalytical%20Test%20Strategy%20%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-analytical-test-strategy%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<script src="https://giscus.app/client.js"
+        data-repo="naodeng/naodeng.tech"
+        data-repo-id="R_kgDOHntNtg"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOHntNts4Cavst"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

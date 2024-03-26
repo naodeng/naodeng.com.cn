@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jan 2024 17:58:14 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2024 10:05:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/api-automation-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage AI Assistant Postbot Trial Introduction</title>
+      <link>http://localhost:1313/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</link>
+      <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</guid>
+      <description>This blog post is about the advanced usage of the Postman API Automation Testing tutorial, focusing on the trial of the AI assistant Postbot. The article may include the author&amp;rsquo;s introduction to Postbot&amp;rsquo;s features, how to use it, advantages and scenarios. By sharing the trial experience of Postbot, readers can learn how to optimize the API automation testing process with the help of AI technology to improve testing efficiency and accuracy. This tutorial is expected to provide Postman users with an opportunity to learn more about and try out the AI assistant, as well as provide guidance and inspiration for applying new technologies in API testing.</description>
+    </item>
     <item>
       <title>Bruno API Automation Testing Tutorial: Building a Bruno API Automation Test project from 0 to 1</title>
       <link>http://localhost:1313/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/</link>

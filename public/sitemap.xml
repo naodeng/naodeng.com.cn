@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://naodeng.com.cn/en/sitemap.xml</loc><lastmod>2024-03-13T10:06:44+08:00</lastmod></sitemap><sitemap><loc>https://naodeng.com.cn/zh/sitemap.xml</loc><lastmod>2024-03-13T10:06:44+08:00</lastmod></sitemap></sitemapindex>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>http://localhost:1313/en/sitemap.xml</loc>
+    
+      <lastmod>2024-03-26T20:06:44+08:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>http://localhost:1313/zh/sitemap.xml</loc>
+    
+      <lastmod>2024-03-26T20:06:44+08:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>

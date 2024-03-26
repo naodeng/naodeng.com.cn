@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 19 Feb 2024 12:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2024 19:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享您的发现</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</link>
+      <pubDate>Sun, 17 Mar 2024 19:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第十六天，旨在评估采用 AI 进行无障碍测试，并分享个人的发现。文章可能涵盖作者对使用 AI 进行无障碍测试的实际应用经验，包括 AI 工具的选择、测试方法的改进、测试结果的有效性等方面。通过分享对采用 AI 进行无障碍测试的评估和发现，读者将了解作者在实际测试场景中的应用情况，并从中汲取经验和教训。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在无障碍测试领域应用的机会，并促进行业对话和技术创新。</description>
+    </item>
     <item>
       <title>软件测试术语分享:Accessibility Testing 无障碍测试</title>
       <link>http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/</link>

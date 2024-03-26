@@ -63,11 +63,9 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
 
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://naodeng-umami.vercel.app/hugo.js"></script>
+<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-     crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
 <script>
 var doNotTrack = false;
@@ -81,13 +79,14 @@ if (!doNotTrack) {
 <meta property="og:title" content="SuperTest 接口自动化测试教程：进阶用法 - 常用断言" />
 <meta property="og:description" content="聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/" /><meta property="og:image" content="http://localhost:1313/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-08T17:38:34+08:00" />
 <meta property="article:modified_time" content="2023-11-08T17:38:34+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="SuperTest 接口自动化测试教程：进阶用法 - 常用断言"/>
 <meta name="twitter:description" content="聚焦于 Supertest 的高级用法，特别关注常用断言。您将学习如何使用这些断言来验证 API 响应，包括状态码、响应内容、和响应头部等。"/>
 
@@ -125,7 +124,7 @@ if (!doNotTrack) {
   "articleBody": "常用断言 下面会一次介绍一下 SuperTest,CHAI 和 Jest 常用的断言。\nSuperTest 的内置断言 Supertest 是基于SuperAgent 构建的一个更高级的库，所以 Supertest 可以很轻松的使用 SuperAgent 的 HTTP 断言。\n示例如下：\n.expect(status[, fn]) //断言响应状态代码。 .expect(status, body[, fn]) // 断言响应状态代码和正文。 .expect(body[, fn]) // 用字符串、正则表达式或解析后的正文对象断言响应正文文本。 .expect(field, value[, fn]) // 用字符串或正则表达式断言标题字段值。 .expect(function(res) {}) // 传递一个自定义断言函数。它将得到要检查的响应对象。如果检查失败，则抛出错误。 CHAI 的常用断言 相等性断言（Equality Assertions） expect(actual).to.equal(expected) // 验证实际值是否等于期望值。 expect(actual).to.deep.equal(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。 expect(actual).to.eql(expected) // 与 deep.equal 一样，用于深度相等的比较。 包含性断言（Inclusion Assertions） expect(array).to.include(value) // 验证数组是否包含指定的值。 expect(string).to.include(substring) // 验证字符串是否包含指定的子字符串。 expect(object).to.include(key) // 验证对象是否包含指定的键。 类型断言（Type Assertions） expect(actual).to.be.a(type) // 验证实际值的类型是否等于指定类型。 expect(actual).to.be.an(type) // 与 to.be.a 一样，用于类型断言。 expect(actual).to.be.an.instanceof(constructor) // 验证实际值是否是指定构造函数的实例。 真假性断言（Truthiness Assertions） expect(value).to.be.true // 验证值是否为真。 expect(value).to.be.false // 验证值是否为假。 expect(value).to.exist // 验证值是否存在，非 null 和非 undefined。 长度断言（Length Assertions） expect(array).to.have.length(length) // 验证数组的长度是否等于指定长度。 expect(string).to.have.lengthOf(length) // 验证字符串的长度是否等于指定长度。 空值断言（Empty Assertions） expect(array).to.be.empty // 验证数组是否为空。 expect(string).to.be.empty // 验证字符串是否为空。 范围断言（Range Assertions） expect(value).to.be.within(min, max) // 验证值是否在指定的范围内。 expect(value).to.be.above(min) // 验证值是否大于指定值。 expect(value).to.be.below(max) // 验证值是否小于指定值。 异常断言（Exception Assertions） expect(fn).to.throw(error) // 验证函数是否抛出指定类型的异常。 expect(fn).to.throw(message) // 验证函数是否抛出包含指定消息的异常。 存在性断言（Existence Assertions） expect(object).to.have.property(key) // 验证对象是否包含指定属性。 expect(array).to.have.members(subset) // 验证数组是否包含指定的成员。 更多 chai 的断言，请查看https://www.chaijs.com/api/assert/\nJest 的常用断言 相等性断言（Equality Assertions） expect(actual).toBe(expected) // 验证实际值是否严格等于期望值。 expect(actual).toEqual(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。 不相等性断言 expect(actual).not.toBe(expected) // 验证实际值与期望值不相等。 包含性断言（Inclusion Assertions） expect(array).toContain(value) // 验证数组是否包含指定的值。 类型断言（Type Assertions） expect(actual).toBeTypeOf(expected) // 验证实际值的类型是否等于指定类型。 真假性断言（Truthiness Assertions） expect(value).toBeTruthy() // 验证值是否为真。 expect(value).toBeFalsy() // 验证值是否为假。 异步断言 await expect(promise).resolves.toBe(expected) // 验证异步操作是否成功完成并返回与期望值匹配的结果。 异常断言 expect(fn).toThrow(error) // 验证函数是否抛出指定类型的异常。 expect(fn).toThrow(message) // 验证函数是否抛出包含指定消息的异常。 范围断言 expect(value).toBeGreaterThanOrEqual(min) // 验证值是否大于或等于指定的最小值。 expect(value).toBeLessThanOrEqual(max) // 验证值是否小于或等于指定的最大值。 对象属性断言 expect(object).toHaveProperty(key, value) // 验证对象是否包含指定属性，并且该属性的值等于指定值。 更多 Jest 的断言，请查看https://jestjs.io/docs/expect\n欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "201",
   "inLanguage": "zh",
-  "datePublished": "2023-11-08T17:38:34+08:00",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-08T17:38:34+08:00",
   "dateModified": "2023-11-08T17:38:34+08:00",
   "author":{
     "@type": "Person",
@@ -216,6 +215,17 @@ if (!doNotTrack) {
             <li>
                 <a href="http://localhost:1313/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>

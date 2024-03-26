@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Analytical Test Strategy on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/analytical-test-strategy/</link>
+    <description>Recent content in Analytical Test Strategy on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 26 Mar 2024 12:50:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/analytical-test-strategy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>软件测试术语分享:Analytical Test Strategy 分析性测试策略</title>
+      <link>http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/</link>
+      <pubDate>Tue, 26 Mar 2024 12:50:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/</guid>
+      <description>这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。</description>
+    </item>
+  </channel>
+</rss>

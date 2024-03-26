@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>打造你的 AI 测试宣言 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-ai-%E6%B5%8B%E8%AF%95%E5%AE%A3%E8%A8%80/</link>
+    <description>Recent content in 打造你的 AI 测试宣言 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 24 Mar 2024 10:06:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-ai-%E6%B5%8B%E8%AF%95%E5%AE%A3%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 天 AI 测试挑战活动：第二十一天：打造你的 AI 测试宣言</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/</link>
+      <pubDate>Sun, 24 Mar 2024 10:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第二十一天，鼓励参与者打造自己的 AI 测试宣言。文章可能包括作者对于 AI 测试的核心价值观、愿景和承诺的阐述，以及对于 AI 在测试中的应用原则和准则的思考。通过分享个人的 AI 测试宣言，读者将了解到作者对于 AI 在测试领域的重要性和应用价值的深刻理解，以及对于未来 AI 测试发展的愿景和期待。这个系列活动有望为测试专业人士提供一个表达个人观点和价值观的平台，并促进行业对于 AI 在测试中的发展和应用的深入讨论。</description>
+    </item>
+  </channel>
+</rss>

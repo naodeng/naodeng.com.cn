@@ -11,13 +11,20 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 20:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge</title>
       <link>http://localhost:1313/series/30-days-of-ai-in-testing-challenge/</link>
-      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
+      <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
       <guid>http://localhost:1313/series/30-days-of-ai-in-testing-challenge/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Postman API Automation Testing Tutorial</title>
+      <link>http://localhost:1313/series/postman-api-automation-testing-tutorial/</link>
+      <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
+      <guid>http://localhost:1313/series/postman-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
@@ -46,13 +53,6 @@
       <link>http://localhost:1313/series/api-automation-testing-tutorial/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
       <guid>http://localhost:1313/series/api-automation-testing-tutorial/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Postman API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/postman-api-automation-testing-tutorial/</link>
-      <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/series/postman-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
