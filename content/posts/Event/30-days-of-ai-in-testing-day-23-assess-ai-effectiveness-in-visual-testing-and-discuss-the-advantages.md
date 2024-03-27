@@ -9,7 +9,7 @@ series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
 ---
 
-## Day 22: Day 23: Assess AI effectiveness in visual testing and discuss the advantages
+## Day 23: Assess AI effectiveness in visual testing and discuss the advantages
 
 Welcome to Day 23! Today, we’ll assess the effectiveness of AI in visual testing compared to non-AI visual testing methods. The use of AI to detect visual anomalies within graphical user interfaces (GUIs) has great promise. So, let’s explore the potential advantages and pitfalls of adopting an AI-assisted visual testing approach.
 
