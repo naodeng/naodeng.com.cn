@@ -79,7 +79,9 @@ Percy 官方介绍：
 注册账号且邮箱校验通过后可以新建项目进行试用，和 Applitools Eyes 的步骤类似
 
 - 新建项目：可以选择是 web app 项目还是 mobile app 项目，也可以选择代码管理工具 git 或者 github
+
 ![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png)
+
 - 选择代码编写工具
 - 获取 Percy token
 - 设置 Percy 本地环境​
@@ -163,9 +165,9 @@ npx percy exec -- cypress run
 - 重新运行 demo 测试
 - 查看 percy 识别结果
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
-
 ![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png)
+
+![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
 
 - 结论：也能成功识别到页面小图标的变化
 
