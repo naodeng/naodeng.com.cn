@@ -1,7 +1,7 @@
 ---
 author: "nao.deng"
 title: "30 Days of AI in Testing Challenge: Day 7: Research and share prompt engineering techniques"
-date: "2024-03-08T13:06:44+08:00"
+date: "2024-03-08T13:07:44+08:00"
 summary: "This blog post is the seventh day of the 30-Days AI Testing Challenge, which requires participants to research and share real-time engineering technology. The post may include a definition of real-time engineering technology, its applications in the testing domain, introductions to relevant tools and technologies, and the author's perspective on real-time engineering technology. By sharing research on real-time engineering technology, readers will gain insights into its potential value in testing and how to effectively apply this technology. This series of activities aims to provide a platform for testing professionals to deeply understand and discuss emerging technologies."
 tags: ["Research and share prompt engineering techniques","prompt engineering","Prompt"]
 categories: ["Testing Challenge"]
