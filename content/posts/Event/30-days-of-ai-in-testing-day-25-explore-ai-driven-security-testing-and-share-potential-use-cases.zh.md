@@ -147,6 +147,40 @@ CYFIRMA 的文章讨论了在安全测试中使用 ChatGPT AI 的机遇和挑战
 
 30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。
 
+### 活动介绍
+
+通过 30 天 AI 测试挑战赛，在整个 3 月份升级您的测试游戏！
+
+- 2024 年 3 月 1 日 - 2024 年 4 月 1 日
+- 00:00 - 23:00 英国夏令时
+- 地点：线上
+
+召集所有测试人员、人工智能爱好者以及任何对人工智能如何重塑软件质量感到好奇的人。准备好探索人工智能的世界了吗？今年 3 月，我们将启动 30 天人工智能测试，诚邀您加入这一使命！
+
+### 它是什么？
+
+在 30 多个启发性的日子里，与充满活力的社区一起，您将踏上探索人工智能在测试中的潜力的旅程。每天，我们都会探索和讨论新的概念、工具和实践，以揭开人工智能的神秘面纱并增强您的测试工具包。
+
+### 为什么要参加？
+
+逐步提升您的技能：每天都会有一项新的、可管理的任务建立在前一项任务的基础上。帮助您逐步加深对 AI 测试的理解。
+
+提高您的测试效率和有效性：探索人工智能可用于改进日常测试、提高效率和有效性的多种方式。
+
+联系与协作：在 The Club 论坛上与全球测试人员和 AI 爱好者社区互动，分享见解并获得灵感和支持。
+实现 AI 雄心：利用此挑战作为实现 AI 测试目标的垫脚石。深入研究并解决满足您人工智能抱负的任务。
+领导和启发：通过在挑战期间分享您的人工智能之旅和发现，您将在提升社区知识和技能方面发挥至关重要的作用。
+
+### 它将如何运作？
+
+整个三月，MoT 团队的一名成员将在俱乐部论坛上发布一项新的简短每日任务，这将增强您对测试中的 AI 的理解。
+
+然后，您将回复主题帖子以及对每项日常任务的回复。请随意分享您的想法、提出问题、寻求建议或向他人提供支持。
+
+最后，不要忘记通过参与其他人的回复来鼓励有意义的讨论。如果您发现某人的回复有趣或有帮助，请点击❤️按钮并让他们知道！
+
+不要害怕错过时机；现在注册！注册后，您将收到每项日常任务的电子邮件提醒。
+
 社区官网：<https://www.ministryoftesting.com>
 
 活动链接：<https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>
@@ -176,6 +210,7 @@ CYFIRMA 的文章讨论了在安全测试中使用 ChatGPT AI 的机遇和挑战
 - [第二十一天：打造你的 AI 测试宣言](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/)
 - [第二十二天：思考团队需要哪些技能才能在 AI 辅助测试中取得成功](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/)
 - [第二十三天：评估 AI 在视觉测试中的有效性并讨论其优势](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/)
+- [第二十四天：探索代码解释技术并分享你的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/)
 
 ## 推荐阅读
 

@@ -9,7 +9,6 @@ series: ["30 Days of AI in Testing Challenge"]
 ShowWordCount: true
 ---
 
-
 ## Day 25: Explore AI-driven security testing and share potential use cases
 
 Day 25 is all about **Security Testing**. If you’ve ever tried your hand at Application Security Testing, you’ll know that it’s a complex and evolving topic that usually requires in-depth technical knowledge. Various tools exist to make running security tests and audits easier, but understanding their output can be challenging. Today we want to explore whether AI can make Security Testing more accessible.
