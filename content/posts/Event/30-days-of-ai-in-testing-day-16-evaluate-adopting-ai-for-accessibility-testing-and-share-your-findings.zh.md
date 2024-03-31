@@ -1,15 +1,15 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享您的发现"
+title: "30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现"
 date: "2024-03-17T19:06:44+08:00"
 summary: "这篇博文是关于 30 天 AI 测试挑战活动的第十六天，旨在评估采用 AI 进行无障碍测试，并分享个人的发现。文章可能涵盖作者对使用 AI 进行无障碍测试的实际应用经验，包括 AI 工具的选择、测试方法的改进、测试结果的有效性等方面。通过分享对采用 AI 进行无障碍测试的评估和发现，读者将了解作者在实际测试场景中的应用情况，并从中汲取经验和教训。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在无障碍测试领域应用的机会，并促进行业对话和技术创新。"
-ZHtags: ["评估采用 AI 进行无障碍测试并分享您的发现","提示词","人工智能","无障碍测试"]
+ZHtags: ["评估采用 AI 进行无障碍测试并分享你的发现","提示词","人工智能","无障碍测试"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 ---
 
-## 第 16 天：评估采用 AI 进行无障碍测试并分享您的发现
+## 第 16 天：评估采用 AI 进行无障碍测试并分享你的发现
 
 欢迎来到第 16 天！今天，我们将重点转向人工智能增强无障碍测试的潜力。
 
@@ -22,23 +22,23 @@ ShowWordCount: true
   - 利用 AI 的工具来自动化无障碍检查，分析用户界面是否符合无障碍标准，甚至生成图像的替代文本描述。
   - AI 如何用于解决更复杂的无障碍问题，例如测试屏幕阅读器的兼容性或检测颜色对比度问题。
 
-- **评估适用性于您的环境**：考虑您的具体情况并进行反思：
-  - **无障碍测试需求**：确认在您的项目中无障碍测试至关重要的领域。
-  - **AI 的潜在益处**：评估 AI 驱动的无障碍测试工具或技术如何提升您当前测试流程的效率。
+- **评估适用性于你的环境**：考虑你的具体情况并进行反思：
+  - **无障碍测试需求**：确认在你的项目中无障碍测试至关重要的领域。
+  - **AI 的潜在益处**：评估 AI 驱动的无障碍测试工具或技术如何提升你当前测试流程的效率。
   - **潜在限制**：意识到 AI 在无障碍测试中可能存在的局限性。
 
-- **分享您的发现**：通过回复此帖分享您的见解和学习。考虑分享以下内容：
+- **分享你的发现**：通过回复此帖分享你的见解和学习。考虑分享以下内容：
 
-  - 您发现有用的资源链接
-  - AI 在您的项目中如何改善无障碍测试
-  - 您识别到的潜在限制以及应对策略
-  - 您对 AI 在无障碍测试中的整体看法
+  - 你发现有用的资源链接
+  - AI 在你的项目中如何改善无障碍测试
+  - 你识别到的潜在限制以及应对策略
+  - 你对 AI 在无障碍测试中的整体看法
 
 ### 为什么参加
 
 - **促进无障碍测试的发展**：获取有关 AI 如何为创建包容性应用程序做出贡献的宝贵知识。
-- **发现新机遇**：发现提升您项目无障碍测试水平的潜在方法。
-- **分享您的想法**：通过分享，为他人提供了更深入了解 AI 在无障碍测试中的作用的机会。
+- **发现新机遇**：发现提升你项目无障碍测试水平的潜在方法。
+- **分享你的想法**：通过分享，为他人提供了更深入了解 AI 在无障碍测试中的作用的机会。
 
 ### 任务链接
 
@@ -75,8 +75,8 @@ Applitools 工具关于 AI 无障碍测试助手 Applitools Contrast Advisor 的
 
 - Applitools 使团队能够运行自动可访问性测试来验证 WCAG，以帮助确保法规遵从性。
 - 在每个版本上运行可访问性测试以获得最大覆盖范围
-- Applitools 无缝集成到您现有的测试自动化工作流程中。它应用视觉人工智能来分析网络和移动应用程序是否存在潜在的对比度可访问性违规。
-- Contrast Advisor 可帮助您将注意力集中在问题区域，确保您不会在不需要关注的区域上浪费时间和周期。此外，我们已将 Contrast Advisor 直接集成到 Eyes 中，因此无需耗时的设置步骤或工作流程更改。启用后，您甚至不需要重新运行现有测试 - 您可以直接跳到现有仪表板开始查看结果。
+- Applitools 无缝集成到你现有的测试自动化工作流程中。它应用视觉人工智能来分析网络和移动应用程序是否存在潜在的对比度可访问性违规。
+- Contrast Advisor 可帮助你将注意力集中在问题区域，确保你不会在不需要关注的区域上浪费时间和周期。此外，我们已将 Contrast Advisor 直接集成到 Eyes 中，因此无需耗时的设置步骤或工作流程更改。启用后，你甚至不需要重新运行现有测试 - 你可以直接跳到现有仪表板开始查看结果。
 - Contrast Advisor 不受扫描网页结构的限制，因此可以为网站、PDF、UX 设计模型以及为 Web、移动 Web、本机移动、桌面等设计的应用程序提供对比建议。
 - 正如 W3C 所指出的，移动设备更容易在强烈阳光等条件下使用，这提高了严格对比度合规性的需要。与传统检测方法相比，Contrast Advisor 使用视觉 AI 使其能够识别本机移动应用程序以及移动网络中可能存在的违规行为。
 - WCAG 指定了文本以及图形和用户界面组件的最小对比度，但传统工具无法检测到此类违规行为。Contrast Advisor 使用视觉 AI 来检测图像、图形、图标、UI 组件和纯文本中的对比度。
@@ -84,7 +84,7 @@ Applitools 工具关于 AI 无障碍测试助手 Applitools Contrast Advisor 的
 
 > Applitools 工具提供的 Applitools Contrast Advisor 官方演示介绍<https://www.youtube.com/watch?v=sGXjPJiQwdk>
 
-### 2.关于**评估适用性于您的环境**
+### 2.关于**评估适用性于你的环境**
 
 #### 我当前项目的**无障碍测试需求**
 
@@ -104,7 +104,7 @@ Applitools 工具关于 AI 无障碍测试助手 Applitools Contrast Advisor 的
 
 因为是使用 AI 工具，而且当前项目为未发布的产品，AI 工具通用的数据隐私安全和结果偏见不确定性都会存在一定的风险。
 
-### 3.关于**分享您的发现**
+### 3.关于**分享你的发现**
 
 我是申请试用了 Applitools 的无障碍测试助手 Applitools Contrast Advisor。以下为试用报告：
 
@@ -224,14 +224,14 @@ test.afterAll(async() => {
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
 - [第九天：评估提示词质量并努力加以改进](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
 - [第十天：批判性分析人工智能生成的测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
 - [第十一天：使用 AI 生成测试数据并评估其功效](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [第十二天：评估您是否信任 AI 支持测试并分享您的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
+- [第十二天：评估你是否信任 AI 支持测试并分享你的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
 - [第十三天：开发你的测试方法并成为 AI 测试的先行者](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 - [第十四天：生成 AI 测试代码并分享你的体验](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
 - [第十五天：衡量测试计划中的短期人工智能](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/)

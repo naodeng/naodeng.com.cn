@@ -11,7 +11,7 @@ ShowWordCount: true
 
 ## 第 15 天：衡量测试计划中的短期人工智能
 
-做得好！您已经完成了我们的 30 天人工智能测试挑战赛的一半！ :tada:
+做得好！你已经完成了我们的 30 天人工智能测试挑战赛的一半！ :tada:
 
 在涵盖了这么多内容之后，中间是休息的好时机，并反思我们个人在测试实践中采用人工智能的准备情况。正如我们在最近的任务中发现的那样，将人工智能集成到我们的测试工作流程中的途径并不是一种一刀切的方法。每个测试人员可能都有独特的环境、优先级和限制，这些都会影响他们的采用准备情况。
 
@@ -21,7 +21,7 @@ ShowWordCount: true
 
 - **1. 回答以下问题**：
 
-    [**在接下来的 6 个月内，您使用 AI 进行测试的可能性有多大？**](https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L#how-likely-are-you-to-use-ai-in-testing-within-the-next-6-months-2)
+    [**在接下来的 6 个月内，你使用 AI 进行测试的可能性有多大？**](https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L#how-likely-are-you-to-use-ai-in-testing-within-the-next-6-months-2)
 
   - 我已经在我的测试活动中使用了 AI
   - 可能
@@ -31,12 +31,12 @@ ShowWordCount: true
 
 > 投票链接：<https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L>
 
-- **2. 奖励步骤**：如果您愿意分享，欢迎回复此帖子并分享您对投票的答案。请解释您选择的原因，例如组织优先事项或资源可用性。如果有的话，您正在考虑哪些具体领域或用例？
+- **2. 奖励步骤**：如果你愿意分享，欢迎回复此帖子并分享你对投票的答案。请解释你选择的原因，例如组织优先事项或资源可用性。如果有的话，你正在考虑哪些具体领域或用例？
 
 ### 为什么参加
 
-- **分享您的观点**：通过分享您的立场和理由，您可以为我们了解社区对 AI 采用的态度做出贡献。这可能会激发、推动甚至改变人们对准备情况和变革步伐的看法。
-- **向他人学习**：参与讨论，从他人的计划、经验和策略中获得见解，这些可以为您自己对 AI 测试采用的方法提供信息和改进。
+- **分享你的观点**：通过分享你的立场和理由，你可以为我们了解社区对 AI 采用的态度做出贡献。这可能会激发、推动甚至改变人们对准备情况和变革步伐的看法。
+- **向他人学习**：参与讨论，从他人的计划、经验和策略中获得见解，这些可以为你自己对 AI 测试采用的方法提供信息和改进。
 
 ### 任务链接
 
@@ -76,14 +76,14 @@ ShowWordCount: true
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
 - [第九天：评估提示词质量并努力加以改进](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
 - [第十天：批判性分析人工智能生成的测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
 - [第十一天：使用 AI 生成测试数据并评估其功效](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [第十二天：评估您是否信任 AI 支持测试并分享您的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
+- [第十二天：评估你是否信任 AI 支持测试并分享你的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
 - [第十三天：开发你的测试方法并成为 AI 测试的先行者](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 - [第十四天：生成 AI 测试代码并分享你的体验](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
 

@@ -60,15 +60,15 @@ ShowWordCount: true
 Percy 官方介绍：
 
 - 消除运输视觉错误的风险：获得整个 UI 的视觉覆盖并充满信心地发布每个版本
-- 快速执行全面的视觉审查：对每次提交运行可视化测试并获得快速、确定的结果，以帮助您高效调试
+- 快速执行全面的视觉审查：对每次提交运行可视化测试并获得快速、确定的结果，以帮助你高效调试
 - 跨浏览器和平台渲染：Percy 在不同的浏览器和平台（桌面和移动设备）中呈现相同的页面，突出显示每个浏览器和平台特定的视觉差异。Percy 捕获 DOM 快照和资源，进行渲染并将它们与之前生成的快照进行比较，以检测视觉变化。
 - 响应式差异：Percy 在生成页面屏幕截图时通过调整浏览器大小，以可配置的响应宽度渲染页面并突出显示视觉差异。它对视觉变化进行分组并忽略噪音，以促进更快、更准确的视觉审查。
 - 快照稳定：Percy 专有的快照稳定技术会自动冻结动画和其他动态元素，以最大限度地减少误报。Percy 确保页面呈现的一致性和确定性。
 
 好像没有 AI 相关的宣传字样，不可能，很快我就查找到了另外一个关于 percy 的官方宣传新闻：[认识 App Percy：适用于本机应用程序的人工智能驱动的自动化视觉测试平台](https://www.browserstack.com/blog/product-launch-app-percy/)
 
-- **AI 驱动的视觉测试**：借助 App Percy，您可以自动检测跨设备和屏幕尺寸的每次提交的视觉缺陷，确保您的 UI 在第一天就达到每位客户的预期。在每次代码推送时，App Percy 的闪电般快速的基础设施都会捕获屏幕截图选择的设备并将它们与基线进行比较以发现视觉缺陷。这里的关键是我们底层的计算机视觉驱动算法——珀西视觉引擎——它可以减少误报，例如由动态元素引起的误报，并仅突出显示那些肉眼可以识别的视觉偏差。
-- **Percy 视觉引擎**：应用程序 Percy 强大的人工智能算法可以检测用户真正关心的变化。它可以通过页面移位检测、处理抗锯齿噪声、智能文本稳定和忽略区域来帮助您减少噪声并简化图像比较。了解有关珀西视觉引擎的更多信息
+- **AI 驱动的视觉测试**：借助 App Percy，你可以自动检测跨设备和屏幕尺寸的每次提交的视觉缺陷，确保你的 UI 在第一天就达到每位客户的预期。在每次代码推送时，App Percy 的闪电般快速的基础设施都会捕获屏幕截图选择的设备并将它们与基线进行比较以发现视觉缺陷。这里的关键是我们底层的计算机视觉驱动算法——珀西视觉引擎——它可以减少误报，例如由动态元素引起的误报，并仅突出显示那些肉眼可以识别的视觉偏差。
+- **Percy 视觉引擎**：应用程序 Percy 强大的人工智能算法可以检测用户真正关心的变化。它可以通过页面移位检测、处理抗锯齿噪声、智能文本稳定和忽略区域来帮助你减少噪声并简化图像比较。了解有关珀西视觉引擎的更多信息
 
 ### 2.关于**测试声明**
 
@@ -199,19 +199,19 @@ npx percy exec -- cypress run
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
 - [第九天：评估提示词质量并努力加以改进](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
 - [第十天：批判性分析人工智能生成的测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
 - [第十一天：使用 AI 生成测试数据并评估其功效](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [第十二天：评估您是否信任 AI 支持测试并分享您的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
+- [第十二天：评估你是否信任 AI 支持测试并分享你的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
 - [第十三天：开发你的测试方法并成为 AI 测试的先行者](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 - [第十四天：生成 AI 测试代码并分享你的体验](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
 - [第十五天：衡量测试计划中的短期人工智能](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/)
-- [第十六天：评估采用 AI 进行无障碍测试并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
-- [第十七天：利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/)
+- [第十六天：评估采用 AI 进行无障碍测试并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
+- [第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/)
 - [第十八天：分享你在 AI 测试中遇到的最大难题](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/)
 - [第十九天：探索 AI 在测试优先级排序中的作用，并评价其利弊](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/)
 - [第二十天：探索 AI 自愈测试的有效性](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/)

@@ -1,15 +1,15 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果"
+title: "30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果"
 date: "2024-03-18T10:06:44+08:00"
 summary: "这篇博文是关于 30 天 AI 测试挑战活动的第十七天，探讨利用人工智能实现缺陷报告自动化，并分享个人的流程和评估结果。文章可能涵盖作者使用人工智能技术自动化缺陷报告的过程，包括工具选择、实施方法、自动化流程的优势以及评估结果。通过分享自动化缺陷报告的流程和评估结果，读者将了解作者在实践中的经验和教训，以及人工智能技术在提高缺陷管理效率方面的潜力。这个系列活动有望为测试专业人士提供一个了解和探索利用人工智能实现缺陷报告自动化的机会，并促进行业技术的进步和创新。"
-ZHtags: ["利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果","提示词","人工智能"]
+ZHtags: ["利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果","提示词","人工智能"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 ---
 
-## 第 17 天：利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果
+## 第 17 天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果
 
 今天是第 17 天！今天，我们将探索使用人工智能自动化缺陷检测和报告流程的潜力。
 
@@ -33,29 +33,29 @@ ShowWordCount: true
   - **漏报**: AI 是否可能完全忽略关键缺陷？
   - **偏见**: AI 是否可能偏向于某些类型的缺陷或代码结构？
 
-- **数据使用和保护**: 调查 AI 工具如何利用您的缺陷数据生成报告。考虑以下问题：
+- **数据使用和保护**: 调查 AI 工具如何利用你的缺陷数据生成报告。考虑以下问题：
 
-  - **数据匿名化**: 您的数据在被 AI 使用之前是否被匿名化？
-  - **数据安全**: 您的数据在工具内部如何安全？
+  - **数据匿名化**: 你的数据在被 AI 使用之前是否被匿名化？
+  - **数据安全**: 你的数据在工具内部如何安全？
   - **数据所有权**: 由 AI 工具收集的数据归谁所有？
 
-- **分享您的发现**: 在此帖子中总结您的经验。考虑包括：
+- **分享你的发现**: 在此帖子中总结你的经验。考虑包括：
 
-  - 您使用的 AI 工具及其功能的体验
-  - 您对缺陷报告质量的评估
-  - 您识别的风险和限制
-  - 您对数据使用和潜在数据保护问题的看法
-  - 您对 AI 在自动化缺陷检测和报告方面的整体评估，考虑：
+  - 你使用的 AI 工具及其功能的体验
+  - 你对缺陷报告质量的评估
+  - 你识别的风险和限制
+  - 你对数据使用和潜在数据保护问题的看法
+  - 你对 AI 在自动化缺陷检测和报告方面的整体评估，考虑：
 
-    - 它与您传统的缺陷报告方法相比如何？
-    - 它是否识别了您可能会忽略的任何缺陷？
+    - 它与你传统的缺陷报告方法相比如何？
+    - 它是否识别了你可能会忽略的任何缺陷？
     - 它如何影响缺陷报告过程的整体效率？
 
 ### 参与原因
 
 - **探索效率提升**: 了解 AI 如何改进缺陷报告流程，潜在地节省时间并提高报告质量。
-- **了解 AI 的限制**: 通过对用于缺陷报告的 AI 工具进行批判性评估，您将深入了解其当前的能力和限制，有助于设定现实的预期。
-- **增强测试实践**: 分享您的发现有助于我们共同理解 AI 在自动化缺陷检测和报告中的作用和潜力。
+- **了解 AI 的限制**: 通过对用于缺陷报告的 AI 工具进行批判性评估，你将深入了解其当前的能力和限制，有助于设定现实的预期。
+- **增强测试实践**: 分享你的发现有助于我们共同理解 AI 在自动化缺陷检测和报告中的作用和潜力。
 
 ### 任务链接
 
@@ -77,7 +77,7 @@ ShowWordCount: true
 
 目前看起来 Applitools eyes 工具的安全风险和数据保护做的一般，本地配置 api key 运行测试后，Applitools eyes 平台就能获取测试过程截图和结果，我个人担心存在数据隐私泄露的问题。
 
-4.**分享您的发现**
+4.**分享你的发现**
 
 基于之前使用其他 AI 测试工具和 这一次使用 Applitools eyes 工具，与人工缺陷报告的差异点：
 
@@ -99,18 +99,18 @@ ShowWordCount: true
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
 - [第九天：评估提示词质量并努力加以改进](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
 - [第十天：批判性分析人工智能生成的测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
 - [第十一天：使用 AI 生成测试数据并评估其功效](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [第十二天：评估您是否信任 AI 支持测试并分享您的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
+- [第十二天：评估你是否信任 AI 支持测试并分享你的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
 - [第十三天：开发你的测试方法并成为 AI 测试的先行者](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 - [第十四天：生成 AI 测试代码并分享你的体验](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
 - [第十五天：衡量测试计划中的短期人工智能](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/)
-- [第十六天：评估采用 AI 进行无障碍测试并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
+- [第十六天：评估采用 AI 进行无障碍测试并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
 
 ## 推荐阅读
 

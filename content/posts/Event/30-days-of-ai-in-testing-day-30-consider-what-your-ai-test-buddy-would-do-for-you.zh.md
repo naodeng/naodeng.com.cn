@@ -1,36 +1,40 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第二十九天：分享影响你 AI 测试方法论的人物"
-date: "2024-03-31T17:06:44+08:00"
+title: "30 天 AI 测试挑战活动：第三十天：设想你的 AI 测试助手会为你做什么"
+date: "2024-03-31T19:06:44+08:00"
 summary: ""
-ZHtags: ["分享影响你 AI 测试方法论的人物","提示词","人工智能"]
+ZHtags: ["设想你的 AI 测试助手会为你做什么","提示词","人工智能"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
 Draft: true
 ---
 
-## 第 29 天：分享影响你 AI 测试方法论的人物
+## 第 30 天：设想你的 AI 测试助手能为你做些什么
 
-在这场持续 30 天的 AI 测试挑战旅程中，你接触了众多关于测试中 AI 的概念、工具及不同的视角。随着我们即将完成这一系列挑战，现在是时候回顾那些在你心中留下深刻印象、影响了你对 AI 测试思考和方法的人物、理念和见解了。通过分享对你而言哪些人的工作或他们对测试中 AI 的解释方法特别有帮助，我们可以汇聚一份值得关注和深入探索的人物名单，为挑战之后的学习之旅增添价值！
+我们终于来到了 30 天 AI 测试挑战的终章！！[Bug congrats](https://store.ministryoftesting.com/search?q=Bug+Congrats%21&options%5Bprefix%5D=last)参与本次挑战的你！:clap: 每一份贡献都让这个月的活动更加丰富，感谢你以任何形式的参与。:pray:
+
+今天，我们邀请你放飞想象，构思出你在测试探险中的终极 AI 伙伴。想象一个能完美匹配你需求的 AI 助手，能够增强你的测试流程，并在软件测试的复杂世界中成为你的得力助手。
+
+设计你理想中的 AI 测试助手。考虑那些能让这位 AI 伙伴成为你日常测试不可或缺之选的功能、特性和交互方式。
 
 ### 任务步骤
 
-- **反思与认同**：回想在这次挑战中给你留下深刻印象的声音是谁的。是谁提供了让你眼界大开、在 AI 和测试方面思考和应用的新路径的见解？哪些工具或工作方法让你受益匪浅？思考那些对你理解 AI 在测试中作用有重大影响的个人、研究人员、专家、工具开发者或同行。
-- **整理你的影响力来源**：将这些个人和资源列成一份名单。无论是洞察 AI 深奥的专家、一篇颠覆性的文章或书籍、一款创新工具，或是一个启发性贡献巨大的参与者，每一位都为你的 AI 测试旅程增加了不少价值。
-- **分享与指导**：在回应这篇帖子时，突出你的影响力名单，并简要描述他们的贡献以及他们是如何塑造你的观点的。
-- **额外收获**：你是否知道，通过参与这个挑战的任何部分，你无疑已经影响了社区中的其他人？无论你在 AI 测试之旅中处于哪个阶段，你都有宝贵的知识和经验可以分享，这些可以帮助社区中的其他人。考虑在挑战结束后，通过个人博客、[与我们共同创作内容](https://www.ministryoftesting.com/contribute)或其他方式，继续分享你在测试中使用 AI 的所学所感。
+- **构想完美的助手**：回顾你的日常测试流程，找出 AI 能提供帮助的地方。哪些特性和能力会让一个 AI 助手对你来说真正有用呢？
+- **设计形象和交互界面**：发挥你的创意，想象你的 AI 测试助手会是什么样子。它的形象是什么？它将如何与你沟通，通过哪种界面？
+- **细化关键功能和局限性**：详述你的 AI 助手擅长的任务。它能否自动执行重复任务、生成测试用例或提供实时见解？同时，也要明确它不能做什么。
+- **分享你的愿景**：通过回复本帖，让你的 AI 测试助手栩栩如生。欢迎包含草图或详细描述。描述这个助手如何融入你的工作流程，如何提升生产力，并且优化你的测试策略。
 
 ### 参与的理由
 
-- **策划宝贵资源**：帮助他人发现在挑战之后继续学习的宝贵资源，并通过与同伴的影响互动，发掘新的灵感和知识。
-- **反思个人成长**：强调你的影响源，提供了一个反思你成长之旅的机会，展示了你对 AI 测试观点和方法的进化。
-  
+- **激发创新**：为未来的工具定下愿景，用真正需要的功能激发潜在工具开发者的创新灵感。
+- **展望未来**：这个任务鼓励你思考 AI 在测试中角色的演进，并为即将到来的技术进步做好准备，让你能够迎接未来的挑战和机遇。
+
 ### 任务链接
 
-<https://club.ministryoftesting.com/t/day-29-share-whose-work-is-influencing-your-ai-in-testing-approach/75497>
+<https://club.ministryoftesting.com/t/day-30-consider-what-your-ai-test-buddy-would-do-for-you/75499>
 
-## 我的第 29 天任务
+## 我的第 30 天任务
 
 ## 关于活动
 
@@ -104,6 +108,7 @@ Draft: true
 - [第二十六天：研究在 AI 测试中最大限度地减少碳足迹的策略](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/)
 - [第二十七天：评估你的团队是否准备好采用人工智能辅助测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-27-assess-your-teams-readiness-to-adopt-ai-assisted-testing/)
 - [第二十八天：构建你的 AI 工具](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-28-build-your-own-ai-tools/)
+- [第二十九天：分享影响你 AI 测试方法论的人物](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-29-share-whose-work-is-influencing-your-ai-in-testing-approach/)
 
 ## 推荐阅读
 

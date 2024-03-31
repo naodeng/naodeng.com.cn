@@ -17,30 +17,30 @@ ShowWordCount: true
 
 ### 任务步骤
 
-今天的任务是选择一个生成测试数据的工具，并在您的上下文中尝试一个测试数据生成问题。这可能是选择数据来测试一个行为，或者生成许多数据点来填充数据库。
+今天的任务是选择一个生成测试数据的工具，并在你的上下文中尝试一个测试数据生成问题。这可能是选择数据来测试一个行为，或者生成许多数据点来填充数据库。
 
-1. **选择您的首选工具**：回顾前几天编制的工具列表，找到一个您想尝试生成测试数据的工具。或者您可以尝试使用像 ChatGPT 或 CoPilot 这样的大型语言模型生成数据。
+1. **选择你的首选工具**：回顾前几天编制的工具列表，找到一个你想尝试生成测试数据的工具。或者你可以尝试使用像 ChatGPT 或 CoPilot 这样的大型语言模型生成数据。
 
 2. **找到一个数据问题来解决**：选择一个测试数据生成问题或挑战。如果你没有一个（幸运的你！），那么创造一个或请求社区提供他们的数据挑战示例。
 
-3. **尝试使用该工具**：了解该工具如何生成数据，并尝试为您选择的场景生成测试数据。
+3. **尝试使用该工具**：了解该工具如何生成数据，并尝试为你选择的场景生成测试数据。
 
-4. **评估生成的数据**：回顾生成的数据的质量和完整性。您可能需要考虑的一些观点包括：
+4. **评估生成的数据**：回顾生成的数据的质量和完整性。你可能需要考虑的一些观点包括：
 
    a. 生成数据有多容易？
    b. 数据生成有多灵活？
-   c. 生成的数据是否满足您的需求？它是否真实？
+   c. 生成的数据是否满足你的需求？它是否真实？
 
-5. **分享您的发现**：像往常一样，与社区分享您的发现，以便他们可以从您的见解中受益。考虑分享：
+5. **分享你的发现**：像往常一样，与社区分享你的发现，以便他们可以从你的见解中受益。考虑分享：
 
-   a. 您试图解决的数据问题以及您认为该工具的性能如何。
-   b. 您对工具及其生成的数据的正面和负面看法。
+   a. 你试图解决的数据问题以及你认为该工具的性能如何。
+   b. 你对工具及其生成的数据的正面和负面看法。
    c. 如何改进生成的数据。
-   d. 该工具如何帮助您的日常测试活动？
+   d. 该工具如何帮助你的日常测试活动？
 
 ### 为什么参与
 
-- **学习生成测试数据的新方法**：通过参与任务，您将了解解决老问题的新方法。
+- **学习生成测试数据的新方法**：通过参与任务，你将了解解决老问题的新方法。
 
 ### 任务链接
 
@@ -48,7 +48,7 @@ ShowWordCount: true
 
 ## 我的第 11 天任务
 
-### 1. 关于**选择您的首选工具**
+### 1. 关于**选择你的首选工具**
 
 我优先考虑的是 ChatGPT，我会同时使用 ChatGPT3.5 和 ChatGPT 4 来进行结果对比验证
 
@@ -133,7 +133,7 @@ ShowWordCount: true
 
 ![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/It0A4c.png)
 
-### 5. **分享您的发现**
+### 5. **分享你的发现**
 
 日常工作中我需要生成测试数据的场景，我会通过提示词和补充上下文来与 ChatGPT 多沟通，第一步先通过提示词和业务场景让 ChatGPT 生成初版的测试数据结果，然后基于初版结果进行多次的上下文补充和规则补充才能得到一份可用的数据，最后进行人工审核和筛选后再用于工作。
 
@@ -155,7 +155,7 @@ ShowWordCount: true
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)

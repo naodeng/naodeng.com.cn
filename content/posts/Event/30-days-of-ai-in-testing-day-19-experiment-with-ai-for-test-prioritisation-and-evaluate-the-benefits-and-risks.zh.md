@@ -46,14 +46,14 @@ ShowWordCount: true
     - “测试/质量保证怎么没发现这个问题？”是一个常见但不公平的抱怨——如果是 AI 做出的测试决策，这会如何改变？
     - 如何缓解这些风险？
     - 如果我们使用人参与循环来降低风险，这会对使用人工智能的好处产生什么影响？
-  - 您如何公正地评估人工智能工具在这项任务中的表现？
-  - 通过回复这篇文章来分享您的主要见解。考虑分享：
-    - 您的背景的简要概述（例如您从事的行业或您测试的应用程序类型）。
-    - 分享您对采用人工智能进行测试优先级排序和选择的好处和风险的重要见解。
+  - 你如何公正地评估人工智能工具在这项任务中的表现？
+  - 通过回复这篇文章来分享你的主要见解。考虑分享：
+    - 你的背景的简要概述（例如你从事的行业或你测试的应用程序类型）。
+    - 分享你对采用人工智能进行测试优先级排序和选择的好处和风险的重要见解。
 
 ### 为什么参加
 
-- **了解人工智能可以在哪些方面提供帮助**：人们对使用人工智能来改进和加速测试感到兴奋/炒作。对于管理大量测试、复杂系统或耗时测试的团队来说，在选择测试和确定测试优先级方面更多地由数据驱动可能会带来真正的好处。通过参与今天的任务，您可以批判性地评估它是否适合您的环境，了解将责任委托给人工智能的具体风险，并做好更好的准备，就基于人工智能的测试选择和优先级做出深思熟虑的决定。
+- **了解人工智能可以在哪些方面提供帮助**：人们对使用人工智能来改进和加速测试感到兴奋/炒作。对于管理大量测试、复杂系统或耗时测试的团队来说，在选择测试和确定测试优先级方面更多地由数据驱动可能会带来真正的好处。通过参与今天的任务，你可以批判性地评估它是否适合你的环境，了解将责任委托给人工智能的具体风险，并做好更好的准备，就基于人工智能的测试选择和优先级做出深思熟虑的决定。
 
 ### 任务链接
 
@@ -153,19 +153,19 @@ ShowWordCount: true
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
 - [第九天：评估提示词质量并努力加以改进](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/)
 - [第十天：批判性分析人工智能生成的测试](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/)
 - [第十一天：使用 AI 生成测试数据并评估其功效](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/)
-- [第十二天：评估您是否信任 AI 支持测试并分享您的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
+- [第十二天：评估你是否信任 AI 支持测试并分享你的想法](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/)
 - [第十三天：开发你的测试方法并成为 AI 测试的先行者](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/)
 - [第十四天：生成 AI 测试代码并分享你的体验](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/)
 - [第十五天：衡量测试计划中的短期人工智能](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/)
-- [第十六天：评估采用 AI 进行无障碍测试并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
-- [第十七天：利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/)
+- [第十六天：评估采用 AI 进行无障碍测试并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/)
+- [第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/)
 - [第十八天：分享你在 AI 测试中遇到的最大难题](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/)
 
 ## 推荐阅读

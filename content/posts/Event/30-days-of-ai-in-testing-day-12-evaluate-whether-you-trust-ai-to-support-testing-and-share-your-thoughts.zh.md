@@ -1,9 +1,9 @@
 ---
 author: "nao.deng"
-title: "30 天 AI 测试挑战活动：第十二天：评估您是否信任 AI 支持测试并分享您的想法"
+title: "30 天 AI 测试挑战活动：第十二天：评估你是否信任 AI 支持测试并分享你的想法"
 date: "2024-03-13T10:06:44+08:00"
 summary: "这篇博文是 30 天 AI 测试挑战活动的第十二天，要求参与者评估是否信任 AI 支持测试，并分享他们的想法。博文可能包括作者对于在测试过程中依赖 AI 的信任程度、其对测试结果的可靠性和准确性的看法，以及是否愿意将 AI 与传统测试方法相结合的观点。通过分享关于对 AI 信任度的评估和看法，读者将了解作者在实际应用中对 AI 在测试中的信任程度以及对其潜在优势和限制的理解。这个系列活动有望为测试专业人士提供一个深入了解和讨论在测试中信任 AI 的实际案例，并促进更广泛的行业对话。"
-ZHtags: ["评估您是否信任 AI 支持测试并分享您的想法","提示词","人工智能"]
+ZHtags: ["评估你是否信任 AI 支持测试并分享你的想法","提示词","人工智能"]
 ZHcategories: ["软件测试活动"]
 ZHseries: ["30 天 AI 测试挑战活动"]
 ShowWordCount: true
@@ -114,7 +114,7 @@ ShowWordCount: true
 - [第二天：阅读有关测试中的人工智能的介绍性文章并分享](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/)
 - [第三天：AI 在测试中的多种应用方式](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/)
 - [第四天：观看有关测试中人工智能的任何问题视频并分享主要收获](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/)
-- [第五天：确定一个测试中的人工智能案例研究，并分享您的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
+- [第五天：确定一个测试中的人工智能案例研究，并分享你的发现](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/)
 - [第六天：探索并分享对 AI 测试工具的见解](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/)
 - [第七天：研究并分享提示词工程技术](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/)
 - [第八天：制作详细的 Prompt 来支持测试活动](https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/)
