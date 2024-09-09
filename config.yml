@@ -75,6 +75,8 @@ languages:
                 - name: Series
                   url: series/
                   weight: 10
+                - name: Status
+                  url: https://status.naodeng.com.cn
                 - name: Dashboard
                   url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
 
@@ -103,6 +105,8 @@ languages:
                 - name: 系列
                   url: zhseries
                   weight: 10
+                - name: 状态
+                  url: https://status.naodeng.com.cn
                 - name: 网站统计
                   url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
         Params:
