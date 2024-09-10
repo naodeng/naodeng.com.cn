@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/others/cypress-demo2/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Cypress UI 自动化测试框架学习（2）- 测试报告" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Cypress UI 自动化测试框架学习（2）- 测试报告" />
 <meta property="og:description" content="文章介绍 Cypress UI 自动化测试框架学习如何去使用不同格式的 cypress 自动化测试报告模版" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/others/cypress-demo2/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -244,47 +258,108 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2022-05-09 00:00:00 +0000 UTC'>五月 9, 2022</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Others/cypress-demo2.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2" aria-label="写在前面">写在前面</a></li>
-                <li>
-                    <a href="#%e5%89%8d%e7%bd%ae%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c" aria-label="前置准备工作">前置准备工作</a></li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b" aria-label="常用报告类型">常用报告类型</a><ul>
-                        
-                <li>
-                    <a href="#spec-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="spec 格式报告">spec 格式报告</a></li>
-                <li>
-                    <a href="#dot-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Dot 格式报告">Dot 格式报告</a></li>
-                <li>
-                    <a href="#json-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="json 格式报告">json 格式报告</a></li>
-                <li>
-                    <a href="#list-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="List 格式报告">List 格式报告</a></li>
-                <li>
-                    <a href="#nyan-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="NYAN 格式报告">NYAN 格式报告</a></li></ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2" aria-label="写在前面">写在前面</a></li>
+                    <li>
+                        <a href="#%e5%89%8d%e7%bd%ae%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c" aria-label="前置准备工作">前置准备工作</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b" aria-label="常用报告类型">常用报告类型</a><ul>
+                            
+                    <li>
+                        <a href="#spec-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="spec 格式报告">spec 格式报告</a></li>
+                    <li>
+                        <a href="#dot-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Dot 格式报告">Dot 格式报告</a></li>
+                    <li>
+                        <a href="#json-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="json 格式报告">json 格式报告</a></li>
+                    <li>
+                        <a href="#list-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="List 格式报告">List 格式报告</a></li>
+                    <li>
+                        <a href="#nyan-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="NYAN 格式报告">NYAN 格式报告</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e9%ab%98%e5%a4%a7%e4%b8%8a%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b" aria-label="高大上报告类型">高大上报告类型</a><ul>
+                            
+                    <li>
+                        <a href="#mochawesome-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Mochawesome 格式报告">Mochawesome 格式报告</a></li>
+                    <li>
+                        <a href="#allure-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="allure 格式报告">allure 格式报告</a></li>
+                    <li>
+                        <a href="#dashboard-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Dashboard 格式报告">Dashboard 格式报告</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#%e9%ab%98%e5%a4%a7%e4%b8%8a%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b" aria-label="高大上报告类型">高大上报告类型</a><ul>
-                        
-                <li>
-                    <a href="#mochawesome-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Mochawesome 格式报告">Mochawesome 格式报告</a></li>
-                <li>
-                    <a href="#allure-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="allure 格式报告">allure 格式报告</a></li>
-                <li>
-                    <a href="#dashboard-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a" aria-label="Dashboard 格式报告">Dashboard 格式报告</a>
-                </li>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>下面的信息是介绍 cypress 自动化测试框架学习第 3 篇的测试报告的内容
 主要介绍一下如何去使用不同格式的 cypress 自动化测试报告模版</p>
@@ -528,7 +603,7 @@ npm install --save-dev mochawesome
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -537,7 +612,7 @@ npm install --save-dev mochawesome
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -546,7 +621,8 @@ npm install --save-dev mochawesome
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

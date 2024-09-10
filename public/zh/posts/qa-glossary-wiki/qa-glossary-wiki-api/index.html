@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="软件测试术语分享:API 应用程序编程接口" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="软件测试术语分享:API 应用程序编程接口" />
 <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 API（应用程序编程接口）。文章详细探讨了 API 的基础概念和其在软件开发中的重要性，包括 API 设计与开发、API 安全、API 测试和 API 文档等方面。读者将深入了解如何规划和设计可靠的 API，确保其安全性，以及在软件测试中如何有效地进行 API 测试。通过这个系列分享，读者将更全面地了解 API 在软件开发中的关键作用，并学到相关方面的最佳实践。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -241,96 +255,157 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2024-03-01 12:06:44 +0800 CST'>三月 1, 2024</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;1004 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-api.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#api-%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%bc%96%e7%a8%8b%e6%8e%a5%e5%8f%a3" aria-label="API 应用程序编程接口">API 应用程序编程接口</a></li>
-                <li>
-                    <a href="#%e5%85%b3%e4%ba%8e-api-%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于 API 的问题">关于 API 的问题</a><ul>
-                        
-                <li>
-                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                        
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e4%bb%a5%e5%8f%8a%e5%ae%83%e5%a6%82%e4%bd%95%e5%b7%a5%e4%bd%9c" aria-label="什么是 API 以及它如何工作？">什么是 API 以及它如何工作？</a></li>
-                <li>
-                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-api-%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 API 在软件开发中很重要？">为什么 API 在软件开发中很重要？</a></li>
-                <li>
-                    <a href="#api-%e6%9c%89%e5%93%aa%e4%ba%9b%e4%b8%8d%e5%90%8c%e7%b1%bb%e5%9e%8b" aria-label="API 有哪些不同类型？">API 有哪些不同类型？</a></li>
-                <li>
-                    <a href="#web-api-%e5%92%8c%e5%ba%93-api-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="Web API 和库 API 有什么区别？">Web API 和库 API 有什么区别？</a></li>
-                <li>
-                    <a href="#api-%e5%9c%a8%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 在微服务架构中的作用是什么？">API 在微服务架构中的作用是什么？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#api-%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%bc%80%e5%8f%91" aria-label="API 设计与开发">API 设计与开发</a><ul>
-                        
-                <li>
-                    <a href="#%e8%ae%be%e8%ae%a1-api-%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="设计 API 的最佳实践是什么？">设计 API 的最佳实践是什么？</a></li>
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e5%af%b9-api-%e8%bf%9b%e8%a1%8c%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6" aria-label="如何对 API 进行版本控制？">如何对 API 进行版本控制？</a></li>
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e4%bc%98%e5%85%88%e8%ae%be%e8%ae%a1%e4%bb%a5%e5%8f%8a%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ae%83%e5%be%88%e9%87%8d%e8%a6%81" aria-label="什么是 API 优先设计以及为什么它很重要？">什么是 API 优先设计以及为什么它很重要？</a></li>
-                <li>
-                    <a href="#%e5%bc%80%e5%8f%91-api-%e6%97%b6%e9%9c%80%e8%a6%81%e8%80%83%e8%99%91%e5%93%aa%e4%ba%9b%e5%85%b3%e9%94%ae%e5%9b%a0%e7%b4%a0" aria-label="开发 API 时需要考虑哪些关键因素？">开发 API 时需要考虑哪些关键因素？</a></li>
-                <li>
-                    <a href="#api-%e7%bd%91%e5%85%b3%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 网关的作用是什么？">API 网关的作用是什么？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#api-%e6%b5%8b%e8%af%95" aria-label="API 测试">API 测试</a><ul>
-                        
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e6%b5%8b%e8%af%95%e4%bb%a5%e5%8f%8a%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ae%83%e5%be%88%e9%87%8d%e8%a6%81" aria-label="什么是 API 测试以及为什么它很重要？">什么是 API 测试以及为什么它很重要？</a></li>
-                <li>
-                    <a href="#api-%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e4%b8%8d%e5%90%8c%e7%b1%bb%e5%9e%8b" aria-label="API 测试有哪些不同类型？">API 测试有哪些不同类型？</a></li>
-                <li>
-                    <a href="#api-%e6%b5%8b%e8%af%95%e5%b8%b8%e7%94%a8%e7%9a%84%e5%b7%a5%e5%85%b7%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="API 测试常用的工具有哪些？">API 测试常用的工具有哪些？</a></li>
-                <li>
-                    <a href="#api-%e6%b5%8b%e8%af%95%e7%9a%84%e5%85%b3%e9%94%ae%e6%ad%a5%e9%aa%a4%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 测试的关键步骤是什么？">API 测试的关键步骤是什么？</a></li>
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e8%87%aa%e5%8a%a8%e5%8c%96-api-%e6%b5%8b%e8%af%95" aria-label="如何自动化 API 测试？">如何自动化 API 测试？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#api-%e5%ae%89%e5%85%a8" aria-label="API 安全">API 安全</a><ul>
-                        
-                <li>
-                    <a href="#%e4%b8%8e-api-%e7%9b%b8%e5%85%b3%e7%9a%84%e5%b8%b8%e8%a7%81%e5%ae%89%e5%85%a8%e9%a3%8e%e9%99%a9%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="与 API 相关的常见安全风险有哪些？">与 API 相关的常见安全风险有哪些？</a></li>
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4-api-%e7%9a%84%e5%ae%89%e5%85%a8" aria-label="如何保护 API 的安全？">如何保护 API 的安全？</a></li>
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e5%af%86%e9%92%a5%e8%ae%a4%e8%af%81" aria-label="什么是 API 密钥认证？">什么是 API 密钥认证？</a></li>
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-oauth-%e4%bb%a5%e5%8f%8a%e5%ae%83%e5%a6%82%e4%bd%95%e5%9c%a8-api-%e5%ae%89%e5%85%a8%e4%b8%ad%e4%bd%bf%e7%94%a8" aria-label="什么是 OAuth 以及它如何在 API 安全中使用？">什么是 OAuth 以及它如何在 API 安全中使用？</a></li>
-                <li>
-                    <a href="#ssltls-%e5%9c%a8-api-%e5%ae%89%e5%85%a8%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="SSL/TLS 在 API 安全中的作用是什么？">SSL/TLS 在 API 安全中的作用是什么？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#api-%e6%96%87%e6%a1%a3" aria-label="API 文档">API 文档</a><ul>
-                        
-                <li>
-                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-api-%e6%96%87%e6%a1%a3%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 API 文档很重要？">为什么 API 文档很重要？</a></li>
-                <li>
-                    <a href="#%e5%a5%bd%e7%9a%84-api-%e6%96%87%e6%a1%a3%e4%b8%ad%e5%ba%94%e8%af%a5%e5%8c%85%e5%90%ab%e5%93%aa%e4%ba%9b%e5%86%85%e5%ae%b9" aria-label="好的 API 文档中应该包含哪些内容？">好的 API 文档中应该包含哪些内容？</a></li>
-                <li>
-                    <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b7%a5%e5%85%b7%e5%8f%af%e7%94%a8%e4%ba%8e%e5%88%9b%e5%bb%ba-api-%e6%96%87%e6%a1%a3" aria-label="有哪些工具可用于创建 API 文档？">有哪些工具可用于创建 API 文档？</a></li>
-                <li>
-                    <a href="#api-%e6%96%87%e6%a1%a3%e5%ba%94%e8%af%a5%e5%a4%9a%e4%b9%85%e6%9b%b4%e6%96%b0%e4%b8%80%e6%ac%a1" aria-label="API 文档应该多久更新一次？">API 文档应该多久更新一次？</a></li>
-                <li>
-                    <a href="#api-%e6%96%87%e6%a1%a3%e5%9c%a8-api-%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 文档在 API 测试中的作用是什么？">API 文档在 API 测试中的作用是什么？</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#api-%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%bc%96%e7%a8%8b%e6%8e%a5%e5%8f%a3" aria-label="API 应用程序编程接口">API 应用程序编程接口</a></li>
+                    <li>
+                        <a href="#%e5%85%b3%e4%ba%8e-api-%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于 API 的问题">关于 API 的问题</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e4%bb%a5%e5%8f%8a%e5%ae%83%e5%a6%82%e4%bd%95%e5%b7%a5%e4%bd%9c" aria-label="什么是 API 以及它如何工作？">什么是 API 以及它如何工作？</a></li>
+                    <li>
+                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-api-%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 API 在软件开发中很重要？">为什么 API 在软件开发中很重要？</a></li>
+                    <li>
+                        <a href="#api-%e6%9c%89%e5%93%aa%e4%ba%9b%e4%b8%8d%e5%90%8c%e7%b1%bb%e5%9e%8b" aria-label="API 有哪些不同类型？">API 有哪些不同类型？</a></li>
+                    <li>
+                        <a href="#web-api-%e5%92%8c%e5%ba%93-api-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="Web API 和库 API 有什么区别？">Web API 和库 API 有什么区别？</a></li>
+                    <li>
+                        <a href="#api-%e5%9c%a8%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 在微服务架构中的作用是什么？">API 在微服务架构中的作用是什么？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%bc%80%e5%8f%91" aria-label="API 设计与开发">API 设计与开发</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%ae%be%e8%ae%a1-api-%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="设计 API 的最佳实践是什么？">设计 API 的最佳实践是什么？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e5%af%b9-api-%e8%bf%9b%e8%a1%8c%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6" aria-label="如何对 API 进行版本控制？">如何对 API 进行版本控制？</a></li>
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e4%bc%98%e5%85%88%e8%ae%be%e8%ae%a1%e4%bb%a5%e5%8f%8a%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ae%83%e5%be%88%e9%87%8d%e8%a6%81" aria-label="什么是 API 优先设计以及为什么它很重要？">什么是 API 优先设计以及为什么它很重要？</a></li>
+                    <li>
+                        <a href="#%e5%bc%80%e5%8f%91-api-%e6%97%b6%e9%9c%80%e8%a6%81%e8%80%83%e8%99%91%e5%93%aa%e4%ba%9b%e5%85%b3%e9%94%ae%e5%9b%a0%e7%b4%a0" aria-label="开发 API 时需要考虑哪些关键因素？">开发 API 时需要考虑哪些关键因素？</a></li>
+                    <li>
+                        <a href="#api-%e7%bd%91%e5%85%b3%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 网关的作用是什么？">API 网关的作用是什么？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-%e6%b5%8b%e8%af%95" aria-label="API 测试">API 测试</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e6%b5%8b%e8%af%95%e4%bb%a5%e5%8f%8a%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ae%83%e5%be%88%e9%87%8d%e8%a6%81" aria-label="什么是 API 测试以及为什么它很重要？">什么是 API 测试以及为什么它很重要？</a></li>
+                    <li>
+                        <a href="#api-%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e4%b8%8d%e5%90%8c%e7%b1%bb%e5%9e%8b" aria-label="API 测试有哪些不同类型？">API 测试有哪些不同类型？</a></li>
+                    <li>
+                        <a href="#api-%e6%b5%8b%e8%af%95%e5%b8%b8%e7%94%a8%e7%9a%84%e5%b7%a5%e5%85%b7%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="API 测试常用的工具有哪些？">API 测试常用的工具有哪些？</a></li>
+                    <li>
+                        <a href="#api-%e6%b5%8b%e8%af%95%e7%9a%84%e5%85%b3%e9%94%ae%e6%ad%a5%e9%aa%a4%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 测试的关键步骤是什么？">API 测试的关键步骤是什么？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e8%87%aa%e5%8a%a8%e5%8c%96-api-%e6%b5%8b%e8%af%95" aria-label="如何自动化 API 测试？">如何自动化 API 测试？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-%e5%ae%89%e5%85%a8" aria-label="API 安全">API 安全</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%b8%8e-api-%e7%9b%b8%e5%85%b3%e7%9a%84%e5%b8%b8%e8%a7%81%e5%ae%89%e5%85%a8%e9%a3%8e%e9%99%a9%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="与 API 相关的常见安全风险有哪些？">与 API 相关的常见安全风险有哪些？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4-api-%e7%9a%84%e5%ae%89%e5%85%a8" aria-label="如何保护 API 的安全？">如何保护 API 的安全？</a></li>
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e5%af%86%e9%92%a5%e8%ae%a4%e8%af%81" aria-label="什么是 API 密钥认证？">什么是 API 密钥认证？</a></li>
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-oauth-%e4%bb%a5%e5%8f%8a%e5%ae%83%e5%a6%82%e4%bd%95%e5%9c%a8-api-%e5%ae%89%e5%85%a8%e4%b8%ad%e4%bd%bf%e7%94%a8" aria-label="什么是 OAuth 以及它如何在 API 安全中使用？">什么是 OAuth 以及它如何在 API 安全中使用？</a></li>
+                    <li>
+                        <a href="#ssltls-%e5%9c%a8-api-%e5%ae%89%e5%85%a8%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="SSL/TLS 在 API 安全中的作用是什么？">SSL/TLS 在 API 安全中的作用是什么？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-%e6%96%87%e6%a1%a3" aria-label="API 文档">API 文档</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-api-%e6%96%87%e6%a1%a3%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 API 文档很重要？">为什么 API 文档很重要？</a></li>
+                    <li>
+                        <a href="#%e5%a5%bd%e7%9a%84-api-%e6%96%87%e6%a1%a3%e4%b8%ad%e5%ba%94%e8%af%a5%e5%8c%85%e5%90%ab%e5%93%aa%e4%ba%9b%e5%86%85%e5%ae%b9" aria-label="好的 API 文档中应该包含哪些内容？">好的 API 文档中应该包含哪些内容？</a></li>
+                    <li>
+                        <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b7%a5%e5%85%b7%e5%8f%af%e7%94%a8%e4%ba%8e%e5%88%9b%e5%bb%ba-api-%e6%96%87%e6%a1%a3" aria-label="有哪些工具可用于创建 API 文档？">有哪些工具可用于创建 API 文档？</a></li>
+                    <li>
+                        <a href="#api-%e6%96%87%e6%a1%a3%e5%ba%94%e8%af%a5%e5%a4%9a%e4%b9%85%e6%9b%b4%e6%96%b0%e4%b8%80%e6%ac%a1" aria-label="API 文档应该多久更新一次？">API 文档应该多久更新一次？</a></li>
+                    <li>
+                        <a href="#api-%e6%96%87%e6%a1%a3%e5%9c%a8-api-%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="API 文档在 API 测试中的作用是什么？">API 文档在 API 测试中的作用是什么？</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="api-应用程序编程接口">API 应用程序编程接口<a hidden class="anchor" aria-hidden="true" href="#api-应用程序编程接口">#</a></h2>
 <p>应用程序编程接口（API）是一组允许两个应用程序进行通信的规则。在这里，“应用程序”一词指的是具有特定功能的任何软件。API 定义了这些应用程序如何发送和接收请求及响应。</p>
@@ -908,7 +983,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -917,7 +992,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -926,7 +1001,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

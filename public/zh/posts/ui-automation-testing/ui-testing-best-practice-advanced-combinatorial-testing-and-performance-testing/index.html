@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="UI 测试最佳实践的进阶篇（二）：组合测试和性能测试" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="UI 测试最佳实践的进阶篇（二）：组合测试和性能测试" />
 <meta property="og:description" content="这篇博文是 UI 测试最佳实践的进阶篇，第二篇深入讨论组合测试和性能测试。文章详细介绍了如何有效地进行组合测试，覆盖多个交互元素的不同组合，以提高测试的全面性。此外，博文探讨了 UI 性能测试的重要性，并提供了一些性能测试的最佳实践，确保应用程序在各种负载下的高性能和稳定性。通过学习这些进阶实践，读者将能够更全面地应对复杂的 UI 测试场景，确保系统的质量和性能。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -241,60 +255,121 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2024-01-30 16:06:44 +0800 CST'>一月 30, 2024</span>&nbsp;·&nbsp;7 分钟&nbsp;·&nbsp;1462 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-advanced-combinatorial-testing-and-performance-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95" aria-label="组合测试">组合测试</a><ul>
-                        
-                <li>
-                    <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="组合测试一段简要说明">组合测试一段简要说明</a></li>
-                <li>
-                    <a href="#1-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b--%e4%ba%a7%e5%93%81%e8%b4%9f%e8%b4%a3%e4%ba%ba%e9%97%ae%e9%a2%98" aria-label="(1) 代码示例 – 产品负责人问题">(1) 代码示例 – 产品负责人问题</a></li>
-                <li>
-                    <a href="#2-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b--nasa-%e7%9a%84%e5%bc%80%e5%85%b3%e6%9d%bf%e5%85%b1%e6%9c%89-34-%e4%b8%aa%e5%bc%80%e5%85%b3" aria-label="(2) 代码示例 – NASA 的开关板共有 34 个开关">(2) 代码示例 – NASA 的开关板共有 34 个开关</a></li>
-                <li>
-                    <a href="#2-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b---%e8%a5%bf%e9%97%a8%e5%ad%90%e6%a5%bc%e5%ae%87%e6%93%8d%e4%bd%9c%e5%91%98-ci-%e9%85%8d%e7%bd%aehttpscypressslidescomcypress-iosiemens-case-study16" aria-label="(2) 代码示例 - 西门子楼宇操作员 CI 配置">(2) 代码示例 - 西门子楼宇操作员 CI 配置</a></li>
-                <li>
-                    <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99%e5%92%8c%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb" aria-label="组合测试参考资料和延伸阅读">组合测试参考资料和延伸阅读</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95" aria-label="性能测试">性能测试</a><ul>
-                        
-                <li>
-                    <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="性能测试一段简要说明">性能测试一段简要说明</a></li>
-                <li>
-                    <a href="#1-%e9%80%9a%e8%bf%87-lighthouse-%e7%a1%ae%e4%bf%9d%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c" aria-label="(1) 通过 Lighthouse 确保用户体验">(1) 通过 Lighthouse 确保用户体验</a><ul>
-                        
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8-cypress-%e9%9b%86%e6%88%90-lighthouse" aria-label="使用 Cypress 集成 Lighthouse">使用 Cypress 集成 Lighthouse</a></li></ul>
-                </li>
-                <li>
-                    <a href="#2-%e6%80%a7%e8%83%bd%e4%bd%9c%e4%b8%ba%e4%b8%80%e7%a7%8d%e9%9d%9e%e5%8a%9f%e8%83%bd%e6%80%a7%e9%9c%80%e6%b1%82%e5%92%8c-kano-%e6%a8%a1%e5%9e%8b" aria-label="(2) 性能作为一种非功能性需求和 Kano 模型">(2) 性能作为一种非功能性需求和 Kano 模型</a></li>
-                <li>
-                    <a href="#3-%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e7%9a%84%e7%b1%bb%e5%9e%8b" aria-label="(3) 性能测试的类型">(3) 性能测试的类型</a></li>
-                <li>
-                    <a href="#4-%e4%bd%bf%e7%94%a8-k6-loadimpact-%e8%bf%9b%e8%a1%8c%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e7%9a%84%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="(4) 使用 k6-loadImpact 进行性能测试的实际应用">(4) 使用 k6-loadImpact 进行性能测试的实际应用</a><ul>
-                        
-                <li>
-                    <a href="#%e6%88%91%e4%bb%ac%e5%a6%82%e4%bd%95%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%bb%93%e6%9e%9c" aria-label="我们如何分析测试结果？">我们如何分析测试结果？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#5-%e9%80%9a%e8%bf%87%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e6%9d%a5%e9%98%b2%e6%ad%a2%e4%b8%8d%e7%a8%b3%e5%ae%9a%e7%9a%84%e9%97%ae%e9%a2%98%e8%bf%9b%e5%85%a5%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83" aria-label="(5) 通过性能测试来防止不稳定的问题进入生产环境">(5) 通过性能测试来防止不稳定的问题进入生产环境</a></li>
-                <li>
-                    <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99%e5%92%8c%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb" aria-label="性能测试参考资料和延伸阅读">性能测试参考资料和延伸阅读</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95" aria-label="组合测试">组合测试</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="组合测试一段简要说明">组合测试一段简要说明</a></li>
+                    <li>
+                        <a href="#1-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b--%e4%ba%a7%e5%93%81%e8%b4%9f%e8%b4%a3%e4%ba%ba%e9%97%ae%e9%a2%98" aria-label="(1) 代码示例 – 产品负责人问题">(1) 代码示例 – 产品负责人问题</a></li>
+                    <li>
+                        <a href="#2-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b--nasa-%e7%9a%84%e5%bc%80%e5%85%b3%e6%9d%bf%e5%85%b1%e6%9c%89-34-%e4%b8%aa%e5%bc%80%e5%85%b3" aria-label="(2) 代码示例 – NASA 的开关板共有 34 个开关">(2) 代码示例 – NASA 的开关板共有 34 个开关</a></li>
+                    <li>
+                        <a href="#2-%e4%bb%a3%e7%a0%81%e7%a4%ba%e4%be%8b---%e8%a5%bf%e9%97%a8%e5%ad%90%e6%a5%bc%e5%ae%87%e6%93%8d%e4%bd%9c%e5%91%98-ci-%e9%85%8d%e7%bd%aehttpscypressslidescomcypress-iosiemens-case-study16" aria-label="(2) 代码示例 - 西门子楼宇操作员 CI 配置">(2) 代码示例 - <a href="https://cypress.slides.com/cypress-io/siemens-case-study#/16">西门子楼宇操作员 CI 配置</a></a></li>
+                    <li>
+                        <a href="#%e7%bb%84%e5%90%88%e6%b5%8b%e8%af%95%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99%e5%92%8c%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb" aria-label="组合测试参考资料和延伸阅读">组合测试参考资料和延伸阅读</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95" aria-label="性能测试">性能测试</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="性能测试一段简要说明">性能测试一段简要说明</a></li>
+                    <li>
+                        <a href="#1-%e9%80%9a%e8%bf%87-lighthouse-%e7%a1%ae%e4%bf%9d%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c" aria-label="(1) 通过 Lighthouse 确保用户体验">(1) 通过 Lighthouse 确保用户体验</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8-cypress-%e9%9b%86%e6%88%90-lighthouse" aria-label="使用 Cypress 集成 Lighthouse">使用 Cypress 集成 Lighthouse</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#2-%e6%80%a7%e8%83%bd%e4%bd%9c%e4%b8%ba%e4%b8%80%e7%a7%8d%e9%9d%9e%e5%8a%9f%e8%83%bd%e6%80%a7%e9%9c%80%e6%b1%82%e5%92%8c-kano-%e6%a8%a1%e5%9e%8b" aria-label="(2) 性能作为一种非功能性需求和 Kano 模型">(2) 性能作为一种非功能性需求和 Kano 模型</a></li>
+                    <li>
+                        <a href="#3-%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e7%9a%84%e7%b1%bb%e5%9e%8b" aria-label="(3) 性能测试的类型">(3) 性能测试的类型</a></li>
+                    <li>
+                        <a href="#4-%e4%bd%bf%e7%94%a8-k6-loadimpact-%e8%bf%9b%e8%a1%8c%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e7%9a%84%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="(4) 使用 k6-loadImpact 进行性能测试的实际应用">(4) 使用 k6-loadImpact 进行性能测试的实际应用</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%88%91%e4%bb%ac%e5%a6%82%e4%bd%95%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%bb%93%e6%9e%9c" aria-label="我们如何分析测试结果？">我们如何分析测试结果？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#5-%e9%80%9a%e8%bf%87%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e6%9d%a5%e9%98%b2%e6%ad%a2%e4%b8%8d%e7%a8%b3%e5%ae%9a%e7%9a%84%e9%97%ae%e9%a2%98%e8%bf%9b%e5%85%a5%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83" aria-label="(5) 通过性能测试来防止不稳定的问题进入生产环境">(5) 通过性能测试来防止不稳定的问题进入生产环境</a></li>
+                    <li>
+                        <a href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99%e5%92%8c%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb" aria-label="性能测试参考资料和延伸阅读">性能测试参考资料和延伸阅读</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
 <h2 id="组合测试">组合测试<a hidden class="anchor" aria-hidden="true" href="#组合测试">#</a></h2>
@@ -762,7 +837,7 @@ K6 <em>可以</em> 进行 DOM 测试，但我们认为 Lighthouse 已经处理�
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -771,7 +846,7 @@ K6 <em>可以</em> 进行 DOM 测试，但我们认为 Lighthouse 已经处理�
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -780,7 +855,8 @@ K6 <em>可以</em> 进行 DOM 测试，但我们认为 Lighthouse 已经处理�
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

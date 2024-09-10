@@ -9,15 +9,57 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Mar 2024 20:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>http://localhost:1313/tags/ai/</link>
-      <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
       <guid>http://localhost:1313/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Investigate Strategies to Minimise the Carbon Footprint of AI in Testing</title>
+      <link>http://localhost:1313/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prompt</title>
+      <link>http://localhost:1313/tags/prompt/</link>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/prompt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prompt Engineering</title>
+      <link>http://localhost:1313/tags/prompt-engineering/</link>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/prompt-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Explore AI-Driven Security Testing and Share Potential Use Cases</title>
+      <link>http://localhost:1313/tags/explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
+      <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Testing</title>
+      <link>http://localhost:1313/tags/security-testing/</link>
+      <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/security-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Investigate Code Explanation Techniques and Share Your Insights</title>
+      <link>http://localhost:1313/tags/investigate-code-explanation-techniques-and-share-your-insights/</link>
+      <pubDate>Wed, 27 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/tags/investigate-code-explanation-techniques-and-share-your-insights/</guid>
       <description></description>
     </item>
     <item>
@@ -25,20 +67,6 @@
       <link>http://localhost:1313/tags/assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</link>
       <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
       <guid>http://localhost:1313/tags/assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Prompt</title>
-      <link>http://localhost:1313/tags/prompt/</link>
-      <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/tags/prompt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Prompt Engineering</title>
-      <link>http://localhost:1313/tags/prompt-engineering/</link>
-      <pubDate>Tue, 26 Mar 2024 20:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/tags/prompt-engineering/</guid>
       <description></description>
     </item>
     <item>
@@ -177,7 +205,7 @@
     <item>
       <title>Research and Share Prompt Engineering Techniques</title>
       <link>http://localhost:1313/tags/research-and-share-prompt-engineering-techniques/</link>
-      <pubDate>Fri, 08 Mar 2024 13:06:44 +0800</pubDate>
+      <pubDate>Fri, 08 Mar 2024 13:07:44 +0800</pubDate>
       <guid>http://localhost:1313/tags/research-and-share-prompt-engineering-techniques/</guid>
       <description></description>
     </item>

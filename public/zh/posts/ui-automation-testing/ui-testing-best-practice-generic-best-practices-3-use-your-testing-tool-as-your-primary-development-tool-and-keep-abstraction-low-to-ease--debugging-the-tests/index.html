@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-3-use-your-testing-tool-as-your-primary-development-tool-and-keep-abstraction-low-to-ease--debugging-the-tests/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="UI 测试最佳实践的通用最佳实践（三）：将你的测试工具用作主要的开发工具和保持低抽象度以便于调试测试" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="UI 测试最佳实践的通用最佳实践（三）：将你的测试工具用作主要的开发工具和保持低抽象度以便于调试测试" />
 <meta property="og:description" content="这篇博文深入研究 UI 测试的通用最佳实践之三：将测试工具作为主要开发工具，并保持低抽象度以便于调试。文章强调将测试工具纳入主要开发过程，加强测试与开发的协同，提高代码质量。另外，博文建议保持测试脚本的低抽象度，以便更容易调试和理解。这种做法有助于加速问题排查和测试脚本的维护，从而提高 UI 测试的效率和可靠性。通过采用这些通用最佳实践，读者将能够更好地整合 UI 测试到开发流程中，实现更高效的软件开发。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-generic-best-practices-3-use-your-testing-tool-as-your-primary-development-tool-and-keep-abstraction-low-to-ease--debugging-the-tests/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -241,52 +255,113 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2024-01-20 17:06:44 +0800 CST'>一月 20, 2024</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;652 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-generic-best-practices-3-use-your-testing-tool-as-your-primary-development-tool-and-keep-abstraction-low-to-ease-%20debugging-the-tests.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%b0%86%e6%82%a8%e7%9a%84%e6%b5%8b%e8%af%95%e5%b7%a5%e5%85%b7%e7%94%a8%e4%bd%9c%e4%b8%bb%e8%a6%81%e7%9a%84%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" aria-label="将您的测试工具用作主要的开发工具">将您的测试工具用作主要的开发工具</a><ul>
-                        
-                <li>
-                    <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e4%bf%9d%e6%8c%81%e4%bd%8e%e6%8a%bd%e8%b1%a1%e5%ba%a6%e4%bb%a5%e4%be%bf%e4%ba%8e%e8%b0%83%e8%af%95%e6%b5%8b%e8%af%95" aria-label="保持低抽象度以便于调试测试">保持低抽象度以便于调试测试</a><ul>
-                        
-                <li>
-                    <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e-1" aria-label="一段简要说明">一段简要说明</a></li>
-                <li>
-                    <a href="#%e5%8f%af%e8%af%bb%e6%80%a7" aria-label="可读性">可读性</a></li>
-                <li>
-                    <a href="#%e4%b8%8d%e4%bd%bf%e7%94%a8%e4%bb%bb%e4%bd%95%e6%8a%bd%e8%b1%a1" aria-label="不使用任何抽象">不使用任何抽象</a></li>
-                <li>
-                    <a href="#%e5%9c%a8%e6%b5%8b%e8%af%95%e4%b8%ad%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e6%8a%bd%e8%b1%a1%e5%8c%96%e6%98%af%e5%a5%bd%e7%9a%84%e5%91%a2" aria-label="在测试中什么时候使用抽象化是好的呢？">在测试中什么时候使用抽象化是好的呢？</a></li>
-                <li>
-                    <a href="#%e5%8c%b9%e9%85%8d%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81%e5%92%8c%e6%b5%8b%e8%af%95%e8%bf%90%e8%a1%8c%e5%99%a8%e5%91%bd%e4%bb%a4" aria-label="匹配测试代码和测试运行器命令">匹配测试代码和测试运行器命令</a><ul>
-                        
-                <li>
-                    <a href="#%e8%af%b7%e7%9c%8b%e4%b8%8b%e9%9d%a2%e7%9a%84%e5%86%85%e5%ae%b9" aria-label="请看下面的内容">请看下面的内容</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8%e6%b8%85%e6%99%b0%e7%9a%84%e9%80%89%e6%8b%a9%e5%99%a8" aria-label="使用清晰的选择器">使用清晰的选择器</a></li>
-                <li>
-                    <a href="#%e5%87%8f%e5%b0%91-data-testid-%e5%b1%9e%e6%80%a7" aria-label="减少 data-testid 属性">减少 data-testid 属性</a></li>
-                <li>
-                    <a href="#%e5%b0%86%e7%9b%b8%e5%85%b3%e6%93%8d%e4%bd%9c%e5%88%86%e7%bb%84" aria-label="将相关操作分组">将相关操作分组</a></li>
-                <li>
-                    <a href="#%e7%9b%b8%e5%85%b3%e7%ab%a0%e8%8a%82" aria-label="相关章节">相关章节</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%b0%86%e6%82%a8%e7%9a%84%e6%b5%8b%e8%af%95%e5%b7%a5%e5%85%b7%e7%94%a8%e4%bd%9c%e4%b8%bb%e8%a6%81%e7%9a%84%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" aria-label="将您的测试工具用作主要的开发工具">将您的测试工具用作主要的开发工具</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bf%9d%e6%8c%81%e4%bd%8e%e6%8a%bd%e8%b1%a1%e5%ba%a6%e4%bb%a5%e4%be%bf%e4%ba%8e%e8%b0%83%e8%af%95%e6%b5%8b%e8%af%95" aria-label="保持低抽象度以便于调试测试">保持低抽象度以便于调试测试</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e-1" aria-label="一段简要说明">一段简要说明</a></li>
+                    <li>
+                        <a href="#%e5%8f%af%e8%af%bb%e6%80%a7" aria-label="可读性">可读性</a></li>
+                    <li>
+                        <a href="#%e4%b8%8d%e4%bd%bf%e7%94%a8%e4%bb%bb%e4%bd%95%e6%8a%bd%e8%b1%a1" aria-label="不使用任何抽象">不使用任何抽象</a></li>
+                    <li>
+                        <a href="#%e5%9c%a8%e6%b5%8b%e8%af%95%e4%b8%ad%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e6%8a%bd%e8%b1%a1%e5%8c%96%e6%98%af%e5%a5%bd%e7%9a%84%e5%91%a2" aria-label="在测试中什么时候使用抽象化是好的呢？">在测试中什么时候使用抽象化是好的呢？</a></li>
+                    <li>
+                        <a href="#%e5%8c%b9%e9%85%8d%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81%e5%92%8c%e6%b5%8b%e8%af%95%e8%bf%90%e8%a1%8c%e5%99%a8%e5%91%bd%e4%bb%a4" aria-label="匹配测试代码和测试运行器命令">匹配测试代码和测试运行器命令</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%af%b7%e7%9c%8b%e4%b8%8b%e9%9d%a2%e7%9a%84%e5%86%85%e5%ae%b9" aria-label="请看下面的内容">请看下面的内容</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e6%b8%85%e6%99%b0%e7%9a%84%e9%80%89%e6%8b%a9%e5%99%a8" aria-label="使用清晰的选择器">使用清晰的选择器</a></li>
+                    <li>
+                        <a href="#%e5%87%8f%e5%b0%91-data-testid-%e5%b1%9e%e6%80%a7" aria-label="减少 data-testid 属性">减少 data-testid 属性</a></li>
+                    <li>
+                        <a href="#%e5%b0%86%e7%9b%b8%e5%85%b3%e6%93%8d%e4%bd%9c%e5%88%86%e7%bb%84" aria-label="将相关操作分组">将相关操作分组</a></li>
+                    <li>
+                        <a href="#%e7%9b%b8%e5%85%b3%e7%ab%a0%e8%8a%82" aria-label="相关章节">相关章节</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
 <h2 id="将您的测试工具用作主要的开发工具">将您的测试工具用作主要的开发工具<a hidden class="anchor" aria-hidden="true" href="#将您的测试工具用作主要的开发工具">#</a></h2>
@@ -715,7 +790,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -724,7 +799,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -733,7 +808,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="K6 Performance Testing Tutorial: Getting Started and Write your first k6 test script" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="K6 Performance Testing Tutorial: Getting Started and Write your first k6 test script" />
 <meta property="og:description" content="This article will take you into the world of K6 performance testing. The blog post covers the introductory knowledge of K6 performance testing, environment setup steps, and how to write your first test script. Whether you are a beginner or an experienced performance testing professional, this tutorial will provide you with clear guidance to help you quickly get started with K6 and start building efficient performance testing scripts" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/" />
@@ -225,6 +228,17 @@ if (!doNotTrack) {
                     </svg>
                 </a>
             </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="Status">
+                    <span>Status</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -244,58 +258,119 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Performance-Testing/K6-tutorial-getting-started-and-your-first-K6-test-script.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction-of-k6" aria-label="Introduction of K6">Introduction of K6</a></li>
-                <li>
-                    <a href="#official-website-and-documentation" aria-label="Official website and documentation">Official website and documentation</a></li>
-                <li>
-                    <a href="#installation" aria-label="Installation">Installation</a><ul>
-                        
-                <li>
-                    <a href="#installation-on-mac-systems" aria-label="Installation on Mac systems">Installation on Mac systems</a></li>
-                <li>
-                    <a href="#windows-installation" aria-label="Windows installation">Windows installation</a></li>
-                <li>
-                    <a href="#docker-installation" aria-label="Docker installation">Docker installation</a></li>
-                <li>
-                    <a href="#installation-on-other-systems" aria-label="Installation on other systems">Installation on other systems</a></li>
-                <li>
-                    <a href="#confirming-a-successful-k6-installation" aria-label="Confirming a successful K6 installation">Confirming a successful K6 installation</a></li></ul>
-                </li>
-                <li>
-                    <a href="#first-k6-test-script" aria-label="First k6 test script">First k6 test script</a><ul>
-                        
-                <li>
-                    <a href="#write-the-first-test-script" aria-label="Write the first test script">Write the first test script</a><ul>
-                        
-                <li>
-                    <a href="#create-a-new-k6-performance-testing-project-directory-and-go-to" aria-label="Create a new K6 performance testing project directory and go to">Create a new K6 performance testing project directory and go to</a></li>
-                <li>
-                    <a href="#create-a-file-named-demojs-for-writing-test-scripts" aria-label="Create a file named demo.js for writing test scripts">Create a file named demo.js for writing test scripts</a></li>
-                <li>
-                    <a href="#editing-test-scripts" aria-label="Editing Test Scripts">Editing Test Scripts</a></li>
-                <li>
-                    <a href="#running-the-test-script" aria-label="Running the Test Script">Running the Test Script</a></li>
-                <li>
-                    <a href="#check-the-test-results" aria-label="Check the test results">Check the test results</a></li>
-                <li>
-                    <a href="#parsing-demo-test-script" aria-label="Parsing demo test script">Parsing demo test script</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#references" aria-label="References">References</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#introduction-of-k6" aria-label="Introduction of K6">Introduction of K6</a></li>
+                    <li>
+                        <a href="#official-website-and-documentation" aria-label="Official website and documentation">Official website and documentation</a></li>
+                    <li>
+                        <a href="#installation" aria-label="Installation">Installation</a><ul>
+                            
+                    <li>
+                        <a href="#installation-on-mac-systems" aria-label="Installation on Mac systems">Installation on Mac systems</a></li>
+                    <li>
+                        <a href="#windows-installation" aria-label="Windows installation">Windows installation</a></li>
+                    <li>
+                        <a href="#docker-installation" aria-label="Docker installation">Docker installation</a></li>
+                    <li>
+                        <a href="#installation-on-other-systems" aria-label="Installation on other systems">Installation on other systems</a></li>
+                    <li>
+                        <a href="#confirming-a-successful-k6-installation" aria-label="Confirming a successful K6 installation">Confirming a successful K6 installation</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#first-k6-test-script" aria-label="First k6 test script">First k6 test script</a><ul>
+                            
+                    <li>
+                        <a href="#write-the-first-test-script" aria-label="Write the first test script">Write the first test script</a><ul>
+                            
+                    <li>
+                        <a href="#create-a-new-k6-performance-testing-project-directory-and-go-to" aria-label="Create a new K6 performance testing project directory and go to">Create a new K6 performance testing project directory and go to</a></li>
+                    <li>
+                        <a href="#create-a-file-named-demojs-for-writing-test-scripts" aria-label="Create a file named demo.js for writing test scripts">Create a file named <code>demo.js</code> for writing test scripts</a></li>
+                    <li>
+                        <a href="#editing-test-scripts" aria-label="Editing Test Scripts">Editing Test Scripts</a></li>
+                    <li>
+                        <a href="#running-the-test-script" aria-label="Running the Test Script">Running the Test Script</a></li>
+                    <li>
+                        <a href="#check-the-test-results" aria-label="Check the test results">Check the test results</a></li>
+                    <li>
+                        <a href="#parsing-demo-test-script" aria-label="Parsing demo test script">Parsing demo test script</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#references" aria-label="References">References</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="introduction-of-k6">Introduction of K6<a hidden class="anchor" aria-hidden="true" href="#introduction-of-k6">#</a></h2>
 <p>k6 is an open source tool for performance testing and load testing, primarily used to evaluate and validate the performance and stability of applications. Here are some key features and information about k6:</p>
@@ -570,7 +645,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -579,7 +654,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -588,7 +663,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

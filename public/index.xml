@@ -9,10 +9,31 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Mar 2024 20:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 Days of AI in Testing Challenge: Day 26: Investigate strategies to minimise the carbon footprint of AI in testing</title>
+      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</guid>
+      <description>The blog post discusses strategies for minimizing carbon footprint in AI testing, as part of the 30-day AI Testing Challenge. It may cover aspects such as using energy-efficient hardware devices, optimizing testing processes to reduce resource consumption, and adopting renewable energy sources for power. The author may share practical experiences in reducing carbon footprint, as well as reflections and evaluations on environmentally friendly testing strategies. By sharing strategies for reducing carbon footprint, readers will gain insights into the author&amp;rsquo;s focus on sustainability in AI testing and how to balance testing needs with environmental responsibilities in practice. This series of activities aims to provide testing professionals with an opportunity to understand and explore sustainable development strategies in AI testing, and to promote industry attention and advocacy for environmentally friendly testing practices.</description>
+    </item>
+    <item>
+      <title>30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases</title>
+      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
+      <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
+      <description>This blog post is about the twenty-fifth day of the 30-Day AI Testing Challenge, exploring AI-driven security testing and sharing potential use cases. The article may introduce the application of artificial intelligence in the field of security testing, such as vulnerability scanning, malware detection, behavior analysis, etc., and discuss potential use cases in different scenarios. The author may share their understanding and insights into AI-driven security testing techniques, as well as thoughts on its potential value in improving security and reducing risks. By sharing potential use cases, readers will gain insights into the practical application scenarios and potential effects of AI in security testing, as well as prospects for the future development of security testing. This series aims to provide a platform for testing professionals to understand and explore the application of AI in security testing, and to promote wider application and deeper research of AI in testing within the industry.</description>
+    </item>
+    <item>
+      <title>30 Days of AI in Testing Challenge: Day 24: Investigate code explanation techniques and share your insights</title>
+      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</link>
+      <pubDate>Wed, 27 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</guid>
+      <description>This blog post is about the 24th day of the 30-day AI Testing Challenge, exploring code interpretation techniques and sharing insights. The article may introduce different code interpretation techniques, such as explainable AI, model interpretation, and interpretable machine learning, and discuss their applications in the testing domain. The author may share their understanding and experience in using these techniques, as well as insights into their advantages, challenges, and potential application areas. By sharing insights into code interpretation techniques, readers will gain an understanding of the author&amp;rsquo;s exploration and thoughts on new technologies and methods in AI testing, as well as expectations and prospects for future developments. This series aims to provide a platform for testing professionals to understand and explore new technologies and methods in AI testing and to promote further research and application of AI in the testing domain.</description>
+    </item>
     <item>
       <title>30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages</title>
       <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</link>
@@ -135,7 +156,7 @@
     <item>
       <title>30 Days of AI in Testing Challenge: Day 7: Research and share prompt engineering techniques</title>
       <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</link>
-      <pubDate>Fri, 08 Mar 2024 13:06:44 +0800</pubDate>
+      <pubDate>Fri, 08 Mar 2024 13:07:44 +0800</pubDate>
       <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</guid>
       <description>This blog post is the seventh day of the 30-Days AI Testing Challenge, which requires participants to research and share real-time engineering technology. The post may include a definition of real-time engineering technology, its applications in the testing domain, introductions to relevant tools and technologies, and the author&amp;rsquo;s perspective on real-time engineering technology. By sharing research on real-time engineering technology, readers will gain insights into its potential value in testing and how to effectively apply this technology. This series of activities aims to provide a platform for testing professionals to deeply understand and discuss emerging technologies.</description>
     </item>
@@ -193,16 +214,25 @@
       <link>http://localhost:1313/sponsor/</link>
       <pubDate>Mon, 15 Jan 2024 20:23:04 +0800</pubDate>
       <guid>http://localhost:1313/sponsor/</guid>
-      <description>How to Sponsor 如何赞助 buy me a coffee
-微信
-支付宝
-Support me by becoming a sponsor
-If you like my Website content, you can buy me a coffee.
-支持我来成为一个赞助者
-如果您喜欢我的网站内容，可以请我喝咖啡。
-Sponsor List 赞助者列表 The stage is set, thanks for the support!
-虚位以待，感谢支持！
-Weekly manual update.每周手动更新。</description>
+      <description>&lt;h2 id=&#34;how-to-sponsor-如何赞助&#34;&gt;How to Sponsor 如何赞助&lt;/h2&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;a href=&#34;https://www.buymeacoffee.com/naodeng&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; align=&#34;center&#34;&gt;&lt;img src=&#34;https://cdn.buymeacoffee.com/buttons/lato-orange.png&#34; alt=&#34;Buy Me A Coffee&#34; style=&#34;height: 51px !important;width: 217px !important;&#34;&gt;&lt;/a&gt;
+&lt;!-- markdownlint-enable MD033 --&gt;
+&lt;/p&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;a href=&#34;https://www.buymeacoffee.com/naodeng&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; align=&#34;center&#34;&gt;&lt;img src=&#34;https://ko-fi.com/img/githubbutton_sm.svg&#34; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  buy me a coffee&lt;br&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bmc_qr.png&#34; width=&#34;400&#34; height=&#34;400&#34; /&gt;
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  微信&lt;br&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/IMG_4374.jpg&#34; width=&#34;400&#34; height=&#34;400&#34; /&gt;
+&lt;/p&gt;</description>
     </item>
     <item>
       <title>K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks</title>

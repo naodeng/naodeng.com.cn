@@ -9,10 +9,31 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 26 Mar 2024 20:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhtags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 天 AI 测试挑战活动：第二十六天：研究在 AI 测试中最大限度地减少碳足迹的策略</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
+      <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第二十六天，探讨在 AI 测试中最大限度地减少碳足迹的策略。文章可能涉及使用节能的硬件设备、优化测试流程以减少资源消耗、采用可再生能源供电等方面的策略。作者可能分享对于减少碳足迹的实际应用经验，以及对于环保测试策略的思考和评价。通过分享减少碳足迹的策略，读者将了解到作者对于 AI 测试中可持续发展的关注和行动，以及在实践中如何平衡测试需求和环保责任的实践经验。这个系列活动有望为测试专业人士提供一个了解和探索 AI 测试中可持续发展策略的机会，并促进行业对于环保测试实践的关注和推动。</description>
+    </item>
+    <item>
+      <title>30 天 AI 测试挑战活动：第二十五天：探索人工智能驱动的安全测试并分享潜在用例</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
+      <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第二十五天，探索人工智能驱动的安全测试，并分享潜在用例。文章可能介绍人工智能在安全测试领域的应用，例如漏洞扫描、恶意代码检测、行为分析等方面，并探讨其在不同场景下的潜在用例。作者可能分享对于人工智能驱动的安全测试技术的理解和见解，以及对于其在提高安全性和降低风险方面的潜在价值的思考。通过分享潜在用例，读者将了解到人工智能在安全测试中的实际应用场景和潜在效果，以及对于未来安全测试发展的展望。这个系列活动旨在为测试专业人士提供一个了解和探索 AI 在安全测试领域应用的平台，并推动行业对于 AI 在测试中的更广泛应用和深入研究。</description>
+    </item>
+    <item>
+      <title>30 天 AI 测试挑战活动：第二十四天：探索代码解释技术并分享你的见解</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</link>
+      <pubDate>Wed, 27 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第二十四天，涉及探索代码解释技术并分享见解。文章可能介绍不同的代码解释技术，如解释性 AI、模型解释和可解释性机器学习等，并探讨其在测试领域的应用。作者可能分享对于这些技术的理解和使用经验，以及对于其优势、挑战和潜在应用领域的见解。通过分享关于代码解释技术的见解，读者将了解到作者对于 AI 在测试领域的新技术和方法的探索和思考，以及对于未来发展的期待和展望。这个系列活动旨在为测试专业人士提供一个了解和探索 AI 在测试中新技术和方法的平台，并促进行业对于 AI 在测试领域的更深入研究和应用。</description>
+    </item>
     <item>
       <title>30 天 AI 测试挑战活动：第二十三天：评估 AI 在视觉测试中的有效性并讨论其优势</title>
       <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</link>
@@ -56,14 +77,14 @@
       <description>这篇博文是关于 30 天 AI 测试挑战活动的第十八天，旨在分享参与者在 AI 测试中遇到的最大难题。文章可能包括作者在实践中遇到的困难、挑战和障碍，以及对应的解决方案或应对策略。通过分享遇到的困难和挑战，读者可以了解到其他人在 AI 测试中可能面临的问题，并从中获得启发和帮助。这个系列活动有望为测试专业人士提供一个互相交流、学习和解决问题的平台，推动 AI 测试领域的进步和发展。</description>
     </item>
     <item>
-      <title>30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享您的流程和评估结果</title>
+      <title>30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果</title>
       <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</link>
       <pubDate>Mon, 18 Mar 2024 10:06:44 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</guid>
       <description>这篇博文是关于 30 天 AI 测试挑战活动的第十七天，探讨利用人工智能实现缺陷报告自动化，并分享个人的流程和评估结果。文章可能涵盖作者使用人工智能技术自动化缺陷报告的过程，包括工具选择、实施方法、自动化流程的优势以及评估结果。通过分享自动化缺陷报告的流程和评估结果，读者将了解作者在实践中的经验和教训，以及人工智能技术在提高缺陷管理效率方面的潜力。这个系列活动有望为测试专业人士提供一个了解和探索利用人工智能实现缺陷报告自动化的机会，并促进行业技术的进步和创新。</description>
     </item>
     <item>
-      <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享您的发现</title>
+      <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现</title>
       <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</link>
       <pubDate>Sun, 17 Mar 2024 19:06:44 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</guid>
@@ -91,7 +112,7 @@
       <description>这篇博文是关于 30 天 AI 测试挑战活动的第十三天，要求参与者开发自己的测试方法并成为 AI 测试的先行者。博文可能包括作者对于开发新的 AI 测试方法的思考和方法论，以及实际应用这些方法的经验和成果。通过分享自己的测试方法开发过程和成果，读者将了解到作者在 AI 测试领域的创新实践和领先地位，激发更多人尝试和探索 AI 在测试中的应用。这个系列活动有望为测试专业人士提供一个深入了解和实践 AI 测试方法开发的机会，并鼓励他们成为 AI 测试领域的先锋者。</description>
     </item>
     <item>
-      <title>30 天 AI 测试挑战活动：第十二天：评估您是否信任 AI 支持测试并分享您的想法</title>
+      <title>30 天 AI 测试挑战活动：第十二天：评估你是否信任 AI 支持测试并分享你的想法</title>
       <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</link>
       <pubDate>Wed, 13 Mar 2024 10:06:44 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</guid>

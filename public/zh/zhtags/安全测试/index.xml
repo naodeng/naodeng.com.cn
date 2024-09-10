@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>安全测试 on 软件测试同学</title>
+    <link>http://localhost:1313/zh/zhtags/%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 安全测试 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.134.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 28 Mar 2024 20:06:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/zhtags/%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 天 AI 测试挑战活动：第二十五天：探索人工智能驱动的安全测试并分享潜在用例</title>
+      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
+      <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
+      <description>这篇博文是关于 30 天 AI 测试挑战活动的第二十五天，探索人工智能驱动的安全测试，并分享潜在用例。文章可能介绍人工智能在安全测试领域的应用，例如漏洞扫描、恶意代码检测、行为分析等方面，并探讨其在不同场景下的潜在用例。作者可能分享对于人工智能驱动的安全测试技术的理解和见解，以及对于其在提高安全性和降低风险方面的潜在价值的思考。通过分享潜在用例，读者将了解到人工智能在安全测试中的实际应用场景和潜在效果，以及对于未来安全测试发展的展望。这个系列活动旨在为测试专业人士提供一个了解和探索 AI 在安全测试领域应用的平台，并推动行业对于 AI 在测试中的更广泛应用和深入研究。</description>
+    </item>
+  </channel>
+</rss>

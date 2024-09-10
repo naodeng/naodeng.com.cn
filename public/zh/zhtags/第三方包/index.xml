@@ -9,7 +9,7 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 23 Nov 2023 17:37:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhtags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85/index.xml" rel="self" type="application/rss+xml" />

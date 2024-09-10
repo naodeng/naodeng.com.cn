@@ -9,7 +9,7 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Mar 2024 22:22:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/index.xml" rel="self" type="application/rss+xml" />

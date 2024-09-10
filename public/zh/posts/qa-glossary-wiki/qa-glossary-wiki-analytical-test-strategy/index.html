@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="软件测试术语分享:Analytical Test Strategy 分析性测试策略" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="软件测试术语分享:Analytical Test Strategy 分析性测试策略" />
 <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -241,68 +255,129 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2024-03-26 12:50:44 +0800 CST'>三月 26, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;288 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-analytical-test-strategy.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#analytical-test-strategy-%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="Analytical Test Strategy 分析性测试策略">Analytical Test Strategy 分析性测试策略</a></li>
-                <li>
-                    <a href="#%e5%85%b3%e4%ba%8e%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于分析性测试策略的问题">关于分析性测试策略的问题</a><ul>
-                        
-                <li>
-                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                        
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="什么是分析型测试策略？">什么是分析型测试策略？</a></li>
-                <li>
-                    <a href="#%e4%b8%ba%e4%bd%95%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e5%9c%a8%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81" aria-label="为何分析型测试策略在软件测试中至关重要？">为何分析型测试策略在软件测试中至关重要？</a></li>
-                <li>
-                    <a href="#%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e5%8c%85%e6%8b%ac" aria-label="分析型测试策略的关键组成部分包括：">分析型测试策略的关键组成部分包括：</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%89%a7%e8%a1%8c" aria-label="执行">执行</a><ul>
-                        
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何实施分析测试策略？">如何实施分析测试策略？</a></li>
-                <li>
-                    <a href="#%e5%88%9b%e5%bb%ba%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="创建分析测试策略涉及哪些步骤？">创建分析测试策略涉及哪些步骤？</a></li>
-                <li>
-                    <a href="#%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e5%ad%98%e5%9c%a8%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98%e4%bb%a5%e5%8f%8a%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？">实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%b7%a5%e5%85%b7%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="工具和技术">工具和技术</a><ul>
-                        
-                <li>
-                    <a href="#%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%93%aa%e4%ba%9b%e5%b7%a5%e5%85%b7" aria-label="分析测试策略中常用哪些工具？">分析测试策略中常用哪些工具？</a></li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af%e6%9d%a5%e5%88%86%e6%9e%90%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e7%9a%84%e6%b5%8b%e8%af%95%e7%bb%93%e6%9e%9c" aria-label="使用哪些技术来分析分析测试策略中的测试结果？">使用哪些技术来分析分析测试策略中的测试结果？</a></li>
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e5%b0%86%e8%87%aa%e5%8a%a8%e5%8c%96%e7%ba%b3%e5%85%a5%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何将自动化纳入分析测试策略？">如何将自动化纳入分析测试策略？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="最佳实践">最佳实践</a><ul>
-                        
-                <li>
-                    <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="制定分析测试策略的最佳实践有哪些？">制定分析测试策略的最佳实践有哪些？</a></li>
-                <li>
-                    <a href="#%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%bb%a5%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87" aria-label="如何优化分析测试策略以提高效率？">如何优化分析测试策略以提高效率？</a></li>
-                <li>
-                    <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e9%9c%80%e8%a6%81%e9%81%bf%e5%85%8d%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="制定分析测试策略时需要避免哪些常见错误？">制定分析测试策略时需要避免哪些常见错误？</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a></li>
-                <li>
-                    <a href="#%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb" aria-label="推荐阅读">推荐阅读</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#analytical-test-strategy-%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="Analytical Test Strategy 分析性测试策略">Analytical Test Strategy 分析性测试策略</a></li>
+                    <li>
+                        <a href="#%e5%85%b3%e4%ba%8e%e5%88%86%e6%9e%90%e6%80%a7%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于分析性测试策略的问题">关于分析性测试策略的问题</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="什么是分析型测试策略？">什么是分析型测试策略？</a></li>
+                    <li>
+                        <a href="#%e4%b8%ba%e4%bd%95%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e5%9c%a8%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81" aria-label="为何分析型测试策略在软件测试中至关重要？">为何分析型测试策略在软件测试中至关重要？</a></li>
+                    <li>
+                        <a href="#%e5%88%86%e6%9e%90%e5%9e%8b%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e5%8c%85%e6%8b%ac" aria-label="分析型测试策略的关键组成部分包括：">分析型测试策略的关键组成部分包括：</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%89%a7%e8%a1%8c" aria-label="执行">执行</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何实施分析测试策略？">如何实施分析测试策略？</a></li>
+                    <li>
+                        <a href="#%e5%88%9b%e5%bb%ba%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="创建分析测试策略涉及哪些步骤？">创建分析测试策略涉及哪些步骤？</a></li>
+                    <li>
+                        <a href="#%e5%ae%9e%e6%96%bd%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e5%ad%98%e5%9c%a8%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98%e4%bb%a5%e5%8f%8a%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？">实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b7%a5%e5%85%b7%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="工具和技术">工具和技术</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%93%aa%e4%ba%9b%e5%b7%a5%e5%85%b7" aria-label="分析测试策略中常用哪些工具？">分析测试策略中常用哪些工具？</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af%e6%9d%a5%e5%88%86%e6%9e%90%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%b8%ad%e7%9a%84%e6%b5%8b%e8%af%95%e7%bb%93%e6%9e%9c" aria-label="使用哪些技术来分析分析测试策略中的测试结果？">使用哪些技术来分析分析测试策略中的测试结果？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e5%b0%86%e8%87%aa%e5%8a%a8%e5%8c%96%e7%ba%b3%e5%85%a5%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5" aria-label="如何将自动化纳入分析测试策略？">如何将自动化纳入分析测试策略？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="最佳实践">最佳实践</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="制定分析测试策略的最佳实践有哪些？">制定分析测试策略的最佳实践有哪些？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e4%bb%a5%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87" aria-label="如何优化分析测试策略以提高效率？">如何优化分析测试策略以提高效率？</a></li>
+                    <li>
+                        <a href="#%e5%88%b6%e5%ae%9a%e5%88%86%e6%9e%90%e6%b5%8b%e8%af%95%e7%ad%96%e7%95%a5%e6%97%b6%e9%9c%80%e8%a6%81%e9%81%bf%e5%85%8d%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="制定分析测试策略时需要避免哪些常见错误？">制定分析测试策略时需要避免哪些常见错误？</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a></li>
+                    <li>
+                        <a href="#%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb" aria-label="推荐阅读">推荐阅读</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="analytical-test-strategy-分析性测试策略">Analytical Test Strategy 分析性测试策略<a hidden class="anchor" aria-hidden="true" href="#analytical-test-strategy-分析性测试策略">#</a></h2>
 <p>分析性测试策略涉及在执行测试之前分析测试基础。这种策略有助于在早期发现潜在问题，确保测试过程更加有效。</p>
@@ -607,7 +682,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -616,7 +691,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -625,7 +700,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

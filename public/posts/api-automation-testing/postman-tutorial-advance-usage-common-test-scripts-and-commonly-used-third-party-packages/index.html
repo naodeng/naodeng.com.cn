@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages" />
 <meta property="og:description" content="A deep dive into advanced usage of Postman API automation testing, focusing on commonly used test scripts and third-party package examples. Explores how to write powerful test scripts that cover a variety of testing scenarios and introduces some common third-party packages that optimize the testing process." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" />
@@ -225,6 +228,17 @@ if (!doNotTrack) {
                     </svg>
                 </a>
             </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="Status">
+                    <span>Status</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -244,116 +258,177 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#advanced-usage" aria-label="Advanced Usage">Advanced Usage</a><ul>
-                        
-                <li>
-                    <a href="#common-test-scripts" aria-label="Common Test Scripts">Common Test Scripts</a><ul>
-                        
-                <li>
-                    <a href="#response-test-scripts" aria-label="Response Test Scripts">Response Test Scripts</a></li>
-                <li>
-                    <a href="#pre-request-scripts" aria-label="Pre-request Scripts">Pre-request Scripts</a></li></ul>
-                </li>
-                <li>
-                    <a href="#third-party-libraries-in-test-scripts" aria-label="Third-Party Libraries in Test Scripts">Third-Party Libraries in Test Scripts</a><ul>
-                        
-                <li>
-                    <a href="#chaijs-assertion-library-methods" aria-label="Chai.js Assertion Library Methods">Chai.js Assertion Library Methods</a><ul>
-                        
-                <li>
-                    <a href="#1-install-chai" aria-label="1. Install Chai">1. Install Chai</a></li>
-                <li>
-                    <a href="#2-use-bdd-style-assertions" aria-label="2. Use BDD Style Assertions">2. Use BDD Style Assertions</a></li>
-                <li>
-                    <a href="#3-use-tdd-style-assertions" aria-label="3. Use TDD Style Assertions">3. Use TDD Style Assertions</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#4-common-assertions-supported-by-chai" aria-label="4. Common Assertions Supported by Chai">4. Common Assertions Supported by Chai</a><ul>
-                        
-                <li>
-                    <a href="#using-cheerio-to-manipulate-html-files" aria-label="Using Cheerio to Manipulate HTML Files">Using Cheerio to Manipulate HTML Files</a></li>
-                <li>
-                    <a href="#validating-json-schema-with-tv4" aria-label="Validating JSON Schema with tv4">Validating JSON Schema with tv4</a></li>
-                <li>
-                    <a href="#generating-uuids" aria-label="Generating UUIDs">Generating UUIDs</a><ul>
-                        
-                <li>
-                    <a href="#1-install-the-uuid-module" aria-label="1. Install the uuid Module">1. Install the uuid Module</a></li>
-                <li>
-                    <a href="#2-generate-uuid" aria-label="2. Generate UUID">2. Generate UUID</a></li>
-                <li>
-                    <a href="#example" aria-label="Example">Example</a></li></ul>
-                </li>
-                <li>
-                    <a href="#converting-xml-to-javascript-objects-with-xml2js" aria-label="Converting XML to JavaScript Objects with xml2js">Converting XML to JavaScript Objects with xml2js</a></li>
-                <li>
-                    <a href="#common-utility-functions-with-util" aria-label="Common Utility Functions with util">Common Utility Functions with util</a><ul>
-                        
-                <li>
-                    <a href="#1-utilguid---generate-a-globally-unique-identifier-guid" aria-label="1. util.guid() - Generate a Globally Unique Identifier (GUID)">1. util.guid() - Generate a Globally Unique Identifier (GUID)</a></li>
-                <li>
-                    <a href="#2-utiltimestamp---get-the-current-timestamp" aria-label="2. util.timestamp() - Get the Current Timestamp">2. util.timestamp() - Get the Current Timestamp</a></li>
-                <li>
-                    <a href="#3-utilrandomintmin-max---generate-a-random-integer-in-a-specified-range" aria-label="3. util.randomInt(min, max) - Generate a Random Integer in a Specified Range">3. util.randomInt(min, max) - Generate a Random Integer in a Specified Range</a></li>
-                <li>
-                    <a href="#4-utilunixtimestamp---get-the-current-timestamp-in-unix-timestamp-seconds" aria-label="4. util.unixTimestamp() - Get the Current Timestamp in Unix Timestamp (seconds)">4. util.unixTimestamp() - Get the Current Timestamp in Unix Timestamp (seconds)</a></li>
-                <li>
-                    <a href="#5-utilencodebase64str-and-utildecodebase64base64str---base64-encoding-and-decoding" aria-label="5. util.encodeBase64(str) and util.decodeBase64(base64Str) - Base64 Encoding and Decoding">5. util.encodeBase64(str) and util.decodeBase64(base64Str) - Base64 Encoding and Decoding</a></li>
-                <li>
-                    <a href="#6-utileachobj-callback---iterate-over-an-object-or-array" aria-label="6. util.each(obj, callback) - Iterate Over an Object or Array">6. util.each(obj, callback) - Iterate Over an Object or Array</a></li></ul>
-                </li>
-                <li>
-                    <a href="#stream-operations-with-stream" aria-label="Stream Operations with stream">Stream Operations with stream</a><ul>
-                        
-                <li>
-                    <a href="#1-readable-streams" aria-label="1. Readable Streams:">1. Readable Streams:</a></li>
-                <li>
-                    <a href="#2-writable-streams" aria-label="2. Writable Streams:">2. Writable Streams:</a></li>
-                <li>
-                    <a href="#3-transform-streams" aria-label="3. Transform Streams:">3. Transform Streams:</a></li></ul>
-                </li>
-                <li>
-                    <a href="#timers-timers" aria-label="Timers: timers">Timers: timers</a><ul>
-                        
-                <li>
-                    <a href="#1-settimeout---delayed-execution" aria-label="1. setTimeout - Delayed Execution">1. setTimeout - Delayed Execution</a></li>
-                <li>
-                    <a href="#2-setinterval---periodic-execution" aria-label="2. setInterval - Periodic Execution">2. setInterval - Periodic Execution</a></li>
-                <li>
-                    <a href="#3-usage-in-postman" aria-label="3. Usage in Postman">3. Usage in Postman</a></li></ul>
-                </li>
-                <li>
-                    <a href="#events-handling-events" aria-label="Events Handling: events">Events Handling: events</a><ul>
-                        
-                <li>
-                    <a href="#1-creating-an-event-emitter" aria-label="1. Creating an Event Emitter">1. Creating an Event Emitter</a></li>
-                <li>
-                    <a href="#2-defining-an-event-handling-function" aria-label="2. Defining an Event Handling Function">2. Defining an Event Handling Function</a></li>
-                <li>
-                    <a href="#3-registering-an-event-handling-function" aria-label="3. Registering an Event Handling Function">3. Registering an Event Handling Function</a></li>
-                <li>
-                    <a href="#4-triggering-an-event" aria-label="4. Triggering an Event">4. Triggering an Event</a></li>
-                <li>
-                    <a href="#5-example" aria-label="5. Example">5. Example</a></li></ul>
-                </li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#reference-documents" aria-label="Reference Documents">Reference Documents</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#advanced-usage" aria-label="Advanced Usage">Advanced Usage</a><ul>
+                            
+                    <li>
+                        <a href="#common-test-scripts" aria-label="Common Test Scripts">Common Test Scripts</a><ul>
+                            
+                    <li>
+                        <a href="#response-test-scripts" aria-label="Response Test Scripts">Response Test Scripts</a></li>
+                    <li>
+                        <a href="#pre-request-scripts" aria-label="Pre-request Scripts">Pre-request Scripts</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#third-party-libraries-in-test-scripts" aria-label="Third-Party Libraries in Test Scripts">Third-Party Libraries in Test Scripts</a><ul>
+                            
+                    <li>
+                        <a href="#chaijs-assertion-library-methods" aria-label="Chai.js Assertion Library Methods">Chai.js Assertion Library Methods</a><ul>
+                            
+                    <li>
+                        <a href="#1-install-chai" aria-label="1. Install Chai">1. Install Chai</a></li>
+                    <li>
+                        <a href="#2-use-bdd-style-assertions" aria-label="2. Use BDD Style Assertions">2. Use BDD Style Assertions</a></li>
+                    <li>
+                        <a href="#3-use-tdd-style-assertions" aria-label="3. Use TDD Style Assertions">3. Use TDD Style Assertions</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#4-common-assertions-supported-by-chai" aria-label="4. Common Assertions Supported by Chai">4. Common Assertions Supported by Chai</a><ul>
+                            
+                    <li>
+                        <a href="#using-cheerio-to-manipulate-html-files" aria-label="Using Cheerio to Manipulate HTML Files">Using Cheerio to Manipulate HTML Files</a></li>
+                    <li>
+                        <a href="#validating-json-schema-with-tv4" aria-label="Validating JSON Schema with tv4">Validating JSON Schema with tv4</a></li>
+                    <li>
+                        <a href="#generating-uuids" aria-label="Generating UUIDs">Generating UUIDs</a><ul>
+                            
+                    <li>
+                        <a href="#1-install-the-uuid-module" aria-label="1. Install the uuid Module">1. Install the <code>uuid</code> Module</a></li>
+                    <li>
+                        <a href="#2-generate-uuid" aria-label="2. Generate UUID">2. Generate UUID</a></li>
+                    <li>
+                        <a href="#example" aria-label="Example">Example</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#converting-xml-to-javascript-objects-with-xml2js" aria-label="Converting XML to JavaScript Objects with xml2js">Converting XML to JavaScript Objects with xml2js</a></li>
+                    <li>
+                        <a href="#common-utility-functions-with-util" aria-label="Common Utility Functions with util">Common Utility Functions with util</a><ul>
+                            
+                    <li>
+                        <a href="#1-utilguid---generate-a-globally-unique-identifier-guid" aria-label="1. util.guid() - Generate a Globally Unique Identifier (GUID)">1. <code>util.guid()</code> - Generate a Globally Unique Identifier (GUID)</a></li>
+                    <li>
+                        <a href="#2-utiltimestamp---get-the-current-timestamp" aria-label="2. util.timestamp() - Get the Current Timestamp">2. <code>util.timestamp()</code> - Get the Current Timestamp</a></li>
+                    <li>
+                        <a href="#3-utilrandomintmin-max---generate-a-random-integer-in-a-specified-range" aria-label="3. util.randomInt(min, max) - Generate a Random Integer in a Specified Range">3. <code>util.randomInt(min, max)</code> - Generate a Random Integer in a Specified Range</a></li>
+                    <li>
+                        <a href="#4-utilunixtimestamp---get-the-current-timestamp-in-unix-timestamp-seconds" aria-label="4. util.unixTimestamp() - Get the Current Timestamp in Unix Timestamp (seconds)">4. <code>util.unixTimestamp()</code> - Get the Current Timestamp in Unix Timestamp (seconds)</a></li>
+                    <li>
+                        <a href="#5-utilencodebase64str-and-utildecodebase64base64str---base64-encoding-and-decoding" aria-label="5. util.encodeBase64(str) and util.decodeBase64(base64Str) - Base64 Encoding and Decoding">5. <code>util.encodeBase64(str)</code> and <code>util.decodeBase64(base64Str)</code> - Base64 Encoding and Decoding</a></li>
+                    <li>
+                        <a href="#6-utileachobj-callback---iterate-over-an-object-or-array" aria-label="6. util.each(obj, callback) - Iterate Over an Object or Array">6. <code>util.each(obj, callback)</code> - Iterate Over an Object or Array</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#stream-operations-with-stream" aria-label="Stream Operations with stream">Stream Operations with stream</a><ul>
+                            
+                    <li>
+                        <a href="#1-readable-streams" aria-label="1. Readable Streams:">1. <strong>Readable Streams:</strong></a></li>
+                    <li>
+                        <a href="#2-writable-streams" aria-label="2. Writable Streams:">2. <strong>Writable Streams:</strong></a></li>
+                    <li>
+                        <a href="#3-transform-streams" aria-label="3. Transform Streams:">3. <strong>Transform Streams:</strong></a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#timers-timers" aria-label="Timers: timers">Timers: <code>timers</code></a><ul>
+                            
+                    <li>
+                        <a href="#1-settimeout---delayed-execution" aria-label="1. setTimeout - Delayed Execution">1. <code>setTimeout</code> - Delayed Execution</a></li>
+                    <li>
+                        <a href="#2-setinterval---periodic-execution" aria-label="2. setInterval - Periodic Execution">2. <code>setInterval</code> - Periodic Execution</a></li>
+                    <li>
+                        <a href="#3-usage-in-postman" aria-label="3. Usage in Postman">3. Usage in Postman</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#events-handling-events" aria-label="Events Handling: events">Events Handling: <code>events</code></a><ul>
+                            
+                    <li>
+                        <a href="#1-creating-an-event-emitter" aria-label="1. Creating an Event Emitter">1. Creating an Event Emitter</a></li>
+                    <li>
+                        <a href="#2-defining-an-event-handling-function" aria-label="2. Defining an Event Handling Function">2. Defining an Event Handling Function</a></li>
+                    <li>
+                        <a href="#3-registering-an-event-handling-function" aria-label="3. Registering an Event Handling Function">3. Registering an Event Handling Function</a></li>
+                    <li>
+                        <a href="#4-triggering-an-event" aria-label="4. Triggering an Event">4. Triggering an Event</a></li>
+                    <li>
+                        <a href="#5-example" aria-label="5. Example">5. Example</a></li></ul>
+                    </li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#reference-documents" aria-label="Reference Documents">Reference Documents</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="advanced-usage">Advanced Usage<a hidden class="anchor" aria-hidden="true" href="#advanced-usage">#</a></h2>
 <p>This section will introduce some advanced features of Postman and Newman, including commonly used response test scripts, pre-request scripts, and third-party packages available for test scripts.</p>
@@ -909,7 +984,7 @@ More available libraries can be found <a href="https://learning.postman.com/docs
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -918,7 +993,7 @@ More available libraries can be found <a href="https://learning.postman.com/docs
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -927,7 +1002,8 @@ More available libraries can be found <a href="https://learning.postman.com/docs
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

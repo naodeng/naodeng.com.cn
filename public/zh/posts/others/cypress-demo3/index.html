@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/others/cypress-demo3/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言" />
 <meta property="og:description" content="文章介绍如何去使用 cypress 的元素定位、操作和断言" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/others/cypress-demo3/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -244,144 +258,205 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2022-05-10 00:00:00 +0000 UTC'>五月 10, 2022</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Others/cypress-demo3.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="元素定位">元素定位</a><ul>
-                        
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="常用元素定位">常用元素定位</a><ul>
-                        
-                <li>
-                    <a href="#id-%e5%ae%9a%e4%bd%8d" aria-label="#id 定位">#id 定位</a></li>
-                <li>
-                    <a href="#class-%e5%ae%9a%e4%bd%8d" aria-label=".class 定位">.class 定位</a></li>
-                <li>
-                    <a href="#name-%e5%ae%9a%e4%bd%8d" aria-label="name 定位">name 定位</a></li></ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="元素定位">元素定位</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="常用元素定位">常用元素定位</a><ul>
+                            
+                    <li>
+                        <a href="#id-%e5%ae%9a%e4%bd%8d" aria-label="#id 定位">#id 定位</a></li>
+                    <li>
+                        <a href="#class-%e5%ae%9a%e4%bd%8d" aria-label=".class 定位">.class 定位</a></li>
+                    <li>
+                        <a href="#name-%e5%ae%9a%e4%bd%8d" aria-label="name 定位">name 定位</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%ae%9a%e4%bd%8d%e6%96%b9%e5%bc%8f" aria-label="常用定位方式">常用定位方式</a><ul>
+                            
+                    <li>
+                        <a href="#get" aria-label=".get()">.get()</a></li>
+                    <li>
+                        <a href="#contains" aria-label=".contains()">.contains()</a></li>
+                    <li>
+                        <a href="#within" aria-label=".within()">.within()</a></li>
+                    <li>
+                        <a href="#cypress" aria-label="Cypress.$">Cypress.$</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%a1%86%e6%9e%b6%e8%87%aa%e5%b8%a6%e5%8f%af%e8%a7%86%e5%8c%96%e8%87%aa%e5%8a%a9%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="框架自带可视化自助元素定位">框架自带可视化自助元素定位</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%85%83%e7%b4%a0%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c" aria-label="元素常用操作">元素常用操作</a><ul>
+                            
+                    <li>
+                        <a href="#click" aria-label=".click()">.click()</a></li>
+                    <li>
+                        <a href="#typevalue" aria-label=".type(value)">.type(value)</a></li>
+                    <li>
+                        <a href="#clear" aria-label=".clear()">.clear()</a></li>
+                    <li>
+                        <a href="#submit" aria-label=".submit()">.submit()</a></li>
+                    <li>
+                        <a href="#dbclickrightclick" aria-label=".dbclick()/.rightclick()">.dbclick()/.rightclick()</a></li>
+                    <li>
+                        <a href="#select" aria-label=".select()">.select()</a></li>
+                    <li>
+                        <a href="#checkuncheck" aria-label=".check()/.uncheck()">.check()/.uncheck()</a></li>
+                    <li>
+                        <a href="#focusblur" aria-label=".focus()/.blur()">.focus()/.blur()</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%96%ad%e8%a8%80" aria-label="断言">断言</a><ul>
+                            
+                    <li>
+                        <a href="#bdd-%e6%96%ad%e8%a8%80" aria-label="BDD 断言">BDD 断言</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b" aria-label="断言类型">断言类型</a><ul>
+                            
+                    <li>
+                        <a href="#should" aria-label=".should()：">.should()：</a></li>
+                    <li>
+                        <a href="#expect" aria-label=".expect()：">.expect()：</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80" aria-label="常用断言">常用断言</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#tdd-%e6%96%ad%e8%a8%80" aria-label="TDD 断言">TDD 断言</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b-1" aria-label="断言类型">断言类型</a><ul>
+                            
+                    <li>
+                        <a href="#assert" aria-label=".assert()：">.assert()：</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-1" aria-label="常用断言">常用断言</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-2" aria-label="常用断言">常用断言</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e9%95%bf%e5%ba%a6length%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对长度（length）的断言">针对长度（length）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e7%b1%bbclass%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对类（Class）的断言">针对类（Class）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e5%80%bcvalue%e6%96%ad%e8%a8%80" aria-label="针对值（Value）断言">针对值（Value）断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e6%96%87%e6%9c%ac%e5%86%85%e5%ae%b9text-content%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对文本内容（Text Content）的断言">针对文本内容（Text Content）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%8f%af%e8%a7%81%e4%b8%8e%e5%90%a6visibility%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素可见与否（Visibility）的断言">针对元素可见与否（Visibility）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%ad%98%e5%9c%a8%e4%b8%8e%e5%90%a6existence%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素存在与否（Existence）的断言">针对元素存在与否（Existence）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e7%8a%b6%e6%80%81%e7%9a%84status%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素状态的（status）的断言">针对元素状态的（status）的断言</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9-css-%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对 CSS 的断言">针对 CSS 的断言</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%bf%90%e8%a1%8c%e5%87%ba%e9%94%99%e9%97%ae%e9%a2%98%e8%ae%b0%e5%bd%95" aria-label="运行出错问题记录">运行出错问题记录</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-no-version-of-cypress-is-installed" aria-label="运行 npm run cypress:open 报错，提示 No version of Cypress is installed">运行 npm run cypress:open 报错，提示 No version of Cypress is installed</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b" aria-label="报错截图如下：">报错截图如下：</a></li>
+                    <li>
+                        <a href="#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f" aria-label="修复方式">修复方式</a></li>
+                    <li>
+                        <a href="#%e5%8e%9f%e5%9b%a0" aria-label="原因">原因</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-cypress-verification-timed-out" aria-label="运行 npm run cypress:open 报错，提示 Cypress verification timed out">运行 npm run cypress:open 报错，提示 Cypress verification timed out</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b-1" aria-label="报错截图如下：">报错截图如下：</a></li>
+                    <li>
+                        <a href="#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f-1" aria-label="修复方式">修复方式</a></li>
+                    <li>
+                        <a href="#%e5%8e%9f%e5%9b%a0-1" aria-label="原因">原因</a>
+                    </li>
+                </ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e5%ae%9a%e4%bd%8d%e6%96%b9%e5%bc%8f" aria-label="常用定位方式">常用定位方式</a><ul>
-                        
-                <li>
-                    <a href="#get" aria-label=".get()">.get()</a></li>
-                <li>
-                    <a href="#contains" aria-label=".contains()">.contains()</a></li>
-                <li>
-                    <a href="#within" aria-label=".within()">.within()</a></li>
-                <li>
-                    <a href="#cypress" aria-label="Cypress.$">Cypress.$</a></li></ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="#%e6%a1%86%e6%9e%b6%e8%87%aa%e5%b8%a6%e5%8f%af%e8%a7%86%e5%8c%96%e8%87%aa%e5%8a%a9%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d" aria-label="框架自带可视化自助元素定位">框架自带可视化自助元素定位</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%85%83%e7%b4%a0%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c" aria-label="元素常用操作">元素常用操作</a><ul>
-                        
-                <li>
-                    <a href="#click" aria-label=".click()">.click()</a></li>
-                <li>
-                    <a href="#typevalue" aria-label=".type(value)">.type(value)</a></li>
-                <li>
-                    <a href="#clear" aria-label=".clear()">.clear()</a></li>
-                <li>
-                    <a href="#submit" aria-label=".submit()">.submit()</a></li>
-                <li>
-                    <a href="#dbclickrightclick" aria-label=".dbclick()/.rightclick()">.dbclick()/.rightclick()</a></li>
-                <li>
-                    <a href="#select" aria-label=".select()">.select()</a></li>
-                <li>
-                    <a href="#checkuncheck" aria-label=".check()/.uncheck()">.check()/.uncheck()</a></li>
-                <li>
-                    <a href="#focusblur" aria-label=".focus()/.blur()">.focus()/.blur()</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%96%ad%e8%a8%80" aria-label="断言">断言</a><ul>
-                        
-                <li>
-                    <a href="#bdd-%e6%96%ad%e8%a8%80" aria-label="BDD 断言">BDD 断言</a><ul>
-                        
-                <li>
-                    <a href="#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b" aria-label="断言类型">断言类型</a><ul>
-                        
-                <li>
-                    <a href="#should" aria-label=".should()：">.should()：</a></li>
-                <li>
-                    <a href="#expect" aria-label=".expect()：">.expect()：</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80" aria-label="常用断言">常用断言</a></li></ul>
-                </li>
-                <li>
-                    <a href="#tdd-%e6%96%ad%e8%a8%80" aria-label="TDD 断言">TDD 断言</a><ul>
-                        
-                <li>
-                    <a href="#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b-1" aria-label="断言类型">断言类型</a><ul>
-                        
-                <li>
-                    <a href="#assert" aria-label=".assert()：">.assert()：</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-1" aria-label="常用断言">常用断言</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-2" aria-label="常用断言">常用断言</a><ul>
-                        
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e9%95%bf%e5%ba%a6length%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对长度（length）的断言">针对长度（length）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e7%b1%bbclass%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对类（Class）的断言">针对类（Class）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e5%80%bcvalue%e6%96%ad%e8%a8%80" aria-label="针对值（Value）断言">针对值（Value）断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e6%96%87%e6%9c%ac%e5%86%85%e5%ae%b9text-content%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对文本内容（Text Content）的断言">针对文本内容（Text Content）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%8f%af%e8%a7%81%e4%b8%8e%e5%90%a6visibility%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素可见与否（Visibility）的断言">针对元素可见与否（Visibility）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%ad%98%e5%9c%a8%e4%b8%8e%e5%90%a6existence%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素存在与否（Existence）的断言">针对元素存在与否（Existence）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e7%8a%b6%e6%80%81%e7%9a%84status%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对元素状态的（status）的断言">针对元素状态的（status）的断言</a></li>
-                <li>
-                    <a href="#%e9%92%88%e5%af%b9-css-%e7%9a%84%e6%96%ad%e8%a8%80" aria-label="针对 CSS 的断言">针对 CSS 的断言</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e8%bf%90%e8%a1%8c%e5%87%ba%e9%94%99%e9%97%ae%e9%a2%98%e8%ae%b0%e5%bd%95" aria-label="运行出错问题记录">运行出错问题记录</a><ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-no-version-of-cypress-is-installed" aria-label="运行 npm run cypress:open 报错，提示 No version of Cypress is installed">运行 npm run cypress:open 报错，提示 No version of Cypress is installed</a><ul>
-                        
-                <li>
-                    <a href="#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b" aria-label="报错截图如下：">报错截图如下：</a></li>
-                <li>
-                    <a href="#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f" aria-label="修复方式">修复方式</a></li>
-                <li>
-                    <a href="#%e5%8e%9f%e5%9b%a0" aria-label="原因">原因</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-cypress-verification-timed-out" aria-label="运行 npm run cypress:open 报错，提示 Cypress verification timed out">运行 npm run cypress:open 报错，提示 Cypress verification timed out</a><ul>
-                        
-                <li>
-                    <a href="#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b-1" aria-label="报错截图如下：">报错截图如下：</a></li>
-                <li>
-                    <a href="#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f-1" aria-label="修复方式">修复方式</a></li>
-                <li>
-                    <a href="#%e5%8e%9f%e5%9b%a0-1" aria-label="原因">原因</a>
-                </li>
-            </ul>
-            </ul>
-            </li>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>下面的信息是对于框架学习第 3 篇的介绍。在该篇文章中，我们学习了如何使用元素定位、操作和断言。该框架可以帮助用户定位相关的元素，并且可以帮助用户进行操作。这些操作可以帮助用户断言事件。</p>
 <!-- more -->
@@ -760,7 +835,7 @@ cy.get('.completed').should('have.css','text-decoration','line-through')`
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -769,7 +844,7 @@ cy.get('.completed').should('have.css','text-decoration','line-through')`
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -778,7 +853,8 @@ cy.get('.completed').should('have.css','text-decoration','line-through')`
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

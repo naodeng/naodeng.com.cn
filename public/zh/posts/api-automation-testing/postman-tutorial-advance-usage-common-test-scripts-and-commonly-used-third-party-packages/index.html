@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例" />
 <meta property="og:description" content="深入研究 Postman 接口自动化测试的高级用法，专注于常用的测试脚本和第三方包示例。探讨如何编写强大的测试脚本，涵盖各种测试场景，并介绍一些常用的第三方包，优化测试流程。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" />
@@ -218,6 +221,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -247,116 +261,177 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e8%bf%9b%e9%98%b6%e7%94%a8%e6%b3%95" aria-label="进阶用法">进阶用法</a><ul>
-                        
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac" aria-label="常用测试脚本">常用测试脚本</a><ul>
-                        
-                <li>
-                    <a href="#%e5%93%8d%e5%ba%94%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac" aria-label="响应测试脚本">响应测试脚本</a></li>
-                <li>
-                    <a href="#%e8%af%b7%e6%b1%82%e5%89%8d%e8%84%9a%e6%9c%ac" aria-label="请求前脚本">请求前脚本</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac%e4%b8%ad%e5%8f%af%e7%94%a8%e7%9a%84%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93" aria-label="测试脚本中可用的第三方库">测试脚本中可用的第三方库</a><ul>
-                        
-                <li>
-                    <a href="#chaijs-%e6%96%ad%e8%a8%80%e5%ba%93%e6%96%b9%e6%b3%95" aria-label="chai.js 断言库方法">chai.js 断言库方法</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%ae%89%e8%a3%85-chai" aria-label="1. 安装 Chai">1. 安装 Chai</a></li>
-                <li>
-                    <a href="#2-%e4%bd%bf%e7%94%a8-bdd-%e9%a3%8e%e6%a0%bc%e6%96%ad%e8%a8%80" aria-label="2. 使用 BDD 风格断言">2. 使用 BDD 风格断言</a></li>
-                <li>
-                    <a href="#3-%e4%bd%bf%e7%94%a8-tdd-%e9%a3%8e%e6%a0%bc%e6%96%ad%e8%a8%80" aria-label="3. 使用 TDD 风格断言">3. 使用 TDD 风格断言</a></li>
-                <li>
-                    <a href="#4-chai-%e6%94%af%e6%8c%81%e7%9a%84%e4%b8%80%e4%ba%9b%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80" aria-label="4. Chai 支持的一些常用断言">4. Chai 支持的一些常用断言</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8-cheerio-%e6%93%8d%e4%bd%9c-html-%e6%96%87%e4%bb%b6" aria-label="使用 cheerio 操作 HTML 文件">使用 cheerio 操作 HTML 文件</a></li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8-tv4-%e6%9d%a5%e9%aa%8c%e8%af%81-json-schema" aria-label="使用 tv4 来验证 JSON Schema">使用 tv4 来验证 JSON Schema</a></li>
-                <li>
-                    <a href="#%e7%94%9f%e6%88%90-uuid" aria-label="生成 uuid">生成 uuid</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%ae%89%e8%a3%85-uuid-%e6%a8%a1%e5%9d%97" aria-label="1. 安装 uuid 模块">1. 安装 uuid 模块</a></li>
-                <li>
-                    <a href="#2-%e7%94%9f%e6%88%90-uuid" aria-label="2. 生成 UUID">2. 生成 UUID</a></li>
-                <li>
-                    <a href="#%e7%a4%ba%e4%be%8b" aria-label="示例">示例</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8-xml2js-%e5%b0%86-xml-%e8%bd%ac%e6%8d%a2%e4%b8%ba-javascript-%e5%af%b9%e8%b1%a1" aria-label="使用 xml2js 将 XML 转换为 JavaScript 对象">使用 xml2js 将 XML 转换为 JavaScript 对象</a></li>
-                <li>
-                    <a href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e5%87%bd%e6%95%b0-util" aria-label="常用工具函数 util">常用工具函数 util</a><ul>
-                        
-                <li>
-                    <a href="#1-utilguid---%e7%94%9f%e6%88%90%e5%85%a8%e5%b1%80%e5%94%af%e4%b8%80%e6%a0%87%e8%af%86%e7%ac%a6guid" aria-label="1. util.guid() - 生成全局唯一标识符（GUID）">1. util.guid() - 生成全局唯一标识符（GUID）</a></li>
-                <li>
-                    <a href="#2-utiltimestamp---%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4%e6%88%b3" aria-label="2. util.timestamp() - 获取当前时间戳">2. util.timestamp() - 获取当前时间戳</a></li>
-                <li>
-                    <a href="#3-utilrandomintmin-max---%e7%94%9f%e6%88%90%e6%8c%87%e5%ae%9a%e8%8c%83%e5%9b%b4%e5%86%85%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%95%b4%e6%95%b0" aria-label="3. util.randomInt(min, max) - 生成指定范围内的随机整数">3. util.randomInt(min, max) - 生成指定范围内的随机整数</a></li>
-                <li>
-                    <a href="#4-utilunixtimestamp---%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4%e6%88%b3unix-%e6%97%b6%e9%97%b4%e6%88%b3%e7%a7%92" aria-label="4. util.unixTimestamp() - 获取当前时间戳（Unix 时间戳，秒）">4. util.unixTimestamp() - 获取当前时间戳（Unix 时间戳，秒）</a></li>
-                <li>
-                    <a href="#5-utilencodebase64str-%e5%92%8c-utildecodebase64base64str---base64-%e7%bc%96%e7%a0%81%e5%92%8c%e8%a7%a3%e7%a0%81" aria-label="5. util.encodeBase64(str) 和 util.decodeBase64(base64Str) - Base64 编码和解码">5. util.encodeBase64(str) 和 util.decodeBase64(base64Str) - Base64 编码和解码</a></li>
-                <li>
-                    <a href="#6-utileachobj-callback---%e9%81%8d%e5%8e%86%e5%af%b9%e8%b1%a1%e6%88%96%e6%95%b0%e7%bb%84" aria-label="6. util.each(obj, callback) - 遍历对象或数组">6. util.each(obj, callback) - 遍历对象或数组</a></li>
-                <li>
-                    <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="注意事项">注意事项</a></li></ul>
-                </li>
-                <li>
-                    <a href="#stream-%e6%b5%81%e6%93%8d%e4%bd%9c" aria-label="stream 流操作">stream 流操作</a><ul>
-                        
-                <li>
-                    <a href="#1-%e8%af%bb%e5%8f%96%e6%b5%81readable-streams" aria-label="1. 读取流（Readable Streams）：">1. 读取流（Readable Streams）：</a></li>
-                <li>
-                    <a href="#2-%e5%86%99%e5%85%a5%e6%b5%81writable-streams" aria-label="2. 写入流（Writable Streams）：">2. 写入流（Writable Streams）：</a></li>
-                <li>
-                    <a href="#3-%e8%bd%ac%e6%8d%a2%e6%b5%81transform-streams" aria-label="3. 转换流（Transform Streams）：">3. 转换流（Transform Streams）：</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%ae%9a%e6%97%b6%e5%99%a8-timers" aria-label="定时器 timers">定时器 timers</a><ul>
-                        
-                <li>
-                    <a href="#1-settimeout---%e5%bb%b6%e6%97%b6%e6%89%a7%e8%a1%8c" aria-label="1. setTimeout - 延时执行">1. setTimeout - 延时执行</a></li>
-                <li>
-                    <a href="#2-setinterval---%e5%ae%9a%e6%97%b6%e6%89%a7%e8%a1%8c%e9%87%8d%e5%a4%8d%e6%93%8d%e4%bd%9c" aria-label="2. setInterval - 定时执行重复操作">2. setInterval - 定时执行重复操作</a></li>
-                <li>
-                    <a href="#3-%e5%9c%a8-postman-%e4%b8%ad%e4%bd%bf%e7%94%a8" aria-label="3. 在 Postman 中使用">3. 在 Postman 中使用</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%97%b6%e9%97%b4%e5%a4%84%e7%90%86-events" aria-label="时间处理 events">时间处理 events</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%88%9b%e5%bb%ba%e4%ba%8b%e4%bb%b6%e5%8f%91%e5%b0%84%e5%99%a8" aria-label="1. 创建事件发射器">1. 创建事件发射器</a></li>
-                <li>
-                    <a href="#2-%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="2. 定义事件处理函数">2. 定义事件处理函数</a></li>
-                <li>
-                    <a href="#3-%e6%b3%a8%e5%86%8c%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="3. 注册事件处理函数">3. 注册事件处理函数</a></li>
-                <li>
-                    <a href="#4-%e8%a7%a6%e5%8f%91%e4%ba%8b%e4%bb%b6" aria-label="4. 触发事件">4. 触发事件</a></li>
-                <li>
-                    <a href="#%e7%a4%ba%e4%be%8b-1" aria-label="示例">示例</a></li></ul>
-                </li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e8%bf%9b%e9%98%b6%e7%94%a8%e6%b3%95" aria-label="进阶用法">进阶用法</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac" aria-label="常用测试脚本">常用测试脚本</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%93%8d%e5%ba%94%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac" aria-label="响应测试脚本">响应测试脚本</a></li>
+                    <li>
+                        <a href="#%e8%af%b7%e6%b1%82%e5%89%8d%e8%84%9a%e6%9c%ac" aria-label="请求前脚本">请求前脚本</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac%e4%b8%ad%e5%8f%af%e7%94%a8%e7%9a%84%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93" aria-label="测试脚本中可用的第三方库">测试脚本中可用的第三方库</a><ul>
+                            
+                    <li>
+                        <a href="#chaijs-%e6%96%ad%e8%a8%80%e5%ba%93%e6%96%b9%e6%b3%95" aria-label="chai.js 断言库方法">chai.js 断言库方法</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e5%ae%89%e8%a3%85-chai" aria-label="1. 安装 Chai">1. 安装 Chai</a></li>
+                    <li>
+                        <a href="#2-%e4%bd%bf%e7%94%a8-bdd-%e9%a3%8e%e6%a0%bc%e6%96%ad%e8%a8%80" aria-label="2. 使用 BDD 风格断言">2. 使用 BDD 风格断言</a></li>
+                    <li>
+                        <a href="#3-%e4%bd%bf%e7%94%a8-tdd-%e9%a3%8e%e6%a0%bc%e6%96%ad%e8%a8%80" aria-label="3. 使用 TDD 风格断言">3. 使用 TDD 风格断言</a></li>
+                    <li>
+                        <a href="#4-chai-%e6%94%af%e6%8c%81%e7%9a%84%e4%b8%80%e4%ba%9b%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80" aria-label="4. Chai 支持的一些常用断言">4. Chai 支持的一些常用断言</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8-cheerio-%e6%93%8d%e4%bd%9c-html-%e6%96%87%e4%bb%b6" aria-label="使用 cheerio 操作 HTML 文件">使用 cheerio 操作 HTML 文件</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8-tv4-%e6%9d%a5%e9%aa%8c%e8%af%81-json-schema" aria-label="使用 tv4 来验证 JSON Schema">使用 tv4 来验证 JSON Schema</a></li>
+                    <li>
+                        <a href="#%e7%94%9f%e6%88%90-uuid" aria-label="生成 uuid">生成 uuid</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e5%ae%89%e8%a3%85-uuid-%e6%a8%a1%e5%9d%97" aria-label="1. 安装 uuid 模块">1. 安装 <code>uuid</code> 模块</a></li>
+                    <li>
+                        <a href="#2-%e7%94%9f%e6%88%90-uuid" aria-label="2. 生成 UUID">2. 生成 UUID</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b" aria-label="示例">示例</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8-xml2js-%e5%b0%86-xml-%e8%bd%ac%e6%8d%a2%e4%b8%ba-javascript-%e5%af%b9%e8%b1%a1" aria-label="使用 xml2js 将 XML 转换为 JavaScript 对象">使用 xml2js 将 XML 转换为 JavaScript 对象</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e5%87%bd%e6%95%b0-util" aria-label="常用工具函数 util">常用工具函数 util</a><ul>
+                            
+                    <li>
+                        <a href="#1-utilguid---%e7%94%9f%e6%88%90%e5%85%a8%e5%b1%80%e5%94%af%e4%b8%80%e6%a0%87%e8%af%86%e7%ac%a6guid" aria-label="1. util.guid() - 生成全局唯一标识符（GUID）">1. <code>util.guid()</code> - 生成全局唯一标识符（GUID）</a></li>
+                    <li>
+                        <a href="#2-utiltimestamp---%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4%e6%88%b3" aria-label="2. util.timestamp() - 获取当前时间戳">2. <code>util.timestamp()</code> - 获取当前时间戳</a></li>
+                    <li>
+                        <a href="#3-utilrandomintmin-max---%e7%94%9f%e6%88%90%e6%8c%87%e5%ae%9a%e8%8c%83%e5%9b%b4%e5%86%85%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%95%b4%e6%95%b0" aria-label="3. util.randomInt(min, max) - 生成指定范围内的随机整数">3. <code>util.randomInt(min, max)</code> - 生成指定范围内的随机整数</a></li>
+                    <li>
+                        <a href="#4-utilunixtimestamp---%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%b6%e9%97%b4%e6%88%b3unix-%e6%97%b6%e9%97%b4%e6%88%b3%e7%a7%92" aria-label="4. util.unixTimestamp() - 获取当前时间戳（Unix 时间戳，秒）">4. <code>util.unixTimestamp()</code> - 获取当前时间戳（Unix 时间戳，秒）</a></li>
+                    <li>
+                        <a href="#5-utilencodebase64str-%e5%92%8c-utildecodebase64base64str---base64-%e7%bc%96%e7%a0%81%e5%92%8c%e8%a7%a3%e7%a0%81" aria-label="5. util.encodeBase64(str) 和 util.decodeBase64(base64Str) - Base64 编码和解码">5. <code>util.encodeBase64(str)</code> 和 <code>util.decodeBase64(base64Str)</code> - Base64 编码和解码</a></li>
+                    <li>
+                        <a href="#6-utileachobj-callback---%e9%81%8d%e5%8e%86%e5%af%b9%e8%b1%a1%e6%88%96%e6%95%b0%e7%bb%84" aria-label="6. util.each(obj, callback) - 遍历对象或数组">6. <code>util.each(obj, callback)</code> - 遍历对象或数组</a></li>
+                    <li>
+                        <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="注意事项">注意事项</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#stream-%e6%b5%81%e6%93%8d%e4%bd%9c" aria-label="stream 流操作">stream 流操作</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e8%af%bb%e5%8f%96%e6%b5%81readable-streams" aria-label="1. 读取流（Readable Streams）：">1. <strong>读取流（Readable Streams）：</strong></a></li>
+                    <li>
+                        <a href="#2-%e5%86%99%e5%85%a5%e6%b5%81writable-streams" aria-label="2. 写入流（Writable Streams）：">2. <strong>写入流（Writable Streams）：</strong></a></li>
+                    <li>
+                        <a href="#3-%e8%bd%ac%e6%8d%a2%e6%b5%81transform-streams" aria-label="3. 转换流（Transform Streams）：">3. <strong>转换流（Transform Streams）：</strong></a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%ae%9a%e6%97%b6%e5%99%a8-timers" aria-label="定时器 timers">定时器 timers</a><ul>
+                            
+                    <li>
+                        <a href="#1-settimeout---%e5%bb%b6%e6%97%b6%e6%89%a7%e8%a1%8c" aria-label="1. setTimeout - 延时执行">1. <code>setTimeout</code> - 延时执行</a></li>
+                    <li>
+                        <a href="#2-setinterval---%e5%ae%9a%e6%97%b6%e6%89%a7%e8%a1%8c%e9%87%8d%e5%a4%8d%e6%93%8d%e4%bd%9c" aria-label="2. setInterval - 定时执行重复操作">2. <code>setInterval</code> - 定时执行重复操作</a></li>
+                    <li>
+                        <a href="#3-%e5%9c%a8-postman-%e4%b8%ad%e4%bd%bf%e7%94%a8" aria-label="3. 在 Postman 中使用">3. 在 Postman 中使用</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%97%b6%e9%97%b4%e5%a4%84%e7%90%86-events" aria-label="时间处理 events">时间处理 events</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e5%88%9b%e5%bb%ba%e4%ba%8b%e4%bb%b6%e5%8f%91%e5%b0%84%e5%99%a8" aria-label="1. 创建事件发射器">1. 创建事件发射器</a></li>
+                    <li>
+                        <a href="#2-%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="2. 定义事件处理函数">2. 定义事件处理函数</a></li>
+                    <li>
+                        <a href="#3-%e6%b3%a8%e5%86%8c%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="3. 注册事件处理函数">3. 注册事件处理函数</a></li>
+                    <li>
+                        <a href="#4-%e8%a7%a6%e5%8f%91%e4%ba%8b%e4%bb%b6" aria-label="4. 触发事件">4. 触发事件</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b-1" aria-label="示例">示例</a></li></ul>
+                    </li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="进阶用法">进阶用法<a hidden class="anchor" aria-hidden="true" href="#进阶用法">#</a></h2>
 <p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括常用测试响应测试脚本，测试前置脚本和常用的测试脚本可用的第三方包等。</p>
@@ -917,7 +992,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -926,7 +1001,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -935,7 +1010,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

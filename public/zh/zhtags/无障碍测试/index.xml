@@ -9,12 +9,12 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 17 Mar 2024 19:06:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享您的发现</title>
+      <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现</title>
       <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</link>
       <pubDate>Sun, 17 Mar 2024 19:06:44 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</guid>

@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/others/playwright-get-started/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -65,17 +65,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Playwright 自动化框架入门" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Playwright 自动化框架入门" />
 <meta property="og:description" content="文章介绍 playwright 自动化测试框架的新手入门介绍" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/others/playwright-get-started/" />
@@ -217,6 +220,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -244,56 +258,117 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2023-01-18 00:00:00 +0000 UTC'>一月 18, 2023</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Others/playwright-get-started.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%ae%89%e8%a3%85-install" aria-label="安装 Install">安装 Install</a><ul>
-                        
-                <li>
-                    <a href="#%e9%9d%9e-vs-code-%e7%bc%96%e8%be%91%e5%99%a8%e5%ae%89%e8%a3%85" aria-label="非 VS Code 编辑器安装">非 VS Code 编辑器安装</a></li>
-                <li>
-                    <a href="#vs-code-%e7%bc%96%e8%be%91%e5%99%a8%e5%ae%89%e8%a3%85" aria-label="VS Code 编辑器安装">VS Code 编辑器安装</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95-run-test" aria-label="运行测试 Run test">运行测试 Run test</a><ul>
-                        
-                <li>
-                    <a href="#vs-code-%e8%bf%90%e8%a1%8c" aria-label="VS Code 运行">VS Code 运行</a><ul>
-                        
-                <li>
-                    <a href="#%e9%80%9a%e8%bf%87-playwright-test-for-vscode-%e6%8f%92%e4%bb%b6%e8%bf%90%e8%a1%8c" aria-label="通过 Playwright Test for VSCode 插件运行">通过 Playwright Test for VSCode 插件运行</a></li>
-                <li>
-                    <a href="#%e6%b5%8b%e8%af%95%e6%96%87%e4%bb%b6%e8%bf%90%e8%a1%8c" aria-label="测试文件运行">测试文件运行</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%90%e8%a1%8c" aria-label="命令行运行">命令行运行</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e8%b0%83%e8%af%95-debug" aria-label="调试 Debug">调试 Debug</a><ul>
-                        
-                <li>
-                    <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%b0%83%e8%af%95" aria-label="命令行调试">命令行调试</a></li>
-                <li>
-                    <a href="#vs-code-%e8%b0%83%e8%af%95" aria-label="VS code 调试">VS code 调试</a><ul>
-                        
-                <li>
-                    <a href="#%e9%80%9a%e8%bf%87-playwright-test-for-vscode-%e6%8f%92%e4%bb%b6%e8%b0%83%e8%af%95" aria-label="通过 Playwright Test for VSCode 插件调试">通过 Playwright Test for VSCode 插件调试</a></li>
-                <li>
-                    <a href="#%e6%b5%8b%e8%af%95%e6%96%87%e4%bb%b6%e8%bf%90%e8%a1%8c-1" aria-label="测试文件运行">测试文件运行</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e6%b5%8b%e8%af%95%e6%8a%a5%e5%91%8a-test-report" aria-label="测试报告 Test report">测试报告 Test report</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%ae%89%e8%a3%85-install" aria-label="安装 Install">安装 Install</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%9d%9e-vs-code-%e7%bc%96%e8%be%91%e5%99%a8%e5%ae%89%e8%a3%85" aria-label="非 VS Code 编辑器安装">非 VS Code 编辑器安装</a></li>
+                    <li>
+                        <a href="#vs-code-%e7%bc%96%e8%be%91%e5%99%a8%e5%ae%89%e8%a3%85" aria-label="VS Code 编辑器安装">VS Code 编辑器安装</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95-run-test" aria-label="运行测试 Run test">运行测试 Run test</a><ul>
+                            
+                    <li>
+                        <a href="#vs-code-%e8%bf%90%e8%a1%8c" aria-label="VS Code 运行">VS Code 运行</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%80%9a%e8%bf%87-playwright-test-for-vscode-%e6%8f%92%e4%bb%b6%e8%bf%90%e8%a1%8c" aria-label="通过 Playwright Test for VSCode 插件运行">通过 Playwright Test for VSCode 插件运行</a></li>
+                    <li>
+                        <a href="#%e6%b5%8b%e8%af%95%e6%96%87%e4%bb%b6%e8%bf%90%e8%a1%8c" aria-label="测试文件运行">测试文件运行</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%90%e8%a1%8c" aria-label="命令行运行">命令行运行</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%b0%83%e8%af%95-debug" aria-label="调试 Debug">调试 Debug</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%b0%83%e8%af%95" aria-label="命令行调试">命令行调试</a></li>
+                    <li>
+                        <a href="#vs-code-%e8%b0%83%e8%af%95" aria-label="VS code 调试">VS code 调试</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%80%9a%e8%bf%87-playwright-test-for-vscode-%e6%8f%92%e4%bb%b6%e8%b0%83%e8%af%95" aria-label="通过 Playwright Test for VSCode 插件调试">通过 Playwright Test for VSCode 插件调试</a></li>
+                    <li>
+                        <a href="#%e6%b5%8b%e8%af%95%e6%96%87%e4%bb%b6%e8%bf%90%e8%a1%8c-1" aria-label="测试文件运行">测试文件运行</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%b5%8b%e8%af%95%e6%8a%a5%e5%91%8a-test-report" aria-label="测试报告 Test report">测试报告 Test report</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>下面的信息是对 playwright 自动化测试框架的新手入门介绍。如果你想要学习更多关于 playwright 自动化测试框架的信息，请参阅它的文档。运行测试：打开测试界面，选择&quot;运行测试&quot;。下面会显示一个非常简单的测试画面。你可以选择任何一个测试项目。你可以通过键盘或者鼠标来调试测试。查看测试报告：在测试结束后，单击&quot;查看测试报告&quot;按钮。测试报告会显示在测试结束后的浏览器中。</p>
 <!-- more -->
@@ -516,7 +591,7 @@ demo-todo-app.spec.ts //todo app的测试demo
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -525,7 +600,7 @@ demo-todo-app.spec.ts //todo app的测试demo
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -534,7 +609,8 @@ demo-todo-app.spec.ts //todo app的测试demo
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

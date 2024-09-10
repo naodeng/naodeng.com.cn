@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 常用命令行选项，文件上传场景和 SSL 证书场景" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 常用命令行选项，文件上传场景和 SSL 证书场景" />
 <meta property="og:description" content="这篇博文深度挖掘 Postman 接口自动化测试的进阶用法，集中讨论常用命令行选项、文件上传场景和 SSL 证书场景。学会如何运用常用命令行选项优化测试流程，解决文件上传和 SSL 证书等特殊场景的测试挑战" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/" />
@@ -218,6 +221,17 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
                     <span>网站统计</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
@@ -247,46 +261,107 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e8%bf%9b%e9%98%b6%e7%94%a8%e6%b3%95" aria-label="进阶用法">进阶用法</a><ul>
-                        
-                <li>
-                    <a href="#%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e5%9c%ba%e6%99%af" aria-label="文件上传场景">文件上传场景</a></li>
-                <li>
-                    <a href="#newman-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e9%80%89%e9%a1%b9" aria-label="Newman 常用命令行选项">Newman 常用命令行选项</a><ul>
-                        
-                <li>
-                    <a href="#%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" aria-label="基本命令">基本命令</a></li>
-                <li>
-                    <a href="#%e8%be%93%e5%87%ba%e5%92%8c%e6%8a%a5%e5%91%8a" aria-label="输出和报告">输出和报告</a></li>
-                <li>
-                    <a href="#%e5%85%b6%e4%bb%96%e9%80%89%e9%a1%b9" aria-label="其他选项">其他选项</a></li></ul>
-                </li>
-                <li>
-                    <a href="#ssl-%e8%af%81%e4%b9%a6%e9%85%8d%e7%bd%ae" aria-label="SSL 证书配置">SSL 证书配置</a><ul>
-                        
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8%e5%8d%95%e4%b8%aa-ssl-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%af%81%e4%b9%a6" aria-label="使用单个 SSL 客户端证书">使用单个 SSL 客户端证书</a></li>
-                <li>
-                    <a href="#%e4%bd%bf%e7%94%a8%e5%a4%9a%e4%b8%aa-ssl-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%af%81%e4%b9%a6" aria-label="使用多个 SSL 客户端证书">使用多个 SSL 客户端证书</a></li>
-                <li>
-                    <a href="#trusted-ca-%e8%af%81%e4%b9%a6" aria-label="Trusted CA 证书">Trusted CA 证书</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e8%bf%9b%e9%98%b6%e7%94%a8%e6%b3%95" aria-label="进阶用法">进阶用法</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e5%9c%ba%e6%99%af" aria-label="文件上传场景">文件上传场景</a></li>
+                    <li>
+                        <a href="#newman-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e9%80%89%e9%a1%b9" aria-label="Newman 常用命令行选项">Newman 常用命令行选项</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" aria-label="基本命令">基本命令</a></li>
+                    <li>
+                        <a href="#%e8%be%93%e5%87%ba%e5%92%8c%e6%8a%a5%e5%91%8a" aria-label="输出和报告">输出和报告</a></li>
+                    <li>
+                        <a href="#%e5%85%b6%e4%bb%96%e9%80%89%e9%a1%b9" aria-label="其他选项">其他选项</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#ssl-%e8%af%81%e4%b9%a6%e9%85%8d%e7%bd%ae" aria-label="SSL 证书配置">SSL 证书配置</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e5%8d%95%e4%b8%aa-ssl-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%af%81%e4%b9%a6" aria-label="使用单个 SSL 客户端证书">使用单个 SSL 客户端证书</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e5%a4%9a%e4%b8%aa-ssl-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%af%81%e4%b9%a6" aria-label="使用多个 SSL 客户端证书">使用多个 SSL 客户端证书</a></li>
+                    <li>
+                        <a href="#trusted-ca-%e8%af%81%e4%b9%a6" aria-label="Trusted CA 证书">Trusted CA 证书</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="进阶用法">进阶用法<a hidden class="anchor" aria-hidden="true" href="#进阶用法">#</a></h2>
 <p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括常用命令行选项、文件上传场景和 SSL 证书场景。</p>
@@ -556,7 +631,7 @@ SSL 客户端证书列表配置文件（JSON 格式）的路径。</li>
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -565,7 +640,7 @@ SSL 客户端证书列表配置文件（JSON 格式）的路径。</li>
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -574,7 +649,8 @@ SSL 客户端证书列表配置文件（JSON 格式）的路径。</li>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

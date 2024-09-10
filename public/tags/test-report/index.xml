@@ -9,7 +9,7 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 26 Oct 2023 18:07:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/test-report/index.xml" rel="self" type="application/rss+xml" />

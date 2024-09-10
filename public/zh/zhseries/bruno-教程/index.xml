@@ -9,7 +9,7 @@
       <url>http://localhost:1313/papermod-cover.png</url>
       <link>http://localhost:1313/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.134.1</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 17 Oct 2023 11:31:43 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/zhseries/bruno-%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />

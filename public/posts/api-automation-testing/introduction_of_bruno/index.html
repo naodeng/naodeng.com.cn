@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/posts/api-automation-testing/introduction_of_bruno/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="Introducing Bruno for Replacement Postman" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="Introducing Bruno for Replacement Postman" />
 <meta property="og:description" content="Article introduces postman replacement tool bruno beginner&rsquo;s introduction, how to migrate postman scripts to bruno" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/api-automation-testing/introduction_of_bruno/" />
@@ -225,6 +228,17 @@ if (!doNotTrack) {
                     </svg>
                 </a>
             </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="Status">
+                    <span>Status</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -244,130 +258,191 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/Introduction_of_bruno.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#why-bruno" aria-label="why bruno">why bruno</a></li>
-                <li>
-                    <a href="#install-bruno" aria-label="Install bruno">Install bruno</a></li>
-                <li>
-                    <a href="#getting-started" aria-label="Getting Started">Getting Started</a><ul>
-                        
-                <li>
-                    <a href="#default-main-api" aria-label="Default main API">Default main API</a></li>
-                <li>
-                    <a href="#api-collection" aria-label="API collection">API collection</a><ul>
-                        
-                <li>
-                    <a href="#create-api-collection" aria-label="Create API collection">Create API collection</a></li>
-                <li>
-                    <a href="#open-api-collection" aria-label="Open API collection">Open API collection</a></li>
-                <li>
-                    <a href="#import-api-collection" aria-label="Import API collection">Import API collection</a></li>
-                <li>
-                    <a href="#run-api-collection" aria-label="RUN API collection">RUN API collection</a></li>
-                <li>
-                    <a href="#export-api-collection" aria-label="Export API collection">Export API collection</a></li></ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#why-bruno" aria-label="why bruno">why bruno</a></li>
+                    <li>
+                        <a href="#install-bruno" aria-label="Install bruno">Install bruno</a></li>
+                    <li>
+                        <a href="#getting-started" aria-label="Getting Started">Getting Started</a><ul>
+                            
+                    <li>
+                        <a href="#default-main-api" aria-label="Default main API">Default main API</a></li>
+                    <li>
+                        <a href="#api-collection" aria-label="API collection">API collection</a><ul>
+                            
+                    <li>
+                        <a href="#create-api-collection" aria-label="Create API collection">Create API collection</a></li>
+                    <li>
+                        <a href="#open-api-collection" aria-label="Open API collection">Open API collection</a></li>
+                    <li>
+                        <a href="#import-api-collection" aria-label="Import API collection">Import API collection</a></li>
+                    <li>
+                        <a href="#run-api-collection" aria-label="RUN API collection">RUN API collection</a></li>
+                    <li>
+                        <a href="#export-api-collection" aria-label="Export API collection">Export API collection</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-request" aria-label="API request">API request</a><ul>
+                            
+                    <li>
+                        <a href="#create-api-request" aria-label="Create API request">Create API request</a></li>
+                    <li>
+                        <a href="#edit-api-request" aria-label="Edit API request">Edit API request</a></li>
+                    <li>
+                        <a href="#run-api-request" aria-label="RUN API request">RUN API request</a></li>
+                    <li>
+                        <a href="#api-request-generate-code" aria-label="API request generate code">API request generate code</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#write-api-request-test-scripts" aria-label="Write API request test scripts">Write API request test scripts</a><ul>
+                            
+                    <li>
+                        <a href="#api-request-assert" aria-label="API request Assert">API request Assert</a><ul>
+                            
+                    <li>
+                        <a href="#introducing-assert" aria-label="Introducing Assert">Introducing Assert</a></li>
+                    <li>
+                        <a href="#assert-demo" aria-label="Assert demo">Assert demo</a><ul>
+                            
+                    <li>
+                        <a href="#assert-status-code-is-200" aria-label="Assert status code is 200">Assert status code is 200</a></li>
+                    <li>
+                        <a href="#assert-repsponse-body-as-expected" aria-label="Assert repsponse body as expected">Assert repsponse body as expected</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#debug-assert" aria-label="Debug Assert">Debug Assert</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#api-request-tests" aria-label="API request Tests">API request Tests</a><ul>
+                            
+                    <li>
+                        <a href="#introduction-tests" aria-label="Introduction Tests">Introduction Tests</a></li>
+                    <li>
+                        <a href="#tests-demo" aria-label="Tests demo">Tests demo</a><ul>
+                            
+                    <li>
+                        <a href="#verify-status-code-is-200" aria-label="Verify status code is 200">Verify status code is 200</a></li>
+                    <li>
+                        <a href="#verify-repsponse-body-as-expected" aria-label="Verify repsponse body as expected">Verify repsponse body as expected</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#debugging-tests" aria-label="Debugging Tests">Debugging Tests</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#environment-variables" aria-label="environment variables">environment variables</a><ul>
+                            
+                    <li>
+                        <a href="#creating-environment-variables" aria-label="Creating Environment Variables">Creating Environment Variables</a></li>
+                    <li>
+                        <a href="#environment-variable-demo" aria-label="environment variable demo">environment variable demo</a></li>
+                    <li>
+                        <a href="#using-environment-variables" aria-label="Using Environment Variables">Using Environment Variables</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#test-script-automation" aria-label="Test script automation">Test script automation</a><ul>
+                            
+                    <li>
+                        <a href="#pre-conditions" aria-label="Pre-conditions">Pre-conditions</a></li>
+                    <li>
+                        <a href="#api-automation-project-demo" aria-label="api automation project demo">api automation project demo</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#getting-into-ci" aria-label="Getting into CI">Getting into CI</a><ul>
+                            
+                    <li>
+                        <a href="#getting-into-github-action" aria-label="Getting into github action">Getting into github action</a></li>
+                    <li>
+                        <a href="#test-report---todo" aria-label="Test report&mdash;TODO">Test report&mdash;TODO</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#bruno-more-usage---todo" aria-label="bruno More usage&mdash;TODO">bruno More usage&mdash;TODO</a></li>
+                    <li>
+                        <a href="#postman-script-migration" aria-label="Postman script migration">Postman script migration</a><ul>
+                            
+                    <li>
+                        <a href="#api-request-collection-migration" aria-label="API Request Collection Migration">API Request Collection Migration</a></li>
+                    <li>
+                        <a href="#environment-variable-migration" aria-label="Environment Variable Migration">Environment Variable Migration</a></li>
+                    <li>
+                        <a href="#test-script-migration-reference" aria-label="Test Script Migration Reference">Test Script Migration Reference</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#api-request" aria-label="API request">API request</a><ul>
-                        
-                <li>
-                    <a href="#create-api-request" aria-label="Create API request">Create API request</a></li>
-                <li>
-                    <a href="#edit-api-request" aria-label="Edit API request">Edit API request</a></li>
-                <li>
-                    <a href="#run-api-request" aria-label="RUN API request">RUN API request</a></li>
-                <li>
-                    <a href="#api-request-generate-code" aria-label="API request generate code">API request generate code</a></li></ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="#write-api-request-test-scripts" aria-label="Write API request test scripts">Write API request test scripts</a><ul>
-                        
-                <li>
-                    <a href="#api-request-assert" aria-label="API request Assert">API request Assert</a><ul>
-                        
-                <li>
-                    <a href="#introducing-assert" aria-label="Introducing Assert">Introducing Assert</a></li>
-                <li>
-                    <a href="#assert-demo" aria-label="Assert demo">Assert demo</a><ul>
-                        
-                <li>
-                    <a href="#assert-status-code-is-200" aria-label="Assert status code is 200">Assert status code is 200</a></li>
-                <li>
-                    <a href="#assert-repsponse-body-as-expected" aria-label="Assert repsponse body as expected">Assert repsponse body as expected</a></li></ul>
-                </li>
-                <li>
-                    <a href="#debug-assert" aria-label="Debug Assert">Debug Assert</a></li></ul>
-                </li>
-                <li>
-                    <a href="#api-request-tests" aria-label="API request Tests">API request Tests</a><ul>
-                        
-                <li>
-                    <a href="#introduction-tests" aria-label="Introduction Tests">Introduction Tests</a></li>
-                <li>
-                    <a href="#tests-demo" aria-label="Tests demo">Tests demo</a><ul>
-                        
-                <li>
-                    <a href="#verify-status-code-is-200" aria-label="Verify status code is 200">Verify status code is 200</a></li>
-                <li>
-                    <a href="#verify-repsponse-body-as-expected" aria-label="Verify repsponse body as expected">Verify repsponse body as expected</a></li></ul>
-                </li>
-                <li>
-                    <a href="#debugging-tests" aria-label="Debugging Tests">Debugging Tests</a></li></ul>
-                </li>
-                <li>
-                    <a href="#environment-variables" aria-label="environment variables">environment variables</a><ul>
-                        
-                <li>
-                    <a href="#creating-environment-variables" aria-label="Creating Environment Variables">Creating Environment Variables</a></li>
-                <li>
-                    <a href="#environment-variable-demo" aria-label="environment variable demo">environment variable demo</a></li>
-                <li>
-                    <a href="#using-environment-variables" aria-label="Using Environment Variables">Using Environment Variables</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#test-script-automation" aria-label="Test script automation">Test script automation</a><ul>
-                        
-                <li>
-                    <a href="#pre-conditions" aria-label="Pre-conditions">Pre-conditions</a></li>
-                <li>
-                    <a href="#api-automation-project-demo" aria-label="api automation project demo">api automation project demo</a></li></ul>
-                </li>
-                <li>
-                    <a href="#getting-into-ci" aria-label="Getting into CI">Getting into CI</a><ul>
-                        
-                <li>
-                    <a href="#getting-into-github-action" aria-label="Getting into github action">Getting into github action</a></li>
-                <li>
-                    <a href="#test-report---todo" aria-label="Test report&mdash;TODO">Test report&mdash;TODO</a></li></ul>
-                </li>
-                <li>
-                    <a href="#bruno-more-usage---todo" aria-label="bruno More usage&mdash;TODO">bruno More usage&mdash;TODO</a></li>
-                <li>
-                    <a href="#postman-script-migration" aria-label="Postman script migration">Postman script migration</a><ul>
-                        
-                <li>
-                    <a href="#api-request-collection-migration" aria-label="API Request Collection Migration">API Request Collection Migration</a></li>
-                <li>
-                    <a href="#environment-variable-migration" aria-label="Environment Variable Migration">Environment Variable Migration</a></li>
-                <li>
-                    <a href="#test-script-migration-reference" aria-label="Test Script Migration Reference">Test Script Migration Reference</a>
-                </li>
-            </ul>
-            </li>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>Since Postman announced in May 2023 that it will phase out the Scratch Pad model with offline capabilities, teams that need to isolate API workspace data from third-party servers have been looking for alternatives.
 Teams that need to isolate API workspace data from third-party servers have had to look for alternatives. bruno is one of those alternatives: an open source desktop application designed for API testing, development, and debugging.</p>
@@ -826,7 +901,7 @@ Value: provider</li>
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -835,7 +910,7 @@ Value: provider</li>
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -844,7 +919,8 @@ Value: provider</li>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

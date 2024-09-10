@@ -11,7 +11,7 @@
 <meta name="author" content="nao.deng">
 <link rel="canonical" href="http://localhost:1313/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -66,17 +66,20 @@
 <script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <meta name="sogou_site_verification" content="iwkYDJrzfK" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JBX883ZDJJ', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="SuperTest API Automation Testing Tutorial: Building a Supertest API Automation Test project from 0 to 1" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:title" content="SuperTest API Automation Testing Tutorial: Building a Supertest API Automation Test project from 0 to 1" />
 <meta property="og:description" content="dive into how to build a Supertest API automation testing project from scratch.Supertest is a popular Java library for performing REST API testing, providing powerful tools that make it easy to write automated test scripts to validate the API&rsquo;sbehavior." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/" />
@@ -225,6 +228,17 @@ if (!doNotTrack) {
                     </svg>
                 </a>
             </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="Status">
+                    <span>Status</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -244,81 +258,142 @@ if (!doNotTrack) {
 </ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/supertest-tutorial-building-your-own-project-from-0-to-1.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#build-a-supertest-api-automation-test-project-from-0-to-1" aria-label="Build a SuperTest API automation test project from 0 to 1">Build a SuperTest API automation test project from 0 to 1</a><ul>
-                        
-                <li>
-                    <a href="#mocha-version" aria-label="Mocha version">Mocha version</a><ul>
-                        
-                <li>
-                    <a href="#create-a-new-project-folder" aria-label="Create a new project folder">Create a new project folder</a></li>
-                <li>
-                    <a href="#project-initialization" aria-label="Project Initialization">Project Initialization</a></li>
-                <li>
-                    <a href="#install-dependencies" aria-label="Install dependencies">Install dependencies</a></li>
-                <li>
-                    <a href="#create-new-test-folder-and-test-cases" aria-label="Create new test folder and test cases">Create new test folder and test cases</a></li>
-                <li>
-                    <a href="#writing-test-cases" aria-label="Writing Test Cases">Writing Test Cases</a></li>
-                <li>
-                    <a href="#configuring-mocha-config-files" aria-label="Configuring mocha config files">Configuring mocha config files</a></li>
-                <li>
-                    <a href="#updating-test-scripts-for-mocha" aria-label="Updating test scripts for mocha">Updating test scripts for mocha</a></li>
-                <li>
-                    <a href="#running-test-cases" aria-label="Running test cases">Running test cases</a></li>
-                <li>
-                    <a href="#test-report" aria-label="Test Report">Test Report</a><ul>
-                        
-                <li>
-                    <a href="#terminal-test-report" aria-label="Terminal Test Report">Terminal Test Report</a></li>
-                <li>
-                    <a href="#integrated-mochawesome-test-report" aria-label="Integrated mochawesome test report">Integrated mochawesome test report</a></li></ul>
-                </li></ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#build-a-supertest-api-automation-test-project-from-0-to-1" aria-label="Build a SuperTest API automation test project from 0 to 1">Build a SuperTest API automation test project from 0 to 1</a><ul>
+                            
+                    <li>
+                        <a href="#mocha-version" aria-label="Mocha version">Mocha version</a><ul>
+                            
+                    <li>
+                        <a href="#create-a-new-project-folder" aria-label="Create a new project folder">Create a new project folder</a></li>
+                    <li>
+                        <a href="#project-initialization" aria-label="Project Initialization">Project Initialization</a></li>
+                    <li>
+                        <a href="#install-dependencies" aria-label="Install dependencies">Install dependencies</a></li>
+                    <li>
+                        <a href="#create-new-test-folder-and-test-cases" aria-label="Create new test folder and test cases">Create new test folder and test cases</a></li>
+                    <li>
+                        <a href="#writing-test-cases" aria-label="Writing Test Cases">Writing Test Cases</a></li>
+                    <li>
+                        <a href="#configuring-mocha-config-files" aria-label="Configuring mocha config files">Configuring mocha config files</a></li>
+                    <li>
+                        <a href="#updating-test-scripts-for-mocha" aria-label="Updating test scripts for mocha">Updating test scripts for mocha</a></li>
+                    <li>
+                        <a href="#running-test-cases" aria-label="Running test cases">Running test cases</a></li>
+                    <li>
+                        <a href="#test-report" aria-label="Test Report">Test Report</a><ul>
+                            
+                    <li>
+                        <a href="#terminal-test-report" aria-label="Terminal Test Report">Terminal Test Report</a></li>
+                    <li>
+                        <a href="#integrated-mochawesome-test-report" aria-label="Integrated mochawesome test report">Integrated mochawesome test report</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#jest-version" aria-label="Jest version">Jest version</a><ul>
+                            
+                    <li>
+                        <a href="#create-a-new-jest-project-folder" aria-label="Create a new jest project folder">Create a new jest project folder</a></li>
+                    <li>
+                        <a href="#jest-demo-project-initialization" aria-label="Jest demo project initialization">Jest demo project initialization</a></li>
+                    <li>
+                        <a href="#jest-demo-install-dependencies" aria-label="Jest demo install dependencies">Jest demo install dependencies</a></li>
+                    <li>
+                        <a href="#create-new-jest-demo-project-test-folder-and-test-cases" aria-label="Create new Jest demo project test folder and test cases">Create new Jest demo project test folder and test cases</a></li>
+                    <li>
+                        <a href="#writing-jest-demo-test-cases" aria-label="Writing Jest demo Test Cases">Writing Jest demo Test Cases</a></li>
+                    <li>
+                        <a href="#configuring-jest-config-files" aria-label="Configuring Jest config files">Configuring Jest config files</a></li>
+                    <li>
+                        <a href="#adapting-jest-test-scripts" aria-label="Adapting Jest Test Scripts">Adapting Jest Test Scripts</a></li>
+                    <li>
+                        <a href="#runing-test-case" aria-label="Runing test case">Runing test case</a></li>
+                    <li>
+                        <a href="#jest-test-report" aria-label="Jest test report">Jest test report</a><ul>
+                            
+                    <li>
+                        <a href="#jest-terminal-test-report" aria-label="Jest terminal Test Report">Jest terminal Test Report</a></li>
+                    <li>
+                        <a href="#integrating-jest-html-reporters-test-reports" aria-label="Integrating jest-html-reporters test reports">Integrating jest-html-reporters test reports</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#jest-version" aria-label="Jest version">Jest version</a><ul>
-                        
-                <li>
-                    <a href="#create-a-new-jest-project-folder" aria-label="Create a new jest project folder">Create a new jest project folder</a></li>
-                <li>
-                    <a href="#jest-demo-project-initialization" aria-label="Jest demo project initialization">Jest demo project initialization</a></li>
-                <li>
-                    <a href="#jest-demo-install-dependencies" aria-label="Jest demo install dependencies">Jest demo install dependencies</a></li>
-                <li>
-                    <a href="#create-new-jest-demo-project-test-folder-and-test-cases" aria-label="Create new Jest demo project test folder and test cases">Create new Jest demo project test folder and test cases</a></li>
-                <li>
-                    <a href="#writing-jest-demo-test-cases" aria-label="Writing Jest demo Test Cases">Writing Jest demo Test Cases</a></li>
-                <li>
-                    <a href="#configuring-jest-config-files" aria-label="Configuring Jest config files">Configuring Jest config files</a></li>
-                <li>
-                    <a href="#adapting-jest-test-scripts" aria-label="Adapting Jest Test Scripts">Adapting Jest Test Scripts</a></li>
-                <li>
-                    <a href="#runing-test-case" aria-label="Runing test case">Runing test case</a></li>
-                <li>
-                    <a href="#jest-test-report" aria-label="Jest test report">Jest test report</a><ul>
-                        
-                <li>
-                    <a href="#jest-terminal-test-report" aria-label="Jest terminal Test Report">Jest terminal Test Report</a></li>
-                <li>
-                    <a href="#integrating-jest-html-reporters-test-reports" aria-label="Integrating jest-html-reporters test reports">Integrating jest-html-reporters test reports</a>
+                </ul>
                 </li>
-            </ul>
-            </li>
-            </ul>
-            </li>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="build-a-supertest-api-automation-test-project-from-0-to-1">Build a SuperTest API automation test project from 0 to 1<a hidden class="anchor" aria-hidden="true" href="#build-a-supertest-api-automation-test-project-from-0-to-1">#</a></h2>
 <p>The following is a demo of building a SuperTest API automation test project from 0 to 1, using either Jest or Mocha as the test framework.</p>
@@ -677,7 +752,7 @@ if (!doNotTrack) {
 
   </footer>
 <script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.tech"
+        data-repo="naodeng/naodeng.com.cn"
         data-repo-id="R_kgDOHntNtg"
         data-category="Show and tell"
         data-category-id="DIC_kwDOHntNts4Cavst"
@@ -686,7 +761,7 @@ if (!doNotTrack) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -695,7 +770,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
