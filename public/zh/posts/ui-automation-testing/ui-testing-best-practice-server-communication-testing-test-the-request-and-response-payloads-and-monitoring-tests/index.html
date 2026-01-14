@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控" />
-<meta property="og:description" content="这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-01-21T17:06:44+08:00" />
-<meta property="article:modified_time" content="2024-01-21T17:06:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控"/>
-<meta name="twitter:description" content="这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控">
+  <meta property="og:description" content="这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-21T17:06:44+08:00">
+    <meta property="article:modified_time" content="2024-01-21T17:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控">
+<meta name="twitter:description" content="这篇博文深入探讨了 UI 测试最佳实践中的服务通信测试，重点关注请求和响应负载的验证以及测试监控。读者将学到如何有效检验 UI 与服务之间的请求和响应负载，以确保系统交互的正确性和可靠性。博文还介绍了在 UI 测试中如何进行监控，以及监测服务通信过程中的性能和可用性。通过这些实践，读者能够更全面地覆盖 UI 测试中的服务通信方面，提高测试的全面性和准确性，确保系统的正常运行。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控",
-      "item": "http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"
+      "item": "https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "文章由 UI 测试最佳实践项目 内容翻译而来，大家有条件的话可以去 UI 测试最佳实践项目阅读原文。\n检验请求和响应负载 原文链接:https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/test-request-and-response-payload.md\n一段简要说明 前端应用因与后端通信不协调而导致停止工作的频率有多高？\n前端应用和后端应用之间存在一份合同，你始终需要测试合同是否得到遵守。每一次前后端应用之间的通信都由以下几个方面定义：\n请求的 URL 所使用的 HTTP 动词（GET、POST 等） 请求的有效负载和标头：前端应用发送给后端应用的数据 响应的有效负载、标头和状态：后端应用发送回前端应用的数据 你需要对所有这些方面进行测试，更广义地说，你需要等待每个相关的 AJAX 请求，为什么呢？\n相关的 XHR 请求是你正在测试的应用程序流程的一部分 即使 XHR 请求不是你正在测试的流程的一部分，它对达到期望的 UI 状态也可能是相关的 等待 XHR 请求可以使你的测试更为健壮，参见等待，不要休眠章节及其XHR 请求等待部分 在现有的测试工具中，完全等待和检查 XHR 请求并不那么常见，目前 Cypress 提供了最全面的检查支持。\n请注意：以下所有示例均基于 Cypress，它目前提供了最佳的 XHR 测试支持。\n对 XHR 请求进行断言的完整示例 // ask Cypress to intercept every XHR request made to a URL ending with `/authentication` cy.intercept(\"POST\", \"**/authentication\").as(\"authentication-xhr\"); // ... your test actions... cy.wait(\"@authentication-xhr\").then(interception =\u003e { // request headers assertion expect(interception.request.headers).to.have.property(\"Content-Type\", \"application/json\"); // request payload assertions expect(interception.request.body).to.have.property(\"username\", \"admin\"); expect(interception.request.body).to.have.property(\"password\", \"asupersecretpassword\"); // status assertion expect(interception.response.statusCode).to.equal(200); // response headers assertions expect(interception.response.body).to.have.property(\"access-control-allow-origin\", \"*\"); // response payload assertions expect(interception.response.body).to.have.property(\"token\"); }); 在下面的章节中，我们将详细讨论 XHR 请求的不同特征。\n验证 XHR 请求的 URL 在 Cypress 中，用于请求的 URL 是通过cy.intercept调用定义的。你可能需要检查 URL 的查询字符串。\n// ask Cypress to intercept every XHR request made to a URL ending with `/authentication` cy.intercept(\"**/authentication**\").as(\"authentication-xhr\"); // ... your test actions... cy.wait(\"@authentication-xhr\").then(interception =\u003e { // query string assertion expect(interception.request.url).to.contain(\"username=admin\"); expect(interception.request.url).to.contain(\"password=asupersecretpassword\"); }); 请注意，当你需要对多个主题进行断言时，Cypress 的then =\u003e expect语法非常有帮助（例如，URL 和状态）。如果你只需要对单个主题进行断言，可以使用更具表现力的should语法。\ncy.wait(\"@authentication-xhr\") .its(\"url\") .should(\"contain\", \"username=admin\") .and(\"contain\", \"password=asupersecretpassword\"); XHR 请求的方法 在 Cypress 中，请求使用cy.intercept函数定义。你可以通过指定它来定义要拦截的请求类型。\n// the most compact `cy.intercept` call, the GET method is implied cy.intercept(\"**/authentication\").as(\"authentication-xhr\"); // method can be explicitly defined cy.intercept(\"POST\", \"**/authentication\").as(\"authentication-xhr\"); // the extended `cy.intercept` call is available too cy.intercept({ method: \"POST\", url: \"**/authentication\" }).as(\"authentication-xhr\"); 验证 XHR 请求的 payload 和 headers 对 XHR 请求的 payload 和 headers 进行断言允许你立即获得有关糟糕的 XHR 请求原因的详细反馈。必须在每个 XHR 请求上进行检查，以确保一切都正确地表示了测试执行的 UI 操作。\n// ask Cypress to intercept every XHR request made to a URL ending with `/authentication` cy.intercept(\"POST\", \"**/authentication\").as(\"authentication-xhr\"); // ... your test actions... cy.wait(\"@authentication-xhr\").then(interception =\u003e { // request headers assertion expect(interception.request.headers).to.have.property(\"Content-Type\", \"application/json\"); // request payload assertions expect(interception.request.body).to.have.property(\"username\", \"admin\"); expect(interception.request.body).to.have.property(\"password\", \"asupersecretpassword\"); }); 验证 XHR 请求响应的 payload, headers 和 status 响应必须百分之百符合前端应用的预期，否则可能向用户展示意料之外的状态。响应断言在完整的端到端测试中很有用，但在 UI 集成测试中则无关紧要（TODO：链接到集成测试页面）。\n// ask Cypress to intercept every XHR request made to a URL ending with `/authentication` cy.intercept(\"POST\", \"**/authentication\").as(\"authentication-xhr\"); // ... your test actions... cy.wait(\"@authentication-xhr\").then(intercept =\u003e { // status assertions expect(intercept.response.statusCode).to.equal(200); // response headers assertions expect(intercept.response.body).to.have.property(\"access-control-allow-origin\", \"*\"); // response payload assertions expect(intercept.response.body).to.have.property(\"token\"); }); 测试监控 原文链接：:https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/monitoring-tests.md\n一段简要说明 随着前端期望的提高，服务器和服务的复杂性也在增加。前端应用需要变得越来越快：代码拆分、懒加载、Brotli 压缩等性能优化解决方案已成为标准。还有一些令人惊叹的解决方案，如基于机器学习和分析数据的代码拆分和资源预加载。此外，JAMstack 站点生成器可用于避免手动管理许多性能优化，但它们的配置和构建过程可能会破坏已经测试过的功能。\n有很多我们一旦测试过就认为理所当然的功能，但它们并非无法回归，可能会导致灾难。例如：\nsitemap.xml 和 robots.txt 的爬行配置（通常每个环境都不同） 使用 Brotli/gzip 提供的资产：错误的内容编码可能会破坏站点的所有功能 针对静态或动态资产的不同配置的缓存管理 这些问题可能看起来很明显，但比你想象的更微妙。如果你关心用户体验，就应该保持监控，因为通常在发现问题时已经为时过晚。我知道不能监控所有事物，但是测试应用的次数越多，测试就越能成为首要的质量检查工具。\n监控测试也可以与 E2E 测试集成（毕竟，它们只是简单的 E2E 测试），但将它们保持分开可以帮助你在需要时运行它们。上述大多数事项与 DevOps 相关，有了超快的监控测试，您可以获得即时而专注的反馈。\nCypress 示例 缓存监控测试示例 const urls = { staging: \"https://staging.example.com\", production: \"https://example.com\", } const shouldNotBeCached = (xhr) =\u003e cy.wrap(xhr).its(\"headers.cache-control\").should(\"equal\", \"public,max-age=0,must-revalidate\") const shouldBeCached = (xhr) =\u003e cy.wrap(xhr).its(\"headers.cache-control\").should(\"equal\", \"public,max-age=31536000,immutable\") // extract the main JS file from the source code of the page const getMainJsUrl = pageSource =\u003e \"/app-56a3f6cb9e6156c82be6.js\" context('Site monitoring', () =\u003e { context('The HTML should not be cached', () =\u003e { const test = url =\u003e cy.request(url) .then(shouldNotBeCached) it(\"staging\", () =\u003e test(urls.staging)) it(\"production\", () =\u003e test(urls.production)) }) context('The static assets should be cached', () =\u003e { const test = url =\u003e cy.request(url) .its(\"body\") .then(getMainJsUrl) .then(appUrl =\u003e url+appUrl) .then(cy.request) .then(shouldBeCached) it('staging', () =\u003e test(urls.staging)) it('production', () =\u003e test(urls.production)) }) }) 内容编码监控测试示例 context('The Brotli-compressed assets should be served with the correct content encoding', () =\u003e { const test = url =\u003e { cy.request(url) .its(\"body\") .then(getMainJsUrl) .then(appUrl =\u003e cy.request({url: url + appUrl, headers: {\"Accept-Encoding\": \"br\"}}) .its(\"headers.content-encoding\") .should(\"equal\", \"br\")) } it('staging', () =\u003e test(urls.staging)) it('production', () =\u003e test(urls.production)) }) 抓取监测测试示例 context('The robots.txt file should disallow the crawling of the staging site and allow the production one', () =\u003e { const test = (url, content) =\u003e cy.request(`${url}/robots.txt`) .its(\"body\") .should(\"contain\", content) it('staging', () =\u003e test(urls.staging, \"Disallow: /\")) it('production', () =\u003e test(urls.production, \"Allow: /\")) }) 由NoriSte 在 dev.to 和 Medium进行联合发表。\n参考资料 UI 测试最佳实践项目:https://github.com/NoriSte/ui-testing-best-practices UI 测试最佳实践项目中文翻译:https://github.com/naodeng/ui-testing-best-practices 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "538",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-01-21T17:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-01-21T17:06:44+08:00",
   "dateModified": "2024-01-21T17:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"
+    "@id": "https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,104 +255,45 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控
     </h1>
-    <div class="post-meta"><span title='2024-01-21 17:06:44 +0800 CST'>一月 21, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;538 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-01-21 17:06:44 +0800 CST'>2024年1月21日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>538 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd" aria-label="检验请求和响应负载">检验请求和响应负载</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%af%b9-xhr-%e8%af%b7%e6%b1%82%e8%bf%9b%e8%a1%8c%e6%96%ad%e8%a8%80%e7%9a%84%e5%ae%8c%e6%95%b4%e7%a4%ba%e4%be%8b" aria-label="对 XHR 请求进行断言的完整示例">对 XHR 请求进行断言的完整示例</a></li>
-                    <li>
-                        <a href="#%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7" aria-label="测试监控">测试监控</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e-1" aria-label="一段简要说明">一段简要说明</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#cypress-%e7%a4%ba%e4%be%8b" aria-label="Cypress 示例">Cypress 示例</a></li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd" aria-label="检验请求和响应负载">检验请求和响应负载</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%af%b9-xhr-%e8%af%b7%e6%b1%82%e8%bf%9b%e8%a1%8c%e6%96%ad%e8%a8%80%e7%9a%84%e5%ae%8c%e6%95%b4%e7%a4%ba%e4%be%8b" aria-label="对 XHR 请求进行断言的完整示例">对 XHR 请求进行断言的完整示例</a></li>
+                <li>
+                    <a href="#%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7" aria-label="测试监控">测试监控</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e-1" aria-label="一段简要说明">一段简要说明</a></li></ul>
+                </li>
+                <li>
+                    <a href="#cypress-%e7%a4%ba%e4%be%8b" aria-label="Cypress 示例">Cypress 示例</a></li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
 <h2 id="检验请求和响应负载">检验请求和响应负载<a hidden class="anchor" aria-hidden="true" href="#检验请求和响应负载">#</a></h2>
@@ -369,34 +317,34 @@
 <p><em>请注意：以下所有示例均基于 Cypress，它目前提供了最佳的 XHR 测试支持。</em></p>
 <h2 id="对-xhr-请求进行断言的完整示例">对 XHR 请求进行断言的完整示例<a hidden class="anchor" aria-hidden="true" href="#对-xhr-请求进行断言的完整示例">#</a></h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// ... your test actions...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="s2">&#34;@authentication-xhr&#34;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">interception</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// request headers assertion
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;application/json&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// request payload assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;username&#34;</span><span class="p">,</span> <span class="s2">&#34;admin&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;username&#34;</span><span class="p">,</span> <span class="s2">&#34;admin&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;asupersecretpassword&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// status assertion
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// response headers assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;access-control-allow-origin&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;access-control-allow-origin&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// response payload assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;token&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;token&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span></code></pre></div><p>在下面的章节中，我们将详细讨论 XHR 请求的不同特征。</p>
 <details><summary>验证 XHR 请求的 URL</summary>
 <p>在 Cypress 中，用于请求的 URL 是通过<code>cy.intercept</code>调用定义的。你可能需要检查 URL 的查询字符串。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;**/authentication**&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;**/authentication**&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// ... your test actions...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="s2">&#34;@authentication-xhr&#34;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">interception</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// query string assertion
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">contain</span><span class="p">(</span><span class="s2">&#34;username=admin&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">contain</span><span class="p">(</span><span class="s2">&#34;username=admin&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">contain</span><span class="p">(</span><span class="s2">&#34;password=asupersecretpassword&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span></code></pre></div><p>请注意，当你需要对多个主题进行断言时，Cypress 的<code>then =&gt; expect</code>语法非常有帮助（例如，URL 和状态）。如果你只需要对单个主题进行断言，可以使用更具表现力的<code>should</code>语法。</p>
@@ -408,13 +356,13 @@
 <details><summary>XHR 请求的方法</summary>
 <p>在 Cypress 中，请求使用<code>cy.intercept</code>函数定义。你可以通过指定它来定义要拦截的请求类型。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// the most compact `cy.intercept` call, the GET method is implied
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// method can be explicitly defined
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// the extended `cy.intercept` call is available too
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;**/authentication&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
@@ -422,32 +370,32 @@
 <details><summary>验证 XHR 请求的 payload 和 headers</summary>
 <p>对 XHR 请求的 payload 和 headers 进行断言允许你立即获得有关糟糕的 XHR 请求原因的详细反馈。必须在每个 XHR 请求上进行检查，以确保一切都正确地表示了测试执行的 UI 操作。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// ... your test actions...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="s2">&#34;@authentication-xhr&#34;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">interception</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// request headers assertion
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;application/json&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// request payload assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;username&#34;</span><span class="p">,</span> <span class="s2">&#34;admin&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;username&#34;</span><span class="p">,</span> <span class="s2">&#34;admin&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">interception</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;asupersecretpassword&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span></code></pre></div></details>
 <details><summary>验证 XHR 请求响应的 payload, headers 和 status</summary>
 <p>响应必须百分之百符合前端应用的预期，否则可能向用户展示意料之外的状态。响应断言在完整的端到端测试中很有用，但在 UI 集成测试中则无关紧要（TODO：链接到集成测试页面）。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="s2">&#34;**/authentication&#34;</span><span class="p">).</span><span class="nx">as</span><span class="p">(</span><span class="s2">&#34;authentication-xhr&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// ... your test actions...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="s2">&#34;@authentication-xhr&#34;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">intercept</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// status assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// response headers assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;access-control-allow-origin&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;access-control-allow-origin&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// response payload assertions
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;token&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">expect</span><span class="p">(</span><span class="nx">intercept</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&#34;token&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span></code></pre></div></details>
 <h2 id="测试监控">测试监控<a hidden class="anchor" aria-hidden="true" href="#测试监控">#</a></h2>
@@ -474,7 +422,7 @@
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">shouldNotBeCached</span> <span class="o">=</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">cy</span><span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="nx">xhr</span><span class="p">).</span><span class="nx">its</span><span class="p">(</span><span class="s2">&#34;headers.cache-control&#34;</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">&#34;equal&#34;</span><span class="p">,</span> <span class="s2">&#34;public,max-age=0,must-revalidate&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">shouldBeCached</span> <span class="o">=</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">cy</span><span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="nx">xhr</span><span class="p">).</span><span class="nx">its</span><span class="p">(</span><span class="s2">&#34;headers.cache-control&#34;</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">&#34;equal&#34;</span><span class="p">,</span> <span class="s2">&#34;public,max-age=31536000,immutable&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// extract the main JS file from the source code of the page
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">getMainJsUrl</span> <span class="o">=</span> <span class="nx">pageSource</span> <span class="p">=&gt;</span> <span class="s2">&#34;/app-56a3f6cb9e6156c82be6.js&#34;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">getMainJsUrl</span> <span class="o">=</span> <span class="nx">pageSource</span> <span class="p">=&gt;</span> <span class="s2">&#34;/app-56a3f6cb9e6156c82be6.js&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">context</span><span class="p">(</span><span class="s1">&#39;Site monitoring&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">context</span><span class="p">(</span><span class="s1">&#39;The HTML should not be cached&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -550,12 +498,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/">
     <span class="title">« 上一页</span>
     <br>
     <span>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/performance-testing/k6-tutorial-advanced-usage-output-html-report-and-ci-cd-integration/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/performance-testing/k6-tutorial-advanced-usage-output-html-report-and-ci-cd-integration/">
     <span class="title">下一页 »</span>
     <br>
     <span>K6 性能测试教程 - 进阶用法：输出 html 报告和 CI/CD 集成</span>
@@ -566,7 +514,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on x"
-            href="https://x.com/intent/tweet/?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -575,7 +523,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&amp;title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;summary=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&amp;title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;summary=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -584,7 +532,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f&title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -593,7 +541,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -602,7 +550,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on whatsapp"
-            href="https://api.whatsapp.com/send?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
+            href="https://api.whatsapp.com/send?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -611,7 +559,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on telegram"
-            href="https://telegram.me/share/url?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
+            href="https://telegram.me/share/url?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -620,7 +568,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
+            href="https://news.ycombinator.com/submitlink?t=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e6%9c%8d%e5%8a%a1%e9%80%9a%e4%bf%a1%e6%b5%8b%e8%af%95%ef%bc%9a%e6%a3%80%e9%aa%8c%e8%af%b7%e6%b1%82%e5%92%8c%e5%93%8d%e5%ba%94%e8%b4%9f%e8%bd%bd%ef%bc%8c%e6%b5%8b%e8%af%95%e7%9b%91%e6%8e%a7&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -631,26 +579,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -665,9 +598,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -708,11 +646,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

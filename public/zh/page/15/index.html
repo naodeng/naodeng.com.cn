@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.134.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -10,20 +10,20 @@
 
 <meta name="description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 <meta name="author" content="NaoDeng">
-<link rel="canonical" href="http://localhost:1313/zh/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/index.xml">
-<link rel="alternate" type="application/json" href="http://localhost:1313/zh/index.json">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/">
+<link rel="alternate" type="application/rss+xml" href="https://naodeng.com.cn/zh/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://naodeng.com.cn/zh/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/">
 <noscript>
     <style>
         #theme-toggle,
@@ -44,35 +44,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -82,51 +89,39 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试同学" />
-<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/zh/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试同学"/>
-<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试同学">
+  <meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试同学">
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "软件测试同学",
-  "url": "http://localhost:1313/zh/",
+  "url": "https://naodeng.com.cn/zh/",
   "description": "naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "https://naodeng.com.cn/favicon.ico",
   "sameAs": [
       "https://github.com/naodeng", "https://naodeng.medium.com", "https://twitter.com/inaodeng", "https://ko-fi.com/naodeng", "index.xml"
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -146,38 +141,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -214,10 +220,11 @@
   </header>
   <div class="entry-content">
     <p>下面的信息是对 playwright 自动化测试框架的新手入门介绍。如果你想要学习更多关于 playwright 自动化测试框架的信息，请参阅它的文档。运行测试：打开测试界面，选择&#34;运行测试&#34;。下面会显示一个非常简单的测试画面。你可以选择任何一个测试项目。你可以通过键盘或者鼠标来调试测试。查看测试报告：在测试结束后，单击&#34;查看测试报告&#34;按钮。测试报告会显示在测试结束后的浏览器中。
-安装 Install 非 VS Code 编辑器安装 新建项目文件 使用命令行工具进入新建的项目文件夹 输入命令进行项目初始化 npm init playwright@latest 按照提示进行项目初始化 安装完成后的目录结构为 playwright.config.ts //playwright.config.ts的配置文件 package.json //node项目的配置文件 package-lock.json //node项目的配置文件 tests/ example.spec.ts //测试demo tests-examples/ demo-todo-app.spec.ts //todo app的测试demo VS Code 编辑器安装 新建项目文件 使用 VS Code 编辑器打开新建的项目文件夹 在 VS Code 编辑器安装 Playwright Test for VSCode 插件 然后在 VS Code 编辑器的命令面板上输入 Install Playwright ...</p>
+安装 Install 非 VS Code 编辑器安装 新建项目文件 使用命令行工具进入新建的项目文件夹 输入命令进行项目初始化 npm init playwright@latest 按照提示进行项目初始化 安装完成后的目录结构为 playwright.config.ts //playwright.config.ts的配置文件 package.json //node项目的配置文件 package-lock.json //node项目的配置文件 tests/ example.spec.ts //测试demo tests-examples/ demo-todo-app.spec.ts //todo app的测试demo VS Code 编辑器安装 新建项目文件 使用 VS Code 编辑器打开新建的项目文件夹 在 VS Code 编辑器安装 Playwright Test for VSCode 插件 然后在 VS Code 编辑器的命令面板上输入 Install Playwright 按照提示进行项目初始化 安装完成后的目录结构为 playwright.config.ts //playwright.config.ts的配置文件 package.json //node项目的配置文件 package-lock.json //node项目的配置文件 tests/ example.spec.ts //测试demo tests-examples/ demo-todo-app.spec.ts //todo app的测试demo 运行测试 Run test VS Code 运行 通过 Playwright Test for VSCode 插件运行 通过 VS Code 打开项目文件后 点击 VS Code 左侧的 Testing(漏斗) 按钮 Testing 页面下会展示所有的 demo 测试用例 点击绿色三角形就可以运行 demo 测试用例了 可以点击是否选中&#39;show browser&#39;来控制是否无头浏览器运行用例和打开浏览器运行用例 测试文件运行 通过 VS Code 打开项目文件后 点击打开 demo 测试文件 点击测试块旁边的绿色三角形 就可以运行测试来运行单个测试 命令行运行 运行所有测试
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-01-18 00:00:00 +0000 UTC'>一月 18, 2023</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Playwright 自动化框架入门" href="http://localhost:1313/zh/posts/others/playwright-get-started/"></a>
+  <footer class="entry-footer"><span title='2023-01-18 00:00:00 +0000 UTC'>2023年1月18日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Playwright 自动化框架入门" href="https://naodeng.com.cn/zh/posts/others/playwright-get-started/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -234,10 +241,12 @@
 支持、.click()、.type()、和 Cypress 命令 .check() ，并在与 Cypress Studio 内部的 DOM 交互时生成测试代码。您还可以通过右键单击要断言的元素来生成断言。 .uncheck() .select()
 使用 Cypress Studio Cypress Studio 是一项实验性功能，可以通过将 experimentalStudio 属性添加到您的配置文件来启用（ cypress.json 默认情况下）。
 { &#34;experimentalStudio&#34;: true} Cypress Real World App (RWA) 是一个开源项目，它实现了一个支付应用程序，以展示 Cypress 测试方法、模式和工作流程的实际使用情况。下面将使用它来演示 Cypress Studio 的功能。
+扩展测试 您可以扩展任何预先存在的测试，或者通过使用以下测试脚手架在您的 integrationFolder（默认情况下）中创建一个新测试来开始。
+第 1 步 - 运行用例 我们将使用 Cypress Studio 执行“新交易”用户流程。首先，启动 Test Runner 并运行在上一步中创建的用例。
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-13 00:00:00 +0000 UTC'>五月 13, 2022</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍" href="http://localhost:1313/zh/posts/others/cypress-demo6/"></a>
+  <footer class="entry-footer"><span title='2022-05-13 00:00:00 +0000 UTC'>2022年5月13日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍" href="https://naodeng.com.cn/zh/posts/others/cypress-demo6/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -249,8 +258,8 @@
     <p>Cypress UI 自动化测试框架学习（5）- 命令大全 命令大全 and：创建断言 as：创建别名 blur：失去焦点 check：选中 check 或者 radio children：获取一组 DOM 元素中每个元素的子元素 clear：清除 input 或者 textarea 的值 clearCookie：清除特定的浏览器 cookie clearCookies：清除浏览器的所有 cookie clearLocalStorage：清除 localstorage 的数据 click：点击 DOM 元素 clock：覆盖全局与时间相关的函数 closest：获取与选择器匹配的第一个 DOM 元素 contains：获取包含文本的 DOM 元素 dblclick：双击 DOM 元素 debug：设置调试器并记录上一个命令产生的内容 document：获取 window.document 对象 each：迭代数组结构 end：结束一系列命令 eq：在元素数组中获取特定索引的 DOM 元素 exec：执行系统命令 filter：获取特定选择器匹配的元素 find：查找特定选择器的特定后代元素 first：获取一组 DOM 元素中的第一个 DOM 元素 fixture：加载文件中的数据集 focus：使一个 DOM 元素获取焦点 focused：获取当前获取焦点的 DOM 元素 get：通过选择器或者别名获取一个或者多个 DOM 元素 getCookie：获取浏览器的特定 cookie getCookies：获取浏览器的所有 cookie go：前进或者后退 hash：获取当前页面地址的哈希值 hover：不存在这个命令 invoke：在前边生成的主题上调用函数 its：获取前边生成的主题的属性值 last：获取一组 DOM 元素的最后一个 DOM 元素 location：获取活动页面的 window.location 对象 log：打印 cypress 日志信息 next：获取紧接的下一个兄弟 DOM 元素 nextAll：获取所有兄弟 DOM 元素 nextUntil：获取一组匹配的 DOM 元素中的每个后续兄弟元素，不包括提供的元素 not：过滤 DOM 元素 parent：获取父元素 parents：获取所有的父元素 parentsUntil：获取所有的父元素，不包括提供的元素 pause：暂停执行 cypress 命令 prev：获取前一个兄弟节点 prevAll：获取前边的所有兄弟节点 prevUntil：获取前边所有的兄弟节点，不包括提供的元素 readFile：读取文件内容 reload：重新加载页面 request：发送 HTTP 请求 root：获取页面根节点 route：管理网络请求的行为 screenshot：生成截图 scrollIntoView：将元素滚动到视图中 scrollTo：滚动到特定位置 select：选择 select 中的 option server：启动服务器开始讲响应路由到 cy.route() 和 cy.request() setCookie：设置浏览器 cookie should：创建断言，同 and() siblings：获取兄弟 DOM 元素 spread：将数组扩展为多个参数 spy：包装方法，记录函数的调用和参数 stub：替换函数，记录其用法并控制其行为 submit：提交一个表单 task：通过 task 插件，在 Node.js 中执行代码 then：使用上一个命令产生的结果 tick：移动时间 title：获取活动页面的 document.title trigger：触发 DOM 元素上的事件 type：给 DOM 元素输入内容 uncheck：取消选中复选框 url：获取当前活动页面的 URL viewport：控制应用程序的屏幕大小和方向 visit：访问远程 URL wait：等待方法 window：获取当前活动窗口的 window 对象 within：将后续命令限制在此元素内 wrap：产生传递给 .wrap() 的对象 writeFile：写入指定内容到文件 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-12 00:00:00 +0000 UTC'>五月 12, 2022</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（5）- 命令大全" href="http://localhost:1313/zh/posts/others/cypress-demo5/"></a>
+  <footer class="entry-footer"><span title='2022-05-12 00:00:00 +0000 UTC'>2022年5月12日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（5）- 命令大全" href="https://naodeng.com.cn/zh/posts/others/cypress-demo5/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -263,10 +272,11 @@
 测试数据驱动 js 格式测试数据驱动 简介 数据以 js 格式存储，使用 js 的 import 方法导入使用
 使用方法 新建测试数据 js 文件 示例：在项目的 cypress/integration 文件夹下新建 testData 目录，然后在该目录下创建一个 js 文件，示例文件名为：testLogin.data.js
 testLogin.data.js 示例代码如下：
-export const testLoginUserEmail = [ { summary: &#34;正确邮箱账号登录验证&#34;, username:&#34;dengnao.123@163.com&#34;, password:&#34;xxxx&#34; } ] export const testLoginUserId = [ { summary: &#34;正确id账号登录验证&#34;, username:&#34;waitnoww&#34;, password:&#34;xxxx&#34; } ] export const testLoginUserMobilephone = [ { summary: &#34;正确手机号账号登录验证&#34;, username:&#34;18888139031&#34;, password:&#34;xxxx&#34; } ] ...</p>
+export const testLoginUserEmail = [ { summary: &#34;正确邮箱账号登录验证&#34;, username:&#34;dengnao.123@163.com&#34;, password:&#34;xxxx&#34; } ] export const testLoginUserId = [ { summary: &#34;正确id账号登录验证&#34;, username:&#34;waitnoww&#34;, password:&#34;xxxx&#34; } ] export const testLoginUserMobilephone = [ { summary: &#34;正确手机号账号登录验证&#34;, username:&#34;18888139031&#34;, password:&#34;xxxx&#34; } ] 编写测试用例 在项目 cypress/integration 文件夹下新建 js 测试用例文件，示例文件名为：testLogin_guanggoo_data_by_js.js
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-11 00:00:00 +0000 UTC'>五月 11, 2022</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架" href="http://localhost:1313/zh/posts/others/cypress-demo4/"></a>
+  <footer class="entry-footer"><span title='2022-05-11 00:00:00 +0000 UTC'>2022年5月11日</span>&nbsp;·&nbsp;<span>4 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架" href="https://naodeng.com.cn/zh/posts/others/cypress-demo4/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -284,10 +294,14 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 //元素前端代码示例 &lt;input type=&#34;text&#34; id=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;&#34; class=&#34;form-control&#34;&gt;
 示例代码 cy.get(&#39;#email&#39;) .class 定位 描述：通过元素的 class 属性来定位
 前提：定位的元素 css 样式存在 class 属性且唯一
+//元素前端代码示例 &lt;a class=&#34;navbar-brand&#34; href=&#34;/&#34;&gt;&lt;img width=&#34;150&#34; height=&#34;28&#34; border=&#34;0&#34; align=&#34;default&#34; alt=&#34;光谷社区&#34; src=&#34;http://cdn.guanggoo.com//static/images/guanggoonew.png&#34;&gt;&lt;/a&gt;
+示例代码 cy.get(&#39;.navbar-brand&#39;)
+name 定位 描述：通过元素 name 定位
+前提：定位的元素 css 样式存在 name 属性且唯一 //元素前端代码示例 &lt;input type=&#34;text&#34; id=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;&#34; class=&#34;form-control&#34;&gt;
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-10 00:00:00 +0000 UTC'>五月 10, 2022</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言" href="http://localhost:1313/zh/posts/others/cypress-demo3/"></a>
+  <footer class="entry-footer"><span title='2022-05-10 00:00:00 +0000 UTC'>2022年5月10日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言" href="https://naodeng.com.cn/zh/posts/others/cypress-demo3/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -302,10 +316,14 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 前置准备工作 在 package.json 文件的 scripts 模块加入了如下脚本：“cypress:run”:“cypress run”，便于后面生成报告
 不同运行脚本的区别：
 cypress run：是以无头浏览器模式跑测试用例文件夹下的所有测试用例 cypress open：会打开测试用例集的界面，需要手动运行 常用报告类型 spec 格式报告 运行命令 $ npm run cypress:run --reporter=spec 报告截图 Dot 格式报告 前置：在 cypress.json 文件新增&#34;reporter&#34;: “dot&#34;信息
+运行方式：
+$ npm run cypress:run 报告截图 json 格式报告 前置：在 cypress.json 文件新增&#34;reporter”: “json&#34;信息
+运行方式：
+$ npm run cypress:run 报告截图 List 格式报告 前置：在 cypress.json 文件新增&#34;reporter”: “list&#34;信息
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-09 00:00:00 +0000 UTC'>五月 9, 2022</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（2）- 测试报告" href="http://localhost:1313/zh/posts/others/cypress-demo2/"></a>
+  <footer class="entry-footer"><span title='2022-05-09 00:00:00 +0000 UTC'>2022年5月9日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（2）- 测试报告" href="https://naodeng.com.cn/zh/posts/others/cypress-demo2/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -320,14 +338,15 @@ Cypress 是自集成的，提供了一套完整的端到端测试，无须借助
 不同于其他只能测试 UI 层的前端测试工具，Cypress 允许编写所有类型的测试，覆盖了测试金字塔模型的所有测试类型【界面测试，集成测试，单元测试】
 Cypress 官网：https://www.cypress.io/
 Getting Started 下面以 MacOS 来进行介绍，其他系统可参考官网信息
-Operating System macOS 10.9 and above (64-bit only) Node.js 12 or 14 and above Before Started 已安装好 node.js 和 npm 已安装好 vs code 或者其他代码编辑器 Started and Run Step1：通过 npm 新建项目 # 新建项目文件夹 $ mkdir cypress-demo # 进入项目文件夹 $ cd cypress-demo # npm项目环境准备 $ npm init ...</p>
+Operating System macOS 10.9 and above (64-bit only) Node.js 12 or 14 and above Before Started 已安装好 node.js 和 npm 已安装好 vs code 或者其他代码编辑器 Started and Run Step1：通过 npm 新建项目 # 新建项目文件夹 $ mkdir cypress-demo # 进入项目文件夹 $ cd cypress-demo # npm项目环境准备 $ npm init Step2：安装 cypress # 项目安装cypress包 $ npm install cypress --save-dev Step3：运行 cypress 程序 若提示：npm ERR! missing script: cypress:open，可在项目根目录 package.json 文件的 scripts 下新增&#34;cypress:open&#34;: “cypress open”，保存后再次运行命令即可
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-05-05 00:00:00 +0000 UTC'>五月 5, 2022</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（1）- 上手" href="http://localhost:1313/zh/posts/others/cypress-demo1/"></a>
+  <footer class="entry-footer"><span title='2022-05-05 00:00:00 +0000 UTC'>2022年5月5日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to Cypress UI 自动化测试框架学习（1）- 上手" href="https://naodeng.com.cn/zh/posts/others/cypress-demo1/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/zh/page/14/">
+    <a class="prev" href="https://naodeng.com.cn/zh/page/14/">
       «&nbsp;上一页&nbsp;
     </a>
   </nav>
@@ -335,7 +354,7 @@ Operating System macOS 10.9 and above (64-bit only) Node.js 12 or 14 and above B
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -350,9 +369,14 @@ Operating System macOS 10.9 and above (64-bit only) Node.js 12 or 14 and above B
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -393,11 +417,12 @@ Operating System macOS 10.9 and above (64-bit only) Node.js 12 or 14 and above B
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

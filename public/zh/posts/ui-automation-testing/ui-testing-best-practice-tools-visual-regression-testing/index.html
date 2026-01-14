@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文聚焦于 UI 测试最佳实践的工具，第二篇介绍了视觉回归测试。文章详细解释了视觉回归测试在 UI 开发中的重要性，以及如何利用相关工具进行自动化视觉测试。读者将了解如何捕捉和比较页面截图，以确保界面在开发过程中的变化不影响现有的设计。通过视觉回归测试，读者能够更全面地验证 UI 的外观和布局，提高测试的全面性和准确性。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="UI 测试最佳实践的工具篇（二）：视觉回归测试" />
-<meta property="og:description" content="这篇博文聚焦于 UI 测试最佳实践的工具，第二篇介绍了视觉回归测试。文章详细解释了视觉回归测试在 UI 开发中的重要性，以及如何利用相关工具进行自动化视觉测试。读者将了解如何捕捉和比较页面截图，以确保界面在开发过程中的变化不影响现有的设计。通过视觉回归测试，读者能够更全面地验证 UI 的外观和布局，提高测试的全面性和准确性。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-01-26T16:06:44+08:00" />
-<meta property="article:modified_time" content="2024-01-26T16:06:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="UI 测试最佳实践的工具篇（二）：视觉回归测试"/>
-<meta name="twitter:description" content="这篇博文聚焦于 UI 测试最佳实践的工具，第二篇介绍了视觉回归测试。文章详细解释了视觉回归测试在 UI 开发中的重要性，以及如何利用相关工具进行自动化视觉测试。读者将了解如何捕捉和比较页面截图，以确保界面在开发过程中的变化不影响现有的设计。通过视觉回归测试，读者能够更全面地验证 UI 的外观和布局，提高测试的全面性和准确性。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="UI 测试最佳实践的工具篇（二）：视觉回归测试">
+  <meta property="og:description" content="这篇博文聚焦于 UI 测试最佳实践的工具，第二篇介绍了视觉回归测试。文章详细解释了视觉回归测试在 UI 开发中的重要性，以及如何利用相关工具进行自动化视觉测试。读者将了解如何捕捉和比较页面截图，以确保界面在开发过程中的变化不影响现有的设计。通过视觉回归测试，读者能够更全面地验证 UI 的外观和布局，提高测试的全面性和准确性。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-26T16:06:44+08:00">
+    <meta property="article:modified_time" content="2024-01-26T16:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="UI 测试最佳实践的工具篇（二）：视觉回归测试">
+<meta name="twitter:description" content="这篇博文聚焦于 UI 测试最佳实践的工具，第二篇介绍了视觉回归测试。文章详细解释了视觉回归测试在 UI 开发中的重要性，以及如何利用相关工具进行自动化视觉测试。读者将了解如何捕捉和比较页面截图，以确保界面在开发过程中的变化不影响现有的设计。通过视觉回归测试，读者能够更全面地验证 UI 的外观和布局，提高测试的全面性和准确性。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "UI 测试最佳实践的工具篇（二）：视觉回归测试",
-      "item": "http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/"
+      "item": "https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "文章由 UI 测试最佳实践项目 内容翻译而来，大家有条件的话可以去 UI 测试最佳实践项目阅读原文。\n视觉回归测试 原文链接：https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/tools/visual-regression-testing.md\n一段简要说明 视觉回归测试是通过比较代码更改后用户将看到的屏幕截图来验证 CSS 中的回归问题的一种方法。这主要用于覆盖 CSS 的回归问题，但也适用于涵盖窗口、跨浏览器/设备组合以及本地化问题。可以将其类比为 Jest 快照，但与将 DOM 作为文本进行比较不同，它实际上是通过实际屏幕截图的比较来实现的。\n视觉回归测试的过程包括：\n记录基准快照（初始执行）。\n再次执行视觉测试，并将其与基准快照进行比较（后续执行）。\n如果新的快照与基准快照匹配，则接受。\n否则，设置新的基准快照，或者这是一个视觉回归缺陷。\n视觉回归工具会找到任何像素差异。随着快照的增加和数量的增多，这可能变得复杂。视觉快照服务的一个主要优势是其具有 AI 功能；AI 可以随着时间的推移进行训练，我们可以训练它忽略我们可能不关心的微小快照差异。需要注意的是，通过给定快照名称，我们可以训练 AI 变得非常宽松，接受任何差异\n。因此，我们需要谨慎处理，以免误将有效的失败结果标记为通过。我们可以通过更改快照名称、窗口或代码的任何部分来重置训练。\n如果没有 AI，我们将不得不手动处理每一个微小的误差，接受或拒绝每一个不必要的负面结果。如果没有内置的跨浏览器和跨窗口测试，我们的测试套件将在本地或 CI 中呈指数增长。可以观看 Gil Tayar 的演讲为 CSS 编写测试以获取更多信息。\n服务的第二大优势在于它们可以通过单个测试解决跨窗口和浏览器的问题，因此我们无需在 CI 中重复执行相同的测试以涵盖不同的变体。\n使用 Percy 和 Applitools 的 Cypress 示例 所有的代码示例都可以在这个仓库中找到，里面包含一个带有 Percy 以及 Applitools 镜像的 ReactJS 应用程序，用于视觉测试。\n我们将深入了解两个流行的服务，Percy 和 Applitools，并演示这些服务如何通过维护视觉快照来节省带宽。我们还将讨论它们在涉及跨浏览器和窗口组合时如何成为一种增强力。\n使用服务进行视觉回归测试有一个共同的流程：\n记录默认快照并将其与后续测试执行中的新快照进行比较。我们必须首次接受初始快照。\n从那时起，与默认匹配的新快照将自动被接受。\n不匹配的新快照会在 Web 界面上触发通知；我们要么拒绝，要么接受这个新的基线。如果我们拒绝，那就是一个缺陷。如果我们接受，就有了一个新的基线，循环继续。\n假设我们想要验证用户的头像。\nPercy 流程 一个简单的测试，用于验证用户的头像。 // cypress/e2e/ui-integration/user-context-retainment.spec.js describe(\"User selection retainment between routes\", () =\u003e { before(() =\u003e { cy.stubNetwork(); cy.visit(\"/\"); }); it(\"Should keep the user context between routes - full snapshot\", () =\u003e { cy.fixture(\"users\").then((users) =\u003e { cy.get(\".user-picker\").select(users[3].name); cy.contains(\"Users\").click(); cy.wait(\"@userStub\"); cy.url().should(\"contain\", \"/users\"); cy.get(\".item-header\").contains(users[3].name); // the visual test - full snapshot cy.percySnapshot(\"User selection retainment between routes\"); // \u003c-- }); }); it(\"Should keep the user context between routes - css-focused snapshot\", () =\u003e { cy.fixture(\"users\").then((users) =\u003e { cy.get(\".user-picker\").select(users[3].name); cy.contains(\"Users\").click(); cy.wait(\"@userStub\"); cy.url().should(\"contain\", \"/users\"); cy.get(\".item-header\").contains(users[3].name); // the visual test - using custom command for css selector focus // \u003c-- cy.get('[data-cy=\"user-details\"]').percySnapshotElement( \"user details with custom selector\" ); }); }); }); 在第一个测试中，我们看到了第一行代码，它截取了整个屏幕的截图。在后续的测试中，我们看到了 user-details 选择器的快照。由于 Percy 不支持直接的选择器快照，因此使用了自定义命令 percySnapshotElement。\n为了执行视觉差异测试，我们需要一个 Percy 账户和令牌。只有连接到该账户并通过 cy run 执行时，视觉测试才会运行。这主要用于 CI。详细信息请查看注册部分。\n一旦我们执行测试，Percy 界面中的初始快照如下。我们引入了一行测试代码，它在 4 个浏览器和 2 个窗口上运行；这是 8 个组合，在 CI 中我们无需担心。请注意，每个分辨率 x 浏览器都会消耗配额；如果我们测试了 2 个窗口和 4 个浏览器，这个一行测试代码将消耗 8 个配额。\n在后续的测试中，如果存在视觉差异（例如，如果我们关闭后端并且无法渲染图像），我们将在 Percy 界面中看到视觉差异的指示器。在这里，我们还可以验证不同浏览器和窗口之间的差异。\n到了这一步，我们可以训练 AI 不太聪明，自动接受将来可能出现的损坏的头像图像。然而，你可以想象到一些微不足道的像素差异，而我们并不关心这些。这就是视觉回归服务节省带宽的地方；维护视觉快照。\nPercy 的优势在于保持事情简单。然而，CI 设置是我们必须处理的额外工作。请参考博文指南获取有关设置 Percy 的所有详细信息。\nApplitools 流程 这是 使用 Applitools 编写的相同测试.\n// Applitools version of the visual test // cypress/e2e/ui-integration/user-context-retainment-applitools.spec.js describe(\"User selection retainment between routes\", () =\u003e { before(() =\u003e { // Each test should open its own Eyes for its own snapshots cy.eyesOpen({ appName: \"hooks-in-action\", testName: Cypress.currentTest.title, }); cy.stubNetwork(); cy.visit(\"/\"); }); it(\"Should keep the user context between routes - full snapshot\", () =\u003e { cy.fixture(\"users\").then((users) =\u003e { cy.get(\".user-picker\").select(users[3].name); cy.contains(\"Users\").click(); cy.wait(\"@userStub\"); cy.url().should(\"contain\", \"/users\"); cy.get(\".item-header\").contains(users[3].name); // full page test // \u003c-- cy.eyesCheckWindow({ tag: \"User selection retainment between routes\", target: \"window\", matchLevel: \"Layout\", }); }); }); it(\"Should keep the user context between routes - css focused snapshot\", () =\u003e { cy.fixture(\"users\").then((users) =\u003e { cy.get(\".user-picker\").select(users[3].name); cy.contains(\"Users\").click(); cy.wait(\"@userStub\"); cy.url().should(\"contain\", \"/users\"); cy.get(\".item-header\").contains(users[3].name); // partial page test // \u003c-- cy.eyesCheckWindow({ tag: \"user details with custom selector\", target: \"region\", selector: '[data-cy=\"user-details\"]', // if fully is true (default) then the snapshot is of the entire page, // if fully is false then snapshot is of the viewport. fully: false, }); }); }); afterEach(() =\u003e { cy.eyesClose(); }); }); 我们注意到在测试开始和结束时需要执行的额外命令 cy.eyesOpen 和 cy.eyesClose。此外，我们还看到 cy.eyesCheckWindow 是非常可定制的，不像 Percy 中那样需要自定义命令。\n有关设置 Applitools 的详细信息以及与 Percy 的比较，请查看这篇博客文章。\n与 Percy 类似，使用 Applitools，我们的测试在不同的浏览器和窗口中执行，并记录基准快照。\n如果存在视觉差异，Web 界面上会有清晰的指示器。\n下面是 Percy 与 Applitools 代码的对比。\n总的来说，Applitools 在可配置性方面更强大，而 Percy 更注重简单性。Percy 的用户界面更为精简，更易于使用，而 Applitools 的用户界面相对较为繁忙，但经过多年的改进已经有了很大的提升。从代码数量的角度来看，Percy 显然更为简洁，因为它不需要执行 “打开” 和 “关闭” 操作，而是可以直接执行主要命令。对于本地开发体验而言，Applitools 更胜一筹；能够在 Cypress 的开放模式下执行测试，而不是通过繁琐的命令行命令，是一个很大的优势。在测试运行器中直接显示实际的视觉差异，相对于 Percy 的情况，Percy 中的视觉失败只在 Web 用户界面上显示，这也是 Applitools 的一个优势。在 CI 环境中，不需要配置任何 yml 文件，这也使 Applitools 更具竞争力。另一个优势是能够通过选择器拍摄 UI 的子部分的快照；这个功能在 Applitools 中是内置的，而在 Percy 中则需要使用自定义命令，而且不能确保在实际环境中的普适性。\n| | Percy | Applitools |\n| ————————- | ——————————————- | ——————————— |\n| 代码 | 代码量较少 | 更具配置性 |\n| 用户体验 | 精简易用 | 较为繁琐，但有较大改善 |\n| 本地开发 | 仅支持无头模式 | 同时支持 Cypress 开放模式 |\n| CI | 需要 yml 文件 | 无需 yml 文件 |\n| 配置 | 主要在 Web 应用上，视口配置为本地文件 | 本地文件 |\n| 子部分快照 | 需要使用自定义命令，可能不适用于所有场景 | 内置支持 |\n| 视觉差异 AI | 需要更多时间形成观点 | 需要更多时间形成观点 |\n视觉测试并非无成本；在没有服务的情况下，执行视觉测试需要持续的工程师资源。在 CI 中，服务为我们在不同视口和浏览器组合上节省了成本，我们测试的所有服务在这方面都表现得很一致。视觉服务之间的最大区别在于 AI 在多大程度上帮助我们省去视觉测试的维护成本。我们认为最关键的决策因素是在内部应用中长期使用这两个工具（4-8 周），并进行并行比较。这将有助于评估哪个工具的 AI 更好，能够降低视觉测试的维护工作，而这正是对技术娴熟的团队将该测试策略纳入其组合中的最大挑战。\n参考资料 UI 测试最佳实践项目:https://github.com/NoriSte/ui-testing-best-practices UI 测试最佳实践项目中文翻译:https://github.com/naodeng/ui-testing-best-practices 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "521",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-01-26T16:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-01-26T16:06:44+08:00",
   "dateModified": "2024-01-26T16:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/"
+    "@id": "https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,103 +255,44 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       UI 测试最佳实践的工具篇（二）：视觉回归测试
     </h1>
-    <div class="post-meta"><span title='2024-01-26 16:06:44 +0800 CST'>一月 26, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;521 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-tools-visual-regression-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-01-26 16:06:44 +0800 CST'>2024年1月26日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>521 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/UI-Automation-Testing/UI-Testing-best-practice-tools-visual-regression-testing.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95" aria-label="视觉回归测试">视觉回归测试</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li>
-                    <li>
-                        <a href="#%e4%bd%bf%e7%94%a8-percy-%e5%92%8c-applitools-%e7%9a%84-cypress-%e7%a4%ba%e4%be%8b" aria-label="使用 Percy 和 Applitools 的 Cypress 示例">使用 Percy 和 Applitools 的 Cypress 示例</a><ul>
-                            
-                    <li>
-                        <a href="#percy-%e6%b5%81%e7%a8%8b" aria-label="Percy 流程">Percy 流程</a></li>
-                    <li>
-                        <a href="#applitools-%e6%b5%81%e7%a8%8b" aria-label="Applitools 流程">Applitools 流程</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                    </li>
-                </ul>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95" aria-label="视觉回归测试">视觉回归测试</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%80%e6%ae%b5%e7%ae%80%e8%a6%81%e8%af%b4%e6%98%8e" aria-label="一段简要说明">一段简要说明</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-percy-%e5%92%8c-applitools-%e7%9a%84-cypress-%e7%a4%ba%e4%be%8b" aria-label="使用 Percy 和 Applitools 的 Cypress 示例">使用 Percy 和 Applitools 的 Cypress 示例</a><ul>
+                        
+                <li>
+                    <a href="#percy-%e6%b5%81%e7%a8%8b" aria-label="Percy 流程">Percy 流程</a></li>
+                <li>
+                    <a href="#applitools-%e6%b5%81%e7%a8%8b" aria-label="Applitools 流程">Applitools 流程</a></li></ul>
                 </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
 <h2 id="视觉回归测试">视觉回归测试<a hidden class="anchor" aria-hidden="true" href="#视觉回归测试">#</a></h2>
@@ -390,14 +338,13 @@
 </li>
 </ul>
 <p>假设我们想要验证用户的头像。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/user-avatar.png?raw=true" alt="用户的头像"  />
-</p>
+<p><img alt="用户的头像" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/user-avatar.png?raw=true"></p>
 <h4 id="percy-流程">Percy 流程<a hidden class="anchor" aria-hidden="true" href="#percy-流程">#</a></h4>
 <ul>
 <li><a href="https://github.com/muratkeremozcan/react-hooks-in-action-with-cypress/blob/main/cypress/e2e/ui-integration/user-context-retainment.spec.js">一个简单的测试</a>，用于验证用户的头像。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// cypress/e2e/ui-integration/user-context-retainment.spec.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">before</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">cy</span><span class="p">.</span><span class="nx">stubNetwork</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">cy</span><span class="p">.</span><span class="nx">visit</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">);</span>
@@ -413,8 +360,8 @@
 </span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;.item-header&#34;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="c1">// the visual test - full snapshot
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cy</span><span class="p">.</span><span class="nx">percySnapshot</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">);</span> <span class="c1">// &lt;--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">});</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">percySnapshot</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">);</span> <span class="c1">// &lt;--
+</span></span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Should keep the user context between routes - css-focused snapshot&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -427,7 +374,7 @@
 </span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;.item-header&#34;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="c1">// the visual test - using custom command for css selector focus // &lt;--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-cy=&#34;user-details&#34;]&#39;</span><span class="p">).</span><span class="nx">percySnapshotElement</span><span class="p">(</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-cy=&#34;user-details&#34;]&#39;</span><span class="p">).</span><span class="nx">percySnapshotElement</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;user details with custom selector&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
@@ -438,11 +385,9 @@
 <p>为了执行视觉差异测试，我们需要一个 Percy 账户和令牌。只有连接到该账户并通过 <code>cy run</code> 执行时，视觉测试才会运行。这主要用于 CI。详细信息请查看<a href="https://dev.to/muratkeremozcan/painlessly-setup-cypress-percy-with-github-actions-in-minutes-1aki#sign-up">注册部分</a>。</p>
 </blockquote>
 <p>一旦我们执行测试，Percy 界面中的初始快照如下。<strong>我们引入了一行测试代码，它在 4 个浏览器和 2 个窗口上运行；这是 8 个组合，在 CI 中我们无需担心</strong>。请注意，每个分辨率 x 浏览器都会消耗配额；如果我们测试了 2 个窗口和 4 个浏览器，这个一行测试代码将消耗 8 个配额。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-initial.png?raw=true" alt="Percy 初始化"  />
-</p>
+<p><img alt="Percy 初始化" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-initial.png?raw=true"></p>
 <p>在后续的测试中，如果存在视觉差异（例如，如果我们关闭后端并且无法渲染图像），我们将在 Percy 界面中看到视觉差异的指示器。在这里，我们还可以验证不同浏览器和窗口之间的差异。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-visual-diff.png?raw=true" alt="视觉差异"  />
-</p>
+<p><img alt="视觉差异" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-visual-diff.png?raw=true"></p>
 <p>到了这一步，我们可以训练 AI 不太聪明，自动接受将来可能出现的损坏的头像图像。然而，你可以想象到一些微不足道的像素差异，而我们并不关心这些。这就是<strong>视觉回归服务节省带宽的地方；维护视觉快照</strong>。</p>
 <blockquote>
 <p>Percy 的优势在于保持事情简单。然而，CI 设置是我们必须处理的额外工作。请参考<a href="https://dev.to/muratkeremozcan/painlessly-setup-cypress-percy-with-github-actions-in-minutes-1aki#sign-up">博文指南</a>获取有关设置 Percy 的所有详细信息。</p>
@@ -451,10 +396,10 @@
 <p>这是 <a href="https://github.com/muratkeremozcan/react-hooks-in-action-with-cypress/blob/main/cypress/e2e/ui-integration/user-context-retainment-applitools.spec.js">使用 Applitools 编写的相同测试</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// Applitools version of the visual test
 </span></span></span><span class="line"><span class="cl"><span class="c1">// cypress/e2e/ui-integration/user-context-retainment-applitools.spec.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">before</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Each test should open its own Eyes for its own snapshots
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesOpen</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesOpen</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">appName</span><span class="o">:</span> <span class="s2">&#34;hooks-in-action&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">testName</span><span class="o">:</span> <span class="nx">Cypress</span><span class="p">.</span><span class="nx">currentTest</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
@@ -473,7 +418,7 @@
 </span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;.item-header&#34;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="c1">// full page test // &lt;--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesCheckWindow</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesCheckWindow</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">tag</span><span class="o">:</span> <span class="s2">&#34;User selection retainment between routes&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">target</span><span class="o">:</span> <span class="s2">&#34;window&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">matchLevel</span><span class="o">:</span> <span class="s2">&#34;Layout&#34;</span><span class="p">,</span>
@@ -491,14 +436,14 @@
 </span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;.item-header&#34;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="c1">// partial page test // &lt;--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesCheckWindow</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">cy</span><span class="p">.</span><span class="nx">eyesCheckWindow</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">tag</span><span class="o">:</span> <span class="s2">&#34;user details with custom selector&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">target</span><span class="o">:</span> <span class="s2">&#34;region&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;[data-cy=&#34;user-details&#34;]&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">// if fully is true (default) then the snapshot is of the entire page,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// if fully is false then snapshot is of the viewport.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">fully</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// if fully is false then snapshot is of the viewport.
+</span></span></span><span class="line"><span class="cl">        <span class="nx">fully</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="p">});</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
@@ -512,14 +457,11 @@
 <p>有关设置 Applitools 的详细信息以及与 Percy 的比较，请查看<a href="https://dev.to/muratkeremozcan/setup-cypress-applitools-with-github-actions-a-comparison-of-applitools-vs-percy-in-a-mid-size-app-43ij">这篇博客文章</a>。</p>
 </blockquote>
 <p>与 Percy 类似，使用 Applitools，我们的测试在不同的浏览器和窗口中执行，并记录基准快照。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/applitools-ui.png?raw=true" alt="applitools 界面"  />
-</p>
+<p><img alt="applitools 界面" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/applitools-ui.png?raw=true"></p>
 <p>如果存在视觉差异，Web 界面上会有清晰的指示器。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/applitools-failure.png?raw=true" alt="applitools-失败"  />
-</p>
+<p><img alt="applitools-失败" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/applitools-failure.png?raw=true"></p>
 <p>下面是 Percy 与 Applitools 代码的对比。</p>
-<p><img loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-vs-applitools.png?raw=true" alt="percy 与 applitools 的比较"  />
-</p>
+<p><img alt="percy 与 applitools 的比较" loading="lazy" src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/visual-testing/percy-vs-applitools.png?raw=true"></p>
 <p>总的来说，Applitools 在可配置性方面更强大，而 Percy 更注重简单性。Percy 的用户界面更为精简，更易于使用，而 Applitools 的用户界面相对较为繁忙，但经过多年的改进已经有了很大的提升。从代码数量的角度来看，Percy 显然更为简洁，因为它不需要执行 &ldquo;打开&rdquo; 和 &ldquo;关闭&rdquo; 操作，而是可以直接执行主要命令。对于本地开发体验而言，Applitools 更胜一筹；能够在 Cypress 的开放模式下执行测试，而不是通过繁琐的命令行命令，是一个很大的优势。在测试运行器中直接显示实际的视觉差异，相对于 Percy 的情况，Percy 中的视觉失败只在 Web 用户界面上显示，这也是 Applitools 的一个优势。在 CI 环境中，不需要配置任何 yml 文件，这也使 Applitools 更具竞争力。另一个优势是能够通过选择器拍摄 UI 的子部分的快照；这个功能在 Applitools 中是内置的，而在 Percy 中则需要使用自定义命令，而且不能确保在实际环境中的普适性。</p>
 <p>| | Percy | Applitools |</p>
 <p>| &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |</p>
@@ -553,12 +495,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/">
     <span class="title">« 上一页</span>
     <br>
     <span>UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-ui-testing-problems-cypress/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-tools-ui-testing-problems-cypress/">
     <span class="title">下一页 »</span>
     <br>
     <span>UI 测试最佳实践的工具篇（一）：一些 UI 测试问题及 Cypress 的解决方案</span>
@@ -569,7 +511,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on x"
-            href="https://x.com/intent/tweet/?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -578,7 +520,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&amp;title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;summary=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&amp;title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;summary=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -587,7 +529,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f&title=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -596,7 +538,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -605,7 +547,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on whatsapp"
-            href="https://api.whatsapp.com/send?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
+            href="https://api.whatsapp.com/send?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -614,7 +556,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on telegram"
-            href="https://telegram.me/share/url?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
+            href="https://telegram.me/share/url?text=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -623,7 +565,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share UI 测试最佳实践的工具篇（二）：视觉回归测试 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
+            href="https://news.ycombinator.com/submitlink?t=UI%20%e6%b5%8b%e8%af%95%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e7%9a%84%e5%b7%a5%e5%85%b7%e7%af%87%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e8%a7%86%e8%a7%89%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fui-automation-testing%2fui-testing-best-practice-tools-visual-regression-testing%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -634,26 +576,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -668,9 +595,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -711,11 +643,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

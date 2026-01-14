@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.134.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -10,20 +10,20 @@
 
 <meta name="description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 <meta name="author" content="NaoDeng">
-<link rel="canonical" href="http://localhost:1313/zh/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/index.xml">
-<link rel="alternate" type="application/json" href="http://localhost:1313/zh/index.json">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/">
+<link rel="alternate" type="application/rss+xml" href="https://naodeng.com.cn/zh/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://naodeng.com.cn/zh/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/">
 <noscript>
     <style>
         #theme-toggle,
@@ -44,35 +44,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -82,51 +89,39 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试同学" />
-<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/zh/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试同学"/>
-<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试同学">
+  <meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试同学">
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "软件测试同学",
-  "url": "http://localhost:1313/zh/",
+  "url": "https://naodeng.com.cn/zh/",
   "description": "naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "https://naodeng.com.cn/favicon.ico",
   "sameAs": [
       "https://github.com/naodeng", "https://naodeng.medium.com", "https://twitter.com/inaodeng", "https://ko-fi.com/naodeng", "index.xml"
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -146,38 +141,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -215,8 +221,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，专注于 Analytical Test Strategy（分析性测试策略）。文章从基础概念入手，介绍了分析性测试策略在软件测试中的重要性，以及其在测试流程中的具体应用。读者将了解到如何制定和执行分析性测试策略，包括选择合适的工具和技术，优化测试流程，并应对可能出现的挑战。通过分享最佳实践和解决方案，读者将获得指导，提高测试策略的效率和准确性，以确保软件质量。这个系列的目的是为测试人员提供一个深入了解各种测试术语及其实际应用的平台，促进测试领域的知识分享和交流。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-26 12:50:44 +0800 CST'>三月 26, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;288 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:Analytical Test Strategy 分析性测试策略" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/"></a>
+  <footer class="entry-footer"><span title='2024-03-26 12:50:44 +0800 CST'>2024年3月26日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>288 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:Analytical Test Strategy 分析性测试策略" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -227,8 +233,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第二十二天，探讨团队在 AI 辅助测试中取得成功所需的技能。文章可能包括作者对于团队成员需要具备的技能和素质的思考，以及在 AI 测试中成功的关键因素和挑战。通过分享团队在 AI 测试中所需的技能和素质，读者将了解到作者对于构建高效 AI 测试团队的见解和建议，以及如何培养和提升团队成员在 AI 测试领域的专业能力。这个系列活动有望为测试专业人士提供一个了解和探索团队在 AI 辅助测试中所需技能的机会，并为团队建设提供指导和参考。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-24 20:06:44 +0800 CST'>三月 24, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;258 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十二天：思考团队需要哪些技能才能在 AI 辅助测试中取得成功" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"></a>
+  <footer class="entry-footer"><span title='2024-03-24 20:06:44 +0800 CST'>2024年3月24日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>258 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十二天：思考团队需要哪些技能才能在 AI 辅助测试中取得成功" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -239,8 +245,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第二十一天，鼓励参与者打造自己的 AI 测试宣言。文章可能包括作者对于 AI 测试的核心价值观、愿景和承诺的阐述，以及对于 AI 在测试中的应用原则和准则的思考。通过分享个人的 AI 测试宣言，读者将了解到作者对于 AI 在测试领域的重要性和应用价值的深刻理解，以及对于未来 AI 测试发展的愿景和期待。这个系列活动有望为测试专业人士提供一个表达个人观点和价值观的平台，并促进行业对于 AI 在测试中的发展和应用的深入讨论。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-24 10:06:44 +0800 CST'>三月 24, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;220 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十一天：打造你的 AI 测试宣言" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"></a>
+  <footer class="entry-footer"><span title='2024-03-24 10:06:44 +0800 CST'>2024年3月24日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>220 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十一天：打造你的 AI 测试宣言" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -251,8 +257,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第二十天，探索 AI 自愈测试的有效性。文章可能包括作者对 AI 自愈测试的定义、目的和方法，以及对其有效性的评估和实践经验。通过分享对 AI 自愈测试的探索和评价，读者将了解到作者对于这一新兴测试方法的看法和认识，以及其在实际测试环境中的应用效果。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在自愈测试中的潜力和限制的机会，并推动行业对于 AI 测试的进一步研究和应用。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-23 21:06:44 +0800 CST'>三月 23, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;229 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"></a>
+  <footer class="entry-footer"><span title='2024-03-23 21:06:44 +0800 CST'>2024年3月23日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>229 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -263,8 +269,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第十九天，聚焦于探索 AI 在测试优先级排序中的作用，并评价其利弊。文章可能包括作者对 AI 在测试优先级排序中的实际应用案例，以及使用 AI 带来的好处和挑战。通过分享对 AI 在测试优先级排序中的应用经验和评价，读者将了解到作者对于 AI 在测试流程中的实际效果和影响的见解。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在测试优先级排序中的作用的机会，并促进更多关于 AI 在测试中的应用探讨。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-21 22:22:44 +0800 CST'>三月 21, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;251 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十九天：探索 AI 在测试优先级排序中的作用，并评价其利弊" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"></a>
+  <footer class="entry-footer"><span title='2024-03-21 22:22:44 +0800 CST'>2024年3月21日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>251 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十九天：探索 AI 在测试优先级排序中的作用，并评价其利弊" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -275,8 +281,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第十八天，旨在分享参与者在 AI 测试中遇到的最大难题。文章可能包括作者在实践中遇到的困难、挑战和障碍，以及对应的解决方案或应对策略。通过分享遇到的困难和挑战，读者可以了解到其他人在 AI 测试中可能面临的问题，并从中获得启发和帮助。这个系列活动有望为测试专业人士提供一个互相交流、学习和解决问题的平台，推动 AI 测试领域的进步和发展。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-19 17:06:44 +0800 CST'>三月 19, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;200 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十八天：分享你在 AI 测试中遇到的最大难题" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"></a>
+  <footer class="entry-footer"><span title='2024-03-19 17:06:44 +0800 CST'>2024年3月19日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>200 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十八天：分享你在 AI 测试中遇到的最大难题" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -287,22 +293,22 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第十七天，探讨利用人工智能实现缺陷报告自动化，并分享个人的流程和评估结果。文章可能涵盖作者使用人工智能技术自动化缺陷报告的过程，包括工具选择、实施方法、自动化流程的优势以及评估结果。通过分享自动化缺陷报告的流程和评估结果，读者将了解作者在实践中的经验和教训，以及人工智能技术在提高缺陷管理效率方面的潜力。这个系列活动有望为测试专业人士提供一个了解和探索利用人工智能实现缺陷报告自动化的机会，并促进行业技术的进步和创新。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-18 10:06:44 +0800 CST'>三月 18, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;192 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"></a>
+  <footer class="entry-footer"><span title='2024-03-18 10:06:44 +0800 CST'>2024年3月18日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>192 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/zh/">
+    <a class="prev" href="https://naodeng.com.cn/zh/">
       «&nbsp;上一页&nbsp;
     </a>
-    <a class="next" href="http://localhost:1313/zh/page/3/">下一页&nbsp;&nbsp;»
+    <a class="next" href="https://naodeng.com.cn/zh/page/3/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -317,9 +323,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -360,11 +371,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

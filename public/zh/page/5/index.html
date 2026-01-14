@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.134.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -10,20 +10,20 @@
 
 <meta name="description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 <meta name="author" content="NaoDeng">
-<link rel="canonical" href="http://localhost:1313/zh/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/index.xml">
-<link rel="alternate" type="application/json" href="http://localhost:1313/zh/index.json">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/">
+<link rel="alternate" type="application/rss+xml" href="https://naodeng.com.cn/zh/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://naodeng.com.cn/zh/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/">
 <noscript>
     <style>
         #theme-toggle,
@@ -44,35 +44,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -82,51 +89,39 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试同学" />
-<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/zh/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试同学"/>
-<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试同学">
+  <meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试同学">
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "软件测试同学",
-  "url": "http://localhost:1313/zh/",
+  "url": "https://naodeng.com.cn/zh/",
   "description": "naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "https://naodeng.com.cn/favicon.ico",
   "sameAs": [
       "https://github.com/naodeng", "https://naodeng.medium.com", "https://twitter.com/inaodeng", "https://ko-fi.com/naodeng", "index.xml"
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -146,38 +141,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -215,8 +221,8 @@
   <div class="entry-content">
     <p>这篇博文是 30 天 AI 测试挑战活动的第三天，聚焦于 AI 在测试中的多种应用方式。博文可能包括对 AI 在测试领域的各种用途的介绍，如自动化测试、缺陷分析、性能测试优化等。读者将了解到 AI 如何改善测试流程，提高测试效率，以及在测试中应用 AI 的潜在优势。这个系列活动有望为测试专业人士提供一个全面了解和讨论 AI 在测试中应用的平台。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-04 13:06:44 +0800 CST'>三月 4, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;111 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第三天：AI 在测试中的多种应用方式" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"></a>
+  <footer class="entry-footer"><span title='2024-03-04 13:06:44 +0800 CST'>2024年3月4日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>111 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第三天：AI 在测试中的多种应用方式" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -227,8 +233,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，重点关注 Automated Testing（自动化测试）。文章详细介绍了自动化测试的基础概念和其在软件测试中的重要性，包括自动化测试工具和技术的使用，编写测试用例和脚本的技巧，以及不同类型的自动化测试。读者将深入了解如何有效地实施自动化测试，提高测试效率和可靠性。博文还探讨了自动化测试的深层理解，以帮助读者更全面地理解自动化测试在软件开发生命周期中的作用。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-04 12:50:44 +0800 CST'>三月 4, 2024</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;912 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:Automated Testing 自动化测试" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-automated-testing/"></a>
+  <footer class="entry-footer"><span title='2024-03-04 12:50:44 +0800 CST'>2024年3月4日</span>&nbsp;·&nbsp;<span>5 分钟</span>&nbsp;·&nbsp;<span>912 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:Automated Testing 自动化测试" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-automated-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -239,8 +245,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，专注于 ASTQB（美国软件测试资格委员会）。文章深入介绍了 ASTQB 的基础概念和其在软件测试领域中的重要性，包括 ASTQB 的认证流程、学习材料以及准备考试的方法。读者将了解如何通过 ASTQB 的认证获得专业资格，并了解认证后的进一步发展机会。通过这个系列分享，读者将更深入地了解 ASTQB 认证对于提升软件测试职业能力的价值，以及如何有效地准备和应对认证考试。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-03 16:50:44 +0800 CST'>三月 3, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;418 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:ASTQB 美国软件测试资格委员会" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-astqb/"></a>
+  <footer class="entry-footer"><span title='2024-03-03 16:50:44 +0800 CST'>2024年3月3日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>418 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:ASTQB 美国软件测试资格委员会" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-astqb/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -251,8 +257,8 @@
   <div class="entry-content">
     <p>这篇博文是 30 天 AI 测试挑战活动的第二天，聚焦于参与者阅读与测试中人工智能相关的介绍性文章并分享的环节。博文或许包含了作者对所阅读文章的总结和个人观点，分享了在测试领域中应用人工智能的潜在好处和挑战。通过这样的分享，读者能够更好地理解 AI 在测试中的应用，并促使其他参与者共享他们的见解，促进博文的互动性。这个系列活动有望为测试专业人士提供一个深入了解 AI 测试的平台。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-03 10:06:44 +0800 CST'>三月 3, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;92 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二天：阅读有关测试中的人工智能的介绍性文章并分享" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"></a>
+  <footer class="entry-footer"><span title='2024-03-03 10:06:44 +0800 CST'>2024年3月3日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>92 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第二天：阅读有关测试中的人工智能的介绍性文章并分享" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -263,8 +269,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，重点关注 API Testing（API 测试）。文章深入探讨了 API 测试的基础概念和其在软件开发中的重要性，包括 API 测试的不同类型，常用的 API 测试工具，以及 API 测试的流程。读者将学到如何有效地进行 API 测试，确保 API 的稳定性和可靠性。此外，博文还深入了解 API 测试的深层理解，以便读者能更全面地应对复杂的 API 测试场景，提高测试的质量。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-02 17:56:44 +0800 CST'>三月 2, 2024</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;993 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:API Testing API 测试" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api-testing/"></a>
+  <footer class="entry-footer"><span title='2024-03-02 17:56:44 +0800 CST'>2024年3月2日</span>&nbsp;·&nbsp;<span>5 分钟</span>&nbsp;·&nbsp;<span>993 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:API Testing API 测试" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -275,8 +281,8 @@
   <div class="entry-content">
     <p>这篇博文是关于 30 天 AI 测试挑战活动的第一天，介绍了活动的开端。博文开始于挑战的第一天，探讨了参与者自我介绍和对人工智能的兴趣。文章或许包括了作者的背景、工作经验以及对 AI 测试的期望。这个系列挑战活动有望为读者提供一个深入了解 AI 测试并不断学习的机会，也可能包含了一些鼓励和动力，鼓励读者积极参与整个挑战。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-02 10:06:44 +0800 CST'>三月 2, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;139 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第一天：介绍你自己以及你对人工智能的兴趣" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"></a>
+  <footer class="entry-footer"><span title='2024-03-02 10:06:44 +0800 CST'>2024年3月2日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>139 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 30 天 AI 测试挑战活动：第一天：介绍你自己以及你对人工智能的兴趣" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -287,22 +293,22 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，聚焦于 API（应用程序编程接口）。文章详细探讨了 API 的基础概念和其在软件开发中的重要性，包括 API 设计与开发、API 安全、API 测试和 API 文档等方面。读者将深入了解如何规划和设计可靠的 API，确保其安全性，以及在软件测试中如何有效地进行 API 测试。通过这个系列分享，读者将更全面地了解 API 在软件开发中的关键作用，并学到相关方面的最佳实践。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-01 12:06:44 +0800 CST'>三月 1, 2024</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;1004 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:API 应用程序编程接口" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/"></a>
+  <footer class="entry-footer"><span title='2024-03-01 12:06:44 +0800 CST'>2024年3月1日</span>&nbsp;·&nbsp;<span>5 分钟</span>&nbsp;·&nbsp;<span>1004 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:API 应用程序编程接口" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/zh/page/4/">
+    <a class="prev" href="https://naodeng.com.cn/zh/page/4/">
       «&nbsp;上一页&nbsp;
     </a>
-    <a class="next" href="http://localhost:1313/zh/page/6/">下一页&nbsp;&nbsp;»
+    <a class="next" href="https://naodeng.com.cn/zh/page/6/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -317,9 +323,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -360,11 +371,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

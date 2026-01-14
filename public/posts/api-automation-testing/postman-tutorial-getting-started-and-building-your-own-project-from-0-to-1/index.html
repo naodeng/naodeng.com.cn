@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,18 +9,18 @@
 <meta name="keywords" content="Getting Started, Building a API Automation Test project from 0 to 1">
 <meta name="description" content="This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up.">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="canonical" href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
 <noscript>
     <style>
         #theme-toggle,
@@ -41,35 +41,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -79,21 +86,27 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1" />
-<meta property="og:description" content="This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-11-21T17:37:00+08:00" />
-<meta property="article:modified_time" content="2023-11-21T17:37:00+08:00" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1"/>
-<meta name="twitter:description" content="This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up."/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+  <meta property="og:site_name" content="Nao&#39;s Blog">
+  <meta property="og:title" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1">
+  <meta property="og:description" content="This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-21T17:37:00+08:00">
+    <meta property="article:modified_time" content="2023-11-21T17:37:00+08:00">
+    <meta property="article:tag" content="Getting Started">
+    <meta property="article:tag" content="Building a API Automation Test Project From 0 to 1">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1">
+<meta name="twitter:description" content="This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up.">
 
 
 <script type="application/ld+json">
@@ -105,13 +118,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "https://naodeng.com.cn/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1",
-      "item": "http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+      "item": "https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
     }
   ]
 }
@@ -129,7 +142,7 @@
   "articleBody": "Introduction Introduction to API Testing What is API? API, which stands for Application Programming Interface, is a computing interface that defines the interactions between multiple software intermediaries. It specifies the types of calls or requests that can be made, how they are made, the data format to be used, and the conventions to be followed. APIs can also provide extension mechanisms, allowing users to extend existing functionalities in various ways. An API can be custom-made for a specific component or designed based on industry standards to ensure interoperability. By hiding information, APIs enable modular programming, allowing users to work independently using interfaces.\nWhat is API Testing? API testing is a type of software testing that includes two types: specifically testing the functionality of Application Programming Interfaces (referred to as API) and, more broadly, testing the overall functionality, reliability, security, and performance in integration testing by invoking APIs.\nAPI Best Practice:\nAPI definition follows the RESTful API style, with semantic URI definitions, accurate HTTP status codes, and the ability to understand the relationships between resources through API definitions. Detailed and accurate API documentation (such as Swagger documentation). External APIs may include version numbers for quick iteration (e.g., https://thoughtworks.com/v1/users/). Testing in different quadrants of the testing pyramid has different purposes and strategies. API testing mainly resides in the second and fourth quadrants.\nAPI testing holds a relatively high position in the testing pyramid, focusing on testing functionality and business logic at the boundaries of systems and services. It is executed after the service is built and deployed in the testing environment for validation.\nTypes of API Testing Functional Testing\nCorrectness Testing Exception Handling Internal Logic … Non-functional Testing\nPerformance Security … Steps in API Testing Send Request Get Response Verify Response Result Introduction to Postman and Newman Postman is a popular API development tool that provides an easy-to-use graphical interface for creating, testing, and debugging APIs. Postman also features the ability to easily write and share test scripts. It supports various HTTP request methods, including GET, POST, PUT, DELETE, etc., and can use various authentication and authorization methods for API testing.\nNewman is the command-line tool for Postman, used to run test suites without using the Postman GUI. With Newman, users can easily export Postman collections as an executable file and run them in any environment. Additionally, Newman supports generating test reports in HTML or Junit format and integrating into CI/CD pipelines for automated testing.\nIn summary, Postman is a powerful API development and testing tool, while Newman is a convenient command-line tool for running test suites without using the Postman GUI. Their combination enhances the efficiency and accuracy of API testing and development.\nIn addition to basic functionalities, Postman has the following features:\nEnvironment and Variable Management: Postman supports switching between different environments, such as development, testing, and production, and variable management, making it easy to set variables for different test cases and requests. Automated Testing: Users can create and run automated tests using Postman, integrating them into continuous integration or deployment processes for more accurate and efficient testing. Collaboration and Sharing: Postman supports sharing collections and environments with teams, facilitating collaboration among team members. Monitoring: Postman provides API monitoring, allowing real-time monitoring of API availability and performance. Meanwhile, Newman has the following characteristics:\nCommand-Line Interface: Newman can run in the command line, making it convenient for automated testing and integration into CI/CD processes. Support for Multiple Output Formats: Newman supports multiple output formats, including HTML, JSON, and JUnit formats, making it easy to use in different scenarios. Concurrent Execution: Newman supports concurrent test execution, improving testing efficiency. Lightweight: Compared to the Postman GUI, Newman is a lightweight tool, requiring fewer resources during test execution. In conclusion, Postman and Newman are essential tools for modern API testing, offering powerful features for efficient, accurate, and automated API testing and development.\nIn addition to the mentioned features and characteristics, Postman and Newman have other important functionalities and advantages:\nIntegration: Postman and Newman can integrate with many other tools and services, such as GitHub, Jenkins, Slack, etc., making it easy to integrate into development and deployment processes for more efficient API development and testing. Documentation Generation: Postman can generate API documentation using requests and responses, ensuring accurate and timely documentation. Test Scripts: Postman can use JavaScript to write test scripts, providing flexibility and customization in testing. Users can easily write custom test scripts to ensure the expected behavior of the API. History: Postman can store the history of API requests, making it convenient for users to view and manage previous requests and responses. This is useful for debugging and issue troubleshooting. Multi-Platform Support: Postman and Newman can run on multiple platforms, including Windows, MacOS, and Linux. In summary, Postman and Newman are powerful tools for modern API testing and development, offering rich features and flexible test scripts to help developers and testers build and test APIs faster and more accurately.\nProject Dependencies The following environments need to be installed in advance\nNode.js, with the demo version being v21.1.0 Postman installed, you can download the installation package from the official website and complete the installation Project Structure The following is the file structure of an API automation testing project for Postman and Newman, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.\nPostman-Newman-demo ├── README.md ├── package.json ├── package-lock.json ├── Data // Test data folder │ └── testdata.csv // Test data file ├── Testcase // Test case folder │ └── APITestDemo.postman_collection.json // Test case file ├── Env // Test environment folder │ └── DemoEnv.postman_environment.json // Test environment file ├── Report // Test report folder │ └── report.html ├── .gitignore └── node_modules // Project dependencies └── ... Building a Postman API Automation Test Project from 0 to 1 Below, we will introduce how to build a Postman and Newman API automation test project from scratch, including test configuration, test cases, test environment, testing tools, and test reports.\nYou can refer to the demo project: Postman-Newman-demo\nCreate a New Project Folder mkdir Postman-Newman-demo Project initialization // enter the project folder cd Postman-Newman-demo // nodejs project initialization npm init -y Install dependencies Currently, the latest version of newman has some package compatibility issues reported by the html test, so we’re using version 5.1.2 here.\n// Install newman library npm install newman@5.1.2--save-dev Writing API Test Cases in Postman Creating a Collection and Request in Postman Open Postman, click the New button in the top left corner, select Collection, enter the name of the collection, click the Create Collection button to create a collection named “demo.” In the collection, click the three dots in the top right corner, select Add Request, enter the name of the request, and click the Save button to create a request named “get-demo.” Add another request named “post-demo.” Editing Request and Writing Test Cases Refer to the interface documentation in the demoAPI.md file in the project folder to obtain information such as the URL, request method, request headers, and request body used by the “demo” requests.\nget-demo In the “get-demo” request, select the GET request method and enter the URL as https://jsonplaceholder.typicode.com/posts/1. In the Headers section, add a header with Key as “Content-Type” and Value as “application/json.” Under Tests, add the following script to verify the response result: pm.test(\"res.status should be 200\", function () { pm.response.to.have.status(200); }); pm.test(\"res.body should be correct\", function() { var data = pm.response.json(); pm.expect(data.id).to.equal(1); pm.expect(data.title).to.contains('provident'); }); Click the Send button to send the request and verify the response result. Confirm that the response result is correct, click the Save button to save the request.\npost-demo In the Request of the post-demo, select the POST request method and enter the URL as https://jsonplaceholder.typicode.com/posts. In Headers, add a request header with Key as Content-Type and Value as application/json. In Body, select raw, select JSON format, and enter the following request body: { \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } Under Tests, add the following script to verify the response result: pm.test(\"res.status should be 201\", function () { pm.response.to.have.status(201); }); pm.test(\"res.body should be correct\", function() { var data = pm.response.json(); pm.expect(data.id).to.equal(101); pm.expect(data.title).to.equal('foo'); }); Confirm that the response result is correct, click the Save button to save the request.\nConfiguring Test Environment in Postman The following steps involve using the host of the API requests as environment variables for demonstration purposes.\nAdding Environment Variables In the top right corner of Postman, click the gear icon, select Manage Environments, click the Add button, enter the environment name as “DemoEnv,” and click the Add button to create an environment named “DemoEnv.” Edit the environment variables, add a key named “host” with a value of https://jsonplaceholder.typicode.com. Click the Add button to save the environment variables. Updating Requests In the “get-demo” request, update the URL to {{host}}/posts/1. In the “post-demo” request, update the URL to {{host}}/posts. Verifying Environment Variables In the top right corner of Postman, click the gear icon, select DemoEnv to switch to the “DemoEnv” environment. Select the “get-demo” request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request. Select the “post-demo” request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request. Exporting Environment Variables and Test Case Files In the top right corner of Postman, click the gear icon, select Export, choose DemoEnv, and click the Export button to export the environment variables. Select the demo Collection containing the “get-demo” and “post-demo” requests, click the three dots in the top right corner, select Export, choose Collection v2.1, and click the Export button to export the test case file. Adjusting Project File Structure Creating Env and Testcase Folders In the project folder, create a folder named Env to store environment variable files. // Create Env folder mkdir Env In the project folder, create a folder named Testcase to store test case files. // Create Testcase folder mkdir Testcase Organizing Case and Environment Files\nPlace the exported environment variable files and test case files into the Env and Testcase folders within the project folder.\nAdjusting the package.json file In the package.json file, add the following script to run the test cases: \"scripts\": { \"test\": \"newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json\" } Running Test Cases npm run test Reference Postman docs newman docs ",
   "wordCount" : "1733",
   "inLanguage": "en",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-21T17:37:00+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2023-11-21T17:37:00+08:00",
   "dateModified": "2023-11-21T17:37:00+08:00",
   "author":{
     "@type": "Person",
@@ -137,38 +150,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+    "@id": "https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Nao's Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
+            <a href="https://naodeng.com.cn/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -188,38 +189,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/zh/" title="🇨🇳中文"
-                            aria-label="🇨🇳中文">🇨🇳中文</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/zh/" title="🇨🇳中文"
+                                aria-label="🇨🇳中文">🇨🇳中文</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives" title="Archive">
+                <a href="https://naodeng.com.cn/archives" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://naodeng.com.cn/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/series/" title="Series">
+                <a href="https://naodeng.com.cn/series/" title="Series">
                     <span>Series</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://naodeng.com.cn/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="Dashboard">
                     <span>Dashboard</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/en/" title="QA Prompt">
+                    <span>QA Prompt</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
                         <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
@@ -246,161 +258,102 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/">Home</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1
     </h1>
-    <div class="post-meta"><span title='2023-11-21 17:37:00 +0800 CST'>November 21, 2023</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;1733 words&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;Translations:
+    <div class="post-meta"><span title='2023-11-21 17:37:00 +0800 CST'>November 21, 2023</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>1733 words</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>Translations:</span>
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">🇨🇳中文</a>
+        <a href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">🇨🇳中文</a>
     </li>
-</ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+</ul>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">Table of Contents</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
-                            
-                    <li>
-                        <a href="#introduction-to-api-testing" aria-label="Introduction to API Testing">Introduction to API Testing</a><ul>
-                            
-                    <li>
-                        <a href="#what-is-api" aria-label="What is API?">What is API?</a></li>
-                    <li>
-                        <a href="#what-is-api-testing" aria-label="What is API Testing?">What is API Testing?</a></li>
-                    <li>
-                        <a href="#types-of-api-testing" aria-label="Types of API Testing">Types of API Testing</a></li>
-                    <li>
-                        <a href="#steps-in-api-testing" aria-label="Steps in API Testing">Steps in API Testing</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#introduction-to-postman-and-newman" aria-label="Introduction to Postman and Newman">Introduction to Postman and Newman</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#project-dependencies" aria-label="Project Dependencies">Project Dependencies</a></li>
-                    <li>
-                        <a href="#project-structure" aria-label="Project Structure">Project Structure</a></li>
-                    <li>
-                        <a href="#building-a-postman-api-automation-test-project-from-0-to-1" aria-label="Building a Postman API Automation Test Project from 0 to 1">Building a Postman API Automation Test Project from 0 to 1</a><ul>
-                            
-                    <li>
-                        <a href="#create-a-new-project-folder" aria-label="Create a New Project Folder">Create a New Project Folder</a></li>
-                    <li>
-                        <a href="#project-initialization" aria-label="Project initialization">Project initialization</a></li>
-                    <li>
-                        <a href="#install-dependencies" aria-label="Install dependencies">Install dependencies</a></li>
-                    <li>
-                        <a href="#writing-api-test-cases-in-postman" aria-label="Writing API Test Cases in Postman">Writing API Test Cases in Postman</a><ul>
-                            
-                    <li>
-                        <a href="#creating-a-collection-and-request-in-postman" aria-label="Creating a Collection and Request in Postman">Creating a Collection and Request in Postman</a></li>
-                    <li>
-                        <a href="#editing-request-and-writing-test-cases" aria-label="Editing Request and Writing Test Cases">Editing Request and Writing Test Cases</a><ul>
-                            
-                    <li>
-                        <a href="#get-demo" aria-label="get-demo">get-demo</a></li>
-                    <li>
-                        <a href="#post-demo" aria-label="post-demo">post-demo</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#configuring-test-environment-in-postman" aria-label="Configuring Test Environment in Postman">Configuring Test Environment in Postman</a><ul>
-                            
-                    <li>
-                        <a href="#adding-environment-variables" aria-label="Adding Environment Variables">Adding Environment Variables</a></li>
-                    <li>
-                        <a href="#updating-requests" aria-label="Updating Requests">Updating Requests</a></li>
-                    <li>
-                        <a href="#verifying-environment-variables" aria-label="Verifying Environment Variables">Verifying Environment Variables</a></li>
-                    <li>
-                        <a href="#exporting-environment-variables-and-test-case-files" aria-label="Exporting Environment Variables and Test Case Files">Exporting Environment Variables and Test Case Files</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#adjusting-project-file-structure" aria-label="Adjusting Project File Structure">Adjusting Project File Structure</a><ul>
-                            
-                    <li>
-                        <a href="#creating-env-and-testcase-folders" aria-label="Creating Env and Testcase Folders">Creating Env and Testcase Folders</a></li>
-                    <li>
-                        <a href="#adjusting-the-packagejson-file" aria-label="Adjusting the package.json file">Adjusting the package.json file</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#running-test-cases" aria-label="Running Test Cases">Running Test Cases</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#reference" aria-label="Reference">Reference</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#introduction-to-api-testing" aria-label="Introduction to API Testing">Introduction to API Testing</a><ul>
+                        
+                <li>
+                    <a href="#what-is-api" aria-label="What is API?">What is API?</a></li>
+                <li>
+                    <a href="#what-is-api-testing" aria-label="What is API Testing?">What is API Testing?</a></li>
+                <li>
+                    <a href="#types-of-api-testing" aria-label="Types of API Testing">Types of API Testing</a></li>
+                <li>
+                    <a href="#steps-in-api-testing" aria-label="Steps in API Testing">Steps in API Testing</a></li></ul>
+                </li>
+                <li>
+                    <a href="#introduction-to-postman-and-newman" aria-label="Introduction to Postman and Newman">Introduction to Postman and Newman</a></li></ul>
+                </li>
+                <li>
+                    <a href="#project-dependencies" aria-label="Project Dependencies">Project Dependencies</a></li>
+                <li>
+                    <a href="#project-structure" aria-label="Project Structure">Project Structure</a></li>
+                <li>
+                    <a href="#building-a-postman-api-automation-test-project-from-0-to-1" aria-label="Building a Postman API Automation Test Project from 0 to 1">Building a Postman API Automation Test Project from 0 to 1</a><ul>
+                        
+                <li>
+                    <a href="#create-a-new-project-folder" aria-label="Create a New Project Folder">Create a New Project Folder</a></li>
+                <li>
+                    <a href="#project-initialization" aria-label="Project initialization">Project initialization</a></li>
+                <li>
+                    <a href="#install-dependencies" aria-label="Install dependencies">Install dependencies</a></li>
+                <li>
+                    <a href="#writing-api-test-cases-in-postman" aria-label="Writing API Test Cases in Postman">Writing API Test Cases in Postman</a><ul>
+                        
+                <li>
+                    <a href="#creating-a-collection-and-request-in-postman" aria-label="Creating a Collection and Request in Postman">Creating a Collection and Request in Postman</a></li>
+                <li>
+                    <a href="#editing-request-and-writing-test-cases" aria-label="Editing Request and Writing Test Cases">Editing Request and Writing Test Cases</a><ul>
+                        
+                <li>
+                    <a href="#get-demo" aria-label="get-demo">get-demo</a></li>
+                <li>
+                    <a href="#post-demo" aria-label="post-demo">post-demo</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#configuring-test-environment-in-postman" aria-label="Configuring Test Environment in Postman">Configuring Test Environment in Postman</a><ul>
+                        
+                <li>
+                    <a href="#adding-environment-variables" aria-label="Adding Environment Variables">Adding Environment Variables</a></li>
+                <li>
+                    <a href="#updating-requests" aria-label="Updating Requests">Updating Requests</a></li>
+                <li>
+                    <a href="#verifying-environment-variables" aria-label="Verifying Environment Variables">Verifying Environment Variables</a></li>
+                <li>
+                    <a href="#exporting-environment-variables-and-test-case-files" aria-label="Exporting Environment Variables and Test Case Files">Exporting Environment Variables and Test Case Files</a></li></ul>
+                </li>
+                <li>
+                    <a href="#adjusting-project-file-structure" aria-label="Adjusting Project File Structure">Adjusting Project File Structure</a><ul>
+                        
+                <li>
+                    <a href="#creating-env-and-testcase-folders" aria-label="Creating Env and Testcase Folders">Creating Env and Testcase Folders</a></li>
+                <li>
+                    <a href="#adjusting-the-packagejson-file" aria-label="Adjusting the package.json file">Adjusting the package.json file</a></li></ul>
+                </li>
+                <li>
+                    <a href="#running-test-cases" aria-label="Running Test Cases">Running Test Cases</a></li></ul>
+                </li>
+                <li>
+                    <a href="#reference" aria-label="Reference">Reference</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
 <h3 id="introduction-to-api-testing">Introduction to API Testing<a hidden class="anchor" aria-hidden="true" href="#introduction-to-api-testing">#</a></h3>
@@ -530,8 +483,7 @@
 </span></span></code></pre></div><ul>
 <li>Click the Send button to send the request and verify the response result.</li>
 </ul>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png" alt="2023112117P6poCX"  />
-</p>
+<p><img alt="2023112117P6poCX" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png"></p>
 <p>Confirm that the response result is correct, click the Save button to save the request.</p>
 <h5 id="post-demo">post-demo<a hidden class="anchor" aria-hidden="true" href="#post-demo">#</a></h5>
 <ul>
@@ -555,8 +507,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png" alt="2023112117x34eSN"  />
-</p>
+</span></span></code></pre></div><p><img alt="2023112117x34eSN" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png"></p>
 <p>Confirm that the response result is correct, click the Save button to save the request.</p>
 <h3 id="configuring-test-environment-in-postman">Configuring Test Environment in Postman<a hidden class="anchor" aria-hidden="true" href="#configuring-test-environment-in-postman">#</a></h3>
 <p>The following steps involve using the host of the API requests as environment variables for demonstration purposes.</p>
@@ -596,8 +547,7 @@
 </span></span><span class="line"><span class="cl">mkdir Testcase
 </span></span></code></pre></div><p>Organizing Case and Environment Files</p>
 <p>Place the exported environment variable files and test case files into the Env and Testcase folders within the project folder.</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png" alt="2023112117ePiBiv"  />
-</p>
+<p><img alt="2023112117ePiBiv" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png"></p>
 <h4 id="adjusting-the-packagejson-file">Adjusting the package.json file<a hidden class="anchor" aria-hidden="true" href="#adjusting-the-packagejson-file">#</a></h4>
 <ul>
 <li>In the package.json file, add the following script to run the test cases:</li>
@@ -607,8 +557,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="running-test-cases">Running Test Cases<a hidden class="anchor" aria-hidden="true" href="#running-test-cases">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm run <span class="nb">test</span>
-</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png" alt="2023112117lt8FW9"  />
-</p>
+</span></span></code></pre></div><p><img alt="2023112117lt8FW9" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png"></p>
 <h2 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h2>
 <ul>
 <li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman docs</a></li>
@@ -620,16 +569,16 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/getting-started/">Getting Started</a></li>
-      <li><a href="http://localhost:1313/tags/building-a-api-automation-test-project-from-0-to-1/">Building a API Automation Test Project From 0 to 1</a></li>
+      <li><a href="https://naodeng.com.cn/tags/getting-started/">Getting Started</a></li>
+      <li><a href="https://naodeng.com.cn/tags/building-a-api-automation-test-project-from-0-to-1/">Building a API Automation Test Project From 0 to 1</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">
+  <a class="prev" href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">
     <span class="title">« Prev</span>
     <br>
     <span>Postman API Automation Testing Tutorial Advance Usage Integration CI CD and allure test report</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/">
+  <a class="next" href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/">
     <span class="title">Next »</span>
     <br>
     <span>Pytest API Automation Testing Tutorial Advance Usage Filtering test case execution and Concurrent testing</span>
@@ -640,7 +589,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on x"
-            href="https://x.com/intent/tweet/?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;hashtags=GettingStarted%2cBuildingaAPIAutomationTestprojectfrom0to1">
+            href="https://x.com/intent/tweet/?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;hashtags=GettingStarted%2cBuildingaAPIAutomationTestprojectfrom0to1">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -649,7 +598,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;title=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;summary=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;title=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;summary=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;source=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -658,7 +607,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&title=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&title=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -667,7 +616,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -676,7 +625,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on whatsapp"
-            href="https://api.whatsapp.com/send?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://api.whatsapp.com/send?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201%20-%20https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -685,7 +634,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on telegram"
-            href="https://telegram.me/share/url?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://telegram.me/share/url?text=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -694,7 +643,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://news.ycombinator.com/submitlink?t=Postman%20API%20Automation%20Testing%20Tutorial%3a%20Getting%20Started%20and%20Building%20a%20Postman%20API%20Automation%20Test%20project%20from%200%20to%201&u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -705,26 +654,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/">Nao&#39;s Blog</a></span> · 
 
     <span>
         Powered by
@@ -739,9 +673,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -782,11 +721,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

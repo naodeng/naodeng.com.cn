@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Generate AI Test Code and Share Your Experience on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/tags/generate-ai-test-code-and-share-your-experience/</link>
+    <link>https://naodeng.com.cn/tags/generate-ai-test-code-and-share-your-experience/</link>
     <description>Recent content in Generate AI Test Code and Share Your Experience on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Fri, 15 Mar 2024 10:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/generate-ai-test-code-and-share-your-experience/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/generate-ai-test-code-and-share-your-experience/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience</title>
-      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</link>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</link>
       <pubDate>Fri, 15 Mar 2024 10:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</guid>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</guid>
       <description>This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author&amp;rsquo;s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author&amp;rsquo;s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights.</description>
     </item>
   </channel>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,18 +9,18 @@
 <meta name="keywords" content="">
 <meta name="description" content="关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
 <noscript>
     <style>
         #theme-toggle,
@@ -41,35 +41,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -79,19 +86,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目" />
-<meta property="og:description" content="关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-11-21T17:37:00+08:00" />
-<meta property="article:modified_time" content="2023-11-21T17:37:00+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目"/>
-<meta name="twitter:description" content="关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目">
+  <meta property="og:description" content="关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-21T17:37:00+08:00">
+    <meta property="article:modified_time" content="2023-11-21T17:37:00+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目">
+<meta name="twitter:description" content="关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写">
 
 
 <script type="application/ld+json">
@@ -103,13 +111,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目",
-      "item": "http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+      "item": "https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
     }
   ]
 }
@@ -127,7 +135,7 @@
   "articleBody": "介绍 接口测试简介 什么是 API? API:应用程序接口（全称：application programming interface），缩写为 API，是一种计算接口，它定义多个软件中介之间的交互，以及可以进行的调用（call）或请求（request）的种类，如何进行调用或发出请求，应使用的数据格式，应遵循的惯例等。它还可以提供扩展机制，以便用户可以通过各种方式对现有功能进行不同程度的扩展。一个 API 可以是完全定制的，针对某个组件的，也可以是基于行业标准设计的以确保互操作性。通过信息隐藏，API 实现了模块化编程，从而允许用户实现独立地使用接口。\n什么是 API 测试？ 接口测试是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（下面使用缩写 API 指代，其中文简称为接口）的功能进行的测试；广义上指集成测试中，通过调用 API 测试整体的功能完成度、可靠性、安全性与性能等指标。\nAPI Best Practice:\nAPI 定义遵循 RESTFUL API 风格，语意化的 URI 定义，准确的 HTTP 状态码，通过 API 的定义就可以知道资源间的关系 配有详细且准确的 API 文档（如 Swagger 文档） 对外的 API 可以包含版本号以快速迭代（如 https://thoughtworks.com/v1/users/） 测试四象限中不同象限的测试，其测试目的跟测试策略也不同，API 测试主要位于第二、第四象限\nAPI 测试在测试金子塔中处于一个相对靠上的位置，主要站在系统、服务边界来测试功能和业务逻辑，执行时机是在服务完成构建、部署到测试环境之后再执行、验证。\nAPI 测试类型 功能测试\n正确性测试 异常处理 内部逻辑 …… 非功能测试\n性能 安全 …… API 测试步骤 发送请求 得到响应 验证响应结果 Postman 与 newman 介绍 Postman 是一个流行的 API 开发工具，它提供了一个易于使用的图形界面，可用于创建，测试和调试 API。Postman 还提供了一个可以轻松编写和共享测试脚本的功能。它支持多种 HTTP 请求方法，包括 GET，POST，PUT，DELETE 等，并且可以使用各种身份验证和授权方式来测试 API。\nNewman 是 Postman 的命令行工具，可用于在不使用 Postman GUI 的情况下运行测试集。使用 Newman，用户可以轻松地将 Postman 集合导出为一个可执行文件，并在任何环境中运行它。此外，Newman 还支持生成 HTML 或 Junit 格式的测试报告，以及集成到 CI/CD 管道中以实现自动化测试。\n总的来说，Postman 是一个强大的 API 开发和测试工具，而 Newman 则是一个方便的命令行工具，用于在不使用 Postman GUI 的情况下运行测试集。它们的结合使用可以提高 API 测试和开发的效率和准确性。\n除了基本功能，Postman 还具有以下特性：\n环境和变量管理：Postman 支持在不同环境之间切换，例如在开发、测试和生产环境之间切换。同时，它还支持变量管理，可以轻松地为不同的测试用例和请求设置变量。 自动化测试：用户可以使用 Postman 创建和运行自动化测试，以便在持续集成或部署流程中集成。这使得测试变得更加准确和高效。 协作和共享：Postman 支持将集合和环境与团队共享，方便团队成员之间的协作。 监控：Postman 还提供 API 监控功能，可以实时监控 API 的可用性和性能。 而 Newman 则主要有以下特点：\n命令行接口：Newman 可以在命令行中运行，因此可以方便地自动化测试和集成到 CI/CD 流程中。 支持多种输出格式：Newman 支持多种输出格式，包括 HTML、JSON 和 JUnit 格式，方便用户在不同场景下使用。 并发执行：Newman 支持并发执行测试，从而提高了测试的效率。 轻量级：与 Postman GUI 相比，Newman 是一个轻量级的工具，因此在运行测试时需要更少的资源。 总之，Postman 和 Newman 是现代 API 测试的重要工具，它们提供了强大的功能，可以使 API 测试变得更加高效、准确和自动化。\n除了上述提到的功能和特点，Postman 和 Newman 还有其他一些重要的功能和优势：\n集成：Postman 和 Newman 可以与许多其他工具和服务进行集成，例如 GitHub、Jenkins、Slack 等。这使得它们可以轻松地集成到开发和部署流程中，以实现更高效的 API 开发和测试。 文档生成：Postman 可以使用 API 的请求和响应来生成 API 文档。这可以使 API 文档更加准确和及时。 测试脚本：Postman 可以使用 JavaScript 编写测试脚本，这可以使测试变得更加灵活和自定义。用户可以轻松地编写自定义测试脚本，以确保 API 的行为符合预期。 历史记录：Postman 可以存储 API 请求的历史记录，这可以方便用户查看和管理以前的请求和响应。这对于调试和问题排查非常有用。 多平台支持：Postman 和 Newman 可以在多种平台上运行，包括 Windows、MacOS 和 Linux 等。 总之，Postman 和 Newman 是现代 API 测试和开发的强大工具。它们提供了丰富的功能和灵活的测试脚本，可以帮助开发人员和测试人员更快、更准确地构建和测试 API。\n项目依赖 需提前安装好以下环境\nnodejs, demo 版本为 v21.1.0 Postman 安装完成，可通过官方网站下载安装包进行安装 项目文件结构 以下是一个 Postman 和 Newman 的接口自动化测试项目的文件结构，其中包含了测试配置文件、测试用例文件、测试工具文件和测试报告文件。可进行参考。\nPostman-Newman-demo ├── README.md ├── package.json ├── package-lock.json ├── Data // 测试配置文件 │ └── testdata.csv // 测试数据 ├── Testcase // 测试用例文件夹 │ └── APITestDemo.postman_collection.json // 测试用例文件 ├── Env // 不同测试环境文件夹 │ └── DemoEnv.postman_environment.json // 测试环境配置文件 ├── Report // 测试报告文件 │ └── report.html ├── .gitignore └── node_modules // 项目依赖 从 0 到 1 搭建 Postman 接口自动化测试项目 下面会介绍从 0 到 1 搭建一个 Postman 和 Newman 的接口自动化测试项目，包括测试配置、测试用例、测试环境、测试工具和测试报告等。\n可参考 demo 项目：https://github.com/Automation-Test-Starter/Postman-Newman-demo\n新建项目文件夹 mkdir Postman-Newman-demo 项目初始化 // 进入项目文件夹下 cd Postman-Newman-demo // nodejs 项目初始化 npm init -y 安装依赖 目前 newman 最新版本在 html 测试报告的一些包兼容性上有问题，所以这里使用 4.2.3 版本\n// 安装 newman npm install newman@4.2.3 --save-dev Postman 编写接口测试用例 新建 Collection 和 Request 打开 Postman，点击左上角的 New 按钮，选择 Collection，输入 Collection 的名称，点击 Create Collection 按钮，创建一个名称为 demo 的 Collection。 在 Collection 中，点击右上角的三个点，选择 Add Request，输入 Request 的名称，点击 Save 按钮，创建一个 Request 命名为 get-demo。再添加一个 Request 命名为 post-demo。 编辑 Request 和编写测试用例 可根据项目文件下的 demoAPI.md 文件中的接口文档，获取 demo 使用的 Request 的 URL、请求方法、请求头、请求体等信息。\nget-demo 在 get-demo 的 Request 中，选择 GET 请求方法，输入 URL 为https://jsonplaceholder.typicode.com/posts/1 在 Headers 中，添加一个 Key 为 Content-Type，Value 为 application/json; 的请求头。 在 Tests 下，添加以下脚本，用于验证响应结果： pm.test(\"res.status should be 200\", function () { pm.response.to.have.status(200); }); pm.test(\"res.body should be correct\", function() { var data = pm.response.json(); pm.expect(data.id).to.equal(1); pm.expect(data.title).to.contains('provident'); }); 点击 Send 按钮，发送请求，验证响应结果。 确认响应结果正确后，点击 Save 按钮，保存 Request。\npost-demo 在 post-demo 的 Request 中，选择 POST 请求方法，输入 URL 为https://jsonplaceholder.typicode.com/posts 在 Headers 中，添加一个 Key 为 Content-Type，Value 为 application/json; 的请求头。 在 Body 中，选择 raw，选择 JSON 格式，输入以下请求体： { \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 } 在 Tests 下，添加以下脚本，用于验证响应结果： pm.test(\"res.status should be 201\", function () { pm.response.to.have.status(201); }); pm.test(\"res.body should be correct\", function() { var data = pm.response.json(); pm.expect(data.id).to.equal(101); pm.expect(data.title).to.equal('foo'); }); 确认响应结果正确后，点击 Save 按钮，保存 Request。\nPostman 编写测试环境配置文件 下面会取接口请求的 host 为环境变量来进行 demo\n添加环境变量 在 Postman 的右上角，点击齿轮图标，选择 Manage Environments，点击 Add 按钮，输入环境名称为 DemoEnv，点击 Add 按钮，创建一个名称为 DemoEnv 的环境。 编辑环境变量，添加一个 Key 为 host，Value 为https://jsonplaceholder.typicode.com的环境变量。 点击 Add 按钮，保存环境变量。 更新 Request 在 get-demo 的 Request 中，更新 URL 为{{host}}/posts/1 在 post-demo 的 Request 中，更新 URL 为{{host}}/posts 验证环境变量 在 Postman 的右上角，点击齿轮图标，选择 DemoEnv，切换环境变量为 DemoEnv。 选择 get-demo 的 Request，点击 Send 按钮，发送请求，验证响应结果。确认响应结果正确后，点击 Save 按钮，保存 Request。 选择 post-demo 的 Request，点击 Send 按钮，发送请求，验证响应结果。确认响应结果正确后，点击 Save 按钮，保存 Request。 导出环境变量和测试用例文件 在 Postman 的右上角，点击齿轮图标，选择 Export，选择 DemoEnv，点击 Export 按钮，导出环境变量。 选择 get-demo request 和 post-demo request 所在的 demo Collection，点击右上角的三个点，选择 Export，选择 Collection v2.1，点击 Export 按钮，导出测试用例文件。 调整项目文件结构 新建 Env 和 Testcase 文件夹 在项目文件夹下，新建一个名为 Env 的文件夹，用于存放环境变量文件。 // 新建 Env 文件夹 mkdir Env 在项目文件夹下，新建一个名为 Testcase 的文件夹，用于存放测试用例文件。 // 新建 Testcase 文件夹 mkdir Testcase 调整用例文件和环境变量文件 将导出的环境变量文件和测试用例文件放到项目文件夹下的 Env 和 Testcase 文件夹下。\n调整 package.json 文件 在 package.json 文件中，添加以下脚本，用于运行测试用例： \"scripts\": { \"test\": \"newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json\" } 运行测试用例 npm run test 参考文档 Postman 官方文档 newman 官方文档 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "606",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2023-11-21T17:37:00+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2023-11-21T17:37:00+08:00",
   "dateModified": "2023-11-21T17:37:00+08:00",
   "author":{
     "@type": "Person",
@@ -135,38 +143,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+    "@id": "https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -186,38 +182,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -249,163 +256,104 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目
     </h1>
-    <div class="post-meta"><span title='2023-11-21 17:37:00 +0800 CST'>十一月 21, 2023</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;606 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;语言:
+    <div class="post-meta"><span title='2023-11-21 17:37:00 +0800 CST'>2023年11月21日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>606 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>语言:</span>
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1313/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">🇬🇧English</a>
+        <a href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">🇬🇧English</a>
     </li>
-</ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+</ul>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/API-Automation-Testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%8e%a5%e5%8f%a3%e6%b5%8b%e8%af%95%e7%ae%80%e4%bb%8b" aria-label="接口测试简介">接口测试简介</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api" aria-label="什么是 API?">什么是 API?</a></li>
-                    <li>
-                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e6%b5%8b%e8%af%95" aria-label="什么是 API 测试？">什么是 API 测试？</a></li>
-                    <li>
-                        <a href="#api-%e6%b5%8b%e8%af%95%e7%b1%bb%e5%9e%8b" aria-label="API 测试类型">API 测试类型</a></li>
-                    <li>
-                        <a href="#api-%e6%b5%8b%e8%af%95%e6%ad%a5%e9%aa%a4" aria-label="API 测试步骤">API 测试步骤</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#postman-%e4%b8%8e-newman-%e4%bb%8b%e7%bb%8d" aria-label="Postman 与 newman 介绍">Postman 与 newman 介绍</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e9%a1%b9%e7%9b%ae%e4%be%9d%e8%b5%96" aria-label="项目依赖">项目依赖</a></li>
-                    <li>
-                        <a href="#%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84" aria-label="项目文件结构">项目文件结构</a></li>
-                    <li>
-                        <a href="#%e4%bb%8e-0-%e5%88%b0-1-%e6%90%ad%e5%bb%ba-postman-%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae" aria-label="从 0 到 1 搭建 Postman 接口自动化测试项目">从 0 到 1 搭建 Postman 接口自动化测试项目</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%96%b0%e5%bb%ba%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="新建项目文件夹">新建项目文件夹</a></li>
-                    <li>
-                        <a href="#%e9%a1%b9%e7%9b%ae%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="项目初始化">项目初始化</a></li>
-                    <li>
-                        <a href="#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96" aria-label="安装依赖">安装依赖</a></li>
-                    <li>
-                        <a href="#postman-%e7%bc%96%e5%86%99%e6%8e%a5%e5%8f%a3%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="Postman 编写接口测试用例">Postman 编写接口测试用例</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%96%b0%e5%bb%ba-collection-%e5%92%8c-request" aria-label="新建 Collection 和 Request">新建 Collection 和 Request</a></li>
-                    <li>
-                        <a href="#%e7%bc%96%e8%be%91-request-%e5%92%8c%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="编辑 Request 和编写测试用例">编辑 Request 和编写测试用例</a><ul>
-                            
-                    <li>
-                        <a href="#get-demo" aria-label="get-demo">get-demo</a></li>
-                    <li>
-                        <a href="#post-demo" aria-label="post-demo">post-demo</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#postman-%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="Postman 编写测试环境配置文件">Postman 编写测试环境配置文件</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="添加环境变量">添加环境变量</a></li>
-                    <li>
-                        <a href="#%e6%9b%b4%e6%96%b0-request" aria-label="更新 Request">更新 Request</a></li>
-                    <li>
-                        <a href="#%e9%aa%8c%e8%af%81%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="验证环境变量">验证环境变量</a></li>
-                    <li>
-                        <a href="#%e5%af%bc%e5%87%ba%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%92%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e6%96%87%e4%bb%b6" aria-label="导出环境变量和测试用例文件">导出环境变量和测试用例文件</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%b0%83%e6%95%b4%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84" aria-label="调整项目文件结构">调整项目文件结构</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%96%b0%e5%bb%ba-env-%e5%92%8c-testcase-%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="新建 Env 和 Testcase 文件夹">新建 Env 和 Testcase 文件夹</a></li>
-                    <li>
-                        <a href="#%e8%b0%83%e6%95%b4%e7%94%a8%e4%be%8b%e6%96%87%e4%bb%b6%e5%92%8c%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%96%87%e4%bb%b6" aria-label="调整用例文件和环境变量文件">调整用例文件和环境变量文件</a></li>
-                    <li>
-                        <a href="#%e8%b0%83%e6%95%b4-packagejson-%e6%96%87%e4%bb%b6" aria-label="调整 package.json 文件">调整 package.json 文件</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="运行测试用例">运行测试用例</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a><ul>
+                        
+                <li>
+                    <a href="#%e6%8e%a5%e5%8f%a3%e6%b5%8b%e8%af%95%e7%ae%80%e4%bb%8b" aria-label="接口测试简介">接口测试简介</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api" aria-label="什么是 API?">什么是 API?</a></li>
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-api-%e6%b5%8b%e8%af%95" aria-label="什么是 API 测试？">什么是 API 测试？</a></li>
+                <li>
+                    <a href="#api-%e6%b5%8b%e8%af%95%e7%b1%bb%e5%9e%8b" aria-label="API 测试类型">API 测试类型</a></li>
+                <li>
+                    <a href="#api-%e6%b5%8b%e8%af%95%e6%ad%a5%e9%aa%a4" aria-label="API 测试步骤">API 测试步骤</a></li></ul>
+                </li>
+                <li>
+                    <a href="#postman-%e4%b8%8e-newman-%e4%bb%8b%e7%bb%8d" aria-label="Postman 与 newman 介绍">Postman 与 newman 介绍</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e4%be%9d%e8%b5%96" aria-label="项目依赖">项目依赖</a></li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84" aria-label="项目文件结构">项目文件结构</a></li>
+                <li>
+                    <a href="#%e4%bb%8e-0-%e5%88%b0-1-%e6%90%ad%e5%bb%ba-postman-%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae" aria-label="从 0 到 1 搭建 Postman 接口自动化测试项目">从 0 到 1 搭建 Postman 接口自动化测试项目</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="新建项目文件夹">新建项目文件夹</a></li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="项目初始化">项目初始化</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96" aria-label="安装依赖">安装依赖</a></li>
+                <li>
+                    <a href="#postman-%e7%bc%96%e5%86%99%e6%8e%a5%e5%8f%a3%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="Postman 编写接口测试用例">Postman 编写接口测试用例</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba-collection-%e5%92%8c-request" aria-label="新建 Collection 和 Request">新建 Collection 和 Request</a></li>
+                <li>
+                    <a href="#%e7%bc%96%e8%be%91-request-%e5%92%8c%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="编辑 Request 和编写测试用例">编辑 Request 和编写测试用例</a><ul>
+                        
+                <li>
+                    <a href="#get-demo" aria-label="get-demo">get-demo</a></li>
+                <li>
+                    <a href="#post-demo" aria-label="post-demo">post-demo</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#postman-%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="Postman 编写测试环境配置文件">Postman 编写测试环境配置文件</a><ul>
+                        
+                <li>
+                    <a href="#%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="添加环境变量">添加环境变量</a></li>
+                <li>
+                    <a href="#%e6%9b%b4%e6%96%b0-request" aria-label="更新 Request">更新 Request</a></li>
+                <li>
+                    <a href="#%e9%aa%8c%e8%af%81%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" aria-label="验证环境变量">验证环境变量</a></li>
+                <li>
+                    <a href="#%e5%af%bc%e5%87%ba%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%92%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e6%96%87%e4%bb%b6" aria-label="导出环境变量和测试用例文件">导出环境变量和测试用例文件</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%b0%83%e6%95%b4%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84" aria-label="调整项目文件结构">调整项目文件结构</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba-env-%e5%92%8c-testcase-%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="新建 Env 和 Testcase 文件夹">新建 Env 和 Testcase 文件夹</a></li>
+                <li>
+                    <a href="#%e8%b0%83%e6%95%b4%e7%94%a8%e4%be%8b%e6%96%87%e4%bb%b6%e5%92%8c%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%96%87%e4%bb%b6" aria-label="调整用例文件和环境变量文件">调整用例文件和环境变量文件</a></li>
+                <li>
+                    <a href="#%e8%b0%83%e6%95%b4-packagejson-%e6%96%87%e4%bb%b6" aria-label="调整 package.json 文件">调整 package.json 文件</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b" aria-label="运行测试用例">运行测试用例</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" aria-label="参考文档">参考文档</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="介绍">介绍<a hidden class="anchor" aria-hidden="true" href="#介绍">#</a></h2>
 <h3 id="接口测试简介">接口测试简介<a hidden class="anchor" aria-hidden="true" href="#接口测试简介">#</a></h3>
@@ -534,8 +482,7 @@
 </span></span></code></pre></div><ul>
 <li>点击 Send 按钮，发送请求，验证响应结果。</li>
 </ul>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png" alt="2023112117P6poCX"  />
-</p>
+<p><img alt="2023112117P6poCX" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png"></p>
 <p>确认响应结果正确后，点击 Save 按钮，保存 Request。</p>
 <h5 id="post-demo">post-demo<a hidden class="anchor" aria-hidden="true" href="#post-demo">#</a></h5>
 <ul>
@@ -559,8 +506,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png" alt="2023112117x34eSN"  />
-</p>
+</span></span></code></pre></div><p><img alt="2023112117x34eSN" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png"></p>
 <p>确认响应结果正确后，点击 Save 按钮，保存 Request。</p>
 <h3 id="postman-编写测试环境配置文件">Postman 编写测试环境配置文件<a hidden class="anchor" aria-hidden="true" href="#postman-编写测试环境配置文件">#</a></h3>
 <p>下面会取接口请求的 host 为环境变量来进行 demo</p>
@@ -600,8 +546,7 @@
 </span></span><span class="line"><span class="cl">mkdir Testcase
 </span></span></code></pre></div><h4 id="调整用例文件和环境变量文件">调整用例文件和环境变量文件<a hidden class="anchor" aria-hidden="true" href="#调整用例文件和环境变量文件">#</a></h4>
 <p>将导出的环境变量文件和测试用例文件放到项目文件夹下的 Env 和 Testcase 文件夹下。</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png" alt="2023112117ePiBiv"  />
-</p>
+<p><img alt="2023112117ePiBiv" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png"></p>
 <h4 id="调整-packagejson-文件">调整 package.json 文件<a hidden class="anchor" aria-hidden="true" href="#调整-packagejson-文件">#</a></h4>
 <ul>
 <li>在 package.json 文件中，添加以下脚本，用于运行测试用例：</li>
@@ -611,8 +556,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="运行测试用例">运行测试用例<a hidden class="anchor" aria-hidden="true" href="#运行测试用例">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm run <span class="nb">test</span>
-</span></span></code></pre></div><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png" alt="2023112117lt8FW9"  />
-</p>
+</span></span></code></pre></div><p><img alt="2023112117lt8FW9" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png"></p>
 <h2 id="参考文档">参考文档<a hidden class="anchor" aria-hidden="true" href="#参考文档">#</a></h2>
 <ul>
 <li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman 官方文档</a></li>
@@ -634,12 +578,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">
     <span class="title">« 上一页</span>
     <br>
     <span>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/">
     <span class="title">下一页 »</span>
     <br>
     <span>Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试</span>
@@ -650,7 +594,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on x"
-            href="https://x.com/intent/tweet/?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -659,7 +603,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;title=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;summary=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&amp;title=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;summary=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -668,7 +612,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&title=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f&title=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -677,7 +621,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -686,7 +630,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on whatsapp"
-            href="https://api.whatsapp.com/send?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://api.whatsapp.com/send?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -695,7 +639,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on telegram"
-            href="https://telegram.me/share/url?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://telegram.me/share/url?text=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -704,7 +648,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
+            href="https://news.ycombinator.com/submitlink?t=Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%95%99%e7%a8%8b%ef%bc%9a%e5%85%a5%e9%97%a8%e4%bb%8b%e7%bb%8d%e5%92%8c%e4%bb%8e%200%20%e5%88%b0%201%20%e6%90%ad%e5%bb%ba%20Postman%20%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fapi-automation-testing%2fpostman-tutorial-getting-started-and-building-your-own-project-from-0-to-1%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -715,26 +659,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -749,9 +678,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -792,11 +726,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

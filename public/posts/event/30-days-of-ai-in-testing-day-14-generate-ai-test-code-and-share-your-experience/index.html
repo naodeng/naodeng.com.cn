@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,18 +9,18 @@
 <meta name="keywords" content="Generate AI test code and share your experience, prompt engineering, Prompt">
 <meta name="description" content="This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author&rsquo;s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author&rsquo;s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights.">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
+<link rel="canonical" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
 <noscript>
     <style>
         #theme-toggle,
@@ -41,35 +41,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -79,21 +86,30 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience" />
-<meta property="og:description" content="This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author&rsquo;s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author&rsquo;s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-15T10:06:44+08:00" />
-<meta property="article:modified_time" content="2024-03-15T10:06:44+08:00" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience"/>
-<meta name="twitter:description" content="This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author&rsquo;s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author&rsquo;s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights."/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">
+  <meta property="og:site_name" content="Nao&#39;s Blog">
+  <meta property="og:title" content="30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience">
+  <meta property="og:description" content="This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author’s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author’s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-15T10:06:44+08:00">
+    <meta property="article:modified_time" content="2024-03-15T10:06:44+08:00">
+    <meta property="article:tag" content="Generate AI Test Code and Share Your Experience">
+    <meta property="article:tag" content="Prompt Engineering">
+    <meta property="article:tag" content="Prompt">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience">
+<meta name="twitter:description" content="This blog post is about the 14th day of the 30-Day AI Testing Challenge event, aimed at generating AI test code and sharing experiences. The post may include the author&rsquo;s process of using AI tools to generate test code, the choice of tools, the quality assessment of the generated code, and the application experience in actual testing. By sharing the process and experience of generating AI test code, readers will learn about examples of AI application in the field of testing, as well as the author&rsquo;s views on the effectiveness and reliability of AI-generated code. This series of events is expected to provide an opportunity for testing professionals to understand and try using AI testing tools and to share their experiences and insights.">
 
 
 <script type="application/ld+json">
@@ -105,13 +121,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "https://naodeng.com.cn/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience",
-      "item": "http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
+      "item": "https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
     }
   ]
 }
@@ -129,7 +145,7 @@
   "articleBody": "Day 14: Generate AI test code and share your experience Nearly at the halfway mark! For Day 14, we want to focus on how AI is being used to build automation. In recent times, there has been a growth in automation tools using AI to simplify the creation or improvement of test code or to (nearly) eliminate the need for knowledge of coding all together (so called Low-Code or No-Code tools). They represent a potentially different way of building automation that could be faster and more robust.\nFor today’s task, let’s focus on building test code for functional testing… we have other challenges coming up that focus on AI’s impact on other types of testing and topics such as self-healing tests.\nTask Steps Select a tool: Early in the challenge, we created lists of tools and their features, so review those posts and find a tool that interests you. Here are some tips: If you are not comfortable with building automation, pick a No-Code or Low-Code tool and try creating automation with it. Some examples might be: Testim Kalton Postman AI Assistant If are experienced with building automation, why not try using a code assistant such as CoPilot or Cody AI to assist you in writing some automation. If you have already evaluated a functional automation tool earlier in the challenge, why not pick a different tool and compare the two? Create some test code: Set a timebox (such as 20-30 mins) and try to build a small example of automation using your tool of choice: Not sure what to use? Try one of these demo applications: Restful Booker https://automationintesting.online Evil Tester’s Web Testing and Automation Practice Application Pages Applitools ACME demo app Swag Labs https://www.saucedemo.com Petstore https://petstore.octoperf.com Share your thoughts: Reply to this post and share your findings and insights such as: What level of experience you have with functional automation. Which tool you used and the automation you were trying to create. How you found working with the tool to build and update your automation. Did the code work the first time, or did you need further refinement? Did you find any limitations or frustrations with the tool? Why Take Part Better understand the direction of AI for automation: The use of AI in functional automation is expanding, and taking part in this task allows you to gain exposure to these new ways of building automation and their limitations. Sharing your experiences with the community makes us all smarter. Task Link https://club.ministryoftesting.com/t/day-14-generate-ai-test-code-and-share-your-experience/75133?cf_id=MaBzyqDC5xq\nMy Day 14 Task 1. About Choosing a Tool This time I chose Postman AI Assistant because I am currently implementing API testing and API automation regression testing in the project. I hope to gain some practical experience in using AI to enhance API testing efficiency that can be applied from the trial process of the Postman AI Assistant tool.\nAbout the use of the Postman tool: Since Postman announced in May 2023 that it would gradually phase out the Scratch Pad model with offline capabilities, most functions will move to the cloud, and you must log in to use all the features of Postman. Our company has been notified to stop using Postman and migrate to other tools. Since then, I have been researching and learning to use Bruno, an open-source tool that can replace Postman for API testing and API automation regression testing. Recently, I have also implemented Bruno+github in the project team for interface document management and interface automation testing, and worked with developers to manage and test APIs using Bruno+github.\nPostman AI Assistant’s official introduction:\nPostbot, an AI assistant for API workflows, will be available in an early access program on May 22, 2023.\n📅 Availability: Early access program starts on May 22, 2023. 🪄✨ Features: AI-driven autocomplete, test case design, documentation writing, test suite building, data report summarization, API call debugging. 💳 Pricing: Available in Basic and Professional plans at $9/user/month starting October 15, 2023. I downloaded Postman and tried Postbot with commonly used demo interfaces:\n2. About Creating Some Test Code After adding the demo interface request in the postman interface, click Postbot on the bottom menu bar to start the Postman AI Assistant. A suggestion command menu for the request appears in the Postbot window, currently with the following recommended commands:\nAdd tests to this request Test for response Visualize response Save a field from response Add documentation Next, I will try the functions suggested by Postbot one by one.\nTrying Add tests to this request Click Add tests to this request in the Postbot interface\nIf you have added a request but have not clicked send to run that request, Postbot will prompt “I’ll need a response to perform this action,” and Postbot will also provide a menu to quickly run the request and output the response; after clicking the “Send request and continue” button, Postman will automatically run the request and write the test script, as shown below:\nPostbot’s test script for the demo request is as follows:\npm.test(\"Response status code is 201\", function () { pm.response.to.have.status(201); }); pm.test(\"Response has the required fields - title, body, userId, and id\", function () { const responseData = pm.response.json(); pm.expect(responseData.title).to.exist; pm.expect(responseData.body).to.exist; pm.expect(responseData.userId).to.exist; pm.expect(responseData.id).to.exist; }); pm.test(\"Title is a non-empty string\", function () { const responseData = pm.response.json(); pm.expect(responseData).to.be.an('object'); pm.expect(responseData.title).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Title should not be empty\"); }); pm.test(\"Body is a non-empty string\", function () { const responseData = pm.response.json(); pm.expect(responseData).to.be.an('object'); pm.expect(responseData.body).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Body should not be empty\"); }); pm.test(\"UserId is a positive integer\", function () { const responseData = pm.response.json(); pm.expect(responseData.userId).to.be.a('number'); pm.expect(responseData.userId).to.be.above(0, \"UserId should be a positive integer\"); }); The written test covers the interface response’s status judgment and body field type judgment and can run through.\nAt this point, I noticed that two new recommended commands were added to Postbot’s suggestion menu\nAdd more tests Fix test I first tried running “Add more tests,” and then Postbot added a few more tests\nInterestingly, one of the tests failed, so I clicked “Fix test” to try to let Postbot fix this wrong test\nHowever, Postbot did not fix this wrong test case successfully\nThis wrong test case is as follows:\npm.test(\"UserId matches the ID of the user who created the post\", function () { const requestUserId = pm.request.json().userId; const responseData = pm.response.json(); pm.expect(responseData.userId).to.equal(requestUserId); }); I can only manually fix it, and the corrected script is as follows\npm.test(\"UserId matches the ID of the user who created the post\", function () { const requestUserId = JSON .parse(pm.request.body.raw).userId; const responseData = pm.response.json(); pm.expect(responseData.userId).to.equal(requestUserId); }); The script was wrong because the request body was in raw format and needed to be parsed into a JSON object before being read.\nTrying Test for response After clicking Test for response in the Postbot interface, Postbot will update the test cases generated by Add tests to this request as shown below:\nBy examining the results of the updated tests, I found that most of the updated cases could not run through.\nThen I tried to fix the wrong cases through Postbot’s “Fix test”, most of the cases could run through, but there were still errors in the test cases generated by the Add tests to this request command.\nIn addition, clicking on Postbot’s “Fix test” to fix the cases generated by the Test for response command will update most of the cases to the test cases generated by the Add tests to this request command\nI wonder where the difference between the Add tests to this request and Test for response commands is?\nTrying Visualize response After clicking Visualize response in the Postbot interface, you need to select the generated format, which can be a table/line chart/bar chart. Here I choose a table, and then Postbot will display the instantiated table style of the response on the result page after the request.\nThis table instantiation of the response is achieved by generating a script under tests, and the specific script is as follows:\nvar template = ` Title Body User ID ID {{response.title}} {{response.body}} {{response.userId}} {{response.id}} `; function constructVisualizerPayload() { return {response: pm.response.json()} } pm.visualizer.set(template, constructVisualizerPayload()); I haven’t found where the Visualize response feature helps API testing yet.\nUsing Save a field from response After clicking Save a field from response in the Postbot interface, Postbot will generate a test script to store the id from the response as an environment variable, as follows:\n// Stores the postId in an environment or global variable var postId = pm.response.json().id; pm.globals.set(\"postId\", postId); Then I clicked Postbot’s Save a field from response command again and found that Postbot still generated a test script to store the id from the response as an environment variable, instead of generating a test script to store other fields from the response as environment variables.\nTrying Add documentation After clicking the Add documentation command in the Postbot interface, Postbot will generate a very detailed interface document on the right side of the postman interface, as shown below.\nThe interface document describes very detailed interface-related information, such as interface request information, request field definitions, response examples, etc.\n3. About Sharing My Thoughts After trying the AI Assistant Postbot tool provided by postman, the functions provided by Postbot for adding test cases for request and response are quite convenient, and can quickly generate mostly usable interface response verification test scripts with high coverage. Although there are errors in the generated test scripts that need to be manually fixed, Postbot can quickly generate test scripts to improve the efficiency of interface testing.\nIn addition, Postbot’s interface documentation generation is also quite useful. After developers add the request in postman, Postbot can quickly generate relatively detailed interface documentation, which can improve R\u0026D efficiency and interface document quality to some extent.\nHowever, Postbot currently does not seem to support custom commands. I want to try to output different types of test cases for the demo interface through Postbot, such as empty request body interface test cases, illegal request body interface test cases, etc., but Postbot cannot give the correct response.\nAbout Event The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.\nCommunity Website: https://www.ministryoftesting.com\nEvent Link: https://www.ministryoftesting.com/events/30-days-of-ai-in-testing\nChallenges:\nDay 1: Introduce yourself and your interest in AI Day 2: Read an introductory article on AI in testing and share it Day 3: List ways in which AI is used in testing Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway Day 5:Identify a case study on AI in testing and share your findings Day 6:Explore and share insights on AI testing tools Day 7: Research and share prompt engineering techniques Day 8: Craft a detailed prompt to support test activities Day 9: Evaluate prompt quality and try to improve it Day 10: Critically Analyse AI-Generated Tests Day 11: Generate test data using AI and evaluate its efficacy Day 12: Evaluate whether you trust AI to support testing and share your thoughts Day 13: Develop a testing approach and become an AI in testing champion Recommended Readings API Automation Testing Tutorial Bruno API Automation Testing Tutorial Gatling Performance Testing Tutorial K6 Performance Testing Tutorial Postman API Automation Testing Tutorial Pytest API Automation Testing Tutorial REST Assured API Automation Testing Tutorial SuperTest API Automation Testing Tutorial 30 Days of AI in Testing Challenge ",
   "wordCount" : "1925",
   "inLanguage": "en",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-03-15T10:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-03-15T10:06:44+08:00",
   "dateModified": "2024-03-15T10:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -137,38 +153,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
+    "@id": "https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Nao's Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
+            <a href="https://naodeng.com.cn/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -188,38 +192,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/zh/" title="🇨🇳中文"
-                            aria-label="🇨🇳中文">🇨🇳中文</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/zh/" title="🇨🇳中文"
+                                aria-label="🇨🇳中文">🇨🇳中文</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives" title="Archive">
+                <a href="https://naodeng.com.cn/archives" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://naodeng.com.cn/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/series/" title="Series">
+                <a href="https://naodeng.com.cn/series/" title="Series">
                     <span>Series</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://naodeng.com.cn/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
                 <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="Dashboard">
                     <span>Dashboard</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/en/" title="QA Prompt">
+                    <span>QA Prompt</span>&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
                         <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
@@ -246,127 +261,68 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/">Home</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience
     </h1>
-    <div class="post-meta"><span title='2024-03-15 10:06:44 +0800 CST'>March 15, 2024</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;1925 words&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;Translations:
+    <div class="post-meta"><span title='2024-03-15 10:06:44 +0800 CST'>March 15, 2024</span>&nbsp;·&nbsp;<span>10 min</span>&nbsp;·&nbsp;<span>1925 words</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>Translations:</span>
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">🇨🇳中文</a>
+        <a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">🇨🇳中文</a>
     </li>
-</ul>&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+</ul>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">Table of Contents</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#day-14-generate-ai-test-code-and-share-your-experience" aria-label="Day 14: Generate AI test code and share your experience">Day 14: Generate AI test code and share your experience</a><ul>
-                            
-                    <li>
-                        <a href="#task-steps" aria-label="Task Steps">Task Steps</a></li>
-                    <li>
-                        <a href="#why-take-part" aria-label="Why Take Part">Why Take Part</a></li>
-                    <li>
-                        <a href="#task-link" aria-label="Task Link">Task Link</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#my-day-14-task" aria-label="My Day 14 Task">My Day 14 Task</a><ul>
-                            
-                    <li>
-                        <a href="#1-about-choosing-a-tool" aria-label="1. About Choosing a Tool">1. About <strong>Choosing a Tool</strong></a></li>
-                    <li>
-                        <a href="#2-about-creating-some-test-code" aria-label="2. About Creating Some Test Code">2. About <strong>Creating Some Test Code</strong></a><ul>
-                            
-                    <li>
-                        <a href="#trying-add-tests-to-this-request" aria-label="Trying Add tests to this request">Trying <strong>Add tests to this request</strong></a></li>
-                    <li>
-                        <a href="#trying-test-for-response" aria-label="Trying Test for response">Trying <strong>Test for response</strong></a></li>
-                    <li>
-                        <a href="#trying-visualize-response" aria-label="Trying Visualize response">Trying <strong>Visualize response</strong></a></li>
-                    <li>
-                        <a href="#using-save-a-field-from-response" aria-label="Using Save a field from response">Using <strong>Save a field from response</strong></a></li>
-                    <li>
-                        <a href="#trying-add-documentation" aria-label="Trying Add documentation">Trying <strong>Add documentation</strong></a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#3-about-sharing-my-thoughts" aria-label="3. About Sharing My Thoughts">3. About <strong>Sharing My Thoughts</strong></a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#about-event" aria-label="About Event">About Event</a></li>
-                    <li>
-                        <a href="#recommended-readings" aria-label="Recommended Readings">Recommended Readings</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#day-14-generate-ai-test-code-and-share-your-experience" aria-label="Day 14: Generate AI test code and share your experience">Day 14: Generate AI test code and share your experience</a><ul>
+                        
+                <li>
+                    <a href="#task-steps" aria-label="Task Steps">Task Steps</a></li>
+                <li>
+                    <a href="#why-take-part" aria-label="Why Take Part">Why Take Part</a></li>
+                <li>
+                    <a href="#task-link" aria-label="Task Link">Task Link</a></li></ul>
+                </li>
+                <li>
+                    <a href="#my-day-14-task" aria-label="My Day 14 Task">My Day 14 Task</a><ul>
+                        
+                <li>
+                    <a href="#1-about-choosing-a-tool" aria-label="1. About Choosing a Tool">1. About Choosing a Tool</a></li>
+                <li>
+                    <a href="#2-about-creating-some-test-code" aria-label="2. About Creating Some Test Code">2. About Creating Some Test Code</a><ul>
+                        
+                <li>
+                    <a href="#trying-add-tests-to-this-request" aria-label="Trying Add tests to this request">Trying Add tests to this request</a></li>
+                <li>
+                    <a href="#trying-test-for-response" aria-label="Trying Test for response">Trying Test for response</a></li>
+                <li>
+                    <a href="#trying-visualize-response" aria-label="Trying Visualize response">Trying Visualize response</a></li>
+                <li>
+                    <a href="#using-save-a-field-from-response" aria-label="Using Save a field from response">Using Save a field from response</a></li>
+                <li>
+                    <a href="#trying-add-documentation" aria-label="Trying Add documentation">Trying Add documentation</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-about-sharing-my-thoughts" aria-label="3. About Sharing My Thoughts">3. About Sharing My Thoughts</a></li></ul>
+                </li>
+                <li>
+                    <a href="#about-event" aria-label="About Event">About Event</a></li>
+                <li>
+                    <a href="#recommended-readings" aria-label="Recommended Readings">Recommended Readings</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="day-14-generate-ai-test-code-and-share-your-experience">Day 14: Generate AI test code and share your experience<a hidden class="anchor" aria-hidden="true" href="#day-14-generate-ai-test-code-and-share-your-experience">#</a></h2>
 <p>Nearly at the halfway mark! For Day 14, we want to focus on how AI is being used to build automation. In recent times, there has been a growth in automation tools using AI to simplify the creation or improvement of test code or to (nearly) eliminate the need for knowledge of coding all together (so called Low-Code or No-Code tools). They represent a potentially different way of building automation that could be faster and more robust.</p>
@@ -429,8 +385,7 @@
 <li>💳 Pricing: Available in Basic and Professional plans at $9/user/month starting October 15, 2023.</li>
 </ul>
 <p>I downloaded Postman and tried Postbot with commonly used demo interfaces:</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/n7YK4F.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/n7YK4F.png"></p>
 <h3 id="2-about-creating-some-test-code">2. About <strong>Creating Some Test Code</strong><a hidden class="anchor" aria-hidden="true" href="#2-about-creating-some-test-code">#</a></h3>
 <p>After adding the demo interface request in the postman interface, click Postbot on the bottom menu bar to start the Postman AI Assistant. A suggestion command menu for the request appears in the Postbot window, currently with the following recommended commands:</p>
 <ul>
@@ -443,12 +398,10 @@
 <p>Next, I will try the functions suggested by Postbot one by one.</p>
 <h4 id="trying-add-tests-to-this-request">Trying <strong>Add tests to this request</strong><a hidden class="anchor" aria-hidden="true" href="#trying-add-tests-to-this-request">#</a></h4>
 <p>Click <strong>Add tests to this request</strong> in the Postbot interface</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/PDPH8I.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/PDPH8I.png"></p>
 <p>If you have added a request but have not clicked send to run that request,
 Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rdquo; and Postbot will also provide a menu to quickly run the request and output the response; after clicking the &ldquo;Send request and continue&rdquo; button, Postman will automatically run the request and write the test script, as shown below:</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZGYSwi.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZGYSwi.png"></p>
 <p>Postbot&rsquo;s test script for the demo request is as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;Response status code is 201&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
@@ -486,11 +439,9 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 <li>Fix test</li>
 </ul>
 <p>I first tried running &ldquo;Add more tests,&rdquo; and then Postbot added a few more tests</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/VDUws3.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/VDUws3.png"></p>
 <p>Interestingly, one of the tests failed, so I clicked &ldquo;Fix test&rdquo; to try to let Postbot fix this wrong test</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/33nkUH.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/33nkUH.png"></p>
 <p>However, Postbot did not fix this wrong test case successfully</p>
 <p>This wrong test case is as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;UserId matches the ID of the user who created the post&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -509,20 +460,16 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 </span></span></code></pre></div><p>The script was wrong because the request body was in raw format and needed to be parsed into a JSON object before being read.</p>
 <h4 id="trying-test-for-response">Trying <strong>Test for response</strong><a hidden class="anchor" aria-hidden="true" href="#trying-test-for-response">#</a></h4>
 <p>After clicking <strong>Test for response</strong> in the Postbot interface, Postbot will update the test cases generated by <strong>Add tests to this request</strong> as shown below:</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fNrz10.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fNrz10.png"></p>
 <p>By examining the results of the updated tests, I found that most of the updated cases could not run through.</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/liVBHj.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/liVBHj.png"></p>
 <p>Then I tried to fix the wrong cases through Postbot&rsquo;s &ldquo;Fix test&rdquo;, most of the cases could run through, but there were still errors in the test cases generated by the <strong>Add tests to this request</strong> command.</p>
 <p>In addition, clicking on Postbot&rsquo;s &ldquo;Fix test&rdquo; to fix the cases generated by the <strong>Test for response</strong> command will update most of the cases to the test cases generated by the <strong>Add tests to this request</strong> command</p>
 <p>I wonder where the difference between the <strong>Add tests to this request</strong> and <strong>Test for response</strong> commands is?</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oq0mEw.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oq0mEw.png"></p>
 <h4 id="trying-visualize-response">Trying <strong>Visualize response</strong><a hidden class="anchor" aria-hidden="true" href="#trying-visualize-response">#</a></h4>
 <p>After clicking <strong>Visualize response</strong> in the Postbot interface, you need to select the generated format, which can be a table/line chart/bar chart. Here I choose a table, and then Postbot will display the instantiated table style of the response on the result page after the request.</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3DjMD6.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3DjMD6.png"></p>
 <p>This table instantiation of the response is achieved by generating a script under tests, and the specific script is as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">&lt;style type=&#34;text/css&#34;&gt;
@@ -557,15 +504,13 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 <h4 id="using-save-a-field-from-response">Using <strong>Save a field from response</strong><a hidden class="anchor" aria-hidden="true" href="#using-save-a-field-from-response">#</a></h4>
 <p>After clicking <strong>Save a field from response</strong> in the Postbot interface, Postbot will generate a test script to store the id from the response as an environment variable, as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="c1">// Stores the postId in an environment or global variable
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">postId</span> <span class="o">=</span> <span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">id</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">postId</span> <span class="o">=</span> <span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">id</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nx">pm</span><span class="p">.</span><span class="nx">globals</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;postId&#34;</span><span class="p">,</span> <span class="nx">postId</span><span class="p">);</span>
 </span></span></code></pre></div><p>Then I clicked Postbot&rsquo;s <strong>Save a field from response</strong> command again and found that Postbot still generated a test script to store the id from the response as an environment variable, instead of generating a test script to store other fields from the response as environment variables.</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/R7gwUZ.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/R7gwUZ.png"></p>
 <h4 id="trying-add-documentation">Trying <strong>Add documentation</strong><a hidden class="anchor" aria-hidden="true" href="#trying-add-documentation">#</a></h4>
 <p>After clicking the <strong>Add documentation</strong> command in the Postbot interface, Postbot will generate a very detailed interface document on the right side of the postman interface, as shown below.</p>
-<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Amwb4n.png" alt=" "  />
-</p>
+<p><img alt=" " loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Amwb4n.png"></p>
 <p>The interface document describes very detailed interface-related information, such as interface request information, request field definitions, response examples, etc.</p>
 <h3 id="3-about-sharing-my-thoughts">3. About <strong>Sharing My Thoughts</strong><a hidden class="anchor" aria-hidden="true" href="#3-about-sharing-my-thoughts">#</a></h3>
 <p>After trying the AI Assistant Postbot tool provided by postman, the functions provided by Postbot for adding test cases for request and response are quite convenient, and can quickly generate mostly usable interface response verification test scripts with high coverage. Although there are errors in the generated test scripts that need to be manually fixed, Postbot can quickly generate test scripts to improve the efficiency of interface testing.</p>
@@ -609,17 +554,17 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/generate-ai-test-code-and-share-your-experience/">Generate AI Test Code and Share Your Experience</a></li>
-      <li><a href="http://localhost:1313/tags/prompt-engineering/">Prompt Engineering</a></li>
-      <li><a href="http://localhost:1313/tags/prompt/">Prompt</a></li>
+      <li><a href="https://naodeng.com.cn/tags/generate-ai-test-code-and-share-your-experience/">Generate AI Test Code and Share Your Experience</a></li>
+      <li><a href="https://naodeng.com.cn/tags/prompt-engineering/">Prompt Engineering</a></li>
+      <li><a href="https://naodeng.com.cn/tags/prompt/">Prompt</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">
+  <a class="prev" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">
     <span class="title">« Prev</span>
     <br>
     <span>30 Days of AI in Testing Challenge: Day 15: Gauge your short-term AI in testing plans</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">
+  <a class="next" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">
     <span class="title">Next »</span>
     <br>
     <span>30 Days of AI in Testing Challenge: Day 13: Develop a testing approach and become an AI in testing champion!</span>
@@ -630,7 +575,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on x"
-            href="https://x.com/intent/tweet/?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&amp;hashtags=GenerateAItestcodeandshareyourexperience%2cpromptengineering%2cPrompt">
+            href="https://x.com/intent/tweet/?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&amp;hashtags=GenerateAItestcodeandshareyourexperience%2cpromptengineering%2cPrompt">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -639,7 +584,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&amp;title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;summary=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&amp;title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;summary=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;source=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -648,7 +593,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f&title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -657,7 +602,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -666,7 +611,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on whatsapp"
-            href="https://api.whatsapp.com/send?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
+            href="https://api.whatsapp.com/send?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience%20-%20https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -675,7 +620,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on telegram"
-            href="https://telegram.me/share/url?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
+            href="https://telegram.me/share/url?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -684,7 +629,7 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 14: Generate AI test code and share your experience on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
+            href="https://news.ycombinator.com/submitlink?t=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2014%3a%20Generate%20AI%20test%20code%20and%20share%20your%20experience&u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -695,26 +640,11 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Nao&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/">Nao&#39;s Blog</a></span> · 
 
     <span>
         Powered by
@@ -729,9 +659,14 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -772,11 +707,12 @@ Postbot will prompt &ldquo;I&rsquo;ll need a response to perform this action,&rd
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

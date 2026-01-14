@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Ad Hoc Testing（随机测试）。文章详细介绍了随机测试的基础概念和重要性，阐述了在测试实践中实施和应用随机测试的技术。读者将了解随机测试的场景和用例，以及如何在项目中有效地运用这一测试方法。博文还提供了随机测试的最佳实践，帮助测试人员更好地利用这一方法发现潜在问题。通过这个系列分享，读者将更全面地了解 Ad Hoc Testing 的价值，并在测试策略中灵活地运用这一方法。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试术语分享:Ad Hoc Testing 随机测试" />
-<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Ad Hoc Testing（随机测试）。文章详细介绍了随机测试的基础概念和重要性，阐述了在测试实践中实施和应用随机测试的技术。读者将了解随机测试的场景和用例，以及如何在项目中有效地运用这一测试方法。博文还提供了随机测试的最佳实践，帮助测试人员更好地利用这一方法发现潜在问题。通过这个系列分享，读者将更全面地了解 Ad Hoc Testing 的价值，并在测试策略中灵活地运用这一方法。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-26T12:06:44+08:00" />
-<meta property="article:modified_time" content="2024-02-26T12:06:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试术语分享:Ad Hoc Testing 随机测试"/>
-<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Ad Hoc Testing（随机测试）。文章详细介绍了随机测试的基础概念和重要性，阐述了在测试实践中实施和应用随机测试的技术。读者将了解随机测试的场景和用例，以及如何在项目中有效地运用这一测试方法。博文还提供了随机测试的最佳实践，帮助测试人员更好地利用这一方法发现潜在问题。通过这个系列分享，读者将更全面地了解 Ad Hoc Testing 的价值，并在测试策略中灵活地运用这一方法。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试术语分享:Ad Hoc Testing 随机测试">
+  <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Ad Hoc Testing（随机测试）。文章详细介绍了随机测试的基础概念和重要性，阐述了在测试实践中实施和应用随机测试的技术。读者将了解随机测试的场景和用例，以及如何在项目中有效地运用这一测试方法。博文还提供了随机测试的最佳实践，帮助测试人员更好地利用这一方法发现潜在问题。通过这个系列分享，读者将更全面地了解 Ad Hoc Testing 的价值，并在测试策略中灵活地运用这一方法。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-26T12:06:44+08:00">
+    <meta property="article:modified_time" content="2024-02-26T12:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试术语分享:Ad Hoc Testing 随机测试">
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Ad Hoc Testing（随机测试）。文章详细介绍了随机测试的基础概念和重要性，阐述了在测试实践中实施和应用随机测试的技术。读者将了解随机测试的场景和用例，以及如何在项目中有效地运用这一测试方法。博文还提供了随机测试的最佳实践，帮助测试人员更好地利用这一方法发现潜在问题。通过这个系列分享，读者将更全面地了解 Ad Hoc Testing 的价值，并在测试策略中灵活地运用这一方法。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "软件测试术语分享:Ad Hoc Testing 随机测试",
-      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/"
+      "item": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "Ad Hoc Testing 随机测试 “Ad-Hoc”原意是指“特定的，一次性的”,故 Ad hoc testing 一般成为即兴测试，一次性测试或随机测试。 这里把 Ad Hoc Testing 翻译为随机测试，也感觉有些歧义，个人觉得即兴测试，临时测试，临场测试貌似更准确。（大家有好的想法，可以提 PR 来更新）\nAd hoc testing（随机测试） 是一种非正式、即兴的软件测试方法。其主要目标是尽快发现漏洞或问题。这种方法没有详细的计划或文档支持，属于一种不受限、灵活应对的测试方式。\n相关术语： Exploratory Testing 探索性测试\n关于随机测试的问题 基础知识和重要性 什么是软件测试中的随机测试？ 随机测试 是一种非正式且非结构化的软件测试技术，测试人员在没有具体计划或文档的情况下探索软件。它凭借测试人员的直觉、经验和对应用程序的理解来引导测试过程。这种测试通常用于发现传统、结构化测试方法可能遗漏的缺陷。\n在 随机测试 中，测试人员可以自由选择应用程序的任何路径，并使用任何有效或无效的输入数据。这是一种探索性测试，其主要目标是通过超越传统思维方式、以创造性的方式尝试破坏系统来发现错误。\n由于 随机测试 是无脚本的，要重现问题通常需要测试人员详细记录他们的操作。通常在正式执行测试用例后的测试后阶段使用，以补充更加结构化的测试方法。\n关键点：\n非结构化和非正式的测试方法。 依赖于测试人员的直觉和经验。 用于发现结构化测试未捕捉到的缺陷。 允许创造性和无约束的探索。 没有详细记录的情况下难以重现问题。 在后期阶段与结构化测试相辅相成。 为什么随机测试在软件开发生命周期中很重要？ 随机测试 在软件开发生命周期（SDLC）中至关重要，因为它提供了一种独特的方法来发现结构化测试可能忽略的缺陷。它依赖于测试人员的直觉、经验和对系统的理解，以在没有预定义 测试用例 或文档的情况下探索应用程序。这可能导致发现意外问题，特别是在应用程序的复杂或较不清晰的领域。\n由于 随机测试 是无脚本的，它允许测试人员更自然地模拟用户的视角，潜在地识别正式 测试用例 无法发现的可用性问题。它还对应用程序进行**压力测试**提供了价值，这是在设计阶段未预料到的方式。\n将 随机测试 纳入 SDLC 可以增强整体的**测试覆盖率**，并提供了一种结构化测试的补充方法。在开发的后期阶段，尤其是在正式测试周期完成后，在发布前进行最终检查或在快速测试补丁和小更新之前，它变得尤为重要。\n此外，随机测试 可以是一种高效利用时间的测试应用程序的方式，特别是在截止日期紧迫的情况下，因为它不需要提前准备。这是一种灵活的测试方法，可以在任何机会使用，使其成为 SDLC 中持续改进的有价值工具。\n随机测试与其他测试形式的主要区别是什么？ 随机测试 与其他测试形式的主要区别在于其缺乏正式结构和预定义的 测试用例。与诸如单元测试、集成测试或系统测试等系统测试方法不同，随机测试 是无脚本的，依赖于测试人员的直觉、经验和对系统的理解来探索应用程序并发现缺陷。\n其他形式的测试通常遵循记录的过程，基于事先设计的**测试计划、测试用例和测试脚本。这些测试通常是可重复的**，可以自动化，确保在测试周期内保持一致的覆盖范围。\n相反，随机测试 是自发的和非正式的，使其不可重复。它主要是一个手动测试过程，因为它需要人类的创造力和洞察力来执行。执行 随机测试 的测试人员可能会关注难以自动化或需要人工判断的应用程序区域。\n虽然其他测试方法通过详细的测试场景旨在实现全面覆盖，随机测试通常用于发现结构化测试可能忽略的边缘案例或异常缺陷。它通常在时间有限时使用，并作为其他测试策略的补充，而不是作为一种独立的方法。\n随机测试 的灵活性使测试人员能够在无需更新正式测试文档的情况下快速适应应用程序的更改。然而，由于其非结构化的性质，跟踪和衡量其有效性可能会具有挑战性。\n随机测试有哪些优缺点？ 随机测试的优势：\n灵活性：允许测试人员在没有预定义案例的情况下探索应用程序，鼓励创造性的测试场景。 经济高效：无需进行广泛的准备或文档编制，降低了初期成本。 快速反馈：提供对应用程序功能和潜在问题的即时见解。 发现意外的缺陷：由于其不可预测的性质，可以揭示结构化测试可能忽略的缺陷。 随机测试的劣势：\n不可重复：如果步骤未经记录，找到一个错误可能是一次性事件，使得跟踪和修复变得困难。 测试范围不足：没有结构化的方法，应用程序的某些部分可能保持未经测试状态。 主观结果：严重依赖于测试人员的专业知识和直觉，可能导致不一致的结果。 不适用于所有阶段：在需要更多形式化验证的开发后期阶段可能效果不佳。 请记住，随机测试是其他测试方法的一种补充，而不是独立的解决方案。它在由经验丰富的测试人员使用时效果最好，这些测试人员能够快速识别和探索复杂的应用程序区域。\n实施和技术 如何执行随机测试？ 随机测试是在没有任何正式的测试计划或文档的情况下执行的。测试人员凭借他们的理解力和探索软件来发现缺陷。这种方法在很大程度上依赖于测试人员的直觉、经验和创造力。\n以下是执行随机测试的一般过程：\n了解应用程序：对软件的功能和目的有一个基本的了解。 定义范围：尽管是非正式的，但决定要关注的应用程序区域。 执行测试：以各种方式与软件进行交互，以发现问题，包括： 尝试不同的输入 以意想不到的方式浏览应用程序 尝试用不寻常的行为破坏应用程序 记录观察：跟踪测试过程中观察到的任何缺陷或奇怪的行为。 报告缺陷：将发现的问题通报给开发团队以供解决。 在随机测试期间，测试人员可能会采用**错误猜测或探索性测试等技术来指导他们的方法。该过程本质上是灵活和非结构化**的，使测试人员能够快速识别结构化测试可能忽略的问题。\n值得注意的是，尽管随机测试可能是自发的，但对系统的广泛了解及其潜在弱点可以导致更有效的测试会话。\n有哪些常用的随机测试技术？ 在随机测试中常见的技术包括：\n探索性测试：测试人员在没有预定义测试用例的情况下探索软件，使用他们的理解和直觉来引导他们的操作。 错误猜测：测试人员依赖经验猜测软件中可能发生缺陷的最有可能的区域。 猴子测试：向系统提供随机输入，观察其行为，通常自动化生成大量随机数据。 对测：两名测试人员在一台键盘上共同工作；一人操作测试，另一人提供指导并记录发现。 基于会话的测试：测试被结构化成专注于特定区域的不间断会话，测试人员记录他们的发现和思考过程。 这些技术通常以一种互补的方式使用，取决于测试会话的背景和目标。它们充分利用测试人员的创造力、经验和直觉，以发现结构化测试可能忽略的问题。\n有效执行随机测试需要哪些技能？ 要有效执行随机测试，个体需要一系列技能，使他们能够在没有预定义的 测试计划 的情况下探索软件。这些技能包括：\n探索技能：有创造性地探索和导航软件，以发现结构化测试可能忽略的问题的能力。 分析技能：强大的分析思维，能够假设缺陷可能存在的位置并理解软件的行为。 注重细节：敏锐的观察力，注意到可能导致更大问题的细微差异和潜在问题。 技术知识：对软件的架构、特性和潜在弱点有扎实的了解。 经验：熟悉被测试系统和类似系统，以便利用过去的知识并识别模式。 直觉：对缺陷可能发生的位置有直观的感觉，通常是从经验中发展而来。 沟通技能：能够清晰地记录和传达发现，向开发团队和其他利益相关者沟通。 适应能力：灵活切换焦点，并根据测试过程中出现的新信息或关注的领域进行调整的能力。 时间管理：有效管理时间的技能，因为即兴测试通常是有时间限制的或在有限的时间内进行的。 这些技能帮助测试人员以既高效又有效的方式执行随机测试，为软件的质量和可靠性提供有价值的见解。\n随机测试可以自动化还是只能严格手动测试？ 由于其本质是一种非正式和无结构的测试方法，测试人员在随机测试中积极地在没有预定义的 测试用例 或计划的情况下探索软件。另一方面，自动化依赖于预先脚本化的测试，可以自动运行。因此，随机测试主要是一个手动过程。\n然而，随机测试的某些方面可以通过自动化工具支持。例如，自动化脚本可以用于设置应用程序内的复杂环境或状态，然后测试人员可以手动探索。这种混合方法使测试人员能够专注于随机测试的探索方面，而无需进行重复的 设置 任务。\n此外，虽然随机测试的探索部分是手动的，自动化可以帮助记录和捕获发现问题时系统的状态。工具可以自动记录采取的步骤、系统状态和其他相关数据，有助于缺陷的再现和报告。\n总体而言，虽然随机测试的核心活动是手动的，但自动化可以在增强测试过程的效率和效果方面发挥支持性作用。\n场景和用例 有哪些实际场景的示例来介绍如何使用随机测试？ 随机测试通常在存在有限结构或文档，并且需要对软件行为进行快速、直观评估的情况下使用。以下是一些实际场景的例子：\n探索性测试：在开发新功能时，测试人员可能会使用即兴方法在正式编写测试用例之前探索该功能的功能性。 发布后：在软件发布后，可以使用即兴测试快速检查实时环境，以确保没有引入重大问题。 缺陷 验证：一旦修复了缺陷，测试人员可能会围绕修复进行即兴测试，以确保问题得到解决，并且没有引入新问题。 高风险区域：在已知存在高风险组件的系统中，可以使用即兴测试快速评估这些区域的稳定性，特别是在进行更改后。 有限时间：当存在时间限制且无法完成正式测试时，即兴测试可以提供快速的合理性检查，以评估关键功能。 用户反馈：如果用户报告了意外行为，测试人员可能会使用即兴测试来复制问题并探索可能受到影响的相关功能。 技术更改：当底层技术或框架更新时，即兴测试可以帮助快速识别任何兼容性问题或回归。 在这些场景中，测试人员的经验、直觉和对系统的了解引导测试过程，通常导致发现结构化测试可能忽视的缺陷。\n你能提供一个随机测试发现关键缺陷的场景吗？ 情景：在一个开发的晚期阶段，一位测试工程师正在探索一个新实施的金融应用功能，该功能允许用户在账户之间进行资金转账。正式的 测试用例 已经执行过，未发现重大问题。然而，工程师决定进行一些随机测试，模拟可能做出不合理和非传统选择的用户。\n在随机导航应用程序的过程中，工程师试图从资金不足的账户发起转账，期望看到标准错误消息。然而，应用程序崩溃了，重新启动后，账户余额损坏，显示不正确的数字。\n这个关键的 缺陷在结构化测试中被忽略了，因为 测试用例 假设用户行为是理性的，并且没有考虑到工程师在即兴会话期间采取的特定操作序列。这个 缺陷 是在处理具有特定时间和数据条件的交易时发生未处理异常的结果，而这些条件在 测试脚本 中没有涵盖。\n发现这个 缺陷 是重要的，因为它可能导致在生产环境中出现严重的财务差异。随机测试 方法使工程师能够发现结构化测试忽视的关键问题，展示了这种测试方法在发现不可预测的现实问题方面的价值。\n随机测试如何融入端到端（e2e）测试方案？ 随机测试，虽然主要是手动和探索性的，通过发现结构化测试可能忽略的问题，为端到端（E2E）测试提供了补充。在 E2E 场景中，随机测试可以被战略性地使用，在正式执行 测试用例 之后，模拟真实的使用情况。这是一种在没有预定义脚本的情况下验证整个系统行为和用户体验的方式。\n想象一下一个覆盖应用程序中典型用户流程的 E2E 测试。一旦自动化确认流程按预期工作，随机测试介入探索用例的边缘。测试人员可能尝试意外的输入组合，以非线性方式导航，或超出典型使用模式的系统压力测试。这可以揭示诸如内存泄漏、处理边缘情况或在不同设备上的 UI 不一致性等漏洞。\n虽然随机测试不是 E2E 场景的主要焦点，但它是一种全面评估的有价值工具。这就是像一个不受测试脚本限制的最终用户思考的方式。自动化工程师可以通过使用随机测试会话的见解，以更强大的测试用例增强自动化套件的方法受益。\n将即兴测试的发现纳入自动化的 E2E 测试中，确保自动化保持相关并适应现实世界的复杂性。这是一个持续改进的循环，随机测试为自动化提供信息，而自动化则为更多探索性测试释放时间。\n最佳实践 随机测试有哪些最佳实践？ 进行随机测试的最佳实践包括：\n优先考虑高风险或变更的区域：专注于应用程序中最近修改或已知容易出错的部分。 利用领域知识：利用您对业务和用户行为的理解，探索对最终用户至关重要的功能。 记录发现：虽然随机测试是非脚本化的，但重要的是记录测试内容和发现的任何问题，以供将来参考和跟踪缺陷。 使用多样化的测试技术：结合不同的方法，如探索性测试、错误猜测和结对测试，以发现各种问题。 限时会话：为随机测试设定特定的持续时间，以保持专注和高效率。 与他人合作：与团队中的不同成员合作，以获得新的视角并发现更多的缺陷。 重复测试：在开发的不同阶段进行随机测试，以捕捉在代码更改后可能出现的新问题。 与正式测试集成：利用随机测试的见解来增强您的正式测试用例和自动化脚本。 请记住，虽然随机测试是非正式的，但它仍应具有战略性和针对性，以最大化其在发现潜在缺陷方面的有效性。\n如何衡量随机测试的效果？ 衡量随机测试的效果可能会有挑战，因为它的非结构化性质。然而，可以使用一些指标来评估其影响：\n发现的缺陷数量：跟踪通过即兴测试特别发现的缺陷，尤其是其他测试方法未能发现的缺陷。 缺陷的严重程度：评估所发现缺陷的严重程度。高严重程度的缺陷可以表明即兴测试在发现关键问题方面的效果。 测试覆盖率：尽管在即兴测试中很难量化，但可以在测试后使用代码覆盖工具评估意外测试的应用程序哪些区域。 发现缺陷的时间：测量发现缺陷所需的时间。即兴测试可能比结构化测试更快地发现某些缺陷。 缺陷的成本：分析通过早期发现和修复缺陷带来的成本节省，这可以归因于即兴测试的非正式和快速性质。 测试人员的反馈：收集测试人员对于发现缺陷的难易程度以及他们对于即兴测试的全面性的看法的定性反馈。 将这些指标与您测试环境的背景结合使用，以确定随机测试的效果。请记住，虽然这些指标\n可以提供见解，但即兴测试的非脚本化性质意味着其真正的价值通常在于测试人员的专业知识和直觉，这可能更难以量化。\n如何将随机测试集成到持续集成/持续部署流水线？ 将随机测试集成到 CI/CD 流水线中需要有策略性但非正式的测试工作，以补充自动化和结构化测试。由于即兴测试是探索性的且通常是手动的，因此不能直接适用于自动化流水线。然而，可以通过以下方式进行集成：\n部署后的合理性检查：在自动化部署后，工程师可以在实际系统上进行即兴测试，以快速验证功能和特定于环境的问题。\n定期手动测试会话：在 CI/CD 流程中预留时间段，供测试人员对最新构建执行随机测试，确保对最新更改进行即时反馈。\n反馈集成：使用反馈机制将随机测试的发现结果报告回 CI/CD 流水线。这可能涉及创建自动化工单或更新测试用例。\n基于风险的测试触发器：实施一个系统，在代码更改或高风险区域的基础上，通知测试人员执行有针对性的随机测试。\n探索性测试工具：利用在 CI/CD 上下文中支持探索性测试的工具，允许基于会话的测试管理和报告。\n文档和追踪：确保即兴测试的发现结果像其他测试用例一样进行文档化和追踪，以指导未来的自动化测试并改进回归套件。\n请记住，虽然随机测试不能自动化，但其结果可以为自动化测试套件提供信息并加以增强，使其成为持续交付生态系统中的有价值的资产。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "228",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-02-26T12:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-02-26T12:06:44+08:00",
   "dateModified": "2024-02-26T12:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/"
+    "@id": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,138 +255,79 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       软件测试术语分享:Ad Hoc Testing 随机测试
     </h1>
-    <div class="post-meta"><span title='2024-02-26 12:06:44 +0800 CST'>二月 26, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;228 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-ad-hoc-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-02-26 12:06:44 +0800 CST'>2024年2月26日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>228 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-ad-hoc-testing.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#ad-hoc-testing-%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="Ad Hoc Testing 随机测试">Ad Hoc Testing 随机测试</a></li>
-                    <li>
-                        <a href="#%e5%85%b3%e4%ba%8e%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于随机测试的问题">关于随机测试的问题</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="什么是软件测试中的随机测试？">什么是软件测试中的随机测试？</a></li>
-                    <li>
-                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么随机测试在软件开发生命周期中很重要？">为什么随机测试在软件开发生命周期中很重要？</a></li>
-                    <li>
-                        <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e4%b8%8e%e5%85%b6%e4%bb%96%e6%b5%8b%e8%af%95%e5%bd%a2%e5%bc%8f%e7%9a%84%e4%b8%bb%e8%a6%81%e5%8c%ba%e5%88%ab%e6%98%af%e4%bb%80%e4%b9%88" aria-label="随机测试与其他测试形式的主要区别是什么？">随机测试与其他测试形式的主要区别是什么？</a></li>
-                    <li>
-                        <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e4%bc%98%e7%bc%ba%e7%82%b9" aria-label="随机测试有哪些优缺点？">随机测试有哪些优缺点？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%ae%9e%e6%96%bd%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="实施和技术">实施和技术</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="如何执行随机测试？">如何执行随机测试？</a></li>
-                    <li>
-                        <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b8%b8%e7%94%a8%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%8a%80%e6%9c%af" aria-label="有哪些常用的随机测试技术？">有哪些常用的随机测试技术？</a></li>
-                    <li>
-                        <a href="#%e6%9c%89%e6%95%88%e6%89%a7%e8%a1%8c%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e9%9c%80%e8%a6%81%e5%93%aa%e4%ba%9b%e6%8a%80%e8%83%bd" aria-label="有效执行随机测试需要哪些技能？">有效执行随机测试需要哪些技能？</a></li>
-                    <li>
-                        <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%8f%af%e4%bb%a5%e8%87%aa%e5%8a%a8%e5%8c%96%e8%bf%98%e6%98%af%e5%8f%aa%e8%83%bd%e4%b8%a5%e6%a0%bc%e6%89%8b%e5%8a%a8%e6%b5%8b%e8%af%95" aria-label="随机测试可以自动化还是只能严格手动测试？">随机测试可以自动化还是只能严格手动测试？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%9c%ba%e6%99%af%e5%92%8c%e7%94%a8%e4%be%8b" aria-label="场景和用例">场景和用例</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%ae%9e%e9%99%85%e5%9c%ba%e6%99%af%e7%9a%84%e7%a4%ba%e4%be%8b%e6%9d%a5%e4%bb%8b%e7%bb%8d%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="有哪些实际场景的示例来介绍如何使用随机测试？">有哪些实际场景的示例来介绍如何使用随机测试？</a></li>
-                    <li>
-                        <a href="#%e4%bd%a0%e8%83%bd%e6%8f%90%e4%be%9b%e4%b8%80%e4%b8%aa%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%8f%91%e7%8e%b0%e5%85%b3%e9%94%ae%e7%bc%ba%e9%99%b7%e7%9a%84%e5%9c%ba%e6%99%af%e5%90%97" aria-label="你能提供一个随机测试发现关键缺陷的场景吗？">你能提供一个随机测试发现关键缺陷的场景吗？</a></li>
-                    <li>
-                        <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e8%9e%8d%e5%85%a5%e7%ab%af%e5%88%b0%e7%ab%afe2e%e6%b5%8b%e8%af%95%e6%96%b9%e6%a1%88" aria-label="随机测试如何融入端到端（e2e）测试方案？">随机测试如何融入端到端（e2e）测试方案？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="最佳实践">最佳实践</a><ul>
-                            
-                    <li>
-                        <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="随机测试有哪些最佳实践？">随机测试有哪些最佳实践？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e7%9a%84%e6%95%88%e6%9e%9c" aria-label="如何衡量随机测试的效果？">如何衡量随机测试的效果？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e5%b0%86%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e9%9b%86%e6%88%90%e5%88%b0%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90%e6%8c%81%e7%bb%ad%e9%83%a8%e7%bd%b2%e6%b5%81%e6%b0%b4%e7%ba%bf" aria-label="如何将随机测试集成到持续集成/持续部署流水线？">如何将随机测试集成到持续集成/持续部署流水线？</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#ad-hoc-testing-%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="Ad Hoc Testing 随机测试">Ad Hoc Testing 随机测试</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于随机测试的问题">关于随机测试的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="什么是软件测试中的随机测试？">什么是软件测试中的随机测试？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么随机测试在软件开发生命周期中很重要？">为什么随机测试在软件开发生命周期中很重要？</a></li>
+                <li>
+                    <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e4%b8%8e%e5%85%b6%e4%bb%96%e6%b5%8b%e8%af%95%e5%bd%a2%e5%bc%8f%e7%9a%84%e4%b8%bb%e8%a6%81%e5%8c%ba%e5%88%ab%e6%98%af%e4%bb%80%e4%b9%88" aria-label="随机测试与其他测试形式的主要区别是什么？">随机测试与其他测试形式的主要区别是什么？</a></li>
+                <li>
+                    <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e4%bc%98%e7%bc%ba%e7%82%b9" aria-label="随机测试有哪些优缺点？">随机测试有哪些优缺点？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%ae%9e%e6%96%bd%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="实施和技术">实施和技术</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="如何执行随机测试？">如何执行随机测试？</a></li>
+                <li>
+                    <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b8%b8%e7%94%a8%e7%9a%84%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%8a%80%e6%9c%af" aria-label="有哪些常用的随机测试技术？">有哪些常用的随机测试技术？</a></li>
+                <li>
+                    <a href="#%e6%9c%89%e6%95%88%e6%89%a7%e8%a1%8c%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e9%9c%80%e8%a6%81%e5%93%aa%e4%ba%9b%e6%8a%80%e8%83%bd" aria-label="有效执行随机测试需要哪些技能？">有效执行随机测试需要哪些技能？</a></li>
+                <li>
+                    <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%8f%af%e4%bb%a5%e8%87%aa%e5%8a%a8%e5%8c%96%e8%bf%98%e6%98%af%e5%8f%aa%e8%83%bd%e4%b8%a5%e6%a0%bc%e6%89%8b%e5%8a%a8%e6%b5%8b%e8%af%95" aria-label="随机测试可以自动化还是只能严格手动测试？">随机测试可以自动化还是只能严格手动测试？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%9c%ba%e6%99%af%e5%92%8c%e7%94%a8%e4%be%8b" aria-label="场景和用例">场景和用例</a><ul>
+                        
+                <li>
+                    <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%ae%9e%e9%99%85%e5%9c%ba%e6%99%af%e7%9a%84%e7%a4%ba%e4%be%8b%e6%9d%a5%e4%bb%8b%e7%bb%8d%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95" aria-label="有哪些实际场景的示例来介绍如何使用随机测试？">有哪些实际场景的示例来介绍如何使用随机测试？</a></li>
+                <li>
+                    <a href="#%e4%bd%a0%e8%83%bd%e6%8f%90%e4%be%9b%e4%b8%80%e4%b8%aa%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%8f%91%e7%8e%b0%e5%85%b3%e9%94%ae%e7%bc%ba%e9%99%b7%e7%9a%84%e5%9c%ba%e6%99%af%e5%90%97" aria-label="你能提供一个随机测试发现关键缺陷的场景吗？">你能提供一个随机测试发现关键缺陷的场景吗？</a></li>
+                <li>
+                    <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e8%9e%8d%e5%85%a5%e7%ab%af%e5%88%b0%e7%ab%afe2e%e6%b5%8b%e8%af%95%e6%96%b9%e6%a1%88" aria-label="随机测试如何融入端到端（e2e）测试方案？">随机测试如何融入端到端（e2e）测试方案？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="最佳实践">最佳实践</a><ul>
+                        
+                <li>
+                    <a href="#%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e6%9c%89%e5%93%aa%e4%ba%9b%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="随机测试有哪些最佳实践？">随机测试有哪些最佳实践？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e7%9a%84%e6%95%88%e6%9e%9c" aria-label="如何衡量随机测试的效果？">如何衡量随机测试的效果？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%b0%86%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%e9%9b%86%e6%88%90%e5%88%b0%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90%e6%8c%81%e7%bb%ad%e9%83%a8%e7%bd%b2%e6%b5%81%e6%b0%b4%e7%ba%bf" aria-label="如何将随机测试集成到持续集成/持续部署流水线？">如何将随机测试集成到持续集成/持续部署流水线？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="ad-hoc-testing-随机测试">Ad Hoc Testing 随机测试<a hidden class="anchor" aria-hidden="true" href="#ad-hoc-testing-随机测试">#</a></h2>
 <blockquote>
@@ -573,12 +521,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-agile-development/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-agile-development/">
     <span class="title">« 上一页</span>
     <br>
     <span>软件测试术语分享:Agile Development 敏捷开发</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
     <span class="title">下一页 »</span>
     <br>
     <span>软件测试术语分享:Actual Result 实际结果</span>
@@ -589,7 +537,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on x"
-            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -598,7 +546,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -607,7 +555,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -616,7 +564,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -625,7 +573,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -634,7 +582,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on telegram"
-            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -643,7 +591,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Ad Hoc Testing 随机测试 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAd%20Hoc%20Testing%20%e9%9a%8f%e6%9c%ba%e6%b5%8b%e8%af%95&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-ad-hoc-testing%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -654,26 +602,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -688,9 +621,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -731,11 +669,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

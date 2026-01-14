@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security Testing on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/tags/security-testing/</link>
+    <link>https://naodeng.com.cn/tags/security-testing/</link>
     <description>Recent content in Security Testing on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Mar 2024 20:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/security-testing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/security-testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases</title>
-      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</link>
       <pubDate>Thu, 28 Mar 2024 20:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</guid>
       <description>This blog post is about the twenty-fifth day of the 30-Day AI Testing Challenge, exploring AI-driven security testing and sharing potential use cases. The article may introduce the application of artificial intelligence in the field of security testing, such as vulnerability scanning, malware detection, behavior analysis, etc., and discuss potential use cases in different scenarios. The author may share their understanding and insights into AI-driven security testing techniques, as well as thoughts on its potential value in improving security and reducing risks. By sharing potential use cases, readers will gain insights into the practical application scenarios and potential effects of AI in security testing, as well as prospects for the future development of security testing. This series aims to provide a platform for testing professionals to understand and explore the application of AI in security testing, and to promote wider application and deeper research of AI in testing within the industry.</description>
     </item>
   </channel>

@@ -2,92 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Series on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/series/</link>
+    <link>https://naodeng.com.cn/series/</link>
     <description>Recent content in Series on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge</title>
-      <link>http://localhost:1313/series/30-days-of-ai-in-testing-challenge/</link>
+      <link>https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/</link>
       <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/series/30-days-of-ai-in-testing-challenge/</guid>
+      <guid>https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/</guid>
       <description></description>
     </item>
     <item>
       <title>Postman API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/postman-api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/</link>
       <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
-      <guid>http://localhost:1313/series/postman-api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Bruno API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/bruno-api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/</link>
       <pubDate>Tue, 23 Jan 2024 17:58:14 +0800</pubDate>
-      <guid>http://localhost:1313/series/bruno-api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>K6 Performance Testing Tutorial</title>
-      <link>http://localhost:1313/series/k6-performance-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/k6-performance-testing-tutorial/</link>
       <pubDate>Thu, 11 Jan 2024 17:10:00 +0800</pubDate>
-      <guid>http://localhost:1313/series/k6-performance-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/k6-performance-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Others</title>
-      <link>http://localhost:1313/series/others/</link>
+      <link>https://naodeng.com.cn/series/others/</link>
       <pubDate>Wed, 06 Dec 2023 14:22:50 +0800</pubDate>
-      <guid>http://localhost:1313/series/others/</guid>
+      <guid>https://naodeng.com.cn/series/others/</guid>
       <description></description>
     </item>
     <item>
       <title>API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/api-automation-testing-tutorial/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>http://localhost:1313/series/api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Pytest API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/pytest-api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/</link>
       <pubDate>Mon, 20 Nov 2023 15:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/series/pytest-api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>SuperTest API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/supertest-api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/</link>
       <pubDate>Fri, 10 Nov 2023 12:37:59 +0800</pubDate>
-      <guid>http://localhost:1313/series/supertest-api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>REST Assured API Automation Testing Tutorial</title>
-      <link>http://localhost:1313/series/rest-assured-api-automation-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/</link>
       <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
-      <guid>http://localhost:1313/series/rest-assured-api-automation-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Gatling Performance Testing Tutorial</title>
-      <link>http://localhost:1313/series/gatling-performance-testing-tutorial/</link>
+      <link>https://naodeng.com.cn/series/gatling-performance-testing-tutorial/</link>
       <pubDate>Mon, 30 Oct 2023 10:36:24 +0800</pubDate>
-      <guid>http://localhost:1313/series/gatling-performance-testing-tutorial/</guid>
+      <guid>https://naodeng.com.cn/series/gatling-performance-testing-tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Bruno Guide</title>
-      <link>http://localhost:1313/series/bruno-guide/</link>
+      <link>https://naodeng.com.cn/series/bruno-guide/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>http://localhost:1313/series/bruno-guide/</guid>
+      <guid>https://naodeng.com.cn/series/bruno-guide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>测试理论指南</title>
+      <link>https://naodeng.com.cn/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://naodeng.com.cn/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
   </channel>

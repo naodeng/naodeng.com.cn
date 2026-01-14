@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文是软件测试术语分享系列的一部分，重点介绍 Availability Testing（可用性测试）。将探讨其基础概念、在软件测试中的重要性、常见流程与技巧、应用的工具与技术，以及可能面临的挑战与解决方案。读者将了解到可用性测试在保障软件系统可靠性和用户体验方面的关键作用，以及如何有效进行相关测试以确保软件产品的可靠可用。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试术语分享:Availability Testing 可用性测试" />
-<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，重点介绍 Availability Testing（可用性测试）。将探讨其基础概念、在软件测试中的重要性、常见流程与技巧、应用的工具与技术，以及可能面临的挑战与解决方案。读者将了解到可用性测试在保障软件系统可靠性和用户体验方面的关键作用，以及如何有效进行相关测试以确保软件产品的可靠可用。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-02T12:50:44+08:00" />
-<meta property="article:modified_time" content="2024-04-02T12:50:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试术语分享:Availability Testing 可用性测试"/>
-<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，重点介绍 Availability Testing（可用性测试）。将探讨其基础概念、在软件测试中的重要性、常见流程与技巧、应用的工具与技术，以及可能面临的挑战与解决方案。读者将了解到可用性测试在保障软件系统可靠性和用户体验方面的关键作用，以及如何有效进行相关测试以确保软件产品的可靠可用。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试术语分享:Availability Testing 可用性测试">
+  <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，重点介绍 Availability Testing（可用性测试）。将探讨其基础概念、在软件测试中的重要性、常见流程与技巧、应用的工具与技术，以及可能面临的挑战与解决方案。读者将了解到可用性测试在保障软件系统可靠性和用户体验方面的关键作用，以及如何有效进行相关测试以确保软件产品的可靠可用。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-02T12:50:44+08:00">
+    <meta property="article:modified_time" content="2024-04-02T12:50:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试术语分享:Availability Testing 可用性测试">
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，重点介绍 Availability Testing（可用性测试）。将探讨其基础概念、在软件测试中的重要性、常见流程与技巧、应用的工具与技术，以及可能面临的挑战与解决方案。读者将了解到可用性测试在保障软件系统可靠性和用户体验方面的关键作用，以及如何有效进行相关测试以确保软件产品的可靠可用。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "软件测试术语分享:Availability Testing 可用性测试",
-      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"
+      "item": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "Availability Testing 可用性测试 在软件测试的背景下，可用性测试是指评估系统的正常运行时间，以确保应用程序或系统按预期对用户保持可访问和可操作。\n这种测试的主要目标是确保软件符合其定义的可用性标准，提供可靠的服务而没有长时间的中断。这种测试通常考虑到系统故障、维护、高峰用户负载和网络中断等情景，并旨在确定系统的整体可靠性以及是否准备好投入生产。\n可用性测试对于需要保持持续可访问性的应用程序至关重要，例如电子商务平台、银行系统和关键基础设施服务。\n关于可用性测试的问题 基础知识和重要性 什么是可用性测试？ 可用性测试确保软件应用程序在需要时是可访问和可操作的。它通常涉及监控系统以验证正常运行时间和响应性，从不同位置模拟用户访问，并测量系统从故障中恢复的能力。\n确定系统可用性的指标，如平均故障间隔时间（MTBF）和平均恢复时间（MTTR），通常被用来量化系统的可靠性和恢复能力。\n可用性测试的常用工具包括监控解决方案，如 Nagios、Zabbix，或基于云的服务如 AWS CloudWatch。这些工具可以配置为执行定期的健康检查并在中断时发送警报。\n自动化可用性测试可以通过将这些监控工具与持续集成/持续部署（CI/CD）流程集成，使用脚本模拟用户流量，并使用基础设施即代码（IaC）按需启动测试环境来实现。\n可用性测试的挑战可能包括网络变异性、模拟真实流量的扩展性和处理外部依赖性。这些可以通过使用流量生成器、容器化一致的测试环境和服务虚拟化来模拟外部服务来缓解。\n最佳实践包括：\n定期更新测试场景以反映实际使用情况。 将可用性测试纳入 CI/CD 流程，以便早期发现问题。 利用云服务进行可扩展性和全球覆盖。 实施冗余和故障转移策略，以优雅地处理故障。 在发生故障时，应立即采取自动化响应措施，如重新启动服务或重新路由流量，并设置警报机制通知相关人员。持续监控和自动化恢复流程有助于维持系统可用性。\n为什么可用性测试在软件开发中很重要？ 可用性测试在软件开发中至关重要，因为它确保系统在最终用户需要时是可访问和可用的。它直接影响软件的可靠性和可信度，影响客户满意度和保留。在当今竞争激烈的市场中，停机时间可能导致重大的财务损失和品牌声誉的损害。\n通过模拟各种场景，可用性测试有助于识别可能导致计划外中断的潜在故障点。它允许团队主动解决这些问题，从而最小化停机时间，并确保系统能够处理意外的流量峰值或故障而不会显著中断。\n此外，它通过验证系统满足商定的服务水平协议（SLAs）和运营水平协议（OLAs）来支持业务连续性。这对于需要高可用性的服务尤其重要，例如电子商务平台、银行系统和医疗应用。\n将可用性测试纳入持续集成/持续部署（CI/CD）流程确保在整个开发生命周期中考虑可用性，而不是事后考虑。这种方法导致更健壮和有弹性的系统，即使在不利条件下也能保持运营。\n最终，优先考虑可用性测试是关于保护用户体验和业务完整性。它是一种积极的措施，以防范与系统停机时间相关的风险，并确保服务始终可用以满足用户需求。\n可用性测试的关键组成部分是什么？ 可用性测试的关键组成部分包括：\n监控系统：连续检查系统状态的工具，在停机时发送警报。 故障转移机制：当主系统失败时自动切换到备份系统的自动化流程。 负载均衡器：确保没有单一服务器因过载而不堪重负的设备或软件，通过在多个服务器之间分配网络或应用程序流量。 冗余：复制系统的关键组件或功能以增加可靠性。 恢复程序：在故障后恢复系统到其操作状态的记录步骤。 服务水平协议（SLAs）：定义预期服务可用性水平的正式协议。 性能基准：用于衡量系统性能和可用性的预先建立的标准或参考点。 备份系统：与主系统保持同步的次级系统或数据库，在故障时接管。 灾难恢复计划：在灾难性故障事件中快速恢复 IT 系统的策略。 高可用性（HA）架构：确保系统设计满足高于正常水平的操作性能，通常为正常运行时间的约定水平。 这些组件协同工作，确保系统保持可访问性和功能性，最小化停机时间并维持无缝的用户体验。有效实施和维护这些组件可以显著提高系统的可用性和可靠性。\n可用性测试如何改善整体用户体验？ 可用性测试通过确保应用程序或系统在需要时是可访问和可操作的，增强了整体用户体验。通过模拟各种场景，包括高峰流量和服务器故障，它有助于识别可能导致用户沮丧的潜在停机时间。一致的可用性对于维持用户信任和满意度至关重要，频繁的中断可能导致信心丧失，并可能将用户推向竞争对手。\n通过严格的测试，团队可以识别并解决可能影响可用性的漏洞，从而提供更可靠的服务。这种可靠性对于要求高正常运行时间的应用程序尤为关键，例如电子商务平台、银行应用程序和医疗系统。\n此外，可用性测试通过确保故障转移机制和冗余计划的有效性，有助于实现无缝的用户体验，最小化任何单一故障点的影响。用户期望应用程序全天候可用，任何中断都可能对他们的体验产生不利影响。\n总之，通过主动验证系统能够处理真实世界的用例并从故障中恢复，可用性测试在提供高质量的用户体验方面发挥着关键作用，满足用户对持续访问和可靠性能的期望。\n可用性测试和其他类型的测试有什么区别？ 可用性测试与其他类型的测试的不同之处在于，它专门关注确保系统或应用程序在需要时是可访问和可操作的。其他测试类型，如单元测试、集成测试或性能测试，集中在验证代码的正确性、系统组件之间的交互或系统在负载下的响应性和稳定性。\n虽然功能测试检查功能是否按照规范工作，可用性测试关注的是系统的正常运行时间和从故障中恢复的能力。安全测试旨在揭示漏洞，但可用性测试确保安全措施不会妨碍系统的可访问性。\n可用性测试评估用户在需要时是否可以访问应用程序，而兼容性测试检查应用程序在不同环境和平台上的性能，但它不涉及系统的准备就绪性。\n与回归测试不同，后者在软件更改后寻找新缺陷，可用性测试持续监控系统的运行状态。负载测试和压力测试可能模拟高用户流量以评估性能，但它们通常不衡量或保证连续的服务可用性。\n可用性测试在其专注于系统保持功能和可达性的能力方面是独特的，这对于维持用户信任和满意度至关重要。这是一个持续的过程，需要定期监控和维护，以确保系统满足其可用性目标。\n流程和技术 可用性测试涉及哪些步骤？ 要有效地进行可用性测试，请遵循以下步骤：\n定义目标：确定可接受的可用性水平，包括正常运行时间和恢复时间目标。 计划：创建详细的测试计划，概述要测试的场景，包括计划的中断、意外故障和高峰负载时间。 环境设置：配置尽可能接近生产设置的测试环境。 仪器化：实施监控工具和日志记录，以跟踪可用性指标。 执行测试：运行计划的场景，包括模拟中断和测量系统的响应和恢复程序。 监控结果：在测试期间持续监控系统行为和性能，以捕获可用性数据。 分析结果：根据目标评估收集的数据，以识别改进领域。 报告：记录发现，包括与预期可用性水平的任何偏差。 完善：根据分析，对系统配置、代码或基础设施进行必要的调整。 重新测试：调整后，重新测试以验证更改是否提高了可用性。 自动化：实施自动化测试和监控，以持续跟踪可用性。 审查：定期审查可用性指标，以确保它们满足业务和用户的不断变化的需求。 通过遵循这些步骤，您确保了可用性测试的结构化方法，从而满足现代应用程序对高可用性的需求。\n可用性测试中常用的技术是什么？ 可用性测试中的常见技术包括：\n故障转移测试：模拟主系统故障，以确保辅助系统无缝接管。 恢复测试：确保系统能够在指定的时间范围内从崩溃、硬件故障或其他问题中恢复。 负载测试：评估系统在不影响可用性的情况下处理高用户负载的能力。 压力测试：将系统推向正常操作能力之外，以查看它如何处理极端条件。 长时间运行测试：在重负载下长时间运行系统，以识别可用性潜在的退化。 监控和警报：实施实时监控工具以跟踪可用性，并为停机事件配置警报。 冗余测试：验证冗余组件（如服务器或数据库）提供必要的备份以维持可用性。 网络测试：检查网络组件和基础设施，以确保它们支持系统可用性，特别是在不同的负载和条件下。 灾难恢复测试：测试灾难恢复计划的有效性，并确保系统在灾难性事件后能够恢复到操作状态。 这些技术通常使用诸如 Chaos Monkey 之类的工具来模拟故障，使用 JMeter 或 LoadRunner 进行负载和压力测试，以及使用 Nagios 或 Datadog 进行监控和警报集成到自动化测试套件中。自动化脚本可以安排或由特定事件触发，以模拟各种场景，确保持续评估系统可用性。\n如何确定系统或应用程序的可用性？ 要确定系统或应用程序的可用性，请持续监控其正常运行时间和响应时间。实施定期运行的健康检查，以验证系统组件是否正常运行。使用 Nagios、Zabbix 或基于云的解决方案（如 AWS CloudWatch 或 Azure Monitor）跟踪系统状态，并在中断时发出警报。\n整合模拟用户交互的端到端测试，以确保应用程序具有响应性。这些测试可以安排或由部署活动触发。利用 API 监控定期调用后端服务并验证响应。\n日志记录至关重要；分析日志以查找可能表明间歇性可用性问题的错误模式。设置可接受性能的阈值，并使用警报系统在这些阈值被违反时发出通知。\n对于分布式系统，使用 Jaeger 或 Zipkin 等分布式跟踪工具跟踪跨服务边界的请求，并识别瓶颈或故障。\n自动化收集诸如服务器负载、数据库连接和网络延迟等指标。使用这些指标创建正常操作的基线，使偏差更容易发现。\n最后，将冗余和故障转移机制整合到您的监控策略中，以确保即使部分监控基础设施出现故障，您仍然可以评估可用性。\n通过结合这些策略，您可以有效地确定您的系统或应用程序的可用性。\n常用于可用性测试的工具是什么？ 常用于可用性测试的工具包括：\nPingdom：监控网站和服务器的正常运行时间和性能，提供实时警报和报告。 Uptime Robot：提供网站监控，就正常运行时间、停机时间和响应时间发出警报和详细报告。 New Relic：全栈监控工具，包括可用性检查作为其功能套件的一部分。 Datadog：提供云规模监控，包括系统、应用程序和服务的可用性和性能指标。 Nagios：一个开源监控系统，可以跟踪系统、网络和基础设施的可用性。 Zabbix：另一个能够对各种网络服务、服务器和其他网络硬件进行可用性和性能检查的开源监控工具。 LoadRunner：虽然主要是性能测试工具，但可用于模拟用户流量并衡量系统在负载下的可用性。 Apache JMeter：专为负载测试设计的开源工具，但也可用于通过持续监控执行可用性测试。 Site24x7：提供网站监控，用于可用性、性能和用户体验洞察。 这些工具可以集成到 CI/CD 流程中，以自动化可用性测试过程。它们通常提供 API 和钩子，允许自定义脚本或自动化任务触发测试和收集结果。通过利用这些工具，测试自动化工程师可以确保系统持续可用，并满足定义的 SLAs。\n如何自动化可用性测试？ 自动化可用性测试涉及创建脚本或使用工具来模拟用户请求并监控系统响应，以确保应用程序在一段时间内可访问和功能。要自动化这个过程，请考虑以下步骤：\n选择合适的工具：选择可以定期向系统发送请求并记录系统可用性的自动化工具。像 Pingdom、Uptime Robot 或使用curl或wget的自定义脚本可能很有用。 定义监控间隔：确定应多久检查系统一次。这可能从几分钟一次到每小时多次，取决于应用程序的关键性。 设置警报：配置警报，当系统不可用时通知团队。警报可以通过电子邮件、短信或与 PagerDuty 等事件管理系统的集成设置。 实施健康检查：开发返回应用程序及其关键组件状态的端点。自动化测试可以访问这些端点以验证系统健康状况。 记录和分析：确保工具记录所有检查。使用这些日志随时间分析系统的可用性，并识别模式或重复出现的问题。 与 CI/CD 集成：将可用性检查纳入持续集成和部署流程，以确保新版本不会降低可用性。 模拟真实世界场景：使用流量生成器和负载测试工具模拟真实的使用模式和容量。 自动化恢复：在可能的情况下，实施可以在可用性检查失败时触发的自动化恢复过程。 使用curl的简单健康检查示例脚本片段：\n通过自动化这些步骤，您可以在最小的手动干预下持续监控和维护系统的可用性。\n挑战和解决方案 可用性测试中的常见挑战是什么？ 可用性测试中的常见挑战包括：\n复杂的系统依赖关系：确保所有组件和外部系统在测试期间可用可能很困难，尤其是在微服务架构中。 数据同步：在不损害敏感信息的情况下，保持测试环境与生产数据同步可能是一个挑战。 网络问题：不稳定的网络连接和带宽限制可能会影响可用性测试的准确性。 资源限制：对服务器和数据库等资源的有限访问可能会阻碍模拟真实世界场景的能力。 可扩展性：在高负载下测试可用性需要扩展基础设施，这可能成本高昂且复杂。 配置管理：跟踪不同配置及其在各种环境中对可用性的影响是困难的。 监控和警报：实施有效的监控以实时检测和警报可用性问题并非易事。 事件响应：开发对测试期间发现的可用性问题的快速有效响应可能是具有挑战性的。 维护窗口：在计划的停机时间周围协调测试，而不会影响用户，需要仔细规划。 自动化恢复：测试系统从故障中自动恢复的能力是复杂的，但对于高可用性至关重要。 克服这些挑战通常涉及：\n强大的测试环境：尽可能接近生产环境。 有效的监控工具：实施全面的监控解决方案。 可扩展的基础设施：使用云服务或容器化进行灵活的资源管理。 配置即代码：管理和版本化配置以实现可复制性。 持续测试：将可用性测试集成到 CI/CD 流程中，进行持续评估。 事件管理计划：建立清晰的处理故障的程序。 如何克服这些挑战？ 克服可用性测试中的挑战需要采取战略性的方法，并使用先进的工具和方法论：\n自动化重复任务：利用自动化框架处理常规检查，为更复杂的测试场景腾出时间。 实施强大的监控：使用实时监控工具持续跟踪系统性能和可用性。像 Nagios、Zabbix 或基于云的解决方案这样的工具可能是至关重要的。 利用云服务：利用云提供商的可扩展性和冗余功能来模拟和测试各种负载场景和地理分布。 使用容器化：像 Docker 这样的容器可以帮助创建易于复制的隔离环境，确保不同测试阶段的一致性。 整合混沌工程：引入受控的中断，测试系统在不利条件下的弹性和恢复程序，确保可用性。 优先考虑关键路径：专注于直接影响用户体验的最关键功能，确保它们经过彻底的测试和监控。 使用负载均衡：测试负载均衡解决方案以确保它们在高峰负载或服务器故障期间能够有效地处理流量分配。 定期进行灾难恢复演练：定期模拟故障，测试和改进灾难恢复计划和备份系统。 优化测试数据管理：确保测试数据是代表性的、最新的，并有效管理，以避免测试过程中的瓶颈。 培养可靠性文化：鼓励每个团队成员负责维持系统可用性的心态，促进主动的测试和监控实践。 通过整合这些策略，测试自动化工程师可以提高可用性测试的有效性，并确保系统对用户可靠和可访问。\n进行可用性测试的最佳实践是什么？ 进行可用性测试的最佳实践包括：\n明确定义目标，包括可接受的正常运行时间和维护窗口。 模拟真实世界场景，测试系统在各种条件下的行为，包括高峰负载时间和网络中断。 持续监控系统性能，识别可能表明潜在可用性问题的趋势。 为关键组件实施冗余，以确保故障转移能力和最小化停机时间。 使用自动化监控工具，实时检测和警报可用性问题。 定期进行灾难恢复演练，确保备份系统和程序是有效和最新的。 分析测试后的日志和指标，识别任何故障的根本原因，并改进未来的测试。 与开发团队合作，确保可用性考虑因素被整合到软件设计和部署过程中。 记录测试结果，并创建报告，提供系统可用性和改进领域的见解。 定期审查和更新测试计划，以反映系统架构、使用模式和业务需求的变化。 通过遵循这些实践，测试自动化工程师可以帮助确保系统在用户需要时可靠和可用，为积极用户体验和维持业务连续性做出贡献。\n在可用性测试期间如何处理故障？ 在可用性测试期间处理故障涉及一种系统化的方法来识别、分析和纠正导致系统不可用的问题。以下是简洁的指南：\n立即隔离故障，以防止对系统产生级联效应。 详细记录所有事件，带有时间戳和错误详细信息，以帮助根本原因分析。 使用自动化监控工具实时检测故障。 实施冗余和故障转移机制，在服务中断的情况下切换到备份系统。 分析日志和指标，以确定故障的起源，无论是硬件、软件、网络还是依赖项问题。 根据根本原因分析开发修复方案或权宜之计。 在部署到生产环境之前，在预发布环境中测试修复方案。 更新自动化测试，包括导致故障的场景。 进行事后分析，了解故障的影响并改进未来的响应。 与利益相关者沟通，关于故障和采取的解决步骤。 审查和完善可用性测试策略和测试用例，定期涵盖新的故障模式。 记住，目标是最小化停机时间，并尽可能快地恢复服务，同时从每个事件中学习，以增强系统弹性。\n如何确保系统或应用程序的持续可用性？ 要确保系统或应用程序的持续可用性，请专注于以下策略：\n实施各个级别的冗余，如服务器、网络和数据中心，以处理故障而不会中断服务。 使用负载均衡器在服务器之间均匀分配流量，防止任何单一资源过载。 应用故障转移机制，在发生故障时自动切换到备用系统或组件。 在非高峰时段进行定期维护和更新，以最小化对可用性的影响。 采用监控工具实时跟踪系统健康和性能，快速响应问题。 整合灾难恢复计划，概述数据备份和系统恢复的程序。 采用微服务架构，隔离故障并促进更容易的更新和扩展。 利用云服务的内置高可用性和可扩展性特性。 实践混沌工程，通过有意引入故障主动识别弱点。 将自动化测试纳入 CI/CD 流程，及早发现潜在的可用性问题。 通过专注于这些策略，您可以构建一个健壮的系统，保持高可用性并满足用户对不间断服务的期望。\n真实世界的应用 能提供可用性测试的真实世界应用示例吗？ 可用性测试的真实世界应用涵盖了各个行业和场景，确保系统在用户需要时是可访问和功能性的。以下是一些例子：\n电子商务平台在黑色星期五或网络星期一等高峰购物季节进行可用性测试。他们模拟高流量，以确保网站保持可用，并且交易可以在没有停机的情况下处理。 银行应用程序使用可用性测试，以保证客户可以随时访问他们的在线账户并进行交易，这对于维持信任和客户满意度至关重要。 医疗系统，如电子健康记录（EHR），必须保持可用，以便医疗专业人员在紧急情况下快速访问患者数据。可用性测试有助于识别可能阻碍访问的潜在故障点。 流媒体服务，如 Netflix 或 Spotify，执行可用性测试，以确保客户可以无中断地流媒体内容，这对于保留订阅者和减少流失至关重要。 云服务提供商，如 AWS 或 Azure，进行严格的可用性测试，以维护他们的 SLAs 并确保托管的应用程序可用，考虑到云计算的分布式特性。 电信网络测试其服务的可用性，以确保用户可以进行通话、发送消息或使用数据服务而不中断，这对于个人和商业通信至关重要。 交通系统，如航空公司预订系统，需要进行可用性测试，以防止中断，客户需要预订航班、查看时间表和管理他们的旅行计划。 可用性测试在云计算中的应用是什么？ 在云计算中，可用性测试专门用于评估分布式环境中服务的弹性和可靠性。它涉及模拟故障并衡量系统的恢复能力。测试云特定场景，如区域中断或自动缩放事件，以确保系统能够维持其服务水平协议（SLAs）。\n自动化在这个背景下发挥着关键作用。可以安排或由特定事件（如新部署）触发的自动化测试。像 Terraform 或 AWS CloudFormation 这样的工具可以创建和销毁资源以测试对可用性的影响。像 Datadog 或 New Relic 这样的监控工具被集成起来，提供系统可用性的实时反馈。\n混沌工程实践，如 Chaos Monkey 工具实现的那样，也被应用于主动引入故障并观察系统的响应。这有助于在它们影响用户之前识别弱点。\n为了确保持续可用性，使用像 canary releases 和 blue/green deployments 这样的策略，在不影响所有用户的情况下在生产中测试新版本。回滚策略是自动化的，以在发生故障时恢复到先前状态。\n总之，云计算中的可用性测试是关于自动化创建故障场景、监控系统响应，并确保恢复过程有效和高效，同时最小化对最终用户的影响。\n可用性测试在 DevOps 中扮演什么角色？ 在 DevOps 中，可用性测试是确保持续集成和部署管道（CI/CD）交付的软件不仅功能齐全，而且始终对最终用户可访问的不可或缺的一部分。它与 DevOps 的自动化、持续改进和高可用性原则相一致。\n通过将可用性测试集成到 DevOps 工作流程中，团队可以：\n早期检测可用性问题：在 CI/CD 管道中定期运行可用性测试有助于在它们影响用户之前识别潜在的停机原因。 自动化对可用性问题的响应：将测试集成到监控工具中允许自动化响应，如回滚部署或扩展资源。 支持蓝绿部署：可用性测试可以在流量切换之前验证新环境是否准备就绪，从而减少停机时间。 促进值班决策：实时可用性数据有助于值班工程师快速排除故障和解决问题。 要在 DevOps 中实施可用性测试：\n将测试集成到 CI/CD 管道中：在部署到预生产和生产环境后运行可用性测试。 利用基础设施即代码（IaC）：使用 IaC 创建可复制的测试环境。 利用监控和警报工具：根据可用性指标设置警报，以便主动捕捉问题。 采用混沌工程：引入受控故障以测试系统弹性并提高可用性。 通过将可用性作为 DevOps 流程的一部分，团队可以确保他们的应用程序满足预期的服务水平协议（SLAs），并提供可靠的用户体验。\n在大规模系统中如何进行可用性测试？ 在大规模系统中进行可用性测试涉及模拟真实世界的使用情况和潜在故障场景，以确保系统按预期保持运营。负载测试和压力测试对于评估系统在高流量或数据处理需求下的表现至关重要。使用像 Apache JMeter 或 LoadRunner 这样的工具来模拟这些条件。\n故障转移测试对于验证系统能够处理服务丢失并通过切换到备份系统而不显著停机至关重要。实施自动化脚本以触发故障转移过程并监控系统的响应。\n恢复测试确保系统能够在预定义的时间范围内从崩溃或故障中恢复。自动化恢复程序并测量恢复时间以验证遵守恢复时间目标（RTOs）。\n使用 Nagios 或 Prometheus 等工具持续监控系统性能。为任何可用性问题设置警报，并将其与 PagerDuty 等事件管理系统集成，以实现快速响应。\n整合混沌工程实践，使用 Chaos Monkey 等工具引入随机系统故障并观察系统如何应对，确保它能够承受意外的中断。\n自动化部署管道以包括部署后的可用性检查，确保新版本不会降低系统可用性。使用像 Terraform 或 Ansible 这样的基础设施即代码（IaC）工具来管理和复制一致的测试环境。\n最后，分析日志和指标以识别可能导致可用性问题的模式。使用这些数据来完善测试策略并提高系统健壮性。实施 AIOps 平台进行高级分析和主动问题解决。\n可用性测试如何帮助提高系统弹性？ 可用性测试可以通过识别和缓解潜在故障点来增强系统弹性。通过模拟各种中断场景，如服务器崩溃、网络断开或高流量负载，它有助于确保系统能够在不利条件下快速恢复并继续有效运行。\n通过实施冗余和故障转移机制来提高弹性。可用性测试验证这些机制是否有效，以及系统是否可以在备份或待机模式下切换而不会显著停机。这种测试还验证了监控工具和警报的有效性，确保任何问题都能及时检测和解决。\n此外，它鼓励制定健全的灾难恢复计划。通过定期测试这些计划，团队可以完善他们的响应策略，减少在意外停机后恢复服务所需的时间。\n将可用性测试纳入持续集成/持续部署（CI/CD）流程中，确保持续评估弹性。可以在每次部署后运行自动化测试，以验证新更改不会对系统可用性产生不利影响。\n总之，可用性测试通过以下方式直接有助于提高系统弹性：\n确保冗余和故障转移过程的有效性。 验证监控和警报系统。 完善灾难恢复计划。 与 CI/CD 集成进行持续的弹性评估。 通过专注于这些领域，系统变得更加健壮，能够在中断面前维持运营，从而提高整体可靠性。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 推荐阅读 使用 Bruno 进行接口自动化测试快速开启教程系列 使用 Postman 进行接口自动化测试快速开启教程系列 使用 Pytest 进行接口自动化测试快速开启教程系列 使用 SuperTest 进行接口自动化测试快速开启教程系列 使用 Rest Assured 进行接口自动化测试快速开启教程系列 使用 Galting 进行性能测试快速开启教程系列 使用 K6 进行性能测试快速开启教程系列 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "387",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-04-02T12:50:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-04-02T12:50:44+08:00",
   "dateModified": "2024-04-02T12:50:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"
+    "@id": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,152 +255,93 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       软件测试术语分享:Availability Testing 可用性测试
     </h1>
-    <div class="post-meta"><span title='2024-04-02 12:50:44 +0800 CST'>四月 2, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;387 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-availability-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-04-02 12:50:44 +0800 CST'>2024年4月2日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>387 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-availability-testing.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#availability-testing-%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="Availability Testing 可用性测试">Availability Testing 可用性测试</a></li>
-                    <li>
-                        <a href="#%e5%85%b3%e4%ba%8e%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于可用性测试的问题">关于可用性测试的问题</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="什么是可用性测试？">什么是可用性测试？</a></li>
-                    <li>
-                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么可用性测试在软件开发中很重要？">为什么可用性测试在软件开发中很重要？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试的关键组成部分是什么？">可用性测试的关键组成部分是什么？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e6%94%b9%e5%96%84%e6%95%b4%e4%bd%93%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c" aria-label="可用性测试如何改善整体用户体验？">可用性测试如何改善整体用户体验？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%92%8c%e5%85%b6%e4%bb%96%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b5%8b%e8%af%95%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="可用性测试和其他类型的测试有什么区别？">可用性测试和其他类型的测试有什么区别？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%b5%81%e7%a8%8b%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="流程和技术">流程和技术</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="可用性测试涉及哪些步骤？">可用性测试涉及哪些步骤？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e4%b8%ad%e5%b8%b8%e7%94%a8%e7%9a%84%e6%8a%80%e6%9c%af%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试中常用的技术是什么？">可用性测试中常用的技术是什么？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e5%ae%9a%e7%b3%bb%e7%bb%9f%e6%88%96%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%8f%af%e7%94%a8%e6%80%a7" aria-label="如何确定系统或应用程序的可用性？">如何确定系统或应用程序的可用性？</a></li>
-                    <li>
-                        <a href="#%e5%b8%b8%e7%94%a8%e4%ba%8e%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e5%b7%a5%e5%85%b7%e6%98%af%e4%bb%80%e4%b9%88" aria-label="常用于可用性测试的工具是什么？">常用于可用性测试的工具是什么？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e8%87%aa%e5%8a%a8%e5%8c%96%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="如何自动化可用性测试？">如何自动化可用性测试？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%8c%91%e6%88%98%e5%92%8c%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="挑战和解决方案">挑战和解决方案</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试中的常见挑战是什么？">可用性测试中的常见挑战是什么？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="如何克服这些挑战？">如何克服这些挑战？</a></li>
-                    <li>
-                        <a href="#%e8%bf%9b%e8%a1%8c%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="进行可用性测试的最佳实践是什么？">进行可用性测试的最佳实践是什么？</a></li>
-                    <li>
-                        <a href="#%e5%9c%a8%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e6%95%85%e9%9a%9c" aria-label="在可用性测试期间如何处理故障？">在可用性测试期间如何处理故障？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e4%bf%9d%e7%b3%bb%e7%bb%9f%e6%88%96%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%9a%84%e6%8c%81%e7%bb%ad%e5%8f%af%e7%94%a8%e6%80%a7" aria-label="如何确保系统或应用程序的持续可用性？">如何确保系统或应用程序的持续可用性？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e7%9c%9f%e5%ae%9e%e4%b8%96%e7%95%8c%e7%9a%84%e5%ba%94%e7%94%a8" aria-label="真实世界的应用">真实世界的应用</a><ul>
-                            
-                    <li>
-                        <a href="#%e8%83%bd%e6%8f%90%e4%be%9b%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e7%9c%9f%e5%ae%9e%e4%b8%96%e7%95%8c%e5%ba%94%e7%94%a8%e7%a4%ba%e4%be%8b%e5%90%97" aria-label="能提供可用性测试的真实世界应用示例吗？">能提供可用性测试的真实世界应用示例吗？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8%e4%ba%91%e8%ae%a1%e7%ae%97%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试在云计算中的应用是什么？">可用性测试在云计算中的应用是什么？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8-devops-%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2" aria-label="可用性测试在 DevOps 中扮演什么角色？">可用性测试在 DevOps 中扮演什么角色？</a></li>
-                    <li>
-                        <a href="#%e5%9c%a8%e5%a4%a7%e8%a7%84%e6%a8%a1%e7%b3%bb%e7%bb%9f%e4%b8%ad%e5%a6%82%e4%bd%95%e8%bf%9b%e8%a1%8c%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="在大规模系统中如何进行可用性测试？">在大规模系统中如何进行可用性测试？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e5%b8%ae%e5%8a%a9%e6%8f%90%e9%ab%98%e7%b3%bb%e7%bb%9f%e5%bc%b9%e6%80%a7" aria-label="可用性测试如何帮助提高系统弹性？">可用性测试如何帮助提高系统弹性？</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a></li>
-                    <li>
-                        <a href="#%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb" aria-label="推荐阅读">推荐阅读</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#availability-testing-%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="Availability Testing 可用性测试">Availability Testing 可用性测试</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于可用性测试的问题">关于可用性测试的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="什么是可用性测试？">什么是可用性测试？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么可用性测试在软件开发中很重要？">为什么可用性测试在软件开发中很重要？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e5%85%b3%e9%94%ae%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试的关键组成部分是什么？">可用性测试的关键组成部分是什么？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e6%94%b9%e5%96%84%e6%95%b4%e4%bd%93%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c" aria-label="可用性测试如何改善整体用户体验？">可用性测试如何改善整体用户体验？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%92%8c%e5%85%b6%e4%bb%96%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b5%8b%e8%af%95%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="可用性测试和其他类型的测试有什么区别？">可用性测试和其他类型的测试有什么区别？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b5%81%e7%a8%8b%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="流程和技术">流程和技术</a><ul>
+                        
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="可用性测试涉及哪些步骤？">可用性测试涉及哪些步骤？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e4%b8%ad%e5%b8%b8%e7%94%a8%e7%9a%84%e6%8a%80%e6%9c%af%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试中常用的技术是什么？">可用性测试中常用的技术是什么？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e5%ae%9a%e7%b3%bb%e7%bb%9f%e6%88%96%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%8f%af%e7%94%a8%e6%80%a7" aria-label="如何确定系统或应用程序的可用性？">如何确定系统或应用程序的可用性？</a></li>
+                <li>
+                    <a href="#%e5%b8%b8%e7%94%a8%e4%ba%8e%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e5%b7%a5%e5%85%b7%e6%98%af%e4%bb%80%e4%b9%88" aria-label="常用于可用性测试的工具是什么？">常用于可用性测试的工具是什么？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%87%aa%e5%8a%a8%e5%8c%96%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="如何自动化可用性测试？">如何自动化可用性测试？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%8c%91%e6%88%98%e5%92%8c%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="挑战和解决方案">挑战和解决方案</a><ul>
+                        
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试中的常见挑战是什么？">可用性测试中的常见挑战是什么？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="如何克服这些挑战？">如何克服这些挑战？</a></li>
+                <li>
+                    <a href="#%e8%bf%9b%e8%a1%8c%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="进行可用性测试的最佳实践是什么？">进行可用性测试的最佳实践是什么？</a></li>
+                <li>
+                    <a href="#%e5%9c%a8%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e6%95%85%e9%9a%9c" aria-label="在可用性测试期间如何处理故障？">在可用性测试期间如何处理故障？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e4%bf%9d%e7%b3%bb%e7%bb%9f%e6%88%96%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e7%9a%84%e6%8c%81%e7%bb%ad%e5%8f%af%e7%94%a8%e6%80%a7" aria-label="如何确保系统或应用程序的持续可用性？">如何确保系统或应用程序的持续可用性？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%9c%9f%e5%ae%9e%e4%b8%96%e7%95%8c%e7%9a%84%e5%ba%94%e7%94%a8" aria-label="真实世界的应用">真实世界的应用</a><ul>
+                        
+                <li>
+                    <a href="#%e8%83%bd%e6%8f%90%e4%be%9b%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e7%9a%84%e7%9c%9f%e5%ae%9e%e4%b8%96%e7%95%8c%e5%ba%94%e7%94%a8%e7%a4%ba%e4%be%8b%e5%90%97" aria-label="能提供可用性测试的真实世界应用示例吗？">能提供可用性测试的真实世界应用示例吗？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8%e4%ba%91%e8%ae%a1%e7%ae%97%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="可用性测试在云计算中的应用是什么？">可用性测试在云计算中的应用是什么？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%9c%a8-devops-%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2" aria-label="可用性测试在 DevOps 中扮演什么角色？">可用性测试在 DevOps 中扮演什么角色？</a></li>
+                <li>
+                    <a href="#%e5%9c%a8%e5%a4%a7%e8%a7%84%e6%a8%a1%e7%b3%bb%e7%bb%9f%e4%b8%ad%e5%a6%82%e4%bd%95%e8%bf%9b%e8%a1%8c%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95" aria-label="在大规模系统中如何进行可用性测试？">在大规模系统中如何进行可用性测试？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%e5%a6%82%e4%bd%95%e5%b8%ae%e5%8a%a9%e6%8f%90%e9%ab%98%e7%b3%bb%e7%bb%9f%e5%bc%b9%e6%80%a7" aria-label="可用性测试如何帮助提高系统弹性？">可用性测试如何帮助提高系统弹性？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a></li>
+                <li>
+                    <a href="#%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb" aria-label="推荐阅读">推荐阅读</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="availability-testing-可用性测试">Availability Testing 可用性测试<a hidden class="anchor" aria-hidden="true" href="#availability-testing-可用性测试">#</a></h2>
 <p>在软件测试的背景下，可用性测试是指评估系统的正常运行时间，以确保应用程序或系统按预期对用户保持可访问和可操作。</p>
@@ -687,12 +635,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-back-to-back-testing/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-back-to-back-testing/">
     <span class="title">« 上一页</span>
     <br>
     <span>软件测试术语分享:Back-to-Back Testing 背靠背测试</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/">
     <span class="title">下一页 »</span>
     <br>
     <span>30 天 AI 测试挑战活动：第二十六天：研究在 AI 测试中最大限度地减少碳足迹的策略</span>
@@ -703,7 +651,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on x"
-            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -712,7 +660,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -721,7 +669,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -730,7 +678,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -739,7 +687,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -748,7 +696,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on telegram"
-            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -757,7 +705,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Availability Testing 可用性测试 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAvailability%20Testing%20%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-availability-testing%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -768,26 +716,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -802,9 +735,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -845,11 +783,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

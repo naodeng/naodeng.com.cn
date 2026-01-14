@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Generate Test Data Using AI and Evaluate Its Efficacy on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
+    <link>https://naodeng.com.cn/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
     <description>Recent content in Generate Test Data Using AI and Evaluate Its Efficacy on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge: Day 11: Generate test data using AI and evaluate its efficacy</title>
-      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
       <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</guid>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</guid>
       <description>This blog post is day eleven of the 30 Days of AI Testing Challenge, focusing on the use of AI to generate test data and evaluating its effectiveness. The post may include the author&amp;rsquo;s real-world application of AI-generated test data and an assessment of its effectiveness and applicability. By sharing the application and evaluation of AI-generated test data, readers will understand how the author leverages AI technology to generate valid test data and enhance the efficiency of the testing process in real testing environments. This series of events is expected to provide testing professionals with cases of practical application of AI-generated test data and encourage them to experiment with this emerging technology.</description>
     </item>
   </channel>

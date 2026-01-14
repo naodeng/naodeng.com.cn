@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.134.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -10,20 +10,20 @@
 
 <meta name="description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 <meta name="author" content="NaoDeng">
-<link rel="canonical" href="http://localhost:1313/zh/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/index.xml">
-<link rel="alternate" type="application/json" href="http://localhost:1313/zh/index.json">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/">
+<link rel="alternate" type="application/rss+xml" href="https://naodeng.com.cn/zh/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://naodeng.com.cn/zh/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/">
 <noscript>
     <style>
         #theme-toggle,
@@ -44,35 +44,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -82,51 +89,39 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试同学" />
-<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/zh/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试同学"/>
-<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试同学">
+  <meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试同学">
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "软件测试同学",
-  "url": "http://localhost:1313/zh/",
+  "url": "https://naodeng.com.cn/zh/",
   "description": "naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "https://naodeng.com.cn/favicon.ico",
   "sameAs": [
       "https://github.com/naodeng", "https://naodeng.medium.com", "https://twitter.com/inaodeng", "https://ko-fi.com/naodeng", "index.xml"
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -146,38 +141,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -215,8 +221,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-02-06 16:06:44 +0800 CST'>二月 6, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;620 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:ATDD 验收测试驱动开发" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"></a>
+  <footer class="entry-footer"><span title='2024-02-06 16:06:44 +0800 CST'>2024年2月6日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>620 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:ATDD 验收测试驱动开发" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -227,8 +233,8 @@
   <div class="entry-content">
     <p>这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-02-05 16:06:44 +0800 CST'>二月 5, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;507 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件测试术语分享:A/B 测试" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/"></a>
+  <footer class="entry-footer"><span title='2024-02-05 16:06:44 +0800 CST'>2024年2月5日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>507 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件测试术语分享:A/B 测试" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -239,8 +245,8 @@
   <div class="entry-content">
     <p>这篇博文是 UI 测试最佳实践的真实案例篇，第二篇从难以理解的 React 组件测试到简单愚蠢的测试。文章分享了在 React 组件测试中遇到的挑战，并提供了简化和优化测试的实际案例。通过这个真实案例，读者将学到如何通过简单愚蠢的测试方法，更轻松地理解和维护 React 组件的测试代码，提高测试的可读性和可维护性。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-02-02 16:37:44 +0800 CST'>二月 2, 2024</span>&nbsp;·&nbsp;10 分钟&nbsp;·&nbsp;1990 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to UI 测试最佳实践的真实案例篇（二）：从难以理解的 React 组件测试到简单愚蠢的测试" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/"></a>
+  <footer class="entry-footer"><span title='2024-02-02 16:37:44 +0800 CST'>2024年2月2日</span>&nbsp;·&nbsp;<span>10 分钟</span>&nbsp;·&nbsp;<span>1990 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to UI 测试最佳实践的真实案例篇（二）：从难以理解的 React 组件测试到简单愚蠢的测试" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -251,8 +257,8 @@
   <div class="entry-content">
     <p>这篇博文是 UI 测试最佳实践的真实案例篇，首篇讨论了通过集成测试测试前端，以及利用 E2E 测试测试后端的实际案例。文章深入介绍了在项目中如何结合不同类型的测试来确保整个应用程序的稳定性和功能完整性。通过这个真实案例，读者将了解在实际项目中如何灵活运用 UI 测试最佳实践，提高测试的全面性和质量。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-02-01 16:06:44 +0800 CST'>二月 1, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;464 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/"></a>
+  <footer class="entry-footer"><span title='2024-02-01 16:06:44 +0800 CST'>2024年2月1日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>464 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -263,8 +269,8 @@
   <div class="entry-content">
     <p>这篇博文是 UI 测试最佳实践的进阶篇，第三篇介绍邮件测试。文章深入研究了 UI 测试中邮件测试的重要性，以及如何有效地测试与邮件相关的功能。读者将学到如何验证邮件发送、接收和处理等功能，确保系统在邮件通信方面的准确性和可靠性。通过学习这个进阶实践，读者能够更全面地覆盖 UI 测试中与邮件相关的场景，提高测试的全面性和准确性。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-01-31 16:06:44 +0800 CST'>一月 31, 2024</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;918 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（三）：邮件测试" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-email-testing/"></a>
+  <footer class="entry-footer"><span title='2024-01-31 16:06:44 +0800 CST'>2024年1月31日</span>&nbsp;·&nbsp;<span>5 分钟</span>&nbsp;·&nbsp;<span>918 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（三）：邮件测试" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-email-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -275,8 +281,8 @@
   <div class="entry-content">
     <p>这篇博文是 UI 测试最佳实践的进阶篇，第二篇深入讨论组合测试和性能测试。文章详细介绍了如何有效地进行组合测试，覆盖多个交互元素的不同组合，以提高测试的全面性。此外，博文探讨了 UI 性能测试的重要性，并提供了一些性能测试的最佳实践，确保应用程序在各种负载下的高性能和稳定性。通过学习这些进阶实践，读者将能够更全面地应对复杂的 UI 测试场景，确保系统的质量和性能。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-01-30 16:06:44 +0800 CST'>一月 30, 2024</span>&nbsp;·&nbsp;7 分钟&nbsp;·&nbsp;1462 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（二）：组合测试和性能测试" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/"></a>
+  <footer class="entry-footer"><span title='2024-01-30 16:06:44 +0800 CST'>2024年1月30日</span>&nbsp;·&nbsp;<span>7 分钟</span>&nbsp;·&nbsp;<span>1462 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（二）：组合测试和性能测试" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -287,22 +293,22 @@
   <div class="entry-content">
     <p>这篇博文是 UI 测试最佳实践的进阶篇，首篇介绍测试状态和处理不稳定测试的方法。文章深入探讨了在 UI 测试中如何有效处理测试状态，以及应对测试不稳定性的最佳实践。读者将学到确保测试脚本可靠性的策略，包括等待机制、测试数据管理等方面的技巧。通过这个进阶篇的指南，读者能够更灵活地应对复杂的 UI 测试场景，确保测试结果的一致性和可信度。</p>
   </div>
-  <footer class="entry-footer"><span title='2024-01-29 16:06:44 +0800 CST'>一月 29, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;439 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试" href="http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/"></a>
+  <footer class="entry-footer"><span title='2024-01-29 16:06:44 +0800 CST'>2024年1月29日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>439 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试" href="https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/zh/page/6/">
+    <a class="prev" href="https://naodeng.com.cn/zh/page/6/">
       «&nbsp;上一页&nbsp;
     </a>
-    <a class="next" href="http://localhost:1313/zh/page/8/">下一页&nbsp;&nbsp;»
+    <a class="next" href="https://naodeng.com.cn/zh/page/8/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -317,9 +323,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -360,11 +371,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

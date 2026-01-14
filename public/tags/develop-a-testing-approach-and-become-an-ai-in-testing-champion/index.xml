@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Develop a Testing Approach and Become an AI in Testing Champion on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/</link>
+    <link>https://naodeng.com.cn/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/</link>
     <description>Recent content in Develop a Testing Approach and Become an AI in Testing Champion on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Thu, 14 Mar 2024 10:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge: Day 13: Develop a testing approach and become an AI in testing champion!</title>
-      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</link>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</link>
       <pubDate>Thu, 14 Mar 2024 10:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</guid>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</guid>
       <description>This blog post is about the thirteenth day of the 30-Day AI Testing Challenge event, where participants are required to develop their own testing methods and become pioneers in AI testing. The post may include the author&amp;rsquo;s thoughts and methodologies on developing new AI testing methods, as well as the experiences and outcomes of applying these methods in practice. By sharing their own process of developing testing methods and the results, readers will learn about the author&amp;rsquo;s innovative practices and leading position in the field of AI testing, inspiring more people to try and explore the application of AI in testing. This series of events is expected to provide testing professionals with an opportunity to deeply understand and practice the development of AI testing methods and encourage them to become pioneers in the field of AI testing.</description>
     </item>
   </channel>

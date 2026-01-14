@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>RestAssured on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/categories/restassured/</link>
+    <link>https://naodeng.com.cn/categories/restassured/</link>
     <description>Recent content in RestAssured on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/restassured/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/categories/restassured/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>API Testing Tutorial for Beginners: different frameworks and different development languages</title>
-      <link>http://localhost:1313/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
+      <link>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
+      <guid>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
       <description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description>
     </item>
   </channel>

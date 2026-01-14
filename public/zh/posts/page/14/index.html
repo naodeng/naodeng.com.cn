@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,19 +9,19 @@
 <meta name="keywords" content="">
 <meta name="description" content="Posts - 软件测试同学">
 <meta name="author" content="NaoDeng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/posts/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/">
+<link rel="alternate" type="application/rss+xml" href="https://naodeng.com.cn/zh/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/posts/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -42,35 +42,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -80,17 +87,17 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="Posts" />
-<meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing">
 
 
 <script type="application/ld+json">
@@ -102,31 +109,19 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -146,38 +141,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -206,7 +212,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a></div>
   <h1>
     Posts
     <a href="/zh/posts/index.xml" title="RSS" aria-label="RSS">
@@ -228,8 +234,8 @@
   <div class="entry-content">
     <p>文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来</p>
   </div>
-  <footer class="entry-footer"><span title='2023-10-24 17:44:53 +0800 CST'>十月 24, 2023</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;219 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to gatling 性能测试教程：入门介绍" href="http://localhost:1313/zh/posts/performance-testing/gatling-tool-intro1/"></a>
+  <footer class="entry-footer"><span title='2023-10-24 17:44:53 +0800 CST'>2023年10月24日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>219 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to gatling 性能测试教程：入门介绍" href="https://naodeng.com.cn/zh/posts/performance-testing/gatling-tool-intro1/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -240,8 +246,8 @@
   <div class="entry-content">
     <p>文章介绍 postman 替换工具 Bruno 的新手入门介绍，如何迁移 postman 脚本到 Bruno</p>
   </div>
-  <footer class="entry-footer"><span title='2023-10-17 11:31:43 +0800 CST'>十月 17, 2023</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;983 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to postman 替换工具 bruno 使用介绍" href="http://localhost:1313/zh/posts/api-automation-testing/introduction_of_bruno/"></a>
+  <footer class="entry-footer"><span title='2023-10-17 11:31:43 +0800 CST'>2023年10月17日</span>&nbsp;·&nbsp;<span>5 分钟</span>&nbsp;·&nbsp;<span>983 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to postman 替换工具 bruno 使用介绍" href="https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -259,10 +265,12 @@
 功能开发：根据二八法则，80% 的用户使用率通常来自于 20% 的核心功能。在软件开发过程中，团队可以优先开发和完善这些核心功能，以满足大部分用户的需求。这有助于提高产品的可用性和用户体验。 缺陷修复：类似地，80% 的软件缺陷往往由 20% 的核心功能引起。因此，在缺陷修复过程中，团队应该重点关注那些最常见、最严重或者影响最广泛的缺陷。这有助于快速改善软件的质量和稳定性。 需求管理：根据二八法则，80% 的用户需求通常来自于 20% 的关键需求。在需求管理过程中，团队应该专注于梳理和管理那些最重要、最紧急的需求，确保其优先级得到合理的安排。这有助于提高项目的交付价值和满足用户期望。 团队效率：二八法则也可以应用于团队效率的管理。根据这个原则，80% 的工作成果往往来自于 20% 的高效工作时间。团队可以通过优化工作流程、减少低价值的任务和降低工作负荷，来提高团队的整体效率和生产力。 需要注意的是，二八法则在软件研发中的具体应用可能会因项目的特点、复杂性和业务需求而有所不同。团队应该根据具体情况灵活运用这个原则，以达到最佳的开发效果和资源利用。同时，综合考虑其他因素，如用户反馈、市场需求和团队能力等，以实现整体的项目成功。
 软件研发质量中的二八法则 在软件质量管理中，二八法则可以应用于缺陷管理、测试策略和持续改进等方面。以下是一些常见的应用场景：
 缺陷管理：根据二八法则，80% 的缺陷通常来自于 20% 的功能模块或者代码区域。在软件质量管理过程中，团队应该重点关注那些最容易引发缺陷的核心功能或者代码部分。这有助于提高缺陷发现和修复的效率，确保关键功能的质量和稳定性。 测试策略：根据二八法则，80% 的软件缺陷往往由 20% 的核心功能或者测试用例引起。在测试策略制定过程中，团队可以优先选择那些最关键、最具代表性的功能进行测试。同时，重点关注那些最有可能引发缺陷的测试用例，以提高测试覆盖和效果。 持续改进：二八法则也可以应用于持续改进的过程中。根据这个原则，80% 的改进效果通常来自于 20% 的关键改进措施。团队应该重点关注那些最重要、最有影响力的改进项目，以最大程度地提升软件质量和用户体验。 用户反馈和需求：根据二八法则，80% 的用户满意度通常来自于 20% 的关键功能或者需求。在软件质量管理中，团队应该重点关注那些对用户最重要、最有价值的功能和需求。通过积极收集用户反馈和需求，团队可以针对性地改进和优化这些关键领域，提升软件的质量和用户满意度。 需要注意的是，二八法则在软件质量管理中的具体应用可能会因项目的特点、复杂性和业务需求而有所不同。团队应该根据具体情况灵活运用这个原则，并结合其他质量管理方法和工具，以实现最佳的软件质量和用户体验。
+软件测试中的二八法则 在软件测试中，二八法则可以被应用于缺陷定位和优先级管理。根据这个原则，大约 80% 的缺陷通常来自于 20% 的功能模块或测试用例。这意味着测试团队可以通过重点关注那些最有可能引发缺陷的关键功能，以及那些覆盖最广泛、最重要的测试用例，来获得最佳的测试覆盖和缺陷发现效果。
+具体应用二八法则的方法包括：
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-05-22 00:00:00 +0000 UTC'>五月 22, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 软件研发质量中的二八法则" href="http://localhost:1313/zh/posts/others/80-20-rule/"></a>
+  <footer class="entry-footer"><span title='2023-05-22 00:00:00 +0000 UTC'>2023年5月22日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 软件研发质量中的二八法则" href="https://naodeng.com.cn/zh/posts/others/80-20-rule/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -273,8 +281,8 @@
   <div class="entry-content">
     <p>文章介绍接口测试的简介，类型和工具</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-20 00:00:00 +0000 UTC'>四月 20, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;115 字&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 接口测试简介" href="http://localhost:1313/zh/posts/api-automation-testing/introduction_of_api_test/"></a>
+  <footer class="entry-footer"><span title='2023-04-20 00:00:00 +0000 UTC'>2023年4月20日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>115 字</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 接口测试简介" href="https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_api_test/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -295,8 +303,8 @@
 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2023-03-22 00:00:00 +0000 UTC'>三月 22, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 不同类型 AI 申请加入等待列表入口" href="http://localhost:1313/zh/posts/others/different-types-of-ai-join-waiting-list/"></a>
+  <footer class="entry-footer"><span title='2023-03-22 00:00:00 +0000 UTC'>2023年3月22日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 不同类型 AI 申请加入等待列表入口" href="https://naodeng.com.cn/zh/posts/others/different-types-of-ai-join-waiting-list/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -308,8 +316,8 @@
     <p> 打开 edge 浏览器 在地址栏输入命令 edge://flags/ 在 flags 的页面输入 11 进行搜索 在搜索结果下选择“Show Windows 11 visual effects in title bar and toolbar”将状态变更为启用 重启浏览器，即可看到新的 edge 浏览器 UI 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-15 00:00:00 +0000 UTC'>二月 15, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 新技术分享：Mac OS 下 edge 浏览器开启新 UI" href="http://localhost:1313/zh/posts/others/edge-enablenew-ui/"></a>
+  <footer class="entry-footer"><span title='2023-02-15 00:00:00 +0000 UTC'>2023年2月15日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 新技术分享：Mac OS 下 edge 浏览器开启新 UI" href="https://naodeng.com.cn/zh/posts/others/edge-enablenew-ui/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -356,22 +364,22 @@ build 红了团队会采取什么 action？ Day 31 BONUS: Debrief your whole tea
 跟整个团队汇报你的测试 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-01-30 00:00:00 +0000 UTC'>一月 30, 2023</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;nao.deng</footer>
-  <a class="entry-link" aria-label="post link to 敏捷测试的 30 天挑战" href="http://localhost:1313/zh/posts/others/30-days-of-agile-testing/"></a>
+  <footer class="entry-footer"><span title='2023-01-30 00:00:00 +0000 UTC'>2023年1月30日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>nao.deng</span></footer>
+  <a class="entry-link" aria-label="post link to 敏捷测试的 30 天挑战" href="https://naodeng.com.cn/zh/posts/others/30-days-of-agile-testing/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/zh/posts/page/13/">
+    <a class="prev" href="https://naodeng.com.cn/zh/posts/page/13/">
       «&nbsp;上一页&nbsp;
     </a>
-    <a class="next" href="http://localhost:1313/zh/posts/page/15/">下一页&nbsp;&nbsp;»
+    <a class="next" href="https://naodeng.com.cn/zh/posts/page/15/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -386,9 +394,14 @@ build 红了团队会采取什么 action？ Day 31 BONUS: Debrief your whole tea
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -429,11 +442,12 @@ build 红了团队会采取什么 action？ Day 31 BONUS: Debrief your whole tea
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

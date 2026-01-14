@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Bruno Cli on 软件测试同学</title>
-    <link>http://localhost:1313/zh/zhtags/bruno-cli/</link>
-    <description>Recent content in Bruno Cli on 软件测试同学</description>
+    <title>ZHtags/Bruno Cli on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/bruno-cli/</link>
+    <description>Recent content in ZHtags/Bruno Cli on 软件测试同学</description>
     <image>
       <title>软件测试同学</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 17 Oct 2023 11:31:43 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/zhtags/bruno-cli/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/bruno-cli/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>postman 替换工具 bruno 使用介绍</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/introduction_of_bruno/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/</link>
       <pubDate>Tue, 17 Oct 2023 11:31:43 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/introduction_of_bruno/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/</guid>
       <description>文章介绍 postman 替换工具 Bruno 的新手入门介绍，如何迁移 postman 脚本到 Bruno</description>
     </item>
   </channel>

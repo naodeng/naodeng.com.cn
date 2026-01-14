@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Gauge Your Short-Term AI in Testing Plans on Nao&#39;s Blog</title>
-    <link>http://localhost:1313/tags/gauge-your-short-term-ai-in-testing-plans/</link>
+    <link>https://naodeng.com.cn/tags/gauge-your-short-term-ai-in-testing-plans/</link>
     <description>Recent content in Gauge Your Short-Term AI in Testing Plans on Nao&#39;s Blog</description>
     <image>
       <title>Nao&#39;s Blog</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>en</language>
     <lastBuildDate>Fri, 15 Mar 2024 14:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gauge-your-short-term-ai-in-testing-plans/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/tags/gauge-your-short-term-ai-in-testing-plans/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 Days of AI in Testing Challenge: Day 15: Gauge your short-term AI in testing plans</title>
-      <link>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</link>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</link>
       <pubDate>Fri, 15 Mar 2024 14:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</guid>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</guid>
       <description>This blog post is Day 15 of the 30 Day AI Testing Challenge and looks at measuring short-term AI in test programs. The article may include criteria for evaluating short-term AI applications in a test program, as well as methods on how to determine their success. By sharing methods and hands-on experience in measuring short-term AI applications, readers will gain insights and guidance from the authors on practical applications of using AI in test programs. This series promises to provide a platform for testing professionals to understand how to measure and evaluate short-term AI applications and to foster broader industry discussions.</description>
     </item>
   </channel>

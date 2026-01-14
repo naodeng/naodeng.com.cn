@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Actual Result（实际结果）。文章深入探讨了实际结果在软件测试中的基础概念和重要性，阐述了在测试流程中记录和分析实际结果的技巧。同时，文章介绍了相关工具和技术，帮助测试人员更有效地管理和报告测试结果。此外，博文还涉及了实际结果测试中可能面临的挑战，提供了解决方案以确保测试的准确性和可靠性。通过这个系列分享，读者将更深入地理解 Actual Result 在测试中的关键作用，提高测试流程的质量。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试术语分享:Actual Result 实际结果" />
-<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Actual Result（实际结果）。文章深入探讨了实际结果在软件测试中的基础概念和重要性，阐述了在测试流程中记录和分析实际结果的技巧。同时，文章介绍了相关工具和技术，帮助测试人员更有效地管理和报告测试结果。此外，博文还涉及了实际结果测试中可能面临的挑战，提供了解决方案以确保测试的准确性和可靠性。通过这个系列分享，读者将更深入地理解 Actual Result 在测试中的关键作用，提高测试流程的质量。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-20T12:06:44+08:00" />
-<meta property="article:modified_time" content="2024-02-20T12:06:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试术语分享:Actual Result 实际结果"/>
-<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Actual Result（实际结果）。文章深入探讨了实际结果在软件测试中的基础概念和重要性，阐述了在测试流程中记录和分析实际结果的技巧。同时，文章介绍了相关工具和技术，帮助测试人员更有效地管理和报告测试结果。此外，博文还涉及了实际结果测试中可能面临的挑战，提供了解决方案以确保测试的准确性和可靠性。通过这个系列分享，读者将更深入地理解 Actual Result 在测试中的关键作用，提高测试流程的质量。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试术语分享:Actual Result 实际结果">
+  <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Actual Result（实际结果）。文章深入探讨了实际结果在软件测试中的基础概念和重要性，阐述了在测试流程中记录和分析实际结果的技巧。同时，文章介绍了相关工具和技术，帮助测试人员更有效地管理和报告测试结果。此外，博文还涉及了实际结果测试中可能面临的挑战，提供了解决方案以确保测试的准确性和可靠性。通过这个系列分享，读者将更深入地理解 Actual Result 在测试中的关键作用，提高测试流程的质量。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-20T12:06:44+08:00">
+    <meta property="article:modified_time" content="2024-02-20T12:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试术语分享:Actual Result 实际结果">
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，聚焦于 Actual Result（实际结果）。文章深入探讨了实际结果在软件测试中的基础概念和重要性，阐述了在测试流程中记录和分析实际结果的技巧。同时，文章介绍了相关工具和技术，帮助测试人员更有效地管理和报告测试结果。此外，博文还涉及了实际结果测试中可能面临的挑战，提供了解决方案以确保测试的准确性和可靠性。通过这个系列分享，读者将更深入地理解 Actual Result 在测试中的关键作用，提高测试流程的质量。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "软件测试术语分享:Actual Result 实际结果",
-      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/"
+      "item": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "Actual Result 实际结果 实际结果（又称为测试结果）\n实际结果是在进行测试后获得的结果。在测试阶段，实际结果会与测试用例一起记录。在所有测试结束后，它将与预期结果进行比较，注意任何差异。\n关于实际结果的问题 基础知识和重要性 在软件测试中“实际结果”的定义是什么？ 在软件测试中，实际结果指的是执行测试时观察到的系统行为。它是测试步骤执行后应用程序的输出、响应或状态。然后，将这个结果与**预期结果**进行比较，以确定测试是通过还是失败。实际结果对于发现可能存在缺陷或需要改进的地方至关重要。\n实际结果通常记录在测试管理工具中或直接在自动化测试代码中。它们作为测试执行的证据，对于测试过程中的可追溯性和责任制非常重要。当实际结果与预期结果不一致时，会引发调查，可能导致缺陷修复和功能增强，以确保软件符合其要求并能够按照预期运行。\n为什么在 e2e 测试中确定 “实际结果 “很重要？ 在端对端（e2e）测试中，确定实际结果对于验证整个应用程序流程的完整性至关重要。这确保了每个集成组件在按顺序操作时（从开始到结束）都能按预期运行。通过将实际结果与预期结果进行比较，测试人员可以确认系统在各种条件下，包括用户交互、数据处理和连接性时是否按照设计行为。\n在 e2e 测试中，实际结果是测试执行的结果。它为评估系统是否符合业务需求和用户需求提供了具体的依据。当存在不一致时，它们突显了可能影响用户体验或系统可靠性的潜在问题，促使进一步的调查和改进。\n此外，实际结果在保持测试可信度方面起着重要作用。它为利益相关方提供了关于系统当前状态和测试策略有效性的有形证据。这种透明性对于建立对软件质量的信心以及对发布和部署做出明智决策至关重要。\n在自动化测试中，捕获实际结果通常由自动化框架处理，该框架记录结果以供后续分析。这种自动化捕获不仅简化了测试过程，还减少了人为错误，确保结果能够一致和准确地报告。\n通过专注于实际结果，测试自动化工程师可以直接影响软件的开发周期，确保每个发布都符合成功产品所需的质量标准。\n“实际结果”对整个测试过程有何贡献？ 在测试过程中，实际结果是至关重要的，因为它直接反映了系统在测试条件下的当前行为。通过将实际结果与预期结果进行比较，测试人员可以立即判断测试用例是否通过或失败。这种比较对于验证软件的功能并确保其满足指定要求至关重要。\n在自动化测试中，实际结果通常由测试脚本捕获和记录，然后自动将其与预期结果进行比较。这有助于形成快速的反馈循环，快速识别失败，并根据测试结果决定是否继续或中止持续集成和交付流程。\n当出现差异时，实际结果是调试的起点。它有助于准确定位缺陷的确切性质，引导开发人员找到根本原因。此外，分析跨多次测试运行的实际结果中的模式可以揭示出诸如性能下降或应用程序特定区域的不稳定性等更大问题。\n总之，实际结果对于：\n验证软件行为是否符合期望。 在测试脚本中进行自动化通过/失败决策。 通过提供系统行为的具体证据进行调试。 分析趋势和模式以指导未来的开发和测试工作。 通过有效利用实际结果，团队可以保持较高的软件质量并加速开发生命周期。\n比较与对比 “预期结果”和“实际结果”有什么区别？ 在软件测试自动化中，**预期结果**是基于需求或设计规范的测试用例的预定义结果。它代表了系统在特定条件下应该表现出的行为。\n另一方面，实际结果是系统在执行测试用例时实际表现出的行为。它是从被测试系统中获得的实时结果。\n预期结果和实际结果之间的比较对于确定测试用例的成功或失败至关重要。匹配表示系统表现如预期，而不匹配可能揭示缺陷或与预期行为的偏差。这种比较通常在测试脚本中自动化进行，其中使用断言或检查点来验证实际结果是否与预期结果一致。\n这些结果之间的差异会触发进一步的调查，以了解根本原因并纠正任何问题，确保软件符合其质量标准。\n“实际结果”与“测试用例”有何关系？ 在**测试用例的情境下，实际结果是测试执行时所观察到的结果。它直接与预期结果**进行比较，以确定测试是否通过或失败。这种比较对于验证被测试软件的行为至关重要。\n对于自动化测试，实际结果通常由测试脚本本身捕获。例如，在基于Selenium的测试中，脚本可能包含如下断言：\nassert.equal(element.getText(), \"Expected Text\"); 这里，element.getText()是与预期文本进行比较的实际结果。如果它们匹配，测试通过；否则，测试失败。\n实际结果对于准确定位**测试用例**中故障发生的确切步骤至关重要。在复杂的场景中，它有助于将缺陷隔离到特定的模块或功能。此外，当测试失败时，实际结果可以深入了解缺陷的性质，有助于调试和解决问题。\n在持续集成环境中，实际结果通常被记录并作为测试报告的一部分。这对于利益相关者了解软件的当前状态以及开发人员在发布软件之前解决任何问题非常有价值。\n在什么情况下“实际结果”可能与“预期结果”不同？ 实际结果与**预期结果**之间可能存在差异的原因有很多：\n代码缺陷：应用代码中的错误可能导致意外行为。 环境问题：测试环境的差异，如配置、数据库或网络条件的不同。 测试数据的变化性：不一致或不正确的测试数据可能导致不同的结果。 不稳定的测试：表现出非确定性行为的测试通常会间歇性地失败。 错误的期望：预期结果可能基于过时或被误解的需求。 并发问题：仅在多个进程或用户同时与系统交互时才显现的问题。 集成依赖：应用程序依赖的外部服务或组件的故障。 时间问题：影响应用程序行为的竞态条件或超时。 平台特定行为：不同操作系统、浏览器或设备处理某些操作的方式的差异。 测试脚本错误：自动化脚本本身中的错误，如不正确的断言或同步问题。 识别差异的原因对于解决问题和提高软件质量至关重要。\n实际应用 测试过程中如何记录“实际结果”？ 在测试过程中记录实际结果通常包括对测试执行后系统行为的清晰而简明的描述。它记录在测试管理工具或测试用例文档中，通常与相应的**测试用例和预期结果**一起，以便进行轻松比较。\n以下是一般的方法：\n执行测试用例：按照规定的步骤运行测试。 观察：仔细观察系统的行为或输出。 记录：立即记录观察到的行为。使用清晰的语言描述发生了什么，包括任何错误消息、系统响应或结果。 截图/日志：如果截图、日志文件或视频能够清晰地说明问题，特别是对于界面问题或复杂错误，请附加它们。 时间戳：记录测试的时间和日期，因为这对于调试可能是至关重要的。 环境详细信息：包括有关测试环境的详细信息，如浏览器版本、设备或系统配置。 可重现性：指示结果在重新测试时是否一致。 链接缺陷：如果结果表示存在缺陷，请创建缺陷报告并将其链接到测试用例，以实现可追溯性。 确保实际结果足够详细，以使开发人员能够清楚地理解问题，避免歧义，促进更快的解决和重新测试。\n有哪些常用工具或方法可用于获取 “实际结果”？ 在测试自动化中捕获实际结果通常涉及多种工具和方法：\n自动化测试脚本：在诸如**Selenium、Cypress或Appium**等框架中编写的脚本在测试执行期间自动捕获输出。例如： // 示例：使用 Selenium 进行文本验证 String actualText = driver.findElement(By.id(\"elementId\")).getText(); 日志记录：通常，自动化测试被设计为记录结果和错误。诸如 Java 的Log4j或Node.js的Winston之类的工具可用于记录实际结果。\n截图：诸如**Selenium**之类的工具可以在执行测试步骤时捕获应用程序状态的截图，这对于 UI 测试很有用。\n视频录制：一些测试框架，如TestCafe或云服务如Sauce Labs，提供视频录制功能以捕获测试执行。\nAPI响应：对于API 测试，诸如**Postman或RestAssured**之类的工具捕获 HTTP 响应数据，这代表了实际结果。\n性能数据：诸如**JMeter或Gatling**之类的工具捕获时间和吞吐量数据作为实际结果进行性能测试。\n测试报告：诸如JUnit、TestNG或Mocha之类的框架生成包含实际结果的报告。这些报告可以进一步与Jenkins或GitLab CI等 CI/CD 工具集成，以进行全面的报告。\n自定义处理程序：在测试代码中实现自定义事件处理程序或回调，以捕获特定的数据点或应用程序状态。\n数据库验证：使用SQL或 NoSQL 命令直接查询数据库以捕获数据更改。\n文件输出：将结果写入文件，如 CSV 或 JSON\n，以便以后解析和分析。\n每种方法的选择基于需要捕获的内容的上下文和正在执行的测试的类型。\n如何使用 “实际结果 “来识别和诊断软件缺陷或问题？ 实际结果在识别和排除软件缺陷方面充当着至关重要的诊断工具。当测试用例执行产生一个与期望结果不符的实际结果时，这种差异标志着软件中可能存在缺陷。\n为了诊断问题，工程师会在测试环境和输入数据的背景下分析实际结果。他们可能会查找在不同测试用例或条件下结果的模式或不一致性。例如，如果某个功能在一个输入集下按预期工作，而在另一个输入集下却没有，这可能表明存在边界情况问题或数据处理缺陷。\n工程师还使用实际结果来准确定位故障发生的确切步骤。通过检查应用程序在此时的状态，包括日志、堆栈跟踪或数据库状态，他们可以确定故障的根本原因。\n在实际结果表明存在性能问题（例如响应时间较慢或资源瓶颈）的情况下，工程师可以使用性能分析工具深入挖掘系统在测试时的行为。\n自动化测试框架通常提供捕获和报告详细实际结果的功能，包括测试执行的截图或视频录制，这对于诊断 UI 问题非常有价值。\n通过系统地分析实际结果，工程师可以提出关于缺陷来源的假设，然后进行\n测试和验证，从而实现更高效的缺陷修复流程。\n深层理解 “实际结果”如何影响回归测试？ 在回归测试中，实际结果对于验证最近的代码更改是否对现有功能产生不良影响至关重要。它是在软件被修改后测试用例的结果。通过将实际结果与**期望结果**进行比较，测试人员可以确定是否发生了回归错误。\n对于自动化回归测试，实际结果通常由测试脚本捕获，并与**期望结果**进行程序化比较。差异会触发测试失败，提醒工程师可能存在回归。这种比较通常通过测试代码中的断言完成。\nassert.equal(actualResult, expectedResult, 'The actual result does not match the expected result.'); 当实际结果与**期望结果**匹配时，表明应用程序的行为与其先前状态保持一致。相反，不匹配可能表示最近的更改引入了一个缺陷，需要进一步调查和潜在的代码修复。\n在持续集成环境中，实际结果是反馈循环的一部分，通知开发团队关于每次代码提交后其应用程序稳定性的情况。这种即时反馈对于保持软件质量和加速开发周期至关重要。\n具有清晰实际结果的自动化回归测试可以快速确定已经发生回归的具体功能，简化调试过程，并确保软件发布符合质量标准。\n“实际结果”在自动化测试中扮演什么角色？ 在自动化测试中，实际结果作为验证软件行为是否符合预期结果的关键数据点起着重要作用。这是由测试脚本执行时产生的输出。然后，此结果会自动与**期望结果**进行比较，以确定测试是否通过或失败。\n// 捕获自动化测试中的实际结果的示例 const actualResult = performAction(); assert.equal(actualResult, expectedResult, '测试失败：实际结果与期望结果不匹配。'); 在自动化测试场景尤其是复杂场景中，实际结果对于确定差异发生的确切步骤至关重要。当测试失败时，实际结果立即提供有关失败性质的反馈，使工程师能够在无需手动干预的情况下启动调试和根本原因分析。\n自动化测试通常将实际结果记录到报告或仪表板中，提供测试执行的历史记录。这有助于趋势分析，并有助于了解软件随时间的稳定性。\n在持续集成和部署（CI/CD）管道中，实际结果可以触发工作流，如通知、回滚或根据测试用例的成功或失败而执行其他测试套件。\n总体而言，实际结果是自动化测试的基石，以系统化和可扩展的方式推动质量保证流程，从而高效而准确地验证软件功能。\n“实际结果”差异如何有助于软件优化和改进？ 实际结果与**期望结果**之间的差异对于软件的优化和改进至关重要。当测试用例的实际结果偏离预期时，这表明存在潜在的缺陷或需要改进的领域。这些差异可能导致：\n需求的完善：不一致性可能揭示需求理解不足或存在漏洞，促使更清晰和精确的规范。 代码优化：在测试中暴露的性能问题或意外行为可以引导开发人员优化算法和重构代码。 增强用户体验：在用户界面或工作流中出现差异的实际结果可能突显出可用性问题，从而引导改进，使软件更直观和用户友好。 更好的错误处理：遇到未在期望结果中考虑的错误或异常可以通过改进错误处理和消息传递来提高软件的健壮性。 增加测试覆盖率：差异通常揭示了未经测试的路径或边缘情况，扩展了测试套件，实现更全面的覆盖。 通过分析这些差异，团队可以迭代地完善他们的软件，从而打造更可靠、高性能和用户中心的产品。记录和跟踪这些发现是确保它们在未来的开发周期中得到解决的关键。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "177",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-02-20T12:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-02-20T12:06:44+08:00",
   "dateModified": "2024-02-20T12:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/"
+    "@id": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-actual-result/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,134 +255,75 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       软件测试术语分享:Actual Result 实际结果
     </h1>
-    <div class="post-meta"><span title='2024-02-20 12:06:44 +0800 CST'>二月 20, 2024</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;177 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-actual-result.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-02-20 12:06:44 +0800 CST'>2024年2月20日</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>177 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-actual-result.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#actual-result-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="Actual Result 实际结果">Actual Result 实际结果</a></li>
-                    <li>
-                        <a href="#%e5%85%b3%e4%ba%8e%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于实际结果的问题">关于实际结果的问题</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9c%a8%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e7%9a%84%e5%ae%9a%e4%b9%89%e6%98%af%e4%bb%80%e4%b9%88" aria-label="在软件测试中“实际结果”的定义是什么？">在软件测试中“实际结果”的定义是什么？</a></li>
-                    <li>
-                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%9c%a8-e2e-%e6%b5%8b%e8%af%95%e4%b8%ad%e7%a1%ae%e5%ae%9a-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c-%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么在 e2e 测试中确定 &ldquo;实际结果 &ldquo;很重要？">为什么在 e2e 测试中确定 &ldquo;实际结果 &ldquo;很重要？</a></li>
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%af%b9%e6%95%b4%e4%b8%aa%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e6%9c%89%e4%bd%95%e8%b4%a1%e7%8c%ae" aria-label="“实际结果”对整个测试过程有何贡献？">“实际结果”对整个测试过程有何贡献？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%af%94%e8%be%83%e4%b8%8e%e5%af%b9%e6%af%94" aria-label="比较与对比">比较与对比</a><ul>
-                            
-                    <li>
-                        <a href="#%e9%a2%84%e6%9c%9f%e7%bb%93%e6%9e%9c%e5%92%8c%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="“预期结果”和“实际结果”有什么区别？">“预期结果”和“实际结果”有什么区别？</a></li>
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e4%b8%8e%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e6%9c%89%e4%bd%95%e5%85%b3%e7%b3%bb" aria-label="“实际结果”与“测试用例”有何关系？">“实际结果”与“测试用例”有何关系？</a></li>
-                    <li>
-                        <a href="#%e5%9c%a8%e4%bb%80%e4%b9%88%e6%83%85%e5%86%b5%e4%b8%8b%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%8f%af%e8%83%bd%e4%b8%8e%e9%a2%84%e6%9c%9f%e7%bb%93%e6%9e%9c%e4%b8%8d%e5%90%8c" aria-label="在什么情况下“实际结果”可能与“预期结果”不同？">在什么情况下“实际结果”可能与“预期结果”不同？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="实际应用">实际应用</a><ul>
-                            
-                    <li>
-                        <a href="#%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e4%b8%ad%e5%a6%82%e4%bd%95%e8%ae%b0%e5%bd%95%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="测试过程中如何记录“实际结果”？">测试过程中如何记录“实际结果”？</a></li>
-                    <li>
-                        <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e6%88%96%e6%96%b9%e6%b3%95%e5%8f%af%e7%94%a8%e4%ba%8e%e8%8e%b7%e5%8f%96-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="有哪些常用工具或方法可用于获取 &ldquo;实际结果&rdquo;？">有哪些常用工具或方法可用于获取 &ldquo;实际结果&rdquo;？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c-%e6%9d%a5%e8%af%86%e5%88%ab%e5%92%8c%e8%af%8a%e6%96%ad%e8%bd%af%e4%bb%b6%e7%bc%ba%e9%99%b7%e6%88%96%e9%97%ae%e9%a2%98" aria-label="如何使用 &ldquo;实际结果 &ldquo;来识别和诊断软件缺陷或问题？">如何使用 &ldquo;实际结果 &ldquo;来识别和诊断软件缺陷或问题？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%b7%b1%e5%b1%82%e7%90%86%e8%a7%a3" aria-label="深层理解">深层理解</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%a6%82%e4%bd%95%e5%bd%b1%e5%93%8d%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95" aria-label="“实际结果”如何影响回归测试？">“实际结果”如何影响回归测试？</a></li>
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%9c%a8%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2" aria-label="“实际结果”在自动化测试中扮演什么角色？">“实际结果”在自动化测试中扮演什么角色？</a></li>
-                    <li>
-                        <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%b7%ae%e5%bc%82%e5%a6%82%e4%bd%95%e6%9c%89%e5%8a%a9%e4%ba%8e%e8%bd%af%e4%bb%b6%e4%bc%98%e5%8c%96%e5%92%8c%e6%94%b9%e8%bf%9b" aria-label="“实际结果”差异如何有助于软件优化和改进？">“实际结果”差异如何有助于软件优化和改进？</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#actual-result-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="Actual Result 实际结果">Actual Result 实际结果</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于实际结果的问题">关于实际结果的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9c%a8%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e7%9a%84%e5%ae%9a%e4%b9%89%e6%98%af%e4%bb%80%e4%b9%88" aria-label="在软件测试中“实际结果”的定义是什么？">在软件测试中“实际结果”的定义是什么？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%9c%a8-e2e-%e6%b5%8b%e8%af%95%e4%b8%ad%e7%a1%ae%e5%ae%9a-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c-%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么在 e2e 测试中确定 &ldquo;实际结果 &ldquo;很重要？">为什么在 e2e 测试中确定 &ldquo;实际结果 &ldquo;很重要？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%af%b9%e6%95%b4%e4%b8%aa%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e6%9c%89%e4%bd%95%e8%b4%a1%e7%8c%ae" aria-label="“实际结果”对整个测试过程有何贡献？">“实际结果”对整个测试过程有何贡献？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%af%94%e8%be%83%e4%b8%8e%e5%af%b9%e6%af%94" aria-label="比较与对比">比较与对比</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a2%84%e6%9c%9f%e7%bb%93%e6%9e%9c%e5%92%8c%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab" aria-label="“预期结果”和“实际结果”有什么区别？">“预期结果”和“实际结果”有什么区别？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e4%b8%8e%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b%e6%9c%89%e4%bd%95%e5%85%b3%e7%b3%bb" aria-label="“实际结果”与“测试用例”有何关系？">“实际结果”与“测试用例”有何关系？</a></li>
+                <li>
+                    <a href="#%e5%9c%a8%e4%bb%80%e4%b9%88%e6%83%85%e5%86%b5%e4%b8%8b%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%8f%af%e8%83%bd%e4%b8%8e%e9%a2%84%e6%9c%9f%e7%bb%93%e6%9e%9c%e4%b8%8d%e5%90%8c" aria-label="在什么情况下“实际结果”可能与“预期结果”不同？">在什么情况下“实际结果”可能与“预期结果”不同？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="实际应用">实际应用</a><ul>
+                        
+                <li>
+                    <a href="#%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e4%b8%ad%e5%a6%82%e4%bd%95%e8%ae%b0%e5%bd%95%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="测试过程中如何记录“实际结果”？">测试过程中如何记录“实际结果”？</a></li>
+                <li>
+                    <a href="#%e6%9c%89%e5%93%aa%e4%ba%9b%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e6%88%96%e6%96%b9%e6%b3%95%e5%8f%af%e7%94%a8%e4%ba%8e%e8%8e%b7%e5%8f%96-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c" aria-label="有哪些常用工具或方法可用于获取 &ldquo;实际结果&rdquo;？">有哪些常用工具或方法可用于获取 &ldquo;实际结果&rdquo;？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8-%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c-%e6%9d%a5%e8%af%86%e5%88%ab%e5%92%8c%e8%af%8a%e6%96%ad%e8%bd%af%e4%bb%b6%e7%bc%ba%e9%99%b7%e6%88%96%e9%97%ae%e9%a2%98" aria-label="如何使用 &ldquo;实际结果 &ldquo;来识别和诊断软件缺陷或问题？">如何使用 &ldquo;实际结果 &ldquo;来识别和诊断软件缺陷或问题？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b7%b1%e5%b1%82%e7%90%86%e8%a7%a3" aria-label="深层理解">深层理解</a><ul>
+                        
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%a6%82%e4%bd%95%e5%bd%b1%e5%93%8d%e5%9b%9e%e5%bd%92%e6%b5%8b%e8%af%95" aria-label="“实际结果”如何影响回归测试？">“实际结果”如何影响回归测试？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%9c%a8%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2" aria-label="“实际结果”在自动化测试中扮演什么角色？">“实际结果”在自动化测试中扮演什么角色？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%e5%b7%ae%e5%bc%82%e5%a6%82%e4%bd%95%e6%9c%89%e5%8a%a9%e4%ba%8e%e8%bd%af%e4%bb%b6%e4%bc%98%e5%8c%96%e5%92%8c%e6%94%b9%e8%bf%9b" aria-label="“实际结果”差异如何有助于软件优化和改进？">“实际结果”差异如何有助于软件优化和改进？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="actual-result-实际结果">Actual Result 实际结果<a hidden class="anchor" aria-hidden="true" href="#actual-result-实际结果">#</a></h2>
 <blockquote>
@@ -454,7 +402,7 @@
 <li><strong>自动化<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a></strong>：在诸如**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/selenium">Selenium</a><strong>、</strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/C/cypress.md">Cypress</a><strong>或</strong>Appium**等框架中编写的脚本在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>期间自动捕获输出。例如：</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 示例：使用 Selenium 进行文本验证
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">String</span> <span class="nx">actualText</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s2">&#34;elementId&#34;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl"><span class="nb">String</span> <span class="nx">actualText</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s2">&#34;elementId&#34;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">();</span>
 </span></span></code></pre></div><ul>
 <li>
 <p><strong>日志记录</strong>：通常，自动化测试被设计为记录结果和错误。诸如 Java 的<strong>Log4j</strong>或<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/N/node-js.md">Node.js</a>的<strong>Winston</strong>之类的工具可用于记录实际结果。</p>
@@ -505,7 +453,7 @@
 <h4 id="实际结果在自动化测试中扮演什么角色">“实际结果”在自动化测试中扮演什么角色？<a hidden class="anchor" aria-hidden="true" href="#实际结果在自动化测试中扮演什么角色">#</a></h4>
 <p>在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md">自动化测试</a>中，<strong>实际结果</strong>作为验证软件行为是否符合预期结果的关键数据点起着重要作用。这是由<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>执行时产生的输出。然后，此结果会自动与**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/expected-result.md">期望结果</a>**进行比较，以确定测试是否通过或失败。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 捕获自动化测试中的实际结果的示例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">actualResult</span> <span class="o">=</span> <span class="nx">performAction</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">actualResult</span> <span class="o">=</span> <span class="nx">performAction</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">actualResult</span><span class="p">,</span> <span class="nx">expectedResult</span><span class="p">,</span> <span class="s1">&#39;测试失败：实际结果与期望结果不匹配。&#39;</span><span class="p">);</span>
 </span></span></code></pre></div><p>在自动化<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scenario.md">测试场景</a>尤其是复杂场景中，<strong>实际结果</strong>对于确定差异发生的确切步骤至关重要。当测试失败时，<strong>实际结果</strong>立即提供有关失败性质的反馈，使工程师能够在无需手动干预的情况下启动调试和根本原因分析。</p>
 <p>自动化测试通常将<strong>实际结果</strong>记录到报告或仪表板中，提供<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>的历史记录。这有助于趋势分析，并有助于了解软件随时间的稳定性。</p>
@@ -543,12 +491,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/">
     <span class="title">« 上一页</span>
     <br>
     <span>软件测试术语分享:Ad Hoc Testing 随机测试</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/">
     <span class="title">下一页 »</span>
     <br>
     <span>软件测试术语分享:Accessibility Testing 无障碍测试</span>
@@ -559,7 +507,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on x"
-            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -568,7 +516,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -577,7 +525,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -586,7 +534,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -595,7 +543,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -604,7 +552,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on telegram"
-            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -613,7 +561,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Actual Result 实际结果 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aActual%20Result%20%e5%ae%9e%e9%99%85%e7%bb%93%e6%9e%9c&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-actual-result%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -624,26 +572,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -658,9 +591,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -701,11 +639,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

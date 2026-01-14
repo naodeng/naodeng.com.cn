@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Postman on 软件测试同学</title>
-    <link>http://localhost:1313/zh/zhcategories/postman/</link>
-    <description>Recent content in Postman on 软件测试同学</description>
+    <title>ZHcategories/Postman on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhcategories/postman/</link>
+    <description>Recent content in ZHcategories/Postman on 软件测试同学</description>
     <image>
       <title>软件测试同学</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 17 Mar 2024 10:05:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/zhcategories/postman/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/zh/zhcategories/postman/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</link>
       <pubDate>Sun, 17 Mar 2024 10:05:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</guid>
       <description>这篇博文是关于 Postman 接口自动化测试教程的进阶用法，重点介绍了 AI 助手 Postbot 的试用。文章可能包括作者对 Postbot 功能的介绍、使用方法、优势和适用场景等方面的详细说明。通过分享 Postbot 的试用体验，读者可以了解到如何借助 AI 技术来优化接口自动化测试流程，提高测试效率和准确性。这个教程有望为 Postman 用户提供一个深入了解和尝试 AI 助手的机会，并为他们在接口测试中应用新技术提供指导和灵感。</description>
     </item>
     <item>
       <title>接口测试新手入门教程：不同框架和不同开发语言</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
       <description>这篇博文汇总了关于不同框架和开发语言的接口自动化测试教程，为读者提供全面的学习资源。涵盖了各种流行测试框架和编程语言，让您能够选择适合自己项目的最佳方案。无论您是 Python、Java、JavaScript 还是其他语言的开发者，无论您偏好使用的是 REST Assured、SuperTest 还是其他框架，这个合集都将为您提供深入的学习指南，帮助您在接口自动化测试领域更加游刃有余。不容错过的资源，助您全面掌握接口自动化测试的各种工具和技术。</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 常用命令行选项，文件上传场景和 SSL 证书场景</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</link>
       <pubDate>Mon, 27 Nov 2023 12:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</guid>
       <description>这篇博文深度挖掘 Postman 接口自动化测试的进阶用法，集中讨论常用命令行选项、文件上传场景和 SSL 证书场景。学会如何运用常用命令行选项优化测试流程，解决文件上传和 SSL 证书等特殊场景的测试挑战</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 数据驱动</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</link>
       <pubDate>Fri, 24 Nov 2023 19:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</guid>
       <description>这篇博文深入研究 Postman 接口自动化测试的高级技巧，专注于数据文件驱动和环境变量数据驱动。学习如何通过外部数据文件和灵活的环境变量，优雅地进行测试数据的驱动，提高测试覆盖率。博文将为您展示如何以更智能的方式管理和利用数据，使测试用例更具可扩展性和灵活性。</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</link>
       <pubDate>Thu, 23 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</guid>
       <description>深入研究 Postman 接口自动化测试的高级用法，专注于常用的测试脚本和第三方包示例。探讨如何编写强大的测试脚本，涵盖各种测试场景，并介绍一些常用的第三方包，优化测试流程。</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
       <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
       <description>Postman 接口自动化测试的进阶应用，专注于 CI/CD 和 GitHub Actions 的集成，以及 Allure 测试报告的接入。学习如何将 Postman 测试无缝整合到 CI/CD 流程中，通过 GitHub Actions 实现自动化测试。此外，了解如何集成 Allure 测试报告框架，生成详尽的测试结果报告</description>
     </item>
     <item>
       <title>Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目</title>
-      <link>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
+      <link>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</link>
       <pubDate>Tue, 21 Nov 2023 17:37:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</guid>
       <description>关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写</description>
     </item>
   </channel>

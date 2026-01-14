@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。">
 <meta name="author" content="nao.deng">
-<link rel="canonical" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/">
 <meta name="google-site-verification" content="google5e9a7c9479924ed2">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,35 +40,42 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-<meta name="baidu-site-verification" content="codeva-2siuZUJUWf" />
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'>
 </script>
-
-<script defer data-website-id="b3b285c9-3c35-4398-9252-91bb70560b84" src="https://analytics.naodeng.com.cn/hugo"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<meta name="sogou_site_verification" content="iwkYDJrzfK" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -78,19 +85,20 @@
           gtag('js', new Date());
           gtag('config', 'G-JBX883ZDJJ');
         }
-      </script><meta property="og:title" content="软件测试术语分享:Alpha Testing Alpha 测试" />
-<meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-29T12:06:44+08:00" />
-<meta property="article:modified_time" content="2024-02-29T12:06:44+08:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="软件测试术语分享:Alpha Testing Alpha 测试"/>
-<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。"/>
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试术语分享:Alpha Testing Alpha 测试">
+  <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-29T12:06:44+08:00">
+    <meta property="article:modified_time" content="2024-02-29T12:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试术语分享:Alpha Testing Alpha 测试">
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。">
 
 
 <script type="application/ld+json">
@@ -102,13 +110,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/zh/posts/"
+      "item": "https://naodeng.com.cn/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "软件测试术语分享:Alpha Testing Alpha 测试",
-      "item": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/"
+      "item": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/"
     }
   ]
 }
@@ -126,7 +134,7 @@
   "articleBody": "Alpha Testing Alpha 测试 Alpha 测试 (α 测试) 的目的是在产品到达最终用户之前识别错误。在开发过程后期但在 Beta 测试之前进行，有助于确保产品不存在重大问题。\n相关术语：\nBeta Testing Beta 测试 关于 Alpha 测试的问题 基础知识和重要性 什么是 Alpha 测试？ Alpha 测试是一种在产品面向真实用户之前旨在识别缺陷的内部验证过程。通常在软件经过初始开发和测试阶段但在beta 测试之前，在开发者的现场进行。这个阶段包括白盒和黑盒测试技术，测试团队可以访问源代码。\n在 Alpha 测试期间，软件会在真实用户环境中进行测试，以模拟实际用户的行为。测试的重点是功能的正确性、系统的稳定性和数据的完整性。测试人员通常使用自动化脚本执行重复的test cases，同时也经常使用探索性测试来发现不太明显的问题。\nAlpha 测试的有效性通过指标（如发现的缺陷数量、严重程度和解决它们所需的时间）来衡量。与开发团队的持续沟通对于及时解决问题至关重要。\nAlpha 测试人员通常是组织内没有直接参与项目开发的员工。他们从用户的角度提供宝贵的反馈，这对于软件的成功至关重要。\n为了克服有限的用户视角和潜在的偏见等挑战，采用了诸如轮换测试人员和整合**多样化的测试场景**等策略。通过分析反馈、完善测试用例和改进测试环境来进行改进。\n总之，Alpha 测试是确保软件质量并使其准备好进入下一阶段测试的关键步骤，从而使其面向更广泛用户的重要步骤。\n为什么 Alpha 测试在软件开发生命周期中很重要？ Alpha 测试在软件开发的整个生命周期中扮演着至关重要的角色，它是对可能影响用户体验的缺陷和问题的首要防线。通常在受控环境中进行，这个环境通常是开发软件的组织内部，而且它是在将产品交付给真实用户之前的最后一道测试。\n这个测试阶段的重点是发现在早期测试阶段（如单元测试或集成测试）中未被发现的缺陷。虽然它是**用户验收测试**的一部分，但由内部员工执行，这意味着可以快速获得反馈并与开发团队直接沟通。这有助于在软件进入由实际用户测试的 beta 阶段之前，微调软件的功能、可用性和稳定性。\nAlpha 测试还提供了根据业务需求和目标验证产品的机会，确保软件符合预期的用途并为最终用户提供价值。这是建立对产品质量信心的一个关键步骤，同时通过及时发现和解决问题，降低发布后的维护成本。\n通过模拟真实用户行为，Alpha 测试有助于发现自动化测试可能未覆盖的复杂场景，为软件在各种条件下的性能提供更全面的评估。这个阶段对于成功的产品发布非常关键，因为它有助于确保软件的健壮性、可靠性，并且已经准备好进入下一个测试或发布的阶段。\nAlpha 测试的主要目的是什么？ Alpha 测试 的主要目的是在软件产品进入β测试阶段之前验证其核心功能。其进行的目的是确保最关键的功能按预期运行，并在开发周期的早期发现主要缺陷。这个阶段通常采用白盒测试和黑盒测试技术，重点是模拟真实用户的行为，并在一个尽可能接近生产环境的环境中测试软件。\nAlpha 测试的目标是识别和修复与功能、可用性、安全性和性能相关的问题，这些问题可能会显著影响用户体验或导致系统故障。这是质量保证过程中的关键步骤，为开发团队提供有关产品稳定性和准备好进入下一阶段测试及最终发布给实际用户的宝贵反馈。\nAlpha 测试与其他类型的测试有何不同？ Alpha 测试与其他测试类型的主要区别在于其在开发生命周期中的位置和受众范围的广度。它在**单元测试、集成测试之后进行，通常也在某种形式的系统测试**之后进行。与由外部用户执行的β测试不同，Alpha 测试通常由开发软件的组织内部的员工进行。\nAlpha 测试侧重于产品在受控环境下的功能正确性、可用性和总体行为，通常使用白盒测试技术。它比单元测试和集成测试更严格，但在实际使用方面不如β测试那样。在 Alpha 测试期间，测试人员与开发人员之间的反馈循环更加紧密，允许进行**快速的迭代**和修复。\n相比之下，**β测试涉及更广泛的受众，对环境的控制较少，旨在揭示仅在实际条件下出现的问题。另一方面，性能测试**专门针对系统在各种负载下的响应性和稳定性，这可能不是 Alpha 测试的关注点。\nAlpha 测试还与**验收测试**有所不同，验收测试通常是发布前的最后阶段，其中软件根据业务需求进行验证，通常由最终用户或客户进行。\n总而言之，Alpha 测试 是一种内部、受控和早期的测试，在β测试之前进行，侧重于在暴露给外部用户或利益相关者之前提高软件质量。\n进行 Alpha 测试的主要好处是什么？ 进行 Alpha 测试的主要好处包括：\n早期发现关键问题：Alpha 测试在产品进入β测试或公开发布之前发现严重的缺陷，降低主要故障的风险。 用户体验反馈：测试人员通常模拟真实用户行为，为用户体验和界面设计提供宝贵见解。 成本节约：早期识别和修复问题可以显著降低发布后补丁和更新的成本。 质量保证：在软件面向更大受众之前，有助于确保一定水平的质量，维护产品的声誉。 压力测试：Alpha 测试可以包括压力测试，评估软件在负载较重或资源有限的情况下的性能。 安全评估：可以识别并解决潜在的安全漏洞，对于保护用户数据和维护信任至关重要。 功能验证：确保所有功能按预期工作并符合指定的要求。 内部反馈循环：测试人员与开发人员之间的紧密合作促使快速修复和功能改进，提升开发流程。 通过关注这些好处，Alpha 测试在开发强大、用户友好且安全的软件产品方面起到了重要作用。\n流程与技巧 Alpha 测试过程涉及哪些步骤？ Alpha 测试过程通常包括以下步骤：\n规划：明确目标、范围和计划。选择跨职能团队，包括开发人员、测试人员和最终用户。\n设计测试用例：创建覆盖所有功能的测试用例。关注真实世界的使用场景。\n设置环境：准备类似于生产环境但在组织内部的测试环境。\n执行测试：运行测试用例，进行探索性测试，并记录结果。测试人员应模拟最终用户行为。\n缺陷报告：记录缺陷，包括重现步骤、预期与实际结果以及严重程度等详细信息。\n反馈循环：与开发团队分享发现，以进行修复。根据影响对问题进行优先排序。\n回归测试：重新测试已修复的问题，并执行健全性检查，确保新更改未引入其他问题。\n性能监测：评估系统在负载下的行为（如果适用）。检查内存泄漏、响应时间和稳定性。\n可用性评估：收集用户对界面和体验的反馈。可能根据此反馈进行调整。\n安全检查：进行基本的安全评估，以识别明显的漏洞。\n文档审查：确保所有相关文档都已更新，以反映经过测试的系统的当前状态。\n验收：一旦解决了所有关键问题，软件符合验收标准，就可以结束 Alpha 阶段。\n回顾：分析过程，识别未来周期的改进，并记录所学到的经验。\n在这些步骤中，保持清晰的沟通渠道，确保所有团队成员对 Alpha 测试阶段的目标和进展保持一致。\nAlpha 测试中常用哪些技术？ 在 Alpha 测试中，常见的测试技术包括：\n探索性测试：测试人员在没有预定义测试用例的情况下，探索软件以发现意外行为。 可用性测试：专注于用户界面和用户体验，确保软件直观且易于使用。 白盒测试：涉及测试应用程序的内部结构或工作原理，通常由了解源代码的开发人员使用。 黑盒测试：测试人员在不了解内部工作原理的情况下评估功能，模拟最终用户的视角。 回归测试：确保新的更改没有对现有功能产生不良影响。 用户验收测试 (UAT)：最终用户的子集在受控环境中测试软件，验证其是否符合其需求。 自动化测试：使用脚本和工具重复运行测试，适用于回归和性能测试。 性能测试：评估应用程序在特定工作负载下的响应性、稳定性、可伸缩性和速度。 安全测试：识别软件内部可能导致安全漏洞的问题。 调试：开发人员使用工具和技术来识别、隔离和修复在 Alpha 测试期间报告的错误。 测试人员通常使用这些技术的组合，以确保全面覆盖。技术的选择受软件复杂性、开发阶段以及 Alpha 测试阶段的目标的影响。\nAlpha 测试的测试环境是如何设置的？ 为 Alpha 测试建立测试环境通常包括以下步骤：\n复制生产环境：尽可能模仿生产环境，以确保在测试期间软件的行为类似。这包括硬件、软件、网络配置和数据库。\n数据准备：使用逼真的数据集，必要时进行匿名化。这有助于模拟真实的使用场景。\n版本控制：确保要测试的软件版本足够稳定，并处于版本控制中以跟踪更改和管理构建。\n部署：自动化将新构建部署到 Alpha 环境的过程，以简化发布流程。\n监控工具：实施监控工具以跟踪系统性能、错误日志和应用程序内用户活动。\n访问控制：限制对 Alpha 环境的访问仅限于授权人员，通常是内部测试团队和开发人员。\n测试工具：设置必要的测试工具和框架，支持自动化测试执行、缺陷跟踪和报告。\n文档：提供有关设置的文档，包括访问详细信息，以确保团队成员能够高效工作。\n备份和恢复：建立备份和恢复程序，以防数据丢失，并在必要时快速恢复环境。\n安全：确保环境安全，以保护敏感数据并防止未经授权的访问。\n持续集成：集成持续集成系统，以自动对新构建运行测试。\n反馈机制：为测试人员实施反馈机制，以便有效报告问题和提供建议。\nAlpha 测试期间通常会发现哪些类型的缺陷或问题？ 在 Alpha 测试期间，通常会发现以下类型的缺陷或问题：\n功能性缺陷：这些是与功能不按照需求中预期或规定的问题。 用户界面故障：可能影响用户体验的界面布局、设计或可用性方面的问题。 性能问题：影响软件速度和流畅性的慢、卡或其他效率问题。 安全漏洞：可能被恶意实体利用的弱点。 集成缺陷：不同组件或系统相互交互时出现的问题。 数据处理错误：与数据输入、存储、检索或处理相关的问题。 安装和配置问题：在设置或定制软件过程中遇到的挑战。 硬件兼容性问题：在各种硬件配置上运行软件时出现的困难。 本地化和国际化问题：在为不同语言和地区适应软件时出现的错误。 无障碍问题：阻碍残障人士轻松使用软件的障碍。 Alpha 测试旨在在软件进入beta 测试或发布给公众之前发现这些问题，确保产品质量更高，用户体验更好。\n角色和责任 谁通常执行 Alpha 测试？ Alpha 测试通常由软件开发组织的内部团队执行。这个团队包括开发人员、质量保证 (QA) 工程师，有时还有产品经理。他们紧密合作，模拟真实用户行为进行测试，目的是在软件交付给外部用户之前发现缺陷和问题。\n这些内部测试人员对软件的功能和目标有深刻的了解，这使得他们能够就功能、用户体验和整体系统性能提供宝贵的反馈。他们还了解软件的设计和开发流程，有助于他们创建有效的测试用例和测试场景。\n在某些情况下，尤其是在较小的公司或初创公司中，Alpha 测试可能还会涉及特定的外部用户或公司利益相关者，他们并非开发团队的一部分，但对软件有着浓厚的兴趣。然而，在测试的早期阶段，他们通常会签署保密协议，以确保信息的机密性。\nAlpha 测试人员与开发团队密切协作，报告问题，提出改进建议，并验证修复，以确保软件在进入下一个测试阶段（如beta 测试）之前达到必要的质量标准，从而为外部用户的评估做好准备。\nAlpha 测试员的角色和职责是什么？ Alpha 测试人员在软件测试的早期阶段发挥着关键作用，着重于在产品进入beta 测试或公开发布之前进行功能验证。他们的责任包括：\n执行测试用例：Alpha 测试人员遵循一组预定义的测试用例，确保软件的行为符合预期。 探索性测试：他们通常参与探索性测试，以发现脚本测试可能无法捕捉到的问题。 报告缺陷：他们详细记录并报告测试期间发现的任何缺陷或异常给开发团队。 提供反馈：除了技术问题，Alpha 测试人员还就用户体验、可用性和功能集提供反馈。 回归测试：在进行修复或更改后，他们执行回归测试，确保新的代码变更没有引入新的错误。 修复的验证：他们验证在后续构建中已经正确解决了报告的问题。 沟通：与开发团队进行有效沟通至关重要，以澄清功能，讨论问题并提出改进建议。 Alpha 测试人员必须对软件的目标有深刻的理解，并具备识别不仅仅是明显的缺陷，还包括可能影响性能、安全性和用户满意度的微妙问题的技能。他们的意见对于开发团队在软件进入下一个测试阶段之前优先处理问题和改进至关重要。\nAlpha 测试团队如何与开发团队互动？ Alpha 测试团队通常通过定期的会议、电子邮件、即时通讯和问题跟踪系统等常见沟通渠道与开发团队保持互动。他们直接向开发人员提供反馈和报告缺陷，通常使用**缺陷跟踪系统**，以记录、跟踪和分配问题以供解决。\n这种互动是协作性的，其目的是在软件进入beta 测试或发布之前识别和解决问题。Alpha 团队还可能提供改进或增强的建议，为软件的整体质量做出贡献。开发人员有责任优先考虑并及时解决反馈，通常需要与测试人员密切合作，以了解问题背后的背景。\n整个过程旨在建立一个反馈循环，使开发团队能够快速实施修复，而 Alpha 测试团队则可以重新测试以确认问题是否已解决。这种密切的协作有助于确保软件在进入开发周期的下一阶段之前是稳定的，并且符合质量标准。\n挑战与解决方案 Alpha 测试期间通常会遇到哪些挑战？ 在 Alpha 测试期间常见的挑战包括：\n用户反馈有限：由于 Alpha 测试通常在内部进行，因此相比于与真实用户进行的 beta 测试，反馈的多样性可能有限。 资源限制：分配足够的资源，如时间和人员，可能很困难，可能会影响测试的全面性。 环境差异：测试环境可能无法完美复制生产环境，导致只有在发布后才会出现的问题。 功能完备性：Alpha 测试通常发生在所有功能最终确定之前，这可能使得全面测试软件变得具有挑战性。 缺陷优先级：决定首先修复哪些错误可能很具挑战性，特别是在处理大量问题时。 测试覆盖率：实现足够的测试覆盖以确保检查软件的所有方面可能很困难。 回归测试：确保新的代码更改不会破坏现有功能需要认真进行回归测试，这可能会耗费时间。 集成问题：测试不同组件的集成可能会揭示难以诊断和修复的复杂缺陷。 性能测试：Alpha 测试可能不关注性能问题，这可能导致未发现的瓶颈。 为了克服这些挑战，可以采用一些策略，如自动回归测试、持续集成、模块化测试和**增量测试。此外，使用虚拟化环境可以更准确地模拟生产环境，而根据严重程度和影响进行缺陷修复的优先级排序**可以简化流程。\n可以使用什么策略来克服这些挑战？ 为了应对 Alpha 测试中的挑战，可以考虑以下策略：\n根据风险和影响优先处理测试用例。首先关注关键功能，以确保及早发现重大问题。 实施自动回归测试，快速验证新更改后现有功能是否按预期工作。 使用虚拟化或容器化来复制测试环境，确保一致性和便捷的设置。 与开发团队密切合作，建立清晰的沟通渠道，以迅速解决问题。 从不同团队成员收集反馈，以获取对产品可用性和功能的不同视角。 通过采用敏捷方法快速迭代，允许渐进性改进和对发现的缺陷的迅速响应。 利用**缺陷跟踪工具**高效管理和优先处理测试中发现的问题。 详细记录测试用例和结果，为未来的测试周期和开发工作提供有价值的见解。 通过采用这些策略，Alpha 测试可以变得更加有效，从而产生更可靠且用户友好的产品。\n如何衡量和提高 Alpha 测试的有效性？ 如何衡量和提高 Alpha 测试的有效性可以通过各种指标和持续改进实践来实现：\n缺陷检测效率（DDE）：计算在 Alpha 测试期间发现的缺陷与发布前总缺陷数量的比率。较高的比率表示测试效果更好。 测试覆盖率：确保测试所有关键路径和功能。使用代码覆盖工具识别应用程序未测试的部分。 用户反馈：从 Alpha 测试人员收集关于可用性、功能和整体体验的定性反馈。 修复时间：监控解决在 Alpha 测试期间发现的问题所需的平均时间。较短的时间可能表示更好的响应速度和开发效率。 测试用例的有效性：审查测试用例的相关性和完整性。定期更新以反映应用程序的变化。 提高 Alpha 测试的有效性涉及：\n定期修订和更新测试用例，以与应用程序中的新功能和变更保持一致。 加强测试人员和开发人员之间的沟通，以促进更快的问题解决。 引入自动回归测试，快速验证最近的更改是否对现有功能产生了负面影响。 利用基于风险的测试，将测试工作重点放在应用程序的高风险区域。 在 Alpha 测试后进行回顾会议，讨论取得的成果、存在的问题以及改进的行动项。 参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
   "wordCount" : "289",
   "inLanguage": "zh",
-  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2024-02-29T12:06:44+08:00",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-02-29T12:06:44+08:00",
   "dateModified": "2024-02-29T12:06:44+08:00",
   "author":{
     "@type": "Person",
@@ -134,38 +142,26 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/"
+    "@id": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "软件测试同学",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
+      "url": "https://naodeng.com.cn/favicon.ico"
     }
   }
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -185,38 +181,49 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/" title="🇬🇧English"
-                            aria-label="🇬🇧English">🇬🇧English</a>
-                    </li>
-                </ul>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/zh/archives/" title="归档">
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhcategories" title="分类">
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhtags" title="标签">
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/zhseries" title="系列">
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
                     <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
             <li>
@@ -248,140 +255,81 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       软件测试术语分享:Alpha Testing Alpha 测试
     </h1>
-    <div class="post-meta"><span title='2024-02-29 12:06:44 +0800 CST'>二月 29, 2024</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;289 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-alpha-testing.zh.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-02-29 12:06:44 +0800 CST'>2024年2月29日</span>&nbsp;·&nbsp;<span>2 分钟</span>&nbsp;·&nbsp;<span>289 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-alpha-testing.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details >
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#alpha-testing-alpha-%e6%b5%8b%e8%af%95" aria-label="Alpha Testing Alpha 测试">Alpha Testing Alpha 测试</a></li>
-                    <li>
-                        <a href="#%e5%85%b3%e4%ba%8e-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于 Alpha 测试的问题">关于 Alpha 测试的问题</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
-                            
-                    <li>
-                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-alpha-%e6%b5%8b%e8%af%95" aria-label="什么是 Alpha 测试？">什么是 Alpha 测试？</a></li>
-                    <li>
-                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-alpha-%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 Alpha 测试在软件开发生命周期中很重要？">为什么 Alpha 测试在软件开发生命周期中很重要？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%bb%e8%a6%81%e7%9b%ae%e7%9a%84%e6%98%af%e4%bb%80%e4%b9%88" aria-label="Alpha 测试的主要目的是什么？">Alpha 测试的主要目的是什么？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e4%b8%8e%e5%85%b6%e4%bb%96%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b5%8b%e8%af%95%e6%9c%89%e4%bd%95%e4%b8%8d%e5%90%8c" aria-label="Alpha 测试与其他类型的测试有何不同？">Alpha 测试与其他类型的测试有何不同？</a></li>
-                    <li>
-                        <a href="#%e8%bf%9b%e8%a1%8c-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%bb%e8%a6%81%e5%a5%bd%e5%a4%84%e6%98%af%e4%bb%80%e4%b9%88" aria-label="进行 Alpha 测试的主要好处是什么？">进行 Alpha 测试的主要好处是什么？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%b5%81%e7%a8%8b%e4%b8%8e%e6%8a%80%e5%b7%a7" aria-label="流程与技巧">流程与技巧</a><ul>
-                            
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="Alpha 测试过程涉及哪些步骤？">Alpha 测试过程涉及哪些步骤？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af" aria-label="Alpha 测试中常用哪些技术？">Alpha 测试中常用哪些技术？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83%e6%98%af%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%ae%e7%9a%84" aria-label="Alpha 测试的测试环境是如何设置的？">Alpha 测试的测试环境是如何设置的？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e9%80%9a%e5%b8%b8%e4%bc%9a%e5%8f%91%e7%8e%b0%e5%93%aa%e4%ba%9b%e7%b1%bb%e5%9e%8b%e7%9a%84%e7%bc%ba%e9%99%b7%e6%88%96%e9%97%ae%e9%a2%98" aria-label="Alpha 测试期间通常会发现哪些类型的缺陷或问题？">Alpha 测试期间通常会发现哪些类型的缺陷或问题？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e8%a7%92%e8%89%b2%e5%92%8c%e8%b4%a3%e4%bb%bb" aria-label="角色和责任">角色和责任</a><ul>
-                            
-                    <li>
-                        <a href="#%e8%b0%81%e9%80%9a%e5%b8%b8%e6%89%a7%e8%a1%8c-alpha-%e6%b5%8b%e8%af%95" aria-label="谁通常执行 Alpha 测试？">谁通常执行 Alpha 测试？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e5%91%98%e7%9a%84%e8%a7%92%e8%89%b2%e5%92%8c%e8%81%8c%e8%b4%a3%e6%98%af%e4%bb%80%e4%b9%88" aria-label="Alpha 测试员的角色和职责是什么？">Alpha 测试员的角色和职责是什么？</a></li>
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e5%9b%a2%e9%98%9f%e5%a6%82%e4%bd%95%e4%b8%8e%e5%bc%80%e5%8f%91%e5%9b%a2%e9%98%9f%e4%ba%92%e5%8a%a8" aria-label="Alpha 测试团队如何与开发团队互动？">Alpha 测试团队如何与开发团队互动？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e6%8c%91%e6%88%98%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="挑战与解决方案">挑战与解决方案</a><ul>
-                            
-                    <li>
-                        <a href="#alpha-%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e9%80%9a%e5%b8%b8%e4%bc%9a%e9%81%87%e5%88%b0%e5%93%aa%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="Alpha 测试期间通常会遇到哪些挑战？">Alpha 测试期间通常会遇到哪些挑战？</a></li>
-                    <li>
-                        <a href="#%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e4%bb%80%e4%b9%88%e7%ad%96%e7%95%a5%e6%9d%a5%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="可以使用什么策略来克服这些挑战？">可以使用什么策略来克服这些挑战？</a></li>
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f%e5%92%8c%e6%8f%90%e9%ab%98-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e6%9c%89%e6%95%88%e6%80%a7" aria-label="如何衡量和提高 Alpha 测试的有效性？">如何衡量和提高 Alpha 测试的有效性？</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#alpha-testing-alpha-%e6%b5%8b%e8%af%95" aria-label="Alpha Testing Alpha 测试">Alpha Testing Alpha 测试</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于 Alpha 测试的问题">关于 Alpha 测试的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-alpha-%e6%b5%8b%e8%af%95" aria-label="什么是 Alpha 测试？">什么是 Alpha 测试？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-alpha-%e6%b5%8b%e8%af%95%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 Alpha 测试在软件开发生命周期中很重要？">为什么 Alpha 测试在软件开发生命周期中很重要？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%bb%e8%a6%81%e7%9b%ae%e7%9a%84%e6%98%af%e4%bb%80%e4%b9%88" aria-label="Alpha 测试的主要目的是什么？">Alpha 测试的主要目的是什么？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e4%b8%8e%e5%85%b6%e4%bb%96%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b5%8b%e8%af%95%e6%9c%89%e4%bd%95%e4%b8%8d%e5%90%8c" aria-label="Alpha 测试与其他类型的测试有何不同？">Alpha 测试与其他类型的测试有何不同？</a></li>
+                <li>
+                    <a href="#%e8%bf%9b%e8%a1%8c-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%bb%e8%a6%81%e5%a5%bd%e5%a4%84%e6%98%af%e4%bb%80%e4%b9%88" aria-label="进行 Alpha 测试的主要好处是什么？">进行 Alpha 测试的主要好处是什么？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b5%81%e7%a8%8b%e4%b8%8e%e6%8a%80%e5%b7%a7" aria-label="流程与技巧">流程与技巧</a><ul>
+                        
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e8%bf%87%e7%a8%8b%e6%b6%89%e5%8f%8a%e5%93%aa%e4%ba%9b%e6%ad%a5%e9%aa%a4" aria-label="Alpha 测试过程涉及哪些步骤？">Alpha 测试过程涉及哪些步骤？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af" aria-label="Alpha 测试中常用哪些技术？">Alpha 测试中常用哪些技术？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83%e6%98%af%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%ae%e7%9a%84" aria-label="Alpha 测试的测试环境是如何设置的？">Alpha 测试的测试环境是如何设置的？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e9%80%9a%e5%b8%b8%e4%bc%9a%e5%8f%91%e7%8e%b0%e5%93%aa%e4%ba%9b%e7%b1%bb%e5%9e%8b%e7%9a%84%e7%bc%ba%e9%99%b7%e6%88%96%e9%97%ae%e9%a2%98" aria-label="Alpha 测试期间通常会发现哪些类型的缺陷或问题？">Alpha 测试期间通常会发现哪些类型的缺陷或问题？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%a7%92%e8%89%b2%e5%92%8c%e8%b4%a3%e4%bb%bb" aria-label="角色和责任">角色和责任</a><ul>
+                        
+                <li>
+                    <a href="#%e8%b0%81%e9%80%9a%e5%b8%b8%e6%89%a7%e8%a1%8c-alpha-%e6%b5%8b%e8%af%95" aria-label="谁通常执行 Alpha 测试？">谁通常执行 Alpha 测试？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e5%91%98%e7%9a%84%e8%a7%92%e8%89%b2%e5%92%8c%e8%81%8c%e8%b4%a3%e6%98%af%e4%bb%80%e4%b9%88" aria-label="Alpha 测试员的角色和职责是什么？">Alpha 测试员的角色和职责是什么？</a></li>
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e5%9b%a2%e9%98%9f%e5%a6%82%e4%bd%95%e4%b8%8e%e5%bc%80%e5%8f%91%e5%9b%a2%e9%98%9f%e4%ba%92%e5%8a%a8" aria-label="Alpha 测试团队如何与开发团队互动？">Alpha 测试团队如何与开发团队互动？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%8c%91%e6%88%98%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="挑战与解决方案">挑战与解决方案</a><ul>
+                        
+                <li>
+                    <a href="#alpha-%e6%b5%8b%e8%af%95%e6%9c%9f%e9%97%b4%e9%80%9a%e5%b8%b8%e4%bc%9a%e9%81%87%e5%88%b0%e5%93%aa%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="Alpha 测试期间通常会遇到哪些挑战？">Alpha 测试期间通常会遇到哪些挑战？</a></li>
+                <li>
+                    <a href="#%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e4%bb%80%e4%b9%88%e7%ad%96%e7%95%a5%e6%9d%a5%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="可以使用什么策略来克服这些挑战？">可以使用什么策略来克服这些挑战？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f%e5%92%8c%e6%8f%90%e9%ab%98-alpha-%e6%b5%8b%e8%af%95%e7%9a%84%e6%9c%89%e6%95%88%e6%80%a7" aria-label="如何衡量和提高 Alpha 测试的有效性？">如何衡量和提高 Alpha 测试的有效性？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content"><h2 id="alpha-testing-alpha-测试">Alpha Testing Alpha 测试<a hidden class="anchor" aria-hidden="true" href="#alpha-testing-alpha-测试">#</a></h2>
 <p>Alpha 测试 (α 测试) 的目的是在产品到达最终用户之前识别错误。在开发过程后期但在 Beta 测试之前进行，有助于确保产品不存在重大问题。</p>
@@ -629,12 +577,12 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-api/">
     <span class="title">« 上一页</span>
     <br>
     <span>软件测试术语分享:API 应用程序编程接口</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-agile-testing/">
+  <a class="next" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-agile-testing/">
     <span class="title">下一页 »</span>
     <br>
     <span>软件测试术语分享:Agile Testing 敏捷测试</span>
@@ -645,7 +593,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on x"
-            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -654,7 +602,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -663,7 +611,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95">
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -672,7 +620,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -681,7 +629,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -690,7 +638,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on telegram"
-            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -699,7 +647,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:Alpha Testing Alpha 测试 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aAlpha%20Testing%20Alpha%20%e6%b5%8b%e8%af%95&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-alpha-testing%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -710,26 +658,11 @@
 </ul>
 
   </footer>
-<script src="https://giscus.app/client.js"
-        data-repo="naodeng/naodeng.com.cn"
-        data-repo-id="R_kgDOHntNtg"
-        data-category="Show and tell"
-        data-category-id="DIC_kwDOHntNts4Cavst"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/zh/">软件测试同学</a></span> · 
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
 
     <span>
         Powered by
@@ -744,9 +677,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -787,11 +725,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

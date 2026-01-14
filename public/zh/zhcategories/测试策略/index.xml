@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>测试策略 on 软件测试同学</title>
-    <link>http://localhost:1313/zh/zhcategories/%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5/</link>
-    <description>Recent content in 测试策略 on 软件测试同学</description>
+    <title>ZHcategories/测试策略 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhcategories/%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5/</link>
+    <description>Recent content in ZHcategories/测试策略 on 软件测试同学</description>
     <image>
       <title>软件测试同学</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 10 Jan 2024 17:05:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/zhcategories/%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/zh/zhcategories/%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理</title>
-      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/</link>
+      <link>https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/</link>
       <pubDate>Wed, 10 Jan 2024 17:05:44 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/</guid>
       <description>这篇博文深入探讨 UI 测试最佳实践的测试策略（二），着重介绍了更为合理的测试策略。从避免追求完美主义、选择参考浏览器、发现 Bug 时的处理方式，到在修复之前编写测试、单个长的端到端测试与多个小的独立测试的选择，全面阐述了什么样的测试策略更为合理。无论是初学者还是经验丰富的测试专业人员，这篇博文都将为您提供实用的指导，帮助您制定更明智、高效的 UI 测试策略。点击链接，探索更合理的 UI 测试方法！</description>
     </item>
     <item>
       <title>UI 测试最佳实践的测试策略（一）：组件测试 vs（UI）集成测试 vs E2E 测试</title>
-      <link>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/</link>
+      <link>https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/</link>
       <pubDate>Tue, 09 Jan 2024 18:05:44 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/</guid>
       <description>这篇博文深入研究 UI 测试最佳实践，首篇聚焦于测试策略的选择：组件测试、UI 集成测试和端到端（E2E）测试的区别。了解每种测试类型的优缺点，帮助您在 UI 测试中做出明智的选择。不论您是开发者还是测试专业人员，这篇文章将为您提供深入洞察，助力您设计出更可靠、高效的 UI 测试策略。点击链接，探索 UI 测试的最佳实践，提升您的测试流程质量。</description>
     </item>
   </channel>

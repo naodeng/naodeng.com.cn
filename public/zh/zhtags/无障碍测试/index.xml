@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>无障碍测试 on 软件测试同学</title>
-    <link>http://localhost:1313/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/</link>
-    <description>Recent content in 无障碍测试 on 软件测试同学</description>
+    <title>ZHtags/无障碍测试 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in ZHtags/无障碍测试 on 软件测试同学</description>
     <image>
       <title>软件测试同学</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.134.1</generator>
+    <generator>Hugo -- 0.154.3</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 17 Mar 2024 19:06:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现</title>
-      <link>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</link>
+      <link>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</link>
       <pubDate>Sun, 17 Mar 2024 19:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</guid>
       <description>这篇博文是关于 30 天 AI 测试挑战活动的第十六天，旨在评估采用 AI 进行无障碍测试，并分享个人的发现。文章可能涵盖作者对使用 AI 进行无障碍测试的实际应用经验，包括 AI 工具的选择、测试方法的改进、测试结果的有效性等方面。通过分享对采用 AI 进行无障碍测试的评估和发现，读者将了解作者在实际测试场景中的应用情况，并从中汲取经验和教训。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在无障碍测试领域应用的机会，并促进行业对话和技术创新。</description>
     </item>
     <item>
       <title>软件测试术语分享:Accessibility Testing 无障碍测试</title>
-      <link>http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/</link>
+      <link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/</link>
       <pubDate>Mon, 19 Feb 2024 12:06:44 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/</guid>
+      <guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-accessibility-testing/</guid>
       <description>这篇博文是软件测试术语分享系列的一部分，聚焦于无障碍测试。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面阐述了无障碍测试在软件开发中的关键角色。读者将深入了解如何确保应用程序对所有用户都具有可访问性，并学到实施无障碍测试的最佳实践。通过这个系列分享，读者将更好地了解无障碍测试的价值，并在实际测试中更全面地考虑用户体验的多样性。</description>
     </item>
   </channel>
