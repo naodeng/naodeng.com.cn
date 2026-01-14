@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>验收测试驱动开发 on 软件测试同学</title><link>https://naodeng.com.cn/zh/zhtags/%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/</link><description>Recent content in 验收测试驱动开发 on 软件测试同学+feedId:74645609298733056+userId:59115928834052096</description><image><title>软件测试同学</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>zh</language><lastBuildDate>Tue, 06 Feb 2024 16:06:44 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/zh/zhtags/%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml"/><item><title>软件测试术语分享:ATDD 验收测试驱动开发</title><link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/</link><pubDate>Tue, 06 Feb 2024 16:06:44 +0800</pubDate><guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/</guid><description>这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ZHtags/验收测试驱动开发 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in ZHtags/验收测试驱动开发 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 06 Feb 2024 16:06:44 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>软件测试术语分享:ATDD 验收测试驱动开发</title>
+      <link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/</link>
+      <pubDate>Tue, 06 Feb 2024 16:06:44 +0800</pubDate>
+      <guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/</guid>
+      <description>这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。</description>
+    </item>
+  </channel>
+</rss>

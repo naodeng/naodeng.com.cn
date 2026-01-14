@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>A/B 测试 on 软件测试同学</title><link>https://naodeng.com.cn/zh/zhtags/a/b-%E6%B5%8B%E8%AF%95/</link><description>Recent content in A/B 测试 on 软件测试同学+feedId:74645609298733056+userId:59115928834052096</description><image><title>软件测试同学</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>zh</language><lastBuildDate>Mon, 05 Feb 2024 16:06:44 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/zh/zhtags/a/b-%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>软件测试术语分享:A/B 测试</title><link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/</link><pubDate>Mon, 05 Feb 2024 16:06:44 +0800</pubDate><guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/</guid><description>这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ZHtags/a/B 测试 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/a/b-%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in ZHtags/a/B 测试 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 05 Feb 2024 16:06:44 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/a/b-%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>软件测试术语分享:A/B 测试</title>
+      <link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/</link>
+      <pubDate>Mon, 05 Feb 2024 16:06:44 +0800</pubDate>
+      <guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/</guid>
+      <description>这篇博文是软件测试术语分享系列的一部分，专注于 A/B 测试。从基础概念、重要性、实施执行、分析与解释，到深层理解，文章全面介绍了 A/B 测试的各个方面。读者将深入了解这一测试方法如何帮助优化产品和提升用户体验，同时学习在实际项目中如何正确执行、分析和解释 A/B 测试的结果。通过这个系列分享，读者将更全面地理解和应用 A/B 测试在软件开发中的价值。</description>
+    </item>
+  </channel>
+</rss>

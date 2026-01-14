@@ -1,1 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Integration Allure Report on Nao's Blog</title><link>https://naodeng.com.cn/tags/integration-allure-report/</link><description>Recent content in Integration Allure Report on Nao's Blog+feedId:74645609298733056+userId:59115928834052096</description><image><title>Nao's Blog</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>en</language><lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/tags/integration-allure-report/index.xml" rel="self" type="application/rss+xml"/><item><title>API Testing Tutorial for Beginners: different frameworks and different development languages</title><link>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link><pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate><guid>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid><description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description></item><item><title>Postman API Automation Testing Tutorial Advance Usage Integration CI CD and allure test report</title><link>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link><pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate><guid>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid><description>This advanced guide focuses on the integration of Postman API automation testing with CI/CD and GitHub Actions, along with the incorporation of Allure test reports. Learn how to seamlessly integrate Postman tests into the CI/CD process, achieving automated testing through GitHub Actions. Additionally, understand how to integrate the Allure test report framework to generate detailed test result reports.</description></item><item><title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title><link>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link><pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate><guid>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</guid><description>A deep dive into advanced Pytest usage, focusing on how Pytest is support multiple environment and integration allure report.</description></item><item><title>REST Assured API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report</title><link>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</link><pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate><guid>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</guid><description>dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Integration Allure Report on Nao&#39;s Blog</title>
+    <link>https://naodeng.com.cn/tags/integration-allure-report/</link>
+    <description>Recent content in Integration Allure Report on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/tags/integration-allure-report/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API Testing Tutorial for Beginners: different frameworks and different development languages</title>
+      <link>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
+      <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
+      <description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description>
+    </item>
+    <item>
+      <title>Postman API Automation Testing Tutorial Advance Usage Integration CI CD and allure test report</title>
+      <link>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</link>
+      <pubDate>Wed, 22 Nov 2023 17:37:00 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</guid>
+      <description>This advanced guide focuses on the integration of Postman API automation testing with CI/CD and GitHub Actions, along with the incorporation of Allure test reports. Learn how to seamlessly integrate Postman tests into the CI/CD process, achieving automated testing through GitHub Actions. Additionally, understand how to integrate the Allure test report framework to generate detailed test result reports.</description>
+    </item>
+    <item>
+      <title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</title>
+      <link>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</link>
+      <pubDate>Fri, 17 Nov 2023 16:32:55 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</guid>
+      <description>A deep dive into advanced Pytest usage, focusing on how Pytest is support multiple environment and integration allure report.</description>
+    </item>
+    <item>
+      <title>REST Assured API Automation Testing Tutorial: Advanced Usage - Integration CI CD and Integration Allure Report</title>
+      <link>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</link>
+      <pubDate>Sat, 04 Nov 2023 10:21:19 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</guid>
+      <description>dive into advanced applications of REST Assured, focusing on how to integrate CI/CD (Continuous Integration/Continuous Delivery) tools and integrate Allure test reports.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Identify a Case Study on AI in Testing and Share Your Findings on Nao's Blog</title><link>https://naodeng.com.cn/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/</link><description>Recent content in Identify a Case Study on AI in Testing and Share Your Findings on Nao's Blog+feedId:74645609298733056+userId:59115928834052096</description><image><title>Nao's Blog</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>en</language><lastBuildDate>Wed, 06 Mar 2024 13:06:44 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/index.xml" rel="self" type="application/rss+xml"/><item><title>30 Days of AI in Testing Challenge: Day 5:Identify a case study on AI in testing and share your findings</title><link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</link><pubDate>Wed, 06 Mar 2024 13:06:44 +0800</pubDate><guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</guid><description>This blog post is for the fifth day of the 30-day AI testing challenge event, which requires participants to identify a case study of artificial intelligence in testing and share their findings. The blog post may include the background, objectives, and methods of the case study, as well as key insights discovered during the research process. By sharing the case study, the author is able to demonstrate the application of AI in real-world testing scenarios to the readers, promoting the exchange of knowledge and learning. This series of events is expected to provide testing professionals with an in-depth understanding of AI testing and encourage them to actively participate in the research of actual cases.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Identify a Case Study on AI in Testing and Share Your Findings on Nao&#39;s Blog</title>
+    <link>https://naodeng.com.cn/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/</link>
+    <description>Recent content in Identify a Case Study on AI in Testing and Share Your Findings on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 06 Mar 2024 13:06:44 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 Days of AI in Testing Challenge: Day 5:Identify a case study on AI in testing and share your findings</title>
+      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</link>
+      <pubDate>Wed, 06 Mar 2024 13:06:44 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</guid>
+      <description>This blog post is for the fifth day of the 30-day AI testing challenge event, which requires participants to identify a case study of artificial intelligence in testing and share their findings. The blog post may include the background, objectives, and methods of the case study, as well as key insights discovered during the research process. By sharing the case study, the author is able to demonstrate the application of AI in real-world testing scenarios to the readers, promoting the exchange of knowledge and learning. This series of events is expected to provide testing professionals with an in-depth understanding of AI testing and encourage them to actively participate in the research of actual cases.</description>
+    </item>
+  </channel>
+</rss>

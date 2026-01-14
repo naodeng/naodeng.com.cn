@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>测试理论指南 on Nao&#39;s Blog</title>
+    <link>https://naodeng.com.cn/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/</link>
+    <description>Recent content in 测试理论指南 on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en</language>
+    <atom:link href="https://naodeng.com.cn/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

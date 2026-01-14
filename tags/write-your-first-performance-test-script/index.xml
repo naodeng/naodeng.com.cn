@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Write Your First Performance Test Script on Nao's Blog</title><link>https://naodeng.com.cn/tags/write-your-first-performance-test-script/</link><description>Recent content in Write Your First Performance Test Script on Nao's Blog+feedId:74645609298733056+userId:59115928834052096</description><image><title>Nao's Blog</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>en</language><lastBuildDate>Tue, 09 Jan 2024 17:22:00 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/tags/write-your-first-performance-test-script/index.xml" rel="self" type="application/rss+xml"/><item><title>K6 Performance Testing Tutorial: Getting Started and Write your first k6 test script</title><link>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</link><pubDate>Tue, 09 Jan 2024 17:22:00 +0800</pubDate><guid>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</guid><description>This article will take you into the world of K6 performance testing. The blog post covers the introductory knowledge of K6 performance testing, environment setup steps, and how to write your first test script. Whether you are a beginner or an experienced performance testing professional, this tutorial will provide you with clear guidance to help you quickly get started with K6 and start building efficient performance testing scripts</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Write Your First Performance Test Script on Nao&#39;s Blog</title>
+    <link>https://naodeng.com.cn/tags/write-your-first-performance-test-script/</link>
+    <description>Recent content in Write Your First Performance Test Script on Nao&#39;s Blog</description>
+    <image>
+      <title>Nao&#39;s Blog</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Jan 2024 17:22:00 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/tags/write-your-first-performance-test-script/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K6 Performance Testing Tutorial: Getting Started and Write your first k6 test script</title>
+      <link>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</link>
+      <pubDate>Tue, 09 Jan 2024 17:22:00 +0800</pubDate>
+      <guid>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</guid>
+      <description>This article will take you into the world of K6 performance testing. The blog post covers the introductory knowledge of K6 performance testing, environment setup steps, and how to write your first test script. Whether you are a beginner or an experienced performance testing professional, this tutorial will provide you with clear guidance to help you quickly get started with K6 and start building efficient performance testing scripts</description>
+    </item>
+  </channel>
+</rss>

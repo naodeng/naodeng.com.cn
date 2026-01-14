@@ -1,85 +1,779 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings | Nao's Blog</title>
-<meta name=keywords content="Evaluate adopting AI for accessibility testing and share your findings,prompt engineering,Prompt,accessibility testing,AI"><meta name=description content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author&rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors&rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation."><meta name=author content="nao.deng"><link rel=canonical href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/><meta name=google-site-verification content="google5e9a7c9479924ed2"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=https://naodeng.com.cn/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://naodeng.com.cn/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://naodeng.com.cn/favicon-32x32.png><link rel=apple-touch-icon href=https://naodeng.com.cn/apple-touch-icon.png><link rel=mask-icon href=https://naodeng.com.cn/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/><link rel=alternate hreflang=zh href=https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta name=baidu-site-verification content="codeva-2siuZUJUWf"><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'></script><script defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://analytics.naodeng.com.cn/hugo></script><meta http-equiv=Content-Type content="text/html;charset=gb2312"><meta name=sogou_site_verification content="iwkYDJrzfK"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ")}</script><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings"><meta property="og:description" content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author&rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors&rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation."><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"><meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-03-17T19:06:44+08:00"><meta property="article:modified_time" content="2024-03-17T19:06:44+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://naodeng.com.cn/papermod-cover.png"><meta name=twitter:title content="30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings"><meta name=twitter:description content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author&rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors&rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://naodeng.com.cn/posts/"},{"@type":"ListItem","position":2,"name":"30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings","item":"https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings","name":"30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings","description":"This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author\u0026rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors\u0026rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation.","keywords":["Evaluate adopting AI for accessibility testing and share your findings","prompt engineering","Prompt","accessibility testing","AI"],"articleBody":"Day 16: Evaluate adopting AI for accessibility testing and share your findings Welcome to day 16! Today we turn our focus towards the potential of AI to enhance accessibility testing.\nAccessibility testing helps ensure that applications are usable and inclusive for individuals with diverse abilities, such as visual, auditory, cognitive, or motor impairments. Ensuring applications are accessible to a wide range of users is, in many cases, a legal requirement but also a moral imperative. As we have seen throughout this challenge, AI can offer advantages in various areas of testing, and its potential to enhance accessibility testing is no different. Let’s dive in and discover how AI can be leveraged to improve accessibility testing!\nTask Steps Research AI and Accessibility Testing: Research how AI is currently being used to support accessibility testing. Explore resources like articles, whitepapers, or case studies that discuss:\nTools that leverage AI to automate accessibility checks, analyse user interfaces for compliance with accessibility standards, or even generate alternative text descriptions for images. How AI can be used to address accessibility challenges beyond basic UI checks, such as testing for screen reader compatibility or detecting colour contrast issues. Evaluate Applicability in Your Context: Consider your context and reflect on:\nAccessibility testing needs: Identify areas where accessibility testing is crucial for your projects Potential benefits of AI: Evaluate how AI-powered accessibility testing tools or techniques could improve your current testing process. Potential limitations: Be mindful of the potential limitations of AI for accessibility testing. Share Your Findings: Respond to this post with your insights and learnings. Consider sharing:\nLinks to the resources you found helpful How AI could benefit accessibility testing in your context Potential limitations you identified and how they could be mitigated Your overall perspective on the role of AI in accessibility testing Why Take Part Improve Accessibility Testing: Gain valuable knowledge about how AI can contribute to creating inclusive applications. Identify Opportunities: Discover potential ways to enhance accessibility testing in your projects. Sharing Your Thoughts: By sharing, you contribute to the collective understanding of AI’s role in accessibility testing. Task Link https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy\nMy Day 16 Task 1. About Research AI and Accessibility Testing Regarding the practice of using AI tools for accessibility testing, I consulted ChatGPT4, and in its reply, it recommended some AI tools that can be used for accessibility testing. The response from ChatGPT4 is as follows:\nThe application of AI technology in the field of accessibility testing is increasing, aiming to help developers and testers more efficiently discover and solve accessibility issues. Here are some AI tools that can be used for accessibility testing: 1. **Axe Core**: Although Axe Core itself is an automated accessibility testing library, its enterprise edition offers some AI-driven features for identifying and solving accessibility issues. 2. **AccessiBe**: AccessiBe uses AI to address accessibility issues on websites. It can automatically identify and fix a variety of accessibility problems, such as navigation, keyboard functionality, and screen reader optimization. 3. **UserWay**: UserWay provides an AI-driven website accessibility plugin that can automatically resolve a variety of accessibility issues, including color contrast, font size, navigation, and other accessibility-related problems. 4. **Evinced**: Evinced is a development tool that uses AI to help developers identify accessibility issues during the coding process. It can be integrated into the development workflow to provide real-time feedback and suggestions for fixes. 5. **Fable**: Fable uses AI technology to provide accessibility testing that simulates real users, especially for those with visual and motor impairments. It helps developers understand how these users interact with their products. These tools can help organizations discover and solve accessibility issues earlier in the development and testing process, ensuring their products and services are accessible to everyone. When using these tools, it's important to combine them with manual testing and user feedback, as AI and automated tools may not catch all types of accessibility issues. But based on previous AI testing challenges, I learned about an AI accessibility testing tool, Applitools, that has been deployed. My task today will focus on exploring the use of the Applitools tool for accessibility testing.\nApplitools tool’s official page on accessibility testing: https://applitools.com/platform/validate/accessibility/\nIntroduction to Applitools’ AI Accessibility Testing Assistant, Applitools Contrast Advisor:\nApplitools enables teams to run automated accessibility tests to verify WCAG compliance, helping ensure regulatory compliance. Run accessibility tests on every release for maximum coverage. Applitools seamlessly integrates into your existing test automation workflow. It applies visual AI to analyze whether web and mobile applications have potential contrast accessibility violations. Contrast Advisor helps you focus on problem areas, ensuring you don’t waste time and cycles on areas that don’t need attention. Additionally, we’ve integrated Contrast Advisor directly into Eyes, so there’s no need for time-consuming setup steps or workflow changes. Once enabled, you don’t even need to rerun existing tests - you can jump straight to your existing dashboard to start reviewing results. Contrast Advisor is not limited by webpage structure scanning, so it can provide contrast suggestions for websites, PDFs, UX design models, and applications designed for Web, mobile Web, native mobile, desktop, etc. As W3C points out, mobile devices are more likely to be used under conditions such as strong sunlight, which increases the need for strict contrast compliance. Compared to traditional detection methods, Contrast Advisor uses visual AI, enabling it to identify violations in native mobile applications and mobile web. WCAG specifies minimum contrast for text as well as graphics and user interface components, but traditional tools cannot detect such violations. Contrast Advisor uses visual AI to detect contrast in images, graphics, icons, UI components, and plain text. Contrast Advisor can run with Applitools Ultrafast Grid to render and detect subtle contrast differences and potential violations on Chrome, Firefox, Safari, Edge, and IE. Contrast Advisor complies with WCAG 2.0 and the updated 2.1 standards. This includes “AA – Minimum Contrast” and the stricter “AAA – Enhanced Contrast” options. Official demo introduction of Applitools Contrast Advisor provided by Applitools https://www.youtube.com/watch?v=sGXjPJiQwdk\n2. About Evaluate Applicability in Your Context Accessibility Testing Needs for My Current Project Unfortunately, the delivery cycle for my current project is quite tight, and the importance of accessibility testing requirements is not too high. However, I will still use Google’s Lighthouse tool to conduct accessibility tests and scoring for each core page of the product, ensuring that each core page has a high accessibility test score. For pages with low accessibility test scores, I will schedule defect cards for repair.\nBelow is the accessibility test score for a core page of the current project product:\nPotential Benefits of AI By using the Lighthouse tool for accessibility testing evaluation, it can somewhat meet\nthe project’s accessibility testing needs. However, after reviewing the accessibility testing scoring rules of Lighthouse, I found that Lighthouse can identify very limited accessibility testing issues. A high accessibility test score does not necessarily mean that the page is truly accessible to everyone.\nIf there is a professional accessibility testing AI tool that complies with various accessibility regulations, it would definitely improve the efficiency of the project’s accessibility testing and ensure that the project’s accessibility testing results comply with regulations.\nPotential Limitations Because it involves using AI tools, and the current project is an unreleased product, there are certain risks associated with general data privacy security and result bias uncertainty.\n3. About Sharing Your Findings I applied for a trial of Applitools’ Accessibility Testing Assistant, Applitools Contrast Advisor. Below is the trial report:\nTrial application link: https://applitools.com/platform/validate/accessibility/\nTrying out Applitools first requires registering an account, which must be a company email address and requires providing company information.\nAfter registering an account and verifying the email, there are some tool surveys:\nAfterward, I chose Playwright and followed the official introduction documents for initialization, https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart\nObtain APPLITOOLS_API_KEY Set up APPLITOOLS local environment Install Applitools Run tests The official demo test code is as follows:\nimport { test } from '@playwright/test'; import { BatchInfo, Configuration, EyesRunner, VisualGridRunner, BrowserType, DeviceName, ScreenOrientation, Eyes, Target } from '@applitools/eyes-playwright'; export let Batch: BatchInfo; export let Config: Configuration; export let Runner: EyesRunner; test.beforeAll(async() =\u003e { // Configure Applitools SDK to run on the Ultrafast Grid Runner = new VisualGridRunner({ testConcurrency: 5 }); Batch = new BatchInfo({name: `Playwright Typescript Quickstart`}); Config = new Configuration(); Config.setBatch(Batch); Config.addBrowsers( { name: BrowserType.CHROME, width: 800, height: 600 }, { name: BrowserType.FIREFOX, width: 1600, height: 1200 }, { name: BrowserType.SAFARI, width: 1024, height: 768 }, { chromeEmulationInfo: { deviceName: DeviceName.iPhone_11, screenOrientation: ScreenOrientation.PORTRAIT} }, { chromeEmulationInfo: { deviceName: DeviceName.Nexus_10, screenOrientation: ScreenOrientation.LANDSCAPE} } ) }); test.describe('ACME Bank', () =\u003e { let eyes: Eyes; test.beforeEach(async ({ page }) =\u003e { eyes = new Eyes(Runner, Config); // Start Applitools Visual AI Test // Args: Playwright Page, App Name, Test Name, Viewport Size for local driver await eyes.open(page, 'ACME Bank', `Playwright Typescript: Quickstart`, { width: 1200, height: 600 }) }); test('log into a bank account', async ({ page }) =\u003e { await page.goto('https://sandbox.applitools.com/bank?layoutAlgo=true'); // Full Page - Visual AI Assertion await eyes.check('Login page', Target.window().fully()); await page.locator('id=username').fill('user'); await page.locator('id=password').fill('password'); await page.locator('id=log-in').click(); await page.locator('css=.dashboardNav_navContainer__kA4wD').waitFor({state: 'attached'}); // Full Page - Visual AI Assertion await eyes.check('Main page', Target.window().fully() .layoutRegions( '.dashboardOverview_accountBalances__3TUPB', '.dashboardTable_dbTable___R5Du' ) ); }); test.afterEach(async () =\u003e { // End Applitools Visual AI Test await eyes.close(); }); }); test.afterAll(async() =\u003e { // Wait for Ultrast Grid Renders to finish and gather results const results = await Runner.getAllTestResults(); console.log('Visual test results', results); }); However, running the test failed.\nAfter investigation, I found that I made a mistake in the first step of setting environment variables. After resetting the environment variables, the demo test could run and pass normally.\nThen, I logged into Applitools Eyes to view the test results.\nWhen viewing the accessibility test results and launching Applitools Contrast Advisor on the results page, I found that the test results did not display the Applitools Contrast Advisor indicator, showing a difference from the official introduction video.\nToday’s trial did not go smoothly, but I will continue to try and update more usage results later.\nAbout Event The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.\nCommunity Website: https://www.ministryoftesting.com\nEvent Link: https://www.ministryoftesting.com/events/30-days-of-ai-in-testing\nChallenges:\nDay 1: Introduce yourself and your interest in AI\nDay 2: Read an introductory article on AI in testing and share it\nDay 3: List ways in which AI is used in testing\nDay 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway\nDay 5:Identify a case study on AI in testing and share your findings\nDay 6:Explore and share insights on AI testing tools\nDay 7: Research and share prompt engineering techniques\nDay 8: Craft a detailed prompt to support test activities\nDay 9: Evaluate prompt quality and try to improve it\nDay 10: Critically Analyse AI-Generated Tests\nDay 11: Generate test data using AI and evaluate its efficacy\nDay 12: Evaluate whether you trust AI to support testing and share your thoughts\nDay 13: Develop a testing approach and become an AI in testing champion\nDay 14: Generate AI test code and share your experience\nDay 15: Gauge your short-term AI in testing plans\nRecommended Readings API Automation Testing Tutorial Bruno API Automation Testing Tutorial Gatling Performance Testing Tutorial K6 Performance Testing Tutorial Postman API Automation Testing Tutorial Pytest API Automation Testing Tutorial REST Assured API Automation Testing Tutorial SuperTest API Automation Testing Tutorial 30 Days of AI in Testing Challenge ","wordCount":"1902","inLanguage":"en","image":"https://naodeng.com.cn/papermod-cover.png","datePublished":"2024-03-17T19:06:44+08:00","dateModified":"2024-03-17T19:06:44+08:00","author":{"@type":"Person","name":"nao.deng"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"},"publisher":{"@type":"Organization","name":"Nao's Blog","logo":{"@type":"ImageObject","url":"https://naodeng.com.cn/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://naodeng.com.cn/ accesskey=h title="Nao's Blog (Alt + H)">Nao's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://naodeng.com.cn/zh/ title=🇨🇳中文 aria-label=🇨🇳中文>🇨🇳中文</a></li></ul></div></div><ul id=menu><li><a href=https://naodeng.com.cn/archives title=Archive><span>Archive</span></a></li><li><a href=https://naodeng.com.cn/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://naodeng.com.cn/series/ title=Series><span>Series</span></a></li><li><a href=https://naodeng.com.cn/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn title=Dashboard><span>Dashboard</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://status.naodeng.com.cn title=Status><span>Status</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://naodeng.com.cn/>Home</a>&nbsp;»&nbsp;<a href=https://naodeng.com.cn/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings</h1><div class=post-meta><span title='2024-03-17 19:06:44 +0800 +0800'>March 17, 2024</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;1902 words&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;Translations:<ul class=i18n_list><li><a href=https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/>🇨🇳中文</a></li></ul>&nbsp;|&nbsp;<a href=https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings aria-label="Day 16: Evaluate adopting AI for accessibility testing and share your findings">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a><ul><li><a href=#task-steps aria-label="Task Steps">Task Steps</a></li><li><a href=#why-take-part aria-label="Why Take Part">Why Take Part</a></li><li><a href=#task-link aria-label="Task Link">Task Link</a></li></ul></li><li><a href=#my-day-16-task aria-label="My Day 16 Task">My Day 16 Task</a><ul><li><a href=#1-about-research-ai-and-accessibility-testing aria-label="1. About Research AI and Accessibility Testing">1. About Research AI and Accessibility Testing</a></li><li><a href=#2-about-evaluate-applicability-in-your-context aria-label="2. About Evaluate Applicability in Your Context">2. About Evaluate Applicability in Your Context</a><ul><li><a href=#accessibility-testing-needs-for-my-current-project aria-label="Accessibility Testing Needs for My Current Project">Accessibility Testing Needs for My Current Project</a></li><li><a href=#potential-benefits-of-ai aria-label="Potential Benefits of AI">Potential Benefits of AI</a></li><li><a href=#potential-limitations aria-label="Potential Limitations">Potential Limitations</a></li></ul></li><li><a href=#3-about-sharing-your-findings aria-label="3. About Sharing Your Findings">3. About Sharing Your Findings</a></li></ul></li><li><a href=#about-event aria-label="About Event">About Event</a></li><li><a href=#recommended-readings aria-label="Recommended Readings">Recommended Readings</a></li></ul></div></details></div><div class=post-content><h2 id=day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings>Day 16: Evaluate adopting AI for accessibility testing and share your findings<a hidden class=anchor aria-hidden=true href=#day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings>#</a></h2><p>Welcome to day 16! Today we turn our focus towards the potential of AI to enhance accessibility testing.</p><p>Accessibility testing helps ensure that applications are usable and inclusive for individuals with diverse abilities, such as visual, auditory, cognitive, or motor impairments. Ensuring applications are accessible to a wide range of users is, in many cases, a legal requirement but also a moral imperative. As we have seen throughout this challenge, AI can offer advantages in various areas of testing, and its potential to enhance accessibility testing is no different. Let’s dive in and discover how AI can be leveraged to improve accessibility testing!</p><h3 id=task-steps>Task Steps<a hidden class=anchor aria-hidden=true href=#task-steps>#</a></h3><ul><li><p><strong>Research AI and Accessibility Testing</strong>: Research how AI is currently being used to support accessibility testing. Explore resources like articles, whitepapers, or case studies that discuss:</p><ul><li>Tools that leverage AI to automate accessibility checks, analyse user interfaces for compliance with accessibility standards, or even generate alternative text descriptions for images.</li><li>How AI can be used to address accessibility challenges beyond basic UI checks, such as testing for screen reader compatibility or detecting colour contrast issues.</li></ul></li><li><p><strong>Evaluate Applicability in Your Context</strong>: Consider your context and reflect on:</p><ul><li><strong>Accessibility testing needs</strong>: Identify areas where accessibility testing is crucial for your projects</li><li><strong>Potential benefits of AI</strong>: Evaluate how AI-powered accessibility testing tools or techniques could improve your current testing process.</li><li><strong>Potential limitations</strong>: Be mindful of the potential limitations of AI for accessibility testing.</li></ul></li><li><p><strong>Share Your Findings</strong>: Respond to this post with your insights and learnings. Consider sharing:</p><ul><li>Links to the resources you found helpful</li><li>How AI could benefit accessibility testing in your context</li><li>Potential limitations you identified and how they could be mitigated</li><li>Your overall perspective on the role of AI in accessibility testing</li></ul></li></ul><h3 id=why-take-part>Why Take Part<a hidden class=anchor aria-hidden=true href=#why-take-part>#</a></h3><ul><li><strong>Improve Accessibility Testing</strong>: Gain valuable knowledge about how AI can contribute to creating inclusive applications.</li><li><strong>Identify Opportunities</strong>: Discover potential ways to enhance accessibility testing in your projects.</li><li><strong>Sharing Your Thoughts</strong>: By sharing, you contribute to the collective understanding of AI’s role in accessibility testing.</li></ul><h3 id=task-link>Task Link<a hidden class=anchor aria-hidden=true href=#task-link>#</a></h3><p><a href="https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy">https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy</a></p><h2 id=my-day-16-task>My Day 16 Task<a hidden class=anchor aria-hidden=true href=#my-day-16-task>#</a></h2><h3 id=1-about-research-ai-and-accessibility-testing>1. About <strong>Research AI and Accessibility Testing</strong><a hidden class=anchor aria-hidden=true href=#1-about-research-ai-and-accessibility-testing>#</a></h3><p>Regarding the practice of using AI tools for accessibility testing, I consulted ChatGPT4, and in its reply, it recommended some AI tools that can be used for accessibility testing. The response from ChatGPT4 is as follows:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>The application of AI technology in the field of accessibility testing is increasing, aiming to help developers and testers more efficiently discover and solve accessibility issues. Here are some AI tools that can be used for accessibility testing:
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>1. **Axe Core**: Although Axe Core itself is an automated accessibility testing library, its enterprise edition offers some AI-driven features for identifying and solving accessibility issues.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>2. **AccessiBe**: AccessiBe uses AI to address accessibility issues on websites. It can automatically identify and fix a variety of accessibility problems, such as navigation, keyboard functionality, and screen reader optimization.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>3. **UserWay**: UserWay provides an AI-driven website accessibility plugin that can automatically resolve a variety of accessibility issues, including color contrast, font size, navigation, and other accessibility-related problems.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>4. **Evinced**: Evinced is a development tool that uses AI to help developers identify accessibility issues during the coding process. It can be integrated into the development workflow to provide real-time feedback and suggestions for fixes.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>5. **Fable**: Fable uses AI technology to provide accessibility testing that simulates real users, especially for those with visual and motor impairments. It helps developers understand how these users interact with their products.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>These tools can help organizations discover and solve accessibility issues earlier in the development and testing process, ensuring their products and services are accessible to everyone. When using these tools, it&#39;s important to combine them with manual testing and user feedback, as AI and automated tools may not catch all types of accessibility issues.
-</span></span></code></pre></div><p>But based on previous AI testing challenges, I learned about an AI accessibility testing tool, Applitools, that has been deployed. My task today will focus on exploring the use of the Applitools tool for accessibility testing.</p><p>Applitools tool&rsquo;s official page on accessibility testing: <a href=https://applitools.com/platform/validate/accessibility/>https://applitools.com/platform/validate/accessibility/</a></p><p>Introduction to Applitools&rsquo; AI Accessibility Testing Assistant, Applitools Contrast Advisor:</p><ul><li>Applitools enables teams to run automated accessibility tests to verify WCAG compliance, helping ensure regulatory compliance.</li><li>Run accessibility tests on every release for maximum coverage.</li><li>Applitools seamlessly integrates into your existing test automation workflow. It applies visual AI to analyze whether web and mobile applications have potential contrast accessibility violations.</li><li>Contrast Advisor helps you focus on problem areas, ensuring you don’t waste time and cycles on areas that don’t need attention. Additionally, we’ve integrated Contrast Advisor directly into Eyes, so there’s no need for time-consuming setup steps or workflow changes. Once enabled, you don’t even need to rerun existing tests - you can jump straight to your existing dashboard to start reviewing results.</li><li>Contrast Advisor is not limited by webpage structure scanning, so it can provide contrast suggestions for websites, PDFs, UX design models, and applications designed for Web, mobile Web, native mobile, desktop, etc.</li><li>As W3C points out, mobile devices are more likely to be used under conditions such as strong sunlight, which increases the need for strict contrast compliance. Compared to traditional detection methods, Contrast Advisor uses visual AI, enabling it to identify violations in native mobile applications and mobile web.</li><li>WCAG specifies minimum contrast for text as well as graphics and user interface components, but traditional tools cannot detect such violations. Contrast Advisor uses visual AI to detect contrast in images, graphics, icons, UI components, and plain text.</li><li>Contrast Advisor can run with Applitools Ultrafast Grid to render and detect subtle contrast differences and potential violations on Chrome, Firefox, Safari, Edge, and IE. Contrast Advisor complies with WCAG 2.0 and the updated 2.1 standards. This includes “AA – Minimum Contrast” and the stricter “AAA – Enhanced Contrast” options.</li></ul><blockquote><p>Official demo introduction of Applitools Contrast Advisor provided by Applitools <a href="https://www.youtube.com/watch?v=sGXjPJiQwdk">https://www.youtube.com/watch?v=sGXjPJiQwdk</a></p></blockquote><h3 id=2-about-evaluate-applicability-in-your-context>2. About <strong>Evaluate Applicability in Your Context</strong><a hidden class=anchor aria-hidden=true href=#2-about-evaluate-applicability-in-your-context>#</a></h3><h4 id=accessibility-testing-needs-for-my-current-project><strong>Accessibility Testing Needs for My Current Project</strong><a hidden class=anchor aria-hidden=true href=#accessibility-testing-needs-for-my-current-project>#</a></h4><p>Unfortunately, the delivery cycle for my current project is quite tight, and the importance of accessibility testing requirements is not too high. However, I will still use Google&rsquo;s Lighthouse tool to conduct accessibility tests and scoring for each core page of the product, ensuring that each core page has a high accessibility test score. For pages with low accessibility test scores, I will schedule defect cards for repair.</p><p>Below is the accessibility test score for a core page of the current project product:</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8Z4XpX.png alt="Accessibility Test Score"></p><h4 id=potential-benefits-of-ai><strong>Potential Benefits of AI</strong><a hidden class=anchor aria-hidden=true href=#potential-benefits-of-ai>#</a></h4><p>By using the Lighthouse tool for accessibility testing evaluation, it can somewhat meet</p><p>the project&rsquo;s accessibility testing needs. However, after reviewing the accessibility testing scoring rules of Lighthouse, I found that Lighthouse can identify very limited accessibility testing issues. A high accessibility test score does not necessarily mean that the page is truly accessible to everyone.</p><p>If there is a professional accessibility testing AI tool that complies with various accessibility regulations, it would definitely improve the efficiency of the project&rsquo;s accessibility testing and ensure that the project&rsquo;s accessibility testing results comply with regulations.</p><h4 id=potential-limitations><strong>Potential Limitations</strong><a hidden class=anchor aria-hidden=true href=#potential-limitations>#</a></h4><p>Because it involves using AI tools, and the current project is an unreleased product, there are certain risks associated with general data privacy security and result bias uncertainty.</p><h3 id=3-about-sharing-your-findings>3. About <strong>Sharing Your Findings</strong><a hidden class=anchor aria-hidden=true href=#3-about-sharing-your-findings>#</a></h3><p>I applied for a trial of Applitools&rsquo; Accessibility Testing Assistant, Applitools Contrast Advisor. Below is the trial report:</p><p>Trial application link: <a href=https://applitools.com/platform/validate/accessibility/>https://applitools.com/platform/validate/accessibility/</a></p><p>Trying out Applitools first requires registering an account, which must be a company email address and requires providing company information.</p><p>After registering an account and verifying the email, there are some tool surveys:</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d2o4KM.png alt="Tool Surveys"></p><p>Afterward, I chose Playwright and followed the official introduction documents for initialization, <a href=https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart>https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart</a></p><ul><li>Obtain APPLITOOLS_API_KEY</li><li>Set up APPLITOOLS local environment</li><li>Install Applitools</li><li>Run tests</li></ul><p>The official demo test code is as follows:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-Typescript data-lang=Typescript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>test</span> <span class=p>}</span> <span class=kr>from</span> <span class=s1>&#39;@playwright/test&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>BatchInfo</span><span class=p>,</span> <span class=nx>Configuration</span><span class=p>,</span> <span class=nx>EyesRunner</span><span class=p>,</span> <span class=nx>VisualGridRunner</span><span class=p>,</span> <span class=nx>BrowserType</span><span class=p>,</span> <span class=nx>DeviceName</span><span class=p>,</span> <span class=nx>ScreenOrientation</span><span class=p>,</span> <span class=nx>Eyes</span><span class=p>,</span> <span class=nx>Target</span> <span class=p>}</span> <span class=kr>from</span> <span class=s1>&#39;@applitools/eyes-playwright&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kd>let</span> <span class=nx>Batch</span>: <span class=kt>BatchInfo</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kd>let</span> <span class=nx>Config</span>: <span class=kt>Configuration</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kd>let</span> <span class=nx>Runner</span>: <span class=kt>EyesRunner</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nx>test</span><span class=p>.</span><span class=nx>beforeAll</span><span class=p>(</span><span class=kr>async</span><span class=p>()</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=c1>// Configure Applitools SDK to run on the Ultrafast Grid
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>Runner</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>VisualGridRunner</span><span class=p>({</span> <span class=nx>testConcurrency</span>: <span class=kt>5</span> <span class=p>});</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Batch</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>BatchInfo</span><span class=p>({</span><span class=nx>name</span><span class=o>:</span> <span class=sb>`Playwright Typescript Quickstart`</span><span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nx>Config</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Configuration</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Config</span><span class=p>.</span><span class=nx>setBatch</span><span class=p>(</span><span class=nx>Batch</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Config</span><span class=p>.</span><span class=nx>addBrowsers</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span> <span class=nx>name</span>: <span class=kt>BrowserType.CHROME</span><span class=p>,</span> <span class=nx>width</span>: <span class=kt>800</span><span class=p>,</span> <span class=nx>height</span>: <span class=kt>600</span> <span class=p>},</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span> <span class=nx>name</span>: <span class=kt>BrowserType.FIREFOX</span><span class=p>,</span> <span class=nx>width</span>: <span class=kt>1600</span><span class=p>,</span> <span class=nx>height</span>: <span class=kt>1200</span> <span class=p>},</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span> <span class=nx>name</span>: <span class=kt>BrowserType.SAFARI</span><span class=p>,</span> <span class=nx>width</span>: <span class=kt>1024</span><span class=p>,</span> <span class=nx>height</span>: <span class=kt>768</span> <span class=p>},</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span> <span class=nx>chromeEmulationInfo</span><span class=o>:</span> <span class=p>{</span> <span class=nx>deviceName</span>: <span class=kt>DeviceName.iPhone_11</span><span class=p>,</span> <span class=nx>screenOrientation</span>: <span class=kt>ScreenOrientation.PORTRAIT</span><span class=p>}</span> <span class=p>},</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span> <span class=nx>chromeEmulationInfo</span><span class=o>:</span> <span class=p>{</span> <span class=nx>deviceName</span>: <span class=kt>DeviceName.Nexus_10</span><span class=p>,</span> <span class=nx>screenOrientation</span>: <span class=kt>ScreenOrientation.LANDSCAPE</span><span class=p>}</span> <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>)</span>
-</span></span><span class=line><span class=cl><span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nx>test</span><span class=p>.</span><span class=nx>describe</span><span class=p>(</span><span class=s1>&#39;ACME Bank&#39;</span><span class=p>,</span> <span class=p>()</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>eyes</span>: <span class=kt>Eyes</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=nx>test</span><span class=p>.</span><span class=nx>beforeEach</span><span class=p>(</span><span class=kr>async</span> <span class=p>({</span> <span class=nx>page</span> <span class=p>})</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=nx>eyes</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Eyes</span><span class=p>(</span><span class=nx>Runner</span><span class=p>,</span> <span class=nx>Config</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=c1>// Start Applitools Visual AI Test
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>// Args: Playwright Page, App Name, Test Name, Viewport Size for local driver
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>await</span> <span class=nx>eyes</span><span class=p>.</span><span class=nx>open</span><span class=p>(</span><span class=nx>page</span><span class=p>,</span> <span class=s1>&#39;ACME Bank&#39;</span><span class=p>,</span> <span class=sb>`Playwright Typescript: Quickstart`</span><span class=p>,</span> <span class=p>{</span> <span class=nx>width</span>: <span class=kt>1200</span><span class=p>,</span> <span class=nx>height</span>: <span class=kt>600</span> <span class=p>})</span>
-</span></span><span class=line><span class=cl>    <span class=p>});</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=nx>test</span><span class=p>(</span><span class=s1>&#39;log into a bank account&#39;</span><span class=p>,</span> <span class=kr>async</span> <span class=p>({</span> <span class=nx>page</span> <span class=p>})</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>await</span> <span class=nx>page</span><span class=p>.</span><span class=kr>goto</span><span class=p>(</span><span class=s1>&#39;https://sandbox.applitools.com/bank?layoutAlgo=true&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=c1>// Full Page - Visual AI Assertion
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>await</span> <span class=nx>eyes</span><span class=p>.</span><span class=nx>check</span><span class=p>(</span><span class=s1>&#39;Login page&#39;</span><span class=p>,</span> <span class=nx>Target</span><span class=p>.</span><span class=nb>window</span><span class=p>().</span><span class=nx>fully</span><span class=p>());</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=k>await</span> <span class=nx>page</span><span class=p>.</span><span class=nx>locator</span><span class=p>(</span><span class=s1>&#39;id=username&#39;</span><span class=p>).</span><span class=nx>fill</span><span class=p>(</span><span class=s1>&#39;user&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=k>await</span> <span class=nx>page</span><span class=p>.</span><span class=nx>locator</span><span class=p>(</span><span class=s1>&#39;id=password&#39;</span><span class=p>).</span><span class=nx>fill</span><span class=p>(</span><span class=s1>&#39;password&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=k>await</span> <span class=nx>page</span><span class=p>.</span><span class=nx>locator</span><span class=p>(</span><span class=s1>&#39;id=log-in&#39;</span><span class=p>).</span><span class=nx>click</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=k>await</span> <span class=nx>page</span><span class=p>.</span><span class=nx>locator</span><span class=p>(</span><span class=s1>&#39;css=.dashboardNav_navContainer__kA4wD&#39;</span><span class=p>).</span><span class=nx>waitFor</span><span class=p>({</span><span class=nx>state</span><span class=o>:</span> <span class=s1>&#39;attached&#39;</span><span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=c1>// Full Page - Visual AI Assertion
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>await</span> <span class=nx>eyes</span><span class=p>.</span><span class=nx>check</span><span class=p>(</span><span class=s1>&#39;Main page&#39;</span><span class=p>,</span> <span class=nx>Target</span><span class=p>.</span><span class=nb>window</span><span class=p>().</span><span class=nx>fully</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>            <span class=p>.</span><span class=nx>layoutRegions</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>                <span class=s1>&#39;.dashboardOverview_accountBalances__3TUPB&#39;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>                <span class=s1>&#39;.dashboardTable_dbTable___R5Du&#39;</span>
-</span></span><span class=line><span class=cl>            <span class=p>)</span>
-</span></span><span class=line><span class=cl>        <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nx>test</span><span class=p>.</span><span class=nx>afterEach</span><span class=p>(</span><span class=kr>async</span> <span class=p>()</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=c1>// End Applitools Visual AI Test
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>await</span> <span class=nx>eyes</span><span class=p>.</span><span class=nx>close</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=p>});</span>
-</span></span><span class=line><span class=cl><span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nx>test</span><span class=p>.</span><span class=nx>afterAll</span><span class=p>(</span><span class=kr>async</span><span class=p>()</span> <span class=o>=&gt;</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=c1>// Wait for Ultrast Grid Renders to finish and gather results
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kr>const</span> <span class=nx>results</span> <span class=o>=</span> <span class=k>await</span> <span class=nx>Runner</span><span class=p>.</span><span class=nx>getAllTestResults</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Visual test results&#39;</span><span class=p>,</span> <span class=nx>results</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>});</span>
-</span></span></code></pre></div><p>However, running the test failed.</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HtcTxq.png alt="Test Failure Screenshot"></p><p>After investigation, I found that I made a mistake in the first step of setting environment variables. After resetting the environment variables, the demo test could run and pass normally.</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/blqBmp.png alt="Successful Test Run Screenshot"></p><p>Then, I logged into Applitools Eyes to view the test results.</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gTMNvw.png alt="My Demo Screenshot"></p><p>When viewing the accessibility test results and launching Applitools Contrast Advisor on the results page, I found that the test results did not display the Applitools Contrast Advisor indicator, showing a difference from the official introduction video.</p><p><img loading=lazy src=https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2P12hs.png alt="Official Promo Demo Screenshot"></p><p>Today&rsquo;s trial did not go smoothly, but I will continue to try and update more usage results later.</p><h2 id=about-event>About Event<a hidden class=anchor aria-hidden=true href=#about-event>#</a></h2><p>The &ldquo;30 Days of AI in Testing Challenge&rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &ldquo;30 Days of Agile Testing&rdquo; event.</p><p>Community Website: <a href=https://www.ministryoftesting.com>https://www.ministryoftesting.com</a></p><p>Event Link: <a href=https://www.ministryoftesting.com/events/30-days-of-ai-in-testing>https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p><p><strong>Challenges</strong>:</p><ul><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/>Day 1: Introduce yourself and your interest in AI</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/>Day 2: Read an introductory article on AI in testing and share it</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/>Day 3: List ways in which AI is used in testing</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/>Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/>Day 5:Identify a case study on AI in testing and share your findings</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/>Day 6:Explore and share insights on AI testing tools</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/>Day 7: Research and share prompt engineering techniques</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/>Day 8: Craft a detailed prompt to support test activities</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/>Day 9: Evaluate prompt quality and try to improve it</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/>Day 10: Critically Analyse AI-Generated Tests</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/>Day 11: Generate test data using AI and evaluate its efficacy</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/>Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/>Day 13: Develop a testing approach and become an AI in testing champion</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/>Day 14: Generate AI test code and share your experience</a></p></li><li><p><a href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/>Day 15: Gauge your short-term AI in testing plans</a></p></li></ul><h2 id=recommended-readings>Recommended Readings<a hidden class=anchor aria-hidden=true href=#recommended-readings>#</a></h2><ul><li><a href=https://naodeng.com.cn/series/api-automation-testing-tutorial/>API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/>Bruno API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/gatling-performance-testing-tutorial/>Gatling Performance Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/k6-performance-testing-tutorial/>K6 Performance Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/>Postman API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/>Pytest API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/>REST Assured API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/>SuperTest API Automation Testing Tutorial</a></li><li><a href=https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/>30 Days of AI in Testing Challenge</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://naodeng.com.cn/tags/evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/>Evaluate Adopting AI for Accessibility Testing and Share Your Findings</a></li><li><a href=https://naodeng.com.cn/tags/prompt-engineering/>Prompt Engineering</a></li><li><a href=https://naodeng.com.cn/tags/prompt/>Prompt</a></li><li><a href=https://naodeng.com.cn/tags/accessibility-testing/>Accessibility Testing</a></li><li><a href=https://naodeng.com.cn/tags/ai/>AI</a></li></ul><nav class=paginav><a class=prev href=https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/><span class=title>« Prev</span><br><span>30 Days of AI in Testing Challenge: Day 17: Automate bug reporting with AI and share your process and evaluation</span>
-</a><a class=next href=https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/><span class=title>Next »</span><br><span>Postman API Automation Testing Tutorial Advance Usage AI Assistant Postbot Trial Introduction</span></a></nav><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on x" href="https://x.com/intent/tweet/?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&amp;hashtags=EvaluateadoptingAIforaccessibilitytestingandshareyourfindings%2cpromptengineering%2cPrompt%2caccessibilitytesting%2cAI"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&amp;title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;summary=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;source=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on whatsapp" href="https://api.whatsapp.com/send?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings%20-%20https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on telegram" href="https://telegram.me/share/url?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on ycombinator" href="https://news.ycombinator.com/submitlink?t=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></li></ul></footer><script src=https://giscus.app/client.js data-repo=naodeng/naodeng.com.cn data-repo-id=R_kgDOHntNtg data-category="Show and tell" data-category-id=DIC_kwDOHntNts4Cavst data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=bottom data-theme=preferred_color_scheme data-lang=en crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2024 <a href=https://naodeng.com.cn/>Nao's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings | Nao&#39;s Blog</title>
+<meta name="keywords" content="Evaluate adopting AI for accessibility testing and share your findings, prompt engineering, Prompt, accessibility testing, AI">
+<meta name="description" content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author&rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors&rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation.">
+<meta name="author" content="nao.deng">
+<link rel="canonical" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:url" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">
+  <meta property="og:site_name" content="Nao&#39;s Blog">
+  <meta property="og:title" content="30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings">
+  <meta property="og:description" content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author’s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors’ applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-17T19:06:44+08:00">
+    <meta property="article:modified_time" content="2024-03-17T19:06:44+08:00">
+    <meta property="article:tag" content="Evaluate Adopting AI for Accessibility Testing and Share Your Findings">
+    <meta property="article:tag" content="Prompt Engineering">
+    <meta property="article:tag" content="Prompt">
+    <meta property="article:tag" content="Accessibility Testing">
+    <meta property="article:tag" content="AI">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/">
+      <meta property="og:see_also" content="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings">
+<meta name="twitter:description" content="This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author&rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors&rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://naodeng.com.cn/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings",
+      "item": "https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings",
+  "name": "30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings",
+  "description": "This blog post is about Day 16 of the 30-Day AI Testing Challenge to evaluate the adoption of AI for accessibility testing and share personal findings. The article may cover the author\u0026rsquo;s experience with the practical application of accessibility testing with AI, including the selection of AI tools, improvement of testing methods, and validity of test results. By sharing evaluations and findings on accessibility testing with AI, readers will learn about the authors\u0026rsquo; applications in real-world testing scenarios and learn from their experiences and lessons learned. This series promises to provide an opportunity for testing professionals to learn about and explore the use of AI in the field of accessibility testing, and to foster industry dialog and technological innovation.",
+  "keywords": [
+    "Evaluate adopting AI for accessibility testing and share your findings", "prompt engineering", "Prompt", "accessibility testing", "AI"
+  ],
+  "articleBody": "Day 16: Evaluate adopting AI for accessibility testing and share your findings Welcome to day 16! Today we turn our focus towards the potential of AI to enhance accessibility testing.\nAccessibility testing helps ensure that applications are usable and inclusive for individuals with diverse abilities, such as visual, auditory, cognitive, or motor impairments. Ensuring applications are accessible to a wide range of users is, in many cases, a legal requirement but also a moral imperative. As we have seen throughout this challenge, AI can offer advantages in various areas of testing, and its potential to enhance accessibility testing is no different. Let’s dive in and discover how AI can be leveraged to improve accessibility testing!\nTask Steps Research AI and Accessibility Testing: Research how AI is currently being used to support accessibility testing. Explore resources like articles, whitepapers, or case studies that discuss:\nTools that leverage AI to automate accessibility checks, analyse user interfaces for compliance with accessibility standards, or even generate alternative text descriptions for images. How AI can be used to address accessibility challenges beyond basic UI checks, such as testing for screen reader compatibility or detecting colour contrast issues. Evaluate Applicability in Your Context: Consider your context and reflect on:\nAccessibility testing needs: Identify areas where accessibility testing is crucial for your projects Potential benefits of AI: Evaluate how AI-powered accessibility testing tools or techniques could improve your current testing process. Potential limitations: Be mindful of the potential limitations of AI for accessibility testing. Share Your Findings: Respond to this post with your insights and learnings. Consider sharing:\nLinks to the resources you found helpful How AI could benefit accessibility testing in your context Potential limitations you identified and how they could be mitigated Your overall perspective on the role of AI in accessibility testing Why Take Part Improve Accessibility Testing: Gain valuable knowledge about how AI can contribute to creating inclusive applications. Identify Opportunities: Discover potential ways to enhance accessibility testing in your projects. Sharing Your Thoughts: By sharing, you contribute to the collective understanding of AI’s role in accessibility testing. Task Link https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy\nMy Day 16 Task 1. About Research AI and Accessibility Testing Regarding the practice of using AI tools for accessibility testing, I consulted ChatGPT4, and in its reply, it recommended some AI tools that can be used for accessibility testing. The response from ChatGPT4 is as follows:\nThe application of AI technology in the field of accessibility testing is increasing, aiming to help developers and testers more efficiently discover and solve accessibility issues. Here are some AI tools that can be used for accessibility testing: 1. **Axe Core**: Although Axe Core itself is an automated accessibility testing library, its enterprise edition offers some AI-driven features for identifying and solving accessibility issues. 2. **AccessiBe**: AccessiBe uses AI to address accessibility issues on websites. It can automatically identify and fix a variety of accessibility problems, such as navigation, keyboard functionality, and screen reader optimization. 3. **UserWay**: UserWay provides an AI-driven website accessibility plugin that can automatically resolve a variety of accessibility issues, including color contrast, font size, navigation, and other accessibility-related problems. 4. **Evinced**: Evinced is a development tool that uses AI to help developers identify accessibility issues during the coding process. It can be integrated into the development workflow to provide real-time feedback and suggestions for fixes. 5. **Fable**: Fable uses AI technology to provide accessibility testing that simulates real users, especially for those with visual and motor impairments. It helps developers understand how these users interact with their products. These tools can help organizations discover and solve accessibility issues earlier in the development and testing process, ensuring their products and services are accessible to everyone. When using these tools, it's important to combine them with manual testing and user feedback, as AI and automated tools may not catch all types of accessibility issues. But based on previous AI testing challenges, I learned about an AI accessibility testing tool, Applitools, that has been deployed. My task today will focus on exploring the use of the Applitools tool for accessibility testing.\nApplitools tool’s official page on accessibility testing: https://applitools.com/platform/validate/accessibility/\nIntroduction to Applitools’ AI Accessibility Testing Assistant, Applitools Contrast Advisor:\nApplitools enables teams to run automated accessibility tests to verify WCAG compliance, helping ensure regulatory compliance. Run accessibility tests on every release for maximum coverage. Applitools seamlessly integrates into your existing test automation workflow. It applies visual AI to analyze whether web and mobile applications have potential contrast accessibility violations. Contrast Advisor helps you focus on problem areas, ensuring you don’t waste time and cycles on areas that don’t need attention. Additionally, we’ve integrated Contrast Advisor directly into Eyes, so there’s no need for time-consuming setup steps or workflow changes. Once enabled, you don’t even need to rerun existing tests - you can jump straight to your existing dashboard to start reviewing results. Contrast Advisor is not limited by webpage structure scanning, so it can provide contrast suggestions for websites, PDFs, UX design models, and applications designed for Web, mobile Web, native mobile, desktop, etc. As W3C points out, mobile devices are more likely to be used under conditions such as strong sunlight, which increases the need for strict contrast compliance. Compared to traditional detection methods, Contrast Advisor uses visual AI, enabling it to identify violations in native mobile applications and mobile web. WCAG specifies minimum contrast for text as well as graphics and user interface components, but traditional tools cannot detect such violations. Contrast Advisor uses visual AI to detect contrast in images, graphics, icons, UI components, and plain text. Contrast Advisor can run with Applitools Ultrafast Grid to render and detect subtle contrast differences and potential violations on Chrome, Firefox, Safari, Edge, and IE. Contrast Advisor complies with WCAG 2.0 and the updated 2.1 standards. This includes “AA – Minimum Contrast” and the stricter “AAA – Enhanced Contrast” options. Official demo introduction of Applitools Contrast Advisor provided by Applitools https://www.youtube.com/watch?v=sGXjPJiQwdk\n2. About Evaluate Applicability in Your Context Accessibility Testing Needs for My Current Project Unfortunately, the delivery cycle for my current project is quite tight, and the importance of accessibility testing requirements is not too high. However, I will still use Google’s Lighthouse tool to conduct accessibility tests and scoring for each core page of the product, ensuring that each core page has a high accessibility test score. For pages with low accessibility test scores, I will schedule defect cards for repair.\nBelow is the accessibility test score for a core page of the current project product:\nPotential Benefits of AI By using the Lighthouse tool for accessibility testing evaluation, it can somewhat meet\nthe project’s accessibility testing needs. However, after reviewing the accessibility testing scoring rules of Lighthouse, I found that Lighthouse can identify very limited accessibility testing issues. A high accessibility test score does not necessarily mean that the page is truly accessible to everyone.\nIf there is a professional accessibility testing AI tool that complies with various accessibility regulations, it would definitely improve the efficiency of the project’s accessibility testing and ensure that the project’s accessibility testing results comply with regulations.\nPotential Limitations Because it involves using AI tools, and the current project is an unreleased product, there are certain risks associated with general data privacy security and result bias uncertainty.\n3. About Sharing Your Findings I applied for a trial of Applitools’ Accessibility Testing Assistant, Applitools Contrast Advisor. Below is the trial report:\nTrial application link: https://applitools.com/platform/validate/accessibility/\nTrying out Applitools first requires registering an account, which must be a company email address and requires providing company information.\nAfter registering an account and verifying the email, there are some tool surveys:\nAfterward, I chose Playwright and followed the official introduction documents for initialization, https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart\nObtain APPLITOOLS_API_KEY Set up APPLITOOLS local environment Install Applitools Run tests The official demo test code is as follows:\nimport { test } from '@playwright/test'; import { BatchInfo, Configuration, EyesRunner, VisualGridRunner, BrowserType, DeviceName, ScreenOrientation, Eyes, Target } from '@applitools/eyes-playwright'; export let Batch: BatchInfo; export let Config: Configuration; export let Runner: EyesRunner; test.beforeAll(async() =\u003e { // Configure Applitools SDK to run on the Ultrafast Grid Runner = new VisualGridRunner({ testConcurrency: 5 }); Batch = new BatchInfo({name: `Playwright Typescript Quickstart`}); Config = new Configuration(); Config.setBatch(Batch); Config.addBrowsers( { name: BrowserType.CHROME, width: 800, height: 600 }, { name: BrowserType.FIREFOX, width: 1600, height: 1200 }, { name: BrowserType.SAFARI, width: 1024, height: 768 }, { chromeEmulationInfo: { deviceName: DeviceName.iPhone_11, screenOrientation: ScreenOrientation.PORTRAIT} }, { chromeEmulationInfo: { deviceName: DeviceName.Nexus_10, screenOrientation: ScreenOrientation.LANDSCAPE} } ) }); test.describe('ACME Bank', () =\u003e { let eyes: Eyes; test.beforeEach(async ({ page }) =\u003e { eyes = new Eyes(Runner, Config); // Start Applitools Visual AI Test // Args: Playwright Page, App Name, Test Name, Viewport Size for local driver await eyes.open(page, 'ACME Bank', `Playwright Typescript: Quickstart`, { width: 1200, height: 600 }) }); test('log into a bank account', async ({ page }) =\u003e { await page.goto('https://sandbox.applitools.com/bank?layoutAlgo=true'); // Full Page - Visual AI Assertion await eyes.check('Login page', Target.window().fully()); await page.locator('id=username').fill('user'); await page.locator('id=password').fill('password'); await page.locator('id=log-in').click(); await page.locator('css=.dashboardNav_navContainer__kA4wD').waitFor({state: 'attached'}); // Full Page - Visual AI Assertion await eyes.check('Main page', Target.window().fully() .layoutRegions( '.dashboardOverview_accountBalances__3TUPB', '.dashboardTable_dbTable___R5Du' ) ); }); test.afterEach(async () =\u003e { // End Applitools Visual AI Test await eyes.close(); }); }); test.afterAll(async() =\u003e { // Wait for Ultrast Grid Renders to finish and gather results const results = await Runner.getAllTestResults(); console.log('Visual test results', results); }); However, running the test failed.\nAfter investigation, I found that I made a mistake in the first step of setting environment variables. After resetting the environment variables, the demo test could run and pass normally.\nThen, I logged into Applitools Eyes to view the test results.\nWhen viewing the accessibility test results and launching Applitools Contrast Advisor on the results page, I found that the test results did not display the Applitools Contrast Advisor indicator, showing a difference from the official introduction video.\nToday’s trial did not go smoothly, but I will continue to try and update more usage results later.\nAbout Event The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.\nCommunity Website: https://www.ministryoftesting.com\nEvent Link: https://www.ministryoftesting.com/events/30-days-of-ai-in-testing\nChallenges:\nDay 1: Introduce yourself and your interest in AI\nDay 2: Read an introductory article on AI in testing and share it\nDay 3: List ways in which AI is used in testing\nDay 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway\nDay 5:Identify a case study on AI in testing and share your findings\nDay 6:Explore and share insights on AI testing tools\nDay 7: Research and share prompt engineering techniques\nDay 8: Craft a detailed prompt to support test activities\nDay 9: Evaluate prompt quality and try to improve it\nDay 10: Critically Analyse AI-Generated Tests\nDay 11: Generate test data using AI and evaluate its efficacy\nDay 12: Evaluate whether you trust AI to support testing and share your thoughts\nDay 13: Develop a testing approach and become an AI in testing champion\nDay 14: Generate AI test code and share your experience\nDay 15: Gauge your short-term AI in testing plans\nRecommended Readings API Automation Testing Tutorial Bruno API Automation Testing Tutorial Gatling Performance Testing Tutorial K6 Performance Testing Tutorial Postman API Automation Testing Tutorial Pytest API Automation Testing Tutorial REST Assured API Automation Testing Tutorial SuperTest API Automation Testing Tutorial 30 Days of AI in Testing Challenge ",
+  "wordCount" : "1902",
+  "inLanguage": "en",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-03-17T19:06:44+08:00",
+  "dateModified": "2024-03-17T19:06:44+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nao.deng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nao's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://naodeng.com.cn/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://naodeng.com.cn/" accesskey="h" title="Nao&#39;s Blog (Alt + H)">Nao&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/zh/" title="🇨🇳中文"
+                                aria-label="🇨🇳中文">🇨🇳中文</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://naodeng.com.cn/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="Dashboard">
+                    <span>Dashboard</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/en/" title="QA Prompt">
+                    <span>QA Prompt</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="Status">
+                    <span>Status</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/">Home</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings
+    </h1>
+    <div class="post-meta"><span title='2024-03-17 19:06:44 +0800 +0800'>March 17, 2024</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>1902 words</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>Translations:</span>
+<ul class="i18n_list">
+    <li>
+        <a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">🇨🇳中文</a>
+    </li>
+</ul>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/Event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings" aria-label="Day 16: Evaluate adopting AI for accessibility testing and share your findings">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a><ul>
+                        
+                <li>
+                    <a href="#task-steps" aria-label="Task Steps">Task Steps</a></li>
+                <li>
+                    <a href="#why-take-part" aria-label="Why Take Part">Why Take Part</a></li>
+                <li>
+                    <a href="#task-link" aria-label="Task Link">Task Link</a></li></ul>
+                </li>
+                <li>
+                    <a href="#my-day-16-task" aria-label="My Day 16 Task">My Day 16 Task</a><ul>
+                        
+                <li>
+                    <a href="#1-about-research-ai-and-accessibility-testing" aria-label="1. About Research AI and Accessibility Testing">1. About Research AI and Accessibility Testing</a></li>
+                <li>
+                    <a href="#2-about-evaluate-applicability-in-your-context" aria-label="2. About Evaluate Applicability in Your Context">2. About Evaluate Applicability in Your Context</a><ul>
+                        
+                <li>
+                    <a href="#accessibility-testing-needs-for-my-current-project" aria-label="Accessibility Testing Needs for My Current Project">Accessibility Testing Needs for My Current Project</a></li>
+                <li>
+                    <a href="#potential-benefits-of-ai" aria-label="Potential Benefits of AI">Potential Benefits of AI</a></li>
+                <li>
+                    <a href="#potential-limitations" aria-label="Potential Limitations">Potential Limitations</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-about-sharing-your-findings" aria-label="3. About Sharing Your Findings">3. About Sharing Your Findings</a></li></ul>
+                </li>
+                <li>
+                    <a href="#about-event" aria-label="About Event">About Event</a></li>
+                <li>
+                    <a href="#recommended-readings" aria-label="Recommended Readings">Recommended Readings</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings">Day 16: Evaluate adopting AI for accessibility testing and share your findings<a hidden class="anchor" aria-hidden="true" href="#day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings">#</a></h2>
+<p>Welcome to day 16! Today we turn our focus towards the potential of AI to enhance accessibility testing.</p>
+<p>Accessibility testing helps ensure that applications are usable and inclusive for individuals with diverse abilities, such as visual, auditory, cognitive, or motor impairments. Ensuring applications are accessible to a wide range of users is, in many cases, a legal requirement but also a moral imperative. As we have seen throughout this challenge, AI can offer advantages in various areas of testing, and its potential to enhance accessibility testing is no different. Let’s dive in and discover how AI can be leveraged to improve accessibility testing!</p>
+<h3 id="task-steps">Task Steps<a hidden class="anchor" aria-hidden="true" href="#task-steps">#</a></h3>
+<ul>
+<li>
+<p><strong>Research AI and Accessibility Testing</strong>: Research how AI is currently being used to support accessibility testing. Explore resources like articles, whitepapers, or case studies that discuss:</p>
+<ul>
+<li>Tools that leverage AI to automate accessibility checks, analyse user interfaces for compliance with accessibility standards, or even generate alternative text descriptions for images.</li>
+<li>How AI can be used to address accessibility challenges beyond basic UI checks, such as testing for screen reader compatibility or detecting colour contrast issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Evaluate Applicability in Your Context</strong>: Consider your context and reflect on:</p>
+<ul>
+<li><strong>Accessibility testing needs</strong>: Identify areas where accessibility testing is crucial for your projects</li>
+<li><strong>Potential benefits of AI</strong>: Evaluate how AI-powered accessibility testing tools or techniques could improve your current testing process.</li>
+<li><strong>Potential limitations</strong>: Be mindful of the potential limitations of AI for accessibility testing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Share Your Findings</strong>: Respond to this post with your insights and learnings. Consider sharing:</p>
+<ul>
+<li>Links to the resources you found helpful</li>
+<li>How AI could benefit accessibility testing in your context</li>
+<li>Potential limitations you identified and how they could be mitigated</li>
+<li>Your overall perspective on the role of AI in accessibility testing</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-take-part">Why Take Part<a hidden class="anchor" aria-hidden="true" href="#why-take-part">#</a></h3>
+<ul>
+<li><strong>Improve Accessibility Testing</strong>: Gain valuable knowledge about how AI can contribute to creating inclusive applications.</li>
+<li><strong>Identify Opportunities</strong>: Discover potential ways to enhance accessibility testing in your projects.</li>
+<li><strong>Sharing Your Thoughts</strong>: By sharing, you contribute to the collective understanding of AI’s role in accessibility testing.</li>
+</ul>
+<h3 id="task-link">Task Link<a hidden class="anchor" aria-hidden="true" href="#task-link">#</a></h3>
+<p><a href="https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy">https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy</a></p>
+<h2 id="my-day-16-task">My Day 16 Task<a hidden class="anchor" aria-hidden="true" href="#my-day-16-task">#</a></h2>
+<h3 id="1-about-research-ai-and-accessibility-testing">1. About <strong>Research AI and Accessibility Testing</strong><a hidden class="anchor" aria-hidden="true" href="#1-about-research-ai-and-accessibility-testing">#</a></h3>
+<p>Regarding the practice of using AI tools for accessibility testing, I consulted ChatGPT4, and in its reply, it recommended some AI tools that can be used for accessibility testing. The response from ChatGPT4 is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The application of AI technology in the field of accessibility testing is increasing, aiming to help developers and testers more efficiently discover and solve accessibility issues. Here are some AI tools that can be used for accessibility testing:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. **Axe Core**: Although Axe Core itself is an automated accessibility testing library, its enterprise edition offers some AI-driven features for identifying and solving accessibility issues.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. **AccessiBe**: AccessiBe uses AI to address accessibility issues on websites. It can automatically identify and fix a variety of accessibility problems, such as navigation, keyboard functionality, and screen reader optimization.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. **UserWay**: UserWay provides an AI-driven website accessibility plugin that can automatically resolve a variety of accessibility issues, including color contrast, font size, navigation, and other accessibility-related problems.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. **Evinced**: Evinced is a development tool that uses AI to help developers identify accessibility issues during the coding process. It can be integrated into the development workflow to provide real-time feedback and suggestions for fixes.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5. **Fable**: Fable uses AI technology to provide accessibility testing that simulates real users, especially for those with visual and motor impairments. It helps developers understand how these users interact with their products.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">These tools can help organizations discover and solve accessibility issues earlier in the development and testing process, ensuring their products and services are accessible to everyone. When using these tools, it&#39;s important to combine them with manual testing and user feedback, as AI and automated tools may not catch all types of accessibility issues.
+</span></span></code></pre></div><p>But based on previous AI testing challenges, I learned about an AI accessibility testing tool, Applitools, that has been deployed. My task today will focus on exploring the use of the Applitools tool for accessibility testing.</p>
+<p>Applitools tool&rsquo;s official page on accessibility testing: <a href="https://applitools.com/platform/validate/accessibility/">https://applitools.com/platform/validate/accessibility/</a></p>
+<p>Introduction to Applitools&rsquo; AI Accessibility Testing Assistant, Applitools Contrast Advisor:</p>
+<ul>
+<li>Applitools enables teams to run automated accessibility tests to verify WCAG compliance, helping ensure regulatory compliance.</li>
+<li>Run accessibility tests on every release for maximum coverage.</li>
+<li>Applitools seamlessly integrates into your existing test automation workflow. It applies visual AI to analyze whether web and mobile applications have potential contrast accessibility violations.</li>
+<li>Contrast Advisor helps you focus on problem areas, ensuring you don’t waste time and cycles on areas that don’t need attention. Additionally, we’ve integrated Contrast Advisor directly into Eyes, so there’s no need for time-consuming setup steps or workflow changes. Once enabled, you don’t even need to rerun existing tests - you can jump straight to your existing dashboard to start reviewing results.</li>
+<li>Contrast Advisor is not limited by webpage structure scanning, so it can provide contrast suggestions for websites, PDFs, UX design models, and applications designed for Web, mobile Web, native mobile, desktop, etc.</li>
+<li>As W3C points out, mobile devices are more likely to be used under conditions such as strong sunlight, which increases the need for strict contrast compliance. Compared to traditional detection methods, Contrast Advisor uses visual AI, enabling it to identify violations in native mobile applications and mobile web.</li>
+<li>WCAG specifies minimum contrast for text as well as graphics and user interface components, but traditional tools cannot detect such violations. Contrast Advisor uses visual AI to detect contrast in images, graphics, icons, UI components, and plain text.</li>
+<li>Contrast Advisor can run with Applitools Ultrafast Grid to render and detect subtle contrast differences and potential violations on Chrome, Firefox, Safari, Edge, and IE. Contrast Advisor complies with WCAG 2.0 and the updated 2.1 standards. This includes “AA – Minimum Contrast” and the stricter “AAA – Enhanced Contrast” options.</li>
+</ul>
+<blockquote>
+<p>Official demo introduction of Applitools Contrast Advisor provided by Applitools <a href="https://www.youtube.com/watch?v=sGXjPJiQwdk">https://www.youtube.com/watch?v=sGXjPJiQwdk</a></p>
+</blockquote>
+<h3 id="2-about-evaluate-applicability-in-your-context">2. About <strong>Evaluate Applicability in Your Context</strong><a hidden class="anchor" aria-hidden="true" href="#2-about-evaluate-applicability-in-your-context">#</a></h3>
+<h4 id="accessibility-testing-needs-for-my-current-project"><strong>Accessibility Testing Needs for My Current Project</strong><a hidden class="anchor" aria-hidden="true" href="#accessibility-testing-needs-for-my-current-project">#</a></h4>
+<p>Unfortunately, the delivery cycle for my current project is quite tight, and the importance of accessibility testing requirements is not too high. However, I will still use Google&rsquo;s Lighthouse tool to conduct accessibility tests and scoring for each core page of the product, ensuring that each core page has a high accessibility test score. For pages with low accessibility test scores, I will schedule defect cards for repair.</p>
+<p>Below is the accessibility test score for a core page of the current project product:</p>
+<p><img alt="Accessibility Test Score" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8Z4XpX.png"></p>
+<h4 id="potential-benefits-of-ai"><strong>Potential Benefits of AI</strong><a hidden class="anchor" aria-hidden="true" href="#potential-benefits-of-ai">#</a></h4>
+<p>By using the Lighthouse tool for accessibility testing evaluation, it can somewhat meet</p>
+<p>the project&rsquo;s accessibility testing needs. However, after reviewing the accessibility testing scoring rules of Lighthouse, I found that Lighthouse can identify very limited accessibility testing issues. A high accessibility test score does not necessarily mean that the page is truly accessible to everyone.</p>
+<p>If there is a professional accessibility testing AI tool that complies with various accessibility regulations, it would definitely improve the efficiency of the project&rsquo;s accessibility testing and ensure that the project&rsquo;s accessibility testing results comply with regulations.</p>
+<h4 id="potential-limitations"><strong>Potential Limitations</strong><a hidden class="anchor" aria-hidden="true" href="#potential-limitations">#</a></h4>
+<p>Because it involves using AI tools, and the current project is an unreleased product, there are certain risks associated with general data privacy security and result bias uncertainty.</p>
+<h3 id="3-about-sharing-your-findings">3. About <strong>Sharing Your Findings</strong><a hidden class="anchor" aria-hidden="true" href="#3-about-sharing-your-findings">#</a></h3>
+<p>I applied for a trial of Applitools&rsquo; Accessibility Testing Assistant, Applitools Contrast Advisor. Below is the trial report:</p>
+<p>Trial application link: <a href="https://applitools.com/platform/validate/accessibility/">https://applitools.com/platform/validate/accessibility/</a></p>
+<p>Trying out Applitools first requires registering an account, which must be a company email address and requires providing company information.</p>
+<p>After registering an account and verifying the email, there are some tool surveys:</p>
+<p><img alt="Tool Surveys" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d2o4KM.png"></p>
+<p>Afterward, I chose Playwright and followed the official introduction documents for initialization, <a href="https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart">https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart</a></p>
+<ul>
+<li>Obtain APPLITOOLS_API_KEY</li>
+<li>Set up APPLITOOLS local environment</li>
+<li>Install Applitools</li>
+<li>Run tests</li>
+</ul>
+<p>The official demo test code is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Typescript" data-lang="Typescript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">test</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@playwright/test&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">BatchInfo</span><span class="p">,</span> <span class="nx">Configuration</span><span class="p">,</span> <span class="nx">EyesRunner</span><span class="p">,</span> <span class="nx">VisualGridRunner</span><span class="p">,</span> <span class="nx">BrowserType</span><span class="p">,</span> <span class="nx">DeviceName</span><span class="p">,</span> <span class="nx">ScreenOrientation</span><span class="p">,</span> <span class="nx">Eyes</span><span class="p">,</span> <span class="nx">Target</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@applitools/eyes-playwright&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">let</span> <span class="nx">Batch</span>: <span class="kt">BatchInfo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">let</span> <span class="nx">Config</span>: <span class="kt">Configuration</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">let</span> <span class="nx">Runner</span>: <span class="kt">EyesRunner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">test</span><span class="p">.</span><span class="nx">beforeAll</span><span class="p">(</span><span class="kr">async</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Configure Applitools SDK to run on the Ultrafast Grid
+</span></span></span><span class="line"><span class="cl">    <span class="nx">Runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisualGridRunner</span><span class="p">({</span> <span class="nx">testConcurrency</span>: <span class="kt">5</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Batch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BatchInfo</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="sb">`Playwright Typescript Quickstart`</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">Config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Configuration</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Config</span><span class="p">.</span><span class="nx">setBatch</span><span class="p">(</span><span class="nx">Batch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Config</span><span class="p">.</span><span class="nx">addBrowsers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nx">name</span>: <span class="kt">BrowserType.CHROME</span><span class="p">,</span> <span class="nx">width</span>: <span class="kt">800</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">600</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nx">name</span>: <span class="kt">BrowserType.FIREFOX</span><span class="p">,</span> <span class="nx">width</span>: <span class="kt">1600</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">1200</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nx">name</span>: <span class="kt">BrowserType.SAFARI</span><span class="p">,</span> <span class="nx">width</span>: <span class="kt">1024</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">768</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nx">chromeEmulationInfo</span><span class="o">:</span> <span class="p">{</span> <span class="nx">deviceName</span>: <span class="kt">DeviceName.iPhone_11</span><span class="p">,</span> <span class="nx">screenOrientation</span>: <span class="kt">ScreenOrientation.PORTRAIT</span><span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nx">chromeEmulationInfo</span><span class="o">:</span> <span class="p">{</span> <span class="nx">deviceName</span>: <span class="kt">DeviceName.Nexus_10</span><span class="p">,</span> <span class="nx">screenOrientation</span>: <span class="kt">ScreenOrientation.LANDSCAPE</span><span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ACME Bank&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">eyes</span>: <span class="kt">Eyes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">test</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">(</span><span class="kr">async</span> <span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">eyes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Eyes</span><span class="p">(</span><span class="nx">Runner</span><span class="p">,</span> <span class="nx">Config</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Start Applitools Visual AI Test
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// Args: Playwright Page, App Name, Test Name, Viewport Size for local driver
+</span></span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">eyes</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">page</span><span class="p">,</span> <span class="s1">&#39;ACME Bank&#39;</span><span class="p">,</span> <span class="sb">`Playwright Typescript: Quickstart`</span><span class="p">,</span> <span class="p">{</span> <span class="nx">width</span>: <span class="kt">1200</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">600</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;log into a bank account&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;https://sandbox.applitools.com/bank?layoutAlgo=true&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Full Page - Visual AI Assertion
+</span></span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">eyes</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s1">&#39;Login page&#39;</span><span class="p">,</span> <span class="nx">Target</span><span class="p">.</span><span class="nb">window</span><span class="p">().</span><span class="nx">fully</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;id=username&#39;</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;id=password&#39;</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;id=log-in&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;css=.dashboardNav_navContainer__kA4wD&#39;</span><span class="p">).</span><span class="nx">waitFor</span><span class="p">({</span><span class="nx">state</span><span class="o">:</span> <span class="s1">&#39;attached&#39;</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Full Page - Visual AI Assertion
+</span></span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">eyes</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s1">&#39;Main page&#39;</span><span class="p">,</span> <span class="nx">Target</span><span class="p">.</span><span class="nb">window</span><span class="p">().</span><span class="nx">fully</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="nx">layoutRegions</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;.dashboardOverview_accountBalances__3TUPB&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;.dashboardTable_dbTable___R5Du&#39;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">test</span><span class="p">.</span><span class="nx">afterEach</span><span class="p">(</span><span class="kr">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// End Applitools Visual AI Test
+</span></span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">eyes</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">test</span><span class="p">.</span><span class="nx">afterAll</span><span class="p">(</span><span class="kr">async</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Wait for Ultrast Grid Renders to finish and gather results
+</span></span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Runner</span><span class="p">.</span><span class="nx">getAllTestResults</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Visual test results&#39;</span><span class="p">,</span> <span class="nx">results</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>However, running the test failed.</p>
+<p><img alt="Test Failure Screenshot" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HtcTxq.png"></p>
+<p>After investigation, I found that I made a mistake in the first step of setting environment variables. After resetting the environment variables, the demo test could run and pass normally.</p>
+<p><img alt="Successful Test Run Screenshot" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/blqBmp.png"></p>
+<p>Then, I logged into Applitools Eyes to view the test results.</p>
+<p><img alt="My Demo Screenshot" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gTMNvw.png"></p>
+<p>When viewing the accessibility test results and launching Applitools Contrast Advisor on the results page, I found that the test results did not display the Applitools Contrast Advisor indicator, showing a difference from the official introduction video.</p>
+<p><img alt="Official Promo Demo Screenshot" loading="lazy" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2P12hs.png"></p>
+<p>Today&rsquo;s trial did not go smoothly, but I will continue to try and update more usage results later.</p>
+<h2 id="about-event">About Event<a hidden class="anchor" aria-hidden="true" href="#about-event">#</a></h2>
+<p>The &ldquo;30 Days of AI in Testing Challenge&rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &ldquo;30 Days of Agile Testing&rdquo; event.</p>
+<p>Community Website: <a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>Event Link: <a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">Day 1: Introduce yourself and your interest in AI</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">Day 2: Read an introductory article on AI in testing and share it</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">Day 3: List ways in which AI is used in testing</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">Day 5:Identify a case study on AI in testing and share your findings</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">Day 6:Explore and share insights on AI testing tools</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">Day 7: Research and share prompt engineering techniques</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">Day 8: Craft a detailed prompt to support test activities</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">Day 9: Evaluate prompt quality and try to improve it</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">Day 10: Critically Analyse AI-Generated Tests</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">Day 11: Generate test data using AI and evaluate its efficacy</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">Day 13: Develop a testing approach and become an AI in testing champion</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">Day 14: Generate AI test code and share your experience</a></p>
+</li>
+<li>
+<p><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">Day 15: Gauge your short-term AI in testing plans</a></p>
+</li>
+</ul>
+<h2 id="recommended-readings">Recommended Readings<a hidden class="anchor" aria-hidden="true" href="#recommended-readings">#</a></h2>
+<ul>
+<li><a href="https://naodeng.com.cn/series/api-automation-testing-tutorial/">API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/">Bruno API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/gatling-performance-testing-tutorial/">Gatling Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/k6-performance-testing-tutorial/">K6 Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/">Postman API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/">Pytest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/">REST Assured API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/">SuperTest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/">30 Days of AI in Testing Challenge</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://naodeng.com.cn/tags/evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">Evaluate Adopting AI for Accessibility Testing and Share Your Findings</a></li>
+      <li><a href="https://naodeng.com.cn/tags/prompt-engineering/">Prompt Engineering</a></li>
+      <li><a href="https://naodeng.com.cn/tags/prompt/">Prompt</a></li>
+      <li><a href="https://naodeng.com.cn/tags/accessibility-testing/">Accessibility Testing</a></li>
+      <li><a href="https://naodeng.com.cn/tags/ai/">AI</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>30 Days of AI in Testing Challenge: Day 17: Automate bug reporting with AI and share your process and evaluation</span>
+  </a>
+  <a class="next" href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Postman API Automation Testing Tutorial Advance Usage AI Assistant Postbot Trial Introduction</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on x"
+            href="https://x.com/intent/tweet/?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&amp;hashtags=EvaluateadoptingAIforaccessibilitytestingandshareyourfindings%2cpromptengineering%2cPrompt%2caccessibilitytesting%2cAI">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&amp;title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;summary=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;source=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f&title=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on whatsapp"
+            href="https://api.whatsapp.com/send?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings%20-%20https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on telegram"
+            href="https://telegram.me/share/url?text=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&amp;url=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 30 Days of AI in Testing Challenge: Day 16: Evaluate adopting AI for accessibility testing and share your findings on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=30%20Days%20of%20AI%20in%20Testing%20Challenge%3a%20Day%2016%3a%20Evaluate%20adopting%20AI%20for%20accessibility%20testing%20and%20share%20your%20findings&u=https%3a%2f%2fnaodeng.com.cn%2fposts%2fevent%2f30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/">Nao&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

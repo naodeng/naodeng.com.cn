@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Alpha 测试 on 软件测试同学</title><link>https://naodeng.com.cn/zh/zhtags/alpha-%E6%B5%8B%E8%AF%95/</link><description>Recent content in Alpha 测试 on 软件测试同学+feedId:74645609298733056+userId:59115928834052096</description><image><title>软件测试同学</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>zh</language><lastBuildDate>Thu, 29 Feb 2024 12:06:44 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/zh/zhtags/alpha-%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>软件测试术语分享:Alpha Testing Alpha 测试</title><link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/</link><pubDate>Thu, 29 Feb 2024 12:06:44 +0800</pubDate><guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/</guid><description>这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ZHtags/Alpha 测试 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/alpha-%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in ZHtags/Alpha 测试 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 29 Feb 2024 12:06:44 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/alpha-%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>软件测试术语分享:Alpha Testing Alpha 测试</title>
+      <link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/</link>
+      <pubDate>Thu, 29 Feb 2024 12:06:44 +0800</pubDate>
+      <guid>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/</guid>
+      <description>这篇博文是软件测试术语分享系列的一部分，专注于 Alpha Testing（Alpha 测试）。文章深入探讨了 Alpha 测试的基础概念和其在软件开发中的重要性，包括测试流程和技巧。读者将了解在 Alpha 测试中各个角色与职责的分工，以及应对可能遇到的挑战和相应的解决方案。通过这个系列分享，读者将更深入地理解 Alpha 测试在软件开发生命周期中的作用，以确保软件系统在初期阶段的稳定性和可靠性。</description>
+    </item>
+  </channel>
+</rss>

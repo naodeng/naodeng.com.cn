@@ -1,46 +1,833 @@
-<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>软件测试术语分享:ATDD 验收测试驱动开发 | 软件测试同学</title>
-<meta name=keywords content><meta name=description content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。"><meta name=author content="nao.deng"><link rel=canonical href=https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/><meta name=google-site-verification content="google5e9a7c9479924ed2"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=https://naodeng.com.cn/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://naodeng.com.cn/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://naodeng.com.cn/favicon-32x32.png><link rel=apple-touch-icon href=https://naodeng.com.cn/apple-touch-icon.png><link rel=mask-icon href=https://naodeng.com.cn/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta name=baidu-site-verification content="codeva-2siuZUJUWf"><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "56f727a52e3349f6947d888452fecc8a"}'></script><script defer data-website-id=b3b285c9-3c35-4398-9252-91bb70560b84 src=https://analytics.naodeng.com.cn/hugo></script><meta http-equiv=Content-Type content="text/html;charset=gb2312"><meta name=sogou_site_verification content="iwkYDJrzfK"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JBX883ZDJJ")}</script><meta property="og:title" content="软件测试术语分享:ATDD 验收测试驱动开发"><meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。"><meta property="og:type" content="article"><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"><meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-02-06T16:06:44+08:00"><meta property="article:modified_time" content="2024-02-06T16:06:44+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://naodeng.com.cn/papermod-cover.png"><meta name=twitter:title content="软件测试术语分享:ATDD 验收测试驱动开发"><meta name=twitter:description content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://naodeng.com.cn/zh/posts/"},{"@type":"ListItem","position":2,"name":"软件测试术语分享:ATDD 验收测试驱动开发","item":"https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"软件测试术语分享:ATDD 验收测试驱动开发","name":"软件测试术语分享:ATDD 验收测试驱动开发","description":"这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。","keywords":[],"articleBody":"ATDD 验收测试驱动开发 验收测试驱动开发（ATDD）是一种旨在通过将测试作为开发过程的核心组成部分来减少缺陷的开发方法。这确保应用程序达到高质量标准。\n相关术语：\nTDD 测试驱动开发 UAT 用户验收测试 更多信息也可以看看： Wikipedia\nwikipedia 只有英文版本，没有中文版本。\n关于验收测试驱动开发的问题 基础知识和重要性 什么是验收测试驱动开发（ATDD）？ 验收测试驱动开发（ATDD）是一种开发方法，团队成员（包括开发人员、测试人员和业务客户）在编码开始之前共同编写验收测试，以不同的视角为特色。其主要目标是明确系统功能的详细、以客户为中心的标准，以指导开发并清晰了解所期望的结果。\n在 ATDD 中，验收测试以示例或场景的形式表达，通常采用“Given-When-Then”格式，描述了系统从用户角度的行为。这些测试被自动化，并作为实时文档和回归测试套件的一部分。\nATDD 促进了团队成员之间更好的沟通和理解，确保功能符合业务需求。它使开发工作与客户需求保持一致，有助于防止功能蔓延和缺陷。通过从一开始关注客户需求，团队可以交付更有价值且质量更高的软件。\n在 ATDD 中，测试人员的角色不仅仅局限于传统的测试，还包括参与需求澄清，并确保验收标准是可测试和清晰的。测试人员与开发人员和业务代表密切合作，共同创建和自动化验收测试。\n用于 ATDD 的常用工具包括 Cucumber、SpecFlow 和 FitNesse，它们支持行为驱动开发（BDD）和以实例为基础的规范实践。这些工具允许使用所有利益相关者都能理解的语言编写测试，弥合了技术和非技术团队成员之间的差距。\n有效实施 ATDD 需要转变思维和实践，强调前期规范、持续反馈和迭代开发。它是敏捷和精益开发方法中的关键实践，有助于交付符合用户期望的高质量软件。\n为什么 ATDD 在软件开发中很重要？ 在软件开发中，ATDD 至关重要，因为它确保在编码开始之前，所有利益相关者都对需求有共同的理解。这种方法使开发人员、测试人员和业务代表围绕已达成一致的验收标准进行对齐，促进更好的沟通和协作。通过从一开始关注客户需求，ATDD 最小化了误解的风险，并降低了在开发周期后期进行昂贵的返工的可能性。\n在开发过程的早期引入 ATDD 有助于在问题升级之前识别和解决问题，从而导致更高效和流畅的工作流程。它鼓励使用简单语言进行行为规范，使测试对所有参与方都易于理解。这种明确性有助于在开发之前预防缺陷，这是与传统测试方法相比更为主动的方法。\nATDD 还促进了持续反馈，允许在整个开发生命周期中进行迭代改进。这个迭代的过程有助于完善产品以更好地满足用户期望，最终产生与业务目标密切对齐的高质量软件。\n此外，ATDD 对自动化的强调支持回归测试，实现了一个可处理变化而不需要显著增加工作量的可持续测试过程。这个自动化测试框架对于在快节奏的开发环境中保持高质量尤为重要，特别是在扩大到较大项目时。\n总之，ATDD 之所以重要，是因为它促进了共享理解，减少了返工，确保与业务目标的一致，并支持一个可持续、高质量的开发过程。\nATDD 与传统测试方法有何不同？ ATDD，或验收测试驱动开发，主要在其协作方法和时机方面与传统测试方法不同。传统测试通常发生在开发阶段之后，测试人员根据已经实现的功能创建并执行测试。相比之下，ATDD 涉及到包括开发人员、测试人员和业务代表在内的多个利益相关者，他们在编写任何代码之前定义验收标准并创建验收测试。\nATDD 中的这种前期协作确保所有方对需求和“完成”的定义有共同的理解。它将重点从开发后发现缺陷转移到通过早期澄清期望来预防缺陷。此外，ATDD 鼓励行为驱动开发（BDD），其中测试以所有利益相关者都能理解的语言编写，通常使用 Given-When-Then 格式。\n而传统测试方法可能会严重依赖手动测试或在事后创建自动化测试，ATDD 从一开始就集成了**自动化测试。验收测试被自动化，并成为回归套件**的一部分，提供关于新更改是否符合已达成一致的标准的即时反馈。\n总的来说，ATDD 的积极、协作的方法与传统的被动测试方法形成对比，强调预防而非检测，并在整个团队中促进了对质量的共同责任。\n使用 ATDD 的主要优势有哪些？ ATDD 提供了一些增强软件开发过程的关键优势：\n增强协作：通过在开发周期的早期涉及各种利益相关者（开发人员、测试人员、业务分析师），ATDD 促进了更好的理解和沟通。 清晰需求：验收测试充当具体的需求，减少了歧义，并确保软件满足业务需求。 早期缺陷检测：在验收标准在前期定义时，问题被更早地识别出来，减少了后期修复缺陷的成本和工作量。 客户满意度：关注满足验收标准确保最终产品与客户期望一致。 回归安全：自动化验收测试提供了一个安全网，使得在不破坏现有功能的情况下重构和改进代码更加安全。 持续反馈：定期执行验收测试为产品的状态提供了持续的洞察，允许及时进行调整。 流程化开发：清晰的验收标准指导了开发工作，防止了功能蔓延和过度工程化。 实施 ATDD 可以导致一个更高效、协作和质量导向的开发生命周期，最终交付更好满足用户需求并经受住时间考验的软件。\nATDD 如何提高软件产品的质量？ ATDD 通过确保准确满足**功能需求** 并使产品表现如利益相关者期望的方式，提高了软件质量。通过从一开始关注客户需求，ATDD 促进了清晰且可执行的规范的创建。这些规范指导开发和测试，减少了由于误解或不完整的需求而导致的缺陷的可能性。\n验收测试在编写代码之前就已经定义好，这意味着开发人员有一个明确的目标。这种先测试后编码的方法有助于防止功能蔓延，并确保代码库只包含通过测试所必需的内容，从而使代码库更清晰且更易维护。\n此外，ATDD 鼓励开发人员、测试人员和业务利益相关者之间的协作。这种跨职能的沟通有助于在开发过程的早期识别和解决模糊之处，这可以显著提高产品的质量。\n来自验收测试执行的持续反馈允许早期检测问题，通常比在开发周期后期发现的缺陷更具成本效益。此外，验收测试套件成为可以用于**回归测试**的实时文档，确保新更改不会破坏现有功能。\n总的来说，ATDD 通过澄清需求、促进协作和提供持续反馈，有助于构建与业务需求和用户期望密切一致的产品，从而提高软件质量。\n流程与技巧 ATDD 有哪些关键步骤？ 在 ATDD 中涉及的关键步骤包括：\n协作： 开发人员、测试人员和业务利益相关者之间的协作，共同定义验收标准。 编写验收测试： 在开发开始之前，基于达成一致的标准编写验收测试。 开发： 根据验收测试指导功能或用户故事的开发。 持续集成： 确保代码更改会自动根据验收测试进行测试。 修正： 根据需要对验收测试进行修正，以解决需求或理解的变化。 测试执行：验证软件是否符合达成一致的验收标准。 审查和反馈： 利益相关者审查验收测试，确认其覆盖所需的功能和行为。 迭代：根据需要通过这些步骤进行迭代，直到功能符合验收标准。 验收测试通常是自动化的，以便频繁执行和回归测试。测试以对所有相关方可理解的语言编写，通常使用行为驱动开发（BDD）框架，如 Cucumber 或 SpecFlow。这确保了测试既充当规范又用于验证。\nFeature: User login Scenario: Valid login Given I am on the login page When I enter valid credentials Then I should be redirected to the dashboard 实现有效的 ATDD 需要团队成员之间建立起强烈的协作文化、保持清晰的沟通，以及对质量的共同承诺。\nATDD 如何创建验收测试？ 在 ATDD 中，验收测试是通过团队成员之间的协作创建的，包括开发人员、测试人员和业务利益相关者。该过程始于定义用户故事，描述了用户从其角度期望的功能。每个用户故事都包括验收标准，这些标准构成了验收测试的基础。\n团队讨论验收标准，以确保对需求的共同理解。这种讨论通常涉及示例映射或实例说明，其中使用具体的示例来阐明期望并涵盖不同的场景。\n一旦达成共识，就会编写可执行规范。这些规范通常以Given-When-Then语句的形式结构化，可以直接转化为自动化测试。例如：\nGiven the user is logged in When they attempt to place an order Then the order should be processed 然后，使用 ATDD 框架（如Cucumber或SpecFlow）自动化这些规范，这允许以对非技术利益相关者可访问的领域特定语言编写测试。自动化代码使用框架兼容的语言编写，例如使用 Cucumber 的 Java 或使用 SpecFlow 的 C#。\n@Given(\"^the user is logged in$\") public void the_user_is_logged_in() { // Code to ensure user is logged in } @When(\"^they attempt to place an order$\") public void they_attempt_to_place_an_order() { // Code to simulate order placement } @Then(\"^the order should be processed$\") public void the_order_should_be_processed() { // Assertions to verify order processing } 验收测试在整个开发过程中持续执行，以验证软件是否符合达成一致的标准。这确保了新功能的开发以用户需求为导向，并及早捕捉到回归问题。\nATDD 通常使用哪些技术？ 在 ATDD 中，采用了多种技术来确保满足验收标准并确保软件的行为符合预期：\n行为驱动开发（BDD）：这一技术涉及以自然语言风格编写测试，描述应用程序的行为。通常使用诸如 Cucumber 或 SpecFlow 之类的工具来促进BDD。 实例说明：共同定义说明具体行为或要求的示例。这些示例然后被用作验收测试的基础。 示例映射：一个团队成员使用卡片来代表用户故事（黄色）、规则（蓝色）、示例（绿色）和问题（红色）的研讨会技术。这有助于理解故事并创建验收测试。 可执行规范：以使它们可以直接针对代码执行的方式编写验收测试。这通常涉及使用特定领域语言（DSL）以一种所有利益相关者都能理解的方式来表达测试。 测试先开发：在实际实施开始之前编写验收测试，确保开发集中在通过测试。 协作工具：使用促进业务利益相关者、开发人员和测试人员之间协作的工具，例如共享存储库或像JIRA与 Xray 或 TestRail 这样的协作平台。 持续集成（CI）：将验收测试作为 CI 流水线的一部分自动运行，以获取有关所做更改的即时反馈。 测试工件的版本控制：将验收测试与代码库一起存储在版本控制系统中，以保持测试用例与应用程序代码之间的同步。 这些技术有助于定义清晰的验收标准，促进团队成员之间的协作，并确保在被视为完整之前软件满足业务需求。\nATDD 如何融入软件开发生命周期？ ATDD 通过从一开始就将开发活动与指定的验收标准对齐，融入了软件开发生命周期（SDLC）。在初始阶段，利益相关者共同合作以定义和理解需求，然后将其转化为验收测试。这些测试代表了软件必须展示的行为，以被视为完整。\n在规划和设计阶段，验收测试得到审查和完善，确保它们清晰可测试。开发人员、测试人员和业务代表保持持续沟通，以澄清任何模糊之处。\n随着开发的开始，验收测试引导编码。开发人员编写足够的代码以通过这些测试，确保功能符合达成的标准。这种做法通常被称为测试先开发，促进了渐进式进展并有助于及早发现问题。\n在测试阶段，自动化验收测试经常执行，为软件功能提供即时反馈。这允许快速调整并有助于保持开发的稳定节奏。\n在发布之前，ATDD 确保产品符合业务需求，因为所有功能都是根据预定义的验收测试开发的。代码的持续集成和验收测试的定期执行有助于保持一个为部署准备的稳定构建。\n在部署后，这些验收测试成为回归测试套件的一部分，防范可能破坏现有功能的未来更改。ATDD 融入 SDLC 支持可持续、以质量为中心的开发过程。\n测试人员在 ATDD 中扮演什么角色？ 在 ATDD 中，测试人员的角色是多方面的，侧重于协作、规范和验证。测试人员与开发人员、业务分析师和利益相关者密切合作，澄清需求并确保验收标准定义明确。他们为用户故事和验收测试的创建做出贡献，确保这些测试准确反映业务需求并且可以自动化。\n在开发过程中，测试人员参与验收测试的持续完善，通常与开发人员搭档创建和维护自动化测试。他们确保测试是可执行的规范，指导开发并即时提供有关软件行为是否符合预期结果的反馈。\n测试人员还在维护测试套件方面发挥了关键作用，确保随着代码库的演变它保持可靠和高效。他们还可能负责**测试数据管理和设置必要的测试环境**。\n在 ATDD 循环中，测试人员帮助促进三位好朋友会议，讨论特性实施的问题，并积极参与**迭代计划** 和 回顾以不断改进流程。\n最终，在 ATDD 中，测试人员确保团队交付的产品不仅满足技术需求，而且满足业务需求并为最终用户提供价值。他们在推动 ATDD 中固有的质量为先的方法方面发挥关键作用。\n工具和技术 ATDD 常用的工具有哪些？ 常用的 ATDD 工具包括：\nCucumber：使用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。 SpecFlow：类似于 Cucumber，专为.NET 框架定制，同样使用 Gherkin 进行测试规范。 FitNesse：结合了文档的 wiki 和自动化测试框架，允许以表格形式编写测试。 Robot Framework：关键字驱动的测试自动化框架，高度可扩展，支持表格数据的测试用例。 Concordion：与 JUnit 集成，允许以 HTML 编写规范，并可链接到用于测试的 Java 代码。 JBehave：Java 中用于行为驱动开发（BDD）的框架，使用自然语言编写的故事推动开发。 Serenity BDD：通过提供先进的报告和实时文档功能，增强了其他 BDD 工具（如 Cucumber 和 JBehave）。 这些工具通过使用所有利益相关者都能理解的语言定义验收标准，支持 ATDD 过程。它们促进了验收测试的自动化，并帮助确保软件特性在被视为完成之前满足预定义的标准。自动化测试工程师使用这些工具来编写、管理和执行验收测试，通常将它们集成到持续集成流水线中以获得持续反馈。熟练掌握编程，理解应用领域，以及熟悉所选工具的语法和最佳实践对有效使用这些工具至关重要。\n这些工具如何支持 ATDD 流程？ 自动化测试工具通过执行以行为驱动格式编写的验收测试，支持ATDD 过程。这些工具通常与Cucumber、SpecFlow或FitNesse等框架集成，这些框架允许使用业务可读语言（如Gherkin）定义测试。\n通过使用这些工具，团队可以自动化验收标准的验证，确保软件符合达成的规范。这种自动化支持持续集成（CI）实践，允许在代码提交时自动运行测试，向开发人员提供即时反馈。\n此外，自动化测试工具通过维护一套测试，可用于验证更改是否破坏了现有功能，从而支持重构。在 ATDD 中，重点是在整个开发过程中满足验收标准，这一点至关重要。\n此外，这些工具通常带有报告功能，使更容易向所有利益相关者传达测试的状态。这种透明度有助于保持对项目进展和质量的共享理解。\n例如，典型的 ATDD 工具链可能如下所示：\nFeature: User login Scenario: Valid user login Given I am on the login page When I enter valid credentials Then I should be redirected to the dashboard 然后，自动化工具将执行此场景，验证所描述的行为。这确保软件符合协同编写的验收测试中业务的期望。\n有效使用这些工具需要哪些技能？ 要有效使用自动化测试工具，需要具备以下几项技能：\n编程知识：熟练掌握与自动化工具相关的编程语言，如 Java、Python 或 C#。 软件开发理解：熟悉软件开发实践和生命周期，以将测试与开发阶段对齐。 测试框架专业知识：具有使用 JUnit、TestNG 或 pytest 等测试框架的经验，并了解其特性和集成。 版本控制系统：能够使用 Git 等版本控制系统管理测试脚本并与开发团队协作。 持续集成/持续部署（CI/CD）：了解 CI/CD 管道和 Jenkins、CircleCI 或 Travis CI 等工具，以将自动化测试集成到构建流程中。 自动化脚本编写：具备脚本编写技能，以创建健壮、可维护和可重用的测试脚本。 理解 ATDD：虽然不需要详细涵盖，但理解 ATDD 原则对创建反映用户需求的验收测试至关重要。 解决问题和分析技能：能够解决测试脚本的问题并适应变化的需求或环境。 注意细节：在编写测试用例时要精确，以覆盖边缘情况，防止误报或漏报。 沟通能力：与利益相关者进行清晰的沟通，了解需求并传达测试结果的重要性。 具体工具知识：熟练掌握特定的 ATDD 工具，如 Cucumber、SpecFlow 或 FitNesse，包括它们的语法和最佳实践。 // 一个使用特定工具语言的简单测试脚本示例 Feature: User login Scenario: Successful login with valid credentials Given the login page is displayed When the user enters valid credentials Then the user is redirected to the dashboard 性能和安全测试：了解性能瓶颈和安全漏洞，将相关测试纳入自动化测试套件。 自动化在 ATDD 中的作用是什么？ 在 ATDD 中，自动化在验证和回归验收标准方面发挥着关键作用，确保一致而高效地执行自动化测试。这些自动化测试源于团队达成的验收标准，以确保软件符合业务需求。在 ATDD 中，自动化具有以下作用：\n促进持续测试，将测试整合到 CI/CD 流水线中，提供对变更的即时反馈。 确保可重复性和验收测试的一致性，减少人为错误和测试执行的差异性。 增加测试覆盖率，在较短的时间内执行更多的测试。 通过提供清晰的、可执行的规范，增强协作，所有团队成员都能够理解并用于验证系统。 通过频繁运行自动化验收测试，缩短反馈周期，迅速了解软件的状态。 通过提供一个安全网，确保新更改不会破坏现有功能，支持重构。 自动验收测试成为系统行为的实时文档，始终保持更新。它们通常以**领域特定语言（DSL）**编写，使非技术利益相关者能够理解。通常使用工具如 Cucumber、SpecFlow 或 FitNesse 来促进这个过程。\nFeature: User login Scenario: Valid user login Given the user has a valid account When the user enters correct credentials Then access is granted 在 ATDD 中的自动化不仅仅是测试，它是关于通过在整个开发生命周期中持续验证软件与业务需求的一致性，构建正确的产品。\n如何在敏捷开发环境中实施 ATDD？ 在敏捷环境中实施 ATDD 涉及开发人员、测试人员和业务利益相关者之间的协作，以在开发开始之前定义验收标准。使用用户故事来捕获需求，并定义反映利益相关者期望行为的验收测试。\n开始时，进行一个规划会议，讨论用户故事并创建验收测试。这确保了对功能及其期望结果的共享理解。使用像 Cucumber 或 SpecFlow 这样的行为驱动开发 (BDD) 工具编写验收测试，以一种对所有相关方都可理解的语言。\n在开发过程中，程序员和测试人员协同工作，测试人员专注于自动化验收测试。这些测试被集成到持续集成 (CI) 流水线中，确保它们经常运行。\n在开发后，执行验收测试。如果它们通过，说明功能符合约定的标准。如果没有，开发人员进行必要的更改。这个循环持续进行，直到功能通过所有验收测试。\n通过定期与团队以及利益相关者一起审查测试及其结果，引入反馈循环。这确保了验收标准与业务目标保持一致，并及时解决任何误解。\n记得要对代码和测试进行重构，以保持简单和可读性。这种做法有助于保持自动化套件的可维护性和可扩展性。\n最后，确保团队是跨职能的，团队成员能够为开发和测试做出贡献。这种方法培养了一个质量和对最终产品的共同责任的文化。\n挑战与解决方案 ATDD 会遇到哪些常见挑战？ ATDD 中常见的挑战包括：\n协作困难：确保开发人员、测试人员和业务利益相关者之间的有效沟通可能是具有挑战性的。误解可能导致不正确的测试标准。 编写清晰的验收标准：制定明确、可测试的验收标准需要技巧和经验。编写不好的标准可能导致测试无效。 维护测试套件：随着应用程序的演变，保持验收测试的最新状态可能会耗费时间。 测试数据管理：生成和管理验收测试所需的数据可能会很复杂，尤其是在处理多个环境时。 在覆盖率和速度之间取得平衡：在保持测试套件对持续集成足够快的同时，实现足够的测试覆盖率可能很困难。 不稳定的测试：间歇性地通过和失败的测试可能会损害对测试套件的信心，并在调查中浪费时间。 与现有流程的整合：将 ATDD 引入到已建立的工作流中可能会遇到阻力，需要谨慎的变更管理。 工具兼容性：确保所选工具与技术栈良好集成并支持 ATDD 方法可能是一项挑战。 技能集：团队成员可能需要培训，以有效参与 ATDD，包括编写验收测试和自动化测试。 克服这些挑战通常涉及改进沟通、投资培训、完善流程，并选择与团队需求和技术栈相符的适当工具。\n如何克服这些挑战？ 在 ATDD 中克服挑战需要战略性的方法：\n协作：培养开发人员、测试人员和业务利益相关者之间协作的文化，以确保对需求有共同的理解。 持续学习：鼓励团队成员不断学习和适应新的工具和技术，以保持与 ATDD 最佳实践的同步。 渐进改进：从小处着手，逐步改进 ATDD 流程，而不是试图进行大规模改革。 熟练掌握工具：投入时间掌握 ATDD 工具，充分利用它们的潜力，并将其无缝集成到开发工作流中。 反馈循环：实施短反馈循环，快速发现和解决问题，提高验收测试的质量。 重构：定期重构测试，保持清晰度，减少维护成本。 模块化设计：设计测试为模块化和可重用的，以最小化重复并简化更新。 清晰文档：保持测试的清晰文档，以确保它们可被所有团队成员理解和维护。 资源分配：分配足够的资源，包括时间和人员，以保持可持续的步伐，避免过度劳累。 度量指标：使用指标跟踪进展并识别改进的领域，但要避免激励错误行为的指标。 风险管理：基于风险和业务价值对测试进行优先排序，确保对关键功能进行全面测试。 通过解决这些方面，团队可以增强他们的 ATDD 实践并克服常见挑战。\n实施 ATDD 有哪些最佳实践？ 实施 ATDD 的最佳实践包括：\n与产品所有者、开发人员和测试人员协作，在编码开始之前定义验收标准。使用用户故事促进这些讨论。 编写清晰简洁的验收测试，反映用户的视角，且能够被所有利益相关者理解。 尽早自动化验收测试并频繁执行，以确保持续反馈。使用像 Gherkin 这样的通用语言编写测试，可以使用 Cucumber 等工具进行自动化。 维护验收标准和测试结果的单一真相来源，确保所有团队成员都能透明且轻松地访问。 定期重构测试，使其能够在应用程序演进时保持可维护性和相关性。 将 ATDD 集成到您的**持续集成/持续交付（CI/CD）**流水线中，以确保每次构建都自动运行测试。 使用**测试数据管理**策略，确保测试具有所需数据且处于正确的状态。 根据风险和业务价值优先考虑测试，首先关注最关键的功能。 培养一个质量文化，使每个人都对产品的质量负责，而不仅仅是测试团队。 定期审查和调整您的 ATDD 流程，以解决任何问题并提高效率。 通过遵循这些实践，您可以增强协作，确保需求的清晰度，并在整个开发生命周期中保持高水平的软件质量。\n如何为大型项目扩展 ATDD？ 在大型项目中扩展 ATDD 需要战略规划和高效的工具。首先，通过构建验收测试来反映项目的模块化架构。这使得可以在不同团队之间并行进行开发和测试。利用版本控制管理测试工件，并确保在团队之间同步。\n利用**测试数据管理**提供一致且隔离的测试环境，避免共享数据时可能出现的冲突和依赖关系。实施 持续集成 CI以自动运行验收测试来验证新的代码提交，提供对集成状态的即时反馈。\n**分布式测试执行**对于处理增加的测试负载至关重要。使用支持在多台机器或容器上并行运行测试的工具。这可以缩短反馈周期，确保更快的周转时间。\n协作工具对于保持开发人员、测试人员和利益相关者之间的沟通至关重要。这些工具应该支持从需求到测试和代码库的追踪，确保所有相关方对验收标准达成一致。\n度量和报告应该定制以提供有关规模进展和质量的见解。自动仪表板可以跟踪测试覆盖率、通过/失败率以及随时间变化的趋势，有助于早期识别潜在问题。\n最后，模块化和重用测试组件是可能的。共享测试步骤或领域特定语言（DSL）定义的库可以减少重复和维护开销。\n通过专注于这些策略，ATDD 可以有效地扩展以适应大型项目的复杂性。\n如何衡量 ATDD 的有效性？ 可以通过几个关键指标来衡量 ATDD 的效果：\n缺陷率的降低：跟踪发布后发现的缺陷数量。较低的数字表明 ATDD 有助于更早地发现和解决问题。 改进的测试覆盖率：使用覆盖工具确保验收测试覆盖了代码库和用户故事的重要部分。 周期时间：监控从功能构思到交付所需的时间。ATDD 应有助于简化流程，缩短周期时间。 反馈循环持续时间：衡量从利益相关者那里获得反馈所需的时间。ATDD 的目标是缩短此循环时间，以便更快地进行调整。 团队协作：评估开发人员、测试人员和业务利益相关者之间的协作水平。有效的 ATDD 实践应该增强沟通和理解。 回归测试套件执行时间：跟踪运行回归套件所需的时间。ATDD 应该导致更有效和有针对性的测试，从而减少执行时间。 验收测试的通过/失败率：记录首次运行验收测试的通过率。较高的通过率表示团队对需求有很好的理解。 客户满意度：向利益相关者和最终用户进行调查，了解他们对已交付功能的满意程度。更高的满意度水平可能表示成功实施了 ATDD。 通过监控这些指标，团队可以评估并不断改进他们的 ATDD 实践。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n","wordCount":"620","inLanguage":"zh","image":"https://naodeng.com.cn/papermod-cover.png","datePublished":"2024-02-06T16:06:44+08:00","dateModified":"2024-02-06T16:06:44+08:00","author":{"@type":"Person","name":"nao.deng"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"},"publisher":{"@type":"Organization","name":"软件测试同学","logo":{"@type":"ImageObject","url":"https://naodeng.com.cn/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://naodeng.com.cn/zh/ accesskey=h title="软件测试同学 (Alt + H)">软件测试同学</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://naodeng.com.cn/ title=🇬🇧English aria-label=🇬🇧English>🇬🇧English</a></li></ul></div></div><ul id=menu><li><a href=https://naodeng.com.cn/zh/archives/ title=归档><span>归档</span></a></li><li><a href=https://naodeng.com.cn/zh/zhcategories title=分类><span>分类</span></a></li><li><a href=https://naodeng.com.cn/zh/search/ title=搜索><span>搜索</span></a></li><li><a href=https://naodeng.com.cn/zh/zhtags title=标签><span>标签</span></a></li><li><a href=https://naodeng.com.cn/zh/zhseries title=系列><span>系列</span></a></li><li><a href=https://status.naodeng.com.cn title=状态><span>状态</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li><li><a href=https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn title=网站统计><span>网站统计</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://naodeng.com.cn/zh/>主页</a>&nbsp;»&nbsp;<a href=https://naodeng.com.cn/zh/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">软件测试术语分享:ATDD 验收测试驱动开发</h1><div class=post-meta><span title='2024-02-06 16:06:44 +0800 +0800'>二月 6, 2024</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;620 字&nbsp;·&nbsp;nao.deng&nbsp;|&nbsp;<a href=https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-acceptance-test-driven-development.zh.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#atdd-%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91 aria-label="ATDD 验收测试驱动开发">ATDD 验收测试驱动开发</a></li><li><a href=#%e5%85%b3%e4%ba%8e%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91%e7%9a%84%e9%97%ae%e9%a2%98 aria-label=关于验收测试驱动开发的问题>关于验收测试驱动开发的问题</a><ul><li><a href=#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7 aria-label=基础知识和重要性>基础知识和重要性</a><ul><li><a href=#%e4%bb%80%e4%b9%88%e6%98%af%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91atdd aria-label=什么是验收测试驱动开发（ATDD）？>什么是验收测试驱动开发（ATDD）？</a></li><li><a href=#%e4%b8%ba%e4%bb%80%e4%b9%88-atdd-%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81 aria-label="为什么 ATDD 在软件开发中很重要？">为什么 ATDD 在软件开发中很重要？</a></li><li><a href=#atdd-%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%b5%8b%e8%af%95%e6%96%b9%e6%b3%95%e6%9c%89%e4%bd%95%e4%b8%8d%e5%90%8c aria-label="ATDD 与传统测试方法有何不同？">ATDD 与传统测试方法有何不同？</a></li><li><a href=#%e4%bd%bf%e7%94%a8-atdd-%e7%9a%84%e4%b8%bb%e8%a6%81%e4%bc%98%e5%8a%bf%e6%9c%89%e5%93%aa%e4%ba%9b aria-label="使用 ATDD 的主要优势有哪些？">使用 ATDD 的主要优势有哪些？</a></li><li><a href=#atdd-%e5%a6%82%e4%bd%95%e6%8f%90%e9%ab%98%e8%bd%af%e4%bb%b6%e4%ba%a7%e5%93%81%e7%9a%84%e8%b4%a8%e9%87%8f aria-label="ATDD 如何提高软件产品的质量？">ATDD 如何提高软件产品的质量？</a></li></ul></li><li><a href=#%e6%b5%81%e7%a8%8b%e4%b8%8e%e6%8a%80%e5%b7%a7 aria-label=流程与技巧>流程与技巧</a><ul><li><a href=#atdd-%e6%9c%89%e5%93%aa%e4%ba%9b%e5%85%b3%e9%94%ae%e6%ad%a5%e9%aa%a4 aria-label="ATDD 有哪些关键步骤？">ATDD 有哪些关键步骤？</a></li><li><a href=#atdd-%e5%a6%82%e4%bd%95%e5%88%9b%e5%bb%ba%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95 aria-label="ATDD 如何创建验收测试？">ATDD 如何创建验收测试？</a></li><li><a href=#atdd-%e9%80%9a%e5%b8%b8%e4%bd%bf%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af aria-label="ATDD 通常使用哪些技术？">ATDD 通常使用哪些技术？</a></li><li><a href=#atdd-%e5%a6%82%e4%bd%95%e8%9e%8d%e5%85%a5%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f aria-label="ATDD 如何融入软件开发生命周期？">ATDD 如何融入软件开发生命周期？</a></li><li><a href=#%e6%b5%8b%e8%af%95%e4%ba%ba%e5%91%98%e5%9c%a8-atdd-%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2 aria-label="测试人员在 ATDD 中扮演什么角色？">测试人员在 ATDD 中扮演什么角色？</a></li></ul></li><li><a href=#%e5%b7%a5%e5%85%b7%e5%92%8c%e6%8a%80%e6%9c%af aria-label=工具和技术>工具和技术</a><ul><li><a href=#atdd-%e5%b8%b8%e7%94%a8%e7%9a%84%e5%b7%a5%e5%85%b7%e6%9c%89%e5%93%aa%e4%ba%9b aria-label="ATDD 常用的工具有哪些？">ATDD 常用的工具有哪些？</a></li><li><a href=#%e8%bf%99%e4%ba%9b%e5%b7%a5%e5%85%b7%e5%a6%82%e4%bd%95%e6%94%af%e6%8c%81-atdd-%e6%b5%81%e7%a8%8b aria-label="这些工具如何支持 ATDD 流程？">这些工具如何支持 ATDD 流程？</a></li><li><a href=#%e6%9c%89%e6%95%88%e4%bd%bf%e7%94%a8%e8%bf%99%e4%ba%9b%e5%b7%a5%e5%85%b7%e9%9c%80%e8%a6%81%e5%93%aa%e4%ba%9b%e6%8a%80%e8%83%bd aria-label=有效使用这些工具需要哪些技能？>有效使用这些工具需要哪些技能？</a></li><li><a href=#%e8%87%aa%e5%8a%a8%e5%8c%96%e5%9c%a8-atdd-%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88 aria-label="自动化在 ATDD 中的作用是什么？">自动化在 ATDD 中的作用是什么？</a></li><li><a href=#%e5%a6%82%e4%bd%95%e5%9c%a8%e6%95%8f%e6%8d%b7%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%b8%ad%e5%ae%9e%e6%96%bd-atdd aria-label="如何在敏捷开发环境中实施 ATDD？">如何在敏捷开发环境中实施 ATDD？</a></li></ul></li><li><a href=#%e6%8c%91%e6%88%98%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88 aria-label=挑战与解决方案>挑战与解决方案</a><ul><li><a href=#atdd-%e4%bc%9a%e9%81%87%e5%88%b0%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98 aria-label="ATDD 会遇到哪些常见挑战？">ATDD 会遇到哪些常见挑战？</a></li><li><a href=#%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98 aria-label=如何克服这些挑战？>如何克服这些挑战？</a></li><li><a href=#%e5%ae%9e%e6%96%bd-atdd-%e6%9c%89%e5%93%aa%e4%ba%9b%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5 aria-label="实施 ATDD 有哪些最佳实践？">实施 ATDD 有哪些最佳实践？</a></li><li><a href=#%e5%a6%82%e4%bd%95%e4%b8%ba%e5%a4%a7%e5%9e%8b%e9%a1%b9%e7%9b%ae%e6%89%a9%e5%b1%95-atdd aria-label="如何为大型项目扩展 ATDD？">如何为大型项目扩展 ATDD？</a></li><li><a href=#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f-atdd-%e7%9a%84%e6%9c%89%e6%95%88%e6%80%a7 aria-label="如何衡量 ATDD 的有效性？">如何衡量 ATDD 的有效性？</a></li></ul></li></ul></li><li><a href=#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99 aria-label=参考资料>参考资料</a></li></ul></div></details></div><div class=post-content><h2 id=atdd-验收测试驱动开发>ATDD 验收测试驱动开发<a hidden class=anchor aria-hidden=true href=#atdd-验收测试驱动开发>#</a></h2><p>验收测试驱动开发（ATDD）是一种旨在通过将测试作为开发过程的核心组成部分来减少缺陷的开发方法。这确保应用程序达到高质量标准。</p><p>相关术语：</p><ul><li><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-driven-development.md>TDD 测试驱动开发</a></li><li><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/user-acceptance-testing.md>UAT 用户验收测试</a></li></ul><p>更多信息也可以看看：
-<a href=https://en.wikipedia.org/wiki/Acceptance_test-driven_development>Wikipedia</a></p><blockquote><p>wikipedia 只有英文版本，没有中文版本。</p></blockquote><h2 id=关于验收测试驱动开发的问题>关于验收测试驱动开发的问题<a hidden class=anchor aria-hidden=true href=#关于验收测试驱动开发的问题>#</a></h2><h3 id=基础知识和重要性>基础知识和重要性<a hidden class=anchor aria-hidden=true href=#基础知识和重要性>#</a></h3><h4 id=什么是验收测试驱动开发atdd>什么是验收测试驱动开发（ATDD）？<a hidden class=anchor aria-hidden=true href=#什么是验收测试驱动开发atdd>#</a></h4><p>验收测试驱动开发（ATDD）是一种开发方法，团队成员（包括开发人员、测试人员和业务客户）在编码开始之前共同编写验收测试，以不同的视角为特色。其主要目标是明确系统功能的详细、以客户为中心的标准，以指导开发并清晰了解所期望的结果。</p><p>在 ATDD 中，验收测试以示例或场景的形式表达，通常采用“Given-When-Then”格式，描述了系统从用户角度的行为。这些测试被自动化，并作为实时文档和回归测试套件的一部分。</p><p>ATDD 促进了团队成员之间更好的沟通和理解，确保功能符合业务需求。它使开发工作与客户需求保持一致，有助于防止功能蔓延和缺陷。通过从一开始关注客户需求，团队可以交付更有价值且质量更高的软件。</p><p>在 ATDD 中，测试人员的角色不仅仅局限于传统的测试，还包括参与需求澄清，并确保验收标准是可测试和清晰的。测试人员与开发人员和业务代表密切合作，共同创建和自动化验收测试。</p><p>用于 ATDD 的常用工具包括 Cucumber、SpecFlow 和 FitNesse，它们支持行为驱动开发（<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>）和以实例为基础的规范实践。这些工具允许使用所有利益相关者都能理解的语言编写测试，弥合了技术和非技术团队成员之间的差距。</p><p>有效实施 ATDD 需要转变思维和实践，强调前期规范、持续反馈和迭代开发。它是敏捷和精益开发方法中的关键实践，有助于交付符合用户期望的高质量软件。</p><h4 id=为什么-atdd-在软件开发中很重要>为什么 ATDD 在软件开发中很重要？<a hidden class=anchor aria-hidden=true href=#为什么-atdd-在软件开发中很重要>#</a></h4><p>在软件开发中，ATDD 至关重要，因为它确保在编码开始之前，所有利益相关者都对需求有共同的理解。这种方法使开发人员、测试人员和业务代表围绕已达成一致的验收标准进行对齐，促进更好的沟通和协作。通过从一开始关注客户需求，ATDD 最小化了误解的风险，并降低了在开发周期后期进行昂贵的返工的可能性。</p><p>在开发过程的早期引入 ATDD 有助于在问题升级之前识别和解决问题，从而导致更高效和流畅的工作流程。它鼓励使用简单语言进行行为规范，使测试对所有参与方都易于理解。这种明确性有助于在开发之前预防缺陷，这是与传统测试方法相比更为主动的方法。</p><p>ATDD 还促进了持续反馈，允许在整个开发生命周期中进行迭代改进。这个迭代的过程有助于完善产品以更好地满足用户期望，最终产生与业务目标密切对齐的高质量软件。</p><p>此外，ATDD 对自动化的强调支持<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md>回归测试</a>，实现了一个可处理变化而不需要显著增加工作量的可持续测试过程。这个<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md>自动化测试</a>框架对于在快节奏的开发环境中保持高质量尤为重要，特别是在扩大到较大项目时。</p><p>总之，ATDD 之所以重要，是因为它促进了共享理解，减少了返工，确保与业务目标的一致，并支持一个可持续、高质量的开发过程。</p><h4 id=atdd-与传统测试方法有何不同>ATDD 与传统测试方法有何不同？<a hidden class=anchor aria-hidden=true href=#atdd-与传统测试方法有何不同>#</a></h4><p>ATDD，或验收测试驱动开发，主要在其<strong>协作方法</strong>和<strong>时机</strong>方面与传统测试方法不同。传统测试通常发生在开发阶段之后，测试人员根据已经实现的功能创建并执行测试。相比之下，ATDD 涉及到包括开发人员、测试人员和业务代表在内的多个利益相关者，他们在编写任何代码之前定义验收标准并创建验收测试。</p><p>ATDD 中的这种前期协作确保所有方对需求和“完成”的定义有共同的理解。它将重点从开发后发现<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md>缺陷</a>转移到通过早期澄清期望来预防<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md>缺陷</a>。此外，ATDD 鼓励<strong>行为驱动开发</strong>（<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>），其中测试以所有利益相关者都能理解的语言编写，通常使用 Given-When-Then 格式。</p><p>而传统测试方法可能会严重依赖<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/manual-testing.md>手动测试</a>或在事后创建自动化测试，ATDD 从一开始就集成了**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md>自动化测试</a><strong>。验收测试被自动化，并成为</strong>回归套件**的一部分，提供关于新更改是否符合已达成一致的标准的即时反馈。</p><p>总的来说，ATDD 的积极、协作的方法与传统的被动测试方法形成对比，强调预防而非检测，并在整个团队中促进了对质量的共同责任。</p><h4 id=使用-atdd-的主要优势有哪些>使用 ATDD 的主要优势有哪些？<a hidden class=anchor aria-hidden=true href=#使用-atdd-的主要优势有哪些>#</a></h4><p>ATDD 提供了一些增强软件开发过程的关键优势：</p><ul><li><strong>增强协作</strong>：通过在开发周期的早期涉及各种利益相关者（开发人员、测试人员、业务分析师），ATDD 促进了更好的理解和沟通。</li><li><strong>清晰需求</strong>：验收测试充当具体的需求，减少了歧义，并确保软件满足业务需求。</li><li><strong>早期缺陷检测</strong>：在验收标准在前期定义时，问题被更早地识别出来，减少了后期修复缺陷的成本和工作量。</li><li><strong>客户满意度</strong>：关注满足验收标准确保最终产品与客户期望一致。</li><li><strong>回归安全</strong>：自动化验收测试提供了一个安全网，使得在不破坏现有功能的情况下重构和改进代码更加安全。</li><li><strong>持续反馈</strong>：定期执行验收测试为产品的状态提供了持续的洞察，允许及时进行调整。</li><li><strong>流程化开发</strong>：清晰的验收标准指导了开发工作，防止了功能蔓延和过度工程化。</li></ul><p>实施 ATDD 可以导致一个更高效、协作和质量导向的开发生命周期，最终交付更好满足用户需求并经受住时间考验的软件。</p><h4 id=atdd-如何提高软件产品的质量>ATDD 如何提高软件产品的质量？<a hidden class=anchor aria-hidden=true href=#atdd-如何提高软件产品的质量>#</a></h4><p>ATDD 通过确保准确满足**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/functional-requirements.md>功能需求</a>** 并使产品表现如利益相关者期望的方式，提高了<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md>软件质量</a>。通过从一开始关注客户需求，ATDD 促进了<strong>清晰且可执行的规范</strong>的创建。这些规范指导开发和测试，减少了由于误解或不完整的需求而导致的缺陷的可能性。</p><p>验收测试在编写代码<strong>之前</strong>就已经定义好，这意味着开发人员有一个明确的目标。这种<strong>先测试后编码的方法</strong>有助于防止功能蔓延，并确保代码库只包含通过测试所必需的内容，从而使代码库更清晰且更易维护。</p><p>此外，ATDD 鼓励开发人员、测试人员和业务利益相关者之间的协作。这种<strong>跨职能的沟通</strong>有助于在开发过程的早期识别和解决模糊之处，这可以显著提高产品的质量。</p><p>来自验收测试执行的持续反馈允许<strong>早期检测问题</strong>，通常比在开发周期后期发现的<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md>缺陷</a>更具成本效益。此外，验收测试套件成为可以用于**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md>回归测试</a>**的实时文档，确保新更改不会破坏现有功能。</p><p>总的来说，ATDD 通过澄清需求、促进协作和提供持续反馈，有助于构建与业务需求和用户期望密切一致的产品，从而提高<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md>软件质量</a>。</p><h3 id=流程与技巧>流程与技巧<a hidden class=anchor aria-hidden=true href=#流程与技巧>#</a></h3><h4 id=atdd-有哪些关键步骤>ATDD 有哪些关键步骤？<a hidden class=anchor aria-hidden=true href=#atdd-有哪些关键步骤>#</a></h4><p>在 ATDD 中涉及的关键步骤包括：</p><ol><li><strong>协作：</strong> 开发人员、测试人员和业务利益相关者之间的协作，共同定义验收标准。</li><li><strong>编写验收测试：</strong> 在开发开始之前，基于达成一致的标准编写验收测试。</li><li><strong>开发：</strong> 根据验收测试指导功能或用户故事的开发。</li><li><strong>持续集成：</strong> 确保代码更改会自动根据验收测试进行测试。</li><li><strong>修正：</strong> 根据需要对验收测试进行修正，以解决需求或理解的变化。</li><li><strong><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md>测试执行</a></strong>：验证软件是否符合达成一致的验收标准。</li><li><strong>审查和反馈：</strong> 利益相关者审查验收测试，确认其覆盖所需的功能和行为。</li><li><strong><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md>迭代</a></strong>：根据需要通过这些步骤进行迭代，直到功能符合验收标准。</li></ol><p>验收测试通常是自动化的，以便频繁执行和<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md>回归测试</a>。测试以对所有相关方可理解的语言编写，通常使用行为驱动开发（<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>）框架，如 Cucumber 或 SpecFlow。这确保了测试既充当规范又用于验证。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=nx>Feature</span>: <span class=kt>User</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>   <span class=nx>Scenario</span>: <span class=kt>Valid</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Given</span> <span class=nx>I</span> <span class=nx>am</span> <span class=nx>on</span> <span class=nx>the</span> <span class=nx>login</span> <span class=nx>page</span>
-</span></span><span class=line><span class=cl>    <span class=nx>When</span> <span class=nx>I</span> <span class=nx>enter</span> <span class=nx>valid</span> <span class=nx>credentials</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Then</span> <span class=nx>I</span> <span class=nx>should</span> <span class=nx>be</span> <span class=nx>redirected</span> <span class=nx>to</span> <span class=nx>the</span> <span class=nx>dashboard</span>
-</span></span></code></pre></div><p>实现有效的 ATDD 需要团队成员之间建立起强烈的协作文化、保持清晰的沟通，以及对质量的共同承诺。</p><h4 id=atdd-如何创建验收测试>ATDD 如何创建验收测试？<a hidden class=anchor aria-hidden=true href=#atdd-如何创建验收测试>#</a></h4><p>在 ATDD 中，验收测试是通过团队成员之间的<strong>协作</strong>创建的，包括开发人员、测试人员和业务利益相关者。该过程始于定义<strong>用户故事</strong>，描述了用户从其角度期望的功能。每个用户故事都包括<strong>验收标准</strong>，这些标准构成了验收测试的基础。</p><p>团队讨论验收标准，以确保对需求的共同理解。这种讨论通常涉及<strong>示例映射</strong>或<strong>实例说明</strong>，其中使用具体的示例来阐明期望并涵盖不同的场景。</p><p>一旦达成共识，就会编写<strong>可执行规范</strong>。这些规范通常以<strong>Given-When-Then</strong>语句的形式结构化，可以直接转化为自动化测试。例如：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=nx>Given</span> <span class=nx>the</span> <span class=nx>user</span> <span class=k>is</span> <span class=nx>logged</span> <span class=k>in</span>
-</span></span><span class=line><span class=cl><span class=nx>When</span> <span class=nx>they</span> <span class=nx>attempt</span> <span class=nx>to</span> <span class=nx>place</span> <span class=nx>an</span> <span class=nx>order</span>
-</span></span><span class=line><span class=cl><span class=nx>Then</span> <span class=nx>the</span> <span class=nx>order</span> <span class=nx>should</span> <span class=nx>be</span> <span class=nx>processed</span>
-</span></span></code></pre></div><p>然后，使用 ATDD 框架（如<strong>Cucumber</strong>或<strong>SpecFlow</strong>）自动化这些规范，这允许以对非技术利益相关者可访问的领域特定语言编写测试。自动化代码使用框架兼容的语言编写，例如使用 Cucumber 的 Java 或使用 SpecFlow 的 C#。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>@Given</span><span class=p>(</span><span class=s2>&#34;^the user is logged in$&#34;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl><span class=kr>public</span> <span class=k>void</span> <span class=nx>the_user_is_logged_in() {</span>
-</span></span><span class=line><span class=cl>    <span class=c1>// Code to ensure user is logged in
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>@When</span><span class=p>(</span><span class=s2>&#34;^they attempt to place an order$&#34;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl><span class=kr>public</span> <span class=k>void</span> <span class=nx>they_attempt_to_place_an_order() {</span>
-</span></span><span class=line><span class=cl>    <span class=c1>// Code to simulate order placement
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>@Then</span><span class=p>(</span><span class=s2>&#34;^the order should be processed$&#34;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl><span class=kr>public</span> <span class=k>void</span> <span class=nx>the_order_should_be_processed() {</span>
-</span></span><span class=line><span class=cl>    <span class=c1>// Assertions to verify order processing
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
-</span></span></code></pre></div><p>验收测试在整个开发过程中持续执行，以验证软件是否符合达成一致的标准。这确保了新功能的开发以用户需求为导向，并及早捕捉到回归问题。</p><h4 id=atdd-通常使用哪些技术>ATDD 通常使用哪些技术？<a hidden class=anchor aria-hidden=true href=#atdd-通常使用哪些技术>#</a></h4><p>在 ATDD 中，采用了多种技术来确保满足验收标准并确保软件的行为符合预期：</p><ul><li><strong>行为驱动开发（<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>）</strong>：这一技术涉及以自然语言风格编写测试，描述应用程序的行为。通常使用诸如 Cucumber 或 SpecFlow 之类的工具来促进<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>。</li><li><strong>实例说明</strong>：共同定义说明具体行为或要求的示例。这些示例然后被用作验收测试的基础。</li><li><strong>示例映射</strong>：一个团队成员使用卡片来代表用户故事（黄色）、规则（蓝色）、示例（绿色）和问题（红色）的研讨会技术。这有助于理解故事并创建验收测试。</li><li><strong>可执行规范</strong>：以使它们可以直接针对代码执行的方式编写验收测试。这通常涉及使用特定领域语言（DSL）以一种所有利益相关者都能理解的方式来表达测试。</li><li><strong>测试先开发</strong>：在实际实施开始之前编写验收测试，确保开发集中在通过测试。</li><li><strong>协作工具</strong>：使用促进业务利益相关者、开发人员和测试人员之间协作的工具，例如共享存储库或像<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jira.md>JIRA</a>与 Xray 或 TestRail 这样的协作平台。</li><li><strong>持续集成（CI）</strong>：将验收测试作为 CI 流水线的一部分自动运行，以获取有关所做更改的即时反馈。</li><li><strong>测试工件的版本控制</strong>：将验收测试与代码库一起存储在版本控制系统中，以保持<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md>测试用例</a>与应用程序代码之间的同步。</li></ul><p>这些技术有助于定义清晰的验收标准，促进团队成员之间的协作，并确保在被视为完整之前软件满足业务需求。</p><h4 id=atdd-如何融入软件开发生命周期>ATDD 如何融入软件开发生命周期？<a hidden class=anchor aria-hidden=true href=#atdd-如何融入软件开发生命周期>#</a></h4><p>ATDD 通过从一开始就将开发活动与指定的验收标准对齐，融入了软件开发生命周期（SDLC）。在<strong>初始阶段</strong>，利益相关者共同合作以定义和理解需求，然后将其转化为验收测试。这些测试代表了软件必须展示的<strong>行为</strong>，以被视为完整。</p><p>在<strong>规划和设计</strong>阶段，验收测试得到审查和完善，确保它们清晰可测试。开发人员、测试人员和业务代表保持<strong>持续沟通</strong>，以澄清任何模糊之处。</p><p>随着开发的开始，<strong>验收测试引导编码</strong>。开发人员编写足够的代码以通过这些测试，确保功能符合达成的标准。这种做法通常被称为<strong>测试先开发</strong>，促进了<strong>渐进式进展</strong>并有助于及早发现问题。</p><p>在<strong>测试阶段</strong>，自动化验收测试经常执行，为软件功能提供<strong>即时反馈</strong>。这允许快速调整并有助于保持开发的<strong>稳定节奏</strong>。</p><p>在发布之前，ATDD 确保产品符合业务需求，因为所有功能都是根据预定义的验收测试开发的。代码的<strong>持续集成</strong>和验收测试的<strong>定期执行</strong>有助于保持一个为部署准备的<strong>稳定构建</strong>。</p><p>在部署后，这些验收测试成为<strong>回归测试套件</strong>的一部分，防范可能破坏现有功能的未来更改。ATDD 融入 SDLC 支持<strong>可持续、以质量为中心的开发过程</strong>。</p><h4 id=测试人员在-atdd-中扮演什么角色>测试人员在 ATDD 中扮演什么角色？<a hidden class=anchor aria-hidden=true href=#测试人员在-atdd-中扮演什么角色>#</a></h4><p>在 ATDD 中，测试人员的角色是多方面的，侧重于协作、规范和验证。测试人员与<strong>开发人员</strong>、<strong>业务分析师</strong>和<strong>利益相关者</strong>密切合作，澄清需求并确保验收标准定义明确。他们为<strong>用户故事</strong>和<strong>验收测试的创建</strong>做出贡献，确保这些测试准确反映业务需求并且可以自动化。</p><p>在开发过程中，测试人员参与验收测试的<strong>持续完善</strong>，通常与开发人员搭档创建和维护<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md>自动化测试</a>。他们确保测试是<strong>可执行的规范</strong>，指导开发并即时提供有关软件行为是否符合预期结果的反馈。</p><p>测试人员还在<strong>维护<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md>测试套件</a><strong>方面发挥了关键作用，确保随着代码库的演变它保持</strong>可靠</strong>和<strong>高效</strong>。他们还可能负责**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md>测试数据</a>管理<strong>和设置必要的</strong><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md>测试环境</a>**。</p><p>在 ATDD 循环中，测试人员帮助促进<strong>三位好朋友会议</strong>，讨论特性实施的问题，并积极参与**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md>迭代</a>计划** 和 <strong>回顾</strong>以不断改进流程。</p><p>最终，在 ATDD 中，测试人员确保团队交付的产品不仅满足技术需求，而且满足业务需求并为最终用户提供价值。他们在推动 ATDD 中固有的<strong>质量为先</strong>的方法方面发挥关键作用。</p><h3 id=工具和技术>工具和技术<a hidden class=anchor aria-hidden=true href=#工具和技术>#</a></h3><h4 id=atdd-常用的工具有哪些>ATDD 常用的工具有哪些？<a hidden class=anchor aria-hidden=true href=#atdd-常用的工具有哪些>#</a></h4><p>常用的 ATDD 工具包括：</p><ul><li><strong>Cucumber</strong>：使用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。</li><li><strong>SpecFlow</strong>：类似于 Cucumber，专为.NET 框架定制，同样使用 Gherkin 进行测试规范。</li><li><strong>FitNesse</strong>：结合了文档的 wiki 和自动化测试框架，允许以表格形式编写测试。</li><li><strong>Robot Framework</strong>：关键字驱动的测试自动化框架，高度可扩展，支持表格数据的测试用例。</li><li><strong>Concordion</strong>：与 JUnit 集成，允许以 HTML 编写规范，并可链接到用于测试的 Java 代码。</li><li><strong>JBehave</strong>：Java 中用于行为驱动开发（BDD）的框架，使用自然语言编写的故事推动开发。</li><li><strong>Serenity <a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a></strong>：通过提供先进的报告和实时文档功能，增强了其他 BDD 工具（如 Cucumber 和 JBehave）。</li></ul><p>这些工具通过使用所有利益相关者都能理解的语言定义验收标准，支持 ATDD 过程。它们促进了验收测试的自动化，并帮助确保软件特性在被视为完成之前满足预定义的标准。<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md>自动化测试</a>工程师使用这些工具来编写、管理和执行验收测试，通常将它们集成到持续集成流水线中以获得持续反馈。熟练掌握编程，理解应用领域，以及熟悉所选工具的语法和最佳实践对有效使用这些工具至关重要。</p><h4 id=这些工具如何支持-atdd-流程>这些工具如何支持 ATDD 流程？<a hidden class=anchor aria-hidden=true href=#这些工具如何支持-atdd-流程>#</a></h4><p>自动化测试工具通过执行以<strong>行为驱动</strong>格式编写的验收测试，支持<strong>ATDD 过程</strong>。这些工具通常与<strong>Cucumber</strong>、<strong>SpecFlow</strong>或<strong>FitNesse</strong>等框架集成，这些框架允许使用<strong>业务可读</strong>语言（如<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/G/gherkin.md>Gherkin</a>）定义测试。</p><p>通过使用这些工具，团队可以自动化验收标准的<strong>验证</strong>，确保软件符合达成的规范。这种自动化支持<strong>持续集成</strong>（CI）实践，允许在代码提交时自动运行测试，向开发人员提供<strong>即时反馈</strong>。</p><p>此外，<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md>自动化测试</a>工具通过维护一套测试，可用于验证更改是否破坏了现有功能，从而支持<strong>重构</strong>。在 ATDD 中，重点是在整个开发过程中满足验收标准，这一点至关重要。</p><p>此外，这些工具通常带有<strong>报告功能</strong>，使更容易向所有利益相关者传达测试的状态。这种透明度有助于保持对项目进展和质量的<strong>共享理解</strong>。</p><p>例如，典型的 ATDD 工具链可能如下所示：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=nx>Feature</span>: <span class=kt>User</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>  <span class=nx>Scenario</span>: <span class=kt>Valid</span> <span class=nx>user</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Given</span> <span class=nx>I</span> <span class=nx>am</span> <span class=nx>on</span> <span class=nx>the</span> <span class=nx>login</span> <span class=nx>page</span>
-</span></span><span class=line><span class=cl>    <span class=nx>When</span> <span class=nx>I</span> <span class=nx>enter</span> <span class=nx>valid</span> <span class=nx>credentials</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Then</span> <span class=nx>I</span> <span class=nx>should</span> <span class=nx>be</span> <span class=nx>redirected</span> <span class=nx>to</span> <span class=nx>the</span> <span class=nx>dashboard</span>
-</span></span></code></pre></div><p>然后，自动化工具将执行此场景，验证所描述的行为。这确保软件符合<strong>协同编写</strong>的验收测试中业务的期望。</p><h4 id=有效使用这些工具需要哪些技能>有效使用这些工具需要哪些技能？<a hidden class=anchor aria-hidden=true href=#有效使用这些工具需要哪些技能>#</a></h4><p>要有效使用<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md>自动化测试</a>工具，需要具备以下几项技能：</p><ul><li><strong>编程知识</strong>：熟练掌握与自动化工具相关的编程语言，如 Java、Python 或 C#。</li><li><strong>软件开发理解</strong>：熟悉软件开发实践和生命周期，以将测试与开发阶段对齐。</li><li><strong>测试框架专业知识</strong>：具有使用 JUnit、TestNG 或 pytest 等测试框架的经验，并了解其特性和集成。</li><li><strong>版本控制系统</strong>：能够使用 Git 等版本控制系统管理<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md>测试脚本</a>并与开发团队协作。</li><li><strong>持续集成/持续部署（CI/CD）</strong>：了解 CI/CD 管道和 Jenkins、CircleCI 或 Travis CI 等工具，以将自动化测试集成到构建流程中。</li><li><strong>自动化脚本编写</strong>：具备脚本编写技能，以创建健壮、可维护和可重用的<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md>测试脚本</a>。</li><li><strong>理解 ATDD</strong>：虽然不需要详细涵盖，但理解 ATDD 原则对创建反映用户需求的验收测试至关重要。</li><li><strong>解决问题和分析技能</strong>：能够解决<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md>测试脚本</a>的问题并适应变化的需求或环境。</li><li><strong>注意细节</strong>：在编写<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-casee.md>测试用例</a>时要精确，以覆盖边缘情况，防止<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md>误报</a>或漏报。</li><li><strong>沟通能力</strong>：与利益相关者进行清晰的沟通，了解需求并传达测试结果的重要性。</li><li><strong>具体工具知识</strong>：熟练掌握特定的 ATDD 工具，如 Cucumber、SpecFlow 或 FitNesse，包括它们的语法和最佳实践。</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=c1>// 一个使用特定工具语言的简单测试脚本示例
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>Feature</span>: <span class=kt>User</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>  <span class=nx>Scenario</span>: <span class=kt>Successful</span> <span class=nx>login</span> <span class=kd>with</span> <span class=nx>valid</span> <span class=nx>credentials</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Given</span> <span class=nx>the</span> <span class=nx>login</span> <span class=nx>page</span> <span class=k>is</span> <span class=nx>displayed</span>
-</span></span><span class=line><span class=cl>    <span class=nx>When</span> <span class=nx>the</span> <span class=nx>user</span> <span class=nx>enters</span> <span class=nx>valid</span> <span class=nx>credentials</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Then</span> <span class=nx>the</span> <span class=nx>user</span> <span class=k>is</span> <span class=nx>redirected</span> <span class=nx>to</span> <span class=nx>the</span> <span class=nx>dashboard</span>
-</span></span></code></pre></div><ul><li><strong>性能和<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/security-testing.md>安全测试</a></strong>：了解性能瓶颈和安全漏洞，将相关测试纳入自动化测试套件。</li></ul><h4 id=自动化在-atdd-中的作用是什么>自动化在 ATDD 中的作用是什么？<a hidden class=anchor aria-hidden=true href=#自动化在-atdd-中的作用是什么>#</a></h4><p>在 ATDD 中，自动化在<strong>验证</strong>和<strong>回归</strong>验收标准方面发挥着关键作用，确保一致而高效地执行自动化测试。这些自动化测试源于团队达成的验收标准，以确保软件符合业务需求。在 ATDD 中，自动化具有以下作用：</p><ul><li><strong>促进持续测试</strong>，将测试整合到 CI/CD 流水线中，提供对变更的即时反馈。</li><li><strong>确保可重复性</strong>和验收测试的一致性，减少人为错误和测试执行的差异性。</li><li><strong>增加<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md>测试覆盖率</a></strong>，在较短的时间内执行更多的测试。</li><li>通过提供清晰的、可执行的规范，<strong>增强协作</strong>，所有团队成员都能够理解并用于验证系统。</li><li>通过频繁运行自动化验收测试，<strong>缩短反馈周期</strong>，迅速了解软件的状态。</li><li>通过提供一个安全网，确保新更改不会破坏现有功能，<strong>支持重构</strong>。</li></ul><p>自动验收测试成为系统行为的实时文档，始终保持更新。它们通常以**领域特定语言（DSL）**编写，使非技术利益相关者能够理解。通常使用工具如 Cucumber、SpecFlow 或 FitNesse 来促进这个过程。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=nx>Feature</span>: <span class=kt>User</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>  <span class=nx>Scenario</span>: <span class=kt>Valid</span> <span class=nx>user</span> <span class=nx>login</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Given</span> <span class=nx>the</span> <span class=nx>user</span> <span class=nx>has</span> <span class=nx>a</span> <span class=nx>valid</span> <span class=nx>account</span>
-</span></span><span class=line><span class=cl>    <span class=nx>When</span> <span class=nx>the</span> <span class=nx>user</span> <span class=nx>enters</span> <span class=nx>correct</span> <span class=nx>credentials</span>
-</span></span><span class=line><span class=cl>    <span class=nx>Then</span> <span class=nx>access</span> <span class=k>is</span> <span class=nx>granted</span>
-</span></span></code></pre></div><p>在 ATDD 中的自动化不仅仅是测试，它是关于通过在整个开发生命周期中持续验证软件与业务需求的一致性，<strong>构建正确的产品</strong>。</p><h4 id=如何在敏捷开发环境中实施-atdd>如何在敏捷开发环境中实施 ATDD？<a hidden class=anchor aria-hidden=true href=#如何在敏捷开发环境中实施-atdd>#</a></h4><p>在敏捷环境中实施 ATDD 涉及开发人员、测试人员和业务利益相关者之间的协作，以在开发开始之前定义验收标准。使用<strong>用户故事</strong>来捕获需求，并定义反映利益相关者期望行为的<strong>验收测试</strong>。</p><p>开始时，进行一个<strong>规划会议</strong>，讨论用户故事并创建验收测试。这确保了对功能及其期望结果的共享理解。使用像 Cucumber 或 SpecFlow 这样的<strong>行为驱动开发 (<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md>BDD</a>) 工具</strong>编写验收测试，以一种对所有相关方都可理解的语言。</p><p>在<strong>开发</strong>过程中，程序员和测试人员协同工作，测试人员专注于自动化验收测试。这些测试被集成到<strong>持续集成 (CI) 流水线</strong>中，确保它们经常运行。</p><p>在开发后，执行验收测试。如果它们通过，说明功能符合约定的标准。如果没有，开发人员进行必要的更改。这个循环持续进行，直到功能通过所有验收测试。</p><p>通过定期与团队以及利益相关者一起审查测试及其结果，引入<strong>反馈循环</strong>。这确保了验收标准与业务目标保持一致，并及时解决任何误解。</p><p>记得要对代码和测试进行<strong>重构</strong>，以保持简单和可读性。这种做法有助于保持自动化套件的可维护性和可扩展性。</p><p>最后，确保团队是<strong>跨职能</strong>的，团队成员能够为开发和测试做出贡献。这种方法培养了一个质量和对最终产品的共同责任的文化。</p><h3 id=挑战与解决方案>挑战与解决方案<a hidden class=anchor aria-hidden=true href=#挑战与解决方案>#</a></h3><h4 id=atdd-会遇到哪些常见挑战>ATDD 会遇到哪些常见挑战？<a hidden class=anchor aria-hidden=true href=#atdd-会遇到哪些常见挑战>#</a></h4><p>ATDD 中常见的挑战包括：</p><ul><li><strong>协作困难</strong>：确保开发人员、测试人员和业务利益相关者之间的有效沟通可能是具有挑战性的。误解可能导致不正确的测试标准。</li><li><strong>编写清晰的验收标准</strong>：制定明确、可测试的验收标准需要技巧和经验。编写不好的标准可能导致测试无效。</li><li><strong>维护<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md>测试套件</a></strong>：随着应用程序的演变，保持验收测试的最新状态可能会耗费时间。</li><li><strong><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md>测试数据</a>管理</strong>：生成和管理验收测试所需的数据可能会很复杂，尤其是在处理多个环境时。</li><li><strong>在覆盖率和速度之间取得平衡</strong>：在保持测试套件对持续集成足够快的同时，实现足够的测试覆盖率可能很困难。</li><li><strong><a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/flaky-test.md>不稳定的测试</a></strong>：间歇性地通过和失败的测试可能会损害对测试套件的信心，并在调查中浪费时间。</li><li><strong>与现有流程的整合</strong>：将 ATDD 引入到已建立的工作流中可能会遇到阻力，需要谨慎的变更管理。</li><li><strong>工具兼容性</strong>：确保所选工具与技术栈良好集成并支持 ATDD 方法可能是一项挑战。</li><li><strong>技能集</strong>：团队成员可能需要培训，以有效参与 ATDD，包括编写验收测试和自动化测试。</li></ul><p>克服这些挑战通常涉及改进沟通、投资培训、完善流程，并选择与团队需求和技术栈相符的适当工具。</p><h4 id=如何克服这些挑战>如何克服这些挑战？<a hidden class=anchor aria-hidden=true href=#如何克服这些挑战>#</a></h4><p>在 ATDD 中克服挑战需要战略性的方法：</p><ul><li><strong>协作</strong>：培养开发人员、测试人员和业务利益相关者之间协作的文化，以确保对需求有共同的理解。</li><li><strong>持续学习</strong>：鼓励团队成员不断学习和适应新的工具和技术，以保持与 ATDD 最佳实践的同步。</li><li><strong>渐进改进</strong>：从小处着手，逐步改进 ATDD 流程，而不是试图进行大规模改革。</li><li><strong>熟练掌握工具</strong>：投入时间掌握 ATDD 工具，充分利用它们的潜力，并将其无缝集成到开发工作流中。</li><li><strong>反馈循环</strong>：实施短反馈循环，快速发现和解决问题，提高验收测试的质量。</li><li><strong>重构</strong>：定期重构测试，保持清晰度，减少维护成本。</li><li><strong>模块化设计</strong>：设计测试为模块化和可重用的，以最小化重复并简化更新。</li><li><strong>清晰文档</strong>：保持测试的清晰文档，以确保它们可被所有团队成员理解和维护。</li><li><strong>资源分配</strong>：分配足够的资源，包括时间和人员，以保持可持续的步伐，避免过度劳累。</li><li><strong>度量指标</strong>：使用指标跟踪进展并识别改进的领域，但要避免激励错误行为的指标。</li><li><strong>风险管理</strong>：基于风险和业务价值对测试进行优先排序，确保对关键功能进行全面测试。</li></ul><p>通过解决这些方面，团队可以增强他们的 ATDD 实践并克服常见挑战。</p><h4 id=实施-atdd-有哪些最佳实践>实施 ATDD 有哪些最佳实践？<a hidden class=anchor aria-hidden=true href=#实施-atdd-有哪些最佳实践>#</a></h4><p>实施 ATDD 的最佳实践包括：</p><ul><li><strong>与产品所有者、开发人员和测试人员协作</strong>，在编码开始之前定义验收标准。使用<strong>用户故事</strong>促进这些讨论。</li><li>编写<strong>清晰简洁</strong>的验收测试，反映用户的视角，且能够被所有利益相关者理解。</li><li><strong>尽早自动化</strong>验收测试并频繁执行，以确保持续反馈。使用像 Gherkin 这样的<strong>通用语言</strong>编写测试，可以使用 Cucumber 等工具进行自动化。</li><li>维护验收标准和测试结果的<strong>单一真相来源</strong>，确保所有团队成员都能透明且轻松地访问。</li><li>定期<strong>重构</strong>测试，使其能够在应用程序演进时保持可维护性和相关性。</li><li>将 ATDD 集成到您的**持续集成/持续交付（CI/CD）**流水线中，以确保每次构建都自动运行测试。</li><li>使用**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md>测试数据</a>管理**策略，确保测试具有所需数据且处于正确的状态。</li><li>根据风险和业务价值<strong>优先考虑</strong>测试，首先关注最关键的功能。</li><li>培养一个<strong>质量文化</strong>，使每个人都对产品的质量负责，而不仅仅是测试团队。</li><li>定期<strong>审查和调整</strong>您的 ATDD 流程，以解决任何问题并提高效率。</li></ul><p>通过遵循这些实践，您可以增强协作，确保需求的清晰度，并在整个开发生命周期中保持高水平的<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md>软件质量</a>。</p><h4 id=如何为大型项目扩展-atdd>如何为大型项目扩展 ATDD？<a hidden class=anchor aria-hidden=true href=#如何为大型项目扩展-atdd>#</a></h4><p>在大型项目中扩展 ATDD 需要战略规划和高效的工具。首先，通过<strong>构建验收测试</strong>来反映项目的模块化架构。这使得可以在不同团队之间并行进行开发和测试。利用<strong>版本控制</strong>管理测试工件，并确保在团队之间同步。</p><p>利用**<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md>测试数据</a>管理**提供一致且隔离的<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md>测试环境</a>，避免共享数据时可能出现的冲突和依赖关系。实施 <strong>持续集成 CI</strong>以自动运行验收测试来验证新的代码提交，提供对集成状态的即时反馈。</p><p>**分布式<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md>测试执行</a>**对于处理增加的测试负载至关重要。使用支持在多台机器或容器上并行运行测试的工具。这可以缩短反馈周期，确保更快的周转时间。</p><p><strong>协作工具</strong>对于保持开发人员、测试人员和利益相关者之间的沟通至关重要。这些工具应该支持从需求到测试和代码库的追踪，确保所有相关方对验收标准达成一致。</p><p><strong>度量和报告</strong>应该定制以提供有关规模进展和质量的见解。自动仪表板可以跟踪<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md>测试覆盖率</a>、通过/失败率以及随时间变化的趋势，有助于早期识别潜在问题。</p><p>最后，<strong>模块化和重用</strong>测试组件是可能的。共享测试步骤或领域特定语言（DSL）定义的库可以减少重复和维护开销。</p><p>通过专注于这些策略，ATDD 可以有效地扩展以适应大型项目的复杂性。</p><h4 id=如何衡量-atdd-的有效性>如何衡量 ATDD 的有效性？<a hidden class=anchor aria-hidden=true href=#如何衡量-atdd-的有效性>#</a></h4><p>可以通过几个关键指标来衡量 ATDD 的效果：</p><ul><li><strong>缺陷率的降低</strong>：跟踪发布后发现的缺陷数量。较低的数字表明 ATDD 有助于更早地发现和解决问题。</li><li><strong>改进的<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md>测试覆盖率</a></strong>：使用覆盖工具确保验收测试覆盖了代码库和用户故事的重要部分。</li><li><strong>周期时间</strong>：监控从功能构思到交付所需的时间。ATDD 应有助于简化流程，缩短周期时间。</li><li><strong>反馈循环持续时间</strong>：衡量从利益相关者那里获得反馈所需的时间。ATDD 的目标是缩短此循环时间，以便更快地进行调整。</li><li><strong>团队协作</strong>：评估开发人员、测试人员和业务利益相关者之间的协作水平。有效的 ATDD 实践应该增强沟通和理解。</li><li><strong>回归<a href=https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md>测试套件</a>执行时间</strong>：跟踪运行回归套件所需的时间。ATDD 应该导致更有效和有针对性的测试，从而减少执行时间。</li><li><strong>验收测试的通过/失败率</strong>：记录首次运行验收测试的通过率。较高的通过率表示团队对需求有很好的理解。</li><li><strong>客户满意度</strong>：向利益相关者和最终用户进行调查，了解他们对已交付功能的满意程度。更高的满意度水平可能表示成功实施了 ATDD。</li></ul><p>通过监控这些指标，团队可以评估并不断改进他们的 ATDD 实践。</p><h2 id=参考资料>参考资料<a hidden class=anchor aria-hidden=true href=#参考资料>#</a></h2><ul><li>软件测试术语 Github 仓库 <a href=https://github.com/naodeng/QA-Glossary-Wiki>https://github.com/naodeng/QA-Glossary-Wiki</a></li><li>QA Glossary Wiki <a href=https://ray.run/wiki>https://ray.run/wiki</a></li></ul><hr><p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p><center><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style=width:100px></center></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-testing/><span class=title>« 上一页</span><br><span>软件测试术语分享:Acceptance Testing 验收测试</span>
-</a><a class=next href=https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/><span class=title>下一页 »</span><br><span>软件测试术语分享:A/B 测试</span></a></nav><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on x" href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&amp;hashtags="><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on whatsapp" href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on telegram" href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on ycombinator" href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></li></ul></footer><script src=https://giscus.app/client.js data-repo=naodeng/naodeng.com.cn data-repo-id=R_kgDOHntNtg data-category="Show and tell" data-category-id=DIC_kwDOHntNts4Cavst data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=bottom data-theme=preferred_color_scheme data-lang=en crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2024 <a href=https://naodeng.com.cn/zh/>软件测试同学</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="复制";function s(){t.innerHTML="已复制！",setTimeout(()=>{t.innerHTML="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>软件测试术语分享:ATDD 验收测试驱动开发 | 软件测试同学</title>
+<meta name="keywords" content="">
+<meta name="description" content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。">
+<meta name="author" content="nao.deng">
+<link rel="canonical" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/">
+<meta name="google-site-verification" content="google5e9a7c9479924ed2">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c2189e7d36d72767de292f8b9d897e4a464aa5bc7eb692cda50064f5eb9eeece.css" integrity="sha256-whiefTbXJ2feKS&#43;LnYl&#43;SkZKpbx&#43;tpLNpQBk9eue7s4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://naodeng.com.cn/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://naodeng.com.cn/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://naodeng.com.cn/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://naodeng.com.cn/apple-touch-icon.png">
+<link rel="mask-icon" href="https://naodeng.com.cn/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBX883ZDJJ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JBX883ZDJJ');
+        }
+      </script><meta property="og:url" content="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/">
+  <meta property="og:site_name" content="软件测试同学">
+  <meta property="og:title" content="软件测试术语分享:ATDD 验收测试驱动开发">
+  <meta property="og:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-06T16:06:44+08:00">
+    <meta property="article:modified_time" content="2024-02-06T16:06:44+08:00">
+      <meta property="og:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://naodeng.com.cn/papermod-cover.png">
+<meta name="twitter:title" content="软件测试术语分享:ATDD 验收测试驱动开发">
+<meta name="twitter:description" content="这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://naodeng.com.cn/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "软件测试术语分享:ATDD 验收测试驱动开发",
+      "item": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软件测试术语分享:ATDD 验收测试驱动开发",
+  "name": "软件测试术语分享:ATDD 验收测试驱动开发",
+  "description": "这篇博文是软件测试术语分享系列的一部分，专注于 ATDD（验收测试驱动开发）。文章从基础概念、重要性，到流程与技巧、工具与技术，再到挑战与解决方案，全面解析了 ATDD 在软件开发中的应用。读者将深入了解如何通过 ATDD 方法更紧密地结合业务需求，提高软件交付的质量和符合性。通过这个系列分享，读者将获得对 ATDD 的深刻理解，为实际项目中的测试工作提供有力的支持。",
+  "keywords": [
+    
+  ],
+  "articleBody": "ATDD 验收测试驱动开发 验收测试驱动开发（ATDD）是一种旨在通过将测试作为开发过程的核心组成部分来减少缺陷的开发方法。这确保应用程序达到高质量标准。\n相关术语：\nTDD 测试驱动开发 UAT 用户验收测试 更多信息也可以看看： Wikipedia\nwikipedia 只有英文版本，没有中文版本。\n关于验收测试驱动开发的问题 基础知识和重要性 什么是验收测试驱动开发（ATDD）？ 验收测试驱动开发（ATDD）是一种开发方法，团队成员（包括开发人员、测试人员和业务客户）在编码开始之前共同编写验收测试，以不同的视角为特色。其主要目标是明确系统功能的详细、以客户为中心的标准，以指导开发并清晰了解所期望的结果。\n在 ATDD 中，验收测试以示例或场景的形式表达，通常采用“Given-When-Then”格式，描述了系统从用户角度的行为。这些测试被自动化，并作为实时文档和回归测试套件的一部分。\nATDD 促进了团队成员之间更好的沟通和理解，确保功能符合业务需求。它使开发工作与客户需求保持一致，有助于防止功能蔓延和缺陷。通过从一开始关注客户需求，团队可以交付更有价值且质量更高的软件。\n在 ATDD 中，测试人员的角色不仅仅局限于传统的测试，还包括参与需求澄清，并确保验收标准是可测试和清晰的。测试人员与开发人员和业务代表密切合作，共同创建和自动化验收测试。\n用于 ATDD 的常用工具包括 Cucumber、SpecFlow 和 FitNesse，它们支持行为驱动开发（BDD）和以实例为基础的规范实践。这些工具允许使用所有利益相关者都能理解的语言编写测试，弥合了技术和非技术团队成员之间的差距。\n有效实施 ATDD 需要转变思维和实践，强调前期规范、持续反馈和迭代开发。它是敏捷和精益开发方法中的关键实践，有助于交付符合用户期望的高质量软件。\n为什么 ATDD 在软件开发中很重要？ 在软件开发中，ATDD 至关重要，因为它确保在编码开始之前，所有利益相关者都对需求有共同的理解。这种方法使开发人员、测试人员和业务代表围绕已达成一致的验收标准进行对齐，促进更好的沟通和协作。通过从一开始关注客户需求，ATDD 最小化了误解的风险，并降低了在开发周期后期进行昂贵的返工的可能性。\n在开发过程的早期引入 ATDD 有助于在问题升级之前识别和解决问题，从而导致更高效和流畅的工作流程。它鼓励使用简单语言进行行为规范，使测试对所有参与方都易于理解。这种明确性有助于在开发之前预防缺陷，这是与传统测试方法相比更为主动的方法。\nATDD 还促进了持续反馈，允许在整个开发生命周期中进行迭代改进。这个迭代的过程有助于完善产品以更好地满足用户期望，最终产生与业务目标密切对齐的高质量软件。\n此外，ATDD 对自动化的强调支持回归测试，实现了一个可处理变化而不需要显著增加工作量的可持续测试过程。这个自动化测试框架对于在快节奏的开发环境中保持高质量尤为重要，特别是在扩大到较大项目时。\n总之，ATDD 之所以重要，是因为它促进了共享理解，减少了返工，确保与业务目标的一致，并支持一个可持续、高质量的开发过程。\nATDD 与传统测试方法有何不同？ ATDD，或验收测试驱动开发，主要在其协作方法和时机方面与传统测试方法不同。传统测试通常发生在开发阶段之后，测试人员根据已经实现的功能创建并执行测试。相比之下，ATDD 涉及到包括开发人员、测试人员和业务代表在内的多个利益相关者，他们在编写任何代码之前定义验收标准并创建验收测试。\nATDD 中的这种前期协作确保所有方对需求和“完成”的定义有共同的理解。它将重点从开发后发现缺陷转移到通过早期澄清期望来预防缺陷。此外，ATDD 鼓励行为驱动开发（BDD），其中测试以所有利益相关者都能理解的语言编写，通常使用 Given-When-Then 格式。\n而传统测试方法可能会严重依赖手动测试或在事后创建自动化测试，ATDD 从一开始就集成了**自动化测试。验收测试被自动化，并成为回归套件**的一部分，提供关于新更改是否符合已达成一致的标准的即时反馈。\n总的来说，ATDD 的积极、协作的方法与传统的被动测试方法形成对比，强调预防而非检测，并在整个团队中促进了对质量的共同责任。\n使用 ATDD 的主要优势有哪些？ ATDD 提供了一些增强软件开发过程的关键优势：\n增强协作：通过在开发周期的早期涉及各种利益相关者（开发人员、测试人员、业务分析师），ATDD 促进了更好的理解和沟通。 清晰需求：验收测试充当具体的需求，减少了歧义，并确保软件满足业务需求。 早期缺陷检测：在验收标准在前期定义时，问题被更早地识别出来，减少了后期修复缺陷的成本和工作量。 客户满意度：关注满足验收标准确保最终产品与客户期望一致。 回归安全：自动化验收测试提供了一个安全网，使得在不破坏现有功能的情况下重构和改进代码更加安全。 持续反馈：定期执行验收测试为产品的状态提供了持续的洞察，允许及时进行调整。 流程化开发：清晰的验收标准指导了开发工作，防止了功能蔓延和过度工程化。 实施 ATDD 可以导致一个更高效、协作和质量导向的开发生命周期，最终交付更好满足用户需求并经受住时间考验的软件。\nATDD 如何提高软件产品的质量？ ATDD 通过确保准确满足**功能需求** 并使产品表现如利益相关者期望的方式，提高了软件质量。通过从一开始关注客户需求，ATDD 促进了清晰且可执行的规范的创建。这些规范指导开发和测试，减少了由于误解或不完整的需求而导致的缺陷的可能性。\n验收测试在编写代码之前就已经定义好，这意味着开发人员有一个明确的目标。这种先测试后编码的方法有助于防止功能蔓延，并确保代码库只包含通过测试所必需的内容，从而使代码库更清晰且更易维护。\n此外，ATDD 鼓励开发人员、测试人员和业务利益相关者之间的协作。这种跨职能的沟通有助于在开发过程的早期识别和解决模糊之处，这可以显著提高产品的质量。\n来自验收测试执行的持续反馈允许早期检测问题，通常比在开发周期后期发现的缺陷更具成本效益。此外，验收测试套件成为可以用于**回归测试**的实时文档，确保新更改不会破坏现有功能。\n总的来说，ATDD 通过澄清需求、促进协作和提供持续反馈，有助于构建与业务需求和用户期望密切一致的产品，从而提高软件质量。\n流程与技巧 ATDD 有哪些关键步骤？ 在 ATDD 中涉及的关键步骤包括：\n协作： 开发人员、测试人员和业务利益相关者之间的协作，共同定义验收标准。 编写验收测试： 在开发开始之前，基于达成一致的标准编写验收测试。 开发： 根据验收测试指导功能或用户故事的开发。 持续集成： 确保代码更改会自动根据验收测试进行测试。 修正： 根据需要对验收测试进行修正，以解决需求或理解的变化。 测试执行：验证软件是否符合达成一致的验收标准。 审查和反馈： 利益相关者审查验收测试，确认其覆盖所需的功能和行为。 迭代：根据需要通过这些步骤进行迭代，直到功能符合验收标准。 验收测试通常是自动化的，以便频繁执行和回归测试。测试以对所有相关方可理解的语言编写，通常使用行为驱动开发（BDD）框架，如 Cucumber 或 SpecFlow。这确保了测试既充当规范又用于验证。\nFeature: User login Scenario: Valid login Given I am on the login page When I enter valid credentials Then I should be redirected to the dashboard 实现有效的 ATDD 需要团队成员之间建立起强烈的协作文化、保持清晰的沟通，以及对质量的共同承诺。\nATDD 如何创建验收测试？ 在 ATDD 中，验收测试是通过团队成员之间的协作创建的，包括开发人员、测试人员和业务利益相关者。该过程始于定义用户故事，描述了用户从其角度期望的功能。每个用户故事都包括验收标准，这些标准构成了验收测试的基础。\n团队讨论验收标准，以确保对需求的共同理解。这种讨论通常涉及示例映射或实例说明，其中使用具体的示例来阐明期望并涵盖不同的场景。\n一旦达成共识，就会编写可执行规范。这些规范通常以Given-When-Then语句的形式结构化，可以直接转化为自动化测试。例如：\nGiven the user is logged in When they attempt to place an order Then the order should be processed 然后，使用 ATDD 框架（如Cucumber或SpecFlow）自动化这些规范，这允许以对非技术利益相关者可访问的领域特定语言编写测试。自动化代码使用框架兼容的语言编写，例如使用 Cucumber 的 Java 或使用 SpecFlow 的 C#。\n@Given(\"^the user is logged in$\") public void the_user_is_logged_in() { // Code to ensure user is logged in } @When(\"^they attempt to place an order$\") public void they_attempt_to_place_an_order() { // Code to simulate order placement } @Then(\"^the order should be processed$\") public void the_order_should_be_processed() { // Assertions to verify order processing } 验收测试在整个开发过程中持续执行，以验证软件是否符合达成一致的标准。这确保了新功能的开发以用户需求为导向，并及早捕捉到回归问题。\nATDD 通常使用哪些技术？ 在 ATDD 中，采用了多种技术来确保满足验收标准并确保软件的行为符合预期：\n行为驱动开发（BDD）：这一技术涉及以自然语言风格编写测试，描述应用程序的行为。通常使用诸如 Cucumber 或 SpecFlow 之类的工具来促进BDD。 实例说明：共同定义说明具体行为或要求的示例。这些示例然后被用作验收测试的基础。 示例映射：一个团队成员使用卡片来代表用户故事（黄色）、规则（蓝色）、示例（绿色）和问题（红色）的研讨会技术。这有助于理解故事并创建验收测试。 可执行规范：以使它们可以直接针对代码执行的方式编写验收测试。这通常涉及使用特定领域语言（DSL）以一种所有利益相关者都能理解的方式来表达测试。 测试先开发：在实际实施开始之前编写验收测试，确保开发集中在通过测试。 协作工具：使用促进业务利益相关者、开发人员和测试人员之间协作的工具，例如共享存储库或像JIRA与 Xray 或 TestRail 这样的协作平台。 持续集成（CI）：将验收测试作为 CI 流水线的一部分自动运行，以获取有关所做更改的即时反馈。 测试工件的版本控制：将验收测试与代码库一起存储在版本控制系统中，以保持测试用例与应用程序代码之间的同步。 这些技术有助于定义清晰的验收标准，促进团队成员之间的协作，并确保在被视为完整之前软件满足业务需求。\nATDD 如何融入软件开发生命周期？ ATDD 通过从一开始就将开发活动与指定的验收标准对齐，融入了软件开发生命周期（SDLC）。在初始阶段，利益相关者共同合作以定义和理解需求，然后将其转化为验收测试。这些测试代表了软件必须展示的行为，以被视为完整。\n在规划和设计阶段，验收测试得到审查和完善，确保它们清晰可测试。开发人员、测试人员和业务代表保持持续沟通，以澄清任何模糊之处。\n随着开发的开始，验收测试引导编码。开发人员编写足够的代码以通过这些测试，确保功能符合达成的标准。这种做法通常被称为测试先开发，促进了渐进式进展并有助于及早发现问题。\n在测试阶段，自动化验收测试经常执行，为软件功能提供即时反馈。这允许快速调整并有助于保持开发的稳定节奏。\n在发布之前，ATDD 确保产品符合业务需求，因为所有功能都是根据预定义的验收测试开发的。代码的持续集成和验收测试的定期执行有助于保持一个为部署准备的稳定构建。\n在部署后，这些验收测试成为回归测试套件的一部分，防范可能破坏现有功能的未来更改。ATDD 融入 SDLC 支持可持续、以质量为中心的开发过程。\n测试人员在 ATDD 中扮演什么角色？ 在 ATDD 中，测试人员的角色是多方面的，侧重于协作、规范和验证。测试人员与开发人员、业务分析师和利益相关者密切合作，澄清需求并确保验收标准定义明确。他们为用户故事和验收测试的创建做出贡献，确保这些测试准确反映业务需求并且可以自动化。\n在开发过程中，测试人员参与验收测试的持续完善，通常与开发人员搭档创建和维护自动化测试。他们确保测试是可执行的规范，指导开发并即时提供有关软件行为是否符合预期结果的反馈。\n测试人员还在维护测试套件方面发挥了关键作用，确保随着代码库的演变它保持可靠和高效。他们还可能负责**测试数据管理和设置必要的测试环境**。\n在 ATDD 循环中，测试人员帮助促进三位好朋友会议，讨论特性实施的问题，并积极参与**迭代计划** 和 回顾以不断改进流程。\n最终，在 ATDD 中，测试人员确保团队交付的产品不仅满足技术需求，而且满足业务需求并为最终用户提供价值。他们在推动 ATDD 中固有的质量为先的方法方面发挥关键作用。\n工具和技术 ATDD 常用的工具有哪些？ 常用的 ATDD 工具包括：\nCucumber：使用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。 SpecFlow：类似于 Cucumber，专为.NET 框架定制，同样使用 Gherkin 进行测试规范。 FitNesse：结合了文档的 wiki 和自动化测试框架，允许以表格形式编写测试。 Robot Framework：关键字驱动的测试自动化框架，高度可扩展，支持表格数据的测试用例。 Concordion：与 JUnit 集成，允许以 HTML 编写规范，并可链接到用于测试的 Java 代码。 JBehave：Java 中用于行为驱动开发（BDD）的框架，使用自然语言编写的故事推动开发。 Serenity BDD：通过提供先进的报告和实时文档功能，增强了其他 BDD 工具（如 Cucumber 和 JBehave）。 这些工具通过使用所有利益相关者都能理解的语言定义验收标准，支持 ATDD 过程。它们促进了验收测试的自动化，并帮助确保软件特性在被视为完成之前满足预定义的标准。自动化测试工程师使用这些工具来编写、管理和执行验收测试，通常将它们集成到持续集成流水线中以获得持续反馈。熟练掌握编程，理解应用领域，以及熟悉所选工具的语法和最佳实践对有效使用这些工具至关重要。\n这些工具如何支持 ATDD 流程？ 自动化测试工具通过执行以行为驱动格式编写的验收测试，支持ATDD 过程。这些工具通常与Cucumber、SpecFlow或FitNesse等框架集成，这些框架允许使用业务可读语言（如Gherkin）定义测试。\n通过使用这些工具，团队可以自动化验收标准的验证，确保软件符合达成的规范。这种自动化支持持续集成（CI）实践，允许在代码提交时自动运行测试，向开发人员提供即时反馈。\n此外，自动化测试工具通过维护一套测试，可用于验证更改是否破坏了现有功能，从而支持重构。在 ATDD 中，重点是在整个开发过程中满足验收标准，这一点至关重要。\n此外，这些工具通常带有报告功能，使更容易向所有利益相关者传达测试的状态。这种透明度有助于保持对项目进展和质量的共享理解。\n例如，典型的 ATDD 工具链可能如下所示：\nFeature: User login Scenario: Valid user login Given I am on the login page When I enter valid credentials Then I should be redirected to the dashboard 然后，自动化工具将执行此场景，验证所描述的行为。这确保软件符合协同编写的验收测试中业务的期望。\n有效使用这些工具需要哪些技能？ 要有效使用自动化测试工具，需要具备以下几项技能：\n编程知识：熟练掌握与自动化工具相关的编程语言，如 Java、Python 或 C#。 软件开发理解：熟悉软件开发实践和生命周期，以将测试与开发阶段对齐。 测试框架专业知识：具有使用 JUnit、TestNG 或 pytest 等测试框架的经验，并了解其特性和集成。 版本控制系统：能够使用 Git 等版本控制系统管理测试脚本并与开发团队协作。 持续集成/持续部署（CI/CD）：了解 CI/CD 管道和 Jenkins、CircleCI 或 Travis CI 等工具，以将自动化测试集成到构建流程中。 自动化脚本编写：具备脚本编写技能，以创建健壮、可维护和可重用的测试脚本。 理解 ATDD：虽然不需要详细涵盖，但理解 ATDD 原则对创建反映用户需求的验收测试至关重要。 解决问题和分析技能：能够解决测试脚本的问题并适应变化的需求或环境。 注意细节：在编写测试用例时要精确，以覆盖边缘情况，防止误报或漏报。 沟通能力：与利益相关者进行清晰的沟通，了解需求并传达测试结果的重要性。 具体工具知识：熟练掌握特定的 ATDD 工具，如 Cucumber、SpecFlow 或 FitNesse，包括它们的语法和最佳实践。 // 一个使用特定工具语言的简单测试脚本示例 Feature: User login Scenario: Successful login with valid credentials Given the login page is displayed When the user enters valid credentials Then the user is redirected to the dashboard 性能和安全测试：了解性能瓶颈和安全漏洞，将相关测试纳入自动化测试套件。 自动化在 ATDD 中的作用是什么？ 在 ATDD 中，自动化在验证和回归验收标准方面发挥着关键作用，确保一致而高效地执行自动化测试。这些自动化测试源于团队达成的验收标准，以确保软件符合业务需求。在 ATDD 中，自动化具有以下作用：\n促进持续测试，将测试整合到 CI/CD 流水线中，提供对变更的即时反馈。 确保可重复性和验收测试的一致性，减少人为错误和测试执行的差异性。 增加测试覆盖率，在较短的时间内执行更多的测试。 通过提供清晰的、可执行的规范，增强协作，所有团队成员都能够理解并用于验证系统。 通过频繁运行自动化验收测试，缩短反馈周期，迅速了解软件的状态。 通过提供一个安全网，确保新更改不会破坏现有功能，支持重构。 自动验收测试成为系统行为的实时文档，始终保持更新。它们通常以**领域特定语言（DSL）**编写，使非技术利益相关者能够理解。通常使用工具如 Cucumber、SpecFlow 或 FitNesse 来促进这个过程。\nFeature: User login Scenario: Valid user login Given the user has a valid account When the user enters correct credentials Then access is granted 在 ATDD 中的自动化不仅仅是测试，它是关于通过在整个开发生命周期中持续验证软件与业务需求的一致性，构建正确的产品。\n如何在敏捷开发环境中实施 ATDD？ 在敏捷环境中实施 ATDD 涉及开发人员、测试人员和业务利益相关者之间的协作，以在开发开始之前定义验收标准。使用用户故事来捕获需求，并定义反映利益相关者期望行为的验收测试。\n开始时，进行一个规划会议，讨论用户故事并创建验收测试。这确保了对功能及其期望结果的共享理解。使用像 Cucumber 或 SpecFlow 这样的行为驱动开发 (BDD) 工具编写验收测试，以一种对所有相关方都可理解的语言。\n在开发过程中，程序员和测试人员协同工作，测试人员专注于自动化验收测试。这些测试被集成到持续集成 (CI) 流水线中，确保它们经常运行。\n在开发后，执行验收测试。如果它们通过，说明功能符合约定的标准。如果没有，开发人员进行必要的更改。这个循环持续进行，直到功能通过所有验收测试。\n通过定期与团队以及利益相关者一起审查测试及其结果，引入反馈循环。这确保了验收标准与业务目标保持一致，并及时解决任何误解。\n记得要对代码和测试进行重构，以保持简单和可读性。这种做法有助于保持自动化套件的可维护性和可扩展性。\n最后，确保团队是跨职能的，团队成员能够为开发和测试做出贡献。这种方法培养了一个质量和对最终产品的共同责任的文化。\n挑战与解决方案 ATDD 会遇到哪些常见挑战？ ATDD 中常见的挑战包括：\n协作困难：确保开发人员、测试人员和业务利益相关者之间的有效沟通可能是具有挑战性的。误解可能导致不正确的测试标准。 编写清晰的验收标准：制定明确、可测试的验收标准需要技巧和经验。编写不好的标准可能导致测试无效。 维护测试套件：随着应用程序的演变，保持验收测试的最新状态可能会耗费时间。 测试数据管理：生成和管理验收测试所需的数据可能会很复杂，尤其是在处理多个环境时。 在覆盖率和速度之间取得平衡：在保持测试套件对持续集成足够快的同时，实现足够的测试覆盖率可能很困难。 不稳定的测试：间歇性地通过和失败的测试可能会损害对测试套件的信心，并在调查中浪费时间。 与现有流程的整合：将 ATDD 引入到已建立的工作流中可能会遇到阻力，需要谨慎的变更管理。 工具兼容性：确保所选工具与技术栈良好集成并支持 ATDD 方法可能是一项挑战。 技能集：团队成员可能需要培训，以有效参与 ATDD，包括编写验收测试和自动化测试。 克服这些挑战通常涉及改进沟通、投资培训、完善流程，并选择与团队需求和技术栈相符的适当工具。\n如何克服这些挑战？ 在 ATDD 中克服挑战需要战略性的方法：\n协作：培养开发人员、测试人员和业务利益相关者之间协作的文化，以确保对需求有共同的理解。 持续学习：鼓励团队成员不断学习和适应新的工具和技术，以保持与 ATDD 最佳实践的同步。 渐进改进：从小处着手，逐步改进 ATDD 流程，而不是试图进行大规模改革。 熟练掌握工具：投入时间掌握 ATDD 工具，充分利用它们的潜力，并将其无缝集成到开发工作流中。 反馈循环：实施短反馈循环，快速发现和解决问题，提高验收测试的质量。 重构：定期重构测试，保持清晰度，减少维护成本。 模块化设计：设计测试为模块化和可重用的，以最小化重复并简化更新。 清晰文档：保持测试的清晰文档，以确保它们可被所有团队成员理解和维护。 资源分配：分配足够的资源，包括时间和人员，以保持可持续的步伐，避免过度劳累。 度量指标：使用指标跟踪进展并识别改进的领域，但要避免激励错误行为的指标。 风险管理：基于风险和业务价值对测试进行优先排序，确保对关键功能进行全面测试。 通过解决这些方面，团队可以增强他们的 ATDD 实践并克服常见挑战。\n实施 ATDD 有哪些最佳实践？ 实施 ATDD 的最佳实践包括：\n与产品所有者、开发人员和测试人员协作，在编码开始之前定义验收标准。使用用户故事促进这些讨论。 编写清晰简洁的验收测试，反映用户的视角，且能够被所有利益相关者理解。 尽早自动化验收测试并频繁执行，以确保持续反馈。使用像 Gherkin 这样的通用语言编写测试，可以使用 Cucumber 等工具进行自动化。 维护验收标准和测试结果的单一真相来源，确保所有团队成员都能透明且轻松地访问。 定期重构测试，使其能够在应用程序演进时保持可维护性和相关性。 将 ATDD 集成到您的**持续集成/持续交付（CI/CD）**流水线中，以确保每次构建都自动运行测试。 使用**测试数据管理**策略，确保测试具有所需数据且处于正确的状态。 根据风险和业务价值优先考虑测试，首先关注最关键的功能。 培养一个质量文化，使每个人都对产品的质量负责，而不仅仅是测试团队。 定期审查和调整您的 ATDD 流程，以解决任何问题并提高效率。 通过遵循这些实践，您可以增强协作，确保需求的清晰度，并在整个开发生命周期中保持高水平的软件质量。\n如何为大型项目扩展 ATDD？ 在大型项目中扩展 ATDD 需要战略规划和高效的工具。首先，通过构建验收测试来反映项目的模块化架构。这使得可以在不同团队之间并行进行开发和测试。利用版本控制管理测试工件，并确保在团队之间同步。\n利用**测试数据管理**提供一致且隔离的测试环境，避免共享数据时可能出现的冲突和依赖关系。实施 持续集成 CI以自动运行验收测试来验证新的代码提交，提供对集成状态的即时反馈。\n**分布式测试执行**对于处理增加的测试负载至关重要。使用支持在多台机器或容器上并行运行测试的工具。这可以缩短反馈周期，确保更快的周转时间。\n协作工具对于保持开发人员、测试人员和利益相关者之间的沟通至关重要。这些工具应该支持从需求到测试和代码库的追踪，确保所有相关方对验收标准达成一致。\n度量和报告应该定制以提供有关规模进展和质量的见解。自动仪表板可以跟踪测试覆盖率、通过/失败率以及随时间变化的趋势，有助于早期识别潜在问题。\n最后，模块化和重用测试组件是可能的。共享测试步骤或领域特定语言（DSL）定义的库可以减少重复和维护开销。\n通过专注于这些策略，ATDD 可以有效地扩展以适应大型项目的复杂性。\n如何衡量 ATDD 的有效性？ 可以通过几个关键指标来衡量 ATDD 的效果：\n缺陷率的降低：跟踪发布后发现的缺陷数量。较低的数字表明 ATDD 有助于更早地发现和解决问题。 改进的测试覆盖率：使用覆盖工具确保验收测试覆盖了代码库和用户故事的重要部分。 周期时间：监控从功能构思到交付所需的时间。ATDD 应有助于简化流程，缩短周期时间。 反馈循环持续时间：衡量从利益相关者那里获得反馈所需的时间。ATDD 的目标是缩短此循环时间，以便更快地进行调整。 团队协作：评估开发人员、测试人员和业务利益相关者之间的协作水平。有效的 ATDD 实践应该增强沟通和理解。 回归测试套件执行时间：跟踪运行回归套件所需的时间。ATDD 应该导致更有效和有针对性的测试，从而减少执行时间。 验收测试的通过/失败率：记录首次运行验收测试的通过率。较高的通过率表示团队对需求有很好的理解。 客户满意度：向利益相关者和最终用户进行调查，了解他们对已交付功能的满意程度。更高的满意度水平可能表示成功实施了 ATDD。 通过监控这些指标，团队可以评估并不断改进他们的 ATDD 实践。\n参考资料 软件测试术语 Github 仓库 https://github.com/naodeng/QA-Glossary-Wiki QA Glossary Wiki https://ray.run/wiki 欢迎关注软件测试同学的公众号“软件测试同学”，原创 QA 技术文章第一时间推送。\n",
+  "wordCount" : "620",
+  "inLanguage": "zh",
+  "image": "https://naodeng.com.cn/papermod-cover.png","datePublished": "2024-02-06T16:06:44+08:00",
+  "dateModified": "2024-02-06T16:06:44+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nao.deng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "软件测试同学",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://naodeng.com.cn/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://naodeng.com.cn/zh/" accesskey="h" title="软件测试同学 (Alt + H)">软件测试同学</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://naodeng.com.cn/" title="🇬🇧English"
+                                aria-label="🇬🇧English">🇬🇧English</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://naodeng.com.cn/zh/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/zh/zhcategories" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/zh/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/zh/zhtags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://naodeng.com.cn/zh/zhseries" title="系列">
+                    <span>系列</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://qaprompt.inaodeng.com/" title="测试提示词">
+                    <span>测试提示词</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://status.naodeng.com.cn" title="状态">
+                    <span>状态</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn" title="网站统计">
+                    <span>网站统计</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://naodeng.com.cn/zh/">主页</a>&nbsp;»&nbsp;<a href="https://naodeng.com.cn/zh/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      软件测试术语分享:ATDD 验收测试驱动开发
+    </h1>
+    <div class="post-meta"><span title='2024-02-06 16:06:44 +0800 +0800'>2024年2月6日</span>&nbsp;·&nbsp;<span>3 分钟</span>&nbsp;·&nbsp;<span>620 字</span>&nbsp;·&nbsp;<span>nao.deng</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/naodeng/naodeng.com.cn/tree/main/content/posts/QA-Glossary-Wiki/QA-Glossary-Wiki-acceptance-test-driven-development.zh.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#atdd-%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91" aria-label="ATDD 验收测试驱动开发">ATDD 验收测试驱动开发</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8e%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="关于验收测试驱动开发的问题">关于验收测试驱动开发的问题</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%92%8c%e9%87%8d%e8%a6%81%e6%80%a7" aria-label="基础知识和重要性">基础知识和重要性</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91atdd" aria-label="什么是验收测试驱动开发（ATDD）？">什么是验收测试驱动开发（ATDD）？</a></li>
+                <li>
+                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-atdd-%e5%9c%a8%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e4%b8%ad%e5%be%88%e9%87%8d%e8%a6%81" aria-label="为什么 ATDD 在软件开发中很重要？">为什么 ATDD 在软件开发中很重要？</a></li>
+                <li>
+                    <a href="#atdd-%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%b5%8b%e8%af%95%e6%96%b9%e6%b3%95%e6%9c%89%e4%bd%95%e4%b8%8d%e5%90%8c" aria-label="ATDD 与传统测试方法有何不同？">ATDD 与传统测试方法有何不同？</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8-atdd-%e7%9a%84%e4%b8%bb%e8%a6%81%e4%bc%98%e5%8a%bf%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="使用 ATDD 的主要优势有哪些？">使用 ATDD 的主要优势有哪些？</a></li>
+                <li>
+                    <a href="#atdd-%e5%a6%82%e4%bd%95%e6%8f%90%e9%ab%98%e8%bd%af%e4%bb%b6%e4%ba%a7%e5%93%81%e7%9a%84%e8%b4%a8%e9%87%8f" aria-label="ATDD 如何提高软件产品的质量？">ATDD 如何提高软件产品的质量？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b5%81%e7%a8%8b%e4%b8%8e%e6%8a%80%e5%b7%a7" aria-label="流程与技巧">流程与技巧</a><ul>
+                        
+                <li>
+                    <a href="#atdd-%e6%9c%89%e5%93%aa%e4%ba%9b%e5%85%b3%e9%94%ae%e6%ad%a5%e9%aa%a4" aria-label="ATDD 有哪些关键步骤？">ATDD 有哪些关键步骤？</a></li>
+                <li>
+                    <a href="#atdd-%e5%a6%82%e4%bd%95%e5%88%9b%e5%bb%ba%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95" aria-label="ATDD 如何创建验收测试？">ATDD 如何创建验收测试？</a></li>
+                <li>
+                    <a href="#atdd-%e9%80%9a%e5%b8%b8%e4%bd%bf%e7%94%a8%e5%93%aa%e4%ba%9b%e6%8a%80%e6%9c%af" aria-label="ATDD 通常使用哪些技术？">ATDD 通常使用哪些技术？</a></li>
+                <li>
+                    <a href="#atdd-%e5%a6%82%e4%bd%95%e8%9e%8d%e5%85%a5%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f" aria-label="ATDD 如何融入软件开发生命周期？">ATDD 如何融入软件开发生命周期？</a></li>
+                <li>
+                    <a href="#%e6%b5%8b%e8%af%95%e4%ba%ba%e5%91%98%e5%9c%a8-atdd-%e4%b8%ad%e6%89%ae%e6%bc%94%e4%bb%80%e4%b9%88%e8%a7%92%e8%89%b2" aria-label="测试人员在 ATDD 中扮演什么角色？">测试人员在 ATDD 中扮演什么角色？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%b7%a5%e5%85%b7%e5%92%8c%e6%8a%80%e6%9c%af" aria-label="工具和技术">工具和技术</a><ul>
+                        
+                <li>
+                    <a href="#atdd-%e5%b8%b8%e7%94%a8%e7%9a%84%e5%b7%a5%e5%85%b7%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="ATDD 常用的工具有哪些？">ATDD 常用的工具有哪些？</a></li>
+                <li>
+                    <a href="#%e8%bf%99%e4%ba%9b%e5%b7%a5%e5%85%b7%e5%a6%82%e4%bd%95%e6%94%af%e6%8c%81-atdd-%e6%b5%81%e7%a8%8b" aria-label="这些工具如何支持 ATDD 流程？">这些工具如何支持 ATDD 流程？</a></li>
+                <li>
+                    <a href="#%e6%9c%89%e6%95%88%e4%bd%bf%e7%94%a8%e8%bf%99%e4%ba%9b%e5%b7%a5%e5%85%b7%e9%9c%80%e8%a6%81%e5%93%aa%e4%ba%9b%e6%8a%80%e8%83%bd" aria-label="有效使用这些工具需要哪些技能？">有效使用这些工具需要哪些技能？</a></li>
+                <li>
+                    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e5%9c%a8-atdd-%e4%b8%ad%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88" aria-label="自动化在 ATDD 中的作用是什么？">自动化在 ATDD 中的作用是什么？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%9c%a8%e6%95%8f%e6%8d%b7%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%b8%ad%e5%ae%9e%e6%96%bd-atdd" aria-label="如何在敏捷开发环境中实施 ATDD？">如何在敏捷开发环境中实施 ATDD？</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%8c%91%e6%88%98%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="挑战与解决方案">挑战与解决方案</a><ul>
+                        
+                <li>
+                    <a href="#atdd-%e4%bc%9a%e9%81%87%e5%88%b0%e5%93%aa%e4%ba%9b%e5%b8%b8%e8%a7%81%e6%8c%91%e6%88%98" aria-label="ATDD 会遇到哪些常见挑战？">ATDD 会遇到哪些常见挑战？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e5%85%8b%e6%9c%8d%e8%bf%99%e4%ba%9b%e6%8c%91%e6%88%98" aria-label="如何克服这些挑战？">如何克服这些挑战？</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e6%96%bd-atdd-%e6%9c%89%e5%93%aa%e4%ba%9b%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="实施 ATDD 有哪些最佳实践？">实施 ATDD 有哪些最佳实践？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e4%b8%ba%e5%a4%a7%e5%9e%8b%e9%a1%b9%e7%9b%ae%e6%89%a9%e5%b1%95-atdd" aria-label="如何为大型项目扩展 ATDD？">如何为大型项目扩展 ATDD？</a></li>
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e8%a1%a1%e9%87%8f-atdd-%e7%9a%84%e6%9c%89%e6%95%88%e6%80%a7" aria-label="如何衡量 ATDD 的有效性？">如何衡量 ATDD 的有效性？</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="atdd-验收测试驱动开发">ATDD 验收测试驱动开发<a hidden class="anchor" aria-hidden="true" href="#atdd-验收测试驱动开发">#</a></h2>
+<p>验收测试驱动开发（ATDD）是一种旨在通过将测试作为开发过程的核心组成部分来减少缺陷的开发方法。这确保应用程序达到高质量标准。</p>
+<p>相关术语：</p>
+<ul>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-driven-development.md">TDD 测试驱动开发</a></li>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/user-acceptance-testing.md">UAT 用户验收测试</a></li>
+</ul>
+<p>更多信息也可以看看：
+<a href="https://en.wikipedia.org/wiki/Acceptance_test-driven_development">Wikipedia</a></p>
+<blockquote>
+<p>wikipedia 只有英文版本，没有中文版本。</p>
+</blockquote>
+<h2 id="关于验收测试驱动开发的问题">关于验收测试驱动开发的问题<a hidden class="anchor" aria-hidden="true" href="#关于验收测试驱动开发的问题">#</a></h2>
+<h3 id="基础知识和重要性">基础知识和重要性<a hidden class="anchor" aria-hidden="true" href="#基础知识和重要性">#</a></h3>
+<h4 id="什么是验收测试驱动开发atdd">什么是验收测试驱动开发（ATDD）？<a hidden class="anchor" aria-hidden="true" href="#什么是验收测试驱动开发atdd">#</a></h4>
+<p>验收测试驱动开发（ATDD）是一种开发方法，团队成员（包括开发人员、测试人员和业务客户）在编码开始之前共同编写验收测试，以不同的视角为特色。其主要目标是明确系统功能的详细、以客户为中心的标准，以指导开发并清晰了解所期望的结果。</p>
+<p>在 ATDD 中，验收测试以示例或场景的形式表达，通常采用“Given-When-Then”格式，描述了系统从用户角度的行为。这些测试被自动化，并作为实时文档和回归测试套件的一部分。</p>
+<p>ATDD 促进了团队成员之间更好的沟通和理解，确保功能符合业务需求。它使开发工作与客户需求保持一致，有助于防止功能蔓延和缺陷。通过从一开始关注客户需求，团队可以交付更有价值且质量更高的软件。</p>
+<p>在 ATDD 中，测试人员的角色不仅仅局限于传统的测试，还包括参与需求澄清，并确保验收标准是可测试和清晰的。测试人员与开发人员和业务代表密切合作，共同创建和自动化验收测试。</p>
+<p>用于 ATDD 的常用工具包括 Cucumber、SpecFlow 和 FitNesse，它们支持行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）和以实例为基础的规范实践。这些工具允许使用所有利益相关者都能理解的语言编写测试，弥合了技术和非技术团队成员之间的差距。</p>
+<p>有效实施 ATDD 需要转变思维和实践，强调前期规范、持续反馈和迭代开发。它是敏捷和精益开发方法中的关键实践，有助于交付符合用户期望的高质量软件。</p>
+<h4 id="为什么-atdd-在软件开发中很重要">为什么 ATDD 在软件开发中很重要？<a hidden class="anchor" aria-hidden="true" href="#为什么-atdd-在软件开发中很重要">#</a></h4>
+<p>在软件开发中，ATDD 至关重要，因为它确保在编码开始之前，所有利益相关者都对需求有共同的理解。这种方法使开发人员、测试人员和业务代表围绕已达成一致的验收标准进行对齐，促进更好的沟通和协作。通过从一开始关注客户需求，ATDD 最小化了误解的风险，并降低了在开发周期后期进行昂贵的返工的可能性。</p>
+<p>在开发过程的早期引入 ATDD 有助于在问题升级之前识别和解决问题，从而导致更高效和流畅的工作流程。它鼓励使用简单语言进行行为规范，使测试对所有参与方都易于理解。这种明确性有助于在开发之前预防缺陷，这是与传统测试方法相比更为主动的方法。</p>
+<p>ATDD 还促进了持续反馈，允许在整个开发生命周期中进行迭代改进。这个迭代的过程有助于完善产品以更好地满足用户期望，最终产生与业务目标密切对齐的高质量软件。</p>
+<p>此外，ATDD 对自动化的强调支持<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>，实现了一个可处理变化而不需要显著增加工作量的可持续测试过程。这个<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md">自动化测试</a>框架对于在快节奏的开发环境中保持高质量尤为重要，特别是在扩大到较大项目时。</p>
+<p>总之，ATDD 之所以重要，是因为它促进了共享理解，减少了返工，确保与业务目标的一致，并支持一个可持续、高质量的开发过程。</p>
+<h4 id="atdd-与传统测试方法有何不同">ATDD 与传统测试方法有何不同？<a hidden class="anchor" aria-hidden="true" href="#atdd-与传统测试方法有何不同">#</a></h4>
+<p>ATDD，或验收测试驱动开发，主要在其<strong>协作方法</strong>和<strong>时机</strong>方面与传统测试方法不同。传统测试通常发生在开发阶段之后，测试人员根据已经实现的功能创建并执行测试。相比之下，ATDD 涉及到包括开发人员、测试人员和业务代表在内的多个利益相关者，他们在编写任何代码之前定义验收标准并创建验收测试。</p>
+<p>ATDD 中的这种前期协作确保所有方对需求和“完成”的定义有共同的理解。它将重点从开发后发现<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>转移到通过早期澄清期望来预防<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>。此外，ATDD 鼓励<strong>行为驱动开发</strong>（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>），其中测试以所有利益相关者都能理解的语言编写，通常使用 Given-When-Then 格式。</p>
+<p>而传统测试方法可能会严重依赖<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/manual-testing.md">手动测试</a>或在事后创建自动化测试，ATDD 从一开始就集成了**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md">自动化测试</a><strong>。验收测试被自动化，并成为</strong>回归套件**的一部分，提供关于新更改是否符合已达成一致的标准的即时反馈。</p>
+<p>总的来说，ATDD 的积极、协作的方法与传统的被动测试方法形成对比，强调预防而非检测，并在整个团队中促进了对质量的共同责任。</p>
+<h4 id="使用-atdd-的主要优势有哪些">使用 ATDD 的主要优势有哪些？<a hidden class="anchor" aria-hidden="true" href="#使用-atdd-的主要优势有哪些">#</a></h4>
+<p>ATDD 提供了一些增强软件开发过程的关键优势：</p>
+<ul>
+<li><strong>增强协作</strong>：通过在开发周期的早期涉及各种利益相关者（开发人员、测试人员、业务分析师），ATDD 促进了更好的理解和沟通。</li>
+<li><strong>清晰需求</strong>：验收测试充当具体的需求，减少了歧义，并确保软件满足业务需求。</li>
+<li><strong>早期缺陷检测</strong>：在验收标准在前期定义时，问题被更早地识别出来，减少了后期修复缺陷的成本和工作量。</li>
+<li><strong>客户满意度</strong>：关注满足验收标准确保最终产品与客户期望一致。</li>
+<li><strong>回归安全</strong>：自动化验收测试提供了一个安全网，使得在不破坏现有功能的情况下重构和改进代码更加安全。</li>
+<li><strong>持续反馈</strong>：定期执行验收测试为产品的状态提供了持续的洞察，允许及时进行调整。</li>
+<li><strong>流程化开发</strong>：清晰的验收标准指导了开发工作，防止了功能蔓延和过度工程化。</li>
+</ul>
+<p>实施 ATDD 可以导致一个更高效、协作和质量导向的开发生命周期，最终交付更好满足用户需求并经受住时间考验的软件。</p>
+<h4 id="atdd-如何提高软件产品的质量">ATDD 如何提高软件产品的质量？<a hidden class="anchor" aria-hidden="true" href="#atdd-如何提高软件产品的质量">#</a></h4>
+<p>ATDD 通过确保准确满足**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/functional-requirements.md">功能需求</a>** 并使产品表现如利益相关者期望的方式，提高了<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。通过从一开始关注客户需求，ATDD 促进了<strong>清晰且可执行的规范</strong>的创建。这些规范指导开发和测试，减少了由于误解或不完整的需求而导致的缺陷的可能性。</p>
+<p>验收测试在编写代码<strong>之前</strong>就已经定义好，这意味着开发人员有一个明确的目标。这种<strong>先测试后编码的方法</strong>有助于防止功能蔓延，并确保代码库只包含通过测试所必需的内容，从而使代码库更清晰且更易维护。</p>
+<p>此外，ATDD 鼓励开发人员、测试人员和业务利益相关者之间的协作。这种<strong>跨职能的沟通</strong>有助于在开发过程的早期识别和解决模糊之处，这可以显著提高产品的质量。</p>
+<p>来自验收测试执行的持续反馈允许<strong>早期检测问题</strong>，通常比在开发周期后期发现的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>更具成本效益。此外，验收测试套件成为可以用于**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>**的实时文档，确保新更改不会破坏现有功能。</p>
+<p>总的来说，ATDD 通过澄清需求、促进协作和提供持续反馈，有助于构建与业务需求和用户期望密切一致的产品，从而提高<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。</p>
+<h3 id="流程与技巧">流程与技巧<a hidden class="anchor" aria-hidden="true" href="#流程与技巧">#</a></h3>
+<h4 id="atdd-有哪些关键步骤">ATDD 有哪些关键步骤？<a hidden class="anchor" aria-hidden="true" href="#atdd-有哪些关键步骤">#</a></h4>
+<p>在 ATDD 中涉及的关键步骤包括：</p>
+<ol>
+<li><strong>协作：</strong> 开发人员、测试人员和业务利益相关者之间的协作，共同定义验收标准。</li>
+<li><strong>编写验收测试：</strong> 在开发开始之前，基于达成一致的标准编写验收测试。</li>
+<li><strong>开发：</strong> 根据验收测试指导功能或用户故事的开发。</li>
+<li><strong>持续集成：</strong> 确保代码更改会自动根据验收测试进行测试。</li>
+<li><strong>修正：</strong> 根据需要对验收测试进行修正，以解决需求或理解的变化。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a></strong>：验证软件是否符合达成一致的验收标准。</li>
+<li><strong>审查和反馈：</strong> 利益相关者审查验收测试，确认其覆盖所需的功能和行为。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md">迭代</a></strong>：根据需要通过这些步骤进行迭代，直到功能符合验收标准。</li>
+</ol>
+<p>验收测试通常是自动化的，以便频繁执行和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>。测试以对所有相关方可理解的语言编写，通常使用行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）框架，如 Cucumber 或 SpecFlow。这确保了测试既充当规范又用于验证。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">Feature</span>: <span class="kt">User</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">Scenario</span>: <span class="kt">Valid</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Given</span> <span class="nx">I</span> <span class="nx">am</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">login</span> <span class="nx">page</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">When</span> <span class="nx">I</span> <span class="nx">enter</span> <span class="nx">valid</span> <span class="nx">credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Then</span> <span class="nx">I</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">redirected</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">dashboard</span>
+</span></span></code></pre></div><p>实现有效的 ATDD 需要团队成员之间建立起强烈的协作文化、保持清晰的沟通，以及对质量的共同承诺。</p>
+<h4 id="atdd-如何创建验收测试">ATDD 如何创建验收测试？<a hidden class="anchor" aria-hidden="true" href="#atdd-如何创建验收测试">#</a></h4>
+<p>在 ATDD 中，验收测试是通过团队成员之间的<strong>协作</strong>创建的，包括开发人员、测试人员和业务利益相关者。该过程始于定义<strong>用户故事</strong>，描述了用户从其角度期望的功能。每个用户故事都包括<strong>验收标准</strong>，这些标准构成了验收测试的基础。</p>
+<p>团队讨论验收标准，以确保对需求的共同理解。这种讨论通常涉及<strong>示例映射</strong>或<strong>实例说明</strong>，其中使用具体的示例来阐明期望并涵盖不同的场景。</p>
+<p>一旦达成共识，就会编写<strong>可执行规范</strong>。这些规范通常以<strong>Given-When-Then</strong>语句的形式结构化，可以直接转化为自动化测试。例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">Given</span> <span class="nx">the</span> <span class="nx">user</span> <span class="k">is</span> <span class="nx">logged</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl"><span class="nx">When</span> <span class="nx">they</span> <span class="nx">attempt</span> <span class="nx">to</span> <span class="nx">place</span> <span class="nx">an</span> <span class="nx">order</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Then</span> <span class="nx">the</span> <span class="nx">order</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">processed</span>
+</span></span></code></pre></div><p>然后，使用 ATDD 框架（如<strong>Cucumber</strong>或<strong>SpecFlow</strong>）自动化这些规范，这允许以对非技术利益相关者可访问的领域特定语言编写测试。自动化代码使用框架兼容的语言编写，例如使用 Cucumber 的 Java 或使用 SpecFlow 的 C#。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kd">@Given</span><span class="p">(</span><span class="s2">&#34;^the user is logged in$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">public</span> <span class="k">void</span> <span class="nx">the_user_is_logged_in() {</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code to ensure user is logged in
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">@When</span><span class="p">(</span><span class="s2">&#34;^they attempt to place an order$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">public</span> <span class="k">void</span> <span class="nx">they_attempt_to_place_an_order() {</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code to simulate order placement
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">@Then</span><span class="p">(</span><span class="s2">&#34;^the order should be processed$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">public</span> <span class="k">void</span> <span class="nx">the_order_should_be_processed() {</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Assertions to verify order processing
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>验收测试在整个开发过程中持续执行，以验证软件是否符合达成一致的标准。这确保了新功能的开发以用户需求为导向，并及早捕捉到回归问题。</p>
+<h4 id="atdd-通常使用哪些技术">ATDD 通常使用哪些技术？<a hidden class="anchor" aria-hidden="true" href="#atdd-通常使用哪些技术">#</a></h4>
+<p>在 ATDD 中，采用了多种技术来确保满足验收标准并确保软件的行为符合预期：</p>
+<ul>
+<li><strong>行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）</strong>：这一技术涉及以自然语言风格编写测试，描述应用程序的行为。通常使用诸如 Cucumber 或 SpecFlow 之类的工具来促进<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>。</li>
+<li><strong>实例说明</strong>：共同定义说明具体行为或要求的示例。这些示例然后被用作验收测试的基础。</li>
+<li><strong>示例映射</strong>：一个团队成员使用卡片来代表用户故事（黄色）、规则（蓝色）、示例（绿色）和问题（红色）的研讨会技术。这有助于理解故事并创建验收测试。</li>
+<li><strong>可执行规范</strong>：以使它们可以直接针对代码执行的方式编写验收测试。这通常涉及使用特定领域语言（DSL）以一种所有利益相关者都能理解的方式来表达测试。</li>
+<li><strong>测试先开发</strong>：在实际实施开始之前编写验收测试，确保开发集中在通过测试。</li>
+<li><strong>协作工具</strong>：使用促进业务利益相关者、开发人员和测试人员之间协作的工具，例如共享存储库或像<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jira.md">JIRA</a>与 Xray 或 TestRail 这样的协作平台。</li>
+<li><strong>持续集成（CI）</strong>：将验收测试作为 CI 流水线的一部分自动运行，以获取有关所做更改的即时反馈。</li>
+<li><strong>测试工件的版本控制</strong>：将验收测试与代码库一起存储在版本控制系统中，以保持<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>与应用程序代码之间的同步。</li>
+</ul>
+<p>这些技术有助于定义清晰的验收标准，促进团队成员之间的协作，并确保在被视为完整之前软件满足业务需求。</p>
+<h4 id="atdd-如何融入软件开发生命周期">ATDD 如何融入软件开发生命周期？<a hidden class="anchor" aria-hidden="true" href="#atdd-如何融入软件开发生命周期">#</a></h4>
+<p>ATDD 通过从一开始就将开发活动与指定的验收标准对齐，融入了软件开发生命周期（SDLC）。在<strong>初始阶段</strong>，利益相关者共同合作以定义和理解需求，然后将其转化为验收测试。这些测试代表了软件必须展示的<strong>行为</strong>，以被视为完整。</p>
+<p>在<strong>规划和设计</strong>阶段，验收测试得到审查和完善，确保它们清晰可测试。开发人员、测试人员和业务代表保持<strong>持续沟通</strong>，以澄清任何模糊之处。</p>
+<p>随着开发的开始，<strong>验收测试引导编码</strong>。开发人员编写足够的代码以通过这些测试，确保功能符合达成的标准。这种做法通常被称为<strong>测试先开发</strong>，促进了<strong>渐进式进展</strong>并有助于及早发现问题。</p>
+<p>在<strong>测试阶段</strong>，自动化验收测试经常执行，为软件功能提供<strong>即时反馈</strong>。这允许快速调整并有助于保持开发的<strong>稳定节奏</strong>。</p>
+<p>在发布之前，ATDD 确保产品符合业务需求，因为所有功能都是根据预定义的验收测试开发的。代码的<strong>持续集成</strong>和验收测试的<strong>定期执行</strong>有助于保持一个为部署准备的<strong>稳定构建</strong>。</p>
+<p>在部署后，这些验收测试成为<strong>回归测试套件</strong>的一部分，防范可能破坏现有功能的未来更改。ATDD 融入 SDLC 支持<strong>可持续、以质量为中心的开发过程</strong>。</p>
+<h4 id="测试人员在-atdd-中扮演什么角色">测试人员在 ATDD 中扮演什么角色？<a hidden class="anchor" aria-hidden="true" href="#测试人员在-atdd-中扮演什么角色">#</a></h4>
+<p>在 ATDD 中，测试人员的角色是多方面的，侧重于协作、规范和验证。测试人员与<strong>开发人员</strong>、<strong>业务分析师</strong>和<strong>利益相关者</strong>密切合作，澄清需求并确保验收标准定义明确。他们为<strong>用户故事</strong>和<strong>验收测试的创建</strong>做出贡献，确保这些测试准确反映业务需求并且可以自动化。</p>
+<p>在开发过程中，测试人员参与验收测试的<strong>持续完善</strong>，通常与开发人员搭档创建和维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>。他们确保测试是<strong>可执行的规范</strong>，指导开发并即时提供有关软件行为是否符合预期结果的反馈。</p>
+<p>测试人员还在<strong>维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a><strong>方面发挥了关键作用，确保随着代码库的演变它保持</strong>可靠</strong>和<strong>高效</strong>。他们还可能负责**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理<strong>和设置必要的</strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>**。</p>
+<p>在 ATDD 循环中，测试人员帮助促进<strong>三位好朋友会议</strong>，讨论特性实施的问题，并积极参与**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md">迭代</a>计划** 和 <strong>回顾</strong>以不断改进流程。</p>
+<p>最终，在 ATDD 中，测试人员确保团队交付的产品不仅满足技术需求，而且满足业务需求并为最终用户提供价值。他们在推动 ATDD 中固有的<strong>质量为先</strong>的方法方面发挥关键作用。</p>
+<h3 id="工具和技术">工具和技术<a hidden class="anchor" aria-hidden="true" href="#工具和技术">#</a></h3>
+<h4 id="atdd-常用的工具有哪些">ATDD 常用的工具有哪些？<a hidden class="anchor" aria-hidden="true" href="#atdd-常用的工具有哪些">#</a></h4>
+<p>常用的 ATDD 工具包括：</p>
+<ul>
+<li><strong>Cucumber</strong>：使用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。</li>
+<li><strong>SpecFlow</strong>：类似于 Cucumber，专为.NET 框架定制，同样使用 Gherkin 进行测试规范。</li>
+<li><strong>FitNesse</strong>：结合了文档的 wiki 和自动化测试框架，允许以表格形式编写测试。</li>
+<li><strong>Robot Framework</strong>：关键字驱动的测试自动化框架，高度可扩展，支持表格数据的测试用例。</li>
+<li><strong>Concordion</strong>：与 JUnit 集成，允许以 HTML 编写规范，并可链接到用于测试的 Java 代码。</li>
+<li><strong>JBehave</strong>：Java 中用于行为驱动开发（BDD）的框架，使用自然语言编写的故事推动开发。</li>
+<li><strong>Serenity <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a></strong>：通过提供先进的报告和实时文档功能，增强了其他 BDD 工具（如 Cucumber 和 JBehave）。</li>
+</ul>
+<p>这些工具通过使用所有利益相关者都能理解的语言定义验收标准，支持 ATDD 过程。它们促进了验收测试的自动化，并帮助确保软件特性在被视为完成之前满足预定义的标准。<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工程师使用这些工具来编写、管理和执行验收测试，通常将它们集成到持续集成流水线中以获得持续反馈。熟练掌握编程，理解应用领域，以及熟悉所选工具的语法和最佳实践对有效使用这些工具至关重要。</p>
+<h4 id="这些工具如何支持-atdd-流程">这些工具如何支持 ATDD 流程？<a hidden class="anchor" aria-hidden="true" href="#这些工具如何支持-atdd-流程">#</a></h4>
+<p>自动化测试工具通过执行以<strong>行为驱动</strong>格式编写的验收测试，支持<strong>ATDD 过程</strong>。这些工具通常与<strong>Cucumber</strong>、<strong>SpecFlow</strong>或<strong>FitNesse</strong>等框架集成，这些框架允许使用<strong>业务可读</strong>语言（如<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/G/gherkin.md">Gherkin</a>）定义测试。</p>
+<p>通过使用这些工具，团队可以自动化验收标准的<strong>验证</strong>，确保软件符合达成的规范。这种自动化支持<strong>持续集成</strong>（CI）实践，允许在代码提交时自动运行测试，向开发人员提供<strong>即时反馈</strong>。</p>
+<p>此外，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工具通过维护一套测试，可用于验证更改是否破坏了现有功能，从而支持<strong>重构</strong>。在 ATDD 中，重点是在整个开发过程中满足验收标准，这一点至关重要。</p>
+<p>此外，这些工具通常带有<strong>报告功能</strong>，使更容易向所有利益相关者传达测试的状态。这种透明度有助于保持对项目进展和质量的<strong>共享理解</strong>。</p>
+<p>例如，典型的 ATDD 工具链可能如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">Feature</span>: <span class="kt">User</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Scenario</span>: <span class="kt">Valid</span> <span class="nx">user</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Given</span> <span class="nx">I</span> <span class="nx">am</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">login</span> <span class="nx">page</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">When</span> <span class="nx">I</span> <span class="nx">enter</span> <span class="nx">valid</span> <span class="nx">credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Then</span> <span class="nx">I</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">redirected</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">dashboard</span>
+</span></span></code></pre></div><p>然后，自动化工具将执行此场景，验证所描述的行为。这确保软件符合<strong>协同编写</strong>的验收测试中业务的期望。</p>
+<h4 id="有效使用这些工具需要哪些技能">有效使用这些工具需要哪些技能？<a hidden class="anchor" aria-hidden="true" href="#有效使用这些工具需要哪些技能">#</a></h4>
+<p>要有效使用<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工具，需要具备以下几项技能：</p>
+<ul>
+<li><strong>编程知识</strong>：熟练掌握与自动化工具相关的编程语言，如 Java、Python 或 C#。</li>
+<li><strong>软件开发理解</strong>：熟悉软件开发实践和生命周期，以将测试与开发阶段对齐。</li>
+<li><strong>测试框架专业知识</strong>：具有使用 JUnit、TestNG 或 pytest 等测试框架的经验，并了解其特性和集成。</li>
+<li><strong>版本控制系统</strong>：能够使用 Git 等版本控制系统管理<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>并与开发团队协作。</li>
+<li><strong>持续集成/持续部署（CI/CD）</strong>：了解 CI/CD 管道和 Jenkins、CircleCI 或 Travis CI 等工具，以将自动化测试集成到构建流程中。</li>
+<li><strong>自动化脚本编写</strong>：具备脚本编写技能，以创建健壮、可维护和可重用的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>。</li>
+<li><strong>理解 ATDD</strong>：虽然不需要详细涵盖，但理解 ATDD 原则对创建反映用户需求的验收测试至关重要。</li>
+<li><strong>解决问题和分析技能</strong>：能够解决<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>的问题并适应变化的需求或环境。</li>
+<li><strong>注意细节</strong>：在编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-casee.md">测试用例</a>时要精确，以覆盖边缘情况，防止<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md">误报</a>或漏报。</li>
+<li><strong>沟通能力</strong>：与利益相关者进行清晰的沟通，了解需求并传达测试结果的重要性。</li>
+<li><strong>具体工具知识</strong>：熟练掌握特定的 ATDD 工具，如 Cucumber、SpecFlow 或 FitNesse，包括它们的语法和最佳实践。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 一个使用特定工具语言的简单测试脚本示例
+</span></span></span><span class="line"><span class="cl"><span class="nx">Feature</span>: <span class="kt">User</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Scenario</span>: <span class="kt">Successful</span> <span class="nx">login</span> <span class="kd">with</span> <span class="nx">valid</span> <span class="nx">credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Given</span> <span class="nx">the</span> <span class="nx">login</span> <span class="nx">page</span> <span class="k">is</span> <span class="nx">displayed</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">When</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">enters</span> <span class="nx">valid</span> <span class="nx">credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Then</span> <span class="nx">the</span> <span class="nx">user</span> <span class="k">is</span> <span class="nx">redirected</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">dashboard</span>
+</span></span></code></pre></div><ul>
+<li><strong>性能和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/security-testing.md">安全测试</a></strong>：了解性能瓶颈和安全漏洞，将相关测试纳入自动化测试套件。</li>
+</ul>
+<h4 id="自动化在-atdd-中的作用是什么">自动化在 ATDD 中的作用是什么？<a hidden class="anchor" aria-hidden="true" href="#自动化在-atdd-中的作用是什么">#</a></h4>
+<p>在 ATDD 中，自动化在<strong>验证</strong>和<strong>回归</strong>验收标准方面发挥着关键作用，确保一致而高效地执行自动化测试。这些自动化测试源于团队达成的验收标准，以确保软件符合业务需求。在 ATDD 中，自动化具有以下作用：</p>
+<ul>
+<li><strong>促进持续测试</strong>，将测试整合到 CI/CD 流水线中，提供对变更的即时反馈。</li>
+<li><strong>确保可重复性</strong>和验收测试的一致性，减少人为错误和测试执行的差异性。</li>
+<li><strong>增加<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a></strong>，在较短的时间内执行更多的测试。</li>
+<li>通过提供清晰的、可执行的规范，<strong>增强协作</strong>，所有团队成员都能够理解并用于验证系统。</li>
+<li>通过频繁运行自动化验收测试，<strong>缩短反馈周期</strong>，迅速了解软件的状态。</li>
+<li>通过提供一个安全网，确保新更改不会破坏现有功能，<strong>支持重构</strong>。</li>
+</ul>
+<p>自动验收测试成为系统行为的实时文档，始终保持更新。它们通常以**领域特定语言（DSL）**编写，使非技术利益相关者能够理解。通常使用工具如 Cucumber、SpecFlow 或 FitNesse 来促进这个过程。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">Feature</span>: <span class="kt">User</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Scenario</span>: <span class="kt">Valid</span> <span class="nx">user</span> <span class="nx">login</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Given</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">has</span> <span class="nx">a</span> <span class="nx">valid</span> <span class="nx">account</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">When</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">enters</span> <span class="nx">correct</span> <span class="nx">credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Then</span> <span class="nx">access</span> <span class="k">is</span> <span class="nx">granted</span>
+</span></span></code></pre></div><p>在 ATDD 中的自动化不仅仅是测试，它是关于通过在整个开发生命周期中持续验证软件与业务需求的一致性，<strong>构建正确的产品</strong>。</p>
+<h4 id="如何在敏捷开发环境中实施-atdd">如何在敏捷开发环境中实施 ATDD？<a hidden class="anchor" aria-hidden="true" href="#如何在敏捷开发环境中实施-atdd">#</a></h4>
+<p>在敏捷环境中实施 ATDD 涉及开发人员、测试人员和业务利益相关者之间的协作，以在开发开始之前定义验收标准。使用<strong>用户故事</strong>来捕获需求，并定义反映利益相关者期望行为的<strong>验收测试</strong>。</p>
+<p>开始时，进行一个<strong>规划会议</strong>，讨论用户故事并创建验收测试。这确保了对功能及其期望结果的共享理解。使用像 Cucumber 或 SpecFlow 这样的<strong>行为驱动开发 (<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>) 工具</strong>编写验收测试，以一种对所有相关方都可理解的语言。</p>
+<p>在<strong>开发</strong>过程中，程序员和测试人员协同工作，测试人员专注于自动化验收测试。这些测试被集成到<strong>持续集成 (CI) 流水线</strong>中，确保它们经常运行。</p>
+<p>在开发后，执行验收测试。如果它们通过，说明功能符合约定的标准。如果没有，开发人员进行必要的更改。这个循环持续进行，直到功能通过所有验收测试。</p>
+<p>通过定期与团队以及利益相关者一起审查测试及其结果，引入<strong>反馈循环</strong>。这确保了验收标准与业务目标保持一致，并及时解决任何误解。</p>
+<p>记得要对代码和测试进行<strong>重构</strong>，以保持简单和可读性。这种做法有助于保持自动化套件的可维护性和可扩展性。</p>
+<p>最后，确保团队是<strong>跨职能</strong>的，团队成员能够为开发和测试做出贡献。这种方法培养了一个质量和对最终产品的共同责任的文化。</p>
+<h3 id="挑战与解决方案">挑战与解决方案<a hidden class="anchor" aria-hidden="true" href="#挑战与解决方案">#</a></h3>
+<h4 id="atdd-会遇到哪些常见挑战">ATDD 会遇到哪些常见挑战？<a hidden class="anchor" aria-hidden="true" href="#atdd-会遇到哪些常见挑战">#</a></h4>
+<p>ATDD 中常见的挑战包括：</p>
+<ul>
+<li><strong>协作困难</strong>：确保开发人员、测试人员和业务利益相关者之间的有效沟通可能是具有挑战性的。误解可能导致不正确的测试标准。</li>
+<li><strong>编写清晰的验收标准</strong>：制定明确、可测试的验收标准需要技巧和经验。编写不好的标准可能导致测试无效。</li>
+<li><strong>维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a></strong>：随着应用程序的演变，保持验收测试的最新状态可能会耗费时间。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理</strong>：生成和管理验收测试所需的数据可能会很复杂，尤其是在处理多个环境时。</li>
+<li><strong>在覆盖率和速度之间取得平衡</strong>：在保持测试套件对持续集成足够快的同时，实现足够的测试覆盖率可能很困难。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/flaky-test.md">不稳定的测试</a></strong>：间歇性地通过和失败的测试可能会损害对测试套件的信心，并在调查中浪费时间。</li>
+<li><strong>与现有流程的整合</strong>：将 ATDD 引入到已建立的工作流中可能会遇到阻力，需要谨慎的变更管理。</li>
+<li><strong>工具兼容性</strong>：确保所选工具与技术栈良好集成并支持 ATDD 方法可能是一项挑战。</li>
+<li><strong>技能集</strong>：团队成员可能需要培训，以有效参与 ATDD，包括编写验收测试和自动化测试。</li>
+</ul>
+<p>克服这些挑战通常涉及改进沟通、投资培训、完善流程，并选择与团队需求和技术栈相符的适当工具。</p>
+<h4 id="如何克服这些挑战">如何克服这些挑战？<a hidden class="anchor" aria-hidden="true" href="#如何克服这些挑战">#</a></h4>
+<p>在 ATDD 中克服挑战需要战略性的方法：</p>
+<ul>
+<li><strong>协作</strong>：培养开发人员、测试人员和业务利益相关者之间协作的文化，以确保对需求有共同的理解。</li>
+<li><strong>持续学习</strong>：鼓励团队成员不断学习和适应新的工具和技术，以保持与 ATDD 最佳实践的同步。</li>
+<li><strong>渐进改进</strong>：从小处着手，逐步改进 ATDD 流程，而不是试图进行大规模改革。</li>
+<li><strong>熟练掌握工具</strong>：投入时间掌握 ATDD 工具，充分利用它们的潜力，并将其无缝集成到开发工作流中。</li>
+<li><strong>反馈循环</strong>：实施短反馈循环，快速发现和解决问题，提高验收测试的质量。</li>
+<li><strong>重构</strong>：定期重构测试，保持清晰度，减少维护成本。</li>
+<li><strong>模块化设计</strong>：设计测试为模块化和可重用的，以最小化重复并简化更新。</li>
+<li><strong>清晰文档</strong>：保持测试的清晰文档，以确保它们可被所有团队成员理解和维护。</li>
+<li><strong>资源分配</strong>：分配足够的资源，包括时间和人员，以保持可持续的步伐，避免过度劳累。</li>
+<li><strong>度量指标</strong>：使用指标跟踪进展并识别改进的领域，但要避免激励错误行为的指标。</li>
+<li><strong>风险管理</strong>：基于风险和业务价值对测试进行优先排序，确保对关键功能进行全面测试。</li>
+</ul>
+<p>通过解决这些方面，团队可以增强他们的 ATDD 实践并克服常见挑战。</p>
+<h4 id="实施-atdd-有哪些最佳实践">实施 ATDD 有哪些最佳实践？<a hidden class="anchor" aria-hidden="true" href="#实施-atdd-有哪些最佳实践">#</a></h4>
+<p>实施 ATDD 的最佳实践包括：</p>
+<ul>
+<li><strong>与产品所有者、开发人员和测试人员协作</strong>，在编码开始之前定义验收标准。使用<strong>用户故事</strong>促进这些讨论。</li>
+<li>编写<strong>清晰简洁</strong>的验收测试，反映用户的视角，且能够被所有利益相关者理解。</li>
+<li><strong>尽早自动化</strong>验收测试并频繁执行，以确保持续反馈。使用像 Gherkin 这样的<strong>通用语言</strong>编写测试，可以使用 Cucumber 等工具进行自动化。</li>
+<li>维护验收标准和测试结果的<strong>单一真相来源</strong>，确保所有团队成员都能透明且轻松地访问。</li>
+<li>定期<strong>重构</strong>测试，使其能够在应用程序演进时保持可维护性和相关性。</li>
+<li>将 ATDD 集成到您的**持续集成/持续交付（CI/CD）**流水线中，以确保每次构建都自动运行测试。</li>
+<li>使用**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理**策略，确保测试具有所需数据且处于正确的状态。</li>
+<li>根据风险和业务价值<strong>优先考虑</strong>测试，首先关注最关键的功能。</li>
+<li>培养一个<strong>质量文化</strong>，使每个人都对产品的质量负责，而不仅仅是测试团队。</li>
+<li>定期<strong>审查和调整</strong>您的 ATDD 流程，以解决任何问题并提高效率。</li>
+</ul>
+<p>通过遵循这些实践，您可以增强协作，确保需求的清晰度，并在整个开发生命周期中保持高水平的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。</p>
+<h4 id="如何为大型项目扩展-atdd">如何为大型项目扩展 ATDD？<a hidden class="anchor" aria-hidden="true" href="#如何为大型项目扩展-atdd">#</a></h4>
+<p>在大型项目中扩展 ATDD 需要战略规划和高效的工具。首先，通过<strong>构建验收测试</strong>来反映项目的模块化架构。这使得可以在不同团队之间并行进行开发和测试。利用<strong>版本控制</strong>管理测试工件，并确保在团队之间同步。</p>
+<p>利用**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理**提供一致且隔离的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>，避免共享数据时可能出现的冲突和依赖关系。实施 <strong>持续集成 CI</strong>以自动运行验收测试来验证新的代码提交，提供对集成状态的即时反馈。</p>
+<p>**分布式<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>**对于处理增加的测试负载至关重要。使用支持在多台机器或容器上并行运行测试的工具。这可以缩短反馈周期，确保更快的周转时间。</p>
+<p><strong>协作工具</strong>对于保持开发人员、测试人员和利益相关者之间的沟通至关重要。这些工具应该支持从需求到测试和代码库的追踪，确保所有相关方对验收标准达成一致。</p>
+<p><strong>度量和报告</strong>应该定制以提供有关规模进展和质量的见解。自动仪表板可以跟踪<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a>、通过/失败率以及随时间变化的趋势，有助于早期识别潜在问题。</p>
+<p>最后，<strong>模块化和重用</strong>测试组件是可能的。共享测试步骤或领域特定语言（DSL）定义的库可以减少重复和维护开销。</p>
+<p>通过专注于这些策略，ATDD 可以有效地扩展以适应大型项目的复杂性。</p>
+<h4 id="如何衡量-atdd-的有效性">如何衡量 ATDD 的有效性？<a hidden class="anchor" aria-hidden="true" href="#如何衡量-atdd-的有效性">#</a></h4>
+<p>可以通过几个关键指标来衡量 ATDD 的效果：</p>
+<ul>
+<li><strong>缺陷率的降低</strong>：跟踪发布后发现的缺陷数量。较低的数字表明 ATDD 有助于更早地发现和解决问题。</li>
+<li><strong>改进的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a></strong>：使用覆盖工具确保验收测试覆盖了代码库和用户故事的重要部分。</li>
+<li><strong>周期时间</strong>：监控从功能构思到交付所需的时间。ATDD 应有助于简化流程，缩短周期时间。</li>
+<li><strong>反馈循环持续时间</strong>：衡量从利益相关者那里获得反馈所需的时间。ATDD 的目标是缩短此循环时间，以便更快地进行调整。</li>
+<li><strong>团队协作</strong>：评估开发人员、测试人员和业务利益相关者之间的协作水平。有效的 ATDD 实践应该增强沟通和理解。</li>
+<li><strong>回归<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>执行时间</strong>：跟踪运行回归套件所需的时间。ATDD 应该导致更有效和有针对性的测试，从而减少执行时间。</li>
+<li><strong>验收测试的通过/失败率</strong>：记录首次运行验收测试的通过率。较高的通过率表示团队对需求有很好的理解。</li>
+<li><strong>客户满意度</strong>：向利益相关者和最终用户进行调查，了解他们对已交付功能的满意程度。更高的满意度水平可能表示成功实施了 ATDD。</li>
+</ul>
+<p>通过监控这些指标，团队可以评估并不断改进他们的 ATDD 实践。</p>
+<h2 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h2>
+<ul>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<hr>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD033 -->
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;">
+</center>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-acceptance-testing/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>软件测试术语分享:Acceptance Testing 验收测试</span>
+  </a>
+  <a class="next" href="https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>软件测试术语分享:A/B 测试</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on x"
+            href="https://x.com/intent/tweet/?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&amp;title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;summary=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;source=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f&title=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91%20-%20https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on telegram"
+            href="https://telegram.me/share/url?text=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&amp;url=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 软件测试术语分享:ATDD 验收测试驱动开发 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e6%9c%af%e8%af%ad%e5%88%86%e4%ba%ab%3aATDD%20%e9%aa%8c%e6%94%b6%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91&u=https%3a%2f%2fnaodeng.com.cn%2fzh%2fposts%2fqa-glossary-wiki%2fqa-glossary-wiki-acceptance-test-driven-development%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://naodeng.com.cn/zh/">软件测试同学</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

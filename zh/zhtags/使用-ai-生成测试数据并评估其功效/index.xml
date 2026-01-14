@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>使用 AI 生成测试数据并评估其功效 on 软件测试同学</title><link>https://naodeng.com.cn/zh/zhtags/%E4%BD%BF%E7%94%A8-ai-%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%AF%84%E4%BC%B0%E5%85%B6%E5%8A%9F%E6%95%88/</link><description>Recent content in 使用 AI 生成测试数据并评估其功效 on 软件测试同学+feedId:74645609298733056+userId:59115928834052096</description><image><title>软件测试同学</title><url>https://naodeng.com.cn/papermod-cover.png</url><link>https://naodeng.com.cn/papermod-cover.png</link></image><generator>Hugo -- 0.136.5</generator><language>zh</language><lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate><atom:link href="https://naodeng.com.cn/zh/zhtags/%E4%BD%BF%E7%94%A8-ai-%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%AF%84%E4%BC%B0%E5%85%B6%E5%8A%9F%E6%95%88/index.xml" rel="self" type="application/rss+xml"/><item><title>30 天 AI 测试挑战活动：第十一天：使用 AI 生成测试数据并评估其功效</title><link>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</link><pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate><guid>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</guid><description>这篇博文是 30 天 AI 测试挑战活动的第十一天，涉及使用 AI 生成测试数据并评估其功效。博文可能包括作者对通过 AI 生成的测试数据进行的实际应用，以及对其功效和适用性的评估。通过分享对 AI 生成测试数据的应用和评估结果，读者将了解作者在实际测试环境中如何借助 AI 技术来生成有效的测试数据，并提高测试流程的效率。这个系列活动有望为测试专业人士提供实际应用 AI 生成测试数据的案例，并鼓励他们尝试这一新兴技术。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ZHtags/使用 AI 生成测试数据并评估其功效 on 软件测试同学</title>
+    <link>https://naodeng.com.cn/zh/zhtags/%E4%BD%BF%E7%94%A8-ai-%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%AF%84%E4%BC%B0%E5%85%B6%E5%8A%9F%E6%95%88/</link>
+    <description>Recent content in ZHtags/使用 AI 生成测试数据并评估其功效 on 软件测试同学</description>
+    <image>
+      <title>软件测试同学</title>
+      <url>https://naodeng.com.cn/papermod-cover.png</url>
+      <link>https://naodeng.com.cn/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 12 Mar 2024 10:06:44 +0800</lastBuildDate>
+    <atom:link href="https://naodeng.com.cn/zh/zhtags/%E4%BD%BF%E7%94%A8-ai-%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%AF%84%E4%BC%B0%E5%85%B6%E5%8A%9F%E6%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30 天 AI 测试挑战活动：第十一天：使用 AI 生成测试数据并评估其功效</title>
+      <link>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</link>
+      <pubDate>Tue, 12 Mar 2024 10:06:44 +0800</pubDate>
+      <guid>https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</guid>
+      <description>这篇博文是 30 天 AI 测试挑战活动的第十一天，涉及使用 AI 生成测试数据并评估其功效。博文可能包括作者对通过 AI 生成的测试数据进行的实际应用，以及对其功效和适用性的评估。通过分享对 AI 生成测试数据的应用和评估结果，读者将了解作者在实际测试环境中如何借助 AI 技术来生成有效的测试数据，并提高测试流程的效率。这个系列活动有望为测试专业人士提供实际应用 AI 生成测试数据的案例，并鼓励他们尝试这一新兴技术。</description>
+    </item>
+  </channel>
+</rss>
