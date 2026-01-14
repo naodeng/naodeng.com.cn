@@ -76,6 +76,8 @@ languages:
                 - name: Series
                   url: series/
                   weight: 10
+                - name: QA Prompt
+                  url: https://qaprompt.inaodeng.com/en/
                 - name: Status
                   url: https://status.naodeng.com.cn
                 - name: Dashboard
@@ -106,6 +108,8 @@ languages:
                 - name: 系列
                   url: zhseries
                   weight: 10
+                - name: 测试提示词
+                  url: https://qaprompt.inaodeng.com/
                 - name: 状态
                   url: https://status.naodeng.com.cn
                 - name: 网站统计
