@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://naodeng.com.cn/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awesome QA Prompt: Using AI to Make Testing Work Better</title>
+      <link>https://naodeng.com.cn/posts/ai-testing/introduction_of_awesome_qa_prompt/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://naodeng.com.cn/posts/ai-testing/introduction_of_awesome_qa_prompt/</guid>
+      <description>Awesome QA Prompt an AI prompt library for QA work. The idea is to capture expert testing knowledge in prompt templates, so AI can work like a senior test engineer</description>
+    </item>
     <item>
       <title>30 Days of AI in Testing Challenge: Day 26: Investigate strategies to minimise the carbon footprint of AI in testing</title>
       <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>

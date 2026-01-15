@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://naodeng.com.cn/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Testing</title>
+      <link>https://naodeng.com.cn/series/ai-testing/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://naodeng.com.cn/series/ai-testing/</guid>
+      <description></description>
+    </item>
     <item>
       <title>30 Days of AI in Testing Challenge</title>
       <link>https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/</link>

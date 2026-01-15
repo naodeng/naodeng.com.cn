@@ -2,6 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://naodeng.com.cn/categories/ai/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/series/ai-testing/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/tags/awesome-qa-prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/posts/ai-testing/introduction_of_awesome_qa_prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.com.cn/zh/posts/ai-testing/introduction_of_awesome_qa_prompt/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.com.cn/posts/ai-testing/introduction_of_awesome_qa_prompt/"
+                />
+  </url><url>
+    <loc>https://naodeng.com.cn/categories/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.com.cn/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.com.cn/"
+                />
+  </url><url>
+    <loc>https://naodeng.com.cn/posts/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://naodeng.com.cn/zh/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://naodeng.com.cn/posts/"
+                />
+  </url><url>
+    <loc>https://naodeng.com.cn/categories/qa-prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/series/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://naodeng.com.cn/tags/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
     <loc>https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -27,45 +107,10 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
     <loc>https://naodeng.com.cn/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.com.cn/"
-                />
-  </url><url>
-    <loc>https://naodeng.com.cn/posts/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.com.cn/posts/"
-                />
   </url><url>
     <loc>https://naodeng.com.cn/tags/prompt/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
@@ -73,16 +118,6 @@
     <priority>0.8</priority>
   </url><url>
     <loc>https://naodeng.com.cn/tags/prompt-engineering/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/series/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/tags/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

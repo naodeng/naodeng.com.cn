@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.154.5</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 08 Apr 2024 12:37:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://naodeng.com.cn/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awesome QA Prompt：用AI重新定义软件测试的未来</title>
+      <link>https://naodeng.com.cn/zh/posts/ai-testing/introduction_of_awesome_qa_prompt/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://naodeng.com.cn/zh/posts/ai-testing/introduction_of_awesome_qa_prompt/</guid>
+      <description>文章介绍Awesome QA Prompt的简介，类型和工具</description>
+    </item>
     <item>
       <title>软件测试术语分享:Backward Compatibility 向后兼容性</title>
       <link>https://naodeng.com.cn/zh/posts/qa-glossary-wiki/qa-glossary-wiki-backward-compatibility/</link>

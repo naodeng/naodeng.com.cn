@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.154.5</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 08 Apr 2024 12:37:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://naodeng.com.cn/zh/zhtags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZHtags/Awesome QA Prompt</title>
+      <link>https://naodeng.com.cn/zh/zhtags/awesome-qa-prompt/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://naodeng.com.cn/zh/zhtags/awesome-qa-prompt/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ZHtags/Backward Compatibility</title>
       <link>https://naodeng.com.cn/zh/zhtags/backward-compatibility/</link>
