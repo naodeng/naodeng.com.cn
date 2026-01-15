@@ -1,0 +1,319 @@
+---
+author: "nao.deng"
+title: "Awesome QA Prompt: Using AI to Make Testing Work Better"
+date: "2026-01-15"
+summary: "Awesome QA Prompt an AI prompt library for QA work. The idea is to capture expert testing knowledge in prompt templates, so AI can work like a senior test engineer"
+tags: ["Awesome QA Prompt"]
+categories: ["AI", "QA Prompt"]
+series: ["AI Testing"]
+ShowWordCount: true
+---
+
+## Introduction
+
+After 10+ years in testing, I've noticed a pattern: writing test cases takes forever, and quality varies a lot between different engineers. Sometimes you miss edge cases, sometimes the documentation is all over the place.
+
+Then ChatGPT and Claude came along, and I thought: can AI help with testing? Tried it a few times, but directly asking AI didn't work great — not professional enough, outputs were inconsistent.
+
+So I built **Awesome QA Prompt**, an AI prompt library for QA work. The idea is to capture expert testing knowledge in prompt templates, so AI can work like a senior test engineer.
+
+## Project Background
+
+### Testing Pain Points
+
+In my years of testing, these issues keep coming up:
+
+1. **Low Efficiency**: Writing test cases by hand takes too long, lots of repetitive work
+2. **Inconsistent Quality**: Everyone's test docs look different
+3. **Knowledge Silos**: Hard to pass down testing experience
+4. **Incomplete Coverage**: Easy to miss edge cases and exceptions
+5. **Documentation Chaos**: No unified format or standard
+
+### AI Opportunities
+
+ChatGPT and Claude can actually help with this:
+
+- **Rich Knowledge**: They know testing theory and practice
+- **Rigorous Logic**: Can systematically analyze test scenarios
+- **Unified Format**: Generate docs from templates
+- **High Efficiency**: Finish in seconds what used to take hours
+
+But using AI directly has issues:
+- Not professional enough: General AI doesn't get testing deeply
+- Unstable output: Same question, different quality answers
+- Inconsistent format: Generated docs are all over the place
+
+## Solution: Awesome QA Prompt
+
+So I built **Awesome QA Prompt** with this core idea:
+
+> **Use carefully designed prompt templates to capture testing expert knowledge, so AI can work like a senior test engineer.**
+
+### Project Structure
+
+The project has three main parts:
+
+#### 1. Testing Type Modules (14 modules)
+Each module covers one testing type:
+- **Full Version Prompts**: Detailed roles, tasks, methods, output formats
+- **Lite Version Prompts**: Quick-start simplified versions
+- **Bilingual Versions**: Chinese or English, whatever works
+- **Documentation**: How to use, best practices
+
+Specifically includes:
+- 📝 Requirements Analysis: Design comprehensive test scenarios based on requirements documents
+- ✍️ Test Case Writing: Generate standardized executable test cases
+- 🔍 Functional Testing: Design functional testing strategies and execution plans
+- ⚡ Performance Testing: Develop performance test plans and metric analysis
+- 🤖 Automation Testing: Framework selection and automation solution design
+- 📱 Mobile Testing: iOS/Android platform testing strategies
+- 🐛 Bug Reporting: Standardized defect reports and root cause analysis
+- 📊 Test Reporting: Generate professional test execution reports
+- 🎯 Test Strategy: Develop overall test strategies and plans
+- 🤖 AI-Assisted Testing: Leverage AI technology to improve testing efficiency
+- 📋 Manual Testing: Exploratory testing and user experience evaluation
+- 🔒 Security Testing: Security vulnerability detection and compliance checking
+- 🔌 API Testing: Interface testing and integration testing solutions
+- ♿ Accessibility Testing: WCAG compliance and accessibility testing
+
+#### 2. Workflow Modules (3 modules)
+Provide complete testing workflow guidance:
+- **Daily Testing Workflow**: Daily work guide for QA engineers
+- **Sprint Testing Workflow**: Testing activities in agile development
+- **Release Testing Workflow**: Comprehensive testing before production release
+
+#### 3. Online Documentation Website
+Modern documentation website built with VitePress:
+- Responsive design supporting mobile access
+- Bilingual Chinese/English switching
+- Full-text search functionality
+- Clear navigation structure
+- Automatic deployment and updates
+
+### Technical Features
+
+#### 1. Professional Role Design
+Each prompt defines a professional AI role, for example:
+```
+Role: Senior Web Full-Stack Testing Expert (Lead QA Engineer)
+Context: You have 10+ years of experience in complex web system testing, proficient in business logic decomposition, test strategy design, and risk identification...
+```
+
+#### 2. Scientific Methodologies
+Incorporates multiple test design methods:
+- **Logic Modeling**: Scenario testing, state transition diagrams, decision tables
+- **Data Refinement**: Equivalence class partitioning, boundary value analysis, orthogonal experimental method
+- **Experience-Driven**: Error guessing, exploratory testing strategies
+
+#### 3. Standardized Output Formats
+Each prompt defines strict output formats ensuring generated documents are:
+- Clear structure
+- Complete content
+- Unified format
+- Directly usable
+
+#### 4. Quality Assurance Mechanisms
+Established comprehensive quality requirements:
+- **Completeness Requirements**: Ensure comprehensive scenario coverage
+- **Executability Requirements**: Specific and operable step descriptions
+- **Traceability Requirements**: Clear association with requirements
+- **Professionalism Requirements**: Avoid vague descriptions
+
+## Practical Application Results
+
+### Case 1: Requirements Analysis Scenario
+
+**Traditional Method**:
+- Time: 2-3 hours
+- Quality: Depends on personal experience, easy to miss
+- Format: Inconsistent
+
+**After Using AI Assistant**:
+- Time: 10-15 minutes
+- Quality: Systematic coverage including edge cases
+- Format: Standardized output
+
+**Specific Comparison**:
+```
+Input: User login functionality requirements
+Traditional Output: 5-8 basic test scenarios
+AI Assistant Output: 20+ test scenarios including:
+- Positive paths: Normal login flow
+- Negative paths: Wrong password, account lockout, network exceptions
+- Boundary values: Password length, special characters, concurrent login
+- Security testing: SQL injection, brute force, session management
+- UI/UX: Responsive adaptation, error prompts, loading states
+```
+
+### Case 2: Performance Testing Planning
+
+**Traditional Method**:
+- Need to research extensive materials
+- Easy to miss key metrics
+- Incomplete test scenario design
+
+**After Using AI Assistant**:
+- Automatically generate complete performance test plans
+- Include load, stress, capacity, stability testing
+- Provide specific performance metrics and monitoring solutions
+
+### Case 3: Automation Testing Framework Selection
+
+**Traditional Method**:
+- Need to research multiple frameworks
+- Time-consuming comparison analysis
+- Insufficient decision basis
+
+**After Using AI Assistant**:
+- Recommend suitable frameworks based on project characteristics
+- Provide detailed comparative analysis
+- Give implementation suggestions and best practices
+
+## Project Impact and Value
+
+### Value for Individuals
+
+1. **Efficiency Improvement**: Test documentation writing efficiency improved by 200-300%
+2. **Quality Enhancement**: Test coverage improved from 70% to 95%+
+3. **Skill Development**: Learn systematic testing methodologies
+4. **Career Growth**: Master testing skills for the AI era
+
+### Value for Teams
+
+1. **Standardization**: Unified test documentation format and quality standards
+2. **Knowledge Transfer**: New members can quickly master testing methods
+3. **Collaboration Efficiency**: Reduce communication costs, improve collaboration efficiency
+4. **Quality Assurance**: Systematic testing methods ensure product quality
+
+### Value for the Industry
+
+1. **Drive Innovation**: Explore AI applications in the testing field
+2. **Knowledge Sharing**: Open source projects promote industry knowledge sharing
+3. **Standard Establishment**: Establish industry standards for AI-assisted testing
+4. **Talent Development**: Help test engineers adapt to the AI era
+
+## Technical Implementation Details
+
+### 1. Project Architecture
+
+```
+awesome-qa-prompt/
+├── Testing Type Modules/    # 14 testing types
+│   ├── Chinese Full Version
+│   ├── Chinese Lite Version
+│   ├── English Full Version
+│   ├── English Lite Version
+│   └── README Documentation
+├── Workflow Modules/        # 3 workflows
+├── Online Documentation/    # VitePress website
+└── Project Configuration/
+```
+
+### 2. Documentation Website Tech Stack
+
+- **Framework**: VitePress (based on Vue 3 and Vite)
+- **Deployment**: GitHub Pages + Cloudflare Pages dual platform
+- **Features**:
+  - Responsive design
+  - Dark/light themes
+  - Full-text search
+  - Chinese/English switching
+  - SEO optimization
+  - Automatic deployment
+
+### 3. Version Management
+
+- Each prompt file has version records
+- Uses semantic versioning
+- Detailed change logs
+- Backward compatibility guarantee
+
+### 4. Quality Control
+
+- Code review process
+- Automated testing
+- Documentation format checking
+- User feedback collection
+
+## Community Building and Open Source Ecosystem
+
+### Open Source Philosophy
+
+I chose open source because I believe:
+1. **Knowledge Should Be Shared**: Testing experience and methodologies should benefit more people
+2. **Collective Wisdom**: Community power can make projects more perfect
+3. **Standard Establishment**: Open source projects are more likely to become industry standards
+4. **Sustainable Development**: Open source ensures long-term project development
+
+### Community Participation
+
+Since the project launch, it has received positive community response:
+- Continuous growth in GitHub Stars
+- Multiple contributors submitting PRs
+- User feedback and suggestions
+- Shared in multiple technical communities
+
+### Contribution Methods
+
+Welcome everyone to participate through:
+1. **Usage Feedback**: Use the project and provide feedback
+2. **Issue Reporting**: Report problems promptly when found
+3. **Feature Suggestions**: Got ideas? Share them
+4. **Code Contribution**: Submit code improvements
+5. **Documentation Enhancement**: Improve docs and examples
+6. **Promotion and Sharing**: Tell your colleagues and friends
+
+## Some Thoughts
+
+### AI Won't Replace Test Engineers
+
+A lot of people worry AI will replace test engineers. I don't think so. AI is more like a tool that can:
+- Boost efficiency
+- Cut down repetitive work
+- Support decision-making
+- Expand knowledge
+
+But AI can't replace human:
+- Creative thinking
+- Business understanding
+- Communication skills
+- Problem-solving abilities
+
+### Test Engineers Need to Adapt
+
+In the AI era, test engineers need to:
+1. **Learn AI Tools**: Master prompt engineering
+2. **Improve Business Understanding**: Get deeper into business logic
+3. **Develop Soft Skills**: Communication, coordination, leadership
+4. **Keep Learning**: Stay current with tech trends
+
+### Future of Testing
+
+I think the future testing industry will be:
+- **More Intelligent**: AI assists all testing activities
+- **More Professional**: Test engineers focus on high-value work
+- **More Collaborative**: Human-AI collaboration becomes the norm
+- **More Standardized**: Unified methodologies and standards
+
+## Conclusion
+
+**Awesome QA Prompt** started with a simple idea: make testing work more efficient, professional, and enjoyable.
+
+This project brings together years of my testing experience and thoughts about AI. I hope it can:
+
+1. **Help Individuals**: Let every test engineer boost their efficiency and quality
+2. **Drive the Industry**: Push digital transformation in testing
+3. **Establish Standards**: Build industry standards for AI-assisted testing
+4. **Cultivate Talent**: Help people master testing skills for the AI era
+
+We're in a fast-changing era, and we need to embrace change and learn to work with AI. **Awesome QA Prompt** is that bridge, connecting traditional testing methods with AI technology.
+
+I believe with everyone's efforts, this project will keep getting better and bring more value to the testing industry. Let's make testing work better with AI!
+
+---
+
+**Project**: https://github.com/naodeng/awesome-qa-prompt  
+**Docs**: https://naodeng.github.io/awesome-qa-prompt/  
+**Contact**: Feel free to reach out via GitHub Issues or email
+
+If this project helps you, give it a Star! Your support keeps me going.
