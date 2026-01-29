@@ -3,7 +3,7 @@ title: Nao's Blog
 pagination:
   pagerSize: 7
 defaultContentLanguage: en
-theme: PaperMod
+theme: hextra
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
