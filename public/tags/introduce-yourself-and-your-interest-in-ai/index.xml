@@ -1,24 +1,128 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduce Yourself and Your Interest in AI on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/tags/introduce-yourself-and-your-interest-in-ai/</link>
+    <title>Nao&#39;s Blog – Introduce Yourself and Your Interest in AI</title>
+    <link>http://localhost:1313/tags/introduce-yourself-and-your-interest-in-ai/</link>
     <description>Recent content in Introduce Yourself and Your Interest in AI on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 02 Mar 2024 18:06:44 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.com.cn/tags/introduce-yourself-and-your-interest-in-ai/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/tags/introduce-yourself-and-your-interest-in-ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
     <item>
       <title>30 Days of AI in Testing Challenge: Day 1: Introduce yourself and your interest in AI</title>
-      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</link>
+      <link>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</link>
       <pubDate>Sat, 02 Mar 2024 18:06:44 +0800</pubDate>
-      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</guid>
-      <description>This blog post is about the first day of the 30 Day AI Testing Challenge and introduces the start of the program. The blog post begins on the first day of the challenge and explores participants introducing themselves and their interest in AI. The post may include the author&amp;rsquo;s background, work experience, and expectations for AI testing. This series of challenges promises to provide readers with an opportunity to dive deeper into AI testing and continue to learn, and may also contain some encouragement and motivation to actively participate throughout the challenge.</description>
+      
+      <guid>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;About Event&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-event&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-event&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &amp;ldquo;30 Days of AI in Testing Challenge&amp;rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &amp;ldquo;30 Days of Agile Testing&amp;rdquo; event.&lt;/p&gt;
+&lt;p&gt;Community Website: &lt;a href=&#34;https://www.ministryoftesting.com&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Event Link: &lt;a href=&#34;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Event Introduce&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;event-introduce&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#event-introduce&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Upgrade Your Testing Game throughout March, with the 30 Days of AI in Testing Challenge!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;March 1 2024 - April 1 2024&lt;/li&gt;
+&lt;li&gt;00:00 - 23:00 BST&lt;/li&gt;
+&lt;li&gt;Location: Online&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Calling all testers, AI enthusiasts, and anyone curious about how Artificial Intelligence is reshaping software quality. Ready to explore the world of AI? This March, we&amp;rsquo;re launching 30 Days of AI in Testing, and you&amp;rsquo;re invited to join the mission!&lt;/p&gt;
+&lt;h3&gt;What is it?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-is-it&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-is-it&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Over 30 enlightening days, alongside a vibrant community, you&amp;rsquo;ll embark on a journey to uncover the potential of AI in testing. Each day, we&amp;rsquo;ll explore and discuss new concepts, tools, and practices that will demystify AI and enhance your testing toolkit.&lt;/p&gt;
+&lt;h3&gt;Why take part?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Incrementally Elevate Your Skills: Each day brings a new, manageable task that builds on the last. Helping you gradually deepen your understanding of AI in testing.
+Improve Your Testing Efficiency and Effectiveness: Discover the many ways AI can be used to improve your everyday testing, improving your efficiency and effectiveness.&lt;/p&gt;
+&lt;p&gt;Connect and Collaborate: Engage with a global community of testers and AI enthusiasts on The Club forum, sharing insights, and gaining inspiration and support.&lt;/p&gt;
+&lt;p&gt;Achieve AI Ambitions: Use this challenge as a stepping stone to reach your AI testing goals. Dip in and tackle the tasks that meet your AI ambitions.&lt;/p&gt;
+&lt;p&gt;Lead and Inspire: By sharing your AI journey and discoveries during the challenge, you’ll play a crucial role in advancing the knowledge and skills of the community.&lt;/p&gt;
+&lt;h3&gt;How will it work?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;how-will-it-work&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#how-will-it-work&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Throughout March, a member of team MoT will post a new, short, daily task on The Club forum that&amp;rsquo;ll enhance your understanding of AI in testing.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll then reply to the topic posts with your responses to each daily task. Feel free to share your thoughts, ask questions, seek advice, or offer support to others.&lt;/p&gt;
+&lt;p&gt;Finally, don&amp;rsquo;t forget to encourage meaningful discussions by engaging with other people’s replies. If you find someone’s response interesting or helpful, hit that ❤️ button and let them know!&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t get FOMO; register now! Registering will give you an email reminder for each daily task.&lt;/p&gt;
+&lt;h2&gt;Day 1 Task&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;day-1-task&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#day-1-task&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;For today’s task, we invite you to introduce yourself to the community and share your interest in AI. This is an opportunity to express your curiosities, aspirations, and any goals you hope to achieve throughout this month-long challenge.&lt;/p&gt;
+&lt;p&gt;Here are some prompts to help guide you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Introduce yourself: Tell us about your background, your role in testing or tech and how you found this community.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Your Interest in AI: What initially piqued your interest in AI in testing? Are there any particular areas of AI in testing that you’re eager to learn more about?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Your Goals: What do you aim to learn or achieve in this challenge?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;How to Take Part&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;how-to-take-part&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#how-to-take-part&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Click the &amp;ldquo;Take Part&amp;rdquo; button below and reply to The Club forum post with your introduction, interests and any goals you may have.
+Don’t be afraid to ask questions, comment or  on others’ posts. Building connections and a supportive community is part of making the most of this 30 Days of Testing.&lt;/p&gt;
+&lt;h3&gt;Why Take Part&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Kickstart Your AI Journey: By identifying goals, you’re taking the first step towards deepening your understanding of AI in testing and getting the motivation you need to keep learning.&lt;/p&gt;
+&lt;p&gt;Build Connections: Introduce yourself and start networking with others who share your interest in AI.&lt;/p&gt;
+&lt;p&gt;Gain Insights: Learn from the diverse perspectives within the community. Discovering the different paths others are taking in AI in testing, sparking ideas for your own journey.&lt;/p&gt;
+&lt;h3&gt;Task Link&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-link&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-link&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/312&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/312&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;My Day 1 Task&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;my-day-1-task&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#my-day-1-task&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/291&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-1-introduce-yourself-and-your-interest-in-ai/74449/291&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hello, I’m Nao Deng. You can call me Nao. I am a senior QA at Thoughtworks China.
+I have 12 years of experience in hardware testing, system testing, software testing, manual testing, API automation testing, UI automation testing, mobile automation testing, performance testing, and project quality assurance.&lt;/p&gt;
+&lt;p&gt;I also continuously write articles on my personal blog at &lt;a href=&#34;https://naodeng.com.cn&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.com.cn&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I discovered this community during the 30 Days of Agile Testing event.&lt;/p&gt;
+&lt;p&gt;AI testing has been a topic of continuous interest to me, from the early days of accurate testing to the current generative AI and big models. I aim to learn and invest in the field of AI testing, and implement effective tools or methods to enhance the efficiency of manual and automated testing, including performance testing and improving quality management efficiency.&lt;/p&gt;
+&lt;p&gt;The purpose of attending this event is to gain ideas and practical experience from other community members about AI testing, and to explore feasible directions for AI testing with the community.&lt;/p&gt;
+&lt;h2&gt;Recommended Readings&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;recommended-readings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#recommended-readings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bruno API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/gatling-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gatling Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/k6-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;K6 Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Postman API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pytest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;REST Assured API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SuperTest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;30 Days of AI in Testing Challenge&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
     </item>
+    
   </channel>
 </rss>

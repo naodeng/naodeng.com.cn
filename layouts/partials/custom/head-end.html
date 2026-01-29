@@ -1,0 +1,41 @@
+{{- /* 技术博客顶部区域：导航栏底部分隔线、品牌区与菜单间距 */ -}}
+<style>
+  .hextra-nav-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .dark .hextra-nav-container,
+  .hx\:dark .hextra-nav-container-blur {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  .hextra-nav-container nav {
+    gap: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    .hextra-nav-container nav {
+      gap: 0.75rem;
+    }
+  }
+  /* 赞助页二维码图片尺寸 */
+  .sponsor-qr-content img {
+    max-width: 280px;
+    height: auto;
+    border-radius: 8px;
+  }
+  /* 页脚自定义区域：深色模式下文字与分隔线 */
+  .dark .hextra-custom-footer-content,
+  .hx\:dark .hextra-custom-footer-content {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+  .dark .hextra-custom-footer-content [style*="color: #6b7280"],
+  .dark .hextra-custom-footer-content [style*="color:#6b7280"] {
+    color: #9ca3af !important;
+  }
+  .dark .hextra-custom-footer-content a,
+  .hx\:dark .hextra-custom-footer-content a {
+    color: inherit;
+  }
+  .dark .hextra-custom-footer-content a:hover,
+  .hx\:dark .hextra-custom-footer-content a:hover {
+    color: #e5e7eb;
+  }
+</style>

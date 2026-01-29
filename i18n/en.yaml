@@ -1,0 +1,69 @@
+# 英文界面与菜单翻译（Hextra 多语言）
+# 菜单项通过 identifier 在此翻译
+
+# 首页
+recentPosts: "Recent Posts"
+allPosts: "All Posts"
+
+# 博客列表（参考 Hextra 官方）
+rssSubscribe: "RSS Subscribe"
+
+# 顶部副标题（技术博客 tagline）
+tagline: "Software Testing · API · AI QA"
+
+# 顶栏菜单
+archive: "Archive"
+posts: "Blog"
+blogs: "Blog"
+blog: "Blog"
+search: "Search"
+tags: "Tags"
+categories: "Categories"
+series: "Series"
+qa-prompt: "QA Prompt"
+status: "Status"
+dashboard: "Dashboard"
+sponsor: "Sponsor"
+sponsorIntro: "If you find the content here helpful, you can support me with a coffee or a one-time tip. Thank you!"
+sponsorWaysToSupport: "Ways to support"
+sponsorBuyMeACoffee: "Buy Me A Coffee"
+sponsorKofi: "Ko-fi"
+sponsorQRTitle: "Scan to tip"
+sponsorListTitle: "Sponsor list"
+sponsorListPlaceholder: "The stage is set — thank you for your support! (Updated weekly.)"
+showcase: "Showcase"
+about: "About"
+github: "GitHub"
+github-sidebar: "GitHub ↗"
+more: "More"
+
+# 页脚
+footerQuickLinks: "Quick links"
+footerSubscribe: "Subscribe"
+footerFollow: "Follow"
+footerRss: "RSS"
+footerAboutSite: "Software testing, API automation, AI QA. Nao's Blog."
+
+# 主题内置文案覆盖
+copyright: "© Nao's Blog. All rights reserved."
+poweredBy: "Powered by Hextra"
+backToTop: "Back to top"
+changeLanguage: "Change language"
+changeTheme: "Change theme"
+copy: "Copy"
+copied: "Copied!"
+copyCode: "Copy code"
+copyAsMarkdown: "Copy as Markdown"
+copyPage: "Copy Page"
+editThisPage: "Edit this page on GitHub →"
+lastUpdated: "Last updated on"
+dark: "Dark"
+light: "Light"
+system: "System"
+next: "Next"
+previous: "Prev"
+readMore: "Read more →"
+searchPlaceholder: "Search..."
+noResultsFound: "No results found."
+onThisPage: "On this page"
+viewAsMarkdown: "View as Markdown"

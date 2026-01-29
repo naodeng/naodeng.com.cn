@@ -2,1402 +2,1507 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <loc>http://localhost:1313/categories/ai/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <loc>http://localhost:1313/series/ai-testing/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/awesome-qa-prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/blog/ai-testing/introduction_of_awesome_qa_prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/ai-testing/introduction_of_awesome_qa_prompt/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/"
+                href="http://localhost:1313/blog/ai-testing/introduction_of_awesome_qa_prompt/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/ai/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/categories/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/"
+                href="http://localhost:1313/blog/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/</loc>
-    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/"
+                href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/prompt/</loc>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/categories/qa-prompt/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/series/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/series/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-01-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/series/30-days-of-ai-in-testing-challenge/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/prompt-engineering/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</loc>
+    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/ai/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/</loc>
+    <loc>http://localhost:1313/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/</loc>
+    <loc>http://localhost:1313/tags/prompt/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/testing-challenge/</loc>
+    <loc>http://localhost:1313/tags/prompt-engineering/</loc>
     <lastmod>2024-03-30T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</loc>
+    <loc>http://localhost:1313/categories/testing-challenge/</loc>
+    <lastmod>2024-03-30T17:06:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/</loc>
     <lastmod>2024-03-28T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/explore-ai-driven-security-testing-and-share-potential-use-cases/</loc>
+    <loc>http://localhost:1313/tags/explore-ai-driven-security-testing-and-share-potential-use-cases/</loc>
     <lastmod>2024-03-28T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/security-testing/</loc>
+    <loc>http://localhost:1313/tags/security-testing/</loc>
     <lastmod>2024-03-28T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/</loc>
     <lastmod>2024-03-27T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/investigate-code-explanation-techniques-and-share-your-insights/</loc>
+    <loc>http://localhost:1313/tags/investigate-code-explanation-techniques-and-share-your-insights/</loc>
     <lastmod>2024-03-27T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</loc>
     <lastmod>2024-03-26T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</loc>
+    <loc>http://localhost:1313/tags/assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/</loc>
     <lastmod>2024-03-26T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/visual-testing/</loc>
+    <loc>http://localhost:1313/tags/visual-testing/</loc>
     <lastmod>2024-03-26T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/</loc>
     <lastmod>2024-03-24T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/</loc>
+    <loc>http://localhost:1313/tags/reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/</loc>
     <lastmod>2024-03-24T20:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/</loc>
     <lastmod>2024-03-24T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/develop-your-ai-in-testing-manifesto/</loc>
+    <loc>http://localhost:1313/tags/develop-your-ai-in-testing-manifesto/</loc>
     <lastmod>2024-03-24T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</loc>
     <lastmod>2024-03-23T21:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</loc>
+    <loc>http://localhost:1313/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</loc>
     <lastmod>2024-03-23T21:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/</loc>
     <lastmod>2024-03-21T22:22:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/</loc>
+    <loc>http://localhost:1313/tags/experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/</loc>
     <lastmod>2024-03-21T22:22:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/</loc>
     <lastmod>2024-03-19T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/share-your-greatest-frustration-with-ai-in-testing/</loc>
+    <loc>http://localhost:1313/tags/share-your-greatest-frustration-with-ai-in-testing/</loc>
     <lastmod>2024-03-19T17:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</loc>
     <lastmod>2024-03-18T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</loc>
+    <loc>http://localhost:1313/tags/automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/</loc>
     <lastmod>2024-03-18T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</loc>
     <lastmod>2024-03-17T19:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/accessibility-testing/</loc>
+    <loc>http://localhost:1313/tags/accessibility-testing/</loc>
     <lastmod>2024-03-17T19:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</loc>
+    <loc>http://localhost:1313/tags/evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/</loc>
     <lastmod>2024-03-17T19:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/ai-assistant/</loc>
+    <loc>http://localhost:1313/tags/ai-assistant/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/api-automation-testing/</loc>
+    <loc>http://localhost:1313/categories/api-automation-testing/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/postbot/</loc>
+    <loc>http://localhost:1313/tags/postbot/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/postman/</loc>
+    <loc>http://localhost:1313/categories/postman/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/postman-api-automation-testing-tutorial/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/</loc>
     <lastmod>2024-03-17T10:05:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</loc>
     <lastmod>2024-03-15T14:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/gauge-your-short-term-ai-in-testing-plans/</loc>
+    <loc>http://localhost:1313/tags/gauge-your-short-term-ai-in-testing-plans/</loc>
     <lastmod>2024-03-15T14:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</loc>
     <lastmod>2024-03-15T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/generate-ai-test-code-and-share-your-experience/</loc>
+    <loc>http://localhost:1313/tags/generate-ai-test-code-and-share-your-experience/</loc>
     <lastmod>2024-03-15T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/</loc>
     <lastmod>2024-03-14T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/</loc>
+    <loc>http://localhost:1313/tags/develop-a-testing-approach-and-become-an-ai-in-testing-champion/</loc>
     <lastmod>2024-03-14T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</loc>
     <lastmod>2024-03-13T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</loc>
+    <loc>http://localhost:1313/tags/evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/</loc>
     <lastmod>2024-03-13T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/</loc>
     <lastmod>2024-03-12T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</loc>
+    <loc>http://localhost:1313/tags/generate-test-data-using-ai-and-evaluate-its-efficacy/</loc>
     <lastmod>2024-03-12T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/</loc>
     <lastmod>2024-03-11T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/critically-analyse-ai-generated-tests/</loc>
+    <loc>http://localhost:1313/tags/critically-analyse-ai-generated-tests/</loc>
     <lastmod>2024-03-11T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/</loc>
     <lastmod>2024-03-10T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/evaluate-prompt-quality-and-try-to-improve-it/</loc>
+    <loc>http://localhost:1313/tags/evaluate-prompt-quality-and-try-to-improve-it/</loc>
     <lastmod>2024-03-10T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/</loc>
     <lastmod>2024-03-09T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/craft-a-detailed-prompt-to-support-test-activities/</loc>
+    <loc>http://localhost:1313/tags/craft-a-detailed-prompt-to-support-test-activities/</loc>
     <lastmod>2024-03-09T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/</loc>
     <lastmod>2024-03-08T13:07:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/research-and-share-prompt-engineering-techniques/</loc>
+    <loc>http://localhost:1313/tags/research-and-share-prompt-engineering-techniques/</loc>
     <lastmod>2024-03-08T13:07:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/</loc>
     <lastmod>2024-03-07T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/explore-and-share-insights-on-ai-testing-tools/</loc>
+    <loc>http://localhost:1313/tags/explore-and-share-insights-on-ai-testing-tools/</loc>
     <lastmod>2024-03-07T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/</loc>
     <lastmod>2024-03-06T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/</loc>
+    <loc>http://localhost:1313/tags/identify-a-case-study-on-ai-in-testing-and-share-your-findings/</loc>
     <lastmod>2024-03-06T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/</loc>
     <lastmod>2024-03-05T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/</loc>
+    <loc>http://localhost:1313/tags/watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/</loc>
     <lastmod>2024-03-05T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/</loc>
     <lastmod>2024-03-04T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/list-ways-in-which-ai-is-used-in-testing/</loc>
+    <loc>http://localhost:1313/tags/list-ways-in-which-ai-is-used-in-testing/</loc>
     <lastmod>2024-03-04T13:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/</loc>
     <lastmod>2024-03-03T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/read-an-introductory-article-on-ai-in-testing-and-share-it/</loc>
+    <loc>http://localhost:1313/tags/read-an-introductory-article-on-ai-in-testing-and-share-it/</loc>
     <lastmod>2024-03-03T10:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</loc>
+    <loc>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/</loc>
     <lastmod>2024-03-02T18:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"
+                href="http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/introduce-yourself-and-your-interest-in-ai/</loc>
+    <loc>http://localhost:1313/tags/introduce-yourself-and-your-interest-in-ai/</loc>
     <lastmod>2024-03-02T18:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/bruno/</loc>
+    <loc>http://localhost:1313/categories/bruno/</loc>
     <lastmod>2024-01-23T17:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/bruno/</loc>
+    <loc>http://localhost:1313/tags/bruno/</loc>
     <lastmod>2024-01-23T17:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/bruno-api-automation-testing-tutorial/</loc>
     <lastmod>2024-01-23T17:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2024-01-23T17:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
+                href="http://localhost:1313/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/tags/building-a-api-automation-test-project-from-0-to-1/</loc>
     <lastmod>2024-01-23T17:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/sponsor/</loc>
-    <lastmod>2024-01-15T20:23:04+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/tags/checks/</loc>
+    <loc>http://localhost:1313/tags/checks/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/common-functions/</loc>
+    <loc>http://localhost:1313/tags/common-functions/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/http-request/</loc>
+    <loc>http://localhost:1313/tags/http-request/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/k6/</loc>
+    <loc>http://localhost:1313/categories/k6/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/k6-performance-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/k6-performance-testing-tutorial/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"
+                href="http://localhost:1313/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/metrics/</loc>
+    <loc>http://localhost:1313/tags/metrics/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/performance-testing/</loc>
+    <loc>http://localhost:1313/categories/performance-testing/</loc>
     <lastmod>2024-01-11T17:10:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/getting-started/</loc>
+    <loc>http://localhost:1313/tags/getting-started/</loc>
     <lastmod>2024-01-09T17:22:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/</loc>
     <lastmod>2024-01-09T17:22:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"
+                href="http://localhost:1313/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/write-your-first-performance-test-script/</loc>
+    <loc>http://localhost:1313/tags/write-your-first-performance-test-script/</loc>
     <lastmod>2024-01-09T17:22:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/article-copyright/</loc>
+    <loc>http://localhost:1313/tags/article-copyright/</loc>
     <lastmod>2023-12-06T14:22:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/others/article-plagiarism-statement/</loc>
+    <loc>http://localhost:1313/blog/others/article-plagiarism-statement/</loc>
     <lastmod>2023-12-06T14:22:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/others/article-plagiarism-statement/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/others/article-plagiarism-statement/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/others/article-plagiarism-statement/"
+                href="http://localhost:1313/blog/others/article-plagiarism-statement/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/categories/others/</loc>
+    <loc>http://localhost:1313/categories/others/</loc>
     <lastmod>2023-12-06T14:22:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/others/</loc>
+    <loc>http://localhost:1313/series/others/</loc>
     <lastmod>2023-12-06T14:22:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
+                href="http://localhost:1313/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/ci/cd-integration/</loc>
+    <loc>http://localhost:1313/tags/ci/cd-integration/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/data-driven/</loc>
+    <loc>http://localhost:1313/tags/data-driven/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/integration-allure-report/</loc>
+    <loc>http://localhost:1313/tags/integration-allure-report/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/multiple-environment-support/</loc>
+    <loc>http://localhost:1313/tags/multiple-environment-support/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/pytest/</loc>
+    <loc>http://localhost:1313/categories/pytest/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/restassured/</loc>
+    <loc>http://localhost:1313/categories/restassured/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/setting-up-environment/</loc>
+    <loc>http://localhost:1313/tags/setting-up-environment/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/supertest/</loc>
+    <loc>http://localhost:1313/categories/supertest/</loc>
     <lastmod>2023-11-29T11:23:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/command-line-option/</loc>
+    <loc>http://localhost:1313/tags/command-line-option/</loc>
     <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/file-upload/</loc>
+    <loc>http://localhost:1313/tags/file-upload/</loc>
     <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</loc>
     <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/ssl-certificate/</loc>
+    <loc>http://localhost:1313/tags/ssl-certificate/</loc>
     <lastmod>2023-11-27T12:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</loc>
     <lastmod>2023-11-24T19:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/common-test-scripts/</loc>
+    <loc>http://localhost:1313/tags/common-test-scripts/</loc>
     <lastmod>2023-11-23T17:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</loc>
     <lastmod>2023-11-23T17:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/third-party-packages/</loc>
+    <loc>http://localhost:1313/tags/third-party-packages/</loc>
     <lastmod>2023-11-23T17:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</loc>
     <lastmod>2023-11-22T17:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-21T17:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
+                href="http://localhost:1313/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/concurrent-testing/</loc>
+    <loc>http://localhost:1313/tags/concurrent-testing/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/distributed-testing/</loc>
+    <loc>http://localhost:1313/tags/distributed-testing/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/filtering-test-case/</loc>
+    <loc>http://localhost:1313/tags/filtering-test-case/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/pytest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</loc>
     <lastmod>2023-11-20T15:37:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</loc>
     <lastmod>2023-11-17T16:32:55+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/assertions/</loc>
+    <loc>http://localhost:1313/tags/assertions/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
-    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
-                />
-  </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</loc>
     <lastmod>2023-11-15T18:32:55+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
+    <lastmod>2023-11-15T18:32:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-14T09:58:14+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</loc>
     <lastmod>2023-11-13T18:11:15+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/"
+                href="http://localhost:1313/blog/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/supertest-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</loc>
     <lastmod>2023-11-10T12:37:59+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</loc>
     <lastmod>2023-11-09T18:06:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-advance-usage-data-driven/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-data-driven/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</loc>
     <lastmod>2023-11-08T17:38:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</loc>
     <lastmod>2023-11-07T18:09:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-06T12:30:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</loc>
     <lastmod>2023-11-05T10:36:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"
+                href="http://localhost:1313/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/categories/rest-assured/</loc>
+    <loc>http://localhost:1313/categories/rest-assured/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/rest-assured-api-automation-testing-tutorial/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</loc>
     <lastmod>2023-11-04T10:21:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/"
+                href="http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/advanced-usage/</loc>
+    <loc>http://localhost:1313/tags/advanced-usage/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/filters/</loc>
+    <loc>http://localhost:1313/tags/filters/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/logging/</loc>
+    <loc>http://localhost:1313/tags/logging/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/"
+                href="http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/validating-responses/</loc>
+    <loc>http://localhost:1313/tags/validating-responses/</loc>
     <lastmod>2023-11-03T09:25:19+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</loc>
     <lastmod>2023-11-02T10:03:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/"
+                href="http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</loc>
     <lastmod>2023-11-01T16:24:49+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/rest-assured-tutorial-and-environment-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/"
+                href="http://localhost:1313/blog/api-automation-testing/rest-assured-tutorial-and-environment-preparation/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/categories/gatling/</loc>
+    <loc>http://localhost:1313/categories/gatling/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/gatling-performance-testing-tutorial/</loc>
+    <loc>http://localhost:1313/series/gatling-performance-testing-tutorial/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/gatling-tool-tutorial-ci-cd-integration/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/gatling-tool-tutorial-ci-cd-integration/</loc>
     <lastmod>2023-10-30T10:36:24+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/gatling-tool-tutorial-advanced-usage/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/gatling-tool-tutorial-advanced-usage/</loc>
     <lastmod>2023-10-26T18:07:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/performance-scenario-setting/</loc>
+    <loc>http://localhost:1313/tags/performance-scenario-setting/</loc>
     <lastmod>2023-10-26T18:07:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/test-report/</loc>
+    <loc>http://localhost:1313/tags/test-report/</loc>
     <lastmod>2023-10-26T18:07:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/building-a-performance-test-project-from-0-to-1/</loc>
+    <loc>http://localhost:1313/tags/building-a-performance-test-project-from-0-to-1/</loc>
     <lastmod>2023-10-25T11:05:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/gatling-tool-tutorial2/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/gatling-tool-tutorial2/</loc>
     <lastmod>2023-10-25T11:05:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/performance-testing/gatling-tool-tutorial1/</loc>
+    <loc>http://localhost:1313/blog/performance-testing/gatling-tool-tutorial1/</loc>
     <lastmod>2023-10-24T17:44:53+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/bruno-cli/</loc>
+    <loc>http://localhost:1313/tags/bruno-cli/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/bruno-guide/</loc>
+    <loc>http://localhost:1313/series/bruno-guide/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/posts/api-automation-testing/introduction_of_bruno/</loc>
+    <loc>http://localhost:1313/blog/api-automation-testing/introduction_of_bruno/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/api-automation-testing/introduction_of_bruno/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/posts/api-automation-testing/introduction_of_bruno/"
+                href="http://localhost:1313/blog/api-automation-testing/introduction_of_bruno/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/postman/</loc>
+    <loc>http://localhost:1313/tags/postman/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/postman-migration/</loc>
+    <loc>http://localhost:1313/tags/postman-migration/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/postman-replacement/</loc>
+    <loc>http://localhost:1313/tags/postman-replacement/</loc>
     <lastmod>2023-10-17T11:31:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/archives/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/archives/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/archives/"
+                href="http://localhost:1313/about/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/assess-your-teams-readiness-to-adopt-ai-assisted-testing/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/tags/build-your-own-ai-tools/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/tags/consider-what-your-ai-test-buddy-would-do-for-you/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://naodeng.com.cn/search/</loc>
+    <loc>http://localhost:1313/archives/</loc>
+    <lastmod>2023-11-14T14:46:35+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://naodeng.com.cn/zh/search/"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://naodeng.com.cn/search/"
+                href="http://localhost:1313/archives/"
                 />
   </url><url>
-    <loc>https://naodeng.com.cn/tags/share-whose-work-is-influencing-your-ai-in-testing-approach/</loc>
+    <loc>http://localhost:1313/tags/assess-your-teams-readiness-to-adopt-ai-assisted-testing/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/visualise-the-future-of-ai-in-testing/</loc>
+    <loc>http://localhost:1313/tags/build-your-own-ai-tools/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</loc>
+    <loc>http://localhost:1313/tags/consider-what-your-ai-test-buddy-would-do-for-you/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</loc>
+    <loc>http://localhost:1313/search/</loc>
+    <lastmod>2023-11-14T14:46:35+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/search/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/share-whose-work-is-influencing-your-ai-in-testing-approach/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://localhost:1313/showcase/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/showcase/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/showcase/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/sponsor/</loc>
+    <lastmod>2024-01-15T21:20:28+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/sponsor/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/sponsor/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/visualise-the-future-of-ai-in-testing/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://naodeng.com.cn/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/</loc>
+    <loc>http://localhost:1313/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E4%BB%8B%E7%BB%8D/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/series/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E6%8C%87%E5%8D%97/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

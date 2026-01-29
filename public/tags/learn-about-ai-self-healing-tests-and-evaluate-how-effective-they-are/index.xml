@@ -1,24 +1,221 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Learn About AI Self-Healing Tests and Evaluate How Effective They Are on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</link>
+    <title>Nao&#39;s Blog – Learn About AI Self-Healing Tests and Evaluate How Effective They Are</title>
+    <link>http://localhost:1313/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</link>
     <description>Recent content in Learn About AI Self-Healing Tests and Evaluate How Effective They Are on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 23 Mar 2024 21:06:44 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.com.cn/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/tags/learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
     <item>
       <title>30 Days of AI in Testing Challenge: Day 20: Learn about AI self-healing tests and evaluate how effective they are</title>
-      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</link>
+      <link>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</link>
       <pubDate>Sat, 23 Mar 2024 21:06:44 +0800</pubDate>
-      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</guid>
-      <description>This blog post is about Day 20 of the 30-Day AI Testing Challenge,exploring the effectiveness of AI self-healing tests. The article may include the author&amp;rsquo;s definition, purpose, and methods of AI self-healing testing, as well as an evaluation of its effectiveness and practical experience. By sharing explorations and evaluations of AI self-healing testing, readers will understand the author&amp;rsquo;s views and insights on this emerging testing method, as well as its application effects in real testing environments. This series of activities hopes to provide testing professionals with an opportunity to understand and explore the potential and limitations of AI in self-healing testing, and to promote further research and application of AI testing in the industry.</description>
+      
+      <guid>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Day 20: Learn about AI self-healing tests and evaluate how effective they are&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Only ten more days to go on this challenge, and today we are going to examine the claims about Self-Healing Testings. The idea of Self-Healing Tests was one of the early claims for the use of AI in Testing, but there are three key questions we want to answer:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;What does Self-Healing Tests really mean?&lt;/li&gt;
+&lt;li&gt;What are the risks of Self-Healing Tests?&lt;/li&gt;
+&lt;li&gt;Is this a useful feature?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We know that not everyone is interested in learning new automation tools, so similar to yesterday’s task, there are two options and you are free to pick one (or both).&lt;/p&gt;
+&lt;h3&gt;Task Steps&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-steps&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-steps&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Option 1&lt;/strong&gt;: This option is for you if you currently use a tool that claims Self Healing Tests or are interested in a deep dive into Self Healing Tests and have time to learn a new tool. For this option, the steps are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;What types of problems does your tool claim to heal?&lt;/strong&gt; Read the documentation for your selected tool to understand what the tool means by Self-Healing Tests. Try to understand the types of test issues that the tool claims to heal and how this mechanism works.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test one of their claims&lt;/strong&gt;: Design a 20 minute time-boxed test of one of the Self-Healing capabilities of the tool. Run the test and evaluate how well you think the Self-Healing mechanism performed. Some ideas are:
+&lt;ul&gt;
+&lt;li&gt;If the tool claims to detect changed element locators, you could change the locator in a test so that the test wil fail, then run the tool and check how well the tool heals the failing test.&lt;/li&gt;
+&lt;li&gt;If the tool claims to correct the sequencing of actions, swap two parts of a test so that it fails, then run the tool and check how well the tool heals the failing test.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How might this feature fail?&lt;/strong&gt; Based on the claim you were testing and assuming the self-healing was successful, how might the self-healing fail? Can you construct a scenario where it does fail?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Option 2&lt;/strong&gt;: This option is for you if you are interested in finding out more about Self Healing Tests but don’t have time to learn a new tool. For this option, the steps are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Find and read an article or paper that discusses Self-Healing Tests&lt;/strong&gt;: This could be a research paper, blog post or vendor documentation that deals with the specifics of Self-Healing Tests.
+&lt;ul&gt;
+&lt;li&gt;Try to understand the types of issues with tests that the tool claims to heal.&lt;/li&gt;
+&lt;li&gt;If possible, uncover how the issues are detected and resolved.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How valuable is a feature like this to your team?&lt;/strong&gt; Consider the challenges your team faces and whether Self-Healing Tests are valuable to your team.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How might this fail?&lt;/strong&gt; Based on your reading, how might this Self-Healing fail in a way that matters? For example, could it heal a test in a way that results in the purpose of the test changing from what you originally intended?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Share Your Insights&lt;/strong&gt;: Regardless of which investigative option you choose, respond to this post with your insights and share:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Which option you chose.&lt;/li&gt;
+&lt;li&gt;What your perceptions are of Self-Healing Tests (what problem does it solve and how).&lt;/li&gt;
+&lt;li&gt;The ways in which Self-Healing Tests might benefit or fail your team.&lt;/li&gt;
+&lt;li&gt;How likely you are to use (or continue to use) tools with this feature.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Why Take Part&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deepen your understanding of Self-Healing Tests&lt;/strong&gt;: Maintaining tests through new iterations of a product can be challenging, so tooling that can reduce this is valuable. By taking part in this test task, you are developing a sense of what Self-Healing Tests actually means and how they can help your team.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improve your critical thinking about vendor claims&lt;/strong&gt;: When selecting tools to support testing, we are often faced with many fantastic sounding claims. This task allows you to think critically about the claims being made, their limitations, and how they might impact your team.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Task Link&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-link&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-link&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;My Day 20 Task&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;my-day-20-task&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#my-day-20-task&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Based on my previous task of trying out the AI self-healing testing feature in Katalon Studio, today I chose &lt;strong&gt;Option 1&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;1. &lt;strong&gt;What kind of problems does your tool claim to solve?&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-what-kind-of-problems-does-your-tool-claim-to-solve&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-what-kind-of-problems-does-your-tool-claim-to-solve&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Katalon Studio&amp;rsquo;s AI-driven self-healing testing feature claims to address issues related to test failures caused by UI locator changes in WebUI automation testing.&lt;/p&gt;
+&lt;p&gt;The working mechanism of Katalon Studio&amp;rsquo;s AI self-healing testing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Once self-healing is enabled, if Katalon Studio can&amp;rsquo;t find an object using the default locator, it attempts to find the object with other pre-configured locators associated with that object.&lt;/li&gt;
+&lt;li&gt;If Katalon Studio finds the object using any alternative locator, the test continues. The alternative locator that successfully found the object is used for the remainder of the execution. This helps prevent repeated self-healing of the same broken object, thus reducing execution time.&lt;/li&gt;
+&lt;li&gt;After test execution, Katalon Studio suggests replacing the broken locator with the one that found the object. Unless Katalon Studio can find the target object, based on designed failure handling options, the test execution may stop or proceed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The corresponding article link is: &lt;a href=&#34;https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;2. &lt;strong&gt;Verifying one of the claims&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-verifying-one-of-the-claims&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-verifying-one-of-the-claims&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;To verify Katalon Studio&amp;rsquo;s AI self-healing testing functionality, I recorded a process on the &lt;a href=&#34;https://www.saucedemo.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Swag Labs&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt; online shopping website with Katalon Studio, including login, selecting products, adding them to the cart, and successfully placing an order. Katalon Studio generated the following code:
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png&#34; alt=&#34;Generated Code&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The current demo test case runs successfully.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h4&gt;2.1 Intentionally changing locators to verify the AI self-healing functionality&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;21-intentionally-changing-locators-to-verify-the-ai-self-healing-functionality&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#21-intentionally-changing-locators-to-verify-the-ai-self-healing-functionality&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;To test the tool&amp;rsquo;s ability to detect and repair changes in element locators, I intentionally altered two locators in the test script. The adjusted example is as follows:
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png&#34; alt=&#34;Adjusted Example&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;After the test failed, I checked the tool&amp;rsquo;s AI self-healing functionality and found no suggestions for locator repair failures.
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png&#34; alt=&#34;No Suggestions&#34;  loading=&#34;lazy&#34; /&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png&#34; alt=&#34;No Suggestions&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h4&gt;2.2 Intentionally changing the order of steps in the test to verify the AI self-healing functionality&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;22-intentionally-changing-the-order-of-steps-in-the-test-to-verify-the-ai-self-healing-functionality&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#22-intentionally-changing-the-order-of-steps-in-the-test-to-verify-the-ai-self-healing-functionality&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;To further test the tool&amp;rsquo;s ability to repair after detecting changes in element locators, I changed the order of the test steps. The adjusted example is as follows:
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png&#34; alt=&#34;Adjusted Order&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;After the test failed, I checked the tool&amp;rsquo;s AI self-healing functionality and again found no suggestions for locator repair failures.
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png&#34; alt=&#34;No Suggestions&#34;  loading=&#34;lazy&#34; /&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png&#34; alt=&#34;No Suggestions&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3&gt;3. &lt;strong&gt;Where might this feature fail?&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-where-might-this-feature-fail&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-where-might-this-feature-fail&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;From what I&amp;rsquo;ve observed, both of my verifications failed; the AI self-healing testing did not provide any locator repair suggestions, which is a significant deviation from the official claims.&lt;/p&gt;
+&lt;p&gt;I also attempted to run incorrect demo cases multiple times, and on one occasion, Katalon Studio&amp;rsquo;s AI self-healing testing feature did provide a suggestion. However, using its advice did not correct the faulty case.&lt;/p&gt;
+&lt;p&gt;At this point, I&amp;rsquo;m not entirely sure if there are any specific conditions or limitations to Katalon Studio&amp;rsquo;s AI self-healing testing feature, or if I&amp;rsquo;m using it incorrectly.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Note that I am using a trial version, and the AI self-healing testing feature is set to default configuration.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h3&gt;4. &lt;strong&gt;My Opinion&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;4-my-opinion&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-my-opinion&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Having participated in this 30-day AI testing challenge and trying out many new AI testing tools, I&amp;rsquo;ve found that most tools do not live up to their claims and often exaggerate their capabilities. I suggest that everyone thoroughly test these AI testing tools themselves and use those trial results as a basis for selecting the appropriate tool.&lt;/p&gt;
+&lt;h2&gt;About Event&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-event&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-event&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &amp;ldquo;30 Days of AI in Testing Challenge&amp;rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &amp;ldquo;30 Days of Agile Testing&amp;rdquo; event.&lt;/p&gt;
+&lt;p&gt;Community Website: &lt;a href=&#34;https://www.ministryoftesting.com&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Event Link: &lt;a href=&#34;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 1: Introduce yourself and your interest in AI&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 2: Read an introductory article on AI in testing and share it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 3: List ways in which AI is used in testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 5:Identify a case study on AI in testing and share your findings&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 6:Explore and share insights on AI testing tools&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 7: Research and share prompt engineering techniques&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 8: Craft a detailed prompt to support test activities&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 9: Evaluate prompt quality and try to improve it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 10: Critically Analyse AI-Generated Tests&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 11: Generate test data using AI and evaluate its efficacy&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 12: Evaluate whether you trust AI to support testing and share your thoughts&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 13: Develop a testing approach and become an AI in testing champion&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 14: Generate AI test code and share your experience&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 15: Gauge your short-term AI in testing plans&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 16: Evaluate adopting AI for accessibility testing and share your findings&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 17: Automate bug reporting with AI and share your process and evaluation&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 18: Share your greatest frustration with AI in Testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Recommended Readings&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;recommended-readings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#recommended-readings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bruno API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/gatling-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gatling Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/k6-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;K6 Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Postman API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pytest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;REST Assured API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SuperTest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;30 Days of AI in Testing Challenge&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
     </item>
+    
   </channel>
 </rss>

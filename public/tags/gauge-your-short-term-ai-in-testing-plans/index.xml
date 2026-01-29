@@ -1,24 +1,191 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gauge Your Short-Term AI in Testing Plans on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/tags/gauge-your-short-term-ai-in-testing-plans/</link>
+    <title>Nao&#39;s Blog – Gauge Your Short-Term AI in Testing Plans</title>
+    <link>http://localhost:1313/tags/gauge-your-short-term-ai-in-testing-plans/</link>
     <description>Recent content in Gauge Your Short-Term AI in Testing Plans on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 15 Mar 2024 14:06:44 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.com.cn/tags/gauge-your-short-term-ai-in-testing-plans/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/tags/gauge-your-short-term-ai-in-testing-plans/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
     <item>
       <title>30 Days of AI in Testing Challenge: Day 15: Gauge your short-term AI in testing plans</title>
-      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</link>
+      <link>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</link>
       <pubDate>Fri, 15 Mar 2024 14:06:44 +0800</pubDate>
-      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</guid>
-      <description>This blog post is Day 15 of the 30 Day AI Testing Challenge and looks at measuring short-term AI in test programs. The article may include criteria for evaluating short-term AI applications in a test program, as well as methods on how to determine their success. By sharing methods and hands-on experience in measuring short-term AI applications, readers will gain insights and guidance from the authors on practical applications of using AI in test programs. This series promises to provide a platform for testing professionals to understand how to measure and evaluate short-term AI applications and to foster broader industry discussions.</description>
+      
+      <guid>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Day 15: Gauge your short-term AI in testing plans&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;day-15-gauge-your-short-term-ai-in-testing-plans&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#day-15-gauge-your-short-term-ai-in-testing-plans&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Well done! You’ve made it halfway through our 30 Days of AI in Testing challenge! &amp;#x1f389;&lt;/p&gt;
+&lt;p&gt;After covering so much content, the midpoint is a great time to take a breather and reflect on our individual readiness to adopt AI in our testing practices. As we’ve discovered in recent tasks, the path to integrating AI into our testing workflows is not a one-size-fits-all approach. Each individual tester may have unique circumstances, priorities, and constraints that shape their adoption readiness.&lt;/p&gt;
+&lt;p&gt;Today’s task aims to provide a snapshot of our community’s AI adoption readiness by asking a straightforward yet insightful poll.&lt;/p&gt;
+&lt;h3&gt;Task Steps&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-steps&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-steps&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;1. Answer this question&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L#how-likely-are-you-to-use-ai-in-testing-within-the-next-6-months-2&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;How likely are you to use AI in Testing within the next 6 months?&lt;/strong&gt;&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I already use AI in my testing activities&lt;/li&gt;
+&lt;li&gt;Likely&lt;/li&gt;
+&lt;li&gt;Very likely&lt;/li&gt;
+&lt;li&gt;Unlikely&lt;/li&gt;
+&lt;li&gt;Very unlikely&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;vote link:&lt;a href=&#34;https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;2. Bonus Step&lt;/strong&gt;: If you’re open to sharing, share your answer to the poll by replying to this post. Explain the reasons behind your choice, such as organisational priorities or resource availability. What specific areas or use cases are you considering, if any?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Why Take Part&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Share Your Perspective&lt;/strong&gt;: By contributing your stance and rationale, you contribute to the collective understanding of the community’s inclination towards AI adoption, which can inspire, motivate, and perhaps even shift perspectives on readiness and the pace of change.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learn from Others&lt;/strong&gt;: Engage in the discussion to gain insights from others’ plans, experiences, and strategies, which can inform and refine your own approach to AI in testing adoption.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Task Link&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-link&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-link&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-15-gauge-your-short-term-ai-in-testing-plans/75175?cf_id=zz0OM3rUJ1L&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;My Day 15 Task&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;my-day-15-task&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#my-day-15-task&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. About &lt;strong&gt;Voting&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-about-voting&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-about-voting&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I emphatically cast my vote for &amp;ldquo;&lt;strong&gt;I have already used AI in my testing activities&lt;/strong&gt;.&amp;rdquo;&lt;/p&gt;
+&lt;h3&gt;2. About &lt;strong&gt;Sharing My Thoughts&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-about-sharing-my-thoughts&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-about-sharing-my-thoughts&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are the full results of the current vote:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/h4Aiw3.png&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;From the results, it appears that most people have already used AI in their testing activities or are planning to use AI.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s undeniable, AI is the future, despite the risks and controversies that currently exist.&lt;/p&gt;
+&lt;p&gt;For me personally, I’ve been using AI in my daily work and life, not just in testing work. From what we&amp;rsquo;ve seen so far, AI can greatly improve our work efficiency, provided that you use AI correctly, and not just as a simple search tool.&lt;/p&gt;
+&lt;p&gt;Understanding AI, accepting AI, using AI correctly, and eventually excelling at using AI is a journey we must embark on. I have reason to believe that most job postings in the future will require proficiency in using AI.&lt;/p&gt;
+&lt;h2&gt;About Event&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-event&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-event&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &amp;ldquo;30 Days of AI in Testing Challenge&amp;rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &amp;ldquo;30 Days of Agile Testing&amp;rdquo; event.&lt;/p&gt;
+&lt;p&gt;Community Website: &lt;a href=&#34;https://www.ministryoftesting.com&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Event Link: &lt;a href=&#34;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 1: Introduce yourself and your interest in AI&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 2: Read an introductory article on AI in testing and share it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 3: List ways in which AI is used in testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 5:Identify a case study on AI in testing and share your findings&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 6:Explore and share insights on AI testing tools&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 7: Research and share prompt engineering techniques&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 8: Craft a detailed prompt to support test activities&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 9: Evaluate prompt quality and try to improve it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 10: Critically Analyse AI-Generated Tests&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 11: Generate test data using AI and evaluate its efficacy&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 12: Evaluate whether you trust AI to support testing and share your thoughts&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 13: Develop a testing approach and become an AI in testing champion&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 14: Generate AI test code and share your experience&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Recommended Readings&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;recommended-readings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#recommended-readings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bruno API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/gatling-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gatling Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/k6-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;K6 Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Postman API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pytest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;REST Assured API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SuperTest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;30 Days of AI in Testing Challenge&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
     </item>
+    
   </channel>
 </rss>

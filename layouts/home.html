@@ -1,0 +1,74 @@
+{{ define "main" }}
+  <div class="hx:mx-auto hx:flex hextra-max-page-width">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" . }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+
+        {{- /* Hero：标题 + 副标题（Hextra 风格） */ -}}
+        <header class="hx:text-center hx:mb-12 hx:md:mb-16">
+          {{ if .Title }}
+            <h1 class="hx:text-4xl hx:font-bold hx:leading-tight hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100 hx:md:text-5xl">{{ .Title }}</h1>
+          {{ end }}
+          {{ with T "tagline" }}
+            <p class="hx:mt-3 hx:text-lg hx:text-slate-600 hx:dark:text-slate-400 hx:md:text-xl">{{ . }}</p>
+          {{ end }}
+        </header>
+
+        {{- /* 简介内容（来自 _index.md） */ -}}
+        {{ if .Content }}
+          <section class="hx:mb-12">
+            <div class="content">
+              {{ .Content }}
+            </div>
+          </section>
+        {{ end }}
+
+        {{- /* 快捷入口：博客、归档、关于、赞助 */ -}}
+        <section class="hx:mb-14 hx:flex hx:flex-wrap hx:justify-center hx:gap-4">
+          <a href="{{ "blog/" | relLangURL }}" class="hx:inline-flex hx:items-center hx:gap-2 hx:px-5 hx:py-2.5 hx:text-sm hx:font-medium hx:rounded-lg hx:bg-[hsl(var(--primary-hue),70%,50%)] hx:text-white hx:hover:opacity-90 hx:transition-opacity">
+            {{ T "blog" }}
+          </a>
+          <a href="{{ "archives/" | relLangURL }}" class="hx:inline-flex hx:items-center hx:gap-2 hx:px-5 hx:py-2.5 hx:text-sm hx:font-medium hx:rounded-lg hx:border hx:border-slate-300 hx:dark:border-neutral-600 hx:text-slate-700 hx:dark:text-slate-300 hx:hover:bg-slate-100 hx:dark:hover:bg-neutral-700 hx:transition-colors">
+            {{ T "archive" }}
+          </a>
+          <a href="{{ "about/" | relLangURL }}" class="hx:inline-flex hx:items-center hx:gap-2 hx:px-5 hx:py-2.5 hx:text-sm hx:font-medium hx:rounded-lg hx:border hx:border-slate-300 hx:dark:border-neutral-600 hx:text-slate-700 hx:dark:text-slate-300 hx:hover:bg-slate-100 hx:dark:hover:bg-neutral-700 hx:transition-colors">
+            {{ T "about" }}
+          </a>
+          <a href="{{ "sponsor/" | relLangURL }}" class="hx:inline-flex hx:items-center hx:gap-2 hx:px-5 hx:py-2.5 hx:text-sm hx:font-medium hx:rounded-lg hx:border hx:border-slate-300 hx:dark:border-neutral-600 hx:text-slate-700 hx:dark:text-slate-300 hx:hover:bg-slate-100 hx:dark:hover:bg-neutral-700 hx:transition-colors">
+            {{ T "sponsor" }}
+          </a>
+        </section>
+
+        {{- /* 近期文章 */ -}}
+        {{- $allPosts := where .Site.RegularPages "Section" "blog" -}}
+        {{- $posts := (sort $allPosts "Date" "desc") | first 7 -}}
+        {{- if $posts }}
+        <section class="hx:mt-10">
+          <h2 class="hx:text-2xl hx:font-bold hx:mb-6 hx:text-slate-900 hx:dark:text-slate-100">{{ T "recentPosts" | default "Recent Posts" }}</h2>
+          {{- $readMore := (T "readMore") | default "Read more →" -}}
+          {{- range $posts }}
+          <div class="hx:mb-10">
+            <h3><a style="color: inherit; text-decoration: none;" class="hx:block hx:font-semibold hx:mt-6 hx:first:mt-0 hx:text-xl hx:text-slate-900 hx:dark:text-slate-100 hx:hover:opacity-80" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ if site.Params.blog.list.displayTags }}
+              <div class="hx:text-sm hx:leading-7 hx:mt-1">
+                {{ partial "tags.html" (dict "context" .) }}
+              </div>
+            {{ end }}
+            <p class="hx:opacity-80 hx:mt-3 hx:leading-7 hx:text-slate-600 hx:dark:text-slate-400">{{- partial "utils/page-description" . -}}</p>
+            <p class="hx:mt-1 hx:leading-7">
+              <a class="hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:decoration-from-font" href="{{ .RelPermalink }}">{{- $readMore -}}</a>
+            </p>
+            <p class="hx:opacity-50 hx:text-sm hx:mt-3 hx:leading-7">{{ partial "utils/format-date" .Date }}</p>
+          </div>
+          {{ end }}
+          <p class="hx:mt-8">
+            <a class="hx:inline-flex hx:items-center hx:gap-1 hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:font-medium" href="{{ "blog/" | relLangURL }}">{{ T "allPosts" | default "All Posts" }} →</a>
+          </p>
+        </section>
+        {{- end }}
+
+      </main>
+    </article>
+  </div>
+{{ end }}

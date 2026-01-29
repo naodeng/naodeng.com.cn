@@ -1,0 +1,64 @@
+# 中文 (zh-CN) 菜单与页面名称，与 zh 一致，确保 /zh/* 下菜单和名称显示中文
+# Hugo 可能按 languageCode (zh-CN) 使用 zh-cn 作为 i18n 键
+
+# 首页
+recentPosts: "近期文章"
+allPosts: "全部文章"
+tagline: "软件测试 · 接口 · AI QA"
+rssSubscribe: "RSS 订阅"
+
+# 顶栏菜单（必须为中文）
+blog: "博客"
+archive: "归档"
+showcase: "项目展示"
+about: "关于"
+sponsor: "赞助"
+search: "搜索"
+tags: "标签"
+categories: "分类"
+series: "系列"
+posts: "文章"
+blogs: "博客"
+github: "GitHub"
+github-sidebar: "GitHub ↗"
+more: "更多"
+
+# 赞助页
+sponsorIntro: "如果这里的内容对你有帮助，欢迎请我喝杯咖啡或打赏支持，感谢！"
+sponsorWaysToSupport: "赞助方式"
+sponsorBuyMeACoffee: "Buy Me A Coffee"
+sponsorKofi: "Ko-fi"
+sponsorQRTitle: "扫码打赏"
+sponsorListTitle: "赞助者列表"
+sponsorListPlaceholder: "虚位以待，感谢支持！（每周手动更新。）"
+
+# 页脚
+footerQuickLinks: "快捷链接"
+footerSubscribe: "订阅"
+footerFollow: "关注"
+footerRss: "RSS"
+footerAboutSite: "软件测试、接口自动化、AI QA。软件测试同学的博客。"
+
+# 主题内置文案
+copyright: "© 软件测试同学的博客。保留所有权利。"
+poweredBy: "由 Hextra 驱动"
+backToTop: "返回顶部"
+changeLanguage: "切换语言"
+changeTheme: "切换主题"
+copy: "复制"
+copied: "已复制！"
+copyCode: "复制代码"
+copyAsMarkdown: "复制为 Markdown"
+copyPage: "复制页面"
+editThisPage: "在 GitHub 上编辑此页 →"
+lastUpdated: "最后更新于"
+dark: "深色"
+light: "浅色"
+system: "跟随系统"
+next: "下一页"
+previous: "上一页"
+readMore: "阅读更多 →"
+searchPlaceholder: "搜索..."
+noResultsFound: "无结果"
+onThisPage: "本页目录"
+viewAsMarkdown: "以 Markdown 查看"

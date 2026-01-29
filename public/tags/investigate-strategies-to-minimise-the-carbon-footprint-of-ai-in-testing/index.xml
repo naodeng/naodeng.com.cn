@@ -1,24 +1,268 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Investigate Strategies to Minimise the Carbon Footprint of AI in Testing on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
+    <title>Nao&#39;s Blog – Investigate Strategies to Minimise the Carbon Footprint of AI in Testing</title>
+    <link>http://localhost:1313/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
     <description>Recent content in Investigate Strategies to Minimise the Carbon Footprint of AI in Testing on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2024 17:06:44 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.com.cn/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/tags/investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
     <item>
       <title>30 Days of AI in Testing Challenge: Day 26: Investigate strategies to minimise the carbon footprint of AI in testing</title>
-      <link>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
+      <link>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</link>
       <pubDate>Sat, 30 Mar 2024 17:06:44 +0800</pubDate>
-      <guid>https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</guid>
-      <description>The blog post discusses strategies for minimizing carbon footprint in AI testing, as part of the 30-day AI Testing Challenge. It may cover aspects such as using energy-efficient hardware devices, optimizing testing processes to reduce resource consumption, and adopting renewable energy sources for power. The author may share practical experiences in reducing carbon footprint, as well as reflections and evaluations on environmentally friendly testing strategies. By sharing strategies for reducing carbon footprint, readers will gain insights into the author&amp;rsquo;s focus on sustainability in AI testing and how to balance testing needs with environmental responsibilities in practice. This series of activities aims to provide testing professionals with an opportunity to understand and explore sustainable development strategies in AI testing, and to promote industry attention and advocacy for environmentally friendly testing practices.</description>
+      
+      <guid>http://localhost:1313/blog/event/30-days-of-ai-in-testing-day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Day 26: Investigate strategies to minimise the carbon footprint of AI in testing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;As we progress through our 30 Days of AI in Testing Challenge, today’s focus shifts towards an important yet often overlooked aspect of AI adoption: &lt;strong&gt;the environmental impact&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;AI’s rapid adoption has brought invaluable benefits to many industries. However, the training and deployment of AI models can have a significant environmental impact due to the energy consumption and carbon emissions associated with them. As responsible professionals, it’s essential to try to understand and mitigate AI’s carbon footprint to adopt more sustainable practices.&lt;/p&gt;
+&lt;h3&gt;Task Steps&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-steps&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-steps&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Research the Carbon Footprint of AI&lt;/strong&gt;: Find resources that discuss the energy consumption and carbon emissions associated with training LLMs, running AI assistants, and storing huge amounts of data. Look into factors that contribute to the carbon footprint of AI, such as hardware requirements, data centre operations, and model optimisation methods.
+&lt;ul&gt;
+&lt;li&gt;If you’re short on time, this article is an interesting read: &lt;a href=&#34;https://www.technologyreview.com/2022/11/14/1063192/were-getting-a-better-idea-of-ais-true-carbon-footprint/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;We’re getting a better idea of AI’s true carbon footprint&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt; - MIT Tech Review&lt;/li&gt;
+&lt;li&gt;If you fancy reading more on AI and the environment have a look at &lt;a href=&#34;https://katecrawford.net/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Atlas of AI by Kate Crawford&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explore Reduction Strategies&lt;/strong&gt;: Explore how to make AI in Testing more sustainable such as energy-efficient hardware, green data centre practices, AI model optimisation techniques to reduce computational needs, as well as carbon offsetting programs to mitigate the carbon footprint of AI implementation.
+&lt;ul&gt;
+&lt;li&gt;If you’re short for time, check out this article: Green Intelligence: &lt;a href=&#34;https://www.forbes.com/sites/bernardmarr/2023/03/22/green-intelligence-why-data-and-ai-must-become-more-sustainable/?sh=5e6a6a27658c&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why Data And AI Must Become More Sustainable&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;- Forbes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Evaluate Applicability in Your Context&lt;/strong&gt;: Identify areas where the strategies you’ve discovered could be implemented to reduce the carbon footprint of your AI testing activities. What are the potential challenges and benefits of adopting these strategies?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Share Your Findings&lt;/strong&gt;: Reply to this post with a summary of of the strategies you’ve identified for minimising AI’s environmental impact. Discuss the feasibility and potential impact of implementing these strategies in your testing context. Where possible, share any useful resources you discovered during your research.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Why Take Part&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Discover More Sustainable Solutions&lt;/strong&gt;: Identify practical strategies and solutions for reducing the carbon footprint of AI in testing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contribute to Ethical AI Use&lt;/strong&gt;: Your research and shared insights contribute to a larger discussion about responsible AI adoption.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Task Link&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;task-link&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#task-link&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://club.ministryoftesting.com/t/day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/75467&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://club.ministryoftesting.com/t/day-26-investigate-strategies-to-minimise-the-carbon-footprint-of-ai-in-testing/75467&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;My Day 26 Task&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;my-day-26-task&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#my-day-26-task&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;About &lt;strong&gt;Research the Carbon Footprint of AI&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-research-the-carbon-footprint-of-ai&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-research-the-carbon-footprint-of-ai&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I quickly read the article &lt;a href=&#34;https://www.technologyreview.com/2022/11/14/1063192/were-getting-a-better-idea-of-ais-true-carbon-footprint/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;We’re getting a better idea of AI’s true carbon footprint&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;recommended in the challenge assignment.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outline of the article&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hugging Face estimates AI model&amp;rsquo;s carbon footprint&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;📊 Emissions Estimate: BLOOM&amp;rsquo;s training led to 25 metric tons of CO2 emissions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;🌍 Real-world Impact: AI models&amp;rsquo; environmental impact needs further understanding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;• Call to Action: Encouraging more efficient AI research and development.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Summary of the article&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The article from MIT Technology Review discusses Hugging Face&amp;rsquo;s initiative to more accurately calculate the carbon footprint of large language models (LLMs) by considering their entire lifecycle, not just the training phase. Hugging Face applied this methodology to its own model, BLOOM, finding its carbon emissions were significantly lower compared to other LLMs, partly due to using nuclear energy for training. The research emphasizes the importance of considering the broader impact of AI on the environment, including hardware manufacture and operational emissions, and suggests shifting towards more efficient research practices to reduce carbon footprints​​.&lt;/p&gt;
+&lt;h3&gt;About &lt;strong&gt;Explore Reduction Strategies&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-explore-reduction-strategies&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-explore-reduction-strategies&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I quickly read the article &lt;a href=&#34;https://www.forbes.com/sites/bernardmarr/2023/03/22/green-intelligence-why-data-and-ai-must-become-more-sustainable/?sh=5e6a6a27658c&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why Data And AI Must Become More Sustainable&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;recommended in the challenge assignment.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outline of the article&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Data and AI&amp;rsquo;s environmental impact is a growing concern&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;❗️ Problem: Data and AI&amp;rsquo;s carbon footprint is a major concern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;💡 Suggestions: Tools and best practices to mitigate environmental impact.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;📊 Impact: AI&amp;rsquo;s energy consumption threatens climate change progress.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Summary of the article&lt;/strong&gt;
+The article &amp;ldquo;Green Intelligence: Why Data And AI Must Become More Sustainable&amp;rdquo; emphasizes the environmental impact of data and AI technologies, highlighting the growing concerns about their carbon footprint and energy consumption. It discusses the exponential growth in data and AI deployment, exacerbated by the COVID-19 pandemic, leading to significant energy demands and environmental costs. The piece stresses the need for enterprises to address the contribution of data storage and AI to greenhouse gas emissions. To tackle AI&amp;rsquo;s sustainability impact, the article suggests measures like improving carbon accounting, estimating carbon footprints of AI models, optimizing data storage locations, increasing transparency, and following energy-efficient practices like Google&amp;rsquo;s &amp;ldquo;4M&amp;rdquo; best practices. It also calls for a shift towards new AI paradigms that prioritize environmental sustainability to combat climate change effectively. The article underscores the importance of reforming AI research agendas and enhancing transparency to mitigate the environmental impact of AI and data technologies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;About &lt;strong&gt;Share Your Findings&lt;/strong&gt;&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-share-your-findings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-share-your-findings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I think the development of AI definitely has a large impact on the environment, and there is a carbon footprint associated with both the research and use of AI.&lt;/p&gt;
+&lt;h4&gt;The Carbon Footprint of AI&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-carbon-footprint-of-ai&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-carbon-footprint-of-ai&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The development and application of AI technology are rapidly expanding on a global scale. With the continuous advancement of AI technology, especially the emergence of large language models (LLMs) and other complex AI systems, there is growing concern about their energy consumption and carbon emissions. The training and operation of these systems require substantial computational resources, which directly relate to energy consumption and associated carbon emissions.&lt;/p&gt;
+&lt;h5&gt;Discussion and Training of LLMs&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;discussion-and-training-of-llms&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#discussion-and-training-of-llms&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The training of AI systems like large language models typically requires significant electrical power and hardware resources. These resources&amp;rsquo; consumption comes not only from the energy required for computation itself but also from the cooling systems needed to maintain the hardware devices&amp;rsquo; normal operation. Researchers are exploring ways to reduce energy consumption in these processes, such as by optimizing algorithms, using more efficient hardware, and improving data center energy management.&lt;/p&gt;
+&lt;h5&gt;Operating AI Assistants&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;operating-ai-assistants&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#operating-ai-assistants&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The operation of AI assistants also requires energy support, especially in cloud services. These services typically rely on data centers, whose energy consumption and carbon emissions are an integral part of studying the carbon footprint of AI. To reduce these impacts, data centers are adopting renewable energy sources and more efficient cooling technologies.&lt;/p&gt;
+&lt;h5&gt;Storing Large Amounts of Data&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;storing-large-amounts-of-data&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#storing-large-amounts-of-data&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;Data storage is also an essential component of the carbon footprint of AI systems. As the volume of data increases, the energy required to store and back up this data is also rising. Researchers are looking for more efficient data storage solutions and ways to reduce energy consumption by minimizing data redundancy and optimizing storage structures.&lt;/p&gt;
+&lt;h5&gt;Influencing Factors&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;influencing-factors&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#influencing-factors&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Requirements&lt;/strong&gt;: The hardware requirements of AI systems directly affect their energy consumption. Using more energy-efficient processors and storage devices can reduce the carbon footprint.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Center Operations&lt;/strong&gt;: The energy efficiency of data centers, the proportion of renewable energy used, and the efficiency of cooling systems are all critical factors affecting the carbon footprint of AI.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model Optimization Methods&lt;/strong&gt;: By optimizing AI models, such as reducing the number of parameters and using techniques like knowledge distillation, it is possible to maintain performance while reducing energy consumption during training and inference processes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Conclusion&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;conclusion&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The carbon footprint of artificial intelligence is a multidimensional issue that needs to be considered comprehensively from various aspects, including hardware, data center operations, data storage, and model optimization. As awareness of the environmental impact of AI technology grows, future developments will place greater emphasis on sustainability and efficiency to reduce the negative impact on the environment.&lt;/p&gt;
+&lt;h2&gt;About Event&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;about-event&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#about-event&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &amp;ldquo;30 Days of AI in Testing Challenge&amp;rdquo; is an initiative by the Ministry of Testing community. The last time I came across this community was during their &amp;ldquo;30 Days of Agile Testing&amp;rdquo; event.&lt;/p&gt;
+&lt;h3&gt;Event Introduce&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;event-introduce&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#event-introduce&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Upgrade Your Testing Game throughout March, with the 30 Days of AI in Testing Challenge!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;March 1 2024 - April 1 2024&lt;/li&gt;
+&lt;li&gt;00:00 - 23:00 BST&lt;/li&gt;
+&lt;li&gt;Location: Online&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Calling all testers, AI enthusiasts, and anyone curious about how Artificial Intelligence is reshaping software quality. Ready to explore the world of AI? This March, we&amp;rsquo;re launching 30 Days of AI in Testing, and you&amp;rsquo;re invited to join the mission!&lt;/p&gt;
+&lt;h3&gt;What is it?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-is-it&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-is-it&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Over 30 enlightening days, alongside a vibrant community, you&amp;rsquo;ll embark on a journey to uncover the potential of AI in testing. Each day, we&amp;rsquo;ll explore and discuss new concepts, tools, and practices that will demystify AI and enhance your testing toolkit.&lt;/p&gt;
+&lt;h3&gt;Why take part?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-take-part-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-take-part-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Incrementally Elevate Your Skills: Each day brings a new, manageable task that builds on the last. Helping you gradually deepen your understanding of AI in testing.
+Improve Your Testing Efficiency and Effectiveness: Discover the many ways AI can be used to improve your everyday testing, improving your efficiency and effectiveness.&lt;/p&gt;
+&lt;p&gt;Connect and Collaborate: Engage with a global community of testers and AI enthusiasts on The Club forum, sharing insights, and gaining inspiration and support.&lt;/p&gt;
+&lt;p&gt;Achieve AI Ambitions: Use this challenge as a stepping stone to reach your AI testing goals. Dip in and tackle the tasks that meet your AI ambitions.&lt;/p&gt;
+&lt;p&gt;Lead and Inspire: By sharing your AI journey and discoveries during the challenge, you’ll play a crucial role in advancing the knowledge and skills of the community.&lt;/p&gt;
+&lt;h3&gt;How will it work?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;how-will-it-work&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#how-will-it-work&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Throughout March, a member of team MoT will post a new, short, daily task on The Club forum that&amp;rsquo;ll enhance your understanding of AI in testing.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll then reply to the topic posts with your responses to each daily task. Feel free to share your thoughts, ask questions, seek advice, or offer support to others.&lt;/p&gt;
+&lt;p&gt;Finally, don&amp;rsquo;t forget to encourage meaningful discussions by engaging with other people’s replies. If you find someone’s response interesting or helpful, hit that ❤️ button and let them know!&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t get FOMO; register now! Registering will give you an email reminder for each daily task.&lt;/p&gt;
+&lt;p&gt;Community Website: &lt;a href=&#34;https://www.ministryoftesting.com&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Event Link: &lt;a href=&#34;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ministryoftesting.com/events/30-days-of-ai-in-testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 1: Introduce yourself and your interest in AI&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 2: Read an introductory article on AI in testing and share it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 3: List ways in which AI is used in testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 5:Identify a case study on AI in testing and share your findings&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 6:Explore and share insights on AI testing tools&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 7: Research and share prompt engineering techniques&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 8: Craft a detailed prompt to support test activities&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 9: Evaluate prompt quality and try to improve it&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 10: Critically Analyse AI-Generated Tests&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 11: Generate test data using AI and evaluate its efficacy&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 12: Evaluate whether you trust AI to support testing and share your thoughts&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 13: Develop a testing approach and become an AI in testing champion&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 14: Generate AI test code and share your experience&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 15: Gauge your short-term AI in testing plans&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 16: Evaluate adopting AI for accessibility testing and share your findings&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 17: Automate bug reporting with AI and share your process and evaluation&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 18: Share your greatest frustration with AI in Testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 20: Learn about AI self-healing tests and evaluate how effective they are&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 21: Develop your AI in testing manifesto&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 22: Reflect on what skills a team needs to succeed with AI-assisted testing&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 23: Assess AI effectiveness in visual testing and discuss the advantages&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 24: Investigate code explanation techniques and share your insights&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Day 25: Explore AI-driven security testing and share potential use cases&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Recommended Readings&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;recommended-readings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#recommended-readings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bruno API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/gatling-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gatling Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/k6-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;K6 Performance Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Postman API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pytest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;REST Assured API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SuperTest API Automation Testing Tutorial&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;30 Days of AI in Testing Challenge&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
     </item>
+    
   </channel>
 </rss>

@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Visualise the Future of AI in Testing on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/tags/visualise-the-future-of-ai-in-testing/</link>
+    <title>Nao&#39;s Blog – Visualise the Future of AI in Testing</title>
+    <link>http://localhost:1313/tags/visualise-the-future-of-ai-in-testing/</link>
     <description>Recent content in Visualise the Future of AI in Testing on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://naodeng.com.cn/tags/visualise-the-future-of-ai-in-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/tags/visualise-the-future-of-ai-in-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
   </channel>
 </rss>

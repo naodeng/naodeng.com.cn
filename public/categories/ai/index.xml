@@ -1,0 +1,361 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nao&#39;s Blog – AI</title>
+    <link>http://localhost:1313/categories/ai/</link>
+    <description>Recent content in AI on Nao&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Awesome QA Prompt: Using AI to Make Testing Work Better</title>
+      <link>http://localhost:1313/blog/ai-testing/introduction_of_awesome_qa_prompt/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/ai-testing/introduction_of_awesome_qa_prompt/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Introduction&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;introduction&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After 10+ years in testing, I&amp;rsquo;ve noticed a pattern: writing test cases takes forever, and quality varies a lot between different engineers. Sometimes you miss edge cases, sometimes the documentation is all over the place.&lt;/p&gt;
+&lt;p&gt;Then ChatGPT and Claude came along, and I thought: can AI help with testing? Tried it a few times, but directly asking AI didn&amp;rsquo;t work great — not professional enough, outputs were inconsistent.&lt;/p&gt;
+&lt;p&gt;So I built &lt;strong&gt;Awesome QA Prompt&lt;/strong&gt;, an AI prompt library for QA work. The idea is to capture expert testing knowledge in prompt templates, so AI can work like a senior test engineer.&lt;/p&gt;
+&lt;h2&gt;Project Background&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;project-background&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#project-background&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Testing Pain Points&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;testing-pain-points&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#testing-pain-points&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In my years of testing, these issues keep coming up:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Low Efficiency&lt;/strong&gt;: Writing test cases by hand takes too long, lots of repetitive work&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inconsistent Quality&lt;/strong&gt;: Everyone&amp;rsquo;s test docs look different&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Silos&lt;/strong&gt;: Hard to pass down testing experience&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incomplete Coverage&lt;/strong&gt;: Easy to miss edge cases and exceptions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation Chaos&lt;/strong&gt;: No unified format or standard&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;AI Opportunities&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;ai-opportunities&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#ai-opportunities&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ChatGPT and Claude can actually help with this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Rich Knowledge&lt;/strong&gt;: They know testing theory and practice&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rigorous Logic&lt;/strong&gt;: Can systematically analyze test scenarios&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unified Format&lt;/strong&gt;: Generate docs from templates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;High Efficiency&lt;/strong&gt;: Finish in seconds what used to take hours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But using AI directly has issues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Not professional enough: General AI doesn&amp;rsquo;t get testing deeply&lt;/li&gt;
+&lt;li&gt;Unstable output: Same question, different quality answers&lt;/li&gt;
+&lt;li&gt;Inconsistent format: Generated docs are all over the place&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Solution: Awesome QA Prompt&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;solution-awesome-qa-prompt&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#solution-awesome-qa-prompt&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;So I built &lt;strong&gt;Awesome QA Prompt&lt;/strong&gt; with this core idea:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Use carefully designed prompt templates to capture testing expert knowledge, so AI can work like a senior test engineer.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h3&gt;Project Structure&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;project-structure&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#project-structure&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The project has three main parts:&lt;/p&gt;
+&lt;h4&gt;1. Testing Type Modules (14 modules)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-testing-type-modules-14-modules&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-testing-type-modules-14-modules&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Each module covers one testing type:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Full Version Prompts&lt;/strong&gt;: Detailed roles, tasks, methods, output formats&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lite Version Prompts&lt;/strong&gt;: Quick-start simplified versions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bilingual Versions&lt;/strong&gt;: Chinese or English, whatever works&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: How to use, best practices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Specifically includes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;📝 Requirements Analysis: Design comprehensive test scenarios based on requirements documents&lt;/li&gt;
+&lt;li&gt;✍️ Test Case Writing: Generate standardized executable test cases&lt;/li&gt;
+&lt;li&gt;🔍 Functional Testing: Design functional testing strategies and execution plans&lt;/li&gt;
+&lt;li&gt;⚡ Performance Testing: Develop performance test plans and metric analysis&lt;/li&gt;
+&lt;li&gt;🤖 Automation Testing: Framework selection and automation solution design&lt;/li&gt;
+&lt;li&gt;📱 Mobile Testing: iOS/Android platform testing strategies&lt;/li&gt;
+&lt;li&gt;🐛 Bug Reporting: Standardized defect reports and root cause analysis&lt;/li&gt;
+&lt;li&gt;📊 Test Reporting: Generate professional test execution reports&lt;/li&gt;
+&lt;li&gt;🎯 Test Strategy: Develop overall test strategies and plans&lt;/li&gt;
+&lt;li&gt;🤖 AI-Assisted Testing: Leverage AI technology to improve testing efficiency&lt;/li&gt;
+&lt;li&gt;📋 Manual Testing: Exploratory testing and user experience evaluation&lt;/li&gt;
+&lt;li&gt;🔒 Security Testing: Security vulnerability detection and compliance checking&lt;/li&gt;
+&lt;li&gt;🔌 API Testing: Interface testing and integration testing solutions&lt;/li&gt;
+&lt;li&gt;♿ Accessibility Testing: WCAG compliance and accessibility testing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;2. Workflow Modules (3 modules)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-workflow-modules-3-modules&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-workflow-modules-3-modules&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Provide complete testing workflow guidance:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Daily Testing Workflow&lt;/strong&gt;: Daily work guide for QA engineers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sprint Testing Workflow&lt;/strong&gt;: Testing activities in agile development&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Release Testing Workflow&lt;/strong&gt;: Comprehensive testing before production release&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;3. Online Documentation Website&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-online-documentation-website&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-online-documentation-website&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Modern documentation website built with VitePress:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Responsive design supporting mobile access&lt;/li&gt;
+&lt;li&gt;Bilingual Chinese/English switching&lt;/li&gt;
+&lt;li&gt;Full-text search functionality&lt;/li&gt;
+&lt;li&gt;Clear navigation structure&lt;/li&gt;
+&lt;li&gt;Automatic deployment and updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Technical Features&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;technical-features&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#technical-features&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;1. Professional Role Design&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-professional-role-design&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-professional-role-design&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Each prompt defines a professional AI role, for example:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Role: Senior Web Full-Stack Testing Expert (Lead QA Engineer)
+Context: You have 10&amp;#43; years of experience in complex web system testing, proficient in business logic decomposition, test strategy design, and risk identification...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;2. Scientific Methodologies&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-scientific-methodologies&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-scientific-methodologies&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Incorporates multiple test design methods:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logic Modeling&lt;/strong&gt;: Scenario testing, state transition diagrams, decision tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Refinement&lt;/strong&gt;: Equivalence class partitioning, boundary value analysis, orthogonal experimental method&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experience-Driven&lt;/strong&gt;: Error guessing, exploratory testing strategies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;3. Standardized Output Formats&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-standardized-output-formats&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-standardized-output-formats&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Each prompt defines strict output formats ensuring generated documents are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clear structure&lt;/li&gt;
+&lt;li&gt;Complete content&lt;/li&gt;
+&lt;li&gt;Unified format&lt;/li&gt;
+&lt;li&gt;Directly usable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;4. Quality Assurance Mechanisms&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;4-quality-assurance-mechanisms&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-quality-assurance-mechanisms&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Established comprehensive quality requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Completeness Requirements&lt;/strong&gt;: Ensure comprehensive scenario coverage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Executability Requirements&lt;/strong&gt;: Specific and operable step descriptions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Traceability Requirements&lt;/strong&gt;: Clear association with requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Professionalism Requirements&lt;/strong&gt;: Avoid vague descriptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Practical Application Results&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;practical-application-results&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#practical-application-results&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Case 1: Requirements Analysis Scenario&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;case-1-requirements-analysis-scenario&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#case-1-requirements-analysis-scenario&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Traditional Method&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Time: 2-3 hours&lt;/li&gt;
+&lt;li&gt;Quality: Depends on personal experience, easy to miss&lt;/li&gt;
+&lt;li&gt;Format: Inconsistent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;After Using AI Assistant&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Time: 10-15 minutes&lt;/li&gt;
+&lt;li&gt;Quality: Systematic coverage including edge cases&lt;/li&gt;
+&lt;li&gt;Format: Standardized output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Specific Comparison&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Input: User login functionality requirements
+Traditional Output: 5-8 basic test scenarios
+AI Assistant Output: 20&amp;#43; test scenarios including:
+- Positive paths: Normal login flow
+- Negative paths: Wrong password, account lockout, network exceptions
+- Boundary values: Password length, special characters, concurrent login
+- Security testing: SQL injection, brute force, session management
+- UI/UX: Responsive adaptation, error prompts, loading states&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Case 2: Performance Testing Planning&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;case-2-performance-testing-planning&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#case-2-performance-testing-planning&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Traditional Method&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to research extensive materials&lt;/li&gt;
+&lt;li&gt;Easy to miss key metrics&lt;/li&gt;
+&lt;li&gt;Incomplete test scenario design&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;After Using AI Assistant&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatically generate complete performance test plans&lt;/li&gt;
+&lt;li&gt;Include load, stress, capacity, stability testing&lt;/li&gt;
+&lt;li&gt;Provide specific performance metrics and monitoring solutions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Case 3: Automation Testing Framework Selection&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;case-3-automation-testing-framework-selection&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#case-3-automation-testing-framework-selection&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Traditional Method&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to research multiple frameworks&lt;/li&gt;
+&lt;li&gt;Time-consuming comparison analysis&lt;/li&gt;
+&lt;li&gt;Insufficient decision basis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;After Using AI Assistant&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Recommend suitable frameworks based on project characteristics&lt;/li&gt;
+&lt;li&gt;Provide detailed comparative analysis&lt;/li&gt;
+&lt;li&gt;Give implementation suggestions and best practices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Project Impact and Value&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;project-impact-and-value&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#project-impact-and-value&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Value for Individuals&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;value-for-individuals&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#value-for-individuals&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Efficiency Improvement&lt;/strong&gt;: Test documentation writing efficiency improved by 200-300%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Enhancement&lt;/strong&gt;: Test coverage improved from 70% to 95%+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skill Development&lt;/strong&gt;: Learn systematic testing methodologies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Career Growth&lt;/strong&gt;: Master testing skills for the AI era&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Value for Teams&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;value-for-teams&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#value-for-teams&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Standardization&lt;/strong&gt;: Unified test documentation format and quality standards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Transfer&lt;/strong&gt;: New members can quickly master testing methods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collaboration Efficiency&lt;/strong&gt;: Reduce communication costs, improve collaboration efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Assurance&lt;/strong&gt;: Systematic testing methods ensure product quality&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Value for the Industry&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;value-for-the-industry&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#value-for-the-industry&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Drive Innovation&lt;/strong&gt;: Explore AI applications in the testing field&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Sharing&lt;/strong&gt;: Open source projects promote industry knowledge sharing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard Establishment&lt;/strong&gt;: Establish industry standards for AI-assisted testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Talent Development&lt;/strong&gt;: Help test engineers adapt to the AI era&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Technical Implementation Details&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;technical-implementation-details&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#technical-implementation-details&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. Project Architecture&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-project-architecture&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-project-architecture&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;awesome-qa-prompt/
+├── Testing Type Modules/    # 14 testing types
+│   ├── Chinese Full Version
+│   ├── Chinese Lite Version
+│   ├── English Full Version
+│   ├── English Lite Version
+│   └── README Documentation
+├── Workflow Modules/        # 3 workflows
+├── Online Documentation/    # VitePress website
+└── Project Configuration/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;2. Documentation Website Tech Stack&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-documentation-website-tech-stack&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-documentation-website-tech-stack&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Framework&lt;/strong&gt;: VitePress (based on Vue 3 and Vite)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: GitHub Pages + Cloudflare Pages dual platform&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Features&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Responsive design&lt;/li&gt;
+&lt;li&gt;Dark/light themes&lt;/li&gt;
+&lt;li&gt;Full-text search&lt;/li&gt;
+&lt;li&gt;Chinese/English switching&lt;/li&gt;
+&lt;li&gt;SEO optimization&lt;/li&gt;
+&lt;li&gt;Automatic deployment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. Version Management&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-version-management&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-version-management&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Each prompt file has version records&lt;/li&gt;
+&lt;li&gt;Uses semantic versioning&lt;/li&gt;
+&lt;li&gt;Detailed change logs&lt;/li&gt;
+&lt;li&gt;Backward compatibility guarantee&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. Quality Control&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;4-quality-control&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-quality-control&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Code review process&lt;/li&gt;
+&lt;li&gt;Automated testing&lt;/li&gt;
+&lt;li&gt;Documentation format checking&lt;/li&gt;
+&lt;li&gt;User feedback collection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Community Building and Open Source Ecosystem&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;community-building-and-open-source-ecosystem&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#community-building-and-open-source-ecosystem&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Open Source Philosophy&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;open-source-philosophy&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#open-source-philosophy&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I chose open source because I believe:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Should Be Shared&lt;/strong&gt;: Testing experience and methodologies should benefit more people&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collective Wisdom&lt;/strong&gt;: Community power can make projects more perfect&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard Establishment&lt;/strong&gt;: Open source projects are more likely to become industry standards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sustainable Development&lt;/strong&gt;: Open source ensures long-term project development&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Community Participation&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;community-participation&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#community-participation&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Since the project launch, it has received positive community response:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Continuous growth in GitHub Stars&lt;/li&gt;
+&lt;li&gt;Multiple contributors submitting PRs&lt;/li&gt;
+&lt;li&gt;User feedback and suggestions&lt;/li&gt;
+&lt;li&gt;Shared in multiple technical communities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Contribution Methods&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;contribution-methods&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#contribution-methods&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Welcome everyone to participate through:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Usage Feedback&lt;/strong&gt;: Use the project and provide feedback&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Issue Reporting&lt;/strong&gt;: Report problems promptly when found&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Feature Suggestions&lt;/strong&gt;: Got ideas? Share them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code Contribution&lt;/strong&gt;: Submit code improvements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation Enhancement&lt;/strong&gt;: Improve docs and examples&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Promotion and Sharing&lt;/strong&gt;: Tell your colleagues and friends&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Some Thoughts&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;some-thoughts&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#some-thoughts&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;AI Won&amp;rsquo;t Replace Test Engineers&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;ai-wont-replace-test-engineers&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#ai-wont-replace-test-engineers&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A lot of people worry AI will replace test engineers. I don&amp;rsquo;t think so. AI is more like a tool that can:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Boost efficiency&lt;/li&gt;
+&lt;li&gt;Cut down repetitive work&lt;/li&gt;
+&lt;li&gt;Support decision-making&lt;/li&gt;
+&lt;li&gt;Expand knowledge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But AI can&amp;rsquo;t replace human:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creative thinking&lt;/li&gt;
+&lt;li&gt;Business understanding&lt;/li&gt;
+&lt;li&gt;Communication skills&lt;/li&gt;
+&lt;li&gt;Problem-solving abilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Test Engineers Need to Adapt&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;test-engineers-need-to-adapt&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#test-engineers-need-to-adapt&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In the AI era, test engineers need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Learn AI Tools&lt;/strong&gt;: Master prompt engineering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improve Business Understanding&lt;/strong&gt;: Get deeper into business logic&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Develop Soft Skills&lt;/strong&gt;: Communication, coordination, leadership&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Keep Learning&lt;/strong&gt;: Stay current with tech trends&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Future of Testing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;future-of-testing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#future-of-testing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I think the future testing industry will be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;More Intelligent&lt;/strong&gt;: AI assists all testing activities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;More Professional&lt;/strong&gt;: Test engineers focus on high-value work&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;More Collaborative&lt;/strong&gt;: Human-AI collaboration becomes the norm&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;More Standardized&lt;/strong&gt;: Unified methodologies and standards&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusion&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;conclusion&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Awesome QA Prompt&lt;/strong&gt; started with a simple idea: make testing work more efficient, professional, and enjoyable.&lt;/p&gt;
+&lt;p&gt;This project brings together years of my testing experience and thoughts about AI. I hope it can:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Help Individuals&lt;/strong&gt;: Let every test engineer boost their efficiency and quality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drive the Industry&lt;/strong&gt;: Push digital transformation in testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Establish Standards&lt;/strong&gt;: Build industry standards for AI-assisted testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cultivate Talent&lt;/strong&gt;: Help people master testing skills for the AI era&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We&amp;rsquo;re in a fast-changing era, and we need to embrace change and learn to work with AI. &lt;strong&gt;Awesome QA Prompt&lt;/strong&gt; is that bridge, connecting traditional testing methods with AI technology.&lt;/p&gt;
+&lt;p&gt;I believe with everyone&amp;rsquo;s efforts, this project will keep getting better and bring more value to the testing industry. Let&amp;rsquo;s make testing work better with AI!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Project&lt;/strong&gt;: &lt;a href=&#34;https://github.com/naodeng/awesome-qa-prompt&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/naodeng/awesome-qa-prompt&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Docs&lt;/strong&gt;: &lt;a href=&#34;https://naodeng.github.io/awesome-qa-prompt/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.github.io/awesome-qa-prompt/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Contact&lt;/strong&gt;: Feel free to reach out via GitHub Issues or email&lt;/p&gt;
+&lt;p&gt;If this project helps you, give it a Star! Your support keeps me going.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+{{ define "main" }}
+  <div class="hx:mx-auto hx:flex hextra-max-page-width">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" . }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+
+        {{- /* Hero */ -}}
+        <header class="hx:text-center hx:mb-10">
+          {{ if .Title }}
+            <h1 class="hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>
+          {{ end }}
+          <p class="hx:mt-4 hx:text-lg hx:text-slate-600 hx:dark:text-slate-400 hx:max-w-2xl hx:mx-auto">
+            {{ T "sponsorIntro" }}
+          </p>
+        </header>
+
+        {{- /* 赞助方式：BMC / Ko-fi */ -}}
+        <section class="hx:mb-12">
+          <h2 class="hx:text-xl hx:font-semibold hx:mb-6 hx:text-slate-900 hx:dark:text-slate-100">{{ T "sponsorWaysToSupport" }}</h2>
+          <div class="hx:flex hx:flex-wrap hx:gap-6 hx:justify-center md:hx:justify-start">
+            <a href="https://www.buymeacoffee.com/naodeng" target="_blank" rel="noopener noreferrer" class="hx:inline-flex hx:items-center hx:gap-3 hx:px-6 hx:py-4 hx:rounded-xl hx:border hx:border-slate-200 hx:dark:border-neutral-600 hx:bg-white hx:dark:bg-neutral-800/50 hx:shadow-sm hx:hover:border-[hsl(var(--primary-hue),70%,50%)] hx:transition-colors">
+              <img src="https://cdn.buymeacoffee.com/buttons/lato-orange.png" alt="Buy Me A Coffee" class="hx:h-12 hx:w-auto" style="height: 48px; width: auto;">
+              <span class="hx:font-medium hx:text-slate-700 hx:dark:text-slate-300">{{ T "sponsorBuyMeACoffee" }}</span>
+            </a>
+            <a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" class="hx:inline-flex hx:items-center hx:gap-3 hx:px-6 hx:py-4 hx:rounded-xl hx:border hx:border-slate-200 hx:dark:border-neutral-600 hx:bg-white hx:dark:bg-neutral-800/50 hx:shadow-sm hx:hover:border-[hsl(var(--primary-hue),70%,50%)] hx:transition-colors">
+              <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Ko-fi" class="hx:h-8 hx:w-auto">
+              <span class="hx:font-medium hx:text-slate-700 hx:dark:text-slate-300">{{ T "sponsorKofi" }}</span>
+            </a>
+          </div>
+        </section>
+
+        {{- /* 扫码打赏（来自 .Content，仅放二维码图） */ -}}
+        {{ if .Content }}
+          <section class="hx:mb-12">
+            <h2 class="hx:text-xl hx:font-semibold hx:mb-6 hx:text-slate-900 hx:dark:text-slate-100">{{ T "sponsorQRTitle" }}</h2>
+            <div class="content hx:prose hx:prose-slate hx:dark:prose-invert hx:max-w-none sponsor-qr-content">
+              {{ .Content }}
+            </div>
+          </section>
+        {{ end }}
+
+        {{- /* 赞助者列表 */ -}}
+        <section class="hx:pt-8 hx:border-t hx:border-slate-200 hx:dark:border-neutral-700">
+          <h2 class="hx:text-xl hx:font-semibold hx:mb-4 hx:text-slate-900 hx:dark:text-slate-100">{{ T "sponsorListTitle" }}</h2>
+          <p class="hx:text-slate-600 hx:dark:text-slate-400">{{ T "sponsorListPlaceholder" }}</p>
+        </section>
+
+      </main>
+    </article>
+  </div>
+{{ end }}

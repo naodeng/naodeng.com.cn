@@ -1,0 +1,25 @@
+{{- $ctx := .context -}}
+{{- $langPrefix := strings.TrimSuffix "/" (relLangURL "") -}}
+{{- $blogRSS := printf "%s/blog/index.xml" $langPrefix -}}
+<div class="hextra-custom-footer-content" style="padding: 2rem 0; max-width: 56rem; margin: 0 auto; border-top: 1px solid #e5e7eb; padding-top: 1.5rem;">
+  {{/* 快捷链接 */}}
+  <div style="margin-bottom: 1.5rem;">
+    <div style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #6b7280; margin-bottom: 0.75rem;">{{ T "footerQuickLinks" }}</div>
+    <nav style="font-size: 0.875rem;">
+      <a href="{{ relLangURL "blog" }}" style="margin-right: 1rem;">{{ T "blog" }}</a><span style="margin-right: 1rem; color: #9ca3af;">·</span>
+      <a href="{{ relLangURL "archives" }}" style="margin-right: 1rem;">{{ T "archive" }}</a><span style="margin-right: 1rem; color: #9ca3af;">·</span>
+      <a href="{{ relLangURL "showcase" }}" style="margin-right: 1rem;">{{ T "showcase" }}</a><span style="margin-right: 1rem; color: #9ca3af;">·</span>
+      <a href="{{ relLangURL "sponsor" }}">{{ T "sponsor" }}</a>
+    </nav>
+  </div>
+  {{/* 订阅与关注 */}}
+  <div style="margin-bottom: 1.5rem;">
+    <div style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #6b7280; margin-bottom: 0.75rem;">{{ T "footerSubscribe" }} / {{ T "footerFollow" }}</div>
+    <div style="font-size: 0.875rem;">
+      <a href="{{ $blogRSS }}" target="_blank" rel="noopener noreferrer" title="RSS" style="margin-right: 1rem;">{{ T "footerRss" }}</a><span style="margin-right: 1rem; color: #9ca3af;">·</span>
+      <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub">{{ T "github" }}</a>
+    </div>
+  </div>
+  {{/* 站点简介 */}}
+  <p style="font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0;">{{ T "footerAboutSite" }}</p>
+</div>

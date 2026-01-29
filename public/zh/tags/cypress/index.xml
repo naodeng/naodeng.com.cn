@@ -1,0 +1,1526 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件测试同学 – Cypress</title>
+    <link>http://localhost:1313/zh/tags/cypress/</link>
+    <description>Recent content in Cypress on 软件测试同学</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 13 May 2022 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/zh/tags/cypress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（6）- 用例编辑和脚本录制工具 Cypress Studio 介绍</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo6/</link>
+      <pubDate>Fri, 13 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo6/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Cypress Studio 提供了一种在测试运行程序中生成测试的可视化方法，通过记录与被测应用程序的交互。支持.click（）、.type（）、.check（）、.uncheck（）和.select（）Cypress 命令，这些命令将在与 Cypress Studio 内部的 DOM 交互时生成测试代码&lt;/p&gt;
+&lt;p&gt;通过阅读文章你会学到什么：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何使用 Cypress Studio 以交互方式扩展测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何使用 Cypress Studio 以交互方式添加新测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;概述&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;概述&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Cypress Studio 通过记录与&lt;/em&gt; 被测应用程序的交互，提供了一种在 Test Runner 中生成测试的可视化方式。&lt;/p&gt;
+&lt;p&gt;支持、&lt;code&gt;.click()&lt;/code&gt;、&lt;code&gt;.type()&lt;/code&gt;、和 Cypress 命令 &lt;code&gt;.check()&lt;/code&gt; ，并在与 Cypress Studio 内部的 DOM 交互时生成测试代码。您还可以通过右键单击要断言的元素来生成断言。 &lt;code&gt;.uncheck()&lt;/code&gt; &lt;code&gt;.select()&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;使用 Cypress Studio&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;使用-cypress-studio&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bd%bf%e7%94%a8-cypress-studio&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Cypress Studio 是一项实验性功能，可以通过将 experimentalStudio 属性添加到您的配置文件来启用（ &lt;code&gt;cypress.json&lt;/code&gt; 默认情况下）。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;{ &amp;#34;experimentalStudio&amp;#34;: true}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Cypress Real World App (RWA) 是一个开源项目，它实现了一个支付应用程序，以展示 Cypress 测试方法、模式和工作流程的实际使用情况。下面将使用它来演示 Cypress Studio 的功能。&lt;/p&gt;
+&lt;h3&gt;扩展测试&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;扩展测试&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%89%a9%e5%b1%95%e6%b5%8b%e8%af%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以扩展任何预先存在的测试，或者通过使用以下测试脚手架在您的 integrationFolder（默认情况下）中创建一个新测试来开始。&lt;/p&gt;
+&lt;h4&gt;第 1 步 - 运行用例&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;第-1-步---运行用例&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ac%ac-1-%e6%ad%a5---%e8%bf%90%e8%a1%8c%e7%94%a8%e4%be%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;我们将使用 Cypress Studio 执行“新交易”用户流程。首先，启动 Test Runner 并运行在上一步中创建的用例。&lt;/p&gt;
+&lt;p&gt;[image:F5CF37A4-27C0-4A6A-82DA-52C19191EB41-665-000000B8AF4F75E1/640.jpeg]&lt;/p&gt;
+&lt;h4&gt;第 2 步 - 启动 Cypress Studio&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;第-2-步---启动-cypress-studio&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ac%ac-2-%e6%ad%a5---%e5%90%af%e5%8a%a8-cypress-studio&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;测试完成运行后，将鼠标悬停在命令日志中的测试上以显示“Add commands to Test”按钮。&lt;/p&gt;
+&lt;p&gt;单击“Add Commands to Test”将启动 Cypress Studio。&lt;/p&gt;
+&lt;p&gt;Cypress Studio 直接与 命令日志集成。&lt;/p&gt;
+&lt;p&gt;[image:7C04963F-638B-492C-B6D1-0C2C6FD31021-665-000000B8AF4F2B69/_640.jpeg]&lt;/p&gt;
+&lt;p&gt;Cypress 将自动执行所有挂钩和当前存在的测试代码，然后可以从该点开始扩展测试（例如，我们登录到 &lt;code&gt;beforeEach&lt;/code&gt; 块内的应用程序）。&lt;/p&gt;
+&lt;p&gt;接下来，Test Runner 将单独执行测试，并在测试中的最后一条命令后暂停。&lt;/p&gt;
+&lt;p&gt;[image:E57D4269-75B6-49C2-9EC7-CB2BA527070D-665-000000B8AF4ECFAF/__640.jpeg]&lt;/p&gt;
+&lt;p&gt;现在，我们可以开始更新测试以在用户之间创建新事务。&lt;/p&gt;
+&lt;h4&gt;第 3 步 - 与应用程序交互&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;第-3-步---与应用程序交互&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ac%ac-3-%e6%ad%a5---%e4%b8%8e%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e4%ba%a4%e4%ba%92&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;要记录操作，请开始与应用程序交互。在这里，我们将单击标题右侧的“新建”按钮，结果我们将看到我们的单击记录在命令日志中。&lt;/p&gt;
+&lt;p&gt;[image:B55CC01A-E8EF-4B70-9687-CC8A6423AD9A-665-000000B8AF4E893E/___640.jpeg]&lt;/p&gt;
+&lt;p&gt;接下来，我们可以开始输入我们想要支付的用户名。&lt;/p&gt;
+&lt;p&gt;[image:F647E6CB-2456-4602-84CB-B37B2B313DCF-665-000000B8AF4E4B07/____640.jpeg]&lt;/p&gt;
+&lt;p&gt;一旦我们看到名字出现在结果中，我们想要添加一个断言来确保我们的搜索功能正常工作。右键单击用户名将弹出一个菜单，我们可以从中添加断言以检查元素是否包含正确的文本（用户名）。&lt;/p&gt;
+&lt;p&gt;[image:F347B11C-142A-4EFC-821F-9B3F36B68119-665-000000B8AF4E15D4/_____640.jpeg]
+然后，我们可以单击该用户以进入下一个屏幕。我们将通过单击并输入金额和描述输入来完成交易表格。&lt;/p&gt;
+&lt;p&gt;[image:1A5CFBED-CD31-4912-90A1-960E05992DC7-665-000000B8AF4DE240/______640.jpeg]&lt;/p&gt;
+&lt;p&gt;注意命令日志中生成的命令。&lt;/p&gt;
+&lt;p&gt;现在是时候完成交易了。您可能已经注意到，在我们输入输入之前，“支付”按钮已被禁用。为了确保我们的表单验证正常工作，让我们添加一个断言以确保启用“支付”按钮。&lt;/p&gt;
+&lt;p&gt;[image:F3E5EBF7-FB37-4A50-AF65-607939F664F0-665-000000B8AF4DAF00/_______640.jpeg]&lt;/p&gt;
+&lt;p&gt;最后，我们将单击“支付”按钮，并显示我们新交易的确认页面。&lt;/p&gt;
+&lt;p&gt;[image:AFF8F1D8-4FDC-42DF-BEEA-EDB769B0588A-665-000000B8AF4D783F/________640.jpeg]&lt;/p&gt;
+&lt;p&gt;要放弃交互，请单击“取消”按钮退出 Cypress Studio。如果对与应用程序的交互感到满意，请单击“保存命令”，测试代码将保存到您的规范文件中。或者，您可以选择“复制”按钮以将生成的命令复制到剪贴板。&lt;/p&gt;
+&lt;h4&gt;生成的测试代码&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;生成的测试代码&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%94%9f%e6%88%90%e7%9a%84%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;查看我们的测试代码，我们可以看到在点击“Save Commands”后测试更新了我们在 Cypress Studio 中记录的操作。&lt;/p&gt;
+&lt;h3&gt;添加新测试&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;添加新测试&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e6%96%b0%e6%b5%8b%e8%af%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以通过单击我们定义的块上的“Add New Test”来向任何现有 &lt;code&gt;describe&lt;/code&gt; 或块添加新测试。 &lt;code&gt;context &lt;/code&gt; &lt;code&gt; describe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;[image:0A8CA77E-9AEF-45B9-9B70-F15C01983DFF-665-000000B8AF4D4166/_________640.jpeg]&lt;/p&gt;
+&lt;p&gt;我们被启动到 Cypress Studio 并可以开始与我们的应用程序交互以生成测试。&lt;/p&gt;
+&lt;p&gt;对于此测试，我们将添加一个新的银行帐户。我们的互动如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;点击左侧导航中的“银行账户”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[image:02219635-D587-4A52-BD45-738DA52F08E2-665-000000B8AF4D0E28/__________640.jpeg]&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;点击银行账户页面上的“创建”按钮&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[image:42C66725-A8B3-4ED6-9472-C0A0FF5AB64A-665-000000B8AF4CD946/___________640.jpeg]&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;填写银行账户信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[image:2E4443DE-C9A6-4D7A-84BB-6E6A5AA3F476-665-000000B8AF4CA262/____________640.jpeg]&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;点击“保存”按钮&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[image:655AAC92-065E-438E-B62C-145A771AD889-665-000000B8AF4C6D6F/_____________640.jpeg]&lt;/p&gt;
+&lt;p&gt;要放弃交互，请单击“取消”按钮退出 Cypress Studio。&lt;/p&gt;
+&lt;p&gt;如果对与应用程序的交互感到满意，请单击“保存命令”，提示将询问测试名称。单击“保存测试”，测试将保存到文件中。&lt;/p&gt;
+&lt;p&gt;[image:A9CFD28A-A32C-42B5-97D7-7BD34A46D85F-665-000000B8AF4C390B/______________640.jpeg]&lt;/p&gt;
+&lt;p&gt;保存后，该文件将在 Cypress 中再次运行。&lt;/p&gt;
+&lt;p&gt;[image:560BE965-9C4C-4E9A-A17F-4992200B053B-665-000000B8AF4BF3D8/_______________640.jpeg]&lt;/p&gt;
+&lt;p&gt;最后，查看我们的测试代码，我们可以看到点击“Save Commands”后测试更新了我们在 Cypress Studio 中记录的操作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（5）- 命令大全</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo5/</link>
+      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo5/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Cypress UI 自动化测试框架学习（5）- 命令大全&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;cypress-ui-自动化测试框架学习5--命令大全&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#cypress-ui-%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a05--%e5%91%bd%e4%bb%a4%e5%a4%a7%e5%85%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;命令大全&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;命令大全&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%91%bd%e4%bb%a4%e5%a4%a7%e5%85%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;and：创建断言&lt;/li&gt;
+&lt;li&gt;as：创建别名&lt;/li&gt;
+&lt;li&gt;blur：失去焦点&lt;/li&gt;
+&lt;li&gt;check：选中 check 或者 radio&lt;/li&gt;
+&lt;li&gt;children：获取一组 DOM 元素中每个元素的子元素&lt;/li&gt;
+&lt;li&gt;clear：清除 input 或者 textarea 的值&lt;/li&gt;
+&lt;li&gt;clearCookie：清除特定的浏览器 cookie&lt;/li&gt;
+&lt;li&gt;clearCookies：清除浏览器的所有 cookie&lt;/li&gt;
+&lt;li&gt;clearLocalStorage：清除 localstorage 的数据&lt;/li&gt;
+&lt;li&gt;click：点击 DOM 元素&lt;/li&gt;
+&lt;li&gt;clock：覆盖全局与时间相关的函数&lt;/li&gt;
+&lt;li&gt;closest：获取与选择器匹配的第一个 DOM 元素&lt;/li&gt;
+&lt;li&gt;contains：获取包含文本的 DOM 元素&lt;/li&gt;
+&lt;li&gt;dblclick：双击 DOM 元素&lt;/li&gt;
+&lt;li&gt;debug：设置调试器并记录上一个命令产生的内容&lt;/li&gt;
+&lt;li&gt;document：获取 &lt;code&gt;window.document&lt;/code&gt; 对象&lt;/li&gt;
+&lt;li&gt;each：迭代数组结构&lt;/li&gt;
+&lt;li&gt;end：结束一系列命令&lt;/li&gt;
+&lt;li&gt;eq：在元素数组中获取特定索引的 DOM 元素&lt;/li&gt;
+&lt;li&gt;exec：执行系统命令&lt;/li&gt;
+&lt;li&gt;filter：获取特定选择器匹配的元素&lt;/li&gt;
+&lt;li&gt;find：查找特定选择器的特定后代元素&lt;/li&gt;
+&lt;li&gt;first：获取一组 DOM 元素中的第一个 DOM 元素&lt;/li&gt;
+&lt;li&gt;fixture：加载文件中的数据集&lt;/li&gt;
+&lt;li&gt;focus：使一个 DOM 元素获取焦点&lt;/li&gt;
+&lt;li&gt;focused：获取当前获取焦点的 DOM 元素&lt;/li&gt;
+&lt;li&gt;get：通过选择器或者别名获取一个或者多个 DOM 元素&lt;/li&gt;
+&lt;li&gt;getCookie：获取浏览器的特定 cookie&lt;/li&gt;
+&lt;li&gt;getCookies：获取浏览器的所有 cookie&lt;/li&gt;
+&lt;li&gt;go：前进或者后退&lt;/li&gt;
+&lt;li&gt;hash：获取当前页面地址的哈希值&lt;/li&gt;
+&lt;li&gt;hover：&lt;strong&gt;不存在这个命令&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;invoke：在前边生成的主题上调用函数&lt;/li&gt;
+&lt;li&gt;its：获取前边生成的主题的属性值&lt;/li&gt;
+&lt;li&gt;last：获取一组 DOM 元素的最后一个 DOM 元素&lt;/li&gt;
+&lt;li&gt;location：获取活动页面的 &lt;code&gt;window.location&lt;/code&gt; 对象&lt;/li&gt;
+&lt;li&gt;log：打印 cypress 日志信息&lt;/li&gt;
+&lt;li&gt;next：获取紧接的下一个兄弟 DOM 元素&lt;/li&gt;
+&lt;li&gt;nextAll：获取所有兄弟 DOM 元素&lt;/li&gt;
+&lt;li&gt;nextUntil：获取一组匹配的 DOM 元素中的每个后续兄弟元素，不包括提供的元素&lt;/li&gt;
+&lt;li&gt;not：过滤 DOM 元素&lt;/li&gt;
+&lt;li&gt;parent：获取父元素&lt;/li&gt;
+&lt;li&gt;parents：获取所有的父元素&lt;/li&gt;
+&lt;li&gt;parentsUntil：获取所有的父元素，不包括提供的元素&lt;/li&gt;
+&lt;li&gt;pause：暂停执行 cypress 命令&lt;/li&gt;
+&lt;li&gt;prev：获取前一个兄弟节点&lt;/li&gt;
+&lt;li&gt;prevAll：获取前边的所有兄弟节点&lt;/li&gt;
+&lt;li&gt;prevUntil：获取前边所有的兄弟节点，不包括提供的元素&lt;/li&gt;
+&lt;li&gt;readFile：读取文件内容&lt;/li&gt;
+&lt;li&gt;reload：重新加载页面&lt;/li&gt;
+&lt;li&gt;request：发送 HTTP 请求&lt;/li&gt;
+&lt;li&gt;root：获取页面根节点&lt;/li&gt;
+&lt;li&gt;route：管理网络请求的行为&lt;/li&gt;
+&lt;li&gt;screenshot：生成截图&lt;/li&gt;
+&lt;li&gt;scrollIntoView：将元素滚动到视图中&lt;/li&gt;
+&lt;li&gt;scrollTo：滚动到特定位置&lt;/li&gt;
+&lt;li&gt;select：选择 select 中的 option&lt;/li&gt;
+&lt;li&gt;server：启动服务器开始讲响应路由到 &lt;code&gt;cy.route()&lt;/code&gt; 和 &lt;code&gt;cy.request()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;setCookie：设置浏览器 cookie&lt;/li&gt;
+&lt;li&gt;should：创建断言，同 &lt;code&gt;and()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;siblings：获取兄弟 DOM 元素&lt;/li&gt;
+&lt;li&gt;spread：将数组扩展为多个参数&lt;/li&gt;
+&lt;li&gt;spy：包装方法，记录函数的调用和参数&lt;/li&gt;
+&lt;li&gt;stub：替换函数，记录其用法并控制其行为&lt;/li&gt;
+&lt;li&gt;submit：提交一个表单&lt;/li&gt;
+&lt;li&gt;task：通过 &lt;code&gt;task&lt;/code&gt; 插件，在 Node.js 中执行代码&lt;/li&gt;
+&lt;li&gt;then：使用上一个命令产生的结果&lt;/li&gt;
+&lt;li&gt;tick：移动时间&lt;/li&gt;
+&lt;li&gt;title：获取活动页面的 &lt;code&gt;document.title&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;trigger：触发 DOM 元素上的事件&lt;/li&gt;
+&lt;li&gt;type：给 DOM 元素输入内容&lt;/li&gt;
+&lt;li&gt;uncheck：取消选中复选框&lt;/li&gt;
+&lt;li&gt;url：获取当前活动页面的 URL&lt;/li&gt;
+&lt;li&gt;viewport：控制应用程序的屏幕大小和方向&lt;/li&gt;
+&lt;li&gt;visit：访问远程 URL&lt;/li&gt;
+&lt;li&gt;wait：等待方法&lt;/li&gt;
+&lt;li&gt;window：获取当前活动窗口的 &lt;code&gt;window&lt;/code&gt; 对象&lt;/li&gt;
+&lt;li&gt;within：将后续命令限制在此元素内&lt;/li&gt;
+&lt;li&gt;wrap：产生传递给 &lt;code&gt;.wrap()&lt;/code&gt; 的对象&lt;/li&gt;
+&lt;li&gt;writeFile：写入指定内容到文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（4）- 数据驱动，方法封装参数化和测试框架</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo4/</link>
+      <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo4/</guid>
+      <description>
+        
+        
+        &lt;p&gt;下面的信息是自动化测试框架学习第四篇数据驱动方法封装参数化和测试框架的介绍。
+在自动化测试框架学习中，有很多方法可以用来驱动测试框架。例如，数据驱动方法封装参数化和测试框架。这两个方法都可以将测试框架的数据处理和预设环境等现有模型结合起来。这样就可以方便地开发、测试和运行新的测试框架。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2&gt;测试数据驱动&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;测试数据驱动&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e9%a9%b1%e5%8a%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;js 格式测试数据驱动&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;js-格式测试数据驱动&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#js-%e6%a0%bc%e5%bc%8f%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e9%a9%b1%e5%8a%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;简介&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;简介&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ae%80%e4%bb%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;数据以 js 格式存储，使用 js 的 import 方法导入使用&lt;/p&gt;
+&lt;h4&gt;使用方法&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;使用方法&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;新建测试数据 js 文件&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;新建测试数据-js-文件&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%b0%e5%bb%ba%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae-js-%e6%96%87%e4%bb%b6&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;示例：在项目的 cypress/integration 文件夹下新建 testData 目录，然后在该目录下创建一个 js 文件，示例文件名为：testLogin.data.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;testLogin.data.js 示例代码如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;export const testLoginUserEmail = [
+
+    {
+        summary: &amp;#34;正确邮箱账号登录验证&amp;#34;,
+        username:&amp;#34;dengnao.123@163.com&amp;#34;,
+        password:&amp;#34;xxxx&amp;#34;
+    }
+]
+export const testLoginUserId = [
+
+    {
+        summary: &amp;#34;正确id账号登录验证&amp;#34;,
+        username:&amp;#34;waitnoww&amp;#34;,
+        password:&amp;#34;xxxx&amp;#34;
+    }
+]
+export const testLoginUserMobilephone = [
+
+    {
+        summary: &amp;#34;正确手机号账号登录验证&amp;#34;,
+        username:&amp;#34;18888139031&amp;#34;,
+        password:&amp;#34;xxxx&amp;#34;
+    }
+]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h5&gt;编写测试用例&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;编写测试用例&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在项目 cypress/integration 文件夹下新建 js 测试用例文件，示例文件名为：testLogin_guanggoo_data_by_js.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;import {
+testLoginUserEmail,
+testLoginUserId,
+testLoginUserMobilephone
+} from &amp;#34;./testData/testLogin.data&amp;#34;;
+
+// 测试用例
+describe(&amp;#34;光谷社区登录验证&amp;#34;, function () {
+
+    // 执行用例执行用例之前先进入首页
+    beforeEach(function () {
+        // 访问并登录光谷社区
+        cy.visit(&amp;#39;http://www.guanggoo.com/&amp;#39;) //访问url
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;www.guanggoo.com&amp;#39;) //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+        cy.title().should(&amp;#39;contain&amp;#39;, &amp;#39;光谷社区&amp;#39;) //验证页面 title 是否正确
+    })
+
+    //正确邮箱账号登录
+    it(testLoginUserEmail[0].summary, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(testLoginUserEmail[0].username) //输入邮箱用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(testLoginUserEmail[0].password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    }),
+
+    //正确ID账号登录
+    it(testLoginUserId[0].summary, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(testLoginUserId[0].username) //输入ID用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(testLoginUserId[0].password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    }),
+
+    //正确手机账号登录
+    it(testLoginUserMobilephone[0].summary, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(testLoginUserMobilephone[0].username) //输入手机号用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(testLoginUserMobilephone[0].password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    })
+
+        // 执行用例执行用例之后清除登录信息
+        afterEach(function () {
+            // 清除cookies
+            cy.clearCookies()
+        })
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h5&gt;运行测试用例&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;运行测试用例&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;运行脚本：npm run cypress:open&lt;/li&gt;
+&lt;li&gt;点击运行 testLogin_guanggoo_data_by_js.js 用例&lt;/li&gt;
+&lt;li&gt;查看运行结果 (测试数据能正常获取到)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;fixture 测试数据驱动介绍&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;fixture-测试数据驱动介绍&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#fixture-%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e9%a9%b1%e5%8a%a8%e4%bb%8b%e7%bb%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;fixture 数据驱动方式是 cypress 框架推荐的方法，支持的格式也很多，如.json/txt/html/jpg/gif/mp3/zip 等，具体可参考：https://docs.cypress.io/api/commands/fixture&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h4&gt;简介&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;简介-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ae%80%e4%bb%8b-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Cypress 使用 cypress/fixture 目录存放 json 文件数据，cy.fixture() 加载测试数据，如果不指定文件路径，默认从 cypress/fixtures 文件下去查找，也可以自己设置文件路径&lt;/p&gt;
+&lt;h4&gt;使用方法&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;使用方法-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;blockquote&gt;
+  &lt;p&gt;以 json 格式读取举例介绍&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h5&gt;新建测试数据 json 文件&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;新建测试数据-json-文件&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%b0%e5%bb%ba%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae-json-%e6%96%87%e4%bb%b6&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;示例：在项目的 cypress/fixtures 文件夹下新建一个 json 文件，示例文件名为：testLoginData.json&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;testLoginData.json 示例代码如下（账号密码记得换成自己的）：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;&amp;#34;testLoginUserEmail&amp;#34;: {
+&amp;#34;summary&amp;#34;: &amp;#34;正确邮箱账号登录验证&amp;#34;,
+&amp;#34;username&amp;#34;: &amp;#34;dengnao.123@163.com&amp;#34;,
+&amp;#34;password&amp;#34;: &amp;#34;xxxx&amp;#34;
+},
+&amp;#34;testLoginUserId&amp;#34;: {
+&amp;#34;summary&amp;#34;: &amp;#34;正确 id 账号登录验证&amp;#34;,
+&amp;#34;username&amp;#34;: &amp;#34;waitnoww&amp;#34;,
+&amp;#34;password&amp;#34;: &amp;#34;xxxx&amp;#34;
+},
+&amp;#34;testLoginUserMobilephone&amp;#34;: {
+&amp;#34;summary&amp;#34;: &amp;#34;正确手机号账号登录验证&amp;#34;,
+&amp;#34;username&amp;#34;: &amp;#34;18888889031&amp;#34;,
+&amp;#34;password&amp;#34;: &amp;#34;xxxx&amp;#34;
+}
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h5&gt;编写测试用例&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;编写测试用例-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%bc%96%e5%86%99%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在项目 cypress/integration 文件夹下新建 js 测试用例文件，示例文件名为：testLogin_guanggoo_data_by_fixture.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;describe(&amp;#34;光谷社区登录验证&amp;#34;, function () {
+
+    // 执行用例执行用例之前先进入首页
+    beforeEach(function () {
+        // 访问并登录光谷社区
+        cy.visit(&amp;#39;http://www.guanggoo.com/&amp;#39;) //访问url
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;www.guanggoo.com&amp;#39;) //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+        cy.title().should(&amp;#39;contain&amp;#39;, &amp;#39;光谷社区&amp;#39;) //验证页面 title 是否正确
+        // 获取测试数据
+        cy.fixture(&amp;#39;testLoginData.json&amp;#39;).as(&amp;#39;loginData&amp;#39;)
+    })
+
+    //正确邮箱账号登录
+    it(&amp;#34;正确邮箱账号登录验证&amp;#34;, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(this.loginData.testLoginUserEmail.username) //输入邮箱用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(this.loginData.testLoginUserEmail.password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    }),
+
+    //正确ID账号登录
+    it(&amp;#34;正确id账号登录验证&amp;#34;, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(this.loginData.testLoginUserId.username) //输入ID用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(this.loginData.testLoginUserId.password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    }),
+
+    //正确手机账号登录
+    it(&amp;#34;正确手机号账号登录验证&amp;#34;, function () {
+        cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+        cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+            .type(this.loginData.testLoginUserMobilephone.username) //输入手机号用户名
+        cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+            .type(this.loginData.testLoginUserMobilephone.password) //输入密码
+        cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+        cy.get(&amp;#39;.ui-header &amp;gt; .username&amp;#39;)
+            .should(&amp;#39;have.text&amp;#39;, &amp;#39;waitnoww&amp;#39;) //验证登录正确返回到首页，登录信息返回正确
+    })
+
+        // 执行用例执行用例之后清除登录信息
+        afterEach(function () {
+            // 清除cookies
+            cy.clearCookies()
+        })
+
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h5&gt;运行测试用例&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;运行测试用例-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e7%94%a8%e4%be%8b-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;运行脚本：npm run cypress:open&lt;/li&gt;
+&lt;li&gt;点击运行 testLogin_guanggoo_data_by_fixture.js 用例&lt;/li&gt;
+&lt;li&gt;查看运行结果 (测试数据能正常获取到)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;方法封装参数化&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;方法封装参数化&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%b9%e6%b3%95%e5%b0%81%e8%a3%85%e5%8f%82%e6%95%b0%e5%8c%96&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;简介&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;简介-2&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ae%80%e4%bb%8b-2&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;cypress 框架提供了一个 commands.js 可以自定义各种命令，用来封装各种通用方法，参数化方法，常用脚本等；&lt;/p&gt;
+&lt;p&gt;将常用的通用方法如登录方法在 cypress/support/commands.js 中编写完成之后，与 cy.get()/cy.visit() 一样，可以直接用 cy.xxx() 形式调用，非常方便，减少维护成本&lt;/p&gt;
+&lt;h3&gt;使用介绍&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;使用介绍&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%bb%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;示例会介绍常用的参数化登录命令和进入首页命令&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h4&gt;登录参数化登录封装&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;登录参数化登录封装&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%99%bb%e5%bd%95%e5%8f%82%e6%95%b0%e5%8c%96%e7%99%bb%e5%bd%95%e5%b0%81%e8%a3%85&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;代码编写&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;代码编写&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e7%bc%96%e5%86%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;打开 cypress/support/commands.js 文件&lt;/li&gt;
+&lt;li&gt;输入如下代码：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Cypress.Commands.add(&amp;#34;login&amp;#34;,(username,password) =&amp;gt; {
+cy.clearCookies() //清除 cookies,保证页面为未登录状态
+cy.visit(&amp;#39;http://www.guanggoo.com/&amp;#39;) //访问 url
+cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;www.guanggoo.com&amp;#39;) //验证目标 url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+cy.title().should(&amp;#39;contain&amp;#39;, &amp;#39;光谷社区&amp;#39;) //验证页面 title 是否正确
+cy.get(&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;).click() //点击登录按钮
+cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;login&amp;#39;) //验证正确跳转到登录页面
+cy.get(&amp;#39;#email&amp;#39;) //根据 css 定位用户名输入框
+.type(username) //输入参数化的用户名
+cy.get(&amp;#39;#password&amp;#39;) //根据 css 定位密码输入框
+.type(password) //输入参数化的密码
+cy.get(&amp;#39;.btn-success&amp;#39;).click() //点击登录按钮
+cy.get(&amp;#39;:nth-child(2) &amp;gt; .nav-collapse&amp;#39;).should(&amp;#39;contain&amp;#39;, &amp;#39;设置&amp;#39;) //验证登录成功回到首页，设置按钮展示正确
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;代码使用&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;代码使用&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e4%bd%bf%e7%94%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在测试用例中可直接进行方法调用 cy.login(username,password) 换成自己的账号密码进行登录操作了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;cy.login(&amp;#34;dengnao.123@163.com&amp;#34;,&amp;#34;xxxx&amp;#34;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;进入首页方法封装&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;进入首页方法封装&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%9b%e5%85%a5%e9%a6%96%e9%a1%b5%e6%96%b9%e6%b3%95%e5%b0%81%e8%a3%85&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;代码编写&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;代码编写-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e7%bc%96%e5%86%99-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;打开 cypress/support/commands.js 文件&lt;/li&gt;
+&lt;li&gt;输入如下代码：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Cypress.Commands.add(&amp;#34;initHomePage&amp;#34;,() =&amp;gt; {
+cy.visit(&amp;#39;http://www.guanggoo.com/&amp;#39;) //访问 url
+cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;www.guanggoo.com&amp;#39;) //验证目标 url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+cy.title().should(&amp;#39;contain&amp;#39;, &amp;#39;光谷社区&amp;#39;) //验证页面 title 是否正确
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;代码使用&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;代码使用-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bb%a3%e7%a0%81%e4%bd%bf%e7%94%a8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在测试用例中可直接进行方法调用 cy.initHomePage() 即可进入首页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;cy.initHomePage()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;测试框架介绍&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;测试框架介绍&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%b5%8b%e8%af%95%e6%a1%86%e6%9e%b6%e4%bb%8b%e7%bb%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;简介&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;简介-3&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%ae%80%e4%bb%8b-3&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Cypress 框架采用了 Mocha 框架的语法，故 Mocha 框架的测试语法可在 cypress 上直接使用&lt;/p&gt;
+&lt;h3&gt;语法介绍&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;语法介绍&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%af%ad%e6%b3%95%e4%bb%8b%e7%bb%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;describe()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;describe&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#describe&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;定义测试套件，里面还可以定义多个 context 或 it&lt;/p&gt;
+&lt;h4&gt;context()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;context&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#context&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;定义测试套件，是 describe() 的别名，可以替代 describe&lt;/p&gt;
+&lt;h4&gt;it()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;it&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#it&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;定义测试用例&lt;/p&gt;
+&lt;h4&gt;before()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;before&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#before&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;在一个测试套件中的所有测试用例之前执行，设置一些运行 testcase 的前置条件&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;// runs once before the first test in this block
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;beforeEach()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;beforeeach&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#beforeeach&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;在每个测试用例之前执行&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;        // 访问并登录光谷社区
+        cy.visit(&amp;#39;http://www.guanggoo.com/&amp;#39;) //访问url
+        cy.url().should(&amp;#39;include&amp;#39;, &amp;#39;www.guanggoo.com&amp;#39;) //验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+        cy.title().should(&amp;#39;contain&amp;#39;, &amp;#39;光谷社区&amp;#39;) //验证页面 title 是否正确
+    })&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;afterEach()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;aftereach&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#aftereach&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;在每个测试用例之后执行，可以执行清除数据等操作&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;// 清除 cookies
+cy.clearCookies()
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;after()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;after&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#after&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;在一个测试套件中的所有测试用例之后执行&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;// runs once after the last test in this block
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;.only()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;only&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#only&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;设置只执行某个 testcase/testsuite&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;describe.only(&amp;#39;#indexOf()&amp;#39;, function() {
+// ...
+});
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;.skip()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;skip&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#skip&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;设置跳过执行某个 testcase/testsuite&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;describe(&amp;#39;#indexOf()&amp;#39;, function() {
+it.skip(&amp;#39;should return -1 unless present&amp;#39;, function() {
+// this test will not be run
+});
+
+    it(&amp;#39;should return the index when present&amp;#39;, function() {
+      // this test will be run
+    });
+
+});
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;参考网址&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;参考网址&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83%e7%bd%91%e5%9d%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.cypress.io/guides/references/bundled-tools#Mocha&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.cypress.io/guides/references/bundled-tools#Mocha&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo3/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo3/</guid>
+      <description>
+        
+        
+        &lt;p&gt;下面的信息是对于框架学习第 3 篇的介绍。在该篇文章中，我们学习了如何使用元素定位、操作和断言。该框架可以帮助用户定位相关的元素，并且可以帮助用户进行操作。这些操作可以帮助用户断言事件。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2&gt;元素定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;元素定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;谈到 UI 自动化测试，不管是 web 端还是移动端，页面元素的各种操作在编写测试脚本时都会涉及，如果想写出高通过率和高健壮性的自动化测试用例，必须要确保正确高效的页面元素识别和使用。&lt;/p&gt;
+&lt;p&gt;cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery css 选择器。&lt;/p&gt;
+&lt;p&gt;下面会介绍常用的元素定位方法，常用的定位方式，以及框架自带可视化自助元素定位方法&lt;/p&gt;
+&lt;h3&gt;常用元素定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用元素定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;#id 定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;id-定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#id-%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：通过元素的 id 属性来定位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前提：定位的元素 css 样式须存在 id 属性且唯一&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;//元素前端代码示例 &amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;email&amp;quot; name=&amp;quot;email&amp;quot; placeholder=&amp;quot;&amp;quot; class=&amp;quot;form-control&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码
+&lt;code&gt;cy.get(&#39;#email&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;.class 定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;class-定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#class-%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：通过元素的 class 属性来定位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前提：定位的元素 css 样式存在 class 属性且唯一&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;//元素前端代码示例 &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;/&amp;quot;&amp;gt;&amp;lt;img width=&amp;quot;150&amp;quot; height=&amp;quot;28&amp;quot; border=&amp;quot;0&amp;quot; align=&amp;quot;default&amp;quot; alt=&amp;quot;光谷社区&amp;quot; src=&amp;quot;http://cdn.guanggoo.com//static/images/guanggoonew.png&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;.navbar-brand&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;name 定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;name-定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#name-%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：通过元素 name 定位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前提：定位的元素 css 样式存在 name 属性且唯一
+&lt;code&gt;//元素前端代码示例 &amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;email&amp;quot; name=&amp;quot;email&amp;quot; placeholder=&amp;quot;&amp;quot; class=&amp;quot;form-control&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;input[name=&amp;quot;email&amp;quot;]&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;常用定位方式&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用定位方式&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e5%ae%9a%e4%bd%8d%e6%96%b9%e5%bc%8f&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;.get()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;get&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#get&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;描述：使用 get() 定位元素，定位元素用 CSS selectors，跟 jQuery 一样&lt;/li&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;#email&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;.contains()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;contains&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#contains&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：可以使用 cy.contains（）根据元素的内容找到元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.contains(‘value’) cy.get(‘div[name=“div_name”]’).contains(‘value’)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;.within()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;within&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#within&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：可以在特定的 DOM 元素中找到元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;.query-form&#39;).within(() =&amp;gt; { cy.get(&#39;input:first&#39;).should(&#39;have.attr&#39;, &#39;placeholder&#39;, &#39;Email&#39;) cy.get(&#39;input:last&#39;).should(&#39;have.attr&#39;, &#39;placeholder&#39;, &#39;Password&#39;) })&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Cypress.$&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;cypress&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#cypress&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：Cypress 也提供了 JQuery 选择器，调用 Cypress.$(&amp;lsquo;button&amp;rsquo;）会自动在您的窗口中查询元素。换句话说，Cypress 会自动将文档设置为您当前通过 cy.visit() 导航到的任何内容，这是从开发人员工具调试时同步查询元素的好方法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Cypress.$(selector) // other proxied jQuery methods Cypress.$.Event Cypress.$.Deferred Cypress.$.ajax Cypress.$.get Cypress.$.getJSON Cypress.$.getScript Cypress.$.post&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;框架自带可视化自助元素定位&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;框架自带可视化自助元素定位&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%a1%86%e6%9e%b6%e8%87%aa%e5%b8%a6%e5%8f%af%e8%a7%86%e5%8c%96%e8%87%aa%e5%8a%a9%e5%85%83%e7%b4%a0%e5%ae%9a%e4%bd%8d&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1.前提：demo 代码已经跑起来 (运行脚本：npm run cypress:open)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152305.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.点击运行调试用例，进入定位元素对应的页面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152419.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;3.在页面上选择瞄准镜标识（open selector playground）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;4.选择页面上的元素区域，元素的定位信息就会展示在定位信息展示区域，点击复制就可使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152904.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;元素常用操作&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;元素常用操作&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%85%83%e7%b4%a0%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;.click()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;click&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#click&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：单击&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;.btn-success&#39;).click()&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.type(value)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;typevalue&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#typevalue&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：输入内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码
+&lt;code&gt; &lt;/code&gt;cy.get(‘input[name=“username”]’).type(&amp;lsquo;&lt;a href=&#34;mailto:dengnao.123@163.com&#34;&gt;dengnao.123@163.com&lt;/a&gt;&amp;rsquo;)``&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;.clear()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;clear&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#clear&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：清空输入内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(‘[type=“text”]’).clear()&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.submit()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;submit&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#submit&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：提交表单&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(‘.ant-input’).submit()&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.dbclick()/.rightclick()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;dbclickrightclick&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dbclickrightclick&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：鼠标双击操作/鼠标右击操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;.menu&#39;).rightclick() // 鼠标右击 .menu 菜单元素&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.select()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;select&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#select&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：针对&lt;select&gt;元素选择一个选项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;color&#39;).select(&#39;red&#39;) // 颜色选项中选择红色&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.check()/.uncheck()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;checkuncheck&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#checkuncheck&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：单选或多选进行勾选/取消选中 (反选)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(&#39;[type=&amp;quot;checkbox&amp;quot;]&#39;).check() // 对 checkbox 进行选中操作 cy.get(&#39;[type=&amp;quot;checkbox&amp;quot;]&#39;).uncheck() // 对 checkbox 进行取消选中操作&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;.focus()/.blur()&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;focusblur&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#focusblur&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：对选项进行聚焦/失焦操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(‘input[name=“username”]’).focus() //对于用户名输入框进行聚焦操作&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;BDD 断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bdd-断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#bdd-%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;断言类型&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;断言类型&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;.should()：&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;should&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#should&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：创建断言，断言会自动重试，直到它们通过或超时。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cy.get(‘.ant-checkbox).should(‘be.checked’)&lt;/code&gt;&lt;/p&gt;
+&lt;h5&gt;.expect()：&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;expect&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#expect&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：预期结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;expect(name).to.not.equal(‘dengnao.123@163.com’)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;常用断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;blockquote&gt;
+  &lt;p&gt;可参考官网文档:https://docs.cypress.io/guides/references/assertions#BDD-Assertions&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161229.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3&gt;TDD 断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;tdd-断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#tdd-%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;断言类型&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;断言类型-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%ad%e8%a8%80%e7%b1%bb%e5%9e%8b-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;.assert()：&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;assert&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#assert&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;描述：断言&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;assert.equal(3,3,’vals equal’)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;常用断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用断言-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;blockquote&gt;
+  &lt;p&gt;可参考官网文档:https://docs.cypress.io/guides/references/assertions#TDD-Assertions&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161926.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3&gt;常用断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用断言-2&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e6%96%ad%e8%a8%80-2&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;针对长度（length）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对长度length的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e9%95%bf%e5%ba%a6length%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;`//重试，直到找到 3 个匹配的&amp;lt;li.selected&amp;gt;
+cy.get(&#39;li.selected&#39;).should(&#39;have.length&#39;,3)`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;针对类（Class）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对类class的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e7%b1%bbclass%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;`//重试，直到 input 元素没有类被 disabled 为止（或者超时为止）
+cy.get(&#39;from&#39;).fijd(&#39;input&#39;).should(&#39;not.have.class&#39;,&#39;disabled&#39;)`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;针对值（Value）断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对值value断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e5%80%bcvalue%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;`//重试，直到 textarea 的值为‘iTesting’
+cy.get(&#39;textarea&#39;).should(&#39;have.value&#39;,&#39;iTesting&#39;)`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;针对文本内容（Text Content）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对文本内容text-content的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e6%96%87%e6%9c%ac%e5%86%85%e5%ae%b9text-content%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt; //重试，直到这个 span 不包含“click me”字样 cy.get(&#39;a&#39;).parent(&#39;span.help&#39;).should(&#39;not.contain&#39;,&#39;click me&#39;) //重试，直到这个 span 包含“click me”字样 cy.get(&#39;a&#39;).parent(&#39;span.help&#39;).should(&#39;contain&#39;,&#39;click me&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;针对元素可见与否（Visibility）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对元素可见与否visibility的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%8f%af%e8%a7%81%e4%b8%8e%e5%90%a6visibility%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;//重试，直到这个 button 是可为止 cy.get(&#39;button&#39;).should(&#39;be.visible&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;针对元素存在与否（Existence）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对元素存在与否existence的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e5%ad%98%e5%9c%a8%e4%b8%8e%e5%90%a6existence%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;//重试，直到 id 为 loading 的 spinner 不在存在 cy.get(&#39;#loading&#39;).should(&#39;not.exist&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;针对元素状态的（status）的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对元素状态的status的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9%e5%85%83%e7%b4%a0%e7%8a%b6%e6%80%81%e7%9a%84status%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;`//重试，直到这个 radio button 是选中状态
+cy.get(&#39;：radio&#39;).should(&#39;be.checked&#39;)`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;针对 CSS 的断言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;针对-css-的断言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%92%88%e5%af%b9-css-%e7%9a%84%e6%96%ad%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;`//重试，直到 completed 这个类有匹配的 css 为止
+cy.get(&#39;.completed&#39;).should(&#39;have.css&#39;,&#39;text-decoration&#39;,&#39;line-through&#39;)`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;运行出错问题记录&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;运行出错问题记录&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%90%e8%a1%8c%e5%87%ba%e9%94%99%e9%97%ae%e9%a2%98%e8%ae%b0%e5%bd%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h4&gt;运行 npm run cypress:open 报错，提示 No version of Cypress is installed&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;运行-npm-run-cypressopen-报错提示-no-version-of-cypress-is-installed&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-no-version-of-cypress-is-installed&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;报错截图如下：&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;报错截图如下&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601150230.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h5&gt;修复方式&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;修复方式&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;&lt;code&gt;//项目根目录下运行如下命令即可解决 ./node_modules/.bin/cypress install&lt;/code&gt;&lt;/p&gt;
+&lt;h5&gt;原因&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;原因&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8e%9f%e5%9b%a0&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;电脑使用过清理软件，安装的 cypress 缓存信息被删除了，重新安装就好&lt;/p&gt;
+&lt;h4&gt;运行 npm run cypress:open 报错，提示 Cypress verification timed out&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;运行-npm-run-cypressopen-报错提示-cypress-verification-timed-out&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bf%90%e8%a1%8c-npm-run-cypressopen-%e6%8a%a5%e9%94%99%e6%8f%90%e7%a4%ba-cypress-verification-timed-out&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;h5&gt;报错截图如下：&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;报错截图如下-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%8a%a5%e9%94%99%e6%88%aa%e5%9b%be%e5%a6%82%e4%b8%8b-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601151647.png&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h5&gt;修复方式&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;修复方式-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bf%ae%e5%a4%8d%e6%96%b9%e5%bc%8f-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;重新运行 npm run cypress:open 尝试即可&lt;/p&gt;
+&lt;h5&gt;原因&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;原因-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8e%9f%e5%9b%a0-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;电脑 cypress 验证超时了，一般重新操作即可恢复&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（2）- 测试报告</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo2/</link>
+      <pubDate>Mon, 09 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo2/</guid>
+      <description>
+        
+        
+        &lt;p&gt;下面的信息是介绍 cypress 自动化测试框架学习第 3 篇的测试报告的内容
+主要介绍一下如何去使用不同格式的 cypress 自动化测试报告模版&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2&gt;写在前面&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;写在前面&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%86%99%e5%9c%a8%e5%89%8d%e9%9d%a2&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;由于 Cypress 测试报告是建立在 Mocha 测试报告之上的，这意味着任何为 Mocha 构建的报告程序都可以与 Cypress 一起使用。&lt;/p&gt;
+&lt;p&gt;以下是内置的 Mocha 测试类型列表（Cypress 也同样支持）：https://mochajs.org/#reporters&lt;/p&gt;
+&lt;h2&gt;前置准备工作&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;前置准备工作&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%89%8d%e7%bd%ae%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 package.json 文件的 scripts 模块加入了如下脚本：&amp;ldquo;cypress:run&amp;rdquo;:&amp;ldquo;cypress run&amp;rdquo;，便于后面生成报告&lt;/p&gt;
+&lt;p&gt;不同运行脚本的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cypress run：是以无头浏览器模式跑测试用例文件夹下的所有测试用例&lt;/li&gt;
+&lt;li&gt;cypress open：会打开测试用例集的界面，需要手动运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;常用报告类型&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;常用报告类型&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%b8%b8%e7%94%a8%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;spec 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;spec-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#spec-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;运行命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run --reporter=spec&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqx2v3ihu9j31ka0eojtc.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Dot 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;dot-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dot-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前置：在 cypress.json 文件新增&amp;quot;reporter&amp;quot;: &amp;ldquo;dot&amp;quot;信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行方式：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy74s99hij30qo0800t5.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;json 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;json-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#json-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前置：在 cypress.json 文件新增&amp;quot;reporter&amp;rdquo;: &amp;ldquo;json&amp;quot;信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行方式：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy6zo6iu9j30u00u644f.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;List 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;list-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#list-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前置：在 cypress.json 文件新增&amp;quot;reporter&amp;rdquo;: &amp;ldquo;list&amp;quot;信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行方式：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy78or4xhj30v80by76y.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;NYAN 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;nyan-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#nyan-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前置：在 cypress.json 文件新增&amp;quot;reporter&amp;rdquo;: &amp;ldquo;nyan&amp;quot;信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行方式：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy7cxd155j30my09mq3k.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;高大上报告类型&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;高大上报告类型&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%ab%98%e5%a4%a7%e4%b8%8a%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Mochawesome 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;mochawesome-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#mochawesome-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;前置：安装 Mocha、Mochawesome 至项目中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;npm install --save-dev mocha
+npm install --save-dev mochawesome&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在 cypress.json 文件新增&amp;quot;reporter&amp;rdquo;: &amp;ldquo;mochawesome&amp;quot;信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy7w33bfsj31xd0u0q78.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3&gt;allure 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;allure-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#allure-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;前置：安装 allure（推荐使用 brew 安装）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ brew install allure&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;在 cypress.json 文件新增如下信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;    &amp;#34;reporter&amp;#34;: &amp;#34;junit&amp;#34;,
+    &amp;#34;reporterOptions&amp;#34;: {
+        &amp;#34;mochaFile&amp;#34;: &amp;#34;results/test_report_[hash].xml&amp;#34;,
+        &amp;#34;toConsole&amp;#34;: true
+    }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;运行命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ npm run cypress:run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;生成报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;$ allure serve results&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqy9t4vp9xj31p80u044v.jpg&#34; alt=&#34;&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h3&gt;Dashboard 格式报告&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;dashboard-格式报告&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dashboard-%e6%a0%bc%e5%bc%8f%e6%8a%a5%e5%91%8a&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;待完善，参考资料：https://docs.cypress.io/guides/dashboard/introduction#Features&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;运行命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SHELL&#34; data-lang=&#34;SHELL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npx cypress run --record --key 7aaee33b-f67b-4993-8d6c-2c392a1bd1c8&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;报告截图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqya4w0n7xj31op0u0do2.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cypress UI 自动化测试框架学习（1）- 上手</title>
+      <link>http://localhost:1313/zh/blog/others/cypress-demo1/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/cypress-demo1/</guid>
+      <description>
+        
+        
+        &lt;p&gt;下面的信息是对 Cypress 自动化测试框架的新手入门介绍。如果你想要学习更多关于 playwright 自动化测试框架的信息，请参阅它的文档。运行测试：打开测试界面，选择&amp;quot;运行测试&amp;quot;。下面会显示一个非常简单的测试画面。你可以选择任何一个测试项目。你可以通过键盘或者鼠标来调试测试。查看测试报告：在测试结束后，单击&amp;quot;查看测试报告&amp;quot;按钮。测试报告会显示在测试结束后的浏览器中。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2&gt;Introduction&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;introduction&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;基于 JavaScript 的前端自动化测试工具，可以对浏览器中运行的任何内容进行快速、简单、可靠的测试&lt;/p&gt;
+&lt;p&gt;Cypress 是自集成的，提供了一套完整的端到端测试，无须借助其他外部工具，安装后即可快速地创建、编写、运行测试用例，且对每一步操作都支持回看&lt;/p&gt;
+&lt;p&gt;不同于其他只能测试 UI 层的前端测试工具，Cypress 允许编写所有类型的测试，覆盖了测试金字塔模型的所有测试类型【界面测试，集成测试，单元测试】&lt;/p&gt;
+&lt;p&gt;Cypress 官网：https://www.cypress.io/&lt;/p&gt;
+&lt;h2&gt;Getting Started&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;getting-started&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#getting-started&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;下面以 MacOS 来进行介绍，其他系统可参考官网信息&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;h3&gt;Operating System&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;operating-system&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#operating-system&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;macOS 10.9 and above (64-bit only)&lt;/li&gt;
+&lt;li&gt;Node.js 12 or 14 and above&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Before Started&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;before-started&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#before-started&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;已安装好 node.js 和 npm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqvntxlww1j30k406waau.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;已安装好 vs code 或者其他代码编辑器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Started and Run&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;started-and-run&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#started-and-run&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Step1：通过 npm 新建项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;新建项目文件夹&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cypress&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;demo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;进入项目文件夹&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cypress&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;demo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;npm项目环境准备&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Step2：安装 cypress&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;项目安装cypress包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cypress&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dev&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Step3：运行 cypress 程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;若提示：npm ERR! missing script: cypress:open，可在项目根目录 package.json 文件的 scripts 下新增&amp;quot;cypress:open&amp;quot;: &amp;ldquo;cypress open&amp;rdquo;，保存后再次运行命令即可&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;启动demo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cypress&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;open&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Started Screenshot&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;started-screenshot&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#started-screenshot&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;运行截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqvsqw8ytcj323h0u0qp2.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;demo 用例执行截图
+&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqvsshqeflj31gl0u0nbf.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Try First Testscript&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;try-first-testscript&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#try-first-testscript&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Testcase&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;testcase&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#testcase&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Text&#34; data-lang=&#34;Text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1.访问光谷社区主页http://www.guanggoo.com/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2.验证是否正确跳转到光谷社区页面
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3.验证网页标题是否正确
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4.点击登录按钮，验证正确跳转到登录页面
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5.在登录页面输入用户名和输入密码
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;6.点击登录按钮，验证登录成功&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Testscript&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;testscript&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#testscript&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在项目 cypress/integration 下新建 demo 文件夹&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 demo 文件夹下新建 demo-guanggoo.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;demo-guanggoo.js 编写测试脚本&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;脚本中账号密码需换成自己的账号密码&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;describe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;first testcase for cypress&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;it&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;visit guanggoo homepage and login for guanggoo:&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// 访问并登录光谷社区
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;visit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;http://www.guanggoo.com/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//访问url
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;should&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;include&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;www.guanggoo.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;//验证目标url 是否正确包含光谷社区正确域名 验证是否正确跳转到光谷社区页面
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;should&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;contain&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;光谷社区&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//验证页面 title 是否正确
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;:nth-child(1) &amp;gt; .nav-collapse&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;click&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;//点击登录按钮
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;should&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;include&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;login&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//验证正确跳转到登录页面
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#email&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//根据 css 定位用户名输入框
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dengnao.123@163.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//输入用户名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//根据 css 定位密码输入框
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;xxxxxxx&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//输入密码
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;cy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.btn-success&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;click&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;//点击登录按钮
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Run Screenshot&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;run-screenshot&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#run-screenshot&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;运行 cypress 程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;启动&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cypress&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;open&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;复制代码&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqvtcq43csj323f0u0qn9.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面上选择点击运行 demo-guanggoo.js 即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/008i3skNgy1gqvtjib8jdj31g80u0e81.jpg&#34; alt=&#34; &#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;运行通过无报错，代表用例编写成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

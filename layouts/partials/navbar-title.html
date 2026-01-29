@@ -1,0 +1,28 @@
+{{- $logoPath := .Site.Params.navbar.logo.path | default "images/logo.svg" -}}
+{{- /* 使用当前语言的首页，避免中文页点击标题跳回英文 */ -}}
+{{- $logoLink := relLangURL "/" -}}
+{{- $logoWidth := .Site.Params.navbar.logo.width | default "20" -}}
+{{- $logoHeight := .Site.Params.navbar.logo.height | default "20" -}}
+{{- $logoDarkPath := .Site.Params.navbar.logo.dark | default $logoPath -}}
+{{- $displayTitle := (.Site.Params.navbar.displayTitle | default true) -}}
+{{- $displayLogo := (.Site.Params.navbar.displayLogo | default true) -}}
+{{- $tagline := .Site.Params.navbar.tagline | default (T "tagline") -}}
+{{- $logoPathNorm := strings.TrimPrefix "/" $logoPath -}}
+{{- $logoDarkPathNorm := strings.TrimPrefix "/" $logoDarkPath -}}
+{{- $logoSrc := $logoPathNorm | absURL -}}
+{{- $logoDarkSrc := $logoDarkPathNorm | absURL -}}
+
+<a class="hx:flex hx:items-center hx:gap-2 hx:hover:opacity-90 hx:transition-opacity hx:ltr:mr-auto hx:rtl:ml-auto hx:min-w-0" href="{{ $logoLink }}" title="{{ .Site.Title }}">
+  {{- if $displayLogo }}
+    <img class="hx:shrink-0 hx:block hx:dark:hidden" src="{{ $logoSrc }}" alt="{{ .Site.Title }}" height="{{ $logoHeight }}" width="{{ $logoWidth }}" />
+    <img class="hx:shrink-0 hx:hidden hx:dark:block" src="{{ $logoDarkSrc }}" alt="{{ .Site.Title }}" height="{{ $logoHeight }}" width="{{ $logoWidth }}" />
+  {{- end }}
+  <span class="hx:flex hx:flex-col hx:min-w-0 hx:gap-0.5">
+    {{- if $displayTitle }}
+      <span class="hx:font-semibold hx:leading-tight hx:text-slate-800 hx:dark:text-slate-100 hx:truncate">{{ .Site.Title }}</span>
+      {{- if $tagline }}
+        <span class="hx:text-xs hx:leading-tight hx:text-slate-500 hx:dark:text-slate-400 hx:truncate hx:max-w-[12rem] hx:md:max-w-[18rem]">{{ $tagline }}</span>
+      {{- end }}
+    {{- end }}
+  </span>
+</a>

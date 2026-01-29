@@ -1,24 +1,444 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>API Automation Testing Tutorial on Nao&#39;s Blog</title>
-    <link>https://naodeng.com.cn/series/api-automation-testing-tutorial/</link>
+    <title>Nao&#39;s Blog – API Automation Testing Tutorial</title>
+    <link>http://localhost:1313/series/api-automation-testing-tutorial/</link>
     <description>Recent content in API Automation Testing Tutorial on Nao&#39;s Blog</description>
-    <image>
-      <title>Nao&#39;s Blog</title>
-      <url>https://naodeng.com.cn/papermod-cover.png</url>
-      <link>https://naodeng.com.cn/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.154.3</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 29 Nov 2023 11:23:00 +0800</lastBuildDate>
-    <atom:link href="https://naodeng.com.cn/series/api-automation-testing-tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+	  <atom:link href="http://localhost:1313/series/api-automation-testing-tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
     <item>
       <title>API Testing Tutorial for Beginners: different frameworks and different development languages</title>
-      <link>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
+      <link>http://localhost:1313/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</link>
       <pubDate>Wed, 29 Nov 2023 11:23:00 +0800</pubDate>
-      <guid>https://naodeng.com.cn/posts/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
-      <description>This blog post compiles tutorials on API automation testing using various frameworks and programming languages, providing readers with comprehensive learning resources. It covers a range of popular testing frameworks and programming languages, enabling you to choose the best solution for your project. Whether you&amp;rsquo;re a developer in Python, Java, JavaScript, or any other language, and whether you prefer using REST Assured, SuperTest, or other frameworks, this collection will offer you in-depth learning guides to help you navigate the field of API automation testing with ease. A must-read resource to master the various tools and techniques in API automation testing.</description>
+      
+      <guid>http://localhost:1313/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Implementation of API Automation Projects with Java and REST Assured Framework&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;implementation-of-api-automation-projects-with-java-and-rest-assured-framework&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#implementation-of-api-automation-projects-with-java-and-rest-assured-framework&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;REST Assured Framework Tutorial Table of Contents&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;rest-assured-framework-tutorial-table-of-contents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#rest-assured-framework-tutorial-table-of-contents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;The table of contents is not clickable, only for displaying the structure.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#restassured-api-test-starter&#34;&gt;Quick Start Project for RestAssured API Test&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction-to-restassured&#34;&gt;Introduction to RestAssured&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-structure&#34;&gt;Project Structure&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#versions-for-gradle-build&#34;&gt;Versions for Gradle Build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#versions-for-maven-build&#34;&gt;Versions for Maven Build&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-dependencies&#34;&gt;Project Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#building-rest-assured-api-test-project-from-0-to-1&#34;&gt;Building REST Assured API Test Project from 0 to 1&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gradle-version&#34;&gt;Gradle Version&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#maven-version&#34;&gt;Maven Version&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#advanced-usage&#34;&gt;Advanced Usage&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#verify-response-data&#34;&gt;Verify Response Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#file-upload&#34;&gt;File Upload&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#logging&#34;&gt;Logging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#filters&#34;&gt;Filters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#continuous-integration&#34;&gt;Continuous Integration&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#integrate-with-github-action&#34;&gt;Integrate with GitHub Action&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#integrate-allure-test-report&#34;&gt;Integrate Allure Test Report&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-driven&#34;&gt;Data-Driven&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multi-environment-support&#34;&gt;Multi-Environment Support&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;h3&gt;Corresponding Articles for REST Assured Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;corresponding-articles-for-rest-assured-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#corresponding-articles-for-rest-assured-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;REST Assured API Test Tutorial: Advanced Usage - Integration with CI/CD and Allure Report:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;REST Assured API Test Tutorial: Advanced Usage - Verify Response and Logging, Filters, File Upload:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;REST Assured API Test Tutorial: Building Your Own Project from 0 to 1:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;REST Assured API Test Tutorial: Introduction and Environment Setup Preparation:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Reference Documents for REST Assured Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;reference-documents-for-rest-assured-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#reference-documents-for-rest-assured-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Demo Project Repository: &lt;a href=&#34;https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RestAssured-API-Test-Starterhttps://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rest Assured Official Documentation: &lt;a href=&#34;https://rest-assured.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://rest-assured.io/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rest Assured Official GitHub: &lt;a href=&#34;https://github.com/rest-assured/rest-assured&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/rest-assured/rest-assured&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rest Assured Official Chinese Translation: &lt;a href=&#34;https://github.com/RookieTester/rest-assured-doc&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/RookieTester/rest-assured-doc&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allure Documentation: &lt;a href=&#34;https://docs.qameta.io/allure/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.qameta.io/allure/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Action Documentation: &lt;a href=&#34;https://docs.github.com/en/actions&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.github.com/en/actions&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Implementation of API Automation Projects with JavaScript and SuperTest Framework&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;implementation-of-api-automation-projects-with-javascript-and-supertest-framework&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#implementation-of-api-automation-projects-with-javascript-and-supertest-framework&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;SuperTest Framework Tutorial Table of Contents&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;supertest-framework-tutorial-table-of-contents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#supertest-framework-tutorial-table-of-contents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;The table of contents is not clickable, only for displaying the structure.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#supertest-api-test-starter&#34;&gt;Quick Start Project for SuperTest API Test&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-dependencies&#34;&gt;Project Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-file-structure&#34;&gt;Project File Structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#building-supertest-api-test-project-from-0-to-1&#34;&gt;Building SuperTest API Test Project from 0 to 1&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mocha-version&#34;&gt;Mocha Version&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#jest-version&#34;&gt;Jest Version&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#advanced-usage&#34;&gt;Advanced Usage&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#continuous-integration&#34;&gt;Continuous Integration&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#integrate-with-github-action&#34;&gt;Integrate with GitHub Action&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#common-assertions&#34;&gt;Common Assertions&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#built-in-assertions-in-supertest&#34;&gt;Built-in Assertions in SuperTest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#common-assertions-in-chai&#34;&gt;Common Assertions in CHAI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#common-assertions-in-jest&#34;&gt;Common Assertions in Jest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-driven&#34;&gt;Data-Driven&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multi-environment-support&#34;&gt;Multi-Environment Support&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;h3&gt;Corresponding Articles for SuperTest Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;corresponding-articles-for-supertest-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#corresponding-articles-for-supertest-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Advanced Usage - Multi-Environment Support:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Advanced Usage - Data-Driven:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Advanced Usage - Common Assertions:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Advanced Usage - Integration with CI/CD and GitHub Action:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Building Your Own Project from 0 to 1:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest API Test Tutorial: Getting Started and Own Environment Preparation:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Reference Documents for SuperTest Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;reference-documents-for-supertest-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#reference-documents-for-supertest-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Demo Project Repository: &lt;a href=&#34;https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SuperTest-API-Test-Starterhttps://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SuperTest Documentation: &lt;a href=&#34;https://github.com/ladjs/supertest&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/ladjs/supertest&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jest Documentation: &lt;a href=&#34;https://jestjs.io/docs/en/getting-started&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jestjs.io/docs/en/getting-started&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mocha Documentation: &lt;a href=&#34;https://mochajs.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mochajs.org/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Chai Documentation: &lt;a href=&#34;https://www.chaijs.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.chaijs.com/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allure Documentation: &lt;a href=&#34;https://docs.qameta.io/allure/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.qameta.io/allure/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Action Documentation: &lt;a href=&#34;https://docs.github.com/en/actions&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.github.com/en/actions&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Implementation of API Automation Projects with Python and Pytest Framework&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;implementation-of-api-automation-projects-with-python-and-pytest-framework&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#implementation-of-api-automation-projects-with-python-and-pytest-framework&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Pytest Framework Tutorial Table of Contents&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;pytest-framework-tutorial-table-of-contents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#pytest-framework-tutorial-table-of-contents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+  &lt;p&gt;The table of contents is not clickable, only for displaying the structure.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pytest-api-test-starter&#34;&gt;Quick Start Project for Pytest API Test&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction-to-pytest&#34;&gt;Introduction to Pytest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#python-virtual-environment-introduction&#34;&gt;Introduction to Python Virtual Environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-dependencies&#34;&gt;Project Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#project-directory-structure&#34;&gt;Project Directory Structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#building-pytest-api-test-project-from-0-to-1&#34;&gt;Building Pytest API Test Project from 0 to 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#advanced-usage&#34;&gt;Advanced Usage&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#continuous-integration&#34;&gt;Continuous Integration&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#integrate-with-github-action&#34;&gt;Integrate with GitHub Action&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#common-assertions&#34;&gt;Common Assertions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-driven&#34;&gt;Data-Driven&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multi-environment-support-and-integration-with-allure-report&#34;&gt;Multi-Environment Support and Integration with Allure Report&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#concurrent-testing-and-distributed-testing&#34;&gt;Concurrent Testing and Distributed Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#filtering-test-case-execution&#34;&gt;Filtering Test Case Execution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;h3&gt;Corresponding Articles for Pytest Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;corresponding-articles-for-pytest-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#corresponding-articles-for-pytest-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Pytest API Test Tutorial: Advanced Usage - Filtering Test Case Execution, Concurrent Testing, and Distributed Testing:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest API Test Tutorial: Advanced Usage - Multi-Environment Support and Integration with Allure Report:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest API Test Tutorial: Advanced Usage - Common Assertions and Data-Driven:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest API Test Tutorial: Advanced Usage - Integration with CI/CD and GitHub Action:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest API Test Tutorial: Building Your Own Project from 0 to 1:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest API Test Tutorial: Getting Started and Own Environment Preparation:&lt;a href=&#34;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/en/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Reference Documents for Pytest Framework Tutorial&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;reference-documents-for-pytest-framework-tutorial&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#reference-documents-for-pytest-framework-tutorial&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Demo Project Repository: &lt;a href=&#34;https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pytest-API-Test-Starter&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest Documentation: &lt;a href=&#34;https://docs.pytest.org/en/stable/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.pytest.org/en/stable/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest-html Documentation: &lt;a href=&#34;https://pypi.org/project/pytest-html/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pypi.org/project/pytest-html/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pytest-xdist Documentation: &lt;a href=&#34;https://pypi.org/project/pytest-xdist/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pypi.org/project/pytest-xdist/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allure-pytest Documentation: &lt;a href=&#34;https://pypi.org/project/allure-pytest/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pypi.org/project/allure-pytest/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allure Documentation: &lt;a href=&#34;https://docs.qameta.io/allure/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.qameta.io/allure/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Action Documentation: &lt;a href=&#34;https://docs.github.com/en/actions&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.github.com/en/actions&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Implementation of API Automation Testing with Testing Tools&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;implementation-of-api-automation-testing-with-testing-tools&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#implementation-of-api-automation-testing-with-testing-tools&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Postman API Automation Testing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;postman-api-automation-testing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#postman-api-automation-testing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Postman Framework Tutorial Directory&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;postman-framework-tutorial-directory&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#postman-framework-tutorial-directory&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;blockquote&gt;
+  &lt;p&gt;The directory is not clickable, only for displaying the structure&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#implementation-of-api-automation-projects-with-java-and-rest-assured-framework&#34;&gt;Implementation of API Automation Projects with Java and REST Assured Framework&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#rest-assured-framework-tutorial-table-of-contents&#34;&gt;REST Assured Framework Tutorial Table of Contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#corresponding-articles-for-rest-assured-framework-tutorial&#34;&gt;Corresponding Articles for REST Assured Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference-documents-for-rest-assured-framework-tutorial&#34;&gt;Reference Documents for REST Assured Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#implementation-of-api-automation-projects-with-javascript-and-supertest-framework&#34;&gt;Implementation of API Automation Projects with JavaScript and SuperTest Framework&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#supertest-framework-tutorial-table-of-contents&#34;&gt;SuperTest Framework Tutorial Table of Contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#corresponding-articles-for-supertest-framework-tutorial&#34;&gt;Corresponding Articles for SuperTest Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference-documents-for-supertest-framework-tutorial&#34;&gt;Reference Documents for SuperTest Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#implementation-of-api-automation-projects-with-python-and-pytest-framework&#34;&gt;Implementation of API Automation Projects with Python and Pytest Framework&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pytest-framework-tutorial-table-of-contents&#34;&gt;Pytest Framework Tutorial Table of Contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#corresponding-articles-for-pytest-framework-tutorial&#34;&gt;Corresponding Articles for Pytest Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference-documents-for-pytest-framework-tutorial&#34;&gt;Reference Documents for Pytest Framework Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#implementation-of-api-automation-testing-with-testing-tools&#34;&gt;Implementation of API Automation Testing with Testing Tools&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#postman-api-automation-testing&#34;&gt;Postman API Automation Testing&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#postman-framework-tutorial-directory&#34;&gt;Postman Framework Tutorial Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#postman-framework-tutorial-articles&#34;&gt;Postman Framework Tutorial Articles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#postman-framework-tutorial-reference-documents&#34;&gt;Postman Framework Tutorial Reference Documents&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bruno-api-automation-testing&#34;&gt;Bruno API Automation Testing&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#bruno-framework-tutorial-directory&#34;&gt;Bruno Framework Tutorial Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bruno-framework-tutorial-articles&#34;&gt;Bruno Framework Tutorial Articles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bruno-framework-tutorial-reference-documents&#34;&gt;Bruno Framework Tutorial Reference Documents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#recommended-reading&#34;&gt;Recommended Reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;h4&gt;Postman Framework Tutorial Articles&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;postman-framework-tutorial-articles&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#postman-framework-tutorial-articles&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Postman API Automation Testing Tutorial: Advanced Usage - Common Command Line Options, File Upload Scenarios, and SSL Certificate Scenarios: &lt;a href=&#34;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Postman API Automation Testing Tutorial: Advanced Usage - Data-Driven:https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/&lt;/li&gt;
+&lt;li&gt;Postman API Automation Testing Tutorial: Advanced Usage - Common Test Scripts and Examples of Commonly Used Third-Party Packages: &lt;a href=&#34;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Postman API Automation Testing Tutorial: Advanced Usage - Integration with CI/CD and GitHub Action, Allure Report: &lt;a href=&#34;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Postman API Automation Testing Tutorial: Getting Started and Building Your Own Project from 0 to 1: &lt;a href=&#34;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Postman Framework Tutorial Reference Documents&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;postman-framework-tutorial-reference-documents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#postman-framework-tutorial-reference-documents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Demo Project Repository: &lt;a href=&#34;https://github.com/Automation-Test-Starter/Postman-API-Test-Starter&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Postman Official Documentation: &lt;a href=&#34;https://learning.postman.com/docs/getting-started/introduction/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Newman Official Documentation: &lt;a href=&#34;https://github.com/postmanlabs/newman&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Action Documentation: &lt;a href=&#34;https://docs.github.com/en/actions&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allure Documentation: &lt;a href=&#34;https://docs.qameta.io/allure/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Bruno API Automation Testing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bruno-api-automation-testing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#bruno-api-automation-testing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Bruno Framework Tutorial Directory&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bruno-framework-tutorial-directory&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#bruno-framework-tutorial-directory&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;blockquote&gt;
+  &lt;p&gt;The directory is not clickable, only for displaying the structure&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#bruno-user-guide&#34;&gt;bruno-user-guide&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#why-choose-bruno&#34;&gt;Why Choose Bruno&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-bruno&#34;&gt;Installing Bruno&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getting-started-with-the-client&#34;&gt;Getting Started with the Client&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#default-main-API&#34;&gt;Default Main API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#api-request-collections&#34;&gt;API Request Collections&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#api-requests&#34;&gt;API Requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#writing-api-request-test-scripts&#34;&gt;Writing API Request Test Scripts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#environment-variables&#34;&gt;Environment Variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#api-script-API-automation&#34;&gt;API Script API Automation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#preconditions&#34;&gt;Preconditions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#demo-of-api-automation-project&#34;&gt;Demo of API Automation Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#integration-with-ci&#34;&gt;Integration with CI&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#integration-with-github-action&#34;&gt;Integration with GitHub Action&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#migration-from-postman-scripts&#34;&gt;Migration from Postman Scripts&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#api-request-collection-migration&#34;&gt;API Request Collection Migration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#environment-variable-migration&#34;&gt;Environment Variable Migration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference-for-test-script-migration&#34;&gt;Reference for Test Script Migration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- markdownlint-disable MD051 --&gt;
+&lt;h4&gt;Bruno Framework Tutorial Articles&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bruno-framework-tutorial-articles&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#bruno-framework-tutorial-articles&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Introduction to Bruno, a Postman Replacement Tool: &lt;a href=&#34;https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_bruno/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_bruno/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Bruno Framework Tutorial Reference Documents&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bruno-framework-tutorial-reference-documents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#bruno-framework-tutorial-reference-documents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Demo Project Repository: &lt;a href=&#34;https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Bruno Documentation: &lt;a href=&#34;https://docs.usebruno.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.usebruno.com/&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Action Documentation: &lt;a href=&#34;https://docs.github.com/en/actions&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.github.com/en/actions&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Recommended Reading&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;recommended-reading&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#recommended-reading&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.tech/series/postman-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Start Series for API Automation Testing Using Postman&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.tech/series/pytest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Start Series for API Automation Testing Using Pytest&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.tech/series/rest-assured-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Start Series for API Automation Testing Using SuperTest&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.tech/series/supertest-api-automation-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Start Series for API Automation Testing Using Rest Assured&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://naodeng.tech/series/gatling-performance-testing-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Start Series for Performance Testing Using Gatling&lt;svg class=&#34;hx:inline hx:rtl:rotate-270 hx:align-baseline&#34; height=&#34;1em&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; viewBox=&#34;0 0 24 24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+ &lt;path d=&#34;m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
     </item>
+    
   </channel>
 </rss>

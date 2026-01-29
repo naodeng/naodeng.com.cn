@@ -1,0 +1,252 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件测试同学 – 软件测试</title>
+    <link>http://localhost:1313/zh/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 软件测试 on 软件测试同学</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/zh/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>软件研发质量中的二八法则</title>
+      <link>http://localhost:1313/zh/blog/others/80-20-rule/</link>
+      <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/80-20-rule/</guid>
+      <description>
+        
+        
+        &lt;h3&gt;什么是二八法则&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;什么是二八法则&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e4%bb%80%e4%b9%88%e6%98%af%e4%ba%8c%e5%85%ab%e6%b3%95%e5%88%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;二八法则，也被称为帕累托法则（Pareto principle），是一种经济学原理和管理学理论，描述了一种观察结果：80% 的结果往往来自于 20% 的原因。这个法则最初由意大利经济学家维尔弗雷多·帕累托（Vilfredo Pareto）提出。&lt;/p&gt;
+&lt;p&gt;二八法则可以应用于各个领域，包括经济、生产、销售、时间管理等。具体来说，它意味着一个系统或者群体中，少数重要的因素往往对于大部分结果产生了主要的影响，而其余的因素只起到了次要的作用。换句话说，大部分的产出、收益或者结果来自于少数关键的因素或者部分。&lt;/p&gt;
+&lt;p&gt;举个例子，二八法则可以应用于销售领域。80% 的销售额往往来自于 20% 的顾客，或者说 80% 的问题往往来自于 20% 的产品。这意味着经营者可以通过专注于那些最重要的 20% 顾客或产品，获得最大的收益。&lt;/p&gt;
+&lt;p&gt;二八法则的应用还可以帮助人们更有效地管理时间。根据这个原理，80% 的成果往往来自于 20% 的时间和精力投入。因此，人们可以通过识别那些最重要的任务和活动，并优先处理它们，来提高工作效率和成果。&lt;/p&gt;
+&lt;p&gt;需要注意的是，二八法则的具体数字并不一定是严格的 80-20 比例，这只是一个常见的例子。在实际应用中，比例可能会有所不同，但基本思想保持一致：少数重要的因素或者部分对于整体结果起到了关键作用。&lt;/p&gt;
+&lt;h3&gt;软件研发过程中的二八法则&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;软件研发过程中的二八法则&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bd%af%e4%bb%b6%e7%a0%94%e5%8f%91%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84%e4%ba%8c%e5%85%ab%e6%b3%95%e5%88%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在软件研发中，二八法则可以应用于多个方面，包括功能开发、缺陷修复、需求管理和团队效率等。以下是一些常见的应用场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;功能开发：根据二八法则，80% 的用户使用率通常来自于 20% 的核心功能。在软件开发过程中，团队可以优先开发和完善这些核心功能，以满足大部分用户的需求。这有助于提高产品的可用性和用户体验。&lt;/li&gt;
+&lt;li&gt;缺陷修复：类似地，80% 的软件缺陷往往由 20% 的核心功能引起。因此，在缺陷修复过程中，团队应该重点关注那些最常见、最严重或者影响最广泛的缺陷。这有助于快速改善软件的质量和稳定性。&lt;/li&gt;
+&lt;li&gt;需求管理：根据二八法则，80% 的用户需求通常来自于 20% 的关键需求。在需求管理过程中，团队应该专注于梳理和管理那些最重要、最紧急的需求，确保其优先级得到合理的安排。这有助于提高项目的交付价值和满足用户期望。&lt;/li&gt;
+&lt;li&gt;团队效率：二八法则也可以应用于团队效率的管理。根据这个原则，80% 的工作成果往往来自于 20% 的高效工作时间。团队可以通过优化工作流程、减少低价值的任务和降低工作负荷，来提高团队的整体效率和生产力。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要注意的是，二八法则在软件研发中的具体应用可能会因项目的特点、复杂性和业务需求而有所不同。团队应该根据具体情况灵活运用这个原则，以达到最佳的开发效果和资源利用。同时，综合考虑其他因素，如用户反馈、市场需求和团队能力等，以实现整体的项目成功。&lt;/p&gt;
+&lt;h3&gt;软件研发质量中的二八法则&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;软件研发质量中的二八法则&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bd%af%e4%bb%b6%e7%a0%94%e5%8f%91%e8%b4%a8%e9%87%8f%e4%b8%ad%e7%9a%84%e4%ba%8c%e5%85%ab%e6%b3%95%e5%88%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在软件质量管理中，二八法则可以应用于缺陷管理、测试策略和持续改进等方面。以下是一些常见的应用场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;缺陷管理：根据二八法则，80% 的缺陷通常来自于 20% 的功能模块或者代码区域。在软件质量管理过程中，团队应该重点关注那些最容易引发缺陷的核心功能或者代码部分。这有助于提高缺陷发现和修复的效率，确保关键功能的质量和稳定性。&lt;/li&gt;
+&lt;li&gt;测试策略：根据二八法则，80% 的软件缺陷往往由 20% 的核心功能或者测试用例引起。在测试策略制定过程中，团队可以优先选择那些最关键、最具代表性的功能进行测试。同时，重点关注那些最有可能引发缺陷的测试用例，以提高测试覆盖和效果。&lt;/li&gt;
+&lt;li&gt;持续改进：二八法则也可以应用于持续改进的过程中。根据这个原则，80% 的改进效果通常来自于 20% 的关键改进措施。团队应该重点关注那些最重要、最有影响力的改进项目，以最大程度地提升软件质量和用户体验。&lt;/li&gt;
+&lt;li&gt;用户反馈和需求：根据二八法则，80% 的用户满意度通常来自于 20% 的关键功能或者需求。在软件质量管理中，团队应该重点关注那些对用户最重要、最有价值的功能和需求。通过积极收集用户反馈和需求，团队可以针对性地改进和优化这些关键领域，提升软件的质量和用户满意度。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要注意的是，二八法则在软件质量管理中的具体应用可能会因项目的特点、复杂性和业务需求而有所不同。团队应该根据具体情况灵活运用这个原则，并结合其他质量管理方法和工具，以实现最佳的软件质量和用户体验。&lt;/p&gt;
+&lt;h3&gt;软件测试中的二八法则&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;软件测试中的二八法则&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%e4%b8%ad%e7%9a%84%e4%ba%8c%e5%85%ab%e6%b3%95%e5%88%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在软件测试中，二八法则可以被应用于缺陷定位和优先级管理。根据这个原则，大约 80% 的缺陷通常来自于 20% 的功能模块或测试用例。这意味着测试团队可以通过重点关注那些最有可能引发缺陷的关键功能，以及那些覆盖最广泛、最重要的测试用例，来获得最佳的测试覆盖和缺陷发现效果。&lt;/p&gt;
+&lt;p&gt;具体应用二八法则的方法包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;重点测试关键功能：根据系统的复杂性和业务重要性，确定关键的功能模块或者业务流程。将更多的测试资源和时间分配给这些关键功能，以确保其质量和稳定性。&lt;/li&gt;
+&lt;li&gt;优先处理高风险区域：通过分析过往的缺陷数据、用户反馈和业务需求，确定系统中最容易出现问题的区域。将更多的测试活动放在这些高风险区域，以提前发现和修复潜在的问题。&lt;/li&gt;
+&lt;li&gt;选择关键测试用例：在测试用例设计和执行过程中，根据业务价值、功能复杂度和影响范围等因素，选择那些最具代表性和最重要的测试用例进行执行。确保这些关键测试用例的覆盖率和测试深度，以有效检测潜在的缺陷。&lt;/li&gt;
+&lt;li&gt;精细化缺陷管理：将测试团队的精力集中在那些最关键、最严重的缺陷上，确保这些缺陷得到及时的处理和修复。同时，对于一些次要的或影响较小的缺陷，可以在资源允许的情况下进行适当的延后处理，以保证测试团队的效率和优先级的合理分配。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要注意的是，二八法则在软件测试中的应用并非严格的数值比例，具体的比例可能会因项目的特点、复杂性和风险等因素而有所不同。测试团队应根据具体情况灵活运用这个原则，以实现最佳的测试效果和资源利用。&lt;/p&gt;
+&lt;h4&gt;如何优化软件研发质量中的二八法则&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;如何优化软件研发质量中的二八法则&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96%e8%bd%af%e4%bb%b6%e7%a0%94%e5%8f%91%e8%b4%a8%e9%87%8f%e4%b8%ad%e7%9a%84%e4%ba%8c%e5%85%ab%e6%b3%95%e5%88%99&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;要优化软件质量管理中的二八法则应用，可以考虑以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据驱动决策：收集和分析准确、全面的数据是优化的基础。通过使用测试管理工具、缺陷跟踪系统和用户反馈渠道等，获取有关缺陷、功能使用率、用户需求等方面的数据。这样可以更准确地确定哪些功能模块或代码区域是关键的，从而更有针对性地进行测试和改进。&lt;/li&gt;
+&lt;li&gt;重点关注核心功能：根据数据分析的结果，重点关注那些最关键、最常用的功能模块或代码区域。在测试过程中，为这些核心功能分配更多的资源和测试覆盖，以确保其质量和稳定性。&lt;/li&gt;
+&lt;li&gt;细化测试策略：根据数据分析和风险评估，制定细化的测试策略。考虑到功能的重要性、复杂性和用户影响，确定关键测试用例，并确保其充分覆盖核心功能。同时，可以利用自动化测试工具和技术，提高测试效率和覆盖率。&lt;/li&gt;
+&lt;li&gt;高效缺陷管理：建立有效的缺陷管理流程，确保缺陷能够及时被跟踪、分析和修复。优先处理那些最严重、最影响用户体验的缺陷，并跟踪缺陷修复的进度和效果。同时，进行缺陷分析，找出常见的缺陷模式和根本原因，以便改进开发过程和减少类似缺陷的再次发生。&lt;/li&gt;
+&lt;li&gt;用户参与和反馈：积极与用户进行互动，了解他们的需求、问题和意见。通过用户调研、用户体验测试和用户反馈渠道，获取用户的反馈和建议。将用户需求和反馈作为优化软件质量管理的重要依据，并将其纳入开发和改进的决策过程中。&lt;/li&gt;
+&lt;li&gt;持续改进和学习：软件质量管理是一个持续改进的过程。团队应该定期评估和反思当前的质量管理实践，寻找改进的机会。借鉴行业的最佳实践，关注新技术和工具的发展，不断学习和提升团队的能力和水平。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综合运用以上策略，可以优化软件质量管理中的二八法则应用，提高软件的质量和用户满意度。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>敏捷测试的 30 天挑战</title>
+      <link>http://localhost:1313/zh/blog/others/30-days-of-agile-testing/</link>
+      <pubDate>Mon, 30 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/30-days-of-agile-testing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;如果你的项目是采用敏捷测试，那么欢迎加入很棒的 30 天敏捷测试挑战。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;以下是 30 个挑战的列表，每月每天一个，打印下面的列表，把它保存在某个地方。打印出来。把它贴在墙上。让我们这样做吧！&lt;/p&gt;
+&lt;h2&gt;规则是什么？&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;规则是什么&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%a7%84%e5%88%99%e6%98%af%e4%bb%80%e4%b9%88&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;目标是尽可能多地的完成挑战。您可以在自己的时间范围和能力范围内做到这一点。&lt;/p&gt;
+&lt;p&gt;您可能有图像可以分享，博客文章，视频，状态更新，无论它是什么！来参加吧！&lt;/p&gt;
+&lt;p&gt;以下是分享进度的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在微博和朋友圈上 - 使用**#30DaysOfTesting**标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;30 天敏捷测试列表&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;30-天敏捷测试列表&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#30-%e5%a4%a9%e6%95%8f%e6%8d%b7%e6%b5%8b%e8%af%95%e5%88%97%e8%a1%a8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 1&lt;/td&gt;
+          &lt;td&gt;Buy an agile testing related book and share something you&amp;rsquo;ve learnt by day 30 &lt;br&gt;买一本敏捷测试相关的书，并在第 30 天结束时分享你的所学&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 2&lt;/td&gt;
+          &lt;td&gt;Create a mindmap, document, diagram or sketchnote about what you think agile testing is&lt;br&gt;用图表或文档的方式列出你理解的敏捷测试&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 3&lt;/td&gt;
+          &lt;td&gt;Find a video on YouTuBe about agile testing, then watch it!&lt;br&gt;看一个敏捷测试的视频&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 4&lt;/td&gt;
+          &lt;td&gt;Read the agile manifesto and reflect on the implications for your role&lt;br&gt;读敏捷宣言，并反思对你角色的影响&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 5&lt;/td&gt;
+          &lt;td&gt;Pair with a developer on a feature&lt;br&gt;跟 Dev pair&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 6&lt;/td&gt;
+          &lt;td&gt;Map out what your exploratory testing looks like, compare it to what other testers do&lt;br&gt;列出你理解的探索式测试，并与其他人员的进行比较&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 7&lt;/td&gt;
+          &lt;td&gt;Find a visual way of representing your tests - e.g. A mind map, diagram, model, etc&lt;br&gt;找一个可视化的方式展示你的测试&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 8&lt;/td&gt;
+          &lt;td&gt;Speak to a developer about a bug you found instead of loging it in the tracking system&lt;br&gt;跟 dev 直接说你发现的 bug，而不是在 bug 管理系统里记录&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 9&lt;/td&gt;
+          &lt;td&gt;Pair whth a developer on a code review. Can you identify any risks?&lt;br&gt;参加 dev 的 code review。你能定位任何的风险吗？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 10&lt;/td&gt;
+          &lt;td&gt;Learn where the application logs are and how to read them.&lt;br&gt;了解应用程序的 log 记录在哪里，并学习看 log。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 11&lt;/td&gt;
+          &lt;td&gt;Find out what customers are saying about your product. What did you learn?&lt;br&gt;了解客户对你的产品的评价。从中学到了什么？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 12&lt;/td&gt;
+          &lt;td&gt;What test documentation does your team have? How can you improve it?&lt;br&gt;你的团队有什么样的测试文档？你觉得可以怎么改进一下？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 13&lt;/td&gt;
+          &lt;td&gt;Learn to use a tool that your developers use - e.g. an IDE&lt;br&gt;学习使用 Dev 在用的工具&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 14&lt;/td&gt;
+          &lt;td&gt;How can you deliver greater value to your customer?&lt;br&gt;如何能够交付更多的价值给客户？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 15&lt;/td&gt;
+          &lt;td&gt;How can you make your testing processes (more) lean?&lt;br&gt;如何能让你的测试流程更加精益？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 16&lt;/td&gt;
+          &lt;td&gt;What barriers do you feel exist in testing in agile?&lt;br&gt;你感觉敏捷测试中存在什么障碍？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 17&lt;/td&gt;
+          &lt;td&gt;Map out your current team structure. How does it compare to other teams?&lt;br&gt;绘制出您当前的团队结构。它与其他团队相比如何？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 18&lt;/td&gt;
+          &lt;td&gt;How can you make testing jobs easier?&lt;br&gt;如何让测试工作变得更轻松？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 19&lt;/td&gt;
+          &lt;td&gt;How can you make jobs for your team easier?&lt;br&gt;如何让你的团队工作更轻松？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 20&lt;/td&gt;
+          &lt;td&gt;Investigate what is in your and your team&amp;rsquo;s tool kit&lt;br&gt;调查你和你团队使用的工具有哪些&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 21&lt;/td&gt;
+          &lt;td&gt;How are you managing your testing, is it really agile?&lt;br&gt;你如何管理你的测试，真的敏捷吗？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 22&lt;/td&gt;
+          &lt;td&gt;Find out what testing is being done by other team members.&lt;br&gt;了解其他团队成员正在进行的测试&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 23&lt;/td&gt;
+          &lt;td&gt;What agile strategies are there for managing tests?&lt;br&gt;有哪些管理测试的敏捷策略？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 24&lt;/td&gt;
+          &lt;td&gt;Look for a task that can be automated.&lt;br&gt;找一个可以自动化的 task.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 25&lt;/td&gt;
+          &lt;td&gt;What can&amp;rsquo;t you automate? Communicate that to your team&lt;br&gt;什么是你不能自动化的？跟团队沟通一下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 26&lt;/td&gt;
+          &lt;td&gt;What does your Test Plan look like, what format do you use?&lt;br&gt;你的测试计划什么样的，使用的什么格式？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 27&lt;/td&gt;
+          &lt;td&gt;Look into zero bug tolerance, is this something your team could do?&lt;br&gt;了解 bug 零容忍，这是你的团队可以做的吗？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 28&lt;/td&gt;
+          &lt;td&gt;What learning culture exist in your company? How can you contribute to it?&lt;br&gt;公司的学习文化是什么样的？你如何为此贡献？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 29&lt;/td&gt;
+          &lt;td&gt;What columns do you have on your work tracker or kanban board?&lt;br&gt;你们的看板上有哪些 column？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 30&lt;/td&gt;
+          &lt;td&gt;What action does your team take on a red build?&lt;br&gt;build 红了团队会采取什么 action？&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Day 31&lt;/td&gt;
+          &lt;td&gt;BONUS: Debrief your whole team on your last session of testing&lt;br&gt;跟整个团队汇报你的测试&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;                                                    |
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

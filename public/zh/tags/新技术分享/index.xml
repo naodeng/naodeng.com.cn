@@ -1,0 +1,84 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件测试同学 – 新技术分享</title>
+    <link>http://localhost:1313/zh/tags/%E6%96%B0%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</link>
+    <description>Recent content in 新技术分享 on 软件测试同学</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 22 Mar 2023 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/zh/tags/%E6%96%B0%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>不同类型 AI 申请加入等待列表入口</title>
+      <link>http://localhost:1313/zh/blog/others/different-types-of-ai-join-waiting-list/</link>
+      <pubDate>Wed, 22 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/different-types-of-ai-join-waiting-list/</guid>
+      <description>
+        
+        
+        &lt;h3&gt;Google Bard&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;google-bard&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#google-bard&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Google Bard 进入公开测试版。测试申请中~~~&lt;/p&gt;
+&lt;p&gt;申请链接：https://bard.google.com/&lt;/p&gt;
+&lt;p&gt;谷歌发布 Bard，这是其在创建人工智能竞赛中的竞争对手推出 ChatGPT 之后的放的大招。&lt;/p&gt;
+&lt;p&gt;经过多年的谨慎开发，这家互联网巨头将授予用户访问聊天机器人的权限，以追逐竞争对手 OpenAI 和微软的引人注目的首次亮相之后的惊艳表现。&lt;/p&gt;
+&lt;h2&gt;百度文心一言&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;百度文心一言&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%99%be%e5%ba%a6%e6%96%87%e5%bf%83%e4%b8%80%e8%a8%80&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;百度于 3 月 16 日正式公布大语言模型“文心一言”，这是一款基于人工智能技术的智能对话系统，可进行语义理解、智能问答和情感交流等多种形式的对话。&lt;/p&gt;
+&lt;p&gt;3 月 16 日起，首批用户即可通过邀请测试码在文心一言官网体验产品，后续将陆续开放给更多用户。
+此外，百度智能云即将面向企业客户开放文心一言 API 接口调用服务。&lt;/p&gt;
+&lt;p&gt;3 月 16 日起正式开放预约，搜索“百度智能云”进入官网，可申请加入文心一言云服务测试。&lt;/p&gt;
+&lt;p&gt;申请链接：https://yiyan.baidu.com/welcome&lt;/p&gt;
+&lt;p&gt;合作申请链接：https://cloud.baidu.com/survey_summit/wenxin.html?track=C856571&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>新技术分享：Mac OS 下 edge 浏览器开启新 UI</title>
+      <link>http://localhost:1313/zh/blog/others/edge-enablenew-ui/</link>
+      <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh/blog/others/edge-enablenew-ui/</guid>
+      <description>
+        
+        
+        &lt;ul&gt;
+&lt;li&gt;打开 edge 浏览器&lt;/li&gt;
+&lt;li&gt;在地址栏输入命令
+&lt;code&gt;edge://flags/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 flags 的页面输入 11 进行搜索&lt;/li&gt;
+&lt;li&gt;在搜索结果下选择“Show Windows 11 visual effects in title bar and toolbar”将状态变更为启用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/waitnoww/hexoblogimg/aceda0b251c09e0527f5491c1b516a02c7464b4e/img1/WX20230215-221108%402x.png&#34; alt=&#34;img&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;重启浏览器，即可看到新的 edge 浏览器 UI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;欢迎关注软件测试同学的公众号“&lt;strong&gt;软件测试同学&lt;/strong&gt;”，原创 QA 技术文章第一时间推送。&lt;/p&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;center&gt;
+  &lt;img src=&#34;https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015&#39;QR Code for 公众号.jpg&#34; style=&#34;width: 100px;&#34;&gt;
+&lt;/center&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;!-- markdownlint-disable MD045 --&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

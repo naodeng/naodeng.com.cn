@@ -1,0 +1,36 @@
+{{ define "main" }}
+  <div class="hx:mx-auto hx:flex hextra-max-page-width">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" . }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        {{ if .Title }}<h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
+        <div class="content hx:mb-8">{{ .Content }}</div>
+        {{- $posts := where .Site.RegularPages "Section" "blog" -}}
+        {{- $posts = sort $posts "Date" "desc" -}}
+        {{- $s := newScratch -}}
+        {{- $s.Set "prev" "" -}}
+        {{- range $posts }}
+        {{- $y := .Date.Format "2006" -}}
+        {{- if ne $y ($s.Get "prev") }}
+        {{- if ne ($s.Get "prev") "" }}
+          </ul>
+        </section>
+        {{- end }}
+        <section class="hx:mb-10">
+          <h2 class="hx:text-2xl hx:font-bold hx:mt-8 hx:mb-4 hx:text-slate-900 hx:dark:text-slate-100">{{ $y }}</h2>
+          <ul class="hx:list-none hx:space-y-2 hx:pl-0">
+        {{- $s.Set "prev" $y -}}
+        {{- end }}
+            <li class="hx:flex hx:items-baseline">
+              <span class="hx:opacity-60 hx:text-sm hx:shrink-0" style="min-width: 3.5rem; margin-right: 1.25rem;">{{ .Date.Format "01-02" }}</span>
+              <span class="hx:opacity-50 hx:shrink-0" style="margin-right: 0.75rem;" aria-hidden="true">·</span>
+              <a class="hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:decoration-from-font" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+        {{- end }}
+          </ul>
+        </section>
+      </main>
+    </article>
+  </div>
+{{ end }}

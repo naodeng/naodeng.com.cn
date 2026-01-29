@@ -1,268 +1,231 @@
-baseURL: "https://naodeng.com.cn/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-title: Nao's Blog
-pagination:
-  pagerSize: 7
-defaultContentLanguage: en
+# Hextra 主题配置 - Nao's Blog
+# https://imfing.github.io/hextra/docs/guide/configuration/
+
+baseURL: "https://naodeng.com.cn/"
+title: "Nao's Blog"
+
 theme: hextra
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
+enableGitInfo: true
+hasCJKLanguage: true
+
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-googleAnalytics: G-JBX883ZDJJ
 
+# Google Analytics
+services:
+  googleAnalytics:
+    ID: G-JBX883ZDJJ
+  instagram:
+    disableInlineCSS: true
+  x:
+    disableInlineCSS: true
+
+# 输出格式（Hextra 使用 FlexSearch，无需 home JSON）
+outputs:
+  home: [HTML, RSS]
+  page: [HTML]
+  section: [HTML, RSS]
+
+defaultContentLanguage: en
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    title: "Nao's Blog"
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+
+  zh:
+    languageName: "中文"
+    languageCode: zh-CN
+    weight: 2
+    title: "软件测试同学"
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+
+# 顶栏菜单（博客、归档、搜索、GitHub、主题/语言）
+menu:
+  main:
+    - identifier: blog
+      pageRef: /blog
+      weight: 1
+    - identifier: archive
+      pageRef: /archives
+      weight: 2
+    - identifier: showcase
+      pageRef: /showcase
+      weight: 3
+    - identifier: about
+      pageRef: /about
+      weight: 4
+    - identifier: search
+      weight: 5
+      params:
+        type: search
+    - identifier: github
+      url: "https://github.com/naodeng"
+      weight: 11
+      params:
+        icon: github
+    - identifier: theme-toggle
+      weight: 40
+      params:
+        type: theme-toggle
+        label: false
+    - identifier: language-switch
+      weight: 41
+      params:
+        type: language-switch
+        label: false
+
+  # 侧栏额外链接（若有文档型内容可在此扩展）
+  sidebar:
+    - identifier: more
+      params:
+        type: separator
+      weight: 1
+    - identifier: sponsor
+      pageRef: "/sponsor"
+      weight: 2
+    - identifier: github-sidebar
+      url: "https://github.com/naodeng"
+      weight: 3
+      params:
+        type: link
+
+# 站点参数（Hextra 结构）
+params:
+  description: "naodeng, naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，API 测试，自动化测试，AI QA Prompt"
+  author: "NaoDeng"
+  env: production
+
+  externalLinkDecoration: true
+
+  # 导航栏（技术博客风格：Logo + 标题 + 副标题）
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    # 副标题 / tagline：留空则使用 i18n 的 tagline
+    tagline: ""
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      width: 40
+      height: 32
+      link: /
+    width: wide
+
+  # 主题切换：light | dark | system
+  theme:
+    default: system
+    displayToggle: true
+
+  # 页脚
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: true
+    width: normal
+
+  # 最后更新日期
+  displayUpdatedDate: true
+  dateFormat: "2006-01-02"
+
+  # 搜索（FlexSearch）
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  # 编辑页面链接
+  editURL:
+    enable: true
+    base: "https://github.com/naodeng/naodeng.com.cn/edit/main/content"
+
+  # 博客列表
+  blog:
+    list:
+      displayTags: true
+      sortBy: date
+      sortOrder: desc
+      pagerSize: 7
+    article:
+      displayPagination: true
+      displayTags: true
+
+  # 目录与标签
+  toc:
+    displayTags: true
+
+  # 代码高亮与复制
+  highlight:
+    copy:
+      enable: true
+      display: hover
+
+  # 页面宽度：full | wide | normal
+  page:
+    width: normal
+
+  # 统计与验证
+  analytics:
+    umami:
+      enable: true
+      serverURL: "https://analytics.naodeng.com.cn"
+      websiteID: "b3b285c9-3c35-4398-9252-91bb70560b84"
+    google:
+      SiteVerificationTag: "google5e9a7c9479924ed2"
+    baidu:
+      SiteVerificationTag: "codeva-2siuZUZUWf"
+    cloudflare:
+      enable: true
+      token: "56f727a52e3349f6947d888452fecc8a"
+
+  # Open Graph 等
+  images: []
+
+# Sitemap
 sitemap:
   changefreq: daily
   priority: 0.8
 
+# Minify（可选保留）
 minify:
   disableCSS: false
   disableHTML: false
-  disableJS: false
-  disableJSON: false
-  disableSVG: false
-  disableXML: false
   minifyOutput: false
-  tdewolff:
-    css:
-      keepCSS2: true
-      precision: 0
-    html:
-      keepComments: false
-      keepConditionalComments: true
-      keepDefaultAttrVals: true
-      keepDocumentTags: true
-      keepEndTags: true
-      keepQuotes: false
-      keepWhitespace: false
-      templateDelims:
-      - ""
-      - ""
-    js:
-      keepVarNames: false
-      precision: 0
-      version: 2022
-    json:
-      keepNumbers: false
-      precision: 0
-    svg:
-      keepComments: false
-      precision: 0
-    xml:
-      keepWhitespace: false
-
-languages:
-    en:
-        languageName: "🇬🇧English"
-        weight: 1
-        taxonomies:
-          category: categories
-          tag: tags
-          series: series
-        menu:
-            main:
-                - name: Archive
-                  url: archives
-                  weight: 5
-                - name: Search
-                  url: search/
-                  weight: 10
-                - name: Tags
-                  url: tags/
-                  weight: 10
-                - name: Series
-                  url: series/
-                  weight: 10
-                - name: QA Prompt
-                  url: https://qaprompt.inaodeng.com/en/
-                - name: Status
-                  url: https://status.naodeng.com.cn
-                - name: Dashboard
-                  url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
-
-    zh:
-        languageName: "🇨🇳中文"
-        weight: 2
-        title: 软件测试同学
-        taxonomies:
-          category: ZHcategories
-          tag: ZHtags
-          series: ZHseries
-        menu:
-            main:
-                - name: 归档
-                  url: archives/
-                  weight: 5
-                - name: 标签
-                  url: zhtags
-                  weight: 10
-                - name: 搜索
-                  url: search/
-                  weight: 10
-                - name: 分类
-                  url: zhcategories
-                  weight: 10
-                - name: 系列
-                  url: zhseries
-                  weight: 10
-                - name: 测试提示词
-                  url: https://qaprompt.inaodeng.com/
-                - name: 状态
-                  url: https://status.naodeng.com.cn
-                - name: 网站统计
-                  url: https://analytics.naodeng.com.cn/share/OksEL34H/naodeng.com.cn
-        Params:
-         homeInfoParams:
-            Title: "软件测试同学的博客"
-            Content: >
-              欢迎来到软件测试同学的博客。
-
-              - 我目前参与的自动化测试启动项目 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
-              
-              - 我目前正在学习 **AI QA Prompt**
-
-              - 微信公众号: **软件测试同学**
-              
-              - 联系我 **chat@naodeng.com.cn**
-
-              - 赞助我[**成为一个支持者**](https://naodeng.com.cn/sponsor)
-
-outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON
-
-params:
-    env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "naodeng,naodeng.com.cn，邓闹，dengnao，个人博客，软件测试，性能测试，接口测试，接口自动化测试，测试教程，API 测试，API 自动化测试，测试工具，自动化测试，敏捷测试，测试管理，测试资讯，API testing,performance testing,automation testing"
-    author: NaoDeng
-
-    defaultTheme: auto
-    # disableThemeToggle: true
-    ShowShareButtons: true
-    ShowReadingTime: true
-    # disableSpecial1stPost: true
-    displayFullLangName: true
-    ShowPostNavLinks: true
-    ShowBreadCrumbs: true
-    ShowCodeCopyButtons: true
-    ShowRssButtonInSectionTermList: true
-    ShowToc: true
-    comments: true
-    images: ["papermod-cover.png"]
-    
-    analytics:
-      umami:
-        enable: true
-        website_id: 'b3b285c9-3c35-4398-9252-91bb70560b84'  
-        url: 'https://analytics.naodeng.com.cn/hugo'
-      cloudflare:
-        enable: true
-        token: '56f727a52e3349f6947d888452fecc8a'
-      google:
-        SiteVerificationTag: "google5e9a7c9479924ed2"
-      baidu:
-        SiteVerificationTag: "codeva-2siuZUJUWf"
-        tongjicode: "93a34d905469b810e5bae990720e7139"
-
-    homeInfoParams:
-        Title: "Nao's Blog"
-        Content: >
-            Welcome to Nao's Blog.
-
-            - I’m currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories)
-            
-            - I’m currently learning **AI QA Prompt**
-            
-            - I regularly write articles on [https://naodeng.com.cn/](https://naodeng.com.cn) and [https://inaodeng.com/](https://inaodeng.com) 
-            
-            - How to reach me **chat@naodeng.com.cn**
-            
-            - Fun fact **Quality Analyst**
-
-            - Support me by [**becoming a sponsor**](https://naodeng.com.cn/sponsor)
-
-    socialIcons:
-        - name: github
-          url: "https://github.com/naodeng"
-        - name: medium
-          url: "https://naodeng.medium.com"
-        - name: twitter
-          url: "https://twitter.com/inaodeng"
-        - name: KoFi
-          url: "https://ko-fi.com/naodeng"
-        - name: Rss
-          url: "index.xml"
-
-    editPost:
-        URL: "https://github.com/naodeng/naodeng.com.cn/tree/main/content"
-        Text: "Suggest Changes" # edit text
-        appendFilePath: true # to append file path to Edit link
-
-    # label:
-    #     text: "Home"
-    #     icon: icon.png
-    #     iconHeight: 35
-
-    assets:
-        disableHLJS: true
-    #     favicon: "<link / abs url>"
-    #     favicon16x16: "<link / abs url>"
-    #     favicon32x32: "<link / abs url>"
-    #     apple_touch_icon: "<link / abs url>"
-    #     safari_pinned_tab: "<link / abs url>"
-
-    # cover:
-    #     hidden: true # hide everywhere but not in structured data
-    #     hiddenInList: true # hide on list pages and home
-    #     hiddenInSingle: true # hide on single page
-
-    # fuseOpts:
-    #     isCaseSensitive: false
-    #     shouldSort: true
-    #     location: 0
-    #     distance: 1000
-    #     threshold: 0.4
-    #     minMatchCharLength: 0
-    #     limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
-    #     keys: ["title", "permalink", "summary", "content"]
 
 markup:
-    goldmark:
-        renderer:
-            unsafe: true
-    highlight:
-        noClasses: false
-        # anchorLineNos: true
-        # codeFences: true
-        # guessSyntax: true
-        # lineNos: true
-        # style: monokai
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
 
 privacy:
-    vimeo:
-        disabled: false
-        simple: true
-
-    twitter:
-        disabled: false
-        enableDNT: true
-        simple: true
-
-    instagram:
-        disabled: false
-        simple: true
-
-    youtube:
-        disabled: false
-        privacyEnhanced: true
-
-services:
-    instagram:
-        disableInlineCSS: true
-    twitter:
-        disableInlineCSS: true
+  vimeo:
+    disabled: false
+    simple: true
+  x:
+    disabled: false
+    enableDNT: true
+    simple: true
+  instagram:
+    disabled: false
+    simple: true
+  youtube:
+    disabled: false
+    privacyEnhanced: true
