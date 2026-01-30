@@ -1,0 +1,176 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getCollection } from "astro:content";
+import PageHeadline from "@/components/PageHeadline.astro";
+import {
+  SITEMAP_PAGE_TITLE,
+  SITEMAP_XML_LABEL,
+  NAV_HOME,
+  NAV_ABOUT,
+  NAV_ARCHIVE,
+  NAV_PROJECTS,
+  NAV_SPONSOR,
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const title = t(SITEMAP_PAGE_TITLE);
+
+// 当前语言的博文列表（用于站点地图展示）
+const posts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// 当前语言的标签集合
+const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <div class="sitemap-content">
+    <!-- 主要页面 -->
+    <section class="sitemap-section">
+      <h2 class="section-title">{locale === "zh-cn" ? "主要页面" : "Main Pages"}</h2>
+      <ul class="link-list">
+        <li><a href={getRelativeLocaleUrl(locale, "/")}>{t(NAV_HOME)}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/about")}>{t(NAV_ABOUT)}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/archive")}>{t(NAV_ARCHIVE)}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/blog")}>{locale === "zh-cn" ? "博客" : "Blog"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/projects")}>{t(NAV_PROJECTS)}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/sponsor")}>{t(NAV_SPONSOR)}</a></li>
+      </ul>
+    </section>
+
+    <!-- 按标签浏览 -->
+    {tags.length > 0 && (
+      <section class="sitemap-section">
+        <h2 class="section-title">{locale === "zh-cn" ? "按标签浏览" : "Browse by Tag"}</h2>
+        <div class="tags-wrap">
+          {tags.map((tag) => (
+            <a href={getRelativeLocaleUrl(locale, `/tags/${tag}`)} class="tag-pill">#{tag}</a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- 博文列表（可折叠或截断） -->
+    <section class="sitemap-section">
+      <h2 class="section-title">{locale === "zh-cn" ? "全部文章" : "All Posts"}</h2>
+      <ul class="post-list">
+        {posts.map((post) => {
+          const [, ...idParts] = post.id.split("/");
+          const url = getRelativeLocaleUrl(locale, `/blog/${idParts.join("/")}`);
+          return (
+            <li>
+              <a href={url}>{post.data.title}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    <!-- XML 站点地图 -->
+    <section class="sitemap-section xml-section">
+      <h2 class="section-title">{locale === "zh-cn" ? "搜索引擎" : "Search Engines"}</h2>
+      <p>
+        <a href="/sitemap-index.xml" target="_blank" rel="noopener noreferrer" class="xml-link">
+          {t(SITEMAP_XML_LABEL)}
+        </a>
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .sitemap-content {
+    margin-block-start: var(--sp-l);
+  }
+
+  .sitemap-section {
+    margin-block-end: var(--sp-l);
+    padding-block-end: var(--sp-m);
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-theme);
+    margin-block-end: var(--sp-m);
+  }
+
+  .link-list,
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .link-list li,
+  .post-list li {
+    margin-block: 0.5rem;
+  }
+
+  .link-list a,
+  .post-list a {
+    color: var(--color-main);
+    text-decoration: none;
+  }
+
+  .link-list a:hover,
+  .post-list a:hover {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+
+  .post-list {
+    max-height: 24rem;
+    overflow-y: auto;
+  }
+
+  .tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    color: var(--color-theme);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .tag-pill:hover {
+    background: var(--color-theme);
+    color: var(--color-base);
+  }
+
+  .xml-section p {
+    margin: 0;
+  }
+
+  .xml-link {
+    color: var(--color-theme);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .xml-link:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -2,7 +2,7 @@
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { SITE_TITLE, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE } from "@/consts";
+import { SITE_TITLE, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_SPONSOR } from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const locale = Astro.currentLocale as Lang;
@@ -50,6 +50,14 @@ const isActive = (path: string) =>
           class={isActive("/projects") ? "active" : null}
         >
           {t(NAV_PROJECTS)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/sponsor")}
+          class={isActive("/sponsor") ? "active" : null}
+        >
+          {t(NAV_SPONSOR)}
         </a>
       </li>
       <li>

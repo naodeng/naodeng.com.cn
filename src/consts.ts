@@ -62,6 +62,72 @@ export const NAV_ARCHIVE: Multilingual = {
   "zh-cn": "归档",
 };
 
+// 顶部导航：赞助
+export const NAV_SPONSOR: Multilingual = {
+  en: "Sponsor",
+  "zh-cn": "赞助",
+};
+
+// 归档页文案
+export const ARCHIVE_PAGE_TITLE: Multilingual = {
+  en: "Archive",
+  "zh-cn": "归档",
+};
+
+// 站点地图页文案
+export const SITEMAP_PAGE_TITLE: Multilingual = {
+  en: "Sitemap",
+  "zh-cn": "站点地图",
+};
+export const SITEMAP_XML_LABEL: Multilingual = {
+  en: "XML Sitemap (for search engines)",
+  "zh-cn": "XML 站点地图（供搜索引擎使用）",
+};
+
+// 赞助页文案
+export const SPONSOR_PAGE_TITLE: Multilingual = {
+  en: "Sponsor & Support",
+  "zh-cn": "赞助支持",
+};
+export const SPONSOR_WHY_TITLE: Multilingual = {
+  en: "Why Support Me?",
+  "zh-cn": "为什么需要您的支持？",
+};
+export const SPONSOR_WHY_BODY: Multilingual = {
+  en: `Awesome QA Prompt is a completely open-source project dedicated to providing high-quality AI prompt collections for the QA community. Your support will help us:
+- **Continuous Content Updates**: Keep the prompt library timely and professional
+- **Feature Expansion**: Add more testing types and framework support
+- **Multi-language Support**: Improve bilingual content in Chinese and English
+- **Documentation Enhancement**: Improve documentation quality and user experience
+- **Technical Maintenance**: Keep the website stable and optimize performance`,
+  "zh-cn": `Awesome QA Prompt 是一个完全开源的项目，致力于为 QA 社区提供高质量的 AI 提示词集合。您的支持将帮助我们：
+- **持续更新内容**：保持提示词库的时效性和专业性
+- **扩展功能**：添加更多测试类型和框架支持
+- **多语言支持**：完善中英文双语内容
+- **文档优化**：改进文档质量和用户体验
+- **技术维护**：保持网站稳定运行和性能优化`,
+};
+export const SPONSOR_METHODS_TITLE: Multilingual = {
+  en: "Ways to Sponsor",
+  "zh-cn": "赞助方式",
+};
+export const SPONSOR_BENEFITS_TITLE: Multilingual = {
+  en: "Sponsor Benefits",
+  "zh-cn": "赞助者权益",
+};
+export const SPONSOR_BENEFITS_BODY: Multilingual = {
+  en: `As a sponsor of the project, you will receive:
+- **Priority Support**: Get priority notifications for new features and content updates
+- **Thank You Email**: Receive a thank you email from the maintainer
+- **Sponsor List**: Display your name in the project README and website (optional)
+- **Feature Suggestions**: Priority consideration for your feature suggestions and needs`,
+  "zh-cn": `作为项目的赞助者，您将获得：
+- **优先支持**：优先获得新功能和内容的更新通知
+- **感谢邮件**：收到来自维护者的感谢邮件
+- **赞助者列表**：在项目 README 和网站中展示您的名字（可选）
+- **功能建议**：优先考虑您的功能建议和需求`,
+};
+
 // 项目展示页文案
 export const PROJECTS_PAGE_TITLE: Multilingual = {
   en: "Projects",
@@ -77,9 +143,21 @@ export const HOME_LATEST_POSTS: Multilingual = {
   en: "Latest posts",
   "zh-cn": "最新文章",
 };
+export const HOME_PROJECTS_TITLE: Multilingual = {
+  en: "Featured Projects",
+  "zh-cn": "精选项目",
+};
+export const HOME_TAGS_TITLE: Multilingual = {
+  en: "Popular Tags",
+  "zh-cn": "热门标签",
+};
 export const HOME_VIEW_ALL: Multilingual = {
   en: "View all posts",
   "zh-cn": "查看全部",
+};
+export const HOME_VIEW_ALL_PROJECTS: Multilingual = {
+  en: "View all projects",
+  "zh-cn": "查看全部项目",
 };
 
 // 关于页文案

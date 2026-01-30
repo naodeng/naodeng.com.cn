@@ -3,6 +3,8 @@
 
 .l-main {
   margin-block-start: var(--sp-l);
+  /* 留出页脚社交图标上浮空间，避免与「查看全部」等按钮重叠 */
+  padding-block-end: 4rem;
 }
 
 .l-content {
@@ -12,7 +14,5 @@
 }
 
 .l-footer {
-  position: sticky;
-  top: 100vh;
-  margin-block-start: calc(var(--sp-l) * 2);
+  margin-block-start: var(--sp-m);
 }

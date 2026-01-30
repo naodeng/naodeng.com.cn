@@ -22,96 +22,136 @@ export const getStaticPaths = () =>
 <Layout {title}>
   <PageHeadline {title} />
 
-  <ul class="project-list">
-    {PROJECTS_LIST.map((proj) => (
-      <li>
-        <article class="project-card">
-          <h2 class="project-name">
-            <a href={proj.url} target="_blank" rel="noopener noreferrer">
-              {t(proj.name)}
-              <span class="material-icons-sharp dir">open_in_new</span>
-            </a>
-          </h2>
-          <p class="project-tech">
-            <strong>{t(PROJECTS_TECH_STACK_LABEL)}:</strong> {t(proj.techStack)}
-          </p>
+  <div class="project-container">
+    <div class="project-grid">
+      {PROJECTS_LIST.map((proj) => (
+        <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-header">
+            <h2 class="project-name">{t(proj.name)}</h2>
+            <span class="external-icon">
+               <span class="material-icons-sharp">open_in_new</span>
+            </span>
+          </div>
+          
+          <div class="project-tech-tags">
+             {t(proj.techStack).split(/[、,，]/).map(tech => (
+               <span class="mini-tag">{tech.trim()}</span>
+             ))}
+          </div>
+          
           <p class="project-desc">{t(proj.description)}</p>
-          <a
-            href={proj.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="project-link"
-          >
-            {locale === "zh-cn" ? "查看仓库" : "View on GitHub"}
-          </a>
-        </article>
-      </li>
-    ))}
-  </ul>
+          
+          <div class="project-footer">
+            <span class="view-link">{locale === "zh-cn" ? "查看源码" : "View Source"}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
 </Layout>
 
 <style>
-  .project-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--sp-m) 0 0;
+  .project-container {
+    margin-block-start: var(--sp-l);
+  }
+  
+  .project-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+
+  .project-card {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-m);
-  }
-  .project-card {
     padding: var(--sp-m);
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
     border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .project-card:hover {
-    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
-    border-color: color-mix(in srgb, var(--color-theme) 25%, transparent);
-  }
-  .project-name {
-    font-size: 1.2rem;
-    margin-block-end: var(--sp-s);
-  }
-  .project-name a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25em;
-    color: var(--color-theme);
     text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
   }
-  .project-name a:hover {
-    text-decoration: underline;
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-theme);
+    box-shadow: 0 12px 40px -12px color-mix(in srgb, var(--color-theme) 25%, transparent);
   }
-  .project-name .material-icons-sharp {
-    font-size: 0.9em;
-    opacity: 0.7;
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-block-end: 0.75rem;
   }
-  .project-tech {
-    font-size: 0.95rem;
-    margin-block-end: var(--sp-s);
-    opacity: 0.95;
-  }
-  .project-tech strong {
-    font-weight: 700;
-  }
-  .project-desc {
-    margin-block-end: var(--sp-s);
-    line-height: 1.55;
-    font-size: 0.98rem;
-  }
-  .project-link {
-    display: inline-block;
-    font-size: 0.95rem;
-    font-weight: 600;
+
+  .project-name {
+    font-size: 1.35rem;
     color: var(--color-theme);
-    padding: 0.3em 0.6em;
-    border-radius: 6px;
-    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
-    transition: background 0.2s ease;
+    font-weight: 800;
+    line-height: 1.2;
   }
-  .project-link:hover {
-    background: color-mix(in srgb, var(--color-theme) 20%, transparent);
+
+  .external-icon {
+    color: var(--color-theme);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover .external-icon {
+    opacity: 1;
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-end: 1.25rem;
+  }
+
+  .mini-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    color: var(--color-theme);
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-block-end: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+
+  .view-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .view-link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+
+  .project-card:hover .view-link::after {
+    transform: translateX(4px);
   }
 </style>

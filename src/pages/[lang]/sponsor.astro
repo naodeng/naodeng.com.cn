@@ -1,0 +1,157 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { marked } from "marked";
+import {
+  SPONSOR_PAGE_TITLE,
+  SPONSOR_WHY_TITLE,
+  SPONSOR_WHY_BODY,
+  SPONSOR_METHODS_TITLE,
+  SPONSOR_BENEFITS_TITLE,
+  SPONSOR_BENEFITS_BODY,
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const title = t(SPONSOR_PAGE_TITLE);
+
+const whyBodyHtml = marked(t(SPONSOR_WHY_BODY), { gfm: true }) as string;
+const benefitsBodyHtml = marked(t(SPONSOR_BENEFITS_BODY), { gfm: true }) as string;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <section class="sponsor-section">
+    <h2 class="section-title">{t(SPONSOR_WHY_TITLE)}</h2>
+    <div class="prose" set:html={whyBodyHtml} />
+  </section>
+
+  <section class="sponsor-section">
+    <h2 class="section-title">{t(SPONSOR_METHODS_TITLE)}</h2>
+    
+    <div class="methods-grid">
+      <div class="method-card">
+        <h3>Buy Me A Coffee</h3>
+        <p>{locale === 'zh-cn' ? '推荐国际用户使用' : 'Recommended for international users'}</p>
+        <a href="https://www.buymeacoffee.com/naodeng" target="_blank" rel="noopener noreferrer" class="btn">
+          Buy Me A Coffee
+        </a>
+      </div>
+
+      <div class="method-card">
+        <h3>Ko-fi</h3>
+        <p>{locale === 'zh-cn' ? '支持一次性或定期赞助' : 'Support one-time or recurring sponsorships'}</p>
+        <a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" class="btn">
+          Ko-fi
+        </a>
+      </div>
+
+      <div class="method-card qr-card">
+        <h3>{locale === 'zh-cn' ? '微信支付' : 'WeChat Pay'}</h3>
+        <img src="/images/wechat-qr-code.png" alt="WeChat Pay QR Code" loading="lazy" />
+      </div>
+
+      <div class="method-card qr-card">
+        <h3>{locale === 'zh-cn' ? '支付宝' : 'Alipay'}</h3>
+        <img src="/images/alipay-qr-code.png" alt="Alipay QR Code" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsor-section">
+    <h2 class="section-title">{t(SPONSOR_BENEFITS_TITLE)}</h2>
+    <div class="prose" set:html={benefitsBodyHtml} />
+  </section>
+
+  <section class="sponsor-section">
+    <p class="tagline">
+      <strong>{locale === 'zh-cn' ? '让 AI 成为测试工程师最好的助手！ 🚀' : 'Let AI be the best assistant for test engineers! 🚀'}</strong>
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .sponsor-section {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(
+      in srgb,
+      var(--color-theme) 20%,
+      transparent
+    );
+  }
+  .section-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    color: var(--color-theme);
+    margin-block-end: var(--sp-m);
+  }
+  .prose :global(ul) {
+    padding-inline-start: 1.2em;
+  }
+  .prose :global(li) {
+    margin-block: 0.5em;
+  }
+  .prose :global(strong) {
+    font-weight: 800;
+  }
+
+  .methods-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    margin-block: var(--sp-m);
+  }
+  .method-card {
+    padding: var(--sp-m);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--sp-s);
+  }
+  .method-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-theme);
+  }
+  .method-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    background-color: var(--color-theme);
+    color: var(--color-base);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .qr-card img {
+    width: 100%;
+    max-width: 200px;
+    margin-inline: auto;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+  .tagline {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-block: var(--sp-m);
+    color: var(--color-theme);
+  }
+</style>

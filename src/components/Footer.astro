@@ -1,72 +1,297 @@
 ---
-import LocalesHomeList from "@/components/i18n/LocalesHomeList.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocalePaths, type Lang } from "@/i18n";
+import { 
+  NAV_ABOUT, 
+  NAV_PROJECTS, 
+  NAV_ARCHIVE, 
+  NAV_SPONSOR,
+  SITE_TITLE
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const paths = getLocalePaths(Astro.url);
+
+// 找到另一种语言的路径
+const otherLocalePath = paths.find(p => p.lang !== locale)?.path || (locale === 'zh-cn' ? '/en/' : '/zh-cn/');
+
+const socialLinks = [
+  { name: "GitHub", url: "https://github.com/naodeng", icon: "github" },
+  { name: "X", url: "https://x.com/inaodeng", icon: "x" },
+  { name: "Medium", url: "https://naodeng.medium.com/", icon: "medium" },
+  { name: "Weibo", url: "https://weibo.com/u/1651778270", icon: "weibo" },
+  { name: "Ko-fi", url: "https://ko-fi.com/naodeng", icon: "kofi" },
+  { name: "Email", url: "mailto:dengnao@gmail.com", icon: "email" },
+];
+
+const t = {
+  rss: locale === 'zh-cn' ? '订阅 RSS' : 'RSS Feed',
+  sitemap: locale === 'zh-cn' ? '站点地图' : 'Sitemap',
+  license: locale === 'zh-cn' ? '遵循 CC BY-NC-SA 4.0 许可协议' : 'Licensed under CC BY-NC-SA 4.0',
+  builtWith: locale === 'zh-cn' ? '由 Astro & Cloudflare & Github & AI 驱动' : 'Built with Astro & Cloudflare & Github & AI',
+};
 ---
 
-<footer class="l-footer l-content">
-  <a
-    href="https://github.com/naodeng/naodeng.com.cn"
-    target="_blank"
-    class="github"
-  >
-    GitHub
-    <span class="material-icons-sharp dir">open_in_new</span>
-  </a>
+<footer class="l-footer">
+  <div class="footer-container l-content">
+    <!-- 社交与语言切换区域 -->
+    <div class="social-links">
+      {socialLinks.map(link => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.name} class="social-icon">
+          {link.icon === 'github' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>}
+          {link.icon === 'x' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>}
+          {link.icon === 'medium' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>}
+          {link.icon === 'weibo' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z"/></svg>}
+          {link.icon === 'kofi' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z"/></svg>}
+          {link.icon === 'email' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>}
+        </a>
+      ))}
+      
+      <a href={otherLocalePath} class="social-icon lang-toggle" title={locale === 'zh-cn' ? 'Switch to English' : '切换至中文'}>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+        </svg>
+        <span class="lang-label">{locale === 'zh-cn' ? 'EN' : 'ZH'}</span>
+      </a>
+    </div>
 
-  <ul>
-    <LocalesHomeList />
-  </ul>
+    <!-- 底部次级导航 -->
+    <nav class="footer-nav">
+      <a href={getRelativeLocaleUrl(locale, "/about")}>{typeof NAV_ABOUT === 'string' ? NAV_ABOUT : NAV_ABOUT[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/archive")}>{typeof NAV_ARCHIVE === 'string' ? NAV_ARCHIVE : NAV_ARCHIVE[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/projects")}>{typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/rss.xml")} target="_blank">{t.rss}</a>
+      <a href={getRelativeLocaleUrl(locale, "/sitemap")}>{t.sitemap}</a>
+    </nav>
 
-  <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr">
-    © Nao Deng {new Date().getFullYear()}
-  </a>
+    <!-- 版权与许可区域 -->
+    <div class="footer-info">
+      <div class="copyright">
+        <a class="copy-link" href="https://naodeng.com.cn/">
+          © {new Date().getFullYear()} {typeof SITE_TITLE === 'string' ? SITE_TITLE : SITE_TITLE[locale]}
+        </a>
+        <span class="separator">|</span>
+        <span class="license">{t.license}</span>
+      </div>
+      <div class="tech-stack">
+        <span class="built-with">{t.builtWith}</span>
+        <div class="tech-icons">
+          <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/></svg>
+          </a>
+          <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z"/></svg>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <span title="AI" class="tech-icon tech-icon-ai">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <style>
-  footer {
-    padding-block: var(--sp-m) var(--sp-l);
-    text-align: center;
+  .l-footer {
+    padding-block: calc(var(--sp-l) * 1.5) var(--sp-l);
     background-color: var(--color-theme);
     color: var(--color-base);
-    border-radius: 16px;
-    margin-block-end: -16px;
+    border-radius: 24px 24px 0 0;
+    margin-block-start: var(--sp-m);
+    position: relative;
   }
-  .github {
-    display: block;
-    margin-block-start: calc(var(--sp-m) * -1 - 24px);
-    margin-inline: auto;
-    width: 160px;
-    height: 48px;
-    line-height: 48px;
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-m);
+  }
+
+  /* 社交链接样式保持翻倍尺寸 */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 10;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
     background: var(--color-accent);
     color: var(--color-main);
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    border-radius: 100px;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    position: relative;
   }
-  ul {
+
+  .social-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-icon:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    background-color: var(--color-main);
+    color: var(--color-accent);
+  }
+
+  .lang-toggle {
+    background: color-mix(in srgb, var(--color-main) 20%, var(--color-accent));
+  }
+  
+  .lang-label {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    background: var(--color-main);
+    color: var(--color-accent);
+    padding: 2px 4px;
+    border-radius: 4px;
+    line-height: 1;
+  }
+
+  /* 底部次级导航 */
+  .footer-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1.5rem;
     margin-block-start: var(--sp-m);
-    gap: var(--sp-s);
   }
-  ul a {
-    display: block;
-    padding-inline: 0.5em;
-    background: color-mix(in srgb, var(--color-main) 30%, transparent);
-    border-radius: 0.5em;
+
+  .footer-nav a {
+    color: var(--color-base);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
   }
-  ul a::before {
-    content: "translate";
-    font-family: "Material Icons Sharp";
-    vertical-align: middle;
-    margin-inline-end: 0.2em;
-    opacity: 0.5;
+
+  .footer-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
   }
-  .copy {
-    display: block;
-    margin-block-start: var(--sp-m);
-    opacity: 0.8;
+
+  /* 版权与信息区域 */
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(in srgb, var(--color-base) 20%, transparent);
+    width: 100%;
+    max-inline-size: 600px;
+    text-align: center;
+  }
+
+  .copyright {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .copy-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .copy-link:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    opacity: 0.4;
+  }
+
+  .license {
+    opacity: 0.7;
+    font-size: 0.85rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    font-family: var(--english-font);
     letter-spacing: 0.05em;
+  }
+
+  .tech-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .tech-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--color-base);
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .tech-icon:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .tech-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .tech-icon-ai {
+    cursor: default;
+  }
+
+  @media (max-width: 600px) {
+    .social-links {
+      gap: 0.75rem;
+    }
+    .social-icon {
+      width: 56px;
+      height: 56px;
+    }
+    .social-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .footer-nav {
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
   }
 </style>

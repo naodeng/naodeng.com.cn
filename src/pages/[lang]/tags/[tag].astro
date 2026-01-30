@@ -5,28 +5,43 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 
-const locale = Astro.currentLocale as Lang;
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  const paths = [];
+
+  for (const lang of Object.keys(LOCALES)) {
+    const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
+    const tags = [...new Set(langPosts.flatMap((post) => post.data.tags || []))];
+    
+    for (const tag of tags) {
+      paths.push({
+        params: { lang, tag },
+        props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { lang, tag } = Astro.params;
+const { posts } = Astro.props;
+const locale = lang as Lang;
 const t = useTranslations(locale);
 
-const posts = (await getCollection("blog"))
-  .filter((post) => post.id.split("/")[0] === locale)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const title = t({ en: "Blog", "zh-cn": "博客" });
-
-export const getStaticPaths = () =>
-  Object.keys(LOCALES).map((lang) => ({
-    params: { lang },
-  }));
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const title = `#${tag}`;
 ---
 
 <Layout {title}>
-  <PageHeadline {title} />
+  <PageHeadline {title}>
+    <p class="tag-meta">{posts.length} {t({ en: "posts found", "zh-cn": "篇文章" })}</p>
+  </PageHeadline>
 
   <div class="blog-container">
     <div class="post-grid">
       {
-        posts.map((post) => {
+        sortedPosts.map((post) => {
           const [, ...id] = post.id.split("/");
           const postUrl = `/${locale}/blog/${id.join("/")}/`;
           const dateStr = post.data.date.toLocaleDateString(
@@ -51,9 +66,9 @@ export const getStaticPaths = () =>
               
               {post.data.tags && (
                 <div class="post-tags">
-                  {post.data.tags.slice(0, 3).map((tag) => (
-                    <a href={`/${locale}/tags/${tag}/`} class="tag-link">
-                      #{tag}
+                  {post.data.tags.map((t) => (
+                    <a href={`/${locale}/tags/${t}/`} class={`tag-link ${t === tag ? 'active' : ''}`}>
+                      #{t}
                     </a>
                   ))}
                 </div>
@@ -67,6 +82,13 @@ export const getStaticPaths = () =>
 </Layout>
 
 <style>
+  .tag-meta {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-block-start: 0.5rem;
+    font-weight: 600;
+  }
+
   .blog-container {
     margin-block-start: var(--sp-l);
   }
@@ -165,7 +187,7 @@ export const getStaticPaths = () =>
     transition: all 0.2s ease;
   }
 
-  .tag-link:hover {
+  .tag-link:hover, .tag-link.active {
     background: var(--color-theme);
     color: white;
   }
