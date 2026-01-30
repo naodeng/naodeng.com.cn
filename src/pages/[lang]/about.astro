@@ -45,7 +45,10 @@ const devOpsBadges = [
 ];
 
 const aboutMeHtml = marked(t(ABOUT_ME_BODY), { gfm: true }) as string;
-const supportHtml = marked(t(ABOUT_SUPPORT_BODY), { gfm: true }) as string;
+// 赞助链接使用本站相对路径，保证指向当前语言的 /sponsor
+const sponsorPath = getRelativeLocaleUrl(locale, "/sponsor");
+const supportRaw = (t(ABOUT_SUPPORT_BODY) as string).replace(/\/sponsor/g, sponsorPath);
+const supportHtml = marked(supportRaw, { gfm: true }) as string;
 const connectHtml = marked(t(ABOUT_CONNECT_BODY), { gfm: true }) as string;
 
 export const getStaticPaths = () =>

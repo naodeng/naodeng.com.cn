@@ -4,13 +4,20 @@ import Layout from "@/layouts/Base.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
+import PaginationNav from "@/components/PaginationNav.astro";
+import { BLOG_POSTS_PER_PAGE } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const posts = (await getCollection("blog"))
+const allPosts = (await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const totalPosts = allPosts.length;
+const totalPages = Math.max(1, Math.ceil(totalPosts / BLOG_POSTS_PER_PAGE));
+const currentPage = 1;
+const posts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
 
 const title = t({ en: "Blog", "zh-cn": "博客" });
 
@@ -63,6 +70,9 @@ export const getStaticPaths = () =>
         })
       }
     </div>
+    {totalPages > 1 && (
+      <PaginationNav {currentPage} {totalPages} {locale} />
+    )}
   </div>
 </Layout>
 

@@ -1,6 +1,8 @@
 ---
+import Analytics from "@/components/Analytics.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import SearchModal from "@/components/SearchModal.astro";
 import LocaleHtmlHead from "@/components/i18n/LocaleHtmlHead.astro";
 import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "@/consts";
@@ -22,7 +24,7 @@ const localeTitle = title ? `${title} - ${t(SITE_TITLE)}` : t(SITE_TITLE);
 const localeDescription = description || t(SITE_DESCRIPTION);
 ---
 
-<html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null}>
+<html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null} data-locale={locale}>
   <head>
     <meta charset="UTF-8" />
     <title>{localeTitle}</title>
@@ -83,6 +85,7 @@ const localeDescription = description || t(SITE_DESCRIPTION);
     />
 
     <LocaleHtmlHead />
+    <Analytics />
   </head>
 
   <body>
@@ -94,6 +97,8 @@ const localeDescription = description || t(SITE_DESCRIPTION);
     </main>
 
     <Footer />
+
+    <SearchModal />
 
     {import.meta.env.DEV && (
       <style>

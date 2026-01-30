@@ -1,0 +1,875 @@
+import { n as createVNode, F as Fragment, _ as __astro_tag_component__ } from './astro/server_D4o_drMZ.mjs';
+import 'clsx';
+
+/*markdownlint-disable MD045*/
+/*markdownlint-disable MD033*/
+/*markdownlint-disable MD033*/
+/*markdownlint-disable MD045*/
+const frontmatter = {
+  "title": "30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现",
+  "description": "这篇博文是关于 30 天 AI 测试挑战活动的第十六天，旨在评估采用 AI 进行无障碍测试，并分享个人的发现。文章可能涵盖作者对使用 AI 进行无障碍测试的实际应用经验，包括 AI 工具的选择、测试方法的改进、测试结果的有效性等方面。通过分享对采用 AI 进行无障碍测试的评估和发现，读者将了解作者在实际测试场景中的应用情况，并从中汲取经验和教训。这个系列活动有望为测试专业人士提供一个了解和探索 AI 在无障碍测试领域应用的机会，并促进行业对话和技术创新。",
+  "date": "2024-03-17T11:06:44.000Z",
+  "author": "nao.deng",
+  "tags": ["AI in Testing", "30 Days of AI in Testing"],
+  "categories": ["软件测试活动"],
+  "series": ["30 天 AI 测试挑战活动"],
+  "cover": "./30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings-cover.png"
+};
+function getHeadings() {
+  return [{
+    "depth": 2,
+    "slug": "第-16-天评估采用-ai-进行无障碍测试并分享你的发现",
+    "text": "第 16 天：评估采用 AI 进行无障碍测试并分享你的发现"
+  }, {
+    "depth": 3,
+    "slug": "任务步骤",
+    "text": "任务步骤"
+  }, {
+    "depth": 3,
+    "slug": "为什么参加",
+    "text": "为什么参加"
+  }, {
+    "depth": 3,
+    "slug": "任务链接",
+    "text": "任务链接"
+  }, {
+    "depth": 2,
+    "slug": "我的第-16-天任务",
+    "text": "我的第 16 天任务"
+  }, {
+    "depth": 3,
+    "slug": "1关于探索-ai-和无障碍测试",
+    "text": "1.关于探索 AI 和无障碍测试"
+  }, {
+    "depth": 3,
+    "slug": "2关于评估适用性于你的环境",
+    "text": "2.关于评估适用性于你的环境"
+  }, {
+    "depth": 4,
+    "slug": "我当前项目的无障碍测试需求",
+    "text": "我当前项目的无障碍测试需求"
+  }, {
+    "depth": 4,
+    "slug": "ai-的潜在益处",
+    "text": "AI 的潜在益处"
+  }, {
+    "depth": 4,
+    "slug": "潜在限制",
+    "text": "潜在限制"
+  }, {
+    "depth": 3,
+    "slug": "3关于分享你的发现",
+    "text": "3.关于分享你的发现"
+  }, {
+    "depth": 2,
+    "slug": "关于活动",
+    "text": "关于活动"
+  }, {
+    "depth": 2,
+    "slug": "推荐阅读",
+    "text": "推荐阅读"
+  }];
+}
+function _createMdxContent(props) {
+  const _components = {
+    a: "a",
+    blockquote: "blockquote",
+    code: "code",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    hr: "hr",
+    img: "img",
+    li: "li",
+    p: "p",
+    pre: "pre",
+    span: "span",
+    strong: "strong",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.h2, {
+      id: "第-16-天评估采用-ai-进行无障碍测试并分享你的发现",
+      children: "第 16 天：评估采用 AI 进行无障碍测试并分享你的发现"
+    }), "\n", createVNode(_components.p, {
+      children: "欢迎来到第 16 天！今天，我们将重点转向人工智能增强无障碍测试的潜力。"
+    }), "\n", createVNode(_components.p, {
+      children: "无障碍测试有助于确保应用程序对具有不同能力（例如视觉、听觉、认知或运动障碍）的个人可用且具有包容性。在许多情况下，确保应用程序可供广泛的用户访问不仅是法律要求，也是道德要求。正如我们在整个挑战中所看到的，人工智能可以在各个测试领域提供优势，并且其增强无障碍测试的潜力也不例外。让我们深入了解如何利用人工智能来改进无障碍测试！"
+    }), "\n", createVNode(_components.h3, {
+      id: "任务步骤",
+      children: "任务步骤"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: [createVNode(_components.strong, {
+            children: "探索 AI 和无障碍测试"
+          }), "：研究当前如何利用 AI 来支持无障碍测试。探索文章、白皮书或案例研究等资源，了解以下内容："]
+        }), "\n", createVNode(_components.ul, {
+          children: ["\n", createVNode(_components.li, {
+            children: "利用 AI 的工具来自动化无障碍检查，分析用户界面是否符合无障碍标准，甚至生成图像的替代文本描述。"
+          }), "\n", createVNode(_components.li, {
+            children: "AI 如何用于解决更复杂的无障碍问题，例如测试屏幕阅读器的兼容性或检测颜色对比度问题。"
+          }), "\n"]
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: [createVNode(_components.strong, {
+            children: "评估适用性于你的环境"
+          }), "：考虑你的具体情况并进行反思："]
+        }), "\n", createVNode(_components.ul, {
+          children: ["\n", createVNode(_components.li, {
+            children: [createVNode(_components.strong, {
+              children: "无障碍测试需求"
+            }), "：确认在你的项目中无障碍测试至关重要的领域。"]
+          }), "\n", createVNode(_components.li, {
+            children: [createVNode(_components.strong, {
+              children: "AI 的潜在益处"
+            }), "：评估 AI 驱动的无障碍测试工具或技术如何提升你当前测试流程的效率。"]
+          }), "\n", createVNode(_components.li, {
+            children: [createVNode(_components.strong, {
+              children: "潜在限制"
+            }), "：意识到 AI 在无障碍测试中可能存在的局限性。"]
+          }), "\n"]
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: [createVNode(_components.strong, {
+            children: "分享你的发现"
+          }), "：通过回复此帖分享你的见解和学习。考虑分享以下内容："]
+        }), "\n", createVNode(_components.ul, {
+          children: ["\n", createVNode(_components.li, {
+            children: "你发现有用的资源链接"
+          }), "\n", createVNode(_components.li, {
+            children: "AI 在你的项目中如何改善无障碍测试"
+          }), "\n", createVNode(_components.li, {
+            children: "你识别到的潜在限制以及应对策略"
+          }), "\n", createVNode(_components.li, {
+            children: "你对 AI 在无障碍测试中的整体看法"
+          }), "\n"]
+        }), "\n"]
+      }), "\n"]
+    }), "\n", createVNode(_components.h3, {
+      id: "为什么参加",
+      children: "为什么参加"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: [createVNode(_components.strong, {
+          children: "促进无障碍测试的发展"
+        }), "：获取有关 AI 如何为创建包容性应用程序做出贡献的宝贵知识。"]
+      }), "\n", createVNode(_components.li, {
+        children: [createVNode(_components.strong, {
+          children: "发现新机遇"
+        }), "：发现提升你项目无障碍测试水平的潜在方法。"]
+      }), "\n", createVNode(_components.li, {
+        children: [createVNode(_components.strong, {
+          children: "分享你的想法"
+        }), "：通过分享，为他人提供了更深入了解 AI 在无障碍测试中的作用的机会。"]
+      }), "\n"]
+    }), "\n", createVNode(_components.h3, {
+      id: "任务链接",
+      children: "任务链接"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.a, {
+        href: "https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy",
+        children: "https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy"
+      })
+    }), "\n", createVNode(_components.h2, {
+      id: "我的第-16-天任务",
+      children: "我的第 16 天任务"
+    }), "\n", createVNode(_components.h3, {
+      id: "1关于探索-ai-和无障碍测试",
+      children: ["1.关于", createVNode(_components.strong, {
+        children: "探索 AI 和无障碍测试"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: "关于 AI 工具用于无障碍测试的实践，我向 ChatGPT4 进行了咨询，它回复的结论中推荐了一些 AI 工具可用于无障碍测试，ChatGPT4 回复结果如下："
+    }), "\n", createVNode(_components.pre, {
+      class: "astro-code github-dark",
+      style: {
+        backgroundColor: "#24292e",
+        color: "#e1e4e8",
+        overflowX: "auto"
+      },
+      tabindex: "0",
+      "data-language": "text",
+      children: createVNode(_components.code, {
+        children: [createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "AI 技术在无障碍测试领域的应用日益增多，旨在帮助开发者和测试人员更高效地发现和解决可访问性问题。以下是一些可以用于无障碍测试的 AI 工具："
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "1. **Axe Core**：虽然 Axe Core 本身是一个自动化的可访问性测试库，它的企业版提供了一些 AI 驱动的功能，用于识别和解决可访问性问题。"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "2. **AccessiBe**：AccessiBe 使用 AI 来解决网站的可访问性问题。它能够自动识别和修复多种可访问性问题，如导航、键盘功能性以及屏幕阅读器优化等。"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "3. **UserWay**：UserWay 提供一个 AI 驱动的网站可访问性插件，能够自动解决多种可访问性问题，包括颜色对比度、字体大小、导航以及其他与可访问性相关的问题。"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "4. **Evinced**：Evinced 是一种开发工具，使用 AI 来帮助开发者在编码过程中识别可访问性问题。它可以集成到开发流程中，提供实时反馈和修复建议。"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "5. **Fable**：Fable 利用 AI 技术提供模拟真实用户的无障碍测试，特别是针对有视觉和运动障碍人士的测试。它能帮助开发者理解这些用户如何与他们的产品互动。"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "这些工具可以帮助组织在开发和测试过程中更早地发现并解决可访问性问题，确保他们的产品和服务对所有人都是可访问的。使用这些工具时，重要的是要结合人工测试和用户反馈，因为 AI 和自动化工具可能无法捕捉到所有类型的可访问性问题。"
+          })
+        })]
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "但基于之前的 AI 测试挑战任务，我了解到了一个已落地的 AI 无障碍测试的工具 Applitools，我今天的任务会以探索使用 Applitools 工具用于无障碍测试为主。"
+    }), "\n", createVNode(_components.p, {
+      children: ["Applitools 工具关于无障碍测试的官方页面：", createVNode(_components.a, {
+        href: "https://applitools.com/platform/validate/accessibility/",
+        children: "https://applitools.com/platform/validate/accessibility/"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: "Applitools 工具关于 AI 无障碍测试助手 Applitools Contrast Advisor 的介绍："
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "Applitools 使团队能够运行自动可访问性测试来验证 WCAG，以帮助确保法规遵从性。"
+      }), "\n", createVNode(_components.li, {
+        children: "在每个版本上运行可访问性测试以获得最大覆盖范围"
+      }), "\n", createVNode(_components.li, {
+        children: "Applitools 无缝集成到你现有的测试自动化工作流程中。它应用视觉人工智能来分析网络和移动应用程序是否存在潜在的对比度可访问性违规。"
+      }), "\n", createVNode(_components.li, {
+        children: "Contrast Advisor 可帮助你将注意力集中在问题区域，确保你不会在不需要关注的区域上浪费时间和周期。此外，我们已将 Contrast Advisor 直接集成到 Eyes 中，因此无需耗时的设置步骤或工作流程更改。启用后，你甚至不需要重新运行现有测试 - 你可以直接跳到现有仪表板开始查看结果。"
+      }), "\n", createVNode(_components.li, {
+        children: "Contrast Advisor 不受扫描网页结构的限制，因此可以为网站、PDF、UX 设计模型以及为 Web、移动 Web、本机移动、桌面等设计的应用程序提供对比建议。"
+      }), "\n", createVNode(_components.li, {
+        children: "正如 W3C 所指出的，移动设备更容易在强烈阳光等条件下使用，这提高了严格对比度合规性的需要。与传统检测方法相比，Contrast Advisor 使用视觉 AI 使其能够识别本机移动应用程序以及移动网络中可能存在的违规行为。"
+      }), "\n", createVNode(_components.li, {
+        children: "WCAG 指定了文本以及图形和用户界面组件的最小对比度，但传统工具无法检测到此类违规行为。Contrast Advisor 使用视觉 AI 来检测图像、图形、图标、UI 组件和纯文本中的对比度。"
+      }), "\n", createVNode(_components.li, {
+        children: "Contrast Advisor 可以与 Applitools Ultrafast Grid 一起运行，以渲染和检测 Chrome、Firefox、Safari、Edge 和 IE 上的细微对比度差异和可能的违规行为。Contrast Advisor 可以遵守 WCAG 2.0 和更新的 2.1 标准。这包括“AA – 对比度最小”和更严格的“AAA – 对比度增强”选项。"
+      }), "\n"]
+    }), "\n", createVNode(_components.blockquote, {
+      children: ["\n", createVNode(_components.p, {
+        children: ["Applitools 工具提供的 Applitools Contrast Advisor 官方演示介绍", createVNode(_components.a, {
+          href: "https://www.youtube.com/watch?v=sGXjPJiQwdk",
+          children: "https://www.youtube.com/watch?v=sGXjPJiQwdk"
+        })]
+      }), "\n"]
+    }), "\n", createVNode(_components.h3, {
+      id: "2关于评估适用性于你的环境",
+      children: ["2.关于", createVNode(_components.strong, {
+        children: "评估适用性于你的环境"
+      })]
+    }), "\n", createVNode(_components.h4, {
+      id: "我当前项目的无障碍测试需求",
+      children: ["我当前项目的", createVNode(_components.strong, {
+        children: "无障碍测试需求"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: "不幸的是，我当前项目的交付周期比较紧张，无障碍测试需求的重要程度不算太高，但我还是会使用 google 的 lighthouse 工具针对产品的每个核心页面进行无障碍测试评测打分，确保每个核心页面的无障碍测试评分均为高分，对无障碍测试的低分页面建缺陷卡进行排期修复。"
+    }), "\n", createVNode(_components.p, {
+      children: "以下为当前项目产品某个核心页面的无障碍测试评分："
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8Z4XpX.png",
+        alt: " "
+      })
+    }), "\n", createVNode(_components.h4, {
+      id: "ai-的潜在益处",
+      children: createVNode(_components.strong, {
+        children: "AI 的潜在益处"
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "通过使用 lighthouse 工具对页面进行无障碍测试评测，一定程度上能解决项目的无障碍测试需求，但是我查看了 lighthouse 关于无障碍测试的评分规则后，发现 lighthouse 能发现的无障碍测试问题非常的有限，页面的无障碍测试评分高，不一定真的能让人无障碍的使用。"
+    }), "\n", createVNode(_components.p, {
+      children: "如果有一个专业的无障碍测试且检测符合各种无障碍法规的 AI 工具，那一定能提升项目无障碍测试的效率，确保项目的无障碍测试结果符合法规"
+    }), "\n", createVNode(_components.h4, {
+      id: "潜在限制",
+      children: createVNode(_components.strong, {
+        children: "潜在限制"
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "因为是使用 AI 工具，而且当前项目为未发布的产品，AI 工具通用的数据隐私安全和结果偏见不确定性都会存在一定的风险。"
+    }), "\n", createVNode(_components.h3, {
+      id: "3关于分享你的发现",
+      children: ["3.关于", createVNode(_components.strong, {
+        children: "分享你的发现"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: "我是申请试用了 Applitools 的无障碍测试助手 Applitools Contrast Advisor。以下为试用报告："
+    }), "\n", createVNode(_components.p, {
+      children: ["申请试用链接：", createVNode(_components.a, {
+        href: "https://applitools.com/platform/validate/accessibility/",
+        children: "https://applitools.com/platform/validate/accessibility/"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: "试用 Applitools 首先是需要注册账号，且必须为公司邮箱地址并需提供公司信息"
+    }), "\n", createVNode(_components.p, {
+      children: ["注册账号且邮箱校验通过后会有一些工具的调查问卷：\n", createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d2o4KM.png",
+        alt: " "
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: ["之后我选择了 Playwright 并按照官方的介绍文档进行了初始化，", createVNode(_components.a, {
+        href: "https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart",
+        children: "https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart"
+      })]
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "获取 APPLITOOLS_API_KEY"
+      }), "\n", createVNode(_components.li, {
+        children: "设置 APPLITOOLS 本地环境​"
+      }), "\n", createVNode(_components.li, {
+        children: "安装 Applitools​"
+      }), "\n", createVNode(_components.li, {
+        children: "运行测试"
+      }), "\n"]
+    }), "\n", createVNode(_components.p, {
+      children: "官方 demo 测试代码如下："
+    }), "\n", createVNode(_components.pre, {
+      class: "astro-code github-dark",
+      style: {
+        backgroundColor: "#24292e",
+        color: "#e1e4e8",
+        overflowX: "auto"
+      },
+      tabindex: "0",
+      "data-language": "plaintext",
+      children: createVNode(_components.code, {
+        children: [createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "import { test } from '@playwright/test';"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "import { BatchInfo, Configuration, EyesRunner, VisualGridRunner, BrowserType, DeviceName, ScreenOrientation, Eyes, Target } from '@applitools/eyes-playwright';"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "export let Batch: BatchInfo;"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "export let Config: Configuration;"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "export let Runner: EyesRunner;"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "test.beforeAll(async() => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    // Configure Applitools SDK to run on the Ultrafast Grid"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    Runner = new VisualGridRunner({ testConcurrency: 5 });"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    Batch = new BatchInfo({name: `Playwright Typescript Quickstart`});"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    Config = new Configuration();"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    Config.setBatch(Batch);"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    Config.addBrowsers("
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        { name: BrowserType.CHROME, width: 800, height: 600 },"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        { name: BrowserType.FIREFOX, width: 1600, height: 1200 },"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        { name: BrowserType.SAFARI, width: 1024, height: 768 },"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        { chromeEmulationInfo: { deviceName: DeviceName.iPhone_11, screenOrientation: ScreenOrientation.PORTRAIT} },"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        { chromeEmulationInfo: { deviceName: DeviceName.Nexus_10, screenOrientation: ScreenOrientation.LANDSCAPE} }"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    )"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "});"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "test.describe('ACME Bank', () => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    let eyes: Eyes;"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    test.beforeEach(async ({ page }) => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        eyes = new Eyes(Runner, Config);"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        // Start Applitools Visual AI Test"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        // Args: Playwright Page, App Name, Test Name, Viewport Size for local driver"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await eyes.open(page, 'ACME Bank', `Playwright Typescript: Quickstart`, { width: 1200, height: 600 })"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    });"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    "
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    test('log into a bank account', async ({ page }) => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await page.goto('https://sandbox.applitools.com/bank?layoutAlgo=true');"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        // Full Page - Visual AI Assertion"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await eyes.check('Login page', Target.window().fully());"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await page.locator('id=username').fill('user');"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await page.locator('id=password').fill('password');"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await page.locator('id=log-in').click();"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await page.locator('css=.dashboardNav_navContainer__kA4wD').waitFor({state: 'attached'});"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        // Full Page - Visual AI Assertion"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await eyes.check('Main page', Target.window().fully()"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "            .layoutRegions("
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "                '.dashboardOverview_accountBalances__3TUPB',"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "                '.dashboardTable_dbTable___R5Du'"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "            )"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        );"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    });"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    test.afterEach(async () => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        // End Applitools Visual AI Test"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "        await eyes.close();"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    });"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "});"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {})
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "test.afterAll(async() => {"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    // Wait for Ultrast Grid Renders to finish and gather results"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    const results = await Runner.getAllTestResults();"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "    console.log('Visual test results', results);"
+          })
+        }), "\n", createVNode(_components.span, {
+          class: "line",
+          children: createVNode(_components.span, {
+            children: "});"
+          })
+        })]
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "然后就运行测试失败了。"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HtcTxq.png",
+        alt: " "
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "排查发现是我第一步设置环境变量出错了，重新设置环境变量后，demo 测试可以正常运行通过。"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/blqBmp.png",
+        alt: " "
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "然后登录 applitools eyes 查看测试结果"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gTMNvw.png",
+        alt: "我的 demo 截图"
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "在结果页面查看无障碍测试结果和启动 Applitools Contrast Advisor 时，发现测试结果无 Applitools Contrast Advisor 标识展示，与官方介绍视频中存在差异。"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.img, {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2P12hs.png",
+        alt: "官方宣传 demo 截图"
+      })
+    }), "\n", createVNode(_components.p, {
+      children: "今天的试用不太顺利，后面我会继续尝试后再更新更多的使用结果。"
+    }), "\n", createVNode(_components.h2, {
+      id: "关于活动",
+      children: "关于活动"
+    }), "\n", createVNode(_components.p, {
+      children: "30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。"
+    }), "\n", createVNode(_components.p, {
+      children: ["社区官网：", createVNode(_components.a, {
+        href: "https://www.ministryoftesting.com",
+        children: "https://www.ministryoftesting.com"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: ["活动链接：", createVNode(_components.a, {
+        href: "https://www.ministryoftesting.com/events/30-days-of-ai-in-testing",
+        children: "https://www.ministryoftesting.com/events/30-days-of-ai-in-testing"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: [createVNode(_components.strong, {
+        children: "挑战"
+      }), "："]
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/",
+          children: "第一天：介绍你自己以及你对人工智能的兴趣"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/",
+          children: "第二天：阅读有关测试中的人工智能的介绍性文章并分享"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/",
+          children: "第三天：AI 在测试中的多种应用方式"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/",
+          children: "第四天：观看有关测试中人工智能的任何问题视频并分享主要收获"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/",
+          children: "第五天：确定一个测试中的人工智能案例研究，并分享你的发现"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/",
+          children: "第六天：探索并分享对 AI 测试工具的见解"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/",
+          children: "第七天：研究并分享提示词工程技术"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/",
+          children: "第八天：制作详细的 Prompt 来支持测试活动"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/",
+          children: "第九天：评估提示词质量并努力加以改进"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/",
+          children: "第十天：批判性分析人工智能生成的测试"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/",
+          children: "第十一天：使用 AI 生成测试数据并评估其功效"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/",
+          children: "第十二天：评估你是否信任 AI 支持测试并分享你的想法"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/",
+          children: "第十三天：开发你的测试方法并成为 AI 测试的先行者"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/",
+          children: "第十四天：生成 AI 测试代码并分享你的体验"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/",
+          children: "第十五天：衡量测试计划中的短期人工智能"
+        })
+      }), "\n"]
+    }), "\n", createVNode(_components.h2, {
+      id: "推荐阅读",
+      children: "推荐阅读"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/zhcategories/bruno/",
+          children: "使用 Bruno 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Postman 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Pytest 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 SuperTest 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Rest Assured 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Galting 进行性能测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 K6 进行性能测试快速开启教程系列"
+        })
+      }), "\n"]
+    }), "\n", createVNode(_components.hr, {}), "\n", createVNode(_components.p, {
+      children: ["欢迎关注软件测试同学的公众号“", createVNode(_components.strong, {
+        children: "软件测试同学"
+      }), "”，原创 QA 技术文章第一时间推送。"]
+    }), "\n", "\n", "\n", createVNode("div", {
+      style: "text-align: center",
+      children: createVNode("img", {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg",
+        style: "width: 100px;"
+      })
+    }), "\n", "\n"]
+  });
+}
+function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+
+const url = "src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings.mdx";
+const file = "/Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn/src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings.mdx";
+const Content = (props = {}) => MDXContent({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, },
+});
+Content[Symbol.for('mdx-component')] = true;
+Content[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter.layout);
+Content.moduleId = "/Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn/src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings.mdx";
+__astro_tag_component__(Content, 'astro:jsx');
+
+export { Content, Content as default, file, frontmatter, getHeadings, url };

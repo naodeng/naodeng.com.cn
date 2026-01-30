@@ -9,8 +9,8 @@ export const SITE_TITLE: string | Multilingual = {
 };
 
 export const SITE_DESCRIPTION: string | Multilingual = {
-  en: "naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing.",
-  "zh-cn": "naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。",
+  en: "naodeng, inaodeng.com, personal blog, software testing, performance testing, API testing, automation testing, agile testing.",
+  "zh-cn": "naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。",
 };
 
 export const X_ACCOUNT: string | Multilingual = "@inaodeng";
@@ -25,17 +25,17 @@ export const HOME_INTRO: Multilingual = {
   en: `Hi, I'm Nao Deng — **Quality Analyst, Not Quality Assurance.**
 - Currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) and [QA Wiki](https://github.com/naodeng/QAWiki)
 - Currently learning **Playwright** and **AI-assisted Testing**
-- I regularly write articles on [naodeng.com.cn](https://naodeng.com.cn)
+- I regularly write articles on [inaodeng.com](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- Support me by [**becoming a sponsor**](https://naodeng.com.cn/sponsor)`,
+- Support me by [**becoming a sponsor**](https://inaodeng.com/sponsor)`,
   "zh-cn": `你好，我是naodeng — **质量分析师，而非质量保证师。**
 - 当前工作在 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) 和 [QA Wiki](https://github.com/naodeng/QAWiki)
 - 正在学习 **Playwright** 和 **AI 辅助测试**
-- 定期在 [naodeng.com.cn](https://naodeng.com.cn) 发布技术文章
+- 定期在 [inaodeng.com](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- 赞助我 [**成为一个支持者**](https://naodeng.com.cn/sponsor)`,
+- 赞助我 [**成为一个支持者**](https://inaodeng.com/sponsor)`,
 };
 
 // 顶部导航：首页
@@ -68,6 +68,24 @@ export const NAV_SPONSOR: Multilingual = {
   "zh-cn": "赞助",
 };
 
+// 搜索
+export const NAV_SEARCH: Multilingual = {
+  en: "Search",
+  "zh-cn": "搜索",
+};
+export const SEARCH_PLACEHOLDER: Multilingual = {
+  en: "Search posts…",
+  "zh-cn": "搜索文章…",
+};
+export const SEARCH_NO_RESULTS: Multilingual = {
+  en: "No results.",
+  "zh-cn": "暂无结果。",
+};
+export const SEARCH_OPEN_HINT: Multilingual = {
+  en: "⌘K or Ctrl+K to open search",
+  "zh-cn": "⌘K 或 Ctrl+K 打开搜索",
+};
+
 // 归档页文案
 export const ARCHIVE_PAGE_TITLE: Multilingual = {
   en: "Archive",
@@ -94,18 +112,16 @@ export const SPONSOR_WHY_TITLE: Multilingual = {
   "zh-cn": "为什么需要您的支持？",
 };
 export const SPONSOR_WHY_BODY: Multilingual = {
-  en: `Awesome QA Prompt is a completely open-source project dedicated to providing high-quality AI prompt collections for the QA community. Your support will help us:
-- **Continuous Content Updates**: Keep the prompt library timely and professional
-- **Feature Expansion**: Add more testing types and framework support
-- **Multi-language Support**: Improve bilingual content in Chinese and English
-- **Documentation Enhancement**: Improve documentation quality and user experience
-- **Technical Maintenance**: Keep the website stable and optimize performance`,
-  "zh-cn": `Awesome QA Prompt 是一个完全开源的项目，致力于为 QA 社区提供高质量的 AI 提示词集合。您的支持将帮助我们：
-- **持续更新内容**：保持提示词库的时效性和专业性
-- **扩展功能**：添加更多测试类型和框架支持
-- **多语言支持**：完善中英文双语内容
-- **文档优化**：改进文档质量和用户体验
-- **技术维护**：保持网站稳定运行和性能优化`,
+  en: `Nao's Blog (inaodeng.com) is my personal site where I share articles on software testing, automation, and QA. Your support helps me:
+- **Keep writing**: More time for tutorials, experiences, and testing practices
+- **Improve the site**: Better experience, search, and accessibility
+- **Stay independent**: No ads, content remains free and open
+- **Cover costs**: Hosting, domains, and tools that keep the site running`,
+  "zh-cn": `软件测试同学（inaodeng.com）是我的个人博客，分享软件测试、自动化与 QA 相关文章。您的支持将帮助我：
+- **持续写作**：有更多时间写教程、经验与测试实践
+- **优化网站**：提升访问体验、搜索与可用性
+- **保持独立**：无广告，内容继续免费开放
+- **覆盖成本**：服务器、域名与维护工具等`,
 };
 export const SPONSOR_METHODS_TITLE: Multilingual = {
   en: "Ways to Sponsor",
@@ -116,16 +132,14 @@ export const SPONSOR_BENEFITS_TITLE: Multilingual = {
   "zh-cn": "赞助者权益",
 };
 export const SPONSOR_BENEFITS_BODY: Multilingual = {
-  en: `As a sponsor of the project, you will receive:
-- **Priority Support**: Get priority notifications for new features and content updates
-- **Thank You Email**: Receive a thank you email from the maintainer
-- **Sponsor List**: Display your name in the project README and website (optional)
-- **Feature Suggestions**: Priority consideration for your feature suggestions and needs`,
-  "zh-cn": `作为项目的赞助者，您将获得：
-- **优先支持**：优先获得新功能和内容的更新通知
-- **感谢邮件**：收到来自维护者的感谢邮件
-- **赞助者列表**：在项目 README 和网站中展示您的名字（可选）
-- **功能建议**：优先考虑您的功能建议和需求`,
+  en: `As a supporter of this site, you can expect:
+- **Thank You**: A thank you message or email from me
+- **Recognition** (optional): Your name or handle listed on this page if you wish
+- **Ongoing content**: Your support encourages me to keep publishing and improving the blog`,
+  "zh-cn": `作为本站的支持者，您可以期待：
+- **感谢**：来自我的感谢留言或邮件
+- **致谢**（可选）：如您愿意，可在本页展示您的名字或昵称
+- **持续更新**：您的支持会鼓励我继续写文章、优化博客`,
 };
 
 // 项目展示页文案
@@ -160,7 +174,26 @@ export const HOME_VIEW_ALL_PROJECTS: Multilingual = {
   "zh-cn": "查看全部项目",
 };
 
-// 关于页文案
+// 博客分页
+export const BLOG_POSTS_PER_PAGE = 12;
+export const PAGINATION_PREV: Multilingual = {
+  en: "Previous",
+  "zh-cn": "上一页",
+};
+export const PAGINATION_NEXT: Multilingual = {
+  en: "Next",
+  "zh-cn": "下一页",
+};
+export const PAGINATION_PAGE: Multilingual = {
+  en: "Page",
+  "zh-cn": "第",
+};
+export const PAGINATION_OF: Multilingual = {
+  en: "of",
+  "zh-cn": "页，共",
+};
+
+// 关于页文案（与首页简介一致，为本站 Nao's Blog / 软件测试同学）
 export const ABOUT_PAGE_TITLE: Multilingual = {
   en: "About",
   "zh-cn": "关于",
@@ -170,16 +203,22 @@ export const ABOUT_ME_TITLE: Multilingual = {
   "zh-cn": "关于我",
 };
 export const ABOUT_ME_BODY: Multilingual = {
-  en: `- Currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) and [QA Wiki](https://github.com/naodeng/QAWiki)
+  en: `Hi, I'm Nao Deng — **Quality Analyst, Not Quality Assurance.**
+
+- Currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) and [QA Wiki](https://github.com/naodeng/QAWiki)
 - Currently learning **Playwright** and **AI-assisted Testing**
-- I regularly write articles on [naodeng.com.cn](https://naodeng.com.cn)
+- I regularly write articles on this site [Nao's Blog](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
-- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)`,
-  "zh-cn": `- 当前工作在 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) 和 [QA Wiki](https://github.com/naodeng/QAWiki)
+- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- Support me by [becoming a sponsor](https://inaodeng.com/sponsor)`,
+  "zh-cn": `你好，我是 naodeng — **质量分析师，而非质量保证师。**
+
+- 当前工作在 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) 和 [QA Wiki](https://github.com/naodeng/QAWiki)
 - 正在学习 **Playwright** 和 **AI 辅助测试**
-- 定期在 [naodeng.com.cn](https://naodeng.com.cn) 发布技术文章
+- 定期在本站 [软件测试同学](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
-- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)`,
+- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- 赞助我 [成为一个支持者](https://inaodeng.com/sponsor)`,
 };
 export const ABOUT_TECH_TITLE: Multilingual = {
   en: "Tech Stack",
@@ -205,9 +244,10 @@ export const ABOUT_SUPPORT_TITLE: Multilingual = {
   en: "Support",
   "zh-cn": "支持我",
 };
+// 赞助链接在关于页中由 getRelativeLocaleUrl(locale, "/sponsor") 动态替换，保证始终指向本站
 export const ABOUT_SUPPORT_BODY: Multilingual = {
-  en: "If you find my work helpful, consider [becoming a sponsor](https://naodeng.com.cn/sponsor).",
-  "zh-cn": "如果你觉得我的项目对你有帮助，欢迎 [赞助我](https://naodeng.com.cn/sponsor)。",
+  en: "If you find my work helpful, consider [becoming a sponsor](/sponsor).",
+  "zh-cn": "如果你觉得我的项目对你有帮助，欢迎 [赞助我](/sponsor)。",
 };
 export const ABOUT_CONNECT_TITLE: Multilingual = {
   en: "Connect",
