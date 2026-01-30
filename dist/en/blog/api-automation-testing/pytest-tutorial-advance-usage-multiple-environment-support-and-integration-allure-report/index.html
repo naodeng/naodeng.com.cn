@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report - Nao's Blog"><meta property="og:site_name" content="Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report-cover.DoXiJGtX_1tHQpG.webp" alt="Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Pytest API Automation Testing Tutorial Advance Usage Multiple Environment Support and Integration Allure Report</h1> <time datetime="2023-11-17T08:32:55.000Z" data-astro-cid-v3cnrnum> 11/17/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Pytest</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span><span class="tag" data-astro-cid-v3cnrnum>Allure</span> </div> </header> <h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="multi-environment-support">Multi-environment support</h3>
+<p>In the actual API automation testing process, we need to run test cases in different environments to ensure that the API works properly in each environment.</p>
+<p>By using Pytest’s fixture feature, we can easily support multiple environments.</p>
+<p>Refer to the demo:<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="new-test-configuration-files-for-different-environments">New test configuration files for different environments</h4>
+<blockquote>
+<p>Configuration file will be stored in json format for example, other formats such as YAML, CSV, etc. are similar, can refer to the</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> configuration</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> config</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Go</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> configuration</span><span style="color:#9ECBFF"> folder</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> config</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> configuration</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> development</span><span style="color:#9ECBFF"> environment</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> dev_config.json</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> configuration</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> production</span><span style="color:#9ECBFF"> environment</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> prod_config.json</span></span></code></pre>
+<h4 id="writing-different-environment-test-profiles">Writing different environment test profiles</h4>
+<ul>
+<li>Writing Development Environment Test Profiles</li>
+</ul>
+<blockquote>
+<p>Configure the development environment test profiles according to the actual situation.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;host&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;https://jsonplaceholder.typicode.com&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;/posts/1&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;postAPI&quot;</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">&quot;/posts&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Configuring Production Environment Test Profiles</li>
+</ul>
+<blockquote>
+<p>Configure production environment test profiles according to the actual situation</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;host&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;https://jsonplaceholder.typicode.com&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;/posts/1&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;postAPI&quot;</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">&quot;/posts&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="new-different-environment-test-data-file">New Different Environment Test Data File</h4>
+<blockquote>
+<p>The different environments request data file and the response data file store the different environments request data and the different environments expected response data for the test cases, respectively.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> data</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Go</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> data</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> request</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> file</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> dev_request_data.json</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> response</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> file</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> dev_response_data.json</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> request</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> production</span><span style="color:#9ECBFF"> environment</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> prod_request_data.json</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> production</span><span style="color:#9ECBFF"> response</span><span style="color:#9ECBFF"> data</span><span style="color:#9ECBFF"> file</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> prod_response_data.json</span><span style="color:#E1E4E8"> </span></span></code></pre>
+<h4 id="writing-test-data-files-for-different-environments">Writing test data files for different environments</h4>
+<ul>
+<li>Write the dev environment request data file</li>
+</ul>
+<blockquote>
+<p>The dev environment request data file is configured with the request data for the getAPI API and the request data for the postAPI API.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;postAPI&quot;</span><span style="color:#E1E4E8">:{</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Writing the dev Environment Response Data File</li>
+</ul>
+<blockquote>
+<p>The dev environment response data file is configured with the response data for the getAPI API and the response data for the postAPI API.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPI&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPI&quot;</span><span style="color:#E1E4E8">:{</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">101</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Write the prod environment request data file</li>
+</ul>
+<blockquote>
+<p>The prod environment request data file is configured with the request data for the getAPI API and the request data for the postAPI API.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;postAPI&quot;</span><span style="color:#E1E4E8">:{</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Writing the prod Environment Response Data File</li>
+</ul>
+<blockquote>
+<p>The prod environment response data file is configured with the response data for the getAPI API and the response data for the postAPI API.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPI&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPI&quot;</span><span style="color:#E1E4E8">:{</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">101</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="configure-fixture-to-support-multiple-environments">Configure fixture to support multiple environments</h4>
+<p>The &gt; fixture will be stored in the conftest.py file as an example, other formats such as YAML, CSV, etc. are similar.</p>
+<ul>
+<li>Create a new conftest.py file in the project root directory.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0"> mkdrir</span><span style="color:#9ECBFF"> conftest.py</span></span></code></pre>
+<ul>
+<li>Writing the conftest.py file</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> pytest</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> json</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> json</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> os</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@pytest.fixture</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">scope</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;session&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> env_config</span><span style="color:#E1E4E8">(request):</span></span>
+<span class="line"><span style="color:#6A737D">    # get config file from different env</span></span>
+<span class="line"><span style="color:#E1E4E8">    env </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> os.getenv(</span><span style="color:#9ECBFF">&#39;ENV&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;dev&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    with</span><span style="color:#79B8FF"> open</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&#39;config/</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">env</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">_config.json&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;r&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> config_file:</span></span>
+<span class="line"><span style="color:#E1E4E8">        config </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> json.load(config_file)</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> config</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@pytest.fixture</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">scope</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;session&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> env_request_data</span><span style="color:#E1E4E8">(request):</span></span>
+<span class="line"><span style="color:#6A737D">    # get request data file from different env</span></span>
+<span class="line"><span style="color:#E1E4E8">    env </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> os.getenv(</span><span style="color:#9ECBFF">&#39;ENV&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;dev&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    with</span><span style="color:#79B8FF"> open</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&#39;data/</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">env</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">_request_data.json&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;r&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> request_data_file:</span></span>
+<span class="line"><span style="color:#E1E4E8">        request_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> json.load(request_data_file)</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> request_data</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@pytest.fixture</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">scope</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;session&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> env_response_data</span><span style="color:#E1E4E8">(request):</span></span>
+<span class="line"><span style="color:#6A737D">    # get response data file from different env</span></span>
+<span class="line"><span style="color:#E1E4E8">    env </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> os.getenv(</span><span style="color:#9ECBFF">&#39;ENV&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;dev&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    with</span><span style="color:#79B8FF"> open</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&#39;data/</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">env</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">_response_data.json&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;r&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> response_data_file:</span></span>
+<span class="line"><span style="color:#E1E4E8">        response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> json.load(response_data_file)</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> response_data</span></span></code></pre>
+<h4 id="update-test-case-to-support-multi-environment">Update test case to support multi environment</h4>
+<blockquote>
+<p>To make a distinction, here is a new test case file named test_demo_multi_environment.py</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> json</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TestPytestMultiEnvDemo</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_get_demo_multi_env</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # send request</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(host</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">get_api)</span></span>
+<span class="line"><span style="color:#6A737D">        # assert</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 200</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> get_api_response_data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_post_demo_multi_env</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_request_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_request_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # send request</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.post(host </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> post_api, post_api_request_data)</span></span>
+<span class="line"><span style="color:#6A737D">        # assert</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 201</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> post_api_response_data</span></span></code></pre>
+<h4 id="run-this-test-case-to-confirm-that-multi-environment-support-is-in-effect">Run this test case to confirm that multi-environment support is in effect</h4>
+<ul>
+<li>Run the dev environment test case</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#E1E4E8">ENV</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">dev</span><span style="color:#B392F0"> pytest</span><span style="color:#9ECBFF"> test_case/test_demo_multi_environment.py</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Wb0owW.png" alt="Wb0owW"/></p>
+<ul>
+<li>Run the prod environment test case</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#E1E4E8">ENV</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">prod</span><span style="color:#B392F0"> pytest</span><span style="color:#9ECBFF"> test_case/test_demo_multi_environment.py</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2kITJT.png" alt="2kITJT"/></p>
+<h3 id="integration-with-allure-reporting">Integration with allure reporting</h3>
+<p>allure is a lightweight, flexible, and easily extensible test reporting tool that provides a rich set of report types and features to help you better visualize your test results.</p>
+<p>allure reports can be integrated with Pytest to generate detailed test reports.</p>
+<p>Refer to the demo:<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="install-allure-pytest-library">Install allure-pytest library</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pip</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> allure-pytest</span></span></code></pre>
+<blockquote>
+<p>To avoid conflicts between the previously installed pytest-html-reporter and the allure-pytest package, it is recommended to uninstall the pytest-html-reporter package first.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pip</span><span style="color:#9ECBFF"> uninstall</span><span style="color:#9ECBFF"> pytest-html-reporter</span></span></code></pre>
+<h4 id="configuration-allure-pytest-library">Configuration allure-pytest library</h4>
+<p>Update the pytest.ini file to specify where allure reports are stored</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[pytest]</span></span>
+<span class="line"><span style="color:#6A737D"># allure</span></span>
+<span class="line"><span style="color:#F97583">addopts</span><span style="color:#E1E4E8"> = --alluredir ./allure-results</span></span></code></pre>
+<h4 id="adjusting-test-cases-to-support-allure-reporting">Adjusting test cases to support allure reporting</h4>
+<blockquote>
+<p>To differentiate, create a new test case file here, named test_demo_allure.py</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> allure</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@allure.feature</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Test example API&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TestPytestAllureDemo</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    @allure.story</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Test example get endpoint&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.title</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Verify the get API&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.description</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;verify the get API response status code and data&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.severity</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;blocker&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_get_example_endpoint_allure</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api_request_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_request_data[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # send get request</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(host </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> get_api)</span></span>
+<span class="line"><span style="color:#6A737D">        # assert</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;response status code is&quot;</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> str</span><span style="color:#E1E4E8">(response.status_code))</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 200</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;response data is&quot;</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> str</span><span style="color:#E1E4E8">(response.json()))</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> get_api_response_data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    @allure.story</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Test example POST API&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.title</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Verify the POST API&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.description</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;verify the POST API response status code and data&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">    @allure.severity</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Critical&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_post_example_endpoint_allure</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_request_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_request_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # send request</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.post(host </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> post_api, </span><span style="color:#FFAB70">json</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">post_api_request_data)</span></span>
+<span class="line"><span style="color:#6A737D">        # assert</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;response status code is&quot;</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> str</span><span style="color:#E1E4E8">(response.status_code))</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 201</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;response data is&quot;</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> str</span><span style="color:#E1E4E8">(response.json()))</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> post_api_response_data</span></span></code></pre>
+<h4 id="run-test-cases-to-generate-allure-reports">Run test cases to generate allure reports</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#E1E4E8">ENV</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">dev</span><span style="color:#B392F0"> pytest</span><span style="color:#9ECBFF"> test_case/test_demo_allure.py</span></span></code></pre>
+<h4 id="view-allure-report">View allure report</h4>
+<p>Run the following command to view the allure report in the browser</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">allure</span><span style="color:#9ECBFF"> serve</span><span style="color:#9ECBFF"> allure-results</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Pr1E3W.png" alt="Pr1E3W"/></p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OsUO2e.png" alt="OsUO2e"/></p>
+<h4 id="adapting-cicd-processes-to-support-allure-reporting">Adapting CI/CD processes to support allure reporting</h4>
+<blockquote>
+<p>Github action is an example, other CI tools are similar.</p>
+</blockquote>
+<p>Update the contents of the .github/workflows/pytest.yml file to upload allure reports to GitHub.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Pytest API Testing</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#85E89D">  pull_request</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">permissions</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  contents</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">read</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  Pytes-API-Testing</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Set up Python 3.10</span></span>
+<span class="line"><span style="color:#85E89D">      uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/setup-python@v3</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        python-version</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;3.10&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Install dependencies</span></span>
+<span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">        python -m pip install --upgrade pip</span></span>
+<span class="line"><span style="color:#9ECBFF">        pip install -r requirements.txt</span></span>
+<span class="line"><span style="color:#9ECBFF">        </span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Test with pytest</span></span>
+<span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">        ENV=dev pytest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Archive Pytest allure test report</span></span>
+<span class="line"><span style="color:#85E89D">      uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/upload-artifact@v3</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Pytest-allure-report</span></span>
+<span class="line"><span style="color:#85E89D">        path</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allure-results</span></span>
+<span class="line"><span style="color:#E1E4E8">          </span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Upload Pytest allure report to GitHub</span></span>
+<span class="line"><span style="color:#85E89D">      uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/upload-artifact@v3</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Pytest-allure-report</span></span>
+<span class="line"><span style="color:#85E89D">        path</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allure-results</span></span></code></pre>
+<h4 id="view-github-action-allure-report">View github action allure report</h4>
+<p>In GitHub, navigate to your repository. Click the Actions tab at the top, and then click the Pytest API Testing workflow on the left. You should see the workflow running, wait for the execution to complete, and then you can view the results.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Lz2pPh.png" alt="Lz2pPh"/></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://docs.pytest.org/en/6.2.x/">Pytest docs</a></li>
+<li><a href="https://docs.qameta.io/allure/">Allure docs</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

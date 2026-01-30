@@ -1,0 +1,188 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { marked } from "marked";
+import PageHeadline from "@/components/PageHeadline.astro";
+import {
+  ABOUT_PAGE_TITLE,
+  ABOUT_ME_TITLE,
+  ABOUT_ME_BODY,
+  ABOUT_TECH_TITLE,
+  ABOUT_TECH_TESTING,
+  ABOUT_TECH_LANGUAGES,
+  ABOUT_TECH_DEVOPS,
+  ABOUT_PROJECTS_TITLE,
+  ABOUT_SUPPORT_TITLE,
+  ABOUT_SUPPORT_BODY,
+  ABOUT_CONNECT_TITLE,
+  ABOUT_CONNECT_BODY,
+  FEATURED_PROJECTS,
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const title = t(ABOUT_PAGE_TITLE);
+
+// 技术栈徽章（与 README 一致）
+const testingBadges = [
+  { alt: "Playwright", src: "https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" },
+  { alt: "Selenium", src: "https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" },
+  { alt: "Cypress", src: "https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" },
+  { alt: "Postman", src: "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" },
+  { alt: "K6", src: "https://img.shields.io/badge/K6-7D64FF?style=for-the-badge&logo=k6&logoColor=white" },
+];
+const languageBadges = [
+  { alt: "Python", src: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" },
+  { alt: "JavaScript", src: "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" },
+  { alt: "TypeScript", src: "https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" },
+  { alt: "Java", src: "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" },
+];
+const devOpsBadges = [
+  { alt: "GitHub Actions", src: "https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" },
+  { alt: "Docker", src: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" },
+];
+
+const aboutMeHtml = marked(t(ABOUT_ME_BODY), { gfm: true }) as string;
+const supportHtml = marked(t(ABOUT_SUPPORT_BODY), { gfm: true }) as string;
+const connectHtml = marked(t(ABOUT_CONNECT_BODY), { gfm: true }) as string;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <section class="about-section">
+    <h2 class="section-title">{t(ABOUT_ME_TITLE)}</h2>
+    <div class="prose" set:html={aboutMeHtml} />
+  </section>
+
+  <section class="about-section">
+    <h2 class="section-title">{t(ABOUT_TECH_TITLE)}</h2>
+    <h3 class="subsection-title">{t(ABOUT_TECH_TESTING)}</h3>
+    <div class="badges">
+      {testingBadges.map((b) => (
+        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
+      ))}
+    </div>
+    <h3 class="subsection-title">{t(ABOUT_TECH_LANGUAGES)}</h3>
+    <div class="badges">
+      {languageBadges.map((b) => (
+        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
+      ))}
+    </div>
+    <h3 class="subsection-title">{t(ABOUT_TECH_DEVOPS)}</h3>
+    <div class="badges">
+      {devOpsBadges.map((b) => (
+        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
+      ))}
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="section-title">{t(ABOUT_PROJECTS_TITLE)}</h2>
+    <ul class="project-list">
+      {FEATURED_PROJECTS.map((proj) => (
+        <li>
+          <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
+            <strong>{t(proj.title)}</strong>
+            <span class="project-desc">{t(proj.description)}</span>
+            <span class="material-icons-sharp dir">open_in_new</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="about-section">
+    <h2 class="section-title">{t(ABOUT_SUPPORT_TITLE)}</h2>
+    <div class="prose" set:html={supportHtml} />
+  </section>
+
+  <section class="about-section">
+    <h2 class="section-title">{t(ABOUT_CONNECT_TITLE)}</h2>
+    <div class="prose" set:html={connectHtml} />
+  </section>
+</Layout>
+
+<style>
+  .about-section {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(
+      in srgb,
+      var(--color-theme) 20%,
+      transparent
+    );
+  }
+  .section-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    color: var(--color-theme);
+    margin-block-end: var(--sp-m);
+  }
+  .subsection-title {
+    font-size: 1.1rem;
+    margin-block: var(--sp-s) var(--sp-s);
+    font-weight: 600;
+  }
+  .prose :global(ul) {
+    padding-inline-start: 1.2em;
+  }
+  .prose :global(li) {
+    margin-block: 0.25em;
+  }
+  .prose :global(a) {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+  .prose :global(strong) {
+    font-weight: 800;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-s);
+    margin-block-end: var(--sp-m);
+  }
+  .badges img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+  .project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-s);
+  }
+  .project-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25em 0.5em;
+    padding: var(--sp-m);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    transition: background 0.2s ease;
+  }
+  .project-card:hover {
+    background: color-mix(in srgb, var(--color-theme) 14%, transparent);
+  }
+  .project-desc {
+    width: 100%;
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+  .project-card .material-icons-sharp {
+    margin-inline-start: auto;
+    opacity: 0.6;
+  }
+</style>

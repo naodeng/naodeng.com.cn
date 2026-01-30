@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍 - 软件测试同学"><meta property="og:site_name" content="Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-ai-assistant-postbot-trial-introduction/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-AI-Assistant-Postbot-Trial-Introduction-cover.DPqS6z8f_Z1DqR5t.webp" alt="Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman 接口自动化测试教程：进阶用法 - AI 助手 Postbot 试用介绍</h1> <time datetime="2024-03-17T02:05:00.000Z" data-astro-cid-v3cnrnum> 2024/3/17 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span><span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span> </div> </header> <h2 id="进阶用法">进阶用法</h2>
+<p>以下会介绍 Postman 的进阶用法：AI 助手 Postbot 试用介绍报告。</p>
+<blockquote>
+<p>最近在参加 Ministry 测试社区发起的 30 天 AI 测试挑战活动时，其中一个挑战是选择不同的 AI 测试工具进行使用，刚好我选择了 Postman 的 AI Assistant Postbot，单独发出来大家可以参考使用。</p>
+</blockquote>
+<h3 id="1-关于选择一个工具">1. 关于<strong>选择一个工具</strong></h3>
+<p>这一次我选择了 Postman AI Assistant，因为项目中我正在实施 API 测试和 API 自动化回归测试，希望能从 Postman AI Assistant 工具的试用过程中得到一些使用 AI 提升 API 测试效率且能落地的实践。</p>
+<blockquote>
+<p>关于 Postman 工具的使用：Postman 自从 2023 年 5 月宣布将逐步淘汰具有离线功能的 Scratch Pad 模型，大部分功能将转移到云端，需要必须登录才能使用 Postman 的全部功能后。我们公司已经通知要停止使用 Postman 并要迁移到其他的工具。之后我一直在调研和学习使用 Bruno，一个开源且能替代 postman 完成 API 测试和 API 自动化回归测试的好工具。最近也在项目团队中落地了 Bruno+github 的接口文档管理和接口自动化测试的实践，与开发人员一起使用 Bruno+github 协作完成 API 的管理和测试工作。</p>
+</blockquote>
+<p>Postman AI Assistant 官方的介绍：</p>
+<p>用于 API 工作流的 AI Assistant Postbot 将于 2023 年 5 月 22 日推出早期访问计划。</p>
+<ul>
+<li>📅 可用性：早期访问计划于 2023 年 5 月 22 日启动。</li>
+<li>🪄✨功能：人工智能驱动的自动完成、测试用例设计、文档编写、测试套件构建、数据报告汇总、API 调用调试。</li>
+<li>💳 定价：从 2023 年 10 月 15 日起提供基本和专业计划，每用户每月 9 美元。</li>
+</ul>
+<p>我下载 Postman 并使用常用的 demo 接口进行了 Postbot 的试用：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/n7YK4F.png" alt=" "/></p>
+<h3 id="2-关于创建一些测试代码">2. 关于<strong>创建一些测试代码</strong></h3>
+<p>在 postman 界面上添加完 demo 接口的 request 后，点击界面底部菜单栏上的 Postbot 即可启动 Postman AI Assistant，Postbot 窗口上出现针对 request 的建议指令菜单，当前有如下几个推荐指令：</p>
+<ul>
+<li>Add tests to this request</li>
+<li>Test for response</li>
+<li>Visualize response</li>
+<li>Save a field from response</li>
+<li>Add documentation</li>
+</ul>
+<p>接下来我会一个接一个的试用 Postbot 建议的功能。</p>
+<h4 id="试用add-tests-to-this-request">试用<strong>Add tests to this request</strong></h4>
+<p>在 Postbot 界面上点击<strong>Add tests to this request</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/PDPH8I.png" alt=" "/></p>
+<p>如果你添加了 request 后还没点击 send 运行过该 request，
+Postbot 会提示”I‘ll need a response to perform this action”，然后 Postbot 也会给出快捷运行 request 输出 response 的菜单;点击”Send request and continue”按钮后 Postman 会自动运行 request 并编写测试脚本，如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZGYSwi.png" alt=" "/></p>
+<p>Postbot 针对 demo request 编写测试脚本如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>pm.test(&quot;Response status code is 201&quot;, function () {</span></span>
+<span class="line"><span>    pm.response.to.have.status(201);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;Response has the required fields - title, body, userId, and id&quot;, function () {</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData.title).to.exist;</span></span>
+<span class="line"><span>    pm.expect(responseData.body).to.exist;</span></span>
+<span class="line"><span>    pm.expect(responseData.userId).to.exist;</span></span>
+<span class="line"><span>    pm.expect(responseData.id).to.exist;</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;Title is a non-empty string&quot;, function () {</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData).to.be.an(&#39;object&#39;);</span></span>
+<span class="line"><span>    pm.expect(responseData.title).to.be.a(&#39;string&#39;).and.to.have.lengthOf.at.least(1, &quot;Title should not be empty&quot;);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;Body is a non-empty string&quot;, function () {</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData).to.be.an(&#39;object&#39;);</span></span>
+<span class="line"><span>    pm.expect(responseData.body).to.be.a(&#39;string&#39;).and.to.have.lengthOf.at.least(1, &quot;Body should not be empty&quot;);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;UserId is a positive integer&quot;, function () {</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData.userId).to.be.a(&#39;number&#39;);</span></span>
+<span class="line"><span>    pm.expect(responseData.userId).to.be.above(0, &quot;UserId should be a positive integer&quot;);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>编写的测试覆盖了接口 response 的 status 判断 和 body 字段类型判断，也能运行通过。</p>
+<p>这时我发现 Postbot 的建议菜单上新增了两个推荐指令</p>
+<ul>
+<li>Add more tests</li>
+<li>Fix test</li>
+</ul>
+<p>我先尝试运行了“Add more tests”，然后 Postbot 也新增了几条测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/VDUws3.png" alt=" "/></p>
+<p>但是有趣的是，有一个测试运行失败了，然后我点击运行“Fix test”尝试让 Postbot 去修复这一条错误的测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/33nkUH.png" alt=" "/></p>
+<p>然而 Postbot 并没有修复成功这一条错误的测试用例</p>
+<p>这一条错误的用例如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>pm.test(&quot;UserId matches the ID of the user who created the post&quot;, function () {</span></span>
+<span class="line"><span>    const requestUserId = pm.request.json().userId;</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData.userId).to.equal(requestUserId);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>我只能手动去修复它，修复后的脚本如下</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>pm.test(&quot;UserId matches the ID of the user who created the post&quot;, function () {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    const requestUserId = JSON</span></span>
+<span class="line"><span>    .parse(pm.request.body.raw).userId;</span></span>
+<span class="line"><span>    const responseData = pm.response.json();</span></span>
+<span class="line"><span>    pm.expect(responseData.userId).to.equal(requestUserId);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>脚本错误的原因是因为 request 的 body 为 raw 格式，需要将 request 的 body 解析为 json 对象后在进行进行读取。</p>
+<h4 id="试用test-for-response">试用<strong>Test for response</strong></h4>
+<p>在 Postbot 界面上点击<strong>Test for response</strong>后，Postbot 会更新之前通过<strong>Add tests to this request</strong>生成的测试用例，如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fNrz10.png" alt=" "/></p>
+<p>通过查看更新后的测试运行结果发现，更新后的用例大部分用例都没办法运行通过。
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/liVBHj.png" alt=" "/></p>
+<p>然后我尝试通过 Postbot 的“Fix test”去修复错误的用例，大部分的用例的都能运行通过，但还是出现了之前<strong>Add tests to this request</strong>指令生成且出现过的错误测试用例。</p>
+<p>另外点击 Postbot 的“Fix test”去修复<strong>Test for response</strong>指令生成的用例是会将大部分用例都更新为<strong>Add tests to this request</strong>指令生成的测试用例</p>
+<p>不知道<strong>Add tests to this request</strong>和<strong>Test for response</strong>两个指令的差异在哪里？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oq0mEw.png" alt=" "/></p>
+<h4 id="试用visualize-response">试用<strong>Visualize response</strong></h4>
+<p>在 Postbot 界面上点击<strong>Visualize response</strong>后，需要选择生成的格式，格式可以选择表格/折线图/条形图，我这里选择为表格，然后 Postbot 会在 request 请求之后的结果页面展示 response 的实例化表格样式。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3DjMD6.png" alt=" "/></p>
+<p>这个 response 的表格实例化展示是通过在 tests 下生成脚本实现的，具体的脚本如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>var template = `</span></span>
+<span class="line"><span>&lt;style type=&quot;text/css&quot;&gt;</span></span>
+<span class="line"><span>    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}</span></span>
+<span class="line"><span>    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}</span></span>
+<span class="line"><span>    .tftable tr {background-color:#ffffff;}</span></span>
+<span class="line"><span>    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}</span></span>
+<span class="line"><span>    .tftable tr:hover {background-color:#e0ffff;}</span></span>
+<span class="line"><span>&lt;/style&gt;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&lt;table class=&quot;tftable&quot; border=&quot;1&quot;&gt;</span></span>
+<span class="line"><span>    &lt;tr&gt;</span></span>
+<span class="line"><span>        &lt;th&gt;Title&lt;/th&gt;</span></span>
+<span class="line"><span>        &lt;th&gt;Body&lt;/th&gt;</span></span>
+<span class="line"><span>        &lt;th&gt;User ID&lt;/th&gt;</span></span>
+<span class="line"><span>        &lt;th&gt;ID&lt;/th&gt;</span></span>
+<span class="line"><span>    &lt;/tr&gt;</span></span>
+<span class="line"><span>    &lt;tr&gt;</span></span>
+<span class="line"><span>        &lt;td&gt;&amp;#123;&amp;#123;response.title&amp;#125;&amp;#125;&lt;/td&gt;</span></span>
+<span class="line"><span>        &lt;td&gt;&amp;#123;&amp;#123;response.body&amp;#125;&amp;#125;&lt;/td&gt;</span></span>
+<span class="line"><span>        &lt;td&gt;&amp;#123;&amp;#123;response.userId&amp;#125;&amp;#125;&lt;/td&gt;</span></span>
+<span class="line"><span>        &lt;td&gt;&amp;#123;&amp;#123;response.id&amp;#125;&amp;#125;&lt;/td&gt;</span></span>
+<span class="line"><span>    &lt;/tr&gt;</span></span>
+<span class="line"><span>&lt;/table&gt;</span></span>
+<span class="line"><span>`;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function constructVisualizerPayload() {</span></span>
+<span class="line"><span>    return {response: pm.response.json()}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>pm.visualizer.set(template, constructVisualizerPayload());</span></span></code></pre>
+<p>目前没发现<strong>Visualize response</strong>这个功能对 API 测试的帮助在哪里。</p>
+<h4 id="使用save-a-field-from-response">使用<strong>Save a field from response</strong></h4>
+<p>在 Postbot 界面上点击<strong>Save a field from response</strong>后，Postbot 会生成一个测试脚本脚本来将 response 中的 id 存储为环境变量，具体生成代码如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>// Stores the postId in an environment or global variable</span></span>
+<span class="line"><span>var postId = pm.response.json().id;</span></span>
+<span class="line"><span>pm.globals.set(&quot;postId&quot;, postId);</span></span></code></pre>
+<p>然后我再次点击 Postbot 的<strong>Save a field from response</strong>指令，发现 Postbot 还是会生成将 response 中的 id 存储为环境变量的测试脚本，而不是生成存储 response 中的 其他字段存储为环境变量的测试脚本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/R7gwUZ.png" alt=" "/></p>
+<h4 id="试用add-documentation">试用<strong>Add documentation</strong></h4>
+<p>在 Postbot 界面上点击使用<strong>Add documentation</strong>指令后，Postbot 会在 postman 界面右侧生成一个非常详细的接口文档，如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Amwb4n.png" alt=" "/></p>
+<p>接口文档上描述了接口的请求信息，request 字段定义，response 返回示例等非常详细的接口相关信息。</p>
+<h3 id="3关于分享我的想法">3.关于<strong>分享我的想法</strong></h3>
+<p>通过试用 postman 提供的 AI Assistant Postbot 工具，Postbot 提供的针对 request 和 response 添加测试用例功能还是比较方便的，能快速生成大部分部分可用的接口 response 验证测试脚本，测试脚本覆盖率也比较高，虽然生成的测试脚本中出现的错误的脚本，也需要人工进行修复，但是通过 Postbot 能快速生成测试脚本也能提升接口测试的效率。</p>
+<p>另外 Postbot 的接口文档生成也比较使用，开发人员在 postman 添加好 request 后，通过 Postbot 能快速生成比较详细的接口文档，一定程度上能提升研发效率和接口文档质量。</p>
+<p>但是 Postbot 目前好像还不支持自定义指令，我想尝试通过 Postbot 针对 demo 接口输出不同类型的测试用例，如空 request body 接口测试用例，不合法 request body 接口测试用例等，Postbot 没办法给出正确响应。</p>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">https://learning.postman.com/docs/getting-started/introduction/</a></li>
+<li><a href="https://github.com/postmanlabs/newman?tab=readme-ov-file#command-line-options">https://github.com/postmanlabs/newman?tab=readme-ov-file#command-line-options</a></li>
+<li><a href="https://blog.postman.com/introducing-postbot-postmans-new-ai-assistant/">https://blog.postman.com/introducing-postbot-postmans-new-ai-assistant/</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/</a></li>
+<li><a href="https://naodeng.com.cn/zh/zhseries/30-%E5%A4%A9-ai-%E6%B5%8B%E8%AF%95%E6%8C%91%E6%88%98%E6%B4%BB%E5%8A%A8/">https://naodeng.com.cn/zh/zhseries/30-%E5%A4%A9-ai-%E6%B5%8B%E8%AF%95%E6%8C%91%E6%88%98%E6%B4%BB%E5%8A%A8/</a></li>
+<li><a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></li>
+<li><a href="https://club.ministryoftesting.com/t/day-14-generate-ai-test-code-and-share-your-experience/75133">https://club.ministryoftesting.com/t/day-14-generate-ai-test-code-and-share-your-experience/75133</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/zhcategories/bruno/">使用 Bruno 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

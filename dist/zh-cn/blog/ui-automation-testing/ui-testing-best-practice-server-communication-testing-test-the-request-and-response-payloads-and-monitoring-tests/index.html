@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests-cover.C9jRhsFC_ZD5nSw.webp" alt="UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的服务通信测试：检验请求和响应负载，测试监控</h1> <time datetime="2024-01-21T09:06:44.000Z" data-astro-cid-v3cnrnum> 2024/1/21 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="检验请求和响应负载">检验请求和响应负载</h2>
+<p>原文链接:<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/test-request-and-response-payload.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/test-request-and-response-payload.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>前端应用因与后端通信不协调而导致停止工作的频率有多高？</p>
+<p>前端应用和后端应用之间存在一份合同，你始终需要测试合同是否得到遵守。每一次前后端应用之间的通信都由以下几个方面定义：</p>
+<ul>
+<li>请求的 URL</li>
+<li>所使用的 HTTP 动词（GET、POST 等）</li>
+<li>请求的有效负载和标头：前端应用发送给后端应用的数据</li>
+<li>响应的有效负载、标头和状态：后端应用发送回前端应用的数据</li>
+</ul>
+<p>你需要对所有这些方面进行测试，更广义地说，你需要等待每个相关的 AJAX 请求，为什么呢？</p>
+<ul>
+<li>相关的 XHR 请求是你正在测试的应用程序流程的一部分</li>
+<li>即使 XHR 请求不是你正在测试的流程的一部分，它对达到期望的 UI 状态也可能是相关的</li>
+<li>等待 XHR 请求可以使你的测试更为健壮，参见<a href="https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.zh.md">等待，不要休眠</a>章节及其<a href="https://github.com/naodeng/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.zh.md#XHR-%E8%AF%B7%E6%B1%82%E7%AD%89%E5%BE%85">XHR 请求等待</a>部分</li>
+</ul>
+<p>在现有的测试工具中，完全等待和检查 XHR 请求并不那么常见，目前 Cypress 提供了最全面的检查支持。</p>
+<p><em>请注意：以下所有示例均基于 Cypress，它目前提供了最佳的 XHR 测试支持。</em></p>
+<h2 id="对-xhr-请求进行断言的完整示例">对 XHR 请求进行断言的完整示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ... your test actions...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@authentication-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">interception</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // request headers assertion</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.headers).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Content-Type&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;application/json&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // request payload assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;username&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;admin&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;password&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;asupersecretpassword&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // status assertion</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.response.statusCode).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // response headers assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.response.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;access-control-allow-origin&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;*&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // response payload assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.response.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;token&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>在下面的章节中，我们将详细讨论 XHR 请求的不同特征。</p>
+<details><summary>验证 XHR 请求的 URL</summary><p>在 Cypress 中，用于请求的 URL 是通过<code>cy.intercept</code>调用定义的。你可能需要检查 URL 的查询字符串。</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;**/authentication**&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ... your test actions...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@authentication-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">interception</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // query string assertion</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.url).to.</span><span style="color:#B392F0">contain</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;username=admin&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.url).to.</span><span style="color:#B392F0">contain</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;password=asupersecretpassword&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre><p>请注意，当你需要对多个主题进行断言时，Cypress 的<code>then =&gt; expect</code>语法非常有帮助（例如，URL 和状态）。如果你只需要对单个主题进行断言，可以使用更具表现力的<code>should</code>语法。</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@authentication-xhr&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;url&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;contain&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;username=admin&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">and</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;contain&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;password=asupersecretpassword&quot;</span><span style="color:#E1E4E8">);</span></span></code></pre></details>
+<details><summary>XHR 请求的方法</summary><p>在 Cypress 中，请求使用<code>cy.intercept</code>函数定义。你可以通过指定它来定义要拦截的请求类型。</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// the most compact `cy.intercept` call, the GET method is implied</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// method can be explicitly defined</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// the extended `cy.intercept` call is available too</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span></code></pre></details>
+<details><summary>验证 XHR 请求的 payload 和 headers</summary><p>对 XHR 请求的 payload 和 headers 进行断言允许你立即获得有关糟糕的 XHR 请求原因的详细反馈。必须在每个 XHR 请求上进行检查，以确保一切都正确地表示了测试执行的 UI 操作。</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ... your test actions...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@authentication-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">interception</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // request headers assertion</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.headers).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Content-Type&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;application/json&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // request payload assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;username&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;admin&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;password&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;asupersecretpassword&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre></details>
+<details><summary>验证 XHR 请求响应的 payload, headers 和 status</summary><p>响应必须百分之百符合前端应用的预期，否则可能向用户展示意料之外的状态。响应断言在完整的端到端测试中很有用，但在 UI 集成测试中则无关紧要（TODO：链接到集成测试页面）。</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// ask Cypress to intercept every XHR request made to a URL ending with `/authentication`</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;**/authentication&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;authentication-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ... your test actions...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@authentication-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">intercept</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // status assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(intercept.response.statusCode).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // response headers assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(intercept.response.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;access-control-allow-origin&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;*&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // response payload assertions</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(intercept.response.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;token&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre></details>
+<h2 id="测试监控">测试监控</h2>
+<p>原文链接：:<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/monitoring-tests.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/server-communication-testing/monitoring-tests.md</a></p>
+<h3 id="一段简要说明-1">一段简要说明</h3>
+<p>随着前端期望的提高，服务器和服务的复杂性也在增加。前端应用需要变得越来越快：代码拆分、懒加载、Brotli 压缩等性能优化解决方案已成为标准。还有一些令人惊叹的解决方案，如基于机器学习和分析数据的代码拆分和资源预加载。此外，JAMstack 站点生成器可用于避免手动管理许多性能优化，但它们的配置和构建过程可能会破坏<strong>已经测试过的功能</strong>。</p>
+<p>有很多我们一旦测试过就认为理所当然的功能，但它们并非无法回归，可能会导致灾难。例如：</p>
+<ul>
+<li><code>sitemap.xml</code> 和 <code>robots.txt</code> 的爬行配置（通常每个环境都不同）</li>
+<li>使用 Brotli/gzip 提供的资产：错误的内容编码可能会破坏站点的所有功能</li>
+<li>针对静态或动态资产的不同配置的缓存管理</li>
+</ul>
+<p>这些问题可能看起来很明显，但比你想象的更微妙。如果你关心用户体验，就应该保持监控，因为通常在发现问题时已经为时过晚。我知道不能监控所有事物，但是测试应用的次数越多，测试就越能成为首要的质量检查工具。</p>
+<p>监控测试也可以与 E2E 测试集成（毕竟，它们只是简单的 E2E 测试），但将它们保持分开可以帮助你在需要时运行它们。上述大多数事项与 DevOps 相关，有了超快的监控测试，您可以获得即时而专注的反馈。</p>
+<h2 id="cypress-示例">Cypress 示例</h2>
+<ul>
+<li>缓存监控测试示例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> urls</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  staging: </span><span style="color:#9ECBFF">&quot;https://staging.example.com&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  production: </span><span style="color:#9ECBFF">&quot;https://example.com&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> shouldNotBeCached</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">xhr</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> cy.</span><span style="color:#B392F0">wrap</span><span style="color:#E1E4E8">(xhr).</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;headers.cache-control&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;equal&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;public,max-age=0,must-revalidate&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> shouldBeCached</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">xhr</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> cy.</span><span style="color:#B392F0">wrap</span><span style="color:#E1E4E8">(xhr).</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;headers.cache-control&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;equal&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;public,max-age=31536000,immutable&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#6A737D">// extract the main JS file from the source code of the page</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> getMainJsUrl</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> pageSource</span><span style="color:#F97583"> =&gt;</span><span style="color:#9ECBFF"> &quot;/app-56a3f6cb9e6156c82be6.js&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">context</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Site monitoring&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  context</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;The HTML should not be cached&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> test</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> url</span><span style="color:#F97583"> =&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(url)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(shouldNotBeCached)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;staging&quot;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.staging))</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;production&quot;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.production))</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  context</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;The static assets should be cached&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> test</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> url</span><span style="color:#F97583"> =&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(url)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;body&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(getMainJsUrl)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">appUrl</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> url</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">appUrl)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(cy.request)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(shouldBeCached)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;staging&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.staging))</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;production&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.production))</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<ul>
+<li>内容编码监控测试示例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">context</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;The Brotli-compressed assets should be served with the correct content encoding&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> test</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> url</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(url)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;body&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(getMainJsUrl)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">appUrl</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">({url: url </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> appUrl, headers: {</span><span style="color:#9ECBFF">&quot;Accept-Encoding&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;br&quot;</span><span style="color:#E1E4E8">}})</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;headers.content-encoding&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;equal&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;br&quot;</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;staging&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.staging))</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;production&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.production))</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<ul>
+<li>抓取监测测试示例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">context</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;The robots.txt file should disallow the crawling of the staging site and allow the production one&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> test</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">url</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">content</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">url</span><span style="color:#9ECBFF">}/robots.txt`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;body&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;contain&quot;</span><span style="color:#E1E4E8">, content)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;staging&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.staging, </span><span style="color:#9ECBFF">&quot;Disallow: /&quot;</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;production&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(urls.production, </span><span style="color:#9ECBFF">&quot;Allow: /&quot;</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p><em>由<a href="https://github.com/NoriSte">NoriSte</a> 在 <a href="https://dev.to/noriste/the-concept-of-monitoring-tests-4l5j">dev.to</a> 和 <a href="https://medium.com/@NoriSte/the-concept-of-monitoring-tests-d7cb5af514e5">Medium</a>进行联合发表。</em></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

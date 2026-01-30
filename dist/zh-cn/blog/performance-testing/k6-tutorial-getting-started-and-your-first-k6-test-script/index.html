@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>K6 性能测试教程：入门介绍，环境搭建和编写第一个 K6 测试脚本 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="K6 性能测试教程：入门介绍，环境搭建和编写第一个 K6 测试脚本 - 软件测试同学"><meta property="og:site_name" content="K6 性能测试教程：入门介绍，环境搭建和编写第一个 K6 测试脚本 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/performance-testing/k6-tutorial-getting-started-and-your-first-k6-test-script/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/K6-tutorial-getting-started-and-your-first-K6-test-script-cover.Dyk1K2tF_Z24uq7p.webp" alt="K6 性能测试教程：入门介绍，环境搭建和编写第一个 K6 测试脚本" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>K6 性能测试教程：入门介绍，环境搭建和编写第一个 K6 测试脚本</h1> <time datetime="2024-01-09T09:22:00.000Z" data-astro-cid-v3cnrnum> 2024/1/9 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>K6</span><span class="tag" data-astro-cid-v3cnrnum>Performance Testing</span> </div> </header> <h2 id="什么是-k6">什么是 K6</h2>
+<p>k6 是一款用于性能测试和负载测试的开源工具，主要用于评估和验证应用程序的性能和稳定性。以下是关于 k6 的一些主要特点和信息：</p>
+<ol>
+<li>
+<p><strong>开源性：</strong> k6 是一款完全开源的性能测试工具，代码存储在 GitHub 上。这意味着用户可以自由访问、使用和修改工具的源代码。</p>
+</li>
+<li>
+<p><strong>JavaScript 编写脚本：</strong> k6 使用 JavaScript 语言编写测试脚本，这使得编写测试用例相对简单，并且对于开发人员而言更加友好。脚本可以包含 HTTP 请求、WebSocket 连接、脚本执行逻辑等。</p>
+</li>
+<li>
+<p><strong>支持多种协议：</strong> k6 支持多种常见的协议，包括 HTTP、WebSocket、Socket.IO、gRPC 等，使其可以广泛应用于各种类型的应用程序。</p>
+</li>
+<li>
+<p><strong>分布式测试：</strong> k6 具有分布式测试的能力，允许在多个节点上运行测试，从而模拟更真实的生产环境负载。</p>
+</li>
+<li>
+<p><strong>实时结果和报告：</strong> k6 提供实时结果，包括请求响应时间、吞吐量等，并能够生成详细的 HTML 报告，帮助用户更好地理解应用程序的性能状况。</p>
+</li>
+<li>
+<p><strong>容器化支持：</strong> k6 适应容器化环境，可以轻松集成到 CI/CD 流水线中，并与常见的容器编排工具（如 Kubernetes）配合使用。</p>
+</li>
+<li>
+<p><strong>插件生态系统：</strong> k6 支持插件，用户可以通过插件扩展其功能，满足特定需求。</p>
+</li>
+<li>
+<p><strong>活跃的社区：</strong> 由于 k6 是一个开源项目，拥有一个积极的社区，提供支持、文档和示例，使用户更容易上手和解决问题。</p>
+</li>
+</ol>
+<p>总体而言，k6 是一个灵活、强大且易于使用的性能测试工具，适用于各种规模的应用程序和系统。</p>
+<h2 id="官方网站及文档">官方网站及文档</h2>
+<ul>
+<li><a href="https://k6.io/">官方网站</a></li>
+<li><a href="https://k6.io/docs/">官方文档</a></li>
+</ul>
+<h2 id="安装">安装</h2>
+<h3 id="mac-系统安装">Mac 系统安装</h3>
+<p>Mac 系统可以通过 Homebrew 安装 k6：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">brew</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> k6</span></span></code></pre>
+<h3 id="windows-系统安装">Windows 系统安装</h3>
+<p>Windows 系统可以通过 Chocolatey 安装 k6：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">choco</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> k6</span></span></code></pre>
+<p>或者通过 winget 安装 k6：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">winget</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> k6</span></span></code></pre>
+<h3 id="docker-安装">Docker 安装</h3>
+<p>k6 也可以通过 Docker 安装：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">docker</span><span style="color:#9ECBFF"> pull</span><span style="color:#9ECBFF"> grafana/k6</span></span></code></pre>
+<h3 id="其他系统安装">其他系统安装</h3>
+<p>K6 除了支持上述系统外，还支持 Linux（Debian/Ubuntu/Fedora/CentOS），也支持下载 K6 二进制文件和 K6 扩展进行安装，具体安装方式请参考<a href="https://k6.io/docs/get-started/installation">官方文档</a>。</p>
+<h3 id="确认-k6-安装成功">确认 K6 安装成功</h3>
+<p>安装完成后，可以通过以下命令确认 k6 是否安装成功：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">k6</span><span style="color:#9ECBFF"> version</span></span></code></pre>
+<p>如果安装成功，会显示 k6 的版本信息：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/QR8wKb.png" alt=" "/></p>
+<h2 id="第一个-k6-测试脚本">第一个 K6 测试脚本</h2>
+<h3 id="编写第一个测试脚本">编写第一个测试脚本</h3>
+<h4 id="新建一个-k6-性能测试项目目录并进入">新建一个 K6 性能测试项目目录并进入</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> k6-demo</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> k6-demo</span></span></code></pre>
+<h4 id="创建一个名为-demojs-的文件用于编写测试脚本">创建一个名为 <code>demo.js</code> 的文件，用于编写测试脚本</h4>
+<ul>
+<li>可以通过 <code>k6 new</code> 命令创建一个测试脚本文件：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">k6</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> demo.js</span></span></code></pre>
+<ul>
+<li>也可以直接创建一个名为 demo.js 的测试脚本文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> demo.js</span></span></code></pre>
+<h4 id="编辑测试脚本">编辑测试脚本</h4>
+<p>如果是通过 <code>k6 new</code> 命令创建的测试脚本文件，会自动生成一个简单的测试脚本，如下所示：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // A number specifying the number of VUs to run concurrently.</span></span>
+<span class="line"><span style="color:#E1E4E8">  vus: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // A string specifying the total duration of the test run.</span></span>
+<span class="line"><span style="color:#E1E4E8">  duration: </span><span style="color:#9ECBFF">&#39;30s&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // The following section contains configuration options for execution of this</span></span>
+<span class="line"><span style="color:#6A737D">  // test script in Grafana Cloud.</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#6A737D">  // See https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/</span></span>
+<span class="line"><span style="color:#6A737D">  // to learn about authoring and running k6 test scripts in Grafana k6 Cloud.</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#6A737D">  // ext: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   loadimpact: {</span></span>
+<span class="line"><span style="color:#6A737D">  //     // The ID of the project to which the test is assigned in the k6 Cloud UI.</span></span>
+<span class="line"><span style="color:#6A737D">  //     // By default tests are executed in default project.</span></span>
+<span class="line"><span style="color:#6A737D">  //     projectID: &quot;&quot;,</span></span>
+<span class="line"><span style="color:#6A737D">  //     // The name of the test in the k6 Cloud UI.</span></span>
+<span class="line"><span style="color:#6A737D">  //     // Test runs with the same name will be grouped.</span></span>
+<span class="line"><span style="color:#6A737D">  //     name: &quot;demo.js&quot;</span></span>
+<span class="line"><span style="color:#6A737D">  //   }</span></span>
+<span class="line"><span style="color:#6A737D">  // },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Uncomment this section to enable the use of Browser API in your tests.</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#6A737D">  // See https://grafana.com/docs/k6/latest/using-k6-browser/running-browser-tests/ to learn more</span></span>
+<span class="line"><span style="color:#6A737D">  // about using Browser API in your test scripts.</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#6A737D">  // scenarios: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   // The scenario name appears in the result summary, tags, and so on.</span></span>
+<span class="line"><span style="color:#6A737D">  //   // You can give the scenario any name, as long as each name in the script is unique.</span></span>
+<span class="line"><span style="color:#6A737D">  //   ui: {</span></span>
+<span class="line"><span style="color:#6A737D">  //     // Executor is a mandatory parameter for browser-based tests.</span></span>
+<span class="line"><span style="color:#6A737D">  //     // Shared iterations in this case tells k6 to reuse VUs to execute iterations.</span></span>
+<span class="line"><span style="color:#6A737D">  //     //</span></span>
+<span class="line"><span style="color:#6A737D">  //     // See https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/ for other executor types.</span></span>
+<span class="line"><span style="color:#6A737D">  //     executor: &#39;shared-iterations&#39;,</span></span>
+<span class="line"><span style="color:#6A737D">  //     options: {</span></span>
+<span class="line"><span style="color:#6A737D">  //       browser: {</span></span>
+<span class="line"><span style="color:#6A737D">  //         // This is a mandatory parameter that instructs k6 to launch and</span></span>
+<span class="line"><span style="color:#6A737D">  //         // connect to a chromium-based browser, and use it to run UI-based</span></span>
+<span class="line"><span style="color:#6A737D">  //         // tests.</span></span>
+<span class="line"><span style="color:#6A737D">  //         type: &#39;chromium&#39;,</span></span>
+<span class="line"><span style="color:#6A737D">  //       },</span></span>
+<span class="line"><span style="color:#6A737D">  //     },</span></span>
+<span class="line"><span style="color:#6A737D">  //   },</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// The function that defines VU logic.</span></span>
+<span class="line"><span style="color:#6A737D">//</span></span>
+<span class="line"><span style="color:#6A737D">// See https://grafana.com/docs/k6/latest/examples/get-started-with-k6/ to learn more</span></span>
+<span class="line"><span style="color:#6A737D">// about authoring k6 scripts.</span></span>
+<span class="line"><span style="color:#6A737D">//</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>如果是直接创建的测试脚本文件，可以将上述内容复制到 <code>demo.js</code> 文件中。</p>
+<h4 id="运行测试脚本">运行测试脚本</h4>
+<p>在 <code>demo.js</code> 文件所在目录下，运行以下命令：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">k6</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> demo.js</span></span></code></pre>
+<h4 id="查看测试结果">查看测试结果</h4>
+<p>如果一切正常，会看到类似如下的输出：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/a4vK69.png" alt=" "/></p>
+<p>包含以下信息：</p>
+<ul>
+<li><strong>execution:</strong> 执行信息，包括开始时间、结束时间、持续时间、VU 数量、迭代次数等。</li>
+<li><strong>scenarios:</strong> 场景信息，包括场景名称、VU 数量、迭代次数、持续时间、平均响应时间、吞吐量等。</li>
+<li><strong>http_reqs:</strong> HTTP 请求信息，包括请求名称、请求数量、失败数量、平均响应时间、吞吐量等。</li>
+</ul>
+<h4 id="解析-demo-测试脚本">解析 demo 测试脚本</h4>
+<ul>
+<li>
+<p><code>import http from &#39;k6/http&#39;;</code>：导入 k6 的 HTTP 模块，用于发送 HTTP 请求。</p>
+</li>
+<li>
+<p><code>import { sleep } from &#39;k6&#39;;</code>：导入 k6 的 sleep 方法，用于执行脚本等待。</p>
+</li>
+<li>
+<p><code>export const options = { ... }</code>：定义测试脚本的配置项，包括 VU 数量、持续时间等。</p>
+</li>
+<li>
+<p><code>vus: 10,</code>：定义 VU 数量为 10（指定并发运行的 VU 数量）。</p>
+</li>
+<li>
+<p><code>duration: &#39;30s&#39;,</code>：定义持续时间为 30 秒（指定测试运行总持续时间）。</p>
+</li>
+<li>
+<p><code>export default function() { ... }</code>：定义测试脚本的逻辑，包括发送 HTTP 请求、执行等待等。</p>
+</li>
+<li>
+<p><code>http.get(&#39;https://test.k6.io&#39;);</code>：发送一个 GET 请求到 <code>https://test.k6.io</code>。</p>
+</li>
+<li>
+<p><code>sleep(1);</code>：执行等待 1 秒。</p>
+</li>
+</ul>
+<blockquote>
+<p>其他注释内容可以忽略，这些内容是关于 k6 的一些高级功能，后续会介绍。</p>
+</blockquote>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://k6.io/docs/">K6 文档：</a></li>
+<li><a href="https://k6.io/">k6 官方网站：</a></li>
+<li><a href="https://github.com/Automation-Test-Starter/K6-Performance-Test-starter">K6 性能测试快速启动项目：</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

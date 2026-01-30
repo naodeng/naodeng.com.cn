@@ -1,0 +1,437 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks - Nao's Blog"><meta property="og:site_name" content="K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/K6-tutorial-common-functions-1-http-request-metrics-and-checks-cover.Bvs276Ih_2kToz1.webp" alt="K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks</h1> <time datetime="2024-01-11T09:10:00.000Z" data-astro-cid-v3cnrnum> 1/11/2024 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>K6</span><span class="tag" data-astro-cid-v3cnrnum>Performance Testing</span> </div> </header> <h2 id="k6-common-function">K6 common function</h2>
+<h3 id="http-requests">HTTP Requests</h3>
+<p>The first step in performance testing with K6 is to define the HTTP requests to be tested.</p>
+<h4 id="get-request-example">GET Request Example</h4>
+<p>A simple HTTP request for the GET method is already included in the demo test script created with the <code>k6 new</code> command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="post-request-example">POST Request Example</h4>
+<p>This POST request example shows the application of some complex scenarios (POST request with email/password authentication load)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> url</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;http://test.k6.io/login&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> payload</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">&#39;aaa&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    password: </span><span style="color:#9ECBFF">&#39;bbb&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> params</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">      &#39;Content-Type&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&#39;application/json&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(url, payload, params);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>The above is taken from <a href="https://k6.io/docs/using-k6/http-requests">K6 Official Documentation</a></p>
+</blockquote>
+<h4 id="supported-http-methods">Supported HTTP Methods</h4>
+<p>The HTTP module provided by K6 can handle various HTTP requests and methods. The following is a list of supported HTTP methods:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>NAME</th><th>VALUE</th></tr></thead><tbody><tr><td>batch()</td><td>makes multiple HTTP requests in parallel (like e.g. browsers tend to do).</td></tr><tr><td>del()</td><td>makes an HTTP DELETE request.</td></tr><tr><td>get()</td><td>makes an HTTP GET request.</td></tr><tr><td>head()</td><td>makes an HTTP HEAD request.</td></tr><tr><td>options()</td><td>makes an HTTP OPTIONS request.</td></tr><tr><td>patch()</td><td>makes an HTTP PATCH request.</td></tr><tr><td>post()</td><td>makes an HTTP POST request.</td></tr><tr><td>put()</td><td>makes an HTTP PUT request.</td></tr><tr><td>request()</td><td>makes any type of HTTP request.</td></tr></tbody></table>
+<h4 id="http-request-tags">HTTP Request Tags</h4>
+<p>K6 allows you to add tags to each HTTP request. Combining tags and grouping makes it easy to better organize in test results, group requests and filter results to organize analysis.</p>
+<p>The following is a list of supported tags:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>NAME</th><th>DESCRIPTION</th></tr></thead><tbody><tr><td>expected_response</td><td>By default, response statuses between 200 and 399 are true. Change the default behavior with <code>setResponseCallback</code>.</td></tr><tr><td>group</td><td>When the request runs inside a <code>group</code>, the tag value is the group name. Default is empty.</td></tr><tr><td>name</td><td>Defaults to URL requested</td></tr><tr><td>method</td><td>Request method (GET, POST, PUT etc.)</td></tr><tr><td>scenario</td><td>When the request runs inside a <code>scenario</code>, the tag value is the scenario name. Default is <code>default</code>.</td></tr><tr><td>status</td><td>response status</td></tr><tr><td>url</td><td>defaults to URL requested</td></tr></tbody></table>
+<p>Examples of HTTP requests using tag and group tags will be shown in subsequent demos.</p>
+<p>You can also refer to the official examples:<a href="https://grafana.com/docs/k6/latest/using-k6/http-requests/">https://grafana.com/docs/k6/latest/using-k6/http-requests/</a></p>
+<h3 id="metrics">Metrics</h3>
+<p>The metrics are used to measure the performance of the system under test conditions. By default, k6 automatically collects built-in metrics. In addition to the built-in metrics, you can create custom metrics.</p>
+<p>Metrics generally fall into four categories:</p>
+<ol>
+<li>Counters: Summing values.</li>
+<li>Gauges: Tracking the smallest, largest, and most recent values.</li>
+<li>Rates: Tracking how often non-zero values occur.</li>
+<li>Trends: Calculating statistical information (such as mean, mode, or percentile) for multiple values.</li>
+</ol>
+<p>To ensure that test assertions meet the criteria, thresholds can be written based on the conditions of the metrics required by the performance test (the specifics of the expression depend on the type of metric).</p>
+<p>For subsequent filtering of metrics, labels and groupings can be used, allowing for better organization of test results.</p>
+<blockquote>
+<p>The test results output file can export metrics in a variety of summary and fine-grained formats. For more information, refer to the results output documentation. (This section will be covered in more detail in the later part of the test results output documentation.)</p>
+</blockquote>
+<h4 id="k6-built-in-metrics">K6 Built-in Metrics</h4>
+<p>Every k6 test execution emits both built-in and custom metrics. Each supported protocol also has its specific metrics.</p>
+<h5 id="standard-built-in-metrics">Standard Built-in Metrics</h5>
+<p>Regardless of the protocol used in the test, k6 always collects the following metrics:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>vus</td><td>Gauge</td><td>Current number of active virtual users</td></tr><tr><td>vus_max</td><td>Gauge</td><td>Max possible number of virtual users (VU resources are pre-allocated, to avoid affecting performance when scaling up load )</td></tr><tr><td>iterations</td><td>Counter</td><td>The aggregate number of times the VUs execute the JS script (the default function).</td></tr><tr><td>iteration_duration</td><td>Trend</td><td>The time to complete one full iteration, including time spent in setup and teardown. To calculate the duration of the iteration’s function for the specific scenario, try this workaround</td></tr><tr><td>dropped_iterations</td><td>Counter</td><td>The number of iterations that weren’t started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). About dropped iterations</td></tr><tr><td>data_received</td><td>Counter</td><td>The amount of received data. This example covers how to track data for an individual URL.</td></tr><tr><td>data_sent</td><td>Counter</td><td>The amount of data sent. Track data for an individual URL to track data for an individual URL.</td></tr><tr><td>checks</td><td>Rate</td><td>The rate of successful checks.</td></tr></tbody></table>
+<h5 id="http-specific-built-in-metrics">HTTP-specific built-in metrics</h5>
+<p>HTTP-specific built-in metrics are generated only when the test makes HTTP requests.Other types of requests, such as WebSocket, do not generate these metrics.</p>
+<blockquote>
+<p>Note: For all http_req_* metrics, the timestamp is emitted at the end of the request. In other words, the timestamp occurs when k6 receives the end of the response body or when the request times out.</p>
+</blockquote>
+<p>The following table lists HTTP-specific built-in metrics:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>http_reqs</td><td>Counter</td><td>How many total HTTP requests k6 generated.</td></tr><tr><td>http_req_blocked</td><td>Trend</td><td>Time spent blocked (waiting for a free TCP connection slot) before initiating the request. float</td></tr><tr><td>http_req_connecting</td><td>Trend</td><td>Time spent establishing TCP connection to the remote host. float</td></tr><tr><td>http_req_tls_handshaking</td><td>Trend</td><td>Time spent handshaking TLS session with remote host</td></tr><tr><td>http_req_sending</td><td>Trend</td><td>Time spent sending data to the remote host. float</td></tr><tr><td>http_req_waiting</td><td>Trend</td><td>Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). float</td></tr><tr><td>http_req_receiving</td><td>Trend</td><td>Time spent receiving response data from the remote host. float</td></tr><tr><td>http_req_duration</td><td>Trend</td><td>Total time for the request. It’s equal to http_req_sending + http_req_waiting + http_req_receiving (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). float</td></tr><tr><td>http_req_failed</td><td>Rate</td><td>The rate of failed requests according to setResponseCallback.</td></tr></tbody></table>
+<h5 id="other-built-in-metrics">Other built-in metrics</h5>
+<p>In addition to the standard built-in metrics and HTTP-specific built-in metrics, K6 built-in metrics also have other built-in metrics:</p>
+<ul>
+<li>Browser metrics : <a href="https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#browser">https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#browser</a></li>
+<li>Built-in WebSocket metrics : <a href="https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#websockets">https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#websockets</a></li>
+<li>Built-in gRPC metrics : <a href="https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#grpc">https://grafana.com/docs/k6/latest/using-k6/metrics/reference/#grpc</a></li>
+</ul>
+<h4 id="custom-metrics">custom metrics</h4>
+<p>Besides the built-in metrics, you can create custom metrics. For example, you can compute a metric for your business logic, or use the Response.timings object to create a metric for a specific set of endpoints.</p>
+<p>Each metric type has a constructor to create a custom metric. The constructor creates a metric object of the declared type. Each type has an add method to take metric measurements.</p>
+<blockquote>
+<p>Note: Custom metrics must be created in the init context. This limits memory and ensures that K6 can verify that all thresholds evaluate the defined metrics.</p>
+</blockquote>
+<h5 id="custom-metrics-demo">custom metrics demo</h5>
+<p>The following example demonstrates how to create a custom trend metrics for wait time:</p>
+<blockquote>
+<p>The demo_custom_metrics.js file in the project file already contains this demo example, which can be run directly to view the results.</p>
+</blockquote>
+<h6 id="1import-the-trend-constructor-from-the-k6metrics-module">1.Import the Trend constructor from the k6/metrics module</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Trend } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/metrics&#39;</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<blockquote>
+<blockquote>
+<p>The waiting time trend metrics is a Trends metrics, so the Trend constructor needs to be introduced from the k6/metrics module.</p>
+</blockquote>
+</blockquote>
+<h6 id="2constructs-a-new-custom-metric-trend-object-in-the-init-context">2.Constructs a new custom metric Trend object in the init context</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myTrend</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Trend</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;waiting_time&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<blockquote>
+<p>Construct a new custom metric Trend object in the init context, the object in the script is myTrend, and its metric is displayed as <code>waiting_time</code> in the resulting output.</p>
+</blockquote>
+<h6 id="3use-the-add-method-in-a-script-to-record-metric-measurements">3.Use the add method in a script to record metric measurements</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  myTrend.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(res.timings.waiting);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<blockquote>
+<p>Use the add method in the script to record the metric measurement values. Here, <code>res.timings.waiting</code> is used, which is the waiting time.</p>
+</blockquote>
+<h6 id="4demo_custom_metricsjs-complete-code-of-custom-metric">4.demo_custom_metrics.js Complete code of custom metric</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Trend } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/metrics&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myTrend</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Trend</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;waiting_time&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://httpbin.test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  myTrend.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(res.timings.waiting);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(myTrend.name); </span><span style="color:#6A737D">// waiting_time</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h6 id="5run-demo_custom_metricsjs-and-view-automated-trending-metrics">5.Run demo_custom_metrics.js and view automated trending metrics</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">k6</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> demo_custom_metrics.js</span></span></code></pre>
+<p>The running results are as follows:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png" alt=" "/></p>
+<blockquote>
+<p>As you can see, the custom metric <code>waiting_time</code> has been displayed in the result output.</p>
+</blockquote>
+<p>For more information about custom metrics, please refer to the official documentation: <a href="https://k6.io/docs/using-k6/metrics/#custom-metrics">https://k6.io/docs/using-k6/metrics/#custom-metrics</a></p>
+<h3 id="checks">Checks</h3>
+<blockquote>
+<p>This can also be understood as assertions, which verify the test results.</p>
+</blockquote>
+<p>Checks are used to verify whether specific test conditions in different tests are correctly responded to, similar to how we conventionally verify test results in other types of tests to ensure that the system responds as expected.</p>
+<p>For example, a check can ensure that the response status of a POST request is 201, or that the size of the response body matches expectations.</p>
+<p>Checks are similar to the concept of assertions in many testing frameworks, but <strong>K6 does not abort the test or end it in a failed state when verifications fail. Instead, k6 tracks the failure rate of failed verifications as the test continues to run</strong>.</p>
+<blockquote>
+<p>Each check creates a rate metric. To make a check abort or cause the test to fail, it can be combined with thresholds.</p>
+</blockquote>
+<p>Below, we will introduce how to use different types of checks and how to view check results in test results.</p>
+<h4 id="1-check-http-response-status">1. Check HTTP Response Status</h4>
+<p>K6 checks are particularly useful for response assertions related to HTTP requests.</p>
+<p>For example, the following code snippet checks that the HTTP response code is 200:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { check } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://httpbin.test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  check</span><span style="color:#E1E4E8">(res, {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;HTTP response code is status 200&#39;</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> r.status </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Running this script, you can see the following results:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png" alt=" "/></p>
+<blockquote>
+<p>When a script contains checks, the summary report shows how many test checks have passed.</p>
+</blockquote>
+<p>In this example, note that the check “HTTP response code is status 200” is 100% successful when called.</p>
+<h4 id="2-check-http-response-body">2. Check HTTP Response Body</h4>
+<p>In addition to checking the HTTP response status, you can also check the HTTP response body.</p>
+<p>For example, the following code snippet checks that the HTTP response body size is 9591 bytes:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { check } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://httpbin.test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  check</span><span style="color:#E1E4E8">(res, {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;HTTP response body size is 9591 bytes&#39;</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> r.body.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ==</span><span style="color:#79B8FF"> 9591</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Running this script, you can see the following results:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png" alt=" "/></p>
+<blockquote>
+<p>When a script contains checks, the summary report shows how many test checks have passed.</p>
+</blockquote>
+<p>In this example, note that the check “HTTP response body size is 9591 bytes” is 100% successful when called.</p>
+<h4 id="3-adding-multiple-checks">3. Adding Multiple Checks</h4>
+<p>Sometimes, multiple checks need to be added in a single test script. You can directly add multiple checks in a single check() statement, as shown in the script below:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { check } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;k6/http&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://httpbin.test.k6.io&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  check</span><span style="color:#E1E4E8">(res, {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;HTTP response code is status 200&#39;</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> r.status </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;HTTP response body size is 9591 bytes&#39;</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> r.body.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ==</span><span style="color:#79B8FF"> 9591</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Running this script, you can see the following results:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png" alt=" "/></p>
+<p>In this example, both checks pass successfully (the call is 100% successful).</p>
+<blockquote>
+<p>Note: When a check fails, the script will continue to execute successfully and will not return a “failed” exit status. If you need to fail the entire test based on check results, you must combine checks with thresholds. This is particularly useful in specific environments, such as integrating k6 into a CI pipeline or receiving alerts when scheduling performance tests.</p>
+</blockquote>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://k6.io/docs/">Official K6 documentation: https://k6.io/docs/</a></li>
+<li><a href="https://k6.io/">Official website: https://k6.io/</a></li>
+<li><a href="https://github.com/Automation-Test-Starter/K6-Performance-Test-starter">K6 Performance Test quick starter: https://github.com/Automation-Test-Starter/K6-Performance-Test-starter/</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

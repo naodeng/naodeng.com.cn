@@ -1,0 +1,188 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+import {
+  SITE_TITLE,
+  HOME_INTRO,
+  HOME_LATEST_POSTS,
+  HOME_VIEW_ALL,
+} from "@/consts";
+
+import heroImageEn from "@/assets/en/hero.svg";
+import heroImageZhCn from "@/assets/zh-cn/hero.svg";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+// 当前语言的最新 6 篇博文
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestPosts = allPosts.slice(0, 6);
+
+const introHtml = marked(t(HOME_INTRO), { gfm: true }) as string;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout>
+  <section class="hero">
+    <Image
+      src={locale === "zh-cn" ? heroImageZhCn : heroImageEn}
+      alt={t(SITE_TITLE)}
+      loading="eager"
+    />
+  </section>
+
+  <section class="intro" set:html={introHtml} />
+
+  <section class="latest">
+    <h2 class="section-title">{t(HOME_LATEST_POSTS)}</h2>
+    <ul class="post-grid">
+      {
+        latestPosts.map((post) => {
+          const [, ...idParts] = post.id.split("/");
+          const postUrl = `/${locale}/blog/${idParts.join("/")}/`;
+          const dateStr = post.data.date.toLocaleDateString(
+            locale === "zh-cn" ? "zh-CN" : "en-US",
+            { year: "numeric", month: "short", day: "numeric" }
+          );
+          return (
+            <li>
+              <a href={postUrl} class="post-card">
+                {post.data.cover && (
+                  <span class="post-cover">
+                    <Image
+                      src={post.data.cover}
+                      alt={post.data.title}
+                      width={320}
+                      height={180}
+                    />
+                  </span>
+                )}
+                <span class="post-meta">{dateStr}</span>
+                <h3 class="post-title">{post.data.title}</h3>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <p class="view-all">
+      <a href={getRelativeLocaleUrl(locale, "/blog")}>{t(HOME_VIEW_ALL)}</a>
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    margin-block-end: var(--sp-m);
+  }
+  .hero :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .intro {
+    margin-block: var(--sp-m);
+    padding: var(--sp-m);
+    border-radius: 12px;
+    background-color: color-mix(
+      in srgb,
+      var(--color-theme) 6%,
+      transparent
+    );
+  }
+  .intro :global(ul) {
+    margin-block-start: 0.6em;
+    padding-inline-start: 1.2em;
+  }
+  .intro :global(li) {
+    margin-block: 0.25em;
+  }
+  .intro :global(a) {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+  .intro :global(strong) {
+    font-weight: 800;
+  }
+
+  .latest {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(
+      in srgb,
+      var(--color-theme) 20%,
+      transparent
+    );
+  }
+  .section-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    color: var(--color-theme);
+    margin-block-end: var(--sp-m);
+  }
+  .post-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .post-card:hover {
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    transform: translateY(-2px);
+  }
+  .post-cover {
+    display: block;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--color-base);
+  }
+  .post-cover :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .post-meta {
+    padding-inline: var(--sp-s);
+    padding-block-start: var(--sp-s);
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+  .post-title {
+    padding: var(--sp-s);
+    padding-block-start: 0.25em;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .view-all {
+    margin-block-start: var(--sp-m);
+    text-align: center;
+  }
+  .view-all a {
+    font-weight: 600;
+    padding: 0.4em 0.8em;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+  }
+</style>

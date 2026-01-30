@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages - Nao's Blog"><meta property="og:site_name" content="30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages-cover.BqPbEwF5_Z2iaV3m.webp" alt="30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages</h1> <time datetime="2024-03-26T12:06:44.000Z" data-astro-cid-v3cnrnum> 3/26/2024 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages">Day 23: Assess AI effectiveness in visual testing and discuss the advantages</h2>
+<p>Welcome to Day 23! Today, we’ll assess the effectiveness of AI in visual testing compared to non-AI visual testing methods. The use of AI to detect visual anomalies within graphical user interfaces (GUIs) has great promise. So, let’s explore the potential advantages and pitfalls of adopting an AI-assisted visual testing approach.</p>
+<h3 id="task-steps">Task Steps</h3>
+<p>Let’s begin this investigation by selecting one of two options based on your current experience and access to visual testing tools:</p>
+<ul>
+<li>
+<p><strong>Option 1 - For those actively using or looking to get hands-on with visual testing tools</strong></p>
+<ul>
+<li><strong>Select a tool and examine the capabilities</strong>: Select a tool or platform that boasts AI-powered visual testing capabilities. Review the documentation or marketing materials to understand the AI approach and their anomaly detection claims.</li>
+<li><strong>Test the claims</strong>: Design a time-boxed test (e.g., 30 minutes) to evaluate one of the tool’s AI-powered visual testing capabilities. For instance, if it claims to detect layout changes, intentionally modify the GUI and see how well the tool identifies the anomaly.</li>
+<li><strong>Consider failure scenarios</strong>: Assuming the tool performed well in your test, construct a scenario where you think it might fail to detect a visual anomaly.</li>
+<li><strong>Share your findings</strong>: In reply to this post, share your insights on AI-powered visual testing. Consider including
+<ul>
+<li>Which option you selected</li>
+<li>Which tool you selected and the AI visual testing capabilities it claimed</li>
+<li>Your findings from your timeboxed experiment</li>
+<li>The potential advantages and risks of using AI for visual testing.</li>
+<li>How likely you are to continue using the AI-powered visual testing tool.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Option 2 - For those new to visual testing or without access to tools.</strong></p>
+<ul>
+<li><strong>Research AI visual testing</strong>: Find resources (research papers, blog posts, documentation, video demos) discussing how AI is used for visual testing and GUI anomaly detection.</li>
+<li><strong>Critique the AI approach</strong>: Try to identify the core benefits AI brings to visual testing and the techniques used by AI systems to analyse GUI images/screenshots and identify visual anomalies. Then hypothesise scenarios where an AI system might struggle to detect a visual anomaly.</li>
+<li><strong>Assess if AI visual testing is for you</strong>: Consider whether an AI-powered visual testing solution would benefit your team based on the challenges you currently face.</li>
+<li><strong>Share your findings</strong>: In reply to this post, share your insights on AI-powered visual testing. Consider including
+<ul>
+<li>Which option you selected,</li>
+<li>A summary of what problems AI-powered visual testing claims to solve and how</li>
+<li>The potential advantages and risks of adopting an AI visual testing approach</li>
+<li>How likely you are to adopt AI-powered visual testing tools.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-take-part">Why Take Part</h3>
+<ul>
+<li><strong>Deepen your knowledge</strong>: Maintaining robust visual testing as UIs evolve can be challenging. This task helps you understand how AI could potentially streamline this process.</li>
+<li><strong>Develop a critical mindset</strong>: When evaluating new testing tools or approaches, it’s crucial to think critically about their capabilities, limitations, and impacts on your team. Today’s task hones that skill.</li>
+</ul>
+<h3 id="task-link">Task Link</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/75363">https://club.ministryoftesting.com/t/day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/75363</a></p>
+<h2 id="my-day-23-task">My Day 23 Task</h2>
+<p>For today’s task, based on the goal of continuous learning of AI testing tools, I’ve chosen <strong>Option 2</strong> to trial a new AI visual testing tool.</p>
+<h3 id="1-about-choosing-the-tool-and-checking-its-features">1. <strong>About Choosing the Tool and Checking Its Features</strong></h3>
+<p>Having previously tried Applitools Eyes in an earlier challenge, this time I opted for a different AI visual testing tool, <a href="https://www.browserstack.com/docs/percy/overview/visual-testing-basics">Percy</a>, to learn about its capabilities.</p>
+<p>Percy’s official introduction highlights:</p>
+<ul>
+<li>Eliminating the risk of shipping visual errors by getting visual coverage of your entire UI and confidently releasing every version.</li>
+<li>Rapidly performing comprehensive visual reviews by running visual tests with every commit and getting fast, deterministic results to efficiently debug.</li>
+<li>Cross-browser and platform rendering: Percy renders the same pages across different browsers and platforms (desktop and mobile), highlighting visual differences specific to each browser and platform. Percy captures DOM snapshots and resources, renders them, and compares them to previously generated snapshots to detect visual changes.</li>
+<li>Responsive differences: Percy highlights visual differences by rendering pages at configurable responsive widths and grouping visual changes while ignoring noise, facilitating faster, more accurate visual reviews.</li>
+<li>Snapshot stability: Percy’s proprietary snapshot stabilization technology automatically freezes animations and other dynamic elements to minimize false positives. Percy ensures the consistency and determinacy of page rendering.</li>
+</ul>
+<p>However, initially, there seemed to be no mention of AI in the promotion. Soon enough, I found another official promotional piece about Percy: <a href="https://www.browserstack.com/blog/product-launch-app-percy/">Introducing App Percy: An AI-driven Automated Visual Testing Platform for Native Applications</a>.</p>
+<ul>
+<li><strong>AI-driven visual testing</strong>: With App Percy, you can automatically detect visual defects across devices and screen sizes with every commit, ensuring your UI meets every customer’s expectations from day one. App Percy’s lightning-fast infrastructure captures screenshots from selected devices with every code push and compares them to the baseline to discover visual defects. The key here is our underlying computer vision-driven algorithm — the Percy Visual Engine — which reduces false positives, such as those caused by dynamic elements, and highlights only those visual deviations discernible to the human eye.</li>
+<li><strong>Percy Visual Engine</strong>: The powerful AI algorithms of App Percy detect changes users truly care about. It aids in reducing noise and simplifying image comparisons by detecting page shifts, handling anti-aliasing noise, stabilizing intelligent texts, and ignoring regions. Learn more about the Percy Visual Engine.</li>
+</ul>
+<h3 id="2-about-testing-the-statement">2. <strong>About Testing the Statement</strong></h3>
+<blockquote>
+<p>Since Percy is a commercial tool, I registered for a trial account.</p>
+</blockquote>
+<h4 id="introduction-to-using-percy">Introduction to Using Percy</h4>
+<p>After registering and email verification, I could start a trial with a new project, similar to the steps with Applitools Eyes.</p>
+<ul>
+<li>New project setup: options for web or mobile app projects and choice of code management tools like git or GitHub.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png" alt=" "/></p>
+<ul>
+<li>Selecting code writing tool.</li>
+<li>Obtaining Percy token.</li>
+<li>Setting up Percy local environment.</li>
+<li>Writing tests.</li>
+<li>Running tests.</li>
+<li>Viewing reports on the Percy platform.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sp8nHu.png" alt=" "/></p>
+<h4 id="starting-the-percy-trial">Starting the Percy Trial</h4>
+<p>This time, I chose Percy’s cypress sdk for a demo project trial with the following steps:</p>
+<ul>
+<li>Node project initialization in a local folder via command line.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span></span></code></pre>
+<ul>
+<li>Cypress project initialization.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> cypress</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<ul>
+<li>Installing Percy dependencies.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --save-dev</span><span style="color:#9ECBFF"> @percy/cli</span><span style="color:#9ECBFF"> @percy/cypress</span></span></code></pre>
+<ul>
+<li>Configuring Percy token.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#E1E4E8"> PERCY_TOKEN</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;&lt;your token here&gt;&quot;</span></span></code></pre>
+<ul>
+<li>Writing demo test code: visual testing my blog’s homepage.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> &#39;@percy/cypress&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Integration test with visual testing&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Loads the homepage&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">      // Load the page or perform any other interactions with the app.</span></span>
+<span class="line"><span style="color:#E1E4E8">      cy.</span><span style="color:#B392F0">visit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;http://localhost:1313/&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      cy.</span><span style="color:#B392F0">percySnapshot</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Login page responsive test&#39;</span><span style="color:#E1E4E8">, { widths: [</span><span style="color:#79B8FF">768</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">992</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">1200</span><span style="color:#E1E4E8">] });</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span></code></pre>
+<ul>
+<li>Running the test.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> percy</span><span style="color:#9ECBFF"> exec</span><span style="color:#79B8FF"> --</span><span style="color:#9ECBFF"> cypress</span><span style="color:#9ECBFF"> run</span></span></code></pre>
+<ul>
+<li>Viewing command line results.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HvIxIz.png" alt=" "/></p>
+<p>After the test runs successfully, the command line displays a link to the Percy platform for detailed visual verification results.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tmz854.png" alt=" "/></p>
+<h4 id="test-scenario-1-multiple-visual-difference-recognition-on-a-page">Test Scenario 1: Multiple Visual Difference Recognition on a Page</h4>
+<ul>
+<li>Test preparation: Changes to the top content of my blog’s homepage.</li>
+<li>Rerunning the demo test.</li>
+<li>Viewing Percy recognition results.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/exwX2h.png" alt=" "/></p>
+<h4 id="test-scenario-2-small-icon-visual-difference-recognition">Test Scenario 2: Small Icon Visual Difference Recognition</h4>
+<ul>
+<li>Test preparation: Removing an external link icon from my blog’s homepage menu.</li>
+<li>Rerunning the demo test.</li>
+<li>Viewing Percy recognition results.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png" alt=" "/></p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png" alt=" "/></p>
+<h3 id="3-about-considering-failure-scenarios">3. <strong>About Considering Failure Scenarios</strong></h3>
+<p>Continuous recognition verification on multiple page changes was successful, with no failure scenarios encountered yet. Potential failure scenarios might include subtle color differences and minor variations in font styles.</p>
+<h3 id="4-about-the-potential-advantages-and-risks-of-using-ai-for-visual-testing">4. <strong>About the Potential Advantages and Risks of Using AI for Visual Testing</strong></h3>
+<ul>
+<li>Potential Advantages: A professional AI visual testing tool can significantly improve project visual testing efficiency and ensure quality.</li>
+<li>Potential Risks and Limitations: Using an AI tool, especially for an unreleased product, comes with risks associated with data privacy, security, and result bias uncertainty. Another concern is Percy’s use of a token to upload local test data to view visual test reports on the Percy platform, posing a potential data privacy risk.</li>
+</ul>
+<h3 id="5-about-the-likelihood-of-adopting-ai-driven-visual-testing-tools">5. <strong>About the Likelihood of Adopting AI-driven Visual Testing Tools</strong></h3>
+<p>It’s currently unlikely for the project I’m working on to adopt AI-driven visual testing tools, but I’m open to trying and learning about new AI-driven visual testing tools for personal projects.</p>
+<h2 id="about-event">About Event</h2>
+<p>The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.</p>
+<p>Community Website: <a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>Event Link: <a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">Day 1: Introduce yourself and your interest in AI</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">Day 2: Read an introductory article on AI in testing and share it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">Day 3: List ways in which AI is used in testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">Day 5:Identify a case study on AI in testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">Day 6:Explore and share insights on AI testing tools</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">Day 7: Research and share prompt engineering techniques</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">Day 8: Craft a detailed prompt to support test activities</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">Day 9: Evaluate prompt quality and try to improve it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">Day 10: Critically Analyse AI-Generated Tests</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">Day 11: Generate test data using AI and evaluate its efficacy</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">Day 13: Develop a testing approach and become an AI in testing champion</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">Day 14: Generate AI test code and share your experience</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">Day 15: Gauge your short-term AI in testing plans</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">Day 17: Automate bug reporting with AI and share your process and evaluation</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/">Day 18: Share your greatest frustration with AI in Testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/">Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/">Day 20: Learn about AI self-healing tests and evaluate how effective they are</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/">Day 21: Develop your AI in testing manifesto</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/">Day 22: Reflect on what skills a team needs to succeed with AI-assisted testing</a></li>
+</ul>
+<h2 id="recommended-readings">Recommended Readings</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/series/api-automation-testing-tutorial/">API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/">Bruno API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/gatling-performance-testing-tutorial/">Gatling Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/k6-performance-testing-tutorial/">K6 Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/">Postman API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/">Pytest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/">REST Assured API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/">SuperTest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/">30 Days of AI in Testing Challenge</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

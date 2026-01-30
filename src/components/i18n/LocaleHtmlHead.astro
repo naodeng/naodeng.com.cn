@@ -1,0 +1,32 @@
+---
+import type { Lang } from "@/i18n";
+const locale = Astro.currentLocale as Lang;
+---
+
+{locale === "en" ? (
+  <style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style>
+) : locale === "zh-cn" ? (
+  <>
+    <link
+      rel="preload"
+      as="style"
+      fetchpriority="high"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload={`this.media='all'`}
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style>
+  </>
+) : null}

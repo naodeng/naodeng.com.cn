@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>Gatling Performance Testing Tutorial: Getting Started - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/performance-testing/gatling-tool-tutorial1/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/performance-testing/gatling-tool-tutorial1/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Gatling Performance Testing Tutorial: Getting Started - Nao's Blog"><meta property="og:site_name" content="Gatling Performance Testing Tutorial: Getting Started - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/performance-testing/gatling-tool-tutorial1/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/performance-testing/gatling-tool-tutorial1/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/performance-testing/gatling-tool-tutorial1/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/gatling-tool-tutorial1-cover.RlE6CXHY_SwMfE.webp" alt="Gatling Performance Testing Tutorial: Getting Started" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Gatling Performance Testing Tutorial: Getting Started</h1> <time datetime="2023-10-24T09:44:53.000Z" data-astro-cid-v3cnrnum> 10/24/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Gatling</span><span class="tag" data-astro-cid-v3cnrnum>Performance Testing</span> </div> </header> <h2 id="gatling-introduction">Gatling Introduction</h2>
+<p>Gatling is an open source tool for performance and load testing, especially for testing web applications. It is a high-performance tool based on the Scala programming language for simulating and measuring the performance of applications under different loads.</p>
+<p>Here are some of the key features and benefits of Gatling:</p>
+<ul>
+<li>Based on Scala programming language: Gatling’s test scripts are written in Scala, which makes it a powerful programming tool that allows users to write complex test scenarios and logic.</li>
+<li>High Performance: Gatling is designed as a high performance load testing tool. It uses non-blocking I/O and an asynchronous programming model that is capable of simulating large numbers of concurrent users to better mimic real-world load situations.</li>
+<li>Easy to learn and use: Although Gatling’s test scripts are written in Scala, its DSL (Domain Specific Language) is very simple and easy to learn. Even if you are not familiar with Scala, you can quickly learn how to create test scripts.</li>
+<li>Rich Features: Gatling provides a rich set of features, including request and response processing, data extraction, conditional assertions, performance report generation, and more. These features enable you to create complex test scenarios and perform comprehensive evaluation of application performance.</li>
+<li>Multi-Protocol Support: In addition to HTTP and HTTPS, Gatling supports other protocols such as WebSocket, JMS, and SMTP, making it suitable for testing a wide range of different types of applications.</li>
+<li>Real-time results analysis: Gatling provides real-time performance data and graphical reports during test runs to help you quickly identify performance issues.</li>
+<li>Open source and active community: Gatling is an open source project with an active community that constantly updates and improves the tool.</li>
+<li>CI/CD Integration Support: Gatling can be integrated with CI/CD tools such as Jenkins to perform performance testing in continuous integration and continuous delivery processes.</li>
+</ul>
+<p>Overall, Gatling is a powerful performance testing tool for testing a wide range of application types, helping development teams identify and resolve performance issues to ensure consistent performance and scalability of applications in production environments.</p>
+<h2 id="environment-setup">Environment setup</h2>
+<blockquote>
+<p>Since I’m a macbook user, I’ll use the macbook demo as an example in the introduction, but windows users can refer to it on their own.</p>
+</blockquote>
+<h3 id="vscode--gradle--scala-version">VSCode + Gradle + Scala Version</h3>
+<h4 id="preparation">Preparation</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Development tool: VSCode</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Install Gradle version &gt;= 6.0, I am using Gradle 8.44.</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Install JDK version &gt;= 8, I use JDK 19</li>
+</ul>
+<h4 id="install-plugins">install plugins</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> VSCode search for Scala (Metals) plugin for installation</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> VSCode search for Gradle for Java plugin for installation</li>
+</ul>
+<h4 id="official-demo-initialization--debugging">official demo initialization &amp; debugging</h4>
+<blockquote>
+<p>We will use the official demo project for initialization and debugging first, and then we will introduce how to create your own project later.</p>
+</blockquote>
+<ul>
+<li>Clone the official demo project</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#9ECBFF"> git@github.com:gatling/gatling-gradle-plugin-demo-scala.git</span></span></code></pre>
+<ul>
+<li>
+<p>Open the cloned official demo project with VSCode.</p>
+</li>
+<li>
+<p>Open the project’s Terminal window with VSCode and execute the following command</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">gradle</span><span style="color:#9ECBFF"> build</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-build.png" alt="readme-build"/></p>
+<ul>
+<li>Run the demo in the project</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">gradle</span><span style="color:#9ECBFF"> gatlingRun</span></span></code></pre>
+<ul>
+<li>Viewing the results of a command line run</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report.png" alt="readme-report"/></p>
+<ul>
+<li>Click on the html report link in the command line report and open it with your browser to view the detailed report information</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report1.png" alt="readme-report1"/></p>
+<h3 id="vscode--maven--scala-version">VSCode + Maven + Scala version</h3>
+<h4 id="preparation-1">Preparation</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Development tool: VSCode</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Install Maven, I use Maven 3.9.5</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> JDK version &gt;= 8, I use JDK 19</li>
+</ul>
+<h4 id="install-plugins-1">install plugins</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> VSCode search for Scala (Metals) plugins to install</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> VSCode search for Maven for Java plugins to install</li>
+</ul>
+<h4 id="official-demo-initialization--debugging-1">Official demo initialization &amp; debugging</h4>
+<blockquote>
+<p>We will use the official demo project for initialization and debugging first, and then we will introduce how to create your own project.</p>
+</blockquote>
+<ul>
+<li>Clone the official demo project</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#9ECBFF"> git@github.com:gatling/gatling-maven-plugin-demo-scala.git</span></span></code></pre>
+<ul>
+<li>
+<p>Use VSCode to open the cloned official demo project.</p>
+</li>
+<li>
+<p>Open the Terminal window of this project with VSCode and execute the following command to run the demo in the project</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mvn</span><span style="color:#9ECBFF"> gatling:test</span></span></code></pre>
+<ul>
+<li>Viewing the results of a command line run</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report2.png" alt="readme-report2"/></p>
+<ul>
+<li>Click on the html report link in the command line report and open it with your browser to view the detailed report information</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report1.png" alt="readme-report1"/></p>
+<h3 id="idea--gradle--scala-version">IDEA + Gradle + Scala version</h3>
+<p>This is similar to the VSCode version, so I won’t repeat it here.</p>
+<p>The differences are as follows:</p>
+<ul>
+<li>IDEA searches for Scala plugins to install</li>
+<li>New way to run: right click and select Engine.scala file in the project directory, select Run ‘Engine’ to run the demo (you need to press enter to confirm the run).</li>
+</ul>
+<h3 id="idea--maven--scala-version">IDEA + Maven + Scala version</h3>
+<p>This is similar to the VSCode version, so I won’t repeat it here.</p>
+<p>The differences are as follows:</p>
+<ul>
+<li>IDEA searches for Scala plugins to install</li>
+<li>New way to run: right-click the Engine.scala file in the project directory and select Run ‘Engine’ to run the demo (you need to press enter to confirm during the run).</li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

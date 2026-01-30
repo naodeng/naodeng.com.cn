@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases - Nao's Blog"><meta property="og:site_name" content="30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-25-explore-ai-driven-security-testing-and-share-potential-use-cases-cover.CQC_Ejdk_Z2smvXK.webp" alt="30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 Days of AI in Testing Challenge: Day 25: Explore AI-driven security testing and share potential use cases</h1> <time datetime="2024-03-28T12:06:44.000Z" data-astro-cid-v3cnrnum> 3/28/2024 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="day-25-explore-ai-driven-security-testing-and-share-potential-use-cases">Day 25: Explore AI-driven security testing and share potential use cases</h2>
+<p>Day 25 is all about <strong>Security Testing</strong>. If you’ve ever tried your hand at Application Security Testing, you’ll know that it’s a complex and evolving topic that usually requires in-depth technical knowledge. Various tools exist to make running security tests and audits easier, but understanding their output can be challenging. Today we want to explore whether AI can make Security Testing more accessible.</p>
+<h3 id="task-steps">Task Steps</h3>
+<p>You have two options for today:</p>
+<ul>
+<li>
+<p><strong>Option 1: If you want to evaluate an AI empowered Security Testing tool (or already use one). For this option, the tasks are:</strong></p>
+<ul>
+<li><strong>Choose your tool</strong>: Research security testing tools that claim to be AI empowered and choose one to evaluate.</li>
+<li><strong>Run the tool against a target system</strong>: Timebox this activity to about 30 mins and configure and run the tool against a target system of your choice:
+<ul>
+<li><strong>Remember, you must have permission to run security test against the target.</strong></li>
+<li>How easy was it to set up the testing?</li>
+<li>Do you understand what is being tested for?</li>
+</ul>
+</li>
+<li><strong>Review the output</strong>: Review any issues that the tool found and consider:
+<ul>
+<li>What information did the tool provide about any potential vulnerabilities found? Was it understandable?</li>
+<li>Do you have an understanding of what was checked by the tool?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Option 2: You don’t want to (or can’t) install security tools. For this option the tasks are:</strong></p>
+<ul>
+<li><strong>Read an introductory article on AI-driven Security Testing:</strong> Find an introductory article that discusses AI Driven Security Testing and consider its impact on Software Testing Teams</li>
+<li><strong>What are the barriers to effective Security Testing within your team?</strong> Think about security testing in your context and the current challenges and barriers to you adopting Security Testing as part of your day to day testing activities.</li>
+<li><strong>What would an AI Security Testing Tool do for your team?</strong> What could a (real or hypothetical) AI empowered tool provide that would eliminate or reduce the barriers within your team to adopting Security Testing?</li>
+<li><strong>Is Security Testing an appropriate use for AI?</strong> Based on what you have learned about AI and AI in Testing consider whether delegating Security Testing to an AI empowered tool is appropriate.</li>
+</ul>
+</li>
+<li>
+<p><strong>Share Your Findings</strong>
+Whether you choose option 1 or 2, consider sharing your findings with the community. You might share:</p>
+<ul>
+<li>Which option you chose.</li>
+<li>Your insights from this exercise.</li>
+<li>Whether you think Security Testing is an area that AI can effectively support and improve.</li>
+<li>The risks and opportunities for AI supported Security Testing within your team.</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-take-part">Why Take Part</h3>
+<ul>
+<li><strong>Find new ways to find important issues</strong>: Security Testing tools are notoriously difficult to learn and use effectively, and understanding the outputs often requires a high degree of domain knowledge. Taking part in this challenge allows you to explore new ways of tackling security testing that leverages AI to simplify the usage of these tools and provide more explainable outputs.</li>
+</ul>
+<h3 id="task-link">Task Link</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/75365">https://club.ministryoftesting.com/t/day-25-explore-ai-driven-security-testing-and-share-potential-use-cases/75365</a></p>
+<h2 id="my-day-25-task">My Day 25 Task</h2>
+<p>Based on my experience with security testing tools and security testing, I choose <strong>Option 2</strong> for today’s task.</p>
+<h3 id="1-reading-an-introductory-article-on-ai-driven-security-testing">1. Reading an Introductory Article on AI-Driven Security Testing</h3>
+<h4 id="article-1-artificial-intelligence-in-security-testing-building-trust-with-ai">Article 1: Artificial Intelligence in Security Testing: Building Trust with AI</h4>
+<p><a href="https://www.sogeti.com/ai-for-qe/section-7-secure/chapter-2/">https://www.sogeti.com/ai-for-qe/section-7-secure/chapter-2/</a></p>
+<h5 id="outline"><strong>Outline</strong></h5>
+<p>Artificial Intelligence (AI) is revolutionizing security testing through automation technology and advanced detection methods.</p>
+<ul>
+<li>⚡ <strong>Automation</strong>: With the power of AI, existing tools can automatically discover and respond to security threats, greatly improving response times.</li>
+<li>🔥 <strong>Advanced Detection</strong>: Machine learning technologies enable us to identify potential danger patterns and abnormal behaviors, preventing security incidents in advance.</li>
+<li>🌐 <strong>Widespread Application of AI</strong>: In the field of cybersecurity, AI’s applications are extensive, including User and Entity Behavior Analytics (UEBA), honey pots (used to deceive and capture hackers), and deep learning-based solutions, all of which greatly enhance our ability to identify and defend against network threats.</li>
+</ul>
+<h5 id="summary"><strong>Summary</strong></h5>
+<p>This article discusses the application of Artificial Intelligence (AI) in security testing, emphasizing the potential of AI in enhancing network security and efficiency. It describes the evolution of malware and cybersecurity challenges, as well as the necessity of employing automation and AI to address the increasing scale and complexity of threats. The article also introduces AI’s applications in early network security, such as detecting polymorphic viruses and using machine learning for pattern recognition, as well as AI’s role in enhancing human expertise and addressing the shortage of cybersecurity talent. Finally, it discusses the dual advancement of AI in network attack and defense.</p>
+<h4 id="article-2-chatgpt-ai-in-security-testing-opportunities-and-challenges">Article 2: ChatGPT AI in Security Testing: Opportunities and Challenges</h4>
+<p><a href="https://www.cyfirma.com/research/chatgpt-ai-in-security-testing-opportunities-and-challenges/">https://www.cyfirma.com/research/chatgpt-ai-in-security-testing-opportunities-and-challenges/</a></p>
+<h5 id="outline-1"><strong>Outline</strong></h5>
+<p>ChatGPT AI can automate security testing tasks, significantly improving work accuracy and efficiency.</p>
+<ul>
+<li>🔄 <strong>Automated Security Monitoring</strong>: ChatGPT AI can automatically conduct vulnerability scans, deep penetration testing, log data analysis, and detect potential intrusion behaviors, making security detection more efficient and intelligent.</li>
+<li>✅ <strong>Precise and Efficient Risk Identification</strong>: Through in-depth analysis, ChatGPT AI can provide detailed security vulnerability reports, helping to quickly locate and discover new security risk points, ensuring system stability.</li>
+</ul>
+<h5 id="summary-1"><strong>Summary</strong></h5>
+<p>CYFIRMA’s article discusses the opportunities and challenges of using ChatGPT AI in security testing. The article emphasizes the potential of ChatGPT in automating security tasks (such as vulnerability scanning and penetration testing), as well as its ability to identify new vulnerabilities by analyzing big data and simulating real attack scenarios. However, it also highlights some challenges, including the need for large amounts of training data, the difficulty of identifying new threats, and ethical considerations. The article concludes that despite the challenges, ChatGPT still offers significant benefits in security testing.</p>
+<h4 id="article-3-chatgpt-ai-in-security-testing-opportunities-and-challenges">Article 3: ChatGPT AI in Security Testing: Opportunities and Challenges</h4>
+<p><a href="https://www.isc2.org/Insights/2023/10/Use-Generative-AI-to-Jump-Start-Software-Security-Training">https://www.isc2.org/Insights/2023/10/Use-Generative-AI-to-Jump-Start-Software-Security-Training</a></p>
+<h5 id="outline-2"><strong>Outline</strong></h5>
+<p>Generative Artificial Intelligence (AI) is sparking a revolution in software security testing.</p>
+<ul>
+<li>⚡ In the testing phase, the application of generative AI helps rapidly construct potential abuse scenarios, greatly improving the efficiency of testing.</li>
+<li>📄 Real case analysis: Taking the login page as an example, the article explores how generative AI creates specific abuse cases.</li>
+<li>✅ Verification work requires validation of the abuse cases proposed by AI to ensure their relevance and accuracy.</li>
+<li>⭐️ Conclusion: Generative AI is fundamentally changing the way Quality Assurance (QA) teams handle abuse case testing.</li>
+</ul>
+<h5 id="summary-2"><strong>Summary</strong></h5>
+<p>This article discusses methods to accelerate software security testing using generative AI. It emphasizes the potential of generative AI models in assisting QA teams in creating and executing abuse case tests. By automatically generating a large number of potential abuse scenarios, QA teams can test more quickly and achieve more comprehensive test coverage. The article also mentions instances of effectively using generative AI to generate abuse cases and emphasizes the importance of verification when using AI outputs. In summary, generative AI technology is expected to fundamentally change the way QA teams handle abuse case testing, ensuring that software is not only functionally complete but also maintains strong security in a constantly changing threat environment.</p>
+<h3 id="2-reflecting-on-the-obstacles-to-effective-security-testing-in-your-team">2. Reflecting on the Obstacles to Effective Security Testing in Your Team</h3>
+<p>Based on my experience with various projects, I’ve found that effective security testing in agile development teams faces several obstacles, primarily including:</p>
+<ol>
+<li>
+<p><strong>Time Constraints</strong>: Agile development cycles are short and emphasize rapid delivery, which may lead to security testing being seen as a secondary task because the team may be more focused on developing new features rather than ensuring security.</p>
+</li>
+<li>
+<p><strong>Limited Resources</strong>: Effective security testing requires specialized knowledge and dedicated tools. In resource-constrained situations, it may be challenging to obtain these experts or tools, especially in small or medium-sized enterprises.</p>
+</li>
+<li>
+<p><strong>Lack of Knowledge</strong>: Not all developers have the knowledge and experience of security testing. Agile teams may lack sufficient security awareness or security development training, which may lead to unidentified security vulnerabilities in the code.</p>
+</li>
+<li>
+<p><strong>Cultural Barriers</strong>: Agile development culture may overly emphasize speed and flexibility, overlooking security. Integrating security into the agile process requires cultural change to ensure team members recognize the importance of security and incorporate it into their daily work.</p>
+</li>
+<li>
+<p><strong>Integration Difficulty</strong>: Effectively integrating security testing tools and practices into the agile development process may be challenging. Finding a balance between not disrupting agile development’s rapid iteration while ensuring necessary security testing is performed is crucial.</p>
+</li>
+<li>
+<p><strong>Insufficient Automation</strong>: Automation is a key part of agile development, but not all security testing can be easily automated. Lack of automation may result in repetitive manual testing work, increasing time and cost.</p>
+</li>
+<li>
+<p><strong>Feedback Loop</strong>: Agile development relies on quick feedback loops. If the feedback from security testing cannot be integrated into the development process promptly, there may be missed opportunities to fix security issues, or security vulnerabilities may only be discovered after the product is released.</p>
+</li>
+</ol>
+<h3 id="3-considering-the-benefits-of-ai-security-testing-tools-for-your-team">3. Considering the Benefits of AI Security Testing Tools for Your Team</h3>
+<p>Using AI security testing tools can certainly bring many benefits to the team, especially in accelerating the discovery and remediation of security vulnerabilities, improving the efficiency and effectiveness of security testing. Here are some specific benefits:</p>
+<ol>
+<li>
+<p><strong>Enhanced Detection Capability</strong>: AI security testing tools can identify and analyze complex security threats, including those that traditional tools may struggle to detect. By learning and adapting to the latest security threat features, AI tools can continuously improve detection rates.</p>
+</li>
+<li>
+<p><strong>Automation and Intelligence</strong>: AI tools can automate many tedious and complex security testing tasks, such as dynamic analysis and static code analysis, freeing up the security team’s time to focus on higher-level security strategies and decisions.</p>
+</li>
+<li>
+<p><strong>Real-time Monitoring and Response</strong>: AI security tools can provide 24/7 real-time monitoring and immediate response capabilities when potential threats are detected. This real-time response capability helps quickly mitigate or prevent damage from security vulnerabilities.</p>
+</li>
+<li>
+<p><strong>Reduced False Positives</strong>: Through learning and optimization, AI tools can more accurately identify genuine threats, reducing the number of false positives. Reducing false positives helps security teams allocate resources more effectively and ensures attention to genuine security issues.</p>
+</li>
+<li>
+<p><strong>Personalization and Adaptability</strong>: AI security testing tools can adjust based on the specific characteristics and behavioral patterns of the application, providing more personalized security testing. This adaptability means that security testing can evolve along with the application’s development.</p>
+</li>
+<li>
+<p><strong>Improved Development Efficiency</strong>: Integrating AI security testing tools into the continuous integration/continuous deployment (CI/CD) process can help development teams identify and fix security vulnerabilities in the early stages of development, avoiding large-scale modifications later in development and improving overall development efficiency.</p>
+</li>
+<li>
+<p><strong>Knowledge Base and Learning Ability</strong>: AI tools can learn not only from external threat intelligence but also from their own testing history, continually expanding their knowledge base. This makes each test more accurate than the last, helping the team build robust security defenses.</p>
+</li>
+</ol>
+<h3 id="4-considering-whether-using-ai-for-security-testing-is-appropriate">4. Considering Whether Using AI for Security Testing is Appropriate</h3>
+<p>Using AI for security testing is appropriate in many cases, especially when dealing with large amounts of data, quickly identifying complex threat patterns, and improving the efficiency and effectiveness of security testing. The application of AI technology can significantly enhance the capabilities of security testing, but its applicability and limitations need to be considered in specific contexts, especially concerning data security and privacy issues related to AI tools.</p>
+<h2 id="about-event">About Event</h2>
+<p>The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.</p>
+<p>Community Website: <a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>Event Link: <a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">Day 1: Introduce yourself and your interest in AI</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">Day 2: Read an introductory article on AI in testing and share it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">Day 3: List ways in which AI is used in testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">Day 5:Identify a case study on AI in testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">Day 6:Explore and share insights on AI testing tools</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">Day 7: Research and share prompt engineering techniques</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">Day 8: Craft a detailed prompt to support test activities</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">Day 9: Evaluate prompt quality and try to improve it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">Day 10: Critically Analyse AI-Generated Tests</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">Day 11: Generate test data using AI and evaluate its efficacy</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">Day 13: Develop a testing approach and become an AI in testing champion</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">Day 14: Generate AI test code and share your experience</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">Day 15: Gauge your short-term AI in testing plans</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">Day 17: Automate bug reporting with AI and share your process and evaluation</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/">Day 18: Share your greatest frustration with AI in Testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/">Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/">Day 20: Learn about AI self-healing tests and evaluate how effective they are</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/">Day 21: Develop your AI in testing manifesto</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-22-reflect-on-what-skills-a-team-needs-to-succeed-with-ai-assisted-testing/">Day 22: Reflect on what skills a team needs to succeed with AI-assisted testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-23-assess-ai-effectiveness-in-visual-testing-and-discuss-the-advantages/">Day 23: Assess AI effectiveness in visual testing and discuss the advantages</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-24-investigate-code-explanation-techniques-and-share-your-insights/">Day 24: Investigate code explanation techniques and share your insights</a></li>
+</ul>
+<h2 id="recommended-readings">Recommended Readings</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/series/api-automation-testing-tutorial/">API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/">Bruno API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/gatling-performance-testing-tutorial/">Gatling Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/k6-performance-testing-tutorial/">K6 Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/">Postman API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/">Pytest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/">REST Assured API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/">SuperTest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/">30 Days of AI in Testing Challenge</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

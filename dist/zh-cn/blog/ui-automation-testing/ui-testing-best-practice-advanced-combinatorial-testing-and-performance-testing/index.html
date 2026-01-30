@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的进阶篇（二）：组合测试和性能测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的进阶篇（二）：组合测试和性能测试 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的进阶篇（二）：组合测试和性能测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-advanced-combinatorial-testing-and-performance-testing-cover.BNIEXa3m_1srfnN.webp" alt="UI 测试最佳实践的进阶篇（二）：组合测试和性能测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的进阶篇（二）：组合测试和性能测试</h1> <time datetime="2024-01-30T08:06:44.000Z" data-astro-cid-v3cnrnum> 2024/1/30 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="组合测试">组合测试</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/combinatorial-testing.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/combinatorial-testing.md</a></p>
+<h3 id="组合测试一段简要说明">组合测试一段简要说明</h3>
+<ul>
+<li><a href="http://csrc.nist.gov/Projects/automated-combinatorial-testing-for-software">组合测试</a> 是一种经过验证的、成本较低的、更为有效的软件测试方法。</li>
+<li>这种测试的关键思想是，并非每个参数都对每次故障都有影响，而是大多数故障是由相对较少的参数之间的相互作用引起的。</li>
+<li>与传统方法相比，测试参数组合可以更有效地检测故障。</li>
+</ul>
+<p>美国国家标准与技术研究院<a href="https://www.nist.gov/">NIST</a> 在 1999 年到 2004 年进行的一系列研究表明，大多数软件缺陷和故障是由一个或两个参数引起的，逐渐减少到由三个或更多参数引起的。这一发现被称为“交互规则”，对软件测试具有重要意义，因为这意味着测试参数组合可以比传统方法更有效地检测故障。NIST 和其他机构收集的数据表明，软件故障仅由少数几个变量的相互作用引发（不超过六个）。有时使用成对（2 路组合）测试可以以较低的成本获得相当不错的结果，通常不低于 60% 的故障覆盖率，但这可能对于关键任务的软件来说可能不足够。</p>
+<h3 id="1-代码示例--产品负责人问题">(1) 代码示例 – 产品负责人问题</h3>
+<p>一位产品负责人曾提出一个问题：</p>
+<blockquote>
+<p>“从最佳实践或实际角度来看，你是否应该在每种可能的配置下测试系统？
+例如，假设你有 A、B、C、D、E 五个功能，客户 1 拥有 A/B，客户 2 拥有 A/B/C，客户 3 拥有 A/D，客户 4 拥有 B/D，客户 5 拥有 A/B/C/D/E…
+你是否应该测试每种可能的功能组合，还是测试每个功能单独，如果它们在独立测试中能够正常工作，就相信它们整体上也能正常工作？”</p>
+</blockquote>
+<p>5 个客户和 5 个功能，详尽无遗将需要 25 个测试。
+在描述的约束条件下，只需要 14 个测试。
+为了提供一个代码示例，我们将使用描述规格的<a href="https://foselab.unibg.it/ctwedge/">CTWedge</a>脚本化组合模型。还有许多其他列在<a href="http://pairwise.org/">pairwise.org</a>上的 CT 工具。我们（在西门子）使用过的其他一些工具包括<a href="https://csrc.nist.gov/projects/automated-combinatorial-testing-for-software">ACTs</a>和<a href="https://matris.sba-research.org/tools/cagen/#/workspaces">CAgen</a>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Model POquestion</span></span>
+<span class="line"><span> Parameters:</span></span>
+<span class="line"><span>   features : {A, B, C, D, E}</span></span>
+<span class="line"><span>   customer:  {1, 2, 3, 4, 5}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> Constraints:</span></span>
+<span class="line"><span>   # customer = 1 =&gt; features = A || features = B #</span></span>
+<span class="line"><span>   # customer = 2 =&gt; features = A || features = B || features = C #</span></span>
+<span class="line"><span>   # customer = 3 =&gt; features = A || features = D #</span></span>
+<span class="line"><span>   # customer = 4 =&gt; features = B || features = D #</span></span>
+<span class="line"><span>   # customer = 5 =&gt; features = A || features = B || features = C || features = D || features = E #</span></span></code></pre>
+<p>在这里粘贴脚本以生成结果 <a href="http://foselab.unibg.it/ctwedge/">这里</a>。</p>
+<p>测试的目标是检验参数之间的双向（或更多）相互作用。当只有两个参数时，收益并不太明显，因为这是一种穷举的方法。</p>
+<p>如果参数数量超过两个，对它们之间的双向交互进行覆盖将确保找到该领域可能存在的 60-99% 的所有潜在缺陷。三向交互为 90%，四向为 95%，五向为 97%，六向为 100%。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/combinatorial-testing/ct-graph.PNG?raw=true" alt="组合测试图"/></p>
+<p>在这个例子中，通过添加另一个<em>参数</em>，我们称之为 <code>configuration</code>，并假设有 5 种可能的配置 / <em>参数值</em>。这将生成一个包含 125 个测试的详尽套件。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Model POquestion</span></span>
+<span class="line"><span> Parameters:</span></span>
+<span class="line"><span>   features : {A, B, C, D, E}</span></span>
+<span class="line"><span>   customer:  {1, 2, 3, 4, 5}</span></span>
+<span class="line"><span>   configuration: {config1, config2, config3, config4, config5}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> Constraints:</span></span>
+<span class="line"><span>   # customer = 1 =&gt; features = A || features = B #</span></span>
+<span class="line"><span>   # customer = 2 =&gt; features = A || features = B || features = C #</span></span>
+<span class="line"><span>   # customer = 3 =&gt; features = A || features = D #</span></span>
+<span class="line"><span>   # customer = 4 =&gt; features = B || features = D #</span></span>
+<span class="line"><span>   # customer = 5 =&gt; features = A || features = B || features = C || features = D || features = E #</span></span></code></pre>
+<p>将其粘贴到 <a href="https://foselab.unibg.it/ctwedge/">CTWedge</a> 上，这将生成一个包含 31 个测试的测试套件。如果添加一些约束，表明某些特性不应该与某些配置一起工作，甚至可以进一步精简。</p>
+<p>请注意，组合测试的建模可以并且确实包含等价分区、边界值分析和其他技术。模型越准确，测试套件的故障检测能力就越强。</p>
+<h3 id="2-代码示例--nasa-的开关板共有-34-个开关">(2) 代码示例 – NASA 的开关板共有 34 个开关</h3>
+<p>以 NASA 的一个例子为参考，有 34 个开关，每个开关可以处于打开或关闭的状态。要进行详尽的测试，有 170 亿种可能的组合方式。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/combinatorial-testing/nasa-switches.PNG?raw=true" alt=" "/></p>
+<p>不必测试所有的 2^34 种可能性。通过使用组合测试进行建模，你可以根据风险做出经过计算的决策。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>Model NASAswitches</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Parameters:</span></span>
+<span class="line"><span>    switch1: Boolean</span></span>
+<span class="line"><span>    switch2: Boolean</span></span>
+<span class="line"><span>    switch3: Boolean</span></span>
+<span class="line"><span>    switch4: Boolean</span></span>
+<span class="line"><span>    switch5: Boolean</span></span>
+<span class="line"><span>    switch6: Boolean</span></span>
+<span class="line"><span>    switch7: Boolean</span></span>
+<span class="line"><span>    switch8: Boolean</span></span>
+<span class="line"><span>    switch9: Boolean</span></span>
+<span class="line"><span>    switch10: Boolean</span></span>
+<span class="line"><span>    switch11: Boolean</span></span>
+<span class="line"><span>    switch12: Boolean</span></span>
+<span class="line"><span>    switch13: Boolean</span></span>
+<span class="line"><span>    switch14: Boolean</span></span>
+<span class="line"><span>    switch15: Boolean</span></span>
+<span class="line"><span>    switch16: Boolean</span></span>
+<span class="line"><span>    switch17: Boolean</span></span>
+<span class="line"><span>    switch18: Boolean</span></span>
+<span class="line"><span>    switch19: Boolean</span></span>
+<span class="line"><span>    switch20: Boolean</span></span>
+<span class="line"><span>    switch21: Boolean</span></span>
+<span class="line"><span>    switch22: Boolean</span></span>
+<span class="line"><span>    switch23: Boolean</span></span>
+<span class="line"><span>    switch24: Boolean</span></span>
+<span class="line"><span>    switch25: Boolean</span></span>
+<span class="line"><span>    switch26: Boolean</span></span>
+<span class="line"><span>    switch27: Boolean</span></span>
+<span class="line"><span>    switch28: Boolean</span></span>
+<span class="line"><span>    switch29: Boolean</span></span>
+<span class="line"><span>    switch30: Boolean</span></span>
+<span class="line"><span>    switch31: Boolean</span></span>
+<span class="line"><span>    switch32: Boolean</span></span>
+<span class="line"><span>    switch33: Boolean</span></span>
+<span class="line"><span>    switch34: Boolean</span></span></code></pre>
+<p>在 <a href="https://foselab.unibg.it/ctwedge/">CTWedge</a> 中通过下拉菜单开关测试的相互作用次数。</p>
+<ul>
+<li>14 次测试：通过开关之间的 2 次相互作用引起的故障 - 可根据产品找到 60-99% 的所有潜在故障</li>
+<li>33 次测试：通过开关之间的 3 次相互作用引起的故障 - 可根据产品找到 90-99% 的所有潜在故障</li>
+<li>85 次测试：通过开关之间的 4 次相互作用引起的故障 - 可根据产品找到 95-99% 的所有潜在故障</li>
+<li>220 次测试：通过开关之间的 5 次相互作用引起的故障 - 可找到超过 99% 的所有潜在故障</li>
+<li>538 次测试：通过开关之间的 6 次相互作用引起的故障 - 可找到所有潜在故障的 100%</li>
+</ul>
+<h3 id="2-代码示例---西门子楼宇操作员-ci-配置">(2) 代码示例 - <a href="https://cypress.slides.com/cypress-io/siemens-case-study#/16">西门子楼宇操作员 CI 配置</a></h3>
+<p>参考上面的幻灯片链接或<a href="https://www.youtube.com/watch?v=aMPkaLOpyns&t=1624s">直播视频</a>以获取有关如何使用<a href="https://matris.sba-research.org/tools/cametrics/#/new">CAMetrics</a>测量组合覆盖率的详细说明。基本上，你可以使用任何组合测试工具生成一个 CSV 文件，然后将其拖放到 CAMetrics 中。之后，CAMetrics 可以为你提供各种组合覆盖率报告。</p>
+<blockquote>
+<p>请注意，将 <a href="https://www.csvjson.com/csv2json">CSV 转换为 JSON</a> 非常简单，然后可以使用 JSON 文件在所选的任何测试框架中进行数据驱动测试。</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>Model CI</span></span>
+<span class="line"><span> Parameters:</span></span>
+<span class="line"><span>   deployment_UI : { branch, development, staging }</span></span>
+<span class="line"><span>   deployment_API:  { development, staging }</span></span>
+<span class="line"><span>   spec_suite: { ui_services_stubbed, ui_services, ui_services_hardware, spot_check}</span></span>
+<span class="line"><span>   browser: { chrome, electron, firefox }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> Constraints:</span></span>
+<span class="line"><span>   // one extra constraint for firefox spot checks</span></span>
+<span class="line"><span>   # browser=firefox &lt;=&gt; spec_suite=spot_check #</span></span>
+<span class="line"><span>   // on staging, run all tests</span></span>
+<span class="line"><span>   # spec_suite=ui_services_hardware &lt;=&gt; deployment_API=staging #</span></span>
+<span class="line"><span>   // match dev vs dev, staging vs staging, and when on staging use Chrome</span></span>
+<span class="line"><span>   # deployment_UI=development =&gt; deployment_API=development #</span></span>
+<span class="line"><span>   # deployment_UI=staging =&gt; deployment_API=staging #</span></span>
+<span class="line"><span>   # deployment_UI=staging &amp;&amp; deployment_API=staging =&gt; browser=chrome #</span></span>
+<span class="line"><span>   // when on branch, stub the services</span></span>
+<span class="line"><span>   # deployment_UI=branch =&gt; spec_suite=ui_services_stubbed #</span></span>
+<span class="line"><span>   // do not stub the services when on UI development</span></span>
+<span class="line"><span>   # deployment_UI=development =&gt; spec_suite!=ui_services_stubbed #</span></span></code></pre>
+<h3 id="组合测试参考资料和延伸阅读">组合测试参考资料和延伸阅读</h3>
+<p><a href="https://csrc.nist.gov/Projects/automated-combinatorial-testing-for-software">自动化组合测试软件</a></p>
+<p><a href="https://prezi.com/tpffqit1yn87/utilization-of-automation-and-combinatorial-disciplines-in-aid-of-exploratory-testing/">幻灯片 16-50：探讨自动化和组合纪律在辅助探索性测试方面的应用</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/7899057?section=abstract">西门子工业公司建筑技术部实际组合测试方法的应用</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/8728910">现代 Web 开发中组合测试的工业研究</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/7085645/">在大型组织中引入组合测试</a></p>
+<p><a href="http://barbie.uta.edu/~mehra/1%20INPUT%20PARAMETER%20MODELING%20FOR%20COMBINATION%20STRATEGIES.pdf">组合策略的输入参数建模</a></p>
+<p><a href="http://barbie.uta.edu/~mehra/62_Common%20Patterns%20in%20Combinatorial%20Models.pdf">组合模型中的常见模式</a></p>
+<p><a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=917899">等效类和两层覆盖阵的高效验证和同时测试</a></p>
+<h2 id="性能测试">性能测试</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/performance-testing.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/performance-testing.md</a></p>
+<h3 id="性能测试一段简要说明">性能测试一段简要说明</h3>
+<p>虽然性能测试是一个庞大的话题，但作为 Web 开发者，我们可以迅速从其核心原则中获益，以提升用户体验、满足功能和非功能需求（NFRs），并检测可能泄漏到生产环境中的不明确系统问题。</p>
+<h3 id="1-通过-lighthouse-确保用户体验">(1) 通过 Lighthouse 确保用户体验</h3>
+<p>作为 Web 开发者，我们最关心的是用户对性能的感知。谢天谢地，Google 已经让这变得简单，并为我们提供了一个第三方权威评估我们 Web 应用程序的工具 - <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a>。</p>
+<blockquote>
+<p><em>“Lighthouse 是一个用于提高网页质量的开源自动化工具。你可以对任何网页运行它，无论是公开的还是需要身份验证的。它可以进行性能、可访问性、渐进式 Web 应用、SEO 等方面的审计。”</em></p>
+</blockquote>
+<p>在这个话题中，我们只关注性能，但你也应该考虑从 Lighthouse 的审计中获得关于<strong>渐进式 Web 应用</strong>、<strong>可访问性</strong>、<strong>搜索引擎优化</strong>和<strong>最佳实践</strong>的评估。</p>
+<p>入门很简单：Chrome &gt; 开发者工具 &gt; 审计 &gt; Lighthouse。然后，生成报告。它会显示如下，并为你提供有关如何改善用户体验的详细指南。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/lighthouse.png?raw=true" alt="Lighthouse 报告"/></p>
+<p>一旦进行了改进并达成了基线评级，您可以通过将 Lighthouse 纳入您的 CI 来防止回归。</p>
+<ul>
+<li>将 Lighthouse 添加为 node_module；<code>npm i -D lighthouse</code> 或 <code>yarn add --dev lighthouse</code>。</li>
+<li>参考 <a href="https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically">Lighthouse Git 存储库</a> 上的工作流示例。</li>
+<li>防止性能评级（和/或其他评级）在开发人员提交代码时出现回归！</li>
+</ul>
+<h4 id="使用-cypress-集成-lighthouse">使用 Cypress 集成 Lighthouse</h4>
+<p>如果你是 Cypress 用户，通过 <a href="https://github.com/mfrachet/cypress-audit">cypress-audit</a> 插件，你可以在 Cypress 测试中执行 Lighthouse 审计，以及 <a href="https://www.npmjs.com/package/pa11y">Pa11y</a> 进行自动化的可访问性测试。</p>
+<blockquote>
+<p>除了<a href="https://github.com/mfrachet/cypress-audit#preparation">通常的插件设置</a>之外，你可能需要解决你的应用程序的<a href="https://github.com/cypress-io/cypress/issues/944#issuecomment-788373384">跨域问题</a>，直到 Cypress 官方支持它。</p>
+</blockquote>
+<p>以下是一个带有内联说明的示例测试。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Pass in optional configuration parameters for the Cypress test:</span></span>
+<span class="line"><span style="color:#6A737D">// you may need to increase default timeout for the overall task, if you have a slow app. Mind that Lighthouse is only for Chromium based browsers</span></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Lighthouse audit &#39;</span><span style="color:#E1E4E8">, { taskTimeout: </span><span style="color:#79B8FF">90000</span><span style="color:#E1E4E8">, browser: </span><span style="color:#9ECBFF">&#39;chrome&#39;</span><span style="color:#E1E4E8"> }, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  before</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // if you are using programmatic login, you might not need to use the cy.forceVisit(&#39;/&#39;) workaround for cross-origin (linked above)</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">login</span><span style="color:#E1E4E8">(Cypress.</span><span style="color:#B392F0">env</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;USERNAME&#39;</span><span style="color:#E1E4E8">), Cypress.</span><span style="color:#B392F0">env</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;PASSWORD&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // thresholds is the first argument to cy.lighthouse(), most of the performance configuration is done here.</span></span>
+<span class="line"><span style="color:#6A737D">  // a complete list of Lighthouse parameters to use as thresholds can be found at https://github.com/mfrachet/cypress-audit/blob/master/docs/lighthouse.md</span></span>
+<span class="line"><span style="color:#6A737D">  // for an explanation of the parameters, refer to https://web.dev/lighthouse-performance/</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> thresholds</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;first-contentful-paint&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">20000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;largest-contentful-paint&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">35000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;first-meaningful-paint&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">20000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;speed-index&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">25000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    interactive: </span><span style="color:#79B8FF">40000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    performance: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    accessibility: </span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;best-practices&#39;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    seo: </span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    pwa: </span><span style="color:#79B8FF">20</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // the 2nd, and optional argument to cy.lighthouse() replicates Lighthouse CLI commands https://github.com/GoogleChrome/lighthouse#cli-options</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> desktopConfig</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    formFactor: </span><span style="color:#9ECBFF">&#39;desktop&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    screenEmulation: { disabled: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // your app may need this beforeEach and afterEach workaround for cross-origin (linked above)</span></span>
+<span class="line"><span style="color:#B392F0">  beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">restoreLocalStorage</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // Preserve Cookies between tests</span></span>
+<span class="line"><span style="color:#E1E4E8">    Cypress.Cookies.</span><span style="color:#B392F0">defaults</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      preserve:</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[\s\S]</span><span style="color:#F97583">*</span><span style="color:#9ECBFF">/</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">saveLocalStorage</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should pass audit for main page &#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">lighthouse</span><span style="color:#E1E4E8">(thresholds, desktopConfig);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should pass audit for another page&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">forceVisit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;anotherUrl&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">lighthouse</span><span style="color:#E1E4E8">(thresholds, desktopConfig);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Commands for working around cross origin, if needed</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// -- Save localStorage between tests</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#79B8FF"> LOCAL_STORAGE_MEMORY</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {};</span></span>
+<span class="line"><span style="color:#E1E4E8">Cypress.Commands.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;saveLocalStorage&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  Object.</span><span style="color:#B392F0">keys</span><span style="color:#E1E4E8">(localStorage).</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">key</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    LOCAL_STORAGE_MEMORY</span><span style="color:#E1E4E8">[key] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> localStorage[key];</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Cypress.Commands.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;restoreLocalStorage&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  Object.</span><span style="color:#B392F0">keys</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">LOCAL_STORAGE_MEMORY</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">key</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    localStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(key, </span><span style="color:#79B8FF">LOCAL_STORAGE_MEMORY</span><span style="color:#E1E4E8">[key]);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// -- Visit multiple domains in one test</span></span>
+<span class="line"><span style="color:#E1E4E8">Cypress.Commands.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;forceVisit&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">url</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">window</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">win</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> win.</span><span style="color:#B392F0">open</span><span style="color:#E1E4E8">(url, </span><span style="color:#9ECBFF">&#39;_self&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="2-性能作为一种非功能性需求和-kano-模型">(2) 性能作为一种非功能性需求和 Kano 模型</h3>
+<p>我们可以通过<a href="https://en.wikipedia.org/wiki/Kano_model">Kano 模型</a>开始建立对性能需求的理解。</p>
+<blockquote>
+<p><em>“Kano 模型是在 1980 年代由日本学者狩野纪明教授开发的产品开发和客户满意度理论，将客户偏好分为五类。”</em></p>
+</blockquote>
+<p>从高层次上看，卡诺模型总结了性能特性是标准要求，是任何竞争性产品所期望的。这与我们使用 Lighthouse 的方式重叠；通过它，我们确保满足客户偏好，并确保我们不会回退。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/KANO_model.jpg?raw=true" alt="Kano 模型"/></p>
+<p>在这一点上，我们已经满足了明确说明的性能要求。然而，在复杂的应用程序中，我们还需要注意非功能性需求（NFRs）。但是，什么是 NFRs 呢？下面是它们在一瞥之下的高层次视图 - 来自双重标准的<a href="https://www.iso.org/standard/35733.html">ISO/IEC 25010 产品质量模型</a>。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/ISO_IEC_25010.jpg?raw=true" alt="ISO/IEC标准"/></p>
+<p>在下一节中，让我们专注于 NFRs 如何帮助我们进行非功能性能测试的方法。</p>
+<h3 id="3-性能测试的类型">(3) 性能测试的类型</h3>
+<p>为了实际应用，我们可以将非功能性能测试分为 3 个类别</p>
+<ul>
+<li>Load 负载测试</li>
+<li>Spike 尖峰测试</li>
+<li>Endurance 耐久测试</li>
+</ul>
+<p>这张图总结了它们的上下文：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/performanceTesting.jpg?raw=true" alt="ISO/IEC标准"/></p>
+<p><em><strong>关于基准测试和压力测试的额外说明</strong>: 本质上，基准测试归结为逐步的步骤，因为我们逐渐了解我们的系统，这成为了初始工作流程的一部分，其中使用自动化工具；</em>“我的系统已经崩溃了吗？没有？那我再增加一点”。<em>而压力测试，简而言之，就是做得过火了。</em></p>
+<p>那么<strong>可扩展性测试</strong>的区别是什么？它是相关的；区别在于系统何时开始以不令人满意的方式不响应的评估。通常情况下，使用自动化工具的方法足够接近，并且可以在负载测试中分析图表时实现。</p>
+<p>这是可扩展性测试意图的高层次图：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/scalabilityTesting.jpg?raw=true" alt="ISO/IEC标准"/></p>
+<h3 id="4-使用-k6-loadimpact-进行性能测试的实际应用">(4) 使用 k6-loadImpact 进行性能测试的实际应用</h3>
+<p><a href="https://docs.k6.io/docs">k6-loadImpact</a>在 Web 开发领域有两个显著的特点。</p>
+<ul>
+<li>使用 JS（ES6）</li>
+<li>专为 CI 构建</li>
+</ul>
+<p>额外的好处：如果你习惯使用 Postman，你可以轻松地将这些测试转换为 k6。
+K6 <em>可以</em> 进行 DOM 测试，但我们认为 Lighthouse 已经处理了这方面的问题。K6 真正强大的地方在于测试 API 时。</p>
+<p>你可以在<a href="https://github.com/muratkeremozcan/k6-loadImpact">这里找到使用 k6 的快速入门示例</a>。
+这些示例从非常简单的开始，旨在快速建立理解。它们已经准备好直接运行和调整。我们将不会在这里重复这些知识。</p>
+<p>相反，在本节中，我们将概述 k6 测试的概览，并稍后展示一个代码示例，演示如何配置 k6 以适应不同类型的性能测试。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// k6 lifecycle overview:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 1. init code -&gt; runs once</span></span>
+<span class="line"><span style="color:#6A737D">// this is where we configure the type of performance testing (there are also</span></span>
+<span class="line"><span style="color:#6A737D">// additional options we do not cover here)</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> options </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // there will be 1 virtual user</span></span>
+<span class="line"><span style="color:#E1E4E8">  vus: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // default function() will execute 1 time. This simple config</span></span>
+<span class="line"><span style="color:#6A737D">  // is best when trying to get things to work</span></span>
+<span class="line"><span style="color:#E1E4E8">  iterations: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 2. (optional) setup code -&gt; runs once</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // for example getting a token so you can run API tests in the default</span></span>
+<span class="line"><span style="color:#6A737D">  // function that comes in (3) virtual user code</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // what gets returned from this function is passed as an argument to the next</span></span>
+<span class="line"><span style="color:#6A737D">  // function. For example: `token`</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> getTokenForUser</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 3. virtual user code -&gt; runs once or many times based on</span></span>
+<span class="line"><span style="color:#6A737D">// `export let options = { ... } `</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">token</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // http.get is a k6 function that hits a URL with optional test parameters</span></span>
+<span class="line"><span style="color:#6A737D">  // note that  we do not need a token for this url</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;http://test.loadimpact.com&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 4. (optional) teardown code -&gt; runs once</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> teardown</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // this is in case you need to clean up, for instance if failed test may</span></span>
+<span class="line"><span style="color:#6A737D">  // leave residue an impact state</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>耐久测试配置：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> options </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // endurance test for 30 seconds with 50 virtual users. Adds users immediately</span></span>
+<span class="line"><span style="color:#E1E4E8">  vus: </span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  duration: </span><span style="color:#9ECBFF">&quot;30s&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // alternative to duration, you can  specify the exact number of iterations</span></span>
+<span class="line"><span style="color:#6A737D">  // the test will run</span></span>
+<span class="line"><span style="color:#6A737D">  // iterations: 500,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>负载测试配置：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> options </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // for 15 seconds ramps up 10 users, adds users gradually</span></span>
+<span class="line"><span style="color:#6A737D">  // adds a total of 40 users in the next 15 seconds, and up to 50 in the next</span></span>
+<span class="line"><span style="color:#6A737D">  // 30 seconds..</span></span>
+<span class="line"><span style="color:#6A737D">  // lowers down the users to 10 and 5 in the next 15 second iterations</span></span>
+<span class="line"><span style="color:#E1E4E8">  stages: [</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;15s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;15s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">40</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;30s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;15s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;15s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>尖锋测试配置：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> options </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // starts slow and builds up the load rapidly, and then drops the load</span></span>
+<span class="line"><span style="color:#E1E4E8">  stages: [</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;5s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;5s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;5s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">25</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;3s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;3s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;3s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;3s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { duration: </span><span style="color:#9ECBFF">&quot;3s&quot;</span><span style="color:#E1E4E8">, target: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>正如你所看到的，<code>stages</code> 是配置性能测试类型的实用工具。</p>
+<h4 id="我们如何分析测试结果">我们如何分析测试结果？</h4>
+<p>K6 提供了一个简单的<a href="https://docs.k6.io/docs/results-output">CLI 输出</a>。我们认为这里最重要的两个高级数值是 <code>http_req_duration</code>，它详细说明了响应持续时间，以及 <code>http_req</code>，它显示发送的请求数量。如果这些数值在可接受的范围内，CLI 就达到了其目的。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/perf-testing/k6-CLI.PNG?raw=true" alt="k6 CLI"/></p>
+<p>如果需要进行更深入的诊断，图形化的<a href="https://docs.k6.io/docs/load-impact-insights">insights</a>非常有价值。在这样的图表中，关键是 <em>响应时间</em> 和 <em>请求速率</em> 跟随 <em>虚拟用户</em> 的趋势。任何趋势上的变化都可能提示潜在问题。</p>
+<h3 id="5-通过性能测试来防止不稳定的问题进入生产环境">(5) 通过性能测试来防止不稳定的问题进入生产环境</h3>
+<p>可参考章节 <a href="./test-flake.zh.md">不稳定的测试 &gt; 第三步：识别零星的系统问题 - <em>不稳定的系统</em></a></p>
+<h3 id="性能测试参考资料和延伸阅读">性能测试参考资料和延伸阅读</h3>
+<p><a href="https://developers.google.com/web/tools/lighthouse">Lighthouse 文档</a></p>
+<p><a href="https://github.com/GoogleChrome/lighthouse">Lighthouse 代码库</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Kano_model">Kano 模型</a></p>
+<p><a href="https://www.iso.org/standard/35733.html">ISO/IEC 25010 产品质量模型</a></p>
+<p><a href="https://docs.k6.io/docs">k6-loadImpact 文档</a></p>
+<p><a href="https://github.com/muratkeremozcan/k6-loadImpact">使用 K6 的快速启动示例</a></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

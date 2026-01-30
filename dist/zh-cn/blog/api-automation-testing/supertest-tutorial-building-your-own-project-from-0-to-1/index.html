@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目 - 软件测试同学"><meta property="og:site_name" content="SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/supertest-tutorial-building-your-own-project-from-0-to-1-cover.C_DOJSvd_Zh61gr.webp" alt="SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目</h1> <time datetime="2023-11-06T04:30:26.000Z" data-astro-cid-v3cnrnum> 2023/11/6 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Supertest</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="从-0-到-1-搭建-supertest-接口自动化测试项目">从 0 到 1 搭建 SuperTest 接口自动化测试项目</h2>
+<p>下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。</p>
+<h3 id="mocha-版本">Mocha 版本</h3>
+<p>可参考 demo 项目：<a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a></p>
+<h4 id="新建项目文件夹">新建项目文件夹</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> SuperTest-Mocha-demo</span></span></code></pre>
+<h4 id="项目初始化">项目初始化</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 进入项目文件夹下</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> SuperTest-Mocha-demo</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> nodejs</span><span style="color:#9ECBFF"> 项目初始化</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h4 id="安装依赖">安装依赖</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> supertest</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> supertest</span><span style="color:#79B8FF"> --save-dev</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> mocha测试框架</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> mocha</span><span style="color:#79B8FF"> --save-dev</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> chai断言库</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> chai</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<h4 id="新建测试文件及测试用例">新建测试文件及测试用例</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 新建测试文件夹</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Specs</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 新建测试用例文件</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Specs</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> test.spec.js</span></span></code></pre>
+<h4 id="编写测试用例">编写测试用例</h4>
+<blockquote>
+<p>测试接口可参考项目中 demoAPI.md 文件</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Test: test.spec.js</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> request</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;supertest&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// import supertest</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// import chai</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> expect</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">).expect; </span><span style="color:#6A737D">// import expect</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Test Suite</span></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the Get and POST API returns correctly&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(){</span></span>
+<span class="line"><span style="color:#6A737D">        // Test case 1</span></span>
+<span class="line"><span style="color:#B392F0">        it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the GET API returns correctly&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">done</span><span style="color:#E1E4E8">){</span></span>
+<span class="line"><span style="color:#B392F0">            request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://jsonplaceholder.typicode.com&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Test endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/posts/1&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// API endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// expected response status code</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.body).</span></span>
+<span class="line"><span style="color:#E1E4E8">                    to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">                }) </span><span style="color:#6A737D">// expected response body</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(done) </span><span style="color:#6A737D">// end the test case</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        });</span></span>
+<span class="line"><span style="color:#6A737D">        // Test case 2</span></span>
+<span class="line"><span style="color:#B392F0">        it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the POST API returns correctly&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">done</span><span style="color:#E1E4E8">){</span></span>
+<span class="line"><span style="color:#B392F0">            request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://jsonplaceholder.typicode.com&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Test endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/posts&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// API endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#9ECBFF">                    &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                    &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                    &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">                }) </span><span style="color:#6A737D">// request body</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// expected response status code</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">101</span><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">                    expect</span><span style="color:#E1E4E8">(res.body.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">                }) </span><span style="color:#6A737D">// expected response body</span></span>
+<span class="line"><span style="color:#E1E4E8">                .</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(done) </span><span style="color:#6A737D">// end the test case</span></span>
+<span class="line"><span style="color:#E1E4E8">        });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="配置-mocha-配置文件">配置 mocha 配置文件</h4>
+<ul>
+<li>新建配置文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 项目根目录下新建配置文件</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> .mocharc.js</span></span></code></pre>
+<ul>
+<li>更新配置文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// mocha config</span></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    timeout: </span><span style="color:#79B8FF">5000</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 设置测试用例的默认超时时间（毫秒）</span></span>
+<span class="line"><span style="color:#E1E4E8">    spec: [</span><span style="color:#9ECBFF">&#39;Specs/**/*.js&#39;</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// 指定测试文件的位置</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h4 id="调整测试脚本">调整测试脚本</h4>
+<p>在 package.json 文件中添加测试脚本</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">&quot;scripts&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;test&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;mocha&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<h4 id="运行测试用例">运行测试用例</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 运行测试用例</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<h4 id="测试报告">测试报告</h4>
+<h5 id="命令行测试报告">命令行测试报告</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png" alt="RbdVs7"/></p>
+<h5 id="集成-mochawesome-测试报告">集成 mochawesome 测试报告</h5>
+<ul>
+<li>安装 mochawesome</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --save-dev</span><span style="color:#9ECBFF"> mochawesome</span></span></code></pre>
+<ul>
+<li>更新 mocha 配置文件</li>
+</ul>
+<blockquote>
+<p>可参考 demo 项目：<a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a></p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// mocha config</span></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    timeout: </span><span style="color:#79B8FF">5000</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 设置测试用例的默认超时时间（毫秒）</span></span>
+<span class="line"><span style="color:#E1E4E8">    reporter: </span><span style="color:#9ECBFF">&#39;mochawesome&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 使用 mochawesome 报告生成器</span></span>
+<span class="line"><span style="color:#9ECBFF">    &#39;reporter-option&#39;</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;reportDir=Report&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 报告生成路径</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;reportFilename=[status]_[datetime]-[name]-report&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//报告名称</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;html=true&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 生成 html 格式报告</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;json=false&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 不生成 json 格式报告</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;overwrite=false&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 不覆盖已经存在的报告</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;timestamp=longDate&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 给报告添加时间戳</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    ], </span><span style="color:#6A737D">// 传递给报告生成器的参数</span></span>
+<span class="line"><span style="color:#E1E4E8">    spec: [</span><span style="color:#9ECBFF">&#39;Specs/**/*.js&#39;</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// 指定测试文件的位置</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ul>
+<li>运行测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 运行测试用例</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<ul>
+<li>查看测试报告</li>
+</ul>
+<blockquote>
+<p>测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png" alt="BseOQ8"/></p>
+<h3 id="jest-版本">Jest 版本</h3>
+<p>可参考 demo 项目：<a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p>
+<h4 id="新建-jest-demo-项目文件夹">新建 Jest demo 项目文件夹</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> SuperTest-Jest-demo</span></span></code></pre>
+<h4 id="jest-demo-项目初始化">Jest demo 项目初始化</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 进入项目文件夹下</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> SuperTest-Mocha-demo</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> nodejs</span><span style="color:#9ECBFF"> 项目初始化</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h4 id="jest-demo-安装依赖">Jest demo 安装依赖</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> supertest</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> supertest</span><span style="color:#79B8FF"> --save-dev</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> Jest测试框架</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> jest</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<h4 id="新建-jest-demo-项目的测试文件及测试用例">新建 Jest demo 项目的测试文件及测试用例</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 新建测试文件夹</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Specs</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 新建测试用例文件</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Specs</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> test.spec.js</span></span></code></pre>
+<h4 id="编写-jest-demo-测试用例">编写 Jest demo 测试用例</h4>
+<blockquote>
+<p>测试接口可参考项目中 demoAPI.md 文件</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> request</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;supertest&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Test Suite</span></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the Get and POST API returns correctly&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Test case 1</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the GET API returns correctly&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://jsonplaceholder.typicode.com&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Test endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/posts/1&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// API endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// request body</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// use supertest&#39;s expect to verify that the status code is 200</span></span>
+<span class="line"><span style="color:#6A737D">        // user jest&#39;s expect to verify the response body</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.status).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Verify that the status code is 200</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.id).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Verify that the id is 1</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.userId).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Verify that the userId is 1</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.title)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.body)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Test case 2</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Verify that the POST API returns correctly&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://jsonplaceholder.typicode.com&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Test endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/posts&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// API endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">            }) </span><span style="color:#6A737D">// request body</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// use supertest&#39;s expect to verify that the status code is 201</span></span>
+<span class="line"><span style="color:#6A737D">        // user jest&#39;s expect to verify the response body</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.statusCode).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.id).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">101</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.userId).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.title).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(res.body.body).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">}); </span></span></code></pre>
+<h4 id="配置-jest-配置文件">配置 Jest 配置文件</h4>
+<ul>
+<li>新建配置文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 项目根目录下新建配置文件</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> jest.config.js</span></span></code></pre>
+<ul>
+<li>更新配置文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Desc: Jest configuration file</span></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 测试文件的匹配规则</span></span>
+<span class="line"><span style="color:#E1E4E8">    testMatch: [</span><span style="color:#9ECBFF">&#39;**/Specs/*.spec.js&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h4 id="调整-jest-测试脚本">调整 Jest 测试脚本</h4>
+<p>在 package.json 文件中添加测试脚本</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">&quot;scripts&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;test&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;jest&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<h4 id="运行-jest-测试用例">运行 Jest 测试用例</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 运行测试用例</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<h4 id="jest-测试报告">Jest 测试报告</h4>
+<h5 id="jest-命令行测试报告">Jest 命令行测试报告</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png" alt="ItJf6N"/></p>
+<h5 id="集成-jest-html-reporters-测试报告">集成 jest-html-reporters 测试报告</h5>
+<ul>
+<li>安装 jest-html-reporters</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --save-dev</span><span style="color:#9ECBFF"> jest-html-reporters</span></span></code></pre>
+<ul>
+<li>更新 Jest 配置文件</li>
+</ul>
+<blockquote>
+<p>可参考 demo 项目：<a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Desc: Jest configuration file</span></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 测试文件的匹配规则</span></span>
+<span class="line"><span style="color:#E1E4E8">    testMatch: [</span><span style="color:#9ECBFF">&#39;**/Specs/*.spec.js&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#6A737D">    // 测试报告生成器</span></span>
+<span class="line"><span style="color:#E1E4E8">    reporters: [</span></span>
+<span class="line"><span style="color:#9ECBFF">        &#39;default&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        [</span></span>
+<span class="line"><span style="color:#9ECBFF">            &#39;jest-html-reporters&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">                publicPath: </span><span style="color:#9ECBFF">&#39;./Report&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 报告生成路径</span></span>
+<span class="line"><span style="color:#E1E4E8">                filename: </span><span style="color:#9ECBFF">&#39;report.html&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 报告名称</span></span>
+<span class="line"><span style="color:#E1E4E8">                pageTitle: </span><span style="color:#9ECBFF">&#39;SuperTest and Jest API Test Report&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 报告标题</span></span>
+<span class="line"><span style="color:#E1E4E8">                overwrite: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 报告文件是否覆盖</span></span>
+<span class="line"><span style="color:#E1E4E8">                expand: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 展开所有测试套件</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ul>
+<li>运行 Jest 测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 运行测试用例</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<ul>
+<li>查看测试报告</li>
+</ul>
+<blockquote>
+<p>测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png" alt="12ZreT"/></p>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

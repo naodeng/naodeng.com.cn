@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>Postman 接口自动化测试教程：进阶用法 - 数据驱动 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 数据驱动 - 软件测试同学"><meta property="og:site_name" content="Postman 接口自动化测试教程：进阶用法 - 数据驱动 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-data-driven-and-environment-data-driven-cover.BsIgTcnk_Zr83q6.webp" alt="Postman 接口自动化测试教程：进阶用法 - 数据驱动" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman 接口自动化测试教程：进阶用法 - 数据驱动</h1> <time datetime="2023-11-24T11:37:00.000Z" data-astro-cid-v3cnrnum> 2023/11/24 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span><span class="tag" data-astro-cid-v3cnrnum>Data Driven</span> </div> </header> <h2 id="进阶用法">进阶用法</h2>
+<p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括数据文件驱动和环境变量数据驱动。</p>
+<h3 id="数据驱动">数据驱动</h3>
+<p>在 API 自动化测试的过程中。使用数据驱动是一种常规测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。</p>
+<p>测试数据可以很容易地修改，而不需要修改测试用例代码。</p>
+<p>数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">https://github.com/Automation-Test-Starter/Postman-Newman-demo</a></p>
+<p>在 Postman 中进行数据驱动测试，特别是使用 JSON 数据作为测试数据，可以通过环境变量和数据文件配合 Postman 提供的测试脚本来实现，以下会分别以简单的示例来介绍环境变量和数据文件的使用。</p>
+<h4 id="使用环境变量">使用环境变量</h4>
+<p>大致的步骤是：将测试数据存储在环境变量中，然后在测试脚本中读取环境变量中的数据，进行测试。</p>
+<h5 id="1-创建环境变量">1. 创建环境变量</h5>
+<p>在 Postman 中，你可以在 “Manage Environments” 窗口中创建环境变量。在 “Manage Environments” 窗口中，你可以创建多个环境，每个环境都有一组环境变量。</p>
+<p>之前在 demo 中创建了一个环境变量，名为 <code>DemoEnv</code>，其中包含了一个环境变量 <code>baseURL</code>，用于存储 API 的基本 URL。
+这一次我们在 <code>DemoEnv</code> 环境中添加多个环境变量，用于存储 get-demo 接口和 post-demo 接口的各类测试数据。</p>
+<p>点击编辑<code>DemoEnv</code>环境，添加以下环境变量：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>getAPI</td><td>posts/1</td></tr><tr><td>getAPIResponseStatus</td><td>200</td></tr><tr><td>getAPIResponseData</td><td>{“userId”:1,“id”:1,“title”:“sunt aut facere repellat provident occaecati excepturi optio reprehenderit”,“body”:“quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto”}</td></tr><tr><td>postAPI</td><td>posts</td></tr><tr><td>postAPIResponseStatus</td><td>201</td></tr><tr><td>postAPIResponseData</td><td>{“title”:“foo”,“body”:“bar”,“userId”:1,“id”:101}</td></tr></tbody></table>
+<h5 id="2-使用环境变量">2. 使用环境变量</h5>
+<p>在 “Pre-request Script” 或 “Tests” 部分中，你可以使用环境变量来存储和获取数据。在请求 Body 中，你可以通过 pm.environment.get 获取环境变量的值。</p>
+<blockquote>
+<p>注意：在 JavaScript 中，环境变量获取的值是字符串</p>
+</blockquote>
+<h6 id="编辑-get-demo-接口">编辑 get-demo 接口</h6>
+<ul>
+<li>将 URL 修改为 <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;getAPI&amp;#125;&amp;#125;</code>，</li>
+<li>编辑 Tests 脚本用来验证响应数据：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取环境变量中的数据</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;getAPIResponseStatus&quot;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseData&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(getAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>点击保存，然后点击发送，可以看到测试通过。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112418URuFUy.png" alt=" "/></p>
+<h6 id="编辑-post-demo-接口">编辑 post-demo 接口</h6>
+<ul>
+<li>将 URL 修改为 <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;postAPI&amp;#125;&amp;#125;</code>，</li>
+<li>编辑 Tests 脚本用来验证响应数据：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取环境变量中的数据</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;postAPIResponseStatus&quot;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseData&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 201&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(postAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>点击保存，然后点击发送，可以看到测试通过。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png" alt=" "/></p>
+<h5 id="3-调试环境变量数据驱动脚本">3. 调试环境变量数据驱动脚本</h5>
+<p>选择对应的环境变量和更新后的测试用例，运行整个 demo collection，确认测试通过</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419E4tzBS.png" alt="2023112419E4tzBS"/></p>
+<h5 id="4自动化运行环境变量数据驱动脚本">4.自动化运行环境变量数据驱动脚本</h5>
+<ul>
+<li>将更新后的测试用例导出到自动化测试项目测试用例文件夹下</li>
+<li>调整 package.json</li>
+</ul>
+<p>在 package.json 文件中，更新测试脚本，用于运行环境变量数据驱动测试用例：</p>
+<blockquote>
+<p>demo 项目为了区分不同场景，新增了测试命令为 environment-driven-test</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span> &quot;environment-driven-test&quot;: &quot;newman run Testcase/Environment-Driven.postman_collection.json -e Env/Environment-Driven-DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;,</span></span></code></pre>
+<ul>
+<li>运行测试</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> environment-driven-test</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419OCkmnl.png" alt="2023112419OCkmnl"/></p>
+<h4 id="使用数据文件">使用数据文件</h4>
+<p>大致的步骤是：将测试数据存放在数据文件中，然后在测试脚本中读取数据文件中的数据，进行测试。</p>
+<p>postman 的数据文件支持 json，csv 和 txt 等多种格式，以下示例会以 json 格式 进行</p>
+<h5 id="1创建数据文件">1.创建数据文件</h5>
+<ul>
+<li>在 postma 接口自动化测试项目下新建 Data 文件夹</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Data</span></span></code></pre>
+<ul>
+<li>在 Data 文件夹下新建 json 格式数据文件 testdata.json</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Data</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> testdata.json</span></span></code></pre>
+<ul>
+<li>更新测试数据文件 testdata.json</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;posts/1&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;posts&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPIResponseStatus&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPIResponseData&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPIResponseStatus&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPIResponseData&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">101</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span></code></pre>
+<h5 id="2更新测试用例">2.更新测试用例</h5>
+<h6 id="更新-get-demo-接口">更新 get-demo 接口</h6>
+<ul>
+<li>编辑 Pre-request Script 脚本来从测试数据文件中获取
+请求 url</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPI</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPI&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>
+<p>将 URL 修改为 <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;getAPI&amp;#125;&amp;#125;</code>，</p>
+</li>
+<li>
+<p>编辑 test 脚本来从测试数据文件中获取测试数据</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseStatus&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseData&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(getAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h6 id="更新-post-demo-接口">更新 post-demo 接口</h6>
+<ul>
+<li>编辑 Pre-request Script 脚本来从测试数据文件中获取
+请求 url</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPI</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPI&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>
+<p>将 URL 修改为 <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;postAPI&amp;#125;&amp;#125;</code>，</p>
+</li>
+<li>
+<p>编辑 test 脚本来从测试数据文件中获取测试数据</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 从数据文件获取测试数据</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseStatus&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseData&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 201&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(postAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3调试">3.调试</h5>
+<ul>
+<li>在 postman 页面选择 get-demo request 和 post-demo request 所在的 demo Collection，点击右上角的三个点，选择 Run Collection</li>
+<li>在 runner 准备页面右侧区域点击 Data 的 Select File 按钮，选择之前的测试数据文件 testdata.json</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419KIqIfa.png" alt="2023112419KIqIfa"/></p>
+<ul>
+<li>然后点击 Run demo，确认运行通过即可导出测试用例文件</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419c9Hv5e.png" alt="2023112419c9Hv5e"/></p>
+<h5 id="4自动化运行数据驱动脚本">4.自动化运行数据驱动脚本</h5>
+<ul>
+<li>将更新后的测试用例导出到自动化测试项目测试用例文件夹下</li>
+<li>调整 package.json</li>
+</ul>
+<p>在 package.json 文件中，更新测试测试脚本，用于运行数据驱动测试用例：</p>
+<blockquote>
+<p>demo 项目为了区分不同场景，新增了测试命令为 data-driven-test，且命令后加了-d 参数 用于指定测试数据文件路径</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;data-driven-test&quot;: &quot;newman run Testcase/Data-Driven.postman_collection.json -e Env/DemoEnv.postman_environment.json -d Data/testdata.json -r cli,allure --reporter-allure-export ./allure-results&quot;</span></span></code></pre>
+<ul>
+<li>运行测试</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> data-driven-test</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419k7I9ZE.png" alt="2023112419k7I9ZE"/></p>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman 官方文档</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">newman 官方文档</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

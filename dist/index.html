@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><title>redirect...</title><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Nao's Blog"><meta property="og:site_name" content="Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><noscript><meta http-equiv="refresh" content="0;url=https://naodeng.com.cn/en/"></noscript><script>(function(){const langs = ["en","zh-cn"];
+const baseUrl = "https://naodeng.com.cn/";
+const defaultLocale = "en";
+
+      if (
+        localStorage.selectedLang &&
+        langs.includes(localStorage.selectedLang)
+      ) {
+        location.href = `${baseUrl + localStorage.selectedLang}/`;
+      } else {
+        const browserLang = navigator.language.toLowerCase();
+
+        if (langs.includes(browserLang)) {
+          location.href = `${baseUrl + browserLang}/`;
+        } else if (langs.includes(browserLang.split("-")[0])) {
+          location.href = `${baseUrl + browserLang.split("-")[0]}/`;
+        } else {
+          location.href = `${baseUrl + defaultLocale}/`;
+        }
+      }
+    })();</script></head> <body> <h1>redirect...</h1> </body></html>

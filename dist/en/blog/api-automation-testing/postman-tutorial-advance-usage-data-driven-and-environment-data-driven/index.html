@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>Postman API Automation Testing Tutorial Advance Usage Data Driven - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman API Automation Testing Tutorial Advance Usage Data Driven - Nao's Blog"><meta property="og:site_name" content="Postman API Automation Testing Tutorial Advance Usage Data Driven - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-data-driven-and-environment-data-driven-cover.CKgO8B1U_Z24L2bf.webp" alt="Postman API Automation Testing Tutorial Advance Usage Data Driven" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman API Automation Testing Tutorial Advance Usage Data Driven</h1> <time datetime="2023-11-24T11:37:00.000Z" data-astro-cid-v3cnrnum> 11/24/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span><span class="tag" data-astro-cid-v3cnrnum>Data Driven</span> </div> </header> <h2 id="advanced-usage">Advanced Usage</h2>
+<p>This section explores some advanced features of Postman and Newman, including data-driven testing and environment variable data-driven testing.</p>
+<h3 id="data-driven-testing">Data-Driven Testing</h3>
+<p>In the process of API automation testing, data-driven testing is a common approach where the input and expected output data of test cases are stored in data files. The testing framework executes multiple tests based on these data files to validate various aspects of the API.</p>
+<p>Data-driven testing allows for easy modification of test data without altering the test case code, providing flexibility in testing scenarios and ensuring the API functions correctly under various input data.</p>
+<p>Refer to the demo: <a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">Postman-Newman-demo</a></p>
+<p>For data-driven testing in Postman, especially using JSON data as test data, it can be achieved by combining environment variables and data files with the testing scripts provided by Postman. The usage of environment variables and data files is illustrated with simple examples.</p>
+<h4 id="using-environment-variables">Using Environment Variables</h4>
+<p>The general steps are to store test data in environment variables and then read the data from these variables in the testing scripts.</p>
+<h5 id="1-create-environment-variables">1. Create Environment Variables</h5>
+<p>In Postman, you can create environment variables in the “Manage Environments” window. Each environment can have a set of variables. For example, in the <code>DemoEnv</code> environment, variables such as <code>baseURL</code>, <code>getAPI</code>, <code>getAPIResponseStatus</code>, and others can be added to store various test data.</p>
+<h5 id="2-use-environment-variables">2. Use Environment Variables</h5>
+<p>In the “Pre-request Script” or “Tests” sections, you can use environment variables to store and retrieve data. In the request body, you can use <code>pm.environment.get</code> to fetch the value of an environment variable.</p>
+<p><strong>Edit the <code>get-demo</code> API:</strong></p>
+<ul>
+<li>Modify the URL to <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;getAPI&amp;#125;&amp;#125;</code>.</li>
+<li>Edit the Tests script to validate the response data.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Fetch data from environment variables</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;getAPIResponseStatus&quot;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseData&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(getAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><strong>Edit the <code>post-demo</code> API:</strong></p>
+<ul>
+<li>Modify the URL to <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;postAPI&amp;#125;&amp;#125;</code>.</li>
+<li>Edit the Tests script to validate the response data.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Fetch data from environment variables</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;postAPIResponseStatus&quot;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(pm.environment.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseData&#39;</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 201&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(postAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>Click Save and then click Send to be shown that the test passes.
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png" alt=" "/></li>
+</ul>
+<h5 id="3-debugging-environment-variable-data-driven-scripts">3. Debugging Environment Variable Data-Driven Scripts</h5>
+<p>Select the corresponding environment variable and the updated test case, run the entire demo collection, and confirm that the tests pass.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419E4tzBS.png" alt="2023112419E4tzBS"/></p>
+<h5 id="4automated-execution-of-environment-variable-data-driven-scripts">4.Automated Execution of Environment Variable Data-Driven Scripts</h5>
+<ul>
+<li>Export the updated test cases to the test case folder of the automation test project.</li>
+<li>Adjust the <code>package.json</code> file:</li>
+</ul>
+<p>In the <code>package.json</code> file, update the test script to run the environment variable data-driven test cases:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span> &quot;environment-driven-test&quot;: &quot;newman run Testcase/Environment-Driven.postman_collection.json -e Env/Environment-Driven-DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;,</span></span></code></pre>
+<ul>
+<li>Run the test:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> environment-driven-test</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419OCkmnl.png" alt="2023112419OCkmnl"/></p>
+<h4 id="using-data-files">Using Data Files</h4>
+<p>The general steps are to store test data in data files and then read the data from these files in the testing scripts. Postman supports various data file formats such as JSON, CSV, and TXT. The following example uses JSON format.</p>
+<h5 id="1-create-data-files">1. Create Data Files</h5>
+<ul>
+<li>Create a <code>Data</code> folder under the Postman API automation testing project.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Data</span></span></code></pre>
+<ul>
+<li>Create a JSON format data file named <code>testdata.json</code> under the <code>Data</code> folder.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Data</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> testdata.json</span></span></code></pre>
+<ul>
+<li>Update the test data file <code>testdata.json</code>.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;posts/1&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPI&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;posts&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPIResponseStatus&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;getAPIResponseData&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;quia et suscipit</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">suscipit recusandae consequuntur expedita et cum</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">reprehenderit molestiae ut ut quas totam</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">nostrum rerum est autem sunt rem eveniet architecto&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPIResponseStatus&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;postAPIResponseData&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">101</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span></code></pre>
+<h5 id="2-update-test-cases">2. Update Test Cases</h5>
+<p><strong>Update the <code>get-demo</code> API:</strong></p>
+<ul>
+<li>Edit the Pre-request Script to fetch the request URL from the test data file.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPI</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPI&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>
+<p>Modify the URL to <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;getAPI&amp;#125;&amp;#125;</code>.</p>
+</li>
+<li>
+<p>Edit the Tests script to fetch test data from the test data file.</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseStatus&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> getAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;getAPIResponseData&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(getAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(getAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><strong>Update the <code>post-demo</code> API:</strong></p>
+<ul>
+<li>Edit the Pre-request Script to fetch the request URL from the test data file.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPI</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPI&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>
+<p>Modify the URL to <code>&amp;#123;&amp;#123;baseURL&amp;#125;&amp;#125;/&amp;#123;&amp;#123;postAPI&amp;#125;&amp;#125;</code>.</p>
+</li>
+<li>
+<p>Edit the Tests script to fetch test data from the test data file.</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseStatus</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseStatus&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postAPIResponseData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.iterationData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;postAPIResponseData&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 201&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(postAPIResponseStatus);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.id);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.userId).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.userId);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.title);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.body).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(postAPIResponseData.body);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3-debugging">3. Debugging</h5>
+<ul>
+<li>In the Postman application, select the <code>get-demo</code> and <code>post-demo</code> requests in the demo collection, click the three dots in the upper right corner, choose “Run Collection.”</li>
+<li>In the runner preparation page, click the “Select File” button on the right side of Data, choose the previous test data file <code>testdata.json</code>.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419KIqIfa.png" alt="2023112419KIqIfa"/></p>
+<ul>
+<li>Click “Run demo,” confirm a successful run, and then export the test case file.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419c9Hv5e.png" alt="2023112419c9Hv5e"/></p>
+<h5 id="4-automated-execution-of-data-driven-scripts">4. Automated Execution of Data-Driven Scripts</h5>
+<ul>
+<li>Export the updated test cases to the test case folder of the automation test project.</li>
+<li>Adjust the <code>package.json</code> file:</li>
+</ul>
+<p>In the <code>package.json</code> file, update the test script to run the data-driven test cases:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;data-driven-test&quot;: &quot;newman run Testcase/Data-Driven.postman_collection.json -e Env/DemoEnv.postman_environment.json -d Data/testdata.json -r cli,allure --reporter-allure-export ./allure-results&quot;</span></span></code></pre>
+<ul>
+<li>Run the test:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> data-driven-test</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419k7I9ZE.png" alt="2023112419k7I9ZE"/></p>
+<h2 id="reference-documents">Reference Documents</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman Official Documentation: https://learning.postman.com/docs/getting-started/introduction/</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">Newman Official Documentation: https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>敏捷测试的 30 天挑战 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/others/30-days-of-agile-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/others/30-days-of-agile-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="敏捷测试的 30 天挑战 - 软件测试同学"><meta property="og:site_name" content="敏捷测试的 30 天挑战 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/others/30-days-of-agile-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/others/30-days-of-agile-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/others/30-days-of-agile-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-agile-testing-cover.d6h00-_w_183ef2.webp" alt="敏捷测试的 30 天挑战" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>敏捷测试的 30 天挑战</h1> <time datetime="2023-01-30T00:00:00.000Z" data-astro-cid-v3cnrnum> 2023/1/30 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Agile Testing</span> </div> </header> <p>如果你的项目是采用敏捷测试，那么欢迎加入很棒的 30 天敏捷测试挑战。</p>
+
+<p>以下是 30 个挑战的列表，每月每天一个，打印下面的列表，把它保存在某个地方。打印出来。把它贴在墙上。让我们这样做吧！</p>
+<h2 id="规则是什么">规则是什么？</h2>
+<p>目标是尽可能多地的完成挑战。您可以在自己的时间范围和能力范围内做到这一点。</p>
+<p>您可能有图像可以分享，博客文章，视频，状态更新，无论它是什么！来参加吧！</p>
+<p>以下是分享进度的方法：</p>
+<ul>
+<li>在微博和朋友圈上 - 使用**#30DaysOfTesting**标签</li>
+</ul>
+<h2 id="30-天敏捷测试列表">30 天敏捷测试列表</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Day 1</td><td>Buy an agile testing related book and share something you’ve learnt by day 30 <br/>买一本敏捷测试相关的书，并在第 30 天结束时分享你的所学</td></tr><tr><td>Day 2</td><td>Create a mindmap, document, diagram or sketchnote about what you think agile testing is<br/>用图表或文档的方式列出你理解的敏捷测试</td></tr><tr><td>Day 3</td><td>Find a video on YouTuBe about agile testing, then watch it!<br/>看一个敏捷测试的视频</td></tr><tr><td>Day 4</td><td>Read the agile manifesto and reflect on the implications for your role<br/>读敏捷宣言，并反思对你角色的影响</td></tr><tr><td>Day 5</td><td>Pair with a developer on a feature<br/>跟 Dev pair</td></tr><tr><td>Day 6</td><td>Map out what your exploratory testing looks like, compare it to what other testers do<br/>列出你理解的探索式测试，并与其他人员的进行比较</td></tr><tr><td>Day 7</td><td>Find a visual way of representing your tests - e.g. A mind map, diagram, model, etc<br/>找一个可视化的方式展示你的测试</td></tr><tr><td>Day 8</td><td>Speak to a developer about a bug you found instead of loging it in the tracking system<br/>跟 dev 直接说你发现的 bug，而不是在 bug 管理系统里记录</td></tr><tr><td>Day 9</td><td>Pair whth a developer on a code review. Can you identify any risks?<br/>参加 dev 的 code review。你能定位任何的风险吗？</td></tr><tr><td>Day 10</td><td>Learn where the application logs are and how to read them.<br/>了解应用程序的 log 记录在哪里，并学习看 log。</td></tr><tr><td>Day 11</td><td>Find out what customers are saying about your product. What did you learn?<br/>了解客户对你的产品的评价。从中学到了什么？</td></tr><tr><td>Day 12</td><td>What test documentation does your team have? How can you improve it?<br/>你的团队有什么样的测试文档？你觉得可以怎么改进一下？</td></tr><tr><td>Day 13</td><td>Learn to use a tool that your developers use - e.g. an IDE<br/>学习使用 Dev 在用的工具</td></tr><tr><td>Day 14</td><td>How can you deliver greater value to your customer?<br/>如何能够交付更多的价值给客户？</td></tr><tr><td>Day 15</td><td>How can you make your testing processes (more) lean?<br/>如何能让你的测试流程更加精益？</td></tr><tr><td>Day 16</td><td>What barriers do you feel exist in testing in agile?<br/>你感觉敏捷测试中存在什么障碍？</td></tr><tr><td>Day 17</td><td>Map out your current team structure. How does it compare to other teams?<br/>绘制出您当前的团队结构。它与其他团队相比如何？</td></tr><tr><td>Day 18</td><td>How can you make testing jobs easier?<br/>如何让测试工作变得更轻松？</td></tr><tr><td>Day 19</td><td>How can you make jobs for your team easier?<br/>如何让你的团队工作更轻松？</td></tr><tr><td>Day 20</td><td>Investigate what is in your and your team’s tool kit<br/>调查你和你团队使用的工具有哪些</td></tr><tr><td>Day 21</td><td>How are you managing your testing, is it really agile?<br/>你如何管理你的测试，真的敏捷吗？</td></tr><tr><td>Day 22</td><td>Find out what testing is being done by other team members.<br/>了解其他团队成员正在进行的测试</td></tr><tr><td>Day 23</td><td>What agile strategies are there for managing tests?<br/>有哪些管理测试的敏捷策略？</td></tr><tr><td>Day 24</td><td>Look for a task that can be automated.<br/>找一个可以自动化的 task.</td></tr><tr><td>Day 25</td><td>What can’t you automate? Communicate that to your team<br/>什么是你不能自动化的？跟团队沟通一下</td></tr><tr><td>Day 26</td><td>What does your Test Plan look like, what format do you use?<br/>你的测试计划什么样的，使用的什么格式？</td></tr><tr><td>Day 27</td><td>Look into zero bug tolerance, is this something your team could do?<br/>了解 bug 零容忍，这是你的团队可以做的吗？</td></tr><tr><td>Day 28</td><td>What learning culture exist in your company? How can you contribute to it?<br/>公司的学习文化是什么样的？你如何为此贡献？</td></tr><tr><td>Day 29</td><td>What columns do you have on your work tracker or kanban board?<br/>你们的看板上有哪些 column？</td></tr><tr><td>Day 30</td><td>What action does your team take on a red build?<br/>build 红了团队会采取什么 action？</td></tr><tr><td>Day 31</td><td>BONUS: Debrief your whole team on your last session of testing<br/>跟整个团队汇报你的测试</td></tr></tbody></table>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+<p>                                                    |</p>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

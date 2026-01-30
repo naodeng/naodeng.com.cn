@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e-cover.CJ3qpSxG_Zd63Cd.webp" alt="UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的真实案例篇（一）：用集成测试测试前端，用 E2E 测试测试后端</h1> <time datetime="2024-02-01T08:06:44.000Z" data-astro-cid-v3cnrnum> 2024/2/1 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="真实案例用集成测试测试前端用-e2e-测试测试后端">真实案例：用集成测试测试前端，用 E2E 测试测试后端</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/test-front-end-with-integration-back-end-with-e2e.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/real-life-examples/test-front-end-with-integration-back-end-with-e2e.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>使用带有存根服务器的 UI 测试相对于完整的 E2E 测试来说，不仅更加<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/testing-strategy/component-vs-integration-vs-e2e-testing.zh.md#UI-%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95">可靠，而且速度更快</a>。</p>
+<p>尽管完整的 E2E 测试仍然提供了最高的信心水平，但代价很高：易碎、潜在不可靠且速度较慢。</p>
+<p>通过使用成本较低的 UI 集成测试，我们仍然可以在前端获得高信心水平，并将成本较高的 E2E 测试留给后端。</p>
+<h3 id="示例测试架构图">示例测试架构图</h3>
+<p>这是来自实际的<a href="https://new.siemens.com/global/en/products/buildings/digitalization/building-operator.html">建筑控制云应用程序</a>的高层次架构视图。</p>
+<ul>
+<li>Angular 前端</li>
+<li>Node-Express API（后端）</li>
+<li>服务（Go lambdas）（后端）</li>
+<li>硬件（后端）</li>
+</ul>
+<blockquote>
+<p>根据需求，可以通过纯 API 测试来补充 UI-E2E 测试。一些常用的 API 测试工具包括 <a href="https://www.getpostman.com/">Postman</a>，<a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">VS Code 的 Rest Client</a>，以及 Cypress。</p>
+</blockquote>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/test-architecture-example.png?raw=true" alt=" "/></p>
+<p><em>请注意：以下所有示例均使用 Cypress，目前它在 XHR 测试支持方面是最优秀的。<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.zh.md#XHR-%E8%AF%B7%E6%B1%82%E7%AD%89%E5%BE%85">在现有的测试工具中，完整的 XHR 请求等待和检查并不常见</a>，Cypress 目前提供了最全面的检查支持。</em></p>
+<h3 id="代码示例登录测试">代码示例：登录测试</h3>
+<p>以下示例包含两个测试，用于覆盖登录功能。第一个测试使用 UI 集成测试覆盖前端应用程序，第二个测试使用 E2E 测试覆盖后端。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">/** function to fill username, password and Login*/</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> fillFormAndClick</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">username</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">password</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> { .. };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// This is an UI integration test with server stubbing.</span></span>
+<span class="line"><span style="color:#6A737D">// Remember to write a few E2E tests and a lot of integration ones</span></span>
+<span class="line"><span style="color:#6A737D">// @see https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/testing-strategy/component-vs-integration-vs-e2e-testing.zh.md#ui-integration-tests</span></span>
+<span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Login: front-end integration tests&quot;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // A route that intercepts / sniffs every POST request that goes to the authentication URL.</span></span>
+<span class="line"><span style="color:#6A737D">  // Stubs the response with authentication-success.json fixture. This is called server stubbing</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    method: </span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    fixture: </span><span style="color:#9ECBFF">&quot;authentication/authentication-success.json&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// Stubs the response</span></span>
+<span class="line"><span style="color:#E1E4E8">    url: </span><span style="color:#9ECBFF">`**${</span><span style="color:#79B8FF">AUTHENTICATE_API_URL</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">  }).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;auth-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  fillFormAndClick</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">USERNAME_PLACEHOLDER</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">PASSWORD_PLACEHOLDER</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // wait for the POST XHR</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@auth-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">interception</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // assert the payload body that the front end is sending to the back-end</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;username&quot;</span><span style="color:#E1E4E8">, username);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(interception.request.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;password&quot;</span><span style="color:#E1E4E8">, password);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert the request headers in the payload</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(interception.request.headers).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Content-Type&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;application/json;charset=utf-8&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // finally, the user must see the feedback</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">SUCCESS_FEEDBACK</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;be.visible&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// this is a copy of the integration test but without server stubbing.</span></span>
+<span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Login: back-end E2E tests&quot;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // A route that intercepts / sniffs every POST request that goes to the authentication URL.</span></span>
+<span class="line"><span style="color:#6A737D">  // Distinction: this is NOT stubbed!</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    method: </span><span style="color:#9ECBFF">&quot;POST&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    url: </span><span style="color:#9ECBFF">`**${</span><span style="color:#79B8FF">AUTHENTICATE_API_URL</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">  }).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;auth-xhr&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  fillFormAndClick</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">USERNAME_PLACEHOLDER</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">PASSWORD_PLACEHOLDER</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;@auth-xhr&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">interception</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // since the integration tests already tested the front-end app, we use E2E tests to check the</span></span>
+<span class="line"><span style="color:#6A737D">    // back-end app. It needs to ensure that the back-end app works and gets the correct response data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // response body assertions and status should be in the E2E tests since they rely on the server</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(interception.status).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(interception.response.body).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;token&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // finally, the user must see the feedback</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">SUCCESS_FEEDBACK</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;be.visible&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="代码示例-2将-ui-集成测试切换为-ui-e2e-测试">代码示例 2：将 UI 集成测试切换为 UI-E2E 测试</h3>
+<p>有时候，您可能希望将 UI 集成测试切换为 E2E 测试。</p>
+<p>在较低级别的测试层面，例如仅将测试隔离到 UI 代码时，您可能更愿意使用经济高效的 UI 集成测试。</p>
+<p>而在较高级别的测试层面，例如与中间层服务集成时，您可能需要更高的信心水平，将测试目标定位到后端。</p>
+<p>通过使用条件存根，您可以在 UI 集成测试和 E2E 测试之间切换关注。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// stub-services.js : a file that only includes a function to stub the back-end services</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // all routes to the specified endpoint will respond with pre-packaged Json data</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/api/../me&#39;</span><span style="color:#E1E4E8">, {fixture:</span><span style="color:#9ECBFF">&#39;services/me.json&#39;</span><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;/api/../permissions&#39;</span><span style="color:#E1E4E8">, {fixture:</span><span style="color:#9ECBFF">&#39;services/permissions.json&#39;</span><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#6A737D">  // Lots of other fixtures ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// spec file:</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> stubServices </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;../../support/stub-services&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/** isLocalhost is a function that checks the configuration environment*/</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isLocalHost</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> Cypress.</span><span style="color:#B392F0">env</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;ENVIRONMENT&#39;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> &quot;localhost&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ... in your tests, or in before / beforeEach blocks,</span></span>
+<span class="line"><span style="color:#6A737D">// stub the services if you are testing front-end (UI integration tests)</span></span>
+<span class="line"><span style="color:#6A737D">// do not stub if you are testing the back-end (UI-E2E tests)</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">isLocalHost</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#B392F0">  stubServices</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=RwWz4hllDtg">熟练掌握 UI 测试 - 会议视频</a></li>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

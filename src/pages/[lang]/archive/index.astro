@@ -1,0 +1,109 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { NAV_ARCHIVE } from "@/consts";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale && post.data.title)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const postsByYear = allPosts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof allPosts>);
+
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+const title = t(NAV_ARCHIVE);
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <div class="archive-container">
+    {
+      years.map((year) => (
+        <section class="archive-year">
+          <h2 class="year-title">{year}</h2>
+          <ul class="post-list">
+            {postsByYear[year].map((post) => {
+              const [, ...idParts] = post.id.split("/");
+              const postUrl = `/${locale}/blog/${idParts.join("/")}/`;
+              const dateStr = post.data.date.toLocaleDateString(
+                locale === "zh-cn" ? "zh-CN" : "en-US",
+                { month: "short", day: "numeric" }
+              );
+              return (
+                <li class="post-item">
+                  <span class="post-date">{dateStr}</span>
+                  <a href={postUrl} class="post-link">
+                    {post.data.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .archive-container {
+    margin-block-start: var(--sp-m);
+  }
+  .archive-year {
+    margin-block-end: var(--sp-l);
+  }
+  .year-title {
+    font-size: 1.5rem;
+    color: var(--color-theme);
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    padding-block-end: 0.2em;
+    margin-block-end: var(--sp-s);
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .post-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-m);
+    padding-block: 0.4em;
+    border-block-end: 1px dashed color-mix(in srgb, var(--color-base-content) 10%, transparent);
+  }
+  .post-date {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    min-width: 4.5rem;
+    font-family: var(--english-font);
+  }
+  .post-link {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+  .post-link:hover {
+    color: var(--color-theme);
+  }
+</style>

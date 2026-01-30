@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 - 软件测试同学"><meta property="og:site_name" content="Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/bruno-tutorial-building-your-own-project-from-0-to-1-cover.B0TlmKaX_Z3EkQm.webp" alt="Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目</h1> <time datetime="2024-01-23T09:58:14.000Z" data-astro-cid-v3cnrnum> 2024/1/23 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Bruno</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="写在前面">写在前面</h2>
+<h3 id="为什么不用-postman-和-insomnia">为什么不用 postman 和 insomnia</h3>
+<ul>
+<li>关于 Postman：Postman 于 2023 年 5 月宣布将逐步淘汰具有离线功能的 Scratch Pad 模型，大部分功能将转移到云端，这意味着用户必须登录才能使用 Postman。（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估）</li>
+<li>关于 Insomnia：Insomnia 在 2023 年 9 月 28 日发布的 8.0 版本中开始加重了对云端的依赖，用户必须登录才能使用全功能的 Insomnia。现有的 Scratch Pad 功能有限（不登录的情况下可使用的功能有限，登录的话不确认是否会向云端上传我们测试使用的接口信息，安全性不可预估）</li>
+</ul>
+<p>所以需要一个将 API 工作区数据与第三方服务器隔离的替代方案，Bruno 就是可行的替代方案之一。</p>
+<h3 id="为什么选择-bruno">为什么选择 Bruno</h3>
+<p>官方说明：<a href="https://github.com/usebruno/bruno/discussions/269">https://github.com/usebruno/bruno/discussions/269</a></p>
+<p>与 postman 的对比：<a href="https://www.usebruno.com/compare/bruno-vs-postman">https://www.usebruno.com/compare/bruno-vs-postman</a></p>
+<p>开源，MIT License</p>
+<p>客户端全平台支持 (Mac/linux/Windows)</p>
+<p>离线客户端，无云同步功能计划</p>
+<p>支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）</p>
+<p>社区相对活跃，<a href="https://github.com/usebruno/bruno/discussions/384">产品开发路线图</a>清晰</p>
+<h2 id="从-0-到-1-搭建-bruno-接口自动化测试项目">从 0 到 1 搭建 Bruno 接口自动化测试项目</h2>
+<p>这篇文章会更聚焦如何使用 Bruno 提供的功能，从零开始搭建一个接口自动化测试项目。</p>
+<p>Bruno 程序的安装和基本使用请参考：<a href="https://github.com/naodeng/Bruno-API-Test-Starter/blob/main/README_ZH.md">postman 替换工具 bruno 使用介绍</a></p>
+<h3 id="项目结构">项目结构</h3>
+<p>Bruno 接口自动化测试项目的基础结构如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>Bruno-demo</span></span>
+<span class="line"><span>├── README.md // 项目说明文件</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>├── package-lock.json</span></span>
+<span class="line"><span>├── Testcase // 测试用例文件夹</span></span>
+<span class="line"><span>│   └── APITestDemo1.bru // 测试用例文件 1</span></span>
+<span class="line"><span>│   └── APITestDemo2.bru // 测试用例文件 2</span></span>
+<span class="line"><span>│   └── bruno.json // bruno COLLECTION 配置文件</span></span>
+<span class="line"><span>│   └── environments // 不同测试环境文件夹</span></span>
+<span class="line"><span>│       └── dev.bru // 测试环境配置文件</span></span>
+<span class="line"><span>│   └── Report // 测试报告文件</span></span>
+<span class="line"><span>│       └── report.json //json 格式报告文件</span></span>
+<span class="line"><span>├── .gitignore</span></span>
+<span class="line"><span>└── node_modules // 项目依赖</span></span></code></pre>
+<h3 id="项目搭建准备">项目搭建准备</h3>
+<h4 id="新建项目文件夹">新建项目文件夹</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Bruno-demo</span></span></code></pre>
+<h4 id="项目初始化">项目初始化</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 进入项目文件夹下</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Bruno-demo</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> nodejs</span><span style="color:#9ECBFF"> 项目初始化</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h4 id="安装-bruno-cli-依赖">安装 Bruno CLI 依赖</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> 安装</span><span style="color:#9ECBFF"> Bruno</span><span style="color:#9ECBFF"> CLI</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> @usebruno/cli</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<blockquote>
+<p>Bruno CLI 是 Bruno 官方提供的命令行工具，可以通过简单的命令行命令轻松运行 API 集合。我们可以更轻松地在不同环境中测试 API、自动化测试流程，并将 API 测试与持续集成和部署工作流程集成。</p>
+</blockquote>
+<h3 id="使用-bruno-编写接口测试用例">使用 Bruno 编写接口测试用例</h3>
+<h4 id="新建测试用例目录">新建测试用例目录</h4>
+<ul>
+<li>运行 Bruno app 到首页</li>
+<li>新建名称为 Testcase 的 COLLECTION，且选择 COLLECTION 的目录为上面创建的项目文件夹
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png" alt=" "/></li>
+</ul>
+<h4 id="新建-get-请求测试用例">新建 Get 请求测试用例</h4>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 GET 请求</li>
+<li>输入请求名称为 GetDemo，输入请求地址为 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png" alt=" "/></p>
+<h4 id="给-get-请求添加测试断言">给 Get 请求添加测试断言</h4>
+<h5 id="使用-bruno-自带的-assert-编写测试断言">使用 Bruno 自带的 Assert 编写测试断言</h5>
+<ul>
+<li>
+<p>点击 GetDemo 请求下的 Assert 按钮，进入测试断言编辑页面</p>
+</li>
+<li>
+<p>输入断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png" alt=" "/></p>
+</li>
+<li>
+<p>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png" alt=" "/></p>
+</li>
+</ul>
+<h5 id="使用-javascript-编写测试断言">使用 JavaScript 编写测试断言</h5>
+<ul>
+<li>点击 GetDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面</li>
+<li>输入脚本代码，断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png" alt=" "/></p>
+<ul>
+<li>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png" alt=" "/></li>
+</ul>
+<h4 id="新建-post-请求测试用例">新建 Post 请求测试用例</h4>
+<ul>
+<li>
+<p>点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 POST 请求</p>
+</li>
+<li>
+<p>输入请求名称为 PostDemo，输入请求地址为 <a href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a>
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png" alt=" "/></p>
+</li>
+<li>
+<p>点击新建的 PostDemo 请求下的 Body 按钮，进入请求体编辑页面</p>
+</li>
+<li>
+<p>选择 Body 类型为 JSON，输入请求体内容为</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">&quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">&quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">&quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png" alt=" "/></p>
+<h4 id="给-post-请求添加测试断言">给 Post 请求添加测试断言</h4>
+<h5 id="使用-bruno-自带的-assert-编写-post-请求测试断言">使用 Bruno 自带的 Assert 编写 Post 请求测试断言</h5>
+<ul>
+<li>
+<p>点击 PostDemo 请求下的 Assert 按钮，进入测试断言编辑页面</p>
+</li>
+<li>
+<p>输入断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png" alt=" "/></p>
+</li>
+<li>
+<p>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png" alt=" "/></p>
+</li>
+</ul>
+<h5 id="使用-javascript-编写-post-请求测试断言">使用 JavaScript 编写 Post 请求测试断言</h5>
+<ul>
+<li>点击 PostDemo 请求下的 Tests 按钮，进入测试断言脚本编辑页面</li>
+<li>输入脚本代码，断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;foo&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png" alt=" "/></li>
+</ul>
+<h4 id="本地运行两个测试用例">本地运行两个测试用例</h4>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Run 按钮，运行所有测试用例</li>
+<li>确认运行结果是否符合预期</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png" alt=" "/></p>
+<p>至此，两个接口的测试用例和断言已经编写完成</p>
+<h4 id="环境变量配置">环境变量配置</h4>
+<p>通过查看上面两个测试用例的运行结果，我们发现两个测试用例的请求地址都是 <code>https://jsonplaceholder.typicode.com</code>，如果我们需要在不同的测试环境中运行这两个测试用例，那么我们需要修改两个测试用例的请求地址，这样的话，如果测试用例很多，那么修改起来就很麻烦。Bruno 提供了环境变量的功能，我们可以将测试用例中的请求地址配置为环境变量，这样的话，我们只需要在不同的测试环境中配置不同的环境变量，就可以实现在不同的测试环境中运行测试用例。</p>
+<h5 id="新建环境变量配置文件">新建环境变量配置文件</h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Environments 按钮，进入环境变量配置页面</li>
+<li>点击右上角的 ADD ENVIRONMENT 按钮，新建一个环境变量配置文件，输入名称为 dev，点击右上角的 SAVE 按钮保存配置文件</li>
+<li>点击新建的 dev 环境变量配置文件，进入环境变量配置页面</li>
+<li>点击右上角的 ADD VARIABLE 按钮，新建一个环境变量，输入名称为 host，输入值为 <code>https://jsonplaceholder.typicode.com</code>，点击右上角的 SAVE 按钮保存环境变量</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png" alt=" "/></p>
+<h5 id="在测试用例中使用环境变量">在测试用例中使用环境变量</h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 GetDemo 请求，进入 GetDemo 请求编辑页面</li>
+<li>将 GetDemo 请求的请求地址修改为 <code>&amp;#123;&amp;#123;host&amp;#125;&amp;#125;/posts/1</code>，点击右上角的 SAVE 按钮保存 GetDemo 请求</li>
+<li>点击 Testcase 的 COLLECTION 下的 PostDemo 请求，进入 PostDemo 请求编辑页面</li>
+<li>将 PostDemo 请求的请求地址修改为 <code>&amp;#123;&amp;#123;host&amp;#125;&amp;#125;/posts</code>，点击右上角的 SAVE 按钮保存 PostDemo 请求</li>
+</ul>
+<h5 id="调试环境变量">调试环境变量</h5>
+<ul>
+<li>点击 Testcase 的 COLLECTION 下的 Environments 按钮，选择 dev 环境变量</li>
+<li>点击右上角的 RUN 按钮，运行所有测试用例，确认运行结果是否符合预期</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png" alt=" "/></p>
+<p>至此，环境变量配置和调试已经完成</p>
+<h4 id="命令行运行测试用例">命令行运行测试用例</h4>
+<h5 id="前置检查">前置检查</h5>
+<p>刚才我们已经测试用例的存储目录设置为了之前创建的项目文件夹，所以我们需要在项目文件夹下检查用例文件和环境变量配置文件是否已经创建成功。</p>
+<p>目前我们的项目文件夹目录结构如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>Bruno-demo</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>├── package-lock.json</span></span>
+<span class="line"><span>├── Testcase // 测试用例文件夹</span></span>
+<span class="line"><span>│   └── APITestDemo1.bru // 测试用例文件 1</span></span>
+<span class="line"><span>│   └── APITestDemo2.bru // 测试用例文件 2</span></span>
+<span class="line"><span>│   └── bruno.json // bruno COLLECTION 配置文件</span></span>
+<span class="line"><span>│   └── environments // 不同测试环境文件夹</span></span>
+<span class="line"><span>│       └── dev.bru // 测试环境配置文件</span></span>
+<span class="line"><span>└── node_modules // 项目依赖</span></span></code></pre>
+<h5 id="命令行调试运行测试用例">命令行调试运行测试用例</h5>
+<ul>
+<li>
+<p>在项目文件下的 Testcase 文件夹，运行命令行命令 <code>bru run --env dev</code>，运行所有测试用例</p>
+</li>
+<li>
+<p>确认运行结果是否符合预期</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png" alt=" "/></p>
+<h4 id="输出-json-格式报告">输出 json 格式报告</h4>
+<ul>
+<li>
+<p>在项目文件下的 Testcase 文件夹下新建 Report 文件夹，用于存放测试报告文件</p>
+</li>
+<li>
+<p>在项目文件下的 Testcase 文件夹，运行命令行命令 <code>bru run --env dev --output Report/results.json</code>，运行所有测试用例</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png" alt=" "/></p>
+<ul>
+<li>确认测试报告文件正常输出
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png" alt=" "/></li>
+</ul>
+<p>至此，Bruno 接口自动化测试项目的搭建已经完成。</p>
+<h4 id="集成到-cicd-流程">集成到 CI/CD 流程</h4>
+<p>Bruno 程序的安装和基本使用请参考：<a href="https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter/blob/main/README_ZH.md#%E6%8E%A5%E5%85%A5-ci">postman 替换工具 bruno 使用介绍#接入 CI</a></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>Bruno 官方文档 <a href="https://docs.usebruno.com/">https://docs.usebruno.com/</a></li>
+<li>postman 替换工具 bruno 使用介绍 <a href="https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/">https://naodeng.com.cn/zh/posts/api-automation-testing/introduction_of_bruno/</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

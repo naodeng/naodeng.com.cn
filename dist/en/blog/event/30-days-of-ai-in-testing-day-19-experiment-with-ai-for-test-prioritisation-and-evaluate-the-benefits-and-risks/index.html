@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks - Nao's Blog"><meta property="og:site_name" content="30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks-cover.OdcPcTLn_Z23mUNN.webp" alt="30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 Days of AI in Testing Challenge: Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks</h1> <time datetime="2024-03-21T14:22:44.000Z" data-astro-cid-v3cnrnum> 3/21/2024 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks">Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks</h2>
+<p>Day 19 already! I hope you can all appreciate how much we have covered already - well done!</p>
+<p>Today we want to turn our attention to whether AI can help us make decisions about test selection and prioritisation and evaluate some of the risks and benefits of this as an approach.</p>
+<p>Using data to make decisions about what to test and how much has been around for a long time (most testers are familiar with the idea of <strong>Risk Based Testing</strong>) and it’s natural to think about automating these decisions to accelerate. The technical evolution for this process it to delegate to an AI model that learns from data in your context about the testing performed and the observable impact of the testing.</p>
+<p><strong>The critical question is…Should we?</strong></p>
+<h3 id="task-steps">Task Steps</h3>
+<p>You have two options for today’s task (you can do both if you want):</p>
+<ul>
+<li>
+<p><strong>Option 1</strong> - If your company already uses an AI powered tool for test prioritisation and selection, then write a short case study and share it with the community by responding to this post. Consider sharing:</p>
+<ul>
+<li>The tool you are using</li>
+<li>How does the tool select/prioritise tests? Is this understandable to you?</li>
+<li>How does your team use the tool? For example, only for automated checks or only for Regression?</li>
+<li>Has the performance of the tool improved over time?</li>
+<li>What are the key benefits your team gains by using this tool?</li>
+<li>Have there been any notable instances where the tool was wrong?</li>
+</ul>
+</li>
+<li>
+<p><strong>Option 2</strong> - Consider and evaluate the idea of using AI to select and prioritise your testing.</p>
+<ul>
+<li>Find and read a short article that discusses the use of AI in test prioritisation and selection.
+<ul>
+<li>Tip: if you are short on time, why not ask your favourite chatbot or copilot to summarise the current approaches and benefits of using AI in test prioritisation and selection?</li>
+</ul>
+</li>
+<li>Consider how you or your team currently perform this task. Some thinking prompts are:
+<ul>
+<li>To what extent do you need to select/prioritise tests in your context?</li>
+<li>What factors do you use when selecting/prioritising tests? Are they qualitative or quantitative?</li>
+<li>How do you make decisions when there is a lack of data?</li>
+<li>What is the implication if you get this wrong?</li>
+</ul>
+</li>
+<li>In your context, would delegating this task to an AI be valuable? If so, how would your team benefit?</li>
+<li>What are the risks of delegating test prioritisation and selection to an AI model? Some thinking prompts are:
+<ul>
+<li>How might test prioritisation and selection fail, and what would the impact be?</li>
+<li>Do you need to understand and explain the decision made by the AI?</li>
+<li>“How did test/qa miss this?” is an unjust but common complaint - how does this change if an AI is making the decisions about what to test?</li>
+<li>How could you mitigate these?</li>
+<li>If we mitigate risks using a Human in the loop, how does this impact the benefits of using AI?</li>
+</ul>
+</li>
+<li>How could you fairly evaluate the performance of an AI tool in this task?</li>
+<li>Share your key insights by replying to this post. Consider sharing:
+<ul>
+<li>A brief overview of your context (e.g. what industry you work in or the type of applications you test).</li>
+<li>Share your key insights about the benefits and risks of adopting AI for test prioritisation and selection.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-take-part">Why Take Part</h3>
+<ul>
+<li><strong>Understanding where AI can help</strong>: There is excitement/hype about using AI to improve and accelerate testing. For teams managing large numbers tests, complex systems or time-consuming tests being more data driven about selecting and prioritising tests might provide real benefits. By taking part in today’s task, you are critically evaluating whether it works for your context, you learn about specific risks of delegating responsibility to AI and are better prepared to make a considered decision about AI based Testing Selection and Prioritisaiton.</li>
+</ul>
+<h3 id="task-link">Task Link</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/75216">https://club.ministryoftesting.com/t/day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/75216</a></p>
+<h2 id="my-day-19-task">My Day 19 Task</h2>
+<p>Based on my current work status, for Day 19’s task, I chose <strong>Option 2</strong></p>
+<h3 id="regarding-reading-an-article-discussing-the-use-of-ai-in-test-prioritization-and-selection">Regarding <strong>Reading an Article Discussing the Use of AI in Test Prioritization and Selection</strong></h3>
+<p>The article I read is <a href="https://www.linkedin.com/pulse/ai-driven-test-prioritization-amit-khullaar">AI-Driven Test Prioritization</a></p>
+<p>The main content of the article is as follows:</p>
+<p>AI-driven test prioritization enhances efficiency and reduces costs in software testing.</p>
+<ul>
+<li>📄 Understanding Test Prioritization: Determining test case execution order for maximum coverage and defect detection.</li>
+<li>⭐️ Significance of AI-Driven Test Prioritization: Enhanced efficiency, faster feedback, optimal resource utilization, improved test coverage, and reduced costs.</li>
+<li>🔨 Implementing AI-Driven Test Prioritization: Data collection, feature selection, machine learning model, prediction, and integration with testing tools.</li>
+<li>🏢 Real-Life Examples and Implementations: Google and Microsoft successfully use AI-driven test prioritization.</li>
+</ul>
+<p>AI-driven test prioritization revolutionizes software testing by utilizing machine learning to rank test cases based on their likelihood to fail, enhancing efficiency and coverage while optimizing resources. This method relies on analyzing vast data, including historical test results and code changes. Implementations by giants like Google and Microsoft illustrate its value in reducing testing times and accelerating development. By integrating AI prioritization with testing tools, organizations can significantly improve their software quality and reduce costs, underscoring the transformative impact of AI in software development.</p>
+<h3 id="regarding-summarizing-the-methods-and-benefits-of-using-ai-tools-in-test-prioritization-and-selection">Regarding <strong>Summarizing the Methods and Benefits of Using AI Tools in Test Prioritization and Selection</strong></h3>
+<p>I chose ChatGPT-4, and its response was:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>AI in test prioritisation and selection, particularly within the context of software development and quality assurance, is a rapidly evolving area that leverages machine learning (ML), natural language processing (NLP), and other AI methodologies to enhance the efficiency and effectiveness of testing processes. Here&#39;s a summary of the current approaches and benefits:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>### Approaches</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. **Machine Learning Models**: AI systems are trained on historical data, including past test results, code changes, and defect rates, to predict which tests are most likely to detect faults in new or modified code. Techniques such as regression, classification, and even deep learning models are employed.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. **Natural Language Processing (NLP)**: Used to analyze requirements and change logs to identify relevant tests. This approach helps in understanding the context and semantics of changes, thereby selecting tests that are more likely to be affected by those changes.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. **Test Case Embeddings**: Similar to word embeddings in NLP, test cases are represented in a high-dimensional space, where their similarities to code changes or features can be measured. This helps in identifying which tests are most relevant to the current changes.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. **Prioritization Algorithms**: These algorithms rank tests based on various factors, such as historical failure rates, test execution time, code coverage, and impact of recent code changes. The aim is to run the most critical tests early in the cycle.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. **Feedback Loops**: Incorporating continuous feedback from test outcomes to refine and adjust the models and algorithms used for test selection and prioritization, ensuring they become more accurate over time.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>### Benefits</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. **Reduced Test Times**: By prioritizing and selecting the most relevant tests, AI can significantly reduce the overall time required for testing, enabling faster release cycles.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. **Improved Test Coverage**: AI techniques can uncover gaps in test coverage by analyzing code paths and identifying untested or under-tested areas, leading to better software quality.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. **Cost Efficiency**: Reducing the amount of testing without compromising on quality leads to lower computing resources usage and human effort, thereby cutting costs.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. **Early Defect Detection**: Prioritizing tests that are more likely to fail can lead to early detection of defects, which is generally less costly to fix and leads to more stable releases.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. **Adaptability**: AI models can adapt to changes in the software and testing environments, ensuring that the test prioritization and selection processes remain efficient over time.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>6. **Risk Management**: By focusing on high-risk areas based on code changes and historical defect data, AI helps in better managing the risks associated with software releases.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>These AI-driven approaches represent a significant shift from manual and static methods to dynamic, efficient, and intelligent test management strategies, aiming at improving software quality, reducing costs, and accelerating development cycles.</span></span></code></pre>
+<h3 id="regarding-reflecting-on-how-you-or-your-team-currently-execute-this-task">Regarding <strong>Reflecting on How You or Your Team Currently Execute This Task</strong></h3>
+<h4 id="background-and-available-information-of-my-current-project">Background and Available Information of My Current Project</h4>
+<ul>
+<li>The current project has tight delivery timelines, with significant pressure on task delivery and a risk of scope creep.</li>
+<li>Existing project SOPs require compatibility with different browsers, resolutions, and devices.</li>
+<li>The project is an e-commerce online shopping website, primarily for the web platform.</li>
+</ul>
+<h4 id="the-necessity-of-test-priority-sorting">The Necessity of Test Priority Sorting</h4>
+<p>It is necessary. From the beginning of the project, based on the background and SOP, an initial testing strategy was developed. It included test priorities: business functionality testing first, followed by compatibility testing, then performance and network testing, and finally usability and ease-of-use testing.</p>
+<h4 id="factors-relied-upon-for-choosingprioritizing-tests">Factors Relied Upon for Choosing/Prioritizing Tests</h4>
+<p>Mostly quantitative, with some qualitative aspects</p>
+<ul>
+<li>Project team background</li>
+<li>Project delivery pressure</li>
+<li>Project SOPs</li>
+<li>Team personnel configuration, more about the ratio of developers to testers</li>
+<li>Results of negotiations and communications with the team</li>
+</ul>
+<h4 id="decision-making-in-the-absence-of-data">Decision-Making in the Absence of Data</h4>
+<p>Refer to useful information from past projects, negotiate and confirm with the team, and then make a decision.</p>
+<blockquote>
+<p>Here, I must mention that the testing strategy and priorities are always iterative and updated, not set in stone. They can be adjusted based on the project situation and more information obtained.</p>
+</blockquote>
+<h3 id="regarding-the-value-of-test-priority-selection-to-ai-models">Regarding <strong>The Value of Test Priority Selection to AI Models</strong></h3>
+<p>There would definitely be value. AI could provide more reasonable and lower-risk outcomes based on known qualitative and quantitative historical data within the model.</p>
+<h3 id="regarding-the-risks-of-test-priority-selection-to-ai-models">Regarding <strong>The Risks of Test Priority Selection to AI Models</strong></h3>
+<p>Risks are inevitable, mainly because of my concerns about data privacy and security with AI model tools. I would not transmit 100% of the project’s context and known information to AI. Therefore, the results generated by AI without full information might significantly differ from the team’s expectations. If the project is executed based on the outcomes provided by the AI model, it might not be possible to complete the project’s delivery on time.</p>
+<h2 id="about-event">About Event</h2>
+<p>The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.</p>
+<p>Community Website: <a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>Event Link: <a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">Day 1: Introduce yourself and your interest in AI</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">Day 2: Read an introductory article on AI in testing and share it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">Day 3: List ways in which AI is used in testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">Day 5:Identify a case study on AI in testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">Day 6:Explore and share insights on AI testing tools</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">Day 7: Research and share prompt engineering techniques</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">Day 8: Craft a detailed prompt to support test activities</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">Day 9: Evaluate prompt quality and try to improve it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">Day 10: Critically Analyse AI-Generated Tests</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">Day 11: Generate test data using AI and evaluate its efficacy</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">Day 13: Develop a testing approach and become an AI in testing champion</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">Day 14: Generate AI test code and share your experience</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">Day 15: Gauge your short-term AI in testing plans</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">Day 17: Automate bug reporting with AI and share your process and evaluation</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/">Day 18: Share your greatest frustration with AI in Testing</a></li>
+</ul>
+<h2 id="recommended-readings">Recommended Readings</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/series/api-automation-testing-tutorial/">API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/">Bruno API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/gatling-performance-testing-tutorial/">Gatling Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/k6-performance-testing-tutorial/">K6 Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/">Postman API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/">Pytest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/">REST Assured API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/">SuperTest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/">30 Days of AI in Testing Challenge</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

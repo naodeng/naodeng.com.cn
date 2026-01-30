@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely-cover.BzKPJEvN_Z1qEo86.webp" alt="UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的通用最佳实践（一）：等待，不要休眠和明智地为测试文件命名</h1> <time datetime="2024-01-18T09:05:44.000Z" data-astro-cid-v3cnrnum> 2024/1/18 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="等待不要休眠">等待，不要休眠</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>在测试 UI 时，您需要定义应用程序必须经过的关键点。到达这些关键点是一个异步过程，因为几乎 100% 的情况下，UI 不会同步更新。</p>
+<p>这些关键点称为<strong>确定性事件</strong>，即您知道必须发生的事件。</p>
+<p>具体取决于您定义的事件以及 UI 达到这些事件的方式，但通常会存在一些“长时间”等待，例如 XHR 请求，以及一些更快的等待，例如重新渲染更新。</p>
+<p>解决异步更新的方法似乎很简单：<strong>休眠/暂停测试</strong>一段时间，几毫秒、几分之一秒，甚至几秒钟。这可以使测试正常工作，因为它给应用程序足够的时间来更新自身并移动到下一个要测试的确定性事件。</p>
+<p>请注意，除了特定和已知的等待（例如使用 <code>setInterval</code> 或 <code>setTimeout</code> 时），<strong>完全无法预测</strong>休眠时间应该是多久，因为它可能取决于：</p>
+<ul>
+<li>网络状态（对于 XHR 请求）</li>
+<li>可用机器资源的总量（CPU、RAM 等）
+<ul>
+<li>例如，CI 流水线可能会对其进行限制</li>
+<li>在本地机器上，其他应用程序也可能会消耗这些资源</li>
+</ul>
+</li>
+<li>其他资源消耗更新的并发情况（canvas 等）</li>
+<li>一系列不可预测的因素，如 Service Workers、缓存管理等，可能加快或减缓 UI 更新过程</li>
+</ul>
+<p>每个固定的延迟都会使测试变得更加脆弱，并<strong>增加其持续时间</strong>。您需要在虚假负面和夸张的测试持续时间之间找到平衡。</p>
+<p>等待可分为四个主要类别：</p>
+<ul>
+<li><strong><a href="#%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E7%AD%89%E5%BE%85">页面加载等待</a></strong>：测试应用程序时需要处理的第一个等待，等待一个允许您了解页面是否可交互的事件</li>
+<li><strong><a href="#%E5%86%85%E5%AE%B9%E7%AD%89%E5%BE%85">内容等待</a></strong>：等待匹配选择器的 DOM 元素</li>
+<li><strong><a href="#xhr-%E8%AF%B7%E6%B1%82%E7%AD%89%E5%BE%85">XHR 请求等待</a></strong>：等待 XHR 请求开始或相应接收到</li>
+</ul>
+<p>以下所有示例都基于 Cypress。</p>
+<h3 id="页面加载等待">页面加载等待</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Cypress code</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">visit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;http://localhost:3000&#39;</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="内容等待">内容等待</h3>
+<p>请看以下示例，了解如何在可用工具中实现等待 DOM 元素。</p>
+<h4 id="内容等待代码示例">内容等待代码示例</h4>
+<ul>
+<li>等待元素</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Cypress code</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// it waits up to 4 seconds by default</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;#form-feedback&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#6A737D">// the timeout can be customized</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;#form-feedback&#39;</span><span style="color:#E1E4E8">, { timeout: </span><span style="color:#79B8FF">5000</span><span style="color:#E1E4E8"> })</span></span></code></pre>
+<ul>
+<li>等待具有特定内容的元素</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Cypress code</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;#form-feedback&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Success&#39;</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="xhr-请求等待">XHR-请求等待</h3>
+<h4 id="xhr-请求等待代码示例">XHR-请求等待代码示例</h4>
+<ul>
+<li>等待 XHR 请求/响应</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Cypress code</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">intercept</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;http://dummy.restapiexample.com/api/v1/employees&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;employees&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">wait</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;@employees&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">its</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;response.body&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">body</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    /* ... */</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span></code></pre>
+<p><em>由 <a href="https://github.com/NoriSte">NoriSte</a> 在 <a href="https://dev.to/noriste/await-do-not-make-your-e2e-tests-sleep-4g1o">dev.to</a> 和 <a href="https://medium.com/@NoriSte/react-hooks-memorandum-bf1c2758a672">Medium</a>上进行联合发表.</em></p>
+<h2 id="明智地为测试文件命名">明智地为测试文件命名</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/name-test-files-wisely.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/name-test-files-wisely.md</a></p>
+<h3 id="一段简要说明-1">一段简要说明</h3>
+<p>编写各种不同的 UI 测试是一种好习惯，而采用一种常见的测试文件命名方式更是有益的。</p>
+<p>这很有用，因为通常情况下，你需要仅运行某一类测试，可能的情况包括：</p>
+<ul>
+<li>在开发过程中，你只需要运行其中一些测试
+<ul>
+<li>你正在更改一些相关组件，并需要检查生成的标记是否发生了变化</li>
+<li>你正在更改全局 CSS 规则，只需运行视觉测试</li>
+<li>你正在更改应用程序流程，需要运行整个应用程序集成测试</li>
+</ul>
+</li>
+<li>你的 DevOps 同事需要确保一切正常运行，最简单的方法就是只运行端对端测试</li>
+<li>你的构建流水线需要运行集成测试和端对端测试</li>
+<li>你的监控流水线需要一个脚本来运行端对端测试和监控测试</li>
+</ul>
+<p>如果你为测试取一个明智的命名，将会非常容易只运行其中的某些类型。</p>
+<p>Cypress:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cypress</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --spec</span><span style="color:#79B8FF"> \&quot;</span><span style="color:#9ECBFF">cypress/integration/</span><span style="color:#79B8FF">**</span><span style="color:#9ECBFF">/</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.e2e.</span><span style="color:#79B8FF">*</span><span style="color:#79B8FF">\&quot;</span></span></code></pre>
+<p>Jest:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">jest</span><span style="color:#79B8FF"> --testPathPattern=e2e\\.</span><span style="color:#F97583">*</span><span style="color:#79B8FF">$</span></span></code></pre>
+<br/>
+<p>没有一种全局的命名测试文件的方式，一个建议是使用以下方式命名：</p>
+<ul>
+<li>正在测试的主题</li>
+<li>测试的类型（<code>integration</code>、<code>e2e</code>、<code>monitoring</code>、<code>component</code>等）</li>
+<li>选择的测试后缀（<code>test</code>、<code>spec</code>等）</li>
+<li>文件扩展名（<code>.js</code>、<code>.ts</code>、<code>.jsx</code>、<code>.tsx</code>等）</li>
+</ul>
+<p>它们之间用句点分隔。</p>
+<p>以下是一些例子：</p>
+<ul>
+<li><code>authentication.e2e.test.ts</code></li>
+<li><code>authentication.integration.test.ts</code></li>
+<li><code>site.monitoring.test.js</code></li>
+<li><code>login.component.test.tsx</code>
+等等。</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

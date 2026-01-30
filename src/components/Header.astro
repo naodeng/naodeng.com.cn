@@ -1,0 +1,134 @@
+---
+import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { SITE_TITLE, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE } from "@/consts";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+const locale = Astro.currentLocale as Lang;
+
+const isActive = (path: string) =>
+  getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
+---
+
+<header class="l-header">
+  <h1 dir="ltr">
+    <a href={getRelativeLocaleUrl(locale, "/")}>{t(SITE_TITLE)}</a>
+  </h1>
+
+  <LocaleSelect />
+
+  <nav class="l-content">
+    <ul>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/")}
+          class={isActive("/") ? "active" : null}
+        >
+          {t(NAV_HOME)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/blog")}
+          class={isActive("/blog") ? "active" : null}
+        >
+          {t({ en: "Blog", "zh-cn": "博客" })}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/archive")}
+          class={isActive("/archive") ? "active" : null}
+        >
+          {t(NAV_ARCHIVE)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/projects")}
+          class={isActive("/projects") ? "active" : null}
+        >
+          {t(NAV_PROJECTS)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={isActive("/about") ? "active" : null}
+        >
+          {t(NAV_ABOUT)}
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank">
+          GitHub
+          <span class="material-icons-sharp dir">open_in_new</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  * {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  header {
+    display: grid;
+    place-items: center;
+    gap: var(--sp-s);
+  }
+  h1 {
+    margin-block-start: var(--sp-l);
+    font-size: 40px;
+    font-family: var(--english-font);
+    font-weight: 900;
+  }
+  @media (width < 480px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  h1 a {
+    display: flex;
+    align-items: center;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-m);
+  }
+  ul {
+    display: flex;
+    gap: var(--sp-s);
+    margin-block-start: var(--sp-s);
+  }
+  a {
+    font-size: 1.05rem;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding-block: 0.2em;
+    padding-inline: 0.4em;
+    border-radius: 4px;
+  }
+  a:hover,
+  a:active {
+    background-color: color-mix(
+      in srgb,
+      var(--color-theme) 5%,
+      transparent
+    );
+  }
+  a.active {
+    pointer-events: none;
+    color: var(--color-theme);
+  }
+  .material-icons-sharp {
+    opacity: 0.6;
+    margin-inline-start: -0.2em;
+    font-size: 0.9em;
+  }
+</style>

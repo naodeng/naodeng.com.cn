@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment - Nao's Blog"><meta property="og:site_name" content="SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/supertest-tutorial-getting-started-and-own-environment-preparation-cover.DClBQm2U_2kckFY.webp" alt="SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>SuperTest API Automation Testing Tutorial: Getting Started and Setting Up Your Environment</h1> <time datetime="2023-11-05T02:36:26.000Z" data-astro-cid-v3cnrnum> 11/5/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Supertest</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="introduction">Introduction</h2>
+<p>This project is a quick start tutorial for API automation testing using SuperTest, and will use Jest or Mocha as the testing framework for demo demonstration.</p>
+<p>We will introduce SuperTest, Jest and Mocha in turn, so that you can understand the basic usage of these tools in advance.</p>
+<h3 id="introduction-of-supertest">Introduction of SuperTest</h3>
+<p>“Supertest” is a popular JavaScript library for testing Node.js applications. It is primarily used for end-to-end testing, also known as integration testing, to make sure that your application works properly across different components.Supertest is typically used in conjunction with testing frameworks such as Mocha, Jasmine or Jest to write and run test cases.</p>
+<p>Here are some of the key features and uses of Supertest:</p>
+<ul>
+<li>Initiating HTTP requests: Supertest allows you to easily simulate HTTP requests such as GET, POST, PUT, DELETE, etc. to test your application’s routing and endpoints.</li>
+<li>Chained Syntax: Supertest provides a chained syntax that allows you to build and execute multiple requests in a single test case, which helps simulate different user actions in your application.</li>
+<li>Assertions and Expectations: You can use Supertest in conjunction with assertion libraries such as Chai to examine the content of the response, status codes, headers, etc. to ensure the expected behavior of your application.</li>
+<li>Authentication Testing: Supertest can be used to test endpoints that require authentication to ensure that user login and authorization functions properly.</li>
+<li>Asynchronous support: Supertest can handle asynchronous operations, such as waiting for a response to return before executing further test code.</li>
+<li>Easy Integration: Supertest can be easily used with different Node.js frameworks (e.g. Express, Koa, Hapi, etc.), so you can test all types of applications.</li>
+</ul>
+<p>Using Supertest can help you verify that your application is working as expected, as well as quickly catch potential problems when changes are made to your application. Typically, you need to install Supertest and the testing framework in your project, and then write test cases to simulate different requests and check responses. This helps improve code quality and maintainability and ensures that your application remains stable as it evolves.</p>
+<p>Official documentation: <a href="https://github.com/ladjs/supertest">https://github.com/ladjs/supertest</a></p>
+<blockquote>
+<p>Note: Supertest can be used not only for API testing, but also for unit and integration testing.</p>
+</blockquote>
+<p>code examples:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// import supertest</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> request</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;supertest&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">request</span><span style="color:#E1E4E8">({URL}) </span><span style="color:#6A737D">// request(url) or request(app)</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">() or .</span><span style="color:#B392F0">put</span><span style="color:#E1E4E8">() or.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// http methods</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// http options</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// http body</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// http assertions</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// end the request</span></span></code></pre>
+<h3 id="introduction-of-jest">Introduction of Jest</h3>
+<p>Jest is a popular JavaScript testing framework for writing and running unit, integration and end-to-end tests for JavaScript applications. Its goal is to provide simple, fast and easy-to-use testing tools for a wide variety of JavaScript applications, both front-end and back-end.</p>
+<p>Here are some of the key features and uses of Jest:</p>
+<ul>
+<li>Built-in Assertion Library: Jest includes a powerful assertion library that makes it easy to write assertions to verify that code behaves as expected.</li>
+<li>Automated mocks: Jest automatically creates mocks that help you simulate functions, modules, and external dependencies, making testing easier and more manageable.</li>
+<li>Fast and Parallel: Jest saves time by intelligently selecting which tests to run and executing them in parallel, allowing you to run a large number of test cases quickly.</li>
+<li>Comprehensive Test Suite: Jest supports unit, integration and end-to-end testing and can test a wide range of application types such as JavaScript, TypeScript, React, Vue, Node.js and more.</li>
+<li>Snapshot testing: Jest has a snapshot testing feature that can be used to capture UI changes by checking if the rendering of a UI component matches a previous snapshot.</li>
+<li>Automatic Watch Mode: Jest has a watch mode that automatically re-runs tests as code changes are made, supporting developers in continuous testing.</li>
+<li>Rich Ecosystem: Jest has a rich set of plug-ins and extensions that can be used to extend its functionality, such as coverage reporting, test reporting, and integration with other tools.</li>
+<li>Community Support: Jest is a popular testing framework with a large community that provides extensive documentation, tutorials and support resources.</li>
+</ul>
+<p>Jest is often used in conjunction with other tools such as Babel (for transcoding JavaScript), Enzyme (for React component testing), Supertest (for API testing), etc. to achieve comprehensive test coverage and ensure code quality. Whether you’re writing front-end or back-end code, Jest is a powerful testing tool that can help you catch potential problems and improve code quality and maintainability.</p>
+<p>Official Documentation: <a href="https://jestjs.io/docs/zh-Hans/getting-started">https://jestjs.io/docs/zh-Hans/getting-started</a></p>
+<p>Code examples:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// import jest</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jest</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;jest&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// test scenarios</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// detailed test case, it() is in the describe()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">before</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// this action is before all test cases</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">after</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// this action is after all test cases</span></span></code></pre>
+<h3 id="introduction-of-mocha">Introduction of Mocha</h3>
+<p>Mocha is a popular JavaScript testing framework for writing and running a variety of tests for JavaScript applications, including unit tests, integration tests, and end-to-end tests.Mocha provides flexibility and extensibility, allowing developers to easily customize the test suite to meet the needs of their projects.</p>
+<p>Here are some of the key features and uses of Mocha:</p>
+<ul>
+<li>Multiple Test Styles: Mocha supports multiple test styles including BDD (Behavior Driven Development) and TDD (Test Driven Development). This allows developers to write test cases according to their preferences.</li>
+<li>Rich Assertion Library: Mocha does not include an assertion library by itself, but it can be used in conjunction with a variety of assertion libraries (e.g., Chai, Should.js, Expect.js, etc.), allowing you to write tests using your favorite assertion style.</li>
+<li>Asynchronous Testing: Mocha has built-in support for asynchronous testing, allowing you to test asynchronous code, Promises, callback functions, etc. to ensure that your code is correct in asynchronous scenarios.</li>
+<li>Parallel Testing: Mocha allows you to run test cases in your test suite in parallel, improving the efficiency of test execution.</li>
+<li>Rich Plug-ins and Extensions: Mocha has a rich ecosystem of plug-ins that can be used to extend its functionality, such as test coverage reporting, test report generation, and so on.</li>
+<li>Easy to Integrate: Mocha can be used with various assertion libraries, test runners (such as Karma and Jest), browsers (using the browser test runner), etc. to suit different project and testing needs.</li>
+<li>Command Line API: Mocha provides an easy-to-use command line API for running test suites, generating reports, and other test-related operations.</li>
+<li>Continuous Integration Support: Mocha can be easily integrated into Continuous Integration (CI) tools such as Jenkins, Travis CI, CircleCI, etc. to ensure that code is tested after every commit.</li>
+</ul>
+<p>Mocha’s flexibility and extensibility make it a popular testing framework for a variety of JavaScript projects, including front-end and back-end applications. Developers can choose the testing tools, assertion libraries, and other extensions to meet the requirements of their projects based on their needs and preferences. Whether you are writing browser-side code or server-side code, Mocha is a powerful testing tool to help you ensure code quality and reliability.</p>
+<p>Official documentation: <a href="https://mochajs.org/">https://mochajs.org/</a></p>
+<p>Code examples:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// import mocha</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> mocha</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;mocha&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// test scenarios</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// detailed test case, it() is in the describe()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">before</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// this action is before all test cases</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">after</span><span style="color:#E1E4E8">(): </span><span style="color:#6A737D">// this action is after all test cases</span></span></code></pre>
+<h3 id="introduction-of-chai">Introduction of CHAI</h3>
+<p>Chai is a JavaScript assertion library for assertion and expectation validation when writing and running test cases. It is a popular testing tool that is often used in conjunction with testing frameworks (e.g. Mocha, Jest, etc.) to help developers write and execute various types of tests, including unit tests and integration tests.</p>
+<p>Here are some of the key features and uses of Chai:</p>
+<ul>
+<li>Readable Assertion Syntax: Chai provides an easy to read and write assertion syntax that makes test cases easier to understand. It supports natural language assertion styles such as expect(foo).to.be.a(‘string’) or expect(bar).to.equal(42).</li>
+<li>Multiple Assertion Styles: Chai provides a number of different assertion styles to suit different developer preferences. The main styles include BDD (Behavior-Driven Development) style, TDD (Test-Driven Development) style and assert style.</li>
+<li>Plugin extensions: Chai can be extended with plugins to support more assertion types and features. This allows Chai to fulfill a variety of testing needs, including asynchronous testing, HTTP request testing, and more.</li>
+<li>Easy Integration: Chai can be easily integrated with various testing frameworks such as Mocha, Jest, Jasmine etc. This makes it a powerful tool for writing test cases.</li>
+<li>Chained Assertions Support: Chai allows you to chain calls to multiple assertions to make complex testing and validation easier.</li>
+</ul>
+<p>Official documentation: <a href="https://www.chaijs.com/">https://www.chaijs.com/</a></p>
+<p>Code examples:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// import chai</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> expect</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chai.expect;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// demo assertions</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(&lt;</span><span style="color:#85E89D">actual</span><span style="color:#B392F0"> result</span><span style="color:#E1E4E8">&gt;).to.{assert}(&lt;</span><span style="color:#85E89D">expected</span><span style="color:#B392F0"> result</span><span style="color:#E1E4E8">&gt;) // Asserts that the target is strictly equal to value.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">.expect(‘hello&#39;).to.equal(&#39;hello&#39;); // Asserts that the target is strictly equal to value.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">.expect({ foo: </span><span style="color:#9ECBFF">&#39;bar&#39;</span><span style="color:#E1E4E8"> }).to.not.equal({ foo: </span><span style="color:#9ECBFF">&#39;bar&#39;</span><span style="color:#E1E4E8"> }); // Asserts that the target is not strictly equal to value.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">.expect(&#39;foobar&#39;).to.contain(&#39;foo&#39;); // Asserts that the target contains the given substring.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">.expect(foo).to.exist; // Asserts that the target is neither null nor undefined.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">.expect(5).to.be.at.most(5); // Asserts that the target is less than or equal to value.</span></span></code></pre>
+<h2 id="project-dependencies">Project dependencies</h2>
+<blockquote>
+<p>The following environments need to be installed in advance</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> nodejs, demo version v21.1.0</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>The following is the file structure of a SuperTest API Automation Test project, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>SuperTest-Jest-demo</span></span>
+<span class="line"><span>├── README.md</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>├── package-lock.json</span></span>
+<span class="line"><span>├── Config // Test configuration </span></span>
+<span class="line"><span>│   └── config.js</span></span>
+<span class="line"><span>├── Specs // Test case </span></span>
+<span class="line"><span>│   └── test.spec.js</span></span>
+<span class="line"><span>├── Utils // Test tool </span></span>
+<span class="line"><span>│   └── utils.js</span></span>
+<span class="line"><span>├── Report // Test report </span></span>
+<span class="line"><span>│   └── report.html</span></span>
+<span class="line"><span>├── .gitignore</span></span>
+<span class="line"><span>└── node_modules // Project dependencies</span></span>
+<span class="line"><span>    ├── ...</span></span>
+<span class="line"><span>    └── ...</span></span></code></pre>
+<h2 id="next">Next</h2>
+<p>In the next post, we will introduce how to build a SuperTest API automation test project from 0 to 1 using Supertest, so stay tuned.</p>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

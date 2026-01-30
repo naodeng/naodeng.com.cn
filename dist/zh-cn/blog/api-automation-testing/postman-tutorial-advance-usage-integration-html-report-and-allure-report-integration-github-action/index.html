@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告 - 软件测试同学"><meta property="og:site_name" content="Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action-cover.DvM836yS_OTXPV.webp" alt="Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告</h1> <time datetime="2023-11-22T09:37:00.000Z" data-astro-cid-v3cnrnum> 2023/11/22 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span><span class="tag" data-astro-cid-v3cnrnum>CI/CD</span><span class="tag" data-astro-cid-v3cnrnum>Allure</span> </div> </header> <h2 id="进阶用法">进阶用法</h2>
+<p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括测试数据、测试脚本、测试报告和测试报告集成等。
+也会介绍如何将 Postman 和 Newman 集成到 CI/CD 流程中，以实现自动化测试。</p>
+<h3 id="输出-html-测试报告">输出 html 测试报告</h3>
+<p>demo 会以集成<a href="https://github.com/DannyDainton/newman-reporter-htmlextra">newman-reporter-htmlextra</a>为例，介绍如何输出 html 测试报告。</p>
+<h4 id="安装-newman-reporter-htmlextra-依赖包">安装 newman-reporter-htmlextra 依赖包</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> newman-reporter-htmlextra</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<blockquote>
+<p>注意：目前 newman 最新 V6 版本在 html 测试报告的一些包兼容性上有问题，所以这里使用 5.1.2 版本</p>
+</blockquote>
+<h4 id="调整-packagejson">调整 package.json</h4>
+<p>在 package.json 文件中，更新测试测试脚本，用于运行测试用例并输出 html 测试报告：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;</span></span></code></pre>
+<blockquote>
+<p>指定输出 html 测试报告的路径为 Report/Postman-newman-demo-api-testing-report.html</p>
+</blockquote>
+<h4 id="运行测试用例输出-html-报告">运行测试用例输出 html 报告</h4>
+<ul>
+<li>运行测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0"> npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<ul>
+<li>检查报告文件</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211zs7xCl.png" alt="2023112211zs7xCl"/></p>
+<ul>
+<li>浏览器打开报告文件</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211IHIUzV.png" alt="2023112211IHIUzV"/></p>
+<h4 id="输出多种格式的测试报告">输出多种格式的测试报告</h4>
+<p>前面的配置是输出 html 格式的测试报告，如果想要输出多种格式的测试报告，如命令行 cli 的报告，可以在 package.json 文件中添加以下脚本：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;</span></span></code></pre>
+<p>再次运行测试用例，可以看到在 Report 文件夹下，除了 html 格式的测试报告，还有 cli 格式的测试报告。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/202311221109B7Fg.png" alt="202311221109B7Fg"/></p>
+<h3 id="cicd-持续集成">CI/CD 持续集成</h3>
+<p>将接口自动化测试的代码集成到 CI/CD 流程中，可以实现自动化测试，提高测试效率。</p>
+<h4 id="接入-github-action">接入 github action</h4>
+<p>以 github action 为例，其他 CI 工具类似</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">https://github.com/Automation-Test-Starter/Postman-Newman-demo</a></p>
+<p>创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。</p>
+<p>创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 postman.yml。</p>
+<p>编辑 postman.yml 文件：将以下内容复制到文件中</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>name: RUN Postman API Test CI</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span>  push:</span></span>
+<span class="line"><span>    branches: [ &quot;main&quot; ]</span></span>
+<span class="line"><span>  pull_request:</span></span>
+<span class="line"><span>    branches: [ &quot;main&quot; ]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  RUN-Postman-API-Test:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    runs-on: ubuntu-latest</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    strategy:</span></span>
+<span class="line"><span>      matrix:</span></span>
+<span class="line"><span>        node-version: [ 18.x]</span></span>
+<span class="line"><span>        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - uses: actions/checkout@v3</span></span>
+<span class="line"><span>      - name: Use Node.js ${{ matrix.node-version }}</span></span>
+<span class="line"><span>        uses: actions/setup-node@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          node-version: ${{ matrix.node-version }}</span></span>
+<span class="line"><span>          cache: &#39;npm&#39;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Installation of related packages</span></span>
+<span class="line"><span>        run: npm ci</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: RUN SuperTest API Testing</span></span>
+<span class="line"><span>        run: npm test</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Archive Postman test report</span></span>
+<span class="line"><span>        uses: actions/upload-artifact@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          name: Postman-test-report</span></span>
+<span class="line"><span>          path: Report</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Upload Postman report to GitHub</span></span>
+<span class="line"><span>        uses: actions/upload-artifact@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          name: Postman-test-report</span></span>
+<span class="line"><span>          path: Report</span></span></code></pre>
+<ul>
+<li>提交代码：将 postman.yml 文件添加到仓库中并提交。</li>
+<li>查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-Postman-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213AFVWZe.png" alt="2023112213AFVWZe"/></p>
+<h3 id="集成-allure-测试报告">集成 allure 测试报告</h3>
+<p>allure 是一个轻量级的、灵活的、多语言支持的测试报告工具，可以生成各种各样的测试报告，包括饼图、柱状图、曲线图等，可以方便地查看测试结果。</p>
+<h4 id="安装-allure-测试报告依赖">安装 allure 测试报告依赖</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> newman-reporter-allure</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+<h4 id="调整-packagejson-中输出-allure-测试报告的脚本">调整 package.json 中输出 allure 测试报告的脚本</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;</span></span></code></pre>
+<h4 id="调整-postman-测试用例">调整 Postman 测试用例</h4>
+<ul>
+<li>调整 get-demo 的 Tests 脚本，添加以下脚本，用于生成 allure 测试报告：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>// @allure.label.suite=postman-new-api-testing-demo</span></span>
+<span class="line"><span>// @allure.label.story=&quot;Verify-the-get-api-return-correct-data&quot;</span></span>
+<span class="line"><span>// @allure.label.owner=&quot;naodeng&quot;</span></span>
+<span class="line"><span>// @allure.label.tag=&quot;GETAPI&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;res.status should be 200&quot;, function () {</span></span>
+<span class="line"><span>  pm.response.to.have.status(200);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span>pm.test(&quot;res.body should be correct&quot;, function() {</span></span>
+<span class="line"><span>  var data = pm.response.json();</span></span>
+<span class="line"><span>  pm.expect(data.id).to.equal(1);</span></span>
+<span class="line"><span>  pm.expect(data.title).to.contains(&#39;provident&#39;);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<ul>
+<li>调整 post-demo 的 Tests 脚本，添加以下脚本，用于生成 allure 测试报告：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>// @allure.label.suite=postman-new-api-testing-demo</span></span>
+<span class="line"><span>// @allure.label.story=&quot;Verify-the-post-api-return-correct-data&quot;</span></span>
+<span class="line"><span>// @allure.label.owner=&quot;naodeng&quot;</span></span>
+<span class="line"><span>// @allure.label.tag=&quot;POSTAPI&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pm.test(&quot;res.status should be 201&quot;, function () {</span></span>
+<span class="line"><span>  pm.response.to.have.status(201);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span>pm.test(&quot;res.body should be correct&quot;, function() {</span></span>
+<span class="line"><span>  var data = pm.response.json();</span></span>
+<span class="line"><span>  pm.expect(data.id).to.equal(101);</span></span>
+<span class="line"><span>  pm.expect(data.title).to.equal(&#39;foo&#39;);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<ul>
+<li>保存更改后的 postman 测试用例，重新导出测试用例文件并替换原来的测试用例文件。</li>
+</ul>
+<h4 id="运行测试用例输出-allure-报告">运行测试用例输出 allure 报告</h4>
+<ul>
+<li>运行测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0"> npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<p>会在项目文件夹下生成 allure-results 文件夹，里面包含了测试用例的执行结果。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213YUMTwz.png" alt="2023112213YUMTwz"/></p>
+<ul>
+<li>预览 allure 测试报告</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">allure</span><span style="color:#9ECBFF"> serve</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112214Aa77VG.png" alt="2023112214Aa77VG"/></p>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman 官方文档</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">newman 官方文档</a></li>
+<li><a href="https://github.com/DannyDainton/newman-reporter-htmlextra">newman-reporter-htmlextra</a></li>
+<li><a href="https://www.npmjs.com/package/newman-reporter-allure">newman-reporter-allure</a></li>
+<li><a href="https://docs.github.com/cn/actions">github action 官方文档</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性 - 软件测试同学"><meta property="og:site_name" content="30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are-cover.DaL0xxch_Z2lpzrj.webp" alt="30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性</h1> <time datetime="2024-03-23T13:06:44.000Z" data-astro-cid-v3cnrnum> 2024/3/23 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="第-20-天探索-ai-自愈测试的有效性">第 20 天：探索 AI 自愈测试的有效性</h2>
+<p>挑战进入倒数第十天，今天我们将深入探讨自愈测试的概念。自愈测试是测试中引入 AI 的早期构想之一，我们想解答三个关键问题：</p>
+<ol>
+<li>自愈测试到底是什么意思？</li>
+<li>自愈测试有哪些潜在风险？</li>
+<li>这项功能真的有用吗？</li>
+</ol>
+<p>我们知道，并不是每个人都有兴趣学习新的自动化工具，因此，就像昨天的任务一样，这里提供两个选项供你选择（或者两者都尝试）。</p>
+<h3 id="任务步骤">任务步骤</h3>
+<p><strong>选项 1</strong>：如果你目前使用的工具包含自愈测试功能，或者你对深入了解自愈测试感兴趣并愿意花时间学习新工具，那么这个选项适合你。具体步骤包括：</p>
+<ul>
+<li><strong>你的工具声称能解决哪类问题？</strong> 阅读你所选工具的文档，理解其对自愈测试的定义。尝试弄清楚该工具声称能解决的测试问题种类及其工作机制。</li>
+<li><strong>验证其中一个声明</strong>：安排一个 20 分钟的定时测试，以测试工具的某个自愈功能。执行测试，并评价自愈机制的表现如何。一些建议包括：
+<ul>
+<li>如果该工具声称能检测到元素定位符的变化，你可以在测试中故意更改定位符使测试失败，然后运行工具，检查其如何修复失败的测试。</li>
+<li>如果该工具声称能修正操作顺序，你可以故意调换测试中的两个步骤使其失败，然后运行工具，检查其修复效果如何。</li>
+</ul>
+</li>
+<li><strong>这项功能可能在哪里失效？</strong> 基于你测试的声明，假设自愈成功了，自愈功能可能在哪些情况下会失败？你能构想出一个确实会失败的场景吗？</li>
+</ul>
+<p><strong>选项 2</strong>：如果你对了解更多关于自愈测试感兴趣，但没有时间学习新工具，那么这个选项适合你。具体步骤包括：</p>
+<ul>
+<li><strong>寻找并阅读一篇关于自愈测试的文章或论文</strong>：这可以是研究论文、博客帖子或供应商文档，涉及自愈测试的具体信息。
+<ul>
+<li>尝试理解该工具声称能解决的测试问题类型。</li>
+<li>尽可能地了解问题是如何被检测和解决的。</li>
+</ul>
+</li>
+<li><strong>这样的功能对你的团队有多重要？</strong> 考虑你的团队所面临的挑战，评估自愈测试对你们是否有价值。</li>
+<li><strong>可能的失败情形？</strong> 根据你的阅读，自愈测试在哪些重要方面可能会失败？比如，它是否可能以一种改变测试原有目的的方式来“修复”测试？</li>
+</ul>
+<p><strong>分享你的洞见</strong>：无论选择哪种探索方式，都请以你的见解回复这篇帖子，分享以下内容：</p>
+<ul>
+<li>你选择了哪个选项。</li>
+<li>你对自愈测试的看法（它解决了什么问题，以及如何解决）。</li>
+<li>自愈测试可能如何给你的团队带来好处或失败。</li>
+<li>你将多大概率使用（或继续使用）带有此功能的工具。</li>
+</ul>
+<h3 id="为什么参加">为什么参加</h3>
+<ul>
+<li>
+<p><strong>加深对自我修复测试的理解</strong>: 迭代的过程中维护测试可能具有挑战性，因此能够减少这种困难的工具非常有价值。通过参与这项测试任务，你将深入理解自愈测试的真正含义以及它们如何帮助你的团队。</p>
+</li>
+<li>
+<p><strong>提高对供应商声明的批判性思考</strong>：在选择支持测试的工具时，我们经常会遇到许多听起来很美好的声明。这个任务让你能够批判性地思考这些声明及其局限性，以及它们可能如何影响你的团队。</p>
+</li>
+</ul>
+<h3 id="任务链接">任务链接</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314">https://club.ministryoftesting.com/t/day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/75314</a></p>
+<h2 id="我的第-20-天任务">我的第 20 天任务</h2>
+<p>基于之前任务中尝试试用了支持 AI 自愈测试的工具 Katalon Studio，所以今天的任务我选择<strong>选项 1</strong></p>
+<h3 id="1-你的工具声称能解决哪类问题">1. <strong>你的工具声称能解决哪类问题？</strong></h3>
+<p>Katalon Studio 的 AI 自愈测试官方文档中宣传能解决 WebUI 自动化测试中 UI 定位导致的测试失败问题</p>
+<p>Katalon Studio 的 AI 自愈测试的工作机制：</p>
+<ul>
+<li>启用自我修复后，当 Katalon Studio 无法使用默认定位器找到对象时，Katalon 会尝试与该对象关联的其他预配置定位器。</li>
+<li>如果 Katalon Studio 通过任何替代定位器找到对象，测试将继续运行。一旦损坏的对象自我修复，成功找到该对象的替代定位器将用于剩余的执行。这有助于防止同一损坏对象反复发生自我修复，从而缩短执行时间。</li>
+<li>测试执行结束后，Katalon Studio 建议用找到该对象的定位器替换损坏的定位器。除非 Katalon Studio 可以找到目标对象，否则根据设计的故障处理选项，测试执行可能会停止或继续进行。</li>
+</ul>
+<p>对应文章链接为：<a href="https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio">https://docs.katalon.com/katalon-studio/maintain-tests/self-healing-tests-in-katalon-studio</a></p>
+<h3 id="2-验证其中一个声明">2. <strong>验证其中一个声明</strong></h3>
+<p>为了验证 Katalon Studio 的 AI 自愈测试功能，我使用 Katalon Studio 录制了 <a href="https://www.saucedemo.com/">Swag Labs</a>在线购物网站的登录，选择商品，加入购物车，并下单成功的流程，Katalon Studio 生成的代码如下
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png" alt=" "/></p>
+<blockquote>
+<p>当前的 demo 测试用例能运行通过</p>
+</blockquote>
+<h4 id="21-故意更改定位符验证-ai-自愈测试功能">2.1 故意更改定位符验证 AI 自愈测试功能</h4>
+<p>为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了两处错误定位，调整后的用例如下：
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png" alt=" "/></p>
+<p>运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png" alt=" "/>
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png" alt=" "/></p>
+<h4 id="22-故意调换测试中的两个步骤验证-ai-自愈测试功能">2.2 故意调换测试中的两个步骤验证 AI 自愈测试功能</h4>
+<p>为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了 测试步骤的顺序，调整后的用例如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png" alt=" "/></p>
+<p>运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png" alt=" "/></p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png" alt=" "/></p>
+<h3 id="3这项功能可能在哪里失效">3.<strong>这项功能可能在哪里失效？</strong></h3>
+<p>目前看起来我验证的两次都失效了，AI 自愈测试都没给出定位的修复建议，与官方宣传中的存在较大差异。</p>
+<p>之后我也尝试运行错误的 demo 用例多次，Katalon Studio 的 AI 自愈测试功能在某一次确实给出一条建议，但是我使用它的建议，并没有修复错误的用例。</p>
+<p>目前还不太确认 Katalon Studio 的 AI 自愈测试功能是不是有什么限制条件或者我使用的方法不太对。</p>
+<blockquote>
+<p>声明一下，我使用的版本也是试用版本，且 AI 自愈测试功能配置为默认配置</p>
+</blockquote>
+<h3 id="4谈谈我的看法">4.谈谈我的看法</h3>
+<p>最近参加这个 30 天 AI 测试挑战任务，也试用了好多新的关于 AI 测试的工具，发现大部分工具都名不符实，都有夸张宣传的嫌疑，建议大家在选择 AI 测试工具时，还是要多试用，以试用结果为参考来选择合适的工具。</p>
+<h2 id="关于活动">关于活动</h2>
+<p>30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。</p>
+<p>社区官网：<a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>活动链接：<a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">第一天：介绍你自己以及你对人工智能的兴趣</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">第二天：阅读有关测试中的人工智能的介绍性文章并分享</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">第三天：AI 在测试中的多种应用方式</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">第四天：观看有关测试中人工智能的任何问题视频并分享主要收获</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">第五天：确定一个测试中的人工智能案例研究，并分享你的发现</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">第六天：探索并分享对 AI 测试工具的见解</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">第七天：研究并分享提示词工程技术</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">第八天：制作详细的 Prompt 来支持测试活动</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">第九天：评估提示词质量并努力加以改进</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">第十天：批判性分析人工智能生成的测试</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">第十一天：使用 AI 生成测试数据并评估其功效</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">第十二天：评估你是否信任 AI 支持测试并分享你的想法</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">第十三天：开发你的测试方法并成为 AI 测试的先行者</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">第十四天：生成 AI 测试代码并分享你的体验</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">第十五天：衡量测试计划中的短期人工智能</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">第十六天：评估采用 AI 进行无障碍测试并分享你的发现</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">第十七天：利用人工智能实现缺陷报告自动化，并分享你的流程和评估结果</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/">第十八天：分享你在 AI 测试中遇到的最大难题</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/">第十九天：探索 AI 在测试优先级排序中的作用，并评价其利弊</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/zhcategories/bruno/">使用 Bruno 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 K6 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

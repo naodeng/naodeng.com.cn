@@ -1,0 +1,30 @@
+{
+  "name": "naodeng-com-cn",
+  "description": "Nao's Blog - astro-i18n-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev --open",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-covers": "node scripts/generate-blog-covers.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.17.0",
+    "marked": "^15.0.7",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto - Nao's Blog"><meta property="og:site_name" content="30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-21-develop-your-ai-in-testing-manifesto-cover.B6J1rhUa_Z2fkJCz.webp" alt="30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 Days of AI in Testing Challenge: Day 21: Develop your AI in testing manifesto</h1> <time datetime="2024-03-24T02:06:44.000Z" data-astro-cid-v3cnrnum> 3/24/2024 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="day-21-develop-your-ai-in-testing-manifesto">Day 21: Develop your AI in testing manifesto</h2>
+<p>You’ve reached Day 21! Throughout this challenge, as you’ve explored different uses of AI in Testing, you’ve uncovered its many associated pitfalls. To successfully integrate AI into our testing activities, we must be conscious of these issues and develop a mindful approach to working with AI.</p>
+<p>Today, you’re going to craft a set of principles to guide your approach to working with AI by creating your own <strong>AI in Testing Manifesto</strong>.</p>
+<p>To help shape your manifesto, check out these well-known manifestos in the testing world:</p>
+<ul>
+<li><strong><a href="https://agilemanifesto.org/">Agile Manifesto</a></strong>- Beck et al.: This manifesto emphasises values such as prioritising individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation, and responding to change over following a plan.</li>
+<li><strong><a href="https://luxoft-training.com/news/the-agile-testing-manifesto">Testing Manifesto</a></strong> - Karen Greaves and Sam Laing: This Manifesto emphasises continuous and integrated testing throughout development, prioritises preventing bugs, and values deep understanding of user needs. It advocates for a proactive, user-focused approach to testing.</li>
+<li><strong><a href="https://www.ministryoftesting.com/articles/the-modern-testing-principles">Modern Testing Principles</a></strong>- Alan Page and Brent Jensen: These principles advocate for transforming testers into ambassadors of shippable quality, focussing on value addition, team acceleration, continuous improvement, customer focus, data-driven decisions, and spreading testing skills across teams to enhance efficiency and product quality.</li>
+</ul>
+<h3 id="task-steps">Task Steps</h3>
+<ol>
+<li>
+<p><strong>Reflect on Key Learnings</strong>: Review the tasks you’ve encountered and consider the opportunities, potential roadblocks, and good practices that emerged.</p>
+</li>
+<li>
+<p><strong>Consider Your Mindset</strong>: What mindset shifts have you found necessary or beneficial in working with AI?</p>
+</li>
+<li>
+<p><strong>Craft Your Personal Set of Principles</strong>: Start drafting your principles, aiming for conciseness and relevance to AI in testing. These principles should guide your decision-making, practices, and attitudes towards using AI in your testing. To help, here are some areas and questions to consider:</p>
+<ol>
+<li><strong>Collaboration</strong>: How will AI complement your testing expertise?</li>
+<li><strong>Explainability</strong>: Why is understanding the reasoning behind AI outputs crucial?</li>
+<li><strong>Ethics</strong>: How will you actively address ethical considerations such as bias, privacy, and fairness?</li>
+<li><strong>Continuous Learning</strong>: How will you stay informed and continuously learn about advancements in AI?</li>
+<li><strong>Transparency</strong>: Why is transparency in AI testing tools and processes essential?</li>
+<li><strong>User-Centricity</strong>: How will you ensure AI testing ultimately enhances software quality and delivers a positive user experience?</li>
+</ol>
+</li>
+<li>
+<p><strong>Share Your Manifesto</strong>: Reply to this post with your AI in Testing Manifesto. If you’re comfortable, share the rationale behind the principles you’ve outlined and how they aim to shape your approach to AI in testing. Why not read the manifestos of others and like or comment if you found them useful or interesting.</p>
+</li>
+<li>
+<p><strong>Bonus Step</strong>: If you are free between 16:00 - 17:00 GMT today (21st March, 2024), join the <strong><a href="https://www.ministryoftesting.com/events/test-exchange-march-2024">Test Exchange</a></strong> for our monthly skills and knowledge exchange session. This month there will be a special AI in Testing breakout room.</p>
+</li>
+</ol>
+<h3 id="why-take-part">Why Take Part</h3>
+<ul>
+<li>
+<p><strong>Refine Your Mindset</strong>: The process of developing your manifesto encourages a deep reflection on the mindset needed to work successfully with AI.</p>
+</li>
+<li>
+<p><strong>Shape Your Approach</strong>: Creating your manifesto helps solidify your perspective and approach to AI in testing, ensuring you’re guided by a thoughtful framework.</p>
+</li>
+<li>
+<p><strong>Inspire the Community</strong>: Sharing your manifesto offers valuable insights to others and contributes to the collective understanding and application of AI in testing.</p>
+</li>
+</ul>
+<h3 id="task-link">Task Link</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-21-develop-your-ai-in-testing-manifesto/75315">https://club.ministryoftesting.com/t/day-21-develop-your-ai-in-testing-manifesto/75315</a></p>
+<h2 id="my-day-21-task">My Day 21 Task</h2>
+<h3 id="1-about-reflect-on-key-learnings">1. About <strong>Reflect on Key Learnings</strong></h3>
+<p>Based on the previous 20 days of AI testing challenge tasks, a key Learnings is that, in addition to starting to accept and continually learn new AI testing tools, it’s also necessary to use AI testing tools with a critical mindset, especially commercial AI testing tools. After all, AI is a current hot topic, and many tools exaggerate their AI capabilities for added hype, which might not be very practical.</p>
+<p>However, it’s undeniable that the underlying design principles of most tools’ AI functionalities can be referenced and applied to our daily testing activities.</p>
+<h3 id="2-about-consider-your-mindset">2. About <strong>Consider Your Mindset</strong></h3>
+<ul>
+<li>When using AI testing tools, it’s important to understand their underlying principles and learn better ways to use them.</li>
+</ul>
+<h3 id="3-about-craft-your-personal-set-of-principles">3. About <strong>Craft Your Personal Set of Principles</strong></h3>
+<ul>
+<li><strong>Continuous Learning</strong>: There are many aspects in testing activities where efficiency and quality can be improved, and different AI testing tools might intervene at different points. Continuously understanding and learning about new AI testing tools can better adapt to testing activities in the AI era.</li>
+<li><strong>Learn More</strong>: When using AI testing tools, pay more attention to their underlying logic and principles, rather than just relying on the tools’ introductions.</li>
+<li><strong>Delay Judgement</strong>: Do not rush to make final evaluations and judgments on the results provided by AI testing tools. Make judgments after obtaining more information about the results.</li>
+<li><strong>Positive Attitude</strong>: Adopt a positive attitude to accept and adapt to testing activities in the AI era. Keeping up with the times ensures you won’t be replaced, as different eras have different types of testing activities.</li>
+<li><strong>Collaboration and Cooperation</strong>: When using AI testing tools, provide reasonable feedback on the results generated by AI, discuss with peers in online communities, and share experiences.</li>
+</ul>
+<h2 id="about-event">About Event</h2>
+<p>The “30 Days of AI in Testing Challenge” is an initiative by the Ministry of Testing community. The last time I came across this community was during their “30 Days of Agile Testing” event.</p>
+<p>Community Website: <a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>Event Link: <a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">Day 1: Introduce yourself and your interest in AI</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">Day 2: Read an introductory article on AI in testing and share it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">Day 3: List ways in which AI is used in testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">Day 4: Watch the AMA on Artificial Intelligence in Testing and share your key takeaway</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">Day 5:Identify a case study on AI in testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">Day 6:Explore and share insights on AI testing tools</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">Day 7: Research and share prompt engineering techniques</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">Day 8: Craft a detailed prompt to support test activities</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">Day 9: Evaluate prompt quality and try to improve it</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">Day 10: Critically Analyse AI-Generated Tests</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">Day 11: Generate test data using AI and evaluate its efficacy</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">Day 12: Evaluate whether you trust AI to support testing and share your thoughts</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">Day 13: Develop a testing approach and become an AI in testing champion</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">Day 14: Generate AI test code and share your experience</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">Day 15: Gauge your short-term AI in testing plans</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/">Day 16: Evaluate adopting AI for accessibility testing and share your findings</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-17-automate-bug-reporting-with-ai-and-share-your-process-and-evaluation/">Day 17: Automate bug reporting with AI and share your process and evaluation</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-18-share-your-greatest-frustration-with-ai-in-testing/">Day 18: Share your greatest frustration with AI in Testing</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-19-experiment-with-ai-for-test-prioritisation-and-evaluate-the-benefits-and-risks/">Day 19: Experiment with AI for test prioritisation and evaluate the benefits and risks</a></li>
+<li><a href="https://naodeng.com.cn/posts/event/30-days-of-ai-in-testing-day-20-learn-about-ai-self-healing-tests-and-evaluate-how-effective-they-are/">Day 20: Learn about AI self-healing tests and evaluate how effective they are</a></li>
+</ul>
+<h2 id="recommended-readings">Recommended Readings</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/series/api-automation-testing-tutorial/">API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/bruno-api-automation-testing-tutorial/">Bruno API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/gatling-performance-testing-tutorial/">Gatling Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/k6-performance-testing-tutorial/">K6 Performance Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/postman-api-automation-testing-tutorial/">Postman API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/pytest-api-automation-testing-tutorial/">Pytest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/rest-assured-api-automation-testing-tutorial/">REST Assured API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/supertest-api-automation-testing-tutorial/">SuperTest API Automation Testing Tutorial</a></li>
+<li><a href="https://naodeng.com.cn/series/30-days-of-ai-in-testing-challenge/">30 Days of AI in Testing Challenge</a></li>
+</ul>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

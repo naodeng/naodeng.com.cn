@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-beginners-top-to-botton-approach-cover.BlGkLW76_1kB1t5.webp" alt="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试</h1> <time datetime="2024-01-22T09:06:44.000Z" data-astro-cid-v3cnrnum> 2024/1/22 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="从金字塔顶层入手测试">从金字塔顶层入手测试</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>当你是一位经验丰富的测试员时，处理测试套件是一件轻松的事情。但学习如何正确地测试，要测试什么、避免什么，选择哪种类型的测试等等，并不那么容易。</p>
+<p><strong>测试在一开始是昂贵的</strong>。一切都是新的，你尝试实现的例子不起作用，你不清楚为什么测试失败，它与你的代码有什么关系，等等。</p>
+<p>我们都熟知测试金字塔，通常，我们从底部开始构建。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/bottom-to-top-approach.jpg?raw=true" alt="从下到上的方法意味着从单元测试开始。"/>
+<em>标准测试金字塔方法：从下到上。</em></p>
+<p>从底部开始构建金字塔是有道理的。从单元测试入手更容易，因为它们运行快速，不需要复杂的上下文或工具。一个“单元”（无论你用“单元”表示什么：一个函数、一个组件等）仅包含几行代码，通常几乎没有依赖项（或根本没有依赖项）等等。</p>
+<p>这种方法的最大<strong>缺陷</strong>是什么？基本上是<strong>信心</strong>。</p>
+<p>测试关乎信心，以及在高信心但较慢的测试与低信心但较快的测试之间的权衡。</p>
+<p>如果你是测试领域的新手，术语“信心”可能不太清晰，那么你如何确保你正在开发的<strong>应用程序</strong>在测试通过时<strong>是有效的</strong>？这就是<strong>测试信心</strong>。</p>
+<p>为什么单元测试提供的信心如此之少？一些例子：</p>
+<ul>
+<li>如果<code>isValidEmail</code>函数通过了测试，你能确定你的前端应用程序的注册表单有效吗？</li>
+<li>如果<code>Input</code> React 组件通过了测试，你能确定注册表单也有效吗？</li>
+<li>如果整个<code>RegisterForm</code>组件通过了测试，你能确定用户可以注册吗？</li>
+</ul>
+<p>答案是否定的。整个应用程序由许多单元相互集成而成，还不包括一些呈现（CSS）问题，这可能会因为一个 z-index 较高的图像遮挡了提交按钮而阻止用户注册。</p>
+<p>再次谈论测试新手的经验缺失（就像我两年前一样）：<strong>每一项新事物都需要大量认知负担</strong>，而你不能同时面对太多的新事物。同时处理应用程序的常规开发、新的测试主题、单元测试世界和 UI 测试（后两者需要不同的工具和努力）是很困难的。</p>
+<p>看看这张详尽的图片，它来自
+<a href="https://github.com/goldbergyoni/javascript-testing-best-practices">JavaScript 和 Node.js 测试最佳实践</a>
+项目：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/headspace.jpg?raw=true" alt="精力和时间主要用于开发阶段，少数可用于编写测试。"/>
+<em>由 <a href="https://goldbergyoni.com/">Yoni Goldberg</a> 提供，请访问
+<a href="https://testjavascript.com/">testjavascript.com</a>，并在
+<a href="https://github.com/goldbergyoni/javascript-testing-best-practices">JavaScript 和 Node.js 测试最佳实践</a>
+资源库。</em></p>
+<p>对于经验丰富的开发人员来说是如此，而当你第一次接触测试领域时，情况更糟。</p>
+<h3 id="自底向上的方法的结果">自底向上的方法的结果</h3>
+<p>你不可避免地将大部分注意力放在金字塔的基础——单元测试上。你即将编写的一堆测试让你熟悉了测试的世界，但缺乏信心。你可能会发现自己在问：</p>
+<ul>
+<li>“我写的测试有什么好处呢？”</li>
+<li>“我花了一些时间与单元测试战斗，但应用程序仍然像以前一样崩溃，测试是否只是自娱自乐？”</li>
+<li>“老实说，我现在比开始测试之前更加疑惑了…”</li>
+</ul>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/unit-testing-first.jpg?raw=true" alt="测试金字塔，从下至上的方式突出每种测试，并对其给予关注。"/>
+<em>从下到上的方法不可避免地会让你把精力集中在单元测试上。</em></p>
+<p>问题并不出在你身上，而是在于对于初学者来说，采用了错误的测试方法！</p>
+<p>那么，我的建议是什么呢？<strong>从金字塔的顶部开始，首先关注 UI 测试！</strong></p>
+<p>首先，什么是 UI 测试（也称为功能测试、端到端测试等）？本质上，它是一种打开真实浏览器并与 DOM 元素交互的脚本，与真实最终用户的操作方式相同。有时候视频能够更生动地说明问题：看一看<a href="https://www.youtube.com/watch?v=gdly-oU72X0&feature=youtu.be">对 Conduit - RealWorld 项目运行的端到端测试</a>和<a href="https://www.youtube.com/watch?v=lNEMKeTYEPI&feature=youtu.be">Conio 后台的一些 UI 测试</a>。</p>
+<p>在上述视频中，你会看到一个真实的浏览器加载整个前端应用并与其进行交互。这种方法的优点包括：</p>
+<ul>
+<li>你的应用在与最终用户相同的环境（即浏览器）中进行测试，这意味着<strong>更高的信心</strong>。即使只编写一个 UI 测试，它也比一百个单元测试给你更多的信心。</li>
+<li>受测路径（用户执行的步骤，如“注册”、“创建新</li>
+</ul>
+<p>帖”等）与最终用户执行的路径相同，这意味着（对你而言）<strong>更低的认知负担</strong>，以了解你真正在测试什么。</p>
+<ul>
+<li>老实说，与自动化终端相比，自动化浏览器更有趣 😁</li>
+<li><strong>UI 测试最适用于</strong>你日常工作中<strong>大多数项目的小到中等规模</strong>。从落地页到小型 CMS：所有这些都至少需要一些 UI 测试，然而基于测试信心和你必须遵守的交付要求，你可能会对基于单元测试的测试信心和交付要求有所超越。只有少数人在 Facebook、Spotify、Netflix 等公司工作，这些公司需要严格的测试策略、代码覆盖要求等。总的来说：如果你为中型到大型产品公司工作，你可能不需要这篇文章，因为测试已经成为公司文化的核心🎉。</li>
+</ul>
+<p>当然，这种方法也有一些缺点，但我稍后会列举出来。下面是我建议的方法：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/ui-testing-first.jpg?raw=true" alt="从测试金字塔的顶端开始，让你首先专注于 UI 测试。"/>
+<em>自上而下的方法</em></p>
+<h4 id="从上到下的方法是否强制执行测试的不良实践">从上到下的方法是否强制执行测试的不良实践？</h4>
+<p>本文不讨论最佳实践或不良实践（请查看文章末尾的一长串资源），而是关注如何让新的前端开发人员在测试领域有益地参与。我的目标是提供一种更实际的方法，一种使开发人员能够<strong>享受测试的优势</strong>而不至于留下比以前更多的疑问的方法。</p>
+<h4 id="如果-ui-测试如此神奇为什么还有其他类型的测试存在">如果 UI 测试如此神奇，为什么还有其他类型的测试存在？</h4>
+<p>这正是关键！请注意，我并不反对单元测试！每种测试都很重要，<strong>不同的测试提供不同的反馈</strong>！从上到下的方法足够让开发人员喜欢整个测试世界。</p>
+<p>然后，你将发现高级别 <strong>UI 测试</strong> 的局限性：</p>
+<ul>
+<li>它们<strong>很慢</strong>：我知道上面的视频让你觉得它们运行得很快，但实际上并非如此。当你有五、十、二十个时，它们很快，但是当你有数百个 UI 测试并且它们需要几分钟时，你会开始思考如何改善情况</li>
+<li>它们主要提供<strong>高层次的反馈</strong>：如果表单的提交按钮不起作用，那么问题是什么？有大量可能的原因，但是 UI 测试不能排除其中一些原因</li>
+<li>它们呈现整个应用程序，如果你只想测试一些较小的东西，这可能会很麻烦。通过整个应用程序无法复制一些你需要测试的边缘情况</li>
+</ul>
+<p>解决上述所有问题的方法是：<strong>降低测试金字塔</strong>！如果你需要更低级别的测试，那么做得好！这是本文的目标。</p>
+<p>考虑两种方法的结果：</p>
+<ul>
+<li>从下到上：对于你编写的单元测试的效用存在<strong>疑虑</strong>，并且你不理解这些测试如何帮助你提高测试信心</li>
+<li>从上到下：你拥有<strong>一些有信心的测试</strong>，并最终需要深入测试金字塔。如果你不需要深入，这意味着你的项目很小，不需要更多的测试</li>
+</ul>
+<p>然后，请从<a href="https://github.com/naodeng/ui-testing-best-practices/README.zh.md">该项目的根目录</a>开始，探索各种最佳实践，以便从一开始就成功地进行 UI 测试。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

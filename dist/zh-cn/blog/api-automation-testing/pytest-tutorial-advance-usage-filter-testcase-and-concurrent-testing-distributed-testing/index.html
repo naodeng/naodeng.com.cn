@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试 - 软件测试同学"><meta property="og:site_name" content="Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing-cover.DbD_Apsm_Z2vziAG.webp" alt="Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试</h1> <time datetime="2023-11-20T07:37:00.000Z" data-astro-cid-v3cnrnum> 2023/11/20 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Pytest</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="进阶用法">进阶用法</h2>
+<h3 id="并发测试和分布式测试">并发测试和分布式测试</h3>
+<p>在日常的接口自动化测试过程中，需要并发执行测试用例，以提高测试效率。</p>
+<p>有时候也需要引入分布式测试，以便在多台机器上同时运行测试用例，也能更好的提升测试效率。</p>
+<p><code>pytest-xdist</code> 是 Pytest 的一个插件，能提供了一些对应的功能，主要用于支持并发测试和分布式测试。</p>
+<h4 id="pytest-xdist-功能介绍"><code>pytest-xdist</code> 功能介绍</h4>
+<ol>
+<li>
+<p><strong>并发执行测试</strong>：</p>
+<ul>
+<li>使用 <code>-n</code> 选项：<code>pytest -n NUM</code> 允许并发运行测试，其中 <code>NUM</code> 是并发 worker 的数量。这可以加速测试执行，特别是在拥有多个 CPU 内核的计算机上。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> 3</span><span style="color:#6A737D">  # 启动 3 个并发 worker 执行测试</span></span></code></pre>
+</li>
+<li>
+<p><strong>分布式测试</strong>：</p>
+<ul>
+<li>使用 <code>pytest --dist=loadscope</code>：允许在多个节点上执行测试，通过分布式测试可以更快地完成测试运行。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> --dist=loadscope</span></span></code></pre>
+<ul>
+<li>使用 <code>pytest --dist=each</code>：每个节点运行一组测试，适用于分布式测试。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> --dist=each</span></span></code></pre>
+</li>
+<li>
+<p><strong>参数化测试和并发</strong>：</p>
+<ul>
+<li>使用 <code>pytest.mark.run</code>：结合 <code>pytest.mark.run</code> 标记，可以选择在不同的进程或节点上运行具有不同标记的测试。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#B392F0">@pytest.mark.run</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">processes</span><span style="color:#F97583">=</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test_example</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#F97583">    pass</span></span></code></pre>
+</li>
+<li>
+<p><strong>分布式环境设置</strong>：</p>
+<ul>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之前进行配置。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> pytest_configure_node</span><span style="color:#E1E4E8">(node):</span></span>
+<span class="line"><span style="color:#E1E4E8">    node.slaveinput[</span><span style="color:#9ECBFF">&#39;my_option&#39;</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &#39;some value&#39;</span></span></code></pre>
+<ul>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之前进行配置。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> pytest_configure_node</span><span style="color:#E1E4E8">(node):</span></span>
+<span class="line"><span style="color:#E1E4E8">    node.slaveinput[</span><span style="color:#9ECBFF">&#39;my_option&#39;</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &#39;some value&#39;</span></span></code></pre>
+</li>
+<li>
+<p><strong>分布式测试环境销毁</strong>：</p>
+<ul>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之后进行清理。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> pytest_configure_node</span><span style="color:#E1E4E8">(node):</span></span>
+<span class="line"><span style="color:#6A737D">    # 配置节点</span></span>
+<span class="line"><span style="color:#F97583">    yield</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    # 在节点上运行测试后执行清理</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Cleaning up after test run on node </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> %</span><span style="color:#E1E4E8"> node.gateway.id)</span></span></code></pre>
+</li>
+</ol>
+<p>这些是 <code>pytest-xdist</code> 提供的一些功能，可以帮助您更有效地执行并发测试和分布式测试，以加速测试执行并提高效率。确保在使用前查阅 <code>pytest-xdist</code> 的文档以获取更详细的信息和用法示例。</p>
+<h4 id="安装-pytest-xdist-依赖">安装 <code>pytest-xdist</code> 依赖</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pip</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> pytest-xdist</span></span></code></pre>
+<h4 id="并发运行测试用例示例">并发运行测试用例示例</h4>
+<h5 id="并发-3-个-worker-执行测试用例">并发 3 个 worker 执行测试用例</h5>
+<p>分别运行以下命令，查看测试用例的执行时长</p>
+<ul>
+<li>并发执行</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> 3</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/LKHRct.png" alt="LKHRct"/></p>
+<ul>
+<li>默认串行执行</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5y442s.png" alt="5y442s"/></p>
+<p><code>串行执行耗时 9.81s</code>，而<code>并发执行耗时 1.63s</code>，可以看到并发执行测试用例可以大大提高测试效率。</p>
+<h5 id="并发-3-个-worker-执行测试用例并且每个-worker-都会打印测试用例的进度">并发 3 个 worker 执行测试用例，并且每个 worker 都会打印测试用例的进度</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> 3</span><span style="color:#79B8FF"> -v</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5krJia.png" alt="5krJia"/></p>
+<p>测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。</p>
+<h4 id="分布式测试示例">分布式测试示例</h4>
+<h5 id="分布式测试每个节点运行一组测试">分布式测试，每个节点运行一组测试</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> --dist=each</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/W1akqS.png" alt="W1akqS"/></p>
+<p>分布式测试可以更快地完成测试运行。</p>
+<h5 id="分布式测试每个节点运行一组测试并且每个-worker-都会打印测试用例的进度">分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> --dist=each</span><span style="color:#79B8FF"> -v</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sMlawH.png" alt="sMlawH"/></p>
+<p>测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。</p>
+<h5 id="分布式测试每个节点运行一组测试并且每个-worker-都会打印测试用例的进度同时打印测试日志的输出">分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度，同时打印测试日志的输出</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> --dist=each</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> --capture=no</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RkNSDb.png" alt="RkNSDb"/></p>
+<p>测试结果中会打印测试日志的输出，可以更好的了解测试用例的执行情况。</p>
+<h3 id="筛选用例执行">筛选用例执行</h3>
+<p>在日常的接口测试过程中，我们需要根据实际情况来选择性地执行测试用例，以提高测试效率。</p>
+<p>一般我们使用 allure 测试报告的时候，可以使用 Allure 标签特性来进行筛选对应标签的的用例来执行测试，但 Pytest 框架不直接支持运行基于 Allure 标签的测试。所以可以使用 Pytest 标记来实现这一点。</p>
+<p>Pytest 提供 <code>marks</code>标记功能可以用来标记不同类型的测试用例，然后进行筛选对应类型的测试用例进行执行。</p>
+<p>大致流程为你可以用自定义标记（如 Regression/Smoke）来标记测试，然后使用 pytest 的 -m 选项只运行这些测试。</p>
+<h4 id="定义-pytest-标记">定义 Pytest 标记</h4>
+<p>编辑 pytest.ini 文件，添加以下内容：自定义标记的类型</p>
+<ul>
+<li>Regression:标记为回归测试的用例</li>
+<li>Smoke:标记为冒烟测试的用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#F97583">markers</span><span style="color:#E1E4E8"> =</span></span>
+<span class="line"><span style="color:#E1E4E8">    Regression: marks tests as Regression</span></span>
+<span class="line"><span style="color:#E1E4E8">    Smoke: marks tests as Smoke</span></span></code></pre>
+<h4 id="标记用例">标记用例</h4>
+<p>操作步骤为：</p>
+<ul>
+<li>引入 pytest</li>
+<li>使用 <code>@pytest.mark</code> 标记测试用例</li>
+</ul>
+<blockquote>
+<p>为做区分，这里新建测试用例文件，文件名为 test_demo_filter.py</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> pytest</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> json</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TestPytestMultiEnvDemo</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    @pytest.mark.Regression</span><span style="color:#6A737D">  # mark the test case as regression</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_get_demo_filter</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        get_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;getAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # send request</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(host</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">get_api)</span></span>
+<span class="line"><span style="color:#6A737D">        # assert</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 200</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> get_api_response_data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    @pytest.mark.Smoke</span><span style="color:#6A737D">  # mark the test case as smoke</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test_post_demo_filter</span><span style="color:#E1E4E8">(self, env_config, env_request_data, env_response_data):</span></span>
+<span class="line"><span style="color:#E1E4E8">        host </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;host&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_config[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_request_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_request_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;make the request&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        post_api_response_data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> env_response_data[</span><span style="color:#9ECBFF">&quot;postAPI&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#6A737D">        # Your test code here</span></span>
+<span class="line"><span style="color:#E1E4E8">        response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.post(host </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> post_api, </span><span style="color:#FFAB70">json</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">post_api_request_data)</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;verify the response status code&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.status_code </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 201</span></span>
+<span class="line"><span style="color:#79B8FF">        print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;verify the response data&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">        assert</span><span style="color:#E1E4E8"> response.json() </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> post_api_response_data</span></span></code></pre>
+<h4 id="筛选测试用例执行">筛选测试用例执行</h4>
+<ul>
+<li>运行 Regression 标记的测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> Regression</span></span></code></pre>
+<p>这条命令告诉 pytest 只运行标有 Regression 的测试。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d8dMGa.png" alt="d8dMGa"/></p>
+<ul>
+<li>运行 Smoke 标记的测试用例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pytest</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> Smoke</span></span></code></pre>
+<p>这条命令告诉 pytest 只运行标有 Smoke 的测试。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112014VOVT3v.png" alt="2023112014VOVT3v"/></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>pytest-xdist 文档:<a href="https://pytest-xdist.readthedocs.io/en/stable/">https://pytest-xdist.readthedocs.io/en/stable/</a></li>
+<li>pytest makers 文档:<a href="https://docs.pytest.org/en/6.2.x/example/markers.html">https://docs.pytest.org/en/6.2.x/example/markers.html</a></li>
+<li>pytest 文档:<a href="https://docs.pytest.org/en/6.2.x/">https://docs.pytest.org/en/6.2.x/</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

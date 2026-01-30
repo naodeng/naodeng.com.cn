@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><title>gatling 性能测试教程 - 进阶用法：报告解析和场景设置 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/performance-testing/gatling-tool-intro-advanced-usage/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/performance-testing/gatling-tool-intro-advanced-usage/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="gatling 性能测试教程 - 进阶用法：报告解析和场景设置 - 软件测试同学"><meta property="og:site_name" content="gatling 性能测试教程 - 进阶用法：报告解析和场景设置 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/performance-testing/gatling-tool-intro-advanced-usage/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/performance-testing/gatling-tool-intro-advanced-usage/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/performance-testing/gatling-tool-intro-advanced-usage/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/gatling-tool-intro-Advanced-Usage-cover.BV8uXdYY_Z11RiyY.webp" alt="gatling 性能测试教程 - 进阶用法：报告解析和场景设置" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>gatling 性能测试教程 - 进阶用法：报告解析和场景设置</h1> <time datetime="2023-10-26T10:07:44.000Z" data-astro-cid-v3cnrnum> 2023/10/26 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Gatling</span><span class="tag" data-astro-cid-v3cnrnum>Performance Testing</span> </div> </header> <h3 id="测试报告解析">测试报告解析</h3>
+<h4 id="总览">总览</h4>
+<h5 id="总览图">总览图</h5>
+<blockquote>
+<p>性能测试执行结束后打开详细的 html 报告，可以看到详细的性能测试报告；
+可通过指标、活跃用户和随时间变化的请求/响应以及分布来分析您的报告</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report1.png" alt="readme-test-report1"/></p>
+<ul>
+<li>页面中间标题处显示 Simulation 的名字</li>
+<li>左侧的列表展示不同类型的报告菜单，可点击切换</li>
+<li>页面中部展示性能测试报告的总览信息，包括：请求总数、成功请求总数、失败请求总数、最短响应时间、最长响应时间、平均响应时间、吞吐量、标准差、百分比分布等。也会展示 gatling 的版本及本次报告运行的时间和时长</li>
+<li>全局菜单指向综合统计数据。</li>
+<li>详细信息菜单指向每个请求类型的统计信息。</li>
+</ul>
+<h5 id="请求数响应时间分布图">请求数&amp;响应时间分布图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report2.png" alt="readme-test-report2"/></p>
+<p>此图表展示了响应时间在标准范围内的分布情况
+左侧的列表显示所有的请求以及请求响应的时间分布，红色代表失败的请求
+右边 Number of request 代表用户并发数量，以及各个请求的请求数量及其成功失败状态</p>
+<blockquote>
+<p>这些范围可以在 gatling.conf 文件中配置</p>
+</blockquote>
+<h5 id="请求标准统计分析图">请求标准统计分析图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report3.png" alt="readme-test-report3"/></p>
+<p>此图表显示了一些标准统计数据，例如全局和每个请求的最小值、最大值、平均值、标准差和百分位数。
+stats 显示了所有请求具体的成功失败情况 OK 代表成功，KO 代表失败，百分比 99th pct 代表对于这一个 API 总的请求中有百分之 99 的请求 response time 是这个数值</p>
+<blockquote>
+<p>这些百分位数可以在 gatling.conf 文件中配置。</p>
+</blockquote>
+<h5 id="活跃用户数统计图">活跃用户数统计图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report4.png" alt="readme-test-report4"/></p>
+<p>此图表展示了活跃用户数指的是在测试时间段内，正在进行请求的用户数。在测试开始时，活跃用户数为 0。当用户开始发送请求时，活跃用户数开始增加。当用户完成请求时，活跃用户数开始减少。活跃用户数的最大值是在测试期间同时发送请求的用户数。</p>
+<h5 id="响应时间分布图">响应时间分布图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report5.png" alt="readme-test-report5"/></p>
+<p>此图表显示了响应时间的分布，包括请求成功的响应时间和请求失败的响应时间。</p>
+<h5 id="响应时间百分位对比图">响应时间百分位对比图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report6.png" alt="readme-test-report6"/></p>
+<p>此图表显示一段时间内的各种响应时间百分位数，但仅适用于成功的请求。由于失败的请求可能会提前结束或由超时引起，因此它们会对百分位数的计算产生巨大影响。</p>
+<h5 id="每秒请求数图">每秒请求数图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report7.png" alt="readme-test-report7"/></p>
+<p>此图表展示了每秒的请求数，包括成功的请求数和失败的请求数。</p>
+<h5 id="每秒响应数图">每秒响应数图</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report8.png" alt="readme-test-report8"/></p>
+<p>此图表展示了每秒的响应数，包括成功的响应数和失败的响应数。</p>
+<h4 id="单个请求分析报告">单个请求分析报告</h4>
+<blockquote>
+<p>可点击报告页面上的 details 菜单切换到 details tab 页面，查看单个请求的详细报告</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report9.png" alt="readme-test-report9"/></p>
+<p>Details 页面主要展示了每个请求的统计数据，与全局报告相似地包括了响应时间分布图，响应时间百分位图，每秒请求数图，每秒响应数图。不同的是最底下有一张图是描述单个请求相对于全局所有请求的响应时间。该图横坐标是每秒全局所有请求数，纵坐标是单个请求的响应时间。</p>
+<h3 id="性能场景设置">性能场景设置</h3>
+<h4 id="injection-注入">Injection 注入</h4>
+<h5 id="什么是-injection">什么是 Injection</h5>
+<p>在 Gatling 性能测试中，“Injection”是指将虚拟用户（或负载）引入系统的一种方式。它定义了模拟用户如何被引入测试场景，包括用户的数量、速率和方式。Injection 是 Gatling 中用于控制负载和并发度的关键概念，允许你模拟不同的用户行为和负载模型。</p>
+<p>用户注入配置文件的定义是通过 injectOpen 和 injectClosed 方法（Scala 中的 inject）完成的。此方法将按顺序处理的注入步骤序列作为参数。每个步骤都定义了一组用户，以及如何将这些用户注入到场景中。</p>
+<p>官网更多介绍：<a href="https://gatling.io/docs/gatling/reference/current/core/injection/">https://gatling.io/docs/gatling/reference/current/core/injection/</a></p>
+<h5 id="常用-injection-场景">常用 Injection 场景</h5>
+<h6 id="open-model-开放模型场景">Open Model 开放模型场景</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#E1E4E8">setUp(</span></span>
+<span class="line"><span style="color:#E1E4E8">  scn.inject(</span></span>
+<span class="line"><span style="color:#E1E4E8">    nothingFor(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// 1</span></span>
+<span class="line"><span style="color:#E1E4E8">    atOnceUsers(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// 2</span></span>
+<span class="line"><span style="color:#E1E4E8">    rampUsers(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// 3</span></span>
+<span class="line"><span style="color:#E1E4E8">    constantUsersPerSec(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">15</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// 4</span></span>
+<span class="line"><span style="color:#E1E4E8">    constantUsersPerSec(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">15</span><span style="color:#E1E4E8">).randomized, </span><span style="color:#6A737D">// 5</span></span>
+<span class="line"><span style="color:#E1E4E8">    rampUsersPerSec(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">).to(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">.minutes), </span><span style="color:#6A737D">// 6</span></span>
+<span class="line"><span style="color:#E1E4E8">    rampUsersPerSec(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">).to(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">.minutes).randomized, </span><span style="color:#6A737D">// 7</span></span>
+<span class="line"><span style="color:#E1E4E8">    stressPeakUsers(</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 8</span></span>
+<span class="line"><span style="color:#E1E4E8">  ).protocols(httpProtocol)</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<ol>
+<li>nothingFor(duration)：设置一段停止的时间，这段时间什么都不做</li>
+<li>atOnceUsers(nbUsers)：立即注入一定数量的虚拟用户</li>
+<li>rampUsers(nbUsers) during(duration)：在指定时间内，设置一定数量逐步注入的虚拟用户</li>
+<li>constantUsersPerSec(rate) during(duration)：定义一个在每秒钟恒定的并发用户数，持续指定的时间</li>
+<li>constantUsersPerSec(rate) during(duration) randomized：定义一个在每秒钟围绕指定并发数随机增减的并发，持续指定时间</li>
+<li>rampUsersPerSec(rate1) to (rate2) during(duration)：定义一个并发数区间，运行指定时间，并发增长的周期是一个规律的值</li>
+<li>rampUsersPerSec(rate1) to(rate2) during(duration) randomized：定义一个并发数区间，运行指定时间，并发增长的周期是一个随机的值</li>
+<li>stressPeakUsers(nbUsers).during(duration) ：按照拉伸到给定持续时间的<a href="https://en.wikipedia.org/wiki/Heaviside_step_function">阶跃函数</a>的平滑近似注入给定数量的用户。</li>
+</ol>
+<h6 id="closed-model-闭合模型场景">Closed Model 闭合模型场景</h6>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#E1E4E8">setUp(</span></span>
+<span class="line"><span style="color:#E1E4E8">  scn.inject(</span></span>
+<span class="line"><span style="color:#E1E4E8">    constantConcurrentUsers(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// 1</span></span>
+<span class="line"><span style="color:#E1E4E8">    rampConcurrentUsers(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">).to(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">).during(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 2</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<ol>
+<li>constantConcurrentUsers(nbUsers).during(duration) ：注入以使系统中的并发用户数恒定</li>
+<li>rampConcurrentUsers(fromNbUsers).to(toNbUsers).during(duration) ：注入，使系统中的并发用户数从一个数字线性增加到另一个数字</li>
+</ol>
+<h5 id="meta-dsl-场景">Meta DSL 场景</h5>
+<p>“Meta DSL”是一种特殊的领域特定语言（DSL），用于描述性能测试场景的元数据（metadata）和全局配置。Meta DSL 允许你定义性能测试中的一些全局设置和参数，以影响整个测试过程，而不是特定于某个场景。</p>
+<p>可以使用 Meta DSL 的元素以更简单的方式编写测试。如果您想要链接级别和斜坡以达到应用程序的极限（有时称为容量负载测试的测试），您可以使用常规 DSL 手动完成，并使用 map 和 flatMap 进行循环。</p>
+<ul>
+<li>incrementUsersPerSec</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#E1E4E8">setUp(</span></span>
+<span class="line"><span style="color:#6A737D">   // 生成一个开放的工作量注入配置文件</span></span>
+<span class="line"><span style="color:#6A737D">  // 每秒分别有 10、15、20、25 和 30 个用户到达</span></span>
+<span class="line"><span style="color:#6A737D">  // 每个级别持续 10 秒</span></span>
+<span class="line"><span style="color:#6A737D">  // 每级持续 10 秒</span></span>
+<span class="line"><span style="color:#E1E4E8">  scn.inject(</span></span>
+<span class="line"><span style="color:#E1E4E8">    incrementUsersPerSec(</span><span style="color:#79B8FF">5.0</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .times(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .eachLevelLasting(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .separatedByRampsLasting(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .startingFrom(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Double</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span></code></pre>
+<ul>
+<li>incrementConcurrentUsers</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#E1E4E8">setUp(</span></span>
+<span class="line"><span style="color:#6A737D">  // 生成一个封闭的工作负载注入配置文件</span></span>
+<span class="line"><span style="color:#6A737D">  // 并发用户分别为 10、15、20、25 和 30 级</span></span>
+<span class="line"><span style="color:#6A737D">  // 每个级别持续 10 秒</span></span>
+<span class="line"><span style="color:#6A737D">  // 每级持续 10 秒</span></span>
+<span class="line"><span style="color:#E1E4E8">  scn.inject(</span></span>
+<span class="line"><span style="color:#E1E4E8">    incrementConcurrentUsers(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .times(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .eachLevelLasting(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .separatedByRampsLasting(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .startingFrom(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// Int</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>incrementUsersPerSec 用于开放式工作负载，incrementConcurrentUsers 用于封闭式工作负载（用户数/秒与并发用户数）。</p>
+<p>separatedByRampsLasting 和 startingFrom 都是可选的。如果您不指定斜坡，测试完成后就会立即从一个级别跳到另一个级别。如果您不指定启动用户数，测试将从 0 个并发用户或每秒 0 个用户开始，并立即进入下一步。</p>
+<h5 id="concurrent-scenarios-并发场景">Concurrent Scenarios 并发场景</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#E1E4E8">setUp(</span></span>
+<span class="line"><span style="color:#E1E4E8">  scenario1.inject(injectionProfile1),</span></span>
+<span class="line"><span style="color:#E1E4E8">  scenario2.inject(injectionProfile2)</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>您可以在同一个 setUp 块中配置多个场景同时启动并并发执行。</p>
+<h5 id="其他场景">其他场景</h5>
+<p>查看官网介绍：<a href="https://gatling.io/docs/gatling/reference/current/core/injection/">https://gatling.io/docs/gatling/reference/current/core/injection/</a></p>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="UTF-8"><title>Introducing Bruno for Replacement Postman - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/introduction_of_bruno/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/introduction_of_bruno/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Introducing Bruno for Replacement Postman - Nao's Blog"><meta property="og:site_name" content="Introducing Bruno for Replacement Postman - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/api-automation-testing/introduction_of_bruno/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.CXLwv1yp.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/introduction_of_bruno/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/introduction_of_bruno/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/Introduction_of_bruno-cover.BiGZ_QWy_18Gfjf.webp" alt="Introducing Bruno for Replacement Postman" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Introducing Bruno for Replacement Postman</h1> <time datetime="2023-10-17T03:31:43.000Z" data-astro-cid-v3cnrnum> 10/17/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Bruno</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <p>Since Postman announced in May 2023 that it will phase out the Scratch Pad model with offline capabilities, teams that need to isolate API workspace data from third-party servers have been looking for alternatives.
+Teams that need to isolate API workspace data from third-party servers have had to look for alternatives. bruno is one of those alternatives: an open source desktop application designed for API testing, development, and debugging.</p>
+<p>Bruno is one of those alternatives: an open source desktop application designed for API testing, development, and debugging. Why bruno, how to get started, and how to migrate postman scripts are all covered in this article!</p>
+<h2 id="why-bruno">why bruno</h2>
+<p>Official description: <a href="https://github.com/usebruno/bruno/discussions/269">https://github.com/usebruno/bruno/discussions/269</a></p>
+<p>Comparison with postman: <a href="https://www.usebruno.com/compare/bruno-vs-postman">https://www.usebruno.com/compare/bruno-vs-postman</a></p>
+<p>Open source, MIT License</p>
+<p>Client platform support (Mac/linux/Windows)</p>
+<p>Offline client, no cloud synchronization plan</p>
+<p>Supports Postman/insomina script import (only API request scripts can be imported, not test scripts)</p>
+<p>Relatively active community and clear <a href="https://github.com/usebruno/bruno/discussions/384">product development roadmap</a>.</p>
+<h2 id="install-bruno">Install bruno</h2>
+<p>Download link: <a href="https://www.usebruno.com/downloads">https://www.usebruno.com/downloads</a></p>
+<p>Mac computer recommended brew command download</p>
+<p>​    <code>brew install Bruno</code></p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="default-main-api">Default main API</h3>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/homepage.png" alt="homepage"/></p>
+<h3 id="api-collection">API collection</h3>
+<h4 id="create-api-collection">Create API collection</h4>
+<ul>
+<li>
+<p>On the home page, click on the ‘Create Collection’ link to open the Create API Request Collection pop-up window.</p>
+</li>
+<li>
+<p>On the popup window, enter</p>
+<p>Name: input the name of the API request collection</p>
+<p>Location: input the path of the folder where you want to save the API request collection files (we suggest you choose the path where this project is located).</p>
+<p>Folder Name: you can enter the name of the API request set (a folder with the corresponding name will be created under the path you just selected).</p>
+</li>
+<li>
+<p>Click Create button to finish creating the API request set and display it on the API (the list of newly created API request set will be displayed on the left side).</p>
+</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/create-collection.png" alt="create-collection"/></p>
+<h4 id="open-api-collection">Open API collection</h4>
+<ul>
+<li>Click on the ‘Open Collection’ link on the home page to open the folder of the selected API request collection in bruno format.</li>
+<li>Click open to complete the selection and display it in the API (the collection list on the left side will display the selected API request collection information).</li>
+</ul>
+<h4 id="import-api-collection">Import API collection</h4>
+<ul>
+<li>Click the ‘Import Collection’ link on the home page to open the popup window for importing API collections (Bruno/Postman/Insomnia are supported).</li>
+<li>On the popup window, select the link of the corresponding format, and then select the path of the existing file of the corresponding format.</li>
+<li>Click open to complete the selection and display it on the API (the collection list on the left side will display the information of the selected API collection).</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/import-collection.png" alt="import-collection"/></p>
+<h4 id="run-api-collection">RUN API collection</h4>
+<ul>
+<li>Select the API request set you want to run from the collection list on the left side of the main API.</li>
+<li>Select Run on the menu, the Runner tab will be opened on the right side of the API, it will show some information about the requests in the selected API request collection.</li>
+<li>Click on the Run Collection button to run it locally (you will see the allowed results on the screen after running).</li>
+</ul>
+<h4 id="export-api-collection">Export API collection</h4>
+<ul>
+<li>Select the API request set you want to run from the collection list on the left side of the main API, and right-click to open the menu.</li>
+<li>Select Export on the menu, and then select the path of the file you want to export to complete the export (the exported file is also in json format).</li>
+</ul>
+<h3 id="api-request">API request</h3>
+<h4 id="create-api-request">Create API request</h4>
+<ul>
+<li>Pre-requisite: An API request collection has already been created (see Creating an API Request Collection above).</li>
+<li>Select the API request set you want to create a new API request from the collection list on the left side of the main API.</li>
+<li>Select New Request on the menu, the right API will open the Request tab, it will show some information of requests in the selected API request set.</li>
+<li>On the new Request window, first select the request type: HTTP/GraphQL.</li>
+<li>In the new Request window, first select the request type: HTTP/GraphQL.
+Name: Enter the name of the API request.
+URL: enter the URL of the API request
+Method: Select the Method of the API request.</li>
+<li>Click Create button to finish creating the API request and display it on the API (the left request set list will display the information of the newly created API request).</li>
+</ul>
+<h4 id="edit-api-request">Edit API request</h4>
+<ul>
+<li>
+<p>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</p>
+</li>
+<li>
+<p>Select the API request collection you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.</p>
+</li>
+<li>
+<p>Then you can edit different fields of the request according to the type of API request.
+Body: Enter the Body of the API request.</p>
+<p>Headers: Enter the headers of the API request.</p>
+<p>Params: Enter the Params of the API request.</p>
+<p>Auth: enter the Auth of the API request</p>
+<p>Vars: enter the Vars of the API request</p>
+<p>Script: enter the Script of the API request</p>
+<p>Assert: Enter the Assert of the API request.</p>
+<p>Tests: Enter the Tests of the API request.</p>
+</li>
+<li>
+<p>Click the Save button to finish editing the API request and display it on the API (the list of request sets on the left side will display the information of the edited API request).</p>
+</li>
+</ul>
+<h4 id="run-api-request">RUN API request</h4>
+<ul>
+<li>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</li>
+<li>In the collection list on the left side of the main API, select the API request set that you want to edit the API request, and then select the API request that you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).</li>
+</ul>
+<h4 id="api-request-generate-code">API request generate code</h4>
+<ul>
+<li>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</li>
+<li>In the collection list on the left side of the main API, select the API request set that you want to edit the API request, and then select the API request that you want to edit.</li>
+<li>Right click on the menu and select Generate Code, then select the language you want to generate code for.</li>
+<li>The Generate Code window will show the request code of different languages.</li>
+</ul>
+<h3 id="write-api-request-test-scripts">Write API request test scripts</h3>
+<h4 id="api-request-assert">API request Assert</h4>
+<h5 id="introducing-assert">Introducing Assert</h5>
+<ul>
+<li>
+<p>Open any API request and switch to the Assert tab.</p>
+</li>
+<li>
+<p>The Assert tab displays the Assert information of the API request.</p>
+</li>
+<li>
+<p>Assert is used to determine whether the result of the API request meets the expectation.</p>
+</li>
+<li>
+<p>Expr: input the expression of expected result, it can be the value of a field of the API request, two types can be input: Status Code and Response Body.
+Status Code: determine whether the returned status code of the API request meets the expectation (default is 200).
+Response Body: determine whether the returned result of the API request meets the expectation (default is true).</p>
+</li>
+<li>
+<p>Operator: the validation method for inputting the expected result. Supports multiple judgment methods: Equal and Not Equal, etc.
+Equal: determine whether the returned result of the API request is equal to the expected result.
+Not Equal: determine if the returned result of the API request is not equal to the expected result.</p>
+</li>
+<li>
+<p>Value: input the value of the expected result, supports two ways of inputting the expected result: Static and Dynamic.
+Static: input the static value of the expected result.
+Dynamic: input the dynamic value of the expected result, which can be the value of a field in the return result of the API request.</p>
+</li>
+</ul>
+<h5 id="assert-demo">Assert demo</h5>
+<h6 id="assert-status-code-is-200">Assert status code is 200</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returns <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the API request returns a status is 200.</li>
+<li>Open the API request and switch to the Assert tab.</li>
+<li>Enter the following information
+Expr: res.status
+Operator: Equal
+Value: 200</li>
+</ul>
+<h6 id="assert-repsponse-body-as-expected">Assert repsponse body as expected</h6>
+<ul>
+<li>Using <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returned <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the API request’s repsponse body is as expected</li>
+<li>Open the API request and switch to the Assert tab.</li>
+<li>Assert1 Enter the following information in order
+Expr: res.body.id
+Operator: Equal
+Value: 1</li>
+<li>Assert2 Input the following information in order
+Expr: res.body.title
+Operator: contains
+Value: provider</li>
+</ul>
+<h5 id="debug-assert">Debug Assert</h5>
+<ul>
+<li>Pre-requisite: you have already created an API request set and an API request (refer to Creating an API request set and New API request above), and you have also written the corresponding Assert according to the demo.</li>
+<li>Select the API request set you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).</li>
+<li>Switch to the Tests tab to display the Tests information of the API request, which also includes the Assert information of the request.</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/assert-demo.png" alt="assert-demo"/></p>
+<h4 id="api-request-tests">API request Tests</h4>
+<h5 id="introduction-tests">Introduction Tests</h5>
+<ul>
+<li>Open any API request and switch to the Tests tab.</li>
+<li>Tests tab will show the Tests information of the API request.</li>
+<li>Tests are used to write test scripts for API requests, currently javascript language is supported.</li>
+<li>You can write multiple test scripts inside Tests, each test script can be run separately.</li>
+</ul>
+<h5 id="tests-demo">Tests demo</h5>
+<h6 id="verify-status-code-is-200">Verify status code is 200</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returns <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>), I want to verify that the API request returns a status is 200.</li>
+<li>Open the API request and switch to the Tests tab.</li>
+<li>Enter the following script</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h6 id="verify-repsponse-body-as-expected">Verify repsponse body as expected</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returned <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the repsponse body is as expected</li>
+<li>Open the API request and switch to the Tests tab.</li>
+<li>Enter the following script</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="debugging-tests">Debugging Tests</h5>
+<ul>
+<li>Prerequisites: You have already created an API request set and an API request (refer to Creating an API Request Set and New API Request above), and you have also written the corresponding Tests according to the demo.</li>
+<li>Select the API request set you want to edit in the collection list on the left side of the main API, and then select the API request you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the API (the Request tab on the right side will display the information of the running API request).</li>
+<li>Switch to the Tests tab, it will show the Tests information of the API request, which will also include the requested Tests information.</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/tests-demo.png" alt="tests-demo"/></p>
+<h4 id="environment-variables">environment variables</h4>
+<h5 id="creating-environment-variables">Creating Environment Variables</h5>
+<ul>
+<li>Prerequisites: An API request set and an API request have already been created (see Creating an API request set and New API request above).</li>
+<li>Select the API request for which you want to create an environment variable</li>
+<li>Click the ‘No Environment’ link in the upper right corner of the page (default is No Environment) and select the configure button in the menu to open the environment variable management popup window (supports creating new environment variables and importing existing environment variables).</li>
+<li>Click Create Environment button on the popup window, enter the name of the environment variable and click create button to create the environment variable.</li>
+<li>Then click Add Variable button on the popup window, enter the key and value of the environment variable, and click Save button to add the environment variable.</li>
+</ul>
+<h5 id="environment-variable-demo">environment variable demo</h5>
+<blockquote>
+<p>Requirement: Create a demo environment variable that contains an environment variable with key host and value <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>.</p>
+</blockquote>
+<ul>
+<li>Select the API request for which you want to create the environment variable</li>
+<li>Click the ‘No Environment’ link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup.</li>
+<li>Click the Create Environment button on the popup window, enter the name of the environment variable demo, and click the create button to create the environment variable demo.</li>
+<li>Select the demo environment variable, and then click Add Variable button on the page, enter the key of the environment variable as host and the value as <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>, and click Save button to add the environment variable.</li>
+<li>As shown in the following figure
+! <a href="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/env-intro.png">env-intro</a></li>
+</ul>
+<h5 id="using-environment-variables">Using Environment Variables</h5>
+<ul>
+<li>Prerequisites: You have already created an API request set and an API request (see Creating an API request set and creating a new API request above), and you have also created a demo environment variable.</li>
+<li>Select the API request for which you want to use environment variables</li>
+<li>Click the ‘No Environment’ link in the top right corner of the page (default is No Environment), and select the demo button in the menu to use the demo environment variable.</li>
+<li>Then change the URL of the API request to {{host}}/posts/1 to use the environment variable.</li>
+</ul>
+<h3 id="test-script-automation">Test script automation</h3>
+<h4 id="pre-conditions">Pre-conditions</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> API request set has been created (example named :api-collects)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> API request has been created (example name: api request1)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> an environment variable has been created (example name: demo)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> has also written an assert or tests script for the API request</li>
+</ul>
+<h4 id="api-automation-project-demo">api automation project demo</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Installed node.js</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Install npm</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> create a new project folder (example name: bruno-test)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Execute npm init in the project folder to initialize the project as an npm project</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Install @usebruno/cli dependency (script: npm install @usebruno/cli)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Open the folder directory where the API request sets are stored, and copy all the files in the api-collects directory to the bruno-test project directory</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> The project directory looks like this</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">bruno</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">test   </span><span style="color:#6A737D">//项目主文件夹</span></span>
+<span class="line"><span style="color:#E1E4E8">  api request1.bru </span><span style="color:#6A737D">//api 请求</span></span>
+<span class="line"><span style="color:#E1E4E8">  enviroments </span><span style="color:#6A737D">//环境变量</span></span>
+<span class="line"><span style="color:#E1E4E8">    demo.bru</span></span>
+<span class="line"><span style="color:#E1E4E8">  bruno.json</span></span>
+<span class="line"><span style="color:#E1E4E8">  node_modules </span><span style="color:#6A737D">//node 包依赖</span></span>
+<span class="line"><span style="color:#F97583">  package-</span><span style="color:#E1E4E8">lock.json</span></span>
+<span class="line"><span style="color:#E1E4E8">  package.json </span><span style="color:#6A737D">//npm 项目配置文件</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Run the following command in the project directory to run the API request</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">bruno run </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">env demo</span></span></code></pre>
+<ul>
+<li>The result is as follows</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/cli-demo.png" alt="cli-demo"/></p>
+<h3 id="getting-into-ci">Getting into CI</h3>
+<h4 id="getting-into-github-action">Getting into github action</h4>
+<blockquote>
+<p>Take github action as an example, other CI tools are similar.</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Prepare: Add the following script to the project package.json file</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">&quot;test&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bru run --env demo&quot;</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Create .github/workflows folder in the project root folder</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Create main.yml file under .github/workflows folder</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> The contents of the main.yml file are as follows</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">bruno cli CI</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">main</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#85E89D">  pull_request</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">main</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  run_bruno_api_test</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm install</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">run tests</span></span>
+<span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm run test</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> submit code to github, will automatically trigger github action</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> View the result of the github action, as shown in the example:</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/cli-demo1.png" alt="cli-demo1"/></p>
+<blockquote>
+<p>The code for this project can be pulled for reference:<a href="https://github.com/dengnao-tw/Bruno-API-Test-Starter">https://github.com/dengnao-tw/Bruno-API-Test-Starter</a></p>
+</blockquote>
+<h4 id="test-report---todo">Test report---TODO</h4>
+<h3 id="bruno-more-usage---todo">bruno More usage---TODO</h3>
+<h3 id="postman-script-migration">Postman script migration</h3>
+<h4 id="api-request-collection-migration">API Request Collection Migration</h4>
+<ul>
+<li>Click on the ‘Import Collection’ link on the home page to open the Import API collection popup window.</li>
+<li>Click on the Select Postman Collection link and select the path to an existing Postman request collection file.</li>
+<li>Then you can import Postman request collection.</li>
+<li>However, only API requests can be imported, not test scripts, as shown in the figure (but it doesn’t affect the request invocation).
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/postman1.png" alt="postman1"/>
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/bruno1.png" alt="bruno1"/></li>
+</ul>
+<h4 id="environment-variable-migration">Environment Variable Migration</h4>
+<ul>
+<li>Select the Postman request you just imported on the home page.</li>
+<li>Click the ‘No Environment’ link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup window.</li>
+<li>Click on the ‘Import Environment’ link to open the Import Environment popup.</li>
+<li>Click on the ‘Postman Environment’ link to open the Import Environment popup window Click on the ‘Postman Environment’ link and select the path to an existing Postman environment file</li>
+<li>You can import Postman environment variables.</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/postman2.png" alt="postman2"/>
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/bruno2.png" alt="bruno2"/></p>
+<h4 id="test-script-migration-reference">Test Script Migration Reference</h4>
+<blockquote>
+<p>The syntax of the test scripts for the two tools is partially different and needs to be modified manually</p>
+</blockquote>
+<ul>
+<li>Postman test script syntax reference: <a href="https://learning.postman.com/docs/writing-scripts/test-scripts/">https://learning.postman.com/docs/writing-scripts/test-scripts/</a></li>
+<li>Postman test script example</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>Bruno test script syntax reference: <a href="https://docs.usebruno.com/testing/introduction.html">https://docs.usebruno.com/testing/introduction.html</a></li>
+<li>Bruno test script example</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>  </article>  </main> <footer class="l-footer l-content" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" class="github" data-astro-cid-sz7xmlte>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-sz7xmlte>open_in_new</span> </a> <ul data-astro-cid-sz7xmlte> <li><a href="/en/" onclick="localStorage.selectedLang = &#34;en&#34;" lang="en">English</a></li><li><a href="/zh-cn/" onclick="localStorage.selectedLang = &#34;zh-cn&#34;" lang="zh-cn">简体中文</a></li> </ul> <a class="copy" href="https://naodeng.com.cn/" target="_blank" dir="ltr" data-astro-cid-sz7xmlte>
+© Nao Deng 2026 </a> </footer>   </body> </html>  

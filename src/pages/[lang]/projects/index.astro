@@ -1,0 +1,117 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { PROJECTS_LIST } from "@/data/projects";
+import {
+  PROJECTS_PAGE_TITLE,
+  PROJECTS_TECH_STACK_LABEL,
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const title = t(PROJECTS_PAGE_TITLE);
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <ul class="project-list">
+    {PROJECTS_LIST.map((proj) => (
+      <li>
+        <article class="project-card">
+          <h2 class="project-name">
+            <a href={proj.url} target="_blank" rel="noopener noreferrer">
+              {t(proj.name)}
+              <span class="material-icons-sharp dir">open_in_new</span>
+            </a>
+          </h2>
+          <p class="project-tech">
+            <strong>{t(PROJECTS_TECH_STACK_LABEL)}:</strong> {t(proj.techStack)}
+          </p>
+          <p class="project-desc">{t(proj.description)}</p>
+          <a
+            href={proj.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            {locale === "zh-cn" ? "查看仓库" : "View on GitHub"}
+          </a>
+        </article>
+      </li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  .project-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-m) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-m);
+  }
+  .project-card {
+    padding: var(--sp-m);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .project-card:hover {
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-theme) 25%, transparent);
+  }
+  .project-name {
+    font-size: 1.2rem;
+    margin-block-end: var(--sp-s);
+  }
+  .project-name a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    color: var(--color-theme);
+    text-decoration: none;
+  }
+  .project-name a:hover {
+    text-decoration: underline;
+  }
+  .project-name .material-icons-sharp {
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+  .project-tech {
+    font-size: 0.95rem;
+    margin-block-end: var(--sp-s);
+    opacity: 0.95;
+  }
+  .project-tech strong {
+    font-weight: 700;
+  }
+  .project-desc {
+    margin-block-end: var(--sp-s);
+    line-height: 1.55;
+    font-size: 0.98rem;
+  }
+  .project-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    padding: 0.3em 0.6em;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    transition: background 0.2s ease;
+  }
+  .project-link:hover {
+    background: color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+</style>
