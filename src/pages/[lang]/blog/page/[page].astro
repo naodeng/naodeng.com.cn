@@ -1,0 +1,198 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import PageHeadline from "@/components/PageHeadline.astro";
+import PaginationNav from "@/components/PaginationNav.astro";
+import { BLOG_POSTS_PER_PAGE } from "@/consts";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  const byLang: Record<string, number> = {};
+  for (const post of allPosts) {
+    const lang = post.id.split("/")[0];
+    byLang[lang] = (byLang[lang] || 0) + 1;
+  }
+  const paths: { params: { lang: string; page: string } }[] = [];
+  for (const lang of Object.keys(LOCALES)) {
+    const total = byLang[lang] || 0;
+    const totalPages = Math.max(1, Math.ceil(total / BLOG_POSTS_PER_PAGE));
+    for (let p = 2; p <= totalPages; p++) {
+      paths.push({ params: { lang, page: String(p) } });
+    }
+  }
+  return paths;
+}
+
+const locale = Astro.currentLocale as Lang;
+const { page } = Astro.params;
+const currentPage = Number(page) || 1;
+
+const t = useTranslations(locale);
+
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const totalPosts = allPosts.length;
+const totalPages = Math.max(1, Math.ceil(totalPosts / BLOG_POSTS_PER_PAGE));
+const start = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
+const posts = allPosts.slice(start, start + BLOG_POSTS_PER_PAGE);
+
+const title = t({ en: "Blog", "zh-cn": "博客" });
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <div class="blog-container">
+    <div class="post-grid">
+      {
+        posts.map((post) => {
+          const [, ...id] = post.id.split("/");
+          const postUrl = `/${locale}/blog/${id.join("/")}/`;
+          const dateStr = post.data.date.toLocaleDateString(
+            locale === "zh-cn" ? "zh-CN" : "en-US",
+            { year: "numeric", month: "short", day: "numeric" }
+          );
+
+          return (
+            <article class="post-card">
+              <a href={postUrl} class="post-link">
+                {post.data.cover && (
+                  <div class="post-cover">
+                    <Image src={post.data.cover} alt={post.data.title} width={600} height={337} />
+                  </div>
+                )}
+                <div class="post-content">
+                  <time class="post-date">{dateStr}</time>
+                  <h2 class="post-title">{post.data.title}</h2>
+                  {post.data.description && <p class="post-desc">{post.data.description}</p>}
+                </div>
+              </a>
+
+              {post.data.tags && (
+                <div class="post-tags">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <a href={`/${locale}/tags/${tag}/`} class="tag-link">
+                      #{tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })
+      }
+    </div>
+    {totalPages > 1 && (
+      <PaginationNav currentPage={currentPage} totalPages={totalPages} locale={locale} />
+    )}
+  </div>
+</Layout>
+
+<style>
+  .blog-container {
+    margin-block-start: var(--sp-l);
+  }
+
+  .post-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .post-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-theme);
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+  }
+
+  .post-cover {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--color-theme);
+  }
+
+  .post-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .post-card:hover .post-cover img {
+    transform: scale(1.08);
+  }
+
+  .post-content {
+    padding: var(--sp-m);
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    opacity: 0.8;
+    margin-block-end: 0.5rem;
+    display: block;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--color-main);
+    margin-block-end: 0.75rem;
+  }
+
+  .post-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .post-tags {
+    padding: 0 var(--sp-m) var(--sp-m);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    transition: all 0.2s ease;
+  }
+
+  .tag-link:hover {
+    background: var(--color-theme);
+    color: white;
+  }
+</style>

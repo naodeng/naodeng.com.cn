@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-UI-testing-cover.DRfpIUjE_2h74RR.webp" alt="UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的测试策略（二）：什么样的测试策略才更合理</h1> <time datetime="2024-01-10T09:05:44.000Z" data-astro-cid-v3cnrnum> 2024/1/10 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Test Strategy</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="什么样的测试策略才更合理">什么样的测试策略才更合理</h2>
+<p>上一篇文章讲到了不同的测试类型，以及它们的优缺点。在这篇文章中，我们将深入探讨什么样的测试策略才更为合理。
+会从在开始阶段，避免追求完美主义，选择一个参考浏览器，发现了 bug？先编写测试，然后再着手修复，和单个长的端到端测试还是多个小的独立测试？等方面阐述了什么样的测试策略才更合理</p>
+<h3 id="在开始阶段避免追求完美主义">在开始阶段，避免追求完美主义</h3>
+<p>测试真的改变了你的工作方式，但就像所有事情一样，需要一些经验才能真正发挥其威力。在一开始，务必避免完美主义的陷阱。为什么呢？</p>
+<ul>
+<li>
+<p>测试本质上就是小程序。完美主义可能会导致你在了解如何处理不同的测试上下文之前编写<strong>非常复杂的测试</strong>。</p>
+<p>复杂的测试是个大敌人，因为调试失败的测试比调试失败的应用程序更加困难。而且复杂的测试让你失去了测试实践本身的优势，浪费了很多时间，最终不可避免地会让你放弃。<strong>如果你有这样的经历，不要气馁</strong>，对很多测试初学者来说都是一样的（对我来说也是，这就是我开始写这个 repo 的原因 😊），不要害怕向同事或其他开发人员寻求帮助。</p>
+</li>
+<li>
+<p>误报：完美主义导致很多误报。误报是指应用程序按预期工作，但测试失败的情况。</p>
+<p><strong>误报在一开始确实让人泄气</strong>，因为你开始写测试是为了有一个盟友来检查应用程序状态… 但最终你却得到了另一个需要维护的应用程序，而测试并没有提供任何帮助。如果你发现自己在与误报作斗争，请停下来，重新学习，并寻求帮助！</p>
+</li>
+<li>
+<p>测试的实用性：成功的测试在失败时直接指向问题。正确的断言和<a href="/sections/generic-best-practices/await-dont-sleep.zh.md">确定性事件</a>使你的测试强大而且非常重要的是，它们在失败时是有用的。相反，过多的断言和检查可能会使你的测试因为无用而变得脆弱。</p>
+</li>
+</ul>
+<p>所谓完美主义是指检查每一个前端细节。在开始时，你的有限的测试经验不允许你有针对性地测试所有的交互。开始时，测试一些简单的事情，比如</p>
+<ul>
+<li>页面是否正确加载？</li>
+<li>菜单按钮是否正常工作？</li>
+<li>用户是否能够填写表单并成功跳转到感谢页面？</li>
+</ul>
+<p>而在开始阶段，不要过于关注测试一些诸如</p>
+<ul>
+<li>条件数据加载</li>
+<li>复杂的表单规则</li>
+<li>无控制的（第三方）集成</li>
+<li>元素选择器 等复杂的交互。</li>
+</ul>
+<br/>
+<p>为了避免陷入完美主义的陷阱，初学者的待办事项清单可以是：</p>
+<ol>
+<li>选择最简单的测试对象（对用户有用的东西）。</li>
+<li>从用户的角度考虑。记住<strong>用户关心内容和功能</strong>，而不关心选择器和内部应用程序状态。</li>
+<li>编写你的测试。</li>
+<li>运行测试多次以确保它的稳定性。</li>
+<li>当测试成功时，在前端应用程序中插入一个导致它失败的错误，然后检查测试是否失败。然后移除你故意插入的错误。</li>
+<li>以无头和非无头模式运行测试。</li>
+<li>根据你的经验（也问问同事），思考从你测试的内容的角度看，可能导致前端应用程序失败的原因是什么。</li>
+<li>模拟不同的前端故障（关闭服务器、插入其他错误）并检查测试是否提供足够的反馈，以了解哪里失败了。</li>
+<li>仅对两三种故障进行测试，记住你有限的经验可能导致你测试错误的东西。</li>
+<li>然后，转移到另一个测试对象并重复所有先前的步骤。</li>
+</ol>
+<p>软件测试是一场奇妙的旅程，这个 repo 的目标是帮助你避免最常见的陷阱。</p>
+<p>建议的流程只是可能方法之一。我知道一切都是主观的，请为每个建议提出请求以进行改进！</p>
+<h3 id="选择一个参考浏览器">选择一个参考浏览器</h3>
+<p>每个人都关心跨浏览器测试。我们通常习惯在每个浏览器上手动测试所有内容，因为我们知道，不同浏览器之间存在许多差异。当我们开始评估合适的测试工具时，跨浏览器测试是一个重要的话题，也是你在考虑时可能首先想到的。但是不要担心：首先从功能测试和视觉测试分离开始，这是正确评估跨浏览器支持需求（也是选择正确测试工具的第一步）。视觉测试可以集成到每个测试工具中，感谢诸如 Applitools 和 Percy 这样的服务。</p>
+<p>换句话说，不要仅仅基于跨浏览器支持来选择测试工具。以下是一些建议：</p>
+<ul>
+<li>
+<p><strong>Selenium 和 Puppeteer 是通用的自动化工具</strong>。它们可以用作测试工具（有许多插件和模块可帮助你实现），但它们并非专为测试而设计，因此它们缺少一些集成实用工具，这可能使测试编写更加简便。</p>
+</li>
+<li>
+<p>只考虑 <strong>Cypress、Playwright 和 TestCafé</strong>，因为它们是专为<strong>简化 UI 测试过程</strong>而创建的工具。这些工具自动处理一半的最佳实践，而在测试中的一些方面，它们可能更符合你的需求。在 UI 测试方面，由于其</p>
+</li>
+</ul>
+<p>困难性，花些时间试验这些工具是值得的。</p>
+<ul>
+<li>
+<p>仔细思考你需要测试什么。如果你需要测试特定的移动能力，请选择 <a href="https://testcafe.devexpress.com">TestCafé</a>，但如果你只需要测试表单和按钮是否正常工作，你在选择上就更加灵活。</p>
+</li>
+<li>
+<p>查看 <a href="https://docs.cypress.io/guides/core-concepts/test-runner.html#Command-Log">Cypress Test Runner</a>，这是使 Cypress 异于常人的工具，对于测试开发过程中非常有帮助。</p>
+</li>
+<li>
+<p>研究 <a href="https://playwright.dev/docs/trace-viewer-intro">Playwright 在调试方面的优势</a>。Playwright 非常快速稳定，最近其开发体验有了很大改进。</p>
+</li>
+<li>
+<p>跨浏览器测试通常涉及到视觉测试（CSS 浏览器差异），但这与功能测试不同。视觉测试得益于许多专用插件和工具的支持。详细了解 <a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/tools/visual-regression-testing.zh.md">视觉测试对应的章节</a> <a href="https://applitools.com">Applitools</a>，其中我们讨论了一些专用产品，这些产品可以与几乎所有测试工具集成，通过将被测试页面的快照上传到其服务器并进行呈现来进行工作。</p>
+</li>
+</ul>
+<p>你还可以在 <a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/await-dont-sleep.zh.md">等待，不是休眠</a> 章节中了解各种测试工具之间的一些差异。</p>
+<h3 id="发现了-bug先编写测试然后再着手修复">发现了 bug？先编写测试，然后再着手修复</h3>
+<p>所以，当你在前端应用程序中发现错误并已经进行了调试时，你可以系统地复现它，准备好修复它。以测试为导向的思维必须经历以下步骤：</p>
+<ol>
+<li>确定预期的行为。</li>
+<li>编写一个测试，旨在以正确的方式使用前端应用程序。</li>
+<li>测试必须失败，因为错误不允许用户完成任务。</li>
+<li>修复错误。</li>
+<li>检查测试现在是否通过。</li>
+</ol>
+<p>为什么要采用这种方法？为什么要编写测试呢？我知道直接修复错误可能看起来更快，但请考虑以下几点：</p>
+<ul>
+<li>
+<p>通常情况下，你的测试工具比你更快地达到显示错误的应用程序状态（参见<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md">使用测试工具作为主要开发工具</a> 章节）。</p>
+</li>
+<li>
+<p>有时你认为你能够系统地复现错误，但这并不总是正确的。编写一个揭示错误的测试可以确保你百分之百确定错误是可重现的，<strong>排除了许多偏差变量</strong>，如现有的会话、缓存、服务工作者、浏览器扩展、浏览器版本等，这些可能会影响你的信心。有时你可能会发现你并没有完全正确地识别错误。</p>
+</li>
+<li>
+<p>与此同时，当测试通过了你的修复时，你确实知道你的解决方</p>
+</li>
+</ul>
+<p>案按预期工作。可能影响错误识别过程的相同变量可能会影响工作效果的虚假感觉。</p>
+<ul>
+<li>
+<p><strong>有了测试，错误就可以永远修复了！</strong> 测试将被执行成千上万次，让你对错误修复感到百分之百的信心。</p>
+</li>
+<li>
+<p>成功的测试可以作为你所做工作的验证轨迹。</p>
+</li>
+</ul>
+<p>最后但同样重要的是：确保你编写的测试一开始是失败的！而且它之所以失败是因为有错误！</p>
+<p>测试不仅仅是为了重现错误并在视觉上检查它，而是必须在修复错误后获得积极的反馈。<strong>与错误相关的测试如果一开始就没有失败，那真的非常危险</strong>，因为你可能认为你做得很好，而实际上你从一开始就没有完全正确地重现错误。</p>
+<p>作为一般规则：<strong>破碎的流程必须有一个破碎的测试</strong>，一个成功的测试必须与一个正常工作的应用程序相关联。</p>
+<h3 id="单个长的端到端测试还是多个小的独立测试">单个长的端到端测试还是多个小的独立测试？</h3>
+<p>在讨论对 CRUD 应用进行测试时，我们应该如何组织“创建”、“修改”和“删除”端到端（E2E）测试呢？</p>
+<p>完整的选项列表如下：</p>
+<ol>
+<li><strong>有三个小的 E2E 测试，依赖于执行顺序</strong>（测试 B 假设测试 A 已运行）- 这是唯一的不良解决方案，我将解释原因。</li>
+<li><strong>有三个小的 E2E 测试，独立于执行顺序</strong>（测试 B 不受测试 A 是否运行的影响）- 从理论上讲，是最好的解决方案。但仍然需要大量样板代码，而且为了快速执行。</li>
+<li><strong>有一个执行所有操作的扩展 E2E 测试</strong> - 对于本文介绍的案例来说，这是一个很好的折中方案。</li>
+</ol>
+<p>这取决于情况，我提到的大多数问题与 E2E 测试的隐含问题有关，这是我们应该尽量减少这类测试的强烈信号。作为前端工程师，我更喜欢投资时间编写无需服务器的测试，而不是 E2E 测试。继续阅读，你将了解原因。</p>
+<h4 id="1---有三个小的-e2e-测试依赖于执行顺序测试-b-假设测试-a-已运行">1 - 有三个小的 E2E 测试，依赖于执行顺序（测试 B 假设测试 A 已运行）</h4>
+<p>测试流程如下：</p>
+<ol>
+<li>开始（<em>应用程序状态为空</em>）</li>
+<li>测试 1: 创建实体</li>
+<li>测试 2: 修改实体</li>
+<li>测试 3: 删除实体</li>
+<li>结束（<em>应用程序状态为空</em>）</li>
+</ol>
+<p>在这种情况下，这些测试不是独立的，而是依赖于执行顺序。为了测试 CRUD 流程，有三个主要测试：“创建实体”、“修改实体”、“删除实体”。第二个测试（“修改实体”）假设在其启动时应用程序状态是正确的，因为它在 “创建实体” 之后运行。“删除实体” 也必须在 “修改实体” 之后运行，依此类推。</p>
+<p>将多个测试耦合在一起是一种反模式，原因如下：</p>
+<ul>
+<li><strong>误报</strong>：一旦一个测试失败，后续测试会连续失败。</li>
+<li><strong>难以调试</strong>：由于不确定性较高，理解失败的根本原因更加复杂。测试失败是因为代码本身失败？还是因为先前测试的状态发生了变化？然后，当一个测试失败时，你必须调试两个测试。</li>
+<li><strong>难以调试</strong>（再次）：开发人员会浪费大量时间，因为他们无法运行单个测试，也无法使用 <code>skip</code> 和 <code>only</code> 仅运行其中一部分测试。</li>
+<li><strong>难以重构</strong>：测试无法移动到其他位置。如果测试代码变得太长、太复杂等，你无法将其移动到专用文件/目录中，因为它依赖于先前的测试。</li>
+<li><strong>难以阅读</strong>：读者无法知道一个测试的作用，因为他们还必须了解先前的测试。你必须阅读两个测试，而不是一个，这是不好的。</li>
+</ul>
+<p>我不建议以这种方式编写耦合的测试，但我想包含它们以确保您明白原因。</p>
+<h4 id="2---设计三个小型端到端e2e测试使其独立于执行顺序">2 - 设计三个小型端到端（E2E）测试，使其独立于执行顺序</h4>
+<p>为了确保每个测试的独立性，每个测试在运行前都应该创建所需的应用程序状态，然后在完成后进行清理。相较于原有的顺序（创建-&gt;修改-&gt;删除），前文提到的流程应该调整如下（<em>斜体</em> 表示与原有流程相比的新步骤）：</p>
+<ol>
+<li><strong>开始</strong>（<em>应用程序状态为空</em>）</li>
+<li><strong>测试 1：创建实体</strong>
+<ol>
+<li><em><strong>之前</strong></em>：加载页面（<em>应用程序状态为空</em>）</li>
+<li>创建实体</li>
+<li><em><strong>之后</strong></em>：删除<em>实体</em>（<em>应用程序状态为空</em>）</li>
+</ol>
+</li>
+<li><strong>测试 2：修改实体</strong>
+<ol>
+<li><em><strong>之前</strong></em>：通过 API 创建<em>实体</em></li>
+<li><em><strong>之前</strong></em>：加载页面（<em>应用程序状态为空</em>）</li>
+<li>修改实体</li>
+<li><em><strong>之后</strong></em>：通过 API 删除<em>实体</em>（<em>应用程序状态为空</em>）</li>
+</ol>
+</li>
+<li><strong>测试 3：删除实体</strong>
+<ol>
+<li><em><strong>之前</strong></em>：通过 API 创建<em>实体</em></li>
+<li><em><strong>之前</strong></em>：加载页面（<em>应用程序状态为空</em>）</li>
+<li>删除实体</li>
+<li><em><strong>之后</strong></em>：删除操作（<em>应用程序状态为空</em>）</li>
+</ol>
+</li>
+<li><strong>结束</strong>（<em>应用程序状态为空</em>）</li>
+</ol>
+<p>通过这种方式，每个测试都是相互独立的。需要注意的是，之前和之后的操作直接通过调用服务器 API 完成，因为通过 UI 完成这些操作将会很慢。然而，这种方法的问题在于<strong>测试变得更加耗时</strong>，因为每个测试都需要创建实体，并且每个测试都需要访问页面。当应用程序加载需要花费 10 秒钟时（Hasura 的控制台最初的情况），重新加载应用程序将成为一个问题。</p>
+<p>为了确保测试既独立又高效，我们需要进一步改进上述流程：</p>
+<ul>
+<li>充分利用前一个测试的应用状态。</li>
+<li>同时，如果尚未运行测试，还需要创建所需的应用状态。</li>
+</ul>
+<p>具体来说，流程如下（与前一章节相比，<em>斜体</em>表示新步骤）：</p>
+<ol>
+<li>
+<p><strong>开始</strong>（<em>应用状态为空</em>）</p>
+</li>
+<li>
+<p><strong>测试 1：</strong> 创建实体</p>
+<ol>
+<li><em><strong>之前</strong></em>：<em>实体</em> 是否存在？
+<ol>
+<li><em>否：没问题！</em></li>
+<li><em>是：通过 API 删除实体</em></li>
+</ol>
+</li>
+<li><em><strong>之前</strong></em>：加载页面（<em>应用状态为空</em>）</li>
+<li>创建实体</li>
+</ol>
+</li>
+<li>
+<p><strong>测试 2：</strong> 修改实体</p>
+<ol>
+<li><em><strong>之前</strong></em>：<em>实体</em> 是否存在？
+<ol>
+<li><em>是：没问题！</em></li>
+<li><em>否：通过 API 创建实体</em></li>
+</ol>
+</li>
+<li><em><strong>之前</strong></em>：<em>实体</em> 是否已包含测试即将进行的更改？
+<ol>
+<li><em>是：没问题！</em></li>
+<li><em>否：通过 API 修改实体</em></li>
+</ol>
+</li>
+<li><em><strong>之前</strong></em>：我们是否已经在正确的页面上？
+<ol>
+<li><em>是：没问题！</em></li>
+<li><em>否：加载页面</em></li>
+</ol>
+</li>
+<li>修改实体</li>
+</ol>
+</li>
+<li>
+<p><strong>测试 3：</strong> 删除实体</p>
+<ol>
+<li><em><strong>之前</strong></em>：实体是否存在？
+<ol>
+<li><em>是：没问题！</em></li>
+<li><em>否：通过 API 创建实体</em></li>
+</ol>
+</li>
+<li><em><strong>之前</strong></em>：我们是否已经在正确的页面上？
+<ol>
+<li><em>是：没问题！</em></li>
+<li><em>否：加载页面</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>删除实体</p>
+</li>
+<li>
+<p><strong>结束</strong>（<em>应用状态为空</em>）</p>
+</li>
+</ol>
+<p>现在，如果你一次运行所有测试，每个测试都会利用之前测试的应用状态。如果只运行“修改实体”测试，它会创建所需的一切，然后运行测试本身。</p>
+<p>现在我们既有测试的独立性又有测试的性能！很不错！</p>
+<p>嗯… 你是否注意到我们需要编写大量代码？<a href="https://github.com/bahmutov/cypress-data-session">cypress-data-session</a> 插件很方便，但存在两个问题：</p>
+<ol>
+<li>有很多与 cypress-data-session 相关的样板代码</li>
+<li>在 E2E 测试中，必须维护许多可能与主应用程序中使用的 API 调用不同步的 API 调用。</li>
+</ol>
+<p>这是一个与 cypress-data-session 相关的样板代码示例（来自 Hasura Console 代码库）。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { readMetadata } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;../services/readMetadata&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { deleteHakunaMatataPermission } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;../services/deleteHakunaMatataPermission&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * Ensure the Action does not have the Permission.</span></span>
+<span class="line"><span style="color:#6A737D"> *</span></span>
+<span class="line"><span style="color:#6A737D"> * ATTENTION: if you get the &quot;setup function changed for session...&quot; error, simply close the</span></span>
+<span class="line"><span style="color:#6A737D"> * Cypress-controlled browser and re-launch the test file.</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> hakunaMatataPermissionMustNotExist</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">  settingUpApplicationState</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> true</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">dataSession</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">&#39;hakunaMatataPermissionMustNotExist&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Without it, cy.dataSession run the setup function also the very first time, trying to</span></span>
+<span class="line"><span style="color:#6A737D">    // delete a Permission that does not exist</span></span>
+<span class="line"><span style="color:#B392F0">    init</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=&gt;</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Check if the Permission exists</span></span>
+<span class="line"><span style="color:#B392F0">    validate</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      Cypress.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">&#39;**--- Action check: start**&#39;</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#B392F0"> readMetadata</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">response</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> loginAction</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> response.body.actions?.</span><span style="color:#B392F0">find</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">          action</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> action.name </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> &#39;login&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">loginAction </span><span style="color:#F97583">||</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">loginAction.permissions) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> permission</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> loginAction.permissions.</span><span style="color:#B392F0">find</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">          permission</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> permission.role </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> &#39;hakuna_matata&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Returns true if the permission does not exist</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">permission;</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    preSetup</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      Cypress.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">&#39;**--- The permission must be deleted**&#39;</span><span style="color:#E1E4E8"> }),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Delete the Permission</span></span>
+<span class="line"><span style="color:#B392F0">    setup</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      deleteHakunaMatataPermission</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (settingUpApplicationState) {</span></span>
+<span class="line"><span style="color:#6A737D">        // Ensure the UI read the latest data if it were previously loaded</span></span>
+<span class="line"><span style="color:#E1E4E8">        cy.</span><span style="color:#B392F0">reload</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>以下是用于创建实体的 API 调用示例（来自 Hasura Console 代码库）。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * Create the Action straight on the server.</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> createLoginAction</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  Cypress.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">&#39;**--- Action creation: start**&#39;</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  cy.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;POST&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;http://localhost:8080/v1/metadata&#39;</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    type: </span><span style="color:#9ECBFF">&#39;bulk&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    source: </span><span style="color:#9ECBFF">&#39;default&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    args: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        type: </span><span style="color:#9ECBFF">&#39;set_custom_types&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        args: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          scalars: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">          input_objects: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              name: </span><span style="color:#9ECBFF">&#39;SampleInput&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              fields: [</span></span>
+<span class="line"><span style="color:#E1E4E8">                { name: </span><span style="color:#9ECBFF">&#39;username&#39;</span><span style="color:#E1E4E8">, type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">                { name: </span><span style="color:#9ECBFF">&#39;password&#39;</span><span style="color:#E1E4E8">, type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">              ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">          objects: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              name: </span><span style="color:#9ECBFF">&#39;SampleOutput&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              fields: [{ name: </span><span style="color:#9ECBFF">&#39;accessToken&#39;</span><span style="color:#E1E4E8">, type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8"> }],</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              name: </span><span style="color:#9ECBFF">&#39;LoginResponse&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              description: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              fields: [</span></span>
+<span class="line"><span style="color:#E1E4E8">                {</span></span>
+<span class="line"><span style="color:#E1E4E8">                  name: </span><span style="color:#9ECBFF">&#39;accessToken&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                  type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                  description: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                },</span></span>
+<span class="line"><span style="color:#E1E4E8">              ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              name: </span><span style="color:#9ECBFF">&#39;AddResult&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              fields: [{ name: </span><span style="color:#9ECBFF">&#39;sum&#39;</span><span style="color:#E1E4E8">, type: </span><span style="color:#9ECBFF">&#39;Int&#39;</span><span style="color:#E1E4E8"> }],</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">          enums: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        type: </span><span style="color:#9ECBFF">&#39;create_action&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        args: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          name: </span><span style="color:#9ECBFF">&#39;login&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          definition: {</span></span>
+<span class="line"><span style="color:#E1E4E8">            arguments: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                name: </span><span style="color:#9ECBFF">&#39;username&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                description: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                name: </span><span style="color:#9ECBFF">&#39;password&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&#39;String!&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                description: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            kind: </span><span style="color:#9ECBFF">&#39;synchronous&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            output_type: </span><span style="color:#9ECBFF">&#39;LoginResponse&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            handler: </span><span style="color:#9ECBFF">&#39;https://hasura-actions-demo.glitch.me/login&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            type: </span><span style="color:#9ECBFF">&#39;mutation&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            headers: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">            timeout: </span><span style="color:#79B8FF">25</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            request_transform: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">          comment: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  }).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> Cypress.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">&#39;**--- Action creation: end**&#39;</span><span style="color:#E1E4E8"> }));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>因此，拥有独立的测试是至关重要的，但也伴随着一些成本。</p>
+<p>这就是为什么，针对这个具体问题，我选择了最后一种选择…</p>
+<h4 id="3---进行一次全面的端到端测试">3 - 进行一次全面的端到端测试</h4>
+<p>优点：可以减少很多样板文件。</p>
+<p>缺点：与测试一起工作变得更慢了（你不能再仅运行第三个测试了）</p>
+<p>与我们需要编写的样板和需要维护的代码相比，将它们统一起来是值得的。毕竟，我正在处理的特定 CRUD 流程大约需要 20 秒。</p>
+<ol>
+<li>开始 (<em>应用程序状态为空</em>)</li>
+<li>测试：CRUD
+<ol>
+<li><em><strong>之前</strong></em>*：如果存在实体，则删除它（应用程序状态为空）*</li>
+<li><em><strong>之前</strong></em>*：加载页面*</li>
+<li>创建实体</li>
+<li>修改实体</li>
+<li>删除实体</li>
+<li><em><strong>之后</strong></em>*：如果存在实体，则删除它（应用程序状态为空）*</li>
+</ol>
+</li>
+<li>结束 (<em>应用程序状态为空</em>)</li>
+</ol>
+<p>同时，这也使得 cypress-data-session 变得无用。因此，少了一个需要保持更新的依赖。</p>
+<h4 id="结论">结论</h4>
+<p>处理端到端测试很困难。处理真实数据、清除真实应用程序状态等都是有成本的。我知道端到端测试是唯一能够提供完整信心的测试，但作为一名前端工程师（请记住，我不是 QA 工程师），我更愿意使用无需服务器的测试。</p>
+<h4 id="相关章节">相关章节</h4>
+<ul>
+<li>🔗 <a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.zh.md">从金字塔的顶端着手构建测试！</a></li>
+<li>🔗 <a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/generic-best-practices/use-your-testing-tool-as-your-primary-development-tool.zh.md">把你的测试工具当作主要的开发工具来使用</a></li>
+</ul>
+<br/>
+<br/>
+<p><em>由 <a href="https://github.com/NoriSte">NoriSte</a> 在 <a href="https://dev.to/noriste/decouple-the-back-end-and-front-end-test-through-contract-testing-112k">dev.to</a>上进行了跨发表。</em></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

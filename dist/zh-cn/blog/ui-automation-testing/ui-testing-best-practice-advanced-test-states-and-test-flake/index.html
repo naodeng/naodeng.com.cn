@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-advanced-test-states-and-test-flake-cover.Dac27iro_mEcfb.webp" alt="UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的进阶篇（一）：测试状态和不稳定的测试</h1> <time datetime="2024-01-29T08:06:44.000Z" data-astro-cid-v3cnrnum> 2024/1/29 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="测试状态">测试状态</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/test-states.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/test-states.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>测试应该是可重复的、模块化的，并且应该自己处理状态设置。为了为其他测试实现状态，不应该重复执行 UI 测试。</p>
+<p>我们希望测试是无状态的，具有可扩展性：</p>
+<ul>
+<li>测试应该独立处理其状态。</li>
+<li>没有对外部产生不受控制的副作用，或者具有测试自身能够处理的可管理副作用。</li>
+<li>测试应该能够被 <em>n</em> 个实体同时执行。</li>
+</ul>
+<h3 id="代码示例--解释说明">代码示例 – 解释说明</h3>
+<p><strong>可重复性</strong>: 测试必须能够设置状态、执行测试，并在不影响下一个测试执行的前提下使环境保持干净。如果一个测试在每次执行时都使系统混乱，将其留在无法重置的状态，那么这个测试就适合作为手动测试。测试还不能互相冲突：多个测试者和流水线必须能够同时执行相同的测试。如果这不可行，这些测试组应该每天在流水线中执行一次，最好在非工作时间执行 <a href="https://crontab.guru/#0_1-23_*_*_6-7">cron 作业</a>。</p>
+<p>每个需要更改环境状态的测试都必须被用作设置 - 状态 - 测试，并确保在下一个测试之前能够清理测试环境。</p>
+<p>最好是 UI 测试不要重复作为设置测试；在必须将 UI 测试用作另一个测试的设置的情况下，应该使用 API 测试、应用程序操作或数据库初始化。</p>
+<p><strong>设置 vs 清理</strong>: 设置（之前全部）优于清理（之后全部）。在可能的情况下，测试本身应该负责在一个干净的环境中开始。然而，正如上面强调的，测试不能使得在它们执行后下一个测试无法清理环境。</p>
+<p><strong>登录</strong>: UI 登录的各种形式应仅在其各自的测试用例中使用。任何其他需要登录的测试应该使用内部的 API 登录和/或具有预配置的测试用户。</p>
+<p><strong>测试状态设置</strong>: 鼓励测试是隔离的，以便它们在执行之前不依赖于整个设置。例如：如果一组测试可能需要创建用户，可以利用一个测试用户在隔离中使用这些测试。另一方面，设置用户的测试应该是独立的和隔离的。</p>
+<p><strong>模块化</strong>: 每个测试应该能够独立运行，不依赖于其他测试来为其设置状态。如果需要进行这样的设置，应该在 <code>beforeAll</code> 或 <code>beforeEach</code> 部分进行。测试这一点的一个好方法是在隔离中运行测试：<code>it.only()</code>，<code>fit()</code>，等等。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>describe(&#39;..&#39;, function () {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // setup (before/beforeEach) is preferred over cleanup (after/afterEach)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  before(function () {</span></span>
+<span class="line"><span>    // login with UI once in an isolated test</span></span>
+<span class="line"><span>    // for login here and all other tests, use a faster login method: use API, App Actions or DB seeding</span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  beforeEach(function () {</span></span>
+<span class="line"><span>    // setup additional state...</span></span>
+<span class="line"><span>    // have one UI test to ensure this state can be achieved</span></span>
+<span class="line"><span>    // however for the state set up here, utilize API, Application Actions or DB seeding; do not repeat UI tests</span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // test each test once with .only to ensure modularity</span></span>
+<span class="line"><span>    it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>    it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>    it.only(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>    it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="测试状态参考资料">测试状态参考资料</h3>
+<p><a href="https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/">放弃使用页面对象，转而使用应用动作</a></p>
+<p><a href="https://docs.cypress.io/guides/references/best-practices.html#Organizing-Tests-Logging-In-Controlling-State">Cypress 文档：测试组织、登录、状态控制</a></p>
+<h2 id="不稳定的测试">不稳定的测试</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/test-flake.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/advanced/test-flake.md</a></p>
+<h3 id="一段简要说明-1">一段简要说明</h3>
+<p>每次测试都必须产生一致的结果，而可重复的流水线执行结果则是至关重要的。如果测试无法产生可靠的结果，将降低对测试的信心，还需要进行维护，这将降低所有价值。在这些情况下，最好进行手动功能测试。</p>
+<p>并请自问以下几个问题：</p>
+<ul>
+<li>如何解决测试波动，通过成长的过程确保测试的可信度？</li>
+<li>如何处理流水线、基础设施、共享资源等方面的假阴性，并在没有控制的情况下解决？</li>
+<li>如何发现零星缺陷？</li>
+</ul>
+<h3 id="第一步本地识别不稳定的测试">第一步：本地识别不稳定的测试</h3>
+<p>推荐在模拟流水线 CI 机器的操作系统中进行无头模式执行；Linux 和 MacOS 与流水线的行为更为相似，而 Windows 则是个例外，除非你正在使用 Windows Docker 容器。无头执行将更容易暴露测试波动。有多种方法可以重复执行测试规范，Cypress 提供的一个例子是使用 Lodash 库（Cypress 已经内置了）<code>Cypress._.times( &lt;重复次数&gt;, () =&gt; { &lt;你的测试规范代码&gt; })</code>。在提交代码合并请求之前，务必使用此方法。</p>
+<h4 id="第一步的代码示例">第一步的代码示例</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>// will repeat the full suite 10 times</span></span>
+<span class="line"><span>Cypress._.times( 10, function {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  describe(&#39;..&#39;, function () {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    before(function () {</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    beforeEach(function () {</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      // you can place it anywhere to repeat 1 test, or another describe / context block</span></span>
+<span class="line"><span>      Cypress._.times( 3, function {</span></span>
+<span class="line"><span>        it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>      it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>      it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span>      it(&#39;..&#39;, function () {..});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// this will result in 6 tests per run x 10 runs = 60 executions</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="第二步在流水线中识别不稳定的测试并进行重试">第二步：在流水线中识别不稳定的测试并进行重试</h3>
+<p>在初始的流水线顺利通过并合并代码后，<strong>有时</strong>测试会出现失败的情况。</p>
+<p>为什么测试在<strong>没有可重现的缺陷</strong>且<strong>测试代码已经完全优化的情况下仍然失败呢</strong>？</p>
+<p>为了解决这种零星的失败问题，以及避免测试被忽略或<strong>降低团队对其的信心</strong>，我们可以采用重试机制：</p>
+<ul>
+<li>用以解决团队无法掌控的不可靠流水线基础设施问题</li>
+<li>在开发中遇到的问题，或者依赖于正在开发中的外部服务</li>
+<li>最为重要的是，<strong>用于锁定零星的系统问题</strong></li>
+</ul>
+<h4 id="第二步的代码示例">第二步的代码示例</h4>
+<p>许多框架都提供了重试实用工具。下面是一个例子来自于 <a href="https://docs.cypress.io/guides/references/migration-guide.html#Tests-retries">Cypress 文档</a>:</p>
+<p>在一个测试中：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;allows user to login&#39;</span><span style="color:#E1E4E8">, { </span><span style="color:#6A737D">// can also be in a context or describe block</span></span>
+<span class="line"><span style="color:#E1E4E8">  retries: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    runMode: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// for CI usage</span></span>
+<span class="line"><span style="color:#E1E4E8">    openMode: </span><span style="color:#79B8FF">1</span><span style="color:#6A737D">  // for local usage</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p>在配置文件中，例如 <code>cypress.json</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;retries&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;runMode&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;openMode&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="第三步识别零星的系统问题---不稳定的系统">第三步：识别零星的系统问题 - <em>不稳定的系统</em></h3>
+<p>鉴于以下情况：</p>
+<ul>
+<li>不存在可重现的缺陷</li>
+<li>测试代码已经充分优化</li>
+<li>已知并通过测试重试有效解决了流水线问题</li>
+<li>已知、认可并通过测试重试解决了外部依赖和成长痛苦</li>
+</ul>
+<p>… 我们如何检测系统存在的更深层次问题，这可能表明存在<em>不稳定的系统</em>？以下是团队<a href="https://www.cypress.io/dashboard/">Cypress 仪表板</a>上的一个示例快照：</p>
+<blockquote>
+<p><em>“在周末的 40 次执行中，它以 10% 的错误率失败… 我们运行了测试套件 40 次，在其中的一次执行中看到该规范重试了 2 次，直到通过…”</em>
+<img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/test-retry-pipeline.png?raw=true" alt=" "/></p>
+</blockquote>
+<p><em>请注意：相机图标表示一些测试失败，因为 Cypress 在失败时会拍摄视频和截图。</em></p>
+<p>在这些情况下，可以通过每晚或周末的 <a href="https://crontab.guru/#0_1-23_*_*_6-7">cron 任务</a> 进行一致性测试，作为更深层次系统问题的初始指标。这些通常是那些容易泄漏到生产环境中、在实际使用中被发现并具有昂贵后果的模糊缺陷。</p>
+<h4 id="代码示例---cron-任务">代码示例 - <a href="https://crontab.guru/#0_1-23_*_*_6-7">cron 任务</a></h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>at minute 0 at midnight and 2 am, every day-of-week from Monday through Friday:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>0 0,2 * * 1-5</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>At minute 0 past hour 2, 6, 8, 10, 12, 14, 16, 18, and 20 on every day-of-week from Saturday through Sunday:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>0 2,6,8,10,12,14,16,18,20 * * 6-7</span></span></code></pre>
+<p>一旦排除了所有其他因素，并且在管道中使用 cron 任务自动化测试初步指示了“系统波动”，这些问题就是<strong>性能测试</strong>的理想候选项，因为这种测试方法可以直接指出可能导致“不稳定的系统”的系统缺陷。</p>
+<p>性能测试的要点如下：
+<img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/performanceTesting.jpg?raw=true" alt=" "/></p>
+<p>有许多性能测试工具，其中一个我们认为比较易于使用的是 <a href="https://docs.k6.io/docs">k6-loadImpact</a>，因为它采用了 ES6 语法，并且与流水线兼容。
+你可以在 <a href="https://github.com/muratkeremozcan/k6-loadImpact">这里</a> 找到一个包含代码示例的简单教程。</p>
+<h3 id="不稳定的测试参考资料">不稳定的测试参考资料</h3>
+<p><a href="https://testing.googleblog.com/2017/04/where-do-our-flaky-tests-come-from.html">Google 测试博客：我们的测试中哪些是不稳定的，是从哪些方面产生的</a></p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

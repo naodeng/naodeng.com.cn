@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>软件测试术语分享:Automated Testing 自动化测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="软件测试术语分享:Automated Testing 自动化测试 - 软件测试同学"><meta property="og:site_name" content="软件测试术语分享:Automated Testing 自动化测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/QA-Glossary-Wiki-automated-testing-cover.fQlBBbDV_2uqcIa.webp" alt="软件测试术语分享:Automated Testing 自动化测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>软件测试术语分享:Automated Testing 自动化测试</h1> <time datetime="2024-03-04T04:50:44.000Z" data-astro-cid-v3cnrnum> 2024/3/4 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>QA Glossary</span><span class="tag" data-astro-cid-v3cnrnum>Automated Testing</span> </div> </header> <h2 id="automated-testing-自动化测试">Automated Testing 自动化测试</h2>
+<p>自动化测试使用脚本来执行重复性任务，提高软件性能和测试效率。它提高了<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a>和执行速度，使<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-testing.md">软件测试</a>过程更加有效。</p>
+<p>相关术语：</p>
+<ul>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/manual-testing.md">手工测试</a></li>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a></li>
+</ul>
+<p>也可以看看：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95">维基百科</a></li>
+</ul>
+<h2 id="关于自动化测试的问题">关于自动化测试的问题</h2>
+<h3 id="基础知识和重要性">基础知识和重要性</h3>
+<h4 id="什么是自动化测试">什么是自动化测试？</h4>
+<p>自动化测试是使用软件工具执行预先编写的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-script.md">测试脚本</a>来验证软件应用功能、性能和可靠性的过程。与<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/manual-testing.md">手动测试</a>不同，自动化测试一旦设置完成，就可以在最小的人工监督下重复执行。</p>
+<p>这些测试通常使用与应用代码相同或不同的语言编写，旨在具有可重用性和可维护性。测试的范围可以从验证各个组件的简单单元测试到验证应用程序内整个工作流程的复杂端到端测试。</p>
+<p>自动化测试是持续集成/持续部署（CI/CD）流水线的一部分，确保新的代码更改不会引入回归问题。这在快节奏的开发环境中保持<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/software-quality.md">软件质量</a>至关重要。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Example of a simple automated test script in TypeScript</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { expect } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;chai&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Calculator } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;./Calculator&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Calculator&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should add two numbers correctly&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> calculator</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Calculator</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(calculator.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">)).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>有效的自动化测试取决于选择适当的工具和框架、开发健壮的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-case.md">测试用例</a>并随着应用程序演变进行维护。同时，必须确保全面的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-coverage.md">测试覆盖</a>，以在部署之前捕获尽可能多的问题。随着人工智能和机器学习的进步，自动化测试变得更加智能，能够以更少的手动输入预测和适应软件的变化。</p>
+<h4 id="为什么自动化测试很重要">为什么自动化测试很重要？</h4>
+<p>自动化测试对于以无法匹敌的速度和规模<strong>确保<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/software-quality.md">软件质量</a><strong>至关重要。它使团队能够在较短的时间内执行更多的测试，对代码变更提供</strong>快速反馈</strong>。这在现代开发实践中至关重要，例如敏捷和 DevOps，其中持续集成和交付是关键。自动化通过允许频繁而一致的测试来支持这些方法，从而早期发现缺陷，降低了修复<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/bug.md">缺陷</a>的成本和工作量。</p>
+<p>此外，自动化测试可以<strong>重复运行</strong>，几乎没有额外成本，确保在新变更后之前开发的功能仍然可用（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/regression-testing.md">回归测试</a>）。它们还允许在各种环境和设备上进行<strong>并行执行</strong>，提高了<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-coverage.md">测试覆盖</a>和效率。自动化测试以较少的人为错误生成<strong>可靠的结果</strong>，并提供详细的日志，有助于调试。</p>
+<p>实质上，自动化测试是**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/quality-assurance.md">质量保证</a>战略**的基石，旨在及时交付健壮的软件。它通过处理重复且耗时的任务来补充<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/manual-testing.md">手动测试</a>工作，使人工测试人员能够专注于更复杂和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/exploratory-testing.md">探索性测试</a>场景。</p>
+<h4 id="自动化测试的优点和缺点是什么">自动化测试的优点和缺点是什么？</h4>
+<p>自动化测试的优势：</p>
+<ul>
+<li><strong>速度和效率</strong>：相比手动测试，自动化测试可以更快地执行更多的测试，提供对代码变更的快速反馈。</li>
+<li><strong>可重用性</strong>：测试脚本可以在应用程序的不同版本之间重复使用，节省了测试准备的时间。</li>
+<li><strong>一致性</strong>：确保每次执行测试时都是相同的，消除了人为错误。</li>
+<li><strong>覆盖范围</strong>：能够执行手动情况下难以实现的全面测试，包括复杂的场景和大型数据集。</li>
+<li><strong>持续集成</strong>：通过允许在进行更改时自动运行测试，有助于 CI/CD，是现代开发实践的关键。</li>
+<li><strong>早期<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/bug.md">缺陷</a>检测</strong>：能够在开发过程中迅速识别问题，降低修复成本。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/non-functional-testing.md">非功能性测试</a></strong>：非常适合性能、负载和压力测试，这些测试在手动情况下难以执行。</li>
+</ul>
+<p>自动化测试的劣势：</p>
+<ul>
+<li><strong>初期投资</strong>：在工具和测试环境的设置方面有较高的初始成本。</li>
+<li><strong>维护</strong>：测试脚本需要定期更新以适应应用程序的变化。</li>
+<li><strong>学习曲线</strong>：团队需要时间学习工具并开发有效的测试。</li>
+<li><strong>有限范围</strong>：无法像人类一样处理视觉参考或 UX 评估。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/false-positive.md">误报</a>/漏报</strong>：自动化测试可能报告不是缺陷的失败（误报）或错过缺陷（漏报）。</li>
+<li><strong>复杂的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/setup.md">设置</a></strong>：有些测试场景很难自动化，可能不值得付出努力。</li>
+<li><strong>工具限制</strong>：工具可能不支持每种技术或应用程序类型，限制了它们的使用。</li>
+</ul>
+<h4 id="自动化测试如何融入软件开发生命周期">自动化测试如何融入软件开发生命周期？</h4>
+<p>自动化测试被无缝地融入到软件开发生命周期（SDLC）的各个阶段，以提高效率和可靠性。在<strong>需求阶段</strong>，我们计划了自动化测试，以确保其与验收标准一致。在<strong>设计和开发阶段</strong>，我们实施了自动化单元测试，通常遵循测试驱动开发（TDD）的实践。随着特性的完成，自动化集成测试用于验证组件之间的交互。</p>
+<p>在<strong>测试阶段</strong>，自动化回归测试确保新的更改不会破坏现有功能，而自动化系统测试则验证整个软件系统。自动化端到端测试模拟用户行为，覆盖整个应用程序的工作流程。对于<strong>部署</strong>而言，在 CI/CD 流水线中，自动化测试对构建的健康状态提供了即时反馈。</p>
+<p>在部署后，自动化测试继续支持<strong>维护阶段</strong>，快速发现由于补丁或更新引入的问题。在整个 SDLC 期间，我们会对自动化测试进行维护和完善，以适应应用程序要求的不断发展和覆盖新场景的需要。</p>
+<p>自动化测试的角色是迭代的和持续的，与敏捷开发和 DevOps 方法论相一致，支持快速的开发周期和频繁的发布。这确保了质量从一开始就被内嵌到产品中，并在整个生命周期中得以保持。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Example of a simple automated unit test in TypeScript</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { add } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;./math&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;add function&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should add two numbers correctly&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="手动测试和自动化测试有什么区别">手动测试和自动化测试有什么区别？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/manual-testing.md">手动测试</a>涉及到测试人员在没有工具或脚本的帮助下执行<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-case.md">测试用例</a>。相反，自动化测试使用软件工具自动运行测试，同时管理测试的执行和实际结果与预期结果的比较。</p>
+<p>主要区别包括：</p>
+<ul>
+<li><strong>执行</strong>：手动测试需要人类在每个步骤进行干预，而自动化测试则由软件执行。</li>
+<li><strong>速度</strong>：一旦测试被开发，自动化测试的速度明显更快。</li>
+<li><strong>一致性</strong>：自动化测试可以在相同条件下重复运行，确保一致性。而手动测试可能会受到人为错误的影响。</li>
+<li><strong>初始成本</strong>：设置自动化测试需要比手动测试更多的时间和资源。</li>
+<li><strong>维护</strong>：随着应用程序的变化，自动化测试需要进行维护以保持其有效性，而手动测试则更易于适应变化而无需额外设置。</li>
+<li><strong>可扩展性</strong>：自动化测试能够处理大量测试并具有可扩展性，而手动测试在这方面具有挑战性。</li>
+<li><strong>复杂性</strong>：一些复杂的用户交互可能难以自动化，手动评估可能更为合适。</li>
+<li><strong>反馈</strong>：手动测试能够提供即时的定性反馈，而自动化测试则无法做到这一点。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/use-case.md">用例</a></strong>：手动测试通常更适用于探索性、可用性和临时测试。而自动化测试则非常适用于回归、负载和性能测试等场景。</li>
+</ul>
+<p>在实践中，通常采用平衡的方法，充分发挥两种方法的优势，是最有效的策略。</p>
+<h3 id="工具和技术">工具和技术</h3>
+<h4 id="自动化测试常用的工具有哪些">自动化测试常用的工具有哪些？</h4>
+<p>一些常见的自动化测试工具包括：</p>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/selenium.md">Selenium</a></strong>：一个用于在不同浏览器和平台上进行网页应用测试的开源框架。它支持多种编程语言，如Java、C#和Python。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>WebDriver driver = new ChromeDriver();</span></span>
+<span class="line"><span>driver.get(&quot;http://www.example.com&quot;);</span></span></code></pre>
+<ul>
+<li><strong>Appium</strong>：一个用于在 iOS 和 Android 平台上自动化移动应用的开源工具。它使用 WebDriver 协议。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>DesiredCapabilities caps = new DesiredCapabilities();</span></span>
+<span class="line"><span>caps.setCapability(&quot;platformName&quot;, &quot;iOS&quot;);</span></span>
+<span class="line"><span>caps.setCapability(&quot;deviceName&quot;, &quot;iPhone Simulator&quot;);</span></span></code></pre>
+<ul>
+<li><strong>JUnit</strong>和<strong>TestNG</strong>：Java 单元测试的框架，提供注解和断言以帮助组织和运行测试。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>@Test</span></span>
+<span class="line"><span>public void testMethod() {</span></span>
+<span class="line"><span>  assertEquals(1, 1);</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/cypress.md">Cypress</a></strong>：一个基于 JavaScript 的端到端测试框架，可在浏览器中运行，实现对在浏览器中运行的任何内容的快速、简便和可靠的测试。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>describe(&#39;My First Test&#39;, () =&gt; {</span></span>
+<span class="line"><span>  it(&#39;Visits the Kitchen Sink&#39;, () =&gt; {</span></span>
+<span class="line"><span>    cy.visit(&#39;https://example.cypress.io&#39;)</span></span>
+<span class="line"><span>  })</span></span>
+<span class="line"><span>})</span></span></code></pre>
+<ul>
+<li><strong>Robot Framework</strong>：一个关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>*** Test Cases ***</span></span>
+<span class="line"><span>Valid Login</span></span>
+<span class="line"><span>    Open Browser To Login Page</span></span>
+<span class="line"><span>    Input Username    demo</span></span>
+<span class="line"><span>    Input Password    mode</span></span>
+<span class="line"><span>    Submit Credentials</span></span></code></pre>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/postman.md">Postman</a></strong>：一个用于 API 测试的工具，允许用户发送 HTTP 请求和分析响应，创建自动化测试，并与 CI/CD 流水线集成。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  &quot;id&quot;: &quot;f2955b9f-da77-4f80-8f1c-9f8b0d8f2b7d&quot;,</span></span>
+<span class="line"><span>  &quot;name&quot;: &quot;API Test&quot;,</span></span>
+<span class="line"><span>  &quot;request&quot;: {</span></span>
+<span class="line"><span>    &quot;method&quot;: &quot;GET&quot;,</span></span>
+<span class="line"><span>    &quot;url&quot;: &quot;https://api.example.com/v1/users&quot;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<ul>
+<li><strong>Cucumber</strong>：支持行为驱动开发（BDD），允许使用普通语言规定应用程序行为。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Feature: Login functionality</span></span>
+<span class="line"><span>  Scenario: Successful login with valid credentials</span></span>
+<span class="line"><span>    Given the user is on the login page</span></span>
+<span class="line"><span>    When the user enters valid credentials</span></span>
+<span class="line"><span>    Then the user is redirected to the homepage</span></span></code></pre>
+<p>这些工具提供了各种不同测试需求的能力，从单元测试和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/integration-testing.md">集成测试</a>到端到端和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/api-testing.md">API 测试</a>。</p>
+<h4 id="这些工具之间有什么区别">这些工具之间有什么区别？</h4>
+<p>不同的自动化测试工具具有独特的特性、功能和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/use-case.md">用例</a>。以下是简要的比较：</p>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/selenium.md">Selenium</a></strong>：用于在不同浏览器和平台上测试 Web 应用程序的开源工具。支持多种编程语言，并与各种框架集成。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>WebDriver driver = new ChromeDriver();</span></span>
+<span class="line"><span>driver.get(&quot;http://www.example.com&quot;);</span></span></code></pre>
+<ul>
+<li><strong>QTP/UFT (统一的 <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/functional-testing.md">功能测试</a>)</strong>：Micro Focus 提供的商业工具，用于功能和回归测试，主要针对桌面和 Web 应用程序。它使用 VBScript，并以其录制和回放功能而闻名。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Browser(&quot;Example&quot;).Page(&quot;Home&quot;).Link(&quot;Login&quot;).Click</span></span></code></pre>
+<ul>
+<li><strong>TestComplete</strong>：另一款商业工具，支持桌面、移动和 Web 应用程序。它提供基于脚本和关键字驱动的测试，并支持各种脚本语言。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sys.Browser(&quot;*&quot;).Page(&quot;http://www.example.com&quot;).Link(&quot;Login&quot;).Click();</span></span></code></pre>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/C/cypress.md">Cypress</a></strong>：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。它在相同的运行循环中运行测试，提供实时反馈和更快的测试执行。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>cy.visit(&#39;http://www.example.com&#39;);</span></span>
+<span class="line"><span>cy.contains(&#39;Login&#39;).click();</span></span></code></pre>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jest.md">Jest</a></strong>：一个专注于简单性的 JavaScript 测试框架，支持单元和集成测试。它与 React 和其他现代 JavaScript 库兼容。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>test(&#39;adds 1 + 2 to equal 3&#39;, () =&gt; {</span></span>
+<span class="line"><span>  expect(sum(1, 2)).toBe(3);</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<ul>
+<li><strong>Appium</strong>：一个用于自动化测试移动应用程序的开源工具。支持原生、混合和移动 Web 应用程序，并与任何测试框架一起使用。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>driver.findElement(By.id(&quot;com.example:id/login&quot;)).click();</span></span></code></pre>
+<ul>
+<li><strong>Robot Framework</strong>：一个使用表格测试数据语法的关键字驱动测试自动化框架。对于不熟悉编程的人来说，学习起来很容易，并与 Selenium 进行 Web 测试集成。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>*** Test Cases ***</span></span>
+<span class="line"><span>Login Test</span></span>
+<span class="line"><span>    Open Browser    http://www.example.com    Chrome</span></span>
+<span class="line"><span>    Click Link    Login</span></span></code></pre>
+<p>每个工具都有其优势，选择通常取决于被测试应用程序、首选的编程语言以及测试过程的具体要求。</p>
+<h4 id="如何为特定的测试任务选择正确的工具">如何为特定的测试任务选择正确的工具？</h4>
+<p>在选择适用于特定测试任务的正确工具时，需要考虑多个因素：</p>
+<ul>
+<li><strong>兼容性</strong>：确保工具支持您应用的技术栈，如 Web、移动或桌面。</li>
+<li><strong>可用性</strong>：选择符合团队技能的工具。如果学习曲线陡峭，可能会妨碍生产力。</li>
+<li><strong>集成性</strong>：工具应能够与已有工具和工作流（如版本控制、CI/CD 流水线和问题跟踪系统）无缝集成。</li>
+<li><strong>可扩展性</strong>：考虑工具是否能够应对应用规模和复杂性的增长。</li>
+<li><strong>灵活性</strong>：具备编写自定义功能或与其他工具集成的能力，这对于处理复杂的测试场景至关重要。</li>
+<li><strong>报告功能</strong>：详细的报告和分析有助于迅速发现趋势并准确定位问题。</li>
+<li><strong>支持与社区</strong>：强大的社区和良好的供应商支持对于解决问题和保持工具更新至关重要。</li>
+<li><strong>成本</strong>：评估工具的总体成本，包括许可、维护和培训成本，以确保符合预算。</li>
+<li><strong>性能</strong>：工具应能够快速高效地执行测试，以适应迅速的开发周期。</li>
+<li><strong>可靠性</strong>：选择具有稳定记录的工具，以避免测试失败或结果不一致。</li>
+</ul>
+<p>通过在这些因素和测试任务的具体需求之间进行权衡，您可以选择一个提高测试效率和效果的工具。请记得定期重新评估您的选择，因为需求和工具本身都在不断发展。</p>
+<h4 id="自动化测试中常用的技术有哪些">自动化测试中常用的技术有哪些？</h4>
+<p>自动化测试 中的一些常见技术包括：</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/page-object-model">页面对象模型</a> (POM)</strong>：在类中封装页面元素和交互，以促进代码重用和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/maintainability">可维护性</a>。</p>
+</li>
+<li>
+<p><strong>模块化测试</strong>：将测试分解成较小、可管理的模块，具有独立的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-script.md">测试脚本</a>，增强<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/maintainability">可维护性</a>和可扩展性。</p>
+</li>
+<li>
+<p><strong>混合测试框架</strong>：结合各种测试方法，如关键字驱动和数据驱动，以发挥它们的优势。</p>
+</li>
+<li>
+<p><strong>行为驱动开发 (<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/bdd">BDD</a>)</strong>：使用自然语言描述定义应用程序的行为，促进各方之间的沟通。</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-driven-development">测试驱动开发</a> (TDD)</strong>：在实际编码之前编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-case.md">测试用例</a>，确保软件在测试方面构建。</p>
+</li>
+<li>
+<p><strong>数据驱动测试</strong>：使用外部数据源将多个数据集输入到<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-case.md">测试用例</a>中，提高覆盖范围和效率。</p>
+</li>
+<li>
+<p><strong>关键字驱动测试</strong>：使用代表操作和数据的关键字定义测试，使测试更易于理解和维护。</p>
+</li>
+<li>
+<p><strong>持续测试</strong>：将测试集成到持续集成和交付流水线中，实时提供有关构建健康状况的反馈。</p>
+</li>
+<li>
+<p><strong>并行测试</strong>：在不同环境中同时执行多个测试，减少<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/test-execution">测试执行</a>所需的时间。</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/api-testing">API 测试</a></strong>：专注于直接测试<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/api.md">API</a>的功能、可靠性、性能和安全性，通常比 UI 测试更低级别。</p>
+</li>
+<li>
+<p><strong>模拟和插桩</strong>：使用模拟对象和插桩来模拟真实组件的行为，允许对系统的部分进行隔离测试。</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/visual-regression-testing">视觉回归测试</a></strong>：通过将当前屏幕截图与基准图像进行比较，检测意外的视觉变化。</p>
+</li>
+<li>
+<p><strong>负载和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/performance-testing">性能测试</a></strong>：模拟用户对软件的负载，检查在不同条件下的性能和可扩展性。</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/wiki/security-testing">安全测试</a></strong>：用于探测应用程序漏洞的自动化脚本，确保软件受到潜在攻击的保护。</p>
+</li>
+</ul>
+<p>这些技术可以结合和定制以满足特定项目要求，确保自动化测试过程的稳健和高效。</p>
+<h4 id="如何将自动化测试工具集成到-cicd-流水线中">如何将自动化测试工具集成到 CI/CD 流水线中？</h4>
+<p>将自动化测试工具集成到 CI/CD 流水线中涉及以下几个步骤：</p>
+<ol>
+<li><strong>选择适当的工具</strong>，确保能够与您的 CI/CD 服务器（例如 Jenkins、GitLab CI、CircleCI）无缝集成。</li>
+<li><strong>配置 CI/CD 服务器</strong>以触发自动化测试。通常通过在流水线配置文件中定义作业或阶段来完成。</li>
+<li><strong>设置<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a></strong>，用于运行自动化测试。这可以是专用的测试服务器、容器化环境或基于云的服务。</li>
+<li><strong>编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a></strong>，确保与 CI/CD 环境兼容，可以在无需手动干预的情况下执行。</li>
+<li>将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>**存储在版本控制系统中，与应用程序代码一起，以保持版本控制和更改跟踪。</li>
+<li>为自动化测试定义触发器，例如在每次提交时、每夜构建时或按需触发。</li>
+<li>作为流水线的一部分执行测试，并确保将测试结果报告回 CI/CD 服务器。</li>
+<li>通过设置通知、仪表板或与其他工具集成进行结果分析来处理测试结果。</li>
+<li>管理<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>**和依赖项，以确保在测试运行之间保持一致性。</li>
+<li>在运行测试之前自动化应用程序的部署到测试环境。</li>
+</ol>
+<p>Jenkinsfile 的示例流水线配置片段：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pipeline</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">    agent</span><span style="color:#9ECBFF"> any</span></span>
+<span class="line"><span style="color:#B392F0">    stages</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">        stage(</span><span style="color:#B392F0">&#39;Test&#39;</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">            steps</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">                //</span><span style="color:#9ECBFF"> Checkout</span><span style="color:#9ECBFF"> code</span></span>
+<span class="line"><span style="color:#B392F0">                checkout</span><span style="color:#9ECBFF"> scm</span></span>
+<span class="line"><span style="color:#B392F0">                //</span><span style="color:#9ECBFF"> Run</span><span style="color:#9ECBFF"> tests</span></span>
+<span class="line"><span style="color:#B392F0">                script</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">                    //</span><span style="color:#9ECBFF"> Execute</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> command</span></span>
+<span class="line"><span style="color:#B392F0">                    sh</span><span style="color:#9ECBFF"> &#39;npm test&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">                }</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#B392F0">            post</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">                always</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">                    //</span><span style="color:#9ECBFF"> Publish</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> results</span></span>
+<span class="line"><span style="color:#B392F0">                    junit</span><span style="color:#9ECBFF"> &#39;**/target/surefire-reports/TEST-*.xml&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">                }</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>确保流水线设计为在测试失败时<strong>停止部署</strong>，以保持发布的质量。定期<strong>审查和更新</strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>和脚本，以适应应用程序的变化。</p>
+<h3 id="测试用例和脚本">测试用例和脚本</h3>
+<h4 id="如何开发自动化测试的测试用例">如何开发自动化测试的测试用例？</h4>
+<p>为自动化测试制定<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>涉及以下几个步骤：</p>
+<ol>
+<li>
+<p><strong>确定测试需求</strong>：分析待测试的应用程序（AUT），确定测试需求。集中关注高风险或频繁更改的功能、功能和区域。</p>
+</li>
+<li>
+<p><strong>明确测试目标</strong>：清晰地说明每个<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>应验证的内容。目标应具体、可测量，并与用户故事或需求对齐。</p>
+</li>
+<li>
+<p><strong>设计<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a></strong>：创建详细的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，包括前提条件、<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>、执行的操作和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/expected-result.md">预期结果</a>。确保它们具有可重用性和可维护性。</p>
+</li>
+<li>
+<p><strong>使用参数进行测试</strong>：使用参数使<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>支持数据驱动，以便使用相同脚本测试多个数据集。</p>
+</li>
+<li>
+<p><strong>制定断言</strong>：实施断言来检查 AUT 的响应是否符合预期结果。断言对于确定测试的通过/失败状态至关重要。</p>
+</li>
+<li>
+<p><strong>编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a></strong>：使用自动化工具或框架编写脚本。遵循编码的最佳实践，例如使用<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/page-object-model.md">页面对象模型</a>分离 UI 测试的测试逻辑和页面特定代码。</p>
+</li>
+<li>
+<p><strong>设置<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a></strong>：配置测试运行的必要环境，包括浏览器、<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/database.md">数据库</a>和其他任何依赖项。</p>
+</li>
+<li>
+<p><strong>实施<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>逻辑</strong>：定义测试的执行方式，包括顺序、依赖关系以及前/后测试步骤的处理。</p>
+</li>
+<li>
+<p><strong>审查和改进</strong>：同行审查或演练可帮助及早发现问题。根据需要进行重构，以提高清晰度、效率和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/maintainability.md">可维护性</a>。</p>
+</li>
+<li>
+<p><strong>版本控制</strong>：将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>和脚本存储在版本控制系统中，以跟踪更改并与团队成员合作。</p>
+</li>
+<li>
+<p><strong>与 CI/CD 集成</strong>：将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>的自动化执行作为 CI/CD 流水线的一部分，以确保在每次构建或发布时对 AUT 进行持续验证。</p>
+</li>
+</ol>
+<p>通过遵循这些步骤，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师可以创建健壮、可靠且有效的自动化<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，从而提高软件产品的整体质量。</p>
+<h4 id="自动化测试中的测试脚本是什么">自动化测试中的测试脚本是什么？</h4>
+<p>在自动化测试中，**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>**是由自动化工具执行的一组指令，用于验证软件应用程序的功能。它本质上是一个自动执行手动<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>步骤的程序。</p>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>与被测试的应用程序（AUT）进行交互，输入数据，并将预期结果与实际结果进行比较。它们是用自动化工具支持的编程或脚本语言编写的，如 JavaScript、Python 或 Ruby。</p>
+<p>以下是使用假设的测试框架，用 JavaScript 编写的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>的简化示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Login Page Tests&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should allow a user to log in&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    goToLoginPage</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    enterUsername</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;testUser&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    enterPassword</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;password123&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    submitLoginForm</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isLoggedIn</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>该脚本描述了一个登录页面的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，其中导航到登录页面，输入凭据，提交表单，并检查登录是否成功。</p>
+<p>有效的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>应具备以下特点：</p>
+<ul>
+<li><strong>可重用性</strong>：像 <code>goToLoginPage()</code> 这样的函数可以在多个测试用例中使用。</li>
+<li><strong>可维护性</strong>：在 AUT 更改时应易于更新。</li>
+<li><strong>可读性</strong>：清晰而简洁，以便其他工程师能够理解和修改。</li>
+<li><strong>可靠性</strong>：它们产生一致的结果，并能够优雅地处理异常情况。</li>
+</ul>
+<p>脚本通常组织成<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>以便更好地进行管理，并可以作为独立运行或作为更大测试运行的一部分。它们对于持续集成和交付流水线至关重要，允许对软件构建进行频繁和自动化的验证。</p>
+<h4 id="如何确保您的测试用例涵盖所有可能的场景">如何确保您的测试用例涵盖所有可能的场景？</h4>
+<p>为确保<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>涵盖所有可能的情景，请采取以下策略：</p>
+<ul>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/equivalence-partitioning.md">等价分区</a></strong>：将输入划分为逻辑组，其中相同行为的测试仅针对每个分区中的一个值进行。</li>
+<li><strong>边界值分析</strong>：专注于输入范围边界的极端情况。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/decision-table-testing.md">决策表测试</a></strong>：创建表格以探讨不同输入组合及其对应操作。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/state-transition-testing.md">状态转换测试</a></strong>：将场景建模为系统的各种状态，识别变换和全面覆盖的条件。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/use-case-testing.md">用例测试</a></strong>：从真实用例中衍生测试用例，以确保覆盖用户的各种路径。</li>
+<li><strong>组合测试</strong>：应用成对测试等工具，检查参数之间的相互作用。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/risk-based-testing.md">基于风险的测试</a></strong>：根据潜在故障的风险及其影响对测试进行优先排序。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/exploratory-testing.md">探索性测试</a></strong>：通过手动的探索性会话补充自动化测试，以揭示未预料到的行为。</li>
+<li><strong>基于模型的测试</strong>：从表示期望行为的系统模型生成测试用例。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/C/code-coverage.md">代码覆盖</a>分析</strong>：使用工具衡量测试执行的代码覆盖范围，力求获得高覆盖率指标，包括语句、分支和路径覆盖。</li>
+</ul>
+<p>将这些策略融入测试设计过程中，打造一个全面的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>。定期审查和更新<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，以适应应用程序及其使用模式的变化。</p>
+<h4 id="编写测试脚本的最佳实践有哪些">编写测试脚本的最佳实践有哪些？</h4>
+<p>编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>的最佳实践包括：</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/maintainability.md">可维护性</a></strong>：使用注释解释复杂逻辑，编写清晰易懂的代码。使用页面对象或类似的模式将测试逻辑与 UI 结构分离，使脚本更易更新。</p>
+</li>
+<li>
+<p><strong>可重用性</strong>：为常见操作创建可重用的函数或方法。这减少了重复，简化了更新。</p>
+</li>
+<li>
+<p><strong>模块化</strong>：将测试拆分为较小的独立模块，可以组合成更大的测试。这提高了可读性和可调试性。</p>
+</li>
+<li>
+<p><strong>数据分离</strong>：将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>与脚本分开。使用外部数据源，如 JSON、XML 或 CSV 文件作为输入数据，这有助于轻松更新和进行数据驱动测试。</p>
+</li>
+<li>
+<p><strong>版本控制</strong>：将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>存储在版本控制系统中，以跟踪更改，与他人协作，并在必要时恢复到先前的版本。</p>
+</li>
+<li>
+<p><strong>命名约定</strong>：对<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>和函数使用描述性名称，以便一目了然地传达其目的。</p>
+</li>
+<li>
+<p><strong>错误处理</strong>：实施健壮的错误处理来处理意外事件。测试应该以清晰的错误消息优雅地失败。</p>
+</li>
+<li>
+<p><strong>断言</strong>：使用清晰具体的断言来确保测试准确验证预期结果。</p>
+</li>
+<li>
+<p><strong>并行执行</strong>：设计测试在可能的情况下并行运行，以加快执行时间。</p>
+</li>
+<li>
+<p><strong>清理</strong>：始终清理<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>并将系统恢复到其原始状态，以避免影响后续测试。</p>
+</li>
+<li>
+<p><strong>报告</strong>：生成详细的日志和报告，以深入了解测试结果并便于故障排除。</p>
+</li>
+<li>
+<p><strong>持续集成</strong>：将<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>集成到 CI/CD 流水线中，以确保它们定期执行并提供有关代码更改的即时反馈。</p>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Example of a reusable function in TypeScript</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> login</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">username</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">password</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // Code to perform login action</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>遵循这些实践将带来健壮、可靠且高效的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>脚本。</p>
+<h4 id="随着时间的推移您如何管理和维护测试用例和脚本">随着时间的推移，您如何管理和维护测试用例和脚本？</h4>
+<p>如何随着时间的推移管理和维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>和脚本需要结合<strong>良好实践</strong>、<strong>组织</strong>和<strong>工具</strong>。以下是一些策略：</p>
+<ul>
+<li><strong>版本控制</strong>：使用像 Git 这样的版本控制系统跟踪更改，与团队成员合作，并在必要时回滚。</li>
+<li><strong>模块化设计</strong>：以可重用的组件方式编写测试，以最小化维护工作并促进更新。</li>
+<li><strong>文档</strong>：清晰地记录测试用例和脚本，包括目的、输入、预期结果和更改历史。</li>
+<li><strong>重构</strong>：定期对测试进行重构，以提高清晰度、效率和可维护性，减少冗余并改善结构。</li>
+<li><strong>代码审查</strong>：对测试脚本进行同行审查，确保质量并符合标准。</li>
+<li><strong>自动化检查</strong>：实施自动化的清理和代码分析工具，以执行编码标准并及早检测问题。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理</strong>：使用数据工厂或固定装置等策略有效地管理测试数据，确保其保持相关性和准确性。</li>
+<li><strong>持续集成</strong>：将测试脚本集成到 CI/CD 管道中，以确保它们定期执行并与代码库兼容。</li>
+<li><strong>监控</strong>：监控测试执行结果，迅速识别和解决不稳定性或失败。</li>
+<li><strong>优先级</strong>：根据测试的关键性，优先处理维护任务，重点关注应用程序的高影响区域。</li>
+<li><strong>淘汰策略</strong>：明确制定淘汰和删除过时测试的策略，以避免混乱和困扰。</li>
+</ul>
+<p>通过采用这些策略，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>工程师可以确保他们的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>随着时间的推移保持强大</p>
+<p>、相关和可靠，为软件开发生命周期提供持续的价值。</p>
+<h3 id="自动化测试的类型">自动化测试的类型</h3>
+<h4 id="什么是单元测试">什么是单元测试？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/unit-testing.md">单元测试</a>是一种实践，用于测试应用程序中最小可测试的部分，通常是函数或方法，而这些部分与系统的其余部分隔离开来。这确保每个组件都按照预期的方式运行。通常，开发人员在编写代码时编写并运行单元测试，以便及时获得对其更改的反馈。</p>
+<p>在<strong>自动化测试</strong>的背景下，单元测试通常会自动执行，通常作为构建过程的一部分或通过<strong>持续集成</strong>（CI）系统执行。它们对于在开发周期的早期识别问题非常重要，这有助于减少修复<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>的成本和时间。</p>
+<p>单元测试的特点是其范围（狭窄，专注于代码的单一“单元”）和速度（执行速度快）。它们使用<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/unit-testing.md">单元测试</a>框架编写，例如 Java 的 JUnit，.NET 的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/N/nunit.md">NUnit</a>，或 JavaScript 的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jest.md">Jest</a>。这些框架提供了编写测试的结构，并包含断言以验证代码的行为是否符合预期。</p>
+<p>以下是使用<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jest.md">Jest</a>在 TypeScript 中编写的简单单元测试示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { add } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;./math&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;adds 1 + 2 to equal 3&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>单元测试应该是<strong>可维护</strong>和<strong>可靠</strong>的，不依赖于外部系统或状态。它们是健壮的自动化测试策略的基本组成部分，有助于提高软件的整体健康和质量。</p>
+<h4 id="什么是集成测试">什么是集成测试？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/integration-testing.md">集成测试</a>是<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-testing.md">软件测试</a>流程中的一环，它将软件应用程序的个体单元或组件组合在一起，作为一个组进行测试。其主要目标是验证集成的模块之间的功能、性能和可靠性。</p>
+<p>在自动化测试中，集成测试是经过脚本编写的，通常并入构建过程，以确保新的更改不会破坏组件之间的交互。这些测试可能比单元测试更复杂，因为它们需要配置环境，让多个组件进行交互。</p>
+<p>通常使用与单元测试相同或类似的工具编写自动化集成测试，但它们侧重于组件之间的交互点，以确保在组合时数据流、<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/api.md">API</a>合同和用户界面能够按预期工作。它们可以在持续集成环境中执行，以在每次提交后或定期提供关于应用程序集成状态的反馈。</p>
+<p><strong>在 TypeScript 中的自动化集成测试示例：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { expect } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;chai&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { fetchData, processInput } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;./integrationComponents&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Integration Test&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should process input and return expected data&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> input</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;test input&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> processedData</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> processInput</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> fetchedData</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchData</span><span style="color:#E1E4E8">(processedData);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(fetchedData).to.be.</span><span style="color:#B392F0">an</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;object&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(fetchedData).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;key&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;expected value&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>该示例演示了一个简单的集成测试，其中<code>processInput</code>和<code>fetchData</code>是两个需要正确协同工作的单独组件。该测试确保一个组件处理的数据适用于另一个组件获取<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/expected-result.md">期望的结果</a>。</p>
+<h4 id="什么是系统测试">什么是系统测试？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/system-testing.md">系统测试</a>是一个<strong>高层次</strong>的测试阶段，对完整的、集成的软件系统进行评估，以验证其是否符合指定的要求。它在**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/integration-testing.md">集成测试</a><strong>之后和</strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/acceptance-testing.md">验收测试</a>**之前进行，主要关注各种条件下的系统行为和输出。</p>
+<p>在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/system-testing.md">系统测试</a>期间，应用程序在一个与生产环境非常相似的环境中进行测试，包括**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/database.md">数据库</a>交互**、<strong>网络通信</strong>和<strong>服务器交互</strong>。其目标是识别仅在组件集成和在系统范围上下文中交互时才会出现的缺陷。</p>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/system-testing.md">系统测试</a>的关键方面包括：</p>
+<ul>
+<li><strong>功能性测试</strong>: 确保软件的行为符合预期。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/P/performance-testing.md">性能测试</a></strong>: 检查系统在负载下的响应时间、吞吐量和稳定性。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/security-testing.md">安全测试</a></strong>: 验证安全功能是否保护数据并按预期维护功能。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/usability-testing.md">可用性测试</a></strong>: 评估用户界面和用户体验。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/C/compatibility-testing.md">兼容性测试</a></strong>: 确认软件在不同设备、浏览器和操作系统上的工作。</li>
+</ul>
+<p>自动化<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/system-testing.md">系统测试</a>可以显著<strong>减少执行重复但必要检查所需的时间</strong>，从而实现更频繁和彻底的测试周期。它特别适用于**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>**，以确保新更改没有对现有功能产生不良影响。然而，它可能无法完全替代<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/manual-testing.md">手工测试</a>，特别是对于探索性、可用性和临时测试场景。</p>
+<h4 id="什么是回归测试">什么是回归测试？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>是在进行增强、补丁或配置更改等变更后，验证先前开发和测试的软件仍然在正确执行的过程。它确保新的代码更改没有对现有功能产生不良影响。在<strong>自动化测试</strong>的背景下，回归测试通常作为经常运行的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>的一部分执行，通常在 CI/CD 流水线中运行，以提供有关代码修改影响的快速反馈。</p>
+<p>自动化回归测试对于随着代码库的增长和演变而保持软件稳定性至关重要。它允许对软件行为进行一致和可重复的验证，这比手动<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>更为高效。可以在各种环境和配置上运行自动化测试，以确保广泛的覆盖范围。</p>
+<p>以下是一个简单的 JavaScript 测试框架（如<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jest.md">Jest</a>）中的自动化回归测试的示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Calculator&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;should add two numbers correctly&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>在这个例子中，<code>add</code>函数是先前经过测试的软件的一部分。回归测试将确保在对代码库进行更改后，<code>add</code>函数仍然产生<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/E/expected-result.md">期望的结果</a>。</p>
+<p>有效的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>通常涉及选择涵盖关键功能的相关<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，频繁运行这些测试，并随着软件演进而更新它们。这有助于及早识别缺陷，降低引入<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">错误</a>到生产环境的风险。</p>
+<h4 id="黑盒测试和白盒测试有什么区别">黑盒测试和白盒测试有什么区别？</h4>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/black-box-testing.md">黑盒测试</a>和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/W/white-box-testing.md">白盒测试</a>是两种评估软件功能和完整性的不同方法。</p>
+<p>**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/black-box-testing.md">黑盒测试</a>**将软件视为不透明的实体，主要关注输入和输出，而不考虑内部代码结构。测试人员根据规范验证功能，确保系统在各种条件下表现如预期。这种方法对内部工作毫不知情，因此被称为“黑盒”。</p>
+<p>相反，**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/W/white-box-testing.md">白盒测试</a>**要求了解内部逻辑。测试人员检查代码库以确保其正常运作和结构，通常寻找特定条件，如循环执行、分支覆盖和路径覆盖。这种方法也被称为清晰、开放或透明测试，因为内部代码是可见的。</p>
+<p>虽然这两种方法都可以自动化，但黑盒测试通常是更高层次的，例如用户<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/interface-testing.md">界面测试</a>，而白盒测试则更注重底层，如单元测试。黑盒自动化脚本模拟用户交互，而白盒脚本则直接与应用程序代码交互。</p>
+<p>在实践中，结合这两种方法提供了全面的测试策略，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/black-box-testing.md">黑盒测试</a>验证面向用户的功能，而<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/W/white-box-testing.md">白盒测试</a>确保底层代码库的健壮性。</p>
+<h4 id="什么是端到端-e2e-测试以及为什么它很重要">什么是端到端 (e2e) 测试以及为什么它很重要？</h4>
+<p>端到端（E2E）测试是一种在仿真真实使用场景的情况下对整个应用程序进行测试的技术，包括与<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/database.md">数据库</a>、网络、硬件和其他应用程序的交互。其目的在于验证系统从头到尾的集成和数据完整性，确保应用程序在各种情境下的所有组件都表现正常。</p>
+<p><strong>E2E 测试</strong>至关重要，因为它验证系统的整体健康状况，而不同于侧重于单个组件或交互的单元测试或集成测试。它有助于捕捉在系统不同部分协同工作时可能出现的问题，这在孤立情况下可能不明显。这种测试对于直接影响用户体验或业务底线的关键工作流程尤为重要。</p>
+<p>通过模拟真实用户场景，E2E 测试确保应用程序满足业务需求，并在生产环境中正确运行。它可以揭示由于各个子系统组合而导致的意外行为，这对于在实际环境中防止问题非常宝贵。</p>
+<p>在**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>**的背景下，E2E 测试通常作为 CI/CD 流水线的一部分执行，以确保新变更不会破坏关键功能。尽管相较于其他类型的测试，它们可能更为复杂且耗时，但在确认软件产品的可行性方面它们的重要性不可低估。</p>
+<h3 id="深层理解">深层理解</h3>
+<h4 id="什么是测试驱动开发-tdd-以及它与自动化测试有何关系">什么是测试驱动开发 (TDD) 以及它与自动化测试有何关系？</h4>
+<p><strong>测试驱动开发</strong>（TDD）是一种软件开发方法，它要求在编写代码之前先编写需要通过的测试。这一简单的循环包括：<strong>编写测试</strong>，<strong>运行测试</strong>（最初测试应该失败），<strong>编写最少量的代码</strong>以通过测试，然后在确保测试继续通过的同时<strong>重构</strong>代码。</p>
+<p>TDD 与<strong>自动化测试</strong>密切相关，因为它本质上依赖于在实现软件功能之前创建自动化测试。这些测试通常是<strong>单元测试</strong>，可以迅速运行并且易于自动化。TDD 循环确保每个新功能都始于相应的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，这有助于随着时间的推移构建一套自动化测试。</p>
+<p>这种方法对<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>产生了几个影响：</p>
+<ul>
+<li><strong>持续反馈</strong>：自动化测试为代码变更提供即时反馈。</li>
+<li><strong>回归安全性</strong>：随着代码库的增长，测试套件有助于防止回归问题。</li>
+<li><strong>设计影响</strong>：首先编写测试可以推动更好的软件设计和架构。</li>
+<li><strong>重构信心</strong>：自动化测试使开发人员能够在重构代码时确保现有功能仍然完好。</li>
+</ul>
+<p>TDD 通过确保测试从开发过程的一开始就被考虑，而不是事后的事项，来补充其他自动化测试策略。它鼓励一种测试纪律，有助于构建更高质量的软件，并且与敏捷和持续集成/持续部署（CI/CD）工作流紧密配合。</p>
+<h4 id="什么是行为驱动开发-bdd-以及它与自动化测试有何关系">什么是行为驱动开发 (BDD) 以及它与自动化测试有何关系？</h4>
+<p>行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）是一种敏捷软件开发过程，鼓励开发人员、质量保障（QA）以及非技术或业务参与者在软件项目中进行协作。<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>通过与利益相关者进行讨论，专注于获得对期望的软件行为的清晰理解。它通过使用非程序员可以阅读的自然语言编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>来扩展<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-driven-development.md">测试驱动开发</a>（TDD）。</p>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>与自动化测试相关联，提供了编写测试的框架。测试用例使用**特定领域语言（DSL）**编写，通常使用类似<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/G/gherkin.md">Gherkin</a>的语言，允许以人类可读的方式描述软件行为。这些描述随后可以由 Cucumber 或 SpecFlow 等工具自动化。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">Feature</span><span style="color:#E1E4E8">: User login</span></span>
+<span class="line"><span style="color:#B392F0">  Scenario</span><span style="color:#E1E4E8">: Successful login </span><span style="color:#F97583">with</span><span style="color:#E1E4E8"> valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Given the user is on the login page</span></span>
+<span class="line"><span style="color:#E1E4E8">    When the user enters valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Then the user is redirected to the homepage</span></span></code></pre>
+<p>在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>中，场景在开发开始之前被定义，并作为<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>的基础。这确保了自动化测试与用户的预期行为保持一致。随着开发的进行，这些场景被转化为自动化测试，并持续执行以验证应用程序的行为是否符合预期结果。</p>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>对共享理解和清晰沟通的强调使其特别有用，以确保自动化测试是相关的、可理解的和易于维护的。它有助于弥合技术和非技术团队成员之间的差距，确保自动化测试准确反映业务需求和用户需求。</p>
+<h4 id="什么是数据驱动测试">什么是数据驱动测试？</h4>
+<p>数据驱动测试（DDT）是一种**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>**策略，其核心是使用多组输入数据执行一系列测试步骤。这一方法通过验证应用程序在广泛的输入值范围内的行为，而无需为每个数据集编写多个<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>，从而提高了<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a>。</p>
+<p>在 DDT 中，测试逻辑与<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>分离，通常存储在外部数据源中，如 CSV 文件、Excel 电子表格、XML 或<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/database.md">数据库</a>。在<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>过程中，自动化框架读取数据并将其输入<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>。</p>
+<p>下面是一个简化的伪代码示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>for each data_row in data_source:</span></span>
+<span class="line"><span>    input_values = read_data(data_row)</span></span>
+<span class="line"><span>    execute_test(input_values)</span></span>
+<span class="line"><span>    verify_results()</span></span></code></pre>
+<p>DDT 特别适用于应用程序行为在不同数据输入下保持一致的情况，并且对于确保测试涵盖边缘情况和边界条件非常重要。此外，它还简化了更新测试的过程，因为<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>的更改不需要修改<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>。</p>
+<p>然而，需要谨慎设计 DDT，以避免产生维护负担，因为<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>的数量和复杂性可能会显著增长。妥善管理<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>是数据驱动测试成功的关键。</p>
+<h4 id="什么是关键字驱动测试">什么是关键字驱动测试？</h4>
+<p>关键字驱动测试，又称表驱动测试或基于动作关键字的测试，是一种在自动化测试中采用的方法，其中使用一组预定义的关键字编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>。这些关键字代表了可以在被测试的应用程序（AUT）上执行的操作。每个关键字都对应执行特定操作的函数或方法，例如点击按钮、输入文本或验证结果。</p>
+<p>在关键字驱动测试中，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>不是用编程语言编写的。相反，它们由一系列关键字组成，易于阅读和理解。这种抽象使得没有编程专业知识的个人能够设计和执行测试，促进了不同利益相关者之间的协作。</p>
+<p>以下是关键字驱动<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>可能的简化示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>| Keyword       | Parameter 1    | Parameter 2       |</span></span>
+<span class="line"><span>|---------------|----------------|-------------------|</span></span>
+<span class="line"><span>| OpenBrowser   | Chrome         |                   |</span></span>
+<span class="line"><span>| NavigateTo    | https://example.com |             |</span></span>
+<span class="line"><span>| ClickButton   | Submit         |                   |</span></span>
+<span class="line"><span>| VerifyText    | Thank you for submitting! |        |</span></span></code></pre>
+<p><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a>框架解释这些关键字并将它们转换为对 AUT 的操作。<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>的设计与<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>的实施分离，使得<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>更容易维护和扩展。当关键字的底层实现发生变化时，只需更新相关的函数或方法，而不必触及<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>本身。</p>
+<h4 id="人工智能和机器学习在自动化测试中的作用是什么">人工智能和机器学习在自动化测试中的作用是什么？</h4>
+<p>人工智能（AI）和机器学习（ML）正在改变<strong>自动化测试</strong>，提升了其能力和效率。<strong>基于 AI 的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">测试自动化</a><strong>可以</strong>分析应用程序数据</strong>以预测和优先考虑<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>，检测依赖关系，并识别存在更高缺陷可能性的区域。这种预测性分析有助于优化<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>，减少冗余，并聚焦于高风险区域。</p>
+<p><strong>机器学习算法</strong>可以从过去的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>中<strong>学习模式</strong>并<strong>预测未来的故障</strong>。通过随着时间的推移分析结果，ML 可以提高测试的准确性，并适应应用程序的变化，而无需手动干预进行测试维护。</p>
+<p><strong>自愈测试</strong>利用 AI 在检测到应用程序的 UI 或<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/api.md">API</a>发生变化时自动更新<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-script.md">测试脚本</a>，极大减轻了维护负担。这种能力确保测试随着应用程序的演进而保持稳健和可靠。</p>
+<p>增强 AI 的工具还可以提供<strong>视觉测试功能</strong>，比较应用程序的视觉方面，检测传统自动化测试可能未能捕捉到的 UI 差异。这对于确保跨设备和跨浏览器的一致性尤为有用。</p>
+<p>此外，AI 可以协助<strong>测试生成</strong>，通过分析用户行为和应用程序使用模式创建有意义的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>。这可以实现包括真实场景的更全面的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖</a>。</p>
+<p>总的来说，AI 和 ML 在自动化测试中带来更智能的测试规划、维护、执行和分析，从而实现更高效和有效的测试流程。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/qa-glossary-wiki/qa-glossary-wiki-automated-testing/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

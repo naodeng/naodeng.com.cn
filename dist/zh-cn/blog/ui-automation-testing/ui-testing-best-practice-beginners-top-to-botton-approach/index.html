@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学"><meta property="og:site_name" content="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/UI-Testing-best-practice-beginners-top-to-botton-approach-cover.BlGkLW76_1kB1t5.webp" alt="UI 测试最佳实践的初学者篇：从金字塔顶层入手测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>UI 测试最佳实践的初学者篇：从金字塔顶层入手测试</h1> <time datetime="2024-01-22T09:06:44.000Z" data-astro-cid-v3cnrnum> 2024/1/22 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>UI Testing</span><span class="tag" data-astro-cid-v3cnrnum>Best Practices</span> </div> </header> <p>文章由 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a> 内容翻译而来，大家有条件的话可以去 <a href="https://github.com/NoriSte/ui-testing-best-practices">UI 测试最佳实践项目</a>阅读原文。</p>
+<h2 id="从金字塔顶层入手测试">从金字塔顶层入手测试</h2>
+<p>原文链接：<a href="https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.md">https://github.com/NoriSte/ui-testing-best-practices/blob/master/sections/beginners/top-to-bottom-approach.md</a></p>
+<h3 id="一段简要说明">一段简要说明</h3>
+<p>当你是一位经验丰富的测试员时，处理测试套件是一件轻松的事情。但学习如何正确地测试，要测试什么、避免什么，选择哪种类型的测试等等，并不那么容易。</p>
+<p><strong>测试在一开始是昂贵的</strong>。一切都是新的，你尝试实现的例子不起作用，你不清楚为什么测试失败，它与你的代码有什么关系，等等。</p>
+<p>我们都熟知测试金字塔，通常，我们从底部开始构建。</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/bottom-to-top-approach.jpg?raw=true" alt="从下到上的方法意味着从单元测试开始。"/>
+<em>标准测试金字塔方法：从下到上。</em></p>
+<p>从底部开始构建金字塔是有道理的。从单元测试入手更容易，因为它们运行快速，不需要复杂的上下文或工具。一个“单元”（无论你用“单元”表示什么：一个函数、一个组件等）仅包含几行代码，通常几乎没有依赖项（或根本没有依赖项）等等。</p>
+<p>这种方法的最大<strong>缺陷</strong>是什么？基本上是<strong>信心</strong>。</p>
+<p>测试关乎信心，以及在高信心但较慢的测试与低信心但较快的测试之间的权衡。</p>
+<p>如果你是测试领域的新手，术语“信心”可能不太清晰，那么你如何确保你正在开发的<strong>应用程序</strong>在测试通过时<strong>是有效的</strong>？这就是<strong>测试信心</strong>。</p>
+<p>为什么单元测试提供的信心如此之少？一些例子：</p>
+<ul>
+<li>如果<code>isValidEmail</code>函数通过了测试，你能确定你的前端应用程序的注册表单有效吗？</li>
+<li>如果<code>Input</code> React 组件通过了测试，你能确定注册表单也有效吗？</li>
+<li>如果整个<code>RegisterForm</code>组件通过了测试，你能确定用户可以注册吗？</li>
+</ul>
+<p>答案是否定的。整个应用程序由许多单元相互集成而成，还不包括一些呈现（CSS）问题，这可能会因为一个 z-index 较高的图像遮挡了提交按钮而阻止用户注册。</p>
+<p>再次谈论测试新手的经验缺失（就像我两年前一样）：<strong>每一项新事物都需要大量认知负担</strong>，而你不能同时面对太多的新事物。同时处理应用程序的常规开发、新的测试主题、单元测试世界和 UI 测试（后两者需要不同的工具和努力）是很困难的。</p>
+<p>看看这张详尽的图片，它来自
+<a href="https://github.com/goldbergyoni/javascript-testing-best-practices">JavaScript 和 Node.js 测试最佳实践</a>
+项目：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/headspace.jpg?raw=true" alt="精力和时间主要用于开发阶段，少数可用于编写测试。"/>
+<em>由 <a href="https://goldbergyoni.com/">Yoni Goldberg</a> 提供，请访问
+<a href="https://testjavascript.com/">testjavascript.com</a>，并在
+<a href="https://github.com/goldbergyoni/javascript-testing-best-practices">JavaScript 和 Node.js 测试最佳实践</a>
+资源库。</em></p>
+<p>对于经验丰富的开发人员来说是如此，而当你第一次接触测试领域时，情况更糟。</p>
+<h3 id="自底向上的方法的结果">自底向上的方法的结果</h3>
+<p>你不可避免地将大部分注意力放在金字塔的基础——单元测试上。你即将编写的一堆测试让你熟悉了测试的世界，但缺乏信心。你可能会发现自己在问：</p>
+<ul>
+<li>“我写的测试有什么好处呢？”</li>
+<li>“我花了一些时间与单元测试战斗，但应用程序仍然像以前一样崩溃，测试是否只是自娱自乐？”</li>
+<li>“老实说，我现在比开始测试之前更加疑惑了…”</li>
+</ul>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/unit-testing-first.jpg?raw=true" alt="测试金字塔，从下至上的方式突出每种测试，并对其给予关注。"/>
+<em>从下到上的方法不可避免地会让你把精力集中在单元测试上。</em></p>
+<p>问题并不出在你身上，而是在于对于初学者来说，采用了错误的测试方法！</p>
+<p>那么，我的建议是什么呢？<strong>从金字塔的顶部开始，首先关注 UI 测试！</strong></p>
+<p>首先，什么是 UI 测试（也称为功能测试、端到端测试等）？本质上，它是一种打开真实浏览器并与 DOM 元素交互的脚本，与真实最终用户的操作方式相同。有时候视频能够更生动地说明问题：看一看<a href="https://www.youtube.com/watch?v=gdly-oU72X0&feature=youtu.be">对 Conduit - RealWorld 项目运行的端到端测试</a>和<a href="https://www.youtube.com/watch?v=lNEMKeTYEPI&feature=youtu.be">Conio 后台的一些 UI 测试</a>。</p>
+<p>在上述视频中，你会看到一个真实的浏览器加载整个前端应用并与其进行交互。这种方法的优点包括：</p>
+<ul>
+<li>你的应用在与最终用户相同的环境（即浏览器）中进行测试，这意味着<strong>更高的信心</strong>。即使只编写一个 UI 测试，它也比一百个单元测试给你更多的信心。</li>
+<li>受测路径（用户执行的步骤，如“注册”、“创建新</li>
+</ul>
+<p>帖”等）与最终用户执行的路径相同，这意味着（对你而言）<strong>更低的认知负担</strong>，以了解你真正在测试什么。</p>
+<ul>
+<li>老实说，与自动化终端相比，自动化浏览器更有趣 😁</li>
+<li><strong>UI 测试最适用于</strong>你日常工作中<strong>大多数项目的小到中等规模</strong>。从落地页到小型 CMS：所有这些都至少需要一些 UI 测试，然而基于测试信心和你必须遵守的交付要求，你可能会对基于单元测试的测试信心和交付要求有所超越。只有少数人在 Facebook、Spotify、Netflix 等公司工作，这些公司需要严格的测试策略、代码覆盖要求等。总的来说：如果你为中型到大型产品公司工作，你可能不需要这篇文章，因为测试已经成为公司文化的核心🎉。</li>
+</ul>
+<p>当然，这种方法也有一些缺点，但我稍后会列举出来。下面是我建议的方法：</p>
+<p><img src="https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/top-to-bottom-approach/ui-testing-first.jpg?raw=true" alt="从测试金字塔的顶端开始，让你首先专注于 UI 测试。"/>
+<em>自上而下的方法</em></p>
+<h4 id="从上到下的方法是否强制执行测试的不良实践">从上到下的方法是否强制执行测试的不良实践？</h4>
+<p>本文不讨论最佳实践或不良实践（请查看文章末尾的一长串资源），而是关注如何让新的前端开发人员在测试领域有益地参与。我的目标是提供一种更实际的方法，一种使开发人员能够<strong>享受测试的优势</strong>而不至于留下比以前更多的疑问的方法。</p>
+<h4 id="如果-ui-测试如此神奇为什么还有其他类型的测试存在">如果 UI 测试如此神奇，为什么还有其他类型的测试存在？</h4>
+<p>这正是关键！请注意，我并不反对单元测试！每种测试都很重要，<strong>不同的测试提供不同的反馈</strong>！从上到下的方法足够让开发人员喜欢整个测试世界。</p>
+<p>然后，你将发现高级别 <strong>UI 测试</strong> 的局限性：</p>
+<ul>
+<li>它们<strong>很慢</strong>：我知道上面的视频让你觉得它们运行得很快，但实际上并非如此。当你有五、十、二十个时，它们很快，但是当你有数百个 UI 测试并且它们需要几分钟时，你会开始思考如何改善情况</li>
+<li>它们主要提供<strong>高层次的反馈</strong>：如果表单的提交按钮不起作用，那么问题是什么？有大量可能的原因，但是 UI 测试不能排除其中一些原因</li>
+<li>它们呈现整个应用程序，如果你只想测试一些较小的东西，这可能会很麻烦。通过整个应用程序无法复制一些你需要测试的边缘情况</li>
+</ul>
+<p>解决上述所有问题的方法是：<strong>降低测试金字塔</strong>！如果你需要更低级别的测试，那么做得好！这是本文的目标。</p>
+<p>考虑两种方法的结果：</p>
+<ul>
+<li>从下到上：对于你编写的单元测试的效用存在<strong>疑虑</strong>，并且你不理解这些测试如何帮助你提高测试信心</li>
+<li>从上到下：你拥有<strong>一些有信心的测试</strong>，并最终需要深入测试金字塔。如果你不需要深入，这意味着你的项目很小，不需要更多的测试</li>
+</ul>
+<p>然后，请从<a href="https://github.com/naodeng/ui-testing-best-practices/README.zh.md">该项目的根目录</a>开始，探索各种最佳实践，以便从一开始就成功地进行 UI 测试。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li>UI 测试最佳实践项目:<a href="https://github.com/NoriSte/ui-testing-best-practices">https://github.com/NoriSte/ui-testing-best-practices</a></li>
+<li>UI 测试最佳实践项目中文翻译:<a href="https://github.com/naodeng/ui-testing-best-practices">https://github.com/naodeng/ui-testing-best-practices</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

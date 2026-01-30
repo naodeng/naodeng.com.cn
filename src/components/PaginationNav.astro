@@ -1,0 +1,96 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Lang } from "@/i18n";
+import { PAGINATION_PREV, PAGINATION_NEXT, PAGINATION_PAGE, PAGINATION_OF } from "@/consts";
+import { useTranslations } from "@/i18n";
+
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  locale: Lang;
+}
+
+const { currentPage, totalPages, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const blogBase = getRelativeLocaleUrl(locale, "/blog").replace(/\/$/, "");
+const prevUrl = currentPage === 2 ? blogBase : `${blogBase}/page/${currentPage - 1}`;
+const nextUrl = `${blogBase}/page/${currentPage + 1}`;
+---
+
+<nav class="pagination-nav" aria-label={t({ en: "Pagination", "zh-cn": "分页" })}>
+  <div class="pagination-inner">
+    {currentPage > 1 ? (
+      <a href={prevUrl} class="pagination-link pagination-prev" rel="prev">
+        <span class="material-icons-sharp" aria-hidden="true">arrow_back</span>
+        {t(PAGINATION_PREV)}
+      </a>
+    ) : (
+      <span class="pagination-link pagination-prev disabled" aria-disabled="true">
+        <span class="material-icons-sharp" aria-hidden="true">arrow_back</span>
+        {t(PAGINATION_PREV)}
+      </span>
+    )}
+
+    <span class="pagination-info">
+      {locale === "zh-cn" ? `第 ${currentPage} 页，共 ${totalPages} 页` : `Page ${currentPage} of ${totalPages}`}
+    </span>
+
+    {currentPage < totalPages ? (
+      <a href={nextUrl} class="pagination-link pagination-next" rel="next">
+        {t(PAGINATION_NEXT)}
+        <span class="material-icons-sharp dir" aria-hidden="true">arrow_forward</span>
+      </a>
+    ) : (
+      <span class="pagination-link pagination-next disabled" aria-disabled="true">
+        {t(PAGINATION_NEXT)}
+        <span class="material-icons-sharp dir" aria-hidden="true">arrow_forward</span>
+      </span>
+    )}
+  </div>
+</nav>
+
+<style>
+  .pagination-nav {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+  .pagination-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-m);
+  }
+  .pagination-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.5em 1em;
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    transition: all 0.2s ease;
+  }
+  .pagination-link:hover {
+    background: color-mix(in srgb, var(--color-theme) 14%, transparent);
+    border-color: var(--color-theme);
+  }
+  .pagination-link.disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+  .pagination-link .material-icons-sharp {
+    font-size: 1.1em;
+  }
+  .pagination-info {
+    font-size: 0.95rem;
+    color: var(--color-main);
+    opacity: 0.9;
+  }
+</style>

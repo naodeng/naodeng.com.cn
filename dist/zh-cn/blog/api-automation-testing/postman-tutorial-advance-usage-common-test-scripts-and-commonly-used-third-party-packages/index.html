@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例 - 软件测试同学"><meta property="og:site_name" content="Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages-cover.BgbrZFbL_Z7ah8S.webp" alt="Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例</h1> <time datetime="2023-11-23T09:37:00.000Z" data-astro-cid-v3cnrnum> 2023/11/23 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="进阶用法">进阶用法</h2>
+<p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括常用测试响应测试脚本，测试前置脚本和常用的测试脚本可用的第三方包等。</p>
+<h3 id="常用测试脚本">常用测试脚本</h3>
+<p>Postman 提供了测试脚本功能，可以使用 JavaScript 编写脚本来验证 API 的响应和行为。这些脚本可以在请求的“Tests”标签下添加，分为请求前脚本（Pre-request Script）和响应后脚本（Tests）两个部分。下面是一些常用的 Postman 和 Newman 测试脚本：</p>
+<h4 id="响应测试脚本">响应测试脚本</h4>
+<ol>
+<li>
+<p><strong>状态码检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Status code is 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>响应时间检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response time is less than 200ms&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.responseTime).to.be.</span><span style="color:#B392F0">below</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>响应体 JSON 格式检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body is a valid JSON&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.be.json;</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>响应体字段值检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body contains expected value&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">().key).to.</span><span style="color:#B392F0">eql</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;expectedValue&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>响应体数组长度检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body array has correct length&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">().arrayKey).to.have.</span><span style="color:#B392F0">lengthOf</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>响应体属性存在性检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body has required properties&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">()).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;key&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+</ol>
+<h4 id="请求前脚本">请求前脚本</h4>
+<ol>
+<li>
+<p><strong>动态设置请求参数：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;dynamicVariable&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;dynamicValue&quot;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>使用全局变量设置请求头：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.request.headers.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">({ key: </span><span style="color:#9ECBFF">&#39;Authorization&#39;</span><span style="color:#E1E4E8">, value: pm.globals.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;authToken&#39;</span><span style="color:#E1E4E8">) });</span></span></code></pre>
+</li>
+<li>
+<p><strong>生成随机数并设置为变量：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> randomNumber</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;randomNumber&quot;</span><span style="color:#E1E4E8">, randomNumber);</span></span></code></pre>
+</li>
+<li>
+<p><strong>签名生成或加密等操作：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 示例：使用 CryptoJS 进行 HMAC SHA256 签名</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> CryptoJS</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;crypto-js&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> secretKey</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;yourSecretKey&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> message</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;dataToSign&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> signature</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> CryptoJS.</span><span style="color:#B392F0">HmacSHA256</span><span style="color:#E1E4E8">(message, secretKey).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">(CryptoJS.enc.Base64);</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;signature&quot;</span><span style="color:#E1E4E8">, signature);</span></span></code></pre>
+</li>
+</ol>
+<h3 id="测试脚本中可用的第三方库">测试脚本中可用的第三方库</h3>
+<p>提供的 require 方法允许您使用沙箱内置库模块。下面列出了个人常用的可用库和示例
+更多可用的库可以在<a href="https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries">这里</a>找到</p>
+<h4 id="chaijs-断言库方法">chai.js 断言库方法</h4>
+<p>在 Postman 的测试脚本中，你可以使用 Chai 断言库来编写断言，以验证你的 API 响应是否符合预期。Chai 提供了多种断言风格，包括 BDD（Behavior Driven Development）、TDD（Test Driven Development）等。以下是一些基本的 Chai 使用方法：</p>
+<h5 id="1-安装-chai">1. 安装 Chai</h5>
+<p>在 Postman 的脚本环境中，你无需单独安装 Chai，因为 Postman 默认已经内置了 Chai。</p>
+<h5 id="2-使用-bdd-风格断言">2. 使用 BDD 风格断言</h5>
+<p>在 Postman 的 “Tests” 部分中，你可以使用 Chai 的 BDD 风格断言，例如：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 引入 Chai 库</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 BDD 风格断言</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> expect</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chai.expect;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 示例：验证响应状态码为 200</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Status code is 200&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(pm.response.code).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 示例：验证响应体是 JSON</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Response body is JSON&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(pm.response.headers.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Content-Type&#39;</span><span style="color:#E1E4E8">)).to.</span><span style="color:#B392F0">include</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;application/json&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3-使用-tdd-风格断言">3. 使用 TDD 风格断言</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 引入 Chai 库</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 TDD 风格断言</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> assert</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chai.assert;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 示例：使用 assert 断言响应状态码为 200</span></span>
+<span class="line"><span style="color:#E1E4E8">assert.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(pm.response.code, </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Status code should be 200&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h5 id="4-chai-支持的一些常用断言">4. Chai 支持的一些常用断言</h5>
+<ul>
+<li>
+<p><strong>相等性：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>包含：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.</span><span style="color:#B392F0">include</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>类型检查：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">a</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;string&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>大于/小于：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">above</span><span style="color:#E1E4E8">(expected);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">below</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>空/非空：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.null;</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.not.be.null;</span></span></code></pre>
+</li>
+<li>
+<p><strong>深度相等性：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.deep.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+</ul>
+<p>以上只是 Chai 断言库的一些基本用法，你可以根据需要使用更多的断言方法和组合。Chai 提供了丰富的断言功能，可以满足各种测试需求。更多详细信息，请查阅 Chai 的官方文档：<a href="https://www.chaijs.com/">Chai Documentation</a>。</p>
+<h4 id="使用-cheerio-操作-html-文件">使用 cheerio 操作 HTML 文件</h4>
+<p>在 Postman 中，Cheerio 是一个基于 jQuery 的库，用于在服务器端操作 HTML 文档。它允许你使用类似于 jQuery 的语法来选择和操作 HTML 元素，非常适用于解析和提取 HTML 页面中的信息。在 Postman 中，你可以使用 Cheerio 库进行 HTML 响应的解析。以下是 Cheerio 在 Postman 中的基本用法：</p>
+<ol>
+<li>
+<p><strong>安装 Cheerio：</strong></p>
+<ul>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 Cheerio 来使用它。在请求的 “Pre-request Script” 或 “Tests” 部分，可以使用以下方式安装 Cheerio：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 安装 Cheerio</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> cheerio</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;cheerio&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>使用 Cheerio 解析 HTML：</strong></p>
+<ul>
+<li>在请求的 “Tests” 部分中，你可以使用 Cheerio 解析 HTML。以下是一个简单的例子：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 从响应中获取 HTML 内容</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> htmlContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 Cheerio 解析 HTML</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> $</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> cheerio.</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8">(htmlContent);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 示例：从 HTML 中提取标题文本</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> titleText</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;title&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Title:&#39;</span><span style="color:#E1E4E8">, titleText);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 示例：从 HTML 中提取所有链接的 href 属性</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> links</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;a&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> link</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">attr</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;href&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    links.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(link);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Links:&#39;</span><span style="color:#E1E4E8">, links);</span></span></code></pre>
+<p>在上述例子中，<code>cheerio.load(htmlContent)</code> 用于加载 HTML 内容，并使用类似于 jQuery 的语法来选择和操作元素。</p>
+</li>
+<li>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>Cheerio 主要用于解析静态 HTML，对于使用 JavaScript 动态生成的内容，可能无法正常获取。在这种情况下，你可能需要考虑使用 Puppeteer 或其他支持 JavaScript 执行的工具。</li>
+</ul>
+</li>
+</ol>
+<p>这只是 Cheerio 在 Postman 中的基本用法。你可以根据具体的需求使用 Cheerio 提供的各种选择器和方法。请查阅 Cheerio 的官方文档以获取更详细的信息：<a href="https://cheerio.js.org/">Cheerio Documentation</a>。</p>
+<h4 id="使用-tv4-来验证-json-schema">使用 tv4 来验证 JSON Schema</h4>
+<p>在 Postman 中，tv4 是一个 JSON Schema 验证库，用于验证 JSON 数据是否符合给定的 JSON Schema。JSON Schema 是一种描述 JSON 数据结构的规范，它定义了 JSON 对象的属性、类型和其他约束。</p>
+<p>以下是在 Postman 中使用 tv4 进行 JSON Schema 验证的基本步骤：</p>
+<ol>
+<li>
+<p><strong>安装 tv4 库：</strong></p>
+<ul>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 tv4 来使用它。在请求的 “Pre-request Script” 或 “Tests” 部分，你可以使用以下方式安装 tv4：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 安装 tv4</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> tv4</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;tv4&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>定义 JSON Schema：</strong></p>
+<ul>
+<li>在 Postman 中，你可以在请求的 “Pre-request Script” 或 “Tests” 部分定义 JSON Schema。JSON Schema 可以作为一个 JavaScript 对象进行定义。以下是一个简单的例子：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 定义 JSON Schema</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jsonSchema</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;properties&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;name&quot;</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;age&quot;</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;number&quot;</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;required&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;name&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;age&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p><strong>使用 tv4 进行验证：</strong></p>
+<ul>
+<li>在请求的 “Tests” 部分，你可以使用 tv4 对 JSON 数据进行验证。以下是一个简单的例子：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取响应的 JSON 数据</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jsonResponse</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 tv4 进行 JSON Schema 验证</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> isValid</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> tv4.</span><span style="color:#B392F0">validate</span><span style="color:#E1E4E8">(jsonResponse, jsonSchema);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 检查验证结果</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;JSON is valid according to the schema&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(isValid).to.be.true;</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>在上述例子中，<code>tv4.validate(jsonResponse, jsonSchema)</code> 用于验证 <code>jsonResponse</code> 是否符合 <code>jsonSchema</code> 定义的规范。验证结果存储在 <code>isValid</code> 变量中，然后使用 <code>pm.test</code> 来检查验证结果。</p>
+</li>
+</ol>
+<p>这只是 tv4 在 Postman 中的基本用法。你可以根据实际需求，定义更复杂的 JSON Schema，并使用 tv4 的其他功能进行更灵活的验证。请查阅 tv4 的官方文档以获取更详细的信息：<a href="https://github.com/geraintluff/tv4">tv4 Documentation</a>。</p>
+<h4 id="生成-uuid">生成 uuid</h4>
+<p>在 Postman 中，你可以使用 <code>uuid</code> 模块来生成 UUID（Universally Unique Identifier），也被称为 GUID。以下是在 Postman 中使用 <code>uuid</code> 模块的基本用法：</p>
+<h5 id="1-安装-uuid-模块">1. 安装 <code>uuid</code> 模块</h5>
+<p>在 Postman 的 “Pre-request Script” 或 “Tests” 部分，你可以使用以下方式安装 <code>uuid</code> 模块：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 安装 uuid 模块</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uuid</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;uuid&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h5 id="2-生成-uuid">2. 生成 UUID</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 生成 UUID</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> generatedUUID</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> uuid.</span><span style="color:#B392F0">v4</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Generated UUID:&#39;</span><span style="color:#E1E4E8">, generatedUUID);</span></span></code></pre>
+<p>在上述例子中，<code>uuid.v4()</code> 用于生成一个基于随机数的 UUID。你可以在 Postman 脚本中使用生成的 UUID，例如将其设置为请求头或参数的值。</p>
+<h5 id="示例">示例</h5>
+<p>以下是一个在 Postman “Pre-request Script” 中生成 UUID 并设置为请求头的示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 安装 uuid 模块</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uuid</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;uuid&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 生成 UUID</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> generatedUUID</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> uuid.</span><span style="color:#B392F0">v4</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 设置请求头</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.request.headers.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">({ key: </span><span style="color:#9ECBFF">&#39;X-Request-ID&#39;</span><span style="color:#E1E4E8">, value: generatedUUID });</span></span></code></pre>
+<p>在上述例子中，<code>X-Request-ID</code> 是一个常见的请求头，用于标识请求的唯一性。生成的 UUID 被设置为这个请求头的值，以确保每个请求都有唯一的标识。</p>
+<p>请注意，Postman 在运行脚本时会自动执行安装依赖项的步骤，无需手动安装 <code>uuid</code> 模块。</p>
+<h4 id="使用-xml2js-将-xml-转换为-javascript-对象">使用 xml2js 将 XML 转换为 JavaScript 对象</h4>
+<p>在 Postman 中，<code>xml2js</code> 是一个用于将 XML 转换为 JavaScript 对象的库。在 Postman 的脚本中，你可以使用 <code>xml2js</code> 来处理 XML 响应并将其转换为易于处理的 JavaScript 对象。以下是在 Postman 中使用 <code>xml2js</code> 的基本步骤：</p>
+<ol>
+<li>
+<p><strong>安装 xml2js 库：</strong></p>
+<ul>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 <code>xml2js</code> 来使用它。在请求的 “Pre-request Script” 或 “Tests” 部分，你可以使用以下方式安装 <code>xml2js</code>：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 安装 xml2js</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> xml2js</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;xml2js&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>解析 XML 响应：</strong></p>
+<ul>
+<li>获取 XML 响应后，你可以使用 <code>xml2js</code> 将其解析为 JavaScript 对象。以下是一个简单的例子：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取响应的 XML 内容</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> xmlContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 xml2js 解析 XML</span></span>
+<span class="line"><span style="color:#E1E4E8">xml2js.</span><span style="color:#B392F0">parseString</span><span style="color:#E1E4E8">(xmlContent, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error parsing XML:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // result 是解析后的 JavaScript 对象</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Parsed XML:&#39;</span><span style="color:#E1E4E8">, result);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>在上述例子中，<code>xml2js.parseString(xmlContent, function (err, result) {...}</code> 用于异步地解析 XML 内容。解析后的 JavaScript 对象存储在 <code>result</code> 中。</p>
+</li>
+<li>
+<p><strong>处理解析后的 JavaScript 对象：</strong></p>
+<ul>
+<li>一旦你获得了解析后的 JavaScript 对象，你就可以按照普通的 JavaScript 对象处理方式访问和操作它的属性。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 示例：访问解析后的 JavaScript 对象的属性</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.root.element[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].subelement[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]._;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Value from parsed XML:&#39;</span><span style="color:#E1E4E8">, value);</span></span></code></pre>
+<p>在上述例子中，<code>result.root.element[0].subelement[0]._</code> 是一个访问解析后对象属性的示例。具体的结构取决于你的 XML 结构。</p>
+</li>
+</ol>
+<p>这只是 <code>xml2js</code> 在 Postman 中的基本用法。你可以根据实际需求使用 <code>xml2js</code> 的其他功能，例如设置解析选项，处理命名空间等。请查阅 <code>xml2js</code> 的官方文档以获取更详细的信息：<a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js Documentation</a>。</p>
+<h4 id="常用工具函数-util">常用工具函数 util</h4>
+<p>在 Postman 中，<code>util</code> 是一个全局对象，提供了一些常用的实用工具函数，可以在 Postman 脚本中使用。以下是一些常见的 <code>util</code> 对象的用法：</p>
+<h5 id="1-utilguid---生成全局唯一标识符guid">1. <code>util.guid()</code> - 生成全局唯一标识符（GUID）</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 生成一个全局唯一标识符</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uniqueId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">guid</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Unique ID:&#39;</span><span style="color:#E1E4E8">, uniqueId);</span></span></code></pre>
+<h5 id="2-utiltimestamp---获取当前时间戳">2. <code>util.timestamp()</code> - 获取当前时间戳</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取当前时间戳（毫秒）</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> timestamp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">timestamp</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Timestamp:&#39;</span><span style="color:#E1E4E8">, timestamp);</span></span></code></pre>
+<h5 id="3-utilrandomintmin-max---生成指定范围内的随机整数">3. <code>util.randomInt(min, max)</code> - 生成指定范围内的随机整数</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 生成 1 到 100 之间的随机整数</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> randomInt</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">randomInt</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Random Integer:&#39;</span><span style="color:#E1E4E8">, randomInt);</span></span></code></pre>
+<h5 id="4-utilunixtimestamp---获取当前时间戳unix-时间戳秒">4. <code>util.unixTimestamp()</code> - 获取当前时间戳（Unix 时间戳，秒）</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 获取当前时间戳（秒）</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> unixTimestamp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">unixTimestamp</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Unix Timestamp:&#39;</span><span style="color:#E1E4E8">, unixTimestamp);</span></span></code></pre>
+<h5 id="5-utilencodebase64str-和-utildecodebase64base64str---base64-编码和解码">5. <code>util.encodeBase64(str)</code> 和 <code>util.decodeBase64(base64Str)</code> - Base64 编码和解码</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Base64 编码</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> encodedString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">encodeBase64</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Hello, World!&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Encoded String:&#39;</span><span style="color:#E1E4E8">, encodedString);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Base64 解码</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> decodedString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">decodeBase64</span><span style="color:#E1E4E8">(encodedString);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Decoded String:&#39;</span><span style="color:#E1E4E8">, decodedString);</span></span></code></pre>
+<h5 id="6-utileachobj-callback---遍历对象或数组">6. <code>util.each(obj, callback)</code> - 遍历对象或数组</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 遍历数组</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> array</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">util.</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(array, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">index</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Index ${</span><span style="color:#E1E4E8">index</span><span style="color:#9ECBFF">}: ${</span><span style="color:#E1E4E8">value</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 遍历对象</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { a: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, b: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, c: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">util.</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(obj, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">key</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Key ${</span><span style="color:#E1E4E8">key</span><span style="color:#9ECBFF">}: ${</span><span style="color:#E1E4E8">value</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="注意事项">注意事项</h5>
+<ul>
+<li>在 Postman 脚本中，可以通过 <code>util</code> 对象直接调用这些实用工具函数。</li>
+<li><code>util</code> 对象提供的这些方法能够简化在 Postman 脚本中的一些常见任务，如生成随机数、处理时间戳等。</li>
+<li>请注意查阅 Postman 的官方文档，因为 Postman 会不断更新和改进其脚本环境，可能会引入新的实用工具函数。</li>
+</ul>
+<h4 id="stream-流操作">stream 流操作</h4>
+<p>在 Node.js 中使用流（Streams）通常用于处理大量的数据，可以有效地降低内存占用并提高性能。以下是一些在 Node.js 中使用流的基本用法，可以参考这些方法来处理数据或文件。</p>
+<h5 id="1-读取流readable-streams">1. <strong>读取流（Readable Streams）：</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;fs&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 创建可读流</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> readableStream</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">createReadStream</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;input.txt&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 设置编码（如果是文本文件）</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">setEncoding</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;utf-8&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 处理数据</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;data&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Received chunk:&#39;</span><span style="color:#E1E4E8">, chunk);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 处理结束</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;end&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Stream ended.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 处理错误</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;error&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="2-写入流writable-streams">2. <strong>写入流（Writable Streams）：</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;fs&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 创建可写流</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> writableStream</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">createWriteStream</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;output.txt&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 写入数据</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Hello, World!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Another line.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 结束写入</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 处理结束</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;finish&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Write completed.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 处理错误</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;error&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3-转换流transform-streams">3. <strong>转换流（Transform Streams）：</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">Transform</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;stream&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 创建转换流</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myTransform</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Transform</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">    transform</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">encoding</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">callback</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">        // 转换数据</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> transformedData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chunk.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toUpperCase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(transformedData);</span></span>
+<span class="line"><span style="color:#B392F0">        callback</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 管道连接读取流、转换流和写入流</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">pipe</span><span style="color:#E1E4E8">(myTransform).</span><span style="color:#B392F0">pipe</span><span style="color:#E1E4E8">(writableStream);</span></span></code></pre>
+<p>这只是 Node.js 中使用流的一些基本用法。在 Postman 中，你可以在请求的脚本中使用这些方法，例如 “Pre-request Script” 或 “Tests” 部分，通过 Node.js 运行环境来执行这些脚本。请注意，Node.js 中的流 API 可以更复杂，例如通过使用 <code>pipeline</code> 函数来处理多个流的连接。</p>
+<h4 id="定时器-timers">定时器 timers</h4>
+<p>在 Postman 中，你可以使用 Node.js 的定时器功能来处理定时任务或延时执行的操作。以下是一些基本的 Node.js 定时器的用法，这些用法可以在 Postman 的脚本中使用。</p>
+<h5 id="1-settimeout---延时执行">1. <code>setTimeout</code> - 延时执行</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 延时执行操作</span></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Delayed operation.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 2000 毫秒（2 秒）</span></span></code></pre>
+<h5 id="2-setinterval---定时执行重复操作">2. <code>setInterval</code> - 定时执行重复操作</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 定时执行重复操作</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> intervalId</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setInterval</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Repeated operation.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">3000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 3000 毫秒（3 秒）</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 取消定时执行</span></span>
+<span class="line"><span style="color:#6A737D">// clearInterval(intervalId);</span></span></code></pre>
+<h5 id="3-在-postman-中使用">3. 在 Postman 中使用</h5>
+<p>在 Postman 中，你可以在 “Pre-request Script” 或 “Tests” 部分中使用这些定时器。例如，在 “Tests” 部分中延时执行操作：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 在 &quot;Tests&quot; 部分延时执行操作</span></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Delayed operation in Tests.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 2000 毫秒（2 秒）</span></span></code></pre>
+<p>请注意，在 Postman 的 “Pre-request Script” 或 “Tests” 部分执行的代码是在 Node.js 环境中运行的，因此你可以使用 Node.js 支持的大多数功能，包括定时器。</p>
+<p>在以上例子中，<code>setTimeout</code> 会在指定的延时后执行一次操作，而 <code>setInterval</code> 会在每隔指定的时间间隔后执行一次操作。在 Postman 中，你可以根据实际需求使用这些定时器功能。</p>
+<h4 id="时间处理-events">时间处理 events</h4>
+<p>在 Postman 的脚本环境中，你可以使用 Node.js 的 <code>events</code> 模块来处理事件。<code>events</code> 模块提供了 <code>EventEmitter</code> 类，该类可以用于定义和触发事件。以下是在 Postman 中使用 Node.js 的 <code>events</code> 模块的一些基本用法：</p>
+<h5 id="1-创建事件发射器">1. 创建事件发射器</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> EventEmitter</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;events&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myEmitter</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> EventEmitter</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<h5 id="2-定义事件处理函数">2. 定义事件处理函数</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 定义事件处理函数</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> myEventHandler</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Event handled.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h5 id="3-注册事件处理函数">3. 注册事件处理函数</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 注册事件处理函数</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myEvent&#39;</span><span style="color:#E1E4E8">, myEventHandler);</span></span></code></pre>
+<h5 id="4-触发事件">4. 触发事件</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 触发事件</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">emit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myEvent&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h5 id="示例-1">示例</h5>
+<p>在 Postman 的脚本环境中，你可以使用事件来实现异步操作的回调或处理。以下是一个简单的例子，演示如何在异步操作完成后触发事件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> EventEmitter</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;events&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myEmitter</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> EventEmitter</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 模拟异步操作</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> performAsyncOperation</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Async operation completed.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">        // 触发事件</span></span>
+<span class="line"><span style="color:#E1E4E8">        myEmitter.</span><span style="color:#B392F0">emit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;asyncOperationComplete&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 注册事件处理函数</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;asyncOperationComplete&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Handling async operation completion.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // 这里可以执行异步操作完成后的处理逻辑</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 执行异步操作</span></span>
+<span class="line"><span style="color:#B392F0">performAsyncOperation</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>在上述例子中，<code>performAsyncOperation</code> 函数模拟了一个异步操作，当该操作完成时，通过 <code>myEmitter.emit</code> 触发了 <code>asyncOperationComplete</code> 事件。在事件处理函数中，你可以编写处理异步操作完成后的逻辑。</p>
+<p>请注意，在 Postman 的脚本中，异步操作的执行方式可能受到限制，因此在实际使用中需要谨慎考虑。</p>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman 官方文档</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">newman 官方文档</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

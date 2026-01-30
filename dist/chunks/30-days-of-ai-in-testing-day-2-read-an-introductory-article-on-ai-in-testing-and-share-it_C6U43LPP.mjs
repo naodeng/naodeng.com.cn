@@ -1,0 +1,280 @@
+import { n as createVNode, F as Fragment, _ as __astro_tag_component__ } from './astro/server_D4o_drMZ.mjs';
+import 'clsx';
+
+/*markdownlint-disable MD045*/
+/*markdownlint-disable MD033*/
+/*markdownlint-disable MD033*/
+/*markdownlint-disable MD045*/
+const frontmatter = {
+  "title": "30 天 AI 测试挑战活动：第二天：阅读有关测试中的人工智能的介绍性文章并分享",
+  "description": "这篇博文是 30 天 AI 测试挑战活动的第二天，聚焦于参与者阅读与测试中人工智能相关的介绍性文章并分享的环节。博文或许包含了作者对所阅读文章的总结和个人观点，分享了在测试领域中应用人工智能的潜在好处和挑战。通过这样的分享，读者能够更好地理解 AI 在测试中的应用，并促使其他参与者共享他们的见解，促进博文的互动性。这个系列活动有望为测试专业人士提供一个深入了解 AI 测试的平台。",
+  "date": "2024-03-03T02:06:44.000Z",
+  "author": "nao.deng",
+  "tags": ["AI in Testing", "30 Days of AI in Testing"],
+  "categories": ["软件测试活动"],
+  "series": ["30 天 AI 测试挑战活动"],
+  "cover": "./30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it-cover.png"
+};
+function getHeadings() {
+  return [{
+    "depth": 2,
+    "slug": "第二天任务",
+    "text": "第二天任务"
+  }, {
+    "depth": 3,
+    "slug": "任务步骤",
+    "text": "任务步骤"
+  }, {
+    "depth": 3,
+    "slug": "为什么参加",
+    "text": "为什么参加"
+  }, {
+    "depth": 3,
+    "slug": "任务链接",
+    "text": "任务链接"
+  }, {
+    "depth": 2,
+    "slug": "我的第二天任务",
+    "text": "我的第二天任务"
+  }, {
+    "depth": 2,
+    "slug": "关于活动",
+    "text": "关于活动"
+  }, {
+    "depth": 2,
+    "slug": "推荐阅读",
+    "text": "推荐阅读"
+  }];
+}
+function _createMdxContent(props) {
+  const _components = {
+    a: "a",
+    h2: "h2",
+    h3: "h3",
+    hr: "hr",
+    li: "li",
+    ol: "ol",
+    p: "p",
+    strong: "strong",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.h2, {
+      id: "第二天任务",
+      children: "第二天任务"
+    }), "\n", createVNode(_components.p, {
+      children: "阅读有关测试中的 AI 的介绍性文章并分享"
+    }), "\n", createVNode(_components.p, {
+      children: "在今天的任务中学习人工智能测试基础知识！"
+    }), "\n", createVNode(_components.p, {
+      children: "对于今天的任务，你面临的挑战是查找、阅读并分享有关软件测试中人工智能的介绍性文章的关键要点。这可能涵盖人工智能的基础知识、其在测试中的应用，甚至包括用于测试自动化的机器学习等特定技术。"
+    }), "\n", createVNode(_components.h3, {
+      id: "任务步骤",
+      children: "任务步骤"
+    }), "\n", createVNode(_components.p, {
+      children: "查找一篇介绍软件测试中的人工智能的文章。它可以是指南、博客文章或案例研究——任何你认为有趣且内容丰富的内容。"
+    }), "\n", createVNode(_components.p, {
+      children: "总结本文的主要内容。讨论了哪些基本概念、工具或方法？"
+    }), "\n", createVNode(_components.p, {
+      children: "考虑本文中的见解如何应用于你的测试环境。你认为人工智能在你的项目中具有潜在用途吗？面临哪些挑战或机遇？"
+    }), "\n", createVNode(_components.p, {
+      children: "通过单击“参与”按钮并回复主题并附上你所选文章的摘要和你的个人感想，在社区上分享你的发现。资源链接（如果适用）。"
+    }), "\n", createVNode(_components.p, {
+      children: "奖励步骤！通读其他人的贡献。请随意提出问题、提供反馈或通过 ❤️ 表达你对富有洞察力的发现的赞赏"
+    }), "\n", createVNode(_components.h3, {
+      id: "为什么参加",
+      children: "为什么参加"
+    }), "\n", createVNode(_components.p, {
+      children: "扩展你的理解：掌握测试中人工智能的基础知识对于有效地将这些技术集成到我们的工作中至关重要。"
+    }), "\n", createVNode(_components.p, {
+      children: "启发和受到启发：分享和讨论文章向我们介绍了我们可能没有考虑过的各种观点和应用。"
+    }), "\n", createVNode(_components.p, {
+      children: "节省时间：受益于社区的集体研究，更有效地发现有价值的资源和见解。"
+    }), "\n", createVNode(_components.p, {
+      children: "建立你的网络：参与他人的帖子有助于加强我们社区内的联系，营造一个支持性的学习环境。"
+    }), "\n", createVNode(_components.h3, {
+      id: "任务链接",
+      children: "任务链接"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.a, {
+        href: "https://club.ministryoftesting.com/t/day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/74453",
+        children: "https://club.ministryoftesting.com/t/day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/74453"
+      })
+    }), "\n", createVNode(_components.h2, {
+      id: "我的第二天任务",
+      children: "我的第二天任务"
+    }), "\n", createVNode(_components.p, {
+      children: createVNode(_components.a, {
+        href: "https://club.ministryoftesting.com/t/day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/74453",
+        children: "https://club.ministryoftesting.com/t/day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/74453"
+      })
+    }), "\n", createVNode(_components.ol, {
+      children: ["\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: ["看看文章 → 我查看了这篇文章 ", createVNode(_components.a, {
+            href: "https://arxiv.org/html/2312.13771v2",
+            children: "AppAgent：作为智能手机用户的多模式代理\n"
+          })]
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "文章的主要启示"
+        }), "\n"]
+      }), "\n"]
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "这篇论文介绍了一个新颖的基于大型语言模型（LLM）的多模态代理框架，旨在操作智能手机应用程序。该框架通过简化的动作空间使得代理能够模仿人类的交互行为，如点击和滑动，无需系统后端访问权限，从而扩大了其在各种应用程序中的适用性。代理的核心功能是其创新的学习方法，可以通过自主探索或观察人类演示来学习如何导航和使用新应用程序。这一过程生成了一个知识库，代理在执行不同应用程序中的复杂任务时会参考这个知识库。"
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "论文还讨论了与大型语言模型相关的工作，特别是集成了视觉能力的 GPT-4，这使得模型能够处理和解释视觉信息。此外，还测试了代理在 50 个任务中跨 10 个不同应用程序的性能，包括社交媒体、电子邮件、地图、购物和复杂的图像编辑工具。结果证实了代理在处理多种高级任务方面的熟练程度。"
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "在方法论部分，详细介绍了该多模态代理框架的背后原理，包括实验环境和动作空间的描述，以及探索阶段和部署阶段的过程。探索阶段中，代理通过尝试和错误来学习智能手机应用程序的功能和特性。在部署阶段，代理根据其累积的经验执行高级任务。"
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "论文最后讨论了代理的局限性，即不支持多点触控和不规则手势等高级控制，这可能限制了代理在某些挑战性场景中的适用性。尽管如此，作者认为这是未来研究和发展的一个方向。"
+        }), "\n"]
+      }), "\n"]
+    }), "\n", createVNode(_components.ol, {
+      start: "3",
+      children: ["\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "潜力：针对移动设备的全新 UI 自动化测试脚本编写方法和理念；自行探索和模仿人工步骤；支持多种模型，可根据应用程序的实际情况选择和切换模型。"
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "挑战：你需要让 agent 熟悉你的移动应用程序，还需要向 agent 提供足够多的场景。"
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: "以下是我的个人思考："
+        }), "\n"]
+      }), "\n"]
+    }), "\n", createVNode(_components.p, {
+      children: "论文和项目提供了未来移动端应用程序自动化测试的方向，但落地真实的项目还需要一些时间"
+    }), "\n", createVNode(_components.p, {
+      children: "但我认为它可以用来对移动应用程序进行探索性测试，将现有的测试用例作为知识库，通过 AppAgent 学习和探索，扩展测试场景，改进真实有效的测试场景。"
+    }), "\n", createVNode(_components.p, {
+      children: "后期也可以接入自己训练数据的模型，进行适配"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: ["项目链接：", createVNode(_components.a, {
+            href: "https://github.com/mnotgod96/AppAgent",
+            children: "https://github.com/mnotgod96/AppAgent"
+          })]
+        }), "\n"]
+      }), "\n", createVNode(_components.li, {
+        children: ["\n", createVNode(_components.p, {
+          children: ["论文链接：", createVNode(_components.a, {
+            href: "https://arxiv.org/abs/2312.13771",
+            children: "https://arxiv.org/abs/2312.13771"
+          })]
+        }), "\n"]
+      }), "\n"]
+    }), "\n", createVNode(_components.h2, {
+      id: "关于活动",
+      children: "关于活动"
+    }), "\n", createVNode(_components.p, {
+      children: "30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。"
+    }), "\n", createVNode(_components.p, {
+      children: ["社区官网：", createVNode(_components.a, {
+        href: "https://www.ministryoftesting.com",
+        children: "https://www.ministryoftesting.com"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: ["活动链接：", createVNode(_components.a, {
+        href: "https://www.ministryoftesting.com/events/30-days-of-ai-in-testing",
+        children: "https://www.ministryoftesting.com/events/30-days-of-ai-in-testing"
+      })]
+    }), "\n", createVNode(_components.p, {
+      children: [createVNode(_components.strong, {
+        children: "挑战"
+      }), "："]
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/",
+          children: "第一天：介绍你自己以及你对人工智能的兴趣"
+        })
+      }), "\n"]
+    }), "\n", createVNode(_components.h2, {
+      id: "推荐阅读",
+      children: "推荐阅读"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/zhcategories/bruno/",
+          children: "使用 Bruno 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Postman 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Pytest 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 SuperTest 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Rest Assured 进行接口自动化测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 Galting 进行性能测试快速开启教程系列"
+        })
+      }), "\n", createVNode(_components.li, {
+        children: createVNode(_components.a, {
+          href: "https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/",
+          children: "使用 K6 进行性能测试快速开启教程系列"
+        })
+      }), "\n"]
+    }), "\n", createVNode(_components.hr, {}), "\n", createVNode(_components.p, {
+      children: ["欢迎关注软件测试同学的公众号“", createVNode(_components.strong, {
+        children: "软件测试同学"
+      }), "”，原创 QA 技术文章第一时间推送。"]
+    }), "\n", "\n", "\n", createVNode("div", {
+      style: "text-align: center",
+      children: createVNode("img", {
+        src: "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg",
+        style: "width: 100px;"
+      })
+    }), "\n", "\n"]
+  });
+}
+function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+
+const url = "src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it.mdx";
+const file = "/Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn/src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it.mdx";
+const Content = (props = {}) => MDXContent({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, },
+});
+Content[Symbol.for('mdx-component')] = true;
+Content[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter.layout);
+Content.moduleId = "/Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn/src/blog/zh-cn/Event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it.mdx";
+__astro_tag_component__(Content, 'astro:jsx');
+
+export { Content, Content as default, file, frontmatter, getHeadings, url };

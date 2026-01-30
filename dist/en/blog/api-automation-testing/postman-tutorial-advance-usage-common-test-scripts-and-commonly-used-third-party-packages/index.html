@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en-US" data-locale="en"> <head><meta charset="UTF-8"><title>Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages - Nao&#39;s Blog</title><meta name="description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages - Nao's Blog"><meta property="og:site_name" content="Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages - Nao's Blog"><meta property="og:description" content="naodeng, naodeng.com.cn, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2>Nao&#39;s Blog</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="Search" title="⌘K or Ctrl+K to open search" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/sponsor/" data-astro-cid-3ef6ksr2> Sponsor </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages-cover.BpulVq1L_ZYG6fp.webp" alt="Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman API Automation Testing Tutorial Advance Usage Common Test Scripts and Third-Party Packages</h1> <time datetime="2023-11-23T09:37:00.000Z" data-astro-cid-v3cnrnum> 11/23/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="advanced-usage">Advanced Usage</h2>
+<p>This section will introduce some advanced features of Postman and Newman, including commonly used response test scripts, pre-request scripts, and third-party packages available for test scripts.</p>
+<h3 id="common-test-scripts">Common Test Scripts</h3>
+<p>Postman provides a test script feature that allows you to write JavaScript scripts to validate the response and behavior of your API. These scripts can be added under the “Tests” tab of a request and are divided into pre-request scripts (<code>Pre-request Script</code>) and post-response scripts (<code>Tests</code>). Here are some common Postman and Newman test scripts:</p>
+<h4 id="response-test-scripts">Response Test Scripts</h4>
+<ol>
+<li>
+<p><strong>Status Code Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Status code is 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>Response Time Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response time is less than 200ms&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.responseTime).to.be.</span><span style="color:#B392F0">below</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>Response Body JSON Format Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body is a valid JSON&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.response.to.be.json;</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>Response Body Field Value Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body contains expected value&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">().key).to.</span><span style="color:#B392F0">eql</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;expectedValue&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>Response Body Array Length Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body array has correct length&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">().arrayKey).to.have.</span><span style="color:#B392F0">lengthOf</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p><strong>Response Body Property Existence Check:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Response body has required properties&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">()).to.have.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;key&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+</ol>
+<h4 id="pre-request-scripts">Pre-request Scripts</h4>
+<ol>
+<li>
+<p><strong>Dynamically Set Request Parameters:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;dynamicVariable&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;dynamicValue&quot;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Set Request Header Using Global Variable:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.request.headers.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">({ key: </span><span style="color:#9ECBFF">&#39;Authorization&#39;</span><span style="color:#E1E4E8">, value: pm.globals.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;authToken&#39;</span><span style="color:#E1E4E8">) });</span></span></code></pre>
+</li>
+<li>
+<p><strong>Generate Random Number:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> randomNumber</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;randomNumber&quot;</span><span style="color:#E1E4E8">, randomNumber);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Generate Signature or Encryption:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Example: Use CryptoJS for HMAC SHA256 signature</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> CryptoJS</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;crypto-js&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> secretKey</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;yourSecretKey&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> message</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;dataToSign&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> signature</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> CryptoJS.</span><span style="color:#B392F0">HmacSHA256</span><span style="color:#E1E4E8">(message, secretKey).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">(CryptoJS.enc.Base64);</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.variables.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;signature&quot;</span><span style="color:#E1E4E8">, signature);</span></span></code></pre>
+</li>
+</ol>
+<h3 id="third-party-libraries-in-test-scripts">Third-Party Libraries in Test Scripts</h3>
+<p>The provided <code>require</code> method allows you to use built-in library modules in the sandbox. Here are some common libraries and examples.
+More available libraries can be found <a href="https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries">here</a>.</p>
+<h4 id="chaijs-assertion-library-methods">Chai.js Assertion Library Methods</h4>
+<p>In Postman’s test scripts, you can use the Chai assertion library to write assertions to validate the response of your API. Chai provides various assertion styles, including BDD (Behavior-Driven Development) and TDD (Test-Driven Development). Here are some basic usage examples:</p>
+<h5 id="1-install-chai">1. Install Chai</h5>
+<p>In the Postman script environment, you don’t need to install Chai separately as Postman already includes Chai by default.</p>
+<h5 id="2-use-bdd-style-assertions">2. Use BDD Style Assertions</h5>
+<p>In the “Tests” section of Postman, you can use Chai’s BDD style assertions, for example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Include Chai library</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Use BDD style assertions</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> expect</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chai.expect;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Example: Verify the response status code is 200</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Status code is 200&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(pm.response.code).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Example: Verify the response body is JSON</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Response body is JSON&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(pm.response.headers.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Content-Type&#39;</span><span style="color:#E1E4E8">)).to.</span><span style="color:#B392F0">include</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;application/json&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3-use-tdd-style-assertions">3. Use TDD Style Assertions</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Include Chai library</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> chai</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;chai&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Use TDD style assertions</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> assert</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chai.assert;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Example: Use assert to verify the response status code is 200</span></span>
+<span class="line"><span style="color:#E1E4E8">assert.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(pm.response.code, </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Status code should be 200&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="4-common-assertions-supported-by-chai">4. Common Assertions Supported by Chai</h3>
+<ul>
+<li>
+<p><strong>Equality:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Inclusion:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.</span><span style="color:#B392F0">include</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Type Checking:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">a</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;string&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Greater Than/Less Than:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">above</span><span style="color:#E1E4E8">(expected);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.</span><span style="color:#B392F0">below</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Null/Not Null:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.be.null;</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.not.be.null;</span></span></code></pre>
+</li>
+<li>
+<p><strong>Deep Equality:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(actual).to.deep.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(expected);</span></span></code></pre>
+</li>
+</ul>
+<p>The above are just some basic usage of the Chai assertion library. You can use more assertion methods and combinations based on your needs. Chai provides a rich set of assertion features to meet various testing requirements. For more detailed information, please refer to the <a href="https://www.chaijs.com/">Chai Documentation</a>.</p>
+<h4 id="using-cheerio-to-manipulate-html-files">Using Cheerio to Manipulate HTML Files</h4>
+<p>In Postman, Cheerio is a jQuery-based library for server-side manipulation of HTML documents. It allows you to use jQuery-like syntax to select and manipulate HTML elements on the server side, making it suitable for parsing and extracting information from HTML pages. In Postman, you can use the Cheerio library for parsing HTML responses. Here are the basic usage steps for Cheerio in Postman:</p>
+<ol>
+<li>
+<p><strong>Install Cheerio:</strong></p>
+<ul>
+<li>Since Postman uses the Node.js runtime environment, you can install Cheerio in Postman scripts. In the “Pre-request Script” or “Tests” section of your request, you can install Cheerio as follows:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Install Cheerio</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> cheerio</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;cheerio&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Parse HTML with Cheerio:</strong></p>
+<ul>
+<li>In the “Tests” section of your request, you can use Cheerio to parse HTML. Here’s a simple example:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get HTML content from the response</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> htmlContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Parse HTML with Cheerio</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> $</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> cheerio.</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8">(htmlContent);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Example: Extract text from the title tag</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> titleText</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;title&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Title:&#39;</span><span style="color:#E1E4E8">, titleText);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Example: Extract the href attribute from all links</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> links</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;a&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> link</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">attr</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;href&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    links.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(link);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Links:&#39;</span><span style="color:#E1E4E8">, links);</span></span></code></pre>
+<p>In the example above, <code>cheerio.load(htmlContent)</code> is used to load HTML content, and jQuery-like syntax is used to select and manipulate elements.</p>
+</li>
+<li>
+<p><strong>Considerations:</strong></p>
+<ul>
+<li>Cheerio is primarily used for parsing static HTML. It may not work well with content generated dynamically using JavaScript. In such cases, you might consider using Puppeteer or other tools that support JavaScript execution.</li>
+</ul>
+</li>
+</ol>
+<p>This is just the basic usage of Cheerio in Postman. You can use various selectors and methods provided by Cheerio according to your specific needs. Refer to the <a href="https://cheerio.js.org/">Cheerio Documentation</a> for more detailed information.</p>
+<h4 id="validating-json-schema-with-tv4">Validating JSON Schema with tv4</h4>
+<p>In Postman, tv4 is a JSON Schema validation library used to validate whether JSON data conforms to a given JSON Schema. JSON Schema is a specification for describing the structure of JSON objects, defining properties, types, and other constraints.</p>
+<p>Here are the basic steps for using tv4 to validate JSON Schema in Postman:</p>
+<ol>
+<li>
+<p><strong>Install tv4 Library:</strong></p>
+<ul>
+<li>Since Postman uses the Node.js runtime environment, you can install tv4 in Postman scripts. In the “Pre-request Script” or “Tests” section of your request, you can install tv4 as follows:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Install tv4</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> tv4</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;tv4&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Define JSON Schema:</strong></p>
+<ul>
+<li>In Postman, you can define the JSON Schema in the “Pre-request Script” or “Tests” section. JSON Schema can be defined as a JavaScript object. Here’s a simple example:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Define JSON Schema</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jsonSchema</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;properties&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;name&quot;</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;age&quot;</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;number&quot;</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;required&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;name&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;age&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p><strong>Validate with tv4:</strong></p>
+<ul>
+<li>In the “Tests” section of your request, you can use tv4 to validate JSON data against the defined JSON Schema. Here’s a simple example:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get JSON data from the response</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jsonResponse</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Validate JSON against the schema using tv4</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> isValid</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> tv4.</span><span style="color:#B392F0">validate</span><span style="color:#E1E4E8">(jsonResponse, jsonSchema);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Check the validation result</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;JSON is valid according to the schema&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(isValid).to.be.true;</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>In the example above, <code>tv4.validate(jsonResponse, jsonSchema)</code> is used to validate whether the JSON response conforms to the specified schema. The validation result is stored in the <code>isValid</code> variable, and <code>pm.test</code> is used to check the validation result.</p>
+</li>
+</ol>
+<p>This is just the basic usage of tv4 in Postman. You can define more complex JSON Schemas and use other features of tv4 for flexible validation according to your specific requirements. Refer to the <a href="https://github.com/geraintluff/tv4">tv4 Documentation</a> for more detailed information.</p>
+<h4 id="generating-uuids">Generating UUIDs</h4>
+<p>In Postman, you can use the <code>uuid</code> module to generate UUIDs (Universally Unique Identifiers), also known as GUIDs. Here’s the basic usage of the <code>uuid</code> module in Postman:</p>
+<h5 id="1-install-the-uuid-module">1. Install the <code>uuid</code> Module</h5>
+<p>In the “Pre-request Script” or “Tests” section of your Postman request, you can install the <code>uuid</code> module as follows:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Install the uuid module</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uuid</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;uuid&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h5 id="2-generate-uuid">2. Generate UUID</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Generate UUID</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> generatedUUID</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> uuid.</span><span style="color:#B392F0">v4</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Generated UUID:&#39;</span><span style="color:#E1E4E8">, generatedUUID);</span></span></code></pre>
+<p>In the example above, <code>uuid.v4()</code> is used to generate a UUID based on random numbers. You can use the generated UUID in your Postman script, such as setting it as the value for a request header or parameter.</p>
+<h5 id="example">Example</h5>
+<p>Here’s an example of generating a UUID and setting it as a request header in the “Pre-request Script” of a Postman request:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Install the uuid module</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uuid</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;uuid&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Generate UUID</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> generatedUUID</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> uuid.</span><span style="color:#B392F0">v4</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Set request header</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.request.headers.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">({ key: </span><span style="color:#9ECBFF">&#39;X-Request-ID&#39;</span><span style="color:#E1E4E8">, value: generatedUUID });</span></span></code></pre>
+<p>In the example above, <code>X-Request-ID</code> is a common request header used to identify the uniqueness of the request. The generated UUID is set as the value for this request header to ensure a unique identifier for each request.</p>
+<p>Note that Postman automatically performs the steps to install dependencies</p>
+<p>when running scripts, so manual installation of the <code>uuid</code> module is not necessary.</p>
+<h4 id="converting-xml-to-javascript-objects-with-xml2js">Converting XML to JavaScript Objects with xml2js</h4>
+<p>In Postman, <code>xml2js</code> is a library used to convert XML into JavaScript objects. In the “Pre-request Script” or “Tests” section of your Postman request, you can use <code>xml2js</code> to handle XML responses and transform them into JavaScript objects. Here are the basic steps for using <code>xml2js</code> in Postman:</p>
+<ol>
+<li>
+<p><strong>Install the xml2js Library:</strong></p>
+<ul>
+<li>Since Postman uses the Node.js runtime environment, you can install <code>xml2js</code> in Postman scripts. In the “Pre-request Script” or “Tests” section of your request, you can install <code>xml2js</code> as follows:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Install xml2js</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> xml2js</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;xml2js&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p><strong>Parse XML Response:</strong></p>
+<ul>
+<li>After getting the XML response, you can use <code>xml2js</code> to parse it into a JavaScript object. Here’s a simple example:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get the content of the response as XML</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> xmlContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Use xml2js to parse XML</span></span>
+<span class="line"><span style="color:#E1E4E8">xml2js.</span><span style="color:#B392F0">parseString</span><span style="color:#E1E4E8">(xmlContent, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error parsing XML:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // result is the parsed JavaScript object</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Parsed XML:&#39;</span><span style="color:#E1E4E8">, result);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>In the example above, <code>xml2js.parseString(xmlContent, function (err, result) {...}</code> is used to asynchronously parse the XML content. The parsed JavaScript object is stored in the <code>result</code> variable.</p>
+</li>
+<li>
+<p><strong>Handle Parsed JavaScript Object:</strong></p>
+<ul>
+<li>Once you have the parsed JavaScript object, you can access and manipulate its properties using regular JavaScript object handling techniques.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Example: Access a property of the parsed JavaScript object</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.root.element[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].subelement[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]._;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Value from parsed XML:&#39;</span><span style="color:#E1E4E8">, value);</span></span></code></pre>
+<p>In the example above, <code>result.root.element[0].subelement[0]._</code> is an example of accessing a property of the parsed object. The structure depends on your XML structure.</p>
+</li>
+</ol>
+<p>This is just the basic usage of <code>xml2js</code> in Postman. You can use other features of <code>xml2js</code>, such as setting parsing options or handling namespaces, based on your specific needs. Refer to the <a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js Documentation</a> for more detailed information.</p>
+<h4 id="common-utility-functions-with-util">Common Utility Functions with util</h4>
+<p>In Postman, <code>util</code> is a global object that provides some common utility functions for use in Postman scripts. Here are some common <code>util</code> functions and their usage:</p>
+<h5 id="1-utilguid---generate-a-globally-unique-identifier-guid">1. <code>util.guid()</code> - Generate a Globally Unique Identifier (GUID)</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Generate a globally unique identifier</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uniqueId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">guid</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Unique ID:&#39;</span><span style="color:#E1E4E8">, uniqueId);</span></span></code></pre>
+<h5 id="2-utiltimestamp---get-the-current-timestamp">2. <code>util.timestamp()</code> - Get the Current Timestamp</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get the current timestamp (in milliseconds)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> timestamp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">timestamp</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Timestamp:&#39;</span><span style="color:#E1E4E8">, timestamp);</span></span></code></pre>
+<h5 id="3-utilrandomintmin-max---generate-a-random-integer-in-a-specified-range">3. <code>util.randomInt(min, max)</code> - Generate a Random Integer in a Specified Range</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Generate a random integer between 1 and 100</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> randomInt</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">randomInt</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Random Integer:&#39;</span><span style="color:#E1E4E8">, randomInt);</span></span></code></pre>
+<h5 id="4-utilunixtimestamp---get-the-current-timestamp-in-unix-timestamp-seconds">4. <code>util.unixTimestamp()</code> - Get the Current Timestamp in Unix Timestamp (seconds)</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get the current timestamp (in seconds)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> unixTimestamp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">unixTimestamp</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Unix Timestamp:&#39;</span><span style="color:#E1E4E8">, unixTimestamp);</span></span></code></pre>
+<h5 id="5-utilencodebase64str-and-utildecodebase64base64str---base64-encoding-and-decoding">5. <code>util.encodeBase64(str)</code> and <code>util.decodeBase64(base64Str)</code> - Base64 Encoding and Decoding</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Base64 encoding</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> encodedString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">encodeBase64</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Hello, World!&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Encoded String:&#39;</span><span style="color:#E1E4E8">, encodedString);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Base64 decoding</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> decodedString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> util.</span><span style="color:#B392F0">decodeBase64</span><span style="color:#E1E4E8">(encodedString);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Decoded String:&#39;</span><span style="color:#E1E4E8">, decodedString);</span></span></code></pre>
+<h5 id="6-utileachobj-callback---iterate-over-an-object-or-array">6. <code>util.each(obj, callback)</code> - Iterate Over an Object or Array</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Iterate over an array</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> array</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">util.</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(array, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">index</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Index ${</span><span style="color:#E1E4E8">index</span><span style="color:#9ECBFF">}: ${</span><span style="color:#E1E4E8">value</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Iterate over an object</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { a: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, b: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, c: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">util.</span><span style="color:#B392F0">each</span><span style="color:#E1E4E8">(obj, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">key</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Key ${</span><span style="color:#E1E4E8">key</span><span style="color:#9ECBFF">}: ${</span><span style="color:#E1E4E8">value</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>In Postman scripts, you can directly use these utility functions via the <code>util</code> object.</li>
+<li>These methods provided by the <code>util</code> object simplify some common tasks in Postman scripts, such as generating random numbers, handling timestamps, and encoding/decoding strings.</li>
+<li>Please refer to the Postman official documentation, as Postman continues to update and improve its script environment, and new utility functions may be introduced.</li>
+</ul>
+<h4 id="stream-operations-with-stream">Stream Operations with stream</h4>
+<p>In Node.js, streams are often used to handle large amounts of data, effectively reducing memory usage and improving performance. Here are some basic usage examples of streams in Node.js that you can refer to for data or file processing.</p>
+<h5 id="1-readable-streams">1. <strong>Readable Streams:</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;fs&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Create a readable stream</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> readableStream</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">createReadStream</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;input.txt&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Set encoding (if it&#39;s a text file)</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">setEncoding</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;utf-8&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle data</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;data&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Received chunk:&#39;</span><span style="color:#E1E4E8">, chunk);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle end</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;end&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Stream ended.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle error</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;error&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="2-writable-streams">2. <strong>Writable Streams:</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;fs&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Create a writable stream</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> writableStream</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">createWriteStream</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;output.txt&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Write data</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Hello, World!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Another line.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// End writing</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle finish</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;finish&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Write completed.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle error</span></span>
+<span class="line"><span style="color:#E1E4E8">writableStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;error&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error:&#39;</span><span style="color:#E1E4E8">, err);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="3-transform-streams">3. <strong>Transform Streams:</strong></h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">Transform</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;stream&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Create a transform stream</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myTransform</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Transform</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">    transform</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">encoding</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">callback</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">        // Transform data</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> transformedData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chunk.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toUpperCase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(transformedData);</span></span>
+<span class="line"><span style="color:#B392F0">        callback</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Pipe connecting readable stream, transform stream, and writable stream</span></span>
+<span class="line"><span style="color:#E1E4E8">readableStream.</span><span style="color:#B392F0">pipe</span><span style="color:#E1E4E8">(myTransform).</span><span style="color:#B392F0">pipe</span><span style="color:#E1E4E8">(writableStream);</span></span></code></pre>
+<p>This is just some basic usage of streams in Node.js. In Postman, you can use these methods in the scripts of your requests, such as the “Pre-request Script” or “Tests” sections, by executing these scripts in the Node.js runtime environment. Please note that the stream API in Node.js can be more complex, for example, by using the <code>pipeline</code> function to handle the connection of multiple streams.</p>
+<h4 id="timers-timers">Timers: <code>timers</code></h4>
+<p>In Postman, you can use the timer functionality of Node.js to handle scheduled tasks or operations with a delay. Here are some basic usages of Node.js timers that can be used in Postman scripts.</p>
+<h5 id="1-settimeout---delayed-execution">1. <code>setTimeout</code> - Delayed Execution</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Delayed execution of an operation</span></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Delayed operation.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 2000 milliseconds (2 seconds)</span></span></code></pre>
+<h5 id="2-setinterval---periodic-execution">2. <code>setInterval</code> - Periodic Execution</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Periodic execution of a repeated operation</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> intervalId</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setInterval</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Repeated operation.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">3000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 3000 milliseconds (3 seconds)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Cancel periodic execution</span></span>
+<span class="line"><span style="color:#6A737D">// clearInterval(intervalId);</span></span></code></pre>
+<h5 id="3-usage-in-postman">3. Usage in Postman</h5>
+<p>In Postman, you can use these timers in the “Pre-request Script” or “Tests” sections. For example, delaying an operation in the “Tests” section:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Delayed operation in the &quot;Tests&quot; section</span></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Delayed operation in Tests.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 2000 milliseconds (2 seconds)</span></span></code></pre>
+<p>Please note that the code executed in the “Pre-request Script” or “Tests” sections of Postman is running in the Node.js environment, so you can use most features supported by Node.js, including timers.</p>
+<p>In the examples above, <code>setTimeout</code> executes an operation once after a specified delay, and <code>setInterval</code> executes an operation periodically at a specified interval. In Postman, you can use these timers according to your specific needs.</p>
+<h4 id="events-handling-events">Events Handling: <code>events</code></h4>
+<p>In the Postman script environment, you can use Node.js <code>events</code> module to handle events. The <code>events</code> module provides the <code>EventEmitter</code> class, which can be used to define and trigger events. Here are some basic usages of using the <code>events</code> module in Postman with Node.js:</p>
+<h5 id="1-creating-an-event-emitter">1. Creating an Event Emitter</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> EventEmitter</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;events&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myEmitter</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> EventEmitter</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<h5 id="2-defining-an-event-handling-function">2. Defining an Event Handling Function</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Define an event handling function</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> myEventHandler</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Event handled.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h5 id="3-registering-an-event-handling-function">3. Registering an Event Handling Function</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Register an event handling function</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myEvent&#39;</span><span style="color:#E1E4E8">, myEventHandler);</span></span></code></pre>
+<h5 id="4-triggering-an-event">4. Triggering an Event</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Trigger an event</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">emit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myEvent&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h5 id="5-example">5. Example</h5>
+<p>In the Postman script environment, you can use events to implement callbacks or handling for asynchronous operations. Here’s a simple example demonstrating how to trigger an event after completing an asynchronous operation:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> EventEmitter</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;events&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myEmitter</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> EventEmitter</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Simulate an asynchronous operation</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> performAsyncOperation</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Async operation completed.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">        // Trigger the event</span></span>
+<span class="line"><span style="color:#E1E4E8">        myEmitter.</span><span style="color:#B392F0">emit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;asyncOperationComplete&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Register an event handling function</span></span>
+<span class="line"><span style="color:#E1E4E8">myEmitter.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;asyncOperationComplete&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Handling async operation completion.&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // You can perform logic here after the asynchronous operation completes</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Execute the asynchronous operation</span></span>
+<span class="line"><span style="color:#B392F0">performAsyncOperation</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>In the above example, the <code>performAsyncOperation</code> function simulates an asynchronous operation, and when the operation completes, the <code>asyncOperationComplete</code> event is triggered using <code>myEmitter.emit</code>. In the event handling function, you can write logic to handle what happens after the asynchronous operation completes.</p>
+<p>Please note that the execution of asynchronous operations in Postman scripts may be subject to limitations, so careful consideration is required in practical use.</p>
+<h2 id="reference-documents">Reference Documents</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman Official Documentation</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">Newman Official Documentation</a></li>
+</ul>  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/zh-cn/blog/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/" class="social-icon lang-toggle" title="切换至中文" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>ZH</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/en/about/" data-astro-cid-sz7xmlte>About</a> <a href="/en/archive/" data-astro-cid-sz7xmlte>Archive</a> <a href="/en/projects/" data-astro-cid-sz7xmlte>Projects</a> <a href="/en/sponsor/" data-astro-cid-sz7xmlte>Sponsor</a> <a href="/en/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>RSS Feed</a> <a href="/en/sitemap/" data-astro-cid-sz7xmlte>Sitemap</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 Nao&#39;s Blog </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>Licensed under CC BY-NC-SA 4.0</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>Built with Astro &amp; Cloudflare &amp; Github &amp; AI</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="Search posts…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>Search posts…</label> <input id="search-input" type="search" class="search-input" placeholder="Search posts…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K or Ctrl+K to open search</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>No results.</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

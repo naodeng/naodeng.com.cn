@@ -1,0 +1,43 @@
+---
+/**
+ * 可选接入 Google Analytics (GA4) 与 Umami 统计。
+ * 通过环境变量启用，不设置则不会注入任何脚本。
+ *
+ * Google Analytics (GA4):
+ *   PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+ *
+ * Umami:
+ *   PUBLIC_UMAMI_WEBSITE_ID=你的网站 ID（在 Umami 后台「编辑网站」→ 跟踪代码中获取）
+ *   PUBLIC_UMAMI_SRC=https://analytics.umami.is/script.js  （可选，自建时改为你的 script 地址）
+ *   PUBLIC_UMAMI_HOST_URL=  （可选，自建 Umami 时填写数据上报地址）
+ */
+
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undefined;
+const umamiSrc = (import.meta.env.PUBLIC_UMAMI_SRC as string | undefined) ?? "https://analytics.umami.is/script.js";
+const umamiHostUrl = import.meta.env.PUBLIC_UMAMI_HOST_URL as string | undefined;
+
+const useGa = Boolean(gaId?.trim());
+const useUmami = Boolean(umamiWebsiteId?.trim());
+---
+
+{useGa && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </>
+)}
+
+{useUmami && (
+  <script
+    defer
+    src={umamiSrc}
+    data-website-id={umamiWebsiteId}
+    {...(umamiHostUrl ? { "data-host-url": umamiHostUrl } : {})}
+  ></script>
+)}

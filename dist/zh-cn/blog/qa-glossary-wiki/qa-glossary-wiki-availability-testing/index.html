@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>软件测试术语分享:Availability Testing 可用性测试 - 软件测试同学</title><meta name="description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://naodeng.com.cn/en/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"><link rel="alternate" hreflang="zh-CN" href="https://naodeng.com.cn/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="软件测试术语分享:Availability Testing 可用性测试 - 软件测试同学"><meta property="og:site_name" content="软件测试术语分享:Availability Testing 可用性测试 - 软件测试同学"><meta property="og:description" content="naodeng，naodeng.com.cn，naodeng，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://naodeng.com.cn/ogp.png"><meta property="og:url" content="https://naodeng.com.cn/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.riT0A__y.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2>软件测试同学</a> </h1> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <button type="button" class="nav-search-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> </button> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/naodeng.com.cn" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/QA-Glossary-Wiki-availability-testing-cover.CXl1E4Xa_R5abf.webp" alt="软件测试术语分享:Availability Testing 可用性测试" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>软件测试术语分享:Availability Testing 可用性测试</h1> <time datetime="2024-04-02T04:50:44.000Z" data-astro-cid-v3cnrnum> 2024/4/2 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>QA Glossary</span><span class="tag" data-astro-cid-v3cnrnum>Availability Testing</span> </div> </header> <h2 id="availability-testing-可用性测试">Availability Testing 可用性测试</h2>
+<p>在软件测试的背景下，可用性测试是指评估系统的正常运行时间，以确保应用程序或系统按预期对用户保持可访问和可操作。</p>
+<p>这种测试的主要目标是确保软件符合其定义的可用性标准，提供可靠的服务而没有长时间的中断。这种测试通常考虑到系统故障、维护、高峰用户负载和网络中断等情景，并旨在确定系统的整体可靠性以及是否准备好投入生产。</p>
+<p>可用性测试对于需要保持持续可访问性的应用程序至关重要，例如电子商务平台、银行系统和关键基础设施服务。</p>
+<h2 id="关于可用性测试的问题">关于可用性测试的问题</h2>
+<h3 id="基础知识和重要性">基础知识和重要性</h3>
+<h4 id="什么是可用性测试">什么是可用性测试？</h4>
+<p>可用性测试确保软件应用程序在需要时是可访问和可操作的。它通常涉及监控系统以验证正常运行时间和响应性，从不同位置模拟用户访问，并测量系统从故障中恢复的能力。</p>
+<p>确定系统可用性的指标，如平均故障间隔时间（MTBF）和平均恢复时间（MTTR），通常被用来量化系统的可靠性和恢复能力。</p>
+<p>可用性测试的常用工具包括监控解决方案，如 Nagios、Zabbix，或基于云的服务如 AWS CloudWatch。这些工具可以配置为执行定期的健康检查并在中断时发送警报。</p>
+<p>自动化可用性测试可以通过将这些监控工具与持续集成/持续部署（CI/CD）流程集成，使用脚本模拟用户流量，并使用基础设施即代码（IaC）按需启动测试环境来实现。</p>
+<p>可用性测试的挑战可能包括网络变异性、模拟真实流量的扩展性和处理外部依赖性。这些可以通过使用流量生成器、容器化一致的测试环境和服务虚拟化来模拟外部服务来缓解。</p>
+<p>最佳实践包括：</p>
+<ul>
+<li>定期更新测试场景以反映实际使用情况。</li>
+<li>将可用性测试纳入 CI/CD 流程，以便早期发现问题。</li>
+<li>利用云服务进行可扩展性和全球覆盖。</li>
+<li>实施冗余和故障转移策略，以优雅地处理故障。</li>
+</ul>
+<p>在发生故障时，应立即采取自动化响应措施，如重新启动服务或重新路由流量，并设置警报机制通知相关人员。持续监控和自动化恢复流程有助于维持系统可用性。</p>
+<h4 id="为什么可用性测试在软件开发中很重要">为什么可用性测试在软件开发中很重要？</h4>
+<p>可用性测试在软件开发中至关重要，因为它确保系统在最终用户需要时是<strong>可访问</strong>和<strong>可用</strong>的。它直接影响软件的<strong>可靠性</strong>和<strong>可信度</strong>，影响客户满意度和保留。在当今竞争激烈的市场中，停机时间可能导致重大的财务损失和品牌声誉的损害。</p>
+<p>通过模拟各种场景，可用性测试有助于识别可能导致计划外中断的潜在故障点。它允许团队主动解决这些问题，从而<strong>最小化停机时间</strong>，并确保系统能够处理意外的流量峰值或故障而不会显著中断。</p>
+<p>此外，它通过验证系统满足商定的服务水平协议（SLAs）和运营水平协议（OLAs）来支持<strong>业务连续性</strong>。这对于需要高可用性的服务尤其重要，例如电子商务平台、银行系统和医疗应用。</p>
+<p>将可用性测试纳入<strong>持续集成/持续部署（CI/CD）流程</strong>确保在整个开发生命周期中考虑可用性，而不是事后考虑。这种方法导致更健壮和有弹性的系统，即使在不利条件下也能保持运营。</p>
+<p>最终，优先考虑可用性测试是关于<strong>保护用户体验</strong>和<strong>业务完整性</strong>。它是一种积极的措施，以防范与系统停机时间相关的风险，并确保服务始终可用以满足用户需求。</p>
+<h4 id="可用性测试的关键组成部分是什么">可用性测试的关键组成部分是什么？</h4>
+<p>可用性测试的关键组成部分包括：</p>
+<ul>
+<li><strong>监控系统</strong>：连续检查系统状态的工具，在停机时发送警报。</li>
+<li><strong>故障转移机制</strong>：当主系统失败时自动切换到备份系统的自动化流程。</li>
+<li><strong>负载均衡器</strong>：确保没有单一服务器因过载而不堪重负的设备或软件，通过在多个服务器之间分配网络或应用程序流量。</li>
+<li><strong>冗余</strong>：复制系统的关键组件或功能以增加可靠性。</li>
+<li><strong>恢复程序</strong>：在故障后恢复系统到其操作状态的记录步骤。</li>
+<li><strong>服务水平协议（SLAs）</strong>：定义预期服务可用性水平的正式协议。</li>
+<li><strong>性能基准</strong>：用于衡量系统性能和可用性的预先建立的标准或参考点。</li>
+<li><strong>备份系统</strong>：与主系统保持同步的次级系统或数据库，在故障时接管。</li>
+<li><strong>灾难恢复计划</strong>：在灾难性故障事件中快速恢复 IT 系统的策略。</li>
+<li><strong>高可用性（HA）架构</strong>：确保系统设计满足高于正常水平的操作性能，通常为正常运行时间的约定水平。</li>
+</ul>
+<p>这些组件协同工作，确保系统保持可访问性和功能性，最小化停机时间并维持无缝的用户体验。有效实施和维护这些组件可以显著提高系统的可用性和可靠性。</p>
+<h4 id="可用性测试如何改善整体用户体验">可用性测试如何改善整体用户体验？</h4>
+<p>可用性测试通过确保应用程序或系统在需要时是可访问和可操作的，增强了整体用户体验。通过模拟各种场景，包括高峰流量和服务器故障，它有助于识别可能导致用户沮丧的潜在停机时间。<strong>一致的可用性</strong>对于维持用户信任和满意度至关重要，频繁的中断可能导致信心丧失，并可能将用户推向竞争对手。</p>
+<p>通过严格的测试，团队可以识别并解决可能影响可用性的漏洞，从而提供更<strong>可靠的服务</strong>。这种可靠性对于要求高正常运行时间的应用程序尤为关键，例如电子商务平台、银行应用程序和医疗系统。</p>
+<p>此外，可用性测试通过确保故障转移机制和冗余计划的有效性，有助于实现<strong>无缝的用户体验</strong>，最小化任何单一故障点的影响。用户期望应用程序全天候可用，任何中断都可能对他们的体验产生不利影响。</p>
+<p>总之，通过主动验证系统能够处理真实世界的用例并从故障中恢复，可用性测试在提供高质量的用户体验方面发挥着关键作用，满足用户对<strong>持续访问</strong>和<strong>可靠性能</strong>的期望。</p>
+<h4 id="可用性测试和其他类型的测试有什么区别">可用性测试和其他类型的测试有什么区别？</h4>
+<p>可用性测试与其他类型的测试的不同之处在于，它专门关注确保系统或应用程序在需要时是可访问和可操作的。其他测试类型，如单元测试、集成测试或性能测试，集中在验证代码的正确性、系统组件之间的交互或系统在负载下的响应性和稳定性。</p>
+<p>虽然功能测试检查功能是否按照规范工作，可用性测试关注的是系统的正常运行时间和从故障中恢复的能力。安全测试旨在揭示漏洞，但可用性测试确保安全措施不会妨碍系统的可访问性。</p>
+<p>可用性测试评估用户在需要时是否可以访问应用程序，而兼容性测试检查应用程序在不同环境和平台上的性能，但它不涉及系统的准备就绪性。</p>
+<p>与回归测试不同，后者在软件更改后寻找新缺陷，可用性测试持续监控系统的运行状态。负载测试和压力测试可能模拟高用户流量以评估性能，但它们通常不衡量或保证连续的服务可用性。</p>
+<p>可用性测试在其专注于系统保持功能和可达性的能力方面是独特的，这对于维持用户信任和满意度至关重要。这是一个持续的过程，需要定期监控和维护，以确保系统满足其可用性目标。</p>
+<h3 id="流程和技术">流程和技术</h3>
+<h4 id="可用性测试涉及哪些步骤">可用性测试涉及哪些步骤？</h4>
+<p>要有效地进行可用性测试，请遵循以下步骤：</p>
+<ol>
+<li><strong>定义目标</strong>：确定可接受的可用性水平，包括正常运行时间和恢复时间目标。</li>
+<li><strong>计划</strong>：创建详细的测试计划，概述要测试的场景，包括计划的中断、意外故障和高峰负载时间。</li>
+<li><strong>环境设置</strong>：配置尽可能接近生产设置的测试环境。</li>
+<li><strong>仪器化</strong>：实施监控工具和日志记录，以跟踪可用性指标。</li>
+<li><strong>执行测试</strong>：运行计划的场景，包括模拟中断和测量系统的响应和恢复程序。</li>
+<li><strong>监控结果</strong>：在测试期间持续监控系统行为和性能，以捕获可用性数据。</li>
+<li><strong>分析结果</strong>：根据目标评估收集的数据，以识别改进领域。</li>
+<li><strong>报告</strong>：记录发现，包括与预期可用性水平的任何偏差。</li>
+<li><strong>完善</strong>：根据分析，对系统配置、代码或基础设施进行必要的调整。</li>
+<li><strong>重新测试</strong>：调整后，重新测试以验证更改是否提高了可用性。</li>
+<li><strong>自动化</strong>：实施自动化测试和监控，以持续跟踪可用性。</li>
+<li><strong>审查</strong>：定期审查可用性指标，以确保它们满足业务和用户的不断变化的需求。</li>
+</ol>
+<p>通过遵循这些步骤，您确保了可用性测试的结构化方法，从而满足现代应用程序对高可用性的需求。</p>
+<h4 id="可用性测试中常用的技术是什么">可用性测试中常用的技术是什么？</h4>
+<p>可用性测试中的常见技术包括：</p>
+<ul>
+<li><strong>故障转移测试</strong>：模拟主系统故障，以确保辅助系统无缝接管。</li>
+<li><strong>恢复测试</strong>：确保系统能够在指定的时间范围内从崩溃、硬件故障或其他问题中恢复。</li>
+<li><strong>负载测试</strong>：评估系统在不影响可用性的情况下处理高用户负载的能力。</li>
+<li><strong>压力测试</strong>：将系统推向正常操作能力之外，以查看它如何处理极端条件。</li>
+<li><strong>长时间运行测试</strong>：在重负载下长时间运行系统，以识别可用性潜在的退化。</li>
+<li><strong>监控和警报</strong>：实施实时监控工具以跟踪可用性，并为停机事件配置警报。</li>
+<li><strong>冗余测试</strong>：验证冗余组件（如服务器或数据库）提供必要的备份以维持可用性。</li>
+<li><strong>网络测试</strong>：检查网络组件和基础设施，以确保它们支持系统可用性，特别是在不同的负载和条件下。</li>
+<li><strong>灾难恢复测试</strong>：测试灾难恢复计划的有效性，并确保系统在灾难性事件后能够恢复到操作状态。</li>
+</ul>
+<p>这些技术通常使用诸如 Chaos Monkey 之类的工具来模拟故障，使用 JMeter 或 LoadRunner 进行负载和压力测试，以及使用 Nagios 或 Datadog 进行监控和警报集成到自动化测试套件中。自动化脚本可以安排或由特定事件触发，以模拟各种场景，确保持续评估系统可用性。</p>
+<h4 id="如何确定系统或应用程序的可用性">如何确定系统或应用程序的可用性？</h4>
+<p>要确定系统或应用程序的可用性，请持续监控其<strong>正常运行时间</strong>和<strong>响应时间</strong>。实施定期运行的健康检查，以验证系统组件是否正常运行。使用 Nagios、Zabbix 或基于云的解决方案（如 AWS CloudWatch 或 Azure Monitor）跟踪系统状态，并在中断时发出警报。</p>
+<p>整合模拟用户交互的<strong>端到端测试</strong>，以确保应用程序具有响应性。这些测试可以安排或由部署活动触发。利用 API 监控定期调用后端服务并验证响应。</p>
+<p>日志记录至关重要；分析日志以查找可能表明间歇性可用性问题的错误模式。设置可接受性能的阈值，并使用警报系统在这些阈值被违反时发出通知。</p>
+<p>对于分布式系统，使用 Jaeger 或 Zipkin 等分布式跟踪工具跟踪跨服务边界的请求，并识别瓶颈或故障。</p>
+<p>自动化收集诸如服务器负载、数据库连接和网络延迟等指标。使用这些指标创建正常操作的基线，使偏差更容易发现。</p>
+<p>最后，将冗余和故障转移机制整合到您的监控策略中，以确保即使部分监控基础设施出现故障，您仍然可以评估可用性。</p>
+<p>通过结合这些策略，您可以有效地确定您的系统或应用程序的可用性。</p>
+<h4 id="常用于可用性测试的工具是什么">常用于可用性测试的工具是什么？</h4>
+<p>常用于可用性测试的工具包括：</p>
+<ul>
+<li><strong>Pingdom</strong>：监控网站和服务器的正常运行时间和性能，提供实时警报和报告。</li>
+<li><strong>Uptime Robot</strong>：提供网站监控，就正常运行时间、停机时间和响应时间发出警报和详细报告。</li>
+<li><strong>New Relic</strong>：全栈监控工具，包括可用性检查作为其功能套件的一部分。</li>
+<li><strong>Datadog</strong>：提供云规模监控，包括系统、应用程序和服务的可用性和性能指标。</li>
+<li><strong>Nagios</strong>：一个开源监控系统，可以跟踪系统、网络和基础设施的可用性。</li>
+<li><strong>Zabbix</strong>：另一个能够对各种网络服务、服务器和其他网络硬件进行可用性和性能检查的开源监控工具。</li>
+<li><strong>LoadRunner</strong>：虽然主要是性能测试工具，但可用于模拟用户流量并衡量系统在负载下的可用性。</li>
+<li><strong>Apache JMeter</strong>：专为负载测试设计的开源工具，但也可用于通过持续监控执行可用性测试。</li>
+<li><strong>Site24x7</strong>：提供网站监控，用于可用性、性能和用户体验洞察。</li>
+</ul>
+<p>这些工具可以集成到 CI/CD 流程中，以自动化可用性测试过程。它们通常提供 API 和钩子，允许自定义脚本或自动化任务触发测试和收集结果。通过利用这些工具，测试自动化工程师可以确保系统持续可用，并满足定义的 SLAs。</p>
+<h4 id="如何自动化可用性测试">如何自动化可用性测试？</h4>
+<p>自动化可用性测试涉及创建脚本或使用工具来模拟用户请求并监控系统响应，以确保应用程序在一段时间内可访问和功能。要自动化这个过程，请考虑以下步骤：</p>
+<ol>
+<li><strong>选择合适的工具</strong>：选择可以定期向系统发送请求并记录系统可用性的自动化工具。像 Pingdom、Uptime Robot 或使用<code>curl</code>或<code>wget</code>的自定义脚本可能很有用。</li>
+<li><strong>定义监控间隔</strong>：确定应多久检查系统一次。这可能从几分钟一次到每小时多次，取决于应用程序的关键性。</li>
+<li><strong>设置警报</strong>：配置警报，当系统不可用时通知团队。警报可以通过电子邮件、短信或与 PagerDuty 等事件管理系统的集成设置。</li>
+<li><strong>实施健康检查</strong>：开发返回应用程序及其关键组件状态的端点。自动化测试可以访问这些端点以验证系统健康状况。</li>
+<li><strong>记录和分析</strong>：确保工具记录所有检查。使用这些日志随时间分析系统的可用性，并识别模式或重复出现的问题。</li>
+<li><strong>与 CI/CD 集成</strong>：将可用性检查纳入持续集成和部署流程，以确保新版本不会降低可用性。</li>
+<li><strong>模拟真实世界场景</strong>：使用流量生成器和负载测试工具模拟真实的使用模式和容量。</li>
+<li><strong>自动化恢复</strong>：在可能的情况下，实施可以在可用性检查失败时触发的自动化恢复过程。</li>
+</ol>
+<p>使用<code>curl</code>的简单健康检查示例脚本片段：</p>
+<p>通过自动化这些步骤，您可以在最小的手动干预下持续监控和维护系统的可用性。</p>
+<h3 id="挑战和解决方案">挑战和解决方案</h3>
+<h4 id="可用性测试中的常见挑战是什么">可用性测试中的常见挑战是什么？</h4>
+<p>可用性测试中的常见挑战包括：</p>
+<ul>
+<li><strong>复杂的系统依赖关系</strong>：确保所有组件和外部系统在测试期间可用可能很困难，尤其是在微服务架构中。</li>
+<li><strong>数据同步</strong>：在不损害敏感信息的情况下，保持测试环境与生产数据同步可能是一个挑战。</li>
+<li><strong>网络问题</strong>：不稳定的网络连接和带宽限制可能会影响可用性测试的准确性。</li>
+<li><strong>资源限制</strong>：对服务器和数据库等资源的有限访问可能会阻碍模拟真实世界场景的能力。</li>
+<li><strong>可扩展性</strong>：在高负载下测试可用性需要扩展基础设施，这可能成本高昂且复杂。</li>
+<li><strong>配置管理</strong>：跟踪不同配置及其在各种环境中对可用性的影响是困难的。</li>
+<li><strong>监控和警报</strong>：实施有效的监控以实时检测和警报可用性问题并非易事。</li>
+<li><strong>事件响应</strong>：开发对测试期间发现的可用性问题的快速有效响应可能是具有挑战性的。</li>
+<li><strong>维护窗口</strong>：在计划的停机时间周围协调测试，而不会影响用户，需要仔细规划。</li>
+<li><strong>自动化恢复</strong>：测试系统从故障中自动恢复的能力是复杂的，但对于高可用性至关重要。</li>
+</ul>
+<p>克服这些挑战通常涉及：</p>
+<ul>
+<li><strong>强大的测试环境</strong>：尽可能接近生产环境。</li>
+<li><strong>有效的监控工具</strong>：实施全面的监控解决方案。</li>
+<li><strong>可扩展的基础设施</strong>：使用云服务或容器化进行灵活的资源管理。</li>
+<li><strong>配置即代码</strong>：管理和版本化配置以实现可复制性。</li>
+<li><strong>持续测试</strong>：将可用性测试集成到 CI/CD 流程中，进行持续评估。</li>
+<li><strong>事件管理计划</strong>：建立清晰的处理故障的程序。</li>
+</ul>
+<h4 id="如何克服这些挑战">如何克服这些挑战？</h4>
+<p>克服可用性测试中的挑战需要采取战略性的方法，并使用先进的工具和方法论：</p>
+<ul>
+<li><strong>自动化重复任务</strong>：利用自动化框架处理常规检查，为更复杂的测试场景腾出时间。</li>
+<li><strong>实施强大的监控</strong>：使用实时监控工具持续跟踪系统性能和可用性。像 Nagios、Zabbix 或基于云的解决方案这样的工具可能是至关重要的。</li>
+<li><strong>利用云服务</strong>：利用云提供商的可扩展性和冗余功能来模拟和测试各种负载场景和地理分布。</li>
+<li><strong>使用容器化</strong>：像 Docker 这样的容器可以帮助创建易于复制的隔离环境，确保不同测试阶段的一致性。</li>
+<li><strong>整合混沌工程</strong>：引入受控的中断，测试系统在不利条件下的弹性和恢复程序，确保可用性。</li>
+<li><strong>优先考虑关键路径</strong>：专注于直接影响用户体验的最关键功能，确保它们经过彻底的测试和监控。</li>
+<li><strong>使用负载均衡</strong>：测试负载均衡解决方案以确保它们在高峰负载或服务器故障期间能够有效地处理流量分配。</li>
+<li><strong>定期进行灾难恢复演练</strong>：定期模拟故障，测试和改进灾难恢复计划和备份系统。</li>
+<li><strong>优化测试数据管理</strong>：确保测试数据是代表性的、最新的，并有效管理，以避免测试过程中的瓶颈。</li>
+<li><strong>培养可靠性文化</strong>：鼓励每个团队成员负责维持系统可用性的心态，促进主动的测试和监控实践。</li>
+</ul>
+<p>通过整合这些策略，测试自动化工程师可以提高可用性测试的有效性，并确保系统对用户可靠和可访问。</p>
+<h4 id="进行可用性测试的最佳实践是什么">进行可用性测试的最佳实践是什么？</h4>
+<p>进行可用性测试的最佳实践包括：</p>
+<ul>
+<li><strong>明确定义目标</strong>，包括可接受的正常运行时间和维护窗口。</li>
+<li><strong>模拟真实世界场景</strong>，测试系统在各种条件下的行为，包括高峰负载时间和网络中断。</li>
+<li><strong>持续监控系统性能</strong>，识别可能表明潜在可用性问题的趋势。</li>
+<li><strong>为关键组件实施冗余</strong>，以确保故障转移能力和最小化停机时间。</li>
+<li><strong>使用自动化监控工具</strong>，实时检测和警报可用性问题。</li>
+<li><strong>定期进行灾难恢复演练</strong>，确保备份系统和程序是有效和最新的。</li>
+<li><strong>分析测试后的日志和指标</strong>，识别任何故障的根本原因，并改进未来的测试。</li>
+<li><strong>与开发团队合作</strong>，确保可用性考虑因素被整合到软件设计和部署过程中。</li>
+<li><strong>记录测试结果</strong>，并创建报告，提供系统可用性和改进领域的见解。</li>
+<li><strong>定期审查和更新测试计划</strong>，以反映系统架构、使用模式和业务需求的变化。</li>
+</ul>
+<p>通过遵循这些实践，测试自动化工程师可以帮助确保系统在用户需要时可靠和可用，为积极用户体验和维持业务连续性做出贡献。</p>
+<h4 id="在可用性测试期间如何处理故障">在可用性测试期间如何处理故障？</h4>
+<p>在可用性测试期间处理故障涉及一种系统化的方法来识别、分析和纠正导致系统不可用的问题。以下是简洁的指南：</p>
+<ul>
+<li><strong>立即隔离</strong>故障，以防止对系统产生级联效应。</li>
+<li><strong>详细记录所有事件</strong>，带有时间戳和错误详细信息，以帮助根本原因分析。</li>
+<li>使用<strong>自动化监控工具</strong>实时检测故障。</li>
+<li>实施<strong>冗余</strong>和<strong>故障转移机制</strong>，在服务中断的情况下切换到备份系统。</li>
+<li><strong>分析日志和指标</strong>，以确定故障的起源，无论是硬件、软件、网络还是依赖项问题。</li>
+<li><strong>根据根本原因分析开发修复方案</strong>或权宜之计。</li>
+<li><strong>在部署到生产环境之前，在预发布环境中测试修复方案</strong>。</li>
+<li><strong>更新自动化测试</strong>，包括导致故障的场景。</li>
+<li><strong>进行事后分析</strong>，了解故障的影响并改进未来的响应。</li>
+<li><strong>与利益相关者沟通</strong>，关于故障和采取的解决步骤。</li>
+<li><strong>审查和完善</strong>可用性测试策略和测试用例，定期涵盖新的故障模式。</li>
+</ul>
+<p>记住，目标是<strong>最小化停机时间</strong>，并尽可能快地<strong>恢复服务</strong>，同时从每个事件中学习，以增强系统弹性。</p>
+<h4 id="如何确保系统或应用程序的持续可用性">如何确保系统或应用程序的持续可用性？</h4>
+<p>要确保系统或应用程序的持续可用性，请专注于以下策略：</p>
+<ul>
+<li>实施各个级别的<strong>冗余</strong>，如服务器、网络和数据中心，以处理故障而不会中断服务。</li>
+<li>使用<strong>负载均衡器</strong>在服务器之间均匀分配流量，防止任何单一资源过载。</li>
+<li>应用<strong>故障转移机制</strong>，在发生故障时自动切换到备用系统或组件。</li>
+<li>在非高峰时段进行<strong>定期维护</strong>和更新，以最小化对可用性的影响。</li>
+<li>采用<strong>监控工具</strong>实时跟踪系统健康和性能，快速响应问题。</li>
+<li>整合<strong>灾难恢复计划</strong>，概述数据备份和系统恢复的程序。</li>
+<li>采用<strong>微服务架构</strong>，隔离故障并促进更容易的更新和扩展。</li>
+<li>利用<strong>云服务</strong>的内置高可用性和可扩展性特性。</li>
+<li>实践<strong>混沌工程</strong>，通过有意引入故障主动识别弱点。</li>
+<li>将<strong>自动化测试</strong>纳入 CI/CD 流程，及早发现潜在的可用性问题。</li>
+</ul>
+<p>通过专注于这些策略，您可以构建一个健壮的系统，保持高可用性并满足用户对不间断服务的期望。</p>
+<h3 id="真实世界的应用">真实世界的应用</h3>
+<h4 id="能提供可用性测试的真实世界应用示例吗">能提供可用性测试的真实世界应用示例吗？</h4>
+<p>可用性测试的真实世界应用涵盖了各个行业和场景，确保系统在用户需要时是可访问和功能性的。以下是一些例子：</p>
+<ul>
+<li><strong>电子商务平台</strong>在黑色星期五或网络星期一等高峰购物季节进行可用性测试。他们模拟高流量，以确保网站保持可用，并且交易可以在没有停机的情况下处理。</li>
+<li><strong>银行应用程序</strong>使用可用性测试，以保证客户可以随时访问他们的在线账户并进行交易，这对于维持信任和客户满意度至关重要。</li>
+<li><strong>医疗系统</strong>，如电子健康记录（EHR），必须保持可用，以便医疗专业人员在紧急情况下快速访问患者数据。可用性测试有助于识别可能阻碍访问的潜在故障点。</li>
+<li><strong>流媒体服务</strong>，如 Netflix 或 Spotify，执行可用性测试，以确保客户可以无中断地流媒体内容，这对于保留订阅者和减少流失至关重要。</li>
+<li><strong>云服务提供商</strong>，如 AWS 或 Azure，进行严格的可用性测试，以维护他们的 SLAs 并确保托管的应用程序可用，考虑到云计算的分布式特性。</li>
+<li><strong>电信网络</strong>测试其服务的可用性，以确保用户可以进行通话、发送消息或使用数据服务而不中断，这对于个人和商业通信至关重要。</li>
+<li><strong>交通系统</strong>，如航空公司预订系统，需要进行可用性测试，以防止中断，客户需要预订航班、查看时间表和管理他们的旅行计划。</li>
+</ul>
+<h4 id="可用性测试在云计算中的应用是什么">可用性测试在云计算中的应用是什么？</h4>
+<p>在云计算中，可用性测试专门用于评估分布式环境中服务的弹性和可靠性。它涉及模拟故障并衡量系统的恢复能力。测试云特定场景，如区域中断或自动缩放事件，以确保系统能够维持其服务水平协议（SLAs）。</p>
+<p>自动化在这个背景下发挥着关键作用。可以安排或由特定事件（如新部署）触发的自动化测试。像 Terraform 或 AWS CloudFormation 这样的工具可以创建和销毁资源以测试对可用性的影响。像 Datadog 或 New Relic 这样的监控工具被集成起来，提供系统可用性的实时反馈。</p>
+<p>混沌工程实践，如 Chaos Monkey 工具实现的那样，也被应用于主动引入故障并观察系统的响应。这有助于在它们影响用户之前识别弱点。</p>
+<p>为了确保持续可用性，使用像 canary releases 和 blue/green deployments 这样的策略，在不影响所有用户的情况下在生产中测试新版本。回滚策略是自动化的，以在发生故障时恢复到先前状态。</p>
+<p>总之，云计算中的可用性测试是关于自动化创建故障场景、监控系统响应，并确保恢复过程有效和高效，同时最小化对最终用户的影响。</p>
+<h4 id="可用性测试在-devops-中扮演什么角色">可用性测试在 DevOps 中扮演什么角色？</h4>
+<p>在 DevOps 中，可用性测试是确保持续集成和部署管道（CI/CD）交付的软件不仅功能齐全，而且始终对最终用户可访问的不可或缺的一部分。它与 DevOps 的自动化、持续改进和高可用性原则相一致。</p>
+<p>通过将可用性测试集成到 DevOps 工作流程中，团队可以：</p>
+<ul>
+<li><strong>早期检测可用性问题</strong>：在 CI/CD 管道中定期运行可用性测试有助于在它们影响用户之前识别潜在的停机原因。</li>
+<li><strong>自动化对可用性问题的响应</strong>：将测试集成到监控工具中允许自动化响应，如回滚部署或扩展资源。</li>
+<li><strong>支持蓝绿部署</strong>：可用性测试可以在流量切换之前验证新环境是否准备就绪，从而减少停机时间。</li>
+<li><strong>促进值班决策</strong>：实时可用性数据有助于值班工程师快速排除故障和解决问题。</li>
+</ul>
+<p>要在 DevOps 中实施可用性测试：</p>
+<ol>
+<li><strong>将测试集成到 CI/CD 管道中</strong>：在部署到预生产和生产环境后运行可用性测试。</li>
+<li><strong>利用基础设施即代码（IaC）</strong>：使用 IaC 创建可复制的测试环境。</li>
+<li><strong>利用监控和警报工具</strong>：根据可用性指标设置警报，以便主动捕捉问题。</li>
+<li><strong>采用混沌工程</strong>：引入受控故障以测试系统弹性并提高可用性。</li>
+</ol>
+<p>通过将可用性作为 DevOps 流程的一部分，团队可以确保他们的应用程序满足预期的服务水平协议（SLAs），并提供可靠的用户体验。</p>
+<h4 id="在大规模系统中如何进行可用性测试">在大规模系统中如何进行可用性测试？</h4>
+<p>在大规模系统中进行可用性测试涉及模拟真实世界的使用情况和潜在故障场景，以确保系统按预期保持运营。负载测试和压力测试对于评估系统在高流量或数据处理需求下的表现至关重要。使用像 Apache JMeter 或 LoadRunner 这样的工具来模拟这些条件。</p>
+<p>故障转移测试对于验证系统能够处理服务丢失并通过切换到备份系统而不显著停机至关重要。实施自动化脚本以触发故障转移过程并监控系统的响应。</p>
+<p>恢复测试确保系统能够在预定义的时间范围内从崩溃或故障中恢复。自动化恢复程序并测量恢复时间以验证遵守恢复时间目标（RTOs）。</p>
+<p>使用 Nagios 或 Prometheus 等工具持续监控系统性能。为任何可用性问题设置警报，并将其与 PagerDuty 等事件管理系统集成，以实现快速响应。</p>
+<p>整合混沌工程实践，使用 Chaos Monkey 等工具引入随机系统故障并观察系统如何应对，确保它能够承受意外的中断。</p>
+<p>自动化部署管道以包括部署后的可用性检查，确保新版本不会降低系统可用性。使用像 Terraform 或 Ansible 这样的基础设施即代码（IaC）工具来管理和复制一致的测试环境。</p>
+<p>最后，分析日志和指标以识别可能导致可用性问题的模式。使用这些数据来完善测试策略并提高系统健壮性。实施 AIOps 平台进行高级分析和主动问题解决。</p>
+<h4 id="可用性测试如何帮助提高系统弹性">可用性测试如何帮助提高系统弹性？</h4>
+<p>可用性测试可以通过识别和缓解潜在故障点来增强系统弹性。通过模拟各种中断场景，如服务器崩溃、网络断开或高流量负载，它有助于确保系统能够在不利条件下快速恢复并继续有效运行。</p>
+<p>通过实施冗余和故障转移机制来提高弹性。可用性测试验证这些机制是否有效，以及系统是否可以在备份或待机模式下切换而不会显著停机。这种测试还验证了监控工具和警报的有效性，确保任何问题都能及时检测和解决。</p>
+<p>此外，它鼓励制定健全的灾难恢复计划。通过定期测试这些计划，团队可以完善他们的响应策略，减少在意外停机后恢复服务所需的时间。</p>
+<p>将可用性测试纳入持续集成/持续部署（CI/CD）流程中，确保持续评估弹性。可以在每次部署后运行自动化测试，以验证新更改不会对系统可用性产生不利影响。</p>
+<p>总之，可用性测试通过以下方式直接有助于提高系统弹性：</p>
+<ul>
+<li>确保冗余和故障转移过程的有效性。</li>
+<li>验证监控和警报系统。</li>
+<li>完善灾难恢复计划。</li>
+<li>与 CI/CD 集成进行持续的弹性评估。</li>
+</ul>
+<p>通过专注于这些领域，系统变得更加健壮，能够在中断面前维持运营，从而提高整体可靠性。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/zhcategories/bruno/">使用 Bruno 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 K6 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/qa-glossary-wiki/qa-glossary-wiki-availability-testing/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://naodeng.com.cn/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const a=document.getElementById("search-dialog"),o=document.getElementById("search-input"),r=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),s=document.querySelector("[data-hint]");let c=[],i="en";function m(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function y(){if(c.length>0)return c;i=m();const e=await fetch(`/${i}/search-index.json`);return e.ok?(c=await e.json(),c):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function E(e){r.innerHTML="",r.hidden=e.length===0,u.hidden=e.length>0,e.slice(0,20).forEach(t=>{const n=document.createElement("a");n.href=t.url,n.className="search-result-item",n.setAttribute("role","listitem");const d=new Date(t.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});n.innerHTML=`
+        <span class="search-result-title">${f(t.title)}</span>
+        <span class="search-result-meta">${f(d)}${t.tags?.length?" · "+t.tags.slice(0,3).join(", "):""}</span>
+      `,n.addEventListener("click",()=>a.close()),r.appendChild(n)})}function g(e){const t=e.trim().toLowerCase();return t?c.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(d=>d.toLowerCase().includes(t))):[]}function L(){const e=o.value;if(!c.length){r.hidden=!0,u.hidden=!0;return}const t=g(e);E(t)}function h(){y().then(()=>{a.showModal(),o.value="",o.focus(),r.hidden=!0,u.hidden=!0,s&&(s.style.display="block")})}function l(){a.close(),s&&(s.style.display="")}a.addEventListener("close",()=>{s&&(s.style.display="")});a.addEventListener("cancel",l);p?.addEventListener("click",l);o.addEventListener("input",L);o.addEventListener("keydown",e=>{if(e.key==="Escape"&&(l(),e.preventDefault()),e.key==="Enter"){const t=r.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),a.open?l():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

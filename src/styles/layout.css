@@ -1,0 +1,18 @@
+.l-header {
+}
+
+.l-main {
+  margin-block-start: var(--sp-l);
+  /* 留出页脚社交图标上浮空间，避免与「查看全部」等按钮重叠 */
+  padding-block-end: 4rem;
+}
+
+.l-content {
+  max-inline-size: 800px;
+  padding-inline: var(--sp-m);
+  margin-inline: auto;
+}
+
+.l-footer {
+  margin-block-start: var(--sp-m);
+}

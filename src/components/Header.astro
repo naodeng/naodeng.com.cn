@@ -1,0 +1,226 @@
+---
+import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { SITE_TITLE, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_SPONSOR, NAV_SEARCH, SEARCH_OPEN_HINT, SEARCH_PLACEHOLDER } from "@/consts";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+const locale = Astro.currentLocale as Lang;
+
+const isActive = (path: string) =>
+  getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
+---
+
+<header class="l-header">
+  <h1 dir="ltr">
+    <a href={getRelativeLocaleUrl(locale, "/")}>
+      <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" />
+      <span>{t(SITE_TITLE)}</span>
+    </a>
+  </h1>
+
+  <div class="header-actions">
+    <LocaleSelect />
+    <button type="button" class="search-bar-trigger" aria-label={t(NAV_SEARCH)} title={t(SEARCH_OPEN_HINT)} data-search-open>
+      <span class="search-bar-icon material-icons-sharp" aria-hidden="true">search</span>
+      <span class="search-bar-placeholder">{t(SEARCH_PLACEHOLDER)}</span>
+      <span class="search-bar-kbd"><span class="search-bar-kbd-inner">⌘ K</span></span>
+    </button>
+  </div>
+
+  <nav class="l-content">
+    <ul>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/")}
+          class={isActive("/") ? "active" : null}
+        >
+          {t(NAV_HOME)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/blog")}
+          class={isActive("/blog") ? "active" : null}
+        >
+          {t({ en: "Blog", "zh-cn": "博客" })}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/archive")}
+          class={isActive("/archive") ? "active" : null}
+        >
+          {t(NAV_ARCHIVE)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/projects")}
+          class={isActive("/projects") ? "active" : null}
+        >
+          {t(NAV_PROJECTS)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/sponsor")}
+          class={isActive("/sponsor") ? "active" : null}
+        >
+          {t(NAV_SPONSOR)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={isActive("/about") ? "active" : null}
+        >
+          {t(NAV_ABOUT)}
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/naodeng/inaodeng.com" target="_blank">
+          GitHub
+          <span class="material-icons-sharp dir">open_in_new</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  * {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  header {
+    display: grid;
+    place-items: center;
+    gap: var(--sp-s);
+  }
+  h1 {
+    margin-block-start: var(--sp-l);
+    font-size: 40px;
+    font-family: var(--english-font);
+    font-weight: 900;
+  }
+  @media (width < 480px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  h1 a {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  h1 a .site-logo {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+  @media (width < 480px) {
+    h1 a .site-logo {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-m);
+  }
+  ul {
+    display: flex;
+    gap: var(--sp-s);
+    margin-block-start: var(--sp-s);
+  }
+  a {
+    font-size: 1.05rem;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding-block: 0.2em;
+    padding-inline: 0.4em;
+    border-radius: 4px;
+  }
+  a:hover,
+  a:active {
+    background-color: color-mix(
+      in srgb,
+      var(--color-theme) 5%,
+      transparent
+    );
+  }
+  a.active {
+    pointer-events: none;
+    color: var(--color-theme);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-s);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .search-bar-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 40px;
+    padding-inline: 12px 10px;
+    min-width: 200px;
+    max-width: 280px;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.95rem;
+    font-family: "Noto Sans", system-ui, sans-serif;
+    color: var(--color-main);
+    background-color: var(--color-base);
+    border: 2px solid var(--color-theme);
+    cursor: pointer;
+    transition: 0.2s ease-out;
+  }
+  .search-bar-trigger:hover {
+    background-color: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
+  }
+  .search-bar-trigger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-theme) 40%, transparent);
+  }
+  .search-bar-icon {
+    flex-shrink: 0;
+    font-size: 24px;
+    color: var(--color-theme);
+    opacity: 0.4;
+  }
+  .search-bar-placeholder {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.9;
+  }
+  .search-bar-kbd {
+    flex-shrink: 0;
+    padding: 2px 6px;
+  }
+  .search-bar-kbd-inner {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-main);
+    background-color: color-mix(in srgb, var(--color-theme) 8%, var(--color-base));
+    border-radius: 4px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 30%, var(--color-base));
+  }
+  .material-icons-sharp {
+    opacity: 0.6;
+    margin-inline-start: -0.2em;
+    font-size: 0.9em;
+  }
+</style>

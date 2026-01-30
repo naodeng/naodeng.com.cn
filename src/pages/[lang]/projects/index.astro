@@ -1,0 +1,157 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { PROJECTS_LIST } from "@/data/projects";
+import {
+  PROJECTS_PAGE_TITLE,
+  PROJECTS_TECH_STACK_LABEL,
+} from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const title = t(PROJECTS_PAGE_TITLE);
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <div class="project-container">
+    <div class="project-grid">
+      {PROJECTS_LIST.map((proj) => (
+        <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-header">
+            <h2 class="project-name">{t(proj.name)}</h2>
+            <span class="external-icon">
+               <span class="material-icons-sharp">open_in_new</span>
+            </span>
+          </div>
+          
+          <div class="project-tech-tags">
+             {t(proj.techStack).split(/[、,，]/).map(tech => (
+               <span class="mini-tag">{tech.trim()}</span>
+             ))}
+          </div>
+          
+          <p class="project-desc">{t(proj.description)}</p>
+          
+          <div class="project-footer">
+            <span class="view-link">{locale === "zh-cn" ? "查看源码" : "View Source"}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .project-container {
+    margin-block-start: var(--sp-l);
+  }
+  
+  .project-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-m);
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-theme);
+    box-shadow: 0 12px 40px -12px color-mix(in srgb, var(--color-theme) 25%, transparent);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-block-end: 0.75rem;
+  }
+
+  .project-name {
+    font-size: 1.35rem;
+    color: var(--color-theme);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .external-icon {
+    color: var(--color-theme);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover .external-icon {
+    opacity: 1;
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-end: 1.25rem;
+  }
+
+  .mini-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    color: var(--color-theme);
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-block-end: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+
+  .view-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .view-link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+
+  .project-card:hover .view-link::after {
+    transform: translateX(4px);
+  }
+</style>

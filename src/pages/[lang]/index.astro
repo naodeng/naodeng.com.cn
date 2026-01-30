@@ -1,0 +1,461 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+import { PROJECTS_LIST } from "@/data/projects";
+import {
+  SITE_TITLE,
+  HOME_INTRO,
+  HOME_LATEST_POSTS,
+  HOME_VIEW_ALL,
+  HOME_PROJECTS_TITLE,
+  HOME_TAGS_TITLE,
+  HOME_VIEW_ALL_PROJECTS,
+} from "@/consts";
+
+import heroImageEn from "@/assets/en/hero.svg";
+import heroImageZhCn from "@/assets/zh-cn/hero.svg";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+// 当前语言的所有博文
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale);
+
+// 最新 6 篇博文
+const latestPosts = [...allPosts]
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 6);
+
+// 提取前 30 个热门标签
+const tagCounts = allPosts.flatMap(post => post.data.tags || []).reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const popularTags = Object.entries(tagCounts)
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 30)
+  .map(([tag]) => tag);
+
+// 前 4 个项目
+const featuredProjects = PROJECTS_LIST.slice(0, 4);
+
+const introHtml = marked(t(HOME_INTRO), { gfm: true }) as string;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout>
+  <section class="hero">
+    <div class="hero-container">
+      <Image
+        src={locale === "zh-cn" ? heroImageZhCn : heroImageEn}
+        alt={t(SITE_TITLE)}
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="intro-card" set:html={introHtml} />
+  </section>
+
+  <!-- 项目展示区域 -->
+  <section class="home-section projects-showcase">
+    <div class="section-header">
+      <h2 class="section-title">{t(HOME_PROJECTS_TITLE)}</h2>
+    </div>
+    <div class="project-grid">
+      {featuredProjects.map((proj) => (
+        <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-content">
+            <h3 class="project-name">{t(proj.name)}</h3>
+            <div class="project-tech-tags">
+               {t(proj.techStack).split(/[、,，]/).map(tech => (
+                 <span class="mini-tag">{tech.trim()}</span>
+               ))}
+            </div>
+            <p class="project-desc">{t(proj.description)}</p>
+          </div>
+          <div class="project-footer">
+            <span class="external-icon">
+               <span class="material-icons-sharp">open_in_new</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="section-footer">
+      <a href={getRelativeLocaleUrl(locale, "/projects")} class="cta-button">
+        {t(HOME_VIEW_ALL_PROJECTS)}
+        <span class="material-icons-sharp">trending_flat</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 热门标签区域 -->
+  <section class="home-section tags-cloud">
+    <div class="section-header">
+      <h2 class="section-title">{t(HOME_TAGS_TITLE)}</h2>
+    </div>
+    <div class="tags-container">
+      {popularTags.map((tag) => (
+        <a href={getRelativeLocaleUrl(locale, `/tags/${tag}`)} class="tag-pill">
+          <span class="tag-hash">#</span>{tag}
+          <span class="tag-count">{tagCounts[tag]}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 最新博文区域 -->
+  <section class="home-section latest">
+    <div class="section-header">
+      <h2 class="section-title">{t(HOME_LATEST_POSTS)}</h2>
+    </div>
+    <div class="post-grid">
+      {
+        latestPosts.map((post) => {
+          const [, ...idParts] = post.id.split("/");
+          const postUrl = `/${locale}/blog/${idParts.join("/")}/`;
+          const dateStr = post.data.date.toLocaleDateString(
+            locale === "zh-cn" ? "zh-CN" : "en-US",
+            { year: "numeric", month: "short", day: "numeric" }
+          );
+          return (
+            <article class="post-card">
+              <a href={postUrl} class="post-card-link">
+                {post.data.cover && (
+                  <div class="post-cover">
+                    <Image
+                      src={post.data.cover}
+                      alt={post.data.title}
+                      width={400}
+                      height={225}
+                    />
+                  </div>
+                )}
+                <div class="post-content">
+                  <time class="post-date">{dateStr}</time>
+                  <h3 class="post-title">{post.data.title}</h3>
+                </div>
+              </a>
+            </article>
+          );
+        })
+      }
+    </div>
+    <div class="section-footer">
+      <a href={getRelativeLocaleUrl(locale, "/blog")} class="cta-button secondary">
+        {t(HOME_VIEW_ALL)}
+        <span class="material-icons-sharp">arrow_right_alt</span>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* 通用变量微调 */
+  :root {
+    --card-bg: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
+    --card-border: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    --card-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hero 区域优化 */
+  .hero {
+    margin-block-end: var(--sp-l);
+  }
+  .hero-container {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .hero-container :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+  }
+  .hero-container:hover :global(img) {
+    transform: scale(1.02);
+  }
+
+  /* 简介区域优化 */
+  .intro-section {
+    margin-block-end: var(--sp-l);
+  }
+  .intro-card {
+    padding: var(--sp-m);
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    line-height: 1.8;
+  }
+  .intro-card :global(ul) {
+    margin-block-start: 1rem;
+    list-style: none;
+    padding-inline-start: 0;
+  }
+  .intro-card :global(li) {
+    margin-block: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .intro-card :global(li::before) {
+    content: "▹";
+    color: var(--color-theme);
+    font-weight: bold;
+  }
+  .intro-card :global(a) {
+    color: var(--color-theme);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color-theme);
+    transition: var(--transition);
+  }
+  .intro-card :global(a:hover) {
+    border-bottom-style: solid;
+    opacity: 0.8;
+  }
+
+  /* 章节布局优化 */
+  .home-section {
+    margin-block-start: var(--sp-l);
+  }
+  .section-header {
+    margin-block-end: var(--sp-m);
+    border-bottom: 2px solid var(--card-border);
+    padding-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-main);
+  }
+
+  /* 通用底部 CTA 按钮样式优化 */
+  .section-footer {
+    margin-block-start: var(--sp-l);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.5rem;
+    background-color: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    color: var(--color-theme);
+    border: 1px solid var(--color-theme);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+
+  .cta-button:hover {
+    background-color: var(--color-theme);
+    color: var(--color-base);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px var(--color-theme);
+  }
+
+  .cta-button .material-icons-sharp {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover .material-icons-sharp {
+    transform: translateX(3px);
+  }
+
+  /* 移除 secondary 特殊样式，保持统一 */
+  .cta-button.secondary {
+    /* 继承通用样式 */
+  }
+
+  /* 项目展示优化 */
+  .project-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--sp-m);
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-theme);
+    box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--color-theme) 30%, transparent);
+  }
+  .project-name {
+    font-size: 1.2rem;
+    color: var(--color-theme);
+    margin-block-end: 0.75rem;
+    font-weight: 700;
+  }
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-block-end: 1rem;
+  }
+  .mini-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.4rem;
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    color: var(--color-theme);
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .project-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .external-icon {
+    color: var(--color-theme);
+    opacity: 0.5;
+    transition: var(--transition);
+  }
+  .project-card:hover .external-icon {
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+
+  /* 标签云优化 */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .tag-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--color-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .tag-pill:hover {
+    background: var(--color-theme);
+    color: white;
+    border-color: var(--color-theme);
+    transform: scale(1.05);
+  }
+  .tag-hash {
+    color: var(--color-theme);
+    font-weight: 700;
+    transition: var(--transition);
+  }
+  .tag-pill:hover .tag-hash {
+    color: white;
+  }
+  .tag-count {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    background: color-mix(in srgb, var(--color-main) 10%, transparent);
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+  }
+  .tag-pill:hover .tag-count {
+    opacity: 1;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* 博文卡片优化 */
+  .post-grid {
+    display: grid;
+    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+  .post-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: var(--transition);
+  }
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+    border-color: var(--color-theme);
+  }
+  .post-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .post-cover {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .post-cover :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .post-card:hover .post-cover :global(img) {
+    transform: scale(1.08);
+  }
+  .post-content {
+    padding: 1.25rem;
+  }
+  .post-date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .post-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-main);
+  }
+</style>
