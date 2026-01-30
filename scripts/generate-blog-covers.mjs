@@ -1,7 +1,6 @@
-
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
 
 // Recursive function to find files
 function getFiles(dir, allFiles = []) {

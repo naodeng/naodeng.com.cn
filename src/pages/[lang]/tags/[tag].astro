@@ -5,6 +5,14 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 
+/** URL-safe tag for path segment (e.g. "CI/CD" → "CI%2FCD") */
+function tagToSlug(t: string) {
+  return encodeURIComponent(t);
+}
+function slugToTag(slug: string) {
+  return decodeURIComponent(slug);
+}
+
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
   const paths = [];
@@ -15,7 +23,7 @@ export async function getStaticPaths() {
     
     for (const tag of tags) {
       paths.push({
-        params: { lang, tag },
+        params: { lang, tag: encodeURIComponent(tag) },
         props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
       });
     }
@@ -24,7 +32,8 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { lang, tag } = Astro.params;
+const { lang, tag: tagSlug } = Astro.params;
+const tag = tagSlug ? slugToTag(tagSlug) : "";
 const { posts } = Astro.props;
 const locale = lang as Lang;
 const t = useTranslations(locale);
@@ -67,7 +76,7 @@ const title = `#${tag}`;
               {post.data.tags && (
                 <div class="post-tags">
                   {post.data.tags.map((t) => (
-                    <a href={`/${locale}/tags/${t}/`} class={`tag-link ${t === tag ? 'active' : ''}`}>
+                    <a href={`/${locale}/tags/${tagToSlug(t)}/`} class={`tag-link ${t === tag ? 'active' : ''}`}>
                       #{t}
                     </a>
                   ))}

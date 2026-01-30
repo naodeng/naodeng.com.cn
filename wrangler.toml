@@ -1,7 +1,7 @@
 # Cloudflare Workers 静态站点配置
-# 文档: https://developers.cloudflare.com/workers/static-assets/
+# 文档：https://developers.cloudflare.com/workers/static-assets/
 
-name = "inaodeng-com"
+name = "inaodeng"
 compatibility_date = "2025-01-01"
 
 [assets]

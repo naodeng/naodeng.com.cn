@@ -23,8 +23,8 @@ const useUmami = Boolean(umamiWebsiteId?.trim());
 
 {useGa && (
   <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script define:vars={{ gaId }}>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
@@ -35,6 +35,7 @@ const useUmami = Boolean(umamiWebsiteId?.trim());
 
 {useUmami && (
   <script
+    is:inline
     defer
     src={umamiSrc}
     data-website-id={umamiWebsiteId}

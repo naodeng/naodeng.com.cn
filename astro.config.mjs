@@ -6,6 +6,22 @@ import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
 // https://astro.build/config
 export default defineConfig({
   site: "https://inaodeng.com",
+  markdown: {
+    shikiConfig: {
+      langAlias: {
+        Javascript: "javascript",
+        JavaScript: "javascript",
+        Typescript: "typescript",
+        Text: "plaintext",
+        TEXT: "plaintext",
+        Markdown: "markdown",
+        Shell: "shell",
+        SHELL: "shell",
+        JSON: "json",
+        YAML: "yaml",
+      },
+    },
+  },
   i18n: {
     defaultLocale: DEFAULT_LOCALE_SETTING,
     locales: Object.keys(LOCALES_SETTING),

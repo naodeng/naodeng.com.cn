@@ -108,7 +108,7 @@ export const getStaticPaths = () =>
     </div>
     <div class="tags-container">
       {popularTags.map((tag) => (
-        <a href={getRelativeLocaleUrl(locale, `/tags/${tag}`)} class="tag-pill">
+        <a href={getRelativeLocaleUrl(locale, `/tags/${encodeURIComponent(tag)}`)} class="tag-pill">
           <span class="tag-hash">#</span>{tag}
           <span class="tag-count">{tagCounts[tag]}</span>
         </a>

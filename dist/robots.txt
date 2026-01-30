@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://naodeng.com.cn/sitemap-index.xml
+Sitemap: https://inaodeng.com/sitemap-index.xml
