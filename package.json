@@ -12,11 +12,14 @@
     "start": "astro dev --open",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "preview:worker": "astro build && wrangler dev",
+    "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "generate-covers": "node scripts/generate-blog-covers.mjs"
   },
   "devDependencies": {
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "wrangler": "^4.0.0"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
