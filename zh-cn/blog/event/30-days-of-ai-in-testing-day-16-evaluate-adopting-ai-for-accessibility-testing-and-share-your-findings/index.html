@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现 - 软件测试同学</title><meta name="description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现 - 软件测试同学"><meta property="og:site_name" content="30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现 - 软件测试同学"><meta property="og:description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:url" content="https://inaodeng.com/zh-cn/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><script defer src="https://analytics.umami.is/script.js" data-website-id="bebc2c5d-6830-44a0-9116-6cf1ab9354fc" data-host-url="https://analytics.naodeng.com.cn/hugo"></script><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.Cn4Qv-Gv.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <div class="header-actions" data-astro-cid-3ef6ksr2> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <button type="button" class="search-bar-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="search-bar-icon material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="search-bar-placeholder" data-astro-cid-3ef6ksr2>搜索文章…</span> <span class="search-bar-kbd" data-astro-cid-3ef6ksr2><span class="search-bar-kbd-inner" data-astro-cid-3ef6ksr2>⌘ K</span></span> </button> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/inaodeng.com" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings-cover.CvwqB_1p_2nw7ex.webp" alt="30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>30 天 AI 测试挑战活动：第十六天：评估采用 AI 进行无障碍测试并分享你的发现</h1> <time datetime="2024-03-17T11:06:44.000Z" data-astro-cid-v3cnrnum> 2024/3/17 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>AI in Testing</span><span class="tag" data-astro-cid-v3cnrnum>30 Days of AI in Testing</span> </div> </header> <h2 id="第-16-天评估采用-ai-进行无障碍测试并分享你的发现">第 16 天：评估采用 AI 进行无障碍测试并分享你的发现</h2>
+<p>欢迎来到第 16 天！今天，我们将重点转向人工智能增强无障碍测试的潜力。</p>
+<p>无障碍测试有助于确保应用程序对具有不同能力（例如视觉、听觉、认知或运动障碍）的个人可用且具有包容性。在许多情况下，确保应用程序可供广泛的用户访问不仅是法律要求，也是道德要求。正如我们在整个挑战中所看到的，人工智能可以在各个测试领域提供优势，并且其增强无障碍测试的潜力也不例外。让我们深入了解如何利用人工智能来改进无障碍测试！</p>
+<h3 id="任务步骤">任务步骤</h3>
+<ul>
+<li>
+<p><strong>探索 AI 和无障碍测试</strong>：研究当前如何利用 AI 来支持无障碍测试。探索文章、白皮书或案例研究等资源，了解以下内容：</p>
+<ul>
+<li>利用 AI 的工具来自动化无障碍检查，分析用户界面是否符合无障碍标准，甚至生成图像的替代文本描述。</li>
+<li>AI 如何用于解决更复杂的无障碍问题，例如测试屏幕阅读器的兼容性或检测颜色对比度问题。</li>
+</ul>
+</li>
+<li>
+<p><strong>评估适用性于你的环境</strong>：考虑你的具体情况并进行反思：</p>
+<ul>
+<li><strong>无障碍测试需求</strong>：确认在你的项目中无障碍测试至关重要的领域。</li>
+<li><strong>AI 的潜在益处</strong>：评估 AI 驱动的无障碍测试工具或技术如何提升你当前测试流程的效率。</li>
+<li><strong>潜在限制</strong>：意识到 AI 在无障碍测试中可能存在的局限性。</li>
+</ul>
+</li>
+<li>
+<p><strong>分享你的发现</strong>：通过回复此帖分享你的见解和学习。考虑分享以下内容：</p>
+<ul>
+<li>你发现有用的资源链接</li>
+<li>AI 在你的项目中如何改善无障碍测试</li>
+<li>你识别到的潜在限制以及应对策略</li>
+<li>你对 AI 在无障碍测试中的整体看法</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么参加">为什么参加</h3>
+<ul>
+<li><strong>促进无障碍测试的发展</strong>：获取有关 AI 如何为创建包容性应用程序做出贡献的宝贵知识。</li>
+<li><strong>发现新机遇</strong>：发现提升你项目无障碍测试水平的潜在方法。</li>
+<li><strong>分享你的想法</strong>：通过分享，为他人提供了更深入了解 AI 在无障碍测试中的作用的机会。</li>
+</ul>
+<h3 id="任务链接">任务链接</h3>
+<p><a href="https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy">https://club.ministryoftesting.com/t/day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/75212?cf_id=D7lXDERSWoy</a></p>
+<h2 id="我的第-16-天任务">我的第 16 天任务</h2>
+<h3 id="1关于探索-ai-和无障碍测试">1.关于<strong>探索 AI 和无障碍测试</strong></h3>
+<p>关于 AI 工具用于无障碍测试的实践，我向 ChatGPT4 进行了咨询，它回复的结论中推荐了一些 AI 工具可用于无障碍测试，ChatGPT4 回复结果如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span></span></span>
+<span class="line"><span>AI 技术在无障碍测试领域的应用日益增多，旨在帮助开发者和测试人员更高效地发现和解决可访问性问题。以下是一些可以用于无障碍测试的 AI 工具：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. **Axe Core**：虽然 Axe Core 本身是一个自动化的可访问性测试库，它的企业版提供了一些 AI 驱动的功能，用于识别和解决可访问性问题。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. **AccessiBe**：AccessiBe 使用 AI 来解决网站的可访问性问题。它能够自动识别和修复多种可访问性问题，如导航、键盘功能性以及屏幕阅读器优化等。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. **UserWay**：UserWay 提供一个 AI 驱动的网站可访问性插件，能够自动解决多种可访问性问题，包括颜色对比度、字体大小、导航以及其他与可访问性相关的问题。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. **Evinced**：Evinced 是一种开发工具，使用 AI 来帮助开发者在编码过程中识别可访问性问题。它可以集成到开发流程中，提供实时反馈和修复建议。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. **Fable**：Fable 利用 AI 技术提供模拟真实用户的无障碍测试，特别是针对有视觉和运动障碍人士的测试。它能帮助开发者理解这些用户如何与他们的产品互动。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>这些工具可以帮助组织在开发和测试过程中更早地发现并解决可访问性问题，确保他们的产品和服务对所有人都是可访问的。使用这些工具时，重要的是要结合人工测试和用户反馈，因为 AI 和自动化工具可能无法捕捉到所有类型的可访问性问题。</span></span></code></pre>
+<p>但基于之前的 AI 测试挑战任务，我了解到了一个已落地的 AI 无障碍测试的工具 Applitools，我今天的任务会以探索使用 Applitools 工具用于无障碍测试为主。</p>
+<p>Applitools 工具关于无障碍测试的官方页面：<a href="https://applitools.com/platform/validate/accessibility/">https://applitools.com/platform/validate/accessibility/</a></p>
+<p>Applitools 工具关于 AI 无障碍测试助手 Applitools Contrast Advisor 的介绍：</p>
+<ul>
+<li>Applitools 使团队能够运行自动可访问性测试来验证 WCAG，以帮助确保法规遵从性。</li>
+<li>在每个版本上运行可访问性测试以获得最大覆盖范围</li>
+<li>Applitools 无缝集成到你现有的测试自动化工作流程中。它应用视觉人工智能来分析网络和移动应用程序是否存在潜在的对比度可访问性违规。</li>
+<li>Contrast Advisor 可帮助你将注意力集中在问题区域，确保你不会在不需要关注的区域上浪费时间和周期。此外，我们已将 Contrast Advisor 直接集成到 Eyes 中，因此无需耗时的设置步骤或工作流程更改。启用后，你甚至不需要重新运行现有测试 - 你可以直接跳到现有仪表板开始查看结果。</li>
+<li>Contrast Advisor 不受扫描网页结构的限制，因此可以为网站、PDF、UX 设计模型以及为 Web、移动 Web、本机移动、桌面等设计的应用程序提供对比建议。</li>
+<li>正如 W3C 所指出的，移动设备更容易在强烈阳光等条件下使用，这提高了严格对比度合规性的需要。与传统检测方法相比，Contrast Advisor 使用视觉 AI 使其能够识别本机移动应用程序以及移动网络中可能存在的违规行为。</li>
+<li>WCAG 指定了文本以及图形和用户界面组件的最小对比度，但传统工具无法检测到此类违规行为。Contrast Advisor 使用视觉 AI 来检测图像、图形、图标、UI 组件和纯文本中的对比度。</li>
+<li>Contrast Advisor 可以与 Applitools Ultrafast Grid 一起运行，以渲染和检测 Chrome、Firefox、Safari、Edge 和 IE 上的细微对比度差异和可能的违规行为。Contrast Advisor 可以遵守 WCAG 2.0 和更新的 2.1 标准。这包括“AA – 对比度最小”和更严格的“AAA – 对比度增强”选项。</li>
+</ul>
+<blockquote>
+<p>Applitools 工具提供的 Applitools Contrast Advisor 官方演示介绍<a href="https://www.youtube.com/watch?v=sGXjPJiQwdk">https://www.youtube.com/watch?v=sGXjPJiQwdk</a></p>
+</blockquote>
+<h3 id="2关于评估适用性于你的环境">2.关于<strong>评估适用性于你的环境</strong></h3>
+<h4 id="我当前项目的无障碍测试需求">我当前项目的<strong>无障碍测试需求</strong></h4>
+<p>不幸的是，我当前项目的交付周期比较紧张，无障碍测试需求的重要程度不算太高，但我还是会使用 google 的 lighthouse 工具针对产品的每个核心页面进行无障碍测试评测打分，确保每个核心页面的无障碍测试评分均为高分，对无障碍测试的低分页面建缺陷卡进行排期修复。</p>
+<p>以下为当前项目产品某个核心页面的无障碍测试评分：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8Z4XpX.png" alt=" "/></p>
+<h4 id="ai-的潜在益处"><strong>AI 的潜在益处</strong></h4>
+<p>通过使用 lighthouse 工具对页面进行无障碍测试评测，一定程度上能解决项目的无障碍测试需求，但是我查看了 lighthouse 关于无障碍测试的评分规则后，发现 lighthouse 能发现的无障碍测试问题非常的有限，页面的无障碍测试评分高，不一定真的能让人无障碍的使用。</p>
+<p>如果有一个专业的无障碍测试且检测符合各种无障碍法规的 AI 工具，那一定能提升项目无障碍测试的效率，确保项目的无障碍测试结果符合法规</p>
+<h4 id="潜在限制"><strong>潜在限制</strong></h4>
+<p>因为是使用 AI 工具，而且当前项目为未发布的产品，AI 工具通用的数据隐私安全和结果偏见不确定性都会存在一定的风险。</p>
+<h3 id="3关于分享你的发现">3.关于<strong>分享你的发现</strong></h3>
+<p>我是申请试用了 Applitools 的无障碍测试助手 Applitools Contrast Advisor。以下为试用报告：</p>
+<p>申请试用链接：<a href="https://applitools.com/platform/validate/accessibility/">https://applitools.com/platform/validate/accessibility/</a></p>
+<p>试用 Applitools 首先是需要注册账号，且必须为公司邮箱地址并需提供公司信息</p>
+<p>注册账号且邮箱校验通过后会有一些工具的调查问卷：
+<img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d2o4KM.png" alt=" "/></p>
+<p>之后我选择了 Playwright 并按照官方的介绍文档进行了初始化，<a href="https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart">https://applitools.com/tutorials/quickstart/web/playwright/typescript/quickstart</a></p>
+<ul>
+<li>获取 APPLITOOLS_API_KEY</li>
+<li>设置 APPLITOOLS 本地环境​</li>
+<li>安装 Applitools​</li>
+<li>运行测试</li>
+</ul>
+<p>官方 demo 测试代码如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="Typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { test } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@playwright/test&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { BatchInfo, Configuration, EyesRunner, VisualGridRunner, BrowserType, DeviceName, ScreenOrientation, Eyes, Target } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@applitools/eyes-playwright&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> Batch</span><span style="color:#F97583">:</span><span style="color:#B392F0"> BatchInfo</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> Config</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Configuration</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> let</span><span style="color:#E1E4E8"> Runner</span><span style="color:#F97583">:</span><span style="color:#B392F0"> EyesRunner</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">test.</span><span style="color:#B392F0">beforeAll</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Configure Applitools SDK to run on the Ultrafast Grid</span></span>
+<span class="line"><span style="color:#E1E4E8">    Runner </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> VisualGridRunner</span><span style="color:#E1E4E8">({ testConcurrency: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">    Batch </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> BatchInfo</span><span style="color:#E1E4E8">({name: </span><span style="color:#9ECBFF">`Playwright Typescript Quickstart`</span><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    Config </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Configuration</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    Config.</span><span style="color:#B392F0">setBatch</span><span style="color:#E1E4E8">(Batch);</span></span>
+<span class="line"><span style="color:#E1E4E8">    Config.</span><span style="color:#B392F0">addBrowsers</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        { name: BrowserType.</span><span style="color:#79B8FF">CHROME</span><span style="color:#E1E4E8">, width: </span><span style="color:#79B8FF">800</span><span style="color:#E1E4E8">, height: </span><span style="color:#79B8FF">600</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">        { name: BrowserType.</span><span style="color:#79B8FF">FIREFOX</span><span style="color:#E1E4E8">, width: </span><span style="color:#79B8FF">1600</span><span style="color:#E1E4E8">, height: </span><span style="color:#79B8FF">1200</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">        { name: BrowserType.</span><span style="color:#79B8FF">SAFARI</span><span style="color:#E1E4E8">, width: </span><span style="color:#79B8FF">1024</span><span style="color:#E1E4E8">, height: </span><span style="color:#79B8FF">768</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">        { chromeEmulationInfo: { deviceName: DeviceName.iPhone_11, screenOrientation: ScreenOrientation.</span><span style="color:#79B8FF">PORTRAIT</span><span style="color:#E1E4E8">} },</span></span>
+<span class="line"><span style="color:#E1E4E8">        { chromeEmulationInfo: { deviceName: DeviceName.Nexus_10, screenOrientation: ScreenOrientation.</span><span style="color:#79B8FF">LANDSCAPE</span><span style="color:#E1E4E8">} }</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">test.</span><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;ACME Bank&#39;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> eyes</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Eyes</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    test.</span><span style="color:#B392F0">beforeEach</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">page</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        eyes </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Eyes</span><span style="color:#E1E4E8">(Runner, Config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Start Applitools Visual AI Test</span></span>
+<span class="line"><span style="color:#6A737D">        // Args: Playwright Page, App Name, Test Name, Viewport Size for local driver</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> eyes.</span><span style="color:#B392F0">open</span><span style="color:#E1E4E8">(page, </span><span style="color:#9ECBFF">&#39;ACME Bank&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`Playwright Typescript: Quickstart`</span><span style="color:#E1E4E8">, { width: </span><span style="color:#79B8FF">1200</span><span style="color:#E1E4E8">, height: </span><span style="color:#79B8FF">600</span><span style="color:#E1E4E8"> })</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#B392F0">    test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;log into a bank account&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">page</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> page.</span><span style="color:#B392F0">goto</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://sandbox.applitools.com/bank?layoutAlgo=true&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Full Page - Visual AI Assertion</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> eyes.</span><span style="color:#B392F0">check</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Login page&#39;</span><span style="color:#E1E4E8">, Target.</span><span style="color:#B392F0">window</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">fully</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> page.</span><span style="color:#B392F0">locator</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;id=username&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">fill</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;user&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> page.</span><span style="color:#B392F0">locator</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;id=password&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">fill</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;password&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> page.</span><span style="color:#B392F0">locator</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;id=log-in&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> page.</span><span style="color:#B392F0">locator</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;css=.dashboardNav_navContainer__kA4wD&#39;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">waitFor</span><span style="color:#E1E4E8">({state: </span><span style="color:#9ECBFF">&#39;attached&#39;</span><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Full Page - Visual AI Assertion</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> eyes.</span><span style="color:#B392F0">check</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Main page&#39;</span><span style="color:#E1E4E8">, Target.</span><span style="color:#B392F0">window</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">fully</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">            .</span><span style="color:#B392F0">layoutRegions</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">                &#39;.dashboardOverview_accountBalances__3TUPB&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                &#39;.dashboardTable_dbTable___R5Du&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">            )</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    test.</span><span style="color:#B392F0">afterEach</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">        // End Applitools Visual AI Test</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> eyes.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">test.</span><span style="color:#B392F0">afterAll</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Wait for Ultrast Grid Renders to finish and gather results</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> Runner.</span><span style="color:#B392F0">getAllTestResults</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Visual test results&#39;</span><span style="color:#E1E4E8">, results);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>然后就运行测试失败了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HtcTxq.png" alt=" "/></p>
+<p>排查发现是我第一步设置环境变量出错了，重新设置环境变量后，demo 测试可以正常运行通过。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/blqBmp.png" alt=" "/></p>
+<p>然后登录 applitools eyes 查看测试结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gTMNvw.png" alt="我的 demo 截图"/></p>
+<p>在结果页面查看无障碍测试结果和启动 Applitools Contrast Advisor 时，发现测试结果无 Applitools Contrast Advisor 标识展示，与官方介绍视频中存在差异。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2P12hs.png" alt="官方宣传 demo 截图"/></p>
+<p>今天的试用不太顺利，后面我会继续尝试后再更新更多的使用结果。</p>
+<h2 id="关于活动">关于活动</h2>
+<p>30 天 AI 测试挑战活动是 Ministry 测试社区发起的活动，上一次我了解这个社区是关于他们发起的 30 天敏捷测试的活动。</p>
+<p>社区官网：<a href="https://www.ministryoftesting.com">https://www.ministryoftesting.com</a></p>
+<p>活动链接：<a href="https://www.ministryoftesting.com/events/30-days-of-ai-in-testing">https://www.ministryoftesting.com/events/30-days-of-ai-in-testing</a></p>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-1-introduce-yourself-and-your-interest-in-ai/">第一天：介绍你自己以及你对人工智能的兴趣</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-2-read-an-introductory-article-on-ai-in-testing-and-share-it/">第二天：阅读有关测试中的人工智能的介绍性文章并分享</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-3-list-ways-in-which-ai-is-used-in-testing/">第三天：AI 在测试中的多种应用方式</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-4-watch-the-ama-on-artificial-intelligence-in-testing-and-share-your-key-takeaway/">第四天：观看有关测试中人工智能的任何问题视频并分享主要收获</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-5-identify-a-case-study-on-ai-in-testing-and-share-your-findings/">第五天：确定一个测试中的人工智能案例研究，并分享你的发现</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-6-explore-and-share-insights-on-ai-testing-tools/">第六天：探索并分享对 AI 测试工具的见解</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-7-research-and-share-prompt-engineering-techniques/">第七天：研究并分享提示词工程技术</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-8-craft-a-detailed-prompt-to-support-test-activities/">第八天：制作详细的 Prompt 来支持测试活动</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-9-evaluate-prompt-quality-and-try-to-improve-it/">第九天：评估提示词质量并努力加以改进</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-10-critically-analyse-ai-generated-tests/">第十天：批判性分析人工智能生成的测试</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-11-generate-test-data-using-ai-and-evaluate-its-efficacy/">第十一天：使用 AI 生成测试数据并评估其功效</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-12-evaluate-whether-you-trust-ai-to-support-testing-and-share-your-thoughts/">第十二天：评估你是否信任 AI 支持测试并分享你的想法</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-13-develop-a-testing-approach-and-become-an-ai-in-testing-champion/">第十三天：开发你的测试方法并成为 AI 测试的先行者</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-14-generate-ai-test-code-and-share-your-experience/">第十四天：生成 AI 测试代码并分享你的体验</a></li>
+<li><a href="https://naodeng.com.cn/zh/posts/event/30-days-of-ai-in-testing-day-15-gauge-your-short-term-ai-in-testing-plans/">第十五天：衡量测试计划中的短期人工智能</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://naodeng.com.cn/zh/zhcategories/bruno/">使用 Bruno 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.com.cn/zh/zhseries/k6-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 K6 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/event/30-days-of-ai-in-testing-day-16-evaluate-adopting-ai-for-accessibility-testing-and-share-your-findings/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const o=document.getElementById("search-dialog"),l=document.getElementById("search-input"),s=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),a=document.querySelector("[data-hint]");let r=[],i="en";function y(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function E(){if(r.length>0)return r;i=y();const e=await fetch(`/${i}/search-index.json`);return e.ok?(r=await e.json(),r):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function g(e,t){s.innerHTML="",s.hidden=e.length===0,u.hidden=e.length>0||!t,e.slice(0,20).forEach(n=>{const c=document.createElement("a");c.href=n.url,c.className="search-result-item",c.setAttribute("role","listitem");const m=new Date(n.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});c.innerHTML=`
+        <span class="search-result-title">${f(n.title)}</span>
+        <span class="search-result-meta">${f(m)}${n.tags?.length?" · "+n.tags.slice(0,3).join(", "):""}</span>
+      `,c.addEventListener("click",()=>o.close()),s.appendChild(c)})}function L(e){const t=e.trim().toLowerCase();return t?r.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(c=>c.toLowerCase().includes(t))):[]}function v(){const e=l.value;if(!r.length){s.hidden=!0,u.hidden=!0;return}const t=e.trim().length>0,n=L(e);g(n,t)}function h(){E().then(()=>{o.showModal(),l.value="",l.focus(),s.hidden=!0,u.hidden=!0,a&&(a.style.display="block")})}function d(){o.close(),a&&(a.style.display="")}o.addEventListener("close",()=>{a&&(a.style.display="")});o.addEventListener("cancel",d);p?.addEventListener("click",d);l.addEventListener("input",v);l.addEventListener("keydown",e=>{if(e.key==="Escape"&&(d(),e.preventDefault()),e.key==="Enter"){const t=s.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),o.open?d():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

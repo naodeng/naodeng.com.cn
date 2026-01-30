@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>接口测试新手入门教程：不同框架和不同开发语言 - 软件测试同学</title><meta name="description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="接口测试新手入门教程：不同框架和不同开发语言 - 软件测试同学"><meta property="og:site_name" content="接口测试新手入门教程：不同框架和不同开发语言 - 软件测试同学"><meta property="og:description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:url" content="https://inaodeng.com/zh-cn/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><script defer src="https://analytics.umami.is/script.js" data-website-id="bebc2c5d-6830-44a0-9116-6cf1ab9354fc" data-host-url="https://analytics.naodeng.com.cn/hugo"></script><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.Cn4Qv-Gv.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <div class="header-actions" data-astro-cid-3ef6ksr2> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <button type="button" class="search-bar-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="search-bar-icon material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="search-bar-placeholder" data-astro-cid-3ef6ksr2>搜索文章…</span> <span class="search-bar-kbd" data-astro-cid-3ef6ksr2><span class="search-bar-kbd-inner" data-astro-cid-3ef6ksr2>⌘ K</span></span> </button> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/inaodeng.com" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/a-collection-of-tutorials-on-API-automation-testing-for-different-frameworks-and-different-development-languages-cover.Dfyvk1DB_ZTK5B5.webp" alt="接口测试新手入门教程：不同框架和不同开发语言" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>接口测试新手入门教程：不同框架和不同开发语言</h1> <time datetime="2023-11-29T03:23:00.000Z" data-astro-cid-v3cnrnum> 2023/11/29 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>入门介绍</span><span class="tag" data-astro-cid-v3cnrnum>环境搭建</span><span class="tag" data-astro-cid-v3cnrnum>从 0 到 1 搭建接口自动化测试项目</span><span class="tag" data-astro-cid-v3cnrnum>多环境支持</span><span class="tag" data-astro-cid-v3cnrnum>集成 allure 报告</span><span class="tag" data-astro-cid-v3cnrnum>数据驱动</span><span class="tag" data-astro-cid-v3cnrnum>集成 CI/CD</span> </div> </header> <h2 id="java-和-rest-assured-框架实现接口自动化项目">Java 和 REST Assured 框架实现接口自动化项目</h2>
+<h3 id="rest-assured-框架教程目录">REST Assured 框架教程目录</h3>
+<blockquote>
+<p>目录不可点击，仅为展示目录结构</p>
+</blockquote>
+
+<ul>
+<li><a href="#restassured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE">RestAssured 接口自动化测试快速启动项目</a>
+<ul>
+<li><a href="#restassured-%E4%BB%8B%E7%BB%8D">RestAssured 介绍</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">项目结构</a>
+<ul>
+<li><a href="#gradle-%E6%9E%84%E5%BB%BA%E7%9A%84%E7%89%88%E6%9C%AC">Gradle 构建的版本</a></li>
+<li><a href="#maven-%E6%9E%84%E5%BB%BA%E7%9A%84%E7%89%88%E6%9C%AC">Maven 构建的版本</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96">项目依赖</a></li>
+<li><a href="#%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA-rest-assured-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE">从 0 到 1 搭建 REST Assured 接口测试项目</a>
+<ul>
+<li><a href="#gradle-%E7%89%88%E6%9C%AC">Gradle 版本</a></li>
+<li><a href="#maven-%E7%89%88%E6%9C%AC">Maven 版本</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95">进阶用法</a>
+<ul>
+<li><a href="#%E9%AA%8C%E8%AF%81%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE">验证响应数据</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0">文件上传</a></li>
+<li><a href="#logging-%E6%97%A5%E5%BF%97">Logging 日志</a></li>
+<li><a href="#filters-%E8%BF%87%E6%BB%A4%E5%99%A8">Filters 过滤器</a></li>
+<li><a href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90">持续集成</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%85%A5-github-action">接入 github action</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9B%86%E6%88%90-allure-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A">集成 allure 测试报告</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">数据驱动</a></li>
+<li><a href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%94%AF%E6%8C%81">多环境支持</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="rest-assured-框架教程对应文章">REST Assured 框架教程对应文章</h3>
+<ul>
+<li>
+<p>REST Assured 接口自动化测试教程：进阶用法 - 集成 CI/CD 和集成 allure 测试报告:<a href="https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/">https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-integration-ci-cd-and-allure-report/</a></p>
+</li>
+<li>
+<p>REST Assured 接口自动化测试教程：进阶用法 - 验证响应和日志记录，过滤器，文件上传:<a href="https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/">https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-advance-usage-verifying-response-and-logging/</a></p>
+</li>
+<li>
+<p>REST Assured 接口自动化测试教程：从 0 到 1 搭建 REST Assured 接口自动化测试项目:<a href="https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/">https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-building-your-own-project-from-0-to-1/</a></p>
+</li>
+<li>
+<p>REST Assured 接口自动化测试教程：入门介绍和环境搭建准备:<a href="https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/">https://naodeng.tech/zh/posts/api-automation-testing/rest-assured-tutorial-and-environment-preparation/</a></p>
+</li>
+</ul>
+<h3 id="rest-assured-框架教程参考文档">REST Assured 框架教程参考文档</h3>
+<ul>
+<li>Demo 项目地址：<a href="https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter/">https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter/</a></li>
+<li>Rest assured 官方文档：<a href="https://rest-assured.io/">https://rest-assured.io/</a></li>
+<li>Rest assured 官方 github：<a href="https://github.com/rest-assured/rest-assured">https://github.com/rest-assured/rest-assured</a></li>
+<li>Rest assured 官方文档中文翻译：<a href="https://github.com/RookieTester/rest-assured-doc">https://github.com/RookieTester/rest-assured-doc</a></li>
+<li>Allure 文档：<a href="https://docs.qameta.io/allure/">https://docs.qameta.io/allure/</a></li>
+<li>gitHub action 文档：<a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></li>
+</ul>
+<h2 id="javascript-和-supertest-框架实现接口自动化项目">JavaScript 和 SuperTest 框架实现接口自动化项目</h2>
+<h3 id="supertest-框架教程目录">SuperTest 框架教程目录</h3>
+<blockquote>
+<p>目录不可点击，仅为展示目录结构</p>
+</blockquote>
+
+<ul>
+<li><a href="#supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE">SuperTest 接口自动化测试快速启动项目</a>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96">项目依赖</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">项目文件结构</a></li>
+<li><a href="#%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA-supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE">从 0 到 1 搭建 SuperTest 接口自动化测试项目</a>
+<ul>
+<li><a href="#mocha-%E7%89%88%E6%9C%AC">Mocha 版本</a></li>
+<li><a href="#jest-%E7%89%88%E6%9C%AC">Jest 版本</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95">进阶用法</a>
+<ul>
+<li><a href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90">持续集成</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%85%A5-github-action">接入 github action</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80">常用断言</a>
+<ul>
+<li><a href="#supertest-%E7%9A%84%E5%86%85%E7%BD%AE%E6%96%AD%E8%A8%80">SuperTest 的内置断言</a></li>
+<li><a href="#chai-%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80">CHAI 的常用断言</a></li>
+<li><a href="#jest-%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80">Jest 的常用断言</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">数据驱动</a></li>
+<li><a href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%94%AF%E6%8C%81">多环境支持</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="supertest-框架教程对应文章">SuperTest 框架教程对应文章</h3>
+<ul>
+<li>SuperTest 接口自动化测试教程：进阶用法 - 多环境支持：<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-multiple-environment-support/</a></li>
+<li>SuperTest 接口自动化测试教程：进阶用法 - 数据驱动：<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-data-driven/</a></li>
+<li>SuperTest 接口自动化测试教程：进阶用法 - 常用断言：<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-common-assertions/</a></li>
+<li>SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action:<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-advance-usage-integration-ci-cd-and-github-action/</a></li>
+<li>SuperTest 接口自动化测试教程：从 0 到 1 搭建 Supertest 接口自动化测试项目：<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-building-your-own-project-from-0-to-1/</a></li>
+<li>SuperTest 接口自动化测试教程：入门介绍和环境搭建准备：<a href="https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/">https://naodeng.tech/zh/posts/api-automation-testing/supertest-tutorial-getting-started-and-own-environment-preparation/</a></li>
+</ul>
+<h3 id="supertest-框架教程参考文档">SuperTest 框架教程参考文档</h3>
+<ul>
+<li>Demo 项目地址：<a href="https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter">https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter</a></li>
+<li>SuperTest 文档：<a href="https://github.com/ladjs/supertest">https://github.com/ladjs/supertest</a></li>
+<li>Jest 文档：<a href="https://jestjs.io/docs/en/getting-started">https://jestjs.io/docs/en/getting-started</a></li>
+<li>Mocha 文档：<a href="https://mochajs.org/">https://mochajs.org/</a></li>
+<li>Chai 文档：<a href="https://www.chaijs.com/">https://www.chaijs.com/</a></li>
+<li>Allure 文档：<a href="https://docs.qameta.io/allure/">https://docs.qameta.io/allure/</a></li>
+<li>gitHub action 文档：<a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></li>
+</ul>
+<h2 id="python-和-pytest-框架实现接口自动化项目">Python 和 Pytest 框架实现接口自动化项目</h2>
+<h3 id="pytest-框架教程目录">Pytest 框架教程目录</h3>
+<blockquote>
+<p>目录不可点击，仅为展示目录结构</p>
+</blockquote>
+
+<ul>
+<li><a href="#pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE">Pytest 接口自动化测试快速启动项目</a>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a>
+<ul>
+<li><a href="#pytest-%E4%BB%8B%E7%BB%8D">Pytest 介绍</a></li>
+<li><a href="#python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%BB%8B%E7%BB%8D">python 虚拟环境介绍</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96">项目依赖</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">项目目录结构</a></li>
+<li><a href="#%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA-pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE">从 0 到 1 搭建 Pytest 接口自动化测试项目</a></li>
+<li><a href="#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95">进阶用法</a>
+<ul>
+<li><a href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90">持续集成</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%85%A5-github-action">接入 github action</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80">常用断言</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">数据驱动</a></li>
+<li><a href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%94%AF%E6%8C%81">多环境支持</a></li>
+<li><a href="#%E9%9B%86%E6%88%90-allure-%E6%8A%A5%E5%91%8A">集成 allure 报告</a></li>
+<li><a href="#%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E6%B5%8B%E8%AF%95">并发测试和分布式测试</a></li>
+<li><a href="#%E7%AD%9B%E9%80%89%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C">筛选用例执行</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="pytest-框架教程对应文章">Pytest 框架教程对应文章</h3>
+<ul>
+<li>Pytest 接口自动化测试教程：进阶用法 - 筛选测试用例执行，并发测试和分布式测试：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-filter-testcase-and-concurrent-testing-distributed-testing/</a></li>
+<li>Pytest 接口自动化测试教程：进阶用法 - 多环境支持 和 集成 allure 报告：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-multiple-environment-support-and-integration-allure-report/</a></li>
+<li>Pytest 接口自动化测试教程：进阶用法 - 常用断言和数据驱动：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-common-assertions-and-data-driven/</a></li>
+<li>Pytest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-advance-usage-integration-ci-cd-and-github-action/</a></li>
+<li>Pytest 接口自动化测试教程：从 0 到 1 搭建 Pytest 接口自动化测试项目：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-building-your-own-project-from-0-to-1/</a></li>
+<li>Pytest 接口自动化测试教程：入门介绍和环境搭建准备：<a href="https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/">https://naodeng.tech/zh/posts/api-automation-testing/pytest-tutorial-getting-started-and-own-environment-preparation/</a></li>
+</ul>
+<h3 id="pytest-框架教程参考文档">Pytest 框架教程参考文档</h3>
+<ul>
+<li>Demo 项目地址：<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter">https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter</a></li>
+<li>Pytest 文档：<a href="https://docs.pytest.org/en/stable/">https://docs.pytest.org/en/stable/</a></li>
+<li>Pytest-html 文档：<a href="https://pypi.org/project/pytest-html/">https://pypi.org/project/pytest-html/</a></li>
+<li>Pytest-xdist 文档：<a href="https://pypi.org/project/pytest-xdist/">https://pypi.org/project/pytest-xdist/</a></li>
+<li>Allure-pytest 文档：<a href="https://pypi.org/project/allure-pytest/">https://pypi.org/project/allure-pytest/</a></li>
+<li>Allure 文档：<a href="https://docs.qameta.io/allure/">https://docs.qameta.io/allure/</a></li>
+<li>gitHub action 文档：<a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></li>
+</ul>
+<h2 id="测试工具实现接口自动化测试">测试工具实现接口自动化测试</h2>
+<h3 id="postman-接口自动化测试">Postman 接口自动化测试</h3>
+<h4 id="postman-框架教程目录">Postman 框架教程目录</h4>
+<blockquote>
+<p>目录不可点击，仅为展示目录结构</p>
+</blockquote>
+
+<ul>
+<li><a href="#postman-api-test-starter">Postman-API-Test-Starter</a>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B">接口测试简介</a></li>
+<li><a href="#postman-%E4%B8%8E-newman-%E4%BB%8B%E7%BB%8D">Postman 与 newman 介绍</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96">项目依赖</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">项目文件结构</a></li>
+<li><a href="#%E4%BB%8E-0-%E5%88%B0-1-%E6%90%AD%E5%BB%BA-postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE">从 0 到 1 搭建 Postman 接口自动化测试项目</a></li>
+<li><a href="#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95">进阶用法</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%87%BA-html-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A">输出 html 测试报告</a></li>
+<li><a href="#cicd-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90">CI/CD 持续集成</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%85%A5-github-action">接入 github action</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9B%86%E6%88%90-allure-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A">集成 allure 测试报告</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC">常用测试脚本</a>
+<ul>
+<li><a href="#%E5%93%8D%E5%BA%94%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC">响应测试脚本</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E5%89%8D%E8%84%9A%E6%9C%AC">请求前脚本</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%8F%AF%E7%94%A8%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93">测试脚本中可用的第三方库</a>
+<ul>
+<li><a href="#chaijs-%E6%96%AD%E8%A8%80%E5%BA%93%E6%96%B9%E6%B3%95">chai.js 断言库方法</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-cheerio-%E6%93%8D%E4%BD%9C-html-%E6%96%87%E4%BB%B6">使用 cheerio 操作 HTML 文件</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-tv4-%E6%9D%A5%E9%AA%8C%E8%AF%81-json-schema">使用 tv4 来验证 JSON Schema</a></li>
+<li><a href="#%E7%94%9F%E6%88%90-uuid">生成 uuid</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-xml2js-%E5%B0%86-xml-%E8%BD%AC%E6%8D%A2%E4%B8%BA-javascript-%E5%AF%B9%E8%B1%A1">使用 xml2js 将 XML 转换为 JavaScript 对象</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0-util">常用工具函数 util</a></li>
+<li><a href="#stream-%E6%B5%81%E6%93%8D%E4%BD%9C">stream 流操作</a></li>
+<li><a href="#%E5%AE%9A%E6%97%B6%E5%99%A8-timers">定时器 timers</a></li>
+<li><a href="#%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86-events">时间处理 events</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">数据驱动</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">使用环境变量</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6">使用数据文件</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0">文件上传</a></li>
+<li><a href="#%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95">并发测试</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="postman-框架教程对应文章">Postman 框架教程对应文章</h4>
+<ul>
+<li>Postman 接口自动化测试教程：进阶用法 - 常用命令行选项，文件上传场景和 SSL 证书场景：<a href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/">https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-command-line-options-and-file-upload/</a></li>
+<li>Postman 接口自动化测试教程：进阶用法 - 数据驱动：<a href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/">https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-data-driven-and-environment-data-driven/</a></li>
+<li>Postman 接口自动化测试教程：进阶用法 - 常用的测试脚本和常用的第三方包用法示例：<a href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/">https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-common-test-scripts-and-commonly-used-third-party-packages/</a></li>
+<li>Postman 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action，接入 allure 测试报告：<a href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/">https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-advance-usage-integration-html-report-and-allure-report-integration-github-action/</a></li>
+<li>Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目：<a href="https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/">https://naodeng.tech/zh/posts/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/</a></li>
+</ul>
+<h4 id="postman-框架教程参考文档">Postman 框架教程参考文档</h4>
+<ul>
+<li>Demo 项目地址：<a href="https://github.com/Automation-Test-Starter/Postman-API-Test-Starter">https://github.com/Automation-Test-Starter/Postman-API-Test-Starter</a></li>
+<li>Postman 官方文档:<a href="https://learning.postman.com/docs/getting-started/introduction/">https://learning.postman.com/docs/getting-started/introduction/</a></li>
+<li>Newman 官方文档:<a href="https://github.com/postmanlabs/newman">https://github.com/postmanlabs/newman</a></li>
+<li>gitHub action 文档：<a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></li>
+<li>allure 文档：<a href="https://docs.qameta.io/allure/">https://docs.qameta.io/allure/</a></li>
+</ul>
+<h3 id="bruno-接口自动化测试">Bruno 接口自动化测试</h3>
+<h4 id="bruno-框架教程目录">Bruno 框架教程目录</h4>
+<blockquote>
+<p>目录不可点击，仅为展示目录结构</p>
+</blockquote>
+
+<ul>
+<li><a href="#bruno-user-guide">bruno-user-guide</a>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-bruno">为什么选择 bruno</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-bruno">安装 bruno</a></li>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8">客户端使用入门</a>
+<ul>
+<li><a href="#%E9%BB%98%E8%AE%A4%E4%B8%BB%E7%95%8C%E9%9D%A2">默认主界面</a></li>
+<li><a href="#api-%E8%AF%B7%E6%B1%82%E9%9B%86">API 请求集</a></li>
+<li><a href="#api-%E8%AF%B7%E6%B1%82">API 请求</a></li>
+<li><a href="#%E7%BC%96%E5%86%99-api-%E8%AF%B7%E6%B1%82%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC">编写 API 请求测试脚本</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">环境变量</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96">测试脚本接口自动化</a>
+<ul>
+<li><a href="#%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6">前置条件</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E9%A1%B9%E7%9B%AE-demo">接口自动化项目 demo</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E5%85%A5-ci">接入 CI</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%85%A5-github-action">接入 github action</a></li>
+</ul>
+</li>
+<li><a href="#postman-%E8%84%9A%E6%9C%AC%E8%BF%81%E7%A7%BB">Postman 脚本迁移</a>
+<ul>
+<li><a href="#api-%E8%AF%B7%E6%B1%82%E9%9B%86%E8%BF%81%E7%A7%BB">API 请求集迁移</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%BF%81%E7%A7%BB">环境变量迁移</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E8%BF%81%E7%A7%BB%E5%8F%82%E8%80%83">测试脚本迁移参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="bruno-框架教程对应文章">Bruno 框架教程对应文章</h4>
+<ul>
+<li>postman 替换工具 bruno 使用介绍:<a href="https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_bruno/">https://naodeng.tech/zh/posts/api-automation-testing/introduction_of_bruno/</a></li>
+</ul>
+<h4 id="bruno-框架教程参考文档">Bruno 框架教程参考文档</h4>
+<ul>
+<li>Demo 项目地址：<a href="https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter">https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter</a></li>
+<li>Bruno 文档：<a href="https://docs.usebruno.com/">https://docs.usebruno.com/</a></li>
+<li>gitHub action 文档：<a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></li>
+</ul>
+<h4 id="推荐阅读">推荐阅读</h4>
+<ul>
+<li><a href="https://naodeng.tech/zh/zhseries/postman-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Postman 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/pytest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Pytest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/supertest-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 SuperTest 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/rest-assured-%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Rest Assured 进行接口自动化测试快速开启教程系列</a></li>
+<li><a href="https://naodeng.tech/zh/zhseries/gatling-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%99%E7%A8%8B/">使用 Galting 进行性能测试快速开启教程系列</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const o=document.getElementById("search-dialog"),l=document.getElementById("search-input"),s=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),a=document.querySelector("[data-hint]");let r=[],i="en";function y(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function E(){if(r.length>0)return r;i=y();const e=await fetch(`/${i}/search-index.json`);return e.ok?(r=await e.json(),r):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function g(e,t){s.innerHTML="",s.hidden=e.length===0,u.hidden=e.length>0||!t,e.slice(0,20).forEach(n=>{const c=document.createElement("a");c.href=n.url,c.className="search-result-item",c.setAttribute("role","listitem");const m=new Date(n.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});c.innerHTML=`
+        <span class="search-result-title">${f(n.title)}</span>
+        <span class="search-result-meta">${f(m)}${n.tags?.length?" · "+n.tags.slice(0,3).join(", "):""}</span>
+      `,c.addEventListener("click",()=>o.close()),s.appendChild(c)})}function L(e){const t=e.trim().toLowerCase();return t?r.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(c=>c.toLowerCase().includes(t))):[]}function v(){const e=l.value;if(!r.length){s.hidden=!0,u.hidden=!0;return}const t=e.trim().length>0,n=L(e);g(n,t)}function h(){E().then(()=>{o.showModal(),l.value="",l.focus(),s.hidden=!0,u.hidden=!0,a&&(a.style.display="block")})}function d(){o.close(),a&&(a.style.display="")}o.addEventListener("close",()=>{a&&(a.style.display="")});o.addEventListener("cancel",d);p?.addEventListener("click",d);l.addEventListener("input",v);l.addEventListener("keydown",e=>{if(e.key==="Escape"&&(d(),e.preventDefault()),e.key==="Enter"){const t=s.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),o.open?d():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>postman 替换工具 bruno 使用介绍 - 软件测试同学</title><meta name="description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/blog/api-automation-testing/introduction_of_bruno/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/blog/api-automation-testing/introduction_of_bruno/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="postman 替换工具 bruno 使用介绍 - 软件测试同学"><meta property="og:site_name" content="postman 替换工具 bruno 使用介绍 - 软件测试同学"><meta property="og:description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:url" content="https://inaodeng.com/zh-cn/blog/api-automation-testing/introduction_of_bruno/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><script defer src="https://analytics.umami.is/script.js" data-website-id="bebc2c5d-6830-44a0-9116-6cf1ab9354fc" data-host-url="https://analytics.naodeng.com.cn/hugo"></script><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.Cn4Qv-Gv.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <div class="header-actions" data-astro-cid-3ef6ksr2> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/introduction_of_bruno/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/introduction_of_bruno/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <button type="button" class="search-bar-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="search-bar-icon material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="search-bar-placeholder" data-astro-cid-3ef6ksr2>搜索文章…</span> <span class="search-bar-kbd" data-astro-cid-3ef6ksr2><span class="search-bar-kbd-inner" data-astro-cid-3ef6ksr2>⌘ K</span></span> </button> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/inaodeng.com" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/Introduction_of_bruno-cover.NqvF7ucR_Z1Uvugg.webp" alt="postman 替换工具 bruno 使用介绍" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>postman 替换工具 bruno 使用介绍</h1> <time datetime="2023-10-17T03:31:43.000Z" data-astro-cid-v3cnrnum> 2023/10/17 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Bruno</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="为什么选择-bruno">为什么选择 bruno</h2>
+<p>官方说明：<a href="https://github.com/usebruno/bruno/discussions/269">https://github.com/usebruno/bruno/discussions/269</a></p>
+<p>与 postman 的对比：<a href="https://www.usebruno.com/compare/bruno-vs-postman">https://www.usebruno.com/compare/bruno-vs-postman</a></p>
+<p>开源，MIT License</p>
+<p>客户端全平台支持 (Mac/linux/Windows)</p>
+<p>离线客户端，无云同步功能计划</p>
+<p>支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）</p>
+<p>社区相对活跃，<a href="https://github.com/usebruno/bruno/discussions/384">产品开发路线图</a>清晰</p>
+<h2 id="安装-bruno">安装 bruno</h2>
+<p>Download link: <a href="https://www.usebruno.com/downloads">https://www.usebruno.com/downloads</a></p>
+<p>Mac 电脑推荐 brew 命令下载</p>
+<p>​    <code>brew install Bruno</code></p>
+<h2 id="客户端使用入门">客户端使用入门</h2>
+<h3 id="默认主界面">默认主界面</h3>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//homepage.png" alt="homepage"/></p>
+<h3 id="api-请求集">API 请求集</h3>
+<h4 id="创建-api-请求集">创建 API 请求集</h4>
+<ul>
+<li>
+<p>首页点击‘Create Collection’链接，打开创建 API 请求集的弹窗</p>
+</li>
+<li>
+<p>弹窗上依次输入</p>
+<p>Name: 输入 API 请求集的名字</p>
+<p>Location：输入想要保存 API 请求集文件的文件夹路径 (建议选择此项目所在路径)</p>
+<p>Folder Name：可输入 API 请求集名字（会在刚才选择的路径下创建一个对应名字的文件夹）</p>
+</li>
+<li>
+<p>点击 Create 按钮即可完成 API 请求集的创建，并展示在界面上 (左侧 请求集列表会展示新建的 API 请求集的信息)</p>
+</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//create-collection.png" alt="create-collection"/></p>
+<h4 id="打开-api-请求集">打开 API 请求集</h4>
+<ul>
+<li>首页点击‘Open Collection’链接，打开选择已有的 bruno 格式的 API 请求集文件夹</li>
+<li>点击 open 即可完成选择，并展示在界面上 (左侧 collection 列表会展示选择的 API 请求集信息)</li>
+</ul>
+<h4 id="导入-api-collection">导入 API collection</h4>
+<ul>
+<li>首页点击‘Import Collection’链接，打开导入 API collection 的弹窗 (支持 Bruno/Postman/Insomnia 的导入)</li>
+<li>弹窗上选择对应格式的的链接，再选在已存在的对应格式的文件路径</li>
+<li>点击 open 即可完成选择，并展示在界面上 (左侧 collection 列表会展示选择的 API collection 信息)</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//import-collection.png" alt="import-collection"/></p>
+<h4 id="本地运行-api-collection">本地运行 API collection</h4>
+<ul>
+<li>在主界面左侧 collection 列表选择想要运行的 API 请求集</li>
+<li>在菜单上选择 Run，右侧界面会打开 Runner tab，会展示所选择 API 请求集里面 requests 的一些信息</li>
+<li>点击 Run Collection 按钮即可本地运行 (运行完界面上会展示允许结果)</li>
+</ul>
+<h4 id="导出-api-请求集">导出 API 请求集</h4>
+<ul>
+<li>在主界面左侧 collection 列表选择想要运行的 API 请求集，右键打开菜单</li>
+<li>在菜单上选择 Export，再选择想要导出文件的路径即可完成导出 (导出文件也是为 json 格式)</li>
+</ul>
+<h3 id="api-请求">API 请求</h3>
+<h4 id="新建-api-请求">新建 API 请求</h4>
+<ul>
+<li>前置条件：已经创建了 API 请求集 (参考上面的创建 API 请求集)</li>
+<li>在主界面左侧 collection 列表选择想要新建 API 请求的 API 请求集</li>
+<li>在菜单上选择 New Request，右侧界面会打开 Request tab，会展示所选择 API 请求集里面 requests 的一些信息</li>
+<li>在 new Request 窗口上先选择请求类型：HTTP/GraphQL</li>
+<li>依次输入
+Name: 输入 API 请求的名字
+URL：输入 API 请求的 URL
+Method：选择 API 请求的 Method</li>
+<li>点击 Create 按钮即可完成 API 请求的创建，并展示在界面上 (左侧 请求集列表会展示新建的 API 请求的信息)</li>
+</ul>
+<h4 id="编辑-api-请求">编辑 API 请求</h4>
+<ul>
+<li>
+<p>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)</p>
+</li>
+<li>
+<p>在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求</p>
+</li>
+<li>
+<p>然后可以根据 API 请求类型再来编辑请求的不同字段
+Body：输入 API 请求的 Body</p>
+<p>Headers：输入 API 请求的 Headers</p>
+<p>Params：输入 API 请求的 Params</p>
+<p>Auth：输入 API 请求的 Auth</p>
+<p>Vars：输入 API 请求的 Vars</p>
+<p>Script：输入 API 请求的 Script</p>
+<p>Assert：输入 API 请求的 Assert</p>
+<p>Tests：输入 API 请求的 Tests</p>
+</li>
+<li>
+<p>点击 Save 按钮即可完成 API 请求的编辑，并展示在界面上 (左侧 请求集列表会展示编辑的 API 请求的信息)</p>
+</li>
+</ul>
+<h4 id="运行-api-请求">运行 API 请求</h4>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)</li>
+<li>在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求</li>
+<li>点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)</li>
+</ul>
+<h4 id="api-请求生成代码">API 请求生成代码</h4>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)</li>
+<li>在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求</li>
+<li>菜单右键选择 Generate Code，再选择想要生成代码的语言</li>
+<li>Generate Code 窗口即可展示不同语言的请求代码</li>
+</ul>
+<h3 id="编写-api-请求测试脚本">编写 API 请求测试脚本</h3>
+<h4 id="api-请求-assert">API 请求 Assert</h4>
+<h5 id="assert-介绍">Assert 介绍</h5>
+<ul>
+<li>
+<p>打开任意的 API 请求，切换到 Assert tab</p>
+</li>
+<li>
+<p>Assert tab 会展示 API 请求的 Assert 信息</p>
+</li>
+<li>
+<p>Assert 用来判断 API 请求的返回结果是否符合预期</p>
+</li>
+<li>
+<p>Expr：输入预期结果的表达式，可以是 API 请求的返回结果的某个字段的值，可输入两种类型：Status Code 和 Response Body
+Status Code：判断 API 请求的返回状态码是否符合预期  (默认为 200)
+Response Body：判断 API 请求的返回结果是否符合预期 (默认为 true)</p>
+</li>
+<li>
+<p>Operator：输入预期结果的验证方式。支持多种判断方式：Equal 和 Not Equal 等
+Equal：判断 API 请求的返回结果是否等于预期结果
+Not Equal：判断 API 请求的返回结果是否不等于预期结果</p>
+</li>
+<li>
+<p>Value：输入预期结果的值，支持两种预期结果的输入方式：Static 和 Dynamic
+Static：输入预期结果的静态值
+Dynamic：输入预期结果的动态值，可以是 API 请求的返回结果的某个字段的值</p>
+</li>
+</ul>
+<h5 id="assert-示例">Assert 示例</h5>
+<h6 id="assert-status-code-为-200">Assert status code 为 200</h6>
+<ul>
+<li>以 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> 为例 (该 API 请求返回的结果为：<a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) 我想验证该 API 请求的返回结果的 status 是否为 200，</li>
+<li>打开该 API 请求，切换到 Assert tab</li>
+<li>依次输入如下信息
+Expr: res.status
+Operator：Equal
+Value：200</li>
+</ul>
+<h6 id="assert-repsponse-body-符合预期">Assert repsponse body 符合预期</h6>
+<ul>
+<li>以 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> 为例 (该 API 请求返回的结果为：<a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) 我想验证该 API 请求的返回结果的 repsponse body 是否符合预期</li>
+<li>打开该 API 请求，切换到 Assert tab</li>
+<li>Assert1 依次输入如下信息
+Expr: res.body.id
+Operator：Equal
+Value：1</li>
+<li>Assert2 依次输入如下信息
+Expr: res.body.title
+Operator：contains
+Value：provident</li>
+</ul>
+<h5 id="调试-assert">调试 Assert</h5>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也按照 demo 编写了对应的 Assert</li>
+<li>在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求</li>
+<li>点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)</li>
+<li>切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Assert 信息</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//assert-demo.png" alt="assert-demo"/></p>
+<h4 id="api-请求-tests">API 请求 Tests</h4>
+<h5 id="tests-介绍">Tests 介绍</h5>
+<ul>
+<li>打开任意的 API 请求，切换到 Tests tab</li>
+<li>Tests tab 会展示 API 请求的 Tests 信息</li>
+<li>Tests 用来编写 API 请求的测试脚本，目前较好支持 javascript 语言</li>
+<li>Tests 里面可以编写多个测试脚本，每个测试脚本都可以单独运行</li>
+</ul>
+<h5 id="tests-示例">Tests 示例</h5>
+<h6 id="验证-status-code-为-200">验证 status code 为 200</h6>
+<ul>
+<li>以 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> 为例 (该 API 请求返回的结果为：<a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) 我想验证该 API 请求的返回结果的 status 是否为 200，</li>
+<li>打开该 API 请求，切换到 Tests tab</li>
+<li>输入如下脚本</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h6 id="assert-repsponse-body-符合预期-1">Assert repsponse body 符合预期</h6>
+<ul>
+<li>以 <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> 为例 (该 API 请求返回的结果为：<a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) 我想验证该 API 请求的返回结果的 repsponse body 是否符合预期</li>
+<li>打开该 API 请求，切换到 Tests tab</li>
+<li>输入如下脚本</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h5 id="调试-tests">调试 Tests</h5>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也按照 demo 编写了对应的 Tests</li>
+<li>在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求</li>
+<li>点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)</li>
+<li>切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Tests 信息</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//tests-demo.png" alt="tests-demo"/></p>
+<h4 id="环境变量">环境变量</h4>
+<h5 id="创建环境变量">创建环境变量</h5>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)</li>
+<li>选择想要创建环境变量的 API 请求</li>
+<li>点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗（支持创建新的环境变量和导入已有的环境变量）</li>
+<li>弹窗上点击 Create Environment 按钮，输入环境变量的名字，点击 create 按钮即可创建环境变量</li>
+<li>然后在弹窗上点击 Add Variable 按钮，输入环境变量的 key 和 value，点击 Save 按钮即可添加环境变量</li>
+</ul>
+<h5 id="环境变量-demo">环境变量 demo</h5>
+<blockquote>
+<p>需求：创建一个 demo 环境变量，里面包含一个 key 为 host，value 为 <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a> 的环境变量</p>
+</blockquote>
+<ul>
+<li>选择想要创建环境变量的 API 请求</li>
+<li>点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗</li>
+<li>弹窗上点击 Create Environment 按钮，输入环境变量的名字 demo，点击 create 按钮即可创建环境变量 demo</li>
+<li>选择 demo 环境变量，然后在页面上点击 Add Variable 按钮，输入环境变量的 key 为 host，value 为 <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a> ，点击 Save 按钮即可添加环境变量</li>
+<li>如下图所示
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//env-intro.png" alt="env-intro"/></li>
+</ul>
+<h5 id="使用环境变量">使用环境变量</h5>
+<ul>
+<li>前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也创建了 demo 环境变量</li>
+<li>选择想要使用环境变量的 API 请求</li>
+<li>点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 demo 按钮即可使用 demo 环境变量</li>
+<li>然后在 API 请求的 URL 变更为输入 {{host}}/posts/1 即可使用环境变量</li>
+</ul>
+<h3 id="测试脚本接口自动化">测试脚本接口自动化</h3>
+<h4 id="前置条件">前置条件</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 已创建了 API 请求集（示例名为:api-collects）</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 已创建了 API 请求（示例名为:api request1）</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 已创建了环境变量（示例名为:demo）</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 也为 API 请求编写了 assert 或者 tests 脚本</li>
+</ul>
+<h4 id="接口自动化项目-demo">接口自动化项目 demo</h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 安装 node.js</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 安装 npm</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 新建项目文件夹（示例名为:bruno-test）</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 项目文件夹下执行 npm init 将项目初始化为 npm 项目</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 安装 @usebruno/cli 依赖 (脚本为：npm install @usebruno/cli)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 打开保存 API 请求集的文件夹目录，将 api-collects 目录下的所有文件都复制到 bruno-test 项目目录下下</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 项目目录如下所示</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">bruno</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">test   </span><span style="color:#6A737D">//项目主文件夹</span></span>
+<span class="line"><span style="color:#E1E4E8">  api request1.bru </span><span style="color:#6A737D">//api 请求</span></span>
+<span class="line"><span style="color:#E1E4E8">  enviroments </span><span style="color:#6A737D">//环境变量</span></span>
+<span class="line"><span style="color:#E1E4E8">    demo.bru</span></span>
+<span class="line"><span style="color:#E1E4E8">  bruno.json</span></span>
+<span class="line"><span style="color:#E1E4E8">  node_modules </span><span style="color:#6A737D">//node 包依赖</span></span>
+<span class="line"><span style="color:#F97583">  package-</span><span style="color:#E1E4E8">lock.json</span></span>
+<span class="line"><span style="color:#E1E4E8">  package.json </span><span style="color:#6A737D">//npm 项目配置文件</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 运行接口自动化脚本</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">bruno run </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">env demo</span></span></code></pre>
+<ul>
+<li>运行结果如下</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//cli-demo.png" alt="cli-demo"/></p>
+<h3 id="接入-ci">接入 CI</h3>
+<h4 id="接入-github-action">接入 github action</h4>
+<blockquote>
+<p>以 github action 为例，其他 CI 工具类似</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 前置准备：在项目 package.json 文件中添加如下脚本</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">&quot;test&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bru run --env demo&quot;</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 在项目根目录下创建 .github/workflows 文件夹</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 在 .github/workflows 文件夹下创建 main.yml 文件</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> main.yml 文件内容如下</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">bruno cli CI</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">main</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#85E89D">  pull_request</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">main</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  run_bruno_api_test</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm install</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">run tests</span></span>
+<span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm run test</span></span></code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> 提交代码到 github，会自动触发 github action</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> 查看 github action 运行结果，如图示例：</li>
+</ul>
+<p><img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//cli-demo1.png" alt="cli-demo1"/></p>
+<blockquote>
+<p>可拉取本项目代码进行参考：<a href="https://github.com/dengnao-tw/Bruno-API-Test-Starter">https://github.com/dengnao-tw/Bruno-API-Test-Starter</a></p>
+</blockquote>
+<h4 id="测试报告---todo">测试报告---TODO</h4>
+<h3 id="bruno-更多用法---todo">bruno 更多用法---TODO</h3>
+<h3 id="postman-脚本迁移">Postman 脚本迁移</h3>
+<h4 id="api-请求集迁移">API 请求集迁移</h4>
+<ul>
+<li>在首页点击‘Import Collection’链接，打开导入 API collection 的弹窗</li>
+<li>点击选择 Postman Collection 的链接，再选在已存在的 Postman 请求集文件路径</li>
+<li>即可导入 Postman 的请求集</li>
+<li>但是目前只支持导入 API 请求，无法导入测试脚本，如图所示（但不影响请求调用）
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//postman1.png" alt="postman1"/>
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//bruno1.png" alt="bruno1"/></li>
+</ul>
+<h4 id="环境变量迁移">环境变量迁移</h4>
+<ul>
+<li>在首页选择刚才导入的 Postman 请求</li>
+<li>点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗</li>
+<li>点击‘Import Environment’链接，打开导入 Environment 的弹窗</li>
+<li>点击选择 Postman Environment 的链接，再选在已存在的 Postman 环境变量文件路径</li>
+<li>即可导入 Postman 的环境变量
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//postman2.png" alt="postman2"/>
+<img src="https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures//bruno2.png" alt="bruno2"/></li>
+</ul>
+<h4 id="测试脚本迁移参考">测试脚本迁移参考</h4>
+<blockquote>
+<p>两个工具测试脚本的语法存在一部分差异，需要手动修改</p>
+</blockquote>
+<ul>
+<li>Postman 测试脚本语法参考：<a href="https://learning.postman.com/docs/writing-scripts/test-scripts/">https://learning.postman.com/docs/writing-scripts/test-scripts/</a></li>
+<li>Postman 测试脚本示例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>Bruno 测试脚本语法参考：<a href="https://docs.usebruno.com/testing/introduction.html">https://docs.usebruno.com/testing/introduction.html</a></li>
+<li>Bruno 测试脚本示例</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">getStatus</span><span style="color:#E1E4E8">()).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">getBody</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/api-automation-testing/introduction_of_bruno/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const o=document.getElementById("search-dialog"),l=document.getElementById("search-input"),s=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),a=document.querySelector("[data-hint]");let r=[],i="en";function y(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function E(){if(r.length>0)return r;i=y();const e=await fetch(`/${i}/search-index.json`);return e.ok?(r=await e.json(),r):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function g(e,t){s.innerHTML="",s.hidden=e.length===0,u.hidden=e.length>0||!t,e.slice(0,20).forEach(n=>{const c=document.createElement("a");c.href=n.url,c.className="search-result-item",c.setAttribute("role","listitem");const m=new Date(n.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});c.innerHTML=`
+        <span class="search-result-title">${f(n.title)}</span>
+        <span class="search-result-meta">${f(m)}${n.tags?.length?" · "+n.tags.slice(0,3).join(", "):""}</span>
+      `,c.addEventListener("click",()=>o.close()),s.appendChild(c)})}function L(e){const t=e.trim().toLowerCase();return t?r.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(c=>c.toLowerCase().includes(t))):[]}function v(){const e=l.value;if(!r.length){s.hidden=!0,u.hidden=!0;return}const t=e.trim().length>0,n=L(e);g(n,t)}function h(){E().then(()=>{o.showModal(),l.value="",l.focus(),s.hidden=!0,u.hidden=!0,a&&(a.style.display="block")})}function d(){o.close(),a&&(a.style.display="")}o.addEventListener("close",()=>{a&&(a.style.display="")});o.addEventListener("cancel",d);p?.addEventListener("click",d);l.addEventListener("input",v);l.addEventListener("keydown",e=>{if(e.key==="Escape"&&(d(),e.preventDefault()),e.key==="Enter"){const t=s.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),o.open?d():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

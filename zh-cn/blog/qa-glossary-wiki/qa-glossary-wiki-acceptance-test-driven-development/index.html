@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>软件测试术语分享:ATDD 验收测试驱动开发 - 软件测试同学</title><meta name="description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="软件测试术语分享:ATDD 验收测试驱动开发 - 软件测试同学"><meta property="og:site_name" content="软件测试术语分享:ATDD 验收测试驱动开发 - 软件测试同学"><meta property="og:description" content="naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:url" content="https://inaodeng.com/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/"><meta property="og:locale" content="zh-CN"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><script defer src="https://analytics.umami.is/script.js" data-website-id="bebc2c5d-6830-44a0-9116-6cf1ab9354fc" data-host-url="https://analytics.naodeng.com.cn/hugo"></script><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.Cn4Qv-Gv.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <div class="header-actions" data-astro-cid-3ef6ksr2> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/" data-lang="en" data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/" data-lang="zh-cn" selected data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <button type="button" class="search-bar-trigger" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="search-bar-icon material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="search-bar-placeholder" data-astro-cid-3ef6ksr2>搜索文章…</span> <span class="search-bar-kbd" data-astro-cid-3ef6ksr2><span class="search-bar-kbd-inner" data-astro-cid-3ef6ksr2>⌘ K</span></span> </button> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 赞助 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/inaodeng.com" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/QA-Glossary-Wiki-acceptance-test-driven-development-cover.DHxCe4iG_rq59m.webp" alt="软件测试术语分享:ATDD 验收测试驱动开发" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>软件测试术语分享:ATDD 验收测试驱动开发</h1> <time datetime="2024-02-06T08:06:44.000Z" data-astro-cid-v3cnrnum> 2024/2/6 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>QA Glossary</span><span class="tag" data-astro-cid-v3cnrnum>ATDD</span> </div> </header> <h2 id="atdd-验收测试驱动开发">ATDD 验收测试驱动开发</h2>
+<p>验收测试驱动开发（ATDD）是一种旨在通过将测试作为开发过程的核心组成部分来减少缺陷的开发方法。这确保应用程序达到高质量标准。</p>
+<p>相关术语：</p>
+<ul>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-driven-development.md">TDD 测试驱动开发</a></li>
+<li><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/U/user-acceptance-testing.md">UAT 用户验收测试</a></li>
+</ul>
+<p>更多信息也可以看看：
+<a href="https://en.wikipedia.org/wiki/Acceptance_test-driven_development">Wikipedia</a></p>
+<blockquote>
+<p>wikipedia 只有英文版本，没有中文版本。</p>
+</blockquote>
+<h2 id="关于验收测试驱动开发的问题">关于验收测试驱动开发的问题</h2>
+<h3 id="基础知识和重要性">基础知识和重要性</h3>
+<h4 id="什么是验收测试驱动开发atdd">什么是验收测试驱动开发（ATDD）？</h4>
+<p>验收测试驱动开发（ATDD）是一种开发方法，团队成员（包括开发人员、测试人员和业务客户）在编码开始之前共同编写验收测试，以不同的视角为特色。其主要目标是明确系统功能的详细、以客户为中心的标准，以指导开发并清晰了解所期望的结果。</p>
+<p>在 ATDD 中，验收测试以示例或场景的形式表达，通常采用“Given-When-Then”格式，描述了系统从用户角度的行为。这些测试被自动化，并作为实时文档和回归测试套件的一部分。</p>
+<p>ATDD 促进了团队成员之间更好的沟通和理解，确保功能符合业务需求。它使开发工作与客户需求保持一致，有助于防止功能蔓延和缺陷。通过从一开始关注客户需求，团队可以交付更有价值且质量更高的软件。</p>
+<p>在 ATDD 中，测试人员的角色不仅仅局限于传统的测试，还包括参与需求澄清，并确保验收标准是可测试和清晰的。测试人员与开发人员和业务代表密切合作，共同创建和自动化验收测试。</p>
+<p>用于 ATDD 的常用工具包括 Cucumber、SpecFlow 和 FitNesse，它们支持行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）和以实例为基础的规范实践。这些工具允许使用所有利益相关者都能理解的语言编写测试，弥合了技术和非技术团队成员之间的差距。</p>
+<p>有效实施 ATDD 需要转变思维和实践，强调前期规范、持续反馈和迭代开发。它是敏捷和精益开发方法中的关键实践，有助于交付符合用户期望的高质量软件。</p>
+<h4 id="为什么-atdd-在软件开发中很重要">为什么 ATDD 在软件开发中很重要？</h4>
+<p>在软件开发中，ATDD 至关重要，因为它确保在编码开始之前，所有利益相关者都对需求有共同的理解。这种方法使开发人员、测试人员和业务代表围绕已达成一致的验收标准进行对齐，促进更好的沟通和协作。通过从一开始关注客户需求，ATDD 最小化了误解的风险，并降低了在开发周期后期进行昂贵的返工的可能性。</p>
+<p>在开发过程的早期引入 ATDD 有助于在问题升级之前识别和解决问题，从而导致更高效和流畅的工作流程。它鼓励使用简单语言进行行为规范，使测试对所有参与方都易于理解。这种明确性有助于在开发之前预防缺陷，这是与传统测试方法相比更为主动的方法。</p>
+<p>ATDD 还促进了持续反馈，允许在整个开发生命周期中进行迭代改进。这个迭代的过程有助于完善产品以更好地满足用户期望，最终产生与业务目标密切对齐的高质量软件。</p>
+<p>此外，ATDD 对自动化的强调支持<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>，实现了一个可处理变化而不需要显著增加工作量的可持续测试过程。这个<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md">自动化测试</a>框架对于在快节奏的开发环境中保持高质量尤为重要，特别是在扩大到较大项目时。</p>
+<p>总之，ATDD 之所以重要，是因为它促进了共享理解，减少了返工，确保与业务目标的一致，并支持一个可持续、高质量的开发过程。</p>
+<h4 id="atdd-与传统测试方法有何不同">ATDD 与传统测试方法有何不同？</h4>
+<p>ATDD，或验收测试驱动开发，主要在其<strong>协作方法</strong>和<strong>时机</strong>方面与传统测试方法不同。传统测试通常发生在开发阶段之后，测试人员根据已经实现的功能创建并执行测试。相比之下，ATDD 涉及到包括开发人员、测试人员和业务代表在内的多个利益相关者，他们在编写任何代码之前定义验收标准并创建验收测试。</p>
+<p>ATDD 中的这种前期协作确保所有方对需求和“完成”的定义有共同的理解。它将重点从开发后发现<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>转移到通过早期澄清期望来预防<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>。此外，ATDD 鼓励<strong>行为驱动开发</strong>（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>），其中测试以所有利益相关者都能理解的语言编写，通常使用 Given-When-Then 格式。</p>
+<p>而传统测试方法可能会严重依赖<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/M/manual-testing.md">手动测试</a>或在事后创建自动化测试，ATDD 从一开始就集成了**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md">自动化测试</a><strong>。验收测试被自动化，并成为</strong>回归套件**的一部分，提供关于新更改是否符合已达成一致的标准的即时反馈。</p>
+<p>总的来说，ATDD 的积极、协作的方法与传统的被动测试方法形成对比，强调预防而非检测，并在整个团队中促进了对质量的共同责任。</p>
+<h4 id="使用-atdd-的主要优势有哪些">使用 ATDD 的主要优势有哪些？</h4>
+<p>ATDD 提供了一些增强软件开发过程的关键优势：</p>
+<ul>
+<li><strong>增强协作</strong>：通过在开发周期的早期涉及各种利益相关者（开发人员、测试人员、业务分析师），ATDD 促进了更好的理解和沟通。</li>
+<li><strong>清晰需求</strong>：验收测试充当具体的需求，减少了歧义，并确保软件满足业务需求。</li>
+<li><strong>早期缺陷检测</strong>：在验收标准在前期定义时，问题被更早地识别出来，减少了后期修复缺陷的成本和工作量。</li>
+<li><strong>客户满意度</strong>：关注满足验收标准确保最终产品与客户期望一致。</li>
+<li><strong>回归安全</strong>：自动化验收测试提供了一个安全网，使得在不破坏现有功能的情况下重构和改进代码更加安全。</li>
+<li><strong>持续反馈</strong>：定期执行验收测试为产品的状态提供了持续的洞察，允许及时进行调整。</li>
+<li><strong>流程化开发</strong>：清晰的验收标准指导了开发工作，防止了功能蔓延和过度工程化。</li>
+</ul>
+<p>实施 ATDD 可以导致一个更高效、协作和质量导向的开发生命周期，最终交付更好满足用户需求并经受住时间考验的软件。</p>
+<h4 id="atdd-如何提高软件产品的质量">ATDD 如何提高软件产品的质量？</h4>
+<p>ATDD 通过确保准确满足**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/functional-requirements.md">功能需求</a>** 并使产品表现如利益相关者期望的方式，提高了<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。通过从一开始关注客户需求，ATDD 促进了<strong>清晰且可执行的规范</strong>的创建。这些规范指导开发和测试，减少了由于误解或不完整的需求而导致的缺陷的可能性。</p>
+<p>验收测试在编写代码<strong>之前</strong>就已经定义好，这意味着开发人员有一个明确的目标。这种<strong>先测试后编码的方法</strong>有助于防止功能蔓延，并确保代码库只包含通过测试所必需的内容，从而使代码库更清晰且更易维护。</p>
+<p>此外，ATDD 鼓励开发人员、测试人员和业务利益相关者之间的协作。这种<strong>跨职能的沟通</strong>有助于在开发过程的早期识别和解决模糊之处，这可以显著提高产品的质量。</p>
+<p>来自验收测试执行的持续反馈允许<strong>早期检测问题</strong>，通常比在开发周期后期发现的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bug.md">缺陷</a>更具成本效益。此外，验收测试套件成为可以用于**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>**的实时文档，确保新更改不会破坏现有功能。</p>
+<p>总的来说，ATDD 通过澄清需求、促进协作和提供持续反馈，有助于构建与业务需求和用户期望密切一致的产品，从而提高<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。</p>
+<h3 id="流程与技巧">流程与技巧</h3>
+<h4 id="atdd-有哪些关键步骤">ATDD 有哪些关键步骤？</h4>
+<p>在 ATDD 中涉及的关键步骤包括：</p>
+<ol>
+<li><strong>协作：</strong> 开发人员、测试人员和业务利益相关者之间的协作，共同定义验收标准。</li>
+<li><strong>编写验收测试：</strong> 在开发开始之前，基于达成一致的标准编写验收测试。</li>
+<li><strong>开发：</strong> 根据验收测试指导功能或用户故事的开发。</li>
+<li><strong>持续集成：</strong> 确保代码更改会自动根据验收测试进行测试。</li>
+<li><strong>修正：</strong> 根据需要对验收测试进行修正，以解决需求或理解的变化。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a></strong>：验证软件是否符合达成一致的验收标准。</li>
+<li><strong>审查和反馈：</strong> 利益相关者审查验收测试，确认其覆盖所需的功能和行为。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md">迭代</a></strong>：根据需要通过这些步骤进行迭代，直到功能符合验收标准。</li>
+</ol>
+<p>验收测试通常是自动化的，以便频繁执行和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/R/regression-testing.md">回归测试</a>。测试以对所有相关方可理解的语言编写，通常使用行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）框架，如 Cucumber 或 SpecFlow。这确保了测试既充当规范又用于验证。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#B392F0">Feature</span><span style="color:#E1E4E8">: User login</span></span>
+<span class="line"><span style="color:#B392F0">   Scenario</span><span style="color:#E1E4E8">: Valid login</span></span>
+<span class="line"><span style="color:#E1E4E8">    Given </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> am on the login page</span></span>
+<span class="line"><span style="color:#E1E4E8">    When </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> enter valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Then </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> should be redirected to the dashboard</span></span></code></pre>
+<p>实现有效的 ATDD 需要团队成员之间建立起强烈的协作文化、保持清晰的沟通，以及对质量的共同承诺。</p>
+<h4 id="atdd-如何创建验收测试">ATDD 如何创建验收测试？</h4>
+<p>在 ATDD 中，验收测试是通过团队成员之间的<strong>协作</strong>创建的，包括开发人员、测试人员和业务利益相关者。该过程始于定义<strong>用户故事</strong>，描述了用户从其角度期望的功能。每个用户故事都包括<strong>验收标准</strong>，这些标准构成了验收测试的基础。</p>
+<p>团队讨论验收标准，以确保对需求的共同理解。这种讨论通常涉及<strong>示例映射</strong>或<strong>实例说明</strong>，其中使用具体的示例来阐明期望并涵盖不同的场景。</p>
+<p>一旦达成共识，就会编写<strong>可执行规范</strong>。这些规范通常以<strong>Given-When-Then</strong>语句的形式结构化，可以直接转化为自动化测试。例如：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#E1E4E8">Given the user is logged </span><span style="color:#F97583">in</span></span>
+<span class="line"><span style="color:#E1E4E8">When they attempt to place an order</span></span>
+<span class="line"><span style="color:#E1E4E8">Then the order should be processed</span></span></code></pre>
+<p>然后，使用 ATDD 框架（如<strong>Cucumber</strong>或<strong>SpecFlow</strong>）自动化这些规范，这允许以对非技术利益相关者可访问的领域特定语言编写测试。自动化代码使用框架兼容的语言编写，例如使用 Cucumber 的 Java 或使用 SpecFlow 的 C#。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Given</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;^the user is logged in$&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">public </span><span style="color:#F97583">void</span><span style="color:#B392F0"> the_user_is_logged_in</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // Code to ensure user is logged in</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">When</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;^they attempt to place an order$&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">public </span><span style="color:#F97583">void</span><span style="color:#B392F0"> they_attempt_to_place_an_order</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // Code to simulate order placement</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Then</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;^the order should be processed$&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">public </span><span style="color:#F97583">void</span><span style="color:#B392F0"> the_order_should_be_processed</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // Assertions to verify order processing</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>验收测试在整个开发过程中持续执行，以验证软件是否符合达成一致的标准。这确保了新功能的开发以用户需求为导向，并及早捕捉到回归问题。</p>
+<h4 id="atdd-通常使用哪些技术">ATDD 通常使用哪些技术？</h4>
+<p>在 ATDD 中，采用了多种技术来确保满足验收标准并确保软件的行为符合预期：</p>
+<ul>
+<li><strong>行为驱动开发（<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>）</strong>：这一技术涉及以自然语言风格编写测试，描述应用程序的行为。通常使用诸如 Cucumber 或 SpecFlow 之类的工具来促进<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>。</li>
+<li><strong>实例说明</strong>：共同定义说明具体行为或要求的示例。这些示例然后被用作验收测试的基础。</li>
+<li><strong>示例映射</strong>：一个团队成员使用卡片来代表用户故事（黄色）、规则（蓝色）、示例（绿色）和问题（红色）的研讨会技术。这有助于理解故事并创建验收测试。</li>
+<li><strong>可执行规范</strong>：以使它们可以直接针对代码执行的方式编写验收测试。这通常涉及使用特定领域语言（DSL）以一种所有利益相关者都能理解的方式来表达测试。</li>
+<li><strong>测试先开发</strong>：在实际实施开始之前编写验收测试，确保开发集中在通过测试。</li>
+<li><strong>协作工具</strong>：使用促进业务利益相关者、开发人员和测试人员之间协作的工具，例如共享存储库或像<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/J/jira.md">JIRA</a>与 Xray 或 TestRail 这样的协作平台。</li>
+<li><strong>持续集成（CI）</strong>：将验收测试作为 CI 流水线的一部分自动运行，以获取有关所做更改的即时反馈。</li>
+<li><strong>测试工件的版本控制</strong>：将验收测试与代码库一起存储在版本控制系统中，以保持<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md">测试用例</a>与应用程序代码之间的同步。</li>
+</ul>
+<p>这些技术有助于定义清晰的验收标准，促进团队成员之间的协作，并确保在被视为完整之前软件满足业务需求。</p>
+<h4 id="atdd-如何融入软件开发生命周期">ATDD 如何融入软件开发生命周期？</h4>
+<p>ATDD 通过从一开始就将开发活动与指定的验收标准对齐，融入了软件开发生命周期（SDLC）。在<strong>初始阶段</strong>，利益相关者共同合作以定义和理解需求，然后将其转化为验收测试。这些测试代表了软件必须展示的<strong>行为</strong>，以被视为完整。</p>
+<p>在<strong>规划和设计</strong>阶段，验收测试得到审查和完善，确保它们清晰可测试。开发人员、测试人员和业务代表保持<strong>持续沟通</strong>，以澄清任何模糊之处。</p>
+<p>随着开发的开始，<strong>验收测试引导编码</strong>。开发人员编写足够的代码以通过这些测试，确保功能符合达成的标准。这种做法通常被称为<strong>测试先开发</strong>，促进了<strong>渐进式进展</strong>并有助于及早发现问题。</p>
+<p>在<strong>测试阶段</strong>，自动化验收测试经常执行，为软件功能提供<strong>即时反馈</strong>。这允许快速调整并有助于保持开发的<strong>稳定节奏</strong>。</p>
+<p>在发布之前，ATDD 确保产品符合业务需求，因为所有功能都是根据预定义的验收测试开发的。代码的<strong>持续集成</strong>和验收测试的<strong>定期执行</strong>有助于保持一个为部署准备的<strong>稳定构建</strong>。</p>
+<p>在部署后，这些验收测试成为<strong>回归测试套件</strong>的一部分，防范可能破坏现有功能的未来更改。ATDD 融入 SDLC 支持<strong>可持续、以质量为中心的开发过程</strong>。</p>
+<h4 id="测试人员在-atdd-中扮演什么角色">测试人员在 ATDD 中扮演什么角色？</h4>
+<p>在 ATDD 中，测试人员的角色是多方面的，侧重于协作、规范和验证。测试人员与<strong>开发人员</strong>、<strong>业务分析师</strong>和<strong>利益相关者</strong>密切合作，澄清需求并确保验收标准定义明确。他们为<strong>用户故事</strong>和<strong>验收测试的创建</strong>做出贡献，确保这些测试准确反映业务需求并且可以自动化。</p>
+<p>在开发过程中，测试人员参与验收测试的<strong>持续完善</strong>，通常与开发人员搭档创建和维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>。他们确保测试是<strong>可执行的规范</strong>，指导开发并即时提供有关软件行为是否符合预期结果的反馈。</p>
+<p>测试人员还在<strong>维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a><strong>方面发挥了关键作用，确保随着代码库的演变它保持</strong>可靠</strong>和<strong>高效</strong>。他们还可能负责**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理<strong>和设置必要的</strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>**。</p>
+<p>在 ATDD 循环中，测试人员帮助促进<strong>三位好朋友会议</strong>，讨论特性实施的问题，并积极参与**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/I/iteration.md">迭代</a>计划** 和 <strong>回顾</strong>以不断改进流程。</p>
+<p>最终，在 ATDD 中，测试人员确保团队交付的产品不仅满足技术需求，而且满足业务需求并为最终用户提供价值。他们在推动 ATDD 中固有的<strong>质量为先</strong>的方法方面发挥关键作用。</p>
+<h3 id="工具和技术">工具和技术</h3>
+<h4 id="atdd-常用的工具有哪些">ATDD 常用的工具有哪些？</h4>
+<p>常用的 ATDD 工具包括：</p>
+<ul>
+<li><strong>Cucumber</strong>：使用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。</li>
+<li><strong>SpecFlow</strong>：类似于 Cucumber，专为.NET 框架定制，同样使用 Gherkin 进行测试规范。</li>
+<li><strong>FitNesse</strong>：结合了文档的 wiki 和自动化测试框架，允许以表格形式编写测试。</li>
+<li><strong>Robot Framework</strong>：关键字驱动的测试自动化框架，高度可扩展，支持表格数据的测试用例。</li>
+<li><strong>Concordion</strong>：与 JUnit 集成，允许以 HTML 编写规范，并可链接到用于测试的 Java 代码。</li>
+<li><strong>JBehave</strong>：Java 中用于行为驱动开发（BDD）的框架，使用自然语言编写的故事推动开发。</li>
+<li><strong>Serenity <a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a></strong>：通过提供先进的报告和实时文档功能，增强了其他 BDD 工具（如 Cucumber 和 JBehave）。</li>
+</ul>
+<p>这些工具通过使用所有利益相关者都能理解的语言定义验收标准，支持 ATDD 过程。它们促进了验收测试的自动化，并帮助确保软件特性在被视为完成之前满足预定义的标准。<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工程师使用这些工具来编写、管理和执行验收测试，通常将它们集成到持续集成流水线中以获得持续反馈。熟练掌握编程，理解应用领域，以及熟悉所选工具的语法和最佳实践对有效使用这些工具至关重要。</p>
+<h4 id="这些工具如何支持-atdd-流程">这些工具如何支持 ATDD 流程？</h4>
+<p>自动化测试工具通过执行以<strong>行为驱动</strong>格式编写的验收测试，支持<strong>ATDD 过程</strong>。这些工具通常与<strong>Cucumber</strong>、<strong>SpecFlow</strong>或<strong>FitNesse</strong>等框架集成，这些框架允许使用<strong>业务可读</strong>语言（如<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/G/gherkin.md">Gherkin</a>）定义测试。</p>
+<p>通过使用这些工具，团队可以自动化验收标准的<strong>验证</strong>，确保软件符合达成的规范。这种自动化支持<strong>持续集成</strong>（CI）实践，允许在代码提交时自动运行测试，向开发人员提供<strong>即时反馈</strong>。</p>
+<p>此外，<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工具通过维护一套测试，可用于验证更改是否破坏了现有功能，从而支持<strong>重构</strong>。在 ATDD 中，重点是在整个开发过程中满足验收标准，这一点至关重要。</p>
+<p>此外，这些工具通常带有<strong>报告功能</strong>，使更容易向所有利益相关者传达测试的状态。这种透明度有助于保持对项目进展和质量的<strong>共享理解</strong>。</p>
+<p>例如，典型的 ATDD 工具链可能如下所示：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#B392F0">Feature</span><span style="color:#E1E4E8">: User login</span></span>
+<span class="line"><span style="color:#B392F0">  Scenario</span><span style="color:#E1E4E8">: Valid user login</span></span>
+<span class="line"><span style="color:#E1E4E8">    Given </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> am on the login page</span></span>
+<span class="line"><span style="color:#E1E4E8">    When </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> enter valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Then </span><span style="color:#79B8FF">I</span><span style="color:#E1E4E8"> should be redirected to the dashboard</span></span></code></pre>
+<p>然后，自动化工具将执行此场景，验证所描述的行为。这确保软件符合<strong>协同编写</strong>的验收测试中业务的期望。</p>
+<h4 id="有效使用这些工具需要哪些技能">有效使用这些工具需要哪些技能？</h4>
+<p>要有效使用<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-automation.md">自动化测试</a>工具，需要具备以下几项技能：</p>
+<ul>
+<li><strong>编程知识</strong>：熟练掌握与自动化工具相关的编程语言，如 Java、Python 或 C#。</li>
+<li><strong>软件开发理解</strong>：熟悉软件开发实践和生命周期，以将测试与开发阶段对齐。</li>
+<li><strong>测试框架专业知识</strong>：具有使用 JUnit、TestNG 或 pytest 等测试框架的经验，并了解其特性和集成。</li>
+<li><strong>版本控制系统</strong>：能够使用 Git 等版本控制系统管理<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>并与开发团队协作。</li>
+<li><strong>持续集成/持续部署（CI/CD）</strong>：了解 CI/CD 管道和 Jenkins、CircleCI 或 Travis CI 等工具，以将自动化测试集成到构建流程中。</li>
+<li><strong>自动化脚本编写</strong>：具备脚本编写技能，以创建健壮、可维护和可重用的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>。</li>
+<li><strong>理解 ATDD</strong>：虽然不需要详细涵盖，但理解 ATDD 原则对创建反映用户需求的验收测试至关重要。</li>
+<li><strong>解决问题和分析技能</strong>：能够解决<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-scripte.md">测试脚本</a>的问题并适应变化的需求或环境。</li>
+<li><strong>注意细节</strong>：在编写<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-casee.md">测试用例</a>时要精确，以覆盖边缘情况，防止<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/false-positive.md">误报</a>或漏报。</li>
+<li><strong>沟通能力</strong>：与利益相关者进行清晰的沟通，了解需求并传达测试结果的重要性。</li>
+<li><strong>具体工具知识</strong>：熟练掌握特定的 ATDD 工具，如 Cucumber、SpecFlow 或 FitNesse，包括它们的语法和最佳实践。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6A737D">// 一个使用特定工具语言的简单测试脚本示例</span></span>
+<span class="line"><span style="color:#B392F0">Feature</span><span style="color:#E1E4E8">: User login</span></span>
+<span class="line"><span style="color:#B392F0">  Scenario</span><span style="color:#E1E4E8">: Successful login </span><span style="color:#F97583">with</span><span style="color:#E1E4E8"> valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Given the login page is displayed</span></span>
+<span class="line"><span style="color:#E1E4E8">    When the user enters valid credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Then the user is redirected to the dashboard</span></span></code></pre>
+<ul>
+<li><strong>性能和<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/security-testing.md">安全测试</a></strong>：了解性能瓶颈和安全漏洞，将相关测试纳入自动化测试套件。</li>
+</ul>
+<h4 id="自动化在-atdd-中的作用是什么">自动化在 ATDD 中的作用是什么？</h4>
+<p>在 ATDD 中，自动化在<strong>验证</strong>和<strong>回归</strong>验收标准方面发挥着关键作用，确保一致而高效地执行自动化测试。这些自动化测试源于团队达成的验收标准，以确保软件符合业务需求。在 ATDD 中，自动化具有以下作用：</p>
+<ul>
+<li><strong>促进持续测试</strong>，将测试整合到 CI/CD 流水线中，提供对变更的即时反馈。</li>
+<li><strong>确保可重复性</strong>和验收测试的一致性，减少人为错误和测试执行的差异性。</li>
+<li><strong>增加<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a></strong>，在较短的时间内执行更多的测试。</li>
+<li>通过提供清晰的、可执行的规范，<strong>增强协作</strong>，所有团队成员都能够理解并用于验证系统。</li>
+<li>通过频繁运行自动化验收测试，<strong>缩短反馈周期</strong>，迅速了解软件的状态。</li>
+<li>通过提供一个安全网，确保新更改不会破坏现有功能，<strong>支持重构</strong>。</li>
+</ul>
+<p>自动验收测试成为系统行为的实时文档，始终保持更新。它们通常以**领域特定语言（DSL）**编写，使非技术利益相关者能够理解。通常使用工具如 Cucumber、SpecFlow 或 FitNesse 来促进这个过程。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#B392F0">Feature</span><span style="color:#E1E4E8">: User login</span></span>
+<span class="line"><span style="color:#B392F0">  Scenario</span><span style="color:#E1E4E8">: Valid user login</span></span>
+<span class="line"><span style="color:#E1E4E8">    Given the user has a valid account</span></span>
+<span class="line"><span style="color:#E1E4E8">    When the user enters correct credentials</span></span>
+<span class="line"><span style="color:#E1E4E8">    Then access is granted</span></span></code></pre>
+<p>在 ATDD 中的自动化不仅仅是测试，它是关于通过在整个开发生命周期中持续验证软件与业务需求的一致性，<strong>构建正确的产品</strong>。</p>
+<h4 id="如何在敏捷开发环境中实施-atdd">如何在敏捷开发环境中实施 ATDD？</h4>
+<p>在敏捷环境中实施 ATDD 涉及开发人员、测试人员和业务利益相关者之间的协作，以在开发开始之前定义验收标准。使用<strong>用户故事</strong>来捕获需求，并定义反映利益相关者期望行为的<strong>验收测试</strong>。</p>
+<p>开始时，进行一个<strong>规划会议</strong>，讨论用户故事并创建验收测试。这确保了对功能及其期望结果的共享理解。使用像 Cucumber 或 SpecFlow 这样的<strong>行为驱动开发 (<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/B/bdd.md">BDD</a>) 工具</strong>编写验收测试，以一种对所有相关方都可理解的语言。</p>
+<p>在<strong>开发</strong>过程中，程序员和测试人员协同工作，测试人员专注于自动化验收测试。这些测试被集成到<strong>持续集成 (CI) 流水线</strong>中，确保它们经常运行。</p>
+<p>在开发后，执行验收测试。如果它们通过，说明功能符合约定的标准。如果没有，开发人员进行必要的更改。这个循环持续进行，直到功能通过所有验收测试。</p>
+<p>通过定期与团队以及利益相关者一起审查测试及其结果，引入<strong>反馈循环</strong>。这确保了验收标准与业务目标保持一致，并及时解决任何误解。</p>
+<p>记得要对代码和测试进行<strong>重构</strong>，以保持简单和可读性。这种做法有助于保持自动化套件的可维护性和可扩展性。</p>
+<p>最后，确保团队是<strong>跨职能</strong>的，团队成员能够为开发和测试做出贡献。这种方法培养了一个质量和对最终产品的共同责任的文化。</p>
+<h3 id="挑战与解决方案">挑战与解决方案</h3>
+<h4 id="atdd-会遇到哪些常见挑战">ATDD 会遇到哪些常见挑战？</h4>
+<p>ATDD 中常见的挑战包括：</p>
+<ul>
+<li><strong>协作困难</strong>：确保开发人员、测试人员和业务利益相关者之间的有效沟通可能是具有挑战性的。误解可能导致不正确的测试标准。</li>
+<li><strong>编写清晰的验收标准</strong>：制定明确、可测试的验收标准需要技巧和经验。编写不好的标准可能导致测试无效。</li>
+<li><strong>维护<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a></strong>：随着应用程序的演变，保持验收测试的最新状态可能会耗费时间。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理</strong>：生成和管理验收测试所需的数据可能会很复杂，尤其是在处理多个环境时。</li>
+<li><strong>在覆盖率和速度之间取得平衡</strong>：在保持测试套件对持续集成足够快的同时，实现足够的测试覆盖率可能很困难。</li>
+<li><strong><a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/F/flaky-test.md">不稳定的测试</a></strong>：间歇性地通过和失败的测试可能会损害对测试套件的信心，并在调查中浪费时间。</li>
+<li><strong>与现有流程的整合</strong>：将 ATDD 引入到已建立的工作流中可能会遇到阻力，需要谨慎的变更管理。</li>
+<li><strong>工具兼容性</strong>：确保所选工具与技术栈良好集成并支持 ATDD 方法可能是一项挑战。</li>
+<li><strong>技能集</strong>：团队成员可能需要培训，以有效参与 ATDD，包括编写验收测试和自动化测试。</li>
+</ul>
+<p>克服这些挑战通常涉及改进沟通、投资培训、完善流程，并选择与团队需求和技术栈相符的适当工具。</p>
+<h4 id="如何克服这些挑战">如何克服这些挑战？</h4>
+<p>在 ATDD 中克服挑战需要战略性的方法：</p>
+<ul>
+<li><strong>协作</strong>：培养开发人员、测试人员和业务利益相关者之间协作的文化，以确保对需求有共同的理解。</li>
+<li><strong>持续学习</strong>：鼓励团队成员不断学习和适应新的工具和技术，以保持与 ATDD 最佳实践的同步。</li>
+<li><strong>渐进改进</strong>：从小处着手，逐步改进 ATDD 流程，而不是试图进行大规模改革。</li>
+<li><strong>熟练掌握工具</strong>：投入时间掌握 ATDD 工具，充分利用它们的潜力，并将其无缝集成到开发工作流中。</li>
+<li><strong>反馈循环</strong>：实施短反馈循环，快速发现和解决问题，提高验收测试的质量。</li>
+<li><strong>重构</strong>：定期重构测试，保持清晰度，减少维护成本。</li>
+<li><strong>模块化设计</strong>：设计测试为模块化和可重用的，以最小化重复并简化更新。</li>
+<li><strong>清晰文档</strong>：保持测试的清晰文档，以确保它们可被所有团队成员理解和维护。</li>
+<li><strong>资源分配</strong>：分配足够的资源，包括时间和人员，以保持可持续的步伐，避免过度劳累。</li>
+<li><strong>度量指标</strong>：使用指标跟踪进展并识别改进的领域，但要避免激励错误行为的指标。</li>
+<li><strong>风险管理</strong>：基于风险和业务价值对测试进行优先排序，确保对关键功能进行全面测试。</li>
+</ul>
+<p>通过解决这些方面，团队可以增强他们的 ATDD 实践并克服常见挑战。</p>
+<h4 id="实施-atdd-有哪些最佳实践">实施 ATDD 有哪些最佳实践？</h4>
+<p>实施 ATDD 的最佳实践包括：</p>
+<ul>
+<li><strong>与产品所有者、开发人员和测试人员协作</strong>，在编码开始之前定义验收标准。使用<strong>用户故事</strong>促进这些讨论。</li>
+<li>编写<strong>清晰简洁</strong>的验收测试，反映用户的视角，且能够被所有利益相关者理解。</li>
+<li><strong>尽早自动化</strong>验收测试并频繁执行，以确保持续反馈。使用像 Gherkin 这样的<strong>通用语言</strong>编写测试，可以使用 Cucumber 等工具进行自动化。</li>
+<li>维护验收标准和测试结果的<strong>单一真相来源</strong>，确保所有团队成员都能透明且轻松地访问。</li>
+<li>定期<strong>重构</strong>测试，使其能够在应用程序演进时保持可维护性和相关性。</li>
+<li>将 ATDD 集成到您的**持续集成/持续交付（CI/CD）**流水线中，以确保每次构建都自动运行测试。</li>
+<li>使用**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理**策略，确保测试具有所需数据且处于正确的状态。</li>
+<li>根据风险和业务价值<strong>优先考虑</strong>测试，首先关注最关键的功能。</li>
+<li>培养一个<strong>质量文化</strong>，使每个人都对产品的质量负责，而不仅仅是测试团队。</li>
+<li>定期<strong>审查和调整</strong>您的 ATDD 流程，以解决任何问题并提高效率。</li>
+</ul>
+<p>通过遵循这些实践，您可以增强协作，确保需求的清晰度，并在整个开发生命周期中保持高水平的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/S/software-quality.md">软件质量</a>。</p>
+<h4 id="如何为大型项目扩展-atdd">如何为大型项目扩展 ATDD？</h4>
+<p>在大型项目中扩展 ATDD 需要战略规划和高效的工具。首先，通过<strong>构建验收测试</strong>来反映项目的模块化架构。这使得可以在不同团队之间并行进行开发和测试。利用<strong>版本控制</strong>管理测试工件，并确保在团队之间同步。</p>
+<p>利用**<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-data.md">测试数据</a>管理**提供一致且隔离的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-environment.md">测试环境</a>，避免共享数据时可能出现的冲突和依赖关系。实施 <strong>持续集成 CI</strong>以自动运行验收测试来验证新的代码提交，提供对集成状态的即时反馈。</p>
+<p>**分布式<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-execution.md">测试执行</a>**对于处理增加的测试负载至关重要。使用支持在多台机器或容器上并行运行测试的工具。这可以缩短反馈周期，确保更快的周转时间。</p>
+<p><strong>协作工具</strong>对于保持开发人员、测试人员和利益相关者之间的沟通至关重要。这些工具应该支持从需求到测试和代码库的追踪，确保所有相关方对验收标准达成一致。</p>
+<p><strong>度量和报告</strong>应该定制以提供有关规模进展和质量的见解。自动仪表板可以跟踪<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a>、通过/失败率以及随时间变化的趋势，有助于早期识别潜在问题。</p>
+<p>最后，<strong>模块化和重用</strong>测试组件是可能的。共享测试步骤或领域特定语言（DSL）定义的库可以减少重复和维护开销。</p>
+<p>通过专注于这些策略，ATDD 可以有效地扩展以适应大型项目的复杂性。</p>
+<h4 id="如何衡量-atdd-的有效性">如何衡量 ATDD 的有效性？</h4>
+<p>可以通过几个关键指标来衡量 ATDD 的效果：</p>
+<ul>
+<li><strong>缺陷率的降低</strong>：跟踪发布后发现的缺陷数量。较低的数字表明 ATDD 有助于更早地发现和解决问题。</li>
+<li><strong>改进的<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-coverage.md">测试覆盖率</a></strong>：使用覆盖工具确保验收测试覆盖了代码库和用户故事的重要部分。</li>
+<li><strong>周期时间</strong>：监控从功能构思到交付所需的时间。ATDD 应有助于简化流程，缩短周期时间。</li>
+<li><strong>反馈循环持续时间</strong>：衡量从利益相关者那里获得反馈所需的时间。ATDD 的目标是缩短此循环时间，以便更快地进行调整。</li>
+<li><strong>团队协作</strong>：评估开发人员、测试人员和业务利益相关者之间的协作水平。有效的 ATDD 实践应该增强沟通和理解。</li>
+<li><strong>回归<a href="https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-suite.md">测试套件</a>执行时间</strong>：跟踪运行回归套件所需的时间。ATDD 应该导致更有效和有针对性的测试，从而减少执行时间。</li>
+<li><strong>验收测试的通过/失败率</strong>：记录首次运行验收测试的通过率。较高的通过率表示团队对需求有很好的理解。</li>
+<li><strong>客户满意度</strong>：向利益相关者和最终用户进行调查，了解他们对已交付功能的满意程度。更高的满意度水平可能表示成功实施了 ATDD。</li>
+</ul>
+<p>通过监控这些指标，团队可以评估并不断改进他们的 ATDD 实践。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>软件测试术语 Github 仓库 <a href="https://github.com/naodeng/QA-Glossary-Wiki">https://github.com/naodeng/QA-Glossary-Wiki</a></li>
+<li>QA Glossary Wiki <a href="https://ray.run/wiki">https://ray.run/wiki</a></li>
+</ul>
+<hr/>
+<p>欢迎关注软件测试同学的公众号“<strong>软件测试同学</strong>”，原创 QA 技术文章第一时间推送。</p>
+
+
+<div style="text-align: center"><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;"/></div>
+
+  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>赞助</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script type="module">const o=document.getElementById("search-dialog"),l=document.getElementById("search-input"),s=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),a=document.querySelector("[data-hint]");let r=[],i="en";function y(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function E(){if(r.length>0)return r;i=y();const e=await fetch(`/${i}/search-index.json`);return e.ok?(r=await e.json(),r):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function g(e,t){s.innerHTML="",s.hidden=e.length===0,u.hidden=e.length>0||!t,e.slice(0,20).forEach(n=>{const c=document.createElement("a");c.href=n.url,c.className="search-result-item",c.setAttribute("role","listitem");const m=new Date(n.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});c.innerHTML=`
+        <span class="search-result-title">${f(n.title)}</span>
+        <span class="search-result-meta">${f(m)}${n.tags?.length?" · "+n.tags.slice(0,3).join(", "):""}</span>
+      `,c.addEventListener("click",()=>o.close()),s.appendChild(c)})}function L(e){const t=e.trim().toLowerCase();return t?r.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(c=>c.toLowerCase().includes(t))):[]}function v(){const e=l.value;if(!r.length){s.hidden=!0,u.hidden=!0;return}const t=e.trim().length>0,n=L(e);g(n,t)}function h(){E().then(()=>{o.showModal(),l.value="",l.focus(),s.hidden=!0,u.hidden=!0,a&&(a.style.display="block")})}function d(){o.close(),a&&(a.style.display="")}o.addEventListener("close",()=>{a&&(a.style.display="")});o.addEventListener("cancel",d);p?.addEventListener("click",d);l.addEventListener("input",v);l.addEventListener("keydown",e=>{if(e.key==="Escape"&&(d(),e.preventDefault()),e.key==="Enter"){const t=s.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),o.open?d():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  

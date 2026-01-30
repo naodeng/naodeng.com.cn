@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="en-US" data-locale="en"> <head><meta charset="UTF-8"><title>Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 - Nao&#39;s Blog</title><meta name="description" content="naodeng, inaodeng.com, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta property="og:type" content="website"><meta property="og:title" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 - Nao's Blog"><meta property="og:site_name" content="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1 - Nao's Blog"><meta property="og:description" content="naodeng, inaodeng.com, personal blog, software testing, performance testing, API testing, automation testing, agile testing."><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:url" content="https://inaodeng.com/en/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/"><meta property="og:locale" content="en-US"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@inaodeng"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><script defer src="https://analytics.umami.is/script.js" data-website-id="bebc2c5d-6830-44a0-9116-6cf1ab9354fc" data-host-url="https://analytics.naodeng.com.cn/hugo"></script><style>article[data-astro-cid-uwv4mmhs]{>*{margin-block:1.2em 0;margin-inline:0}p{font-weight:400}h2{margin-block:3em 0;padding-block-end:.2em;border-inline-start:4px solid var(--color-accent);padding-inline-start:var(--sp-s);line-height:1.4;font-size:1.6rem}h3{margin-block:2em 0;padding-block-end:.2em;line-height:1.4;font-size:1.4rem;border-block-end:1px solid color-mix(in srgb,var(--color-main) 10%,transparent)}h4{margin-block:2em -.4em;line-height:1.4;font-size:1.1rem}ul{list-style:disc;padding-inline-start:1.5em}ol{list-style:decimal;padding-inline-start:1.5em}li{margin-block:0 .5em;line-height:1.4}:not(pre) code{font-family:Consolas,Courier New,Courier,Monaco,monospace;color:var(--color-theme);background-color:color-mix(in srgb,var(--color-main) 8%,transparent);padding-block:.2em;padding-inline:.4em;border-radius:2px;font-size:.9rem}blockquote{font-style:italic;color:color-mix(in srgb,var(--color-main) 80%,transparent);background:color-mix(in srgb,var(--color-main) 5%,transparent);padding:1em;border-inline-start:2px solid color-mix(in srgb,var(--color-main) 10%,transparent)}a{text-decoration:underline;color:var(--color-theme);font-weight:500}img{border-radius:4px;background-color:color-mix(in srgb,var(--color-main) 10%,transparent)}pre{direction:ltr;padding:1em;border-radius:4px;border:2px solid color-mix(in srgb,var(--color-main) 20%,transparent)}}header[data-astro-cid-v3cnrnum]{text-align:center;border-block-end:1px solid var(--color-theme);padding-block-end:var(--sp-m);display:flex;flex-direction:column;align-items:center;gap:.5rem}header[data-astro-cid-v3cnrnum] h1[data-astro-cid-v3cnrnum]{color:var(--color-theme);font-size:1.8rem;margin:0}.cover[data-astro-cid-v3cnrnum]{border-radius:16px;margin:0}.tags[data-astro-cid-v3cnrnum]{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-block-start:.5rem}.tag[data-astro-cid-v3cnrnum]{background-color:var(--color-theme);color:#fff;padding:.2rem .5rem;border-radius:4px;font-size:.8rem}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.Cn4Qv-Gv.css"></head> <body> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>Nao&#39;s Blog</span> </a> </h1> <div class="header-actions" data-astro-cid-3ef6ksr2> <label data-astro-cid-opxux4jt> <span class="material-icons-sharp" data-astro-cid-opxux4jt>translate</span> <select data-languageSelect data-astro-cid-opxux4jt> <option label="English" value="/en/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/" data-lang="en" selected data-astro-cid-opxux4jt></option><option label="简体中文" value="/zh-cn/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/" data-lang="zh-cn" data-astro-cid-opxux4jt></option> </select> <span class="material-icons-sharp" data-astro-cid-opxux4jt>expand_more</span> </label> <script>
+  const selects = document.querySelectorAll("[data-languageSelect]");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
+      location.href = event.target?.value;
+    });
+  });
+</script>  <button type="button" class="search-bar-trigger" aria-label="Search" title="⌘K or Ctrl+K to open search" data-search-open data-astro-cid-3ef6ksr2> <span class="search-bar-icon material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="search-bar-placeholder" data-astro-cid-3ef6ksr2>Search posts…</span> <span class="search-bar-kbd" data-astro-cid-3ef6ksr2><span class="search-bar-kbd-inner" data-astro-cid-3ef6ksr2>⌘ K</span></span> </button> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/sponsor/" data-astro-cid-3ef6ksr2> Sponsor </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://github.com/naodeng/inaodeng.com" target="_blank" data-astro-cid-3ef6ksr2>
+GitHub
+<span class="material-icons-sharp dir" data-astro-cid-3ef6ksr2>open_in_new</span> </a> </li> </ul> </nav> </header>  <main class="l-main l-content">  <article data-astro-cid-uwv4mmhs> <img src="/_astro/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1-cover.CEva7ckI_eAWC2.webp" alt="Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1" data-astro-cid-v3cnrnum="true" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="cover"><header data-astro-cid-v3cnrnum> <h1 data-astro-cid-v3cnrnum>Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1</h1> <time datetime="2023-11-21T09:37:00.000Z" data-astro-cid-v3cnrnum> 11/21/2023 </time> <div class="tags" data-astro-cid-v3cnrnum> <span class="tag" data-astro-cid-v3cnrnum>Postman</span><span class="tag" data-astro-cid-v3cnrnum>API Testing</span> </div> </header> <h2 id="introduction">Introduction</h2>
+<h3 id="introduction-to-api-testing">Introduction to API Testing</h3>
+<h4 id="what-is-api">What is API?</h4>
+<p>API, which stands for Application Programming Interface, is a computing interface that defines the interactions between multiple software intermediaries. It specifies the types of calls or requests that can be made, how they are made, the data format to be used, and the conventions to be followed. APIs can also provide extension mechanisms, allowing users to extend existing functionalities in various ways. An API can be custom-made for a specific component or designed based on industry standards to ensure interoperability. By hiding information, APIs enable modular programming, allowing users to work independently using interfaces.</p>
+<h4 id="what-is-api-testing">What is API Testing?</h4>
+<p>API testing is a type of <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> that includes two types: specifically testing the functionality of <a href="https://en.wikipedia.org/wiki/Application_programming_interface">Application Programming Interfaces</a> (referred to as API) and, more broadly, testing the overall functionality, reliability, security, and performance in <a href="https://en.wikipedia.org/wiki/Integration_testing">integration testing</a> by invoking APIs.</p>
+<p>API Best Practice:</p>
+<ul>
+<li>API definition follows the RESTful API style, with semantic URI definitions, accurate HTTP status codes, and the ability to understand the relationships between resources through API definitions.</li>
+<li>Detailed and accurate API documentation (such as Swagger documentation).</li>
+<li>External APIs may include version numbers for quick iteration (e.g., <a href="https://thoughtworks.com/v1/users/">https://thoughtworks.com/v1/users/</a>).</li>
+</ul>
+<p>Testing in different quadrants of the testing pyramid has different purposes and strategies. API testing mainly resides in the second and fourth quadrants.</p>
+<p>API testing holds a relatively high position in the testing pyramid, focusing on testing functionality and business logic at the boundaries of systems and services. It is executed after the service is built and deployed in the testing environment for validation.</p>
+<h4 id="types-of-api-testing">Types of API Testing</h4>
+<p>Functional Testing</p>
+<ul>
+<li>Correctness Testing</li>
+<li>Exception Handling</li>
+<li>Internal Logic</li>
+<li>…</li>
+</ul>
+<p>Non-functional Testing</p>
+<ul>
+<li>Performance</li>
+<li>Security</li>
+<li>…</li>
+</ul>
+<h4 id="steps-in-api-testing">Steps in API Testing</h4>
+<ul>
+<li>Send Request</li>
+<li>Get Response</li>
+<li>Verify Response Result</li>
+</ul>
+<h3 id="introduction-to-postman-and-newman">Introduction to Postman and Newman</h3>
+<p>Postman is a popular API development tool that provides an easy-to-use graphical interface for creating, testing, and debugging APIs. Postman also features the ability to easily write and share test scripts. It supports various HTTP request methods, including GET, POST, PUT, DELETE, etc., and can use various authentication and authorization methods for API testing.</p>
+<p>Newman is the command-line tool for Postman, used to run test suites without using the Postman GUI. With Newman, users can easily export Postman collections as an executable file and run them in any environment. Additionally, Newman supports generating test reports in HTML or Junit format and integrating into CI/CD pipelines for automated testing.</p>
+<p>In summary, Postman is a powerful API development and testing tool, while Newman is a convenient command-line tool for running test suites without using the Postman GUI. Their combination enhances the efficiency and accuracy of API testing and development.</p>
+<p>In addition to basic functionalities, Postman has the following features:</p>
+<ol>
+<li>Environment and Variable Management: Postman supports switching between different environments, such as development, testing, and production, and variable management, making it easy to set variables for different test cases and requests.</li>
+<li>Automated Testing: Users can create and run automated tests using Postman, integrating them into continuous integration or deployment processes for more accurate and efficient testing.</li>
+<li>Collaboration and Sharing: Postman supports sharing collections and environments with teams, facilitating collaboration among team members.</li>
+<li>Monitoring: Postman provides API monitoring, allowing real-time monitoring of API availability and performance.</li>
+</ol>
+<p>Meanwhile, Newman has the following characteristics:</p>
+<ol>
+<li>Command-Line Interface: Newman can run in the command line, making it convenient for automated testing and integration into CI/CD processes.</li>
+<li>Support for Multiple Output Formats: Newman supports multiple output formats, including HTML, JSON, and JUnit formats, making it easy to use in different scenarios.</li>
+<li>Concurrent Execution: Newman supports concurrent test execution, improving testing efficiency.</li>
+<li>Lightweight: Compared to the Postman GUI, Newman is a lightweight tool, requiring fewer resources during test execution.</li>
+</ol>
+<p>In conclusion, Postman and Newman are essential tools for modern API testing, offering powerful features for efficient, accurate, and automated API testing and development.</p>
+<p>In addition to the mentioned features and characteristics, Postman and Newman have other important functionalities and advantages:</p>
+<ol>
+<li>Integration: Postman and Newman can integrate with many other tools and services, such as GitHub, Jenkins, Slack, etc., making it easy to integrate into development and deployment processes for more efficient API development and testing.</li>
+<li>Documentation Generation: Postman can generate API documentation using requests and responses, ensuring accurate and timely documentation.</li>
+<li>Test Scripts: Postman can use JavaScript to write test scripts, providing flexibility and customization in testing. Users can easily write custom test scripts to ensure the expected behavior of the API.</li>
+<li>History: Postman can store the history of API requests, making it convenient for users to view and manage previous requests and responses. This is useful for debugging and issue troubleshooting.</li>
+<li>Multi-Platform Support: Postman and Newman can run on multiple platforms, including Windows, MacOS, and Linux.</li>
+</ol>
+<p>In summary, Postman and Newman are powerful tools for modern API testing and development, offering rich features and flexible test scripts to help developers and testers build and test APIs faster and more accurately.</p>
+<h2 id="project-dependencies">Project Dependencies</h2>
+<blockquote>
+<p>The following environments need to be installed in advance</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Node.js, with the demo version being v21.1.0</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Postman installed, you can download the installation package from the official website and complete the installation</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>The following is the file structure of an API automation testing project for Postman and Newman, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="Text"><code><span class="line"><span>Postman-Newman-demo</span></span>
+<span class="line"><span>├── README.md</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>├── package-lock.json</span></span>
+<span class="line"><span>├── Data // Test data folder</span></span>
+<span class="line"><span>│   └── testdata.csv // Test data file</span></span>
+<span class="line"><span>├── Testcase // Test case folder</span></span>
+<span class="line"><span>│   └── APITestDemo.postman_collection.json // Test case file</span></span>
+<span class="line"><span>├── Env // Test environment folder  </span></span>
+<span class="line"><span>│   └── DemoEnv.postman_environment.json // Test environment file</span></span>
+<span class="line"><span>├── Report // Test report folder</span></span>
+<span class="line"><span>│   └── report.html</span></span>
+<span class="line"><span>├── .gitignore</span></span>
+<span class="line"><span>└── node_modules // Project dependencies</span></span>
+<span class="line"><span>    └── ...</span></span></code></pre>
+<h2 id="building-a-postman-api-automation-test-project-from-0-to-1">Building a Postman API Automation Test Project from 0 to 1</h2>
+<p>Below, we will introduce how to build a Postman and Newman API automation test project from scratch, including test configuration, test cases, test environment, testing tools, and test reports.</p>
+<p>You can refer to the demo project: <a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">Postman-Newman-demo</a></p>
+<h3 id="create-a-new-project-folder">Create a New Project Folder</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Postman-Newman-demo</span></span></code></pre>
+<h3 id="project-initialization">Project initialization</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> enter</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> project</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> Postman-Newman-demo</span></span>
+<span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> nodejs</span><span style="color:#9ECBFF"> project</span><span style="color:#9ECBFF"> initialization</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h3 id="install-dependencies">Install dependencies</h3>
+<blockquote>
+<p>Currently, the latest version of newman has some package compatibility issues reported by the html test, so we’re using version 5.1.2 here.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Install</span><span style="color:#9ECBFF"> newman</span><span style="color:#9ECBFF"> library</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> newman@5.1.2--save-dev</span></span></code></pre>
+<h3 id="writing-api-test-cases-in-postman">Writing API Test Cases in Postman</h3>
+<h4 id="creating-a-collection-and-request-in-postman">Creating a Collection and Request in Postman</h4>
+<ol>
+<li>Open Postman, click the New button in the top left corner, select Collection, enter the name of the collection, click the Create Collection button to create a collection named “demo.”</li>
+<li>In the collection, click the three dots in the top right corner, select Add Request, enter the name of the request, and click the Save button to create a request named “get-demo.” Add another request named “post-demo.”</li>
+</ol>
+<h4 id="editing-request-and-writing-test-cases">Editing Request and Writing Test Cases</h4>
+<p>Refer to the interface documentation in the demoAPI.md file in the project folder to obtain information such as the URL, request method, request headers, and request body used by the “demo” requests.</p>
+<h5 id="get-demo">get-demo</h5>
+<ul>
+<li>In the “get-demo” request, select the GET request method and enter the URL as <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>.</li>
+<li>In the Headers section, add a header with Key as “Content-Type” and Value as “application/json.”</li>
+<li>Under Tests, add the following script to verify the response result:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="JavaScript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 200&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;provident&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>Click the Send button to send the request and verify the response result.</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png" alt="2023112117P6poCX"/></p>
+<p>Confirm that the response result is correct, click the Save button to save the request.</p>
+<h5 id="post-demo">post-demo</h5>
+<ul>
+<li>In the Request of the post-demo, select the POST request method and enter the URL as <a href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a>.</li>
+<li>In Headers, add a request header with Key as Content-Type and Value as application/json.</li>
+<li>In Body, select raw, select JSON format, and enter the following request body:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="JSON"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;title&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;foo&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;body&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;bar&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;userId&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Under Tests, add the following script to verify the response result:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="JavaScript"><code><span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.status should be 201&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.response.to.have.</span><span style="color:#B392F0">status</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">201</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">pm.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res.body should be correct&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pm.response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.id).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">101</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  pm.</span><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(data.title).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;foo&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png" alt="2023112117x34eSN"/></p>
+<p>Confirm that the response result is correct, click the Save button to save the request.</p>
+<h3 id="configuring-test-environment-in-postman">Configuring Test Environment in Postman</h3>
+<p>The following steps involve using the host of the API requests as environment variables for demonstration purposes.</p>
+<h4 id="adding-environment-variables">Adding Environment Variables</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select Manage Environments, click the Add button, enter the environment name as “DemoEnv,” and click the Add button to create an environment named “DemoEnv.”</li>
+<li>Edit the environment variables, add a key named “host” with a value of <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>.</li>
+<li>Click the Add button to save the environment variables.</li>
+</ul>
+<h4 id="updating-requests">Updating Requests</h4>
+<ul>
+<li>In the “get-demo” request, update the URL to {{host}}/posts/1.</li>
+<li>In the “post-demo” request, update the URL to {{host}}/posts.</li>
+</ul>
+<h4 id="verifying-environment-variables">Verifying Environment Variables</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select DemoEnv to switch to the “DemoEnv” environment.</li>
+<li>Select the “get-demo” request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request.</li>
+<li>Select the “post-demo” request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request.</li>
+</ul>
+<h4 id="exporting-environment-variables-and-test-case-files">Exporting Environment Variables and Test Case Files</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select Export, choose DemoEnv, and click the Export button to export the environment variables.</li>
+<li>Select the demo Collection containing the “get-demo” and “post-demo” requests, click the three dots in the top right corner, select Export, choose Collection v2.1, and click the Export button to export the test case file.</li>
+</ul>
+<h3 id="adjusting-project-file-structure">Adjusting Project File Structure</h3>
+<h4 id="creating-env-and-testcase-folders">Creating Env and Testcase Folders</h4>
+<ul>
+<li>In the project folder, create a folder named Env to store environment variable files.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> Env</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Env</span></span></code></pre>
+<ul>
+<li>In the project folder, create a folder named Testcase to store test case files.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">//</span><span style="color:#9ECBFF"> Create</span><span style="color:#9ECBFF"> Testcase</span><span style="color:#9ECBFF"> folder</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> Testcase</span></span></code></pre>
+<p>Organizing Case and Environment Files</p>
+<p>Place the exported environment variable files and test case files into the Env and Testcase folders within the project folder.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png" alt="2023112117ePiBiv"/></p>
+<h4 id="adjusting-the-packagejson-file">Adjusting the package.json file</h4>
+<ul>
+<li>In the package.json file, add the following script to run the test cases:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="JSON"><code><span class="line"><span style="color:#9ECBFF">&quot;scripts&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;test&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="running-test-cases">Running Test Cases</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png" alt="2023112117lt8FW9"/></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://learning.postman.com/docs/getting-started/introduction/">Postman docs</a></li>
+<li><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">newman docs</a></li>
+</ul>  </article>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/zh-cn/blog/api-automation-testing/postman-tutorial-getting-started-and-building-your-own-project-from-0-to-1/" class="social-icon lang-toggle" title="切换至中文" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>ZH</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/en/about/" data-astro-cid-sz7xmlte>About</a> <a href="/en/archive/" data-astro-cid-sz7xmlte>Archive</a> <a href="/en/projects/" data-astro-cid-sz7xmlte>Projects</a> <a href="/en/sponsor/" data-astro-cid-sz7xmlte>Sponsor</a> <a href="/en/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>RSS Feed</a> <a href="/en/sitemap/" data-astro-cid-sz7xmlte>Sitemap</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 Nao&#39;s Blog </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="license" data-astro-cid-sz7xmlte>Licensed under CC BY-NC-SA 4.0</span> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>Built with Astro &amp; Cloudflare &amp; Github &amp; AI</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="Search posts…" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>Search posts…</label> <input id="search-input" type="search" class="search-input" placeholder="Search posts…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K or Ctrl+K to open search</span> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>No results.</p> </dialog> <script type="module">const o=document.getElementById("search-dialog"),l=document.getElementById("search-input"),s=document.getElementById("search-results"),u=document.getElementById("search-empty"),p=document.querySelector(".search-backdrop[data-close]"),a=document.querySelector("[data-hint]");let r=[],i="en";function y(){return document.documentElement.getAttribute("data-locale")==="zh-cn"?"zh-cn":"en"}async function E(){if(r.length>0)return r;i=y();const e=await fetch(`/${i}/search-index.json`);return e.ok?(r=await e.json(),r):[]}function f(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function g(e,t){s.innerHTML="",s.hidden=e.length===0,u.hidden=e.length>0||!t,e.slice(0,20).forEach(n=>{const c=document.createElement("a");c.href=n.url,c.className="search-result-item",c.setAttribute("role","listitem");const m=new Date(n.date).toLocaleDateString(i==="zh-cn"?"zh-CN":"en-US",{year:"numeric",month:"short",day:"numeric"});c.innerHTML=`
+        <span class="search-result-title">${f(n.title)}</span>
+        <span class="search-result-meta">${f(m)}${n.tags?.length?" · "+n.tags.slice(0,3).join(", "):""}</span>
+      `,c.addEventListener("click",()=>o.close()),s.appendChild(c)})}function L(e){const t=e.trim().toLowerCase();return t?r.filter(n=>n.title.toLowerCase().includes(t)||n.description.toLowerCase().includes(t)||n.tags&&n.tags.some(c=>c.toLowerCase().includes(t))):[]}function v(){const e=l.value;if(!r.length){s.hidden=!0,u.hidden=!0;return}const t=e.trim().length>0,n=L(e);g(n,t)}function h(){E().then(()=>{o.showModal(),l.value="",l.focus(),s.hidden=!0,u.hidden=!0,a&&(a.style.display="block")})}function d(){o.close(),a&&(a.style.display="")}o.addEventListener("close",()=>{a&&(a.style.display="")});o.addEventListener("cancel",d);p?.addEventListener("click",d);l.addEventListener("input",v);l.addEventListener("keydown",e=>{if(e.key==="Escape"&&(d(),e.preventDefault()),e.key==="Enter"){const t=s.querySelector(".search-result-item");t&&(t.click(),e.preventDefault())}});document.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),o.open?d():h())});document.querySelectorAll("[data-search-open]").forEach(e=>{e.addEventListener("click",h)});window.addEventListener("search-open",h);</script>   </body> </html>  
