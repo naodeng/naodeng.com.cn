@@ -10,10 +10,19 @@ I value feedback and contributions from my readers. If you notice any errors or 
 
 本项目为静态站点，使用 [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) 部署。
 
-### 前置条件
+### GitHub Actions 自动部署
 
-- [Cloudflare 账号](https://dash.cloudflare.com/sign-up)
-- 已安装依赖：`npm install`
+推送到 `main` 分支时会自动构建并部署到 Cloudflare Workers。
+
+**配置步骤：**
+
+1. 在 [Cloudflare 控制台](https://dash.cloudflare.com/) 创建 API Token：  
+   **My Profile** → **API Tokens** → **Create Token** → 使用 **Edit Cloudflare Workers** 模板，或自定义权限（Account: Workers Scripts Edit、Account: Workers KV Storage Edit 等按需勾选）。
+2. 在 GitHub 仓库 **Settings** → **Secrets and variables** → **Actions** 中新增 Secret：
+   - 名称：`CLOUDFLARE_API_TOKEN`
+   - 值：上一步复制的 API Token
+
+保存后，每次推送到 `main` 都会触发部署。
 
 ### 本地预览（Worker 环境）
 
@@ -22,7 +31,7 @@ npm run build
 npm run preview:worker
 ```
 
-### 部署
+### 本地手动部署
 
 1. 登录 Cloudflare：`npx wrangler login`
 2. 构建并部署：`npm run deploy`
