@@ -1,0 +1,115 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { NAV_SERIES } from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale);
+
+const seriesWithCount = allPosts
+  .flatMap((post) => post.data.series || [])
+  .reduce((acc, series) => {
+    acc[series] = (acc[series] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+const seriesList = Object.entries(seriesWithCount)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([name, count]) => ({ name, count }));
+
+const title = t(NAV_SERIES);
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+---
+
+<Layout {title}>
+  <PageHeadline {title}>
+    <p class="aggregate-meta">
+      {seriesList.length} {locale === "zh-cn" ? "个系列" : "series"}
+    </p>
+  </PageHeadline>
+
+  <div class="aggregate-container">
+    {seriesList.length > 0 ? (
+      <ul class="aggregate-list">
+        {seriesList.map(({ name, count }) => (
+          <li>
+            <a href={`/${locale}/series/${encodeURIComponent(name)}/`} class="aggregate-item">
+              <span class="aggregate-name">{name}</span>
+              <span class="aggregate-count">{count} {locale === "zh-cn" ? "篇" : "posts"}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="aggregate-empty">{locale === "zh-cn" ? "暂无系列" : "No series yet"}</p>
+    )}
+  </div>
+</Layout>
+
+<style>
+  .aggregate-meta {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-block-start: 0.5rem;
+    font-weight: 600;
+  }
+
+  .aggregate-container {
+    margin-block-start: var(--sp-l);
+    max-inline-size: 42rem;
+    margin-inline: auto;
+  }
+
+  .aggregate-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .aggregate-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-m) var(--sp-l);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+  }
+
+  .aggregate-item:hover {
+    border-color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    transform: translateX(4px);
+  }
+
+  .aggregate-name {
+    color: var(--color-main);
+  }
+
+  .aggregate-count {
+    font-size: 0.875rem;
+    color: var(--color-theme);
+    opacity: 0.9;
+  }
+
+  .aggregate-empty {
+    margin: 0;
+    padding: var(--sp-l);
+    text-align: center;
+    opacity: 0.7;
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { NAV_TAGS } from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.id.split("/")[0] === locale);
+
+const tagCounts = allPosts
+  .flatMap((post) => post.data.tags || [])
+  .reduce((acc, tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+const tagsList = Object.entries(tagCounts)
+  .sort(([, a], [, b]) => b - a)
+  .map(([tag, count]) => ({ tag, count }));
+
+const title = t(NAV_TAGS);
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+---
+
+<Layout {title}>
+  <PageHeadline {title}>
+    <p class="aggregate-meta">
+      {tagsList.length} {locale === "zh-cn" ? "个标签" : "tags"}
+    </p>
+  </PageHeadline>
+
+  <div class="aggregate-container">
+    {tagsList.length > 0 ? (
+      <div class="tags-cloud">
+        {tagsList.map(({ tag, count }) => (
+          <a href={`/${locale}/tags/${encodeURIComponent(tag)}/`} class="tag-pill">
+            <span class="tag-hash">#</span>{tag}
+            <span class="tag-count">{count}</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="aggregate-empty">{locale === "zh-cn" ? "暂无标签" : "No tags yet"}</p>
+    )}
+  </div>
+</Layout>
+
+<style>
+  .aggregate-meta {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-block-start: 0.5rem;
+    font-weight: 600;
+  }
+
+  .aggregate-container {
+    margin-block-start: var(--sp-l);
+    max-inline-size: 56rem;
+    margin-inline: auto;
+  }
+
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+  }
+
+  .tag-pill:hover {
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-color: var(--color-theme);
+    transform: translateY(-2px);
+  }
+
+  .tag-pill .tag-hash {
+    color: var(--color-theme);
+    font-weight: 700;
+  }
+
+  .tag-pill:hover .tag-hash {
+    color: inherit;
+  }
+
+  .tag-count {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    font-weight: 600;
+  }
+
+  .aggregate-empty {
+    margin: 0;
+    padding: var(--sp-l);
+    text-align: center;
+    opacity: 0.7;
+  }
+</style>

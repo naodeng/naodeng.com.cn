@@ -94,6 +94,16 @@ export const NAV_SPONSOR: Multilingual = {
   "zh-cn": "赞助",
 };
 
+// 系列 / 标签聚合页（Footer、博客标题区）
+export const NAV_SERIES: Multilingual = {
+  en: "Series",
+  "zh-cn": "系列",
+};
+export const NAV_TAGS: Multilingual = {
+  en: "Tags",
+  "zh-cn": "标签",
+};
+
 // 搜索
 export const NAV_SEARCH: Multilingual = {
   en: "Search",
@@ -198,6 +208,22 @@ export const HOME_VIEW_ALL: Multilingual = {
 export const HOME_VIEW_ALL_PROJECTS: Multilingual = {
   en: "View all projects",
   "zh-cn": "查看全部项目",
+};
+
+// 博客首页标题区介绍文案（约 200 字）
+export const BLOG_INTRO: Multilingual = {
+  en: "Articles on software testing, quality analysis, and test engineering: automation testing, API testing, performance testing, UI testing, and AI-assisted testing. Series like \"30 Days of AI in Testing Challenge\" and \"UI Testing Best Practices\" share hands-on experience and tooling. Written for testers and developers who care about quality.",
+  "zh-cn": "记录软件测试、质量分析与测试工程相关的实践与思考，涵盖自动化测试、接口测试、性能测试、UI 测试以及 AI 辅助测试等方向。本站包含「30 Days of AI in Testing Challenge」「UI 测试最佳实践」等系列，分享工具选型、测试策略与实战经验；文章以中英双语更新，主题涉及测试设计、自动化框架、持续集成与 AI 在测试中的应用，面向关心质量的测试与开发同学。欢迎通过系列与标签浏览专题内容。",
+};
+
+// 博客页：系列 / Top 标签
+export const BLOG_SERIES_TITLE: Multilingual = {
+  en: "Series",
+  "zh-cn": "系列",
+};
+export const BLOG_TOP_TAGS_TITLE: Multilingual = {
+  en: "Top 20 Tags",
+  "zh-cn": "热门标签 Top 20",
 };
 
 // 博客分页

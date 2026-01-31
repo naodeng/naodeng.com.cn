@@ -14,21 +14,30 @@ const { title } = Astro.props;
   header {
     position: relative;
     overflow: hidden;
-    padding-block: var(--sp-l);
-    padding-inline: var(--sp-s);
+    padding-block: var(--sp-l) calc(var(--sp-l) + var(--sp-s));
+    padding-inline: var(--sp-m);
     text-align: center;
-    border-radius: 16px;
+    border-radius: 20px;
     color: var(--color-theme);
-    background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
   }
   @media (width < 768px) {
     header {
       margin-inline: calc(50% - 50vw);
       border-radius: 0;
+      border-inline: none;
+      padding-inline: var(--sp-m);
     }
   }
   h1 {
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin: 0;
+    line-height: 1.25;
+  }
+  header :global(.headline-intro) {
+    padding-inline: var(--sp-s);
   }
 </style>

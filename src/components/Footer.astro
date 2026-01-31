@@ -6,6 +6,8 @@ import {
   NAV_PROJECTS, 
   NAV_ARCHIVE, 
   NAV_SPONSOR,
+  NAV_SERIES,
+  NAV_TAGS,
   SITE_TITLE,
   SITE_SLOGAN
 } from "@/consts";
@@ -61,6 +63,8 @@ const t = {
       <a href={getRelativeLocaleUrl(locale, "/about")}>{typeof NAV_ABOUT === 'string' ? NAV_ABOUT : NAV_ABOUT[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/archive")}>{typeof NAV_ARCHIVE === 'string' ? NAV_ARCHIVE : NAV_ARCHIVE[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/projects")}>{typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/series")}>{typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/tags")}>{typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/rss.xml")} target="_blank">{t.rss}</a>
       <a href={getRelativeLocaleUrl(locale, "/sitemap")}>{t.sitemap}</a>
