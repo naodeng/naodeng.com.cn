@@ -104,6 +104,12 @@ export const NAV_TAGS: Multilingual = {
   "zh-cn": "标签",
 };
 
+/** 底部导航：状态页（跳转 status.inaodeng.com） */
+export const NAV_STATUS: Multilingual = {
+  en: "Status",
+  "zh-cn": "状态",
+};
+
 // 搜索
 export const NAV_SEARCH: Multilingual = {
   en: "Search",

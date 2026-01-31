@@ -8,6 +8,7 @@ import {
   NAV_SPONSOR,
   NAV_SERIES,
   NAV_TAGS,
+  NAV_STATUS,
   SITE_TITLE,
   SITE_SLOGAN
 } from "@/consts";
@@ -66,6 +67,7 @@ const t = {
       <a href={getRelativeLocaleUrl(locale, "/series")}>{typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/tags")}>{typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
+      <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer">{typeof NAV_STATUS === 'string' ? NAV_STATUS : NAV_STATUS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/rss.xml")} target="_blank">{t.rss}</a>
       <a href={getRelativeLocaleUrl(locale, "/sitemap")}>{t.sitemap}</a>
     </nav>
