@@ -13,6 +13,12 @@ export const SITE_DESCRIPTION: string | Multilingual = {
   "zh-cn": "naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。",
 };
 
+/** SEO 关键词（meta keywords） */
+export const SITE_KEYWORDS: Multilingual = {
+  en: "software testing, QA, quality analyst, automation testing, API testing, performance testing, agile testing, test automation, inaodeng, Nao Deng",
+  "zh-cn": "软件测试, 质量分析, 自动化测试, 接口测试, 性能测试, 敏捷测试, 测试自动化, inaodeng, naodeng",
+};
+
 /** 网站 slogan（用于站点头部等） */
 export const SITE_SLOGAN: Multilingual = {
   en: "Quality Analyst, Not Quality Assurance.",

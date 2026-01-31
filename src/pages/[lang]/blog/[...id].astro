@@ -16,12 +16,28 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const post = Astro.props;
+const siteOrigin = "https://inaodeng.com";
+const postPath = `/${lang}/blog/${Astro.params.id || ""}/`;
+const canonicalUrl = `${siteOrigin}${postPath}`;
 
 const { Content } = await render(post);
 const title = post.data.title;
+const description = post.data.description;
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: post.data.date.toISOString(),
+  url: canonicalUrl,
+  image: `${siteOrigin}/ogp.png`,
+  author: { "@type": "Person", name: post.data.author || "Nao Deng", url: siteOrigin },
+  publisher: { "@type": "Organization", name: "Nao's Blog", url: siteOrigin },
+};
 ---
 
-<Layout {title}>
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   {
     post.data.cover && (
       <Image src={post.data.cover} alt={post.data.title} class="cover" />

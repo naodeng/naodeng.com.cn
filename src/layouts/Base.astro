@@ -5,8 +5,9 @@ import Header from "@/components/Header.astro";
 import SearchModal from "@/components/SearchModal.astro";
 import LocaleHtmlHead from "@/components/i18n/LocaleHtmlHead.astro";
 import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "@/consts";
-import { useTranslations, LOCALES, getLocalePaths, type Lang } from "@/i18n";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, X_ACCOUNT } from "@/consts";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations, LOCALES, getLocalePaths, DEFAULT_LOCALE, type Lang } from "@/i18n";
 import "@/styles/global.css";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -14,14 +15,32 @@ const t = useTranslations(Astro.currentLocale as Lang);
 interface Props {
   title?: string;
   description?: string;
+  /** og:type，文章页传 "article"，默认 "website" */
+  type?: "website" | "article";
   frontmatter?: undefined;
 }
 
-const { title, description } = Astro.props.frontmatter || Astro.props;
+const { title, description, type: ogType = "website" } = Astro.props.frontmatter || Astro.props;
 
 const locale = Astro.currentLocale as Lang;
-const localeTitle = title ? `${title} - ${t(SITE_TITLE)}` : t(SITE_TITLE);
+const localeTitle = title ? `${title} | ${t(SITE_TITLE)}` : t(SITE_TITLE);
 const localeDescription = description || t(SITE_DESCRIPTION);
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const ogImageUrl = `${siteOrigin}/ogp.png`;
+const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
+const defaultLocaleUrl = siteOrigin + getRelativeLocaleUrl(DEFAULT_LOCALE, pathWithoutLang);
+
+const localePaths = getLocalePaths(Astro.url);
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: t(SITE_TITLE),
+  description: localeDescription,
+  url: siteOrigin,
+  inLanguage: [locale === "zh-cn" ? "zh-CN" : "en"],
+  publisher: { "@type": "Person", name: "Nao Deng", url: siteOrigin },
+};
 ---
 
 <html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null} data-locale={locale}>
@@ -29,33 +48,44 @@ const localeDescription = description || t(SITE_DESCRIPTION);
     <meta charset="UTF-8" />
     <title>{localeTitle}</title>
     <meta name="description" content={localeDescription} />
+    {SITE_KEYWORDS && (
+      <meta name="keywords" content={typeof SITE_KEYWORDS === "string" ? SITE_KEYWORDS : t(SITE_KEYWORDS)} />
+    )}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     {
-      getLocalePaths(Astro.url).map((props) => (
+      localePaths.map((props) => (
         <link
           rel="alternate"
           hreflang={LOCALES[props.lang].lang || props.lang}
-          href={Astro.site?.origin + props.path}
+          href={`${siteOrigin}${props.path}`}
         />
       ))
     }
+    <link rel="alternate" hreflang="x-default" href={defaultLocaleUrl} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="color-scheme" content="light dark" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={localeTitle} />
-    <meta property="og:site_name" content={localeTitle} />
+    <meta property="og:site_name" content={t(SITE_TITLE)} />
     <meta property="og:description" content={localeDescription} />
-    <meta property="og:image" content={Astro.site + "ogp.png"} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:locale" content={LOCALES[locale].lang || locale} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={t(SITE_TITLE)} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={locale === "zh-cn" ? "zh_CN" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "zh-cn" ? "en_US" : "zh_CN"} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={t(X_ACCOUNT)} />
+    <meta name="twitter:title" content={localeTitle} />
+    <meta name="twitter:description" content={localeDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={t(SITE_TITLE)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,6 +114,7 @@ const localeDescription = description || t(SITE_DESCRIPTION);
       onload={`this.media='all'`}
     />
 
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <LocaleHtmlHead />
     <Analytics />
   </head>

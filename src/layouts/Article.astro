@@ -10,7 +10,7 @@ interface Props {
 const { title, description } = Astro.props.frontmatter || Astro.props;
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} type="article">
   <article>
     <slot />
   </article>
