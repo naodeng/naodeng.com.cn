@@ -277,8 +277,12 @@ export const ABOUT_TECH_TITLE: Multilingual = {
   "zh-cn": "技术栈",
 };
 export const ABOUT_TECH_TESTING: Multilingual = {
-  en: "Testing Tools",
-  "zh-cn": "测试工具",
+  en: "Testing Tools (UI / E2E / API)",
+  "zh-cn": "测试工具（UI / E2E / API）",
+};
+export const ABOUT_TECH_API_PERF: Multilingual = {
+  en: "API & Performance",
+  "zh-cn": "API 与性能",
 };
 export const ABOUT_TECH_LANGUAGES: Multilingual = {
   en: "Languages",
