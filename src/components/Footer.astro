@@ -6,7 +6,8 @@ import {
   NAV_PROJECTS, 
   NAV_ARCHIVE, 
   NAV_SPONSOR,
-  SITE_TITLE
+  SITE_TITLE,
+  SITE_SLOGAN
 } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
@@ -67,6 +68,7 @@ const t = {
 
     <!-- 版权与许可区域 -->
     <div class="footer-info">
+      <p class="footer-slogan">{typeof SITE_SLOGAN === 'string' ? SITE_SLOGAN : SITE_SLOGAN[locale]}</p>
       <div class="copyright">
         <a class="copy-link" href="https://inaodeng.com/">
           © {new Date().getFullYear()} {typeof SITE_TITLE === 'string' ? SITE_TITLE : SITE_TITLE[locale]}
@@ -203,6 +205,14 @@ const t = {
     width: 100%;
     max-inline-size: 600px;
     text-align: center;
+  }
+
+  .footer-slogan {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.95;
+    letter-spacing: 0.02em;
   }
 
   .copyright {

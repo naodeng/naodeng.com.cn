@@ -1,66 +1,159 @@
 ---
 import { getLocalePaths, LOCALES } from "@/i18n";
+
+/** 语言代码 → 国旗 emoji（仅用于未展开时的菜单显示） */
+const LANG_FLAGS: Record<string, string> = {
+  en: "🇺🇸",
+  "zh-cn": "🇨🇳",
+};
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const localePaths = getLocalePaths(Astro.url);
+const currentLocale = Astro.currentLocale as string;
+const currentFlag = LANG_FLAGS[currentLocale] ?? LOCALES[currentLocale]?.label ?? currentLocale;
 ---
 
-<label>
-  <span class="material-icons-sharp">translate</span>
-  <select data-languageSelect>
-    {
-      getLocalePaths(Astro.url).map(({ path, lang }) => (
-        <option
-          label={LOCALES[lang].label}
-          value={path}
-          data-lang={lang}
-          selected={lang === Astro.currentLocale}
-          dir={LOCALES[lang].dir || null}
-        />
-      ))
-    }
-  </select>
-  <span class="material-icons-sharp">expand_more</span>
-</label>
+<div class:list={["locale-dropdown", { compact }]} data-locale-dropdown>
+  <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger>
+    <span class="material-icons-sharp icon-lang" aria-hidden="true">translate</span>
+    <span class="locale-flag">{currentFlag}</span>
+    {!compact && <span class="material-icons-sharp icon-expand" aria-hidden="true">expand_more</span>}
+  </button>
+  <div class="locale-panel" hidden data-locale-panel>
+    <ul>
+      {
+        localePaths.map(({ path, lang }) => (
+          <li>
+            <a href={path} data-lang={lang} data-locale-option>
+              {LOCALES[lang].label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
 
-<script is:inline>
-  const selects = document.querySelectorAll("[data-languageSelect]");
-  selects.forEach((select) => {
-    select.addEventListener("change", (event) => {
-      localStorage.selectedLang = event.target?.selectedOptions[0].dataset.lang;
-      location.href = event.target?.value;
+<script>
+  function initLocaleDropdown(root: HTMLElement) {
+    const trigger = root.querySelector("[data-locale-trigger]") as HTMLButtonElement;
+    const panel = root.querySelector("[data-locale-panel]") as HTMLElement;
+    if (!trigger || !panel) return;
+
+    const close = () => {
+      panel.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+    };
+    const open = () => {
+      panel.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+    };
+    const toggle = () => (panel.hidden ? open() : close());
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggle();
     });
-  });
+
+    root.querySelectorAll("[data-locale-option]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const lang = (link as HTMLElement).dataset.lang;
+        if (lang) localStorage.setItem("selectedLang", lang);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (panel.hidden) return;
+      if (!root.contains(e.target as Node)) close();
+    });
+  }
+
+  document.querySelectorAll("[data-locale-dropdown]").forEach((el) => initLocaleDropdown(el as HTMLElement));
 </script>
 
 <style>
-  label {
+  .locale-dropdown {
     position: relative;
     display: inline-block;
-    width: 240px;
-    text-align-last: left;
   }
-  label .material-icons-sharp {
-    pointer-events: none;
+  .locale-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 36px;
+    min-width: 56px;
+    padding-inline: 8px 6px;
+    font: inherit;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-main);
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+  }
+  .locale-trigger:hover,
+  .locale-trigger:focus-visible {
+    background-color: color-mix(in srgb, var(--color-theme) 5%, transparent);
+    border-color: color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+  .locale-trigger:focus-visible {
+    outline: none;
+  }
+  .locale-trigger .icon-lang {
+    font-size: 20px;
+    color: var(--color-theme);
+    opacity: 0.85;
+  }
+  .locale-trigger .icon-expand {
+    font-size: 22px;
+    color: var(--color-theme);
+    opacity: 0.7;
+  }
+  .locale-flag {
+    line-height: 1;
+  }
+  .locale-panel {
     position: absolute;
+    top: 100%;
+    left: 0;
+    margin-block-start: 4px;
+    min-width: 120px;
+    padding: 4px;
+    background: var(--color-base);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+  }
+  .locale-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .locale-panel a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-main);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.15s ease-out;
+  }
+  .locale-panel a:hover {
+    background-color: color-mix(in srgb, var(--color-theme) 8%, transparent);
     color: var(--color-theme);
   }
-  label .material-icons-sharp:first-child {
-    font-size: 24px;
-    inset: 8px auto 8px 8px;
-    opacity: 0.4;
+  .locale-dropdown.compact .locale-trigger {
+    min-width: 56px;
   }
-  label .material-icons-sharp:last-child {
-    font-size: 28px;
-    inset: 6px 6px 6px auto;
-  }
-  select {
-    width: 100%;
-    height: 40px;
-    padding-inline: 38px;
-    cursor: pointer;
-    appearance: none;
-    border-radius: 6px;
-    font-family: "Noto Sans";
-    color: var(--color-main);
-    background-color: var(--color-base);
-    border: 2px solid var(--color-theme);
+  .locale-dropdown:not(.compact) .locale-trigger {
+    min-width: 100px;
   }
 </style>

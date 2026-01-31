@@ -13,6 +13,12 @@ export const SITE_DESCRIPTION: string | Multilingual = {
   "zh-cn": "naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。",
 };
 
+/** 网站 slogan（用于站点头部等） */
+export const SITE_SLOGAN: Multilingual = {
+  en: "Quality Analyst, Not Quality Assurance.",
+  "zh-cn": "质量分析师，而非质量保证师。",
+};
+
 export const X_ACCOUNT: string | Multilingual = "@inaodeng";
 
 export const NOT_TRANSLATED_CAUTION: string | Multilingual = {
@@ -20,23 +26,37 @@ export const NOT_TRANSLATED_CAUTION: string | Multilingual = {
   "zh-cn": "此页面不支持您的语言。",
 };
 
+// 首页简介问候语（展示在 logo 下方）
+export const HOME_INTRO_GREETING: Multilingual = {
+  en: "I'm Nao Deng.",
+  "zh-cn": "我是 naodeng。",
+};
+
 // 首页简介（与 GitHub README 保持一致）
 export const HOME_INTRO: Multilingual = {
-  en: `Hi, I'm Nao Deng — **Quality Analyst, Not Quality Assurance.**
-- Currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) and [QA Wiki](https://github.com/naodeng/QAWiki)
-- Currently learning **Playwright** and **AI-assisted Testing**
+  en: `- Currently working on [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
+- Currently learning **AI-assisted Testing**
 - I regularly write articles on [inaodeng.com](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
 - Support me by [**becoming a sponsor**](https://inaodeng.com/sponsor)`,
-  "zh-cn": `你好，我是naodeng — **质量分析师，而非质量保证师。**
-- 当前工作在 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) 和 [QA Wiki](https://github.com/naodeng/QAWiki)
-- 正在学习 **Playwright** 和 **AI 辅助测试**
+  "zh-cn": `- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
+- 正在学习 **AI 辅助测试**
 - 定期在 [inaodeng.com](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
 - 赞助我 [**成为一个支持者**](https://inaodeng.com/sponsor)`,
 };
+
+// 首页作者标签（简介区域右侧）
+export const HOME_AUTHOR_TAGS: Multilingual[] = [
+  { en: "Testing", "zh-cn": "测试" },
+  { en: "Automation Testing", "zh-cn": "自动化测试" },
+  { en: "AI Testing", "zh-cn": "AI测试" },
+  { en: "Performance Testing", "zh-cn": "性能测试" },
+  { en: "Mobile Testing", "zh-cn": "移动端测试" },
+  { en: "Test Process Improvement", "zh-cn": "测试流程改进" },
+];
 
 // 顶部导航：首页
 export const NAV_HOME: Multilingual = {
@@ -203,18 +223,18 @@ export const ABOUT_ME_TITLE: Multilingual = {
   "zh-cn": "关于我",
 };
 export const ABOUT_ME_BODY: Multilingual = {
-  en: `Hi, I'm Nao Deng — **Quality Analyst, Not Quality Assurance.**
+  en: `Hi, I'm Nao Deng.
 
-- Currently working on [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) and [QA Wiki](https://github.com/naodeng/QAWiki)
-- Currently learning **Playwright** and **AI-assisted Testing**
+- Currently working on [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
+- Currently learning **AI-assisted Testing**
 - I regularly write articles on this site [Nao's Blog](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
 - Support me by [becoming a sponsor](https://inaodeng.com/sponsor)`,
-  "zh-cn": `你好，我是 naodeng — **质量分析师，而非质量保证师。**
+  "zh-cn": `你好，我是 naodeng。
 
-- 当前工作在 [Automation-Test-Starter](https://github.com/orgs/Automation-Test-Starter/repositories) 和 [QA Wiki](https://github.com/naodeng/QAWiki)
-- 正在学习 **Playwright** 和 **AI 辅助测试**
+- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
+- 正在学习 **AI 辅助测试**
 - 定期在本站 [软件测试同学](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
