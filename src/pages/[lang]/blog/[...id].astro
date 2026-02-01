@@ -24,7 +24,7 @@ const siteOrigin = "https://inaodeng.com";
 const postPath = `/${lang}/blog/${id ?? ""}/`;
 const canonicalUrl = `${siteOrigin}${postPath}`;
 
-const coverImage = post.data.cover ? getImage({ src: post.data.cover }) : null;
+const coverImage = post.data.cover ? await getImage({ src: post.data.cover }) : null;
 const ogImageUrl = coverImage ? `${siteOrigin}${coverImage.src}` : undefined;
 
 const { Content, headings = [] } = await render(post);
@@ -47,8 +47,9 @@ const blogPostingSchema = {
   publisher: { "@type": "Organization", name: "Nao's Blog", url: siteOrigin },
 };
 
+const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
 const breadcrumbs = [
-  { name: typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale], url: `/${lang}/` },
+  { name: homeName, url: `/${lang}/` },
   { name: locale === "zh-cn" ? "博客" : "Blog", url: `/${lang}/blog/` },
   { name: title, url: postPath },
 ];
@@ -64,7 +65,7 @@ const breadcrumbs = [
   articleAuthor={authorName}
   breadcrumbs={breadcrumbs}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} is:inline />
   <div class="article-with-toc">
     <TableOfContents headings={headings} label={tocLabel} placement="left" />
     <div class="article-body">

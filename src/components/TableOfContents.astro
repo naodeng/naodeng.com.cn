@@ -152,14 +152,13 @@ const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
   const GAP_ABOVE_FOOTER_PX = 8;
 
   function alignTocWithArticle() {
-    const toc = document.querySelector(".toc-sidebar--left");
+    const toc = document.querySelector(".toc-sidebar--left") as HTMLElement | null;
     const articleContainer = toc?.closest(".article-with-toc");
     const articleMain = document.querySelector(".article-main");
     const footer = document.querySelector(".l-footer");
     if (!toc || !articleContainer) return;
 
     const articleRect = articleContainer.getBoundingClientRect();
-    const articleFullyAbove = articleRect.bottom <= 0;
     const articleFullyBelow = articleRect.top >= window.innerHeight;
     const articleInView =
       articleRect.bottom > 0 && articleRect.top < window.innerHeight;
@@ -213,7 +212,7 @@ const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
   }
 
   function initTocScrollSpy() {
-    const toc = document.querySelector(".toc-sidebar");
+    const toc = document.querySelector(".toc-sidebar") as HTMLElement | null;
     const main = document.querySelector(".article-main");
     if (!toc || !main) return;
 
@@ -222,18 +221,18 @@ const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
     if (links.length === 0 || headings.length === 0) return;
 
     const setActive = (id: string | null) => {
-      let activeLink: Element | null = null;
+      let activeLink: HTMLElement | null = null;
       links.forEach((a) => {
         const href = a.getAttribute("href");
         const isActive = href === `#${id}`;
         a.setAttribute("aria-current", isActive ? "true" : "false");
-        if (isActive) activeLink = a;
+        if (isActive) activeLink = a as HTMLElement;
       });
       // 页脚展示时目录不再自动滚动，避免干扰
       const footer = document.querySelector(".l-footer");
       const footerInView = footer && footer.getBoundingClientRect().top < window.innerHeight;
       if (activeLink && !footerInView && toc.scrollHeight > toc.clientHeight) {
-        activeLink.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        (activeLink as HTMLElement).scrollIntoView({ block: "nearest", behavior: "smooth" });
       }
     };
 
