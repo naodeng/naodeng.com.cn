@@ -45,13 +45,13 @@ export const HOME_INTRO: Multilingual = {
 - I regularly write articles on [inaodeng.com](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- Support me by [**becoming a sponsor**](https://inaodeng.com/sponsor)`,
+- Support me by [**supporting this blog**](https://inaodeng.com/sponsor)`,
   "zh-cn": `- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
 - 正在学习 **AI 辅助测试**
 - 定期在 [inaodeng.com](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- 赞助我 [**成为一个支持者**](https://inaodeng.com/sponsor)`,
+- 支持我 [**成为支持者**](https://inaodeng.com/sponsor)`,
 };
 
 // 首页作者标签（简介区域右侧）
@@ -88,10 +88,10 @@ export const NAV_ARCHIVE: Multilingual = {
   "zh-cn": "归档",
 };
 
-// 顶部导航：赞助
+// 顶部导航：支持
 export const NAV_SPONSOR: Multilingual = {
-  en: "Sponsor",
-  "zh-cn": "赞助",
+  en: "Support",
+  "zh-cn": "支持",
 };
 
 // 系列 / 标签聚合页（Footer、博客标题区）
@@ -144,10 +144,10 @@ export const SITEMAP_XML_LABEL: Multilingual = {
   "zh-cn": "XML 站点地图（供搜索引擎使用）",
 };
 
-// 赞助页文案
+// 支持页文案
 export const SPONSOR_PAGE_TITLE: Multilingual = {
-  en: "Sponsor & Support",
-  "zh-cn": "赞助支持",
+  en: "Support",
+  "zh-cn": "支持",
 };
 export const SPONSOR_WHY_TITLE: Multilingual = {
   en: "Why Support Me?",
@@ -166,12 +166,12 @@ export const SPONSOR_WHY_BODY: Multilingual = {
 - **覆盖成本**：服务器、域名与维护工具等`,
 };
 export const SPONSOR_METHODS_TITLE: Multilingual = {
-  en: "Ways to Sponsor",
-  "zh-cn": "赞助方式",
+  en: "Ways to Support",
+  "zh-cn": "支持方式",
 };
 export const SPONSOR_BENEFITS_TITLE: Multilingual = {
-  en: "Sponsor Benefits",
-  "zh-cn": "赞助者权益",
+  en: "Supporter Benefits",
+  "zh-cn": "支持者权益",
 };
 export const SPONSOR_BENEFITS_BODY: Multilingual = {
   en: `As a supporter of this site, you can expect:
@@ -268,7 +268,7 @@ export const ABOUT_ME_BODY: Multilingual = {
 - I regularly write articles on this site [Nao's Blog](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- Support me by [becoming a sponsor](https://inaodeng.com/sponsor)`,
+- Support me by [supporting this blog](https://inaodeng.com/sponsor)`,
   "zh-cn": `你好，我是 naodeng。
 
 - 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
@@ -276,7 +276,7 @@ export const ABOUT_ME_BODY: Multilingual = {
 - 定期在本站 [软件测试同学](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- 赞助我 [成为一个支持者](https://inaodeng.com/sponsor)`,
+- 支持我 [成为支持者](https://inaodeng.com/sponsor)`,
 };
 export const ABOUT_TECH_TITLE: Multilingual = {
   en: "Tech Stack",
@@ -306,10 +306,10 @@ export const ABOUT_SUPPORT_TITLE: Multilingual = {
   en: "Support",
   "zh-cn": "支持我",
 };
-// 赞助链接在关于页中由 getRelativeLocaleUrl(locale, "/sponsor") 动态替换，保证始终指向本站
+// 支持链接在关于页中由 getRelativeLocaleUrl(locale, "/sponsor") 动态替换，保证始终指向本站
 export const ABOUT_SUPPORT_BODY: Multilingual = {
-  en: "If you find my work helpful, consider [becoming a sponsor](/sponsor).",
-  "zh-cn": "如果你觉得我的项目对你有帮助，欢迎 [赞助我](/sponsor)。",
+  en: "If you find my work helpful, consider [supporting me](/sponsor).",
+  "zh-cn": "如果你觉得我的项目对你有帮助，欢迎 [支持我](/sponsor)。",
 };
 export const ABOUT_CONNECT_TITLE: Multilingual = {
   en: "Connect",

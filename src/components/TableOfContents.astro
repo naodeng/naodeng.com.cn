@@ -1,0 +1,286 @@
+---
+/**
+ * 文章目录（TOC）组件，用于博文详情页导航
+ * headings 来自 render() 返回的 headings，格式为 { depth, slug, text }
+ * placement="left" 时仅在博文内容顶部～底部区域内浮动，展示完全，不占文章流
+ */
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+  /** 标题文案：目录 / Table of Contents */
+  label?: string;
+  /** 左侧固定（不占流、不影响正文）或右侧（流式布局） */
+  placement?: "left" | "right";
+}
+
+const { headings, label = "目录", placement = "right" } = Astro.props;
+
+// 只展示二级、三级标题 h2、h3（depth 2/3）
+const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+{tocItems.length > 0 ? (
+  <aside class={`toc-sidebar toc-sidebar--${placement}`} aria-label={label}>
+    <nav class="toc-nav">
+      <h2 class="toc-title">{label}</h2>
+      <ul class="toc-list">
+        {tocItems.map((item) => (
+          <li
+            class="toc-item"
+            style={`--depth: ${item.depth}`}
+          >
+            <a href={`#${item.slug}`} class="toc-link">
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </aside>
+) : null}
+
+<style>
+  .toc-sidebar {
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .toc-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 右侧：流式布局，在正文右侧 */
+  .toc-sidebar--right {
+    position: sticky;
+    top: var(--sp-m, 1rem);
+    align-self: start;
+  }
+
+  /* 左侧：脚本控制在博文区域内浮动，不占流；默认 absolute 随页滚动 */
+  .toc-sidebar--left {
+    position: absolute;
+    left: var(--sp-m, 1rem);
+    top: 0;
+    width: 12rem;
+    max-width: calc(100vw - 800px - var(--sp-m, 1rem) * 4);
+    max-height: none;
+    min-height: 12rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10;
+  }
+
+  .toc-nav {
+    padding: var(--sp-m);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+  }
+
+  .toc-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-theme);
+    opacity: 0.9;
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-item {
+    margin: 0;
+    padding: 0;
+    padding-inline-start: calc((var(--depth) - 2) * 0.75rem);
+    margin-block-end: 0.35rem;
+  }
+
+  .toc-link {
+    display: block;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--color-main);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    border-block-end: 1px solid transparent;
+  }
+
+  .toc-link:hover {
+    opacity: 1;
+    color: var(--color-theme);
+  }
+
+  .toc-link:active,
+  .toc-link[aria-current="true"] {
+    color: var(--color-theme);
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  @media (max-width: 960px) {
+    .toc-sidebar--right {
+      position: static;
+      max-height: none;
+      margin-block-start: var(--sp-l);
+      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+      padding-block-start: var(--sp-m);
+    }
+    .toc-sidebar--left {
+      position: static;
+      transform: none;
+      top: auto;
+      left: auto;
+      width: auto;
+      max-width: none;
+      margin-block-start: var(--sp-l);
+      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+      padding-block-start: var(--sp-m);
+    }
+  }
+</style>
+
+<script>
+  const FALLBACK_FOOTER_PX = 18 * 16;
+  const TOC_MIN_HEIGHT_PX = 200;
+  const TOC_MIN_VIEWPORT_RATIO = 0.7;
+  const GAP_ABOVE_FOOTER_PX = 8;
+
+  function alignTocWithArticle() {
+    const toc = document.querySelector(".toc-sidebar--left");
+    const articleContainer = toc?.closest(".article-with-toc");
+    const articleMain = document.querySelector(".article-main");
+    const footer = document.querySelector(".l-footer");
+    if (!toc || !articleContainer) return;
+
+    const articleRect = articleContainer.getBoundingClientRect();
+    const articleFullyAbove = articleRect.bottom <= 0;
+    const articleFullyBelow = articleRect.top >= window.innerHeight;
+    const articleInView =
+      articleRect.bottom > 0 && articleRect.top < window.innerHeight;
+
+    // 博文完全在视口下方（尚未滚到）：目录随流不显示
+    if (articleFullyBelow) {
+      toc.style.position = "absolute";
+      toc.style.top = "0";
+      toc.style.bottom = "";
+      return;
+    }
+
+    // 博文在视口内 或 已滚过博文（滑到底部看页脚）：目录固定展示，顶部最高只与博文标题水平
+    toc.style.position = "fixed";
+    const titleHeader = document.querySelector(".article-title-header, #article-title-header");
+    const titleTop = titleHeader ? titleHeader.getBoundingClientRect().top : articleRect.top;
+    const topPx = articleInView
+      ? Math.max(16, titleTop)
+      : 16;
+    toc.style.top = topPx + "px";
+
+    let bottomPx: number;
+    if (articleInView) {
+      const articleBottomInView = articleRect.bottom < window.innerHeight;
+      if (articleMain && articleBottomInView) {
+        bottomPx = Math.max(16, window.innerHeight - articleRect.bottom);
+      } else {
+        bottomPx = FALLBACK_FOOTER_PX;
+      }
+      const minHeight = Math.max(
+        TOC_MIN_HEIGHT_PX,
+        Math.floor(window.innerHeight * TOC_MIN_VIEWPORT_RATIO)
+      );
+      const availableHeight = window.innerHeight - topPx - bottomPx;
+      if (availableHeight < minHeight) {
+        bottomPx = Math.max(16, window.innerHeight - topPx - minHeight);
+      }
+    } else {
+      bottomPx = FALLBACK_FOOTER_PX;
+    }
+
+    // 始终按页脚实际位置限制目录底边，绝不侵入页脚，避免重叠
+    if (footer) {
+      const footerRect = footer.getBoundingClientRect();
+      const minBottomFromFooter = window.innerHeight - footerRect.top + GAP_ABOVE_FOOTER_PX;
+      bottomPx = Math.max(bottomPx, minBottomFromFooter);
+    } else {
+      bottomPx = Math.max(bottomPx, FALLBACK_FOOTER_PX);
+    }
+    toc.style.bottom = bottomPx + "px";
+  }
+
+  function initTocScrollSpy() {
+    const toc = document.querySelector(".toc-sidebar");
+    const main = document.querySelector(".article-main");
+    if (!toc || !main) return;
+
+    const links = toc.querySelectorAll(".toc-link");
+    const headings = main.querySelectorAll("h2[id], h3[id], h4[id]");
+    if (links.length === 0 || headings.length === 0) return;
+
+    const setActive = (id: string | null) => {
+      let activeLink: Element | null = null;
+      links.forEach((a) => {
+        const href = a.getAttribute("href");
+        const isActive = href === `#${id}`;
+        a.setAttribute("aria-current", isActive ? "true" : "false");
+        if (isActive) activeLink = a;
+      });
+      // 页脚展示时目录不再自动滚动，避免干扰
+      const footer = document.querySelector(".l-footer");
+      const footerInView = footer && footer.getBoundingClientRect().top < window.innerHeight;
+      if (activeLink && !footerInView && toc.scrollHeight > toc.clientHeight) {
+        activeLink.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => {
+            const topA = (a.boundingClientRect?.top ?? 0) + window.scrollY;
+            const topB = (b.boundingClientRect?.top ?? 0) + window.scrollY;
+            return topA - topB;
+          });
+        if (visible.length > 0) {
+          setActive(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-80px 0px -66% 0px", threshold: 0 }
+    );
+
+    headings.forEach((el) => observer.observe(el));
+
+    // 初始高亮第一个可见标题
+    const firstVisible = Array.from(headings).find((el) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.5;
+    });
+    setActive(firstVisible?.id ?? (headings[0]?.id ?? null));
+  }
+
+  function init() {
+    alignTocWithArticle();
+    initTocScrollSpy();
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+  window.addEventListener("load", alignTocWithArticle);
+  window.addEventListener("load", () => setTimeout(alignTocWithArticle, 50));
+  window.addEventListener("scroll", () => alignTocWithArticle(), {
+    passive: true,
+  });
+  window.addEventListener("resize", () => alignTocWithArticle());
+  if (typeof ResizeObserver !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".article-with-toc");
+      if (container) {
+        new ResizeObserver(() => alignTocWithArticle()).observe(container);
+      }
+    });
+  }
+</script>

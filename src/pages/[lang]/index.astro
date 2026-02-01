@@ -227,16 +227,15 @@ export const getStaticPaths = () =>
     .intro-row {
       grid-template-columns: 1fr;
     }
-    .intro-sidebar {
-      order: -1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--sp-m);
-      padding-block-start: var(--sp-s);
-      padding-inline: 0;
-      border-inline-start: none;
-    }
+  .intro-sidebar {
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-m);
+    padding-block-start: var(--sp-s);
+    padding-inline: 0;
+  }
     .intro-sidebar-inner {
       align-items: center;
     }
@@ -276,7 +275,6 @@ export const getStaticPaths = () =>
     align-items: flex-start;
     flex-shrink: 0;
     padding-inline-start: var(--sp-l);
-    border-inline-start: 1px solid var(--card-border);
     align-self: stretch;
     min-height: 0;
     min-width: 12rem;

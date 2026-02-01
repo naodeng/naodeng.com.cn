@@ -4,13 +4,44 @@ import Base from "@/layouts/Base.astro";
 interface Props {
   title?: string;
   description?: string;
+  /** 文章/分享图绝对 URL（如博客封面） */
+  image?: string;
+  /** 分享图描述 */
+  imageAlt?: string;
+  /** ISO 日期时间，文章发布时间 */
+  articlePublishedTime?: string;
+  /** ISO 日期时间，文章修改时间 */
+  articleModifiedTime?: string;
+  /** 文章作者名 */
+  articleAuthor?: string;
+  /** 面包屑 [{ name, url }] */
+  breadcrumbs?: { name: string; url: string }[];
   frontmatter?: undefined;
 }
 
-const { title, description } = Astro.props.frontmatter || Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+  breadcrumbs,
+} = Astro.props.frontmatter || Astro.props;
 ---
 
-<Base title={title} description={description} type="article">
+<Base
+  title={title}
+  description={description}
+  type="article"
+  image={image}
+  imageAlt={imageAlt}
+  articlePublishedTime={articlePublishedTime}
+  articleModifiedTime={articleModifiedTime}
+  articleAuthor={articleAuthor}
+  breadcrumbs={breadcrumbs}
+>
   <article>
     <slot />
   </article>

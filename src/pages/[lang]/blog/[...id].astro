@@ -1,69 +1,112 @@
 ---
 import Layout from "@/layouts/Article.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
+import { NAV_HOME } from "@/consts";
+import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => {
-    const [lang, ...id] = post.id.split("/");
+    const [lang, ...idParts] = post.id.split("/");
     return {
-      params: { lang, id: id.join("/") || undefined },
+      params: { lang, id: idParts.join("/") },
       props: post,
     };
   });
 }
 
-const { lang } = Astro.params;
+const { lang, id } = Astro.params;
 const post = Astro.props;
+const locale = (lang ?? "zh-cn") as Lang;
 const siteOrigin = "https://inaodeng.com";
-const postPath = `/${lang}/blog/${Astro.params.id || ""}/`;
+const postPath = `/${lang}/blog/${id ?? ""}/`;
 const canonicalUrl = `${siteOrigin}${postPath}`;
 
-const { Content } = await render(post);
+const coverImage = post.data.cover ? getImage({ src: post.data.cover }) : null;
+const ogImageUrl = coverImage ? `${siteOrigin}${coverImage.src}` : undefined;
+
+const { Content, headings = [] } = await render(post);
+const tocLabel = locale === "zh-cn" ? "目录" : "Table of Contents";
 const title = post.data.title;
 const description = post.data.description;
+const authorName = post.data.author || "Nao Deng";
+const datePublished = post.data.date.toISOString();
+
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: title,
   description,
-  datePublished: post.data.date.toISOString(),
+  datePublished,
+  dateModified: datePublished,
   url: canonicalUrl,
-  image: `${siteOrigin}/ogp.png`,
-  author: { "@type": "Person", name: post.data.author || "Nao Deng", url: siteOrigin },
+  image: ogImageUrl || `${siteOrigin}/ogp.png`,
+  author: { "@type": "Person", name: authorName, url: siteOrigin },
   publisher: { "@type": "Organization", name: "Nao's Blog", url: siteOrigin },
 };
+
+const breadcrumbs = [
+  { name: typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale], url: `/${lang}/` },
+  { name: locale === "zh-cn" ? "博客" : "Blog", url: `/${lang}/blog/` },
+  { name: title, url: postPath },
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  image={ogImageUrl}
+  imageAlt={title}
+  articlePublishedTime={datePublished}
+  articleModifiedTime={datePublished}
+  articleAuthor={authorName}
+  breadcrumbs={breadcrumbs}
+>
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
-  {
-    post.data.cover && (
-      <Image src={post.data.cover} alt={post.data.title} class="cover" />
-    )
-  }
+  <div class="article-with-toc">
+    <TableOfContents headings={headings} label={tocLabel} placement="left" />
+    <div class="article-body">
+      {
+        post.data.cover && (
+          <Image src={post.data.cover} alt={post.data.title} class="cover" />
+        )
+      }
 
-  <header>
-    <h1>{title}</h1>
-    <time datetime={post.data.date.toISOString()}>
-      {post.data.date.toLocaleDateString(lang)}
-    </time>
-    {
-      post.data.tags && (
-        <div class="tags">
-          {post.data.tags.map((tag) => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      )
-    }
-  </header>
+      <header class="article-title-header" id="article-title-header">
+        <h1>{title}</h1>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString(lang)}
+        </time>
+        {
+          post.data.tags && (
+            <div class="tags">
+              {post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )
+        }
+      </header>
 
-  <Content class="material-icons" />
+      <div class="article-main">
+        <Content class="material-icons" />
+      </div>
+    </div>
+  </div>
 </Layout>
 
 <style>
+  /* 目录固定/绝对定位在视口左侧，主内容区 .l-content 已居中且 max-width 800px，左侧有留白，目录落在留白处不压住正文，故文章区域保持全宽 */
+  .article-with-toc {
+    position: relative;
+  }
+  .article-body {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
   header {
     text-align: center;
     border-block-end: 1px solid var(--color-theme);
@@ -95,5 +138,9 @@ const blogPostingSchema = {
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
+  }
+  .article-main {
+    margin-block-start: var(--sp-l);
+    min-width: 0;
   }
 </style>

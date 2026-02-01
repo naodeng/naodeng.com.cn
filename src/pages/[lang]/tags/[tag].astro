@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     
     for (const tag of tags) {
       paths.push({
-        params: { lang, tag: encodeURIComponent(tag) },
+        params: { lang, tag },
         props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
       });
     }
