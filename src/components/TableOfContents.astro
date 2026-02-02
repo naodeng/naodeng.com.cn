@@ -8,14 +8,14 @@ interface Props {
   headings: { depth: number; slug: string; text: string }[];
   /** 标题文案：目录 / Table of Contents */
   label?: string;
-  /** 左侧固定（不占流、不影响正文）或右侧（流式布局） */
-  placement?: "left" | "right";
+  /** 左侧固定（不占流）、右侧流式、或标题下方块级 */
+  placement?: "left" | "right" | "below";
 }
 
 const { headings, label = "目录", placement = "right" } = Astro.props;
 
-// 只展示二级、三级标题 h2、h3（depth 2/3）
-const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+// 只展示二级标题 h2（depth 2）
+const tocItems = headings.filter((h) => h.depth === 2);
 ---
 
 {tocItems.length > 0 ? (
@@ -68,6 +68,17 @@ const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 10;
+  }
+
+  /* 标题下方：目录方式，垂直层级列表（h2 / 缩进 h3） */
+  .toc-sidebar--below {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-block-end: var(--sp-l, 1.5rem);
+  }
+  .toc-sidebar--below .toc-list {
+    display: block;
   }
 
   .toc-nav {

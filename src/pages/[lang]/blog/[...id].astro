@@ -67,7 +67,6 @@ const breadcrumbs = [
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} is:inline />
   <div class="article-with-toc">
-    <TableOfContents headings={headings} label={tocLabel} placement="left" />
     <div class="article-body">
       {
         post.data.cover && (
@@ -90,6 +89,8 @@ const breadcrumbs = [
           )
         }
       </header>
+
+      <TableOfContents headings={headings} label={tocLabel} placement="below" />
 
       <div class="article-main">
         <Content class="material-icons" />
