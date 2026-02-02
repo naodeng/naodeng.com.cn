@@ -26,9 +26,6 @@
             }
           ]
         },
-        "cover": {
-          "type": "string"
-        },
         "author": {
           "type": "string"
         },

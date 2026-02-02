@@ -17,6 +17,8 @@ interface Props {
   articleAuthor?: string;
   /** 面包屑 [{ name, url }] */
   breadcrumbs?: { name: string; url: string }[];
+  /** 加宽主区域以容纳侧栏，正文保持 800px */
+  contentWide?: boolean;
   frontmatter?: undefined;
 }
 
@@ -29,6 +31,7 @@ const {
   articleModifiedTime,
   articleAuthor,
   breadcrumbs,
+  contentWide,
 } = Astro.props.frontmatter || Astro.props;
 ---
 
@@ -42,6 +45,7 @@ const {
   articleModifiedTime={articleModifiedTime}
   articleAuthor={articleAuthor}
   breadcrumbs={breadcrumbs}
+  contentWide={contentWide}
 >
   {breadcrumbs && breadcrumbs.length > 0 && (
     <Breadcrumb items={breadcrumbs} />

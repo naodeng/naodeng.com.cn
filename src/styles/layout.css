@@ -13,6 +13,11 @@
   margin-inline: auto;
 }
 
+/* 博文页侧栏：正文 880px（+10%），侧栏区靠右约 10%，总宽约 1280px */
+.l-content--with-sidebar {
+  max-inline-size: 1280px;
+}
+
 .l-footer {
   margin-block-start: var(--sp-m);
 }

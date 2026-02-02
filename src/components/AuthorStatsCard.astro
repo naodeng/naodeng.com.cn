@@ -1,0 +1,124 @@
+---
+/**
+ * 博文侧栏：作者信息 + 站点统计（文章/分类/标签/字数）
+ * 参考 eallion 等博客侧栏样式，不占用正文区域
+ */
+interface Props {
+  avatarUrl: string;
+  authorName: string;
+  slogan: string;
+  /** 头像点击跳转（如首页 URL） */
+  authorLink?: string;
+  stats: {
+    articles: number;
+    categories: number;
+    tags: number;
+    words: number;
+  };
+  labels: {
+    articles: string;
+    categories: string;
+    tags: string;
+    words: string;
+  };
+}
+
+const { avatarUrl, authorName, slogan, authorLink = "#", stats, labels } = Astro.props;
+
+/** 字数超过 1000 显示为 Xk */
+function formatWords(n: number): string {
+  if (n >= 1000) return `${Math.round(n / 1000)}k`;
+  return String(n);
+}
+---
+
+<aside class="author-stats-card" aria-label={authorName}>
+  <a href={authorLink} class="author-avatar-link">
+    <img src={avatarUrl} alt={authorName} class="author-avatar" width="80" height="80" />
+  </a>
+  <h3 class="author-name">{authorName}</h3>
+  <p class="author-slogan">{slogan}</p>
+  <hr class="author-divider" />
+  <div class="author-stats">
+    <div class="stat-item">
+      <span class="stat-label">{labels.articles}</span>
+      <span class="stat-value">{stats.articles}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">{labels.categories}</span>
+      <span class="stat-value">{stats.categories}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">{labels.tags}</span>
+      <span class="stat-value">{stats.tags}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">{labels.words}</span>
+      <span class="stat-value">{formatWords(stats.words)}</span>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .author-stats-card {
+    padding: var(--sp-m);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+    text-align: center;
+  }
+  .author-avatar-link {
+    display: block;
+    margin-block-end: 0.75rem;
+  }
+  .author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-inline: auto;
+  }
+  .author-name {
+    margin: 0 0 0.35em 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-main);
+  }
+  .author-slogan {
+    margin: 0;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    line-height: 1.4;
+  }
+  .author-divider {
+    margin: 1rem 0;
+    border: none;
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+  }
+  .author-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1rem;
+    text-align: center;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-main);
+  }
+</style>

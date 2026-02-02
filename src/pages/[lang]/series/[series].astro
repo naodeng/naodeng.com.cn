@@ -4,7 +4,6 @@ import Layout from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
 import { NAV_HOME, NAV_SERIES } from "@/consts";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 function slugToSeries(slug: string) {
@@ -68,11 +67,17 @@ const breadcrumbs = [
           return (
             <article class="post-card">
               <a href={postUrl} class="post-link">
-                {post.data.cover && (
-                  <div class="post-cover">
-                    <Image src={post.data.cover} alt={post.data.title} width={600} height={337} />
+                <div class="post-cover">
+                  <div class="post-cover-bg" role="img" aria-hidden="true" />
+                  <div class="post-cover-overlay">
+                    <h2 class="post-cover-title">{post.data.title}</h2>
+                    <p class="post-cover-meta">
+                      <span class="post-cover-author">{post.data.author || "Nao Deng"}</span>
+                      <span class="post-cover-sep">·</span>
+                      <time datetime={post.data.date.toISOString()}>{dateStr}</time>
+                    </p>
                   </div>
-                )}
+                </div>
                 <div class="post-content">
                   <time class="post-date">{dateStr}</time>
                   <h2 class="post-title">{post.data.title}</h2>
@@ -138,20 +143,52 @@ const breadcrumbs = [
   }
 
   .post-cover {
-    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
+    position: relative;
+    aspect-ratio: 16 / 7.2;
     overflow: hidden;
-    background: var(--color-theme);
   }
 
-  .post-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+  .post-cover-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/default.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1f;
+    filter: blur(3px);
+    transform: scale(1.06);
   }
 
-  .post-card:hover .post-cover img {
-    transform: scale(1.08);
+  .post-cover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.52);
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-align: center;
+  }
+
+  .post-cover-title {
+    margin: 0 0 0.25em 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .post-cover-meta {
+    margin: 0;
+    font-size: 0.75rem;
+    opacity: 0.95;
+  }
+
+  .post-cover-sep {
+    margin-inline: 0.4em;
+    opacity: 0.85;
   }
 
   .post-content {

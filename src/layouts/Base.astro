@@ -29,6 +29,8 @@ interface Props {
   articleAuthor?: string;
   /** 面包屑 [{ name, url }]，用于 BreadcrumbList JSON-LD */
   breadcrumbs?: { name: string; url: string }[];
+  /** 博文页侧栏时加宽主区域，正文保持 800px */
+  contentWide?: boolean;
   frontmatter?: undefined;
 }
 
@@ -42,6 +44,8 @@ const {
   articleModifiedTime,
   articleAuthor,
   breadcrumbs,
+  /** 博文页等需要侧栏时加宽主区域，正文保持 800px，侧栏在右侧 */
+  contentWide = false,
 } = Astro.props.frontmatter || Astro.props;
 
 const locale = Astro.currentLocale as Lang;
@@ -212,7 +216,7 @@ const breadcrumbSchema =
     <LocaleSuggest />
     <Header />
 
-    <main class="l-main l-content">
+    <main class:list={["l-main", "l-content", contentWide && "l-content--with-sidebar"]}>
       <slot />
     </main>
 

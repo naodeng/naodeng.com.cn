@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Article.astro";
+import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { getCollection, render } from "astro:content";
-import { Image, getImage } from "astro:assets";
-import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL } from "@/consts";
+import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
 import type { Lang } from "@/i18n";
 
 /** 根据正文字符数估算阅读时长（约 1000 字/分钟，至少 1 分钟） */
@@ -32,8 +32,7 @@ const siteOrigin = "https://inaodeng.com";
 const postPath = `/${lang}/blog/${id ?? ""}/`;
 const canonicalUrl = `${siteOrigin}${postPath}`;
 
-const coverImage = post.data.cover ? await getImage({ src: post.data.cover }) : null;
-const ogImageUrl = coverImage ? `${siteOrigin}${coverImage.src}` : undefined;
+const ogImageUrl = `${siteOrigin}/default.jpg`;
 
 const { Content, headings = [] } = await render(post);
 const tocLabel = locale === "zh-cn" ? "目录" : "Table of Contents";
@@ -50,7 +49,7 @@ const blogPostingSchema = {
   datePublished,
   dateModified: datePublished,
   url: canonicalUrl,
-  image: ogImageUrl || `${siteOrigin}/ogp.png`,
+  image: ogImageUrl,
   author: { "@type": "Person", name: authorName, url: siteOrigin },
   publisher: { "@type": "Organization", name: "Nao's Blog", url: siteOrigin },
 };
@@ -64,6 +63,17 @@ const breadcrumbs = [
   { name: locale === "zh-cn" ? "博客" : "Blog", url: `/${lang}/blog/` },
   { name: title, url: postPath },
 ];
+
+// 站点统计（用于侧栏作者卡片）
+const allPosts = await getCollection("blog");
+const totalArticles = allPosts.length;
+const allCategories = new Set(allPosts.flatMap((p) => p.data.categories ?? []));
+const allTags = new Set(allPosts.flatMap((p) => p.data.tags ?? []));
+const totalChars = allPosts.reduce((sum, p) => sum + (typeof p.body === "string" ? p.body.length : 0), 0);
+const authorSlogan = typeof SITE_SLOGAN === "string" ? SITE_SLOGAN : (SITE_SLOGAN[locale] ?? (locale === "zh-cn" ? "质量分析师，而非质量保证师。" : "Quality Analyst, Not Quality Assurance."));
+const statsLabels = locale === "zh-cn"
+  ? { articles: "文章", categories: "分类", tags: "标签", words: "字数" }
+  : { articles: "Articles", categories: "Categories", tags: "Tags", words: "Words" };
 ---
 
 <Layout
@@ -75,6 +85,7 @@ const breadcrumbs = [
   articleModifiedTime={datePublished}
   articleAuthor={authorName}
   breadcrumbs={breadcrumbs}
+  contentWide
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} is:inline />
   <div class="article-with-toc">
@@ -120,15 +131,17 @@ const breadcrumbs = [
         }
       </header>
 
-      {
-        post.data.cover && (
-          <div class="cover-wrap">
-            <Image src={post.data.cover} alt={post.data.title} class="cover" />
-          </div>
-        )
-      }
-
-      <TableOfContents headings={headings} label={tocLabel} placement="below" />
+      <div class="cover-wrap">
+        <div class="cover-bg cover-bg--default" role="img" aria-hidden="true" />
+        <div class="cover-overlay">
+          <h2 class="cover-title">{title}</h2>
+          <p class="cover-meta">
+            <span class="cover-author">{authorName}</span>
+            <span class="cover-sep">·</span>
+            <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString(lang)}</time>
+          </p>
+        </div>
+      </div>
 
       <div class="article-main">
         <div class="prose">
@@ -136,18 +149,54 @@ const breadcrumbs = [
         </div>
       </div>
     </div>
+
+    <aside class="article-sidebar" aria-label={locale === "zh-cn" ? "侧栏" : "Sidebar"}>
+      <AuthorStatsCard
+        avatarUrl="/favicon.svg"
+        authorName={authorName}
+        slogan={authorSlogan}
+        authorLink={`/${lang}/`}
+        stats={{ articles: totalArticles, categories: allCategories.size, tags: allTags.size, words: totalChars }}
+        labels={statsLabels}
+      />
+      <TableOfContents headings={headings} label={tocLabel} placement="below" />
+    </aside>
   </div>
 </Layout>
 
 <style>
-  /* 目录固定/绝对定位在视口左侧，主内容区 .l-content 已居中且 max-width 800px，左侧有留白，目录落在留白处不压住正文，故文章区域保持全宽 */
+  /* 主内容保持 800px，侧栏在右侧额外空间，不占用正文区域 */
   .article-with-toc {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-l);
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .article-with-toc {
+      /* 正文区 880px（约 +10%），侧栏 280px + 约 10% 靠右（更大 gap），容器 1220px */
+      grid-template-columns: minmax(0, 880px) 280px;
+      gap: 2.5rem;
+      justify-content: start;
+    }
+    .article-sidebar {
+      position: sticky;
+      top: var(--sp-m, 1rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-inline-start: 6%;
+    }
   }
   .article-body {
     width: 100%;
     min-width: 0;
+    max-width: 880px;
+    margin-inline: auto;
     box-sizing: border-box;
+  }
+  .article-sidebar {
+    min-width: 0;
   }
   header {
     text-align: center;
@@ -193,18 +242,60 @@ const breadcrumbs = [
     font-weight: 300;
   }
   .cover-wrap {
+    position: relative;
     width: 100%;
-    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
+    aspect-ratio: 16 / 7.2;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 20px;
     margin-block-end: var(--sp-m);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   }
-  .cover {
+  .cover-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  .cover-bg--default {
+    background-image: url("/default.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1f;
+    filter: blur(3px);
+    transform: scale(1.06);
+  }
+  .cover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;
+    background: rgba(0,0,0,0.52);
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-align: center;
+  }
+  .cover-title {
+    margin: 0 0 0.4em 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    max-width: 100%;
+    letter-spacing: 0.02em;
+  }
+  .cover-meta {
     margin: 0;
+    font-size: 0.875rem;
+    opacity: 0.95;
+    font-weight: 500;
+  }
+  .cover-sep {
+    margin-inline: 0.5em;
+    opacity: 0.85;
   }
   .tags {
     display: flex;
