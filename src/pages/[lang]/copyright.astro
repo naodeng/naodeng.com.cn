@@ -1,0 +1,121 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { COPYRIGHT_PAGE_TITLE, SITE_TITLE } from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const title = t(COPYRIGHT_PAGE_TITLE);
+const siteName = typeof SITE_TITLE === "string" ? SITE_TITLE : SITE_TITLE[locale];
+
+const licenseUrl = "https://creativecommons.org/licenses/by-nc-sa/4.0/";
+const licenseUrlZh = "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh";
+const legalCodeUrl = "https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode";
+
+const introZh = `本站（${siteName}，inaodeng.com）原创内容采用 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 许可协议进行许可。`;
+const introEn = `Original content on this site (${siteName}, inaodeng.com) is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).`;
+
+const freeToZh = "您可以自由地：";
+const freeToEn = "You are free to:";
+const termsZh = "在遵守以下条款的前提下：";
+const termsEn = "Under the following terms:";
+const noticeZh = "本页仅为许可协议摘要，完整法律文本请参阅上述链接。本站不对许可条款提供法律建议。";
+const noticeEn = "This page is a summary of the license. See the links above for the full legal code. This site does not provide legal advice.";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <section class="copyright-section l-content">
+    <p class="intro">{locale === "zh-cn" ? introZh : introEn}</p>
+
+    <h2>{locale === "zh-cn" ? "许可协议概要" : "License Summary"}</h2>
+    <ul class="license-list">
+      <li><strong>{locale === "zh-cn" ? "署名" : "Attribution"}</strong> — {locale === "zh-cn" ? "您必须给出适当的署名，提供指向本许可协议的链接，同时说明是否对原始作品作了修改。" : "You must give appropriate credit, provide a link to the license, and indicate if changes were made."}</li>
+      <li><strong>{locale === "zh-cn" ? "非商业性使用" : "NonCommercial"}</strong> — {locale === "zh-cn" ? "您不得将本作品用于商业目的。" : "You may not use the material for commercial purposes."}</li>
+      <li><strong>{locale === "zh-cn" ? "相同方式共享" : "ShareAlike"}</strong> — {locale === "zh-cn" ? "如果您基于本作品进行了演绎，您必须基于与原先许可协议相同的许可协议分发您的作品。" : "If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original."}</li>
+    </ul>
+
+    <h2>{locale === "zh-cn" ? freeToZh : freeToEn}</h2>
+    <ul>
+      <li><strong>{locale === "zh-cn" ? "共享" : "Share"}</strong> — {locale === "zh-cn" ? "在任何媒介以任何形式复制、发行本作品" : "copy and redistribute the material in any medium or format"}</li>
+      <li><strong>{locale === "zh-cn" ? "演绎" : "Adapt"}</strong> — {locale === "zh-cn" ? "修改、转换或以本作品为基础进行创作" : "remix, transform, and build upon the material"}</li>
+      <li>{locale === "zh-cn" ? "只要您遵守许可协议条款，许可人就无法收回您的这些权利。" : "The licensor cannot revoke these freedoms as long as you follow the license terms."}</li>
+    </ul>
+
+    <h2>{locale === "zh-cn" ? termsZh : termsEn}</h2>
+    <p>{locale === "zh-cn" ? "详见 Creative Commons 官方许可协议页面。" : "See the official Creative Commons license page for full terms."}</p>
+
+    <div class="license-links">
+      <a href={locale === "zh-cn" ? licenseUrlZh : licenseUrl} target="_blank" rel="noopener noreferrer" class="btn">
+        {locale === "zh-cn" ? "CC BY-NC-SA 4.0 许可协议（摘要）" : "CC BY-NC-SA 4.0 Deed"}
+      </a>
+      <a href={legalCodeUrl} target="_blank" rel="noopener noreferrer" class="btn secondary">
+        {locale === "zh-cn" ? "完整法律文本" : "Legal Code"}
+      </a>
+    </div>
+
+    <p class="notice">{locale === "zh-cn" ? noticeZh : noticeEn}</p>
+  </section>
+</Layout>
+
+<style>
+  .copyright-section {
+    max-inline-size: 52rem;
+    margin-inline: auto;
+    padding-inline: var(--sp-m);
+    padding-block-end: var(--sp-l);
+  }
+  .intro {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-block-end: var(--sp-m);
+  }
+  .copyright-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+  .copyright-section ul {
+    padding-inline-start: 1.5rem;
+    margin-block-end: var(--sp-m);
+  }
+  .copyright-section li {
+    margin-block: 0.35rem 0;
+    line-height: 1.55;
+  }
+  .license-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block: var(--sp-m);
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .btn.secondary {
+    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-main);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
+  }
+  .notice {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-block-start: var(--sp-m);
+  }
+</style>

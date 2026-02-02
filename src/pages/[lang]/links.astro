@@ -1,0 +1,147 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { LINKS_PAGE_TITLE } from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const title = t(LINKS_PAGE_TITLE);
+
+// 友情链接：第一个为真实链接，其余为虚位以待
+const friendLinks: Array<{ name: string; url: string; desc: string; placeholder?: boolean }> = [
+  {
+    name: "Guangzheng Li",
+    url: "https://guangzhengli.com/",
+    desc: locale === "zh-cn" ? "阅读与思考，真理与自由 · 独立开发者" : "Read & Think, Truth & Freedom · Indie developer",
+    placeholder: false,
+  },
+  { name: "", url: "#", desc: locale === "zh-cn" ? "虚位以待" : "Coming soon", placeholder: true },
+  { name: "", url: "#", desc: locale === "zh-cn" ? "虚位以待" : "Coming soon", placeholder: true },
+  { name: "", url: "#", desc: locale === "zh-cn" ? "虚位以待" : "Coming soon", placeholder: true },
+];
+
+const exchangeNoteZh = "如需交换友链，可通过邮件联系：dengnao@gmail.com。请提供站点名称、链接与简短描述，我们会尽快回复。";
+const exchangeNoteEn = "To exchange links, please contact us by email: dengnao@gmail.com. Please provide your site name, URL, and a short description; we will reply as soon as possible.";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <section class="links-section l-content">
+    <div class="links-grid">
+      {friendLinks.map((link) => (
+        link.placeholder ? (
+          <div class="link-card link-card--placeholder">
+            <span class="link-placeholder">{link.desc}</span>
+          </div>
+        ) : (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+            <h3 class="link-name">{link.name}</h3>
+            <p class="link-desc">{link.desc}</p>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 14.83l1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            </span>
+          </a>
+        )
+      ))}
+    </div>
+
+    <div class="exchange-note">
+      <p>{locale === "zh-cn" ? exchangeNoteZh : exchangeNoteEn}</p>
+      <a href="mailto:dengnao@gmail.com" class="email-link">dengnao@gmail.com</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .links-section {
+    max-inline-size: 56rem;
+    margin-inline: auto;
+    margin-block-start: var(--sp-l);
+    padding-inline: var(--sp-m);
+    padding-block-end: var(--sp-l);
+  }
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--sp-m);
+    margin-block-end: var(--sp-l);
+  }
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-m);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+  .link-card:hover {
+    border-color: var(--color-theme);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .link-card--placeholder {
+    min-height: 7rem;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    opacity: 0.7;
+  }
+  .link-placeholder {
+    font-size: 0.95rem;
+    color: var(--color-main);
+    opacity: 0.8;
+  }
+  .link-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 0.35em 0;
+    color: var(--color-main);
+  }
+  .link-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+    color: var(--color-main);
+    opacity: 0.85;
+  }
+  .link-icon {
+    position: absolute;
+    top: var(--sp-m);
+    right: var(--sp-m);
+    color: var(--color-theme);
+    opacity: 0.8;
+  }
+  .link-card:hover .link-icon {
+    opacity: 1;
+  }
+  .exchange-note {
+    padding: var(--sp-m);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    text-align: center;
+  }
+  .exchange-note p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .email-link {
+    color: var(--color-theme);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .email-link:hover {
+    text-decoration: underline;
+  }
+</style>

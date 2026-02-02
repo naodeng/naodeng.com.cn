@@ -1,0 +1,104 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { PRIVACY_PAGE_TITLE, SITE_TITLE } from "@/consts";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const title = t(PRIVACY_PAGE_TITLE);
+const siteName = typeof SITE_TITLE === "string" ? SITE_TITLE : SITE_TITLE[locale];
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+---
+
+<Layout {title}>
+  <PageHeadline {title} />
+
+  <section class="privacy-section l-content">
+    <p class="intro">
+      {locale === "zh-cn"
+        ? `本隐私政策适用于 ${siteName}（inaodeng.com，以下简称「本站」）。我们尊重您的隐私，并尽可能减少对个人数据的收集与使用。`
+        : `This Privacy Policy applies to ${siteName} (inaodeng.com, "this site"). We respect your privacy and minimize the collection and use of personal data.`}
+    </p>
+
+    <h2>{locale === "zh-cn" ? "我们收集的信息" : "Information We Collect"}</h2>
+    <ul>
+      <li>{locale === "zh-cn" ? "本站不要求注册或登录即可浏览内容，因此我们不会主动收集您的账号、邮箱或密码。" : "This site does not require registration or login to browse content. We do not collect your account, email, or password."}</li>
+      <li>{locale === "zh-cn" ? "当您访问本站时，服务器会记录访问日志（如 IP、访问时间、请求 URL、浏览器类型等），用于运维与安全分析。" : "When you visit this site, the server may log access data (e.g. IP, time, requested URL, browser type) for operation and security purposes."}</li>
+      <li>{locale === "zh-cn" ? "若您通过邮件或表单联系我们，我们仅会使用您提供的联系方式进行回复，不会用于营销或转交第三方。" : "If you contact us by email or form, we use your contact details only to reply and do not use them for marketing or share with third parties."}</li>
+    </ul>
+
+    <h2>{locale === "zh-cn" ? "Cookie 与本地存储" : "Cookies and Local Storage"}</h2>
+    <p>
+      {locale === "zh-cn"
+        ? "本站可能使用必要的 Cookie 或本地存储以支持语言偏好、搜索状态等基础功能。我们使用自部署的访问统计（如 Counterscale）以了解访问量，该统计可能使用匿名标识，不用于识别个人身份。"
+        : "This site may use necessary cookies or local storage for language preference, search state, and similar basic features. We use self-hosted analytics (e.g. Counterscale) to understand traffic; such analytics may use anonymous identifiers and are not used to identify individuals."}
+    </p>
+
+    <h2>{locale === "zh-cn" ? "第三方服务" : "Third-Party Services"}</h2>
+    <ul>
+      <li>{locale === "zh-cn" ? "访问统计：我们使用自部署的 Counterscale（analytics.inaodeng.com）进行访问统计，数据存储在自有服务器，不向广告商或第三方出售。" : "Analytics: We use self-hosted Counterscale (analytics.inaodeng.com) for traffic analytics. Data is stored on our own infrastructure and is not sold to advertisers or third parties."}</li>
+      <li>{locale === "zh-cn" ? "字体与资源：本站可能通过 CDN 加载字体（如 Google Fonts）或图标，这些服务可能有其自身的隐私政策。" : "Fonts and assets: This site may load fonts (e.g. Google Fonts) or icons via CDN; those services may have their own privacy policies."}</li>
+    </ul>
+
+    <h2>{locale === "zh-cn" ? "数据保留与安全" : "Data Retention and Security"}</h2>
+    <p>
+      {locale === "zh-cn"
+        ? "访问日志与统计数据的保留期限以运维与合规需要为准，我们采取合理措施保护数据安全。我们不会出售、出租或交易您的个人数据。"
+        : "Access logs and analytics are retained as needed for operation and compliance. We take reasonable measures to protect data. We do not sell, rent, or trade your personal data."}
+    </p>
+
+    <h2>{locale === "zh-cn" ? "您的权利" : "Your Rights"}</h2>
+    <p>
+      {locale === "zh-cn"
+        ? "您有权了解我们持有的与您相关的数据（如有）、要求更正或删除，或就隐私问题联系我们。"
+        : "You have the right to know what data we hold about you (if any), request correction or deletion, or contact us about privacy concerns."}
+    </p>
+
+    <h2>{locale === "zh-cn" ? "政策更新" : "Policy Updates"}</h2>
+    <p>
+      {locale === "zh-cn"
+        ? "我们可能不定期更新本隐私政策，更新后的版本将发布在本页，重大变更会通过站内公告或邮件（如您曾提供）说明。"
+        : "We may update this Privacy Policy from time to time. The updated version will be published on this page; significant changes may be announced on the site or by email if you have provided it."}
+    </p>
+
+    <h2>{locale === "zh-cn" ? "联系我们" : "Contact"}</h2>
+    <p>
+      {locale === "zh-cn"
+        ? "如有隐私相关疑问，请通过邮件联系：dengnao@gmail.com。"
+        : "For privacy-related questions, please contact us by email: dengnao@gmail.com."}
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .privacy-section {
+    max-inline-size: 52rem;
+    margin-inline: auto;
+    padding-inline: var(--sp-m);
+    padding-block-end: var(--sp-l);
+  }
+  .intro {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-block-end: var(--sp-m);
+  }
+  .privacy-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+  .privacy-section p,
+  .privacy-section ul {
+    margin-block-end: var(--sp-m);
+    line-height: 1.6;
+  }
+  .privacy-section ul {
+    padding-inline-start: 1.5rem;
+  }
+  .privacy-section li {
+    margin-block: 0.35rem 0;
+  }
+</style>

@@ -110,6 +110,24 @@ export const NAV_STATUS: Multilingual = {
   "zh-cn": "状态",
 };
 
+/** 底部导航：版权信息 */
+export const NAV_COPYRIGHT: Multilingual = {
+  en: "Copyright",
+  "zh-cn": "版权信息",
+};
+
+/** 底部导航：隐私政策 */
+export const NAV_PRIVACY: Multilingual = {
+  en: "Privacy",
+  "zh-cn": "隐私政策",
+};
+
+/** 底部导航：友情链接 */
+export const NAV_LINKS: Multilingual = {
+  en: "Friends",
+  "zh-cn": "友情链接",
+};
+
 /** 博文版权/许可（展示在日期行） */
 export const ARTICLE_LICENSE = "CC BY-SA 4.0";
 
@@ -157,6 +175,24 @@ export const SITEMAP_XML_LABEL: Multilingual = {
 export const SPONSOR_PAGE_TITLE: Multilingual = {
   en: "Support",
   "zh-cn": "支持",
+};
+
+// 版权信息页
+export const COPYRIGHT_PAGE_TITLE: Multilingual = {
+  en: "Copyright",
+  "zh-cn": "版权信息",
+};
+
+// 隐私政策页
+export const PRIVACY_PAGE_TITLE: Multilingual = {
+  en: "Privacy Policy",
+  "zh-cn": "隐私政策",
+};
+
+// 友情链接页
+export const LINKS_PAGE_TITLE: Multilingual = {
+  en: "Friends",
+  "zh-cn": "友情链接",
 };
 export const SPONSOR_WHY_TITLE: Multilingual = {
   en: "Why Support Me?",
