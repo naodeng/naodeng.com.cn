@@ -1,0 +1,82 @@
+---
+/**
+ * 页面面包屑：首页 > 博客 > 当前文章标题
+ * 参考：Home (🏠) > Blog > 文章标题，灰色、简约、右箭头分隔
+ */
+interface Props {
+  items: { name: string; url: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 ? (
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      {items.map((item, i) => {
+        const isLast = i === items.length - 1;
+        const isHome = i === 0 && (item.name === "Home" || item.name === "首页");
+        return (
+          <li class="breadcrumb-item">
+            {!isLast ? (
+              <a href={item.url} class="breadcrumb-link">
+                {isHome ? (
+                  <span class="breadcrumb-icon" aria-hidden="true">⌂</span>
+                ) : null}
+                {item.name}
+              </a>
+            ) : (
+              <span class="breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+            {!isLast && (
+              <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </nav>
+) : null}
+
+<style>
+  .breadcrumb {
+    margin-block-end: var(--sp-m, 1rem);
+  }
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+  }
+  .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .breadcrumb-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .breadcrumb-link:hover {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+  .breadcrumb-icon {
+    margin-inline-end: 0.15em;
+  }
+  .breadcrumb-current {
+    color: inherit;
+  }
+  .breadcrumb-sep {
+    margin-inline-start: 0.35rem;
+    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    user-select: none;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 
 interface Props {
   title?: string;
@@ -42,6 +43,9 @@ const {
   articleAuthor={articleAuthor}
   breadcrumbs={breadcrumbs}
 >
+  {breadcrumbs && breadcrumbs.length > 0 && (
+    <Breadcrumb items={breadcrumbs} />
+  )}
   <article>
     <slot />
   </article>

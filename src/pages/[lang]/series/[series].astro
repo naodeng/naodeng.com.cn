@@ -1,9 +1,11 @@
 ---
 import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { NAV_HOME, NAV_SERIES } from "@/consts";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import PageHeadline from "@/components/PageHeadline.astro";
 
 function slugToSeries(slug: string) {
   return decodeURIComponent(slug);
@@ -37,9 +39,17 @@ const t = useTranslations(locale);
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const title = seriesName;
+const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
+const seriesLabel = typeof NAV_SERIES === "string" ? NAV_SERIES : (NAV_SERIES[locale] ?? (locale === "zh-cn" ? "系列" : "Series"));
+const breadcrumbs = [
+  { name: homeName, url: `/${lang}/` },
+  { name: seriesLabel, url: `/${lang}/series/` },
+  { name: seriesName, url: `/${lang}/series/${encodeURIComponent(seriesSlug ?? "")}/` },
+];
 ---
 
 <Layout {title}>
+  <Breadcrumb items={breadcrumbs} />
   <PageHeadline {title}>
     <p class="series-meta">{posts.length} {t({ en: "posts in this series", "zh-cn": "篇系列文章" })}</p>
   </PageHeadline>

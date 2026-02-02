@@ -1,9 +1,11 @@
 ---
 import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import PageHeadline from "@/components/PageHeadline.astro";
+import { NAV_HOME, NAV_TAGS } from "@/consts";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import PageHeadline from "@/components/PageHeadline.astro";
 
 /** URL-safe tag for path segment (e.g. "CI/CD" → "CI%2FCD") */
 function tagToSlug(t: string) {
@@ -40,9 +42,17 @@ const t = useTranslations(locale);
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const title = `#${tag}`;
+const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
+const tagsLabel = typeof NAV_TAGS === "string" ? NAV_TAGS : (NAV_TAGS[locale] ?? (locale === "zh-cn" ? "标签" : "Tags"));
+const breadcrumbs = [
+  { name: homeName, url: `/${lang}/` },
+  { name: tagsLabel, url: `/${lang}/tags/` },
+  { name: `#${tag}`, url: `/${lang}/tags/${tagToSlug(tag)}/` },
+];
 ---
 
 <Layout {title}>
+  <Breadcrumb items={breadcrumbs} />
   <PageHeadline {title}>
     <p class="tag-meta">{posts.length} {t({ en: "posts found", "zh-cn": "篇文章" })}</p>
   </PageHeadline>

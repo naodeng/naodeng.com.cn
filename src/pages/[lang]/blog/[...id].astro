@@ -3,8 +3,14 @@ import Layout from "@/layouts/Article.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { getCollection, render } from "astro:content";
 import { Image, getImage } from "astro:assets";
-import { NAV_HOME } from "@/consts";
+import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL } from "@/consts";
 import type { Lang } from "@/i18n";
+
+/** 根据正文字符数估算阅读时长（约 1000 字/分钟，至少 1 分钟） */
+function readingTimeMinutes(rawBody: string): number {
+  const text = rawBody.replace(/\s+/g, " ").trim();
+  return Math.max(1, Math.ceil(text.length / 1000));
+}
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -48,6 +54,9 @@ const blogPostingSchema = {
 };
 
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
+const rawBody = typeof post.body === "string" ? post.body : "";
+const readMinutes = readingTimeMinutes(rawBody);
+const readingTimeLabel = typeof READING_TIME_LABEL === "string" ? READING_TIME_LABEL : (READING_TIME_LABEL[locale] ?? (locale === "zh-cn" ? "分钟阅读" : "min read"));
 const breadcrumbs = [
   { name: homeName, url: `/${lang}/` },
   { name: locale === "zh-cn" ? "博客" : "Blog", url: `/${lang}/blog/` },
@@ -68,17 +77,17 @@ const breadcrumbs = [
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} is:inline />
   <div class="article-with-toc">
     <div class="article-body">
-      {
-        post.data.cover && (
-          <Image src={post.data.cover} alt={post.data.title} class="cover" />
-        )
-      }
-
       <header class="article-title-header" id="article-title-header">
         <h1>{title}</h1>
-        <time datetime={post.data.date.toISOString()}>
-          {post.data.date.toLocaleDateString(lang)}
-        </time>
+        <p class="article-meta">
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString(lang)}
+          </time>
+          <span class="meta-sep" aria-hidden="true">•</span>
+          <span>{readMinutes} {readingTimeLabel}</span>
+          <span class="meta-sep" aria-hidden="true">•</span>
+          <span>{ARTICLE_LICENSE}</span>
+        </p>
         {
           post.data.tags && (
             <div class="tags">
@@ -89,6 +98,14 @@ const breadcrumbs = [
           )
         }
       </header>
+
+      {
+        post.data.cover && (
+          <div class="cover-wrap">
+            <Image src={post.data.cover} alt={post.data.title} class="cover" />
+          </div>
+        )
+      }
 
       <TableOfContents headings={headings} label={tocLabel} placement="below" />
 
@@ -123,8 +140,31 @@ const breadcrumbs = [
     font-size: 1.8rem;
     margin: 0;
   }
-  .cover {
+  .article-meta {
+    margin: 0;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.5rem;
+  }
+  .meta-sep {
+    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    user-select: none;
+  }
+  .cover-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
+    overflow: hidden;
     border-radius: 16px;
+    margin-block-end: var(--sp-m);
+  }
+  .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     margin: 0;
   }
   .tags {

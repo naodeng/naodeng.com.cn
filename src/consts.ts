@@ -110,6 +110,15 @@ export const NAV_STATUS: Multilingual = {
   "zh-cn": "状态",
 };
 
+/** 博文版权/许可（展示在日期行） */
+export const ARTICLE_LICENSE = "CC BY-SA 4.0";
+
+/** 博文阅读时长文案：X 分钟阅读 / X min read */
+export const READING_TIME_LABEL: Multilingual = {
+  en: "min read",
+  "zh-cn": "分钟阅读",
+};
+
 // 搜索
 export const NAV_SEARCH: Multilingual = {
   en: "Search",
