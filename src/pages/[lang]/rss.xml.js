@@ -20,6 +20,8 @@ export async function GET(context) {
   });
   posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+  const siteOrigin = context.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+
   return rss({
     title: localeTitle,
     description: localeDescription,
@@ -31,7 +33,7 @@ export async function GET(context) {
         title: post.data.title,
         pubDate: post.data.date,
         description: post.data.description,
-        link: `/${locale}/blog/${slug}/`,
+        link: `${siteOrigin}/${locale}/blog/${slug}/`,
       };
     }),
   });

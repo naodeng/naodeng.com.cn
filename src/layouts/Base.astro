@@ -213,10 +213,11 @@ const breadcrumbSchema =
   </head>
 
   <body>
+    <a href="#main" class="skip-link">{locale === "zh-cn" ? "跳到主内容" : "Skip to main content"}</a>
     <LocaleSuggest />
     <Header />
 
-    <main class:list={["l-main", "l-content", contentWide && "l-content--with-sidebar"]}>
+    <main id="main" class:list={["l-main", "l-content", contentWide && "l-content--with-sidebar"]}>
       <slot />
     </main>
 
@@ -231,5 +232,22 @@ const breadcrumbSchema =
         }
       </style>
     )}
+    <style is:global>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        z-index: 9999;
+        padding: 0.75rem 1.25rem;
+        background: var(--color-theme);
+        color: var(--color-base);
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 0 0 8px 0;
+      }
+      .skip-link:focus {
+        left: 0;
+        top: 0;
+      }
+    </style>
   </body>
 </html>

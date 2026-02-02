@@ -1,7 +1,10 @@
 ---
 import { LOCALES, localeParams, useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@/layouts/Base.astro";
-const t = useTranslations(Astro.currentLocale as Lang);
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const homeUrl = getRelativeLocaleUrl(locale, "/");
 
 const title = t({
   en: "Page Not Found",
@@ -26,7 +29,7 @@ export const getStaticPaths = () => localeParams;
       }
     </p>
 
-    <a href="/" class="gotop">
+    <a href={homeUrl} class="gotop">
       {t({ en: "Top Page", "zh-cn": "首页" })}
     </a>
 

@@ -261,7 +261,8 @@ const t = useTranslations(locale);
     transition: background 0.2s ease;
   }
 
-  .search-result-item:hover {
+  .search-result-item:hover,
+  .search-result-item:focus-visible {
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
   }
 
