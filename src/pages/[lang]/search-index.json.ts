@@ -22,7 +22,7 @@ export const GET: APIRoute = async ({ params }) => {
 
   const index: SearchIndexItem[] = posts.map((post) => {
     const [, ...idParts] = post.id.split("/");
-    const url = `/${lang}/blog/${idParts.join("/")}/`;
+    const url = `/${lang}/blog/${idParts.join("/").toLowerCase()}/`;
     return {
       title: post.data.title,
       description: post.data.description,

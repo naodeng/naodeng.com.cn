@@ -56,7 +56,7 @@ export const getStaticPaths = () =>
         <h2 class="section-title">{locale === "zh-cn" ? "按标签浏览" : "Browse by Tag"}</h2>
         <div class="tags-wrap">
           {tags.map((tag) => (
-            <a href={getRelativeLocaleUrl(locale, `/tags/${encodeURIComponent(tag)}`)} class="tag-pill">#{tag}</a>
+            <a href={getRelativeLocaleUrl(locale, `/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}`)} class="tag-pill">#{tag}</a>
           ))}
         </div>
       </section>
@@ -68,7 +68,7 @@ export const getStaticPaths = () =>
       <ul class="post-list">
         {posts.map((post) => {
           const [, ...idParts] = post.id.split("/");
-          const url = getRelativeLocaleUrl(locale, `/blog/${idParts.join("/")}`);
+          const url = getRelativeLocaleUrl(locale, `/blog/${idParts.join("/").toLowerCase()}`);
           return (
             <li>
               <a href={url}>{post.data.title}</a>

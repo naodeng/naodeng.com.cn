@@ -36,7 +36,9 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 4,
+          "maxItems": 6
         },
         "categories": {
           "type": "array",

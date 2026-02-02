@@ -43,7 +43,7 @@ export const getStaticPaths = () =>
         <ul class="posts-list">
           {postsByYear[Number(year)].map((post) => {
             const [, ...idParts] = post.id.split("/");
-            const postUrl = `/${locale}/blog/${idParts.join("/")}/`;
+            const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
             const dateStr = post.data.date.toLocaleDateString(
               locale === "zh-cn" ? "zh-CN" : "en-US",
               { month: "short", day: "numeric" }

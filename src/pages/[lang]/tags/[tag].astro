@@ -7,9 +7,9 @@ import { NAV_HOME, NAV_TAGS } from "@/consts";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
-/** URL-safe tag for path segment (e.g. "CI/CD" → "CI%2FCD") */
+/** 与 getStaticPaths 一致：仅当标签含 "/" 时编码，否则用原文（避免中文等 404） */
 function tagToSlug(t: string) {
-  return encodeURIComponent(t);
+  return t.includes("/") ? encodeURIComponent(t) : t;
 }
 function slugToTag(slug: string) {
   return decodeURIComponent(slug);
@@ -24,8 +24,10 @@ export async function getStaticPaths() {
     const tags = [...new Set(langPosts.flatMap((post) => post.data.tags || []))];
     
     for (const tag of tags) {
+      // 仅当标签含 "/" 时编码路径段，否则用原文（避免中文等与请求 URL 不一致导致 404）
+      const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
       paths.push({
-        params: { lang, tag: encodeURIComponent(tag) },
+        params: { lang, tag: tagSegment },
         props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
       });
     }
@@ -62,7 +64,7 @@ const breadcrumbs = [
       {
         sortedPosts.map((post) => {
           const [, ...id] = post.id.split("/");
-          const postUrl = `/${locale}/blog/${id.join("/")}/`;
+          const postUrl = `/${locale}/blog/${id.join("/").toLowerCase()}/`;
           const dateStr = post.data.date.toLocaleDateString(
             locale === "zh-cn" ? "zh-CN" : "en-US",
             { year: "numeric", month: "short", day: "numeric" }
@@ -141,7 +143,7 @@ const breadcrumbs = [
   }
 
   .post-cover {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
     overflow: hidden;
     background: var(--color-theme);
   }

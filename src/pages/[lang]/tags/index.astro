@@ -39,7 +39,7 @@ export const getStaticPaths = () =>
     {tagsList.length > 0 ? (
       <div class="tags-cloud">
         {tagsList.map(({ tag, count }) => (
-          <a href={`/${locale}/tags/${encodeURIComponent(tag)}/`} class="tag-pill">
+          <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-pill">
             <span class="tag-hash">#</span>{tag}
             <span class="tag-count">{count}</span>
           </a>

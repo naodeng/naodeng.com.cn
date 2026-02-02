@@ -26,7 +26,7 @@ export async function GET(context) {
     site: context.site,
     items: posts.map((post) => {
       const [, ...idParts] = post.id.split("/");
-      const slug = idParts.join("/");
+      const slug = idParts.join("/").toLowerCase();
       return {
         title: post.data.title,
         pubDate: post.data.date,

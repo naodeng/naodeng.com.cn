@@ -59,7 +59,7 @@ const breadcrumbs = [
       {
         sortedPosts.map((post) => {
           const [, ...id] = post.id.split("/");
-          const postUrl = `/${locale}/blog/${id.join("/")}/`;
+          const postUrl = `/${locale}/blog/${id.join("/").toLowerCase()}/`;
           const dateStr = post.data.date.toLocaleDateString(
             locale === "zh-cn" ? "zh-CN" : "en-US",
             { year: "numeric", month: "short", day: "numeric" }
@@ -83,7 +83,7 @@ const breadcrumbs = [
               {post.data.tags && (
                 <div class="post-tags">
                   {post.data.tags.slice(0, 3).map((tag) => (
-                    <a href={`/${locale}/tags/${encodeURIComponent(tag)}/`} class="tag-link">
+                    <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
                       #{tag}
                     </a>
                   ))}
@@ -138,7 +138,7 @@ const breadcrumbs = [
   }
 
   .post-cover {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
     overflow: hidden;
     background: var(--color-theme);
   }

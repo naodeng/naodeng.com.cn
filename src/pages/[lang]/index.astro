@@ -121,7 +121,7 @@ export const getStaticPaths = () =>
     </div>
     <div class="tags-container">
       {popularTags.map((tag) => (
-        <a href={getRelativeLocaleUrl(locale, `/tags/${encodeURIComponent(tag)}`)} class="tag-pill">
+        <a href={getRelativeLocaleUrl(locale, `/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}`)} class="tag-pill">
           <span class="tag-hash">#</span>{tag}
           <span class="tag-count">{tagCounts[tag]}</span>
         </a>
@@ -136,7 +136,7 @@ export const getStaticPaths = () =>
     <div class="post-grid">
       {latestPosts.map((post) => {
         const [, ...idParts] = post.id.split("/");
-        const postUrl = `/${locale}/blog/${idParts.join("/")}/`;
+        const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
         const dateStr = post.data.date.toLocaleDateString(
           locale === "zh-cn" ? "zh-CN" : "en-US",
           { year: "numeric", month: "short", day: "numeric" }
@@ -520,7 +520,7 @@ export const getStaticPaths = () =>
     height: 100%;
   }
   .post-cover {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 7.2; /* 高度为 16:9 的 80% */
     overflow: hidden;
   }
   .post-cover :global(img) {
