@@ -128,6 +128,12 @@ export const NAV_LINKS: Multilingual = {
   "zh-cn": "友情链接",
 };
 
+/** 底部导航：访问统计（Counterscale 仪表盘） */
+export const NAV_ANALYTICS: Multilingual = {
+  en: "Analytics",
+  "zh-cn": "访问统计",
+};
+
 /** 博文版权/许可（展示在日期行） */
 export const ARTICLE_LICENSE = "CC BY-SA 4.0";
 

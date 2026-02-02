@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Article.astro";
 import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
+import Giscus from "@/components/Giscus.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { getCollection, render } from "astro:content";
 import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
@@ -147,6 +148,13 @@ const statsLabels = locale === "zh-cn"
         <div class="prose">
           <Content class="material-icons" />
         </div>
+        <Giscus
+          lang={locale === "zh-cn" ? "zh-CN" : "en"}
+          theme="preferred_color_scheme"
+          inputPosition="bottom"
+          reactionsEnabled={true}
+          loading="lazy"
+        />
       </div>
     </div>
 

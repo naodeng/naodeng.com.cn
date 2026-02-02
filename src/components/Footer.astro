@@ -12,6 +12,7 @@ import {
   NAV_COPYRIGHT,
   NAV_PRIVACY,
   NAV_LINKS,
+  NAV_ANALYTICS,
   SITE_TITLE,
   SITE_SLOGAN
 } from "@/consts";
@@ -74,6 +75,7 @@ const t = {
       <a href={getRelativeLocaleUrl(locale, "/privacy")}>{typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/links")}>{typeof NAV_LINKS === 'string' ? NAV_LINKS : NAV_LINKS[locale]}</a>
       <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer">{typeof NAV_STATUS === 'string' ? NAV_STATUS : NAV_STATUS[locale]}</a>
+      <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer">{typeof NAV_ANALYTICS === 'string' ? NAV_ANALYTICS : NAV_ANALYTICS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/rss.xml")} target="_blank">{t.rss}</a>
       <a href={getRelativeLocaleUrl(locale, "/sitemap")}>{t.sitemap}</a>
     </nav>

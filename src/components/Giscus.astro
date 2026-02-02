@@ -1,0 +1,75 @@
+---
+/**
+ * Giscus 评论组件（基于 GitHub Discussions）
+ * 默认使用 naodeng/naodeng.com.cn 的配置；可通过 .env 覆盖：
+ *   PUBLIC_GISCUS_REPO、PUBLIC_GISCUS_REPO_ID、PUBLIC_GISCUS_CATEGORY、PUBLIC_GISCUS_CATEGORY_ID
+ */
+const GISCUS_DEFAULTS = {
+  repo: "naodeng/naodeng.com.cn",
+  repoId: "R_kgDOHntNtg",
+  category: "Show and tell",
+  categoryId: "DIC_kwDOHntNts4Cavst",
+};
+
+interface Props {
+  /** 界面语言，与 giscus 支持的语言代码一致，如 zh-CN、en */
+  lang?: string;
+  /** 主题：light | dark | preferred_color_scheme */
+  theme?: string;
+  /** 评论框位置：top | bottom */
+  inputPosition?: "top" | "bottom";
+  /** 是否启用主帖反应 */
+  reactionsEnabled?: boolean;
+  /** 是否懒加载 */
+  loading?: "lazy" | "eager";
+}
+
+const {
+  lang = "zh-CN",
+  theme = "preferred_color_scheme",
+  inputPosition = "bottom",
+  reactionsEnabled = true,
+  loading = "lazy",
+} = Astro.props;
+
+const repo = (import.meta.env.PUBLIC_GISCUS_REPO as string | undefined) ?? GISCUS_DEFAULTS.repo;
+const repoId = (import.meta.env.PUBLIC_GISCUS_REPO_ID as string | undefined) ?? GISCUS_DEFAULTS.repoId;
+const category = (import.meta.env.PUBLIC_GISCUS_CATEGORY as string | undefined) ?? GISCUS_DEFAULTS.category;
+const categoryId = (import.meta.env.PUBLIC_GISCUS_CATEGORY_ID as string | undefined) ?? GISCUS_DEFAULTS.categoryId;
+
+const enabled = Boolean(repo && repoId && category && categoryId);
+---
+
+{enabled && (
+  <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
+    <div class="giscus"></div>
+    <script
+      src="https://giscus.app/client.js"
+      data-repo={repo}
+      data-repo-id={repoId}
+      data-category={category}
+      data-category-id={categoryId}
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled={reactionsEnabled ? "1" : "0"}
+      data-emit-metadata="0"
+      data-input-position={inputPosition}
+      data-theme={theme}
+      data-lang={lang}
+      data-loading={loading}
+      crossorigin="anonymous"
+      async
+    />
+  </section>
+)}
+
+<style>
+  .giscus-section {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-l);
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+  }
+  .giscus-section :global(.giscus-frame) {
+    width: 100%;
+  }
+</style>
