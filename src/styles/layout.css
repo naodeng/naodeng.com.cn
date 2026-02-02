@@ -7,8 +7,9 @@
   padding-block-end: 4rem;
 }
 
+/* 与博文详情页正文区宽度一致（880px） */
 .l-content {
-  max-inline-size: 800px;
+  max-inline-size: 880px;
   padding-inline: var(--sp-m);
   margin-inline: auto;
 }

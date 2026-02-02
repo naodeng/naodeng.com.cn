@@ -43,7 +43,10 @@ const popularTags = Object.entries(tagCounts)
 
 const featuredProjects = PROJECTS_LIST.slice(0, 4);
 
-const introHtml = marked(t(HOME_INTRO), { gfm: true }) as string;
+const introHtmlRaw = marked(t(HOME_INTRO), { gfm: true }) as string;
+const wechatQrUrl = "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015%27QR%20Code%20for%20%E5%85%AC%E4%BC%97%E5%8F%B7.jpg";
+const wechatTriggerHtml = `<span class="intro-wechat-trigger" tabindex="0" title="${locale === "zh-cn" ? "微信公众号：软件测试同学" : "WeChat: 软件测试同学"}">软件测试同学<span class="intro-wechat-qr"><img src="${wechatQrUrl}" alt="微信公众号 软件测试同学 二维码" width="400" height="400" loading="lazy" /></span></span>`;
+const introHtml = introHtmlRaw.replace("<strong>软件测试同学</strong>", wechatTriggerHtml);
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -214,6 +217,7 @@ export const getStaticPaths = () =>
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
+    overflow: visible;
   }
   .intro-row {
     display: grid;
@@ -247,11 +251,13 @@ export const getStaticPaths = () =>
   }
   .intro-main {
     min-width: 0;
+    overflow: visible;
   }
   .intro-card {
     padding: 0;
     line-height: 1.65;
     font-size: 0.9375rem;
+    overflow: visible;
   }
   .intro-card :global(ul) {
     margin-block-start: 0;
@@ -262,6 +268,7 @@ export const getStaticPaths = () =>
     margin-block: 0.4rem;
     position: relative;
     padding-inline-start: 1.35rem;
+    overflow: visible;
   }
   .intro-card :global(li::before) {
     content: "▹";
@@ -273,9 +280,9 @@ export const getStaticPaths = () =>
   .intro-sidebar {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     flex-shrink: 0;
-    padding-inline-start: var(--sp-l);
+    padding-inline-start: var(--sp-m);
     align-self: stretch;
     min-height: 0;
     min-width: 12rem;
@@ -283,59 +290,68 @@ export const getStaticPaths = () =>
   .intro-sidebar-inner {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.6rem;
     min-width: 0;
     width: 100%;
     padding-block: 0.15rem;
+    text-align: center;
   }
   .intro-logo-wrap {
     padding: 0;
+    margin-block-end: 0.25rem;
   }
   .intro-logo-link {
     display: block;
     text-decoration: none;
     color: inherit;
     transition: 0.2s ease-out;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   }
   .intro-logo-link:hover {
-    opacity: 0.85;
+    opacity: 0.9;
     transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
   }
   .intro-logo {
     display: block;
     width: 140px;
     height: 140px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 50%;
   }
   .intro-greeting {
     margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 700;
     color: var(--color-main);
-    line-height: 1.3;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
   }
   .intro-slogan {
     margin: 0;
     display: inline-block;
     max-width: 100%;
-    padding: 0.5em 1em;
+    padding: 0.55em 1.1em;
     font-size: 0.8125rem;
     font-weight: 600;
     font-family: var(--english-font);
-    color: var(--color-theme);
+    color: var(--color-base);
     letter-spacing: 0.02em;
-    line-height: 1.4;
+    line-height: 1.45;
     text-align: center;
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-    border-radius: 0.5rem;
+    background: var(--color-theme);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--color-theme) 45%, transparent);
     transition: 0.2s ease-out;
     overflow-wrap: break-word;
   }
   .intro-slogan:hover {
-    background: color-mix(in srgb, var(--color-theme) 16%, transparent);
-    border-color: color-mix(in srgb, var(--color-theme) 35%, transparent);
+    filter: brightness(1.08);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-theme) 50%, transparent);
   }
   .intro-card :global(a) {
     color: var(--color-theme);
@@ -346,6 +362,47 @@ export const getStaticPaths = () =>
   .intro-card :global(a:hover) {
     border-bottom-style: solid;
     opacity: 0.8;
+  }
+
+  .intro-card :global(.intro-wechat-trigger) {
+    color: var(--color-theme);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color-theme);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+  }
+  .intro-card :global(.intro-wechat-trigger:hover) {
+    border-bottom-style: solid;
+    opacity: 0.9;
+  }
+  .intro-card :global(.intro-wechat-qr) {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 1.25rem);
+    transform: translateX(-50%);
+    display: none;
+    z-index: 999;
+    padding: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    min-width: 0;
+    flex-shrink: 0;
+  }
+  .intro-card :global(.intro-wechat-qr img) {
+    display: block;
+    width: 400px;
+    height: 400px;
+    min-width: 400px;
+    min-height: 400px;
+    object-fit: contain;
+    image-rendering: auto;
+  }
+  .intro-card :global(.intro-wechat-trigger:hover .intro-wechat-qr),
+  .intro-card :global(.intro-wechat-trigger:focus-within .intro-wechat-qr) {
+    display: block;
   }
 
   .home-section {

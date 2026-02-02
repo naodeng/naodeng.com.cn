@@ -45,12 +45,14 @@ export const HOME_INTRO: Multilingual = {
 - I regularly write articles on [inaodeng.com](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- WeChat: **软件测试同学**
 - Support me by [**supporting this blog**](https://inaodeng.com/sponsor)`,
   "zh-cn": `- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
 - 正在学习 **AI 辅助测试**
 - 定期在 [inaodeng.com](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- 微信公众号：**软件测试同学**
 - 支持我 [**成为支持者**](https://inaodeng.com/sponsor)`,
 };
 
