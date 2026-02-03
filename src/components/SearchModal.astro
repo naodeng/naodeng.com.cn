@@ -23,36 +23,28 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
       autocomplete="off"
       enterkeyhint="search"
     />
-    <span class="search-hint" data-hint>{t(SEARCH_OPEN_HINT)}</span>
+    <div class="search-hint-row">
+      <span class="search-hint" data-hint>{t(SEARCH_OPEN_HINT)}</span>
+      <p class="search-algolia-badge">
+        <a
+          href="https://www.algolia.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="search-algolia-link"
+          aria-label="Search by Algolia"
+        >
+          <span class="search-algolia-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </span>
+          <span class="search-algolia-text"><span class="search-algolia-by">Search by</span> Algolia</span>
+        </a>
+      </p>
+    </div>
   </div>
   <div class="search-results" id="search-results" role="list"></div>
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
-  {useAlgolia && (
-    <p class="search-algolia-badge">
-      <a
-        href="https://www.algolia.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="search-algolia-link"
-        aria-label="Search by Algolia"
-      >
-        <img
-          src="https://www.algolia.com/static_assets/images/press/downloads/algolia-logo-dark.svg"
-          alt=""
-          width="70"
-          height="16"
-          class="search-algolia-logo search-algolia-logo-dark"
-        />
-        <img
-          src="https://www.algolia.com/static_assets/images/press/downloads/algolia-logo-light.svg"
-          alt=""
-          width="70"
-          height="16"
-          class="search-algolia-logo search-algolia-logo-light"
-        />
-      </a>
-    </p>
-  )}
 </dialog>
 
 <script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
@@ -306,9 +298,16 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-theme) 25%, transparent);
   }
 
-  .search-hint {
-    display: block;
+  .search-hint-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     margin-block-start: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .search-hint {
     font-size: 0.85rem;
     opacity: 0.6;
   }
@@ -368,44 +367,55 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   }
 
   .search-algolia-badge {
-    max-inline-size: 560px;
-    margin-inline: auto;
-    margin-block-start: 0.75rem;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
   }
 
   .search-algolia-link {
     display: inline-flex;
     align-items: center;
+    gap: 0.4rem;
     color: inherit;
     text-decoration: none;
-    opacity: 0.6;
+    opacity: 1;
     transition: opacity 0.2s ease;
   }
 
   .search-algolia-link:hover,
   .search-algolia-link:focus-visible {
-    opacity: 1;
+    opacity: 0.9;
   }
 
-  .search-algolia-logo {
-    display: block;
-    height: 16px;
-    width: auto;
-    max-width: 70px;
-    vertical-align: middle;
+  .search-algolia-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #5468ff;
+    flex-shrink: 0;
   }
 
-  .search-algolia-logo-light {
-    display: none;
+  .search-algolia-text {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .search-algolia-logo-dark {
-      display: none;
-    }
-    .search-algolia-logo-light {
-      display: block;
-    }
+  .search-algolia-by {
+    color: var(--color-main);
+    opacity: 0.95;
+    margin-inline-end: 0.25rem;
+  }
+
+  .search-algolia-link .search-algolia-text {
+    color: #5468ff;
+  }
+
+  .search-algolia-link:hover .search-algolia-text,
+  .search-algolia-link:focus-visible .search-algolia-text {
+    text-decoration: underline;
   }
 </style>
