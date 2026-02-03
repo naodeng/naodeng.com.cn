@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /cdn-cgi/
 Disallow: /index.xml
 Sitemap: https://inaodeng.com/sitemap-index.xml
+# Algolia-Crawler-Verif: B0319275B670BBB0
