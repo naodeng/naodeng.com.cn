@@ -1,5 +1,5 @@
 ---
-import { SEARCH_PLACEHOLDER, SEARCH_NO_RESULTS, SEARCH_OPEN_HINT } from "@/consts";
+import { SEARCH_PLACEHOLDER, SEARCH_NO_RESULTS, SEARCH_OPEN_HINT, SEARCH_SOURCE_ALGOLIA, SEARCH_SOURCE_LOCAL } from "@/consts";
 import { useTranslations, type Lang } from "@/i18n";
 
 const locale = Astro.currentLocale as Lang;
@@ -47,8 +47,8 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
-<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
-  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName */
+<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName, searchSourceLabelAlgolia: t(SEARCH_SOURCE_ALGOLIA), searchSourceLabelLocal: t(SEARCH_SOURCE_LOCAL) }}>
+  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName, searchSourceLabelAlgolia, searchSourceLabelLocal */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
   const resultsEl = document.getElementById("search-results");
@@ -82,10 +82,25 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     return div.innerHTML;
   }
 
-  function renderItems(items, hasQuery) {
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    if (hasQuery) {
+      const sourceLabel = document.createElement("span");
+      sourceLabel.className = "search-results-source";
+      sourceLabel.setAttribute("aria-live", "polite");
+      sourceLabel.textContent = fromAlgolia ? searchSourceLabelAlgolia : searchSourceLabelLocal;
+      resultsEl.appendChild(sourceLabel);
+    }
 
     items.slice(0, 20).forEach((item) => {
       const a = document.createElement("a");
@@ -140,7 +155,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
 
     if (useAlgolia) {
       if (!hasQuery) {
-        renderItems([], false);
+        renderItems([], false, false);
         return;
       }
       if (algoliaDebounce) clearTimeout(algoliaDebounce);
@@ -150,10 +165,10 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
         algoliaDebounce = null;
         try {
           const items = await algoliaSearch(queryAtRequest);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true, true);
         } catch (err) {
           console.error("Algolia search error:", err);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
         }
       }, 200);
       return;
@@ -165,7 +180,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
       return;
     }
     const items = filter(q);
-    renderItems(items, hasQuery);
+    renderItems(items, hasQuery, false);
   }
 
   function openSearch() {
@@ -329,6 +344,16 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
 
   .search-results[hidden] {
     display: none;
+  }
+
+  .search-results-source {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    color: var(--color-main);
+    padding: 0.25rem 0.5rem 0.35rem;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
+    margin-block-end: 0.25rem;
   }
 
   .search-result-item {
