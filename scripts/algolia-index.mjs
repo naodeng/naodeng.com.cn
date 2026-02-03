@@ -7,19 +7,20 @@
 import { readFile } from "fs/promises";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import algoliasearch from "algoliasearch";
+import { algoliasearch } from "algoliasearch";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const distDir = join(root, "dist");
 
-const APP_ID = process.env.ALGOLIA_APP_ID;
+// 优先用 ALGOLIA_*，可与前端 PUBLIC_* 共用同一 .env；ADMIN_KEY 无公开替代，必须单独配置
+const APP_ID = process.env.ALGOLIA_APP_ID ?? process.env.PUBLIC_ALGOLIA_APP_ID;
 const ADMIN_KEY = process.env.ALGOLIA_ADMIN_KEY;
-const INDEX_NAME = process.env.ALGOLIA_INDEX_NAME;
+const INDEX_NAME = process.env.ALGOLIA_INDEX_NAME ?? process.env.PUBLIC_ALGOLIA_INDEX_NAME;
 
 if (!APP_ID || !ADMIN_KEY || !INDEX_NAME) {
   console.error(
-    "Missing env: ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, ALGOLIA_INDEX_NAME"
+    "Missing env: set ALGOLIA_ADMIN_KEY (required), and ALGOLIA_APP_ID + ALGOLIA_INDEX_NAME (or PUBLIC_ALGOLIA_APP_ID + PUBLIC_ALGOLIA_INDEX_NAME) in .env. Use: npm run algolia-index (loads .env automatically)."
   );
   process.exit(1);
 }
@@ -65,14 +66,18 @@ async function main() {
   }
 
   const client = algoliasearch(APP_ID, ADMIN_KEY);
-  const index = client.initIndex(INDEX_NAME);
 
-  await index.setSettings({
-    attributesForFaceting: ["filterOnly(lang)"],
+  await client.setSettings({
+    indexName: INDEX_NAME,
+    indexSettings: {
+      attributesForFaceting: ["filterOnly(lang)"],
+      searchableAttributes: ["title", "description", "tags"],
+    },
   });
 
-  await index.replaceAllObjects(records, {
-    safe: true,
+  await client.replaceAllObjects({
+    indexName: INDEX_NAME,
+    objects: records,
   });
 
   console.log(`Algolia: pushed ${records.length} records to index "${INDEX_NAME}".`);
