@@ -4,6 +4,11 @@ import { useTranslations, type Lang } from "@/i18n";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
+
+const algoliaAppId = import.meta.env.PUBLIC_ALGOLIA_APP_ID ?? "";
+const algoliaSearchKey = import.meta.env.PUBLIC_ALGOLIA_SEARCH_KEY ?? "";
+const algoliaIndexName = import.meta.env.PUBLIC_ALGOLIA_INDEX_NAME ?? "";
+const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName);
 ---
 
 <dialog id="search-dialog" class="search-dialog" aria-label={t(SEARCH_PLACEHOLDER)}>
@@ -24,25 +29,26 @@ const t = useTranslations(locale);
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
-<script>
-  type SearchItem = { title: string; description: string; url: string; date: string; tags?: string[] };
-
-  const dialog = document.getElementById("search-dialog") as HTMLDialogElement;
-  const input = document.getElementById("search-input") as HTMLInputElement;
-  const resultsEl = document.getElementById("search-results") as HTMLDivElement;
-  const emptyEl = document.getElementById("search-empty") as HTMLParagraphElement;
+<script define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
   const backdrop = document.querySelector(".search-backdrop[data-close]");
   const hintEl = document.querySelector("[data-hint]");
 
-  let index: SearchItem[] = [];
+  let index = [];
   let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
 
-  function getLocale(): string {
+  function getLocale() {
     const el = document.documentElement.getAttribute("data-locale");
     return el === "zh-cn" ? "zh-cn" : "en";
   }
 
-  async function loadIndex(): Promise<SearchItem[]> {
+  async function loadIndex() {
     if (index.length > 0) return index;
     locale = getLocale();
     const res = await fetch(`/${locale}/search-index.json`);
@@ -51,13 +57,13 @@ const t = useTranslations(locale);
     return index;
   }
 
-  function escapeHtml(s: string): string {
+  function escapeHtml(s) {
     const div = document.createElement("div");
     div.textContent = s;
     return div.innerHTML;
   }
 
-  function renderItems(items: SearchItem[], hasQuery: boolean) {
+  function renderItems(items, hasQuery) {
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
@@ -81,7 +87,7 @@ const t = useTranslations(locale);
     });
   }
 
-  function filter(q: string): SearchItem[] {
+  function filter(q) {
     const lower = q.trim().toLowerCase();
     if (!lower) return [];
     return index.filter(
@@ -92,26 +98,75 @@ const t = useTranslations(locale);
     );
   }
 
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      const { algoliasearch } = await import("algoliasearch");
+      algoliaClient = algoliasearch(algoliaAppId, algoliaSearchKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        facetFilters: [["lang:" + locale]],
+        hitsPerPage: 20,
+      },
+    });
+    return hits;
+  }
+
   function onInput() {
     const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true);
+        } catch (err) {
+          console.error("Algolia search error:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true);
+        }
+      }, 200);
+      return;
+    }
+
     if (!index.length) {
       resultsEl.hidden = true;
       emptyEl.hidden = true;
       return;
     }
-    const hasQuery = q.trim().length > 0;
     const items = filter(q);
     renderItems(items, hasQuery);
   }
 
   function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
     loadIndex().then(() => {
       dialog.showModal();
       input.value = "";
       input.focus();
       resultsEl.hidden = true;
       emptyEl.hidden = true;
-      if (hintEl) (hintEl as HTMLElement).style.display = "block";
+      if (hintEl) hintEl.style.display = "block";
     });
   }
 
