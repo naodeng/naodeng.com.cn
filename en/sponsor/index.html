@@ -11,7 +11,7 @@
     })();</script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>header[data-astro-cid-ql4jah75]{position:relative;overflow:hidden;padding-block:var(--sp-l) calc(var(--sp-l) + var(--sp-s));padding-inline:var(--sp-m);text-align:center;border-radius:20px;color:var(--color-theme);background:color-mix(in srgb,var(--color-accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 12%,transparent)}@media(width<768px){header[data-astro-cid-ql4jah75]{margin-inline:calc(50% - 50vw);border-radius:0;border-inline:none;padding-inline:var(--sp-m)}}h1[data-astro-cid-ql4jah75]{font-size:1.65rem;font-weight:800;letter-spacing:.04em;margin:0;line-height:1.25}header[data-astro-cid-ql4jah75] .headline-intro{padding-inline:var(--sp-s)}
 .sponsor-section[data-astro-cid-zwblcp6s]{margin-block-start:var(--sp-l);padding-block-start:var(--sp-m);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 20%,transparent)}.section-title[data-astro-cid-zwblcp6s]{font-size:1.35rem;letter-spacing:.05em;color:var(--color-theme);margin-block-end:var(--sp-m)}.prose[data-astro-cid-zwblcp6s] ul{padding-inline-start:1.2em}.prose[data-astro-cid-zwblcp6s] li{margin-block:.5em}.prose[data-astro-cid-zwblcp6s] strong{font-weight:800}.methods-grid[data-astro-cid-zwblcp6s]{display:grid;gap:var(--sp-m);grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));margin-block:var(--sp-m)}.method-card[data-astro-cid-zwblcp6s]{padding:var(--sp-m);border-radius:12px;background:color-mix(in srgb,var(--color-theme) 6%,transparent);text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:var(--sp-s)}.method-card[data-astro-cid-zwblcp6s] h3[data-astro-cid-zwblcp6s]{font-size:1.1rem;color:var(--color-theme)}.method-card[data-astro-cid-zwblcp6s] p[data-astro-cid-zwblcp6s]{font-size:.9rem;opacity:.8}.btn[data-astro-cid-zwblcp6s]{display:inline-block;padding:.6em 1.2em;background-color:var(--color-theme);color:var(--color-base);text-decoration:none;border-radius:8px;font-weight:600;transition:transform .2s ease}.btn[data-astro-cid-zwblcp6s]:hover{transform:translateY(-2px)}.qr-card[data-astro-cid-zwblcp6s] img[data-astro-cid-zwblcp6s]{width:100%;max-width:200px;margin-inline:auto;border-radius:8px;border:1px solid color-mix(in srgb,var(--color-theme) 20%,transparent)}.tagline[data-astro-cid-zwblcp6s]{text-align:center;font-size:1.2rem;margin-block:var(--sp-m);color:var(--color-theme)}
 </style>
-<link rel="stylesheet" href="/_astro/_id_.DBIXLgm8.css"></head> <body> <a href="#main" class="skip-link">Skip to main content</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+<link rel="stylesheet" href="/_astro/_id_.JwmxlzAW.css"></head> <body> <a href="#main" class="skip-link">Skip to main content</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
 const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
 
   const browserLang = navigator.language.toLowerCase();
@@ -66,8 +66,10 @@ Ko-fi
 const algoliaAppId = "";
 const algoliaSearchKey = "";
 const algoliaIndexName = "";
+const searchSourceLabelAlgolia = "From Algolia";
+const searchSourceLabelLocal = "Local search";
 
-  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName */
+  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName, searchSourceLabelAlgolia, searchSourceLabelLocal */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
   const resultsEl = document.getElementById("search-results");
@@ -101,10 +103,25 @@ const algoliaIndexName = "";
     return div.innerHTML;
   }
 
-  function renderItems(items, hasQuery) {
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    if (hasQuery) {
+      const sourceLabel = document.createElement("span");
+      sourceLabel.className = "search-results-source";
+      sourceLabel.setAttribute("aria-live", "polite");
+      sourceLabel.textContent = fromAlgolia ? searchSourceLabelAlgolia : searchSourceLabelLocal;
+      resultsEl.appendChild(sourceLabel);
+    }
 
     items.slice(0, 20).forEach((item) => {
       const a = document.createElement("a");
@@ -159,7 +176,7 @@ const algoliaIndexName = "";
 
     if (useAlgolia) {
       if (!hasQuery) {
-        renderItems([], false);
+        renderItems([], false, false);
         return;
       }
       if (algoliaDebounce) clearTimeout(algoliaDebounce);
@@ -169,10 +186,10 @@ const algoliaIndexName = "";
         algoliaDebounce = null;
         try {
           const items = await algoliaSearch(queryAtRequest);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true, true);
         } catch (err) {
           console.error("Algolia search error:", err);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
         }
       }, 200);
       return;
@@ -184,7 +201,7 @@ const algoliaIndexName = "";
       return;
     }
     const items = filter(q);
-    renderItems(items, hasQuery);
+    renderItems(items, hasQuery, false);
   }
 
   function openSearch() {

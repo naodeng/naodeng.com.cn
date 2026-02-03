@@ -11,7 +11,7 @@
     })();</script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>header[data-astro-cid-ql4jah75]{position:relative;overflow:hidden;padding-block:var(--sp-l) calc(var(--sp-l) + var(--sp-s));padding-inline:var(--sp-m);text-align:center;border-radius:20px;color:var(--color-theme);background:color-mix(in srgb,var(--color-accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 12%,transparent)}@media(width<768px){header[data-astro-cid-ql4jah75]{margin-inline:calc(50% - 50vw);border-radius:0;border-inline:none;padding-inline:var(--sp-m)}}h1[data-astro-cid-ql4jah75]{font-size:1.65rem;font-weight:800;letter-spacing:.04em;margin:0;line-height:1.25}header[data-astro-cid-ql4jah75] .headline-intro{padding-inline:var(--sp-s)}
 .copyright-section[data-astro-cid-ufnn7fzb]{max-inline-size:55rem;margin-inline:auto;padding-inline:var(--sp-m);padding-block-end:var(--sp-l)}.intro[data-astro-cid-ufnn7fzb]{font-size:1.05rem;line-height:1.6;margin-block-end:var(--sp-m)}.copyright-section[data-astro-cid-ufnn7fzb] h2[data-astro-cid-ufnn7fzb]{font-size:1.2rem;font-weight:700;margin-block:var(--sp-m) var(--sp-s)}.copyright-section[data-astro-cid-ufnn7fzb] ul[data-astro-cid-ufnn7fzb]{padding-inline-start:1.5rem;margin-block-end:var(--sp-m)}.copyright-section[data-astro-cid-ufnn7fzb] li[data-astro-cid-ufnn7fzb]{margin-block:.35rem 0;line-height:1.55}.license-links[data-astro-cid-ufnn7fzb]{display:flex;flex-wrap:wrap;gap:1rem;margin-block:var(--sp-m)}.btn[data-astro-cid-ufnn7fzb]{display:inline-block;padding:.6rem 1.2rem;background:var(--color-theme);color:var(--color-base);border-radius:12px;font-weight:600;text-decoration:none;transition:opacity .2s ease,transform .2s ease}.btn[data-astro-cid-ufnn7fzb]:hover{opacity:.9;transform:translateY(-1px)}.btn[data-astro-cid-ufnn7fzb].secondary{background:color-mix(in srgb,var(--color-theme) 15%,transparent);color:var(--color-main);border:1px solid color-mix(in srgb,var(--color-theme) 35%,transparent)}.notice[data-astro-cid-ufnn7fzb]{font-size:.9rem;opacity:.85;margin-block-start:var(--sp-m)}
 </style>
-<link rel="stylesheet" href="/_astro/_id_.DBIXLgm8.css"></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+<link rel="stylesheet" href="/_astro/_id_.JwmxlzAW.css"></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
 const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
 
   const browserLang = navigator.language.toLowerCase();
@@ -49,8 +49,10 @@ const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简�
 const algoliaAppId = "";
 const algoliaSearchKey = "";
 const algoliaIndexName = "";
+const searchSourceLabelAlgolia = "来自 Algolia";
+const searchSourceLabelLocal = "本地索引";
 
-  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName */
+  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName, searchSourceLabelAlgolia, searchSourceLabelLocal */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
   const resultsEl = document.getElementById("search-results");
@@ -84,10 +86,25 @@ const algoliaIndexName = "";
     return div.innerHTML;
   }
 
-  function renderItems(items, hasQuery) {
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    if (hasQuery) {
+      const sourceLabel = document.createElement("span");
+      sourceLabel.className = "search-results-source";
+      sourceLabel.setAttribute("aria-live", "polite");
+      sourceLabel.textContent = fromAlgolia ? searchSourceLabelAlgolia : searchSourceLabelLocal;
+      resultsEl.appendChild(sourceLabel);
+    }
 
     items.slice(0, 20).forEach((item) => {
       const a = document.createElement("a");
@@ -142,7 +159,7 @@ const algoliaIndexName = "";
 
     if (useAlgolia) {
       if (!hasQuery) {
-        renderItems([], false);
+        renderItems([], false, false);
         return;
       }
       if (algoliaDebounce) clearTimeout(algoliaDebounce);
@@ -152,10 +169,10 @@ const algoliaIndexName = "";
         algoliaDebounce = null;
         try {
           const items = await algoliaSearch(queryAtRequest);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems(items, true, true);
         } catch (err) {
           console.error("Algolia search error:", err);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
         }
       }, 200);
       return;
@@ -167,7 +184,7 @@ const algoliaIndexName = "";
       return;
     }
     const items = filter(q);
-    renderItems(items, hasQuery);
+    renderItems(items, hasQuery, false);
   }
 
   function openSearch() {
