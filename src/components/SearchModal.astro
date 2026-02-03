@@ -27,6 +27,32 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   </div>
   <div class="search-results" id="search-results" role="list"></div>
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
+  {useAlgolia && (
+    <p class="search-algolia-badge">
+      <a
+        href="https://www.algolia.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="search-algolia-link"
+        aria-label="Search by Algolia"
+      >
+        <img
+          src="https://www.algolia.com/static_assets/images/press/downloads/algolia-logo-dark.svg"
+          alt=""
+          width="70"
+          height="16"
+          class="search-algolia-logo search-algolia-logo-dark"
+        />
+        <img
+          src="https://www.algolia.com/static_assets/images/press/downloads/algolia-logo-light.svg"
+          alt=""
+          width="70"
+          height="16"
+          class="search-algolia-logo search-algolia-logo-light"
+        />
+      </a>
+    </p>
+  )}
 </dialog>
 
 <script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
@@ -339,5 +365,47 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     padding: 1rem;
     text-align: center;
     opacity: 0.8;
+  }
+
+  .search-algolia-badge {
+    max-inline-size: 560px;
+    margin-inline: auto;
+    margin-block-start: 0.75rem;
+    text-align: center;
+  }
+
+  .search-algolia-link {
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  .search-algolia-link:hover,
+  .search-algolia-link:focus-visible {
+    opacity: 1;
+  }
+
+  .search-algolia-logo {
+    display: block;
+    height: 16px;
+    width: auto;
+    max-width: 70px;
+    vertical-align: middle;
+  }
+
+  .search-algolia-logo-light {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .search-algolia-logo-dark {
+      display: none;
+    }
+    .search-algolia-logo-light {
+      display: block;
+    }
   }
 </style>
