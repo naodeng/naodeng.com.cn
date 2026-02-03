@@ -28,6 +28,9 @@ export const getStaticPaths = () => localeParams;
         })
       }
     </p>
+    <p class="redirect-hint" id="redirect-hint" aria-live="polite">
+      {locale === "zh-cn" ? "10 秒后自动返回首页…" : "Redirecting to home in 10 seconds…"}
+    </p>
 
     <a href={homeUrl} class="gotop">
       {t({ en: "Top Page", "zh-cn": "首页" })}
@@ -67,6 +70,25 @@ export const getStaticPaths = () => localeParams;
     localStorage.removeItem("userAccessPath");
   }
 </script>
+<script define:vars={{ homeUrl }}>
+  (function () {
+    var sec = 10;
+    var el = document.getElementById("redirect-hint");
+    var t = setInterval(function () {
+      sec--;
+      if (sec <= 0) {
+        clearInterval(t);
+        window.location.href = homeUrl;
+        return;
+      }
+      if (el) {
+        el.textContent = (document.documentElement.lang === "zh-CN" || document.documentElement.getAttribute("data-locale") === "zh-cn")
+          ? sec + " 秒后自动返回首页…"
+          : "Redirecting to home in " + sec + " seconds…";
+      }
+    }, 1000);
+  })();
+</script>
 
 <style>
   .container {
@@ -88,6 +110,11 @@ export const getStaticPaths = () => localeParams;
   }
   .container > p {
     margin-block-start: var(--sp-s);
+  }
+  .redirect-hint {
+    margin-block-start: var(--sp-s);
+    font-size: 0.95rem;
+    opacity: 0.85;
   }
   .gotop {
     display: inline-block;
