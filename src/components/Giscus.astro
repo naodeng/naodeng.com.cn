@@ -43,7 +43,7 @@ const enabled = Boolean(repo && repoId && category && categoryId);
 {enabled && (
   <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
     <div class="giscus"></div>
-    <script
+    <script is:inline
       src="https://giscus.app/client.js"
       data-repo={repo}
       data-repo-id={repoId}

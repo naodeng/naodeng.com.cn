@@ -122,7 +122,7 @@ function isChineseTag(tag) {
   return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(tag);
 }
 
-function computeTags(filePath, content, lang) {
+function computeTags(_filePath, content, lang) {
   const { frontmatter, body } = getFrontmatterAndBody(content);
   const title = getTitle(frontmatter);
   const description = getDescription(frontmatter);

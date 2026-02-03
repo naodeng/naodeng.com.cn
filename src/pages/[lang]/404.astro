@@ -70,7 +70,7 @@ export const getStaticPaths = () => localeParams;
     localStorage.removeItem("userAccessPath");
   }
 </script>
-<script define:vars={{ homeUrl }}>
+<script is:inline define:vars={{ homeUrl }}>
   (function () {
     var sec = 10;
     var el = document.getElementById("redirect-hint");

@@ -29,7 +29,8 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
-<script define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
+<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
+  /* global useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
   const resultsEl = document.getElementById("search-results");
@@ -172,11 +173,11 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
 
   function closeSearch() {
     dialog.close();
-    if (hintEl) (hintEl as HTMLElement).style.display = "";
+    if (hintEl) hintEl.style.display = "";
   }
 
   dialog.addEventListener("close", () => {
-    if (hintEl) (hintEl as HTMLElement).style.display = "";
+    if (hintEl) hintEl.style.display = "";
   });
 
   dialog.addEventListener("cancel", closeSearch);
@@ -190,7 +191,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
       e.preventDefault();
     }
     if (e.key === "Enter") {
-      const first = resultsEl.querySelector<HTMLAnchorElement>(".search-result-item");
+      const first = resultsEl.querySelector(".search-result-item");
       if (first) {
         first.click();
         e.preventDefault();
