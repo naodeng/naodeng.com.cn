@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { Lang } from "@/i18n";
-import { PAGINATION_PREV, PAGINATION_NEXT } from "@/consts";
+import { PAGINATION_PREV, PAGINATION_NEXT, PAGINATION_FIRST, PAGINATION_LAST, PAGINATION_GO } from "@/consts";
 import { useTranslations } from "@/i18n";
 
 interface Props {
@@ -14,12 +14,32 @@ const { currentPage, totalPages, locale } = Astro.props;
 const t = useTranslations(locale);
 
 const blogBase = getRelativeLocaleUrl(locale, "/blog").replace(/\/$/, "");
+const firstUrl = blogBase;
 const prevUrl = currentPage === 2 ? blogBase : `${blogBase}/page/${currentPage - 1}`;
 const nextUrl = `${blogBase}/page/${currentPage + 1}`;
+const lastUrl = totalPages <= 1 ? blogBase : `${blogBase}/page/${totalPages}`;
+
+const labelFirst = t(PAGINATION_FIRST);
+const labelLast = t(PAGINATION_LAST);
+const labelGo = t(PAGINATION_GO);
+const labelJump = locale === "zh-cn" ? "输入页码跳转" : "Jump to page";
 ---
 
-<nav class="pagination-nav" aria-label={t({ en: "Pagination", "zh-cn": "分页" })}>
+<nav class="pagination-nav" aria-label={t({ en: "Pagination", "zh-cn": "分页" })} data-blog-base={blogBase} data-total-pages={totalPages}>
   <div class="pagination-inner">
+    <!-- 首页 -->
+    {currentPage > 1 ? (
+      <a href={firstUrl} class="pagination-link pagination-first" aria-label={labelFirst}>
+        <span class="material-icons-sharp" aria-hidden="true">first_page</span>
+        <span class="pagination-btn-text">{labelFirst}</span>
+      </a>
+    ) : (
+      <span class="pagination-link pagination-first disabled" aria-disabled="true" aria-label={labelFirst}>
+        <span class="material-icons-sharp" aria-hidden="true">first_page</span>
+        <span class="pagination-btn-text">{labelFirst}</span>
+      </span>
+    )}
+
     {currentPage > 1 ? (
       <a href={prevUrl} class="pagination-link pagination-prev" rel="prev">
         <span class="material-icons-sharp" aria-hidden="true">arrow_back</span>
@@ -36,19 +56,70 @@ const nextUrl = `${blogBase}/page/${currentPage + 1}`;
       {locale === "zh-cn" ? `第 ${currentPage} 页，共 ${totalPages} 页` : `Page ${currentPage} of ${totalPages}`}
     </span>
 
+    <!-- 页码跳转 -->
+    {totalPages > 1 && (
+      <form class="pagination-jump" role="search" aria-label={labelJump} data-pagination-jump>
+        <label for="pagination-input" class="visually-hidden">{labelJump}</label>
+        <input
+          type="number"
+          id="pagination-input"
+          class="pagination-input"
+          min="1"
+          max={totalPages}
+          value={currentPage}
+          aria-label={locale === "zh-cn" ? "页码" : "Page number"}
+          inputmode="numeric"
+        />
+        <button type="submit" class="pagination-link pagination-go">{labelGo}</button>
+      </form>
+    )}
+
     {currentPage < totalPages ? (
       <a href={nextUrl} class="pagination-link pagination-next" rel="next">
         {t(PAGINATION_NEXT)}
-        <span class="material-icons-sharp dir" aria-hidden="true">arrow_forward</span>
+        <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
       </a>
     ) : (
       <span class="pagination-link pagination-next disabled" aria-disabled="true">
         {t(PAGINATION_NEXT)}
-        <span class="material-icons-sharp dir" aria-hidden="true">arrow_forward</span>
+        <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
+      </span>
+    )}
+
+    <!-- 尾页 -->
+    {currentPage < totalPages ? (
+      <a href={lastUrl} class="pagination-link pagination-last" aria-label={labelLast}>
+        <span class="pagination-btn-text">{labelLast}</span>
+        <span class="material-icons-sharp" aria-hidden="true">last_page</span>
+      </a>
+    ) : (
+      <span class="pagination-link pagination-last disabled" aria-disabled="true" aria-label={labelLast}>
+        <span class="pagination-btn-text">{labelLast}</span>
+        <span class="material-icons-sharp" aria-hidden="true">last_page</span>
       </span>
     )}
   </div>
 </nav>
+
+<script is:inline>
+  (function () {
+    var form = document.querySelector("[data-pagination-jump]");
+    if (!form) return;
+    var nav = form.closest(".pagination-nav");
+    var blogBase = nav && nav.getAttribute("data-blog-base");
+    var totalPages = nav && parseInt(nav.getAttribute("data-total-pages") || "1", 10);
+    var input = form.querySelector(".pagination-input");
+    if (!blogBase || !input) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var num = parseInt(input.value, 10);
+      if (isNaN(num) || num < 1) num = 1;
+      if (num > totalPages) num = totalPages;
+      var url = num === 1 ? blogBase : blogBase + "/page/" + num;
+      window.location.href = url;
+    });
+  })();
+</script>
 
 <style>
   .pagination-nav {
@@ -58,16 +129,17 @@ const nextUrl = `${blogBase}/page/${currentPage + 1}`;
   }
   .pagination-inner {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    gap: var(--sp-m);
+    gap: 0.5rem;
+    font-size: 0.9375rem;
   }
   .pagination-link {
     display: inline-flex;
     align-items: center;
     gap: 0.35em;
-    padding: 0.5em 1em;
+    padding: 0.5em 0.85em;
     font-weight: 600;
     color: var(--color-theme);
     text-decoration: none;
@@ -75,8 +147,12 @@ const nextUrl = `${blogBase}/page/${currentPage + 1}`;
     border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
     background: color-mix(in srgb, var(--color-theme) 6%, transparent);
     transition: all 0.2s ease;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
   }
-  .pagination-link:hover {
+  .pagination-link:hover:not(.disabled) {
     background: color-mix(in srgb, var(--color-theme) 14%, transparent);
     border-color: var(--color-theme);
   }
@@ -86,11 +162,56 @@ const nextUrl = `${blogBase}/page/${currentPage + 1}`;
     pointer-events: none;
   }
   .pagination-link .material-icons-sharp {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   .pagination-info {
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
     color: var(--color-main);
     opacity: 0.9;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .pagination-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+  .pagination-input {
+    width: 3em;
+    padding: 0.45em 0.4em;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
+    background: var(--color-base);
+    color: var(--color-main);
+  }
+  .pagination-input:focus {
+    outline: none;
+    border-color: var(--color-theme);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-theme) 25%, transparent);
+  }
+  @media (max-width: 640px) {
+    .pagination-inner {
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pagination-first .pagination-btn-text,
+    .pagination-last .pagination-btn-text {
+      display: none;
+    }
   }
 </style>

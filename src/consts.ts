@@ -303,6 +303,18 @@ export const PAGINATION_NEXT: Multilingual = {
   en: "Next",
   "zh-cn": "下一页",
 };
+export const PAGINATION_FIRST: Multilingual = {
+  en: "First",
+  "zh-cn": "首页",
+};
+export const PAGINATION_LAST: Multilingual = {
+  en: "Last",
+  "zh-cn": "尾页",
+};
+export const PAGINATION_GO: Multilingual = {
+  en: "Go",
+  "zh-cn": "跳转",
+};
 export const PAGINATION_PAGE: Multilingual = {
   en: "Page",
   "zh-cn": "第",

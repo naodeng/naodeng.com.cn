@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Article.astro";
+import ArticleShare from "@/components/ArticleShare.astro";
 import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
 import Giscus from "@/components/Giscus.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
@@ -163,6 +164,7 @@ const statsLabels = locale === "zh-cn"
         <div class="prose">
           <Content class="material-icons" />
         </div>
+        <ArticleShare title={title} url={canonicalUrl} locale={locale} />
         <Giscus
           lang={locale === "zh-cn" ? "zh-CN" : "en"}
           theme="preferred_color_scheme"
