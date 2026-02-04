@@ -12,7 +12,7 @@ const algoliaIndexName = import.meta.env.PUBLIC_ALGOLIA_INDEX_NAME ?? "";
 const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName);
 ---
 
-<dialog id="search-dialog" class="search-dialog" aria-label={t(SEARCH_PLACEHOLDER)}>
+<dialog id="search-dialog" class="search-dialog" aria-label={t(SEARCH_PLACEHOLDER)} data-algolia-key={algoliaSearchKey}>
   <div class="search-backdrop" data-close></div>
   <div class="search-box">
     <label for="search-input" class="visually-hidden">{t(SEARCH_PLACEHOLDER)}</label>
@@ -48,7 +48,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
-<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaSearchKey, algoliaIndexName }}>
+<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaIndexName }}>
   /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
@@ -56,6 +56,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   const emptyEl = document.getElementById("search-empty");
   const backdrop = document.querySelector(".search-backdrop[data-close]");
   const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
 
   let index = [];
   let locale = "en";
@@ -144,7 +145,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
       // is:inline 脚本未打包，从 ESM CDN 加载
       const mod = await import("https://esm.sh/algoliasearch@5");
       const { algoliasearch } = mod;
-      algoliaClient = algoliasearch(algoliaAppId, algoliaSearchKey);
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
     }
     locale = getLocale();
     const { hits } = await algoliaClient.searchSingleIndex({

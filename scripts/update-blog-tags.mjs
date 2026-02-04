@@ -146,10 +146,6 @@ function stripMarkdown(text) {
   );
 }
 
-function isChineseTag(tag) {
-  return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(tag);
-}
-
 /** 根据文件路径得到「目录」：Performance-Testing / API-Automation-Testing / Event / QA-Glossary-Wiki / AI-Testing / UI-Automation-Testing / Others */
 function getCategory(filePath) {
   const normalized = filePath.split(path.sep).join("/");

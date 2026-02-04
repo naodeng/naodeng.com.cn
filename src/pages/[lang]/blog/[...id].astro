@@ -164,7 +164,7 @@ const statsLabels = locale === "zh-cn"
         <div class="prose">
           <Content class="material-icons" />
         </div>
-        <ArticleShare title={title} url={canonicalUrl} locale={locale} />
+        <ArticleShare title={title} url={canonicalUrl} locale={locale as "zh-cn" | "en"} />
         <Giscus
           lang={locale === "zh-cn" ? "zh-CN" : "en"}
           theme="preferred_color_scheme"
