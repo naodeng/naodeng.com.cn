@@ -133,9 +133,9 @@ const statsLabels = locale === "zh-cn"
           )}
         </p>
         {
-          post.data.tags && (
+          post.data.tags && post.data.tags.length > 0 && (
             <div class="tags">
-              {post.data.tags.map((tag) => {
+              {post.data.tags.slice(0, 3).map((tag) => {
                 const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
                 const tagUrl = `/${lang}/tags/${tagSegment}/`;
                 return (
