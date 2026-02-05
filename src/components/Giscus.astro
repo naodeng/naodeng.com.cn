@@ -4,8 +4,8 @@
  * 默认使用 naodeng/naodeng.com.cn 的配置；可通过 .env 覆盖：
  *   PUBLIC_GISCUS_REPO、PUBLIC_GISCUS_REPO_ID、PUBLIC_GISCUS_CATEGORY、PUBLIC_GISCUS_CATEGORY_ID
  *
- * 若 giscus.app/api/discussions 返回 404：请到 https://giscus.app 重新配置，
- * 确认仓库公开、已开启 Discussions、已安装 Giscus App，并粘贴最新的 repo-id / category-id。
+ * 控制台出现 giscus.app/api/discussions 404 且提示 "Discussion not found. A new discussion
+ * will be created if a comment/reaction is submitted." 为正常：该页尚未有讨论，首次有人评论/反应时会自动创建。
  */
 const GISCUS_DEFAULTS = {
   repo: "naodeng/naodeng.com.cn",
@@ -45,6 +45,11 @@ const enabled = Boolean(repo && repoId && category && categoryId);
 
 {enabled && (
   <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
+    <p class="giscus-hint">
+      {lang === "zh-CN"
+        ? "评论由 GitHub Discussions 驱动，首次在本页留言将自动创建讨论线程。"
+        : "Comments are powered by GitHub Discussions. The first comment on this page will create the discussion."}
+    </p>
     <div class="giscus"></div>
     <script is:inline
       src="https://giscus.app/client.js"
@@ -71,6 +76,12 @@ const enabled = Boolean(repo && repoId && category && categoryId);
     margin-block-start: var(--sp-l);
     padding-block-start: var(--sp-l);
     border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+  }
+  .giscus-hint {
+    font-size: 0.85rem;
+    color: var(--color-main);
+    opacity: 0.7;
+    margin: 0 0 0.75rem 0;
   }
   .giscus-section :global(.giscus-frame) {
     width: 100%;
