@@ -6,9 +6,9 @@ import PageHeadline from "@/components/PageHeadline.astro";
 import { NAV_HOME, NAV_TAGS } from "@/consts";
 import { getCollection } from "astro:content";
 
-/** 与 getStaticPaths 一致：仅当标签含 "/" 时编码，否则用原文（避免中文等 404） */
+/** 与 getStaticPaths 一致：含 "/" 或空格时编码路径段，避免 /en/tags/Data Driven/ 与 Data%20Driven 不一致导致 404 */
 function tagToSlug(t: string) {
-  return t.includes("/") ? encodeURIComponent(t) : t;
+  return t.includes("/") || t.includes(" ") ? encodeURIComponent(t) : t;
 }
 function slugToTag(slug: string) {
   return decodeURIComponent(slug);
@@ -23,8 +23,7 @@ export async function getStaticPaths() {
     const tags = [...new Set(langPosts.flatMap((post) => post.data.tags || []))];
     
     for (const tag of tags) {
-      // 仅当标签含 "/" 时编码路径段，否则用原文（避免中文等与请求 URL 不一致导致 404）
-      const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
+      const tagSegment = tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
       paths.push({
         params: { lang, tag: tagSegment },
         props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
