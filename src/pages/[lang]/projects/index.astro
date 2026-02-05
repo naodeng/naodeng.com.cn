@@ -3,12 +3,18 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
 import { PROJECTS_LIST } from "@/data/projects";
-import { PROJECTS_PAGE_TITLE } from "@/consts";
+import { NAV_HOME, PROJECTS_PAGE_DESCRIPTION, PROJECTS_PAGE_TITLE } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const title = t(PROJECTS_PAGE_TITLE);
+const description = t(PROJECTS_PAGE_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/projects/` },
+];
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -16,7 +22,7 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs}>
   <PageHeadline {title} />
 
   <div class="project-container">

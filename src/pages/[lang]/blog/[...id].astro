@@ -44,6 +44,7 @@ const authorName = post.data.author || "Nao Deng";
 const datePublished = post.data.date.toISOString();
 const dateModified = post.data.updated ? new Date(post.data.updated).toISOString() : datePublished;
 
+const rawBody = typeof post.body === "string" ? post.body : "";
 const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
 const blogPostingSchema = {
   "@context": "https://schema.org",
@@ -67,7 +68,6 @@ const blogPostingSchema = {
 };
 
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
-const rawBody = typeof post.body === "string" ? post.body : "";
 const readMinutes = readingTimeMinutes(rawBody);
 const readingTimeLabel = typeof READING_TIME_LABEL === "string" ? READING_TIME_LABEL : (READING_TIME_LABEL[locale] ?? (locale === "zh-cn" ? "分钟阅读" : "min read"));
 const breadcrumbs = [

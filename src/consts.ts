@@ -293,6 +293,34 @@ export const BLOG_TOP_TAGS_TITLE: Multilingual = {
   "zh-cn": "热门标签 Top 20",
 };
 
+/** SEO：列表页 meta description（简短，便于搜索结果展示） */
+export const BLOG_INDEX_DESCRIPTION: Multilingual = {
+  en: "Browse all blog posts on software testing, API testing, automation, and QA. Series and tutorials by Nao Deng.",
+  "zh-cn": "浏览本站全部博文：软件测试、接口测试、自动化与 QA 相关系列与教程。",
+};
+export const TAGS_INDEX_DESCRIPTION: Multilingual = {
+  en: "Browse blog posts by tag. Software testing, automation, API testing, and more.",
+  "zh-cn": "按标签浏览博文：软件测试、自动化、接口测试等。",
+};
+export const ARCHIVE_PAGE_DESCRIPTION: Multilingual = {
+  en: "Blog archive: all posts listed by year.",
+  "zh-cn": "博文归档：按年份查看全部文章。",
+};
+export const SERIES_INDEX_DESCRIPTION: Multilingual = {
+  en: "Blog series and topic collections. Browse by series.",
+  "zh-cn": "博文系列与专题集合，按系列浏览。",
+};
+
+/** SEO：关于页、项目页 meta description */
+export const ABOUT_PAGE_DESCRIPTION: Multilingual = {
+  en: "About Nao Deng. Software testing, QA, automation. Contact and featured projects.",
+  "zh-cn": "关于 naodeng。软件测试、QA、自动化。联系方式与精选项目。",
+};
+export const PROJECTS_PAGE_DESCRIPTION: Multilingual = {
+  en: "Featured projects: API testing, performance testing, UI automation, and QA tools.",
+  "zh-cn": "精选项目：接口测试、性能测试、UI 自动化与 QA 工具。",
+};
+
 // 博客分页
 export const BLOG_POSTS_PER_PAGE = 12;
 export const PAGINATION_PREV: Multilingual = {

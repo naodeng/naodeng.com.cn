@@ -6,6 +6,7 @@ import { marked } from "marked";
 import PageHeadline from "@/components/PageHeadline.astro";
 import {
   ABOUT_PAGE_TITLE,
+  ABOUT_PAGE_DESCRIPTION,
   ABOUT_ME_TITLE,
   ABOUT_ME_BODY,
   ABOUT_TECH_TITLE,
@@ -19,12 +20,19 @@ import {
   ABOUT_CONNECT_TITLE,
   ABOUT_CONNECT_BODY,
   FEATURED_PROJECTS,
+  NAV_HOME,
 } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const title = t(ABOUT_PAGE_TITLE);
+const description = t(ABOUT_PAGE_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/about/` },
+];
 
 // 技术栈徽章（与 GitHub https://github.com/naodeng 及本站项目、博客内容一致）
 const testingBadges = [
@@ -65,7 +73,7 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs}>
   <PageHeadline {title} />
 
   <section class="about-section">

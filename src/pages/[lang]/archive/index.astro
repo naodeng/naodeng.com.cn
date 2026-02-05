@@ -3,12 +3,18 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
-import { ARCHIVE_PAGE_TITLE } from "@/consts";
+import { ARCHIVE_PAGE_TITLE, ARCHIVE_PAGE_DESCRIPTION, NAV_HOME } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const title = t(ARCHIVE_PAGE_TITLE);
+const description = t(ARCHIVE_PAGE_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/archive/` },
+];
 
 // 获取并按日期排序
 const allPosts = (await getCollection("blog"))
@@ -33,7 +39,7 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs}>
   <PageHeadline {title} />
 
   <div class="archive-list">

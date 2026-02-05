@@ -4,7 +4,7 @@ import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
-import { BLOG_POSTS_PER_PAGE } from "@/consts";
+import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, NAV_HOME } from "@/consts";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -27,8 +27,8 @@ export async function getStaticPaths() {
 const locale = Astro.currentLocale as Lang;
 const { page } = Astro.params;
 const currentPage = Number(page) || 1;
-
 const t = useTranslations(locale);
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 
 const allPosts = (await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
@@ -40,9 +40,36 @@ const start = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
 const posts = allPosts.slice(start, start + BLOG_POSTS_PER_PAGE);
 
 const title = t({ en: "Blog", "zh-cn": "博客" });
+const pageLabel = locale === "zh-cn" ? `第 ${currentPage} 页` : `Page ${currentPage}`;
+const description = t(BLOG_INDEX_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/blog/` },
+  { name: pageLabel, url: `/${locale}/blog/page/${currentPage}/` },
+];
+const prevUrl = currentPage === 2 ? `${siteOrigin}/${locale}/blog/` : currentPage > 2 ? `${siteOrigin}/${locale}/blog/page/${currentPage - 1}/` : undefined;
+const nextUrl = currentPage < totalPages ? `${siteOrigin}/${locale}/blog/page/${currentPage + 1}/` : undefined;
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${title} - ${pageLabel}`,
+  numberOfItems: totalPosts,
+  itemListElement: posts.map((post, i) => {
+    const [, ...idParts] = post.id.split("/");
+    const slug = idParts.join("/").toLowerCase();
+    return {
+      "@type": "ListItem",
+      position: start + i + 1,
+      url: `${siteOrigin}/${locale}/blog/${slug}/`,
+      name: post.data.title,
+    };
+  }),
+};
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs} prevUrl={prevUrl} nextUrl={nextUrl}>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} is:inline />
   <PageHeadline {title} />
 
   <div class="blog-container">
@@ -80,7 +107,7 @@ const title = t({ en: "Blog", "zh-cn": "博客" });
               {post.data.tags && (
                 <div class="post-tags">
                   {post.data.tags.slice(0, 3).map((tag) => (
-                    <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
+                    <a href={`/${locale}/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
                       #{tag}
                     </a>
                   ))}

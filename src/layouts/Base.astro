@@ -29,6 +29,9 @@ interface Props {
   articleAuthor?: string;
   /** 面包屑 [{ name, url }]，用于 BreadcrumbList JSON-LD */
   breadcrumbs?: { name: string; url: string }[];
+  /** 分页：上一页/下一页绝对 URL，用于 rel="prev" / rel="next" */
+  prevUrl?: string;
+  nextUrl?: string;
   /** 博文页侧栏时加宽主区域，正文保持 800px */
   contentWide?: boolean;
   frontmatter?: undefined;
@@ -44,6 +47,8 @@ const {
   articleModifiedTime,
   articleAuthor,
   breadcrumbs,
+  prevUrl,
+  nextUrl,
   /** 博文页等需要侧栏时加宽主区域，正文保持 800px，侧栏在右侧 */
   contentWide = false,
 } = Astro.props.frontmatter || Astro.props;
@@ -130,6 +135,8 @@ const breadcrumbSchema =
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
     <link rel="canonical" href={canonicalUrl} />
+    {prevUrl && <link rel="prev" href={prevUrl} />}
+    {nextUrl && <link rel="next" href={nextUrl} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     {
@@ -213,6 +220,7 @@ const breadcrumbSchema =
     <Analytics />
     <!-- Google AdSense -->
     <script
+      is:inline
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
       crossorigin="anonymous"

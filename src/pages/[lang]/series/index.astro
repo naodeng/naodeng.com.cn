@@ -3,7 +3,7 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
-import { NAV_SERIES } from "@/consts";
+import { NAV_HOME, NAV_SERIES, SERIES_INDEX_DESCRIPTION } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -23,12 +23,18 @@ const seriesList = Object.entries(seriesWithCount)
   .map(([name, count]) => ({ name, count }));
 
 const title = t(NAV_SERIES);
+const description = t(SERIES_INDEX_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/series/` },
+];
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs}>
   <PageHeadline {title}>
     <p class="aggregate-meta">
       {seriesList.length} {locale === "zh-cn" ? "个系列" : "series"}

@@ -5,10 +5,11 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
-import { BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_SERIES, NAV_TAGS } from "@/consts";
+import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 
 const allPosts = (await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
@@ -20,6 +21,30 @@ const currentPage = 1;
 const posts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
 
 const title = t({ en: "Blog", "zh-cn": "博客" });
+const description = t(BLOG_INDEX_DESCRIPTION);
+const nextUrl = totalPages > 1 ? `${siteOrigin}/${locale}/blog/page/2/` : undefined;
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/blog/` },
+];
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: title,
+  description,
+  numberOfItems: totalPosts,
+  itemListElement: posts.slice(0, 10).map((post, i) => {
+    const [, ...idParts] = post.id.split("/");
+    const slug = idParts.join("/").toLowerCase();
+    return {
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${siteOrigin}/${locale}/blog/${slug}/`,
+      name: post.data.title,
+    };
+  }),
+};
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -27,7 +52,8 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs} nextUrl={nextUrl}>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} is:inline />
   <PageHeadline {title}>
     <p class="headline-intro">{t(BLOG_INTRO)}</p>
     <div class="headline-actions">
@@ -71,7 +97,7 @@ export const getStaticPaths = () =>
               {post.data.tags && (
                 <div class="post-tags">
                   {post.data.tags.slice(0, 3).map((tag) => (
-                    <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
+                    <a href={`/${locale}/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
                       #{tag}
                     </a>
                   ))}

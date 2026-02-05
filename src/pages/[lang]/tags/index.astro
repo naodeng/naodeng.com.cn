@@ -3,7 +3,7 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
-import { NAV_TAGS } from "@/consts";
+import { NAV_HOME, NAV_TAGS, TAGS_INDEX_DESCRIPTION } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -23,12 +23,22 @@ const tagsList = Object.entries(tagCounts)
   .map(([tag, count]) => ({ tag, count }));
 
 const title = t(NAV_TAGS);
+const description = t(TAGS_INDEX_DESCRIPTION);
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/tags/` },
+];
+
+function tagToSlug(tag: string) {
+  return tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
+}
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 ---
 
-<Layout {title}>
+<Layout {title} description={description} breadcrumbs={breadcrumbs}>
   <PageHeadline {title}>
     <p class="aggregate-meta">
       {tagsList.length} {locale === "zh-cn" ? "个标签" : "tags"}
@@ -39,7 +49,7 @@ export const getStaticPaths = () =>
     {tagsList.length > 0 ? (
       <div class="tags-cloud">
         {tagsList.map(({ tag, count }) => (
-          <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-pill">
+          <a href={`/${locale}/tags/${tagToSlug(tag)}/`} class="tag-pill">
             <span class="tag-hash">#</span>{tag}
             <span class="tag-count">{count}</span>
           </a>
