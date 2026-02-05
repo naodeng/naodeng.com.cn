@@ -3,6 +3,9 @@
  * Giscus 评论组件（基于 GitHub Discussions）
  * 默认使用 naodeng/naodeng.com.cn 的配置；可通过 .env 覆盖：
  *   PUBLIC_GISCUS_REPO、PUBLIC_GISCUS_REPO_ID、PUBLIC_GISCUS_CATEGORY、PUBLIC_GISCUS_CATEGORY_ID
+ *
+ * 若 giscus.app/api/discussions 返回 404：请到 https://giscus.app 重新配置，
+ * 确认仓库公开、已开启 Discussions、已安装 Giscus App，并粘贴最新的 repo-id / category-id。
  */
 const GISCUS_DEFAULTS = {
   repo: "naodeng/naodeng.com.cn",
@@ -49,7 +52,7 @@ const enabled = Boolean(repo && repoId && category && categoryId);
       data-repo-id={repoId}
       data-category={category}
       data-category-id={categoryId}
-      data-mapping="pathname"
+      data-mapping="url"
       data-strict="0"
       data-reactions-enabled={reactionsEnabled ? "1" : "0"}
       data-emit-metadata="0"
