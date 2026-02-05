@@ -6,6 +6,13 @@ Allow: /
 Disallow: /cdn-cgi/
 Disallow: /index.xml
 
+# 爬虫友好：优先抓取内容页
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: ${sitemapURL.href}
 `;
 

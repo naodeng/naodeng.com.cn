@@ -44,6 +44,7 @@ const authorName = post.data.author || "Nao Deng";
 const datePublished = post.data.date.toISOString();
 const dateModified = post.data.updated ? new Date(post.data.updated).toISOString() : datePublished;
 
+const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -52,9 +53,17 @@ const blogPostingSchema = {
   datePublished,
   dateModified,
   url: canonicalUrl,
-  image: ogImageUrl,
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+  image: { "@type": "ImageObject", url: ogImageUrl, width: 1200, height: 630 },
+  inLanguage: locale === "zh-cn" ? "zh-CN" : "en",
+  wordCount,
   author: { "@type": "Person", name: authorName, url: siteOrigin },
-  publisher: { "@type": "Organization", name: "Nao's Blog", url: siteOrigin },
+  publisher: {
+    "@type": "Organization",
+    name: "Nao's Blog",
+    url: siteOrigin,
+    logo: { "@type": "ImageObject", url: `${siteOrigin}/ogp.png`, width: 1200, height: 630 },
+  },
 };
 
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));

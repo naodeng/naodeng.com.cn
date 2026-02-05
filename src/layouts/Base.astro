@@ -50,7 +50,10 @@ const {
 
 const locale = Astro.currentLocale as Lang;
 const localeTitle = title ? `${title} | ${t(SITE_TITLE)}` : t(SITE_TITLE);
-const localeDescription = description || t(SITE_DESCRIPTION);
+const rawDescription = description || t(SITE_DESCRIPTION);
+/** 控制在 155 字内，避免搜索结果中被截断 */
+const localeDescription =
+  rawDescription.length > 155 ? rawDescription.slice(0, 152).trimEnd() + "…" : rawDescription;
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const defaultOgImage = `${siteOrigin}/ogp.png`;
@@ -77,10 +80,10 @@ const webSiteSchema = {
   url: siteOrigin,
   inLanguage: [locale === "zh-cn" ? "zh-CN" : "en"],
   publisher: {
-    "@type": "Person",
-    name: "Nao Deng",
+    "@type": "Organization",
+    name: t(SITE_TITLE),
     url: siteOrigin,
-    sameAs: personSameAs,
+    logo: { "@type": "ImageObject", url: `${siteOrigin}/ogp.png`, width: 1200, height: 630 },
   },
   potentialAction: {
     "@type": "SearchAction",
@@ -122,7 +125,10 @@ const breadcrumbSchema =
       <meta name="keywords" content={typeof SITE_KEYWORDS === "string" ? SITE_KEYWORDS : t(SITE_KEYWORDS)} />
     )}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
     <meta name="author" content={articleAuthor || "Nao Deng"} />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
@@ -136,6 +142,7 @@ const breadcrumbSchema =
       ))
     }
     <link rel="alternate" hreflang="x-default" href={defaultLocaleUrl} />
+    <link rel="alternate" type="application/rss+xml" title={`RSS - ${t(SITE_TITLE)}`} href={`${siteOrigin}${getRelativeLocaleUrl(locale, "/rss.xml")}`} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
