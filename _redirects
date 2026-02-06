@@ -1,6 +1,5 @@
 # 英文博文仅存在中文版时，将 /en/ 请求 301 到 /zh-cn/ 同路径
 /en/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ 301
 /en/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ 301
-# 标签 "Data Driven" 已无对应文章，重定向到标签首页
+# 标签 "Data Driven" 已无对应文章，重定向到标签首页（源路径不能含空格，否则 _redirects 解析报错）
 /en/tags/Data%20Driven/ /en/tags/ 301
-/en/tags/Data Driven/ /en/tags/ 301
