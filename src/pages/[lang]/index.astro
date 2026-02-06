@@ -2,7 +2,6 @@
 import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
 import { PROJECTS_LIST } from "@/data/projects";
@@ -17,9 +16,6 @@ import {
   HOME_TAGS_TITLE,
   HOME_VIEW_ALL_PROJECTS,
 } from "@/consts";
-
-import heroImageEn from "@/assets/en/hero.svg";
-import heroImageZhCn from "@/assets/zh-cn/hero.svg";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -55,16 +51,6 @@ export const getStaticPaths = () =>
 ---
 
 <Layout>
-  <section class="hero">
-    <div class="hero-container">
-      <Image
-        src={locale === "zh-cn" ? heroImageZhCn : heroImageEn}
-        alt={t(SITE_TITLE)}
-        loading="eager"
-      />
-    </div>
-  </section>
-
   <section class="intro-section">
     <div class="intro-card-wrap">
       <div class="intro-row">

@@ -1,0 +1,85 @@
+<svg width="960" height="400" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景渐变：从浅橙到深橙 -->
+    <linearGradient id="techOrangeGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFB17A"/> <!-- 浅橙 -->
+      <stop offset="50%" stop-color="#F97316"/> <!-- 中橙 -->
+      <stop offset="100%" stop-color="#D9430A"/> <!-- 深橙 -->
+    </linearGradient>
+
+    <!-- 波浪渐变 -->
+    <linearGradient id="waveGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Hello 光晕 -->
+    <radialGradient id="helloGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.4">
+        <animate attributeName="stop-opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Welcome 渐变光 -->
+    <linearGradient id="welcomeGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFDAB5" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#FFDAB5" stop-opacity="0.7">
+        <animate attributeName="offset" values="0;1;0" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#FFDAB5" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- 波浪路径 -->
+    <path id="wavePath" d="M0 220 C200 160 380 260 560 240 C740 220 860 180 960 200 L960 0 L0 0 Z"/>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="400" rx="24" fill="url(#techOrangeGradient)" />
+
+  <!-- 动态波浪 -->
+  <use href="#wavePath" fill="url(#waveGradient)">
+    <animateTransform attributeName="transform" type="translate" from="0 0" to="-20 0" dur="6s" repeatCount="indefinite"/>
+  </use>
+
+  <!-- 主标题 Hello -->
+  <text x="80" y="200" font-size="160" font-weight="900" fill="url(#helloGlow)" font-family="Inter, system-ui, -apple-system" style="text-shadow: 3px 3px 10px rgba(255,255,255,0.25);">
+    Hello,
+  </text>
+
+  <!-- 副标题 Welcome to my blog (整体动画光流) -->
+  <text x="200" y="280" font-size="70" font-weight="700" fill="url(#welcomeGlow)" font-family="Poppins, sans-serif">
+    <tspan>
+      Welcome to my blog
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,-5;0,0" dur="3s" repeatCount="indefinite"/>
+    </tspan>
+  </text>
+
+  <!-- 第三排描述文字依次出现 -->
+  <text x="100" y="350" font-size="20" fill="rgba(255,255,255,0.85)" letter-spacing="0.08em" font-family="Inter, system-ui, -apple-system">
+    <tspan opacity="0">
+      ENGINEERING
+      <animate attributeName="opacity" values="0;1" begin="0s" dur="0.5s" fill="freeze"/>
+    </tspan>
+    <tspan x="300" opacity="0">
+      TESTING
+      <animate attributeName="opacity" values="0;1" begin="0.7s" dur="0.5s" fill="freeze"/>
+    </tspan>
+    <tspan x="450" opacity="0">
+      ARCHITECTURE
+      <animate attributeName="opacity" values="0;1" begin="1.4s" dur="0.5s" fill="freeze"/>
+    </tspan>
+    <tspan x="650" opacity="0">
+      NOTES
+      <animate attributeName="opacity" values="0;1" begin="2.1s" dur="0.5s" fill="freeze"/>
+    </tspan>
+  </text>
+
+  <!-- 微光点阵装饰 -->
+  <g fill="rgba(255,255,255,0.05)">
+    <circle cx="720" cy="140" r="2"/>
+    <circle cx="740" cy="180" r="3"/>
+    <circle cx="780" cy="160" r="2"/>
+    <circle cx="800" cy="200" r="2"/>
+  </g>
+</svg>
