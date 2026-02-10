@@ -2,20 +2,36 @@
 const baseUrl = "https://inaodeng.com/";
 const defaultLocale = "en";
 
-      if (
-        localStorage.selectedLang &&
-        langs.includes(localStorage.selectedLang)
-      ) {
-        location.href = `${baseUrl + localStorage.selectedLang}/`;
-      } else {
-        const browserLang = navigator.language.toLowerCase();
-
-        if (langs.includes(browserLang)) {
-          location.href = `${baseUrl + browserLang}/`;
-        } else if (langs.includes(browserLang.split("-")[0])) {
-          location.href = `${baseUrl + browserLang.split("-")[0]}/`;
-        } else {
-          location.href = `${baseUrl + defaultLocale}/`;
+      (function () {
+        // 1. 用户曾在站内选择过语言时，优先使用
+        if (
+          localStorage.selectedLang &&
+          langs.includes(localStorage.selectedLang)
+        ) {
+          location.replace(baseUrl + localStorage.selectedLang + "/");
+          return;
         }
-      }
+        // 2. 根据浏览器语言偏好选择站点语言（navigator.language + navigator.languages）
+        var preferred = navigator.language || navigator.userLanguage || "";
+        var list = navigator.languages && navigator.languages.length
+          ? [preferred].concat(navigator.languages)
+          : [preferred];
+        for (var i = 0; i < list.length; i++) {
+          var raw = (list[i] || "").toLowerCase();
+          if (langs.includes(raw)) {
+            location.replace(baseUrl + raw + "/");
+            return;
+          }
+          var primary = raw.split("-")[0];
+          if (primary === "zh") {
+            location.replace(baseUrl + "zh-cn/");
+            return;
+          }
+          if (langs.includes(primary)) {
+            location.replace(baseUrl + primary + "/");
+            return;
+          }
+        }
+        location.replace(baseUrl + defaultLocale + "/");
+      })();
     })();</script></head> <body> <h1>redirect...</h1> </body></html>
