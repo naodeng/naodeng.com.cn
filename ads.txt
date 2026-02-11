@@ -1,0 +1,5 @@
+# ads.txt for inaodeng.com
+# Replace the line below with your ad network's entry when you have a publisher ID.
+# Example for Google AdSense: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# See https://iabtechlab.com/ads-txt/ for format.
+google.com, pub-7249159446737834, DIRECT, f08c47fec0942fa0
