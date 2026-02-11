@@ -2,3 +2,9 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+/en/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+
+/zh-cn/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
