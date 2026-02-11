@@ -3,3 +3,6 @@
 /en/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ 301
 # 标签 "Data Driven" 已无对应文章，重定向到标签首页（源路径不能含空格，否则 _redirects 解析报错）
 /en/tags/Data%20Driven/ /en/tags/ 301
+# RSS 带尾斜杠时重定向到无尾斜杠，避免 404
+/en/rss.xml/ /en/rss.xml 301
+/zh-cn/rss.xml/ /zh-cn/rss.xml 301
