@@ -1,0 +1,37 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install E2E dependencies and run tests
+        run: |
+          cd e2e && npm ci
+          npx playwright install --with-deps chromium
+          npx playwright test
+        env:
+          CI: true
+          PLAYWRIGHT_BASE_URL: "http://localhost:4321"
