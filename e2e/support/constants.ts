@@ -22,6 +22,21 @@ export const EXTRA_PATHS = [
   "/links",
 ] as const;
 
+/** 文档子页路径（相对 /docs 的 slug，与 src/content/docs 对应） */
+export const DOCS_SLUGS = ["why-astro", "installation", "project-structure", "configuration", "routing"] as const;
+
+/** 文档页（含首页与子页）带 locale 的路径 */
+export function getDocsPageUrls(): { locale: string; path: string; name: string }[] {
+  const out: { locale: string; path: string; name: string }[] = [];
+  for (const locale of LOCALES) {
+    out.push({ locale, path: `/${locale}/docs/`, name: "docs-index" });
+    for (const slug of DOCS_SLUGS) {
+      out.push({ locale, path: `/${locale}/docs/${slug}/`, name: `docs-${slug}` });
+    }
+  }
+  return out;
+}
+
 /** 带 locale 的完整路径列表，用于“页面可访问”与“样式展示”测试 */
 export function getMainPageUrls(_baseUrl: string): { locale: string; path: string; name: string }[] {
   const out: { locale: string; path: string; name: string }[] = [];

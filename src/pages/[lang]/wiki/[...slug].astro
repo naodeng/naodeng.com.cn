@@ -1,0 +1,84 @@
+---
+/**
+ * 测试百科词条页（docs 布局：左侧导航 + 主内容）
+ * - 中文：Docs 布局，侧栏高亮当前词条，主区渲染正文
+ * - 英文：重定向 https://ray.run/wiki
+ */
+import { getCollection, render } from "astro:content";
+import DocsLayout from "@/layouts/Docs.astro";
+import { NAV_HOME } from "@/consts";
+import { slugToTitleEn, getTitleZhFromBody, buildWikiSidebar } from "@/data/wiki";
+import type { Lang } from "@/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("wiki");
+  return entries.map((entry) => {
+    const slug = entry.id.replace(/\.md$/, "");
+    return {
+      params: { lang: "zh-cn", slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const locale = (Astro.params.lang ?? "zh-cn") as Lang;
+const slugParam = (Astro.params.slug ?? "") as string;
+
+if (locale === "en") {
+  const url = new URL("https://ray.run/wiki");
+  if (slugParam) url.hash = slugParam;
+  return Astro.redirect(url.toString());
+}
+
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
+const wikiTitle = "测试百科";
+const bodyStr = typeof entry.body === "string" ? entry.body : "";
+const pageTitle = getTitleZhFromBody(bodyStr) || slugToTitleEn(slugParam) || entry.data.title || slugParam;
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: wikiTitle, url: `/${locale}/wiki/` },
+  { name: pageTitle, url: `/${locale}/wiki/${slugParam}/` },
+];
+
+const entries = await getCollection("wiki");
+const sidebarSections = buildWikiSidebar(entries);
+const basePath = `/${locale}/wiki`;
+
+const { Content, headings = [] } = await render(entry);
+---
+
+<DocsLayout
+  title={pageTitle}
+  description={pageTitle}
+  breadcrumbs={breadcrumbs}
+  sidebarSections={sidebarSections}
+  currentPath={slugParam}
+  basePath={basePath}
+  sidebarMenuLabel="本页导航"
+  headings={headings}
+  tocLabel="本页目录"
+>
+  <article class="wiki-article">
+    <Content />
+  </article>
+</DocsLayout>
+
+<style>
+  .wiki-article :global(h1) {
+    margin-block-end: var(--sp-m);
+  }
+  .wiki-article :global(h2) {
+    margin-block: var(--sp-l) var(--sp-s);
+  }
+  .wiki-article :global(h3) {
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+  .wiki-article :global(a) {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+  .wiki-article :global(ul) {
+    padding-inline-start: 1.5em;
+  }
+</style>

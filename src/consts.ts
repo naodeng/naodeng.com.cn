@@ -90,6 +90,18 @@ export const NAV_ARCHIVE: Multilingual = {
   "zh-cn": "归档",
 };
 
+// 顶部导航：文档
+export const NAV_DOCS: Multilingual = {
+  en: "Docs",
+  "zh-cn": "文档",
+};
+
+/** 顶部导航：测试百科（中文站内）/ QA wiki（英文跳转 ray.run） */
+export const NAV_QA_WIKI: Multilingual = {
+  en: "QA wiki",
+  "zh-cn": "测试百科",
+};
+
 // 顶部导航：支持
 export const NAV_SPONSOR: Multilingual = {
   en: "Support",

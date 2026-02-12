@@ -1,0 +1,76 @@
+---
+/**
+ * 文档子页动态路由：从 content collection 渲染 Markdown/MDX。
+ * 文档放在 src/content/docs/{lang}/ 下，如 en/why-astro.md。首页由 index.astro 渲染。
+ */
+import { getCollection, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import DocsLayout from "@/layouts/Docs.astro";
+import { buildDocsNavFromCollection } from "@/data/docsNav";
+import { NAV_HOME } from "@/consts";
+import type { Lang } from "@/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("docs");
+  return entries
+    .filter((entry) => {
+      const [_, ...restParts] = entry.id.replace(/\.(md|mdx)$/, "").split("/");
+      const slug = restParts.join("/");
+      return slug !== "index" && slug.length > 0;
+    })
+    .map((entry) => {
+      const [lang, ...restParts] = entry.id.replace(/\.(md|mdx)$/, "").split("/");
+      const slug = restParts.join("/");
+      return {
+        params: { lang, slug },
+        props: { entry },
+      };
+    });
+}
+
+const { entry } = Astro.props;
+const locale = (Astro.params.lang ?? "en") as Lang;
+const currentPath = (Astro.params.slug ?? "") as string;
+
+const title = entry.data.title;
+const description = entry.data.description ?? title;
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const docsTitle = locale === "zh-cn" ? "文档" : "Documentation";
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: docsTitle, url: `/${locale}/docs/` },
+  { name: title, url: `/${locale}/docs/${currentPath}/` },
+];
+
+const basePath = getRelativeLocaleUrl(locale, "/docs").replace(/\/$/, "") || `/${locale}/docs`;
+const allDocs = await getCollection("docs");
+const sidebarSections = buildDocsNavFromCollection(allDocs, locale);
+
+const { Content } = await render(entry);
+---
+
+<DocsLayout
+  title={title}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  sidebarSections={sidebarSections}
+  currentPath={currentPath}
+  basePath={basePath}
+>
+  <article class="docs-prose">
+    <Content />
+  </article>
+</DocsLayout>
+
+<style>
+  .docs-prose :global(h1) {
+    margin-block-end: var(--sp-m);
+  }
+  .docs-prose :global(h2) {
+    margin-block: var(--sp-l) var(--sp-s);
+  }
+  .docs-prose :global(h3) {
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+</style>
