@@ -1,21 +1,26 @@
 ---
 title: "测试规范 ｜ Test Specification"
-description: "关于测试规范 (Test Specification) 的常见问题？"
+description: "测试规范 (Test Specification) 是一份详细文档，概述了拟定测试活动的范围、方法、资源和进度。它定义了测试条件、测试用例、测试流程以及测试通过/失败的标准。它是测试计划过程的记录，详细说明了如何实现测试目标。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试规范 ｜ Test Specification
-[测试规范 (Test Specification)](#test-specification)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [创建与实施](#创建与实施)
+- [类型与技术](#类型与技术)
+- [挑战与最佳实践](#挑战与最佳实践)
 
 ### 相关术语：
-- 测试计划 (Test Plan)
-- 测试场景 (Test Scenario)
-[测试计划 (Test Plan)](/zh-cn/wiki/test-plan/)[测试场景 (Test Scenario)](/zh-cn/wiki/test-scenario/)
+- [测试计划 (Test Plan)](/zh-cn/wiki/test-plan/)
+- [测试场景 (Test Scenario)](/zh-cn/wiki/test-scenario/)
 
-## 关于测试规范 (Test Specification) 的常见问题？
+## 关于测试规范 (Test Specification) 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **在软件测试中，什么是测试规范 (Test Specification)？**
   **测试规范 (Test Specification)** 是一份详细文档，概述了拟定测试活动的范围、方法、资源和进度。它定义了测试条件、**测试用例 (test cases)**、测试流程以及测试通过/失败的标准。它是测试计划过程的记录，详细说明了如何实现测试目标。
   - **蓝图**：为测试团队提供指导，明确测什么、怎么测以及预期结果。
@@ -49,7 +54,7 @@ order: 0
   - **促进可追溯性**：保持开发周期的一致性。
   - **实现可重复性**：对 **回归测试 (regression testing)** 和 **自动化测试 (automated testing)** 至关重要。
 
-#### 创建与实施
+### 创建与实施
 - **如何创建测试规范？**
   1. **收集需求 (gathering requirements)**：理解系统功能。
   2. **定义测试范围 (scope of testing)**。
@@ -76,7 +81,7 @@ order: 0
   6. **测试周期关闭**。
   7. **测试总结报告**。
 
-#### 类型与技术
+### 类型与技术
 - **测试规范有哪些不同类型？**
   - **测试用例规范 (Test Case Specification)**。
   - **测试计划规范 (Test Plan Specification)**。
@@ -102,7 +107,7 @@ order: 0
   - **非功能性 (Non-functional)**：关注系统的 **质量 (qualities)**。包含：**性能 (Performance)**、**易用性 (Usability)**、**可靠性 (Reliability)**、**安全性 (Security)**、**兼容性 (Compatibility)**。
   功能测试验证“做什么”，非功能测试评估“做得多好”。
 
-#### 挑战与最佳实践
+### 挑战与最佳实践
 - **常见挑战：**
   需求模糊、资源受限、环境复杂、数据依赖、工具选择困难、可伸缩性、**可维护性 (Maintainability)**、与 CI/CD 集成。
 
@@ -114,9 +119,3 @@ order: 0
 
 - **如何更新或修改规范？**
   版本控制（Git tag）、维护 **变更日志 (Change Log)**、建立评审流程、自动化检查、集成 CI 校验、保持反馈循环。目标是维护一份反映软件当前状态的 **活文档 (living document)**。
-
-
-
-
-
-

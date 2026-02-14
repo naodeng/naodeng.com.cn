@@ -1,12 +1,13 @@
 ---
-title: "关于 ISTQB 的问题？ ｜ Istqb"
-description: "# 关于 ISTQB 的问题？ ｜ Istqb #### 基础与重要性 - ISTQB 代表什么？ ISTQB 全称是 International Software Testing Qualifications Board（国际软件测试认证委员会）。"
+title: "ISTQB ｜ Istqb"
+description: "# 关于 ISTQB 的问题？ ｜ Istqb #### 基础与重要性 - ISTQB 代表什么？ISTQB 全称是 International Software Testing Qualifications Board（国际软件测试认证委员会）。"
 section: "I"
 order: 0
 ---
-
-# 关于 ISTQB 的问题？ ｜ Istqb
-#### 基础与重要性
+<!-- markdownlint-disable MD025 -->
+# ISTQB ｜ Istqb
+# 关于 ISTQB 的问题？
+### 基础与重要性
 - **ISTQB 代表什么？**
 **ISTQB** 全称是 **International Software Testing Qualifications Board**（国际软件测试认证委员会）。它是一个全球公认的组织，提供软件测试领域的标准化课程和认证。它成立于 2002 年，为职业生涯不同阶段的专业人士设计了多种认证路径，是全球雇主衡量测试专业能力的标准。
 
@@ -23,7 +24,7 @@ order: 0
     *   **专家级 (Expert Level)**：针对职业生涯后期的资深人士，涵盖测试管理、测试过程改进和测试自动化工程等专业领域。
     *   **其他专项认证**：如 **敏捷测试员 (Agile Tester)**、可用性、性能、安全性测试以及汽车软件测试等。
 
-#### 教学大纲与考试
+### 教学大纲与考试
 - **基础级考试大纲涵盖哪些内容？**
     1.  **测试基础**：定义、原则、流程及心理学。
     2.  **生命周期中的测试**：开发模型、测试级别和类型。
@@ -38,14 +39,8 @@ order: 0
     *   **专家级**：包含简答/论述题，形式更为复杂。
     *   **注意**：考试均为闭卷形式。
 
-#### 实践意义
+### 实践意义
 在现实世界中，ISTQB 原则被广泛应用。例如，自动化工程师通过 **“尽早测试”** 原则将自动化单元测试集成到 **CI** 流水线中；利用 **“缺陷集群”** 原则分析历史数据以优化测试优先级；并应用 **“等价类划分”** 等技术来优化自动化测试数据的覆盖率。
 
-#### 总结
+### 总结
 ISTQB 认证不仅是一张证书，更是一个**知识工具箱**。它培养了**质量导向的思维方式**，使测试人员能够通过结构化的方法提高测试效率，最终确保交付更高质量的软件产品。
-
-
-
-
-
-

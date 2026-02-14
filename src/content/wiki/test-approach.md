@@ -1,16 +1,22 @@
 ---
 title: "测试方法 ｜ Test Approach"
-description: "关于测试方法的常见问题？"
+description: "关于测试方法的问题？"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试方法 ｜ Test Approach
-[测试方法 (Test Approach)](#test-approach) [测试方法 (test approach)](/zh-cn/wiki/test-approach/)
 
-## 关于测试方法的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [类型与技术](#类型与技术)
+- [实施与执行](#实施与执行)
+- [最佳实践与趋势](#最佳实践与趋势)
+
+## 关于测试方法的问题？
+
+### 基础与重要性
 - **软件测试中的测试方法是什么？**
   **测试方法 (Test Approach)** 概述了执行测试将采取的高层级行动和一系列步骤。它是 **[测试策略 (test strategy)](/zh-cn/wiki/test-strategy/)** 的一个子集，提供了如何将策略应用于特定环境或项目的更详细视图。该方法根据项目的需求量身定制，考虑了测试范围、目标、资源和进度等因素。
   选择正确的方法涉及了解项目的独特特征和约束。它可能包括 **手动测试** 和 **[自动化测试 (automated testing)](/zh-cn/wiki/automated-testing/)** 的结合，重点关注功能、性能、安全性或易用性等领域。可能会采用 **[探索性测试 (exploratory testing)](/zh-cn/wiki/exploratory-testing/)**、**[测试驱动开发 (test-driven development)](/zh-cn/wiki/test-driven-development/)** (TDD)、**[行为驱动开发 (BDD)](/zh-cn/wiki/bdd/)** 或基于模型的测试等技术。
@@ -57,7 +63,7 @@ order: 0
   通过建立清晰的 **测试方法**，团队可以实现 **结构化** 且 **一致的** 测试过程，从而产生更 **可靠** 且 **高效** 的结果。它还促进了利益相关者之间的 **沟通**，确保每个人都理解测试目标和方法学。
   总之，**测试方法** 是测试计划的 **操作层面**，驱动测试活动的 **执行**，并确保它们有效地为软件产品的 **[质量保证 (quality assurance)](/zh-cn/wiki/quality-assurance/)** 做出贡献。
 
-#### 类型与技术
+### 类型与技术
 - **测试方法有哪些不同的类型？**
   软件 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 中不同的测试方法包括：
   - **[黑盒测试 (Black Box Testing)](/zh-cn/wiki/black-box-testing/)**：专注于输入和输出，而不了解内部代码结构。技术包括 **[等价类划分 (equivalence partitioning)](/zh-cn/wiki/equivalence-partitioning/)**、边界值分析和 **[决策表测试 (decision table testing)](/zh-cn/wiki/decision-table-testing/)**。
@@ -119,7 +125,7 @@ order: 0
   - **[安全性测试 (Security Testing)](/zh-cn/wiki/security-testing/)**：使用 OWASP ZAP 或 Fortify 等自动化工具识别软件中的漏洞。
   将这些技术纳入 **测试方法** 取决于项目需求、团队专业知识和技术栈。它们可以结合并量身定制，以创建一个与项目目标一致的稳健自动化策略。
 
-#### 实施与执行
+### 实施与执行
 - **如何在软件测试项目中实施测试方法？**
   实施 **测试方法 (Test Approach)** 涉及一系列将其整合到 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 项目中的步骤。
   - 首先，使方法与项目的 **目标** 和 **约束** 保持一致。
@@ -180,7 +186,7 @@ order: 0
   - 自动化测试应与应用程序代码一起维护，并进行 **版本控制** 和 **代码评审** 以确保其可靠性。定期 **重构测试** 以保持其有效且易于管理。
   - 最后，建立 **指标** 来衡量自动化测试的有效性，如缺陷检测率、**[测试覆盖率 (test coverage)](/zh-cn/wiki/test-coverage/)** 和执行时间。利用这些指标持续 **改进测试自动化方法**，并确保其与项目不断变化的需求保持一致。
 
-#### 最佳实践与趋势
+### 最佳实践与趋势
 - **开发测试方法的最佳实践是什么？**
   开发 **测试方法 (Test Approach)** 时，考虑以下最佳实践以确保有效性和效率：
   - **与业务目标保持一致**：确保方法与业务目标和优先级同步。
@@ -237,9 +243,3 @@ order: 0
   **自修复测试** 是 AI 显著影响测试方法的另一个方面。这些测试能 **根据** 应用程序 UI 或 **[API](/zh-cn/wiki/api/)** 的变化进行自我调整，减少维护开销并增强自动化 **[测试套件 (test suites)](/zh-cn/wiki/test-suite/)** 的 **弹性**。
   此外，**智能分析** 将在持续测试和集成流水线中起关键作用，提供 **实时反馈** 和见解，指导测试过程并改进 **[质量保证 (quality assurance)](/zh-cn/wiki/quality-assurance/)**。
   纳入 AI 和 ML 还将促进 **高级异常检测**。总体而言，AI 和 ML 的整合必将 **彻底改变** **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 的面貌，使其更具 **主动性、智能化和适应性**。**[测试自动化 (Test automation)](/zh-cn/wiki/test-automation/)** 工程师需要拥抱这些技术，以确保其测试策略保持 **相关** 且 **有效**。
-
-
-
-
-
-

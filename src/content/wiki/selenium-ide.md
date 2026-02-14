@@ -1,21 +1,27 @@
 ---
 title: "Selenium Ide ｜ Selenium Ide"
-description: "Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源录制与回放 (Record and Playback) 工具。它是适用于 Firefox 和 Chrome 的浏览器扩展，使测试人员能够通过用户友好的界面快速开发测试，而无需编写大量的测试脚本。 该工具支持通过 GUI 输入命令和参数来创建测试。测试人员可以录制与 Web 应用的交互并回放以进行回归测试。它还支持编辑、完善和自定义录制的测试。 对于复杂的测试场景，可以实现循环和条件等控制流结构。此外，它还支持扩展，允许编写脚本来增强其功能。虽然主要用于快速测试，但也常作为原型工具，录制的用例后续可导出到 Selenium WebDriver 进行更复杂的测试。"
+description: "Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源录制与回放 (Record and Playback) 工具。它是适用于 Firefox 和 Chrome 的浏览器扩展，使测试人员能够通过用户友好的界面快速开发测试，而无需编写大量的测试脚本。该工具支持通过 GUI 输入命令和参数来创建测试。测试人员可以录制与 Web 应用的交互并回放以进行回归测试。它还支持编辑、完善和自定义录制的测试。对于复杂的测试场景，可以实现循环和条件等控制流结构。此外，它还支持扩展，允许编写脚本来增强其功能。虽然主要用于快速测试，但也常作为原型工具，录制的用例后续可导出到 Selenium WebDriver 进行更复杂的测试。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Selenium Ide ｜ Selenium Ide
-[Selenium IDE](#selenium-ide)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [安装与设置](#安装与设置)
+- [使用 Selenium IDE](#使用-selenium-ide)
+- [高级概念](#高级概念)
 
 ### 相关术语：
 - [WebDriver](/zh-cn/wiki/webdriver/)
 - [Web 自动化 (Web Automation)](/zh-cn/wiki/web-automation/)
 - [Web 测试自动化工具 (Web Test Automation Tools)](/zh-cn/wiki/web-test-automation-tools/)
 
-## 关于 Selenium IDE 的常见问题？
+## 关于 Selenium IDE 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Selenium IDE？**
   Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源**录制与回放 (Record and Playback)** 工具。它是适用于 Firefox 和 Chrome 的浏览器扩展，使测试人员能够通过用户友好的界面快速开发测试，而无需编写大量的测试脚本。
   该工具支持通过 GUI 输入命令和参数来创建测试。测试人员可以录制与 Web 应用的交互并回放以进行回归测试。它还支持编辑、完善和自定义录制的测试。
@@ -35,7 +41,7 @@ order: 0
   - **优点**：易于使用、快速原型设计、无需复杂安装、支持跨浏览器、丰富的内置命令、可导出到 WebDriver。
   - **缺点**：仅限浏览器测试、编程逻辑有限（虽然支持 JavaScript）、录制的脚本可能较脆弱、大体量下扩展性差、缺乏高级报告功能、依赖 UI（UI 变动需重新录制）。
 
-#### 安装与设置
+### 安装与设置
 - **如何安装 Selenium IDE？**
   在 Chrome 或 Firefox 的扩展商店搜索 "Selenium IDE"，点击“添加至浏览器”，安装完成后图标会出现在工具栏，点击即可启动。
 
@@ -45,7 +51,7 @@ order: 0
 - **初次设置步骤：**
   安装并启动 IDE -> 创建新项目 -> 配置 **Base URL**（测试起始地址）-> 调整设置（如执行延迟、默认超时）-> 开始录制或手动创建。记得定期保存项目（`.side` 文件）。
 
-#### 使用 Selenium IDE
+### 使用 Selenium IDE
 - **如何创建测试用例？**
   启动 IDE -> 新建项目 -> 添加新用例并命名 -> 点击右下角“录制” -> 在浏览器执行操作（IDE 自动捕获命令） -> 右键页面添加断言 -> 停止录制 -> 编辑命令 -> 保存。
 
@@ -62,7 +68,7 @@ order: 0
 - **导入与导出：**
   导入：打开完整的 `.side` 项目文件；导出：右键特定的**[测试用例](/zh-cn/wiki/test-case/)**，选择导出格式（如 Python pytest, Java JUnit），生成代码以集成到其他框架中。
 
-#### 高级概念
+### 高级概念
 - **什么是 Selenese？**
   它是 Selenium IDE 的专用语言，包含三类命令：
   - **Actions (动作)**：操作应用状态（`click`, `type`, `select`）。
@@ -80,9 +86,3 @@ order: 0
 
 - **如何与其他工具集成？**
   导出测试到 JUnit/TestNG 框架；转换为 **WebDriver** 转换为 Maven/Gradle 项目；集成到 Jenkins/GitLab CI 流水线；与 Postman 配合进行前后端验证；利用 Docker 进行容器化测试。
-
-
-
-
-
-

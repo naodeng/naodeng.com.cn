@@ -1,21 +1,26 @@
 ---
 title: "系统测试 ｜ System Testing"
-description: "系统测试 (System testing) 是一个 高层级 (high-level) 的测试阶段，在这个阶段，对一个完整的、集成后的系统进行评估，以验证其是否满足指定的需求。它涉及将系统作为一个整体进行测试，以确保所有组件和功能能够正确协同工作，通常在 单元测试 和 集成测试 (integration testing) 之后执行。这一阶段检查整个系统是否符合业务需求，并评估系统是否已准备好发布。 在 系统测试 期间，应用程序在一个高度模拟生产环境（软件最终部署的环境）的环境中进行测试。这包括对 功能需求 (functional requirements) 以及性能、安全性和易用性等非功能性需求的测试。其目的是识别任何可能影响用户体验或导致系统故障的缺陷。 系统测试 的 测试用例 (test cases) 源自系统的 规范 和 用例 (use cases)，确保所有用户流和交互都得到测试。拥有一个覆盖各种场景（包括边缘情况和失败路径）的全面 测试套件 (test suite) 至关重要。 系统测试 通常是自动化的，以提高效率和可重复性。"
+description: "系统测试 (System testing) 是一个 高层级 (high-level) 的测试阶段，在这个阶段，对一个完整的、集成后的系统进行评估，以验证其是否满足指定的需求。它涉及将系统作为一个整体进行测试，以确保所有组件和功能能够正确协同工作，通常在 单元测试 和 集成测试 (integration testing) 之后执行。这一阶段检查整个系统是否符合业务需求，并评估系统是否已准备好发布。在 系统测试 期间，应用程序在一个高度模拟生产环境（软件最终部署的环境）的环境中进行测试。这包括对 功能需求 (functional requirements) 以及性能、安全性和易用性等非功能性需求的测试。其目的是识别任何可能影响用户体验或导致系统故障的缺陷。系统测试 的 测试用例 (test cases) 源自系统的 规范 和 用例 (use cases)，确保所有用户流和交互都得到测试。拥有一个覆盖各种场景（包括边缘情况和失败路径）的全面 测试套件 (test suite) 至关重要。系统测试 通常是自动化的，以提高效率和可重复性。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 系统测试 ｜ System Testing
-[系统测试 (System Testing)](#system-testing) [系统测试 (System testing)](/zh-cn/wiki/system-testing/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [流程与技术](#流程与技术)
+- [挑战与最佳实践](#挑战与最佳实践)
 
 ### 相关术语：
 - [集成测试 (Integration Testing)](/zh-cn/wiki/integration-testing/)
 - [功能测试 (Functional Testing)](/zh-cn/wiki/functional-testing/)
 - [非功能测试 (Non-functional Testing)](/zh-cn/wiki/non-functional-testing/)
 
-## 关于系统测试的常见问题？
+## 关于系统测试的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是软件测试中的系统测试？**
   **系统测试 (System testing)** 是一个 **高层级 (high-level)** 的测试阶段，在这个阶段，对一个完整的、集成后的系统进行评估，以验证其是否满足指定的需求。它涉及将系统作为一个整体进行测试，以确保所有组件和功能能够正确协同工作，通常在 **单元测试** 和 **[集成测试 (integration testing)](/zh-cn/wiki/integration-testing/)** 之后执行。这一阶段检查整个系统是否符合业务需求，并评估系统是否已准备好发布。
   在 **系统测试** 期间，应用程序在一个高度模拟生产环境（软件最终部署的环境）的环境中进行测试。这包括对 **[功能需求 (functional requirements)](/zh-cn/wiki/functional-requirements/)** 以及性能、安全性和易用性等非功能性需求的测试。其目的是识别任何可能影响用户体验或导致系统故障的缺陷。
@@ -62,7 +67,7 @@ order: 0
   除了 **[手动测试 (manual testing)](/zh-cn/wiki/manual-testing/)**，系统测试员通常使用 **自动化框架** 来运行重复且费时的测试，从而提高资源利用效率并缩短反馈周期。他们必须维护并更新自动化 **[测试脚本 (test scripts)](/zh-cn/wiki/test-scripts/)** 以与系统的新功能和更改保持同步。
   有效的沟通技巧对于系统测试员至关重要，因为他们经常需要与包括开发人员、业务分析师和利益相关者在内的其他团队成员协作，以确保对系统及其目标的共同理解。他们在软件是否已准备好发布的最终决策过程中发挥着关键作用。
 
-#### 流程与技术
+### 流程与技术
 - **系统测试的流程是什么？**
   **系统测试** 的流程涉及一系列步骤，以根据指定需求验证完整且集成的软件系统。
   1. 最初创建一个 **[测试计划 (test plan)](/zh-cn/wiki/test-plan/)**，概述测试策略、资源、进度和范围。
@@ -140,7 +145,7 @@ order: 0
   - **[Postman](/zh-cn/wiki/postman/)**：强大的 **[API 测试 (API testing)](/zh-cn/wiki/api-testing/)** 工具，常用于获取系统测试所需的响应。
   - **Robot Framework**：开源的关键词驱动框架，用于 **[验收测试 (acceptance testing)](/zh-cn/wiki/acceptance-testing/)** 和 **[测试驱动开发 (test-driven development)](/zh-cn/wiki/test-driven-development/)**。
 
-#### 挑战与最佳实践
+### 挑战与最佳实践
 - **系统测试中常见的挑战有哪些？**
   **系统测试** 的常见挑战包括：
   - **集成问题**：确保所有组件无缝协作，特别是第三方或遗留系统。
@@ -194,9 +199,3 @@ order: 0
   - **未对 [缺陷 (bugs)](/zh-cn/wiki/bug/) 进行优先级排序**。
   - **缺乏文档记录**。
   - **低估测试计划的重要性**。
-
-
-
-
-
-

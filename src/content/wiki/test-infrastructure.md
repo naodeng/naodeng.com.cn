@@ -1,16 +1,22 @@
 ---
 title: "测试基础设施 ｜ Test Infrastructure"
-description: "测试基础设施 (Test Infrastructure) 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 自动化测试 (automated tests) 的执行和管理。它包含了一系列支持 测试用例 (test cases) 创建、执行、分析以及结果报告的工具和流程。 一个健壮的测试基础设施能够支持测试的 并行执行 (parallel execution)，适应各种测试类型（如单元测试、集成测试、系统测试和验收测试），并提供 测试数据管理 (test data management) 和 测试环境配置 (test environment configuration) 的框架。它被设计为具有 可扩展性 (scalable) 和 灵活性 (flexible)，允许根据需要添加新的工具和技术。 为了确保 效率 (efficiency) 和 可靠性 (reliability)，测试基础设施应实施 版本控制 (version-controlled) 并被视为应用程序代码库的一部分，其变更需经过评审流程。"
+description: "测试基础设施 (Test Infrastructure) 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 自动化测试 (automated tests) 的执行和管理。它包含了一系列支持 测试用例 (test cases) 创建、执行、分析以及结果报告的工具和流程。一个健壮的测试基础设施能够支持测试的 并行执行 (parallel execution)，适应各种测试类型（如单元测试、集成测试、系统测试和验收测试），并提供 测试数据管理 (test data management) 和 测试环境配置 (test environment configuration) 的框架。它被设计为具有 可扩展性 (scalable) 和 灵活性 (flexible)，允许根据需要添加新的工具和技术。为了确保 效率 (efficiency) 和 可靠性 (reliability)，测试基础设施应实施 版本控制 (version-controlled) 并被视为应用程序代码库的一部分，其变更需经过评审流程。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试基础设施 ｜ Test Infrastructure
-[测试基础设施 (Test Infrastructure)](#test-infrastructure)
 
-## 关于测试基础设施 (Test Infrastructure) 的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [设计与实现](#设计与实现)
+- [集成与自动化](#集成与自动化)
+- [性能与优化](#性能与优化)
+
+## 关于测试基础设施 (Test Infrastructure) 的问题？
+
+### 基础与重要性
 - **什么是测试基础设施 (Test Infrastructure)？**
   **测试基础设施 (Test Infrastructure)** 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 **自动化测试 (automated tests)** 的执行和管理。它包含了一系列支持 **测试用例 (test cases)** 创建、执行、分析以及结果报告的工具和流程。
   一个健壮的测试基础设施能够支持测试的 **并行执行 (parallel execution)**，适应各种测试类型（如单元测试、集成测试、系统测试和验收测试），并提供 **测试数据管理 (test data management)** 和 **测试环境配置 (test environment configuration)** 的框架。它被设计为具有 **可扩展性 (scalable)** 和 **灵活性 (flexible)**，允许根据需要添加新的工具和技术。
@@ -54,7 +60,7 @@ order: 0
   测试基础设施的作用还扩展到 **提供指标和见解 (providing metrics and insights)**，反映软件的质量和性能。这些数据对于 **明智的决策 (informed decision-making)** 以及评估产品的 **发布就绪情况 (readiness of a product)** 至关重要。
   最后，设计良好的测试基础设施可以 **适应 (adaptable)** 技术和测试需求的变化。它支持 **测试策略的演进 (evolution of testing strategies)**，确保随着软件及其需求随时间的增长和变化，测试流程始终保持 **高效且有效 (efficient and effective)**。
 
-#### 设计与实现
+### 设计与实现
 - **如何设计一个健壮的测试基础设施？**
   设计健壮的测试基础设施需要采用侧重于 **灵活性 (flexibility)**、**可扩展性 (scalability)** 和 **可靠性 (reliability)** 的战略性方法。以下是关键考虑因素：
   - **模块化设计 (Modular Design)**：创建一个模块化框架，其中组件可以在不影响整个系统的情况下被添加、移除或替换。使用 **页面对象模型 (Page Object Model, POM)** 等设计模式来提高 **可维护性 (maintainability)**。
@@ -167,7 +173,7 @@ order: 0
   - **关键数据备份**。
   - **流程评审与完善**。
 
-#### 集成与自动化
+### 集成与自动化
 - **测试基础设施如何与软件开发过程的其它部分集成？**
   通过以下触点集成：
   - **版本控制系统 (VCS)**：测试代码与应用代码一同存储和版本化。
@@ -226,7 +232,7 @@ order: 0
 - **测试基础设施在 DevOps 中扮演什么角色？**
   它是实现 **持续集成** 和 **持续交付** 的核心。支持 **并行执行**，利用 **容器化** 实现环境一致性。通过 IaC 实施按需环境管理。对 **测试执行 (test executions)** 进行 **监控** 和 **日志记录**，辅助 **故障排除 (troubleshooting)**。与构建工具集成，强化 **测试驱动开发 (TDD)** 和 **行为驱动开发 (BDD)** 实践。
 
-#### 性能与优化
+### 性能与优化
 - **你如何衡量测试基础设施的性能？**
   关注反映效率、稳定性和可扩展性的 **指标 (metrics)**。关键 **性能指标 (KPIs)** 包括：
   - **执行时间**：跟踪 **测试套件 (test suites)** 运行时间。
@@ -281,9 +287,3 @@ order: 0
 
 - **测试基础设施如何影响测试流程的速度和效率？**
   显著影响。设计良好的基础设施支持 **并行执行** 和快速 **环境准备**。**缓存机制** 和 **持久化存储** 最小化 **设置 (setup)** 时间。网络优化和 **服务虚拟化** 提升 **测试执行 (test execution)** 速度。自动化工具促进持续集成。资源监控揭示瓶颈。有效的 **测试数据管理** 确保测试无延迟进行。总而言之，基础设施的选择直接决定了发布周期的长短和 **敏捷开发 (agile development)** 的成效。
-
-
-
-
-
-

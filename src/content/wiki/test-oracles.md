@@ -1,19 +1,25 @@
 ---
 title: "测试判定依据 ｜ Test Oracles"
-description: "关于测试判定依据 (Test Oracles) 的常见问题？"
+description: "测试判定依据 (Test Oracles) 是一种用于确定软件系统在测试期间是否产生正确结果的机制或原则。它充当真理来源 (source of truth)，可将测试的实际结果与其进行比较以确定正确性。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试判定依据 ｜ Test Oracles
-[测试判定依据 (Test Oracles)](#test-oracles)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [类型与示例](#类型与示例)
+- [实施与使用](#实施与使用)
+- [挑战与解决方案](#挑战与解决方案)
 
 ### 相关术语：
 - [测试存根 (Test Stub)](/zh-cn/wiki/test-stub/)
 
-## 关于测试判定依据 (Test Oracles) 的常见问题？
+## 关于测试判定依据 (Test Oracles) 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **在软件测试中，什么是测试判定依据 (Test Oracle)？**
   **测试判定依据 (Test Oracle)** 是一种用于确定软件系统在测试期间是否产生正确结果的机制或原则。它充当 **真理来源 (source of truth)**，可将测试的 **实际结果 (actual results)** 与其进行比较以确定正确性。
   测试判定依据可以是显式的，例如在 **测试用例 (test case)** 中指定的 **预期结果 (expected results)**；也可以是隐式的，依赖于关于系统行为的一般知识或假设。
@@ -33,7 +39,7 @@ order: 0
   它通过作为验证测试结果的 **基准 (benchmark)** 来显著提升 **软件质量 (software quality)**。它确保自动化测试产生 **可靠 (reliable)** 且 **一致 (consistent)** 的结果。
   通过提供 **预期结果 (expected outcomes)** 或 **决策规则 (decision rules)**，判定依据使自动化测试能够高效、全面地检测偏差。集成判定依据有助于维持高水平的 **测试覆盖率 (test coverage)** 和 **准确性 (accuracy)**，并支持 **回归测试 (regression testing)**。
 
-#### 类型与示例
+### 类型与示例
 - **测试判定依据有哪些不同类型？**
   - **派生判定依据 (Derived Oracles)**：使用现有的系统产物，如模型、规格说明或软件的旧版本。
   - **指定判定依据 (Specified Oracles)**：依赖于正式规格说明，如需求文档或用户故事。
@@ -59,7 +65,7 @@ order: 0
   - **共识判定依据** 在 **检测异常 (detecting anomalies)** 方面有效，但可能受共同错误误导。
   - **人工判定依据** 涉及手动 **检查 (inspection)**，具有 **灵活性 (flexible)** 但具有 **主观性 (subjective)** 且 **扩展性 (scalability)** 有限。
 
-#### 实施与使用
+### 实施与使用
 - **如何在测试框架中实施测试判定依据？**
   1. **定义预期结果 (Define Expected Outcomes)**：为每个 **测试用例 (test case)** 指定值、状态或行为。
   2. **自动化验证 (Automate Verification)**：编写断言语句比较实际与预期。
@@ -102,7 +108,7 @@ order: 0
   - **UI 测试 (UI Testing)**：评估布局和功能。
   可以使用 **Jest** 等框架的 `expect(actual).toBe(expected);`。关键在于 **可维护性 (Maintainability)**、**相关性** 和 **效率 (Efficiency)**。
 
-#### 挑战与解决方案
+### 挑战与解决方案
 - **使用测试判定依据时面临的常见挑战有哪些？**
   - **判定依据问题 (Oracle Problem)**：对于复杂系统，确定正确结果很难。
   - **不稳定性 (Flakiness)**：非确定性行为导致测试忽过忽过。
@@ -135,9 +141,3 @@ order: 0
   - **覆盖范围 (Coverage)**。
   - **可维护性 (Maintainability)**。
   定期评审这些指标有助于优化判定依据。
-
-
-
-
-
-

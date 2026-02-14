@@ -4,22 +4,20 @@ description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确
 section: "J"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Jest ｜ Jest
-[Jest](#jest) [Jest](/zh-cn/wiki/jest/) [Unit Testing](/zh-cn/wiki/unit-testing/)
 
 ### 相关术语 (Related Terms):
-- 测试框架 (Testing framework)
-- Jasmine
-- Chai.js
-[Testing framework](/zh-cn/wiki/testing-framework/) [Jasmine](/zh-cn/wiki/jasmine/) [Chai.js](/zh-cn/wiki/chaijs/)
+- [测试框架 (Testing framework)](/zh-cn/wiki/testing-framework/)
+- [Jasmine](/zh-cn/wiki/jasmine/) 
+- [Chai.js](/zh-cn/wiki/chaijs/)
 
 ### 参见 (See also):
 - [官方网站](https://jestjs.io/)
 
 ## 关于 Jest 的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Jest 以及它的用途？**
   Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。它广泛应用于前端（React, Vue, Angular）和后端（Node.js）项目。它支持**单元测试 (Unit Testing)**、**集成测试 (Integration Testing)** 和**端到端测试 (E2E Testing)**，并能通过与 Babel、TypeScript 的无缝集成实现并行执行以提高速度。
 
@@ -39,7 +37,7 @@ order: 0
 - **什么是“零配置 (Zero-configuration)”？**
   Jest 旨在通过合理的默认约定（常规项目结构、文件名 `*.test.js` 或 `*.spec.js`）让开发者无需编写配置文件即可开始测试。
 
-#### 安装与设置
+### 安装与设置
 - **如何安装 Jest？**
   1. 使用 npm 或 yarn 安装：
      `npm install --save-dev jest` 或 `yarn add --dev jest`
@@ -48,7 +46,7 @@ order: 0
   3. 运行测试：`npm test`
   *注：TypeScript 项目需额外安装 `ts-jest` 和 `@types/jest`。*
 
-#### 编写与运行测试
+### 编写与运行测试
 - **Jasmine 测试的文件结构是怎样的？**
   典型的 Jest 测试使用 `describe` 块进行逻辑分组，`it` 或 `test` 块定义具体用例。
   ```javascript
@@ -68,7 +66,7 @@ order: 0
   - **字符串/数组**：`toMatch` (正则), `toContain` (包含元素)。
   - **异常捕获**：`toThrow`。
 
-#### 核心高级特性
+### 核心高级特性
 - **什么是 Mocking 以及如何使用？**
   Mocking（模拟）用于隔离外部依赖（如网络请求或复杂模型）。
   - **Mock 函数**：`jest.fn()` 用于跟踪调用和设定返回值。
@@ -91,9 +89,3 @@ order: 0
   - **避免测试细节**：测试外部观察到的行为而不是私有方法。
   - **保持快照简洁**：不要快照过大的对象，否则难以查看 Diff。
   - **明确 Mock 的范围**：尽可能只在需要的测试用例中进行模拟。
-
-
-
-
-
-

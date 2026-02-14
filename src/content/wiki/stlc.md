@@ -1,16 +1,22 @@
 ---
 title: "软件测试生命周期 ｜ STLC"
-description: "软件测试生命周期 (Software Testing Life Cycle, STLC) 是在测试过程中进行的一系列特定活动，旨在确保 软件质量 (software quality)。STLC 中的每项活动都以计划且系统的方式开展。虽然 STLC 是 软件开发生命周期 (Software Development Life Cycle, SDLC) 的组成部分，但它专门关注测试目标、活动和交付物。 在 STLC 中，测试人员 (testers) 扮演着举足轻重的角色，从理解需求到开发 测试用例 (test cases)，执行测试并最终确保软件达到预期的质量标准。STLC 的结构化方法有助于及早发现缺陷，从而降低修复成本并确保产品更稳定。 V 模型 (V-Model) 和 瀑布模型 (Waterfall Model) 强调开发阶段与测试阶段对应的顺序方法。相比之下，敏捷模型 (Agile Model) 提倡在整个开发过程中进行持续测试，提供快速反馈和迭代改进。螺旋模型 (Spiral Model) 则结合了风险分析和迭代优化，适用于复杂且高风险的项目。"
+description: "软件测试生命周期 (Software Testing Life Cycle, STLC) 是在测试过程中进行的一系列特定活动，旨在确保 软件质量 (software quality)。STLC 中的每项活动都以计划且系统的方式开展。虽然 STLC 是 软件开发生命周期 (Software Development Life Cycle, SDLC) 的组成部分，但它专门关注测试目标、活动和交付物。在 STLC 中，测试人员 (testers) 扮演着举足轻重的角色，从理解需求到开发 测试用例 (test cases)，执行测试并最终确保软件达到预期的质量标准。STLC 的结构化方法有助于及早发现缺陷，从而降低修复成本并确保产品更稳定。V 模型 (V-Model) 和 瀑布模型 (Waterfall Model) 强调开发阶段与测试阶段对应的顺序方法。相比之下，敏捷模型 (Agile Model) 提倡在整个开发过程中进行持续测试，提供快速反馈和迭代改进。螺旋模型 (Spiral Model) 则结合了风险分析和迭代优化，适用于复杂且高风险的项目。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 软件测试生命周期 ｜ STLC
-[STLC](#stlc) [软件测试生命周期 (STLC)](/zh-cn/wiki/stlc/) [软件测试 (Software Testing)](/zh-cn/wiki/software-testing/) [STLC](/zh-cn/wiki/stlc/)
 
-## 关于 STLC 的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [STLC 阶段](#stlc-阶段)
+- [STLC 模型](#stlc-模型)
+- [STLC 对比 SDLC](#stlc-对比-sdlc)
+
+## 关于 STLC 的问题？
+
+### 基础与重要性
 - **什么是软件测试生命周期 (STLC)？**
   **[软件测试生命周期 (Software Testing Life Cycle, STLC)](/zh-cn/wiki/stlc/)** 是在测试过程中进行的一系列特定活动，旨在确保 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)**。STLC 中的每项活动都以计划且系统的方式开展。虽然 STLC 是 **[软件开发生命周期 (Software Development Life Cycle, SDLC)](/zh-cn/wiki/software-development-life-cycle/)** 的组成部分，但它专门关注测试目标、活动和交付物。
   在 STLC 中，**[测试人员 (testers)](/zh-cn/wiki/tester/)** 扮演着举足轻重的角色，从理解需求到开发 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**，执行测试并最终确保软件达到预期的质量标准。STLC 的结构化方法有助于及早发现缺陷，从而降低修复成本并确保产品更稳定。
@@ -54,7 +60,7 @@ order: 0
   - **参与** 测试过程的持续改进。
   测试人员在 STLC 过程中扮演着质量倡导者的关键角色，影响软件开发流程以预防缺陷。
 
-#### STLC 阶段
+### STLC 阶段
 - **需求分析阶段执行哪些活动？**
   在 **[STLC](/zh-cn/wiki/stlc/)** 的 **需求分析阶段**，执行以下关键活动：
   - **评审需求 (Reviewing Requirements)**：审查所有可用文档（业务需求、技术规范、设计文档）。
@@ -124,7 +130,7 @@ order: 0
   - **归档**：归档测试制品以备查。
   它提供了测试的 **书面凭证**，确保 **无遗留任务**，为项目建立了 **知识库**，促进 **持续改进** 并确保 **合规性**。
 
-#### STLC 模型
+### STLC 模型
 - **STLC 有哪些不同的模型？**
   **[软件测试生命周期 (STLC)](/zh-cn/wiki/stlc/)** 的不同模型提供了多样的测试方法：
   - **[V 模型 (V-Model)](/zh-cn/wiki/v-model/)**：强调开发与测试活动的并行关系（**[验证 (Verification)](/zh-cn/wiki/verification/)** 与确认）。
@@ -167,7 +173,7 @@ order: 0
   - **缺乏靈活性**：难以将测试中的经验教训反馈给已结束的开发阶段。
   测试人员必须在 **计划** 和 **设计** 阶段极其细致，因为一旦进入 **[测试执行 (test execution)](/zh-cn/wiki/test-execution/)**，就很难回头修改。
 
-#### STLC 对比 SDLC
+### STLC 对比 SDLC
 - **STLC 和 SDLC 有什么区别？**
   **[软件开发生命周期 (SDLC)](/zh-cn/wiki/software-development-life-cycle/)** 是涵盖创建产品的全过程，包括计划、分析、设计、开发、测试、部署和维护。它定义了系统开发的整体阶段。
   相比之下，**[软件测试生命周期 (STLC)](/zh-cn/wiki/stlc/)** 是 SDLC 的子集，专门关注 **[验证 (verification)](/zh-cn/wiki/verification/)** 和确认。它是执行 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 的活动序列。
@@ -196,9 +202,3 @@ order: 0
   - **优化资源分配**。
   - **适应不同的方法论 (敏捷/瀑布)**。
   总之，这能确保 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 是从一开始就构建出来的，而不是后期补救。
-
-
-
-
-
-

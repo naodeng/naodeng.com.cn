@@ -2,7 +2,7 @@
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { SITE_TITLE, SITE_SLOGAN, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_DOCS, NAV_QA_WIKI, NAV_SPONSOR, NAV_SEARCH, SEARCH_OPEN_HINT } from "@/consts";
+import { SITE_TITLE, SITE_SLOGAN, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_QA_WIKI, NAV_SPONSOR, NAV_SEARCH, SEARCH_OPEN_HINT } from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const locale = Astro.currentLocale as Lang;
@@ -10,7 +10,6 @@ const locale = Astro.currentLocale as Lang;
 const isActive = (path: string) =>
   getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
-const isDocsSection = () => pathWithoutLang === "/docs" || pathWithoutLang.startsWith("/docs/");
 const isWikiSection = () => pathWithoutLang === "/wiki" || pathWithoutLang.startsWith("/wiki/");
 ---
 
@@ -44,38 +43,6 @@ const isWikiSection = () => pathWithoutLang === "/wiki" || pathWithoutLang.start
         </a>
       </li>
       <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/archive")}
-          class={isActive("/archive") ? "active" : null}
-        >
-          {t(NAV_ARCHIVE)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/projects")}
-          class={isActive("/projects") ? "active" : null}
-        >
-          {t(NAV_PROJECTS)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/about")}
-          class={isActive("/about") ? "active" : null}
-        >
-          {t(NAV_ABOUT)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/docs")}
-          class={isDocsSection() ? "active" : null}
-        >
-          {t(NAV_DOCS)}
-        </a>
-      </li>
-      <li>
         {locale === "zh-cn" ? (
           <a
             href={getRelativeLocaleUrl(locale, "/wiki")}
@@ -95,10 +62,34 @@ const isWikiSection = () => pathWithoutLang === "/wiki" || pathWithoutLang.start
       </li>
       <li>
         <a
+          href={getRelativeLocaleUrl(locale, "/archive")}
+          class={isActive("/archive") ? "active" : null}
+        >
+          {t(NAV_ARCHIVE)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/projects")}
+          class={isActive("/projects") ? "active" : null}
+        >
+          {t(NAV_PROJECTS)}
+        </a>
+      </li>
+      <li>
+        <a
           href={getRelativeLocaleUrl(locale, "/sponsor")}
           class={isActive("/sponsor") ? "active" : null}
         >
           {t(NAV_SPONSOR)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={isActive("/about") ? "active" : null}
+        >
+          {t(NAV_ABOUT)}
         </a>
       </li>
       <li class="nav-tool">

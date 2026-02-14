@@ -1,12 +1,11 @@
 ---
 title: "Nunit ｜ Nunit"
-description: "NUnit 是一个针对 .NET 语言的开源单元测试框架，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的测试用例而被广泛使用。 核心用法："
+description: "NUnit 是一个针对 .NET 语言的开源单元测试框架，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的测试用例而被广泛使用。核心用法："
 section: "N"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Nunit ｜ Nunit
-[NUnit](#nunit) [NUnit](/zh-cn/wiki/nunit/) [单元测试 (unit testing)](/zh-cn/wiki/unit-testing/) [测试执行 (test executions)](/zh-cn/wiki/test-execution/)
 
 ### 相关术语：
 - JUnit 测试 (JUnit Testing)
@@ -19,7 +18,7 @@ order: 0
 
 ## 关于 NUnit 的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 NUnit？**
   NUnit 是一个针对 .NET 语言的开源**单元测试框架**，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的**测试用例**而被广泛使用。
   **核心用法：**
@@ -50,7 +49,7 @@ order: 0
   - **xUnit**：被视为 NUnit 的继任者，采用更现代的方法（如用构造函数代替 SetUp），对异步测试支持更好。
   - **NUnit**：在易用性与现代测试方法间取得了平衡，灵活且属性丰富，拥有强大的数据驱动测试支持。
 
-#### 安装与配置
+### 安装与配置
 - **如何安装 NUnit？**
   - 使用 **NuGet 管理器**：在 VS 中搜索安装 `NUnit`。
   - **Package Manager Console**：运行 `Install-Package NUnit -Version 3.x.x`。
@@ -59,7 +58,7 @@ order: 0
 
 - **系统要求**：支持 .NET Framework 2.0+（推荐 4.5+）、.NET Core 1.1+（含 .NET 5/6）、Mono 4.6+。支持 Windows, macOS 和 Linux。
 
-#### 使用与实施
+### 使用与实施
 - **如何编写基础测试用例？**
   1. 使用 `[TestFixture]` 装饰测试类。
   2. 使用 `[Test]` 装饰测试方法。
@@ -84,7 +83,7 @@ order: 0
   - `[SetUp]`：每个测试前运行，用于初始化环境（如创建对象实例）。
   - `[TearDown]`：每个测试后运行，用于清理资源（如关闭数据库连接）。
 
-#### 高级概念
+### 高级概念
 - **异常处理**：使用 `Assert.Throws<T>(() => { ... })` 验证。若要求不抛异常，使用 `Assert.DoesNotThrow`。注意：`ExpectedException` 属性已过时。
 - **参数化与数据驱动**：
   - `[TestCase(1, 2, 3)]`：直接在属性中定义多组数据。
@@ -93,9 +92,3 @@ order: 0
 
 - **Selenium 集成**：
   在 `[SetUp]` 中初始化驱动（如 `ChromeDriver`），在 `[Test]` 中调用 Selenium API 操作浏览器并断言结果，最后在 `[TearDown]` 中执行 `driver.Quit()` 释放资源。
-
-
-
-
-
-

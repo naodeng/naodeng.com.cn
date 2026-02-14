@@ -1,12 +1,18 @@
 ---
 title: "Swagger ｜ Swagger"
-description: "Swagger 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 API 开发中发挥着至关重要的作用。 API 开发中的重要性："
+description: "Swagger 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 API 开发中发挥着至关重要的作用。API 开发中的重要性："
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Swagger ｜ Swagger
-[Swagger](#swagger) [Swagger](/zh-cn/wiki/swagger/) [APIs](/zh-cn/wiki/api/) [APIs](/zh-cn/wiki/api/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [Swagger 工具](#swagger-工具)
+- [实施与用法](#实施与用法)
+- [高级概念](#高级概念)
 
 ### 相关术语：
 - [API 文档 (API documentation)](/zh-cn/wiki/api-documentation/)
@@ -15,9 +21,9 @@ order: 0
 ### 参见：
 - [官方网站](https://swagger.io/)
 
-## 关于 Swagger 的常见问题？
+## 关于 Swagger 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Swagger，为什么它在 API 开发中很重要？**
   **[Swagger](/zh-cn/wiki/swagger/)** 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 **[API](/zh-cn/wiki/api/)** 开发中发挥着至关重要的作用。
   **API 开发中的重要性：**
@@ -79,7 +85,7 @@ order: 0
   对于 **持续集成**，**Swagger Codegen** 可以自动生成服务器存根、客户端库和 API 文档。这种自动化减少了手动编码，并有助于维持不同 API 版本和实现之间的一致性。
   在 **维护阶段**，**Swagger UI** 提供了交互式文档界面。这让开发人员和测试人员都能轻松理解并与 API 交互，而无需深入代码库，从而加快了问题识别和解决的速度。
 
-#### Swagger 工具
+### Swagger 工具
 - **什么是 Swagger UI，它的优势是什么？**
   **Swagger UI** 是一个交互式的 Web 界面，允许用户在没有实现逻辑的情况下可视化并与 **[API](/zh-cn/wiki/api/)** 资源交互。它根据 OpenAPI 规范 (OAS) 生成，为开发人员提供了一种直观的方式来理解服务功能。
   **[Swagger](/zh-cn/wiki/swagger/)** UI 的优势：
@@ -143,7 +149,7 @@ order: 0
   - **托管**：提供托管 API 文档的空间，无需额外基础设施即可供相关方访问。
   测试自动化工程师可以确保 API 被一致地设计、准确地记载且易于测试。
 
-#### 实施与用法
+### 实施与用法
 - **如何将 Swagger 与 Spring Boot 应用集成？**
   将 **[Swagger](/zh-cn/wiki/swagger/)** 与 Spring Boot 应用集成可以简化 **[API](/zh-cn/wiki/api/)** 文档和测试。步骤如下：
   1. 向 `pom.xml` 或 `build.gradle` **添加依赖项**。对于 Maven：
@@ -302,7 +308,7 @@ order: 0
           name: {type: string}
   ```
 
-#### 高级概念
+### 高级概念
 - **什么是 OpenAPI 规范，它与 Swagger 有什么关系？**
   **OpenAPI 规范 (OAS)** 是一种用于描述 RESTful API 的语言无关框架。它提供了一种定义 API 的标准方法。
   **[Swagger](/zh-cn/wiki/swagger/)**（现称为 Swagger 套件）是与该规范配合使用的一套工具。最初 Swagger 既指规范也指工具，但当规范捐赠给 OpenAPI 倡议组织 (OAI) 后，规范更名为 OpenAPI Specification。Swagger 工具包括集成了 OAS 的 UI、Editor、Codegen 和 Inspector。
@@ -366,9 +372,3 @@ order: 0
   8. **治理**：使用 SwaggerHub 等平台实施风格指南检查。
   9. **文档及时更新**：确保代码更改能反映到规格文件中。
   10. **代码审查**：将规格文件的更改也纳入 Pull Request 审查流程。
-
-
-
-
-
-

@@ -1,16 +1,21 @@
 ---
 title: "状态转换测试 ｜ State Transition Testing"
-description: "状态转换测试 (State Transition Testing) 是一种 动态测试 (dynamic testing) 技术，它按序列分析系统在各种输入条件下的行为。当软件行为根据过去的事件或状态而有所不同时，这种方法特别有用。它通过触发事件并根据预期行为验证结果，来测试应用程序在不同状态之间的转换。 在这种方法中，你通常会使用 状态转换图 (State Transition Diagram, STD) 来可视化状态、转换和事件。该图作为设计 测试用例 (test cases) 的蓝图。识别所有可能的状态并定义系统如何根据事件或条件从一个状态转换到另一个状态至关重要。 要实施 状态转换测试 (State Transition Testing)，你需要： 1. 从需求中识别状态、转换和事件。 2. 开发 STD，如果需要，还可以开发 状态转换表 (State Transition Table, STT) 以获得更直观的表格视图。 3. 衍生出涵盖所有转换、无效转换和状态相关错误的测试用例。 4. 执行测试用例并对比实际结果与预期结果。"
+description: "状态转换测试 (State Transition Testing) 是一种 动态测试 (dynamic testing) 技术，它按序列分析系统在各种输入条件下的行为。当软件行为根据过去的事件或状态而有所不同时，这种方法特别有用。它通过触发事件并根据预期行为验证结果，来测试应用程序在不同状态之间的转换。在这种方法中，你通常会使用 状态转换图 (State Transition Diagram, STD) 来可视化状态、转换和事件。该图作为设计 测试用例 (test cases) 的蓝图。识别所有可能的状态并定义系统如何根据事件或条件从一个状态转换到另一个状态至关重要。要实施 状态转换测试 (State Transition Testing)，你需要：1. 从需求中识别状态、转换和事件。2. 开发 STD，如果需要，还可以开发 状态转换表 (State Transition Table, STT) 以获得更直观的表格视图。3. 衍生出涵盖所有转换、无效转换和状态相关错误的测试用例。4. 执行测试用例并对比实际结果与预期结果。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 状态转换测试 ｜ State Transition Testing
-[状态转换测试 (State Transition Testing)](#state-transition-testing) [状态转换测试 (State Transition testing)](/zh-cn/wiki/state-transition-testing/)
 
-## 关于状态转换测试的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [实施与技术](#实施与技术)
+- [挑战与最佳实践](#挑战与最佳实践)
+
+## 关于状态转换测试的问题？
+
+### 基础与重要性
 - **什么是状态转换测试？**
   **[状态转换测试 (State Transition Testing)](/zh-cn/wiki/state-transition-testing/)** 是一种 **[动态测试 (dynamic testing)](/zh-cn/wiki/dynamic-testing/)** 技术，它按序列分析系统在各种输入条件下的行为。当软件行为根据过去的事件或状态而有所不同时，这种方法特别有用。它通过触发事件并根据预期行为验证结果，来测试应用程序在不同状态之间的转换。
   在这种方法中，你通常会使用 **状态转换图 (State Transition Diagram, STD)** 来可视化状态、转换和事件。该图作为设计 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 的蓝图。识别所有可能的状态并定义系统如何根据事件或条件从一个状态转换到另一个状态至关重要。
@@ -56,7 +61,7 @@ order: 0
   - **工作流应用**：管理业务流程和工作流的软件，其中系统根据规则或用户动作在各种状态之间转换。
   具有 **复杂业务逻辑** 且能根据状态和转换清晰定义的应用程序也能从这种测试方法中受益。它有助于确保涵盖所有可能的状态和转换，这对于此类系统的可靠性至关重要。
 
-#### 实施与技术
+### 实施与技术
 - **如何实施状态转换测试？**
   状态转换测试通过一种系统化的方法来实施，涉及识别被测系统的状态、转换和输入/输出。以下是简洁指南：
   1. **分析规范**：了解应用程序的行为，识别不同的状态和转换。
@@ -143,7 +148,7 @@ order: 0
   - **[回归测试 (Regression testing)](/zh-cn/wiki/regression-testing/)**：当发生更改时，可以快速引用表。
   本质上，状态转换表作为验证状态相关功能的蓝图，对于嵌入式系统、UI 或任何状态管理复杂的系统非常有价值。
 
-#### 挑战与最佳实践
+### 挑战与最佳实践
 - **状态转换测试中面临哪些挑战？**
   **[状态转换测试 (State Transition Testing)](/zh-cn/wiki/state-transition-testing/)** 可能面临以下挑战：
   - **复杂性**：随着系统规模增长，状态和转换数量呈指数级增加，难以管理图表。
@@ -201,9 +206,3 @@ order: 0
   - **[单元测试 (Unit Testing)](/zh-cn/wiki/unit-testing/) 框架**：JUnit, **[NUnit](/zh-cn/wiki/nunit/)**, PyTest。
   - **[自动化测试 (Automated Testing)](/zh-cn/wiki/automated-testing/) 框架**：**[Selenium](/zh-cn/wiki/selenium/)**, Appium, Robot Framework。
   - **持续集成工具**：Jenkins, GitLab CI, CircleCI。
-
-
-
-
-
-

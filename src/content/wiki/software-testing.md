@@ -1,14 +1,23 @@
 ---
 title: "软件测试 ｜ Software Testing"
-description: "软件测试 (Software testing) 是评估和验证软件应用程序或系统是否按预期工作的过程。测试的目的可以是质量保证、功能验证、性能评估或发现缺陷。测试涉及执行软件组件或系统组件，以评估一个或多个感兴趣的属性。 在 测试自动化 (test automation) 环境中，软件测试通常指使用 自动化工具和框架 (automated tools and frameworks) 在软件发布到生产环境之前，对其执行预先编写的测试脚本。自动化测试的范围可以从验证单个功能的简单单元测试，到验证集成系统工作流的复杂端到端测试。 自动化测试 (automated testing) 的目标是 提高效率 (increase efficiency)、减少 测试执行 (test execution) 时间，并提供 一致的 测试覆盖率 (test coverage)。它对于 回归测试 (regression testing) 特别有用，因为回归测试能确保新的更改不会在现有功能中引入新的缺陷。自动化测试可以频繁运行，并集成到持续集成和部署流水线中，从而实现问题的早期检测和向开发人员的更快速反馈。"
+description: "软件测试 (Software testing) 是评估和验证软件应用程序或系统是否按预期工作的过程。测试的目的可以是质量保证、功能验证、性能评估或发现缺陷。测试涉及执行软件组件或系统组件，以评估一个或多个感兴趣的属性。在 测试自动化 (test automation) 环境中，软件测试通常指使用 自动化工具和框架 (automated tools and frameworks) 在软件发布到生产环境之前，对其执行预先编写的测试脚本。自动化测试的范围可以从验证单个功能的简单单元测试，到验证集成系统工作流的复杂端到端测试。自动化测试 (automated testing) 的目标是 提高效率 (increase efficiency)、减少 测试执行 (test execution) 时间，并提供 一致的 测试覆盖率 (test coverage)。它对于 回归测试 (regression testing) 特别有用，因为回归测试能确保新的更改不会在现有功能中引入新的缺陷。自动化测试可以频繁运行，并集成到持续集成和部署流水线中，从而实现问题的早期检测和向开发人员的更快速反馈。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 软件测试 ｜ Software Testing
-## 关于软件测试的常见问题？
 
-#### 基础与重要性
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [测试技术](#测试技术)
+- [测试工具与自动化](#测试工具与自动化)
+- [测试管理](#测试管理)
+- [高级概念](#高级概念)
+
+## 关于软件测试的问题？
+
+### 基础与重要性
 - **什么是软件测试？**
   **软件测试 (Software testing)** 是评估和验证软件应用程序或系统是否按预期工作的过程。测试的目的可以是质量保证、功能验证、性能评估或发现缺陷。测试涉及执行软件组件或系统组件，以评估一个或多个感兴趣的属性。
   在 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 环境中，软件测试通常指使用 **自动化工具和框架 (automated tools and frameworks)** 在软件发布到生产环境之前，对其执行预先编写的测试脚本。自动化测试的范围可以从验证单个功能的简单单元测试，到验证集成系统工作流的复杂端到端测试。
@@ -52,7 +61,7 @@ order: 0
   另一方面，**测试** 是一个反应式的过程，是 QA 的子集。它涉及为了发现软件 **[错误 (bugs)](/zh-cn/wiki/bug/)** 而实际执行系统或应用。测试关乎 **[验证 (verification)](/zh-cn/wiki/verification/)** 和确认——确保软件满足指导其设计和开发的业务和技术需求，并且工作如预期。
   本质上，QA 关乎 **过程 (process)** 和 **预防 (prevention)**，而测试关乎 **产品 (product)** 和 **检测 (detection)**。QA 旨在改进和稳定生产（及其过程）以避免导致缺陷的问题，而测试旨在识别产品本身的缺陷。测试是更广泛的 QA 过程中的一项关键活动，QA 关注的是软件和开发过程的整体 **[质量管理 (quality management)](/zh-cn/wiki/quality-management/)**。
 
-#### 测试技术
+### 测试技术
 - **白盒测试和黑盒测试之间有什么区别？**
   **[白盒测试 (White box testing)](/zh-cn/wiki/white-box-testing/)**，也称为透明盒、玻璃盒或 **[结构化测试 (structural testing)](/zh-cn/wiki/structural-testing/)**，涉及测试应用的内部结构或内部运作，而不是其功能。在 **[白盒测试 (white box testing)](/zh-cn/wiki/white-box-testing/)** 中，**[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 是根据应用的内部代码路径、代码结构和软件本身的实现导出的。测试人员需要了解内部代码，通常是开发人员或具有开发技能的测试人员。
   另一方面，**[黑盒测试 (Black box testing)](/zh-cn/wiki/black-box-testing/)** 将软件视为“黑盒”——不了解内部实现。**[测试用例 (Test cases)](/zh-cn/wiki/test-case/)** 是根据软件的规格说明和需求编写的。**[黑盒测试 (Black box testing)](/zh-cn/wiki/black-box-testing/)** 专注于使用各种输入测试软件，并根据预期结果验证输出。它通常由不需要了解应用编码或内部结构的测试人员执行。
@@ -82,7 +91,7 @@ order: 0
   另一方面，**[非功能测试 (Non-functional testing)](/zh-cn/wiki/non-functional-testing/)** 根据 **功能需求 (functional requirements)** 未涵盖的标准评估系统的 **就绪状态 (readiness)**。它评估性能、易用性、可靠性和安全性等特征。此类测试回答的问题如：“软件表现如何？”或“软件有多安全？”常见类型包括性能测试、负载测试、压力测试、易用性测试和 **[安全性测试 (security testing)](/zh-cn/wiki/security-testing/)**。
   功能测试验证应用的特定操作和响应，而非功能测试则衡量应用在各种条件下的整体运作。两者对于确保全面理解软件质量都至关重要。
 
-#### 测试工具与自动化
+### 测试工具与自动化
 - **什么是自动化测试？**
   **[自动化测试 (Automated testing)](/zh-cn/wiki/automated-testing/)** 是使用软件工具执行 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 的过程，这些工具无需人工干预即可在软件应用上运行预先编写的测试脚本。此方法用于验证软件产品的功能、可靠性和稳定性。自动化测试可以随时重复运行，为开发团队提供即时反馈。
   以下是使用假设测试框架的 TypeScript 基本示例：
@@ -179,7 +188,7 @@ order: 0
   ```
   本质上，Jenkins 通过自动化测试过程来增强测试，从而确保 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 得到持续评估，并能迅速发现和解决问题。
 
-#### 测试管理
+### 测试管理
 - **什么是测试用例？**
   **[测试用例 (test case)](/zh-cn/wiki/test-case/)** 是测试人员确定应用程序或软件系统是否正常工作的一组条件或变量。它本质上是一个特定的场景，由一系列步骤、**[预期结果 (expected results)](/zh-cn/wiki/expected-result/)** 和 **[实际结果 (actual results)](/zh-cn/wiki/actual-result/)** 组成，旨在验证软件的特定功能或特性。
   每个 **[测试用例 (test case)](/zh-cn/wiki/test-case/)** 包括：
@@ -261,7 +270,7 @@ order: 0
   - **维护与改进 (Maintaining and improving)**：维护并改进测试环境和基础设施。
   测试经理必须深入理解 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 原则和实践，并具备强大的领导和沟通技能。他们在 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 成功的道路上起着关键作用，确保拥有正确的流程、工具和人员。
 
-#### 高级概念
+### 高级概念
 - **什么是性能测试？**
   **[性能测试 (Performance testing)](/zh-cn/wiki/performance-testing/)** 是一种 **[非功能测试 (non-functional testing)](/zh-cn/wiki/non-functional-testing/)**，评估系统在各种条件下如何运行。它主要关注软件应用的 **速度 (speed)**、**可扩展性 (scalability)**、**可靠性 (reliability)** 和 **资源占用 (resource usage)**。性能测试旨在模拟不同场景，包括高用户负载、有限计算资源和海量数据输入/输出，以识别潜在瓶颈并确保软件符合性能准则。
   **[性能测试 (performance testing)](/zh-cn/wiki/performance-testing/)** 的关键子类型包括：
@@ -318,9 +327,3 @@ order: 0
   - 配置和部署管理测试，确保安全的部署设置。
   安全性测试在开发生命周期中至关重要，并应集成到持续集成/持续部署 (CI/CD) 流水线中。自动化 **[安全性测试 (security testing)](/zh-cn/wiki/security-testing/)** 工具（如 SAST、DAST 和 IAST）可用于早期且频繁地识别安全问题。
   总之，**[安全性测试 (security testing)](/zh-cn/wiki/security-testing/)** 防止未经授权的访问和数据泄露，确保持密性、完整性及可用性。
-
-
-
-
-
-

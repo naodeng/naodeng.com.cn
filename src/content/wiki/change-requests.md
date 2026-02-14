@@ -4,16 +4,21 @@ description: "关于变更请求的问题？"
 section: "C"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 变更请求 ｜ Change Requests
-[变更请求 (Change Requests)](#change-requests)[变更请求](/zh-cn/wiki/change-requests/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [变更请求管理](#变更请求管理)
+- [变更请求与测试](#变更请求与测试)
 
 ### 相关术语：
 - [变更控制 (Change Control)](/zh-cn/wiki/change-control/)
 
 ## 关于变更请求的问题？
 
-#### 基础与重要性
+### 基础与重要性
 
 - **软件开发中的变更请求是什么？**
 软件开发中的**变更请求 (change request)** 是对项目任何方面进行改动的正式提议。这可能涉及对代码、设计、架构甚至需求本身的修改。变更请求源自各种渠道，如利益相关者、项目团队成员或客户，必须评估它们对项目时间表、预算和资源的影响。
@@ -76,7 +81,7 @@ order: 0
 
 通过管理变更请求，CCB 有助于维护测试自动化过程的完整性并最大限度减少干扰，确保测试保持有效且与项目目标一致。
 
-#### 变更请求管理
+### 变更请求管理
 
 变更请求管理包含几个关键步骤，以确保有系统地处理修改：
 1. **提交 (Submission)**：提交正式变更请求，详细说明拟议变更、理由和潜在影响。
@@ -131,7 +136,7 @@ order: 0
 
 此外，变更请求管理确保所有变更都被**记录和跟踪**，提供清晰的审计追踪，这对于分析变更是否成功至关重要，并有助于减少误解和错误。在测试自动化中，它有助于维护**测试套件的完整性**。随着变更获批，有系统地调整测试用例可以防止**测试覆盖率**出现缺口，并降低缺陷漏向生产环境的风险。
 
-#### 变更请求与测试
+### 变更请求与测试
 
 变更请求会显著改变测试自动化版图。当变更请求获批时，**测试用例**可能需要**更新**或创建**新用例**以覆盖功能变化。这可能导致维护测试脚本的额外工作。
 
@@ -166,7 +171,7 @@ test('验证登录', async () => {
   await page.type('#username', 'user1');
   await page.type('#password', 'pass1');
   await page.click('#login-button');
-  expect(await page.find('.welcome-message').textContent).toBe('欢迎, user1!');
+  expect(await page.find('.welcome-message').textContent).toBe('欢迎，user1!');
 });
 
 // 变更请求后
@@ -177,7 +182,7 @@ test('通过 OTP 验证登录', async () => {
   // OTP 的新步骤
   await page.type('#otp', '123456');
   await page.click('#otp-submit');
-  expect(await page.find('.welcome-message').textContent).toBe('欢迎, user2!');
+  expect(await page.find('.welcome-message').textContent).toBe('欢迎，user2!');
 });
 ```
 
@@ -193,9 +198,3 @@ test('通过 OTP 验证登录', async () => {
 - **环境不一致**：利用**容器化**和**基础设施即代码**。
 
 通过保持敏捷、使用**版本控制**和**自动化部署**，工程师可以缓解这些挑战。
-
-
-
-
-
-

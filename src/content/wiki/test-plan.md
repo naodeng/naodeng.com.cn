@@ -1,21 +1,27 @@
 ---
 title: "测试计划 ｜ Test Plan"
-description: "关于测试计划 (Test Plan) 的常见问题？"
+description: "测试计划 (Test Plan) 是一份正式文档，概述了拟定测试活动的途径、资源和进度。它定义了项目范围内 软件测试 (software testing) 的范围、目标和程度。该战略计划为测试流程和活动设定了标准，并以此作为确保全面测试和质量结果的指南。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试计划 ｜ Test Plan
-[测试计划 (Test Plan)](#test-plan)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [创建与实施](#创建与实施)
+- [类型与策略](#类型与策略)
+- [最佳实践与挑战](#最佳实践与挑战)
 
 ### 相关术语：
 - [测试策略 (Test Strategy)](/zh-cn/wiki/test-strategy/)
 - [测试执行 (Test Execution)](/zh-cn/wiki/test-execution/)
 - [测试管理 (Test Management)](/zh-cn/wiki/test-management/)
 
-## 关于测试计划 (Test Plan) 的常见问题？
+## 关于测试计划 (Test Plan) 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **在软件测试中，什么是测试计划 (Test Plan)？**
   **测试计划 (Test Plan)** 是一份正式文档，概述了拟定测试活动的途径、资源和进度。它定义了项目范围内 **软件测试 (software testing)** 的范围、目标和程度。该战略计划为测试流程和活动设定了标准，并以此作为确保全面测试和质量结果的指南。
   测试计划通常包括：
@@ -57,7 +63,7 @@ order: 0
 - **测试计划和测试用例有什么区别？**
   **测试计划 (Test Plan)** 是战略性文档，概述方法、资源、进度和范围；而 **测试用例 (Test Case)** 是具体的条件、步骤和 **预期结果 (expected results)**，用于验证特定功能。测试计划解决的是“为什么、测试什么、何时、谁、如何”等宏观问题，而测试用例则是微观层面的操作单元。
 
-#### 创建与实施
+### 创建与实施
 - **创建测试计划涉及哪些步骤？**
   1. **明确范围 (Define the scope)**：设定测试活动边界。
   2. **确定目标 (Identify objectives)**。
@@ -101,7 +107,7 @@ order: 0
 - **如何在测试过程中更新或修改测试计划？**
   定期 **监控进度 (Monitor Progress)**、**评估变更 (Assess Changes)**（新需求或发现的问题）、获取 **利害关系人反馈 (Stakeholder Feedback)**、**重新评估风险 (Risk Re-evaluation)**、**资源再分配 (Resource Reallocation)**、**更新文档 (Update Documentation)**、**传达变更 (Communicate Changes)** 并使用 **版本控制 (Version Control)**。
 
-#### 类型与策略
+### 类型与策略
 - **测试计划有哪些不同类型？**
   - **主测试计划 (Master Test Plan)**：项目的单一高级计划。
   - **阶段特定测试计划 (Phase-Specific Test Plan)**：如单元、集成、系统、验收测试阶段。
@@ -137,7 +143,7 @@ order: 0
 - **选择测试计划策略时应考虑哪些因素？**
   **项目需求 (Project Requirements)**、**测试范围 (Testing Scope)**、**资源可用性 (Resource Availability)**、**风险评估 (Risk Assessment)**、**测试环境 (Test Environment)**、**测试数据管理 (Test Data Management)**、**自动化工具 (Automation Tools)**、**测试维护 (Test Maintenance)**、**持续集成/持续部署 (CI/CD)**、**性能与扩展性 (Performance and Scalability)**、**预算与时间限制 (Budget and Time Constraints)**、**干系人沟通 (Stakeholder Communication)** 以及 **指标与报告 (Metrics and Reporting)**。
 
-#### 最佳实践与挑战
+### 最佳实践与挑战
 - **创建和实施测试计划的最佳实践有哪些？**
   在 **测试自动化 (test automation)** 中包括：
   - **与项目目标对齐**。
@@ -169,9 +175,3 @@ order: 0
 
 - **测试计划如何用于管理软件测试中的风险？**
   通过早期识别问题进行预防。包含 **风险分析 (risk analysis)** 部分。管理步骤包括：**识别风险 (Identifying risks)**、**评估风险 (Assessing risks)**、**排定优先级 (Prioritizing risks)**、**缓解风险 (Mitigating risks)** 以及 **应急预案 (Contingency planning)**。
-
-
-
-
-
-

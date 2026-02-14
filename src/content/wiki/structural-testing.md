@@ -1,16 +1,22 @@
 ---
 title: "结构测试 ｜ Structural Testing"
-description: "结构测试 (Structural testing) 又称 白盒测试 (white box testing)，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 测试用例 (test cases)，确保代码中的所有路径、分支和语句至少执行一次。 在 结构测试 (structural testing) 中，代码覆盖率 (code coverage) 是一个关键指标，包括 语句覆盖 (statement coverage)（确保每一行代码都执行到）和 分支覆盖 (branch coverage)（测试控制结构中所有可能的路由，如 if-else 或 switch-case 语句）。路径测试 (Path testing) 是另一种技术，涉及测试代码中所有可能的路径，虽然可能非常耗时，但能确保彻底的测试。 自动化 结构测试 (structural testing) 涉及编写直接与代码交互的 测试脚本 (test scripts)。可以使用 Java 的 JUnit 或 Python 的 pytest 等工具编写执行结构测试的单元测试。"
+description: "结构测试 (Structural testing) 又称 白盒测试 (white box testing)，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 测试用例 (test cases)，确保代码中的所有路径、分支和语句至少执行一次。在 结构测试 (structural testing) 中，代码覆盖率 (code coverage) 是一个关键指标，包括 语句覆盖 (statement coverage)（确保每一行代码都执行到）和 分支覆盖 (branch coverage)（测试控制结构中所有可能的路由，如 if-else 或 switch-case 语句）。路径测试 (Path testing) 是另一种技术，涉及测试代码中所有可能的路径，虽然可能非常耗时，但能确保彻底的测试。自动化 结构测试 (structural testing) 涉及编写直接与代码交互的 测试脚本 (test scripts)。可以使用 Java 的 JUnit 或 Python 的 pytest 等工具编写执行结构测试的单元测试。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 结构测试 ｜ Structural Testing
-[结构测试 (Structural Testing)](#structural-testing) [结构测试 (Structural Testing)](/zh-cn/wiki/structural-testing/) [玻璃盒测试 (glass box testing)](/zh-cn/wiki/glass-box-testing/)
 
-## 关于结构测试的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [技术与类型](#技术与类型)
+- [实施与工具](#实施与工具)
+- [挑战与解决方案](#挑战与解决方案)
+
+## 关于结构测试的问题？
+
+### 基础与重要性
 - **什么是结构测试？**
   **[结构测试 (Structural testing)](/zh-cn/wiki/structural-testing/)** 又称 **[白盒测试 (white box testing)](/zh-cn/wiki/white-box-testing/)**，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**，确保代码中的所有路径、分支和语句至少执行一次。
   在 **[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 中，**[代码覆盖率 (code coverage)](/zh-cn/wiki/code-coverage/)** 是一个关键指标，包括 **语句覆盖 (statement coverage)**（确保每一行代码都执行到）和 **分支覆盖 (branch coverage)**（测试控制结构中所有可能的路由，如 if-else 或 switch-case 语句）。**[路径测试 (Path testing)](/zh-cn/wiki/path-testing/)** 是另一种技术，涉及测试代码中所有可能的路径，虽然可能非常耗时，但能确保彻底的测试。
@@ -56,7 +62,7 @@ order: 0
   此外，在金融交易、数据处理和安全特性等 **高风险领域 (high-risk areas)**，精确的内部行为至关重要，**[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 在这些领域尤为重要。通过对这些领域进行严格测试，**[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 为软件产品的整体可靠性和安全性做出了贡献。
   最终，**[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 是全面测试策略的关键组成部分，与 **[功能测试 (functional testing)](/zh-cn/wiki/functional-testing/)** 相辅相成，交付全方位且经过彻底验证的软件产品。
 
-#### 技术与类型
+### 技术与类型
 - **结构测试中使用了哪些不同技术？**
   **[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 中使用的不同技术包括：
   - **条件覆盖 (Condition Coverage)**：确保所有布尔表达式都已评估为真和假。
@@ -118,7 +124,7 @@ order: 0
   然而，由于复杂系统中的路径数量可能巨大，**[路径测试 (path testing)](/zh-cn/wiki/path-testing/)** 可能具有挑战性。为了应对挑战，你可能会专注于 **高风险路径** 或使用启发式方法优先处理更可能包含缺陷的路径。
   自动化工具可以通过从 CFG 生成 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 或识别尚未测试的路径，来辅助 **[路径测试 (path testing)](/zh-cn/wiki/path-testing/)**。将 **[路径测试 (path testing)](/zh-cn/wiki/path-testing/)** 集成到 **[测试套件 (test suite)](/zh-cn/wiki/test-suite/)** 中，通过确保所有代码路径都在测试条件下得到验证，可以显著增强软件的稳健性。
 
-#### 实施与工具
+### 实施与工具
 - **实施结构测试涉及哪些步骤？**
   为了有效实施 **[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)**，请遵循以下步骤：
   1. **识别测试项**：选择需要测试的组件或系统。
@@ -189,7 +195,7 @@ order: 0
   - **文档化 [测试用例 (test cases)](/zh-cn/wiki/test-case/) 和结果**，让其他人更容易理解测试目的。
   - 根据反馈和指标 **持续审查和改进** 测试流程，以适应代码库和技术栈的变化。
 
-#### 挑战与解决方案
+### 挑战与解决方案
 - **结构测试期间面临哪些常见挑战？**
   **[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 中的常见挑战包括：
   - **复杂性 (Complexity)**：在复杂系统中测试所有可能的路径可能令人生畏，因为路径数量庞大。
@@ -235,9 +241,3 @@ order: 0
   9. **反馈循环**：集成通知功能，提醒开发人员测试结果。
   10. **持续改进**：定期审查结果和覆盖率报告，以识别 **[测试套件 (test suite)](/zh-cn/wiki/test-suite/)** 中可额外测试或潜在改进的领域。
   通过遵循这些步骤，**[结构测试 (structural testing)](/zh-cn/wiki/structural-testing/)** 成为 CI/CD 流程中无缝且不可或缺的一部分，有助于提高代码质量和发布更可靠的软件。
-
-
-
-
-
-

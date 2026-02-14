@@ -7,13 +7,13 @@
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import { NAV_HOME } from "@/consts";
-import { slugToTitleEn, getTitleZhFromBody, buildWikiSidebar } from "@/data/wiki";
+import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
   const entries = await getCollection("wiki");
   return entries.map((entry) => {
-    const slug = entry.id.replace(/\.md$/, "");
+    const slug = wikiIdToSlug(entry.id);
     return {
       params: { lang: "zh-cn", slug },
       props: { entry },
@@ -34,7 +34,8 @@ if (locale === "en") {
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
 const wikiTitle = "测试百科";
 const bodyStr = typeof entry.body === "string" ? entry.body : "";
-const pageTitle = getTitleZhFromBody(bodyStr) || slugToTitleEn(slugParam) || entry.data.title || slugParam;
+const pageTitle =
+  getTitleZhFromBody(bodyStr) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slugParam) || entry.data?.title || slugParam;
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: wikiTitle, url: `/${locale}/wiki/` },

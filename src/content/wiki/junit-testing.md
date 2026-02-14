@@ -1,16 +1,15 @@
 ---
 title: "JUnit 测试 ｜ JUnit Testing"
-description: "JUnit 是一款针对 Java 语言的单元测试 (Unit Testing) 框架，旨在通过提供注解 (Annotations) 和断言 (Assertions) 来简化测试用例 (Test Cases) 的创建。它是开发人员独立于应用其余部分验证每个软件单元的核心工具。 一个基础的 JUnit 测试用例使用 `@Test` 注解标识测试方法。例如："
+description: "JUnit 是一款针对 Java 语言的单元测试 (Unit Testing) 框架，旨在通过提供注解 (Annotations) 和断言 (Assertions) 来简化测试用例 (Test Cases) 的创建。它是开发人员独立于应用其余部分验证每个软件单元的核心工具。一个基础的 JUnit 测试用例使用 `@Test` 注解标识测试方法。例如："
 section: "J"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # JUnit 测试 ｜ JUnit Testing
-[JUnit Testing](#junit-testing)
 
 ## 关于 JUnit 测试的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 JUnit 测试？**
   JUnit 是一款针对 Java 语言的**单元测试 (Unit Testing)** 框架，旨在通过提供注解 (Annotations) 和断言 (Assertions) 来简化**测试用例 (Test Cases)** 的创建。它是开发人员独立于应用其余部分**验证每个软件单元**的核心工具。
   一个基础的 JUnit 测试用例使用 `@Test` 注解标识测试方法。例如：
@@ -50,7 +49,7 @@ order: 0
 - **JUnit 如何提高代码质量？**
   它强制执行一种**纪律严明的方法**来编写和维护代码。它鼓励开发人员编写**可测试的、模块化的、低耦合**的代码，这通常会带来更好的软件设计和对 **SOLID 原则**的遵循。通过快速反馈机制，Bug 能在早期被发现并修复。
 
-#### JUnit 测试用例 (JUnit Test Cases)
+### JUnit 测试用例 (JUnit Test Cases)
 - **如何编写基础的 JUnit 测试用例？**
   1. **导入**：`import static org.junit.Assert.*; import org.junit.Test;`
   2. **定义类**：普通 Java 类即可。
@@ -77,7 +76,7 @@ order: 0
   }
   ```
 
-#### 高级概念 (Advanced Concepts)
+### 高级概念 (Advanced Concepts)
 - **什么是参数化测试 (Parameterized Testing)？**
   允许以不同的参数多次运行同一测试，减少代码重复。JUnit 5 使用 `@ParameterizedTest` 配合 `@ValueSource`, `@CsvSource` 或 `@MethodSource` 实现。
 
@@ -103,7 +102,7 @@ order: 0
   }
   ```
 
-#### 最佳实践 (Best Practices)
+### 最佳实践 (Best Practices)
 - **编写优质 JUnit 测试的建议**：
   - **命名清晰**：如 `shouldReturnTrueWhenConditionMet()`。
   - **单一职责**：每个方法只测试一个方面。
@@ -124,9 +123,3 @@ order: 0
   - 使用**内存在数据库**（如 H2）进行持久层测试。
   - 使用 `@TestInstance(Lifecycle.PER_CLASS)` 共享昂贵的初始化过程。
   - 及时清理资源。
-
-
-
-
-
-

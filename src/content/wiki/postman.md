@@ -1,12 +1,18 @@
 ---
 title: "Postman ｜ Postman"
-description: "Postman 是一个 API 开发工具，简化了构建、测试和修改 API 的过程。它提供了一个友好的界面，用于发送 HTTP 请求（GET, POST, PUT, DELETE 等）并查看响应，而无需编写自定义客户端代码。 开发人员和测试人员使用它来验证 API 行为，确保返回的数据正确，并模拟各种错误情况。"
+description: "Postman 是一个 API 开发工具，简化了构建、测试和修改 API 的过程。它提供了一个友好的界面，用于发送 HTTP 请求（GET, POST, PUT, DELETE 等）并查看响应，而无需编写自定义客户端代码。开发人员和测试人员使用它来验证 API 行为，确保返回的数据正确，并模拟各种错误情况。"
 section: "P"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Postman ｜ Postman
-[Postman](#postman) [Postman](/zh-cn/wiki/postman/) [API](/zh-cn/wiki/api/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [操作与使用](#操作与使用)
+- [自动化与进阶](#自动化与进阶)
+- [团队协作](#团队协作)
 
 ### 相关术语：
 - [API 测试工具 (API testing tool)](/zh-cn/wiki/api-testing-tool/)
@@ -16,9 +22,9 @@ order: 0
 - [官方网站](https://www.postman.com/)
 - [维基百科](https://en.wikipedia.org/wiki/Postman_(software))
 
-## 关于 Postman 的常见问题？
+## 关于 Postman 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Postman？它有什么用途？**
   Postman 是一个 **API 开发工具**，简化了构建、测试和修改 API 的过程。它提供了一个友好的界面，用于发送 HTTP 请求（GET, POST, PUT, DELETE 等）并查看响应，而无需编写自定义客户端代码。
   开发人员和测试人员使用它来验证 API 行为，确保返回的数据正确，并模拟各种错误情况。
@@ -36,7 +42,7 @@ order: 0
   - **文档生成**：自动从集合生成精美的 API 文档。
   - **可视化器 (Visualizer)**：将响应数据渲染成图表或自定义 HTML 格式。
 
-#### 操作与使用
+### 操作与使用
 - **如何安装与设置？**
   1. 从官网下载对应系统的安装包（Windows, macOS, Linux）。
   2. 注册账号（可选）以同步数据。
@@ -51,7 +57,7 @@ order: 0
   - 使用 `{{variable_name}}` 语法在 URL 或 Body 中引用。
   - 在脚本中使用 `pm.environment.set()` 或 `pm.globals.get()` 进行操作。
 
-#### 自动化与进阶
+### 自动化与进阶
 - **如何进行自动化测试？**
   在 **Tests** 标签页编写断言：
   ```javascript
@@ -67,13 +73,7 @@ order: 0
 - **性能测试能力**：
   支持基础的并发负载测试，通过调整 Collection Runner 的迭代次数和延迟来观察系统响应，但对于超大规模压力测试，建议使用专门的工具如 JMeter。
 
-#### 团队协作
+### 团队协作
 - **工作区 (Workspaces)**：团队共享资源的核心。
 - **版本控制**：支持 Fork 和 Merge 集合，追踪变更记录。
 - **集成**：支持与 GitHub、Datadog、PagerDuty 等第三方工具无缝对接。
-
-
-
-
-
-

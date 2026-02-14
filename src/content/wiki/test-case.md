@@ -1,11 +1,19 @@
 ---
 title: "测试用例 ｜ Test Case"
-description: "正向 测试用例 (Test Cases) 验证系统在提供有效输入或在预期条件下时的行为。它们确认软件功能符合需求。"
+description: "测试用例 (Test Case)** 是软件测试中的一组条件或变量，测试人员通过这些条件或变量来确定应用程序、软件系统或其某个功能是否按原定的设计运行。编写测试用例是测试过程中的关键步骤，因为它们有助于确保软件按预期运行并满足所有需求。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试用例 ｜ Test Case
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [创建与执行](#创建与执行)
+- [类型与示例](#类型与示例)
+- [最佳实践](#最佳实践)
+
 ### 相关术语：
 - [测试脚本](/zh-cn/wiki/test-script/)
 - [测试场景](/zh-cn/wiki/test-scenario/)
@@ -13,9 +21,9 @@ order: 0
 ### 参见：
 - [维基百科](https://en.wikipedia.org/wiki/Test_case)
 
-## 关于测试用例的常见问题？
+## 关于测试用例的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **软件测试中的测试用例是什么？**
   **测试用例 (Test Case)** 是 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 中的一组条件或变量，测试人员通过这些条件或变量来确定应用程序、软件系统或其某个功能是否按原定的设计运行。编写 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 是测试过程中的关键步骤，因为它们有助于确保软件按预期运行并满足所有需求。
   **测试用例** 是测试周期的基础，因为它们提供了测试的记录实例，可以追踪以备将来复现，并确保覆盖了 **[功能需求 (functional requirements)](/zh-cn/wiki/functional-requirements/)**。它们在设计上尽可能保持原子性，即一次只测试一件事，并且经常被组织到 **[测试套件 (test suites)](/zh-cn/wiki/test-suite/)** 中以便更好地管理。
@@ -54,8 +62,8 @@ order: 0
     2. 输入有效密码
     3. 点击登录按钮
   - **测试数据**:
-    - 用户名: testuser
-    - 密码: securePass123
+    - 用户名：testuser
+    - 密码：securePass123
   - **预期结果**: 用户被重定向到仪表板
   - **实际结果**: *执行后填写*
   - **后置条件**: 用户已登录
@@ -80,7 +88,7 @@ order: 0
   - 测试用例 2：验证使用无效凭据登录。
   - 测试用例 3：验证用户名和密码为空时的登录。
 
-#### 创建与执行
+### 创建与执行
 - **创建测试用例的步骤是什么？**
   创建 **[测试用例 (Test Case)](/zh-cn/wiki/test-case/)** 涉及以下步骤：
   1. **识别测试需求**：根据软件需求识别需要测试的内容。
@@ -148,7 +156,7 @@ order: 0
   测试中的 **不稳定性 (Flakiness)** 可能会使这种评估变得复杂。
   **[代码覆盖率 (Code coverage)](/zh-cn/wiki/code-coverage/)** 工具也可以辅助评估 **[测试用例 (Test Cases)](/zh-cn/wiki/test-case/)** 的有效性。注意，单个失败可能是致命的，而全通并不保证没有 **[Bug (bug)](/zh-cn/wiki/bug/)**。
 
-#### 类型与示例
+### 类型与示例
 - **测试用例有哪些不同类型？**
   软件 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 中的 **[测试用例 (Test Cases)](/zh-cn/wiki/test-case/)** 类型包括：
   - **单元测试用例 (Unit Test Cases)**：目标是代码的单个组件或函数。
@@ -231,7 +239,7 @@ order: 0
   - **预期结果**: 所有操作应在 2 秒内响应。
   通常使用 **[性能测试 (performance testing)](/zh-cn/wiki/performance-testing/)** 工具（如 **[JMeter (JMeter)](/zh-cn/wiki/jmeter/)** 进行 **[负载测试 (load testing)](/zh-cn/wiki/load-testing/)**）或 **[安全测试 (security testing)](/zh-cn/wiki/security-testing/)** 工具执行。
 
-#### 最佳实践
+### 最佳实践
 - **编写有效测试用例的最佳实践有哪些？**
   - **清晰简洁**：使任何人都能轻松理解。
   - **使用描述性名称**。
@@ -293,9 +301,3 @@ order: 0
   - **采用版本控制最佳实践**。
   - **文档化可重用组件**。
   通过这些方法，**[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 工程师可以创建灵活且易维护的 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 套件。
-
-
-
-
-
-

@@ -1,14 +1,13 @@
 ---
-title: "Back To Back Testing ｜ Back To Back Testing"
-description: "基础知识和重要性"
+title: "背靠背测试 ｜ Back-to-Back Testing"
+description: "背靠背测试 也可理解为并行对比测试，是指将两个或者更多具有相似功能的组件或系统并行运行，通过比较它们的运行结果来检测它们之间是否存在输出差异的一种测试方法。这种方法广泛应用于软件开发和硬件设计中，目的是确保不同组件在执行相同任务时能够产生一致的结果，从而验证它们的功能相似性和兼容性。"
 section: "B"
 order: 0
 ---
-
-# Back To Back Testing ｜ Back To Back Testing
+<!-- markdownlint-disable MD025 -->
+# 背靠背测试 ｜ Back-to-Back Testing
 <!-- markdownlint-disable MD041 -->
-- [Back To Back Testing ｜ Back To Back Testing](#back-to-back-testing--back-to-back-testing)
-- [Back-to-Back Testing 背靠背测试](#back-to-back-testing-背靠背测试)
+- [背靠背测试 ｜ Back-to-Back Testing](#背靠背测试--back-to-back-testing)
 - [关于背靠背测试的问题](#关于背靠背测试的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [什么是背靠背测试？](#什么是背靠背测试)
@@ -28,10 +27,6 @@ order: 0
     - [进行背靠背测试时应遵循哪些最佳实践？](#进行背靠背测试时应遵循哪些最佳实践)
     - [您如何处理背靠背测试期间的失败或错误？](#您如何处理背靠背测试期间的失败或错误)
     - [高效且有效的背靠背测试有哪些策略？](#高效且有效的背靠背测试有哪些策略)
-
-# Back-to-Back Testing 背靠背测试
-
-也可理解为并行对比测试，是指将两个或者更多具有相似功能的组件或系统并行运行，通过比较它们的运行结果来检测它们之间是否存在输出差异的一种测试方法。这种方法广泛应用于软件开发和硬件设计中，目的是确保不同组件在执行相同任务时能够产生一致的结果，从而验证它们的功能相似性和兼容性。
 
 # 关于背靠背测试的问题
 

@@ -1,12 +1,18 @@
 ---
 title: "Sql ｜ Sql"
-description: "SQL，即 结构化查询语言 (Structured Query Language)，是一种用于管理和操作关系型 数据库 (databases) 的标准化编程语言。它之所以重要，是因为它为创建、检索、更新和从数据库中删除数据提供了一种系统的方法，而数据库是大多数软件应用程序不可或缺的组成部分。 在 软件 测试自动化 (test automation) 的背景下，SQL 在验证数据状态和完整性方面发挥着至关重要作用，这直接影响到被测应用的可靠性。测试自动化 (Test automation) 工程师使用 SQL 来： - 验证数据操作（如插入、更新和删除）是否正确执行。 - 设置和清理测试数据，确保测试在已知状态下运行。 - 验证涉及数据检索和操作的业务逻辑，确保应用行为符合预期。 - 执行后端测试，确保应用与数据库正确交互，包括对事务和并发的处理。 - 检查数据完整性约束，确保数据库在不同测试场景下维持有效状态。 对于 测试自动化 (test automation) 工程师来说，SQL 是一项关键技能，因为它能让他们绕过用户界面，直接与 数据库 (database) 交互。"
+description: "SQL，即 结构化查询语言 (Structured Query Language)，是一种用于管理和操作关系型 数据库 (databases) 的标准化编程语言。它之所以重要，是因为它为创建、检索、更新和从数据库中删除数据提供了一种系统的方法，而数据库是大多数软件应用程序不可或缺的组成部分。在 软件 测试自动化 (test automation) 的背景下，SQL 在验证数据状态和完整性方面发挥着至关重要作用，这直接影响到被测应用的可靠性。测试自动化 (Test automation) 工程师使用 SQL 来： - 验证数据操作（如插入、更新和删除）是否正确执行。 - 设置和清理测试数据，确保测试在已知状态下运行。 - 验证涉及数据检索和操作的业务逻辑，确保应用行为符合预期。 - 执行后端测试，确保应用与数据库正确交互，包括对事务和并发的处理。 - 检查数据完整性约束，确保数据库在不同测试场景下维持有效状态。对于 测试自动化 (test automation) 工程师来说，SQL 是一项关键技能，因为它能让他们绕过用户界面，直接与 数据库 (database) 交互。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Sql ｜ Sql
-[SQL](#sql) [SQL](/zh-cn/wiki/sql/) [数据库 (databases)](/zh-cn/wiki/database/) [SQL](/zh-cn/wiki/sql/) [数据库 (database)](/zh-cn/wiki/database/) [数据库 (database)](/zh-cn/wiki/database/) [SQL](/zh-cn/wiki/sql/) [数据库 (database)](/zh-cn/wiki/database/) [SQL](/zh-cn/wiki/sql/) [SQL](/zh-cn/wiki/sql/) [数据库 (database)](/zh-cn/wiki/database/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [SQL 语法与查询](#sql-语法与查询)
+- [高级 SQL 概念](#高级-sql-概念)
+- [测试中的 SQL](#测试中的-sql)
 
 ### 相关术语：
 - 数据库 (Database)
@@ -16,9 +22,9 @@ order: 0
 - 维基百科
 [Wikipedia](https://en.wikipedia.org/wiki/SQL)
 
-## 关于 SQL 的常见问题？
+## 关于 SQL 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 SQL，为什么它很重要？**
   **SQL**，即 **结构化查询语言 (Structured Query Language)**，是一种用于管理和操作关系型 **[数据库 (databases)](/zh-cn/wiki/database/)** 的标准化编程语言。它之所以重要，是因为它为创建、检索、更新和从数据库中删除数据提供了一种系统的方法，而数据库是大多数软件应用程序不可或缺的组成部分。
   在 **软件 [测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 的背景下，**[SQL](/zh-cn/wiki/sql/)** 在验证数据状态和完整性方面发挥着至关重要作用，这直接影响到被测应用的可靠性。**[测试自动化 (Test automation)](/zh-cn/wiki/test-automation/)** 工程师使用 **[SQL](/zh-cn/wiki/sql/)** 来：
@@ -114,7 +120,7 @@ order: 0
     ```
   这些操作是在 **[数据库 (database)](/zh-cn/wiki/database/)** 内交互和操作数据的基石。
 
-#### SQL 语法与查询
+### SQL 语法与查询
 - **SQL 中创建表的语法是什么？**
   在 **[SQL](/zh-cn/wiki/sql/)** 中创建表，使用 `CREATE TABLE` 语句。
   基本语法：
@@ -218,7 +224,7 @@ order: 0
     ```
   简而言之，过滤原始行用 `WHERE`，过滤分组后的聚合结果用 `HAVING`。
 
-#### 高级 SQL 概念
+### 高级 SQL 概念
 - **什么是 SQL 连接 (Joins)，SQL 中有哪几种不同的连接类型？**
   **[SQL](/zh-cn/wiki/sql/)** 连接用于组合来自两个或多个表的数据。
   - **INNER JOIN**：返回两个表中都有匹配值的记录。
@@ -285,7 +291,7 @@ order: 0
   - **最小权限原则**。
   - **进行 [安全性测试 (Security Testing)](/zh-cn/wiki/security-testing/)**，如 **[渗透测试 (penetration testing)](/zh-cn/wiki/penetration-testing/)**。
 
-#### 测试中的 SQL
+### 测试中的 SQL
 - **SQL 如何应用于软件测试？**
   **[SQL](/zh-cn/wiki/sql/)** 在 **软件 [测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 中不可或缺，用于验证数据状态。
   操作：
@@ -331,9 +337,3 @@ order: 0
   - 子查询（复杂验证）。
   - 事务（测试原子操作）。
   这些查询被集成到自动化 **[测试脚本 (test scripts)](/zh-cn/wiki/test-script/)** 中，是全面测试策略的一部分。
-
-
-
-
-
-

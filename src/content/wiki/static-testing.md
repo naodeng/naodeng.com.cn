@@ -1,20 +1,26 @@
 ---
 title: "静态测试 ｜ Static Testing"
-description: "静态测试 (Static testing) 是指在不执行代码的情况下对软件制品进行检查。它涉及 分析 文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。此类测试通常通过 人工 努力（如同行评审）和执行静态代码分析的 自动化工具 结合完成。 用于 静态测试 (static testing) 的自动化工具会扫描代码库，查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成流水线中，为开发人员提供即时反馈。它们的范围从执行编码标准的简单 Linter 到可以检测更微妙问题（如潜在安全漏洞或性能瓶颈）的复杂静态分析工具。 静态测试 (Static testing) 不仅仅是为了寻找 Bug (bugs)，还关乎 代码质量 和 可维护性。它有助于确保代码符合标准，并且是可理解且可修改的。通过在开发过程的早期识别问题，静态测试 (static testing) 有助于降低修复缺陷的成本，因为越早发现的问题通常解决成本越低。 为了有效实施 静态测试 (static testing)，选择与项目的语言和框架相一致的合适工具和技术至关重要。"
+description: "静态测试 (Static testing) 是指在不执行代码的情况下对软件制品进行检查。它涉及 分析 文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。此类测试通常通过 人工 努力（如同行评审）和执行静态代码分析的 自动化工具 结合完成。用于 静态测试 (static testing) 的自动化工具会扫描代码库，查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成流水线中，为开发人员提供即时反馈。它们的范围从执行编码标准的简单 Linter 到可以检测更微妙问题（如潜在安全漏洞或性能瓶颈）的复杂静态分析工具。静态测试 (Static testing) 不仅仅是为了寻找 Bug (bugs)，还关乎 代码质量 和 可维护性。它有助于确保代码符合标准，并且是可理解且可修改的。通过在开发过程的早期识别问题，静态测试 (static testing) 有助于降低修复缺陷的成本，因为越早发现的问题通常解决成本越低。为了有效实施 静态测试 (static testing)，选择与项目的语言和框架相一致的合适工具和技术至关重要。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 静态测试 ｜ Static Testing
-[静态测试 (Static Testing)](#static-testing) [静态测试 (Static Testing)](/zh-cn/wiki/static-testing/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [技术与方法](#技术与方法)
+- [实施与执行](#实施与执行)
+- [最佳实践](#最佳实践)
 
 ### 相关术语：
 - 动态测试 (Dynamic Testing)
 [动态测试 (Dynamic Testing)](/zh-cn/wiki/dynamic-testing/)
 
-## 关于静态测试的常见问题？
+## 关于静态测试的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是静态测试？**
   **[静态测试 (Static testing)](/zh-cn/wiki/static-testing/)** 是指在不执行代码的情况下对软件制品进行检查。它涉及 **分析** 文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。此类测试通常通过 **人工** 努力（如同行评审）和执行静态代码分析的 **自动化工具** 结合完成。
   用于 **[静态测试 (static testing)](/zh-cn/wiki/static-testing/)** 的自动化工具会扫描代码库，查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成流水线中，为开发人员提供即时反馈。它们的范围从执行编码标准的简单 Linter 到可以检测更微妙问题（如潜在安全漏洞或性能瓶颈）的复杂静态分析工具。
@@ -65,7 +71,7 @@ order: 0
   - **文档验证**：确保所有必需的文档准确、完整且无歧义。
   通过关注这些目标，**[静态测试 (static testing)](/zh-cn/wiki/static-testing/)** 有助于建立更稳健可靠的软件开发生命周期。
 
-#### 技术与方法
+### 技术与方法
 - **静态测试中常用的技术有哪些？**
   **[静态测试 (static testing)](/zh-cn/wiki/static-testing/)** 中常用的技术包括：
   - **语法检查 (Syntax Checking)**：自动化工具根据编程语言规范检查代码语法。
@@ -123,7 +129,7 @@ order: 0
   - **度量和复杂度分析器**：`CodeClimate`, `NDepend`。
   这些工具常集成到 `Jenkins`, `Travis CI`, `GitHub Actions` 等 CI 流水线中，使 **[静态测试 (static testing)](/zh-cn/wiki/static-testing/)** 自动化。
 
-#### 实施与执行
+### 实施与执行
 - **静态测试过程涉及哪些步骤？**
   **[静态测试 (Static testing)](/zh-cn/wiki/static-testing/)** 包含以下步骤，确保制品在 **[动态测试 (dynamic testing)](/zh-cn/wiki/dynamic-testing/)** 前达标：
   1. **计划 (Planning)**：定义范围、目标和策略。识别待评审制品（需求、代码、**[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 等）。
@@ -181,7 +187,7 @@ order: 0
   - **评审效率 (Review Efficiency)**：`reviewEfficiency = numberOfDefectsFound / hoursSpentReviewing`。
   - **重做百分比**：静态测试后需要重做的代码量。
 
-#### 最佳实践
+### 最佳实践
 - **静态测试的最佳实践有哪些？**
   **[静态测试 (static testing)](/zh-cn/wiki/static-testing/)** 的最佳实践：
   - **早期集成**：尽早开始以防缺陷蔓延。
@@ -240,9 +246,3 @@ order: 0
   - **OWASP**：提供 Web 应用安全的静态分析最佳实践和工具。
   - **SANS Top 25**：针对最常见安全 **[Bug (bugs)](/zh-cn/wiki/bug/)** 的静态分析建议。
   遵循这些标准有助于维持质量、降低缺陷并确保合规。
-
-
-
-
-
-

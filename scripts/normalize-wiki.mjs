@@ -120,6 +120,11 @@ function normalizeBody(body, titleZh, titleEn) {
   out = out.replace(/^### 相关术语\s*$/m, "### 相关术语：");
   out = out.replace(/^### 另请参阅\s*$/m, "### 另请参阅：");
   out = out.replace(/^### 参见\s*$/m, "### 参见：");
+  // 与手动格式一致：## 关于xxx的常见问题？ → 关于xxx的问题？，并去掉标题行尾空格
+  out = out.replace(/^## 关于(.+)的常见问题[?？]\s*$/gm, "## 关于$1的问题？");
+  out = out.replace(/^## 关于(.+)的问题[?？](\s+)$/gm, "## 关于$1的问题？");
+  // ## 关于...的问题？ 与 #### 之间保留一空行
+  out = out.replace(/(^## 关于.+\n)(^####\s)/gm, "$1\n$2");
   return out;
 }
 

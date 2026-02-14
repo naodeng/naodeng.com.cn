@@ -1,16 +1,22 @@
 ---
 title: "测试用例管理 ｜ Test Case Management"
-description: "测试用例管理 (Test Case Management, TCM) 是组织、管理和跟踪 软件测试 (software testing) 各个方面的过程。它涉及编写 测试用例 (test cases)、概述测试步骤、预期结果 (expected results) 和 测试数据 (test data)。TCM 还包括将 测试用例 (test cases) 分配给测试人员、监控 测试执行 (test execution) 以及记录结果。 TCM 作为所有测试相关工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供一个共享平台来访问和更新 测试用例 (test cases)，促进了团队成员之间的协作。 在 TCM 中，测试用例 (test cases) 通常会进行分类和分组，以反映不同的测试需求，如功能测试、回归测试或 性能测试 (performance testing)。这种分类有助于根据测试目标或被测应用程序的变化来选择相关的 测试用例 (test cases) 进行执行。"
+description: "测试用例管理 (Test Case Management, TCM) 是组织、管理和跟踪 软件测试 (software testing) 各个方面的过程。它涉及编写 测试用例 (test cases)、概述测试步骤、预期结果 (expected results) 和 测试数据 (test data)。TCM 还包括将 测试用例 (test cases) 分配给测试人员、监控 测试执行 (test execution) 以及记录结果。TCM 作为所有测试相关工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供一个共享平台来访问和更新 测试用例 (test cases)，促进了团队成员之间的协作。在 TCM 中，测试用例 (test cases) 通常会进行分类和分组，以反映不同的测试需求，如功能测试、回归测试或 性能测试 (performance testing)。这种分类有助于根据测试目标或被测应用程序的变化来选择相关的 测试用例 (test cases) 进行执行。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试用例管理 ｜ Test Case Management
-[测试用例管理 (Test Case Management)](#test-case-management) [测试用例管理 (Test Case Management)](/zh-cn/wiki/test-case-management/) [软件测试 (software testing)](/zh-cn/wiki/software-testing/) [测试用例 (test cases)](/zh-cn/wiki/test-case/) [迭代 (iterations)](/zh-cn/wiki/iteration/)
 
-## 关于测试用例管理的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [测试用例设计与执行](#测试用例设计与执行)
+- [工具与技术](#工具与技术)
+- [最佳实践与策略](#最佳实践与策略)
+
+## 关于测试用例管理的问题？
+
+### 基础与重要性
 - **什么是测试用例管理？**
   **测试用例管理 (Test Case Management, TCM)** 是组织、管理和跟踪 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 各个方面的过程。它涉及编写 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**、概述测试步骤、**[预期结果 (expected results)](/zh-cn/wiki/expected-result/)** 和 **[测试数据 (test data)](/zh-cn/wiki/test-data/)**。TCM 还包括将 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 分配给测试人员、监控 **[测试执行 (test execution)](/zh-cn/wiki/test-execution/)** 以及记录结果。
   TCM 作为所有测试相关工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供一个共享平台来访问和更新 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**，促进了团队成员之间的协作。
@@ -54,7 +60,7 @@ order: 0
   此外，敏捷中的 **[测试用例管理 (test case management)](/zh-cn/wiki/test-case-management/)** 通过将 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 链接到用户故事和验收标准来支持 **可追溯性 (traceability)**，确保所有功能都得到充分测试。这种可追溯性对于维持高质量标准以及为利益相关者提供有关测试工作覆盖范围和有效性的见解至关重要。
   总之，**[测试用例管理 (test case management)](/zh-cn/wiki/test-case-management/)** 是 **[敏捷开发 (Agile development)](/zh-cn/wiki/agile-development/)** 不可或缺的一部分，因为它增强了适应性、促进了协作、确保了可追溯性并支持软件产品的持续演进。
 
-#### 测试用例设计与执行
+### 测试用例设计与执行
 - **测试用例管理中如何设计测试用例？**
   在 **测试用例管理 (Test Case Management, TCM)** 中设计 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 包含一种系统化的方法，以确保全面的覆盖和可追溯性。以下是简要概述：
   1. **识别测试需求**：首先分析软件需求和规范，确定需要测试的内容。这包括功能、性能、安全和易用性方面。
@@ -122,7 +128,7 @@ order: 0
   10. **沟通**：向团队告知影响。
   使用自动化工具辅助分析，并集成到 **[缺陷管理 (defect management)](/zh-cn/wiki/defect-management/)** 系统中。定期评审并重构 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 以维护其可靠性。
 
-#### 工具与技术
+### 工具与技术
 - **有哪些流行的测试用例管理工具？**
   流行的 **测试用例管理 (Test Case Management, TCM)** 工具包括：
   - **TestRail**：提供全面的测试用例管理，帮助组织测试工作并获得实时见解。
@@ -182,7 +188,7 @@ order: 0
   - **增强可追溯性**：自动链接需求、代码和用例。
   - **不稳定性检测**：识别并分析间歇性失败的测试。
 
-#### 最佳实践与策略
+### 最佳实践与策略
 - **测试用例管理有哪些最佳实践？**
   **[测试用例管理 (Test Case Management)](/zh-cn/wiki/test-case-management/)** 的最佳实践包括：
   - **组织 [测试用例 (test cases)](/zh-cn/wiki/test-case/)**：使用逻辑分类或标记。
@@ -238,9 +244,3 @@ order: 0
   - **利益相关者反馈**：定期沟通并基于业务变动调整用例。
   - **绩效指标**：衡量客户满意度、缺陷流出率等业务指标。
   - **ROI 导向**：优化执行，在有限资源下提供最大业务保障。
-
-
-
-
-
-

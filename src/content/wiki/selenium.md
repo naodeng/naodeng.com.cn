@@ -1,12 +1,18 @@
 ---
 title: "Selenium ｜ Selenium"
-description: "Selenium 是一个开源的自动化测试框架，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发测试自动化脚本。 Selenium 的核心是 WebDriver API，它提供了一个独立于平台的接口来控制浏览器。WebDriver 通过特定于浏览器的驱动程序与页面元素交互，必须为您要自动化的浏览器安装和配置该驱动程序。 Selenium 支持多种操作系统（如 Windows, Mac 和 Linux），并与 Jenkins 等 持续集成 (CI) 工具集成，从而加速开发流水线中的自动化测试。它还提供 Selenium Grid，支持在多个环境中进行分布式测试执行。 测试人员使用 Selenium 来模拟用户与 Web 元素的交互，例如点击按钮、输入文本和在页面间导航。它提供多种定位策略，如 ID、类名、CSS 选择器和 XPath 表达式。"
+description: "Selenium 是一个开源的自动化测试框架，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发测试自动化脚本。Selenium 的核心是 WebDriver API，它提供了一个独立于平台的接口来控制浏览器。WebDriver 通过特定于浏览器的驱动程序与页面元素交互，必须为您要自动化的浏览器安装和配置该驱动程序。Selenium 支持多种操作系统（如 Windows, Mac 和 Linux），并与 Jenkins 等 持续集成 (CI) 工具集成，从而加速开发流水线中的自动化测试。它还提供 Selenium Grid，支持在多个环境中进行分布式测试执行。测试人员使用 Selenium 来模拟用户与 Web 元素的交互，例如点击按钮、输入文本和在页面间导航。它提供多种定位策略，如 ID、类名、CSS 选择器和 XPath 表达式。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Selenium ｜ Selenium
-[Selenium](#selenium)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [使用 Selenium](#使用-selenium)
+- [高级概念](#高级概念)
+- [最佳实践](#最佳实践)
 
 ### 相关术语：
 - [WebDriver](/zh-cn/wiki/webdriver/)
@@ -15,9 +21,9 @@ order: 0
 - [官方网站](https://www.selenium.dev/)
 - [维基百科](https://en.wikipedia.org/wiki/Selenium_(software))
 
-## 关于 Selenium 的常见问题？
+## 关于 Selenium 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Selenium？**
   Selenium 是一个开源的**自动化测试框架**，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发**[测试自动化](/zh-cn/wiki/test-automation/)**脚本。
   Selenium 的核心是 **[WebDriver](/zh-cn/wiki/webdriver/) API**，它提供了一个独立于平台的接口来控制浏览器。WebDriver 通过特定于浏览器的驱动程序与页面元素交互，必须为您要自动化的浏览器安装和配置该驱动程序。
@@ -92,7 +98,7 @@ order: 0
   - **开发速度**：由于需要编码，测试开发速度可能慢于某些商业工具。
   - **高级操作**：文件上传下载、验证码处理等较复杂。
 
-#### 使用 Selenium
+### 使用 Selenium
 - **如何设置 Selenium 环境？**
   1. **安装 Java**：Selenium 需要 Java (JDK)。
   2. **设置 Java 环境变量**：配置 `JAVA_HOME` 并更新 `PATH` 包含 `bin` 目录。
@@ -144,9 +150,9 @@ order: 0
   - **XPath**：`driver.findElement(By.xpath("//tag[@attr='val']"));`
   **CSS 选择器**和 **XPath** 最为全能。
 
-#### 高级概念
+### 高级概念
 - **什么是 Selenium Grid 及其工作原理？**
-  Selenium Grid 支持在不同的浏览器和机器上并行运行**测试用例**。它采用**中控-节点 (Hub-and-Node)** 架构。Hub 作为中心控制点，Node 注册到 Hub 并配置特定的浏览器/系统环境。Hub 根据脚本要求的 **DesiredCapabilities** 委派命令给适配的 Node。
+  Selenium Grid 支持在不同的浏览器和机器上并行运行**测试用例**。它采用**中控 - 节点 (Hub-and-Node)** 架构。Hub 作为中心控制点，Node 注册到 Hub 并配置特定的浏览器/系统环境。Hub 根据脚本要求的 **DesiredCapabilities** 委派命令给适配的 Node。
 
 - **什么是 Selenium WebDriver，它与 Selenium RC 有何不同？**
   **WebDriver** 直接与浏览器通信，无需中间服务器，性能更好且交互更真实。
@@ -175,7 +181,7 @@ order: 0
   dropdown.selectByIndex(0);
   ```
 
-#### 最佳实践
+### 最佳实践
 - **编写 Selenium 测试的最佳实践：**
   - **可维护性**：使用 **[页面对象模型 (Page Object Model)](/zh-cn/wiki/page-object-model/)**。
   - **可读性**：清晰的命名和描述性断言。
@@ -203,9 +209,3 @@ order: 0
   - **Maven**：在 `pom.xml` 中管理依赖，使用 `mvn test` 运行。
   - **Jenkins**：配置项目构建步骤，调用 Maven 目标，并在构建后归档测试报告。
   - **Docker**：使用容器化的 Selenium Grid 环境。
-
-
-
-
-
-

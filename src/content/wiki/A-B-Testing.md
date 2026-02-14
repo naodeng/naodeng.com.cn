@@ -4,15 +4,23 @@ description: "A/B 测试 (A/B Testing),也称为分割测试 (Split Testing),是
 section: "A"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # A/B 测试 ｜ A/B Testing
+
+## 目录
+
+- [基础知识与重要性](#基础知识与重要性)
+- [实施](#实施)
+- [分析与解释](#分析与解释)
+- [高级概念](#高级概念)
+
 ### 另请参阅：
 
 - [维基百科](https://en.wikipedia.org/wiki/A/B_testing)
 
 ## 关于 A/B 测试的问题？
 
-#### 基础知识与重要性
+### 基础知识与重要性
 
 - **什么是 A/B 测试？**
 
@@ -80,7 +88,7 @@ A/B 测试的关键组成部分包括：
 
 总之，[A/B 测试](/zh-cn/wiki/a-b-testing/)是产品开发中的一个**战略工具**,它为增强用户体验提供信息、验证产品决策，并培养持续改进的实验文化。
 
-#### 实施
+### 实施
 
 - **如何设置 A/B 测试？**
 
@@ -174,7 +182,7 @@ const sampleSize = calculateSampleSize({
 
 然后根据预定义的指标 (如转化率或点击率) 监控和衡量每组的性能。通过比较这些指标，[测试自动化](/zh-cn/wiki/test-automation/)工程师可以确定变体是否比对照组更有效地影响用户行为。如果变体以统计显著性优于对照组，它可能会被实施为所有用户的新默认选项。
 
-#### 分析与解释
+### 分析与解释
 
 - **如何分析 A/B 测试的结果？**
 
@@ -243,7 +251,7 @@ const sampleSize = calculateSampleSize({
 
 通过系统地审查这些领域，您可以识别并纠正[误报](/zh-cn/wiki/false-positive/)或漏报，确保您的 A/B 测试结果可靠且可操作。
 
-#### 高级概念
+### 高级概念
 
 - **什么是多变量测试，它与 A/B 测试有何不同？**
 
@@ -331,9 +339,3 @@ RewriteRule ^page$ http://example.com/page-version-b [R=302,L]
 - 尽可能**控制外部变量**以确保一致的测试条件。
 
 通过了解均值回归，[测试自动化](/zh-cn/wiki/test-automation/)工程师可以避免基于初始 A/B 测试结果对变更的有效性做出过早结论。
-
-
-
-
-
-

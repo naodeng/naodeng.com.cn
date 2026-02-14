@@ -1,12 +1,22 @@
 ---
-title: "关于 IEEE 829 的问题？ ｜ Ieee 829"
+title: "IEEE 829 ｜ Ieee 829"
 description: "IEEE 829 标准，全称为 IEEE 软件和系统测试文档标准 (IEEE Standard for Software and System Test Documentation)，提供了一个结构化的测试文档创建框架。该标准定义了整个测试生命周期中测试文档的形式和内容，包括：测试计划 (Test Plans)、测试设计规范 (Test Design Specifications)、测试用例规范 (Test Case Specifications)、测试规程规范 (Test Procedure Specifications)、测试项传递报告、测试日志 (Test Logs)、缺陷/事件报告 (Incident Reports) 以及测试总结报告等。"
 section: "I"
 order: 0
 ---
+<!-- markdownlint-disable MD025 -->
+# IEEE 829 ｜ Ieee 829
 
-# 关于 IEEE 829 的问题？ ｜ Ieee 829
-#### 基础与重要性
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [核心组件](#核心组件)
+- [实施与挑战](#实施与挑战)
+- [评估与对比](#评估与对比)
+
+## 关于 IEEE 829 的问题？
+
+### 基础与重要性
 - **什么是 IEEE 829 标准？**
 **IEEE 829** 标准，全称为 **IEEE 软件和系统测试文档标准 (IEEE Standard for Software and System Test Documentation)**，提供了一个结构化的测试文档创建框架。该标准定义了整个测试生命周期中测试文档的形式和内容，包括：**测试计划 (Test Plans)**、**测试设计规范 (Test Design Specifications)**、**测试用例规范 (Test Case Specifications)**、**测试规程规范 (Test Procedure Specifications)**、测试项传递报告、**测试日志 (Test Logs)**、**缺陷/事件报告 (Incident Reports)** 以及测试总结报告等。
 
@@ -18,7 +28,7 @@ order: 0
     *   **可追溯性与合规性**：详细的记录是满足审计、合规和监管要求的关键。
     *   **提高效率**：系统化的文档方法有助于发现测试覆盖范围的漏洞，并促进更有效的测试用例开发。
 
-#### 核心组件
+### 核心组件
 IEEE 829 定义了以下关键文档：
 1.  **测试计划 (Test Plan)**：描述测试活动的范围、方法、资源和进度。
 2.  **测试设计规范 (Test Design Specification)**：详述测试用例和测试方法。
@@ -29,7 +39,7 @@ IEEE 829 定义了以下关键文档：
 7.  **缺陷/事件报告 (Incident Report)**：记录测试期间需要调查的任何异常事件。
 8.  **测试总结报告 (Summary Report)**：汇总测试活动和最终结果。
 
-#### 实施与挑战
+### 实施与挑战
 - **如何实施？**
 将上述文档指南集成到测试工作流中。确保所有文档都经过**版本控制**和干系人**评审**。针对项目背景调整模板，并在可能的情况下通过自动化工具减少手动负担。
 
@@ -44,13 +54,7 @@ IEEE 829 定义了以下关键文档：
     *   **平衡细节与敏捷**：保持文档足够的清晰度和可复现性，同时保持灵活以应对变更。
     *   **持续改进**：定期审计文档质量，结合回顾会议不断优化。
 
-#### 评估与对比
+### 评估与对比
 - **与 ISO 29119 对比**：IEEE 829 以**文档为中心**，提供了具体的模板；而 ISO 29119 视角更广，涵盖了流程、技术和方法论。
 - **与 ISTQB 对比**：ISTQB 侧重于从业人员的知识和技能体系，而 IEEE 829 侧重于产生的具体**文档产出物 (Artifacts)**。
 - **如何评估效果？**：可以通过**测试覆盖率分析**、**缺陷检出率**、**文档评审效率**以及**测试资产的复用率**来衡量实施该标准的成效。
-
-
-
-
-
-

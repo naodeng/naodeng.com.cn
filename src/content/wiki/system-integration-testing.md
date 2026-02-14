@@ -1,16 +1,22 @@
 ---
 title: "系统集成测试 ｜ System Integration Testing"
-description: "系统集成测试 (System Integration Testing, SIT) 是一个测试阶段，在这个阶段，不同的系统组件、模块或服务被集成在一起并作为一个整体进行测试，以发现集成单元之间交互中的缺陷。它发生在 单元测试 (unit testing) 之后和 系统测试 (system testing) 之前。SIT 确保集成后的组件按预期协同工作，并且数据在它们之间正确流动。 在 SIT 期间，测试人员关注模块之间的 接口 (interfaces) 和 数据流 (data flow)。他们验证系统行为是否符合集成规范，以及系统是否可以作为一个凝聚的整体在现实场景中处理任务。这包括测试 API、Web 服务、微服务、数据库 (database) 连接和其他交互点。 SIT 的 测试用例 (test cases) 源自 集成设计 和 需求规范。它们通常涉及覆盖多个组件的 端到端场景 (end-to-end scenarios)，并可以包括 正向 (positive) 和 负向 (negative) 测试用例以确保健壮性。"
+description: "系统集成测试 (System Integration Testing, SIT) 是一个测试阶段，在这个阶段，不同的系统组件、模块或服务被集成在一起并作为一个整体进行测试，以发现集成单元之间交互中的缺陷。它发生在 单元测试 (unit testing) 之后和 系统测试 (system testing) 之前。SIT 确保集成后的组件按预期协同工作，并且数据在它们之间正确流动。在 SIT 期间，测试人员关注模块之间的 接口 (interfaces) 和 数据流 (data flow)。他们验证系统行为是否符合集成规范，以及系统是否可以作为一个凝聚的整体在现实场景中处理任务。这包括测试 API、Web 服务、微服务、数据库 (database) 连接和其他交互点。SIT 的 测试用例 (test cases) 源自 集成设计 和 需求规范。它们通常涉及覆盖多个组件的 端到端场景 (end-to-end scenarios)，并可以包括 正向 (positive) 和 负向 (negative) 测试用例以确保健壮性。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 系统集成测试 ｜ System Integration Testing
-[系统集成测试 (System Integration Testing)](#system-integration-testing) [系统集成测试 (System integration testing)](/zh-cn/wiki/system-integration-testing/)
 
-## 关于系统集成测试的常见问题？
+## 目录
 
-#### 基础与重要性
+- [基础与重要性](#基础与重要性)
+- [技术与方法](#技术与方法)
+- [工具与技术](#工具与技术)
+- [最佳实践与挑战](#最佳实践与挑战)
+
+## 关于系统集成测试的问题？
+
+### 基础与重要性
 - **什么是系统集成测试？**
   **系统集成测试 (System Integration Testing, SIT)** 是一个测试阶段，在这个阶段，不同的系统组件、模块或服务被集成在一起并作为一个整体进行测试，以发现集成单元之间交互中的缺陷。它发生在 **[单元测试 (unit testing)](/zh-cn/wiki/unit-testing/)** 之后和 **[系统测试 (system testing)](/zh-cn/wiki/system-testing/)** 之前。SIT 确保集成后的组件按预期协同工作，并且数据在它们之间正确流动。
   在 SIT 期间，测试人员关注模块之间的 **接口 (interfaces)** 和 **数据流 (data flow)**。他们验证系统行为是否符合集成规范，以及系统是否可以作为一个凝聚的整体在现实场景中处理任务。这包括测试 **[API](/zh-cn/wiki/api/)**、Web 服务、微服务、**[数据库 (database)](/zh-cn/wiki/database/)** 连接和其他交互点。
@@ -54,7 +60,7 @@ order: 0
   - **资源浪费**：可能需要更多资源来处理跳过 SIT 后的烂摊子，包括增加的支持电话、手动变通方案和紧急补丁。
   总之，绕过 SIT 会损害软件的稳定性、可靠性和性能，导致更高成本、客户不满和潜在的声誉损失。
 
-#### 技术与方法
+### 技术与方法
 - **系统集成测试中使用了哪些不同的技术？**
   **[系统集成测试 (SIT)](/zh-cn/wiki/system-integration-testing/)** 的不同技术包括：
   - **大爆炸集成 (Big Bang Integration)**：所有组件或系统同时集成，然后作为一个整体进行测试。由于复杂性高且难以隔离缺陷，这种方法较少使用。
@@ -133,7 +139,7 @@ order: 0
   5. **评审和调整**：随着测试的进行，根据发现的结果持续重新评估风险。如果出现新风险或初始风险评估发生变化，需调整测试重点。
   通过在 SIT 期间专注于最显著的风险，团队可以更好地分配时间和资源，降低高影响缺陷漏掉的可能性，并增加系统进入生产前的整体稳健性。
 
-#### 工具与技术
+### 工具与技术
 - **系统集成测试中常用的工具有哪些？**
   **[系统集成测试 (SIT)](/zh-cn/wiki/system-integration-testing/)** 的常用工具包括：
   - **[Selenium](/zh-cn/wiki/selenium/)**：用于自动化 Web 浏览器的开源工具，支持多种语言和浏览器。
@@ -208,7 +214,7 @@ order: 0
   **并发 [测试执行 (test execution)](/zh-cn/wiki/test-execution/)** 是另一个优势，CI 工具可以跨多服务器分发测试，缩短时间。
   CI 工具简化了 **[测试环境 (test environments)](/zh-cn/wiki/test-environment/)** 管理，可以按需随时启动必要的环境，确保测试在一致受控的设置下运行。它们通常带有丰富的插件，可与测试框架和报告工具集成。此外，CI 工具还能有效处理工件管理，确保测试针对的是正确的系统版本。最后，CI 工具支持 **持续反馈机制**。总结来说，CI 工具通过自动化重复任务、管理环境并提供快速反馈来全方位支持 SIT。
 
-#### 最佳实践与挑战
+### 最佳实践与挑战
 - **进行系统集成测试的一些最佳实践是什么？**
   **[系统集成测试 (SIT)](/zh-cn/wiki/system-integration-testing/)** 的最佳实践包括：
   - **明确目标**：确定你希望通过 SIT 达到什么目的。
@@ -269,9 +275,3 @@ order: 0
   - **加强环境管理**：使用版本控制匹配生产环境。
   - **优化自动化框架**：支持特定集成点和复杂场景。
   - **持续监控和结果分析**：整合 **[性能测试 (performance-testing)](/zh-cn/wiki/performance-testing/)**，关注协作文化。
-
-
-
-
-
-

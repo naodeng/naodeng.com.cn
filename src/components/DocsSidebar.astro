@@ -116,6 +116,25 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
   .docs-sidebar-nav {
     display: block;
     padding: var(--sp-s) var(--sp-m);
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  .docs-sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+  }
+  .docs-sidebar-nav::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-radius: 3px;
+  }
+  .docs-sidebar-nav::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-theme) 35%, transparent);
+    border-radius: 3px;
+  }
+  .docs-sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-theme) 50%, transparent);
   }
   .docs-sidebar-section {
     margin-block-end: var(--sp-m);
@@ -205,6 +224,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     .docs-sidebar-nav {
       padding-block-start: 0;
       display: none;
+      max-height: min(calc(100vh - 12rem), 70vh);
     }
     .docs-sidebar-inner.is-open .docs-sidebar-nav {
       display: block;

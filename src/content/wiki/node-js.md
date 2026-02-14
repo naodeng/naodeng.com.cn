@@ -1,18 +1,14 @@
 ---
 title: "Node Js ｜ Node Js"
-description: "Node.js 是一个开源、跨平台的运行时环境，允许在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发者能够使用 JavaScript 编写命令行工具和服务器端脚本，从而在页面发送到浏览器之前生成动态网页内容。 Node.js 的重要性："
+description: "Node.js 是一个开源、跨平台的运行时环境，允许在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发者能够使用 JavaScript 编写命令行工具和服务器端脚本，从而在页面发送到浏览器之前生成动态网页内容。Node.js 的重要性："
 section: "N"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Node Js ｜ Node Js
-[Node.js](#node-js) [Node.js](/zh-cn/wiki/node-js/)
 
 ### 相关术语：
-- JavaScript 运行时 (JavaScript runtime)
-- Jest
-- Jasmine
-[JavaScript runtime](/zh-cn/wiki/javascript-runtime/) [Jest](/zh-cn/wiki/jest/) [Jasmine](/zh-cn/wiki/jasmine/)
+- [JavaScript 运行时](/zh-cn/wiki/javascript-runtime/)
 
 ### 参见：
 - [官方网站](https://nodejs.org/)
@@ -20,7 +16,7 @@ order: 0
 
 ## 关于 Node.js 的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Node.js 及其重要性？**
   Node.js 是一个开源、跨平台的运行时环境，允许在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发者能够使用 JavaScript 编写命令行工具和服务器端脚本，从而在页面发送到浏览器之前生成动态网页内容。
   **Node.js 的重要性：**
@@ -50,7 +46,7 @@ order: 0
 - **什么是 Node.js 中的事件驱动编程？**
   这是一种流程由用户操作、系统输出或消息传递等“事件”决定的范式。在 Node.js 中主要由内置的 `EventEmitter` 类实现。此模型非常适合处理 I/O 密集型任务，是实现**非阻塞**特性的关键，**测试自动化**工程师需要理解这一点，以正确结构化异步测试断言。
 
-#### 使用 Node.js
+### 使用 Node.js
 - **如何安装 Node.js？**
   - **Windows/macOS**：从 [nodejs.org](https://nodejs.org/) 下载 **LTS** 或最新版本安装程序。
   - **Ubuntu**：使用 `curl` 脚本添加源后通过 `apt-get` 安装。
@@ -75,7 +71,7 @@ order: 0
 - **如何创建服务器？**
   利用内置的 `http` 模块。调用 `http.createServer()` 并监听端口（如 3000）。这对 Mock API 或创建测试环境非常有用。
 
-#### 模块系统
+### 模块系统
 - **什么是 Node.js 模块？**
   模块是封装的代码块，增强了代码的**可维护性**。每个文件被视为一个独立模块，拥有自己的上下文。
   - **定义模块**：使用 `module.exports` 导出。
@@ -91,7 +87,7 @@ order: 0
   - `child_process`：运行子进程。
   - `crypto`：加密功能。
 
-#### 数据库与异步编程
+### 数据库与异步编程
 - **连接数据库**：使用数据库驱动或 **ORM**（如 Sequelize, Mongoose）。
 - **CRUD 操作**：通过驱动执行增删改查。推荐使用 **async/await** 编写清晰的异步代码，避免回调地狱。
 - **ORM 的作用**：**对象关系映射**允许开发者使用 JS 对象而非 SQL 语句操作数据库，提高开发效率并便于维护。
@@ -101,15 +97,9 @@ order: 0
   - **Promise**：链式调用处理结果。
   - **Async/Await**：以同步写法编写异步逻辑，是目前的主流推荐方式。
 
-#### 自动化测试与最佳实践
+### 自动化测试与最佳实践
 - **测试框架**：**Mocha** 和 **Jest** 是最流行的选择。
 - **中间件 (Middleware)**：常用在 Express 等框架中处理请求生命周期。
 - **全局对象**：如 `__filename`, `__dirname`, `process`, `Buffer`。
 - **安全性**：输入验证、HTTPS、保持 NPM 包更新、限制权限等。
 - **开发工具**：**Nodemon** 可在代码更改时自动重启应用。
-
-
-
-
-
-

@@ -1,18 +1,18 @@
 ---
 title: "Lighthouse ｜ Lighthouse"
-description: "Lighthouse 是一款开源、自动化的网页质量提升工具。它可以运行在任何网页上，无论是公开页面还是需要身份验证的页面。Lighthouse 针对性能、无障碍性 (Accessibility)、渐进式网页应用 (PWA)、SEO 等进行审计，提供对网页质量和有效性的全面评估。 在 Chrome 中使用 Lighthouse：导航到要审计的页面，打开 DevTools (开发者工具)，点击 Lighthouse 标签。选择要运行的审计项，然后点击 Generate report (生成报告) 按钮。Lighthouse 对页面运行选定的审计，然后生成一份关于页面表现的报告。 对于自动化测试，Lighthouse 可以集成到持续集成 (CI) 系统中。它可以作为 Node 模块、命令行工具或以编程方式作为自定义构建流程的一部分运行。Lighthouse CI 是一组专门的命令，使在持续集成中使用 Lighthouse 变得更加容易。 得分是基于性能指标和启发式算法计算的。每个指标独立评分，然后组合成总分。"
+description: "Lighthouse 是一款开源、自动化的网页质量提升工具。它可以运行在任何网页上，无论是公开页面还是需要身份验证的页面。Lighthouse 针对性能、无障碍性 (Accessibility)、渐进式网页应用 (PWA)、SEO 等进行审计，提供对网页质量和有效性的全面评估。在 Chrome 中使用 Lighthouse：导航到要审计的页面，打开 DevTools (开发者工具)，点击 Lighthouse 标签。选择要运行的审计项，然后点击 Generate report (生成报告) 按钮。Lighthouse 对页面运行选定的审计，然后生成一份关于页面表现的报告。对于自动化测试，Lighthouse 可以集成到持续集成 (CI) 系统中。它可以作为 Node 模块、命令行工具或以编程方式作为自定义构建流程的一部分运行。Lighthouse CI 是一组专门的命令，使在持续集成中使用 Lighthouse 变得更加容易。得分是基于性能指标和启发式算法计算的。每个指标独立评分，然后组合成总分。"
 section: "L"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Lighthouse ｜ Lighthouse
-[Lighthouse](#lighthouse) [Lighthouse](/zh-cn/wiki/lighthouse/) [Lighthouse](/zh-cn/wiki/lighthouse/)
+
 ### 参见 (See also):
 - Wikipedia
 [Wikipedia](https://en.wikipedia.org/wiki/Google_Lighthouse)
 ## 关于 Lighthouse 的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Lighthouse？**
   **Lighthouse** 是一款**开源、自动化**的网页质量提升工具。它可以运行在任何网页上，无论是公开页面还是需要身份验证的页面。Lighthouse 针对性能、无障碍性 (Accessibility)、渐进式网页应用 (PWA)、SEO 等进行审计，提供对网页质量和有效性的全面评估。
   在 **Chrome** 中使用 Lighthouse：导航到要审计的页面，打开 **DevTools (开发者工具)**，点击 **Lighthouse** 标签。选择要运行的审计项，然后点击 **Generate report (生成报告)** 按钮。Lighthouse 对页面运行选定的审计，然后生成一份关于页面表现的报告。
@@ -54,7 +54,7 @@ order: 0
   - **PWA**：验证 Service Worker、Web App Manifest 以及离线功能等 PWA 标准。
   每个审计都提供反馈和分值，并可通过配置进行扩展或自定义。
 
-#### 使用与实现
+### 使用与实现
 - **如何在 Chrome 中使用 Lighthouse 进行自动化测试？**
   1. 按 `Ctrl+Shift+I` (Mac 为 `Cmd+Option+I`) 打开 Chrome 开发者工具。
   2. 导航到 **Lighthouse** 标签。
@@ -98,7 +98,7 @@ order: 0
   ```
   这确保了代码提交或 PR 不会降低应用质量。
 
-#### 结果与解读
+### 结果与解读
 - **Lighthouse 分数是如何计算的？**
   分数基于五个类别的审计。**性能**分数受 FCP、LCP、TTI、TBT 和 CLS 等速度指标的加权影响，反映加载、交互和视觉稳定性。**无障碍**检查 HTML 元素、ARIA、对比度。**最佳实践**来自 HTTPS、API 废弃检查。**SEO** 评估 meta 标签、字体大小。**PWA** 评估 Service Worker 和响应式设置。每个类别分数是审计项的加权平均值，由于性能在用户体验中占比大，通常具有最高权重。
 
@@ -110,7 +110,7 @@ order: 0
   - **PWA**：评估响应式设计和离线模式。
   报告提供 0-100 的**得分**、**颜色编码指标**（绿色为优，橙色待改进，红色为差）以及**可操作建议**。建议优先处理**红色**项，再处理**橙色**，最后是**绿色**以微调性能。
 
-#### 高级概念
+### 高级概念
 - **什么是 Lighthouse CI？**
   它是一个开源自动化工具，可与 CI 系统集成，在每次 commit 时运行审计，针对性能、SEO 等提供即时反馈。工作流程包括：安装 `@lhci/cli`、配置 `.lighthouserc.js`、运行 `lhci autorun`、定义断言（若不达标则使构建失败）以及上传报告。
 
@@ -138,15 +138,9 @@ order: 0
 - **Lighthouse 如何处理 JavaScript 执行？**
   它通过运行在**无头 (Headless) 模式**下的 Chrome 浏览器来处理。Lighthouse 记录脚本解析、编译和执行的时间。利用 Chrome DevTools Protocol，它收集脚本评估、任务执行和 JS 启动时间。它还会模拟用户交互以触发特定脚本，这些数据直接影响 FCP、TTI 和 TBT 等核心指标。
 
-#### 常见问题与解决方案
+### 常见问题与解决方案
 - **分数波动**：受网络和 CPU 节流影响。**方案**：多次运行并取平均值。
 - **资源过大**：图像或脚本臃肿。**方案**：压缩图像、Minify CSS/JS、延迟加载。
 - **第三方脚本慢**：**方案**：使用 `rel="preconnect"`，异步加载或移除不必要的脚本。
 - **缓存配置不当**：导致重复获取。**方案**：设置 `Cache-Control` 响应头。
 - **超时或报错**：检查服务器、禁用扩展、使用隐身模式运行。建议使用 `--chrome-flags="--headless"`。
-
-
-
-
-
-

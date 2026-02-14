@@ -1,12 +1,19 @@
 ---
 title: "Webdriver ｜ Webdriver"
-description: "关于 WebDriver 的常见问题？"
+description: "WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。"
 section: "W"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Webdriver ｜ Webdriver
-[WebDriver](#webdriver)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [WebDriver 操作](#webdriver-操作)
+- [定位器和 Web 元素](#定位器和-web-元素)
+- [等待命令](#等待命令)
+- [高级 WebDriver 概念](#高级-webdriver-概念)
 
 ### 相关术语：
 - [Selenium](/zh-cn/wiki/selenium/)
@@ -14,9 +21,9 @@ order: 0
 ### 另请参阅：
 - [官方网站](https://www.selenium.dev/documentation/webdriver/)
 
-## 关于 WebDriver 的常见问题？
+## 关于 WebDriver 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **Selenium 中的 WebDriver 是什么？**
   **Selenium** 中的 **WebDriver** 是一个 **API**，它提供了一个编程接口来控制和操作 Web 浏览器。它允许 **测试脚本** 直接与浏览器通信，从而实现用户操作（如点击、输入和浏览网页）的自动化。**WebDriver** 旨在提供比 **Selenium** RC 更简单、更简洁的编程接口，因为它直接与浏览器交互，无需中间服务器。
   要使用 **WebDriver**，您需要为您要自动化的浏览器实例化特定的驱动程序对象。例如，要自动化 Chrome，您将使用 `ChromeDriver`：
@@ -75,7 +82,7 @@ order: 0
   - **浏览器支持**：WebDriver 对现代浏览器及其功能有更好的支持。
   - **JavaScript 依赖**：Selenium RC 依赖 JavaScript 进行自动化，这可能是一个限制，而 WebDriver 没有这种依赖。
 
-#### WebDriver 操作
+### WebDriver 操作
 - **如何使用 WebDriver 启动浏览器？**
   要使用 **WebDriver** 启动浏览器，您需要为您要自动化的浏览器实例化特定的驱动程序对象。这是一个分步指南：
   1. **导入** 测试脚本中必要的 WebDriver 类。
@@ -226,7 +233,7 @@ order: 0
   将 `xOffset` 和 `yOffset` 替换为您希望元素从当前位置移动的水平和垂直距离。
   **注意**：在执行拖放操作之前，请确保 **WebDriver** 实例已正确初始化且元素可交互（可见且已启用）。此外，请考虑任何同步问题，例如在执行这些操作之前等待元素准备好进行交互。
 
-#### 定位器和 Web 元素
+### 定位器和 Web 元素
 - **WebDriver 中的定位器是什么？**
   **WebDriver** 中的定位器是用于 **识别和定位网页上的元素** 的策略。这些对于 **测试自动化** 期间与 Web 元素交互至关重要，例如单击按钮、输入文本或读取值。**WebDriver** 支持各种定位器策略：
   - **ID**：通过其唯一 ID 查找元素。
@@ -382,7 +389,7 @@ order: 0
      ```
   如果下拉列表不存在或找不到指定的选项，请记住 **处理异常**，例如 `NoSuchElementException`。
 
-#### 等待命令
+### 等待命令
 - **WebDriver 中有哪些不同类型的等待命令？**
   **WebDriver** 提供了几种等待命令来处理 **测试自动化** 中的同步：
   - **隐式等待 (Implicit Wait)**：在抛出 `NoSuchElementException`（如果未找到元素）之前自动等待指定的时间量。它是为 **WebDriver** 的整个会话设置的。
@@ -510,7 +517,7 @@ order: 0
   此方法接受以毫秒为单位的参数，并在该持续时间内停止整个 **测试执行**。通常认为使用 `sleep()` 是一种 **糟糕的做法**，因为它引入了 **硬编码等待**，使测试不太可靠并增加执行时间。`sleep()` 的主要问题是它不考虑应用程序是否准备好继续，导致不必要的等待，或者如果等待时间不足，则可能导致不稳定性。
   建议使用 **WebDriver 的等待机制**，如 **隐式等待**、**显式等待** 或 **流畅等待**，而不是 `sleep()`。这些等待是动态的，允许测试在满足必要条件（例如元素的存在或可见性）后立即继续，从而使测试更高效、更稳健。
 
-#### 高级 WebDriver 概念
+### 高级 WebDriver 概念
 - **如何使用 WebDriver 处理多个窗口或标签页？**
   要在 **WebDriver** 中处理多个窗口或标签页，请使用 `getWindowHandles()` 和 `switchTo().window()` 方法。这是一个简洁的方法：
   1. **识别当前窗口句柄** 在打开新窗口或标签页之前，以便稍后需要时可以返回。
@@ -692,9 +699,3 @@ order: 0
   assert cookiesAfterDeletion.isEmpty();
   ```
   切记从 **Selenium** **WebDriver** 库中 **导入** `Cookie` 类。此外，请确保您处于要操作的 Cookie 的域中，因为 **WebDriver** 不允许您添加或从与当前页面不同的域删除 Cookie。
-
-
-
-
-
-

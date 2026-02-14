@@ -33,8 +33,13 @@ const docs = defineCollection({
 
 // 测试百科（仅中文）：词条 Markdown，用于 /zh-cn/wiki/
 // 推荐 frontmatter：title（中文 (English)）、description（一句话摘要，SEO）、section（首字母）、order（同组排序）
+// generateId 加前缀 wiki--，避免条目 id 与正文 H1 的 rehype-slug id 相同导致 [glob-loader] Duplicate id 警告
 const wiki = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/wiki" }),
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/wiki",
+    generateId: ({ entry }) => `wiki--${entry.replace(/\.md$/, "")}`,
+  }),
   schema: () =>
     z.object({
       /** 页面标题，建议格式：中文 (English)，用于 SEO 与侧栏 */

@@ -4,15 +4,16 @@ description: "Jira 是由 Atlassian 开发的一款项目管理和缺陷跟踪 (
 section: "J"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Jira ｜ Jira
-[Jira](#jira) [Jira](/zh-cn/wiki/jira/) [缺陷 (Bug)](/zh-cn/wiki/bug/) [Jira](/zh-cn/wiki/jira/) [缺陷 (Bugs)](/zh-cn/wiki/bug/) [Jira](/zh-cn/wiki/jira/) [Scrum](/zh-cn/wiki/scrum/) [使用用例 (Use cases)](/zh-cn/wiki/use-case/)
 
 ### 相关术语 (Related Terms):
 - 缺陷跟踪工具 (Bug tracking tool)
 - 变更请求 (Change Requests)
 - 事件管理 (Incident Management)
-[Bug tracking tool](/zh-cn/wiki/bug-tracking-tool/) [Change Requests](/zh-cn/wiki/change-requests/) [Incident Management](/zh-cn/wiki/incident-management/)
+- [Bug tracking tool](/zh-cn/wiki/bug-tracking-tool/) 
+- [Change Requests](/zh-cn/wiki/change-requests/)
+- [Incident Management](/zh-cn/wiki/incident-management/)
 
 ### 参见 (See also):
 - [官方网站](https://www.atlassian.com/software/jira)
@@ -20,7 +21,7 @@ order: 0
 
 ## 关于 Jira 的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 Jira？它的用途是什么？**
   Jira 是由 Atlassian 开发的一款项目管理和**缺陷跟踪 (Issue Tracking)** 工具。它主要旨在帮助团队（特别是软件开发和测试团队）管理并跟踪工作进度。在 Jira 中，用户可以创建、分配并划分任务、**缺陷 (Bugs)** 和功能请求的优先级，这些在平台内通常被称为“问题 (Issues)”。团队使用 Jira 将工作组织成项目，通过反映团队流程的可定制**工作流 (Workflows)** 来对问题进行分类和跟踪。其灵活性使其适用于 **Agile (敏捷)**、**Scrum** 和 **Kanban** 等多种项目管理风格。对于自动化测试工程师，Jira 特别适用于跟踪自动化测试中发现的缺陷、管理自动化**测试用例 (Test Cases)**，以及将代码提交和构建信息与问题关联。
 
@@ -46,7 +47,7 @@ order: 0
 - **Jira 如何改善团队协作？**
   Jira 通过提供一个**集中式任务管理平台**来增强协作。**实时更新**确保每个人同步，**评论和 @提及**功能允许在任务上下文中进行直接沟通，促进讨论的清晰度和聚焦。**可定制的仪表板和过滤器**使成员能快速访问相关信息，**共享看板**提高了项目的透明度。此外，通过与 Git 等版本控制系统集成，开发人员可以将提交和拉取请求链接到 Jira 问题，为代码更改提供背景并促进跨职能理解。**自动化通知**则使团队在问题更新或状态变更时保持一致。
 
-#### 功能 (Functionality)
+### 功能 (Functionality)
 - **Jira 中的问题跟踪是如何工作的？**
   Jira 通过“**问题 (Issues)**”系统操作，代表任务、缺陷、用户故事等。每个问题有一个唯一标识符。过程如下：
   1. **创建 (Creation)**：用户填写摘要、描述、类型和**优先级**。也可使用自定义字段。
@@ -82,7 +83,7 @@ order: 0
   8. 使用**工作流方案 (Workflow schemes)** 将工作流应用到特定项目。
   9. 点击**发布 (Publish)** 使更改生效。
 
-#### 集成 (Integration)
+### 集成 (Integration)
 - **Jira 如何与其他软件工具集成？**
   Jira 通过**插件**、**API** 和**网络钩子 (Webhooks)** 实现集成。
   - **版本控制**：连接 Git, Bitbucket, GitHub，将提交关联到问题。
@@ -94,7 +95,7 @@ order: 0
 - **Jira 集成如何增强软件自动化？**
   通过**简化自动化测试与问题跟踪之间的沟通**。测试失败时，集成可以自动创建 Jira 问题，确保缺陷被**即时捕获**并准确分类，减少人工上报开销，实现**更快的响应时间**。它还支持**可追溯性**，提供从需求到测试再到结果的防篡改审计追踪。此外，自动化结果可触发工作流（如测试通过后自动移至“待评审”），减少人为错误，并通过仪表板提供实时质量指标。
 
-#### 高级用法 (Advanced Usage)
+### 高级用法 (Advanced Usage)
 - **如何将 Jira 用于敏捷项目管理？**
   - **Sprint**：组织固定周期内的工作。
   - **积压工作梳理 (Backlog Grooming)**：划分优先级并评估故事点。
@@ -115,9 +116,3 @@ order: 0
   - 根据项目需求**定制界面和字段**，避免冗余。
   - 鼓励在评论中使用 **@提及** 以保持上下文。
   - 定期进行 Sprint 评审并调整 Jira 设置以适应流程变化。
-
-
-
-
-
-

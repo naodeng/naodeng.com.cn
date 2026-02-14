@@ -1,25 +1,23 @@
 ---
 title: "非功能性测试 ｜ Non-functional Testing"
-description: "非功能性测试评估软件的运行方面，如性能、可靠性、可扩展性和资源利用率。它关注系统在特定条件下的“运行得如何”，而不仅仅是“做了什么”（后者由功能性测试覆盖）。这类测试对于验证系统的质量属性（如合规性、安全性和易用性）至关重要。 对于测试自动化工程师，这涉及编写和执行测量响应时间、吞吐量和并发水平的测试脚本。常用工具包括 JMeter、LoadRunner 和 Gatling。"
+description: "非功能性测试评估软件的运行方面，如性能、可靠性、可扩展性和资源利用率。它关注系统在特定条件下的“运行得如何”，而不仅仅是“做了什么”（后者由功能性测试覆盖）。这类测试对于验证系统的质量属性（如合规性、安全性和易用性）至关重要。对于测试自动化工程师，这涉及编写和执行测量响应时间、吞吐量和并发水平的测试脚本。常用工具包括 JMeter、LoadRunner 和 Gatling。"
 section: "N"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 非功能性测试 ｜ Non-functional Testing
-[Non-functional Testing](#non-functional-testing) [非功能性测试 (Non-functional Testing)](/zh-cn/wiki/non-functional-testing/)
 
 ### 相关术语：
-- 性能测试 (Performance Testing)
-- 负载测试 (Load Testing)
-- 压力测试 (Stress Testing)
-- 可扩展性测试 (Scalability Testing)
-- 易用性测试 (Usability Testing)
-- 可靠性测试 (Reliability Testing)
-[Performance Testing](/zh-cn/wiki/performance-testing/) [Load Testing](/zh-cn/wiki/load-testing/) [Stress Testing](/zh-cn/wiki/stress-testing/) [Scalability Testing](/zh-cn/wiki/scalability-testing/) [Usability Testing](/zh-cn/wiki/usability-testing/) [Reliability Testing](/zh-cn/wiki/reliability-testing/)
+- 性能测试 (Performance Testing) [性能测试](/zh-cn/wiki/performance-testing/)
+- 负载测试 (Load Testing) [负载测试](/zh-cn/wiki/load-testing/)
+- 压力测试 (Stress Testing) [压力测试](/zh-cn/wiki/stress-testing/)
+- 可扩展性测试 (Scalability Testing) [可扩展性测试](/zh-cn/wiki/scalability-testing/)
+- 易用性测试 (Usability Testing) [易用性测试](/zh-cn/wiki/usability-testing/)
+- 可靠性测试 (Reliability Testing) [可靠性测试](/zh-cn/wiki/reliability-testing/)
 
 ## 关于非功能性测试的常见问题
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是非功能性测试？**
   非功能性测试评估软件的运行方面，如**性能**、**可靠性**、**可扩展性**和**资源利用率**。它关注系统在特定条件下的“**运行得如何**”，而不仅仅是“做了什么”（后者由功能性测试覆盖）。这类测试对于验证系统的质量属性（如合规性、安全性和易用性）至关重要。
   对于**测试自动化**工程师，这涉及编写和执行测量响应时间、吞吐量和并发水平的测试脚本。常用工具包括 **JMeter**、**LoadRunner** 和 **Gatling**。
@@ -40,7 +38,7 @@ order: 0
 - **非功能性测试如何提高软件质量？**
   它确保产品不仅“运行正确”，而且“运行高效且安全”。它通过压力测试、安全漏洞扫描、易用性评估等，显著提升软件的稳健性、信任度和市场竞争力。
 
-#### 类型与子类别
+### 类型与子类别
 - **非功能性测试的不同类型**：
   - **兼容性测试**：确保跨设备、浏览器和 OS 运行正常。
   - **合规性测试**：验证是否符合隐私（GDPR）或行业标准。
@@ -57,7 +55,7 @@ order: 0
 - **易用性测试 (Usability Testing)**：评估应用是否直观易用。通常涉及真实用户的参与，目标是提高效率、效果和用户满意度。
 - **安全性测试 (Security Testing)**：旨在发现漏洞和风险。步骤包括威胁建模、SAST（静态分析）、DAST（动态扫描）、渗透测试和风险评估。
 
-#### 技术与工具
+### 技术与工具
 - **常用技术**：基准测试、耐久性测试、故障转移测试、互操作性测试、资源消耗监测等。
 - **常用工具**：
   - **性能/负载**：JMeter, LoadRunner, Gatling, Gatling, WebLOAD。
@@ -65,7 +63,7 @@ order: 0
   - **监测**：New Relic, Dynatrace, Wireshark。
   - **代码质量**：SonarQube。
 
-#### 实施与管理
+### 实施与管理
 - **何时进行？**：应贯穿整个 **SDLC**。
   - **早期**：基本的安全和代码质量检查。
   - **功能测试后**：进行大规模性能和负载测试（需系统稳定）。
@@ -75,9 +73,3 @@ order: 0
 - **如何管理？**：通过清晰的非功能性需求 (NFRs) 定义目标，配置模拟环境，利用仪表盘 (Dashboards) 进行实时监控和分析，并向利益相关者清晰传达风险和改进建议。
 - **挑战与对策**：面临资源分配、模拟环境一致性、大规模数据管理等挑战。可通过**云服务**扩展资源，使用 **IaC (基础设施即代码)** 自动化环境，以及利用数据生成工具来克服。
 - **沟通成果**：使用可视化图表，根据受众（管理层 vs 专家）调整技术深度，关注问题的**严重程度 (Severity)** 和**业务影响**，提供可落地的改进建议。
-
-
-
-
-
-

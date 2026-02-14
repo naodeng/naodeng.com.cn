@@ -1,20 +1,26 @@
 ---
 title: "压力测试 ｜ Stress Testing"
-description: "关于压力测试的常见问题？"
+description: "关于压力测试的问题？"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 压力测试 ｜ Stress Testing
-[压力测试 (Stress Testing)](#stress-testing) [压力测试 (Stress testing)](/zh-cn/wiki/stress-testing/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [过程与技术](#过程与技术)
+- [场景与结果](#场景与结果)
+- [最佳实践](#最佳实践)
 
 ### 相关术语：
 - [性能测试 (Performance Testing)](/zh-cn/wiki/performance-testing/)
 - [负载测试 (Load Testing)](/zh-cn/wiki/load-testing/)
 
-## 关于压力测试的常见问题？
+## 关于压力测试的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **软件测试中的压力测试是什么？**
   **[压力测试 (Stress testing)](/zh-cn/wiki/stress-testing/)** 是 **[软件测试 (software testing)](/zh-cn/wiki/software-testing/)** 中用于评估系统在极端条件下表现的一种技术。它涉及将系统置于超出其正常运行能力的负载下（通常直到崩溃点），以识别其阈值并观察其如何处理压力。此类测试有助于发现与数据锁定、竞态条件和内存泄漏相关的问题。
   为了有效进行 **[压力测试 (stress testing)](/zh-cn/wiki/stress-testing/)**：
@@ -52,7 +58,7 @@ order: 0
   - 它提供了对 **系统极限** 的宝贵见解，指导基础设施增强和容量规划。
   最终，**[压力测试 (stress testing)](/zh-cn/wiki/stress-testing/)** 贡献了更具 **韧性** 和 **值得信赖** 的软件产品，增强了用户的信心和满意度。
 
-#### 过程与技术
+### 过程与技术
 - **压力测试涉及哪些步骤？**
   为了有效进行 **[压力测试 (stress testing)](/zh-cn/wiki/stress-testing/)**，请遵循以下步骤：
   1. **定义目标**：明确想要实现的目标（例如识别崩溃点或了解极端条件下的行为）。
@@ -102,7 +108,7 @@ order: 0
   - **NeoLoad**：专为 Web 和移动应用设计。
   - **WebLOAD**：提供强大的脚本编制和报告能力。
 
-#### 场景与结果
+### 场景与结果
 - **压力测试在哪些常见场景下特别重要？**
   **[压力测试 (Stress testing)](/zh-cn/wiki/stress-testing/)** 在以下情况至关重要：
   - **高流量应用**：如电商大促、抢票系统。
@@ -149,7 +155,7 @@ order: 0
   - **其他关联服务受到波及**。
   - **暴露安全漏洞**（如 DoS 条件）。
 
-#### 最佳实践
+### 最佳实践
 - **压力测试的最佳实践有哪些？**
   **[压力测试 (stress testing)](/zh-cn/wiki/stress-testing/)** 的最佳实践：
   - **明确目标**：了解想要实现的成果。
@@ -217,9 +223,3 @@ order: 0
   - **一次性测试**。
   - **疏于文档记录**。
   - **忽略善后工作**：测试后清理环境。
-
-
-
-
-
-

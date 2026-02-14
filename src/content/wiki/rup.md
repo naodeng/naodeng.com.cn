@@ -1,12 +1,18 @@
 ---
 title: "Rup ｜ Rup"
-description: "RUP（Rational Unified Process，有理统一过程）是一个迭代式的软件开发框架，它强调明确的角色、责任和过程。它在开发中的重要性在于提供了一种结构化且可调整的方法来管理项目的复杂性和风险。 RUP 的核心优势包括："
+description: "RUP（Rational Unified Process，有理统一过程）是一个迭代式的软件开发框架，它强调明确的角色、责任和过程。它在开发中的重要性在于提供了一种结构化且可调整的方法来管理项目的复杂性和风险。RUP 的核心优势包括："
 section: "R"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # Rup ｜ Rup
-[RUP](#rup)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [RUP 角色与工件](#rup-角色与工件)
+- [RUP 与测试](#rup-与测试)
+- [RUP 与自动化](#rup-与自动化)
 
 ### 相关术语：
 - 软件开发方法论 (Software development methodology)
@@ -16,9 +22,9 @@ order: 0
 - 维基百科 (Wikipedia)
 [Wikipedia](https://en.wikipedia.org/wiki/Rational_unified_process)
 
-## 关于 RUP 的常见问题？
+## 关于 RUP 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是 RUP，为什么它在软件开发中很重要？**
   RUP（Rational Unified Process，有理统一过程）是一个**迭代式**的软件开发框架，它强调明确的角色、责任和过程。它在开发中的重要性在于提供了一种结构化且可调整的方法来管理项目的复杂性和风险。
   RUP 的核心优势包括：
@@ -49,7 +55,7 @@ order: 0
   3. **构建阶段 (Construction)**：开发产品，生成首个具有运行质量的版本。
   4. **交付阶段 (Transition)**：将软件交付给用户，包括 **[Beta 测试](/zh-cn/wiki/beta-testing/)**、培训和部署。
 
-#### RUP 角色与工件
+### RUP 角色与工件
 - **RUP 项目中有哪些角色？**
   包括项目经理、业务分析师、系统分析师、**软件架构师**、开发人员、集成人员、**测试工程师**（负责发现缺陷）、配置管理员、变更与发布经理、UI 设计师、数据库设计师和技术作家。
 
@@ -62,7 +68,7 @@ order: 0
   - **项目计划与迭代计划**。
   - **[测试计划](/zh-cn/wiki/test-plan/)**、**[测试用例](/zh-cn/wiki/test-case/)** 及 **[测试脚本](/zh-cn/wiki/test-script/)**。
 
-#### RUP 与测试
+### RUP 与测试
 - **测试是如何融入 RUP 的？**
   测试贯穿所有四个阶段。**初始阶段**定义策略；**精化阶段**编写详细计划并评估可测试性；**构建阶段**是测试重心，强调持续集成和 [回归测试](/zh-cn/wiki/regression-testing/)；**交付阶段**侧重 **[用户验收测试 (UAT)](/zh-cn/wiki/user-acceptance-testing/)**。
 
@@ -72,7 +78,7 @@ order: 0
 - **RUP 如何支持端到端 (E2E) 测试？**
   通过将其集成到构建阶段，增量式构建系统并持续测试集成点。E2E 场景在初始和精化阶段基于用例定义，确保覆盖整个业务流程。
 
-#### RUP 与自动化
+### RUP 与自动化
 - **自动化如何融入 RUP？**
   自动化应**尽早**引入。初始阶段识别场景，精化阶段建立框架，构建阶段实现 CI（触发自动构建与测试），交付阶段运行自动验收测试。
 
@@ -85,9 +91,3 @@ order: 0
   - **[JMeter](/zh-cn/wiki/jmeter/)** / **LoadRunner** (性能测试)
   - **JUnit** / **TestNG** (单元测试)
   - **Rational Quality Manager** (测试管理)
-
-
-
-
-
-

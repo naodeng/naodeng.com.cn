@@ -1,22 +1,28 @@
 ---
 title: "软件质量 ｜ Software Quality"
-description: "软件质量 (Software quality) 是指软件产品满足指定需求以及满足用户和利益相关者需求和期望的程度。它涵盖了各种属性，包括 可靠性 (reliability)、效率 (efficiency)、可维护性 (maintainability)、可用性 (usability) 和 移植性 (portability)。高质量的软件应在指定条件下执行其预定功能而不发生故障，没有缺陷，并且对于未来的增强或更正来说是可维护和可理解的。它还应通过直观且响应迅速的设计提供积极的用户体验。 在 测试自动化 (test automation) 的背景下，确保 软件质量 (software quality) 涉及创建和执行自动化测试，这些测试根据预期结果验证软件的功能和性能。自动化测试可以频繁且一致地运行，为开发团队提供快速反馈，并有助于及早发现问题。 软件质量不仅涉及最终产品，还涉及用于开发、维护和增强产品的过程。它涉及在整个软件开发生命周期 (SDLC) 中对改进和遵守最佳实践的持续承诺。这种承诺对于交付不仅满足当前需求，而且能够随需求和技术变化而演进的软件至关重要。"
+description: "软件质量 (Software quality) 是指软件产品满足指定需求以及满足用户和利益相关者需求和期望的程度。它涵盖了各种属性，包括 可靠性 (reliability)、效率 (efficiency)、可维护性 (maintainability)、可用性 (usability) 和 移植性 (portability)。高质量的软件应在指定条件下执行其预定功能而不发生故障，没有缺陷，并且对于未来的增强或更正来说是可维护和可理解的。它还应通过直观且响应迅速的设计提供积极的用户体验。在 测试自动化 (test automation) 的背景下，确保 软件质量 (software quality) 涉及创建和执行自动化测试，这些测试根据预期结果验证软件的功能和性能。自动化测试可以频繁且一致地运行，为开发团队提供快速反馈，并有助于及早发现问题。软件质量不仅涉及最终产品，还涉及用于开发、维护和增强产品的过程。它涉及在整个软件开发生命周期 (SDLC) 中对改进和遵守最佳实践的持续承诺。这种承诺对于交付不仅满足当前需求，而且能够随需求和技术变化而演进的软件至关重要。"
 section: "S"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 软件质量 ｜ Software Quality
-[软件质量 (Software Quality)](#software-quality) [软件质量 (Software Quality)](/zh-cn/wiki/software-quality/)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [软件质量指标 (Software Quality Metrics)](#软件质量指标-software-quality-metrics)
+- [软件质量标准](#软件质量标准)
+- [软件测试](#软件测试)
+- [软件质量保证 (Software Quality Assurance)](#软件质量保证-software-quality-assurance)
 
 ### 相关术语：
-- 软件质量管理 (Software Quality Management)
-- QA 指标 (QA Metrics)
-- 质量管理 (Quality Management)
-[软件质量管理 (Software Quality Management)](/zh-cn/wiki/software-quality-management/) [QA 指标 (QA Metrics)](/zh-cn/wiki/qa-metrics/) [质量管理 (Quality Management)](/zh-cn/wiki/quality-management/)
+- [软件质量管理 (Software Quality Management)](/zh-cn/wiki/software-quality-management/)
+- [QA 指标 (QA Metrics)](/zh-cn/wiki/qa-metrics/)
+- [质量管理 (Quality Management)](/zh-cn/wiki/quality-management/)
 
-## 关于软件质量的常见问题？
+## 关于软件质量的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是软件质量？**
   **软件质量 (Software quality)** 是指软件产品满足指定需求以及满足用户和利益相关者需求和期望的程度。它涵盖了各种属性，包括 **可靠性 (reliability)**、**效率 (efficiency)**、**[可维护性 (maintainability)](/zh-cn/wiki/maintainability/)**、**可用性 (usability)** 和 **移植性 (portability)**。高质量的软件应在指定条件下执行其预定功能而不发生故障，没有缺陷，并且对于未来的增强或更正来说是可维护和可理解的。它还应通过直观且响应迅速的设计提供积极的用户体验。
   在 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 的背景下，确保 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 涉及创建和执行自动化测试，这些测试根据预期结果验证软件的功能和性能。自动化测试可以频繁且一致地运行，为开发团队提供快速反馈，并有助于及早发现问题。
@@ -58,7 +64,7 @@ order: 0
   - **持续改进**：推荐过程增强建议以预防未来的缺陷。
   SQA 工程师必须具备 **对软件开发过程的深刻理解** 并 **精通 [测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 工具。他们的角色对于交付符合技术规范和用户期望的高质量软件至关重要。
 
-#### 软件质量指标 (Software Quality Metrics)
+### 软件质量指标 (Software Quality Metrics)
 - **什么是软件质量指标？**
   **软件质量指标 (Software quality metrics)** 是用于评估软件开发过程、产品和维护工作质量的可量化测量。这些指标提供了对 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 各个方面的见解，如可靠性、**[可维护性 (maintainability)](/zh-cn/wiki/maintainability/)**、效率和可用性。通过分析这些指标，团队可以识别改进领域，跟踪随时间推移的进展，并做出数据驱动的决策以增强 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)**。
   **产品指标 (Product metrics)** 侧重于软件产品本身的特征，包括代码复杂度、缺陷密度和 **[代码覆盖率 (code coverage)](/zh-cn/wiki/code-coverage/)**。
@@ -132,7 +138,7 @@ order: 0
   ```
   了解这些指标之间的区别允许 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 工程师量身定制其策略和工具，以同时提高产品质量和开发过程效率。
 
-#### 软件质量标准
+### 软件质量标准
 - **什么是软件质量标准？**
   **软件质量标准 (Software quality standards)** 是管理软件开发过程和结果的一套正式和非正式规则、指南和最佳实践，旨在确保产品的高质量。这些标准通常由国际或国家标准组织、行业团体或监管机构制定。
   **通常引用的标准** 包括 ISO/IEC 25010（定义了软件产品的一组质量特征）和 ISO/IEC 12207（提供软件生命周期过程框架）。这类标准帮助组织建立关于什么是软件产品和过程质量的共同语言和理解。
@@ -180,7 +186,7 @@ order: 0
   - **ASQ (美国质量协会)**：为专业人士提供标准和认证。
   这些标准对于建立一致的 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 方法、提供 **[质量保证 (quality assurance)](/zh-cn/wiki/quality-assurance/)** 框架并确保软件满足 **[功能需求 (functional requirements)](/zh-cn/wiki/functional-requirements/)** 至关重要。
 
-#### 软件测试
+### 软件测试
 - **软件测试在确保软件质量中的角色是什么？**
   **[软件测试 (Software testing)](/zh-cn/wiki/software-testing/)** 在确保 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 中发挥着 **关键作用 (critical role)**，通过 **验证 (validating)** 和 **确认 (verifying)** 软件是否满足定义的需求并按预期工作。它涉及执行系统以识别与实际期望相比的 **差距、错误或缺失的需求**。
   测试作为 SDLC 中的 **检查点 (checkpoint)**，可确保软件是 **可靠、安全且高性能的**。它有助于 **及早发现缺陷**。
@@ -224,7 +230,7 @@ order: 0
   **[测试计划 (test plan)](/zh-cn/wiki/test-plan/)** 为工程师提供指南：**测什么 (What to test)**、**怎么测 (How to test)**、**何时测 (When to test)**、**谁来测 (Who will test)**、**测试环境 (Test environment)**、**风险评估 (Risk assessment)**、**准入和准出准则 (Entry and exit criteria)** 以及 **测试交付物 (Test deliverables)**。
   它确保 **[测试自动化 (test automation)](/zh-cn/wiki/test-automation/)** 努力与项目目标一致，促进沟通，帮助跟踪进度。
 
-#### 软件质量保证 (Software Quality Assurance)
+### 软件质量保证 (Software Quality Assurance)
 - **什么是软件质量保证？**
   **软件质量保证 (SQA)** 涵盖了一种 **预防性方法 (proactive approach)**。关键 SQA 活动包括：
   - **过程定义与实施 (Process definition and implementation)**
@@ -254,9 +260,3 @@ order: 0
 
 - **软件质量保证的最佳实践有哪些？**
   关键实践包括：**及早定义质量目标 (Define clear quality objectives)**、**全生命周期集成 (Integrate QA)**、**实施 CI/CD (Implement CI/CD)**、**编写好维护的 [测试用例 (test cases)](/zh-cn/wiki/test-case/)**、**基于风险排序 (Prioritize test cases)**、**使用版本控制 (Use version control)**、**结合手动与 [自动化测试 (automated testing)](/zh-cn/wiki/automated-testing/)**、**定期更新框架**、**收集并分析指标** 以及 **培养质量文化 (Foster a culture of quality)**。
-
-
-
-
-
-

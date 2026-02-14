@@ -1,13 +1,13 @@
 ---
-title: "Availability Testing ｜ Availability Testing"
+title: "可用性测试 ｜ Availability Testing"
 description: "基础知识和重要性"
 section: "A"
 order: 0
 ---
-
-# Availability Testing ｜ Availability Testing
+<!-- markdownlint-disable MD025 -->
+# 可用性测试 ｜ Availability Testing
 <!-- markdownlint-disable MD041 -->
-- [Availability Testing 可用性测试](#availability-testing-可用性测试)
+- [可用性测试 ｜ Availability Testing](#可用性测试--availability-testing)
 - [关于可用性测试的问题](#关于可用性测试的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [什么是可用性测试？](#什么是可用性测试)
@@ -33,8 +33,6 @@ order: 0
     - [可用性测试在 DevOps 中扮演什么角色？](#可用性测试在-devops-中扮演什么角色)
     - [在大规模系统中如何进行可用性测试？](#在大规模系统中如何进行可用性测试)
     - [可用性测试如何帮助提高系统弹性？](#可用性测试如何帮助提高系统弹性)
-
-# Availability Testing 可用性测试
 
 在软件测试的背景下，可用性测试是指评估系统的正常运行时间，以确保应用程序或系统按预期对用户保持可访问和可操作。
 
@@ -379,9 +377,3 @@ order: 0
 - 与 CI/CD 集成进行持续的弹性评估。
 
 通过专注于这些领域，系统变得更加健壮，能够在中断面前维持运营，从而提高整体可靠性。
-
-
-
-
-
-

@@ -1,19 +1,25 @@
 ---
 title: "测试可观测性 ｜ Test Observability"
-description: "测试可观测性 (Test Observability) 指的是在 测试执行 (test execution) 期间检查和理解系统内部状态的能力。它涉及收集并分析日志、指标和追踪等数据，以深入了解系统的行为和性能。这种可见性对于识别问题、理解系统交互以及确保自动化测试的可靠性至关重要。 为了增强测试可观测性，可以考虑实施 结构化日志 (structured logging)，使用一致的日志格式和级别，从而便于解析和分析。监控 (Monitoring) 工具可以跟踪关键 性能指标 (performance indicators) 并针对异常发出警报。插桩 (Instrumentation) 也很关键，它涉及添加代码或利用工具来收集系统运行数据。 对于 测试数据 (test data) 管理，应采用 版本控制 (version control) 和 数据标记 (data tagging) 等实践来跟踪变更和使用情况，辅助实现可追溯性和可重现性。 提高可观测性的常见实践包括： - 使用 断言 (assertions) 来验证预期结果。"
+description: "测试可观测性 (Test Observability) 指的是在 测试执行 (test execution) 期间检查和理解系统内部状态的能力。它涉及收集并分析日志、指标和追踪等数据，以深入了解系统的行为和性能。这种可见性对于识别问题、理解系统交互以及确保自动化测试的可靠性至关重要。为了增强测试可观测性，可以考虑实施 结构化日志 (structured logging)，使用一致的日志格式和级别，从而便于解析和分析。监控 (Monitoring) 工具可以跟踪关键 性能指标 (performance indicators) 并针对异常发出警报。插桩 (Instrumentation) 也很关键，它涉及添加代码或利用工具来收集系统运行数据。对于 测试数据 (test data) 管理，应采用 版本控制 (version control) 和 数据标记 (data tagging) 等实践来跟踪变更和使用情况，辅助实现可追溯性和可重现性。提高可观测性的常见实践包括： - 使用 断言 (assertions) 来验证预期结果。"
 section: "T"
 order: 0
 ---
-
+<!-- markdownlint-disable MD025 -->
 # 测试可观测性 ｜ Test Observability
-[测试可观测性 (Test Observability)](#test-observability)
+
+## 目录
+
+- [基础与重要性](#基础与重要性)
+- [实践与技术](#实践与技术)
+- [工具与技术](#工具与技术)
+- [挑战与解决方案](#挑战与解决方案)
 
 ### 相关术语：
 - [测试管理 (Test Management)](/zh-cn/wiki/test-management/)
 
-## 关于测试可观测性 (Test Observability) 的常见问题？
+## 关于测试可观测性 (Test Observability) 的问题？
 
-#### 基础与重要性
+### 基础与重要性
 - **什么是测试可观测性 (Test Observability)？**
   **测试可观测性 (Test Observability)** 指的是在 **测试执行 (test execution)** 期间检查和理解系统内部状态的能力。它涉及收集并分析日志、指标和追踪等数据，以深入了解系统的行为和性能。这种可见性对于识别问题、理解系统交互以及确保自动化测试的可靠性至关重要。
   为了增强测试可观测性，可以考虑实施 **结构化日志 (structured logging)**，使用一致的日志格式和级别，从而便于解析和分析。**监控 (Monitoring)** 工具可以跟踪关键 **性能指标 (performance indicators)** 并针对异常发出警报。插桩 (Instrumentation) 也很关键，它涉及添加代码或利用工具来收集系统运行数据。
@@ -41,7 +47,7 @@ order: 0
 - **测试可观测性与测试覆盖率及可测试性有何关联？**
   **测试覆盖率 (test coverage)** 衡量代码被执行的程度（定量指标），但高覆盖率并不保证能检测到所有缺陷。**可测试性** 确保系统能被高效测试。**测试可观测性** 通过关注系统内部状态的可见性来补充这些概念。它们三者结合提供了一种全面的方法来识别和诊断软件缺陷，从而产生更健壮、更可靠的软件产品。
 
-#### 实践与技术
+### 实践与技术
 - **提高测试可观测性的常见实践有哪些？**
   - **实施自定义指标 (Implement Custom Metrics)**：定义并跟踪特定于功能的指标。可以使用 Prometheus 或 Grafana。
   - **结构化日志 (Structured Logging)**：使用 JSON 等格式。
@@ -92,7 +98,7 @@ order: 0
   - **监控数据使用情况**。
   - **记录数据依赖关系**。
 
-#### 工具与技术
+### 工具与技术
 - **哪些工具常用于提高测试可观测性？**
   - **持续集成 (CI) 系统**：Jenkins, GitHub Actions。
   - **应用性能管理 (APM) 工具**：New Relic, Dynatrace。
@@ -132,7 +138,7 @@ order: 0
   - **深化与版本控制系统 (VCS) 的集成**。
   - **容器化与编排**。
 
-#### 挑战与解决方案
+### 挑战与解决方案
 - **实现良好测试可观测性的常见挑战有哪些？**
   - **复杂性 (Complexity)**：难以跟踪组件间的交互。
   - **数据量 (Volume of Data)**：淹没关键信息。
@@ -179,9 +185,3 @@ order: 0
   - **版本控制 (Version Control)**：针对 **测试脚本 (test scripts)**。
   - **自动化关联 (Automate Correlation)**：将结果与部署数据挂钩。
   - **可操作的警报/仪表板 (Actionable Alerts/Dashboards)**：优先处理关键信息。
-
-
-
-
-
-

@@ -8,6 +8,7 @@ import {
   NAV_SPONSOR,
   NAV_SERIES,
   NAV_TAGS,
+  FOOTER_NAV_QA_WIKI,
   NAV_STATUS,
   NAV_COPYRIGHT,
   NAV_PRIVACY,
@@ -70,6 +71,11 @@ const t = {
       <a href={getRelativeLocaleUrl(locale, "/projects")}>{typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/series")}>{typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/tags")}>{typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale]}</a>
+      {locale === 'zh-cn' ? (
+        <a href={getRelativeLocaleUrl(locale, "/wiki")}>{typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale]}</a>
+      ) : (
+        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">{typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale]}</a>
+      )}
       <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/copyright")}>{typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/privacy")}>{typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale]}</a>
