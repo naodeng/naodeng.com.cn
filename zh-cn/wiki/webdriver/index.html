@@ -1,0 +1,909 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>Webdriver | 软件测试同学</title><meta name="description" content="WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。"><meta name="keywords" content="软件测试, 质量分析, 自动化测试, 接口测试, 性能测试, 敏捷测试, 测试自动化, inaodeng, naodeng"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="author" content="Nao Deng"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><link rel="canonical" href="https://inaodeng.com/zh-cn/wiki/webdriver/"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/wiki/webdriver/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/wiki/webdriver/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/wiki/webdriver/"><link rel="alternate" type="application/rss+xml" title="RSS - 软件测试同学" href="https://inaodeng.com/zh-cn/rss.xml/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta name="algolia-site-verification" content="B0319275B670BBB0"><meta property="og:type" content="website"><meta property="og:title" content="Webdriver | 软件测试同学"><meta property="og:site_name" content="软件测试同学"><meta property="og:description" content="WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:image:alt" content="Webdriver"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://inaodeng.com/zh-cn/wiki/webdriver/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@inaodeng"><meta name="twitter:title" content="Webdriver | 软件测试同学"><meta name="twitter:description" content="WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。"><meta name="twitter:image" content="https://inaodeng.com/ogp.png"><meta name="twitter:image:alt" content="Webdriver"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"软件测试同学","description":"WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。","url":"https://inaodeng.com","inLanguage":["zh-CN"],"publisher":{"@type":"Organization","name":"软件测试同学","url":"https://inaodeng.com","logo":{"@type":"ImageObject","url":"https://inaodeng.com/ogp.png","width":1200,"height":630}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://inaodeng.com/zh-cn/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nao Deng","url":"https://inaodeng.com","sameAs":["https://github.com/naodeng","https://x.com/inaodeng","https://naodeng.medium.com/","https://weibo.com/u/1651778270","https://ko-fi.com/naodeng"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://inaodeng.com/zh-cn/"},{"@type":"ListItem","position":2,"name":"测试百科","item":"https://inaodeng.com/zh-cn/wiki/"},{"@type":"ListItem","position":3,"name":"Webdriver","item":"https://inaodeng.com/zh-cn/wiki/webdriver/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTerm","name":"Webdriver","description":"WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。","url":"https://inaodeng.com/zh-cn/wiki/webdriver/","inDefinedTermSet":{"@type":"DefinedTermSet","name":"软件测试百科","url":"https://inaodeng.com/zh-cn/wiki/"}}</script><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin="anonymous"></script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>.giscus-section[data-astro-cid-an2nl7ar]{margin-block-start:var(--sp-l);padding-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 14%,transparent)}.giscus-section[data-astro-cid-an2nl7ar] .giscus-frame{width:100%}
+.breadcrumb[data-astro-cid-qaanghzh]{margin-block-end:var(--sp-m, 1rem)}.breadcrumb-list[data-astro-cid-qaanghzh]{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .5rem;font-size:.875rem;color:color-mix(in srgb,var(--color-main) 65%,transparent)}.breadcrumb-item[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;gap:.25rem}.breadcrumb-link[data-astro-cid-qaanghzh]{color:inherit;text-decoration:none}.breadcrumb-link[data-astro-cid-qaanghzh]:hover{color:var(--color-theme);text-decoration:underline}.breadcrumb-icon[data-astro-cid-qaanghzh]{display:inline-flex;flex-shrink:0;margin-inline-end:.35em;color:var(--color-theme);opacity:.85}.breadcrumb-icon[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}.breadcrumb-icon--current[data-astro-cid-qaanghzh]{opacity:.7}.breadcrumb-current[data-astro-cid-qaanghzh]{color:inherit;display:inline-flex;align-items:center;gap:.35em}.breadcrumb-sep[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;margin-inline:.4rem;color:color-mix(in srgb,var(--color-main) 45%,transparent);user-select:none}.breadcrumb-sep[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.OapxBOfU.css">
+<style>.wiki-article[data-astro-cid-sqfwpogz] h1{margin-block-end:var(--sp-m)}.wiki-article[data-astro-cid-sqfwpogz] h2{margin-block:var(--sp-l) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] h3{margin-block:var(--sp-m) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] a{color:var(--color-theme);text-decoration:underline}.wiki-article[data-astro-cid-sqfwpogz] ul{padding-inline-start:1.5em}
+.toc-sidebar[data-astro-cid-xvrfupwn]{max-height:calc(100vh - 2rem);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}.toc-sidebar[data-astro-cid-xvrfupwn]::-webkit-scrollbar{display:none}.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:sticky;top:var(--sp-m, 1rem);align-self:start}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:absolute;left:var(--sp-m, 1rem);top:0;width:12rem;max-width:calc(100vw - 800px - var(--sp-m, 1rem) * 4);max-height:none;min-height:12rem;overflow-y:auto;overflow-x:hidden;z-index:10}.toc-sidebar--below[data-astro-cid-xvrfupwn]{position:static;width:100%;max-width:none;margin-block-end:var(--sp-l, 1.5rem)}.toc-sidebar--below[data-astro-cid-xvrfupwn] .toc-list[data-astro-cid-xvrfupwn]{display:block}.toc-nav[data-astro-cid-xvrfupwn]{padding:var(--sp-m);border-radius:12px;background:color-mix(in srgb,var(--color-theme) 6%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent)}.toc-title[data-astro-cid-xvrfupwn]{margin:0 0 .75rem;font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-theme);opacity:.9}.toc-list[data-astro-cid-xvrfupwn]{list-style:none;margin:0;padding:0}.toc-item[data-astro-cid-xvrfupwn]{margin:0;padding:0;padding-inline-start:calc((var(--depth) - 2) * .75rem);margin-block-end:.35rem}.toc-link[data-astro-cid-xvrfupwn]{display:block;font-size:.8125rem;line-height:1.4;color:var(--color-main);text-decoration:none;opacity:.85;transition:opacity .2s ease,color .2s ease;border-block-end:1px solid transparent}.toc-link[data-astro-cid-xvrfupwn]:hover{opacity:1;color:var(--color-theme)}.toc-link[data-astro-cid-xvrfupwn]:active,.toc-link[data-astro-cid-xvrfupwn][aria-current=true]{color:var(--color-theme);font-weight:600;opacity:1}@media(max-width:960px){.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:static;max-height:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:static;transform:none;top:auto;left:auto;width:auto;max-width:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.DKZjF0rP.css"></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <div class="site-brand" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <p class="site-slogan" data-astro-cid-3ef6ksr2>质量分析师，而非质量保证师。</p> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/wiki/" class="active" data-astro-cid-3ef6ksr2> 百科 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 支持 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <div class="locale-dropdown compact" data-locale-dropdown data-astro-cid-opxux4jt> <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger data-astro-cid-opxux4jt> <span class="material-icons-sharp icon-lang" aria-hidden="true" data-astro-cid-opxux4jt>translate</span> <span class="locale-flag" data-astro-cid-opxux4jt>🇨🇳</span>  </button> <div class="locale-panel" hidden data-locale-panel data-astro-cid-opxux4jt> <ul data-astro-cid-opxux4jt> <li data-astro-cid-opxux4jt> <a href="/en/wiki/webdriver/" data-lang="en" data-locale-option data-astro-cid-opxux4jt> English </a> </li><li data-astro-cid-opxux4jt> <a href="/zh-cn/wiki/webdriver/" data-lang="zh-cn" data-locale-option data-astro-cid-opxux4jt> 简体中文 </a> </li> </ul> </div> </div> <script type="module">function r(e){const n=e.querySelector("[data-locale-trigger]"),a=e.querySelector("[data-locale-panel]");if(!n||!a)return;const c=()=>{a.hidden=!0,n.setAttribute("aria-expanded","false")},d=()=>{a.hidden=!1,n.setAttribute("aria-expanded","true")},o=()=>a.hidden?d():c();n.addEventListener("click",t=>{t.stopPropagation(),o()}),e.querySelectorAll("[data-locale-option]").forEach(t=>{t.addEventListener("click",()=>{const l=t.dataset.lang;l&&localStorage.setItem("selectedLang",l)})}),document.addEventListener("click",t=>{a.hidden||e.contains(t.target)||c()})}document.querySelectorAll("[data-locale-dropdown]").forEach(e=>r(e));</script>  </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <button type="button" class="btn-icon" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="btn-icon-kbd" data-astro-cid-3ef6ksr2>⌘K</span> </button> </li> </ul> </nav> </header>  <main id="main" class="l-main l-content l-content--with-sidebar"> <nav class="breadcrumb" aria-label="Breadcrumb" data-astro-cid-qaanghzh><ol class="breadcrumb-list" data-astro-cid-qaanghzh><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/" class="breadcrumb-link" data-astro-cid-qaanghzh><span class="breadcrumb-icon" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-astro-cid-qaanghzh></path><polyline points="9 22 9 12 15 12 15 22" data-astro-cid-qaanghzh></polyline></svg></span>首页</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/wiki/" class="breadcrumb-link" data-astro-cid-qaanghzh>测试百科</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><span class="breadcrumb-current" aria-current="page" data-astro-cid-qaanghzh><span class="breadcrumb-icon breadcrumb-icon--current" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-astro-cid-qaanghzh></path><polyline points="14 2 14 8 20 8" data-astro-cid-qaanghzh></polyline><line x1="16" y1="13" x2="8" y2="13" data-astro-cid-qaanghzh></line><line x1="16" y1="17" x2="8" y2="17" data-astro-cid-qaanghzh></line><polyline points="10 9 9 9 8 9" data-astro-cid-qaanghzh></polyline></svg></span>Webdriver</span></li></ol></nav><div class="l-docs" data-has-toc="true" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar-wrap" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar" aria-label="Documentation navigation" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-inner" data-astro-cid-qrwn6rcr>  <button type="button" class="docs-sidebar-toggle" aria-expanded="false" aria-controls="docs-sidebar-nav" id="docs-sidebar-toggle" data-astro-cid-qrwn6rcr> <span class="docs-sidebar-toggle-text" data-astro-cid-qrwn6rcr>本页导航</span> <span class="docs-sidebar-toggle-icon" aria-hidden="true" data-astro-cid-qrwn6rcr> <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-qrwn6rcr><polyline points="6 9 12 15 18 9" data-astro-cid-qrwn6rcr></polyline></svg> </span> </button> <nav class="docs-sidebar-nav" id="docs-sidebar-nav" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr>  <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/" class="docs-sidebar-link" data-search="概述 " data-astro-cid-qrwn6rcr> 概述 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>A</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/A-B-Testing/" class="docs-sidebar-link" data-search="a/b 测试 a-b-testing" data-astro-cid-qrwn6rcr> A/B 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-test-driven-development/" class="docs-sidebar-link" data-search="验收测试驱动开发 acceptance-test-driven-development" data-astro-cid-qrwn6rcr> 验收测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-testing/" class="docs-sidebar-link" data-search="验收测试 acceptance-testing" data-astro-cid-qrwn6rcr> 验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/accessibility-testing/" class="docs-sidebar-link" data-search="无障碍测试 accessibility-testing" data-astro-cid-qrwn6rcr> 无障碍测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/actual-result/" class="docs-sidebar-link" data-search="实际结果 actual-result" data-astro-cid-qrwn6rcr> 实际结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ad-hoc-testing/" class="docs-sidebar-link" data-search="随机测试 ad-hoc-testing" data-astro-cid-qrwn6rcr> 随机测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-development/" class="docs-sidebar-link" data-search="敏捷开发 agile-development" data-astro-cid-qrwn6rcr> 敏捷开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-testing/" class="docs-sidebar-link" data-search="敏捷测试 agile-testing" data-astro-cid-qrwn6rcr> 敏捷测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/alpha-testing/" class="docs-sidebar-link" data-search="alpha 测试 alpha-testing" data-astro-cid-qrwn6rcr> Alpha 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/analytical-test-strategy/" class="docs-sidebar-link" data-search="分析式测试策略 analytical-test-strategy" data-astro-cid-qrwn6rcr> 分析式测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api/" class="docs-sidebar-link" data-search="应用程序编程接口 api" data-astro-cid-qrwn6rcr> 应用程序编程接口 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api-testing/" class="docs-sidebar-link" data-search="api 测试 api-testing" data-astro-cid-qrwn6rcr> API 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/astqb/" class="docs-sidebar-link" data-search="美国软件测试认证委员会 astqb" data-astro-cid-qrwn6rcr> 美国软件测试认证委员会 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/automated-testing/" class="docs-sidebar-link" data-search="自动化测试 automated-testing" data-astro-cid-qrwn6rcr> 自动化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/availability-testing/" class="docs-sidebar-link" data-search="可用性测试 availability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>B</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/back-to-back-testing/" class="docs-sidebar-link" data-search="背靠背测试 back-to-back-testing" data-astro-cid-qrwn6rcr> 背靠背测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/backward-compatibility/" class="docs-sidebar-link" data-search="向后兼容性 backward-compatibility" data-astro-cid-qrwn6rcr> 向后兼容性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/baseline-testing/" class="docs-sidebar-link" data-search="基准测试 baseline-testing" data-astro-cid-qrwn6rcr> 基准测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bdd/" class="docs-sidebar-link" data-search="行为驱动开发 bdd" data-astro-cid-qrwn6rcr> 行为驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/beta-testing/" class="docs-sidebar-link" data-search="beta 测试 beta-testing" data-astro-cid-qrwn6rcr> Beta 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/big-bang-testing/" class="docs-sidebar-link" data-search="大爆炸测试 big-bang-testing" data-astro-cid-qrwn6rcr> 大爆炸测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/black-box-testing/" class="docs-sidebar-link" data-search="黑盒测试 black-box-testing" data-astro-cid-qrwn6rcr> 黑盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bottom-up-integration/" class="docs-sidebar-link" data-search="自底向上集成 bottom-up-integration" data-astro-cid-qrwn6rcr> 自底向上集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/boundary-testing/" class="docs-sidebar-link" data-search="边界测试 boundary-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/browserstack/" class="docs-sidebar-link" data-search="browserstack browserstack" data-astro-cid-qrwn6rcr> Browserstack </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bs-7925-2/" class="docs-sidebar-link" data-search="bs 7925-2 bs-7925-2" data-astro-cid-qrwn6rcr> Bs 7925-2 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bug/" class="docs-sidebar-link" data-search="缺陷/漏洞 bug" data-astro-cid-qrwn6rcr> 缺陷/漏洞 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/build-verification-testing/" class="docs-sidebar-link" data-search="构建验证测试 build-verification-testing" data-astro-cid-qrwn6rcr> 构建验证测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>C</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/canary-testing/" class="docs-sidebar-link" data-search="金丝雀测试 canary-testing" data-astro-cid-qrwn6rcr> 金丝雀测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chai-js/" class="docs-sidebar-link" data-search="chai js chai-js" data-astro-cid-qrwn6rcr> Chai Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-control/" class="docs-sidebar-link" data-search="变更控制 change-control" data-astro-cid-qrwn6rcr> 变更控制 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-requests/" class="docs-sidebar-link" data-search="变更请求 change-requests" data-astro-cid-qrwn6rcr> 变更请求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chaos-engineering/" class="docs-sidebar-link" data-search="混沌工程 chaos-engineering" data-astro-cid-qrwn6rcr> 混沌工程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/clean-slate/" class="docs-sidebar-link" data-search="干净状态 clean-slate" data-astro-cid-qrwn6rcr> 干净状态 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cmmi/" class="docs-sidebar-link" data-search="能力成熟度模型集成 cmmi" data-astro-cid-qrwn6rcr> 能力成熟度模型集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/code-coverage/" class="docs-sidebar-link" data-search="代码覆盖率 code-coverage" data-astro-cid-qrwn6rcr> 代码覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/compatibility-testing/" class="docs-sidebar-link" data-search="兼容性测试 compatibility-testing" data-astro-cid-qrwn6rcr> 兼容性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/concurrency-testing/" class="docs-sidebar-link" data-search="并发测试 concurrency-testing" data-astro-cid-qrwn6rcr> 并发测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/control-flow-testing/" class="docs-sidebar-link" data-search="控制流测试 control-flow-testing" data-astro-cid-qrwn6rcr> 控制流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cross-browser-testing/" class="docs-sidebar-link" data-search="跨浏览器测试 cross-browser-testing" data-astro-cid-qrwn6rcr> 跨浏览器测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cypress/" class="docs-sidebar-link" data-search="cypress cypress" data-astro-cid-qrwn6rcr> Cypress </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>D</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/data-flow-testing/" class="docs-sidebar-link" data-search="数据流测试 data-flow-testing" data-astro-cid-qrwn6rcr> 数据流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/database/" class="docs-sidebar-link" data-search="数据库 database" data-astro-cid-qrwn6rcr> 数据库 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/decision-table-testing/" class="docs-sidebar-link" data-search="判定表测试 decision-table-testing" data-astro-cid-qrwn6rcr> 判定表测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/defect-management/" class="docs-sidebar-link" data-search="缺陷管理 defect-management" data-astro-cid-qrwn6rcr> 缺陷管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dependency-testing/" class="docs-sidebar-link" data-search="依赖测试 dependency-testing" data-astro-cid-qrwn6rcr> 依赖测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/documentation-testing/" class="docs-sidebar-link" data-search="文档测试 documentation-testing" data-astro-cid-qrwn6rcr> 文档测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dynamic-testing/" class="docs-sidebar-link" data-search="动态测试 dynamic-testing" data-astro-cid-qrwn6rcr> 动态测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>E</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/edge-testing/" class="docs-sidebar-link" data-search="边界测试 edge-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/end-to-end-testing/" class="docs-sidebar-link" data-search="端到端测试 end-to-end-testing" data-astro-cid-qrwn6rcr> 端到端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/endurance-testing/" class="docs-sidebar-link" data-search="耐久性测试 endurance-testing" data-astro-cid-qrwn6rcr> 耐久性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/entry-criteria/" class="docs-sidebar-link" data-search="准入条件的问题？ entry-criteria" data-astro-cid-qrwn6rcr> 准入条件的问题？ </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/equivalence-partitioning/" class="docs-sidebar-link" data-search="等价类划分 equivalence-partitioning" data-astro-cid-qrwn6rcr> 等价类划分 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/error-guessing/" class="docs-sidebar-link" data-search="错误猜测 error-guessing" data-astro-cid-qrwn6rcr> 错误猜测 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/expected-result/" class="docs-sidebar-link" data-search="预期结果 expected-result" data-astro-cid-qrwn6rcr> 预期结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/exploratory-testing/" class="docs-sidebar-link" data-search="探索性测试 exploratory-testing" data-astro-cid-qrwn6rcr> 探索性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/extreme-programming/" class="docs-sidebar-link" data-search="极限编程 extreme-programming" data-astro-cid-qrwn6rcr> 极限编程 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>F</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/failover-testing/" class="docs-sidebar-link" data-search="故障转移测试 failover-testing" data-astro-cid-qrwn6rcr> 故障转移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-negative/" class="docs-sidebar-link" data-search="漏报 false-negative" data-astro-cid-qrwn6rcr> 漏报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-positive/" class="docs-sidebar-link" data-search="误报 false-positive" data-astro-cid-qrwn6rcr> 误报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fat/" class="docs-sidebar-link" data-search="工厂验收测试 fat" data-astro-cid-qrwn6rcr> 工厂验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fault-injection-testing/" class="docs-sidebar-link" data-search="故障注入测试 fault-injection-testing" data-astro-cid-qrwn6rcr> 故障注入测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/flaky-test/" class="docs-sidebar-link" data-search="不稳定性测试 flaky-test" data-astro-cid-qrwn6rcr> 不稳定性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/front-end-testing/" class="docs-sidebar-link" data-search="前端测试 front-end-testing" data-astro-cid-qrwn6rcr> 前端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-integration/" class="docs-sidebar-link" data-search="功能集成 functional-integration" data-astro-cid-qrwn6rcr> 功能集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-requirements/" class="docs-sidebar-link" data-search="功能需求 functional-requirements" data-astro-cid-qrwn6rcr> 功能需求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-testing/" class="docs-sidebar-link" data-search="功能测试 functional-testing" data-astro-cid-qrwn6rcr> 功能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/future-proof-testing/" class="docs-sidebar-link" data-search="前瞻性测试 future-proof-testing" data-astro-cid-qrwn6rcr> 前瞻性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fuzz-testing/" class="docs-sidebar-link" data-search="模糊测试 fuzz-testing" data-astro-cid-qrwn6rcr> 模糊测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>G</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gherkin/" class="docs-sidebar-link" data-search="gherkin gherkin" data-astro-cid-qrwn6rcr> Gherkin </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/glass-box-testing/" class="docs-sidebar-link" data-search="玻璃盒测试 glass-box-testing" data-astro-cid-qrwn6rcr> 玻璃盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gorilla-testing/" class="docs-sidebar-link" data-search="大猩猩测试 gorilla-testing" data-astro-cid-qrwn6rcr> 大猩猩测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/grey-box-testing/" class="docs-sidebar-link" data-search="灰盒测试 grey-box-testing" data-astro-cid-qrwn6rcr> 灰盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>H</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/happy-path/" class="docs-sidebar-link" data-search="快乐路径 happy-path" data-astro-cid-qrwn6rcr> 快乐路径 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/headless-testing/" class="docs-sidebar-link" data-search="无头测试 headless-testing" data-astro-cid-qrwn6rcr> 无头测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/heuristic-testing/" class="docs-sidebar-link" data-search="启发式测试 heuristic-testing" data-astro-cid-qrwn6rcr> 启发式测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>I</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ieee-829/" class="docs-sidebar-link" data-search="ieee 829 ieee-829" data-astro-cid-qrwn6rcr> IEEE 829 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/impact-analysis/" class="docs-sidebar-link" data-search="影响分析 impact-analysis" data-astro-cid-qrwn6rcr> 影响分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-management/" class="docs-sidebar-link" data-search="事件管理 incident-management" data-astro-cid-qrwn6rcr> 事件管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-report/" class="docs-sidebar-link" data-search="事件报告 incident-report" data-astro-cid-qrwn6rcr> 事件报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incremental-testing/" class="docs-sidebar-link" data-search="渐进式测试 incremental-testing" data-astro-cid-qrwn6rcr> 渐进式测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/independent-verification-and-validation/" class="docs-sidebar-link" data-search="独立确认与验证 independent-verification-and-validation" data-astro-cid-qrwn6rcr> 独立确认与验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/input-validation-testing/" class="docs-sidebar-link" data-search="输入验证测试 input-validation-testing" data-astro-cid-qrwn6rcr> 输入验证测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/inspection/" class="docs-sidebar-link" data-search="检查的 inspection" data-astro-cid-qrwn6rcr> 检查的 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/integration-testing/" class="docs-sidebar-link" data-search="集成测试 integration-testing" data-astro-cid-qrwn6rcr> 集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interface-testing/" class="docs-sidebar-link" data-search="接口测试 interface-testing" data-astro-cid-qrwn6rcr> 接口测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/internationalization-testing/" class="docs-sidebar-link" data-search="国际化测试 internationalization-testing" data-astro-cid-qrwn6rcr> 国际化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interoperability-testing/" class="docs-sidebar-link" data-search="互操作性测试 interoperability-testing" data-astro-cid-qrwn6rcr> 互操作性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/istqb/" class="docs-sidebar-link" data-search="istqb istqb" data-astro-cid-qrwn6rcr> ISTQB </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/iteration/" class="docs-sidebar-link" data-search="迭代 iteration" data-astro-cid-qrwn6rcr> 迭代 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>J</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jasmine/" class="docs-sidebar-link" data-search="jasmine jasmine" data-astro-cid-qrwn6rcr> Jasmine </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jest/" class="docs-sidebar-link" data-search="jest jest" data-astro-cid-qrwn6rcr> Jest </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jira/" class="docs-sidebar-link" data-search="jira jira" data-astro-cid-qrwn6rcr> Jira </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jmeter/" class="docs-sidebar-link" data-search="jmeter jmeter" data-astro-cid-qrwn6rcr> Jmeter </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/junit-testing/" class="docs-sidebar-link" data-search="junit 测试 junit-testing" data-astro-cid-qrwn6rcr> JUnit 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>K</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/keyword-driven-testing/" class="docs-sidebar-link" data-search="关键字驱动测试 keyword-driven-testing" data-astro-cid-qrwn6rcr> 关键字驱动测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>L</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/lighthouse/" class="docs-sidebar-link" data-search="lighthouse lighthouse" data-astro-cid-qrwn6rcr> Lighthouse </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/load-testing/" class="docs-sidebar-link" data-search="负载测试 load-testing" data-astro-cid-qrwn6rcr> 负载测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/localization-testing/" class="docs-sidebar-link" data-search="本地化测试 localization-testing" data-astro-cid-qrwn6rcr> 本地化测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>M</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintainability/" class="docs-sidebar-link" data-search="可维护性 maintainability" data-astro-cid-qrwn6rcr> 可维护性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintenance-testing/" class="docs-sidebar-link" data-search="维护测试 maintenance-testing" data-astro-cid-qrwn6rcr> 维护测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/manual-testing/" class="docs-sidebar-link" data-search="手动测试 manual-testing" data-astro-cid-qrwn6rcr> 手动测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/microservices-testing/" class="docs-sidebar-link" data-search="微服务测试 microservices-testing" data-astro-cid-qrwn6rcr> 微服务测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-app-testing/" class="docs-sidebar-link" data-search="移动应用测试 mobile-app-testing" data-astro-cid-qrwn6rcr> 移动应用测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-device-testing/" class="docs-sidebar-link" data-search="移动设备测试 mobile-device-testing" data-astro-cid-qrwn6rcr> 移动设备测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mock-testing/" class="docs-sidebar-link" data-search="模拟测试 mock-testing" data-astro-cid-qrwn6rcr> 模拟测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/monkey-testing/" class="docs-sidebar-link" data-search="猴子测试 monkey-testing" data-astro-cid-qrwn6rcr> 猴子测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mtbf/" class="docs-sidebar-link" data-search="平均故障间隔时间 mtbf" data-astro-cid-qrwn6rcr> 平均故障间隔时间 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mutation-testing/" class="docs-sidebar-link" data-search="变异测试 mutation-testing" data-astro-cid-qrwn6rcr> 变异测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>N</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/negative-testing/" class="docs-sidebar-link" data-search="逆向测试/负面测试 negative-testing" data-astro-cid-qrwn6rcr> 逆向测试/负面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/node-js/" class="docs-sidebar-link" data-search="node js node-js" data-astro-cid-qrwn6rcr> Node Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/non-functional-testing/" class="docs-sidebar-link" data-search="非功能性测试 non-functional-testing" data-astro-cid-qrwn6rcr> 非功能性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/nunit/" class="docs-sidebar-link" data-search="nunit nunit" data-astro-cid-qrwn6rcr> Nunit </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>O</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/operational-testing/" class="docs-sidebar-link" data-search="运维测试 operational-testing" data-astro-cid-qrwn6rcr> 运维测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/orthogonal-array-testing/" class="docs-sidebar-link" data-search="正交数组测试 orthogonal-array-testing" data-astro-cid-qrwn6rcr> 正交数组测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ott-testing/" class="docs-sidebar-link" data-search="ott 测试 ott-testing" data-astro-cid-qrwn6rcr> OTT 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>P</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/page-object-model/" class="docs-sidebar-link" data-search="页面对象模型 page-object-model" data-astro-cid-qrwn6rcr> 页面对象模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/pair-testing/" class="docs-sidebar-link" data-search="结对测试 pair-testing" data-astro-cid-qrwn6rcr> 结对测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/parameterized-testing/" class="docs-sidebar-link" data-search="参数化测试 parameterized-testing" data-astro-cid-qrwn6rcr> 参数化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/path-testing/" class="docs-sidebar-link" data-search="路径测试 path-testing" data-astro-cid-qrwn6rcr> 路径测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/peer-testing/" class="docs-sidebar-link" data-search="同行评审测试 peer-testing" data-astro-cid-qrwn6rcr> 同行评审测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/penetration-testing/" class="docs-sidebar-link" data-search="渗透测试 penetration-testing" data-astro-cid-qrwn6rcr> 渗透测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-indicator/" class="docs-sidebar-link" data-search="性能指标 performance-indicator" data-astro-cid-qrwn6rcr> 性能指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-testing/" class="docs-sidebar-link" data-search="性能测试 performance-testing" data-astro-cid-qrwn6rcr> 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postcondition/" class="docs-sidebar-link" data-search="后置条件 postcondition" data-astro-cid-qrwn6rcr> 后置条件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postman/" class="docs-sidebar-link" data-search="postman postman" data-astro-cid-qrwn6rcr> Postman </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/priority/" class="docs-sidebar-link" data-search="优先级 priority" data-astro-cid-qrwn6rcr> 优先级 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Q</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/qa-metrics/" class="docs-sidebar-link" data-search="qa 指标 qa-metrics" data-astro-cid-qrwn6rcr> QA 指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-assurance/" class="docs-sidebar-link" data-search="质量保证 quality-assurance" data-astro-cid-qrwn6rcr> 质量保证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-management/" class="docs-sidebar-link" data-search="质量管理 quality-management" data-astro-cid-qrwn6rcr> 质量管理 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>R</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/regression-testing/" class="docs-sidebar-link" data-search="回归测试 regression-testing" data-astro-cid-qrwn6rcr> 回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/release-testing/" class="docs-sidebar-link" data-search="发布测试 release-testing" data-astro-cid-qrwn6rcr> 发布测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reliability-testing/" class="docs-sidebar-link" data-search="可靠性测试 reliability-testing" data-astro-cid-qrwn6rcr> 可靠性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/requirements-management-tool/" class="docs-sidebar-link" data-search="需求管理工具 requirements-management-tool" data-astro-cid-qrwn6rcr> 需求管理工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/responsive-design/" class="docs-sidebar-link" data-search="响应式设计 responsive-design" data-astro-cid-qrwn6rcr> 响应式设计 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/retesting/" class="docs-sidebar-link" data-search="再次测试 retesting" data-astro-cid-qrwn6rcr> 再次测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reviewer/" class="docs-sidebar-link" data-search="评审人员 reviewer" data-astro-cid-qrwn6rcr> 评审人员 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/risk-based-testing/" class="docs-sidebar-link" data-search="基于风险的测试 risk-based-testing" data-astro-cid-qrwn6rcr> 基于风险的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/robustness-testing/" class="docs-sidebar-link" data-search="鲁棒性测试 robustness-testing" data-astro-cid-qrwn6rcr> 鲁棒性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/rup/" class="docs-sidebar-link" data-search="rup rup" data-astro-cid-qrwn6rcr> Rup </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>S</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sanity-testing/" class="docs-sidebar-link" data-search="冒烟测试/健全性测试 sanity-testing" data-astro-cid-qrwn6rcr> 冒烟测试/健全性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scalability-testing/" class="docs-sidebar-link" data-search="可扩展性测试 scalability-testing" data-astro-cid-qrwn6rcr> 可扩展性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/screenshot-testing/" class="docs-sidebar-link" data-search="截图测试 screenshot-testing" data-astro-cid-qrwn6rcr> 截图测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scrum/" class="docs-sidebar-link" data-search="scrum scrum" data-astro-cid-qrwn6rcr> Scrum </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/security-testing/" class="docs-sidebar-link" data-search="安全测试 security-testing" data-astro-cid-qrwn6rcr> 安全测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium/" class="docs-sidebar-link" data-search="selenium selenium" data-astro-cid-qrwn6rcr> Selenium </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium-ide/" class="docs-sidebar-link" data-search="selenium ide selenium-ide" data-astro-cid-qrwn6rcr> Selenium Ide </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/session-based-testing/" class="docs-sidebar-link" data-search="基于会话的测试 session-based-testing" data-astro-cid-qrwn6rcr> 基于会话的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/setup/" class="docs-sidebar-link" data-search="环境搭建 setup" data-astro-cid-qrwn6rcr> 环境搭建 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/severity/" class="docs-sidebar-link" data-search="严重程度 severity" data-astro-cid-qrwn6rcr> 严重程度 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/shift-left-testing/" class="docs-sidebar-link" data-search="左移测试 shift-left-testing" data-astro-cid-qrwn6rcr> 左移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-development-life-cycle/" class="docs-sidebar-link" data-search="软件开发生命周期 software-development-life-cycle" data-astro-cid-qrwn6rcr> 软件开发生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality/" class="docs-sidebar-link" data-search="软件质量 software-quality" data-astro-cid-qrwn6rcr> 软件质量 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality-management/" class="docs-sidebar-link" data-search="软件质量管理 software-quality-management" data-astro-cid-qrwn6rcr> 软件质量管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-risk-analysis/" class="docs-sidebar-link" data-search="软件风险分析 software-risk-analysis" data-astro-cid-qrwn6rcr> 软件风险分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-testing/" class="docs-sidebar-link" data-search="软件测试 software-testing" data-astro-cid-qrwn6rcr> 软件测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sql/" class="docs-sidebar-link" data-search="sql sql" data-astro-cid-qrwn6rcr> Sql </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/state-transition-testing/" class="docs-sidebar-link" data-search="状态转换测试 state-transition-testing" data-astro-cid-qrwn6rcr> 状态转换测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/static-testing/" class="docs-sidebar-link" data-search="静态测试 static-testing" data-astro-cid-qrwn6rcr> 静态测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stlc/" class="docs-sidebar-link" data-search="软件测试生命周期 stlc" data-astro-cid-qrwn6rcr> 软件测试生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stress-testing/" class="docs-sidebar-link" data-search="压力测试 stress-testing" data-astro-cid-qrwn6rcr> 压力测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/structural-testing/" class="docs-sidebar-link" data-search="结构测试 structural-testing" data-astro-cid-qrwn6rcr> 结构测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/swagger/" class="docs-sidebar-link" data-search="swagger swagger" data-astro-cid-qrwn6rcr> Swagger </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-integration-testing/" class="docs-sidebar-link" data-search="系统集成测试 system-integration-testing" data-astro-cid-qrwn6rcr> 系统集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-testing/" class="docs-sidebar-link" data-search="系统测试 system-testing" data-astro-cid-qrwn6rcr> 系统测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>T</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-approach/" class="docs-sidebar-link" data-search="测试方法 test-approach" data-astro-cid-qrwn6rcr> 测试方法 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-automation/" class="docs-sidebar-link" data-search="测试自动化 test-automation" data-astro-cid-qrwn6rcr> 测试自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case/" class="docs-sidebar-link" data-search="测试用例 test-case" data-astro-cid-qrwn6rcr> 测试用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case-management/" class="docs-sidebar-link" data-search="测试用例管理 test-case-management" data-astro-cid-qrwn6rcr> 测试用例管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-class/" class="docs-sidebar-link" data-search="测试类 test-class" data-astro-cid-qrwn6rcr> 测试类 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-comparison/" class="docs-sidebar-link" data-search="测试比较 test-comparison" data-astro-cid-qrwn6rcr> 测试比较 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-coverage/" class="docs-sidebar-link" data-search="测试覆盖率 test-coverage" data-astro-cid-qrwn6rcr> 测试覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-data/" class="docs-sidebar-link" data-search="测试数据 test-data" data-astro-cid-qrwn6rcr> 测试数据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-specification/" class="docs-sidebar-link" data-search="测试设计规范 test-design-specification" data-astro-cid-qrwn6rcr> 测试设计规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-tool/" class="docs-sidebar-link" data-search="测试设计工具 test-design-tool" data-astro-cid-qrwn6rcr> 测试设计工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-driven-development/" class="docs-sidebar-link" data-search="测试驱动开发 test-driven-development" data-astro-cid-qrwn6rcr> 测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-environment/" class="docs-sidebar-link" data-search="测试环境 test-environment" data-astro-cid-qrwn6rcr> 测试环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution/" class="docs-sidebar-link" data-search="测试执行 test-execution" data-astro-cid-qrwn6rcr> 测试执行 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-automation/" class="docs-sidebar-link" data-search="测试执行自动化 test-execution-automation" data-astro-cid-qrwn6rcr> 测试执行自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-schedule/" class="docs-sidebar-link" data-search="测试执行进度表 test-execution-schedule" data-astro-cid-qrwn6rcr> 测试执行进度表 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-technique/" class="docs-sidebar-link" data-search="测试执行技术 test-execution-technique" data-astro-cid-qrwn6rcr> 测试执行技术 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-tool/" class="docs-sidebar-link" data-search="测试执行工具 test-execution-tool" data-astro-cid-qrwn6rcr> 测试执行工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-harness/" class="docs-sidebar-link" data-search="测试桩/测试执行环境 test-harness" data-astro-cid-qrwn6rcr> 测试桩/测试执行环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-infrastructure/" class="docs-sidebar-link" data-search="测试基础设施 test-infrastructure" data-astro-cid-qrwn6rcr> 测试基础设施 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-log/" class="docs-sidebar-link" data-search="测试日志 test-log" data-astro-cid-qrwn6rcr> 测试日志 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-management/" class="docs-sidebar-link" data-search="测试管理 test-management" data-astro-cid-qrwn6rcr> 测试管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-observability/" class="docs-sidebar-link" data-search="测试可观测性 test-observability" data-astro-cid-qrwn6rcr> 测试可观测性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-oracles/" class="docs-sidebar-link" data-search="测试判定依据 test-oracles" data-astro-cid-qrwn6rcr> 测试判定依据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-plan/" class="docs-sidebar-link" data-search="测试计划 test-plan" data-astro-cid-qrwn6rcr> 测试计划 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-policy/" class="docs-sidebar-link" data-search="测试策略说明 test-policy" data-astro-cid-qrwn6rcr> 测试策略说明 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process/" class="docs-sidebar-link" data-search="测试流程 test-process" data-astro-cid-qrwn6rcr> 测试流程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process-improvement/" class="docs-sidebar-link" data-search="测试流程改进 test-process-improvement" data-astro-cid-qrwn6rcr> 测试流程改进 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-pyramid/" class="docs-sidebar-link" data-search="测试金字塔 test-pyramid" data-astro-cid-qrwn6rcr> 测试金字塔 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-report/" class="docs-sidebar-link" data-search="测试报告 test-report" data-astro-cid-qrwn6rcr> 测试报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-runner/" class="docs-sidebar-link" data-search="测试执行器 test-runner" data-astro-cid-qrwn6rcr> 测试执行器 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-scenario/" class="docs-sidebar-link" data-search="测试场景 test-scenario" data-astro-cid-qrwn6rcr> 测试场景 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-script/" class="docs-sidebar-link" data-search="测试脚本 test-script" data-astro-cid-qrwn6rcr> 测试脚本 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-specification/" class="docs-sidebar-link" data-search="测试规范 test-specification" data-astro-cid-qrwn6rcr> 测试规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-strategy/" class="docs-sidebar-link" data-search="测试策略 test-strategy" data-astro-cid-qrwn6rcr> 测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-stub/" class="docs-sidebar-link" data-search="测试桩 test-stub" data-astro-cid-qrwn6rcr> 测试桩 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-suite/" class="docs-sidebar-link" data-search="测试套件 test-suite" data-astro-cid-qrwn6rcr> 测试套件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-tool/" class="docs-sidebar-link" data-search="测试工具 test-tool" data-astro-cid-qrwn6rcr> 测试工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/timebox-testing/" class="docs-sidebar-link" data-search="时间盒测试 timebox-testing" data-astro-cid-qrwn6rcr> 时间盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/top-down-integration/" class="docs-sidebar-link" data-search="自顶向下集成 top-down-integration" data-astro-cid-qrwn6rcr> 自顶向下集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/traceability-matrix/" class="docs-sidebar-link" data-search="需求跟踪矩阵 traceability-matrix" data-astro-cid-qrwn6rcr> 需求跟踪矩阵 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>U</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ui-testing/" class="docs-sidebar-link" data-search="用户界面测试 ui-testing" data-astro-cid-qrwn6rcr> 用户界面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-test-framework/" class="docs-sidebar-link" data-search="单元测试框架 unit-test-framework" data-astro-cid-qrwn6rcr> 单元测试框架 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-testing/" class="docs-sidebar-link" data-search="单元测试 unit-testing" data-astro-cid-qrwn6rcr> 单元测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/usability-testing/" class="docs-sidebar-link" data-search="可用性测试 usability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case/" class="docs-sidebar-link" data-search="用例 use-case" data-astro-cid-qrwn6rcr> 用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case-testing/" class="docs-sidebar-link" data-search="用例测试 use-case-testing" data-astro-cid-qrwn6rcr> 用例测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/user-acceptance-testing/" class="docs-sidebar-link" data-search="用户验收测试 user-acceptance-testing" data-astro-cid-qrwn6rcr> 用户验收测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>V</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/v-model/" class="docs-sidebar-link" data-search="v 模型 v-model" data-astro-cid-qrwn6rcr> V 模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/validation-testing/" class="docs-sidebar-link" data-search="确认测试 validation-testing" data-astro-cid-qrwn6rcr> 确认测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/verification/" class="docs-sidebar-link" data-search="验证 verification" data-astro-cid-qrwn6rcr> 验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/visual-regression-testing/" class="docs-sidebar-link" data-search="视觉回归测试 visual-regression-testing" data-astro-cid-qrwn6rcr> 视觉回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/volume-testing/" class="docs-sidebar-link" data-search="容量测试 volume-testing" data-astro-cid-qrwn6rcr> 容量测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>W</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-automation/" class="docs-sidebar-link" data-search="web 自动化 web-automation" data-astro-cid-qrwn6rcr> Web 自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-performance-testing/" class="docs-sidebar-link" data-search="web 性能测试 web-performance-testing" data-astro-cid-qrwn6rcr> Web 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-test-automation-tools/" class="docs-sidebar-link" data-search="web 测试自动化工具 web-test-automation-tools" data-astro-cid-qrwn6rcr> Web 测试自动化工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-testing/" class="docs-sidebar-link" data-search="web 测试 web-testing" data-astro-cid-qrwn6rcr> Web 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/webdriver/" class="docs-sidebar-link docs-sidebar-link--active" aria-current="page" data-search="webdriver webdriver" data-astro-cid-qrwn6rcr> Webdriver </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/white-box-testing/" class="docs-sidebar-link" data-search="白盒测试 white-box-testing" data-astro-cid-qrwn6rcr> 白盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>X</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/xpath-query/" class="docs-sidebar-link" data-search="xpath query xpath-query" data-astro-cid-qrwn6rcr> Xpath Query </a> </li> </ul> </div> </nav> </div> </aside>  <script type="module">function a(){const t=document.getElementById("docs-sidebar-toggle");if(t){const e=t.closest(".docs-sidebar-inner");e&&t.addEventListener("click",()=>{e.classList.toggle("is-open"),t.setAttribute("aria-expanded",e.classList.contains("is-open")?"true":"false")})}const s=document.getElementById("docs-sidebar-search-input");s&&s.addEventListener("input",()=>{const e=s.value.trim().toLowerCase();document.querySelectorAll(".docs-sidebar-section[data-section]").forEach(n=>{const d=n.querySelectorAll(".docs-sidebar-link[data-search]");let i=0;d.forEach(o=>{const c=!e||(o.getAttribute("data-search")??"").includes(e);o.style.display=c?"":"none",c&&i++}),n.style.display=i>0||!e?"":"none"})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",a):a();</script> </aside> <div class="docs-content" data-astro-cid-ac2mn7rr>  <article class="wiki-article" data-astro-cid-sqfwpogz> <!-- markdownlint-disable MD025 -->
+<h1 id="webdriver--webdriver">Webdriver ｜ Webdriver</h1>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%B8%8E%E9%87%8D%E8%A6%81%E6%80%A7">基础与重要性</a></li>
+<li><a href="#webdriver-%E6%93%8D%E4%BD%9C">WebDriver 操作</a></li>
+<li><a href="#%E5%AE%9A%E4%BD%8D%E5%99%A8%E5%92%8C-web-%E5%85%83%E7%B4%A0">定位器和 Web 元素</a></li>
+<li><a href="#%E7%AD%89%E5%BE%85%E5%91%BD%E4%BB%A4">等待命令</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7-webdriver-%E6%A6%82%E5%BF%B5">高级 WebDriver 概念</a></li>
+</ul>
+<h3 id="相关术语">相关术语：</h3>
+<ul>
+<li><a href="/zh-cn/wiki/selenium/">Selenium</a></li>
+</ul>
+<h3 id="另请参阅">另请参阅：</h3>
+<ul>
+<li><a href="https://www.selenium.dev/documentation/webdriver/">官方网站</a></li>
+</ul>
+<h2 id="关于-webdriver-的问题">关于 WebDriver 的问题？</h2>
+<h3 id="基础与重要性">基础与重要性</h3>
+<ul>
+<li>
+<p><strong>Selenium 中的 WebDriver 是什么？</strong>
+<strong>Selenium</strong> 中的 <strong>WebDriver</strong> 是一个 <strong>API</strong>，它提供了一个编程接口来控制和操作 Web 浏览器。它允许 <strong>测试脚本</strong> 直接与浏览器通信，从而实现用户操作（如点击、输入和浏览网页）的自动化。<strong>WebDriver</strong> 旨在提供比 <strong>Selenium</strong> RC 更简单、更简洁的编程接口，因为它直接与浏览器交互，无需中间服务器。
+要使用 <strong>WebDriver</strong>，您需要为您要自动化的浏览器实例化特定的驱动程序对象。例如，要自动化 Chrome，您将使用 <code>ChromeDriver</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ChromeDriver</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>WebDriver</strong> 提供模拟浏览器操作的方法，例如 <code>get()</code> 导航到 URL，<code>click()</code> 点击元素，以及 <code>sendKeys()</code> 输入文本。它还提供了处理复杂用户交互、管理浏览器窗口和执行 JavaScript 的方法。
+<strong>WebDriver</strong> 支持多种编程语言，包括 Java、C#、Python 和 Ruby，允许集成到各种测试框架中。它是 <strong>Selenium</strong> 2.0 和 3.0 套件的一部分，随着 <strong>Selenium</strong> 4 的发布，<strong>WebDriver</strong> 得到了进一步增强，增加了额外的功能和能力。
+为确保稳健且可靠的自动化，<strong>WebDriver</strong> 提供了各种定位元素的策略（例如，通过 ID、名称、CSS、XPath），并提供了处理异步行为的机制，例如不同的等待命令，以使测试与 Web 应用程序的动态性质同步。</p>
+</li>
+<li>
+<p><strong>为什么 WebDriver 在自动化测试中很重要？</strong>
+<strong>WebDriver</strong> 在自动化测试中至关重要，因为它作为一个 <strong>标准化接口</strong> 来控制 Web 浏览器并模拟用户交互。它允许以 <strong>独立于任何特定浏览器</strong> 的方式编写测试，从而实现 <strong>跨浏览器测试策略</strong>。<strong>WebDriver</strong> 的重要性在于它能够在 <strong>低级别</strong> 与 Web 元素交互，这密切模仿了真实用户的操作。
+通过为浏览器自动化提供 <strong>通用平台</strong>，<strong>WebDriver</strong> 促进了 <strong>可靠</strong>、<strong>可重复</strong> 和 <strong>可维护</strong> 的 <strong>测试脚本</strong> 的开发。它支持多种编程语言，允许团队利用现有的编码技能并与各种测试框架集成。
+<strong>WebDriver</strong> 与浏览器 <strong>API</strong> 的 <strong>直接通信</strong> 确保测试 <strong>快速</strong> 且 <strong>高效</strong> 地执行，没有像 <strong>Selenium</strong> RC 等旧工具中的中间服务器的开销。这种直接交互也意味着 <strong>WebDriver</strong> 可以更有效地处理复杂的基于 AJAX 的 UI 元素和动态内容，从而导致更 <strong>准确的测试结果</strong>。
+此外，<strong>WebDriver</strong> 对 <strong>高级用户交互</strong>（如拖放和复杂的鼠标移动）的支持允许自动化复杂的用户场景。它管理浏览器会话、Cookie 和对话框的能力进一步扩展了其在创建涵盖广泛用户行为的综合 <strong>测试套件</strong> 中的效用。
+总之，<strong>WebDriver</strong> 是现代 <strong>测试自动化</strong> 策略的基石，为确保跨不同浏览器和平台的 Web 应用程序质量提供了强大而灵活的工具集。</p>
+</li>
+<li>
+<p><strong>WebDriver 的主要功能是什么？</strong>
+<strong>WebDriver</strong> 的主要功能包括：</p>
+<ul>
+<li><strong>跨浏览器兼容性</strong>：支持多种浏览器，如 Chrome、Firefox、Internet Explorer、Safari 和 Edge。</li>
+<li><strong>语言支持</strong>：适用于多种编程语言，如 Java、C#、Python、Ruby 和 JavaScript。</li>
+<li><strong>操作系统支持</strong>：兼容 Windows、macOS 和 Linux。</li>
+<li><strong>移动测试</strong>：可以通过 Appium 或 Selendroid 自动化移动浏览器。</li>
+<li><strong>无头浏览器测试</strong>：支持 Chrome 和 Firefox 的无头版本，以实现更快的执行。</li>
+<li><strong>事件触发</strong>：允许监听事件，如点击前、点击后、导航前和导航后。</li>
+<li><strong>窗口和标签页管理</strong>：提供在窗口和标签页之间切换的方法。</li>
+<li><strong>框架处理</strong>：提供直观的方式来切换到 iframe 和从 iframe 切换上下文。</li>
+<li><strong>高级用户交互</strong>：促进复杂的用户手势，如拖放、鼠标移动和键盘操作。</li>
+<li><strong>截图功能</strong>：可以捕获当前页面或特定元素的屏幕截图。</li>
+<li><strong>Cookie 管理</strong>：允许读取、添加和删除浏览器 Cookie。</li>
+<li><strong>JavaScript 执行</strong>：在当前页面或框架的上下文中执行任意 JavaScript 代码。</li>
+<li><strong>代理支持</strong>：配置 WebDriver 以使用代理进行浏览器会话。</li>
+<li><strong>可扩展性</strong>：可以通过各种插件和库进行扩展以增强功能。</li>
+<li><strong>速度和性能</strong>：通常比其前身 Selenium RC 更快、更高效。
+这些功能使 <strong>WebDriver</strong> 能够提供一个稳健且多功能的平台来自动化 Web 浏览器，允许创建模拟真实用户交互的综合 <strong>测试脚本</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>WebDriver 如何与浏览器交互？</strong>
+<strong>WebDriver</strong> 通过一系列涉及 <strong>WebDriver</strong> 客户端和浏览器原生自动化支持之间通信的步骤与浏览器交互。以下是该过程的简要说明：</p>
+<ol>
+<li><strong>初始化</strong>：当创建一个 <strong>WebDriver</strong> 实例时，它会与浏览器驱动程序（例如，用于 Chrome 的 ChromeDriver，用于 Firefox 的 GeckoDriver）建立连接。</li>
+<li><strong>命令执行</strong>：<strong>测试脚本</strong> 向 <strong>WebDriver</strong> 发送命令，然后由客户端库将其格式化为 RESTful HTTP 请求。</li>
+<li><strong>HTTP 请求</strong>：格式化的命令通过 HTTP 发送到浏览器驱动程序。</li>
+<li><strong>浏览器驱动程序</strong>：浏览器驱动程序接收 HTTP 请求并将其转换为浏览器可以理解的一系列操作。</li>
+<li><strong>操作</strong>：浏览器执行请求的操作，例如导航到 URL、单击元素或输入文本。</li>
+<li><strong>响应</strong>：执行操作后，浏览器驱动程序向 <strong>WebDriver</strong> 客户端发回 HTTP 响应。此响应包含命令执行的结果，例如成功状态、元素属性或任何错误。</li>
+<li><strong>结果处理</strong>：<strong>WebDriver</strong> 客户端处理响应并将结果返回给 <strong>测试脚本</strong>，该脚本随后可以继续进行进一步的操作或断言。
+在此交互过程中，<strong>WebDriver</strong> 使用 <strong>WebDriver 协议</strong>，这是一个自动化 Web 浏览器交互的标准。该协议确保命令和响应在不同的浏览器和驱动程序之间是一致的，允许使用相同的脚本进行 <strong>跨浏览器测试</strong>。</li>
+</ol>
+</li>
+<li>
+<p><strong>Selenium RC 和 WebDriver 有什么区别？</strong>
+<strong>Selenium RC</strong> (Remote Control) 和 <strong>WebDriver</strong> 都是 <strong>Selenium</strong> 套件的一部分，用于浏览器自动化，但在架构和与 Web 应用程序的交互方面存在显著差异。
+<strong>Selenium RC</strong> 是一种较旧的技术，需要一个额外的服务器来与浏览器交互。当运行测试时，它将 JavaScript 代码注入浏览器，然后控制被测应用程序。这种方法具有固有的局限性，例如由于额外的层（服务器）而速度较慢，并且对浏览器的直接控制较少，导致现代 JavaScript 密集型应用程序出现问题。
+另一方面，<strong>WebDriver</strong> 是一种更现代和先进的工具。它使用浏览器对自动化的原生支持直接与浏览器通信，无需中间服务器。<strong>WebDriver</strong> 提供了与 Web 元素更真实的交互，因为它不依赖 JavaScript 进行自动化。这种直接控制可以更好地模拟用户操作，并且可以更有效地处理复杂的基于 AJAX 的 Web 元素。
+主要区别是：</p>
+<ul>
+<li><strong>直接浏览器控制</strong>：WebDriver 直接与浏览器交互，而 Selenium RC 通过服务器。</li>
+<li><strong>速度</strong>：WebDriver 由于与浏览器的直接通信，通常更快。</li>
+<li><strong>API 设计</strong>：WebDriver 的 API 更简洁且面向对象，使其更易于使用和维护。</li>
+<li><strong>浏览器支持</strong>：WebDriver 对现代浏览器及其功能有更好的支持。</li>
+<li><strong>JavaScript 依赖</strong>：Selenium RC 依赖 JavaScript 进行自动化，这可能是一个限制，而 WebDriver 没有这种依赖。</li>
+</ul>
+</li>
+</ul>
+<h3 id="webdriver-操作">WebDriver 操作</h3>
+<ul>
+<li>
+<p><strong>如何使用 WebDriver 启动浏览器？</strong>
+要使用 <strong>WebDriver</strong> 启动浏览器，您需要为您要自动化的浏览器实例化特定的驱动程序对象。这是一个分步指南：</p>
+<ol>
+<li><strong>导入</strong> 测试脚本中必要的 WebDriver 类。</li>
+<li><strong>实例化</strong> 所需浏览器的驱动程序（例如，ChromeDriver，FirefoxDriver）。</li>
+<li>使用驱动程序对象 <strong>打开浏览器窗口</strong>。</li>
+</ol>
+<p>以下是 Java 中 Chrome 和 Firefox 浏览器的示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 对于 Chrome</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebDriver;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.chrome.ChromeDriver;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">System.</span><span style="color:#B392F0">setProperty</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"webdriver.chrome.driver"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"path/to/chromedriver"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ChromeDriver</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 对于 Firefox</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebDriver;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.firefox.FirefoxDriver;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">System.</span><span style="color:#B392F0">setProperty</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"webdriver.gecko.driver"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"path/to/geckodriver"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> FirefoxDriver</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>请确保将 <code>"path/to/chromedriver"</code> 和 <code>"path/to/geckodriver"</code> 替换为您的 ChromeDriver 和 GeckoDriver 可执行文件的实际路径。
+<strong>注意</strong>：在运行脚本之前，请确保驱动程序可执行文件已下载并在指定路径中可用。<code>get()</code> 方法用于在启动浏览器后导航到所需的 URL。
+执行脚本后，<strong>WebDriver</strong> 将启动指定的浏览器并加载给定的 URL。切记在测试操作完成后使用 <code>driver.quit()</code> <strong>关闭</strong> 浏览器，以确保没有浏览器实例在运行。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 导航到 URL？</strong>
+要使用 <strong>WebDriver</strong> 导航到 URL，通常使用 <strong>WebDriver</strong> 实例提供的 <code>get</code> 方法。此方法接受一个参数：您要导航到的 URL。这是 Java 中的一个示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>在 Python 中，语法类似：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E1E4E8">driver.get(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>对于 C#，您可以使用：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">Navigate</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">GoToUrl</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>在每种情况下，<code>get</code> 方法（或 C# 中的 <code>GoToUrl</code>）指示浏览器导航到指定的 URL。该方法将等到页面完全加载后再允许执行任何进一步的命令。这是一个阻塞调用，意味着直到页面加载完成，下一行代码才会执行。
+确保 <strong>WebDriver</strong> 实例已初始化且浏览器会话处于活动状态，然后再尝试导航到 URL 非常重要。这通常通过首先调用适当的方法来启动浏览器来完成，例如用于 Chrome 的 <code>new ChromeDriver()</code> 或用于 Firefox 的 <code>new FirefoxDriver()</code>。
+这是一个在完整上下文中导航到 URL 的简明示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ChromeDriver</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://www.example.com"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 在页面上执行操作</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">quit</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 关闭浏览器并结束会话</span></span></code></pre>
+<p>切记在自动化任务完成后始终使用 <code>driver.quit()</code> 或 <code>driver.close()</code> 关闭浏览器会话以释放系统资源。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 执行表单输入？</strong>
+要使用 <strong>WebDriver</strong> 执行表单输入，您通常与文本框、单选按钮、复选框和按钮等 Web 元素进行交互。以下是如何实现此目的：
+对于 <strong>文本字段</strong>，使用 <code>sendKeys()</code> 方法模拟在字段中输入：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement inputField </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"text-input"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">inputField.</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Your text here"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>要在发送键之前 <strong>清除文本字段</strong>，请使用 <code>clear()</code> 方法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">inputField.</span><span style="color:#B392F0">clear</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">inputField.</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"New text"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>对于 <strong>复选框</strong> 和 <strong>单选按钮</strong>，使用 <code>click()</code> 方法切换其状态：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement checkbox </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"checkbox"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">checkbox.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 这将选中或取消选中复选框</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">WebElement radioButton </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"radio-button"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">radioButton.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 这将选择单选按钮</span></span></code></pre>
+<p>要从下拉列表中 <strong>选择选项</strong>，首先创建一个 <code>Select</code> 对象，然后使用 <code>selectByVisibleText()</code>、<code>selectByIndex()</code> 或 <code>selectByValue()</code> 方法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Select dropdown </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Select</span><span style="color:#E1E4E8">(driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"dropdown"</span><span style="color:#E1E4E8">)));</span></span>
+<span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByVisibleText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Option 1"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 或</span></span>
+<span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByIndex</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 或</span></span>
+<span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"value1"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>对于 <strong>按钮</strong>，只需使用 <code>click()</code> 方法提交表单或触发事件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement submitButton </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"submit-button"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">submitButton.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>切记始终准确地定位元素，并要在必要时等待元素可交互，以避免同步问题。使用显式等待可以更好地控制交互的时间。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 处理警报和弹出窗口？</strong>
+在 <strong>WebDriver</strong> 中处理警报和弹出窗口可以使用 <code>Alert</code> 接口来实现，该接口提供了与不同类型警报交互的方法。这是一个简明的指南：
+<strong>接受警报：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Alert alert </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">alert</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">alert.</span><span style="color:#B392F0">accept</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>驳回警报：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Alert alert </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">alert</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">alert.</span><span style="color:#B392F0">dismiss</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>获取警报文本：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Alert alert </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">alert</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">String alertText </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> alert.</span><span style="color:#B392F0">getText</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>向提示发送文本：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Alert alert </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">alert</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">alert.</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Text to enter"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p><strong>处理意外警报：</strong>
+对于随机出现的意外警报，您可以使用 <code>UnexpectedAlertBehaviour</code> 功能来定义 <strong>WebDriver</strong> 应如何反应：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">FirefoxOptions options </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> FirefoxOptions</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">options.</span><span style="color:#B392F0">setCapability</span><span style="color:#E1E4E8">(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);</span></span>
+<span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> FirefoxDriver</span><span style="color:#E1E4E8">(options);</span></span></code></pre>
+<p><strong>注意：</strong>
+在处理警报时，请确保 <strong>WebDriver</strong> 在执行任何操作之前已切换到警报。此外，请记住 <strong>WebDriver</strong> 只能与 JavaScript 警报、提示和确认（<code>window.alert</code>、<code>window.confirm</code> 和 <code>window.prompt</code>）交互。<strong>WebDriver</strong> 无法直接处理本机操作系统弹出窗口。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 执行拖放操作？</strong>
+要使用 <strong>WebDriver</strong> 执行拖放操作，您可以利用 <code>Actions</code> 类，该类提供了一个用户友好的 <strong>API</strong> 来实现与 Web 元素的高级用户交互。这是 Java 中的一个简明示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.By;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebDriver;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebElement;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.interactions.Actions;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">public</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> dragAndDropExample</span><span style="color:#E1E4E8">(WebDriver driver) {</span></span>
+<span class="line"><span style="color:#6A737D">    // 定位拖放的元素</span></span>
+<span class="line"><span style="color:#E1E4E8">    WebElement sourceElement </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"source-element-id"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">    WebElement targetElement </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"target-element-id"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 创建 Actions 类的实例</span></span>
+<span class="line"><span style="color:#E1E4E8">    Actions actions </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Actions</span><span style="color:#E1E4E8">(driver);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 执行拖放操作</span></span>
+<span class="line"><span style="color:#E1E4E8">    actions.</span><span style="color:#B392F0">dragAndDrop</span><span style="color:#E1E4E8">(sourceElement, targetElement).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>或者，如果您需要通过指定偏移量而不是目标元素来执行拖放操作，可以使用 <code>clickAndHold()</code>、<code>moveByOffset()</code> 和 <code>release()</code> 方法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">clickAndHold</span><span style="color:#E1E4E8">(sourceElement)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">moveByOffset</span><span style="color:#E1E4E8">(xOffset, yOffset)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">release</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>将 <code>xOffset</code> 和 <code>yOffset</code> 替换为您希望元素从当前位置移动的水平和垂直距离。
+<strong>注意</strong>：在执行拖放操作之前，请确保 <strong>WebDriver</strong> 实例已正确初始化且元素可交互（可见且已启用）。此外，请考虑任何同步问题，例如在执行这些操作之前等待元素准备好进行交互。</p>
+</li>
+</ul>
+<h3 id="定位器和-web-元素">定位器和 Web 元素</h3>
+<ul>
+<li>
+<p><strong>WebDriver 中的定位器是什么？</strong>
+<strong>WebDriver</strong> 中的定位器是用于 <strong>识别和定位网页上的元素</strong> 的策略。这些对于 <strong>测试自动化</strong> 期间与 Web 元素交互至关重要，例如单击按钮、输入文本或读取值。<strong>WebDriver</strong> 支持各种定位器策略：</p>
+<ul>
+<li><strong>ID</strong>：通过其唯一 ID 查找元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"element-id"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>Name</strong>：通过 <code>name</code> 属性定位元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"element-name"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>Class Name</strong>：用于具有特定类属性的元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">className</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"class-name"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>Tag Name</strong>：通过其标签名称识别元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">tagName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"tag-name"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>Link Text</strong>：用于通过其确切文本定位链接。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">linkText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"link text"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>Partial Link Text</strong>：类似于 Link Text，但匹配部分链接文本。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">partialLinkText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"part-of-link-text"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>CSS Selector</strong>：允许使用 CSS 选择器进行复杂查询。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">cssSelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"css-selector"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>XPath</strong>：一种使用 XML 路径表达式的强大定位器。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">xpath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"//tag[@attribute='value']"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+</ul>
+<p>选择正确的定位器取决于具体场景和元素的属性。<strong>ID</strong> 和 <strong>Name</strong> 通常因其简单性和性能而受到青睐，但 <strong>CSS Selector</strong> 和 <strong>XPath</strong> 为复杂或动态元素提供了更大的灵活性。使用可靠且不太可能更改的定位器以确保稳定的自动化脚本至关重要。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 定位元素？</strong>
+要使用 <strong>WebDriver</strong> 定位元素，您可以利用各种定位器策略。每种策略针对网页上 HTML 元素的不同属性或方面。以下是常用方法：</p>
+<ul>
+<li><strong>By.id</strong>：通过其唯一 ID 查找元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementId"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.name</strong>：通过 NAME 属性定位元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementName"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.className</strong>：通过其类属性定位元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">className</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementClass"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.tagName</strong>：通过其标签名称查找元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">tagName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementTag"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.cssSelector</strong>：使用 CSS 选择器定位元素，允许复杂查询。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">cssSelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"cssSelector"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.xpath</strong>：使用 XPath 表达式在 DOM 中导航元素和属性。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">xpath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"xpathExpression"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.linkText</strong>：通过显示的准确文本查找链接元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">linkText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"linkText"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>By.partialLinkText</strong>：定位包含指定文本的链接元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">partialLinkText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"partialLinkText"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+</ul>
+<p>请记住处理潜在的异常，例如当找不到元素时的 <code>NoSuchElementException</code>。此外，还要考虑定位器策略的性能和 <strong>可维护性</strong>，因为与 ID 或 CSS 选择器等其他方法相比，XPath 等一些方法可能更慢且更脆弱。</p>
+</li>
+<li>
+<p><strong>findElement() 和 findElements() 方法之间有什么区别？</strong>
+在 <strong>Selenium</strong> <strong>WebDriver</strong> 中，<code>findElement()</code> 和 <code>findElements()</code> 都是用于定位网页上元素的方法，但它们的返回类型和行为不同：</p>
+<ul>
+<li><code>findElement()</code>：当您期望定位器匹配页面上的 <strong>单个元素</strong> 时使用此方法。它返回匹配给定定位器的 <strong>第一个 WebElement</strong>。如果未找到任何元素，它将抛出 <code>NoSuchElementException</code>。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement element </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"uniqueElementId"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><code>findElements()</code>：当您期望定位器匹配页面上的 <strong>多个元素</strong> 时使用此方法。它返回匹配给定定位器的 <strong>WebElements 列表</strong>。如果未找到任何元素，它将返回一个 <strong>空列表</strong> 而不是抛出异常。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">List&#x3C;</span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">> elements </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElements</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">className</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"multipleElementsClass"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+</ul>
+<p><strong>主要区别：</strong></p>
+<ul>
+<li><strong>返回类型</strong>：<code>findElement()</code> 返回单个 <code>WebElement</code>；<code>findElements()</code> 返回 <code>List&#x3C;WebElement></code>。</li>
+<li><strong>异常处理</strong>：如果未找到任何元素，<code>findElement()</code> 抛出异常；<code>findElements()</code> 返回空列表。</li>
+<li><strong>用例</strong>：当您需要与单个元素交互时使用 <code>findElement()</code>；当您需要与共享相同定位器的多个元素交互时使用 <code>findElements()</code>。
+根据您期望处理一个还是多个元素以及您希望如何处理未找到元素的情况来选择方法。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 处理动态元素？</strong>
+由于属性不断变化，在 <strong>WebDriver</strong> 中处理动态元素可能具有挑战性。为了有效地与这些元素交互，您可以使用以下几种策略：</p>
+<ol>
+<li><strong>XPath with Contains, Starts-with, or Ends-with</strong>：
+动态元素通常具有包含一致子字符串的属性。XPath 函数如 <code>contains()</code>、<code>starts-with()</code> 和 <code>ends-with()</code> 可以基于部分属性值匹配元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement element </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">xpath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"//tag[contains(@attribute, 'value')]"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>CSS Selectors with Substring Matches</strong>：
+类似于 XPath，CSS 选择器可以使用 <code>^</code>、<code>$</code> 或 <code>*</code> 基于属性值的子字符串匹配元素。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement element </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">cssSelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"tag[attribute*='value']"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>动态等待</strong>：
+使用 <strong>显式等待</strong> 等待某些条件，例如元素的可见性或具有特定属性的元素的存在。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriverWait wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebDriverWait</span><span style="color:#E1E4E8">(driver, Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">WebElement element </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(ExpectedConditions.</span><span style="color:#B392F0">visibilityOfElementLocated</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"dynamicElement"</span><span style="color:#E1E4E8">)));</span></span></code></pre>
+</li>
+<li><strong>JavaScript 执行</strong>：
+当标准方法失败时，执行 JavaScript 可以直接与难以定位的元素交互。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">JavascriptExecutor js </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (JavascriptExecutor) driver;</span></span>
+<span class="line"><span style="color:#E1E4E8">WebElement element </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (WebElement) js.</span><span style="color:#B392F0">executeScript</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"return document.querySelector('selector');"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li><strong>重试元素定位</strong>：
+在元素并非立即可用的情况下，可以实施重试机制，在测试失败之前尝试多次定位元素。</li>
+<li><strong>自定义 ExpectedConditions</strong>：
+创建自定义 <code>ExpectedConditions</code> 以处理内置条件未涵盖的更复杂场景。
+通过结合这些策略，您可以有效地处理 <strong>WebDriver</strong> 中的动态元素，确保您的自动化脚本稳健且不易因元素属性更改或时间问题而失败。</li>
+</ol>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 与下拉列表交互？</strong>
+在 <strong>WebDriver</strong> 中与下拉列表交互通常使用 <code>Select</code> 类完成，该类提供了选择和取消选择选项的方法。以下是如何处理下拉列表：</p>
+<ol>
+<li><strong>识别下拉元素</strong> 使用任何 WebDriver 定位器，如 <code>By.id</code>、<code>By.name</code>、<code>By.xpath</code> 等。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement dropdownElement </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"dropdownId"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+</li>
+<li><strong>创建 Select 类的实例</strong> 通过将下拉元素传递给其构造函数。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Select dropdown </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Select</span><span style="color:#E1E4E8">(dropdownElement);</span></span></code></pre>
+</li>
+<li><strong>选择选项</strong>。您可以按索引、值或可见文本进行选择。
+<ul>
+<li><strong>按索引</strong>（从零开始）：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByIndex</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 选择第二个选项</span></span></code></pre>
+</li>
+<li><strong>按值</strong>：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"optionValue"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 选择 value="optionValue" 的选项</span></span></code></pre>
+</li>
+<li><strong>按可见文本</strong>：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">selectByVisibleText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Option Text"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 选择显示文本为 "Option Text" 的选项</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><strong>取消选择选项</strong> 如果它是一个多选下拉列表。取消选择选项存在类似的方法：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">deselectByIndex</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">deselectByValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"optionValue"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">dropdown.</span><span style="color:#B392F0">deselectByVisibleText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Option Text"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li><strong>检索选定的选项</strong> 使用 <code>getOptions()</code>、<code>getAllSelectedOptions()</code> 或 <code>getFirstSelectedOption()</code> 方法（如果需要）。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">List&#x3C;</span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">> allOptions </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> dropdown.</span><span style="color:#B392F0">getOptions</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">List&#x3C;</span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">> selectedOptions </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> dropdown.</span><span style="color:#B392F0">getAllSelectedOptions</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">WebElement firstSelectedOption </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> dropdown.</span><span style="color:#B392F0">getFirstSelectedOption</span><span style="color:#E1E4E8">();</span></span></code></pre>
+</li>
+</ol>
+<p>如果下拉列表不存在或找不到指定的选项，请记住 <strong>处理异常</strong>，例如 <code>NoSuchElementException</code>。</p>
+</li>
+</ul>
+<h3 id="等待命令">等待命令</h3>
+<ul>
+<li>
+<p><strong>WebDriver 中有哪些不同类型的等待命令？</strong>
+<strong>WebDriver</strong> 提供了几种等待命令来处理 <strong>测试自动化</strong> 中的同步：</p>
+<ul>
+<li><strong>隐式等待 (Implicit Wait)</strong>：在抛出 <code>NoSuchElementException</code>（如果未找到元素）之前自动等待指定的时间量。它是为 <strong>WebDriver</strong> 的整个会话设置的。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">timeouts</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">implicitlyWait</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">, TimeUnit.SECONDS);</span></span></code></pre>
+</li>
+<li><strong>显式等待 (Explicit Wait)</strong>：等待某个条件发生，然后再继续执行。它比隐式等待更灵活，因为它允许您指定条件。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriverWait wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebDriverWait</span><span style="color:#E1E4E8">(driver, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(ExpectedConditions.</span><span style="color:#B392F0">visibilityOfElementLocated</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementId"</span><span style="color:#E1E4E8">)));</span></span></code></pre>
+</li>
+<li><strong>流畅等待 (Fluent Wait)</strong>：类似于显式等待，但有更多选项。您可以定义等待条件的最长时间以及检查条件的频率。您还可以在等待时忽略特定类型的异常。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Wait&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">> wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> FluentWait&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">>(driver)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">withTimeout</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">pollingEvery</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">ignoring</span><span style="color:#E1E4E8">(NoSuchElementException.class);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">WebElement foo </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#E1E4E8"> Function&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">>() {</span></span>
+<span class="line"><span style="color:#F97583">   public</span><span style="color:#E1E4E8"> WebElement </span><span style="color:#B392F0">apply</span><span style="color:#E1E4E8">(WebDriver </span><span style="color:#FFAB70">driver</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">     return</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"foo"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">   }</span></span>
+<span class="line"><span style="color:#E1E4E8"> });</span></span></code></pre>
+</li>
+<li><strong>睡眠 (Sleep)</strong>：暂停执行指定时间量的简单暂停。通常不建议这样做，因为它可能导致不必要的等待，并使测试运行时间超过需要。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Thread.</span><span style="color:#B392F0">sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 睡眠 1 秒</span></span></code></pre>
+</li>
+</ul>
+<p>建议使用显式和流畅等待代替隐式等待，以获得更好的测试稳定性并避免不必要的延迟。除非绝对必要，否则应避免睡眠。</p>
+</li>
+<li>
+<p><strong>隐式等待和显式等待有什么区别？</strong>
+<strong>隐式等待</strong> 和 <strong>显式等待</strong> 是两种不同的策略，用于使应用程序的状态与 <strong>测试脚本</strong> 的操作同步。
+<strong>隐式等待</strong> 在 <strong>WebDriver</strong> 实例的整个生命周期内设置默认等待时间。当您设置隐式等待时，如果元素并非立即可用，<strong>WebDriver</strong> 会在尝试查找元素时轮询 DOM 一段时间。默认设置为 0。一旦设置，隐式等待将在 <strong>WebDriver</strong> 会话期间有效。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">timeouts</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">implicitlyWait</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">, TimeUnit.SECONDS);</span></span></code></pre>
+<p>另一方面，<strong>显式等待</strong> 用于停止执行，直到满足特定条件。它是为特定实例配置的，不像隐式等待那样是全面默认设置。当在继续之前需要满足某些条件时使用显式等待，例如等待元素变得可见或可点击。它们通常与预期条件结合使用。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriverWait wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebDriverWait</span><span style="color:#E1E4E8">(driver, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(ExpectedConditions.</span><span style="color:#B392F0">visibilityOfElementLocated</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementId"</span><span style="color:#E1E4E8">)));</span></span></code></pre>
+<p>主要区别是：</p>
+<ul>
+<li><strong>范围</strong>：隐式等待是为整个会话设置的，而显式等待是为特定条件设置的。</li>
+<li><strong>灵活性</strong>：显式等待允许更复杂的条件，而隐式等待只等待元素出现。</li>
+<li><strong>性能</strong>：通常建议使用显式等待，因为它允许更优化的等待策略，减少隐式等待可能引入的不必要等待时间。
+在实践中，依靠显式等待对于大多数复杂的同步问题是更好的选择，因为它允许对等待条件进行更细粒度的控制，并且可以导致更可靠和高效的测试。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何在 WebDriver 中实现流畅等待？</strong>
+要在 <strong>WebDriver</strong> 中实现 <strong>流畅等待</strong>，您可以使用 <code>FluentWait</code> 类，该类允许您配置等待条件的最长时间以及检查条件的频率。此外，您可以在等待时忽略特定类型的异常，例如在页面上搜索元素时的 <code>NoSuchElementExceptions</code>。
+这是 Java 中的一个基本示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ChromeDriver</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"http://example.com"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 初始化 FluentWait，超时 30 秒，每 5 秒轮询一次。</span></span>
+<span class="line"><span style="color:#E1E4E8">FluentWait&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">> wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> FluentWait&#x3C;>(driver)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">withTimeout</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">pollingEvery</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">ignoring</span><span style="color:#E1E4E8">(NoSuchElementException.class);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 FluentWait 等待特定条件（元素可点击）。</span></span>
+<span class="line"><span style="color:#E1E4E8">WebElement foo </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#E1E4E8"> Function&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">>() {</span></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> WebElement </span><span style="color:#B392F0">apply</span><span style="color:#E1E4E8">(WebDriver </span><span style="color:#FFAB70">driver</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"foo"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 现在您可以与元素交互</span></span>
+<span class="line"><span style="color:#E1E4E8">foo.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>对于使用 Java 8 lambda 表达式的更简洁方法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebElement foo </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> FluentWait&#x3C;>(driver)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">withTimeout</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">pollingEvery</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">ignoring</span><span style="color:#E1E4E8">(NoSuchElementException.class)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(driver </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"foo"</span><span style="color:#E1E4E8">)));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">foo.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>请记导入必要的类：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.support.ui.FluentWait;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebDriver;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.WebElement;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.By;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.NoSuchElementException;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> java.time.Duration;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> java.util.function.Function;</span></span></code></pre>
+<p>这种方法在处理由于 AJAX 和 JavaScript 操作等各种因素而可能需要一些时间才会出现或变为交互式的元素时特别有用。</p>
+</li>
+<li>
+<p><strong>如何使用等待命令处理同步问题？</strong>
+要处理 <strong>测试自动化</strong> 中的同步问题，<strong>等待命令</strong> 至关重要。它们允许您的测试在继续之前等待满足某些条件，确保元素已准备好进行交互。
+<strong>隐式等待</strong> 在 <strong>WebDriver</strong> 实例的整个生命周期内设置默认等待时间。如果元素并非立即可用，<strong>WebDriver</strong> 将在抛出 <code>NoSuchElementException</code> 之前轮询 DOM 指定的持续时间。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">timeouts</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">implicitlyWait</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">, TimeUnit.SECONDS);</span></span></code></pre>
+<p><strong>显式等待</strong> 更细粒度，用于在继续之前需要满足特定条件时。它是使用 <code>WebDriverWait</code> 和 <code>ExpectedConditions</code> 实现的。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriverWait wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebDriverWait</span><span style="color:#E1E4E8">(driver, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(ExpectedConditions.</span><span style="color:#B392F0">visibilityOfElementLocated</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementId"</span><span style="color:#E1E4E8">)));</span></span></code></pre>
+<p><strong>流畅等待</strong> 允许更复杂的轮询配置，指定等待条件的最长时间以及检查条件的频率。您还可以在等待时忽略特定类型的异常。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Wait&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">> wait </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> FluentWait&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">>(driver)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">withTimeout</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">pollingEvery</span><span style="color:#E1E4E8">(Duration.</span><span style="color:#B392F0">ofSeconds</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">ignoring</span><span style="color:#E1E4E8">(NoSuchElementException.class);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">wait.</span><span style="color:#B392F0">until</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#E1E4E8"> Function&#x3C;</span><span style="color:#F97583">WebDriver</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">WebElement</span><span style="color:#E1E4E8">>() {</span></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> WebElement </span><span style="color:#B392F0">apply</span><span style="color:#E1E4E8">(WebDriver </span><span style="color:#FFAB70">driver</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elementId"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>战略性地使用这些等待命令使您的测试与应用程序的状态同步，减少不稳定性并提高可靠性。切记避免使用 <code>Thread.sleep()</code> 方法，因为它强制无条件等待，并可能导致不必要地延长 <strong>测试执行</strong> 时间。</p>
+</li>
+<li>
+<p><strong>WebDriver 中 sleep() 方法的用途是什么？</strong>
+<strong>WebDriver</strong> 中的 <code>sleep()</code> 方法是一种 <strong>静态等待</strong> 形式，它将测试的执行暂停指定的时间量。它是 Java 中 <code>Thread</code> 类的一部分，通常在 <strong>Selenium</strong> <strong>WebDriver</strong> 脚本中用于处理计时问题和同步问题。
+这是一个如何在 <strong>WebDriver</strong> 脚本中使用 <code>sleep()</code> 的示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Thread.</span><span style="color:#B392F0">sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5000</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 暂停执行 5 秒</span></span></code></pre>
+<p>此方法接受以毫秒为单位的参数，并在该持续时间内停止整个 <strong>测试执行</strong>。通常认为使用 <code>sleep()</code> 是一种 <strong>糟糕的做法</strong>，因为它引入了 <strong>硬编码等待</strong>，使测试不太可靠并增加执行时间。<code>sleep()</code> 的主要问题是它不考虑应用程序是否准备好继续，导致不必要的等待，或者如果等待时间不足，则可能导致不稳定性。
+建议使用 <strong>WebDriver 的等待机制</strong>，如 <strong>隐式等待</strong>、<strong>显式等待</strong> 或 <strong>流畅等待</strong>，而不是 <code>sleep()</code>。这些等待是动态的，允许测试在满足必要条件（例如元素的存在或可见性）后立即继续，从而使测试更高效、更稳健。</p>
+</li>
+</ul>
+<h3 id="高级-webdriver-概念">高级 WebDriver 概念</h3>
+<ul>
+<li>
+<p><strong>如何使用 WebDriver 处理多个窗口或标签页？</strong>
+要在 <strong>WebDriver</strong> 中处理多个窗口或标签页，请使用 <code>getWindowHandles()</code> 和 <code>switchTo().window()</code> 方法。这是一个简洁的方法：</p>
+<ol>
+<li><strong>识别当前窗口句柄</strong> 在打开新窗口或标签页之前，以便稍后需要时可以返回。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">String originalWindow </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">getWindowHandle</span><span style="color:#E1E4E8">();</span></span></code></pre>
+</li>
+<li><strong>执行操作</strong> 打开新窗口或标签页，例如单击在新窗口中打开的链接。</li>
+<li><strong>获取所有窗口句柄</strong> 由 <strong>WebDriver</strong> 实例当前打开的所有窗口句柄。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Set&#x3C;</span><span style="color:#F97583">String</span><span style="color:#E1E4E8">> allWindows </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">getWindowHandles</span><span style="color:#E1E4E8">();</span></span></code></pre>
+</li>
+<li><strong>切换到新窗口或标签页</strong> 通过遍历 <code>allWindows</code> 集合并使用带有新窗口句柄的 <code>switchTo().window()</code> 方法。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (String windowHandle </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> allWindows) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">originalWindow.</span><span style="color:#B392F0">contentEquals</span><span style="color:#E1E4E8">(windowHandle)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">window</span><span style="color:#E1E4E8">(windowHandle);</span></span>
+<span class="line"><span style="color:#F97583">        break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li><strong>与内容交互</strong> 在新窗口或标签页中按测试要求进行交互。</li>
+<li><strong>关闭新窗口或标签页</strong> 如果需要，并切回原始窗口。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 关闭新窗口或标签页</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">window</span><span style="color:#E1E4E8">(originalWindow); </span><span style="color:#6A737D">// 切回原始窗口</span></span></code></pre>
+</li>
+</ol>
+<p>切记处理任何潜在的异常，如 <code>NoSuchWindowException</code>，并确保您的 <strong>测试脚本</strong> 考虑到窗口或标签页可能无法按预期打开的可能性。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 执行鼠标和键盘操作？</strong>
+要在 <strong>WebDriver</strong> 中执行鼠标和键盘操作，您可以使用 <code>Actions</code> 类，该类提供了一个用户友好的 <strong>API</strong> 来实现复杂的用户手势。以下是如何使用它：
+<strong>鼠标操作：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Actions actions </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Actions</span><span style="color:#E1E4E8">(driver);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 移动到元素</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">moveToElement</span><span style="color:#E1E4E8">(element).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 右键单击（上下文单击）元素</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">contextClick</span><span style="color:#E1E4E8">(element).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 双击元素</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">doubleClick</span><span style="color:#E1E4E8">(element).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 单击并按住，移动到新位置，然后释放</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">clickAndHold</span><span style="color:#E1E4E8">(sourceElement)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">moveToElement</span><span style="color:#E1E4E8">(targetElement)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">release</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 拖放</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">dragAndDrop</span><span style="color:#E1E4E8">(sourceElement, targetElement).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>键盘操作：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 向元素发送按键</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(element, </span><span style="color:#9ECBFF">"Text to send"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 按下键（例如 CONTROL）而不释放</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">keyDown</span><span style="color:#E1E4E8">(Keys.CONTROL).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 释放键（例如 CONTROL）</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">keyUp</span><span style="color:#E1E4E8">(Keys.CONTROL).</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 执行键盘操作组合</span></span>
+<span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">keyDown</span><span style="color:#E1E4E8">(Keys.CONTROL)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"a"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">keyUp</span><span style="color:#E1E4E8">(Keys.CONTROL)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>链式操作：</strong>
+您可以在调用 <code>perform()</code> 之前将多个操作链接在一起：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">actions.</span><span style="color:#B392F0">moveToElement</span><span style="color:#E1E4E8">(element)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Text"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">keyDown</span><span style="color:#E1E4E8">(Keys.SHIFT)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">sendKeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"More text"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">keyUp</span><span style="color:#E1E4E8">(Keys.SHIFT)</span></span>
+<span class="line"><span style="color:#E1E4E8">       .</span><span style="color:#B392F0">perform</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>切记导入必要的类：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.interactions.Actions;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> org.openqa.selenium.Keys;</span></span></code></pre>
+<p>这些操作模拟了用户与 Web 应用程序的复杂交互，从而允许更全面的测试场景。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 处理 iframe？</strong>
+在 <strong>WebDriver</strong> 中处理 iframe 涉及将上下文从主页面切换到 iframe，然后与其中的元素进行交互。在执行其中的任何操作之前，使用 <code>switchTo()</code> 方法将焦点更改为 iframe。
+这是 Java 中的一个简洁示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 按索引切换到 iframe</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">frame</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 按名称或 ID 切换到 iframe</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">frame</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"iframeName"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 按 WebElement 切换到 iframe</span></span>
+<span class="line"><span style="color:#E1E4E8">WebElement iframeElement </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">tagName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"iframe"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">frame</span><span style="color:#E1E4E8">(iframeElement);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 在 iframe 内执行操作</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">findElement</span><span style="color:#E1E4E8">(By.</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"inside_iframe"</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 完成 iframe 后切回主文档</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">switchTo</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">defaultContent</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>关键点：</strong></p>
+<ul>
+<li>使用 <strong>index</strong>、<strong>name</strong>、<strong>ID</strong> 或 <strong>WebElement</strong> 识别 iframe。</li>
+<li>使用 <code>driver.switchTo().frame()</code> 切换到 iframe。</li>
+<li>与 iframe 交互后，使用 <code>driver.switchTo().defaultContent()</code> 返回主页面。
+请记住，如果 iframe 嵌套在另一个 iframe 中，您必须按顺序切换到每个 iframe，直到达到所需的级别。完成后始终切回父框架或主要内容。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 截取屏幕截图？</strong>
+使用 <strong>WebDriver</strong> 截取屏幕截图非常简单。使用 <strong>Selenium</strong> <strong>WebDriver</strong> 提供的 <code>TakesScreenshot</code> 接口。这是 Java 中的一个简明示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">WebDriver driver </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ChromeDriver</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 假设正在使用 ChromeDriver</span></span>
+<span class="line"><span style="color:#6A737D">// ... 您的测试代码 ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 将驱动程序转换为 TakesScreenshot</span></span>
+<span class="line"><span style="color:#E1E4E8">TakesScreenshot screenshotTaker </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (TakesScreenshot) driver;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 获取屏幕截图作为图像文件</span></span>
+<span class="line"><span style="color:#E1E4E8">File screenshot </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> screenshotTaker.</span><span style="color:#B392F0">getScreenshotAs</span><span style="color:#E1E4E8">(OutputType.FILE);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 FileUtils 将文件保存到所需位置</span></span>
+<span class="line"><span style="color:#E1E4E8">FileUtils.</span><span style="color:#B392F0">copyFile</span><span style="color:#E1E4E8">(screenshot, </span><span style="color:#F97583">new</span><span style="color:#B392F0"> File</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"path/to/screenshot.png"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<p>对于其他编程语言，过程类似。关键是将您的 <strong>WebDriver</strong> 实例转换为 <code>TakesScreenshot</code>，然后使用适当的 <code>OutputType</code> 调用 <code>getScreenshotAs</code> 方法。
+在 Python 中，它看起来像这样：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> selenium </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> webdriver</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">driver </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> webdriver.Chrome() </span><span style="color:#6A737D"># 假设正在使用 ChromeDriver</span></span>
+<span class="line"><span style="color:#6A737D"># ... 您的测试代码 ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">//</span><span style="color:#E1E4E8"> 截取屏幕截图并将其保存到给定路径</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.save_screenshot(</span><span style="color:#9ECBFF">'path/to/screenshot.png'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>切记处理任何异常，例如 Java 中的 <code>IOException</code>，这可能在将屏幕截图写入文件时发生。这确保您的 <strong>测试脚本</strong> 保持稳健和容错。</p>
+</li>
+<li>
+<p><strong>如何使用 WebDriver 处理 Cookie？</strong>
+在 <strong>WebDriver</strong> 中处理 Cookie 可以使用 <code>manage()</code> 方法来实现，该方法提供对 <code>Cookie</code> 类的访问。以下是如何执行常见的 Cookie 操作：
+<strong>添加 Cookie：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Cookie cookie </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Cookie</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"cookieName"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"cookieValue"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">addCookie</span><span style="color:#E1E4E8">(cookie);</span></span></code></pre>
+<p><strong>按名称获取 Cookie：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Cookie cookie </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">getCookieNamed</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"cookieName"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p><strong>检索所有 Cookie：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">Set&#x3C;</span><span style="color:#F97583">Cookie</span><span style="color:#E1E4E8">> allCookies </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">getCookies</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>删除特定 Cookie：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">deleteCookieNamed</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"cookieName"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p><strong>删除所有 Cookie：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">deleteAllCookies</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p><strong>用法示例：</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 添加新 cookie</span></span>
+<span class="line"><span style="color:#E1E4E8">Cookie newCookie </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Cookie</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"testCookie"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"testValue"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">addCookie</span><span style="color:#E1E4E8">(newCookie);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 检索 cookie 的值</span></span>
+<span class="line"><span style="color:#E1E4E8">String cookieValue </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">getCookieNamed</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"testCookie"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">getValue</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 删除 cookie</span></span>
+<span class="line"><span style="color:#E1E4E8">driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">deleteCookieNamed</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"testCookie"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 验证 cookie 删除</span></span>
+<span class="line"><span style="color:#E1E4E8">Set&#x3C;</span><span style="color:#F97583">Cookie</span><span style="color:#E1E4E8">> cookiesAfterDeletion </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> driver.</span><span style="color:#B392F0">manage</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">getCookies</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">assert</span><span style="color:#E1E4E8"> cookiesAfterDeletion.</span><span style="color:#B392F0">isEmpty</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>切记从 <strong>Selenium</strong> <strong>WebDriver</strong> 库中 <strong>导入</strong> <code>Cookie</code> 类。此外，请确保您处于要操作的 Cookie 的域中，因为 <strong>WebDriver</strong> 不允许您添加或从与当前页面不同的域删除 Cookie。</p>
+</li>
+</ul> </article> <section class="giscus-section" aria-label="评论" data-astro-cid-an2nl7ar><div class="giscus" data-astro-cid-an2nl7ar></div><script src="https://giscus.app/client.js" data-repo="naodeng/naodeng.com.cn" data-repo-id="R_kgDOHntNtg" data-category="Show and tell" data-category-id="DIC_kwDOHntNts4Cavst" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script></section>  </div> <aside class="docs-toc-wrap" data-astro-cid-ac2mn7rr> <aside class="toc-sidebar toc-sidebar--right" aria-label="本页目录" data-astro-cid-xvrfupwn><nav class="toc-nav" data-astro-cid-xvrfupwn><h2 class="toc-title" data-astro-cid-xvrfupwn>本页目录</h2><ul class="toc-list" data-astro-cid-xvrfupwn><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#目录" class="toc-link" data-astro-cid-xvrfupwn>目录</a></li><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#关于-webdriver-的问题" class="toc-link" data-astro-cid-xvrfupwn>关于 WebDriver 的问题？</a></li></ul></nav></aside><script type="module">function d(){const t=document.querySelector(".toc-sidebar--left"),a=t?.closest(".article-with-toc"),u=document.querySelector(".article-main"),l=document.querySelector(".l-footer");if(!t||!a)return;const i=a.getBoundingClientRect(),w=i.top>=window.innerHeight,h=i.bottom>0&&i.top<window.innerHeight;if(w){t.style.position="absolute",t.style.top="0",t.style.bottom="";return}t.style.position="fixed";const o=document.querySelector(".article-title-header, #article-title-header"),r=o?o.getBoundingClientRect().top:i.top,n=h?Math.max(16,r):16;t.style.top=n+"px";let e;if(h){const c=i.bottom<window.innerHeight;u&&c?e=Math.max(16,window.innerHeight-i.bottom):e=288;const s=Math.max(200,Math.floor(window.innerHeight*.7));window.innerHeight-n-e<s&&(e=Math.max(16,window.innerHeight-n-s))}else e=288;if(l){const c=l.getBoundingClientRect(),s=window.innerHeight-c.top+8;e=Math.max(e,s)}else e=Math.max(e,288);t.style.bottom=e+"px"}function g(){const t=document.querySelector(".toc-sidebar"),a=document.querySelector(".article-main");if(!t||!a)return;const u=t.querySelectorAll(".toc-link"),l=a.querySelectorAll("h2[id], h3[id], h4[id]");if(u.length===0||l.length===0)return;const i=o=>{let r=null;u.forEach(c=>{const f=c.getAttribute("href")===`#${o}`;c.setAttribute("aria-current",f?"true":"false"),f&&(r=c)});const n=document.querySelector(".l-footer"),e=n&&n.getBoundingClientRect().top<window.innerHeight;r&&!e&&t.scrollHeight>t.clientHeight&&r.scrollIntoView({block:"nearest",behavior:"smooth"})},w=new IntersectionObserver(o=>{const r=o.filter(n=>n.isIntersecting).sort((n,e)=>{const c=(n.boundingClientRect?.top??0)+window.scrollY,s=(e.boundingClientRect?.top??0)+window.scrollY;return c-s});r.length>0&&i(r[0].target.id)},{rootMargin:"-80px 0px -66% 0px",threshold:0});l.forEach(o=>w.observe(o));const h=Array.from(l).find(o=>o.getBoundingClientRect().top<=window.innerHeight*.5);i(h?.id??l[0]?.id??null)}function m(){d(),g()}document.addEventListener("DOMContentLoaded",m);window.addEventListener("load",d);window.addEventListener("load",()=>setTimeout(d,50));window.addEventListener("scroll",()=>d(),{passive:!0});window.addEventListener("resize",()=>d());typeof ResizeObserver<"u"&&document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".article-with-toc");t&&new ResizeObserver(()=>d()).observe(t)});</script> </aside> </div>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/wiki/webdriver/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/series/" data-astro-cid-sz7xmlte>系列</a> <a href="/zh-cn/tags/" data-astro-cid-sz7xmlte>标签</a> <a href="/zh-cn/wiki/" data-astro-cid-sz7xmlte>软件测试百科</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>支持</a> <a href="/zh-cn/copyright/" data-astro-cid-sz7xmlte>版权信息</a> <a href="/zh-cn/privacy/" data-astro-cid-sz7xmlte>隐私政策</a> <a href="/zh-cn/links/" data-astro-cid-sz7xmlte>友情链接</a> <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>状态</a> <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>访问统计</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <p class="footer-slogan" data-astro-cid-sz7xmlte>质量分析师，而非质量保证师。</p> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/zh-cn/copyright/" class="license-link" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</a> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-algolia-key="7bf4a2b4e4f0c324b0cca574ab137f6a" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <div class="search-hint-row" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> <p class="search-algolia-badge" data-astro-cid-qk3db3zz> <a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer" class="search-algolia-link" aria-label="Search by Algolia" data-astro-cid-qk3db3zz> <span class="search-algolia-icon" aria-hidden="true" data-astro-cid-qk3db3zz> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qk3db3zz> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" data-astro-cid-qk3db3zz></path> </svg> </span> <span class="search-algolia-text" data-astro-cid-qk3db3zz><span class="search-algolia-by" data-astro-cid-qk3db3zz>Search by</span> Algolia</span> </a> </p> </div> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script>(function(){const useAlgolia = true;
+const algoliaAppId = "5L1S6UUZVF";
+const algoliaIndexName = "inaodeng_com_5l1s6uuzvf_pages.tmp";
+
+  /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
+  const backdrop = document.querySelector(".search-backdrop[data-close]");
+  const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
+
+  let index = [];
+  let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
+
+  function getLocale() {
+    const el = document.documentElement.getAttribute("data-locale");
+    return el === "zh-cn" ? "zh-cn" : "en";
+  }
+
+  async function loadIndex() {
+    if (index.length > 0) return index;
+    locale = getLocale();
+    const res = await fetch(`/${locale}/search-index.json`);
+    if (!res.ok) return [];
+    index = await res.json();
+    return index;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
+    resultsEl.innerHTML = "";
+    resultsEl.hidden = items.length === 0;
+    emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    items.slice(0, 20).forEach((item) => {
+      const a = document.createElement("a");
+      const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
+      a.href = url;
+      a.className = "search-result-item";
+      a.setAttribute("role", "listitem");
+      const dateStr = new Date(item.date).toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      a.innerHTML = `
+        <span class="search-result-title">${escapeHtml(item.title)}</span>
+        <span class="search-result-meta">${escapeHtml(dateStr)}${item.tags?.length ? " · " + item.tags.slice(0, 3).join(", ") : ""}</span>
+      `;
+      resultsEl.appendChild(a);
+    });
+  }
+
+  // 使用事件委托：在结果容器上统一处理点击（解决鼠标点链接/内层 span 不跳转的问题）
+  resultsEl.addEventListener("click", (e) => {
+    const a = e.target.closest("a.search-result-item");
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const url = a.getAttribute("href");
+    if (!url) return;
+    dialog.close();
+    setTimeout(function () {
+      window.location.assign(url);
+    }, 80);
+  });
+
+  function filter(q) {
+    const lower = q.trim().toLowerCase();
+    if (!lower) return [];
+    return index.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lower) ||
+        item.description.toLowerCase().includes(lower) ||
+        (item.tags && item.tags.some((t) => t.toLowerCase().includes(lower)))
+    );
+  }
+
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      // is:inline 脚本未打包，从 ESM CDN 加载
+      const mod = await import("https://esm.sh/algoliasearch@5");
+      const { algoliasearch } = mod;
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        hitsPerPage: 30,
+      },
+    });
+    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
+    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
+    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
+  }
+
+  function onInput() {
+    const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false, false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) {
+            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
+            renderItems(items, true, true);
+          }
+        } catch (err) {
+          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
+        }
+      }, 200);
+      return;
+    }
+
+    if (!index.length) {
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      return;
+    }
+    const items = filter(q);
+    renderItems(items, hasQuery, false);
+  }
+
+  function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
+    loadIndex().then(() => {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+    });
+  }
+
+  function closeSearch() {
+    dialog.close();
+    if (hintEl) hintEl.style.display = "";
+  }
+
+  dialog.addEventListener("close", () => {
+    if (hintEl) hintEl.style.display = "";
+  });
+
+  dialog.addEventListener("cancel", closeSearch);
+
+  backdrop?.addEventListener("click", closeSearch);
+
+  input.addEventListener("input", onInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "Enter") {
+      const first = resultsEl.querySelector(".search-result-item");
+      if (first) {
+        first.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      if (dialog.open) closeSearch();
+      else openSearch();
+    }
+  });
+
+  document.querySelectorAll("[data-search-open]").forEach((el) => {
+    el.addEventListener("click", openSearch);
+  });
+
+  window.addEventListener("search-open", openSearch);
+})();</script>    </body> </html>  

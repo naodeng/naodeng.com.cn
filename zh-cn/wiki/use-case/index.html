@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>用例 | 软件测试同学</title><meta name="description" content="用例图 是 外部参与者 和正在开发的 系统 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。在 测试自动化 的上下文中，用例图 用作识别 测试场景 的高级指南。它包括 参与者（用户或其他系统）、用例（参与者想要实现的目标）和 关联（连接参与者与他们参与…"><meta name="keywords" content="软件测试, 质量分析, 自动化测试, 接口测试, 性能测试, 敏捷测试, 测试自动化, inaodeng, naodeng"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="author" content="Nao Deng"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><link rel="canonical" href="https://inaodeng.com/zh-cn/wiki/use-case/"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/wiki/use-case/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/wiki/use-case/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/wiki/use-case/"><link rel="alternate" type="application/rss+xml" title="RSS - 软件测试同学" href="https://inaodeng.com/zh-cn/rss.xml/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta name="algolia-site-verification" content="B0319275B670BBB0"><meta property="og:type" content="website"><meta property="og:title" content="用例 | 软件测试同学"><meta property="og:site_name" content="软件测试同学"><meta property="og:description" content="用例图 是 外部参与者 和正在开发的 系统 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。在 测试自动化 的上下文中，用例图 用作识别 测试场景 的高级指南。它包括 参与者（用户或其他系统）、用例（参与者想要实现的目标）和 关联（连接参与者与他们参与…"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:image:alt" content="用例"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://inaodeng.com/zh-cn/wiki/use-case/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@inaodeng"><meta name="twitter:title" content="用例 | 软件测试同学"><meta name="twitter:description" content="用例图 是 外部参与者 和正在开发的 系统 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。在 测试自动化 的上下文中，用例图 用作识别 测试场景 的高级指南。它包括 参与者（用户或其他系统）、用例（参与者想要实现的目标）和 关联（连接参与者与他们参与…"><meta name="twitter:image" content="https://inaodeng.com/ogp.png"><meta name="twitter:image:alt" content="用例"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"软件测试同学","description":"用例图 是 外部参与者 和正在开发的 系统 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。在 测试自动化 的上下文中，用例图 用作识别 测试场景 的高级指南。它包括 参与者（用户或其他系统）、用例（参与者想要实现的目标）和 关联（连接参与者与他们参与…","url":"https://inaodeng.com","inLanguage":["zh-CN"],"publisher":{"@type":"Organization","name":"软件测试同学","url":"https://inaodeng.com","logo":{"@type":"ImageObject","url":"https://inaodeng.com/ogp.png","width":1200,"height":630}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://inaodeng.com/zh-cn/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nao Deng","url":"https://inaodeng.com","sameAs":["https://github.com/naodeng","https://x.com/inaodeng","https://naodeng.medium.com/","https://weibo.com/u/1651778270","https://ko-fi.com/naodeng"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://inaodeng.com/zh-cn/"},{"@type":"ListItem","position":2,"name":"测试百科","item":"https://inaodeng.com/zh-cn/wiki/"},{"@type":"ListItem","position":3,"name":"用例","item":"https://inaodeng.com/zh-cn/wiki/use-case/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTerm","name":"用例","description":"用例图 是 外部参与者 和正在开发的 系统 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。在 测试自动化 的上下文中，用例图 用作识别 测试场景 的高级指南。它包括 参与者（用户或其他系统）、用例（参与者想要实现的目标）和 关联（连接参与者与他们参与…","url":"https://inaodeng.com/zh-cn/wiki/use-case/","inDefinedTermSet":{"@type":"DefinedTermSet","name":"软件测试百科","url":"https://inaodeng.com/zh-cn/wiki/"}}</script><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin="anonymous"></script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>.giscus-section[data-astro-cid-an2nl7ar]{margin-block-start:var(--sp-l);padding-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 14%,transparent)}.giscus-section[data-astro-cid-an2nl7ar] .giscus-frame{width:100%}
+.breadcrumb[data-astro-cid-qaanghzh]{margin-block-end:var(--sp-m, 1rem)}.breadcrumb-list[data-astro-cid-qaanghzh]{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .5rem;font-size:.875rem;color:color-mix(in srgb,var(--color-main) 65%,transparent)}.breadcrumb-item[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;gap:.25rem}.breadcrumb-link[data-astro-cid-qaanghzh]{color:inherit;text-decoration:none}.breadcrumb-link[data-astro-cid-qaanghzh]:hover{color:var(--color-theme);text-decoration:underline}.breadcrumb-icon[data-astro-cid-qaanghzh]{display:inline-flex;flex-shrink:0;margin-inline-end:.35em;color:var(--color-theme);opacity:.85}.breadcrumb-icon[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}.breadcrumb-icon--current[data-astro-cid-qaanghzh]{opacity:.7}.breadcrumb-current[data-astro-cid-qaanghzh]{color:inherit;display:inline-flex;align-items:center;gap:.35em}.breadcrumb-sep[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;margin-inline:.4rem;color:color-mix(in srgb,var(--color-main) 45%,transparent);user-select:none}.breadcrumb-sep[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.OapxBOfU.css">
+<style>.wiki-article[data-astro-cid-sqfwpogz] h1{margin-block-end:var(--sp-m)}.wiki-article[data-astro-cid-sqfwpogz] h2{margin-block:var(--sp-l) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] h3{margin-block:var(--sp-m) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] a{color:var(--color-theme);text-decoration:underline}.wiki-article[data-astro-cid-sqfwpogz] ul{padding-inline-start:1.5em}
+.toc-sidebar[data-astro-cid-xvrfupwn]{max-height:calc(100vh - 2rem);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}.toc-sidebar[data-astro-cid-xvrfupwn]::-webkit-scrollbar{display:none}.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:sticky;top:var(--sp-m, 1rem);align-self:start}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:absolute;left:var(--sp-m, 1rem);top:0;width:12rem;max-width:calc(100vw - 800px - var(--sp-m, 1rem) * 4);max-height:none;min-height:12rem;overflow-y:auto;overflow-x:hidden;z-index:10}.toc-sidebar--below[data-astro-cid-xvrfupwn]{position:static;width:100%;max-width:none;margin-block-end:var(--sp-l, 1.5rem)}.toc-sidebar--below[data-astro-cid-xvrfupwn] .toc-list[data-astro-cid-xvrfupwn]{display:block}.toc-nav[data-astro-cid-xvrfupwn]{padding:var(--sp-m);border-radius:12px;background:color-mix(in srgb,var(--color-theme) 6%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent)}.toc-title[data-astro-cid-xvrfupwn]{margin:0 0 .75rem;font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-theme);opacity:.9}.toc-list[data-astro-cid-xvrfupwn]{list-style:none;margin:0;padding:0}.toc-item[data-astro-cid-xvrfupwn]{margin:0;padding:0;padding-inline-start:calc((var(--depth) - 2) * .75rem);margin-block-end:.35rem}.toc-link[data-astro-cid-xvrfupwn]{display:block;font-size:.8125rem;line-height:1.4;color:var(--color-main);text-decoration:none;opacity:.85;transition:opacity .2s ease,color .2s ease;border-block-end:1px solid transparent}.toc-link[data-astro-cid-xvrfupwn]:hover{opacity:1;color:var(--color-theme)}.toc-link[data-astro-cid-xvrfupwn]:active,.toc-link[data-astro-cid-xvrfupwn][aria-current=true]{color:var(--color-theme);font-weight:600;opacity:1}@media(max-width:960px){.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:static;max-height:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:static;transform:none;top:auto;left:auto;width:auto;max-width:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.DKZjF0rP.css"></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <div class="site-brand" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <p class="site-slogan" data-astro-cid-3ef6ksr2>质量分析师，而非质量保证师。</p> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/wiki/" class="active" data-astro-cid-3ef6ksr2> 百科 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 支持 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <div class="locale-dropdown compact" data-locale-dropdown data-astro-cid-opxux4jt> <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger data-astro-cid-opxux4jt> <span class="material-icons-sharp icon-lang" aria-hidden="true" data-astro-cid-opxux4jt>translate</span> <span class="locale-flag" data-astro-cid-opxux4jt>🇨🇳</span>  </button> <div class="locale-panel" hidden data-locale-panel data-astro-cid-opxux4jt> <ul data-astro-cid-opxux4jt> <li data-astro-cid-opxux4jt> <a href="/en/wiki/use-case/" data-lang="en" data-locale-option data-astro-cid-opxux4jt> English </a> </li><li data-astro-cid-opxux4jt> <a href="/zh-cn/wiki/use-case/" data-lang="zh-cn" data-locale-option data-astro-cid-opxux4jt> 简体中文 </a> </li> </ul> </div> </div> <script type="module">function r(e){const n=e.querySelector("[data-locale-trigger]"),a=e.querySelector("[data-locale-panel]");if(!n||!a)return;const c=()=>{a.hidden=!0,n.setAttribute("aria-expanded","false")},d=()=>{a.hidden=!1,n.setAttribute("aria-expanded","true")},o=()=>a.hidden?d():c();n.addEventListener("click",t=>{t.stopPropagation(),o()}),e.querySelectorAll("[data-locale-option]").forEach(t=>{t.addEventListener("click",()=>{const l=t.dataset.lang;l&&localStorage.setItem("selectedLang",l)})}),document.addEventListener("click",t=>{a.hidden||e.contains(t.target)||c()})}document.querySelectorAll("[data-locale-dropdown]").forEach(e=>r(e));</script>  </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <button type="button" class="btn-icon" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="btn-icon-kbd" data-astro-cid-3ef6ksr2>⌘K</span> </button> </li> </ul> </nav> </header>  <main id="main" class="l-main l-content l-content--with-sidebar"> <nav class="breadcrumb" aria-label="Breadcrumb" data-astro-cid-qaanghzh><ol class="breadcrumb-list" data-astro-cid-qaanghzh><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/" class="breadcrumb-link" data-astro-cid-qaanghzh><span class="breadcrumb-icon" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-astro-cid-qaanghzh></path><polyline points="9 22 9 12 15 12 15 22" data-astro-cid-qaanghzh></polyline></svg></span>首页</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/wiki/" class="breadcrumb-link" data-astro-cid-qaanghzh>测试百科</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><span class="breadcrumb-current" aria-current="page" data-astro-cid-qaanghzh><span class="breadcrumb-icon breadcrumb-icon--current" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-astro-cid-qaanghzh></path><polyline points="14 2 14 8 20 8" data-astro-cid-qaanghzh></polyline><line x1="16" y1="13" x2="8" y2="13" data-astro-cid-qaanghzh></line><line x1="16" y1="17" x2="8" y2="17" data-astro-cid-qaanghzh></line><polyline points="10 9 9 9 8 9" data-astro-cid-qaanghzh></polyline></svg></span>用例</span></li></ol></nav><div class="l-docs" data-has-toc="true" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar-wrap" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar" aria-label="Documentation navigation" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-inner" data-astro-cid-qrwn6rcr>  <button type="button" class="docs-sidebar-toggle" aria-expanded="false" aria-controls="docs-sidebar-nav" id="docs-sidebar-toggle" data-astro-cid-qrwn6rcr> <span class="docs-sidebar-toggle-text" data-astro-cid-qrwn6rcr>本页导航</span> <span class="docs-sidebar-toggle-icon" aria-hidden="true" data-astro-cid-qrwn6rcr> <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-qrwn6rcr><polyline points="6 9 12 15 18 9" data-astro-cid-qrwn6rcr></polyline></svg> </span> </button> <nav class="docs-sidebar-nav" id="docs-sidebar-nav" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr>  <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/" class="docs-sidebar-link" data-search="概述 " data-astro-cid-qrwn6rcr> 概述 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>A</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/A-B-Testing/" class="docs-sidebar-link" data-search="a/b 测试 a-b-testing" data-astro-cid-qrwn6rcr> A/B 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-test-driven-development/" class="docs-sidebar-link" data-search="验收测试驱动开发 acceptance-test-driven-development" data-astro-cid-qrwn6rcr> 验收测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-testing/" class="docs-sidebar-link" data-search="验收测试 acceptance-testing" data-astro-cid-qrwn6rcr> 验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/accessibility-testing/" class="docs-sidebar-link" data-search="无障碍测试 accessibility-testing" data-astro-cid-qrwn6rcr> 无障碍测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/actual-result/" class="docs-sidebar-link" data-search="实际结果 actual-result" data-astro-cid-qrwn6rcr> 实际结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ad-hoc-testing/" class="docs-sidebar-link" data-search="随机测试 ad-hoc-testing" data-astro-cid-qrwn6rcr> 随机测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-development/" class="docs-sidebar-link" data-search="敏捷开发 agile-development" data-astro-cid-qrwn6rcr> 敏捷开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-testing/" class="docs-sidebar-link" data-search="敏捷测试 agile-testing" data-astro-cid-qrwn6rcr> 敏捷测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/alpha-testing/" class="docs-sidebar-link" data-search="alpha 测试 alpha-testing" data-astro-cid-qrwn6rcr> Alpha 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/analytical-test-strategy/" class="docs-sidebar-link" data-search="分析式测试策略 analytical-test-strategy" data-astro-cid-qrwn6rcr> 分析式测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api/" class="docs-sidebar-link" data-search="应用程序编程接口 api" data-astro-cid-qrwn6rcr> 应用程序编程接口 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api-testing/" class="docs-sidebar-link" data-search="api 测试 api-testing" data-astro-cid-qrwn6rcr> API 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/astqb/" class="docs-sidebar-link" data-search="美国软件测试认证委员会 astqb" data-astro-cid-qrwn6rcr> 美国软件测试认证委员会 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/automated-testing/" class="docs-sidebar-link" data-search="自动化测试 automated-testing" data-astro-cid-qrwn6rcr> 自动化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/availability-testing/" class="docs-sidebar-link" data-search="可用性测试 availability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>B</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/back-to-back-testing/" class="docs-sidebar-link" data-search="背靠背测试 back-to-back-testing" data-astro-cid-qrwn6rcr> 背靠背测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/backward-compatibility/" class="docs-sidebar-link" data-search="向后兼容性 backward-compatibility" data-astro-cid-qrwn6rcr> 向后兼容性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/baseline-testing/" class="docs-sidebar-link" data-search="基准测试 baseline-testing" data-astro-cid-qrwn6rcr> 基准测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bdd/" class="docs-sidebar-link" data-search="行为驱动开发 bdd" data-astro-cid-qrwn6rcr> 行为驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/beta-testing/" class="docs-sidebar-link" data-search="beta 测试 beta-testing" data-astro-cid-qrwn6rcr> Beta 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/big-bang-testing/" class="docs-sidebar-link" data-search="大爆炸测试 big-bang-testing" data-astro-cid-qrwn6rcr> 大爆炸测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/black-box-testing/" class="docs-sidebar-link" data-search="黑盒测试 black-box-testing" data-astro-cid-qrwn6rcr> 黑盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bottom-up-integration/" class="docs-sidebar-link" data-search="自底向上集成 bottom-up-integration" data-astro-cid-qrwn6rcr> 自底向上集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/boundary-testing/" class="docs-sidebar-link" data-search="边界测试 boundary-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/browserstack/" class="docs-sidebar-link" data-search="browserstack browserstack" data-astro-cid-qrwn6rcr> Browserstack </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bs-7925-2/" class="docs-sidebar-link" data-search="bs 7925-2 bs-7925-2" data-astro-cid-qrwn6rcr> Bs 7925-2 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bug/" class="docs-sidebar-link" data-search="缺陷/漏洞 bug" data-astro-cid-qrwn6rcr> 缺陷/漏洞 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/build-verification-testing/" class="docs-sidebar-link" data-search="构建验证测试 build-verification-testing" data-astro-cid-qrwn6rcr> 构建验证测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>C</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/canary-testing/" class="docs-sidebar-link" data-search="金丝雀测试 canary-testing" data-astro-cid-qrwn6rcr> 金丝雀测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chai-js/" class="docs-sidebar-link" data-search="chai js chai-js" data-astro-cid-qrwn6rcr> Chai Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-control/" class="docs-sidebar-link" data-search="变更控制 change-control" data-astro-cid-qrwn6rcr> 变更控制 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-requests/" class="docs-sidebar-link" data-search="变更请求 change-requests" data-astro-cid-qrwn6rcr> 变更请求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chaos-engineering/" class="docs-sidebar-link" data-search="混沌工程 chaos-engineering" data-astro-cid-qrwn6rcr> 混沌工程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/clean-slate/" class="docs-sidebar-link" data-search="干净状态 clean-slate" data-astro-cid-qrwn6rcr> 干净状态 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cmmi/" class="docs-sidebar-link" data-search="能力成熟度模型集成 cmmi" data-astro-cid-qrwn6rcr> 能力成熟度模型集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/code-coverage/" class="docs-sidebar-link" data-search="代码覆盖率 code-coverage" data-astro-cid-qrwn6rcr> 代码覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/compatibility-testing/" class="docs-sidebar-link" data-search="兼容性测试 compatibility-testing" data-astro-cid-qrwn6rcr> 兼容性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/concurrency-testing/" class="docs-sidebar-link" data-search="并发测试 concurrency-testing" data-astro-cid-qrwn6rcr> 并发测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/control-flow-testing/" class="docs-sidebar-link" data-search="控制流测试 control-flow-testing" data-astro-cid-qrwn6rcr> 控制流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cross-browser-testing/" class="docs-sidebar-link" data-search="跨浏览器测试 cross-browser-testing" data-astro-cid-qrwn6rcr> 跨浏览器测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cypress/" class="docs-sidebar-link" data-search="cypress cypress" data-astro-cid-qrwn6rcr> Cypress </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>D</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/data-flow-testing/" class="docs-sidebar-link" data-search="数据流测试 data-flow-testing" data-astro-cid-qrwn6rcr> 数据流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/database/" class="docs-sidebar-link" data-search="数据库 database" data-astro-cid-qrwn6rcr> 数据库 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/decision-table-testing/" class="docs-sidebar-link" data-search="判定表测试 decision-table-testing" data-astro-cid-qrwn6rcr> 判定表测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/defect-management/" class="docs-sidebar-link" data-search="缺陷管理 defect-management" data-astro-cid-qrwn6rcr> 缺陷管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dependency-testing/" class="docs-sidebar-link" data-search="依赖测试 dependency-testing" data-astro-cid-qrwn6rcr> 依赖测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/documentation-testing/" class="docs-sidebar-link" data-search="文档测试 documentation-testing" data-astro-cid-qrwn6rcr> 文档测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dynamic-testing/" class="docs-sidebar-link" data-search="动态测试 dynamic-testing" data-astro-cid-qrwn6rcr> 动态测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>E</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/edge-testing/" class="docs-sidebar-link" data-search="边界测试 edge-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/end-to-end-testing/" class="docs-sidebar-link" data-search="端到端测试 end-to-end-testing" data-astro-cid-qrwn6rcr> 端到端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/endurance-testing/" class="docs-sidebar-link" data-search="耐久性测试 endurance-testing" data-astro-cid-qrwn6rcr> 耐久性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/entry-criteria/" class="docs-sidebar-link" data-search="准入条件的问题？ entry-criteria" data-astro-cid-qrwn6rcr> 准入条件的问题？ </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/equivalence-partitioning/" class="docs-sidebar-link" data-search="等价类划分 equivalence-partitioning" data-astro-cid-qrwn6rcr> 等价类划分 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/error-guessing/" class="docs-sidebar-link" data-search="错误猜测 error-guessing" data-astro-cid-qrwn6rcr> 错误猜测 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/expected-result/" class="docs-sidebar-link" data-search="预期结果 expected-result" data-astro-cid-qrwn6rcr> 预期结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/exploratory-testing/" class="docs-sidebar-link" data-search="探索性测试 exploratory-testing" data-astro-cid-qrwn6rcr> 探索性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/extreme-programming/" class="docs-sidebar-link" data-search="极限编程 extreme-programming" data-astro-cid-qrwn6rcr> 极限编程 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>F</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/failover-testing/" class="docs-sidebar-link" data-search="故障转移测试 failover-testing" data-astro-cid-qrwn6rcr> 故障转移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-negative/" class="docs-sidebar-link" data-search="漏报 false-negative" data-astro-cid-qrwn6rcr> 漏报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-positive/" class="docs-sidebar-link" data-search="误报 false-positive" data-astro-cid-qrwn6rcr> 误报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fat/" class="docs-sidebar-link" data-search="工厂验收测试 fat" data-astro-cid-qrwn6rcr> 工厂验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fault-injection-testing/" class="docs-sidebar-link" data-search="故障注入测试 fault-injection-testing" data-astro-cid-qrwn6rcr> 故障注入测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/flaky-test/" class="docs-sidebar-link" data-search="不稳定性测试 flaky-test" data-astro-cid-qrwn6rcr> 不稳定性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/front-end-testing/" class="docs-sidebar-link" data-search="前端测试 front-end-testing" data-astro-cid-qrwn6rcr> 前端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-integration/" class="docs-sidebar-link" data-search="功能集成 functional-integration" data-astro-cid-qrwn6rcr> 功能集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-requirements/" class="docs-sidebar-link" data-search="功能需求 functional-requirements" data-astro-cid-qrwn6rcr> 功能需求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-testing/" class="docs-sidebar-link" data-search="功能测试 functional-testing" data-astro-cid-qrwn6rcr> 功能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/future-proof-testing/" class="docs-sidebar-link" data-search="前瞻性测试 future-proof-testing" data-astro-cid-qrwn6rcr> 前瞻性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fuzz-testing/" class="docs-sidebar-link" data-search="模糊测试 fuzz-testing" data-astro-cid-qrwn6rcr> 模糊测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>G</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gherkin/" class="docs-sidebar-link" data-search="gherkin gherkin" data-astro-cid-qrwn6rcr> Gherkin </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/glass-box-testing/" class="docs-sidebar-link" data-search="玻璃盒测试 glass-box-testing" data-astro-cid-qrwn6rcr> 玻璃盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gorilla-testing/" class="docs-sidebar-link" data-search="大猩猩测试 gorilla-testing" data-astro-cid-qrwn6rcr> 大猩猩测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/grey-box-testing/" class="docs-sidebar-link" data-search="灰盒测试 grey-box-testing" data-astro-cid-qrwn6rcr> 灰盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>H</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/happy-path/" class="docs-sidebar-link" data-search="快乐路径 happy-path" data-astro-cid-qrwn6rcr> 快乐路径 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/headless-testing/" class="docs-sidebar-link" data-search="无头测试 headless-testing" data-astro-cid-qrwn6rcr> 无头测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/heuristic-testing/" class="docs-sidebar-link" data-search="启发式测试 heuristic-testing" data-astro-cid-qrwn6rcr> 启发式测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>I</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ieee-829/" class="docs-sidebar-link" data-search="ieee 829 ieee-829" data-astro-cid-qrwn6rcr> IEEE 829 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/impact-analysis/" class="docs-sidebar-link" data-search="影响分析 impact-analysis" data-astro-cid-qrwn6rcr> 影响分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-management/" class="docs-sidebar-link" data-search="事件管理 incident-management" data-astro-cid-qrwn6rcr> 事件管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-report/" class="docs-sidebar-link" data-search="事件报告 incident-report" data-astro-cid-qrwn6rcr> 事件报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incremental-testing/" class="docs-sidebar-link" data-search="渐进式测试 incremental-testing" data-astro-cid-qrwn6rcr> 渐进式测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/independent-verification-and-validation/" class="docs-sidebar-link" data-search="独立确认与验证 independent-verification-and-validation" data-astro-cid-qrwn6rcr> 独立确认与验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/input-validation-testing/" class="docs-sidebar-link" data-search="输入验证测试 input-validation-testing" data-astro-cid-qrwn6rcr> 输入验证测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/inspection/" class="docs-sidebar-link" data-search="检查的 inspection" data-astro-cid-qrwn6rcr> 检查的 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/integration-testing/" class="docs-sidebar-link" data-search="集成测试 integration-testing" data-astro-cid-qrwn6rcr> 集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interface-testing/" class="docs-sidebar-link" data-search="接口测试 interface-testing" data-astro-cid-qrwn6rcr> 接口测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/internationalization-testing/" class="docs-sidebar-link" data-search="国际化测试 internationalization-testing" data-astro-cid-qrwn6rcr> 国际化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interoperability-testing/" class="docs-sidebar-link" data-search="互操作性测试 interoperability-testing" data-astro-cid-qrwn6rcr> 互操作性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/istqb/" class="docs-sidebar-link" data-search="istqb istqb" data-astro-cid-qrwn6rcr> ISTQB </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/iteration/" class="docs-sidebar-link" data-search="迭代 iteration" data-astro-cid-qrwn6rcr> 迭代 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>J</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jasmine/" class="docs-sidebar-link" data-search="jasmine jasmine" data-astro-cid-qrwn6rcr> Jasmine </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jest/" class="docs-sidebar-link" data-search="jest jest" data-astro-cid-qrwn6rcr> Jest </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jira/" class="docs-sidebar-link" data-search="jira jira" data-astro-cid-qrwn6rcr> Jira </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jmeter/" class="docs-sidebar-link" data-search="jmeter jmeter" data-astro-cid-qrwn6rcr> Jmeter </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/junit-testing/" class="docs-sidebar-link" data-search="junit 测试 junit-testing" data-astro-cid-qrwn6rcr> JUnit 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>K</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/keyword-driven-testing/" class="docs-sidebar-link" data-search="关键字驱动测试 keyword-driven-testing" data-astro-cid-qrwn6rcr> 关键字驱动测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>L</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/lighthouse/" class="docs-sidebar-link" data-search="lighthouse lighthouse" data-astro-cid-qrwn6rcr> Lighthouse </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/load-testing/" class="docs-sidebar-link" data-search="负载测试 load-testing" data-astro-cid-qrwn6rcr> 负载测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/localization-testing/" class="docs-sidebar-link" data-search="本地化测试 localization-testing" data-astro-cid-qrwn6rcr> 本地化测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>M</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintainability/" class="docs-sidebar-link" data-search="可维护性 maintainability" data-astro-cid-qrwn6rcr> 可维护性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintenance-testing/" class="docs-sidebar-link" data-search="维护测试 maintenance-testing" data-astro-cid-qrwn6rcr> 维护测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/manual-testing/" class="docs-sidebar-link" data-search="手动测试 manual-testing" data-astro-cid-qrwn6rcr> 手动测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/microservices-testing/" class="docs-sidebar-link" data-search="微服务测试 microservices-testing" data-astro-cid-qrwn6rcr> 微服务测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-app-testing/" class="docs-sidebar-link" data-search="移动应用测试 mobile-app-testing" data-astro-cid-qrwn6rcr> 移动应用测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-device-testing/" class="docs-sidebar-link" data-search="移动设备测试 mobile-device-testing" data-astro-cid-qrwn6rcr> 移动设备测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mock-testing/" class="docs-sidebar-link" data-search="模拟测试 mock-testing" data-astro-cid-qrwn6rcr> 模拟测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/monkey-testing/" class="docs-sidebar-link" data-search="猴子测试 monkey-testing" data-astro-cid-qrwn6rcr> 猴子测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mtbf/" class="docs-sidebar-link" data-search="平均故障间隔时间 mtbf" data-astro-cid-qrwn6rcr> 平均故障间隔时间 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mutation-testing/" class="docs-sidebar-link" data-search="变异测试 mutation-testing" data-astro-cid-qrwn6rcr> 变异测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>N</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/negative-testing/" class="docs-sidebar-link" data-search="逆向测试/负面测试 negative-testing" data-astro-cid-qrwn6rcr> 逆向测试/负面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/node-js/" class="docs-sidebar-link" data-search="node js node-js" data-astro-cid-qrwn6rcr> Node Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/non-functional-testing/" class="docs-sidebar-link" data-search="非功能性测试 non-functional-testing" data-astro-cid-qrwn6rcr> 非功能性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/nunit/" class="docs-sidebar-link" data-search="nunit nunit" data-astro-cid-qrwn6rcr> Nunit </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>O</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/operational-testing/" class="docs-sidebar-link" data-search="运维测试 operational-testing" data-astro-cid-qrwn6rcr> 运维测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/orthogonal-array-testing/" class="docs-sidebar-link" data-search="正交数组测试 orthogonal-array-testing" data-astro-cid-qrwn6rcr> 正交数组测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ott-testing/" class="docs-sidebar-link" data-search="ott 测试 ott-testing" data-astro-cid-qrwn6rcr> OTT 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>P</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/page-object-model/" class="docs-sidebar-link" data-search="页面对象模型 page-object-model" data-astro-cid-qrwn6rcr> 页面对象模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/pair-testing/" class="docs-sidebar-link" data-search="结对测试 pair-testing" data-astro-cid-qrwn6rcr> 结对测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/parameterized-testing/" class="docs-sidebar-link" data-search="参数化测试 parameterized-testing" data-astro-cid-qrwn6rcr> 参数化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/path-testing/" class="docs-sidebar-link" data-search="路径测试 path-testing" data-astro-cid-qrwn6rcr> 路径测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/peer-testing/" class="docs-sidebar-link" data-search="同行评审测试 peer-testing" data-astro-cid-qrwn6rcr> 同行评审测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/penetration-testing/" class="docs-sidebar-link" data-search="渗透测试 penetration-testing" data-astro-cid-qrwn6rcr> 渗透测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-indicator/" class="docs-sidebar-link" data-search="性能指标 performance-indicator" data-astro-cid-qrwn6rcr> 性能指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-testing/" class="docs-sidebar-link" data-search="性能测试 performance-testing" data-astro-cid-qrwn6rcr> 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postcondition/" class="docs-sidebar-link" data-search="后置条件 postcondition" data-astro-cid-qrwn6rcr> 后置条件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postman/" class="docs-sidebar-link" data-search="postman postman" data-astro-cid-qrwn6rcr> Postman </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/priority/" class="docs-sidebar-link" data-search="优先级 priority" data-astro-cid-qrwn6rcr> 优先级 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Q</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/qa-metrics/" class="docs-sidebar-link" data-search="qa 指标 qa-metrics" data-astro-cid-qrwn6rcr> QA 指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-assurance/" class="docs-sidebar-link" data-search="质量保证 quality-assurance" data-astro-cid-qrwn6rcr> 质量保证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-management/" class="docs-sidebar-link" data-search="质量管理 quality-management" data-astro-cid-qrwn6rcr> 质量管理 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>R</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/regression-testing/" class="docs-sidebar-link" data-search="回归测试 regression-testing" data-astro-cid-qrwn6rcr> 回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/release-testing/" class="docs-sidebar-link" data-search="发布测试 release-testing" data-astro-cid-qrwn6rcr> 发布测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reliability-testing/" class="docs-sidebar-link" data-search="可靠性测试 reliability-testing" data-astro-cid-qrwn6rcr> 可靠性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/requirements-management-tool/" class="docs-sidebar-link" data-search="需求管理工具 requirements-management-tool" data-astro-cid-qrwn6rcr> 需求管理工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/responsive-design/" class="docs-sidebar-link" data-search="响应式设计 responsive-design" data-astro-cid-qrwn6rcr> 响应式设计 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/retesting/" class="docs-sidebar-link" data-search="再次测试 retesting" data-astro-cid-qrwn6rcr> 再次测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reviewer/" class="docs-sidebar-link" data-search="评审人员 reviewer" data-astro-cid-qrwn6rcr> 评审人员 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/risk-based-testing/" class="docs-sidebar-link" data-search="基于风险的测试 risk-based-testing" data-astro-cid-qrwn6rcr> 基于风险的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/robustness-testing/" class="docs-sidebar-link" data-search="鲁棒性测试 robustness-testing" data-astro-cid-qrwn6rcr> 鲁棒性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/rup/" class="docs-sidebar-link" data-search="rup rup" data-astro-cid-qrwn6rcr> Rup </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>S</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sanity-testing/" class="docs-sidebar-link" data-search="冒烟测试/健全性测试 sanity-testing" data-astro-cid-qrwn6rcr> 冒烟测试/健全性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scalability-testing/" class="docs-sidebar-link" data-search="可扩展性测试 scalability-testing" data-astro-cid-qrwn6rcr> 可扩展性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/screenshot-testing/" class="docs-sidebar-link" data-search="截图测试 screenshot-testing" data-astro-cid-qrwn6rcr> 截图测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scrum/" class="docs-sidebar-link" data-search="scrum scrum" data-astro-cid-qrwn6rcr> Scrum </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/security-testing/" class="docs-sidebar-link" data-search="安全测试 security-testing" data-astro-cid-qrwn6rcr> 安全测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium/" class="docs-sidebar-link" data-search="selenium selenium" data-astro-cid-qrwn6rcr> Selenium </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium-ide/" class="docs-sidebar-link" data-search="selenium ide selenium-ide" data-astro-cid-qrwn6rcr> Selenium Ide </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/session-based-testing/" class="docs-sidebar-link" data-search="基于会话的测试 session-based-testing" data-astro-cid-qrwn6rcr> 基于会话的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/setup/" class="docs-sidebar-link" data-search="环境搭建 setup" data-astro-cid-qrwn6rcr> 环境搭建 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/severity/" class="docs-sidebar-link" data-search="严重程度 severity" data-astro-cid-qrwn6rcr> 严重程度 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/shift-left-testing/" class="docs-sidebar-link" data-search="左移测试 shift-left-testing" data-astro-cid-qrwn6rcr> 左移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-development-life-cycle/" class="docs-sidebar-link" data-search="软件开发生命周期 software-development-life-cycle" data-astro-cid-qrwn6rcr> 软件开发生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality/" class="docs-sidebar-link" data-search="软件质量 software-quality" data-astro-cid-qrwn6rcr> 软件质量 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality-management/" class="docs-sidebar-link" data-search="软件质量管理 software-quality-management" data-astro-cid-qrwn6rcr> 软件质量管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-risk-analysis/" class="docs-sidebar-link" data-search="软件风险分析 software-risk-analysis" data-astro-cid-qrwn6rcr> 软件风险分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-testing/" class="docs-sidebar-link" data-search="软件测试 software-testing" data-astro-cid-qrwn6rcr> 软件测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sql/" class="docs-sidebar-link" data-search="sql sql" data-astro-cid-qrwn6rcr> Sql </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/state-transition-testing/" class="docs-sidebar-link" data-search="状态转换测试 state-transition-testing" data-astro-cid-qrwn6rcr> 状态转换测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/static-testing/" class="docs-sidebar-link" data-search="静态测试 static-testing" data-astro-cid-qrwn6rcr> 静态测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stlc/" class="docs-sidebar-link" data-search="软件测试生命周期 stlc" data-astro-cid-qrwn6rcr> 软件测试生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stress-testing/" class="docs-sidebar-link" data-search="压力测试 stress-testing" data-astro-cid-qrwn6rcr> 压力测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/structural-testing/" class="docs-sidebar-link" data-search="结构测试 structural-testing" data-astro-cid-qrwn6rcr> 结构测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/swagger/" class="docs-sidebar-link" data-search="swagger swagger" data-astro-cid-qrwn6rcr> Swagger </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-integration-testing/" class="docs-sidebar-link" data-search="系统集成测试 system-integration-testing" data-astro-cid-qrwn6rcr> 系统集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-testing/" class="docs-sidebar-link" data-search="系统测试 system-testing" data-astro-cid-qrwn6rcr> 系统测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>T</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-approach/" class="docs-sidebar-link" data-search="测试方法 test-approach" data-astro-cid-qrwn6rcr> 测试方法 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-automation/" class="docs-sidebar-link" data-search="测试自动化 test-automation" data-astro-cid-qrwn6rcr> 测试自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case/" class="docs-sidebar-link" data-search="测试用例 test-case" data-astro-cid-qrwn6rcr> 测试用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case-management/" class="docs-sidebar-link" data-search="测试用例管理 test-case-management" data-astro-cid-qrwn6rcr> 测试用例管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-class/" class="docs-sidebar-link" data-search="测试类 test-class" data-astro-cid-qrwn6rcr> 测试类 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-comparison/" class="docs-sidebar-link" data-search="测试比较 test-comparison" data-astro-cid-qrwn6rcr> 测试比较 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-coverage/" class="docs-sidebar-link" data-search="测试覆盖率 test-coverage" data-astro-cid-qrwn6rcr> 测试覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-data/" class="docs-sidebar-link" data-search="测试数据 test-data" data-astro-cid-qrwn6rcr> 测试数据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-specification/" class="docs-sidebar-link" data-search="测试设计规范 test-design-specification" data-astro-cid-qrwn6rcr> 测试设计规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-tool/" class="docs-sidebar-link" data-search="测试设计工具 test-design-tool" data-astro-cid-qrwn6rcr> 测试设计工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-driven-development/" class="docs-sidebar-link" data-search="测试驱动开发 test-driven-development" data-astro-cid-qrwn6rcr> 测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-environment/" class="docs-sidebar-link" data-search="测试环境 test-environment" data-astro-cid-qrwn6rcr> 测试环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution/" class="docs-sidebar-link" data-search="测试执行 test-execution" data-astro-cid-qrwn6rcr> 测试执行 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-automation/" class="docs-sidebar-link" data-search="测试执行自动化 test-execution-automation" data-astro-cid-qrwn6rcr> 测试执行自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-schedule/" class="docs-sidebar-link" data-search="测试执行进度表 test-execution-schedule" data-astro-cid-qrwn6rcr> 测试执行进度表 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-technique/" class="docs-sidebar-link" data-search="测试执行技术 test-execution-technique" data-astro-cid-qrwn6rcr> 测试执行技术 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-tool/" class="docs-sidebar-link" data-search="测试执行工具 test-execution-tool" data-astro-cid-qrwn6rcr> 测试执行工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-harness/" class="docs-sidebar-link" data-search="测试桩/测试执行环境 test-harness" data-astro-cid-qrwn6rcr> 测试桩/测试执行环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-infrastructure/" class="docs-sidebar-link" data-search="测试基础设施 test-infrastructure" data-astro-cid-qrwn6rcr> 测试基础设施 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-log/" class="docs-sidebar-link" data-search="测试日志 test-log" data-astro-cid-qrwn6rcr> 测试日志 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-management/" class="docs-sidebar-link" data-search="测试管理 test-management" data-astro-cid-qrwn6rcr> 测试管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-observability/" class="docs-sidebar-link" data-search="测试可观测性 test-observability" data-astro-cid-qrwn6rcr> 测试可观测性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-oracles/" class="docs-sidebar-link" data-search="测试判定依据 test-oracles" data-astro-cid-qrwn6rcr> 测试判定依据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-plan/" class="docs-sidebar-link" data-search="测试计划 test-plan" data-astro-cid-qrwn6rcr> 测试计划 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-policy/" class="docs-sidebar-link" data-search="测试策略说明 test-policy" data-astro-cid-qrwn6rcr> 测试策略说明 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process/" class="docs-sidebar-link" data-search="测试流程 test-process" data-astro-cid-qrwn6rcr> 测试流程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process-improvement/" class="docs-sidebar-link" data-search="测试流程改进 test-process-improvement" data-astro-cid-qrwn6rcr> 测试流程改进 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-pyramid/" class="docs-sidebar-link" data-search="测试金字塔 test-pyramid" data-astro-cid-qrwn6rcr> 测试金字塔 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-report/" class="docs-sidebar-link" data-search="测试报告 test-report" data-astro-cid-qrwn6rcr> 测试报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-runner/" class="docs-sidebar-link" data-search="测试执行器 test-runner" data-astro-cid-qrwn6rcr> 测试执行器 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-scenario/" class="docs-sidebar-link" data-search="测试场景 test-scenario" data-astro-cid-qrwn6rcr> 测试场景 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-script/" class="docs-sidebar-link" data-search="测试脚本 test-script" data-astro-cid-qrwn6rcr> 测试脚本 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-specification/" class="docs-sidebar-link" data-search="测试规范 test-specification" data-astro-cid-qrwn6rcr> 测试规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-strategy/" class="docs-sidebar-link" data-search="测试策略 test-strategy" data-astro-cid-qrwn6rcr> 测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-stub/" class="docs-sidebar-link" data-search="测试桩 test-stub" data-astro-cid-qrwn6rcr> 测试桩 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-suite/" class="docs-sidebar-link" data-search="测试套件 test-suite" data-astro-cid-qrwn6rcr> 测试套件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-tool/" class="docs-sidebar-link" data-search="测试工具 test-tool" data-astro-cid-qrwn6rcr> 测试工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/timebox-testing/" class="docs-sidebar-link" data-search="时间盒测试 timebox-testing" data-astro-cid-qrwn6rcr> 时间盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/top-down-integration/" class="docs-sidebar-link" data-search="自顶向下集成 top-down-integration" data-astro-cid-qrwn6rcr> 自顶向下集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/traceability-matrix/" class="docs-sidebar-link" data-search="需求跟踪矩阵 traceability-matrix" data-astro-cid-qrwn6rcr> 需求跟踪矩阵 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>U</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ui-testing/" class="docs-sidebar-link" data-search="用户界面测试 ui-testing" data-astro-cid-qrwn6rcr> 用户界面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-test-framework/" class="docs-sidebar-link" data-search="单元测试框架 unit-test-framework" data-astro-cid-qrwn6rcr> 单元测试框架 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-testing/" class="docs-sidebar-link" data-search="单元测试 unit-testing" data-astro-cid-qrwn6rcr> 单元测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/usability-testing/" class="docs-sidebar-link" data-search="可用性测试 usability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case/" class="docs-sidebar-link docs-sidebar-link--active" aria-current="page" data-search="用例 use-case" data-astro-cid-qrwn6rcr> 用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case-testing/" class="docs-sidebar-link" data-search="用例测试 use-case-testing" data-astro-cid-qrwn6rcr> 用例测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/user-acceptance-testing/" class="docs-sidebar-link" data-search="用户验收测试 user-acceptance-testing" data-astro-cid-qrwn6rcr> 用户验收测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>V</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/v-model/" class="docs-sidebar-link" data-search="v 模型 v-model" data-astro-cid-qrwn6rcr> V 模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/validation-testing/" class="docs-sidebar-link" data-search="确认测试 validation-testing" data-astro-cid-qrwn6rcr> 确认测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/verification/" class="docs-sidebar-link" data-search="验证 verification" data-astro-cid-qrwn6rcr> 验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/visual-regression-testing/" class="docs-sidebar-link" data-search="视觉回归测试 visual-regression-testing" data-astro-cid-qrwn6rcr> 视觉回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/volume-testing/" class="docs-sidebar-link" data-search="容量测试 volume-testing" data-astro-cid-qrwn6rcr> 容量测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>W</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-automation/" class="docs-sidebar-link" data-search="web 自动化 web-automation" data-astro-cid-qrwn6rcr> Web 自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-performance-testing/" class="docs-sidebar-link" data-search="web 性能测试 web-performance-testing" data-astro-cid-qrwn6rcr> Web 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-test-automation-tools/" class="docs-sidebar-link" data-search="web 测试自动化工具 web-test-automation-tools" data-astro-cid-qrwn6rcr> Web 测试自动化工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-testing/" class="docs-sidebar-link" data-search="web 测试 web-testing" data-astro-cid-qrwn6rcr> Web 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/webdriver/" class="docs-sidebar-link" data-search="webdriver webdriver" data-astro-cid-qrwn6rcr> Webdriver </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/white-box-testing/" class="docs-sidebar-link" data-search="白盒测试 white-box-testing" data-astro-cid-qrwn6rcr> 白盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>X</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/xpath-query/" class="docs-sidebar-link" data-search="xpath query xpath-query" data-astro-cid-qrwn6rcr> Xpath Query </a> </li> </ul> </div> </nav> </div> </aside>  <script type="module">function a(){const t=document.getElementById("docs-sidebar-toggle");if(t){const e=t.closest(".docs-sidebar-inner");e&&t.addEventListener("click",()=>{e.classList.toggle("is-open"),t.setAttribute("aria-expanded",e.classList.contains("is-open")?"true":"false")})}const s=document.getElementById("docs-sidebar-search-input");s&&s.addEventListener("input",()=>{const e=s.value.trim().toLowerCase();document.querySelectorAll(".docs-sidebar-section[data-section]").forEach(n=>{const d=n.querySelectorAll(".docs-sidebar-link[data-search]");let i=0;d.forEach(o=>{const c=!e||(o.getAttribute("data-search")??"").includes(e);o.style.display=c?"":"none",c&&i++}),n.style.display=i>0||!e?"":"none"})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",a):a();</script> </aside> <div class="docs-content" data-astro-cid-ac2mn7rr>  <article class="wiki-article" data-astro-cid-sqfwpogz> <!-- markdownlint-disable MD025 -->
+<h1 id="用例--use-case">用例 ｜ Use Case</h1>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%B8%8E%E9%87%8D%E8%A6%81%E6%80%A7">基础与重要性</a></li>
+<li><a href="#%E7%94%A8%E4%BE%8B%E5%9B%BE">用例图</a></li>
+<li><a href="#%E7%94%A8%E4%BE%8B%E5%9C%BA%E6%99%AF">用例场景</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E6%A6%82%E5%BF%B5">高级概念</a></li>
+</ul>
+<h3 id="相关术语">相关术语：</h3>
+<ul>
+<li>用例测试 (Use Case Testing)](/zh-cn/wiki/use-case-testing/)</li>
+</ul>
+<h2 id="关于用例-use-case-的问题">关于用例 (Use Case) 的问题？</h2>
+<h3 id="基础与重要性">基础与重要性</h3>
+<ul>
+<li>
+<p><strong>在软件测试中，什么是用例？</strong>
+在 <strong>软件测试</strong> 中，<strong>用例 (Use Case)</strong> 是参与者（用户或其他系统）对系统特定使用的描述。它概述了参与者与系统之间实现特定目标所需的交互序列。<strong>用例</strong> 在 <strong>功能测试</strong> 中起着重要作用，因为它们从最终用户的角度定义了系统必须满足的需求。
+<strong>用例</strong> 通常包括 <strong>主要成功场景</strong>——事件的标准流程——并且还可能描述 <strong>替代流程</strong> 和 <strong>异常流程</strong>，涵盖不同的使用场景和错误条件。这种全面的覆盖确保了源自 <strong>用例</strong> 的测试可以验证系统在各种条件下是否正常运行。
+<strong>用例</strong> 不仅仅是关于 <strong>快乐路径</strong>；它们还封装了场景开始前必须满足的 <strong>前置条件</strong> 和场景完成后应为真的 <strong>后置条件</strong>。这有助于设置 <strong>测试环境</strong> 和评估 <strong>测试执行</strong> 的结果。
+在 <strong>测试自动化</strong> 中，<strong>用例</strong> 指导自动化 <strong>测试脚本</strong> 的创建。这些脚本模拟参与者的动作和输入以验证系统的响应。通过自动化 <strong>用例</strong>，测试人员可以有效地重复这些场景进行 <strong>回归测试</strong>，确保新更改不会破坏现有功能。
+虽然 <strong>用例</strong> 侧重于用户交互，但它们也可以通过突出性能和可用性考虑因素来告知 <strong>非功能测试</strong>。例如，描述大容量交易场景的 <strong>用例</strong> 可以导致模拟重负载条件的性能测试。</p>
+</li>
+<li>
+<p><strong>为什么用例在软件开发中很重要？</strong>
+<strong>用例</strong> 在软件开发中至关重要，因为它们提供了一种 <strong>结构化的方式来捕获功能需求</strong>。它们描述了用户如何与系统交互，提供了预期行为和结果的清晰图景。这有助于 <strong>定义系统的范围</strong>，并确保考虑所有利益相关者的期望。
+在 <strong>测试自动化</strong> 的背景下，<strong>用例</strong> 作为创建 <strong>综合测试计划</strong> 的基础。它们有助于识别要测试的关键路径，并确保系统在真实用户使用时按预期运行。通过关注用户交互，<strong>用例</strong> 使测试人员能够优先考虑并设计涵盖 <strong>关键功能</strong> 的测试。
+此外，<strong>用例</strong> 通过提供易于理解的共同语言来促进团队成员之间的 <strong>沟通</strong>。这在成员可能具有不同专业领域的 <strong>跨职能团队</strong> 中尤为重要。<strong>用例</strong> 有助于弥合技术和非技术利益相关者之间的差距，确保每个人对系统应该做什么有共同的理解。
+总之，<strong>用例</strong> 很重要，因为它们：</p>
+<ul>
+<li>定义系统范围和功能。</li>
+<li>协助为自动化创建有效的测试计划。</li>
+<li>根据用户交互对测试进行优先排序。</li>
+<li>增强团队之间的沟通和理解。
+通过关注用户交互和结果，<strong>用例</strong> 有助于开发健壮的、以用户为中心的软件系统以及创建有效的自动化测试。</li>
+</ul>
+</li>
+<li>
+<p><strong>用例的关键组成部分是什么？</strong>
+<strong>用例</strong> 的关键组成部分包括：</p>
+<ul>
+<li><strong>标题 (Title)</strong>：封装用例目的的清晰、描述性名称。</li>
+<li><strong>主要参与者 (Primary Actor)</strong>：发起用例的主要实体，通常是用户角色或外部系统。</li>
+<li><strong>利益相关者和利益 (Stakeholders and Interests)</strong>：对用例结果有既得利益的其他实体列表。</li>
+<li><strong>前置条件 (Preconditions)</strong>：在用例开始之前必须为真的条件。</li>
+<li><strong>后置条件 (Postconditions)</strong>：用例成功完成后必须为真的条件。</li>
+<li><strong>主要成功场景 (Main Success Scenario)</strong>：描述实现目标的事件标准流程的逐步叙述。</li>
+<li><strong>扩展 (Extensions)</strong>：可能发生的替代流程，包括异常和错误条件。</li>
+<li><strong>特殊需求 (Special Requirements)</strong>：任何相关的非功能需求或约束，例如性能标准或法规遵从性。</li>
+<li><strong>使用频率 (Frequency of Use)</strong>：用例可能被发起的频率指示。</li>
+<li><strong>杂项 (Miscellaneous)</strong>：任何其他相关信息，例如数据变体或相关业务规则。
+这些组件确保 <strong>用例</strong> 是全面的，并提供对参与者与系统之间交互的清晰理解。它们作为创建验证系统预期行为的 <strong>测试用例</strong> 和场景的基础。</li>
+</ul>
+</li>
+<li>
+<p><strong>用例如何帮助理解系统功能？</strong>
+<strong>用例</strong> 通过提供用户如何与系统交互以实现特定目标的 <strong>结构化描述</strong>，促进了对系统功能的 <strong>更深入理解</strong>。它们提供了一个 <strong>叙述</strong>，引导测试人员完成一系列步骤，揭示系统在各种条件下的 <strong>预期行为</strong>。这种叙述有助于测试人员 <strong>设想</strong> 用户的观点并 <strong>验证</strong> 系统支持所有预期的 <strong>用例</strong>，确保满足 <strong>功能需求</strong>。
+通过概述用户（参与者）与系统之间的 <strong>交互</strong>，<strong>用例</strong> 有助于 <strong>识别</strong> 需要彻底测试的 <strong>关键路径</strong>。它们还 <strong>突出</strong> 系统不同部分之间的 <strong>依赖关系</strong> 和 <strong>交互</strong>，这对于设计 <strong>集成测试</strong> 至关重要。
+在 <strong>测试自动化</strong> 中，<strong>用例</strong> 在 <strong>定义自动化测试范围</strong> 方面起着重要作用。它们可以直接转换为模拟用户操作的 <strong>自动化测试脚本</strong>，为通过或未通过测试提供 <strong>明确的标准</strong>。<strong>用例</strong> 与自动化测试之间的这种对齐确保了自动化工作是 <strong>集中的</strong> 并且 <strong>相关</strong> 于用户的需求。
+此外，<strong>用例</strong> 可用于通过将自动化测试与全范围的 <strong>用例</strong> 进行比较来 <strong>检测测试覆盖率中的差距</strong>。这种比较可以揭示 <strong>未测试的路径</strong> 或 <strong>场景</strong>，提示创建额外的自动化测试以覆盖这些区域。
+总之，<strong>用例</strong> 是理解系统功能并确保 <strong>测试自动化</strong> 工作与用户需求和系统行为 <strong>保持一致</strong> 的 <strong>重要工具</strong>。</p>
+</li>
+<li>
+<p><strong>用例和测试用例有什么区别？</strong>
+<strong>用例</strong> 是从最终用户的角度对系统功能的高级描述。它概述了参与者（用户或其他系统）与系统之间实现目标的交互。<strong>用例</strong> 侧重于系统行为的 <strong>意图</strong> 和 <strong>目的</strong>，而不详细说明实现它的具体步骤。
+相比之下，<strong>测试用例</strong> 是一组条件和变量，测试人员通过这些条件和变量确定被测系统是否满足需求或工作正常。<strong>测试用例</strong> 更细粒度，包括详细的输入、执行步骤和 <strong>预期结果</strong>。它们旨在验证软件的实现，确保其符合指定的需求。
+<strong>用例</strong> 是关于系统应该做 <strong>什么</strong>，而 <strong>测试用例</strong> 是关于 <strong>如何</strong> 验证系统做它应该做的事情。<strong>测试用例</strong> 源自 <strong>用例</strong> 和其他规范，例如 <strong>功能需求</strong>。它们对于系统测试至关重要，通常包括正面和负面场景以确保全面覆盖。
+总之，<strong>用例</strong> 描述 <strong>期望的系统交互</strong> 并作为创建 <strong>测试用例</strong> 的基础，测试用例是验证这些交互的 <strong>实际步骤</strong>。<strong>测试自动化</strong> 工程师使用 <strong>用例</strong> 来理解系统功能的范围和上下文，然后开发 <strong>测试用例</strong> 来自动化该功能的 <strong>验证</strong>。</p>
+</li>
+</ul>
+<h3 id="用例图">用例图</h3>
+<ul>
+<li>
+<p><strong>什么是用例图？</strong>
+<strong>用例图</strong> 是 <strong>外部参与者</strong> 和正在开发的 <strong>系统</strong> 之间交互的视觉表示。它勾勒出用户（参与者）与系统交互以实现目标的各种方式，从外部角度突出系统的功能。
+在 <strong>测试自动化</strong> 的上下文中，<strong>用例图</strong> 用作识别 <strong>测试场景</strong> 的高级指南。它包括 <strong>参与者</strong>（用户或其他系统）、<strong>用例</strong>（参与者想要实现的目标）和 <strong>关联</strong>（连接参与者与他们参与的 <strong>用例</strong> 的线）。可选地，它还可以描绘 <strong>系统边界</strong>（以划定系统的范围），以 <strong>包含 (include)</strong> 或 <strong>扩展 (extend)</strong> 关系（显示 <strong>用例</strong> 之间的共享或条件步骤）。
+通过可视化交互和关系，该图有助于确保在 <strong>测试用例</strong> 创建期间考虑所有功能路径。它还可以揭示可能影响测试策略的复杂性和依赖性。
+这是一个 <strong>用例图</strong> 语法的简单示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@startuml</span></span>
+<span class="line"><span>left to right direction</span></span>
+<span class="line"><span>actor Customer</span></span>
+<span class="line"><span>actor Bank</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>rectangle BankingSystem {</span></span>
+<span class="line"><span>  Customer -- (Withdraw Money)</span></span>
+<span class="line"><span>  Customer -- (Deposit Money)</span></span>
+<span class="line"><span>  (Transfer Funds) .> (Withdraw Money) : extends</span></span>
+<span class="line"><span>  Bank -- (Create Account)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@enduml</span></span></code></pre>
+<p>此 UML (统一建模语言) 片段将生成一个图表，显示客户与银行系统交互以取款和存款，以及可以创建账户的银行参与者。“转账” <strong>用例</strong> 扩展了“取款” <strong>用例</strong>，表明转账包括取款的步骤。</p>
+</li>
+<li>
+<p><strong>用例图的元素有哪些？</strong>
+<strong>用例图</strong> 的元素包括：</p>
+<ul>
+<li><strong>参与者 (Actors)</strong>：代表与系统交互的外部实体，例如用户或其他系统。</li>
+<li><strong>用例 (Use Cases)</strong>：描述参与者与系统之间为实现目标而进行的交互的椭圆。</li>
+<li><strong>系统边界 (System Boundary)</strong>：框定用例的矩形，定义系统的范围。</li>
+<li><strong>关联 (Associations)</strong>：连接参与者与用例的线，表示参与交互。</li>
+<li><strong>包含 (Include)</strong>：带有虚线的定向箭头，显示一个用例包含另一个用例的功能。</li>
+<li><strong>扩展 (Extend)</strong>：带有虚线的定向箭头，表示一个用例在特定条件下扩展另一个用例。</li>
+<li><strong>泛化 (Generalization)</strong>：带有空心箭头的实线，说明参与者或用例之间的继承关系。
+<strong>用例图</strong> 是指定系统内参与者和 <strong>用例</strong> 之间关系和交互的视觉表示。它们充当讨论和管理系统需求的工具。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何创建用例图？</strong>
+创建 <strong>用例图</strong> 涉及以下步骤：</p>
+<ol>
+<li><strong>识别系统边界</strong>：定义系统的内部和外部，通常由矩形表示。</li>
+<li><strong>确定参与者</strong>：列出与系统交互的所有外部实体。参与者可以是用户或其他系统。</li>
+<li><strong>查找用例</strong>：枚举系统应为每个参与者执行的所有功能。</li>
+<li><strong>连接参与者与用例</strong>：在参与者及其各自的 <strong>用例</strong> 之间画线以显示交互。</li>
+<li><strong>包含关系</strong>：必要时使用包含、扩展或泛化关系来显示 <strong>用例</strong> 之间的依赖关系。</li>
+<li><strong>审查和验证</strong>：确保图表准确代表所有用户交互和系统功能。
+这是一个使用文本描述的 Markdown 简单示例：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># 用例图示例</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 系统边界</span></span>
+<span class="line"><span style="color:#E1E4E8">矩形：在线购物系统</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 参与者</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 支付网关</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 用例</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 浏览商品</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 将商品添加到购物车</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 结账</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 付款</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 连接</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户 -> 浏览商品</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户 -> 将商品添加到购物车</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户 -> 结账</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 结账 -> 付款</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 付款 -> 支付网关</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 关系</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 结账 -> 付款 (包含)</span></span></code></pre>
+<p>记得保持图表 <strong>简单</strong> 并 <strong>专注</strong> 于用户交互。避免堆砌过多的细节，这些细节可以保留给更详细的 <strong>用例场景</strong> 或其他图表。</p>
+</li>
+<li>
+<p><strong>参与者在用例图中的作用是什么？</strong>
+在 <strong>用例图</strong> 中，<strong>参与者</strong> 代表与系统交互的角色，包括用户和其他系统。它们是通过请求系统执行功能来发起 <strong>用例</strong> 的外部实体。参与者有助于定义系统的边界并阐明谁或什么将与其交互。它们不是系统本身的一部分，但对于指定系统的上下文和需求至关重要。在 <strong>测试自动化</strong> 中，理解参与者对于识别应该测试系统的不同角度至关重要，确保在 <strong>测试用例</strong> 中考虑所有用户交互。</p>
+</li>
+<li>
+<p><strong>用例图如何帮助系统设计？</strong>
+<strong>用例图</strong> 通过提供系统功能从用户角度的 <strong>视觉表示</strong> 来帮助系统设计。它有助于识别各种参与者与系统之间的 <strong>交互</strong>，确保在设计中考虑所有用户交互。这个可视化工具突出了 <strong>系统的范围</strong>，阐明了哪些功能包含在内，哪些在系统边界之外。
+通过映射 <strong>用例</strong>，设计人员可以发现系统不同部分之间的 <strong>冗余</strong> 和 <strong>依赖关系</strong>，这可以导致更 <strong>模块化</strong> 和 <strong>可扩展</strong> 的架构。它还促进了利益相关者之间的 <strong>沟通</strong>，因为技术和非技术团队成员都很容易理解图表，从而弥合了用户需求与系统开发人员之间的差距。
+在 <strong>测试自动化</strong> 的上下文中，图表作为创建与用户交互一致的 <strong>测试计划</strong> 和 <strong>测试脚本</strong> 的基础。它确保 <strong>测试用例</strong> 涵盖 <strong>用例</strong> 所代表的所有功能，从而实现全面的 <strong>测试覆盖率</strong>。此外，它还可用于根据 <strong>用例</strong> 在现实场景中的频率和关键性来 <strong>优先排序测试用例</strong>，从而优化测试工作。
+总体而言，<strong>用例图</strong> 是系统设计中的一种战略工具，有助于以用户为中心的方法，确保最终产品符合用户需求和期望，同时促进结构化和高效的测试过程。</p>
+</li>
+</ul>
+<h3 id="用例场景">用例场景</h3>
+<ul>
+<li>
+<p><strong>什么是用例场景？</strong>
+<strong>用例场景</strong> 是一个详细的叙述，描述了用户（或“参与者”）与系统之间为实现特定目标而进行的交互。它概述了参与者为完成任务而采取的一系列步骤，包括任何系统响应。与可能包含多个场景的更广泛的 <strong>用例</strong> 不同，<strong>用例场景</strong> 侧重于单一事件流。
+<strong>用例场景</strong> 在 <strong>测试自动化</strong> 中起着重要作用，因为它们提供了创建 <strong>测试脚本</strong> 的基础。它们有助于可视化功能的端到端功能，这些功能可以转换为自动化的 <strong>测试用例</strong>。这些场景确保自动化测试覆盖应用程序的实际使用情况。
+这是一个 markdown 格式的 <strong>用例场景</strong> 示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#E1E4E8;font-weight:bold">**标题：**</span><span style="color:#E1E4E8"> 从 ATM 取款</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**主要参与者：**</span><span style="color:#E1E4E8"> 银行客户</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**前置条件：**</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> ATM 正在运行。</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户拥有有效的银行卡和 PIN。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**主流程：**</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> 客户插入银行卡。</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> 系统提示输入 PIN。</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> 客户输入 PIN。</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8"> 系统验证 PIN 并显示交易选项。</span></span>
+<span class="line"><span style="color:#FFAB70">5.</span><span style="color:#E1E4E8"> 客户选择“取款”。</span></span>
+<span class="line"><span style="color:#FFAB70">6.</span><span style="color:#E1E4E8"> 系统提示输入金额。</span></span>
+<span class="line"><span style="color:#FFAB70">7.</span><span style="color:#E1E4E8"> 客户输入金额。</span></span>
+<span class="line"><span style="color:#FFAB70">8.</span><span style="color:#E1E4E8"> 系统分发取款并打印收据。</span></span>
+<span class="line"><span style="color:#FFAB70">9.</span><span style="color:#E1E4E8"> 客户拿走现金和收据。</span></span>
+<span class="line"><span style="color:#FFAB70">10.</span><span style="color:#E1E4E8"> 系统弹出银行卡。</span></span>
+<span class="line"><span style="color:#FFAB70">11.</span><span style="color:#E1E4E8"> 客户拿走卡。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**后置条件：**</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户已收到正确金额的现金。</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 客户的账户余额已更新。</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> ATM 准备好进行下一次交易。</span></span></code></pre>
+<p>在 <strong>测试自动化</strong> 中，此类场景对于定义 <strong>测试用例</strong> 的范围和确保自动化测试准确反映用户交互至关重要。它们还有助于在影响最终用户之前识别边缘情况和潜在的系统问题。</p>
+</li>
+<li>
+<p><strong>用例场景与用例有何不同？</strong>
+<strong>用例</strong> 通过描述 <strong>参与者</strong>（用户或其他系统）与系统本身之间为实现目标而进行的交互来概述系统的 <strong>功能需求</strong>。这是一个高级描述，保持相对抽象，侧重于交互的意图和最终结果。
+相比之下，<strong>用例场景</strong> 是一个特定的叙述或事件流，说明了通过 <strong>用例</strong> 的单一路径。它提供了参与者动作和系统响应的详细、逐步说明。<strong>用例场景</strong> 是具体的例子，展示了如何在实践中满足需求。
+虽然 <strong>用例</strong> 可能声明用户可以处理交易，但 <strong>用例场景</strong> 将详细说明处理该交易的步骤，例如登录、输入交易详细信息、提交交易进行处理以及接收确认。
+<strong>用例场景</strong> 在 <strong>测试自动化</strong> 中特别有用，因为它们将 <strong>用例</strong> 的抽象需求转换为有形的 <strong>测试脚本</strong>。每个场景都可以作为 <strong>测试用例</strong> 的基础，确保系统在特定情况下按预期运行。
+这是一个说明差异的例子：
+<strong>用例</strong>：用户管理他们的个人资料。
+<strong>用例场景</strong>：</p>
+<ol>
+<li>用户登录系统。</li>
+<li>用户导航到个人资料管理页面。</li>
+<li>用户更新他们的电子邮件地址。</li>
+<li>用户保存更改。</li>
+<li>系统确认更新。
+该场景为 <strong>测试自动化</strong> 提供了清晰的序列，而 <strong>用例</strong> 定义了更广泛的能力。</li>
+</ol>
+</li>
+<li>
+<p><strong>如何编写用例场景？</strong>
+编写 <strong>用例场景</strong> 涉及详细说明用户或系统将在应用程序中实现特定目标所采取的步骤。这是一个简明指南：</p>
+<ol>
+<li><strong>识别参与者</strong>：确定谁在与系统交互（例如，用户、外部系统）。</li>
+<li><strong>定义目标</strong>：清楚地说明参与者试图实现的目标。</li>
+<li><strong>设置前置条件</strong>：列出在场景启动之前必须为真的任何条件。</li>
+<li><strong>枚举主流程</strong>：概述参与者为实现目标而采取的主要步骤序列。使用简单、编号的句子以清晰明了。</li>
+<li><strong>描述替代流程</strong>：捕获主流程的任何变体，处理不同的选择或异常。</li>
+<li><strong>指定后置条件</strong>：描述 <strong>用例</strong> 完成后系统的状态，确保目标已实现。</li>
+<li><strong>包含成功标准</strong>：定义什么将使 <strong>用例</strong> 从参与者的角度来看是成功的。
+这是一个登录 <strong>用例场景</strong> 的简化示例：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#E1E4E8">参与者：用户</span></span>
+<span class="line"><span style="color:#E1E4E8">目标：成功登录系统</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">前置条件：</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 用户已注册。</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 登录页面可访问。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">主流程：</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> 用户导航到登录页面。</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> 用户输入用户名和密码。</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> 用户点击登录按钮。</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8"> 系统验证凭据。</span></span>
+<span class="line"><span style="color:#FFAB70">5.</span><span style="color:#E1E4E8"> 用户被重定向到主页。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">替代流程：</span></span>
+<span class="line"><span style="color:#E1E4E8">A. 无效凭据：</span></span>
+<span class="line"><span style="color:#FFAB70">   1.</span><span style="color:#E1E4E8"> 系统显示错误消息。</span></span>
+<span class="line"><span style="color:#FFAB70">   2.</span><span style="color:#E1E4E8"> 用户可以尝试重新输入凭据。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">后置条件：</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 用户已登录并有权访问系统。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">成功标准：</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 用户在点击登录按钮后 5 秒内获得对主页的访问权限。</span></span></code></pre>
+<p>记得保持场景 <strong>现实</strong> 并 <strong>专注</strong> 于用户交互，避免技术术语以确保利益相关者清晰明了。</p>
+</li>
+<li>
+<p><strong>用例场景在软件测试中的作用是什么？</strong>
+在 <strong>软件测试</strong> 中，<strong>用例场景</strong> 在指导 <strong>测试脚本</strong> 和 <strong>测试用例</strong> 的创建方面起着至关重要的作用。它提供了代表参与者（通常是用户）与系统之间为实现目标而进行的特定交互的详细步骤序列。这个详细的叙述包括 <strong>前置条件</strong>、<strong>触发器</strong> 和 <strong>后置条件</strong>，为测试人员提供了一条清晰的路径。
+<strong>用例场景</strong> 在 <strong>功能测试</strong> 中起着重要作用，因为它们确保通过现实世界的模拟验证所有 <strong>功能需求</strong>。它们有助于发现通过隔离的单元测试可能不明显的 <strong>功能缺陷</strong> 和 <strong>工作流问题</strong>。通过包含各种可能的路径，包括 <strong>替代流程</strong> 和 <strong>异常路径</strong>，<strong>用例场景</strong> 使测试人员能够执行彻底的 <strong>边界值</strong> 和 <strong>负面测试</strong>。
+此外，它们作为 <strong>自动化回归测试</strong> 的基础，确保新更改不会破坏现有功能。测试人员可以自动化场景以在每次 <strong>迭代</strong> 或部署后快速验证系统的行为。
+在 <strong>性能测试</strong> 中，场景有助于在负载和压力条件下对用户行为进行建模。它们可用于为虚拟用户编写动作脚本以模拟现实世界的使用模式，从而识别性能瓶颈。
+最后，<strong>用例场景</strong> 通过代表用户的观点有助于 <strong>用户验收测试 (UAT)</strong>，这对于确保系统在上线前满足业务需求和用户期望至关重要。</p>
+</li>
+<li>
+<p><strong>用例场景如何帮助识别系统中的潜在问题？</strong>
+<strong>用例场景</strong> 通过模拟系统的实际使用情况，有助于识别潜在问题。它们提供了一个 <strong>叙述</strong>，描述了用户如何与系统交互以实现目标。这种叙述有助于揭示：</p>
+<ul>
+<li><strong>边缘情况 (Edge Cases)</strong>：场景可以突出用户可能采取的不太明显的路径或交互，这些通常被忽视但可能导致意外行为。</li>
+<li><strong>集成点 (Integration Points)</strong>：它们暴露了系统如何与外部系统或模块交互，查明潜在的集成问题。</li>
+<li><strong>用户体验问题 (User Experience Issues)</strong>：通过逐步执行用户采取的步骤，场景可以揭示繁琐或不直观的工作流程，这些工作流程可能导致用户错误。</li>
+<li><strong>安全漏洞 (Security Vulnerabilities)</strong>：通过概述不同类型的用户如何与系统交互，它们可以帮助识别与安全相关的场景，例如访问控制问题或数据隐私问题。</li>
+<li><strong>性能瓶颈 (Performance Bottlenecks)</strong>：涉及复杂交互或高数据负载的场景可以帮助识别现实条件下的性能问题。</li>
+<li><strong>需求差距 (Requirement Gaps)</strong>：通过详细说明具体的操作和结果，<strong>用例场景</strong> 可以暴露缺失的需求或对预期功能的误解。</li>
+<li><strong>回归影响 (Regression Effects)</strong>：当进行系统更改时，场景有助于确保现有功能不受影响，揭示潜在的回归问题。
+将 <strong>用例场景</strong> 纳入 <strong>测试自动化</strong> 策略可确保测试以用户为中心并专注于实际应用，从而产生更健壮和可靠的系统。</li>
+</ul>
+</li>
+</ul>
+<h3 id="高级概念">高级概念</h3>
+<ul>
+<li>
+<p><strong>什么是用例套件？</strong>
+<strong>用例套件 (Use Case Suite)</strong> 是一组相关的 <strong>用例</strong>，归类在一起以便在软件 <strong>测试自动化</strong> 期间作为一个整体进行管理和执行。它是涵盖特定特征、功能或系统方面的有组织的场景集。套件中的每个 <strong>用例</strong> 代表被测系统的不同路径或变体，确保全面覆盖。
+在 <strong>测试自动化</strong> 中，<strong>用例套件</strong> 通常作为一组一起执行的自动化 <strong>测试脚本</strong> 来实现。此套件可以定制以验证特定的需求集或模拟特定的用户旅程。通过运行 <strong>用例套件</strong>，<strong>测试自动化</strong> 工程师可以验证系统在多个场景和条件下是否按预期运行。
+这是如何在代码中表示 <strong>用例套件</strong> 的示例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Login Use Case Suite'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should allow a user with valid credentials to log in'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Test code for valid login</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should reject a user with invalid credentials'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Test code for invalid login</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should lock the account after multiple failed login attempts'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Test code for account lock</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Additional use case scenarios...</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>在此示例中，<code>describe</code> 块定义套件，每个 <code>it</code> 块代表该套件中的单个 <strong>用例场景</strong>。通过对相关场景进行分组，工程师可以更轻松地管理和维护他们的 <strong>测试自动化</strong> 工作。</p>
+</li>
+<li>
+<p><strong>用例和用户故事有什么区别？</strong>
+<strong>用例</strong> 是用户如何与系统交互以实现特定目标的详细描述，通常捕获各种条件下的系统行为。它包括主要成功场景以及替代路径和异常，侧重于用户（参与者）与系统之间的交互。
+相比之下，<strong>用户故事 (User Story)</strong> 是从渴望新功能的人（通常是用户或系统的客户）的角度讲述的功能的简短、简单的描述。用户故事通常用非正式的自然语言编写，并遵循一个简单的模板：“作为一个 [用户类型]，我想要 [一个动作]，以便 [一个好处/价值]。”它们是 <strong>敏捷开发</strong> 中使用的一种工具，用于从最终用户的角度捕获产品功能。
+虽然 <strong>用例</strong> 提供了捕获系统使用的 <strong>功能需求</strong> 和场景的结构化和详细的方法，但用户故事提供了一种捕获用户需求本质的快速、对话式方法。用户故事更多关于“什么”和“为什么”，而 <strong>用例</strong> 深入研究“如何”。用户故事通常伴随着验收标准，这是一组必须满足的条件，以便故事被视为完成。
+在 <strong>测试自动化</strong> 中，用户故事可以指导创建侧重于用户预期结果和利益的 <strong>测试场景</strong>，而 <strong>用例</strong> 可以告知更全面的测试，包括替代流程和异常处理。</p>
+</li>
+<li>
+<p><strong>用例在敏捷开发中的作用是什么？</strong>
+在 <strong>敏捷开发</strong> 中，<strong>用例</strong> 在 <strong>弥合用户需求与软件功能迭代实现之间的差距</strong> 方面起着至关重要的作用。它们作为创建用户故事的 <strong>蓝图</strong>，用户故事是敏捷方法中的主要工作单元。
+<strong>用例</strong> 从用户的角度提供系统交互的 <strong>高级概述</strong>，确保开发团队和利益相关者对系统功能有共同的理解。这种共同的理解有助于 <strong>优先排序</strong> 功能和规划 <strong>迭代</strong> 或冲刺。
+在积压工作细化和冲刺规划期间，<strong>用例</strong> 通常被 <strong>分解</strong> 为更小、更易于管理的用户故事，这些用户故事适合 <strong>迭代</strong>。然后使用这些用户故事来创建 <strong>验收标准</strong>，通过定义软件必须满足才能被视为完成的条件来指导 <strong>测试自动化</strong> 工作。
+此外，<strong>用例</strong> 有助于 <strong>识别</strong> 功能和非功能需求的 <strong>测试场景</strong>，确保全面的 <strong>测试覆盖率</strong>。它们还通过突出应在 <strong>迭代</strong> 之间保持稳定的关键路径和交互来帮助 <strong>回归测试</strong>。
+总之，<strong>敏捷开发</strong> 中的 <strong>用例</strong> 在以下方面起着重要作用：</p>
+<ul>
+<li>指导用户故事和验收标准的创建。</li>
+<li>确保对系统功能的共同理解。</li>
+<li>优先排序开发工作。</li>
+<li>识别全面覆盖的测试场景。</li>
+<li>通过概述关键系统交互来支持回归测试。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何在非功能测试中使用用例？</strong>
+<strong>用例</strong> 通过为评估性能、安全性和可用性等系统属性提供 <strong>上下文框架</strong>，可以在 <strong>非功能测试</strong> 中发挥重要作用。虽然 <strong>用例</strong> 传统上与 <strong>功能需求</strong> 相关联，但它们也可以概述非功能质量至关重要的场景。
+例如，描述高流量场景的 <strong>用例</strong> 可用于派生性能测试，确保系统可以处理指定的负载。同样，涉及用户身份验证的 <strong>用例</strong> 可以导致侧重于授权和数据保护的安全测试。
+在 <strong>可用性测试</strong> 中，<strong>用例</strong> 有助于理解用户交互，并可用于评估系统的易用性和可访问性。通过模拟 <strong>用例</strong> 中概述的动作和体验，测试人员可以评估系统在多大程度上支持用户实现其目标。
+要在 <strong>非功能测试</strong> 中利用 <strong>用例</strong>：</p>
+<ul>
+<li><strong>识别</strong> 具有显着非功能含义的关键 <strong>用例</strong>。</li>
+<li>将这些 <strong>用例翻译</strong> 为特定的非功能需求。</li>
+<li><strong>设计测试</strong> 以挑战用例描述的系统非功能方面。</li>
+<li><strong>执行测试</strong> 以对照用例设定的期望验证系统的性能、安全性、可用性等。
+通过这样做，您可以确保 <strong>非功能测试</strong> 基于现实和相关的用户场景，提供对系统整体质量的全面评估。</li>
+</ul>
+</li>
+<li>
+<p><strong>编写用例时要避免哪些常见错误？</strong>
+编写 <strong>用例</strong> 时，请避免这些常见错误：</p>
+<ul>
+<li><strong>忽视用户视角</strong>：始终关注用户的观点。过于以系统为中心的 <strong>用例</strong> 可能会错过用户交互和期望。</li>
+<li><strong>过于笼统或过于详细</strong>：关键是取得平衡。过于笼统的 <strong>用例</strong> 缺乏可操作的信息，而过多的细节会让人不知所措并感到困惑。</li>
+<li><strong>忽略替代流程</strong>：不要只关注 <strong>快乐路径</strong>。考虑替代和异常流程以确保全面覆盖。</li>
+<li><strong>混合功能</strong>：每个 <strong>用例</strong> 应代表单一功能或目标。混合多个目标可能导致混乱和可测试性问题。</li>
+<li><strong>忽视非功能需求</strong>：虽然 <strong>用例</strong> 主要关注 <strong>功能需求</strong>，但重要的是要考虑可能影响场景的性能、可用性和安全方面。</li>
+<li><strong>未能更新</strong>：随着系统的发展，<strong>用例</strong> 也应随之发展。过时的 <strong>用例</strong> 会导致无关或不正确的测试。</li>
+<li><strong>缺乏清晰的范围</strong>：定义 <strong>用例</strong> 将涵盖和不涵盖的边界，以防止范围蔓延并确保集中测试。</li>
+<li><strong>定义不清的参与者</strong>：清楚地识别涉及的参与者及其角色。这里的模糊性会导致不完整的测试。</li>
+<li><strong>术语不一致</strong>：在整个 <strong>用例</strong> 中使用一致的语言和术语以避免混淆。</li>
+<li><strong>跳过验证</strong>：与利益相关者验证 <strong>用例</strong> 以确保准确性和完整性。
+请记住，精心制作的 <strong>用例</strong> 是有效 <strong>测试自动化</strong> 的基础，为测试团队提供清晰且可操作的场景。</li>
+</ul>
+</li>
+</ul> </article> <section class="giscus-section" aria-label="评论" data-astro-cid-an2nl7ar><div class="giscus" data-astro-cid-an2nl7ar></div><script src="https://giscus.app/client.js" data-repo="naodeng/naodeng.com.cn" data-repo-id="R_kgDOHntNtg" data-category="Show and tell" data-category-id="DIC_kwDOHntNts4Cavst" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script></section>  </div> <aside class="docs-toc-wrap" data-astro-cid-ac2mn7rr> <aside class="toc-sidebar toc-sidebar--right" aria-label="本页目录" data-astro-cid-xvrfupwn><nav class="toc-nav" data-astro-cid-xvrfupwn><h2 class="toc-title" data-astro-cid-xvrfupwn>本页目录</h2><ul class="toc-list" data-astro-cid-xvrfupwn><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#目录" class="toc-link" data-astro-cid-xvrfupwn>目录</a></li><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#关于用例-use-case-的问题" class="toc-link" data-astro-cid-xvrfupwn>关于用例 (Use Case) 的问题？</a></li></ul></nav></aside><script type="module">function d(){const t=document.querySelector(".toc-sidebar--left"),a=t?.closest(".article-with-toc"),u=document.querySelector(".article-main"),l=document.querySelector(".l-footer");if(!t||!a)return;const i=a.getBoundingClientRect(),w=i.top>=window.innerHeight,h=i.bottom>0&&i.top<window.innerHeight;if(w){t.style.position="absolute",t.style.top="0",t.style.bottom="";return}t.style.position="fixed";const o=document.querySelector(".article-title-header, #article-title-header"),r=o?o.getBoundingClientRect().top:i.top,n=h?Math.max(16,r):16;t.style.top=n+"px";let e;if(h){const c=i.bottom<window.innerHeight;u&&c?e=Math.max(16,window.innerHeight-i.bottom):e=288;const s=Math.max(200,Math.floor(window.innerHeight*.7));window.innerHeight-n-e<s&&(e=Math.max(16,window.innerHeight-n-s))}else e=288;if(l){const c=l.getBoundingClientRect(),s=window.innerHeight-c.top+8;e=Math.max(e,s)}else e=Math.max(e,288);t.style.bottom=e+"px"}function g(){const t=document.querySelector(".toc-sidebar"),a=document.querySelector(".article-main");if(!t||!a)return;const u=t.querySelectorAll(".toc-link"),l=a.querySelectorAll("h2[id], h3[id], h4[id]");if(u.length===0||l.length===0)return;const i=o=>{let r=null;u.forEach(c=>{const f=c.getAttribute("href")===`#${o}`;c.setAttribute("aria-current",f?"true":"false"),f&&(r=c)});const n=document.querySelector(".l-footer"),e=n&&n.getBoundingClientRect().top<window.innerHeight;r&&!e&&t.scrollHeight>t.clientHeight&&r.scrollIntoView({block:"nearest",behavior:"smooth"})},w=new IntersectionObserver(o=>{const r=o.filter(n=>n.isIntersecting).sort((n,e)=>{const c=(n.boundingClientRect?.top??0)+window.scrollY,s=(e.boundingClientRect?.top??0)+window.scrollY;return c-s});r.length>0&&i(r[0].target.id)},{rootMargin:"-80px 0px -66% 0px",threshold:0});l.forEach(o=>w.observe(o));const h=Array.from(l).find(o=>o.getBoundingClientRect().top<=window.innerHeight*.5);i(h?.id??l[0]?.id??null)}function m(){d(),g()}document.addEventListener("DOMContentLoaded",m);window.addEventListener("load",d);window.addEventListener("load",()=>setTimeout(d,50));window.addEventListener("scroll",()=>d(),{passive:!0});window.addEventListener("resize",()=>d());typeof ResizeObserver<"u"&&document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".article-with-toc");t&&new ResizeObserver(()=>d()).observe(t)});</script> </aside> </div>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/wiki/use-case/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/series/" data-astro-cid-sz7xmlte>系列</a> <a href="/zh-cn/tags/" data-astro-cid-sz7xmlte>标签</a> <a href="/zh-cn/wiki/" data-astro-cid-sz7xmlte>软件测试百科</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>支持</a> <a href="/zh-cn/copyright/" data-astro-cid-sz7xmlte>版权信息</a> <a href="/zh-cn/privacy/" data-astro-cid-sz7xmlte>隐私政策</a> <a href="/zh-cn/links/" data-astro-cid-sz7xmlte>友情链接</a> <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>状态</a> <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>访问统计</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <p class="footer-slogan" data-astro-cid-sz7xmlte>质量分析师，而非质量保证师。</p> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/zh-cn/copyright/" class="license-link" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</a> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-algolia-key="7bf4a2b4e4f0c324b0cca574ab137f6a" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <div class="search-hint-row" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> <p class="search-algolia-badge" data-astro-cid-qk3db3zz> <a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer" class="search-algolia-link" aria-label="Search by Algolia" data-astro-cid-qk3db3zz> <span class="search-algolia-icon" aria-hidden="true" data-astro-cid-qk3db3zz> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qk3db3zz> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" data-astro-cid-qk3db3zz></path> </svg> </span> <span class="search-algolia-text" data-astro-cid-qk3db3zz><span class="search-algolia-by" data-astro-cid-qk3db3zz>Search by</span> Algolia</span> </a> </p> </div> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script>(function(){const useAlgolia = true;
+const algoliaAppId = "5L1S6UUZVF";
+const algoliaIndexName = "inaodeng_com_5l1s6uuzvf_pages.tmp";
+
+  /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
+  const backdrop = document.querySelector(".search-backdrop[data-close]");
+  const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
+
+  let index = [];
+  let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
+
+  function getLocale() {
+    const el = document.documentElement.getAttribute("data-locale");
+    return el === "zh-cn" ? "zh-cn" : "en";
+  }
+
+  async function loadIndex() {
+    if (index.length > 0) return index;
+    locale = getLocale();
+    const res = await fetch(`/${locale}/search-index.json`);
+    if (!res.ok) return [];
+    index = await res.json();
+    return index;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
+    resultsEl.innerHTML = "";
+    resultsEl.hidden = items.length === 0;
+    emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    items.slice(0, 20).forEach((item) => {
+      const a = document.createElement("a");
+      const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
+      a.href = url;
+      a.className = "search-result-item";
+      a.setAttribute("role", "listitem");
+      const dateStr = new Date(item.date).toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      a.innerHTML = `
+        <span class="search-result-title">${escapeHtml(item.title)}</span>
+        <span class="search-result-meta">${escapeHtml(dateStr)}${item.tags?.length ? " · " + item.tags.slice(0, 3).join(", ") : ""}</span>
+      `;
+      resultsEl.appendChild(a);
+    });
+  }
+
+  // 使用事件委托：在结果容器上统一处理点击（解决鼠标点链接/内层 span 不跳转的问题）
+  resultsEl.addEventListener("click", (e) => {
+    const a = e.target.closest("a.search-result-item");
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const url = a.getAttribute("href");
+    if (!url) return;
+    dialog.close();
+    setTimeout(function () {
+      window.location.assign(url);
+    }, 80);
+  });
+
+  function filter(q) {
+    const lower = q.trim().toLowerCase();
+    if (!lower) return [];
+    return index.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lower) ||
+        item.description.toLowerCase().includes(lower) ||
+        (item.tags && item.tags.some((t) => t.toLowerCase().includes(lower)))
+    );
+  }
+
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      // is:inline 脚本未打包，从 ESM CDN 加载
+      const mod = await import("https://esm.sh/algoliasearch@5");
+      const { algoliasearch } = mod;
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        hitsPerPage: 30,
+      },
+    });
+    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
+    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
+    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
+  }
+
+  function onInput() {
+    const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false, false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) {
+            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
+            renderItems(items, true, true);
+          }
+        } catch (err) {
+          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
+        }
+      }, 200);
+      return;
+    }
+
+    if (!index.length) {
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      return;
+    }
+    const items = filter(q);
+    renderItems(items, hasQuery, false);
+  }
+
+  function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
+    loadIndex().then(() => {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+    });
+  }
+
+  function closeSearch() {
+    dialog.close();
+    if (hintEl) hintEl.style.display = "";
+  }
+
+  dialog.addEventListener("close", () => {
+    if (hintEl) hintEl.style.display = "";
+  });
+
+  dialog.addEventListener("cancel", closeSearch);
+
+  backdrop?.addEventListener("click", closeSearch);
+
+  input.addEventListener("input", onInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "Enter") {
+      const first = resultsEl.querySelector(".search-result-item");
+      if (first) {
+        first.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      if (dialog.open) closeSearch();
+      else openSearch();
+    }
+  });
+
+  document.querySelectorAll("[data-search-open]").forEach((el) => {
+    el.addEventListener("click", openSearch);
+  });
+
+  window.addEventListener("search-open", openSearch);
+})();</script>    </body> </html>  

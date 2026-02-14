@@ -1,0 +1,588 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>环境搭建 | 软件测试同学</title><meta name="description" content="环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。"><meta name="keywords" content="软件测试, 质量分析, 自动化测试, 接口测试, 性能测试, 敏捷测试, 测试自动化, inaodeng, naodeng"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="author" content="Nao Deng"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><link rel="canonical" href="https://inaodeng.com/zh-cn/wiki/setup/"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/wiki/setup/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/wiki/setup/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/wiki/setup/"><link rel="alternate" type="application/rss+xml" title="RSS - 软件测试同学" href="https://inaodeng.com/zh-cn/rss.xml/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta name="algolia-site-verification" content="B0319275B670BBB0"><meta property="og:type" content="website"><meta property="og:title" content="环境搭建 | 软件测试同学"><meta property="og:site_name" content="软件测试同学"><meta property="og:description" content="环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:image:alt" content="环境搭建"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://inaodeng.com/zh-cn/wiki/setup/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@inaodeng"><meta name="twitter:title" content="环境搭建 | 软件测试同学"><meta name="twitter:description" content="环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。"><meta name="twitter:image" content="https://inaodeng.com/ogp.png"><meta name="twitter:image:alt" content="环境搭建"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"软件测试同学","description":"环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。","url":"https://inaodeng.com","inLanguage":["zh-CN"],"publisher":{"@type":"Organization","name":"软件测试同学","url":"https://inaodeng.com","logo":{"@type":"ImageObject","url":"https://inaodeng.com/ogp.png","width":1200,"height":630}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://inaodeng.com/zh-cn/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nao Deng","url":"https://inaodeng.com","sameAs":["https://github.com/naodeng","https://x.com/inaodeng","https://naodeng.medium.com/","https://weibo.com/u/1651778270","https://ko-fi.com/naodeng"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://inaodeng.com/zh-cn/"},{"@type":"ListItem","position":2,"name":"测试百科","item":"https://inaodeng.com/zh-cn/wiki/"},{"@type":"ListItem","position":3,"name":"环境搭建","item":"https://inaodeng.com/zh-cn/wiki/setup/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTerm","name":"环境搭建","description":"环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。","url":"https://inaodeng.com/zh-cn/wiki/setup/","inDefinedTermSet":{"@type":"DefinedTermSet","name":"软件测试百科","url":"https://inaodeng.com/zh-cn/wiki/"}}</script><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin="anonymous"></script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>.giscus-section[data-astro-cid-an2nl7ar]{margin-block-start:var(--sp-l);padding-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 14%,transparent)}.giscus-section[data-astro-cid-an2nl7ar] .giscus-frame{width:100%}
+.breadcrumb[data-astro-cid-qaanghzh]{margin-block-end:var(--sp-m, 1rem)}.breadcrumb-list[data-astro-cid-qaanghzh]{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .5rem;font-size:.875rem;color:color-mix(in srgb,var(--color-main) 65%,transparent)}.breadcrumb-item[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;gap:.25rem}.breadcrumb-link[data-astro-cid-qaanghzh]{color:inherit;text-decoration:none}.breadcrumb-link[data-astro-cid-qaanghzh]:hover{color:var(--color-theme);text-decoration:underline}.breadcrumb-icon[data-astro-cid-qaanghzh]{display:inline-flex;flex-shrink:0;margin-inline-end:.35em;color:var(--color-theme);opacity:.85}.breadcrumb-icon[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}.breadcrumb-icon--current[data-astro-cid-qaanghzh]{opacity:.7}.breadcrumb-current[data-astro-cid-qaanghzh]{color:inherit;display:inline-flex;align-items:center;gap:.35em}.breadcrumb-sep[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;margin-inline:.4rem;color:color-mix(in srgb,var(--color-main) 45%,transparent);user-select:none}.breadcrumb-sep[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.OapxBOfU.css">
+<style>.wiki-article[data-astro-cid-sqfwpogz] h1{margin-block-end:var(--sp-m)}.wiki-article[data-astro-cid-sqfwpogz] h2{margin-block:var(--sp-l) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] h3{margin-block:var(--sp-m) var(--sp-s)}.wiki-article[data-astro-cid-sqfwpogz] a{color:var(--color-theme);text-decoration:underline}.wiki-article[data-astro-cid-sqfwpogz] ul{padding-inline-start:1.5em}
+.toc-sidebar[data-astro-cid-xvrfupwn]{max-height:calc(100vh - 2rem);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}.toc-sidebar[data-astro-cid-xvrfupwn]::-webkit-scrollbar{display:none}.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:sticky;top:var(--sp-m, 1rem);align-self:start}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:absolute;left:var(--sp-m, 1rem);top:0;width:12rem;max-width:calc(100vw - 800px - var(--sp-m, 1rem) * 4);max-height:none;min-height:12rem;overflow-y:auto;overflow-x:hidden;z-index:10}.toc-sidebar--below[data-astro-cid-xvrfupwn]{position:static;width:100%;max-width:none;margin-block-end:var(--sp-l, 1.5rem)}.toc-sidebar--below[data-astro-cid-xvrfupwn] .toc-list[data-astro-cid-xvrfupwn]{display:block}.toc-nav[data-astro-cid-xvrfupwn]{padding:var(--sp-m);border-radius:12px;background:color-mix(in srgb,var(--color-theme) 6%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent)}.toc-title[data-astro-cid-xvrfupwn]{margin:0 0 .75rem;font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-theme);opacity:.9}.toc-list[data-astro-cid-xvrfupwn]{list-style:none;margin:0;padding:0}.toc-item[data-astro-cid-xvrfupwn]{margin:0;padding:0;padding-inline-start:calc((var(--depth) - 2) * .75rem);margin-block-end:.35rem}.toc-link[data-astro-cid-xvrfupwn]{display:block;font-size:.8125rem;line-height:1.4;color:var(--color-main);text-decoration:none;opacity:.85;transition:opacity .2s ease,color .2s ease;border-block-end:1px solid transparent}.toc-link[data-astro-cid-xvrfupwn]:hover{opacity:1;color:var(--color-theme)}.toc-link[data-astro-cid-xvrfupwn]:active,.toc-link[data-astro-cid-xvrfupwn][aria-current=true]{color:var(--color-theme);font-weight:600;opacity:1}@media(max-width:960px){.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:static;max-height:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:static;transform:none;top:auto;left:auto;width:auto;max-width:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.DKZjF0rP.css"></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <div class="site-brand" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <p class="site-slogan" data-astro-cid-3ef6ksr2>质量分析师，而非质量保证师。</p> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/wiki/" class="active" data-astro-cid-3ef6ksr2> 百科 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 支持 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <div class="locale-dropdown compact" data-locale-dropdown data-astro-cid-opxux4jt> <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger data-astro-cid-opxux4jt> <span class="material-icons-sharp icon-lang" aria-hidden="true" data-astro-cid-opxux4jt>translate</span> <span class="locale-flag" data-astro-cid-opxux4jt>🇨🇳</span>  </button> <div class="locale-panel" hidden data-locale-panel data-astro-cid-opxux4jt> <ul data-astro-cid-opxux4jt> <li data-astro-cid-opxux4jt> <a href="/en/wiki/setup/" data-lang="en" data-locale-option data-astro-cid-opxux4jt> English </a> </li><li data-astro-cid-opxux4jt> <a href="/zh-cn/wiki/setup/" data-lang="zh-cn" data-locale-option data-astro-cid-opxux4jt> 简体中文 </a> </li> </ul> </div> </div> <script type="module">function r(e){const n=e.querySelector("[data-locale-trigger]"),a=e.querySelector("[data-locale-panel]");if(!n||!a)return;const c=()=>{a.hidden=!0,n.setAttribute("aria-expanded","false")},d=()=>{a.hidden=!1,n.setAttribute("aria-expanded","true")},o=()=>a.hidden?d():c();n.addEventListener("click",t=>{t.stopPropagation(),o()}),e.querySelectorAll("[data-locale-option]").forEach(t=>{t.addEventListener("click",()=>{const l=t.dataset.lang;l&&localStorage.setItem("selectedLang",l)})}),document.addEventListener("click",t=>{a.hidden||e.contains(t.target)||c()})}document.querySelectorAll("[data-locale-dropdown]").forEach(e=>r(e));</script>  </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <button type="button" class="btn-icon" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="btn-icon-kbd" data-astro-cid-3ef6ksr2>⌘K</span> </button> </li> </ul> </nav> </header>  <main id="main" class="l-main l-content l-content--with-sidebar"> <nav class="breadcrumb" aria-label="Breadcrumb" data-astro-cid-qaanghzh><ol class="breadcrumb-list" data-astro-cid-qaanghzh><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/" class="breadcrumb-link" data-astro-cid-qaanghzh><span class="breadcrumb-icon" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-astro-cid-qaanghzh></path><polyline points="9 22 9 12 15 12 15 22" data-astro-cid-qaanghzh></polyline></svg></span>首页</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/zh-cn/wiki/" class="breadcrumb-link" data-astro-cid-qaanghzh>测试百科</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><span class="breadcrumb-current" aria-current="page" data-astro-cid-qaanghzh><span class="breadcrumb-icon breadcrumb-icon--current" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-astro-cid-qaanghzh></path><polyline points="14 2 14 8 20 8" data-astro-cid-qaanghzh></polyline><line x1="16" y1="13" x2="8" y2="13" data-astro-cid-qaanghzh></line><line x1="16" y1="17" x2="8" y2="17" data-astro-cid-qaanghzh></line><polyline points="10 9 9 9 8 9" data-astro-cid-qaanghzh></polyline></svg></span>环境搭建</span></li></ol></nav><div class="l-docs" data-has-toc="true" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar-wrap" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar" aria-label="Documentation navigation" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-inner" data-astro-cid-qrwn6rcr>  <button type="button" class="docs-sidebar-toggle" aria-expanded="false" aria-controls="docs-sidebar-nav" id="docs-sidebar-toggle" data-astro-cid-qrwn6rcr> <span class="docs-sidebar-toggle-text" data-astro-cid-qrwn6rcr>本页导航</span> <span class="docs-sidebar-toggle-icon" aria-hidden="true" data-astro-cid-qrwn6rcr> <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-qrwn6rcr><polyline points="6 9 12 15 18 9" data-astro-cid-qrwn6rcr></polyline></svg> </span> </button> <nav class="docs-sidebar-nav" id="docs-sidebar-nav" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr>  <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/" class="docs-sidebar-link" data-search="概述 " data-astro-cid-qrwn6rcr> 概述 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>A</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/A-B-Testing/" class="docs-sidebar-link" data-search="a/b 测试 a-b-testing" data-astro-cid-qrwn6rcr> A/B 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-test-driven-development/" class="docs-sidebar-link" data-search="验收测试驱动开发 acceptance-test-driven-development" data-astro-cid-qrwn6rcr> 验收测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/acceptance-testing/" class="docs-sidebar-link" data-search="验收测试 acceptance-testing" data-astro-cid-qrwn6rcr> 验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/accessibility-testing/" class="docs-sidebar-link" data-search="无障碍测试 accessibility-testing" data-astro-cid-qrwn6rcr> 无障碍测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/actual-result/" class="docs-sidebar-link" data-search="实际结果 actual-result" data-astro-cid-qrwn6rcr> 实际结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ad-hoc-testing/" class="docs-sidebar-link" data-search="随机测试 ad-hoc-testing" data-astro-cid-qrwn6rcr> 随机测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-development/" class="docs-sidebar-link" data-search="敏捷开发 agile-development" data-astro-cid-qrwn6rcr> 敏捷开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/agile-testing/" class="docs-sidebar-link" data-search="敏捷测试 agile-testing" data-astro-cid-qrwn6rcr> 敏捷测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/alpha-testing/" class="docs-sidebar-link" data-search="alpha 测试 alpha-testing" data-astro-cid-qrwn6rcr> Alpha 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/analytical-test-strategy/" class="docs-sidebar-link" data-search="分析式测试策略 analytical-test-strategy" data-astro-cid-qrwn6rcr> 分析式测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api/" class="docs-sidebar-link" data-search="应用程序编程接口 api" data-astro-cid-qrwn6rcr> 应用程序编程接口 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/api-testing/" class="docs-sidebar-link" data-search="api 测试 api-testing" data-astro-cid-qrwn6rcr> API 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/astqb/" class="docs-sidebar-link" data-search="美国软件测试认证委员会 astqb" data-astro-cid-qrwn6rcr> 美国软件测试认证委员会 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/automated-testing/" class="docs-sidebar-link" data-search="自动化测试 automated-testing" data-astro-cid-qrwn6rcr> 自动化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/availability-testing/" class="docs-sidebar-link" data-search="可用性测试 availability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>B</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/back-to-back-testing/" class="docs-sidebar-link" data-search="背靠背测试 back-to-back-testing" data-astro-cid-qrwn6rcr> 背靠背测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/backward-compatibility/" class="docs-sidebar-link" data-search="向后兼容性 backward-compatibility" data-astro-cid-qrwn6rcr> 向后兼容性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/baseline-testing/" class="docs-sidebar-link" data-search="基准测试 baseline-testing" data-astro-cid-qrwn6rcr> 基准测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bdd/" class="docs-sidebar-link" data-search="行为驱动开发 bdd" data-astro-cid-qrwn6rcr> 行为驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/beta-testing/" class="docs-sidebar-link" data-search="beta 测试 beta-testing" data-astro-cid-qrwn6rcr> Beta 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/big-bang-testing/" class="docs-sidebar-link" data-search="大爆炸测试 big-bang-testing" data-astro-cid-qrwn6rcr> 大爆炸测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/black-box-testing/" class="docs-sidebar-link" data-search="黑盒测试 black-box-testing" data-astro-cid-qrwn6rcr> 黑盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bottom-up-integration/" class="docs-sidebar-link" data-search="自底向上集成 bottom-up-integration" data-astro-cid-qrwn6rcr> 自底向上集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/boundary-testing/" class="docs-sidebar-link" data-search="边界测试 boundary-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/browserstack/" class="docs-sidebar-link" data-search="browserstack browserstack" data-astro-cid-qrwn6rcr> Browserstack </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bs-7925-2/" class="docs-sidebar-link" data-search="bs 7925-2 bs-7925-2" data-astro-cid-qrwn6rcr> Bs 7925-2 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/bug/" class="docs-sidebar-link" data-search="缺陷/漏洞 bug" data-astro-cid-qrwn6rcr> 缺陷/漏洞 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/build-verification-testing/" class="docs-sidebar-link" data-search="构建验证测试 build-verification-testing" data-astro-cid-qrwn6rcr> 构建验证测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>C</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/canary-testing/" class="docs-sidebar-link" data-search="金丝雀测试 canary-testing" data-astro-cid-qrwn6rcr> 金丝雀测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chai-js/" class="docs-sidebar-link" data-search="chai js chai-js" data-astro-cid-qrwn6rcr> Chai Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-control/" class="docs-sidebar-link" data-search="变更控制 change-control" data-astro-cid-qrwn6rcr> 变更控制 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/change-requests/" class="docs-sidebar-link" data-search="变更请求 change-requests" data-astro-cid-qrwn6rcr> 变更请求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/chaos-engineering/" class="docs-sidebar-link" data-search="混沌工程 chaos-engineering" data-astro-cid-qrwn6rcr> 混沌工程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/clean-slate/" class="docs-sidebar-link" data-search="干净状态 clean-slate" data-astro-cid-qrwn6rcr> 干净状态 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cmmi/" class="docs-sidebar-link" data-search="能力成熟度模型集成 cmmi" data-astro-cid-qrwn6rcr> 能力成熟度模型集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/code-coverage/" class="docs-sidebar-link" data-search="代码覆盖率 code-coverage" data-astro-cid-qrwn6rcr> 代码覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/compatibility-testing/" class="docs-sidebar-link" data-search="兼容性测试 compatibility-testing" data-astro-cid-qrwn6rcr> 兼容性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/concurrency-testing/" class="docs-sidebar-link" data-search="并发测试 concurrency-testing" data-astro-cid-qrwn6rcr> 并发测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/control-flow-testing/" class="docs-sidebar-link" data-search="控制流测试 control-flow-testing" data-astro-cid-qrwn6rcr> 控制流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cross-browser-testing/" class="docs-sidebar-link" data-search="跨浏览器测试 cross-browser-testing" data-astro-cid-qrwn6rcr> 跨浏览器测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/cypress/" class="docs-sidebar-link" data-search="cypress cypress" data-astro-cid-qrwn6rcr> Cypress </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>D</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/data-flow-testing/" class="docs-sidebar-link" data-search="数据流测试 data-flow-testing" data-astro-cid-qrwn6rcr> 数据流测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/database/" class="docs-sidebar-link" data-search="数据库 database" data-astro-cid-qrwn6rcr> 数据库 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/decision-table-testing/" class="docs-sidebar-link" data-search="判定表测试 decision-table-testing" data-astro-cid-qrwn6rcr> 判定表测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/defect-management/" class="docs-sidebar-link" data-search="缺陷管理 defect-management" data-astro-cid-qrwn6rcr> 缺陷管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dependency-testing/" class="docs-sidebar-link" data-search="依赖测试 dependency-testing" data-astro-cid-qrwn6rcr> 依赖测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/documentation-testing/" class="docs-sidebar-link" data-search="文档测试 documentation-testing" data-astro-cid-qrwn6rcr> 文档测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/dynamic-testing/" class="docs-sidebar-link" data-search="动态测试 dynamic-testing" data-astro-cid-qrwn6rcr> 动态测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>E</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/edge-testing/" class="docs-sidebar-link" data-search="边界测试 edge-testing" data-astro-cid-qrwn6rcr> 边界测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/end-to-end-testing/" class="docs-sidebar-link" data-search="端到端测试 end-to-end-testing" data-astro-cid-qrwn6rcr> 端到端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/endurance-testing/" class="docs-sidebar-link" data-search="耐久性测试 endurance-testing" data-astro-cid-qrwn6rcr> 耐久性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/entry-criteria/" class="docs-sidebar-link" data-search="准入条件的问题？ entry-criteria" data-astro-cid-qrwn6rcr> 准入条件的问题？ </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/equivalence-partitioning/" class="docs-sidebar-link" data-search="等价类划分 equivalence-partitioning" data-astro-cid-qrwn6rcr> 等价类划分 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/error-guessing/" class="docs-sidebar-link" data-search="错误猜测 error-guessing" data-astro-cid-qrwn6rcr> 错误猜测 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/expected-result/" class="docs-sidebar-link" data-search="预期结果 expected-result" data-astro-cid-qrwn6rcr> 预期结果 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/exploratory-testing/" class="docs-sidebar-link" data-search="探索性测试 exploratory-testing" data-astro-cid-qrwn6rcr> 探索性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/extreme-programming/" class="docs-sidebar-link" data-search="极限编程 extreme-programming" data-astro-cid-qrwn6rcr> 极限编程 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>F</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/failover-testing/" class="docs-sidebar-link" data-search="故障转移测试 failover-testing" data-astro-cid-qrwn6rcr> 故障转移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-negative/" class="docs-sidebar-link" data-search="漏报 false-negative" data-astro-cid-qrwn6rcr> 漏报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/false-positive/" class="docs-sidebar-link" data-search="误报 false-positive" data-astro-cid-qrwn6rcr> 误报 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fat/" class="docs-sidebar-link" data-search="工厂验收测试 fat" data-astro-cid-qrwn6rcr> 工厂验收测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fault-injection-testing/" class="docs-sidebar-link" data-search="故障注入测试 fault-injection-testing" data-astro-cid-qrwn6rcr> 故障注入测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/flaky-test/" class="docs-sidebar-link" data-search="不稳定性测试 flaky-test" data-astro-cid-qrwn6rcr> 不稳定性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/front-end-testing/" class="docs-sidebar-link" data-search="前端测试 front-end-testing" data-astro-cid-qrwn6rcr> 前端测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-integration/" class="docs-sidebar-link" data-search="功能集成 functional-integration" data-astro-cid-qrwn6rcr> 功能集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-requirements/" class="docs-sidebar-link" data-search="功能需求 functional-requirements" data-astro-cid-qrwn6rcr> 功能需求 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/functional-testing/" class="docs-sidebar-link" data-search="功能测试 functional-testing" data-astro-cid-qrwn6rcr> 功能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/future-proof-testing/" class="docs-sidebar-link" data-search="前瞻性测试 future-proof-testing" data-astro-cid-qrwn6rcr> 前瞻性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/fuzz-testing/" class="docs-sidebar-link" data-search="模糊测试 fuzz-testing" data-astro-cid-qrwn6rcr> 模糊测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>G</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gherkin/" class="docs-sidebar-link" data-search="gherkin gherkin" data-astro-cid-qrwn6rcr> Gherkin </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/glass-box-testing/" class="docs-sidebar-link" data-search="玻璃盒测试 glass-box-testing" data-astro-cid-qrwn6rcr> 玻璃盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/gorilla-testing/" class="docs-sidebar-link" data-search="大猩猩测试 gorilla-testing" data-astro-cid-qrwn6rcr> 大猩猩测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/grey-box-testing/" class="docs-sidebar-link" data-search="灰盒测试 grey-box-testing" data-astro-cid-qrwn6rcr> 灰盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>H</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/happy-path/" class="docs-sidebar-link" data-search="快乐路径 happy-path" data-astro-cid-qrwn6rcr> 快乐路径 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/headless-testing/" class="docs-sidebar-link" data-search="无头测试 headless-testing" data-astro-cid-qrwn6rcr> 无头测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/heuristic-testing/" class="docs-sidebar-link" data-search="启发式测试 heuristic-testing" data-astro-cid-qrwn6rcr> 启发式测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>I</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ieee-829/" class="docs-sidebar-link" data-search="ieee 829 ieee-829" data-astro-cid-qrwn6rcr> IEEE 829 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/impact-analysis/" class="docs-sidebar-link" data-search="影响分析 impact-analysis" data-astro-cid-qrwn6rcr> 影响分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-management/" class="docs-sidebar-link" data-search="事件管理 incident-management" data-astro-cid-qrwn6rcr> 事件管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incident-report/" class="docs-sidebar-link" data-search="事件报告 incident-report" data-astro-cid-qrwn6rcr> 事件报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/incremental-testing/" class="docs-sidebar-link" data-search="渐进式测试 incremental-testing" data-astro-cid-qrwn6rcr> 渐进式测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/independent-verification-and-validation/" class="docs-sidebar-link" data-search="独立确认与验证 independent-verification-and-validation" data-astro-cid-qrwn6rcr> 独立确认与验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/input-validation-testing/" class="docs-sidebar-link" data-search="输入验证测试 input-validation-testing" data-astro-cid-qrwn6rcr> 输入验证测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/inspection/" class="docs-sidebar-link" data-search="检查的 inspection" data-astro-cid-qrwn6rcr> 检查的 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/integration-testing/" class="docs-sidebar-link" data-search="集成测试 integration-testing" data-astro-cid-qrwn6rcr> 集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interface-testing/" class="docs-sidebar-link" data-search="接口测试 interface-testing" data-astro-cid-qrwn6rcr> 接口测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/internationalization-testing/" class="docs-sidebar-link" data-search="国际化测试 internationalization-testing" data-astro-cid-qrwn6rcr> 国际化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/interoperability-testing/" class="docs-sidebar-link" data-search="互操作性测试 interoperability-testing" data-astro-cid-qrwn6rcr> 互操作性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/istqb/" class="docs-sidebar-link" data-search="istqb istqb" data-astro-cid-qrwn6rcr> ISTQB </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/iteration/" class="docs-sidebar-link" data-search="迭代 iteration" data-astro-cid-qrwn6rcr> 迭代 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>J</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jasmine/" class="docs-sidebar-link" data-search="jasmine jasmine" data-astro-cid-qrwn6rcr> Jasmine </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jest/" class="docs-sidebar-link" data-search="jest jest" data-astro-cid-qrwn6rcr> Jest </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jira/" class="docs-sidebar-link" data-search="jira jira" data-astro-cid-qrwn6rcr> Jira </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/jmeter/" class="docs-sidebar-link" data-search="jmeter jmeter" data-astro-cid-qrwn6rcr> Jmeter </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/junit-testing/" class="docs-sidebar-link" data-search="junit 测试 junit-testing" data-astro-cid-qrwn6rcr> JUnit 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>K</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/keyword-driven-testing/" class="docs-sidebar-link" data-search="关键字驱动测试 keyword-driven-testing" data-astro-cid-qrwn6rcr> 关键字驱动测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>L</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/lighthouse/" class="docs-sidebar-link" data-search="lighthouse lighthouse" data-astro-cid-qrwn6rcr> Lighthouse </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/load-testing/" class="docs-sidebar-link" data-search="负载测试 load-testing" data-astro-cid-qrwn6rcr> 负载测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/localization-testing/" class="docs-sidebar-link" data-search="本地化测试 localization-testing" data-astro-cid-qrwn6rcr> 本地化测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>M</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintainability/" class="docs-sidebar-link" data-search="可维护性 maintainability" data-astro-cid-qrwn6rcr> 可维护性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/maintenance-testing/" class="docs-sidebar-link" data-search="维护测试 maintenance-testing" data-astro-cid-qrwn6rcr> 维护测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/manual-testing/" class="docs-sidebar-link" data-search="手动测试 manual-testing" data-astro-cid-qrwn6rcr> 手动测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/microservices-testing/" class="docs-sidebar-link" data-search="微服务测试 microservices-testing" data-astro-cid-qrwn6rcr> 微服务测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-app-testing/" class="docs-sidebar-link" data-search="移动应用测试 mobile-app-testing" data-astro-cid-qrwn6rcr> 移动应用测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mobile-device-testing/" class="docs-sidebar-link" data-search="移动设备测试 mobile-device-testing" data-astro-cid-qrwn6rcr> 移动设备测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mock-testing/" class="docs-sidebar-link" data-search="模拟测试 mock-testing" data-astro-cid-qrwn6rcr> 模拟测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/monkey-testing/" class="docs-sidebar-link" data-search="猴子测试 monkey-testing" data-astro-cid-qrwn6rcr> 猴子测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mtbf/" class="docs-sidebar-link" data-search="平均故障间隔时间 mtbf" data-astro-cid-qrwn6rcr> 平均故障间隔时间 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/mutation-testing/" class="docs-sidebar-link" data-search="变异测试 mutation-testing" data-astro-cid-qrwn6rcr> 变异测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>N</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/negative-testing/" class="docs-sidebar-link" data-search="逆向测试/负面测试 negative-testing" data-astro-cid-qrwn6rcr> 逆向测试/负面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/node-js/" class="docs-sidebar-link" data-search="node js node-js" data-astro-cid-qrwn6rcr> Node Js </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/non-functional-testing/" class="docs-sidebar-link" data-search="非功能性测试 non-functional-testing" data-astro-cid-qrwn6rcr> 非功能性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/nunit/" class="docs-sidebar-link" data-search="nunit nunit" data-astro-cid-qrwn6rcr> Nunit </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>O</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/operational-testing/" class="docs-sidebar-link" data-search="运维测试 operational-testing" data-astro-cid-qrwn6rcr> 运维测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/orthogonal-array-testing/" class="docs-sidebar-link" data-search="正交数组测试 orthogonal-array-testing" data-astro-cid-qrwn6rcr> 正交数组测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ott-testing/" class="docs-sidebar-link" data-search="ott 测试 ott-testing" data-astro-cid-qrwn6rcr> OTT 测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>P</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/page-object-model/" class="docs-sidebar-link" data-search="页面对象模型 page-object-model" data-astro-cid-qrwn6rcr> 页面对象模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/pair-testing/" class="docs-sidebar-link" data-search="结对测试 pair-testing" data-astro-cid-qrwn6rcr> 结对测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/parameterized-testing/" class="docs-sidebar-link" data-search="参数化测试 parameterized-testing" data-astro-cid-qrwn6rcr> 参数化测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/path-testing/" class="docs-sidebar-link" data-search="路径测试 path-testing" data-astro-cid-qrwn6rcr> 路径测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/peer-testing/" class="docs-sidebar-link" data-search="同行评审测试 peer-testing" data-astro-cid-qrwn6rcr> 同行评审测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/penetration-testing/" class="docs-sidebar-link" data-search="渗透测试 penetration-testing" data-astro-cid-qrwn6rcr> 渗透测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-indicator/" class="docs-sidebar-link" data-search="性能指标 performance-indicator" data-astro-cid-qrwn6rcr> 性能指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/performance-testing/" class="docs-sidebar-link" data-search="性能测试 performance-testing" data-astro-cid-qrwn6rcr> 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postcondition/" class="docs-sidebar-link" data-search="后置条件 postcondition" data-astro-cid-qrwn6rcr> 后置条件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/postman/" class="docs-sidebar-link" data-search="postman postman" data-astro-cid-qrwn6rcr> Postman </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/priority/" class="docs-sidebar-link" data-search="优先级 priority" data-astro-cid-qrwn6rcr> 优先级 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Q</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/qa-metrics/" class="docs-sidebar-link" data-search="qa 指标 qa-metrics" data-astro-cid-qrwn6rcr> QA 指标 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-assurance/" class="docs-sidebar-link" data-search="质量保证 quality-assurance" data-astro-cid-qrwn6rcr> 质量保证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/quality-management/" class="docs-sidebar-link" data-search="质量管理 quality-management" data-astro-cid-qrwn6rcr> 质量管理 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>R</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/regression-testing/" class="docs-sidebar-link" data-search="回归测试 regression-testing" data-astro-cid-qrwn6rcr> 回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/release-testing/" class="docs-sidebar-link" data-search="发布测试 release-testing" data-astro-cid-qrwn6rcr> 发布测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reliability-testing/" class="docs-sidebar-link" data-search="可靠性测试 reliability-testing" data-astro-cid-qrwn6rcr> 可靠性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/requirements-management-tool/" class="docs-sidebar-link" data-search="需求管理工具 requirements-management-tool" data-astro-cid-qrwn6rcr> 需求管理工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/responsive-design/" class="docs-sidebar-link" data-search="响应式设计 responsive-design" data-astro-cid-qrwn6rcr> 响应式设计 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/retesting/" class="docs-sidebar-link" data-search="再次测试 retesting" data-astro-cid-qrwn6rcr> 再次测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/reviewer/" class="docs-sidebar-link" data-search="评审人员 reviewer" data-astro-cid-qrwn6rcr> 评审人员 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/risk-based-testing/" class="docs-sidebar-link" data-search="基于风险的测试 risk-based-testing" data-astro-cid-qrwn6rcr> 基于风险的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/robustness-testing/" class="docs-sidebar-link" data-search="鲁棒性测试 robustness-testing" data-astro-cid-qrwn6rcr> 鲁棒性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/rup/" class="docs-sidebar-link" data-search="rup rup" data-astro-cid-qrwn6rcr> Rup </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>S</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sanity-testing/" class="docs-sidebar-link" data-search="冒烟测试/健全性测试 sanity-testing" data-astro-cid-qrwn6rcr> 冒烟测试/健全性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scalability-testing/" class="docs-sidebar-link" data-search="可扩展性测试 scalability-testing" data-astro-cid-qrwn6rcr> 可扩展性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/screenshot-testing/" class="docs-sidebar-link" data-search="截图测试 screenshot-testing" data-astro-cid-qrwn6rcr> 截图测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/scrum/" class="docs-sidebar-link" data-search="scrum scrum" data-astro-cid-qrwn6rcr> Scrum </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/security-testing/" class="docs-sidebar-link" data-search="安全测试 security-testing" data-astro-cid-qrwn6rcr> 安全测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium/" class="docs-sidebar-link" data-search="selenium selenium" data-astro-cid-qrwn6rcr> Selenium </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/selenium-ide/" class="docs-sidebar-link" data-search="selenium ide selenium-ide" data-astro-cid-qrwn6rcr> Selenium Ide </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/session-based-testing/" class="docs-sidebar-link" data-search="基于会话的测试 session-based-testing" data-astro-cid-qrwn6rcr> 基于会话的测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/setup/" class="docs-sidebar-link docs-sidebar-link--active" aria-current="page" data-search="环境搭建 setup" data-astro-cid-qrwn6rcr> 环境搭建 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/severity/" class="docs-sidebar-link" data-search="严重程度 severity" data-astro-cid-qrwn6rcr> 严重程度 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/shift-left-testing/" class="docs-sidebar-link" data-search="左移测试 shift-left-testing" data-astro-cid-qrwn6rcr> 左移测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-development-life-cycle/" class="docs-sidebar-link" data-search="软件开发生命周期 software-development-life-cycle" data-astro-cid-qrwn6rcr> 软件开发生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality/" class="docs-sidebar-link" data-search="软件质量 software-quality" data-astro-cid-qrwn6rcr> 软件质量 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-quality-management/" class="docs-sidebar-link" data-search="软件质量管理 software-quality-management" data-astro-cid-qrwn6rcr> 软件质量管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-risk-analysis/" class="docs-sidebar-link" data-search="软件风险分析 software-risk-analysis" data-astro-cid-qrwn6rcr> 软件风险分析 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/software-testing/" class="docs-sidebar-link" data-search="软件测试 software-testing" data-astro-cid-qrwn6rcr> 软件测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/sql/" class="docs-sidebar-link" data-search="sql sql" data-astro-cid-qrwn6rcr> Sql </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/state-transition-testing/" class="docs-sidebar-link" data-search="状态转换测试 state-transition-testing" data-astro-cid-qrwn6rcr> 状态转换测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/static-testing/" class="docs-sidebar-link" data-search="静态测试 static-testing" data-astro-cid-qrwn6rcr> 静态测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stlc/" class="docs-sidebar-link" data-search="软件测试生命周期 stlc" data-astro-cid-qrwn6rcr> 软件测试生命周期 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/stress-testing/" class="docs-sidebar-link" data-search="压力测试 stress-testing" data-astro-cid-qrwn6rcr> 压力测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/structural-testing/" class="docs-sidebar-link" data-search="结构测试 structural-testing" data-astro-cid-qrwn6rcr> 结构测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/swagger/" class="docs-sidebar-link" data-search="swagger swagger" data-astro-cid-qrwn6rcr> Swagger </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-integration-testing/" class="docs-sidebar-link" data-search="系统集成测试 system-integration-testing" data-astro-cid-qrwn6rcr> 系统集成测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/system-testing/" class="docs-sidebar-link" data-search="系统测试 system-testing" data-astro-cid-qrwn6rcr> 系统测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>T</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-approach/" class="docs-sidebar-link" data-search="测试方法 test-approach" data-astro-cid-qrwn6rcr> 测试方法 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-automation/" class="docs-sidebar-link" data-search="测试自动化 test-automation" data-astro-cid-qrwn6rcr> 测试自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case/" class="docs-sidebar-link" data-search="测试用例 test-case" data-astro-cid-qrwn6rcr> 测试用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-case-management/" class="docs-sidebar-link" data-search="测试用例管理 test-case-management" data-astro-cid-qrwn6rcr> 测试用例管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-class/" class="docs-sidebar-link" data-search="测试类 test-class" data-astro-cid-qrwn6rcr> 测试类 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-comparison/" class="docs-sidebar-link" data-search="测试比较 test-comparison" data-astro-cid-qrwn6rcr> 测试比较 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-coverage/" class="docs-sidebar-link" data-search="测试覆盖率 test-coverage" data-astro-cid-qrwn6rcr> 测试覆盖率 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-data/" class="docs-sidebar-link" data-search="测试数据 test-data" data-astro-cid-qrwn6rcr> 测试数据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-specification/" class="docs-sidebar-link" data-search="测试设计规范 test-design-specification" data-astro-cid-qrwn6rcr> 测试设计规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-design-tool/" class="docs-sidebar-link" data-search="测试设计工具 test-design-tool" data-astro-cid-qrwn6rcr> 测试设计工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-driven-development/" class="docs-sidebar-link" data-search="测试驱动开发 test-driven-development" data-astro-cid-qrwn6rcr> 测试驱动开发 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-environment/" class="docs-sidebar-link" data-search="测试环境 test-environment" data-astro-cid-qrwn6rcr> 测试环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution/" class="docs-sidebar-link" data-search="测试执行 test-execution" data-astro-cid-qrwn6rcr> 测试执行 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-automation/" class="docs-sidebar-link" data-search="测试执行自动化 test-execution-automation" data-astro-cid-qrwn6rcr> 测试执行自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-schedule/" class="docs-sidebar-link" data-search="测试执行进度表 test-execution-schedule" data-astro-cid-qrwn6rcr> 测试执行进度表 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-technique/" class="docs-sidebar-link" data-search="测试执行技术 test-execution-technique" data-astro-cid-qrwn6rcr> 测试执行技术 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-execution-tool/" class="docs-sidebar-link" data-search="测试执行工具 test-execution-tool" data-astro-cid-qrwn6rcr> 测试执行工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-harness/" class="docs-sidebar-link" data-search="测试桩/测试执行环境 test-harness" data-astro-cid-qrwn6rcr> 测试桩/测试执行环境 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-infrastructure/" class="docs-sidebar-link" data-search="测试基础设施 test-infrastructure" data-astro-cid-qrwn6rcr> 测试基础设施 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-log/" class="docs-sidebar-link" data-search="测试日志 test-log" data-astro-cid-qrwn6rcr> 测试日志 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-management/" class="docs-sidebar-link" data-search="测试管理 test-management" data-astro-cid-qrwn6rcr> 测试管理 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-observability/" class="docs-sidebar-link" data-search="测试可观测性 test-observability" data-astro-cid-qrwn6rcr> 测试可观测性 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-oracles/" class="docs-sidebar-link" data-search="测试判定依据 test-oracles" data-astro-cid-qrwn6rcr> 测试判定依据 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-plan/" class="docs-sidebar-link" data-search="测试计划 test-plan" data-astro-cid-qrwn6rcr> 测试计划 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-policy/" class="docs-sidebar-link" data-search="测试策略说明 test-policy" data-astro-cid-qrwn6rcr> 测试策略说明 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process/" class="docs-sidebar-link" data-search="测试流程 test-process" data-astro-cid-qrwn6rcr> 测试流程 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-process-improvement/" class="docs-sidebar-link" data-search="测试流程改进 test-process-improvement" data-astro-cid-qrwn6rcr> 测试流程改进 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-pyramid/" class="docs-sidebar-link" data-search="测试金字塔 test-pyramid" data-astro-cid-qrwn6rcr> 测试金字塔 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-report/" class="docs-sidebar-link" data-search="测试报告 test-report" data-astro-cid-qrwn6rcr> 测试报告 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-runner/" class="docs-sidebar-link" data-search="测试执行器 test-runner" data-astro-cid-qrwn6rcr> 测试执行器 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-scenario/" class="docs-sidebar-link" data-search="测试场景 test-scenario" data-astro-cid-qrwn6rcr> 测试场景 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-script/" class="docs-sidebar-link" data-search="测试脚本 test-script" data-astro-cid-qrwn6rcr> 测试脚本 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-specification/" class="docs-sidebar-link" data-search="测试规范 test-specification" data-astro-cid-qrwn6rcr> 测试规范 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-strategy/" class="docs-sidebar-link" data-search="测试策略 test-strategy" data-astro-cid-qrwn6rcr> 测试策略 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-stub/" class="docs-sidebar-link" data-search="测试桩 test-stub" data-astro-cid-qrwn6rcr> 测试桩 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-suite/" class="docs-sidebar-link" data-search="测试套件 test-suite" data-astro-cid-qrwn6rcr> 测试套件 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/test-tool/" class="docs-sidebar-link" data-search="测试工具 test-tool" data-astro-cid-qrwn6rcr> 测试工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/timebox-testing/" class="docs-sidebar-link" data-search="时间盒测试 timebox-testing" data-astro-cid-qrwn6rcr> 时间盒测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/top-down-integration/" class="docs-sidebar-link" data-search="自顶向下集成 top-down-integration" data-astro-cid-qrwn6rcr> 自顶向下集成 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/traceability-matrix/" class="docs-sidebar-link" data-search="需求跟踪矩阵 traceability-matrix" data-astro-cid-qrwn6rcr> 需求跟踪矩阵 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>U</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/ui-testing/" class="docs-sidebar-link" data-search="用户界面测试 ui-testing" data-astro-cid-qrwn6rcr> 用户界面测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-test-framework/" class="docs-sidebar-link" data-search="单元测试框架 unit-test-framework" data-astro-cid-qrwn6rcr> 单元测试框架 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/unit-testing/" class="docs-sidebar-link" data-search="单元测试 unit-testing" data-astro-cid-qrwn6rcr> 单元测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/usability-testing/" class="docs-sidebar-link" data-search="可用性测试 usability-testing" data-astro-cid-qrwn6rcr> 可用性测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case/" class="docs-sidebar-link" data-search="用例 use-case" data-astro-cid-qrwn6rcr> 用例 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/use-case-testing/" class="docs-sidebar-link" data-search="用例测试 use-case-testing" data-astro-cid-qrwn6rcr> 用例测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/user-acceptance-testing/" class="docs-sidebar-link" data-search="用户验收测试 user-acceptance-testing" data-astro-cid-qrwn6rcr> 用户验收测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>V</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/v-model/" class="docs-sidebar-link" data-search="v 模型 v-model" data-astro-cid-qrwn6rcr> V 模型 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/validation-testing/" class="docs-sidebar-link" data-search="确认测试 validation-testing" data-astro-cid-qrwn6rcr> 确认测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/verification/" class="docs-sidebar-link" data-search="验证 verification" data-astro-cid-qrwn6rcr> 验证 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/visual-regression-testing/" class="docs-sidebar-link" data-search="视觉回归测试 visual-regression-testing" data-astro-cid-qrwn6rcr> 视觉回归测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/volume-testing/" class="docs-sidebar-link" data-search="容量测试 volume-testing" data-astro-cid-qrwn6rcr> 容量测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>W</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-automation/" class="docs-sidebar-link" data-search="web 自动化 web-automation" data-astro-cid-qrwn6rcr> Web 自动化 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-performance-testing/" class="docs-sidebar-link" data-search="web 性能测试 web-performance-testing" data-astro-cid-qrwn6rcr> Web 性能测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-test-automation-tools/" class="docs-sidebar-link" data-search="web 测试自动化工具 web-test-automation-tools" data-astro-cid-qrwn6rcr> Web 测试自动化工具 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/web-testing/" class="docs-sidebar-link" data-search="web 测试 web-testing" data-astro-cid-qrwn6rcr> Web 测试 </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/webdriver/" class="docs-sidebar-link" data-search="webdriver webdriver" data-astro-cid-qrwn6rcr> Webdriver </a> </li><li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/white-box-testing/" class="docs-sidebar-link" data-search="白盒测试 white-box-testing" data-astro-cid-qrwn6rcr> 白盒测试 </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>X</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/zh-cn/wiki/xpath-query/" class="docs-sidebar-link" data-search="xpath query xpath-query" data-astro-cid-qrwn6rcr> Xpath Query </a> </li> </ul> </div> </nav> </div> </aside>  <script type="module">function a(){const t=document.getElementById("docs-sidebar-toggle");if(t){const e=t.closest(".docs-sidebar-inner");e&&t.addEventListener("click",()=>{e.classList.toggle("is-open"),t.setAttribute("aria-expanded",e.classList.contains("is-open")?"true":"false")})}const s=document.getElementById("docs-sidebar-search-input");s&&s.addEventListener("input",()=>{const e=s.value.trim().toLowerCase();document.querySelectorAll(".docs-sidebar-section[data-section]").forEach(n=>{const d=n.querySelectorAll(".docs-sidebar-link[data-search]");let i=0;d.forEach(o=>{const c=!e||(o.getAttribute("data-search")??"").includes(e);o.style.display=c?"":"none",c&&i++}),n.style.display=i>0||!e?"":"none"})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",a):a();</script> </aside> <div class="docs-content" data-astro-cid-ac2mn7rr>  <article class="wiki-article" data-astro-cid-sqfwpogz> <!-- markdownlint-disable MD025 -->
+<h1 id="环境搭建--setup">环境搭建 ｜ Setup</h1>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%B8%8E%E9%87%8D%E8%A6%81%E6%80%A7">基础与重要性</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B">环境搭建流程</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#advanced-concepts">Advanced Concepts</a></li>
+</ul>
+<h2 id="关于环境搭建的问题">关于环境搭建的问题？</h2>
+<h3 id="基础与重要性">基础与重要性</h3>
+<ul>
+<li>
+<p><strong>环境搭建在软件自动化中的重要性是什么？</strong>
+软件**<a href="/zh-cn/wiki/test-automation/">测试自动化</a><strong>中的环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了</strong>端到端 (e2e) 测试<strong>所需的各种工具和框架的集成，例如</strong><a href="/zh-cn/wiki/test-runner/">测试运行器</a><strong>、断言库和报告工具。
+适当的环境搭建使测试自动化工程师能够专注于编写测试用例，而不是处理环境不一致或配置问题。它有助于在开发周期的早期识别缺陷，节省时间和资源。此外，稳健的搭建支持可扩展性，允许在不显着更改环境的情况下添加更多测试或并行执行。
+在持续集成和部署流水线中，环境搭建确保自动化测试可以随每次代码提交无缝触发，从而提供有关应用程序健康状况的即时反馈。这对于快速迭代和频繁发布很常见的</strong><a href="/zh-cn/wiki/agile-development/">敏捷开发</a><strong>实践至关重要。
+通过自动化搭建过程，团队可以最大限度地减少人为错误，缩短搭建时间，并确保测试环境可快速复现。当测试需要在不同环境中运行或集成新团队成员时，这一点尤为重要。
+总之，环境搭建在软件测试自动化中的重要性不言而喻。它是支持</strong><a href="/zh-cn/wiki/automated-testing/">自动化测试</a>**过程的高效、可靠和可扩展性的基石。</p>
+</li>
+<li>
+<p><strong>e2e 测试搭建需要哪些基本组件？</strong>
+e2e 测试搭建所需的基本组件包括：</p>
+<ul>
+<li><strong>测试自动化框架</strong>：选择支持 e2e 测试的框架，如 Selenium、Cypress 或 Playwright。</li>
+<li><strong>编程语言</strong>：选择框架支持的语言（例如 JavaScript、Python、Java）。</li>
+<li><strong>测试运行器 (Test Runner)</strong>：使用 Mocha、Jest 或 Jasmine 等工具来运行测试。</li>
+<li><strong>断言库 (Assertion Library)</strong>：集成断言库（例如 Chai、Assert）以验证测试结果。</li>
+<li><strong>浏览器驱动 (Browser Driver)</strong>：对于基于浏览器的测试，包括 ChromeDriver 或 geckodriver 等驱动。</li>
+<li><strong>无头浏览器 (Headless Browser)</strong>：可选，使用 Puppeteer 等无头浏览器以加快执行速度。</li>
+<li><strong>持续集成 (CI) 服务器</strong>：搭建 Jenkins、CircleCI 或 GitHub Actions 等 CI 工具进行自动化测试运行。</li>
+<li><strong>版本控制系统</strong>：使用 Git 或类似工具进行源代码管理。</li>
+<li><strong><a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>：准备处理测试数据的机制，可能使用 fixtures 或 factories。</li>
+<li><strong>打桩/模拟工具 (Mocking Tools)</strong>：结合 Sinon.js 或 WireMock 等工具来模拟 API 或服务。</li>
+<li><strong>报告工具</strong>：集成报告实用程序（例如 Allure、ReportPortal）以实现测试结果可视化。</li>
+<li><strong>容器化</strong>：可选，使用 Docker 进行一致的测试环境管理。</li>
+<li><strong>配置管理</strong>：如果需要基础架构即代码，请利用 Ansible、Chef 或 Puppet 等工具。</li>
+<li><strong>环境变量</strong>：建立一个安全管理环境变量的系统。
+确保所有组件都兼容并正确集成，以实现无缝的 e2e 测试过程。</li>
+</ul>
+</li>
+<li>
+<p><strong>环境搭建如何影响整个测试过程？</strong>
+环境搭建通过建立一个可以可靠执行测试的<strong>稳定且一致</strong>的环境来影响整个测试过程。配置良好的搭建可确保测试针对已知配置运行，从而减少可能导致**<a href="/zh-cn/wiki/flaky-test/">随机失败测试</a><strong>和</strong><a href="/zh-cn/wiki/false-positive/">误报/漏报</a><strong>的可变性。
+适当的环境搭建还有助于</strong>可扩展性**。随着**<a href="/zh-cn/wiki/test-suite/">测试套件</a><strong>的增长，稳健的搭建可以处理增加的负载和并行执行，而不会牺牲性能或准确性。这对于在</strong><a href="/zh-cn/wiki/agile-development/">敏捷开发</a><strong>周期中保持快速反馈循环至关重要。
+此外，环境搭建还影响</strong>调试<strong>效率。当测试失败时，工程师需要确定问题出在应用程序还是</strong><a href="/zh-cn/wiki/test-environment/">测试环境</a><strong>上。可预测的环境搭建简化了这一过程，从而可以更快地识别和解决问题。
+在</strong>维护<strong>方面，文档齐全且受版本控制的环境搭建有助于更轻松地更新和更改测试基础架构。这对于适应新的应用程序功能、测试框架的更新或外部依赖项的更改至关重要。
+最后，环境搭建在与 CI/CD 流水线的</strong>集成**中起着关键作用。精简的搭建过程可以在代码提交或构建时自动触发测试套件，从而强化持续测试的实践。
+总之，环境搭建是构建测试自动化过程可靠性、效率和有效性的基础。</p>
+</li>
+<li>
+<p><strong>为什么在开始自动化过程之前需要有适当的环境搭建？</strong>
+在开始自动化过程之前进行适当的环境搭建至关重要，原因如下：</p>
+<ul>
+<li><strong>一致性</strong>：标准化的搭建确保测试在一致的环境中运行，减少遇到可能导致误报或漏报的特定环境问题的可能性。</li>
+<li><strong>效率</strong>：明确定义的搭建简化了测试执行过程，从而实现更快的测试周期和对开发团队的更快反馈。</li>
+<li><strong>可扩展性</strong>：适当的搭建有助于扩展测试自动化工作，适应更多测试或并行执行，而无需进行重大重新配置。</li>
+<li><strong>调试</strong>：当测试失败时，具有清晰日志记录和报告机制的适当搭建可以简化识别和解决问题的过程。</li>
+<li><strong>集成</strong>：适当的搭建通常设计有 CI/CD 流水线的集成点，从而能够将自动化测试执行作为构建和部署过程的一部分。</li>
+<li><strong>可重用性</strong>：良好的搭建允许在不同项目或测试套件中重用测试组件和配置，从而提高效率并减少重复工作。</li>
+<li><strong>可靠性</strong>：可靠的搭建可以最大限度地减少可能影响测试结果的外部因素，从而获得更可靠的测试结果。</li>
+<li><strong>版本控制</strong>：适当的环境搭建包括测试脚本和环境配置的版本控制，确保更改可追踪并且在必要时可以回滚。</li>
+</ul>
+</li>
+</ul>
+<h3 id="环境搭建流程">环境搭建流程</h3>
+<ul>
+<li>
+<p><strong>e2e 测试的环境搭建涉及哪些步骤？</strong>
+要设置 e2e 测试，请遵循以下步骤：</p>
+<ol>
+<li><strong>选择合适的工具</strong>进行测试创建、管理和报告，例如 Cypress、Selenium 或 Puppeteer。</li>
+<li>**配置<a href="/zh-cn/wiki/test-environment/">测试环境</a>**以尽可能紧密地模拟生产环境，包括数据库、服务器和网络配置。</li>
+<li><strong>建立<a href="/zh-cn/wiki/test-data/">测试数据</a>管理策略</strong>，以确保测试可以访问必要的数据状态。</li>
+<li><strong>编写初始<a href="/zh-cn/wiki/test-case/">测试用例</a></strong>，重点关注反映真实使用的关键用户旅程。</li>
+<li><strong>与 CI/CD 流水线集成</strong>，在代码提交或计划间隔时自动执行测试。</li>
+<li><strong>建立报告机制</strong>以收集测试结果并与团队分享见解。</li>
+<li><strong>实施监控</strong>以跟踪测试随机失败和环境稳定性。</li>
+<li><strong>执行空运行 (Dry Run)</strong> 以验证搭建，确保测试可以从头到尾运行而没有问题。</li>
+<li><strong>根据空运行的反馈审查和改进</strong>搭建情况，根据需要调整规范和测试用例。</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 简单 Cypress 测试示例</span></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'用户登录'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'应该允许用户登录'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">visit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/login'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'input[name=username]'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">type</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'user'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'input[name=password]'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">type</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'password'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'form'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">submit</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    cy.</span><span style="color:#B392F0">url</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">should</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'include'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'/dashboard'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>请记住为团队参考<strong>记录搭建过程</strong>，并确保遵循<strong>安全最佳实践</strong>以保护测试数据和环境。</p>
+</li>
+<li>
+<p><strong>如何为 e2e 测试搭建测试环境？</strong>
+要为 e2e 测试搭建测试环境，请遵循以下简明步骤：</p>
+<ol>
+<li><strong>克隆应用程序存储库</strong>到本地或 CI/CD 环境。
+<code>git clone &#x3C;repository_url></code></li>
+<li><strong>安装被测应用程序 (AUT) 的依赖项</strong>。
+<code>npm install</code></li>
+<li><strong>配置环境变量</strong>，这些变量与测试环境相关，例如**<a href="/zh-cn/wiki/database/">数据库</a>** URL、服务端点和身份验证凭据。</li>
+<li><strong>设置外部服务和数据库</strong>，确保它们尽可能紧密地模拟生产环境。</li>
+<li><strong>将被测应用程序部署</strong>到测试环境（本地或专用测试服务器）。</li>
+<li><strong>安装<a href="/zh-cn/wiki/test-automation/">测试自动化</a>框架</strong>和工具，如 <strong><a href="/zh-cn/wiki/selenium/">Selenium</a></strong> <strong><a href="/zh-cn/wiki/webdriver/">WebDriver</a></strong>、<strong><a href="/zh-cn/wiki/cypress/">Cypress</a></strong> 或 Playwright。</li>
+<li><strong>配置<a href="/zh-cn/wiki/test-runner/">测试运行器</a></strong>，使用部署的 AUT 的正确基准 URL 和其他必要参数。</li>
+<li><strong>编写冒烟测试</strong>以验证环境是否已正确设置以及 AUT 是否可访问。</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'冒烟测试'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'应该加载应用程序'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> browser.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'&#x3C;base_url>'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">await</span><span style="color:#E1E4E8"> browser.</span><span style="color:#B392F0">getTitle</span><span style="color:#E1E4E8">()).not.</span><span style="color:#B392F0">toBeNull</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ol start="9">
+<li><strong>执行冒烟测试</strong>以确保环境和 AUT 已准备好进行进一步的 e2e 测试。</li>
+<li><strong>集成 CI/CD 流水线</strong>（如有），以自动化部署和测试过程。
+记住要<strong>验证网络配置和防火墙规则</strong>，以确保**<a href="/zh-cn/wiki/test-script/">测试脚本</a><strong>可以与 AUT 和外部服务通信。定期</strong>备份配置并记录搭建过程**以实现可重用性和维护。</li>
+</ol>
+</li>
+<li>
+<p><strong>搭建过程中面临的常见挑战有哪些？如何克服？</strong>
+软件测试自动化搭建过程中的常见挑战包括：</p>
+<ul>
+<li><strong>兼容性问题</strong>：不同的工具和框架可能无法无缝协作。通过研究和选择具有已知兼容性的工具，或使用 Docker 等容器化技术标准化环境来克服此问题。</li>
+<li><strong>复杂的配置</strong>：**<a href="/zh-cn/wiki/test-environment/">测试环境</a>**可能非常错综复杂，需要特定的设置。通过使用 Ansible、Puppet 或 Chef 等配置管理工具自动执行并记录环境搭建来解决此问题。</li>
+<li><strong><a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>：生成和管理测试数据可能很困难。利用数据管理工具和策略（如数据脱敏和合成数据生成）来精简此过程。</li>
+<li><strong>版本控制冲突</strong>：保持**<a href="/zh-cn/wiki/test-script/">测试脚本</a>**和资源与应用程序代码更改同步可能会导致冲突。实施稳健的版本控制系统并将其与 CI/CD 流水线集成以有效管理更改。</li>
+<li><strong>随机失败测试</strong>：非确定性测试可能导致**<a href="/zh-cn/wiki/false-positive/">误报</a><strong>或漏报。通过编写稳定可靠的</strong><a href="/zh-cn/wiki/test-case/">测试用例</a>**来解决此问题，并仅作为最后手段使用重试机制。</li>
+<li><strong>资源分配</strong>：确保有足够的资源进行并行测试可能具有挑战性。使用云解决方案或虚拟化动态分配和扩展资源。</li>
+<li><strong>安全约束</strong>：对某些环境或数据的访问可能会受到限制。与安全团队合作建立安全的访问通道，或在可能的情况下使用匿名数据。</li>
+<li><strong>持续集成障碍</strong>：将测试自动化集成到 CI/CD 流水线中可能很复杂。利用提供原生测试自动化支持的 CI 工具，并确保您的搭建与流水线要求兼容。</li>
+</ul>
+</li>
+<li>
+<p><strong>e2e 测试搭建需要哪些工具？</strong>
+要搭建 e2e 测试环境，您需要结合针对应用程序技术栈和测试要求的工具，以下是简明列表：</p>
+<ul>
+<li><strong>测试框架</strong>：选择支持 e2e 测试的框架，如 Cypress、Selenium WebDriver、Protractor 或 Playwright。</li>
+<li><strong>语言特定 SDK</strong>：确保您拥有所用语言的必要 SDK，例如 Java、JavaScript、Python 等。</li>
+<li><strong>浏览器</strong>：安装计划测试的浏览器，如 Chrome、Firefox、Safari 或其无头版本。</li>
+<li><strong>浏览器驱动</strong>：对于基于 Selenium 的测试，下载特定浏览器的驱动，如 ChromeDriver 或 GeckoDriver。</li>
+<li><strong><a href="/zh-cn/wiki/api-testing/">API 测试</a>工具</strong>：如果 API 是 e2e 测试的一部分，则使用 Postman 或 REST-assured 等工具。</li>
+<li><strong>版本控制</strong>：Git 或类似系统来管理您的测试代码。</li>
+<li><strong>CI/CD 工具</strong>：Jenkins、GitLab CI 或 GitHub Actions，用于将 e2e 测试集成到 CI/CD 流水线中。</li>
+<li><strong>虚拟化软件</strong>：如果要在隔离环境中运行测试，请使用 Docker 或 Kubernetes 进行容器化和编排。</li>
+<li><strong><a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>：用于创建和管理测试数据的工具或脚本。</li>
+<li><strong>报告工具</strong>：Allure、ReportPortal 或内置框架报告生成器。</li>
+<li><strong>监控工具</strong>：可选地，使用 Grafana 或 Kibana 等工具实时监控测试运行。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 示例：通过 npm 安装 Cypress</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> cypress</span><span style="color:#79B8FF"> --save-dev</span></span></code></pre>
+</li>
+</ul>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>
+<p><strong>搭建 e2e 测试的最佳实践是什么？</strong>
+为确保有效的 e2e 测试，请遵循以下最佳实践：</p>
+<ul>
+<li><strong>隔离<a href="/zh-cn/wiki/test-environment/">测试环境</a></strong>，使其与开发和生产环境分开，以避免副作用并保持一致性。</li>
+<li><strong>使用真实的测试数据</strong>，紧密模拟生产场景，但要确保敏感信息已脱敏。</li>
+<li><strong>实施版本控制</strong>，管理测试脚本和数据以跟踪更改并促进协作。</li>
+<li><strong>优先考虑关键路径</strong>，重点测试应用程序中的关键功能，以最大限度地提高测试套件的影响和效率。</li>
+<li><strong>设计幂等性测试</strong>，这意味着它们可以多次运行而不会影响后续运行。</li>
+<li><strong>利用并行执行</strong>，缩短运行时间并提供更快的反馈。</li>
+<li><strong>结合可<a href="/zh-cn/wiki/visual-regression-testing/">视化回归测试</a></strong>，捕获功能测试可能遗漏的 UI 差异。</li>
+<li><strong>利用服务虚拟化或模拟 (Mocking)</strong>，模拟外部依赖项，确保测试可以独立于第三方服务运行。</li>
+<li><strong>自动化<a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>，在测试前后准备和清理数据，确保一致的起始状态。</li>
+<li><strong>实施稳健的错误处理和日志记录</strong>，简化故障排除并缩短维护时间。</li>
+<li><strong>定期审查和重构测试</strong>，减少随机失败并提高可靠性。</li>
+<li><strong>与 CI/CD 流水线集成</strong>，在代码更改时自动运行测试，确保对这些更改影响的即时反馈。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何优化环境搭建以获得更好的 e2e 测试性能？</strong>
+优化环境搭建以获得更好的 e2e 测试性能涉及理顺流程并利用高效的工具和实践。以下是一些策略：</p>
+<ul>
+<li><strong>并行执行</strong>：在多台机器或虚拟环境中心并行运行测试，以缩短执行时间。<strong><a href="/zh-cn/wiki/selenium/">Selenium</a></strong> Grid 或 <strong><a href="/zh-cn/wiki/browserstack/">BrowserStack</a></strong> 和 Sauce Labs 等云平台可以促进这一点。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 使用 Selenium Grid 的示例</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> capabilities</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  browserName: </span><span style="color:#9ECBFF">'chrome'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  version: </span><span style="color:#9ECBFF">'latest'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  platform: </span><span style="color:#9ECBFF">'WIN10'</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> driver</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> RemoteWebDriver</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> URL</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://localhost:4444/wd/hub'</span><span style="color:#E1E4E8">), capabilities);</span></span></code></pre>
+</li>
+<li><strong>选择性测试</strong>：实施智能测试选择策略（<strong><a href="/zh-cn/wiki/impact-analysis/">影响分析</a></strong>），仅运行受最近代码更改影响的测试。</li>
+<li><strong>缓存</strong>：对依赖项和常用数据使用缓存以节省搭建时间。例如，可以使用 Docker 层在容器化环境中缓存依赖项。</li>
+<li><strong>资源分配</strong>：确保为测试环境分配了足够的资源，包括 CPU、内存和网络带宽。</li>
+<li><strong>容器化</strong>：使用容器创建轻量级、可复现且可扩展的测试环境。Docker 和 Kubernetes 可以编排容器部署。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 在容器中运行测试的 Docker 命令示例</span></span>
+<span class="line"><span style="color:#B392F0">docker</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> -v</span><span style="color:#E1E4E8"> $(</span><span style="color:#79B8FF">pwd</span><span style="color:#E1E4E8">)</span><span style="color:#9ECBFF">:/e2e</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /e2e</span><span style="color:#9ECBFF"> node:14</span><span style="color:#9ECBFF"> npm</span><span style="color:#9ECBFF"> test</span></span></code></pre>
+</li>
+<li><strong>预构建环境</strong>：使用测试环境的预构建镜像或快照，以避免每次测试运行前的搭建时间。</li>
+<li><strong>监控和分析</strong>：定期监控并分析**<a href="/zh-cn/wiki/test-suite/">测试套件</a>**以识别瓶颈。</li>
+<li><strong>异步搭建</strong>：在可能的情况下异步执行搭建任务，以更好地利用时间，特别是在处理 I/O 操作时。</li>
+</ul>
+</li>
+<li>
+<p><strong>搭建过程中要避免哪些常见错误？</strong>
+软件测试自动化搭建过程中要避免的常见错误包括：</p>
+<ul>
+<li><strong>忽视版本控制</strong>：不对测试脚本和配置使用版本控制会导致不一致和跟踪更改困难。</li>
+<li><strong>资源分配不足</strong>：低估测试环境所需的资源（如内存、CPU 和带宽）会导致测试失败或产生不可靠的结果。</li>
+<li><strong>忽视<a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>：未能正确管理测试数据（包括没有创建、维护和清理数据的策略）会损害测试准确性。</li>
+<li><strong><a href="/zh-cn/wiki/test-environment/">测试环境</a>缺乏隔离</strong>：未将测试环境与开发或生产环境隔离可能会由于外部影响而导致不可预测的结果。</li>
+<li><strong>硬编码值</strong>：在测试脚本中硬编码测试数据或环境特定值会降低灵活性。</li>
+<li><strong>跳过安全注意事项</strong>：忽视测试搭建的安全方可能会将敏感数据或测试基础架构暴露于风险中。</li>
+<li><strong>文档匮乏</strong>：未记录搭建过程和配置会阻碍知识传授并使故障排除变得更加困难。</li>
+<li><strong>错误处理不足</strong>：未在测试脚本中规划错误处理会导致无信息量的测试失败和增加调试时间。</li>
+<li><strong>忽视可扩展性</strong>：未考虑搭建如何随测试数量增加或场景变复杂而扩展，会导致性能瓶颈。</li>
+<li><strong>未能验证搭建情况</strong>：在开始自动化过程之前未验证搭建情况，可能会导致由于配置错误而产生的误报或漏报。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何维护和更新 e2e 测试的环境搭建？</strong>
+维护和更新环境搭建对于确保自动化测试的可靠性和效率至关重要，以下是一些策略：</p>
+<ul>
+<li><strong>版本控制</strong>：使用 Git 等系统管理测试脚本、配置文件和依赖项的更改。</li>
+<li><strong>定期更新</strong>：保持测试工具、库和环境处于最新状态。使用 Dependabot 或 Renovate 等工具自动更新依赖项。
+<code>npm update</code></li>
+<li><strong>模块化设计</strong>：在设计测试套件时考虑模块化。将搭建逻辑封装在可以轻松修改或替换的函数或类中，而不影响测试套件的其他部分。</li>
+<li><strong>配置管理</strong>：将配置设置外部化到文件或环境变量中。使用配置管理工具来管理不同环境，避免硬编码值。</li>
+<li><strong>文档化</strong>：记录搭建过程中的任何更改。确保团队成员能够理解并遵循更新。</li>
+<li><strong>自动化健康检查</strong>：为测试环境实施自动化健康检查，以确保它们始终处于就绪状态。如果环境宕机或配置错误，请提醒团队。</li>
+<li><strong>持续集成</strong>：将搭建更新集成到 CI 流水线中，确保任何更改在合并前都经过自动测试和验证。</li>
+<li><strong>反馈循环</strong>：与团队建立反馈循环，定期审查搭建过程以识别痛点。</li>
+</ul>
+</li>
+</ul>
+<h3 id="advanced-concepts">Advanced Concepts</h3>
+<ul>
+<li>
+<p><strong>不同类型的测试环境，环境搭建有何不同？</strong>
+不同类型测试环境的搭建根据每个环境的<strong>特定要求和约束</strong>而有所不同：</p>
+<ul>
+<li><strong><a href="/zh-cn/wiki/unit-testing/">单元测试</a></strong>：<strong>隔离</strong>是关键；通常需要模拟 (Mocking) 框架。搭建通常非常轻量，涉及单元测试框架（如 JUnit、NUnit、pytest）的配置。</li>
+<li><strong><a href="/zh-cn/wiki/integration-testing/">集成测试</a></strong>：需要配置环境以包含彼此交互的<strong>所有组件</strong>。通常涉及设置需要一起测试的**<a href="/zh-cn/wiki/database/">数据库</a><strong>、</strong><a href="/zh-cn/wiki/api/">API</a>** 和服务，可能需要网络配置以允许组件间通信。</li>
+<li><strong><a href="/zh-cn/wiki/system-testing/">系统测试</a></strong>：涉及在紧密模拟生产的环境中搭建<strong>整个系统</strong>。需要<strong>数据搭建</strong>以确保系统在真实条件下进行测试，可能需要专门工具模拟外部系统和接口。</li>
+<li><strong><a href="/zh-cn/wiki/performance-testing/">性能测试</a></strong>：搭建涉及配置<strong>高容量硬件</strong>和<strong>网络资源</strong>以模拟负载。配置<strong>负载生成器</strong>和性能监控解决方案，需要<strong>基准性能数据</strong>进行比较。</li>
+<li><strong><a href="/zh-cn/wiki/security-testing/">安全测试</a></strong>：通常需要一个<strong>独立的、安全的环境</strong>。搭建<strong>漏洞扫描</strong>和**<a href="/zh-cn/wiki/penetration-testing/">渗透测试</a><strong>工具，可能涉及</strong>伪造数据<strong>以避免暴露敏感信息。
+每种环境搭建都必须考虑测试目标、资源可用性和风险管理。自动化工程师应编写脚本并记录环境配置，以确保存储周期中的</strong>可重复性<strong>和</strong>一致性**。</li>
+</ul>
+</li>
+<li>
+<p><strong>环境搭建在持续集成和持续部署中起什么作用？</strong>
+在<strong>持续集成 (CI)</strong> 和<strong>持续部署 (CD)</strong> 中，环境搭建在建立可靠且高效的流水线方面起着关键作用。适当的搭建确保代码更改可以自动构建、测试并准备好发布到生产环境。</p>
+<ul>
+<li>对于 CI，环境搭建涉及配置自动化服务器，使其能从存储库获取最新代码、执行<strong>测试套件</strong>并报告结果。这包括：集成源代码控制钩子以在提交时触发构建；定义构建步骤（如编译和单元测试）；配置构建结果通知。</li>
+<li>在 CD 中，环境搭建扩展了 CI 流水线以自动化部署。这需要：配置预发布和生产环境；设置部署脚本或使用部署工具；为失败部署建立回滚机制。
+CI 和 CD 都依赖稳健的环境搭建来及早发现集成问题，精简发布过程，减少人工干预。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何自动化 e2e 测试的搭建过程？</strong>
+自动化 e2e 测试的搭建过程可以精简一致测试环境的创建。请遵循以下步骤：</p>
+<ol>
+<li><strong>版本控制</strong>：将搭建脚本和配置文件存储在 Git 等版本控制系统中。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#9ECBFF"> https://repository-url/your-project.git</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> your-project</span></span></code></pre>
+</li>
+<li><strong>配置管理</strong>：使用 Ansible、Puppet 或 Chef 将基础设施作为代码进行管理，实现所需服务和依赖项的自动配置。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Install dependencies</span></span>
+<span class="line"><span style="color:#85E89D">  apt</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"{{ packages }}"</span></span>
+<span class="line"><span style="color:#85E89D">  vars</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    packages</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">docker</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">docker-compose</span></span></code></pre>
+</li>
+<li><strong>容器化</strong>：利用 Docker 或类似的容器平台封装您的应用程序及其环境，确保开发不同阶段的一致性。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#F97583">FROM</span><span style="color:#E1E4E8"> node:14</span></span>
+<span class="line"><span style="color:#F97583">WORKDIR</span><span style="color:#E1E4E8"> /app</span></span>
+<span class="line"><span style="color:#F97583">COPY</span><span style="color:#E1E4E8"> . /app</span></span>
+<span class="line"><span style="color:#F97583">RUN</span><span style="color:#E1E4E8"> npm install</span></span>
+<span class="line"><span style="color:#F97583">EXPOSE</span><span style="color:#E1E4E8"> 3000</span></span></code></pre>
+</li>
+<li><strong>编排</strong>：使用 Kubernetes 或 Docker Compose 编排容器、处理服务发现和扩展。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">version</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'3'</span></span>
+<span class="line"><span style="color:#85E89D">services</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  web</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    build</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">.</span></span>
+<span class="line"><span style="color:#85E89D">    ports</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">     - </span><span style="color:#9ECBFF">"3000:3000"</span></span></code></pre>
+</li>
+<li><strong>自动化脚本</strong>：编写脚本来自动化重复性任务，如<strong>数据库</strong>播种、迁移和环境变量设置。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> migrate</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> seed</span></span></code></pre>
+</li>
+<li><strong>持续集成 (CI)</strong>：与 Jenkins、GitLab CI 或 GitHub Actions 等 CI 工具集成，在代码推送或定期触发搭建过程。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">push</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  build</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v2</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Setup environment</span></span>
+<span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">./setup-script.sh</span></span></code></pre>
+</li>
+</ol>
+<p>通过自动化这些步骤，您可以确保搭建过程可重复且可靠，从而减少人为错误。</p>
+</li>
+<li>
+<p><strong>e2e 测试搭建的最新趋势和技术有哪些？</strong>
+e2e 测试搭建的最新趋势和技术包括：</p>
+<ul>
+<li><strong>容器化与编排</strong>：Docker 和 Kubernetes 允许创建一致、可扩展且隔离的环境，从而精简搭建过程。</li>
+<li><strong>云端测试平台</strong>：BrowserStack 和 Sauce Labs 等服务为 e2e 测试提供按需提供的浏览器和设备环境。</li>
+<li><strong>基础设施即代码 (IaC)</strong>：Terraform 和 AWS CloudFormation 等工具使测试环境的配置能够通过代码实现，确保可重复性和版本控制。</li>
+<li><strong>AI 与机器学习</strong>：AI 驱动的工具可以优化测试套件、预测故障并智能地选择要运行的测试。</li>
+<li><strong>无头浏览器</strong>：Puppeteer 和 Playwright 提供快速轻量的浏览器环境。</li>
+<li><strong><a href="/zh-cn/wiki/cross-browser-testing/">跨浏览器测试</a>工具</strong>：现代工具提供自动化的跨浏览器测试功能。</li>
+<li><strong><a href="/zh-cn/wiki/visual-regression-testing/">可视化回归测试</a>工具</strong>：Applitools 和 Percy 自动化检测测试运行之间的视觉差异。</li>
+<li><strong><a href="/zh-cn/wiki/performance-testing/">性能测试</a>集成</strong>：将 Lighthouse 和 WebPageTest 等工具结合到 e2e 搭建中以监控性能指标。</li>
+<li><strong><a href="/zh-cn/wiki/test-data/">测试数据</a>管理</strong>：提供创建、管理和处理测试数据的解决方案。</li>
+<li><strong><a href="/zh-cn/wiki/microservices-testing/">微服务测试</a></strong>：采用在微服务架构中进行测试的策略，包括服务虚拟化和契约测试。</li>
+<li><strong>可观测与监控</strong>：集成 Grafana、Prometheus 和 ELK 栈实时监控测试执行和系统健康状况。
+这些技术有助于创建一个稳健、灵活且高效的 e2e 测试搭建，以适应软件开发的动态特性。</li>
+</ul>
+</li>
+</ul> </article> <section class="giscus-section" aria-label="评论" data-astro-cid-an2nl7ar><div class="giscus" data-astro-cid-an2nl7ar></div><script src="https://giscus.app/client.js" data-repo="naodeng/naodeng.com.cn" data-repo-id="R_kgDOHntNtg" data-category="Show and tell" data-category-id="DIC_kwDOHntNts4Cavst" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script></section>  </div> <aside class="docs-toc-wrap" data-astro-cid-ac2mn7rr> <aside class="toc-sidebar toc-sidebar--right" aria-label="本页目录" data-astro-cid-xvrfupwn><nav class="toc-nav" data-astro-cid-xvrfupwn><h2 class="toc-title" data-astro-cid-xvrfupwn>本页目录</h2><ul class="toc-list" data-astro-cid-xvrfupwn><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#目录" class="toc-link" data-astro-cid-xvrfupwn>目录</a></li><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#关于环境搭建的问题" class="toc-link" data-astro-cid-xvrfupwn>关于环境搭建的问题？</a></li></ul></nav></aside><script type="module">function d(){const t=document.querySelector(".toc-sidebar--left"),a=t?.closest(".article-with-toc"),u=document.querySelector(".article-main"),l=document.querySelector(".l-footer");if(!t||!a)return;const i=a.getBoundingClientRect(),w=i.top>=window.innerHeight,h=i.bottom>0&&i.top<window.innerHeight;if(w){t.style.position="absolute",t.style.top="0",t.style.bottom="";return}t.style.position="fixed";const o=document.querySelector(".article-title-header, #article-title-header"),r=o?o.getBoundingClientRect().top:i.top,n=h?Math.max(16,r):16;t.style.top=n+"px";let e;if(h){const c=i.bottom<window.innerHeight;u&&c?e=Math.max(16,window.innerHeight-i.bottom):e=288;const s=Math.max(200,Math.floor(window.innerHeight*.7));window.innerHeight-n-e<s&&(e=Math.max(16,window.innerHeight-n-s))}else e=288;if(l){const c=l.getBoundingClientRect(),s=window.innerHeight-c.top+8;e=Math.max(e,s)}else e=Math.max(e,288);t.style.bottom=e+"px"}function g(){const t=document.querySelector(".toc-sidebar"),a=document.querySelector(".article-main");if(!t||!a)return;const u=t.querySelectorAll(".toc-link"),l=a.querySelectorAll("h2[id], h3[id], h4[id]");if(u.length===0||l.length===0)return;const i=o=>{let r=null;u.forEach(c=>{const f=c.getAttribute("href")===`#${o}`;c.setAttribute("aria-current",f?"true":"false"),f&&(r=c)});const n=document.querySelector(".l-footer"),e=n&&n.getBoundingClientRect().top<window.innerHeight;r&&!e&&t.scrollHeight>t.clientHeight&&r.scrollIntoView({block:"nearest",behavior:"smooth"})},w=new IntersectionObserver(o=>{const r=o.filter(n=>n.isIntersecting).sort((n,e)=>{const c=(n.boundingClientRect?.top??0)+window.scrollY,s=(e.boundingClientRect?.top??0)+window.scrollY;return c-s});r.length>0&&i(r[0].target.id)},{rootMargin:"-80px 0px -66% 0px",threshold:0});l.forEach(o=>w.observe(o));const h=Array.from(l).find(o=>o.getBoundingClientRect().top<=window.innerHeight*.5);i(h?.id??l[0]?.id??null)}function m(){d(),g()}document.addEventListener("DOMContentLoaded",m);window.addEventListener("load",d);window.addEventListener("load",()=>setTimeout(d,50));window.addEventListener("scroll",()=>d(),{passive:!0});window.addEventListener("resize",()=>d());typeof ResizeObserver<"u"&&document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".article-with-toc");t&&new ResizeObserver(()=>d()).observe(t)});</script> </aside> </div>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/wiki/setup/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/series/" data-astro-cid-sz7xmlte>系列</a> <a href="/zh-cn/tags/" data-astro-cid-sz7xmlte>标签</a> <a href="/zh-cn/wiki/" data-astro-cid-sz7xmlte>软件测试百科</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>支持</a> <a href="/zh-cn/copyright/" data-astro-cid-sz7xmlte>版权信息</a> <a href="/zh-cn/privacy/" data-astro-cid-sz7xmlte>隐私政策</a> <a href="/zh-cn/links/" data-astro-cid-sz7xmlte>友情链接</a> <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>状态</a> <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>访问统计</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <p class="footer-slogan" data-astro-cid-sz7xmlte>质量分析师，而非质量保证师。</p> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/zh-cn/copyright/" class="license-link" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</a> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-algolia-key="7bf4a2b4e4f0c324b0cca574ab137f6a" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <div class="search-hint-row" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> <p class="search-algolia-badge" data-astro-cid-qk3db3zz> <a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer" class="search-algolia-link" aria-label="Search by Algolia" data-astro-cid-qk3db3zz> <span class="search-algolia-icon" aria-hidden="true" data-astro-cid-qk3db3zz> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qk3db3zz> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" data-astro-cid-qk3db3zz></path> </svg> </span> <span class="search-algolia-text" data-astro-cid-qk3db3zz><span class="search-algolia-by" data-astro-cid-qk3db3zz>Search by</span> Algolia</span> </a> </p> </div> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script>(function(){const useAlgolia = true;
+const algoliaAppId = "5L1S6UUZVF";
+const algoliaIndexName = "inaodeng_com_5l1s6uuzvf_pages.tmp";
+
+  /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
+  const backdrop = document.querySelector(".search-backdrop[data-close]");
+  const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
+
+  let index = [];
+  let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
+
+  function getLocale() {
+    const el = document.documentElement.getAttribute("data-locale");
+    return el === "zh-cn" ? "zh-cn" : "en";
+  }
+
+  async function loadIndex() {
+    if (index.length > 0) return index;
+    locale = getLocale();
+    const res = await fetch(`/${locale}/search-index.json`);
+    if (!res.ok) return [];
+    index = await res.json();
+    return index;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
+    resultsEl.innerHTML = "";
+    resultsEl.hidden = items.length === 0;
+    emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    items.slice(0, 20).forEach((item) => {
+      const a = document.createElement("a");
+      const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
+      a.href = url;
+      a.className = "search-result-item";
+      a.setAttribute("role", "listitem");
+      const dateStr = new Date(item.date).toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      a.innerHTML = `
+        <span class="search-result-title">${escapeHtml(item.title)}</span>
+        <span class="search-result-meta">${escapeHtml(dateStr)}${item.tags?.length ? " · " + item.tags.slice(0, 3).join(", ") : ""}</span>
+      `;
+      resultsEl.appendChild(a);
+    });
+  }
+
+  // 使用事件委托：在结果容器上统一处理点击（解决鼠标点链接/内层 span 不跳转的问题）
+  resultsEl.addEventListener("click", (e) => {
+    const a = e.target.closest("a.search-result-item");
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const url = a.getAttribute("href");
+    if (!url) return;
+    dialog.close();
+    setTimeout(function () {
+      window.location.assign(url);
+    }, 80);
+  });
+
+  function filter(q) {
+    const lower = q.trim().toLowerCase();
+    if (!lower) return [];
+    return index.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lower) ||
+        item.description.toLowerCase().includes(lower) ||
+        (item.tags && item.tags.some((t) => t.toLowerCase().includes(lower)))
+    );
+  }
+
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      // is:inline 脚本未打包，从 ESM CDN 加载
+      const mod = await import("https://esm.sh/algoliasearch@5");
+      const { algoliasearch } = mod;
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        hitsPerPage: 30,
+      },
+    });
+    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
+    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
+    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
+  }
+
+  function onInput() {
+    const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false, false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) {
+            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
+            renderItems(items, true, true);
+          }
+        } catch (err) {
+          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
+        }
+      }, 200);
+      return;
+    }
+
+    if (!index.length) {
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      return;
+    }
+    const items = filter(q);
+    renderItems(items, hasQuery, false);
+  }
+
+  function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
+    loadIndex().then(() => {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+    });
+  }
+
+  function closeSearch() {
+    dialog.close();
+    if (hintEl) hintEl.style.display = "";
+  }
+
+  dialog.addEventListener("close", () => {
+    if (hintEl) hintEl.style.display = "";
+  });
+
+  dialog.addEventListener("cancel", closeSearch);
+
+  backdrop?.addEventListener("click", closeSearch);
+
+  input.addEventListener("input", onInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "Enter") {
+      const first = resultsEl.querySelector(".search-result-item");
+      if (first) {
+        first.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      if (dialog.open) closeSearch();
+      else openSearch();
+    }
+  });
+
+  document.querySelectorAll("[data-search-open]").forEach((el) => {
+    el.addEventListener("click", openSearch);
+  });
+
+  window.addEventListener("search-open", openSearch);
+})();</script>    </body> </html>  
