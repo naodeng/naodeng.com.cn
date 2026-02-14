@@ -73,6 +73,21 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator("main .docs-sidebar").first()).toBeVisible();
   });
 
+  test("zh-cn 从首页点击「百科」进入百科首页", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.locator("header a[href*='/zh-cn/wiki'], header nav a[href*='/wiki']").first().click();
+    await expect(page).toHaveURL(/\/(zh-cn)\/wiki\/?/);
+    await expect(page.locator("main .docs-sidebar").first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: "测试百科", level: 1 }).first()).toBeVisible();
+  });
+
+  test("en 首页「QA wiki」链接指向外站 ray.run", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    const wikiLink = page.locator("header a[href='https://ray.run/wiki']").first();
+    await expect(wikiLink).toBeVisible();
+    await expect(wikiLink).toHaveAttribute("target", "_blank");
+  });
+
   test("en 博客列表页：文章卡片可点击进入详情", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
     const firstLink = page.locator("main a[href*='/en/blog/']").first();
