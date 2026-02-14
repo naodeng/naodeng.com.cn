@@ -15,7 +15,10 @@ import {
   HOME_PROJECTS_TITLE,
   HOME_TAGS_TITLE,
   HOME_VIEW_ALL_PROJECTS,
+  HOME_WIKI_SECTION_TITLE,
+  HOME_WIKI_INTRO,
 } from "@/consts";
+import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -38,6 +41,25 @@ const popularTags = Object.entries(tagCounts)
   .map(([tag]) => tag);
 
 const featuredProjects = PROJECTS_LIST.slice(0, 4);
+
+const wikiEntries =
+  locale === "zh-cn"
+    ? (await getCollection("wiki")).map((e) => {
+        const slug = wikiIdToSlug(e.id);
+        const labelZh =
+          getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slug;
+        return { slug, labelZh };
+      })
+    : [];
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+const wikiCarouselItems = wikiEntries.length > 0 ? shuffle(wikiEntries).slice(0, 30) : [];
 
 const introHtmlRaw = marked(t(HOME_INTRO), { gfm: true }) as string;
 const wechatQrUrl = "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015%27QR%20Code%20for%20%E5%85%AC%E4%BC%97%E5%8F%B7.jpg";
@@ -103,6 +125,34 @@ export const getStaticPaths = () =>
       </a>
     </div>
   </section>
+
+  {locale === "zh-cn" && wikiCarouselItems.length > 0 && (
+    <section class="home-section wiki-showcase" aria-labelledby="wiki-showcase-title">
+      <div class="section-header">
+        <h2 id="wiki-showcase-title" class="section-title">{HOME_WIKI_SECTION_TITLE}</h2>
+      </div>
+      <p class="wiki-intro">{HOME_WIKI_INTRO}</p>
+      <div class="wiki-carousel-viewport">
+        <div class="wiki-carousel-track">
+          {[...wikiCarouselItems, ...wikiCarouselItems].map((item) => (
+            <a
+              href={getRelativeLocaleUrl("zh-cn", `/wiki/${item.slug}`)}
+              class="wiki-term-item"
+              title={item.labelZh}
+            >
+              <span class="wiki-term-text">{item.labelZh}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href={getRelativeLocaleUrl(locale, "/wiki")} class="cta-button secondary">
+          {locale === "zh-cn" ? "进入百科" : "QA Wiki"}
+          <span class="material-icons-sharp">menu_book</span>
+        </a>
+      </div>
+    </section>
+  )}
 
   <section class="home-section tags-cloud">
     <div class="section-header">
@@ -500,6 +550,100 @@ export const getStaticPaths = () =>
   .project-card:hover .external-icon {
     opacity: 1;
     transform: rotate(-10deg);
+  }
+
+  .wiki-showcase {
+    margin-block-start: var(--sp-l);
+  }
+  .wiki-showcase .wiki-intro {
+    margin: 0 auto var(--sp-m);
+    padding-inline: var(--sp-m);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--color-main) 82%, transparent);
+    max-inline-size: 48ch;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .wiki-carousel-viewport {
+    overflow: hidden;
+    height: 17rem;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--card-bg));
+    border: 1px solid var(--card-border);
+    padding: var(--sp-m);
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+  }
+  .wiki-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.65rem;
+    animation: wiki-vertical-scroll 50s linear infinite;
+  }
+  .wiki-carousel-viewport:hover .wiki-carousel-track {
+    animation-play-state: paused;
+  }
+  @keyframes wiki-vertical-scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wiki-carousel-track {
+      animation: none;
+    }
+    .wiki-carousel-viewport {
+      height: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+  @media (max-width: 900px) {
+    .wiki-carousel-track {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .wiki-carousel-track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .wiki-term-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--color-main);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .wiki-term-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  .wiki-term-item:hover {
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-color: var(--color-theme);
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-theme) 35%, transparent);
   }
 
   .tags-container {

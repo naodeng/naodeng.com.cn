@@ -1,0 +1,64 @@
+---
+/**
+ * 文档首页：从 content collection 的 index.md 渲染。
+ */
+import { getCollection, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import DocsLayout from "@/layouts/Docs.astro";
+import { buildDocsNavFromCollection } from "@/data/docsNav";
+import { NAV_HOME } from "@/consts";
+import { LOCALES } from "@/i18n";
+import type { Lang } from "@/i18n";
+
+export async function getStaticPaths() {
+  return Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+}
+
+const locale = (Astro.params.lang ?? "en") as Lang;
+const allDocs = await getCollection("docs");
+const entry = allDocs.find((e) => {
+  const normalizedId = e.id.replace(/\\/g, "/").replace(/\.(md|mdx)$/, "");
+  return normalizedId === `${locale}/index`;
+});
+
+const title = entry ? entry.data.title : (locale === "zh-cn" ? "文档" : "Documentation");
+const description = entry ? (entry.data.description ?? title) : (locale === "zh-cn" ? "入门与指南。" : "Getting started and guides.");
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const docsTitle = locale === "zh-cn" ? "文档" : "Documentation";
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: docsTitle, url: `/${locale}/docs/` },
+];
+
+const basePath = getRelativeLocaleUrl(locale, "/docs").replace(/\/$/, "") || `/${locale}/docs`;
+const sidebarSections = buildDocsNavFromCollection(allDocs, locale);
+const rendered = entry ? await render(entry) : null;
+---
+
+<DocsLayout
+  title={title}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  sidebarSections={sidebarSections}
+  currentPath=""
+  basePath={basePath}
+>
+  <article class="docs-prose">
+    {rendered ? <rendered.Content /> : (
+      <p>{locale === "zh-cn" ? "欢迎使用文档。请在 src/content/docs/" : "Welcome to the docs. Add "}<code>{locale}/index.md</code>{locale === "zh-cn" ? " 以自定义本页。" : " to customize this page."}</p>
+    )}
+  </article>
+</DocsLayout>
+
+<style>
+  .docs-prose :global(h1) {
+    margin-block-end: var(--sp-m);
+  }
+  .docs-prose :global(h2) {
+    margin-block: var(--sp-l) var(--sp-s);
+  }
+  .docs-prose :global(h3) {
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+</style>

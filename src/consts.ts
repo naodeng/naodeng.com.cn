@@ -90,6 +90,24 @@ export const NAV_ARCHIVE: Multilingual = {
   "zh-cn": "归档",
 };
 
+// 顶部导航：文档
+export const NAV_DOCS: Multilingual = {
+  en: "Docs",
+  "zh-cn": "文档",
+};
+
+/** 顶部导航：百科（中文站内）/ QA wiki（英文跳转 ray.run） */
+export const NAV_QA_WIKI: Multilingual = {
+  en: "QA wiki",
+  "zh-cn": "百科",
+};
+
+/** 底部导航：软件测试百科 */
+export const FOOTER_NAV_QA_WIKI: Multilingual = {
+  en: "QA Wiki",
+  "zh-cn": "软件测试百科",
+};
+
 // 顶部导航：支持
 export const NAV_SPONSOR: Multilingual = {
   en: "Support",
@@ -276,6 +294,13 @@ export const HOME_VIEW_ALL_PROJECTS: Multilingual = {
   en: "View all projects",
   "zh-cn": "查看全部项目",
 };
+
+/** 首页软件测试百科区块：标题（仅中文首页展示） */
+export const HOME_WIKI_SECTION_TITLE = "软件测试百科";
+
+/** 首页软件测试百科区块：介绍文案（约 150 字） */
+export const HOME_WIKI_INTRO =
+  "本站整理软件测试与质量领域常用术语与概念，涵盖功能测试、自动化测试、性能测试、安全测试、敏捷测试等方向，每条词条配有中英文名称与简要说明，方便测试与开发同学快速查阅、统一理解。下方随机展示部分词条，点击可进入对应百科页面查看详情。";
 
 // 博客首页标题区介绍文案（约 200 字）
 export const BLOG_INTRO: Multilingual = {

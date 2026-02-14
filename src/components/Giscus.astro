@@ -45,11 +45,6 @@ const enabled = Boolean(repo && repoId && category && categoryId);
 
 {enabled && (
   <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
-    <p class="giscus-hint">
-      {lang === "zh-CN"
-        ? "评论由 GitHub Discussions 驱动，首次在本页留言将自动创建讨论线程。"
-        : "Comments are powered by GitHub Discussions. The first comment on this page will create the discussion."}
-    </p>
     <div class="giscus"></div>
     <script is:inline
       src="https://giscus.app/client.js"
@@ -76,12 +71,6 @@ const enabled = Boolean(repo && repoId && category && categoryId);
     margin-block-start: var(--sp-l);
     padding-block-start: var(--sp-l);
     border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
-  }
-  .giscus-hint {
-    font-size: 0.85rem;
-    color: var(--color-main);
-    opacity: 0.7;
-    margin: 0 0 0.75rem 0;
   }
   .giscus-section :global(.giscus-frame) {
     width: 100%;

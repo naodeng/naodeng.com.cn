@@ -1,0 +1,264 @@
+---
+/**
+ * 测试百科首页（docs 布局：左侧导航 + 主内容）
+ * - 中文：Docs 布局，侧栏为词条列表（中文名），主区为概述
+ * - 英文：简单页 + 跳转 ray.run/wiki
+ */
+import { getCollection } from "astro:content";
+import { LOCALES } from "@/i18n";
+import Base from "@/layouts/Base.astro";
+import DocsLayout from "@/layouts/Docs.astro";
+import { buildWikiSidebar } from "@/data/wiki";
+import { NAV_HOME } from "@/consts";
+import type { Lang } from "@/i18n";
+
+export async function getStaticPaths() {
+  return Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+}
+
+const locale = (Astro.params.lang ?? "en") as Lang;
+const isEn = locale === "en";
+
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
+const title = isEn ? "QA Wiki" : "测试百科";
+const description = isEn
+  ? "Software testing terms and definitions. Visit the full QA Wiki at ray.run."
+  : "测试术语与定义，按英文名称排序，供测试与开发同学查阅。";
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/wiki/` },
+];
+
+const entries = await getCollection("wiki");
+const sidebarSections = isEn ? [] : buildWikiSidebar(entries);
+const basePath = `/${locale}/wiki`;
+/** 按字母分组的区块（不含「概述」），用于概述页按字母展示全部词条 */
+const letterSections = sidebarSections.filter((s) => s.title);
+const totalCount = entries.length;
+---
+
+{isEn ? (
+  <Base title={title} description={description} breadcrumbs={breadcrumbs}>
+    <div class="l-content wiki-index">
+      <h1>{title}</h1>
+      <p class="wiki-intro">Software testing terms &amp; definitions. For the full QA Wiki, visit:</p>
+      <p class="wiki-external">
+        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">ray.run/wiki</a>
+      </p>
+    </div>
+  </Base>
+) : (
+  <DocsLayout
+    title={title}
+    description={description}
+    breadcrumbs={breadcrumbs}
+    sidebarSections={sidebarSections}
+    currentPath=""
+    basePath={basePath}
+    sidebarMenuLabel="本页导航"
+    sidebarSearchPlaceholder="检索词条..."
+  >
+    <header class="wiki-hero">
+      <h1 class="wiki-hero-title">{title}</h1>
+      <p class="wiki-intro">{description}</p>
+    </header>
+
+    <section class="wiki-summary" aria-labelledby="wiki-summary-heading">
+      <div class="wiki-summary-inner">
+        <p class="wiki-summary-stat" aria-hidden="true">{totalCount}</p>
+        <div class="wiki-summary-body">
+          <h2 id="wiki-summary-heading" class="wiki-summary-title">汇总介绍</h2>
+          <p class="wiki-summary-text">
+            本百科收录测试与质量相关术语，按英文首字母 A–Z 分类。使用左侧检索框可快速查找，或点击下方词条查看释义。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wiki-by-letter" aria-labelledby="wiki-by-letter-heading">
+      <h2 id="wiki-by-letter-heading" class="wiki-by-letter-main-title">按字母浏览</h2>
+      <nav class="wiki-letter-index" aria-label="按字母快速跳转">
+        {letterSections.map((section) => (
+          <a href={`#letter-${section.title}`} class="wiki-letter-index-link">{section.title}</a>
+        ))}
+      </nav>
+      {letterSections.map((section) => (
+        <article class="wiki-letter-group" id={`letter-${section.title}`}>
+          <h3 class="wiki-letter-title">{section.title}</h3>
+          <ul class="wiki-letter-list">
+            {section.items.map((item) => (
+              <li>
+                <a href={`${basePath}/${item.href}/`} class="wiki-letter-link">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+      <p class="wiki-back-top">
+        <a href="#wiki-by-letter-heading" class="wiki-back-top-link">↑ 返回顶部</a>
+      </p>
+    </section>
+  </DocsLayout>
+)}
+
+<style>
+  .wiki-hero {
+    margin-block-end: var(--sp-l);
+  }
+  .wiki-hero-title {
+    margin-block-end: var(--sp-s);
+  }
+  .wiki-intro {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--color-main) 80%, transparent);
+  }
+  .wiki-summary {
+    margin-block-end: var(--sp-l);
+    border-radius: 14px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-theme) 10%, transparent) 0%, color-mix(in srgb, var(--color-theme) 5%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    overflow: hidden;
+  }
+  .wiki-summary-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--sp-m);
+    padding: var(--sp-m);
+  }
+  .wiki-summary-stat {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-theme);
+    margin: 0;
+    letter-spacing: -0.03em;
+  }
+  .wiki-summary-body {
+    flex: 1;
+    min-inline-size: 200px;
+  }
+  .wiki-summary-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0.35em;
+  }
+  .wiki-summary-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--color-main) 85%, transparent);
+  }
+  .wiki-by-letter-main-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-block-end: var(--sp-m);
+  }
+  .wiki-letter-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-block-end: var(--sp-l);
+    padding: var(--sp-s) 0;
+  }
+  .wiki-letter-index-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 2.25rem;
+    padding: 0.4em 0.5em;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    background: color-mix(in srgb, var(--color-main) 10%, var(--color-base));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .wiki-letter-index-link:hover,
+  .wiki-letter-index-link:focus-visible {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-theme) 35%, transparent);
+  }
+  .wiki-letter-group {
+    margin-block-end: var(--sp-l);
+    padding: var(--sp-m);
+    padding-inline-start: var(--sp-m);
+    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
+    border-radius: 0 10px 10px 0;
+    background: color-mix(in srgb, var(--color-main) 4%, var(--color-base));
+    scroll-margin-block-start: 1.5rem;
+  }
+  .wiki-letter-group:last-of-type {
+    margin-block-end: var(--sp-m);
+  }
+  .wiki-letter-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0 0 var(--sp-s);
+    letter-spacing: 0.02em;
+  }
+  .wiki-letter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+    gap: 0.4em 1.25em;
+  }
+  @media (min-width: 720px) {
+    .wiki-letter-list {
+      grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+    }
+  }
+  @media (min-width: 960px) {
+    .wiki-letter-list {
+      grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+    }
+  }
+  .wiki-letter-link {
+    display: block;
+    padding: 0.35em 0.5em;
+    margin-inline-start: -0.5em;
+    border-radius: 6px;
+    color: color-mix(in srgb, var(--color-main) 88%, transparent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s, background 0.2s;
+  }
+  .wiki-letter-link:hover {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+  .wiki-letter-link:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .wiki-back-top {
+    margin: var(--sp-l) 0 0;
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    text-align: center;
+  }
+  .wiki-back-top-link {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    text-decoration: none;
+  }
+  .wiki-back-top-link:hover {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+  .wiki-external {
+    margin-block-start: var(--sp-m);
+  }
+  .wiki-external a {
+    font-weight: 600;
+    color: var(--color-theme);
+  }
+</style>
