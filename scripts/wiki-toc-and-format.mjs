@@ -53,7 +53,7 @@ function hasTocAfterH1(body) {
 /** 移除正文中已有的 "## 目录" 块（无论位置），便于迁移到 H1 下 */
 function removeExistingToc(body) {
   const re = /(\n|^)## 目录\s*\n\n(- \[.+\]\(#.+\)\s*\n)+/g;
-  return body.replace(re, (match, prefix) => (prefix === "\n" ? "\n" : ""));
+  return body.replace(re, (_, prefix) => (prefix === "\n" ? "\n" : ""));
 }
 
 /** 生成目录 Markdown（使用 github-slugger 与 rehype-slug 一致） */

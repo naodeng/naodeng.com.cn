@@ -177,7 +177,7 @@ function extractShortDescription(body) {
 
 function processFile(filePath) {
   const content = fs.readFileSync(filePath, "utf-8");
-  const { frontmatterRaw, body } = parseFrontmatterAndBody(content);
+  const { body } = parseFrontmatterAndBody(content);
   const filename = path.basename(filePath);
   const section = firstLetterFromSlug(filename);
   const order = 0;
