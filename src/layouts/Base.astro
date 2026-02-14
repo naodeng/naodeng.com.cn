@@ -34,6 +34,8 @@ interface Props {
   nextUrl?: string;
   /** 博文页侧栏时加宽主区域，正文保持 800px */
   contentWide?: boolean;
+  /** 页面级额外结构化数据（如 DefinedTerm），每项输出为独立 ld+json */
+  extraStructuredData?: Record<string, unknown>[];
   frontmatter?: undefined;
 }
 
@@ -49,8 +51,8 @@ const {
   breadcrumbs,
   prevUrl,
   nextUrl,
-  /** 博文页等需要侧栏时加宽主区域，正文保持 800px，侧栏在右侧 */
   contentWide = false,
+  extraStructuredData = [],
 } = Astro.props.frontmatter || Astro.props;
 
 const locale = Astro.currentLocale as Lang;
@@ -216,6 +218,9 @@ const breadcrumbSchema =
     {breadcrumbSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
     )}
+    {extraStructuredData?.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+    ))}
     <LocaleHtmlHead />
     <Analytics />
     <!-- Google AdSense -->

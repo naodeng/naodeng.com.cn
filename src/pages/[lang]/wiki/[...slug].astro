@@ -37,6 +37,11 @@ const wikiTitle = "测试百科";
 const bodyStr = typeof entry.body === "string" ? entry.body : "";
 const pageTitle =
   getTitleZhFromBody(bodyStr) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slugParam) || entry.data?.title || slugParam;
+const rawDescription =
+  (entry.data?.description && String(entry.data.description).trim()) ||
+  (bodyStr && bodyStr.replace(/^#.+/m, "").replace(/[#*_[\]()`]/g, "").trim().slice(0, 200)) ||
+  pageTitle;
+const metaDescription = rawDescription.length > 155 ? rawDescription.slice(0, 152).trimEnd() + "…" : rawDescription;
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: wikiTitle, url: `/${locale}/wiki/` },
@@ -48,12 +53,28 @@ const sidebarSections = buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
 
 const { Content, headings = [] } = await render(entry);
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const wikiPageUrl = `${siteOrigin}/${locale}/wiki/${slugParam}/`;
+const definedTermSchema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: pageTitle,
+  description: metaDescription,
+  url: wikiPageUrl,
+  inDefinedTermSet: {
+    "@type": "DefinedTermSet",
+    name: "软件测试百科",
+    url: `${siteOrigin}/${locale}/wiki/`,
+  },
+};
 ---
 
 <DocsLayout
   title={pageTitle}
-  description={pageTitle}
+  description={metaDescription}
   breadcrumbs={breadcrumbs}
+  structuredData={[definedTermSchema]}
   sidebarSections={sidebarSections}
   currentPath={slugParam}
   basePath={basePath}

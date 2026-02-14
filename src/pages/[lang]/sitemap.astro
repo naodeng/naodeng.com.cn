@@ -13,6 +13,7 @@ import {
   NAV_PROJECTS,
   NAV_SPONSOR,
 } from "@/consts";
+import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/data/wiki";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -23,6 +24,11 @@ const title = t(SITEMAP_PAGE_TITLE);
 const posts = (await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// 百科词条（id 形如 wiki--slug，无 locale；仅 zh-cn 有详情页，en 会跳转）
+const wikiEntries = (await getCollection("wiki")).sort((a, b) =>
+  slugToTitleEn(wikiIdToSlug(a.id)).localeCompare(slugToTitleEn(wikiIdToSlug(b.id)), "en")
+);
 
 // 当前语言的标签集合
 const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
@@ -47,6 +53,25 @@ export const getStaticPaths = () =>
         <li><a href={getRelativeLocaleUrl(locale, "/blog")}>{locale === "zh-cn" ? "博客" : "Blog"}</a></li>
         <li><a href={getRelativeLocaleUrl(locale, "/projects")}>{t(NAV_PROJECTS)}</a></li>
         <li><a href={getRelativeLocaleUrl(locale, "/sponsor")}>{t(NAV_SPONSOR)}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/wiki")}>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</a></li>
+      </ul>
+    </section>
+
+    <!-- 百科词条（zh-cn 有完整列表） -->
+    <section class="sitemap-section">
+      <h2 class="section-title">{locale === "zh-cn" ? "百科词条" : "Wiki"}</h2>
+      <ul class="link-list">
+        <li><a href={getRelativeLocaleUrl(locale, "/wiki")}>{locale === "zh-cn" ? "百科首页" : "Wiki Home"}</a></li>
+        {wikiEntries.map((entry) => {
+          const slug = wikiIdToSlug(entry.id);
+          const label =
+            getTitleZhFromBody(entry.body) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slug);
+          return (
+            <li>
+              <a href={getRelativeLocaleUrl(locale, `/wiki/${slug}`)}>{label}</a>
+            </li>
+          );
+        })}
       </ul>
     </section>
 
