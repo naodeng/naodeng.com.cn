@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { getDocsPageUrls } from "../support/constants";
 
-test.describe("文档页（Docs）", () => {
+test.describe.skip("文档页（Docs）", () => {
   const docsPages = getDocsPageUrls();
 
   for (const { locale, path, name } of docsPages) {

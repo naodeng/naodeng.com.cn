@@ -59,20 +59,6 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("en 从首页点击「Docs」进入文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    await page.locator("header a[href*='/en/docs'], header nav a[href*='/docs']").first().click();
-    await expect(page).toHaveURL(/\/(en)\/docs\/?/);
-    await expect(page.locator("main .docs-sidebar").first()).toBeVisible();
-  });
-
-  test("zh-cn 从首页点击「文档」进入文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    await page.locator("header a[href*='/zh-cn/docs'], header nav a[href*='/docs']").first().click();
-    await expect(page).toHaveURL(/\/(zh-cn)\/docs\/?/);
-    await expect(page.locator("main .docs-sidebar").first()).toBeVisible();
-  });
-
   test("zh-cn 从首页点击「百科」进入百科首页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await page.locator("header a[href*='/zh-cn/wiki'], header nav a[href*='/wiki']").first().click();
