@@ -1,0 +1,190 @@
+---
+/**
+ * Guild 特性展示组件
+ * 展示核心特性和优势
+ */
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+
+const content = {
+  'zh-cn': {
+    title: '🎯 核心特性',
+    features: [
+      {
+        icon: '📚',
+        title: '全生命周期覆盖',
+        description: '从环境搭建到 CI/CD 集成的完整学习路径',
+      },
+      {
+        icon: '🌐',
+        title: '多语言支持',
+        description: '支持 JavaScript、Python、Java 等主流编程语言',
+      },
+      {
+        icon: '📖',
+        title: '完整版 + 精简版',
+        description: '每个框架都提供详细教程和快速入门指南',
+      },
+      {
+        icon: '💡',
+        title: '实战导向',
+        description: '提供 GitHub Demo 项目和最佳实践指导',
+      },
+      {
+        icon: '🚀',
+        title: '持续更新',
+        description: '跟随技术发展，持续更新内容和示例',
+      },
+      {
+        icon: '🔧',
+        title: '可扩展性好',
+        description: '模块化设计，便于学习和实践应用',
+      },
+    ],
+  },
+  'en': {
+    title: '🎯 Core Features',
+    features: [
+      {
+        icon: '📚',
+        title: 'Full Lifecycle Coverage',
+        description: 'Complete learning paths from setup to CI/CD integration',
+      },
+      {
+        icon: '🌐',
+        title: 'Multi-Language Support',
+        description: 'Support for JavaScript, Python, Java and more',
+      },
+      {
+        icon: '📖',
+        title: 'Complete + Quick Start',
+        description: 'Detailed tutorials and quick start guides for each framework',
+      },
+      {
+        icon: '💡',
+        title: 'Practice-Oriented',
+        description: 'GitHub demo projects and best practice guidance',
+      },
+      {
+        icon: '🚀',
+        title: 'Continuously Updated',
+        description: 'Content and examples updated with technology evolution',
+      },
+      {
+        icon: '🔧',
+        title: 'Highly Extensible',
+        description: 'Modular design for easy learning and practical application',
+      },
+    ],
+  },
+};
+
+const text = content[locale as keyof typeof content] || content['en'];
+---
+
+<section class="guild-features">
+  <h2 class="guild-features__title">{text.title}</h2>
+  
+  <div class="guild-features__grid">
+    {text.features.map((feature) => (
+      <div class="feature-card">
+        <div class="feature-card__icon">{feature.icon}</div>
+        <h3 class="feature-card__title">{feature.title}</h3>
+        <p class="feature-card__description">{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .guild-features {
+    margin: 4rem 0;
+    padding: 3rem 0;
+  }
+
+  .guild-features__title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-main);
+  }
+
+  .guild-features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-theme);
+    box-shadow: 0 8px 24px rgba(239, 77, 26, 0.15);
+  }
+
+  .feature-card__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .feature-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .feature-card__description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-main);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .guild-features {
+      margin: 3rem 0;
+      padding: 2rem 0;
+    }
+
+    .guild-features__title {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .guild-features__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+    }
+
+    .feature-card__icon {
+      font-size: 2.5rem;
+    }
+
+    .feature-card__title {
+      font-size: 1.1rem;
+    }
+
+    .feature-card__description {
+      font-size: 0.9rem;
+    }
+  }
+</style>

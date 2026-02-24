@@ -1,0 +1,321 @@
+---
+/**
+ * Guild 首页展示组件
+ * 展示三种测试类型及其框架
+ */
+import { getGuildConfig } from '../../config/guild.config';
+import type { Lang } from '@/i18n';
+
+interface Props {
+  locale: Lang;
+}
+
+const { locale } = Astro.props;
+const guildConfig = getGuildConfig(locale);
+---
+
+<section class="guild-showcase">
+  <div class="guild-showcase__header">
+    <h2 class="guild-showcase__title">
+      {locale === 'zh-cn' ? '测试自动化指南' : 'Test Automation Guild'}
+    </h2>
+    <p class="guild-showcase__subtitle">
+      {locale === 'zh-cn' 
+        ? '系统化的测试自动化学习路径，从入门到进阶' 
+        : 'Systematic test automation learning paths, from beginner to advanced'}
+    </p>
+  </div>
+
+  <div class="guild-showcase__sections">
+    {/* 接口自动化测试 - 单独一行 */}
+    {guildConfig.testTypes
+      .filter(testType => testType.id === 'api-testing')
+      .map((testType) => (
+        <div class="guild-section" data-test-type={testType.id}>
+          <div class="guild-section__header">
+            <span class="guild-section__icon">{testType.icon}</span>
+            <div class="guild-section__info">
+              <h3 class="guild-section__title">{testType.title}</h3>
+              <p class="guild-section__description">{testType.description}</p>
+            </div>
+          </div>
+          
+          <div class="guild-section__frameworks">
+            {testType.frameworks.map((framework) => (
+              <a 
+                href={`/${locale}/guild/${testType.id}/${framework.id}/`}
+                class="framework-tag"
+                title={framework.description}
+              >
+                <span class="framework-tag__name">{framework.name}</span>
+                <span class="framework-tag__lang">{framework.language}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+    {/* 性能测试 - 单独一行（暂时隐藏UI测试） */}
+    <div class="guild-showcase__row">
+      {guildConfig.testTypes
+        .filter(testType => testType.id === 'performance-testing')
+        .map((testType) => (
+          <div class="guild-section" data-test-type={testType.id}>
+            <div class="guild-section__header">
+              <span class="guild-section__icon">{testType.icon}</span>
+              <div class="guild-section__info">
+                <h3 class="guild-section__title">{testType.title}</h3>
+                <p class="guild-section__description">{testType.description}</p>
+              </div>
+            </div>
+            
+            <div class="guild-section__frameworks">
+              {testType.frameworks.map((framework) => (
+                <a 
+                  href={`/${locale}/guild/${testType.id}/${framework.id}/`}
+                  class="framework-tag"
+                  title={framework.description}
+                >
+                  <span class="framework-tag__name">{framework.name}</span>
+                  <span class="framework-tag__lang">{framework.language}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+    </div>
+  </div>
+
+  <div class="guild-showcase__footer">
+    <a href={`/${locale}/guild/`} class="guild-showcase__cta">
+      {locale === 'zh-cn' ? '查看完整指南' : 'View Full Guide'}
+      <span class="material-icons-sharp">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .guild-showcase {
+    margin-block: var(--sp-l);
+  }
+
+  .guild-showcase__header {
+    text-align: center;
+    margin-bottom: var(--sp-l);
+  }
+
+  .guild-showcase__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-main);
+    margin-bottom: 0.5rem;
+  }
+
+  .guild-showcase__subtitle {
+    font-size: 0.95rem;
+    color: var(--color-main);
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  .guild-showcase__sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-l);
+    margin-bottom: var(--sp-l);
+  }
+
+  .guild-showcase__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-l);
+  }
+
+  .guild-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: var(--sp-m);
+    transition: all 0.3s ease;
+  }
+
+  .guild-section:hover {
+    border-color: var(--color-theme);
+    box-shadow: 0 4px 16px rgba(239, 77, 26, 0.15);
+  }
+
+  .guild-section__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-m);
+    margin-bottom: var(--sp-m);
+    padding-bottom: var(--sp-m);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .guild-section__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .guild-section__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .guild-section__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .guild-section__description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-main);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .guild-section__frameworks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .framework-tag {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.6rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .framework-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-theme);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .framework-tag:hover {
+    border-color: var(--color-theme);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(239, 77, 26, 0.2);
+  }
+
+  .framework-tag:hover::before {
+    transform: scaleX(1);
+  }
+
+  .framework-tag__name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    line-height: 1.2;
+  }
+
+  .framework-tag__lang {
+    font-size: 0.75rem;
+    color: var(--color-main);
+    opacity: 0.6;
+    line-height: 1.2;
+  }
+
+  .guild-showcase__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--sp-l);
+  }
+
+  .guild-showcase__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.5rem;
+    background-color: rgba(239, 77, 26, 0.08);
+    color: var(--color-theme);
+    border: 1px solid var(--color-theme);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .guild-showcase__cta:hover {
+    background-color: var(--color-theme);
+    color: var(--color-base);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px var(--color-theme);
+  }
+
+  @media (max-width: 768px) {
+    .guild-showcase__row {
+      grid-template-columns: 1fr;
+    }
+
+    .guild-section__header {
+      flex-direction: column;
+      gap: var(--sp-s);
+    }
+
+    .guild-section__icon {
+      font-size: 2rem;
+    }
+
+    .guild-section__title {
+      font-size: 1.15rem;
+    }
+
+    .guild-section__description {
+      font-size: 0.85rem;
+    }
+
+    .guild-section__frameworks {
+      gap: 0.5rem;
+    }
+
+    .framework-tag {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .framework-tag__name {
+      font-size: 0.85rem;
+    }
+
+    .framework-tag__lang {
+      font-size: 0.7rem;
+    }
+  }
+
+  /* 为不同测试类型添加特定样式 */
+  .guild-section[data-test-type="api-testing"] .guild-section__icon {
+    color: #ef4d1a;
+  }
+
+  .guild-section[data-test-type="ui-testing"] .guild-section__icon {
+    color: #2ead33;
+  }
+
+  .guild-section[data-test-type="performance-testing"] .guild-section__icon {
+    color: #7d64ff;
+  }
+</style>

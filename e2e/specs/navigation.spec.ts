@@ -9,10 +9,11 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator("main .latest").first()).toBeVisible();
   });
 
-  test("zh-cn 首页：简介区、项目展示、标签云、最新文章区可见", async ({ page, baseURL }) => {
+  test("zh-cn 首页：简介区、项目展示、Guild展示、标签云、最新文章区可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await expect(page.locator("main .intro-section").first()).toBeVisible();
     await expect(page.locator("main .projects-showcase").first()).toBeVisible();
+    await expect(page.locator("main .guild-showcase").first()).toBeVisible();
     await expect(page.locator("main .tags-cloud").first()).toBeVisible();
     await expect(page.locator("main .latest").first()).toBeVisible();
   });
@@ -65,6 +66,20 @@ test.describe("导航与首页内容", () => {
     await expect(page).toHaveURL(/\/(zh-cn)\/wiki\/?/);
     await expect(page.locator("main .docs-sidebar").first()).toBeVisible();
     await expect(page.getByRole("heading", { name: "测试百科", level: 1 }).first()).toBeVisible();
+  });
+
+  test("zh-cn 从首页点击「指南」进入Guild页面", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.locator("header a[href*='/zh-cn/guild'], header nav a[href*='/guild']").first().click();
+    await expect(page).toHaveURL(/\/(zh-cn)\/guild\/?/);
+    await expect(page.locator(".guild-hero__title")).toBeVisible();
+  });
+
+  test("en 从首页点击「Guild」进入Guild页面", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.locator("header a[href*='/en/guild'], header nav a[href*='/guild']").first().click();
+    await expect(page).toHaveURL(/\/(en)\/guild\/?/);
+    await expect(page.locator(".guild-hero__title")).toBeVisible();
   });
 
   test("en 首页「QA wiki」链接指向外站 ray.run", async ({ page, baseURL }) => {

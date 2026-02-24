@@ -1,0 +1,97 @@
+---
+/**
+ * 测试类型区域组件
+ * 展示某个测试类型下的所有框架
+ */
+import type { TestType } from '../../config/guild.config';
+import FrameworkCard from './FrameworkCard.astro';
+
+interface Props {
+  testType: TestType;
+  locale: string;
+}
+
+const { testType, locale } = Astro.props;
+---
+
+<section class="test-type-section" id={testType.id}>
+  <div class="test-type-section__header">
+    <span class="test-type-section__icon" aria-hidden="true">{testType.icon}</span>
+    <div>
+      <h2 class="test-type-section__title">{testType.title}</h2>
+      <p class="test-type-section__description">{testType.description}</p>
+    </div>
+  </div>
+
+  <div class="test-type-section__frameworks">
+    {testType.frameworks.map((framework) => (
+      <FrameworkCard
+        framework={framework}
+        testType={testType.id}
+        locale={locale}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .test-type-section {
+    margin-bottom: 4rem;
+  }
+
+  .test-type-section__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .test-type-section__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .test-type-section__title {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+  }
+
+  .test-type-section__description {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  .test-type-section__frameworks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .test-type-section {
+      margin-bottom: 3rem;
+    }
+
+    .test-type-section__header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .test-type-section__title {
+      font-size: 1.5rem;
+    }
+
+    .test-type-section__description {
+      font-size: 1rem;
+    }
+
+    .test-type-section__frameworks {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

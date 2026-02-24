@@ -102,10 +102,22 @@ export const NAV_QA_WIKI: Multilingual = {
   "zh-cn": "百科",
 };
 
+/** 顶部导航：指南 / Guild */
+export const NAV_GUILD: Multilingual = {
+  en: "Guild",
+  "zh-cn": "指南",
+};
+
 /** 底部导航：软件测试百科 */
 export const FOOTER_NAV_QA_WIKI: Multilingual = {
   en: "QA Wiki",
   "zh-cn": "软件测试百科",
+};
+
+/** 底部导航：自动化测试指南 */
+export const FOOTER_NAV_GUILD: Multilingual = {
+  en: "Automation Testing Guild",
+  "zh-cn": "自动化测试指南",
 };
 
 // 顶部导航：支持

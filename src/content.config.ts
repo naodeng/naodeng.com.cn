@@ -53,4 +53,38 @@ const wiki = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, wiki };
+// 测试自动化指南 collection：用于 /guild 下的学习路径内容
+const guild = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/guild" }),
+  schema: () =>
+    z.object({
+      /** 文章标题 */
+      title: z.string(),
+      /** 文章描述 */
+      description: z.string(),
+      /** 测试类型：api-testing, ui-testing, performance-testing */
+      testType: z.enum(['api-testing', 'ui-testing', 'performance-testing']),
+      /** 测试框架：postman, pytest, rest-assured, supertest, bruno, playwright, cypress, k6, gatling */
+      framework: z.string(),
+      /** 编程语言 */
+      language: z.string(),
+      /** 学习阶段：getting-started, basic, advanced, ci-cd, best-practices */
+      stage: z.enum(['getting-started', 'basic', 'advanced', 'ci-cd', 'best-practices']),
+      /** 难度级别 */
+      difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+      /** 预计学习时间（分钟） */
+      duration: z.number().optional(),
+      /** 排序权重 */
+      order: z.number(),
+      /** GitHub Demo 链接 */
+      githubDemo: z.string().url().optional(),
+      /** 官方文档链接 */
+      officialDocs: z.string().url().optional(),
+      /** 发布日期 */
+      date: z.coerce.date().optional(),
+      /** 更新日期 */
+      updated: z.coerce.date().optional(),
+    }),
+});
+
+export const collections = { blog, docs, wiki, guild };

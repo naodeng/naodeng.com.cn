@@ -1,0 +1,99 @@
+---
+/**
+ * 测试自动化指南 - 中文概览页
+ */
+import Base from '@/layouts/Base.astro';
+import { getGuildConfig } from '../../../config/guild.config';
+import GuildHero from '../../../components/guild/GuildHero.astro';
+import GuildFeatures from '../../../components/guild/GuildFeatures.astro';
+import LearningWorkflow from '../../../components/guild/LearningWorkflow.astro';
+import TestTypeSection from '../../../components/guild/TestTypeSection.astro';
+
+const locale = 'zh-cn';
+const guildConfig = getGuildConfig(locale);
+
+const title = '测试自动化指南';
+const description = '系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试';
+
+const breadcrumbs = [
+  { name: '首页', url: `/${locale}/` },
+  { name: '指南', url: `/${locale}/guild/` },
+];
+---
+
+<Base title={title} description={description} breadcrumbs={breadcrumbs}>
+  <div class="guild-page">
+    <div class="guild-container">
+      <GuildHero locale={locale} />
+      
+      <div class="guild-content">
+        <h2 class="guild-content__title">📚 测试框架学习路径</h2>
+        <p class="guild-content__description">
+          选择你感兴趣的测试类型和框架，开始系统化的学习之旅。每个框架都提供从入门到进阶的完整学习路径。
+        </p>
+        {guildConfig.testTypes
+          .filter(testType => testType.id !== 'ui-testing')
+          .map((testType) => (
+            <TestTypeSection testType={testType} locale={locale} />
+          ))}
+      </div>
+      
+      <GuildFeatures locale={locale} />
+      
+      <LearningWorkflow locale={locale} />
+    </div>
+  </div>
+</Base>
+
+<style>
+  .guild-page {
+    min-height: 100vh;
+  }
+
+  .guild-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .guild-content {
+    margin-top: 2rem;
+  }
+
+  .guild-content__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-main);
+    text-align: center;
+    margin: 0 0 1rem 0;
+  }
+
+  .guild-content__description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-main);
+    opacity: 0.75;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .guild-container {
+      padding: 1rem;
+    }
+
+    .guild-content {
+      margin-top: 3rem;
+    }
+
+    .guild-content__title {
+      font-size: 1.5rem;
+    }
+
+    .guild-content__description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+</style>
