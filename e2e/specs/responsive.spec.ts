@@ -10,13 +10,14 @@ test.describe("响应式布局", () => {
   for (const viewport of viewports) {
     test(`en 首页在 ${viewport.name} 视口下正常显示`, async ({ page, baseURL }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+      await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
       
-      await expect(page.locator("header")).toBeVisible();
-      await expect(page.locator("main")).toBeVisible();
-      await expect(page.locator("footer")).toBeVisible();
+      // 使用更精确的选择器，只选择页面主 header
+      await expect(page.locator("header.l-header").first()).toBeVisible({ timeout: 10000 });
+      await expect(page.locator("main").first()).toBeVisible({ timeout: 10000 });
+      await expect(page.locator("footer.l-footer").first()).toBeVisible({ timeout: 10000 });
       
-      const main = page.locator("main");
+      const main = page.locator("main").first();
       const box = await main.boundingBox();
       expect(box?.width).toBeGreaterThan(0);
       expect(box?.width).toBeLessThanOrEqual(viewport.width);
@@ -24,13 +25,14 @@ test.describe("响应式布局", () => {
 
     test(`zh-cn 首页在 ${viewport.name} 视口下正常显示`, async ({ page, baseURL }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+      await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
       
-      await expect(page.locator("header")).toBeVisible();
-      await expect(page.locator("main")).toBeVisible();
-      await expect(page.locator("footer")).toBeVisible();
+      // 使用更精确的选择器，只选择页面主 header
+      await expect(page.locator("header.l-header").first()).toBeVisible({ timeout: 10000 });
+      await expect(page.locator("main").first()).toBeVisible({ timeout: 10000 });
+      await expect(page.locator("footer.l-footer").first()).toBeVisible({ timeout: 10000 });
       
-      const main = page.locator("main");
+      const main = page.locator("main").first();
       const box = await main.boundingBox();
       expect(box?.width).toBeGreaterThan(0);
       expect(box?.width).toBeLessThanOrEqual(viewport.width);

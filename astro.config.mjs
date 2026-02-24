@@ -44,6 +44,10 @@ export default defineConfig({
           ])
         ),
       },
+      filter: (page) => {
+        // 排除英文 wiki 页面（wiki 是中文专属内容）
+        return !page.includes('/en/wiki/');
+      },
     }),
   ],
 });
