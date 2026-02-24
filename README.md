@@ -6,7 +6,7 @@
 [![E2E Tests](https://github.com/naodeng/naodeng.com.cn/actions/workflows/e2e.yml/badge.svg)](https://github.com/naodeng/naodeng.com.cn/actions/workflows/e2e.yml)
 [![Github Pages Deployment](https://github.com/naodeng/naodeng.com.cn/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/naodeng/naodeng.com.cn/actions/workflows/gh-pages.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/naodeng/naodeng.com.cn)](https://github.com/naodeng/naodeng.com.cn/commits/main)
-[![License](https://img.shields.io/github/license/naodeng/naodeng.com.cn)](https://github.com/naodeng/naodeng.com.cn/blob/main/LICENSE)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 🌐 [inaodeng.com](https://inaodeng.com) | 📝 [Blog](https://inaodeng.com/zh-cn/blog/) | 📚 [Wiki](https://inaodeng.com/zh-cn/wiki/)
 
@@ -60,96 +60,6 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 - 📱 **移动端友好 | Mobile Friendly** - 完全响应式设计 | Fully responsive design
 - 🎯 **SEO 优化 | SEO Optimized** - 内置 SEO 最佳实践 | Built-in SEO best practices
 
-## 🛠️ 开发 | Development
-
-### 环境要求 | Prerequisites
-
-- Node.js >= 20
-- npm or yarn
-
-### 安装 | Installation
-
-```bash
-# 克隆仓库 | Clone the repository
-git clone https://github.com/naodeng/naodeng.com.cn.git
-
-# 进入项目目录 | Navigate to the project directory
-cd naodeng.com.cn
-
-# 安装依赖 | Install dependencies
-npm install
-```
-
-### 开发服务器 | Development Server
-
-```bash
-# 启动开发服务器 | Start the development server
-npm run dev
-
-# 在浏览器中打开 | Open in browser
-npm run start
-```
-
-### 构建 | Build
-
-```bash
-# 生产环境构建 | Build for production
-npm run build
-
-# 预览生产构建 | Preview production build
-npm run preview
-```
-
-### 测试 | Testing
-
-```bash
-# 运行 E2E 测试 | Run E2E tests
-cd e2e
-npm install
-npm test
-```
-
-## 📝 内容管理 | Content Management
-
-### 博客文章 | Blog Posts
-
-博客文章位于 `src/blog/` 目录，按语言组织：
-
-Blog posts are located in `src/blog/` directory, organized by language:
-- 英文 | English: `src/blog/en/`
-- 中文 | Chinese: `src/blog/zh-cn/`
-
-### 百科词条 | Wiki Entries
-
-百科词条位于 `src/content/wiki/` 目录。
-
-Wiki entries are in `src/content/wiki/` directory.
-
-### 实用脚本 | Scripts
-
-```bash
-# 生成博客封面 | Generate blog covers
-npm run generate-covers
-
-# 更新博客标签 | Update blog tags
-npm run update-blog-tags
-
-# 索引内容到 Algolia | Index content to Algolia
-npm run algolia-index
-```
-
-## 🚀 部署 | Deployment
-
-博客自动部署到以下平台：
-
-The blog is automatically deployed to:
-- **Cloudflare Workers** - 主要生产环境部署 | Main production deployment
-- **GitHub Pages** - 备用部署 | Alternative deployment
-
-当代码推送到 `main` 分支时，通过 GitHub Actions 自动触发部署。
-
-Deployments are triggered automatically on push to the `main` branch via GitHub Actions.
-
 ## 🤝 贡献 | Contributing
 
 我非常重视读者的反馈和贡献。如果您在我的博客文章中发现任何错误或遗漏，或者如果您有额外的内容建议，请不要犹豫，直接在 GitHub 上提交 Pull Request（PR）。
@@ -182,3 +92,34 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Made with ❤️ by [Nao Deng](https://github.com/naodeng)
 
 </div>
+
+## 📄 许可证 | License
+
+<div align="center">
+
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+</div>
+
+本项目采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 进行许可。
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+### 许可说明 | License Summary
+
+**您可以自由地 | You are free to:**
+- ✅ **分享** — 在任何媒介以任何形式复制、发行本作品 | **Share** — copy and redistribute the material in any medium or format
+- ✅ **演绎** — 修改、转换或以本作品为基础进行创作 | **Adapt** — remix, transform, and build upon the material
+
+**惟须遵守下列条件 | Under the following terms:**
+- 📝 **署名** — 您必须给出适当的署名，提供指向本许可协议的链接，同时标明是否（对原始作品）作了修改 | **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
+- 🚫 **非商业性使用** — 您不得将本作品用于商业目的 | **NonCommercial** — You may not use the material for commercial purposes
+- 🔄 **相同方式共享** — 如果您再混合、转换或者基于本作品进行创作，您必须基于与原先许可协议相同的许可协议分发您贡献的作品 | **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original
+
+### 商业使用 | Commercial Use
+
+如需商业使用，请联系作者获取授权。
+
+For commercial use, please contact the author for authorization.
+
+详见 [LICENSE](LICENSE) 文件。| See the [LICENSE](LICENSE) file for details.
