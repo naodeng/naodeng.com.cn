@@ -1,0 +1,361 @@
+---
+/**
+ * Guild 文章详情页
+ * 路由格式: /[lang]/guild/[testType]/[framework]/[articleSlug]
+ */
+import { getCollection, render } from "astro:content";
+import DocsLayout from "@/layouts/Docs.astro";
+import Giscus from "@/components/Giscus.astro";
+import { NAV_HOME, NAV_GUILD } from "@/consts";
+import {
+  guildIdToSlug,
+  parseGuildSlug,
+  buildGuildSidebar,
+  getAdjacentArticles,
+  getStageName,
+  getDifficultyName,
+} from "@/data/guild";
+import { getGuildConfig } from "@/config/guild.config";
+import type { Lang } from "@/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("guild");
+  
+  return entries.map((entry) => {
+    // entry.id 格式: zh-cn/api-testing/postman/getting-started
+    const parts = entry.id.split("/");
+    const locale = parts[0]; // zh-cn 或 en
+    const slug = parts.slice(1).join("/"); // api-testing/postman/getting-started
+    
+    return {
+      params: {
+        lang: locale,
+        slug: slug,
+      },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const locale = (Astro.params.lang ?? "zh-cn") as Lang;
+const slugParam = (Astro.params.slug ?? "") as string;
+
+const parsed = parseGuildSlug(slugParam);
+if (!parsed) {
+  return Astro.redirect(`/${locale}/guild/`);
+}
+
+const { testType, framework } = parsed;
+
+// 获取配置
+const config = getGuildConfig(locale);
+const testTypeConfig = config.testTypes.find((t) => t.id === testType);
+const frameworkConfig = testTypeConfig?.frameworks.find((f) => f.id === framework);
+
+if (!testTypeConfig || !frameworkConfig) {
+  return Astro.redirect(`/${locale}/guild/`);
+}
+
+// 构建面包屑
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const guildName = (typeof NAV_GUILD === "string" ? NAV_GUILD : NAV_GUILD[locale]) ?? "Guild";
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: guildName, url: `/${locale}/guild/` },
+  { name: testTypeConfig.title, url: `/${locale}/guild/#${testType}` },
+  { name: frameworkConfig.name, url: `/${locale}/guild/${testType}/${framework}/` },
+  { name: entry.data.title, url: `/${locale}/guild/${slugParam}/` },
+];
+
+// 获取所有条目用于构建侧栏和前后导航
+const allEntries = await getCollection("guild");
+const sidebarSections = buildGuildSidebar(allEntries, locale, testType, framework);
+const basePath = `/${locale}/guild`;
+
+// 渲染内容
+const { Content, headings = [] } = await render(entry);
+
+// 获取前后文章
+const { prev, next } = getAdjacentArticles(allEntries, locale, testType, framework, slugParam);
+
+// SEO
+const pageTitle = `${entry.data.title} - ${frameworkConfig.name}`;
+const metaDescription = entry.data.description || entry.data.title;
+
+// 结构化数据
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const articleUrl = `${siteOrigin}/${locale}/guild/${slugParam}/`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: entry.data.title,
+  description: metaDescription,
+  url: articleUrl,
+  datePublished: entry.data.date?.toISOString(),
+  author: {
+    "@type": "Person",
+    name: "Nao Deng",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Nao's Blog",
+    url: siteOrigin,
+  },
+  inLanguage: locale,
+  about: {
+    "@type": "SoftwareApplication",
+    name: frameworkConfig.name,
+    applicationCategory: "DeveloperApplication",
+  },
+};
+
+const stageName = getStageName(entry.data.stage, locale);
+const difficultyName = getDifficultyName(entry.data.difficulty, locale);
+---
+
+<DocsLayout
+  title={pageTitle}
+  description={metaDescription}
+  breadcrumbs={breadcrumbs}
+  structuredData={[articleSchema]}
+  sidebarSections={sidebarSections}
+  currentPath={slugParam}
+  basePath={basePath}
+  sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "Navigation"}
+  headings={headings}
+  tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
+>
+  <article class="guild-article">
+    <!-- 文章元信息 -->
+    <div class="guild-meta">
+      <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "阶段" : "Stage"}:</span>
+        <span class="guild-meta-value">{stageName}</span>
+      </span>
+      <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "难度" : "Difficulty"}:</span>
+        <span class="guild-meta-value">{difficultyName}</span>
+      </span>
+      {entry.data.duration && (
+        <span class="guild-meta-item">
+          <span class="guild-meta-label">{locale === "zh-cn" ? "时长" : "Duration"}:</span>
+          <span class="guild-meta-value">{entry.data.duration} {locale === "zh-cn" ? "分钟" : "min"}</span>
+        </span>
+      )}
+      <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "语言" : "Language"}:</span>
+        <span class="guild-meta-value">{entry.data.language}</span>
+      </span>
+    </div>
+
+    <!-- 快速链接 -->
+    {(entry.data.githubDemo || entry.data.officialDocs) && (
+      <div class="guild-links">
+        {entry.data.githubDemo && (
+          <a href={entry.data.githubDemo} target="_blank" rel="noopener noreferrer" class="guild-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            {locale === "zh-cn" ? "示例代码" : "Demo Code"}
+          </a>
+        )}
+        {entry.data.officialDocs && (
+          <a href={entry.data.officialDocs} target="_blank" rel="noopener noreferrer" class="guild-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            {locale === "zh-cn" ? "官方文档" : "Official Docs"}
+          </a>
+        )}
+      </div>
+    )}
+
+    <!-- 文章内容 -->
+    <div class="guild-content">
+      <Content />
+    </div>
+
+    <!-- 前后导航 -->
+    {(prev || next) && (
+      <nav class="guild-pagination" aria-label={locale === "zh-cn" ? "文章导航" : "Article navigation"}>
+        {prev && (
+          <a href={`/${locale}/guild/${guildIdToSlug(prev.id)}/`} class="guild-pagination-link guild-pagination-prev">
+            <span class="guild-pagination-label">{locale === "zh-cn" ? "上一篇" : "Previous"}</span>
+            <span class="guild-pagination-title">{prev.data.title}</span>
+          </a>
+        )}
+        {next && (
+          <a href={`/${locale}/guild/${guildIdToSlug(next.id)}/`} class="guild-pagination-link guild-pagination-next">
+            <span class="guild-pagination-label">{locale === "zh-cn" ? "下一篇" : "Next"}</span>
+            <span class="guild-pagination-title">{next.data.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
+  </article>
+
+  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
+</DocsLayout>
+
+<style>
+  .guild-article {
+    width: 100%;
+  }
+
+  .guild-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-m);
+    padding: var(--sp-m);
+    margin-block-end: var(--sp-l);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+
+  .guild-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.9rem;
+  }
+
+  .guild-meta-label {
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+  }
+
+  .guild-meta-value {
+    color: var(--color-theme);
+    font-weight: 500;
+  }
+
+  .guild-links {
+    display: flex;
+    gap: var(--sp-m);
+    margin-block-end: var(--sp-l);
+  }
+
+  .guild-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.6em 1.2em;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-base);
+    background: var(--color-theme);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .guild-link:hover {
+    background: color-mix(in srgb, var(--color-theme) 85%, var(--color-main));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-theme) 30%, transparent);
+  }
+
+  .guild-content :global(h1) {
+    margin-block-end: var(--sp-m);
+  }
+
+  .guild-content :global(h2) {
+    margin-block: var(--sp-l) var(--sp-s);
+  }
+
+  .guild-content :global(h3) {
+    margin-block: var(--sp-m) var(--sp-s);
+  }
+
+  .guild-content :global(a) {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+
+  .guild-content :global(ul),
+  .guild-content :global(ol) {
+    padding-inline-start: 1.5em;
+  }
+
+  .guild-pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-m);
+    margin-block-start: var(--sp-xl);
+    padding-block-start: var(--sp-l);
+    border-block-start: 2px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+
+  .guild-pagination-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: var(--sp-m);
+    background: color-mix(in srgb, var(--color-theme) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .guild-pagination-link:hover {
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    border-color: var(--color-theme);
+    transform: translateY(-2px);
+  }
+
+  .guild-pagination-prev {
+    text-align: start;
+  }
+
+  .guild-pagination-next {
+    text-align: end;
+    grid-column: 2;
+  }
+
+  .guild-pagination:has(.guild-pagination-prev:only-child) .guild-pagination-prev {
+    grid-column: 1 / -1;
+  }
+
+  .guild-pagination:has(.guild-pagination-next:only-child) .guild-pagination-next {
+    grid-column: 1 / -1;
+  }
+
+  .guild-pagination-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+  }
+
+  .guild-pagination-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-theme);
+  }
+
+  @media (width < 768px) {
+    .guild-meta {
+      flex-direction: column;
+      gap: var(--sp-s);
+    }
+
+    .guild-links {
+      flex-direction: column;
+    }
+
+    .guild-pagination {
+      grid-template-columns: 1fr;
+    }
+
+    .guild-pagination-next {
+      grid-column: 1;
+    }
+  }
+</style>

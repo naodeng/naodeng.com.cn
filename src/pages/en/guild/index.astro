@@ -1,0 +1,99 @@
+---
+/**
+ * Test Automation Guild - English Overview Page
+ */
+import Base from '@/layouts/Base.astro';
+import { getGuildConfig } from '../../../config/guild.config';
+import GuildHero from '../../../components/guild/GuildHero.astro';
+import GuildFeatures from '../../../components/guild/GuildFeatures.astro';
+import LearningWorkflow from '../../../components/guild/LearningWorkflow.astro';
+import TestTypeSection from '../../../components/guild/TestTypeSection.astro';
+
+const locale = 'en';
+const guildConfig = getGuildConfig(locale);
+
+const title = 'Test Automation Guild';
+const description = 'Systematic test automation learning paths, from beginner to advanced, covering API testing, UI testing, and performance testing';
+
+const breadcrumbs = [
+  { name: 'Home', url: `/${locale}/` },
+  { name: 'Guild', url: `/${locale}/guild/` },
+];
+---
+
+<Base title={title} description={description} breadcrumbs={breadcrumbs}>
+  <div class="guild-page">
+    <div class="guild-container">
+      <GuildHero locale={locale} />
+      
+      <div class="guild-content">
+        <h2 class="guild-content__title">📚 Framework Learning Paths</h2>
+        <p class="guild-content__description">
+          Choose your testing type and framework to start your systematic learning journey. Each framework provides complete learning paths from beginner to advanced.
+        </p>
+        {guildConfig.testTypes
+          .filter(testType => testType.id !== 'ui-testing')
+          .map((testType) => (
+            <TestTypeSection testType={testType} locale={locale} />
+          ))}
+      </div>
+      
+      <GuildFeatures locale={locale} />
+      
+      <LearningWorkflow locale={locale} />
+    </div>
+  </div>
+</Base>
+
+<style>
+  .guild-page {
+    min-height: 100vh;
+  }
+
+  .guild-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .guild-content {
+    margin-top: 2rem;
+  }
+
+  .guild-content__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-main);
+    text-align: center;
+    margin: 0 0 1rem 0;
+  }
+
+  .guild-content__description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-main);
+    opacity: 0.75;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .guild-container {
+      padding: 1rem;
+    }
+
+    .guild-content {
+      margin-top: 3rem;
+    }
+
+    .guild-content__title {
+      font-size: 1.5rem;
+    }
+
+    .guild-content__description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

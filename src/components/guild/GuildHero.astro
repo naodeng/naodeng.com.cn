@@ -1,0 +1,220 @@
+---
+/**
+ * Guild 页面头部组件
+ */
+import { getGuildConfig } from '../../config/guild.config';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const guildConfig = getGuildConfig(locale);
+
+const content = {
+  'zh-cn': {
+    title: '测试自动化指南',
+    tagline: '🚀 让自动化测试成为你的超能力',
+    subtitle: '系统化的测试自动化学习路径',
+    description: '从入门到进阶，涵盖接口测试、UI测试和性能测试。选择你感兴趣的框架，开始你的自动化测试之旅。',
+    stats: {
+      testTypes: '测试类型',
+      frameworks: '测试框架',
+      learningPaths: '学习路径',
+    },
+  },
+  'en': {
+    title: 'Test Automation Guild',
+    tagline: '🚀 Make Test Automation Your Superpower',
+    subtitle: 'Systematic Test Automation Learning Paths',
+    description: 'From beginner to advanced, covering API testing, UI testing, and performance testing. Choose your framework and start your automation journey.',
+    stats: {
+      testTypes: 'Test Types',
+      frameworks: 'Frameworks',
+      learningPaths: 'Learning Paths',
+    },
+  },
+};
+
+const text = content[locale as keyof typeof content] || content['en'];
+
+// Calculate statistics
+const totalFrameworks = guildConfig.testTypes.reduce((sum, type) => sum + type.frameworks.length, 0);
+const totalTestTypes = guildConfig.testTypes.length;
+---
+
+<div class="guild-hero">
+  <div class="guild-hero__content">
+    <div class="guild-hero__tagline">{text.tagline}</div>
+    <h1 class="guild-hero__title">{text.title}</h1>
+    <p class="guild-hero__subtitle">{text.subtitle}</p>
+    <p class="guild-hero__description">{text.description}</p>
+    
+    <div class="guild-hero__stats">
+      <div class="stat-item">
+        <div class="stat-item__value">{totalTestTypes}</div>
+        <div class="stat-item__label">{text.stats.testTypes}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value">{totalFrameworks}</div>
+        <div class="stat-item__label">{text.stats.frameworks}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value">60+</div>
+        <div class="stat-item__label">{text.stats.learningPaths}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="guild-hero__decoration" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.2C64.8,55.2,53.8,66.6,40.3,73.8C26.8,81,10.8,84,-5.3,83.3C-21.4,82.6,-42.8,78.2,-58.4,68.4C-74,58.6,-83.8,43.4,-88.3,26.8C-92.8,10.2,-92,-7.8,-86.1,-23.9C-80.2,-40,-69.2,-54.2,-55.3,-61.5C-41.4,-68.8,-24.6,-69.2,-9.1,-72.8C6.4,-76.4,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+    </svg>
+  </div>
+</div>
+
+<style>
+  .guild-hero {
+    position: relative;
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+      rgba(239, 77, 26, 0.03) 0%, 
+      rgba(239, 77, 26, 0.01) 50%, 
+      transparent 100%);
+    border-radius: 24px;
+  }
+
+  .guild-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .guild-hero__tagline {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-theme);
+    letter-spacing: -0.02em;
+  }
+
+  .guild-hero__title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, var(--color-theme) 0%, #ff8c5a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .guild-hero__subtitle {
+    font-size: 1.5rem;
+    color: var(--color-main);
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .guild-hero__description {
+    font-size: 1.125rem;
+    color: var(--color-main);
+    line-height: 1.8;
+    margin: 0 auto 2.5rem;
+    max-width: 700px;
+    opacity: 0.75;
+  }
+
+  .guild-hero__stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(239, 77, 26, 0.15);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-item__value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-theme);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-family: var(--english-font);
+  }
+
+  .stat-item__label {
+    font-size: 0.9rem;
+    color: var(--color-main);
+    opacity: 0.7;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .guild-hero__decoration {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    opacity: 0.03;
+    pointer-events: none;
+    color: var(--color-theme);
+  }
+
+  @media (max-width: 768px) {
+    .guild-hero {
+      padding: 2.5rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border-radius: 16px;
+    }
+
+    .guild-hero__tagline {
+      font-size: 1.1rem;
+    }
+
+    .guild-hero__title {
+      font-size: 2.25rem;
+    }
+
+    .guild-hero__subtitle {
+      font-size: 1.15rem;
+    }
+
+    .guild-hero__description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .guild-hero__stats {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item__value {
+      font-size: 2rem;
+    }
+
+    .stat-item__label {
+      font-size: 0.8rem;
+    }
+
+    .guild-hero__decoration {
+      width: 300px;
+      height: 300px;
+      right: -150px;
+    }
+  }
+</style>

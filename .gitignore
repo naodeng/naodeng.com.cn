@@ -40,3 +40,6 @@ lerna-debug.log*
 .cache
 *.tsbuildinfo
 .turbo
+
+# Explore folder (development/testing)
+explore/

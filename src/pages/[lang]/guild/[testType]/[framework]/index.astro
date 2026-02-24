@@ -1,0 +1,426 @@
+---
+/**
+ * Guild 框架概述页
+ * 路由格式: /[lang]/guild/[testType]/[framework]/
+ */
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { NAV_HOME, NAV_GUILD } from "@/consts";
+import { getGuildConfig, learningStages } from "@/config/guild.config";
+import { filterGuildEntries, guildIdToSlug, getDifficultyName } from "@/data/guild";
+import type { Lang } from "@/i18n";
+import type { GuildEntry } from "@/data/guild";
+
+export async function getStaticPaths() {
+  const paths: Array<{ params: { lang: string; testType: string; framework: string } }> = [];
+  
+  // 为每个 locale 的每个框架生成路径
+  const locales = ["zh-cn", "en"];
+  
+  for (const locale of locales) {
+    const config = getGuildConfig(locale as Lang);
+    
+    for (const testType of config.testTypes) {
+      for (const framework of testType.frameworks) {
+        paths.push({
+          params: {
+            lang: locale,
+            testType: testType.id,
+            framework: framework.id,
+          },
+        });
+      }
+    }
+  }
+  
+  return paths;
+}
+
+const { lang, testType, framework } = Astro.params;
+const locale = (lang ?? "zh-cn") as Lang;
+
+const config = getGuildConfig(locale);
+const testTypeConfig = config.testTypes.find((t) => t.id === testType);
+const frameworkConfig = testTypeConfig?.frameworks.find((f) => f.id === framework);
+
+if (!testTypeConfig || !frameworkConfig) {
+  return Astro.redirect(`/${locale}/guild/`);
+}
+
+// 获取该框架的所有文章
+const allEntries = await getCollection("guild");
+const frameworkEntries = filterGuildEntries(allEntries, locale, testType, framework);
+
+// 按 stage 分组
+const stages = learningStages[locale as keyof typeof learningStages];
+const stageOrder = ["getting-started", "basic", "advanced", "ci-cd", "best-practices"];
+const byStage = new Map<string, GuildEntry[]>();
+
+frameworkEntries.forEach((entry) => {
+  const stage = entry.data.stage || "getting-started";
+  const list = byStage.get(stage) || [];
+  list.push(entry);
+  byStage.set(stage, list);
+});
+
+// 排序每个 stage 的文章
+byStage.forEach((list) => {
+  list.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+});
+
+// 面包屑
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
+const guildName = (typeof NAV_GUILD === "string" ? NAV_GUILD : NAV_GUILD[locale]) ?? "Guild";
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: guildName, url: `/${locale}/guild/` },
+  { name: testTypeConfig.title, url: `/${locale}/guild/#${testType}` },
+  { name: frameworkConfig.name, url: `/${locale}/guild/${testType}/${framework}/` },
+];
+
+const pageTitle = `${frameworkConfig.name} ${locale === "zh-cn" ? "教程" : "Tutorial"}`;
+const metaDescription = frameworkConfig.description;
+---
+
+<Base title={pageTitle} description={metaDescription} contentWide={true}>
+  <Breadcrumb items={breadcrumbs} />
+  
+  <div class="framework-overview">
+    <!-- 框架头部 -->
+    <header class="framework-header">
+      <div class="framework-header-content">
+        <h1 class="framework-title">{frameworkConfig.name}</h1>
+        <p class="framework-description">{frameworkConfig.description}</p>
+        
+        <div class="framework-meta">
+          <span class="framework-meta-item">
+            <span class="framework-meta-label">{locale === "zh-cn" ? "语言" : "Language"}:</span>
+            <span class="framework-meta-value">{frameworkConfig.language}</span>
+          </span>
+          <span class="framework-meta-item">
+            <span class="framework-meta-label">{locale === "zh-cn" ? "文章数" : "Articles"}:</span>
+            <span class="framework-meta-value">{frameworkEntries.length}</span>
+          </span>
+        </div>
+
+        <div class="framework-links">
+          {frameworkConfig.githubDemo && (
+            <a href={frameworkConfig.githubDemo} target="_blank" rel="noopener noreferrer" class="framework-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              {locale === "zh-cn" ? "示例代码" : "Demo Code"}
+            </a>
+          )}
+          {frameworkConfig.officialDocs && (
+            <a href={frameworkConfig.officialDocs} target="_blank" rel="noopener noreferrer" class="framework-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              {locale === "zh-cn" ? "官方文档" : "Official Docs"}
+            </a>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- 学习路径 -->
+    <div class="learning-path">
+      <h2 class="learning-path-title">{locale === "zh-cn" ? "学习路径" : "Learning Path"}</h2>
+      
+      {stageOrder.map((stageKey) => {
+        const stageEntries = byStage.get(stageKey);
+        if (!stageEntries || stageEntries.length === 0) return null;
+        
+        const stageName = stages[stageKey as keyof typeof stages] || stageKey;
+        
+        return (
+          <section class="stage-section">
+            <h3 class="stage-title">{stageName}</h3>
+            <div class="articles-grid">
+              {stageEntries.map((entry) => {
+                const slug = guildIdToSlug(entry.id);
+                const difficultyName = getDifficultyName(entry.data.difficulty, locale);
+                
+                return (
+                  <a href={`/${locale}/guild/${slug}/`} class="article-card">
+                    <h4 class="article-title">{entry.data.title}</h4>
+                    {entry.data.description && (
+                      <p class="article-description">{entry.data.description}</p>
+                    )}
+                    <div class="article-meta">
+                      <span class="article-meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"/>
+                          <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        {entry.data.duration ? `${entry.data.duration} ${locale === "zh-cn" ? "分钟" : "min"}` : "-"}
+                      </span>
+                      <span class="article-meta-item article-difficulty" data-difficulty={entry.data.difficulty}>
+                        {difficultyName}
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .framework-overview {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--sp-m);
+  }
+
+  .framework-header {
+    margin: var(--sp-l) 0;
+    padding: var(--sp-l);
+    background: var(--color-base);
+    border-radius: 12px;
+    border: 2px solid var(--color-theme);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .framework-header {
+      background: rgba(239, 77, 26, 0.05);
+    }
+  }
+
+  .framework-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--sp-m);
+    color: var(--color-theme);
+  }
+
+  .framework-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--color-main);
+    margin-bottom: var(--sp-l);
+    opacity: 0.9;
+  }
+
+  .framework-meta {
+    display: flex;
+    gap: var(--sp-l);
+    margin-bottom: var(--sp-l);
+    flex-wrap: wrap;
+  }
+
+  .framework-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .framework-meta-label {
+    font-weight: 600;
+    color: var(--color-main);
+    opacity: 0.7;
+  }
+
+  .framework-meta-value {
+    font-weight: 700;
+    color: var(--color-theme);
+  }
+
+  .framework-links {
+    display: flex;
+    gap: var(--sp-m);
+    flex-wrap: wrap;
+  }
+
+  .framework-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.75em 1.5em;
+    font-weight: 600;
+    color: var(--color-base);
+    background: var(--color-theme);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .framework-link:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(239, 77, 26, 0.3);
+  }
+
+  .learning-path-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--sp-l);
+    padding-bottom: var(--sp-s);
+    border-bottom: 2px solid var(--color-theme);
+    color: var(--color-main);
+  }
+
+  .stage-section {
+    margin-bottom: calc(var(--sp-l) * 1.5);
+  }
+
+  .stage-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--sp-m);
+    color: var(--color-theme);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--sp-m);
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-s);
+    padding: var(--sp-m);
+    background: var(--color-base);
+    border: 1px solid var(--color-main);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article-card {
+      border-color: rgba(250, 249, 246, 0.2);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .article-card {
+      border-color: rgba(52, 44, 40, 0.15);
+    }
+  }
+
+  .article-card:hover {
+    border-color: var(--color-theme);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(239, 77, 26, 0.2);
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    margin: 0;
+  }
+
+  .article-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-main);
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.85;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--sp-s);
+    margin-top: var(--sp-s);
+    padding-top: var(--sp-s);
+    border-top: 1px solid;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article-meta {
+      border-top-color: rgba(250, 249, 246, 0.15);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .article-meta {
+      border-top-color: rgba(52, 44, 40, 0.1);
+    }
+  }
+
+  .article-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.85rem;
+    color: var(--color-main);
+    opacity: 0.7;
+  }
+
+  .article-difficulty {
+    padding: 0.25em 0.75em;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .article-difficulty[data-difficulty="beginner"] {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .article-difficulty[data-difficulty="intermediate"] {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+  }
+
+  .article-difficulty[data-difficulty="advanced"] {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article-difficulty[data-difficulty="beginner"] {
+      color: #34d399;
+    }
+    .article-difficulty[data-difficulty="intermediate"] {
+      color: #fbbf24;
+    }
+    .article-difficulty[data-difficulty="advanced"] {
+      color: #f87171;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .framework-header {
+      padding: var(--sp-m);
+    }
+
+    .framework-title {
+      font-size: 2rem;
+    }
+
+    .framework-meta {
+      flex-direction: column;
+      gap: var(--sp-s);
+    }
+
+    .framework-links {
+      flex-direction: column;
+    }
+
+    .framework-link {
+      justify-content: center;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

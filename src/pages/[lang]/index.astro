@@ -19,6 +19,7 @@ import {
   HOME_WIKI_INTRO,
 } from "@/consts";
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
+import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -125,6 +126,8 @@ export const getStaticPaths = () =>
       </a>
     </div>
   </section>
+
+  <GuildShowcase locale={locale} />
 
   {locale === "zh-cn" && wikiCarouselItems.length > 0 && (
     <section class="home-section wiki-showcase" aria-labelledby="wiki-showcase-title">
@@ -554,36 +557,63 @@ export const getStaticPaths = () =>
 
   .wiki-showcase {
     margin-block-start: var(--sp-l);
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, 
+      rgba(239, 77, 26, 0.02) 0%, 
+      transparent 100%);
+    border-radius: 24px;
   }
+  
+  .wiki-showcase .section-header {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 1rem;
+  }
+  
+  .wiki-showcase .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-theme) 0%, #ff8c5a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
   .wiki-showcase .wiki-intro {
-    margin: 0 auto var(--sp-m);
+    margin: 0 auto 2.5rem;
     padding-inline: var(--sp-m);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.8;
-    color: color-mix(in srgb, var(--color-main) 82%, transparent);
-    max-inline-size: 48ch;
+    color: var(--color-main);
+    opacity: 0.8;
+    max-inline-size: 60ch;
     text-align: center;
     letter-spacing: 0.01em;
   }
+  
   .wiki-carousel-viewport {
     overflow: hidden;
-    height: 17rem;
-    border-radius: 16px;
-    background: color-mix(in srgb, var(--color-theme) 6%, var(--card-bg));
+    height: 18rem;
+    border-radius: 20px;
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: var(--sp-m);
-    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
   }
+  
   .wiki-carousel-track {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 0.65rem;
+    gap: 0.75rem;
     animation: wiki-vertical-scroll 50s linear infinite;
   }
+  
   .wiki-carousel-viewport:hover .wiki-carousel-track {
     animation-play-state: paused;
   }
+  
   @keyframes wiki-vertical-scroll {
     0% {
       transform: translateY(0);
@@ -592,6 +622,7 @@ export const getStaticPaths = () =>
       transform: translateY(-50%);
     }
   }
+  
   @media (prefers-reduced-motion: reduce) {
     .wiki-carousel-track {
       animation: none;
@@ -602,32 +633,52 @@ export const getStaticPaths = () =>
       -webkit-mask-image: none;
     }
   }
+  
   @media (max-width: 900px) {
     .wiki-carousel-track {
       grid-template-columns: repeat(4, 1fr);
     }
   }
+  
   @media (max-width: 560px) {
+    .wiki-showcase {
+      padding: 2rem 1rem;
+      border-radius: 16px;
+    }
+    
+    .wiki-showcase .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .wiki-showcase .wiki-intro {
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    
     .wiki-carousel-track {
       grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
     }
   }
+  
   .wiki-term-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 3.25rem;
-    padding: 0.5rem 0.65rem;
-    border-radius: 10px;
+    min-height: 3.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 12px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     color: var(--color-main);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-align: center;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
+  
   .wiki-term-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -635,15 +686,16 @@ export const getStaticPaths = () =>
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
-    line-height: 1.35;
+    line-height: 1.4;
     word-break: break-word;
   }
+  
   .wiki-term-item:hover {
     background: var(--color-theme);
     color: var(--color-base);
     border-color: var(--color-theme);
-    transform: scale(1.04);
-    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-theme) 35%, transparent);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(239, 77, 26, 0.25);
   }
 
   .tags-container {

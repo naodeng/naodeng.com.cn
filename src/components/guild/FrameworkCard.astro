@@ -1,0 +1,218 @@
+---
+/**
+ * 框架卡片组件
+ * 展示测试框架的基本信息和链接
+ */
+import type { Framework } from '../../config/guild.config';
+
+interface Props {
+  framework: Framework;
+  testType: string;
+  locale: string;
+}
+
+const { framework, testType, locale } = Astro.props;
+const guildPath = `/${locale}/guild/${testType}/${framework.id}/`;
+---
+
+<div class="framework-card" style={`--framework-color: ${framework.color || '#6366f1'}`}>
+  <a href={guildPath} class="framework-card__main">
+    <div class="framework-card__header">
+      <div class="framework-card__icon">
+        {framework.icon ? (
+          <img src={framework.icon} alt={`${framework.name} logo`} loading="lazy" />
+        ) : (
+          <span class="framework-card__icon-placeholder">
+            {framework.name.charAt(0)}
+          </span>
+        )}
+      </div>
+      <div class="framework-card__title">
+        <h3>{framework.name}</h3>
+        <span class="framework-card__language">{framework.language}</span>
+      </div>
+    </div>
+
+    <p class="framework-card__description">{framework.description}</p>
+  </a>
+
+  <div class="framework-card__links">
+    {framework.githubDemo && (
+      <a
+        href={framework.githubDemo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="framework-card__link"
+        title="GitHub Demo"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        Demo
+      </a>
+    )}
+    {framework.officialDocs && (
+      <a
+        href={framework.officialDocs}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="framework-card__link"
+        title="Official Docs"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z"/>
+          <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z"/>
+        </svg>
+        Docs
+      </a>
+    )}
+    <a href={guildPath} class="framework-card__link framework-card__link--primary">
+      {locale === 'zh-cn' ? '开始学习' : 'Start Learning'}
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<style>
+  .framework-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .framework-card:hover {
+    border-color: var(--framework-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .framework-card__main {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .framework-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .framework-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--framework-color);
+    flex-shrink: 0;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .framework-card__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .framework-card__icon-placeholder {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .framework-card__title h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-main);
+  }
+
+  .framework-card__language {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--color-main);
+    background: rgba(239, 77, 26, 0.08);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    opacity: 0.8;
+  }
+
+  .framework-card__description {
+    color: var(--color-main);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+    opacity: 0.8;
+  }
+
+  .framework-card__links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .framework-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--card-border);
+    color: var(--color-main);
+  }
+
+  .framework-card__link:hover {
+    background: rgba(239, 77, 26, 0.08);
+    border-color: var(--framework-color);
+  }
+
+  .framework-card__link--primary {
+    background: var(--framework-color);
+    color: white;
+    border-color: var(--framework-color);
+  }
+
+  .framework-card__link--primary:hover {
+    opacity: 0.9;
+    transform: translateX(2px);
+  }
+
+  .framework-card__link svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .framework-card {
+      padding: 1rem;
+    }
+
+    .framework-card__links {
+      flex-direction: column;
+    }
+
+    .framework-card__link {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

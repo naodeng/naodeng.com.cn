@@ -189,6 +189,14 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"guild": Record<string, {
+  id: string;
+  body?: string;
+  collection: "guild";
+  data: InferEntrySchema<"guild">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "wiki": Record<string, {
   id: string;
   body?: string;
