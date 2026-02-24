@@ -1,0 +1,807 @@
+<!DOCTYPE html><html lang="en-US" data-locale="en"> <head><meta charset="UTF-8"><title>K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios - K6 | Nao&#39;s Blog</title><meta name="description" content="This blog post provides an in-depth introduction to common functions of the K6 performance testing tool, focusing on threshold settings, test lifecycle,…"><meta name="keywords" content="software testing, QA, quality analyst, automation testing, API testing, performance testing, agile testing, test automation, inaodeng, Nao Deng"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="author" content="Nao Deng"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><link rel="canonical" href="https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/guild/performance-testing/k6/thresholds-and-scenarios/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/"><link rel="alternate" type="application/rss+xml" title="RSS - Nao's Blog" href="https://inaodeng.com/en/rss.xml/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta name="algolia-site-verification" content="B0319275B670BBB0"><meta property="og:type" content="website"><meta property="og:title" content="K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios - K6 | Nao's Blog"><meta property="og:site_name" content="Nao's Blog"><meta property="og:description" content="This blog post provides an in-depth introduction to common functions of the K6 performance testing tool, focusing on threshold settings, test lifecycle,…"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:image:alt" content="K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios - K6"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="zh_CN"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@inaodeng"><meta name="twitter:title" content="K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios - K6 | Nao's Blog"><meta name="twitter:description" content="This blog post provides an in-depth introduction to common functions of the K6 performance testing tool, focusing on threshold settings, test lifecycle,…"><meta name="twitter:image" content="https://inaodeng.com/ogp.png"><meta name="twitter:image:alt" content="K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios - K6"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Nao's Blog","description":"This blog post provides an in-depth introduction to common functions of the K6 performance testing tool, focusing on threshold settings, test lifecycle,…","url":"https://inaodeng.com","inLanguage":["en"],"publisher":{"@type":"Organization","name":"Nao's Blog","url":"https://inaodeng.com","logo":{"@type":"ImageObject","url":"https://inaodeng.com/ogp.png","width":1200,"height":630}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://inaodeng.com/en/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nao Deng","url":"https://inaodeng.com","sameAs":["https://github.com/naodeng","https://x.com/inaodeng","https://naodeng.medium.com/","https://weibo.com/u/1651778270","https://ko-fi.com/naodeng"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://inaodeng.com/en/"},{"@type":"ListItem","position":2,"name":"Guild","item":"https://inaodeng.com/en/guild/"},{"@type":"ListItem","position":3,"name":"Performance Testing","item":"https://inaodeng.com/en/guild/#performance-testing"},{"@type":"ListItem","position":4,"name":"K6","item":"https://inaodeng.com/en/guild/performance-testing/k6/"},{"@type":"ListItem","position":5,"name":"K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios","item":"https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios","description":"This blog post provides an in-depth introduction to common functions of the K6 performance testing tool, focusing on threshold settings, test lifecycle, and scenario design. It explains how to use K6 to set reasonable thresholds in performance testing to effectively monitor system performance. It also explores the importance of test lifecycle and how to conduct targeted performance testing at different stages. Additionally, the post details the concept of scenarios in K6 and how to design and configure scenarios based on actual needs to ensure comprehensive test coverage of various usage scenarios. Through this article, readers can gain a deeper understanding of the practical application of K6 performance testing tool in projects and improve the effectiveness and accuracy of performance testing.","url":"https://inaodeng.com/en/guild/performance-testing/k6/thresholds-and-scenarios/","datePublished":"2024-01-18T09:10:00.000Z","author":{"@type":"Person","name":"Nao Deng"},"publisher":{"@type":"Organization","name":"Nao's Blog","url":"https://inaodeng.com"},"inLanguage":"en","about":{"@type":"SoftwareApplication","name":"K6","applicationCategory":"DeveloperApplication"}}</script><style>
+    body {
+      font-family: "Noto Sans", sans-serif;
+    }
+  </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin="anonymous"></script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><style>.giscus-section[data-astro-cid-an2nl7ar]{margin-block-start:var(--sp-l);padding-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 14%,transparent)}.giscus-section[data-astro-cid-an2nl7ar] .giscus-frame{width:100%}
+.breadcrumb[data-astro-cid-qaanghzh]{margin-block-end:var(--sp-m, 1rem)}.breadcrumb-list[data-astro-cid-qaanghzh]{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .5rem;font-size:.875rem;color:color-mix(in srgb,var(--color-main) 65%,transparent)}.breadcrumb-item[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;gap:.25rem}.breadcrumb-link[data-astro-cid-qaanghzh]{color:inherit;text-decoration:none}.breadcrumb-link[data-astro-cid-qaanghzh]:hover{color:var(--color-theme);text-decoration:underline}.breadcrumb-icon[data-astro-cid-qaanghzh]{display:inline-flex;flex-shrink:0;margin-inline-end:.35em;color:var(--color-theme);opacity:.85}.breadcrumb-icon[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}.breadcrumb-icon--current[data-astro-cid-qaanghzh]{opacity:.7}.breadcrumb-current[data-astro-cid-qaanghzh]{color:inherit;display:inline-flex;align-items:center;gap:.35em}.breadcrumb-sep[data-astro-cid-qaanghzh]{display:inline-flex;align-items:center;margin-inline:.4rem;color:color-mix(in srgb,var(--color-main) 45%,transparent);user-select:none}.breadcrumb-sep[data-astro-cid-qaanghzh] svg[data-astro-cid-qaanghzh]{vertical-align:middle}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.OapxBOfU.css">
+<style>.toc-sidebar[data-astro-cid-xvrfupwn]{max-height:calc(100vh - 2rem);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}.toc-sidebar[data-astro-cid-xvrfupwn]::-webkit-scrollbar{display:none}.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:sticky;top:var(--sp-m, 1rem);align-self:start}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:absolute;left:var(--sp-m, 1rem);top:0;width:12rem;max-width:calc(100vw - 800px - var(--sp-m, 1rem) * 4);max-height:none;min-height:12rem;overflow-y:auto;overflow-x:hidden;z-index:10}.toc-sidebar--below[data-astro-cid-xvrfupwn]{position:static;width:100%;max-width:none;margin-block-end:var(--sp-l, 1.5rem)}.toc-sidebar--below[data-astro-cid-xvrfupwn] .toc-list[data-astro-cid-xvrfupwn]{display:block}.toc-nav[data-astro-cid-xvrfupwn]{padding:var(--sp-m);border-radius:12px;background:color-mix(in srgb,var(--color-theme) 6%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent)}.toc-title[data-astro-cid-xvrfupwn]{margin:0 0 .75rem;font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-theme);opacity:.9}.toc-list[data-astro-cid-xvrfupwn]{list-style:none;margin:0;padding:0}.toc-item[data-astro-cid-xvrfupwn]{margin:0;padding:0;padding-inline-start:calc((var(--depth) - 2) * .75rem);margin-block-end:.35rem}.toc-link[data-astro-cid-xvrfupwn]{display:block;font-size:.8125rem;line-height:1.4;color:var(--color-main);text-decoration:none;opacity:.85;transition:opacity .2s ease,color .2s ease;border-block-end:1px solid transparent}.toc-link[data-astro-cid-xvrfupwn]:hover{opacity:1;color:var(--color-theme)}.toc-link[data-astro-cid-xvrfupwn]:active,.toc-link[data-astro-cid-xvrfupwn][aria-current=true]{color:var(--color-theme);font-weight:600;opacity:1}@media(max-width:960px){.toc-sidebar--right[data-astro-cid-xvrfupwn]{position:static;max-height:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}.toc-sidebar--left[data-astro-cid-xvrfupwn]{position:static;transform:none;top:auto;left:auto;width:auto;max-width:none;margin-block-start:var(--sp-l);border-block-start:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);padding-block-start:var(--sp-m)}}
+.guild-article[data-astro-cid-lkrhrxut]{width:100%}.guild-meta[data-astro-cid-lkrhrxut]{display:flex;flex-wrap:wrap;gap:var(--sp-m);padding:var(--sp-m);margin-block-end:var(--sp-l);background:color-mix(in srgb,var(--color-theme) 8%,transparent);border-radius:10px;border:1px solid color-mix(in srgb,var(--color-theme) 20%,transparent)}.guild-meta-item[data-astro-cid-lkrhrxut]{display:flex;align-items:center;gap:.5em;font-size:.9rem}.guild-meta-label[data-astro-cid-lkrhrxut]{font-weight:600;color:color-mix(in srgb,var(--color-main) 70%,transparent)}.guild-meta-value[data-astro-cid-lkrhrxut]{color:var(--color-theme);font-weight:500}.guild-links[data-astro-cid-lkrhrxut]{display:flex;gap:var(--sp-m);margin-block-end:var(--sp-l)}.guild-link[data-astro-cid-lkrhrxut]{display:inline-flex;align-items:center;gap:.5em;padding:.6em 1.2em;font-size:.9rem;font-weight:500;color:var(--color-base);background:var(--color-theme);border-radius:8px;text-decoration:none;transition:all .2s ease}.guild-link[data-astro-cid-lkrhrxut]:hover{background:color-mix(in srgb,var(--color-theme) 85%,var(--color-main));transform:translateY(-2px);box-shadow:0 4px 12px color-mix(in srgb,var(--color-theme) 30%,transparent)}.guild-content[data-astro-cid-lkrhrxut] h1{margin-block-end:var(--sp-m)}.guild-content[data-astro-cid-lkrhrxut] h2{margin-block:var(--sp-l) var(--sp-s)}.guild-content[data-astro-cid-lkrhrxut] h3{margin-block:var(--sp-m) var(--sp-s)}.guild-content[data-astro-cid-lkrhrxut] a{color:var(--color-theme);text-decoration:underline}.guild-content[data-astro-cid-lkrhrxut] ul,.guild-content[data-astro-cid-lkrhrxut] ol{padding-inline-start:1.5em}.guild-pagination[data-astro-cid-lkrhrxut]{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-m);margin-block-start:var(--sp-xl);padding-block-start:var(--sp-l);border-block-start:2px solid color-mix(in srgb,var(--color-theme) 20%,transparent)}.guild-pagination-link[data-astro-cid-lkrhrxut]{display:flex;flex-direction:column;gap:.5em;padding:var(--sp-m);background:color-mix(in srgb,var(--color-theme) 5%,transparent);border:1px solid color-mix(in srgb,var(--color-theme) 15%,transparent);border-radius:10px;text-decoration:none;transition:all .2s ease}.guild-pagination-link[data-astro-cid-lkrhrxut]:hover{background:color-mix(in srgb,var(--color-theme) 10%,transparent);border-color:var(--color-theme);transform:translateY(-2px)}.guild-pagination-prev[data-astro-cid-lkrhrxut]{text-align:start}.guild-pagination-next[data-astro-cid-lkrhrxut]{text-align:end;grid-column:2}.guild-pagination[data-astro-cid-lkrhrxut]:has(.guild-pagination-prev:only-child) .guild-pagination-prev[data-astro-cid-lkrhrxut]{grid-column:1 / -1}.guild-pagination[data-astro-cid-lkrhrxut]:has(.guild-pagination-next:only-child) .guild-pagination-next[data-astro-cid-lkrhrxut]{grid-column:1 / -1}.guild-pagination-label[data-astro-cid-lkrhrxut]{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:color-mix(in srgb,var(--color-main) 60%,transparent)}.guild-pagination-title[data-astro-cid-lkrhrxut]{font-size:1rem;font-weight:600;color:var(--color-theme)}@media(width<768px){.guild-meta[data-astro-cid-lkrhrxut]{flex-direction:column;gap:var(--sp-s)}.guild-links[data-astro-cid-lkrhrxut]{flex-direction:column}.guild-pagination[data-astro-cid-lkrhrxut]{grid-template-columns:1fr}.guild-pagination-next[data-astro-cid-lkrhrxut]{grid-column:1}}
+</style>
+<link rel="stylesheet" href="/_astro/_id_.DKZjF0rP.css"></head> <body> <a href="#main" class="skip-link">Skip to main content</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "en";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <div class="site-brand" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>Nao&#39;s Blog</span> </a> </h1> <p class="site-slogan" data-astro-cid-3ef6ksr2>Quality Analyst, Not Quality Assurance.</p> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/en/" data-astro-cid-3ef6ksr2> Home </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li> <li data-astro-cid-3ef6ksr2> <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer" data-astro-cid-3ef6ksr2> QA wiki </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/guild/" class="active" data-astro-cid-3ef6ksr2> Guild </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/archive/" data-astro-cid-3ef6ksr2> Archive </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/projects/" data-astro-cid-3ef6ksr2> Projects </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/sponsor/" data-astro-cid-3ef6ksr2> Support </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/en/about/" data-astro-cid-3ef6ksr2> About </a> </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <div class="locale-dropdown compact" data-locale-dropdown data-astro-cid-opxux4jt> <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger data-astro-cid-opxux4jt> <span class="material-icons-sharp icon-lang" aria-hidden="true" data-astro-cid-opxux4jt>translate</span> <span class="locale-flag" data-astro-cid-opxux4jt>🇺🇸</span>  </button> <div class="locale-panel" hidden data-locale-panel data-astro-cid-opxux4jt> <ul data-astro-cid-opxux4jt> <li data-astro-cid-opxux4jt> <a href="/en/guild/performance-testing/k6/thresholds-and-scenarios/" data-lang="en" data-locale-option data-astro-cid-opxux4jt> English </a> </li><li data-astro-cid-opxux4jt> <a href="/zh-cn/guild/performance-testing/k6/thresholds-and-scenarios/" data-lang="zh-cn" data-locale-option data-astro-cid-opxux4jt> 简体中文 </a> </li> </ul> </div> </div> <script type="module">function r(e){const n=e.querySelector("[data-locale-trigger]"),a=e.querySelector("[data-locale-panel]");if(!n||!a)return;const c=()=>{a.hidden=!0,n.setAttribute("aria-expanded","false")},d=()=>{a.hidden=!1,n.setAttribute("aria-expanded","true")},o=()=>a.hidden?d():c();n.addEventListener("click",t=>{t.stopPropagation(),o()}),e.querySelectorAll("[data-locale-option]").forEach(t=>{t.addEventListener("click",()=>{const l=t.dataset.lang;l&&localStorage.setItem("selectedLang",l)})}),document.addEventListener("click",t=>{a.hidden||e.contains(t.target)||c()})}document.querySelectorAll("[data-locale-dropdown]").forEach(e=>r(e));</script>  </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <button type="button" class="btn-icon" aria-label="Search" title="⌘K or Ctrl+K to open search" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="btn-icon-kbd" data-astro-cid-3ef6ksr2>⌘K</span> </button> </li> </ul> </nav> </header>  <main id="main" class="l-main l-content l-content--with-sidebar"> <nav class="breadcrumb" aria-label="Breadcrumb" data-astro-cid-qaanghzh><ol class="breadcrumb-list" data-astro-cid-qaanghzh><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/en/" class="breadcrumb-link" data-astro-cid-qaanghzh><span class="breadcrumb-icon" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-astro-cid-qaanghzh></path><polyline points="9 22 9 12 15 12 15 22" data-astro-cid-qaanghzh></polyline></svg></span>Home</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/en/guild/" class="breadcrumb-link" data-astro-cid-qaanghzh>Guild</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/en/guild/#performance-testing" class="breadcrumb-link" data-astro-cid-qaanghzh>Performance Testing</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><a href="/en/guild/performance-testing/k6/" class="breadcrumb-link" data-astro-cid-qaanghzh>K6</a><span class="breadcrumb-sep" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><polyline points="9 18 15 12 9 6" data-astro-cid-qaanghzh></polyline></svg></span></li><li class="breadcrumb-item" data-astro-cid-qaanghzh><span class="breadcrumb-current" aria-current="page" data-astro-cid-qaanghzh><span class="breadcrumb-icon breadcrumb-icon--current" aria-hidden="true" data-astro-cid-qaanghzh><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qaanghzh><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-astro-cid-qaanghzh></path><polyline points="14 2 14 8 20 8" data-astro-cid-qaanghzh></polyline><line x1="16" y1="13" x2="8" y2="13" data-astro-cid-qaanghzh></line><line x1="16" y1="17" x2="8" y2="17" data-astro-cid-qaanghzh></line><polyline points="10 9 9 9 8 9" data-astro-cid-qaanghzh></polyline></svg></span>K6 Performance Testing Tutorial: Common Functions (2) - Thresholds, Test Lifecycle and Scenarios</span></li></ol></nav><div class="l-docs" data-has-toc="true" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar-wrap" data-astro-cid-ac2mn7rr> <aside class="docs-sidebar" aria-label="Documentation navigation" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-inner" data-astro-cid-qrwn6rcr>  <button type="button" class="docs-sidebar-toggle" aria-expanded="false" aria-controls="docs-sidebar-nav" id="docs-sidebar-toggle" data-astro-cid-qrwn6rcr> <span class="docs-sidebar-toggle-text" data-astro-cid-qrwn6rcr>Navigation</span> <span class="docs-sidebar-toggle-icon" aria-hidden="true" data-astro-cid-qrwn6rcr> <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-qrwn6rcr><polyline points="6 9 12 15 18 9" data-astro-cid-qrwn6rcr></polyline></svg> </span> </button> <nav class="docs-sidebar-nav" id="docs-sidebar-nav" data-astro-cid-qrwn6rcr> <div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr>  <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/" class="docs-sidebar-link" data-search="overview performance-testing/k6" data-astro-cid-qrwn6rcr> Overview </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Getting Started</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/getting-started/" class="docs-sidebar-link" data-search="getting started and write your first k6 test script performance-testing/k6/getting-started" data-astro-cid-qrwn6rcr> Getting Started and Write your first k6 test script </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Basic</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/http-request-and-checks/" class="docs-sidebar-link" data-search="common functions (1) - http request, metrics and checks performance-testing/k6/http-request-and-checks" data-astro-cid-qrwn6rcr> Common Functions (1) - HTTP Request, Metrics and Checks </a> </li><li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/thresholds-and-scenarios/" class="docs-sidebar-link docs-sidebar-link--active" aria-current="page" data-search="common functions (2) - thresholds, test lifecycle and scenarios performance-testing/k6/thresholds-and-scenarios" data-astro-cid-qrwn6rcr> Common Functions (2) - Thresholds, Test Lifecycle and Scenarios </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>Advanced</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/writing-test-scripts/" class="docs-sidebar-link" data-search="how to quickly write k6 performance test scripts performance-testing/k6/writing-test-scripts" data-astro-cid-qrwn6rcr> How to Quickly Write K6 Performance Test Scripts </a> </li> </ul> </div><div class="docs-sidebar-section" data-section data-astro-cid-qrwn6rcr> <h3 class="docs-sidebar-section-title" data-astro-cid-qrwn6rcr>CI/CD</h3> <ul class="docs-sidebar-list" data-astro-cid-qrwn6rcr> <li data-astro-cid-qrwn6rcr> <a href="/en/guild/performance-testing/k6/ci-cd-integration/" class="docs-sidebar-link" data-search="html report output and ci/cd integration performance-testing/k6/ci-cd-integration" data-astro-cid-qrwn6rcr> HTML Report Output and CI/CD Integration </a> </li> </ul> </div> </nav> </div> </aside>  <script type="module">function a(){const t=document.getElementById("docs-sidebar-toggle");if(t){const e=t.closest(".docs-sidebar-inner");e&&t.addEventListener("click",()=>{e.classList.toggle("is-open"),t.setAttribute("aria-expanded",e.classList.contains("is-open")?"true":"false")})}const s=document.getElementById("docs-sidebar-search-input");s&&s.addEventListener("input",()=>{const e=s.value.trim().toLowerCase();document.querySelectorAll(".docs-sidebar-section[data-section]").forEach(n=>{const d=n.querySelectorAll(".docs-sidebar-link[data-search]");let i=0;d.forEach(o=>{const c=!e||(o.getAttribute("data-search")??"").includes(e);o.style.display=c?"":"none",c&&i++}),n.style.display=i>0||!e?"":"none"})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",a):a();</script> </aside> <div class="docs-content" data-astro-cid-ac2mn7rr>  <article class="guild-article" data-astro-cid-lkrhrxut> <!-- 文章元信息 --> <div class="guild-meta" data-astro-cid-lkrhrxut> <span class="guild-meta-item" data-astro-cid-lkrhrxut> <span class="guild-meta-label" data-astro-cid-lkrhrxut>Stage:</span> <span class="guild-meta-value" data-astro-cid-lkrhrxut>Basic</span> </span> <span class="guild-meta-item" data-astro-cid-lkrhrxut> <span class="guild-meta-label" data-astro-cid-lkrhrxut>Difficulty:</span> <span class="guild-meta-value" data-astro-cid-lkrhrxut>Intermediate</span> </span> <span class="guild-meta-item" data-astro-cid-lkrhrxut> <span class="guild-meta-label" data-astro-cid-lkrhrxut>Duration:</span> <span class="guild-meta-value" data-astro-cid-lkrhrxut>45 min</span> </span> <span class="guild-meta-item" data-astro-cid-lkrhrxut> <span class="guild-meta-label" data-astro-cid-lkrhrxut>Language:</span> <span class="guild-meta-value" data-astro-cid-lkrhrxut>JavaScript</span> </span> </div> <!-- 快速链接 --> <div class="guild-links" data-astro-cid-lkrhrxut> <a href="https://github.com/naodeng/k6-demo" target="_blank" rel="noopener noreferrer" class="guild-link" data-astro-cid-lkrhrxut> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-lkrhrxut> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" data-astro-cid-lkrhrxut></path> </svg> Demo Code </a> <a href="https://k6.io/docs/" target="_blank" rel="noopener noreferrer" class="guild-link" data-astro-cid-lkrhrxut> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-lkrhrxut> <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" data-astro-cid-lkrhrxut></path> <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" data-astro-cid-lkrhrxut></path> </svg> Official Docs </a> </div> <!-- 文章内容 --> <div class="guild-content" data-astro-cid-lkrhrxut> <h2 id="k6-common-functions">K6 Common Functions</h2>
+<p>The previous blog post introduced <a href="https://naodeng.com.cn/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/">K6 Performance Testing Tutorial: Common Functions (1) - HTTP Requests, Metrics and Checks</a>. This article focuses on threshold settings, test lifecycle, and scenario design, explaining how to use K6 to set reasonable thresholds in performance testing to effectively monitor system performance, and discussing the importance of test lifecycle and how to conduct targeted performance testing at different stages.</p>
+<h3 id="thresholds">Thresholds</h3>
+<h4 id="what-are-thresholds">What are Thresholds</h4>
+<p>Thresholds are generally pass/fail criteria we define for test metrics. For K6, if the system under test’s performance doesn’t meet the threshold conditions, <strong>the test will end with a failed status</strong>.</p>
+<blockquote>
+<p>The previously mentioned checks are used to verify whether test results meet expectations. If checks fail, the test continues, whereas thresholds are used to verify whether test results meet performance requirements. If not met, the test will end with a failed status.</p>
+</blockquote>
+<p>Typically, when conducting performance testing, we use thresholds to write SLOs (Service Level Objectives) for different services or interfaces.</p>
+<p>Here are some examples of thresholds:</p>
+<ul>
+<li>Less than 1% of requests return errors</li>
+<li>95% of requests have response times below 200 milliseconds</li>
+<li>99% of requests have response times below 400 milliseconds</li>
+<li>Specific endpoints always respond within 300 milliseconds</li>
+<li>Custom metrics (latency trends) meet any condition (greater than 300 milliseconds)</li>
+</ul>
+<p>If you plan to write performance automation test scripts later, thresholds are essential.</p>
+<ul>
+<li>Set thresholds for your tests</li>
+<li>Automate execution</li>
+<li>Set up test failure alerts</li>
+</ul>
+<h4 id="threshold-examples-for-http-errors-and-response-duration">Threshold Examples for HTTP Errors and Response Duration</h4>
+<p>The following example demonstrates how to use thresholds to set and evaluate HTTP error rates (http_req_failed metric) and evaluate whether 95% of request responses occur within a specific duration (http_req_duration metric):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    http_req_failed: [</span><span style="color:#9ECBFF">'rate&#x3C;0.01'</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// HTTP error rate should be below 1%</span></span>
+<span class="line"><span style="color:#E1E4E8">    http_req_duration: [</span><span style="color:#9ECBFF">'p(95)&#x3C;200'</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// 95% of request responses should be below 200ms</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>In the above example, we set two thresholds:</p>
+<ul>
+<li>HTTP error rate should be below 1% (using the http_req_failed metric)</li>
+<li>95% of request responses should be below 200ms (using the http_req_duration metric)</li>
+</ul>
+<p>For the thresholds set in the above code, if during execution the HTTP error rate is below 1% and 95% of request responses are below 200ms, the test will end with a success status; otherwise, if any threshold is not met, the test will end with a failed status.</p>
+<p>Running this script, you can see the following results:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png" alt=" "></p>
+<p>The results show that the http_req_failed threshold passed, but the http_req_duration threshold did not pass, and the overall test ended with a failed status.</p>
+<blockquote>
+<p>If any threshold fails, the green checkmark ✓ next to the threshold name (http_req_failed, http_req_duration) will be ✗ and k6 will exit with a non-zero exit code.</p>
+</blockquote>
+<h4 id="threshold-syntax">Threshold Syntax</h4>
+<p>Threshold syntax is a string consisting of the following parts:</p>
+<ul>
+<li>Metric name (e.g., http_req_duration)</li>
+<li>One or more conditions, separated by commas</li>
+<li>Each condition consists of an operator and a value</li>
+<li>Operators can be one of: >, >=, &#x3C;, &#x3C;=, ==, !=, =<del>, !</del></li>
+<li>Values can be numbers or percentages</li>
+<li>Percentage values must be between 0 and 100</li>
+</ul>
+<p>To use thresholds in test scripts, follow these steps:</p>
+<ol>
+<li>Add the thresholds property to the options object as follows:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    /* ... */</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ol start="2">
+<li>Define threshold expressions (at least one, can be multiple) in the thresholds object as follows:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    // Short format</span></span>
+<span class="line"><span style="color:#E1E4E8">    METRIC_NAME1: [</span><span style="color:#9ECBFF">'THRESHOLD_EXPRESSION'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`...`</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#6A737D">    // Long format</span></span>
+<span class="line"><span style="color:#E1E4E8">    METRIC_NAME2: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        threshold: </span><span style="color:#9ECBFF">'THRESHOLD_EXPRESSION'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        abortOnFail: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// boolean</span></span>
+<span class="line"><span style="color:#E1E4E8">        delayAbortEval: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// string</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ul>
+<li>Threshold expressions support both short and long formats. The short format puts all threshold expressions as strings in an array. The long format puts each threshold in an object with additional properties for aborting on failure.</li>
+<li>METRIC_NAME1 and THRESHOLD_EXPRESSION in the example code are placeholders. Normally, they must be metric names and threshold expressions.</li>
+<li>The example code declares two thresholds for metrics metric_name1 and metric_name2. Whether thresholds pass or fail is determined by evaluating the ‘threshold_expression’ after the threshold.</li>
+</ul>
+<h5 id="threshold-expression-syntax">Threshold Expression Syntax</h5>
+<p>Threshold expressions evaluate to <code>true</code> or <code>false</code>. Threshold expressions must be in the following format:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">aggregation_method</span><span style="color:#E1E4E8">> &#x3C;</span><span style="color:#85E89D">operator</span><span style="color:#E1E4E8">> &#x3C;</span><span style="color:#85E89D">value</span><span style="color:#E1E4E8">></span></span></code></pre>
+<ul>
+<li><code>&#x3C;aggregation_method></code>: Aggregation method used to calculate metric values. For example, p(95) represents the 95th percentile, while avg represents the average.</li>
+<li><code>&#x3C;operator></code>: Operator used to compare metric values with values in threshold expressions. For example, > means greater than, &#x3C; means less than, == means equal to.</li>
+<li><code>&#x3C;value></code>: Value in the threshold expression. For example, 200 means 200 milliseconds, 95 means 95%.</li>
+</ul>
+<p>Some examples of threshold expressions:</p>
+<ul>
+<li>avg &#x3C; 200 // Average duration must be less than 200 milliseconds</li>
+<li>count >= 500 // Count must be greater than or equal to 500</li>
+<li>p(90) &#x3C; 300 // 90% of samples must be below 300</li>
+</ul>
+<h5 id="aggregation-methods-by-type">Aggregation Methods by Type</h5>
+<p>k6 aggregates metrics by type. These aggregation methods form part of threshold expressions.</p>
+<p>Here’s a list of aggregation methods by type:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric Type</th><th>Aggregation Methods</th></tr></thead><tbody><tr><td>Counter</td><td>count and rate</td></tr><tr><td>Gauge</td><td>value</td></tr><tr><td>Rate</td><td>rate</td></tr><tr><td>Trend</td><td>avg (average), min (minimum), max (maximum), med (median) and p(N) where N specifies the threshold percentile value, expressed as a number between 0.0 and 100. p(99.99) represents the 99.99th percentile. These values are in milliseconds.</td></tr></tbody></table>
+<p>A complex aggregation method example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Trend, Rate, Counter, Gauge } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/metrics'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> TrendRTT</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Trend</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'RTT'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> RateContentOK</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Rate</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content OK'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> GaugeContentSize</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Gauge</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'ContentSize'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> CounterErrors</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Counter</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Errors'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    // Count: No more than 99 error content returns allowed</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Errors'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'count&#x3C;100'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#6A737D">    // Gauge: Returned content must be controlled below 4000 bytes</span></span>
+<span class="line"><span style="color:#9ECBFF">    'ContentSize'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'value&#x3C;4000'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#6A737D">    // Rate: Content must reach "OK" more than 95 times</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Content OK'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'rate>0.95'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#6A737D">    // Trend: Percentiles, average, median and minimum must stay within specified millisecond ranges</span></span>
+<span class="line"><span style="color:#9ECBFF">    'RTT'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'p(99)&#x3C;300'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'p(70)&#x3C;250'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'avg&#x3C;200'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'med&#x3C;150'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'min&#x3C;100'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> contentOK</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'name'</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'Bert'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  TrendRTT.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(res.timings.duration);</span></span>
+<span class="line"><span style="color:#E1E4E8">  RateContentOK.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(contentOK);</span></span>
+<span class="line"><span style="color:#E1E4E8">  GaugeContentSize.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(res.body.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  CounterErrors.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">contentOK);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Note: Don’t specify multiple thresholds for the same metric by repeating the same object key.</p>
+<blockquote>
+<p>Since thresholds are defined as properties of JavaScript objects, you cannot specify multiple thresholds with the same property name. If you want to set multiple thresholds for one metric, specify them using an array of the same key.</p>
+</blockquote>
+<h4 id="common-threshold-examples">Common Threshold Examples</h4>
+<p>The fastest way to use thresholds is to start with built-in metrics. Here are some commonly used copy-paste examples:</p>
+<h5 id="1-percentage-of-requests-completed-within-specified-duration">1. Percentage of Requests Completed Within Specified Duration</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    // 90% of requests must complete within 400 milliseconds</span></span>
+<span class="line"><span style="color:#E1E4E8">    http_req_duration: [</span><span style="color:#9ECBFF">'p(90) &#x3C; 400'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h5 id="2-error-rate-below-1">2. Error Rate Below 1%</h5>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    // Error rate must be below 1% throughout test execution</span></span>
+<span class="line"><span style="color:#E1E4E8">    http_req_failed: [</span><span style="color:#9ECBFF">'rate&#x3C;0.01'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h5 id="3-multiple-thresholds-for-single-metric">3. Multiple Thresholds for Single Metric</h5>
+<p>We can also apply multiple thresholds to a single metric. This threshold has different duration requirements for different request percentiles.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#6A737D">    // 90% of requests must complete within 400ms, 95% within 800ms, 99.9% within 2 seconds</span></span>
+<span class="line"><span style="color:#E1E4E8">    http_req_duration: [</span><span style="color:#9ECBFF">'p(90) &#x3C; 400'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'p(95) &#x3C; 800'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'p(99.9) &#x3C; 2000'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> res1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h5 id="4-thresholds-for-duration-groups">4. Thresholds for Duration Groups</h5>
+<p>We can also set thresholds for each group. This code has groups for individual requests and batch requests. Each group has different thresholds.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { group, sleep } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'group_duration{group:::individualRequests}'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'avg &#x3C; 400'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#9ECBFF">    'group_duration{group:::batchRequests}'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'avg &#x3C; 200'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  vus: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  duration: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#B392F0">  group</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'individualRequests'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/1/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/2/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test-api.k6.io/public/crocodiles/3/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  group</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'batchRequests'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    http.</span><span style="color:#B392F0">batch</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#E1E4E8">      [</span><span style="color:#9ECBFF">'GET'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`https://test-api.k6.io/public/crocodiles/1/`</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">      [</span><span style="color:#9ECBFF">'GET'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`https://test-api.k6.io/public/crocodiles/2/`</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">      [</span><span style="color:#9ECBFF">'GET'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`https://test-api.k6.io/public/crocodiles/3/`</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="aborting-test-when-threshold-is-exceeded">Aborting Test When Threshold is Exceeded</h4>
+<p>If during testing we want to abort the test when a threshold is not met, we can use the <code>abortOnFail</code> property.</p>
+<p>Set the abortOnFail property to true. When you set abortOnFail, the test run stops as soon as the threshold fails.</p>
+<blockquote>
+<p>There’s also a special case where the test might abort before generating important data due to this threshold setting. To prevent these situations, we can use delayAbortEval to delay abortOnFail. In this script, abortOnFail is delayed by ten seconds. After ten seconds, if the p(99) &#x3C; 10 threshold is not met, the test will abort.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  thresholds: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    metric_name: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        threshold: </span><span style="color:#9ECBFF">'p(99) &#x3C; 10'</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// string</span></span>
+<span class="line"><span style="color:#E1E4E8">        abortOnFail: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// boolean</span></span>
+<span class="line"><span style="color:#E1E4E8">        delayAbortEval: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// string</span></span>
+<span class="line"><span style="color:#6A737D">        /*...*/</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>For more information about thresholds, please refer to the official documentation: <a href="https://k6.io/docs/using-k6/thresholds/">https://k6.io/docs/using-k6/thresholds/</a></p>
+<h3 id="test-lifecycle">Test Lifecycle</h3>
+<p>The lifecycle of tests in the K6 framework always executes in the same order:</p>
+<ul>
+<li><code>init</code> Initialization phase: Code in context prepares scripts, loads files, imports modules, and defines test <code>lifecycle functions</code>. Required.</li>
+<li><code>setup</code> Setup phase: Sets up test environment and generates data. Optional.</li>
+<li><code>VU</code> VU phase: Code runs in default or scenario functions, running for as long and as many times as defined by options. Required.</li>
+<li><code>teardown</code> Teardown phase: Post-processes data and closes test environment. Optional.</li>
+</ul>
+<blockquote>
+<p>Lifecycle functions: Except for initialization code, each phase occurs in lifecycle functions, which are functions called by the k6 runtime in a specific order.</p>
+</blockquote>
+<p>Here’s a complete test lifecycle example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// 1. Configure init phase (required)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // 2. Configure setup phase (optional)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // 3. Configure VU phase (required)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> teardown</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // 4. Configure teardown phase (optional)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="lifecycle-phase-overview">Lifecycle Phase Overview</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Test Phase</th><th>Purpose</th><th>Example</th><th>Number of Requests</th></tr></thead><tbody><tr><td>init Initialization phase</td><td>Load local files, import modules, declare lifecycle functions</td><td>Open JSON file, import modules</td><td>Once per VU*</td></tr><tr><td>Setup Setup phase</td><td>Set up data to process, share data between VUs</td><td>Call API to start test environment</td><td>Once</td></tr><tr><td>VU code VU code phase</td><td>Run test function, typically default</td><td>Make https requests, validate responses</td><td>Once per iteration, multiple times as needed by test options</td></tr><tr><td>Teardown Teardown phase</td><td>Process setup results, stop test environment</td><td>Verify setup has certain results, send webhook notification that test is complete</td><td>Once**</td></tr></tbody></table>
+<blockquote>
+<p><code>*</code> In cloud scripts, init code may be called more frequently. <code>**</code> If the Setup function ends abnormally (e.g., throws an error), the teardown() function will not be called. Consider adding logic to the setup() function to handle errors and ensure proper cleanup.</p>
+</blockquote>
+<h4 id="init-initialization-phase">init Initialization Phase</h4>
+<p>The necessary phase of K6 testing. This phase is used to prepare the test environment and initialize test conditions before testing.</p>
+<blockquote>
+<p>Code in the init context runs once per VU.</p>
+</blockquote>
+<p>Things that might be done in the <code>init</code> phase:</p>
+<ul>
+<li>Import modules</li>
+<li>Load files from local file system</li>
+<li>Configure all options for testing</li>
+<li>Define lifecycle functions for VU, setup and teardown phases (and custom or handleSummary() functions)</li>
+</ul>
+<blockquote>
+<p>Code in the init context always executes first</p>
+</blockquote>
+<h4 id="vu-phase">VU Phase</h4>
+<p>The VU phase is the core of testing. In this phase, code runs in default or scenario functions, running for as long and as many times as defined by options.</p>
+<p>Q&#x26;A about the VU phase:</p>
+<ul>
+<li>
+<ol>
+<li>Why have a VU phase?</li>
+</ol>
+<ul>
+<li>The VU phase is the core of testing, and scripts must contain at least one scenario function that defines VU logic. Code inside this function is VU code.</li>
+<li>The VU phase is the actual test code, so VU phase code is executed multiple times, as many times as defined by options.</li>
+</ul>
+</li>
+<li>
+<ol start="2">
+<li>Why separate init phase and VU phase?</li>
+</ol>
+<ul>
+<li>Separating the init phase from the VU phase eliminates irrelevant calculations in VU code, improving k6 performance and making test results more reliable. One limitation of init code is that it cannot make HTTP requests. This limitation ensures that the init phase is reproducible in tests (protocol request responses are dynamic and unpredictable).</li>
+<li>Separating the init phase from the VU phase makes VU phase code more concise and focused on test logic.</li>
+</ul>
+</li>
+<li>
+<ol start="3">
+<li>Understanding the default function lifecycle of the VU phase</li>
+</ol>
+<ul>
+<li>VUs execute the default() function sequentially from start to finish. Once a VU reaches the end of the function, it loops back to the beginning and re-executes the code.</li>
+<li>As part of this “restart” process, k6 resets the VU. Cookies are cleared, TCP connections may be disconnected (depending on our test configuration options).</li>
+</ul>
+</li>
+</ul>
+<h4 id="setup-and-teardown-phases">Setup and Teardown Phases</h4>
+<p>Setup and teardown phases are optional. Both phases run before and after the VU phase.</p>
+<p>Like default, setup and teardown functions must be exported functions. But unlike the default function, k6 calls setup and teardown only once per test.</p>
+<ul>
+<li>setup is called at the start of the test, after the init phase but before the VU phase.</li>
+<li>teardown is called at the end of the test, after the VU phase (default function).</li>
+<li>Unlike the init phase, you can call the full k6 API in setup and teardown phases.</li>
+</ul>
+<p>For more information about K6 test lifecycle, please refer to the official documentation: <a href="https://k6.io/docs/using-k6/test-life-cycle/">https://k6.io/docs/using-k6/test-life-cycle/</a></p>
+<h3 id="scenarios">Scenarios</h3>
+<p>In K6 test scripts, you can define multiple test scenarios, each with its own configuration items, such as VU count, duration, etc.</p>
+<p>Test scenarios can configure VU and iteration plans in detail. Through test scenario configuration, we can better customize different workloads or traffic patterns in performance testing according to business needs.</p>
+<p>Benefits of using test scenario configuration:</p>
+<ul>
+<li>Simpler, more flexible test organization. You can define multiple test scenarios in the same script, each executing different JavaScript functions independently.</li>
+<li>Simulate more realistic traffic situations. Each test scenario can use different virtual user (VU) and iteration scheduling patterns, supported by specially designed executors.</li>
+<li>Parallel or sequential workloads. Individual scenarios run independently in parallel, although they can appear to run sequentially by carefully setting each scenario’s startTime property.</li>
+<li>Nuanced results analysis. Different environment variables and metric tags can be set for each scenario.</li>
+</ul>
+<h4 id="test-scenario-configuration">Test Scenario Configuration</h4>
+<p>We can configure specific scenario plans using the scenarios key in the options object in code. You can also specify any name for scenarios, as long as each scenario name in the script is unique.</p>
+<p>Scenario configuration example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  scenarios: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    example_scenario: {</span></span>
+<span class="line"><span style="color:#6A737D">      // Executor name to use</span></span>
+<span class="line"><span style="color:#E1E4E8">      executor: </span><span style="color:#9ECBFF">'shared-iterations'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      // Common scenario configuration</span></span>
+<span class="line"><span style="color:#E1E4E8">      startTime: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      gracefulStop: </span><span style="color:#9ECBFF">'5s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      env: { EXAMPLEVAR: </span><span style="color:#9ECBFF">'testing'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">      tags: { example_tag: </span><span style="color:#9ECBFF">'testing'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      // Executor-related special configuration</span></span>
+<span class="line"><span style="color:#E1E4E8">      vus: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      iterations: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      maxDuration: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    another_scenario: {</span></span>
+<span class="line"><span style="color:#6A737D">      /*...*/</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h4 id="test-scenario-executors">Test Scenario Executors</h4>
+<p>For each k6 scenario, VU (virtual user) workload is scheduled by executors. Executors configure test run duration, whether traffic remains constant or changes, and whether workload is modeled by VUs or arrival rate (i.e., open or closed model).</p>
+<p>The test scenario object we set must define the executor property and choose one of the predefined executor names. The executor you choose determines how k6 models the load. Options include:</p>
+<ul>
+<li>
+<p>By iteration count:</p>
+<ul>
+<li>shared-iterations shares iterations among VUs</li>
+<li>per-vu-iterations lets each VU run configured iterations</li>
+</ul>
+</li>
+<li>
+<p>By VU count:</p>
+<ul>
+<li>constant-VUs sends VUs in constant numbers</li>
+<li>ramping-vus increases VU count according to stages you configure</li>
+</ul>
+</li>
+<li>
+<p>By iteration rate:</p>
+<ul>
+<li>constant-arrival-rate starts iterations at a constant rate</li>
+<li>ramping-arrival-rate increases iteration rate according to stages you configure</li>
+</ul>
+</li>
+</ul>
+<p>Besides these common scenario options, each executor object has additional options specific to its workload. Click <a href="https://grafana.com/docs/k6/latest/using-k6/scenarios/executors">Executors</a> for more information.</p>
+<h4 id="test-scenario-configuration-options">Test Scenario Configuration Options</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Option Name</th><th>Type</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td>executor (required)</td><td>string</td><td>Unique executor name</td><td>-</td></tr><tr><td>startTime</td><td>string</td><td>Time offset from test start when this scenario should begin execution</td><td>”0s”</td></tr><tr><td>gracefulStop</td><td>string</td><td>Time to wait for iterations to complete execution before forcibly stopping</td><td>”30s”</td></tr><tr><td>exec</td><td>string</td><td>Name of exported JS function to execute</td><td>”default”</td></tr><tr><td>env</td><td>object</td><td>Environment variables specific to this scenario</td><td>{}</td></tr><tr><td>tags</td><td>object</td><td>Tags specific to this scenario</td><td>{}</td></tr></tbody></table>
+<h4 id="test-scenario-example">Test Scenario Example</h4>
+<p>The test scenario demo script combines two scenarios and executes them sequentially:</p>
+<ul>
+<li>shared_iter_scenario starts immediately. 10 VUs attempt to use 100 iterations as quickly as possible (some VUs may use more iterations than others).</li>
+<li>per_vu_scenario starts after 10 seconds. In this case, ten VUs each run ten iterations.</li>
+</ul>
+<p>Example code:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> http </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'k6/http'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  scenarios: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    shared_iter_scenario: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      executor: </span><span style="color:#9ECBFF">'shared-iterations'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      vus: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      iterations: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      startTime: </span><span style="color:#9ECBFF">'0s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    per_vu_scenario: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      executor: </span><span style="color:#9ECBFF">'per-vu-iterations'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      vus: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      iterations: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      startTime: </span><span style="color:#9ECBFF">'10s'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.k6.io/'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Running the scenario demo script, you can see the following results:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png" alt=" "></p>
+<p>Observing the test results, you’ll find that in addition to regular test results, the k6 output will include detailed result information about demo scenarios (very detailed metric information for both shared_iter_scenario and per_vu_scenario scenarios).</p>
+<p>For more information about test scenarios, please refer to the official documentation: <a href="https://k6.io/docs/using-k6/scenarios/">https://k6.io/docs/using-k6/scenarios/</a></p>
+<h2 id="reference-documentation">Reference Documentation</h2>
+<ul>
+<li><a href="https://k6.io/docs/">K6 Documentation</a></li>
+<li><a href="https://k6.io/">k6 Official Website</a></li>
+<li><a href="https://github.com/Automation-Test-Starter/K6-Performance-Test-starter">K6 Performance Test Quick Start Project</a></li>
+<li><a href="https://naodeng.com.cn/posts/performance-testing/k6-tutorial-common-functions-1-http-request-metrics-and-checks/">K6 Performance Testing Tutorial: Common Functions (1) - HTTP Requests, Metrics and Checks</a></li>
+</ul>
+<hr>
+<p>Welcome to follow the WeChat official account “<strong>Software Testing Classmate</strong>” for original QA technical articles pushed first.</p> </div> <!-- 前后导航 --> <nav class="guild-pagination" aria-label="Article navigation" data-astro-cid-lkrhrxut> <a href="/en/guild/performance-testing/k6/http-request-and-checks/" class="guild-pagination-link guild-pagination-prev" data-astro-cid-lkrhrxut> <span class="guild-pagination-label" data-astro-cid-lkrhrxut>Previous</span> <span class="guild-pagination-title" data-astro-cid-lkrhrxut>K6 Performance Testing Tutorial: Common Functions (1) - HTTP Request, Metrics and Checks</span> </a> <a href="/en/guild/performance-testing/k6/writing-test-scripts/" class="guild-pagination-link guild-pagination-next" data-astro-cid-lkrhrxut> <span class="guild-pagination-label" data-astro-cid-lkrhrxut>Next</span> <span class="guild-pagination-title" data-astro-cid-lkrhrxut>K6 Performance Testing Tutorial - Advanced Usage: How to Quickly Write K6 Performance Test Scripts</span> </a> </nav> </article> <section class="giscus-section" aria-label="Comments" data-astro-cid-an2nl7ar><div class="giscus" data-astro-cid-an2nl7ar></div><script src="https://giscus.app/client.js" data-repo="naodeng/naodeng.com.cn" data-repo-id="R_kgDOHntNtg" data-category="Show and tell" data-category-id="DIC_kwDOHntNts4Cavst" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></section>  </div> <aside class="docs-toc-wrap" data-astro-cid-ac2mn7rr> <aside class="toc-sidebar toc-sidebar--right" aria-label="On this page" data-astro-cid-xvrfupwn><nav class="toc-nav" data-astro-cid-xvrfupwn><h2 class="toc-title" data-astro-cid-xvrfupwn>On this page</h2><ul class="toc-list" data-astro-cid-xvrfupwn><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#k6-common-functions" class="toc-link" data-astro-cid-xvrfupwn>K6 Common Functions</a></li><li class="toc-item" style="--depth: 2" data-astro-cid-xvrfupwn><a href="#reference-documentation" class="toc-link" data-astro-cid-xvrfupwn>Reference Documentation</a></li></ul></nav></aside><script type="module">function d(){const t=document.querySelector(".toc-sidebar--left"),a=t?.closest(".article-with-toc"),u=document.querySelector(".article-main"),l=document.querySelector(".l-footer");if(!t||!a)return;const i=a.getBoundingClientRect(),w=i.top>=window.innerHeight,h=i.bottom>0&&i.top<window.innerHeight;if(w){t.style.position="absolute",t.style.top="0",t.style.bottom="";return}t.style.position="fixed";const o=document.querySelector(".article-title-header, #article-title-header"),r=o?o.getBoundingClientRect().top:i.top,n=h?Math.max(16,r):16;t.style.top=n+"px";let e;if(h){const c=i.bottom<window.innerHeight;u&&c?e=Math.max(16,window.innerHeight-i.bottom):e=288;const s=Math.max(200,Math.floor(window.innerHeight*.7));window.innerHeight-n-e<s&&(e=Math.max(16,window.innerHeight-n-s))}else e=288;if(l){const c=l.getBoundingClientRect(),s=window.innerHeight-c.top+8;e=Math.max(e,s)}else e=Math.max(e,288);t.style.bottom=e+"px"}function g(){const t=document.querySelector(".toc-sidebar"),a=document.querySelector(".article-main");if(!t||!a)return;const u=t.querySelectorAll(".toc-link"),l=a.querySelectorAll("h2[id], h3[id], h4[id]");if(u.length===0||l.length===0)return;const i=o=>{let r=null;u.forEach(c=>{const f=c.getAttribute("href")===`#${o}`;c.setAttribute("aria-current",f?"true":"false"),f&&(r=c)});const n=document.querySelector(".l-footer"),e=n&&n.getBoundingClientRect().top<window.innerHeight;r&&!e&&t.scrollHeight>t.clientHeight&&r.scrollIntoView({block:"nearest",behavior:"smooth"})},w=new IntersectionObserver(o=>{const r=o.filter(n=>n.isIntersecting).sort((n,e)=>{const c=(n.boundingClientRect?.top??0)+window.scrollY,s=(e.boundingClientRect?.top??0)+window.scrollY;return c-s});r.length>0&&i(r[0].target.id)},{rootMargin:"-80px 0px -66% 0px",threshold:0});l.forEach(o=>w.observe(o));const h=Array.from(l).find(o=>o.getBoundingClientRect().top<=window.innerHeight*.5);i(h?.id??l[0]?.id??null)}function m(){d(),g()}document.addEventListener("DOMContentLoaded",m);window.addEventListener("load",d);window.addEventListener("load",()=>setTimeout(d,50));window.addEventListener("scroll",()=>d(),{passive:!0});window.addEventListener("resize",()=>d());typeof ResizeObserver<"u"&&document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".article-with-toc");t&&new ResizeObserver(()=>d()).observe(t)});</script> </aside> </div>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/zh-cn/guild/performance-testing/k6/thresholds-and-scenarios/" class="social-icon lang-toggle" title="切换至中文" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>ZH</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/en/about/" data-astro-cid-sz7xmlte>About</a> <a href="/en/archive/" data-astro-cid-sz7xmlte>Archive</a> <a href="/en/projects/" data-astro-cid-sz7xmlte>Projects</a> <a href="/en/series/" data-astro-cid-sz7xmlte>Series</a> <a href="/en/tags/" data-astro-cid-sz7xmlte>Tags</a> <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>QA Wiki</a> <a href="/en/guild/" data-astro-cid-sz7xmlte>Automation Testing Guild</a> <a href="/en/sponsor/" data-astro-cid-sz7xmlte>Support</a> <a href="/en/copyright/" data-astro-cid-sz7xmlte>Copyright</a> <a href="/en/privacy/" data-astro-cid-sz7xmlte>Privacy</a> <a href="/en/links/" data-astro-cid-sz7xmlte>Friends</a> <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Status</a> <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Analytics</a> <a href="/en/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>RSS Feed</a> <a href="/en/sitemap/" data-astro-cid-sz7xmlte>Sitemap</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <p class="footer-slogan" data-astro-cid-sz7xmlte>Quality Analyst, Not Quality Assurance.</p> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 Nao&#39;s Blog </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/en/copyright/" class="license-link" data-astro-cid-sz7xmlte>Licensed under CC BY-NC-SA 4.0</a> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>Built with Astro &amp; Cloudflare &amp; Github &amp; AI</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="Search posts…" data-algolia-key="7bf4a2b4e4f0c324b0cca574ab137f6a" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>Search posts…</label> <input id="search-input" type="search" class="search-input" placeholder="Search posts…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <div class="search-hint-row" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K or Ctrl+K to open search</span> <p class="search-algolia-badge" data-astro-cid-qk3db3zz> <a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer" class="search-algolia-link" aria-label="Search by Algolia" data-astro-cid-qk3db3zz> <span class="search-algolia-icon" aria-hidden="true" data-astro-cid-qk3db3zz> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qk3db3zz> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" data-astro-cid-qk3db3zz></path> </svg> </span> <span class="search-algolia-text" data-astro-cid-qk3db3zz><span class="search-algolia-by" data-astro-cid-qk3db3zz>Search by</span> Algolia</span> </a> </p> </div> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>No results.</p> </dialog> <script>(function(){const useAlgolia = true;
+const algoliaAppId = "5L1S6UUZVF";
+const algoliaIndexName = "inaodeng_com_5l1s6uuzvf_pages";
+
+  /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
+  const backdrop = document.querySelector(".search-backdrop[data-close]");
+  const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
+
+  let index = [];
+  let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
+
+  function getLocale() {
+    const el = document.documentElement.getAttribute("data-locale");
+    return el === "zh-cn" ? "zh-cn" : "en";
+  }
+
+  async function loadIndex() {
+    if (index.length > 0) return index;
+    locale = getLocale();
+    const res = await fetch(`/${locale}/search-index.json`);
+    if (!res.ok) return [];
+    index = await res.json();
+    return index;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
+    resultsEl.innerHTML = "";
+    resultsEl.hidden = items.length === 0;
+    emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    items.slice(0, 20).forEach((item) => {
+      const a = document.createElement("a");
+      const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
+      a.href = url;
+      a.className = "search-result-item";
+      a.setAttribute("role", "listitem");
+      const dateStr = new Date(item.date).toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      a.innerHTML = `
+        <span class="search-result-title">${escapeHtml(item.title)}</span>
+        <span class="search-result-meta">${escapeHtml(dateStr)}${item.tags?.length ? " · " + item.tags.slice(0, 3).join(", ") : ""}</span>
+      `;
+      resultsEl.appendChild(a);
+    });
+  }
+
+  // 使用事件委托：在结果容器上统一处理点击（解决鼠标点链接/内层 span 不跳转的问题）
+  resultsEl.addEventListener("click", (e) => {
+    const a = e.target.closest("a.search-result-item");
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const url = a.getAttribute("href");
+    if (!url) return;
+    dialog.close();
+    setTimeout(function () {
+      window.location.assign(url);
+    }, 80);
+  });
+
+  function filter(q) {
+    const lower = q.trim().toLowerCase();
+    if (!lower) return [];
+    return index.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lower) ||
+        item.description.toLowerCase().includes(lower) ||
+        (item.tags && item.tags.some((t) => t.toLowerCase().includes(lower)))
+    );
+  }
+
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      // is:inline 脚本未打包，从 ESM CDN 加载
+      const mod = await import("https://esm.sh/algoliasearch@5");
+      const { algoliasearch } = mod;
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        hitsPerPage: 30,
+      },
+    });
+    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
+    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
+    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
+  }
+
+  function onInput() {
+    const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false, false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) {
+            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
+            renderItems(items, true, true);
+          }
+        } catch (err) {
+          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
+        }
+      }, 200);
+      return;
+    }
+
+    if (!index.length) {
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      return;
+    }
+    const items = filter(q);
+    renderItems(items, hasQuery, false);
+  }
+
+  function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
+    loadIndex().then(() => {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+    });
+  }
+
+  function closeSearch() {
+    dialog.close();
+    if (hintEl) hintEl.style.display = "";
+  }
+
+  dialog.addEventListener("close", () => {
+    if (hintEl) hintEl.style.display = "";
+  });
+
+  dialog.addEventListener("cancel", closeSearch);
+
+  backdrop?.addEventListener("click", closeSearch);
+
+  input.addEventListener("input", onInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "Enter") {
+      const first = resultsEl.querySelector(".search-result-item");
+      if (first) {
+        first.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      if (dialog.open) closeSearch();
+      else openSearch();
+    }
+  });
+
+  document.querySelectorAll("[data-search-open]").forEach((el) => {
+    el.addEventListener("click", openSearch);
+  });
+
+  window.addEventListener("search-open", openSearch);
+})();</script>    </body> </html>  

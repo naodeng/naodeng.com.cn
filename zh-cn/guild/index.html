@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="zh-CN" data-locale="zh-cn"> <head><meta charset="UTF-8"><title>测试自动化指南 | 软件测试同学</title><meta name="description" content="系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试"><meta name="keywords" content="软件测试, 质量分析, 自动化测试, 接口测试, 性能测试, 敏捷测试, 测试自动化, inaodeng, naodeng"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="author" content="Nao Deng"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><link rel="canonical" href="https://inaodeng.com/zh-cn/guild/"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.17.0"><link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/guild/"><link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/guild/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/guild/"><link rel="alternate" type="application/rss+xml" title="RSS - 软件测试同学" href="https://inaodeng.com/zh-cn/rss.xml/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" sizes="192x192" href="/android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="color-scheme" content="light dark"><meta name="algolia-site-verification" content="B0319275B670BBB0"><meta property="og:type" content="website"><meta property="og:title" content="测试自动化指南 | 软件测试同学"><meta property="og:site_name" content="软件测试同学"><meta property="og:description" content="系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试"><meta property="og:image" content="https://inaodeng.com/ogp.png"><meta property="og:image:alt" content="测试自动化指南"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://inaodeng.com/zh-cn/guild/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@inaodeng"><meta name="twitter:title" content="测试自动化指南 | 软件测试同学"><meta name="twitter:description" content="系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试"><meta name="twitter:image" content="https://inaodeng.com/ogp.png"><meta name="twitter:image:alt" content="测试自动化指南"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload="this.media='all'"><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload="this.media='all'"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"软件测试同学","description":"系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试","url":"https://inaodeng.com","inLanguage":["zh-CN"],"publisher":{"@type":"Organization","name":"软件测试同学","url":"https://inaodeng.com","logo":{"@type":"ImageObject","url":"https://inaodeng.com/ogp.png","width":1200,"height":630}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://inaodeng.com/zh-cn/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nao Deng","url":"https://inaodeng.com","sameAs":["https://github.com/naodeng","https://x.com/inaodeng","https://naodeng.medium.com/","https://weibo.com/u/1651778270","https://ko-fi.com/naodeng"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://inaodeng.com/zh-cn/"},{"@type":"ListItem","position":2,"name":"指南","item":"https://inaodeng.com/zh-cn/guild/"}]}</script><link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;800&display=swap"><style>
+      body {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+    </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FSJSZ2E3B9"></script><script>(function(){const gaId = "G-FSJSZ2E3B9";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834" crossorigin="anonymous"></script><!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) --><script id="counterscale-script" data-site-id="inaodeng.com" src="https://analytics.inaodeng.com/tracker.js" defer></script><link rel="stylesheet" href="/_astro/index.CAOo77FP.css">
+<link rel="stylesheet" href="/_astro/_id_.DKZjF0rP.css">
+<style>.guild-page[data-astro-cid-i4nqph4g]{min-height:100vh}.guild-container[data-astro-cid-i4nqph4g]{max-width:1200px;margin:0 auto;padding:2rem}.guild-content[data-astro-cid-i4nqph4g]{margin-top:2rem}.guild-content__title[data-astro-cid-i4nqph4g]{font-size:2rem;font-weight:800;color:var(--color-main);text-align:center;margin:0 0 1rem}.guild-content__description[data-astro-cid-i4nqph4g]{font-size:1.125rem;line-height:1.8;color:var(--color-main);opacity:.75;text-align:center;max-width:800px;margin:0 auto 3rem}@media(max-width:768px){.guild-container[data-astro-cid-i4nqph4g]{padding:1rem}.guild-content[data-astro-cid-i4nqph4g]{margin-top:3rem}.guild-content__title[data-astro-cid-i4nqph4g]{font-size:1.5rem}.guild-content__description[data-astro-cid-i4nqph4g]{font-size:1rem;margin-bottom:2rem}}
+</style></head> <body> <a href="#main" class="skip-link">跳到主内容</a> <div id="js-languageSuggest" data-astro-cid-onlux7ho> <a id="js-link" href="#" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>autorenew</span> <span id="js-linkText" data-astro-cid-onlux7ho></span> </a> <button id="js-close" data-astro-cid-onlux7ho> <span class="material-icons-sharp" data-astro-cid-onlux7ho>close</span> </button> </div> <script>(function(){const currentLocale = "zh-cn";
+const LOCALES = {"en":{"label":"English","lang":"en-US"},"zh-cn":{"label":"简体中文","lang":"zh-CN"}};
+
+  const browserLang = navigator.language.toLowerCase();
+  const suggest = document.getElementById("js-languageSuggest");
+
+  const showSuggest = (lang) => {
+    const pathnames = location.pathname.split("/");
+    const link = document.getElementById("js-link");
+    const linkText = document.getElementById("js-linkText");
+    pathnames[1] = lang;
+    link.href = pathnames.join("/");
+    linkText.innerText = LOCALES[lang].label;
+    suggest.style.display = "block";
+  };
+
+  if (
+    currentLocale === browserLang ||
+    currentLocale === browserLang.split("-")[0] ||
+    localStorage.languageSuggestDenied ||
+    localStorage.selectedLang
+  ) {
+    return;
+  } else if (Object.keys(LOCALES).includes(browserLang)) {
+    showSuggest(browserLang);
+  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+    showSuggest(browserLang.split("-")[0]);
+  }
+
+  document.getElementById("js-close").addEventListener("click", () => {
+    suggest.style.display = "none";
+    localStorage.languageSuggestDenied = true;
+  });
+})();</script>  <header class="l-header" data-astro-cid-3ef6ksr2> <div class="site-brand" data-astro-cid-3ef6ksr2> <h1 dir="ltr" data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>软件测试同学</span> </a> </h1> <p class="site-slogan" data-astro-cid-3ef6ksr2>质量分析师，而非质量保证师。</p> </div> <nav class="l-content" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/" data-astro-cid-3ef6ksr2> 首页 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/blog/" data-astro-cid-3ef6ksr2> 博客 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/wiki/" data-astro-cid-3ef6ksr2> 百科 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/guild/" class="active" data-astro-cid-3ef6ksr2> 指南 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/archive/" data-astro-cid-3ef6ksr2> 归档 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/projects/" data-astro-cid-3ef6ksr2> 项目 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/sponsor/" data-astro-cid-3ef6ksr2> 支持 </a> </li> <li data-astro-cid-3ef6ksr2> <a href="/zh-cn/about/" data-astro-cid-3ef6ksr2> 关于 </a> </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <div class="locale-dropdown compact" data-locale-dropdown data-astro-cid-opxux4jt> <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger data-astro-cid-opxux4jt> <span class="material-icons-sharp icon-lang" aria-hidden="true" data-astro-cid-opxux4jt>translate</span> <span class="locale-flag" data-astro-cid-opxux4jt>🇨🇳</span>  </button> <div class="locale-panel" hidden data-locale-panel data-astro-cid-opxux4jt> <ul data-astro-cid-opxux4jt> <li data-astro-cid-opxux4jt> <a href="/en/guild/" data-lang="en" data-locale-option data-astro-cid-opxux4jt> English </a> </li><li data-astro-cid-opxux4jt> <a href="/zh-cn/guild/" data-lang="zh-cn" data-locale-option data-astro-cid-opxux4jt> 简体中文 </a> </li> </ul> </div> </div> <script type="module">function r(e){const n=e.querySelector("[data-locale-trigger]"),a=e.querySelector("[data-locale-panel]");if(!n||!a)return;const c=()=>{a.hidden=!0,n.setAttribute("aria-expanded","false")},d=()=>{a.hidden=!1,n.setAttribute("aria-expanded","true")},o=()=>a.hidden?d():c();n.addEventListener("click",t=>{t.stopPropagation(),o()}),e.querySelectorAll("[data-locale-option]").forEach(t=>{t.addEventListener("click",()=>{const l=t.dataset.lang;l&&localStorage.setItem("selectedLang",l)})}),document.addEventListener("click",t=>{a.hidden||e.contains(t.target)||c()})}document.querySelectorAll("[data-locale-dropdown]").forEach(e=>r(e));</script>  </li> <li class="nav-tool" data-astro-cid-3ef6ksr2> <button type="button" class="btn-icon" aria-label="搜索" title="⌘K 或 Ctrl+K 打开搜索" data-search-open data-astro-cid-3ef6ksr2> <span class="material-icons-sharp" aria-hidden="true" data-astro-cid-3ef6ksr2>search</span> <span class="btn-icon-kbd" data-astro-cid-3ef6ksr2>⌘K</span> </button> </li> </ul> </nav> </header>  <main id="main" class="l-main l-content">  <div class="guild-page" data-astro-cid-i4nqph4g> <div class="guild-container" data-astro-cid-i4nqph4g> <div class="guild-hero" data-astro-cid-wj3afe2m> <div class="guild-hero__content" data-astro-cid-wj3afe2m> <div class="guild-hero__tagline" data-astro-cid-wj3afe2m>🚀 让自动化测试成为你的超能力</div> <h1 class="guild-hero__title" data-astro-cid-wj3afe2m>测试自动化指南</h1> <p class="guild-hero__subtitle" data-astro-cid-wj3afe2m>系统化的测试自动化学习路径</p> <p class="guild-hero__description" data-astro-cid-wj3afe2m>从入门到进阶，涵盖接口测试、UI测试和性能测试。选择你感兴趣的框架，开始你的自动化测试之旅。</p> <div class="guild-hero__stats" data-astro-cid-wj3afe2m> <div class="stat-item" data-astro-cid-wj3afe2m> <div class="stat-item__value" data-astro-cid-wj3afe2m>3</div> <div class="stat-item__label" data-astro-cid-wj3afe2m>测试类型</div> </div> <div class="stat-item" data-astro-cid-wj3afe2m> <div class="stat-item__value" data-astro-cid-wj3afe2m>9</div> <div class="stat-item__label" data-astro-cid-wj3afe2m>测试框架</div> </div> <div class="stat-item" data-astro-cid-wj3afe2m> <div class="stat-item__value" data-astro-cid-wj3afe2m>60+</div> <div class="stat-item__label" data-astro-cid-wj3afe2m>学习路径</div> </div> </div> </div> <div class="guild-hero__decoration" aria-hidden="true" data-astro-cid-wj3afe2m> <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" data-astro-cid-wj3afe2m> <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.2C64.8,55.2,53.8,66.6,40.3,73.8C26.8,81,10.8,84,-5.3,83.3C-21.4,82.6,-42.8,78.2,-58.4,68.4C-74,58.6,-83.8,43.4,-88.3,26.8C-92.8,10.2,-92,-7.8,-86.1,-23.9C-80.2,-40,-69.2,-54.2,-55.3,-61.5C-41.4,-68.8,-24.6,-69.2,-9.1,-72.8C6.4,-76.4,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" data-astro-cid-wj3afe2m></path> </svg> </div> </div>  <div class="guild-content" data-astro-cid-i4nqph4g> <h2 class="guild-content__title" data-astro-cid-i4nqph4g>📚 测试框架学习路径</h2> <p class="guild-content__description" data-astro-cid-i4nqph4g>
+选择你感兴趣的测试类型和框架，开始系统化的学习之旅。每个框架都提供从入门到进阶的完整学习路径。
+</p> <section class="test-type-section" id="api-testing" data-astro-cid-vbukb7nh> <div class="test-type-section__header" data-astro-cid-vbukb7nh> <span class="test-type-section__icon" aria-hidden="true" data-astro-cid-vbukb7nh>🔌</span> <div data-astro-cid-vbukb7nh> <h2 class="test-type-section__title" data-astro-cid-vbukb7nh>接口自动化测试</h2> <p class="test-type-section__description" data-astro-cid-vbukb7nh>学习如何使用各种框架进行 API 自动化测试</p> </div> </div> <div class="test-type-section__frameworks" data-astro-cid-vbukb7nh> <div class="framework-card" style="--framework-color: #FF6C37" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/api-testing/postman/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://cdn.worldvectorlogo.com/logos/postman.svg" alt="Postman + Newman logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>Postman + Newman</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>JavaScript</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>最流行的 API 测试工具，支持可视化测试和命令行执行</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/Postman-API-Test-Starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://learning.postman.com/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/api-testing/postman/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div> <div class="framework-card" style="--framework-color: #0A9EDC" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/api-testing/pytest/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Pytest_logo.svg" alt="Pytest + Requests logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>Pytest + Requests</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>Python</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>Python 生态最流行的测试框架，结合 Requests 进行 API 测试</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://docs.pytest.org/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/api-testing/pytest/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div> <div class="framework-card" style="--framework-color: #007396" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/api-testing/rest-assured/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Rest Assured logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>Rest Assured</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>Java</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>Java 领域最强大的 REST API 测试框架</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://rest-assured.io/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/api-testing/rest-assured/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div> <div class="framework-card" style="--framework-color: #68A063" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/api-testing/supertest/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="SuperTest logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>SuperTest</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>JavaScript/TypeScript</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>基于 Node.js 的 HTTP 断言库，适合测试 Express/Koa 应用</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://github.com/ladjs/supertest" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/api-testing/supertest/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div> <div class="framework-card" style="--framework-color: #F59E0B" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/api-testing/bruno/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://raw.githubusercontent.com/usebruno/bruno/main/assets/images/logo-transparent.png" alt="Bruno logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>Bruno</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>JavaScript</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>开源的 API 客户端，支持离线使用和 Git 友好</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://www.usebruno.com/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/api-testing/bruno/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div>  </div> </section> <section class="test-type-section" id="performance-testing" data-astro-cid-vbukb7nh> <div class="test-type-section__header" data-astro-cid-vbukb7nh> <span class="test-type-section__icon" aria-hidden="true" data-astro-cid-vbukb7nh>⚡</span> <div data-astro-cid-vbukb7nh> <h2 class="test-type-section__title" data-astro-cid-vbukb7nh>性能测试</h2> <p class="test-type-section__description" data-astro-cid-vbukb7nh>学习如何进行性能测试和压力测试</p> </div> </div> <div class="test-type-section__frameworks" data-astro-cid-vbukb7nh> <div class="framework-card" style="--framework-color: #7D64FF" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/performance-testing/k6/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/k6/k6-original.svg" alt="K6 logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>K6</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>JavaScript</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>现代化的负载测试工具，开发者友好</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/K6-Performance-Test-starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://k6.io/docs/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/performance-testing/k6/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div> <div class="framework-card" style="--framework-color: #FF9E2A" data-astro-cid-4sh36yzt> <a href="/zh-cn/guild/performance-testing/gatling/" class="framework-card__main" data-astro-cid-4sh36yzt> <div class="framework-card__header" data-astro-cid-4sh36yzt> <div class="framework-card__icon" data-astro-cid-4sh36yzt> <img src="https://cdn.prod.website-files.com/685a8fe4ddca049f26333871/685d6a0e417481e14f3eb1f6_Gatling.webp" alt="Gatling logo" loading="lazy" data-astro-cid-4sh36yzt> </div> <div class="framework-card__title" data-astro-cid-4sh36yzt> <h3 data-astro-cid-4sh36yzt>Gatling</h3> <span class="framework-card__language" data-astro-cid-4sh36yzt>Scala/Java</span> </div> </div> <p class="framework-card__description" data-astro-cid-4sh36yzt>强大的性能测试工具，支持高并发场景</p> </a> <div class="framework-card__links" data-astro-cid-4sh36yzt> <a href="https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="GitHub Demo" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-4sh36yzt></path> </svg>
+Demo
+</a> <a href="https://gatling.io/docs/" target="_blank" rel="noopener noreferrer" class="framework-card__link" title="Official Docs" data-astro-cid-4sh36yzt> <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z" data-astro-cid-4sh36yzt></path> <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z" data-astro-cid-4sh36yzt></path> </svg>
+Docs
+</a> <a href="/zh-cn/guild/performance-testing/gatling/" class="framework-card__link framework-card__link--primary" data-astro-cid-4sh36yzt> 开始学习 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" data-astro-cid-4sh36yzt> <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" data-astro-cid-4sh36yzt></path> </svg> </a> </div> </div>  </div> </section>  </div> <section class="guild-features" data-astro-cid-eps56rne> <h2 class="guild-features__title" data-astro-cid-eps56rne>🎯 核心特性</h2> <div class="guild-features__grid" data-astro-cid-eps56rne> <div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>📚</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>全生命周期覆盖</h3> <p class="feature-card__description" data-astro-cid-eps56rne>从环境搭建到 CI/CD 集成的完整学习路径</p> </div><div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>🌐</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>多语言支持</h3> <p class="feature-card__description" data-astro-cid-eps56rne>支持 JavaScript、Python、Java 等主流编程语言</p> </div><div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>📖</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>完整版 + 精简版</h3> <p class="feature-card__description" data-astro-cid-eps56rne>每个框架都提供详细教程和快速入门指南</p> </div><div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>💡</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>实战导向</h3> <p class="feature-card__description" data-astro-cid-eps56rne>提供 GitHub Demo 项目和最佳实践指导</p> </div><div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>🚀</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>持续更新</h3> <p class="feature-card__description" data-astro-cid-eps56rne>跟随技术发展，持续更新内容和示例</p> </div><div class="feature-card" data-astro-cid-eps56rne> <div class="feature-card__icon" data-astro-cid-eps56rne>🔧</div> <h3 class="feature-card__title" data-astro-cid-eps56rne>可扩展性好</h3> <p class="feature-card__description" data-astro-cid-eps56rne>模块化设计，便于学习和实践应用</p> </div> </div> </section>  <section class="learning-workflow" data-astro-cid-6u7pwkts> <div class="learning-workflow__header" data-astro-cid-6u7pwkts> <h2 class="learning-workflow__title" data-astro-cid-6u7pwkts>🔄 学习工作流程</h2> <p class="learning-workflow__subtitle" data-astro-cid-6u7pwkts>三步开始你的自动化测试之旅</p> </div> <div class="workflow-steps" data-astro-cid-6u7pwkts> <div class="workflow-step" data-astro-cid-6u7pwkts> <div class="workflow-step__number" data-astro-cid-6u7pwkts>1</div> <div class="workflow-step__content" data-astro-cid-6u7pwkts> <h3 class="workflow-step__title" data-astro-cid-6u7pwkts>选择测试框架</h3> <p class="workflow-step__description" data-astro-cid-6u7pwkts>根据你的技术栈和测试需求，选择对应的测试框架</p> <ul class="workflow-step__details" data-astro-cid-6u7pwkts> <li data-astro-cid-6u7pwkts>接口测试：Postman、Pytest、Rest Assured 等</li><li data-astro-cid-6u7pwkts>UI 测试：Playwright、Cypress 等</li><li data-astro-cid-6u7pwkts>性能测试：K6、Gatling 等</li> </ul> </div> <div class="workflow-step__arrow" aria-hidden="true" data-astro-cid-6u7pwkts> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-6u7pwkts> <path d="M5 12h14M12 5l7 7-7 7" data-astro-cid-6u7pwkts></path> </svg> </div> </div><div class="workflow-step" data-astro-cid-6u7pwkts> <div class="workflow-step__number" data-astro-cid-6u7pwkts>2</div> <div class="workflow-step__content" data-astro-cid-6u7pwkts> <h3 class="workflow-step__title" data-astro-cid-6u7pwkts>跟随学习路径</h3> <p class="workflow-step__description" data-astro-cid-6u7pwkts>按照系统化的学习路径，从入门到进阶</p> <ul class="workflow-step__details" data-astro-cid-6u7pwkts> <li data-astro-cid-6u7pwkts>环境搭建和配置</li><li data-astro-cid-6u7pwkts>编写第一个测试脚本</li><li data-astro-cid-6u7pwkts>进阶技巧和最佳实践</li> </ul> </div> <div class="workflow-step__arrow" aria-hidden="true" data-astro-cid-6u7pwkts> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-6u7pwkts> <path d="M5 12h14M12 5l7 7-7 7" data-astro-cid-6u7pwkts></path> </svg> </div> </div><div class="workflow-step" data-astro-cid-6u7pwkts> <div class="workflow-step__number" data-astro-cid-6u7pwkts>3</div> <div class="workflow-step__content" data-astro-cid-6u7pwkts> <h3 class="workflow-step__title" data-astro-cid-6u7pwkts>实践和集成</h3> <p class="workflow-step__description" data-astro-cid-6u7pwkts>通过 Demo 项目实践，并集成到 CI/CD 流程</p> <ul class="workflow-step__details" data-astro-cid-6u7pwkts> <li data-astro-cid-6u7pwkts>克隆 GitHub Demo 项目</li><li data-astro-cid-6u7pwkts>本地运行和调试</li><li data-astro-cid-6u7pwkts>集成到 CI/CD 流程</li> </ul> </div>  </div> </div> </section>  </div> </div>  </main> <footer class="l-footer" data-astro-cid-sz7xmlte> <div class="footer-container l-content" data-astro-cid-sz7xmlte> <!-- 社交与语言切换区域 --> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg>      </a><a href="https://x.com/inaodeng" target="_blank" rel="noopener noreferrer" title="X" class="social-icon" data-astro-cid-sz7xmlte>  <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" data-astro-cid-sz7xmlte></path></svg>     </a><a href="https://naodeng.medium.com/" target="_blank" rel="noopener noreferrer" title="Medium" class="social-icon" data-astro-cid-sz7xmlte>   <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" data-astro-cid-sz7xmlte></path></svg>    </a><a href="https://weibo.com/u/1651778270" target="_blank" rel="noopener noreferrer" title="Weibo" class="social-icon" data-astro-cid-sz7xmlte>    <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z" data-astro-cid-sz7xmlte></path></svg>   </a><a href="https://ko-fi.com/naodeng" target="_blank" rel="noopener noreferrer" title="Ko-fi" class="social-icon" data-astro-cid-sz7xmlte>     <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z" data-astro-cid-sz7xmlte></path></svg>  </a><a href="mailto:dengnao@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="social-icon" data-astro-cid-sz7xmlte>      <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="/en/guild/" class="social-icon lang-toggle" title="Switch to English" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte> <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" data-astro-cid-sz7xmlte></path> </svg> <span class="lang-label" data-astro-cid-sz7xmlte>EN</span> </a> </div> <!-- 底部次级导航 --> <nav class="footer-nav" data-astro-cid-sz7xmlte> <a href="/zh-cn/about/" data-astro-cid-sz7xmlte>关于</a> <a href="/zh-cn/archive/" data-astro-cid-sz7xmlte>归档</a> <a href="/zh-cn/projects/" data-astro-cid-sz7xmlte>项目</a> <a href="/zh-cn/series/" data-astro-cid-sz7xmlte>系列</a> <a href="/zh-cn/tags/" data-astro-cid-sz7xmlte>标签</a> <a href="/zh-cn/wiki/" data-astro-cid-sz7xmlte>软件测试百科</a> <a href="/zh-cn/guild/" data-astro-cid-sz7xmlte>自动化测试指南</a> <a href="/zh-cn/sponsor/" data-astro-cid-sz7xmlte>支持</a> <a href="/zh-cn/copyright/" data-astro-cid-sz7xmlte>版权信息</a> <a href="/zh-cn/privacy/" data-astro-cid-sz7xmlte>隐私政策</a> <a href="/zh-cn/links/" data-astro-cid-sz7xmlte>友情链接</a> <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>状态</a> <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>访问统计</a> <a href="/zh-cn/rss.xml/" target="_blank" data-astro-cid-sz7xmlte>订阅 RSS</a> <a href="/zh-cn/sitemap/" data-astro-cid-sz7xmlte>站点地图</a> </nav> <!-- 版权与许可区域 --> <div class="footer-info" data-astro-cid-sz7xmlte> <p class="footer-slogan" data-astro-cid-sz7xmlte>质量分析师，而非质量保证师。</p> <div class="copyright" data-astro-cid-sz7xmlte> <a class="copy-link" href="https://inaodeng.com/" data-astro-cid-sz7xmlte>
+© 2026 软件测试同学 </a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/zh-cn/copyright/" class="license-link" data-astro-cid-sz7xmlte>遵循 CC BY-NC-SA 4.0 许可协议</a> </div> <div class="tech-stack" data-astro-cid-sz7xmlte> <span class="built-with" data-astro-cid-sz7xmlte>由 Astro &amp; Cloudflare &amp; Github &amp; AI 驱动</span> <div class="tech-icons" data-astro-cid-sz7xmlte> <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" data-astro-cid-sz7xmlte></path></svg> </a> <span title="AI" class="tech-icon tech-icon-ai" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" data-astro-cid-sz7xmlte><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" data-astro-cid-sz7xmlte></path></svg> </span> </div> </div> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" aria-label="搜索文章…" data-algolia-key="7bf4a2b4e4f0c324b0cca574ab137f6a" data-astro-cid-qk3db3zz> <div class="search-backdrop" data-close data-astro-cid-qk3db3zz></div> <div class="search-box" data-astro-cid-qk3db3zz> <label for="search-input" class="visually-hidden" data-astro-cid-qk3db3zz>搜索文章…</label> <input id="search-input" type="search" class="search-input" placeholder="搜索文章…" autocomplete="off" enterkeyhint="search" data-astro-cid-qk3db3zz> <div class="search-hint-row" data-astro-cid-qk3db3zz> <span class="search-hint" data-hint data-astro-cid-qk3db3zz>⌘K 或 Ctrl+K 打开搜索</span> <p class="search-algolia-badge" data-astro-cid-qk3db3zz> <a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer" class="search-algolia-link" aria-label="Search by Algolia" data-astro-cid-qk3db3zz> <span class="search-algolia-icon" aria-hidden="true" data-astro-cid-qk3db3zz> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-qk3db3zz> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" data-astro-cid-qk3db3zz></path> </svg> </span> <span class="search-algolia-text" data-astro-cid-qk3db3zz><span class="search-algolia-by" data-astro-cid-qk3db3zz>Search by</span> Algolia</span> </a> </p> </div> </div> <div class="search-results" id="search-results" role="list" data-astro-cid-qk3db3zz></div> <p class="search-empty" id="search-empty" hidden data-astro-cid-qk3db3zz>暂无结果。</p> </dialog> <script>(function(){const useAlgolia = true;
+const algoliaAppId = "5L1S6UUZVF";
+const algoliaIndexName = "inaodeng_com_5l1s6uuzvf_pages";
+
+  /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
+  const dialog = document.getElementById("search-dialog");
+  const input = document.getElementById("search-input");
+  const resultsEl = document.getElementById("search-results");
+  const emptyEl = document.getElementById("search-empty");
+  const backdrop = document.querySelector(".search-backdrop[data-close]");
+  const hintEl = document.querySelector("[data-hint]");
+  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
+
+  let index = [];
+  let locale = "en";
+  let algoliaClient = null;
+  let algoliaDebounce = null;
+  let lastAlgoliaQuery = "";
+
+  function getLocale() {
+    const el = document.documentElement.getAttribute("data-locale");
+    return el === "zh-cn" ? "zh-cn" : "en";
+  }
+
+  async function loadIndex() {
+    if (index.length > 0) return index;
+    locale = getLocale();
+    const res = await fetch(`/${locale}/search-index.json`);
+    if (!res.ok) return [];
+    index = await res.json();
+    return index;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /**
+   * 渲染搜索结果
+   * @param {Array} items - 结果列表
+   * @param {boolean} hasQuery - 是否有搜索词
+   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
+   */
+  function renderItems(items, hasQuery, fromAlgolia) {
+    resultsEl.innerHTML = "";
+    resultsEl.hidden = items.length === 0;
+    emptyEl.hidden = items.length > 0 || !hasQuery;
+    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+
+    items.slice(0, 20).forEach((item) => {
+      const a = document.createElement("a");
+      const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
+      a.href = url;
+      a.className = "search-result-item";
+      a.setAttribute("role", "listitem");
+      const dateStr = new Date(item.date).toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      a.innerHTML = `
+        <span class="search-result-title">${escapeHtml(item.title)}</span>
+        <span class="search-result-meta">${escapeHtml(dateStr)}${item.tags?.length ? " · " + item.tags.slice(0, 3).join(", ") : ""}</span>
+      `;
+      resultsEl.appendChild(a);
+    });
+  }
+
+  // 使用事件委托：在结果容器上统一处理点击（解决鼠标点链接/内层 span 不跳转的问题）
+  resultsEl.addEventListener("click", (e) => {
+    const a = e.target.closest("a.search-result-item");
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const url = a.getAttribute("href");
+    if (!url) return;
+    dialog.close();
+    setTimeout(function () {
+      window.location.assign(url);
+    }, 80);
+  });
+
+  function filter(q) {
+    const lower = q.trim().toLowerCase();
+    if (!lower) return [];
+    return index.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lower) ||
+        item.description.toLowerCase().includes(lower) ||
+        (item.tags && item.tags.some((t) => t.toLowerCase().includes(lower)))
+    );
+  }
+
+  async function algoliaSearch(query) {
+    if (!algoliaClient) {
+      // is:inline 脚本未打包，从 ESM CDN 加载
+      const mod = await import("https://esm.sh/algoliasearch@5");
+      const { algoliasearch } = mod;
+      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
+    }
+    locale = getLocale();
+    const { hits } = await algoliaClient.searchSingleIndex({
+      indexName: algoliaIndexName,
+      searchParams: {
+        query,
+        hitsPerPage: 30,
+      },
+    });
+    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
+    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
+    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
+  }
+
+  function onInput() {
+    const q = input.value;
+    const hasQuery = q.trim().length > 0;
+
+    if (useAlgolia) {
+      if (!hasQuery) {
+        renderItems([], false, false);
+        return;
+      }
+      if (algoliaDebounce) clearTimeout(algoliaDebounce);
+      algoliaDebounce = setTimeout(async () => {
+        const queryAtRequest = q;
+        lastAlgoliaQuery = queryAtRequest;
+        algoliaDebounce = null;
+        try {
+          const items = await algoliaSearch(queryAtRequest);
+          if (lastAlgoliaQuery === queryAtRequest) {
+            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
+            renderItems(items, true, true);
+          }
+        } catch (err) {
+          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
+          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
+        }
+      }, 200);
+      return;
+    }
+
+    if (!index.length) {
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      return;
+    }
+    const items = filter(q);
+    renderItems(items, hasQuery, false);
+  }
+
+  function openSearch() {
+    locale = getLocale();
+    if (useAlgolia) {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+      return;
+    }
+    loadIndex().then(() => {
+      dialog.showModal();
+      input.value = "";
+      input.focus();
+      resultsEl.hidden = true;
+      emptyEl.hidden = true;
+      if (hintEl) hintEl.style.display = "block";
+    });
+  }
+
+  function closeSearch() {
+    dialog.close();
+    if (hintEl) hintEl.style.display = "";
+  }
+
+  dialog.addEventListener("close", () => {
+    if (hintEl) hintEl.style.display = "";
+  });
+
+  dialog.addEventListener("cancel", closeSearch);
+
+  backdrop?.addEventListener("click", closeSearch);
+
+  input.addEventListener("input", onInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "Enter") {
+      const first = resultsEl.querySelector(".search-result-item");
+      if (first) {
+        first.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      if (dialog.open) closeSearch();
+      else openSearch();
+    }
+  });
+
+  document.querySelectorAll("[data-search-open]").forEach((el) => {
+    el.addEventListener("click", openSearch);
+  });
+
+  window.addEventListener("search-open", openSearch);
+})();</script>    </body> </html> 
