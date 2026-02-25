@@ -50,12 +50,18 @@ const wiki = defineCollection({
       section: z.string().optional(),
       /** 同组内排序，数字越小越靠前 */
       order: z.number().optional(),
+      /** 关联词条 slug 列表，用于渲染 Related Terms pill 列表 */
+      related: z.array(z.string()).optional(),
     }),
 });
 
 // 测试自动化指南 collection：用于 /guild 下的学习路径内容
 const guild = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/guild" }),
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/guild",
+    generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+  }),
   schema: () =>
     z.object({
       /** 文章标题 */

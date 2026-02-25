@@ -18,7 +18,8 @@
     "generate-covers": "node scripts/generate-blog-covers.mjs",
     "update-blog-tags": "node scripts/update-blog-tags.mjs",
     "algolia-index": "node --env-file=.env scripts/algolia-index.mjs",
-    "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs"
+    "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",
+    "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {
     "rehype-slug": "^6.0.0",

@@ -192,6 +192,13 @@ const statsLabels = locale === "zh-cn"
         authorLink={`/${lang}/`}
         stats={{ articles: totalArticles, categories: allCategories.size, tags: allTags.size, words: totalChars }}
         labels={statsLabels}
+        social={{
+          github: "https://github.com/naodeng",
+          medium: "https://naodeng.medium.com/",
+          x: "https://x.com/inaodeng",
+          weibo: "https://weibo.com/u/1651778270",
+          rss: `/${lang}/rss.xml`,
+        }}
       />
       <TableOfContents headings={headings} label={tocLabel} placement="below" />
     </aside>
@@ -208,8 +215,8 @@ const statsLabels = locale === "zh-cn"
   }
   @media (min-width: 960px) {
     .article-with-toc {
-      /* 正文区 880px（约 +10%），侧栏 280px + 约 10% 靠右（更大 gap），容器 1220px */
-      grid-template-columns: minmax(0, 880px) 280px;
+      /* 正文区 900px，侧栏 300px */
+      grid-template-columns: minmax(0, 900px) 300px;
       gap: 2.5rem;
       justify-content: start;
     }
@@ -225,7 +232,7 @@ const statsLabels = locale === "zh-cn"
   .article-body {
     width: 100%;
     min-width: 0;
-    max-width: 880px;
+    max-inline-size: 900px;
     margin-inline: auto;
     box-sizing: border-box;
   }
@@ -425,8 +432,7 @@ const statsLabels = locale === "zh-cn"
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
     font-size: 0.9rem;
     line-height: 1.5;
-  }
-  .prose :global(code) {
+  }  .prose :global(code) {
     font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
     font-size: 0.9em;
     padding: 0.15em 0.4em;

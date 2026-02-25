@@ -1,25 +1,21 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import ReadingProgressBar from "@/components/ReadingProgressBar.astro";
+import type { Lang } from "@/i18n";
 
 interface Props {
   title?: string;
   description?: string;
-  /** 文章/分享图绝对 URL（如博客封面） */
   image?: string;
-  /** 分享图描述 */
   imageAlt?: string;
-  /** ISO 日期时间，文章发布时间 */
   articlePublishedTime?: string;
-  /** ISO 日期时间，文章修改时间 */
   articleModifiedTime?: string;
-  /** 文章作者名 */
   articleAuthor?: string;
-  /** 面包屑 [{ name, url }] */
   breadcrumbs?: { name: string; url: string }[];
-  /** 加宽主区域以容纳侧栏，正文保持 800px */
   contentWide?: boolean;
   frontmatter?: undefined;
+  lang?: Lang;
 }
 
 const {
@@ -47,6 +43,7 @@ const {
   breadcrumbs={breadcrumbs}
   contentWide={contentWide}
 >
+  <ReadingProgressBar />
   {breadcrumbs && breadcrumbs.length > 0 && (
     <Breadcrumb items={breadcrumbs} />
   )}
@@ -57,34 +54,44 @@ const {
 
 <style>
   article {
+    padding-inline: var(--sp-s);
+
     > * {
       margin-block: 1.2em 0;
       margin-inline: 0;
     }
+
+    /* 2.3: 正文 p */
     p {
+      line-height: 1.8;
       font-weight: 400;
     }
+
+    /* 2.1: h2 */
     h2 {
       margin-block: 3em 0;
       padding-block-end: 0.2em;
-      border-inline-start: 4px solid var(--color-accent);
-      padding-inline-start: var(--sp-s);
+      border-inline-start: 4px solid var(--color-theme);
+      padding-inline-start: var(--sp-s, 1rem);
       line-height: 1.4;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
+
+    /* 2.2: h3 */
     h3 {
       margin-block: 2em 0;
       padding-block-end: 0.2em;
       line-height: 1.4;
-      font-size: 1.4rem;
-      border-block-end: 1px solid
-        color-mix(in srgb, var(--color-main) 10%, transparent);
+      font-size: 1.25rem;
+      border-block-end: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
     }
+
     h4 {
       margin-block: 2em -0.4em;
       line-height: 1.4;
       font-size: 1.1rem;
     }
+
     ul {
       list-style: disc;
       padding-inline-start: 1.5em;
@@ -97,15 +104,17 @@ const {
       margin-block: 0 0.5em;
       line-height: 1.4;
     }
+
+    /* 2.8: 行内代码 */
     :not(pre) code {
-      font-family: Consolas, "Courier New", Courier, Monaco, monospace;
+      font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
       color: var(--color-theme);
-      background-color: color-mix(in srgb, var(--color-main) 8%, transparent);
-      padding-block: 0.2em;
-      padding-inline: 0.4em;
-      border-radius: 2px;
-      font-size: 0.9rem;
+      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+      padding: 0.15em 0.4em;
+      border-radius: var(--radius-sm, 4px);
+      font-size: 0.9em;
     }
+
     blockquote {
       font-style: italic;
       color: color-mix(in srgb, var(--color-main) 80%, transparent);
@@ -114,20 +123,131 @@ const {
       border-inline-start: 2px solid
         color-mix(in srgb, var(--color-main) 10%, transparent);
     }
+
     a {
       text-decoration: underline;
       color: var(--color-theme);
       font-weight: 500;
     }
+
     img {
       border-radius: 4px;
       background-color: color-mix(in srgb, var(--color-main) 10%, transparent);
     }
+
+    /* 2.9: pre 代码块 */
     pre {
       direction: ltr;
-      padding: 1em;
-      border-radius: 4px;
-      border: 2px solid color-mix(in srgb, var(--color-main) 20%, transparent);
+      padding: 1em 1.25em;
+      border-radius: var(--radius-md, 8px);
+      border: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+      border-inline-start: 3px solid var(--color-theme);
+      overflow-x: auto;
+    }
+  }
+
+  /* 代码块 copy 按钮：悬浮在右上角 */
+  :global(.code-block-wrapper) {
+    position: relative;
+    margin-block: 1.2em 0;
+  }
+  :global(.code-block-wrapper) pre {
+    margin-block: 0 !important;
+  }
+  :global(.code-copy-btn) {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+    padding: 0.2em 0.6em;
+    opacity: 0;
+    transition: opacity 0.15s, color 0.15s, background 0.15s;
+    z-index: 2;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+  :global(.code-block-wrapper:hover .code-copy-btn) {
+    opacity: 1;
+  }
+  :global(.code-copy-btn:hover) {
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    opacity: 1;
+  }
+  :global(.code-copy-btn:focus-visible) {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+    opacity: 1;
+  }
+  :global(.code-copy-btn.copied) {
+    color: var(--color-theme);
+    border-color: var(--color-theme);
+    opacity: 1;
+  }
+
+  /* 9.3: 窄视口正文字体与行高 */
+  @media (max-width: 480px) {
+    article {
+      font-size: 1rem;
+      line-height: 1.75;
+      padding-inline: var(--sp-xs);
     }
   }
 </style>
+
+<script>
+  (function () {
+    if (typeof navigator === "undefined" || typeof navigator.clipboard === "undefined") return;
+
+    const pageLang = document.documentElement.lang.toLowerCase();
+    const isZhCn = pageLang === "zh-cn" || pageLang.startsWith("zh");
+    const copyLabel = isZhCn ? "复制" : "Copy";
+    const copiedLabel = isZhCn ? "已复制" : "Copied!";
+
+    function enhanceCodeBlocks() {
+      document.querySelectorAll<HTMLPreElement>("article pre").forEach((pre) => {
+        if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
+        const code = pre.querySelector("code");
+        if (!code) return;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-block-wrapper";
+
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "code-copy-btn";
+        copyBtn.type = "button";
+        copyBtn.textContent = copyLabel;
+        copyBtn.setAttribute("aria-label", copyLabel);
+
+        copyBtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(code.textContent ?? "").then(() => {
+            copyBtn.textContent = copiedLabel;
+            copyBtn.setAttribute("aria-label", copiedLabel);
+            copyBtn.classList.add("copied");
+            setTimeout(() => {
+              copyBtn.textContent = copyLabel;
+              copyBtn.setAttribute("aria-label", copyLabel);
+              copyBtn.classList.remove("copied");
+            }, 2000);
+          }).catch(() => {});
+        });
+
+        pre.parentNode!.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        wrapper.appendChild(copyBtn);
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", enhanceCodeBlocks);
+    } else {
+      enhanceCodeBlocks();
+    }
+  })();
+</script>

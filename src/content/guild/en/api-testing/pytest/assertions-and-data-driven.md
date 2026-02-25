@@ -8,7 +8,7 @@ stage: basic
 difficulty: intermediate
 duration: 45
 order: 3
-githubDemo: https://github.com/naodeng/pytest-requests-demo
+githubDemo: https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter
 officialDocs: https://docs.pytest.org/
 date: 2023-11-15T10:32:55.000Z
 ---

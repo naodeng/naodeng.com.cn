@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
 :root {
   @media (prefers-color-scheme: dark) {
     --color-theme: #ef4d1a;
     --color-accent: #943e0d;
-    --color-base: #342c28;
-    --color-main: #faf9f6;
+    --color-base: #13151a;
+    --color-main: #e8e8e8;
+    --color-surface: rgba(255, 255, 255, 0.06);
+    --color-border: rgba(255, 255, 255, 0.1);
     --color-caution: #ffaa2b;
   }
   @media (prefers-color-scheme: light) {
@@ -11,17 +15,51 @@
     --color-accent: #ffcc21;
     --color-base: #faf9f6;
     --color-main: #342c28;
+    --color-surface: rgba(0, 0, 0, 0.03);
+    --color-border: rgba(0, 0, 0, 0.1);
     --color-caution: #a80a00;
   }
 
+  --color-warn: #f59e0b;
+
+  /* Glow & gradient tokens */
+  --glow-theme: color-mix(in srgb, var(--color-theme) 20%, transparent);
+  --gradient-hero: radial-gradient(ellipse at top, color-mix(in srgb, var(--color-theme) 12%, transparent), transparent 70%);
+
+  /* Shadow tokens */
+  --shadow-sm: 0 1px 3px color-mix(in srgb, var(--color-main) 10%, transparent);
+  --shadow-md: 0 4px 12px color-mix(in srgb, var(--color-main) 12%, transparent);
+  --shadow-lg: 0 8px 24px color-mix(in srgb, var(--color-main) 15%, transparent);
+
+  /* Font size tokens */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+
+  /* Font family tokens */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing tokens */
   --sp-l: 64px;
   --sp-m: 32px;
   --sp-s: 16px;
+  --sp-xs: 8px;
   @media (width < 480px) {
     --sp-l: 48px;
     --sp-m: 16px;
     --sp-s: 8px;
   }
+
+  /* Border radius tokens */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transition token */
+  --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   --english-font: "Noto Sans", "Robot", "Avenir Next", "Avenir",
     "Century Gothic", "SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont,
@@ -45,6 +83,22 @@
   @media (width < 480px) {
     font-size: 16px;
   }
+}
+
+/* Disable decorative animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
 }
 
 h1,

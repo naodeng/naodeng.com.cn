@@ -8,7 +8,7 @@ stage: advanced
 difficulty: advanced
 duration: 50
 order: 3
-githubDemo: https://github.com/naodeng/gatling-demo
+githubDemo: https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter
 officialDocs: https://gatling.io/docs/
 date: 2023-10-26T10:07:44.000Z
 ---

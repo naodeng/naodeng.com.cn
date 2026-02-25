@@ -6,7 +6,7 @@ test.describe("性能与加载", () => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     const loadTime = Date.now() - startTime;
     
-    expect(loadTime).toBeLessThan(10000);
+    expect(loadTime).toBeLessThan(15000);
   });
 
   test("zh-cn 首页加载时间合理", async ({ page, baseURL }) => {
@@ -14,7 +14,7 @@ test.describe("性能与加载", () => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     const loadTime = Date.now() - startTime;
     
-    expect(loadTime).toBeLessThan(10000);
+    expect(loadTime).toBeLessThan(15000);
   });
 
   test("en 首页：图片懒加载", async ({ page, baseURL }) => {

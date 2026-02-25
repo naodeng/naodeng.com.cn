@@ -120,8 +120,12 @@ const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.sta
     place-items: center;
     gap: var(--sp-m);
     padding-block: var(--sp-s) var(--sp-m);
-    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
-    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-theme) 4%, var(--color-base)) 0%,
+      var(--color-base) 100%
+    );
   }
   .site-brand {
     display: flex;
@@ -219,15 +223,16 @@ const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.sta
     border-radius: 8px;
     white-space: nowrap;
     text-decoration: none;
-    color: color-mix(in srgb, var(--color-main) 90%, transparent);
+    color: color-mix(in srgb, var(--color-main) 80%, transparent);
     transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
   }
   nav a:hover,
   nav a:active,
   nav a:focus-visible {
-    color: var(--color-main);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-theme) 20%, transparent);
   }
   nav a:focus-visible {
     outline: 2px solid var(--color-theme);
@@ -236,8 +241,19 @@ const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.sta
   nav a.active {
     pointer-events: none;
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-theme) 25%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-theme) 28%, transparent);
+    font-weight: 700;
+  }
+  nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-theme);
   }
   nav li {
     display: flex;

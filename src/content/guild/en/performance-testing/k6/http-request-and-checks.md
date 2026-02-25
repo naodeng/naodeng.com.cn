@@ -8,7 +8,7 @@ stage: basic
 difficulty: intermediate
 duration: 40
 order: 2
-githubDemo: https://github.com/naodeng/k6-demo
+githubDemo: https://github.com/Automation-Test-Starter/K6-Performance-Test-starter
 officialDocs: https://k6.io/docs/
 date: 2024-01-11T09:10:00.000Z
 ---

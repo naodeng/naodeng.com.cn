@@ -7,14 +7,14 @@
   padding-block-end: 4rem;
 }
 
-/* 与博文详情页正文区宽度一致（880px） */
+/* 与博文详情页正文区宽度一致（900px） */
 .l-content {
-  max-inline-size: 880px;
+  max-inline-size: 900px;
   padding-inline: var(--sp-m);
   margin-inline: auto;
 }
 
-/* 博文页侧栏：正文 880px（+10%），侧栏区靠右约 10%，总宽约 1280px */
+/* 博文页侧栏：正文 900px，侧栏区靠右，总宽约 1280px */
 .l-content--with-sidebar {
   max-inline-size: 1280px;
 }

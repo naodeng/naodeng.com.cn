@@ -8,7 +8,7 @@ stage: ci-cd
 difficulty: advanced
 duration: 60
 order: 6
-githubDemo: https://github.com/naodeng/postman-demo
+githubDemo: https://github.com/Automation-Test-Starter/Postman-API-Test-Starter
 officialDocs: https://learning.postman.com/
 date: 2023-11-22T09:37:00.000Z
 ---

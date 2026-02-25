@@ -1,10 +1,9 @@
 ---
 /**
  * 测试类型区域组件
- * 展示某个测试类型下的所有框架
  */
+import { getCollection } from 'astro:content';
 import type { TestType } from '../../config/guild.config';
-import FrameworkCard from './FrameworkCard.astro';
 
 interface Props {
   testType: TestType;
@@ -12,86 +11,268 @@ interface Props {
 }
 
 const { testType, locale } = Astro.props;
+
+const allGuildEntries = await getCollection('guild');
+const articleCountMap: Record<string, number> = {};
+for (const framework of testType.frameworks) {
+  articleCountMap[framework.id] = allGuildEntries.filter(
+    (e) => e.data.framework === framework.id && e.data.testType === testType.id
+  ).length;
+}
+
+const isZh = locale === 'zh-cn';
 ---
 
-<section class="test-type-section" id={testType.id}>
-  <div class="test-type-section__header">
-    <span class="test-type-section__icon" aria-hidden="true">{testType.icon}</span>
-    <div>
-      <h2 class="test-type-section__title">{testType.title}</h2>
-      <p class="test-type-section__description">{testType.description}</p>
+<section class="tts" id={testType.id} data-testtype={testType.id}>
+  <!-- Section header -->
+  <div class="tts__header">
+    <span class="tts__icon" aria-hidden="true">{testType.icon}</span>
+    <div class="tts__meta">
+      <h2 class="tts__title">{testType.title}</h2>
+      <p class="tts__desc">{testType.description}</p>
     </div>
+    <a
+      href={`/${locale}/guild/${testType.id}/`}
+      class="tts__viewall"
+      aria-label={isZh ? `查看${testType.title}全部内容` : `View all ${testType.title}`}
+    >
+      {isZh ? '查看全部' : 'View all'}
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
   </div>
 
-  <div class="test-type-section__frameworks">
-    {testType.frameworks.map((framework) => (
-      <FrameworkCard
-        framework={framework}
-        testType={testType.id}
-        locale={locale}
-      />
-    ))}
+  <!-- Framework cards grid -->
+  <div class="tts__grid">
+    {testType.frameworks.map((fw) => {
+      const count = articleCountMap[fw.id] ?? 0;
+      const path = `/${locale}/guild/${testType.id}/${fw.id}/`;
+      return (
+        <a
+          href={path}
+          class="fw-card"
+          style={`--fw-color: ${fw.color ?? 'var(--color-theme)'}`}
+          title={fw.description}
+        >
+          <div class="fw-card__top">
+            {fw.icon ? (
+              <img src={fw.icon} alt={fw.name} class="fw-card__icon" width="28" height="28" loading="lazy" />
+            ) : (
+              <span class="fw-card__icon-fb" aria-hidden="true">{testType.icon}</span>
+            )}
+            <span class="fw-card__lang">{fw.language}</span>
+          </div>
+          <span class="fw-card__name">{fw.name}</span>
+          <span class="fw-card__desc">{fw.description}</span>
+          {count > 0 && (
+            <span class="fw-card__count">{count} {isZh ? '篇' : 'articles'}</span>
+          )}
+          <span class="fw-card__arrow" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      );
+    })}
   </div>
 </section>
 
 <style>
-  .test-type-section {
-    margin-bottom: 4rem;
+  .tts {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: var(--transition-base);
   }
 
-  .test-type-section__header {
+  .tts:hover {
+    border-color: var(--color-theme);
+    box-shadow: 0 0 20px var(--glow-theme);
+  }
+
+  /* ── Header ── */
+  .tts__header {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--color-border);
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
   }
 
-  .test-type-section__icon {
-    font-size: 2.5rem;
+  .tts__icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .tts__meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tts__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-main);
+    margin: 0 0 0.15rem;
+    line-height: 1.3;
+  }
+
+  .tts__desc {
+    font-size: 0.82rem;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .tts__viewall {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.3em 0.75em;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    transition: var(--transition-base);
+    flex-shrink: 0;
+  }
+
+  .tts__viewall:hover {
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-color: var(--color-theme);
+    transform: translateX(2px);
+  }
+
+  /* ── Framework card grid ── */
+  .tts__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .fw-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-base);
+  }
+
+  /* colored top accent */
+  .fw-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--fw-color, var(--color-theme));
+    opacity: 0;
+    transition: var(--transition-base);
+  }
+
+  .fw-card:hover {
+    border-color: var(--color-theme);
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px var(--glow-theme);
+  }
+
+  .fw-card:hover::before {
+    opacity: 1;
+  }
+
+  .fw-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .fw-card__icon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .fw-card__icon-fb {
+    font-size: 1.3rem;
     line-height: 1;
   }
 
-  .test-type-section__title {
-    margin: 0 0 0.5rem 0;
-    font-size: 2rem;
-    color: var(--color-text-primary);
+  .fw-card__lang {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-main) 48%, transparent);
+    background: color-mix(in srgb, var(--color-main) 7%, transparent);
+    padding: 0.12em 0.45em;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
   }
 
-  .test-type-section__description {
-    margin: 0;
-    color: var(--color-text-secondary);
-    font-size: 1.125rem;
+  .fw-card__name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-main);
+    line-height: 1.25;
   }
 
-  .test-type-section__frameworks {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+  .fw-card__desc {
+    font-size: 0.73rem;
+    color: color-mix(in srgb, var(--color-main) 52%, transparent);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
   }
 
-  @media (max-width: 768px) {
-    .test-type-section {
-      margin-bottom: 3rem;
-    }
+  .fw-card__count {
+    font-size: 0.68rem;
+    color: color-mix(in srgb, var(--color-main) 42%, transparent);
+    margin-top: auto;
+  }
 
-    .test-type-section__header {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+  .fw-card__arrow {
+    display: inline-flex;
+    align-self: flex-end;
+    color: var(--color-theme);
+    opacity: 0;
+    transition: var(--transition-base);
+    margin-top: 0.1rem;
+  }
 
-    .test-type-section__title {
-      font-size: 1.5rem;
-    }
+  .fw-card:hover .fw-card__arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
 
-    .test-type-section__description {
-      font-size: 1rem;
+  @media (max-width: 480px) {
+    .tts__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    .test-type-section__frameworks {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+  @media (prefers-reduced-motion: reduce) {
+    .fw-card {
+      transition: none;
+      transform: none !important;
     }
   }
 </style>

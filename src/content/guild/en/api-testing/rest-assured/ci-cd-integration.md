@@ -8,7 +8,7 @@ stage: ci-cd
 difficulty: advanced
 duration: 60
 order: 4
-githubDemo: https://github.com/naodeng/rest-assured-demo
+githubDemo: https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter
 officialDocs: https://rest-assured.io/
 date: 2023-11-04T02:21:19.000Z
 ---

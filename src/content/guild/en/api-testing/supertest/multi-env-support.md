@@ -8,7 +8,7 @@ stage: advanced
 difficulty: intermediate
 duration: 50
 order: 5
-githubDemo: https://github.com/naodeng/supertest-demo
+githubDemo: https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter
 officialDocs: https://github.com/ladjs/supertest
 date: 2023-11-10T04:37:59.000Z
 ---

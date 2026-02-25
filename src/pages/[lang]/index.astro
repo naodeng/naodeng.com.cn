@@ -183,10 +183,19 @@ export const getStaticPaths = () =>
           locale === "zh-cn" ? "zh-CN" : "en-US",
           { year: "numeric", month: "short", day: "numeric" }
         );
+        const firstTag = post.data.tags?.[0];
+        // Estimate reading time from description length (avg 5 chars/word for zh, 5 chars/word for en)
+        const descWords = post.data.description ? Math.ceil(post.data.description.length / 5) : 0;
+        const estimatedWords = descWords > 0 ? descWords * 10 : 300;
+        const readMins = Math.max(1, Math.ceil(estimatedWords / 200));
+        const readLabel = locale === "zh-cn" ? `${readMins} 分钟阅读` : `${readMins} min read`;
         return (
           <article class="post-card">
             <a href={postUrl} class="post-card-link">
               <div class="post-cover">
+                {firstTag && (
+                  <span class="post-category-badge">{firstTag}</span>
+                )}
                 <div class="post-cover-bg" role="img" aria-hidden="true" />
                 <div class="post-cover-overlay">
                   <h3 class="post-cover-title">{post.data.title}</h3>
@@ -202,6 +211,18 @@ export const getStaticPaths = () =>
                 <h3 class="post-title">{post.data.title}</h3>
               </div>
             </a>
+            <div class="post-footer">
+              <span class="post-reading-time">{readLabel}</span>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="post-tags">
+                  {post.data.tags.slice(0, 2).map((tag) => (
+                    <a href={`/${locale}/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
+                      #{tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </article>
         );
       })}
@@ -740,28 +761,51 @@ export const getStaticPaths = () =>
     gap: var(--sp-m);
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
+  @media (max-width: 960px) {
+    .post-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .post-grid {
+      grid-template-columns: 1fr;
+    }
+  }
   .post-card {
-    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    transition: var(--transition);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow);
+    transform: translateY(-4px);
     border-color: var(--color-theme);
+    box-shadow: 0 0 20px var(--glow-theme);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .post-card:hover {
+      transform: none;
+    }
+    .post-card {
+      transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
   .post-card-link {
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1;
   }
   .post-cover {
     position: relative;
-    aspect-ratio: 16 / 7.2;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
   }
   .post-cover-bg {
@@ -770,9 +814,10 @@ export const getStaticPaths = () =>
     background-image: url("/default.jpg");
     background-size: cover;
     background-position: center;
-    background-color: #1a1a1f;
-    filter: blur(3px);
-    transform: scale(1.06);
+    object-fit: cover;
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--color-theme) 20%, transparent),
+      color-mix(in srgb, var(--color-theme) 5%, transparent));
   }
   .post-cover-overlay {
     position: absolute;
@@ -786,6 +831,20 @@ export const getStaticPaths = () =>
     color: #fff;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
     text-align: center;
+  }
+  .post-category-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    line-height: 1.4;
+    pointer-events: none;
   }
   .post-cover-title {
     margin: 0 0 0.25em 0;
@@ -804,6 +863,7 @@ export const getStaticPaths = () =>
   }
   .post-content {
     padding: 1.25rem;
+    flex-grow: 1;
   }
   .post-date {
     font-size: 0.8rem;
@@ -818,5 +878,38 @@ export const getStaticPaths = () =>
     font-weight: 700;
     line-height: 1.4;
     color: var(--color-main);
+  }
+  .post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .post-reading-time {
+    font-size: var(--text-xs);
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    transition: all 0.2s ease;
+  }
+  .tag-link:hover {
+    background: var(--color-theme);
+    color: white;
   }
 </style>

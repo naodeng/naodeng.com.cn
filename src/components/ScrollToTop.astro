@@ -1,0 +1,94 @@
+---
+import { useTranslations, type Lang } from "@/i18n";
+import { SCROLL_TO_TOP } from "@/consts";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const label = t(SCROLL_TO_TOP);
+---
+
+<button
+  id="scroll-to-top"
+  type="button"
+  aria-label={label}
+  title={label}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<style>
+  #scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-theme);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  #scroll-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #scroll-to-top:hover {
+    background: color-mix(in srgb, var(--color-theme) 85%, #000);
+  }
+
+  #scroll-to-top:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #scroll-to-top {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("scroll-to-top");
+  if (btn) {
+    const THRESHOLD = 400;
+
+    function updateVisibility() {
+      if (window.scrollY > THRESHOLD) {
+        btn!.classList.add("visible");
+      } else {
+        btn!.classList.remove("visible");
+      }
+    }
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    updateVisibility();
+
+    btn.addEventListener("click", () => {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? "instant" : "smooth",
+      });
+    });
+  }
+</script>

@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 30
 order: 1
-githubDemo: https://github.com/naodeng/postman-demo
+githubDemo: https://github.com/Automation-Test-Starter/Postman-API-Test-Starter
 officialDocs: https://learning.postman.com/
 date: 2023-11-21T09:37:00.000Z
 ---

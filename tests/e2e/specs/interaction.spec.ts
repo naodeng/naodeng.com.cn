@@ -10,7 +10,7 @@ test.describe("用户交互", () => {
     const backToTop = page.locator('button[aria-label*="top" i], [class*="back-to-top"], [class*="scroll-top"]').first();
     if (await backToTop.isVisible({ timeout: 5000 })) {
       await backToTop.click();
-      await page.waitForTimeout(500);
+      await page.waitForFunction(() => window.scrollY < 100, { timeout: 3000 }).catch(() => {});
       
       const scrollY = await page.evaluate(() => window.scrollY);
       expect(scrollY).toBeLessThan(100);
@@ -26,7 +26,7 @@ test.describe("用户交互", () => {
     const backToTop = page.locator('button[aria-label*="顶部"], [class*="back-to-top"], [class*="scroll-top"]').first();
     if (await backToTop.isVisible({ timeout: 5000 })) {
       await backToTop.click();
-      await page.waitForTimeout(500);
+      await page.waitForFunction(() => window.scrollY < 100, { timeout: 3000 }).catch(() => {});
       
       const scrollY = await page.evaluate(() => window.scrollY);
       expect(scrollY).toBeLessThan(100);
@@ -78,7 +78,6 @@ test.describe("用户交互", () => {
     if (await tagsCloud.isVisible({ timeout: 5000 })) {
       const tagLink = tagsCloud.locator("a").first();
       if (await tagLink.isVisible()) {
-        const href = await tagLink.getAttribute("href");
         await tagLink.click();
         await page.waitForLoadState("networkidle");
         
@@ -99,7 +98,6 @@ test.describe("用户交互", () => {
     if (await tagsCloud.isVisible({ timeout: 5000 })) {
       const tagLink = tagsCloud.locator("a").first();
       if (await tagLink.isVisible()) {
-        const href = await tagLink.getAttribute("href");
         await tagLink.click();
         await page.waitForLoadState("networkidle");
         

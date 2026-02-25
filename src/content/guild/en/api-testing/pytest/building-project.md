@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 40
 order: 2
-githubDemo: https://github.com/naodeng/pytest-requests-demo
+githubDemo: https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter
 officialDocs: https://docs.pytest.org/
 date: 2023-11-14T01:58:14.000Z
 ---

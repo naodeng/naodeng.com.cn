@@ -44,16 +44,16 @@ export const HOME_INTRO: Multilingual = {
 - Currently learning **AI-assisted Testing**
 - I regularly write articles on [inaodeng.com](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
-- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- X (Twitter): [**@inaodeng**](https://x.com/inaodeng)
 - WeChat: **软件测试同学**
-- Support me by [**supporting this blog**](https://inaodeng.com/sponsor)`,
+- Support me by [**supporting this blog**](https://inaodeng.com/en/sponsor)`,
   "zh-cn": `- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
 - 正在学习 **AI 辅助测试**
 - 定期在 [inaodeng.com](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
-- Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
+- X (Twitter): [**@inaodeng**](https://x.com/inaodeng)
 - 微信公众号：**软件测试同学**
-- 支持我 [**成为支持者**](https://inaodeng.com/sponsor)`,
+- 支持我 [**成为支持者**](https://inaodeng.com/zh-cn/sponsor)`,
 };
 
 // 首页作者标签（简介区域右侧）
@@ -173,6 +173,12 @@ export const ARTICLE_LICENSE = "CC BY-SA 4.0";
 export const READING_TIME_LABEL: Multilingual = {
   en: "min read",
   "zh-cn": "分钟阅读",
+};
+
+// 回到顶部按钮
+export const SCROLL_TO_TOP: Multilingual = {
+  en: "Back to top",
+  "zh-cn": "回到顶部",
 };
 
 // 搜索

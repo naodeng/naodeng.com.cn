@@ -120,54 +120,49 @@ const text = content[locale as keyof typeof content] || content['en'];
 
 <style>
   .learning-workflow {
-    margin: 4rem 0;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, 
-      rgba(239, 77, 26, 0.02) 0%, 
-      transparent 100%);
-    border-radius: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
   }
 
   .learning-workflow__header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.75rem;
   }
 
   .learning-workflow__title {
-    font-size: 2rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     font-weight: 800;
     color: var(--color-main);
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.5rem 0;
   }
 
   .learning-workflow__subtitle {
-    font-size: 1.125rem;
-    color: var(--color-main);
-    opacity: 0.75;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
     margin: 0;
   }
 
   .workflow-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 1rem;
   }
 
   .workflow-step {
     position: relative;
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.3s ease;
+    padding: 1.5rem;
+    transition: var(--transition-base);
   }
 
   .workflow-step:hover {
     border-color: var(--color-theme);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(239, 77, 26, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px var(--glow-theme);
   }
 
   .workflow-step__number {

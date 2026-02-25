@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 20
 order: 1
-githubDemo: https://github.com/naodeng/bruno-demo
+githubDemo: https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter
 officialDocs: https://www.usebruno.com/
 date: 2023-10-17T03:31:43.000Z
 ---
@@ -404,10 +404,6 @@ expect(data.title).to.contains('provident');
 
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
-{/* markdownlint-disable MD045 */}
-{/* markdownlint-disable MD033 */}
 <div style="text-align: center">
   <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
 </div>
-{/* markdownlint-disable MD033 */}
-{/* markdownlint-disable MD045 */}

@@ -1,4 +1,4 @@
-name: E2E Tests
+name: Tests
 
 on:
   push:
@@ -27,11 +27,21 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Install E2E dependencies and run tests
-        run: |
-          cd e2e && npm ci
-          npx playwright install --with-deps chromium
-          npx playwright test
+      - name: Install test dependencies
+        run: npm ci
+        working-directory: tests
+
+      - name: Run unit tests
+        run: npx vitest --run
+        working-directory: tests
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        working-directory: tests
+
+      - name: Run E2E tests
+        run: npx playwright test
+        working-directory: tests
         env:
           CI: true
           PLAYWRIGHT_BASE_URL: "http://localhost:4321"
