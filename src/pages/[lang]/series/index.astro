@@ -3,6 +3,7 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_SERIES, SERIES_INDEX_DESCRIPTION } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
@@ -57,6 +58,7 @@ export const getStaticPaths = () =>
       <p class="aggregate-empty">{locale === "zh-cn" ? "暂无系列" : "No series yet"}</p>
     )}
   </div>
+  <GoogleAd />
 </Layout>
 
 <style>
