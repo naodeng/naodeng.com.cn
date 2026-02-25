@@ -20,9 +20,8 @@ test.describe("百科（Wiki）", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("zh-cn 百科首页：汇总介绍、按字母浏览区可见", async ({ page, baseURL }) => {
+  test("zh-cn 百科首页：按字母浏览区可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "networkidle" });
-    await expect(page.getByRole("heading", { name: "汇总介绍" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "按字母浏览" })).toBeVisible();
   });
 

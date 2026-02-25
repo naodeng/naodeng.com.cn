@@ -1,7 +1,6 @@
 ---
 /**
- * Guild 首页展示组件
- * 展示三种测试类型及其框架
+ * Guild 首页展示组件 — 参考 astro.build 首页风格重设计
  */
 import { getGuildConfig } from '../../config/guild.config';
 import type { Lang } from '@/i18n';
@@ -12,310 +11,420 @@ interface Props {
 
 const { locale } = Astro.props;
 const guildConfig = getGuildConfig(locale);
+
+// 只展示 api-testing 和 performance-testing
+const visibleTypes = guildConfig.testTypes.filter(
+  (t) => t.id === 'api-testing' || t.id === 'performance-testing'
+);
+
+const totalFrameworks = visibleTypes.reduce((n, t) => n + t.frameworks.length, 0);
+const isZh = locale === 'zh-cn';
 ---
 
-<section class="guild-showcase">
-  <div class="guild-showcase__header">
-    <h2 class="guild-showcase__title">
-      {locale === 'zh-cn' ? '测试自动化指南' : 'Test Automation Guild'}
+<section class="guild-showcase" aria-labelledby="guild-showcase-title">
+
+  <!-- Section header -->
+  <div class="gs-header">
+    <div class="gs-header-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      {isZh ? '学习路径' : 'Learning Paths'}
+    </div>
+    <h2 id="guild-showcase-title" class="gs-title">
+      {isZh ? '测试自动化指南' : 'Test Automation Guild'}
     </h2>
-    <p class="guild-showcase__subtitle">
-      {locale === 'zh-cn' 
-        ? '系统化的测试自动化学习路径，从入门到进阶' 
+    <p class="gs-subtitle">
+      {isZh
+        ? '系统化的测试自动化学习路径，从入门到进阶'
         : 'Systematic test automation learning paths, from beginner to advanced'}
     </p>
-  </div>
-
-  <div class="guild-showcase__sections">
-    {/* 接口自动化测试 - 单独一行 */}
-    {guildConfig.testTypes
-      .filter(testType => testType.id === 'api-testing')
-      .map((testType) => (
-        <div class="guild-section" data-test-type={testType.id}>
-          <div class="guild-section__header">
-            <span class="guild-section__icon">{testType.icon}</span>
-            <div class="guild-section__info">
-              <h3 class="guild-section__title">{testType.title}</h3>
-              <p class="guild-section__description">{testType.description}</p>
-            </div>
-          </div>
-          
-          <div class="guild-section__frameworks">
-            {testType.frameworks.map((framework) => (
-              <a 
-                href={`/${locale}/guild/${testType.id}/${framework.id}/`}
-                class="framework-tag"
-                title={framework.description}
-              >
-                <span class="framework-tag__name">{framework.name}</span>
-                <span class="framework-tag__lang">{framework.language}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))}
-
-    {/* 性能测试 - 单独一行（暂时隐藏UI测试） */}
-    <div class="guild-showcase__row">
-      {guildConfig.testTypes
-        .filter(testType => testType.id === 'performance-testing')
-        .map((testType) => (
-          <div class="guild-section" data-test-type={testType.id}>
-            <div class="guild-section__header">
-              <span class="guild-section__icon">{testType.icon}</span>
-              <div class="guild-section__info">
-                <h3 class="guild-section__title">{testType.title}</h3>
-                <p class="guild-section__description">{testType.description}</p>
-              </div>
-            </div>
-            
-            <div class="guild-section__frameworks">
-              {testType.frameworks.map((framework) => (
-                <a 
-                  href={`/${locale}/guild/${testType.id}/${framework.id}/`}
-                  class="framework-tag"
-                  title={framework.description}
-                >
-                  <span class="framework-tag__name">{framework.name}</span>
-                  <span class="framework-tag__lang">{framework.language}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        ))}
+    <!-- Stats row -->
+    <div class="gs-stats" aria-label={isZh ? '指南统计' : 'Guide stats'}>
+      <span class="gs-stat">
+        <strong>{visibleTypes.length}</strong>
+        {isZh ? ' 测试类型' : ' Test Types'}
+      </span>
+      <span class="gs-stat-sep" aria-hidden="true">·</span>
+      <span class="gs-stat">
+        <strong>{totalFrameworks}</strong>
+        {isZh ? ' 框架' : ' Frameworks'}
+      </span>
+      <span class="gs-stat-sep" aria-hidden="true">·</span>
+      <span class="gs-stat">
+        {isZh ? '从入门到进阶' : 'Beginner to Advanced'}
+      </span>
     </div>
   </div>
 
-  <div class="guild-showcase__footer">
-    <a href={`/${locale}/guild/`} class="guild-showcase__cta">
-      {locale === 'zh-cn' ? '查看完整指南' : 'View Full Guide'}
-      <span class="material-icons-sharp">arrow_forward</span>
+  <!-- Test type sections -->
+  <div class="gs-sections">
+    {visibleTypes.map((testType) => (
+      <div class="gs-type-block" data-type={testType.id}>
+        <!-- Type header -->
+        <div class="gs-type-header">
+          <span class="gs-type-icon" aria-hidden="true">{testType.icon}</span>
+          <div class="gs-type-meta">
+            <h3 class="gs-type-title">{testType.title}</h3>
+            <p class="gs-type-desc">{testType.description}</p>
+          </div>
+          <a href={`/${locale}/guild/${testType.id}/`} class="gs-type-link" aria-label={isZh ? `查看${testType.title}全部内容` : `View all ${testType.title}`}>
+            {isZh ? '查看全部' : 'View all'}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Framework cards -->
+        <div class="gs-frameworks">
+          {testType.frameworks.map((fw) => (
+            <a
+              href={`/${locale}/guild/${testType.id}/${fw.id}/`}
+              class="gs-fw-card"
+              title={fw.description}
+              style={`--fw-color: ${fw.color ?? 'var(--color-theme)'}`}
+            >
+              <div class="gs-fw-card-top">
+                {fw.icon ? (
+                  <img
+                    src={fw.icon}
+                    alt={fw.name}
+                    class="gs-fw-icon"
+                    width="28"
+                    height="28"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                  />
+                ) : (
+                  <span class="gs-fw-icon-fallback" aria-hidden="true">{testType.icon}</span>
+                )}
+                <span class="gs-fw-lang">{fw.language}</span>
+              </div>
+              <span class="gs-fw-name">{fw.name}</span>
+              <span class="gs-fw-desc">{fw.description}</span>
+              <span class="gs-fw-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <div class="gs-footer">
+    <a href={`/${locale}/guild/`} class="gs-cta">
+      {isZh ? '查看完整指南' : 'View Full Guide'}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
   </div>
 </section>
 
 <style>
+  /* ── Section wrapper ── */
   .guild-showcase {
     margin-block: var(--sp-l);
-  }
-
-  .guild-showcase__header {
-    text-align: center;
-    margin-bottom: var(--sp-l);
-  }
-
-  .guild-showcase__title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--color-main);
-    margin-bottom: 0.5rem;
-  }
-
-  .guild-showcase__subtitle {
-    font-size: 0.95rem;
-    color: var(--color-main);
-    opacity: 0.75;
-    margin: 0;
-  }
-
-  .guild-showcase__sections {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-l);
-    margin-bottom: var(--sp-l);
-  }
-
-  .guild-showcase__row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--sp-l);
-  }
-
-  .guild-section {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: var(--sp-m);
-    transition: all 0.3s ease;
-  }
-
-  .guild-section:hover {
-    border-color: var(--color-theme);
-    box-shadow: 0 4px 16px rgba(239, 77, 26, 0.15);
-  }
-
-  .guild-section__header {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--sp-m);
-    margin-bottom: var(--sp-m);
-    padding-bottom: var(--sp-m);
-    border-bottom: 1px solid var(--card-border);
-  }
-
-  .guild-section__icon {
-    font-size: 2.5rem;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .guild-section__info {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .guild-section__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-theme);
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
-  }
-
-  .guild-section__description {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: var(--color-main);
-    opacity: 0.8;
-    margin: 0;
-  }
-
-  .guild-section__frameworks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .framework-tag {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    padding: 0.6rem 1rem;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--color-theme) 3%, var(--color-base));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
     position: relative;
     overflow: hidden;
   }
+  /* Subtle radial glow in top-right */
+  .guild-showcase::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 80% 0%, color-mix(in srgb, var(--color-theme) 8%, transparent), transparent 70%);
+    pointer-events: none;
+  }
 
-  .framework-tag::before {
+  /* ── Header ── */
+  .gs-header {
+    text-align: center;
+    margin-block-end: 2.5rem;
+    position: relative;
+  }
+  .gs-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3em 0.9em;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    margin-block-end: 0.9rem;
+  }
+  .gs-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 0 0 0.6rem;
+    background: linear-gradient(135deg, var(--color-main) 30%, color-mix(in srgb, var(--color-theme) 80%, var(--color-main)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gs-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    margin: 0 0 1.25rem;
+  }
+  .gs-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+  }
+  .gs-stats strong {
+    color: var(--color-theme);
+    font-weight: 700;
+  }
+  .gs-stat-sep {
+    opacity: 0.4;
+  }
+
+  /* ── Test type blocks ── */
+  .gs-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .gs-type-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .gs-type-block:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 40%, transparent);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+
+  /* Type header row */
+  .gs-type-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-block-end: 1.25rem;
+    padding-block-end: 1rem;
+    border-block-end: 1px solid var(--color-border);
+  }
+  .gs-type-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--color-theme) 30%, transparent));
+  }
+  .gs-type-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .gs-type-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0 0 0.2rem;
+    line-height: 1.3;
+  }
+  .gs-type-desc {
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .gs-type-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.35em 0.8em;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .gs-type-link:hover {
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-color: var(--color-theme);
+    transform: translateX(2px);
+  }
+
+  /* ── Framework cards grid ── */
+  .gs-frameworks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+  .gs-fw-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--color-base);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  /* Colored top accent line */
+  .gs-fw-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--color-theme);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
+    background: var(--fw-color, var(--color-theme));
+    opacity: 0;
+    transition: opacity 0.2s;
   }
-
-  .framework-tag:hover {
-    border-color: var(--color-theme);
+  .gs-fw-card:hover {
+    border-color: var(--fw-color, var(--color-theme));
     transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(239, 77, 26, 0.2);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--fw-color, var(--color-theme)) 18%, transparent);
   }
-
-  .framework-tag:hover::before {
-    transform: scaleX(1);
+  .gs-fw-card:hover::before {
+    opacity: 1;
   }
-
-  .framework-tag__name {
-    font-size: 0.95rem;
+  .gs-fw-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-block-end: 0.25rem;
+  }
+  .gs-fw-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+  .gs-fw-icon-fallback {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  .gs-fw-lang {
+    font-size: 0.68rem;
     font-weight: 600;
-    color: var(--color-theme);
-    line-height: 1.2;
+    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    background: color-mix(in srgb, var(--color-main) 8%, transparent);
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90px;
   }
-
-  .framework-tag__lang {
-    font-size: 0.75rem;
+  .gs-fw-name {
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--color-main);
-    opacity: 0.6;
-    line-height: 1.2;
+    line-height: 1.3;
+  }
+  .gs-fw-desc {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+  .gs-fw-arrow {
+    display: inline-flex;
+    align-items: center;
+    color: var(--fw-color, var(--color-theme));
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    margin-block-start: auto;
+    align-self: flex-end;
+  }
+  .gs-fw-card:hover .gs-fw-arrow {
+    opacity: 1;
+    transform: translateX(3px);
   }
 
-  .guild-showcase__footer {
+  /* ── Footer CTA ── */
+  .gs-footer {
     display: flex;
     justify-content: center;
-    margin-top: var(--sp-l);
+    margin-block-start: 2rem;
   }
-
-  .guild-showcase__cta {
+  .gs-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.6rem 1.5rem;
-    background-color: rgba(239, 77, 26, 0.08);
-    color: var(--color-theme);
-    border: 1px solid var(--color-theme);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
+    padding: 0.65rem 1.75rem;
     border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border: 1px solid var(--color-theme);
+    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
   }
-
-  .guild-showcase__cta:hover {
-    background-color: var(--color-theme);
+  .gs-cta:hover {
+    background: var(--color-theme);
     color: var(--color-base);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px var(--color-theme);
+    box-shadow: 0 8px 20px -6px var(--color-theme);
   }
 
+  /* ── Responsive ── */
   @media (max-width: 768px) {
-    .guild-showcase__row {
-      grid-template-columns: 1fr;
+    .guild-showcase {
+      padding: 2rem 1.25rem;
+      border-radius: 16px;
     }
-
-    .guild-section__header {
-      flex-direction: column;
-      gap: var(--sp-s);
+    .gs-type-header {
+      flex-wrap: wrap;
     }
-
-    .guild-section__icon {
-      font-size: 2rem;
+    .gs-type-link {
+      margin-inline-start: auto;
     }
-
-    .guild-section__title {
-      font-size: 1.15rem;
+    .gs-frameworks {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
-
-    .guild-section__description {
-      font-size: 0.85rem;
+  }
+  @media (max-width: 480px) {
+    .gs-frameworks {
+      grid-template-columns: repeat(2, 1fr);
     }
-
-    .guild-section__frameworks {
-      gap: 0.5rem;
-    }
-
-    .framework-tag {
-      padding: 0.5rem 0.75rem;
-    }
-
-    .framework-tag__name {
-      font-size: 0.85rem;
-    }
-
-    .framework-tag__lang {
-      font-size: 0.7rem;
+    .gs-title {
+      font-size: 1.5rem;
     }
   }
 
-  /* 为不同测试类型添加特定样式 */
-  .guild-section[data-test-type="api-testing"] .guild-section__icon {
-    color: #ef4d1a;
-  }
-
-  .guild-section[data-test-type="ui-testing"] .guild-section__icon {
-    color: #2ead33;
-  }
-
-  .guild-section[data-test-type="performance-testing"] .guild-section__icon {
-    color: #7d64ff;
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .gs-fw-card,
+    .gs-type-link,
+    .gs-cta {
+      transition: none;
+    }
+    .gs-fw-card:hover {
+      transform: none;
+    }
   }
 </style>

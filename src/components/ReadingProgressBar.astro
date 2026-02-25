@@ -1,0 +1,62 @@
+---
+// ReadingProgressBar.astro — fixed reading progress indicator at viewport top
+// Used in Article.astro layout only (Requirement 4, 11.1)
+---
+
+<div
+  id="reading-progress-bar"
+  role="progressbar"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="0"
+></div>
+
+<style>
+  #reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--color-theme);
+    /* 4.3: z-index higher than page header */
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* 4.4: Remove transition when user prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    #reading-progress-bar {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const bar = document.getElementById("reading-progress-bar");
+    if (!bar) return;
+
+    function updateProgress() {
+      if (!bar) return;
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      const vpHeight = window.innerHeight;
+      const scrollable = docHeight - vpHeight;
+
+      // Clamp to [0, 100]
+      const pct = scrollable > 0
+        ? Math.min(100, Math.max(0, (scrollY / scrollable) * 100))
+        : 0;
+
+      bar.style.width = pct + "%";
+      bar.setAttribute("aria-valuenow", String(Math.round(pct)));
+    }
+
+    // 4.2: Listen to scroll events
+    window.addEventListener("scroll", updateProgress, { passive: true });
+
+    // Set initial value
+    updateProgress();
+  })();
+</script>

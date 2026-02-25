@@ -16,6 +16,7 @@ import {
   getDifficultyName,
 } from "@/data/guild";
 import { getGuildConfig } from "@/config/guild.config";
+import { readingTime } from "@/utils/readingTime";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
@@ -114,6 +115,10 @@ const articleSchema = {
 
 const stageName = getStageName(entry.data.stage, locale);
 const difficultyName = getDifficultyName(entry.data.difficulty, locale);
+
+// Reading time (13.1)
+const wordCount = (entry.body ?? '').split(/\s+/).filter(Boolean).length;
+const readMinutes = readingTime(wordCount);
 ---
 
 <DocsLayout
@@ -132,12 +137,20 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
     <!-- 文章元信息 -->
     <div class="guild-meta">
       <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "类型" : "Type"}:</span>
+        <span class="guild-meta-value">{testTypeConfig.title}</span>
+      </span>
+      <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "框架" : "Framework"}:</span>
+        <span class="guild-meta-value">{frameworkConfig.name}</span>
+      </span>
+      <span class="guild-meta-item">
         <span class="guild-meta-label">{locale === "zh-cn" ? "阶段" : "Stage"}:</span>
         <span class="guild-meta-value">{stageName}</span>
       </span>
       <span class="guild-meta-item">
         <span class="guild-meta-label">{locale === "zh-cn" ? "难度" : "Difficulty"}:</span>
-        <span class="guild-meta-value">{difficultyName}</span>
+        <span class={`difficulty-badge difficulty-badge--${entry.data.difficulty}`}>{difficultyName}</span>
       </span>
       {entry.data.duration && (
         <span class="guild-meta-item">
@@ -149,30 +162,38 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
         <span class="guild-meta-label">{locale === "zh-cn" ? "语言" : "Language"}:</span>
         <span class="guild-meta-value">{entry.data.language}</span>
       </span>
+      <span class="guild-meta-item">
+        <span class="guild-meta-label">{locale === "zh-cn" ? "阅读" : "Read"}:</span>
+        <span class="guild-meta-value">{readMinutes} {locale === "zh-cn" ? "分钟阅读" : "min read"}</span>
+      </span>
     </div>
 
-    <!-- 快速链接 -->
-    {(entry.data.githubDemo || entry.data.officialDocs) && (
-      <div class="guild-links">
-        {entry.data.githubDemo && (
-          <a href={entry.data.githubDemo} target="_blank" rel="noopener noreferrer" class="guild-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            {locale === "zh-cn" ? "示例代码" : "Demo Code"}
-          </a>
-        )}
-        {entry.data.officialDocs && (
-          <a href={entry.data.officialDocs} target="_blank" rel="noopener noreferrer" class="guild-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-            {locale === "zh-cn" ? "官方文档" : "Official Docs"}
-          </a>
-        )}
-      </div>
-    )}
+    {/* 快速链接：frontmatter 优先，fallback 到 frameworkConfig */}
+    {(() => {
+      const demoUrl = entry.data.githubDemo || frameworkConfig.githubDemo;
+      const docsUrl = entry.data.officialDocs || frameworkConfig.officialDocs;
+      return (demoUrl || docsUrl) && (
+        <div class="guild-links">
+          {demoUrl && (
+            <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="guild-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              {locale === "zh-cn" ? "示例代码" : "Demo Code"}
+            </a>
+          )}
+          {docsUrl && (
+            <a href={docsUrl} target="_blank" rel="noopener noreferrer" class="guild-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              {locale === "zh-cn" ? "官方文档" : "Official Docs"}
+            </a>
+          )}
+        </div>
+      );
+    })()}
 
     <!-- 文章内容 -->
     <div class="guild-content">
@@ -200,6 +221,14 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
 
   <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
 </DocsLayout>
+
+<script>
+  // 13.7: Scroll sidebar to current article on page load
+  const activeLink = document.querySelector('.docs-sidebar-link--active');
+  if (activeLink) {
+    activeLink.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  }
+</script>
 
 <style>
   .guild-article {
@@ -234,6 +263,29 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
     font-weight: 500;
   }
 
+  /* 13.2: Difficulty badge */
+  .difficulty-badge {
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
+  .difficulty-badge--beginner {
+    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-theme);
+  }
+
+  .difficulty-badge--intermediate {
+    background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    color: var(--color-accent);
+  }
+
+  .difficulty-badge--advanced {
+    background: color-mix(in srgb, var(--color-warn) 15%, transparent);
+    color: var(--color-warn);
+  }
+
   .guild-links {
     display: flex;
     gap: var(--sp-m);
@@ -246,11 +298,11 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
     gap: 0.5em;
     padding: 0.6em 1.2em;
     font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-base);
+    font-weight: 600;
+    color: #fff !important;
     background: var(--color-theme);
     border-radius: 8px;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: all 0.2s ease;
   }
 
@@ -260,16 +312,28 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
     box-shadow: 0 4px 12px color-mix(in srgb, var(--color-theme) 30%, transparent);
   }
 
+  /* 13.3: Prose area */
+  .guild-content {
+    max-inline-size: 68ch;
+    line-height: 1.8;
+  }
+
   .guild-content :global(h1) {
     margin-block-end: var(--sp-m);
   }
 
   .guild-content :global(h2) {
-    margin-block: var(--sp-l) var(--sp-s);
+    font-size: 1.5rem;
+    border-inline-start: 4px solid var(--color-theme);
+    padding-inline-start: var(--sp-s);
+    margin-block: 2em 0.5em;
   }
 
   .guild-content :global(h3) {
-    margin-block: var(--sp-m) var(--sp-s);
+    font-size: 1.25rem;
+    border-block-end: 1px solid var(--color-border);
+    padding-block-end: 0.2em;
+    margin-block: 1.5em 0.5em;
   }
 
   .guild-content :global(a) {
@@ -291,22 +355,31 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
     border-block-start: 2px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
   }
 
+  /* 13.4: Pagination hover */
   .guild-pagination-link {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
     padding: var(--sp-m);
-    background: color-mix(in srgb, var(--color-theme) 5%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: var(--transition-base);
   }
 
   .guild-pagination-link:hover {
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    background: var(--color-surface);
     border-color: var(--color-theme);
-    transform: translateY(-2px);
+    box-shadow: 0 0 12px var(--glow-theme);
+  }
+
+  .guild-pagination-prev:hover {
+    transform: translateX(-4px);
+  }
+
+  .guild-pagination-next:hover {
+    transform: translateX(4px);
   }
 
   .guild-pagination-prev {
@@ -356,6 +429,14 @@ const difficultyName = getDifficultyName(entry.data.difficulty, locale);
 
     .guild-pagination-next {
       grid-column: 1;
+    }
+  }
+
+  /* 13.9: Disable nav hover transform for reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .guild-pagination-link {
+      transform: none !important;
+      transition: none !important;
     }
   }
 </style>

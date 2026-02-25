@@ -2,6 +2,7 @@
 import Analytics from "@/components/Analytics.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
 import SearchModal from "@/components/SearchModal.astro";
 import LocaleHtmlHead from "@/components/i18n/LocaleHtmlHead.astro";
 import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
@@ -223,20 +224,24 @@ const breadcrumbSchema =
     ))}
     <LocaleHtmlHead />
     <Analytics />
-    <!-- Google AdSense -->
-    <script
-      is:inline
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-      crossorigin="anonymous"
-    />
-    <!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) -->
-    <script is:inline
-      id="counterscale-script"
-      data-site-id="inaodeng.com"
-      src="https://analytics.inaodeng.com/tracker.js"
-      defer
-    />
+    {!import.meta.env.DEV && (
+      <>
+        <!-- Google AdSense -->
+        <script
+          is:inline
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
+          crossorigin="anonymous"
+        />
+        <!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) -->
+        <script is:inline
+          id="counterscale-script"
+          data-site-id="inaodeng.com"
+          src="https://analytics.inaodeng.com/tracker.js"
+          defer
+        />
+      </>
+    )}
   </head>
 
   <body>
@@ -249,6 +254,8 @@ const breadcrumbSchema =
     </main>
 
     <Footer />
+
+    <ScrollToTop lang={locale} />
 
     <SearchModal />
 

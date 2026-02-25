@@ -1,13 +1,11 @@
 ---
 /**
  * 博文侧栏：作者信息 + 站点统计（文章/分类/标签/字数）
- * 参考 eallion 等博客侧栏样式，不占用正文区域
  */
 interface Props {
   avatarUrl: string;
   authorName: string;
   slogan: string;
-  /** 头像点击跳转（如首页 URL） */
   authorLink?: string;
   stats: {
     articles: number;
@@ -21,11 +19,17 @@ interface Props {
     tags: string;
     words: string;
   };
+  social?: {
+    github?: string;
+    medium?: string;
+    x?: string;
+    weibo?: string;
+    rss?: string;
+  };
 }
 
-const { avatarUrl, authorName, slogan, authorLink = "#", stats, labels } = Astro.props;
+const { avatarUrl, authorName, slogan, authorLink = "#", stats, labels, social } = Astro.props;
 
-/** 字数超过 1000 显示为 Xk */
 function formatWords(n: number): string {
   if (n >= 1000) return `${Math.round(n / 1000)}k`;
   return String(n);
@@ -38,6 +42,45 @@ function formatWords(n: number): string {
   </a>
   <h3 class="author-name">{authorName}</h3>
   <p class="author-slogan">{slogan}</p>
+  {social && Object.values(social).some(Boolean) && (
+    <div class="author-social">
+      {social.github && (
+        <a href={social.github} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+          </svg>
+        </a>
+      )}
+      {social.medium && (
+        <a href={social.medium} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+          </svg>
+        </a>
+      )}
+      {social.x && (
+        <a href={social.x} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      )}
+      {social.weibo && (
+        <a href={social.weibo} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="微博">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zm5.44-13.922c-.375-.107-.632-.179-.436-.645.426-1.071.469-1.993.008-2.653-.855-1.228-3.199-1.161-5.882-.014 0 0-.842.368-.626-.299.414-1.336.351-2.454-.295-3.101-1.455-1.455-5.323.056-8.636 3.368C.222 5.705 0 8.124 0 10.083c0 5.815 7.455 9.354 14.745 9.354 9.571 0 15.94-5.567 15.94-9.983 0-2.669-2.25-4.191-4.147-4.191-.786 0-1.258.179-1.258.179s.35-1.44-.742-1.041zm-1.551 9.199c-.395 1.016-1.458 1.748-2.668 1.748-1.21 0-2.273-.732-2.668-1.748-.395-1.016.148-2.148 1.358-2.148.396 0 .791.148 1.11.395.319-.247.714-.395 1.11-.395 1.21 0 1.753 1.132 1.358 2.148z"/>
+          </svg>
+        </a>
+      )}
+      {social.rss && (
+        <a href={social.rss} class="social-btn social-btn--rss" rel="noopener noreferrer" aria-label="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+        </a>
+      )}
+    </div>
+  )}
   <hr class="author-divider" />
   <div class="author-stats">
     <div class="stat-item">
@@ -93,6 +136,38 @@ function formatWords(n: number): string {
     font-style: italic;
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
     line-height: 1.4;
+  }
+  .author-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-block-start: 0.75rem;
+  }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--color-main) 20%, transparent);
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .social-btn:hover {
+    color: var(--color-theme);
+    border-color: var(--color-theme);
+    background-color: color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+  .social-btn--rss:hover {
+    color: #f26522;
+    border-color: #f26522;
+    background-color: color-mix(in srgb, #f26522 10%, transparent);
+  }
+  .social-btn:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
   }
   .author-divider {
     margin: 1rem 0;

@@ -1,0 +1,273 @@
+---
+/**
+ * 框架学习工作流程组件
+ * 在框架概述页展示针对该框架的三步学习流程
+ */
+import type { Framework, TestType } from '../../config/guild.config';
+
+interface Props {
+  framework: Framework;
+  testType: TestType;
+  locale: string;
+  articleCount: number;
+}
+
+const { framework, testType, locale, articleCount } = Astro.props;
+const isZh = locale === 'zh-cn';
+
+const steps = isZh
+  ? [
+      {
+        number: '1',
+        title: '选择框架',
+        done: true,
+        description: `你已选择 ${framework.name}`,
+        details: [
+          `测试类型：${testType.title}`,
+          `编程语言：${framework.language}`,
+          `共 ${articleCount} 篇教程`,
+        ],
+      },
+      {
+        number: '2',
+        title: '跟随学习路径',
+        done: false,
+        description: '按照系统化的学习路径，从入门到进阶',
+        details: [
+          '环境搭建和配置',
+          '编写第一个测试脚本',
+          '进阶技巧和最佳实践',
+        ],
+      },
+      {
+        number: '3',
+        title: '实践和集成',
+        done: false,
+        description: '通过 Demo 项目实践，并集成到 CI/CD 流程',
+        details: [
+          framework.githubDemo ? '克隆 GitHub Demo 项目' : '编写实战测试脚本',
+          '本地运行和调试',
+          '集成到 CI/CD 流程',
+        ],
+        link: framework.githubDemo,
+        linkText: '查看 Demo 项目',
+      },
+    ]
+  : [
+      {
+        number: '1',
+        title: 'Framework Selected',
+        done: true,
+        description: `You've chosen ${framework.name}`,
+        details: [
+          `Test type: ${testType.title}`,
+          `Language: ${framework.language}`,
+          `${articleCount} articles available`,
+        ],
+      },
+      {
+        number: '2',
+        title: 'Follow Learning Path',
+        done: false,
+        description: 'Follow systematic paths from beginner to advanced',
+        details: [
+          'Environment setup',
+          'Write your first test',
+          'Advanced techniques & best practices',
+        ],
+      },
+      {
+        number: '3',
+        title: 'Practice & Integrate',
+        done: false,
+        description: 'Practice with demo projects and integrate into CI/CD',
+        details: [
+          framework.githubDemo ? 'Clone GitHub demo project' : 'Write real-world tests',
+          'Run and debug locally',
+          'Integrate into CI/CD pipeline',
+        ],
+        link: framework.githubDemo,
+        linkText: 'View Demo Project',
+      },
+    ];
+---
+
+<div class="fw-workflow">
+  <div class="fw-workflow__header">
+    <h2 class="fw-workflow__title">
+      {isZh ? '📋 学习工作流程' : '📋 Learning Workflow'}
+    </h2>
+    <p class="fw-workflow__subtitle">
+      {isZh ? '三步完成你的学习之旅' : 'Three steps to complete your learning journey'}
+    </p>
+  </div>
+
+  <div class="fw-workflow__steps">
+    {steps.map((step) => (
+      <div class={`fw-step ${step.done ? 'fw-step--done' : ''}`}>
+        <div class="fw-step__head">
+          <div class="fw-step__num">{step.number}</div>
+          <h3 class="fw-step__title">{step.title}</h3>
+        </div>
+        <p class="fw-step__desc">{step.description}</p>
+        <ul class="fw-step__list">
+          {step.details.map((d) => <li>{d}</li>)}
+        </ul>
+        {'link' in step && step.link && (
+          <div class="fw-step__footer">
+            <a href={step.link} target="_blank" rel="noopener noreferrer" class="fw-step__link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              {step.linkText}
+            </a>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .fw-workflow {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .fw-workflow__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .fw-workflow__title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 800;
+    color: var(--color-main);
+    margin: 0 0 0.35rem;
+  }
+
+  .fw-workflow__subtitle {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    margin: 0;
+  }
+
+  .fw-workflow__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .fw-step {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: var(--transition-base);
+  }
+
+  .fw-step:hover {
+    border-color: var(--color-theme);
+    box-shadow: 0 0 20px var(--glow-theme);
+    transform: translateY(-4px);
+  }
+
+  /* Step 1 is "done" — highlight it */
+  .fw-step--done {
+    border-color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 4%, var(--color-surface));
+  }
+
+  .fw-step__num {
+    width: 36px;
+    height: 36px;
+    background: var(--color-theme);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    font-family: var(--english-font);
+  }
+
+  .fw-step__head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .fw-step__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .fw-step__desc {
+    font-size: 0.82rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .fw-step__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .fw-step__list li {
+    font-size: 0.78rem;
+    color: color-mix(in srgb, var(--color-main) 62%, transparent);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.3rem;
+  }
+
+  .fw-step__list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--color-theme);
+  }
+
+  .fw-step__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+    padding: 0.3em 0.75em;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    transition: var(--transition-base);
+    align-self: flex-start;
+  }
+
+  .fw-step__link:hover {
+    background: var(--color-theme);
+    color: #fff;
+    border-color: var(--color-theme);
+  }
+
+  @media (max-width: 640px) {
+    .fw-workflow__steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

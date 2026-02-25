@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 35
 order: 1
-githubDemo: https://github.com/naodeng/k6-demo
+githubDemo: https://github.com/Automation-Test-Starter/K6-Performance-Test-starter
 officialDocs: https://k6.io/docs/
 date: 2024-01-09T09:22:00.000Z
 ---

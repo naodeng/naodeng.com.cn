@@ -12,6 +12,7 @@ export interface Framework {
   githubDemo?: string;
   officialDocs?: string;
   color?: string;
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
 }
 
 export interface TestType {

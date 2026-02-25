@@ -2,12 +2,11 @@
 /**
  * 可选接入 Google Analytics (GA4)。
  * 通过环境变量 PUBLIC_GA_MEASUREMENT_ID 启用，不设置则不会注入任何脚本。
- *
- * 在 GA4 后台「数据流」→ 网站 → 测量 ID 获取，如 G-XXXXXXXXXX
+ * 开发模式（npm run dev）下不加载，避免污染统计数据。
  */
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
-const useGa = Boolean(gaId?.trim());
+const useGa = Boolean(gaId?.trim()) && !import.meta.env.DEV;
 ---
 
 {useGa && (

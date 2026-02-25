@@ -8,7 +8,7 @@ stage: ci-cd
 difficulty: advanced
 duration: 60
 order: 6
-githubDemo: https://github.com/naodeng/supertest-demo
+githubDemo: https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter
 officialDocs: https://github.com/ladjs/supertest
 date: 2023-11-07T10:09:43.000Z
 ---

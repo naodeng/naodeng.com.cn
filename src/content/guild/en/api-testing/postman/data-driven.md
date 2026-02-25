@@ -8,7 +8,7 @@ stage: advanced
 difficulty: intermediate
 duration: 50
 order: 3
-githubDemo: https://github.com/naodeng/postman-demo
+githubDemo: https://github.com/Automation-Test-Starter/Postman-API-Test-Starter
 officialDocs: https://learning.postman.com/
 date: 2023-11-24T11:37:00.000Z
 ---

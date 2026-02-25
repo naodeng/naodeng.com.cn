@@ -8,7 +8,7 @@ stage: basic
 difficulty: intermediate
 duration: 45
 order: 3
-githubDemo: https://github.com/naodeng/rest-assured-demo
+githubDemo: https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter
 officialDocs: https://rest-assured.io/
 date: 2023-11-03T01:25:19.000Z
 ---

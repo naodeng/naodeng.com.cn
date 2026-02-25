@@ -27,9 +27,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Install E2E dependencies and run tests
+      - name: Install test dependencies and run tests
         run: |
-          cd e2e && npm ci
+          cd tests && npm ci
           npx playwright install --with-deps chromium
           npx playwright test
         env:

@@ -8,7 +8,7 @@ stage: ci-cd
 difficulty: advanced
 duration: 55
 order: 4
-githubDemo: https://github.com/naodeng/gatling-demo
+githubDemo: https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter
 officialDocs: https://gatling.io/docs/
 date: 2023-10-30T02:36:24.000Z
 ---
@@ -137,10 +137,6 @@ jobs:
 
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
-{/* markdownlint-disable MD045 */}
-{/* markdownlint-disable MD033 */}
 <div style="text-align: center">
   <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
 </div>
-{/* markdownlint-disable MD033 */}
-{/* markdownlint-disable MD045 */}

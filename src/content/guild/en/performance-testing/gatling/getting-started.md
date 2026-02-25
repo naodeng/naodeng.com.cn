@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 40
 order: 2
-githubDemo: https://github.com/naodeng/gatling-demo
+githubDemo: https://github.com/Automation-Test-Starter/Gatling-Performance-Test-starter
 officialDocs: https://gatling.io/docs/
 date: 2023-10-25T03:05:45.000Z
 ---

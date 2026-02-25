@@ -19,81 +19,129 @@ const breadcrumbs = [
   { name: '首页', url: `/${locale}/` },
   { name: '指南', url: `/${locale}/guild/` },
 ];
+
+const visibleTestTypes = guildConfig.testTypes.filter(t => t.id !== 'ui-testing');
 ---
 
 <Base title={title} description={description} breadcrumbs={breadcrumbs}>
-  <div class="guild-page">
-    <div class="guild-container">
-      <GuildHero locale={locale} />
-      
-      <div class="guild-content">
-        <h2 class="guild-content__title">📚 测试框架学习路径</h2>
-        <p class="guild-content__description">
-          选择你感兴趣的测试类型和框架，开始系统化的学习之旅。每个框架都提供从入门到进阶的完整学习路径。
-        </p>
-        {guildConfig.testTypes
-          .filter(testType => testType.id !== 'ui-testing')
-          .map((testType) => (
-            <TestTypeSection testType={testType} locale={locale} />
-          ))}
+  <div class="l-content guild-page">
+
+    <!-- Hero card -->
+    <GuildHero locale={locale} />
+
+    <!-- Filter bar card -->
+    <div class="filter-card">
+      <div class="filter-card__label">📚 学习路径</div>
+      <div class="filter-bar" role="group" aria-label="按测试类型筛选">
+        <button class="filter-pill filter-pill--active" data-filter="all">全部</button>
+        {visibleTestTypes.map((t) => (
+          <button class="filter-pill" data-filter={t.id}>
+            {t.icon && <span aria-hidden="true">{t.icon}</span>}
+            {t.title}
+          </button>
+        ))}
       </div>
-      
-      <GuildFeatures locale={locale} />
-      
-      <LearningWorkflow locale={locale} />
     </div>
+
+    <!-- Test type sections (each is a card block) -->
+    {visibleTestTypes.map((testType) => (
+      <TestTypeSection testType={testType} locale={locale} />
+    ))}
+
+    <!-- Features card -->
+    <GuildFeatures locale={locale} />
+
+    <!-- Workflow card -->
+    <LearningWorkflow locale={locale} />
+
   </div>
 </Base>
 
+<script>
+  const pills = document.querySelectorAll<HTMLButtonElement>('.filter-pill');
+  const sections = document.querySelectorAll<HTMLElement>('[data-testtype]');
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const filter = pill.dataset.filter;
+      pills.forEach((p) => p.classList.remove('filter-pill--active'));
+      pill.classList.add('filter-pill--active');
+      sections.forEach((s) => {
+        s.hidden = !(filter === 'all' || s.dataset.testtype === filter);
+      });
+    });
+  });
+</script>
+
 <style>
   .guild-page {
-    min-height: 100vh;
+    padding-block-start: var(--sp-m);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .guild-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  /* ── Filter card ── */
+  .filter-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
-  .guild-content {
-    margin-top: 2rem;
+  .filter-card__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
   }
 
-  .guild-content__title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-main);
-    text-align: center;
-    margin: 0 0 1rem 0;
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
-  .guild-content__description {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--color-main);
-    opacity: 0.75;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3rem;
+  .filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
   }
 
-  @media (max-width: 768px) {
-    .guild-container {
-      padding: 1rem;
-    }
+  .filter-pill:hover {
+    border-color: var(--color-theme);
+    color: var(--color-theme);
+  }
 
-    .guild-content {
-      margin-top: 3rem;
-    }
+  .filter-pill--active {
+    background: var(--color-theme);
+    border-color: var(--color-theme);
+    color: #fff;
+  }
 
-    .guild-content__title {
-      font-size: 1.5rem;
-    }
+  .filter-pill--active:hover {
+    opacity: 0.9;
+    color: #fff;
+  }
 
-    .guild-content__description {
-      font-size: 1rem;
-      margin-bottom: 2rem;
+  @media (max-width: 480px) {
+    .filter-card {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>

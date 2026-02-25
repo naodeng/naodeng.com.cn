@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 40
 order: 2
-githubDemo: https://github.com/naodeng/bruno-demo
+githubDemo: https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter
 officialDocs: https://www.usebruno.com/
 date: 2024-01-23T09:58:14.000Z
 ---

@@ -8,7 +8,7 @@ stage: getting-started
 difficulty: beginner
 duration: 40
 order: 2
-githubDemo: https://github.com/naodeng/supertest-demo
+githubDemo: https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter
 officialDocs: https://github.com/ladjs/supertest
 date: 2023-11-06T04:30:26.000Z
 ---
