@@ -8,6 +8,7 @@ import GuildHero from '../../../components/guild/GuildHero.astro';
 import GuildFeatures from '../../../components/guild/GuildFeatures.astro';
 import LearningWorkflow from '../../../components/guild/LearningWorkflow.astro';
 import TestTypeSection from '../../../components/guild/TestTypeSection.astro';
+import GoogleAd from '../../../components/GoogleAd.astro';
 
 const locale = 'en';
 const guildConfig = getGuildConfig(locale);
@@ -50,6 +51,8 @@ const visibleTestTypes = guildConfig.testTypes.filter(t => t.id !== 'ui-testing'
 
     <!-- Features card -->
     <GuildFeatures locale={locale} />
+
+    <GoogleAd />
 
     <!-- Workflow card -->
     <LearningWorkflow locale={locale} />

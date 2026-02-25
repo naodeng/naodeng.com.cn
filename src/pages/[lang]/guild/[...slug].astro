@@ -6,6 +6,7 @@
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_GUILD } from "@/consts";
 import {
   guildIdToSlug,
@@ -219,6 +220,7 @@ const readMinutes = readingTime(wordCount);
     )}
   </article>
 
+  <GoogleAd />
   <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
 </DocsLayout>
 

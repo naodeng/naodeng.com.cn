@@ -20,6 +20,7 @@ import {
 } from "@/consts";
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -170,6 +171,8 @@ export const getStaticPaths = () =>
       ))}
     </div>
   </section>
+
+  <GoogleAd />
 
   <section class="home-section latest">
     <div class="section-header">

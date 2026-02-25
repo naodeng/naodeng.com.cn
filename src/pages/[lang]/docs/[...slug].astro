@@ -6,6 +6,7 @@
 import { getCollection, render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import DocsLayout from "@/layouts/Docs.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { buildDocsNavFromCollection } from "@/data/docsNav";
 import { NAV_HOME } from "@/consts";
 import type { Lang } from "@/i18n";
@@ -61,6 +62,7 @@ const { Content } = await render(entry);
   <article class="docs-prose">
     <Content />
   </article>
+  <GoogleAd />
 </DocsLayout>
 
 <style>

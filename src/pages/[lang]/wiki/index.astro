@@ -8,6 +8,7 @@ import { getCollection } from "astro:content";
 import { LOCALES } from "@/i18n";
 import Base from "@/layouts/Base.astro";
 import DocsLayout from "@/layouts/Docs.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { buildWikiSidebar } from "@/data/wiki";
 import { NAV_HOME } from "@/consts";
 import type { Lang } from "@/i18n";
@@ -110,6 +111,7 @@ const letterGroupCount = letterSections.length;
         <a href="#wiki-by-letter-heading" class="wiki-back-top-link">↑ 返回顶部</a>
       </p>
     </section>
+    <GoogleAd />
   </DocsLayout>
 )}
 

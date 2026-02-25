@@ -1,0 +1,27 @@
+---
+/**
+ * Google AdSense 文章内广告（in-article fluid 格式）
+ * 仅在生产环境渲染，开发环境跳过
+ */
+---
+
+{!import.meta.env.DEV && (
+  <div class="ad-wrap" aria-hidden="true">
+    <ins
+      class="adsbygoogle"
+      style="display:block; text-align:center;"
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
+      data-ad-client="ca-pub-7249159446737834"
+      data-ad-slot="5247439587"
+    />
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+)}
+
+<style>
+  .ad-wrap {
+    margin-block: 2rem;
+    width: 100%;
+  }
+</style>
