@@ -95,7 +95,12 @@ test.describe("性能与加载", () => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") {
-        consoleErrors.push(msg.text());
+        const text = msg.text();
+        // 过滤第三方脚本（AdSense、Analytics、Counterscale）在非生产域名下的已知错误
+        const isThirdParty = /pagead2\.googlesyndication|googletagmanager|google-analytics|analytics\.inaodeng\.com|adsbygoogle/.test(text);
+        if (!isThirdParty) {
+          consoleErrors.push(text);
+        }
       }
     });
     
@@ -107,7 +112,12 @@ test.describe("性能与加载", () => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") {
-        consoleErrors.push(msg.text());
+        const text = msg.text();
+        // 过滤第三方脚本（AdSense、Analytics、Counterscale）在非生产域名下的已知错误
+        const isThirdParty = /pagead2\.googlesyndication|googletagmanager|google-analytics|analytics\.inaodeng\.com|adsbygoogle/.test(text);
+        if (!isThirdParty) {
+          consoleErrors.push(text);
+        }
       }
     });
     
