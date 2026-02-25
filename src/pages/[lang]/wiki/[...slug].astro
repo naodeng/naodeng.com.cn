@@ -7,6 +7,7 @@
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME } from "@/consts";
 import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
@@ -95,6 +96,7 @@ const definedTermSchema = {
       </section>
     )}
   </article>
+  <GoogleAd />
   <Giscus lang="zh-CN" inputPosition="bottom" />
 </DocsLayout>
 
