@@ -6,6 +6,7 @@
 import { getCollection } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_GUILD } from "@/consts";
 import { getGuildConfig } from "@/config/guild.config";
 import type { Lang } from "@/i18n";
@@ -109,6 +110,7 @@ const metaDescription = testTypeConfig.description;
       })}
     </div>
   </div>
+  <GoogleAd />
 </Base>
 
 <style>
