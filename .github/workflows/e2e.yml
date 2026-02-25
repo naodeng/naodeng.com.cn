@@ -1,4 +1,4 @@
-name: E2E Tests
+name: Tests
 
 on:
   push:
@@ -29,6 +29,10 @@ jobs:
 
       - name: Install test dependencies
         run: npm ci
+        working-directory: tests
+
+      - name: Run unit tests
+        run: npx vitest --run
         working-directory: tests
 
       - name: Install Playwright browsers
