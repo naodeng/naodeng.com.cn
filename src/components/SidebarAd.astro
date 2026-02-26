@@ -1,0 +1,28 @@
+---
+/**
+ * TOC 侧栏卡片广告（随页面滚动展示）
+ * 仅在生产环境渲染，开发环境跳过
+ */
+---
+
+{!import.meta.env.DEV && (
+  <div class="sidebar-ad" aria-hidden="true">
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7249159446737834"
+      data-ad-slot="9931752640"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    />
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+)}
+
+<style>
+  .sidebar-ad {
+    width: 100%;
+    min-height: 100px;
+    overflow: hidden;
+  }
+</style>

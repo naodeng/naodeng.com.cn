@@ -5,6 +5,7 @@ import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
 import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import SidebarAd from "@/components/SidebarAd.astro";
 import { getCollection, render } from "astro:content";
 import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
 import type { Lang } from "@/i18n";
@@ -203,6 +204,7 @@ const statsLabels = locale === "zh-cn"
         }}
       />
       <TableOfContents headings={headings} label={tocLabel} placement="below" />
+      <SidebarAd />
     </aside>
   </div>
 </Layout>
