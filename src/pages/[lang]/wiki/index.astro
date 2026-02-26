@@ -10,7 +10,7 @@ import Base from "@/layouts/Base.astro";
 import DocsLayout from "@/layouts/Docs.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { buildWikiSidebar } from "@/data/wiki";
-import { NAV_HOME } from "@/consts";
+import { NAV_HOME, WIKI_PAGE_DESCRIPTION, WIKI_PAGE_KEYWORDS } from "@/consts";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
@@ -23,8 +23,9 @@ const isEn = locale === "en";
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
 const title = isEn ? "QA Wiki" : "测试百科";
 const description = isEn
-  ? "Software testing terms and definitions. Visit the full QA Wiki at ray.run."
-  : "测试术语与定义，按英文名称排序，供测试与开发同学查阅。";
+  ? WIKI_PAGE_DESCRIPTION["en"]
+  : WIKI_PAGE_DESCRIPTION["zh-cn"];
+const keywords = isEn ? WIKI_PAGE_KEYWORDS["en"] : WIKI_PAGE_KEYWORDS["zh-cn"];
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: title, url: `/${locale}/wiki/` },
@@ -37,10 +38,26 @@ const basePath = `/${locale}/wiki`;
 const letterSections = sidebarSections.filter((s) => s.title);
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
+
+const siteOrigin = "https://inaodeng.com";
+// DefinedTermSet JSON-LD for zh-cn wiki (en redirects to ray.run)
+const definedTermSetSchema = !isEn ? {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  name: "软件测试百科",
+  description: WIKI_PAGE_DESCRIPTION["zh-cn"],
+  url: `${siteOrigin}/zh-cn/wiki/`,
+  inLanguage: "zh-CN",
+  publisher: {
+    "@type": "Organization",
+    name: "软件测试同学",
+    url: siteOrigin,
+  },
+} : null;
 ---
 
 {isEn ? (
-  <Base title={title} description={description} breadcrumbs={breadcrumbs}>
+  <Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs}>
     <div class="l-content wiki-index">
       <h1>{title}</h1>
       <p class="wiki-intro">Software testing terms &amp; definitions. For the full QA Wiki, visit:</p>
@@ -53,12 +70,14 @@ const letterGroupCount = letterSections.length;
   <DocsLayout
     title={title}
     description={description}
+    keywords={keywords}
     breadcrumbs={breadcrumbs}
     sidebarSections={sidebarSections}
     currentPath=""
     basePath={basePath}
     sidebarMenuLabel="本页导航"
     sidebarSearchPlaceholder="检索词条..."
+    structuredData={definedTermSetSchema ? [definedTermSetSchema] : undefined}
   >
     <header class="wiki-hero">
       <h1 class="wiki-hero-title">{title}</h1>

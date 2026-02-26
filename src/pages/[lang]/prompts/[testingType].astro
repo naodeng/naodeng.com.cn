@@ -13,6 +13,7 @@ import {
   PROMPTS_PAGE_TITLE,
   PROMPTS_COPY_BUTTON,
   PROMPTS_COPY_SUCCESS,
+  PROMPTS_DETAIL_KEYWORDS,
 } from "@/consts";
 
 export async function getStaticPaths() {
@@ -85,6 +86,25 @@ const breadcrumbs = [
 const copyLabel = t(PROMPTS_COPY_BUTTON);
 const copiedLabel = t(PROMPTS_COPY_SUCCESS);
 
+// Page-specific keywords
+const pageKeywords = `${PROMPTS_DETAIL_KEYWORDS[lang]}, ${testingType.replace(/-/g, " ")}, ${pageTitle}`;
+
+// HowTo JSON-LD for the testing type detail page
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  step: entries.map((entry, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: entry.data.promptVersion,
+    text: entry.data.description,
+  })),
+};
+
 const TESTING_TYPE_ORDER = [
   "requirements-analysis",
   "test-case-writing",
@@ -126,8 +146,10 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
 <Base
   title={pageTitle}
   description={pageDescription}
+  keywords={pageKeywords}
   type="article"
   breadcrumbs={breadcrumbs}
+  extraStructuredData={[howToSchema]}
   contentWide={true}
 >
   <div class="prompts-layout" data-has-toc={tocHeadings.length > 0}>

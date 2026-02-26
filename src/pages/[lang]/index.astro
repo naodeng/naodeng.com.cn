@@ -19,6 +19,8 @@ import {
   HOME_WIKI_INTRO,
   PROMPTS_PAGE_TITLE,
   PROMPTS_WORKFLOWS_SECTION_TITLE,
+  HOME_PAGE_DESCRIPTION,
+  HOME_PAGE_KEYWORDS,
 } from "@/consts";
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
@@ -96,9 +98,38 @@ export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
     params: { lang },
   }));
+
+const siteOrigin = "https://inaodeng.com";
+const homeUrl = `${siteOrigin}/${locale}/`;
+
+// Structured data: CollectionPage for homepage
+const homePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: t(SITE_TITLE),
+  description: t(HOME_PAGE_DESCRIPTION),
+  url: homeUrl,
+  inLanguage: locale === "zh-cn" ? "zh-CN" : "en",
+  author: {
+    "@type": "Person",
+    name: "Nao Deng",
+    url: siteOrigin,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: t(SITE_TITLE),
+    url: siteOrigin,
+    logo: { "@type": "ImageObject", url: `${siteOrigin}/ogp.png`, width: 1200, height: 630 },
+  },
+};
 ---
 
-<Layout>
+<Layout
+  title={t(SITE_TITLE)}
+  description={t(HOME_PAGE_DESCRIPTION)}
+  keywords={t(HOME_PAGE_KEYWORDS)}
+  extraStructuredData={[homePageSchema]}
+>
   <section class="intro-section">
     <div class="intro-card-wrap">
       <div class="intro-row">

@@ -557,3 +557,47 @@ export const PROMPTS_FLOW_TITLE: Multilingual = {
   en: "Full Testing Flow Example",
   "zh-cn": "完整测试流程示例",
 };
+
+// ── 页面级 SEO 描述 ────────────────────────────────────────────────────────
+
+/** 首页 SEO 描述 */
+export const HOME_PAGE_DESCRIPTION: Multilingual = {
+  en: "Nao Deng's personal blog on software testing, QA, and test automation. Covering API testing, performance testing, UI automation, AI-assisted testing, and more.",
+  "zh-cn": "naodeng 的个人博客，专注软件测试、质量保证与测试自动化。涵盖接口测试、性能测试、UI 自动化、AI 辅助测试等方向，中英双语更新。",
+};
+
+/** 首页 SEO 关键词 */
+export const HOME_PAGE_KEYWORDS: Multilingual = {
+  en: "software testing, QA, test automation, API testing, performance testing, UI testing, AI testing, Nao Deng, inaodeng",
+  "zh-cn": "软件测试, 质量保证, 测试自动化, 接口测试, 性能测试, UI测试, AI辅助测试, naodeng, inaodeng",
+};
+
+/** Wiki 页 SEO 描述 */
+export const WIKI_PAGE_DESCRIPTION: Multilingual = {
+  en: "QA Wiki — a comprehensive glossary of software testing terms and definitions, covering functional testing, automation, performance, security, and agile testing.",
+  "zh-cn": "软件测试百科 — 收录 200+ 软件测试与质量领域术语，涵盖功能测试、自动化测试、性能测试、安全测试、敏捷测试等方向，中英文对照，供测试与开发同学查阅。",
+};
+
+/** Wiki 页 SEO 关键词 */
+export const WIKI_PAGE_KEYWORDS: Multilingual = {
+  en: "QA wiki, software testing glossary, testing terms, test automation terminology, QA definitions",
+  "zh-cn": "软件测试百科, 测试术语, 测试词汇, 质量保证术语, 自动化测试词汇",
+};
+
+/** Guild 页 SEO 描述 */
+export const GUILD_PAGE_DESCRIPTION: Multilingual = {
+  en: "Test Automation Guild — structured learning paths for test automation, from beginner to advanced. Covers API testing (REST Assured, SuperTest, pytest), UI testing (Playwright, Cypress), and performance testing (k6, Gatling).",
+  "zh-cn": "测试自动化指南 — 系统化的测试自动化学习路径，从入门到进阶。涵盖接口测试（REST Assured、SuperTest、pytest）、UI 测试（Playwright、Cypress）和性能测试（k6、Gatling）等框架教程。",
+};
+
+/** Guild 页 SEO 关键词 */
+export const GUILD_PAGE_KEYWORDS: Multilingual = {
+  en: "test automation, learning path, REST Assured, SuperTest, pytest, Playwright, Cypress, k6, Gatling, API testing tutorial, performance testing tutorial",
+  "zh-cn": "测试自动化, 学习路径, REST Assured, SuperTest, pytest, Playwright, Cypress, k6, Gatling, 接口测试教程, 性能测试教程",
+};
+
+/** Prompts 详情页 SEO 关键词前缀 */
+export const PROMPTS_DETAIL_KEYWORDS: Multilingual = {
+  en: "QA prompt, AI testing prompt, software testing AI, ChatGPT testing",
+  "zh-cn": "QA提示词, AI测试提示词, 软件测试AI, ChatGPT测试",
+};

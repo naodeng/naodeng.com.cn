@@ -9,7 +9,7 @@ import GoogleAd from "@/components/GoogleAd.astro";
 import Giscus from "@/components/Giscus.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { PROMPTS_PAGE_TITLE, PROMPTS_WORKFLOWS_SECTION_TITLE } from "@/consts";
+import { PROMPTS_PAGE_TITLE, PROMPTS_WORKFLOWS_SECTION_TITLE, PROMPTS_DETAIL_KEYWORDS } from "@/consts";
 
 export async function getStaticPaths() {
   const allWorkflows = await getCollection("workflows");
@@ -46,13 +46,28 @@ const sidebarWorkflows = allWorkflows
 
 const tocLabel = lang === "zh-cn" ? "本页目录" : "On this page";
 const sidebarLabel = t(PROMPTS_WORKFLOWS_SECTION_TITLE);
+
+// Page-specific keywords
+const workflowKeywords = `${PROMPTS_DETAIL_KEYWORDS[lang]}, ${workflowType.replace(/-/g, " ")}, ${entry.data.title}`;
+
+// HowTo JSON-LD for the workflow detail page
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: entry.data.title,
+  description: entry.data.description,
+  url: canonicalUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+};
 ---
 
 <Base
   title={entry.data.title}
   description={entry.data.description}
+  keywords={workflowKeywords}
   type="article"
   breadcrumbs={breadcrumbs}
+  extraStructuredData={[howToSchema]}
   contentWide={true}
 >
   <div class="workflow-layout" data-has-toc={tocHeadings.length > 0}>

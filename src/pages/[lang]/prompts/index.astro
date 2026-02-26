@@ -64,11 +64,35 @@ const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
   { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts") },
 ];
+
+const siteOrigin = "https://inaodeng.com";
+const promptsKeywords = lang === "zh-cn"
+  ? "QA提示词, AI测试提示词, 软件测试AI, ChatGPT测试, 测试自动化提示词, 需求分析提示词, 测试用例提示词"
+  : "QA prompt, AI testing prompt, software testing AI, ChatGPT testing, test automation prompt, requirements analysis prompt";
+
+// ItemList JSON-LD for the prompts index
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: t(PROMPTS_PAGE_TITLE),
+  description: t(PROMPTS_PAGE_DESCRIPTION),
+  url: `${siteOrigin}${getRelativeLocaleUrl(lang, "/prompts/")}`,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  numberOfItems: typeCards.length,
+  itemListElement: typeCards.map((entry, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: entry.data.title.replace(/^[^-]+ - /, ""),
+    url: `${siteOrigin}${getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}`,
+  })),
+};
 ---
 
 <Base
   title={t(PROMPTS_PAGE_TITLE)}
   description={t(PROMPTS_PAGE_DESCRIPTION)}
+  keywords={promptsKeywords}
+  extraStructuredData={[itemListSchema]}
   breadcrumbs={breadcrumbs}
 >
   <div class="prompts-page">

@@ -9,22 +9,40 @@ import GuildFeatures from '../../../components/guild/GuildFeatures.astro';
 import LearningWorkflow from '../../../components/guild/LearningWorkflow.astro';
 import TestTypeSection from '../../../components/guild/TestTypeSection.astro';
 import GoogleAd from '../../../components/GoogleAd.astro';
+import { GUILD_PAGE_DESCRIPTION, GUILD_PAGE_KEYWORDS } from '@/consts';
 
 const locale = 'zh-cn';
 const guildConfig = getGuildConfig(locale);
 
 const title = '测试自动化指南';
-const description = '系统化的测试自动化学习路径，从入门到进阶，涵盖接口测试、UI测试和性能测试';
+const description = GUILD_PAGE_DESCRIPTION['zh-cn'];
+const keywords = GUILD_PAGE_KEYWORDS['zh-cn'];
 
 const breadcrumbs = [
   { name: '首页', url: `/${locale}/` },
   { name: '指南', url: `/${locale}/guild/` },
 ];
 
+const siteOrigin = 'https://inaodeng.com';
+const guildSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: title,
+  description,
+  url: `${siteOrigin}/zh-cn/guild/`,
+  inLanguage: "zh-CN",
+  provider: {
+    "@type": "Person",
+    name: "Nao Deng",
+    url: siteOrigin,
+  },
+  teaches: ["接口测试", "UI测试", "性能测试", "测试自动化"],
+};
+
 const visibleTestTypes = guildConfig.testTypes.filter(t => t.id !== 'ui-testing');
 ---
 
-<Base title={title} description={description} breadcrumbs={breadcrumbs}>
+<Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs} extraStructuredData={[guildSchema]}>
   <div class="l-content guild-page">
 
     <!-- Hero card -->
