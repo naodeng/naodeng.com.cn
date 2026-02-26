@@ -57,7 +57,39 @@ export const GET: APIRoute = async ({ params }) => {
 
   const index = [...blogIndex, ...guildIndex];
 
-  return new Response(JSON.stringify(index), {
+  // 获取 prompts 条目，按 testingType 去重，每个 testingType 生成一条索引项
+  const allPrompts = await getCollection("prompts");
+  const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
+  const promptTypeMap = new Map<string, typeof localePrompts[0]>();
+  for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
+    if (!promptTypeMap.has(p.data.testingType)) {
+      promptTypeMap.set(p.data.testingType, p);
+    }
+  }
+  const promptsIndex: SearchIndexItem[] = Array.from(promptTypeMap.values()).map((p) => ({
+    title: p.data.title,
+    description: p.data.description,
+    url: `/${lang}/prompts/${p.data.testingType}/`,
+    date: new Date().toISOString(),
+    tags: [p.data.testingType],
+    type: "prompts",
+  }));
+
+  // 获取 workflows 条目，每条生成一条索引项
+  const allWorkflows = await getCollection("workflows");
+  const localeWorkflows = allWorkflows.filter((w) => w.data.lang === lang);
+  const workflowsIndex: SearchIndexItem[] = localeWorkflows.map((w) => ({
+    title: w.data.title,
+    description: w.data.description,
+    url: `/${lang}/prompts/workflows/${w.data.workflowType}/`,
+    date: new Date().toISOString(),
+    tags: [w.data.workflowType],
+    type: "workflows",
+  }));
+
+  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex];
+
+  return new Response(JSON.stringify(fullIndex), {
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "public, max-age=3600",

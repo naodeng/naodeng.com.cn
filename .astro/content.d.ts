@@ -197,11 +197,27 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"prompts": Record<string, {
+  id: string;
+  body?: string;
+  collection: "prompts";
+  data: InferEntrySchema<"prompts">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "wiki": Record<string, {
   id: string;
   body?: string;
   collection: "wiki";
   data: InferEntrySchema<"wiki">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"workflows": Record<string, {
+  id: string;
+  body?: string;
+  collection: "workflows";
+  data: InferEntrySchema<"workflows">;
   rendered?: RenderedContent;
   filePath?: string;
 }>;

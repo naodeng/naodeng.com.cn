@@ -17,6 +17,8 @@ import {
   HOME_VIEW_ALL_PROJECTS,
   HOME_WIKI_SECTION_TITLE,
   HOME_WIKI_INTRO,
+  PROMPTS_PAGE_TITLE,
+  PROMPTS_WORKFLOWS_SECTION_TITLE,
 } from "@/consts";
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
@@ -32,6 +34,7 @@ const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
 
+const allWorkflows = await getCollection("workflows");
 const tagCounts = allPosts.flatMap((post) => post.data.tags || []).reduce((acc, tag) => {
   acc[tag] = (acc[tag] || 0) + 1;
   return acc;
@@ -43,6 +46,27 @@ const popularTags = Object.entries(tagCounts)
   .map(([tag]) => tag);
 
 const featuredProjects = PROJECTS_LIST.slice(0, 4);
+
+// Prompts showcase data
+const TESTING_TYPE_ORDER = [
+  "requirements-analysis", "test-case-writing", "functional-testing",
+  "performance-testing", "automation-testing", "mobile-testing",
+  "bug-reporting", "test-reporting", "test-strategy", "ai-assisted-testing",
+  "manual-testing", "security-testing", "api-testing", "accessibility-testing", "test-case-reviewer",
+];
+const allPrompts = await getCollection("prompts");
+const localePrompts = allPrompts.filter((p) => p.data.lang === locale);
+const promptTypeMap = new Map<string, typeof localePrompts[0]>();
+for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
+  if (!promptTypeMap.has(p.data.testingType)) promptTypeMap.set(p.data.testingType, p);
+}
+const promptTypeCards = Array.from(promptTypeMap.values())
+  .sort((a, b) => TESTING_TYPE_ORDER.indexOf(a.data.testingType) - TESTING_TYPE_ORDER.indexOf(b.data.testingType));
+
+const localeWorkflows = allWorkflows
+  .filter((w) => w.data.lang === locale)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
 
 const wikiEntries =
   locale === "zh-cn"
@@ -95,6 +119,76 @@ export const getStaticPaths = () =>
       </div>
     </div>
   </section>
+
+  <!-- Prompts Showcase -->
+  <section class="home-section prompts-showcase">
+    <div class="section-header">
+      <h2 class="section-title">{t(PROMPTS_PAGE_TITLE)}</h2>
+    </div>
+
+    <!-- Testing Types -->
+    <p class="prompts-showcase-sub">
+      {locale === "zh-cn" ? "测试类型" : "Testing Types"}
+    </p>
+    <ul class="prompts-type-grid" role="list">
+      {promptTypeCards.map((entry) => (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, `/prompts/${entry.data.testingType}/`)}
+            class="prompts-type-card"
+          >
+            <span class="prompts-type-title">{entry.data.title.replace(/^[^-]+ - /, "")}</span>
+            <span class="prompts-type-desc">{entry.data.description}</span>
+            <span class="prompts-type-cta" aria-hidden="true">
+              {locale === "zh-cn" ? "查看 →" : "View →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Workflows -->
+    <p class="prompts-showcase-sub" style="margin-block-start: var(--sp-m)">
+      {t(PROMPTS_WORKFLOWS_SECTION_TITLE)}
+    </p>
+    <ul class="prompts-workflow-grid" role="list">
+      {localeWorkflows.map((wf) => (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, `/prompts/workflows/${wf.data.workflowType}/`)}
+            class="prompts-workflow-card"
+          >
+            <span class="prompts-type-title">{wf.data.title}</span>
+            <span class="prompts-type-desc">{wf.data.description}</span>
+            <span class="prompts-type-cta" aria-hidden="true">
+              {locale === "zh-cn" ? "查看工作流程 →" : "View workflow →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="section-footer">
+      <a href={getRelativeLocaleUrl(locale, "/prompts/")} class="cta-button">
+        {locale === "zh-cn" ? "查看全部提示词" : "View all prompts"}
+        <span class="material-icons-sharp">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  {!import.meta.env.DEV && (
+    <div class="home-ad-wrap" aria-hidden="true">
+      <ins
+        class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-7249159446737834"
+        data-ad-slot="5247439587"
+      />
+      <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  )}
 
   <section class="home-section projects-showcase">
     <div class="section-header">
@@ -508,6 +602,85 @@ export const getStaticPaths = () =>
   }
   .cta-button.secondary {
     /* 继承通用样式 */
+  }
+
+  /* ── Prompts Showcase ── */
+  .prompts-showcase-sub {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    margin: 0 0 0.6rem;
+  }
+  .prompts-type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .prompts-workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .prompts-type-card,
+  .prompts-workflow-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 4%, var(--color-base));
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .prompts-type-card:hover,
+  .prompts-workflow-card:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-theme) 12%, transparent);
+    transform: translateY(-2px);
+  }
+  .prompts-type-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    line-height: 1.3;
+  }
+  .prompts-type-desc {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    line-height: 1.45;
+    flex: 1;
+  }
+  .prompts-type-cta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    margin-block-start: 0.15rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .prompts-type-card,
+    .prompts-workflow-card {
+      transition: none;
+      transform: none !important;
+    }
+  }
+
+  /* ── Prompts → Projects ad ── */
+  .home-ad-wrap {
+    margin-block: var(--sp-m);
+    max-height: 200px;
+    overflow: hidden;
+    width: 100%;
   }
 
   .project-grid {

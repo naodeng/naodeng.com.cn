@@ -120,6 +120,12 @@ export const FOOTER_NAV_GUILD: Multilingual = {
   "zh-cn": "自动化测试指南",
 };
 
+/** 底部导航：提示词库 */
+export const FOOTER_NAV_PROMPTS: Multilingual = {
+  en: "QA Prompt Library",
+  "zh-cn": "软件测试提示词库",
+};
+
 // 顶部导航：支持
 export const NAV_SPONSOR: Multilingual = {
   en: "Support",
@@ -495,3 +501,59 @@ export const FEATURED_PROJECTS: Array<{
       },
     },
   ];
+
+// ── QA Prompts 功能区 ──────────────────────────────────────────────────────
+
+/** 顶部导航：QA 提示词库 */
+export const NAV_QA_PROMPTS: Multilingual = {
+  en: "QA Prompts",
+  "zh-cn": "提示词库",
+};
+
+/** 提示词列表页 SEO 标题 */
+export const PROMPTS_PAGE_TITLE: Multilingual = {
+  en: "Professional QA Prompt Library",
+  "zh-cn": "专业质量保证提示词库",
+};
+
+/** 提示词列表页 SEO 描述 */
+export const PROMPTS_PAGE_DESCRIPTION: Multilingual = {
+  en: "A curated collection of AI prompts for QA and software testing — covering 15 testing types and 6 prompt frameworks in English and Chinese.",
+  "zh-cn": "专为 QA 和软件测试设计的 AI 提示词精选集合，涵盖 15 种测试类型和 6 种提示词框架，支持中英双语。",
+};
+
+/** 工作流程区块标题 */
+export const PROMPTS_WORKFLOWS_SECTION_TITLE: Multilingual = {
+  en: "Testing Workflows",
+  "zh-cn": "测试工作流程",
+};
+
+/** 复制按钮文案 */
+export const PROMPTS_COPY_BUTTON: Multilingual = {
+  en: "Copy Prompt",
+  "zh-cn": "复制提示词",
+};
+
+/** 复制成功确认文案 */
+export const PROMPTS_COPY_SUCCESS: Multilingual = {
+  en: "Copied!",
+  "zh-cn": "已复制！",
+};
+
+/** 无内容时的占位文案 */
+export const PROMPTS_EMPTY_STATE: Multilingual = {
+  en: "No prompts available for this selection.",
+  "zh-cn": "当前选项暂无提示词内容。",
+};
+
+/** 快速开始区块标题 */
+export const PROMPTS_QUICKSTART_TITLE: Multilingual = {
+  en: "Quick Start",
+  "zh-cn": "快速开始",
+};
+
+/** 完整测试流程示例区块标题 */
+export const PROMPTS_FLOW_TITLE: Multilingual = {
+  en: "Full Testing Flow Example",
+  "zh-cn": "完整测试流程示例",
+};
