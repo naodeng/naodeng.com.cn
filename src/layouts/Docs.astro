@@ -7,6 +7,7 @@ import Base from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import DocsSidebar from "@/components/DocsSidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import SidebarAd from "@/components/SidebarAd.astro";
 import type { DocsNavSection } from "@/data/docsNav";
 import type { Lang } from "@/i18n";
 
@@ -77,6 +78,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     {hasToc && (
       <aside class="docs-toc-wrap">
         <TableOfContents headings={headings} label={rightTocLabel} placement="right" />
+        <SidebarAd />
       </aside>
     )}
   </div>
@@ -113,6 +115,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     position: sticky;
     top: var(--sp-m);
     align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .docs-content :global(h1) {
     font-size: 2rem;
