@@ -55,8 +55,6 @@ export const GET: APIRoute = async ({ params }) => {
     };
   });
 
-  const index = [...blogIndex, ...guildIndex];
-
   // 获取 prompts 条目，按 testingType 去重，每个 testingType 生成一条索引项
   const allPrompts = await getCollection("prompts");
   const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
