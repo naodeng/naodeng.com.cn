@@ -106,6 +106,9 @@ test.describe("性能与加载", () => {
     });
     
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    if (consoleErrors.length > 0) {
+      console.log("Console errors found:", JSON.stringify(consoleErrors, null, 2));
+    }
     expect(consoleErrors.length).toBe(0);
   });
 
@@ -124,6 +127,9 @@ test.describe("性能与加载", () => {
     });
     
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    if (consoleErrors.length > 0) {
+      console.log("Console errors found:", JSON.stringify(consoleErrors, null, 2));
+    }
     expect(consoleErrors.length).toBe(0);
   });
 });
