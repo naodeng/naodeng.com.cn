@@ -77,7 +77,24 @@ const sidebarSections = buildGuildSidebar(allEntries, locale, testType, framewor
 const basePath = `/${locale}/guild`;
 
 // 渲染内容
-const { Content, headings = [] } = await render(entry);
+const { Content, headings: renderedHeadings = [] } = await render(entry);
+
+// Astro 5 glob loader 对 .md 文件 render() 不返回 headings，手动从 body 解析
+function parseHeadings(body: string): { depth: number; slug: string; text: string }[] {
+  const lines = body.split("\n");
+  const result: { depth: number; slug: string; text: string }[] = [];
+  for (const line of lines) {
+    const m = line.match(/^(#{2,3})\s+(.+)$/);
+    if (m) {
+      const depth = m[1].length;
+      const text = m[2].trim();
+      const slug = text.toLowerCase().replace(/[^\w\u4e00-\u9fff\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+      result.push({ depth, slug, text });
+    }
+  }
+  return result;
+}
+const headings = renderedHeadings.length > 0 ? renderedHeadings : parseHeadings(entry.body ?? "");
 
 // 获取前后文章
 const { prev, next } = getAdjacentArticles(allEntries, locale, testType, framework, slugParam);
