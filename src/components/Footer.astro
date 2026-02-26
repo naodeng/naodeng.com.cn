@@ -10,6 +10,7 @@ import {
   NAV_TAGS,
   FOOTER_NAV_QA_WIKI,
   FOOTER_NAV_GUILD,
+  FOOTER_NAV_PROMPTS,
   NAV_STATUS,
   NAV_COPYRIGHT,
   NAV_PRIVACY,
@@ -78,6 +79,7 @@ const t = {
         <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">{typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale]}</a>
       )}
       <a href={getRelativeLocaleUrl(locale, "/guild")}>{typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/prompts")}>{typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/copyright")}>{typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/privacy")}>{typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale]}</a>

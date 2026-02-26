@@ -2,7 +2,7 @@
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { SITE_TITLE, SITE_SLOGAN, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_QA_WIKI, NAV_GUILD, NAV_SPONSOR, NAV_SEARCH, SEARCH_OPEN_HINT } from "@/consts";
+import { SITE_TITLE, SITE_SLOGAN, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_ARCHIVE, NAV_QA_WIKI, NAV_GUILD, NAV_QA_PROMPTS, NAV_SPONSOR, NAV_SEARCH, SEARCH_OPEN_HINT } from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const locale = Astro.currentLocale as Lang;
@@ -12,6 +12,7 @@ const isActive = (path: string) =>
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
 const isWikiSection = () => pathWithoutLang === "/wiki" || pathWithoutLang.startsWith("/wiki/");
 const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.startsWith("/guild/");
+const isPromptsSection = () => pathWithoutLang === "/prompts" || pathWithoutLang.startsWith("/prompts/");
 ---
 
 <header class="l-header">
@@ -67,6 +68,14 @@ const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.sta
           class={isGuildSection() ? "active" : null}
         >
           {t(NAV_GUILD)}
+        </a>
+      </li>
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/prompts")}
+          class={isPromptsSection() ? "active" : null}
+        >
+          {t(NAV_QA_PROMPTS)}
         </a>
       </li>
       <li>

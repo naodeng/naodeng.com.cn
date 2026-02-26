@@ -1,0 +1,724 @@
+---
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import {
+  PROMPTS_PAGE_TITLE,
+  PROMPTS_PAGE_DESCRIPTION,
+  PROMPTS_WORKFLOWS_SECTION_TITLE,
+  PROMPTS_QUICKSTART_TITLE,
+  PROMPTS_FLOW_TITLE,
+} from "@/consts";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "zh-cn" } },
+  ];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+// Fetch prompts for this locale, group by testingType, take first per type
+const allPrompts = await getCollection("prompts");
+const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
+
+const TESTING_TYPE_ORDER = [
+  "requirements-analysis",
+  "test-case-writing",
+  "functional-testing",
+  "performance-testing",
+  "automation-testing",
+  "mobile-testing",
+  "bug-reporting",
+  "test-reporting",
+  "test-strategy",
+  "ai-assisted-testing",
+  "manual-testing",
+  "security-testing",
+  "api-testing",
+  "accessibility-testing",
+  "test-case-reviewer",
+];
+
+// Group by testingType, keep lowest-order entry per type for card display
+const typeMap = new Map<string, typeof localePrompts[0]>();
+for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
+  if (!typeMap.has(p.data.testingType)) {
+    typeMap.set(p.data.testingType, p);
+  }
+}
+const typeCards = Array.from(typeMap.values()).sort(
+  (a, b) => TESTING_TYPE_ORDER.indexOf(a.data.testingType) - TESTING_TYPE_ORDER.indexOf(b.data.testingType)
+);
+
+// Fetch workflows for this locale, sorted by order
+const allWorkflows = await getCollection("workflows");
+const localeWorkflows = allWorkflows
+  .filter((w) => w.data.lang === lang)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const breadcrumbs = [
+  { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts") },
+];
+
+const siteOrigin = "https://inaodeng.com";
+const promptsKeywords = lang === "zh-cn"
+  ? "QA提示词, AI测试提示词, 软件测试AI, ChatGPT测试, 测试自动化提示词, 需求分析提示词, 测试用例提示词"
+  : "QA prompt, AI testing prompt, software testing AI, ChatGPT testing, test automation prompt, requirements analysis prompt";
+
+// ItemList JSON-LD for the prompts index
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: t(PROMPTS_PAGE_TITLE),
+  description: t(PROMPTS_PAGE_DESCRIPTION),
+  url: `${siteOrigin}${getRelativeLocaleUrl(lang, "/prompts/")}`,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  numberOfItems: typeCards.length,
+  itemListElement: typeCards.map((entry, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: entry.data.title.replace(/^[^-]+ - /, ""),
+    url: `${siteOrigin}${getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}`,
+  })),
+};
+---
+
+<Base
+  title={t(PROMPTS_PAGE_TITLE)}
+  description={t(PROMPTS_PAGE_DESCRIPTION)}
+  keywords={promptsKeywords}
+  extraStructuredData={[itemListSchema]}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="prompts-page">
+    <header class="prompts-header">
+      <div class="prompts-hero">
+        <div class="prompts-hero-text">
+          <h1>{t(PROMPTS_PAGE_TITLE)}</h1>
+          <p class="prompts-hero-sub">
+            {lang === "zh-cn" ? "专业的质量保证 AI 提示词库" : "Professional QA AI Prompt Library"}
+          </p>
+          <p class="prompts-intro">
+            {lang === "zh-cn"
+              ? "🚀 让 AI 成为测试工程师的最佳助手 | 15 个测试类型 × 3 个工作流程 × 60+ 专业提示词"
+              : "🚀 Let AI be the best assistant for QA engineers | 15 testing types × 3 workflows × 60+ professional prompts"
+            }
+          </p>
+          <div class="prompts-hero-actions">
+            <a href="#quickstart-heading" class="hero-btn hero-btn--primary">
+              {lang === "zh-cn" ? "🚀 快速开始" : "🚀 Quick Start"}
+            </a>
+            <a href="#workflows-heading" class="hero-btn hero-btn--outline">
+              {lang === "zh-cn" ? "📋 查看工作流程" : "📋 View Workflows"}
+            </a>
+            <a href="https://github.com/naodeng/awesome-qa-prompt" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn--github">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="prompts-hero-img">
+          <img src="/prompts.svg" alt="" aria-hidden="true" width="320" height="240" loading="eager" decoding="async" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Quick Start -->
+    <section class="prompts-section" aria-labelledby="quickstart-heading">
+      <h2 id="quickstart-heading">{t(PROMPTS_QUICKSTART_TITLE)}</h2>
+      <ol class="qs-grid">
+        <li class="qs-card">
+          <span class="qs-num">1</span>
+          <h3 class="qs-title">{lang === "zh-cn" ? "选择提示词" : "Pick a prompt"}</h3>
+          <p class="qs-desc">{lang === "zh-cn" ? "根据你的测试任务，选择对应的提示词文件" : "Choose the prompt file that matches your testing task"}</p>
+          <ul class="qs-list">
+            {lang === "zh-cn" ? (
+              <>
+                <li>中文项目使用中文提示词</li>
+                <li>英文项目使用英文提示词（_EN.md 结尾）</li>
+                <li>快速上手使用精简版（_Lite.md）</li>
+              </>
+            ) : (
+              <>
+                <li>Chinese projects → Chinese prompts</li>
+                <li>English projects → English prompts (_EN.md)</li>
+                <li>Quick start → use Lite version (_Lite.md)</li>
+              </>
+            )}
+          </ul>
+        </li>
+        <li class="qs-card">
+          <span class="qs-num">2</span>
+          <h3 class="qs-title">{lang === "zh-cn" ? "准备输入材料" : "Prepare your input"}</h3>
+          <p class="qs-desc">{lang === "zh-cn" ? "根据提示词要求，准备相应的输入文档" : "Prepare the relevant documents as required by the prompt"}</p>
+          <ul class="qs-list">
+            {lang === "zh-cn" ? (
+              <>
+                <li>需求分析需要提供需求文档或 User Story</li>
+                <li>测试用例编写需要提供测试场景</li>
+                <li>其他测试类型按需准备对应材料</li>
+              </>
+            ) : (
+              <>
+                <li>Requirements analysis → requirements doc or User Story</li>
+                <li>Test case writing → test scenarios</li>
+                <li>Other types → prepare relevant materials</li>
+              </>
+            )}
+          </ul>
+        </li>
+        <li class="qs-card">
+          <span class="qs-num">3</span>
+          <h3 class="qs-title">{lang === "zh-cn" ? "使用 AI 助手" : "Use your AI assistant"}</h3>
+          <p class="qs-desc">{lang === "zh-cn" ? "将提示词内容复制到 AI 助手中" : "Paste the prompt content into your AI assistant"}</p>
+          <ul class="qs-list">
+            {lang === "zh-cn" ? (
+              <>
+                <li>支持 ChatGPT、Claude、Cursor AI 等</li>
+                <li>附加你的输入材料</li>
+                <li>AI 将生成结构化的测试文档</li>
+              </>
+            ) : (
+              <>
+                <li>Works with ChatGPT, Claude, Cursor AI, etc.</li>
+                <li>Attach your input materials</li>
+                <li>AI generates structured test documents</li>
+              </>
+            )}
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Testing Type Cards -->
+    <section class="prompts-section" aria-labelledby="testing-types-heading">
+      <h2 id="testing-types-heading">
+        {lang === "zh-cn" ? "测试类型" : "Testing Types"}
+      </h2>
+      <ul class="prompts-grid" role="list">
+        {typeCards.map((entry) => (
+          <li>
+            <a
+              href={getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}
+              class="prompt-card"
+            >
+              <h3 class="prompt-card-title">{entry.data.title.replace(/^[^-]+ - /, "")}</h3>
+              <p class="prompt-card-desc">{entry.data.description}</p>
+              <span class="prompt-card-cta" aria-hidden="true">
+                {lang === "zh-cn" ? "查看提示词 →" : "View prompts →"}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {!import.meta.env.DEV && (
+      <div class="prompts-ad-wrap" aria-hidden="true">
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+          data-ad-layout="in-article" data-ad-format="fluid"
+          data-ad-client="ca-pub-7249159446737834" data-ad-slot="5247439587" />
+        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    )}
+
+    <!-- Full Testing Flow -->
+    <section class="prompts-section" aria-labelledby="flow-heading">
+      <h2 id="flow-heading">{t(PROMPTS_FLOW_TITLE)}</h2>
+      <div class="flow-wrap">
+        {([
+          {
+            icon: "📝",
+            slug: "requirements-analysis",
+            label: lang === "zh-cn" ? "需求分析" : "Requirements Analysis",
+            desc: lang === "zh-cn" ? "深度分析需求文档，设计全维度测试场景" : "Analyze requirements and design comprehensive test scenarios",
+          },
+          {
+            icon: "🎯",
+            slug: "test-strategy",
+            label: lang === "zh-cn" ? "测试策略" : "Test Strategy",
+            desc: lang === "zh-cn" ? "制定整体测试策略和测试计划" : "Define overall test strategy and test plan",
+          },
+          {
+            icon: "✍️",
+            slug: "test-case-writing",
+            label: lang === "zh-cn" ? "测试用例编写" : "Test Case Writing",
+            desc: lang === "zh-cn" ? "基于测试场景生成详细测试用例" : "Generate detailed test cases from test scenarios",
+          },
+          {
+            icon: "🔍",
+            slug: "functional-testing",
+            label: lang === "zh-cn" ? "功能测试" : "Functional Testing",
+            desc: lang === "zh-cn" ? "执行功能测试，确保功能完整性" : "Execute functional tests to ensure completeness",
+          },
+          {
+            icon: "🤖",
+            slug: "automation-testing",
+            label: lang === "zh-cn" ? "自动化测试" : "Automation Testing",
+            desc: lang === "zh-cn" ? "设计自动化测试脚本和框架" : "Design automation test scripts and frameworks",
+          },
+          {
+            icon: "⚡",
+            slug: "performance-testing",
+            label: lang === "zh-cn" ? "性能测试" : "Performance Testing",
+            desc: lang === "zh-cn" ? "设计性能测试场景和指标分析" : "Design performance test scenarios and metrics",
+          },
+          {
+            icon: "🔒",
+            slug: "security-testing",
+            label: lang === "zh-cn" ? "安全测试" : "Security Testing",
+            desc: lang === "zh-cn" ? "检测安全漏洞和安全测试策略" : "Detect vulnerabilities and define security strategy",
+          },
+          {
+            icon: "🐛",
+            slug: "bug-reporting",
+            label: lang === "zh-cn" ? "缺陷上报" : "Bug Reporting",
+            desc: lang === "zh-cn" ? "标准化缺陷报告和根因分析" : "Standardized bug reports and root cause analysis",
+          },
+          {
+            icon: "📊",
+            slug: "test-reporting",
+            label: lang === "zh-cn" ? "测试报告" : "Test Reporting",
+            desc: lang === "zh-cn" ? "生成测试执行报告和质量分析" : "Generate test execution reports and quality analysis",
+          },
+        ] as const).map((step, i, arr) => (
+          <>
+            <a
+              href={getRelativeLocaleUrl(lang, `/prompts/${step.slug}/`)}
+              class="flow-node"
+            >
+              <span class="flow-icon" aria-hidden="true">{step.icon}</span>
+              <span class="flow-label">{step.label}</span>
+              <span class="flow-desc">{step.desc}</span>
+            </a>
+            {i < arr.length - 1 && (
+              <span class="flow-arrow" aria-hidden="true">→</span>
+            )}
+          </>
+        ))}
+      </div>
+    </section>
+
+    <!-- Workflow Cards -->
+    <section class="prompts-section" aria-labelledby="workflows-heading">
+      <h2 id="workflows-heading">{t(PROMPTS_WORKFLOWS_SECTION_TITLE)}</h2>
+      <ul class="workflows-grid" role="list">
+        {localeWorkflows.map((wf) => (
+          <li>
+            <a
+              href={getRelativeLocaleUrl(lang, `/prompts/workflows/${wf.data.workflowType}/`)}
+              class="workflow-card"
+            >
+              <h3 class="workflow-card-title">{wf.data.title}</h3>
+              <p class="workflow-card-desc">{wf.data.description}</p>
+              <span class="workflow-card-cta" aria-hidden="true">
+                {lang === "zh-cn" ? "查看工作流程 →" : "View workflow →"}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {!import.meta.env.DEV && (
+      <div class="prompts-ad-wrap" aria-hidden="true">
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+          data-ad-layout="in-article" data-ad-format="fluid"
+          data-ad-client="ca-pub-7249159446737834" data-ad-slot="5247439587" />
+        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .prompts-page {
+    padding-block: var(--sp-m);
+    max-inline-size: 900px;
+    margin-inline: auto;
+  }
+
+  /* ── Ad wrap ── */
+  .prompts-ad-wrap {
+    max-height: 200px;
+    overflow: hidden;
+    width: 100%;
+    margin-block: var(--sp-m);
+  }
+
+  /* ── Hero header ── */
+  .prompts-header {
+    margin-block-end: 2rem;
+  }
+
+  .prompts-hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3rem;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .prompts-hero-text {
+    min-inline-size: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .prompts-hero-text h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--color-theme);
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .prompts-hero-sub {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-main) 80%, transparent);
+    margin: 0;
+  }
+
+  .prompts-intro {
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--color-main) 68%, transparent);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .prompts-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block-start: 0.5rem;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55em 1.2em;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .hero-btn--primary {
+    background: var(--color-theme);
+    color: #fff;
+    border: 1px solid var(--color-theme);
+  }
+
+  .hero-btn--primary:hover {
+    background: color-mix(in srgb, var(--color-theme) 85%, #000);
+    transform: translateY(-1px);
+  }
+
+  .hero-btn--outline {
+    background: transparent;
+    color: color-mix(in srgb, var(--color-main) 80%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-main) 25%, transparent);
+  }
+
+  .hero-btn--outline:hover {
+    border-color: var(--color-theme);
+    color: var(--color-theme);
+    transform: translateY(-1px);
+  }
+
+  .hero-btn--github {
+    background: transparent;
+    color: color-mix(in srgb, var(--color-main) 80%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-main) 25%, transparent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hero-btn--github:hover {
+    border-color: #333;
+    color: #333;
+    transform: translateY(-1px);
+  }
+
+  .prompts-hero-img {
+    flex-shrink: 0;
+    width: 320px;
+  }
+
+  .prompts-hero-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Sections ── */
+  .prompts-section {
+    margin-block-end: 2.5rem;
+  }
+
+  .prompts-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-block-end: 1rem;
+    padding-block-end: 0.4em;
+    border-block-end: 2px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    color: var(--color-theme);
+  }
+
+  .prompts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--sp-m);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .workflows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--sp-m);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .prompt-card,
+  .workflow-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--sp-m);
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 4%, var(--color-base));
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .prompt-card:hover,
+  .workflow-card:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-theme) 12%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .prompt-card:focus-visible,
+  .workflow-card:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  .prompt-card-title,
+  .workflow-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .prompt-card-desc,
+  .workflow-card-desc {
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+  }
+
+  .prompt-card-cta,
+  .workflow-card-cta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-theme);
+    margin-block-start: 0.25rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .prompt-card,
+    .workflow-card {
+      transition: none;
+      transform: none !important;
+    }
+  }
+
+  /* ── Quick Start ── */
+  .qs-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-m);
+  }
+
+  .qs-card {
+    padding: var(--sp-m);
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    background: var(--color-base);
+    box-shadow: 0 1px 4px color-mix(in srgb, var(--color-main) 6%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .qs-num {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-theme);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-block-end: 0.25rem;
+  }
+
+  .qs-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-main);
+    margin: 0;
+  }
+
+  .qs-desc {
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .qs-list {
+    margin: 0.25rem 0 0;
+    padding-inline-start: 1.25em;
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  /* ── Full Testing Flow ── */
+  .flow-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-s);
+    padding: var(--sp-m);
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 10%, transparent);
+    background: color-mix(in srgb, var(--color-main) 2%, var(--color-base));
+  }
+
+  /* each cell = node + optional arrow, laid out as a row pair */
+  .flow-cell {
+    display: contents;
+  }
+
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: var(--sp-s) var(--sp-m);
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    background: var(--color-base);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    /* ~4 per row accounting for arrows */
+    width: clamp(140px, calc(25% - 2.5rem), 200px);
+    flex-shrink: 0;
+  }
+
+  .flow-node:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 50%, transparent);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--color-theme) 10%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .flow-node:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  .flow-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .flow-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-main);
+    line-height: 1.3;
+  }
+
+  .flow-desc {
+    font-size: 0.78rem;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    line-height: 1.4;
+  }
+
+  .flow-arrow {
+    font-size: 1.1rem;
+    color: color-mix(in srgb, var(--color-theme) 55%, transparent);
+    flex-shrink: 0;
+  }
+
+  @media (width < 900px) {
+    .qs-grid {
+      grid-template-columns: 1fr;
+    }
+    .flow-node {
+      width: clamp(140px, calc(50% - 2rem), 220px);
+    }
+  }
+
+  @media (width < 640px) {
+    .prompts-hero {
+      grid-template-columns: 1fr;
+      padding: var(--sp-m) 0;
+    }
+    .prompts-hero-img {
+      display: none;
+    }
+  }
+
+  @media (width < 540px) {
+    .flow-node {
+      width: 100%;
+    }
+    .flow-arrow {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .prompt-card,
+    .workflow-card,
+    .flow-node {
+      transition: none;
+      transform: none !important;
+    }
+  }
+</style>

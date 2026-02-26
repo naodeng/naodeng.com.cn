@@ -1,0 +1,845 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import SidebarAd from "@/components/SidebarAd.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import ArticleShare from "@/components/ArticleShare.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
+import Giscus from "@/components/Giscus.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import {
+  PROMPTS_PAGE_TITLE,
+  PROMPTS_COPY_BUTTON,
+  PROMPTS_COPY_SUCCESS,
+  PROMPTS_DETAIL_KEYWORDS,
+} from "@/consts";
+
+export async function getStaticPaths() {
+  const allPrompts = await getCollection("prompts");
+
+  const seen = new Set<string>();
+  const routes: { params: { lang: string; testingType: string }; props: { entries: typeof allPrompts } }[] = [];
+
+  for (const entry of allPrompts) {
+    const key = `${entry.data.lang}__${entry.data.testingType}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      const entries = allPrompts
+        .filter((p) => p.data.lang === entry.data.lang && p.data.testingType === entry.data.testingType)
+        .sort((a, b) => a.data.order - b.data.order);
+      routes.push({
+        params: { lang: entry.data.lang, testingType: entry.data.testingType },
+        props: { entries },
+      });
+    }
+  }
+
+  return routes;
+}
+
+const { entries } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const testingType = Astro.params.testingType as string;
+const t = useTranslations(lang);
+
+// Extract usage tip blockquote from body (first > ... line after the h1)
+function extractUsageTip(body: string): string {
+  const match = body.match(/^>\s*(.+?)(?:\n(?!>)|$)/m);
+  return match ? match[1].trim() : "";
+}
+
+// Render all entries, stripping Change Log from copy body
+const rendered = await Promise.all(
+  entries.map(async (entry) => {
+    const rawBody = entry.body ?? "";
+    // Strip Change Log from raw body used for copy button
+    const cleanBody = rawBody.replace(
+      /\n---\n[\s\S]*?##\s*(?:📋\s*)?Change Log[\s\S]*/i,
+      ""
+    );
+    const usageTip = extractUsageTip(rawBody);
+    const patchedEntry = { ...entry, body: cleanBody };
+    const { Content, headings } = await render(entry);
+    return { entry: patchedEntry, Content, headings, usageTip };
+  })
+);
+
+// Page title from first entry
+const pageTitle = entries[0]?.data.title.replace(/^[^-]+ - /, "") ?? testingType;
+const pageDescription = entries[0]?.data.description ?? "";
+
+// TOC headings from the first (default active) tab
+const activeHeadings = rendered[0]?.headings ?? [];
+const tocHeadings = activeHeadings.filter((h) => h.depth === 2 || h.depth === 3);
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/prompts/${testingType}/`)}`;
+
+const breadcrumbs = [
+  { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts/") },
+  { name: pageTitle, url: getRelativeLocaleUrl(lang, `/prompts/${testingType}/`) },
+];
+
+const copyLabel = t(PROMPTS_COPY_BUTTON);
+const copiedLabel = t(PROMPTS_COPY_SUCCESS);
+
+// Page-specific keywords
+const pageKeywords = `${PROMPTS_DETAIL_KEYWORDS[lang]}, ${testingType.replace(/-/g, " ")}, ${pageTitle}`;
+
+// HowTo JSON-LD for the testing type detail page
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  step: entries.map((entry, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: entry.data.promptVersion,
+    text: entry.data.description,
+  })),
+};
+
+const TESTING_TYPE_ORDER = [
+  "requirements-analysis",
+  "test-case-writing",
+  "functional-testing",
+  "performance-testing",
+  "automation-testing",
+  "mobile-testing",
+  "bug-reporting",
+  "test-reporting",
+  "test-strategy",
+  "ai-assisted-testing",
+  "manual-testing",
+  "security-testing",
+  "api-testing",
+  "accessibility-testing",
+  "test-case-reviewer",
+];
+
+// Build left sidebar nav: all testing types for this locale, sorted by custom order
+const allPrompts = await getCollection("prompts");
+const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
+const typeMap = new Map<string, { testingType: string; label: string }>();
+for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
+  if (!typeMap.has(p.data.testingType)) {
+    typeMap.set(p.data.testingType, {
+      testingType: p.data.testingType,
+      label: p.data.title.replace(/^[^-]+ - /, ""),
+    });
+  }
+}
+const sidebarItems = Array.from(typeMap.values()).sort(
+  (a, b) => TESTING_TYPE_ORDER.indexOf(a.testingType) - TESTING_TYPE_ORDER.indexOf(b.testingType)
+);
+
+const tocLabel = lang === "zh-cn" ? "本页目录" : "On this page";
+const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  type="article"
+  breadcrumbs={breadcrumbs}
+  extraStructuredData={[howToSchema]}
+  contentWide={true}
+>
+  <div class="prompts-layout" data-has-toc={tocHeadings.length > 0}>
+    <!-- Left sidebar: testing type nav -->
+    <aside class="prompts-sidebar-left" aria-label={sidebarLabel}>
+      <div class="prompts-sidebar-inner">
+        <button
+          type="button"
+          class="prompts-sidebar-toggle"
+          aria-expanded="false"
+          aria-controls="prompts-sidebar-nav"
+          id="prompts-sidebar-toggle"
+        >
+          <span>{sidebarLabel}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav id="prompts-sidebar-nav" class="prompts-sidebar-nav">
+          <div class="prompts-sidebar-search">
+            <label for="prompts-sidebar-search-input" class="visually-hidden">
+              {lang === "zh-cn" ? "搜索测试类型" : "Search testing types"}
+            </label>
+            <input
+              type="search"
+              id="prompts-sidebar-search-input"
+              class="prompts-sidebar-search-input"
+              placeholder={lang === "zh-cn" ? "搜索…" : "Search…"}
+              autocomplete="off"
+            />
+          </div>
+          <p class="prompts-sidebar-section-title">{sidebarLabel}</p>
+          <ul class="prompts-sidebar-list">
+            {sidebarItems.map((item) => (
+              <li>
+                <a
+                  href={getRelativeLocaleUrl(lang, `/prompts/${item.testingType}/`)}
+                  class:list={[
+                    "prompts-sidebar-link",
+                    item.testingType === testingType && "prompts-sidebar-link--active",
+                  ]}
+                  aria-current={item.testingType === testingType ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="sidebar-ad-wrap" aria-hidden="true">
+          {!import.meta.env.DEV && (
+            <>
+              <ins class="adsbygoogle" style="display:block; text-align:center;"
+                data-ad-layout="in-article" data-ad-format="fluid"
+                data-ad-client="ca-pub-7249159446737834" data-ad-slot="5247439587" />
+              <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </>
+          )}
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="prompts-main">
+      <Breadcrumb items={breadcrumbs} />
+      <header
+        class="prompt-detail-header"
+        id="prompt-usage-tip"
+        data-tips={JSON.stringify(rendered.map((r) => r.usageTip))}
+      >
+        <div class="prompt-detail-header-main">
+          <div class="prompt-detail-meta">
+            <span class="prompt-detail-badge">
+              {lang === "zh-cn" ? "提示词" : "Prompt"}
+            </span>
+            <span class="prompt-detail-count">
+              {entries.length} {lang === "zh-cn" ? "个版本" : entries.length === 1 ? "version" : "versions"}
+            </span>
+          </div>
+          <h1>{pageTitle}</h1>
+          <p class="prompt-detail-desc">{pageDescription}</p>
+        </div>
+        {rendered[0]?.usageTip && (
+          <div class="prompt-detail-tip">
+            <span class="prompt-detail-tip-label" aria-hidden="true">💡 {lang === "zh-cn" ? "使用说明" : "Usage Tip"}</span>
+            <span class="prompt-usage-tip-text" set:html={rendered[0].usageTip.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")} />
+          </div>
+        )}
+      </header>
+
+      <!-- Tab navigation -->
+      <div class="prompt-tabs" role="tablist" aria-label={lang === "zh-cn" ? "提示词版本" : "Prompt versions"}>
+        {rendered.map(({ entry }, i) => (
+          <button
+            type="button"
+            role="tab"
+            class="prompt-tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-controls={`tab-panel-${entry.data.promptVersion}`}
+            id={`tab-${entry.data.promptVersion}`}
+            data-version={entry.data.promptVersion}
+            data-raw-content={entry.body ?? ""}
+          >
+            {entry.data.promptVersion}
+          </button>
+        ))}
+      </div>
+
+      <!-- Tab panels -->
+      {rendered.map(({ entry, Content, headings }, i) => (
+        <div
+          role="tabpanel"
+          id={`tab-panel-${entry.data.promptVersion}`}
+          aria-labelledby={`tab-${entry.data.promptVersion}`}
+          class="prompt-panel"
+          hidden={i !== 0 ? true : undefined}
+          data-headings={JSON.stringify(
+            headings
+              .filter((h) => h.depth === 2 || h.depth === 3)
+              .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }))
+          )}
+        >
+          <div class="prompt-copy-bar">
+            <button
+              type="button"
+              class="prompt-copy-btn"
+              data-copy-label={copyLabel}
+              data-copied-label={copiedLabel}
+              data-version={entry.data.promptVersion}
+              aria-label={copyLabel}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span class="prompt-copy-btn-text">{copyLabel}</span>
+            </button>
+          </div>
+
+          <div class="prompt-content prose">
+            <Content />
+          </div>
+        </div>
+      ))}
+
+      <GoogleAd />
+
+      <ArticleShare
+        title={pageTitle}
+        url={canonicalUrl}
+        locale={lang as "en" | "zh-cn"}
+      />
+
+      <Giscus
+        lang={lang === "zh-cn" ? "zh-CN" : "en"}
+        inputPosition="bottom"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Right TOC sidebar -->
+    {tocHeadings.length > 0 && (
+      <aside class="prompts-toc-wrap" id="prompts-toc-wrap">
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+        <SidebarAd />
+      </aside>
+    )}
+  </div>
+</Base>
+
+<script>
+  // Tab switching + dynamic TOC update
+  const tablist = document.querySelector('[role="tablist"]');
+  if (tablist) {
+    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("aria-controls");
+        if (!targetId) return;
+
+        tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+        tab.setAttribute("aria-selected", "true");
+
+        const panels = document.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== targetId;
+        });
+
+        // Update usage tip inside merged header
+        const headerEl = document.getElementById("prompt-usage-tip");
+        if (headerEl) {
+          try {
+            const tips: string[] = JSON.parse(headerEl.dataset.tips ?? "[]");
+            const tip = tips[idx] ?? "";
+            const textEl = headerEl.querySelector(".prompt-usage-tip-text");
+            if (textEl) textEl.innerHTML = tip.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+            const tipBox = headerEl.querySelector<HTMLElement>(".prompt-detail-tip");
+            if (tipBox) tipBox.style.display = tip ? "" : "none";
+          } catch {}
+        }
+
+        // Update right TOC for the newly active panel
+        const activePanel = document.getElementById(targetId);
+        if (activePanel) {
+          updateToc(activePanel);
+        }
+      });
+    });
+  }
+
+  function updateToc(panel: HTMLElement) {
+    const tocWrap = document.getElementById("prompts-toc-wrap");
+    if (!tocWrap) return;
+
+    let headings: { depth: number; slug: string; text: string }[] = [];
+    try {
+      headings = JSON.parse(panel.dataset.headings ?? "[]");
+    } catch {
+      headings = [];
+    }
+
+    const tocNav = tocWrap.querySelector(".toc-nav");
+    if (!tocNav) return;
+
+    // Rebuild the desktop list
+    const desktopList = tocNav.querySelector<HTMLUListElement>(".toc-list--desktop");
+    const mobileList = tocNav.querySelector<HTMLUListElement>(".toc-list--mobile");
+
+    const buildItems = (list: HTMLUListElement | null) => {
+      if (!list) return;
+      list.innerHTML = "";
+      headings.forEach((h) => {
+        const li = document.createElement("li");
+        li.className = `toc-item${h.depth === 3 ? " toc-item--h3" : ""}`;
+        const a = document.createElement("a");
+        a.href = `#${h.slug}`;
+        a.className = "toc-link";
+        a.textContent = h.text;
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    };
+
+    buildItems(desktopList);
+    buildItems(mobileList);
+
+    // Show/hide TOC wrap based on whether there are headings
+    tocWrap.style.display = headings.length > 0 ? "" : "none";
+  }
+
+  // Copy button
+  document.querySelectorAll<HTMLButtonElement>(".prompt-copy-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const version = btn.dataset.version;
+      const tabBtn = document.querySelector<HTMLButtonElement>(`[data-version="${version}"][role="tab"]`);
+      const rawContent = tabBtn?.dataset.rawContent ?? "";
+
+      const copyLabel = btn.dataset.copyLabel ?? "Copy";
+      const copiedLabel = btn.dataset.copiedLabel ?? "Copied!";
+      const textEl = btn.querySelector(".prompt-copy-btn-text");
+
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(rawContent).then(() => {
+          if (textEl) textEl.textContent = copiedLabel;
+          btn.setAttribute("aria-label", copiedLabel);
+          btn.classList.add("copied");
+          setTimeout(() => {
+            if (textEl) textEl.textContent = copyLabel;
+            btn.setAttribute("aria-label", copyLabel);
+            btn.classList.remove("copied");
+          }, 1500);
+        }).catch(() => {});
+      }
+    });
+  });
+
+  // Sidebar toggle (mobile)
+  const sidebarToggle = document.getElementById("prompts-sidebar-toggle");
+  if (sidebarToggle) {
+    const inner = sidebarToggle.closest(".prompts-sidebar-inner");
+    sidebarToggle.addEventListener("click", () => {
+      const isOpen = inner?.classList.toggle("is-open");
+      sidebarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+
+  // Sidebar search filter
+  const searchInput = document.getElementById("prompts-sidebar-search-input") as HTMLInputElement | null;
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.trim().toLowerCase();
+      document.querySelectorAll<HTMLLIElement>(".prompts-sidebar-list li").forEach((li) => {
+        const text = li.querySelector("a")?.textContent?.toLowerCase() ?? "";
+        li.style.display = !q || text.includes(q) ? "" : "none";
+      });
+    });
+  }
+</script>
+
+<style>
+  /* ── 3-column layout ── */
+  .prompts-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--sp-l);
+    align-items: start;
+    max-inline-size: 1280px;
+    margin-inline: auto;
+    padding-inline: var(--sp-m);
+    padding-block-start: calc(var(--sp-l) * 0.15);
+    padding-block-end: var(--sp-l);
+  }
+  .prompts-layout[data-has-toc="true"] {
+    grid-template-columns: 220px minmax(0, 1fr) 200px;
+    max-inline-size: 1440px;
+  }
+
+  /* ── Left sidebar ── */
+  .prompts-sidebar-left {
+    position: sticky;
+    top: var(--sp-m);
+    align-self: start;
+  }
+  .prompts-sidebar-inner {
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+  }
+  .sidebar-ad-wrap {
+    max-height: 200px;
+    overflow: hidden;
+    margin: var(--sp-s) var(--sp-m) var(--sp-m);
+  }
+  .prompts-sidebar-toggle {
+    display: none;
+    width: 100%;
+    padding: var(--sp-s) var(--sp-m);
+    font-weight: 600;
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--color-theme);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: start;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  .prompts-sidebar-toggle svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .prompts-sidebar-inner.is-open .prompts-sidebar-toggle svg {
+    transform: rotate(180deg);
+  }
+  .prompts-sidebar-nav {
+    padding: var(--sp-s) var(--sp-m);
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .prompts-sidebar-search {
+    margin-block-end: var(--sp-s);
+  }
+  .prompts-sidebar-search-input {
+    width: 100%;
+    padding: 0.4em 0.65em;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: var(--color-main);
+    background: color-mix(in srgb, var(--color-main) 8%, var(--color-base));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    border-radius: 7px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .prompts-sidebar-search-input::placeholder {
+    color: color-mix(in srgb, var(--color-main) 45%, transparent);
+  }
+  .prompts-sidebar-search-input:focus {
+    border-color: var(--color-theme);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .prompts-sidebar-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    margin: 0 0 var(--sp-s);
+    padding-block-end: 0.35rem;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+  .prompts-sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .prompts-sidebar-list li {
+    margin: 0;
+  }
+  .prompts-sidebar-link {
+    display: block;
+    padding: 0.35em 0.6em;
+    margin-block: 0.1em 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--color-main) 85%, transparent);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+    line-height: 1.4;
+  }
+  .prompts-sidebar-link:hover {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+  .prompts-sidebar-link--active {
+    color: var(--color-theme);
+    font-weight: 600;
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+  .prompts-sidebar-link:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  /* ── Main content ── */
+  .prompts-main {
+    min-inline-size: 0;
+  }
+
+  /* ── Main content header (merged with usage tip) ── */
+  .prompt-detail-header {
+    margin-block-end: var(--sp-m);
+    padding: var(--sp-m);
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
+    border-inline-start: 4px solid var(--color-theme);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-s);
+  }
+  .prompt-detail-header-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .prompt-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-block-end: 0.15rem;
+  }
+  .prompt-detail-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15em 0.65em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    background: var(--color-theme);
+    color: #fff;
+  }
+  .prompt-detail-count {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    font-weight: 500;
+  }
+  .prompt-detail-header h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    margin: 0;
+    color: var(--color-theme);
+    line-height: 1.2;
+  }
+  .prompt-detail-desc {
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .prompt-detail-tip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.5em 0.75em;
+    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-base));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: color-mix(in srgb, var(--color-main) 85%, transparent);
+  }
+  .prompt-detail-tip-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    letter-spacing: 0.02em;
+    margin-block-end: 0.1rem;
+  }
+
+  /* Hide the first blockquote inside prompt content (it's the usage tip shown above) */
+  .prompt-content :global(blockquote:first-of-type) {
+    display: none !important;
+  }
+
+  /* ── Tabs ── */
+  .prompt-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-block-end: var(--sp-m);
+    border-block-end: 2px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    padding-block-end: 0;
+  }
+  .prompt-tab {
+    padding: 0.45em 1em;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    border-block-end: none;
+    border-radius: 8px 8px 0 0;
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    position: relative;
+    bottom: -2px;
+  }
+  .prompt-tab:hover {
+    background: color-mix(in srgb, var(--color-theme) 12%, var(--color-base));
+    color: var(--color-theme);
+  }
+  .prompt-tab[aria-selected="true"] {
+    background: var(--color-base);
+    color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 35%, transparent);
+    border-block-end: 2px solid var(--color-base);
+    z-index: 1;
+  }
+  .prompt-tab:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  /* ── Copy bar ── */
+  .prompt-copy-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-block-end: var(--sp-s);
+  }
+  .prompt-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45em 0.9em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--color-main);
+    background: color-mix(in srgb, var(--color-main) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .prompt-copy-btn:hover {
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-theme) 30%, transparent);
+    color: var(--color-theme);
+  }
+  .prompt-copy-btn.copied {
+    color: var(--color-theme);
+    border-color: var(--color-theme);
+  }
+  .prompt-copy-btn:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  /* ── Prose content ── */
+  .prompt-content {
+    line-height: 1.8;
+  }
+  .prompt-content :global(h1) { font-size: 1.5rem; font-weight: 700; margin-block: 1.5em 0.5em; }
+  .prompt-content :global(h2) {
+    font-size: 1.25rem; font-weight: 700;
+    border-inline-start: 4px solid var(--color-theme);
+    padding-inline-start: 0.75rem;
+    margin-block: 2em 0.5em;
+  }
+  .prompt-content :global(h3) {
+    font-size: 1.1rem; font-weight: 600;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    padding-block-end: 0.2em;
+    margin-block: 1.5em 0.4em;
+  }
+  .prompt-content :global(p) { margin-block: 0.75em 0; }
+  .prompt-content :global(ul), .prompt-content :global(ol) { padding-inline-start: 1.5em; margin-block: 0.5em 0; }
+  .prompt-content :global(li) { margin-block: 0.25em 0; }
+  .prompt-content :global(:not(pre) > code) {
+    font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 0.9em; color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    padding: 0.15em 0.4em; border-radius: 4px;
+  }
+  .prompt-content :global(pre) {
+    direction: ltr; padding: 1em 1.25em; border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    border-inline-start: 3px solid var(--color-theme);
+    overflow-x: auto; margin-block: 1em 0;
+  }
+  .prompt-content :global(blockquote) {
+    font-style: italic;
+    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    background: color-mix(in srgb, var(--color-main) 5%, transparent);
+    padding: 0.75em 1em;
+    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 40%, transparent);
+    margin-block: 1em 0;
+  }
+  .prompt-content :global(table) {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem;
+    margin-block: 1em 0; overflow-x: auto; display: block;
+  }
+  .prompt-content :global(th), .prompt-content :global(td) {
+    padding: 0.5em 0.75em;
+    border: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
+    text-align: start;
+  }
+  .prompt-content :global(th) {
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent); font-weight: 600;
+  }
+  .prompt-content :global(a) { color: var(--color-theme); text-decoration: underline; }
+
+  /* ── Right TOC ── */
+  .prompts-toc-wrap {
+    position: sticky;
+    top: var(--sp-m);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* ── Responsive ── */
+  @media (width < 1100px) {
+    .prompts-layout[data-has-toc="true"] {
+      grid-template-columns: 220px 1fr;
+    }
+    .prompts-toc-wrap {
+      display: none;
+    }
+  }
+  @media (width < 768px) {
+    .prompts-layout,
+    .prompts-layout[data-has-toc="true"] {
+      grid-template-columns: 1fr;
+      padding-inline: var(--sp-s);
+    }
+    .prompts-sidebar-left {
+      position: static;
+    }
+    .prompts-sidebar-toggle {
+      display: flex;
+    }
+    .prompts-sidebar-nav {
+      display: none;
+      max-height: min(calc(100vh - 12rem), 60vh);
+    }
+    .prompts-sidebar-inner.is-open .prompts-sidebar-nav {
+      display: block;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .prompt-tab, .prompts-sidebar-link, .prompt-copy-btn {
+      transition: none;
+    }
+  }
+</style>

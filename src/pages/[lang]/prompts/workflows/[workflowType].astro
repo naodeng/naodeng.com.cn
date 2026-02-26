@@ -1,0 +1,390 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import SidebarAd from "@/components/SidebarAd.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import ArticleShare from "@/components/ArticleShare.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
+import Giscus from "@/components/Giscus.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { PROMPTS_PAGE_TITLE, PROMPTS_WORKFLOWS_SECTION_TITLE, PROMPTS_DETAIL_KEYWORDS } from "@/consts";
+
+export async function getStaticPaths() {
+  const allWorkflows = await getCollection("workflows");
+  return allWorkflows.map((entry) => ({
+    params: { lang: entry.data.lang, workflowType: entry.data.workflowType },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const workflowType = Astro.params.workflowType as string;
+const t = useTranslations(lang);
+
+const { Content, headings } = await render(entry);
+
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/prompts/workflows/${workflowType}/`)}`;
+
+const breadcrumbs = [
+  { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts/") },
+  { name: t(PROMPTS_WORKFLOWS_SECTION_TITLE), url: getRelativeLocaleUrl(lang, "/prompts/") + "#workflows-heading" },
+  { name: entry.data.title, url: getRelativeLocaleUrl(lang, `/prompts/workflows/${workflowType}/`) },
+];
+
+// All workflows for this locale, sorted by order (for sidebar)
+const allWorkflows = await getCollection("workflows");
+const sidebarWorkflows = allWorkflows
+  .filter((w) => w.data.lang === lang)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const tocLabel = lang === "zh-cn" ? "本页目录" : "On this page";
+const sidebarLabel = t(PROMPTS_WORKFLOWS_SECTION_TITLE);
+
+// Page-specific keywords
+const workflowKeywords = `${PROMPTS_DETAIL_KEYWORDS[lang]}, ${workflowType.replace(/-/g, " ")}, ${entry.data.title}`;
+
+// HowTo JSON-LD for the workflow detail page
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: entry.data.title,
+  description: entry.data.description,
+  url: canonicalUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+};
+---
+
+<Base
+  title={entry.data.title}
+  description={entry.data.description}
+  keywords={workflowKeywords}
+  type="article"
+  breadcrumbs={breadcrumbs}
+  extraStructuredData={[howToSchema]}
+  contentWide={true}
+>
+  <div class="workflow-layout" data-has-toc={tocHeadings.length > 0}>
+    <!-- Left sidebar: workflow nav -->
+    <aside class="workflow-sidebar-left" aria-label={sidebarLabel}>
+      <div class="workflow-sidebar-inner">
+        <button
+          type="button"
+          class="workflow-sidebar-toggle"
+          aria-expanded="false"
+          aria-controls="workflow-sidebar-nav"
+          id="workflow-sidebar-toggle"
+        >
+          <span>{sidebarLabel}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav id="workflow-sidebar-nav" class="workflow-sidebar-nav">
+          <p class="workflow-sidebar-section-title">{sidebarLabel}</p>
+          <ul class="workflow-sidebar-list">
+            {sidebarWorkflows.map((wf) => (
+              <li>
+                <a
+                  href={getRelativeLocaleUrl(lang, `/prompts/workflows/${wf.data.workflowType}/`)}
+                  class:list={[
+                    "workflow-sidebar-link",
+                    wf.data.workflowType === workflowType && "workflow-sidebar-link--active",
+                  ]}
+                  aria-current={wf.data.workflowType === workflowType ? "page" : undefined}
+                >
+                  {wf.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div class="workflow-sidebar-divider" />
+          <a
+            href={getRelativeLocaleUrl(lang, "/prompts/")}
+            class="workflow-sidebar-back"
+          >
+            ← {lang === "zh-cn" ? "返回提示词库" : "Back to Prompts"}
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="workflow-main">
+      <Breadcrumb items={breadcrumbs} />
+      <header class="workflow-detail-header">
+        <h1>{entry.data.title}</h1>
+        <p class="workflow-detail-desc">{entry.data.description}</p>
+      </header>
+
+      <div class="workflow-content prose">
+        <Content />
+      </div>
+
+      <GoogleAd />
+
+      <ArticleShare
+        title={entry.data.title}
+        url={canonicalUrl}
+        locale={lang as "en" | "zh-cn"}
+      />
+
+      <Giscus
+        lang={lang === "zh-cn" ? "zh-CN" : "en"}
+        inputPosition="bottom"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Right TOC sidebar -->
+    {tocHeadings.length > 0 && (
+      <aside class="workflow-toc-wrap" id="workflow-toc-wrap">
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+        <SidebarAd />
+      </aside>
+    )}
+  </div>
+</Base>
+
+<script>
+  // Sidebar toggle (mobile)
+  const sidebarToggle = document.getElementById("workflow-sidebar-toggle");
+  if (sidebarToggle) {
+    const inner = sidebarToggle.closest(".workflow-sidebar-inner");
+    sidebarToggle.addEventListener("click", () => {
+      const isOpen = inner?.classList.toggle("is-open");
+      sidebarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+</script>
+
+<style>
+  /* ── 3-column layout ── */
+  .workflow-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--sp-l);
+    align-items: start;
+    max-inline-size: 1280px;
+    margin-inline: auto;
+    padding-inline: var(--sp-m);
+    padding-block: var(--sp-l);
+  }
+  .workflow-layout[data-has-toc="true"] {
+    grid-template-columns: 220px minmax(0, 1fr) 200px;
+    max-inline-size: 1440px;
+  }
+
+  /* ── Left sidebar ── */
+  .workflow-sidebar-left {
+    position: sticky;
+    top: var(--sp-m);
+    align-self: start;
+  }
+  .workflow-sidebar-inner {
+    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
+    border-radius: 0 10px 10px 0;
+    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+  }
+  .workflow-sidebar-toggle {
+    display: none;
+    width: 100%;
+    padding: var(--sp-s) var(--sp-m);
+    font-weight: 600;
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--color-theme);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: start;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  .workflow-sidebar-toggle svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .workflow-sidebar-inner.is-open .workflow-sidebar-toggle svg {
+    transform: rotate(180deg);
+  }
+  .workflow-sidebar-nav {
+    padding: var(--sp-s) var(--sp-m);
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .workflow-sidebar-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    margin: 0 0 var(--sp-s);
+    padding-block-end: 0.35rem;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+  .workflow-sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .workflow-sidebar-list li {
+    margin: 0;
+  }
+  .workflow-sidebar-link {
+    display: block;
+    padding: 0.35em 0.6em;
+    margin-block: 0.1em 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--color-main) 85%, transparent);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+    line-height: 1.4;
+  }
+  .workflow-sidebar-link:hover {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+  .workflow-sidebar-link--active {
+    color: var(--color-theme);
+    font-weight: 600;
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+  .workflow-sidebar-link:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .workflow-sidebar-divider {
+    margin-block: var(--sp-s);
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+  .workflow-sidebar-back {
+    display: block;
+    padding: 0.35em 0.6em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.15s ease;
+  }
+  .workflow-sidebar-back:hover {
+    color: var(--color-theme);
+  }
+
+  /* ── Main content ── */
+  .workflow-main {
+    min-inline-size: 0;
+  }
+  .workflow-detail-header {
+    margin-block-end: var(--sp-l);
+    padding-block-end: var(--sp-m);
+    border-block-end: 2px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+  }
+  .workflow-detail-header h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    margin-block-end: 0.4em;
+  }
+  .workflow-detail-desc {
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Prose content ── */
+  .workflow-content { line-height: 1.8; }
+  .workflow-content :global(h1) { font-size: 1.5rem; font-weight: 700; margin-block: 1.5em 0.5em; }
+  .workflow-content :global(h2) {
+    font-size: 1.25rem; font-weight: 700;
+    border-inline-start: 4px solid var(--color-theme);
+    padding-inline-start: 0.75rem;
+    margin-block: 2em 0.5em;
+  }
+  .workflow-content :global(h3) {
+    font-size: 1.1rem; font-weight: 600;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    padding-block-end: 0.2em;
+    margin-block: 1.5em 0.4em;
+  }
+  .workflow-content :global(p) { margin-block: 0.75em 0; }
+  .workflow-content :global(ul), .workflow-content :global(ol) { padding-inline-start: 1.5em; margin-block: 0.5em 0; }
+  .workflow-content :global(li) { margin-block: 0.25em 0; }
+  .workflow-content :global(:not(pre) > code) {
+    font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 0.9em; color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    padding: 0.15em 0.4em; border-radius: 4px;
+  }
+  .workflow-content :global(pre) {
+    direction: ltr; padding: 1em 1.25em; border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    border-inline-start: 3px solid var(--color-theme);
+    overflow-x: auto; margin-block: 1em 0;
+  }
+  .workflow-content :global(blockquote) {
+    font-style: italic;
+    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    background: color-mix(in srgb, var(--color-main) 5%, transparent);
+    padding: 0.75em 1em;
+    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 40%, transparent);
+    margin-block: 1em 0;
+  }
+  .workflow-content :global(table) {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem;
+    margin-block: 1em 0; overflow-x: auto; display: block;
+  }
+  .workflow-content :global(th), .workflow-content :global(td) {
+    padding: 0.5em 0.75em;
+    border: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
+    text-align: start;
+  }
+  .workflow-content :global(th) {
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent); font-weight: 600;
+  }
+  .workflow-content :global(a) { color: var(--color-theme); text-decoration: underline; }
+
+  /* ── Right TOC ── */
+  .workflow-toc-wrap {
+    position: sticky;
+    top: var(--sp-m);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* ── Responsive ── */
+  @media (width < 1100px) {
+    .workflow-layout[data-has-toc="true"] {
+      grid-template-columns: 220px 1fr;
+    }
+    .workflow-toc-wrap { display: none; }
+  }
+  @media (width < 768px) {
+    .workflow-layout,
+    .workflow-layout[data-has-toc="true"] {
+      grid-template-columns: 1fr;
+      padding-inline: var(--sp-s);
+    }
+    .workflow-sidebar-left { position: static; }
+    .workflow-sidebar-toggle { display: flex; }
+    .workflow-sidebar-nav {
+      display: none;
+      max-height: min(calc(100vh - 12rem), 60vh);
+    }
+    .workflow-sidebar-inner.is-open .workflow-sidebar-nav { display: block; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .workflow-sidebar-link, .workflow-sidebar-back { transition: none; }
+  }
+</style>

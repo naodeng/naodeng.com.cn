@@ -16,6 +16,8 @@ const t = useTranslations(Astro.currentLocale as Lang);
 interface Props {
   title?: string;
   description?: string;
+  /** 页面级关键词，覆盖全局 SITE_KEYWORDS */
+  keywords?: string;
   /** og:type，文章页传 "article"，默认 "website" */
   type?: "website" | "article";
   /** 文章/分享图（绝对 URL），不传则用站点头图 ogp.png */
@@ -43,6 +45,7 @@ interface Props {
 const {
   title,
   description,
+  keywords,
   type: ogType = "website",
   image: customImage,
   imageAlt: customImageAlt,
@@ -129,9 +132,7 @@ const breadcrumbSchema =
     <meta charset="UTF-8" />
     <title>{localeTitle}</title>
     <meta name="description" content={localeDescription} />
-    {SITE_KEYWORDS && (
-      <meta name="keywords" content={typeof SITE_KEYWORDS === "string" ? SITE_KEYWORDS : t(SITE_KEYWORDS)} />
-    )}
+    <meta name="keywords" content={keywords || (typeof SITE_KEYWORDS === "string" ? SITE_KEYWORDS : t(SITE_KEYWORDS))} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content={articleAuthor || "Nao Deng"} />

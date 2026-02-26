@@ -14,6 +14,8 @@ import type { Lang } from "@/i18n";
 interface Props {
   title?: string;
   description?: string;
+  /** 页面级关键词，覆盖全局 SITE_KEYWORDS */
+  keywords?: string;
   breadcrumbs?: { name: string; url: string }[];
   /** 页面级额外结构化数据，传给 Base 输出 ld+json */
   structuredData?: Record<string, unknown>[];
@@ -36,6 +38,7 @@ interface Props {
 const {
   title,
   description,
+  keywords,
   breadcrumbs,
   structuredData,
   sidebarSections,
@@ -55,6 +58,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
 <Base
   title={title}
   description={description}
+  keywords={keywords}
   breadcrumbs={breadcrumbs}
   extraStructuredData={structuredData}
   contentWide={true}

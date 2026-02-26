@@ -93,4 +93,47 @@ const guild = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, wiki, guild };
+// QA 提示词 collection：用于 /[lang]/prompts/[testingType]/ 下的提示词内容
+const prompts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/prompts" }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      testingType: z.enum([
+        "accessibility-testing",
+        "ai-assisted-testing",
+        "api-testing",
+        "automation-testing",
+        "bug-reporting",
+        "functional-testing",
+        "manual-testing",
+        "mobile-testing",
+        "performance-testing",
+        "requirements-analysis",
+        "security-testing",
+        "test-case-reviewer",
+        "test-case-writing",
+        "test-reporting",
+        "test-strategy",
+      ]),
+      promptVersion: z.enum(["Standard", "ROSES", "LangGPT", "ICIO", "CRISPE", "RISE"]),
+      lang: z.enum(["en", "zh-cn"]),
+      order: z.number(),
+    }),
+});
+
+// QA 工作流程 collection：用于 /[lang]/prompts/workflows/[workflowType]/ 下的工作流程内容
+const workflows = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/workflows" }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      workflowType: z.enum(["daily", "sprint", "release"]),
+      lang: z.enum(["en", "zh-cn"]),
+      order: z.number(),
+    }),
+});
+
+export const collections = { blog, docs, wiki, guild, prompts, workflows };
