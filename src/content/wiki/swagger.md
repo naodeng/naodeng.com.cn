@@ -41,7 +41,7 @@ order: 0
 
 ## 相关术语：
 
-- [API documentation](/zh-cn/wiki/api-documentation/)
+- [API documentation](/zh-cn/wiki/swagger/)
 - [邮递员](/zh-cn/wiki/postman/)
 
 ### 另请参阅：

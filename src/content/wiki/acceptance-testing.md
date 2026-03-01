@@ -42,7 +42,7 @@ order: 0
 ## 相关术语：
 
 - [用户验收测试](/zh-cn/wiki/user-acceptance-testing/)
-- [FAT (Factory Acceptance Testing)](/zh-cn/wiki/fat-factory-acceptance-testing/)
+- [FAT (Factory Acceptance Testing)](/zh-cn/wiki/fat/)
 
 ### 另请参阅：
 
@@ -294,7 +294,7 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：自动化浏览器，支持 Web 应用程序测试。
 - **SpecFlow**：通过将业务可读的行为规范绑定到底层实现，弥合领域专家和开发人员之间的沟通差距。
 - **FitNesse**：基于 wiki 的框架，允许用户在表格和可执行规范中定义测试。
-- **机器人框架**：一种关键字驱动的验收测试方法，对于非程序员来说很容易使用。
+- **Robot Framework**：一种关键字驱动的验收测试方法，对于非程序员来说很容易使用。
 - **JBehave**：BDD 框架，允许将故事编写为文档的一部分。
 - **TestComplete** ：为 Web、移动和桌面测试提供一套全面的功能。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：广泛使用的功能和回归测试工具，支持关键字和脚本接口。
@@ -306,7 +306,7 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：自动化浏览器，支持 Web 应用程序测试。
 - **SpecFlow**：通过将业务可读的行为规范绑定到底层实现，弥合领域专家和开发人员之间的沟通差距。
 - **FitNesse**：基于 wiki 的框架，允许用户在表格和可执行规范中定义测试。
-- **机器人框架**：一种关键字驱动的验收测试方法，对于非程序员来说很容易使用。
+- **Robot Framework**：一种关键字驱动的验收测试方法，对于非程序员来说很容易使用。
 - **JBehave**：BDD 框架，允许将故事编写为文档的一部分。
 - **TestComplete** ：为 Web、移动和桌面测试提供一套全面的功能。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：广泛使用的功能和回归测试工具，支持关键字和脚本接口。
@@ -341,7 +341,7 @@ order: 0
 
 - **优点**：与.NET集成，支持BDD，允许用自然语言编写测试。
 - **缺点**：主要针对.NET 项目，需要了解 BDD 原理。
-  **机器人框架**：
+  **Robot Framework**：
 
 - **优点**：关键字驱动，支持BDD，有许多针对不同应用程序的库。
 - **缺点**：语法对于开发人员来说可能不太直观，可能需要额外的 Python 知识。

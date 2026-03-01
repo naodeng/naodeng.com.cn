@@ -37,7 +37,7 @@ order: 0
 ## 相关术语：
 
 - [测试工具](/zh-cn/wiki/test-tool/)
-- [Test Automation tool (e.g., Selenium, JUnit)](/zh-cn/wiki/test-automation-tool-eg-selenium-junit/)
+- [Test Automation tool (e.g., Selenium, JUnit)](/zh-cn/wiki/test-tool/)
 
 ## 关于测试设计工具的问题吗？
 

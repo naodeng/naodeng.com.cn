@@ -1,6 +1,6 @@
 ---
 title: "Cypress ｜ Cypress"
-description: "Cypress 是一个现代前端测试框架。它提供了一个功能丰富的交互式测试运行器 (test runner)，允许你在查看被测应用程序的同时观察命令的执行。 其核心特性包括："
+description: "Cypress 是一个现代前端测试框架。它提供了一个功能丰富的交互式测试运行器 (test runner)，允许你在查看被测应用程序的同时观察命令的执行。其核心特性包括："
 section: "C"
 order: 0
 ---
@@ -11,16 +11,16 @@ order: 0
 - [Cypress ｜ Cypress](#cypress--cypress)
   - [相关术语：](#相关术语)
     - [另请参阅：](#另请参阅)
-  - [关于 赛普拉斯 的问题吗？](#关于-赛普拉斯-的问题吗)
+  - [关于 Cypress 的问题吗？](#关于-cypress-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
-      - [赛普拉斯是什么？](#赛普拉斯是什么)
+      - [Cypress 是什么？](#cypress-是什么)
       - [为什么在测试中使用 Cypress？](#为什么在测试中使用-cypress)
       - [Cypress 的主要特点是什么？](#cypress-的主要特点是什么)
       - [Cypress 与 Selenium 等其他测试工具有何不同？](#cypress-与-selenium-等其他测试工具有何不同)
       - [使用 Cypress 可以执行哪些类型的测试？](#使用-cypress-可以执行哪些类型的测试)
     - [安装和设置](#安装和设置)
-      - [如何安装赛普拉斯？](#如何安装赛普拉斯)
-      - [赛普拉斯的系统要求是什么？](#赛普拉斯的系统要求是什么)
+      - [如何安装 Cypress？](#如何安装-cypress)
+      - [Cypress 的系统要求是什么？](#cypress-的系统要求是什么)
       - [如何在 Cypress 中建立项目？](#如何在-cypress-中建立项目)
       - [如何针对特定环境配置 Cypress？](#如何针对特定环境配置-cypress)
     - [编写和运行测试](#编写和运行测试)
@@ -43,69 +43,69 @@ order: 0
       - [如何处理 Cypress 中的常见错误？](#如何处理-cypress-中的常见错误)
       - [如何优化 Cypress 中的测试执行时间？](#如何优化-cypress-中的测试执行时间)
 <!-- TOC END -->
-（又名 Cypress.io） 柏是一个端到端测试专为现代 Web 应用程序设计的框架。与许多其他测试解决方案不同， 柏直接在网络浏览器中运行，确保更加一致和准确的真实测试场景。它提供了一组丰富的功能和工具，用于编写测试、实时调试以及捕获测试运行的屏幕截图或视频记录。 柏两者都支持单元测试和完整的端到端测试，使其成为开发人员和 QA 专业人员的多功能选择。其显着特点之一是其互动性测试运行者它允许开发人员在执行命令时查看命令，同时还可以查看正在测试的应用程序。基于 Mocha、Chai 和 Sinon 等技术构建， 柏为 Web 应用程序测试提供全面且用户友好的环境。
+（又名 Cypress.io）Cypress 是一个端到端测试专为现代 Web 应用程序设计的框架。与许多其他测试解决方案不同，Cypress 直接在网络浏览器中运行，确保更加一致和准确的真实测试场景。它提供了一组丰富的功能和工具，用于编写测试、实时调试以及捕获测试运行的屏幕截图或视频记录。Cypress 两者都支持单元测试和完整的端到端测试，使其成为开发人员和 QA 专业人员的多功能选择。其显着特点之一是其互动性测试运行者它允许开发人员在执行命令时查看命令，同时还可以查看正在测试的应用程序。基于 Mocha、Chai 和 Sinon 等技术构建，Cypress 为 Web 应用程序测试提供全面且用户友好的环境。
 
 ## 相关术语：
 
-- [Web Automation tool](/zh-cn/wiki/web-automation-tool/)
-- [Playwright](/zh-cn/wiki/playwright/)
+- [Web Automation tool](/zh-cn/wiki/web-test-automation-tools/)
+- [Playwright](https://ray.run/glossary/playwright)
 
 ### 另请参阅：
 
 - [Official Website](https://www.cypress.io/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Cypress_(software))
 
-## 关于 赛普拉斯 的问题吗？
+## 关于 Cypress 的问题吗？
 
 ### 基础知识和重要性
 
-#### 赛普拉斯是什么？
+#### Cypress 是什么？
 
-[柏树](/zh-cn/wiki/cypress/) 是一个专为现代 Web 应用程序设计的 **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架**。它在浏览器中运行测试，并基于 **JavaScript** 和 **[node.js](/zh-cn/wiki/node-js/)** 等技术构建。与许多其他测试工具不同，[柏树](/zh-cn/wiki/cypress/) 在与应用程序相同的运行循环中执行测试，提供对每个对象的本机访问，而不需要单独的驱动程序或服务器。
-  [柏树](/zh-cn/wiki/cypress/) 提供了**丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)**，允许您在命令执行时查看命令，同时还可以查看正在测试的应用程序。该工具为 [测试驱动开发](/zh-cn/wiki/test-driven-development/) 提供**实时重新加载**，并在文件保存时重新运行测试。
-  [柏树](/zh-cn/wiki/cypress/) 中的测试是使用 **可链接的 [API](/zh-cn/wiki/api/)** 编写的，它与 Promise 一起使用，从而简化了异步操作的处理。 [柏树](/zh-cn/wiki/cypress/) 包含用于 DOM 遍历和操作的 **类似 jQuery 的命令**，使其为前端开发人员所熟悉。
-  [柏树](/zh-cn/wiki/cypress/) 在执行操作或断言之前提供**自动等待**，从而在大多数情况下无需显式等待或睡眠。它还提供**间谍、存根和时钟**来验证和控制服务器响应、函数或计时器的行为。
-  该工具具有**屏幕截图和视频录制**功能，可以方便地调试和理解测试失败。 [柏树](/zh-cn/wiki/cypress/) 测试可以在持续集成 (CI) 环境中无头运行，也可以在开发过程中以交互方式运行。
-  [柏树](/zh-cn/wiki/cypress/) 的体系结构不使用[selenium](/zh-cn/wiki/selenium/) 或[网络驱动程序](/zh-cn/wiki/webdriver/)，这允许更快的执行和更多的控制，但也意味着它主要适合测试在浏览器中运行的应用程序。它支持 **Chrome 系列浏览器**（包括 Electron）和 **Firefox**。
+[Cypress](/zh-cn/wiki/cypress/) 是一个专为现代 Web 应用程序设计的 **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架**。它在浏览器中运行测试，并基于 **JavaScript** 和 **[node.js](/zh-cn/wiki/node-js/)** 等技术构建。与许多其他测试工具不同，[Cypress](/zh-cn/wiki/cypress/) 在与应用程序相同的运行循环中执行测试，提供对每个对象的本机访问，而不需要单独的驱动程序或服务器。
+  [Cypress](/zh-cn/wiki/cypress/) 提供了**丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)**，允许您在命令执行时查看命令，同时还可以查看正在测试的应用程序。该工具为 [测试驱动开发](/zh-cn/wiki/test-driven-development/) 提供**实时重新加载**，并在文件保存时重新运行测试。
+  [Cypress](/zh-cn/wiki/cypress/) 中的测试是使用 **可链接的 [API](/zh-cn/wiki/api/)** 编写的，它与 Promise 一起使用，从而简化了异步操作的处理。 [Cypress](/zh-cn/wiki/cypress/) 包含用于 DOM 遍历和操作的 **类似 jQuery 的命令**，使其为前端开发人员所熟悉。
+  [Cypress](/zh-cn/wiki/cypress/) 在执行操作或断言之前提供**自动等待**，从而在大多数情况下无需显式等待或睡眠。它还提供**间谍、存根和时钟**来验证和控制服务器响应、函数或计时器的行为。
+  该工具具有**屏幕截图和视频录制**功能，可以方便地调试和理解测试失败。 [Cypress](/zh-cn/wiki/cypress/) 测试可以在持续集成 (CI) 环境中无头运行，也可以在开发过程中以交互方式运行。
+  [Cypress](/zh-cn/wiki/cypress/) 的体系结构不使用[selenium](/zh-cn/wiki/selenium/) 或[WebDriver](/zh-cn/wiki/webdriver/)，这允许更快的执行和更多的控制，但也意味着它主要适合测试在浏览器中运行的应用程序。它支持 **Chrome 系列浏览器**（包括 Electron）和 **Firefox**。
 
 #### 为什么在测试中使用 Cypress？
 
-[柏树](/zh-cn/wiki/cypress/) 用于测试主要是因为其**简单**和**开发人员友好**方法[端到端测试](/zh-cn/wiki/end-to-end-testing/)。由于其独特的架构与被测试的应用程序在同一运行循环中运行，因此它允许编写**无片断**测试。与在浏览器之外运行的其他工具相比，这会产生更可靠的测试和一致的测试。
-  [柏树]Cypress-cn/wiki/cypress/) 的使用因其**实时重新加载**而受到青睐，它可以提供有关测试代码更改的即时反馈，从而提高生产力并减少编写和维护测试所花费的时间。它的**自动等待**机制消除了手动睡眠或等待命令的需要，从而降低了[测试脚本](/zh-cn/wiki/test-script/)的复杂性。
-  当开发人员和 QA 工程师需要与现代开发工具和工作流程（包括持续集成和版本控制系统）**紧密集成**时，他们会选择 [柏树](/zh-cn/wiki/cypress/)。 [柏树](/zh-cn/wiki/cypress/) 的**丰富的调试功能**使得直接从浏览器的开发人员工具诊断和修复问题变得更加容易。
-  [柏树](/zh-cn/wiki/cypress/) 的**屏幕截图和视频录制**功能对于可视化测试失败时应用程序的状态至关重要，有助于更快地排除故障。它的**网络流量控制**允许轻松地对边缘情况进行存根和测试，而无需后端依赖项。
-  总体而言，[柏树](/zh-cn/wiki/cypress/) 用于其**一体化**测试体验，提供了一组强大的工具来满足现代 Web 应用程序测试的需求，所有这些都在一个单一的、连贯的框架内。
+[Cypress](/zh-cn/wiki/cypress/) 用于测试主要是因为其**简单**和**开发人员友好**方法[端到端测试](/zh-cn/wiki/end-to-end-testing/)。由于其独特的架构与被测试的应用程序在同一运行循环中运行，因此它允许编写**无片断**测试。与在浏览器之外运行的其他工具相比，这会产生更可靠的测试和一致的测试。
+  [Cypress](/zh-cn/wiki/cypress/) 的使用因其**实时重新加载**而受到青睐，它可以提供有关测试代码更改的即时反馈，从而提高生产力并减少编写和维护测试所花费的时间。它的**自动等待**机制消除了手动睡眠或等待命令的需要，从而降低了[测试脚本](/zh-cn/wiki/test-script/)的复杂性。
+  当开发人员和 QA 工程师需要与现代开发工具和工作流程（包括持续集成和版本控制系统）**紧密集成**时，他们会选择 [Cypress](/zh-cn/wiki/cypress/)。 [Cypress](/zh-cn/wiki/cypress/) 的**丰富的调试功能**使得直接从浏览器的开发人员工具诊断和修复问题变得更加容易。
+  [Cypress](/zh-cn/wiki/cypress/) 的**屏幕截图和视频录制**功能对于可视化测试失败时应用程序的状态至关重要，有助于更快地排除故障。它的**网络流量控制**允许轻松地对边缘情况进行存根和测试，而无需后端依赖项。
+  总体而言，[Cypress](/zh-cn/wiki/cypress/) 用于其**一体化**测试体验，提供了一组强大的工具来满足现代 Web 应用程序测试的需求，所有这些都在一个单一的、连贯的框架内。
 Cypress
 #### Cypress 的主要特点是什么？
 
-[柏树](/zh-cn/wiki/cypress/) 的主要功能包括：
+[Cypress](/zh-cn/wiki/cypress/) 的主要功能包括：
 
-- **实时重新加载**：赛普拉斯在检测到测试代码的更改后自动重新加载测试，提供即时反馈。
-- **时间旅行**：赛普拉斯在测试运行时拍摄快照，允许您将鼠标悬停在命令日志中的命令上，以准确查看每个步骤发生的情况。
+- **实时重新加载**：Cypress 在检测到测试代码的更改后自动重新加载测试，提供即时反馈。
+- **时间旅行**：Cypress 在测试运行时拍摄快照，允许您将鼠标悬停在命令日志中的命令上，以准确查看每个步骤发生的情况。
 - **自动等待**：Cypress 在继续之前等待命令和断言，从而消除了显式等待或睡眠的需要。
 - **一致的结果**：Cypress 中的测试不那么不稳定且更可靠，因为它与应用程序在同一运行循环中运行。
-- **可调试性**：借助可读错误和堆栈跟踪，赛普拉斯使调试测试变得更加容易。您还可以使用熟悉的开发工具。
+- **可调试性**：借助可读错误和堆栈跟踪，Cypress 使调试测试变得更加容易。您还可以使用熟悉的开发工具。
 - **网络流量控制**：拦截和控制每个网络请求，使您能够在不涉及服务器的情况下测试边缘情况。
 - **屏幕截图和视频**：Cypress 可以在失败时自动捕获屏幕截图，或者您也可以手动获取屏幕截图。它还记录了整个测试运行的视频。
 - **跨浏览器测试**：Cypress 支持跨多个浏览器进行测试，包括 Chrome、Firefox、Edge 和 Electron。
 - **并行化**：测试可以在多台机器上并行运行，以加快持续集成（CI）中的执行时间。
-- **仪表板服务**：与赛普拉斯仪表板一起使用时，通过分析、并行化和历史记录提供对测试的深入了解。
+- **仪表板服务**：与 Cypress 仪表板一起使用时，通过分析、并行化和历史记录提供对测试的深入了解。
 - **间谍、存根和时钟**：验证和控制函数、服务器响应或计时器的行为。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：使用诸如
     `cypress-axe`
     ，您可以将可访问性检查合并到您的测试套件中。
   这些功能旨在简化测试过程，使 [测试自动化](/zh-cn/wiki/test-automation/) 工程师更加高效和有效。
 
-- **实时重新加载**：Cypress在检测到测试代码的更改后自动重新加载测试，提供即时反馈。
-- **时间旅行**：Cypress在测试运行时拍摄快照，允许您将鼠标悬停在命令日志中的命令上，以准确查看每个步骤发生的情况。
+- **实时重新加载**：Cypress 在检测到测试代码的更改后自动重新加载测试，提供即时反馈。
+- **时间旅行**：Cypress 在测试运行时拍摄快照，允许您将鼠标悬停在命令日志中的命令上，以准确查看每个步骤发生的情况。
 - **自动等待**：Cypress 在继续之前等待命令和断言，从而消除了显式等待或睡眠的需要。
 - **一致的结果**：Cypress 中的测试不那么不稳定且更可靠，因为它与应用程序在同一运行循环中运行。
-- **可调试性**：借助可读错误和堆栈跟踪，Cypress使调试测试变得更加容易。您还可以使用熟悉的开发工具。
+- **可调试性**：借助可读错误和堆栈跟踪，Cypress 使调试测试变得更加容易。您还可以使用熟悉的开发工具。
 - **网络流量控制**：拦截和控制每个网络请求，使您能够在不涉及服务器的情况下测试边缘情况。
 - **屏幕截图和视频**：Cypress 可以在失败时自动捕获屏幕截图，或者您也可以手动获取屏幕截图。它还记录了整个测试运行的视频。
 - **跨浏览器测试**：Cypress 支持跨多个浏览器进行测试，包括 Chrome、Firefox、Edge 和 Electron。
 - **并行化**：测试可以在多台机器上并行运行，以加快持续集成（CI）中的执行时间。
-- **仪表板服务**：与Cypress仪表板一起使用时，通过分析、并行化和历史记录提供对测试的深入了解。
+- **仪表板服务**：与 Cypress 仪表板一起使用时，通过分析、并行化和历史记录提供对测试的深入了解。
 - **间谍、存根和时钟**：验证和控制函数、服务器响应或计时器的行为。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：使用诸如
     `cypress-axe`
@@ -113,36 +113,36 @@ Cypress
 
 #### Cypress 与 Selenium 等其他测试工具有何不同？
 Cypress
-[柏树](/zh-cnCypressi/cypress/) 与 [selenium](/zh-cn/wiki/selenium/) 在几个关键方面有所不同：
+[Cypress](/zh-cn/wiki/cypress/) 与 [selenium](/zh-cn/wiki/selenium/) 在几个关键方面有所不同：
 
-- **架构**：[柏树](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
-- **语言支持**：[柏树](/zh-cn/Cypress/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
-- **直接访问**：[柏树](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([网络驱动程序](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
-- **[Setup](/zh-cn/wiki/setup/) 和配置**：[柏树](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[网络驱动程序](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
-- **实时重新加载**：[柏树](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，它会在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
-- **自动等待**：[柏树](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
-- **[API 测试](Cypresscn/wiki/api-testing/)**：[柏树](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
-- **屏幕截图和视频**：[柏树](/zh-cn/wiki/cypress/) 可以本地截图和录制视频。 [selenium](/zh-cn/wiki/selenium/)可以捕获屏幕截图，但视频录制通常需要额外的工具或插件。
-- **可调试性**：[柏树](/zh-cn/wiki/cypress/) 提供更多信息性错误消息和堆栈跟踪，使调试更容易。 [selenium](/zh-cn/wiki/selenium/) 的错误消息可能不太清晰，使调试更具挑战性。
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：[selenium](/zh-cn/wiki/selenium/) 支持更广泛的浏览器和版本。 [柏树](/zh-cn/wiki/cypress/) 的跨浏览器支持正在改进，但历史上仅限于较少的浏览器。
-- **架构**：[柏树](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
-- **语言支持**：[柏树](/zh-cn/wiki/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
-- **直接访问**：[柏树](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([网络驱动程序](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
-- **[Setup](/zh-cn/wiki/setup/) 和配置**：[柏树](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[网络驱动程序](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
-- **实时重新加载**：[柏树](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，可在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
-- **自动等待**：[柏树](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
-- **[API 测试](/zh-cn/wiki/api-testing/)**：[柏树](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
-- **屏幕截图和视频**：[柏树](/zh-cn/wiki/cypress/) 可以本地截图和录制视频。 [selenium](/zh-cn/wiki/selenium/)可以捕获屏幕截图，但视频录制通常需要额外的工具或插件。
-- **可调试性**：[柏树](/zh-cn/wiki/cypress/) 提供更多信息性错误消息和堆栈跟踪，使调试更容易。 [selenium](/zh-cn/wiki/selenium/) 的错误消息可能不太清晰，使调试更具挑战性。
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：[selenium](/zh-cn/wiki/selenium/) 支持更广泛的浏览器和版本。 [柏树](/zh-cn/wiki/cypress/) 的跨浏览器支持正在改进，但历史上仅限于较少的浏览器。
+- **架构**：[Cypress](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
+- **语言支持**：[Cypress](/zh-cn/wiki/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
+- **直接访问**：[Cypress](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([WebDriver](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
+- **[Setup](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
+- **实时重新加载**：[Cypress](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，它会在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
+- **自动等待**：[Cypress](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
+- **[API 测试](/zh-cn/wiki/api-testing/)**：[Cypress](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
+- **屏幕截图和视频**：[Cypress](/zh-cn/wiki/cypress/) 可以本地截图和录制视频。 [selenium](/zh-cn/wiki/selenium/)可以捕获屏幕截图，但视频录制通常需要额外的工具或插件。
+- **可调试性**：[Cypress](/zh-cn/wiki/cypress/) 提供更多信息性错误消息和堆栈跟踪，使调试更容易。 [selenium](/zh-cn/wiki/selenium/) 的错误消息可能不太清晰，使调试更具挑战性。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：[selenium](/zh-cn/wiki/selenium/) 支持更广泛的浏览器和版本。 [Cypress](/zh-cn/wiki/cypress/) 的跨浏览器支持正在改进，但历史上仅限于较少的浏览器。
+- **架构**：[Cypress](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
+- **语言支持**：[Cypress](/zh-cn/wiki/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
+- **直接访问**：[Cypress](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([WebDriver](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
+- **[Setup](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
+- **实时重新加载**：[Cypress](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，可在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
+- **自动等待**：[Cypress](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
+- **[API 测试](/zh-cn/wiki/api-testing/)**：[Cypress](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
+- **屏幕截图和视频**：[Cypress](/zh-cn/wiki/cypress/) 可以本地截图和录制视频。 [selenium](/zh-cn/wiki/selenium/)可以捕获屏幕截图，但视频录制通常需要额外的工具或插件。
+- **可调试性**：[Cypress](/zh-cn/wiki/cypress/) 提供更多信息性错误消息和堆栈跟踪，使调试更容易。 [selenium](/zh-cn/wiki/selenium/) 的错误消息可能不太清晰，使调试更具挑战性。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：[selenium](/zh-cn/wiki/selenium/) 支持更广泛的浏览器和版本。 [Cypress](/zh-cn/wiki/cypress/) 的跨浏览器支持正在改进，但历史上仅限于较少的浏览器。
 
 #### 使用 Cypress 可以执行哪些类型的测试？
 
-使用[柏树](/zh-cn/wiki/cypress/)，测试人员可以执行各种类型的测试，包括：
+使用[Cypress](/zh-cn/wiki/cypress/)，测试人员可以执行各种类型的测试，包括：
 
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/) (E2E)** ：从头到尾模拟真实的用户场景，确保应用程序在类似生产的环境中按预期运行。
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：测试应用程序层之间或不同微服务之间的交互，以验证它们正确地协同工作。
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：虽然不是其主要用例，但赛普拉斯可用于单独测试各个功能或组件。
+- **[单元测试](/zh-cn/wiki/unit-testing/)** ：虽然不是其主要用例，但 Cypress 可用于单独测试各个功能或组件。
 - **组件测试**：验证各个组件的功能和渲染，在 React、Angular 或 Vue 等现代 JavaScript 框架中特别有用。
 - **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** ：通过与 Percy 或 Applitools 等工具集成，Cypress 可以捕获屏幕截图并将其与基线图像进行比较以检测视觉变化。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：使用诸如
@@ -151,11 +151,11 @@ Cypress
 
 - **[API 测试](/zh-cn/wiki/api-testing/)** ：虽然 Cypress 主要是一个基于浏览器的工具，但它可以通过发送 HTTP 请求并断言响应来测试 REST 或 GraphQL API。
 - **[性能测试](/zh-cn/wiki/performance-testing/)** ：虽然不是成熟的性能测试工具，但 Cypress 可以捕获页面加载时间等性能指标，并使用断言来标记性能回归。
-  [柏树](/zh-cn/wiki/cypress/) 的多功能性使其能够在单个框架内涵盖广泛的测试需求，从而简化开发和测试工作流程。
+  [Cypress](/zh-cn/wiki/cypress/) 的多功能性使其能够在单个框架内涵盖广泛的测试需求，从而简化开发和测试工作流程。
 
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/) (E2E)** ：从头到尾模拟真实的用户场景，确保应用程序在类似生产的环境中按预期运行。
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：测试应用程序层之间或不同微服务之间的交互，以验证它们正确地协同工作。
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：虽然不是其主要用例，但赛普拉斯可用于单独测试各个功能或组件。
+- **[单元测试](/zh-cn/wiki/unit-testing/)** ：虽然不是其主要用例，但 Cypress 可用于单独测试各个功能或组件。
 - **组件测试**：验证各个组件的功能和渲染，在 React、Angular 或 Vue 等现代 JavaScript 框架中特别有用。
 - **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** ：通过与 Percy 或 Applitools 等工具集成，Cypress 可以捕获屏幕截图并将其与基线图像进行比较以检测视觉变化。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：Cypress
@@ -167,9 +167,9 @@ Cypress
 
 ### 安装和设置
 
-#### 如何安装赛普拉斯？
+#### 如何安装 Cypress？
 
-要安装 [柏树](/zh-cn/wiki/cypress/)，请确保您的系统上安装了 **[node.js](/zh-cn/wiki/node-js/)**（版本 12 或更高版本）和 **npm**（版本 6 或更高版本）。打开终端或命令提示符并按照以下步骤操作：
+要安装 [Cypress](/zh-cn/wiki/cypress/)，请确保您的系统上安装了 **[node.js](/zh-cn/wiki/node-js/)**（版本 12 或更高版本）和 **npm**（版本 6 或更高版本）。打开终端或命令提示符并按照以下步骤操作：
 
 1. 导航到您的项目目录：Cypress
 
@@ -177,7 +177,7 @@ Cypress
     cd /your/project/path
     ```
 
-2. 使用 npm 安装 [柏树](/zh-cn/wiki/cypress/) 作为开发依赖项：
+2. 使用 npm 安装 [Cypress](/zh-cn/wiki/cypress/) 作为开发依赖项：
     或者，如果您愿意，也可以使用`yarn`：
 
     ```
@@ -188,7 +188,7 @@ Cypress
     yarn add cypress --dev
     ```
 
-3. 安装后，您可以使用以下命令首次打开[柏树](/zh-cn/wiki/cypress/)：
+3. 安装后，您可以使用以下命令首次打开[Cypress](/zh-cn/wiki/cypress/)：
     或者，如果您使用的是纱线：
 
     ```
@@ -198,13 +198,13 @@ Cypress
     ```
     yarn run cypress open
     ```
-这将打开 [柏树](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 并在项目目录中创建 `cypress` 文件夹，其中包含默认配置和示例测试。
-  对于持续集成系统或无头运行 [柏树](/zh-cn/wiki/cypress/) 测试，请使用 `cypress run` 命令：
+这将打开 [Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 并在项目目录中创建 `cypress` 文件夹，其中包含默认配置和示例测试。
+  对于持续集成系统或无头运行 [Cypress](/zh-cn/wiki/cypress/) 测试，请使用 `cypress run` 命令：
 
   ```
   npx cypress run
   ```
-请记住将 [柏树](/zh-cn/wiki/cypress/) 命令添加到 `package.json` 的 `scripts` 部分，以便于执行：
+请记住将 [Cypress](/zh-cn/wiki/cypress/) 命令添加到 `package.json` 的 `scripts` 部分，以便于执行：
 
   ```
   "scripts": {
@@ -222,7 +222,7 @@ Cypress
   ```
   npm run cypress:run
   ```
-确保您拥有在系统上安装新软件包所需的权限。如果您遇到任何问题，请参阅官方[柏树](/zh-cn/wiki/cypress/)文档进行故障排除。
+确保您拥有在系统上安装新软件包所需的权限。如果您遇到任何问题，请参阅官方[Cypress](/zh-cn/wiki/cypress/)文档进行故障排除。
 
 1. 导航到您的项目目录：
 
@@ -230,7 +230,7 @@ Cypress
     cd /your/project/path
     ```
 
-2. 使用 npm 安装 [柏树](/zh-cn/wiki/cypress/) 作为开发依赖项：
+2. 使用 npm 安装 [Cypress](/zh-cn/wiki/cypress/) 作为开发依赖项：
     或者，如果您愿意，也可以使用`yarn`：
 
     ```
@@ -241,7 +241,7 @@ Cypress
     yarn add cypress --dev
     ```
 
-3. 安装后，您可以使用以下命令首次打开[柏树](/zh-cn/wiki/cypress/)：
+3. 安装后，您可以使用以下命令首次打开[Cypress](/zh-cn/wiki/cypress/)：
     或者，如果您使用的是纱线：
 
     ```
@@ -252,9 +252,9 @@ Cypress
     yarn run cypress open
     ```
 
-#### 赛普拉斯的系统要求是什么？
+#### Cypress 的系统要求是什么？
 
-[柏树](/zh-cn/wiki/cypress/) 与 **Windows、macOS 和 Linux** 操作系统兼容。具体的系统要求包括：
+[Cypress](/zh-cn/wiki/cypress/) 与 **Windows、macOS 和 Linux** 操作系统兼容。具体的系统要求包括：
 
 - **[node.js](/zh-cn/wiki/node-js/)** ：版本 12 或更高版本。
 - **npm**
@@ -264,11 +264,11 @@ Cypress
 
 - A
     **支持的浏览器**
-    安装在您的机器上。赛普拉斯支持：
+    安装在您的机器上。Cypress 支持：
 
 - Chrome（包括 Canary 和 Chromium）
 - Firefox（包括开发者版）
-- 边缘Cypress
+- 边缘 Cypress
 - Electron（与 Cypress 捆绑）
 - 勇敢
 - Chrome（包括 Canary 和 Chromium）
@@ -280,15 +280,15 @@ Cypress
     **CI/CD 管道**
     ，确保构建代理满足操作系统和 Node.js 要求。
 
-- **内存和CPU**：Cypress资源来运行Electron浏览器，特别是在并行运行多个测试时。建议至少 2GB RAM。
+- **内存和 CPU**：Cypress 资源来运行 Electron 浏览器，特别是在并行运行多个测试时。建议至少 2GB RAM。
 - **屏幕分辨率**：建议查看 Cypress Test Runner 的最小屏幕分辨率为 1280x720。
-  确保您的系统对安装[柏树](/zh-cn/wiki/cypress/) 并运行测试的目录具有**写入权限**。
-  对于 **Linux 用户**，如果您的系统上尚不存在其他依赖项，您可能需要安装它们。 [柏树](/zh-cn/wiki/cypress/) 提供了一个可以运行来安装这些依赖项的命令：
+  确保您的系统对安装[Cypress](/zh-cn/wiki/cypress/) 并运行测试的目录具有**写入权限**。
+  对于 **Linux 用户**，如果您的系统上尚不存在其他依赖项，您可能需要安装它们。 [Cypress](/zh-cn/wiki/cypress/) 提供了一个可以运行来安装这些依赖项的命令：
 
   ```
   sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
   ```
-**注意**：[柏树](/zh-cn/wiki/cypress/) 是安装在您的计算机上的桌面应用程序，因此需要满足上述先决条件才能安装和执行测试。
+**注意**：[Cypress](/zh-cn/wiki/cypress/) 是安装在您的计算机上的桌面应用程序，因此需要满足上述先决条件才能安装和执行测试。
 
 - **[node.js](/zh-cn/wiki/node-js/)** ：版本 12 或更高版本。
 - **npm**
@@ -298,7 +298,7 @@ Cypress
 
 - A
     **支持的浏览器**
-    安装在您的机器上。赛普拉斯支持：
+    安装在您的机器上。Cypress 支持：
 
 - Chrome（包括 Canary 和 Chromium）
 - Firefox（包括开发者版）
@@ -314,12 +314,12 @@ Cypress
     **CI/CD 管道**
     ，确保构建代理满足操作系统和 Node.js 要求。
 
-- **内存和CPU**：Cypress资源来运行Electron浏览器，特别是在并行运行多个测试时。建议至少 2GB RAM。
+- **内存和 CPU**：Cypress 资源来运行 Electron 浏览器，特别是在并行运行多个测试时。建议至少 2GB RAM。
 - **屏幕分辨率**：建议查看 Cypress Test Runner 的最小屏幕分辨率为 1280x720。
 
 #### 如何在 Cypress 中建立项目？
 
-要在 [柏树](/zh-cn/wiki/cypress/) 中设置项目，请执行以下步骤：
+要在 [Cypress](/zh-cn/wiki/cypress/) 中设置项目，请执行以下步骤：
 
 1. **为您的项目创建一个新目录**（如果尚未创建），然后使用终端或命令提示符导航到该目录。
 
@@ -334,13 +334,13 @@ Cypress
     npm init -y
     ```
 
-3. **通过 npm 安装 [柏树](/zh-cn/wiki/cypress/)** 通过运行：
+3. **通过 npm 安装 [Cypress](/zh-cn/wiki/cypress/)** 通过运行：
 
     ```
     npm install cypress --save-dev
     ```
 
-4. **首次打开[柏树](/zh-cn/wiki/cypress/)**，通过执行以下命令搭建默认目录结构和文件：
+4. **首次打开[Cypress](/zh-cn/wiki/cypress/)**，通过执行以下命令搭建默认目录结构和文件：
     此命令生成一个 `cypress` 文件夹，其中包含示例测试和一个用于配置的 `cypress.json` 文件。
 
     ```
@@ -360,9 +360,9 @@ Cypress
     ```
 
 6. **在 `cypress/integration` 目录中组织测试文件**。您可以创建子目录来对相关测试进行分组。
-7. **使用[柏树](/zh-cn/wiki/cypress/) 提供的`describe` 和`it` 函数编写测试**，并使用`.spec.js` 或`.spec.ts` 扩展名保存它们。
-8. **运行测试** 使用 `npx cypress open` 打开 [柏树](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 或 `npx cypress run` 在无头模式下执行测试。
-  请记住**将 `node_modules` 目录添加到 `.gitignore` 文件**以避免将依赖项提交到版本控制。另外，请考虑在 `package.json` 中为常见的 [柏树](/zh-cn/wiki/cypress/) 命令设置脚本。
+7. **使用[Cypress](/zh-cn/wiki/cypress/) 提供的`describe` 和`it` 函数编写测试**，并使用`.spec.js` 或`.spec.ts` 扩展名保存它们。
+8. **运行测试** 使用 `npx cypress open` 打开 [Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 或 `npx cypress run` 在无头模式下执行测试。
+  请记住**将 `node_modules` 目录添加到 `.gitignore` 文件**以避免将依赖项提交到版本控制。另外，请考虑在 `package.json` 中为常见的 [Cypress](/zh-cn/wiki/cypress/) 命令设置脚本。
 
 1. **为您的项目创建一个新目录**（如果尚未创建），然后使用终端或命令提示符导航到该目录。
 
@@ -377,13 +377,13 @@ Cypress
     npm init -y
     ```
 
-3. **通过 npm 安装 [柏树](/zh-cn/wiki/cypress/)** 通过运行：
+3. **通过 npm 安装 [Cypress](/zh-cn/wiki/cypress/)** 通过运行：
 
     ```
     npm install cypress --save-dev
     ```
 
-4. **首次打开[柏树](/zh-cn/wiki/cypress/)**，通过执行以下命令搭建默认目录结构和文件：
+4. **首次打开[Cypress](/zh-cn/wiki/cypress/)**，通过执行以下命令搭建默认目录结构和文件：
     此命令生成一个 `cypress` 文件夹，其中包含示例测试和一个用于配置的 `cypress.json` 文件。
 
     ```
@@ -403,12 +403,12 @@ Cypress
     ```
 
 6. **在 `cypress/integration` 目录中组织测试文件**。您可以创建子目录来对相关测试进行分组。
-7. **使用[柏树](/zh-cn/wiki/cypress/) 提供的`describe` 和`it` 函数编写测试**，并使用`.spec.js` 或`.spec.ts` 扩展名保存它们。
-8. **运行测试** 使用 `npx cypress open` 打开 [柏树](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 或 `npx cypress run` 在无头模式下执行测试。
+7. **使用[Cypress](/zh-cn/wiki/cypress/) 提供的`describe` 和`it` 函数编写测试**，并使用`.spec.js` 或`.spec.ts` 扩展名保存它们。
+8. **运行测试** 使用 `npx cypress open` 打开 [Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 或 `npx cypress run` 在无头模式下执行测试。
 
 #### 如何针对特定环境配置 Cypress？
 
-要为特定环境配置[柏树](/zh-cn/wiki/cypress/)，您需要设置环境变量并可能调整您的`cypress.json` 配置文件。这是一个简洁的指南：
+要为特定环境配置[Cypress](/zh-cn/wiki/cypress/)，您需要设置环境变量并可能调整您的`cypress.json` 配置文件。这是一个简洁的指南：
 
 1. **环境变量**：使用 `cypress.json` 文件中的 `env` 键或通过命令行传递它们来定义特定于环境的变量。
     或者，使用命令行覆盖：
@@ -443,7 +443,7 @@ Cypress
     };
     ```
 
-4. **[柏树](/zh-cn/wiki/cypress/).env()**：使用`Cypress.env('variableName')` 访问测试中的环境变量。
+4. **[Cypress](/zh-cn/wiki/cypress/).env()**：使用`Cypress.env('variableName')` 访问测试中的环境变量。
 
     ```
     const apiUrl = Cypress.env('apiUrl');
@@ -483,7 +483,7 @@ Cypress
     };
     ```
 
-4. **[柏树](/zh-cn/wiki/cypress/).env()**：使用`Cypress.env('variableName')` 访问测试中的环境变量。
+4. **[Cypress](/zh-cn/wiki/cypress/).env()**：使用`Cypress.env('variableName')` 访问测试中的环境变量。
 
     ```
     const apiUrl = Cypress.env('apiUrl');
@@ -493,10 +493,10 @@ Cypress
 
 #### 如何在 Cypress 中编写基本测试？
 
-要在 [柏树](/zh-cn/wiki/cypress/) 中编写基本测试，请按照以下步骤操作：
+要在 [Cypress](/zh-cn/wiki/cypress/) 中编写基本测试，请按照以下步骤操作：
 
-1. **在[柏树](/zh-cn/wiki/cypress/) 集成文件夹中创建一个新的测试文件**，通常带有`.spec.js` 扩展名，例如`login.spec.js`。
-2. **首先在测试文件顶部要求[柏树](/zh-cn/wiki/cypress/)**：
+1. **在[Cypress](/zh-cn/wiki/cypress/) 集成文件夹中创建一个新的测试文件**，通常带有`.spec.js` 扩展名，例如`login.spec.js`。
+2. **首先在测试文件顶部要求[Cypress](/zh-cn/wiki/cypress/)**：
 
   ```
   /// <reference types="cypress" />
@@ -551,8 +551,8 @@ Cypress
     。
   请记住**保持测试隔离**和**独立**以确保可靠性。如果您需要在每次测试之前或在套件中的所有测试之前分别设置一次状态，请使用 `beforeEach` 或 `before` 挂钩。
 
-1. **在[柏树](/zh-cn/wiki/cypress/) 集成文件夹中创建一个新的测试文件**，通常带有`.spec.js` 扩展名，例如`login.spec.js`。
-2. **首先在测试文件顶部要求[柏树](/zh-cn/wiki/cypress/)**：
+1. **在[Cypress](/zh-cn/wiki/cypress/) 集成文件夹中创建一个新的测试文件**，通常带有`.spec.js` 扩展名，例如`login.spec.js`。
+2. **首先在测试文件顶部要求[Cypress](/zh-cn/wiki/cypress/)**：
 1. **描述您的[测试套件](/zh-cn/wiki/test-suite/)**
     使用
     `describe`
@@ -581,7 +581,7 @@ Cypress
 
 #### Cypress 测试的结构是什么？
 
-[柏树](/zh-cn/wiki/cypress/) 测试通常遵循的结构包括导入必要的依赖项、描述[测试套件](/zh-cn/wiki/test-suite/)、定义[测试用例](/zh-cn/wiki/test-case/) 以及使用断言实现测试步骤。以下是基本 [柏树](/zh-cn/wiki/cypress/) 测试结构的示例：
+[Cypress](/zh-cn/wiki/cypress/) 测试通常遵循的结构包括导入必要的依赖项、描述[测试套件](/zh-cn/wiki/test-suite/)、定义[测试用例](/zh-cn/wiki/test-case/) 以及使用断言实现测试步骤。以下是基本 [Cypress](/zh-cn/wiki/cypress/) 测试结构的示例：
 
   ```
   // Import the Cypress module
@@ -664,7 +664,7 @@ Cypress
 
 #### 如何在 Cypress 中运行测试？
 
-要在 [柏树](/zh-cn/wiki/cypress/) 中运行测试，请按照以下步骤操作：
+要在 [Cypress](/zh-cn/wiki/cypress/) 中运行测试，请按照以下步骤操作：
 
 1. 打开终端或命令提示符。
 2. 导航到安装 Cypress 的项目目录。
@@ -675,7 +675,7 @@ Cypress
   ```
 
 1. Cypress Test Runner GUI 将启动，显示测试文件列表。
-2. 单击要运行的测试文件。赛普拉斯将执行该文件中的测试并实时显示结果。
+2. 单击要运行的测试文件。Cypress 将执行该文件中的测试并实时显示结果。
   或者，在不打开 [测试运行者](/zh-cn/wiki/test-runner/) GUI 的情况下无头运行测试：
 
 1. 在终端中使用以下命令：
@@ -701,19 +701,19 @@ Cypress
   npx cypress run --config video=false
   ```
 此命令将运行测试而不录制视频。
-  对于并行 [测试执行](/zh-cn/wiki/test-execution/) 以及跨多台计算机或 CI 容器的负载平衡，请使用 [柏树](/zh-cn/wiki/cypress/) 仪表板服务，这需要额外的 [setup](/zh-cn/wiki/setup/) 和配置。
+  对于并行 [测试执行](/zh-cn/wiki/test-execution/) 以及跨多台计算机或 CI 容器的负载平衡，请使用 [Cypress](/zh-cn/wiki/cypress/) 仪表板服务，这需要额外的 [setup](/zh-cn/wiki/setup/) 和配置。
 
 1. 打开终端或命令提示符。
 2. 导航到安装 Cypress 的项目目录。
 3. 执行以下命令打开 Cypress Test Runner：
 1. Cypress Test Runner GUI 将启动，显示测试文件列表。
-2. 单击要运行的测试文件。赛普拉斯将执行该文件中的测试并实时显示结果。
+2. 单击要运行的测试文件。Cypress 将执行该文件中的测试并实时显示结果。
 1. 在终端中使用以下命令：
 1. 这将在默认的无头浏览器（Electron）中运行所有测试文件。
 
 #### 如何在 Cypress 中使用断言？
 
-在 [柏树](/zh-cn/wiki/cypress/) 中使用断言对于验证被测应用程序是否按预期运行至关重要。 [柏树](/zh-cn/wiki/cypress/) 使用 Chai 进行断言，它提供 `expect`、`assert` 和 `should` 语法。
+在 [Cypress](/zh-cn/wiki/cypress/) 中使用断言对于验证被测应用程序是否按预期运行至关重要。 [Cypress](/zh-cn/wiki/cypress/) 使用 Chai 进行断言，它提供 `expect`、`assert` 和 `should` 语法。
   **Expect** 和 **should** 是 [BDD](/zh-cn/wiki/bdd/)（行为驱动开发）风格的断言，而 **assert** 是 TDD ([测试驱动开发](/zh-cn/wiki/test-driven-development/)) 风格。以下是如何使用它们：
   **预期：**
 
@@ -733,7 +733,7 @@ Cypress
   assert.equal(variable, value, 'Optional message');
   assert.isTrue(condition, 'Optional message');
   ```
-[柏树](/zh-cn/wiki/cypress/) 断言会自动重试，直到通过或超时（这是由 `defaultCommandTimeout` 配置定义的）。
+[Cypress](/zh-cn/wiki/cypress/) 断言会自动重试，直到通过或超时（这是由 `defaultCommandTimeout` 配置定义的）。
   用于更复杂检查的链断言：
 
   ```
@@ -748,7 +748,7 @@ Cypress
     expect(response.body).to.have.property('data');
   });
   ```
-请记住利用 [柏树](/zh-cn/wiki/cypress/) 的内置断言来处理常见条件，例如元素的可见性或存在，这可以简化语法并提高可读性：
+请记住利用 [Cypress](/zh-cn/wiki/cypress/) 的内置断言来处理常见条件，例如元素的可见性或存在，这可以简化语法并提高可读性：
 
   ```
   cy.get(selector).should('be.visible');
@@ -758,7 +758,7 @@ Cypress
 
 #### Cypress 中如何处理事件？
 
-由于其类似于 jQuery 的语法，在 [柏树](/zh-cn/wiki/cypress/) 中处理事件非常简单。要与元素交互并处理事件，您可以使用模拟用户操作的 [柏树](/zh-cn/wiki/cypress/) 命令。
+由于其类似于 jQuery 的语法，在 [Cypress](/zh-cn/wiki/cypress/) 中处理事件非常简单。要与元素交互并处理事件，您可以使用模拟用户操作的 [Cypress](/zh-cn/wiki/cypress/) 命令。
   例如，要处理单击事件，您可以使用 `.click()` 命令：
 
   ```
@@ -774,7 +774,7 @@ Cypress
   ```
   cy.get('input').type('Hello, World!');
   ```
-为了处理更复杂的事件（例如悬停），[柏树](/zh-cn/wiki/cypress/) 本身并不支持用户体验到的 `hover` 事件。相反，您可以使用 `.trigger()` 命令触发相同的功能：
+为了处理更复杂的事件（例如悬停），[Cypress](/zh-cn/wiki/cypress/) 本身并不支持用户体验到的 `hover` 事件。相反，您可以使用 `.trigger()` 命令触发相同的功能：
 
   ```
   cy.get('div').trigger('mouseover');
@@ -785,7 +785,7 @@ Cypress
   cy.wait(1000); // Waits for 1 second
   cy.get('button').click();
   ```
-请记住，[柏树](/zh-cn/wiki/cypress/) 会自动等待元素存在，并重试命令，直到元素可操作。这意味着您通常不需要手动处理依赖于先前操作或异步操作的事件。
+请记住，[Cypress](/zh-cn/wiki/cypress/) 会自动等待元素存在，并重试命令，直到元素可操作。这意味着您通常不需要手动处理依赖于先前操作或异步操作的事件。
   对于自定义事件或更复杂的场景，您可以使用`Cypress.Commands.add()`定义自定义命令来封装可重用的事件处理逻辑：
 
   ```
@@ -799,9 +799,9 @@ Cypress
 
 #### 如何在 Cypress 中使用灯具？
 
-在[柏树](/zh-cn/wiki/cypress/) 中使用固定装置是一种与[测试脚本](/zh-cn/wiki/test-script/) 分开管理[测试数据](/zh-cn/wiki/test-data/) 的方法，允许您加载可在多个测试中使用的静态数据。以下是在 [柏树](/zh-cn/wiki/cypress/) 中使用灯具的方法：
+在[Cypress](/zh-cn/wiki/cypress/) 中使用固定装置是一种与[测试脚本](/zh-cn/wiki/test-script/) 分开管理[测试数据](/zh-cn/wiki/test-data/) 的方法，允许您加载可在多个测试中使用的静态数据。以下是在 [Cypress](/zh-cn/wiki/cypress/) 中使用灯具的方法：
 
-1. **创建一个fixture文件** : 将一个JSON文件放入
+1. **创建一个 fixture 文件** : 将一个 JSON 文件放入
     `cypress/fixtures`
     目录。例如，
     `user.json`
@@ -836,7 +836,7 @@ Cypress
   cy.get('input[name="email"]').type(user.email);
   ```
 
-1. **加载fixtures的快捷方式** ：您还可以将fixture文件直接传递给命令，例如
+1. **加载 fixtures 的快捷方式** ：您还可以将 fixture 文件直接传递给命令，例如
     `cy.get()`
     或
     `cy.route()`
@@ -860,7 +860,7 @@ Cypress
   ```
 请记住使您的夹具数据保持最新并与您正在执行的测试相关。这将确保您的测试保持可靠和可维护。
 
-1. **创建一个fixture文件** : 将一个JSON文件放入
+1. **创建一个 fixture 文件** : 将一个 JSON 文件放入
     `cypress/fixtures`
     目录。例如，
     `user.json`
@@ -871,7 +871,7 @@ Cypress
     函数加载夹具数据。然后您可以在测试中使用这些数据。
 
 1. **在测试中使用夹具数据**：加载夹具后，您可以在测试逻辑中使用数据，例如填写表格或与预期值进行比较。
-1. **加载fixtures的快捷方式** ：您还可以将fixture文件直接传递给命令，例如
+1. **加载 fixtures 的快捷方式** ：您还可以将 fixture 文件直接传递给命令，例如
     `cy.get()`
     或
     `cy.route()`
@@ -887,13 +887,13 @@ Cypress
 
 #### Cypress 如何处理异步操作？
 
-[柏树](/zh-cn/wiki/cypress/) 通过在继续下一步之前自动等待命令和断言来处理异步操作。这意味着它将等待元素变得可见、动画完成以及网络请求完成，然后再执行下一个命令。无需在测试中添加显式等待或睡眠。
-  例如，当您使用命令获取元素时，[柏树](/zh-cn/wiki/cypress/)将不断重试该命令，直到找到该元素或达到超时。这适用于 [柏树](/zh-cn/wiki/cypress/) 中的大多数命令：
+[Cypress](/zh-cn/wiki/cypress/) 通过在继续下一步之前自动等待命令和断言来处理异步操作。这意味着它将等待元素变得可见、动画完成以及网络请求完成，然后再执行下一个命令。无需在测试中添加显式等待或睡眠。
+  例如，当您使用命令获取元素时，[Cypress](/zh-cn/wiki/cypress/)将不断重试该命令，直到找到该元素或达到超时。这适用于 [Cypress](/zh-cn/wiki/cypress/) 中的大多数命令：
 
   ```
   cy.get('.some-element') // Cypress will wait for this element to exist
   ```
-在处理网络请求时，[柏树](/zh-cn/wiki/cypress/) 提供`cy.wait()` 来等待特定请求完成：
+在处理网络请求时，[Cypress](/zh-cn/wiki/cypress/) 提供`cy.wait()` 来等待特定请求完成：
 
   ```
   cy.wait('@yourRequestAlias')
@@ -906,8 +906,8 @@ Cypress
       expect(response.body).to.have.property('success', true);
     });
   ```
-[柏树](/zh-cn/wiki/cypress/) 确保在 `.then()` 内部的异步操作完成之前测试不会继续。
-  对于断言，[柏树](/zh-cn/wiki/cypress/) 使用重试和超时机制。断言将重新运行，直到通过或达到指定的超时：
+[Cypress](/zh-cn/wiki/cypress/) 确保在 `.then()` 内部的异步操作完成之前测试不会继续。
+  对于断言，[Cypress](/zh-cn/wiki/cypress/) 使用重试和超时机制。断言将重新运行，直到通过或达到指定的超时：
 
   ```
   cy.get('.list-item').should('have.length', 5) // Retries until the condition is met or timeout
@@ -916,7 +916,7 @@ Cypress
 
 #### 如何在 Cypress 中使用自定义命令？
 
-在[柏树](/zh-cn/wiki/cypress/) 中使用自定义命令可以通过封装重复任务来增强您的[测试套件](/zh-cn/wiki/test-suite/)。要定义自定义命令，请将函数添加到`cypress/support` 目录中`commands.js` 文件中的`Cypress.Commands.add` 方法。
+在[Cypress](/zh-cn/wiki/cypress/) 中使用自定义命令可以通过封装重复任务来增强您的[测试套件](/zh-cn/wiki/test-suite/)。要定义自定义命令，请将函数添加到`cypress/support` 目录中`commands.js` 文件中的`Cypress.Commands.add` 方法。
 
   ```
   Cypress.Commands.add('login', (email, password) => {
@@ -931,7 +931,7 @@ Cypress
   cy.login('user@example.com', 'password123');
   ```
 **参数** 可以像任何其他函数一样传递给自定义命令。在上面的示例中，`email` 和`password` 是参数。
-  **链接**由自定义命令支持。从自定义命令返回 `cy` 以继续链接 [柏树](/zh-cn/wiki/cypress/) 命令：
+  **链接**由自定义命令支持。从自定义命令返回 `cy` 以继续链接 [Cypress](/zh-cn/wiki/cypress/) 命令：
 
   ```
   Cypress.Commands.add('fillForm', data => {
@@ -953,8 +953,8 @@ Cypress
 
 #### Cypress 中如何处理网络请求？
 
-可以使用`cy.intercept()` 方法来处理[柏树](/zh-cn/wiki/cypress/) 中的网络请求。这允许您监听、修改或模拟网络请求和响应。
-  **拦截GET请求：**
+可以使用`cy.intercept()` 方法来处理[Cypress](/zh-cn/wiki/cypress/) 中的网络请求。这允许您监听、修改或模拟网络请求和响应。
+  **拦截 GET 请求：**
 
   ```
   cy.intercept('GET', '/api/todos').as('getTodos')
@@ -1000,14 +1000,14 @@ Cypress
 
 #### 如何在 Cypress 中使用 cookie 和本地存储？
 
-由于其内置命令，[柏树](/zh-cn/wiki/cypress/) 中的 cookie 和本地存储的使用非常简单。
+由于其内置命令，[Cypress](/zh-cn/wiki/cypress/) 中的 cookie 和本地存储的使用非常简单。
   **饼干：**
   要按名称获取 cookie：
 
   ```
   cy.getCookie('session_id').should('exist')
   ```
-获取所有cookie：
+获取所有 cookie：
 
   ```
   cy.getCookies().should('have.length', 1)
@@ -1053,11 +1053,11 @@ Cypress
   ```
   cy.clearLocalStorage(/cart/)
   ```
-请记住，这些命令是异步的并返回承诺，因此它们应该与 [柏树](/zh-cn/wiki/cypress/) 的链接机制一起使用。此外，本地存储操作通常在被测应用程序的上下文中执行，因此请确保在尝试与本地存储交互之前加载正确的页面。
+请记住，这些命令是异步的并返回承诺，因此它们应该与 [Cypress](/zh-cn/wiki/cypress/) 的链接机制一起使用。此外，本地存储操作通常在被测应用程序的上下文中执行，因此请确保在尝试与本地存储交互之前加载正确的页面。
 
 #### 如何在 Cypress 中处理 iframe？
 
-处理 [柏树](/zh-cn/wiki/cypress/) 中的 iframe 需要一些额外的步骤，因为 [柏树](/zh-cn/wiki/cypress/) 命令被设计为在同源上下文中操作。这是一个简洁的指南：
+处理 [Cypress](/zh-cn/wiki/cypress/) 中的 iframe 需要一些额外的步骤，因为 [Cypress](/zh-cn/wiki/cypress/) 命令被设计为在同源上下文中操作。这是一个简洁的指南：
 
 1. **定位 iframe**
 - 使用
@@ -1068,10 +1068,10 @@ Cypress
   cy.get('iframe')
   ```
 
-1. **访问iframe的内容**
+1. **访问 iframe 的内容**
 - 使用
     `.its('contentDocument.body')`
-    获取iframe的body，该iframe受同源策略限制。
+    获取 iframe 的 body，该 iframe 受同源策略限制。
 
   ```
   cy.get('iframe').its('contentDocument.body').should('not.be.empty').then(cy.wrap)
@@ -1085,24 +1085,24 @@ Cypress
   ```
 请记住，对于跨源 iframe，您需要在 `cypress.json` 配置文件中设置 `"chromeWebSecurity": false` 以绕过这些限制。但是，出于安全原因，不建议这样做，并且仅应在绝对必要时使用。
   如果您正在处理多个嵌套 iframe，则需要对每个级别的 iframe 嵌套重复该过程，以确保您在每个级别都定位正确的 iframe。
-  请记住，[柏树](/zh-cn/wiki/cypress/) 最佳实践建议尽可能避免使用 iframe，因为它们会增加测试的复杂性。如果您可以控制应用程序，请考虑更适合测试的 iframe 替代方案。
+  请记住，[Cypress](/zh-cn/wiki/cypress/) 最佳实践建议尽可能避免使用 iframe，因为它们会增加测试的复杂性。如果您可以控制应用程序，请考虑更适合测试的 iframe 替代方案。
 
 1. **定位 iframe**
 - 使用
     `cy.get()`
     抓取 iframe 元素。
 
-1. **访问iframe的内容**
+1. **访问 iframe 的内容**
 - 使用
     `.its('contentDocument.body')`
-    获取iframe的body，该iframe受同源策略限制。
+    获取 iframe 的 body，该 iframe 受同源策略限制。
 
 1. **与元素交互**
 - 包装后，您可以与 iframe 内的元素进行交互，就像与 Cypress 中的任何其他元素进行交互一样。
 
 #### 如何在 Cypress 中使用插件？
 
-在[柏树](/zh-cn/wiki/cypress/) 中使用插件可以通过扩展其核心功能来增强其功能。要使用插件，请按照下列步骤操作：
+在[Cypress](/zh-cn/wiki/cypress/) 中使用插件可以通过扩展其核心功能来增强其功能。要使用插件，请按照下列步骤操作：
 
 1. **通过 npm 安装插件**。例如，要安装 `cypress-file-upload` 插件，请运行：
 
@@ -1110,7 +1110,7 @@ Cypress
     npm install --save-dev cypress-file-upload
     ```
 
-2. **将插件包含在项目的 `cypress/plugins/index.js` 文件中。您可以在此处修改或扩展[柏树](/zh-cn/wiki/cypress/) 的内部行为。例如：
+2. **将插件包含在项目的 `cypress/plugins/index.js` 文件中。您可以在此处修改或扩展[Cypress](/zh-cn/wiki/cypress/) 的内部行为。例如：
 
     ```
     module.exports = (on, config) => {
@@ -1129,7 +1129,7 @@ Cypress
     ```
     cy.get('input[type="file"]').attachFile('file.json');
     ```
-请记住**检查插件的文档**以获取具体的使用说明以及与您的 [柏树](/zh-cn/wiki/cypress/) 版本的兼容性。某些插件可能需要额外的配置或初始化步骤。
+请记住**检查插件的文档**以获取具体的使用说明以及与您的 [Cypress](/zh-cn/wiki/cypress/) 版本的兼容性。某些插件可能需要额外的配置或初始化步骤。
   插件可以提供各种功能，例如自定义命令、改进的报告或与其他工具的集成。在将插件添加到您的项目之前，始终**确保该插件得到积极维护**并且非常适合您的需求。
 
 1. **通过 npm 安装插件**。例如，要安装 `cypress-file-upload` 插件，请运行：
@@ -1138,7 +1138,7 @@ Cypress
     npm install --save-dev cypress-file-upload
     ```
 
-2. **将插件包含在项目的 `cypress/plugins/index.js` 文件中。您可以在此处修改或扩展[柏树](/zh-cn/wiki/cypress/) 的内部行为。例如：
+2. **将插件包含在项目的 `cypress/plugins/index.js` 文件中。您可以在此处修改或扩展[Cypress](/zh-cn/wiki/cypress/) 的内部行为。例如：
 
     ```
     module.exports = (on, config) => {
@@ -1162,7 +1162,7 @@ Cypress
 
 #### 在 Cypress 中编写测试的最佳实践有哪些？
 
-在 [柏树](/zh-cn/wiki/cypress/) 中编写测试时，请考虑以下最佳实践：
+在 [Cypress](/zh-cn/wiki/cypress/) 中编写测试时，请考虑以下最佳实践：
 
 - **逻辑地组织测试**
     使用
@@ -1180,7 +1180,7 @@ Cypress
 - **使用[页面对象模型](/zh-cn/wiki/page-object-model/)**
     或类似的模式来抽象元素选择器和页面交互，从而增强可维护性。
 
-- **利用[柏树](/zh-cn/wiki/cypress/)的内置重试能力**
+- **利用[Cypress](/zh-cn/wiki/cypress/)的内置重试能力**
     用于处理动态内容并减少不稳定的命令和断言。
 
 - **避免使用任意等待**
@@ -1188,7 +1188,7 @@ Cypress
     `cy.wait()`
     有固定时间）；相反，依靠 Cypress 自动等待元素存在、可见、可点击等。
 
-- **利用[柏树](/zh-cn/wiki/cypress/)别名**
+- **利用[Cypress](/zh-cn/wiki/cypress/)别名**
     与
     `cy.as()`
     用于重用命令链中的元素或响应。
@@ -1237,7 +1237,7 @@ Cypress
 - **使用[页面对象模型](/zh-cn/wiki/page-object-model/)**
     或类似的模式来抽象元素选择器和页面交互，从而增强可维护性。
 
-- **利用[柏树](/zh-cn/wiki/cypress/)的内置重试能力**
+- **利用[Cypress](/zh-cn/wiki/cypress/)的内置重试能力**
     用于处理动态内容并减少不稳定的命令和断言。
 
 - **避免使用任意等待**
@@ -1245,7 +1245,7 @@ Cypress
     `cy.wait()`
     有固定时间）；相反，依靠 Cypress 自动等待元素存在、可见、可点击等。
 
-- **利用[柏树](/zh-cn/wiki/cypress/)别名**
+- **利用[Cypress](/zh-cn/wiki/cypress/)别名**
     与
     `cy.as()`
     用于重用命令链中的元素或响应。
@@ -1267,12 +1267,12 @@ Cypress
 
 #### 如何在 Cypress 中调试测试？
 
-可以系统地进行[柏树](/zh-cn/wiki/cypress/) 中的调试测试：
+可以系统地进行[Cypress](/zh-cn/wiki/cypress/) 中的调试测试：
 
-1. **使用[柏树](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/)**：它提供[测试执行](/zh-cn/wiki/test-execution/) 的视觉表示。您可以在命令运行时查看命令，并在每个步骤检查应用程序的状态。
-2. **时间旅行**：[柏树](/zh-cn/wiki/cypress/) 在测试运行时拍摄快照。将鼠标悬停在命令日志中的命令上可准确查看每个步骤发生的情况。
-3. **实时重新加载**：只要您对测试进行更改，[柏树](/zh-cn/wiki/cypress/)就会自动重新加载。您可以立即看到测试结果。
-4. **控制台输出**：检查浏览器的开发者控制台的日志。 [柏树](/zh-cn/wiki/cypress/) 命令在此处记录附加信息，这对于调试很有用。
+1. **使用[Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/)**：它提供[测试执行](/zh-cn/wiki/test-execution/) 的视觉表示。您可以在命令运行时查看命令，并在每个步骤检查应用程序的状态。
+2. **时间旅行**：[Cypress](/zh-cn/wiki/cypress/) 在测试运行时拍摄快照。将鼠标悬停在命令日志中的命令上可准确查看每个步骤发生的情况。
+3. **实时重新加载**：只要您对测试进行更改，[Cypress](/zh-cn/wiki/cypress/)就会自动重新加载。您可以立即看到测试结果。
+4. **控制台输出**：检查浏览器的开发者控制台的日志。 [Cypress](/zh-cn/wiki/cypress/) 命令在此处记录附加信息，这对于调试很有用。
 5. **`.debug()` 命令**：将 `.debug()` 插入命令链以检查此时 DOM 的状态。它将导致浏览器的调试器启动。
 
     ```
@@ -1288,15 +1288,15 @@ Cypress
     ```
 
 7. **网络请求**：检查 [测试运行者](/zh-cn/wiki/test-runner/) 的命令日志中的网络请求，以确保 [API](/zh-cn/wiki/api/) 调用按预期进行且数据正确。
-8. **错误消息**：仔细阅读错误消息。 [柏树](/zh-cn/wiki/cypress/) 提供描述性错误消息，可以指导您找到问题的根源。
-9. **[柏树](/zh-cn/wiki/cypress/) 日志**：通过设置`Cypress.config('log', true)` 启用详细日志记录，以获取有关[测试执行](/zh-cn/wiki/test-execution/) 的更多详细信息。
-10. **重试能力**：了解 [柏树](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
-  通过结合这些工具和技术，您可以有效地调试 [柏树](/zh-cn/wiki/cypress/) 测试并更快地解决问题。
+8. **错误消息**：仔细阅读错误消息。 [Cypress](/zh-cn/wiki/cypress/) 提供描述性错误消息，可以指导您找到问题的根源。
+9. **[Cypress](/zh-cn/wiki/cypress/) 日志**：通过设置`Cypress.config('log', true)` 启用详细日志记录，以获取有关[测试执行](/zh-cn/wiki/test-execution/) 的更多详细信息。
+10. **重试能力**：了解 [Cypress](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
+  通过结合这些工具和技术，您可以有效地调试 [Cypress](/zh-cn/wiki/cypress/) 测试并更快地解决问题。
 
-1. **使用[柏树](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/)**：它提供[测试执行](/zh-cn/wiki/test-execution/) 的视觉表示。您可以在命令运行时查看命令，并在每个步骤检查应用程序的状态。
-2. **时间旅行**：[柏树](/zh-cn/wiki/cypress/) 在测试运行时拍摄快照。将鼠标悬停在命令日志中的命令上可准确查看每个步骤发生的情况。
-3. **实时重新加载**：只要您对测试进行更改，[柏树](/zh-cn/wiki/cypress/)就会自动重新加载。您可以立即看到测试结果。
-4. **控制台输出**：检查浏览器的开发者控制台的日志。 [柏树](/zh-cn/wiki/cypress/) 命令在此处记录附加信息，这对于调试很有用。
+1. **使用[Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/)**：它提供[测试执行](/zh-cn/wiki/test-execution/) 的视觉表示。您可以在命令运行时查看命令，并在每个步骤检查应用程序的状态。
+2. **时间旅行**：[Cypress](/zh-cn/wiki/cypress/) 在测试运行时拍摄快照。将鼠标悬停在命令日志中的命令上可准确查看每个步骤发生的情况。
+3. **实时重新加载**：只要您对测试进行更改，[Cypress](/zh-cn/wiki/cypress/)就会自动重新加载。您可以立即看到测试结果。
+4. **控制台输出**：检查浏览器的开发者控制台的日志。 [Cypress](/zh-cn/wiki/cypress/) 命令在此处记录附加信息，这对于调试很有用。
 5. **`.debug()` 命令**：将 `.debug()` 插入命令链以检查此时 DOM 的状态。它将导致浏览器的调试器启动。
 
     ```
@@ -1312,13 +1312,13 @@ Cypress
     ```
 
 7. **网络请求**：检查 [测试运行者](/zh-cn/wiki/test-runner/) 的命令日志中的网络请求，以确保 [API](/zh-cn/wiki/api/) 调用按预期进行且数据正确。
-8. **错误消息**：仔细阅读错误消息。 [柏树](/zh-cn/wiki/cypress/) 提供描述性错误消息，可以指导您找到问题的根源。
-9. **[柏树](/zh-cn/wiki/cypress/) 日志**：通过设置`Cypress.config('log', true)` 启用详细日志记录，以获取有关[测试执行](/zh-cn/wiki/test-execution/) 的更多详细信息。
-10. **重试能力**：了解 [柏树](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
+8. **错误消息**：仔细阅读错误消息。 [Cypress](/zh-cn/wiki/cypress/) 提供描述性错误消息，可以指导您找到问题的根源。
+9. **[Cypress](/zh-cn/wiki/cypress/) 日志**：通过设置`Cypress.config('log', true)` 启用详细日志记录，以获取有关[测试执行](/zh-cn/wiki/test-execution/) 的更多详细信息。
+10. **重试能力**：了解 [Cypress](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
 
 #### 如何处理 Cypress 中的常见错误？
 
-处理 [柏树](/zh-cn/wiki/cypress/) 中的常见错误涉及了解错误消息并应用适当的修复或解决方法。以下是一些策略：
+处理 [Cypress](/zh-cn/wiki/cypress/) 中的常见错误涉及了解错误消息并应用适当的修复或解决方法。以下是一些策略：
   **超时错误**：如果元素加载时间较长，请使用 `cy.wait()` 或在 `cypress.json` 中全局增加默认超时设置。
 
   ```
@@ -1358,60 +1358,14 @@ Cypress
     // handle error
   })
   ```
-**[柏树](/zh-cn/wiki/cypress/) 命令队列错误**：请记住，[柏树](/zh-cn/wiki/cypress/) 命令是异步且排队的。避免将传统的 async/await 与 [柏树](/zh-cn/wiki/cypress/) 命令一起使用。
-  对于更复杂或持续存在的错误，请参阅[柏树](/zh-cn/wiki/cypress/) 文档或社区论坛以获取特定的解决方案和故障排除提示。
+**[Cypress](/zh-cn/wiki/cypress/) 命令队列错误**：请记住，[Cypress](/zh-cn/wiki/cypress/) 命令是异步且排队的。避免将传统的 async/await 与 [Cypress](/zh-cn/wiki/cypress/) 命令一起使用。
+  对于更复杂或持续存在的错误，请参阅[Cypress](/zh-cn/wiki/cypress/) 文档或社区论坛以获取特定的解决方案和故障排除提示。
 
 #### 如何优化 Cypress 中的测试执行时间？
 
-要优化 [柏树](/zh-cn/wiki/cypress/) 中的 [测试执行](/zh-cn/wiki/test-execution/) 时间，请考虑以下策略：
+要优化 [Cypress](/zh-cn/wiki/cypress/) 中的 [测试执行](/zh-cn/wiki/test-execution/) 时间，请考虑以下策略：
 
-- **并行运行测试**：利用[柏树](/zh-cn/wiki/cypress/) Dashboard Service 在多台机器上同时运行测试。这可以显着减少[测试套件](/zh-cn/wiki/test-suite/) 的总体执行时间。
-
-    ```
-    cypress run --record --key <record_key> --parallel
-    ```
-
-- **选择性[测试执行](/zh-cn/wiki/test-execution/)**：使用`.only` 运行特定测试或在开发期间使用[测试套件](/zh-cn/wiki/test-suite/) 以避免运行整个套件。
-
-    ```
-    describe.only('My Test Suite', () => {
-      // Only this suite will run
-    });
-    it.only('My Test', () => {
-      // Only this test will run
-    });
-    ```
-
-- **测试重试**：实施测试重试来处理[片状测试](/zh-cn/wiki/flaky-test/)，而无需重新运行整个套件。
-
-    ```
-    // Global level
-    Cypress.config('retries', 2);
-    // Test-specific level
-    it('retries test', { retries: 2 }, () => {
-      // Test code here
-    });
-    ```
-
-- **智能等待**：使用[柏树](/zh-cn/wiki/cypress/)的自动等待元素和断言，以避免不必要的等待和超时。
-- **存根和拦截**：使用 `cy.intercept()` 将实际的网络调用替换为存根，以节省花费在实际网络请求上的时间。
-
-    ```
-    cy.intercept('GET', '/users', { fixture: 'users.json' });
-    ```
-
-- **避免不必要的 UI 操作**：使用直接 [API](/zh-cn/wiki/api/) 调用来设置应用程序状态，而不是通过 UI 工作流程。
-
-    ```
-    cy.request('POST', '/login', { username: 'user', password: 'pass' });
-    ```
-
-- **缓存资源**：缓存测试之间不经常更改的数据，以避免重新加载。
-- **优化选择器**：使用高效的选择器来减少 [柏树](/zh-cn/wiki/cypress/) 查询 DOM 所花费的时间。
-- **批量操作**：对可以一起执行的操作或命令进行分组，以最大程度地减少可生成的 [柏树](/zh-cn/wiki/cypress/) 命令的数量。
-  通过实施这些策略，您可以在[柏树](/zh-cn/wiki/cypress/) 中实现更快的反馈周期和更高效的[测试执行](/zh-cn/wiki/test-execution/)。
-
-- **并行运行测试**：利用[柏树](/zh-cn/wiki/cypress/) Dashboard Service 在多台机器上同时运行测试。这可以显着减少[测试套件](/zh-cn/wiki/test-suite/) 的总体执行时间。
+- **并行运行测试**：利用[Cypress](/zh-cn/wiki/cypress/) Dashboard Service 在多台机器上同时运行测试。这可以显着减少[测试套件](/zh-cn/wiki/test-suite/) 的总体执行时间。
 
     ```
     cypress run --record --key <record_key> --parallel
@@ -1439,7 +1393,7 @@ Cypress
     });
     ```
 
-- **智能等待**：使用[柏树](/zh-cn/wiki/cypress/)的自动等待元素和断言，以避免不必要的等待和超时。
+- **智能等待**：使用[Cypress](/zh-cn/wiki/cypress/)的自动等待元素和断言，以避免不必要的等待和超时。
 - **存根和拦截**：使用 `cy.intercept()` 将实际的网络调用替换为存根，以节省花费在实际网络请求上的时间。
 
     ```
@@ -1453,5 +1407,51 @@ Cypress
     ```
 
 - **缓存资源**：缓存测试之间不经常更改的数据，以避免重新加载。
-- **优化选择器**：使用高效的选择器来减少 [柏树](/zh-cn/wiki/cypress/) 查询 DOM 所花费的时间。
-- **批量操作**：对可以一起执行的操作或命令进行分组，以最大程度地减少可生成的 [柏树](/zh-cn/wiki/cypress/) 命令的数量。
+- **优化选择器**：使用高效的选择器来减少 [Cypress](/zh-cn/wiki/cypress/) 查询 DOM 所花费的时间。
+- **批量操作**：对可以一起执行的操作或命令进行分组，以最大程度地减少可生成的 [Cypress](/zh-cn/wiki/cypress/) 命令的数量。
+  通过实施这些策略，您可以在[Cypress](/zh-cn/wiki/cypress/) 中实现更快的反馈周期和更高效的[测试执行](/zh-cn/wiki/test-execution/)。
+
+- **并行运行测试**：利用[Cypress](/zh-cn/wiki/cypress/) Dashboard Service 在多台机器上同时运行测试。这可以显着减少[测试套件](/zh-cn/wiki/test-suite/) 的总体执行时间。
+
+    ```
+    cypress run --record --key <record_key> --parallel
+    ```
+
+- **选择性[测试执行](/zh-cn/wiki/test-execution/)**：使用`.only` 运行特定测试或在开发期间使用[测试套件](/zh-cn/wiki/test-suite/) 以避免运行整个套件。
+
+    ```
+    describe.only('My Test Suite', () => {
+      // Only this suite will run
+    });
+    it.only('My Test', () => {
+      // Only this test will run
+    });
+    ```
+
+- **测试重试**：实施测试重试来处理[片状测试](/zh-cn/wiki/flaky-test/)，而无需重新运行整个套件。
+
+    ```
+    // Global level
+    Cypress.config('retries', 2);
+    // Test-specific level
+    it('retries test', { retries: 2 }, () => {
+      // Test code here
+    });
+    ```
+
+- **智能等待**：使用[Cypress](/zh-cn/wiki/cypress/)的自动等待元素和断言，以避免不必要的等待和超时。
+- **存根和拦截**：使用 `cy.intercept()` 将实际的网络调用替换为存根，以节省花费在实际网络请求上的时间。
+
+    ```
+    cy.intercept('GET', '/users', { fixture: 'users.json' });
+    ```
+
+- **避免不必要的 UI 操作**：使用直接 [API](/zh-cn/wiki/api/) 调用来设置应用程序状态，而不是通过 UI 工作流程。
+
+    ```
+    cy.request('POST', '/login', { username: 'user', password: 'pass' });
+    ```
+
+- **缓存资源**：缓存测试之间不经常更改的数据，以避免重新加载。
+- **优化选择器**：使用高效的选择器来减少 [Cypress](/zh-cn/wiki/cypress/) 查询 DOM 所花费的时间。
+- **批量操作**：对可以一起执行的操作或命令进行分组，以最大程度地减少可生成的 [Cypress](/zh-cn/wiki/cypress/) 命令的数量。

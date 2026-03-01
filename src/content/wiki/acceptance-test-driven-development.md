@@ -247,7 +247,7 @@ ATDD 的常用工具包括：
 - **Cucumber** ：利用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。
 - **SpecFlow** ：与 Cucumber 类似，但针对 .NET 框架量身定制，它还使用 Gherkin 进行测试规范。
 - **FitNesse** ：将 wiki 文档与自动化测试框架相结合，允许以表格形式编写测试。
-- **机器人框架**：关键字驱动的测试自动化框架，具有高度可扩展性并支持测试用例的表格数据。
+- **Robot Framework**：关键字驱动的测试自动化框架，具有高度可扩展性并支持测试用例的表格数据。
 - **Concordion** ：与 JUnit 集成并允许在 HTML 中编写规范，可以链接到 Java 代码进行测试。
 - **JBehave**：Java 中行为驱动开发 (BDD) 的框架，它使用以自然语言编写的故事来驱动开发。
 - **Serenity [BDD](/zh-cn/wiki/bdd/)** ：通过提供高级报告和实时文档功能来增强其他 BDD 工具，例如 Cucumber 和 JBehave。
@@ -256,7 +256,7 @@ ATDD 的常用工具包括：
 - **Cucumber** ：利用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。
 - **SpecFlow** ：与 Cucumber 类似，但针对 .NET 框架量身定制，它还使用 Gherkin 进行测试规范。
 - **FitNesse** ：将 wiki 文档与自动化测试框架相结合，允许以表格形式编写测试。
-- **机器人框架**：关键字驱动的测试自动化框架，具有高度可扩展性并支持测试用例的表格数据。
+- **Robot Framework**：关键字驱动的测试自动化框架，具有高度可扩展性并支持测试用例的表格数据。
 - **Concordion** ：与 JUnit 集成并允许在 HTML 中编写规范，可以链接到 Java 代码进行测试。
 - **JBehave**：Java 中行为驱动开发 (BDD) 的框架，它使用以自然语言编写的故事来驱动开发。
 - **Serenity [BDD](/zh-cn/wiki/bdd/)** ：通过提供高级报告和实时文档功能来增强其他 BDD 工具，例如 Cucumber 和 JBehave。

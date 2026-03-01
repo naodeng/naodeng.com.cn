@@ -39,7 +39,7 @@ order: 0
 
 ## 相关术语：
 
-- [A/B Testing](/zh-cn/wiki/ab-testing/)
+- [A/B Testing](/zh-cn/wiki/A-B-Testing/)
 
 ## 关于金丝雀测试的问题吗？
 
@@ -52,7 +52,7 @@ order: 0
   实施涉及选择用户群或服务器的子集、部署更改，然后监控性能和稳定性。先决条件包括拥有强大的部署管道、功能标记功能和监控工具。
   [金丝雀测试](/zh-cn/wiki/canary-testing/) 的 **常用工具** 包括 Kubernetes、Istio 和 AWS CodeDeploy 等云提供商服务。可以通过控制部署过程和监控结果的脚本和 CI/CD 管道来实现自动化。
   通过仔细选择金丝雀组和彻底监控，可以缓解有限的用户反馈和倾斜的性能指标等挑战。最佳实践包括从小用户群开始、使用功能标志以及制定明确的回滚策略。
-  [金丝雀测试](/zh-cn/wiki/canary-testing/) 是 CI/CD 和 DevOps 不可或缺的一部分，促进小型、频繁和安全的发布。在云环境中，它利用云可扩展性和分布。它与[A/B testing](/zh-cn/wiki/a-b-testing/) 的不同之处在于关注稳定性而不是用户体验比较。在微服务中，[金丝雀测试](/zh-cn/wiki/canary-testing/) 对于确保单个服务更新不会破坏整个系统至关重要。
+  [金丝雀测试](/zh-cn/wiki/canary-testing/) 是 CI/CD 和 DevOps 不可或缺的一部分，促进小型、频繁和安全的发布。在云环境中，它利用云可扩展性和分布。它与[A/B testing](/zh-cn/wiki/A-B-Testing/) 的不同之处在于关注稳定性而不是用户体验比较。在微服务中，[金丝雀测试](/zh-cn/wiki/canary-testing/) 对于确保单个服务更新不会破坏整个系统至关重要。
 
 #### 为什么金丝雀测试在软件开发中很重要？
 
@@ -85,7 +85,7 @@ order: 0
 
 #### 金丝雀测试与其他类型的测试有何不同？
 
-[金丝雀测试](/zh-cn/wiki/canary-testing/) 与其他类型的测试的不同之处在于它采用**增量方法**来推出更改。与**[A/B testing](/zh-cn/wiki/a-b-testing/)**（同时向不同受众比较两个版本）不同，[金丝雀测试](/zh-cn/wiki/canary-testing/) 在完全部署之前向一小部分用户引入了新版本。这与 **[集成测试](/zh-cn/wiki/integration-testing/)** 或 **[系统测试](/zh-cn/wiki/system-testing/)** 形成对比，后者的重点是检查组件或整个系统的互操作性，通常在 [测试环境](/zh-cn/wiki/test-environment/) 中。
+[金丝雀测试](/zh-cn/wiki/canary-testing/) 与其他类型的测试的不同之处在于它采用**增量方法**来推出更改。与**[A/B testing](/zh-cn/wiki/A-B-Testing/)**（同时向不同受众比较两个版本）不同，[金丝雀测试](/zh-cn/wiki/canary-testing/) 在完全部署之前向一小部分用户引入了新版本。这与 **[集成测试](/zh-cn/wiki/integration-testing/)** 或 **[系统测试](/zh-cn/wiki/system-testing/)** 形成对比，后者的重点是检查组件或整个系统的互操作性，通常在 [测试环境](/zh-cn/wiki/test-environment/) 中。
   在 **[性能测试](/zh-cn/wiki/performance-testing/)** 中，重点是负载下的系统行为，这可以是金丝雀测试的一部分，但不是其主要目标。 **冒烟测试**是一项初步测试，旨在揭示严重到足以拒绝预期软件版本的简单故障，而[金丝雀测试](/zh-cn/wiki/canary-testing/)更多的是关于用户体验和发现类似生产环境中的问题。
   [金丝雀测试](/zh-cn/wiki/canary-testing/) 也与**蓝/绿部署**不同，后者维护两个相同的生产环境，并且在测试后流量立即从蓝色切换为绿色。 [金丝雀测试](/zh-cn/wiki/canary-testing/) 增量转移流量，监控每一步的问题。
   最后，与 **[单元测试](/zh-cn/wiki/unit-testing/)** 专注于孤立的各个组件不同，[金丝雀测试](/zh-cn/wiki/canary-testing/) 在更改后评估应用程序在生产环境中的整体稳定性和功能，提供安全网来捕获单元或集成测试可能遗漏的问题。
@@ -574,7 +574,7 @@ order: 0
 
 #### 金丝雀测试和 A/B 测试之间有什么关系？
 
-[金丝雀测试](/zh-cn/wiki/canary-testing/) 和[A/B Testing](/zh-cn/wiki/a-b-testing/) 都是通过在全面部署之前验证部分用户的更改来降低风险的技术。然而，它们的关系在于其不同的目标和方法。
+[金丝雀测试](/zh-cn/wiki/canary-testing/) 和[A/B Testing](/zh-cn/wiki/A-B-Testing/) 都是通过在全面部署之前验证部分用户的更改来降低风险的技术。然而，它们的关系在于其不同的目标和方法。
   **[金丝雀测试](/zh-cn/wiki/canary-testing/)** 主要专注于通过逐步将新功能或服务推广到一小部分受控用户来**识别生产环境中新功能或服务的潜在问题**。目标是在现实条件下监控系统的行为以及新的变化，并在问题影响所有用户之前尽早发现问题。
-  另一方面，**[A/B Testing](/zh-cn/wiki/a-b-testing/)** 用于根据用户行为**做出数据驱动的决策**。它涉及比较一项功能的两个或多个版本，以了解哪个版本在用户参与度或转化率等特定指标方面表现更好。用户被随机分配到不同的组，每个组都会体验不同版本的功能。
-  虽然这两种技术都涉及向一部分用户公开功能，但[金丝雀测试](/zh-cn/wiki/canary-testing/)更多的是关于**确保生产中的稳定性和性能**，而[A/B Testing](/zh-cn/wiki/a-b-testing/)是关于**了解用户偏好**并优化用户体验。它们可以是互补的；例如，某个功能可能首先通过[金丝雀测试](/zh-cn/wiki/canary-testing/)来确保其稳定，然后通过[A/B Testing](/zh-cn/wiki/a-b-testing/)来细化其对用户行为的影响。结合这些策略可以带来强大且用户优化的软件版本。
+  另一方面，**[A/B Testing](/zh-cn/wiki/A-B-Testing/)** 用于根据用户行为**做出数据驱动的决策**。它涉及比较一项功能的两个或多个版本，以了解哪个版本在用户参与度或转化率等特定指标方面表现更好。用户被随机分配到不同的组，每个组都会体验不同版本的功能。
+  虽然这两种技术都涉及向一部分用户公开功能，但[金丝雀测试](/zh-cn/wiki/canary-testing/)更多的是关于**确保生产中的稳定性和性能**，而[A/B Testing](/zh-cn/wiki/A-B-Testing/)是关于**了解用户偏好**并优化用户体验。它们可以是互补的；例如，某个功能可能首先通过[金丝雀测试](/zh-cn/wiki/canary-testing/)来确保其稳定，然后通过[A/B Testing](/zh-cn/wiki/A-B-Testing/)来细化其对用户行为的影响。结合这些策略可以带来强大且用户优化的软件版本。

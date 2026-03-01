@@ -299,7 +299,7 @@ order: 0
   // More capabilities and test steps...
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
 
   ```
   describe('Login Test', () => {
@@ -315,17 +315,17 @@ order: 0
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：以前称为 QTP，它为软件应用程序提供功能和回归测试自动化。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：主要用于性能测试，但也通过其测试脚本记录器支持功能测试。
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，允许用户构建和执行 RESTful API 的测试场景。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
   每个工具都有自己的用于[测试场景](/zh-cn/wiki/test-scenario/)执行的脚本或编程语言，范围从特定于领域的语言到Java、Python或JavaScript等常见编程语言。工具的选择取决于被测试的应用程序、其运行的环境以及[测试场景](/zh-cn/wiki/test-scenario/)的具体要求。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化 Web 浏览器的开源工具。它支持多种语言和框架。
 - **Appium** ：将 Selenium 的框架扩展到移动应用程序，支持 iOS 和 Android 平台。
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
 - **TestComplete**：一种商业工具，提供用于为桌面、移动和 Web 应用程序创建自动化测试的 GUI。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：以前称为 QTP，它为软件应用程序提供功能和回归测试自动化。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：主要用于性能测试，但也通过其测试脚本记录器支持功能测试。
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，允许用户构建和执行 RESTful API 的测试场景。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 
 #### 您如何评估测试场景的结果？
 
@@ -422,7 +422,7 @@ order: 0
 
 6. **维护**
     测试脚本，以确保它们与应用程序更改保持同步。
-  在 JavaScript 中使用 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 的简单自动化脚本示例：
+  在 JavaScript 中使用 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 的简单自动化脚本示例：
 
   ```
   const { Builder, By, Key, until } = require('selenium-webdriver');

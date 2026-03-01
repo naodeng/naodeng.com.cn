@@ -39,7 +39,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
 
 ## 相关术语：
 
-- [BDD (Behavior Driven Development)](/zh-cn/wiki/bdd-behavior-driven-development/)
+- [BDD (Behavior Driven Development)](/zh-cn/wiki/bdd/)
 - [测试场景](/zh-cn/wiki/test-scenario/)
 
 ## 关于gherkin的问题吗？

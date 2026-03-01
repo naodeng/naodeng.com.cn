@@ -217,7 +217,7 @@ order: 0
 - **Katalon Studio**：一种与 Selenium 和 Appium 集成的一体化自动化解决方案，适合各种技能水平的测试人员。
 - **Watir**：一个基于 Ruby 的开源工具，用于自动化 Web 浏览器交互。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
 - **JUnit/TestNG**：用于单元测试的框架，也可以扩展用于 Java 环境中的回归测试。
 - **RSpec** ：Ruby 的行为驱动开发（BDD）框架，通常用于编写人类可读的自动化测试。
 - **[邮递员](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。
@@ -230,7 +230,7 @@ order: 0
 - **Katalon Studio**：一种与 Selenium 和 Appium 集成的一体化自动化解决方案，适合各种技能水平的测试人员。
 - **Watir**：一个基于 Ruby 的开源工具，用于自动化 Web 浏览器交互。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
 - **JUnit/TestNG**：用于单元测试的框架，也可以扩展用于 Java 环境中的回归测试。
 - **RSpec** ：Ruby 的行为驱动开发（BDD）框架，通常用于编写人类可读的自动化测试。
 - **[邮递员](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。

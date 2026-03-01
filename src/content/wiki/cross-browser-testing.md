@@ -162,7 +162,7 @@ order: 0
 
 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：支持多种浏览器和操作系统的开源自动化工具。它可以与 Java、C# 和 Python 等多种编程语言集成。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：支持多种浏览器和操作系统的开源自动化工具。它可以与 Java、C# 和 Python 等多种编程语言集成。
 
   ```
   WebDriver driver = new ChromeDriver();
@@ -190,7 +190,7 @@ order: 0
   });
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于JavaScript的端到端测试框架，在浏览器中运行，提供更一致的测试环境。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于JavaScript的端到端测试框架，在浏览器中运行，提供更一致的测试环境。
 
   ```
   describe('My First Test', () => {
@@ -205,10 +205,10 @@ order: 0
 - **LambdaTest**：基于云的 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 平台，允许访问各种浏览器和操作系统组合。
   这些工具有助于自动化跨不同浏览器测试 Web 应用程序的过程，确保兼容性和功能。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：支持多种浏览器和操作系统的开源自动化工具。它可以与 Java、C# 和 Python 等多种编程语言集成。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：支持多种浏览器和操作系统的开源自动化工具。它可以与 Java、C# 和 Python 等多种编程语言集成。
 - **WebDriverIO** ：基于 Node.js 的自动化框架，包装 Selenium 并提供附加功能和语法。
 - **TestCafe** ：一个 Node.js 工具，允许在不使用 Selenium 的情况下在多个浏览器和平台中进行测试。它使用代理将脚本注入网页。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于JavaScript的端到端测试框架，在浏览器中运行，提供更一致的测试环境。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于JavaScript的端到端测试框架，在浏览器中运行，提供更一致的测试环境。
 - **[browserstack](/zh-cn/wiki/browserstack/)**：一种云服务，提供对多种浏览器和设备的访问以测试 Web 应用程序。
 - **Sauce Labs**：与[browserstack](/zh-cn/wiki/browserstack/) 类似，它在基于云的基础设施上提供自动化[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
 - **LambdaTest**：基于云的 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 平台，允许访问各种浏览器和操作系统组合。
@@ -271,10 +271,10 @@ order: 0
 
 要使用[selenium](/zh-cn/wiki/selenium/) 执行[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)，请执行以下步骤：
 
-1. **设置[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[网络驱动程序](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[网络驱动程序](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
+1. **设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
+2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
 3. **参数化浏览器选择**：使用配置文件或环境变量指定测试运行的浏览器类型。您还可以使用返回浏览器配置的数据提供程序。
-4. **实例化[网络驱动程序](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[网络驱动程序](/zh-cn/wiki/webdriver/)。例如：
+4. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[WebDriver](/zh-cn/wiki/webdriver/)。例如：
 
     ```
     if(browser.equals("chrome")) {
@@ -284,18 +284,18 @@ order: 0
     }
     ```
 
-5. **跨浏览器运行测试**：使用实例化的[网络驱动程序](/zh-cn/wiki/webdriver/) 执行[测试用例](/zh-cn/wiki/test-case/)。测试应该与浏览器无关，以确保它们可以在任何浏览器上运行。
-6. **利用[网络驱动程序](/zh-cn/wiki/webdriver/) 功能**：使用所需功能自定义浏览器实例，以更好地控制浏览器设置和配置。
+5. **跨浏览器运行测试**：使用实例化的[WebDriver](/zh-cn/wiki/webdriver/) 执行[测试用例](/zh-cn/wiki/test-case/)。测试应该与浏览器无关，以确保它们可以在任何浏览器上运行。
+6. **利用[WebDriver](/zh-cn/wiki/webdriver/) 功能**：使用所需功能自定义浏览器实例，以更好地控制浏览器设置和配置。
 7. **实施等待策略**：使用显式和隐式等待来处理动态内容并确保在交互之前加载元素。
 8. **捕获屏幕截图**：为了调试，捕获每个浏览器测试失败时的屏幕截图。
 9. **并行执行**：使用 [selenium](/zh-cn/wiki/selenium/) 网格或云服务等工具跨不同浏览器和操作系统组合并行运行测试。
 10. **分析结果**：在 [测试执行](/zh-cn/wiki/test-execution/) 之后，分析结果以识别特定于浏览器的问题。
-  请记住保持您的[网络驱动程序](/zh-cn/wiki/webdriver/) 二进制文件更新并使用最新版本的浏览器进行准确测试。
+  请记住保持您的[WebDriver](/zh-cn/wiki/webdriver/) 二进制文件更新并使用最新版本的浏览器进行准确测试。
 
-1. **设置[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[网络驱动程序](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[网络驱动程序](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
+1. **设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
+2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
 3. **参数化浏览器选择**：使用配置文件或环境变量指定测试运行的浏览器类型。您还可以使用返回浏览器配置的数据提供程序。
-4. **实例化[网络驱动程序](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[网络驱动程序](/zh-cn/wiki/webdriver/)。例如：
+4. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[WebDriver](/zh-cn/wiki/webdriver/)。例如：
 
     ```
     if(browser.equals("chrome")) {
@@ -305,8 +305,8 @@ order: 0
     }
     ```
 
-5. **跨浏览器运行测试**：使用实例化的[网络驱动程序](/zh-cn/wiki/webdriver/) 执行[测试用例](/zh-cn/wiki/test-case/)。测试应该与浏览器无关，以确保它们可以在任何浏览器上运行。
-6. **利用[网络驱动程序](/zh-cn/wiki/webdriver/) 功能**：使用所需功能自定义浏览器实例，以更好地控制浏览器设置和配置。
+5. **跨浏览器运行测试**：使用实例化的[WebDriver](/zh-cn/wiki/webdriver/) 执行[测试用例](/zh-cn/wiki/test-case/)。测试应该与浏览器无关，以确保它们可以在任何浏览器上运行。
+6. **利用[WebDriver](/zh-cn/wiki/webdriver/) 功能**：使用所需功能自定义浏览器实例，以更好地控制浏览器设置和配置。
 7. **实施等待策略**：使用显式和隐式等待来处理动态内容并确保在交互之前加载元素。
 8. **捕获屏幕截图**：为了调试，捕获每个浏览器测试失败时的屏幕截图。
 9. **并行执行**：使用 [selenium](/zh-cn/wiki/selenium/) 网格或云服务等工具跨不同浏览器和操作系统组合并行运行测试。
@@ -537,7 +537,7 @@ order: 0
 
 - **验证媒体查询**
     和 CSS 过渡在不同浏览器中的行为可能有所不同。
-  例如，[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 可用于更改浏览器窗口的大小：
+  例如，[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 可用于更改浏览器窗口的大小：
 
   ```
   WebDriver driver = new ChromeDriver();

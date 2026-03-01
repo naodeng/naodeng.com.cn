@@ -395,7 +395,7 @@ order: 0
 - **Katalon Studio**：一种一体化自动化解决方案，支持 API 和 UI 测试，为创建自动化测试提供用户友好的界面。
 - **Paw**：Mac 独有的 API 工具，用于测试和描述 API，具有功能齐全的开发环境。
 - **Karate DSL**：一种开源工具，它将 API 测试自动化、模拟、性能测试甚至 UI 自动化组合到一个统一的框架中。
-- **[柏树](/zh-cn/wiki/cypress/)** ：虽然 Cypress 主要以 Web 应用程序的端到端测试而闻名，但它也可以通过在测试中直接发送 HTTP 请求来用于 API 测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：虽然 Cypress 主要以 Web 应用程序的端到端测试而闻名，但它也可以通过在测试中直接发送 HTTP 请求来用于 API 测试。
   这些工具提供各种功能，例如[测试自动化](/zh-cn/wiki/test-automation/)、请求链接、环境变量以及与 CI/CD 管道的集成，以简化和增强[API 测试](/zh-cn/wiki/api-testing/) 流程。
 
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 开发和测试的流行工具，提供用户友好的界面以及用于发送请求、分析响应和自动化测试的各种功能。
@@ -406,7 +406,7 @@ order: 0
 - **Katalon Studio**：一种一体化自动化解决方案，支持 API 和 UI 测试，为创建自动化测试提供用户友好的界面。
 - **Paw**：Mac 独有的 API 工具，用于测试和描述 API，具有功能齐全的开发环境。
 - **Karate DSL**：一种开源工具，它将 API 测试自动化、模拟、性能测试甚至 UI 自动化组合到一个统一的框架中。
-- **[柏树](/zh-cn/wiki/cypress/)** ：虽然 Cypress 主要以 Web 应用程序的端到端测试而闻名，但它也可以通过在测试中直接发送 HTTP 请求来用于 API 测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：虽然 Cypress 主要以 Web 应用程序的端到端测试而闻名，但它也可以通过在测试中直接发送 HTTP 请求来用于 API 测试。
 
 #### API 测试的关键步骤是什么？
 

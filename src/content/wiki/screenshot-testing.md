@@ -176,7 +176,7 @@ order: 0
 
 [截图测试](/zh-cn/wiki/screenshot-testing/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
 
     ```
     TakesScreenshot ts = (TakesScreenshot)driver;
@@ -189,7 +189,7 @@ order: 0
     await page.screenshot({path: 'screenshot.png'});
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
+- **[Cypress](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
 
     ```
     cy.screenshot();
@@ -211,7 +211,7 @@ order: 0
     ```
 这些工具可以与断言库和图像比较工具以各种方式组合使用，以创建强大的[截图测试](/zh-cn/wiki/screenshot-testing/)工作流程。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
 
     ```
     TakesScreenshot ts = (TakesScreenshot)driver;
@@ -224,7 +224,7 @@ order: 0
     await page.screenshot({path: 'screenshot.png'});
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
+- **[Cypress](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
 
     ```
     cy.screenshot();
@@ -519,7 +519,7 @@ order: 0
 要有效地自动化[截图测试](/zh-cn/wiki/screenshot-testing/)，请考虑以下策略：
 
 - **基线图像创建**：建立一组基线图像，将来的屏幕截图将与这些图像进行比较。确保这些图像是在受控条件下捕获的，以尽量减少变化。
-- **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[柏树](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到您的[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
+- **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[Cypress](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到您的[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
 
     ```
     // Example using Puppeteer
@@ -536,7 +536,7 @@ order: 0
   通过结合这些策略，您可以构建强大且高效的[截图测试](/zh-cn/wiki/screenshot-testing/) 流程，以补充您的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
 
 - **基线图像创建**：建立一组基线图像，将来的屏幕截图将与这些图像进行比较。确保这些图像是在受控条件下捕获的，以尽量减少变化。
-- **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[柏树](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
+- **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[Cypress](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
 
     ```
     // Example using Puppeteer
@@ -593,7 +593,7 @@ order: 0
 要执行 [截图测试](/zh-cn/wiki/screenshot-testing/) 进行响应式网页设计，请按照以下步骤操作：
 
 1. **定义您要测试的屏幕尺寸范围**和分辨率，包括桌面、平板电脑和移动设备尺寸。
-2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具设置您的 [测试环境](/zh-cn/wiki/test-environment/)**，例如 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright。
+2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具设置您的 [测试环境](/zh-cn/wiki/test-environment/)**，例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright。
 3. **编写[测试脚本](/zh-cn/wiki/test-script/)**，导航到目标网页并将浏览器窗口大小调整为指定尺寸。使用以下伪代码作为参考：
 
     ```
@@ -621,7 +621,7 @@ order: 0
   通过执行这些步骤，您可以有效地跨多种设备和屏幕尺寸验证响应式网页设计的视觉外观。
 
 1. **定义您要测试的屏幕尺寸范围**和分辨率，包括桌面、平板电脑和移动设备尺寸。
-2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具（例如 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright）设置您的 [测试环境](/zh-cn/wiki/test-environment/)**。
+2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具（例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright）设置您的 [测试环境](/zh-cn/wiki/test-environment/)**。
 3. **编写[测试脚本](/zh-cn/wiki/test-script/)**，导航到目标网页并将浏览器窗口大小调整为指定尺寸。使用以下伪代码作为参考：
 
     ```
@@ -655,7 +655,7 @@ order: 0
 2. **通过根据用户分析定义一组目标浏览器和版本来标准化 [测试环境](/zh-cn/wiki/test-environment/)**。这有助于集中您的测试工作。
 3. **如有必要，合并特定于浏览器的选择器**。某些浏览器可能以不同的方式解释 CSS，因此请在 [测试脚本](/zh-cn/wiki/test-script/) 中使用条件逻辑来处理这些情况。
 4. **标准化[测试数据](/zh-cn/wiki/test-data/)**以确保一致性。在所有浏览器测试中使用相同的输入数据，以避免由于动态内容而导致屏幕截图出现差异。
-5. 使用您选择的工具在不同浏览器上**自动捕获屏幕截图**。例如，[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 可用于以编程方式截取屏幕截图：
+5. 使用您选择的工具在不同浏览器上**自动捕获屏幕截图**。例如，[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 可用于以编程方式截取屏幕截图：
 
   ```
   driver.takeScreenshot().then(function(image, err) {
@@ -673,7 +673,7 @@ order: 0
 2. **通过根据用户分析定义一组目标浏览器和版本来标准化 [测试环境](/zh-cn/wiki/test-environment/)**。这有助于集中您的测试工作。
 3. **如有必要，合并特定于浏览器的选择器**。某些浏览器可能以不同的方式解释 CSS，因此请在 [测试脚本](/zh-cn/wiki/test-script/) 中使用条件逻辑来处理这些情况。
 4. **标准化 [测试数据](/zh-cn/wiki/test-data/)** 以确保一致性。在所有浏览器测试中使用相同的输入数据，以避免由于动态内容而导致屏幕截图出现差异。
-5. 使用您选择的工具在不同浏览器上**自动捕获屏幕截图**。例如，[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 可用于以编程方式截取屏幕截图：
+5. 使用您选择的工具在不同浏览器上**自动捕获屏幕截图**。例如，[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 可用于以编程方式截取屏幕截图：
 1. **实施视觉比较工具**，例如 Percy 或 Applitools，以自动检测视觉差异。这些工具可以逐像素比较屏幕截图或使用人工智能来关注可察觉的变化。
 2. **审查和分类**结果。自动化工具可能会标记需要人工判断才能确定它们是否是真正的 [bugs](/zh-cn/wiki/bug/) 或可接受的变体的问题。
 3. **与 CI/CD 管道集成**，在每次提交时运行屏幕截图测试，确保立即反馈视觉回归。

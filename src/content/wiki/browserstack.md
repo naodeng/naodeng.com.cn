@@ -42,7 +42,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 
 ## 相关术语：
 
-- [Cross-Browser Testing tool](/zh-cn/wiki/cross-browser-testing-tool/)
+- [Cross-Browser Testing tool](/zh-cn/wiki/cross-browser-testing/)
 
 ### 另请参阅：
 
@@ -56,7 +56,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 #### 什么是 BrowserStack？
 
 [browserstack](/zh-cn/wiki/browserstack/) 是一个基于云的 **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 平台**，使开发人员和 QA 专业人员能够在各种浏览器、操作系统和真实移动设备上测试他们的网站和移动应用程序。它提供对大量浏览器和设备的访问，无需维护内部测试基础设施。
-  借助[browserstack](/zh-cn/wiki/browserstack/)，您可以使用[selenium](/zh-cn/wiki/selenium/)、Appium 和[柏树](/zh-cn/wiki/cypress/) 等流行框架进行**交互式[手动测试](/zh-cn/wiki/manual-testing/)** 或运行**自动化测试**。它支持各种编程语言，包括 Java、Python 和 Ruby，允许无缝集成到现有的[测试套件](/zh-cn/wiki/test-suite/)。
+  借助[browserstack](/zh-cn/wiki/browserstack/)，您可以使用[selenium](/zh-cn/wiki/selenium/)、Appium 和[Cypress](/zh-cn/wiki/cypress/) 等流行框架进行**交互式[手动测试](/zh-cn/wiki/manual-testing/)** 或运行**自动化测试**。它支持各种编程语言，包括 Java、Python 和 Ruby，允许无缝集成到现有的[测试套件](/zh-cn/wiki/test-suite/)。
   设置[browserstack](/zh-cn/wiki/browserstack/) 涉及创建帐户、使用提供的访问凭据配置您的[测试脚本](/zh-cn/wiki/test-script/)，以及通过平台的云基础设施运行测试。您可以直接从 CI/CD 管道启动测试，因为 [browserstack](/zh-cn/wiki/browserstack/) 提供与 Jenkins、Travis CI 和 CircleCI 等工具的集成。
   对于移动测试，[browserstack](/zh-cn/wiki/browserstack/) 的 **App Live** 和 **App Automate** 功能支持测试本机和混合移动应用程序。您可以上传应用程序版本并在真实设备上与它们交互或自动化测试过程。
   [browserstack](/zh-cn/wiki/browserstack/) 的 **屏幕截图** 功能允许您跨多个浏览器和设备捕获和比较屏幕截图，从而促进 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。
@@ -149,7 +149,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 - **自动化[截图测试](/zh-cn/wiki/screenshot-testing/)**：大规模捕获和比较屏幕截图以验证应用程序的视觉方面。
 - **[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/)**：在大量真实的 iOS 和 Android 设备上测试本机和混合移动应用程序。
 - **[集成测试](/zh-cn/wiki/integration-testing/)**：将 [browserstack](/zh-cn/wiki/browserstack/) 与 CI/CD 管道结合起来，作为开发过程的一部分运行测试。
-  这些测试可以使用[selenium](/zh-cn/wiki/selenium/)、Appium、[柏树](/zh-cn/wiki/cypress/) 等流行的框架和工具来执行，[browserstack](/zh-cn/wiki/browserstack/) 支持这些框架和工具，以便无缝集成到现有的[测试套件](/zh-cn/wiki/test-suite/) 中。
+  这些测试可以使用[selenium](/zh-cn/wiki/selenium/)、Appium、[Cypress](/zh-cn/wiki/cypress/) 等流行的框架和工具来执行，[browserstack](/zh-cn/wiki/browserstack/) 支持这些框架和工具，以便无缝集成到现有的[测试套件](/zh-cn/wiki/test-suite/) 中。
 
 - **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：跨多个浏览器及其版本验证您的 Web 应用程序的功能和设计。
 - **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：检查您的 Web 应用程序如何适应不同的屏幕尺寸和分辨率。
@@ -518,7 +518,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
   对于浏览器，[browserstack](/zh-cn/wiki/browserstack/) 支持 **Chrome**、**Firefox**、**Safari**、**Internet Explorer** 和 **Edge** 等多种版本。它还提供各种版本的移动浏览器，以便在不同设备上进行测试。
   操作系统方面，包括**Windows**、**macOS**、**iOS**、**Android**平台，覆盖多个版本，保证不同环境下的兼容性。
   [browserstack](/zh-cn/wiki/browserstack/) 使用**基于云的基础设施**来提供对这些环境的访问，这意味着测试可以跨浏览器和操作系统的多种组合并行运行，而不需要本地[setup](/zh-cn/wiki/setup/) 或维护。
-  为了指定所需的环境，测试人员使用[测试脚本](/zh-cn/wiki/test-script/) 中的功能。以下是在 JavaScript 中使用 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 的示例：
+  为了指定所需的环境，测试人员使用[测试脚本](/zh-cn/wiki/test-script/) 中的功能。以下是在 JavaScript 中使用 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 的示例：
 
   ```
   const capabilities = {
@@ -538,7 +538,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 #### 我可以使用 BrowserStack 进行自动化测试吗？
 
 当然，**[browserstack](/zh-cn/wiki/browserstack/)** 可用于[自动化测试](/zh-cn/wiki/automated-testing/)。它提供了一个基于云的平台，使您能够在各种浏览器和真实的移动设备上运行自动化测试。首先，您需要配置[测试自动化](/zh-cn/wiki/test-automation/) 框架以与[browserstack](/zh-cn/wiki/browserstack/) 的远程服务器连接。
-  以下是使用 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 和 **JavaScript** 的基本示例：
+  以下是使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 和 **JavaScript** 的基本示例：
 
   ```
   const { Builder } = require('selenium-webdriver');
@@ -569,9 +569,9 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
   }
   runTestOnBrowserStack();
   ```
-将`YOUR_USERNAME` 和`YOUR_ACCESS_KEY` 替换为您的[browserstack](/zh-cn/wiki/browserstack/) 凭据。此代码设置[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 测试以在[browserstack](/zh-cn/wiki/browserstack/) 的基础结构上运行。
+将`YOUR_USERNAME` 和`YOUR_ACCESS_KEY` 替换为您的[browserstack](/zh-cn/wiki/browserstack/) 凭据。此代码设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 测试以在[browserstack](/zh-cn/wiki/browserstack/) 的基础结构上运行。
   对于**持续集成**，您可以将 [browserstack](/zh-cn/wiki/browserstack/) 与 **Jenkins**、**Travis CI** 或 **CircleCI** 等工具集成，以在每次提交或拉取请求时自动运行测试。
-  [browserstack](/zh-cn/wiki/browserstack/) 还支持其他测试框架，例如用于 [移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的 **Appium**，以及用于更专业测试场景的 **[柏树](/zh-cn/wiki/cypress/)**、**Playwright** 或 **Espresso**。与这些工具的集成遵循配置测试以与 [browserstack](/zh-cn/wiki/browserstack/) 的远程服务器进行通信的类似模式。
+  [browserstack](/zh-cn/wiki/browserstack/) 还支持其他测试框架，例如用于 [移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的 **Appium**，以及用于更专业测试场景的 **[Cypress](/zh-cn/wiki/cypress/)**、**Playwright** 或 **Espresso**。与这些工具的集成遵循配置测试以与 [browserstack](/zh-cn/wiki/browserstack/) 的远程服务器进行通信的类似模式。
 
 ### 集成和兼容性
 
@@ -587,7 +587,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
   // Additional capabilities
   AppiumDriver driver = new AppiumDriver(new URL("http://hub.browserstack.com/wd/hub"), caps);
   ```
-**[柏树](/zh-cn/wiki/cypress/)**：对于[柏树](/zh-cn/wiki/cypress/) 集成，请安装[browserstack](/zh-cn/wiki/browserstack/) 的CLI 工具并使用`browserstack-cypress` 命令在[browserstack](/zh-cn/wiki/browserstack/) 上运行测试。
+**[Cypress](/zh-cn/wiki/cypress/)**：对于[Cypress](/zh-cn/wiki/cypress/) 集成，请安装[browserstack](/zh-cn/wiki/browserstack/) 的CLI 工具并使用`browserstack-cypress` 命令在[browserstack](/zh-cn/wiki/browserstack/) 上运行测试。
 
   ```
   npm install -g browserstack-cypress-cli
@@ -643,12 +643,12 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 
 1. **设置您的环境**：
 - 确保您有
-      **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+      **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
       为您首选的编程语言安装。
 
 - 安装必要的特定于语言的绑定。
 - 确保您有
-      **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+      **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
       为您首选的编程语言安装。
 
 - 安装必要的特定于语言的绑定。
@@ -663,7 +663,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
       模块。
 
 - 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
-3. **初始化远程[网络驱动程序](/zh-cn/wiki/webdriver/)**：
+3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
@@ -699,12 +699,12 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 
 1. **设置您的环境**：
 - 确保您有
-      **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+      **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
       为您首选的编程语言安装。
 
 - 安装必要的特定于语言的绑定。
 - 确保您有
-      **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+      **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
       为您首选的编程语言安装。
 
 - 安装必要的特定于语言的绑定。
@@ -719,7 +719,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
       模块。
 
 - 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
-3. **初始化远程[网络驱动程序](/zh-cn/wiki/webdriver/)**：
+3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
@@ -806,7 +806,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
     desiredCapabilities.setCapability("browserstack.key", browserstackKey);
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：[browserstack](/zh-cn/wiki/browserstack/) 支持[柏树](/zh-cn/wiki/cypress/) 测试，允许您跨多个浏览器和操作系统运行它们。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[browserstack](/zh-cn/wiki/browserstack/) 支持[Cypress](/zh-cn/wiki/cypress/) 测试，允许您跨多个浏览器和操作系统运行它们。
 - **TestCafe**：您可以在 [browserstack](/zh-cn/wiki/browserstack/) 上运行 TestCafe 脚本以利用其 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 功能。
 - **Espresso**：对于Android应用程序测试，可以在[browserstack](/zh-cn/wiki/browserstack/)的真实设备云上执行Espresso测试。
 - **XCTest**：同样，支持 iOS 应用程序的 XCTest 框架，可以在一系列 Apple 设备上进行测试。
@@ -827,7 +827,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
     desiredCapabilities.setCapability("browserstack.key", browserstackKey);
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：[browserstack](/zh-cn/wiki/browserstack/) 支持[柏树](/zh-cn/wiki/cypress/) 测试，允许您跨多个浏览器和操作系统运行它们。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[browserstack](/zh-cn/wiki/browserstack/) 支持[Cypress](/zh-cn/wiki/cypress/) 测试，允许您跨多个浏览器和操作系统运行它们。
 - **TestCafe**：您可以在 [browserstack](/zh-cn/wiki/browserstack/) 上运行 TestCafe 脚本以利用其 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 功能。
 - **Espresso**：对于Android应用程序测试，可以在[browserstack](/zh-cn/wiki/browserstack/)的真实设备云上执行Espresso测试。
 - **XCTest**：同样，支持 iOS 应用程序的 XCTest 框架，可以在一系列 Apple 设备上进行测试。

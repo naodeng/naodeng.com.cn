@@ -36,7 +36,7 @@ order: 0
 
 ## 相关术语：
 
-- [Test framework (e.g., NUnit, JUnit, Jest)](/zh-cn/wiki/test-framework-eg-nunit-junit-jest/)
+- [Test framework (e.g., NUnit, JUnit, Jest)](/zh-cn/wiki/unit-test-framework/)
 
 ## 关于测试运行程序的问题？
 
@@ -604,7 +604,7 @@ order: 0
   对于 **[测试管理](/zh-cn/wiki/test-management/) 工具**，例如 **TestRail** 或 **Zephyr**，[测试运行者](/zh-cn/wiki/test-runner/) 经常通过其 [API](/zh-cn/wiki/api/) 将结果推送到这些平台，从而允许集中跟踪 [测试用例](/zh-cn/wiki/test-case/)、计划和运行。
   对于 **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 分析，**JaCoCo** 或 **Istanbul** 等工具与 [测试运行者](/zh-cn/wiki/test-runner/) 一起使用来测量测试执行的代码范围。 [测试运行者](/zh-cn/wiki/test-runner/) 可能会生成这些工具可以使用和可视化的覆盖率报告。
   在处理**模拟和存根**时，[测试运行者](/zh-cn/wiki/test-runner/) 使用 **Mockito** 或 **Sinon.js** 等库来设置测试替身并验证交互。这些库通常在测试代码中调用，[测试运行者](/zh-cn/wiki/test-runner/) 将它们作为[测试套件](/zh-cn/wiki/test-suite/) 的一部分执行。
-  对于**基于浏览器的测试**，[测试运行者](/zh-cn/wiki/test-runner/) 与 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 或 **Playwright** 进行交互，以控制浏览器并断言 Web 应用程序上的条件。
+  对于**基于浏览器的测试**，[测试运行者](/zh-cn/wiki/test-runner/) 与 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 或 **Playwright** 进行交互，以控制浏览器并断言 Web 应用程序上的条件。
   也可以与 **[性能测试](/zh-cn/wiki/performance-testing/) 工具**（如 **[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle**）集成，其中 [测试运行者](/zh-cn/wiki/test-runner/) 可能会触发性能 [测试脚本](/zh-cn/wiki/test-script/) 并收集指标。
 
   ```

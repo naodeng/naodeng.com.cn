@@ -148,7 +148,7 @@ order: 0
 
 常用的 **[测试执行工具](/zh-cn/wiki/test-execution-tool/)** 包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -173,7 +173,7 @@ order: 0
     }
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，在浏览器中运行，适合现代 Web 应用程序。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，在浏览器中运行，适合现代 Web 应用程序。
 
     ```
     describe('My First Test', () => {
@@ -183,7 +183,7 @@ order: 0
     })
     ```
 
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
     ```
     *** Test Cases ***
@@ -216,7 +216,7 @@ order: 0
 - **HP UFT（以前称为 QTP）**：用于功能性和[回归测试](/zh-cn/wiki/regression-testing/) 的商业工具，具有用于测试创建的可视化界面。
   这些工具为不同的测试需求提供了一系列功能，并且经常更新以适应新技术和测试方法。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -241,7 +241,7 @@ order: 0
     }
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，在浏览器中运行，适合现代 Web 应用程序。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，在浏览器中运行，适合现代 Web 应用程序。
 
     ```
     describe('My First Test', () => {
@@ -251,7 +251,7 @@ order: 0
     })
     ```
 
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
     ```
     *** Test Cases ***
@@ -288,14 +288,14 @@ order: 0
 [测试执行工具](/zh-cn/wiki/test-execution-tool/) 之间的差异主要在于**功能**、**支持的语言**、**集成功能**、**执行环境**和**报告功能**。
 
 - **功能**：某些工具提供**录制和播放**，而其他工具则需要手动编写[测试脚本](/zh-cn/wiki/test-script/)。高级工具可能包括用于测试维护和优化的**人工智能驱动功能**。
-- **支持的语言**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[柏树](/zh-cn/wiki/cypress/)** 以 JavaScript 为中心。
+- **支持的语言**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](/zh-cn/wiki/cypress/)** 以 JavaScript 为中心。
 - **集成功能**：某些工具与 DevOps 生态系统中的其他软件更加无缝地集成。例如，**Jenkins** 有一个庞大的用于 CI/CD 集成的插件系统，这可能会影响工具的选择。
 - **执行环境**：工具在不同环境中执行测试的能力有所不同。有些更适合**网络应用程序**，其他则更适合**移动**或**桌面应用程序**。 **Appium** 等工具专注于移动设备，而 **TestComplete** 可以处理桌面和 Web 应用程序。
 - **报告功能**：报告的深度和可定制性可能会有所不同。 **TestNG** 或 **JUnit** 等工具提供基本报告，而 **Allure** 或 **ExtentReports** 等工具提供更详细且更具视觉吸引力的报告。
   选择工具需要根据项目要求、团队技能和软件的特定测试需求来评估这些差异。与现有工具的集成、扩展能力以及脚本编写和维护的简易性也是重要的考虑因素。
 
 - **功能**：一些工具提供**录制和播放**，而其他工具则需要手动编写[测试脚本](/zh-cn/wiki/test-script/)。高级工具可能包括用于测试维护和优化的**人工智能驱动功能**。
-- **支持的语言**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[柏树](/zh-cn/wiki/cypress/)** 以 JavaScript 为中心。
+- **支持的语言**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](/zh-cn/wiki/cypress/)** 以 JavaScript 为中心。
 - **集成功能**：某些工具与 DevOps 生态系统中的其他软件更加无缝地集成。例如，**Jenkins** 有一个庞大的用于 CI/CD 集成的插件系统，这可能会影响工具的选择。
 - **执行环境**：工具在不同环境中执行测试的能力有所不同。有些更适合**网络应用程序**，其他则更适合**移动**或**桌面应用程序**。 **Appium** 等工具专注于移动设备，而 **TestComplete** 可以处理桌面和 Web 应用程序。
 - **报告功能**：报告的深度和可定制性可能会有所不同。 **TestNG** 或 **JUnit** 等工具提供基本报告，而 **Allure** 或 **ExtentReports** 等工具提供更详细且更具视觉吸引力的报告。

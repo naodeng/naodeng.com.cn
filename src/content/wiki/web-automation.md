@@ -62,7 +62,7 @@ order: 0
     }
   })();
   ```
-此脚本使用 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 导航到网站，填写登录表单，然后等待仪表板页面加载。它说明了基本的 [网络自动化](/zh-cn/wiki/web-automation/) 任务，该任务可以扩展为包括错误处理、数据验证和其他复杂的交互。
+此脚本使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 导航到网站，填写登录表单，然后等待仪表板页面加载。它说明了基本的 [网络自动化](/zh-cn/wiki/web-automation/) 任务，该任务可以扩展为包括错误处理、数据验证和其他复杂的交互。
 
 #### 为什么网络自动化很重要？
 
@@ -100,13 +100,13 @@ order: 0
 - **断言库**：检查条件； Chai、Expect 或测试框架中的内置断言。
 - **[测试运行者](/zh-cn/wiki/test-runner/)** ：执行测试；内置框架或像 Karma 这样的独立框架。
 - **报告工具**：生成测试报告；魅力，摩卡威。
-- **持续集成 (CI) 系统**：与 CI/CD 管道集成；詹金斯、特拉维斯 CI、GitHub 操作。
+- **持续集成 (CI) 系统**：与 CI/CD 管道集成；Jenkins、特拉维斯 CI、GitHub 操作。
 - **版本控制系统**：管理测试代码；吉特、SVN。
 - **数据管理**：处理测试数据；固定装置、工厂或数据驱动的测试方法。
 - **Mocking 和 Stubbing** ：模拟后端响应或复杂的用户交互；西农，诺克。
 - **错误处理**：管理异常和不稳定的测试；尝试/捕获，重试。
 - **日志记录**：跟踪测试执行细节；温斯顿，Log4js。
-- **环境管理**：配置测试环境；码头工人，库伯内斯。
+- **环境管理**：配置测试环境；Docker，Kubernetes。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；灯塔，网页测试。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：检查漏洞； OWASP ZAP、Burp Suite。
 
@@ -124,13 +124,13 @@ order: 0
 - **断言库**：检查条件； Chai、Expect 或测试框架中的内置断言。
 - **[测试运行者](/zh-cn/wiki/test-runner/)** ：执行测试；内置框架或像 Karma 这样的独立框架。
 - **报告工具**：生成测试报告；魅力，摩卡威。
-- **持续集成 (CI) 系统**：与 CI/CD 管道集成；詹金斯、特拉维斯 CI、GitHub 操作。
+- **持续集成 (CI) 系统**：与 CI/CD 管道集成；Jenkins、特拉维斯 CI、GitHub 操作。
 - **版本控制系统**：管理测试代码；吉特、SVN。
 - **数据管理**：处理测试数据；固定装置、工厂或数据驱动的测试方法。
 - **Mocking 和 Stubbing** ：模拟后端响应或复杂的用户交互；西农，诺克。
 - **错误处理**：管理异常和不稳定的测试；尝试/捕获，重试。
 - **日志记录**：跟踪测试执行细节；温斯顿，Log4js。
-- **环境管理**：配置测试环境；码头工人，库伯内斯。
+- **环境管理**：配置测试环境；Docker，Kubernetes。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；灯塔，网页测试。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：检查漏洞； OWASP ZAP、Burp Suite。
 
@@ -205,9 +205,9 @@ order: 0
 - **Watir**：一个用于自动化 Web 浏览器的 Ruby 库，它允许您编写易于阅读和维护的测试。
 - **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。它使跨浏览器[网络自动化](/zh-cn/wiki/web-automation/)成为常青、强大、可靠和快速的。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
-- **Nightwatch.js**：使用 W3C [网络驱动程序](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/) 为基于浏览器的应用程序和网站提供 [node.js](/zh-cn/wiki/node-js/) 驱动的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 解决方案。
+- **Nightwatch.js**：使用 W3C [WebDriver](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/) 为基于浏览器的应用程序和网站提供 [node.js](/zh-cn/wiki/node-js/) 驱动的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 解决方案。
 - **CodeceptJS**：一个现代的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，具有 [BDD](/zh-cn/wiki/bdd/) 风格的语法，它包装了 WebDriverIO 或 Protractor。
-- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[网络驱动程序](/zh-cn/wiki/webdriver/)或任何其他测试软件。
+- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[WebDriver](/zh-cn/wiki/webdriver/)或任何其他测试软件。
   每个工具都有其独特的功能，可能更适合特定的场景或偏好。根据项目的需求评估它们非常重要。
 
 - **TestComplete**：为 Web、移动和桌面应用程序提供强大且多功能的测试环境。支持多种脚本语言，如 JavaScript、Python 和 VBScript。
@@ -217,15 +217,15 @@ order: 0
 - **Watir**：一个用于自动化 Web 浏览器的 Ruby 库，它允许您编写易于阅读和维护的测试。
 - **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。它使跨浏览器 [网络自动化](/zh-cn/wiki/web-automation/) 成为常​​绿、强大、可靠且快速的。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
-- **Nightwatch.js**：使用 W3C [网络驱动程序](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)，为基于浏览器的应用程序和网站提供 [node.js](/zh-cn/wiki/node-js/) 驱动的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 解决方案。
+- **Nightwatch.js**：使用 W3C [WebDriver](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)，为基于浏览器的应用程序和网站提供 [node.js](/zh-cn/wiki/node-js/) 驱动的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 解决方案。
 - **CodeceptJS**：一个现代的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，具有 [BDD](/zh-cn/wiki/bdd/) 风格的语法，它包装了 WebDriverIO 或 Protractor。
-- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[网络驱动程序](/zh-cn/wiki/webdriver/)或任何其他测试软件。
+- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[WebDriver](/zh-cn/wiki/webdriver/)或任何其他测试软件。
 
 #### Selenium 是什么以及它如何在 Web 自动化中使用？
 
 [selenium](/zh-cn/wiki/selenium/) 是一个开源 **[测试自动化](/zh-cn/wiki/test-automation/) 框架**，主要用于自动化 Web 浏览器。它支持多种编程语言，包括 Java、C#、Python、Ruby 和 JavaScript，允许工程师用他们选择的语言编写[测试脚本](/zh-cn/wiki/test-script/)。
-  [selenium](/zh-cn/wiki/selenium/) 的核心是 **[网络驱动程序](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)**，它提供了一个独立于平台的接口来控制浏览器。工程师使用[网络驱动程序](/zh-cn/wiki/webdriver/) 来模拟用户交互，例如单击按钮、输入文本和浏览网页。
-  以下是用 Python 编写的 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 脚本的基本示例：
+  [selenium](/zh-cn/wiki/selenium/) 的核心是 **[WebDriver](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)**，它提供了一个独立于平台的接口来控制浏览器。工程师使用[WebDriver](/zh-cn/wiki/webdriver/) 来模拟用户交互，例如单击按钮、输入文本和浏览网页。
+  以下是用 Python 编写的 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 脚本的基本示例：
 
   ```
   from selenium import webdriver
@@ -240,7 +240,7 @@ order: 0
   # Close the browser
   driver.quit()
   ```
-[selenium](/zh-cn/wiki/selenium/) 支持各种**浏览器驱动程序**（Google Chrome 的 ChromeDriver、Firefox 的 GeckoDriver 等），它们充当 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 和浏览器本身之间的桥梁。
+[selenium](/zh-cn/wiki/selenium/) 支持各种**浏览器驱动程序**（Google Chrome 的 ChromeDriver、Firefox 的 GeckoDriver 等），它们充当 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 和浏览器本身之间的桥梁。
   对于复杂的场景，**[selenium](/zh-cn/wiki/selenium/) Grid**可用于在不同的机器和浏览器上同时运行测试，这增强了[测试覆盖率](/zh-cn/wiki/test-coverage/)并加快了执行速度。
   [selenium](/zh-cn/wiki/selenium/) 的多功能性以及与众多测试框架和 CI/CD 工具的兼容性使其成为[网络自动化](/zh-cn/wiki/web-automation/) 的首选。然而，它需要对编程和网络技术有深入的了解才能有效地创建和维护[测试脚本](/zh-cn/wiki/test-script/)。
 
@@ -253,7 +253,7 @@ order: 0
 - **异步操作**：借助 Promise 和 async/await 等功能，JavaScript 可以处理异步操作，例如等待页面加载或 AJAX 请求，这在现代 Web 应用程序中很常见。
 - **浏览器控制**：使用 JavaScript 的自动化框架可以以编程方式控制浏览器会话、在页面之间导航以及管理 cookie 或本地存储。
 - **与[API](/zh-cn/wiki/api/)**集成：JavaScript可以轻松地与各种API集成，从而可以扩展自动化功能或与外部服务交互。
-  **Puppeteer** 和 **[柏树](/zh-cn/wiki/cypress/)** 等框架基于 JavaScript 构建，并提供丰富的 [API](/zh-cn/wiki/api/) 集，以在 [node.js](/zh-cn/wiki/node-js/) 环境中自动化 Chrome 和其他浏览器。下面是一个简单的 Puppeteer 脚本示例：
+  **Puppeteer** 和 **[Cypress](/zh-cn/wiki/cypress/)** 等框架基于 JavaScript 构建，并提供丰富的 [API](/zh-cn/wiki/api/) 集，以在 [node.js](/zh-cn/wiki/node-js/) 环境中自动化 Chrome 和其他浏览器。下面是一个简单的 Puppeteer 脚本示例：
 
   ```
   const puppeteer = require('puppeteer');
@@ -275,7 +275,7 @@ order: 0
 
 #### Puppeteer 或 WebDriver 这样的工具如何帮助实现 Web 自动化？
 
-Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/api/) 以编程方式控制网络浏览器来促进[网络自动化](/zh-cn/wiki/web-automation/)。 **Puppeteer** 仅适用于 Google Chrome 或 Chromium，而 **[网络驱动程序](/zh-cn/wiki/webdriver/)** 是一种与浏览器无关的协议，被各种工具（包括 [selenium](/zh-cn/wiki/selenium/)）使用，与不同的浏览器进行交互。
+Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/api/) 以编程方式控制网络浏览器来促进[网络自动化](/zh-cn/wiki/web-automation/)。 **Puppeteer** 仅适用于 Google Chrome 或 Chromium，而 **[WebDriver](/zh-cn/wiki/webdriver/)** 是一种与浏览器无关的协议，被各种工具（包括 [selenium](/zh-cn/wiki/selenium/)）使用，与不同的浏览器进行交互。
   Puppeteer 允许通过 DevTools 协议**直接操作** Chrome/Chromium。它对于需要高级别的浏览器控制的任务特别有用，例如生成 PDF、截取屏幕截图或测试 Chrome 扩展。 Puppeteer 脚本通常用 JavaScript 或 TypeScript 编写，可以在 **无头** 模式下执行，这种模式速度更快，需要的资源更少，因为不显示 UI。
 
   ```
@@ -288,7 +288,7 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
     await browser.close();
   })();
   ```
-另一方面，[网络驱动程序](/zh-cn/wiki/webdriver/) 通过 **[网络驱动程序](/zh-cn/wiki/webdriver/) 协议**与浏览器进行通信，该协议由 W3C 标准化。这允许 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)，并且对于确保 Web 应用程序在不同环境中一致工作至关重要。 [网络驱动程序](/zh-cn/wiki/webdriver/) 实现适用于各种编程语言，可以与不同的技术堆栈进行更广泛的集成。
+另一方面，[WebDriver](/zh-cn/wiki/webdriver/) 通过 **[WebDriver](/zh-cn/wiki/webdriver/) 协议**与浏览器进行通信，该协议由 W3C 标准化。这允许 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)，并且对于确保 Web 应用程序在不同环境中一致工作至关重要。 [WebDriver](/zh-cn/wiki/webdriver/) 实现适用于各种编程语言，可以与不同的技术堆栈进行更广泛的集成。
 
   ```
   WebDriver driver = new ChromeDriver();
@@ -302,10 +302,10 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
 
 #### Selenium、Puppeteer 和 Cypress 等工具之间有什么区别？
 
-[selenium](/zh-cn/wiki/selenium/)、Puppeteer 和[柏树](/zh-cn/wiki/cypress/) 都是流行的[网络自动化](/zh-cn/wiki/web-automation/) 工具，每个工具都具有独特的功能和[用例](/zh-cn/wiki/use-case/)。
+[selenium](/zh-cn/wiki/selenium/)、Puppeteer 和[Cypress](/zh-cn/wiki/cypress/) 都是流行的[网络自动化](/zh-cn/wiki/web-automation/) 工具，每个工具都具有独特的功能和[用例](/zh-cn/wiki/use-case/)。
   **[selenium](/zh-cn/wiki/selenium/)** 是一款多功能工具，支持多种语言（Java、C#、Python 等）和浏览器（Chrome、Firefox、IE 等）。它使用特定于每个浏览器的驱动程序来实现自动化，并且可以集成到各种测试框架和 CI/CD 管道中。 [selenium](/zh-cn/wiki/selenium/) 是[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 的理想选择，并在业界得到广泛采用。
   另一方面，**Puppeteer** 是由 Google 开发的 Node 库，专门与 Chrome 或 Chromium 配合使用。它提供了一个高级 [API](/zh-cn/wiki/api/) 来控制无头 Chrome 或 Chromium，使其对于生成页面屏幕截图、PDF 和自动表单提交等任务非常有用。 Puppeteer 在处理严重依赖 JavaScript 的现代 Web 应用程序时以其易用性而闻名。
-  **[柏树](/zh-cn/wiki/cypress/)** 也是[node.js](/zh-cn/wiki/node-js/) 工具，但不同之处在于它是专门为[端到端测试](/zh-cn/wiki/end-to-end-testing/) 构建的。与远程控制浏览器的[selenium](/zh-cn/wiki/selenium/) 不同，[柏树](/zh-cn/wiki/cypress/) 与应用程序在同一运行循环中运行。这种架构允许更快的执行和更容易的调试。 [柏树](/zh-cn/wiki/cypress/) 带有内置的 [测试运行者](/zh-cn/wiki/test-runner/) 和断言库，使其成为一个更加一体化的解决方案。然而，它目前仅支持有限数量的浏览器，并且主要用于在开发过程中测试应用程序。
+  **[Cypress](/zh-cn/wiki/cypress/)** 也是[node.js](/zh-cn/wiki/node-js/) 工具，但不同之处在于它是专门为[端到端测试](/zh-cn/wiki/end-to-end-testing/) 构建的。与远程控制浏览器的[selenium](/zh-cn/wiki/selenium/) 不同，[Cypress](/zh-cn/wiki/cypress/) 与应用程序在同一运行循环中运行。这种架构允许更快的执行和更容易的调试。 [Cypress](/zh-cn/wiki/cypress/) 带有内置的 [测试运行者](/zh-cn/wiki/test-runner/) 和断言库，使其成为一个更加一体化的解决方案。然而，它目前仅支持有限数量的浏览器，并且主要用于在开发过程中测试应用程序。
   每个工具都有其优点，并根据项目要求进行选择，例如浏览器支持、语言偏好以及[测试自动化](/zh-cn/wiki/test-automation/) 策略的特定需求。
 
 ### 流程和技术
@@ -317,7 +317,7 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
 1. **选择与您首选的 [网络自动化](/zh-cn/wiki/web-automation/) 工具集成的测试框架**，例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 [jasmine](/zh-cn/wiki/jasmine/)。
 2. **搭建环境**：
 - 安装必要的
-      **网络驱动程序**
+      **WebDriver**
       对于您正在测试的浏览器。
 
 - 确保
@@ -325,7 +325,7 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
       （例如，Java、Python、JavaScript）适用于所选工具。
 
 - 安装必要的
-      **网络驱动程序**
+      **WebDriver**
       对于您正在测试的浏览器。
 
 - 确保
@@ -482,7 +482,7 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
 1. **选择与您首选的 [网络自动化](/zh-cn/wiki/web-automation/) 工具集成的测试框架**，例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 [jasmine](/zh-cn/wiki/jasmine/)。
 2. **搭建环境**：
 - 安装必要的
-      **网络驱动程序**
+      **WebDriver**
       对于您正在测试的浏览器。
 
 - 确保
@@ -490,7 +490,7 @@ Puppeteer 和[网络驱动程序](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-
       （例如，Java、Python、JavaScript）适用于所选工具。
 
 - 安装必要的
-      **网络驱动程序**
+      **WebDriver**
       对于您正在测试的浏览器。
 
 - 确保

@@ -490,7 +490,7 @@ order: 0
 - **SoapUI**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它允许测试人员在不同的 Web [API](/zh-cn/wiki/api/) 上执行自动化功能、回归、合规性和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/)的Apache项目，也可以为[功能测试](/zh-cn/wiki/functional-testing/)的Web应用程序进行配置。
 - **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
   每个工具都提供独特的功能和集成，允许测试人员根据被测应用程序和测试过程的具体要求选择最合适的工具。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化网络浏览器的开源工具。它支持多种语言和框架。
@@ -500,7 +500,7 @@ order: 0
 - **SoapUI**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它允许测试人员在不同的 Web [API](/zh-cn/wiki/api/) 上执行自动化功能、回归、合规性和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/)的Apache项目，也可以为[功能测试](/zh-cn/wiki/functional-testing/)的Web应用程序进行配置。
 - **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
 #### 黑盒测试中如何编写有效的测试用例？
 
@@ -656,7 +656,7 @@ order: 0
 - **模拟真实用户场景**：测试人员创建从头到尾模仿用户操作的测试，涵盖典型的用户流程。
 - **在类似生产的环境中测试应用程序**：这包括与数据库、网络通信、外部服务和其他应用程序的交互。
 - **验证功能性和非[功能需求](/zh-cn/wiki/functional-requirements/)** ：在确保功能按预期工作的同时，测试人员还检查性能、可用​​性和可靠性。
-  测试人员使用 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 Playwright 等自动化工具来编写这些场景的脚本，然后运行这些工具来验证应用程序的行为。这种方法有助于识别单元或集成测试可能遗漏的问题。
+  测试人员使用 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright 等自动化工具来编写这些场景的脚本，然后运行这些工具来验证应用程序的行为。这种方法有助于识别单元或集成测试可能遗漏的问题。
   **例子**：
 
   ```

@@ -317,7 +317,7 @@ order: 0
 - **Zephyr**：JIRA 的附加组件，它使团队能够直接在 JIRA 中管理测试，提供对测试进度的实时洞察。
 - **Quality Center/ALM**：Micro Focus 的测试管理工具，支持需求管理、测试计划、测试执行和缺陷跟踪。
 - **Jenkins**：一种开源 CI/CD 工具，可用于自动化软件部署和测试，并提供可用于测试结果跟踪的插件。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
 - **SonarQube**：分析源代码质量，提供有关代码覆盖率、技术债务和代码气味的指标。
 - **GitLab CI/CD**：提供可配置为运行测试并提供有关测试结果和覆盖率的报告的管道。
 - **Grafana**：用于从各种数据源创建仪表板和图表，包括测试结果和性能指标。
@@ -329,7 +329,7 @@ order: 0
 - **Zephyr**：JIRA 的附加组件，它使团队能够直接在 JIRA 中管理测试，提供对测试进度的实时洞察。
 - **Quality Center/ALM**：Micro Focus 的测试管理工具，支持需求管理、测试计划、测试执行和缺陷跟踪。
 - **Jenkins**：一种开源 CI/CD 工具，可用于自动化软件部署和测试，并提供可用于测试结果跟踪的插件。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
 - **SonarQube**：分析源代码质量，提供有关代码覆盖率、技术债务和代码气味的指标。
 - **GitLab CI/CD**：提供可配置为运行测试并提供有关测试结果和覆盖率的报告的管道。
 - **Grafana**：用于从各种数据源创建仪表板和图表，包括测试结果和性能指标。

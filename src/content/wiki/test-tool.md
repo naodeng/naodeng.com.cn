@@ -35,7 +35,7 @@ order: 0
 ## 相关术语：
 
 - [测试设计工具](/zh-cn/wiki/test-design-tool/)
-- [Test Automation tool (e.g., Selenium, JUnit)](/zh-cn/wiki/test-automation-tool-eg-selenium-junit/)
+- [Test Automation tool (e.g., Selenium, JUnit)](/zh-cn/wiki/test-tool/)
 
 ## 有关测试工具的问题吗？
 
@@ -45,7 +45,7 @@ order: 0
 
 [软件测试](/zh-cn/wiki/software-testing/) 中的 **[测试工具](/zh-cn/wiki/test-tool/)** 是一种软件应用程序或实用程序，支持一项或多项测试活动，包括规划、设计、执行、缺陷记录和报告。它可以是执行特定任务的简单独立工具，也可以是管理整个测试生命周期的复杂集成系统。
   [测试工具](/zh-cn/wiki/test-tool/) 根据其功能进行分类，例如 **[测试管理](/zh-cn/wiki/test-management/) 工具**、**自动化工具**、**[性能测试](/zh-cn/wiki/performance-testing/) 工具**、**[安全测试](/zh-cn/wiki/security-testing/) 工具**等。它们旨在自动执行重复任务，强制测试的一致性，并提供[测试用例](/zh-cn/wiki/test-case/)创建、执行和报告的结构化方法。
-  例如，考虑这样一个场景：[测试自动化](/zh-cn/wiki/test-automation/) 工程师需要跨不同浏览器验证 Web 应用程序的功能。他们可以使用 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 这样的工具，这允许他们用各种编程语言编写[测试脚本](/zh-cn/wiki/test-script/)：
+  例如，考虑这样一个场景：[测试自动化](/zh-cn/wiki/test-automation/) 工程师需要跨不同浏览器验证 Web 应用程序的功能。他们可以使用 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 这样的工具，这允许他们用各种编程语言编写[测试脚本](/zh-cn/wiki/test-script/)：
 
   ```
   const { Builder, By, Key, until } = require('selenium-webdriver');

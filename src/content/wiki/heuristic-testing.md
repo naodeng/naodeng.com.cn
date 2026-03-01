@@ -389,7 +389,7 @@ order: 0
   **[Bug](/zh-cn/wiki/bug/) 跟踪系统**（例如 **[jira](/zh-cn/wiki/jira/)** 或 **Bugzilla**）可以通过创建符合启发式原则的自定义字段或工作流程来适应 [启发式测试](/zh-cn/wiki/heuristic-testing/)，从而允许测试人员根据启发式规则记录观察结果。
   **分析和监控工具**，例如 **New Relic** 或 **Datadog** 提供实时数据，可以指导 [启发式测试](/zh-cn/wiki/heuristic-testing/) 工作，突出显示可能需要更多关注的应用程序领域。
   对于 Web 应用程序，**浏览器开发人员工具**（Chrome 开发人员工具、Firefox 开发人员工具）对于即时分析和测试非常宝贵。它们允许测试人员检查元素、监视网络活动和操作 DOM，这可以发现仅通过自动化测试可能不明显的问题。
-  **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**如 **[selenium](/zh-cn/wiki/selenium/)** 或 **[柏树](/zh-cn/wiki/cypress/)** 可以通过创建灵活且适应性强的[测试脚本](/zh-cn/wiki/test-script/) 以启发式方式使用，并且可以轻松修改以遵循启发式方法。
+  **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**如 **[selenium](/zh-cn/wiki/selenium/)** 或 **[Cypress](/zh-cn/wiki/cypress/)** 可以通过创建灵活且适应性强的[测试脚本](/zh-cn/wiki/test-script/) 以启发式方式使用，并且可以轻松修改以遵循启发式方法。
   选择工具时，请考虑其适应快速变化的能力、对协作的支持以及它与现有[测试管理](/zh-cn/wiki/test-management/)流程的集成程度。请记住，目标是增强人类测试人员的专业知识，而不是取代它。
 
 #### 这些工具如何帮助启发式测试？

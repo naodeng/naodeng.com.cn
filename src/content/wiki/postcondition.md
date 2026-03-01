@@ -34,7 +34,7 @@ order: 0
 
 ## 相关术语：
 
-- [Precondition](/zh-cn/wiki/precondition/)
+- 前置条件（Precondition）
 
 ## 关于后置条件的问题吗？
 

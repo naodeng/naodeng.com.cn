@@ -233,7 +233,7 @@ order: 0
   driver.get("http://example.com");
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript，更现代，设置更快。提供实时重新加载和自动等待。主要针对网络应用程序，重点是端到端测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript，更现代，设置更快。提供实时重新加载和自动等待。主要针对网络应用程序，重点是端到端测试。
 
   ```
   cy.visit('http://example.com');
@@ -257,7 +257,7 @@ order: 0
   assertEquals("Expected", actual);
   ```
 
-- **机器人框架**：关键字驱动的工具，对于非程序员来说很容易学习。支持测试用例的表格数据并与 Selenium 集成。
+- **Robot Framework**：关键字驱动的工具，对于非程序员来说很容易学习。支持测试用例的表格数据并与 Selenium 集成。
 
   ```
   *** Test Cases ***
@@ -275,11 +275,11 @@ order: 0
 每个工具都有其**优点**和**缺点**；选择取决于项目要求、团队技能和所测试的应用程序。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：开源，支持多种浏览器和语言。 Web 应用程序测试的理想选择。需要更多设置和编码知识。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript，更现代，设置更快。提供实时重新加载和自动等待。主要针对网络应用程序，重点是端到端测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript，更现代，设置更快。提供实时重新加载和自动等待。主要针对网络应用程序，重点是端到端测试。
 - **Appium**：用于移动应用程序测试的开源工具。支持iOS和Android平台。与Selenium类似，它使用WebDriver协议。
 - **TestComplete**：带有 GUI 界面的商业工具。支持桌面、移动和 Web 应用程序。由于记录和回放功能，所需的编码更少。
 - **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用于 Java 和 .NET 中的单元测试的框架。它们不是成熟的自动化工具，但对于测试驱动开发至关重要。
-- **机器人框架**：关键字驱动的工具，对于非程序员来说很容易学习。支持测试用例的表格数据并与 Selenium 集成。
+- **Robot Framework**：关键字驱动的工具，对于非程序员来说很容易学习。支持测试用例的表格数据并与 Selenium 集成。
 - **[Jest](/zh-cn/wiki/jest/)** ：JavaScript 测试框架，注重简单性。适合 React 应用程序中的单元和集成测试。
 
 #### 如何将代码覆盖率工具集成到持续集成管道中？

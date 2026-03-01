@@ -390,7 +390,7 @@ ARIA 角色是可访问的富互联网应用程序规范的一部分，该规范
 
 #### 如何在可访问性测试中使用自动化工具？
 
-自动化工具通过快速扫描网页和应用程序以查找常见的可访问性问题来简化[辅助功能测试](/zh-cn/wiki/accessibility-testing/)。它们可以集成到 CI/CD 管道中，以确保**持续符合**可访问性标准。 **axe-core**、**WAVE** 或 **[灯塔](/zh-cn/wiki/lighthouse/)** 等工具提供 [API](/zh-cn/wiki/api/) 以及用于与 [selenium](/zh-cn/wiki/selenium/)、[Jest](/zh-cn/wiki/jest/) 或 [柏树](/zh-cn/wiki/cypress/) 等测试框架集成的插件。
+自动化工具通过快速扫描网页和应用程序以查找常见的可访问性问题来简化[辅助功能测试](/zh-cn/wiki/accessibility-testing/)。它们可以集成到 CI/CD 管道中，以确保**持续符合**可访问性标准。 **axe-core**、**WAVE** 或 **[灯塔](/zh-cn/wiki/lighthouse/)** 等工具提供 [API](/zh-cn/wiki/api/) 以及用于与 [selenium](/zh-cn/wiki/selenium/)、[Jest](/zh-cn/wiki/jest/) 或 [Cypress](/zh-cn/wiki/cypress/) 等测试框架集成的插件。
   使用自动化工具来：
 
 - **检测代码级问题**：识别缺少替代文本、ARIA 角色使用不当以及颜色对比度不足等问题。

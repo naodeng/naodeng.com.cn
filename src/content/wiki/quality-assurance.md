@@ -360,7 +360,7 @@ order: 0
 要成为出色的[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 专家，某些技能是必不可少的：
 
 - **技术熟练程度**：了解编程语言（例如 Java、Python）、[databases](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
-- **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [柏树](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
+- **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [Cypress](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
 - **分析思维**：分析需求、设计全面的[测试计划](/zh-cn/wiki/test-plan/) 以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/) 的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告中的一丝不苟确保不会漏掉任何缺陷。
 - **解决问题的技能**：排除故障和解决复杂问题的能力对于维护 [测试自动化](/zh-cn/wiki/test-automation/) 套件的可靠性至关重要。
@@ -372,7 +372,7 @@ order: 0
   这些技能使 QA 专家能够设计、开发和维护有效的 [测试自动化](/zh-cn/wiki/test-automation/) 策略，从而有助于交付高质量的软件。
 
 - **技术熟练程度**：了解编程语言（例如 Java、Python）、[databases](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
-- **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [柏树](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
+- **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [Cypress](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
 - **分析思维**：分析需求、设计全面[测试计划](/zh-cn/wiki/test-plan/)以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/)的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告一丝不苟，确保没有任何缺陷被漏掉。
 - **解决问题的技能**：排除故障和解决复杂问题的能力对于维护 [测试自动化](/zh-cn/wiki/test-automation/) 套件的可靠性至关重要。

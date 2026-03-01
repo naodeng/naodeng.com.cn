@@ -222,8 +222,8 @@ order: 0
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
 - **QTP/UFT**：Micro Focus 的多功能工具，用于功能和回归测试。
 - **RationalFunctionalTester**：IBM 的自动化功能和回归测试解决方案。
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
   这些工具可以集成到 **CI/CD 管道**中，以便在每次构建后自动执行健全性测试。脚本通常使用该工具支持的语言编写，例如 Python、Java 或 JavaScript。
 
   ```
@@ -257,8 +257,8 @@ order: 0
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
 - **QTP/UFT**：Micro Focus 的多功能工具，用于功能和回归测试。
 - **RationalFunctionalTester**：IBM 的自动化功能和回归测试解决方案。
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 
 #### 如何将自动化纳入健全性测试中？
 

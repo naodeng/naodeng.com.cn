@@ -319,7 +319,7 @@ order: 0
 
 - **OWASP ZAP**：安全工具，可以对 Web 应用程序执行自动攻击，以测试安全漏洞的输入验证。
 - **RestAssured**：用于轻松测试 REST 服务的 Java DSL，可用于验证针对不同输入的响应。
-- **[柏树](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
+- **[Cypress](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
 - **SQLMap**：一种自动化工具，可检测和利用[SQL](/zh-cn/wiki/sql/) 注入缺陷，测试与[SQL](/zh-cn/wiki/sql/) 查询相关的输入验证的稳健性。
 - **Regex101**：在线正则表达式测试工具，用于验证和调试用于输入验证的正则表达式。
   每个工具都服务于[输入验证测试](/zh-cn/wiki/input-validation-testing/) 的特定方面，从单元级别到集成和[安全测试](/zh-cn/wiki/security-testing/)。选择正确的组合取决于应用程序堆栈和[测试计划](/zh-cn/wiki/test-plan/) 的具体要求。
@@ -359,7 +359,7 @@ order: 0
 
 - **OWASP ZAP**：安全工具，可以对 Web 应用程序执行自动攻击，以测试安全漏洞的输入验证。
 - **RestAssured**：用于轻松测试 REST 服务的 Java DSL，可用于验证针对不同输入的响应。
-- **[柏树](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
+- **[Cypress](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
 - **SQLMap**：一种自动化工具，可检测和利用[SQL](/zh-cn/wiki/sql/) 注入缺陷，测试与[SQL](/zh-cn/wiki/sql/) 查询相关的输入验证的稳健性。
 - **Regex101**：在线正则表达式测试工具，用于验证和调试用于输入验证的正则表达式。
 

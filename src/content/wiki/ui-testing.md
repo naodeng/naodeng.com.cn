@@ -159,7 +159,7 @@ order: 0
 
 [用户界面测试](/zh-cn/wiki/ui-testing/) 的常用工具包括：
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，支持实时交互测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，支持实时交互测试。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **TestComplete** ：一种商业工具，支持具有脚本和无脚本操作的桌面、移动和 Web 应用程序。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：以前称为 QTP，它是一种广泛使用的商业工具，用于功能和回归测试，具有丰富的功能集。
@@ -171,7 +171,7 @@ order: 0
 - **Playwright**：一个开源 Node 库，用于通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
   这些工具提供各种功能，从记录和回放功能到高级脚本编写，并且可以集成到 CI/CD 管道中以进行持续测试。它们迎合不同的平台和技术，确保有适合大多数 [用户界面测试](/zh-cn/wiki/ui-testing/) 需求的工具。
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，支持实时交互测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，支持实时交互测试。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **TestComplete** ：一种商业工具，支持具有脚本和无脚本操作的桌面、移动和 Web 应用程序。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：以前称为 QTP，它是一种广泛使用的商业工具，用于功能和回归测试，具有丰富的功能集。
@@ -226,7 +226,7 @@ order: 0
 1. **识别[测试场景](/zh-cn/wiki/test-scenario/)**：确定需要在 UI 中测试的功能。这可以是用户流或单独的功能。
 2. **定义测试步骤**：将场景分解为测试期间将执行的特定操作，例如单击按钮、输入文本或浏览菜单。
 3. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保应用程序在测试开始前处于所需状态。这可能涉及登录、设置数据或导航到正确的页面。
-4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用[用户界面测试](/zh-cn/wiki/ui-testing/) 工具，编写您定义的步骤的脚本。例如，在 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 中，您可以编写：
+4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用[用户界面测试](/zh-cn/wiki/ui-testing/) 工具，编写您定义的步骤的脚本。例如，在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 中，您可以编写：
 
   ```
   driver.findElement(By.id("username")).sendKeys("testuser");
@@ -242,7 +242,7 @@ order: 0
 1. **识别[测试场景](/zh-cn/wiki/test-scenario/)**：确定需要在 UI 中测试的功能。这可以是用户流或单独的功能。
 2. **定义测试步骤**：将场景分解为测试期间将执行的特定操作，例如单击按钮、输入文本或浏览菜单。
 3. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保应用程序在测试开始前处于所需状态。这可能涉及登录、设置数据或导航到正确的页面。
-4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用[用户界面测试](/zh-cn/wiki/ui-testing/) 工具，编写您定义的步骤的脚本。例如，在 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 中，您可以编写：
+4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用[用户界面测试](/zh-cn/wiki/ui-testing/) 工具，编写您定义的步骤的脚本。例如，在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 中，您可以编写：
 1. **断言预期结果**：定义您期望从测试中获得什么结果。使用断言来检查应用程序的实际状态是否与预期状态匹配。
 2. **清理**：测试结束后，重置环境，避免影响后续测试。这可能涉及注销或删除[测试数据](/zh-cn/wiki/test-data/)。
 3. **审查和重构**：定期审查[测试用例](/zh-cn/wiki/test-case/) 的相关性和准确性。根据需要进行重构以提高清晰度并减少维护。
@@ -301,7 +301,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - 选择一种编程语言（例如 Java、Python）并设置相应的 Selenium 客户端库。
 - 为您的首选浏览器安装 Selenium WebDriver（例如，适用于 Chrome 的 ChromeDriver）。
 - 选择一种编程语言（例如 Java、Python）并设置相应的 Selenium 客户端库。
-2. **实例化[网络驱动程序](/zh-cn/wiki/webdriver/)**：
+2. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -339,7 +339,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
     ```
 请记住使用 JUnit 或 TestNG for Java 或 PyTest for Python 等框架**构建您的测试**，以有效地组织和管理您的[测试套件](/zh-cn/wiki/test-suite/)。利用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 通过封装远离实际测试的页面信息来创建可重用和可维护的代码。
   **隐式和显式等待**应用于处理同步问题，确保在执行操作之前加载元素。
-  对于**[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**，为每个浏览器实例化不同的[网络驱动程序](/zh-cn/wiki/webdriver/) 实例并针对它们运行测试。
+  对于**[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**，为每个浏览器实例化不同的[WebDriver](/zh-cn/wiki/webdriver/) 实例并针对它们运行测试。
   **异常处理**对于处理意外情况并使测试稳健至关重要。
   最后，将您的测试与构建工具（如 Maven 或 Gradle）和 CI/CD 管道集成，以在开发过程中自动执行 UI 测试。
 
@@ -348,7 +348,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - 选择一种编程语言（例如 Java、Python）并设置相应的 Selenium 客户端库。
 - 为您的首选浏览器安装 Selenium WebDriver（例如，适用于 Chrome 的 ChromeDriver）。
 - 选择一种编程语言（例如 Java、Python）并设置相应的 Selenium 客户端库。
-2. **实例化[网络驱动程序](/zh-cn/wiki/webdriver/)**：
+2. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -510,7 +510,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 - **CSS 选择器的使用**：与 XPath 相比，更喜欢 CSS 选择器，因为它们对 DOM 结构的变化更具弹性。 CSS 选择器可以根据元素的类、id 或其他属性来定位元素。
 - **XPath with Contains**：当需要 XPath 时，使用 `contains()` 等函数来匹配部分属性值，使您的定位器不那么脆弱。
-- **等待元素**：实现显式等待以处理 AJAX 调用或页面加载后出现的元素。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 来等待元素出现或可单击。
+- **等待元素**：实现显式等待以处理 AJAX 调用或页面加载后出现的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 来等待元素出现或可单击。
 
   ```
   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -526,7 +526,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 - **CSS 选择器的使用**：与 XPath 相比，更喜欢 CSS 选择器，因为它们对 DOM 结构的变化更具弹性。 CSS 选择器可以根据元素的类、id 或其他属性来定位元素。
 - **XPath with Contains**：当需要 XPath 时，使用 `contains()` 等函数来匹配部分属性值，使您的定位器不那么脆弱。
-- **等待元素**：实现显式等待以处理 AJAX 调用或页面加载后出现的元素。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 来等待元素出现或可单击。
+- **等待元素**：实现显式等待以处理 AJAX 调用或页面加载后出现的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 来等待元素出现或可单击。
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将 UI 结构和行为封装在页面对象中。这种抽象允许您在一个地方管理动态元素，从而使维护变得更加容易。
 - **参数化**：使用参数化定位器来处理具有动态 ID 或类的元素。将标识符作为参数传递给您的定位器策略。
 - **正则表达式**：一些测试工具允许在定位器中使用正则表达式，它可以匹配动态字符串中的模式。
@@ -653,7 +653,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 将 [用户界面测试](/zh-cn/wiki/ui-testing/) 集成到 CI/CD 管道中涉及几个步骤：
 
-1. **选择与您的 CI/CD 环境良好集成的适当工具**，例如[selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 Playwright。
+1. **选择与您的 CI/CD 环境良好集成的适当工具**，例如[selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright。
 2. **创建确定性、幂等且可以并行运行以减少执行时间的[测试用例](/zh-cn/wiki/test-case/)**。
 3. **设置[测试环境](/zh-cn/wiki/test-environment/)**，UI 测试可以在其中一致运行。将容器化与 Docker 等工具结合使用，以确保一致、隔离的测试环境。
 4. **配置 CI/CD 管道**以触发 UI 测试。这可以通过在管道配置文件中添加一个步骤来完成：
@@ -671,7 +671,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 6. **通过与 Slack 或电子邮件等通信工具集成立即通知开发人员测试失败，确保快速反馈循环**。
   通过遵循这些步骤，[用户界面测试](/zh-cn/wiki/ui-testing/) 成为 CI/CD 流程的无缝部分，有助于及早发现问题并维护高质量的软件版本。
 
-1. **选择与您的 CI/CD 环境良好集成的适当工具**，例如 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 Playwright。
+1. **选择与您的 CI/CD 环境良好集成的适当工具**，例如 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright。
 2. **创建确定性、幂等且可以并行运行以减少执行时间的[测试用例](/zh-cn/wiki/test-case/)**。
 3. **设置[测试环境](/zh-cn/wiki/test-environment/)**，UI 测试可以在其中一致运行。将容器化与 Docker 等工具结合使用，以确保一致、隔离的测试环境。
 4. **配置 CI/CD 管道**以触发 UI 测试。这可以通过在管道配置文件中添加一个步骤来完成：

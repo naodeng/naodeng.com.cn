@@ -140,7 +140,7 @@ order: 0
 - **Locust**：一个用 Python 编写的开源 [负载测试](/zh-cn/wiki/load-testing/) 工具，允许您使用 Python 代码定义用户行为，并使您的系统拥有数百万并发用户。
 - **k6**：一个现代开源[负载测试](/zh-cn/wiki/load-testing/)工具，在JavaScript中提供干净的脚本[API](/zh-cn/wiki/api/)，并内置对指标收集和可视化的支持。
 - **BlazeMeter**：基于云的 [性能测试](/zh-cn/wiki/performance-testing/) 服务，使您能够在 Apache [JMeter](/zh-cn/wiki/jmeter/) 和其他开源工具中模拟 Web 应用程序、[API](/zh-cn/wiki/api/) 和移动应用程序的任何用户场景。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。
   每个工具都提供独特的功能，并且可能更适合特定的测试场景。选择正确的工具通常取决于项目的具体要求，例如技术堆栈、用户场景的复杂性和可用预算。
 
 - **Apache [JMeter](/zh-cn/wiki/jmeter/)**：一个开源 Java 应用程序，旨在加载测试功能行为和测量性能。它可以使用并发线程模拟多个用户，为 Web 应用程序创建重负载，并分析性能指标。
@@ -150,7 +150,7 @@ order: 0
 - **Locust**：一个用 Python 编写的开源 [负载测试](/zh-cn/wiki/load-testing/) 工具，允许您使用 Python 代码定义用户行为，并使您的系统拥有数百万并发用户。
 - **k6**：一个现代开源[负载测试](/zh-cn/wiki/load-testing/)工具，在JavaScript中提供干净的脚本[API](/zh-cn/wiki/api/)，并内置对指标收集和可视化的支持。
 - **BlazeMeter**：基于云的 [性能测试](/zh-cn/wiki/performance-testing/) 服务，使您能够在 Apache [JMeter](/zh-cn/wiki/jmeter/) 和其他开源工具中模拟 Web 应用程序、[API](/zh-cn/wiki/api/) 和移动应用程序的任何用户场景。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。
 
 #### 负载测试和压力测试有什么区别？
 
@@ -289,7 +289,7 @@ order: 0
 - **完善缓存策略**：调整静态资源的缓存策略以减少加载时间和服务器请求。
 - **简化代码**：缩小 CSS、JavaScript 和 HTML，以减小文件大小并提高解析效率。
 - **调整配置**：调整服务器和数据库配置，以在各种条件下实现最佳性能。
-- **执行[A/B testing](/zh-cn/wiki/a-b-testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
+- **执行[A/B testing](/zh-cn/wiki/A-B-Testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
 - **持续监控**：建立持续的绩效监控以发现回归并确保持续改进。
   通过系统地解决 [网页性能测试](/zh-cn/wiki/web-performance-testing/) 突出显示的问题，您可以显着提高站点速度、可靠性和用户满意度。
 
@@ -300,7 +300,7 @@ order: 0
 - **完善缓存策略**：调整静态资源的缓存策略以减少加载时间和服务器请求。
 - **简化代码**：缩小 CSS、JavaScript 和 HTML，以减小文件大小并提高解析效率。
 - **调整配置**：调整服务器和数据库配置，以在各种条件下实现最佳性能。
-- **执行[A/B testing](/zh-cn/wiki/a-b-testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
+- **执行[A/B testing](/zh-cn/wiki/A-B-Testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
 - **持续监控**：建立持续的绩效监控以发现回归并确保持续改进。
 
 ### 挑战和解决方案

@@ -177,7 +177,7 @@ order: 0
 **[关键字驱动测试](/zh-cn/wiki/keyword-driven-testing/)** 的常用工具包括：
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具。可以使用 Robot Framework 等框架将其扩展为关键字驱动测试。
-- **机器人框架**：使用关键字驱动方法的开源自动化框架。它与 Selenium 集成以进行 Web 测试。
+- **Robot Framework**：使用关键字驱动方法的开源自动化框架。它与 Selenium 集成以进行 Web 测试。
 - **QTP/UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：Micro Focus 的商业工具，提供内置关键字视图来创建和执行测试。
 - **TestComplete** ：SmartBear 的商业工具，提供关键字驱动的测试功能，允许测试人员无需编写脚本即可创建自动化测试。
 - **Katalon Studio**：一种支持关键字驱动测试的自动化工具，构建在 Selenium 和 Appium 框架之上。
@@ -186,7 +186,7 @@ order: 0
   这些工具提供了各种功能来促进关键字驱动的测试，例如测试记录、关键字库以及与其他[软件测试](/zh-cn/wiki/software-testing/) 工具的轻松集成。经验丰富的自动化工程师可以利用这些工具来创建强大的关键字驱动框架，从而提高 [测试自动化](/zh-cn/wiki/test-automation/) 效率。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具。可以使用 Robot Framework 等框架将其扩展为关键字驱动测试。
-- **机器人框架**：使用关键字驱动方法的开源自动化框架。它与 Selenium 集成以进行 Web 测试。
+- **Robot Framework**：使用关键字驱动方法的开源自动化框架。它与 Selenium 集成以进行 Web 测试。
 - **QTP/UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：Micro Focus 的商业工具，提供内置关键字视图来创建和执行测试。
 - **TestComplete** ：SmartBear 的商业工具，提供关键字驱动的测试功能，允许测试人员无需编写脚本即可创建自动化测试。
 - **Katalon Studio**：一种支持关键字驱动测试的自动化工具，构建在 Selenium 和 Appium 框架之上。

@@ -160,13 +160,13 @@ order: 0
 
 流行的[测试自动化](/zh-cn/wiki/test-automation/) 工具包含各种旨在满足不同测试需求的框架和系统。这是一个简洁的列表：
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和交互式调试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和交互式调试。
 - **JUnit**：Java 的单元测试框架，广泛用于测试驱动开发。
 - **TestNG** ：与 JUnit 类似，但具有更高级的功能，如注释、参数化测试和对数据驱动测试的支持。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 上的移动应用程序以及 Windows 桌面应用程序。
 - **Espresso**：Android 移动测试框架，提供一组丰富的 API 来编写 UI 测试。
 - **XCTest** ：Apple 的 iOS 应用程序测试框架，与 Xcode 集成。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **Cucumber**：支持行为驱动开发（BDD），允许用简单的语言规范应用程序功能和行为。
 - **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许您为 RESTful API 创建和运行自动化测试。
 - **SoapUI** ：用于测试 SOAP 和 REST API 的工具，为服务模拟和模拟提供全面支持。
@@ -174,13 +174,13 @@ order: 0
 - **Katalon Studio**：与 Selenium 和 Appium 集成的综合工具，为创建自动化测试提供用户友好的界面。
   每个工具都提供独特的功能和集成，使其适合特定的测试场景。经验丰富的工程师将根据被测应用程序、涉及的编程语言、[测试用例](/zh-cn/wiki/test-case/) 的复杂性以及与开发流程中其他软件的集成需求来选择工具。
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和交互式调试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和交互式调试。
 - **JUnit**：Java 的单元测试框架，广泛用于测试驱动开发。
 - **TestNG** ：与 JUnit 类似，但具有更高级的功能，如注释、参数化测试和对数据驱动测试的支持。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 上的移动应用程序以及 Windows 桌面应用程序。
 - **Espresso**：Android 移动测试框架，提供一组丰富的 API 来编写 UI 测试。
 - **XCTest** ：Apple 的 iOS 应用程序测试框架，与 Xcode 集成。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **Cucumber**：支持行为驱动开发（BDD），允许用简单的语言规范应用程序功能和行为。
 - **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许您为 RESTful API 创建和运行自动化测试。
 - **SoapUI** ：用于测试 SOAP 和 REST API 的工具，为服务模拟和模拟提供全面支持。
@@ -194,17 +194,17 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)**：支持多种浏览器和语言的开源工具。它主要用于 Web 应用程序测试，需要编码技能才能创建 [测试脚本](/zh-cn/wiki/test-script/)。
 - **QTP/UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：Micro Focus 的商业工具，为测试创建和维护提供用户友好的界面。它支持桌面和 Web 应用程序，并与其他 ALM 的 Micro Focus 工具集成。
 - **TestComplete**：另一个商业工具，提供无脚本环境，用于为桌面、Web 和移动应用程序创建自动化测试。它支持多种脚本语言，并具有强大的对象识别能力。
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，专为现代 Web 应用程序设计。它在与应用程序相同的运行循环中运行测试，提供更快的 [测试执行](/zh-cn/wiki/test-execution/) 和实时重新加载。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，专为现代 Web 应用程序设计。它在与应用程序相同的运行循环中运行测试，提供更快的 [测试执行](/zh-cn/wiki/test-execution/) 和实时重新加载。
 - **Appium**：用于移动应用程序测试的开源工具。它支持 iOS 和 Android 平台上的自动化，并允许使用本机、混合和移动 Web 应用程序。
-- **机器人框架**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，对于编码新手来说很容易学习。它与 [selenium](/zh-cn/wiki/selenium/) for [网页测试](/zh-cn/wiki/web-testing/) 集成，并且可以使用 Python 或 Java 库进行扩展。
+- **Robot Framework**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，对于编码新手来说很容易学习。它与 [selenium](/zh-cn/wiki/selenium/) for [网页测试](/zh-cn/wiki/web-testing/) 集成，并且可以使用 Python 或 Java 库进行扩展。
   每个工具都有其**独特的优势**，并且可能更适合某些测试环境或应用程序。经验丰富的[测试自动化](/zh-cn/wiki/test-automation/)工程师应考虑其项目的**具体需求**，例如被测应用程序的类型、所需的[测试覆盖率](/zh-cn/wiki/test-coverage/)级别以及团队的首选编程语言，以选择最合适的工具。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：支持多种浏览器和语言的开源工具。它主要用于 Web 应用程序测试，需要编码技能才能创建[测试脚本](/zh-cn/wiki/test-script/)。
 - **QTP/UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：Micro Focus 的商业工具，为测试创建和维护提供用户友好的界面。它支持桌面和 Web 应用程序，并与其他 ALM 的 Micro Focus 工具集成。
 - **TestComplete**：另一个商业工具，提供无脚本环境，用于为桌面、Web 和移动应用程序创建自动化测试。它支持多种脚本语言，并具有强大的对象识别能力。
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，专为现代 Web 应用程序设计。它在与应用程序相同的运行循环中运行测试，提供更快的 [测试执行](/zh-cn/wiki/test-execution/) 和实时重新加载。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，专为现代 Web 应用程序设计。它在与应用程序相同的运行循环中运行测试，提供更快的 [测试执行](/zh-cn/wiki/test-execution/) 和实时重新加载。
 - **Appium**：用于移动应用程序测试的开源工具。它支持 iOS 和 Android 平台上的自动化，并允许使用本机、混合和移动 Web 应用程序。
-- **机器人框架**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，对于编码新手来说很容易学习。它与 [网页测试](/zh-cn/wiki/web-testing/) 的 [selenium](/zh-cn/wiki/selenium/) 集成，并且可以使用 Python 或 Java 库进行扩展。
+- **Robot Framework**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，对于编码新手来说很容易学习。它与 [网页测试](/zh-cn/wiki/web-testing/) 的 [selenium](/zh-cn/wiki/selenium/) 集成，并且可以使用 Python 或 Java 库进行扩展。
 
 #### 选择测试自动化工具时应考虑哪些因素？
 
@@ -244,11 +244,11 @@ order: 0
 [selenium](/zh-cn/wiki/selenium/) 是一个开源 **[测试自动化](/zh-cn/wiki/test-automation/) 框架**，主要用于自动化 Web 应用程序。它支持多种浏览器，例如 Chrome、Firefox、IE 和 Edge，并允许使用各种编程语言（包括 Java、C#、Python、Ruby 和 JavaScript）编写测试。
   [selenium](/zh-cn/wiki/selenium/)的核心组件包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：直接与浏览器交互，绕过基于 JavaScript 的自动化需求，并允许更复杂的场景和交互。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：直接与浏览器交互，绕过基于 JavaScript 的自动化需求，并允许更复杂的场景和交互。
 - **[selenium](/zh-cn/wiki/selenium/) Grid** ：允许在不同的机器和浏览器上同时运行测试，这有助于加快测试套件的执行速度并允许跨浏览器测试。
 - **[selenium IDE](/zh-cn/wiki/selenium-ide/)** ：一个浏览器扩展，用于记录用户与浏览器的交互并回放它们以自动进行测试。它对于创建快速错误重现脚本和探索性测试非常有用。
   [selenium](/zh-cn/wiki/selenium/) 在[测试自动化](/zh-cn/wiki/test-automation/) 中使用，方法是编写脚本来指示浏览器执行哪些操作，例如单击按钮、输入文本和导航到页面，然后断言预期结果以验证 Web 应用程序的功能。这些脚本可以集成到 CI/CD 管道中以进行持续测试。
-  Python 中的简单 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 脚本示例：
+  Python 中的简单 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 脚本示例：
 
   ```
   from selenium import webdriver
@@ -261,7 +261,7 @@ order: 0
   ```
 [selenium](/zh-cn/wiki/selenium/) 的灵活性以及与各种浏览器和操作系统的兼容性使其成为自动化基于浏览器的测试的首选。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：直接与浏览器交互，绕过基于 JavaScript 的自动化需求，并允许更复杂的场景和交互。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：直接与浏览器交互，绕过基于 JavaScript 的自动化需求，并允许更复杂的场景和交互。
 - **[selenium](/zh-cn/wiki/selenium/) Grid** ：允许在不同的机器和浏览器上同时运行测试，这有助于加快测试套件的执行速度并允许跨浏览器测试。
 - **[selenium IDE](/zh-cn/wiki/selenium-ide/)** ：一个浏览器扩展，用于记录用户与浏览器的交互并回放它们以自动进行测试。它对于创建快速错误重现脚本和探索性测试非常有用。
 
@@ -547,7 +547,7 @@ order: 0
     driver.get("http://example.com");
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的工具，与应用程序在同一运行循环中运行，提供对 DOM 的本机访问。它提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的工具，与应用程序在同一运行循环中运行，提供对 DOM 的本机访问。它提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
 
     ```
     cy.visit('http://example.com');
@@ -564,7 +564,7 @@ order: 0
     })();
     ```
 
-- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，不需要[网络驱动程序](/zh-cn/wiki/webdriver/)。它易于设置并且可以在远程设备上运行测试。
+- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，不需要[WebDriver](/zh-cn/wiki/webdriver/)。它易于设置并且可以在远程设备上运行测试。
 
     ```
     fixture `Getting Started`
@@ -599,7 +599,7 @@ order: 0
     driver.get("http://example.com");
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：基于 JavaScript 的工具，与应用程序在同一运行循环中运行，提供对 DOM 的本机访问。它提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
+- **[Cypress](/zh-cn/wiki/cypress/)**：基于 JavaScript 的工具，与应用程序在同一运行循环中运行，提供对 DOM 的本机访问。它提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
 
     ```
     cy.visit('http://example.com');
@@ -616,7 +616,7 @@ order: 0
     })();
     ```
 
-- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，不需要[网络驱动程序](/zh-cn/wiki/webdriver/)。它易于设置并且可以在远程设备上运行测试。
+- **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，不需要[WebDriver](/zh-cn/wiki/webdriver/)。它易于设置并且可以在远程设备上运行测试。
 
     ```
     fixture `Getting Started`

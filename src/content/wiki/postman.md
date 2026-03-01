@@ -293,7 +293,7 @@ order: 0
 
 - **自动截图工具**
     喜欢
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     捕获 UI 元素以进行视觉验证。
 
 - **链接检查器**
@@ -372,7 +372,7 @@ order: 0
 
 - **自动截图工具**
     喜欢
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     捕获 UI 元素以进行视觉验证。
 
 - **链接检查器**
@@ -679,7 +679,7 @@ order: 0
             type: string
           name:
             type: string
-通过执行以下步骤，您可以在[Swagger](../S/swagger.md)中有效地定义[API](../A/api.md)端点，创建清晰且可执行的[API](../A/api.md)合约。
+通过执行以下步骤，您可以在[Swagger](/zh-cn/wiki/swagger/)中有效地定义[API](/zh-cn/wiki/api/)端点，创建清晰且可执行的[API](/zh-cn/wiki/api/)合约。
 
 1. **从 `paths` 对象开始**：您将在此处列出 API 中的可用路径 (URI)。
   1. **定义操作**：在每个路径下，指定 HTTP 方法（例如，
@@ -704,10 +704,10 @@ order: 0
 
 #### OpenAPI 规范是什么以及它与 Swagger 有何关系？
 
-**OpenAPI 规范 (OAS)** 是一个与语言无关的框架，用于描述 RESTful [APIs](../A/api.md)。它提供了定义[APIs](../A/api.md)的标准方法，包括端点、请求/响应类型和身份验证方法，这有助于后端和前端团队之间以及人与计算机之间的清晰通信。
-  [Swagger](../S/swagger.md)，现在称为 **[Swagger](../S/swagger.md) Suite**，是一组与 OpenAPI 规范配合使用的工具。最初，[Swagger](../S/swagger.md) 既指规范又指工具，但当该规范捐赠给 OpenAPI Initiative (OAI) 时，它被重命名为 OpenAPI 规范。 [Swagger](../S/swagger.md) 工具包括 [Swagger](../S/swagger.md) UI、[Swagger](../S/swagger.md) Editor、[Swagger](../S/swagger.md) Codegen 和 [Swagger](../S/swagger.md) Inspector，每个工具在 [API](../A/api.md) 生命周期（从设计到文档、生成和测试）中服务于不同的目的。
-  对于[test automation](../T/test-automation.md)，OpenAPI 规范可用于自动生成客户端库、服务器存根和[API](../A/api.md) 文档。 [Test cases](../T/test-case.md) 可以从规范中派生，确保它们与[API](../A/api.md) 的合同一致。这种自动化减少了 [API](../A/api.md) 更改时维护测试所需的手动工作，因为可以更新规范并可以重新生成相应的客户端库和测试。
-  以下是如何在 [test automation](../T/test-automation.md) 场景中使用 OpenAPI 规范的示例：
+**OpenAPI 规范 (OAS)** 是一个与语言无关的框架，用于描述 RESTful [APIs](/zh-cn/wiki/api/)。它提供了定义[APIs](/zh-cn/wiki/api/)的标准方法，包括端点、请求/响应类型和身份验证方法，这有助于后端和前端团队之间以及人与计算机之间的清晰通信。
+  [Swagger](/zh-cn/wiki/swagger/)，现在称为 **[Swagger](/zh-cn/wiki/swagger/) Suite**，是一组与 OpenAPI 规范配合使用的工具。最初，[Swagger](/zh-cn/wiki/swagger/) 既指规范又指工具，但当该规范捐赠给 OpenAPI Initiative (OAI) 时，它被重命名为 OpenAPI 规范。 [Swagger](/zh-cn/wiki/swagger/) 工具包括 [Swagger](/zh-cn/wiki/swagger/) UI、[Swagger](/zh-cn/wiki/swagger/) Editor、[Swagger](/zh-cn/wiki/swagger/) Codegen 和 [Swagger](/zh-cn/wiki/swagger/) Inspector，每个工具在 [API](/zh-cn/wiki/api/) 生命周期（从设计到文档、生成和测试）中服务于不同的目的。
+  对于[test automation](/zh-cn/wiki/test-automation/)，OpenAPI 规范可用于自动生成客户端库、服务器存根和[API](/zh-cn/wiki/api/) 文档。 [Test cases](/zh-cn/wiki/test-case/) 可以从规范中派生，确保它们与[API](/zh-cn/wiki/api/) 的合同一致。这种自动化减少了 [API](/zh-cn/wiki/api/) 更改时维护测试所需的手动工作，因为可以更新规范并可以重新生成相应的客户端库和测试。
+  以下是如何在 [test automation](/zh-cn/wiki/test-automation/) 场景中使用 OpenAPI 规范的示例：
 
   ```
   openapi: 3.0.0
@@ -728,13 +728,13 @@ order: 0
                   items:
                     type: string
   ```
-此 YAML 片段定义了一个简单的 [API](../A/api.md) 端点来列出用户，该端点可用于生成验证响应结构和状态代码的测试。
+此 YAML 片段定义了一个简单的 [API](/zh-cn/wiki/api/) 端点来列出用户，该端点可用于生成验证响应结构和状态代码的测试。
 
 #### 如何使用 Swagger 进行 API 版本控制？
 
-使用**[Swagger](../S/swagger.md)** 进行版本控制[APIs](../A/api.md) 需要在[Swagger](../S/swagger.md) 规范文件中定义[API](../A/api.md) 的不同版本。以下是有关如何使用 [Swagger](../S/swagger.md) 管理 [API](../A/api.md) 版本控制的简洁指南：
+使用**[Swagger](/zh-cn/wiki/swagger/)** 进行版本控制[APIs](/zh-cn/wiki/api/) 需要在[Swagger](/zh-cn/wiki/swagger/) 规范文件中定义[API](/zh-cn/wiki/api/) 的不同版本。以下是有关如何使用 [Swagger](/zh-cn/wiki/swagger/) 管理 [API](/zh-cn/wiki/api/) 版本控制的简洁指南：
 
-1. **URI 版本控制**：将版本号包含在 [API](../A/api.md) 路径中。这对于用户来说是简单且可见的。
+1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
 
     ```
     /api/v1/pets:
@@ -787,9 +787,9 @@ order: 0
           - application/vnd.myapi.v2+json
         # ...
     ```
-选择最适合您的[API](../A/api.md) 需求的版本控制策略，并确保您的[API](../A/api.md) 文档的一致性。 **[Swagger](../S/swagger.md) UI** 将显示不同的版本，允许用户与他们感兴趣的[API](../A/api.md) 的特定版本进行交互。请记住在新版本发布时更新您的[Swagger](../S/swagger.md) 文件，以保持您的[API](../A/api.md) 文档准确且最新。
+选择最适合您的[API](/zh-cn/wiki/api/) 需求的版本控制策略，并确保您的[API](/zh-cn/wiki/api/) 文档的一致性。 **[Swagger](/zh-cn/wiki/swagger/) UI** 将显示不同的版本，允许用户与他们感兴趣的[API](/zh-cn/wiki/api/) 的特定版本进行交互。请记住在新版本发布时更新您的[Swagger](/zh-cn/wiki/swagger/) 文件，以保持您的[API](/zh-cn/wiki/api/) 文档准确且最新。
 
-1. **URI 版本控制**：将版本号包含在 [API](../A/api.md) 路径中。这对于用户来说是简单且可见的。
+1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
 
     ```
     /api/v1/pets:
@@ -845,8 +845,8 @@ order: 0
 
 #### 如何使用 Swagger 处理身份验证和授权？
 
-在[Swagger](../S/swagger.md) 中处理身份验证和授权涉及定义安全方案并将其应用到您的[API](../A/api.md) 操作。 [Swagger](../S/swagger.md) 支持各种类型的安全方案，例如 HTTP 身份验证、[API](../A/api.md) 密钥和 OAuth2。
-  要定义安全方案，请使用 OpenAPI ([Swagger](../S/swagger.md)) 规范中`components` 部分下的`securitySchemes`。例如，定义 [API](../A/api.md) 密钥方案：
+在[Swagger](/zh-cn/wiki/swagger/) 中处理身份验证和授权涉及定义安全方案并将其应用到您的[API](/zh-cn/wiki/api/) 操作。 [Swagger](/zh-cn/wiki/swagger/) 支持各种类型的安全方案，例如 HTTP 身份验证、[API](/zh-cn/wiki/api/) 密钥和 OAuth2。
+  要定义安全方案，请使用 OpenAPI ([Swagger](/zh-cn/wiki/swagger/)) 规范中`components` 部分下的`securitySchemes`。例如，定义 [API](/zh-cn/wiki/api/) 密钥方案：
 
   ```
   components:
@@ -871,7 +871,7 @@ order: 0
               read: Read access
               write: Write access
   ```
-定义安全方案后，使用 `security` 字段将它们应用到整个 [API](../A/api.md) 或单个操作：
+定义安全方案后，使用 `security` 字段将它们应用到整个 [API](/zh-cn/wiki/api/) 或单个操作：
 
   ```
   security:
@@ -886,44 +886,44 @@ order: 0
         security:
           - OAuth2: [read, write]
   ```
-在 [Swagger](../S/swagger.md) UI 中，系统将提示用户输入其凭据，然后该凭据将包含在 [Swagger](../S/swagger.md) UI 发出的 [API](../A/api.md) 调用中。这允许直接从文档界面对安全端点进行交互式测试。
-  请记住在生产环境中**保护您的[Swagger](../S/swagger.md) UI**，以防止未经授权访问您的[API](../A/api.md) 文档和测试界面。
+在 [Swagger](/zh-cn/wiki/swagger/) UI 中，系统将提示用户输入其凭据，然后该凭据将包含在 [Swagger](/zh-cn/wiki/swagger/) UI 发出的 [API](/zh-cn/wiki/api/) 调用中。这允许直接从文档界面对安全端点进行交互式测试。
+  请记住在生产环境中**保护您的[Swagger](/zh-cn/wiki/swagger/) UI**，以防止未经授权访问您的[API](/zh-cn/wiki/api/) 文档和测试界面。
 
 #### Swagger 有哪些限制？
 
-[Swagger](../S/swagger.md) 虽然功能强大，但有几个限制：
+[Swagger](/zh-cn/wiki/swagger/) 虽然功能强大，但有几个限制：
 
 - **静态文档**：Swagger 生成静态 API 文档，这可能无法反映 API 的实时变化或动态特性。
   - **开销**：引入 Swagger 会给项目增加额外的开销，因为它需要维护 Swagger 配置和注释。
   - **学习曲线**：新用户必须学习 Swagger 特定的语法和注释，这可能是进入的障碍。
-  - **对超媒体 [APIs](../A/api.md)** 的有限支持：Swagger 可能不完全支持大量使用超媒体控件 (HATEOAS) 的 API。
+  - **对超媒体 [APIs](/zh-cn/wiki/api/)** 的有限支持：Swagger 可能不完全支持大量使用超媒体控件 (HATEOAS) 的 API。
   - **冗长**：Swagger 文件可能会变得冗长且难以管理，特别是对于具有许多端点的大型 API。
   - **自定义约束**：虽然 Swagger UI 是可自定义的，但无需大量努力即可更改外观和感觉的程度是有限的。
-  - **[API](../A/api.md) 设计优先方法**：Swagger 通常与设计优先方法相关联，该方法可能不适合所有开发工作流程，尤其是那些喜欢代码优先方法的开发工作流程。
+  - **[API](/zh-cn/wiki/api/) 设计优先方法**：Swagger 通常与设计优先方法相关联，该方法可能不适合所有开发工作流程，尤其是那些喜欢代码优先方法的开发工作流程。
   - **工具依赖性**：依赖 Swagger 工具可能会产生可能影响长期灵活性的依赖性，特别是在项目需要摆脱 Swagger 的情况下。
   - **版本控制挑战**：使用 Swagger 处理 API 版本控制可能很麻烦，并且可能需要手动干预才能保持文档与 API 版本保持一致。
-  尽管存在这些限制，[Swagger](../S/swagger.md) 由于其全面的功能集和活跃的社区，仍然是[API](../A/api.md) 文档和设计的广泛使用的工具。
+  尽管存在这些限制，[Swagger](/zh-cn/wiki/swagger/) 由于其全面的功能集和活跃的社区，仍然是[API](/zh-cn/wiki/api/) 文档和设计的广泛使用的工具。
 
 - **静态文档**：Swagger 生成静态 API 文档，这可能无法反映 API 的实时变化或动态特性。
   - **开销**：引入 Swagger 会给项目增加额外的开销，因为它需要维护 Swagger 配置和注释。
   - **学习曲线**：新用户必须学习 Swagger 特定的语法和注释，这可能是进入的障碍。
-  - **对超媒体 [APIs](../A/api.md)** 的有限支持：Swagger 可能不完全支持大量使用超媒体控件 (HATEOAS) 的 API。
+  - **对超媒体 [APIs](/zh-cn/wiki/api/)** 的有限支持：Swagger 可能不完全支持大量使用超媒体控件 (HATEOAS) 的 API。
   - **冗长**：Swagger 文件可能会变得冗长且难以管理，特别是对于具有许多端点的大型 API。
   - **自定义约束**：虽然 Swagger UI 是可自定义的，但无需大量努力即可更改外观和感觉的程度是有限的。
-  - **[API](../A/api.md) 设计优先方法** ：Swagger 通常与设计优先方法相关联，该方法可能不适合所有开发工作流程，尤其是那些喜欢代码优先方法的开发工作流程。
+  - **[API](/zh-cn/wiki/api/) 设计优先方法** ：Swagger 通常与设计优先方法相关联，该方法可能不适合所有开发工作流程，尤其是那些喜欢代码优先方法的开发工作流程。
   - **工具依赖性**：依赖 Swagger 工具可能会产生可能影响长期灵活性的依赖性，特别是在项目需要摆脱 Swagger 的情况下。
   - **版本控制挑战**：使用 Swagger 处理 API 版本控制可能很麻烦，并且可能需要手动干预才能保持文档与 API 版本保持一致。
 
 #### 如何扩展 Swagger 的功能？
 
-可以通过自定义插件、装饰器以及与其他工具集成来扩展[Swagger](../S/swagger.md) 的功能。方法如下：
-  **自定义插件**：开发自定义插件以增强[Swagger](../S/swagger.md) UI 或[Swagger](../S/swagger.md) 编辑器。例如，您可以创建一个插件来向 UI 添加新功能或与其他系统集成。
-  **装饰器**：在 Java 或 TypeScript 等语言中，使用装饰器来丰富您的 [API](../A/api.md) 注释。这可以提供额外的元数据，[Swagger](../S/swagger.md) 可以使用这些元数据来生成更详细的文档或客户端库。
-  **中间件集成**：将[Swagger](../S/swagger.md) 与应用程序框架中的中间件集成，以添加或修改[API](../A/api.md) 行为。例如，您可以使用中间件根据 [Swagger](../S/swagger.md) 定义验证请求参数。
-  **[Swagger](../S/swagger.md) 扩展**：利用 [Swagger](../S/swagger.md) 扩展 (`x-`) 将自定义属性添加到您的 OpenAPI 定义中。这些可用于文档目的或由理解这些扩展的工具使用。
-  **第三方工具**：将[Swagger](../S/swagger.md) 与第三方工具（例如[Postman](../P/postman.md) for [API testing](../A/api-testing.md)）结合起来。您可以将[Swagger](../S/swagger.md) 定义导入[Postman](../P/postman.md) 以快速创建[test suites](../T/test-suite.md)。
-  **[API](../A/api.md) 网关**：使用支持[Swagger](../S/swagger.md)/OpenAPI 的[API](../A/api.md) 网关自动导入定义并应用速率限制或身份验证等策略。
-  **[Swagger](../S/swagger.md) Codegen 自定义模板**：在 [Swagger](../S/swagger.md) Codegen 中自定义代码生成模板，以根据您的需求定制生成的代码。
+可以通过自定义插件、装饰器以及与其他工具集成来扩展[Swagger](/zh-cn/wiki/swagger/) 的功能。方法如下：
+  **自定义插件**：开发自定义插件以增强[Swagger](/zh-cn/wiki/swagger/) UI 或[Swagger](/zh-cn/wiki/swagger/) 编辑器。例如，您可以创建一个插件来向 UI 添加新功能或与其他系统集成。
+  **装饰器**：在 Java 或 TypeScript 等语言中，使用装饰器来丰富您的 [API](/zh-cn/wiki/api/) 注释。这可以提供额外的元数据，[Swagger](/zh-cn/wiki/swagger/) 可以使用这些元数据来生成更详细的文档或客户端库。
+  **中间件集成**：将[Swagger](/zh-cn/wiki/swagger/) 与应用程序框架中的中间件集成，以添加或修改[API](/zh-cn/wiki/api/) 行为。例如，您可以使用中间件根据 [Swagger](/zh-cn/wiki/swagger/) 定义验证请求参数。
+  **[Swagger](/zh-cn/wiki/swagger/) 扩展**：利用 [Swagger](/zh-cn/wiki/swagger/) 扩展 (`x-`) 将自定义属性添加到您的 OpenAPI 定义中。这些可用于文档目的或由理解这些扩展的工具使用。
+  **第三方工具**：将[Swagger](/zh-cn/wiki/swagger/) 与第三方工具（例如[Postman](/zh-cn/wiki/postman/) for [API testing](/zh-cn/wiki/api-testing/)）结合起来。您可以将[Swagger](/zh-cn/wiki/swagger/) 定义导入[Postman](/zh-cn/wiki/postman/) 以快速创建[test suites](/zh-cn/wiki/test-suite/)。
+  **[API](/zh-cn/wiki/api/) 网关**：使用支持[Swagger](/zh-cn/wiki/swagger/)/OpenAPI 的[API](/zh-cn/wiki/api/) 网关自动导入定义并应用速率限制或身份验证等策略。
+  **[Swagger](/zh-cn/wiki/swagger/) Codegen 自定义模板**：在 [Swagger](/zh-cn/wiki/swagger/) Codegen 中自定义代码生成模板，以根据您的需求定制生成的代码。
 
   ```
   paths:
@@ -931,5 +931,5 @@ order: 0
       get:
         x-my-extension: value
   ```
-**自定义验证器**：编写与 [Swagger](../S/swagger.md) 配合使用的自定义验证器，以对 [API](../A/api.md) 输入和输出强制执行附加约束。
-  通过利用这些方法，您可以定制[Swagger](../S/swagger.md)以满足您的特定要求，使其成为[API](../A/api.md)开发和测试工具库中更强大的工具。
+**自定义验证器**：编写与 [Swagger](/zh-cn/wiki/swagger/) 配合使用的自定义验证器，以对 [API](/zh-cn/wiki/api/) 输入和输出强制执行附加约束。
+  通过利用这些方法，您可以定制[Swagger](/zh-cn/wiki/swagger/)以满足您的特定要求，使其成为[API](/zh-cn/wiki/api/)开发和测试工具库中更强大的工具。

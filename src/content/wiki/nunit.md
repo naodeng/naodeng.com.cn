@@ -40,7 +40,7 @@ order: 0
 ## 相关术语：
 
 - [JUnit 测试](/zh-cn/wiki/junit-testing/)
-- [Test Framework](/zh-cn/wiki/test-framework/)
+- [Test Framework](/zh-cn/wiki/unit-test-framework/)
 
 ### 另请参阅：
 
@@ -812,7 +812,7 @@ order: 0
 
 将 **[NUnit](/zh-cn/wiki/nunit/)** 与 **[selenium](/zh-cn/wiki/selenium/)** 集成以进行端到端 (e2e) 测试涉及使用 [NUnit](/zh-cn/wiki/nunit/) 作为浏览器自动化的 [测试运行者](/zh-cn/wiki/test-runner/) 和 [selenium](/zh-cn/wiki/selenium/)。以下是实现此集成的简明指南：
 
-1. **引用[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
+1. **引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
 
     ```
     Install-Package Selenium.WebDriver
@@ -848,9 +848,9 @@ order: 0
     ```
 
 3. **运行测试**：使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 执行测试。这可以通过命令行、持续集成 (CI) 服务器或支持 [NUnit](/zh-cn/wiki/nunit/) 的 IDE 来完成。
-  通过执行这些步骤，您可以利用 [NUnit](/zh-cn/wiki/nunit/) 的测试功能和 [selenium](/zh-cn/wiki/selenium/) 的浏览器自动化来创建强大的 e2e 测试。请记住正确管理[网络驱动程序](/zh-cn/wiki/webdriver/)实例以避免资源泄漏，并考虑在测试完成后使用`TearDown`属性关闭浏览器。
+  通过执行这些步骤，您可以利用 [NUnit](/zh-cn/wiki/nunit/) 的测试功能和 [selenium](/zh-cn/wiki/selenium/) 的浏览器自动化来创建强大的 e2e 测试。请记住正确管理[WebDriver](/zh-cn/wiki/webdriver/)实例以避免资源泄漏，并考虑在测试完成后使用`TearDown`属性关闭浏览器。
 
-1. **引用[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
+1. **引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
 
     ```
     Install-Package Selenium.WebDriver

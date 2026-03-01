@@ -237,7 +237,7 @@ order: 0
 - **自动化视觉测试工具**：**Applitools** 和 **Percy** 等工具捕获本地化 UI 的屏幕截图，以检测文本溢出或错位等视觉问题。
 - **国际化 (i18n) 库**：特定于框架的库，例如用于 JavaScript 的 **i18next** 或 **.NET 的全球化和本地化**功能有助于管理动态内容本地化。
 - **特定于语言的测试框架**：某些框架提供对 [本地化测试](/zh-cn/wiki/localization-testing/) 的内置支持，例如带有 **ResourceBundle** 控制的 **JUnit** for Java。
-- **浏览器自动化工具**：**[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 可用于自动导航不同语言版本的 Web 应用程序。
+- **浏览器自动化工具**：**[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 可用于自动导航不同语言版本的 Web 应用程序。
 - **移动测试平台**：**Appium** 和 **Xamarin.UITest** 支持本地化移动应用程序的自动化。
 - **操作系统模拟器**：适用于不同操作系统版本和区域设置的模拟器和模拟器有助于在各种环境中测试应用程序，而无需物理设备。
 - **自定义脚本**：使用 **Python** 或 **JavaScript** 等编程语言编写自定义脚本，以自动执行本地化内容的[verification](/zh-cn/wiki/verification/)。
@@ -248,7 +248,7 @@ order: 0
 - **自动化视觉测试工具**：**Applitools** 和 **Percy** 等工具捕获本地化 UI 的屏幕截图，以检测文本溢出或错位等视觉问题。
 - **国际化 (i18n) 库**：特定于框架的库，例如用于 JavaScript 的 **i18next** 或 **.NET 的全球化和本地化**功能有助于管理动态内容本地化。
 - **特定于语言的测试框架**：某些框架提供对 [本地化测试](/zh-cn/wiki/localization-testing/) 的内置支持，例如带有 **ResourceBundle** 控制的 **JUnit** for Java。
-- **浏览器自动化工具**：**[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 可用于自动导航不同语言版本的 Web 应用程序。
+- **浏览器自动化工具**：**[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 可用于自动导航不同语言版本的 Web 应用程序。
 - **移动测试平台**：**Appium** 和 **Xamarin.UITest** 支持本地化移动应用程序的自动化。
 - **操作系统模拟器**：适用于不同操作系统版本和区域设置的模拟器和模拟器有助于在各种环境中测试应用程序，而无需物理设备。
 - **自定义脚本**：使用 **Python** 或 **JavaScript** 等编程语言编写自定义脚本，以自动执行本地化内容的[verification](/zh-cn/wiki/verification/)。
@@ -470,7 +470,7 @@ order: 0
 
 用于 Web 应用程序的 [本地化测试](/zh-cn/wiki/localization-testing/) 确保应用程序的行为符合不同地理区域的用户的预期。这不仅涉及验证文本的翻译，还涉及验证日期、时间、货币和数值等数据的格式。此外，它还包括检查是否符合当地法规和文化差异。
   对于 Web 应用程序，[本地化测试](/zh-cn/wiki/localization-testing/) 至关重要，因为来自世界各地的不同用户群访问该应用程序。验证应用程序是否自动检测用户的区域设置或允许他们选择其首选语言和区域设置至关重要。
-  在用于 Web 应用程序的 [测试自动化](/zh-cn/wiki/test-automation/) 中，您可以利用 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 或类似工具来模拟不同的区域设置。这可以通过更改浏览器设置或传递特定于区域设置的参数来完成。以下是使用 [网络驱动程序](/zh-cn/wiki/webdriver/) 的 TypeScript 示例：
+  在用于 Web 应用程序的 [测试自动化](/zh-cn/wiki/test-automation/) 中，您可以利用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 或类似工具来模拟不同的区域设置。这可以通过更改浏览器设置或传递特定于区域设置的参数来完成。以下是使用 [WebDriver](/zh-cn/wiki/webdriver/) 的 TypeScript 示例：
 
   ```
   const { Builder } = require('selenium-webdriver');

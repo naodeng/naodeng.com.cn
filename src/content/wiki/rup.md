@@ -41,7 +41,7 @@ order: 0
 
 ## 相关术语：
 
-- [Software development methodology](/zh-cn/wiki/software-development-methodology/)
+- [Software development methodology](/zh-cn/wiki/software-development-life-cycle/)
 - [迭代](/zh-cn/wiki/iteration/)
 
 ### 另请参阅：

@@ -256,7 +256,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于 Web 自动化测试的开源框架，支持多种语言和浏览器。
 - **Appium** ：将 Selenium 的框架扩展到移动应用程序，确保测试能够适应移动平台的变化。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和一致的结果。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和一致的结果。
 - **TestComplete**：一个 GUI 测试自动化工具，支持桌面、移动和 Web 应用程序。
 - **JUnit**
     /
@@ -271,7 +271,7 @@ order: 0
 
 - **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
 - **Docker**：容器化有助于创建一致的环境，减少“它在我的机器上运行”问题。
-- **詹金斯**
+- **Jenkins**
     /
     **亚搏体育appGitLab CI**
     /
@@ -286,7 +286,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于 Web 自动化测试的开源框架，支持多种语言和浏览器。
 - **Appium** ：将 Selenium 的框架扩展到移动应用程序，确保测试能够适应移动平台的变化。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和一致的结果。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，提供实时重新加载和一致的结果。
 - **TestComplete**：一个 GUI 测试自动化工具，支持桌面、移动和 Web 应用程序。
 - **JUnit**
     /
@@ -301,7 +301,7 @@ order: 0
 
 - **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
 - **Docker**：容器化有助于创建一致的环境，减少“它在我的机器上运行”问题。
-- **詹金斯**
+- **Jenkins**
     /
     **亚搏体育appGitLab CI**
     /

@@ -338,7 +338,7 @@ order: 0
 - **TestComplete** ：支持桌面、移动和 Web 应用程序的测试自动化工具，允许跨不同环境进行兼容性测试。
 - **Ranorex**：提供全面的工具集，用于桌面、Web 和移动应用程序的端到端测试。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 上的移动应用程序，以及跨不同设备进行测试。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台自动测试 Web 应用程序的开源工具。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台自动测试 Web 应用程序的开源工具。
 - **BrowserShots**：为网页设计师提供免费服务，以检查他们的网站在不同浏览器上的外观。
 - **虚拟机 (VM)**：VMware 和 VirtualBox 等工具允许测试人员创建不同的操作系统环境以进行兼容性测试。
   这些工具有助于自动化验证软件在各种用户场景、设备和平台上是否按预期工作的过程。它们对于确保应用程序提供一致的体验（无论用户选择何种技术）都是不可或缺的。
@@ -350,7 +350,7 @@ order: 0
 - **TestComplete** ：支持桌面、移动和 Web 应用程序的测试自动化工具，允许跨不同环境进行兼容性测试。
 - **Ranorex**：提供全面的工具集，用于桌面、Web 和移动应用程序的端到端测试。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 上的移动应用程序，以及跨不同设备进行测试。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台自动测试 Web 应用程序的开源工具。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台自动测试 Web 应用程序的开源工具。
 - **BrowserShots**：为网页设计师提供免费服务，以检查他们的网站在不同浏览器上的外观。
 - **虚拟机 (VM)**：VMware 和 VirtualBox 等工具允许测试人员创建不同的操作系统环境以进行兼容性测试。
 
@@ -612,7 +612,7 @@ order: 0
 #### 兼容性测试在 Web 开发中扮演什么角色？
 
 在 Web 开发中，[兼容性测试](/zh-cn/wiki/compatibility-testing/) 确保 Web 应用程序在各种浏览器、操作系统和设备上按预期运行。由于用户环境多种多样，这种形式的测试至关重要。它有助于识别和纠正可能阻止网站在不同平台上正常运行的问题，从而保持一致的用户体验。
-  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，将兼容性测试纳入自动化套件意味着脚本必须能够适应不同的浏览器和版本。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具可以配置为在多个浏览器上运行测试。此外，[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台有助于跨多种浏览器和操作系统组合进行测试，而无需内部设备实验室。
+  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，将兼容性测试纳入自动化套件意味着脚本必须能够适应不同的浏览器和版本。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具可以配置为在多个浏览器上运行测试。此外，[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台有助于跨多种浏览器和操作系统组合进行测试，而无需内部设备实验室。
   **[响应式设计](/zh-cn/wiki/responsive-design/)** 检查也是 Web 开发中 [兼容性测试](/zh-cn/wiki/compatibility-testing/) 的一部分，确保应用程序能够平滑地调整到不同的屏幕尺寸和分辨率。 Galen 等自动化框架可用于验证各种设备上的布局。
   将 [兼容性测试](/zh-cn/wiki/compatibility-testing/) 集成到 CI/CD 管道时，必须根据用户人口统计分析数据确定要测试的环境的优先级。这种方法简化了测试过程并节省了资源。
   总之，Web 开发中的 [兼容性测试](/zh-cn/wiki/compatibility-testing/) 是为了保证 Web 应用程序在各种用户环境中的功能和设计，这对于用户满意度和参与度至关重要。自动化在高效、一致地实现这一目标方面发挥着关键作用。

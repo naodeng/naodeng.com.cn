@@ -40,7 +40,7 @@ order: 0
 
 ## 相关术语：
 
-- [Defect](/zh-cn/wiki/defect/)
+- [Defect](/zh-cn/wiki/bug/)
 - [Bug](/zh-cn/wiki/bug/)
 
 ## 有关事故报告的问题吗？

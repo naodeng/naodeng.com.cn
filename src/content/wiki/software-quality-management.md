@@ -154,7 +154,7 @@ order: 0
 #### 这些流程和技术是如何在现实的软件开发项目中实施的？
 
 在现实世界的软件开发项目中，[测试自动化](/zh-cn/wiki/test-automation/) 流程和技术是通过一系列战略和战术步骤实施的。最初，定义了**[测试策略](/zh-cn/wiki/test-strategy/)**，概述了要自动化的测试类型，例如单元、集成或 UI 测试。团队通常优先考虑自动化**回归测试**，以确保现有功能随着时间的推移保持稳定。
-  根据项目的技术堆栈和要求选择 **[selenium](/zh-cn/wiki/selenium/)**、**[柏树](/zh-cn/wiki/cypress/)** 或 **JUnit** 等自动化框架。然后，[测试用例](/zh-cn/wiki/test-case/) 被设计为**可重用**和**可维护**，通常使用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 进行 UI 测试，从[测试脚本](/zh-cn/wiki/test-script/) 中提取页面详细信息。
+  根据项目的技术堆栈和要求选择 **[selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)** 或 **JUnit** 等自动化框架。然后，[测试用例](/zh-cn/wiki/test-case/) 被设计为**可重用**和**可维护**，通常使用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 进行 UI 测试，从[测试脚本](/zh-cn/wiki/test-script/) 中提取页面详细信息。
   **持续集成 (CI)** 工具（例如 **Jenkins**、**Travis CI** 或 **GitHub Actions**）配置为对每次代码提交运行自动化测试，确保立即反馈更改的影响。这是更广泛的 **DevOps** 实践的一部分，其中自动化是实现 **持续交付** 的关键。
   [测试数据](/zh-cn/wiki/test-data/) 管理至关重要，团队使用 **数据驱动测试** 等技术将各种数据集输入 [测试用例](/zh-cn/wiki/test-case/)，通常利用 **TestNG** 或 **pytest** 等工具。使用模拟和服务虚拟化来模拟 **[集成测试](/zh-cn/wiki/integration-testing/)** 的依赖系统。
   使用 **[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具自动执行性能测试，并将它们集成到部署管道中以标记性能回归。
@@ -465,7 +465,7 @@ order: 0
 
 选择正确的 [测试自动化](/zh-cn/wiki/test-automation/) 工具和技术取决于您项目的几个具体因素：
 
-- **项目要求**：根据项目的特定需求调整工具。对于 Web 应用程序，[selenium](/zh-cn/wiki/selenium/) 或 [柏树](/zh-cn/wiki/cypress/) 等工具很受欢迎，而 Appium 是移动应用程序的首选。
+- **项目要求**：根据项目的特定需求调整工具。对于 Web 应用程序，[selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/) 等工具很受欢迎，而 Appium 是移动应用程序的首选。
 - **技术堆栈**：选择与您的堆栈无缝集成的工具。例如，如果您使用 JavaScript，您可能更喜欢 [Jest](/zh-cn/wiki/jest/) 或 Mocha。
 - **复杂性和范围**：对于具有复杂[测试场景](/zh-cn/wiki/test-scenario/)的大型项目，Robot Framework或Cucumber等强大的框架可能适合。
 - **预算限制**：如果预算是一个问题，请考虑使用 [selenium](/zh-cn/wiki/selenium/) 等开源工具，但不要忽视商业工具对付费支持或附加功能的潜在需求。
@@ -477,7 +477,7 @@ order: 0
 - **维护和演变**：考虑维护和更新测试是多么容易。促进可重用性和模块化的工具可以减少维护开销。
   通过概念验证来评估工具，以确保它们在完全投入之前满足您的需求。请记住，正确的工具是适合您项目的独特背景并有助于提高其整体质量和效率的工具。
 
-- **项目要求**：根据项目的特定需求调整工具。对于 Web 应用程序，[selenium](/zh-cn/wiki/selenium/) 或 [柏树](/zh-cn/wiki/cypress/) 等工具很受欢迎，而 Appium 是移动应用程序的首选。
+- **项目要求**：根据项目的特定需求调整工具。对于 Web 应用程序，[selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/) 等工具很受欢迎，而 Appium 是移动应用程序的首选。
 - **技术堆栈**：选择与您的堆栈无缝集成的工具。例如，如果您使用 JavaScript，您可能更喜欢 [Jest](/zh-cn/wiki/jest/) 或 Mocha。
 - **复杂性和范围**：对于具有复杂[测试场景](/zh-cn/wiki/test-scenario/)的大型项目，Robot Framework或Cucumber等强大的框架可能适合。
 - **预算限制**：如果预算是一个问题，请考虑使用 [selenium](/zh-cn/wiki/selenium/) 等开源工具，但不要忽视商业工具对付费支持或附加功能的潜在需求。

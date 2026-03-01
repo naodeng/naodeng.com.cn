@@ -205,7 +205,7 @@ e2e 测试 [setup](/zh-cn/wiki/setup/) 所需的基本组件包括：
 3. **配置与测试环境相关的环境变量**，例如[database](/zh-cn/wiki/database/) URL、服务端点和身份验证凭据。
 4. **设置外部服务**和[databases](/zh-cn/wiki/database/)，确保它们尽可能地反映生产环境。
 5. **将 AUT** 部署到本地或专用测试服务器上的测试环境。
-6. **安装 [测试自动化](/zh-cn/wiki/test-automation/) 框架**和工具，例如 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)、[柏树](/zh-cn/wiki/cypress/) 或 Playwright。
+6. **安装 [测试自动化](/zh-cn/wiki/test-automation/) 框架**和工具，例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright。
 7. **使用已部署 AUT 的正确基本 URL 和其他必要参数配置 [测试运行者](/zh-cn/wiki/test-runner/)**。
 8. **编写冒烟测试**以验证环境设置正确并且 AUT 可访问。
 
@@ -237,7 +237,7 @@ e2e 测试 [setup](/zh-cn/wiki/setup/) 所需的基本组件包括：
 3. **配置与测试环境相关的环境变量**，例如[database](/zh-cn/wiki/database/) URL、服务端点和身份验证凭据。
 4. **设置外部服务**和[databases](/zh-cn/wiki/database/)，确保它们尽可能地反映生产环境。
 5. **将 AUT** 部署到本地或专用测试服务器上的测试环境。
-6. **安装 [测试自动化](/zh-cn/wiki/test-automation/) 框架**和工具，例如 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)、[柏树](/zh-cn/wiki/cypress/) 或 Playwright。
+6. **安装 [测试自动化](/zh-cn/wiki/test-automation/) 框架**和工具，例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright。
 7. **使用已部署 AUT 的正确基本 URL 和其他必要参数配置 [测试运行者](/zh-cn/wiki/test-runner/)**。
 8. **编写冒烟测试**以验证环境设置正确并且 AUT 可访问。
 

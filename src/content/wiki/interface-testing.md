@@ -346,7 +346,7 @@ order: 0
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **TestComplete** ：支持桌面、移动和 Web 界面测试的商业工具。
 - **Ranorex**：提供用于桌面、Web 和移动测试的工具，重点是用户界面测试。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，用于 Web 应用程序的端到端测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，用于 Web 应用程序的端到端测试。
 
   ```
   // Example of a Selenium WebDriver test in TypeScript
@@ -371,7 +371,7 @@ order: 0
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **TestComplete** ：支持桌面、移动和 Web 界面测试的商业工具。
 - **Ranorex**：提供用于桌面、Web 和移动测试的工具，重点是用户界面测试。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，用于 Web 应用程序的端到端测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，用于 Web 应用程序的端到端测试。
 
 #### 自动化如何应用于接口测试？
 
@@ -469,10 +469,10 @@ order: 0
 - **SoapUI**：专门测试 SOAP 和 REST Web 服务。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：专为性能测试而设计，也可用于接口测试，特别是API和服务。
-- **[柏树](/zh-cn/wiki/cypress/)** ：在浏览器中运行的现代 Web 测试框架，提供端到端测试功能。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的现代 Web 测试框架，提供端到端测试功能。
 - **RestAssured**：用于简化基于 REST 的服务测试的 Java DSL。
 - **TestComplete**：一个 GUI 测试自动化工具，支持桌面、移动和 Web 应用程序。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **Charles Proxy**：可用于监控客户端和服务器之间的 HTTP 和 HTTPS 流量以测试 Web 服务接口。
 - **Wireshark**：一种网络协议分析器，可用于检查和调试接口级别的流量。
   每个工具都提供独特的功能来满足不同的测试需求，例如[功能测试](/zh-cn/wiki/functional-testing/)、[性能测试](/zh-cn/wiki/performance-testing/)或监控网络流量。选择正确的技术取决于被测接口的具体要求。
@@ -482,10 +482,10 @@ order: 0
 - **SoapUI**：专门测试 SOAP 和 REST Web 服务。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：专为性能测试而设计，也可用于接口测试，特别是API和服务。
-- **[柏树](/zh-cn/wiki/cypress/)** ：在浏览器中运行的现代 Web 测试框架，提供端到端测试功能。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的现代 Web 测试框架，提供端到端测试功能。
 - **RestAssured**：用于简化基于 REST 的服务测试的 Java DSL。
 - **TestComplete**：一个 GUI 测试自动化工具，支持桌面、移动和 Web 应用程序。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **Charles Proxy**：可用于监控客户端和服务器之间的 HTTP 和 HTTPS 流量以测试 Web 服务接口。
 - **Wireshark**：一种网络协议分析器，可用于检查和调试接口级别的流量。
 

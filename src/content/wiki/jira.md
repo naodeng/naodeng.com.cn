@@ -36,7 +36,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 
 ## 相关术语：
 
-- [Bug tracking tool](/zh-cn/wiki/bug-tracking-tool/)
+- [Bug tracking tool](/zh-cn/wiki/jira/)
 - [变更请求](/zh-cn/wiki/change-requests/)
 - [事件管理](/zh-cn/wiki/incident-management/)
 
@@ -351,7 +351,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 对于**持续集成/持续部署 (CI/CD)**，[jira](/zh-cn/wiki/jira/) 与 **Jenkins**、**Bamboo** 和 **CircleCI** 等工具集成。像*Jenkins Integration for Jira* 这样的插件可以自动将构建和部署信息流返回[jira](/zh-cn/wiki/jira/) 问题。
   对于 **[测试管理](/zh-cn/wiki/test-management/)**，[jira](/zh-cn/wiki/jira/) 与 **Zephyr** 和 **TestRail** 等工具连接。这些集成允许将[测试用例](/zh-cn/wiki/test-case/)、结果和报告与[jira](/zh-cn/wiki/jira/) 问题同步，从而提供测试活动的全面视图。
   对于**通信**，[jira](/zh-cn/wiki/jira/) 与 **Slack**、**Microsoft Teams** 和 **Confluence** 集成。在聊天工具中设置通知和问题预览或在 Confluence 文档中链接 [jira](/zh-cn/wiki/jira/) 问题以增强协作。
-  对于**自动化工具**，[jira](/zh-cn/wiki/jira/) 与 **[selenium](/zh-cn/wiki/selenium/)**、**[柏树](/zh-cn/wiki/cypress/)** 和 **Appium** 配合使用进行 e2e 测试。使用[jira](/zh-cn/wiki/jira/) 的[API](/zh-cn/wiki/api/) 根据测试结果创建、更新和转换问题，从而促进自动问题跟踪。
+  对于**自动化工具**，[jira](/zh-cn/wiki/jira/) 与 **[selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)** 和 **Appium** 配合使用进行 e2e 测试。使用[jira](/zh-cn/wiki/jira/) 的[API](/zh-cn/wiki/api/) 根据测试结果创建、更新和转换问题，从而促进自动问题跟踪。
 
   ```
   // Example code to transition a Jira issue based on test result
@@ -375,7 +375,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     。
 
 - **持续集成/持续部署 (CI/CD)** ：类似工具
-    **詹金斯**
+    **Jenkins**
     ,
     **竹子**
     , 和
@@ -393,7 +393,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 - **自动化框架**：与框架集成，例如
     **[selenium](/zh-cn/wiki/selenium/)**
     ,
-    **[柏树](/zh-cn/wiki/cypress/)**
+    **[Cypress](/zh-cn/wiki/cypress/)**
     , 或
     **阿皮姆**
     通过中介服务或插件进行测试结果同步。
@@ -430,7 +430,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     。
 
 - **持续集成/持续部署 (CI/CD)** ：类似工具
-    **詹金斯**
+    **Jenkins**
     ,
     **竹子**
     , 和
@@ -448,7 +448,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 - **自动化框架**：与框架集成，例如
     **[selenium](/zh-cn/wiki/selenium/)**
     ,
-    **[柏树](/zh-cn/wiki/cypress/)**
+    **[Cypress](/zh-cn/wiki/cypress/)**
     , 或
     **阿皮姆**
     通过中介服务或插件进行测试结果同步。

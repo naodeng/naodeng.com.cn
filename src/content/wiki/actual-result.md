@@ -187,7 +187,7 @@ order: 0
 
 捕获[测试自动化](/zh-cn/wiki/test-automation/)中的**[实际结果](/zh-cn/wiki/actual-result/)**通常涉及多种工具和方法：
 
-- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在**[selenium](/zh-cn/wiki/selenium/)**、**[柏树](/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本会在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
+- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在**[selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本会在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
 
     ```
     let actualResult = element.getText();
@@ -204,7 +204,7 @@ order: 0
 - **文件输出**：将结果写入文件，例如 CSV 或 JSON，以便稍后解析和分析。
   每种方法都是根据需要捕获的**上下文**和正在执行的测试的**类型**来选择的。
 
-- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在**[selenium](/zh-cn/wiki/selenium/)**、**[柏树](/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本会在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
+- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在**[selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本会在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
 
     ```
     let actualResult = element.getText();

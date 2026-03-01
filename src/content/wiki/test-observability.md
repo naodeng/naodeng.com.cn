@@ -408,7 +408,7 @@ order: 0
 #### 如何使用 Selenium 或 Appium 等工具来增强测试可观察性？
 
 **[selenium](/zh-cn/wiki/selenium/)** 和 **Appium** 等工具通过提供在 [测试执行](/zh-cn/wiki/test-execution/) 期间**捕获屏幕截图**、**录制视频**和**记录操作**的功能来增强 [测试可观测性](/zh-cn/wiki/test-observability/)。这些功能使工程师能够直观地检查测试的每个步骤中发生的情况，这对于调试和理解故障至关重要。
-  例如，[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 可用于截屏：
+  例如，[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 可用于截屏：
 
   ```
   WebDriver driver = new ChromeDriver();

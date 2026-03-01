@@ -37,7 +37,7 @@ order: 0
 
 ## 相关术语：
 
-- [Capability Maturity Model Integration](/zh-cn/wiki/capability-maturity-model-integration/)
+- [Capability Maturity Model Integration](/zh-cn/wiki/cmmi/)
 - [质量管理](/zh-cn/wiki/quality-management/)
 
 ## 关于 CMMI 的问题吗？

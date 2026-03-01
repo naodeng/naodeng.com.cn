@@ -293,7 +293,7 @@ order: 0
 
 - **自动截图工具**
     喜欢
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     捕获 UI 元素以进行视觉验证。
 
 - **链接检查器**
@@ -372,7 +372,7 @@ order: 0
 
 - **自动截图工具**
     喜欢
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     捕获 UI 元素以进行视觉验证。
 
 - **链接检查器**

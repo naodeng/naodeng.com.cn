@@ -217,7 +217,7 @@ order: 0
 - **TestComplete** ：提供比较预期测试结果和实际测试结果的功能，包括视觉比较和数据检查点。
 - **代码比较**：文件和文件夹比较工具，与各种版本控制系统集成，使开发人员能够看到代码的更改。
 - **Katalon Studio**：提供内置比较功能，用于验证 API 响应和可视化测试。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：虽然本身不​​是比较工具，但它可以与断言库一起使用来比较测试中的预期结果和实际结果。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：虽然本身不​​是比较工具，但它可以与断言库一起使用来比较测试中的预期结果和实际结果。
 - **[Jest](/zh-cn/wiki/jest/)** ：具有快照测试功能的 JavaScript 测试框架，允许随时间比较渲染的 UI 组件。
 - **Git**：版本控制系统，可用于比较跨分支或提交的代码更改。
   这些工具可以集成到持续集成管道中，以自动化比较过程。它们有助于识别差异、了解变更的影响并确保不同测试运行或应用程序版本之间的一致性。
@@ -229,13 +229,13 @@ order: 0
 - **TestComplete** ：提供比较预期测试结果和实际测试结果的功能，包括视觉比较和数据检查点。
 - **代码比较**：文件和文件夹比较工具，与各种版本控制系统集成，使开发人员能够看到代码的更改。
 - **Katalon Studio**：提供内置比较功能，用于验证 API 响应和可视化测试。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：虽然本身不​​是比较工具，但它可以与断言库一起使用来比较测试中的预期结果和实际结果。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：虽然本身不​​是比较工具，但它可以与断言库一起使用来比较测试中的预期结果和实际结果。
 - **[Jest](/zh-cn/wiki/jest/)** ：具有快照测试功能的 JavaScript 测试框架，允许随时间比较渲染的 UI 组件。
 - **Git**：版本控制系统，可用于比较跨分支或提交的代码更改。
 
 #### 不同的测试工具在功能和易用性方面如何比较？
 
-不同的测试工具在**功能**和**易用性**方面差异很大。 **[selenium](/zh-cn/wiki/selenium/)** 等工具为 [网络自动化](/zh-cn/wiki/web-automation/) 提供了广泛的功能，支持多种语言和浏览器，但需要更多的编码专业知识。另一方面，**[柏树](/zh-cn/wiki/cypress/)** 由于其简单的语法和实时反馈，对于初学者来说更容易，但它主要专注于 Web 应用程序。
+不同的测试工具在**功能**和**易用性**方面差异很大。 **[selenium](/zh-cn/wiki/selenium/)** 等工具为 [网络自动化](/zh-cn/wiki/web-automation/) 提供了广泛的功能，支持多种语言和浏览器，但需要更多的编码专业知识。另一方面，**[Cypress](/zh-cn/wiki/cypress/)** 由于其简单的语法和实时反馈，对于初学者来说更容易，但它主要专注于 Web 应用程序。
   **Appium** 是具有跨平台支持的移动测试的流行选择，但学习曲线更陡峭。 **Espresso**（适用于 Android）和 **XCTest**（适用于 iOS）提供更高效但仅限于各自平台的本机框架。
   对于[API 测试](/zh-cn/wiki/api-testing/)，**[邮递员](/zh-cn/wiki/postman/)** 是用户友好的，具有用于构建请求的 GUI，而 **RestAssured** 与基于 Java 的 [测试套件](/zh-cn/wiki/test-suite/) 集成良好，但需要编码知识。
   **Cucumber** 以其 [gherkin](/zh-cn/wiki/gherkin/) 语言擅长行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))，促进协作，但对于复杂的 [测试场景](/zh-cn/wiki/test-scenario/) 可能没有那么强大。
@@ -262,7 +262,7 @@ order: 0
 - **快照测试**：诸如此类的技术
     **[Jest](/zh-cn/wiki/jest/)**
     和
-    **[柏树](/zh-cn/wiki/cypress/)**
+    **[Cypress](/zh-cn/wiki/cypress/)**
     可以捕获 UI 组件或数据结构的快照，以便与参考快照进行比较。
 
   ```
@@ -360,7 +360,7 @@ order: 0
 - **快照测试**：诸如此类的技术
     **[Jest](/zh-cn/wiki/jest/)**
     和
-    **[柏树](/zh-cn/wiki/cypress/)**
+    **[Cypress](/zh-cn/wiki/cypress/)**
     可以捕获 UI 组件或数据结构的快照，以便与参考快照进行比较。
 
 - **视觉回归工具**：类似的工具

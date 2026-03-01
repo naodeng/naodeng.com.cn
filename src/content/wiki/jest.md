@@ -40,9 +40,9 @@ order: 0
 
 ## 相关术语：
 
-- [Testing framework](/zh-cn/wiki/testing-framework/)
+- [Testing framework](/zh-cn/wiki/unit-test-framework/)
 - [jasmine](/zh-cn/wiki/jasmine/)
-- [Chai.js](/zh-cn/wiki/chaijs/)
+- [Chai.js](/zh-cn/wiki/chai-js/)
 
 ### 另请参阅：
 

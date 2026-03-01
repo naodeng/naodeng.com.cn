@@ -270,7 +270,7 @@ order: 0
 - **Ranorex**：提供用于桌面、Web 和移动应用程序测试的工具，并具有用于创建自动化测试的用户友好界面。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **JUnit/TestNG**：与 Selenium 结合使用的框架，用于在基于 Java 的环境中编写测试用例并生成报告。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的现代端到端测试框架，在浏览器中运行，简化了异步测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的现代端到端测试框架，在浏览器中运行，简化了异步测试。
 - **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
   这些工具支持 [重新测试](/zh-cn/wiki/retesting/) 的各个方面，例如执行之前失败的特定[测试用例](/zh-cn/wiki/test-case/)、验证[bug](/zh-cn/wiki/bug/) 修复以及确保软件在更改后按预期运行。自动化工程师通常根据被测应用程序、使用的编程语言和框架以及[重新测试](/zh-cn/wiki/retesting/)流程的具体要求来选择工具。
 
@@ -280,7 +280,7 @@ order: 0
 - **Ranorex**：提供用于桌面、Web 和移动应用程序测试的工具，并具有用于创建自动化测试的用户友好界面。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **JUnit/TestNG**：与 Selenium 结合使用的框架，用于在基于 Java 的环境中编写测试用例并生成报告。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个现代的基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了异步测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了异步测试。
 - **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
 
 #### 自动化如何应用于重新测试？

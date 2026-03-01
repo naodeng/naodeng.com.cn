@@ -189,12 +189,12 @@ order: 0
 
 - **单元测试**是金字塔的**基础**，重点关注单个组件或功能。它们是**最快的**和**数量最多的**，与系统的其他部分隔离运行。单元测试通常由开发人员在编码时使用 JUnit for Java 或 Mocha for JavaScript 等框架编写。
 - **集成测试**评估组件或系统之间的**交互**。由于交互的复杂性以及需要配置与生产非常相似的环境，它们比单元测试慢**。 TestNG for Java 或 Chai for JavaScript 等工具可用于编写集成测试。
-- **端到端测试**从头到尾模拟**真实的用户场景**，覆盖整个应用程序。它们是**最慢**且**数量最少**，因为它们需要完整的环境并且通常涉及 UI 交互。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 是[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的常用工具。
+- **端到端测试**从头到尾模拟**真实的用户场景**，覆盖整个应用程序。它们是**最慢**且**数量最少**，因为它们需要完整的环境并且通常涉及 UI 交互。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 是[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的常用工具。
   每个级别都有**不同的目的**和**成本效益比**。单元测试快速且廉价，但范围有限。集成测试提供了一种平衡，揭示了单元协同工作方式中的问题。端到端测试是最全面的，但昂贵且耗时。金字塔强调在较低级别进行更多的测试，而随着级别的提升而减少测试数量，从而促进具有成本效益和高效的测试策略。
 
 - **单元测试**是金字塔的**基础**，重点关注单个组件或功能。它们是**最快的**和**数量最多的**，与系统的其他部分隔离运行。单元测试通常由开发人员在编码时使用 JUnit for Java 或 Mocha for JavaScript 等框架编写。
 - **集成测试**评估组件或系统之间的**交互**。由于交互的复杂性以及需要配置与生产非常相似的环境，它们比单元测试慢**。 TestNG for Java 或 Chai for JavaScript 等工具可用于编写集成测试。
-- **端到端测试**从头到尾模拟**真实的用户场景**，覆盖整个应用程序。它们是**最慢**且**数量最少**，因为它们需要完整的环境并且通常涉及 UI 交互。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 是[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的常用工具。
+- **端到端测试**从头到尾模拟**真实的用户场景**，覆盖整个应用程序。它们是**最慢**且**数量最少**，因为它们需要完整的环境并且通常涉及 UI 交互。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 是[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的常用工具。
 
 ### 实施和最佳实践
 
@@ -370,7 +370,7 @@ order: 0
 [测试金字塔](/zh-cn/wiki/test-pyramid/) 通过强调每个级别测试的**比例和范围**，充当开发自动化策略的蓝图。它提倡**大量的单元测试**、**适量的集成测试**和**最少的端到端测试**。这种分布确保大多数问题都能在单元级别尽早发现，这样测试的运行速度更快、成本更低。
   通过遵循金字塔，自动化工作的重点是创建**快速可靠的单元测试**，以单独验证各个组件。该基础允许进行更少但更复杂的集成测试，以确保组件正确地协同工作。最后，可以自动化一小套端到端测试，以在模拟生产的环境中验证整个系统。
   金字塔还建议优先考虑**可能频繁执行**并提供**最高投资回报**的测试自动化。在自动化之前，应严格评估脆弱、不稳定或难以维护的测试。
-  在实践中，这意味着利用非常适合各个测试级别的工具和框架。例如，对[单元测试](/zh-cn/wiki/unit-testing/)使用JUnit或[NUnit](/zh-cn/wiki/nunit/)等框架，对[集成测试](/zh-cn/wiki/integration-testing/)使用[邮递员](/zh-cn/wiki/postman/)或WireMock等工具，对[端到端测试](/zh-cn/wiki/end-to-end-testing/)使用[selenium](/zh-cn/wiki/selenium/)或[柏树](/zh-cn/wiki/cypress/)。
+  在实践中，这意味着利用非常适合各个测试级别的工具和框架。例如，对[单元测试](/zh-cn/wiki/unit-testing/)使用JUnit或[NUnit](/zh-cn/wiki/nunit/)等框架，对[集成测试](/zh-cn/wiki/integration-testing/)使用[邮递员](/zh-cn/wiki/postman/)或WireMock等工具，对[端到端测试](/zh-cn/wiki/end-to-end-testing/)使用[selenium](/zh-cn/wiki/selenium/)或[Cypress](/zh-cn/wiki/cypress/)。
 
   ```
   // Example of a unit test using JUnit

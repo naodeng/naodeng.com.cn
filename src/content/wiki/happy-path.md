@@ -174,7 +174,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
     driver.findElement(By.id("login")).click();
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的基于 JavaScript 的现代工具，在浏览器中运行，提供更一致的测试环境。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的基于 JavaScript 的现代工具，在浏览器中运行，提供更一致的测试环境。
 
     ```
     cy.visit('http://example.com');
@@ -186,7 +186,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
 - **TestComplete**：一种商业工具，提供用于为桌面、移动和 Web 应用程序创建自动化测试的 GUI。
 - **UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：以前称为 QTP，它是 Micro Focus 的一款商业工具，用于功能和回归 [测试自动化](/zh-cn/wiki/test-automation/)。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **机器人框架**：关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架，易于学习并提供易于阅读的[测试数据](/zh-cn/wiki/test-data/)语法。
+- **Robot Framework**：关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架，易于学习并提供易于阅读的[测试数据](/zh-cn/wiki/test-data/)语法。
 - Java 中 [单元测试](/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG**：这些框架可用于在单元级别自动化 [快乐之路](/zh-cn/wiki/happy-path/) 场景。
 - **RSpec** 或 **Cucumber** 用于 Ruby 中的行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))：这些工具允许编写人类可读的验收测试。
   每个工具都有自己的脚本或编程方法，但它们都支持“[快乐之路](/zh-cn/wiki/happy-path/)”的自动化，以确保应用程序的主要功能按预期工作。
@@ -201,7 +201,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
     driver.findElement(By.id("login")).click();
     ```
 
-- **[柏树](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的基于 JavaScript 的现代工具，在浏览器中运行，提供更一致的测试环境。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的基于 JavaScript 的现代工具，在浏览器中运行，提供更一致的测试环境。
 
     ```
     cy.visit('http://example.com');
@@ -213,7 +213,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
 - **TestComplete**：一种商业工具，提供用于为桌面、移动和 Web 应用程序创建自动化测试的 GUI。
 - **UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：以前称为 QTP，它是 Micro Focus 的一款商业工具，用于功能和回归 [测试自动化](/zh-cn/wiki/test-automation/)。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **机器人框架**：关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架，易于学习并提供易于阅读的[测试数据](/zh-cn/wiki/test-data/)语法。
+- **Robot Framework**：关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架，易于学习并提供易于阅读的[测试数据](/zh-cn/wiki/test-data/)语法。
 - Java 中 [单元测试](/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG**：这些框架可用于在单元级别自动化 [快乐之路](/zh-cn/wiki/happy-path/) 场景。
 - **RSpec** 或 **Cucumber** 用于 Ruby 中的行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))：这些工具允许编写人类可读的验收测试。
 
@@ -244,7 +244,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
 
 将 **[快乐之路](/zh-cn/wiki/happy-path/)** 测试集成到 CI/CD 管道中可确保最关键和最常见的用户旅程在每次代码更改时保持功能。为此，请按照下列步骤操作：
 
-1. **使用 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 Appium 等首选工具自动化 [快乐之路](/zh-cn/wiki/happy-path/) [测试用例](/zh-cn/wiki/test-case/)**。确保它们模仿最终用户的行为和交互。
+1. **使用 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Appium 等首选工具自动化 [快乐之路](/zh-cn/wiki/happy-path/) [测试用例](/zh-cn/wiki/test-case/)**。确保它们模仿最终用户的行为和交互。
 
     ```
     describe('Happy Path for login', () => {
@@ -273,7 +273,7 @@ Happy Path 测试重点关注没有错误发生且一切按预期运行的默认
 5. **使用测试结果来控制部署**；如果 [快乐之路](/zh-cn/wiki/happy-path/) 测试失败，则阻止代码部署到生产环境。
   通过遵循这些步骤，Happy Path 测试成为开发过程中不可或缺的一部分，提供**快速反馈**并在每次更改时保持对应用程序核心功能的**信心**。
 
-1. **使用 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 Appium 等首选工具自动化 [快乐之路](/zh-cn/wiki/happy-path/) [测试用例](/zh-cn/wiki/test-case/)**。确保它们模仿最终用户的行为和交互。
+1. **使用 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Appium 等首选工具自动化 [快乐之路](/zh-cn/wiki/happy-path/) [测试用例](/zh-cn/wiki/test-case/)**。确保它们模仿最终用户的行为和交互。
 
     ```
     describe('Happy Path for login', () => {

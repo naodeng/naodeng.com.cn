@@ -145,9 +145,9 @@ order: 0
 
 [测试执行自动化](/zh-cn/wiki/test-execution-automation/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
 - **TestComplete** ：一种商业工具，支持使用脚本或无脚本方法进行桌面、移动和 Web 应用程序测试。
 - **JUnit**
     和
@@ -163,7 +163,7 @@ order: 0
     和
     **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **[邮递员](/zh-cn/wiki/postman/)**
     和
     **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
@@ -172,9 +172,9 @@ order: 0
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
   这些工具提供了跨不同平台和技术实现 [测试执行](/zh-cn/wiki/test-execution/) 自动化的各种功能。它们可以集成到 CI/CD 管道中并支持并行执行、报告和[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
 - **TestComplete** ：一种商业工具，支持使用脚本或无脚本方法进行桌面、移动和 Web 应用程序测试。
 - **JUnit**
     和
@@ -190,7 +190,7 @@ order: 0
     和
     **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **[邮递员](/zh-cn/wiki/postman/)**
     和
     **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
@@ -202,21 +202,21 @@ order: 0
 
 比较 [测试自动化](/zh-cn/wiki/test-automation/) 工具时，请考虑以下主要差异：
 
-- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[柏树](/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
+- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
 - **生态系统和集成**：一些工具提供更丰富的生态系统和集成。例如，**TestComplete** 提供了与其他工具的广泛集成，而 **Watir** 的开箱即用集成可能较少。
-- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
-- **执行速度**：执行速度可能会有很大差异。 **[柏树](/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
-- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[柏树](/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
+- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
+- **执行速度**：执行速度可能会有很大差异。 **[Cypress](/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
+- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[Cypress](/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
 - **浏览器支持**：考虑支持的浏览器范围。 [selenium](/zh-cn/wiki/selenium/) 支持多种浏览器，包括较旧的浏览器，而 **Puppeteer** 主要专注于 Chrome。
 - **移动测试**：一些工具，例如**Appium**，是专门为移动测试而设计的，而其他工具则更侧重于网络。
 - **记录和回放**：**[selenium IDE](/zh-cn/wiki/selenium-ide/)** 等工具为测试创建提供记录和回放功能，这是无需编写代码即可快速生成测试的方法。
 - **社区和支持**：工具社区的规模和活动可能会影响您获得的支持。 [selenium](/zh-cn/wiki/selenium/) 拥有一个大型、活跃的社区，而较新或不太流行的工具可能只有有限的社区支持。
 - **开源与商业**：**[selenium](/zh-cn/wiki/selenium/)** 等开源工具可以免费使用和修改，而 **QTP/UFT** 等商业工具需要支付许可费用，但可能会提供更多专用支持和高级功能。
-- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[柏树](/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
+- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
 - **生态系统和集成**：一些工具提供更丰富的生态系统和集成。例如，**TestComplete** 提供了与其他工具的广泛集成，而 **Watir** 的开箱即用集成可能较少。
-- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
-- **执行速度**：执行速度可能会有很大差异。 **[柏树](/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
-- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[柏树](/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
+- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
+- **执行速度**：执行速度可能会有很大差异。 **[Cypress](/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
+- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[Cypress](/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
 - **浏览器支持**：考虑支持的浏览器范围。 [selenium](/zh-cn/wiki/selenium/) 支持多种浏览器，包括较旧的浏览器，而 **Puppeteer** 主要专注于 Chrome。
 - **移动测试**：一些工具，例如**Appium**，是专门为移动测试而设计的，而其他工具则更侧重于网络。
 - **记录和回放**：**[selenium IDE](/zh-cn/wiki/selenium-ide/)** 等工具为测试创建提供记录和回放功能，这是无需编写代码即可快速生成测试的方法。
@@ -251,7 +251,7 @@ order: 0
 #### Selenium 在测试执行自动化中的作用是什么？
 
 [selenium](/zh-cn/wiki/selenium/) 在[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 中发挥**核心作用**，主要用于Web 应用程序。它提供了一套工具，使自动化工程师能够**与 Web 浏览器交互**并跨各种平台**自动化 Web 应用程序测试**。
-  [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 是一个关键组件，允许创建基于浏览器的回归自动化套件和测试，从而可以使用每个浏览器对自动化的本机支持直接调用浏览器。这意味着测试的运行就像真实用户正在浏览应用程序一样，确保**高保真度**测试结果。
+  [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 是一个关键组件，允许创建基于浏览器的回归自动化套件和测试，从而可以使用每个浏览器对自动化的本机支持直接调用浏览器。这意味着测试的运行就像真实用户正在浏览应用程序一样，确保**高保真度**测试结果。
   使用[selenium](/zh-cn/wiki/selenium/)，工程师可以用多种编程语言编写[测试脚本](/zh-cn/wiki/test-script/)，包括Java、C#、Python、Ruby 和JavaScript。这种灵活性对于团队利用现有技能并与其他工具或框架集成至关重要。
   [selenium](/zh-cn/wiki/selenium/) 的功能包括：
 
@@ -271,10 +271,10 @@ order: 0
 
 除了常见的工具之外，还有其他几种技术和框架在 [测试执行自动化](/zh-cn/wiki/test-execution-automation/) 中发挥着重要作用：
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **TestCafe**：一个用于自动化端到端 Web 测试的 Node.js 工具。它是为现代 Web 开发而构建的，不需要 WebDriver。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。它使用关键字驱动的测试方法，并且很容易使用 Python 或 Java 进行扩展。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。它使用关键字驱动的测试方法，并且很容易使用 Python 或 Java 进行扩展。
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit。它支持跨浏览器测试并由 Microsoft 维护。
 - **SpecFlow**：.NET 的实用 BDD 解决方案。它使用 Gherkin 语法以简单的语言表达测试。
 - **Espresso**：Android 移动测试框架，提供一组丰富的 API 来编写 UI 测试。
@@ -283,10 +283,10 @@ order: 0
 - **K6**：一个开源负载测试工具，用于测试后端服务的性能，用 Go 开发并可使用 JavaScript 编写脚本。
   这些框架和工具均提供独特的特性和功能，可用于增强 [测试自动化](/zh-cn/wiki/test-automation/) 工作，具体取决于项目和所涉及技术堆栈的具体要求。
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **TestCafe**：一个用于自动化端到端 Web 测试的 Node.js 工具。它是为现代 Web 开发而构建的，不需要 WebDriver。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。它使用关键字驱动的测试方法，并且很容易使用 Python 或 Java 进行扩展。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。它使用关键字驱动的测试方法，并且很容易使用 Python 或 Java 进行扩展。
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit。它支持跨浏览器测试并由 Microsoft 维护。
 - **SpecFlow**：.NET 的实用 BDD 解决方案。它使用 Gherkin 语法以简单的语言表达测试。
 - **Espresso**：Android 移动测试框架，提供一组丰富的 API 来编写 UI 测试。
@@ -472,7 +472,7 @@ order: 0
   ```
 
 - **参数化**：使用参数来处理根据用户输入或 [测试数据](/zh-cn/wiki/test-data/) 更改的元素。
-- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [网络驱动程序](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
+- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
 
   ```
   JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -486,7 +486,7 @@ order: 0
 - **动态选择器**：工艺定位器可以根据模式或关系而不是固定属性来匹配元素。
 - **正则表达式**：在定位器中利用正则表达式将元素与动态文本或属性进行匹配。
 - **参数化**：使用参数来处理根据用户输入或[测试数据](/zh-cn/wiki/test-data/)而更改的元素。
-- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [网络驱动程序](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
+- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将与页面对象中的动态元素的交互封装起来以集中更改。
 
 #### 确保有效的测试执行自动化的策略是什么？

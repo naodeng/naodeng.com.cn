@@ -43,9 +43,9 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 ## 相关术语：
 
-- [Testing framework](/zh-cn/wiki/testing-framework/)
+- [Testing framework](/zh-cn/wiki/unit-test-framework/)
 - [Jest](/zh-cn/wiki/jest/)
-- [Chai.js](/zh-cn/wiki/chaijs/)
+- [Chai.js](/zh-cn/wiki/chai-js/)
 
 ### 另请参阅：
 
@@ -68,7 +68,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 #### 为什么 Jasmine 在 e2e 测试中被认为很重要？
 
 [jasmine](/zh-cn/wiki/jasmine/) 在**端到端 (e2e) 测试**中被认为很重要，因为它提供了专门为测试 JavaScript 应用程序而定制的**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架。它的重要性在于它能够模拟用户与 Web 应用程序的交互，从而确保整个流程从用户的角度按预期工作。
-  在 e2e 测试中，[jasmine](/zh-cn/wiki/jasmine/) 通常与 **Protractor** 等工具结合使用，该工具允许测试 Angular 应用程序，或者与 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 结合使用以测试非 Angular Web 应用程序。这种组合使测试人员能够在真实的浏览器环境中编写清晰且全面的[测试套件](/zh-cn/wiki/test-suite/)，涵盖用户故事和[用例](/zh-cn/wiki/use-case/)。
+  在 e2e 测试中，[jasmine](/zh-cn/wiki/jasmine/) 通常与 **Protractor** 等工具结合使用，该工具允许测试 Angular 应用程序，或者与 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 结合使用以测试非 Angular Web 应用程序。这种组合使测试人员能够在真实的浏览器环境中编写清晰且全面的[测试套件](/zh-cn/wiki/test-suite/)，涵盖用户故事和[用例](/zh-cn/wiki/use-case/)。
   [jasmine](/zh-cn/wiki/jasmine/) 的语法和结构使测试**可读且可维护**，这对于可能变得复杂的 e2e [测试套件](/zh-cn/wiki/test-suite/) 至关重要。该框架对**异步操作**的支持对于 e2e 测试也至关重要，在 e2e 测试中，等待页面加载、AJAX 调用和 UI 更新很常见。
   此外，[jasmine](/zh-cn/wiki/jasmine/) 的 **spies** 和 **mocks** 对于将测试与外部依赖项隔离至关重要，确保 e2e 测试重点关注用户体验而不是底层实现。这种隔离有助于识别可能影响最终用户的问题，使 [jasmine](/zh-cn/wiki/jasmine/) 成为 e2e 测试过程中不可或缺的一部分。
   通过提供一组强大的功能来模拟用户交互和验证应用程序行为，[jasmine](/zh-cn/wiki/jasmine/) 在提供高质量、用户友好的软件方面发挥着关键作用。
@@ -149,16 +149,16 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 - **[Jest](/zh-cn/wiki/jest/)**：[Jest](/zh-cn/wiki/jest/) 由 Facebook 开发，通常用于 React 应用程序。它的灵感来自[jasmine](/zh-cn/wiki/jasmine/)，但包括快照测试、内置覆盖率报告和更强大的模拟库等附加功能。 [Jest](/zh-cn/wiki/jest/) 并行运行测试，这可以导致更快的[测试执行](/zh-cn/wiki/test-execution/)。
 - **QUnit**：QUnit 是 [单元测试](/zh-cn/wiki/unit-testing/) 的强大框架，特别适合测试 jQuery 项目。与[jasmine](/zh-cn/wiki/jasmine/) 的[BDD](/zh-cn/wiki/bdd/) 风格相比，它的方法更为传统。
 - **Karma**：本身不是一个测试框架，而是一个可以与 [jasmine](/zh-cn/wiki/jasmine/)、Mocha 或 QUnit 配合使用的 [测试运行者](/zh-cn/wiki/test-runner/)。 Karma 通常用于在真实浏览器和设备上运行测试。
-- **[柏树](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具，与[jasmine](/zh-cn/wiki/jasmine/) 不同的是，它在浏览器中运行，这可以让您更轻松地在现实场景中测试 Web 应用程序。 [柏树](/zh-cn/wiki/cypress/)还提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
-- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [柏树](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具，与[jasmine](/zh-cn/wiki/jasmine/) 不同的是，它在浏览器中运行，这可以让您更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/)还提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
+- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
   [jasmine](/zh-cn/wiki/jasmine/) 的简单性和独立性使其成为那些喜欢一体化解决方案而不需要额外库的开发人员的不错选择。但是，对于更复杂的需求或特定的集成，其他框架可能更合适。
 
 - **Mocha**：另一个流行的 JavaScript 测试框架，它很灵活，需要像 Chai 这样的断言库来进行断言。 Mocha 经常与 Chai 和 Sinon 搭配用于间谍、存根和模拟。然而，[jasmine](/zh-cn/wiki/jasmine/) 具有开箱即用的这些功能。
 - **[Jest](/zh-cn/wiki/jest/)**：[Jest](/zh-cn/wiki/jest/) 由 Facebook 开发，通常用于 React 应用程序。它的灵感来自[jasmine](/zh-cn/wiki/jasmine/)，但包括快照测试、内置覆盖率报告和更强大的模拟库等附加功能。 [Jest](/zh-cn/wiki/jest/) 并行运行测试，这可以导致更快的[测试执行](/zh-cn/wiki/test-execution/)。
 - **QUnit**：QUnit 是 [单元测试](/zh-cn/wiki/unit-testing/) 的强大框架，特别适合测试 jQuery 项目。与 [jasmine](/zh-cn/wiki/jasmine/) 的 [BDD](/zh-cn/wiki/bdd/) 风格相比，它的方法更为传统。
 - **Karma**：本身不是一个测试框架，而是一个可以与 [jasmine](/zh-cn/wiki/jasmine/)、Mocha 或 QUnit 配合使用的 [测试运行者](/zh-cn/wiki/test-runner/)。 Karma 通常用于在真实浏览器和设备上运行测试。
-- **[柏树](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具与[jasmine](/zh-cn/wiki/jasmine/) 不同，它在浏览器中运行，可以更轻松地在现实场景中测试 Web 应用程序。 [柏树](/zh-cn/wiki/cypress/) 还提供了丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)。
-- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [柏树](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具与[jasmine](/zh-cn/wiki/jasmine/) 不同，它在浏览器中运行，可以更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/) 还提供了丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)。
+- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
 
 ### 安装和设置
 

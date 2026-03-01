@@ -204,8 +204,8 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的 Web 应用程序的开源框架。
 - **Appium**：用于 iOS 和 Android 平台上的移动应用程序测试。
 - **JUnit/TestNG** ：用于 Java 单元测试的框架，提供注释和断言。
-- **[柏树](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的端到端测试框架。
-- **机器人框架**：用于验收测试的关键字驱动的测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的端到端测试框架。
+- **Robot Framework**：用于验收测试的关键字驱动的测试自动化框架。
 - **SpecFlow/Cucumber** ：支持行为驱动开发（BDD）的工具，使用 Gherkin 语言进行测试用例定义。
   执行通常涉及：
 
@@ -219,8 +219,8 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的 Web 应用程序的开源框架。
 - **Appium**：用于 iOS 和 Android 平台上的移动应用程序测试。
 - **JUnit/TestNG** ：用于 Java 单元测试的框架，提供注释和断言。
-- **[柏树](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的端到端测试框架。
-- **机器人框架**：用于验收测试的关键字驱动的测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的端到端测试框架。
+- **Robot Framework**：用于验收测试的关键字驱动的测试自动化框架。
 - **SpecFlow/Cucumber** ：支持行为驱动开发（BDD）的工具，使用 Gherkin 语言进行测试用例定义。
 1. **初始化[测试环境](/zh-cn/wiki/test-environment/)**：设置数据库、服务器和其他依赖项。
 2. **运行测试**：使用命令行界面（CLI）或集成开发环境（IDE）插件。

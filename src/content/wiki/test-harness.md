@@ -246,15 +246,15 @@ order: 0
 - **谷歌测试**
     对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
-- **[柏树](/zh-cn/wiki/cypress/)**
+- **[Cypress](/zh-cn/wiki/cypress/)**
     和
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     用于端到端 Web 应用程序测试，Cypress 提供了一种更现代的一体化解决方案，而 Selenium 则成为浏览器自动化的行业标准。
 
 - **阿皮姆**
     用于移动应用程序测试，通过类似 Selenium 的 API 支持 iOS 和 Android 平台。
 
-- **机器人框架**
+- **Robot Framework**
     用于验收测试，它使用关键字驱动的方法来使测试可读且易于创建。
   这些工具通常使用 Jenkins、GitLab CI 或 GitHub Actions 等工具与 **CI/CD 管道** 集成，以在代码提交时或计划构建期间自动执行测试。它们还可以与 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**（例如 JaCoCo 或 Istanbul）结合使用，以评估测试的有效性。
 
@@ -280,15 +280,15 @@ order: 0
 - **谷歌测试**
     对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
-- **[柏树](/zh-cn/wiki/cypress/)**
+- **[Cypress](/zh-cn/wiki/cypress/)**
     和
-    **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+    **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     用于端到端 Web 应用程序测试，Cypress 提供了一种更现代的一体化解决方案，而 Selenium 则成为浏览器自动化的行业标准。
 
 - **阿皮姆**
     用于移动应用程序测试，通过类似 Selenium 的 API 支持 iOS 和 Android 平台。
 
-- **机器人框架**
+- **Robot Framework**
     用于验收测试，它使用关键字驱动的方法来使测试可读且易于创建。
 
 ### 设计与实现
@@ -493,10 +493,10 @@ order: 0
 - **谷歌测试**
     对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
-- **机器人框架**
+- **Robot Framework**
     用于验收测试，这是关键字驱动的且易于扩展。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。
   与构建工具和持续集成 (CI) 系统（例如 **Jenkins**、**Travis CI** 和 **CircleCI**）集成通常可以自动执行 [测试工具](/zh-cn/wiki/test-harness/) 作为开发管道的一部分。
 
@@ -541,10 +541,10 @@ order: 0
 - **谷歌测试**
     对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
-- **机器人框架**
+- **Robot Framework**
     用于验收测试，这是关键字驱动的且易于扩展。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)**
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
     用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。
 
 #### 不同的测试工具如何比较？

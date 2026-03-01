@@ -144,8 +144,8 @@ order: 0
 
 [前端测试](/zh-cn/wiki/front-end-testing/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源自动化工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，可实现快速、简单且可靠的测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源自动化工具。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，可实现快速、简单且可靠的测试。
 - **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium，通常用于自动化测试和抓取。
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持多页面场景和浏览器上下文。
 - **Mocha**：一个功能丰富的 JavaScript 测试框架，在 Node.js 和浏览器中运行，使异步测试变得简单。
@@ -157,8 +157,8 @@ order: 0
 - **WebDriverIO** ：Selenium 的 W3C WebDriver API 的自定义实现，旨在更加灵活和用户友好。
   这些工具提供各种功能，可以根据项目的具体需求进行选择，例如[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)、并行执行或与持续集成管道集成。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源自动化工具。
-- **[柏树](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，可实现快速、简单且可靠的测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源自动化工具。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，可实现快速、简单且可靠的测试。
 - **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium，通常用于自动化测试和抓取。
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持多页面场景和浏览器上下文。
 - **Mocha**：一个功能丰富的 JavaScript 测试框架，在 Node.js 和浏览器中运行，使异步测试变得简单。
@@ -202,8 +202,8 @@ order: 0
 
 将[selenium](/zh-cn/wiki/selenium/) 用于[前端测试](/zh-cn/wiki/front-end-testing/) 涉及几个步骤：
 
-1. **设置您的环境**，为您选择的浏览器下载必要的 [网络驱动程序](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
-2. **在测试代码中实例化一个[网络驱动程序](/zh-cn/wiki/webdriver/)**对象来控制浏览器。例如，对于 Chrome：
+1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
+2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)**对象来控制浏览器。例如，对于 Chrome：
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -242,8 +242,8 @@ order: 0
     ```
 请记住使用 JUnit 或 TestNG 等测试框架构建测试，以便更好地管理和报告。通过将页面信息封装在 [测试脚本](/zh-cn/wiki/test-script/) 之外，实现可维护代码的 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)。使用显式等待来处理动态内容和异步操作。
 
-1. **设置您的环境**，为您选择的浏览器下载必要的 [网络驱动程序](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
-2. **在测试代码中实例化一个[网络驱动程序](/zh-cn/wiki/webdriver/)** 对象来控制浏览器。例如，对于 Chrome：
+1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
+2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)** 对象来控制浏览器。例如，对于 Chrome：
 
     ```
     WebDriver driver = new ChromeDriver();
@@ -589,7 +589,7 @@ order: 0
 
 要处理跨不同浏览器和设备的测试，请实施 **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** 和 **[响应式设计](/zh-cn/wiki/responsive-design/) 测试** 策略的组合：
 
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
 
     ```
     // Example using Selenium WebDriver to initiate a browser instance
@@ -599,7 +599,7 @@ order: 0
     driver.quit();
     ```
 
-- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[柏树](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
+- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[Cypress](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
 
     ```
     // Example of a media query in CSS
@@ -615,7 +615,7 @@ order: 0
 - **持续集成 (CI)**：将您的测试集成到 CI 管道中，以确保它们定期运行，尽早且经常发现问题。
   请记住保持您的[测试用例](/zh-cn/wiki/test-case/) **模块化**和**可重用**，以便轻松调整以适应不同的环境，并始终验证您的自动化工具是否与最新的浏览器和设备更新兼容。
 
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
 
     ```
     // Example using Selenium WebDriver to initiate a browser instance
@@ -625,7 +625,7 @@ order: 0
     driver.quit();
     ```
 
-- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[柏树](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
+- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[Cypress](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
 
     ```
     // Example of a media query in CSS
@@ -646,14 +646,14 @@ order: 0
 
 [前端测试](/zh-cn/wiki/front-end-testing/) 上下文中的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 是指对应用程序从开始到结束的集成工作流程进行验证。它模拟真实的用户场景，确保系统从用户界面到数据层和网络交互都按预期运行。此类测试涵盖整个应用程序环境，包括其与其他系统、[databases](/zh-cn/wiki/database/) 和服务的接口。
   与专注于特定组件或交互的单元或集成测试不同，端到端测试与技术堆栈的所有其他部分一起评估前端。例如，在测试 Web 应用程序时，端到端测试将涉及浏览器中的用户操作、服务器上的数据处理以及流回前端的后续响应。
-  自动化工程师通常在前端场景中使用 [柏树](/zh-cn/wiki/cypress/)、Protractor 或 Nightwatch.js 等工具来处理[端到端测试](/zh-cn/wiki/end-to-end-testing/)。这些工具允许创建自动化[测试脚本](/zh-cn/wiki/test-script/)，模仿用户与应用程序的交互，例如登录、浏览页面、填写表单和验证结果。
+  自动化工程师通常在前端场景中使用 [Cypress](/zh-cn/wiki/cypress/)、Protractor 或 Nightwatch.js 等工具来处理[端到端测试](/zh-cn/wiki/end-to-end-testing/)。这些工具允许创建自动化[测试脚本](/zh-cn/wiki/test-script/)，模仿用户与应用程序的交互，例如登录、浏览页面、填写表单和验证结果。
   端到端测试对于识别在单元或[集成测试](/zh-cn/wiki/integration-testing/) 阶段可能不明显的系统范围问题至关重要。它们通常在小规模测试通过后执行，在软件发布到生产环境之前提供最终检查。
 
 #### 前端测试如何融入 DevOps 模型？
 
 **DevOps 模型**中的 [前端测试](/zh-cn/wiki/front-end-testing/) 是实现持续集成 (CI) 和持续交付 (CD) 不可或缺的一部分。它确保自动测试每个代码提交，并提供有关更改影响的即时反馈。这符合 **自动化**、**协作**和**快速 [迭代](/zh-cn/wiki/iteration/)** 的 DevOps 原则。
   在 DevOps 中，[前端测试](/zh-cn/wiki/front-end-testing/) 通常通过 **CI/CD 管道** 进行编排。自动 [测试套件](/zh-cn/wiki/test-suite/) 在代码提交或拉取请求时触发。 Jenkins、GitLab CI 或 GitHub Actions 等工具配置为运行前端测试，包括单元测试、集成测试和端到端测试。
-  **[测试自动化](/zh-cn/wiki/test-automation/) 框架**（例如 [selenium](/zh-cn/wiki/selenium/) 或 [柏树](/zh-cn/wiki/cypress/)）已集成到这些管道中。他们在各种环境和浏览器中执行测试，确保应用程序在不同平台上的行为符合预期。
+  **[测试自动化](/zh-cn/wiki/test-automation/) 框架**（例如 [selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/)）已集成到这些管道中。他们在各种环境和浏览器中执行测试，确保应用程序在不同平台上的行为符合预期。
   **容器化**技术（例如 Docker）可用于创建一致的测试环境，减少“它在我的机器上运行”综合症。在容器中运行的测试是隔离的且可重复的，这对于可靠的[前端测试](/zh-cn/wiki/front-end-testing/) 至关重要。
   **基础设施即代码 (IaC)** 工具，例如 Terraform 或 AWS CloudFormation，可以按需配置测试环境，进一步提高 DevOps 中 [前端测试](/zh-cn/wiki/front-end-testing/) 的效率。
   为了保持高速，通常采用**并行测试**，同时执行多个[测试场景](/zh-cn/wiki/test-scenario/)，从而减少反馈循环时间。
@@ -666,7 +666,7 @@ order: 0
   此外，自动化通过提供有关代码更改影响的快速反馈来支持**持续集成 (CI) 和持续交付 (CD)** 管道。每次提交都可以触发自动化测试，使团队能够在开发周期的早期检测并修复问题。
   自动化还允许在前端实现**[非功能测试](/zh-cn/wiki/non-functional-testing/)**，例如性能和[负载测试](/zh-cn/wiki/load-testing/)，这对于手动执行来说是困难且耗时的。
   此外，自动化测试可以设计为捕获测试会话的**屏幕截图或视频**，这对于调试和理解导致失败的操作顺序非常宝贵。
-  以下是使用 JavaScript 在 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具中进行简单自动化测试的示例：
+  以下是使用 JavaScript 在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具中进行简单自动化测试的示例：
 
   ```
   const { Builder, By, Key, until } = require('selenium-webdriver');
@@ -687,7 +687,7 @@ order: 0
 
 在[前端测试](/zh-cn/wiki/front-end-testing/) 中测试动态内容需要能够适应根据用户交互或异步更新而变化的内容的策略。以下是一些方法：
 
-- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
+- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
 
     ```
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -708,7 +708,7 @@ order: 0
 - **事件侦听器**：在测试代码中附加事件侦听器，以等待指示动态内容已加载的特定事件。
   请记住，保持测试对微小更改具有**弹性**，并**关注**动态内容的行为而不是实现细节。
 
-- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
+- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
 
     ```
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -730,7 +730,7 @@ order: 0
 
 #### A/B 测试在前端测试中的作用是什么？
 
-[A/B testing](/zh-cn/wiki/a-b-testing/) 也称为对比测试，是 [前端测试](/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](/zh-cn/wiki/a-b-testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](/zh-cn/wiki/bug/)。
-  在[A/B testing](/zh-cn/wiki/a-b-testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
-  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](/zh-cn/wiki/a-b-testing/) 的角色对于与UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](/zh-cn/wiki/test-scenario/) 中测试的变化。
+[A/B testing](/zh-cn/wiki/A-B-Testing/) 也称为对比测试，是 [前端测试](/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
+  在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](/zh-cn/wiki/A-B-Testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](/zh-cn/wiki/bug/)。
+  在[A/B testing](/zh-cn/wiki/A-B-Testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
+  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](/zh-cn/wiki/A-B-Testing/) 的角色对于与UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](/zh-cn/wiki/test-scenario/) 中测试的变化。

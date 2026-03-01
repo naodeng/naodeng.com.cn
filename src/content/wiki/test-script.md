@@ -245,7 +245,7 @@ order: 0
     DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability("platformName", "iOS");
     ```
-- **[柏树](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
+- **[Cypress](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
 
     ```
     cy.visit('https://example.com');
@@ -275,7 +275,7 @@ order: 0
         pm.response.to.have.status(200);
     });
     ```
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
     ```
     *** Test Cases ***
@@ -303,7 +303,7 @@ order: 0
     DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability("platformName", "iOS");
     ```
-- **[柏树](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
+- **[Cypress](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
 
     ```
     cy.visit('https://example.com');
@@ -333,7 +333,7 @@ order: 0
         pm.response.to.have.status(200);
     });
     ```
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
     ```
     *** Test Cases ***

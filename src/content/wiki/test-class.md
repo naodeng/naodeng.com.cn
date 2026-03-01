@@ -413,11 +413,11 @@ order: 0
 - **RSpec**：Ruby 的行为驱动开发 (BDD) 框架，允许为代码编写人类可读的规范。
 - **Mocha**：一个在 Node.js 和浏览器中运行的灵活的 JavaScript 测试框架，使异步测试变得简单而有趣。
 - **[Jest](/zh-cn/wiki/jest/)** ：一个令人愉快的 JavaScript 测试框架，注重简单性，通常用于测试 React 应用程序。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于创建跨不同浏览器执行 Web 应用程序端到端测试的测试类。
-- **[柏树](/zh-cn/wiki/cypress/)** ：现代 Web 自动化测试框架，旨在简化端到端测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于创建跨不同浏览器执行 Web 应用程序端到端测试的测试类。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：现代 Web 自动化测试框架，旨在简化端到端测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Cucumber** ：支持行为驱动开发（BDD），允许以非程序员可以阅读的语言创建测试类。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。
   这些框架提供注释、断言和运行程序，以促进测试类的创建、组织和执行。它们通常与 **Jenkins**、**Travis CI** 或 **GitLab CI** 等 CI/CD 工具集成，以在软件开发管道中实现自动化[测试执行](/zh-cn/wiki/test-execution/)。
 
 - **JUnit**：一种流行的 Java 单元测试框架，通常与 Eclipse 或 IntelliJ IDEA 等 IDE 结合使用。
@@ -427,11 +427,11 @@ order: 0
 - **RSpec**：Ruby 的行为驱动开发 (BDD) 框架，允许为代码编写人类可读的规范。
 - **Mocha**：一个在 Node.js 和浏览器中运行的灵活的 JavaScript 测试框架，使异步测试变得简单而有趣。
 - **[Jest](/zh-cn/wiki/jest/)** ：一个令人愉快的 JavaScript 测试框架，注重简单性，通常用于测试 React 应用程序。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：用于创建跨不同浏览器执行 Web 应用程序端到端测试的测试类。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个现代的 Web 自动化测试框架，旨在简化端到端测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于创建跨不同浏览器执行 Web 应用程序端到端测试的测试类。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的 Web 自动化测试框架，旨在简化端到端测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Cucumber** ：支持行为驱动开发（BDD），允许以非程序员可以阅读的语言创建测试类。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。
 
 #### 测试类如何在 JUnit 或 TestNG 等测试框架中工作？
 

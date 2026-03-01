@@ -321,7 +321,7 @@ order: 0
 - **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 可用于性能测试并支持各种协议，使其适合互操作性测试。
 - **Wireshark**：一种网络协议分析器，可捕获和显示网络流量，对于解决互操作性问题很有用。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动化跨浏览器测试以确保互操作性。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动化跨浏览器测试以确保互操作性。
 - **TestComplete** ：提供桌面、移动和 Web 应用程序的功能测试功能，包括跨平台测试。
 - **Rational Integration Tester (IBM)**：专为复杂系统的持续集成和测试而设计，支持多种协议和数据格式。
 - **InterSystems IRIS**：提供健康信息系统互操作性测试工具，重点关注 HL7 标准。
@@ -333,7 +333,7 @@ order: 0
 - **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 可用于性能测试并支持各种协议，使其适合互操作性测试。
 - **Wireshark**：一种网络协议分析器，可捕获和显示网络流量，对于解决互操作性问题很有用。
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动执行跨浏览器测试以确保互操作性。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动执行跨浏览器测试以确保互操作性。
 - **TestComplete** ：提供桌面、移动和 Web 应用程序的功能测试功能，包括跨平台测试。
 - **Rational Integration Tester (IBM)**：专为复杂系统的持续集成和测试而设计，支持多种协议和数据格式。
 - **InterSystems IRIS**：提供健康信息系统互操作性测试工具，重点关注 HL7 标准。

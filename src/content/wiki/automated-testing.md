@@ -194,7 +194,7 @@ order: 0
   }
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个在浏览器中运行的基于 JavaScript 的端到端测试框架，可以对浏览器中运行的任何内容进行快速、简单且可靠的测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个在浏览器中运行的基于 JavaScript 的端到端测试框架，可以对浏览器中运行的任何内容进行快速、简单且可靠的测试。
 
   ```
   describe('My First Test', () => {
@@ -204,7 +204,7 @@ order: 0
   })
   ```
 
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 
   ```
   *** Test Cases ***
@@ -245,8 +245,8 @@ order: 0
     和
     **TestNG**：Java 中的单元测试框架，提供注释和断言来帮助构建和运行测试。
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：一个在浏览器中运行的基于 JavaScript 的端到端测试框架，可以对浏览器中运行的任何内容进行快速、简单且可靠的测试。
-- **机器人框架**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个在浏览器中运行的基于 JavaScript 的端到端测试框架，可以对浏览器中运行的任何内容进行快速、简单且可靠的测试。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应、创建自动化测试以及与 CI/CD 管道集成。
 - **Cucumber** ：支持行为驱动开发（BDD），允许用简单的语言规范应用程序行为。
 
@@ -273,7 +273,7 @@ order: 0
   Sys.Browser("*").Page("http://www.example.com").Link("Login").Click();
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。它在与应用程序相同的运行循环中运行测试，提供实时反馈和更快的测试执行。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。它在与应用程序相同的运行循环中运行测试，提供实时反馈和更快的测试执行。
 
   ```
   cy.visit('http://www.example.com');
@@ -294,7 +294,7 @@ order: 0
   driver.findElement(By.id("com.example:id/login")).click();
   ```
 
-- **机器人框架**：使用表格测试数据语法的关键字驱动的测试自动化框架。对于不熟悉编程的人来说很容易学习，并与 Selenium 集成进行 Web 测试。
+- **Robot Framework**：使用表格测试数据语法的关键字驱动的测试自动化框架。对于不熟悉编程的人来说很容易学习，并与 Selenium 集成进行 Web 测试。
 
   ```
   *** Test Cases ***
@@ -307,10 +307,10 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源工具。它支持多种编程语言并与各种框架集成。
 - **QTP/UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))** ：Micro Focus 的一款商业工具，用于功能和回归测试，重点关注桌面和 Web 应用程序。它使用 VBScript 并以其录制和播放功能而闻名。
 - **TestComplete**：另一个支持桌面、移动和 Web 应用程序的商业工具。它提供基于脚本和关键字驱动的测试，并支持各种脚本语言。
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。它在与应用程序相同的运行循环中运行测试，提供实时反馈和更快的测试执行。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。它在与应用程序相同的运行循环中运行测试，提供实时反馈和更快的测试执行。
 - **[Jest](/zh-cn/wiki/jest/)** ：一个 JavaScript 测试框架，注重简单性，支持单元和集成测试。它与 React 和其他现代 JavaScript 库配合良好。
 - **Appium**：用于移动应用程序自动化测试的开源工具。它支持本机、混合和移动 Web 应用程序，并可与任何测试框架配合使用。
-- **机器人框架**：使用表格测试数据语法的关键字驱动的测试自动化框架。对于不熟悉编程的人来说很容易学习，并与 Selenium 集成进行 Web 测试。
+- **Robot Framework**：使用表格测试数据语法的关键字驱动的测试自动化框架。对于不熟悉编程的人来说很容易学习，并与 Selenium 集成进行 Web 测试。
 
 #### 如何为特定测试任务选择正确的工具？
 

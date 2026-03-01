@@ -344,7 +344,7 @@ order: 0
   }
   ```
 
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
 
   ```
   describe('My First Test', () => {
@@ -354,7 +354,7 @@ order: 0
   });
   ```
 
-- **机器人框架**：用于验收级别测试的关键字驱动的测试自动化框架。
+- **Robot Framework**：用于验收级别测试的关键字驱动的测试自动化框架。
 
   ```
   *** Test Cases ***
@@ -386,8 +386,8 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
 - **Appium**：扩展 Selenium 的框架以与移动应用程序交互。
 - **JUnit/TestNG**：Java 中的单元测试框架，为测试用例提供注释和断言。
-- **[柏树](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
-- **机器人框架**：用于验收级别测试的关键字驱动的测试自动化框架。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
+- **Robot Framework**：用于验收级别测试的关键字驱动的测试自动化框架。
 - **Cucumber** ：支持行为驱动开发（BDD），允许用简单的语言指定测试规范。
 - **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，具有用户友好的界面和脚本功能。
 - **LoadRunner/性能中心**：用于性能测试，模拟数千个用户以了解负载下的行为。

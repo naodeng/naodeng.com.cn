@@ -318,7 +318,7 @@ order: 0
 - **HP UFT（以前称为 QTP）**：一种流行的商业工具，用于功能和回归测试，具有丰富的功能集。
 - **TestComplete**：提供全面的测试解决方案，支持桌面、移动和 Web 应用程序。
 - **Katalon Studio**：一款用于 Web、API、移动和桌面测试的多功能工具，可与其他 CI/CD 工具集成。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，可为 Web 应用程序提供快速、可靠的测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，可为 Web 应用程序提供快速、可靠的测试。
 - **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别在 Java 和 .NET 环境中进行单元测试的框架，也可用于某些功能测试。
 - **SpecFlow**：使用 Gherkin 语法弥合业务和技术语言之间的差距，促进行为驱动开发 (BDD)。
 - **Cucumber** ：支持 BDD，强调最终用户体验，使用简单的语言来定义测试。
@@ -332,7 +332,7 @@ order: 0
 - **HP UFT（以前称为 QTP）**：一种流行的商业工具，用于功能和回归测试，具有丰富的功能集。
 - **TestComplete**：提供全面的测试解决方案，支持桌面、移动和 Web 应用程序。
 - **Katalon Studio**：一款用于 Web、API、移动和桌面测试的多功能工具，可与其他 CI/CD 工具集成。
-- **[柏树](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，可为 Web 应用程序提供快速、可靠的测试。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，可为 Web 应用程序提供快速、可靠的测试。
 - **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别在 Java 和 .NET 环境中进行单元测试的框架，也可用于某些功能测试。
 - **SpecFlow**：使用 Gherkin 语法弥合业务和技术语言之间的差距，促进行为驱动开发 (BDD)。
 - **Cucumber** ：支持 BDD，强调最终用户体验，使用简单的语言来定义测试。

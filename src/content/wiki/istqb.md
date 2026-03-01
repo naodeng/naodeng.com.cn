@@ -36,7 +36,7 @@ order: 0
 
 ## 相关术语：
 
-- [International Software Testing Qualifications Board](/zh-cn/wiki/international-software-testing-qualifications-board/)
+- [International Software Testing Qualifications Board](/zh-cn/wiki/istqb/)
 
 ## 关于 ISTQB 有疑问吗？
 

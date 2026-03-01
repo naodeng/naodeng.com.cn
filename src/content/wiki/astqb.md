@@ -41,7 +41,7 @@ order: 0
 
 ## 相关术语：
 
-- [American Software Testing Qualifications Board](/zh-cn/wiki/american-software-testing-qualifications-board/)
+- [American Software Testing Qualifications Board](/zh-cn/wiki/astqb/)
 
 ### 另请参阅：
 

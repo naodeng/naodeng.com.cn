@@ -263,7 +263,7 @@ order: 0
 - **LoadRunner**：来自 Micro Focus 的广泛使用的 [性能测试](/zh-cn/wiki/performance-testing/) 工具，可以模拟数千个用户并分析负载下的系统行为，对于 [稳健性测试](/zh-cn/wiki/robustness-testing/) 很有用。
 - **Appium**：虽然主要是一个移动 [用户界面测试](/zh-cn/wiki/ui-testing/) 工具，但它可用于通过自动化可能导致系统不稳定的用户交互来测试移动应用程序的稳健性。
 - **[selenium](/zh-cn/wiki/selenium/)**：虽然它是一个自动化 Web 浏览器的工具，但可以使用 [selenium](/zh-cn/wiki/selenium/) 编写稳健性测试脚本，以确保 Web 应用程序能够优雅地处理意外的用户行为。
-- **机器人框架**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，可以使用库进行扩展以执行 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
+- **Robot Framework**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，可以使用库进行扩展以执行 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
 - **K6**：一种现代的 [负载测试](/zh-cn/wiki/load-testing/) 工具，它以开发人员为中心，可通过在 JavaScript 中编写复杂的用户场景脚本来用于 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
   这些工具可以集成到 CI/CD 管道中以自动化[稳健性测试](/zh-cn/wiki/robustness-testing/)，确保持续评估软件弹性。
 
@@ -274,7 +274,7 @@ order: 0
 - **LoadRunner**：来自 Micro Focus 的广泛使用的 [性能测试](/zh-cn/wiki/performance-testing/) 工具，可以模拟数千个用户并分析负载下的系统行为，对 [稳健性测试](/zh-cn/wiki/robustness-testing/) 非常有用。
 - **Appium**：虽然主要是一个移动 [用户界面测试](/zh-cn/wiki/ui-testing/) 工具，但它可用于通过自动化可能导致系统不稳定的用户交互来测试移动应用程序的稳健性。
 - **[selenium](/zh-cn/wiki/selenium/)**：虽然它是一个自动化 Web 浏览器的工具，但可以使用 [selenium](/zh-cn/wiki/selenium/) 编写稳健性测试脚本，以确保 Web 应用程序能够优雅地处理意外的用户行为。
-- **机器人框架**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，可以使用库进行扩展以执行 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
+- **Robot Framework**：一个开源、关键字驱动的 [测试自动化](/zh-cn/wiki/test-automation/) 框架，可以使用库进行扩展以执行 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
 - **K6**：一种现代的 [负载测试](/zh-cn/wiki/load-testing/) 工具，它以开发人员为中心，可通过在 JavaScript 中编写复杂的用户场景脚本来用于 [稳健性测试](/zh-cn/wiki/robustness-testing/)。
 
 #### 自动化如何应用于稳健性测试？

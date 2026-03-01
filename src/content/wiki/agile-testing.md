@@ -42,7 +42,7 @@ order: 0
 
 ## 相关术语：
 
-- [Bug tracking (e.g., Jira)](/zh-cn/wiki/bug-tracking-eg-jira/)
+- [Bug tracking (e.g., Jira)](/zh-cn/wiki/jira/)
 
 ## 有关缺陷管理的问题吗？
 

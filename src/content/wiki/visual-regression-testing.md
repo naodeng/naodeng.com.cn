@@ -235,14 +235,14 @@ order: 0
 
 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：与诸如
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：与诸如
     **WebDriverIO**
     和
     **量角器**
     捕获屏幕截图进行比较。
 
 - **Puppeteer**：一个无头 Chrome Node API，可用于截取屏幕截图。
-- **[柏树](/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
 - **Applitools Eyes**：使用人工智能来比较视觉元素并检测差异。
 - **Percy**：与 CI 工具和版本控制系统集成以自动化视觉审查。
 - **BackstopJS**：Web 应用程序的开源工具，提供屏幕截图比较。
@@ -252,14 +252,14 @@ order: 0
 - **Gemini**：用于回归测试网页视觉外观的实用程序。
   每个工具都有自己的**[API](/zh-cn/wiki/api/)**、**集成功能**和**比较算法**。有些提供**基于云的存储**和**协作功能**，而其他则更适合**本地开发环境**。选择工具时，请考虑诸如**易于集成**、**可扩展性**、**报告功能**和**成本**等因素。自动化视觉回归测试通常涉及捕获基线图像、运行测试以捕获新的屏幕截图以及将它们与基线进行比较。结果解释可以是手动的或自动的，具体取决于工具的功能。
 
-- **[selenium](/zh-cn/wiki/selenium/) [网络驱动程序](/zh-cn/wiki/webdriver/)** ：与框架集成，例如
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：与框架集成，例如
     **WebDriverIO**
     和
     **量角器**
     捕获屏幕截图进行比较。
 
 - **Puppeteer**：一个无头 Chrome Node API，可用于截取屏幕截图。
-- **[柏树](/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
 - **Applitools Eyes**：使用人工智能来比较视觉元素并检测差异。
 - **Percy**：与 CI 工具和版本控制系统集成以自动化视觉审查。
 - **BackstopJS**：Web 应用程序的开源工具，提供屏幕截图比较。
@@ -274,7 +274,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [setup](/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量级，但需要额外的视觉回归库，例如`jest-image-snapshot`。
-- **[柏树](/zh-cn/wiki/cypress/)**：通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
+- **[Cypress](/zh-cn/wiki/cypress/)**：通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
 - **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
 - **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[setup](/zh-cn/wiki/setup/)。
@@ -284,7 +284,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [setup](/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量，但需要额外的视觉回归库，例如`jest-image-snapshot`。
-- **[柏树](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
 - **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
 - **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[setup](/zh-cn/wiki/setup/)。
@@ -346,7 +346,7 @@ order: 0
 要自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，请按照下列步骤操作：
 
 1. **选择一个符合您的技术堆栈和测试需求的工具**。 Percy、Applitools 或 BackstopJS 等工具是流行的选择。
-2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
+2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
 3. **捕获要测试的 UI 元素或页面的基线图像**。这是通过运行 [测试套件](/zh-cn/wiki/test-suite/) 并保存屏幕截图来完成的。
 4. **编写 [测试脚本](/zh-cn/wiki/test-script/)** 来浏览您的应用程序并在关键点捕获屏幕截图。使用您选择的工具的[API](/zh-cn/wiki/api/) 来截取这些屏幕截图。
 5. **在一致的环境中运行测试**，以避免由于不同的浏览器或屏幕分辨率而导致的差异。
@@ -367,7 +367,7 @@ order: 0
 自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 需要仔细[setup](/zh-cn/wiki/setup/) 以确保一致性和可靠性，但一旦到位，它可以显着减少检测 UI 回归所需的工作量。
 
 1. **选择一个符合您的技术堆栈和测试需求的工具**。 Percy、Applitools 或 BackstopJS 等工具是流行的选择。
-2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[柏树](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
+2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
 3. **捕获要测试的 UI 元素或页面的基线图像**。这是通过运行 [测试套件](/zh-cn/wiki/test-suite/) 并保存屏幕截图来完成的。
 4. **编写 [测试脚本](/zh-cn/wiki/test-script/)** 来浏览您的应用程序并在关键点捕获屏幕截图。使用您选择的工具的[API](/zh-cn/wiki/api/) 来截取这些屏幕截图。
 5. **在一致的环境中运行测试**，以避免由于不同的浏览器或屏幕分辨率而导致的差异。
@@ -569,7 +569,7 @@ order: 0
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** ：将视觉检查纳入 E2E 测试中，以在完全集成的环境中验证 UI，捕获仅在类似生产的设置中可能出现的问题。
 - **[性能测试](/zh-cn/wiki/performance-testing/)** ：性能测试后，运行视觉回归测试以检测性能优化可能导致的任何 UI 降级。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：与视觉回归相结合，确保视觉变化不会对辅助功能产生负面影响。
-  使用 [selenium](/zh-cn/wiki/selenium/) 或 [柏树](/zh-cn/wiki/cypress/) 等工具在 CI/CD 管道中实现此集成以进行功能测试，使用 Percy 或 Applitools 进行视觉回归。使用代码块定义在其他测试类型后触发可视化测试的钩子或侦听器：
+  使用 [selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/) 等工具在 CI/CD 管道中实现此集成以进行功能测试，使用 Percy 或 Applitools 进行视觉回归。使用代码块定义在其他测试类型后触发可视化测试的钩子或侦听器：
 
   ```
   afterEach(() => {

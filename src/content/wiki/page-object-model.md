@@ -32,7 +32,7 @@ order: 0
 
 - [网络自动化](/zh-cn/wiki/web-automation/)
 - [selenium IDE](/zh-cn/wiki/selenium-ide/)
-- [网络驱动程序](/zh-cn/wiki/webdriver/)
+- [WebDriver](/zh-cn/wiki/webdriver/)
 
 ## 有关页面对象模型的问题吗？
 
@@ -64,7 +64,7 @@ order: 0
   }
   ```
 在此模型中，测试与页面对象交互，而不是直接与 Web 元素交互。这种抽象减少了代码重复并改进了[可维护性](/zh-cn/wiki/maintainability/)。当页面更改时，仅需要更新页面对象，而不需要更新与其交互的测试。
-  要与页面对象交互，测试将使用对 [网络驱动程序](/zh-cn/wiki/webdriver/) 的引用来实例化页面对象，并使用其方法来执行操作：
+  要与页面对象交互，测试将使用对 [WebDriver](/zh-cn/wiki/webdriver/) 的引用来实例化页面对象，并使用其方法来执行操作：
 
   ```
   LoginPage loginPage = new LoginPage(driver);
@@ -171,7 +171,7 @@ order: 0
     private By loginButton = By.id("login");
     ```
 
-- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[网络驱动程序](/zh-cn/wiki/webdriver/)** 作为参数。
+- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](/zh-cn/wiki/webdriver/)** 作为参数。
 
     ```
     public LoginPage(WebDriver driver) {
@@ -221,7 +221,7 @@ order: 0
     private By loginButton = By.id("login");
     ```
 
-- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[网络驱动程序](/zh-cn/wiki/webdriver/)** 作为参数。
+- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](/zh-cn/wiki/webdriver/)** 作为参数。
 
     ```
     public LoginPage(WebDriver driver) {
@@ -386,7 +386,7 @@ order: 0
       }
   }
   ```
-通过将 POM 与 Factory 相结合，您可以在运行时动态创建页面对象，这在处理共享相似功能的多个页面时特别有用。 Singleton与POM一起使用时，可以确保[网络驱动程序](/zh-cn/wiki/webdriver/)实例被有效地重用，从而减少资源消耗并加快[测试执行](/zh-cn/wiki/test-execution/)的速度。这些模式共同构建了一个更健壮、可维护和可扩展的 [测试自动化](/zh-cn/wiki/test-automation/) 框架。
+通过将 POM 与 Factory 相结合，您可以在运行时动态创建页面对象，这在处理共享相似功能的多个页面时特别有用。 Singleton与POM一起使用时，可以确保[WebDriver](/zh-cn/wiki/webdriver/)实例被有效地重用，从而减少资源消耗并加快[测试执行](/zh-cn/wiki/test-execution/)的速度。这些模式共同构建了一个更健壮、可维护和可扩展的 [测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
 #### 如何在页面对象模型中处理页面导航？
 
@@ -454,7 +454,7 @@ order: 0
 #### 如何使用页面对象模型处理多个窗口或框架？
 
 处理 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 中的多个窗口或框架涉及为每个窗口或框架创建单独的页面对象。这封装了每个上下文中的交互，维护了 POM 的模块化和可重用性原则。
-  对于**窗口之间的切换**，可以使用[网络驱动程序](/zh-cn/wiki/webdriver/) 的`switchTo().window()` 方法。在与窗口中的元素交互之前，存储窗口句柄并切换到所需的窗口。
+  对于**窗口之间的切换**，可以使用[WebDriver](/zh-cn/wiki/webdriver/) 的`switchTo().window()` 方法。在与窗口中的元素交互之前，存储窗口句柄并切换到所需的窗口。
 
   ```
   Set<String> windowHandles = driver.getWindowHandles();
@@ -465,7 +465,7 @@ order: 0
       }
   }
   ```
-对于**处理框架或 iframe**，请使用 [网络驱动程序](/zh-cn/wiki/webdriver/) 的 `switchTo().frame()` 方法。您可以按索引、名称或 WebElement 切换到框架。切换后，通过其专用的页面对象与框架的内容进行交互。
+对于**处理框架或 iframe**，请使用 [WebDriver](/zh-cn/wiki/webdriver/) 的 `switchTo().frame()` 方法。您可以按索引、名称或 WebElement 切换到框架。切换后，通过其专用的页面对象与框架的内容进行交互。
 
   ```
   driver.switchTo().frame("frameName");

@@ -222,7 +222,7 @@ order: 0
 - **Tricentis Tosca**：一个持续测试平台，可加速测试以跟上敏捷和 DevOps 的步伐。
 - **SoapUI**：用于面向服务的架构 (SOA) 和表述性状态传输 (REST) 的开源 Web 服务测试应用程序。
 - **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，[邮递员](/zh-cn/wiki/postman/) 可用于向 Web 服务器发送请求并获取 [系统测试](/zh-cn/wiki/system-testing/) 所需的响应。
-- **机器人框架**：一个开源、关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/) 框架，用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD)。
+- **Robot Framework**：一个开源、关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/) 框架，用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD)。
   这些工具通常集成到持续集成/持续部署 (CI/CD) 管道中，以确保 [系统测试](/zh-cn/wiki/system-testing/) 是软件交付过程中一致且自动化的部分。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：一种自动化网络浏览器的开源工具。它提供了一个用于以各种编程语言编写[测试脚本](/zh-cn/wiki/test-script/)的单一接口。
@@ -234,7 +234,7 @@ order: 0
 - **Tricentis Tosca**：一个持续测试平台，可加速测试以跟上敏捷和 DevOps 的步伐。
 - **SoapUI**：用于面向服务的架构 (SOA) 和表述性状态传输 (REST) 的开源 Web 服务测试应用程序。
 - **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，[邮递员](/zh-cn/wiki/postman/) 可用于向 Web 服务器发送请求并获取 [系统测试](/zh-cn/wiki/system-testing/) 所需的响应。
-- **机器人框架**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的开源、关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/) 框架。
+- **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的开源、关键字驱动的[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
 ### 挑战和最佳实践
 
