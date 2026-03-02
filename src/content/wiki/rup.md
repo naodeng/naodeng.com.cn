@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Rup ｜ Rup](#rup--rup)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 RUP 的问题吗？](#关于-rup-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -39,7 +39,7 @@ order: 0
 <!-- TOC END -->
 鲁普由 Rational（IBM 的一个部门）开发的软件开发过程分为四个阶段：业务建模、分析和设计、实现、测试和部署。
 
-## 相关术语：
+## 相关术语
 
 - [Software development methodology](/zh-cn/wiki/software-development-life-cycle/)
 - [迭代](/zh-cn/wiki/iteration/)

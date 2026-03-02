@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Selenium ｜ Selenium](#selenium--selenium)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于selenium的问题？](#关于selenium的问题)
     - [基础知识和重要性](#基础知识和重要性)
@@ -39,7 +39,7 @@ order: 0
 <!-- TOC END -->
 selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 应用程序测试环境中自动化 Web 浏览器。它为开发人员和测试人员提供了一种使用各种编程语言（例如 Java、C#、Python 和 Ruby）编写脚本来模拟用户与网页和 Web 应用程序交互的方法。
 
-## 相关术语：
+## 相关术语
 
 - [WebDriver](/zh-cn/wiki/webdriver/)
 

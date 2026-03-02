@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [能力成熟度模型集成 ｜ CMMI](#能力成熟度模型集成--cmmi)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [关于 CMMI 的问题吗？](#关于-cmmi-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 CMMI？为什么它很重要？](#什么是-cmmi为什么它很重要)
@@ -35,7 +35,7 @@ order: 0
 <!-- TOC END -->
 能力成熟度模型集成（CMMI）是工程、服务交付和管理方面最佳实践的集合。它帮助组织增强交付能力，通过持续改进确保客户满意度。
 
-## 相关术语：
+## 相关术语
 
 - [Capability Maturity Model Integration](/zh-cn/wiki/cmmi/)
 - [质量管理](/zh-cn/wiki/quality-management/)

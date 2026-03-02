@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Selenium Ide ｜ Selenium Ide](#selenium-ide--selenium-ide)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [有关 Selenium IDE 的问题吗？](#有关-selenium-ide-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 Selenium IDE？](#什么是-selenium-ide)
@@ -38,7 +38,7 @@ order: 0
 <!-- TOC END -->
 selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强您的测试环境。
 
-## 相关术语：
+## 相关术语
 
 - [WebDriver](/zh-cn/wiki/webdriver/)
 - [网络自动化](/zh-cn/wiki/web-automation/)

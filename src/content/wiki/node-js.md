@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Node Js ｜ Node Js](#node-js--node-js)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 Node.js 有疑问吗？](#关于-nodejs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -45,7 +45,7 @@ order: 0
 <!-- TOC END -->
 Node.js 是一个开源、跨平台的 JavaScript 运行时环境，允许开发人员在服务器端执行 JavaScript 代码。传统上，JavaScript 主要用于 Web 浏览器中的客户端脚本编写。 Node.js 然而，JavaScript 可以用于在浏览器之外构建可扩展的网络应用程序。基于 Chrome 的 V8 JavaScript 引擎构建， Node.js 旨在构建快速高效的 Web 应用程序，尤其是 I/O 密集型应用程序。
 
-## 相关术语：
+## 相关术语
 
 - [JavaScript runtime](/zh-cn/wiki/node-js/)
 - [Jest](/zh-cn/wiki/jest/)

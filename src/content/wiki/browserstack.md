@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Browserstack ｜ Browserstack](#browserstack--browserstack)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 BrowserStack 有疑问吗？](#关于-browserstack-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -40,7 +40,7 @@ order: 0
 <!-- TOC END -->
 browserstack是一个基于云的 Web 和移动测试平台，允许开发人员和测试人员跨多个浏览器、操作系统和真实移动设备查看其网站和应用程序并与之交互，而无需虚拟机或设备的内部实验室。它提供对各种浏览器和操作系统组合的即时访问，确保开发人员可以在现实条件下测试他们的产品。这有助于识别和解决在单个平台或浏览器上可能不明显的兼容性问题。 browserstack特别有利于确保跨浏览器和跨平台兼容性，并且它与许多流行的持续集成工具集成以简化测试过程。
 
-## 相关术语：
+## 相关术语
 
 - [Cross-Browser Testing tool](/zh-cn/wiki/cross-browser-testing/)
 

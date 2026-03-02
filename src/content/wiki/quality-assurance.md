@@ -133,10 +133,7 @@ order: 0
 
 - **[手动测试](/zh-cn/wiki/manual-testing/)**：人类测试人员在没有自动化工具的情况下手动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[探索性测试](/zh-cn/wiki/exploratory-testing/)、临时测试和[可用性测试](/zh-cn/wiki/usability-testing/)。
 - **[自动化测试](/zh-cn/wiki/automated-testing/)**：使用工具和脚本自动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[回归测试](/zh-cn/wiki/regression-testing/)。
-- $
 
-    ```
-    ```
 // JavaScript 中的简单自动化单元测试示例
   描述('计算器', () => {
   it('应该将两个数字相加', () => {
@@ -157,10 +154,7 @@ order: 0
 
 - **[手动测试](/zh-cn/wiki/manual-testing/)**：人类测试人员在没有自动化工具的情况下手动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[探索性测试](/zh-cn/wiki/exploratory-testing/)、临时测试和[可用性测试](/zh-cn/wiki/usability-testing/)。
 - **[自动化测试](/zh-cn/wiki/automated-testing/)**：使用工具和脚本自动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[回归测试](/zh-cn/wiki/regression-testing/)。
-- $
 
-    ```
-    ```
 
 #### 质量保证流程通常如何运作？
 

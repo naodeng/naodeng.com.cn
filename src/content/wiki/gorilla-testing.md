@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [大猩猩测试 ｜ Gorilla Testing](#大猩猩测试--gorilla-testing)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [有关 Gorilla 测试的问题吗？](#有关-gorilla-测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的 Gorilla 测试是什么？](#软件测试中的-gorilla-测试是什么)
@@ -34,7 +34,7 @@ order: 0
 <!-- TOC END -->
 通常由测试人员或开发人员对特定模块或功能进行密集测试。
 
-## 相关术语：
+## 相关术语
 
 - [猴子测试](/zh-cn/wiki/monkey-testing/)
 

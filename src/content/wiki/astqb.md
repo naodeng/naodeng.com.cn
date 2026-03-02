@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [美国软件测试认证委员会 ｜ ASTQB](#美国软件测试认证委员会--astqb)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 ASTQB 的问题吗？](#关于-astqb-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -39,7 +39,7 @@ order: 0
 <!-- TOC END -->
 #ASTQB 美国人软件测试资格委员会（ASTQB）是美国国际委员会软件测试资格委员会（ISTQB）。它负责“ ISTQB 美国“认证测试员”计划 ASTQB 提供和管理认证、认证培训师并批准培训材料软件测试专业人士。赚取 ISTQB 认证通过 ASTQB 确保个人符合国际公认的标准软件测试。此外， ASTQB 提升的价值和重要性软件测试作为美国软件开发和 IT 行业的一个职业。
 
-## 相关术语：
+## 相关术语
 
 - [American Software Testing Qualifications Board](/zh-cn/wiki/astqb/)
 

@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [移动应用测试 ｜ Mobile App Testing](#移动应用测试--mobile-app-testing)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [有关移动应用程序测试的问题吗？](#有关移动应用程序测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是移动应用测试？](#什么是移动应用测试)
@@ -33,7 +33,7 @@ order: 0
 <!-- TOC END -->
 移动应用程序测试涉及在公开发布之前验证移动应用程序的功能，确保满足技术和业务要求。
 
-## 相关术语：
+## 相关术语
 
 - [移动设备测试](/zh-cn/wiki/mobile-device-testing/)
 - [网页测试](/zh-cn/wiki/web-testing/)
@@ -230,10 +230,7 @@ order: 0
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Espresso**：Android 原生测试框架，提供用于编写​​ UI 测试的 API。
-- $
 
-    ```
-    ```
 Espresso.onView(withId(R.id.my_view)).perform(click());
 
   ```
@@ -252,10 +249,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Espresso**：Android 原生测试框架，提供用于编写​​ UI 测试的 API。
-- $
 
-    ```
-    ```
 - **Detox**：一个灰盒端到端测试框架，适用于在 React Native 平台上运行的移动应用程序。
 - **Calabash**：支持移动应用程序的自动化功能测试，允许用 Cucumber 编写测试并在 Android 和 iOS 上运行。
 - **Robotium**：一个 Android 测试框架，提供简单的 API 来编写 UI 自动化脚本。
@@ -320,10 +314,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
 - **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
-- $
 
-    ```
-    ```
 功能：用户登录
   场景：使用有效凭据成功登录
   假设用户位于登录屏幕上
@@ -345,10 +336,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
 - **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
-- $
 
-    ```
-    ```
 
 ### 挑战和最佳实践
 

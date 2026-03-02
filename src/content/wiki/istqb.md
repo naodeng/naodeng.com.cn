@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [ISTQB ｜ Istqb](#istqb--istqb)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [关于 ISTQB 有疑问吗？](#关于-istqb-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [ISTQB 代表什么？](#istqb-代表什么)
@@ -34,7 +34,7 @@ order: 0
 <!-- TOC END -->
 国际软件测试资格委员会，一个对软件测试人员进行认证的非营利组织。
 
-## 相关术语：
+## 相关术语
 
 - [International Software Testing Qualifications Board](/zh-cn/wiki/istqb/)
 

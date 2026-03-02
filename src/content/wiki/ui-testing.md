@@ -260,10 +260,7 @@ order: 0
 - **实施等待策略**
     例如显式等待处理异步操作和动态内容，确保测试稳定可靠。
 
-- $
 
-    ```
-    ```
 WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("elementId")));
 
@@ -287,10 +284,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - **实施等待策略**
     例如显式等待处理异步操作和动态内容，确保测试稳定可靠。
 
-- $
 
-    ```
-    ```
 
 #### 如何使用 Selenium 进行 UI 测试？
 

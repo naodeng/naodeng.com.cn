@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Gherkin ｜ Gherkin](#gherkin--gherkin)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [关于gherkin的问题吗？](#关于gherkin的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Gherkin 是什么以及为什么它在软件测试中很重要？](#gherkin-是什么以及为什么它在软件测试中很重要)
@@ -37,7 +37,7 @@ order: 0
 <!-- TOC END -->
 gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD）。它提供了一种结构化且人类可读的格式来描述和记录软件功能的所需行为。 gherkin 的语法使用简单语言与特定关键字（例如“Given”、“When”、“Then”、“And”和“But”）相结合来定义先决条件、操作和预期结果。这些 gherkin 然后，场景可以用作系统行为的规范和自动化测试的基础，使其成为非技术利益相关者和技术团队之间的桥梁。
 
-## 相关术语：
+## 相关术语
 
 - [BDD (Behavior Driven Development)](/zh-cn/wiki/bdd/)
 - [测试场景](/zh-cn/wiki/test-scenario/)

@@ -317,10 +317,7 @@ order: 0
 
 - **虚拟化**：使用 VMware 或 VirtualBox 等工具创建虚拟环境，可以在每次测试运行之前将其重置为已知状态。
 - **容器化**：利用 Docker 或 Kubernetes 封装您的测试环境和依赖项，以便快速重置。
-- $
 
-    ```
-    ```
 docker-compose down && docker-compose up -d
 
   ```
@@ -339,10 +336,7 @@ docker-compose down && docker-compose up -d
 
 - **虚拟化**：使用 VMware 或 VirtualBox 等工具创建虚拟环境，可以在每次测试运行之前将其重置为已知状态。
 - **容器化**：利用 Docker 或 Kubernetes 封装您的测试环境和依赖项，以便快速重置。
-- $
 
-    ```
-    ```
 - **自动清理脚本**：编写脚本以清理测试执行后的环境。
 - **持续集成系统**：使用 Jenkins 或 GitLab CI 自动设置和拆除测试环境。
 - **基于云的解决方案**：AWS、Azure 或 GCP 可以提供使用后拆除的按需环境。

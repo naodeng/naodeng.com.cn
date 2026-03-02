@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [独立确认与验证 ｜ Independent Verification And Validation](#独立确认与验证--independent-verification-and-validation)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
   - [关于独立验证和确认的问题？](#关于独立验证和确认的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [独立验证和确认 (IV&V) 的定义是什么？](#独立验证和确认-ivv-的定义是什么)
@@ -38,7 +38,7 @@ order: 0
 <!-- TOC END -->
 独立验证和确认 (IV&V) 是指外部组织或团队独立于开发人员和开发过程评估软件产品的正确性和质量的专门过程。主要目标是确保系统满足其指定的要求并按预期运行。
 
-## 相关术语：
+## 相关术语
 
 - [质量保证](/zh-cn/wiki/quality-assurance/)
 

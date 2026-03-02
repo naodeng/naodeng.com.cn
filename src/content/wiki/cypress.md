@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [Cypress ｜ Cypress](#cypress--cypress)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 Cypress 的问题吗？](#关于-cypress-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -45,7 +45,7 @@ order: 0
 <!-- TOC END -->
 （又名 Cypress.io）Cypress 是一个端到端测试专为现代 Web 应用程序设计的框架。与许多其他测试解决方案不同，Cypress 直接在网络浏览器中运行，确保更加一致和准确的真实测试场景。它提供了一组丰富的功能和工具，用于编写测试、实时调试以及捕获测试运行的屏幕截图或视频记录。Cypress 两者都支持单元测试和完整的端到端测试，使其成为开发人员和 QA 专业人员的多功能选择。其显着特点之一是其互动性测试运行者它允许开发人员在执行命令时查看命令，同时还可以查看正在测试的应用程序。基于 Mocha、Chai 和 Sinon 等技术构建，Cypress 为 Web 应用程序测试提供全面且用户友好的环境。
 
-## 相关术语：
+## 相关术语
 
 - [Web Automation tool](/zh-cn/wiki/web-test-automation-tools/)
 - [Playwright](https://ray.run/glossary/playwright)

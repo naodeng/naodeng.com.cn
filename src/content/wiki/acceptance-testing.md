@@ -9,7 +9,7 @@ order: 0
 
 <!-- TOC START -->
 - [验收测试 ｜ Acceptance Testing](#验收测试--acceptance-testing)
-  - [相关术语：](#相关术语)
+  - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于验收测试的问题？](#关于验收测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
@@ -39,7 +39,7 @@ order: 0
 <!-- TOC END -->
 验收测试由潜在的最终用户或客户进行，以确定软件是否满足所需的规格并适合其预期用途。
 
-## 相关术语：
+## 相关术语
 
 - [用户验收测试](/zh-cn/wiki/user-acceptance-testing/)
 - [FAT (Factory Acceptance Testing)](/zh-cn/wiki/fat/)
