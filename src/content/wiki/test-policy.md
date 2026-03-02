@@ -2,6 +2,12 @@
 title: "测试策略说明 ｜ Test Policy"
 description: "测试策略说明 (Test Policy) 是一份高层文档，概述了组织内测试的基本原则和方法。它作为测试活动的基石，为所有测试工作设定了方向和预期。与更具体、针对项目的 测试策略 (Test Strategy) 不同，测试策略说明是一份更广泛的声明，适用于组织内的所有项目。该政策通常包括组织对质量的承诺、测试目标以及测试过程中相关人员的职责。它提供了一个框架，指导测试策略和 测试计划 (Test Plans) 的创建，确保与组织目标的一致性。实施该政策必须有效地传达到开发团队和其他利益相关者，且在测试规划和执行期间应易于查阅。创建该政策的责任通常由高级 测试管理 (test management) 或 质量保证 (quality assurance) 领导承担。"
 section: "T"
+related:
+  - test-strategy
+  - manual-testing
+  - test-plan
+  - automated-testing
+  - test-suite
 order: 0
 ---
 

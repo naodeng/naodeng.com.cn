@@ -2,6 +2,12 @@
 title: "Xpath Query ｜ Xpath Query"
 description: "XPath 查询（XPath Query）是一种功能强大的语言，设计用于从 XML 文档中选择节点。它在查询 HTML 结构方面同样有效，尤其是在像 Selenium 这样的 Web 自动化 框架中使用时。XPath 以其精确执行复杂查询的能力而著称，使测试人员能够精确地定位网页 DOM 中的元素。这是一个选择所有 `name` 属性包含子字符串 'user' 的 `input` 元素的 XPath 表达式示例："
 section: "X"
+related:
+  - webdriver
+  - web-automation
+  - selenium
+  - sql
+  - selenium-ide
 order: 0
 ---
 

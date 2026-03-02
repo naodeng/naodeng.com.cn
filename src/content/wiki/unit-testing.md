@@ -2,6 +2,12 @@
 title: "单元测试 ｜ Unit Testing"
 description: "单元测试 是指对应用程序中最小的可测试部分（通常是函数或方法）进行隔离测试的实践。这些测试由开发人员编写和执行，以确保代码库的特定部分按预期运行。在 单元测试 中，每个单元都使用 存根 (Stubs) 和 模拟 (Mocks) 进行隔离测试，以模拟不属于测试一部分的依赖模块的行为。这允许在早期阶段检测问题，使其更容易解决。一个好的单元测试应该是："
 section: "U"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-runner
+  - test-pyramid
 order: 0
 ---
 

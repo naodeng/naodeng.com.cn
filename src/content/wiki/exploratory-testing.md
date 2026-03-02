@@ -2,6 +2,12 @@
 title: "探索性测试 ｜ Exploratory Testing"
 description: "探索性测试 (Exploratory Testing) 是一种软件测试方法，强调测试人员的个人自由和责任。它将测试相关的学习、测试设计、测试执行和结果解释视为在项目进程中并行发生的相互支持的活动。 在探索性测试中，测试人员不局限于预定义的测试用例或脚本。相反，他们基于对系统的洞察、知识和直觉，动态地设计并执行测试。这种方法能发现脚本化测试可能遗漏的缺陷，特别适用于复杂、不确定或快速变化的环境。"
 section: "E"
+related:
+  - session-based-testing
+  - manual-testing
+  - heuristic-testing
+  - automated-testing
+  - test-case-management
 order: 0
 ---
 

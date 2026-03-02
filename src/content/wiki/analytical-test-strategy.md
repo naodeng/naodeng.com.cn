@@ -2,6 +2,12 @@
 title: "分析式测试策略 ｜ Analytical Test Strategy"
 description: "分析式测试策略 (Analytical Test Strategy) 是一种依靠数据和分析来指导决策的结构化测试方法。它涉及对风险、成本、时间和资源等各种因素进行的批判性思维和评估，以确定最有效的测试活动。"
 section: "A"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-case-management
+  - test-strategy
 order: 0
 ---
 

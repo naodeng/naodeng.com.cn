@@ -2,6 +2,12 @@
 title: "功能测试 ｜ Functional Testing"
 description: "功能测试是软件测试中的一种质量保证过程，旨在确保软件符合所有需求和规范。它通过提供输入并验证输出来检测应用程序的行为是否符合功能需求。 功能测试关注“做什么”，主要采用黑盒测试方法，即不考虑内部代码结构，只关注界面交互和系统对输入的响应。"
 section: "F"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case
+  - web-testing
+  - test-suite
 order: 0
 ---
 

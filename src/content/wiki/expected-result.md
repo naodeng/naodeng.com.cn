@@ -2,6 +2,12 @@
 title: "预期结果 ｜ Expected Result"
 description: "关于预期结果的问题？"
 section: "E"
+related:
+  - test-case
+  - manual-testing
+  - automated-testing
+  - test-comparison
+  - validation-testing
 order: 0
 ---
 

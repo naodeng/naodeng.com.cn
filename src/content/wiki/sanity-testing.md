@@ -2,6 +2,12 @@
 title: "冒烟测试/健全性测试 ｜ Sanity Testing"
 description: "健全性测试是回归测试的一个子集，侧重于在进行细微更改或 Bug 修复后验证特定功能。它是一种快速、非详尽的检查，旨在确保修改后的特定功能或故障按预期工作。"
 section: "S"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - regression-testing
+  - validation-testing
 order: 0
 ---
 

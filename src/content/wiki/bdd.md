@@ -2,6 +2,12 @@
 title: "行为驱动开发 ｜ BDD"
 description: "行为驱动开发 (BDD) 是一种软件开发方法，它通过使用简单的、特定领域的语言来描述系统行为，从而增强利益相关者（如开发人员、测试人员和业务专业人员）之间的协作。BDD 专注于应用程序或系统的预期行为，规范通常以可读且易于理解的格式编写。这种方法鼓励所有相关方在编写任何代码之前，对功能和需求达成共同理解。"
 section: "B"
+related:
+  - automated-testing
+  - acceptance-testing
+  - use-case-testing
+  - manual-testing
+  - gherkin
 order: 0
 ---
 

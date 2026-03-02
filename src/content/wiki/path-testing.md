@@ -2,6 +2,12 @@
 title: "路径测试 ｜ Path Testing"
 description: "路径测试是一种白盒测试技术，涉及执行单元或模块内所有可能的路径。它基于圈复杂度 (Cyclomatic Complexity) 指标，旨在确保所有线性独立的路径至少被执行一次，从而发现其他测试方法可能遗漏的隐藏缺陷 (Bugs)。工程师通常使用控制流图 (Control Flow Graph, CFG) 来可视化并识别路径，然后编写测试用例来遍历这些路径（包括循环、条件语句和分支）。"
 section: "P"
+related:
+  - control-flow-testing
+  - manual-testing
+  - automated-testing
+  - glass-box-testing
+  - structural-testing
 order: 0
 ---
 

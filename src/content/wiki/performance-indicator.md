@@ -2,6 +2,12 @@
 title: "性能指标 ｜ Performance Indicator"
 description: "性能指标是一种量化衡量标准，用于评估软件测试自动化中特定活动或方面的成功程度。与通用度量（Metrics）不同，性能指标是理解和跟踪预定义目标进展的关键。在测试自动化中，它们提供了对测试过程的效率、有效性和质量的洞察。例如，自动化测试套件的执行时间就是一个性能指标，反映了测试速度。"
 section: "P"
+related:
+  - web-test-automation-tools
+  - automated-testing
+  - jmeter
+  - performance-testing
+  - manual-testing
 order: 0
 ---
 

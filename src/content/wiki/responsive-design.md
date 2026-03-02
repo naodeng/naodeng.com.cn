@@ -2,6 +2,12 @@
 title: "响应式设计 ｜ Responsive Design"
 description: "响应式设计是一种 Web 开发方法，它根据用于查看网站的设备的屏幕大小和方向，对网站外观进行动态更改。它是通过使用 CSS 媒体查询 (Media Queries) 和灵活的网格布局来实现的，使网站能够根据查看环境自行调整布局。这种方法确保了网站在从台式机显示器到手机等各种设备上都能保持可用性和美感。在响应式设计的测试自动化中，工程师专注于验证网站在各个断点 (Breakpoints) 是否符合预期设计。自动化脚本模拟不同的设备尺寸，并验证布局的一致性、功能性和视觉完整性。可以使用 Selenium WebDriver、Appium 或 Cypress 等工具。此外，可以使用 Percy 或 Applitools 等视觉回归测试工具。"
 section: "R"
+related:
+  - browserstack
+  - cross-browser-testing
+  - screenshot-testing
+  - web-testing
+  - visual-regression-testing
 order: 0
 ---
 

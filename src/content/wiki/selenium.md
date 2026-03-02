@@ -2,6 +2,12 @@
 title: "Selenium ｜ Selenium"
 description: "Selenium 是一个开源的自动化测试框架，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发测试自动化脚本。Selenium 的核心是 WebDriver API，它提供了一个独立于平台的接口来控制浏览器。WebDriver 通过特定于浏览器的驱动程序与页面元素交互，必须为您要自动化的浏览器安装和配置该驱动程序。Selenium 支持多种操作系统（如 Windows, Mac 和 Linux），并与 Jenkins 等 持续集成 (CI) 工具集成，从而加速开发流水线中的自动化测试。它还提供 Selenium Grid，支持在多个环境中进行分布式测试执行。测试人员使用 Selenium 来模拟用户与 Web 元素的交互，例如点击按钮、输入文本和在页面间导航。它提供多种定位策略，如 ID、类名、CSS 选择器和 XPath 表达式。"
 section: "S"
+related:
+  - webdriver
+  - selenium-ide
+  - cross-browser-testing
+  - web-automation
+  - web-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "准入条件的问题？ ｜ Entry Criteria"
 description: "# 准入条件的问题？ ｜ Entry Criteria #### 基础与重要性 - 软件测试中的准入条件是什么？ 准入条件 (Entry Criteria) 是一组预先定义的条件，必须在测试活动开始前满足。"
 section: "E"
+related:
+  - manual-testing
+  - test-plan
+  - automated-testing
+  - test-suite
+  - test-process
 order: 0
 ---
 

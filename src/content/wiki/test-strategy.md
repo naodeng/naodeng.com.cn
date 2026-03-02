@@ -2,6 +2,12 @@
 title: "测试策略 ｜ Test Strategy"
 description: "测试策略 (Test Strategy) 是一份高层级文档，概述了拟定测试活动的方法、资源和进度。它定义了测试目标及实现手段，确保测试与软件开发目标保持一致。该文档通常是静态的，在项目生命周期中很少更改。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-plan
+  - test-approach
+  - test-suite
 order: 0
 ---
 

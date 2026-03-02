@@ -2,6 +2,12 @@
 title: "应用程序编程接口 ｜ API"
 description: "API (Application Programming Interface，应用程序编程接口) 是一套用于构建软件应用程序的协议、例程和工具。它规定了软件组件应如何交互，允许不同的系统相互通信。API 作为一个中间层来处理请求，并确保企业系统的无缝运行。"
 section: "A"
+related:
+  - api-testing
+  - swagger
+  - automated-testing
+  - web-testing
+  - web-test-automation-tools
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "测试设计规范 ｜ Test Design Specification"
 description: "测试设计规范 (Test Design Specification, TDS) 概述了特定测试项的测试条件、案例和序列。它是一份详细的计划，描述了要测试什么、如何测试以及预期结果是什么。TDS 源自测试依据文档，如需求、风险分析报告和设计规范。在实践中，一个 TDS 包括："
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-case
+  - test-suite
 order: 0
 ---
 

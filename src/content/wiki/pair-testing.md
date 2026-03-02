@@ -2,6 +2,12 @@
 title: "结对测试 ｜ Pair Testing"
 description: "结对测试是一种协作方法，两名团队成员共同测试同一个测试用例。"
 section: "P"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - session-based-testing
+  - test-case-management
 order: 0
 ---
 

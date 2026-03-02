@@ -2,6 +2,12 @@
 title: "故障转移测试 ｜ Failover Testing"
 description: "故障转移测试 (Failover Testing) 是一种验证过程，旨在确保当主要系统发生故障或进行维护时，系统能够无缝切换到备份或次要系统。它通过模拟各种故障场景，确认故障转移机制是否正常工作，且不会中断业务连续性。 典型的故障转移测试包括：识别关键组件、模拟故障（如关闭服务器或断开网络）、监控系统响应、验证备份系统运行状况，最后恢复主视图并验证回切过程。"
 section: "F"
+related:
+  - availability-testing
+  - fault-injection-testing
+  - shift-left-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

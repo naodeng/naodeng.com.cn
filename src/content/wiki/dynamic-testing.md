@@ -2,6 +2,12 @@
 title: "动态测试 ｜ Dynamic Testing"
 description: "动态测试 (Dynamic Testing) 涉及通过执行软件并提供各种输入来验证输出是否符合预期结果。这是一种“亲身实践”的方法，通过运行代码来识别运行时错误、性能问题等。这与静态测试（在不运行程序的情况下检查代码）形成对比。 动态测试涵盖功能和非功能各方面的验证。它通常包括： - 计划和设计。 - 搭建测试环境。 - 执行测试用例。 - 比较实际结果与预期结果。 - 报告并修复缺陷。"
 section: "D"
+related:
+  - static-testing
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "验收测试驱动开发 ｜ Acceptance Test Driven Development"
 description: "验收测试驱动开发 (ATDD) 是一种开发方法论。在这个方法论中，拥有不同视角的团队成员（开发人员、测试人员和业务客户）在编码开始前协作编写验收测试。其主要目标是为系统功能指定详细的、以客户为中心的标准，这些标准通过指导开发并提供对期望结果的清晰理解来发挥作用。"
 section: "A"
+related:
+  - acceptance-testing
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - user-acceptance-testing
 order: 0
 ---
 

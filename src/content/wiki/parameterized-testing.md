@@ -2,6 +2,12 @@
 title: "参数化测试 ｜ Parameterized Testing"
 description: "参数化测试是指使用不同的输入值多次执行同一个测试用例。这种技术将输入数据“外部化”，允许通过定义一次数据源来运行多组测试。当测试逻辑对一系列输入应产生一致的结果类型时，它特别有用。JUnit 5 示例："
 section: "P"
+related:
+  - test-data
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

@@ -3,6 +3,12 @@ title: "可扩展性测试 ｜ Scalability Testing"
 description: "可扩展性测试是一种**非功能性测试**方法，旨在衡量软件应用程序处理增加负载（无论是更多数据、用户还是交易）的能力。它帮助识别系统的崩溃点以及在性能下降或失效前能处理的最大容量。
   可扩展性测试对于验证软件能否增长以满足未来需求平衡至关重要。它涉及逐渐增加系统负载，并监控其在压力下的行为。记录响应时间、吞吐量和资源利用率等指标来评估可扩展性。"
 section: "S"
+related:
+  - load-testing
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - web-test-automation-tools
 order: 0
 ---
 

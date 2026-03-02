@@ -2,6 +2,12 @@
 title: "漏报 ｜ False Negative"
 description: "在软件测试中，漏报 (False Negative) 指的是测试用例错误地通过了，未能检测到确实存在的缺陷。这意味着有缺陷的代码被推向生产环境，可能导致运行问题并损害用户体验。 处理漏报通常涉及：调查根本原因、修正测试用例或环境设置、重新测试以确认问题已被捕获、审查相关用例，并更新测试策略以防再次发生。"
 section: "F"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-script
+  - test-case-management
 order: 0
 ---
 

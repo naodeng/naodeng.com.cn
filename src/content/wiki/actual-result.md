@@ -2,6 +2,12 @@
 title: "实际结果 ｜ Actual Result"
 description: "关于实际结果的问题？"
 section: "A"
+related:
+  - test-case
+  - expected-result
+  - automated-testing
+  - manual-testing
+  - test-comparison
 order: 0
 ---
 

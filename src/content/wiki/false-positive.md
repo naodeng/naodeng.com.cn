@@ -2,6 +2,12 @@
 title: "误报 ｜ False Positive"
 description: "在软件测试中，误报 (False Positive) 指的是测试用例错误地指出软件存在缺陷，即在没有问题的地方报错。这会导致不必要的调查并干扰测试流程。误报在自动化测试中尤为麻烦，因为它们会削弱团队对测试套件的信心。如果团队开始忽视失败的测试，真实的 Bug 就可能被漏掉。"
 section: "F"
+related:
+  - test-script
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

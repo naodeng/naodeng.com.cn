@@ -2,6 +2,12 @@
 title: "干净状态 ｜ Clean Slate"
 description: "关于干净状态的问题？"
 section: "C"
+related:
+  - test-data
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

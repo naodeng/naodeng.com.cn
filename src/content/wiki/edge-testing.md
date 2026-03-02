@@ -2,6 +2,12 @@
 title: "边界测试 ｜ Edge Testing"
 description: "边界测试 (Edge Testing) 专注于软件应用的极致边界，确保系统在极限状态下表现正确。它针对输入参数的最外层，通常与边界值分析 (Boundary Value Analysis) 等技术结合，以验证应用的稳健性。 其核心在于识别系统极限（如最大容量或边界条件），并设计将软件推向这些极限的测试用例。常见技术包括测试最大值、最小值、零值，以及刚好高于或低于边界的值。"
 section: "E"
+related:
+  - boundary-testing
+  - automated-testing
+  - manual-testing
+  - test-case
+  - test-suite
 order: 0
 ---
 

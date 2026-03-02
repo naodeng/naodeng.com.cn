@@ -2,6 +2,12 @@
 title: "Nunit ｜ Nunit"
 description: "NUnit 是一个针对 .NET 语言的开源单元测试框架，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的测试用例而被广泛使用。核心用法："
 section: "N"
+related:
+  - test-runner
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-class
 order: 0
 ---
 

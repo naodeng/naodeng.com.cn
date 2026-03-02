@@ -2,6 +2,12 @@
 title: "集成测试 ｜ Integration Testing"
 description: "集成测试 (Integration Testing) 是在单元测试之后、系统测试之前进行的一个测试阶段。它将已经过测试的单元或组件组合在一起进行测试，旨在暴露组件间交互时的缺陷。该过程验证集成后的模块是否能作为一个整体正确运行。其核心是通过模拟各部分的协作，确保数据流、控制流及接口逻辑的准确。"
 section: "I"
+related:
+  - bottom-up-integration
+  - top-down-integration
+  - system-integration-testing
+  - incremental-testing
+  - automated-testing
 order: 0
 ---
 

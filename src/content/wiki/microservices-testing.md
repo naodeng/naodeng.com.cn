@@ -2,6 +2,12 @@
 title: "微服务测试 ｜ Microservices Testing"
 description: "微服务测试 (Microservices Testing) 涉及验证分布式系统中单个、可独立部署的服务。每个服务封装了特定的业务功能并通过网络进行通信，因此需要一种既能确保单个服务正确性，又能确保服务间交互正常的测试方法。"
 section: "M"
+related:
+  - api-testing
+  - automated-testing
+  - manual-testing
+  - end-to-end-testing
+  - test-data
 order: 0
 ---
 

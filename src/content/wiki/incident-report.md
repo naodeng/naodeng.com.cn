@@ -2,6 +2,12 @@
 title: "事件报告 ｜ Incident Report"
 description: "事件报告 (Incident Report) 是记录软件运行中任何偏离预期结果或行为的文档。它的范畴比 Bug 报告更广，除了软件缺陷外，还可能涵盖环境问题、测试用例失败或人为失误。它是识别、管理和解决测试问题的核心。"
 section: "I"
+related:
+  - incident-management
+  - bug
+  - inspection
+  - manual-testing
+  - test-case-management
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "用户验收测试 ｜ User Acceptance Testing"
 description: "用户验收测试 (User Acceptance Testing, UAT) 是测试过程的最后阶段，实际软件用户在其中测试系统以验证其是否可以根据规范处理现实世界场景中的所需任务。UAT 在系统测试、集成测试和其他类型的测试完成后进行。重点是用户友好性和从最终用户的角度来看应用程序的整体功能。在 UAT 期间，用户执行模仿现实生活使用的任务，以确保软件满足他们的需求和期望。这是关键的一步，因为它验证了端到端的业务流程。与其他可能更具技术性并侧重于代码正确性的测试不同，UAT 更多关于用户体验和软件解决方案的实际应用。UAT 的关键方面包括："
 section: "U"
+related:
+  - acceptance-testing
+  - manual-testing
+  - validation-testing
+  - automated-testing
+  - test-case-management
 order: 0
 ---
 

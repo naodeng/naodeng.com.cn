@@ -2,6 +2,12 @@
 title: "正向测试 ｜ Positive Testing"
 description: "正向测试（Positive Testing）用于验证系统在有效输入和正常流程下能够按预期工作，通常与负向测试（Negative Testing）配合，形成完整测试覆盖。"
 section: "P"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - validation-testing
+  - test-case
 order: 0
 ---
 

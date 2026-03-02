@@ -2,6 +2,12 @@
 title: "兼容性测试 ｜ Compatibility Testing"
 description: "跨浏览器测试 (cross-browser testing) 是兼容性测试的一个子集，关注点在于验证 Web 应用在不同浏览器（Chrome, Firefox, Safari, Edge, IE 等）及其不同版本中功能、设计和响应式布局的一致性。"
 section: "C"
+related:
+  - browserstack
+  - cross-browser-testing
+  - web-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

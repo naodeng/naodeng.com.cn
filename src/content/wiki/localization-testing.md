@@ -2,6 +2,12 @@
 title: "本地化测试 ｜ Localization Testing"
 description: "本地化测试 (Localization Testing) 是确保软件产品适配特定地区、语言和文化的测试过程。它不仅仅是翻译验证，还包括验证软件是否符合当地的文化习俗、法律规定、技术标准和用户偏好。 主要侧重点："
 section: "L"
+related:
+  - internationalization-testing
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - browserstack
 order: 0
 ---
 

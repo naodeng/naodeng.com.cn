@@ -2,6 +2,12 @@
 title: "错误猜测 ｜ Error Guessing"
 description: "关于错误猜测的问题？"
 section: "E"
+related:
+  - heuristic-testing
+  - manual-testing
+  - automated-testing
+  - validation-testing
+  - black-box-testing
 order: 0
 ---
 

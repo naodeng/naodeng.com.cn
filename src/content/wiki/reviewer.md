@@ -2,6 +2,12 @@
 title: "代码审查员 ｜ Reviewer"
 description: "代码审查员是评估代码以检测缺陷的专家、提升品质，引导开发者。如果代码跨越多个领域，则应由多名专家对其进行评估。"
 section: "R"
+related:
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

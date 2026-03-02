@@ -2,6 +2,12 @@
 title: "测试日志 ｜ Test Log"
 description: "测试日志 (Test Log) 是详细记录 测试用例 (test cases) 执行情况的按时间顺序排列的记录。它充当审计追踪，捕获测试活动的序列，包括测试用例的开始和结束时间、测试人员身份、测试环境以及测试期间采取的任何行动。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - test-case
 order: 0
 ---
 

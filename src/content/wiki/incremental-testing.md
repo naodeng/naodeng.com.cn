@@ -2,6 +2,12 @@
 title: "渐进式测试 ｜ Incremental Testing"
 description: "渐进式测试 (Incremental Testing) 是一种分阶段测试模块的软件测试方法。开发一个模块，测试一个，然后将其添加到已测试的模块组中，逐步构建整个系统。这种方法有利于早期发现缺陷，并在组合过程中实时验证模块间的交互。其执行步骤通常包括：识别模块及集成顺序、孤立测试（单测）、集成、组合测试、迭代。"
 section: "I"
+related:
+  - bottom-up-integration
+  - top-down-integration
+  - integration-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "Jest ｜ Jest"
 description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。它广泛应用于前端（React, Vue, Angular）和后端（Node.js）项目。它支持单元测试 (Unit Testing)、集成测试 (Integration Testing) 和端到端测试 (E2E Testing)，并能通过与 Babel、TypeScript 的无缝集成实现并行执行以提高速度。"
 section: "J"
+related:
+  - test-automation
+  - jasmine
+  - automated-testing
+  - test-runner
+  - manual-testing
 order: 0
 ---
 

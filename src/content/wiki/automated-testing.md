@@ -2,6 +2,12 @@
 title: "自动化测试 ｜ Automated Testing"
 description: "自动化测试 (Automated Testing) 是指利用软件工具执行预先编写的测试脚本 (Test Scripts)，以验证软件应用程序的功能、性能和可靠性的过程。与每一步都需要人工参与的手工测试 (Manual Testing) 不同，自动化测试一旦设置完成，运行时的手工干预极少，并且可以重复执行。"
 section: "A"
+related:
+  - manual-testing
+  - test-suite
+  - web-testing
+  - test-case-management
+  - test-case
 order: 0
 ---
 

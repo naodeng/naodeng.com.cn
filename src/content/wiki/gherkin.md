@@ -2,6 +2,12 @@
 title: "Gherkin ｜ Gherkin"
 description: "Gherkin 是一种特定领域语言 (DSL)，旨在为软件功能创建清晰且可执行的规范。它通过自然语言格式，弥合了测试自动化的技术层面与业务侧对功能行为理解之间的鸿沟。它允许所有干系人（开发、测试、业务分析师）共同参与测试用例的创建与评估，确保软件开发符合用户预期。"
 section: "G"
+related:
+  - bdd
+  - automated-testing
+  - use-case-testing
+  - test-case
+  - keyword-driven-testing
 order: 0
 ---
 

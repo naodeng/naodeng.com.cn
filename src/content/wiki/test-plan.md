@@ -2,6 +2,12 @@
 title: "测试计划 ｜ Test Plan"
 description: "测试计划 (Test Plan) 是一份正式文档，概述了拟定测试活动的途径、资源和进度。它定义了项目范围内 软件测试 (software testing) 的范围、目标和程度。该战略计划为测试流程和活动设定了标准，并以此作为确保全面测试和质量结果的指南。"
 section: "T"
+related:
+  - manual-testing
+  - test-management
+  - automated-testing
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

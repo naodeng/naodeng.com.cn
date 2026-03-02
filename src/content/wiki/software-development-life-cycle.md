@@ -2,6 +2,12 @@
 title: "软件开发生命周期 ｜ Software Development Life Cycle"
 description: "软件开发生命周期 (SDLC) 是规划、创建、测试和部署信息系统的系统化过程。它为软件开发提供了一种结构化的方法，确保涵盖所有必要步骤以生产高质量软件。SDLC 包含多个阶段，通常包括："
 section: "S"
+related:
+  - automated-testing
+  - manual-testing
+  - stlc
+  - web-testing
+  - validation-testing
 order: 0
 ---
 

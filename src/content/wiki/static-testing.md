@@ -2,6 +2,12 @@
 title: "静态测试 ｜ Static Testing"
 description: "静态测试 (Static testing) 是指在不执行代码的情况下对软件制品进行检查。它涉及 分析 文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。此类测试通常通过 人工 努力（如同行评审）和执行静态代码分析的 自动化工具 结合完成。用于 静态测试 (static testing) 的自动化工具会扫描代码库，查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成流水线中，为开发人员提供即时反馈。它们的范围从执行编码标准的简单 Linter 到可以检测更微妙问题（如潜在安全漏洞或性能瓶颈）的复杂静态分析工具。静态测试 (Static testing) 不仅仅是为了寻找 Bug (bugs)，还关乎 代码质量 和 可维护性。它有助于确保代码符合标准，并且是可理解且可修改的。通过在开发过程的早期识别问题，静态测试 (static testing) 有助于降低修复缺陷的成本，因为越早发现的问题通常解决成本越低。为了有效实施 静态测试 (static testing)，选择与项目的语言和框架相一致的合适工具和技术至关重要。"
 section: "S"
+related:
+  - dynamic-testing
+  - inspection
+  - manual-testing
+  - verification
+  - automated-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "Selenium Ide ｜ Selenium Ide"
 description: "Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源录制与回放 (Record and Playback) 工具。它是适用于 Firefox 和 Chrome 的浏览器扩展，使测试人员能够通过用户友好的界面快速开发测试，而无需编写大量的测试脚本。该工具支持通过 GUI 输入命令和参数来创建测试。测试人员可以录制与 Web 应用的交互并回放以进行回归测试。它还支持编辑、完善和自定义录制的测试。对于复杂的测试场景，可以实现循环和条件等控制流结构。此外，它还支持扩展，允许编写脚本来增强其功能。虽然主要用于快速测试，但也常作为原型工具，录制的用例后续可导出到 Selenium WebDriver 进行更复杂的测试。"
 section: "S"
+related:
+  - selenium
+  - cross-browser-testing
+  - web-testing
+  - cypress
+  - automated-testing
 order: 0
 ---
 

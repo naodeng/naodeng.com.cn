@@ -2,6 +2,12 @@
 title: "变更请求 ｜ Change Requests"
 description: "关于变更请求的问题？"
 section: "C"
+related:
+  - change-control
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-plan
 order: 0
 ---
 

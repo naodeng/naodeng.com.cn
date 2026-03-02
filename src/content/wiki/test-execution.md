@@ -2,6 +2,12 @@
 title: "测试执行 ｜ Test Execution"
 description: "测试执行 (Test Execution) 是在软件应用程序上运行一系列测试以验证其行为是否符合预期的过程。这涉及运行 自动化 (automated) 或 手动测试 (manual tests)，并将实际结果与 预期结果 (expected results) 进行比较。执行可以在不同级别进行，如单元测试、集成测试、系统测试和验收测试。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-case-management
+  - test-data
 order: 0
 ---
 

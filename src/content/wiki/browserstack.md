@@ -2,6 +2,12 @@
 title: "Browserstack ｜ Browserstack"
 description: "BrowserStack 是一个基于云的跨浏览器测试平台，它使开发人员和 QA 专业人员能够在各种浏览器、操作系统和真实移动设备上测试其网站和移动应用程序。它提供了对庞大浏览器和设备库的访问，从而消除了维护内部测试基础设施的需要。"
 section: "B"
+related:
+  - cross-browser-testing
+  - web-testing
+  - screenshot-testing
+  - compatibility-testing
+  - automated-testing
 order: 0
 ---
 

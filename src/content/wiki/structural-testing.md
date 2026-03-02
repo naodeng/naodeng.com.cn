@@ -2,6 +2,12 @@
 title: "结构测试 ｜ Structural Testing"
 description: "结构测试 (Structural testing) 又称 白盒测试 (white box testing)，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 测试用例 (test cases)，确保代码中的所有路径、分支和语句至少执行一次。在 结构测试 (structural testing) 中，代码覆盖率 (code coverage) 是一个关键指标，包括 语句覆盖 (statement coverage)（确保每一行代码都执行到）和 分支覆盖 (branch coverage)（测试控制结构中所有可能的路由，如 if-else 或 switch-case 语句）。路径测试 (Path testing) 是另一种技术，涉及测试代码中所有可能的路径，虽然可能非常耗时，但能确保彻底的测试。自动化 结构测试 (structural testing) 涉及编写直接与代码交互的 测试脚本 (test scripts)。可以使用 Java 的 JUnit 或 Python 的 pytest 等工具编写执行结构测试的单元测试。"
 section: "S"
+related:
+  - manual-testing
+  - automated-testing
+  - path-testing
+  - test-suite
+  - white-box-testing
 order: 0
 ---
 

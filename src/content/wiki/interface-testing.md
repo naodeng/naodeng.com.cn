@@ -2,6 +2,12 @@
 title: "接口测试 ｜ Interface Testing"
 description: "接口测试 (Interface Testing) 专注于验证不同软件组件或系统之间的交互。它确保数据能准确交换，控制流符合预期逻辑，且接口协议得到严格遵守。与 UI 测试不同，接口测试通常在代码底层或服务层进行，是保障系统稳健性的核心。"
 section: "I"
+related:
+  - automated-testing
+  - manual-testing
+  - api-testing
+  - web-testing
+  - test-suite
 order: 0
 ---
 

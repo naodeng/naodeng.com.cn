@@ -2,6 +2,12 @@
 title: "JMeter"
 description: "JMeter"
 section: "P"
+related:
+  - web-test-automation-tools
+  - jmeter
+  - test-plan
+  - web-testing
+  - automated-testing
 order: 0
 ---
 # JMeter

@@ -2,6 +2,12 @@
 title: "测试工具 ｜ Test Tool"
 description: "测试工具 (Test Tool) 是支持一个或多个测试活动（包括计划、设计、执行、缺陷记录和报告）的软件应用或实用程序。它可以是执行特定任务的简单独立工具，也可以是管理整个测试生命周期的复杂集成系统。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-case-management
+  - web-testing
+  - test-harness
 order: 0
 ---
 

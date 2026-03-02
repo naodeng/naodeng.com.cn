@@ -2,6 +2,12 @@
 title: "不稳定性测试 ｜ Flaky Test"
 description: "不稳定性测试 (Flaky Test) 指的是在相同的代码和环境下运行，结果却不确定的测试——有时通过，有时失败。这种“不稳定性”并非源于代码或环境的变更，而是源于测试脚本本身或测试流程中的固有问题。它们会产生误导，需要额外投入精力来确定系统的真实状态。"
 section: "F"
+related:
+  - manual-testing
+  - test-suite
+  - automated-testing
+  - web-testing
+  - test-runner
 order: 0
 ---
 

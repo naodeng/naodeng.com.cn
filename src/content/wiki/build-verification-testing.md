@@ -2,6 +2,12 @@
 title: "构建验证测试 ｜ Build Verification Testing"
 description: "构建验证测试 (BVT)，也称为冒烟测试 (smoke testing)，是在新构建版本上运行的一组自动化测试，旨在确保该构建在发布给测试团队进行进一步测试之前是可测的。BVT 是测试套件的一个子集，专注于应用程序的主要功能，以检查可能阻碍进一步测试的关键问题。"
 section: "B"
+related:
+  - automated-testing
+  - manual-testing
+  - validation-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

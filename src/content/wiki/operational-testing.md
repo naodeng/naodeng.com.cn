@@ -2,6 +2,12 @@
 title: "运维测试 ｜ Operational Testing"
 description: "运维测试是一个阶段，在该阶段中，软件在**真实环境**下进行评估，以确保其满足预期用途的必要要求。这是一种**现场测试**，发生在高度模拟生产设置的环境中，涉及真实用户和实时数据。这一阶段对于识别受控**测试环境**中可能无法显现的问题（如与系统可靠性、安全性和维护相关的问题）至关重要。"
 section: "O"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-data
+  - test-suite
 order: 0
 ---
 

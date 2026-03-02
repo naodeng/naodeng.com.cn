@@ -2,6 +2,12 @@
 title: "Scrum ｜ Scrum"
 description: "Scrum 是一种敏捷框架 (Agile Framework)，旨在促进团队在处理复杂产品（特别是软件开发）过程中的协作。它支持迭代和增量过程，这对于适应不断变化的需求和确保持续改进至关重要。它的重要性在于能够提高生产力并更频繁地交付价值。Scrum 提供了一种结构化且灵活的方法，将大型项目拆分为可管理的冲刺 (Sprints)（通常持续 2-4 周）。对于测试自动化工程师，Scrum 提供了一个与快速开发周期和快速适应测试场景需求相一致的框架。它鼓励持续测试、集成和交付，这对于高质量软件和高效自动化过程必不可少。"
 section: "S"
+related:
+  - agile-development
+  - jira
+  - inspection
+  - extreme-programming
+  - priority
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "可用性测试 ｜ Usability Testing"
 description: "可用性测试 是一种通过在用户身上测试产品来评估产品的技术。该方法涉及观察参与者尝试在产品上完成任务，用于识别任何可用性问题，收集定性和定量数据，并确定参与者对产品的满意度。与评估系统是否满足指定要求的 用户验收测试 (UAT) 不同，可用性测试 侧重于用户界面导航和使用的难易程度。主持的可用性测试 (Moderated Usability Testing) 涉及一名主持人引导参与者进行测试，而 未主持的测试 (Unmoderated Testing) 允许参与者在没有实时指导的情况下完成测试。大声思考 (Think Aloud) 方法是一种特定技术，参与者在执行任务时口头表达他们的思维过程，从而提供对其认知过程的洞察。启发式评估 (Heuristic Evaluation) 是另一种可用性方法，专家使用既定的启发式方法来判断产品的可用性。规划可用性测试通常涉及定义目标、选择任务、招募参与者和准备测试材料。执行步骤包括向参与者介绍情况、监控任务完成情况、汇报和收集反馈。选择参与者应以目标用户群的代表性样本为目标。可用性测试的分析涉及综合数据以识别模式和见解。"
 section: "U"
+related:
+  - availability-testing
+  - manual-testing
+  - web-testing
+  - automated-testing
+  - user-acceptance-testing
 order: 0
 ---
 

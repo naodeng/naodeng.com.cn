@@ -2,6 +2,12 @@
 title: "质量保证 ｜ Quality Assurance"
 description: "质量保证 (QA) 是一个系统性的过程，旨在确定产品或服务是否满足规定的要求。它涉及一套确保产品开发过程质量的活动。QA 是前瞻性的，专注于通过改进生产过程来预防缺陷。它不仅是建立一个良好的质量管理系统，还包括评估其充分性。在软件开发中，QA 涵盖了整个软件开发生命周期 (SDLC)，包括需求定义、设计、编码、版本控制、代码审查、配置管理、测试、发布管理和产品集成。"
 section: "Q"
+related:
+  - quality-management
+  - manual-testing
+  - software-quality
+  - automated-testing
+  - software-quality-management
 order: 0
 ---
 

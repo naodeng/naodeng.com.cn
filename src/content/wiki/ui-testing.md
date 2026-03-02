@@ -2,6 +2,12 @@
 title: "用户界面测试 ｜ UI Testing"
 description: "UI 测试，也称为 用户界面测试 (User Interface Testing)，是验证软件应用程序的视觉和交互方面的过程。它涉及检查按钮、文本字段、图像、布局、颜色以及用户与之交互的其他视觉元素的正确性。这种测试确保 UI 的行为符合预期，并提供无缝的用户体验。"
 section: "U"
+related:
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

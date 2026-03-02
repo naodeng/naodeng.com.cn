@@ -2,6 +2,12 @@
 title: "大爆炸测试 ｜ Big Bang Testing"
 description: "大爆炸测试是一种所有系统单元同时链接的方法，而不考虑它们之间的相互作用。这种方法可能会给错误隔离带来挑战，因为它需要关注各个单元的接口。"
 section: "B"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - test-case
 order: 0
 ---
 

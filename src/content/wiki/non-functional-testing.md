@@ -2,6 +2,12 @@
 title: "非功能性测试 ｜ Non-functional Testing"
 description: "非功能性测试评估软件的运行方面，如性能、可靠性、可扩展性和资源利用率。它关注系统在特定条件下的“运行得如何”，而不仅仅是“做了什么”（后者由功能性测试覆盖）。这类测试对于验证系统的质量属性（如合规性、安全性和易用性）至关重要。对于测试自动化工程师，这涉及编写和执行测量响应时间、吞吐量和并发水平的测试脚本。常用工具包括 JMeter、LoadRunner 和 Gatling。"
 section: "N"
+related:
+  - manual-testing
+  - functional-testing
+  - automated-testing
+  - web-testing
+  - software-testing
 order: 0
 ---
 

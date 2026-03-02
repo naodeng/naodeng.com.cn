@@ -3,6 +3,12 @@ title: "鲁棒性测试 ｜ Robustness Testing"
 description: "鲁棒性测试侧重于评估软件**优雅地处理错误输入或意外情况**的能力。它是[可靠性测试](/zh-cn/wiki/reliability-testing/)的一个子集，旨在确保应用程序在面对无效输入或极端的环境压力时不会崩溃或出现不可预测的行为。
   执行鲁棒性测试时，工程师通常使用**故障注入 (Fault Injection)** 方法，即故意引入各种故障或错误（如无效数据、内存损坏或网络故障）来观察系统的反应。"
 section: "R"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
+  - validation-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "猴子测试 ｜ Monkey Testing"
 description: "猴子测试 (Monkey Testing) 是一种黑盒测试 (Black-box Testing) 技术，测试人员（通常是自动化脚本）向系统输入随机数据，以检查崩溃或观察任何异常行为。与结构化测试方法不同，它不遵循任何预定义的测试用例 (Test Cases) 或场景。其主要目标是对应用程序进行压力测试，并发现罕见的、意想不到的问题。 实现猴子测试时，可以使用工具模拟不同层次的用户交互："
 section: "M"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
+  - functional-testing
 order: 0
 ---
 

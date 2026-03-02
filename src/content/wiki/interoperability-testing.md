@@ -2,6 +2,12 @@
 title: "互操作性测试 ｜ Interoperability Testing"
 description: "互操作性测试 (Interoperability Testing) 专注于验证不同软件系统、应用程序或网络组件之间是否能正确地沟通并协作。它不仅验证数据能否成功交换，还确保交换后的数据能被下游系统正确理解和处理。这对于处于复杂生态系统中的现代软件至关重要。"
 section: "I"
+related:
+  - manual-testing
+  - automated-testing
+  - api-testing
+  - compatibility-testing
+  - web-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "快乐路径 ｜ Happy Path"
 description: "在软件测试中，快乐路径 (Happy Path) 指的是一种默认场景。它包含了一系列用户为成功使用软件功能而采取的操作，且期间不会遇到任何错误或边缘情况。它假设所有输入都是有效且格式正确的，系统按预期运行，最终达到目标结果，而不会触发任何异常或错误处理程序。这是实现用户目标的最理想、最直接的流程。"
 section: "H"
+related:
+  - automated-testing
+  - manual-testing
+  - use-case-testing
+  - web-testing
+  - test-case
 order: 0
 ---
 

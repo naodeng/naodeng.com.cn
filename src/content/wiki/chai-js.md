@@ -2,6 +2,12 @@
 title: "Chai.js"
 description: "Chai.js"
 section: "C"
+related:
+  - test-automation
+  - jasmine
+  - cypress
+  - jest
+  - web-test-automation-tools
 order: 0
 ---
 # Chai.js

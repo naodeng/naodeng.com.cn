@@ -2,6 +2,12 @@
 title: "移动设备测试 ｜ Mobile Device Testing"
 description: "移动设备测试 (Mobile Device Testing) 涉及验证移动应用程序在各种设备上的功能性、一致性和可靠性。这种测试确保应用在不同硬件、操作系统 (OS) 和网络环境下按预期运行。它涵盖了包括但不限于界面、服务、数据处理、集成和用户交互在内的一系列测试。在自动化背景下，移动设备测试利用工具和框架来高效执行重复且复杂的测试用例 (Test Cases)。自动化脚本模拟用户操作并对照预期结果 (Expected Results) 验证输出。持续集成 (CI) 和持续部署 (CD) 流水线通常集成这些自动化测试，以实现持续测试和交付。常用的自动化工具包括 Appium, Espresso, 和 XCUITest。这些工具支持原生、混合和 Web 应用测试，具备跨平台能力。自动化脚本可以使用 Java, Python 或 JavaScript 编写，并在真实设备、模拟器或云端设备农场上执行。"
 section: "M"
+related:
+  - mobile-app-testing
+  - browserstack
+  - compatibility-testing
+  - web-testing
+  - automated-testing
 order: 0
 ---
 

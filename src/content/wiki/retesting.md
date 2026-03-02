@@ -2,6 +2,12 @@
 title: "再次测试 ｜ Retesting"
 description: "再次测试是验证早期测试中发现的缺陷是否已成功修复的过程。它涉及在开发团队解决缺陷后，重新运行最初因缺陷而失败的相同测试用例 (Test Cases)。再次测试的首要重点是确保特定问题已解决，且更正后的功能现在表现符合预期。与检查应用程序其他地方是否存在意外副作用的回归测试 (Regression Testing) 不同，再次测试是有针对性的，且仅限于已知的问题区域。它是一种验证活动，确认原始缺陷已修复，且不再存在于软件中。再次测试通常根据缺陷的严重程度 (Severity) 和影响进行优先级排序。在测试自动化框架中加入再次测试可以显著提高效率，特别是在处理频繁的代码更改和迭代 (Iterations) 时。自动化再次测试可以作为持续集成 (CI) 流水线的一部分。如果不进行再次测试，可能会导致发布带有未解决缺陷的软件，从而损害用户信任。"
 section: "R"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - regression-testing
+  - test-case
 order: 0
 ---
 

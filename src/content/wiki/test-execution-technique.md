@@ -2,6 +2,12 @@
 title: "测试执行技术 ｜ Test Execution Technique"
 description: "测试执行技术 (Test Execution Technique) 是一种在软件应用程序上进行测试的结构化方法。它涉及一系列步骤和策略，用于有效地运行和管理 测试用例 (test cases)，确保软件在各种条件下按预期运行。这些技术从 手动执行 (manual execution) 到 自动化执行 (automated execution) 各不相同，每种技术都有其自己的一套方案。例如，回归测试 (regression testing) 确保新的代码更改不会对现有功能产生负面影响。这在敏捷和 CI/CD 环境中是一项关键技术，因为代码库经常发生变化。探索性测试 (Exploratory testing) 是另一种技术，测试人员在没有预定义测试用例的情况下积极参与软件交互，允许随时的测试设计和执行。这种方法对于发现结构化测试可能遗漏的问题特别有用。为了优化这些技术，应关注 测试优先级排序 (test prioritization)、有效的 测试数据管理 (test data management) 和 资源分配 (resource allocation)。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-case-management
+  - test-case
 order: 0
 ---
 

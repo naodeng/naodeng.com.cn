@@ -2,6 +2,12 @@
 title: "测试执行自动化 ｜ Test Execution Automation"
 description: "测试执行自动化 (Test Execution Automation) 是指使用专用软件来控制测试执行、将实际结果与预期结果进行比较、设置测试前置条件以及执行其他测试控制和测试报告功能的过程。本质上，它涉及将测试人员原本需要逐步执行的手动过程自动化。在实践中，这意味着编写脚本或使用工具针对 被测应用程序 (Application Under Test, AUT) 运行你的 测试套件 (test suite)。这些脚本与 AUT 交互，输入数据、点击按钮并提取结果，以验证应用程序的行为是否符合预期。下面是一个使用假设的自动化框架的伪代码基本示例："
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - web-testing
+  - test-case-management
 order: 0
 ---
 

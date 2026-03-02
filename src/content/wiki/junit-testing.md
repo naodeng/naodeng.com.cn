@@ -2,6 +2,12 @@
 title: "JUnit 测试 ｜ JUnit Testing"
 description: "JUnit 是一款针对 Java 语言的单元测试 (Unit Testing) 框架，旨在通过提供注解 (Annotations) 和断言 (Assertions) 来简化测试用例 (Test Cases) 的创建。它是开发人员独立于应用其余部分验证每个软件单元的核心工具。一个基础的 JUnit 测试用例使用 `@Test` 注解标识测试方法。例如："
 section: "J"
+related:
+  - manual-testing
+  - test-class
+  - automated-testing
+  - test-runner
+  - test-suite
 order: 0
 ---
 

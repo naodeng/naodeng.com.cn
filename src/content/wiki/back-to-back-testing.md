@@ -2,6 +2,12 @@
 title: "背靠背测试 ｜ Back-to-Back Testing"
 description: "背靠背测试 也可理解为并行对比测试，是指将两个或者更多具有相似功能的组件或系统并行运行，通过比较它们的运行结果来检测它们之间是否存在输出差异的一种测试方法。这种方法广泛应用于软件开发和硬件设计中，目的是确保不同组件在执行相同任务时能够产生一致的结果，从而验证它们的功能相似性和兼容性。"
 section: "B"
+related:
+  - automated-testing
+  - manual-testing
+  - test-case
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

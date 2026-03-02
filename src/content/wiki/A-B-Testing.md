@@ -2,6 +2,12 @@
 title: "A/B 测试 ｜ A/B Testing"
 description: "A/B 测试 (A/B Testing),也称为分割测试 (Split Testing),是一种将网页或应用程序的两个版本相互比较以确定哪个版本表现更好的方法。它涉及向用户随机展示两个变体 (A 和 B),并使用统计分析来确定哪个版本在实现预定义目标 (如提高点击率、转化率或任何其他关键绩效指标) 方面更有效。"
 section: "A"
+related:
+  - mutation-testing
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
 order: 0
 ---
 

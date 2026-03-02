@@ -2,6 +2,12 @@
 title: "软件测试 ｜ Software Testing"
 description: "软件测试 (Software testing) 是评估和验证软件应用程序或系统是否按预期工作的过程。测试的目的可以是质量保证、功能验证、性能评估或发现缺陷。测试涉及执行软件组件或系统组件，以评估一个或多个感兴趣的属性。在 测试自动化 (test automation) 环境中，软件测试通常指使用 自动化工具和框架 (automated tools and frameworks) 在软件发布到生产环境之前，对其执行预先编写的测试脚本。自动化测试的范围可以从验证单个功能的简单单元测试，到验证集成系统工作流的复杂端到端测试。自动化测试 (automated testing) 的目标是 提高效率 (increase efficiency)、减少 测试执行 (test execution) 时间，并提供 一致的 测试覆盖率 (test coverage)。它对于 回归测试 (regression testing) 特别有用，因为回归测试能确保新的更改不会在现有功能中引入新的缺陷。自动化测试可以频繁运行，并集成到持续集成和部署流水线中，从而实现问题的早期检测和向开发人员的更快速反馈。"
 section: "S"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - web-testing
+  - test-case
 order: 0
 ---
 

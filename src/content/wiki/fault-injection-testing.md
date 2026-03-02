@@ -2,6 +2,12 @@
 title: "故障注入测试 ｜ Fault Injection Testing"
 description: "故障注入测试 (FIT) 是一种通过故意向系统中引入错误来评估其健壮性和错误处理能力的方法。这种技术模拟各种故障场景（如网络延迟、服务器停机、系统调用失败），以观察系统在异常条件下的表现，确保其能够优雅地处理并从故障中恢复。 常用的 FIT 工具有 Chaos Monkey、Jepsen 或 Gremlin。例如，使用 Gremlin 可以通过简单的命令模拟服务关闭： `gremlin attack add --type shutdown --target service --length 60s`"
 section: "F"
+related:
+  - failover-testing
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - api-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "确认测试 ｜ Validation Testing"
 description: "确认测试 (Validation Testing) 是在开发过程中或结束时评估软件系统或组件的过程，以确定它是否满足规定的需求。它是一种 黑盒测试 形式，测试软件时不查看内部代码结构，而是关注软件实际做什么。"
 section: "V"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

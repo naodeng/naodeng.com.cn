@@ -2,6 +2,12 @@
 title: "功能需求 ｜ Functional Requirements"
 description: "功能需求描述了系统应该“做什么”，详细说明了系统必须具备的行为、功能和特性。这些需求源于用户需求、业务目标或监管标准，通常以用户故事 (User Stories)、用例 (Use Cases) 或系统需求的形式表达。 功能需求应具备： * 明确性 (Specific)：清晰无歧义。 * 可衡量性 (Measurable)：包含衡量履行情况的准则。 * 可测试性 (Testable)：可通过测试、检查或分析进行验证。"
 section: "F"
+related:
+  - automated-testing
+  - functional-testing
+  - use-case-testing
+  - manual-testing
+  - test-case
 order: 0
 ---
 

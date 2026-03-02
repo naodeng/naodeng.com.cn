@@ -2,6 +2,12 @@
 title: "可靠性测试 ｜ Reliability Testing"
 description: "可靠性测试是软件测试的一个子集，专注于验证应用程序在特定条件下、定义时间段内执行其预期功能的能力。其目标是发现可能影响软件可靠性的问题，如设计、功能和性能方面的缺陷。可靠性测试的关键方面包括："
 section: "R"
+related:
+  - mtbf
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
 order: 0
 ---
 

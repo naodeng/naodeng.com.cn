@@ -2,6 +2,12 @@
 title: "测试基础设施 ｜ Test Infrastructure"
 description: "测试基础设施 (Test Infrastructure) 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 自动化测试 (automated tests) 的执行和管理。它包含了一系列支持 测试用例 (test cases) 创建、执行、分析以及结果报告的工具和流程。一个健壮的测试基础设施能够支持测试的 并行执行 (parallel execution)，适应各种测试类型（如单元测试、集成测试、系统测试和验收测试），并提供 测试数据管理 (test data management) 和 测试环境配置 (test environment configuration) 的框架。它被设计为具有 可扩展性 (scalable) 和 灵活性 (flexible)，允许根据需要添加新的工具和技术。为了确保 效率 (efficiency) 和 可靠性 (reliability)，测试基础设施应实施 版本控制 (version-controlled) 并被视为应用程序代码库的一部分，其变更需经过评审流程。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-data
+  - web-testing
 order: 0
 ---
 

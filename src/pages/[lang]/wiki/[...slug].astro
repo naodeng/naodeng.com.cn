@@ -53,75 +53,26 @@ const breadcrumbs = [
 const entries = await getCollection("wiki");
 const sidebarSections = buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
-
-function extractTokens(text: string): string[] {
-  const normalized = text.toLowerCase();
-  const tokens: string[] = [];
-  const enMatches = normalized.match(/[a-z][a-z0-9-]{2,}/g) ?? [];
-  const zhMatches = normalized.match(/[\u4e00-\u9fff]{2,}/g) ?? [];
-  tokens.push(...enMatches);
-  for (const phrase of zhMatches) {
-    tokens.push(phrase);
-    // Add Chinese bigrams to improve matching granularity.
-    if (phrase.length >= 4) {
-      for (let i = 0; i < phrase.length - 1; i++) {
-        tokens.push(phrase.slice(i, i + 2));
-      }
-    }
-  }
-  return tokens;
-}
-
-function buildFreq(tokens: string[]): Map<string, number> {
-  const freq = new Map<string, number>();
-  for (const token of tokens) freq.set(token, (freq.get(token) ?? 0) + 1);
-  return freq;
-}
-
-const profiles = entries.map((e) => {
+const slugCaseMap = new Map(entries.map((e) => {
+  const slug = wikiIdToSlug(e.id);
+  return [slug.toLowerCase(), slug];
+}));
+const labelMap = new Map(entries.map((e) => {
   const slug = wikiIdToSlug(e.id);
   const labelZh = getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slugToTitleEn(slug);
-  const rawText = [labelZh, e.data?.title ?? "", e.data?.description ?? "", e.body ?? ""].join("\n");
-  const tokens = extractTokens(rawText);
+  return [slug, labelZh];
+}));
+const explicitRelated = entry.data.related ?? [];
+const relatedSlugs = [...new Set(explicitRelated)]
+  .filter((s) => (slugCaseMap.get(s.toLowerCase()) ?? s).toLowerCase() !== slugParam.toLowerCase())
+  .slice(0, 5);
+const relatedItems = relatedSlugs.map((s) => {
+  const canonical = slugCaseMap.get(s.toLowerCase()) ?? s;
   return {
-    slug,
-    labelZh,
-    freq: buildFreq(tokens),
-    tokenSet: new Set(tokens),
-    explicitRelated: e.data?.related ?? [],
+    slug: canonical,
+    labelZh: labelMap.get(canonical) ?? canonical,
   };
 });
-
-const totalDocs = profiles.length;
-const docFreq = new Map<string, number>();
-for (const profile of profiles) {
-  for (const token of profile.tokenSet) {
-    docFreq.set(token, (docFreq.get(token) ?? 0) + 1);
-  }
-}
-
-const currentProfile = profiles.find((p) => p.slug === slugParam);
-const relatedItems =
-  !currentProfile
-    ? []
-    : profiles
-        .filter((p) => p.slug !== slugParam)
-        .map((candidate) => {
-          let score = 0;
-          for (const [token, tfA] of currentProfile.freq) {
-            const tfB = candidate.freq.get(token) ?? 0;
-            if (!tfB) continue;
-            const df = docFreq.get(token) ?? 1;
-            const idf = Math.log((totalDocs + 1) / (df + 1)) + 1;
-            score += tfA * tfB * idf * idf;
-          }
-          // Manual related metadata still counts as a strong relevance signal.
-          if (currentProfile.explicitRelated.includes(candidate.slug)) score += 200;
-          if (candidate.explicitRelated.includes(currentProfile.slug)) score += 120;
-          return { ...candidate, score };
-        })
-        .sort((a, b) => b.score - a.score || a.labelZh.localeCompare(b.labelZh, "zh-Hans-CN"))
-        .slice(0, 5);
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 

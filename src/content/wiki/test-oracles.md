@@ -2,6 +2,12 @@
 title: "测试判定依据 ｜ Test Oracles"
 description: "测试判定依据 (Test Oracles) 是一种用于确定软件系统在测试期间是否产生正确结果的机制或原则。它充当真理来源 (source of truth)，可将测试的实际结果与其进行比较以确定正确性。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case
+  - test-suite
+  - validation-testing
 order: 0
 ---
 

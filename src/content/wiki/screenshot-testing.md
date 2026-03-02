@@ -2,6 +2,12 @@
 title: "截图测试 ｜ Screenshot Testing"
 description: "截图测试是一种视觉验证方法，通过捕获软件应用程序的用户界面 (UI) 并将其与基准图像进行比较来检测更改或异常。它涉及在应用流程的不同阶段对网页、移动应用或任何图形界面进行截图，以确保视觉一致性和功能性。执行步骤：1. 捕获基准图像：代表预期状态的截图。2. 运行测试：执行自动化测试并在相同点捕获新截图。3. 比较截图：使用图像比较工具或算法检测差异。4. 分析结果：评审差异是预期的更改还是视觉缺陷。"
 section: "S"
+related:
+  - visual-regression-testing
+  - browserstack
+  - cross-browser-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

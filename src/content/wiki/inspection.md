@@ -2,6 +2,12 @@
 title: "检查 ｜ [检查](/zh-cn/wiki/inspection/)"
 description: "检查 ([检查](/zh-cn/wiki/inspection/)) 是一种正式、严谨的同行评审过程。由指定的评审员 (Inspectors) 对工作产品（如需求、设计、代码）进行详细审查，以发现缺陷、违规及设计问题。它是静态分析的一种，不涉及代码执行，主要依靠人工及查核表（Checklists）进行。"
 section: "I"
+related:
+  - static-testing
+  - verification
+  - validation-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

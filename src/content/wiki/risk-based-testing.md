@@ -2,6 +2,12 @@
 title: "基于风险的测试 ｜ Risk-based Testing"
 description: "基于风险的测试 (RBT) 是一种根据风险的概率和影响来决定测试活动优先级的测试方法。它涉及在问题发生之前识别潜在问题，并将资源分配给风险最高的测试区域。在 RBT 中，“风险”是指缺陷发生的可能性及其对系统运行或业务的潜在后果。实施 RBT 的典型步骤包括：1. 识别潜在风险。2. 评估并根据严重程度和可能性进行优先级排序。3. 定义测试策略和目标以减轻高风险。4. 相应地分配测试资源。5. 执行测试，优先关注关键区域。6. 根据需要监控和调整测试计划。RBT 策略是概述如何在项目中应用 RBT 的计划。JIRA 或 Quality Center 等工具可以辅助管理。故障模式与影响分析 (FMEA) 或故障树分析 (FTA) 等技术常用于系统分析风险。自动化在 RBT 中起着关键作用，可高效执行重复的高优先级测试用例。"
 section: "R"
+related:
+  - software-risk-analysis
+  - manual-testing
+  - test-plan
+  - test-approach
+  - test-case-management
 order: 0
 ---
 

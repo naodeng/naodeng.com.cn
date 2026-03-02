@@ -2,6 +2,12 @@
 title: "文档测试 ｜ Documentation Testing"
 description: "文档测试 (Documentation Testing) 涉及检查和验证随软件应用程序提供的书面说明、手册和用户指南。该过程确保文档清晰、准确且对最终用户有帮助，并与软件的功能和用户界面保持一致。关键要素包括："
 section: "D"
+related:
+  - swagger
+  - documentation-testing
+  - api
+  - api-testing
+  - manual-testing
 order: 0
 ---
 

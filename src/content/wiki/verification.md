@@ -2,6 +2,12 @@
 title: "验证 ｜ Verification"
 description: "验证 (Verification) 在软件测试中是评估开发阶段的工作产品以确保它们满足规定需求的过程。这是一种检查文档和文件的静态方法。"
 section: "V"
+related:
+  - inspection
+  - validation-testing
+  - static-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

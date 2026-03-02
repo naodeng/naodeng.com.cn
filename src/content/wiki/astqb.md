@@ -2,6 +2,12 @@
 title: "美国软件测试认证委员会 ｜ ASTQB"
 description: "关于 ASTQB 的问题？"
 section: "A"
+related:
+  - istqb
+  - quality-management
+  - manual-testing
+  - automated-testing
+  - web-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "测试用例 ｜ Test Case"
 description: "测试用例 (Test Case)** 是软件测试中的一组条件或变量，测试人员通过这些条件或变量来确定应用程序、软件系统或其某个功能是否按原定的设计运行。编写测试用例是测试过程中的关键步骤，因为它们有助于确保软件按预期运行并满足所有需求。"
 section: "T"
+related:
+  - test-case-management
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - use-case-testing
 order: 0
 ---
 

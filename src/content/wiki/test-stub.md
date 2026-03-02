@@ -2,6 +2,12 @@
 title: "测试桩 ｜ Test Stub"
 description: "测试桩 (Test Stub) 是接口或类的一个极简实现，在测试期间用于替换被测系统交互的真实组件。桩为测试期间的函数调用提供预定义的响应，而不执行所替换组件的任何实际代码。"
 section: "T"
+related:
+  - mock-testing
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-class
 order: 0
 ---
 

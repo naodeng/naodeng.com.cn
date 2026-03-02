@@ -2,6 +2,12 @@
 title: "测试规范 ｜ Test Specification"
 description: "测试规范 (Test Specification) 是一份详细文档，概述了拟定测试活动的范围、方法、资源和进度。它定义了测试条件、测试用例、测试流程以及测试通过/失败的标准。它是测试计划过程的记录，详细说明了如何实现测试目标。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - test-case
 order: 0
 ---
 

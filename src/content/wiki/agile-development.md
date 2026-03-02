@@ -2,6 +2,12 @@
 title: "敏捷开发 ｜ Agile Development"
 description: "敏捷开发 (Agile Development) 是一种协作式、迭代式且增量式的软件开发方法，它强调灵活性、客户满意度以及功能性软件的快速交付。它很重要，因为它允许团队适应不断变化的需求，通过持续反馈提高产品质量，并通过按可管理的增量发布来缩短上市时间。"
 section: "A"
+related:
+  - scrum
+  - automated-testing
+  - manual-testing
+  - shift-left-testing
+  - test-case-management
 order: 0
 ---
 

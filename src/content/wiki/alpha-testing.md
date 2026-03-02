@@ -2,6 +2,12 @@
 title: "Alpha 测试 ｜ Alpha Testing"
 description: "Alpha 测试 (Alpha testing) 是一个内部验证过程，旨在在将产品发布给真实用户之前识别缺陷。它通常在软件通过初始开发和测试阶段之后，但在 Beta 测试 之前，在开发者的场所进行。这个阶段涉及白盒和黑盒测试技术，测试团队可以访问源代码。"
 section: "A"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - validation-testing
+  - test-suite
 order: 0
 ---
 

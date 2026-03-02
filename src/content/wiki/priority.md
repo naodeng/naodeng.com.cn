@@ -2,6 +2,12 @@
 title: "优先级 ｜ Priority"
 description: "优先级是指执行测试用例和处理问题的**顺序**，基于它们对业务的重要性或修复的紧急程度。这是一个战略决策，直接影响测试执行计划和资源分配。"
 section: "P"
+related:
+  - automated-testing
+  - manual-testing
+  - test-case-management
+  - test-case
+  - test-suite
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "自底向上集成 ｜ Bottom-up Integration"
 description: "自底向上集成（Bottom-up Integration）是一种测试方法，它首先测试应用程序的最低层级（如单个函数或模块），然后再将它们集成到更高层级的组合中，并最终形成完整的系统。这种方法依赖于使用测试驱动程序（test drivers）来模拟尚未开发或测试的高层级模块。"
 section: "B"
+related:
+  - integration-testing
+  - incremental-testing
+  - top-down-integration
+  - system-integration-testing
+  - automated-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "玻璃盒测试 ｜ Glass Box Testing"
 description: "玻璃盒测试 (Glass Box Testing)，也称为白盒测试 (White Box Testing)，是一种测试方法，测试人员对软件的内部运作（包括代码结构、算法和逻辑）具有完全的可见度。测试过程涉及查看代码以识别潜在问题，并确保所有路径和分支都得到了测试。它要求测试人员具备较强的代码理解能力及编程技能。"
 section: "G"
+related:
+  - white-box-testing
+  - grey-box-testing
+  - black-box-testing
+  - manual-testing
+  - automated-testing
 order: 0
 ---
 

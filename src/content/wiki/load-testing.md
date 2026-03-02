@@ -2,6 +2,12 @@
 title: "负载测试 ｜ Load Testing"
 description: "负载测试 (Load Testing) 是一种性能测试，评估系统在预期负载下的行为。它通过模拟多个用户同时访问系统来衡量响应并确保稳定性，旨在系统上线前识别性能问题。负载测试的关键考量因素包括："
 section: "L"
+related:
+  - scalability-testing
+  - manual-testing
+  - web-test-automation-tools
+  - web-testing
+  - automated-testing
 order: 0
 ---
 

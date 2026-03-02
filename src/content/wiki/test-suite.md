@@ -2,6 +2,12 @@
 title: "测试套件 ｜ Test Suite"
 description: "测试套件 (Test Suite) 是为了在特定条件下测试软件应用而组合在一起的 测试用例 (test cases) 集合。它作为一个容器，存放逻辑相关的测试，这些相关性可以基于功能、覆盖的特性、测试类型（如回归、冒烟、性能测试）或目标测试环境。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-case
+  - test-runner
 order: 0
 ---
 

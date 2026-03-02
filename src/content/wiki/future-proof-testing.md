@@ -2,6 +2,12 @@
 title: "前瞻性测试 ｜ Future Proof Testing"
 description: "前瞻性测试旨在确保你的测试自动化框架随着技术和需求的发展，依然保持有效、相关且易于维护。它通过创建对软件及其环境变化具有韧性的测试，减少频繁更新的需求。 核心在于抽象 (Abstraction)和模块化 (Modularity)。"
 section: "F"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - web-testing
+  - test-case-management
 order: 0
 ---
 

@@ -3,6 +3,12 @@ title: "OTT 测试 ｜ OTT Testing"
 description: "OTT 代表 **Over-The-Top**（互联网电视/过顶服务）。该术语通常指通过互联网交付内容，绕过传统分发方式（如有限电视或卫星）的服务。
   OTT 应用测试侧重于确保流媒体服务的质量，包括通过互联网交付音频、视频和其他媒体，而无需多系统运营商参与内容的控制或分发。"
 section: "O"
+related:
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - api-testing
+  - test-suite
 order: 0
 ---
 

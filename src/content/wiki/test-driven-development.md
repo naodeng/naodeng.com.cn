@@ -2,6 +2,12 @@
 title: "测试驱动开发 ｜ Test-Driven Development, TDD"
 description: "测试驱动开发 (Test-Driven Development, TDD) 是一种 软件开发方法 (software development approach)，其要求在编写用于验证的生产代码之前先编写测试。这是一个循环过程：开发人员先编写一个定义了期望改进或新功能的测试，然后编写最少量的代码使该测试通过，最后将新代码重构成可接受的标准。下面是一个使用 TypeScript 的基本示例："
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - unit-testing
+  - test-suite
+  - shift-left-testing
 order: 0
 ---
 

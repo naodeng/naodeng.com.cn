@@ -2,6 +2,12 @@
 title: "测试比较 ｜ Test Comparison"
 description: "测试比较 (Test Comparison) 是在软件测试中评估并将实际测试结果与预期结果进行对比的过程。这一关键步骤确保了软件按预期运行，并能识别及解决任何偏差。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - visual-regression-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

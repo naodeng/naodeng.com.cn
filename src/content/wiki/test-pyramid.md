@@ -2,6 +2,12 @@
 title: "测试金字塔 ｜ Test Pyramid"
 description: "测试金字塔 (Test Pyramid) 是一个隐喻，描述了软件项目中各类自动化测试的最佳分布。它强调应拥有大量的底层 单元测试 (unit tests)，而较少的高层 集成测试 (integration tests) 和 端到端测试 (end-to-end tests)。金字塔作为创建平衡测试组合的指南，对于确保构建健壮且可维护的 测试套件 (test suite) 至关重要。实施测试金字塔涉及三个主要层面："
 section: "T"
+related:
+  - automated-testing
+  - end-to-end-testing
+  - manual-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "系统测试 ｜ System Testing"
 description: "系统测试 (System testing) 是一个 高层级 (high-level) 的测试阶段，在这个阶段，对一个完整的、集成后的系统进行评估，以验证其是否满足指定的需求。它涉及将系统作为一个整体进行测试，以确保所有组件和功能能够正确协同工作，通常在 单元测试 和 集成测试 (integration testing) 之后执行。这一阶段检查整个系统是否符合业务需求，并评估系统是否已准备好发布。在 系统测试 期间，应用程序在一个高度模拟生产环境（软件最终部署的环境）的环境中进行测试。这包括对 功能需求 (functional requirements) 以及性能、安全性和易用性等非功能性需求的测试。其目的是识别任何可能影响用户体验或导致系统故障的缺陷。系统测试 的 测试用例 (test cases) 源自系统的 规范 和 用例 (use cases)，确保所有用户流和交互都得到测试。拥有一个覆盖各种场景（包括边缘情况和失败路径）的全面 测试套件 (test suite) 至关重要。系统测试 通常是自动化的，以提高效率和可重复性。"
 section: "S"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

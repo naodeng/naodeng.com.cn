@@ -2,6 +2,12 @@
 title: "缺陷/漏洞 ｜ Bug"
 description: "Bug 生命周期是指一个 Bug 从发现到解决的过程。它通常包括以下阶段：1. 新建 (New)：一旦发现，Bug 被报告并进入生命周期。2. 已指派 (Assigned)：一名开发人员被指派负责处理该 Bug。3. 打开 (Open)：开发人员开始调查并着手处理该 Bug。4. 已修复 (Fixed)：开发人员已处理该 Bug，等待验证。5. 待复测 (Pending Retest)：修复已就绪，等待 QA 团队复测。6. 复测 (Retest)：QA 测试修复情况，以确保 Bug 已解决。7. 已验证 (Verified)：QA 确认 Bug 已修复。8. 已关闭 (Closed)：Bug 已解决，无需进一步操作。9. 重新打开 (Reopened)：如果问题仍然存在或再次出现，Bug 将被重新打开，循环继续。"
 section: "B"
+related:
+  - priority
+  - severity
+  - inspection
+  - manual-testing
+  - automated-testing
 order: 0
 ---
 

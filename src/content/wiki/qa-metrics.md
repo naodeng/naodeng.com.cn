@@ -2,6 +2,12 @@
 title: "QA 指标 ｜ QA Metrics"
 description: "QA 指标是用于评估软件开发中测试过程质量和有效性的量化测量指标。它们提供了测试周期各个方面的洞察，如效率、有效性和进展，这对于知情决策和持续改进至关重要。常见的 QA 指标包括："
 section: "Q"
+related:
+  - manual-testing
+  - software-quality
+  - quality-management
+  - test-case-management
+  - automated-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "页面对象模型 ｜ Page Object Model"
 description: "页面对象模型 (Page Object Model, POM) 是自动化测试中的一种设计模式，它将 Web 页面的属性和行为封装在一个类中。每个页面类作为 Web 页面的接口，所有与该页面的交互都通过页面对象进行，从而隐藏了底层的 Selenium 调用。Java 示例（使用 Selenium）："
 section: "P"
+related:
+  - webdriver
+  - web-automation
+  - selenium
+  - ui-testing
+  - automated-testing
 order: 0
 ---
 

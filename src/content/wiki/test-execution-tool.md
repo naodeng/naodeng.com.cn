@@ -2,6 +2,12 @@
 title: "测试执行工具 ｜ Test Execution Tool"
 description: "测试执行工具 (Test Execution Tool) 能够自动执行针对软件应用程序预先编写的 测试用例 (test cases)。与 手动测试 (manual testing) 不同（在手动测试中，测试人员需要逐步执行测试），此类工具承担了重复性任务，自动运行测试并在无需人工干预的情况下报告结果。测试执行工具通常具有管理 测试数据 (test data)、处理 测试环境 (test environments) 以及与软件开发生命周期中的其他工具（如问题跟踪系统或 CI/CD 流水线）集成的功能。它们可以批量、并行或根据特定计划执行测试，并能够生成详细的日志和报告，以辅助调试和 质量保证 (quality assurance) 过程。经验丰富的自动化工程师利用这些工具来提高测试过程的效率和可靠性，确保测试执行的一致性，并达到手动测试无法企及的规模。工具的选择取决于多种因素，包括应用程序的技术栈、测试用例的复杂性以及现有的基础设施。为了有效地使用这些工具，工程师应维护整洁、结构良好的测试代码，遵循测试设计的最佳实践，并确保为运行环境正确配置工具。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - web-testing
+  - test-case-management
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "灰盒测试 ｜ Grey Box Testing"
 description: "灰盒测试 (Grey Box Testing) 结合了黑盒测试和白盒测试的方法论。测试人员在对应用内部运作有部分了解的情况下设计测试用例。测试人员利用接口定义和高层架构图，创建既能探索功能性又能探索结构性方面的测试。"
 section: "G"
+related:
+  - black-box-testing
+  - manual-testing
+  - glass-box-testing
+  - white-box-testing
+  - automated-testing
 order: 0
 ---
 

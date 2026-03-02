@@ -2,6 +2,12 @@
 title: "黑盒测试 ｜ Black Box Testing"
 description: "黑盒测试（Black Box Testing）是一种软件测试方法，它在不窥视应用程序内部结构或运作的情况下评估其功能。该技术专注于软件应用程序的输入和输出，用于确保软件满足指定的规格要求，并在各种场景下表现符合预期。"
 section: "B"
+related:
+  - grey-box-testing
+  - manual-testing
+  - glass-box-testing
+  - automated-testing
+  - white-box-testing
 order: 0
 ---
 

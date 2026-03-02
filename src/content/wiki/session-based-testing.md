@@ -2,6 +2,12 @@
 title: "基于会话的测试 ｜ Session-Based Testing"
 description: "基于会话的测试是一种探索性测试技术，它将测试活动组织成限时、不受干扰的“会话 (Sessions)”。每个会话专注于应用程序的特定区域，测试人员利用其技能和创造力来发现缺陷并探索软件行为。测试章程 (Test Charters) 用于引导探索，概述会话目标而无需规定具体的测试用例。这使得测试方法具有灵活性和适应性。在会话期间，测试人员维护一份会话日志 (Session Log) 来记录其操作、观察结果和想法。该日志对于责任追溯和为未来的测试设计提供信息至关重要。会话通常持续 60 到 120 分钟，确保精力集中同时防止疲劳。会话结束后，测试人员通常会与利益相关者进行总结汇报 (Debrief)，讨论发现并调整策略。"
 section: "S"
+related:
+  - exploratory-testing
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

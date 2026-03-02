@@ -2,6 +2,12 @@
 title: "Cypress ｜ Cypress"
 description: "Cypress 是一个现代前端测试框架。它提供了一个功能丰富的交互式测试运行器 (test runner)，允许你在查看被测应用程序的同时观察命令的执行。其核心特性包括："
 section: "C"
+related:
+  - automated-testing
+  - test-runner
+  - browserstack
+  - web-testing
+  - web-test-automation-tools
 order: 0
 ---
 

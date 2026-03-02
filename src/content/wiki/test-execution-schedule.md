@@ -2,6 +2,12 @@
 title: "测试执行进度表 ｜ Test Execution Schedule"
 description: "测试执行进度表是一份时间表，概述了在测试阶段将执行哪些 测试用例 (test cases) 以及按什么顺序执行。它是测试规划过程的关键组成部分，确保测试活动与项目截止日期和资源可用性保持一致。"
 section: "T"
+related:
+  - manual-testing
+  - test-plan
+  - automated-testing
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "V 模型 ｜ V-Model"
 description: "V 模型 (V-Model) 在软件测试中是一种开发方法论，它将过程表示为 V 形图，强调每个开发阶段与其对应的测试阶段之间的关联。V 的左侧代表需求和设计阶段的分解，而右侧反映了集成和测试阶段，最终达到系统验证。"
 section: "V"
+related:
+  - manual-testing
+  - test-plan
+  - stlc
+  - automated-testing
+  - validation-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "跨浏览器测试 ｜ Cross-Browser Testing"
 description: "跨浏览器测试 (Cross-browser testing) 是验证 Web 应用程序在不同 Web 浏览器上是否按预期工作的过程。这涉及在各种浏览器版本和平台上运行测试，以确保功能和设计的一致性。其目标是检测可能影响不同浏览器用户的、在开发或单浏览器测试期间不明显的问题。"
 section: "C"
+related:
+  - browserstack
+  - web-testing
+  - web-automation
+  - compatibility-testing
+  - headless-testing
 order: 0
 ---
 

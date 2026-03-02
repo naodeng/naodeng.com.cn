@@ -2,6 +2,12 @@
 title: "测试场景 ｜ Test Scenario"
 description: "测试场景 (Test Scenario) 是对与被测软件交互时可能出现的潜在情况的高级文档记录。它描绘了软件的功能，确保覆盖广泛的用户行为。测试场景比 测试用例 (test cases) 更粗略，提供了系统能力和端到端流程的全景图。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-case
+  - web-testing
 order: 0
 ---
 

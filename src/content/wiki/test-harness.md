@@ -2,6 +2,12 @@
 title: "测试桩/测试执行环境 ｜ Test Harness"
 description: "测试桩/测试执行环境 (Test Harness) 在软件测试中是指配置好的软件和 测试数据 (test data) 的集合，用于通过在各种条件下运行程序单元并监控其行为和输出来对其进行测试。它充当 自动化测试 (automated testing) 的受核环境，在无需人工干预的情况下执行 测试用例 (test cases) 并观察结果。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - web-testing
+  - test-case-management
 order: 0
 ---
 

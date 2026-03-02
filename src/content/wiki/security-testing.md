@@ -2,6 +2,12 @@
 title: "安全测试 ｜ Security Testing"
 description: "安全测试是一个旨在揭示软件应用程序中可能因攻击或漏洞导致信息、收入或声誉损失的漏洞、威胁和风险的过程。它对系统进行全面评估，确保即使面对恶意攻击，数据也能得到保护，且应用功能按预期运行。主要方法包括："
 section: "S"
+related:
+  - penetration-testing
+  - fuzz-testing
+  - manual-testing
+  - automated-testing
+  - web-testing
 order: 0
 ---
 

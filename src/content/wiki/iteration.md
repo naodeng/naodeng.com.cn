@@ -2,6 +2,12 @@
 title: "迭代｜ Iteration"
 description: "在软件开发中，迭代 (Iteration) 指的是开发周期中的一个独立阶段。在此阶段内，一组功能或代码变更会经过设计、开发、测试和评审。"
 section: "I"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-case
+  - regression-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "测试类 ｜ Test Class"
 description: "测试类 (Test Class) 是测试方法的集合，它们共同测试软件中特定类或单元的功能。它作为 测试用例 (test cases) 的容器，其结构通常包括设置必要的测试环境、执行测试方法以及在测试运行后进行清理。在面向对象编程中，测试类 通常镜像它打算测试的类，通常具有相似的名称，但位于专门用于测试的独立项目或命名空间中。例如，如果你有一个名为 `Calculator` 的类，你可能会有一个对应的名为 `CalculatorTests` 的 测试类。测试类 使用所使用的测试框架提供的特定语法和注解编写，例如 JUnit 或 TestNG 中的 `@Test`。这些注解向框架发出信号，表明哪些方法是测试，并可能提供有关如何运行测试的额外元数据。"
 section: "T"
+related:
+  - automated-testing
+  - manual-testing
+  - test-suite
+  - test-runner
+  - junit-testing
 order: 0
 ---
 

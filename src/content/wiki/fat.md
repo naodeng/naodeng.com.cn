@@ -2,6 +2,12 @@
 title: "工厂验收测试 ｜ Fat"
 description: "关于 FAT 的问题？"
 section: "F"
+related:
+  - manual-testing
+  - acceptance-testing
+  - automated-testing
+  - test-case
+  - test-case-management
 order: 0
 ---
 

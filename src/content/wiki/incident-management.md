@@ -2,6 +2,12 @@
 title: "事件管理 ｜ Incident Management"
 description: "事件管理 (Incident Management) 是软件测试中处理和管理软件故障或缺陷后果的有组织方法。它涉及报告、跟踪和解决“事件”（即软件实际行为与预期行为的偏离）的系统过程。事件通常在测试阶段识别，并记录到跟踪系统中，包含描述、严重程度 (Severity)、复现步骤和发现环境等关键细节。"
 section: "I"
+related:
+  - incident-report
+  - quality-management
+  - test-management
+  - software-quality-management
+  - test-case-management
 order: 0
 ---
 

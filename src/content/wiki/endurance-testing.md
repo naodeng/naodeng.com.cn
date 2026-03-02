@@ -2,6 +2,12 @@
 title: "耐久性测试 ｜ Endurance Testing"
 description: "# 耐久性测试 ｜ Endurance Testing #### 基础与重要性 - 软件测试中的耐久性测试是什么？ 耐久性测试 (Endurance Testing)，也称为浸泡测试 (Soak Testing)，涉及在相当长的周期内评估软件在显著负载下的性能和稳定性。"
 section: "E"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
+  - load-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "严重程度 ｜ Severity"
 description: "在软件测试中，**严重程度 (Severity)** 是指缺陷对软件运行的影响程度。它表明了 Bug 影响系统功能、性能或稳定性的程度。严重程度通常分为 **致命/致命 (Critical)**、**严重 (High)**、**一般 (Medium)** 和 **轻微 (Low)** 等类别，反映了从系统崩溃或数据丢失到不显着损害用户体验的小问题。"
 section: "S"
+related:
+  - bug
+  - priority
+  - manual-testing
+  - inspection
+  - automated-testing
 order: 0
 ---
 

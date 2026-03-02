@@ -2,6 +2,12 @@
 title: "环境搭建 ｜ Setup"
 description: "环境搭建至关重要，因为它为稳定、可靠且高效的测试过程奠定了基础。结构良好的环境搭建可确保自动化测试在一致的环境中执行，这对于产生可重复且准确的测试结果至关重要。它还促进了端到端 (e2e) 测试所需的各种工具和框架的集成，例如测试运行器、断言库和报告工具。"
 section: "S"
+related:
+  - automated-testing
+  - test-data
+  - manual-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

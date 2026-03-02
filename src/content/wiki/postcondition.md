@@ -2,6 +2,12 @@
 title: "后置条件 ｜ Postcondition"
 description: "后置条件是在执行完测试用例后必须达到的状态，只有达到该状态，测试才被视为成功。它验证测试操作的结果，确保系统的功能与**预期结果**一致。"
 section: "P"
+related:
+  - test-case
+  - use-case-testing
+  - manual-testing
+  - automated-testing
+  - test-suite
 order: 0
 ---
 

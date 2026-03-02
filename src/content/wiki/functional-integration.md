@@ -2,6 +2,12 @@
 title: "功能集成 ｜ Functional Integration"
 description: "功能集成是将相关的多个功能单元合并在一起并进行测试的过程，以确保它们作为一个整体能够正确运行。它侧重于集成后的功能之间的交互和数据流，验证组合后的功能是否符合特定需求。功能集成通常在单元测试之后、系统测试之前进行，旨在发现接口缺陷。"
 section: "F"
+related:
+  - automated-testing
+  - manual-testing
+  - integration-testing
+  - web-testing
+  - test-suite
 order: 0
 ---
 

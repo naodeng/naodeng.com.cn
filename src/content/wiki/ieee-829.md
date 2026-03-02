@@ -2,6 +2,12 @@
 title: "IEEE 829 ｜ Ieee 829"
 description: "IEEE 829 标准，全称为 IEEE 软件和系统测试文档标准 (IEEE Standard for Software and System Test Documentation)，提供了一个结构化的测试文档创建框架。该标准定义了整个测试生命周期中测试文档的形式和内容，包括：测试计划 (Test Plans)、测试设计规范 (Test Design Specifications)、测试用例规范 (Test Case Specifications)、测试规程规范 (Test Procedure Specifications)、测试项传递报告、测试日志 (Test Logs)、缺陷/事件报告 (Incident Reports) 以及测试总结报告等。"
 section: "I"
+related:
+  - manual-testing
+  - test-plan
+  - automated-testing
+  - test-case-management
+  - test-case
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "独立确认与验证 ｜ Independent Verification And Validation"
 description: "独立确认与验证 (IV&V) 是由独立于开发团队的第三方进行的质量保证过程。其核心在于“独立性”，这意味着评估者不参与系统的设计、开发或运维，从而保证评估的客观公正。 * 确认 (Verification - 验证)：确保“把产品做对”（Are we building the product right?），即是否符合设计规范。 * 验证 (Validation - 确认)：确保“做了对的产品”（Are we building the right product?），即是否满足用户真实需求。"
 section: "I"
+related:
+  - quality-management
+  - risk-based-testing
+  - software-quality
+  - verification
+  - software-quality-management
 order: 0
 ---
 

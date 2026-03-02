@@ -2,6 +2,12 @@
 title: "时间盒测试 ｜ Timebox Testing"
 description: "时间盒测试 (Timebox Testing) 是一种聚焦的测试方法，它将测试活动约束在一个预先确定的、固定的时长内（即“时间盒”）。这种方法强调效率和优先级，确保在分配的时间内执行最关键的测试。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - grey-box-testing
 order: 0
 ---
 

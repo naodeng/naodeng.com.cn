@@ -2,6 +2,12 @@
 title: "Webdriver ｜ Webdriver"
 description: "WebDriver 是 Selenium 的核心组件，它提供了一个编程接口来控制和操作 Web 浏览器。"
 section: "W"
+related:
+  - selenium
+  - cross-browser-testing
+  - web-automation
+  - selenium-ide
+  - xpath-query
 order: 0
 ---
 

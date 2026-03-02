@@ -2,6 +2,12 @@
 title: "后端测试 ｜ Back-end Testing"
 description: "后端测试（Back-end Testing）是对服务器端逻辑、数据库、API、鉴权、性能与安全机制进行验证的测试活动，目标是在不依赖 UI 的情况下保障数据正确性、业务规则一致性和系统稳定性。"
 section: "B"
+related:
+  - api-testing
+  - end-to-end-testing
+  - manual-testing
+  - automated-testing
+  - test-data
 order: 0
 ---
 

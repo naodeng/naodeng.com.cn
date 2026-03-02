@@ -2,6 +2,12 @@
 title: "测试可观测性 ｜ Test Observability"
 description: "测试可观测性 (Test Observability) 指的是在 测试执行 (test execution) 期间检查和理解系统内部状态的能力。它涉及收集并分析日志、指标和追踪等数据，以深入了解系统的行为和性能。这种可见性对于识别问题、理解系统交互以及确保自动化测试的可靠性至关重要。为了增强测试可观测性，可以考虑实施 结构化日志 (structured logging)，使用一致的日志格式和级别，从而便于解析和分析。监控 (Monitoring) 工具可以跟踪关键 性能指标 (performance indicators) 并针对异常发出警报。插桩 (Instrumentation) 也很关键，它涉及添加代码或利用工具来收集系统运行数据。对于 测试数据 (test data) 管理，应采用 版本控制 (version control) 和 数据标记 (data tagging) 等实践来跟踪变更和使用情况，辅助实现可追溯性和可重现性。提高可观测性的常见实践包括： - 使用 断言 (assertions) 来验证预期结果。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-data
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

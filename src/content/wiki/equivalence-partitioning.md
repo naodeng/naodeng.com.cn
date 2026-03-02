@@ -2,6 +2,12 @@
 title: "等价类划分 ｜ Equivalence Partitioning"
 description: "关于等价类划分的问题？"
 section: "E"
+related:
+  - boundary-testing
+  - test-case
+  - black-box-testing
+  - test-case-management
+  - automated-testing
 order: 0
 ---
 

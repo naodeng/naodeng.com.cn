@@ -2,6 +2,12 @@
 title: "测试执行器 ｜ Test Runner"
 description: "测试执行器 (Test Runner) 是一个编排自动化 测试用例 (test cases) 执行的工具。它负责实例化测试用例、提供测试结果，并通常与其他工具集成进行报告和分析。它是 测试自动化 (test automation) 设置的核心组件，使测试能在一致且受控的环境中自动运行。"
 section: "T"
+related:
+  - test-suite
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - test-case-management
 order: 0
 ---
 

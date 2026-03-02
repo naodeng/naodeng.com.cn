@@ -2,6 +2,12 @@
 title: "变更控制 ｜ Change Control"
 description: "回归测试 (Regression testing) 是一种软件测试，用于验证先前开发并测试过的软件在经过更改或与其他软件对接后，是否仍能正常运行。更改可能包括软件增强、补丁、配置更改，甚至是环境变更。"
 section: "C"
+related:
+  - change-requests
+  - automated-testing
+  - regression-testing
+  - manual-testing
+  - impact-analysis
 order: 0
 ---
 

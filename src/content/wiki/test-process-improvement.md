@@ -2,6 +2,12 @@
 title: "测试流程改进 ｜ Test Process Improvement"
 description: "测试流程改进 (Test Process Improvement, TPI) 是一种系统化的方法，旨在增强软件开发中测试流程的有效性、效率和适应性。它涉及识别当前测试实践中的弱点和瓶颈，并实施变革来克服这些问题。TPI 旨在确保测试不仅符合业务目标，还通过减少缺陷、降低成本和缩短上市时间来提供 投资回报 (return on investment)。为了衡量 TPI 的有效性，组织通常会查看关键 性能指标 (performance indicators, KPIs)，如缺陷检测率、测试覆盖率 (test coverage) 和测试活动所需的时间。在实施过程中，团队可能会面临变革阻力、资源有限或缺乏专业知识等挑战。解决这些问题通常需要 强大的领导力 (strong leadership)、清晰的沟通和持续的培训。自动化集成、CI/CD 实践以及 AI/机器学习在 TPI 中也发挥着关键作用。最终，测试管理 (test management) 负责监督 TPI 计划，确保其具有战略一致性。"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - test-management
 order: 0
 ---
 

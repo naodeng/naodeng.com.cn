@@ -2,6 +2,12 @@
 title: "API 测试 ｜ API Testing"
 description: "API 测试 (API Testing) 是一类软件测试，涉及验证和校验应用程序编程接口 (API) 及其与其他软件组件的交互。此测试重点关注软件架构的业务逻辑层，确保 API 按预期运行、数据准确交换，并确保服务在各种条件下可靠且具有高性能。"
 section: "A"
+related:
+  - api
+  - swagger
+  - automated-testing
+  - manual-testing
+  - web-testing
 order: 0
 ---
 

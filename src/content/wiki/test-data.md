@@ -2,6 +2,12 @@
 title: "测试数据 ｜ Test Data"
 description: "测试数据管理 (TDM) 是规划、设计、存储和管理 软件测试 数据。它涉及创建非生产数据集，这些数据集为了测试应用程序功能及其在各种条件下的性能，能够准确模拟应用程序的生产环境。TDM 对于确保测试的可重复性、可靠性和相关性至关重要。它包括定义数据需求、通过掩码或匿名化保护敏感数据以及跨不同测试周期和环境维护数据完整性。有效的 TDM 允许："
 section: "T"
+related:
+  - automated-testing
+  - database
+  - manual-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

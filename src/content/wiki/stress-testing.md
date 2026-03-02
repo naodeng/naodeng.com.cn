@@ -2,6 +2,12 @@
 title: "压力测试 ｜ Stress Testing"
 description: "关于压力测试的问题？"
 section: "S"
+related:
+  - load-testing
+  - manual-testing
+  - automated-testing
+  - endurance-testing
+  - software-testing
 order: 0
 ---
 

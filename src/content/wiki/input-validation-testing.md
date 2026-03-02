@@ -2,6 +2,12 @@
 title: "输入验证测试 ｜ Input Validation Testing"
 description: "输入验证测试 (Input Validation Testing) 旨在确保应用程序能正确处理各种输入数据，包括预期的、畸形的或恶意的数据。它验证系统是否仅允许合法数据通过，并能有效拒绝或净化（Sanitize）非法数据。其核心维度包括： * 边界测试 (Boundary Testing)：验证极值（最大/最小值）的处理。 * 格式检查 (Format Checking)：验证如日期、邮箱等特定格式。 * 数据类型检查 (Data Type Checking)：确保输入符合预期的类型（如字符或整型）。 * 一致性检查 (Consistency Checking)：验证数据间的约束逻辑。 * 大小检查 (Size Checking)：防止输入超出预设长度。"
 section: "I"
+related:
+  - validation-testing
+  - boundary-testing
+  - automated-testing
+  - fuzz-testing
+  - test-data
 order: 0
 ---
 

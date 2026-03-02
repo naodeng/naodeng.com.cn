@@ -2,6 +2,12 @@
 title: "Beta 测试 ｜ Beta Testing"
 description: "Beta 测试（Beta testing）是软件发布前的测试阶段，在此阶段，软件会提供给组织外部的一组用户，以发现可能在早期测试阶段未被识别的缺陷和问题。它作为一种真实环境验证，确保软件在各种条件下都能满足真实用户的需求。"
 section: "B"
+related:
+  - manual-testing
+  - automated-testing
+  - web-testing
+  - test-suite
+  - validation-testing
 order: 0
 ---
 

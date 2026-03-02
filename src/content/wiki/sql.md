@@ -2,6 +2,12 @@
 title: "Sql ｜ Sql"
 description: "SQL，即 结构化查询语言 (Structured Query Language)，是一种用于管理和操作关系型 数据库 (databases) 的标准化编程语言。它之所以重要，是因为它为创建、检索、更新和从数据库中删除数据提供了一种系统的方法，而数据库是大多数软件应用程序不可或缺的组成部分。在 软件 测试自动化 (test automation) 的背景下，SQL 在验证数据状态和完整性方面发挥着至关重要作用，这直接影响到被测应用的可靠性。测试自动化 (Test automation) 工程师使用 SQL 来： - 验证数据操作（如插入、更新和删除）是否正确执行。 - 设置和清理测试数据，确保测试在已知状态下运行。 - 验证涉及数据检索和操作的业务逻辑，确保应用行为符合预期。 - 执行后端测试，确保应用与数据库正确交互，包括对事务和并发的处理。 - 检查数据完整性约束，确保数据库在不同测试场景下维持有效状态。对于 测试自动化 (test automation) 工程师来说，SQL 是一项关键技能，因为它能让他们绕过用户界面，直接与 数据库 (database) 交互。"
 section: "S"
+related:
+  - database
+  - test-data
+  - automated-testing
+  - api-testing
+  - web-testing
 order: 0
 ---
 

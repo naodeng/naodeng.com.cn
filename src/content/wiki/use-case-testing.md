@@ -2,6 +2,12 @@
 title: "用例测试 ｜ Use Case Testing"
 description: "用例测试 是一种涉及根据 用例 (Use Cases) 创建和执行测试的技术。这些是关于用户如何与系统交互以实现特定目标的详细描述。与可能侧重于技术方面的其他测试方法不同，用例测试 强调 真实世界的使用 和 用户交互。要进行 用例测试，您通常需要：1. 识别用例的 主流程 (Main Flows)，它代表标准系统行为。2. 确定 替代流程 (Alternative Flows)，它涵盖由于异常或错误而可能采取的不同路径。3. 为每个流程创建 测试用例 (Test Cases)，确保验证功能和非功能需求。4. 执行这些测试用例以验证系统是否按照最终用户的预期运行。用例测试 对于发现单元或组件测试中可能不明显的 集成 和 全系统问题 特别有效。它还有助于理解 用户的观点，这对于提供积极的用户体验至关重要。对于自动化，可以使用 Selenium、Cucumber 或 SpecFlow 等工具来模拟基于 用例 的用户交互。这些工具允许编写脚本或使用行为驱动开发 (BDD) 语法来定义与 用例 描述一致的 测试场景。"
 section: "U"
+related:
+  - test-case
+  - test-case-management
+  - automated-testing
+  - manual-testing
+  - use-case
 order: 0
 ---
 

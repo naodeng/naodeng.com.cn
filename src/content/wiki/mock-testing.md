@@ -2,6 +2,12 @@
 title: "模拟测试 ｜ Mock Testing"
 description: "模拟测试 (Mock Testing) 涉及使用模拟对象 (Mock Objects) 来模拟真实对象的行为，以便隔离地测试软件组件之间的交互。模拟对象被配置为返回特定值并捕获它们收到的调用。在模拟测试中，你通常会：1. 设计模拟对象：使其模仿实际对象的行为。2. 配置期望 (Expectations)：针对将被使用的方法和属性进行配置。3. 执行测试：用模拟对象替换真实对象。4. 验证 (Verify)：验证模拟对象是否按预期进行了交互。常用工具包括 Mockito, Moq, Sinon.js 和 Jest。"
 section: "M"
+related:
+  - automated-testing
+  - manual-testing
+  - dependency-testing
+  - test-suite
+  - web-testing
 order: 0
 ---
 

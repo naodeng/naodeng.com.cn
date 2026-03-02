@@ -2,6 +2,12 @@
 title: "Jasmine ｜ Jasmine"
 description: "Jasmine 是一个用于测试 JavaScript 代码的行为驱动开发 (BDD) 框架。它不依赖于浏览器、DOM 或任何 JavaScript 框架，适用于测试任何 JavaScript 应用。其语法设计简洁易读，旨在通过 `describe`（套件）和 `it`（规格/测试用例）实现层次化的测试结构。Jasmine 提供内置的 matchers（匹配器，如 `toEqual`, `toBe`）进行断言，并支持 Spies（间谍/测试双倍）来跟踪函数调用。对于异步操作，它支持 `done` 回调或现代的 `async/await` 语法。"
 section: "J"
+related:
+  - test-automation
+  - jest
+  - cypress
+  - chai-js
+  - web-testing
 order: 0
 ---
 

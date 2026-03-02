@@ -2,6 +2,12 @@
 title: "测试报告 ｜ Test Report"
 description: "测试报告 (Test Report) 是一个正式文档，封装了测试阶段的所有结果和发现。它作为测试活动的记录，提供了已执行 测试用例 (test cases) 的详细信息（包括通过、失败和跳过的测试），以及发现的缺陷及其 严重程度 (severity)。"
 section: "T"
+related:
+  - manual-testing
+  - test-suite
+  - automated-testing
+  - test-case-management
+  - test-case
 order: 0
 ---
 

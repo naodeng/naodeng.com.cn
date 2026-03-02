@@ -2,6 +2,12 @@
 title: "模糊测试 ｜ Fuzz Testing"
 description: "模糊测试 (Fuzz Testing)，也称为 Fuzzing，是一种软件测试技术，通过向计算机程序提供无效、非预期或随机数据作为输入，并监控程序的异常情况（如崩溃、内建断言失败或内存泄漏）。它特别擅长发现那些系统未设计处理畸形输入而导致的编码错误和安全漏洞。"
 section: "F"
+related:
+  - manual-testing
+  - automated-testing
+  - mutation-testing
+  - test-case-management
+  - test-suite
 order: 0
 ---
 

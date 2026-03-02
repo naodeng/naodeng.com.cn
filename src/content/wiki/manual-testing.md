@@ -2,6 +2,12 @@
 title: "手动测试 ｜ Manual Testing"
 description: "手动测试 (Manual Testing) 是指在不使用自动化工具的情况下，由人工执行测试用例 (test cases) 的过程。测试人员通过遵循一组预定义的测试用例，确保软件行为符合预期。它涉及测试人员与应用程序界面交互、提供输入并观察输出，以验证应用程序行为的正确性。由于手动测试依赖于人类的观察，它对于检测易用性 (usability) 问题、理解用户体验以及发现自动化测试可能遗漏的意外行为特别有效。测试人员利用直觉、经验和对软件的理解来探索功能，并报告与预期结果 (expected results) 的任何偏差。在手动测试中，测试人员扮演终端用户的角色，验证应用程序的所有功能是否正常工作。它通常用于探索性测试 (exploratory testing)、随机测试 (ad-hoc testing) 和易用性测试 (usability testing)，在这些场景中，测试人员的创造力和洞察力至关重要。尽管自动化测试日益普及，手动测试仍是软件开发生命周期中不可或缺的一部分，尤其是对于难以自动化或需要人类判断的场景。"
 section: "M"
+related:
+  - automated-testing
+  - test-case-management
+  - test-case
+  - test-suite
+  - web-testing
 order: 0
 ---
 

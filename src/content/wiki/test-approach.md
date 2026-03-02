@@ -2,6 +2,12 @@
 title: "测试方法 ｜ Test Approach"
 description: "关于测试方法的问题？"
 section: "T"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
+  - test-case
 order: 0
 ---
 

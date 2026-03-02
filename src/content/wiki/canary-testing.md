@@ -2,6 +2,12 @@
 title: "金丝雀测试 ｜ Canary Testing"
 description: "金丝雀测试 (Canary testing) 是一种将新功能或更新在全面部署之前，先发布给一小部分用户或服务器的实践。这种策略允许团队在受控环境中监控更改的影响，并尽早发现潜在问题。它的名字源于历史上煤矿中使用金丝雀来探测有毒气体的做法。"
 section: "C"
+related:
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - release-testing
+  - test-suite
 order: 0
 ---
 

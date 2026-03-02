@@ -2,6 +2,12 @@
 title: "测试覆盖率 ｜ Test Coverage"
 description: "分支覆盖率（Branch coverage），也称为 判定覆盖率 (decision coverage)，确保每个判定点的每个可能分支至少被执行一次。例如，在 `if` 语句的上下文中，应当测试 true 和 false 分支。要应用分支覆盖率，需识别代码中所有的判定点，如 `if`、`else`、`switch` 和循环语句。然后，创建遍历每条可能路径的 测试用例 (test cases)。这比语句覆盖率更细致，因为语句覆盖率可能不要求测试条件语句的所有分支。考虑以下伪代码："
 section: "T"
+related:
+  - code-coverage
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

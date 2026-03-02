@@ -2,6 +2,12 @@
 title: "国际化测试 ｜ Internationalization Testing"
 description: "国际化测试 (Internationalization Testing)，通常缩写为 i18n 测试，旨在确保软件方案在不修改核心代码的情况下，能够适配不同的语言和地区。它验证系统对多种语言、字符集以及文化习惯（如日期、货币格式）的支持能力。其目标是建立一个通用的代码基座，支持未来的快速本地化。"
 section: "I"
+related:
+  - localization-testing
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - test-data
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "能力成熟度模型集成 ｜ CMMI"
 description: "CMMI，全称 能力成熟度模型集成 (Capability Maturity Model Integration)，是一个过程级改进培训和评估项目。它由 CMMI 协会管理，最初由卡内基梅隆大学 (CMU) 开发。它是一个为组织提供有效过程基本要素的框架，最终旨在提高其绩效。"
 section: "C"
+related:
+  - quality-management
+  - test-process-improvement
+  - software-quality-management
+  - quality-assurance
+  - software-quality
 order: 0
 ---
 

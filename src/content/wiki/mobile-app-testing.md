@@ -2,6 +2,12 @@
 title: "移动应用测试 ｜ Mobile App Testing"
 description: "移动应用测试 (Mobile App Testing) 涉及验证专为移动设备设计的应用程序的功能性、易用性和一致性。它是应用开发中的关键阶段，旨在确保应用在到达端用户之前符合质量标准。测试涵盖了在各种条件下检查应用行为，包括不同的网络表现、设备特定功能以及操作系统版本。关键层面包括评估应用的："
 section: "M"
+related:
+  - mobile-device-testing
+  - automated-testing
+  - web-testing
+  - browserstack
+  - manual-testing
 order: 0
 ---
 

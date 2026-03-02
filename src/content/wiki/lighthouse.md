@@ -2,6 +2,12 @@
 title: "Lighthouse ｜ Lighthouse"
 description: "Lighthouse 是一款开源、自动化的网页质量提升工具。它可以运行在任何网页上，无论是公开页面还是需要身份验证的页面。Lighthouse 针对性能、无障碍性 (Accessibility)、渐进式网页应用 (PWA)、SEO 等进行审计，提供对网页质量和有效性的全面评估。在 Chrome 中使用 Lighthouse：导航到要审计的页面，打开 DevTools (开发者工具)，点击 Lighthouse 标签。选择要运行的审计项，然后点击 Generate report (生成报告) 按钮。Lighthouse 对页面运行选定的审计，然后生成一份关于页面表现的报告。对于自动化测试，Lighthouse 可以集成到持续集成 (CI) 系统中。它可以作为 Node 模块、命令行工具或以编程方式作为自定义构建流程的一部分运行。Lighthouse CI 是一组专门的命令，使在持续集成中使用 Lighthouse 变得更加容易。得分是基于性能指标和启发式算法计算的。每个指标独立评分，然后组合成总分。"
 section: "L"
+related:
+  - accessibility-testing
+  - front-end-testing
+  - web-testing
+  - web-test-automation-tools
+  - web-automation
 order: 0
 ---
 

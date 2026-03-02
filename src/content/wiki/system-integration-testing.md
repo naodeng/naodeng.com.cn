@@ -2,6 +2,12 @@
 title: "系统集成测试 ｜ System Integration Testing"
 description: "系统集成测试 (System Integration Testing, SIT) 是一个测试阶段，在这个阶段，不同的系统组件、模块或服务被集成在一起并作为一个整体进行测试，以发现集成单元之间交互中的缺陷。它发生在 单元测试 (unit testing) 之后和 系统测试 (system testing) 之前。SIT 确保集成后的组件按预期协同工作，并且数据在它们之间正确流动。在 SIT 期间，测试人员关注模块之间的 接口 (interfaces) 和 数据流 (data flow)。他们验证系统行为是否符合集成规范，以及系统是否可以作为一个凝聚的整体在现实场景中处理任务。这包括测试 API、Web 服务、微服务、数据库 (database) 连接和其他交互点。SIT 的 测试用例 (test cases) 源自 集成设计 和 需求规范。它们通常涉及覆盖多个组件的 端到端场景 (end-to-end scenarios)，并可以包括 正向 (positive) 和 负向 (negative) 测试用例以确保健壮性。"
 section: "S"
+related:
+  - bottom-up-integration
+  - integration-testing
+  - automated-testing
+  - manual-testing
+  - top-down-integration
 order: 0
 ---
 

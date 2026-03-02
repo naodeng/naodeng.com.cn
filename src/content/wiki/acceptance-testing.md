@@ -2,6 +2,12 @@
 title: "验收测试 ｜ Acceptance Testing"
 description: "验收测试 (Acceptance Testing) 是验证系统功能和业务需求是否符合预定义标准的阶段，旨在确保软件已准备好进行生产。它通常是产品交付给客户或提供给最终用户之前的最后一步。这种测试形式关注的是用户体验和整体系统行为，而不是单个组件，通常涉及回归真实场景和端到端工作流。"
 section: "A"
+related:
+  - manual-testing
+  - automated-testing
+  - validation-testing
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

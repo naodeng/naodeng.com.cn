@@ -2,6 +2,12 @@
 title: "变异测试 ｜ Mutation Testing"
 description: "变异测试 (Mutation Testing) 是一种通过向程序源代码引入微小修改（即“变异”）来评估软件测试质量的技术。其核心前提是：一个稳健的测试套件 (Test Suite) 应该能发现代码中被人为引入的 Bug。"
 section: "M"
+related:
+  - test-suite
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-case
 order: 0
 ---
 

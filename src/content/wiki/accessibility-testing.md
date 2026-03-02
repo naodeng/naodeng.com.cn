@@ -2,6 +2,12 @@
 title: "无障碍测试 ｜ Accessibility Testing"
 description: "无障碍测试 (Accessibility Testing) 是确保软件和 Web 应用可供具有广泛障碍的人群使用的过程，这些障碍包括视觉、听觉、身体、言语、认知、语言、学习和神经系统障碍。这种形式的测试检查应用程序是否可以被使用辅助技术（如屏幕阅读器、盲文终端和替代输入设备）的个人有效操作和理解。"
 section: "A"
+related:
+  - front-end-testing
+  - web-testing
+  - screenshot-testing
+  - lighthouse
+  - manual-testing
 order: 0
 ---
 

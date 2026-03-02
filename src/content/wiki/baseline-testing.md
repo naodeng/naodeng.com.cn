@@ -2,6 +2,12 @@
 title: "基准测试 ｜ Baseline Testing"
 description: "关于基准测试的问题？"
 section: "B"
+related:
+  - visual-regression-testing
+  - manual-testing
+  - automated-testing
+  - screenshot-testing
+  - test-suite
 order: 0
 ---
 

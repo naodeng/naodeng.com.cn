@@ -2,6 +2,12 @@
 title: "软件质量 ｜ Software Quality"
 description: "软件质量 (Software quality) 是指软件产品满足指定需求以及满足用户和利益相关者需求和期望的程度。它涵盖了各种属性，包括 可靠性 (reliability)、效率 (efficiency)、可维护性 (maintainability)、可用性 (usability) 和 移植性 (portability)。高质量的软件应在指定条件下执行其预定功能而不发生故障，没有缺陷，并且对于未来的增强或更正来说是可维护和可理解的。它还应通过直观且响应迅速的设计提供积极的用户体验。在 测试自动化 (test automation) 的背景下，确保 软件质量 (software quality) 涉及创建和执行自动化测试，这些测试根据预期结果验证软件的功能和性能。自动化测试可以频繁且一致地运行，为开发团队提供快速反馈，并有助于及早发现问题。软件质量不仅涉及最终产品，还涉及用于开发、维护和增强产品的过程。它涉及在整个软件开发生命周期 (SDLC) 中对改进和遵守最佳实践的持续承诺。这种承诺对于交付不仅满足当前需求，而且能够随需求和技术变化而演进的软件至关重要。"
 section: "S"
+related:
+  - quality-management
+  - software-quality-management
+  - manual-testing
+  - quality-assurance
+  - automated-testing
 order: 0
 ---
 

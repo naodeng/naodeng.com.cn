@@ -2,6 +2,12 @@
 title: "无头测试 ｜ Headless Testing"
 description: "无头测试 (Headless Testing) 是指在没有图形用户界面 (GUI) 的情况下运行浏览器测试。这是通过使用无头浏览器实现的——即没有可见窗口的 Web 浏览器。它们可以执行常规浏览器的所有任务，但运行在后台，由测试脚本编程控制。在无头测试中，你直接通过代码与 DOM 和浏览器 API 交互。"
 section: "H"
+related:
+  - cross-browser-testing
+  - web-automation
+  - web-testing
+  - automated-testing
+  - manual-testing
 order: 0
 ---
 

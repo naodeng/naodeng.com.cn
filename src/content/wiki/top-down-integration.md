@@ -2,6 +2,12 @@
 title: "自顶向下集成 ｜ Top-Down Integration"
 description: "自顶向下集成 (Top-Down Integration) 是一种集成测试方法，测试活动从软件模块层次结构的顶级开始，逐步向底层推进。它首先测试高层模块，使用 桩模块 (stubs) 来模拟尚未开发或集成的底层模块的行为。主要目的是早期验证主要功能，检测高层设计缺陷。适用场景包括项目具有清晰的层次结构，且需要早期验证核心业务逻辑。"
 section: "T"
+related:
+  - bottom-up-integration
+  - integration-testing
+  - incremental-testing
+  - system-integration-testing
+  - automated-testing
 order: 0
 ---
 

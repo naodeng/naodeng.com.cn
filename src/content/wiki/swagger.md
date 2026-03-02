@@ -2,6 +2,12 @@
 title: "Swagger ｜ Swagger"
 description: "Swagger 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 API 开发中发挥着至关重要的作用。API 开发中的重要性："
 section: "S"
+related:
+  - postman
+  - api
+  - api-testing
+  - inspection
+  - web-testing
 order: 0
 ---
 

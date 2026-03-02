@@ -2,6 +2,12 @@
 title: "Jira ｜ Jira"
 description: "Jira 是由 Atlassian 开发的一款项目管理和缺陷跟踪 (Issue Tracking) 工具。它主要旨在帮助团队（特别是软件开发和测试团队）管理并跟踪工作进度。在 Jira 中，用户可以创建、分配并划分任务、缺陷 (Bugs) 和功能请求的优先级，这些在平台内通常被称为“问题 (Issues)”。团队使用 Jira 将工作组织成项目，通过反映团队流程的可定制工作流 (Workflows) 来对问题进行分类和跟踪。其灵活性使其适用于 Agile (敏捷)、Scrum 和 Kanban 等多种项目管理风格。对于自动化测试工程师，Jira 特别适用于跟踪自动化测试中发现的缺陷、管理自动化测试用例 (Test Cases)，以及将代码提交和构建信息与问题关联。"
 section: "J"
+related:
+  - test-case-management
+  - automated-testing
+  - test-management
+  - manual-testing
+  - scrum
 order: 0
 ---
 

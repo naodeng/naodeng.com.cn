@@ -2,6 +2,12 @@
 title: "依赖测试 ｜ Dependency Testing"
 description: "依赖测试 (Dependency Testing) 是侧重于验证依赖外部因素或其他模块的软件组件是否功能正常的策略。它确保应用程序各部分与任何第三方服务或库之间的交互按预期工作。这种测试可以揭示系统某一部分的变化如何对其余部分产生不利影响。 在实践中，它涉及创建专门针对组件间连接和数据交换的测试用例。测试人员模拟各种场景（如更新、配置修改或故障状态）来检查依赖模块的反应。通常使用 Mocks 和 Stubs 来模拟外部系统，以实现被测组件的隔离，确保测试不受外部不一致性或不可用性的影响。"
 section: "D"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - web-testing
+  - mock-testing
 order: 0
 ---
 

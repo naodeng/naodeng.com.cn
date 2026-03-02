@@ -2,6 +2,12 @@
 title: "随机测试 ｜ Ad Hoc Testing"
 description: "关于随机测试的问题？"
 section: "A"
+related:
+  - manual-testing
+  - automated-testing
+  - session-based-testing
+  - test-suite
+  - test-case
 order: 0
 ---
 

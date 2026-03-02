@@ -2,6 +2,12 @@
 title: "状态转换测试 ｜ State Transition Testing"
 description: "状态转换测试 (State Transition Testing) 是一种 动态测试 (dynamic testing) 技术，它按序列分析系统在各种输入条件下的行为。当软件行为根据过去的事件或状态而有所不同时，这种方法特别有用。它通过触发事件并根据预期行为验证结果，来测试应用程序在不同状态之间的转换。在这种方法中，你通常会使用 状态转换图 (State Transition Diagram, STD) 来可视化状态、转换和事件。该图作为设计 测试用例 (test cases) 的蓝图。识别所有可能的状态并定义系统如何根据事件或条件从一个状态转换到另一个状态至关重要。要实施 状态转换测试 (State Transition Testing)，你需要：1. 从需求中识别状态、转换和事件。2. 开发 STD，如果需要，还可以开发 状态转换表 (State Transition Table, STT) 以获得更直观的表格视图。3. 衍生出涵盖所有转换、无效转换和状态相关错误的测试用例。4. 执行测试用例并对比实际结果与预期结果。"
 section: "S"
+related:
+  - automated-testing
+  - manual-testing
+  - test-case
+  - test-case-management
+  - black-box-testing
 order: 0
 ---
 

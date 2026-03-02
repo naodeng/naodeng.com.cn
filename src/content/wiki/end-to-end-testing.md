@@ -2,6 +2,12 @@
 title: "端到端测试 ｜ End To End Testing"
 description: "端到端测试 (End-to-End Testing, E2E Testing) 是一种验证整个软件应用从起始到终端完整流程的方法。它确保应用在类生产环境中按预期运行，模拟真实的业务场景。该测试涵盖了应用与硬件、网络、数据库、外部依赖以及其他应用的交互。典型的 E2E 测试流示例（以 Web 应用为例）：1. 启动浏览器并导航。2. 使用凭据登录。3. 执行 CURD（增删改查）等一系列操作。4. 验证每一步的结果。5. 退出登录。"
 section: "E"
+related:
+  - test-pyramid
+  - automated-testing
+  - manual-testing
+  - web-testing
+  - test-data
 order: 0
 ---
 

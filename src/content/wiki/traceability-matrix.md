@@ -2,6 +2,12 @@
 title: "需求跟踪矩阵 ｜ Traceability Matrix"
 description: "这是指同时具备 正向跟踪（需求 -> 测试）和 反向跟踪（测试 -> 需求）的能力。这确保了既没有遗漏的要求，也没有多余的测试，并支持高效的变更影响分析。"
 section: "T"
+related:
+  - test-case-management
+  - test-case
+  - manual-testing
+  - automated-testing
+  - test-management
 order: 0
 ---
 

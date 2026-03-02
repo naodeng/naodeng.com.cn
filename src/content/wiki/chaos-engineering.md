@@ -2,6 +2,12 @@
 title: "混沌工程 ｜ Chaos Engineering"
 description: "混沌工程 (Chaos Engineering) 是一种主动测试学科，通过在系统上实施实验，引入动荡条件或意外事件，观察系统反应并识别弱点。与传统测试通常关注预期路径和受控环境不同，混沌工程测试系统抵御生产环境中可能出现的动荡条件的能力。"
 section: "C"
+related:
+  - failover-testing
+  - availability-testing
+  - fault-injection-testing
+  - robustness-testing
+  - test-observability
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "可维护性 ｜ Maintainability"
 description: "可维护性是指测试代码被**理解、更新、扩展**以及**适应**不断变化的需求或环境的难易程度。它旨在确保自动化测试随着时间的推移仍能保持功能性和相关性，而无需耗费不成比例的精力来管理。"
 section: "M"
+related:
+  - automated-testing
+  - test-suite
+  - manual-testing
+  - test-data
+  - web-testing
 order: 0
 ---
 

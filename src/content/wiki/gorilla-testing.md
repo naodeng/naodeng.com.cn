@@ -2,6 +2,12 @@
 title: "大猩猩测试 ｜ Gorilla Testing"
 description: "大猩猩测试 (Gorilla Testing) 是一种手工测试技术，涉及对软件应用的特定模块或组件进行高强度且随机的测试。其特点是重复性和攻击性，测试人员集中于频繁使用某个功能（或一组相关功能），以揭示传统测试方法可能无法发现的缺陷。"
 section: "G"
+related:
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - web-testing
+  - test-case
 order: 0
 ---
 

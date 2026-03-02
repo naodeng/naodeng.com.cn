@@ -2,6 +2,12 @@
 title: "单元测试框架 ｜ Unit Test Framework"
 description: "单元测试框架 是一种旨在支持单元测试执行和报告的软件库。这些框架为编写针对代码单个单元（通常是函数或方法）的测试用例提供了一种结构化的方式，并验证它们的行为是否符合预期。"
 section: "U"
+related:
+  - automated-testing
+  - manual-testing
+  - unit-testing
+  - test-runner
+  - test-suite
 order: 0
 ---
 

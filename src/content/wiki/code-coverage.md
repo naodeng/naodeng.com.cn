@@ -2,6 +2,12 @@
 title: "代码覆盖率 ｜ Code Coverage"
 description: "代码覆盖率 (Code Coverage) 是一种衡量指标，用于评估在测试期间源代码被执行的程度。它量化了被自动化测试覆盖的代码百分比，从而洞察代码库中哪些区域已测试，哪些尚未测试。该指标有助于识别代码中未测试的部分，这些部分可能隐藏着未检测到的 Bug。"
 section: "C"
+related:
+  - test-coverage
+  - mutation-testing
+  - automated-testing
+  - glass-box-testing
+  - manual-testing
 order: 0
 ---
 

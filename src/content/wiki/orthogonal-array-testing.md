@@ -2,6 +2,12 @@
 title: "正交数组测试 ｜ Orthogonal Array Testing"
 description: "正交数组测试 (Orthogonal Array Testing, OAT) 是一种系统的、统计性的测试方法，用于测试成对交互 (pair-wise interactions)，以识别影响系统性能的因素。它基于组合设计理论中的正交表，确保每对参数至少一起测试一次。实施步骤：1. 识别参数及其可能的值（水平）。2. 选择合适的正交表。3. 将测试参数映射到表中。4. 按表中的组合执行测试。示例：对于一个有 3 个字段且每个字段有 3 个可能值的 Web 表单，正交表可以将 27 (3x3x3) 个测试用例减少到仅 9 个。工具：Hexawise 或 Orthogonal Array Tool 等可以帮助生成表和测试用例。优势：显著减少测试用例数量，同时有效覆盖交互。劣势：可能错过成对交互之外的特定缺陷，需要统计学基础。"
 section: "O"
+related:
+  - manual-testing
+  - test-case-management
+  - test-case
+  - automated-testing
+  - test-suite
 order: 0
 ---
 

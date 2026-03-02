@@ -2,6 +2,12 @@
 title: "Rup ｜ Rup"
 description: "RUP（Rational Unified Process，有理统一过程）是一个迭代式的软件开发框架，它强调明确的角色、责任和过程。它在开发中的重要性在于提供了一种结构化且可调整的方法来管理项目的复杂性和风险。RUP 的核心优势包括："
 section: "R"
+related:
+  - automated-testing
+  - manual-testing
+  - test-plan
+  - test-case-management
+  - test-approach
 order: 0
 ---
 

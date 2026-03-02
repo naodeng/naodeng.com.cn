@@ -2,6 +2,12 @@
 title: "同行评审测试 ｜ Peer Testing"
 description: "同行评审测试（也称为同行测试）是一种协作方法，团队成员相互审查和评估彼此的工作，以便在开发过程早期识别缺陷。它包括结对编程 (Pair Programming) 和非正式的走查 (Walkthroughs) 等活动。关键特征："
 section: "P"
+related:
+  - manual-testing
+  - automated-testing
+  - inspection
+  - test-suite
+  - test-case-management
 order: 0
 ---
 

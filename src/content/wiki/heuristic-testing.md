@@ -2,6 +2,12 @@
 title: "启发式测试 ｜ Heuristic Testing"
 description: "启发式测试 (Heuristic Testing) 是一种利用基于经验的技术来进行问题解决、学习和发现的方法。它涉及使用“启发式方法”（Heuristics，即经验法则或拇指法则）来指导测试的设计与执行。这种方法在处理穷尽测试不切实际的复杂系统时尤为有效。在实践中，测试人员根据相关的启发式法则创建测试用例，这些法则通常源于过去的经验、类似应用中的常见问题或通用的软件测试原则（例如：关注近期变更频繁的区域，因为它们更容易产生新缺陷）。"
 section: "H"
+related:
+  - manual-testing
+  - exploratory-testing
+  - automated-testing
+  - test-case-management
+  - test-suite
 order: 0
 ---
 

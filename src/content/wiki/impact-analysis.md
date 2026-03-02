@@ -2,6 +2,12 @@
 title: "影响分析 ｜ Impact Analysis"
 description: "影响分析 (Impact Analysis) 是评估软件变更后潜在后果的过程。它涉及识别系统中可能受提议变更影响的部分，并评估其带来的“波及效应”。该分析有助于确定哪些测试用例需要更新、新增或删除，从而确保测试套件在变更后依然有效。"
 section: "I"
+related:
+  - regression-testing
+  - test-case-management
+  - manual-testing
+  - automated-testing
+  - test-suite
 order: 0
 ---
 

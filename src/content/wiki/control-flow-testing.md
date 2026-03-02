@@ -2,6 +2,12 @@
 title: "控制流测试 ｜ Control Flow Testing"
 description: "控制流测试 (Control flow testing) 是一种专注于软件中逻辑路径的测试方法。它评估程序的执行流程，确保所有语句和分支至少执行一次。这种测试对于揭示可能导致错误操作或导常的逻辑错误至关重要。"
 section: "C"
+related:
+  - path-testing
+  - data-flow-testing
+  - manual-testing
+  - automated-testing
+  - white-box-testing
 order: 0
 ---
 

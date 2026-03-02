@@ -2,6 +2,12 @@
 title: "边界测试 ｜ Boundary Testing"
 description: "边界测试（Boundary testing）是一种测试用例设计方法，旨在包含输入域极值端的边缘情况（edge cases）。它针对各划分区域之间的边界，以捕捉发生在输入范围极限处的错误。这种技术对于识别“差一错误”（off-by-one errors）以及确保软件能优雅地处理边界条件特别有用。"
 section: "B"
+related:
+  - edge-testing
+  - automated-testing
+  - manual-testing
+  - equivalence-partitioning
+  - test-case
 order: 0
 ---
 

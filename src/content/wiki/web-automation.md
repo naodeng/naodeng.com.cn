@@ -2,6 +2,12 @@
 title: "Web 自动化 ｜ Web Automation"
 description: "Web 自动化 (Web Automation) 指的是使用软件模拟用户与 Web 浏览器和 Web 应用程序交互的过程。它涉及执行执行诸如单击按钮、在表单中输入数据、浏览网站和提取信息等任务的脚本。这通常是为了测试 Web 应用程序的功能和性能，以确保它们在不同的浏览器和设备上按预期工作。Web 自动化 是通过与基于其 HTML 结构的 Web 元素交互的专用工具和框架来实现的。这些工具可以以编程方式控制浏览器，模拟用户操作而无需人工干预。它们可以集成到持续集成管道中，用于 自动化测试 和部署。为了实现 Web 自动化，工程师使用 JavaScript、Python 或 Java 等语言编写脚本，这些脚本利用自动化工具提供的 API。这些脚本可以是简单的，执行单个操作，也可以是复杂的，涵盖用户旅程的多个步骤。例如，自动化登录过程可能涉及："
 section: "W"
+related:
+  - cross-browser-testing
+  - web-testing
+  - automated-testing
+  - manual-testing
+  - browserstack
 order: 0
 ---
 

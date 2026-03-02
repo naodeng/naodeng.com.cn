@@ -2,6 +2,12 @@
 title: "极限编程 ｜ Extreme Programming"
 description: "极限编程 (Extreme Programming, XP) 是一种敏捷软件开发框架，强调客户满意度、简单性和沟通。它倡导短开发周期内的频繁“发布”，以提高生产力并引入新的客户需求。 XP 鼓励团队成员在所有开发环节中协作，提高对变化需求的响应能力。在 XP 中，简单性是核心，专注于简单的设计和编码实践，以便于后续更改。该框架还强调技术卓越，包含持续集成、结对编程、测试驱动开发 (TDD) 和重构等实践。"
 section: "E"
+related:
+  - quality-management
+  - shift-left-testing
+  - automated-testing
+  - scrum
+  - manual-testing
 order: 0
 ---
 

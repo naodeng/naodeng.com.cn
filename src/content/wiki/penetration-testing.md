@@ -2,6 +2,12 @@
 title: "渗透测试 ｜ Penetration Testing"
 description: "渗透测试（通常称为 Pen Testing 或黑客伦理）是对计算机系统进行的模拟网络攻击，旨在检查可利用的漏洞。在 Web 应用安全背景下，它通常用于增强 Web 应用防火墙 (WAF)。渗透测试员使用与攻击者相同的工具、技术和流程来发现并展示系统弱点对业务的影响。它是验证组织安全措施有效性的关键组成部分。"
 section: "P"
+related:
+  - security-testing
+  - manual-testing
+  - web-testing
+  - automated-testing
+  - api-testing
 order: 0
 ---
 

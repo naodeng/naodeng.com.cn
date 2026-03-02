@@ -2,6 +2,12 @@
 title: "向后兼容性 ｜ Backward Compatibility"
 description: "向后兼容性 (Backward Compatibility) 在软件中是指系统与其自身旧版本或专为旧版本设计的输入进行交互的能力。它确保新版本的软件在接受、执行或解释由旧版本产生的数据或代码时不会出现错误或功能丢失。"
 section: "B"
+related:
+  - compatibility-testing
+  - api
+  - web-testing
+  - automated-testing
+  - api-testing
 order: 0
 ---
 

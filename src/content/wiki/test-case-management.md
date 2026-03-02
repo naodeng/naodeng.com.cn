@@ -2,6 +2,12 @@
 title: "测试用例管理 ｜ Test Case Management"
 description: "测试用例管理 (Test Case Management, TCM) 是组织、管理和跟踪 软件测试 (software testing) 各个方面的过程。它涉及编写 测试用例 (test cases)、概述测试步骤、预期结果 (expected results) 和 测试数据 (test data)。TCM 还包括将 测试用例 (test cases) 分配给测试人员、监控 测试执行 (test execution) 以及记录结果。TCM 作为所有测试相关工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供一个共享平台来访问和更新 测试用例 (test cases)，促进了团队成员之间的协作。在 TCM 中，测试用例 (test cases) 通常会进行分类和分组，以反映不同的测试需求，如功能测试、回归测试或 性能测试 (performance testing)。这种分类有助于根据测试目标或被测应用程序的变化来选择相关的 测试用例 (test cases) 进行执行。"
 section: "T"
+related:
+  - test-case
+  - manual-testing
+  - automated-testing
+  - test-suite
+  - test-management
 order: 0
 ---
 

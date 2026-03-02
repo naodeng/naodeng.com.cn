@@ -2,6 +2,12 @@
 title: "平均故障间隔时间 ｜ MTBF"
 description: "MTBF：即**平均故障间隔时间**，是软件测试中用于量化系统在正常运行期间，从一次故障到下一次故障之间平均经历的时间。它是衡量**系统可靠性 (System Reliability)** 和**正常运行时间 (Uptime)** 的指标，通常以小时为单位。"
 section: "M"
+related:
+  - reliability-testing
+  - failover-testing
+  - fault-injection-testing
+  - availability-testing
+  - automated-testing
 order: 0
 ---
 

@@ -2,6 +2,12 @@
 title: "软件测试生命周期 ｜ STLC"
 description: "软件测试生命周期 (Software Testing Life Cycle, STLC) 是在测试过程中进行的一系列特定活动，旨在确保 软件质量 (software quality)。STLC 中的每项活动都以计划且系统的方式开展。虽然 STLC 是 软件开发生命周期 (Software Development Life Cycle, SDLC) 的组成部分，但它专门关注测试目标、活动和交付物。在 STLC 中，测试人员 (testers) 扮演着举足轻重的角色，从理解需求到开发 测试用例 (test cases)，执行测试并最终确保软件达到预期的质量标准。STLC 的结构化方法有助于及早发现缺陷，从而降低修复成本并确保产品更稳定。V 模型 (V-Model) 和 瀑布模型 (Waterfall Model) 强调开发阶段与测试阶段对应的顺序方法。相比之下，敏捷模型 (Agile Model) 提倡在整个开发过程中进行持续测试，提供快速反馈和迭代改进。螺旋模型 (Spiral Model) 则结合了风险分析和迭代优化，适用于复杂且高风险的项目。"
 section: "S"
+related:
+  - manual-testing
+  - automated-testing
+  - test-case-management
+  - test-case
+  - test-plan
 order: 0
 ---
 

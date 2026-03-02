@@ -2,6 +2,12 @@
 title: "缺陷管理 ｜ Defect Management"
 description: "缺陷管理 (Defect Management) 是识别、记录、跟踪和解决缺陷或故障 (Bugs) 的系统化过程。它涉及测试人员、开发人员和项目经理之间的协作，以确保缺陷得到高效处理。目标是最小化缺陷对软件性能、功能和用户体验的影响。 典型的缺陷管理工作流包括："
 section: "D"
+related:
+  - agile-testing
+  - manual-testing
+  - quality-management
+  - test-management
+  - test-case-management
 order: 0
 ---
 

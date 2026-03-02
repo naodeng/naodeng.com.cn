@@ -2,6 +2,12 @@
 title: "可用性测试 ｜ Availability Testing"
 description: "基础知识和重要性"
 section: "A"
+related:
+  - failover-testing
+  - usability-testing
+  - manual-testing
+  - automated-testing
+  - web-testing
 order: 0
 ---
 

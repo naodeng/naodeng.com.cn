@@ -2,6 +2,12 @@
 title: "并发测试 ｜ Concurrency Testing"
 description: "并发测试 (Concurrency testing) 是一种验证系统在多个进程或线程同时访问共享资源时的稳定性和可靠性的方法。它旨在发现由于进程同时执行而产生的问题，如数据损坏 (data corruption)、死锁 (deadlocks)、竞态条件 (race conditions) 和优先级冲突 (priority conflicts)。"
 section: "C"
+related:
+  - web-test-automation-tools
+  - jmeter
+  - performance-testing
+  - manual-testing
+  - automated-testing
 order: 0
 ---
 
