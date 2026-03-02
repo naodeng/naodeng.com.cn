@@ -5,22 +5,46 @@
  * - 英文：重定向 https://ray.run/wiki
  */
 import { getCollection, render } from "astro:content";
+import fs from "node:fs";
+import path from "node:path";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import { NAV_HOME } from "@/consts";
 import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
   const entries = await getCollection("wiki");
-  return entries.map((entry) => {
+  const basePaths = entries.map((entry) => {
     const slug = wikiIdToSlug(entry.id);
     return {
       params: { lang: "zh-cn", slug },
       props: { entry },
     };
   });
+
+  // Keep compatibility with legacy wiki URLs that use original filename casing,
+  // e.g. /zh-cn/wiki/A-B-Testing/
+  const wikiDir = path.resolve(process.cwd(), "src/content/wiki");
+  const fileNames = fs.readdirSync(wikiDir).filter((name) => name.endsWith(".md"));
+  const entryByLowerSlug = new Map(entries.map((entry) => [wikiIdToSlug(entry.id).toLowerCase(), entry]));
+  const existingExact = new Set(basePaths.map((p) => String(p.params.slug)));
+
+  for (const fileName of fileNames) {
+    const fileSlug = fileName.replace(/\.md$/, "");
+    const lower = fileSlug.toLowerCase();
+    const mappedEntry = entryByLowerSlug.get(lower);
+    if (existingExact.has(fileSlug) || !mappedEntry) continue;
+    basePaths.push({
+      params: { lang: "zh-cn", slug: fileSlug },
+      props: { entry: mappedEntry },
+    });
+    existingExact.add(fileSlug);
+  }
+
+  return basePaths;
 }
 
 const { entry } = Astro.props;
@@ -52,6 +76,26 @@ const breadcrumbs = [
 const entries = await getCollection("wiki");
 const sidebarSections = buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
+const slugCaseMap = new Map(entries.map((e) => {
+  const slug = wikiIdToSlug(e.id);
+  return [slug.toLowerCase(), slug];
+}));
+const labelMap = new Map(entries.map((e) => {
+  const slug = wikiIdToSlug(e.id);
+  const labelZh = getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slugToTitleEn(slug);
+  return [slug, labelZh];
+}));
+const explicitRelated = entry.data.related ?? [];
+const relatedSlugs = [...new Set(explicitRelated)]
+  .filter((s) => (slugCaseMap.get(s.toLowerCase()) ?? s).toLowerCase() !== slugParam.toLowerCase())
+  .slice(0, 5);
+const relatedItems = relatedSlugs.map((s) => {
+  const canonical = slugCaseMap.get(s.toLowerCase()) ?? s;
+  return {
+    slug: canonical,
+    labelZh: labelMap.get(canonical) ?? canonical,
+  };
+});
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -102,12 +146,13 @@ const definedTermSchema = {
 >
   <article class="wiki-article">
     <Content />
-    {entry.data.related && entry.data.related.length > 0 && (
+    <GoogleAdThin />
+    {relatedItems.length > 0 && (
       <section class="wiki-related" aria-labelledby="wiki-related-heading">
         <h2 id="wiki-related-heading" class="wiki-related-title">相关词条</h2>
         <div class="wiki-related-pills">
-          {entry.data.related.map((term: string) => (
-            <a href={`${basePath}/${term}/`} class="wiki-related-pill">{term}</a>
+          {relatedItems.map((item) => (
+            <a href={`${basePath}/${item.slug}/`} class="wiki-related-pill">{item.labelZh}</a>
           ))}
         </div>
       </section>
@@ -126,6 +171,24 @@ const definedTermSchema = {
 </script>
 
 <style>
+  :global(.docs-sidebar-wrap) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar-inner) {
+    border-inline-start: none !important;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
+  }
+
   .wiki-article {
     max-inline-size: 68ch;
     line-height: 1.8;
@@ -139,17 +202,34 @@ const definedTermSchema = {
   }
 
   .wiki-article :global(h2) {
-    font-size: 1.5rem;
-    border-inline-start: 4px solid var(--color-theme);
-    padding-inline-start: var(--sp-s);
-    margin-block: 2em 0.5em;
+    font-size: clamp(1.45rem, 2.4vw, 1.75rem);
+    font-weight: 700;
+    border-inline-start: 5px solid var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.25em 0.6em 0.25em var(--sp-s);
+    margin-block: 2.2em 0.7em;
   }
 
   .wiki-article :global(h3) {
-    font-size: 1.25rem;
-    border-block-end: 1px solid var(--color-border);
-    padding-block-end: 0.2em;
-    margin-block: 1.5em 0.5em;
+    font-size: clamp(1.2rem, 2vw, 1.35rem);
+    font-weight: 650;
+    border-inline-start: 2px solid color-mix(in srgb, var(--color-theme) 35%, var(--color-border));
+    padding-inline-start: 0.6em;
+    margin-block: 1.6em 0.5em;
+  }
+
+  .wiki-article :global(h4) {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-main) 88%, transparent);
+    margin-block: 1.2em 0.4em;
+  }
+
+  .wiki-article :global(h4::before) {
+    content: "•";
+    color: color-mix(in srgb, var(--color-theme) 72%, transparent);
+    margin-inline-end: 0.45em;
   }
 
   .wiki-article :global(a) {
@@ -162,8 +242,8 @@ const definedTermSchema = {
   }
 
   .wiki-related {
-    margin-block-start: var(--sp-l);
-    padding-block-start: var(--sp-m);
+    margin-block-start: calc(var(--sp-l) * 0.2);
+    padding-block-start: calc(var(--sp-m) * 0.2);
     border-block-start: 1px solid var(--color-border);
   }
 
@@ -172,8 +252,10 @@ const definedTermSchema = {
     font-weight: 600;
     margin-block-end: var(--sp-s);
     /* override the h2 accent border from above */
+    background: none;
+    border-radius: 0;
     border-inline-start: none;
-    padding-inline-start: 0;
+    padding: 0;
     border-block-end: none;
   }
 

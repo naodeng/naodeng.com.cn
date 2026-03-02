@@ -16,6 +16,7 @@
     "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "generate-covers": "node scripts/generate-blog-covers.mjs",
+    "wiki:related": "node scripts/generate-wiki-related.mjs",
     "update-blog-tags": "node scripts/update-blog-tags.mjs",
     "algolia-index": "node --env-file=.env scripts/algolia-index.mjs",
     "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",

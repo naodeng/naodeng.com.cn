@@ -102,6 +102,12 @@ export const NAV_QA_WIKI: Multilingual = {
   "zh-cn": "百科",
 };
 
+/** 顶部导航：AI Wiki（中英文站内） */
+export const NAV_AI_WIKI: Multilingual = {
+  en: "AI Wiki",
+  "zh-cn": "AI 百科",
+};
+
 /** 顶部导航：指南 / Guild */
 export const NAV_GUILD: Multilingual = {
   en: "Guild",
@@ -112,6 +118,12 @@ export const NAV_GUILD: Multilingual = {
 export const FOOTER_NAV_QA_WIKI: Multilingual = {
   en: "QA Wiki",
   "zh-cn": "软件测试百科",
+};
+
+/** 底部导航：AI Wiki */
+export const FOOTER_NAV_AI_WIKI: Multilingual = {
+  en: "AI Wiki",
+  "zh-cn": "AI 百科",
 };
 
 /** 底部导航：自动化测试指南 */

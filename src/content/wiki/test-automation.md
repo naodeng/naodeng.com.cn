@@ -1,261 +1,1000 @@
 ---
-title: "测试自动化 ｜ Test Automation"
-description: "测试自动化 (Test automation) 是指使用专门的软件来控制测试的执行，并将实际结果与预测结果进行比较。它在一个已经就绪的正式测试过程中自动化那些重复但必要的任务，或者执行一些手动难以完成的额外测试。测试自动化 对于持续集成和持续交付 (CI/CD) 流水线至关重要，能够在软件开发和部署期间实现频繁且可靠的测试。自动化脚本一旦创建，就可以以零额外成本反复运行，且速度远快于手动测试。由于它们可以模拟多个用户与网络、软件和 Web 应用程序交互。测试自动化 通常涉及自动执行 动态测试 (dynamic testing) 任务，包括："
-section: "T"
+title: "Jasmine ｜ Jasmine"
+description: "Jasmine 是一个用于测试 JavaScript 代码的行为驱动开发 (BDD) 框架。它不依赖于浏览器、DOM 或任何 JavaScript 框架，适用于测试任何 JavaScript 应用。其语法设计简洁易读，旨在通过 `describe`（套件）和 `it`（规格/测试用例）实现层次化的测试结构。Jasmine 提供内置的 matchers（匹配器，如 `toEqual`, `toBe`）进行断言，并支持 Spies（间谍/测试双倍）来跟踪函数调用。对于异步操作，它支持 `done` 回调或现代的 `async/await` 语法。"
+section: "J"
+related:
+  - jasmine
+  - web-test-automation-tools
+  - jmeter
+  - performance-testing
+  - jest
 order: 0
 ---
-<!-- markdownlint-disable MD025 -->
-# 测试自动化 ｜ Test Automation
 
-## 目录
+# Jasmine ｜ Jasmine
 
-- [基础与重要性](#基础与重要性)
-- [工具与技术](#工具与技术)
-- [实施与最佳实践](#实施与最佳实践)
-- [端到端测试](#端到端测试)
+<!-- TOC START -->
+- [Jasmine ｜ Jasmine](#jasmine--jasmine)
+  - [相关术语](#相关术语)
+    - [另请参阅：](#另请参阅)
+  - [关于 jasmine 的问题吗？](#关于jasmine的问题吗)
+    - [基础知识和重要性](#基础知识和重要性)
+      - [软件测试中的 Jasmine 是什么？](#软件测试中的-jasmine-是什么)
+      - [为什么 Jasmine 在 e2e 测试中被认为很重要？](#为什么-jasmine-在-e2e-测试中被认为很重要)
+      - [Jasmine 的主要特点是什么？](#jasmine-的主要特点是什么)
+      - [Jasmine 与其他测试框架相比如何？](#jasmine-与其他测试框架相比如何)
+    - [安装和设置](#安装和设置)
+      - [如何安装 Jasmine 进行 JavaScript 测试？](#如何安装-jasmine-进行-javascript-测试)
+      - [安装 Jasmine 有哪些先决条件？](#安装-jasmine-有哪些先决条件)
+      - [如何设置基本的 Jasmine 测试环境？](#如何设置基本的-jasmine-测试环境)
+    - [测试写作](#测试写作)
+      - [如何在 Jasmine 中编写基本测试？](#如何在-jasmine-中编写基本测试)
+      - [Jasmine 测试的结构是什么？](#jasmine-测试的结构是什么)
+      - [如何在 Jasmine 中使用“describe”和“it”函数？](#如何在-jasmine-中使用describe和it函数)
+      - [Jasmine 中的 'beforeEach' 和 'afterEach' 函数是什么以及它们如何使用？](#jasmine-中的-beforeeach-和-aftereach-函数是什么以及它们如何使用)
+    - [断言和匹配器](#断言和匹配器)
+      - [什么是 Jasmine 匹配器以及它们如何使用？](#什么是-jasmine-匹配器以及它们如何使用)
+      - [如何在 Jasmine 中创建自定义匹配器？](#如何在-jasmine-中创建自定义匹配器)
+      - [Jasmine 中有哪些不同类型的断言？](#jasmine-中有哪些不同类型的断言)
+    - [间谍和嘲笑](#间谍和嘲笑)
+      - [什么是 Jasmine 间谍以及如何使用它们？](#什么是-jasmine-间谍以及如何使用它们)
+      - [如何在 Jasmine 中创建模拟？](#如何在-jasmine-中创建模拟)
+      - [Jasmine 中的间谍和模拟有什么区别？](#jasmine-中的间谍和模拟有什么区别)
+    - [高级概念](#高级概念)
+      - [Jasmine 中如何处理异步测试？](#jasmine-中如何处理异步测试)
+      - [如何将 Jasmine 与其他库或框架（如 Angular 或 React）一起使用？](#如何将-jasmine-与其他库或框架如-angular-或-react一起使用)
+      - [在 Jasmine 中编写测试的最佳实践有哪些？](#在-jasmine-中编写测试的最佳实践有哪些)
+<!-- TOC END -->
+jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的，允许开发人员以清晰、人类可读的术语描述软件预期行为的方式编写测试。jasmine 提供构建测试、设置前提条件和定义断言的函数。
 
-## 关于测试自动化的问题？
+## 相关术语
 
-### 基础与重要性
-- **什么是测试自动化？**
-  **测试自动化 (Test automation)** 是指使用专门的软件来控制测试的执行，并将实际结果与预测结果进行比较。它在一个已经就绪的正式测试过程中自动化那些重复但必要的任务，或者执行一些手动难以完成的额外测试。**测试自动化** 对于持续集成和持续交付 (CI/CD) 流水线至关重要，能够在软件开发和部署期间实现频繁且可靠的测试。
-  自动化脚本一旦创建，就可以以零额外成本反复运行，且速度远快于手动测试。由于它们可以模拟多个用户与网络、软件和 Web 应用程序交互。**测试自动化** 通常涉及自动执行 **[动态测试 (dynamic testing)](/zh-cn/wiki/dynamic-testing/)** 任务，包括：
-  - **单元测试 (Unit tests)**：测试软件的单个单元或组件。
-  - **集成测试 (Integration tests)**：确保应用程序使用的不同模块或服务能够协同工作。
-  - **功能测试 (Functional tests)**：测试产品的功能和运行行为，以确保它们符合规范。
-  - **回归测试 (Regression tests)**：确保之前开发和测试过的软件在变更后仍能正常运行。
-  - **负载测试 (Load tests)**：检查系统是否能处理指定的数数据负载和用户交互。
-  ```javascript
-  // 使用测试框架的简单 JavaScript 自动化测试脚本示例
-  describe('Homepage', function() {
-    it('should load successfully', function() {
-      browser.url('https://example.com');
-      expect(browser.getTitle()).toBe('Example Domain');
+- [Testing framework](/zh-cn/wiki/unit-test-framework/)
+- [Jest](/zh-cn/wiki/jest/)
+- [Chai.js](/zh-cn/wiki/chai-js/)
+
+### 另请参阅：
+
+- [官网](https://jasmine.github.io/)
+- [维基百科](https://en.wikipedia.org/wiki/Jasmine_(software))
+
+## 关于 jasmine 的问题吗？
+
+### 基础知识和重要性
+
+#### 软件测试中的 Jasmine 是什么？
+
+[jasmine](/zh-cn/wiki/jasmine/) 是一个用于测试 JavaScript 代码的 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架。它不依赖于浏览器、DOM 或任何 JavaScript 框架，因此适合测试任何 JavaScript 应用程序。 [jasmine](/zh-cn/wiki/jasmine/) 的语法被设计为易于阅读和编写，旨在既具有表现力又全面。
+  [jasmine](/zh-cn/wiki/jasmine/) 中的测试称为 **specs**，它是通过调用全局 `it` 函数来定义的。规范被分组为套件，这些套件是通过调用全局 `describe` 函数来定义的。套件可以嵌套在其他套件中，从而允许使用分层结构来组织测试。
+  [jasmine](/zh-cn/wiki/jasmine/) 提供内置的**匹配器**，让您以可读的形式表达对值的期望。这些匹配器包括 `toEqual`、`toBe`、`toMatch` 等函数。还可以定义自定义匹配器来扩展框架的功能。
+  **间谍**是[jasmine](/zh-cn/wiki/jasmine/) 创建测试替身的方式，它可以跟踪对函数及其参数的调用、返回值以及`this` 的值。它们通过用间谍对象替换实际函数来隔离测试中的代码非常有用。
+  对于异步操作，[jasmine](/zh-cn/wiki/jasmine/) 提供`done` 回调来向框架发出异步规范已完成的信号。或者，您可以将较新的`async/await` 语法与[jasmine](/zh-cn/wiki/jasmine/) 的`beforeAll`、`afterAll`、`beforeEach` 和`afterEach` 函数结合使用来处理[环境搭建](/zh-cn/wiki/setup/) 和拆卸任务。
+  [jasmine](/zh-cn/wiki/jasmine/)的灵活性使其可以与其他库和框架一起使用，并且与各种持续集成工具集成良好。对于需要为其 JavaScript 代码提供强大、功能丰富的测试解决方案的开发人员来说，这是一个流行的选择。
+
+#### 为什么 Jasmine 在 e2e 测试中被认为很重要？
+
+[jasmine](/zh-cn/wiki/jasmine/) 在**端到端 (e2e) 测试**中被认为很重要，因为它提供了专门为测试 JavaScript 应用程序而定制的**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架。它的重要性在于它能够模拟用户与 Web 应用程序的交互，从而确保整个流程从用户的角度按预期工作。
+  在 e2e 测试中，[jasmine](/zh-cn/wiki/jasmine/) 通常与 **Protractor** 等工具结合使用，该工具允许测试 Angular 应用程序，或者与 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 结合使用以测试非 Angular Web 应用程序。这种组合使测试人员能够在真实的浏览器环境中编写清晰且全面的[测试套件](/zh-cn/wiki/test-suite/)，涵盖用户故事和[用例](/zh-cn/wiki/use-case/)。
+  [jasmine](/zh-cn/wiki/jasmine/) 的语法和结构使测试**可读且可维护**，这对于可能变得复杂的 e2e [测试套件](/zh-cn/wiki/test-suite/) 至关重要。该框架对**异步操作**的支持对于 e2e 测试也至关重要，在 e2e 测试中，等待页面加载、AJAX 调用和 UI 更新很常见。
+  此外，[jasmine](/zh-cn/wiki/jasmine/) 的 **spies** 和 **mocks** 对于将测试与外部依赖项隔离至关重要，确保 e2e 测试重点关注用户体验而不是底层实现。这种隔离有助于识别可能影响最终用户的问题，使 [jasmine](/zh-cn/wiki/jasmine/) 成为 e2e 测试过程中不可或缺的一部分。
+  通过提供一组强大的功能来模拟用户交互和验证应用程序行为，[jasmine](/zh-cn/wiki/jasmine/) 在提供高质量、用户友好的软件方面发挥着关键作用。
+
+#### Jasmine 的主要特点是什么？
+
+[jasmine](/zh-cn/wiki/jasmine/) 的主要功能包括：
+
+- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语法**：鼓励编写易于阅读和理解的测试。
+- **无外部依赖**：开箱即用，无需其他库。
+- **丰富的匹配器集**：为常见断言提供内置匹配器，例如
+    `toEqual`
+    ,
+    `toBe`
+    ,
+    `toMatch`
+    ，等等。
+
+- **简洁明了的语法**：提供一个简单的界面来描述测试、设置条件和检查结果。
+- **异步支持**：处理异步代码
+    `done`
+    回调或承诺使用
+    `async`
+    /
+    `await`
+    。
+
+- **Spies** ：内置测试替身，用于跟踪函数调用、参数和返回值。
+- **时钟控制**：Jasmine 的模拟时钟允许测试时间相关的代码。
+- **自动测试发现**：自动查找并运行规范文件中定义的测试。
+- **灵活的报告**：支持多种报告器显示测试结果，可定制或扩展。
+- **可扩展性**：允许添加自定义匹配器和报告器以满足特定需求。
+- **跨平台**：在任何支持 JavaScript 的平台上运行。
+- **集成友好**：可以与其他工具和框架一起使用，例如 Karma、Protractor 等。
+
+  ```
+  // Example of a simple Jasmine test
+  describe('A suite', () => {
+    it('contains a spec with an expectation', () => {
+      expect(true).toBe(true);
     });
   });
   ```
-  自动化需要最初在学习和设置工具上的投入，但如果实施得当，它可以显著提高测试效率和准确性。
+这些功能使 [jasmine](/zh-cn/wiki/jasmine/) 成为编写和维护 JavaScript 应用程序测试的强大且多功能的工具。
 
-- **为什么测试自动化很重要？**
-  **测试自动化 (Test automation)** 至关重要，因为它 **增强了 [软件测试 (software testing)](/zh-cn/wiki/software-testing/) 的效率、有效性和覆盖范围**。通过自动化重复且费时的任务，团队可以专注于更复杂的测试场景，并确保应用程序以 **一致** 且 **可靠** 的方式得到彻底测试。自动化支持 **持续集成和交付 (CI/CD)** 流水线，实现对缺陷的及早且频繁的检测，通过在开发生命周期早期解决 **[Bug](/zh-cn/wiki/bug/)**，降低了修复成本。
-  此外，它允许 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 的 **并行执行**，显著缩短了测试周期所需的时间。这在速度和频繁发布成为常态的敏捷和 DevOps 环境中尤为重要。**测试自动化** 还通过执行大量手动操作不切实际的测试，提高了 **[测试覆盖率 (test coverage)](/zh-cn/wiki/test-coverage/)**。
-  此外，自动化测试可以在多个平台和设备上同步运行，确保软件在各种环境下都能正常工作。这对于验证应用程序的 **跨平台兼容性** 必不可少。
-  最后，**测试自动化** 提供了 **可追溯、可重复且可审计** 的结果，有助于提高 **[软件质量 (software quality)](/zh-cn/wiki/software-quality/)** 并符合行业标准。它生成的详细日志和报告有助于快速识别问题，并就所测试软件的质量做出明智决策。
+- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语法**：鼓励编写易于阅读和理解的测试。
+- **无外部依赖**：开箱即用，无需其他库。
+- **丰富的匹配器集**：为常见断言提供内置匹配器，例如
+    `toEqual`
+    ,
+    `toBe`
+    ,
+    `toMatch`
+    ，等等。
 
-- **测试自动化有哪些好处？**
-  **测试自动化 (Test automation)** 的好处包括：
-  - **扩展的 [测试覆盖率 (test coverage)](/zh-cn/wiki/test-coverage/)**：自动化允许执行更多测试，覆盖更广泛的场景。
-  - **[测试脚本 (test scripts)](/zh-cn/wiki/test-script/) 的可重用性**：脚本一旦编写，即可在应用程序的不同版本中重复使用。
-  - **可靠性**：自动化测试每次运行时都会精确执行相同的步骤，消除了人为错误。
-  - **时间效率**：测试可以在无人值守、隔夜或并行的情况下运行，节省大量时间。
-  - **成本效率**：虽然初始设置成本较高，但由于缩短了测试时间，长期来看自动化能节省资金。
-  - **更快的反馈**：自动化测试可以集成到 CI/CD 流水线中，为开发人员提供快速反馈。
-  - **提高准确性**：自动化测试消除了手动测试的多变性，提供一致的结果。
-  - **及早 [缺陷 (Bug)](/zh-cn/wiki/bug/) 检测**：Bug 可以在开发周期早期被检测到，降低修复成本。
-  - **增强 [性能测试 (performance testing)](/zh-cn/wiki/performance-testing/)**：自动化允许模拟成千上万个虚拟用户进行性能测试，这在手动操作时是不现实的。
-  - **更好的 [测试数据 (test data)](/zh-cn/wiki/test-data/) 管理**：测试数据可以更高效地创建和管理。
-  - **可扩展性**：测试套件可以轻松扩展，而无需成比例地增加测试团队规模。
-  - **文档化**：自动化测试可以作为系统功能和需求的说明文档。
-  - **专注于高价值任务**：自动化将 QA 工程师释放出来，让他们专注于更复杂的测试任务和探索性测试。
+- **简洁明了的语法**：提供一个简单的界面来描述测试、设置条件和检查结果。
+- **异步支持**：处理异步代码
+    `done`
+    回调或承诺使用
+    `async`
+    /
+    `await`
+    。
 
-- **测试自动化有哪些弊端？**
-  尽管有很多好处，**测试自动化 (Test automation)** 也有一些弊端：
-  - **初始投资**：建立测试自动化环境需要在工具、基础设施和培训方面投入大量前期资金。
-  - **维护开销**：自动化测试可能由于非常脆弱而需要定期维护以适应应用程序的变化，这可能很耗时。
-  - **学习曲线**：团队可能需要学习新的语言或框架，这可能会推迟测试自动化的初步实施。
-  - **复杂性**：为复杂场景创建稳健且可靠的自动化测试极具挑战性，且可能仍需人工干预。
-  - **假阴性和 [假阳性 (false positives)](/zh-cn/wiki/false-positive/)**：自动化测试可能产生假阴性（本该通过却失败）和假阳性（本该失败却通过），这可能导致对自动化流程的不信任。
-  - **覆盖范围有限**：自动化只能测试它被编程去测试的内容，可能会错过人类测试员能发现的意外问题。
-  - **工具限制**：测试自动化工具可能存在局限性，导致它们无法与某些元素或应用程序交互，从而产生测试覆盖缺口。
-  - **环境差异**：测试在受控环境中可能通过，但在生产环境中由于脚本中未考虑到的差异而失败。
-  总之，虽然 **测试自动化** 能极大地提高测试效率和覆盖范围，但它并非没有挑战和局限性。它需要仔细规划、持续维护，并与 **[手动测试 (manual testing)](/zh-cn/wiki/manual-testing/)** 保持平衡，以确保全面的 **[质量保证 (quality assurance)](/zh-cn/wiki/quality-assurance/)**。
+- **Spies** ：内置测试替身，用于跟踪函数调用、参数和返回值。
+- **时钟控制**：Jasmine 的模拟时钟允许测试时间相关的代码。
+- **自动测试发现**：自动查找并运行规范文件中定义的测试。
+- **灵活的报告**：支持多种报告器显示测试结果，可定制或扩展。
+- **可扩展性**：允许添加自定义匹配器和报告器以满足特定需求。
+- **跨平台**：在任何支持 JavaScript 的平台上运行。
+- **集成友好**：可以与其他工具和框架一起使用，例如 Karma、Protractor 等。
 
-- **手动测试与自动化测试有何区别？**
-  **[手动测试 (Manual testing)](/zh-cn/wiki/manual-testing/)** 涉及人类测试员在没有工具或脚本辅助的情况下执行 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**。测试员手动在应用程序中执行操作以验证功能、观察结果并记录。这种方法固有地较慢且易出错，但允许直观的 **[探索性测试 (exploratory testing)](/zh-cn/wiki/exploratory-testing/)**，这能发现自动化测试可能错过的问题。
-  **[自动化测试 (Automated testing)](/zh-cn/wiki/automated-testing/)** 则使用脚本和软件工具来自动运行测试、管理 **[测试数据 (test data)](/zh-cn/wiki/test-data/)** 并评估结果。它在处理重复和回归任务时更快、更可靠，因为它消除了人为错误，且能大批量或持续运行测试。然而，它需要最初的 **[安装 (setup)](/zh-cn/wiki/setup/)** 和 **[测试脚本 (test scripts)](/zh-cn/wiki/test-script/)** 维护，这可能很复杂且耗时。
-  关键区别在于：
-  - **执行 (Execution)**：手动测试由人执行；自动化测试由机器执行。
-  - **速度 (Speed)**：自动化测试一旦设置好，速度极快。
-  - **准确性 (Accuracy)**：自动化测试更一致，且不易受人为错误影响。
-  - **成本 (Cost)**：手动测试前期投入较少，但由于执行较慢且需更多资源，长期来看成本更高。
-  - **复杂性 (Complexity)**：自动化测试可以处理复杂的测试场景，但需要编写脚本的技术技能。
-  - **灵活性 (Flexibility)**：手动测试更能适应变化，且能更好地解释细微的行为。
-  - **[安装 (setup)](/zh-cn/wiki/setup/) 时间**：自动化测试需要时间进行设置和开发脚本。
-  在实践中，平衡的方法通常能产生最佳效果，即自动化处理大部分回归和重复任务，而 **手动测试** 专注于探索性、易用性和随机性测试场景。
+#### Jasmine 与其他测试框架相比如何？
 
-### 工具与技术
-- **有哪些流行的测试自动化工具？**
-  流行的 **测试自动化 (test automation)** 工具包含多种旨在满足不同测试需求的框架和系统。以下是简要列表：
-  - **[Cypress](/zh-cn/wiki/cypress/)**：一个基于 JavaScript 的端到端测试框架，在浏览器内运行，提供实时重新加载和交互式调试。
-  - **JUnit**：Java 的单元测试框架，广泛用于测试驱动开发。
-  - **TestNG**：类似于 JUnit，但具有更高级的功能，如注解、参数化测试和对数据驱动测试的支持。
-  - **Appium**：一个用于自动化 iOS 和 Android 上的移动应用程序以及 Windows 桌面应用程序的开源工具。
-  - **Espresso**：Google 为 Android 提供的移动测试框架，提供了一组丰富的 API 来编写 UI 测试。
-  - **XCTest**：Apple 为 iOS 应用程序提供的测试框架，已集成到 Xcode 中。
-  - **Robot Framework**：一个基于关键词驱动的测试自动化框架，用于验收测试和验收测试驱动开发 (ATDD)。
-  - **Cucumber**：支持行为驱动开发 (BDD)，允许使用普通语言规范应用程序的功能和行为。
-  - **[Postman](/zh-cn/wiki/postman/)**：一个用于 API 测试的工具，允许你为 RESTful API 创建并运行自动化测试。
-  - **SoapUI**：一个用于测试 SOAP 和 REST API 的工具，提供对服务模拟和桩 (mocking) 的全面支持。
-  - **HP UFT (原 QTP)**：一个商业工具，具有可视化界面和脚本支持，用于功能和回归测试。
-  - **Katalon Studio**：一个集成了 Selenium 和 Appium 的全面工具，为创建自动化测试提供了用户友好的界面。
-  每种工具都提供独特的功能和集成，使其适用于特定的测试场景。经验丰富的工程师会根据被测应用程序、涉及的编程语言、**[测试用例 (test cases)](/zh-cn/wiki/test-case/)** 的复杂性以及与开发流水线中其他软件的集成需求来选择工具。
+[jasmine](/zh-cn/wiki/jasmine/) 因其**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 风格而脱颖而出，但与其他测试框架相比，有几个区别需要考虑：
 
-- **这些工具有什么区别？**
-  在比较 **测试自动化 (test automation)** 工具时，从 **功能 (functionality)**、**兼容性 (compatibility)**、**易用性 (ease of use)** 和 **集成能力 (integration capabilities)** 方面了解它们的区别至关重要。以下是一些流行工具的区别概览：
-  - **[Selenium](/zh-cn/wiki/selenium/)**：一个支持多种浏览器和语言的开源工具。主要用于 Web 应用程序测试，需要编程技能来编写 **[测试脚本 (test scripts)](/zh-cn/wiki/test-script/)**。
-  - **QTP/UFT ([功能测试 (Functional Testing)](/zh-cn/wiki/functional-testing/))**：Micro Focus 的商业工具，提供用户友好的界面用于测试创建和维护。支持桌面和 Web 应用。
-  - **TestComplete**：另一个商业工具，为桌面、Web 和移动应用提供无脚本的自动化测试环境。
-  - **[Cypress](/zh-cn/wiki/cypress/)**：一个基于 JavaScript 的 **[端到端测试 (end-to-end testing)](/zh-cn/wiki/end-to-end-testing/)** 框架，专为现代 Web 应用程序设计。它与应用程序在同一个运行循环中运行，提供更快的 **[测试执行 (test execution)](/zh-cn/wiki/test-execution/)** 和实时重载。
-  - **Appium**：移动应用测试的开源工具。支持 iOS 和 Android。
-  - **Robot Framework**：一个开源的、基于关键字驱动的 **测试自动化 (test automation)** 框架，对编程新手友好。它集成了 **[Selenium](/zh-cn/wiki/selenium/)** 用于 **[Web 测试 (web testing)](/zh-cn/wiki/web-testing/)**。
-  每种工具都有其 **独特优势**。工程师应考虑项目的 **具体需求**，如应用类型、要求的 **[测试覆盖率 (test coverage)](/zh-cn/wiki/test-coverage/)** 以及团队偏好的语言来选择合适的工具。
+- **Mocha**：另一个流行的 JavaScript 测试框架，它很灵活，需要像 Chai 这样的断言库来进行断言。Mocha 经常与 Chai 和 Sinon 搭配用于间谍、存根和模拟。然而，[jasmine](/zh-cn/wiki/jasmine/) 具有开箱即用的这些功能。
+- **[Jest](/zh-cn/wiki/jest/)**：[Jest](/zh-cn/wiki/jest/) 由 Facebook 开发，通常用于 React 应用程序。它的灵感来自[jasmine](/zh-cn/wiki/jasmine/)，但包括快照测试、内置覆盖率报告和更强大的模拟库等附加功能。 [Jest](/zh-cn/wiki/jest/) 并行运行测试，这可以导致更快的[测试执行](/zh-cn/wiki/test-execution/)。
+- **QUnit**：QUnit 是 [单元测试](/zh-cn/wiki/unit-testing/) 的强大框架，特别适合测试 jQuery 项目。与[jasmine](/zh-cn/wiki/jasmine/) 的[BDD](/zh-cn/wiki/bdd/) 风格相比，它的方法更为传统。
+- **Karma**：本身不是一个测试框架，而是一个可以与 [jasmine](/zh-cn/wiki/jasmine/)、Mocha 或 QUnit 配合使用的 [测试运行者](/zh-cn/wiki/test-runner/)。Karma 通常用于在真实浏览器和设备上运行测试。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具，与[jasmine](/zh-cn/wiki/jasmine/) 不同的是，它在浏览器中运行，这可以让您更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/)还提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
+- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
+  [jasmine](/zh-cn/wiki/jasmine/) 的简单性和独立性使其成为那些喜欢一体化解决方案而不需要额外库的开发人员的不错选择。但是，对于更复杂的需求或特定的集成，其他框架可能更合适。
 
-- **选择测试自动化工具时应考虑哪些因素？**
-  选择 **测试自动化 (test automation)** 工具时，请考虑以下因素：
-  - **技术栈兼容性**：确保工具支持项目中使用的技术（如 Web、移动、桌面、API）。
-  - **易用性**：寻找具有用户友好界面和简化测试创建与执行功能的工具。
-  - **集成能力**：工具应与 CI/CD 流水线、版本控制系统妥善集成。
-  - **支持的脚本语言**：选择一个允许团队使用熟悉语言编写测试的工具。
-  - **学习曲线**：考虑团队熟练掌握该工具所需的时间。
-  - **社区与支持**：强大的社区和专业支持对于解决问题很有价值。
-  - **成本**：根据预算评估工具成本，包括授权、培训等。
-  - **可扩展性**：工具应能随着项目增长处理日益复杂的测试。
-  - **报告与分析**：寻找能提供测试覆盖率、通过/失败率指标且功能全面的报告。
-  - **测试开发与维护**：评估工具如何促进测试组件的重用和维护。
-  - **性能与并行执行**：工具应支持高效的。
-  - **移动测试支持**：如果需要，确保工具有针对 iOS 和 Android 的稳健能力。
-  - **[跨浏览器测试 (Cross-Browser Testing)](/zh-cn/wiki/cross-browser-testing/)**：对于 Web 应用，应支持在多个浏览器及其版本上自动化测试。
+- **Mocha**：另一个流行的 JavaScript 测试框架，它很灵活，需要像 Chai 这样的断言库来进行断言。Mocha 经常与 Chai 和 Sinon 搭配用于间谍、存根和模拟。然而，[jasmine](/zh-cn/wiki/jasmine/) 具有开箱即用的这些功能。
+- **[Jest](/zh-cn/wiki/jest/)**：[Jest](/zh-cn/wiki/jest/) 由 Facebook 开发，通常用于 React 应用程序。它的灵感来自[jasmine](/zh-cn/wiki/jasmine/)，但包括快照测试、内置覆盖率报告和更强大的模拟库等附加功能。 [Jest](/zh-cn/wiki/jest/) 并行运行测试，这可以导致更快的[测试执行](/zh-cn/wiki/test-execution/)。
+- **QUnit**：QUnit 是 [单元测试](/zh-cn/wiki/unit-testing/) 的强大框架，特别适合测试 jQuery 项目。与 [jasmine](/zh-cn/wiki/jasmine/) 的 [BDD](/zh-cn/wiki/bdd/) 风格相比，它的方法更为传统。
+- **Karma**：本身不是一个测试框架，而是一个可以与 [jasmine](/zh-cn/wiki/jasmine/)、Mocha 或 QUnit 配合使用的 [测试运行者](/zh-cn/wiki/test-runner/)。Karma 通常用于在真实浏览器和设备上运行测试。
+- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具与[jasmine](/zh-cn/wiki/jasmine/) 不同，它在浏览器中运行，可以更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/) 还提供了丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)。
+- **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
 
-- **什么是 Selenium？在测试自动化中如何使用它？**
-  **[Selenium](/zh-cn/wiki/selenium/)** 是一个主要用于自动化 Web 应用程序的开源 **测试自动化框架 (test automation framework)**。它支持 Chrome、Firefox、IE 等多种浏览器，并允许使用 Java、Python、JavaScript 等多种语言编写脚本。
-  其核心组件包括：
-  - **[WebDriver](/zh-cn/wiki/webdriver/)**：直接与浏览器交互，允许执行复杂的交互。
-  - **Selenium Grid**：允许在不同的机器和浏览器上并发运行测试，有助于加速测试套件执行并实现跨浏览器测试。
-  - **[Selenium IDE](/zh-cn/wiki/selenium-ide/)**：记录用户与浏览器的交互并回放以自动化测试。它对于快速重现 Bug 或进行探索性测试非常有用。
-  在 **测试自动化 (test automation)** 中，通过编写指令（如点击、输入、导航）的脚本来使用它，并断言预期结果以验证 Web 应用功能。
+### 安装和设置
 
-- **AI 在测试自动化中的作用是什么？**
-  AI 在 **测试自动化 (test automation)** 中起着变革性的作用，增强了 **[自动化测试 (automated testing)](/zh-cn/wiki/automated-testing/)** 过程的效率、准确性和范围。它利用机器学习、NLP 等技术改进多个方面：
-  - **测试生成**：AI 可以根据用户行为、日志等自动生成测试用例。
-  - **测试维护**：AI 能在应用 UI 或 API 发生变更时通过自动更新脚本来实现“自修复”，减轻维护负担。
-  - **不稳定性检测**：AI 算法可以识别并分析产生不确定结果的不稳定测试。
-  - **视觉测试**：AI 驱动的工具可以检测人类肉眼难以察觉的像素级 UI 差异。
-  - **预测性分析**：AI 能预测关键质量指标和缺陷可能性，让团队关注高风险区域。
-  - **智能诊断**：测试失败时，AI 可以辅助进行根因分析。
-  通过将 AI 引入 **测试自动化**，工程师可以从常规任务转向更复杂的 **[测试场景 (test scenario)](/zh-cn/wiki/test-scenario/)**。
+#### 如何安装 Jasmine 进行 JavaScript 测试？
 
-### 实施与最佳实践
-- **如何在项目中实施测试自动化？**
-  在项目中实施 **测试自动化 (test automation)**，请遵循以下步骤：
-  1. **评估当前测试过程**：识别哪些是手动测试的，以及自动化能带来哪些价值。
-  2. **定义自动化范围**：并非所有测试都应自动化。侧重于重复性高、量大的测试。
-  3. **选择合适的框架**：根据技术栈和团队经验选择合适的框架。
-  4. **设置环境**：配置硬件、软件和网络设置。
-  5. **开发 [测试脚本 (test scripts)](/zh-cn/wiki/test-script/)**：编写模块化、可重用的 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**。
-  6. **与 CI/CD 集成**：将 **[测试执行 (test execution)](/zh-cn/wiki/test-execution/)** 纳入流水线以获得即时反馈。
-  7. **审查和重构**：定期审查脚本以保持其准确性，减少不稳定性。
-  8. **监控和报告**：实施日志记录和报告机制。
-  9. **协作与沟通**：确保团队成员间清晰沟通进度和结果。
-  10. **培训团队**：提供资源和培训。
+要安装 [jasmine](/zh-cn/wiki/jasmine/) 进行 JavaScript 测试，您需要先安装 [node.js](/zh-cn/wiki/node-js/) 和 npm（节点包管理器）。请按照下列步骤操作：
 
-- **测试自动化的最佳实践有哪些？**
-  **测试自动化 (Test automation)** 的最佳实践包括：
-  - **确定优先级**：优先自动化能提供最大价值且手动易出错的测试。
-  - **保持独立性**：每个测试都应是自包含的。
-  - **使用 [页面对象模型 (Page Object Model, POM)](/zh-cn/wiki/page-object-model/)**：这种设计模式通过将页面结构与脚本分离来提高可维护性。
-  - **实施持续集成 (CI)**：频繁运行测试以及早捕获问题。
-  - **选择合适的粒度**：平衡单元、集成和 UI 测试。
-  - **数据驱动测试**：外部化测试数据以运行多组输入。
-  - **脚本版本控制**：像对待生产代码一样对待测试代码。
-  - **定期重构**：保持代码整洁以减少维护成本。
-  - **并行执行**：提高执行效率。
-  - **[测试环境 (test environments)](/zh-cn/wiki/test-environment/) 一致性**：环境应尽可能接近生产环境。
-  - **处理测试不稳定性**：修复那些随机失败的测试。
-  - **保持更新**：紧跟最新趋势。
-  ```typescript
-  // TypeScript 中简单的 POM 结构示例
-  class LoginPage {
-    private usernameField = 'input#username';
-    private passwordField = 'input#password';
-    private submitButton = 'button#submit';
+1. 打开终端或命令提示符。
+2. 导航到要设置 Jasmine 的项目目录。
+3. 运行以下命令来初始化新的 npm 包（如果尚未初始化）：
 
-    enterUsername(username: string) {
-      $(this.usernameField).setValue(username);
-    }
+  ```
+  npm init
+  ```
 
-    enterPassword(password: string) {
-      $(this.passwordField).setValue(password);
-    }
+1. 按照提示创建
+    `package.json`
+    文件，或者如果您想跳过提示，请使用
+    `npm init -y`
+    对于默认设置。
 
-    submit() {
-      $(this.submitButton).click();
-    }
+2. 通过运行以下命令安装 Jasmine：
+
+  ```
+  npm install --save-dev jasmine
+  ```
+此命令将 [jasmine](/zh-cn/wiki/jasmine/) 作为开发依赖项安装并将其添加到 `package.json` 文件中。
+
+1. 在项目中初始化 Jasmine，这会创建一个 spec 目录和配置文件（
+    `jasmine.json`
+    ）用于您的测试：
+
+  ```
+  npx jasmine init
+  ```
+
+1. 要运行 Jasmine 测试，请将测试脚本添加到您的
+    `package.json`
+    文件：
+
+  ```
+  "scripts": {
+    "test": "jasmine"
   }
   ```
 
-- **如何维护测试自动化脚本？**
-  有效维护 **测试自动化 (test automation)** 脚本包括：
-  - **版本控制**：使用 Git 等工具。
-  - **模块化设计**：编写可重用的函数。
-    ```javascript
-    function login(username, password) {
-      // 执行登录的代码
-    }
+1. 现在，您可以使用以下命令运行 Jasmine 测试：
+
+  ```
+  npm test
+  ```
+此 [环境搭建](/zh-cn/wiki/setup/) 允许您为 JavaScript 代码编写和运行 [jasmine](/zh-cn/wiki/jasmine/) 测试。请记住在 `spec` 目录中创建测试文件，并使用 `*.spec.js` 等命名约定，以便 [jasmine](/zh-cn/wiki/jasmine/) 识别。
+
+1. 打开终端或命令提示符。
+2. 导航到要设置 Jasmine 的项目目录。
+3. 运行以下命令来初始化新的 npm 包（如果尚未初始化）：
+1. 按照提示创建
+    `package.json`
+    文件，或者如果您想跳过提示，请使用
+    `npm init -y`
+    对于默认设置。
+
+2. 通过运行以下命令安装 Jasmine：
+1. 在项目中初始化 Jasmine，这会创建一个 spec 目录和配置文件（
+    `jasmine.json`
+    ）用于您的测试：
+
+1. 要运行 Jasmine 测试，请将测试脚本添加到您的
+    `package.json`
+    文件：
+
+1. 现在，您可以使用以下命令运行 Jasmine 测试：
+
+#### 安装 Jasmine 有哪些先决条件？
+
+要安装[jasmine](/zh-cn/wiki/jasmine/)，请确保您满足以下先决条件：
+
+- **[node.js](/zh-cn/wiki/node-js/)**：[jasmine](/zh-cn/wiki/jasmine/) 需要 [node.js](/zh-cn/wiki/node-js/) 才能运行。确保您安装了最新的稳定版本。您可以从官方[Node.js website](https://nodejs.org/)下载。
+- **npm（节点包管理器）**：npm 包含在[node.js](/zh-cn/wiki/node-js/) 中，用于安装[jasmine](/zh-cn/wiki/jasmine/)。通过在终端中运行 `npm -v` 来验证其安装。
+- **JavaScript 环境**：[jasmine](/zh-cn/wiki/jasmine/) 可用于基于浏览器的应用程序和[node.js](/zh-cn/wiki/node-js/) 应用程序。确保您为您的项目设置了合适的环境。
+- **package.json 文件**：如果您的项目中没有该文件，请通过在项目的根目录中运行 `npm init` 来创建它。这将管理项目的依赖关系。
+  满足这些先决条件后，通过在终端中运行以下命令来安装[jasmine](/zh-cn/wiki/jasmine/)：
+
+  ```
+  npm install --save-dev jasmine
+  ```
+这将在您的项目中安装 [jasmine](/zh-cn/wiki/jasmine/) 作为开发依赖项。安装后，通过运行以下命令初始化[jasmine](/zh-cn/wiki/jasmine/)：
+
+  ```
+  npx jasmine init
+  ```
+这将为您的测试设置基本配置和目录结构。您现在可以开始编写 [jasmine](/zh-cn/wiki/jasmine/) 测试。
+
+- **[node.js](/zh-cn/wiki/node-js/)**：[jasmine](/zh-cn/wiki/jasmine/) 需要 [node.js](/zh-cn/wiki/node-js/) 才能运行。确保您安装了最新的稳定版本。您可以从官方[Node.js website](https://nodejs.org/)下载。
+- **npm（节点包管理器）**：npm 包含在[node.js](/zh-cn/wiki/node-js/) 中，用于安装[jasmine](/zh-cn/wiki/jasmine/)。通过在终端中运行 `npm -v` 来验证其安装。
+- **JavaScript 环境**：[jasmine](/zh-cn/wiki/jasmine/) 可用于基于浏览器的应用程序和[node.js](/zh-cn/wiki/node-js/) 应用程序。确保您为您的项目设置了合适的环境。
+- **package.json 文件**：如果您的项目中没有该文件，请通过在项目的根目录中运行 `npm init` 来创建它。这将管理项目的依赖关系。
+
+#### 如何设置基本的 Jasmine 测试环境？
+
+要设置基本 [jasmine](/zh-cn/wiki/jasmine/) [测试环境](/zh-cn/wiki/test-environment/)，请执行以下步骤：
+
+1. **如果尚未安装[node.js](/zh-cn/wiki/node-js/)**，请安装它。 [jasmine](/zh-cn/wiki/jasmine/) 需要[node.js](/zh-cn/wiki/node-js/) 在独立环境中运行。
+2. **使用 npm 全局安装[jasmine](/zh-cn/wiki/jasmine/)**，使其可以从系统中的任何位置使用：
+
     ```
-  - **[页面对象模型 (POM)](/zh-cn/wiki/page-object-model/)**：分离逻辑与 UI 结构。
-  - **持续集成 (CI)**：定期运行。
-  - **[测试数据 (test data)](/zh-cn/wiki/test-data/) 管理**：将数据与脚本分离。
-  - **[测试环境 (test environments)](/zh-cn/wiki/test-environment/) 管理**：确保环境一致性。
-  - **监控**：分析 **[测试执行 (test execution)](/zh-cn/wiki/test-execution/)** 结果并识别 **[不稳定测试 (flaky tests)](/zh-cn/wiki/flaky-test/)**。
+    npm install -g jasmine
+    ```
 
-- **成功的测试自动化策略的关键要素是什么？**
-  - **明确的目标**：如缩短回归时间或提高 **[测试覆盖率 (test coverage)](/zh-cn/wiki/test-coverage/)**。
-  - **自动化范围**：识别 ROI 高的测试。
-  - **框架选择**：可维护且集成良好。
-  - **[测试数据 (test data)](/zh-cn/wiki/test-data/) 管理**：高效管理数据集。
-  - **[测试环境 (test environment)](/zh-cn/wiki/test-environment/)**：稳定且与生产镜像。
-  - **持续集成 (CI)**：作为构建过程的一部分运行。
-  - **版本控制**：管理 **[测试脚本 (test scripts)](/zh-cn/wiki/test-script/)**。
-  - **报告与指标**：跟踪有效性。
+3. **在项目目录中初始化[jasmine](/zh-cn/wiki/jasmine/)**，创建`spec`目录和配置文件（`jasmine.json`）：
 
-- **如何处理测试自动化中的假阳性？**
-  处理 **测试自动化 (test automation)** 中的 **[假阳性 (false positives)](/zh-cn/wiki/false-positive/)**：
-  - **评审和分析**：了解失败的根因。
-  - **提高可靠性**：添加显式等待、改进定位器。
-  - **[测试数据 (test data)](/zh-cn/wiki/test-data/) 管理**：确保数据一致和隔离。
-  - **[不稳定测试 (flaky tests)](/zh-cn/wiki/flaky-test/) 管理**：标记并隔离修复。
-  - **代码评审**：通过同行评审发现潜在问题。
+    ```
+    jasmine init
+    ```
 
-### 端到端测试
-- **什么是端到端测试？**
-  **[端到端测试 (End-to-end testing)](/zh-cn/wiki/end-to-end-testing/)** 是一种策略，涉及验证应用程序的 **集成组件**，以确保它们从头到尾按预期协同工作。它模拟 **真实用户场景**，测试系统的外部接口。
-  在端到端测试中，测试人员创建涵盖完整流程的 **[测试用例 (test cases)](/zh-cn/wiki/test-case/)**。目标是识别在 **真实使用场景** 中可能发生的问题，如数据完整性、UI、网络、**[数据库 (database)](/zh-cn/wiki/database/)** 交互等。
-  典型流程包括设置环境、执行用户操作模拟、验证最终状态以及清理环境。它们通常是自动化的以提高效率。
+4. **在 `spec` 目录中创建您的第一个规范文件**。 [jasmine](/zh-cn/wiki/jasmine/) 规范文件通常具有 `.spec.js` 后缀：
 
-- **端到端测试如何融入整体测试自动化策略？**
-  在典型的 **测试自动化 (test automation)** 金字塔中，端到端 (E2E) 测试位于顶部。虽然单元和集成测试覆盖了组件级和交互级，但 E2E 测试验证的是整个系统的行为。
-  由于 E2E 测试维护成本高且执行慢，应优先考虑业务影响最大的关键场景。它们常在部署到 Staging 后执行，并作为生产发布的守门员。
+    ```
+    touch spec/yourTest.spec.js
+    ```
 
-- **自动化端到端测试有哪些挑战？**
-  **[端到端测试 (End-to-end testing)](/zh-cn/wiki/end-to-end-testing/)** 自动化面临以下挑战：
-  - **复杂性**：涉及多个系统。
-  - **不稳定性**：受网络延迟等因素影响。
-  - **数据管理**：维护反映真实场景的数据非常困难。
-  - **执行时间长**：反馈周期慢。
-  - **调试困难**：在复杂环境中很难识别根因。
+5. **使用 `describe` 和 `it` 块在规范文件中编写测试**。由于您避免了编写测试的细节，因此我们将跳过此处的内容。
+6. **运行测试** 只需在终端中执行 `jasmine` 命令即可：
 
-- **有哪些用于自动化端到端测试的工具？**
-  - **[Selenium](/zh-cn/wiki/selenium/)**：开源，多语言，支持多浏览器。
-  - **[Cypress](/zh-cn/wiki/cypress/)**：提供丰富的交互式 **[测试运行器 (test runner)](/zh-cn/wiki/test-runner/)**。
-  - **Playwright**：微软开发，通过单一 **[API](/zh-cn/wiki/api/)** 支持跨 Chrome、Firefox 和 WebKit 浏览器。
-  - **TestCafe**：基于 **[Node.js](/zh-cn/wiki/node-js/)**，无需 **[WebDriver](/zh-cn/wiki/webdriver/)**。
-  - **Puppeteer**：提供高层级 **[API](/zh-cn/wiki/api/)** 来控制 Chrome。
+    ```
+    jasmine
+    ```
+[jasmine](/zh-cn/wiki/jasmine/) 将自动查找并执行与 `jasmine.json` 配置文件中定义的模式匹配的所有规范文件。
+  如果您计划将 [jasmine](/zh-cn/wiki/jasmine/) 与其他库一起使用或将其集成到更大的项目中，请记住通过创建 `package.json` 文件来**管理您的项目依赖项**。您可以通过运行`npm init`，然后安装[jasmine](/zh-cn/wiki/jasmine/) 作为`npm install --save-dev jasmine` 的开发依赖项来完成此操作。
+  为了持续集成或与构建工具集成，您可能需要在 `package.json` 中设置其他配置或脚本，以确保 [jasmine](/zh-cn/wiki/jasmine/) 作为构建过程的一部分运行。
 
-- **如何设计端到端测试用例？**
-  - **识别关键用户流**：关注最重要的 **[用例 (use cases)](/zh-cn/wiki/use-case/)**。
-  - **映射场景**：包括替代路径和异常处理。
-  - **定义前置条件**：包括必要的 **[安装 (setup)](/zh-cn/wiki/setup/)**。
-  - **编写测试步骤**：清晰且简明，并覆盖 **[数据库 (databases)](/zh-cn/wiki/database/)** 等集成点。
-  - **包含后置条件**：进行数据 **[验证 (verification)](/zh-cn/wiki/verification/)** 或清理。
-  - **优先排序**：根据 **[优先级 (priority)](/zh-cn/wiki/priority/)** 执行。
-  - **定期评审和完善**：保持与系统同步。
+1. **如果尚未安装[node.js](/zh-cn/wiki/node-js/)**，请安装它。 [jasmine](/zh-cn/wiki/jasmine/) 需要[node.js](/zh-cn/wiki/node-js/) 在独立环境中运行。
+2. **使用 npm 全局安装[jasmine](/zh-cn/wiki/jasmine/)**，使其可以从系统中的任何位置使用：
+
+    ```
+    npm install -g jasmine
+    ```
+
+3. **在项目目录中初始化[jasmine](/zh-cn/wiki/jasmine/)**，创建`spec`目录和配置文件（`jasmine.json`）：
+
+    ```
+    jasmine init
+    ```
+
+4. **在 `spec` 目录中创建您的第一个规范文件**。 [jasmine](/zh-cn/wiki/jasmine/) 规范文件通常具有 `.spec.js` 后缀：
+
+    ```
+    touch spec/yourTest.spec.js
+    ```
+
+5. **使用 `describe` 和 `it` 块在规范文件中编写测试**。由于您避免了编写测试的细节，因此我们将跳过此处的内容。
+6. **运行测试** 只需在终端中执行 `jasmine` 命令即可：
+
+    ```
+    jasmine
+    ```
+
+### 测试写作
+
+#### 如何在 Jasmine 中编写基本测试？
+
+要在 [jasmine](/zh-cn/wiki/jasmine/) 中编写基本测试，您将使用 `describe` 和 `it` 函数分别定义 [测试套件](/zh-cn/wiki/test-suite/) 和规范（测试）。这是分步指南：
+
+1. **定义[测试套件](/zh-cn/wiki/test-suite/)**
+    使用
+    `describe`
+    。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
+
+  ```
+  describe('My Test Suite', () => {
+    // Specs go here
+  });
+  ```
+
+1. **创建规范**
+    套房内使用
+    `it`
+    。喜欢
+    `describe`
+    ,
+    `it`
+    接受一个描述规范的字符串和一个实现测试的函数。
+
+  ```
+  it('does something expected', () => {
+    // Test implementation goes here
+  });
+  ```
+
+1. **断言期望**
+    在规范内使用
+    `expect`
+    与匹配器函数结合以对值进行断言。
+
+  ```
+  it('adds two numbers correctly', () => {
+    let sum = 1 + 2;
+    expect(sum).toEqual(3);
+  });
+  ```
+
+1. **运行测试**
+    使用 Jasmine 命令行工具或将 Jasmine 包含在 HTML 文件中并在浏览器中打开它。
+  请记住构建测试以反映代码的行为而不是其实现细节。这使您的测试对代码库中的更改更具弹性。此外，让您的规范集中于单一行为，以便在测试失败时更容易识别问题。
+
+1. **定义一个[测试套件](/zh-cn/wiki/test-suite/)**
+    使用
+    `describe`
+    。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
+
+1. **创建规范**
+    套房内使用
+    `it`
+    。喜欢
+    `describe`
+    ,
+    `it`
+    接受一个描述规范的字符串和一个实现测试的函数。
+
+1. **断言期望**
+    在规范内使用
+    `expect`
+    与匹配器函数结合以对值进行断言。
+
+1. **运行测试**
+    使用 Jasmine 命令行工具或将 Jasmine 包含在 HTML 文件中并在浏览器中打开它。
+
+#### Jasmine 测试的结构是什么？
+
+[jasmine](/zh-cn/wiki/jasmine/) 测试的结构由**套件**和**规范**组成。套件是使用 `describe` 函数定义的，该函数接受一个字符串和一个函数。字符串是套件的标题，函数是可以定义 [环境搭建](/zh-cn/wiki/setup/)、拆卸和规格的块。
+  规范或规格是使用 `it` 函数定义的。每个规范代表一个测试，其中有一个字符串解释测试应该做什么，以及一个包含测试代码的函数。
+  在规范中，您使用**匹配器**来断言有关代码的不同内容。 `expect` 函数用于对值进行断言，然后针对匹配器进行测试。
+  这是一个基本结构：
+
+  ```
+  describe('My Test Suite', () => {
+    beforeEach(() => {
+      // Setup code before each spec
+    });
+    afterEach(() => {
+      // Teardown code after each spec
+    });
+    it('does something expected', () => {
+      expect(someValue).toBe(expectedValue);
+    });
+    // More specs (it blocks) can follow
+  });
+  ```
+**嵌套套件**可以通过在另一个`describe` 中调用`describe` 来实现。这允许您创建子套件以更精细地组织规范。
+  `beforeEach`、`afterEach`、`beforeAll` 和 `afterAll` 等 **钩子** 用于设置前提条件并在测试后进行清理。
+  `it` 块还可以通过采用 `done` 回调或返回 Promise 来处理异步代码。
+  请记住保持您的规范**集中**和**独立**，以确保可靠且可维护的测试。
+
+#### 如何在 Jasmine 中使用“describe”和“it”函数？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中，`describe` 函数用于对相关规范进行分组，通常称为“套件”。它有两个参数：一个字符串和一个函数。字符串是套件的标题，函数是实现套件的代码块。
+
+  ```
+  describe('A suite', () => {
+    // Specs go here
+  });
+  ```
+`it` 函数用于定义一个规范，它是单个[测试用例](/zh-cn/wiki/test-case/)。它还需要一个字符串和一个函数。字符串是规范的标题，函数是 [测试用例](/zh-cn/wiki/test-case/) 本身。
+
+  ```
+  it('contains spec with an expectation', () => {
+    expect(true).toBe(true);
+  });
+  ```
+**用法**：
+
+- **嵌套**：
+    `describe`
+    块可以相互嵌套以创建子套件，以更精细地组织规范。
+
+- **范围**：在 a 中声明的变量
+    `describe`
+    任何人都可以访问
+    `it`
+    或
+    `beforeEach`
+    /
+    `afterEach`
+    在那间套房内。
+
+- **执行** ：当 Jasmine 运行时，它会执行
+    `describe`
+    块按照定义的顺序排列，并且在每个套件中，
+    `it`
+    块按照定义的顺序运行。
+  **例子**：
+
+  ```
+  describe('A suite of basic functions', () => {
+    let num;
+    beforeEach(() => {
+      num = 5;
+    });
+    it('can add numbers', () => {
+      num += 5;
+      expect(num).toEqual(10);
+    });
+    it('can subtract numbers', () => {
+      num -= 3;
+      expect(num).toEqual(2);
+    });
+  });
+  ```
+在此示例中，`beforeEach` 在每个 `it` 之前运行，并在每个规范之前将 `num` 变量设置为 5。每个`it` 都包含一个期望，这是实际的测试断言。
+
+- **嵌套**：
+    `describe`
+    块可以相互嵌套以创建子套件，以更精细地组织规范。
+
+- **范围**：在 a 中声明的变量
+    `describe`
+    任何人都可以访问
+    `it`
+    或
+    `beforeEach`
+    /
+    `afterEach`
+    在那间套房内。
+
+- **执行** ：当 Jasmine 运行时，它会执行
+    `describe`
+    块按照定义的顺序排列，并且在每个套件中，
+    `it`
+    块按照定义的顺序运行。
+
+#### Jasmine 中的 'beforeEach' 和 'afterEach' 函数是什么以及它们如何使用？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中，`beforeEach` 和`afterEach` 是定义要在`describe` 套件中的每个`it` 块**之前**和**之后**运行的代码的函数。这些函数用于设置前提条件并在测试后进行清理，以确保一致的测试环境。
+  **`beforeEach`** 通常用于在每次测试运行之前设置状态。这可能涉及初始化变量、创建测试装置或将环境重置为已知状态。
+
+  ```
+  beforeEach(() => {
+    // Code to set up the state before each test
+  });
+  ```
+**`afterEach`** 用于每次测试完成后需要运行的拆卸逻辑。这可以包括释放资源、清理模拟状态或重置测试期间所做的修改。
+
+  ```
+  afterEach(() => {
+    // Code to clean up after each test
+  });
+  ```
+这些函数通过将 [环境搭建](/zh-cn/wiki/setup/) 和拆卸逻辑封装在实际测试断言之外，有助于减少代码重复并促进关注点分离。它们通过确保每个测试独立运行而不会产生先前测试的意外副作用，从而有助于提高[测试套件](/zh-cn/wiki/test-suite/) 的可维护性和可读性。
+
+### 断言和匹配器
+
+#### 什么是 Jasmine 匹配器以及它们如何使用？
+
+[jasmine](/zh-cn/wiki/jasmine/) 匹配器是实现实际值和期望值之间的布尔比较的函数。它们用于在测试中编写断言，允许您检查是否满足某些条件。使用 `expect` 函数调用匹配器，该函数将实际值作为参数，后跟指定预期结果的匹配器函数。
+  这是使用匹配器的示例：
+
+  ```
+  expect(someValue).toBe(42);
+  ```
+在本例中，`toBe` 是检查`someValue` 是否严格等于`42` 的匹配器。
+  常见的匹配器包括：
+
+- `toBe` ：严格相等（===）比较。
+- `toEqual` ：深度相等比较，对于对象或数组很有用。
+- `toMatch` ：与正则表达式匹配的字符串。
+- `toBeDefined` ：检查变量是否不是
+    `undefined`
+    。
+
+- `toBeNull` ：检查变量是否存在
+    `null`
+    。
+
+- `toBeTruthy` ：检查变量是否为真。
+- `toBeFalsy` ：检查变量是否为假。
+- `toContain` ：检查数组或字符串是否包含特定项目或子字符串。
+- `toBeGreaterThan`
+    ,
+    `toBeLessThan`：数值比较。
+
+- `toThrow` ：检查函数是否抛出错误。
+  还可以创建自定义匹配器来封装重复或复杂的逻辑。通过使用定义 `compare` 函数的匹配器对象扩展 `jasmine.addMatchers` 方法，将它们添加到 [jasmine](/zh-cn/wiki/jasmine/) 中。
+  匹配器对于清晰简洁地表达测试意图至关重要，使测试更易于阅读和维护。它们是 [jasmine](/zh-cn/wiki/jasmine/) 框架的核心部分，提供丰富的语言来指定 [测试用例](/zh-cn/wiki/test-case/) 中的各种条件和期望。
+
+- `toBe` ：严格相等（===）比较。
+- `toEqual` ：深度相等比较，对于对象或数组很有用。
+- `toMatch` ：与正则表达式匹配的字符串。
+- `toBeDefined` ：检查变量是否不是
+    `undefined`
+    。
+
+- `toBeNull` ：检查变量是否
+    `null`
+    。
+
+- `toBeTruthy` ：检查变量是否为真。
+- `toBeFalsy` ：检查变量是否为假。
+- `toContain` ：检查数组或字符串是否包含特定项目或子字符串。
+- `toBeGreaterThan`
+    ,
+    `toBeLessThan`：数值比较。
+
+- `toThrow` ：检查函数是否抛出错误。
+
+#### 如何在 Jasmine 中创建自定义匹配器？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中创建自定义匹配器允许您以更特定于领域的方式表达期望，从而增强测试的可读性和[可维护性](/zh-cn/wiki/maintainability/)。以下是在 [jasmine](/zh-cn/wiki/jasmine/) 中定义自定义匹配器的方法：
+
+1. 使用
+    `jasmine.addMatchers`
+    添加一个新的匹配器。
+
+2. 内部
+    `jasmine.addMatchers`
+    ，定义一个对象，其中键是自定义匹配器的名称。
+
+3. 每个匹配器都是一个工厂函数，返回一个带有
+    `compare`
+    功能。
+
+4. 的
+    `compare`
+    函数应该返回一个带有
+    `pass`
+    属性，它是一个布尔值，指示是否满足期望，以及一个可选的
+    `message`
+    自定义失败消息的属性。
+  下面是一个自定义匹配器的示例，用于检查数字是否为偶数：
+
+  ```
+  beforeEach(function() {
+    jasmine.addMatchers({
+      toBeEven: function() {
+        return {
+          compare: function(actual) {
+            const result = {};
+            result.pass = actual % 2 === 0;
+            if (result.pass) {
+              result.message = `Expected ${actual} not to be even`;
+            } else {
+              result.message = `Expected ${actual} to be even`;
+            }
+            return result;
+          }
+        };
+      }
+    });
+  });
+  ```
+要在测试中使用此匹配器：
+
+  ```
+  it('is an even number', function() {
+    expect(4).toBeEven();
+  });
+  ```
+通过将自定义匹配器包含在 [测试套件](/zh-cn/wiki/test-suite/) 顶层的 `beforeEach` 中或包含在测试 [环境搭建](/zh-cn/wiki/setup/) 中的单独文件中，可以在不同规范中重复使用自定义匹配器。
+
+1. 使用
+    `jasmine.addMatchers`
+    添加一个新的匹配器。
+
+2. 内部
+    `jasmine.addMatchers`
+    ，定义一个对象，其中键是自定义匹配器的名称。
+
+3. 每个匹配器都是一个工厂函数，返回一个带有
+    `compare`
+    功能。
+
+4. 的
+    `compare`
+    函数应该返回一个带有
+    `pass`
+    属性，它是一个布尔值，指示是否满足期望，以及一个可选的
+    `message`
+    自定义失败消息的属性。
+
+#### Jasmine 中有哪些不同类型的断言？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中，断言是使用**匹配器**进行的。 [jasmine](/zh-cn/wiki/jasmine/) 中的匹配器负责检查某个条件是否为真。 [jasmine](/zh-cn/wiki/jasmine/) 提供的不同类型的断言或匹配器包括：
+
+- `toBe` ：检查实际值是否与预期值相同（===）。
+- `toEqual` ：检查实际值和预期值是否相等，包括对象和数组。
+- `toMatch` ：检查值是否与指定的正则表达式匹配。
+- `toBeDefined` ：断言变量不是
+    `undefined`
+    。
+
+- `toBeUndefined` ：断言变量是
+    `undefined`
+    。
+
+- `toBeNull` ：检查实际值是否为
+    `null`
+    。
+
+- `toBeTruthy` ：断言实际值是真实的。
+- `toBeFalsy` ：断言实际值是假的。
+- `toContain` ：检查数组或字符串是否包含特定项目或子字符串。
+- `toBeLessThan` ：断言一个值小于另一个值。
+- `toBeGreaterThan` ：断言一个值大于另一个值。
+- `toBeCloseTo` ：检查一个数字是否在指定精度内接近另一个数字。
+- `toThrow` ：断言函数抛出异常。
+- `toThrowError` ：检查函数是否抛出特定类型的异常。
+  以下是在 [jasmine](/zh-cn/wiki/jasmine/) 测试中使用一些匹配器的示例：
+
+  ```
+  describe("Different types of matchers in Jasmine", () => {
+    it("demonstrates the use of various Jasmine matchers", () => {
+      expect(true).toBeTruthy();
+      expect(null).toBeNull();
+      expect(123).toBeGreaterThan(100);
+      expect("Hello World").toContain("World");
+      expect(() => { throw new Error("Error thrown"); }).toThrow();
+    });
+  });
+  ```
+这些匹配器在 `expect` 函数中使用，并与正在测试的实际值链接。匹配器对于验证被测代码的行为至关重要。
+
+- `toBe` ：检查实际值是否与预期值相同（===）。
+- `toEqual` ：检查实际值和预期值是否相等，包括对象和数组。
+- `toMatch` ：检查值是否与指定的正则表达式匹配。
+- `toBeDefined` ：断言变量不是
+    `undefined`
+    。
+
+- `toBeUndefined` ：断言变量是
+    `undefined`
+    。
+
+- `toBeNull` ：检查实际值是否为
+    `null`
+    。
+
+- `toBeTruthy` ：断言实际值是真实的。
+- `toBeFalsy` ：断言实际值是假的。
+- `toContain` ：检查数组或字符串是否包含特定项目或子字符串。
+- `toBeLessThan` ：断言一个值小于另一个值。
+- `toBeGreaterThan` ：断言一个值大于另一个值。
+- `toBeCloseTo` ：检查一个数字是否在指定精度内接近另一个数字。
+- `toThrow` ：断言函数抛出异常。
+- `toThrowError` ：检查函数是否引发特定类型的异常。
+
+### 间谍和嘲笑
+
+#### 什么是 Jasmine 间谍以及如何使用它们？
+
+[jasmine](/zh-cn/wiki/jasmine/) spies 是记录它们如何被调用的函数，允许您验证与它们的交互是否按预期发生。它们可用于跟踪函数是否被调用、调用次数、参数是什么以及返回什么。间谍还可以用于存根任何函数并模拟其行为。
+  要创建间谍，您可以使用`spyOn`函数，传递对象和您想要监视的函数的名称：
+
+  ```
+  spyOn(someObject, 'someFunction');
+  ```
+如果您需要创建一个没有现有函数的间谍，您可以使用 `jasmine.createSpy` 或 `jasmine.createSpyObj` 来实现多个函数：
+
+  ```
+  let mySpy = jasmine.createSpy('mySpy');
+  let mySpies = jasmine.createSpyObj('mySpies', ['firstFunction', 'secondFunction']);
+  ```
+当您想要通过用可控制和检查的间谍替换依赖函数来隔离工作单元时，间谍特别有用。当您想要阻止在测试期间执行函数的实际实现时，它们也很方便，特别是当它昂贵、缓慢或有副作用时。
+  您可以使用 `.and.returnValue` 设置间谍以返回特定值：
+
+  ```
+  mySpy.and.returnValue(someValue);
+  ```
+或者调用一个假函数：
+
+  ```
+  mySpy.and.callFake(() => {
+    // Fake implementation
+  });
+  ```
+测试完成后，可以检查 spy 是否被正确调用：
+
+  ```
+  expect(mySpy).toHaveBeenCalled();
+  expect(mySpy).toHaveBeenCalledWith(expectedArgs);
+  ```
+间谍对于维护**测试隔离**并确保您的测试不受外部代码或副作用的影响至关重要。
+
+#### 如何在 Jasmine 中创建模拟？
+
+在 [jasmine](/zh-cn/wiki/jasmine/) 中创建模拟涉及使用 **spies** 来跟踪和控制函数、方法或对象的行为。这是分步指南：
+
+1. **创建一个间谍**
+    对于你想要模拟的函数
+    `spyOn`
+    。这将函数替换为可以跟踪调用、参数和设置返回值的间谍。
+
+  ```
+  spyOn(obj, 'methodName');
+  ```
+
+1. **配置间谍的行为**
+    使用链接函数，例如
+    `.and.returnValue()`
+    ,
+    `.and.callFake()`
+    , 或
+    `.and.throwError()`
+    控制调用该方法时发生的情况。
+
+  ```
+  // Return a specific value
+  spyOn(obj, 'methodName').and.returnValue('mocked value');
+  // Provide a fake implementation
+  spyOn(obj, 'methodName').and.callFake(() => 'fake implementation');
+  // Throw an error
+  spyOn(obj, 'methodName').and.throwError('error message');
+  ```
+
+1. **创建[jasmine](/zh-cn/wiki/jasmine/)间谍对象**
+    使用多种方法模拟整个对象
+    `jasmine.createSpyObj`
+    。当您需要使用多种方法模拟对象时，这非常有用。
+
+  ```
+  let mockObject = jasmine.createSpyObj('mockObject', ['method1', 'method2']);
+  ```
+
+1. **设置返回值或实现**
+    如果需要的话，获取间谍对象的方法。
+
+  ```
+  mockObject.method1.and.returnValue('value1');
+  mockObject.method2.and.callFake(() => 'value2');
+  ```
+
+1. **集成模拟**
+    进入您的测试，用模拟替换真实的实现。
+  请记住，在 [jasmine](/zh-cn/wiki/jasmine/) 中使用间谍创建的模拟是临时的，将在每次测试后删除，以确保测试隔离。如果需要，使用 `beforeEach` 为每个测试设置模拟。
+
+1. **创建一个间谍**
+    对于你想要模拟的函数
+    `spyOn`
+    。这将函数替换为可以跟踪调用、参数和设置返回值的间谍。
+
+1. **配置间谍的行为**
+    使用链接函数，例如
+    `.and.returnValue()`
+    ,
+    `.and.callFake()`
+    , 或
+    `.and.throwError()`
+    控制调用该方法时发生的情况。
+
+1. **创建[jasmine](/zh-cn/wiki/jasmine/)间谍对象**
+    使用多种方法模拟整个对象
+    `jasmine.createSpyObj`
+    。当您需要使用多种方法模拟对象时，这非常有用。
+
+1. **设置返回值或实现**
+    如果需要的话，获取间谍对象的方法。
+
+1. **集成模拟**
+    进入您的测试，用模拟替换真实的实现。
+
+#### Jasmine 中的间谍和模拟有什么区别？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中，**spies** 和 **mocks** 用于不同的测试目的。
+  **spy** 是一个记录有关其调用的信息的函数，例如调用了多少次、使用了哪些参数以及返回了哪些值。间谍还可以伪造返回值或错误，使您可以在不执行实际代码的情况下模拟行为。它们主要用于收集有关函数调用的信息，以验证函数是否被正确使用。
+
+  ```
+  spyOn(someObject, 'someMethod');
+  ```
+另一方面，**模拟**是模仿真实对象的结构和行为的对象，具有预先编程的行为和期望。在[jasmine](/zh-cn/wiki/jasmine/) 中，通常使用间谍结合其他技术来创建模拟来模拟复杂的行为。当您需要测试与难以或不切实际的对象（例如 [API](/zh-cn/wiki/api/) 或 [数据库](/zh-cn/wiki/database/)）的交互时，模拟非常有用。
+
+  ```
+  const mock = jasmine.createSpyObj('mock', ['method1', 'method2']);
+  mock.method1.and.returnValue('some value');
+  ```
+总之，当您想要观察现有函数时，请使用 **spy**；当您需要为具有多个方法或属性的整个对象创建替代对象时，请使用 **mock**。两者都是 [测试自动化](/zh-cn/wiki/test-automation/) 工程师工具包中用于隔离代码单元并验证系统不同部分之间交互的重要工具。
+
+### 高级概念
+
+#### Jasmine 中如何处理异步测试？
+
+在[jasmine](/zh-cn/wiki/jasmine/) 中处理异步测试涉及使用`done` 回调、`async`/`await` 语法或`done.fail` 函数进行错误处理。
+  **使用`done`回调：**
+  [jasmine](/zh-cn/wiki/jasmine/) 提供了 `done` 函数，您可以调用该函数来发出异步测试或 [环境搭建](/zh-cn/wiki/setup/)/teardown 方法已完成的信号。将`done` 作为参数传递给`it`、`beforeEach` 或`afterEach` 函数，并在异步操作完成时调用它。
+
+  ```
+  it('should handle async operation', (done) => {
+    setTimeout(() => {
+      expect(true).toBe(true);
+      done();
+    }, 1000);
+  });
+  ```
+**使用`async`/`await`：**
+  借助对现代 JavaScript 的支持，您可以使用`async`/`await` 获得更清晰的语法。将测试函数标记为`async`，并将其中的异步调用标记为`await`。
+
+  ```
+  it('should handle async operation with async/await', async () => {
+    const result = await someAsyncFunction();
+    expect(result).toBe(expectedValue);
+  });
+  ```
+**使用`done.fail`进行错误处理：**
+  如果在异步操作期间发生错误，您可以使用 `done.fail` 将错误传递给 [jasmine](/zh-cn/wiki/jasmine/)，然后 [jasmine](/zh-cn/wiki/jasmine/) 将使测试失败并显示提供的错误消息。
+
+  ```
+  it('should handle async errors', (done) => {
+    setTimeout(() => {
+      try {
+        expect(true).toBe(false);
+        done();
+      } catch (error) {
+        done.fail(error);
+      }
+    }, 1000);
+  });
+  ```
+请记住处理超时并确保正确调用 `done` 以避免 [误报](/zh-cn/wiki/false-positive/) 测试通过，因为 `done` 从未被调用。
+
+#### 如何将 Jasmine 与其他库或框架（如 Angular 或 React）一起使用？
+
+将 [jasmine](/zh-cn/wiki/jasmine/) 与 **Angular** 或 **React** 等框架集成涉及设置 [测试环境](/zh-cn/wiki/test-environment/)，允许 [jasmine](/zh-cn/wiki/jasmine/) 与这些框架的组件或服务进行交互。
+  对于 **Angular**，您可以使用 **Angular CLI** 生成带有测试 [环境搭建](/zh-cn/wiki/setup/) 的项目，其中包括 [jasmine](/zh-cn/wiki/jasmine/) 和 **Karma**。Angular 的测试实用程序提供了独立测试组件和服务的方法。以下是如何测试组件的基本示例：
+
+  ```
+  import { TestBed, async } from '@angular/core/testing';
+  import { AppComponent } from './app.component';
+  describe('AppComponent', () => {
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          AppComponent
+        ],
+      }).compileComponents();
+    }));
+    it('should create the app', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      expect(app).toBeTruthy();
+    });
+  });
+  ```
+对于 **React**，您通常会使用 **Enzyme** 或 **React 测试库** 以及 [jasmine](/zh-cn/wiki/jasmine/) 来渲染组件并处理它们与 DOM 的交互。您可以通过配置 [测试运行者](/zh-cn/wiki/test-runner/)（如 Karma）来使用 React 设置 [jasmine](/zh-cn/wiki/jasmine/) 以使用 React 的 JSX 语法。这是使用 [jasmine](/zh-cn/wiki/jasmine/) 和 Enzyme 的简单 React 组件测试：
+
+  ```
+  import React from 'react';
+  import { shallow } from 'enzyme';
+  import MyComponent from './MyComponent';
+  describe('<MyComponent />', () => {
+    it('renders three <MyComponent /> components', () => {
+      const wrapper = shallow(<MyComponent />);
+      expect(wrapper.find('.my-component').length).toBe(3);
+    });
+  });
+  ```
+在这两种情况下，您都需要配置 [测试运行者](/zh-cn/wiki/test-runner/) 以使用属于项目堆栈一部分的特定构建工具和转译器（例如 **Webpack** 和 **Babel**）。这确保您的测试可以理解应用程序代码中使用的模块语法和 JSX（用于 React）。
+
+#### 在 Jasmine 中编写测试的最佳实践有哪些？
+
+在 [jasmine](/zh-cn/wiki/jasmine/) 中编写测试的最佳实践包括：
+
+- **保持测试隔离**：确保每个测试可以独立运行，而不依赖于另一个测试的状态。使用`beforeEach` 和`afterEach` 设置和拆除[测试环境](/zh-cn/wiki/test-environment/)。
+- **编写描述性[测试用例](/zh-cn/wiki/test-case/)**：为`describe` 和`it` 块使用清晰的描述性名称来传达[测试套件](/zh-cn/wiki/test-suite/) 和各个测试的意图。
+- **DRY（不要重复）**：将常见的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
+- **根据规范测试一个方面**：每个 `it` 块应重点关注被测代码的单个行为或方面。
+- **使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语言**：编写描述功能行为而不是实现细节的测试。
+- **具有明确期望的断言**：使用 [jasmine](/zh-cn/wiki/jasmine/) 匹配器编写易于阅读和理解的断言。可以为特定于域的断言创建自定义匹配器。
+- **正确处理异步代码**：使用[jasmine](/zh-cn/wiki/jasmine/) 的`done` 回调或返回一个承诺，以确保异步操作在评估期望之前完成。
+- **避免测试实现细节**：关注公共[API](/zh-cn/wiki/api/)和预期结果，而不是功能或组件的内部工作原理。
+- **保持测试快速**：缓慢的测试可能会阻碍开发过程。优化测试以快速运行并避免不必要的复杂性。
+- **逻辑地构建测试**：使用嵌套的 `describe` 块对相关测试进行分组，以创建可读且可维护的测试层次结构。
+- **定期重构测试**：随着代码库的发展，重新访问和重构测试以确保它们保持有效并且不会变得不稳定或无关紧要。
+
+  ```
+  describe('MyComponent', () => {
+    let component;
+    beforeEach(() => {
+      component = new MyComponent();
+    });
+    it('should initialize with default values', () => {
+      expect(component.someValue).toBe('default');
+    });
+    // More tests...
+  });
+  ```
+
+- **保持测试隔离**：确保每个测试可以独立运行，而不依赖于另一个测试的状态。使用`beforeEach` 和`afterEach` 设置和拆除[测试环境](/zh-cn/wiki/test-environment/)。
+- **编写描述性[测试用例](/zh-cn/wiki/test-case/)**：为`describe` 和`it` 块使用清晰的描述性名称来传达[测试套件](/zh-cn/wiki/test-suite/) 和各个测试的意图。
+- **DRY（不要重复）**：将常见的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
+- **根据规范测试一个方面**：每个 `it` 块应重点关注被测代码的单个行为或方面。
+- **使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语言**：编写描述功能行为而不是实现细节的测试。
+- **具有明确期望的断言**：使用 [jasmine](/zh-cn/wiki/jasmine/) 匹配器编写易于阅读和理解的断言。可以为特定于域的断言创建自定义匹配器。
+- **正确处理异步代码**：使用[jasmine](/zh-cn/wiki/jasmine/) 的`done` 回调或返回一个承诺，以确保异步操作在评估期望之前完成。
+- **避免测试实现细节**：关注公共 [API](/zh-cn/wiki/api/) 和预期结果，而不是功能或组件的内部工作原理。
+- **保持测试快速**：缓慢的测试可能会阻碍开发过程。优化测试以快速运行并避免不必要的复杂性。
+- **逻辑地构建测试**：使用嵌套的 `describe` 块对相关测试进行分组，以创建可读且可维护的测试层次结构。
+- **定期重构测试**：随着代码库的发展，重新访问和重构测试以确保它们保持有效并且不会变得不稳定或无关紧要。
+- **实时监控**：[JMeter](/zh-cn/wiki/jmeter/) 不提供实时性能监控。与 Grafana 和 InfluxDB 等外部监控工具集成，实时可视化测试结果。
+  - **移动应用程序测试**：[JMeter](/zh-cn/wiki/jmeter/) 并非专为移动应用程序测试而设计。使用第三方库或服务将 [JMeter](/zh-cn/wiki/jmeter/) 的功能扩展到移动设备，或使用专门的移动测试工具。
+  - **有限协议支持**：[JMeter](/zh-cn/wiki/jmeter/) 主要支持 HTTP/HTTPS 协议。为了测试其他协议，您可能需要查找插件或使用更适合这些协议的其他工具。
+  通过了解这些限制并利用集成、插件和最佳实践，您可以有效地使用 [JMeter](/zh-cn/wiki/jmeter/) 来实现全面的 [性能测试](/zh-cn/wiki/performance-testing/)。
+
+- **资源密集型**：[JMeter](/zh-cn/wiki/jmeter/) 可能会占用大量资源，尤其是在模拟大量用户时。为了克服这个问题，请将负载分布到集群中的多个[JMeter](/zh-cn/wiki/jmeter/) 实例或计算机上。
+  - **有限的浏览器模拟**：[JMeter](/zh-cn/wiki/jmeter/) 不会像真实浏览器一样执行 JavaScript 或渲染 HTML。使用 [Selenium](/zh-cn/wiki/selenium/) 集成进行更准确的浏览器级用户模拟或考虑无头浏览器测试工具。
+  - **脚本编写的复杂性**：[JMeter](/zh-cn/wiki/jmeter/) 中的高级脚本编写需要 Java 或 BeanShell 知识，这可能是一个障碍。使用[JMeter](/zh-cn/wiki/jmeter/) GUI 进行测试创建，并仅在必要时才使用脚本。此外，利用社区插件来扩展功能。
+  - **UI 响应性**：[JMeter](/zh-cn/wiki/jmeter/) GUI 在重负载测试期间可能会变得无响应。使用命令行在非 GUI 模式下运行测试，以减少资源消耗并提高性能。
+  - **实时监控**：[JMeter](/zh-cn/wiki/jmeter/) 不提供实时性能监控。与 Grafana 和 InfluxDB 等外部监控工具集成，实时可视化测试结果。
+  - **移动应用程序测试**：[JMeter](/zh-cn/wiki/jmeter/) 并非专为移动应用程序测试而设计。使用第三方库或服务将 [JMeter](/zh-cn/wiki/jmeter/) 的功能扩展到移动设备，或使用专门的移动测试工具。
+  - **有限协议支持**：[JMeter](/zh-cn/wiki/jmeter/) 主要支持 HTTP/HTTPS 协议。为了测试其他协议，您可能需要查找插件或使用更适合这些协议的其他工具。
+
+#### 如何使用 JMeter 进行 Web 服务的性能测试？
+
+要将 [JMeter](/zh-cn/wiki/jmeter/) 用于 Web 服务的 [性能测试](/zh-cn/wiki/performance-testing/)，请按照以下步骤操作：
+
+1. **通过在菜单上选择`Test Plan`来创建新的[测试计划](/zh-cn/wiki/test-plan/)**，然后右键单击并选择`Add` > `Threads (Users)` > `Thread Group`。
+  2. **配置线程组**，包括测试的线程（用户）数量、启动周期和循环计数。
+  3. **将采样器**添加到线程组，方法是右键单击它并导航到 `Add` > `Sampler` > `HTTP Request`。使用 Web 服务的 URL 和请求类型（GET、POST 等）配置 HTTP 请求。
+  4. **设置 HTTP 请求默认值**（可选），如果您有多个具有公共参数的 HTTP 请求，可以通过添加 `Config Element` > `HTTP Request Defaults` 来减少冗余。
+  5. **添加标头**（如果需要），方法是右键单击 HTTP 请求并选择 `Add` > `Config Element` > `HTTP Header Manager`。输入必要的标头，例如 `Content-Type` 或 `Authorization`。
+  6. **添加监听器** 通过右键单击线程组并选择 `Add` > `Listener` 来查看结果。常见的侦听器是`View Results Tree` 和`Summary Report`。
+  7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
+  8. **通过单击工具栏上的 `Start` 按钮运行测试**。
+  9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
+  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。
+  请记住通过单个用户运行来**验证您的测试**，以确保它在扩展之前按预期工作。根据 Web 服务的预期负载和性能目标调整配置。
+
+1. **通过在菜单上选择`Test Plan`来创建新的[测试计划](/zh-cn/wiki/test-plan/)**，然后右键单击并选择`Add` > `Threads (Users)` > `Thread Group`。
+  2. **配置线程组**，包括测试的线程（用户）数量、启动周期和循环计数。
+  3. **将采样器**添加到线程组，方法是右键单击它并导航到 `Add` > `Sampler` > `HTTP Request`。使用 Web 服务的 URL 和请求类型（GET、POST 等）配置 HTTP 请求。
+  4. **设置 HTTP 请求默认值**（可选），如果您有多个具有公共参数的 HTTP 请求，可以通过添加 `Config Element` > `HTTP Request Defaults` 来减少冗余。
+  5. **添加标头**（如果需要），方法是右键单击 HTTP 请求并选择 `Add` > `Config Element` > `HTTP Header Manager`。输入必要的标头，例如 `Content-Type` 或 `Authorization`。
+  6. **添加监听器** 通过右键单击线程组并选择 `Add` > `Listener` 来查看结果。常见的侦听器是`View Results Tree` 和`Summary Report`。
+  7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
+  8. **通过单击工具栏上的 `Start` 按钮运行测试**。
+  9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
+  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。

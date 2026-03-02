@@ -1,0 +1,152 @@
+---
+import { getCollection } from "astro:content";
+import DocsLayout from "@/layouts/Docs.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
+import { LOCALES, type Lang } from "@/i18n";
+import { NAV_HOME } from "@/consts";
+import { aiwikiIdToLang, buildAiWikiSidebar } from "@/data/aiwiki";
+
+export async function getStaticPaths() {
+  return Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+}
+
+const locale = (Astro.params.lang ?? "en") as Lang;
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "Home";
+const title = locale === "zh-cn" ? "AI 百科" : "AI Wiki";
+const description =
+  locale === "zh-cn"
+    ? "面向 AI 与 Vibe Coding 的术语百科，提供中英文词条、定义、实践与参考链接。"
+    : "A bilingual AI and vibe-coding glossary with practical definitions, guidance, and references.";
+const keywords =
+  locale === "zh-cn"
+    ? "AI Wiki, AI 词条, Vibe Coding, LLM, Agent, MCP"
+    : "AI Wiki, AI glossary, vibe coding, LLM, agent, MCP";
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: title, url: `/${locale}/AIWiki/` },
+];
+
+const allEntries = await getCollection("aiwiki");
+const entries = allEntries.filter((e) => (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale));
+const sidebarSections = buildAiWikiSidebar(entries, locale);
+const letterSections = sidebarSections.filter((s) => s.title);
+const basePath = `/${locale}/AIWiki`;
+const totalCount = entries.length;
+const letterGroupCount = letterSections.length;
+---
+
+<DocsLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  breadcrumbs={breadcrumbs}
+  sidebarSections={sidebarSections}
+  currentPath=""
+  basePath={basePath}
+  sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "On this page"}
+  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条..." : "Search terms..."}
+>
+  <header class="wiki-hero">
+    <h1 class="wiki-hero-title">{title}</h1>
+    <p class="wiki-intro">{description}</p>
+    <div class="wiki-stats-banner" aria-label="stats">
+      <span class="wiki-stat"><strong>{totalCount}</strong>{locale === "zh-cn" ? " 个词条" : " entries"}</span>
+      <span class="wiki-stat-divider" aria-hidden="true">·</span>
+      <span class="wiki-stat"><strong>{letterGroupCount}</strong>{locale === "zh-cn" ? " 个分组" : " groups"}</span>
+    </div>
+  </header>
+
+  <GoogleAd />
+
+  <section aria-labelledby="wiki-by-letter-heading">
+    <h2 id="wiki-by-letter-heading">{locale === "zh-cn" ? "按字母浏览" : "Browse by letter"}</h2>
+    <nav class="wiki-letter-index" aria-label="letter index">
+      {letterSections.map((section) => (
+        <a href={`#letter-${section.title}`} class="wiki-letter-index-link">{section.title}</a>
+      ))}
+    </nav>
+    <GoogleAdThin />
+
+    {letterSections.map((section) => (
+      <article class="wiki-letter-group" id={`letter-${section.title}`}>
+        <h3>{section.title}</h3>
+        <ul class="wiki-letter-list">
+          {section.items.map((item) => (
+            <li><a href={`${basePath}/${item.href}/`}>{item.label}</a></li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </section>
+
+  <GoogleAd />
+</DocsLayout>
+
+<style>
+  :global(.docs-sidebar-wrap) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar-inner) {
+    border-inline-start: none !important;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
+  }
+
+  .wiki-hero {
+    background: var(--gradient-hero);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-m);
+    margin-block-end: var(--sp-m);
+  }
+  .wiki-stats-banner {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .wiki-letter-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-block: var(--sp-m);
+  }
+  .wiki-letter-index-link {
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-main);
+  }
+  .wiki-letter-group {
+    margin-block-end: var(--sp-m);
+    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
+    padding-inline-start: var(--sp-s);
+  }
+  .wiki-letter-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .wiki-letter-list a {
+    display: block;
+    padding: 0.45rem 0.6rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+  }
+</style>

@@ -7,7 +7,7 @@ export interface SearchIndexItem {
   url: string;
   date: string;
   tags?: string[];
-  type?: string; // 添加类型字段：blog, guild, wiki
+  type?: string; // 添加类型字段：blog, guild, wiki, aiwiki
 }
 
 export const getStaticPaths = () =>
@@ -85,7 +85,22 @@ export const GET: APIRoute = async ({ params }) => {
     type: "workflows",
   }));
 
-  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex];
+  // 获取 AI Wiki 条目
+  const allAiWiki = await getCollection("aiwiki");
+  const aiWikiEntries = allAiWiki.filter((e) => e.data.lang === lang || e.id.startsWith(`${lang}/`));
+  const aiWikiIndex: SearchIndexItem[] = aiWikiEntries.map((entry) => {
+    const slug = entry.data.slug || entry.id.split("/").pop()?.replace(/\.md$/, "") || entry.id;
+    return {
+      title: entry.data.title || entry.data.titleEn || entry.data.titleZh || slug,
+      description: entry.data.summary || entry.data.description || "",
+      url: `/${lang}/AIWiki/${slug}/`,
+      date: entry.data.lastReviewedAt ? new Date(entry.data.lastReviewedAt).toISOString() : new Date().toISOString(),
+      tags: entry.data.tags,
+      type: "aiwiki",
+    };
+  });
+
+  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex, ...aiWikiIndex];
 
   return new Response(JSON.stringify(fullIndex), {
     headers: {

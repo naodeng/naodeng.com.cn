@@ -33,12 +33,10 @@ const docs = defineCollection({
 
 // 测试百科（仅中文）：词条 Markdown，用于 /zh-cn/wiki/
 // 推荐 frontmatter：title（中文 (English)）、description（一句话摘要，SEO）、section（首字母）、order（同组排序）
-// generateId 加前缀 wiki--，避免条目 id 与正文 H1 的 rehype-slug id 相同导致 [glob-loader] Duplicate id 警告
 const wiki = defineCollection({
   loader: glob({
     pattern: "**/*.md",
     base: "./src/content/wiki",
-    generateId: ({ entry }) => `wiki--${entry.replace(/\.md$/, "")}`,
   }),
   schema: () =>
     z.object({
@@ -52,6 +50,30 @@ const wiki = defineCollection({
       order: z.number().optional(),
       /** 关联词条 slug 列表，用于渲染 Related Terms pill 列表 */
       related: z.array(z.string()).optional(),
+    }),
+});
+
+// AI Wiki（中英文）：词条 Markdown，用于 /[lang]/AIWiki/
+const aiwiki = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/aiwiki",
+    generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+  }),
+  schema: () =>
+    z.object({
+      title: z.string().optional(),
+      titleEn: z.string().optional(),
+      titleZh: z.string().optional(),
+      slug: z.string().optional(),
+      lang: z.enum(["en", "zh-cn"]).optional(),
+      summary: z.string().optional(),
+      description: z.string().optional(),
+      topic: z.string().optional(),
+      aliases: z.array(z.string()).optional(),
+      tags: z.array(z.string()).optional(),
+      related: z.array(z.string()).optional(),
+      lastReviewedAt: z.string().optional(),
     }),
 });
 
@@ -136,4 +158,4 @@ const workflows = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, wiki, guild, prompts, workflows };
+export const collections = { blog, docs, wiki, aiwiki, guild, prompts, workflows };
