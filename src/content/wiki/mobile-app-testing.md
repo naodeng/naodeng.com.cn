@@ -86,9 +86,9 @@ order: 0
 
 [移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 和 Web 应用程序测试之间的主要区别包括：
 
-- **环境多样性**：移动应用程序必须在各种设备、操作系统和屏幕尺寸上进行测试。 Web 应用程序通常在不同的浏览器和版本上进行测试。
+- **环境多样性**：移动应用程序必须在各种设备、操作系统和屏幕尺寸上进行测试。Web 应用程序通常在不同的浏览器和版本上进行测试。
 - **交互方法**：移动应用程序通常使用滑动和捏合等触摸手势，这些手势通常在 Web 应用程序中不使用。
-- **安装过程**：移动应用需要通过应用商店安装和更新，需要对安装过程进行测试。 Web 应用程序可通过浏览器访问，无需安装。
+- **安装过程**：移动应用需要通过应用商店安装和更新，需要对安装过程进行测试。Web 应用程序可通过浏览器访问，无需安装。
 - **资源限制**：移动设备在电池寿命、处理能力和内存方面有更多限制，这可能会影响应用程序性能并需要特定测试。
 - **连接变化**：移动应用程序在旅途中使用，需要在各种网络条件和转换下进行测试，例如从 Wi-Fi 切换到蜂窝数据。
 - **外围交互**：与大多数 Web 应用程序不同，移动应用程序可以与特定于设备的功能（如相机、GPS 和传感器）进行交互。
@@ -97,9 +97,9 @@ order: 0
 - **用户界面**：移动应用程序的 UI 是为较小的屏幕设计的，必须测试响应能力和可扩展性，而 Web 应用程序是为更广泛的屏幕尺寸设计的。
   了解这些差异对于定制 [测试自动化](/zh-cn/wiki/test-automation/) 策略以有效验证移动和 Web 应用程序至关重要。
 
-- **环境多样性**：移动应用程序必须在各种设备、操作系统和屏幕尺寸上进行测试。 Web 应用程序通常在不同的浏览器和版本上进行测试。
+- **环境多样性**：移动应用程序必须在各种设备、操作系统和屏幕尺寸上进行测试。Web 应用程序通常在不同的浏览器和版本上进行测试。
 - **交互方法**：移动应用程序通常使用滑动和捏合等触摸手势，这些手势通常在 Web 应用程序中不使用。
-- **安装过程**：移动应用需要通过应用商店安装和更新，需要对安装过程进行测试。 Web 应用程序可通过浏览器访问，无需安装。
+- **安装过程**：移动应用需要通过应用商店安装和更新，需要对安装过程进行测试。Web 应用程序可通过浏览器访问，无需安装。
 - **资源限制**：移动设备在电池寿命、处理能力和内存方面有更多限制，这可能会影响应用程序性能并需要特定测试。
 - **连接变化**：移动应用程序在旅途中使用，需要在各种网络条件和转换下进行测试，例如从 Wi-Fi 切换到蜂窝数据。
 - **外围交互**：与大多数 Web 应用程序不同，移动应用程序可以与特定于设备的功能（如相机、GPS 和传感器）进行交互。
@@ -184,7 +184,7 @@ order: 0
 
 - 测试
     **不同的网络类型**
-    （Wi-Fi、4G、3G等）和条件（低信号、高延迟）以确保网络兼容性。
+    （Wi-Fi、4G、3G 等）和条件（低信号、高延迟）以确保网络兼容性。
 
 - 检查
     **正确的显示和功能**
@@ -208,7 +208,7 @@ order: 0
 
 - 测试
     **不同的网络类型**
-    （Wi-Fi、4G、3G等）和条件（低信号、高延迟）以确保网络兼容性。
+    （Wi-Fi、4G、3G 等）和条件（低信号、高延迟）以确保网络兼容性。
 
 - 检查
     **正确的显示和功能**
@@ -233,9 +233,8 @@ order: 0
 
 Espresso.onView(withId(R.id.my_view)).perform(click());
 
-  ```
 - **XCTest/XCUITest**: Apple's test framework for UI testing of iOS apps.
-- ```swift
+  ```swift
   XCTAssert(app.staticTexts["Welcome"].exists)
   ```
 - **Detox**：一个灰盒端到端测试框架，适用于在 React Native 平台上运行的移动应用程序。
@@ -314,7 +313,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
 - **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
-
+  ```
 功能：用户登录
   场景：使用有效凭据成功登录
   假设用户位于登录屏幕上
@@ -322,13 +321,11 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
   然后用户被重定向到主页
 
   ```
-- **Leverage parallel execution**: Run tests simultaneously across devices to reduce execution time.
-- **Monitor battery usage and memory leaks**: Ensure the app doesn't drain battery or consume excessive memory.
-- **Include accessibility testing**: Check for compliance with accessibility standards to cater to all users.
-- **Gather crash reports**: Use tools to collect and analyze crash data for post-release monitoring.
-- **Seek user feedback**: Incorporate real user experiences to identify areas that need improvement.
-  By integrating these techniques, you can enhance the quality and reliability of mobile apps, ensuring a better user experience.
-  ```
+- **利用并行执行（Leverage parallel execution）**：在多设备上同时运行测试，以减少执行时间。
+- **监控电池使用和内存泄漏（Monitor battery usage and memory leaks）**：确保应用不会过度消耗电量或占用过多内存。
+- **包含无障碍测试（Include accessibility testing）**：检查是否符合无障碍标准，以满足所有用户的使用需求。
+- **收集崩溃报告（Gather crash reports）**：使用工具收集并分析崩溃数据，用于发布后的监控与优化。
+- **获取用户反馈（Seek user feedback）**：结合真实用户体验，识别需要改进的领域。
 - **优先考虑关键测试路径**：专注于最常见的用户旅程以最大化影响。
 - **自动化回归测试**：使用自动化来处理重复检查，从而腾出时间进行探索性测试。
 - **合并持续集成 (CI)**：将自动化测试集成到 CI 管道中以尽早发现问题。
@@ -336,6 +333,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
 - **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
+通过整合这些技术，你可以提升移动应用的质量和可靠性，从而提供更好的用户体验。
 
 
 ### 挑战和最佳实践
@@ -373,7 +371,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 
 克服[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中的挑战需要采取战略方法：
 
-- **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。 Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
+- **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
 
   ```
   pipeline:
@@ -404,7 +402,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **反馈循环**：与开发团队建立强大的反馈机制，以快速解决测试过程中发现的问题。
   通过采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以解决[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的复杂性，确保高质量、高性能且可靠的移动应用程序。
 
-- **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。 Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
+- **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
 - **基于云的测试服务**：利用[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台访问各种设备和操作系统组合，确保全面的[兼容性测试](/zh-cn/wiki/compatibility-testing/)。
 - **测试并行化**：并行运行测试以减少执行时间。大多数自动化框架支持并行执行。
 - **人工智能和机器学习**：利用人工智能驱动的工具进行测试创建、维护和分析，以识别[片状测试](/zh-cn/wiki/flaky-test/)并优化[测试套件](/zh-cn/wiki/test-suite/)。

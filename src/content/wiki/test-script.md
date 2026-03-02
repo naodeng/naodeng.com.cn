@@ -40,6 +40,8 @@ order: 0
       - [测试脚本如何在不同的测试场景中重用？](#测试脚本如何在不同的测试场景中重用)
       - [维护测试脚本有哪些挑战以及如何克服这些挑战？](#维护测试脚本有哪些挑战以及如何克服这些挑战)
 
+<!-- TOC END -->
+
 ## 相关术语
 
 - [假阴性](/zh-cn/wiki/false-negative/)
@@ -575,10 +577,10 @@ driver.findElement(用户名字段).sendKeys(用户名);
 }
 }
 
-````
+```
 - **Prioritize tests**: Focus on critical paths and functionalities. Use risk-based testing to determine which areas are most crucial.
 - **Parallel execution**: Run tests concurrently to reduce execution time. Ensure tests are independent to avoid conflicts.
-- ```xml
+  ```xml
 <suite name="MySuite" parallel="methods" thread-count="5">
     <test name="Test1">
         <classes>
@@ -586,8 +588,7 @@ driver.findElement(用户名字段).sendKeys(用户名);
         </classes>
     </test>
 </suite>
-````
-
+```
 - **有效利用[测试数据](/zh-cn/wiki/test-data/)**：使用数据提供者或外部数据源为测试提供必要的数据，而无需硬编码。
 - **明智地实施等待**：使用显式等待而不是隐式等待来减少不必要的延迟和不稳定。
 

@@ -139,12 +139,12 @@ order: 0
 
 为了确保每次测试运行之前**[干净的石板](/zh-cn/wiki/clean-slate/)**，请遵循以下策略：
 
-- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
+- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。Docker 等工具可以封装依赖项和配置，确保一致性。
 
     ```
     docker-compose up -d
     ```
-- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
+- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。Flyway 或 Liquibase 等工具可以管理此过程。
 
     ```
     TRUNCATE TABLE your_table;
@@ -182,12 +182,12 @@ order: 0
 - **定期刷新[测试数据](/zh-cn/wiki/test-data/)**：将[测试数据](/zh-cn/wiki/test-data/) 定期刷新安排到基线以防止漂移。
   实施这些策略将有助于维持 **[干净的石板](/zh-cn/wiki/clean-slate/)** 并有助于获得一致、可靠的测试结果。
 
-- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
+- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。Docker 等工具可以封装依赖项和配置，确保一致性。
 
     ```
     docker-compose up -d
     ```
-- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
+- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。Flyway 或 Liquibase 等工具可以管理此过程。
 
     ```
     TRUNCATE TABLE your_table;
@@ -317,16 +317,15 @@ order: 0
 
 - **虚拟化**：使用 VMware 或 VirtualBox 等工具创建虚拟环境，可以在每次测试运行之前将其重置为已知状态。
 - **容器化**：利用 Docker 或 Kubernetes 封装您的测试环境和依赖项，以便快速重置。
-
-docker-compose down && docker-compose up -d
-
   ```
-- **Database Sandboxing**: Tools like SQL Server Data Tools or Flyway can revert databases to a baseline after tests.
-- **Mocking and Service Virtualization**: Utilize frameworks like Mockito or WireMock to simulate external services, ensuring they start in a known state.
-- **Dedicated Test Data Management**: Implement tools like Delphix to manage and reset test data.
-- **Configuration Management**: Use Ansible, Puppet, or Chef to automate the configuration of test environments.
-- **Source Control for Test Artifacts**: Keep test scripts, data, and configurations in Git to track changes and revert when necessary.
-- ```ts
+docker-compose down && docker-compose up -d
+  ```
+- **数据库沙箱（Database Sandboxing）**：使用如 SQL Server Data Tools 或 Flyway 等工具，在测试完成后将数据库恢复到基线状态。
+- **模拟与服务虚拟化（Mocking and Service Virtualization）**：利用 Mockito 或 WireMock 等框架模拟外部服务，确保它们在已知状态下启动。
+- **专用测试数据管理（Dedicated Test Data Management）**：使用如 Delphix 等工具来管理和重置测试数据。
+- **配置管理（Configuration Management）**：使用 Ansible、Puppet 或 Chef 自动化测试环境的配置。
+- **测试工件的源代码管理（Source Control for Test Artifacts）**：将测试脚本、数据和配置存储在 Git 中，以便跟踪变更并在必要时进行回滚。
+  ```ts
   git reset --hard HEAD && git clean -fdx
   ```
 - **自动清理脚本**：编写脚本以清理测试执行后的环境。

@@ -509,11 +509,10 @@ order: 0
 
 git commit -m“为了清晰起见，重构登录[测试用例](/zh-cn/wiki/test-case/)”
 
-  ```
 - **Parameterization**: Use parameterized tests to handle multiple data sets, making test cases more flexible and reducing the number of test cases needed.
 - **Test Case Categorization**: Group test cases by functionality, priority, or other relevant criteria to simplify management and execution.
 - **Automated Cleanup**: Implement scripts to remove or archive obsolete test cases.
-- ```ts
+  ```ts
   cleanupTestCases('archived', '2023-01-01');
   ```
 - **文档**：使文档与测试用例更改保持同步，以确保目的和步骤始终清晰。

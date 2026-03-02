@@ -127,7 +127,7 @@ order: 0
 [国际化测试](/zh-cn/wiki/internationalization-testing/) 中使用的常用技术包括：
 
 - **伪本地化**：通过用重音字符和其他符号替换原始语言中的字符来模仿其他语言，从而模拟本地化过程。这有助于识别字符编码和布局问题，而无需实际翻译内容。
-- **资源文件测试**：确保UI元素和消息不是硬编码的，而是存储在资源文件中，可以在不更改代码的情况下交换为不同的语言。
+- **资源文件测试**：确保 UI 元素和消息不是硬编码的，而是存储在资源文件中，可以在不更改代码的情况下交换为不同的语言。
 - **特定于区域设置的测试**：使用不同的区域设置测试应用程序，以验证日期、时间、货币和数字格式以及排序算法是否正常运行。
 - **输入和输出测试**：验证应用程序可以处理多种语言的输入和显示输出，特别是那些具有独特字符集（如中文、日语或阿拉伯语）的语言。
 - **[数据库](/zh-cn/wiki/database/) 测试**：确保[数据库](/zh-cn/wiki/database/) 可以以各种语言存储、检索和排序数据，并且支持 Unicode。
@@ -138,7 +138,7 @@ order: 0
   这些技术有助于在开发周期的早期识别潜在的国际化问题，确保本地化过程顺利高效。
 
 - **伪本地化**：通过用重音字符和其他符号替换原始语言中的字符来模仿其他语言，从而模拟本地化过程。这有助于识别字符编码和布局问题，而无需实际翻译内容。
-- **资源文件测试**：确保UI元素和消息不是硬编码的，而是存储在资源文件中，可以在不更改代码的情况下交换为不同的语言。
+- **资源文件测试**：确保 UI 元素和消息不是硬编码的，而是存储在资源文件中，可以在不更改代码的情况下交换为不同的语言。
 - **特定于区域设置的测试**：使用不同的区域设置测试应用程序，以验证日期、时间、货币和数字格式以及排序算法是否正常运行。
 - **输入和输出测试**：验证应用程序可以处理多种语言的输入和显示输出，特别是那些具有独特字符集（如中文、日语或阿拉伯语）的语言。
 - **[数据库](/zh-cn/wiki/database/) 测试**：确保[数据库](/zh-cn/wiki/database/) 可以以各种语言存储、检索和排序数据，并且支持 Unicode。
@@ -303,7 +303,7 @@ order: 0
 - 用于正确翻译和布局的 UI 元素。
 - 输入字段接受和处理国际字符。
 - 处理不同时区、货币和日期格式的功能。
-3. **使用[selenium](/zh-cn/wiki/selenium/)或Appium等支持多语言测试的工具自动化[测试用例](/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
+3. **使用[selenium](/zh-cn/wiki/selenium/)或 Appium 等支持多语言测试的工具自动化[测试用例](/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
 
     ```
     // Example of parameterized test case in a pseudo-code
@@ -428,15 +428,11 @@ order: 0
 
 - **伪本地化**：自动用更改后的版本替换文本以模拟不同的语言。这可以突出显示文本扩展、字符编码和布局方面的问题，而无需完整翻译。
 - **自动视觉测试**：使用工具捕获本地化 UI 的屏幕截图并将其与基线进行比较，以检测文本截断或未对齐等布局问题。
-
-VisualTest.checkLocalization('法语', '/path/to/french/screenshot');
-
-  ```
-- **Locale-specific data validation**: Create automated tests that input and validate data specific to each locale, such as dates, currency, and number formats.
-- **Contextual checks**: Implement checks that ensure text is not only translated but also appropriate in context. This may involve AI or machine learning models to predict and flag potential context errors.
-- **Continuous localization**: Integrate internationalization tests into the CI/CD pipeline to continuously test new changes across all supported languages and locales.
-- **Resource file linting**: Use scripts to automatically scan resource files for common issues like missing translations, placeholders, or formatting errors.
-- ```ts
+- **区域特定数据验证（Locale-specific data validation）**：创建自动化测试，输入并验证各个区域特有的数据格式，例如日期、货币和数字格式。
+- **语境校验（Contextual checks）**：实施检查机制，确保文本不仅被翻译，而且在语境中也是恰当的。这可以借助 AI 或机器学习模型来预测并标记潜在的语境错误。
+- **持续本地化（Continuous localization）**：将国际化测试集成到 CI/CD 流水线中，对所有支持的语言和区域的新增变更进行持续测试。
+- **资源文件校验（Resource file linting）**：使用脚本自动扫描资源文件中的常见问题，例如缺失翻译、占位符错误或格式错误。
+  ```ts
   lintLocalizations('/path/to/resource/files');
   ```
 - **自动语言测试**：使用自然语言处理 (NLP) 工具来评估语法、用法和风格方面的翻译质量。

@@ -1,6 +1,6 @@
 ---
 title: "缺陷/漏洞 ｜ Bug"
-description: "Bug 生命周期是指一个 Bug 从发现到解决的过程。它通常包括以下阶段： 1. 新建 (New)：一旦发现，Bug 被报告并进入生命周期。 2. 已指派 (Assigned)：一名开发人员被指派负责处理该 Bug。 3. 打开 (Open)：开发人员开始调查并着手处理该 Bug。 4. 已修复 (Fixed)：开发人员已处理该 Bug，等待验证。 5. 待复测 (Pending Retest)：修复已就绪，等待 QA 团队复测。 6. 复测 (Retest)：QA 测试修复情况，以确保 Bug 已解决。 7. 已验证 (Verified)：QA 确认 Bug 已修复。 8. 已关闭 (Closed)：Bug 已解决，无需进一步操作。 9. 重新打开 (Reopened)：如果问题仍然存在或再次出现，Bug 将被重新打开，循环继续。"
+description: "Bug 生命周期是指一个 Bug 从发现到解决的过程。它通常包括以下阶段：1. 新建 (New)：一旦发现，Bug 被报告并进入生命周期。2. 已指派 (Assigned)：一名开发人员被指派负责处理该 Bug。3. 打开 (Open)：开发人员开始调查并着手处理该 Bug。4. 已修复 (Fixed)：开发人员已处理该 Bug，等待验证。5. 待复测 (Pending Retest)：修复已就绪，等待 QA 团队复测。6. 复测 (Retest)：QA 测试修复情况，以确保 Bug 已解决。7. 已验证 (Verified)：QA 确认 Bug 已修复。8. 已关闭 (Closed)：Bug 已解决，无需进一步操作。9. 重新打开 (Reopened)：如果问题仍然存在或再次出现，Bug 将被重新打开，循环继续。"
 section: "B"
 order: 0
 ---
@@ -39,7 +39,7 @@ order: 0
       - [自动化测试如何帮助错误检测？](#自动化测试如何帮助错误检测)
       - [e2e 测试在错误检测和预防中发挥什么作用？](#e2e-测试在错误检测和预防中发挥什么作用)
 <!-- TOC END -->
-＃ 漏洞 （又名缺陷） 一个漏洞是程序中导致错误结果或崩溃的错误或故障。它是由有缺陷或不完整的逻辑引起的，可能导致软件偏离其预期性能。
+＃ 漏洞（又名缺陷）一个漏洞是程序中导致错误结果或崩溃的错误或故障。它是由有缺陷或不完整的逻辑引起的，可能导致软件偏离其预期性能。
 
 ## 另请参阅：
 
@@ -69,7 +69,7 @@ order: 0
 
 [Bugs](/zh-cn/wiki/bug/) 会显着**降低软件性能**，导致诸如**响应时间增加**、**内存泄漏**或**系统崩溃**等问题。性能@@PR​​OTECTED_53@@可能会导致软件系统消耗超出必要的资源，这不仅会影响用户的体验，而且随着用户群的增长，还会导致**可扩展性问题**。在严重的情况下，性能下降可能会导致**服务中断**或**数据丢失**，这可能对公司的声誉和收入产生直接影响。
   从技术角度来看，[bugs](/zh-cn/wiki/bug/) 可能会引入**意外的计算复杂性**，导致算法运行速度比设计慢。它们还可能干扰**并发机制**，导致**死锁**或**竞争条件**，这可能难以诊断和解决。在分布式系统中，[bugs](/zh-cn/wiki/bug/) 可能会影响**网络通信**，导致跨服务的**延迟问题**或**不一致的数据状态**。
-  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[bugs](/zh-cn/wiki/bug/) 对性能的影响对于确定首先解决哪个[bugs](/zh-cn/wiki/bug/) 的优先级至关重要。不仅要检测和报告[bugs](/zh-cn/wiki/bug/)，还要评估它们对系统性能的潜在影响并相应地分配资源，以确保软件满足所需的性能基准。自动化[性能测试](/zh-cn/wiki/performance-testing/)可以集成到CI/CD管道中，以尽早捕获与性能相关的[bugs](/zh-cn/wiki/bug/)并保持软件效率和可靠性。
+  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[bugs](/zh-cn/wiki/bug/) 对性能的影响对于确定首先解决哪个[bugs](/zh-cn/wiki/bug/) 的优先级至关重要。不仅要检测和报告[bugs](/zh-cn/wiki/bug/)，还要评估它们对系统性能的潜在影响并相应地分配资源，以确保软件满足所需的性能基准。自动化[性能测试](/zh-cn/wiki/performance-testing/)可以集成到 CI/CD 管道中，以尽早捕获与性能相关的[bugs](/zh-cn/wiki/bug/)并保持软件效率和可靠性。
 
 #### bug 如何影响用户体验？
 
@@ -88,21 +88,21 @@ order: 0
 
 **[bug](/zh-cn/wiki/bug/) 生命周期**是指 [bug](/zh-cn/wiki/bug/) 从发现到解决的过程。它通常包括以下几个阶段：
 
-1. **新增** ：发现bug后，上报并进入生命周期。
+1. **新增** ：发现 bug 后，上报并进入生命周期。
 2. **已分配**：开发人员的任务是解决错误。
 3. **开放**：开发人员开始调查并解决错误。
-4. **已修复**：开发者已解决该bug，等待验证。
+4. **已修复**：开发者已解决该 bug，等待验证。
 5. **等待重新测试**：修复已准备好由 QA 团队重新测试。
 6. **重新测试**：QA 测试修复以确保错误得到解决。
 7. **已验证**：QA 确认错误已修复。
 8. **已关闭**：该错误已解决，无需采取进一步操作。
 9. **重新打开**：如果问题仍然存在或再次发生，则重新打开错误并继续循环。
-  了解这个周期对于有效跟踪和管理 [bugs](/zh-cn/wiki/bug/) 至关重要，确保系统、及时地解决这些问题。它还有助于根据影响和紧迫性对 [bugs](/zh-cn/wiki/bug/) 进行优先级排序。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以加速[bug](/zh-cn/wiki/bug/) 检测，而详细记录的[bug](/zh-cn/wiki/bug/) 报告则简化了调试过程。 [jira](/zh-cn/wiki/jira/)、Bugzilla 或Redmine 等工具有助于[bug](/zh-cn/wiki/bug/) 报告和跟踪，使团队能够监控[bugs](/zh-cn/wiki/bug/) 在其整个生命周期中的状态和进度。
+  了解这个周期对于有效跟踪和管理 [bugs](/zh-cn/wiki/bug/) 至关重要，确保系统、及时地解决这些问题。它还有助于根据影响和紧迫性对 [bugs](/zh-cn/wiki/bug/) 进行优先级排序。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以加速[bug](/zh-cn/wiki/bug/) 检测，而详细记录的[bug](/zh-cn/wiki/bug/) 报告则简化了调试过程。 [jira](/zh-cn/wiki/jira/)、Bugzilla 或 Redmine 等工具有助于[bug](/zh-cn/wiki/bug/) 报告和跟踪，使团队能够监控[bugs](/zh-cn/wiki/bug/) 在其整个生命周期中的状态和进度。
 
-1. **新增** ：发现bug后，上报并进入生命周期。
+1. **新增** ：发现 bug 后，上报并进入生命周期。
 2. **已分配**：开发人员的任务是解决错误。
 3. **开放**：开发人员开始调查并解决错误。
-4. **已修复**：开发者已解决该bug，等待验证。
+4. **已修复**：开发者已解决该 bug，等待验证。
 5. **等待重新测试**：修复已准备好由 QA 团队重新测试。
 6. **重新测试**：QA 测试修复以确保错误得到解决。
 7. **已验证**：QA 确认错误已修复。
@@ -428,29 +428,28 @@ order: 0
 - **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
 - **动态分析**：监控程序执行并实时报告问题的工具，例如内存泄漏或指针滥用。
 - **[单元测试](/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
-
-描述('计算器', () => {
+  ```
+描述 ('计算器', () => {
   it('应该正确地添加两个数字', () => {
-  期望(添加(2, 3)).toEqual(5);
+  期望 (添加 (2, 3)).toEqual(5);
   });
   });
 
   ```
-- **Integration Testing**: Ensures that multiple components or systems work together correctly.
-- **System Testing**: Verifies the complete and integrated software system meets specified requirements.
-- **Regression Testing**: Automated tests that ensure previously developed and tested software still performs after a change.
-- **Exploratory Testing**: Combines learning, test design, and test execution to discover bugs not covered by scripted tests.
-- **Fuzz Testing**: Feeds random inputs to programs to find issues like crashes or memory leaks.
-- **Performance Testing**: Evaluates how a system performs in terms of responsiveness and stability under a particular workload.
-- **Sanity Testing**: A quick, non-exhaustive run-through of functionalities to ensure they work as expected.
-- **Smoke Testing**: Preliminary testing to reveal simple failures severe enough to reject a prospective software release.
-- **Security Testing**: Identifies vulnerabilities, threats, and risks in the software.
-  Each technique has its strengths and is often used in combination to provide a comprehensive bug detection strategy.
-  ```
 
+- **集成测试（Integration Testing）**：确保多个组件或系统能够正确协同工作。
+- **系统测试（System Testing）**：验证完整且集成后的软件系统是否满足既定需求。
+- **回归测试（Regression Testing）**：通过自动化测试确保在变更之后，先前已开发和测试的软件功能仍然正常运行。
+- **探索性测试（Exploratory Testing）**：将学习、测试设计和测试执行相结合，用于发现脚本化测试未覆盖的缺陷。
+- **模糊测试（Fuzz Testing）**：向程序输入随机数据，以发现诸如崩溃或内存泄漏等问题。
+- **性能测试（Performance Testing）**：评估系统在特定负载下的响应能力和稳定性表现。
+- **冒烟测试（Sanity Testing）**：对关键功能进行快速且非全面的验证，确保其按预期运行。
+- **烟雾测试（Smoke Testing）**：在正式测试前进行的初步测试，用于发现严重到需要拒绝发布的软件缺陷。
+- **安全测试（Security Testing）**：识别软件中的漏洞、威胁和潜在风险。
 - **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
 - **动态分析**：监控程序执行并实时报告问题的工具，例如内存泄漏或指针滥用。
 - **[单元测试](/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
+每种技术都有其优势，通常结合使用，以构建全面的缺陷检测策略。
 
 
 #### 自动化测试如何帮助错误检测？
