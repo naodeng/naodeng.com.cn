@@ -8,6 +8,7 @@ import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import { NAV_HOME } from "@/consts";
 import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
@@ -52,6 +53,75 @@ const breadcrumbs = [
 const entries = await getCollection("wiki");
 const sidebarSections = buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
+
+function extractTokens(text: string): string[] {
+  const normalized = text.toLowerCase();
+  const tokens: string[] = [];
+  const enMatches = normalized.match(/[a-z][a-z0-9-]{2,}/g) ?? [];
+  const zhMatches = normalized.match(/[\u4e00-\u9fff]{2,}/g) ?? [];
+  tokens.push(...enMatches);
+  for (const phrase of zhMatches) {
+    tokens.push(phrase);
+    // Add Chinese bigrams to improve matching granularity.
+    if (phrase.length >= 4) {
+      for (let i = 0; i < phrase.length - 1; i++) {
+        tokens.push(phrase.slice(i, i + 2));
+      }
+    }
+  }
+  return tokens;
+}
+
+function buildFreq(tokens: string[]): Map<string, number> {
+  const freq = new Map<string, number>();
+  for (const token of tokens) freq.set(token, (freq.get(token) ?? 0) + 1);
+  return freq;
+}
+
+const profiles = entries.map((e) => {
+  const slug = wikiIdToSlug(e.id);
+  const labelZh = getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slugToTitleEn(slug);
+  const rawText = [labelZh, e.data?.title ?? "", e.data?.description ?? "", e.body ?? ""].join("\n");
+  const tokens = extractTokens(rawText);
+  return {
+    slug,
+    labelZh,
+    freq: buildFreq(tokens),
+    tokenSet: new Set(tokens),
+    explicitRelated: e.data?.related ?? [],
+  };
+});
+
+const totalDocs = profiles.length;
+const docFreq = new Map<string, number>();
+for (const profile of profiles) {
+  for (const token of profile.tokenSet) {
+    docFreq.set(token, (docFreq.get(token) ?? 0) + 1);
+  }
+}
+
+const currentProfile = profiles.find((p) => p.slug === slugParam);
+const relatedItems =
+  !currentProfile
+    ? []
+    : profiles
+        .filter((p) => p.slug !== slugParam)
+        .map((candidate) => {
+          let score = 0;
+          for (const [token, tfA] of currentProfile.freq) {
+            const tfB = candidate.freq.get(token) ?? 0;
+            if (!tfB) continue;
+            const df = docFreq.get(token) ?? 1;
+            const idf = Math.log((totalDocs + 1) / (df + 1)) + 1;
+            score += tfA * tfB * idf * idf;
+          }
+          // Manual related metadata still counts as a strong relevance signal.
+          if (currentProfile.explicitRelated.includes(candidate.slug)) score += 200;
+          if (candidate.explicitRelated.includes(currentProfile.slug)) score += 120;
+          return { ...candidate, score };
+        })
+        .sort((a, b) => b.score - a.score || a.labelZh.localeCompare(b.labelZh, "zh-Hans-CN"))
+        .slice(0, 5);
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -102,12 +172,13 @@ const definedTermSchema = {
 >
   <article class="wiki-article">
     <Content />
-    {entry.data.related && entry.data.related.length > 0 && (
+    <GoogleAdThin />
+    {relatedItems.length > 0 && (
       <section class="wiki-related" aria-labelledby="wiki-related-heading">
         <h2 id="wiki-related-heading" class="wiki-related-title">相关词条</h2>
         <div class="wiki-related-pills">
-          {entry.data.related.map((term: string) => (
-            <a href={`${basePath}/${term}/`} class="wiki-related-pill">{term}</a>
+          {relatedItems.map((item) => (
+            <a href={`${basePath}/${item.slug}/`} class="wiki-related-pill">{item.labelZh}</a>
           ))}
         </div>
       </section>
@@ -126,6 +197,24 @@ const definedTermSchema = {
 </script>
 
 <style>
+  :global(.docs-sidebar-wrap) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar-inner) {
+    border-inline-start: none !important;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
+  }
+
   .wiki-article {
     max-inline-size: 68ch;
     line-height: 1.8;
@@ -179,8 +268,8 @@ const definedTermSchema = {
   }
 
   .wiki-related {
-    margin-block-start: var(--sp-l);
-    padding-block-start: var(--sp-m);
+    margin-block-start: calc(var(--sp-l) * 0.2);
+    padding-block-start: calc(var(--sp-m) * 0.2);
     border-block-start: 1px solid var(--color-border);
   }
 

@@ -1,0 +1,205 @@
+---
+import { getCollection, render } from "astro:content";
+import DocsLayout from "@/layouts/Docs.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
+import ArticleShare from "@/components/ArticleShare.astro";
+import Giscus from "@/components/Giscus.astro";
+import { NAV_HOME } from "@/consts";
+import type { Lang } from "@/i18n";
+import {
+  aiwikiIdToLang,
+  aiwikiIdToSlug,
+  buildAiWikiSidebar,
+  getAiWikiDisplayTitle,
+  slugToTitleEn,
+} from "@/data/aiwiki";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("aiwiki");
+  return entries.map((entry) => {
+    const lang = entry.data.lang ?? aiwikiIdToLang(entry.id);
+    const slug = entry.data.slug ?? aiwikiIdToSlug(entry.id);
+    return {
+      params: { lang, slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const locale = (Astro.params.lang ?? "en") as Lang;
+const slugParam = (Astro.params.slug ?? "") as string;
+
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "Home";
+const wikiTitle = locale === "zh-cn" ? "AI 百科" : "AI Wiki";
+const bodyStr = typeof entry.body === "string" ? entry.body : "";
+const pageTitle =
+  entry.data.title || entry.data.titleZh || entry.data.titleEn || slugToTitleEn(slugParam) || slugParam;
+const rawDescription =
+  (entry.data.summary && String(entry.data.summary).trim()) ||
+  (entry.data.description && String(entry.data.description).trim()) ||
+  (bodyStr && bodyStr.replace(/^#.+/m, "").replace(/[#*_[\]()`]/g, "").trim().slice(0, 200)) ||
+  pageTitle;
+const metaDescription = rawDescription.length > 155 ? rawDescription.slice(0, 152).trimEnd() + "…" : rawDescription;
+
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: wikiTitle, url: `/${locale}/AIWiki/` },
+  { name: pageTitle, url: `/${locale}/AIWiki/${slugParam}/` },
+];
+
+const allEntries = await getCollection("aiwiki");
+const entries = allEntries.filter((e) => (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale));
+const sidebarSections = buildAiWikiSidebar(entries, locale);
+const basePath = `/${locale}/AIWiki`;
+const relatedTitleMap = new Map(entries.map((e) => [e.data.slug ?? aiwikiIdToSlug(e.id), getAiWikiDisplayTitle(e, locale)]));
+
+const { Content, headings: renderedHeadings = [] } = await render(entry);
+
+function parseHeadings(body: string): { depth: number; slug: string; text: string }[] {
+  const lines = body.split("\n");
+  const result: { depth: number; slug: string; text: string }[] = [];
+  for (const line of lines) {
+    const m = line.match(/^(#{2,3})\s+(.+)$/);
+    if (!m) continue;
+    const depth = m[1].length;
+    const text = m[2].trim();
+    const slug = text
+      .toLowerCase()
+      .replace(/[^\w\u4e00-\u9fff\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+    result.push({ depth, slug, text });
+  }
+  return result;
+}
+const headings = renderedHeadings.length > 0 ? renderedHeadings : parseHeadings(bodyStr);
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = `${siteOrigin}/${locale}/AIWiki/${slugParam}/`;
+const shareLocale = locale === "zh-cn" ? "zh-cn" : "en";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: pageTitle,
+  description: metaDescription,
+  url: canonicalUrl,
+  inDefinedTermSet: {
+    "@type": "DefinedTermSet",
+    name: locale === "zh-cn" ? "AI 百科" : "AI Wiki",
+    url: `${siteOrigin}/${locale}/AIWiki/`,
+  },
+};
+---
+
+<DocsLayout
+  title={pageTitle}
+  description={metaDescription}
+  breadcrumbs={breadcrumbs}
+  structuredData={[structuredData]}
+  sidebarSections={sidebarSections}
+  currentPath={slugParam}
+  basePath={basePath}
+  sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "On this page"}
+  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条..." : "Search terms..."}
+  headings={headings}
+  tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
+>
+  <article class="aiwiki-article" data-locale={locale}>
+    <Content />
+    <GoogleAdThin />
+
+    {entry.data.related && entry.data.related.length > 0 && (
+      <section class="aiwiki-related" aria-labelledby="aiwiki-related-heading">
+        <h2 id="aiwiki-related-heading">{locale === "zh-cn" ? "相关词条" : "Related terms"}</h2>
+        <div class="aiwiki-related-pills">
+          {entry.data.related.map((term: string) => (
+            <a href={`${basePath}/${term}/`} class="aiwiki-related-pill">{relatedTitleMap.get(term) ?? term}</a>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <GoogleAd />
+  <ArticleShare title={pageTitle} url={canonicalUrl} locale={shareLocale} />
+  <GoogleAd />
+  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
+</DocsLayout>
+
+<script>
+  // Keep old markdown links and external links usable after publication.
+  const article = document.querySelector(".aiwiki-article") as HTMLElement | null;
+  if (article) {
+    const locale = article.dataset.locale || "en";
+    for (const link of article.querySelectorAll("a[href]")) {
+      const href = link.getAttribute("href") || "";
+
+      const mdMatch = href.match(/^\.\/([a-z0-9-]+)(?:\.(en|zh-cn))?\.md$/i);
+      if (mdMatch) {
+        const slug = mdMatch[1];
+        const lang = mdMatch[2] || locale;
+        link.setAttribute("href", `/${lang}/AIWiki/${slug}/`);
+        continue;
+      }
+
+      if (/^https?:\/\//i.test(href)) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+    }
+  }
+
+  const activeLink = document.querySelector<HTMLAnchorElement>(".docs-sidebar-link--active");
+  if (activeLink) {
+    activeLink.scrollIntoView({ block: "nearest", behavior: "instant" });
+  }
+</script>
+
+<style>
+  :global(.docs-sidebar-wrap) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar) {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar-inner) {
+    border-inline-start: none !important;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
+  }
+
+  .aiwiki-article {
+    max-inline-size: 72ch;
+    line-height: 1.8;
+  }
+  .aiwiki-related {
+    margin-top: var(--sp-l);
+    padding-top: var(--sp-s);
+    border-top: 1px solid var(--color-border);
+  }
+  .aiwiki-related-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .aiwiki-related-pill {
+    display: inline-block;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    border: 1px solid var(--color-theme);
+    text-decoration: none;
+    color: var(--color-theme);
+  }
+  .aiwiki-related-pill:hover {
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+  }
+</style>
