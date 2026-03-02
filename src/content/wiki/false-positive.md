@@ -476,16 +476,16 @@ order: 0
 #### 误报如何影响软件的安全测试？
 
 在**[安全测试](/zh-cn/wiki/security-testing/)**领域，[误报](/zh-cn/wiki/false-positive/) 可能会导致**资源**和**注意力**。团队可能会浪费时间调查和解决并非实际威胁的问题，从而可能忽视真正的漏洞。这种转移可能会产生**错误的安全感**，因为利益相关者可能认为已确定的问题正在得到解决，而事实上，关键的安全缺陷仍未得到解决。
-  此外，频繁的 [误报](/zh-cn/wiki/false-positive/) 可能会导致**警报疲劳**，安全专业人员对警告变得不敏感，从而增加了错过真正安全漏洞的风险。这可能会破坏对测试工具和流程的信任，促使团队忽略或禁用安全警报，从而进一步使软件面临潜在的攻击。
-  为了减轻这些风险，**微调 [安全测试](/zh-cn/wiki/security-testing/) 工具**和**流程**以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 至关重要。这包括使用正确的应用程序上下文配置安全扫描器，维护最新的威胁[数据库](/zh-cn/wiki/database/)，以及使用**补充手册[verification](/zh-cn/wiki/verification/)**来确认潜在的安全问题。
-  此外，将**反馈循环**纳入测试过程可以帮助提高安全测试的准确性。通过不断向过去的[误报](/zh-cn/wiki/false-positive/)学习，团队可以调整他们的测试策略，以更好地区分真实威胁和虚假威胁，从而提高[安全测试](/zh-cn/wiki/security-testing/)工作的有效性。
+此外，频繁的 [误报](/zh-cn/wiki/false-positive/) 可能会导致**警报疲劳**，安全专业人员对警告变得不敏感，从而增加了错过真正安全漏洞的风险。这可能会破坏对测试工具和流程的信任，促使团队忽略或禁用安全警报，从而进一步使软件面临潜在的攻击。
+为了减轻这些风险，**微调 [安全测试](/zh-cn/wiki/security-testing/) 工具**和**流程**以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 至关重要。这包括使用正确的应用程序上下文配置安全扫描器，维护最新的威胁[数据库](/zh-cn/wiki/database/)，以及使用**补充手册[verification](/zh-cn/wiki/verification/)**来确认潜在的安全问题。
+此外，将**反馈循环**纳入测试过程可以帮助提高安全测试的准确性。通过不断向过去的[误报](/zh-cn/wiki/false-positive/)学习，团队可以调整他们的测试策略，以更好地区分真实威胁和虚假威胁，从而提高[安全测试](/zh-cn/wiki/security-testing/)工作的有效性。
 
 #### 误报和测试覆盖率之间有什么关系？
 
 **[误报](/zh-cn/wiki/false-positive/)** 和 **[测试覆盖率](/zh-cn/wiki/test-coverage/)** 之间的关系是微妙的。高[测试覆盖率](/zh-cn/wiki/test-coverage/) 旨在运用软件代码库的很大一部分，理想情况下检测实际问题。但是，如果测试设计不完善或者对不影响功能的更改过于敏感，则覆盖率的增加也可能导致[误报](/zh-cn/wiki/false-positive/) 的增加。
-  [误报](/zh-cn/wiki/false-positive/) 会削弱[测试覆盖率](/zh-cn/wiki/test-coverage/) 指标的有效性。虽然套件可能报告高覆盖率，但 [误报](/zh-cn/wiki/false-positive/) 的存在可能意味着测试无法准确反映代码的状态。这可能会导致错误的安全感，即高覆盖率数字被视为 [软件质量](/zh-cn/wiki/software-quality/) 的指示，即使某些测试可能不值得信赖。
-  为了保持[测试覆盖率](/zh-cn/wiki/test-coverage/)的完整性，最小化[误报](/zh-cn/wiki/false-positive/)至关重要。这包括完善[测试用例](/zh-cn/wiki/test-case/)、改进[测试数据](/zh-cn/wiki/test-data/)管理以及确保自动化框架稳定可靠。当[误报](/zh-cn/wiki/false-positive/) 最小化时，[测试覆盖率](/zh-cn/wiki/test-coverage/) 成为[软件质量](/zh-cn/wiki/software-quality/) 和测试彻底性的更可靠的指标。
-  总之，虽然高[测试覆盖率](/zh-cn/wiki/test-coverage/) 是一个目标，但它必须与[测试用例](/zh-cn/wiki/test-case/) 的质量相平衡，以确保覆盖范围能够真实反映软件的状态，并且不包括由于[误报](/zh-cn/wiki/false-positive/) 导致的误导性结果。
+[误报](/zh-cn/wiki/false-positive/) 会削弱[测试覆盖率](/zh-cn/wiki/test-coverage/) 指标的有效性。虽然套件可能报告高覆盖率，但 [误报](/zh-cn/wiki/false-positive/) 的存在可能意味着测试无法准确反映代码的状态。这可能会导致错误的安全感，即高覆盖率数字被视为 [软件质量](/zh-cn/wiki/software-quality/) 的指示，即使某些测试可能不值得信赖。
+为了保持[测试覆盖率](/zh-cn/wiki/test-coverage/)的完整性，最小化[误报](/zh-cn/wiki/false-positive/)至关重要。这包括完善[测试用例](/zh-cn/wiki/test-case/)、改进[测试数据](/zh-cn/wiki/test-data/)管理以及确保自动化框架稳定可靠。当[误报](/zh-cn/wiki/false-positive/) 最小化时，[测试覆盖率](/zh-cn/wiki/test-coverage/) 成为[软件质量](/zh-cn/wiki/software-quality/) 和测试彻底性的更可靠的指标。
+总之，虽然高[测试覆盖率](/zh-cn/wiki/test-coverage/) 是一个目标，但它必须与[测试用例](/zh-cn/wiki/test-case/) 的质量相平衡，以确保覆盖范围能够真实反映软件的状态，并且不包括由于[误报](/zh-cn/wiki/false-positive/) 导致的误导性结果。
 
 #### 误报如何影响软件开发中的决策过程？
 
