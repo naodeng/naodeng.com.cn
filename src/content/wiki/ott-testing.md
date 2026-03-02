@@ -158,7 +158,7 @@ OTT（Over-The-Top）中的[负载测试](/zh-cn/wiki/load-testing/)专注于评
 1. **定义[负载测试](/zh-cn/wiki/load-testing/) 目标：** 建立预期的用户负载、峰值流量时间和性能基准。
 2. **创建用户场景：** 开发真实的用户交互场景，包括登录、浏览内容、启动流和更改视频质量等操作。
 3. **选择[负载测试](/zh-cn/wiki/load-testing/)工具：**选择可以模拟所需数量的虚拟用户并支持OTT协议和技术的工具（例如HLS、DASH）。
-4. **配置[测试环境](/zh-cn/wiki/test-environment/)：** 设置一个尽可能镜像生产[setup](/zh-cn/wiki/setup/) 的测试环境。
+4. **配置[测试环境](/zh-cn/wiki/test-environment/)：** 设置一个尽可能镜像生产[环境搭建](/zh-cn/wiki/setup/) 的测试环境。
 5. **脚本[测试用例](/zh-cn/wiki/test-case/)：** 使用所选工具为用户场景编写脚本。包括用户行为和网络条件的变化。
 6. **执行负载测试：** 运行脚本来模拟虚拟用户与OTT平台交互。逐渐增加负载至预期峰值并超过以确定断裂点。
 7. **监控性能指标：** 跟踪关键[绩效指标](/zh-cn/wiki/performance-indicator/) (KPI)，例如响应时间、错误率和吞吐量。
@@ -179,7 +179,7 @@ OTT（Over-The-Top）中的[负载测试](/zh-cn/wiki/load-testing/)专注于评
 1. **定义[负载测试](/zh-cn/wiki/load-testing/) 目标：** 建立预期的用户负载、峰值流量时间和性能基准。
 2. **创建用户场景：** 开发真实的用户交互场景，包括登录、浏览内容、启动流和更改视频质量等操作。
 3. **选择[负载测试](/zh-cn/wiki/load-testing/)工具：** 选择可以模拟所需数量的虚拟用户并支持OTT协议和技术的工具（例如HLS、DASH）。
-4. **配置[测试环境](/zh-cn/wiki/test-environment/)：** 设置一个尽可能镜像生产[setup](/zh-cn/wiki/setup/) 的测试环境。
+4. **配置[测试环境](/zh-cn/wiki/test-environment/)：** 设置一个尽可能镜像生产[环境搭建](/zh-cn/wiki/setup/) 的测试环境。
 5. **脚本[测试用例](/zh-cn/wiki/test-case/)：** 使用所选工具为用户场景编写脚本。包括用户行为和网络条件的变化。
 6. **执行负载测试：** 运行脚本来模拟虚拟用户与OTT平台交互。逐渐增加负载至预期峰值并超过以确定断裂点。
 7. **监控性能指标：** 跟踪关键[绩效指标](/zh-cn/wiki/performance-indicator/) (KPI)，例如响应时间、错误率和吞吐量。

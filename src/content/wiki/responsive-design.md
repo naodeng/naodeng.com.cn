@@ -476,7 +476,7 @@ order: 0
 - **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：实施 Percy 或 Applitools 等工具来自动检测不同设备和浏览器上的 UI 更改和问题。
 - **响应式测试框架**：利用专门为响应式测试设计的框架，例如 Galen 或 BackstopJS。
 - **持续集成 (CI)**：将响应测试集成到 CI 管道中，以确保持续的兼容性。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [灯塔](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [lighthouse](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。
   通过组合这些 [自动化测试](/zh-cn/wiki/automated-testing/) 策略，您可以有效地验证网站的响应能力，确保在所有平台上获得一致且最佳的用户体验。
 
 - **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等自动化工具在多个浏览器上运行测试。这可以验证您网站的功能和布局是否一致。
@@ -493,7 +493,7 @@ order: 0
 - **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：实施 Percy 或 Applitools 等工具来自动检测不同设备和浏览器上的 UI 更改和问题。
 - **响应式测试框架**：利用专门为响应式测试设计的框架，例如 Galen 或 BackstopJS。
 - **持续集成 (CI)**：将响应测试集成到 CI 管道中，以确保持续的兼容性。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [灯塔](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [lighthouse](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。
 
 #### 自动化在测试响应式设计中的作用是什么？
 

@@ -49,7 +49,7 @@ order: 0
 - **[测试运行者](/zh-cn/wiki/test-runner/)**
     自动化执行测试和报告结果的过程。
 
-- **[Setup](/zh-cn/wiki/setup/) 和拆卸机制**
+- **[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**
     用于准备测试环境并随后进行清理，通常使用
     `setUp`
     和
@@ -81,7 +81,7 @@ order: 0
 - **[测试运行者](/zh-cn/wiki/test-runner/)**
     自动化执行测试和报告结果的过程。
 
-- **[Setup](/zh-cn/wiki/setup/) 和拆卸机制**
+- **[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**
     用于准备测试环境并随后进行清理，通常使用
     `setUp`
     和
@@ -131,7 +131,7 @@ order: 0
 
 - **[测试运行者](/zh-cn/wiki/test-runner/)**：执行测试并提供结果。它可以是命令行工具，也可以集成在 IDE 中。
 - **[测试用例](/zh-cn/wiki/test-case/)**：封装各个测试。它们通常是断言某段代码是否按预期运行的方法/函数。
-- **测试装置**：设置测试运行的条件。它们可以包含[setup](/zh-cn/wiki/setup/) 和拆卸方法来初始化和清理[测试环境](/zh-cn/wiki/test-environment/)。
+- **测试装置**：设置测试运行的条件。它们可以包含[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来初始化和清理[测试环境](/zh-cn/wiki/test-environment/)。
 - **断言**：验证[测试用例](/zh-cn/wiki/test-case/) 的结果。他们将[实际结果](/zh-cn/wiki/actual-result/) 与[预期结果](/zh-cn/wiki/expected-result/) 进行比较，如果测试失败则抛出错误。
 - **模拟工具**：模拟复杂真实对象的行为以隔离工作单元。对于单独测试代码很有用。
 - **[测试套件](/zh-cn/wiki/test-suite/)**：将多个[测试用例](/zh-cn/wiki/test-case/)分组，以便更轻松地一起管理和执行相关测试。
@@ -151,7 +151,7 @@ order: 0
 
 - **[测试运行者](/zh-cn/wiki/test-runner/)**：执行测试并提供结果。它可以是命令行工具，也可以集成在 IDE 中。
 - **[测试用例](/zh-cn/wiki/test-case/)**：封装各个测试。它们通常是断言某段代码是否按预期运行的方法/函数。
-- **测试装置**：设置测试运行的条件。它们可以包含 [setup](/zh-cn/wiki/setup/) 和拆卸方法来初始化和清理 [测试环境](/zh-cn/wiki/test-environment/)。
+- **测试装置**：设置测试运行的条件。它们可以包含 [环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来初始化和清理 [测试环境](/zh-cn/wiki/test-environment/)。
 - **断言**：验证[测试用例](/zh-cn/wiki/test-case/) 的结果。他们将[实际结果](/zh-cn/wiki/actual-result/) 与[预期结果](/zh-cn/wiki/expected-result/) 进行比较，如果测试失败则抛出错误。
 - **模拟工具**：模拟复杂真实对象的行为以隔离工作单元。对于单独测试代码很有用。
 - **[测试套件](/zh-cn/wiki/test-suite/)**：将多个[测试用例](/zh-cn/wiki/test-case/)分组，以便更轻松地一起管理和执行相关测试。
@@ -181,8 +181,8 @@ order: 0
     ```
 
 3. **如有必要，配置框架**。这可能涉及创建一个配置文件，您可以在其中指定测试目录、模拟设置和报告器等选项。对于[Jest](/zh-cn/wiki/jest/)，您可以创建一个`jest.config.js` 文件。
-4. **设置您的环境**。确保您的开发环境已准备好进行测试。这可能包括设置任何必要的 [databases](/zh-cn/wiki/database/)、环境变量或您的测试所依赖的其他服务。
-5. **编写示例测试**来验证[setup](/zh-cn/wiki/setup/)。按照框架的约定创建一个测试文件，例如`example.test.js`，并编写一个简单的[测试用例](/zh-cn/wiki/test-case/)：
+4. **设置您的环境**。确保您的开发环境已准备好进行测试。这可能包括设置任何必要的 [数据库](/zh-cn/wiki/database/)、环境变量或您的测试所依赖的其他服务。
+5. **编写示例测试**来验证[环境搭建](/zh-cn/wiki/setup/)。按照框架的约定创建一个测试文件，例如`example.test.js`，并编写一个简单的[测试用例](/zh-cn/wiki/test-case/)：
 
     ```
     test('true should be true', () => {
@@ -202,7 +202,7 @@ order: 0
     ```
 
 7. **与您的构建工具集成**。通过在 `package.json` 或构建配置中添加脚本来自动化[测试执行](/zh-cn/wiki/test-execution/)，以在构建过程中运行测试。
-8. **将配置**和测试提交到您的版本控制系统，以与您的团队共享[setup](/zh-cn/wiki/setup/)并确保跨开发环境的一致性。
+8. **将配置**和测试提交到您的版本控制系统，以与您的团队共享[环境搭建](/zh-cn/wiki/setup/)并确保跨开发环境的一致性。
 1. **选择适合您的语言和项目需求的框架**，例如用于 Java 的 JUnit、用于 .NET 的[NUnit](/zh-cn/wiki/nunit/) 或用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
 2. **使用项目的依赖关系管理工具安装框架**。例如，在 [node.js](/zh-cn/wiki/node-js/) 项目中，您将运行：
 
@@ -211,8 +211,8 @@ order: 0
     ```
 
 3. **如有必要，配置框架**。这可能涉及创建一个配置文件，您可以在其中指定测试目录、模拟设置和报告器等选项。对于[Jest](/zh-cn/wiki/jest/)，您可以创建一个`jest.config.js` 文件。
-4. **设置您的环境**。确保您的开发环境已准备好进行测试。这可能包括设置任何必要的 [databases](/zh-cn/wiki/database/)、环境变量或您的测试所依赖的其他服务。
-5. **编写示例测试**来验证[setup](/zh-cn/wiki/setup/)。按照框架的约定创建一个测试文件，例如`example.test.js`，并编写一个简单的[测试用例](/zh-cn/wiki/test-case/)：
+4. **设置您的环境**。确保您的开发环境已准备好进行测试。这可能包括设置任何必要的 [数据库](/zh-cn/wiki/database/)、环境变量或您的测试所依赖的其他服务。
+5. **编写示例测试**来验证[环境搭建](/zh-cn/wiki/setup/)。按照框架的约定创建一个测试文件，例如`example.test.js`，并编写一个简单的[测试用例](/zh-cn/wiki/test-case/)：
 
     ```
     test('true should be true', () => {
@@ -232,7 +232,7 @@ order: 0
     ```
 
 7. **与您的构建工具集成**。通过在 `package.json` 或构建配置中添加脚本来自动化[测试执行](/zh-cn/wiki/test-execution/)，以在构建过程中运行测试。
-8. **将配置**和测试提交到您的版本控制系统，以与您的团队共享[setup](/zh-cn/wiki/setup/)并确保跨开发环境的一致性。
+8. **将配置**和测试提交到您的版本控制系统，以与您的团队共享[环境搭建](/zh-cn/wiki/setup/)并确保跨开发环境的一致性。
 
 #### 使用单元测试框架编写单元测试的步骤是什么？
 

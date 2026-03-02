@@ -36,7 +36,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Agile_software_development)
+- [维基百科](https://en.wikipedia.org/wiki/Agile_software_development)
 
 ## 关于敏捷开发的问题？
 

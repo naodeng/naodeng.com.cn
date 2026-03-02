@@ -145,7 +145,7 @@ order: 0
 - **合同测试**：确保集成组件之间的交互遵守定义的合同，这在微服务架构中非常有用。
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景**：将[功能整合](/zh-cn/wiki/functional-integration/) 测试合并到更广泛的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景中，以验证整个系统环境中的集成组件。
 - **持续集成管道**：将 [功能整合](/zh-cn/wiki/functional-integration/) 测试集成到 CI 管道中，以便在发生更改时自动运行测试，确保组件集成的持续验证。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：包括[性能测试](/zh-cn/wiki/performance-testing/) 以评估集成对系统性能的影响，特别是在与外部服务或[databases](/zh-cn/wiki/database/) 集成时。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：包括[性能测试](/zh-cn/wiki/performance-testing/) 以评估集成对系统性能的影响，特别是在与外部服务或[数据库](/zh-cn/wiki/database/) 集成时。
 - **错误处理和恢复测试**：测试系统如何处理集成点的错误，包括网络故障、不正确的数据以及集成组件的意外行为。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：定期运行回归测试，以确保新的更改不会破坏现有的集成。
   这些技术有助于确保集成组件无缝协作并满足[功能需求](/zh-cn/wiki/functional-requirements/)。
@@ -158,7 +158,7 @@ order: 0
 - **合同测试**：确保集成组件之间的交互遵守定义的合同，这在微服务架构中非常有用。
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景**：将[功能整合](/zh-cn/wiki/functional-integration/) 测试合并到更广泛的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景中，以在整个系统的上下文中验证集成组件。
 - **持续集成管道**：将 [功能整合](/zh-cn/wiki/functional-integration/) 测试集成到 CI 管道中，以便在发生更改时自动运行测试，确保组件集成的持续验证。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：包括[性能测试](/zh-cn/wiki/performance-testing/) 以评估集成对系统性能的影响，特别是在与外部服务或[databases](/zh-cn/wiki/database/) 集成时。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：包括[性能测试](/zh-cn/wiki/performance-testing/) 以评估集成对系统性能的影响，特别是在与外部服务或[数据库](/zh-cn/wiki/database/) 集成时。
 - **错误处理和恢复测试**：测试系统如何处理集成点的错误，包括网络故障、不正确的数据以及集成组件的意外行为。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：定期运行回归测试，以确保新的更改不会破坏现有的集成。
 
@@ -255,7 +255,7 @@ order: 0
 - **依赖管理工具**：利用 Maven、Gradle 或 npm 等工具来管理库依赖关系，确保在测试过程中使用正确的版本。
 - **持续集成**：尽早并经常进行集成，使用 CI 工具自动部署依赖项和执行集成测试。
 - **环境管理**：维护独立的测试环境，尽可能地反映生产情况，并正确配置所有依赖项。
-- **配置管理**：使用配置管理工具自动执行[setup](/zh-cn/wiki/setup/) 并维护[测试环境](/zh-cn/wiki/test-environment/) 中的依赖项。
+- **配置管理**：使用配置管理工具自动执行[环境搭建](/zh-cn/wiki/setup/) 并维护[测试环境](/zh-cn/wiki/test-environment/) 中的依赖项。
 - **[测试执行](/zh-cn/wiki/test-execution/)的顺序**：设计[测试执行](/zh-cn/wiki/test-execution/)顺序以确保首先运行依赖项较少的测试，然后逐渐转向依赖项更复杂的测试。
   通过仔细管理依赖关系，您可以最大限度地降低集成问题的风险，并确保 [功能整合](/zh-cn/wiki/functional-integration/) 测试产生可靠且有意义的结果。
 
@@ -267,7 +267,7 @@ order: 0
 - **依赖管理工具**：利用 Maven、Gradle 或 npm 等工具来管理库依赖关系，确保在测试过程中使用正确的版本。
 - **持续集成**：尽早并经常进行集成，使用 CI 工具自动部署依赖项和执行集成测试。
 - **环境管理**：维护独立的测试环境，尽可能地反映生产情况，并正确配置所有依赖项。
-- **配置管理**：使用配置管理工具自动执行[setup](/zh-cn/wiki/setup/) 并维护[测试环境](/zh-cn/wiki/test-environment/) 中的依赖项。
+- **配置管理**：使用配置管理工具自动执行[环境搭建](/zh-cn/wiki/setup/) 并维护[测试环境](/zh-cn/wiki/test-environment/) 中的依赖项。
 - **[测试执行](/zh-cn/wiki/test-execution/)** 的顺序：设计[测试执行](/zh-cn/wiki/test-execution/) 顺序以确保首先运行依赖项较少的测试，然后逐渐转向依赖项更复杂的测试。
 
 #### 功能集成测试面临哪些挑战以及如何克服这些挑战？
@@ -396,7 +396,7 @@ order: 0
 - **[左移测试](/zh-cn/wiki/shift-left-testing/)**：团队在开发过程的早期集成测试，以便更快地发现问题，通常使用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（如 Cucumber）以自然语言定义测试。
 - **服务虚拟化**：为了管理依赖关系并模拟外部服务，使用了 WireMock 和 Mountebank 等服务虚拟化工具，无需等待外部组件即可进行测试。
 - **容器化**：Docker和Kubernetes用于创建一致的测试环境，确保每次测试都在相同的条件下运行，这对于微服务架构至关重要。
-- **[测试环境](/zh-cn/wiki/test-environment/) 管理工具**：TestEnvironmentManager (TEM) 等工具可自动执行[setup](/zh-cn/wiki/setup/)、拆卸和管理[测试环境](/zh-cn/wiki/test-environment/)，减少手动工作并加快测试周期。
+- **[测试环境](/zh-cn/wiki/test-environment/) 管理工具**：TestEnvironmentManager (TEM) 等工具可自动执行[环境搭建](/zh-cn/wiki/setup/)、拆卸和管理[测试环境](/zh-cn/wiki/test-environment/)，减少手动工作并加快测试周期。
 - **基于云的测试平台**：[browserstack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 等平台提供基于云的环境，用于跨各种浏览器和操作系统测试 Web 和移动应用程序。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 集成**：[JMeter](/zh-cn/wiki/jmeter/) 和 Gattle 等工具集成到 [功能测试](/zh-cn/wiki/functional-testing/) 进程中，以检查负载下的功能和性能。
 - **无代码自动化工具**：允许在不编写代码的情况下创建自动化测试的工具越来越受欢迎，使非技术利益相关者能够为[测试自动化](/zh-cn/wiki/test-automation/)做出贡献。
@@ -405,7 +405,7 @@ order: 0
 - **[左移测试](/zh-cn/wiki/shift-left-testing/)**：团队在开发过程的早期集成测试，以便更快地发现问题，通常使用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（如 Cucumber）以自然语言定义测试。
 - **服务虚拟化**：为了管理依赖关系并模拟外部服务，使用了 WireMock 和 Mountebank 等服务虚拟化工具，无需等待外部组件即可进行测试。
 - **容器化**：Docker和Kubernetes用于创建一致的测试环境，确保每次测试都在相同的条件下运行，这对于微服务架构至关重要。
-- **[测试环境](/zh-cn/wiki/test-environment/) 管理工具**：TestEnvironmentManager (TEM) 等工具可自动执行[setup](/zh-cn/wiki/setup/)、拆卸和管理[测试环境](/zh-cn/wiki/test-environment/)，减少手动工作并加快测试周期。
+- **[测试环境](/zh-cn/wiki/test-environment/) 管理工具**：TestEnvironmentManager (TEM) 等工具可自动执行[环境搭建](/zh-cn/wiki/setup/)、拆卸和管理[测试环境](/zh-cn/wiki/test-environment/)，减少手动工作并加快测试周期。
 - **基于云的测试平台**：[browserstack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 等平台提供基于云的环境，用于跨各种浏览器和操作系统测试 Web 和移动应用程序。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 集成**：[JMeter](/zh-cn/wiki/jmeter/) 和 Gattle 等工具集成到 [功能测试](/zh-cn/wiki/functional-testing/) 进程中，以检查负载下的功能和性能。
 - **无代码自动化工具**：允许在不编写代码的情况下创建自动化测试的工具越来越受欢迎，使非技术利益相关者能够为[测试自动化](/zh-cn/wiki/test-automation/)做出贡献。

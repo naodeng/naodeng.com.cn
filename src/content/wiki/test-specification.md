@@ -138,7 +138,7 @@ order: 0
   接下来，定义**测试范围**，包括将测试哪些功能以及测试的程度。确定**测试目标**以及每个[测试用例](/zh-cn/wiki/test-case/) 想要实现的目标。此步骤对于使测试工作与项目目标保持一致至关重要。
   根据既定目标制定 **[测试用例](/zh-cn/wiki/test-case/)**。每个案例都应包括输入、预期结果和执行条件。使用**可追溯性**将[测试用例](/zh-cn/wiki/test-case/)链接到其相应的要求，确保覆盖范围并简化维护。
   选择将用于执行的 **[测试数据](/zh-cn/wiki/test-data/)**。该数据应代表现实场景和边缘情况，以确保稳健的测试。
-  概述 **[测试环境](/zh-cn/wiki/test-environment/)** [setup](/zh-cn/wiki/setup/)，包括硬件、软件、网络配置和任何其他相关详细信息。这确保了测试运行的一致性和可重复性。
+  概述 **[测试环境](/zh-cn/wiki/test-environment/)** [环境搭建](/zh-cn/wiki/setup/)，包括硬件、软件、网络配置和任何其他相关详细信息。这确保了测试运行的一致性和可重复性。
   建立**通过/失败标准**以客观地确定每个[测试用例](/zh-cn/wiki/test-case/) 的成功。这种清晰度支持 [测试执行](/zh-cn/wiki/test-execution/) 期间的自动决策。
   最后，与利益相关者一起审查并**验证规范**。这种协作方法可确保规范满足项目的需求和期望。
   在整个过程中，保持对**清晰度**和**简洁性**的关注，以促进[测试自动化](/zh-cn/wiki/test-automation/)团队的理解和执行。
@@ -195,7 +195,7 @@ order: 0
     });
     ```
 
-2. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配规范中概述的条件。这包括硬件、软件、网络配置和任何其他相关设置。
+2. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配规范中概述的条件。这包括硬件、软件、网络配置和任何其他相关设置。
 3. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。可以使用与软件交互的脚本来执行自动化测试：
 
     ```
@@ -218,7 +218,7 @@ order: 0
     });
     ```
 
-2. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配规范中概述的条件。这包括硬件、软件、网络配置和任何其他相关设置。
+2. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配规范中概述的条件。这包括硬件、软件、网络配置和任何其他相关设置。
 3. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。可以使用与软件交互的脚本来执行自动化测试：
 
     ```
@@ -488,7 +488,7 @@ order: 0
     jest.mock('axios');
     ```
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**，确保测试拥有必要的数据[setup](/zh-cn/wiki/setup/)，从而实现更可靠的测试。
+- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**，确保测试拥有必要的数据[环境搭建](/zh-cn/wiki/setup/)，从而实现更可靠的测试。
 - **利用并行执行**来加速[测试套件](/zh-cn/wiki/test-suite/)，使反馈循环更快。
 - **投资可观察性**，深入了解 [测试执行](/zh-cn/wiki/test-execution/) 和故障，帮助更快地进行调试。
 - **促进开发人员、测试人员和运营人员之间的协作**，以确保对 [测试方法](/zh-cn/wiki/test-approach/) 和目标达成共识。
@@ -538,7 +538,7 @@ order: 0
     jest.mock('axios');
     ```
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**，确保测试拥有必要的数据[setup](/zh-cn/wiki/setup/)，从而实现更可靠的测试。
+- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**，确保测试拥有必要的数据[环境搭建](/zh-cn/wiki/setup/)，从而实现更可靠的测试。
 - **利用并行执行**来加速[测试套件](/zh-cn/wiki/test-suite/)，使反馈循环更快。
 - **投资可观察性**，深入了解 [测试执行](/zh-cn/wiki/test-execution/) 和故障，帮助更快地进行调试。
 - **促进开发人员、测试人员和运营人员之间的协作**，以确保对 [测试方法](/zh-cn/wiki/test-approach/) 和目标达成共识。

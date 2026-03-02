@@ -47,7 +47,7 @@ order: 0
       }
   }
   ```
-存根对于模拟难以用真实组件生成的场景特别有用，例如网络故障或[database](/zh-cn/wiki/database/) 错误。通过返回特定值或引发异常，它们可以模仿这些条件。
+存根对于模拟难以用真实组件生成的场景特别有用，例如网络故障或[数据库](/zh-cn/wiki/database/) 错误。通过返回特定值或引发异常，它们可以模仿这些条件。
   创建[测试存根](/zh-cn/wiki/test-stub/) 时，必须确保它们简单并专注于测试的需求。它们不应包含复杂的逻辑，而应易于理解和维护。与测试框架的集成通常很简单，因为存根可以在 [测试用例](/zh-cn/wiki/test-case/) 中直接实例化和使用，或者使用框架的依赖注入机制进行设置。
 
 #### 为什么测试存根在软件测试中很重要？
@@ -82,8 +82,8 @@ order: 0
 #### 单元测试中测试存根的作用是什么？
 
 在[单元测试](/zh-cn/wiki/unit-testing/) 中，**[测试存根](/zh-cn/wiki/test-stub/)** 充当与被测单元交互的缺失组件或模块的**占位符**。它们为测试期间进行的方法调用提供**预定义的响应**，确保单元测试可以独立于外部系统或服务运行。
-  通过使用[测试存根](/zh-cn/wiki/test-stub/)，您可以隔离被测单元，这使您可以在受控环境中验证单元行为的正确性。存根对于模拟在测试期间交互**不可用**或**昂贵**的组件的行为特别有用，例如[databases](/zh-cn/wiki/database/)、Web 服务或第三方库。
-  实现[测试存根](/zh-cn/wiki/test-stub/) 时，您通常会硬编码与[测试用例](/zh-cn/wiki/test-case/) 相关的响应。例如，如果被测单元需要来自 [database](/zh-cn/wiki/database/) 的数据，则存根可能会返回一组固定的记录，而无需实际查询真正的 [database](/zh-cn/wiki/database/)。
+  通过使用[测试存根](/zh-cn/wiki/test-stub/)，您可以隔离被测单元，这使您可以在受控环境中验证单元行为的正确性。存根对于模拟在测试期间交互**不可用**或**昂贵**的组件的行为特别有用，例如[数据库](/zh-cn/wiki/database/)、Web 服务或第三方库。
+  实现[测试存根](/zh-cn/wiki/test-stub/) 时，您通常会硬编码与[测试用例](/zh-cn/wiki/test-case/) 相关的响应。例如，如果被测单元需要来自 [数据库](/zh-cn/wiki/database/) 的数据，则存根可能会返回一组固定的记录，而无需实际查询真正的 [数据库](/zh-cn/wiki/database/)。
 
   ```
   function fetchDataStub() {
@@ -509,7 +509,7 @@ order: 0
     allow(service).to receive(:operation).and_return("stubbed response")
     ```
 
-- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [setup](/zh-cn/wiki/setup/) 和拆卸功能。
+- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸功能。
 
     ```
     def test_operation(monkeypatch):
@@ -552,7 +552,7 @@ order: 0
     allow(service).to receive(:operation).and_return("stubbed response")
     ```
 
-- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [setup](/zh-cn/wiki/setup/) 和拆卸功能。
+- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸功能。
 
     ```
     def test_operation(monkeypatch):
@@ -577,7 +577,7 @@ order: 0
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：存根可用于模拟系统的预期行为，即使某些组件未完全实现，也允许测试 [BDD](/zh-cn/wiki/bdd/) 场景。
 - **服务虚拟化**：存根可以充当虚拟服务，模仿第三方[API](/zh-cn/wiki/api/)或在测试期间成本高昂或难以访问的服务。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：通过删除系统的某些部分，您可以隔离特定组件并对其进行压力测试，以识别性能瓶颈。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[database](/zh-cn/wiki/database/)。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[数据库](/zh-cn/wiki/database/)。
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**：虽然不能替代实际集成的测试，但可以在早期[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中使用存根来模拟外部系统的行为。
 - **测试隔离**：存根有助于隔离被测系统，从而更容易查明故障。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：它们使回归测试能够独立于外部系统运行，外部系统可能会随着时间的推移而变化并影响测试结果。
@@ -588,7 +588,7 @@ order: 0
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：存根可用于模拟系统的预期行为，即使某些组件未完全实现，也允许测试 [BDD](/zh-cn/wiki/bdd/) 场景。
 - **服务虚拟化**：存根可以充当虚拟服务，模仿第三方[API](/zh-cn/wiki/api/)或在测试期间成本高昂或难以访问的服务。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：通过删除系统的某些部分，您可以隔离特定组件并对其进行压力测试，以识别性能瓶颈。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[database](/zh-cn/wiki/database/)。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[数据库](/zh-cn/wiki/database/)。
 - **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**：虽然不能替代实际集成的测试，但可以在早期[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中使用存根来模拟外部系统的行为。
 - **测试隔离**：存根有助于隔离被测系统，从而更容易查明故障。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：它们使回归测试能够独立于外部系统运行，外部系统可能会随着时间的推移而变化并影响测试结果。

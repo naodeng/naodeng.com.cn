@@ -37,7 +37,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Robustness_testing)
+- [维基百科](https://en.wikipedia.org/wiki/Robustness_testing)
 
 ## 关于稳健性测试的问题？
 
@@ -50,7 +50,7 @@ order: 0
   [稳健性测试](/zh-cn/wiki/robustness-testing/) 中的自动化是通过可以模拟意外条件或输入的脚本或工具来实现的。自动化测试可以设置为重复运行，确保[测试用例](/zh-cn/wiki/test-case/)的一致执行和问题的有效识别。
   在工具方面，有专门的[稳健性测试](/zh-cn/wiki/robustness-testing/)框架和库可以集成到[测试自动化](/zh-cn/wiki/test-automation/)环境中。这些工具通常提供故障注入、监控和结果分析功能。
   [稳健性测试](/zh-cn/wiki/robustness-testing/) 在各个行业中都至关重要，特别是在软件可靠性至关重要的行业，例如医疗保健或金融。例如，医疗保健应用程序中的稳健性测试可能涉及模拟数据传输过程中网络连接突然丢失，以确保患者数据不会损坏或丢失。
-  现实世界的应用程序包括确保 Web 服务器在高流量下保持响应，或者 [database](/zh-cn/wiki/database/) 在面对并发事务时保持完整性。案例研究通常强调[稳健性测试](/zh-cn/wiki/robustness-testing/)如何识别关键漏洞，这些漏洞一旦解决，将显着增强软件的稳定性和可靠性。
+  现实世界的应用程序包括确保 Web 服务器在高流量下保持响应，或者 [数据库](/zh-cn/wiki/database/) 在面对并发事务时保持完整性。案例研究通常强调[稳健性测试](/zh-cn/wiki/robustness-testing/)如何识别关键漏洞，这些漏洞一旦解决，将显着增强软件的稳定性和可靠性。
 
 #### 为什么稳健性测试在软件开发中很重要？
 

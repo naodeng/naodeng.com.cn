@@ -66,11 +66,11 @@ order: 0
 
 [Verification](/zh-cn/wiki/verification/) 测试和[验证测试](/zh-cn/wiki/validation-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同阶段，具有不同的目标：
 
-- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[inspections](/zh-cn/wiki/inspection/)、演练和案头检查。
+- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。
   主要区别在于它们的重点：[verification](/zh-cn/wiki/verification/) 是关于开发过程中指定要求的一致性和遵守，而验证是关于产品的功能及其在现实场景中预期用途的适用性。 [Verification](/zh-cn/wiki/verification/) 回答了设计的一致性问题，而验证则解决了产品在解决问题或满足需求方面的有效性。
 
-- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[inspections](/zh-cn/wiki/inspection/)、演练和案头检查。
+- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。
 
 #### 验证测试在软件开发生命周期 (SDLC) 中的作用是什么？
@@ -159,13 +159,13 @@ order: 0
 
 #### 静态验证测试和动态验证测试有什么区别？
 
-静态[验证测试](/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[inspections](/zh-cn/wiki/inspection/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
+静态[验证测试](/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
   另一方面，动态 [验证测试](/zh-cn/wiki/validation-testing/) 需要在实时环境中运行软件以验证其行为是否符合预期。它包括各种类型的测试，例如单元、集成、系统和[验收测试](/zh-cn/wiki/acceptance-testing/)。此方法检查应用程序的运行时行为，包括内存使用情况、CPU 消耗和整体性能。
-  从本质上讲，**静态验证**是关于预防，在代码运行之前确保质量，而**动态验证**是关于检测，在执行期间或之后识别问题。静态方法通常在资源方面成本较低，因为它们不需要正在运行的系统，但它们可能会错过运行时特定的缺陷。动态方法可以揭示仅在软件运行时发生的复杂交互和故障，但需要更多 [setup](/zh-cn/wiki/setup/) 和执行时间。两者是互补的，对于彻底的验证过程至关重要。
+  从本质上讲，**静态验证**是关于预防，在代码运行之前确保质量，而**动态验证**是关于检测，在执行期间或之后识别问题。静态方法通常在资源方面成本较低，因为它们不需要正在运行的系统，但它们可能会错过运行时特定的缺陷。动态方法可以揭示仅在软件运行时发生的复杂交互和故障，但需要更多 [环境搭建](/zh-cn/wiki/setup/) 和执行时间。两者是互补的，对于彻底的验证过程至关重要。
 
 #### 功能验证测试与非功能验证测试有何不同？
 
-功能@@PR​​OTECTED_127@@ 侧重于验证软件的行为是否符合其指定的要求。它确保应用程序的每个功能都按照所需的行为运行。测试基于用户场景，涵盖用户命令、数据操作和业务流程。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[databases](/zh-cn/wiki/database/)、安全性、客户端/服务器应用程序和软件功能。
+功能@@PR​​OTECTED_127@@ 侧重于验证软件的行为是否符合其指定的要求。它确保应用程序的每个功能都按照所需的行为运行。测试基于用户场景，涵盖用户命令、数据操作和业务流程。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/)、安全性、客户端/服务器应用程序和软件功能。
   另一方面，非功能性[验证测试](/zh-cn/wiki/validation-testing/) 评估与软件的特定行为或功能无关的方面。它包括性能、可扩展性、可靠性、可用性和标准合规性测试。非功能测试关注的是系统如何运行而不是它做什么。例如，[性能测试](/zh-cn/wiki/performance-testing/) 检查系统在特定负载下是否快速响应，而[可用性测试](/zh-cn/wiki/usability-testing/) 则评估界面的用户友好程度。
   本质上，[功能测试](/zh-cn/wiki/functional-testing/) 回答“它做了它应该做的事情吗？”而[非功能测试](/zh-cn/wiki/non-functional-testing/) 则回答“它是否足以满足用户的需求？”两者对于交付优质产品都至关重要，但它们侧重于软件系统的不同质量属性。
 
@@ -196,7 +196,7 @@ order: 0
 1. **需求分析**：了解并分析用户对准确性和可测试性的需求。
 2. **测试计划**：定义测试范围、目标、资源、时间表和可交付成果。
 3. **测试设计**：创建符合用户要求的详细[测试用例](/zh-cn/wiki/test-case/) 和[测试场景](/zh-cn/wiki/test-scenario/)。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
 5. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。该步骤包括：
 - 输入有效和无效数据
 - 检查预期结果
@@ -217,7 +217,7 @@ order: 0
 1. **需求分析**：了解并分析用户对准确性和可测试性的需求。
 2. **测试计划**：定义测试范围、目标、资源、时间表和可交付成果。
 3. **测试设计**：创建符合用户要求的详细[测试用例](/zh-cn/wiki/test-case/) 和[测试场景](/zh-cn/wiki/test-scenario/)。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
 5. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。该步骤包括：
 - 输入有效和无效数据
 - 检查预期结果

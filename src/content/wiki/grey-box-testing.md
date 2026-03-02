@@ -43,7 +43,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Gray-box_testing)
+- [维基百科](https://en.wikipedia.org/wiki/Gray-box_testing)
 
 ## 关于灰盒测试的问题吗？
 
@@ -77,7 +77,7 @@ order: 0
 #### 为什么灰盒测试在软件测试中很重要？
 
 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它通过利用对系统内部工作原理的部分了解，弥合了 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 和 **[白盒测试](/zh-cn/wiki/white-box-testing/)** 之间的差距。这种方法使测试人员能够设计更有效的[测试场景](/zh-cn/wiki/test-scenario/)，将高级系统行为和低级操作结合起来。
-  通过关注软件界面及其结构之间的交互，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可以发现单独通过黑盒或白盒方法可能无法检测到的不同类别的缺陷。它提供了一个平衡的视角，可以发现与数据结构或 [databases](/zh-cn/wiki/database/) 的不当使用相关的问题，以及用户界面级别的不正确行为。
+  通过关注软件界面及其结构之间的交互，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可以发现单独通过黑盒或白盒方法可能无法检测到的不同类别的缺陷。它提供了一个平衡的视角，可以发现与数据结构或 [数据库](/zh-cn/wiki/database/) 的不当使用相关的问题，以及用户界面级别的不正确行为。
   此外，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 对于评估系统的**非功能属性**（例如安全性、性能和可扩展性）非常重要。由于测试人员了解软件的架构，因此他们可以模拟各种用户行为和系统状态来评估软件在压力或攻击下的性能，而这通常是 [黑盒测试](/zh-cn/wiki/black-box-testing/) 无法实现的。
   从本质上讲，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 通过提供利用系统外部和内部视角的全面测试策略，对软件产品的**[质量保证](/zh-cn/wiki/quality-assurance/)** 做出了重大贡献。它确保软件不仅能够按照规范正确运行，而且能够抵御意外情况和恶意活动。
 
@@ -165,7 +165,7 @@ order: 0
 
 自动化[灰盒测试](/zh-cn/wiki/grey-box-testing/)涉及**访问内部结构**和**外部测试技术**的组合。要自动化此过程，请按照下列步骤操作：
 
-1. **识别可访问的内部信息**，例如 [database](/zh-cn/wiki/database/) 模式、算法模式或内部状态，这可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
+1. **识别可访问的内部信息**，例如 [数据库](/zh-cn/wiki/database/) 模式、算法模式或内部状态，这可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
 2. **开发利用内部信息和外部接口的[测试用例](/zh-cn/wiki/test-case/)**。使用脚本或编程语言创建可以与软件的 [API](/zh-cn/wiki/api/)、Web 服务或其他公开接口进行交互的自动化脚本。
 3. **选择适当的自动化工具**，既支持 [API 测试](/zh-cn/wiki/api-testing/) 又支持整合内部知识，例如 [邮递员](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
 4. **编写执行[测试用例](/zh-cn/wiki/test-case/)的自动化脚本**，模拟用户行为，同时检查内部状态或数据。例如：
@@ -182,7 +182,7 @@ order: 0
 2. **分析测试结果**以确保外部行为和内部结构都按预期运行。使用 [测试自动化](/zh-cn/wiki/test-automation/) 框架的日志记录和报告功能来捕获和查看结果。
   通过将内部工作知识与自动化外部测试相结合，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可以有效地实现自动化，以提供对软件质量的全面评估。
 
-1. **识别可访问的内部信息**，例如 [database](/zh-cn/wiki/database/) 模式、算法模式或内部状态，它们可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
+1. **识别可访问的内部信息**，例如 [数据库](/zh-cn/wiki/database/) 模式、算法模式或内部状态，它们可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
 2. **开发利用内部信息和外部接口的[测试用例](/zh-cn/wiki/test-case/)**。使用脚本或编程语言创建可以与软件的 [API](/zh-cn/wiki/api/)、Web 服务或其他公开接口进行交互的自动化脚本。
 3. **选择适当的自动化工具**，支持 [API 测试](/zh-cn/wiki/api-testing/) 和整合内部知识的能力，例如 [邮递员](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
 4. **编写执行[测试用例](/zh-cn/wiki/test-case/)的自动化脚本**，模拟用户行为，同时检查内部状态或数据。例如：
@@ -196,7 +196,7 @@ order: 0
 - **对内部结构的有限访问**：与[白盒测试](/zh-cn/wiki/white-box-testing/)不同，[灰盒测试](/zh-cn/wiki/grey-box-testing/)不提供对应用程序内部工作的完全访问，这使得创建涵盖系统各个方面的全面[测试用例](/zh-cn/wiki/test-case/)变得困难。
 - **动态环境**：灰盒测试通常在比 [白盒测试](/zh-cn/wiki/white-box-testing/) 中使用的环境更具动态性和更少控制的环境中运行。这种差异可能会导致测试结果不一致。
 - **理解系统行为的复杂性**：测试人员必须很好地理解应用程序的界面及其部分内部结构。这种双重焦点会使测试设计和自动化变得复杂。
-- **与不同工具集成**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可能需要集成多个工具才能访问[databases](/zh-cn/wiki/database/)、日志和内部[API](/zh-cn/wiki/api/)。确保这些工具无缝协作可能具有挑战性。
+- **与不同工具集成**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可能需要集成多个工具才能访问[数据库](/zh-cn/wiki/database/)、日志和内部[API](/zh-cn/wiki/api/)。确保这些工具无缝协作可能具有挑战性。
 - **黑盒和白盒方法之间的平衡**：在[灰盒测试](/zh-cn/wiki/grey-box-testing/) 中使用黑盒和[白盒测试](/zh-cn/wiki/white-box-testing/) 技术之间找到适当的平衡可能很困难。过度依赖一种方法可能会导致[测试覆盖率](/zh-cn/wiki/test-coverage/) 中出现空白。
 - **测试维护**：与任何[自动化测试](/zh-cn/wiki/automated-testing/) 一样，随着应用程序的发展维护[测试脚本](/zh-cn/wiki/test-script/) 可能非常耗时。灰盒测试可能需要更新以适应用户界面和底层架构的变化。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 通常包括[性能测试](/zh-cn/wiki/performance-testing/)，由于需要模拟实际的用户行为和系统负载，自动化可能很复杂。
@@ -205,7 +205,7 @@ order: 0
 - **对内部结构的有限访问**：与[白盒测试](/zh-cn/wiki/white-box-testing/) 不同，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 不提供对应用程序内部工作的完全访问权限，因此很难创建涵盖系统各个方面的全面[测试用例](/zh-cn/wiki/test-case/)。
 - **动态环境**：灰盒测试通常在比 [白盒测试](/zh-cn/wiki/white-box-testing/) 中使用的环境更具动态性和更少控制的环境中运行。这种差异可能会导致测试结果不一致。
 - **理解系统行为的复杂性**：测试人员必须很好地理解应用程序的界面及其部分内部结构。这种双重焦点会使测试设计和自动化变得复杂。
-- **与不同工具集成**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可能需要集成多个工具才能访问[databases](/zh-cn/wiki/database/)、日志和内部[API](/zh-cn/wiki/api/)。确保这些工具无缝协作可能具有挑战性。
+- **与不同工具集成**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可能需要集成多个工具才能访问[数据库](/zh-cn/wiki/database/)、日志和内部[API](/zh-cn/wiki/api/)。确保这些工具无缝协作可能具有挑战性。
 - **黑盒和白盒方法之间的平衡**：在[灰盒测试](/zh-cn/wiki/grey-box-testing/) 中使用黑盒和[白盒测试](/zh-cn/wiki/white-box-testing/) 技术之间找到适当的平衡可能很困难。过度依赖一种方法可能会导致[测试覆盖率](/zh-cn/wiki/test-coverage/) 中出现空白。
 - **测试维护**：与任何[自动化测试](/zh-cn/wiki/automated-testing/) 一样，随着应用程序的发展维护[测试脚本](/zh-cn/wiki/test-script/) 可能非常耗时。灰盒测试可能需要更新以适应用户界面和底层架构的变化。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 通常包括[性能测试](/zh-cn/wiki/performance-testing/)，由于需要模拟实际的用户行为和系统负载，自动化可能很复杂。
@@ -216,11 +216,11 @@ order: 0
 
 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 涉及黑盒知识和[白盒测试](/zh-cn/wiki/white-box-testing/) 方法的组合来设计和执行测试。以下是所涉及的典型步骤：
 
-1. **了解系统架构**：部分了解内部工作原理，包括[database](/zh-cn/wiki/database/)模式、代码访问路径等。
+1. **了解系统架构**：部分了解内部工作原理，包括[数据库](/zh-cn/wiki/database/)模式、代码访问路径等。
 2. **识别用户角色和权限**：确定不同的用户角色以了解系统在不同访问级别下的行为。
 3. **制定测试策略**：将架构知识与外部行为相结合，创建涵盖功能和结构方面的稳健测试策略。
 4. **创建[测试用例](/zh-cn/wiki/test-case/)**：开发[测试用例](/zh-cn/wiki/test-case/)，重点关注系统输入和输出，以及内部程序状态和数据结构。
-5. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置一个与生产环境非常相似的环境，包括[databases](/zh-cn/wiki/database/)、服务器和网络配置。
+5. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置一个与生产环境非常相似的环境，包括[数据库](/zh-cn/wiki/database/)、服务器和网络配置。
 6. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行测试，监视应用程序的外部行为和内部事件。
 7. **监控系统行为**：使用调试工具和日志来观察[测试执行](/zh-cn/wiki/test-execution/)期间的系统行为。
 8. **分析结果**：根据 [预期结果](/zh-cn/wiki/expected-result/) 评估结果的功能正确性和正确的内部操作。
@@ -228,11 +228,11 @@ order: 0
 10. **迭代**：根据发现细化[测试用例](/zh-cn/wiki/test-case/)，并根据需要重新测试。
   在整个过程中，在不了解系统的完整内部结构（如[黑盒测试](/zh-cn/wiki/black-box-testing/)）和了解其工作原理（如[白盒测试](/zh-cn/wiki/white-box-testing/)）之间保持平衡。
 
-1. **了解系统架构**：部分了解内部工作原理，包括[database](/zh-cn/wiki/database/)模式、代码访问路径等。
+1. **了解系统架构**：部分了解内部工作原理，包括[数据库](/zh-cn/wiki/database/)模式、代码访问路径等。
 2. **识别用户角色和权限**：确定不同的用户角色以了解系统在不同访问级别下的行为。
 3. **制定测试策略**：将架构知识与外部行为相结合，创建涵盖功能和结构方面的稳健测试策略。
 4. **创建[测试用例](/zh-cn/wiki/test-case/)**：开发[测试用例](/zh-cn/wiki/test-case/)，重点关注系统输入和输出，以及内部程序状态和数据结构。
-5. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置一个与生产环境非常相似的环境，包括[databases](/zh-cn/wiki/database/)、服务器和网络配置。
+5. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置一个与生产环境非常相似的环境，包括[数据库](/zh-cn/wiki/database/)、服务器和网络配置。
 6. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行测试，监视应用程序的外部行为和内部事件。
 7. **监控系统行为**：使用调试工具和日志来观察[测试执行](/zh-cn/wiki/test-execution/)期间的系统行为。
 8. **分析结果**：根据 [预期结果](/zh-cn/wiki/expected-result/) 评估结果的功能正确性和正确的内部操作。
@@ -249,7 +249,7 @@ order: 0
 4. **关注集成点**：关注不同组件或系统交互的区域。
 5. **利用错误消息和日志**：使用它们来了解测试中系统的行为并完善您的[测试用例](/zh-cn/wiki/test-case/)。
 6. **实施基于状态的测试**：根据应用程序可能处于的不同状态以及它们之间的转换来设计[测试用例](/zh-cn/wiki/test-case/)。
-7. **应用[database](/zh-cn/wiki/database/) 测试技术**：包括与[database](/zh-cn/wiki/database/) 交互的测试，以验证数据完整性和事务。
+7. **应用[数据库](/zh-cn/wiki/database/) 测试技术**：包括与[数据库](/zh-cn/wiki/database/) 交互的测试，以验证数据完整性和事务。
 8. **考虑安全方面**：测试 [SQL](/zh-cn/wiki/sql/) 注入和跨站点脚本等漏洞。
 9. **使用智能@@PR​​OTECTED_79@@**：生成反映现实场景和边缘情况的[测试数据](/zh-cn/wiki/test-data/)。
 10. **自动化回归测试**：确保系统更改后核心功能按预期工作。
@@ -263,7 +263,7 @@ order: 0
 4. **关注集成点**：关注不同组件或系统交互的区域。
 5. **利用错误消息和日志**：使用它们来了解测试中系统的行为并完善您的[测试用例](/zh-cn/wiki/test-case/)。
 6. **实施基于状态的测试**：根据应用程序可能处于的不同状态以及它们之间的转换来设计[测试用例](/zh-cn/wiki/test-case/)。
-7. **应用[database](/zh-cn/wiki/database/) 测试技术**：包括与[database](/zh-cn/wiki/database/) 交互的测试，以验证数据完整性和事务。
+7. **应用[数据库](/zh-cn/wiki/database/) 测试技术**：包括与[数据库](/zh-cn/wiki/database/) 交互的测试，以验证数据完整性和事务。
 8. **考虑安全方面**：测试 [SQL](/zh-cn/wiki/sql/) 注入和跨站点脚本等漏洞。
 9. **使用智能@@PR​​OTECTED_90@@**：生成反映现实场景和边缘情况的[测试数据](/zh-cn/wiki/test-data/)。
 10. **自动化回归测试**：确保系统更改后核心功能按预期工作。
@@ -377,16 +377,16 @@ order: 0
 
 1. **Web 应用程序安全**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 用于评估安全漏洞，例如[SQL](/zh-cn/wiki/sql/) 注入、跨站点脚本和会话管理缺陷。测试人员对架构的了解有限，并通过模拟攻击来识别安全漏洞。
 2. **[API 测试](/zh-cn/wiki/api-testing/)**：测试[API](/zh-cn/wiki/api/)时，采用灰盒方法来验证响应和数据结构。测试人员可以访问 [API](/zh-cn/wiki/api/) 文档，并且可以制作超越简单黑盒输入输出验证的测试。
-3. **[集成测试](/zh-cn/wiki/integration-testing/)**：在[集成测试](/zh-cn/wiki/integration-testing/)中，灰盒技术有助于验证集成组件之间的数据流和交互。测试人员可能了解 [database](/zh-cn/wiki/database/) 模式或消息队列系统来创建更有洞察力的测试。
+3. **[集成测试](/zh-cn/wiki/integration-testing/)**：在[集成测试](/zh-cn/wiki/integration-testing/)中，灰盒技术有助于验证集成组件之间的数据流和交互。测试人员可能了解 [数据库](/zh-cn/wiki/database/) 模式或消息队列系统来创建更有洞察力的测试。
 4. **[性能测试](/zh-cn/wiki/performance-testing/)**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 用于监视负载下的系统行为。测试人员可以利用系统架构的知识来识别瓶颈或内存泄漏。
-5. **[Database](/zh-cn/wiki/database/) 测试**：测试人员使用灰盒方法来验证数据完整性和一致性。他们可能了解[database](/zh-cn/wiki/database/) 架构，可以编写更有针对性的[SQL](/zh-cn/wiki/sql/) 查询来进行测试。
+5. **[数据库](/zh-cn/wiki/database/) 测试**：测试人员使用灰盒方法来验证数据完整性和一致性。他们可能了解[数据库](/zh-cn/wiki/database/) 架构，可以编写更有针对性的[SQL](/zh-cn/wiki/sql/) 查询来进行测试。
   通过结合外部和内部视角，[灰盒测试](/zh-cn/wiki/grey-box-testing/)提供了一种平衡的方法，可以发现纯黑或[白盒测试](/zh-cn/wiki/white-box-testing/)方法可能遗漏的问题。
 
 1. **Web 应用程序安全**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 用于评估安全漏洞，例如[SQL](/zh-cn/wiki/sql/) 注入、跨站点脚本和会话管理缺陷。测试人员对架构的了解有限，并通过模拟攻击来识别安全漏洞。
 2. **[API 测试](/zh-cn/wiki/api-testing/)**：测试[API](/zh-cn/wiki/api/)时，采用灰盒方法来验证响应和数据结构。测试人员可以访问[API](/zh-cn/wiki/api/) 文档，并且可以制作超越简单黑盒输入输出验证的测试。
-3. **[集成测试](/zh-cn/wiki/integration-testing/)**：在[集成测试](/zh-cn/wiki/integration-testing/)中，灰盒技术有助于验证集成组件之间的数据流和交互。测试人员可能知道 [database](/zh-cn/wiki/database/) 模式或消息队列系统来创建更有洞察力的测试。
+3. **[集成测试](/zh-cn/wiki/integration-testing/)**：在[集成测试](/zh-cn/wiki/integration-testing/)中，灰盒技术有助于验证集成组件之间的数据流和交互。测试人员可能知道 [数据库](/zh-cn/wiki/database/) 模式或消息队列系统来创建更有洞察力的测试。
 4. **[性能测试](/zh-cn/wiki/performance-testing/)**：[灰盒测试](/zh-cn/wiki/grey-box-testing/) 用于监视负载下的系统行为。测试人员可以利用系统架构的知识来识别瓶颈或内存泄漏。
-5. **[Database](/zh-cn/wiki/database/) 测试**：测试人员使用灰盒方法来验证数据完整性和一致性。他们可能了解 [database](/zh-cn/wiki/database/) 架构，可以编写更有针对性的 [SQL](/zh-cn/wiki/sql/) 查询来进行测试。
+5. **[数据库](/zh-cn/wiki/database/) 测试**：测试人员使用灰盒方法来验证数据完整性和一致性。他们可能了解 [数据库](/zh-cn/wiki/database/) 架构，可以编写更有针对性的 [SQL](/zh-cn/wiki/sql/) 查询来进行测试。
 
 #### 灰盒测试如何应用于敏捷开发？
 
@@ -407,7 +407,7 @@ order: 0
 
 - **提供反馈**
     快速反馈给开发团队，确保问题可以在冲刺内得到解决。
-  测试人员使用**[API](/zh-cn/wiki/api/) 调用**、**[database](/zh-cn/wiki/database/) 查询**和**代码分析**来制作超越用户界面的[测试场景](/zh-cn/wiki/test-scenario/)。通过这样做，他们可以查明集成级别和应用程序堆栈各层之间的弱点。
+  测试人员使用**[API](/zh-cn/wiki/api/) 调用**、**[数据库](/zh-cn/wiki/database/) 查询**和**代码分析**来制作超越用户界面的[测试场景](/zh-cn/wiki/test-scenario/)。通过这样做，他们可以查明集成级别和应用程序堆栈各层之间的弱点。
   敏捷中的 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 通常使用支持功能性和 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的工具实现自动化，例如用于 Web 应用程序的 **[selenium](/zh-cn/wiki/selenium/)** 或用于 [API 测试](/zh-cn/wiki/api-testing/) 的 **[邮递员](/zh-cn/wiki/postman/)**。自动化脚本与应用程序代码一起在版本控制中维护，确保它们随着应用程序的发展而更新。
   将[灰盒测试](/zh-cn/wiki/grey-box-testing/) 纳入**持续集成 (CI)** 管道至关重要。每次构建都会触发自动灰盒测试，提供有关最近更改影响的即时反馈，从而支持**持续改进**的敏捷原则。
 

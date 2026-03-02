@@ -44,7 +44,7 @@ order: 0
 #### 软件测试中的测试数据是什么？
 
 [测试数据](/zh-cn/wiki/test-data/) 是[测试执行](/zh-cn/wiki/test-execution/) 期间给予软件应用程序的**输入**，用于根据[实际结果](/zh-cn/wiki/actual-result/) 验证和验证预期结果。它模拟现实世界的条件和场景，确保软件在各种数据条件下按预期运行。该数据可以是**静态**或**动态**，并且可能包括用于测试预期结果的**有效**数据，以及用于测试错误处理能力的**无效**数据。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 中，[测试数据](/zh-cn/wiki/test-data/) 在脚本中使用来驱动测试。它通常存储在**外部文件**、**[databases](/zh-cn/wiki/database/)**或**数据池**中，以提高可重用性和[可维护性](/zh-cn/wiki/maintainability/)。 [测试数据](/zh-cn/wiki/test-data/) 与脚本的分离允许数据驱动的测试，其中多个数据集可用于多次执行相同的[测试用例](/zh-cn/wiki/test-case/)。
+  在 [测试自动化](/zh-cn/wiki/test-automation/) 中，[测试数据](/zh-cn/wiki/test-data/) 在脚本中使用来驱动测试。它通常存储在**外部文件**、**[数据库](/zh-cn/wiki/database/)**或**数据池**中，以提高可重用性和[可维护性](/zh-cn/wiki/maintainability/)。 [测试数据](/zh-cn/wiki/test-data/) 与脚本的分离允许数据驱动的测试，其中多个数据集可用于多次执行相同的[测试用例](/zh-cn/wiki/test-case/)。
   要在 [自动化测试](/zh-cn/wiki/automated-testing/) 中有效处理 [测试数据](/zh-cn/wiki/test-data/)，请考虑以下事项：
 
 - **参数化**：在测试脚本中使用变量来传递不同的数据值。
@@ -111,7 +111,7 @@ order: 0
 
 #### 测试数据在端到端测试中的作用是什么？
 
-在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中，**[测试数据](/zh-cn/wiki/test-data/)** 在模拟现实场景和验证应用程序从开始到结束的流程方面发挥着关键作用。它确保系统的所有组件按预期协同工作，从用户界面到[database](/zh-cn/wiki/database/) 和网络层。
+在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中，**[测试数据](/zh-cn/wiki/test-data/)** 在模拟现实场景和验证应用程序从开始到结束的流程方面发挥着关键作用。它确保系统的所有组件按预期协同工作，从用户界面到[数据库](/zh-cn/wiki/database/) 和网络层。
   正确的[测试数据](/zh-cn/wiki/test-data/) 必须反映应用程序在生产中处理的各种输入。这包括用于预期路径的**正数据**和用于测试错误处理和边界条件的**负数据**。这对于发现单元或集成测试中可能不明显的缺陷至关重要。
   对于自动化，[测试数据](/zh-cn/wiki/test-data/) 必须是：
 
@@ -119,7 +119,7 @@ order: 0
 - **全面**：它应该涵盖所有可能的用例，包括边缘情况。
 - **一致**：它应该在不同的测试运行中保持数据完整性。
 - **隔离**：它不应干扰其他测试或需要特定的订单执行。
-  在端到端自动化中，[测试数据](/zh-cn/wiki/test-data/) 通常在测试开始时加载到系统中，并在各个点进行验证，以确保系统正确处理它。这可能涉及检查 [database](/zh-cn/wiki/database/) 条目、验证计算或确保 UI 上的数据显示正确。
+  在端到端自动化中，[测试数据](/zh-cn/wiki/test-data/) 通常在测试开始时加载到系统中，并在各个点进行验证，以确保系统正确处理它。这可能涉及检查 [数据库](/zh-cn/wiki/database/) 条目、验证计算或确保 UI 上的数据显示正确。
 
   ```
   // Example: Loading test data for an e-commerce application
@@ -205,7 +205,7 @@ order: 0
 [测试数据](/zh-cn/wiki/test-data/) 管理 (TDM) 可确保按需提供高质量、相关且安全的数据，从而显着提高[软件测试](/zh-cn/wiki/software-testing/) 的效率。通过自动创建、维护和配置 [测试数据](/zh-cn/wiki/test-data/)，TDM 减少了测试人员花在数据相关任务上的时间，使他们能够专注于实际测试。
   **高效的 [测试数据](/zh-cn/wiki/test-data/) 管理** 通过多种方式简化测试流程：
 
-- **减少[setup](/zh-cn/wiki/setup/)时间**：自动化工具可以快速生成数据并将其部署到测试环境，从而减少开始测试所需的时间。
+- **减少[环境搭建](/zh-cn/wiki/setup/)时间**：自动化工具可以快速生成数据并将其部署到测试环境，从而减少开始测试所需的时间。
 - **改进[测试覆盖率](/zh-cn/wiki/test-coverage/)**：通过轻松创建不同数据集的能力，测试人员可以覆盖更多场景和边缘情况。
 - **提高测试准确性**：一致且受控的数据集可最大限度地降低由于数据不一致而漏掉缺陷的风险。
 - **促进并行测试**：TDM 通过为不同的测试用例或团队提供隔离的数据集来实现同步测试工作。
@@ -213,7 +213,7 @@ order: 0
 - **确保合规性**：TDM 工具可以屏蔽敏感信息，有助于维护数据隐私并遵守 GDPR 等法规。
   通过实施 TDM，组织可以实现更快的测试周期、更高质量的发布以及对市场需求更敏捷的响应。这种处理[测试数据](/zh-cn/wiki/test-data/)的战略方法不仅提高了测试过程的效率，而且还有助于软件开发生命周期的整体成功。
 
-- **减少[setup](/zh-cn/wiki/setup/)时间**：自动化工具可以快速生成数据并将其部署到测试环境，从而减少开始测试所需的时间。
+- **减少[环境搭建](/zh-cn/wiki/setup/)时间**：自动化工具可以快速生成数据并将其部署到测试环境，从而减少开始测试所需的时间。
 - **改进[测试覆盖率](/zh-cn/wiki/test-coverage/)**：通过轻松创建不同数据集的能力，测试人员可以覆盖更多场景和边缘情况。
 - **提高测试准确性**：一致且受控的数据集可最大限度地降低由于数据不一致而漏掉缺陷的风险。
 - **促进并行测试**：TDM 通过为不同的测试用例或团队提供隔离的数据集来实现同步测试工作。
@@ -312,11 +312,11 @@ order: 0
 
 - **Mockaroo**：基于 Web 的工具，允许您创建具有各种字段类型和格式的自定义 [测试数据](/zh-cn/wiki/test-data/) 集，可以以多种格式下载，例如 CSV、JSON、[SQL](/zh-cn/wiki/sql/) 和 Excel。
 - **GenerateData**：一种开源工具，提供基于 Web 的界面，用于创建各种格式的大量自定义数据以用于测试目的。
-- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [databases](/zh-cn/wiki/database/)。
+- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [数据库](/zh-cn/wiki/database/)。
 - **JFairy**：一个 Java 库，可生成姓名、地址和电话号码等虚假数据。它对于需要类似于现实世界实体的数据的应用程序非常有用。
-- **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[databases](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
+- **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[数据库](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
 - **DataFactory**：一个 Java 库，可用于生成用于测试的各种数据类型，例如姓名、地址和电话号码。
-- **DBSchema**：该工具不仅可以设计[database](/zh-cn/wiki/database/) 模式，还可以生成[测试数据](/zh-cn/wiki/test-data/)，您可以根据需要进行自定义。
+- **DBSchema**：该工具不仅可以设计[数据库](/zh-cn/wiki/database/) 模式，还可以生成[测试数据](/zh-cn/wiki/test-data/)，您可以根据需要进行自定义。
   这些工具可以集成到您的[测试自动化](/zh-cn/wiki/test-automation/)框架中，以动态生成必要的[测试数据](/zh-cn/wiki/test-data/)，确保多样化和全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 
 - **Faker**：一个支持多种编程语言的库，可生成用于各种目的的虚假数据。
@@ -329,11 +329,11 @@ order: 0
 
 - **Mockaroo**：基于 Web 的工具，允许您创建具有各种字段类型和格式的自定义 [测试数据](/zh-cn/wiki/test-data/) 集，可以以多种格式下载，例如 CSV、JSON、[SQL](/zh-cn/wiki/sql/) 和 Excel。
 - **GenerateData**：一种开源工具，提供基于 Web 的界面，用于创建各种格式的大量自定义数据以用于测试目的。
-- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [databases](/zh-cn/wiki/database/)。
+- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [数据库](/zh-cn/wiki/database/)。
 - **JFairy**：一个 Java 库，可生成姓名、地址和电话号码等虚假数据。它对于需要类似于现实世界实体的数据的应用程序非常有用。
-- **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[databases](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
+- **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[数据库](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
 - **DataFactory**：一个 Java 库，可用于生成用于测试的各种数据类型，例如姓名、地址和电话号码。
-- **DBSchema**：该工具不仅可以设计[database](/zh-cn/wiki/database/) 模式，还可以生成[测试数据](/zh-cn/wiki/test-data/)，您可以根据需要进行自定义。
+- **DBSchema**：该工具不仅可以设计[数据库](/zh-cn/wiki/database/) 模式，还可以生成[测试数据](/zh-cn/wiki/test-data/)，您可以根据需要进行自定义。
 
 #### 如何保证生成的测试数据的质量？
 
@@ -419,7 +419,7 @@ order: 0
 
 #### 自动化测试中测试数据的注意事项有哪些？
 
-在自动化测试中考虑 [测试数据](/zh-cn/wiki/test-data/) 时，请重点关注**数据隔离**，以确保测试不会相互干扰。在[测试脚本](/zh-cn/wiki/test-script/) 中使用**数据[setup](/zh-cn/wiki/setup/) 和拆卸机制**来保持一致的[测试环境](/zh-cn/wiki/test-environment/)。
+在自动化测试中考虑 [测试数据](/zh-cn/wiki/test-data/) 时，请重点关注**数据隔离**，以确保测试不会相互干扰。在[测试脚本](/zh-cn/wiki/test-script/) 中使用**数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**来保持一致的[测试环境](/zh-cn/wiki/test-environment/)。
   **参数化**是可重用性和可扩展性的关键。它允许使用不同的数据输入运行测试，而无需更改测试代码。实施**数据驱动测试**框架，将测试逻辑与数据分离。
   确保**数据有效性**和与[测试用例](/zh-cn/wiki/test-case/) 的**相关性**。数据应反映应用程序预期在生产中处理的实际场景。 **数据覆盖**应包括正面、负面、边界和边缘情况，以彻底测试应用程序行为。
   考虑**安全**和**隐私**法规，尤其是在处理敏感或个人数据时。利用**数据脱敏**或匿名技术来遵守数据保护法。
@@ -439,7 +439,7 @@ order: 0
 - **参数化**：使用参数化测试将数据注入[测试用例](/zh-cn/wiki/test-case/)，从而使[测试脚本](/zh-cn/wiki/test-script/)具有更大的灵活性和可重用性。
 - **合成数据生成**：当真实数据不可用或不合适时，生成模仿现实场景的合成数据。
 - **数据监控和审计**：定期监控和审计[测试数据](/zh-cn/wiki/test-data/)以识别数据漂移、陈旧或不一致等问题。
-- **自动化数据[setup](/zh-cn/wiki/setup/) 和拆卸**：在您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中集成数据[setup](/zh-cn/wiki/setup/) 和拆卸流程，以简化[测试执行](/zh-cn/wiki/test-execution/)。
+- **自动化数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：在您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中集成数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸流程，以简化[测试执行](/zh-cn/wiki/test-execution/)。
 - **利用[API](/zh-cn/wiki/api/)**：利用[API](/zh-cn/wiki/api/) 执行[测试数据](/zh-cn/wiki/test-data/) 管理任务，例如创建、检索、更新和删除数据，以减少手动工作并提高速度。
   通过将这些实践纳入您的[测试数据](/zh-cn/wiki/test-data/) 管理策略，您可以提高[自动化测试](/zh-cn/wiki/automated-testing/) 工作的可靠性和效率。
 
@@ -451,7 +451,7 @@ order: 0
 - **参数化**：使用参数化测试将数据注入[测试用例](/zh-cn/wiki/test-case/)，从而为[测试脚本](/zh-cn/wiki/test-script/)提供更大的灵活性和可重用性。
 - **合成数据生成**：当真实数据不可用或不合适时，生成模仿现实场景的合成数据。
 - **数据监控和审计**：定期监控和审计[测试数据](/zh-cn/wiki/test-data/)以识别数据漂移、陈旧或不一致等问题。
-- **自动化数据[setup](/zh-cn/wiki/setup/) 和拆卸**：在[测试自动化](/zh-cn/wiki/test-automation/) 框架中集成数据[setup](/zh-cn/wiki/setup/) 和拆卸流程，以简化[测试执行](/zh-cn/wiki/test-execution/)。
+- **自动化数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：在[测试自动化](/zh-cn/wiki/test-automation/) 框架中集成数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸流程，以简化[测试执行](/zh-cn/wiki/test-execution/)。
 - **利用[API](/zh-cn/wiki/api/)**：利用[API](/zh-cn/wiki/api/) 执行[测试数据](/zh-cn/wiki/test-data/) 管理任务，例如创建、检索、更新和删除数据，以减少手动工作并提高速度。
 
 #### 在自动化测试中使用测试数据有哪些挑战？
@@ -469,7 +469,7 @@ order: 0
 
 [测试数据](/zh-cn/wiki/test-data/) 管理工具通过确保在需要时提供**一致**、**高质量** [测试数据](/zh-cn/wiki/test-data/) 来简化**自动化测试**流程。这些工具有助于[测试数据](/zh-cn/wiki/test-data/)集的创建、维护和部署，从而实现**可重复**和**可靠**[测试执行](/zh-cn/wiki/test-execution/)。
   通过自动化 [测试数据](/zh-cn/wiki/test-data/) 生命周期，这些工具减少了手动工作并最大限度地降低了人为错误的风险。它们启用[测试数据](/zh-cn/wiki/test-data/)的**版本控制**，确保将正确的数据集用于特定的[测试用例](/zh-cn/wiki/test-case/)或环境。这对于要求数据处于某种状态的复杂[测试场景](/zh-cn/wiki/test-scenario/) 特别有用。
-  与 [测试自动化](/zh-cn/wiki/test-automation/) 框架集成可实现无缝数据配置。 [测试数据](/zh-cn/wiki/test-data/) 管理工具可以在[测试执行](/zh-cn/wiki/test-execution/) 之前使用必要的数据填充[databases](/zh-cn/wiki/database/) 并在之后进行清理，从而保持数据完整性和测试运行之间的隔离。
+  与 [测试自动化](/zh-cn/wiki/test-automation/) 框架集成可实现无缝数据配置。 [测试数据](/zh-cn/wiki/test-data/) 管理工具可以在[测试执行](/zh-cn/wiki/test-execution/) 之前使用必要的数据填充[数据库](/zh-cn/wiki/database/) 并在之后进行清理，从而保持数据完整性和测试运行之间的隔离。
   动态数据屏蔽和合成数据生成功能可确保敏感信息受到保护，同时仍为全面测试提供真实且多样化的数据，从而有助于保持对数据隐私法规的**合规性**。
   此外，这些工具通常提供分析和报告功能，深入了解数据使用模式并在潜在的数据相关问题影响测试过程之前识别它们。
   总之，[测试数据](/zh-cn/wiki/test-data/) 管理工具通过提供以下功能来增强自动化测试：

@@ -102,7 +102,7 @@ order: 0
 2. **了解上下文**：考虑应用程序的上下文，包括用户期望和业务逻辑。
 3. **推导逻辑结果**：根据需求，推导给定输入或操作的逻辑结果。
 4. **与利益相关者协商**：与开发人员、业务分析师或产品所有者合作，以澄清任何歧义。
-5. **使用数据模型**：参考数据模型或模式来预测 [database](/zh-cn/wiki/database/) 相关测试的结果。
+5. **使用数据模型**：参考数据模型或模式来预测 [数据库](/zh-cn/wiki/database/) 相关测试的结果。
 6. **考虑边缘情况**：确定边界条件和错误处理场景以定义其预期结果。
 7. **准确记录**：以清晰、明确的方式记录[预期结果](/zh-cn/wiki/expected-result/)，通常记录在[测试用例](/zh-cn/wiki/test-case/) 本身内。
 8. **验证**：确保[预期结果](/zh-cn/wiki/expected-result/) 符合验收标准并经过同行评审。
@@ -120,7 +120,7 @@ order: 0
 2. **了解上下文**：考虑应用程序的上下文，包括用户期望和业务逻辑。
 3. **推导逻辑结果**：根据需求，推导给定输入或操作的逻辑结果。
 4. **与利益相关者协商**：与开发人员、业务分析师或产品所有者合作，以澄清任何歧义。
-5. **使用数据模型**：参考数据模型或模式来预测 [database](/zh-cn/wiki/database/) 相关测试的结果。
+5. **使用数据模型**：参考数据模型或模式来预测 [数据库](/zh-cn/wiki/database/) 相关测试的结果。
 6. **考虑边缘情况**：确定边界条件和错误处理场景以定义其预期结果。
 7. **准确记录**：以清晰、明确的方式记录[预期结果](/zh-cn/wiki/expected-result/)，通常记录在[测试用例](/zh-cn/wiki/test-case/) 本身内。
 8. **验证**：确保[预期结果](/zh-cn/wiki/expected-result/) 符合验收标准并经过同行评审。
@@ -140,7 +140,7 @@ order: 0
   assert.equal(actualResult, expectedResult, "The actual result does not match the expected result.");
   ```
 如果比较结果匹配，则测试标记为**通过**；否则，将被标记为**失败**，提示进一步调查。 [预期结果](/zh-cn/wiki/expected-result/) 确保测试**客观**和**可重复**，为每个[测试用例](/zh-cn/wiki/test-case/) 提供明确的成功标准。
-  在[自动化测试](/zh-cn/wiki/automated-testing/)框架中，[预期结果](/zh-cn/wiki/expected-result/)通常嵌入在测试代码或外部数据源中，例如CSV文件、[databases](/zh-cn/wiki/database/)或JSON对象，然后在[测试执行](/zh-cn/wiki/test-execution/)期间加载和使用：
+  在[自动化测试](/zh-cn/wiki/automated-testing/)框架中，[预期结果](/zh-cn/wiki/expected-result/)通常嵌入在测试代码或外部数据源中，例如CSV文件、[数据库](/zh-cn/wiki/database/)或JSON对象，然后在[测试执行](/zh-cn/wiki/test-execution/)期间加载和使用：
 
   ```
   const expectedResult = loadData("expectedResult.json");
@@ -198,7 +198,7 @@ order: 0
 
 4. **视觉验证**：对于[用户界面测试](/zh-cn/wiki/ui-testing/)，可以使用屏幕截图比较工具将UI的当前状态与预期图像进行比较。
 5. **[API](/zh-cn/wiki/api/) 响应验证**：测试[API](/zh-cn/wiki/api/) 时，可以将响应正文、状态代码和标头与预期值进行比较。
-6. **[Database](/zh-cn/wiki/database/) 验证**：对于后端测试，可以查询[database](/zh-cn/wiki/database/) 的状态并将其与预期数据集进行比较。
+6. **[数据库](/zh-cn/wiki/database/) 验证**：对于后端测试，可以查询[数据库](/zh-cn/wiki/database/) 的状态并将其与预期数据集进行比较。
 7. **日志和输出**：可以捕获控制台日志、文件和其他输出并将其与预期内容进行比较。
   [测试报告](/zh-cn/wiki/test-report/) 通常会突出显示不匹配的情况，从而促使进一步调查。对于自动化工程师来说，确保比较逻辑准确反映被测应用程序的预期行为至关重要。
 
@@ -221,7 +221,7 @@ order: 0
 
 4. **视觉验证**：对于[用户界面测试](/zh-cn/wiki/ui-testing/)，可以使用屏幕截图比较工具将UI的当前状态与预期图像进行比较。
 5. **[API](/zh-cn/wiki/api/) 响应验证**：测试[API](/zh-cn/wiki/api/) 时，可以将响应正文、状态代码和标头与预期值进行比较。
-6. **[Database](/zh-cn/wiki/database/) 验证**：对于后端测试，可以查询[database](/zh-cn/wiki/database/) 的状态并将其与预期数据集进行比较。
+6. **[数据库](/zh-cn/wiki/database/) 验证**：对于后端测试，可以查询[数据库](/zh-cn/wiki/database/) 的状态并将其与预期数据集进行比较。
 7. **日志和输出**：可以捕获控制台日志、文件和其他输出并将其与预期内容进行比较。
 
 #### 使用哪些工具或技术来比较“预期结果”与“实际结果”？
@@ -316,7 +316,7 @@ order: 0
 - **考虑边缘情况**：包括边界条件和异常情况的结果，而不仅仅是[快乐之路](/zh-cn/wiki/happy-path/)。
 - **正确使用数据类型**：确保 [预期结果](/zh-cn/wiki/expected-result/) 与输出的数据类型匹配（例如字符串、整数、布尔值）。
 - **包括时序约束**：如果相关，请指定结果应发生的时间，特别是对于[性能测试](/zh-cn/wiki/performance-testing/)。
-- **State the Post-Condition**：描述执行后系统的状态，可能包括[database](/zh-cn/wiki/database/)更新、文件生成等。
+- **State the Post-Condition**：描述执行后系统的状态，可能包括[数据库](/zh-cn/wiki/database/)更新、文件生成等。
 - **使其可测试**：结果应该可以手动或通过自动化进行验证。避免主观结果。
 - **版本控制**：跟踪[预期结果](/zh-cn/wiki/expected-result/) 的更改以维护修改历史记录和基本原理。
 - **同行评审**：让另一位团队成员评审[预期结果](/zh-cn/wiki/expected-result/) 以发现错误或遗漏。
@@ -330,7 +330,7 @@ order: 0
 - **考虑边缘情况**：包括边界条件和异常情况的结果，而不仅仅是[快乐之路](/zh-cn/wiki/happy-path/)。
 - **正确使用数据类型**：确保 [预期结果](/zh-cn/wiki/expected-result/) 与输出的数据类型匹配（例如字符串、整数、布尔值）。
 - **包括时序约束**：如果相关，请指定结果应发生的时间，特别是对于 [性能测试](/zh-cn/wiki/performance-testing/)。
-- **State the Post-Condition**：描述执行后系统的状态，可能包括[database](/zh-cn/wiki/database/)更新、文件生成等。
+- **State the Post-Condition**：描述执行后系统的状态，可能包括[数据库](/zh-cn/wiki/database/)更新、文件生成等。
 - **使其可测试**：结果应该可以手动或通过自动化进行验证。避免主观结果。
 - **版本控制**：跟踪[预期结果](/zh-cn/wiki/expected-result/) 的更改以维护修改历史记录和理由。
 - **同行评审**：让另一位团队成员评审[预期结果](/zh-cn/wiki/expected-result/) 以发现错误或遗漏。
@@ -342,7 +342,7 @@ order: 0
 
 有效地记录“[预期结果](/zh-cn/wiki/expected-result/)”需要精确和清晰。请遵循以下准则：
 
-- **具体**：明确定义结果，不含糊。例如，指定“系统在 2 秒内将数据保存到 [database](/zh-cn/wiki/database/)，并且用户收到‘数据保存成功’消息”，而不是“系统应保存数据”。
+- **具体**：明确定义结果，不含糊。例如，指定“系统在 2 秒内将数据保存到 [数据库](/zh-cn/wiki/database/)，并且用户收到‘数据保存成功’消息”，而不是“系统应保存数据”。
 - **使用验收标准**：将 [预期结果](/zh-cn/wiki/expected-result/) 与用户故事或需求的验收标准保持一致。这确保了与商定的功能的一致性。
 - $
 
@@ -370,7 +370,7 @@ order: 0
 - **保持最新**：定期审查和更新文档以反映系统或要求的变化。
   通过遵守这些准则，您可以确保 [预期结果](/zh-cn/wiki/expected-result/) 以对测试团队有用、清晰且可操作的方式记录。
 
-- **具体**：明确定义结果，不含糊。例如，指定“系统在 2 秒内将数据保存到[database](/zh-cn/wiki/database/)，并且用户收到‘数据保存成功’消息”，而不是“系统应保存数据”。
+- **具体**：明确定义结果，不含糊。例如，指定“系统在 2 秒内将数据保存到[数据库](/zh-cn/wiki/database/)，并且用户收到‘数据保存成功’消息”，而不是“系统应保存数据”。
 - **使用验收标准**：将 [预期结果](/zh-cn/wiki/expected-result/) 与用户故事或需求的验收标准保持一致。这确保了与商定的功能的一致性。
 - $
 

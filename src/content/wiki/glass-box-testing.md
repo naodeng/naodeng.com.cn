@@ -42,7 +42,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/White-box_testing)
+- [维基百科](https://en.wikipedia.org/wiki/White-box_testing)
 
 ## 关于玻璃盒测试的问题吗？
 

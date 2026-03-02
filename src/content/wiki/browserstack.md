@@ -46,8 +46,8 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 
 ### 另请参阅：
 
-- [Official Website](https://www.browserstack.com/)
-- [Wikipedia](https://en.wikipedia.org/wiki/BrowserStack)
+- [官网](https://www.browserstack.com/)
+- [维基百科](https://en.wikipedia.org/wiki/BrowserStack)
 
 ## 关于 BrowserStack 有疑问吗？
 
@@ -193,7 +193,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
   runTestOnBrowserStack();
   ```
 该脚本连接到[browserstack](/zh-cn/wiki/browserstack/)，然后启动指定的环境。该测试的运行就像在本地执行一样，但它实际上是在 [browserstack](/zh-cn/wiki/browserstack/) 服务器上运行。这允许跨不同环境进行**并行测试**，从而显着加快测试过程。
-  [browserstack](/zh-cn/wiki/browserstack/) 的基础设施旨在处理测试环境的**[setup](/zh-cn/wiki/setup/)、维护**和**拆卸**，这简化了测试工作流程，让您能够专注于编写和执行测试。测试完成后，[browserstack](/zh-cn/wiki/browserstack/) 会提供**详细日志**、**屏幕截图**和**视频录制**来帮助调试任何问题。
+  [browserstack](/zh-cn/wiki/browserstack/) 的基础设施旨在处理测试环境的**[环境搭建](/zh-cn/wiki/setup/)、维护**和**拆卸**，这简化了测试工作流程，让您能够专注于编写和执行测试。测试完成后，[browserstack](/zh-cn/wiki/browserstack/) 会提供**详细日志**、**屏幕截图**和**视频录制**来帮助调试任何问题。
 
 #### 如何设置并开始使用 BrowserStack？
 
@@ -517,7 +517,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 [browserstack](/zh-cn/wiki/browserstack/) 通过维护真实设备和浏览器版本的**大量库存**来管理各种浏览器和操作系统。启动测试时，[browserstack](/zh-cn/wiki/browserstack/) **分配**符合指定条件（例如浏览器版本、操作系统和屏幕分辨率）的虚拟机或真实设备。
   对于浏览器，[browserstack](/zh-cn/wiki/browserstack/) 支持 **Chrome**、**Firefox**、**Safari**、**Internet Explorer** 和 **Edge** 等多种版本。它还提供各种版本的移动浏览器，以便在不同设备上进行测试。
   操作系统方面，包括**Windows**、**macOS**、**iOS**、**Android**平台，覆盖多个版本，保证不同环境下的兼容性。
-  [browserstack](/zh-cn/wiki/browserstack/) 使用**基于云的基础设施**来提供对这些环境的访问，这意味着测试可以跨浏览器和操作系统的多种组合并行运行，而不需要本地[setup](/zh-cn/wiki/setup/) 或维护。
+  [browserstack](/zh-cn/wiki/browserstack/) 使用**基于云的基础设施**来提供对这些环境的访问，这意味着测试可以跨浏览器和操作系统的多种组合并行运行，而不需要本地[环境搭建](/zh-cn/wiki/setup/) 或维护。
   为了指定所需的环境，测试人员使用[测试脚本](/zh-cn/wiki/test-script/) 中的功能。以下是在 JavaScript 中使用 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 的示例：
 
   ```

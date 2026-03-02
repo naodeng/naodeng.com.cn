@@ -46,7 +46,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Test_case)
+- [维基百科](https://en.wikipedia.org/wiki/Test_case)
 
 ## 关于测试用例的问题？
 
@@ -155,7 +155,7 @@ order: 0
 2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在验证或确认的内容。
 3. **选择[测试数据](/zh-cn/wiki/test-data/)**：选择适当的输入数据，可以包括有效值、无效值和边界值。
 4. **确定[预期结果](/zh-cn/wiki/expected-result/)**：根据验证[测试用例](/zh-cn/wiki/test-case/) 的要求定义预期结果。
-5. **开发测试程序**：概述执行[测试用例](/zh-cn/wiki/test-case/)的步骤，包括[setup](/zh-cn/wiki/setup/)、执行和拆卸操作。
+5. **开发测试程序**：概述执行[测试用例](/zh-cn/wiki/test-case/)的步骤，包括[环境搭建](/zh-cn/wiki/setup/)、执行和拆卸操作。
 6. **编写测试步骤**：详细说明执行测试所需的每个步骤，包括应用程序导航和 [测试数据](/zh-cn/wiki/test-data/) 的输入。
 7. **分配先决条件**：指定执行 [测试用例](/zh-cn/wiki/test-case/) 之前必须满足的任何必要条件。
 8. **执行[测试用例](/zh-cn/wiki/test-case/)**：手动运行[测试用例](/zh-cn/wiki/test-case/) 或使用自动化工具来验证功能。
@@ -169,7 +169,7 @@ order: 0
 2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在验证或确认的内容。
 3. **选择[测试数据](/zh-cn/wiki/test-data/)**：选择适当的输入数据，可以包括有效值、无效值和边界值。
 4. **确定[预期结果](/zh-cn/wiki/expected-result/)**：根据验证[测试用例](/zh-cn/wiki/test-case/) 的要求定义预期结果。
-5. **开发测试程序**：概述执行[测试用例](/zh-cn/wiki/test-case/)的步骤，包括[setup](/zh-cn/wiki/setup/)、执行和拆卸操作。
+5. **开发测试程序**：概述执行[测试用例](/zh-cn/wiki/test-case/)的步骤，包括[环境搭建](/zh-cn/wiki/setup/)、执行和拆卸操作。
 6. **编写测试步骤**：详细说明执行测试所需的每个步骤，包括应用程序导航和 [测试数据](/zh-cn/wiki/test-data/) 的输入。
 7. **分配先决条件**：指定执行 [测试用例](/zh-cn/wiki/test-case/) 之前必须满足的任何必要条件。
 8. **执行[测试用例](/zh-cn/wiki/test-case/)**：手动运行[测试用例](/zh-cn/wiki/test-case/)或使用自动化工具来验证功能。

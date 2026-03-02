@@ -345,7 +345,7 @@ order: 0
 - **Test on local infrastructure**: Run tests on servers and devices located in the target locale to account for local network conditions and services.
 - **Local regulations compliance**: Ensure the application complies with local laws and regulations, such as data privacy laws.
 - **Iterative testing**: Conduct localization testing throughout the development cycle to catch issues early.
-- **Visual inspection**: Manually inspect UI elements for truncation, overlapping, and alignment issues.
+- **Visual [检查](/zh-cn/wiki/inspection/)**: Manually inspect UI elements for truncation, overlapping, and alignment issues.
 - **Contextual testing**: Validate that the context is preserved in translation, not just the literal text.
 - **Fallback mechanisms**: Implement fallback options for missing translations or resources.
 - **Performance testing**: Check that localized versions do not negatively impact the application's performance.

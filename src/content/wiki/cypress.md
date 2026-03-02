@@ -52,8 +52,8 @@ order: 0
 
 ### 另请参阅：
 
-- [Official Website](https://www.cypress.io/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Cypress_(software))
+- [官网](https://www.cypress.io/)
+- [维基百科](https://en.wikipedia.org/wiki/Cypress_(software))
 
 ## 关于 Cypress 的问题吗？
 
@@ -118,7 +118,7 @@ Cypress
 - **架构**：[Cypress](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
 - **语言支持**：[Cypress](/zh-cn/wiki/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
 - **直接访问**：[Cypress](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([WebDriver](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
-- **[Setup](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
+- **[环境搭建](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[环境搭建](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
 - **实时重新加载**：[Cypress](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，它会在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
 - **自动等待**：[Cypress](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
 - **[API 测试](/zh-cn/wiki/api-testing/)**：[Cypress](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
@@ -128,7 +128,7 @@ Cypress
 - **架构**：[Cypress](/zh-cn/wiki/cypress/) 与正在测试的应用程序在同一运行循环中运行，从而实现更快的执行和更一致的结果。 [selenium](/zh-cn/wiki/selenium/) 在浏览器外部运行，这可能会导致延迟和不稳定。
 - **语言支持**：[Cypress](/zh-cn/wiki/cypress/) 测试是用 JavaScript 编写的，而 [selenium](/zh-cn/wiki/selenium/) 支持多种语言，如 Java、C#、Python 和 Ruby。
 - **直接访问**：[Cypress](/zh-cn/wiki/cypress/) 可以直接访问 DOM，并且可以更自然地与元素交互。 [selenium](/zh-cn/wiki/selenium/) 需要中介 ([WebDriver](/zh-cn/wiki/webdriver/)) 与浏览器通信，这会减慢交互速度。
-- **[Setup](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[setup](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
+- **[环境搭建](/zh-cn/wiki/setup/) 和配置**：[Cypress](/zh-cn/wiki/cypress/) 更易于设置，无需额外的驱动程序或服务器。 [selenium](/zh-cn/wiki/selenium/) 通常需要额外的[环境搭建](/zh-cn/wiki/setup/) 用于[WebDriver](/zh-cn/wiki/webdriver/) 和特定于浏览器的驱动程序。
 - **实时重新加载**：[Cypress](/zh-cn/wiki/cypress/) 提供[测试运行者](/zh-cn/wiki/test-runner/)，可在测试文件更改时自动重新加载，提供即时反馈。 [selenium](/zh-cn/wiki/selenium/) 没有内置等效项。
 - **自动等待**：[Cypress](/zh-cn/wiki/cypress/) 在继续之前自动等待命令和断言。 [selenium](/zh-cn/wiki/selenium/) 需要显式等待或睡眠命令来管理计时问题。
 - **[API 测试](/zh-cn/wiki/api-testing/)**：[Cypress](/zh-cn/wiki/cypress/) 包含对 [API 测试](/zh-cn/wiki/api-testing/) 的内置支持，允许在一个框架中进行前端和后端测试。 [selenium](/zh-cn/wiki/selenium/) 主要专注于基于浏览器的测试。
@@ -701,7 +701,7 @@ Cypress
   npx cypress run --config video=false
   ```
 此命令将运行测试而不录制视频。
-  对于并行 [测试执行](/zh-cn/wiki/test-execution/) 以及跨多台计算机或 CI 容器的负载平衡，请使用 [Cypress](/zh-cn/wiki/cypress/) 仪表板服务，这需要额外的 [setup](/zh-cn/wiki/setup/) 和配置。
+  对于并行 [测试执行](/zh-cn/wiki/test-execution/) 以及跨多台计算机或 CI 容器的负载平衡，请使用 [Cypress](/zh-cn/wiki/cypress/) 仪表板服务，这需要额外的 [环境搭建](/zh-cn/wiki/setup/) 和配置。
 
 1. 打开终端或命令提示符。
 2. 导航到安装 Cypress 的项目目录。

@@ -152,7 +152,7 @@ order: 0
 
 - **持续集成 (CI)**：将测试集成到 CI 管道中以尽早发现问题并确保针对最新版本的软件运行测试。
 - **测试工件的版本控制**：使用 [测试用例](/zh-cn/wiki/test-case/) 和数据的版本控制系统，确保历史上下文并在必要时轻松回滚。
-- **[测试环境](/zh-cn/wiki/test-environment/) 管理**：自动化[setup](/zh-cn/wiki/setup/) 和拆除[测试环境](/zh-cn/wiki/test-environment/) 以减少对特定配置的依赖。
+- **[测试环境](/zh-cn/wiki/test-environment/) 管理**：自动化[环境搭建](/zh-cn/wiki/setup/) 和拆除[测试环境](/zh-cn/wiki/test-environment/) 以减少对特定配置的依赖。
 - **非[用户界面测试](/zh-cn/wiki/ui-testing/)**：专注于服务层测试（[API](/zh-cn/wiki/api/)，微服务），这往往比 UI 更稳定。
 - **跨功能测试**：设计涵盖应用程序多个方面的测试，减少对大量单独测试的需求。
 - **定期重构**：定期审查和更新测试以提高效率并消除冗余。
@@ -164,7 +164,7 @@ order: 0
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将 UI 结构和交互抽象为页面对象，以尽量减少 UI 更改对测试的影响。
 - **持续集成 (CI)**：将测试集成到 CI 管道中以尽早发现问题并确保针对最新版本的软件运行测试。
 - **测试工件的版本控制**：使用 [测试用例](/zh-cn/wiki/test-case/) 和数据的版本控制系统，确保历史上下文并在必要时轻松回滚。
-- **[测试环境](/zh-cn/wiki/test-environment/) 管理**：自动化[setup](/zh-cn/wiki/setup/) 和拆除[测试环境](/zh-cn/wiki/test-environment/) 以减少对特定配置的依赖。
+- **[测试环境](/zh-cn/wiki/test-environment/) 管理**：自动化[环境搭建](/zh-cn/wiki/setup/) 和拆除[测试环境](/zh-cn/wiki/test-environment/) 以减少对特定配置的依赖。
 - **非[用户界面测试](/zh-cn/wiki/ui-testing/)**：专注于服务层测试（[API](/zh-cn/wiki/api/)，微服务），这往往比 UI 更稳定。
 - **跨功能测试**：设计涵盖应用程序多个方面的测试，减少对大量单独测试的需求。
 - **定期重构**：定期审查和更新测试以提高效率并消除冗余。
@@ -172,7 +172,7 @@ order: 0
 #### 我如何制定面向未来的测试策略？
 
 要制定**面向未来的测试策略**，请重点创建**灵活**、**可扩展**和**可维护**框架。首先为您的[测试脚本](/zh-cn/wiki/test-script/) 选择一个**模块化架构**，例如 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)，它将测试逻辑与 UI 定义分开。当应用程序 UI 发生变化时，这种抽象可以更轻松地进行更新。
-  实施**数据驱动测试**，将[测试数据](/zh-cn/wiki/test-data/) 与脚本分开，使您能够轻松更新[测试用例](/zh-cn/wiki/test-case/)，而无需更改代码。使用**外部数据源**（如 CSV 文件、[databases](/zh-cn/wiki/database/) 或 [API](/zh-cn/wiki/api/)）将 [测试数据](/zh-cn/wiki/test-data/) 馈送到您的自动化套件中。
+  实施**数据驱动测试**，将[测试数据](/zh-cn/wiki/test-data/) 与脚本分开，使您能够轻松更新[测试用例](/zh-cn/wiki/test-case/)，而无需更改代码。使用**外部数据源**（如 CSV 文件、[数据库](/zh-cn/wiki/database/) 或 [API](/zh-cn/wiki/api/)）将 [测试数据](/zh-cn/wiki/test-data/) 馈送到您的自动化套件中。
   利用**持续集成/持续部署 (CI/CD)** 管道在代码提交时自动触发测试运行，确保立即反馈更改的影响。将您的测试与 Git 等**版本控制系统**集成，以跟踪更改并高效协作。
   将 **容器化** 与 Docker 等工具结合起来，以确保 [测试环境](/zh-cn/wiki/test-environment/) 的一致性，减少“在我的机器上运行”问题。这也有助于根据需要水平扩展测试。
   利用**基于云的服务**进行跨浏览器和跨平台测试，以覆盖广泛的环境，而无需维护大型内部实验室。

@@ -46,7 +46,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://jestjs.io/)
+- [维基百科](https://jestjs.io/)
 
 ## 关于 Jest 有疑问吗？
 
@@ -70,7 +70,7 @@ order: 0
 #### 为什么 Jest 在测试 JavaScript 代码方面很受欢迎？
 
 [Jest](/zh-cn/wiki/jest/) 因其**简单**和**易于使用**而在测试 JavaScript 代码方面很受欢迎。它与使用 **React**、**Angular**、**Vue** 和 **[node.js](/zh-cn/wiki/node-js/)** 的项目完美集成，使其成为各种 JavaScript 应用程序的多功能选择。其**监视模式**自动运行与更改的文件相关的测试，从而提高开发人员的工作效率。
-  开发人员欣赏[Jest](/zh-cn/wiki/jest/) 的**集成覆盖率报告**，该报告无需额外的[setup](/zh-cn/wiki/setup/) 即可生成，可立即洞察[测试覆盖率](/zh-cn/wiki/test-coverage/)。该框架的**强大的模拟库**简化了具有复杂依赖项的代码的测试。
+  开发人员欣赏[Jest](/zh-cn/wiki/jest/) 的**集成覆盖率报告**，该报告无需额外的[环境搭建](/zh-cn/wiki/setup/) 即可生成，可立即洞察[测试覆盖率](/zh-cn/wiki/test-coverage/)。该框架的**强大的模拟库**简化了具有复杂依赖项的代码的测试。
   [Jest](/zh-cn/wiki/jest/) 的**并行[测试执行](/zh-cn/wiki/test-execution/)** 通过同时运行测试来优化性能，减少运行大量[测试套件](/zh-cn/wiki/test-suite/) 所需的时间。得益于自定义解析器和使用 JSDom 进行 DOM [API](/zh-cn/wiki/api/) 模拟，其跨测试运行的**一致的环境**确保了测试的可靠性。
   [Jest](/zh-cn/wiki/jest/) 周围的社区非常活跃，为增强其功能的 **插件** 和 **扩展** 的丰富生态系统做出了贡献。维护人员的定期更新和改进使 [Jest](/zh-cn/wiki/jest/) 保持在测试技术的最前沿。
 
@@ -98,7 +98,7 @@ order: 0
 - **交互式监视模式**：[Jest](/zh-cn/wiki/jest/) 可以在监视模式下运行，当检测到代码库中的更改时，该模式会自动重新运行测试，从而提高开发人员的工作效率。
 - **内置覆盖率报告**：[Jest](/zh-cn/wiki/jest/) 包括一个集成的 [代码覆盖率](/zh-cn/wiki/code-coverage/) 报告器，可以使用简单的命令行标志 (`--coverage`) 激活。
 - **隔离和并行[测试执行](/zh-cn/wiki/test-execution/)**：测试在单独的进程中并行运行，以最大限度地提高性能并确保测试不会相互影响。
-- **全局[Setup](/zh-cn/wiki/setup/)/Teardown**：[Jest](/zh-cn/wiki/jest/) 提供了用于在所有测试运行之前和之后设置和拆除环境的挂钩。
+- **全局[环境搭建](/zh-cn/wiki/setup/)/Teardown**：[Jest](/zh-cn/wiki/jest/) 提供了用于在所有测试运行之前和之后设置和拆除环境的挂钩。
 - **手动模拟**：开发人员可以创建手动模拟，以通过模拟实现来消除功能。
 - **计时器模拟**：[Jest](/zh-cn/wiki/jest/) 可以在您的测试中模拟计时器，允许您控制时间的流逝。
 - **自定义匹配器**：使用自定义匹配器扩展[Jest](/zh-cn/wiki/jest/) 的匹配器库，以获得更具描述性的测试语句。
@@ -110,7 +110,7 @@ order: 0
 - **交互式监视模式**：[Jest](/zh-cn/wiki/jest/) 可以在监视模式下运行，当检测到代码库中的更改时，该模式会自动重新运行测试，从而提高开发人员的工作效率。
 - **内置覆盖率报告**：[Jest](/zh-cn/wiki/jest/) 包括一个集成的 [代码覆盖率](/zh-cn/wiki/code-coverage/) 报告器，可以使用简单的命令行标志 (`--coverage`) 激活。
 - **隔离和并行[测试执行](/zh-cn/wiki/test-execution/)**：测试在单独的进程中并行运行，以最大限度地提高性能并确保测试不会相互影响。
-- **全局[Setup](/zh-cn/wiki/setup/)/Teardown**：[Jest](/zh-cn/wiki/jest/) 提供了用于在所有测试运行之前和之后设置和拆除环境的挂钩。
+- **全局[环境搭建](/zh-cn/wiki/setup/)/Teardown**：[Jest](/zh-cn/wiki/jest/) 提供了用于在所有测试运行之前和之后设置和拆除环境的挂钩。
 - **手动模拟**：开发人员可以创建手动模拟，以通过模拟实现来消除功能。
 - **计时器模拟**：[Jest](/zh-cn/wiki/jest/) 可以在您的测试中模拟计时器，允许您控制时间的流逝。
 - **自定义匹配器**：使用自定义匹配器扩展[Jest](/zh-cn/wiki/jest/) 的匹配器库，以获得更具描述性的测试语句。
@@ -121,7 +121,7 @@ order: 0
 
 #### 为什么 Jest 被视为“零配置”测试平台？
 
-[Jest](/zh-cn/wiki/jest/) 被认为是一个**零配置**测试平台，因为它的目标是开箱即用，只需要最少的[setup](/zh-cn/wiki/setup/)。安装后，[Jest](/zh-cn/wiki/jest/) 为大多数项目提供合理的默认值，允许开发人员立即开始编写和运行测试。
+[Jest](/zh-cn/wiki/jest/) 被认为是一个**零配置**测试平台，因为它的目标是开箱即用，只需要最少的[环境搭建](/zh-cn/wiki/setup/)。安装后，[Jest](/zh-cn/wiki/jest/) 为大多数项目提供合理的默认值，允许开发人员立即开始编写和运行测试。
   该框架的设计符合约定，使其能够自动查找和执行测试。默认情况下，[Jest](/zh-cn/wiki/jest/) 会查找具有以下任何流行命名约定的测试文件：
 
 - 文件与
@@ -157,7 +157,7 @@ order: 0
   ```
   npx jest
   ```
-[setup](/zh-cn/wiki/setup/) 的易用性和合理的默认设置使得 [Jest](/zh-cn/wiki/jest/) 成为许多开发人员的**零配置**测试平台。
+[环境搭建](/zh-cn/wiki/setup/) 的易用性和合理的默认设置使得 [Jest](/zh-cn/wiki/jest/) 成为许多开发人员的**零配置**测试平台。
 
 - 文件与
     `.js`
@@ -234,7 +234,7 @@ order: 0
 - **[node.js](/zh-cn/wiki/node-js/)** ：Jest 是一个基于 Node 的工具，因此您的系统上必须安装最新版本的 Node.js。
 - **npm 或 Yarn** ：用于安装 Jest 并管理其依赖项的包管理器。
 - **JavaScript 知识**：熟悉 JavaScript（或 TypeScript）至关重要，因为 Jest 是为测试 JS 代码库而设计的。
-- **项目 [Setup](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
+- **项目 [环境搭建](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
 - **理解测试概念**：了解单元测试、模拟和断言以编写有意义的测试。
 - **ES 模块支持**：如果使用 ES 模块，请确保兼容性或配置 Babel 进行转译。
 - **版本控制**：（可选）像 Git 这样的版本控制系统，用于跟踪测试中的更改以及代码。
@@ -270,7 +270,7 @@ order: 0
 - **[node.js](/zh-cn/wiki/node-js/)** ：Jest 是一个基于 Node 的工具，因此您的系统上必须安装最新版本的 Node.js。
 - **npm 或 Yarn** ：用于安装 Jest 并管理其依赖项的包管理器。
 - **JavaScript 知识**：熟悉 JavaScript（或 TypeScript）至关重要，因为 Jest 是为测试 JS 代码库而设计的。
-- **项目 [Setup](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
+- **项目 [环境搭建](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
 - **理解测试概念**：了解单元测试、模拟和断言以编写有意义的测试。
 - **ES 模块支持**：如果使用 ES 模块，请确保兼容性或配置 Babel 进行转译。
 - **版本控制**：（可选）像 Git 这样的版本控制系统，用于跟踪测试中的更改以及代码。
@@ -463,7 +463,7 @@ order: 0
     ，并且两者可以互换。
 
 - **expect** ：创建关于测试用例的预期结果的断言。
-  测试可以嵌套在**描述**块中以进行进一步组织。 **beforeAll** 和 **afterAll** 钩子也可用于[setup](/zh-cn/wiki/setup/)/teardown，这些钩子只能在描述块中的所有测试之前/之后发生一次。
+  测试可以嵌套在**描述**块中以进行进一步组织。 **beforeAll** 和 **afterAll** 钩子也可用于[环境搭建](/zh-cn/wiki/setup/)/teardown，这些钩子只能在描述块中的所有测试之前/之后发生一次。
 
 - **描述**：对多个测试进行分组；对于按功能或组件组织测试很有用。
 - **beforeEach/afterEach** ：在描述块中的每个测试之前/之后运行的安装/拆卸挂钩。
@@ -979,7 +979,7 @@ order: 0
     });
   });
   ```
-每个`describe` 块可以包含自己的[setup](/zh-cn/wiki/setup/) 以及使用`beforeEach`、`afterEach`、`beforeAll` 和`afterAll` 函数进行的测试组的拆卸。这有助于逻辑地组织测试并有效管理共享[setup](/zh-cn/wiki/setup/)和拆卸过程。
+每个`describe` 块可以包含自己的[环境搭建](/zh-cn/wiki/setup/) 以及使用`beforeEach`、`afterEach`、`beforeAll` 和`afterAll` 函数进行的测试组的拆卸。这有助于逻辑地组织测试并有效管理共享[环境搭建](/zh-cn/wiki/setup/)和拆卸过程。
   嵌套`describe`块可用于更细粒度的分组：
 
   ```
@@ -1183,7 +1183,7 @@ order: 0
     });
   });
   ```
-使用`describe` 允许组中的测试共享[setup](/zh-cn/wiki/setup/) 和拆卸代码，有助于保持测试**干燥**（不要重复），并且它增强了测试输出的**组织** 和**可读性**，因为[Jest](/zh-cn/wiki/jest/) 将根据这些分组报告结果。
+使用`describe` 允许组中的测试共享[环境搭建](/zh-cn/wiki/setup/) 和拆卸代码，有助于保持测试**干燥**（不要重复），并且它增强了测试输出的**组织** 和**可读性**，因为[Jest](/zh-cn/wiki/jest/) 将根据这些分组报告结果。
 
 #### 如何在 Jest 中使用 'beforeEach' 和 'afterEach'？
 
@@ -1220,4 +1220,4 @@ order: 0
     });
   });
   ```
-在此示例中，[setup](/zh-cn/wiki/setup/) 代码将在`test case 1` 和`test case 2` 之前运行，而清理代码将在每个[测试用例](/zh-cn/wiki/test-case/) 完成之后运行。这确保了每个测试都是隔离的并且不会影响其他测试。
+在此示例中，[环境搭建](/zh-cn/wiki/setup/) 代码将在`test case 1` 和`test case 2` 之前运行，而清理代码将在每个[测试用例](/zh-cn/wiki/test-case/) 完成之后运行。这确保了每个测试都是隔离的并且不会影响其他测试。

@@ -71,7 +71,7 @@ order: 0
 
 [测试脚本](/zh-cn/wiki/test-script/) 的关键组件包括：
 
-- **测试[Setup](/zh-cn/wiki/setup/)**：准备[测试环境](/zh-cn/wiki/test-environment/)的初始化代码，例如启动Web服务器、初始化[database](/zh-cn/wiki/database/)连接或设置初始条件。
+- **测试[环境搭建](/zh-cn/wiki/setup/)**：准备[测试环境](/zh-cn/wiki/test-environment/)的初始化代码，例如启动Web服务器、初始化[数据库](/zh-cn/wiki/database/)连接或设置初始条件。
 - **[测试数据](/zh-cn/wiki/test-data/)**：执行测试所需的输入值，可以是硬编码、生成或从外部源加载。
 - **操作**：模拟用户交互或系统进程的步骤序列，通常表示为函数或方法。
 - **断言**：检查是否根据 [实际结果](/zh-cn/wiki/actual-result/) 验证预期结果，确定测试是否通过或失败。
@@ -101,7 +101,7 @@ order: 0
   ```
 每个组件在确保[测试脚本](/zh-cn/wiki/test-script/) 可靠、可维护并提供清晰的结果方面发挥着关键作用。
 
-- **测试[Setup](/zh-cn/wiki/setup/)**：准备[测试环境](/zh-cn/wiki/test-environment/)的初始化代码，例如启动Web服务器、初始化[database](/zh-cn/wiki/database/)连接或设置初始条件。
+- **测试[环境搭建](/zh-cn/wiki/setup/)**：准备[测试环境](/zh-cn/wiki/test-environment/)的初始化代码，例如启动Web服务器、初始化[数据库](/zh-cn/wiki/database/)连接或设置初始条件。
 - **[测试数据](/zh-cn/wiki/test-data/)**：执行测试所需的输入值，可以是硬编码、生成或从外部源加载。
 - **操作**：模拟用户交互或系统进程的步骤序列，通常表示为函数或方法。
 - **断言**：检查根据 [实际结果](/zh-cn/wiki/actual-result/) 验证预期结果，确定测试是否通过或失败。
@@ -202,7 +202,7 @@ order: 0
 
 执行[测试脚本](/zh-cn/wiki/test-script/)通常涉及以下步骤：
 
-1. **环境[Setup](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 已准备好必要的配置、[databases](/zh-cn/wiki/database/) 和服务器。
+1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 已准备好必要的配置、[数据库](/zh-cn/wiki/database/) 和服务器。
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：安排脚本所需的[测试数据](/zh-cn/wiki/test-data/)，可能涉及创建、修改或导入数据。
 3. **依赖项检查**：验证所有依赖项（例如其他服务或系统）是否可用且正常运行。
 4. **执行前检查**：执行执行前检查以确保系统处于正确状态并且[测试脚本](/zh-cn/wiki/test-script/)配置正确。
@@ -215,7 +215,7 @@ order: 0
 11. **分析**：查看测试结果和日志，以确定 [测试脚本](/zh-cn/wiki/test-script/) 或被测应用程序中的任何缺陷或需要改进的地方。
 12. **[Bug](/zh-cn/wiki/bug/) 报告**：如果发现问题，请根据项目的[缺陷管理](/zh-cn/wiki/defect-management/) 流程记录并报告它们。
 13. **脚本维护**：根据需要更新[测试脚本](/zh-cn/wiki/test-script/)，以反映应用程序中的更改或增强脚本的性能和[可维护性](/zh-cn/wiki/maintainability/)。
-1. **环境[Setup](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 已​​准备好必要的配置、[databases](/zh-cn/wiki/database/) 和服务器。
+1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 已​​准备好必要的配置、[数据库](/zh-cn/wiki/database/) 和服务器。
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：安排脚本所需的[测试数据](/zh-cn/wiki/test-data/)，可能涉及创建、修改或导入数据。
 3. **依赖项检查**：验证所有依赖项（例如其他服务或系统）是否可用且正常运行。
 4. **执行前检查**：执行执行前检查以确保系统处于正确状态并且[测试脚本](/zh-cn/wiki/test-script/)配置正确。
@@ -463,7 +463,7 @@ order: 0
 #### 手动测试脚本和自动测试脚本有什么区别？
 
 手册[测试脚本](/zh-cn/wiki/test-script/)通常以人类可读的格式编写，例如文档中的简单语言步骤，并且需要人类测试人员手动执行这些步骤以验证被测应用程序的行为。它们更加灵活，可以适应执行过程中的意外变化，但耗时且容易出现人为错误。
-  另一方面，自动化[测试脚本](/zh-cn/wiki/test-script/)是用编程语言或脚本语言编写的，并由软件工具执行。它们可以自动在应用程序上执行预定义的操作，无需人工干预。自动化脚本对于重复性任务来说更快、更可靠，但需要初始 [setup](/zh-cn/wiki/setup/) 时间和维护才能适应应用程序中的更改。
+  另一方面，自动化[测试脚本](/zh-cn/wiki/test-script/)是用编程语言或脚本语言编写的，并由软件工具执行。它们可以自动在应用程序上执行预定义的操作，无需人工干预。自动化脚本对于重复性任务来说更快、更可靠，但需要初始 [环境搭建](/zh-cn/wiki/setup/) 时间和维护才能适应应用程序中的更改。
   **手册[测试脚本](/zh-cn/wiki/test-script/) 示例：**
 
   ```
@@ -491,7 +491,7 @@ order: 0
 #### 与测试脚本相关的数据驱动测试是什么？
 
 数据驱动测试 (DDT) 是一种使用多组输入数据执行 [测试脚本](/zh-cn/wiki/test-script/) 的方法，以验证应用程序在各个数据点上的行为是否符合预期。 DDT 不是将值硬编码到[测试脚本](/zh-cn/wiki/test-script/) 中，而是将测试逻辑与[测试数据](/zh-cn/wiki/test-data/) 分开，从而实现更具可扩展性和可维护性的测试过程。
-  在 DDT 中，[测试数据](/zh-cn/wiki/test-data/) 通常存储在外部数据源中，例如 CSV 文件、Excel 电子表格、XML 文件或[databases](/zh-cn/wiki/database/)。 [测试脚本](/zh-cn/wiki/test-script/) 读取数据，对每个数据集执行相同的一组操作，并验证结果。此方法使单个 [测试脚本](/zh-cn/wiki/test-script/) 通过迭代数据集来覆盖多个 [测试用例](/zh-cn/wiki/test-case/)。
+  在 DDT 中，[测试数据](/zh-cn/wiki/test-data/) 通常存储在外部数据源中，例如 CSV 文件、Excel 电子表格、XML 文件或[数据库](/zh-cn/wiki/database/)。 [测试脚本](/zh-cn/wiki/test-script/) 读取数据，对每个数据集执行相同的一组操作，并验证结果。此方法使单个 [测试脚本](/zh-cn/wiki/test-script/) 通过迭代数据集来覆盖多个 [测试用例](/zh-cn/wiki/test-case/)。
   这是伪代码的简化示例：
 
   ```

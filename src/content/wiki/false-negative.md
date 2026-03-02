@@ -39,7 +39,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
+- [维基百科](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 
 ## 关于假阴性的问题？
 
@@ -64,7 +64,7 @@ order: 0
 
 5. **更新中**
     测试策略以减轻未来发生的情况。
-  自动化可以通过确保[测试执行](/zh-cn/wiki/test-execution/)和环境[setup](/zh-cn/wiki/setup/)的一致性来减少[假阴性](/zh-cn/wiki/false-negative/)。然而，定期**审查和维护**自动化测试以保持其有效性至关重要。
+  自动化可以通过确保[测试执行](/zh-cn/wiki/test-execution/)和环境[环境搭建](/zh-cn/wiki/setup/)的一致性来减少[假阴性](/zh-cn/wiki/false-negative/)。然而，定期**审查和维护**自动化测试以保持其有效性至关重要。
   [质量保证](/zh-cn/wiki/quality-assurance/) 通过执行严格的测试设计、彻底的审查流程和持续改进实践，在防止 [假阴性](/zh-cn/wiki/false-negative/) 方面发挥着关键作用。
   [假阴性](/zh-cn/wiki/false-negative/) 可能会给[测试覆盖率](/zh-cn/wiki/test-coverage/) 带来软件运行状况的误导性印象，从而破坏[测试覆盖率](/zh-cn/wiki/test-coverage/)。他们还可以通过允许 [bugs](/zh-cn/wiki/bug/) 不被发现来破坏 [回归测试](/zh-cn/wiki/regression-testing/)，从而可能在以后引起更严重的问题。
   在[敏捷开发](/zh-cn/wiki/agile-development/) 中，[假阴性](/zh-cn/wiki/false-negative/) 由于延迟了缺陷检测而与“快速失败”原则发生冲突。对于持续集成和部署，它们可能会损害自动化管道的可靠性，从而导致错误构建的升级。

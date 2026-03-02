@@ -44,8 +44,8 @@ order: 0
 
 ### 另请参阅：
 
-- [Official Website](https://nunit.org/)
-- [Wikipedia](https://en.wikipedia.org/wiki/NUnit)
+- [官网](https://nunit.org/)
+- [维基百科](https://en.wikipedia.org/wiki/NUnit)
 
 ## 关于 NUnit 有疑问吗？
 
@@ -73,7 +73,7 @@ order: 0
 - **基于属性的测试配置**：使用 `[Test]`、`[TestCase]` 和 `[TestFixture]` 等属性来表示测试方法和类，可以轻松配置测试。
 - **[测试用例](/zh-cn/wiki/test-case/) 和 [测试套件](/zh-cn/wiki/test-suite/)**：将测试组织到案例和套件中，以实现更好的管理和结构。
 - **断言类**：一套全面的 `Assert` 方法，用于验证测试结果，包括针对不同数据类型和条件的多个重载。
-- **测试[Setup](/zh-cn/wiki/setup/) 和拆卸**：在每次测试之前和之后，利用`[SetUp]` 和`[TearDown]` 属性准备和清理[测试环境](/zh-cn/wiki/test-environment/)。
+- **测试[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：在每次测试之前和之后，利用`[SetUp]` 和`[TearDown]` 属性准备和清理[测试环境](/zh-cn/wiki/test-environment/)。
 - **参数化测试**：使用 `[TestCase]` 和 `[TestCaseSource]` 属性创建使用不同数据集运行的测试。
 - **并行[测试执行](/zh-cn/wiki/test-execution/)**：使用`[Parallelizable]` 属性并行运行测试以减少执行时间。
 - **类别**：使用`[Category]` 属性对测试进行分组，允许根据类别运行选择性测试。
@@ -87,7 +87,7 @@ order: 0
 - **基于属性的测试配置**：使用 `[Test]`、`[TestCase]` 和 `[TestFixture]` 等属性来表示测试方法和类，可以轻松配置测试。
 - **[测试用例](/zh-cn/wiki/test-case/) 和 [测试套件](/zh-cn/wiki/test-suite/)**：将测试组织到案例和套件中，以实现更好的管理和结构。
 - **断言类**：一套全面的 `Assert` 方法，用于验证测试结果，包括针对不同数据类型和条件的多个重载。
-- **测试[Setup](/zh-cn/wiki/setup/) 和拆卸**：在每次测试之前和之后，利用`[SetUp]` 和`[TearDown]` 属性准备和清理[测试环境](/zh-cn/wiki/test-environment/)。
+- **测试[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：在每次测试之前和之后，利用`[SetUp]` 和`[TearDown]` 属性准备和清理[测试环境](/zh-cn/wiki/test-environment/)。
 - **参数化测试**：使用 `[TestCase]` 和 `[TestCaseSource]` 属性创建使用不同数据集运行的测试。
 - **并行[测试执行](/zh-cn/wiki/test-execution/)**：使用`[Parallelizable]` 属性并行运行测试以减少执行时间。
 - **类别**：使用`[Category]` 属性对测试进行分组，允许根据类别运行选择性测试。
@@ -101,7 +101,7 @@ order: 0
 
 [NUnit](/zh-cn/wiki/nunit/) 是 .NET 生态系统中流行的测试框架，通常与 **MSTest** 和 **xUnit** 等其他框架进行比较。
   **MSTest** 是 Microsoft 的官方测试框架，与 Visual Studio 紧密集成，为在此 IDE 中工作的开发人员提供流畅的体验。然而，[NUnit](/zh-cn/wiki/nunit/) 往往更灵活、功能更丰富，[测试用例](/zh-cn/wiki/test-case/) 具有更广泛的属性，并且更好地支持参数化测试。 [NUnit](/zh-cn/wiki/nunit/)的断言库也被认为更强大。随着时间的推移，MSTest 不断得到改进，但通常被选择是因为它与 Microsoft 堆栈的无缝集成，而不是高级功能。
-  **xUnit** 是另一个开源框架，被 .NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [setup](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化​​和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
+  **xUnit** 是另一个开源框架，被 .NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化​​和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
   总之，[NUnit](/zh-cn/wiki/nunit/) 在 MSTest 提供的易用性和 xUnit 的现代测试方法之间提供了平衡。它以其灵活性、广泛的断言库以及对数据驱动测试的强大支持而脱颖而出，使其成为许多 .NET 开发人员的可靠选择。然而，这些框架之间的选择通常取决于特定的项目需求、团队熟悉程度和集成要求。
 
 ### 安装和设置
@@ -369,7 +369,7 @@ order: 0
     ```
 
 4. **使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 或支持[NUnit](/zh-cn/wiki/nunit/) 的集成开发环境(IDE) 运行测试**。 [测试运行者](/zh-cn/wiki/test-runner/) 将执行测试方法并报告结果。
-  请记住**保持测试相互隔离**和**独立**。每个测试都应该关注单个行为或场景。如果您需要为每个测试执行常见的[setup](/zh-cn/wiki/setup/) 或清理任务，请使用`[SetUp]` 和`[TearDown]` 方法。
+  请记住**保持测试相互隔离**和**独立**。每个测试都应该关注单个行为或场景。如果您需要为每个测试执行常见的[环境搭建](/zh-cn/wiki/setup/) 或清理任务，请使用`[SetUp]` 和`[TearDown]` 方法。
 
 1. **通过使用 `[TestFixture]` 属性标记类来创建 [测试类](/zh-cn/wiki/test-class/)**。此类将包含您的测试方法。
 
@@ -640,7 +640,7 @@ order: 0
       // Code to set up test environment
   }
   ```
-另一方面，**`TearDown`** 用于在测试运行后进行清理。这可能涉及释放资源，例如关闭[database](/zh-cn/wiki/database/)连接或删除[测试数据](/zh-cn/wiki/test-data/)，以确保不会留下可能影响后续测试的副作用。
+另一方面，**`TearDown`** 用于在测试运行后进行清理。这可能涉及释放资源，例如关闭[数据库](/zh-cn/wiki/database/)连接或删除[测试数据](/zh-cn/wiki/test-data/)，以确保不会留下可能影响后续测试的副作用。
 
   ```
   [TearDown]
@@ -760,12 +760,12 @@ order: 0
   ```
 在此示例中，`TestData` 是一个生成 [测试用例](/zh-cn/wiki/test-case/) 的 `IEnumerable<TestCaseData>`。每个`TestCaseData` 实例代表一组要传递给`TestMethod` 的参数。
   **注意**：确保数据源返回与您的测试方法的参数兼容的对象。 [NUnit](/zh-cn/wiki/nunit/) 将使用数据源提供的每组参数调用测试方法。
-  对于更复杂的场景，您还可以使用外部数据源，例如 CSV 文件、[databases](/zh-cn/wiki/database/) 或 XML 文件。您需要编写一个方法来读取数据并将其转换为 `TestCaseData` 对象。
+  对于更复杂的场景，您还可以使用外部数据源，例如 CSV 文件、[数据库](/zh-cn/wiki/database/) 或 XML 文件。您需要编写一个方法来读取数据并将其转换为 `TestCaseData` 对象。
   请记住保持数据源可维护且易于理解，因为复杂的数据源会使您的测试更难以阅读和调试。
 
 #### TestFixture 在 NUnit 中的作用是什么？
 
-在[NUnit](/zh-cn/wiki/nunit/) 中，**TestFixture** 是一个属性，它将类标记为包含测试以及（可选）[setup](/zh-cn/wiki/setup/) 或拆卸方法。它充当一组相关测试的容器，并允许在执行测试之前或之后运行任何初始化或清理代码。
+在[NUnit](/zh-cn/wiki/nunit/) 中，**TestFixture** 是一个属性，它将类标记为包含测试以及（可选）[环境搭建](/zh-cn/wiki/setup/) 或拆卸方法。它充当一组相关测试的容器，并允许在执行测试之前或之后运行任何初始化或清理代码。
   这是 TestFixture 的示例：
 
   ```

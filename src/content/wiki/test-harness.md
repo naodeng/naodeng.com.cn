@@ -46,9 +46,9 @@ order: 0
 #### 软件测试中的测试工具是什么？
 
 [软件测试](/zh-cn/wiki/software-testing/) 中的**[测试工具](/zh-cn/wiki/test-harness/)** 是软件和[测试数据](/zh-cn/wiki/test-data/) 的集合，配置为通过在不同条件下运行程序单元并监视其行为和输出来测试程序单元。它充当[自动化测试](/zh-cn/wiki/automated-testing/) 的受控环境，在其中执行[测试用例](/zh-cn/wiki/test-case/) 并观察结果，无需手动干预。
-  测试工具通常包括**[测试执行](/zh-cn/wiki/test-execution/) 引擎**、**结果报告工具**以及**[setup](/zh-cn/wiki/setup/) 和拆卸机制**，以创建用于运行和评估测试结果的综合环境。它们旨在自动化测试过程，允许以一致且可重复的方式执行大量[测试用例](/zh-cn/wiki/test-case/)。
+  测试工具通常包括**[测试执行](/zh-cn/wiki/test-execution/) 引擎**、**结果报告工具**以及**[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**，以创建用于运行和评估测试结果的综合环境。它们旨在自动化测试过程，允许以一致且可重复的方式执行大量[测试用例](/zh-cn/wiki/test-case/)。
   在实践中，[测试工具](/zh-cn/wiki/test-harness/) 可能涉及**模拟对象**、**存根**和**驱动程序**来模拟与正在测试的单元交互的组件。这种隔离有助于识别与测试对象直接相关的问题。 [测试工具](/zh-cn/wiki/test-harness/) 还捕获并记录[测试执行](/zh-cn/wiki/test-execution/) 详细信息，这对于调试和提高软件质量至关重要。
-  为了实现[测试工具](/zh-cn/wiki/test-harness/)，工程师通常编写**[测试脚本](/zh-cn/wiki/test-script/)**或**使用测试框架**，该框架可以处理[测试用例](/zh-cn/wiki/test-case/)、[测试环境](/zh-cn/wiki/test-environment/)的[setup](/zh-cn/wiki/setup/)的编排，以及预期与[实际结果](/zh-cn/wiki/actual-result/)的比较。 [测试工具](/zh-cn/wiki/test-harness/) 提供的自动化对于持续集成和交付实践至关重要，因为它可以通过代码库中引入的每个更改来快速反馈系统的运行状况。
+  为了实现[测试工具](/zh-cn/wiki/test-harness/)，工程师通常编写**[测试脚本](/zh-cn/wiki/test-script/)**或**使用测试框架**，该框架可以处理[测试用例](/zh-cn/wiki/test-case/)、[测试环境](/zh-cn/wiki/test-environment/)的[环境搭建](/zh-cn/wiki/setup/)的编排，以及预期与[实际结果](/zh-cn/wiki/actual-result/)的比较。 [测试工具](/zh-cn/wiki/test-harness/) 提供的自动化对于持续集成和交付实践至关重要，因为它可以通过代码库中引入的每个更改来快速反馈系统的运行状况。
 
 #### 为什么测试工具在软件测试中很重要？
 
@@ -68,7 +68,7 @@ order: 0
 - **存根和驱动程序**：模拟缺失组件（存根）的行为或调用被测组件（驱动程序）的函数的代码模块。
 - **测试配置**：定义测试环境的设置和参数，包括硬件、软件、网络配置和系统状态。
 - **结果报告器**：收集、组织和呈现测试结果，通常具有日志记录功能。
-- **[Setup](/zh-cn/wiki/setup/) 和清理例程**：在测试运行之前准备环境并在测试之后进行清理的脚本。
+- **[环境搭建](/zh-cn/wiki/setup/) 和清理例程**：在测试运行之前准备环境并在测试之后进行清理的脚本。
 - **模拟对象**：模仿真实组件行为的模拟对象，具有用于单元测试的可控输入和输出。
 - **集成点**：允许线束与其他工具或系统（例如版本控制或持续集成服务器）交互的接口。
 - **用户界面**：为测试人员提供一种与测试工具交互的方式，可以是命令行界面、图形 UI 或与 IDE 集成。
@@ -80,7 +80,7 @@ order: 0
 - **存根和驱动程序**：模拟缺失组件（存根）的行为或调用被测组件（驱动程序）的函数的代码模块。
 - **测试配置**：定义测试环境的设置和参数，包括硬件、软件、网络配置和系统状态。
 - **结果报告器**：收集、组织和呈现测试结果，通常具有日志记录功能。
-- **[Setup](/zh-cn/wiki/setup/) 和清理例程**：在测试运行之前准备环境并在测试之后进行清理的脚本。
+- **[环境搭建](/zh-cn/wiki/setup/) 和清理例程**：在测试运行之前准备环境并在测试之后进行清理的脚本。
 - **模拟对象**：模仿真实组件行为的模拟对象，具有用于单元测试的可控输入和输出。
 - **集成点**：允许线束与其他工具或系统（例如版本控制或持续集成服务器）交互的接口。
 - **用户界面**：为测试人员提供一种与测试工具交互的方式，可以是命令行界面、图形 UI 或与 IDE 集成。
@@ -88,7 +88,7 @@ order: 0
 #### 测试工具如何提高软件测试的效率？
 
 **[测试工具](/zh-cn/wiki/test-harness/)** 通过自动执行[测试用例](/zh-cn/wiki/test-case/) 来简化[软件测试](/zh-cn/wiki/software-testing/)，从而显着减少人工干预并加快反馈循环。它支持并行执行测试，这可以节省大量时间，特别是对于大型 [测试套件](/zh-cn/wiki/test-suite/) 或跨各种环境和配置运行测试时。
-  通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和环境[setup](/zh-cn/wiki/setup/)，[测试工具](/zh-cn/wiki/test-harness/) 允许**一致的测试运行**。这种一致性对于可靠的结果至关重要，因为它可以最大限度地减少环境因素和人为错误的影响。它还允许在代码提交时自动触发测试，从而通过在开发周期的早期发现问题来进一步提高效率，从而促进**持续集成（CI）**实践。
+  通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和环境[环境搭建](/zh-cn/wiki/setup/)，[测试工具](/zh-cn/wiki/test-harness/) 允许**一致的测试运行**。这种一致性对于可靠的结果至关重要，因为它可以最大限度地减少环境因素和人为错误的影响。它还允许在代码提交时自动触发测试，从而通过在开发周期的早期发现问题来进一步提高效率，从而促进**持续集成（CI）**实践。
   此外，[测试工具](/zh-cn/wiki/test-harness/) 通常包括**记录和报告**机制，提供有关测试结果的即时且详细的反馈。此功能有助于快速识别和解决故障，从而提高软件的整体质量。
   本质上，[测试工具](/zh-cn/wiki/test-harness/) 通过以下方式提高效率：
 
@@ -158,7 +158,7 @@ order: 0
 - **模拟框架**：在测试环境中模拟组件，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 框架**：结合文档和测试用例定义，例如 Cucumber 或 SpecFlow。
 - **安全测试工具**：专注于识别安全漏洞，使用 OWASP ZAP 或 Burp Suite 等工具。
-- **[Database](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
+- **[数据库](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
   每种线束类型都是根据所需的[测试覆盖率](/zh-cn/wiki/test-coverage/) 以及被测应用程序的具体方面来选择的。
 
 - **自定义测试工具**：根据特定应用要求量身定制，通常是内部构建的。
@@ -171,7 +171,7 @@ order: 0
 - **模拟框架**：在测试环境中模拟组件，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 框架**：结合文档和测试用例定义，例如 Cucumber 或 SpecFlow。
 - **安全测试工具**：专注于识别安全漏洞，使用 OWASP ZAP 或 Burp Suite 等工具。
-- **[Database](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
+- **[数据库](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
 
 #### 单元测试中如何使用测试工具？
 
@@ -370,12 +370,12 @@ order: 0
     ```
     import { loginModule, paymentModule } from 'testModules';
     ```
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：实施一个系统来动态管理[测试数据](/zh-cn/wiki/test-data/)。这可以通过[databases](/zh-cn/wiki/database/)、数据池或可基于[测试用例](/zh-cn/wiki/test-case/) 修改或选择的文件来实现。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：实施一个系统来动态管理[测试数据](/zh-cn/wiki/test-data/)。这可以通过[数据库](/zh-cn/wiki/database/)、数据池或可基于[测试用例](/zh-cn/wiki/test-case/) 修改或选择的文件来实现。
 
     ```
     SELECT * FROM testData WHERE scenario = 'edgeCase';
     ```
-- **钩子和回调**：集成钩子以在[测试执行](/zh-cn/wiki/test-execution/)中的某些点执行操作，例如[setup](/zh-cn/wiki/setup/)或拆卸，可以针对不同的场景进行定制。
+- **钩子和回调**：集成钩子以在[测试执行](/zh-cn/wiki/test-execution/)中的某些点执行操作，例如[环境搭建](/zh-cn/wiki/setup/)或拆卸，可以针对不同的场景进行定制。
 
     ```
     beforeEach(() => {
@@ -408,12 +408,12 @@ order: 0
     ```
     import { loginModule, paymentModule } from 'testModules';
     ```
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：实施一个系统来动态管理[测试数据](/zh-cn/wiki/test-data/)。这可以通过[databases](/zh-cn/wiki/database/)、数据池或可基于[测试用例](/zh-cn/wiki/test-case/) 修改或选择的文件来实现。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：实施一个系统来动态管理[测试数据](/zh-cn/wiki/test-data/)。这可以通过[数据库](/zh-cn/wiki/database/)、数据池或可基于[测试用例](/zh-cn/wiki/test-case/) 修改或选择的文件来实现。
 
     ```
     SELECT * FROM testData WHERE scenario = 'edgeCase';
     ```
-- **钩子和回调**：集成钩子以在[测试执行](/zh-cn/wiki/test-execution/)中的某些点执行操作，例如[setup](/zh-cn/wiki/setup/)或拆卸，可以针对不同的场景进行定制。
+- **钩子和回调**：集成钩子以在[测试执行](/zh-cn/wiki/test-execution/)中的某些点执行操作，例如[环境搭建](/zh-cn/wiki/setup/)或拆卸，可以针对不同的场景进行定制。
 
     ```
     beforeEach(() => {

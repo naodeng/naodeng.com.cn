@@ -170,16 +170,16 @@ order: 0
 
 #### 静态测试中的走查、检查和审查有什么区别？
 
-演练、[inspections](/zh-cn/wiki/inspection/) 和评论都是 [静态测试](/zh-cn/wiki/static-testing/) 的方法，每种方法都有不同的特征：
+演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和评论都是 [静态测试](/zh-cn/wiki/static-testing/) 的方法，每种方法都有不同的特征：
 
 - **演练**：这些是非正式会议，软件工件（如代码或设计文档）的作者将其呈现给同行以获取反馈。目标是提供更好的理解并发现异常情况。没有正式的流程；它更像是对材料的引导，通常是为了教育或集思广益。
-- **[Inspections](/zh-cn/wiki/inspection/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [inspection](/zh-cn/wiki/inspection/) 由主持人（而非作者）领导并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
-- **评论**：这个术语更广泛，可以包含演练和[inspections](/zh-cn/wiki/inspection/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
-  从本质上讲，演练是教育和头脑风暴会议，[inspections](/zh-cn/wiki/inspection/) 是正式的缺陷查找会议，审查可以是其中之一，具体取决于上下文。每个在[静态测试](/zh-cn/wiki/static-testing/) 中都有一个目的，即在[动态测试](/zh-cn/wiki/dynamic-testing/) 开始之前改进[软件质量](/zh-cn/wiki/software-quality/)。
+- **[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
+- **评论**：这个术语更广泛，可以包含演练和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
+  从本质上讲，演练是教育和头脑风暴会议，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是正式的缺陷查找会议，审查可以是其中之一，具体取决于上下文。每个在[静态测试](/zh-cn/wiki/static-testing/) 中都有一个目的，即在[动态测试](/zh-cn/wiki/dynamic-testing/) 开始之前改进[软件质量](/zh-cn/wiki/software-quality/)。
 
 - **演练**：这些是非正式会议，软件工件（如代码或设计文档）的作者将其呈现给同行以获取反馈。目标是提供更好的理解并发现异常情况。没有正式的流程；它更像是对材料的引导，通常是为了教育或集思广益。
-- **[Inspections](/zh-cn/wiki/inspection/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [inspection](/zh-cn/wiki/inspection/) 由主持人（而非作者）领导，并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
-- **评论**：这个术语更广泛，可以包含演练和[inspections](/zh-cn/wiki/inspection/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
+- **[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导，并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
+- **评论**：这个术语更广泛，可以包含演练和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
 
 #### 什么是静态代码分析？
 
@@ -417,7 +417,7 @@ order: 0
 - **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
 - **开发人员**：他们参与同行评审和结对编程，以检查彼此的代码是否存在潜在缺陷。他们还确保代码遵守编码标准和最佳实践。
 - **[代码审查员](/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
-- **主持人（[Inspections](/zh-cn/wiki/inspection/)）**：在正式的 [inspections](/zh-cn/wiki/inspection/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
+- **主持人（[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
 - **作者**：正在审核的工作产品的创建者。他们在评审期间回答问题并阐明其工作背后的意图。他们还负责在发现问题后进行必要的更改。
 - **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保 [静态测试](/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](/zh-cn/wiki/static-testing/)的结果以确保质量。
   每个参与者都必须明确自己的责任，并积极为[静态测试](/zh-cn/wiki/static-testing/) 的成功做出贡献。所有参与者之间的协作和沟通至关重要。
@@ -425,7 +425,7 @@ order: 0
 - **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
 - **开发人员**：他们参与同行评审和结对编程，以检查彼此的代码是否存在潜在缺陷。他们还确保代码遵守编码标准和最佳实践。
 - **[代码审查员](/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
-- **主持人（[Inspections](/zh-cn/wiki/inspection/)）**：在正式的 [inspections](/zh-cn/wiki/inspection/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
+- **主持人（[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
 - **作者**：正在审核的工作产品的创建者。他们在评审期间回答问题并阐明其工作背后的意图。他们还负责在发现问题后进行必要的更改。
 - **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保[静态测试](/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](/zh-cn/wiki/static-testing/)的结果以确保质量。
 
@@ -629,7 +629,7 @@ order: 0
 
 [静态测试](/zh-cn/wiki/static-testing/) 的行业标准是确保在不执行代码的情况下评估软件工件的一致且有效的方法的指南和实践。这些标准通常源自正式组织和集体行业经验。
   **ISO/IEC 20246:2019** 是一项广泛认可的标准，提供了 [静态测试](/zh-cn/wiki/static-testing/) 的要求，重点是工作产品审查。它概述了执行审核的流程，包括计划、准备、执行和记录。
-  **IEEE 1028** 定义了软件审查和审计的标准实践，其中包括 [inspections](/zh-cn/wiki/inspection/)、演练、技术审查和管理审查。该标准强调在开发过程的早期识别缺陷和问题。
+  **IEEE 1028** 定义了软件审查和审计的标准实践，其中包括 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练、技术审查和管理审查。该标准强调在开发过程的早期识别缺陷和问题。
   **MISRA（汽车行业软件可靠性协会）** 指南（特别与嵌入式系统相关）提供了一组静态代码分析规则，以确保软件的安全性和可靠性。
   **CERT（计算机紧急响应小组）**编码标准提供了一系列静态分析规则和建议，以避免可能导致安全漏洞的常见编程错误。
   **OWASP（开放 Web 应用程序安全项目）** 提供了一系列针对 Web 应用程序安全性的静态代码分析的最佳实践和工具。

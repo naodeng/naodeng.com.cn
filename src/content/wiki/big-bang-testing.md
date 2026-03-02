@@ -46,7 +46,7 @@ order: 0
 #### 软件测试中的大爆炸测试是什么？
 
 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 是一种**软件[集成测试](/zh-cn/wiki/integration-testing/)** 方法，其中所有组件或模块同时集成，然后将所有内容作为一个整体进行测试。当需要一次性验证整个系统时（通常是由于项目的限制或特定要求），通常会使用此方法。
-  要执行[大爆炸测试](/zh-cn/wiki/big-bang-testing/)，**[测试环境](/zh-cn/wiki/test-environment/)** 镜像生产[setup](/zh-cn/wiki/setup/) 是必不可少的。所有组件都必须完全开发并准备好进行测试。然后，测试团队将执行一系列**[测试用例](/zh-cn/wiki/test-case/)**，旨在评估模块之间的交互和系统的整体功能。
+  要执行[大爆炸测试](/zh-cn/wiki/big-bang-testing/)，**[测试环境](/zh-cn/wiki/test-environment/)** 镜像生产[环境搭建](/zh-cn/wiki/setup/) 是必不可少的。所有组件都必须完全开发并准备好进行测试。然后，测试团队将执行一系列**[测试用例](/zh-cn/wiki/test-case/)**，旨在评估模块之间的交互和系统的整体功能。
   鉴于其性质，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 最适合**小型系统**或当对各个模块的稳定性有很高的信心时。它与测试的粒度无关，而更多地与查看系统的整体行为有关。
   [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的有效性是通过系统在类似生产场景中是否按预期执行来衡量的。通常根据系统的 **[功能需求](/zh-cn/wiki/functional-requirements/)** 和 **性能标准** 评估结果。
   虽然 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可以成为更大的 [测试策略](/zh-cn/wiki/test-strategy/) 的一部分，但它并不总是首选，因为它可能会占用大量资源，并且对于缺陷识别来说隔离性较差。它通常与**增量**和**[单元测试](/zh-cn/wiki/unit-testing/)**形成对比，前者将模块一一集成和测试，而后者则专注于应用程序的最小可测试部分。
@@ -241,7 +241,7 @@ order: 0
 要在项目中有效实施 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)**，请按照以下步骤操作：
 
 1. **确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)**：创建涵盖所有功能的详细[测试计划](/zh-cn/wiki/test-plan/)。使用边界值分析和[等价划分](/zh-cn/wiki/equivalence-partitioning/) 等测试设计技术来确保不会忽略任何功能。
-2. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[setup](/zh-cn/wiki/setup/) 中可能不明显的问题。
+2. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[环境搭建](/zh-cn/wiki/setup/) 中可能不明显的问题。
 3. **开发健壮的[测试用例](/zh-cn/wiki/test-case/)**：编写清晰、简洁的[测试用例](/zh-cn/wiki/test-case/)，并明确定义预期结果。尽可能实现自动化以促进[回归测试](/zh-cn/wiki/regression-testing/)。
 4. **分配足够的资源**：确保团队拥有足够的带宽和必要的工具来执行测试和解决问题。
 5. **进行预测试检查**：验证所有组件是否已集成并且系统已准备好进行测试。
@@ -253,7 +253,7 @@ order: 0
   通过遵守这些准则，您可以最大限度地提高 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的有效性并降低其固有风险。
 
 1. **确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)**：创建涵盖所有功能的详细[测试计划](/zh-cn/wiki/test-plan/)。使用边界值分析和[等价划分](/zh-cn/wiki/equivalence-partitioning/) 等测试设计技术来确保不会忽略任何功能。
-2. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[setup](/zh-cn/wiki/setup/) 中可能不明显的问题。
+2. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[环境搭建](/zh-cn/wiki/setup/) 中可能不明显的问题。
 3. **开发健壮的[测试用例](/zh-cn/wiki/test-case/)**：编写清晰、简洁的[测试用例](/zh-cn/wiki/test-case/)，并明确定义预期结果。尽可能实现自动化以促进[回归测试](/zh-cn/wiki/regression-testing/)。
 4. **分配足够的资源**：确保团队拥有足够的带宽和必要的工具来执行测试和解决问题。
 5. **进行预测试检查**：验证所有组件是否已集成并且系统已准备好进行测试。
@@ -422,4 +422,4 @@ order: 0
 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的复杂性通常高于更多 **增量** 或 **模块化** 测试方法。这是由于一次性集成所有组件的性质，而不是先单独或小组测试它们。相比之下，**[单元测试](/zh-cn/wiki/unit-testing/)** 或 **[集成测试](/zh-cn/wiki/integration-testing/)** 等方法会逐个处理系统，从而简化故障排除并更有效地隔离故障。
   [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可能会导致**复杂的调试过程**，因为当所有内容同时测试时，识别缺陷来源可能具有挑战性。复杂性还源于需要全面了解整个系统的交互，这对于单独测试组件的方法来说不太重要。
   与 **[系统测试](/zh-cn/wiki/system-testing/)** 相比，Big Bang 的范围可能相似，但 [系统测试](/zh-cn/wiki/system-testing/) 通常在成功的较低级别测试之后进行，通过在检查整个系统之前确认各个部件的工作来降低复杂性。另一方面，Big Bang 跳过了这些步骤，导致可能更加复杂且充满风险的测试阶段。
-  总体而言，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的复杂性是其在 [setup](/zh-cn/wiki/setup/) 中的简单性的权衡——无需精心设计复杂的集成测试或存根/模拟——但这往往被诊断和解决这种整体方法所产生的问题的困难所抵消。
+  总体而言，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的复杂性是其在 [环境搭建](/zh-cn/wiki/setup/) 中的简单性的权衡——无需精心设计复杂的集成测试或存根/模拟——但这往往被诊断和解决这种整体方法所产生的问题的困难所抵消。

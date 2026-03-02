@@ -1,997 +1,997 @@
-# node.js
+# JMeter
 
 <!-- TOC START -->
-- [node.js](#nodejs)
+- [JMeter](#jmeter)
   - [相关术语：](#相关术语)
     - [另请参阅：](#另请参阅)
-  - [关于 Node.js 有疑问吗？](#关于-nodejs-有疑问吗)
+  - [关于 JMeter 有疑问吗？](#关于-jmeter-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
-      - [Node.js 是什么以及为什么它很重要？](#nodejs-是什么以及为什么它很重要)
-      - [Node.js 和 JavaScript 之间有什么区别？](#nodejs-和-javascript-之间有什么区别)
-      - [Node.js 中的事件驱动编程是什么？](#nodejs-中的事件驱动编程是什么)
-    - [对于 CentOS、Fedora 和基于 Red Hat 的发行版：](#对于-centosfedora-和基于-red-hat-的发行版)
-      - [如何在 Node.js 中创建服务器？](#如何在-nodejs-中创建服务器)
-      - [如何在 Node.js 中创建和使用模块？](#如何在-nodejs-中创建和使用模块)
-      - [Node.js 中有哪些内置模块？](#nodejs-中有哪些内置模块)
-      - [Node.js 中 module.exports 的用途是什么？](#nodejs-中-moduleexports-的用途是什么)
-      - [什么是 ORM 以及它如何在 Node.js 中使用？](#什么是-orm-以及它如何在-nodejs-中使用)
-      - [如何处理 Node.js 中的数据库错误？](#如何处理-nodejs-中的数据库错误)
+      - [什么是 JMeter？](#什么是-jmeter)
+      - [为什么 JMeter 在软件测试中很重要？](#为什么-jmeter-在软件测试中很重要)
+      - [JMeter 的主要功能是什么？](#jmeter-的主要功能是什么)
+      - [JMeter 与其他性能测试工具有何不同？](#jmeter-与其他性能测试工具有何不同)
+      - [JMeter 在 e2e 测试中的作用是什么？](#jmeter-在-e2e-测试中的作用是什么)
+    - [安装和设置](#安装和设置)
+      - [如何安装 JMeter？](#如何安装-jmeter)
+      - [JMeter 有哪些系统要求？](#jmeter-有哪些系统要求)
+      - [第一次如何设置 JMeter？](#第一次如何设置-jmeter)
+      - [如何配置 JMeter 以获得最佳性能？](#如何配置-jmeter-以获得最佳性能)
+      - [将 JMeter 升级到新版本的步骤是什么？](#将-jmeter-升级到新版本的步骤是什么)
+    - [使用 JMeter](#使用-jmeter)
+      - [如何在 JMeter 中创建基本测试计划？](#如何在-jmeter-中创建基本测试计划)
+      - [JMeter 测试计划中有哪些不同类型的元素？](#jmeter-测试计划中有哪些不同类型的元素)
+      - [如何使用 JMeter 进行负载测试？](#如何使用-jmeter-进行负载测试)
+      - [如何使用 JMeter 进行压力测试？](#如何使用-jmeter-进行压力测试)
+      - [在 JMeter 中记录测试的步骤是什么？](#在-jmeter-中记录测试的步骤是什么)
+      - [如何分析 JMeter 测试的结果？](#如何分析-jmeter-测试的结果)
+    - [高级主题](#高级主题)
+      - [如何使用 JMeter 进行分布式测试？](#如何使用-jmeter-进行分布式测试)
+      - [在 JMeter 中编写脚本的最佳实践是什么？](#在-jmeter-中编写脚本的最佳实践是什么)
+      - [如何将 JMeter 与其他测试工具集成？](#如何将-jmeter-与其他测试工具集成)
+      - [JMeter 有哪些限制以及如何克服它们？](#jmeter-有哪些限制以及如何克服它们)
+      - [如何使用 JMeter 进行 Web 服务的性能测试？](#如何使用-jmeter-进行-web-服务的性能测试)
 <!-- TOC END -->
-
-Node.js
-
-是一个开源、跨平台的 JavaScript 运行时环境，允许开发人员在服务器端执行 JavaScript 代码。传统上，JavaScript 主要用于 Web 浏览器中的客户端脚本编写。
-
-Node.js
-
-然而，JavaScript 可以用于在浏览器之外构建可扩展的网络应用程序。基于 Chrome 的 V8 JavaScript 引擎构建，
-
-Node.js
-
-旨在构建快速高效的 Web 应用程序，尤其是 I/O 密集型应用程序。
+JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的开源软件应用程序。它是专为负载测试以及 Web 应用程序的性能测量，但其功能超出了 Web 协议的范围。JMeter 允许用户使用并发线程模拟多个用户，向服务器创建各种请求，并分析应用程序在不同负载条件下的性能。特点 JMeter 包括使用并发线程模拟多个用户的能力、对各种协议（包括 HTTP、FTP、JDBC 等）的支持以及用于设计和可视化的图形界面测试计划。其可扩展性允许开发人员和测试人员集成其他插件或编写自定义代码以增强其功能。和 JMeter，组织可以验证其软件应用程序和基础设施的可扩展性、响应能力和可靠性。
 
 ## 相关术语：
 
-- [JavaScript runtime](/zh-cn/wiki/node-js/)
-- [Jest](/zh-cn/wiki/jest/)
-- [Jasmine](/zh-cn/wiki/jasmine/)
+- [性能测试](/zh-cn/wiki/performance-testing/)
 
 ### 另请参阅：
 
-- [Official Website](https://nodejs.org/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Node.js)
+- [官网](https://jmeter.apache.org/)
+- [维基百科](https://en.wikipedia.org/wiki/Apache_JMeter)
 
-## 关于 Node.js 有疑问吗？
+## 关于 JMeter 有疑问吗？
 
 ### 基础知识和重要性
 
-#### Node.js 是什么以及为什么它很重要？
+#### 什么是 JMeter？
 
-[Node.js](/zh-cn/wiki/node-js/) 是一个开源的跨平台运行时环境，允许您在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发人员能够使用 JavaScript 编写命令行工具和服务器端脚本，即在服务器端运行脚本以生成动态网页内容，然后再将页面发送到用户的 Web 浏览器。
-  **[Node.js](/zh-cn/wiki/node-js/) 的重要性：**
+[JMeter](/zh-cn/wiki/jmeter/) 是一个开源 Java 应用程序，旨在加载测试功能行为和测量性能。最初是为 Web 应用程序测试而开发的，后来扩展到其他测试功能。 [JMeter](/zh-cn/wiki/jmeter/) 模拟一组用户向目标服务器发送请求并返回显示目标服务器/应用程序的性能/功能的统计信息。
+  [JMeter](/zh-cn/wiki/jmeter/) 的**可扩展性**使其能够支持各种协议，例如 HTTP、HTTPS、FTP、SOAP、JDBC、JMS 和 LDAP。它还可用于测试静态资源（如 JavaScript 和 HTML）以及动态资源（如 AJAX、JSP、Servlet 和 XML）的性能。
+  它提供诸如**线程组**来模拟并发用户、**采样器**来定义发送到服务器的请求、**侦听器**用于查看测试结果以及**计时器**等功能来管理请求节奏。 [JMeter](/zh-cn/wiki/jmeter/) 还支持通过测试片段进行**模块化**以及使用变量和函数进行动态输入的**参数化**。
+  对于**分布式测试**，[JMeter](/zh-cn/wiki/jmeter/)可以从单个主控制器控制多个从机，从而实现大规模测试。它还与其他工具和插件集成以增强功能，并可以通过自定义脚本进行扩展。
+  [JMeter](/zh-cn/wiki/jmeter/)的 GUI 模式有利于[测试计划](/zh-cn/wiki/test-plan/)的创建和调试，而非 GUI 模式则针对[负载测试](/zh-cn/wiki/load-testing/)进行了优化。它可以使用 [自动化测试](/zh-cn/wiki/automated-testing/) 环境的命令行模式集成到 CI/CD 管道中。尽管有这些功能，[JMeter](/zh-cn/wiki/jmeter/) 并不是浏览器，因此它无法像真正的浏览器一样呈现 HTML 页面，这可能会影响客户端性能指标。
 
-- **统一语言**：[Node.js](/zh-cn/wiki/node-js/)使用 JavaScript，这意味着客户端和服务器端可以使用相同的语言。这简化了开发，并可以提高团队之间的效率和理解。
-  - **异步 I/O**：它异步处理 I/O 操作，这可以带来更好的性能和可扩展性，特别是对于需要大量 I/O 操作的应用程序，例如可能需要同时处理多个任务的[test automation](/zh-cn/wiki/test-automation/)系统。
-  - **NPM 生态系统**：[Node.js](/zh-cn/wiki/node-js/) 附带 npm（节点包管理器），这是一个庞大的库和工具存储库，这对 [test automation](/zh-cn/wiki/test-automation/) 非常有利，提供了丰富的模块来扩展功能并减少开发时间。
-  - **微服务架构**：它非常适合构建微服务，微服务是构建可扩展系统的流行架构风格，包括可能需要与各种服务和工具集成的[test automation](/zh-cn/wiki/test-automation/)框架。
-  - **跨平台**：[Node.js](/zh-cn/wiki/node-js/) 应用程序无需修改即可在各种操作系统上运行，使其成为需要与平台无关的[test automation](/zh-cn/wiki/test-automation/) 工具的理想选择。
-  - **社区和支持**：它拥有一个庞大而活跃的社区，这意味着丰富的资源、支持和对技术的不断改进，这对于维护和更新[test automation](/zh-cn/wiki/test-automation/)框架是有利的。
-  - **统一语言**：[Node.js](/zh-cn/wiki/node-js/)使用 JavaScript，这意味着客户端和服务器端可以使用相同的语言。这简化了开发，并可以提高团队之间的效率和理解。
-  - **异步 I/O**：它异步处理 I/O 操作，这可以带来更好的性能和可扩展性，特别是对于需要大量 I/O 操作的应用程序，例如可能需要同时处理多个任务的[test automation](/zh-cn/wiki/test-automation/)系统。
-  - **NPM 生态系统**：[Node.js](/zh-cn/wiki/node-js/) 附带 npm（节点包管理器），这是一个庞大的库和工具存储库，这对 [test automation](/zh-cn/wiki/test-automation/) 非常有利，提供了丰富的模块来扩展功能并减少开发时间。
-  - **微服务架构**：它非常适合构建微服务，微服务是构建可扩展系统的流行架构风格，包括可能需要与各种服务和工具集成的[test automation](/zh-cn/wiki/test-automation/)框架。
-  - **跨平台**：[Node.js](/zh-cn/wiki/node-js/) 应用程序无需修改即可在各种操作系统上运行，使其成为需要与平台无关的[test automation](/zh-cn/wiki/test-automation/) 工具的理想选择。
-  - **社区和支持**：拥有庞大且活跃的社区，这意味着丰富的资源、支持以及对技术的不断改进，这对于维护和更新[test automation](/zh-cn/wiki/test-automation/)框架是有利的。
+#### 为什么 JMeter 在软件测试中很重要？
 
-#### Node.js 和 JavaScript 之间有什么区别？
+[JMeter](/zh-cn/wiki/jmeter/) 在[软件测试](/zh-cn/wiki/software-testing/) 中很重要，因为它在模拟各种用户场景和负载模式方面具有**多功能性**和**可扩展性**。通过使测试人员能够：
 
-JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部分在 Web 浏览器中运行，支持动态内容和交互式网页。它是网络脚本语言，旨在轻量级和多功能。
-  另一方面，[Node.js](/zh-cn/wiki/node-js/) 是一个**运行时环境**，允许 JavaScript 在服务器端执行。它基于 Chrome 的 V8 JavaScript 引擎构建，使 JavaScript 能够执行通常为后端语言保留的操作，例如文件系统访问和网络通信。
-  主要区别在于它们的**执行环境**和**应用程序**。JavaScript 传统上在浏览器中运行并操作网页内容，响应用户交互。 [Node.js](/zh-cn/wiki/node-js/) 在服务器上运行，而不是在浏览器中运行，用于构建可扩展的网络应用程序。
-  [Node.js](/zh-cn/wiki/node-js/) 还提供了**非阻塞 I/O 模型**和**异步编程**，它们不是 JavaScript 本身固有的，而是 [Node.js](/zh-cn/wiki/node-js/) 运行时的一部分。
-  这是代码中的一个简单类比：
+- **模拟重负载**
+    在服务器、网络和对象上测试强度并分析不同条件下的整体性能。
+
+- **测量应用程序性能**
+    关于响应时间、吞吐量和资源利用率等特定性能指标。
+
+- **识别瓶颈**
+    通过提供详细的报告和图表，帮助查明可能阻碍大规模绩效的问题。
+
+- **支持持续集成**
+    通过与 Jenkins 等工具集成，可以在 CI/CD 管道中进行自动化性能测试。
+
+- **进行各种类型的测试**
+    例如负载、压力、功能和回归测试，无需额外的工具。
+
+- **测试不同的协议和服务器类型**
+    包括 HTTP、HTTPS、SOAP、REST、FTP 等，这对于 Web 服务和应用程序的全面测试至关重要。
+
+- **促进协作**
+    通过利用其开源特性在团队成员之间共享测试计划和结果，确保测试工作的一致性。
+  通过利用[JMeter](/zh-cn/wiki/jmeter/)，组织可确保其应用程序能够处理预期的用户负载，从而防止潜在的停机并确保流畅的用户体验。这使得 [JMeter](/zh-cn/wiki/jmeter/) 成为专注于性能的 [测试自动化](/zh-cn/wiki/test-automation/) 工程师和 [负载测试](/zh-cn/wiki/load-testing/) 的工具库中不可或缺的工具。
+
+- **模拟重负载**
+    在服务器、网络和对象上测试强度并分析不同条件下的整体性能。
+
+- **测量应用程序性能**
+    关于响应时间、吞吐量和资源利用率等特定性能指标。
+
+- **识别瓶颈**
+    通过提供详细的报告和图表，帮助查明可能阻碍大规模绩效的问题。
+
+- **支持持续集成**
+    通过与 Jenkins 等工具集成，可以在 CI/CD 管道中进行自动化性能测试。
+
+- **进行各种类型的测试**
+    例如负载、压力、功能和回归测试，无需额外的工具。
+
+- **测试不同的协议和服务器类型**
+    包括 HTTP、HTTPS、SOAP、REST、FTP 等，这对于 Web 服务和应用程序的全面测试至关重要。
+
+- **促进协作**
+    通过利用其开源特性在团队成员之间共享测试计划和结果，确保测试工作的一致性。
+
+#### JMeter 的主要功能是什么？
+
+[JMeter](/zh-cn/wiki/jmeter/) 的主要功能包括：
+
+- **多协议支持**：JMeter 支持各种协议的测试，例如 HTTP、HTTPS、FTP、SOAP、REST 和 TCP。
+  - **Visual [测试计划](/zh-cn/wiki/test-plan/) Building**：用户可以使用 GUI 创建测试计划，从而更轻松地设计和修改测试。
+  - **记录功能**：JMeter 可以直接从 Web 浏览器记录操作，这简化了测试脚本的创建。
+  - **回放和重播**：可以重播测试计划以模拟用户操作和交互。
+  - **参数化**：它允许通过 CSV 文件或其他方式动态输入数据，从而实现数据驱动的测试。
+  - **断言**：用户可以添加断言来根据预期结果验证服务器的响应。
+  - **可扩展性**：JMeter 可以使用自定义插件进行扩展，并支持与其他工具集成。
+  - **计时器**：这些允许模拟请求之间的真实用户思考时间。
+  - **可扩展性**：JMeter 可以有效地使用自己的资源来模拟大量用户，并且可以横向扩展以进行分布式测试。
+  - **报告**：它提供全面的报告功能，包括用于分析和可视化测试结果的图形、图表和表格。
+  - **脚本支持**：JMeter 支持使用各种语言（例如 JavaScript、Groovy）编写高级测试场景的脚本。
+  - **关联**：JMeter 可以通过使用正则表达式提取器和其他后处理器来处理动态服务器响应，例如会话 ID。
+  这些功能使 [JMeter](/zh-cn/wiki/jmeter/) 成为跨不同应用程序和服务的 [性能测试](/zh-cn/wiki/performance-testing/) 的多功能且强大的工具。
+
+- **多协议支持**：JMeter 支持各种协议的测试，例如 HTTP、HTTPS、FTP、SOAP、REST 和 TCP。
+  - **Visual [测试计划](/zh-cn/wiki/test-plan/) Building**：用户可以使用 GUI 创建测试计划，从而更轻松地设计和修改测试。
+  - **记录功能**：JMeter 可以直接从 Web 浏览器记录操作，这简化了测试脚本的创建。
+  - **回放和重播**：可以重播测试计划以模拟用户操作和交互。
+  - **参数化**：它允许通过 CSV 文件或其他方式动态输入数据，从而实现数据驱动的测试。
+  - **断言**：用户可以添加断言来根据预期结果验证服务器的响应。
+  - **可扩展性**：JMeter 可以使用自定义插件进行扩展，并支持与其他工具集成。
+  - **计时器**：这些允许模拟请求之间的真实用户思考时间。
+  - **可扩展性**：JMeter 可以有效地使用自己的资源来模拟大量用户，并且可以横向扩展以进行分布式测试。
+  - **报告**：它提供全面的报告功能，包括用于分析和可视化测试结果的图形、图表和表格。
+  - **脚本支持**：JMeter 支持使用各种语言（例如 JavaScript、Groovy）编写高级测试场景的脚本。
+  - **关联**：JMeter 可以通过使用正则表达式提取器和其他后处理器来处理动态服务器响应，例如会话 ID。
+
+#### JMeter 与其他性能测试工具有何不同？
+
+[JMeter](/zh-cn/wiki/jmeter/) 与其他[性能测试](/zh-cn/wiki/performance-testing/) 工具的不同之处主要在于其**开源性质**和**可扩展性**。与许多商业工具不同，[JMeter](/zh-cn/wiki/jmeter/) 可以使用自定义插件进行扩展，并得到为其开发做出贡献的大型社区的支持。它旨在满足从 **[负载测试](/zh-cn/wiki/load-testing/)**、**[压力测试](/zh-cn/wiki/stress-testing/)** 到 **[功能测试](/zh-cn/wiki/functional-testing/)** 的各种测试需求。
+  [JMeter](/zh-cn/wiki/jmeter/) 在**多线程框架**上运行，该框架允许多个线程并发采样并模拟服务器上的重负载。这与一些在协议级别模拟负载或使用浏览器模拟来实现更真实负载的工具不同。
+  另一个区别是它的**GUI 设计**，与一些基于脚本的工具相比，它对于创建[测试计划](/zh-cn/wiki/test-plan/)更加**用户友好**。然而，这也可能是一个缺点，因为 GUI 可能会消耗更多资源，因此，[JMeter](/zh-cn/wiki/jmeter/) 通常在非 GUI 模式下运行，以实现实际的 [负载测试](/zh-cn/wiki/load-testing/)。
+  [JMeter](/zh-cn/wiki/jmeter/) **基于 Java**，这意味着它**独立于**并且可以在任何支持 Java 的系统上运行。这与仅限于特定操作系统的工具形成鲜明对比。
+  在**协议支持**方面，[JMeter](/zh-cn/wiki/jmeter/) 具有 HTTP、HTTPS、FTP、SOAP 和 JDBC 等内置功能。虽然某些工具专门用于网络协议或 [数据库](/zh-cn/wiki/database/) 测试，但 [JMeter](/zh-cn/wiki/jmeter/) 提供了广泛的测试功能，无需额外购买或集成。
+  最后，[JMeter](/zh-cn/wiki/jmeter/) 通过 HTTP(S) [测试脚本](/zh-cn/wiki/test-script/) 记录器的 **记录功能** 允许测试人员在 Web 浏览器上记录他们的操作，然后从这些操作创建 [测试脚本](/zh-cn/wiki/test-script/)，这一功能在其他工具中并不总是可用或简单。
+
+#### JMeter 在 e2e 测试中的作用是什么？
+
+在**端到端 (e2e) 测试**中，[JMeter](/zh-cn/wiki/jmeter/) 通过模拟用户从开始到结束的旅程，确保整个应用程序（包括其后端服务和[数据库](/zh-cn/wiki/database/)）在各种条件下按预期运行，发挥着至关重要的作用。虽然 [JMeter](/zh-cn/wiki/jmeter/) 主要以负载和 [性能测试](/zh-cn/wiki/performance-testing/) 闻名，但它可以在 e2e 测试中利用，以验证系统在实际场景中是否满足性能基准。
+  [JMeter](/zh-cn/wiki/jmeter/) 可以模拟具有并发会话的多个用户与 Web 应用程序、[APIs](/zh-cn/wiki/api/) 和 Web 服务进行交互，这对于 e2e 测试至关重要。它有助于识别可能影响用户体验的瓶颈和性能问题。通过将 [JMeter](/zh-cn/wiki/jmeter/) 与持续集成工具（例如 Jenkins）集成，e2e 测试可以自动化并作为部署管道的一部分运行。
+  对于 e2e 测试，[JMeter](/zh-cn/wiki/jmeter/) 记录浏览器操作的能力特别有用。测试人员可以记录用户与应用程序的交互，然后通过修改来重播它以模拟各种用户行为。可以添加断言来验证响应，确保应用程序按预期运行。
+  [JMeter](/zh-cn/wiki/jmeter/) 通过插件和脚本的可扩展性允许自定义测试以覆盖复杂的 e2e 场景。但是，需要注意的是，[JMeter](/zh-cn/wiki/jmeter/) 不会渲染用户界面，因此它不能取代为基于 UI 的 e2e 测试设计的工具。相反，它通过提供一种测试应用程序在负载下的性能和行为的方法来补充它们，这是全面的端到端测试策略的一个关键方面。
+
+### 安装和设置
+
+#### 如何安装 JMeter？
+
+要安装[JMeter](/zh-cn/wiki/jmeter/)，请按照下列步骤操作：
+
+1. **从 Apache [JMeter](/zh-cn/wiki/jmeter/) 网站下载**最新的 [JMeter](/zh-cn/wiki/jmeter/) 二进制文件。根据您的操作系统选择相关的 zip 或 tgz 文件。
+  2. **解压**下载的存档到您选择的目录。
+    在 Windows 上，您可以使用 7-Zip 或 WinRAR 等软件来提取文件。
+    在基于 Unix 的系统上，您可以使用终端：
+    将`<version>` 替换为下载文件的实际版本号。
+
+    ```
+    tar -xzf apache-jmeter-<version>.tgz
+    ```
+
+3. **验证 Java 安装**：确保您安装了兼容的 Java 版本。 [JMeter](/zh-cn/wiki/jmeter/) 需要 Java 8 或更高版本。通过运行以下命令检查您的 Java 版本：
+    如果未安装 Java 或版本已过时，请从 Oracle 网站下载并安装相应的 Java JDK 或使用 OpenJDK。
+
+    ```
+    java -version
+    ```
+
+4. **设置 JAVA_HOME**（可选）：设置`JAVA_HOME` 环境变量以指向您的 Java 安装目录。此步骤是特定于平台的，如果 Java 已在系统的 PATH 中，则可能不需要。
+  5. **运行[JMeter](/zh-cn/wiki/jmeter/)**：导航到提取的[JMeter](/zh-cn/wiki/jmeter/) 文件夹中的`bin` 目录并启动[JMeter](/zh-cn/wiki/jmeter/)：
+    在 Windows 上，双击`jmeter.bat`。
+    在基于 Unix 的系统上，使 `jmeter` shell 脚本可执行并运行它：
+
+    ```
+    chmod +x jmeter.sh
+    ./jmeter.sh
+    ```
+[JMeter](/zh-cn/wiki/jmeter/) 现在应该启动，您可以开始创建 [测试计划](/zh-cn/wiki/test-plan/)。
+
+1. **从 Apache [JMeter](/zh-cn/wiki/jmeter/) 网站下载**最新的 [JMeter](/zh-cn/wiki/jmeter/) 二进制文件。根据您的操作系统选择相关的 zip 或 tgz 文件。
+  2. **解压**下载的存档到您选择的目录。
+    在 Windows 上，您可以使用 7-Zip 或 WinRAR 等软件来提取文件。
+    在基于 Unix 的系统上，您可以使用终端：
+    将`<version>` 替换为下载文件的实际版本号。
+
+    ```
+    tar -xzf apache-jmeter-<version>.tgz
+    ```
+
+3. **验证 Java 安装**：确保您安装了兼容的 Java 版本。 [JMeter](/zh-cn/wiki/jmeter/) 需要 Java 8 或更高版本。通过运行以下命令检查您的 Java 版本：
+    如果未安装 Java 或版本已过时，请从 Oracle 网站下载并安装相应的 Java JDK 或使用 OpenJDK。
+
+    ```
+    java -version
+    ```
+
+4. **设置 JAVA_HOME**（可选）：设置`JAVA_HOME` 环境变量以指向您的 Java 安装目录。此步骤是特定于平台的，如果 Java 已在系统的 PATH 中，则可能不需要。
+  5. **运行[JMeter](/zh-cn/wiki/jmeter/)**：导航到提取的[JMeter](/zh-cn/wiki/jmeter/) 文件夹中的`bin` 目录并启动[JMeter](/zh-cn/wiki/jmeter/)：
+    在 Windows 上，双击`jmeter.bat`。
+    在基于 Unix 的系统上，使 `jmeter` shell 脚本可执行并运行它：
+
+    ```
+    chmod +x jmeter.sh
+    ./jmeter.sh
+    ```
+
+#### JMeter 有哪些系统要求？
+
+[JMeter](/zh-cn/wiki/jmeter/) 是基于 Java 的应用程序，因此它需要有效的 Java 运行时环境 (JRE) 或 Java 开发工具包 (JDK)。截至 2023 年初我所知，运行 [JMeter](/zh-cn/wiki/jmeter/) 的系统要求是：
+
+- **Java**：JMeter 5.x 需要 Java 8 或更高版本。建议使用最新版本的 Java，以便从最新的性能和安全改进中受益。
+  - **操作系统**：JMeter 基于 Java，可以在任何支持 Java 的操作系统上运行，包括 Windows、Linux 和 macOS。
+  - **内存**：默认堆大小对于小型测试可能足够，但对于较大的测试，您可能需要增加堆大小。这可以通过编辑
+    `jmeter.bat`
+    （对于 Windows）或
+    `jmeter`
+    （对于 Unix）文件来调整
+    `-Xms`
+    和
+    `-Xmx`
+    参数。
+
+- **磁盘空间**：虽然 JMeter 本身不需要太多磁盘空间，但请确保有足够的空间来存储测试结果和日志，特别是在运行大量测试时。
+  - **处理器**：更快的 CPU 可以提高 JMeter 的性能，特别是在模拟大量并发用户时。
+  要调整内存设置，您可以修改[JMeter](/zh-cn/wiki/jmeter/)启动脚本中的`JVM_ARGS`变量：
 
   ```
-  // JavaScript in a browser
-  document.getElementById('button').addEventListener('click', function() {
-    alert('Button clicked!');
-  });
-  // Node.js on a server
-  const http = require('http');
-  http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello World\n');
-  }).listen(3000);
-  ```总而言之，JavaScript 是一种语言，而 [Node.js](/zh-cn/wiki/node-js/) 是将 JavaScript 的功能扩展到非浏览器环境的平台。
-
-#### Node.js 的主要特性是什么？
-
-[Node.js](/zh-cn/wiki/node-js/) 提供**非阻塞 I/O [API](/zh-cn/wiki/api/)**，可优化实时 Web 应用程序的应用程序吞吐量和可扩展性。其**异步事件驱动架构**确保[Node.js](/zh-cn/wiki/node-js/) 可以有效地处理大量并发连接。
-  **libuv 库** 支持 [Node.js](/zh-cn/wiki/node-js/)，提供一组跨平台的 I/O 原语。 [Node.js](/zh-cn/wiki/node-js/) 构建于 **V8 JavaScript 运行时**，它以其速度和性能而闻名。
-  **流**是数据的集合 - 例如数组或字符串，您可以异步读取或写入。 [Node.js](/zh-cn/wiki/node-js/) 使用流来处理块中的数据，这对于处理大量数据（例如文件或网络通信）非常有效。
-  [Node.js](/zh-cn/wiki/node-js/) 拥有一个称为 npm 的**软件包生态系统**，它是世界上最大的开源库生态系统。它允许轻松共享和重用代码。
-  **REPL（读取 - 评估 - 打印循环）**是用于测试 [Node.js](/zh-cn/wiki/node-js/)/JavaScript 代码的工具。它是一个处理 [Node.js](/zh-cn/wiki/node-js/) 表达式的交互式 shell。该环境允许快速原型设计和调试。
-  [Node.js](/zh-cn/wiki/node-js/) 支持数据的**缓冲区和缓存**，这是数据从一个地方传输到另一个地方的临时保存点。这提高了 I/O 操作的性能。
-  最后，[Node.js](/zh-cn/wiki/node-js/) 具有用于服务器端和客户端脚本的**统一[API](/zh-cn/wiki/api/)**。这意味着两者通常使用相同的模式和方法，这可以简化同构应用程序的开发过程。
-
-#### 为什么 Node.js 是单线程的？
-
-[Node.js](/zh-cn/wiki/node-js/) 被设计为**单线程**，以优化 Web 环境中的**性能**和**可扩展性**。该架构允许[Node.js](/zh-cn/wiki/node-js/) 以较低的开销处理大量并发连接。单线程事件循环是 [Node.js](/zh-cn/wiki/node-js/) 的核心，可以管理许多连接，因为它执行非阻塞 I/O 操作，这意味着服务器可以在等待 I/O 操作完成的同时继续处理其他任务。
-  单线程模型还简化了开发，因为它消除了与线程管理和同步相关的复杂性。开发人员无需担心多线程环境中常见的**死锁**或**竞争条件**。
-  但是，[Node.js](/zh-cn/wiki/node-js/) 不限于单个线程；它使用**工作线程**来执行文件系统操作或繁重计算等任务，确保这些任务不会阻塞主事件循环。 **集群模块**允许运行多个[Node.js](/zh-cn/wiki/node-js/)工作进程，这些进程可以共享服务器端口，从而实现多个 CPU 核心的负载平衡。
-  这是使用 cluster 模块的示例：
-
+  JVM_ARGS="-Xms512m -Xmx512m" jmeter.sh
   ```
-  const cluster = require('cluster');
-  const http = require('http');
-  const numCPUs = require('os').cpus().length;
-  if (cluster.isMaster) {
-    for (let i = 0; i < numCPUs; i++) {
-      cluster.fork();
-    }
-  } else {
-    http.createServer((req, res) => {
-      res.writeHead(200);
-      res.end('Hello World\n');
-    }).listen(8000);
-  }
-  ```在此代码中，`cluster.isMaster` 检查确定当前进程是否为主进程，然后创建工作进程。每个工作进程都会创建一个监听同一端口的 HTTP 服务器。
+将 `512m` 替换为所需的堆大小。对于分布式测试，请确保集群中的所有节点都满足这些要求并且已正确联网。
 
-#### Node.js 中的事件驱动编程是什么？
+- **Java**：JMeter 5.x 需要 Java 8 或更高版本。建议使用最新版本的 Java，以便从最新的性能和安全改进中受益。
+  - **操作系统**：JMeter 基于 Java，可以在任何支持 Java 的操作系统上运行，包括 Windows、Linux 和 macOS。
+  - **内存**：默认堆大小对于小型测试可能足够，但对于较大的测试，您可能需要增加堆大小。这可以通过编辑
+    `jmeter.bat`
+    （对于 Windows）或
+    `jmeter`
+    （对于 Unix）文件来调整
+    `-Xms`
+    和
+    `-Xmx`
+    参数。
 
-[Node.js](/zh-cn/wiki/node-js/) 中的事件驱动编程是一种范例，其中程序流程由用户操作、传感器输出或来自其他程序的消息传递等事件确定。在[Node.js](/zh-cn/wiki/node-js/) 中，这是由**EventEmitter** 类实现的，它是**events** 模块的一部分，也是[Node.js](/zh-cn/wiki/node-js/) 的内置模块之一。
-  事件驱动编程特别适合 I/O 密集型任务，这在 Web 服务器和实时应用程序中很常见。 [Node.js](/zh-cn/wiki/node-js/) 使用此模型来处理异步操作，使其能够执行非阻塞 I/O 任务。
-  以下是 [Node.js](/zh-cn/wiki/node-js/) 中事件驱动编程的基本示例：
+- **磁盘空间**：虽然 JMeter 本身不需要太多磁盘空间，但请确保有足够的空间来存储测试结果和日志，特别是在运行大量测试时。
+  - **处理器**：更快的 CPU 可以提高 JMeter 的性能，特别是在模拟大量并发用户时。
 
-  ```
-  const EventEmitter = require('events');
-  class MyEmitter extends EventEmitter {}
-  const myEmitter = new MyEmitter();
-  myEmitter.on('event', () => {
-    console.log('An event occurred!');
-  });
-  myEmitter.emit('event');
-  ```在此代码段中，`MyEmitter` 是`EventEmitter` 的扩展。我们实例化 `myEmitter`，然后使用 `.on()` 方法来监听“event”事件。当 `myEmitter.emit('event')` 被调用时，附加到该事件的回调函数被执行，记录“发生了事件！”到控制台。
-  此模式对于处理未立即完成的任务至关重要，例如读取文件、发出 HTTP 请求或查询 [database](/zh-cn/wiki/database/)。通过响应事件，[Node.js](/zh-cn/wiki/node-js/) 可以继续执行其他代码而不是等待，这是其非阻塞性质的一个关键方面。这种方法对于 [test automation](/zh-cn/wiki/test-automation/) 工程师来说至关重要，因为它影响测试和断言在异步环境中的构建和执行方式。
+#### 第一次如何设置 JMeter？
 
-### 使用 Node.js
+安装后首次设置[JMeter](/zh-cn/wiki/jmeter/)：
 
-#### 如何在系统上安装 Node.js？
+1. **启动[JMeter](/zh-cn/wiki/jmeter/)**：双击[JMeter](/zh-cn/wiki/jmeter/) 安装文件夹的`bin` 目录中的`jmeter.bat` (Windows) 或`jmeter` (Unix) 文件。
+  2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 在 JMeter GUI 中，右键单击
+      **[测试计划](/zh-cn/wiki/test-plan/)**
+      节点。
 
-要在您的系统上安装 **[Node.js](/zh-cn/wiki/node-js/)**，请按照以下特定于平台的说明进行操作：
-  ### 对于 Windows 和 macOS：
+- 选择
+      **添加 > 线程（用户）> 线程组**
+      添加一个新的线程组。
 
-1. 访问 Node.js 官方网站：
-    [nodejs.org](https://nodejs.org/)
+- 在 JMeter GUI 中，右键单击
+      **[测试计划](/zh-cn/wiki/test-plan/)**
+      节点。
+
+- 选择
+      **添加 > 线程（用户）> 线程组**
+      添加一个新的线程组。
+
+3. **配置线程组**：
+    - 指定线程（用户）数量、启动周期和循环计数。
+    - 指定线程（用户）数量、启动周期和循环计数。
+  4. **添加采样器**：
+    - 右键单击线程组。
+    - 选择
+      **添加 > 采样器**
+      并选择您要测试的请求类型（例如 HTTP 请求）。
+
+- 右键单击​​线程组。
+    - 选择
+      **添加 > 采样器**
+      并选择您要测试的请求类型（例如 HTTP 请求）。
+
+5. **配置采样器**：
+    - 输入请求的详细信息，例如服务器名称、端口号和路径。
+    - 输入请求的详细信息，例如服务器名称、端口号和路径。
+  6. **添加监听器**：
+    - 右键单击线程组。
+    - 选择
+      **添加 > 侦听器**
+      添加用于结果分析的侦听器（例如，查看结果树、摘要报告）。
+
+- 右键单击​​线程组。
+    - 选择
+      **添加 > 侦听器**
+      添加用于结果分析的侦听器（例如，查看结果树、摘要报告）。
+
+7. **保存[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 前往
+      **文件>另存为**
+      并保存您的测试计划
+      `.jmx`
+      扩展。
+
+- 前往
+      **文件>另存为**
+      并保存您的测试计划
+      `.jmx`
+      扩展。
+
+8. **运行[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 单击
+      **开始**
+      按钮（绿色播放箭头）或选择
+      **运行>开始**
+      执行您的测试计划。
+
+- 单击
+      **开始**
+      按钮（绿色播放箭头）或选择
+      **运行>开始**
+      执行您的测试计划。
+
+9. **监控结果**：
+    - 在测试运行期间或之后查看配置的侦听器中的结果。
+    - 在测试运行期间或之后查看配置的侦听器中的结果。
+  请记住经常保存您的工作并关闭所有不必要的应用程序，以确保[JMeter](/zh-cn/wiki/jmeter/)有足够的资源。如果遇到内存问题，请调整`jmeter.bat` 或`jmeter.sh` 文件中的[JMeter](/zh-cn/wiki/jmeter/) 堆大小。
+
+1. **启动[JMeter](/zh-cn/wiki/jmeter/)**：双击[JMeter](/zh-cn/wiki/jmeter/) 安装文件夹的`bin` 目录中的`jmeter.bat` (Windows) 或`jmeter` (Unix) 文件。
+  2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 在 JMeter GUI 中，右键单击
+      **[测试计划](/zh-cn/wiki/test-plan/)**
+      节点。
+
+- 选择
+      **添加 > 线程（用户）> 线程组**
+      添加一个新的线程组。
+
+- 在 JMeter GUI 中，右键单击
+      **[测试计划](/zh-cn/wiki/test-plan/)**
+      节点。
+
+- 选择
+      **添加 > 线程（用户）> 线程组**
+      添加一个新的线程组。
+
+3. **配置线程组**：
+    - 指定线程（用户）数量、启动周期和循环计数。
+    - 指定线程（用户）数量、启动周期和循环计数。
+  4. **添加采样器**：
+    - 右键单击线程组。
+    - 选择
+      **添加 > 采样器**
+      并选择您要测试的请求类型（例如 HTTP 请求）。
+
+- 右键单击​​线程组。
+    - 选择
+      **添加 > 采样器**
+      并选择您要测试的请求类型（例如 HTTP 请求）。
+
+5. **配置采样器**：
+    - 输入请求的详细信息，例如服务器名称、端口号和路径。
+    - 输入请求的详细信息，例如服务器名称、端口号和路径。
+  6. **添加监听器**：
+    - 右键单击线程组。
+    - 选择
+      **添加 > 侦听器**
+      添加用于结果分析的侦听器（例如，查看结果树、摘要报告）。
+
+- 右键单击​​线程组。
+    - 选择
+      **添加 > 侦听器**
+      添加用于结果分析的侦听器（例如，查看结果树、摘要报告）。
+
+7. **保存[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 前往
+      **文件>另存为**
+      并保存您的测试计划
+      `.jmx`
+      扩展。
+
+- 前往
+      **文件>另存为**
+      并保存您的测试计划
+      `.jmx`
+      扩展。
+
+8. **运行[测试计划](/zh-cn/wiki/test-plan/)**：
+    - 单击
+      **开始**
+      按钮（绿色播放箭头）或选择
+      **运行>开始**
+      执行您的测试计划。
+
+- 单击
+      **开始**
+      按钮（绿色播放箭头）或选择
+      **运行>开始**
+      执行您的测试计划。
+
+9. **监控结果**：
+    - 在测试运行期间或之后查看配置的侦听器中的结果。
+    - 在测试运行期间或之后查看配置的侦听器中的结果。
+
+#### 如何配置 JMeter 以获得最佳性能？
+
+要配置 [JMeter](/zh-cn/wiki/jmeter/) 以获得最佳性能，请遵循以下准则：
+
+- 通过调整`jmeter.bat` (Windows) 或`jmeter.sh` (Linux/Mac) 文件中的 JVM 设置，为[JMeter](/zh-cn/wiki/jmeter/) **分配足够的内存**。使用`-Xms` 和`-Xmx` 参数增加堆大小。例如：
+
+    ```
+    HEAP="-Xms512m -Xmx2048m"
+    ```
+
+- **在 [test execution](/zh-cn/wiki/test-execution/) 期间禁用不必要的侦听器**，因为它们会消耗内存。仅在脚本调试或结果分析期间使用它们。
+  - **使用非 GUI 模式**运行测试，从而减少资源消耗。从命令行执行测试：
+
+    ```
+    jmeter -n -t testplan.jmx -l results.jtl
+    ```
+
+- **通过在 `Sample Result Save Configuration` 中设置适当的值来减少收集的样本数量**。
+  - **使用`Summary Report` 或`Aggregate Report` 等合适的侦听器而不是`View Results in Table` 或`View Results Tree` 来聚合和总结结果**。
+  - **如果可能的话，从服务器级计算机运行 [JMeter](/zh-cn/wiki/jmeter/)，因为它们拥有更多资源和网络容量。
+  - **在进行大规模测试时，将负载分布在多个[JMeter](/zh-cn/wiki/jmeter/) 实例上，以避免单台机器过载。
+  - **通过使用最有效的脚本元素并避免不必要或复杂的正则表达式来优化您的[测试脚本](/zh-cn/wiki/test-script/)**。
+  - **在`jmeter.properties` 或`user.properties` 文件中配置[JMeter](/zh-cn/wiki/jmeter/) 属性**以进行微调，例如控制 DNS 缓存、TCP 套接字设置以及[JMeter](/zh-cn/wiki/jmeter/) 对示例错误的行为。
+  - **监控运行[JMeter](/zh-cn/wiki/jmeter/)的机器的资源使用情况**，以确保它不是瓶颈。
+  通过执行这些步骤，您可以确保 [JMeter](/zh-cn/wiki/jmeter/) 在 [test execution](/zh-cn/wiki/test-execution/) 期间配置为实现最佳性能。
+
+- 通过调整`jmeter.bat` (Windows) 或`jmeter.sh` (Linux/Mac) 文件中的 JVM 设置，为[JMeter](/zh-cn/wiki/jmeter/) **分配足够的内存**。使用`-Xms` 和`-Xmx` 参数增加堆大小。例如：
+
+    ```
+    HEAP="-Xms512m -Xmx2048m"
+    ```
+
+- **在 [test execution](/zh-cn/wiki/test-execution/) 期间禁用不必要的侦听器**，因为它们会消耗内存。仅在脚本调试或结果分析期间使用它们。
+  - **使用非 GUI 模式**运行测试，从而减少资源消耗。从命令行执行测试：
+
+    ```
+    jmeter -n -t testplan.jmx -l results.jtl
+    ```
+
+- **通过在 `Sample Result Save Configuration` 中设置适当的值来减少收集的样本数量**。
+  - **使用`Summary Report` 或`Aggregate Report` 等合适的侦听器而不是`View Results in Table` 或`View Results Tree` 来聚合和总结结果**。
+  - **如果可能的话，从服务器级计算机运行 [JMeter](/zh-cn/wiki/jmeter/)，因为它们拥有更多资源和网络容量。
+  - **在进行大规模测试时，在多个 [JMeter](/zh-cn/wiki/jmeter/) 实例之间分配负载**，以避免单台机器过载。
+  - **通过使用最有效的脚本元素并避免不必要或复杂的正则表达式来优化您的[测试脚本](/zh-cn/wiki/test-script/)**。
+  - **在`jmeter.properties` 或`user.properties` 文件中配置[JMeter](/zh-cn/wiki/jmeter/) 属性**以进行微调，例如控制 DNS 缓存、TCP 套接字设置以及[JMeter](/zh-cn/wiki/jmeter/) 对示例错误的行为。
+  - **监控运行[JMeter](/zh-cn/wiki/jmeter/)的机器的资源使用情况**，以确保它不是瓶颈。
+
+#### 将 JMeter 升级到新版本的步骤是什么？
+
+要将 [JMeter](/zh-cn/wiki/jmeter/) 升级到较新版本，请按照以下步骤操作：
+
+1. **备份现有[JMeter](/zh-cn/wiki/jmeter/) 安装**，包括任何自定义配置、插件、[测试计划](/zh-cn/wiki/test-plan/) 和用户属性文件。
+  2. **从 Apache [JMeter](/zh-cn/wiki/jmeter/) 官方网站下载 [JMeter](/zh-cn/wiki/jmeter/) 的最新版本**。
+  3. **将下载的存档解压**到新目录。避免覆盖旧的 [JMeter](/zh-cn/wiki/jmeter/) 安装，以防止任何潜在的数据丢失。
+  4. **将您的自定义配置**从备份复制到新安装。这包括对`jmeter.properties`、`user.properties` 和`system.properties` 文件所做的任何更改。
+  5. **重新安装您正在使用的任何其他插件**。使用[JMeter](/zh-cn/wiki/jmeter/) 插件管理器可以简化流程，或手动将相关`.jar` 文件复制到`lib/ext` 目录。
+  6. **迁移[测试计划](/zh-cn/wiki/test-plan/)**，方法是在新的[JMeter](/zh-cn/wiki/jmeter/) 版本中打开它们并保存它们，以确保它们在发生任何更改时与新格式兼容。
+  7. **测试现有脚本**以确认它们在新版本中按预期工作。解决 [JMeter](/zh-cn/wiki/jmeter/) 功能中的任何弃用或更改。
+  8. **查看新版本的发行说明**，了解可能影响您的 [测试计划](/zh-cn/wiki/test-plan/) 的新功能和更改。
+  9. **一旦您确认新版本满足您的所有要求并且所有[测试计划](/zh-cn/wiki/test-plan/) 均正常运行，请删除旧的[JMeter](/zh-cn/wiki/jmeter/) 版本**。
+  请记住始终检查版本之间的兼容性问题，尤其是在使用第三方插件或 [JMeter](/zh-cn/wiki/jmeter/) 发生重大更改时。
+
+1. **备份现有[JMeter](/zh-cn/wiki/jmeter/) 安装**，包括任何自定义配置、插件、[测试计划](/zh-cn/wiki/test-plan/) 和用户属性文件。
+  2. **从 Apache [JMeter](/zh-cn/wiki/jmeter/) 官方网站下载 [JMeter](/zh-cn/wiki/jmeter/) 的最新版本**。
+  3. **将下载的存档解压**到新目录。避免覆盖旧的 [JMeter](/zh-cn/wiki/jmeter/) 安装，以防止任何潜在的数据丢失。
+  4. **将您的自定义配置**从备份复制到新安装。这包括对`jmeter.properties`、`user.properties` 和`system.properties` 文件所做的任何更改。
+  5. **重新安装您正在使用的任何其他插件**。使用[JMeter](/zh-cn/wiki/jmeter/) 插件管理器可以简化流程，或者手动将相关`.jar` 文件复制到`lib/ext` 目录。
+  6. **迁移[测试计划](/zh-cn/wiki/test-plan/)**，方法是在新的[JMeter](/zh-cn/wiki/jmeter/) 版本中打开它们并保存它们，以确保它们在发生任何更改时与新格式兼容。
+  7. **测试现有脚本**以确认它们在新版本中按预期工作。解决 [JMeter](/zh-cn/wiki/jmeter/) 功能中的任何弃用或更改。
+  8. **查看新版本的发行说明**，了解可能影响您的 [测试计划](/zh-cn/wiki/test-plan/) 的新功能和更改。
+  9. **一旦您确认新版本满足您的所有要求并且所有[测试计划](/zh-cn/wiki/test-plan/) 均正常运行，请删除旧的[JMeter](/zh-cn/wiki/jmeter/) 版本**。
+
+### 使用 JMeter
+
+#### 如何在 JMeter 中创建基本测试计划？
+
+在 [JMeter](/zh-cn/wiki/jmeter/) 中创建基本 [测试计划](/zh-cn/wiki/test-plan/) 涉及以下步骤：
+
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)**
+    并选择
+    `File > New`
+    开始新的测试计划。
+
+2. **添加线程组**
+    通过右键单击测试计划并选择来添加到您的测试计划
+    `Add > Threads (Users) > Thread Group`
     。
 
-2. 单击
-    **长期支持**
-    （长期支持）或
-    **当前**
-    版本下载按钮，根据您的要求。
+3. 配置
+    **线程组**
+    包括线程（用户）数量、启动周期和循环计数。
 
-3. 运行下载的安装程序并按照提示完成安装。
-  ### 对于基于 Ubuntu 的发行版：
-  打开终端并运行以下命令：
-
-  ```
-  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-  ```将 `14.x` 替换为您要安装的版本。
-  ### 对于 CentOS、Fedora 和基于 Red Hat 的发行版：
-  在终端中执行这些命令：
-
-  ```
-  curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
-  sudo yum install nodejs
-  ```再次将 `14.x` 替换为所需的版本。
-  ### 对于 Arch Linux：
-  使用包管理器`pacman`来安装[Node.js](/zh-cn/wiki/node-js/)：
-
-  ```
-  sudo pacman -S nodejs npm
-  ```### 验证：
-  安装完成后，通过检查[Node.js](/zh-cn/wiki/node-js/)和 npm 的版本来验证安装：
-
-  ```
-  node -v
-  npm -v
-  ```这将输出 [Node.js](/zh-cn/wiki/node-js/) 和 npm 的已安装版本，确认安装成功。
-
-1. 访问 Node.js 官方网站：
-    [nodejs.org](https://nodejs.org/)
+4. **添加采样器**
+    到线程组。对于 HTTP 测试，右键单击线程组并选择
+    `Add > Sampler > HTTP Request`
     。
 
-2. 单击
-    **长期支持**
-    （长期支持）或
-    **当前**
-    版本下载按钮，根据您的要求。
+5. 配置
+    **HTTP 请求**
+    包含服务器名称、端口号和路径。如有必要，请填写方法（GET、POST 等）和任何参数。
 
-3. 运行下载的安装程序并按照提示完成安装。
-
-#### 如何更新 Node.js？
-
-要更新 [Node.js](/zh-cn/wiki/node-js/)，您可以使用 `nvm`（节点版本管理器）或 `n`（对于基于 Unix 的系统）等包管理器，或者直接从 [Node.js](/zh-cn/wiki/node-js/) 网站（对于 Windows）下载最新版本。
-  **使用 nvm：**
-
-1. 打开您的终端。
-  2. 跑步
-    `nvm ls`
-    列出已安装的版本。
-
-3. 更新到最新版本
-    `nvm install node`
+6. **添加监听器**
+    到您的测试计划以查看结果。右键单击线程组并选择
+    `Add > Listener`
+    。常见的听众有
+    `View Results Tree`
+    和
+    `Summary Report`
     。
 
-4.使用切换到新版本
-    `nvm use node`
-    。
-
-5. 验证更新
-    `node -v`
-    。
-  **使用 n:**
-
-1. 打开您的终端。
-  2. 安装
-    `n`
-    全球范围内与
-    `npm install -g n`
-    。
-
-3. 将 Node.js 更新到最新版本
-    `n latest`
-    。
-
-4. 验证更新
-    `node -v`
-    。
-  **对于 Windows：**
-
-1. 前往
-    [Node.js website](https://nodejs.org/)
-    。
-
-2. 下载最新版本的 Windows Installer。
-  3. 运行安装程序并按照提示更新 Node.js。
-  4. 重新启动终端并使用以下命令验证更新
-    `node -v`
-    。
-  **使用 npm（跨平台）：**
-  如果您安装了 npm，则可以在 Windows 上使用 `npm` 包 `npm-windows-upgrade` 或在基于 Unix 的系统上使用 `npm` 本身将 [Node.js](/zh-cn/wiki/node-js/) 更新到最新稳定版本：
-
-  ```
-  npm install -g npm-windows-upgrade
-  npm-windows-upgrade
-  ```或者在基于 Unix 的系统上：
-
-  ```
-  npm cache clean -f
-  npm install -g n
-  n stable
-  ```更新后，始终确保您的全局 npm 包和本地项目依赖项与新的 [Node.js](/zh-cn/wiki/node-js/) 版本兼容。
-
-1. 打开您的终端。
-  2. 跑步
-    `nvm ls`
-    列出已安装的版本。
-
-3. 更新到最新版本
-    `nvm install node`
-    。
-
-4.使用切换到新版本
-    `nvm use node`
-    。
-
-5. 验证更新
-    `node -v`
-    。
-
-1. 打开您的终端。
-  2. 安装
-    `n`
-    全球范围内与
-    `npm install -g n`
-    。
-
-3. 将 Node.js 更新到最新版本
-    `n latest`
-    。
-
-4. 验证更新
-    `node -v`
-    。
-
-1. 前往
-    [Node.js website](https://nodejs.org/)
-    。
-
-2. 下载最新版本的 Windows Installer。
-  3. 运行安装程序并按照提示更新 Node.js。
-  4. 重新启动终端并使用以下命令验证更新
-    `node -v`
-    。
-
-#### 如何调试 Node.js 应用程序？
-
-可以使用多种方法调试 [Node.js](/zh-cn/wiki/node-js/) 应用程序：
-  **内置调试器**：[Node.js](/zh-cn/wiki/node-js/) 附带一个内置 CLI 调试器，可以通过运行 `node inspect yourScript.js` 来启动。您可以设置断点、单步调试代码以及​​检查变量。
-  **Chrome DevTools**：通过使用 `--inspect` 标志（例如 `node --inspect yourScript.js`）启动 [Node.js](/zh-cn/wiki/node-js/) 应用程序，您可以连接到 Chrome DevTools 以获得更直观的调试体验。
-
-  ```
-  node --inspect yourScript.js
-  ```**Visual Studio Code**：VS Code 具有出色的 [Node.js](/zh-cn/wiki/node-js/) 调试支持。通过在项目中创建 `.vscode/launch.json` 文件并设置适当的配置来配置调试会话。
-
-  ```
-  {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Launch Program",
-        "skipFiles": ["<node_internals>/**"],
-        "program": "${workspaceFolder}/yourScript.js"
-      }
-    ]
-  }
-  ```**日志记录**：有时，简单的 `console.log()` 语句可以帮助跟踪执行流程并了解应用程序中不同点的变量状态。
-  **第三方工具**：`node-inspector` 或 `ndb` 等工具可以通过 npm 安装，并提供额外的调试功能。
-  **[Unit Testing](/zh-cn/wiki/unit-testing/)**：使用 Mocha 或 [Jest](/zh-cn/wiki/jest/) 等库编写单元测试可以帮助隔离和调试应用程序的特定部分。
-  **分析**：使用[Node.js](/zh-cn/wiki/node-js/) 分析工具（例如`--prof`）来识别性能瓶颈。
-  请记住在将应用程序部署到生产环境之前删除或注释掉调试代码，以避免性能影响和潜在的安全风险。
-
-#### 什么是 NPM 以及它在 Node.js 中如何使用？
-
-NPM 或 **Node Package Manager**，是用于管理和共享 [Node.js](/zh-cn/wiki/node-js/) 项目中的 JavaScript 包的工具。它提供了一个命令行界面 (CLI)，用于安装、更新和删除包以及管理项目依赖项。
-  要使用 NPM，通常首先使用 `npm init` 初始化一个新的 [Node.js](/zh-cn/wiki/node-js/) 项目，这会创建一个 `package.json` 文件。该文件列出了项目的依赖项和其他元数据。要添加包，请使用 `npm install <package-name>`，它从 NPM 注册表下载包并将其添加到 `node_modules` 目录和 `package.json` 文件。
-  对于[test automation](/zh-cn/wiki/test-automation/)，可以使用 NPM 安装测试框架和工具，例如 Mocha、[Jest](/zh-cn/wiki/jest/)或[Selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)。这是安装 Mocha 的示例：
-
-  ```
-  npm install mocha --save-dev
-  ````--save-dev` 标志将 Mocha 添加到 `package.json` 中的 `devDependencies` 中，表明它是仅开发依赖项。
-  NPM 还支持脚本，可以在`package.json` 中定义脚本并使用`npm run <script-name>` 运行。例如，您可以定义 [test script](/zh-cn/wiki/test-script/) 来运行自动化测试：
-
-  ```
-  "scripts": {
-    "test": "mocha"
-  }
-  ```然后，您可以使用以下命令执行测试：
-
-  ```
-  npm test
-  ```NPM 确保所有开发人员和 CI/CD 管道使用相同的包版本，这要归功于 `package-lock.json` 文件，它锁定了安装的确切包版本。这种一致性对于可靠、可重复的[test automation](/zh-cn/wiki/test-automation/) 至关重要。
-
-#### 如何在 Node.js 中创建服务器？
-
-在[Node.js](/zh-cn/wiki/node-js/) 中创建服务器通常涉及使用内置`http` 模块。下面是如何设置基本 HTTP 服务器的简洁示例：
-
-  ```
-  const http = require('http');
-  const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello, World!\n');
-  });
-  const PORT = 3000;
-  server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-  ```在此示例中，使用请求侦听器函数调用 `http.createServer()`，每次服务器收到请求时都会调用该函数。 `req` 参数表示请求对象，而`res` 是响应对象。我们将状态代码设置为 200（正常），将内容类型设置为纯文本。响应以使用 `res.end()` 的消息结束。
-  服务器侦听指定端口（在本例中为 3000），一旦准备就绪，就会调用回调函数，将消息记录到控制台。
-  对于[test automation](/zh-cn/wiki/test-automation/) 工程师来说，这个基本服务器可以作为模拟[APIs](/zh-cn/wiki/api/) 或创建[test environment](/zh-cn/wiki/test-environment/) 的起点。它可以根据需要使用路由、中间件和更复杂的请求处理逻辑进行扩展。请记住处理实际应用程序中的错误和边缘情况，以确保稳定性和可靠性。
-
-### Node.js 模块
-
-#### Node.js 中的模块是什么？
-
-[Node.js](/zh-cn/wiki/node-js/) 中的模块是封装的代码块，可以在应用程序的不同部分甚至不同应用程序之间共享和重用。它们提供了一种将代码组织到单独的文件和命名空间中的方法，从而促进模块化和[maintainability](/zh-cn/wiki/maintainability/)。
-  [Node.js](/zh-cn/wiki/node-js/) 中的每个模块都有自己的上下文，这意味着除非显式导出，否则无法从外部访问模块中定义的变量和函数。要在另一个文件中使用模块，您必须使用 `require` 函数来请求它，该函数读取模块文件，执行它，然后返回模块的 `exports` 对象。
-  以下是如何定义简单模块并导出其功能的示例：
-
-  ```
-  // myModule.js
-  const myFunction = () => {
-    console.log('Function from myModule');
-  };
-  module.exports = myFunction;
-  ```要在另一个文件中使用 `myModule.js` 导出的函数：
-
-  ```
-  // app.js
-  const myFunction = require('./myModule');
-  myFunction(); // Outputs: Function from myModule
-  ```[Node.js](/zh-cn/wiki/node-js/) 还具有一组**内置模块**，提供各种功能，例如文件系统访问、HTTP 网络等。这些模块可以按照与自定义模块相同的方式包含，但不需要文件路径。
-
-  ```
-  const fs = require('fs'); // fs is a built-in module for file system operations
-  ```模块可以导出多个值，例如函数、对象或基元，方法是将它们附加到 `exports` 对象或直接设置 `module.exports`。该模块化系统基于 CommonJS 模块模式。
-
-#### 如何在 Node.js 中创建和使用模块？
-
-在 [Node.js](/zh-cn/wiki/node-js/) 中创建模块涉及将相关代码封装到单个文件中，然后可以在 [Node.js](/zh-cn/wiki/node-js/) 应用程序中重复使用该文件。要创建模块，请按照下列步骤操作：
-
-1. **创建一个新文件**
-    与一个
-    `.js`
-    扩展名，例如
-    `calculator.js`
-    。
-
-2. **编写模块代码**
-    在此文件内。定义您想要供其他文件使用的函数、对象或任何其他变量。
-
-  ```
-  // calculator.js
-  function add(a, b) {
-    return a + b;
-  }
-  function subtract(a, b) {
-    return a - b;
-  }
-  module.exports = { add, subtract };
-  ```
-
-1. 使用
-    `module.exports`
-    到
-    **导出模块的功能**
-    你想要暴露的。这可以是函数、对象、类等。
-  要在另一个文件中使用该模块：
-
-1. **需要模块**
+7. **保存您的[测试计划](/zh-cn/wiki/test-plan/)**
     使用
-    `require()`
-    函数与模块文件的路径。
+    `File > Save`
+    以保留您的设置。
+
+8. **运行测试**
+    单击绿色开始按钮或选择
+    `Run > Start`
+    。
+  以下是在 [JMeter](/zh-cn/wiki/jmeter/) 中添加线程组和 HTTP 请求的示例：
 
   ```
-  // app.js
-  const calculator = require('./calculator');
-  const sum = calculator.add(5, 10);
-  const difference = calculator.subtract(10, 5);
-  console.log(sum); // Outputs: 15
-  console.log(difference); // Outputs: 5
+  <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+    <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+    <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+      <boolProp name="LoopController.continue_forever">false</boolProp>
+      <stringProp name="LoopController.loops">1</stringProp>
+    </elementProp>
+    <stringProp name="ThreadGroup.num_threads">1</stringProp>
+    <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+    <boolProp name="ThreadGroup.scheduler">false</boolProp>
+  </ThreadGroup>
+  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <collectionProp name="Arguments.arguments"/>
+    </elementProp>
+    <stringProp name="HTTPSampler.domain">example.com</stringProp>
+    <stringProp name="HTTPSampler.port"></stringProp>
+    <stringProp name="HTTPSampler.protocol"></stringProp>
+    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+    <stringProp name="HTTPSampler.path">/testpath</stringProp>
+    <stringProp name="HTTPSampler.method">GET</stringProp>
+  </HTTPSamplerProxy>
   ```
+请记住根据[test scenario](/zh-cn/wiki/test-scenario/) 的具体要求定制您的[测试计划](/zh-cn/wiki/test-plan/)，包括任何必要的断言、cookie、标头或其他元素。
 
-1. **调用方法**
-    或访问您从模块导出的属性。
-  请记住，[Node.js](/zh-cn/wiki/node-js/) 使用 CommonJS 模块系统，每个文件都被视为一个单独的模块。通过使用`require()` 和`module.exports`，您可以创建模块化、可维护且可重用的代码，这在[test automation](/zh-cn/wiki/test-automation/) 中特别有用，可用于构建[test cases](/zh-cn/wiki/test-case/) 和实用函数。
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)**
+    并选择
+    `File > New`
+    开始新的测试计划。
 
-1. **创建一个新文件**
-    与一个
-    `.js`
-    扩展名，例如
-    `calculator.js`
+2. **添加线程组**
+    通过右键单击测试计划并选择来添加到您的测试计划
+    `Add > Threads (Users) > Thread Group`
     。
 
-2. **编写模块代码**
-    在此文件内。定义您想要供其他文件使用的函数、对象或任何其他变量。
+3. 配置
+    **线程组**
+    包括线程（用户）数量、启动周期和循环计数。
 
-1. 使用
-    `module.exports`
-    到
-    **导出模块的功能**
-    你想要暴露的。这可以是函数、对象、类等。
+4. **添加采样器**
+    到线程组。对于 HTTP 测试，右键单击线程组并选择
+    `Add > Sampler > HTTP Request`
+    。
 
-1. **需要模块**
+5. 配置
+    **HTTP 请求**
+    包含服务器名称、端口号和路径。如有必要，请填写方法（GET、POST 等）和任何参数。
+
+6. **添加监听器**
+    到您的测试计划以查看结果。右键单击线程组并选择
+    `Add > Listener`
+    。常见的听众有
+    `View Results Tree`
+    和
+    `Summary Report`
+    。
+
+7. **保存您的[测试计划](/zh-cn/wiki/test-plan/)**
     使用
-    `require()`
-    函数与模块文件的路径。
+    `File > Save`
+    以保留您的设置。
 
-1. **调用方法**
-    或访问您从模块导出的属性。
+8. **运行测试**
+    单击绿色开始按钮或选择
+    `Run > Start`
+    。
 
-#### Node.js 中有哪些内置模块？
+#### JMeter 测试计划中有哪些不同类型的元素？
 
-[Node.js](/zh-cn/wiki/node-js/) 附带各种内置模块，无需外部库即可提供基础功能。其中一些包括：
+[JMeter](/zh-cn/wiki/jmeter/) [测试计划](/zh-cn/wiki/test-plan/) 由几个定义测试操作和配置的元素组成：
 
-- **fs** ：提供文件系统操作，例如读取和写入文件。
+- **线程组**：通过设置线程数、启动周期和循环计数来模拟用户。
+  - **采样器**：向服务器执行特定类型的请求（HTTP、FTP、JDBC 等）。
+  - **逻辑控制器**：控制请求流，包括 if-then-else 逻辑和循环。
+  - **监听器**：以图形、表格或日志等各种格式收集和可视化测试结果。
+  - **计时器**：在请求之间引入延迟以模拟真实的用户思考时间。
+  - **断言**：根据预期结果验证服务器的响应。
+  - **配置元素**：设置采样器的默认值和变量，例如 HTTP 请求默认值或用户定义的变量。
+  - **预处理器**：在采样器请求之前执行操作，例如修改请求属性。
+  - **后处理器**：在采样器请求后执行操作，例如从响应中提取数据。
+  - **WorkBench**：尚未添加到[测试计划](/zh-cn/wiki/test-plan/) 的元素的临时工作区。
+  每个元素都有不同的用途，当组合起来时，它们会创建一个全面的[test scenario](/zh-cn/wiki/test-scenario/)。 [测试计划](/zh-cn/wiki/test-plan/) 可以保存为`.jmx` 文件以供重复使用和版本控制。
+
+- **线程组**：通过设置线程数、启动周期和循环计数来模拟用户。
+  - **采样器**：向服务器执行特定类型的请求（HTTP、FTP、JDBC 等）。
+  - **逻辑控制器**：控制请求流，包括 if-then-else 逻辑和循环。
+  - **监听器**：以图形、表格或日志等各种格式收集和可视化测试结果。
+  - **计时器**：在请求之间引入延迟以模拟真实的用户思考时间。
+  - **断言**：根据预期结果验证服务器的响应。
+  - **配置元素**：设置采样器的默认值和变量，例如 HTTP 请求默认值或用户定义的变量。
+  - **预处理器**：在采样器请求之前执行操作，例如修改请求属性。
+  - **后处理器**：在采样器请求后执行操作，例如从响应中提取数据。
+  - **WorkBench**：尚未添加到[测试计划](/zh-cn/wiki/test-plan/) 的元素的临时工作区。
+
+#### 如何使用 JMeter 进行负载测试？
+
+要将[JMeter](/zh-cn/wiki/jmeter/) 用于[负载测试](/zh-cn/wiki/load-testing/)，请按照下列步骤操作：
+
+1. **设计一个[测试计划](/zh-cn/wiki/test-plan/)**：新建一个[测试计划](/zh-cn/wiki/test-plan/)，添加一个 Thread Group 来模拟用户数量。配置线程（用户）数量、启动周期和循环计数。
+  2. **添加采样器**：在线程组内，添加 HTTP 请求采样器以定义对服务器的请求。配置请求详细信息，例如服务器名称、端口号、路径和请求方法。
+  3. **添加监听器**：要查看结果，请将查看结果树、摘要报告或聚合报告等监听器添加到您的[测试计划](/zh-cn/wiki/test-plan/)。这些将帮助您分析服务器在负载下的性能。
+  4. **使用 CSV 进行参数化**：使用 CSV 数据集配置通过不同的用户数据对您的请求进行参数化，以进行更真实的测试。
+  5. **添加断言**：包括断言以验证来自服务器的响应，确保负载不会影响功能。
+  6. **配置计时器**：添加恒定计时器或高斯随机计时器等计时器来模拟请求之间的思考时间。
+  7. **运行测试**：通过单击“运行”按钮执行[测试计划](/zh-cn/wiki/test-plan/)。使用添加的监听器实时监控测试。
+  8. **分析结果**：测试后，查看监听器数据以了解服务器的性能，查找响应时间、吞吐量和错误率等指标。
+  9. **调整和重复**：根据分析，根据需要修改[测试计划](/zh-cn/wiki/test-plan/)以模拟不同的场景或识别性能瓶颈。
+  请记住保存您的[测试计划](/zh-cn/wiki/test-plan/) 和结果以供将来参考或[regression testing](/zh-cn/wiki/regression-testing/)。
+
+1. **设计一个[测试计划](/zh-cn/wiki/test-plan/)**：新建一个[测试计划](/zh-cn/wiki/test-plan/)，添加一个 Thread Group 来模拟用户数量。配置线程（用户）数量、启动周期和循环计数。
+  2. **添加采样器**：在线程组内，添加 HTTP 请求采样器以定义对服务器的请求。配置请求详细信息，例如服务器名称、端口号、路径和请求方法。
+  3. **添加监听器**：要查看结果，请将查看结果树、摘要报告或聚合报告等监听器添加到您的[测试计划](/zh-cn/wiki/test-plan/)。这些将帮助您分析服务器在负载下的性能。
+  4. **使用 CSV 进行参数化**：使用 CSV 数据集配置通过不同的用户数据对您的请求进行参数化，以进行更真实的测试。
+  5. **添加断言**：包括断言以验证来自服务器的响应，确保负载不会影响功能。
+  6. **配置计时器**：添加恒定计时器或高斯随机计时器等计时器来模拟请求之间的思考时间。
+  7. **运行测试**：通过单击“运行”按钮执行[测试计划](/zh-cn/wiki/test-plan/)。使用添加的监听器实时监控测试。
+  8. **分析结果**：测试后，查看监听器数据以了解服务器的性能，查找响应时间、吞吐量和错误率等指标。
+  9. **调整和重复**：根据分析，根据需要修改[测试计划](/zh-cn/wiki/test-plan/)以模拟不同的场景或识别性能瓶颈。
+
+#### 如何使用 JMeter 进行压力测试？
+
+要将[JMeter](/zh-cn/wiki/jmeter/) 用于[压力测试](/zh-cn/wiki/stress-testing/)，请按照下列步骤操作：
+
+1. **设计[测试计划](/zh-cn/wiki/test-plan/)**：创建为您的应用程序进行压力测试而定制的[测试计划](/zh-cn/wiki/test-plan/)。这涉及定义要应用的负载和要收集的指标。
+  2. **添加线程组**：配置具有大量线程（用户）的线程组来模拟压力负载。设置加速时间和测试持续时间以达到并维持所需的应力水平。
+  3. **配置采样器**：添加 HTTP 请求采样器或其他相关采样器来复制会给系统带来压力的用户操作，例如提交表单或执行繁重的查询。
+  4. **添加监听器**：包括聚合报告、摘要报告或图形结果等监听器，以监控和可视化压力下的性能。
+  5. **参数化输入**：使用 CSV 数据集配置或其他参数化方法来改变输入数据，模拟更真实和多样化的应力条件。
+  6. **定义断言**：添加断言以在压力下验证响应，确保应用程序保持功能。
+  7. **运行测试**：执行[测试计划](/zh-cn/wiki/test-plan/)并监视应用程序和服务器资源。
+  8. **分析结果**：测试后，使用[JMeter](/zh-cn/wiki/jmeter/)监听器和外部监控工具分析结果，以识别瓶颈和阈值。
+  9. **微调和重复**：根据分析，微调应用程序或基础设施并重复压力测试以验证改进。
+  请记住在压力测试期间监控服务器资源（CPU、内存、磁盘 I/O、网络）以识别基础设施限制。在受控环境中使用 [JMeter](/zh-cn/wiki/jmeter/) 以避免影响真实用户。
+
+1. **设计[测试计划](/zh-cn/wiki/test-plan/)**：创建一个专门用于对您的应用程序进行压力测试的[测试计划](/zh-cn/wiki/test-plan/)。这涉及定义要应用的负载和要收集的指标。
+  2. **添加线程组**：配置具有大量线程（用户）的线程组来模拟压力负载。设置加速时间和测试持续时间以达到并维持所需的应力水平。
+  3. **配置采样器**：添加 HTTP 请求采样器或其他相关采样器来复制会给系统带来压力的用户操作，例如提交表单或执行繁重的查询。
+  4. **添加监听器**：包括聚合报告、摘要报告或图形结果等监听器，以监控和可视化压力下的性能。
+  5. **参数化输入**：使用 CSV 数据集配置或其他参数化方法来改变输入数据，模拟更真实和多样化的应力条件。
+  6. **定义断言**：添加断言以在压力下验证响应，确保应用程序保持功能。
+  7. **运行测试**：执行[测试计划](/zh-cn/wiki/test-plan/)并监视应用程序和服务器资源。
+  8. **分析结果**：测试后，使用[JMeter](/zh-cn/wiki/jmeter/)监听器和外部监控工具分析结果，以识别瓶颈和阈值。
+  9. **微调和重复**：根据分析，微调应用程序或基础设施并重复压力测试以验证改进。
+
+#### 在 JMeter 中记录测试的步骤是什么？
+
+要在 [JMeter](/zh-cn/wiki/jmeter/) 中记录测试，请按照下列步骤操作：
+
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)**
+    并选择
+    **[测试计划](/zh-cn/wiki/test-plan/)**
+    在左侧面板上。
+
+2. **右键单击**
+    在测试计划上并转至
+    **添加 > 线程（用户）> 线程组**
+    。
+
+3. 在线程组内部，
+    **右键单击**
+    并导航至
+    **添加 > 逻辑控制器 > 录音控制器**
+    。
+
+4. 接下来，添加 HTTP(S) 测试脚本记录器以捕获 HTTP 请求。右键单击测试计划并选择
+    **添加 > 非测试元素 > HTTP(S) [测试脚本](/zh-cn/wiki/test-script/) 记录器**
+    。
+
+5. 设置
+    **端口号**
+    用于 HTTP(S) 测试脚本记录器（默认值为 8888）。
+
+6. 配置您的
+    **浏览器或应用程序**
+    通过将代理服务器设置为来使用 JMeter 代理
+    `localhost`
+    使用您在录音机设置中指定的端口。
+
+7. 在 JMeter 中，单击
+    **开始**
+    HTTP(S) 测试脚本记录器上的按钮。JMeter 现在已准备好进行记录。
+
+8. **与您的网络应用程序交互**
+    使用配置的浏览器/应用程序。JMeter 将记录请求和响应并将它们显示在记录控制器下。
+
+9. 完成您要记录的操作后，
+    **停止录音**
+    在 JMeter 中。
+
+10.你现在可以
+    **保存**
+    录制的脚本供以后使用或
+    **修改**
+    根据您的测试计划的需要。
+  请记住在记录之前**清除浏览器缓存**，以确保捕获所有请求，并**禁用代理可能无法捕获的特定于浏览器的功能**，例如预取。
+
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)**
+    并选择
+    **[测试计划](/zh-cn/wiki/test-plan/)**
+    在左侧面板上。
+
+2. **右键单击**
+    在测试计划上并转至
+    **添加 > 线程（用户）> 线程组**
+    。
+
+3. 在线程组内部，
+    **右键单击**
+    并导航至
+    **添加 > 逻辑控制器 > 录音控制器**
+    。
+
+4. 接下来，添加 HTTP(S) 测试脚本记录器以捕获 HTTP 请求。右键单击测试计划并选择
+    **添加 > 非测试元素 > HTTP(S) [测试脚本](/zh-cn/wiki/test-script/) 记录器**
+    。
+
+5. 设置
+    **端口号**
+    用于 HTTP(S) 测试脚本记录器（默认值为 8888）。
+
+6. 配置您的
+    **浏览器或应用程序**
+    通过将代理服务器设置为来使用 JMeter 代理
+    `localhost`
+    使用您在录音机设置中指定的端口。
+
+7. 在 JMeter 中，单击
+    **开始**
+    HTTP(S) 测试脚本记录器上的按钮。JMeter 现在已准备好进行记录。
+
+8. **与您的网络应用程序交互**
+    使用配置的浏览器/应用程序。JMeter 将记录请求和响应并将它们显示在记录控制器下。
+
+9. 完成您要记录的操作后，
+    **停止录音**
+    在 JMeter 中。
+
+10.你现在可以
+    **保存**
+    录制的脚本供以后使用或
+    **修改**
+    根据您的测试计划的需要。
+
+#### 如何分析 JMeter 测试的结果？
+
+分析[JMeter](/zh-cn/wiki/jmeter/) 测试结果涉及检查各种指标以评估性能。运行测试后，[JMeter](/zh-cn/wiki/jmeter/) 提供了多种查看和解释数据的方法：
+
+1. **侦听器**：将侦听器添加到您的[测试计划](/zh-cn/wiki/test-plan/) 以捕获结果。常见的听众包括：
+    - 总结报告
+    - 综合报告
+    - 查看结果树
+    - 图表结果
+    - 响应时间图
+    - 总结报告
+    - 综合报告
+    - 查看结果树
+    - 图表结果
+    - 响应时间图
+  2. **查看结果树**：要获取详细的请求和响应数据，请使用此侦听器。它有助于调试错误，但会占用大量资源；避免在大负载测试期间使用它。
+  3. **聚合报告**：提供一个表格，其中包含平均响应时间、最小/最大、吞吐量、错误百分比等指标。对于快速概览性能很有用。
+  4. **图形分析**：使用图形直观地表示随时间变化的响应时间、吞吐量和其他指标。有助于识别趋势和峰值。
+  5. **导出结果**：将测试结果保存为 CSV 或 XML 格式，以便使用 Excel 或专用软件等外部工具进行进一步分析。
+  6. **插件**：使用[JMeter](/zh-cn/wiki/jmeter/) 插件管理器等插件扩展[JMeter](/zh-cn/wiki/jmeter/) 的分析功能。插件提供高级图表和报告以获取更深入的见解。
+  7. **日志文件**：查看 [JMeter](/zh-cn/wiki/jmeter/) 日志文件以了解 [test execution](/zh-cn/wiki/test-execution/) 期间发生的任何错误或问题。
+  8. **自动分析**：将[JMeter](/zh-cn/wiki/jmeter/)与 Jenkins 等持续集成工具集成，以自动运行测试并生成报告。
+  9. **关联指标**：交叉引用不同的指标以了解响应时间、吞吐量和错误率之间的关系。
+  10. **比较结果**：比较不同测试运行的结果，以确定性能改进或回归。
+  对于经验丰富的工程师来说，分析 [JMeter](/zh-cn/wiki/jmeter/) 结果意味着识别瓶颈、了解负载下的系统行为以及做出明智的决策以提高应用程序性能。
+
+1. **侦听器**：将侦听器添加到您的[测试计划](/zh-cn/wiki/test-plan/) 以捕获结果。常见的听众包括：
+    - 总结报告
+    - 综合报告
+    - 查看结果树
+    - 图表结果
+    - 响应时间图
+    - 总结报告
+    - 综合报告
+    - 查看结果树
+    - 图表结果
+    - 响应时间图
+  2. **查看结果树**：要获取详细的请求和响应数据，请使用此侦听器。它有助于调试错误，但会占用大量资源；避免在大负载测试期间使用它。
+  3. **聚合报告**：提供一个表格，其中包含平均响应时间、最小/最大、吞吐量、错误百分比等指标。对于快速概览性能很有用。
+  4. **图形分析**：使用图形直观地表示随时间变化的响应时间、吞吐量和其他指标。有助于识别趋势和峰值。
+  5. **导出结果**：将测试结果保存为 CSV 或 XML 格式，以便使用 Excel 或专用软件等外部工具进行进一步分析。
+  6. **插件**：使用[JMeter](/zh-cn/wiki/jmeter/) 插件管理器等插件扩展[JMeter](/zh-cn/wiki/jmeter/) 的分析功能。插件提供高级图表和报告以获取更深入的见解。
+  7. **日志文件**：查看 [JMeter](/zh-cn/wiki/jmeter/) 日志文件以了解 [test execution](/zh-cn/wiki/test-execution/) 期间发生的任何错误或问题。
+  8. **自动分析**：将[JMeter](/zh-cn/wiki/jmeter/)与 Jenkins 等持续集成工具集成，以自动运行测试并生成报告。
+  9. **关联指标**：交叉引用不同的指标以了解响应时间、吞吐量和错误率之间的关系。
+  10. **比较结果**：比较不同测试运行的结果，以确定性能改进或回归。
+
+### 高级主题
+
+#### 如何使用 JMeter 进行分布式测试？
+
+要使用 [JMeter](/zh-cn/wiki/jmeter/) 进行分布式测试，请按照下列步骤操作：
+
+1. **在所有将充当负载生成器的计算机（称为从节点）上设置 [JMeter](/zh-cn/wiki/jmeter/) 环境**。确保所有机器都在同一网络上并且可以相互通信。
+  2. **通过编辑`jmeter.properties` 文件来配置主机**（控制器）。找到 `remote_hosts` 属性并列出所有从属节点的 IP 地址，以逗号分隔。
 
     ```
-    const fs = require('fs');
+    remote_hosts=192.168.0.101,192.168.0.102,192.168.0.103
     ```
 
-- **http** ：允许创建 HTTP 服务器和客户端。
+3. **在所有从属节点上打开所需的端口**，以允许来自主机的传入连接。默认[JMeter](/zh-cn/wiki/jmeter/) 端口是`1099`，但可以在`jmeter.properties` 文件中更改。
+  4. **通过从 [JMeter](/zh-cn/wiki/jmeter/) `bin` 目录运行以下命令，在每个从属节点上启动 [JMeter](/zh-cn/wiki/jmeter/) 服务器**：
 
     ```
-    const http = require('http');
+    jmeter-server
     ```
 
-- **https** ：类似于
-    `http`
-    但对于 HTTPS。
+5. **在主计算机上创建[测试计划](/zh-cn/wiki/test-plan/)**，就像进行本地测试一样。
+  6. **从主机上启动分布式测试**，使用 GUI 模式进行配置，然后使用 CLI 模式执行，以节省资源。使用`-R` 选项指定远程主机，或使用`-r` 选项来使用`remote_hosts` 属性中列出的主机。
 
     ```
-    const https = require('https');
+    jmeter -n -t my_test_plan.jmx -r
     ```
 
-- **path** ：提供用于处理和转换文件路径的实用程序。
+7. **实时监控测试**或等待其完成。收集并分析来自主机的结果，主机将聚合来自所有从节点的数据。
+  请记住，如果需要，请同步所有节点的测试开始时间，并确保所有机器都具有同步时钟以获得准确的结果。
+
+1. **在所有将充当负载生成器的计算机（称为从节点）上设置 [JMeter](/zh-cn/wiki/jmeter/) 环境**。确保所有机器都在同一网络上并且可以相互通信。
+  2. **通过编辑`jmeter.properties` 文件来配置主机**（控制器）。找到 `remote_hosts` 属性并列出所有从属节点的 IP 地址，以逗号分隔。
 
     ```
-    const path = require('path');
+    remote_hosts=192.168.0.101,192.168.0.102,192.168.0.103
     ```
 
-- **os** ：提供与操作系统相关的基本实用功能。
+3. **在所有从属节点上打开所需的端口**，以允许来自主机的传入连接。默认[JMeter](/zh-cn/wiki/jmeter/) 端口是`1099`，但可以在`jmeter.properties` 文件中更改。
+  4. **通过从 [JMeter](/zh-cn/wiki/jmeter/) `bin` 目录运行以下命令，在每个从属节点上启动 [JMeter](/zh-cn/wiki/jmeter/) 服务器**：
 
     ```
-    const os = require('os');
+    jmeter-server
     ```
 
-- **util** ：包含用于调试和弃用处理的实用程序函数。
+5. **在主计算机上创建[测试计划](/zh-cn/wiki/test-plan/)**，就像进行本地测试一样。
+  6. **从主机上启动分布式测试**，使用 GUI 模式进行配置，然后使用 CLI 模式执行，以节省资源。使用`-R` 选项指定远程主机，或使用`-r` 选项来使用`remote_hosts` 属性中列出的主机。
 
     ```
-    const util = require('util');
+    jmeter -n -t my_test_plan.jmx -r
     ```
 
-- **events** ：提供 EventEmitter 类来处理事件。
+7. **实时监控测试**或等待其完成。收集并分析来自主机的结果，主机将聚合来自所有从节点的数据。
 
-    ```
-    const EventEmitter = require('events');
-    ```
+#### 在 JMeter 中编写脚本的最佳实践是什么？
 
-- **stream**：允许处理流数据，例如以块的形式读取和写入文件。
+在 [JMeter](/zh-cn/wiki/jmeter/) 中编写脚本时，请遵循以下最佳实践以确保高效且可维护的测试：
 
-    ```
-    const stream = require('stream');
-    ```
+- **使用命名约定**：清楚地命名您的测试元素以反映其目的，使脚本更易于理解和维护。
+  - **模块化您的测试**：使用测试片段将您的[测试计划](/zh-cn/wiki/test-plan/) 分解为逻辑模块，这些模块可以在不同的[测试计划](/zh-cn/wiki/test-plan/) 之间重复使用。
+  - **参数化输入**：使用 CSV 数据集配置或用户定义变量外部化[test data](/zh-cn/wiki/test-data/)，使测试更加灵活和数据驱动。
+  - **添加断言**：使用断言验证响应，以确保您的应用程序返回 [expected results](/zh-cn/wiki/expected-result/)。
+  - **侦听器的有效使用**：侦听器可能会消耗大量内存。谨慎使用它们并在负载测试期间禁用它们以节省资源。
+  - **关联**：通过从响应中提取数据并在后续请求中重用来处理会话 ID 等动态数据。
+  - **思考时间**：通过在请求之间添加适当的计时器来模拟真实的用户行为。
+  - **错误处理**：实施正确的错误处理和日志记录以快速识别问题。
+  - **避免不必要的采样器**：仅使用测试所需的采样器，以避免混乱并减少资源使用。
+  - **使用[JMeter](/zh-cn/wiki/jmeter/) 函数和变量**：利用内置函数和变量来增强您的[测试脚本](/zh-cn/wiki/test-script/)，而无需硬编码值。
+  - **脚本版本控制**：在版本控制系统中维护您的[测试脚本](/zh-cn/wiki/test-script/)，以跟踪更改并与其他人协作。
+  - **正则表达式**：明智地使用正则表达式从响应中提取数据，但要注意它们的性能影响。
+  - **优化线程组**：根据您的测试需求配置线程组，避免被测系统或[JMeter](/zh-cn/wiki/jmeter/)主机过载。
+  通过遵循这些实践，您将创建健壮、可扩展且可维护的 [JMeter](/zh-cn/wiki/jmeter/) 脚本，这些脚本可以有效地模拟用户行为并测量应用程序的性能。
 
-- **child_process** ：启用运行子进程来执行其他程序。
+- **使用命名约定**：清楚地命名您的测试元素以反映其目的，使脚本更易于理解和维护。
+  - **模块化您的测试**：使用测试片段将您的[测试计划](/zh-cn/wiki/test-plan/) 分解为逻辑模块，这些模块可以在不同的[测试计划](/zh-cn/wiki/test-plan/) 之间重复使用。
+  - **参数化输入**：使用 CSV 数据集配置或用户定义变量外部化[test data](/zh-cn/wiki/test-data/)，使测试更加灵活和数据驱动。
+  - **添加断言**：使用断言验证响应，以确保您的应用程序返回 [expected results](/zh-cn/wiki/expected-result/)。
+  - **侦听器的有效使用**：侦听器可能会消耗大量内存。谨慎使用它们并在负载测试期间禁用它们以节省资源。
+  - **关联**：通过从响应中提取数据并在后续请求中重用来处理会话 ID 等动态数据。
+  - **思考时间**：通过在请求之间添加适当的计时器来模拟真实的用户行为。
+  - **错误处理**：实施正确的错误处理和日志记录以快速识别问题。
+  - **避免不必要的采样器**：仅使用测试所需的采样器，以避免混乱并减少资源使用。
+  - **使用[JMeter](/zh-cn/wiki/jmeter/) 函数和变量**：利用内置函数和变量来增强您的[测试脚本](/zh-cn/wiki/test-script/)，而无需硬编码值。
+  - **脚本版本控制**：在版本控制系统中维护您的[测试脚本](/zh-cn/wiki/test-script/)，以跟踪更改并与其他人协作。
+  - **正则表达式**：明智地使用正则表达式从响应中提取数据，但要注意它们的性能影响。
+  - **优化线程组**：根据您的测试需求配置线程组，避免被测系统或[JMeter](/zh-cn/wiki/jmeter/)主机过载。
 
-    ```
-    const { exec } = require('child_process');
-    ```
+#### 如何将 JMeter 与其他测试工具集成？
 
-- **url** ：提供 URL 解析和解析的实用程序。
-
-    ```
-    const url = require('url');
-    ```
-
-- **querystring** ：解析和格式化 URL 查询字符串。
-
-    ```
-    const querystring = require('querystring');
-    ```
-
-- **crypto** ：提供加密功能，包括一组 OpenSSL 散列、HMAC、密码、解密、签名和验证功能的包装器。
-
-    ```
-    const crypto = require('crypto');
-    ```
-
-- **buffer** ：使用 Buffer 类直接处理二进制数据。
-
-    ```
-    const Buffer = require('buffer').Buffer;
-    ```
-
-- **dns** ：提供执行名称解析的功能。
-
-    ```
-    const dns = require('dns');
-    ```
-
-- **net** ：提供异步网络包装器，用于创建基于流的 TCP 或 IPC 服务器和客户端。
-
-    ```
-    const net = require('net');
-    ```这些模块是 [Node.js](/zh-cn/wiki/node-js/) 的组成部分，并且可以通过 `require` 函数包含在您的应用程序中。它们提供了轻松构建复杂应用程序所需的工具。
-
-- **fs** ：提供文件系统操作，例如读取和写入文件。
-
-    ```
-    const fs = require('fs');
-    ```
-
-- **http** ：允许创建 HTTP 服务器和客户端。
-
-    ```
-    const http = require('http');
-    ```
-
-- **https** ：类似于
-    `http`
-    但对于 HTTPS。
-
-    ```
-    const https = require('https');
-    ```
-
-- **path** ：提供用于处理和转换文件路径的实用程序。
-
-    ```
-    const path = require('path');
-    ```
-
-- **os** ：提供与操作系统相关的基本实用功能。
-
-    ```
-    const os = require('os');
-    ```
-
-- **util** ：包含用于调试和弃用处理的实用程序函数。
-
-    ```
-    const util = require('util');
-    ```
-
-- **events** ：提供 EventEmitter 类来处理事件。
-
-    ```
-    const EventEmitter = require('events');
-    ```
-
-- **stream**：允许处理流数据，例如以块的形式读取和写入文件。
-
-    ```
-    const stream = require('stream');
-    ```
-
-- **child_process** ：启用运行子进程来执行其他程序。
-
-    ```
-    const { exec } = require('child_process');
-    ```
-
-- **url** ：提供 URL 解析和解析的实用程序。
-
-    ```
-    const url = require('url');
-    ```
-
-- **querystring** ：解析和格式化 URL 查询字符串。
-
-    ```
-    const querystring = require('querystring');
-    ```
-
-- **crypto** ：提供加密功能，包括一组 OpenSSL 散列、HMAC、密码、解密、签名和验证功能的包装器。
-
-    ```
-    const crypto = require('crypto');
-    ```
-
-- **buffer** ：使用 Buffer 类直接处理二进制数据。
-
-    ```
-    const Buffer = require('buffer').Buffer;
-    ```
-
-- **dns** ：提供执行名称解析的功能。
-
-    ```
-    const dns = require('dns');
-    ```
-
-- **net** ：提供异步网络包装器，用于创建基于流的 TCP 或 IPC 服务器和客户端。
-
-    ```
-    const net = require('net');
-    ```
-
-#### Node.js 中 module.exports 的用途是什么？
-
-在[Node.js](/zh-cn/wiki/node-js/)中，`module.exports`是当前模块在另一个模块中`require`d 时返回的对象。本质上，它定义了模块中的**可导出实体**，例如函数、对象或原语，使它们可供其他模块访问。
-  以下是如何使用 `module.exports` 的基本示例：
+将[JMeter](/zh-cn/wiki/jmeter/) 与其他测试工具集成可以通过将[性能测试](/zh-cn/wiki/performance-testing/) 与其他类型的测试相结合来增强您的[测试自动化](/zh-cn/wiki/test-automation/) 套件。以下是实现这一目标的方法：
+  **持续集成 (CI) 工具：**
+  使用性能插件将 [JMeter](/zh-cn/wiki/jmeter/) 与 Jenkins 等 CI 工具集成。从 Jenkins 作业触发 [JMeter](/zh-cn/wiki/jmeter/) 测试并收集结果以进行趋势分析和报告。
 
   ```
-  // In a file named greet.js
-  function sayHello(name) {
-    return `Hello, ${name}!`;
-  }
-  module.exports = sayHello;
-  ```在另一个文件中，您可以使用导出的函数：
+  # Example: Execute JMeter test plan in Jenkins job
+  jmeter -n -t my_test_plan.jmx -l results.jtl
+  ```
+**[功能测试](/zh-cn/wiki/functional-testing/) 工具：**
+  将[JMeter](/zh-cn/wiki/jmeter/) 与[Selenium](/zh-cn/wiki/selenium/) 结合起来进行全面的端到端测试。使用[JMeter](/zh-cn/wiki/jmeter/) 表示[负载测试](/zh-cn/wiki/load-testing/)，使用[Selenium](/zh-cn/wiki/selenium/) 实现功能自动化。在测试框架内按顺序或并行运行它们。
+  **监控工具：**
+  将 [JMeter](/zh-cn/wiki/jmeter/) 与 Grafana 或 Prometheus 等监控工具链接，以实时可视化性能数据。使用[JMeter](/zh-cn/wiki/jmeter/) 的后端侦听器将测试指标发送到这些工具。
 
   ```
-  // In another file
-  const greet = require('./greet');
-  console.log(greet('World')); // Outputs: Hello, World!
-  ````module.exports` 还可以通过将多个实体附加到 `exports` 对象来导出它们：
+  <!-- Example: Add Backend Listener to JMeter test plan -->
+  <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+    <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+      <collectionProp name="Arguments.arguments">
+        <elementProp name="influxdbMetricsSender" elementType="Argument">
+          <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+          <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+        </elementProp>
+        <!-- Additional configuration -->
+      </collectionProp>
+    </elementProp>
+  </BackendListener>
+  ```
+**[API Testing](/zh-cn/wiki/api-testing/) 工具：**
+  对于[API testing](/zh-cn/wiki/api-testing/)，将[JMeter](/zh-cn/wiki/jmeter/) 与[Postman](/zh-cn/wiki/postman/) 或 SoapUI 等工具集成。使用[JMeter](/zh-cn/wiki/jmeter/) 来实现[负载测试](/zh-cn/wiki/load-testing/) [APIs](/zh-cn/wiki/api/) 并使用其他工具来实现功能@@PR​​OTECTED_7@@。
+  **代码质量工具：**
+  通过将测试结果转换为与这些平台兼容的格式，将 [JMeter](/zh-cn/wiki/jmeter/) 测试合并到 SonarQube 等代码质量平台中。
+  **云服务：**
+  利用 BlazeMeter 等云服务实现可扩展的 [JMeter](/zh-cn/wiki/jmeter/) [test execution](/zh-cn/wiki/test-execution/)。将[JMeter](/zh-cn/wiki/jmeter/)脚本导入 BlazeMeter 并利用云资源进行大规模[性能测试](/zh-cn/wiki/performance-testing/)。
+  通过将 [JMeter](/zh-cn/wiki/jmeter/) 与这些工具集成，您可以创建一个强大的、多方面的 [测试自动化](/zh-cn/wiki/test-automation/) 环境来满足各种测试需求。
+
+#### JMeter 有哪些限制以及如何克服它们？
+
+[JMeter](/zh-cn/wiki/jmeter/) 虽然对于 [性能测试](/zh-cn/wiki/performance-testing/) 来说很强大，但也有局限性：
+
+- **资源密集型**：[JMeter](/zh-cn/wiki/jmeter/) 可能会占用大量资源，尤其是在模拟大量用户时。为了克服这个问题，请将负载分布到集群中的多个[JMeter](/zh-cn/wiki/jmeter/) 实例或计算机上。
+  - **有限的浏览器模拟**：[JMeter](/zh-cn/wiki/jmeter/) 不会像真实浏览器一样执行 JavaScript 或渲染 HTML。使用 [Selenium](/zh-cn/wiki/selenium/) 集成进行更准确的浏览器级用户模拟或考虑无头浏览器测试工具。
+  - **脚本编写的复杂性**：[JMeter](/zh-cn/wiki/jmeter/) 中的高级脚本编写需要 Java 或 BeanShell 知识，这可能是一个障碍。使用[JMeter](/zh-cn/wiki/jmeter/) GUI 进行测试创建，并仅在必要时才使用脚本。此外，利用社区插件来扩展功能。
+  - **UI 响应**：[JMeter](/zh-cn/wiki/jmeter/) GUI 在重负载测试期间可能会变得无响应。使用命令行在非 GUI 模式下运行测试，以减少资源消耗并提高性能。
 
   ```
-  // In greet.js
-  function sayHello(name) {
-    return `Hello, ${name}!`;
-  }
-  function sayGoodbye(name) {
-    return `Goodbye, ${name}!`;
-  }
-  module.exports = {
-    sayHello,
-    sayGoodbye
-  };
-  ```然后，您可以解构以使用多个导出函数：
-
+  jmeter -n -t testplan.jmx -l testresults.jtl
   ```
-  // In another file
-  const { sayHello, sayGoodbye } = require('./greet');
-  console.log(sayHello('Alice')); // Outputs: Hello, Alice!
-  console.log(sayGoodbye('Bob')); // Outputs: Goodbye, Bob!
-  ```这种机制对于创建**模块化**和**可维护**代码库至关重要，其中每个模块仅向应用程序的其余部分公开必要的部分，从而增强**封装性**和**可重用性**。
 
-#### 如何在 Node.js 应用程序中包含第三方模块？
-
-要在 [Node.js](/zh-cn/wiki/node-js/) 应用程序中包含第三方模块，请使用 **npm** （节点包管理器）或 **yarn**，它们是用于管理包的命令行工具。请按照下列步骤操作：
-
-1. **通过运行 `npm init` 或 `yarn init` 初始化您的项目**（如果尚未完成）。这将创建一个`package.json` 文件来跟踪项目的依赖项。
-  2. **通过运行`npm install <module-name>` 或`yarn add <module-name>` 安装第三方模块**。将 `<module-name>` 替换为您要包含的模块的实际名称。此命令将模块及其依赖项下载到`node_modules` 目录并更新`package.json` 文件。
-  3. **使用 `require()` 函数在您的应用程序代码中需要该模块**。例如：
-    此行导入 `express` 模块，您现在可以在应用程序中使用该模块。
-
-    ```
-    const express = require('express');
-    ```
-
-4. **如果仅需要用于开发目的（例如，测试框架），请使用 `--save-dev` 标志将模块保存为开发依赖项**：
-    或对于纱线：
-
-    ```
-    npm install <module-name> --save-dev
-    ```
-
-    ```
-    yarn add <module-name> --dev
-    ```
-
-5. **根据模块的文档调用其函数或类，在代码中使用该模块**。
-  请记住**将 `package.json` 和 `package-lock.json` 或 `yarn.lock`** 文件提交到版本控制系统，以确保其他开发人员可以安装相同的依赖项。但是，`node_modules` 目录通常添加到`.gitignore` 中，因为它可以使用`npm install` 或`yarn install` 轻松重建。
-
-1. **通过运行 `npm init` 或 `yarn init` 初始化您的项目**（如果尚未完成）。这将创建一个`package.json` 文件来跟踪项目的依赖项。
-  2. **通过运行`npm install <module-name>` 或`yarn add <module-name>` 安装第三方模块**。将 `<module-name>` 替换为您要包含的模块的实际名称。此命令将模块及其依赖项下载到`node_modules` 目录并更新`package.json` 文件。
-  3. **使用 `require()` 函数在您的应用程序代码中需要该模块**。例如：
-    此行导入 `express` 模块，您现在可以在应用程序中使用该模块。
-
-    ```
-    const express = require('express');
-    ```
-
-4. **如果仅需要用于开发目的（例如，测试框架），请使用 `--save-dev` 标志将模块保存为开发依赖项**：
-    或对于纱线：
-
-    ```
-    npm install <module-name> --save-dev
-    ```
-
-    ```
-    yarn add <module-name> --dev
-    ```
-
-5. **根据模块的文档调用其函数或类，在代码中使用该模块**。
-
-### Node.js 和数据库
-
-#### 如何将 Node.js 应用程序连接到数据库？
-
-要将 [Node.js](/zh-cn/wiki/node-js/) 应用程序连接到 [database](/zh-cn/wiki/database/)，您通常使用 **[database](/zh-cn/wiki/database/) 驱动程序** 或与您选择的 [database](/zh-cn/wiki/database/) 兼容的 **ORM（对象关系映射）** 库。以下是使用 **MySQL** [database](/zh-cn/wiki/database/) 驱动程序作为示例的一般过程：
-
-1. **使用 npm 安装 [database](/zh-cn/wiki/database/) 驱动程序**。对于 MySQL，您将运行：
-
-    ```
-    npm install mysql
-    ```
-
-2. **在您的 [Node.js](/zh-cn/wiki/node-js/) 应用程序中导入驱动程序**：
-
-    ```
-    const mysql = require('mysql');
-    ```
-
-3. **使用必要的凭据创建到 [database](/zh-cn/wiki/database/) 的连接**：
-
-    ```
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'your_username',
-      password: 'your_password',
-      database: 'your_database_name'
-    });
-    ```
-
-4. **打开连接**并处理任何错误：
-
-    ```
-    connection.connect(error => {
-      if (error) throw error;
-      console.log('Connected to the database.');
-    });
-    ```
-
-5. **使用连接执行[database](/zh-cn/wiki/database/)操作**，例如查询：
-
-    ```
-    connection.query('SELECT * FROM your_table', (error, results, fields) => {
-      if (error) throw error;
-      // Process results here
-    });
-    ```
-
-6. **完成后关闭连接**：
-
-    ```
-    connection.end();
-    ```对于其他 [databases](/zh-cn/wiki/database/)（如 PostgreSQL 或 MongoDB），您可以使用它们各自的驱动程序（`pg` 用于 PostgreSQL，`mongodb` 用于 MongoDB 等）并遵循类似的过程。如果使用像 Sequelize 这样的 ORM，该过程将涉及定义模型并使用 ORM 的方法与 [database](/zh-cn/wiki/database/) 进行交互。始终优雅地处理错误并确保正确关闭连接以避免资源泄漏。
-
-1. **使用 npm 安装 [database](/zh-cn/wiki/database/) 驱动程序**。对于 MySQL，您将运行：
-
-    ```
-    npm install mysql
-    ```
-
-2. **在您的 [Node.js](/zh-cn/wiki/node-js/) 应用程序中导入驱动程序**：
-
-    ```
-    const mysql = require('mysql');
-    ```
-
-3. **使用必要的凭据创建到 [database](/zh-cn/wiki/database/) 的连接**：
-
-    ```
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'your_username',
-      password: 'your_password',
-      database: 'your_database_name'
-    });
-    ```
-
-4. **打开连接**并处理任何错误：
-
-    ```
-    connection.connect(error => {
-      if (error) throw error;
-      console.log('Connected to the database.');
-    });
-    ```
-
-5. **使用连接执行[database](/zh-cn/wiki/database/)操作**，例如查询：
-
-    ```
-    connection.query('SELECT * FROM your_table', (error, results, fields) => {
-      if (error) throw error;
-      // Process results here
-    });
-    ```
-
-6. **完成后关闭连接**：
-
-    ```
-    connection.end();
-    ```
-
-#### 如何在 Node.js 中执行 CRUD 操作？
-
-要在 [Node.js](/zh-cn/wiki/node-js/) 中执行 CRUD 操作，您通常使用驱动程序或 ORM 与 [database](/zh-cn/wiki/database/) 进行交互。下面是一个使用流行的 MongoDB 和 Mongoose ORM 的简洁示例：
-  **创建** - 将新文档插入集合中：
-
-  ```
-  const mongoose = require('mongoose');
-  const { Schema } = mongoose;
-  const userSchema = new Schema({ name: String, age: Number });
-  const User = mongoose.model('User', userSchema);
-  const newUser = new User({ name: 'Alice', age: 30 });
-  newUser.save(err => {
-    if (err) return handleError(err);
-    // Document saved
-  });
-  ```**阅读** - 从集合中获取文档：
-
-  ```
-  User.find({ age: { $gte: 18 } }, (err, users) => {
-    if (err) return handleError(err);
-    // users is an array of adult users
-  });
-  ```**更新** - 修改现有文档：
-
-  ```
-  User.updateOne({ name: 'Alice' }, { age: 31 }, err => {
-    if (err) return handleError(err);
-    // Document updated
-  });
-  ```**删除** - 要从集合中删除文档：
-
-  ```
-  User.deleteOne({ name: 'Alice' }, err => {
-    if (err) return handleError(err);
-    // Document deleted
-  });
-  ```请记住适当地处理错误，可能使用 `handleError` 函数。另外，在执行这些操作之前，请确保您已建立与[database](/zh-cn/wiki/database/) 的连接。使用 `async/await` 来获得更干净的异步代码，避免回调地狱。
-
-#### 什么是 ORM 以及它如何在 Node.js 中使用？
-
-ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对象编程语言中的不兼容类型系统之间转换数据。在[Node.js](/zh-cn/wiki/node-js/) 上下文中，ORM 允许开发人员使用 JavaScript 对象而不是[SQL](/zh-cn/wiki/sql/) 查询与[database](/zh-cn/wiki/database/) 进行交互。
-  ORM 在关系 [database](/zh-cn/wiki/database/) 上提供了高级抽象，可以更轻松地操作数据。这意味着您可以使用 JavaScript 编写 [database](/zh-cn/wiki/database/) 查询，这对于可能不熟悉 [SQL](/zh-cn/wiki/sql/) 语法的开发人员特别有用。
-  以下是 ORM 在 [Node.js](/zh-cn/wiki/node-js/) 中的典型使用方式：
-
-1. **安装 ORM 包** ：选择一个 ORM（例如 Sequelize、TypeORM 或 Bookshelf），然后使用 npm 安装它。
-
-    ```
-    npm install sequelize
-    ```
-
-2. **使用 [database](/zh-cn/wiki/database/) 详细信息配置 ORM** ：通过提供凭据和其他配置详细信息来设置与数据库的连接。
-
-    ```
-    const Sequelize = require('sequelize');
-    const sequelize = new Sequelize('database', 'username', 'password', {
-      host: 'localhost',
-      dialect: 'mysql'
-    });
-    ```
-
-3. **定义模型**：创建代表数据库中表的模型，将对象属性映射到表列。
-
-    ```
-    const User = sequelize.define('user', {
-      username: Sequelize.STRING,
-      birthday: Sequelize.DATE
-    });
-    ```
-
-4. **执行 CRUD 操作**：使用 ORM 方法创建、读取、更新和删除数据库中的记录。
-
-    ```
-    User.create({
-      username: 'johndoe',
-      birthday: new Date(1980, 6, 20)
-    });
-    ```使用 ORM 可以帮助简化[database](/zh-cn/wiki/database/) 交互、减少[SQL](/zh-cn/wiki/sql/) 样板文件并改进代码[maintainability](/zh-cn/wiki/maintainability/)。然而，了解 ORM 可能带来的潜在性能开销和复杂性非常重要，尤其是对于复杂查询。
-
-1. **安装 ORM 包** ：选择一个 ORM（例如 Sequelize、TypeORM 或 Bookshelf），然后使用 npm 安装它。
-
-    ```
-    npm install sequelize
-    ```
-
-2. **使用 [database](/zh-cn/wiki/database/) 详细信息配置 ORM** ：通过提供凭据和其他配置详细信息来设置与数据库的连接。
-
-    ```
-    const Sequelize = require('sequelize');
-    const sequelize = new Sequelize('database', 'username', 'password', {
-      host: 'localhost',
-      dialect: 'mysql'
-    });
-    ```
-
-3. **定义模型**：创建代表数据库中表的模型，将对象属性映射到表列。
-
-    ```
-    const User = sequelize.define('user', {
-      username: Sequelize.STRING,
-      birthday: Sequelize.DATE
-    });
-    ```
-
-4. **执行 CRUD 操作**：使用 ORM 方法创建、读取、更新和删除数据库中的记录。
-
-    ```
-    User.create({
-      username: 'johndoe',
-      birthday: new Date(1980, 6, 20)
-    });
-    ```
-
-#### 如何处理 Node.js 中的数据库错误？
-
-处理[Node.js](/zh-cn/wiki/node-js/) 中的[database](/zh-cn/wiki/database/) 错误通常涉及实现错误处理机制，以捕获并响应[database](/zh-cn/wiki/database/) 操作期间可能出现的问题。这是一个简洁的指南：
-  **对同步代码使用 try-catch**：使用同步 [database](/zh-cn/wiki/database/) 操作时，将代码包装在 `try-catch` 块中以处理错误。
-
-  ```
-  try {
-    // Synchronous database operation
-  } catch (error) {
-    // Handle error
-  }
-  ```**利用 Promise 和 async/await 实现异步代码**：大多数 [Node.js](/zh-cn/wiki/node-js/) [database](/zh-cn/wiki/database/) 库都会返回异步操作的 Promise。将`async/await` 与`try-catch` 一起使用以进行更清晰的错误处理。
-
-  ```
-  async function queryDatabase() {
-    try {
-      const result = await database.query('SELECT * FROM table');
-      // Process result
-    } catch (error) {
-      // Handle error
-    }
-  }
-  ```**处理承诺拒绝**：始终使用 `.catch()` 处理承诺拒绝，以防止未处理的承诺拒绝。
-
-  ```
-  database.query('SELECT * FROM table')
-    .then(result => {
-      // Process result
-    })
-    .catch(error => {
-      // Handle error
-    });
-  ```**在 Express 中使用中间件进行错误处理**：如果您使用的是 Express，请定义错误处理中间件来管理 [database](/zh-cn/wiki/database/) 错误。
-
-  ```
-  app.use((error, req, res, next) => {
-    if (error instanceof DatabaseError) {
-      res.status(500).send('Database error occurred');
-    } else {
+- **实时监控**：[JMeter](/zh-cn/wiki/jmeter/) 不提供实时性能监控。与 Grafana 和 InfluxDB 等外部监控工具集成，实时可视化测试结果。
+  - **移动应用程序测试**：[JMeter](/zh-cn/wiki/jmeter/) 并非专为移动应用程序测试而设计。使用第三方库或服务将 [JMeter](/zh-cn/wiki/jmeter/) 的功能扩展到移动设备，或使用专门的移动测试工具。
+  - **有限协议支持**：[JMeter](/zh-cn/wiki/jmeter/) 主要支持 HTTP/HTTPS 协议。为了测试其他协议，您可能需要查找插件或使用更适合这些协议的其他工具。
+  通过了解这些限制并利用集成、插件和最佳实践，您可以有效地使用 [JMeter](/zh-cn/wiki/jmeter/) 来实现全面的 [性能测试](/zh-cn/wiki/performance-testing/)。
+
+- **资源密集型**：[JMeter](/zh-cn/wiki/jmeter/) 可能会占用大量资源，尤其是在模拟大量用户时。为了克服这个问题，请将负载分布到集群中的多个[JMeter](/zh-cn/wiki/jmeter/) 实例或计算机上。
+  - **有限的浏览器模拟**：[JMeter](/zh-cn/wiki/jmeter/) 不会像真实浏览器一样执行 JavaScript 或渲染 HTML。使用 [Selenium](/zh-cn/wiki/selenium/) 集成进行更准确的浏览器级用户模拟或考虑无头浏览器测试工具。
+  - **脚本编写的复杂性**：[JMeter](/zh-cn/wiki/jmeter/) 中的高级脚本编写需要 Java 或 BeanShell 知识，这可能是一个障碍。使用[JMeter](/zh-cn/wiki/jmeter/) GUI 进行测试创建，并仅在必要时才使用脚本。此外，利用社区插件来扩展功能。
+  - **UI 响应性**：[JMeter](/zh-cn/wiki/jmeter/) GUI 在重负载测试期间可能会变得无响应。使用命令行在非 GUI 模式下运行测试，以减少资源消耗并提高性能。
+  - **实时监控**：[JMeter](/zh-cn/wiki/jmeter/) 不提供实时性能监控。与 Grafana 和 InfluxDB 等外部监控工具集成，实时可视化测试结果。
+  - **移动应用程序测试**：[JMeter](/zh-cn/wiki/jmeter/) 并非专为移动应用程序测试而设计。使用第三方库或服务将 [JMeter](/zh-cn/wiki/jmeter/) 的功能扩展到移动设备，或使用专门的移动测试工具。
+  - **有限协议支持**：[JMeter](/zh-cn/wiki/jmeter/) 主要支持 HTTP/HTTPS 协议。为了测试其他协议，您可能需要查找插件或使用更适合这些协议的其他工具。
+
+#### 如何使用 JMeter 进行 Web 服务的性能测试？
+
+要将 [JMeter](/zh-cn/wiki/jmeter/) 用于 Web 服务的 [性能测试](/zh-cn/wiki/performance-testing/)，请按照以下步骤操作：
+
+1. **通过在菜单上选择`Test Plan`来创建新的[测试计划](/zh-cn/wiki/test-plan/)**，然后右键单击并选择`Add` > `Threads (Users)` > `Thread Group`。
+  2. **配置线程组**，包括测试的线程（用户）数量、启动周期和循环计数。
+  3. **将采样器**添加到线程组，方法是右键单击它并导航到 `Add` > `Sampler` > `HTTP Request`。使用 Web 服务的 URL 和请求类型（GET、POST 等）配置 HTTP 请求。
+  4. **设置 HTTP 请求默认值**（可选），如果您有多个具有公共参数的 HTTP 请求，可以通过添加 `Config Element` > `HTTP Request Defaults` 来减少冗余。
+  5. **添加标头**（如果需要），方法是右键单击 HTTP 请求并选择 `Add` > `Config Element` > `HTTP Header Manager`。输入必要的标头，例如 `Content-Type` 或 `Authorization`。
+  6. **添加监听器** 通过右键单击线程组并选择 `Add` > `Listener` 来查看结果。常见的侦听器是`View Results Tree` 和`Summary Report`。
+  7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
+  8. **通过单击工具栏上的 `Start` 按钮运行测试**。
+  9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
+  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。
+  请记住通过单个用户运行来**验证您的测试**，以确保它在扩展之前按预期工作。根据 Web 服务的预期负载和性能目标调整配置。
+
+1. **通过在菜单上选择`Test Plan`来创建新的[测试计划](/zh-cn/wiki/test-plan/)**，然后右键单击并选择`Add` > `Threads (Users)` > `Thread Group`。
+  2. **配置线程组**，包括测试的线程（用户）数量、启动周期和循环计数。
+  3. **将采样器**添加到线程组，方法是右键单击它并导航到 `Add` > `Sampler` > `HTTP Request`。使用 Web 服务的 URL 和请求类型（GET、POST 等）配置 HTTP 请求。
+  4. **设置 HTTP 请求默认值**（可选），如果您有多个具有公共参数的 HTTP 请求，可以通过添加 `Config Element` > `HTTP Request Defaults` 来减少冗余。
+  5. **添加标头**（如果需要），方法是右键单击 HTTP 请求并选择 `Add` > `Config Element` > `HTTP Header Manager`。输入必要的标头，例如 `Content-Type` 或 `Authorization`。
+  6. **添加监听器** 通过右键单击线程组并选择 `Add` > `Listener` 来查看结果。常见的侦听器是`View Results Tree` 和`Summary Report`。
+  7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
+  8. **通过单击工具栏上的 `Start` 按钮运行测试**。
+  9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
+  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。
       next(error);
     }
   });
@@ -999,7 +999,7 @@ ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对
 
   ```
   console.error('Database error:', error);
-  ```**正常关闭**：如果 [database](/zh-cn/wiki/database/) 错误很严重，请考虑在记录错误并向客户端发送响应后正常关闭进程。
+  ```**正常关闭**：如果 [数据库](/zh-cn/wiki/database/) 错误很严重，请考虑在记录错误并向客户端发送响应后正常关闭进程。
   请记住，**永远不要向客户端公开敏感的错误详细信息**，因为这可能会带来安全风险。相反，记录详细错误并向客户端发送一般错误消息。
 
 ### 高级概念
@@ -1169,7 +1169,7 @@ ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对
     }).listen(8000);
     console.log(`Worker ${process.pid} started`);
   }
-  ```在测试环境中，集群模块对于模拟高流量场景并确保应用程序可以跨多个处理器有效扩展特别有用。这也有利于在 [performance testing](/zh-cn/wiki/performance-testing/) 期间最大限度地利用资源。
+  ```在测试环境中，集群模块对于模拟高流量场景并确保应用程序可以跨多个处理器有效扩展特别有用。这也有利于在 [性能测试](/zh-cn/wiki/performance-testing/) 期间最大限度地利用资源。
 
 #### Node.js 如何处理子进程？
 

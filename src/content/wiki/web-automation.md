@@ -107,7 +107,7 @@ order: 0
 - **错误处理**：管理异常和不稳定的测试；尝试/捕获，重试。
 - **日志记录**：跟踪测试执行细节；温斯顿，Log4js。
 - **环境管理**：配置测试环境；Docker，Kubernetes。
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；灯塔，网页测试。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；lighthouse，网页测试。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：检查漏洞； OWASP ZAP、Burp Suite。
 
   ```
@@ -115,7 +115,7 @@ order: 0
   const expect = require('chai').expect;
   expect(true).to.be.true;
   ```
-这些组件共同创建一个全面的[网络自动化](/zh-cn/wiki/web-automation/) [setup](/zh-cn/wiki/setup/)，使工程师能够有效地编写、运行和维护测试。
+这些组件共同创建一个全面的[网络自动化](/zh-cn/wiki/web-automation/) [环境搭建](/zh-cn/wiki/setup/)，使工程师能够有效地编写、运行和维护测试。
 
 - **测试框架**：提供编写和组织测试的结构，例如 Mocha、Jest 或 Jasmine。
 - **驱动程序和浏览器**：与浏览器的接口；用于跨浏览器测试的WebDriver、用于Chrome的ChromeDriver等。
@@ -131,7 +131,7 @@ order: 0
 - **错误处理**：管理异常和不稳定的测试；尝试/捕获，重试。
 - **日志记录**：跟踪测试执行细节；温斯顿，Log4js。
 - **环境管理**：配置测试环境；Docker，Kubernetes。
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；灯塔，网页测试。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估速度和可扩展性；lighthouse，网页测试。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：检查漏洞； OWASP ZAP、Burp Suite。
 
 #### 自动化 Web 任务有哪些好处？
@@ -477,7 +477,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
       }
   })();
   ```
-请记住随着工具和最佳实践的发展，**审查并调整**您的[setup](/zh-cn/wiki/setup/)。
+请记住随着工具和最佳实践的发展，**审查并调整**您的[环境搭建](/zh-cn/wiki/setup/)。
 
 1. **选择与您首选的 [网络自动化](/zh-cn/wiki/web-automation/) 工具集成的测试框架**，例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 [jasmine](/zh-cn/wiki/jasmine/)。
 2. **搭建环境**：
@@ -632,7 +632,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 
 [网络自动化](/zh-cn/wiki/web-automation/) 中的常用技术包括：
 
-- **数据驱动测试**：外部数据源（如 CSV、Excel 或[databases](/zh-cn/wiki/database/)）驱动[测试脚本](/zh-cn/wiki/test-script/)，允许测试多个场景和输入组合。
+- **数据驱动测试**：外部数据源（如 CSV、Excel 或[数据库](/zh-cn/wiki/database/)）驱动[测试脚本](/zh-cn/wiki/test-script/)，允许测试多个场景和输入组合。
 - **关键字驱动测试**：使用关键字定义测试，关键字描述要在 Web 应用程序上执行的操作，使测试更易于阅读和编写。
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：用于为 Web UI 元素创建对象存储库的设计模式。每个页面都由一个类表示，该类封装了页面的元素和行为，从而增强了[可维护性](/zh-cn/wiki/maintainability/)。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：将 TDD 的通用技术和原理与领域驱动设计和面向对象分析的思想相结合，为软件开发和管理团队提供共享工具和共享流程来协作进行软件开发。
@@ -643,7 +643,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 - **[负载测试](/zh-cn/wiki/load-testing/)**：模拟大量用户来测试应用程序在预期负载和峰值负载条件下的性能。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：确保 Web 应用程序可供残疾人使用，符合 WCAG 等标准。
 - **移动[网页测试](/zh-cn/wiki/web-testing/)**：在移动设备或模拟器/仿真器上测试 Web 应用程序，以确保移动平台上的功能和可用性。
-- **数据驱动测试**：外部数据源（如 CSV、Excel 或[databases](/zh-cn/wiki/database/)）驱动[测试脚本](/zh-cn/wiki/test-script/)，允许测试多个场景和输入组合。
+- **数据驱动测试**：外部数据源（如 CSV、Excel 或[数据库](/zh-cn/wiki/database/)）驱动[测试脚本](/zh-cn/wiki/test-script/)，允许测试多个场景和输入组合。
 - **关键字驱动测试**：使用关键字定义测试，关键字描述要在 Web 应用程序上执行的操作，使测试更易于阅读和编写。
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：用于为 Web UI 元素创建对象存储库的设计模式。每个页面都由一个类表示，该类封装了页面的元素和行为，从而增强了[可维护性](/zh-cn/wiki/maintainability/)。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：将 TDD 的通用技术和原理与领域驱动设计和面向对象分析的思想相结合，为软件开发和管理团队提供共享工具和共享流程来协作进行软件开发。
@@ -683,7 +683,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
   ```
 
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：使用 POM 设计您的测试来封装与动态元素的交互，使您的测试更加可维护和灵活。
-- **数据驱动测试**：从[测试脚本](/zh-cn/wiki/test-script/) 外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV 文件或 [databases](/zh-cn/wiki/database/) 等数据源将动态值输入到您的测试中。
+- **数据驱动测试**：从[测试脚本](/zh-cn/wiki/test-script/) 外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV 文件或 [数据库](/zh-cn/wiki/database/) 等数据源将动态值输入到您的测试中。
 - **正则表达式**：使用正则表达式处理动态文本内容。它们可以匹配字符串中的模式，从而允许您验证或提取数据。
 - **[API](/zh-cn/wiki/api/) 调用**：有时，通过 [API](/zh-cn/wiki/api/) 调用直接与后端交互可能比处理 UI 更改更可靠。
   请记住**避免测试和 UI 之间的紧密耦合**。目标是**定位策略**能够适应变化和**抽象复杂性**，以使您的自动化脚本不那么脆弱。
@@ -698,7 +698,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 
 - **JavaScript执行**：执行JavaScript以与标准API方法难以处理的元素进行交互。
 - **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：使用 POM 设计您的测试来封装与动态元素的交互，使您的测试更加可维护和灵活。
-- **数据驱动测试**：从[测试脚本](/zh-cn/wiki/test-script/) 外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV 文件或 [databases](/zh-cn/wiki/database/) 等数据源将动态值输入到您的测试中。
+- **数据驱动测试**：从[测试脚本](/zh-cn/wiki/test-script/) 外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV 文件或 [数据库](/zh-cn/wiki/database/) 等数据源将动态值输入到您的测试中。
 - **正则表达式**：使用正则表达式处理动态文本内容。它们可以匹配字符串中的模式，从而允许您验证或提取数据。
 - **[API](/zh-cn/wiki/api/) 调用**：有时，通过 [API](/zh-cn/wiki/api/) 调用直接与后端交互可能比处理 UI 更改更可靠。
 
@@ -898,7 +898,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 - **资源效率**：它们消耗更少的内存和CPU，这在并行运行多个测试时特别有益。
 - **持续集成 (CI) 兼容性**：无头浏览器非常适合 CI 管道，因为它们可以在没有显示环境的服务器上运行。
 - **跨平台**：它们可以在各种操作系统上运行，而无需担心 GUI 差异。
-- **屏幕捕获和 DOM [Inspection](/zh-cn/wiki/inspection/)** ：尽管缺少 GUI，无头浏览器可以捕获屏幕截图并提供用于调试的 DOM 访问。
+- **屏幕捕获和 DOM [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** ：尽管缺少 GUI，无头浏览器可以捕获屏幕截图并提供用于调试的 DOM 访问。
   **Puppeteer 示例**：
 
   ```
@@ -917,7 +917,7 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 - **资源效率**：它们消耗更少的内存和CPU，这在并行运行多个测试时特别有益。
 - **持续集成 (CI) 兼容性**：无头浏览器非常适合 CI 管道，因为它们可以在没有显示环境的服务器上运行。
 - **跨平台**：它们可以在各种操作系统上运行，而无需担心 GUI 差异。
-- **屏幕捕获和 DOM [Inspection](/zh-cn/wiki/inspection/)** ：尽管缺乏 GUI，无头浏览器可以捕获屏幕截图并提供 DOM 访问以进行调试。
+- **屏幕捕获和 DOM [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** ：尽管缺乏 GUI，无头浏览器可以捕获屏幕截图并提供 DOM 访问以进行调试。
 
 #### 如何确保您的 Web 自动化测试可靠且稳健？
 

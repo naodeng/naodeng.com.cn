@@ -42,7 +42,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Penetration_test)
+- [维基百科](https://en.wikipedia.org/wiki/Penetration_test)
 
 ## 有关渗透测试的问题吗？
 

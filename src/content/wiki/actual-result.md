@@ -200,7 +200,7 @@ order: 0
 - **性能数据**：**[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具将时序和吞吐量数据捕获为 [实际结果](/zh-cn/wiki/actual-result/) for [性能测试](/zh-cn/wiki/performance-testing/)。
 - **[测试报告](/zh-cn/wiki/test-report/)**：**JUnit**、**TestNG** 或 **Mocha** 等框架生成包含 [实际结果](/zh-cn/wiki/actual-result/) 的报告。这些可以与 **Jenkins** 或 **GitLab CI** 等 CI/CD 工具进一步集成，以实现全面的报告。
 - **自定义处理程序**：在测试代码中实现自定义事件处理程序或回调以捕获应用程序的特定数据点或状态。
-- **[Database](/zh-cn/wiki/database/) 验证**：使用[SQL](/zh-cn/wiki/sql/) 或NoSQL 命令直接查询[database](/zh-cn/wiki/database/) 以捕获数据更改。
+- **[数据库](/zh-cn/wiki/database/) 验证**：使用[SQL](/zh-cn/wiki/sql/) 或NoSQL 命令直接查询[数据库](/zh-cn/wiki/database/) 以捕获数据更改。
 - **文件输出**：将结果写入文件，例如 CSV 或 JSON，以便稍后解析和分析。
   每种方法都是根据需要捕获的**上下文**和正在执行的测试的**类型**来选择的。
 
@@ -217,14 +217,14 @@ order: 0
 - **性能数据**：**[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具将时序和吞吐量数据捕获为 [实际结果](/zh-cn/wiki/actual-result/) for [性能测试](/zh-cn/wiki/performance-testing/)。
 - **[测试报告](/zh-cn/wiki/test-report/)**：**JUnit**、**TestNG** 或 **Mocha** 等框架生成包含 [实际结果](/zh-cn/wiki/actual-result/) 的报告。这些可以与 **Jenkins** 或 **GitLab CI** 等 CI/CD 工具进一步集成，以实现全面的报告。
 - **自定义处理程序**：在测试代码中实现自定义事件处理程序或回调以捕获应用程序的特定数据点或状态。
-- **[Database](/zh-cn/wiki/database/) 验证**：使用[SQL](/zh-cn/wiki/sql/) 或NoSQL 命令直接查询[database](/zh-cn/wiki/database/) 以捕获数据更改。
+- **[数据库](/zh-cn/wiki/database/) 验证**：使用[SQL](/zh-cn/wiki/sql/) 或NoSQL 命令直接查询[数据库](/zh-cn/wiki/database/) 以捕获数据更改。
 - **文件输出**：将结果写入文件，例如 CSV 或 JSON，以便稍后解析和分析。
 
 #### 如何使用“实际结果”来识别和诊断软件错误或问题？
 
 **[实际结果](/zh-cn/wiki/actual-result/)** 是识别软件 [bugs](/zh-cn/wiki/bug/) 并对其进行故障排除的关键诊断工具。当[测试用例](/zh-cn/wiki/test-case/) 执行产生与[预期结果](/zh-cn/wiki/expected-result/) 不同的[实际结果](/zh-cn/wiki/actual-result/) 时，这种差异标志着软件中存在潜在缺陷。
   为了诊断问题，工程师在[测试环境](/zh-cn/wiki/test-environment/) 和输入数据的上下文中分析[实际结果](/zh-cn/wiki/actual-result/)。他们可能会在不同的 [测试用例](/zh-cn/wiki/test-case/) 或条件下寻找结果中的模式或不一致之处。例如，如果某个功能在一组输入下按预期工作，但在另一组输入下则不然，这可能表明存在边界情况问题或数据处理[bug](/zh-cn/wiki/bug/)。
-  工程师还使用[实际结果](/zh-cn/wiki/actual-result/)来查明发生故障的确切步骤。通过检查此时应用程序的状态（包括日志、堆栈跟踪或 [database](/zh-cn/wiki/database/) 状态），他们可以识别故障的根本原因。
+  工程师还使用[实际结果](/zh-cn/wiki/actual-result/)来查明发生故障的确切步骤。通过检查此时应用程序的状态（包括日志、堆栈跟踪或 [数据库](/zh-cn/wiki/database/) 状态），他们可以识别故障的根本原因。
   如果[实际结果](/zh-cn/wiki/actual-result/) 表明存在性能问题，例如响应时间较慢或资源瓶颈，工程师可以使用分析工具深入了解测试时系统的行为。
   [自动化测试](/zh-cn/wiki/automated-testing/) 框架通常提供捕获和报告详细[实际结果](/zh-cn/wiki/actual-result/) 的功能，包括[测试执行](/zh-cn/wiki/test-execution/) 的屏幕截图或视频记录，这对于诊断 UI 问题非常宝贵。
   通过系统地分析[实际结果](/zh-cn/wiki/actual-result/)，工程师可以制定有关[bug](/zh-cn/wiki/bug/)来源的假设，然后可以对其进行测试和验证，从而实现更有效的[bug](/zh-cn/wiki/bug/)修复过程。

@@ -37,7 +37,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Session-based_testing)
+- [维基百科](https://en.wikipedia.org/wiki/Session-based_testing)
 
 ## 关于基于会话的测试有疑问吗？
 

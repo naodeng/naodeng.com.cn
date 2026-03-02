@@ -62,7 +62,7 @@ order: 0
 #### 测试比较在端到端测试中的作用是什么？
 
 在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中，**[测试比较](/zh-cn/wiki/test-comparison/)** 在验证应用程序流程从开始到结束的一致性和准确性方面发挥着关键作用。它涉及将预期结果与[实际结果](/zh-cn/wiki/actual-result/)进行比较，以确保整个系统在现实场景中按预期运行。
-  [端到端测试](/zh-cn/wiki/end-to-end-testing/) 中的[测试比较](/zh-cn/wiki/test-comparison/) 重点验证应用程序的所有集成组件是否无缝协同工作。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[databases](/zh-cn/wiki/database/) 和其他服务。通过比较端到端测试的结果，工程师可以发现单元或集成测试中可能不明显的差异。
+  [端到端测试](/zh-cn/wiki/end-to-end-testing/) 中的[测试比较](/zh-cn/wiki/test-comparison/) 重点验证应用程序的所有集成组件是否无缝协同工作。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/) 和其他服务。通过比较端到端测试的结果，工程师可以发现单元或集成测试中可能不明显的差异。
   例如，如果正在测试电子商务应用程序的结帐流程，[测试比较](/zh-cn/wiki/test-comparison/) 将涉及确保更新库存、处理付款以及按预期将订单确认发送给用户。任何与 [预期结果](/zh-cn/wiki/expected-result/) 的偏差都可能表明系统集成或业务逻辑中存在缺陷。
   自动化[测试比较](/zh-cn/wiki/test-comparison/)工具可以通过突出显示差异和标记潜在问题来显着简化此过程。这些工具通常会提供详细的报告，使您更容易查明问题的根源。
 
@@ -101,7 +101,7 @@ order: 0
     expect(actualScreenshot).toMatchImageSnapshot();
     ```
 
-- **数据驱动的比较**：涉及将输出数据集与预定义的预期数据集进行比较，通常用于[database](/zh-cn/wiki/database/) 测试。
+- **数据驱动的比较**：涉及将输出数据集与预定义的预期数据集进行比较，通常用于[数据库](/zh-cn/wiki/database/) 测试。
 - **文本比较**：逐行比较文本输出或日志或使用文本差异算法。
 - **性能指标比较**：根据预期阈值对与性能相关的指标（如响应时间、内存使用情况或 CPU 负载）进行基准测试。
 - **二进制比较**：直接比较二进制输出，在嵌入式系统测试中很有用。
@@ -124,7 +124,7 @@ order: 0
     expect(actualScreenshot).toMatchImageSnapshot();
     ```
 
-- **数据驱动的比较**：涉及将输出数据集与预定义的预期数据集进行比较，通常用于[database](/zh-cn/wiki/database/) 测试。
+- **数据驱动的比较**：涉及将输出数据集与预定义的预期数据集进行比较，通常用于[数据库](/zh-cn/wiki/database/) 测试。
 - **文本比较**：逐行比较文本输出或日志或使用文本差异算法。
 - **性能指标比较**：根据预期阈值对与性能相关的指标（如响应时间、内存使用情况或 CPU 负载）进行基准测试。
 - **二进制比较**：直接比较二进制输出，在嵌入式系统测试中很有用。
@@ -160,7 +160,7 @@ order: 0
 
 - **执行速度**：自动化测试的运行速度明显快于手动测试。测量两种方法中执行类似[测试用例](/zh-cn/wiki/test-case/) 所需的时间。
 - **一致性**：自动化测试每次运行都能提供一致的结果，消除人为错误。评估测试结果的重复性。
-- **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[setup](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
+- **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[环境搭建](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
 - **维护**：自动化测试需要定期更新以跟上应用程序的变化。评估维护[测试用例](/zh-cn/wiki/test-case/) 所需的工作量。
 - **复杂性**：某些测试，尤其是涉及视觉 [verification](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定[测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
 - **覆盖率**：自动化可以通过快速执行大量测试来增加[测试覆盖率](/zh-cn/wiki/test-coverage/)。分析每种方法所实现的[测试覆盖率](/zh-cn/wiki/test-coverage/) 的广度和深度。
@@ -170,7 +170,7 @@ order: 0
 
 - **执行速度**：自动化测试的运行速度明显快于手动测试。测量两种方法中执行类似[测试用例](/zh-cn/wiki/test-case/) 所需的时间。
 - **一致性**：自动化测试每次运行都能提供一致的结果，消除人为错误。评估测试结果的重复性。
-- **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[setup](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
+- **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[环境搭建](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
 - **维护**：自动化测试需要定期更新以跟上应用程序的变化。评估维护[测试用例](/zh-cn/wiki/test-case/) 所需的工作量。
 - **复杂性**：某些测试，尤其是涉及视觉 [verification](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定 [测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
 - **覆盖率**：自动化可以通过快速执行大量测试来增加[测试覆盖率](/zh-cn/wiki/test-coverage/)。分析每种方法实现的[测试覆盖率](/zh-cn/wiki/test-coverage/) 的广度和深度。
@@ -317,7 +317,7 @@ order: 0
   nyc report --reporter=text-summary
   ```
 
-- **[Database](/zh-cn/wiki/database/) 比较工具**：
+- **[数据库](/zh-cn/wiki/database/) 比较工具**：
     **数据库单元**
     和
     **[SQL](/zh-cn/wiki/sql/) 服务器数据工具**
@@ -393,7 +393,7 @@ order: 0
     **三叶草**
     比较测试覆盖率指标以确保足够的覆盖率。
 
-- **[Database](/zh-cn/wiki/database/) 比较工具**：
+- **[数据库](/zh-cn/wiki/database/) 比较工具**：
     **数据库单元**
     和
     **[SQL](/zh-cn/wiki/sql/) 服务器数据工具**

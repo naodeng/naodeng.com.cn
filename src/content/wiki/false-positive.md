@@ -39,7 +39,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
+- [维基百科](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 
 ## 关于误报的问题？
 
@@ -90,7 +90,7 @@ order: 0
 [软件测试](/zh-cn/wiki/software-testing/) 中[误报](/zh-cn/wiki/false-positive/) 的常见原因通常源于[测试环境](/zh-cn/wiki/test-environment/)、[测试数据](/zh-cn/wiki/test-data/) 或[测试脚本](/zh-cn/wiki/test-script/) 本身的问题。 **[片状测试](/zh-cn/wiki/flaky-test/)** 不可靠并且会产生不一致的结果，由于计时问题（例如竞争条件或在测试运行中不一致的外部依赖项），可能会导致 [误报](/zh-cn/wiki/false-positive/)。
   **过时的[测试脚本](/zh-cn/wiki/test-script/)** 未进行维护以跟上应用程序中的更改，也可能导致[误报](/zh-cn/wiki/false-positive/)。如果 [预期结果](/zh-cn/wiki/expected-result/) 由于新功能或 [bug](/zh-cn/wiki/bug/) 修复而不再有效，则测试将错误地通过。
   **写得不好的断言**当它们没有准确反映需求或过于笼统时，可能会导致[误报](/zh-cn/wiki/false-positive/)。测试所验证的内容应该是精确的，以避免忽视错误。
-  **[测试环境](/zh-cn/wiki/test-environment/) 错误配置**，例如[databases](/zh-cn/wiki/database/)、服务器或其他基础设施组件的[setup](/zh-cn/wiki/setup/) 不正确，可能会导致应用程序的行为与生产中不同，从而导致[误报](/zh-cn/wiki/false-positive/)。
+  **[测试环境](/zh-cn/wiki/test-environment/) 错误配置**，例如[数据库](/zh-cn/wiki/database/)、服务器或其他基础设施组件的[环境搭建](/zh-cn/wiki/setup/) 不正确，可能会导致应用程序的行为与生产中不同，从而导致[误报](/zh-cn/wiki/false-positive/)。
   **非确定性测试**涉及日期、随机数据或并发问题等元素，其行为可能不可预测，有时会在不应通过的情况下通过。
   [测试脚本](/zh-cn/wiki/test-script/) 中的 **不充分的错误处理** 可能会掩盖潜在的问题，从而导致在实际发生错误时测试通过。
   为了最大程度地减少 [误报](/zh-cn/wiki/false-positive/)，至关重要的是维护一个健壮且最新的 [测试套件](/zh-cn/wiki/test-suite/)，并提供清晰准确的断言，并确保 [测试环境](/zh-cn/wiki/test-environment/) 密切反映生产环境。定期审查和重构测试可以帮助控制[误报](/zh-cn/wiki/false-positive/)。
@@ -115,7 +115,7 @@ order: 0
       expect(data).toBeDefined();
     });
     ```
-2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [setup](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
+2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [环境搭建](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
 3. **过时的[测试数据](/zh-cn/wiki/test-data/)**：测试失败，因为它依赖于由于应用程序或外部系统的更改而变得过时的硬编码值。
 
     ```
@@ -153,7 +153,7 @@ order: 0
       expect(data).toBeDefined();
     });
     ```
-2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [setup](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
+2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [环境搭建](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
 3. **过时的[测试数据](/zh-cn/wiki/test-data/)**：测试失败，因为它依赖于由于应用程序或外部系统的更改而变得过时的硬编码值。
 
     ```
@@ -480,7 +480,7 @@ order: 0
 
 在**[安全测试](/zh-cn/wiki/security-testing/)**领域，[误报](/zh-cn/wiki/false-positive/) 可能会导致**资源**和**注意力**。团队可能会浪费时间调查和解决并非实际威胁的问题，从而可能忽视真正的漏洞。这种转移可能会产生**错误的安全感**，因为利益相关者可能认为已确定的问题正在得到解决，而事实上，关键的安全缺陷仍未得到解决。
   此外，频繁的 [误报](/zh-cn/wiki/false-positive/) 可能会导致**警报疲劳**，安全专业人员对警告变得不敏感，从而增加了错过真正安全漏洞的风险。这可能会破坏对测试工具和流程的信任，促使团队忽略或禁用安全警报，从而进一步使软件面临潜在的攻击。
-  为了减轻这些风险，**微调 [安全测试](/zh-cn/wiki/security-testing/) 工具**和**流程**以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 至关重要。这包括使用正确的应用程序上下文配置安全扫描器，维护最新的威胁[databases](/zh-cn/wiki/database/)，以及使用**补充手册[verification](/zh-cn/wiki/verification/)**来确认潜在的安全问题。
+  为了减轻这些风险，**微调 [安全测试](/zh-cn/wiki/security-testing/) 工具**和**流程**以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 至关重要。这包括使用正确的应用程序上下文配置安全扫描器，维护最新的威胁[数据库](/zh-cn/wiki/database/)，以及使用**补充手册[verification](/zh-cn/wiki/verification/)**来确认潜在的安全问题。
   此外，将**反馈循环**纳入测试过程可以帮助提高安全测试的准确性。通过不断向过去的[误报](/zh-cn/wiki/false-positive/)学习，团队可以调整他们的测试策略，以更好地区分真实威胁和虚假威胁，从而提高[安全测试](/zh-cn/wiki/security-testing/)工作的有效性。
 
 #### 误报和测试覆盖率之间有什么关系？

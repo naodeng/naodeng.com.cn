@@ -43,7 +43,7 @@ order: 0
 
 #### 软件测试中的验证是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的[Verification](/zh-cn/wiki/verification/) 是评估开发阶段的工作产品以确保它们满足指定要求的过程。它是检查文档和文件的静态方法。 [Verification](/zh-cn/wiki/verification/) 活动包括**评论**、**[inspections](/zh-cn/wiki/inspection/)**、**演练**和**案头检查**。这是为了确保系统正确构建并遵守设计和开发标准。
+[软件测试](/zh-cn/wiki/software-testing/) 中的[Verification](/zh-cn/wiki/verification/) 是评估开发阶段的工作产品以确保它们满足指定要求的过程。它是检查文档和文件的静态方法。 [Verification](/zh-cn/wiki/verification/) 活动包括**评论**、**[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**、**演练**和**案头检查**。这是为了确保系统正确构建并遵守设计和开发标准。
   [Verification](/zh-cn/wiki/verification/) 经常与验证混淆，但主要区别在于 [verification](/zh-cn/wiki/verification/) 检查产品是否以正确的方式构建，而验证则检查是否正在构建正确的产品。
   在[verification](/zh-cn/wiki/verification/)期间，[测试自动化](/zh-cn/wiki/test-automation/)工程师重点关注**代码质量**、**设计质量**和**符合标准**。他们审查设计文档、需求规范和代码，以在开发生命周期的早期检测错误。
   **静态分析工具**通常在[verification](/zh-cn/wiki/verification/) 中使用，以自动审查代码而不执行代码。这些工具可以识别潜在的问题，例如**语法错误**、**代码标准违规**和**复杂性指标**。
@@ -53,14 +53,14 @@ order: 0
 #### 为什么验证在软件测试中很重要？
 
 [Verification](/zh-cn/wiki/verification/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它确保在进入下一开发阶段之前**根据指定的要求和设计文档**正确**构建产品。它充当问题的早期检测机制，降低后期出现缺陷的风险，而这些缺陷的修复成本更高且耗时。
-  通过开展[verification](/zh-cn/wiki/verification/)活动，例如审查、[inspections](/zh-cn/wiki/inspection/)和静态分析，团队可以识别软件工件中的差异并及时纠正它们。这种积极主动的方法有助于保持开发过程的**完整性**，并有助于为最终产品奠定坚实的基础。
+  通过开展[verification](/zh-cn/wiki/verification/)活动，例如审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)和静态分析，团队可以识别软件工件中的差异并及时纠正它们。这种积极主动的方法有助于保持开发过程的**完整性**，并有助于为最终产品奠定坚实的基础。
   此外，[verification](/zh-cn/wiki/verification/) 有助于**维持行业标准和监管要求的合规性**，这在金融、医疗保健和航空等关键领域尤其重要。它还支持建立**可追溯**的开发流程，其中每个需求都可以跟踪到其相应的设计元素和实现。
   在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[verification](/zh-cn/wiki/verification/) 确保 [测试脚本](/zh-cn/wiki/test-script/) 与预期的 [测试策略](/zh-cn/wiki/test-strategy/) 保持一致，并且能够检测预期的问题范围。这种一致性对于 [自动化测试](/zh-cn/wiki/automated-testing/) 工作的有效性以及让利益相关者对测试结果充满信心至关重要。
   最终，[verification](/zh-cn/wiki/verification/) 是一种**预防措施**，可以提高软件的整体质量，并有助于交付既满足客户期望又满足技术规范的产品。
 
 #### 验证和确认有什么区别？
 
-[Verification](/zh-cn/wiki/verification/) 和验证是[软件测试](/zh-cn/wiki/software-testing/) 中两个不同的阶段，它们具有互补的作用。 **[Verification](/zh-cn/wiki/verification/)**是检查软件产品是否满足指定要求的过程，重点关注设计和开发阶段。它回答了“我们构建的产品正确吗？”这个问题。 [Verification](/zh-cn/wiki/verification/) 确保产品根据设计和要求正确开发，通常涉及审查、[inspections](/zh-cn/wiki/inspection/) 和静态分析。
+[Verification](/zh-cn/wiki/verification/) 和验证是[软件测试](/zh-cn/wiki/software-testing/) 中两个不同的阶段，它们具有互补的作用。 **[Verification](/zh-cn/wiki/verification/)**是检查软件产品是否满足指定要求的过程，重点关注设计和开发阶段。它回答了“我们构建的产品正确吗？”这个问题。 [Verification](/zh-cn/wiki/verification/) 确保产品根据设计和要求正确开发，通常涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和静态分析。
   另一方面，**验证**是评估最终产品以确保其满足用户的需求和期望的过程。它回答了“我们正在构建正确的产品吗？”这个问题。验证涉及软件的实际功能以及软件在用户手中时是否满足其预期用途。这通常涉及 [动态测试](/zh-cn/wiki/dynamic-testing/) 方法，例如执行软件和执行模拟真实场景的测试。
   本质上，[verification](/zh-cn/wiki/verification/) 是关于软件的内部运作，确保开发过程中的每个步骤都是正确的，而验证是关于外部结果，确保最终结果是用户所需要的。两者对于交付高质量的软件产品都至关重要，但它们侧重于 [质量保证](/zh-cn/wiki/quality-assurance/) 的不同方面。
 
@@ -158,35 +158,35 @@ order: 0
 #### 静态验证与动态验证有何不同？
 
 静态[verification](/zh-cn/wiki/verification/) 和动态[verification](/zh-cn/wiki/verification/) 是[软件测试](/zh-cn/wiki/software-testing/) 进程中的两种不同方法。
-  **静态[verification](/zh-cn/wiki/verification/)** 涉及检查软件的代码、文档和设计，而不实际执行程序。这是关于分析这些工件以发现潜在问题。技术包括代码审查、[inspections](/zh-cn/wiki/inspection/)以及使用静态分析工具来检测编码标准违规、安全漏洞和其他代码质量问题。
+  **静态[verification](/zh-cn/wiki/verification/)** 涉及检查软件的代码、文档和设计，而不实际执行程序。这是关于分析这些工件以发现潜在问题。技术包括代码审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)以及使用静态分析工具来检测编码标准违规、安全漏洞和其他代码质量问题。
   相比之下，**动态[verification](/zh-cn/wiki/verification/)**需要在受控环境中运行软件，以根据预期结果验证其行为。这包括各种形式的测试，如单元测试、集成测试、系统测试和验收测试。动态[verification](/zh-cn/wiki/verification/)旨在发现仅在软件运行时才会出现的缺陷。
   静态 [verification](/zh-cn/wiki/verification/) 涉及代码和设计的**正确性** 和 **一致性**，而动态 [verification](/zh-cn/wiki/verification/) 则关注正在运行的应用程序的 **功能性** 和 **非功能性** 行为。两者对于全面的软件质量保证策略都是必不可少的，静态[verification](/zh-cn/wiki/verification/)通常作为缺陷的早期防线，而动态[verification](/zh-cn/wiki/verification/)则提供对软件性能和可靠性的真实评估。
 
 #### 检查在验证中的作用是什么？
 
-[verification](/zh-cn/wiki/verification/) 中的[Inspections](/zh-cn/wiki/inspection/) 充当**正式的同行评审流程**，用于检测软件工件中的缺陷，例如需求、设计文档、代码和[测试用例](/zh-cn/wiki/test-case/)。与非正式评审不同，[inspections](/zh-cn/wiki/inspection/) 遵循**结构化方法**，为参与者（包括作者、检查员和主持人）提供预定义的角色。
-  [inspections](/zh-cn/wiki/inspection/) 的主要作用是在开发生命周期中**尽早发现问题**，这有助于减少以后修复问题所需的成本和时间。 [Inspections](/zh-cn/wiki/inspection/) 专注于工件的**手动检查**，以确保它们符合**标准**并且**没有错误**。
-  在[inspection](/zh-cn/wiki/inspection/)期间，团队系统地审查工件以发现**异常**、**偏差**和**不合格**。这个过程涉及：
+[verification](/zh-cn/wiki/verification/) 中的[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 充当**正式的同行评审流程**，用于检测软件工件中的缺陷，例如需求、设计文档、代码和[测试用例](/zh-cn/wiki/test-case/)。与非正式评审不同，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 遵循**结构化方法**，为参与者（包括作者、检查员和主持人）提供预定义的角色。
+  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的主要作用是在开发生命周期中**尽早发现问题**，这有助于减少以后修复问题所需的成本和时间。 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 专注于工件的**手动检查**，以确保它们符合**标准**并且**没有错误**。
+  在[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)期间，团队系统地审查工件以发现**异常**、**偏差**和**不合格**。这个过程涉及：
 
 - **准备**：参与者熟悉材料。
 - **概述会议**：作者向团队展示工件。
 - **单独审查**：检查员单独检查工件。
-- **[Inspection](/zh-cn/wiki/inspection/) 会议**：团队讨论发现结果并记录缺陷。
+- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队讨论发现结果并记录缺陷。
 - **返工**：作者解决了已发现的问题。
 - **跟进**：主持人确保所有缺陷均得到纠正。
-  [Inspections](/zh-cn/wiki/inspection/) 通过提供**人为驱动的分析**来补充其他[verification](/zh-cn/wiki/verification/) 技术，该分析可以捕获自动化工具可能错过的微妙之处。他们鼓励团队成员之间的**协作**和**知识共享**，从而形成对产品及其质量的集体理解。
-  总之，[inspections](/zh-cn/wiki/inspection/) 是[verification](/zh-cn/wiki/verification/) 的**关键组件**，增强了软件的整体完整性，并有助于开发可靠的高质量产品。
+  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 通过提供**人为驱动的分析**来补充其他[verification](/zh-cn/wiki/verification/) 技术，该分析可以捕获自动化工具可能错过的微妙之处。他们鼓励团队成员之间的**协作**和**知识共享**，从而形成对产品及其质量的集体理解。
+  总之，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是[verification](/zh-cn/wiki/verification/) 的**关键组件**，增强了软件的整体完整性，并有助于开发可靠的高质量产品。
 
 - **准备**：参与者熟悉材料。
 - **概述会议**：作者向团队展示工件。
 - **单独审查**：检查员单独检查工件。
-- **[Inspection](/zh-cn/wiki/inspection/) 会议**：团队讨论发现结果并记录缺陷。
+- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队讨论发现结果并记录缺陷。
 - **返工**：作者解决了已发现的问题。
 - **跟进**：主持人确保所有缺陷均得到纠正。
 
 #### 演练如何用于验证？
 
-[verification](/zh-cn/wiki/verification/) 中的演练用作**非正式**检查技术，开发人员或团队可以演练软件产品或其一部分以**识别潜在问题**。与正式的 [inspections](/zh-cn/wiki/inspection/) 或同行评审不同，演练通常结构较少，并且其方法更加**灵活**。
+[verification](/zh-cn/wiki/verification/) 中的演练用作**非正式**检查技术，开发人员或团队可以演练软件产品或其一部分以**识别潜在问题**。与正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 或同行评审不同，演练通常结构较少，并且其方法更加**灵活**。
   在演练过程中，软件组件的作者向同事展示了材料，解释了逻辑和设计决策。我们鼓励参与者（通常包括其他开发人员、测试人员，有时还包括利益相关者）提出问题并提供反馈。主要目标是在开发周期的早期**发现错误**、**误解**或**歧义**。
   演练对于**复杂算法**、**新功能**或**容易出错**的代码区域特别有用。当团队试图理解**遗留系统**或需要将知识传授给新团队成员时，它们也可能是有益的。
   演练的**非正式性质**意味着它们可以进行调整以满足团队和项目的需求。它们可以根据需要经常进行，并且不需要大量的准备或记录。然而，记录收到的反馈并确保任何发现的问题得到**跟踪和解决**仍然很重要。
@@ -208,12 +208,12 @@ order: 0
 
 1. **需求分析**：仔细检查需求的完整性、一致性和可测试性。
 2. **设计审查**：评估设计文档，包括架构和接口规范，以确保它们符合要求。
-3. **代码[Inspection](/zh-cn/wiki/inspection/)**：对源代码进行彻底检查以查找潜在问题、遵守编码标准以及其他质量措施。
+3. **代码[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：对源代码进行彻底检查以查找潜在问题、遵守编码标准以及其他质量措施。
 4. **静态分析**：利用工具分析代码而不执行代码，识别潜在漏洞和代码异味。
 5. **[测试用例](/zh-cn/wiki/test-case/) 设计**：开发涵盖需求各个方面的[测试用例](/zh-cn/wiki/test-case/)，确保检查每个功能和特性。
 6. **[测试用例](/zh-cn/wiki/test-case/) 审查**：同行审查[测试用例](/zh-cn/wiki/test-case/) 以验证其有效性和覆盖范围。
-7. **[测试执行](/zh-cn/wiki/test-execution/) 规划**：规划[测试用例](/zh-cn/wiki/test-case/) 的执行，包括环境[setup](/zh-cn/wiki/setup/) 和调度。
-8. **试运行**：执行初始测试运行以确保测试环境和[setup](/zh-cn/wiki/setup/) 按预期运行。
+7. **[测试执行](/zh-cn/wiki/test-execution/) 规划**：规划[测试用例](/zh-cn/wiki/test-case/) 的执行，包括环境[环境搭建](/zh-cn/wiki/setup/) 和调度。
+8. **试运行**：执行初始测试运行以确保测试环境和[环境搭建](/zh-cn/wiki/setup/) 按预期运行。
 9. **[测试执行](/zh-cn/wiki/test-execution/)**：执行[测试用例](/zh-cn/wiki/test-case/)（通常使用自动化工具）以验证软件是否按预期运行。
 10. **缺陷记录**：记录[测试执行](/zh-cn/wiki/test-execution/)期间发现的任何差异或缺陷。
 11. **缺陷分析和解决**：分析报告的缺陷，确定它们的优先级，并努力解决它们。
@@ -224,12 +224,12 @@ order: 0
 16. **签核**：在进行验证之前，获得利益相关者的正式批准，证明软件已满足必要的 [verification](/zh-cn/wiki/verification/) 标准。
 1. **需求分析**：仔细检查需求的完整性、一致性和可测试性。
 2. **设计审查**：评估设计文档，包括架构和接口规范，以确保它们符合要求。
-3. **代码[Inspection](/zh-cn/wiki/inspection/)**：对源代码进行彻底检查以查找潜在问题、遵守编码标准以及其他质量措施。
+3. **代码[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：对源代码进行彻底检查以查找潜在问题、遵守编码标准以及其他质量措施。
 4. **静态分析**：利用工具分析代码而不执行代码，识别潜在漏洞和代码异味。
 5. **[测试用例](/zh-cn/wiki/test-case/) 设计**：开发涵盖需求各个方面的[测试用例](/zh-cn/wiki/test-case/)，确保检查每个功能和特性。
 6. **[测试用例](/zh-cn/wiki/test-case/) 审查**：同行审查 [测试用例](/zh-cn/wiki/test-case/) 以验证其有效性和覆盖范围。
-7. **[测试执行](/zh-cn/wiki/test-execution/) 规划**：规划[测试用例](/zh-cn/wiki/test-case/) 的执行，包括环境[setup](/zh-cn/wiki/setup/) 和调度。
-8. **试运行**：执行初始测试运行以确保测试环境和[setup](/zh-cn/wiki/setup/) 按预期运行。
+7. **[测试执行](/zh-cn/wiki/test-execution/) 规划**：规划[测试用例](/zh-cn/wiki/test-case/) 的执行，包括环境[环境搭建](/zh-cn/wiki/setup/) 和调度。
+8. **试运行**：执行初始测试运行以确保测试环境和[环境搭建](/zh-cn/wiki/setup/) 按预期运行。
 9. **[测试执行](/zh-cn/wiki/test-execution/)**：执行[测试用例](/zh-cn/wiki/test-case/)（通常使用自动化工具）以验证软件是否按预期运行。
 10. **缺陷记录**：记录[测试执行](/zh-cn/wiki/test-execution/)期间发现的任何差异或缺陷。
 11. **缺陷分析和解决**：分析报告的缺陷，确定它们的优先级，并努力解决它们。
@@ -323,7 +323,7 @@ order: 0
     Test Case Pass Rate = (Number of test cases passed / Total number of test cases) * 100
     ```
 
-- **审核有效性**：审核和 [inspections](/zh-cn/wiki/inspection/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
+- **审核有效性**：审核和 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
 
     ```
     Review Effectiveness = Number of issues found / Time spent on reviews
@@ -354,7 +354,7 @@ order: 0
     Test Case Pass Rate = (Number of test cases passed / Total number of test cases) * 100
     ```
 
-- **审核有效性**：审核和 [inspections](/zh-cn/wiki/inspection/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
+- **审核有效性**：审核和 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
 
     ```
     Review Effectiveness = Number of issues found / Time spent on reviews
@@ -473,7 +473,7 @@ order: 0
 - **持续集成**：通过频繁的代码检查和即时反馈来促进 CI/CD。
   自动化 [Verification](/zh-cn/wiki/verification/) 工具的缺点：
 
-- **初始[Setup](/zh-cn/wiki/setup/) 成本**：工具和框架开发的高额前期投资。
+- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：工具和框架开发的高额前期投资。
 - **维护开销**：测试脚本需要定期更新以跟上应用程序的变化。
 - **学习曲线**：团队需要时间来学习和适应新工具。
 - **复杂性**：某些场景对于自动化来说可能过于复杂或微妙。
@@ -499,7 +499,7 @@ order: 0
 - **覆盖率**：自动化可以增加测试的深度和范围，提高整体软件质量。
 - **可靠性**：消除重复任务中人为错误的风险。
 - **持续集成**：通过频繁的代码检查和即时反馈来促进 CI/CD。
-- **初始[Setup](/zh-cn/wiki/setup/) 成本**：工具和框架开发的高额前期投资。
+- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：工具和框架开发的高额前期投资。
 - **维护开销**：测试脚本需要定期更新以跟上应用程序的变化。
 - **学习曲线**：团队需要时间来学习和适应新工具。
 - **复杂性**：某些场景对于自动化来说可能过于复杂或微妙。

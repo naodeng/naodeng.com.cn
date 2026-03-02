@@ -396,7 +396,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - **跨浏览器兼容性**：由于 Web 标准的实现不同，确保不同浏览器和版本之间的行为和外观一致具有挑战性。
 - **移动和[响应式设计](/zh-cn/wiki/responsive-design/)**：由于需要模拟不同的环境和交互，在各种屏幕尺寸和移动设备上进行测试会增加复杂性。
 - **性能**：UI 测试执行起来可能很慢，尤其是在运行大型套件或测试复杂界面时。
-- **环境[Setup](/zh-cn/wiki/setup/)**：配置测试环境以匹配生产可能很困难，并且差异可能会导致误报或漏报。
+- **环境[环境搭建](/zh-cn/wiki/setup/)**：配置测试环境以匹配生产可能很困难，并且差异可能会导致误报或漏报。
 - **定位器稳定性**：为元素找到稳定且唯一的定位器可能很棘手，特别是在元素频繁更改的动态应用程序中。
 - **处理异步操作**：处理 AJAX 调用、页面加载和动画需要在测试中仔细同步以避免计时问题。
 - **数据依赖性**：创建和管理反映实际场景而不导致测试脆弱的测试数据是一个常见的障碍。
@@ -406,7 +406,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - **跨浏览器兼容性**：由于 Web 标准的实现不同，确保不同浏览器和版本之间的行为和外观一致具有挑战性。
 - **移动和[响应式设计](/zh-cn/wiki/responsive-design/)**：由于需要模拟不同的环境和交互，在各种屏幕尺寸和移动设备上进行测试会增加复杂性。
 - **性能**：UI 测试执行起来可能很慢，尤其是在运行大型套件或测试复杂界面时。
-- **环境[Setup](/zh-cn/wiki/setup/)**：配置测试环境以匹配生产可能很困难，并且差异可能会导致误报或漏报。
+- **环境[环境搭建](/zh-cn/wiki/setup/)**：配置测试环境以匹配生产可能很困难，并且差异可能会导致误报或漏报。
 - **定位器稳定性**：为元素找到稳定且唯一的定位器可能很棘手，特别是在元素频繁更改的动态应用程序中。
 - **处理异步操作**：处理 AJAX 调用、页面加载和动画需要在测试中仔细同步以避免计时问题。
 - **数据依赖性**：创建和管理反映实际场景而不导致测试脆弱的测试数据是一个常见的障碍。
@@ -574,7 +574,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 [用户界面测试](/zh-cn/wiki/ui-testing/) 中的数据驱动测试涉及从 [测试脚本](/zh-cn/wiki/test-script/) 外部化 [测试数据](/zh-cn/wiki/test-data/)。它允许您将各种数据集输入到同一个[测试用例](/zh-cn/wiki/test-case/)中，从而增强[测试覆盖率](/zh-cn/wiki/test-coverage/)和[可维护性](/zh-cn/wiki/maintainability/)。下面是如何实现它：
 
-1. **准备 [测试数据](/zh-cn/wiki/test-data/)**：创建一个数据源，例如 CSV 文件、Excel 电子表格或 [database](/zh-cn/wiki/database/)，其中包含用于测试的输入值和 [预期结果](/zh-cn/wiki/expected-result/)。
+1. **准备 [测试数据](/zh-cn/wiki/test-data/)**：创建一个数据源，例如 CSV 文件、Excel 电子表格或 [数据库](/zh-cn/wiki/database/)，其中包含用于测试的输入值和 [预期结果](/zh-cn/wiki/expected-result/)。
 2. **设计[测试用例](/zh-cn/wiki/test-case/)**：编写可以接受参数的[测试用例](/zh-cn/wiki/test-case/)。在 [测试脚本](/zh-cn/wiki/test-script/) 中使用占位符来表示随每次测试 [迭代](/zh-cn/wiki/iteration/) 变化的数据。
 3. **读取数据**：利用测试框架或库从源读取数据。例如，如果使用 Excel，您可以将 Apache POI 与 Java 结合使用，或将 openpyxl 与 Python 结合使用。
 4. **注入数据**：将读取的数据输入到您的[测试用例](/zh-cn/wiki/test-case/)中。大多数 [测试自动化](/zh-cn/wiki/test-automation/) 框架（例如 TestNG 或 JUnit for Java）都提供了一种将参数传递给测试方法的方法。
@@ -601,7 +601,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   ```
 通过执行这些步骤，您可以使用不同的数据集高效地执行多个[测试场景](/zh-cn/wiki/test-scenario/)，从而获得更强大、更可靠的[用户界面测试](/zh-cn/wiki/ui-testing/)。
 
-1. **准备 [测试数据](/zh-cn/wiki/test-data/)**：创建一个数据源，例如 CSV 文件、Excel 电子表格或 [database](/zh-cn/wiki/database/)，其中包含用于测试的输入值和 [预期结果](/zh-cn/wiki/expected-result/)。
+1. **准备 [测试数据](/zh-cn/wiki/test-data/)**：创建一个数据源，例如 CSV 文件、Excel 电子表格或 [数据库](/zh-cn/wiki/database/)，其中包含用于测试的输入值和 [预期结果](/zh-cn/wiki/expected-result/)。
 2. **设计[测试用例](/zh-cn/wiki/test-case/)**：编写可以接受参数的[测试用例](/zh-cn/wiki/test-case/)。在[测试脚本](/zh-cn/wiki/test-script/) 中使用占位符来表示随每个测试[迭代](/zh-cn/wiki/iteration/) 变化的数据。
 3. **读取数据**：利用测试框架或库从源读取数据。例如，如果使用 Excel，您可以将 Apache POI 与 Java 结合使用，或将 openpyxl 与 Python 结合使用。
 4. **注入数据**：将读取的数据输入到您的[测试用例](/zh-cn/wiki/test-case/)中。大多数 [测试自动化](/zh-cn/wiki/test-automation/) 框架（例如 TestNG 或 JUnit for Java）都提供了一种将参数传递给测试方法的方法。

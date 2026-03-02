@@ -223,7 +223,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
 
 [gherkin](/zh-cn/wiki/gherkin/) 文件通常被构造为带有 `.feature` 扩展名的纯文本文档，包含单个功能规范。该文件以 **Feature** 关键字开头，后面是正在测试的功能的简短描述。这是功能或业务规则的高级定义。
   在功能描述下方，定义了一个或多个**场景**或**场景大纲**。这些是[测试用例](/zh-cn/wiki/test-case/)，指定系统的预期行为。每个场景都以 **Scenario** 关键字开头，后跟总结 [测试用例](/zh-cn/wiki/test-case/) 的标题。
-  场景由描述操作和结果的步骤组成。步骤以 **Given**、**When**、**Then**、**And** 或​​ **But** 关键字开始，它们对应于测试的 [setup](/zh-cn/wiki/setup/)、操作和断言阶段。 **给定**步骤用于描述初始上下文，**何时**步骤指定事件或操作，**然后**步骤断言预期结果。
+  场景由描述操作和结果的步骤组成。步骤以 **Given**、**When**、**Then**、**And** 或​​ **But** 关键字开始，它们对应于测试的 [环境搭建](/zh-cn/wiki/setup/)、操作和断言阶段。 **给定**步骤用于描述初始上下文，**何时**步骤指定事件或操作，**然后**步骤断言预期结果。
   **背景**可用于定义文件中所有场景通用的步骤，从而消除重复。
   **场景大纲**用于参数化测试，**示例**部分提供数据集。
   **标签**可以应用在功能、背景或单个场景之上，以对测试进行分类或过滤。
@@ -337,7 +337,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
       When the user attempts to log in with invalid credentials
       Then an error message is displayed
   ```
-在此示例中，步骤“假定用户位于登录页面”和“[database](/zh-cn/wiki/database/) 具有默认用户集”是这两种情况的常见先决条件。通过使用背景，您可以确保针对每个场景执行这些步骤，维护 DRY（不要重复）原则并提高 [gherkin](/zh-cn/wiki/gherkin/) 文档的可读性。
+在此示例中，步骤“假定用户位于登录页面”和“[数据库](/zh-cn/wiki/database/) 具有默认用户集”是这两种情况的常见先决条件。通过使用背景，您可以确保针对每个场景执行这些步骤，维护 DRY（不要重复）原则并提高 [gherkin](/zh-cn/wiki/gherkin/) 文档的可读性。
 
 ### 场景和功能
 
@@ -463,7 +463,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
   }
   ```
 
-1. **钩子**：为[setup](/zh-cn/wiki/setup/)和拆卸过程使用钩子（`@Before`、`@After`），例如在场景之前启动Web驱动程序并在场景之后关闭它。
+1. **钩子**：为[环境搭建](/zh-cn/wiki/setup/)和拆卸过程使用钩子（`@Before`、`@After`），例如在场景之前启动Web驱动程序并在场景之后关闭它。
 2. **标签**：使用 [gherkin](/zh-cn/wiki/gherkin/) 场景中定义的标签执行选择性测试，以实现高效 [测试管理](/zh-cn/wiki/test-management/)。
 3. **报告**：[测试执行](/zh-cn/wiki/test-execution/) 之后，Cucumber 生成报告，提供对测试结果的深入了解，这对技术和非技术利益相关者都很有用。
   通过遵循这种方法，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建一个健壮、可读且可维护的[测试套件](/zh-cn/wiki/test-suite/)，它与[BDD](/zh-cn/wiki/bdd/) 方法保持一致，并促进跨团队协作。
@@ -475,7 +475,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
 2. **步骤定义**：以 Cucumber 支持的编程语言（例如 Java、Ruby、JavaScript）实现步骤定义。 Gherkin 场景中的每个步骤都映射到将执行该操作的一段代码。
 1. **运行测试**：使用Cucumber执行功能文件。 Cucumber 读取 [gherkin](/zh-cn/wiki/gherkin/) 步骤并将其与相应的步骤定义进行匹配以运行测试。
 2. **断言**：在步骤定义中，包括用于验证 [预期结果](/zh-cn/wiki/expected-result/) 结果的断言。
-1. **钩子**：为[setup](/zh-cn/wiki/setup/)和拆卸过程使用钩子（`@Before`、`@After`），例如在场景之前启动Web驱动程序并在场景之后关闭它。
+1. **钩子**：为[环境搭建](/zh-cn/wiki/setup/)和拆卸过程使用钩子（`@Before`、`@After`），例如在场景之前启动Web驱动程序并在场景之后关闭它。
 2. **标签**：使用 [gherkin](/zh-cn/wiki/gherkin/) 场景中定义的标签执行选择性测试，以实现高效 [测试管理](/zh-cn/wiki/test-management/)。
 3. **报告**：在[测试执行](/zh-cn/wiki/test-execution/)之后，Cucumber会生成报告，提供对测试结果的深入了解，这对技术和非技术利益相关者都很有用。
 

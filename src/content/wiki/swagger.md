@@ -46,7 +46,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Official Website](https://swagger.io/)
+- [官网](https://swagger.io/)
 
 ## 关于 Swagger 有疑问吗？
 
@@ -255,7 +255,7 @@ order: 0
 
 #### Swagger Inspector 如何帮助测试 API？
 
-[swagger](/zh-cn/wiki/swagger/) Inspector 是一款基于云的工具，允许用户验证其[API](/zh-cn/wiki/api/) 的功能，而无需进行大量[setup](/zh-cn/wiki/setup/)，从而简化了**测试[API](/zh-cn/wiki/api/)** 的过程。它支持 REST 和 SOAP [API](/zh-cn/wiki/api/)，并且特别适用于：
+[swagger](/zh-cn/wiki/swagger/) Inspector 是一款基于云的工具，允许用户验证其[API](/zh-cn/wiki/api/) 的功能，而无需进行大量[环境搭建](/zh-cn/wiki/setup/)，从而简化了**测试[API](/zh-cn/wiki/api/)** 的过程。它支持 REST 和 SOAP [API](/zh-cn/wiki/api/)，并且特别适用于：
 
 - **执行[API](/zh-cn/wiki/api/)请求**：它允许用户向任何端点发送请求并查看响应，有助于快速验证API行为。
 - **验证 [API](/zh-cn/wiki/api/) 响应**：用户可以检查状态代码、响应内容和标头，以确保 API 按预期响应。

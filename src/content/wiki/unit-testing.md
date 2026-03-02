@@ -284,7 +284,7 @@ order: 0
 
 #### 模拟对象在单元测试中的作用是什么？
 
-模拟对象通过模拟真实对象的行为，在 **[单元测试](/zh-cn/wiki/unit-testing/)** 中发挥着至关重要的作用。它们用于创建一个受控环境，其中测试仅关注工作单元，没有外部依赖项，例如 [databases](/zh-cn/wiki/database/)、网络调用或其他服务。
+模拟对象通过模拟真实对象的行为，在 **[单元测试](/zh-cn/wiki/unit-testing/)** 中发挥着至关重要的作用。它们用于创建一个受控环境，其中测试仅关注工作单元，没有外部依赖项，例如 [数据库](/zh-cn/wiki/database/)、网络调用或其他服务。
   通过使用模拟对象，您可以：
 
 - **隔离**
@@ -316,7 +316,7 @@ order: 0
     });
   });
   ```
-在此示例中，`UserRepository` 被模拟为专注于测试 `UserService.create` 方法，而不实际访问 [database](/zh-cn/wiki/database/)。模拟可确保测试保持快速、可靠，并具有可预测的结果。
+在此示例中，`UserRepository` 被模拟为专注于测试 `UserService.create` 方法，而不实际访问 [数据库](/zh-cn/wiki/database/)。模拟可确保测试保持快速、可靠，并具有可预测的结果。
 
 - **隔离**
     正在测试的代码单元，确保故障是由于单元本身的问题造成的，而不是与外部系统或依赖项的交互造成的。
@@ -438,7 +438,7 @@ order: 0
     }
     ```
 
-3. **安排、执行和断言 (AAA) 模式**：使用 [setup](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
+3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
 
     ```
     // Arrange
@@ -465,7 +465,7 @@ order: 0
     }
     ```
 
-3. **安排、执行和断言 (AAA) 模式**：使用 [setup](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
+3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
 
     ```
     // Arrange
@@ -491,7 +491,7 @@ order: 0
 - **写出清晰的、描述性的测试名称**：您的测试名称应该记录您的测试正在做什么。例如，`testIsEmptyListReturnedWhenNoElementsAdded()` 比 `testList()` 提供更多信息。
 - **保持测试独立**：每个测试应独立于其他测试运行。避免测试之间共享状态，以防止可能导致 [片状测试](/zh-cn/wiki/flaky-test/) 的相互依赖性。
 - **每次测试测试一个概念**：专注于单元的单一行为或方面。这使得在测试失败时更容易识别出什么问题。
-- **使用 Arrange-Act-Assert (AAA) 模式**：使用 [setup](/zh-cn/wiki/setup/) (`Arrange`)、调用被测行为 (`Act`) 和断言 (`Assert`) 构建测试。
+- **使用 Arrange-Act-Assert (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用被测行为 (`Act`) 和断言 (`Assert`) 构建测试。
 - **断言预期结果**：确保您的测试检查设备的行为是否符合预期。使用有意义的断言，而不是像 `assertNotNull()` 这样的通用断言。
 - **测试边界条件**：包括对边缘情况和边界条件的测试，以捕获潜在的相差一错误和其他与边界相关的[bugs](/zh-cn/wiki/bug/)。
 - **保持测试快速**：单元测试应该快速执行，以鼓励频繁的测试运行。
@@ -505,7 +505,7 @@ order: 0
 - **写出清晰的、描述性的测试名称**：您的测试名称应该记录您的测试正在做什么。例如，`testIsEmptyListReturnedWhenNoElementsAdded()` 比 `testList()` 提供更多信息。
 - **保持测试独立**：每个测试应独立于其他测试运行。避免测试之间共享状态，以防止可能导致 [片状测试](/zh-cn/wiki/flaky-test/) 的相互依赖性。
 - **每次测试测试一个概念**：专注于单元的单一行为或方面。这使得在测试失败时更容易识别出什么问题。
-- **使用 Arrange-Act-Assert (AAA) 模式**：使用 [setup](/zh-cn/wiki/setup/) (`Arrange`)、调用被测行为 (`Act`) 和断言 (`Assert`) 构建测试。
+- **使用 Arrange-Act-Assert (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用被测行为 (`Act`) 和断言 (`Assert`) 构建测试。
 - **断言预期结果**：确保您的测试检查设备的行为是否符合预期。使用有意义的断言，而不是像 `assertNotNull()` 这样的通用断言。
 - **测试边界条件**：包括对边缘情况和边界条件的测试，以捕获潜在的相差一错误和其他与边界相关的[bugs](/zh-cn/wiki/bug/)。
 - **保持测试快速**：单元测试应该快速执行，以鼓励频繁的测试运行。

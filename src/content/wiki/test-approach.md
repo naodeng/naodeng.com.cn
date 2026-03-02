@@ -170,7 +170,7 @@ order: 0
 #### 静态和动态测试方法有什么区别？
 
 静态和动态测试方法在分析软件的时间和方式上有根本的不同。
-  **[静态测试](/zh-cn/wiki/static-testing/)** 涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[inspections](/zh-cn/wiki/inspection/) 和静态分析工具，可在不运行软件的情况下检查代码质量、标准合规性和其他属性。 [静态测试](/zh-cn/wiki/static-testing/) 可以及早发现问题，这通常可以降低修复问题的成本。
+  **[静态测试](/zh-cn/wiki/static-testing/)** 涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和静态分析工具，可在不运行软件的情况下检查代码质量、标准合规性和其他属性。 [静态测试](/zh-cn/wiki/static-testing/) 可以及早发现问题，这通常可以降低修复问题的成本。
   另一方面，**[动态测试](/zh-cn/wiki/dynamic-testing/)** 需要执行软件。它涉及使用各种输入运行软件并观察输出以确保软件按预期运行。这包括单元测试、集成测试、系统测试和验收测试。 [动态测试](/zh-cn/wiki/dynamic-testing/) 对于在现实条件下验证软件功能和性能至关重要。
   总而言之，[静态测试](/zh-cn/wiki/static-testing/)是关于**不执行的分析**，而[动态测试](/zh-cn/wiki/dynamic-testing/)是关于**[verification](/zh-cn/wiki/verification/)通过执行**。两种方法是互补的，一起使用时可以对软件质量提供更全面的评估。
 
@@ -289,7 +289,7 @@ order: 0
 实施**[测试方法](/zh-cn/wiki/test-approach/)**经常面临诸如**资源限制**、**工具选择**、**[测试环境](/zh-cn/wiki/test-environment/)稳定性**和**维护[测试用例](/zh-cn/wiki/test-case/)**等挑战。克服这些问题需要战略规划和有效的实践。
   对于**资源限制**，根据风险和业务影响确定 [测试用例](/zh-cn/wiki/test-case/) 的优先级。使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** 专注于关键领域，确保最重要的测试首先实现自动化。
   选择正确的工具可能令人畏惧。选择与现有堆栈良好集成并得到广泛支持的工具。在全面实施之前进行**概念验证**以评估工具的有效性。
-  **[测试环境](/zh-cn/wiki/test-environment/) 不稳定性**可以通过使用 Docker 等**容器化**技术来缓解，这些技术允许快速[setup](/zh-cn/wiki/setup/) 并拆除一致的环境。实施**基础设施即代码** (IaC) 以自动化环境配置。
+  **[测试环境](/zh-cn/wiki/test-environment/) 不稳定性**可以通过使用 Docker 等**容器化**技术来缓解，这些技术允许快速[环境搭建](/zh-cn/wiki/setup/) 并拆除一致的环境。实施**基础设施即代码** (IaC) 以自动化环境配置。
   随着应用程序的发展，维护[测试用例](/zh-cn/wiki/test-case/) 具有挑战性。采用**[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**或类似的设计模式将[测试脚本](/zh-cn/wiki/test-script/)与UI分离，使维护更容易。定期**重构测试**并**消除不稳定**以确保可靠性。
   结合**持续集成** (CI)，在每次代码提交时自动运行测试，提供有关更改影响的即时反馈。这也确保了测试在一致、受控的环境中运行。
   最后，在团队内培养**持续学习**的文化。鼓励分享知识和经验，以了解最新的实践和工具，这对于适应 [测试自动化](/zh-cn/wiki/test-automation/) 不断发展的格局至关重要。

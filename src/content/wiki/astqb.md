@@ -45,7 +45,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Official Website](https://astqb.org/)
+- [官网](https://astqb.org/)
 
 ## 关于 ASTQB 的问题吗？
 
@@ -404,4 +404,4 @@ order: 0
 
 **[ASTQB](/zh-cn/wiki/astqb/) 认证专业人员**的平均工资差异很大，具体取决于地点、经验年限、工作角色以及查询时的具体市场条件等因素。截至 2023 年初，在美国，[ASTQB](/zh-cn/wiki/astqb/) 认证测试员的平均年薪可能在 **60,000 美元到 100,000 美元**之间。然而，这是一个广泛的估计，实际工资可能会超出这个范围。
   值得注意的是，与未经认证的同行相比，持有[ASTQB](/zh-cn/wiki/astqb/) 认证可能会带来更高的薪水，因为该认证被视为[软件测试](/zh-cn/wiki/software-testing/) 领域的质量和专业知识的标志。此外，经过认证的专业人员可能有机会获得更高级和更高薪的工作职位，这可以进一步影响平均工资。
-  要获得最准确和最新的薪资信息，请考虑咨询薪资[databases](/zh-cn/wiki/database/)，例如 Glassdoor、Payscale 或 LinkedIn Salary，并按认证、地点和职位筛选数据。请记住，薪资可能会发生变化，并可能受到就业市场当前对认证专业人员的需求的影响。
+  要获得最准确和最新的薪资信息，请考虑咨询薪资[数据库](/zh-cn/wiki/database/)，例如 Glassdoor、Payscale 或 LinkedIn Salary，并按认证、地点和职位筛选数据。请记住，薪资可能会发生变化，并可能受到就业市场当前对认证专业人员的需求的影响。

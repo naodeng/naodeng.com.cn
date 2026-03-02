@@ -46,7 +46,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Acceptance_test-driven_development)
+- [维基百科](https://en.wikipedia.org/wiki/Acceptance_test-driven_development)
 
 ## 有关验收测试驱动开发的问题吗？
 

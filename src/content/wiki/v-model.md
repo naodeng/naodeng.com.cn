@@ -34,7 +34,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/V-model)
+- [维基百科](https://en.wikipedia.org/wiki/V-model)
 
 ## 关于 V 模型的问题吗？
 
@@ -97,7 +97,7 @@ order: 0
 3. **严格的文档记录**：每个阶段都需要完成特定的可交付成果，然后才能进入下一阶段。该文档可作为相应测试阶段的参考并确保责任。
 4. **顺序执行**：阶段按顺序执行。这意味着一个阶段必须在下一阶段开始之前完成，强调每一步的彻底性。
 5. **[Verification](/zh-cn/wiki/verification/) 和验证**：该模型在每个阶段都强调[verification](/zh-cn/wiki/verification/)（我们是否构建了正确的产品？）和验证（我们是否构建了正确的产品？），确保与用户需求和系统规范保持一致。
-6. **[静态测试](/zh-cn/wiki/static-testing/)**：[V 型](/zh-cn/wiki/v-model/) 推广[静态测试](/zh-cn/wiki/static-testing/) 方法，例如评论和[inspections](/zh-cn/wiki/inspection/)，以在不执行代码的情况下捕获缺陷。
+6. **[静态测试](/zh-cn/wiki/static-testing/)**：[V 型](/zh-cn/wiki/v-model/) 推广[静态测试](/zh-cn/wiki/static-testing/) 方法，例如评论和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，以在不执行代码的情况下捕获缺陷。
 7. **缺陷预防**：通过将测试集成到早期阶段，该模型旨在预防缺陷而不仅仅是检测缺陷，从而产生更可靠的软件产品。
 8. **利益相关者参与**：鼓励利益相关者（包括客户和最终用户）持续参与，以确保最终产品满足所有要求。
   通过遵守这些原则，[V 型](/zh-cn/wiki/v-model/) 致力于通过系统、规范和高效的测试流程提供高质量的软件。
@@ -107,7 +107,7 @@ order: 0
 3. **严格的文档记录**：每个阶段都需要完成特定的可交付成果，然后才能进入下一阶段。该文档可作为相应测试阶段的参考并确保责任。
 4. **顺序执行**：阶段按顺序执行。这意味着一个阶段必须在下一阶段开始之前完成，强调每一步的彻底性。
 5. **[Verification](/zh-cn/wiki/verification/) 和验证**：该模型在每个阶段都强调[verification](/zh-cn/wiki/verification/)（我们是否构建了正确的产品？）和验证（我们是否构建了正确的产品？），确保与用户需求和系统规范保持一致。
-6. **[静态测试](/zh-cn/wiki/static-testing/)**：[V 型](/zh-cn/wiki/v-model/) 推广[静态测试](/zh-cn/wiki/static-testing/) 方法，例如评论和[inspections](/zh-cn/wiki/inspection/)，以在不执行代码的情况下捕获缺陷。
+6. **[静态测试](/zh-cn/wiki/static-testing/)**：[V 型](/zh-cn/wiki/v-model/) 推广[静态测试](/zh-cn/wiki/static-testing/) 方法，例如评论和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，以在不执行代码的情况下捕获缺陷。
 7. **缺陷预防**：通过将测试集成到早期阶段，该模型旨在预防缺陷而不仅仅是检测缺陷，从而产生更可靠的软件产品。
 8. **利益相关者参与**：鼓励利益相关者（包括客户和最终用户）持续参与，以确保最终产品满足所有要求。
 

@@ -158,7 +158,7 @@ order: 0
 
 1. **[测试用例](/zh-cn/wiki/test-case/)开发**：[测试用例](/zh-cn/wiki/test-case/)基于TDS编写，确保覆盖所有指定的需求和场景。每个[测试用例](/zh-cn/wiki/test-case/) 应映射回TDS 中的一个元素。
 2. **测试脚本**：对于[自动化测试](/zh-cn/wiki/automated-testing/)、[测试用例](/zh-cn/wiki/test-case/)，使用所选的自动化框架和语言编写脚本。脚本应该是模块化的、可重用的、可维护的，反映 TDS 的结构。
-3. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配 TDS 中定义的条件，包括硬件、软件、网络配置和任何其他相关参数。
+3. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配 TDS 中定义的条件，包括硬件、软件、网络配置和任何其他相关参数。
 4. **[测试执行](/zh-cn/wiki/test-execution/)**：在准备好的环境中运行自动化[测试脚本](/zh-cn/wiki/test-script/)。这可以手动完成，也可以集成到持续集成/持续部署 (CI/CD) 管道中。
 5. **结果分析**：根据 TDS 中指定的 [预期结果](/zh-cn/wiki/expected-result/) 分析结果。记录任何偏差，并在必要时将其分类为缺陷。
 6. **反馈循环**：根据测试结果以及软件要求或设计的任何更改更新 TDS。这可确保 TDS 对于未来的测试周期保持相关性和有效性。
@@ -166,7 +166,7 @@ order: 0
 
 1. **[测试用例](/zh-cn/wiki/test-case/)开发**：[测试用例](/zh-cn/wiki/test-case/)是基于TDS编写的，确保覆盖所有指定的需求和场景。每个[测试用例](/zh-cn/wiki/test-case/) 应映射回TDS 中的一个元素。
 2. **测试脚本**：对于[自动化测试](/zh-cn/wiki/automated-testing/)、[测试用例](/zh-cn/wiki/test-case/)，使用所选的自动化框架和语言编写脚本。脚本应该是模块化的、可重用的、可维护的，反映 TDS 的结构。
-3. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配 TDS 中定义的条件，包括硬件、软件、网络配置和任何其他相关参数。
+3. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/) 以匹配 TDS 中定义的条件，包括硬件、软件、网络配置和任何其他相关参数。
 4. **[测试执行](/zh-cn/wiki/test-execution/)**：在准备好的环境中运行自动化[测试脚本](/zh-cn/wiki/test-script/)。这可以手动完成，也可以集成到持续集成/持续部署 (CI/CD) 管道中。
 5. **结果分析**：根据 TDS 中指定的 [预期结果](/zh-cn/wiki/expected-result/) 分析结果。记录任何偏差，并在必要时将其分类为缺陷。
 6. **反馈循环**：根据测试结果以及软件要求或设计的任何更改更新 TDS。这可确保 TDS 对于未来的测试周期保持相关性和有效性。

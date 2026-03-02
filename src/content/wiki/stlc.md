@@ -63,7 +63,7 @@ order: 0
 1. **需求分析**：测试人员评估需求的清晰度、可测试性和完整性，以确定要执行的测试类型。
 2. **测试计划**：此阶段涉及制定 [测试方法](/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](/zh-cn/wiki/test-plan/) 文档。
 3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/) 的创建以及[测试数据](/zh-cn/wiki/test-data/) 的准备均在此处进行。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
 5. **[测试执行](/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
 6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有 [测试用例](/zh-cn/wiki/test-case/) 均得到执行，并记录学习内容和结果以供将来参考。
   每个阶段对于确保软件满足所需的质量标准和按预期运行至关重要。 [测试自动化](/zh-cn/wiki/test-automation/)工程师应该专注于优化这些阶段，以提高测试过程的效率和有效性。
@@ -71,7 +71,7 @@ order: 0
 1. **需求分析**：测试人员评估需求的清晰度、可测试性和完整性，以确定要执行的测试类型。
 2. **测试计划**：此阶段涉及制定 [测试方法](/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](/zh-cn/wiki/test-plan/) 文档。
 3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/) 的创建以及[测试数据](/zh-cn/wiki/test-data/) 的准备均在此处进行。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
 5. **[测试执行](/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
 6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有[测试用例](/zh-cn/wiki/test-case/) 均得到执行，并记录学习和结果以供将来参考。
 
@@ -244,7 +244,7 @@ order: 0
 
 #### STLC 的测试环境设置阶段会发生什么？
 
-在[STLC](/zh-cn/wiki/stlc/) 中的 **[测试环境](/zh-cn/wiki/test-environment/) [setup](/zh-cn/wiki/setup/)** 阶段，执行以下活动：
+在[STLC](/zh-cn/wiki/stlc/) 中的 **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** 阶段，执行以下活动：
 
 - **配置**
     与生产环境或项目要求相匹配的必要硬件和软件。
@@ -252,13 +252,13 @@ order: 0
 - **安装**
     以及测试服务器、数据库、操作系统和任何其他相关服务的配置。
 
-- **网络[setup](/zh-cn/wiki/setup/)**
+- **网络[环境搭建](/zh-cn/wiki/setup/)**
     确保组件之间的连接和正确通信。
 
 - **创建和配置**
     密切模仿生产数据或满足特定测试用例需求的测试数据。
 
-- **工具[setup](/zh-cn/wiki/setup/)**
+- **工具[环境搭建](/zh-cn/wiki/setup/)**
     ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
 
 - **访问控制**
@@ -277,13 +277,13 @@ order: 0
 - **安装**
     以及测试服务器、数据库、操作系统和任何其他相关服务的配置。
 
-- **网络[setup](/zh-cn/wiki/setup/)**
+- **网络[环境搭建](/zh-cn/wiki/setup/)**
     确保组件之间的连接和正确通信。
 
 - **创建和配置**
     密切模仿生产数据或满足特定测试用例需求的测试数据。
 
-- **工具[setup](/zh-cn/wiki/setup/)**
+- **工具[环境搭建](/zh-cn/wiki/setup/)**
     ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
 
 - **访问控制**
@@ -460,7 +460,7 @@ order: 0
 #### STLC 如何融入 SDLC？
 
 **[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 的一个组成部分，是为确保 [软件质量](/zh-cn/wiki/software-quality/) 而进行的一系列活动。 SDLC 专注于软件开发，而[STLC](/zh-cn/wiki/stlc/) 则专注于[verification](/zh-cn/wiki/verification/) 和验证。
-  [STLC](/zh-cn/wiki/stlc/) 在定义**要求**之后和部署软件之前适合 SDLC。它与开发阶段并行运行，从**需求分析**开始，并通过**规划**、**[测试用例](/zh-cn/wiki/test-case/)开发**、**环境[setup](/zh-cn/wiki/setup/)**、**[测试执行](/zh-cn/wiki/test-execution/)**和**测试周期结束**进行。
+  [STLC](/zh-cn/wiki/stlc/) 在定义**要求**之后和部署软件之前适合 SDLC。它与开发阶段并行运行，从**需求分析**开始，并通过**规划**、**[测试用例](/zh-cn/wiki/test-case/)开发**、**环境[环境搭建](/zh-cn/wiki/setup/)**、**[测试执行](/zh-cn/wiki/test-execution/)**和**测试周期结束**进行。
   在**开发阶段**，测试人员通过了解需求和设置环境来为即将进行的测试做好准备。随着开发的进展，测试人员开发并审查[测试用例](/zh-cn/wiki/test-case/)，确保它们准备好执行。
   一旦开发团队提供了软件的可测试版本，**[测试执行](/zh-cn/wiki/test-execution/) 阶段**就开始了。测试人员向开发人员报告[bugs](/zh-cn/wiki/bug/)，然后开发人员进行必要的修复。这个循环一直持续到软件满足质量标准。
   在**敏捷环境**中，[STLC](/zh-cn/wiki/stlc/) 更具迭代性，将测试集成到每个冲刺中，从而可以持续反馈并更快地解决问题。

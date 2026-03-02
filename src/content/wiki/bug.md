@@ -43,7 +43,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Software_bug)
+- [维基百科](https://en.wikipedia.org/wiki/Software_bug)
 
 ## 关于错误的问题吗？
 

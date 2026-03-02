@@ -156,7 +156,7 @@ order: 0
   **持续集成服务**：可以设置诸如 **Jenkins** 或 **CircleCI** 之类的 CI 工具来记录构建失败，并可以对 [平均无故障时间](/zh-cn/wiki/mtbf/) 进行分析。
   **问题跟踪系统**：**[jira](/zh-cn/wiki/jira/)** 或 **Bugzilla** 等系统记录 [bugs](/zh-cn/wiki/bug/) 和停机时间。查询这些系统可以产生有关故障频率的数据。
   **可靠性分析软件**：**ReliaSoft** 等专用软件提供可靠性数据的高级分析，包括[平均无故障时间](/zh-cn/wiki/mtbf/)。
-  **[Database](/zh-cn/wiki/database/) 查询**：如果故障数据存储在[databases](/zh-cn/wiki/database/) 中，[SQL](/zh-cn/wiki/sql/) 查询可用于通过提取相关时间戳来计算[平均无故障时间](/zh-cn/wiki/mtbf/)。
+  **[数据库](/zh-cn/wiki/database/) 查询**：如果故障数据存储在[数据库](/zh-cn/wiki/database/) 中，[SQL](/zh-cn/wiki/sql/) 查询可用于通过提取相关时间戳来计算[平均无故障时间](/zh-cn/wiki/mtbf/)。
   **自动报告工具**：**Tableau** 或 **Power BI** 等工具可用于根据收集的数据可视化和计算 [平均无故障时间](/zh-cn/wiki/mtbf/)。
   工程师将这些工具集成到他们的[测试自动化](/zh-cn/wiki/test-automation/)框架中，以持续监控和测量[平均无故障时间](/zh-cn/wiki/mtbf/)，从而提供对系统可靠性的见解。
 

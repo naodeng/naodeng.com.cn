@@ -201,7 +201,7 @@ order: 0
 
 [增量测试](/zh-cn/wiki/incremental-testing/) 技术涉及逐步集成和测试各个模块以构建完整的软件系统。这些技术可以根据集成方向进行分类：
   **存根和驱动程序**：在**自上而下**测试中，**存根**用于模拟尚未集成的较低级别模块。相反，**驱动程序**用于**自下而上**测试来模拟更高级别的模块。
-  **[测试工具](/zh-cn/wiki/test-harness/)**：设置 **[测试工具](/zh-cn/wiki/test-harness/)** 或测试框架来针对集成模块执行[测试用例](/zh-cn/wiki/test-case/)。这包括必要的[测试数据](/zh-cn/wiki/test-data/) 的[setup](/zh-cn/wiki/setup/) 以及测试结果的评估。
+  **[测试工具](/zh-cn/wiki/test-harness/)**：设置 **[测试工具](/zh-cn/wiki/test-harness/)** 或测试框架来针对集成模块执行[测试用例](/zh-cn/wiki/test-case/)。这包括必要的[测试数据](/zh-cn/wiki/test-data/) 的[环境搭建](/zh-cn/wiki/setup/) 以及测试结果的评估。
   **[回归测试](/zh-cn/wiki/regression-testing/)**：每个集成步骤之后，都会运行**回归测试**，以确保新的更改不会对现有功能产生不利影响。
   **持续集成 (CI)**：在 CI 环境中，[增量测试](/zh-cn/wiki/incremental-testing/) 是自动化的，在每次代码提交时运行测试以验证新代码增量的集成。
   **模拟对象**：特别是在[单元测试](/zh-cn/wiki/unit-testing/)中，**模拟对象**用于模仿不可用或尚未集成的真实模块的行为。

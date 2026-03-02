@@ -40,7 +40,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Quality_assurance)
+- [维基百科](https://en.wikipedia.org/wiki/Quality_assurance)
 
 ## 有关质量保证的问题吗？
 
@@ -64,7 +64,7 @@ order: 0
 
 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 和质量控制 (QC) 是两个不同的过程，通常可以互换使用，但它们在软件开发生命周期中具有不同的目的。
   **QA** 是一个主动的流程，重点是通过确保用于管理和创建可交付成果的流程是充分的来防止缺陷。它是面向过程的，涵盖了从过程的角度来看旨在提高软件质量的所有活动。 QA 旨在加强开发和测试流程，以便在产品开发过程中不会出现缺陷。
-  另一方面，**QC** 是一个反应过程，涉及识别实际生产的产品中的缺陷。它以产品为导向，包括涉及产品本身检查的所有活动，例如测试、[inspection](/zh-cn/wiki/inspection/) 和评审。 QC 的目的是识别并修复成品中的缺陷。
+  另一方面，**QC** 是一个反应过程，涉及识别实际生产的产品中的缺陷。它以产品为导向，包括涉及产品本身检查的所有活动，例如测试、[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和评审。 QC 的目的是识别并修复成品中的缺陷。
   从本质上讲，质量保证是通过流程改进**建立质量**，本质上是预防性的，而质量控制是关于**验证质量**已经融入到产品中，并通过识别和修复缺陷进行纠正。 QA 的目的是确保采用正确的流程来生产优质产品，而 QC 的目的是确保这些流程的结果是优质的产品。
   对于 [测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，理解这种区别至关重要，因为它有助于确定是专注于改进测试流程 (QA) 还是增强实际 [测试用例](/zh-cn/wiki/test-case/) 和结果验证 (QC)。
 
@@ -109,7 +109,7 @@ order: 0
 - **需求分析**：理解并记录软件必须做什么。
 - **测试计划**：定义测试活动的范围、方法、资源和时间表。
 - **[测试用例](/zh-cn/wiki/test-case/) 开发**：根据需求创建详细的测试用例和测试脚本。
-- **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** ：配置测试所需的硬件和软件要求。
+- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置测试所需的硬件和软件要求。
 - **[测试执行](/zh-cn/wiki/test-execution/)** ：运行测试用例并记录结果。
 - **缺陷跟踪**：记录发现的任何问题并跟踪其解决方案。
 - **风险分析**：识别软件中的潜在风险并据此确定测试的优先级。
@@ -120,7 +120,7 @@ order: 0
 - **需求分析**：理解并记录软件必须做什么。
 - **测试计划**：定义测试活动的范围、方法、资源和时间表。
 - **[测试用例](/zh-cn/wiki/test-case/) 开发**：根据需求创建详细的测试用例和测试脚本。
-- **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** ：配置测试所需的硬件和软件要求。
+- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置测试所需的硬件和软件要求。
 - **[测试执行](/zh-cn/wiki/test-execution/)** ：运行测试用例并记录结果。
 - **缺陷跟踪**：记录发现的任何问题并跟踪其解决方案。
 - **风险分析**：识别软件中的潜在风险并据此确定测试的优先级。
@@ -167,7 +167,7 @@ order: 0
 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 流程通常分阶段展开，每个阶段都有特定的目标和活动。最初，进行**需求分析**来了解需要测试的内容。接下来是**测试计划**，确定策略和资源。
   接下来，**[测试用例](/zh-cn/wiki/test-case/) 开发**开始，包括创建详细的[测试场景](/zh-cn/wiki/test-scenario/) 和脚本。然后，这些 [测试用例](/zh-cn/wiki/test-case/) 在 **[测试执行](/zh-cn/wiki/test-execution/)** 阶段执行，在此阶段根据要求验证软件功能。
   **缺陷跟踪**是一项持续的活动，其中识别的 [bugs](/zh-cn/wiki/bug/) 会被报告、管理和监控直至解决。在整个过程中，**测试报告**为利益相关者提供有关测试进度和质量状态的信息。
-  **[测试环境](/zh-cn/wiki/test-environment/) [setup](/zh-cn/wiki/setup/)** 至关重要，确保在模拟生产条件的受控设置中测试软件。
+  **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** 至关重要，确保在模拟生产条件的受控设置中测试软件。
   自动化工程师通过编写脚本来自动化重复的[测试用例](/zh-cn/wiki/test-case/)来专注于**[测试自动化](/zh-cn/wiki/test-automation/)**，从而提高效率和一致性。
   **持续集成和交付 (CI/CD)** 实践通常集成到 QA 流程中，允许自动化构建和测试，这有助于及早发现问题。
   最后，**测试结束**活动结束了整个过程，包括测试工件的收集、从测试周期中学习以及为未来的版本进行改进。
@@ -359,7 +359,7 @@ order: 0
 
 要成为出色的[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 专家，某些技能是必不可少的：
 
-- **技术熟练程度**：了解编程语言（例如 Java、Python）、[databases](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
+- **技术熟练程度**：了解编程语言（例如 Java、Python）、[数据库](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
 - **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [Cypress](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
 - **分析思维**：分析需求、设计全面的[测试计划](/zh-cn/wiki/test-plan/) 以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/) 的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告中的一丝不苟确保不会漏掉任何缺陷。
@@ -371,7 +371,7 @@ order: 0
 - **风险管理**：能够根据潜在风险确定测试工作的优先级，确保资源的有效利用。
   这些技能使 QA 专家能够设计、开发和维护有效的 [测试自动化](/zh-cn/wiki/test-automation/) 策略，从而有助于交付高质量的软件。
 
-- **技术熟练程度**：了解编程语言（例如 Java、Python）、[databases](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
+- **技术熟练程度**：了解编程语言（例如 Java、Python）、[数据库](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
 - **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [Cypress](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
 - **分析思维**：分析需求、设计全面[测试计划](/zh-cn/wiki/test-plan/)以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/)的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告一丝不苟，确保没有任何缺陷被漏掉。

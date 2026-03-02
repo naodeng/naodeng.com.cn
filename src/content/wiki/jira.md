@@ -42,8 +42,8 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 
 ### 另请参阅：
 
-- [Official Website](https://www.atlassian.com/software/jira)
-- [Wikipedia](https://en.wikipedia.org/wiki/Jira_(software))
+- [官网](https://www.atlassian.com/software/jira)
+- [维基百科](https://en.wikipedia.org/wiki/Jira_(software))
 
 ## 关于jira的问题吗？
 
@@ -219,7 +219,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     ]
   }
   ```
-当问题在“TEST”项目中转换为“测试中”状态时，此 [setup](/zh-cn/wiki/setup/) 可以在您的 [测试自动化](/zh-cn/wiki/test-automation/) 工具中触发事件。
+当问题在“TEST”项目中转换为“测试中”状态时，此 [环境搭建](/zh-cn/wiki/setup/) 可以在您的 [测试自动化](/zh-cn/wiki/test-automation/) 工具中触发事件。
 
 1. **导航**
     到 Jira 设置（齿轮图标）>
@@ -543,7 +543,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
   ```
   status = "In Progress" AND project = "AUT" AND assignee = currentUser()
   ```
-请记住定期审查和调整您的[jira](/zh-cn/wiki/jira/) [setup](/zh-cn/wiki/setup/) 以反映团队敏捷流程中的变化。
+请记住定期审查和调整您的[jira](/zh-cn/wiki/jira/) [环境搭建](/zh-cn/wiki/setup/) 以反映团队敏捷流程中的变化。
 
 - **冲刺**：将工作组织成冲刺，这是必须完成特定工作并准备好进行审查的固定时间段。
 - **待办事项整理**：优先考虑并管理您的产品待办事项，创建用户故事和任务，并使用故事点或时间估计来估计工作量。

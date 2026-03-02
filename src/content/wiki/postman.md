@@ -504,7 +504,7 @@ order: 0
 #### 如何将自动化纳入文档测试？
 
 将自动化纳入[文档测试](/zh-cn/wiki/documentation-testing/) 可以简化流程并提高准确性。 **自动执行链接和图像的 [verification](/zh-cn/wiki/verification/)** 以确保它们不会损坏。使用脚本**检查文档之间的格式一致性**，例如标题、字体和列表。实施可以自动运行以捕获错误的**拼写检查**和**语法检查**工具。
-  利用文档工具提供的 **[API](/zh-cn/wiki/api/)** 来自动进行内容验证。例如，您可以编写一个脚本，从文档中提取文本，并将其与预期值的 [database](/zh-cn/wiki/database/) 进行比较，或检查是否符合预定义的标准。
+  利用文档工具提供的 **[API](/zh-cn/wiki/api/)** 来自动进行内容验证。例如，您可以编写一个脚本，从文档中提取文本，并将其与预期值的 [数据库](/zh-cn/wiki/database/) 进行比较，或检查是否符合预定义的标准。
   考虑使用**自然语言处理 (NLP)** 工具来分析文档的可读性和清晰度。这些工具可以自动评估语言的复杂性，并在必要时提出简化建议。
   **正则表达式**对于搜索和验证文本中的特定模式非常有用，例如需要在整个文档中保持一致的代码片段、命令语法或占位符。
   对于版本控制的文档，自动化**跟踪更改**的过程。设置脚本来提醒您文档的修改，确保更新是有意的且正确记录。
@@ -706,8 +706,8 @@ order: 0
 
 **OpenAPI 规范 (OAS)** 是一个与语言无关的框架，用于描述 RESTful [APIs](/zh-cn/wiki/api/)。它提供了定义[APIs](/zh-cn/wiki/api/)的标准方法，包括端点、请求/响应类型和身份验证方法，这有助于后端和前端团队之间以及人与计算机之间的清晰通信。
   [Swagger](/zh-cn/wiki/swagger/)，现在称为 **[Swagger](/zh-cn/wiki/swagger/) Suite**，是一组与 OpenAPI 规范配合使用的工具。最初，[Swagger](/zh-cn/wiki/swagger/) 既指规范又指工具，但当该规范捐赠给 OpenAPI Initiative (OAI) 时，它被重命名为 OpenAPI 规范。 [Swagger](/zh-cn/wiki/swagger/) 工具包括 [Swagger](/zh-cn/wiki/swagger/) UI、[Swagger](/zh-cn/wiki/swagger/) Editor、[Swagger](/zh-cn/wiki/swagger/) Codegen 和 [Swagger](/zh-cn/wiki/swagger/) Inspector，每个工具在 [API](/zh-cn/wiki/api/) 生命周期（从设计到文档、生成和测试）中服务于不同的目的。
-  对于[test automation](/zh-cn/wiki/test-automation/)，OpenAPI 规范可用于自动生成客户端库、服务器存根和[API](/zh-cn/wiki/api/) 文档。 [Test cases](/zh-cn/wiki/test-case/) 可以从规范中派生，确保它们与[API](/zh-cn/wiki/api/) 的合同一致。这种自动化减少了 [API](/zh-cn/wiki/api/) 更改时维护测试所需的手动工作，因为可以更新规范并可以重新生成相应的客户端库和测试。
-  以下是如何在 [test automation](/zh-cn/wiki/test-automation/) 场景中使用 OpenAPI 规范的示例：
+  对于[测试自动化](/zh-cn/wiki/test-automation/)，OpenAPI 规范可用于自动生成客户端库、服务器存根和[API](/zh-cn/wiki/api/) 文档。 [Test cases](/zh-cn/wiki/test-case/) 可以从规范中派生，确保它们与[API](/zh-cn/wiki/api/) 的合同一致。这种自动化减少了 [API](/zh-cn/wiki/api/) 更改时维护测试所需的手动工作，因为可以更新规范并可以重新生成相应的客户端库和测试。
+  以下是如何在 [测试自动化](/zh-cn/wiki/test-automation/) 场景中使用 OpenAPI 规范的示例：
 
   ```
   openapi: 3.0.0

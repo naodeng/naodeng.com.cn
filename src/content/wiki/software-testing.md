@@ -114,7 +114,7 @@ order: 0
 #### 什么是灰盒测试？
 
 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 是一种混合方法，结合了 **黑盒** 和 **[白盒测试](/zh-cn/wiki/white-box-testing/)** 方法的元素。它需要对应用程序的内部工作原理有部分了解，这使得测试人员能够更好地理解系统来设计[测试用例](/zh-cn/wiki/test-case/)。这种方法在测试 Web 应用程序时特别有用。
-  在[灰盒测试](/zh-cn/wiki/grey-box-testing/) 中，测试人员可以访问详细的设计文档和[database](/zh-cn/wiki/database/) 模式，但无法完全查看源代码。他们使用此信息来创建涵盖应用程序的用户界面及其底层结构（例如 [databases](/zh-cn/wiki/database/) 和服务器）的测试。
+  在[灰盒测试](/zh-cn/wiki/grey-box-testing/) 中，测试人员可以访问详细的设计文档和[数据库](/zh-cn/wiki/database/) 模式，但无法完全查看源代码。他们使用此信息来创建涵盖应用程序的用户界面及其底层结构（例如 [数据库](/zh-cn/wiki/database/) 和服务器）的测试。
   测试人员可以使用**调试器**或**监控系统**等工具来观察应用程序在[测试执行](/zh-cn/wiki/test-execution/)期间的行为。这使他们能够识别与数据流和异常处理相关的问题，而仅通过 [黑盒测试](/zh-cn/wiki/black-box-testing/) 无法轻松找到这些问题。
   [灰盒测试](/zh-cn/wiki/grey-box-testing/) 对于 **[集成测试](/zh-cn/wiki/integration-testing/)**、**[安全测试](/zh-cn/wiki/security-testing/)** 和 **网络测试** 有效。它有助于识别与数据通信、用户权限和会话管理相关的问题，这对于应用程序的整体安全性和性能至关重要。
   通过利用黑盒和[白盒测试](/zh-cn/wiki/white-box-testing/) 的优势，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可以更全面地了解应用程序的行为和潜在漏洞。对于希望优化[测试覆盖率](/zh-cn/wiki/test-coverage/) 和效率的[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，这是一个战略选择。
@@ -122,7 +122,7 @@ order: 0
 #### 什么是静态测试和动态测试？
 
 [静态测试](/zh-cn/wiki/static-testing/) 和[动态测试](/zh-cn/wiki/dynamic-testing/) 是用于检测软件应用程序中的缺陷的两种方法。
-  **[静态测试](/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[inspections](/zh-cn/wiki/inspection/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](/zh-cn/wiki/bug/)，并确保符合最佳实践。
+  **[静态测试](/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](/zh-cn/wiki/bug/)，并确保符合最佳实践。
   另一方面，**[动态测试](/zh-cn/wiki/dynamic-testing/)** 需要**执行**。它通过在各种条件下运行软件来验证软件的功能行为。此类测试检查给定输入的正确输出，并在模拟实际使用的环境中执行。 [动态测试](/zh-cn/wiki/dynamic-testing/) 可以进一步分为[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[验收测试](/zh-cn/wiki/acceptance-testing/)。
   两种测试类型是互补的。 [静态测试](/zh-cn/wiki/static-testing/) 有助于及早发现问题，从而更具成本效益地修复问题，而 [动态测试](/zh-cn/wiki/dynamic-testing/) 则可验证软件在压力下的操作行为和性能。结合这两种方法可以确保对软件质量进行更彻底的评估。
 

@@ -45,8 +45,8 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 
 ### 另请参阅：
 
-- [Official Website](https://www.selenium.dev/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Selenium_(software))
+- [官网](https://www.selenium.dev/)
+- [维基百科](https://en.wikipedia.org/wiki/Selenium_(software))
 
 ## 关于selenium的问题？
 
@@ -176,7 +176,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   </dependencies>
   ```
 
-1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[setup](/zh-cn/wiki/setup/)。
+1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[环境搭建](/zh-cn/wiki/setup/)。
 2. **运行测试**：使用 IDE 或命令行执行测试，以确保一切正常工作。
 1. **安装 Java**：[selenium](/zh-cn/wiki/selenium/) 需要 Java。从 Oracle 网站下载并安装 Java 开发工具包 (JDK)。
 2. **设置Java环境变量**：配置`JAVA_HOME`环境变量指向JDK安装目录。更新系统`PATH` 以包含 JDK `bin` 目录。
@@ -186,7 +186,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 6. **安装浏览器**：确保浏览器版本与下载的 [WebDriver](/zh-cn/wiki/webdriver/) 版本兼容。
 7. **安装 IDE**：安装集成开发环境 (IDE)，例如 Eclipse、IntelliJ IDEA 或 Visual Studio Code，用于编写 [测试脚本](/zh-cn/wiki/test-script/)。
 8. **添加 [selenium](/zh-cn/wiki/selenium/) 依赖项**：如果使用 Maven 或 Gradle，请将 [selenium](/zh-cn/wiki/selenium/) 依赖项添加到 `pom.xml` 或 `build.gradle` 文件。对于Maven：
-1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[setup](/zh-cn/wiki/setup/)。
+1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[环境搭建](/zh-cn/wiki/setup/)。
 2. **运行测试**：使用 IDE 或命令行执行测试，以确保一切正常工作。
 
 #### 使用 Selenium 的先决条件是什么？

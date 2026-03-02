@@ -70,7 +70,7 @@ order: 0
 
 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 的关键组件包括：
 
-- **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：建立一系列浏览器、版本和操作系统进行测试。这包括桌面和移动平台。
+- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：建立一系列浏览器、版本和操作系统进行测试。这包括桌面和移动平台。
 - **[测试用例](/zh-cn/wiki/test-case/) 和场景**：制作全面的[测试用例](/zh-cn/wiki/test-case/)，涵盖应用程序的功能、视觉和性能方面。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：确保适当且多样化的[测试数据](/zh-cn/wiki/test-data/) 可用于不同的测试场景。
 - **自动化框架**：利用 [selenium](/zh-cn/wiki/selenium/) 等框架，允许编写可以跨多个浏览器和平台运行的脚本测试。
@@ -85,7 +85,7 @@ order: 0
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：包括检查是否符合 WCAG 等可访问性标准，以确保所有用户都可以使用该应用程序。
   通过关注这些组件，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保彻底有效的[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 策略。
 
-- **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)**：建立一系列浏览器、版本和操作系统进行测试。这包括桌面和移动平台。
+- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：建立一系列浏览器、版本和操作系统进行测试。这包括桌面和移动平台。
 - **[测试用例](/zh-cn/wiki/test-case/) 和场景**：制作全面的[测试用例](/zh-cn/wiki/test-case/)，涵盖应用程序的功能、视觉和性能方面。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：确保适当且多样化的[测试数据](/zh-cn/wiki/test-data/) 可用于不同的测试场景。
 - **自动化框架**：利用 [selenium](/zh-cn/wiki/selenium/) 等框架，允许编写可以跨多个浏览器和平台运行的脚本测试。
@@ -248,7 +248,7 @@ order: 0
 - **可扩展性**：自动化测试可以处理大量测试用例，从而随着应用程序的增长更容易扩展测试工作。
   自动化 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 工具的缺点：
 
-- **初始[Setup](/zh-cn/wiki/setup/) 成本**：设置自动化框架和编写测试脚本需要时间和资源。
+- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：设置自动化框架和编写测试脚本需要时间和资源。
 - **维护**：测试脚本需要定期更新以应对应用程序和浏览器的变化，这可能非常耗时。
 - **复杂性**：某些场景可能难以自动化，需要复杂的逻辑并可能导致不稳定的测试。
 - **限制**：并非所有浏览器交互都可以通过自动化工具完美复制，可能会遗漏一些用户体验问题。
@@ -260,7 +260,7 @@ order: 0
 - **速度**：测试运行速度比手动测试更快，从而实现更快的反馈和更快的开发周期。
 - **集成**：工具可以集成到 CI/CD 管道中，确保跨浏览器测试成为常规部署过程的一部分。
 - **可扩展性**：自动化测试可以处理大量测试用例，从而随着应用程序的增长更容易扩展测试工作。
-- **初始[Setup](/zh-cn/wiki/setup/) 成本**：设置自动化框架和编写测试脚本需要时间和资源。
+- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：设置自动化框架和编写测试脚本需要时间和资源。
 - **维护**：测试脚本需要定期更新以应对应用程序和浏览器的变化，这可能非常耗时。
 - **复杂性**：某些场景可能难以自动化，需要复杂的逻辑并可能导致不稳定的测试。
 - **限制**：并非所有浏览器交互都可以通过自动化工具完美复制，可能会遗漏一些用户体验问题。
@@ -272,7 +272,7 @@ order: 0
 要使用[selenium](/zh-cn/wiki/selenium/) 执行[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)，请执行以下步骤：
 
 1. **设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
+2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[环境搭建](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
 3. **参数化浏览器选择**：使用配置文件或环境变量指定测试运行的浏览器类型。您还可以使用返回浏览器配置的数据提供程序。
 4. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[WebDriver](/zh-cn/wiki/webdriver/)。例如：
 
@@ -293,7 +293,7 @@ order: 0
   请记住保持您的[WebDriver](/zh-cn/wiki/webdriver/) 二进制文件更新并使用最新版本的浏览器进行准确测试。
 
 1. **设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[setup](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[setup](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
+2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[环境搭建](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
 3. **参数化浏览器选择**：使用配置文件或环境变量指定测试运行的浏览器类型。您还可以使用返回浏览器配置的数据提供程序。
 4. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[WebDriver](/zh-cn/wiki/webdriver/)。例如：
 
@@ -508,7 +508,7 @@ order: 0
 #### 跨浏览器测试中如何有效管理时间和资源？
 
 要在 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 中**有效地管理时间和资源**，请根据您的用户分析优先考虑最**关键的浏览器和操作系统组合**。实施 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 方法**，重点关注影响最大的领域。利用[selenium](/zh-cn/wiki/selenium/) 等**自动化框架**来运行并行测试，从而显着减少执行时间。
-  利用**基于云的服务**（例如 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs）来访问各种浏览器配置，而无需维护内部实验室。这种方法节省了基础设施成本和[setup](/zh-cn/wiki/setup/)时间。
+  利用**基于云的服务**（例如 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs）来访问各种浏览器配置，而无需维护内部实验室。这种方法节省了基础设施成本和[环境搭建](/zh-cn/wiki/setup/)时间。
   **通过确保它们模块化、可重用且易于维护来优化[测试脚本](/zh-cn/wiki/test-script/)**。这减少了应用程序发生更改时更新测试所需的工作量。应用**数据驱动测试**，在多个浏览器中使用不同的输入值运行相同的[测试场景](/zh-cn/wiki/test-scenario/)，从而用最少的脚本最大化[测试覆盖率](/zh-cn/wiki/test-coverage/)。
   合并**持续集成 (CI)** 工具，在每次提交后自动触发跨浏览器测试，确保即时反馈和测试资源的有效利用。这种集成有助于及早发现问题并减少调试时间。
   最后，定期**审查和更新您的测试矩阵**以逐步淘汰旧的浏览器版本并包含新版本，确保您的测试工作与当前的市场趋势和用户偏好保持一致。

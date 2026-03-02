@@ -47,7 +47,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Black-box_testing)
+- [维基百科](https://en.wikipedia.org/wiki/Black-box_testing)
 
 ## 有关黑盒测试的问题吗？
 
@@ -643,7 +643,7 @@ order: 0
 
 [黑盒测试](/zh-cn/wiki/black-box-testing/) 在各个阶段集成到**[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 中，以确保应用程序按照用户的角度预期运行。在**需求收集阶段**，[黑盒测试](/zh-cn/wiki/black-box-testing/) 有助于了解用户需求并设计反映用户场景的测试。
   在**设计阶段**，测试人员根据需求准备[测试计划](/zh-cn/wiki/test-plan/)和案例，而不考虑内部代码结构。随着**开发阶段**的进展，[黑盒测试](/zh-cn/wiki/black-box-testing/) 用于根据要求验证开发的功能。这通常通过 **[手动测试](/zh-cn/wiki/manual-testing/)** 或 **自动 [用户界面测试](/zh-cn/wiki/ui-testing/)** 完成。
-  在**测试阶段**，使用**边界值分析**、**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**和**[决策表测试](/zh-cn/wiki/decision-table-testing/)**等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [inspection](/zh-cn/wiki/inspection/) 或 [白盒测试](/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
+  在**测试阶段**，使用**边界值分析**、**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**和**[决策表测试](/zh-cn/wiki/decision-table-testing/)**等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 或 [白盒测试](/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
   在**暂存或预生产环境**中，[黑盒测试](/zh-cn/wiki/black-box-testing/) 对于 **[系统测试](/zh-cn/wiki/system-testing/)** 和 **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)** 至关重要，确保软件满足业务需求并准备好部署。
   最后，在**部署阶段**之后，[黑盒测试](/zh-cn/wiki/black-box-testing/) 以**[回归测试](/zh-cn/wiki/regression-testing/)** 的形式继续，以验证新更改不会对现有功能产生不利影响。当更新或补丁发布时，它也用于**[维护测试](/zh-cn/wiki/maintenance-testing/)**。
   在整个 SDLC 中，[黑盒测试](/zh-cn/wiki/black-box-testing/) 为 [质量保证](/zh-cn/wiki/quality-assurance/) 提供了一种以用户为中心的方法，补充了[白盒测试](/zh-cn/wiki/white-box-testing/) 并确保软件从内到外和从外到内得到验证。

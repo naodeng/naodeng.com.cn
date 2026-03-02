@@ -36,7 +36,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Error_guessing)
+- [维基百科](https://en.wikipedia.org/wiki/Error_guessing)
 
 ## 关于错误猜测的问题？
 

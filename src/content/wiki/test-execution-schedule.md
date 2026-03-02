@@ -43,7 +43,7 @@ order: 0
   在创建[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 时，请考虑[测试用例](/zh-cn/wiki/test-case/) 之间的**依赖性**、[测试环境](/zh-cn/wiki/test-environment/)** 的**可用性**以及**资源分配**。考虑**基于风险的优先级**也很重要，确保首先测试高风险领域。
   要有效管理计划，请使用提供计划功能的 **[测试管理](/zh-cn/wiki/test-management/) 软件** 或 **项目管理平台** 等工具。这些工具可以帮助自动化通知并根据计划的时间表跟踪进度。
   在优化进度以提高效率时，尽可能寻找**并行化[测试执行](/zh-cn/wiki/test-execution/)**的机会，并准备好随着项目动态的变化而**重新确定优先级**。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 上下文中，时间表应考虑 **脚本维护**、**环境 [setup](/zh-cn/wiki/setup/)** 和 **结果分析** 所需的时间。自动测试可能比手动测试运行得更快，但它们也需要[setup](/zh-cn/wiki/setup/) 和维护时间。
+  在 [测试自动化](/zh-cn/wiki/test-automation/) 上下文中，时间表应考虑 **脚本维护**、**环境 [环境搭建](/zh-cn/wiki/setup/)** 和 **结果分析** 所需的时间。自动测试可能比手动测试运行得更快，但它们也需要[环境搭建](/zh-cn/wiki/setup/) 和维护时间。
   管理日程的高级策略包括**预测分析**，以预测潜在的延误和基于实时进度的**动态重新安排**。将计划与**持续集成/持续部署 (CI/CD) 管道**集成以在最佳时间触发自动化测试运行也是有益的。
   请记住，管理良好的[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 是一个动态文档，需要定期更新以反映测试工作和项目需求的当前状态。
 
@@ -408,7 +408,7 @@ order: 0
     **审查和更新**
     与项目变更保持一致并删除过时或已弃用的测试的时间表。
 
-- **自动化[测试环境](/zh-cn/wiki/test-environment/) [setup](/zh-cn/wiki/setup/) 和拆卸**
+- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**
     最大限度地减少人工干预并确保一致性。
 
     ```
@@ -467,7 +467,7 @@ order: 0
     **审查和更新**
     与项目变更保持一致并删除过时或已弃用的测试的时间表。
 
-- **自动化[测试环境](/zh-cn/wiki/test-environment/) [setup](/zh-cn/wiki/setup/) 和拆卸**
+- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**
     最大限度地减少人工干预并确保一致性。
 
     ```

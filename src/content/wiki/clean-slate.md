@@ -36,7 +36,7 @@ order: 0
 在[软件测试](/zh-cn/wiki/software-testing/) 中，**[干净的石板](/zh-cn/wiki/clean-slate/)** 指的是执行任何测试之前测试环境的状态。这意味着环境处于已知、稳定且未受污染的状态，没有任何可能影响测试运行结果的残留数据、配置或系统更改。
   要实现[干净的石板](/zh-cn/wiki/clean-slate/)，请遵循以下一般步骤：
 
-1. **重置[databases](/zh-cn/wiki/database/)**
+1. **重置[数据库](/zh-cn/wiki/database/)**
     使用脚本或数据库快照恢复到已知状态。
 
 2. **清除缓存**
@@ -52,10 +52,10 @@ order: 0
     来自可能引入可变性的外部依赖性。
   容器化平台（例如 Docker）、基础设施即代码（例如 Terraform）和配置管理工具（例如 Ansible）等工具可以自动化创建 [干净的石板](/zh-cn/wiki/clean-slate/) 的过程。
   要维护 [干净的石板](/zh-cn/wiki/clean-slate/)，请将环境重置合并到您的 [测试自动化](/zh-cn/wiki/test-automation/) 工作流程中，最好是在每个 [测试套件](/zh-cn/wiki/test-suite/) 或场景之前。尽可能使用沙箱环境进行测试，以避免与生产或开发环境的交叉污染。
-  挑战通常来自持久状态数据、[片状测试](/zh-cn/wiki/flaky-test/) 或外部依赖项。通过实施强大的拆卸程序、使用事务测试（其中 [database](/zh-cn/wiki/database/) 状态在测试后回滚）以及模拟/存根外部服务来解决这些问题。
+  挑战通常来自持久状态数据、[片状测试](/zh-cn/wiki/flaky-test/) 或外部依赖项。通过实施强大的拆卸程序、使用事务测试（其中 [数据库](/zh-cn/wiki/database/) 状态在测试后回滚）以及模拟/存根外部服务来解决这些问题。
   实际上，在复杂的系统中维护[干净的石板](/zh-cn/wiki/clean-slate/) 可能很困难。例如，具有多个交互组件的分布式系统可能需要协调重置。在这种情况下，容器编排、服务虚拟化和仔细的测试设计的结合对于确保测试可靠性至关重要。
 
-1. **重置[databases](/zh-cn/wiki/database/)**
+1. **重置[数据库](/zh-cn/wiki/database/)**
     使用脚本或数据库快照恢复到已知状态。
 
 2. **清除缓存**
@@ -110,7 +110,7 @@ order: 0
 “[干净的石板](/zh-cn/wiki/clean-slate/)”通过确保每个测试在一致、受控的环境中执行来增强[软件测试](/zh-cn/wiki/software-testing/)结果的可靠性。这种方法消除了可能影响结果的变量，例如先前测试的残留数据或状态。通过从“[干净的石板](/zh-cn/wiki/clean-slate/)”开始，您可以确保测试不受外部因素的影响，从而获得更可预测和更准确的结果。
   **可靠性**在[测试自动化](/zh-cn/wiki/test-automation/) 中至关重要，因为它建立了对测试条件下软件行为的信心。 “[干净的石板](/zh-cn/wiki/clean-slate/)”为每次测试运行提供可重复的基线，这对于识别真正的缺陷和回归至关重要。如果没有它，[片状测试](/zh-cn/wiki/flaky-test/) 可能会出现，测试由于挥之不去的状态而间歇性地通过或失败，从而很难信任[测试套件](/zh-cn/wiki/test-suite/)。
   此外，“[干净的石板](/zh-cn/wiki/clean-slate/)”支持[测试执行](/zh-cn/wiki/test-execution/) 中的**幂等性**，这意味着测试可以以任何顺序运行任意次数，并期望得到一致的结果。这在持续集成和交付 (CI/CD) 管道中尤其重要，其中测试可能会自动且频繁地触发。
-  为了保持这种可靠性，实现“[干净的石板](/zh-cn/wiki/clean-slate/)”过程的自动化非常重要。这可能涉及重置 [databases](/zh-cn/wiki/database/)、清除缓存或提供新的[测试环境](/zh-cn/wiki/test-environment/) 的脚本。通过将这些步骤集成到您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中，您可以确保每次测试运行都从已知状态开始，从而有助于提高测试工作的整体可靠性。
+  为了保持这种可靠性，实现“[干净的石板](/zh-cn/wiki/clean-slate/)”过程的自动化非常重要。这可能涉及重置 [数据库](/zh-cn/wiki/database/)、清除缓存或提供新的[测试环境](/zh-cn/wiki/test-environment/) 的脚本。通过将这些步骤集成到您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中，您可以确保每次测试运行都从已知状态开始，从而有助于提高测试工作的整体可靠性。
 
 #### 在软件测试中不从“全新”开始会产生哪些潜在后果？
 
@@ -123,7 +123,7 @@ order: 0
 - **资源争用**：如果没有干净的记录，测试可能会竞争相同的资源（例如数据库条目、文件），从而导致死锁或竞争条件。
 - **性能问题**：剩余数据或进程可能会消耗系统资源，可能会减慢测试执行速度或测试中的系统速度。
 - **数据泄漏**：一项测试中的敏感数据可能会无意中暴露给另一项测试，从而引起安全问题。
-  为了减轻这些风险，实施确保 [干净的石板](/zh-cn/wiki/clean-slate/) 的策略至关重要，例如使用事务回滚、[database](/zh-cn/wiki/database/) 播种、虚拟化或容器化在每次测试运行之前重置环境。
+  为了减轻这些风险，实施确保 [干净的石板](/zh-cn/wiki/clean-slate/) 的策略至关重要，例如使用事务回滚、[数据库](/zh-cn/wiki/database/) 播种、虚拟化或容器化在每次测试运行之前重置环境。
 
 - **[误报](/zh-cn/wiki/false-positive/)/Negatives**：预先存在的数据或状态可能会导致测试错误地通过或失败，从而导致测试结果不可靠。
 - **状态依赖性**：测试可能会依赖于先前测试留下的特定状态，这可能会在测试单独运行或以不同顺序运行时导致失败。
@@ -139,12 +139,12 @@ order: 0
 
 为了确保每次测试运行之前**[干净的石板](/zh-cn/wiki/clean-slate/)**，请遵循以下策略：
 
-- **自动化环境[setup](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
+- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
 
     ```
     docker-compose up -d
     ```
-- **重置[databases](/zh-cn/wiki/database/)**：应用迁移以将[databases](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
+- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
 
     ```
     TRUNCATE TABLE your_table;
@@ -161,7 +161,7 @@ order: 0
       // Your tests here
     });
     ```
-- **使用事务测试**：将 [database](/zh-cn/wiki/database/) 操作包装在事务中，并在每次测试后回滚它们。
+- **使用事务测试**：将 [数据库](/zh-cn/wiki/database/) 操作包装在事务中，并在每次测试后回滚它们。
 
     ```
     beforeEach(() => startTransaction());
@@ -182,12 +182,12 @@ order: 0
 - **定期刷新[测试数据](/zh-cn/wiki/test-data/)**：将[测试数据](/zh-cn/wiki/test-data/) 定期刷新安排到基线以防止漂移。
   实施这些策略将有助于维持 **[干净的石板](/zh-cn/wiki/clean-slate/)** 并有助于获得一致、可靠的测试结果。
 
-- **自动化环境[setup](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
+- **自动化环境[环境搭建](/zh-cn/wiki/setup/)**：使用脚本构建和拆除环境。 Docker 等工具可以封装依赖项和配置，确保一致性。
 
     ```
     docker-compose up -d
     ```
-- **重置[databases](/zh-cn/wiki/database/)**：应用迁移以将[databases](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
+- **重置[数据库](/zh-cn/wiki/database/)**：应用迁移以将[数据库](/zh-cn/wiki/database/) 恢复到已知状态。 Flyway 或 Liquibase 等工具可以管理此过程。
 
     ```
     TRUNCATE TABLE your_table;
@@ -204,7 +204,7 @@ order: 0
       // Your tests here
     });
     ```
-- **使用事务测试**：将 [database](/zh-cn/wiki/database/) 操作包装在事务中，并在每次测试后回滚它们。
+- **使用事务测试**：将 [数据库](/zh-cn/wiki/database/) 操作包装在事务中，并在每次测试后回滚它们。
 
     ```
     beforeEach(() => startTransaction());
@@ -233,7 +233,7 @@ order: 0
     ```
     terraform apply
     ```
-2. **隔离[测试数据](/zh-cn/wiki/test-data/)**：实施数据管理脚本或使用数据虚拟化工具使用已知数据集刷新[databases](/zh-cn/wiki/database/)。
+2. **隔离[测试数据](/zh-cn/wiki/test-data/)**：实施数据管理脚本或使用数据虚拟化工具使用已知数据集刷新[数据库](/zh-cn/wiki/database/)。
 
     ```
     RESTORE DATABASE TestDB FROM DISK = 'CleanSlate.bak'
@@ -275,7 +275,7 @@ order: 0
     ```
     terraform apply
     ```
-2. **隔离[测试数据](/zh-cn/wiki/test-data/)**：实施数据管理脚本或使用数据虚拟化工具使用已知数据集刷新[databases](/zh-cn/wiki/database/)。
+2. **隔离[测试数据](/zh-cn/wiki/test-data/)**：实施数据管理脚本或使用数据虚拟化工具使用已知数据集刷新[数据库](/zh-cn/wiki/database/)。
 
     ```
     RESTORE DATABASE TestDB FROM DISK = 'CleanSlate.bak'
@@ -349,7 +349,7 @@ docker-compose down && docker-compose up -d
 
 #### 如何在整个测试过程中保持“干净的状态”？
 
-在整个测试过程中维护**[干净的石板](/zh-cn/wiki/clean-slate/)**需要对[测试环境](/zh-cn/wiki/test-environment/)和数据进行勤奋管理。实施不依赖于先前测试结果的**无状态测试**。在每次测试运行之前，使用**自动化脚本**将环境和[database](/zh-cn/wiki/database/)重置为已知状态。这可以通过执行拆卸方法或使用 Docker 等工具重新创建新的 [测试环境](/zh-cn/wiki/test-environment/) 来完成。
+在整个测试过程中维护**[干净的石板](/zh-cn/wiki/clean-slate/)**需要对[测试环境](/zh-cn/wiki/test-environment/)和数据进行勤奋管理。实施不依赖于先前测试结果的**无状态测试**。在每次测试运行之前，使用**自动化脚本**将环境和[数据库](/zh-cn/wiki/database/)重置为已知状态。这可以通过执行拆卸方法或使用 Docker 等工具重新创建新的 [测试环境](/zh-cn/wiki/test-environment/) 来完成。
   利用**版本控制**系统来管理和回滚配置，并确保[测试环境](/zh-cn/wiki/test-environment/)与正在测试的代码库保持一致。利用**虚拟化**或容器化来隔离测试，防止副作用影响后续测试。
   结合**数据管理实践**，例如使用执行后回滚更改的事务测试或采用数据模拟技术来模拟干净的状态。定期**清理[测试数据](/zh-cn/wiki/test-data/)**和工件，确保没有残留数据影响测试结果。
   在[测试执行](/zh-cn/wiki/test-execution/)之前自动进行**运行状况检查**以验证环境的状态。如果发现差异，脚本应恢复必要的基线。将这些检查集成到 CI/CD 管道中以强制实施 [干净的石板](/zh-cn/wiki/clean-slate/) 策略。
@@ -465,7 +465,7 @@ docker-compose down && docker-compose up -d
   ```
 - **实施稳健的错误处理**：设计测试以优雅地处理意外状态和错误，这有助于保持干净的状态。
 - **并行执行**：在单独的环境中并行运行测试以避免状态污染。
-- **[测试数据](/zh-cn/wiki/test-data/)** 的版本控制：使用版本控制的固定装置或快照将 [databases](/zh-cn/wiki/database/) 或数据存储重置为已知状态。
+- **[测试数据](/zh-cn/wiki/test-data/)** 的版本控制：使用版本控制的固定装置或快照将 [数据库](/zh-cn/wiki/database/) 或数据存储重置为已知状态。
 - **持续监控**：定期监控[测试环境](/zh-cn/wiki/test-environment/) 和进程，以便尽早发现状态不一致的情况。
 - **频繁沟通**：确保团队成员了解可能影响[测试环境](/zh-cn/wiki/test-environment/) 的更改并进行相应协调。
   通过整合这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地管理和维护 **[干净的石板](/zh-cn/wiki/clean-slate/)**，确保可靠且一致的测试结果。
@@ -475,7 +475,7 @@ docker-compose down && docker-compose up -d
 - **利用服务虚拟化**：模拟外部依赖项以确保它们在每个测试中都处于已知状态。
 - **实施稳健的错误处理**：设计测试以优雅地处理意外状态和错误，这有助于保持干净的状态。
 - **并行执行**：在单独的环境中并行运行测试以避免状态污染。
-- **[测试数据](/zh-cn/wiki/test-data/)** 的版本控制：使用版本控制的固定装置或快照将 [databases](/zh-cn/wiki/database/) 或数据存储重置为已知状态。
+- **[测试数据](/zh-cn/wiki/test-data/)** 的版本控制：使用版本控制的固定装置或快照将 [数据库](/zh-cn/wiki/database/) 或数据存储重置为已知状态。
 - **持续监控**：定期监控[测试环境](/zh-cn/wiki/test-environment/) 和进程以尽早发现状态不一致的情况。
 - **频繁沟通**：确保团队成员了解可能影响[测试环境](/zh-cn/wiki/test-environment/) 的更改并进行相应协调。
 
@@ -483,7 +483,7 @@ docker-compose down && docker-compose up -d
 
 在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中维护“[干净的石板](/zh-cn/wiki/clean-slate/)”可确保每次测试运行都是独立的并且不受先前测试的影响。以下是一些最佳实践：
 
-- **自动化清理过程**：使用脚本重置[databases](/zh-cn/wiki/database/)、清除缓存并在每次测试运行后删除临时文件。
+- **自动化清理过程**：使用脚本重置[数据库](/zh-cn/wiki/database/)、清除缓存并在每次测试运行后删除临时文件。
 
     ```
     # Example cleanup script
@@ -495,7 +495,7 @@ docker-compose down && docker-compose up -d
     # Example Docker command to run tests in an isolated environment
     docker run --rm my-test-environment
     ```
-- **使用事务测试**：将 [database](/zh-cn/wiki/database/) 操作包装在事务中，并在测试后回滚，保持 [database](/zh-cn/wiki/database/) 不变。
+- **使用事务测试**：将 [数据库](/zh-cn/wiki/database/) 操作包装在事务中，并在测试后回滚，保持 [数据库](/zh-cn/wiki/database/) 不变。
 
     ```
     BEGIN;
@@ -509,7 +509,7 @@ docker-compose down && docker-compose up -d
 - **定期刷新[测试环境](/zh-cn/wiki/test-environment/)**：安排定期将整个[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态。
   通过遵循这些实践，您可以维护“[干净的石板](/zh-cn/wiki/clean-slate/)”并确保端到端测试的完整性和可靠性。
 
-- **自动化清理过程**：使用脚本重置[databases](/zh-cn/wiki/database/)、清除缓存并在每次测试运行后删除临时文件。
+- **自动化清理过程**：使用脚本重置[数据库](/zh-cn/wiki/database/)、清除缓存并在每次测试运行后删除临时文件。
 
     ```
     # Example cleanup script
@@ -521,7 +521,7 @@ docker-compose down && docker-compose up -d
     # Example Docker command to run tests in an isolated environment
     docker run --rm my-test-environment
     ```
-- **使用事务测试**：将 [database](/zh-cn/wiki/database/) 操作包装在事务中，并在测试后回滚，保持 [database](/zh-cn/wiki/database/) 不变。
+- **使用事务测试**：将 [数据库](/zh-cn/wiki/database/) 操作包装在事务中，并在测试后回滚，保持 [数据库](/zh-cn/wiki/database/) 不变。
 
     ```
     BEGIN;
@@ -536,9 +536,9 @@ docker-compose down && docker-compose up -d
 
 #### 您能否举例说明维持“清白状态”特别具有挑战性的情况以及如何处理这种情况？
 
-在**分布式系统**中，维护 **[干净的石板](/zh-cn/wiki/clean-slate/)** 可能特别具有挑战性，其中多个服务和 [databases](/zh-cn/wiki/database/) 必须重置或回滚到已知状态。例如，在测试微服务架构时，每个服务可能都有自己的[database](/zh-cn/wiki/database/)和外部依赖项，这使得很难确保所有组件在每次测试之前都处于初始状态。
+在**分布式系统**中，维护 **[干净的石板](/zh-cn/wiki/clean-slate/)** 可能特别具有挑战性，其中多个服务和 [数据库](/zh-cn/wiki/database/) 必须重置或回滚到已知状态。例如，在测试微服务架构时，每个服务可能都有自己的[数据库](/zh-cn/wiki/database/)和外部依赖项，这使得很难确保所有组件在每次测试之前都处于初始状态。
   一种场景涉及 **CI/CD 管道**，其中测试在不同环境中并行运行。由于共享资源未正确隔离或重置而导致不稳定。该团队通过使用 Docker 实现**容器化**来解决这个问题，其中每个测试都在自己的隔离容器中运行，确保没有共享状态。
-  另一个具有挑战性的情况是像 Kafka 或 RabbitMQ 这样的**持久队列**，其中来自先前测试运行的消息仍然存在并污染了新的测试。解决方案是在每次测试运行之前使用集成到测试 [setup](/zh-cn/wiki/setup/) 阶段的脚本清除队列。
+  另一个具有挑战性的情况是像 Kafka 或 RabbitMQ 这样的**持久队列**，其中来自先前测试运行的消息仍然存在并污染了新的测试。解决方案是在每次测试运行之前使用集成到测试 [环境搭建](/zh-cn/wiki/setup/) 阶段的脚本清除队列。
   在**云环境**中，由于存储 blob 或 VM 实例等剩余资源，确保[干净的石板](/zh-cn/wiki/clean-slate/) 很困难，这也会产生成本。该团队使用特定于云的工具来自动化拆卸过程，确保每次测试运行后都清理资源。
 
   ```
@@ -548,7 +548,7 @@ docker-compose down && docker-compose up -d
     await terminateVmInstances();
   }
   ```
-**[Database](/zh-cn/wiki/database/) 事务**用于另一种情况，其中每个测试将 [database](/zh-cn/wiki/database/) 操作包装在事务中并在完成时回滚，确保没有持久更改影响后续测试。
+**[数据库](/zh-cn/wiki/database/) 事务**用于另一种情况，其中每个测试将 [数据库](/zh-cn/wiki/database/) 操作包装在事务中并在完成时回滚，确保没有持久更改影响后续测试。
 
   ```
   // Example of database transaction rollback

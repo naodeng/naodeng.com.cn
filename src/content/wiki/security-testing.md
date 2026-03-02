@@ -159,7 +159,7 @@ order: 0
 - **动态应用程序[安全测试](/zh-cn/wiki/security-testing/) (DAST)**：在应用程序运行时测试应用程序，模拟对实时系统的攻击以查找运行时漏洞。
 - **交互式应用程序[安全测试](/zh-cn/wiki/security-testing/) (IAST)**：通过使用仪器从内部测试应用程序来组合 SAST 和 DAST。它在手动或自动功能测试期间实时识别问题。
 - **安全配置和合规性测试**：确保根据安全最佳实践和合规性标准配置系统。
-- **[Database](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)**：重点识别[databases](/zh-cn/wiki/database/) 中的安全漏洞，例如弱密码、[SQL](/zh-cn/wiki/sql/) 注入缺陷和过多的权限。
+- **[数据库](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)**：重点识别[数据库](/zh-cn/wiki/database/) 中的安全漏洞，例如弱密码、[SQL](/zh-cn/wiki/sql/) 注入缺陷和过多的权限。
 - **[API](/zh-cn/wiki/api/) [安全测试](/zh-cn/wiki/security-testing/)**：评估应用程序编程接口 ([API](/zh-cn/wiki/api/)) 的安全性，以解决身份验证失效、注入攻击和资产管理不当等问题。
 - **移动[安全测试](/zh-cn/wiki/security-testing/)**：解决特定于移动应用程序的安全问题，包括不安全的数据存储、薄弱的服务器端控制以及传输层保护不足。
 - **云[安全测试](/zh-cn/wiki/security-testing/)**：评估基于云的服务和基础设施的安全性，包括错误配置、访问控制问题以及云安全标准的合规性。
@@ -169,7 +169,7 @@ order: 0
 - **动态应用程序[安全测试](/zh-cn/wiki/security-testing/) (DAST)**：在运行时测试应用程序，模拟对实时系统的攻击以查找运行时漏洞。
 - **交互式应用程序[安全测试](/zh-cn/wiki/security-testing/) (IAST)**：通过使用仪器从内部测试应用程序来组合 SAST 和 DAST。它在手动或自动功能测试期间实时识别问题。
 - **安全配置和合规性测试**：确保根据安全最佳实践和合规性标准配置系统。
-- **[Database](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)**：重点识别[databases](/zh-cn/wiki/database/) 中的安全漏洞，例如弱密码、[SQL](/zh-cn/wiki/sql/) 注入缺陷和过多的权限。
+- **[数据库](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)**：重点识别[数据库](/zh-cn/wiki/database/) 中的安全漏洞，例如弱密码、[SQL](/zh-cn/wiki/sql/) 注入缺陷和过多的权限。
 - **[API](/zh-cn/wiki/api/) [安全测试](/zh-cn/wiki/security-testing/)**：评估应用程序编程接口 ([API](/zh-cn/wiki/api/)) 的安全性，以解决身份验证失效、注入攻击和资产管理不当等问题。
 - **移动[安全测试](/zh-cn/wiki/security-testing/)**：解决特定于移动应用程序的安全问题，包括不安全的数据存储、薄弱的服务器端控制以及传输层保护不足。
 - **云[安全测试](/zh-cn/wiki/security-testing/)**：评估基于云的服务和基础设施的安全性，包括错误配置、访问控制问题以及云安全标准的合规性。
@@ -177,7 +177,7 @@ order: 0
 #### 漏洞扫描和安全扫描有什么区别？
 
 漏洞扫描和安全扫描都是全面[安全测试](/zh-cn/wiki/security-testing/)策略的重要组成部分，但它们有不同的目的。
-  **漏洞扫描**是一个自动检查系统内已知漏洞的过程。它使用[database](/zh-cn/wiki/database/) 已知问题并将其与扫描的系统进行比较，以识别可能被利用的潜在弱点。漏洞扫描器通常用于识别过时的软件、缺失的补丁或可能导致安全漏洞的错误配置。
+  **漏洞扫描**是一个自动检查系统内已知漏洞的过程。它使用[数据库](/zh-cn/wiki/database/) 已知问题并将其与扫描的系统进行比较，以识别可能被利用的潜在弱点。漏洞扫描器通常用于识别过时的软件、缺失的补丁或可能导致安全漏洞的错误配置。
 
   ```
   // Example of initiating a vulnerability scan using a hypothetical tool
@@ -187,7 +187,7 @@ order: 0
     reportFormat: 'pdf'
   });
   ```
-另一方面，**安全扫描**包含更广泛的活动，旨在检测更广泛的安全威胁，包括已知和未知的漏洞。安全扫描可能涉及使用自动化工具以及手动技术来发现潜在的安全问题。这可能包括检查漏洞，还涉及识别恶意代码、安全错误配置以及漏洞[databases](/zh-cn/wiki/database/) 中可能未列出的其他安全威胁。
+另一方面，**安全扫描**包含更广泛的活动，旨在检测更广泛的安全威胁，包括已知和未知的漏洞。安全扫描可能涉及使用自动化工具以及手动技术来发现潜在的安全问题。这可能包括检查漏洞，还涉及识别恶意代码、安全错误配置以及漏洞[数据库](/zh-cn/wiki/database/) 中可能未列出的其他安全威胁。
 
   ```
   // Example of initiating a security scan using a hypothetical tool
@@ -447,7 +447,7 @@ order: 0
 
 [安全测试](/zh-cn/wiki/security-testing/) 采用各种技术来识别和减轻风险。 **静态应用程序 [安全测试](/zh-cn/wiki/security-testing/) (SAST)** 分析源代码中的漏洞而不执行它。 **动态应用程序[安全测试](/zh-cn/wiki/security-testing/) (DAST)** 在运行时测试应用程序，模拟对正在运行的系统的攻击。 **交互式应用程序[安全测试](/zh-cn/wiki/security-testing/) (IAST)** 通过使用仪器从内部测试应用程序，将 SAST 和 DAST 结合起来。
   **威胁建模**是一种主动方法，可在设计阶段的早期识别潜在威胁和漏洞。 **安全代码审查**是对源代码进行安全缺陷的手动检查。 **[API](/zh-cn/wiki/api/) [安全测试](/zh-cn/wiki/security-testing/)** 专注于验证应用程序编程接口的安全性。
-  **配置和部署管理测试**确保安全的部署设置和网络配置。 **[Database](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)** 检查[database](/zh-cn/wiki/database/) 系统和存储中的漏洞。 **身份验证和授权测试**验证访问控制是否正确实施。
+  **配置和部署管理测试**确保安全的部署设置和网络配置。 **[数据库](/zh-cn/wiki/database/) [安全测试](/zh-cn/wiki/security-testing/)** 检查[数据库](/zh-cn/wiki/database/) 系统和存储中的漏洞。 **身份验证和授权测试**验证访问控制是否正确实施。
   **会话管理测试**确保用户会话得到安全处理。 **[输入验证测试](/zh-cn/wiki/input-validation-testing/)** 检查用户输入的正确处理以防止注入攻击。 **错误处理测试** 检查系统对错误的响应，确保不会泄露敏感信息。
   **输出编码测试**可防止数据被解释为可执行代码。 **密码学测试**验证加密算法的正确实现和强度。 **业务逻辑测试**评估应用程序的业务逻辑以防止被利用。
   **客户端测试**评估客户端脚本和浏览器交互的安全性。 **合规性测试** 检查是否遵守相关安全标准和法规。这些技术对于全面的[安全测试](/zh-cn/wiki/security-testing/) 策略至关重要。

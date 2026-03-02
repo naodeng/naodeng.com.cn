@@ -55,14 +55,14 @@ order: 0
 
 测试预言机在 [软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它是验证测试结果正确性的**真相来源**。它确定被测系统的行为是否符合[预期结果](/zh-cn/wiki/expected-result/)，这对于评估软件的可靠性和功能至关重要。
   如果没有测试预言机，测试人员将缺乏系统的方法来**验证测试结果**，从而导致主观判断和不一致的测试结果。这可能会导致未检测到的缺陷，增加生产失败的风险，并最终损害用户满意度和商业声誉。
-  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[verification](/zh-cn/wiki/verification/)** 的自动化，减少对手动[inspection](/zh-cn/wiki/inspection/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
+  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[verification](/zh-cn/wiki/verification/)** 的自动化，减少对手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
   此外，明确定义的测试预言机可以改进测试[可维护性](/zh-cn/wiki/maintainability/)并减少[误报](/zh-cn/wiki/false-positive/)或否定的可能性，这是[测试自动化](/zh-cn/wiki/test-automation/)中的常见挑战。通过明确指定预期行为，它有助于创建更“稳健”和“可靠”的自动化测试。
   综上所述，测试预言机对于确保自动化测试准确反映软件的预期行为是必不可少的，从而在高质量软件产品的交付中发挥着关键作用。
 
 #### 测试预言机在端到端测试中扮演什么角色？
 
 在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中，**测试 Oracle** 充当确定被测系统正确性的机制。它提供了与 [实际结果](/zh-cn/wiki/actual-result/) 进行比较的预期结果。鉴于端到端测试模拟真实的用户场景，测试预言机必须全面了解系统在各种环境和[用例](/zh-cn/wiki/use-case/) 中的行为。
-  对于自动化端到端测试，测试预言机通常编码在 [测试脚本](/zh-cn/wiki/test-script/) 中。它在一系列操作之后断言应用程序的预期状态。这可能涉及检查 [database](/zh-cn/wiki/database/) 状态、消息队列或 UI 输出，以确保整个流程按预期工作。
+  对于自动化端到端测试，测试预言机通常编码在 [测试脚本](/zh-cn/wiki/test-script/) 中。它在一系列操作之后断言应用程序的预期状态。这可能涉及检查 [数据库](/zh-cn/wiki/database/) 状态、消息队列或 UI 输出，以确保整个流程按预期工作。
 
   ```
   // Example assertion in an end-to-end test
@@ -186,21 +186,21 @@ order: 0
 - **派生预言**基于现有系统状态或以前的版本。它们启用**[回归测试](/zh-cn/wiki/regression-testing/)**，并且在正式规范不完整时很有用，但如果参考版本也有缺陷，则可能会错过新的缺陷。
 - **统计预言**依赖于概率模型，并在确切结果不可预测时使用。他们在测试中引入了**统计分析**，可以处理具有不确定性行为的复杂系统，但可能并不总能查明特定错误。
 - **共识预言机**使用多个来源或系统之间的协议来验证结果。当单一事实来源不可用时，它们可以有效地**检测异常**，但如果所有来源都具有相同的错误，则可能会**误导**。
-- **人类预言**涉及手动[inspection](/zh-cn/wiki/inspection/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。
+- **人类预言**涉及手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。
   这些预言机的影响也体现在**测试设计**中，其中预言机的选择塑造了 [测试用例](/zh-cn/wiki/test-case/) 和 **[测试覆盖率](/zh-cn/wiki/test-coverage/)**。此外，预言机的**维护**至关重要，因为过时或不正确的预言机可能会导致[误报](/zh-cn/wiki/false-positive/)或负面结果，影响测试结果的**信任**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须平衡每种预言机类型的优点和缺点，以优化测试过程。
 
 - **指定预言机**使用正式规范来确定预期结果。它们可以使测试更加**可靠**，但创建和维护可能**耗时**。
 - **派生预言**基于现有系统状态或以前的版本。它们启用**[回归测试](/zh-cn/wiki/regression-testing/)**，并且在正式规范不完整时很有用，但如果参考版本也有缺陷，则可能会错过新的缺陷。
 - **统计预言**依赖于概率模型，并在确切结果不可预测时使用。他们在测试中引入了**统计分析**，可以处理具有不确定性行为的复杂系统，但可能并不总能查明特定错误。
 - **共识预言机**使用多个来源或系统之间的协议来验证结果。当单一事实来源不可用时，它们可以有效地**检测异常**，但如果所有来源都具有相同的错误，则可能会**误导**。
-- **人类预言**涉及手动[inspection](/zh-cn/wiki/inspection/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。
+- **人类预言**涉及手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。
 
 #### Test Oracle 使用的一些实际示例有哪些？
 
 **测试 Oracle** 使用的实际示例包括：
 
 - **一致性检查**：在多平台应用程序中，确保功能在 Windows、macOS 和 Linux 上表现一致。测试预言机验证这些环境中相同输入的输出是否一致。
-- **[Database](/zh-cn/wiki/database/) 测试**：测试[database](/zh-cn/wiki/database/) 迁移时，测试Oracle 可以比较迁移前后的查询结果，以确保数据完整性和一致性。
+- **[数据库](/zh-cn/wiki/database/) 测试**：测试[数据库](/zh-cn/wiki/database/) 迁移时，测试Oracle 可以比较迁移前后的查询结果，以确保数据完整性和一致性。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：软件更新后，测试 Oracle 可以将当前应用程序行为与先前测试运行中定义的预期行为进行比较，以检测任何意外的更改。
 
   ```
@@ -220,7 +220,7 @@ order: 0
 这些示例说明了 [测试预言机](/zh-cn/wiki/test-oracles/) 如何成为验证各种领域和场景中软件正确性、一致性和合规性的不可或缺的一部分。
 
 - **一致性检查**：在多平台应用程序中，确保功能在 Windows、macOS 和 Linux 上表现一致。测试预言机验证这些环境中相同输入的输出是否一致。
-- **[Database](/zh-cn/wiki/database/) 测试**：测试[database](/zh-cn/wiki/database/) 迁移时，测试Oracle 可以比较迁移前后的查询结果，以确保数据完整性和一致性。
+- **[数据库](/zh-cn/wiki/database/) 测试**：测试[数据库](/zh-cn/wiki/database/) 迁移时，测试Oracle 可以比较迁移前后的查询结果，以确保数据完整性和一致性。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：软件更新后，测试 Oracle 可以将当前应用程序行为与先前测试运行中定义的预期行为进行比较，以检测任何意外的更改。
 - **用户界面 (UI) 测试**：对于 Web 应用程序，测试 Oracle 可能会使用视觉回归工具来比较更改前后 UI 元素的屏幕截图，以确保像素完美的渲染。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：在[负载测试](/zh-cn/wiki/load-testing/)期间，测试Oracle可以评估重负载下的响应时间是否满足预定义的性能标准。
@@ -246,7 +246,7 @@ order: 0
     assert(actualOutcome === expectedOutcome);
     ```
 
-3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[databases](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
+3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[数据库](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
 
     ```
     const referenceData = getReferenceDataFromAPI();
@@ -286,7 +286,7 @@ order: 0
     assert(actualOutcome === expectedOutcome);
     ```
 
-3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[databases](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
+3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[数据库](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
 
     ```
     const referenceData = getReferenceDataFromAPI();

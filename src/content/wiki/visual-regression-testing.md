@@ -272,22 +272,22 @@ order: 0
 
 在比较**[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 工具**时，必须考虑它们的**核心功能**、**集成功能**、**易用性**和**报告功能**。以下是一些差异：
 
-- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [setup](/zh-cn/wiki/setup/) 进行视觉测试。
+- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量级，但需要额外的视觉回归库，例如`jest-image-snapshot`。
 - **[Cypress](/zh-cn/wiki/cypress/)**：通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
 - **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
-- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[setup](/zh-cn/wiki/setup/)。
+- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](/zh-cn/wiki/setup/)。
 - **Storybook**：本身不是一个测试工具，但它可以与视觉回归工具一起使用来单独测试 UI 组件。
 - **wdio-visual-regression-service**：[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](/zh-cn/wiki/test-runner/) 集成。
   每个工具都有其**优点**和**局限性**。选择取决于现有技术堆栈、预算和特定项目要求等因素。与 CI/CD 集成、轻松捕获和比较屏幕截图以及处理动态内容是关键考虑因素。
 
-- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [setup](/zh-cn/wiki/setup/) 进行视觉测试。
+- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量，但需要额外的视觉回归库，例如`jest-image-snapshot`。
 - **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
 - **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
-- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[setup](/zh-cn/wiki/setup/)。
+- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](/zh-cn/wiki/setup/)。
 - **Storybook**：本身不是一个测试工具，但它可以与视觉回归工具一起使用来单独测试 UI 组件。
 - **wdio-visual-regression-service**：[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](/zh-cn/wiki/test-runner/) 集成。
 
@@ -320,7 +320,7 @@ order: 0
 
 - **与现有工具集成**：选择与您当前的技术堆栈无缝集成的工具，包括 CI/CD 管道、[测试管理](/zh-cn/wiki/test-management/) 和问题跟踪系统。
 - **支持的技术**：确保该工具支持您使用的技术，例如 Web 框架、移动平台和浏览器。
-- **易于使用**：寻找具有用户友好界面和简单[setup](/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
+- **易于使用**：寻找具有用户友好界面和简单[环境搭建](/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
 - **基线管理**：选择一种能够提供高效基线图像管理并允许在发生有意更改时轻松更新的工具。
 - **灵敏度设置**：调整比较灵敏度的能力对于最小化 [误报](/zh-cn/wiki/false-positive/) 至关重要。
 - **审查和批准流程**：一个好的工具应该提供一个简化的流程来审查差异和批准更改。
@@ -332,7 +332,7 @@ order: 0
 
 - **与现有工具集成**：选择与您当前的技术堆栈无缝集成的工具，包括 CI/CD 管道、[测试管理](/zh-cn/wiki/test-management/) 和问题跟踪系统。
 - **支持的技术**：确保该工具支持您使用的技术，例如 Web 框架、移动平台和浏览器。
-- **易于使用**：寻找具有用户友好界面和简单[setup](/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
+- **易于使用**：寻找具有用户友好界面和简单[环境搭建](/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
 - **基线管理**：选择一种能够提供高效基线图像管理并允许在发生有意更改时轻松更新的工具。
 - **灵敏度设置**：调整比较灵敏度的能力对于最小化 [误报](/zh-cn/wiki/false-positive/) 至关重要。
 - **审查和批准流程**：一个好的工具应该提供一个简化的流程来审查差异和批准更改。
@@ -364,7 +364,7 @@ order: 0
     expect(screenshot).toMatchBaseline();
   });
   ```
-自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 需要仔细[setup](/zh-cn/wiki/setup/) 以确保一致性和可靠性，但一旦到位，它可以显着减少检测 UI 回归所需的工作量。
+自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 需要仔细[环境搭建](/zh-cn/wiki/setup/) 以确保一致性和可靠性，但一旦到位，它可以显着减少检测 UI 回归所需的工作量。
 
 1. **选择一个符合您的技术堆栈和测试需求的工具**。 Percy、Applitools 或 BackstopJS 等工具是流行的选择。
 2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
@@ -417,7 +417,7 @@ order: 0
 3. **通过将可视化回归测试合并到 CI/CD 管道中，触发代码提交或计划时间间隔的测试，实现流程自动化**。
 4. **在有意进行 UI 更改时根据需要审查和更新基线**，以确保测试保持相关性和准确性。
 5. **通过工具的仪表板或报告系统监控测试结果**，并调查基线和最新屏幕截图之间的任何差异。
-  通过执行这些步骤，您可以建立一个强大的[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) [setup](/zh-cn/wiki/setup/)，它可以补充您的整体测试策略并帮助保持整个应用程序 UI 的视觉一致性。
+  通过执行这些步骤，您可以建立一个强大的[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) [环境搭建](/zh-cn/wiki/setup/)，它可以补充您的整体测试策略并帮助保持整个应用程序 UI 的视觉一致性。
 
 1. **选择适合您的项目需求并与您的技术堆栈兼容的工具**。常见的选择包括 Percy、Applitools 或 BackstopJS。
 2. **通过运行 [测试套件](/zh-cn/wiki/test-suite/) 创建基线**，以捕获要监控的 UI 元素或页面的初始屏幕截图。
@@ -500,7 +500,7 @@ order: 0
   **缓慢的反馈循环**：视觉测试的运行和分析可能会很慢。 **解决方案**：并行运行视觉回归测试并优先考虑关键视觉元素。
   **跨设备和跨浏览器问题**：不同浏览器和设备之间的视觉不一致会使测试变得复杂。 **解决方案**：使用基于云的服务来提供对多个浏览器和设备组合的访问。
   **维护开销**：更新合法更改的基线可能很乏味。 **解决方案**：尽可能自动化基线更新并简化审核流程。
-  **复杂[Setups](/zh-cn/wiki/setup/)**：配置准确的视觉测试环境可能很复杂。 **解决方案**：使用容器化来维护一致的环境并与 CI/CD 管道集成，以便于[setup](/zh-cn/wiki/setup/)。
+  **复杂[Setups](/zh-cn/wiki/setup/)**：配置准确的视觉测试环境可能很复杂。 **解决方案**：使用容器化来维护一致的环境并与 CI/CD 管道集成，以便于[环境搭建](/zh-cn/wiki/setup/)。
   **处理[响应式设计](/zh-cn/wiki/responsive-design/)**：确保各种屏幕尺寸上的 UI 一致性具有挑战性。 **解决方案**：使用允许指定视口尺寸并在一组有代表性的屏幕尺寸上进行测试的工具。
   通过采用战略解决方案应对这些挑战，[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 可以成为全面的[测试自动化](/zh-cn/wiki/test-automation/) 战略的重要组成部分。
 

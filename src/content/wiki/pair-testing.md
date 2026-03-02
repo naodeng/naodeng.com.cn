@@ -116,7 +116,7 @@ order: 0
 
 [配对测试](/zh-cn/wiki/pair-testing/) 与其他测试方法的不同之处主要在于其协作方法。与个人独立工作的**单独测试**不同，[配对测试](/zh-cn/wiki/pair-testing/) 涉及两个团队成员一起完成同一任务，通常其中一个充当**驱动程序**，另一个充当**观察者**或**导航员**。这种动态与 **[自动化测试](/zh-cn/wiki/automated-testing/)** 形成鲜明对比，**[自动化测试](/zh-cn/wiki/automated-testing/)** 依赖预先编写的脚本来执行测试，无需人工干预。
   在 **[探索性测试](/zh-cn/wiki/exploratory-testing/)** 中，测试人员经常单独工作来研究没有预定义脚本的软件，而 [配对测试](/zh-cn/wiki/pair-testing/) 则鼓励实时头脑风暴和想法交流。 **代码审查**和**演练**也涉及协作，但通常更加被动，并且不会与[测试执行](/zh-cn/wiki/test-execution/)同时发生。
-  **[性能测试](/zh-cn/wiki/performance-testing/)** 和 **[负载测试](/zh-cn/wiki/load-testing/)** 重点关注压力和高需求下的系统行为，这通常超出[配对测试](/zh-cn/wiki/pair-testing/) 的范围。这些方法通常需要专门的工具和环境，不像[配对测试](/zh-cn/wiki/pair-testing/)，可以在标准开发[setup](/zh-cn/wiki/setup/)中进行。
+  **[性能测试](/zh-cn/wiki/performance-testing/)** 和 **[负载测试](/zh-cn/wiki/load-testing/)** 重点关注压力和高需求下的系统行为，这通常超出[配对测试](/zh-cn/wiki/pair-testing/) 的范围。这些方法通常需要专门的工具和环境，不像[配对测试](/zh-cn/wiki/pair-testing/)，可以在标准开发[环境搭建](/zh-cn/wiki/setup/)中进行。
   **[单元测试](/zh-cn/wiki/unit-testing/)** 通常是一项单独的任务，开发人员为各个组件编写测试。相比之下，[配对测试](/zh-cn/wiki/pair-testing/) 可以涵盖从单元到系统级别的更广泛的测试，并受益于两人的综合专业知识。
   [配对测试](/zh-cn/wiki/pair-testing/) 独特的协作性质使其有别于其他方法，通过双方的不同观点促进知识共享、即时反馈并增强[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 

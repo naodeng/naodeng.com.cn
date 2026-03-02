@@ -43,7 +43,7 @@ order: 0
 #### 软件测试中的后置条件是什么？
 
 [软件测试](/zh-cn/wiki/software-testing/) 中的[后置条件](/zh-cn/wiki/postcondition/) 是在执行[测试用例](/zh-cn/wiki/test-case/) 后必须达到的状态，才能认为测试成功。它验证测试操作的结果并确保系统的功能与[预期结果](/zh-cn/wiki/expected-result/)保持一致。 [后置条件](/zh-cn/wiki/postcondition/) 对于验证软件在执行特定操作或一系列操作后是否按预期运行至关重要。
-  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被实现为断言，用于根据预期状态检查应用程序的状态。这些断言的范围可以从简单的检查（例如验证 UI 元素的存在）到涉及 [database](/zh-cn/wiki/database/) 状态或 [API](/zh-cn/wiki/api/) 响应的复杂验证。
+  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被实现为断言，用于根据预期状态检查应用程序的状态。这些断言的范围可以从简单的检查（例如验证 UI 元素的存在）到涉及 [数据库](/zh-cn/wiki/database/) 状态或 [API](/zh-cn/wiki/api/) 响应的复杂验证。
   管理多个[后置条件](/zh-cn/wiki/postcondition/) 时，必须在[测试脚本](/zh-cn/wiki/test-script/) 内按逻辑构建它们，确保它们清晰且可维护。这通常涉及将[测试用例](/zh-cn/wiki/test-case/) 分解为更小、更有针对性的测试，每个测试都有自己的一组[后置条件](/zh-cn/wiki/postcondition/)。
   为了验证[后置条件](/zh-cn/wiki/postcondition/)，自动化测试通常使用测试框架的断言方法。例如，在 [Jest](/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，您可能会看到：
 
@@ -56,7 +56,7 @@ order: 0
 #### 为什么后置条件在软件测试中很重要？
 
 [后置条件](/zh-cn/wiki/postcondition/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它们确保[测试场景](/zh-cn/wiki/test-scenario/) 使系统处于允许进一步测试或常规操作的状态。它们充当检查点，以验证测试操作后是否发生了预期的更改。此验证对于维护 [测试环境](/zh-cn/wiki/test-environment/) 的完整性并确保后续测试在正确的条件下运行至关重要。
-  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被实现为**断言**，根据预期结果自动验证应用程序的状态。如果这些断言失败，则表明 [测试环境](/zh-cn/wiki/test-environment/) [setup](/zh-cn/wiki/setup/) 存在潜在缺陷或问题。
+  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被实现为**断言**，根据预期结果自动验证应用程序的状态。如果这些断言失败，则表明 [测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 存在潜在缺陷或问题。
   管理多个[后置条件](/zh-cn/wiki/postcondition/)需要采用结构化方法，通常涉及每个条件的明确定义以及使用逻辑运算符以确保评估所有条件。这可以通过代码结构（例如将相关 [后置条件](/zh-cn/wiki/postcondition/) 分组的数组或对象）来完成，然后在测试操作后对其进行迭代和检查。
   定义 [后置条件](/zh-cn/wiki/postcondition/) 时，重要的是要关注与 [测试用例](/zh-cn/wiki/test-case/) 的**特异性**和**相关性**，以避免不必要的验证。它们应该与测试目标直接相关，以确保它们提供有关软件行为的有意义的反馈。
   定义和验证 [后置条件](/zh-cn/wiki/postcondition/) 的挑战包括确保它们不会太宽泛或太详细，这可能会导致 [误报](/zh-cn/wiki/false-positive/) 或测试结果呈阴性。让它们及时了解软件的变化也很重要，以确保它们继续作为测试成功的可靠指标。
@@ -92,7 +92,7 @@ order: 0
 #### 后置条件在端到端测试中的作用是什么？
 
 在[端到端测试](/zh-cn/wiki/end-to-end-testing/)中，[后置条件](/zh-cn/wiki/postcondition/)充当最终检查点，以确保在执行[测试场景](/zh-cn/wiki/test-scenario/)后系统达到预期状态。它们对于验证跨越多个系统或组件的复杂工作流程的结果至关重要。
-  [后置条件](/zh-cn/wiki/postcondition/) 帮助确认测试产生的副作用和状态变化是否符合预期。例如，用户完成交易后，[后置条件](/zh-cn/wiki/postcondition/) 可能会检查[database](/zh-cn/wiki/database/) 是否反映了正确的余额。
+  [后置条件](/zh-cn/wiki/postcondition/) 帮助确认测试产生的副作用和状态变化是否符合预期。例如，用户完成交易后，[后置条件](/zh-cn/wiki/postcondition/) 可能会检查[数据库](/zh-cn/wiki/database/) 是否反映了正确的余额。
   在处理多个[后置条件](/zh-cn/wiki/postcondition/) 时，系统地管理它们非常重要，通常是使用自动断言。这确保了每个[后置条件](/zh-cn/wiki/postcondition/)都按逻辑顺序进行验证，并且测试提供了场景的全面验证。
   在 [自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常表示为 [测试脚本](/zh-cn/wiki/test-script/) 中的断言：
 
@@ -152,7 +152,7 @@ order: 0
 
 [软件测试](/zh-cn/wiki/software-testing/) 中的[后置条件](/zh-cn/wiki/postcondition/) 示例包括：
 
-- **[Database](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
+- **[数据库](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
 
     ```
     SELECT COUNT(*) FROM table WHERE condition;
@@ -204,7 +204,7 @@ order: 0
     ```
 管理多个 [后置条件](/zh-cn/wiki/postcondition/) 涉及对断言进行逻辑分组并确保它们独立、清晰且与测试目标直接相关。
 
-- **[Database](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
+- **[数据库](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
 
     ```
     SELECT COUNT(*) FROM table WHERE condition;
@@ -295,7 +295,7 @@ order: 0
   expect(actualState).toEqual(expectedState);
   ```
 如果有多个[后置条件](/zh-cn/wiki/postcondition/)，请独立验证每个[后置条件](/zh-cn/wiki/postcondition/)，确保应用程序状态的所有必要方面均符合预期。将断言链接在一起或使用逻辑结构来管理复杂的验证。
-  对于**[database](/zh-cn/wiki/database/) 验证**，执行查询以检索相关数据并将其与[预期结果](/zh-cn/wiki/expected-result/) 进行比较：
+  对于**[数据库](/zh-cn/wiki/database/) 验证**，执行查询以检索相关数据并将其与[预期结果](/zh-cn/wiki/expected-result/) 进行比较：
 
   ```
   // Retrieve data from the database
@@ -485,8 +485,8 @@ order: 0
 #### 后置条件如何用于自动化测试？
 
 在[自动化测试](/zh-cn/wiki/automated-testing/) 中，**[后置条件](/zh-cn/wiki/postcondition/)** 充当关键检查点，以确保被测系统 (SUT) 在 [测试执行](/zh-cn/wiki/test-execution/) 之后返回到稳定状态。它们用于**验证**是否发生了预期的更改，并且没有引入意外的副作用。
-  通过将[后置条件](/zh-cn/wiki/postcondition/)合并到[测试脚本](/zh-cn/wiki/test-script/)中，自动化测试可以**断言**应用程序或环境的预期状态。这通常是通过检查 [database](/zh-cn/wiki/database/) 条目、文件状态或 UI 元素的代码来完成的，以确认测试已达到其预期效果。
-  例如，在用户创建功能的测试中，[后置条件](/zh-cn/wiki/postcondition/) 可能涉及 [database](/zh-cn/wiki/database/) 查询来验证新用户记录：
+  通过将[后置条件](/zh-cn/wiki/postcondition/)合并到[测试脚本](/zh-cn/wiki/test-script/)中，自动化测试可以**断言**应用程序或环境的预期状态。这通常是通过检查 [数据库](/zh-cn/wiki/database/) 条目、文件状态或 UI 元素的代码来完成的，以确认测试已达到其预期效果。
+  例如，在用户创建功能的测试中，[后置条件](/zh-cn/wiki/postcondition/) 可能涉及 [数据库](/zh-cn/wiki/database/) 查询来验证新用户记录：
 
   ```
   SELECT COUNT(*) FROM users WHERE username = 'newUser';

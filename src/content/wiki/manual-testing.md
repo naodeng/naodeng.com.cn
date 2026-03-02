@@ -206,7 +206,7 @@ order: 0
 
 #### 什么是灰盒测试？
 
-[灰盒测试](/zh-cn/wiki/grey-box-testing/) 是一种混合方法，结合了 **黑盒** 和 **[白盒测试](/zh-cn/wiki/white-box-testing/)** 方法的元素。它需要对应用程序的内部工作原理有部分了解，通常包括对 [database](/zh-cn/wiki/database/) 架构和算法流程的理解，但不是完整的源代码。 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 中的测试人员可以访问详细的设计文档和[database](/zh-cn/wiki/database/) 图表，这有助于他们设计[测试用例](/zh-cn/wiki/test-case/)，从而更有效地发现隐藏的错误。
+[灰盒测试](/zh-cn/wiki/grey-box-testing/) 是一种混合方法，结合了 **黑盒** 和 **[白盒测试](/zh-cn/wiki/white-box-testing/)** 方法的元素。它需要对应用程序的内部工作原理有部分了解，通常包括对 [数据库](/zh-cn/wiki/database/) 架构和算法流程的理解，但不是完整的源代码。 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 中的测试人员可以访问详细的设计文档和[数据库](/zh-cn/wiki/database/) 图表，这有助于他们设计[测试用例](/zh-cn/wiki/test-case/)，从而更有效地发现隐藏的错误。
   该方法在测试 Web 应用程序时特别有用，测试人员可以利用 HTML、JavaScript 和服务器通信知识来设计测试，以探索潜在的安全漏洞或集成问题。 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 也适用于[集成测试](/zh-cn/wiki/integration-testing/)、[渗透测试](/zh-cn/wiki/penetration-testing/)，并用于测试网络协议。
   测试人员使用的工具可以帮助他们与应用程序的界面进行比典型最终用户更深层次的交互，但不需要深入研究 [白盒测试](/zh-cn/wiki/white-box-testing/) 所要求的代码库。此类工具的示例包括：
 
@@ -233,7 +233,7 @@ order: 0
 1. **需求分析**：了解应用程序的功能并确定可测试的需求。
 2. **测试计划**：定义范围和目标，确定资源（时间、人力、工具），并概述测试策略。
 3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：创建测试用例和测试脚本，包括定义条件、输入、操作和预期结果。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** ：准备进行测试的硬件和软件环境，包括任何必要的测试数据。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：准备进行测试的硬件和软件环境，包括任何必要的测试数据。
 5. **[测试执行](/zh-cn/wiki/test-execution/)** ：手动运行测试用例，记录每个测试用例的结果，并报告发现的任何缺陷。
 6. **缺陷记录**：在缺陷跟踪工具中记录测试执行期间发现的任何缺陷或问题的详细信息。
 7. **测试周期结束**：评估测试周期的有效性，确保执行所有测试用例并且修复或确认缺陷，并创建测试结束报告。
@@ -242,7 +242,7 @@ order: 0
 1. **需求分析**：了解应用程序的功能并确定可测试的需求。
 2. **测试计划**：定义范围和目标，确定资源（时间、人力、工具），并概述测试策略。
 3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：创建测试用例和测试脚本，包括定义条件、输入、操作和预期结果。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** ：准备进行测试的硬件和软件环境，包括任何必要的测试数据。
+4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：准备进行测试的硬件和软件环境，包括任何必要的测试数据。
 5. **[测试执行](/zh-cn/wiki/test-execution/)** ：手动运行测试用例，记录每个测试用例的结果，并报告发现的任何缺陷。
 6. **缺陷记录**：在缺陷跟踪工具中记录测试执行期间发现的任何缺陷或问题的详细信息。
 7. **测试周期结束**：评估测试周期的有效性，确保执行所有测试用例并且修复或确认缺陷，并创建测试结束报告。
@@ -302,7 +302,7 @@ order: 0
 
 软件中的[测试执行](/zh-cn/wiki/test-execution/) [测试自动化](/zh-cn/wiki/test-automation/) 是针对被测软件运行自动化脚本以验证其行为是否符合预期的过程。 [测试执行](/zh-cn/wiki/test-execution/)涉及的步骤如下：
 
-1. **环境[Setup](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数​​据。
+1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数​​据。
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或加载[测试用例](/zh-cn/wiki/test-case/) 所需的[测试数据](/zh-cn/wiki/test-data/)。
 3. **执行调度**：确定[测试用例](/zh-cn/wiki/test-case/)的顺序和时间，可能使用持续集成（CI）工具来调度和触发测试。
 4. **运行测试**：使用所选[测试自动化](/zh-cn/wiki/test-automation/) 工具或框架执行自动化[测试脚本](/zh-cn/wiki/test-script/)。
@@ -313,7 +313,7 @@ order: 0
 9. **清理**：将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试运行或其他活动做好准备。
   在整个这些步骤中，保持清晰的文档并确保任何与 [预期结果](/zh-cn/wiki/expected-result/) 的偏差都得到及时调查和解决至关重要。
 
-1. **环境[Setup](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数​​据。
+1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数​​据。
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或加载[测试用例](/zh-cn/wiki/test-case/) 所需的[测试数据](/zh-cn/wiki/test-data/)。
 3. **执行调度**：确定[测试用例](/zh-cn/wiki/test-case/)的顺序和时间，可能使用持续集成（CI）工具来调度和触发测试。
 4. **运行测试**：使用所选[测试自动化](/zh-cn/wiki/test-automation/) 工具或框架执行自动化[测试脚本](/zh-cn/wiki/test-script/)。

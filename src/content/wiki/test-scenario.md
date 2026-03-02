@@ -146,7 +146,7 @@ order: 0
 设计 **[测试场景](/zh-cn/wiki/test-scenario/)** 时，请考虑以下关键要素：
 
 - **范围和目标**：明确定义场景将涵盖的内容及其目标实现的目标。专注于反映现实世界使用情况的关键功能和用户旅程。
-- **前提条件**：指定场景执行之前应用程序或环境的任何所需状态，例如用户登录或[database](/zh-cn/wiki/database/) [setup](/zh-cn/wiki/setup/)。
+- **前提条件**：指定场景执行之前应用程序或环境的任何所需状态，例如用户登录或[数据库](/zh-cn/wiki/database/) [环境搭建](/zh-cn/wiki/setup/)。
 - **[测试数据](/zh-cn/wiki/test-data/)**：确定测试所需的数据。使用真实且多样化的数据集来模拟不同的条件，包括边缘情况。
 - **依赖关系**：注意对其他模块、系统或场景的任何依赖关系，必须满足这些依赖关系才能成功执行场景。
 - **执行步骤**：概述要按逻辑顺序执行的操作。这应该足够清楚，以便其他工程师能够理解和执行。
@@ -159,7 +159,7 @@ order: 0
   通过考虑这些元素，您可以确保您的[测试场景](/zh-cn/wiki/test-scenario/) 健壮、可维护，并提供有关软件质量的宝贵见解。
 
 - **范围和目标**：明确定义场景将涵盖的内容及其目标实现的目标。专注于反映现实世界使用情况的关键功能和用户旅程。
-- **前提条件**：指定场景执行之前应用程序或环境的任何所需状态，例如用户登录或[database](/zh-cn/wiki/database/) [setup](/zh-cn/wiki/setup/)。
+- **前提条件**：指定场景执行之前应用程序或环境的任何所需状态，例如用户登录或[数据库](/zh-cn/wiki/database/) [环境搭建](/zh-cn/wiki/setup/)。
 - **[测试数据](/zh-cn/wiki/test-data/)**：确定测试所需的数据。使用真实且多样化的数据集来模拟不同的条件，包括边缘情况。
 - **依赖关系**：注意对其他模块、系统或场景的任何依赖关系，必须满足这些依赖关系才能成功执行场景。
 - **执行步骤**：概述要按逻辑顺序执行的操作。这应该足够清楚，以便其他工程师能够理解和执行。
@@ -234,7 +234,7 @@ order: 0
 
 执行 **[测试场景](/zh-cn/wiki/test-scenario/)** 涉及以下步骤：
 
-1. **准备**：确保使用必要的数据、配置和资源设置[测试环境](/zh-cn/wiki/test-environment/)。这可能包括设置[databases](/zh-cn/wiki/database/)、服务器和任何所需的软件。
+1. **准备**：确保使用必要的数据、配置和资源设置[测试环境](/zh-cn/wiki/test-environment/)。这可能包括设置[数据库](/zh-cn/wiki/database/)、服务器和任何所需的软件。
 2. **工具选择**：选择已为场景确定的适当自动化工具，例如[selenium](/zh-cn/wiki/selenium/)、JUnit、TestNG或任何其他符合要求的框架或工具。
 3. **脚本**：使用所选工具基于[测试场景](/zh-cn/wiki/test-scenario/) 开发自动化脚本。编写的脚本应涵盖场景的流程并包含用于检查预期结果的断言。
 
@@ -256,7 +256,7 @@ order: 0
 6. **报告**：记录结果，包括任何失败或缺陷。使用自动化工具的报告功能生成[测试执行](/zh-cn/wiki/test-execution/) 的摘要。
 7. **分析**：分析结果以识别被测应用程序或 [测试场景](/zh-cn/wiki/test-scenario/) 本身的任何问题。根据调查结果根据需要调整场景或脚本。
 8. **维护**：定期更新[测试场景](/zh-cn/wiki/test-scenario/) 和脚本以反映应用程序中的更改并提高可靠性和覆盖范围。
-1. **准备**：确保使用必要的数据、配置和资源设置[测试环境](/zh-cn/wiki/test-environment/)。这可能包括设置[databases](/zh-cn/wiki/database/)、服务器和任何所需的软件。
+1. **准备**：确保使用必要的数据、配置和资源设置[测试环境](/zh-cn/wiki/test-environment/)。这可能包括设置[数据库](/zh-cn/wiki/database/)、服务器和任何所需的软件。
 2. **工具选择**：选择已为该场景确定的适当自动化工具，例如[selenium](/zh-cn/wiki/selenium/)、JUnit、TestNG或任何其他符合要求的框架或工具。
 3. **脚本**：使用所选工具基于[测试场景](/zh-cn/wiki/test-scenario/) 开发自动化脚本。编写的脚本应涵盖场景的流程并包含用于检查预期结果的断言。
 
@@ -356,7 +356,7 @@ order: 0
 
 - **[片状测试](/zh-cn/wiki/flaky-test/)**：测试间歇性地通过和失败，无需对代码进行任何更改。通过确保稳定[测试环境](/zh-cn/wiki/test-environment/)、使用显式等待而不是隐式等待以及检查竞争条件来解决。
 - **环境问题**：[测试环境](/zh-cn/wiki/test-environment/) 之间的差异（例如，开发、分期、生产）可能会导致测试失败。标准化环境并使用 Docker 等容器化工具来最大限度地减少差异。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 不足可能导致[误报](/zh-cn/wiki/false-positive/) 或负面结果。实施数据管理策略，例如使用数据工厂或使用已知数据集播种[databases](/zh-cn/wiki/database/)。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 不足可能导致[误报](/zh-cn/wiki/false-positive/) 或负面结果。实施数据管理策略，例如使用数据工厂或使用已知数据集播种[数据库](/zh-cn/wiki/database/)。
 - **选择器更改**：UI 更改可能会破坏自动化测试中使用的选择器。使用 ID 或数据属性等稳定的选择器，并将 UI 测试作为 CI/CD 管道的一部分实施，以尽早发现问题。
 - **[测试脚本](/zh-cn/wiki/test-script/) 维护**：随着应用程序的发展，[测试脚本](/zh-cn/wiki/test-script/) 可能会过时。定期审查和更新[测试脚本](/zh-cn/wiki/test-script/)，并考虑使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 以便于维护。
 - **对外部服务的依赖**：如果这些服务关闭，依赖外部服务的测试可能会失败。使用模拟或服务虚拟化来模拟外部服务。
@@ -367,7 +367,7 @@ order: 0
 
 - **[片状测试](/zh-cn/wiki/flaky-test/)**：测试间歇性地通过和失败，无需对代码进行任何更改。通过确保稳定[测试环境](/zh-cn/wiki/test-environment/)、使用显式等待而不是隐式等待以及检查竞争条件来解决。
 - **环境问题**：[测试环境](/zh-cn/wiki/test-environment/) 之间的差异（例如，开发、分阶段、生产）可能会导致测试失败。标准化环境并使用 Docker 等容器化工具来最大限度地减少差异。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 不足可能会导致[误报](/zh-cn/wiki/false-positive/) 或负面结果。实施数据管理策略，例如使用数据工厂或使用已知数据集播种[databases](/zh-cn/wiki/database/)。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 不足可能会导致[误报](/zh-cn/wiki/false-positive/) 或负面结果。实施数据管理策略，例如使用数据工厂或使用已知数据集播种[数据库](/zh-cn/wiki/database/)。
 - **选择器更改**：UI 更改可能会破坏自动化测试中使用的选择器。使用 ID 或数据属性等稳定的选择器，并将 UI 测试作为 CI/CD 管道的一部分实施，以尽早发现问题。
 - **[测试脚本](/zh-cn/wiki/test-script/) 维护**：随着应用程序的发展，[测试脚本](/zh-cn/wiki/test-script/) 可能会过时。定期审查和更新[测试脚本](/zh-cn/wiki/test-script/)，并考虑使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 以便于维护。
 - **对外部服务的依赖**：如果这些服务关闭，依赖外部服务的测试可能会失败。使用模拟或服务虚拟化来模拟外部服务。

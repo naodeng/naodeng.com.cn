@@ -224,7 +224,7 @@ order: 0
 #### 质量控制如何支持质量管理？
 
 质量控制 (QC) 通过提供**操作技术**和用于满足质量要求的活动来支持 [质量管理](/zh-cn/wiki/quality-management/) (QM)。 QM 概述了总体质量策略和目标，而 QC 则侧重于 **[verification](/zh-cn/wiki/verification/)** 方面，确保产品符合定义的质量标准。
-  质量控制活动包括**系统测量**、**与标准比较**、**流程监控**以及可预防错误的相关**反馈循环**。这可以是整个[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) 中使用的一系列[inspections](/zh-cn/wiki/inspection/)、评论和测试。在[测试自动化](/zh-cn/wiki/test-automation/) 中，QC 可能涉及：
+  质量控制活动包括**系统测量**、**与标准比较**、**流程监控**以及可预防错误的相关**反馈循环**。这可以是整个[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) 中使用的一系列[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、评论和测试。在[测试自动化](/zh-cn/wiki/test-automation/) 中，QC 可能涉及：
 
 - **自动化[测试执行](/zh-cn/wiki/test-execution/)**：运行预定义的测试脚本以根据预期结果检查软件功能。
 - **缺陷跟踪**：识别、记录和跟踪缺陷以解决问题。
@@ -274,7 +274,7 @@ order: 0
 
 软件[测试自动化](/zh-cn/wiki/test-automation/) 中的质量控制 (QC) 涉及多种技术，以确保产品满足指定要求。以下是 QC 中使用的一些技术：
 
-- **[Inspection](/zh-cn/wiki/inspection/)**：手动审查代码、设计和文档以识别缺陷。
+- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：手动审查代码、设计和文档以识别缺陷。
 - **测试**：执行软件以验证功能、性能以及是否符合要求。这包括：
 - **[单元测试](/zh-cn/wiki/unit-testing/)** ：测试各个组件的正确性。
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：确保组合组件或系统协同工作。
@@ -292,7 +292,7 @@ order: 0
 - **指标和测量**：收集有关测试过程的质量和有效性的数据以指导改进。
   这些技术对于维持 [软件质量](/zh-cn/wiki/software-quality/) 和可靠性的高标准是不可或缺的，并且它们支持更广泛的 [质量管理](/zh-cn/wiki/quality-management/) 缺陷预防、流程改进和客户满意度目标。
 
-- **[Inspection](/zh-cn/wiki/inspection/)**：手动审查代码、设计和文档以识别缺陷。
+- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：手动审查代码、设计和文档以识别缺陷。
 - **测试**：执行软件以验证功能、性能以及是否符合要求。这包括：
 - **[单元测试](/zh-cn/wiki/unit-testing/)** ：测试各个组件的正确性。
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：确保组合组件或系统协同工作。

@@ -46,7 +46,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Regression_testing)
+- [维基百科](https://en.wikipedia.org/wiki/Regression_testing)
 
 ## 有关回归测试的问题吗？
 

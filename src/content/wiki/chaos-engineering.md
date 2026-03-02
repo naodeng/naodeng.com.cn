@@ -33,7 +33,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Chaos_engineering)
+- [维基百科](https://en.wikipedia.org/wiki/Chaos_engineering)
 
 ## 关于混沌工程的问题吗？
 

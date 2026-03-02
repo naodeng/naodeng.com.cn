@@ -40,7 +40,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Code_coverage)
+- [维基百科](https://en.wikipedia.org/wiki/Code_coverage)
 
 ## 有关代码覆盖率的问题吗？
 

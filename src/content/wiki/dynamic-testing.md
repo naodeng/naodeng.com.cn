@@ -71,7 +71,7 @@ order: 0
 
 #### 静态测试和动态测试之间的主要区别是什么？
 
-[静态测试](/zh-cn/wiki/static-testing/) 涉及检查代码、需求或文档**而不执行**程序。它主要是关于**预防**，可以包括审查、演练、[inspections](/zh-cn/wiki/inspection/) 和静态分析工具等活动，这些工具可在不运行代码的情况下查找编码标准、安全漏洞或代码质量。
+[静态测试](/zh-cn/wiki/static-testing/) 涉及检查代码、需求或文档**而不执行**程序。它主要是关于**预防**，可以包括审查、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和静态分析工具等活动，这些工具可在不运行代码的情况下查找编码标准、安全漏洞或代码质量。
   另一方面，[动态测试](/zh-cn/wiki/dynamic-testing/) 需要**执行**软件来验证其针对[预期结果](/zh-cn/wiki/expected-result/) 的行为。它与**检测**有关，包括单元测试、集成测试、系统测试和验收测试。
   主要区别：
 
@@ -252,7 +252,7 @@ order: 0
 
 1. **测试计划**：定义目标、范围、资源和时间表。根据风险和覆盖范围选择测试用例。
 2. **测试设计**：创建详细的测试用例和脚本。确定输入数据、预期结果和执行条件。
-3. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** : Configure hardware, software, and network settings to mimic production environments.
+3. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** : Configure hardware, software, and network settings to mimic production environments.
 4. **[测试执行](/zh-cn/wiki/test-execution/)** : Run tests manually or use automation tools.监视系统行为并记录结果。
 5. **结果分析**：将实际结果与预期结果进行比较。如有必要，识别差异并将其分类为缺陷。
 6. **缺陷记录**：在跟踪系统中记录缺陷，包括重现步骤、严重性和潜在影响。
@@ -266,7 +266,7 @@ order: 0
 
 1. **测试计划**：定义目标、范围、资源和时间表。根据风险和覆盖范围选择测试用例。
 2. **测试设计**：创建详细的测试用例和脚本。确定输入数据、预期结果和执行条件。
-3. **[测试环境](/zh-cn/wiki/test-environment/) [Setup](/zh-cn/wiki/setup/)** ：配置硬件、软件和网络设置以模拟生产环境。
+3. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置硬件、软件和网络设置以模拟生产环境。
 4. **[测试执行](/zh-cn/wiki/test-execution/)** ：手动运行测试或使用自动化工具。监视系统行为并记录结果。
 5. **结果分析**：将实际结果与预期结果进行比较。如有必要，识别差异并将其分类为缺陷。
 6. **缺陷记录**：在跟踪系统中记录缺陷，包括重现步骤、严重性和潜在影响。

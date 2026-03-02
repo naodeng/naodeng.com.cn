@@ -49,8 +49,8 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 ### 另请参阅：
 
-- [Official Website](https://jasmine.github.io/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Jasmine_(software))
+- [官网](https://jasmine.github.io/)
+- [维基百科](https://en.wikipedia.org/wiki/Jasmine_(software))
 
 ## 关于jasmine的问题吗？
 
@@ -62,7 +62,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   [jasmine](/zh-cn/wiki/jasmine/) 中的测试称为 **specs**，它是通过调用全局 `it` 函数来定义的。规范被分组为套件，这些套件是通过调用全局 `describe` 函数来定义的。套件可以嵌套在其他套件中，从而允许使用分层结构来组织测试。
   [jasmine](/zh-cn/wiki/jasmine/) 提供内置的**匹配器**，让您以可读的形式表达对值的期望。这些匹配器包括 `toEqual`、`toBe`、`toMatch` 等函数。还可以定义自定义匹配器来扩展框架的功能。
   **间谍**是[jasmine](/zh-cn/wiki/jasmine/) 创建测试替身的方式，它可以跟踪对函数及其参数的调用、返回值以及`this` 的值。它们通过用间谍对象替换实际函数来隔离测试中的代码非常有用。
-  对于异步操作，[jasmine](/zh-cn/wiki/jasmine/) 提供`done` 回调来向框架发出异步规范已完成的信号。或者，您可以将较新的`async/await` 语法与[jasmine](/zh-cn/wiki/jasmine/) 的`beforeAll`、`afterAll`、`beforeEach` 和`afterEach` 函数结合使用来处理[setup](/zh-cn/wiki/setup/) 和拆卸任务。
+  对于异步操作，[jasmine](/zh-cn/wiki/jasmine/) 提供`done` 回调来向框架发出异步规范已完成的信号。或者，您可以将较新的`async/await` 语法与[jasmine](/zh-cn/wiki/jasmine/) 的`beforeAll`、`afterAll`、`beforeEach` 和`afterEach` 函数结合使用来处理[环境搭建](/zh-cn/wiki/setup/) 和拆卸任务。
   [jasmine](/zh-cn/wiki/jasmine/)的灵活性使其可以与其他库和框架一起使用，并且与各种持续集成工具集成良好。对于需要为其 JavaScript 代码提供强大、功能丰富的测试解决方案的开发人员来说，这是一个流行的选择。
 
 #### 为什么 Jasmine 在 e2e 测试中被认为很重要？
@@ -210,7 +210,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
   npm test
   ```
-此 [setup](/zh-cn/wiki/setup/) 允许您为 JavaScript 代码编写和运行 [jasmine](/zh-cn/wiki/jasmine/) 测试。请记住在 `spec` 目录中创建测试文件，并使用 `*.spec.js` 等命名约定，以便 [jasmine](/zh-cn/wiki/jasmine/) 识别。
+此 [环境搭建](/zh-cn/wiki/setup/) 允许您为 JavaScript 代码编写和运行 [jasmine](/zh-cn/wiki/jasmine/) 测试。请记住在 `spec` 目录中创建测试文件，并使用 `*.spec.js` 等命名约定，以便 [jasmine](/zh-cn/wiki/jasmine/) 识别。
 
 1. 打开终端或命令提示符。
 2. 导航到要设置 Jasmine 的项目目录。
@@ -388,7 +388,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 #### Jasmine 测试的结构是什么？
 
-[jasmine](/zh-cn/wiki/jasmine/) 测试的结构由**套件**和**规范**组成。套件是使用 `describe` 函数定义的，该函数接受一个字符串和一个函数。字符串是套件的标题，函数是可以定义 [setup](/zh-cn/wiki/setup/)、拆卸和规格的块。
+[jasmine](/zh-cn/wiki/jasmine/) 测试的结构由**套件**和**规范**组成。套件是使用 `describe` 函数定义的，该函数接受一个字符串和一个函数。字符串是套件的标题，函数是可以定义 [环境搭建](/zh-cn/wiki/setup/)、拆卸和规格的块。
   规范或规格是使用 `it` 函数定义的。每个规范代表一个测试，其中有一个字符串解释测试应该做什么，以及一个包含测试代码的函数。
   在规范中，您使用**匹配器**来断言有关代码的不同内容。 `expect` 函数用于对值进行断言，然后针对匹配器进行测试。
   这是一个基本结构：
@@ -506,7 +506,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
     // Code to clean up after each test
   });
   ```
-这些函数通过将 [setup](/zh-cn/wiki/setup/) 和拆卸逻辑封装在实际测试断言之外，有助于减少代码重复并促进关注点分离。它们通过确保每个测试独立运行而不会产生先前测试的意外副作用，从而有助于提高[测试套件](/zh-cn/wiki/test-suite/) 的可维护性和可读性。
+这些函数通过将 [环境搭建](/zh-cn/wiki/setup/) 和拆卸逻辑封装在实际测试断言之外，有助于减少代码重复并促进关注点分离。它们通过确保每个测试独立运行而不会产生先前测试的意外副作用，从而有助于提高[测试套件](/zh-cn/wiki/test-suite/) 的可维护性和可读性。
 
 ### 断言和匹配器
 
@@ -615,7 +615,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
     expect(4).toBeEven();
   });
   ```
-通过将自定义匹配器包含在 [测试套件](/zh-cn/wiki/test-suite/) 顶层的 `beforeEach` 中或包含在测试 [setup](/zh-cn/wiki/setup/) 中的单独文件中，可以在不同规范中重复使用自定义匹配器。
+通过将自定义匹配器包含在 [测试套件](/zh-cn/wiki/test-suite/) 顶层的 `beforeEach` 中或包含在测试 [环境搭建](/zh-cn/wiki/setup/) 中的单独文件中，可以在不同规范中重复使用自定义匹配器。
 
 1. 使用
     `jasmine.addMatchers`
@@ -825,7 +825,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
   spyOn(someObject, 'someMethod');
   ```
-另一方面，**模拟**是模仿真实对象的结构和行为的对象，具有预先编程的行为和期望。在[jasmine](/zh-cn/wiki/jasmine/) 中，通常使用间谍结合其他技术来创建模拟来模拟复杂的行为。当您需要测试与难以或不切实际的对象（例如 [API](/zh-cn/wiki/api/) 或 [database](/zh-cn/wiki/database/)）的交互时，模拟非常有用。
+另一方面，**模拟**是模仿真实对象的结构和行为的对象，具有预先编程的行为和期望。在[jasmine](/zh-cn/wiki/jasmine/) 中，通常使用间谍结合其他技术来创建模拟来模拟复杂的行为。当您需要测试与难以或不切实际的对象（例如 [API](/zh-cn/wiki/api/) 或 [数据库](/zh-cn/wiki/database/)）的交互时，模拟非常有用。
 
   ```
   const mock = jasmine.createSpyObj('mock', ['method1', 'method2']);
@@ -839,7 +839,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 在[jasmine](/zh-cn/wiki/jasmine/) 中处理异步测试涉及使用`done` 回调、`async`/`await` 语法或`done.fail` 函数进行错误处理。
   **使用`done`回调：**
-  [jasmine](/zh-cn/wiki/jasmine/) 提供了 `done` 函数，您可以调用该函数来发出异步测试或 [setup](/zh-cn/wiki/setup/)/teardown 方法已完成的信号。将`done` 作为参数传递给`it`、`beforeEach` 或`afterEach` 函数，并在异步操作完成时调用它。
+  [jasmine](/zh-cn/wiki/jasmine/) 提供了 `done` 函数，您可以调用该函数来发出异步测试或 [环境搭建](/zh-cn/wiki/setup/)/teardown 方法已完成的信号。将`done` 作为参数传递给`it`、`beforeEach` 或`afterEach` 函数，并在异步操作完成时调用它。
 
   ```
   it('should handle async operation', (done) => {
@@ -878,7 +878,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 #### 如何将 Jasmine 与其他库或框架（如 Angular 或 React）一起使用？
 
 将 [jasmine](/zh-cn/wiki/jasmine/) 与 **Angular** 或 **React** 等框架集成涉及设置 [测试环境](/zh-cn/wiki/test-environment/)，允许 [jasmine](/zh-cn/wiki/jasmine/) 与这些框架的组件或服务进行交互。
-  对于 **Angular**，您可以使用 **Angular CLI** 生成带有测试 [setup](/zh-cn/wiki/setup/) 的项目，其中包括 [jasmine](/zh-cn/wiki/jasmine/) 和 **Karma**。 Angular 的测试实用程序提供了独立测试组件和服务的方法。以下是如何测试组件的基本示例：
+  对于 **Angular**，您可以使用 **Angular CLI** 生成带有测试 [环境搭建](/zh-cn/wiki/setup/) 的项目，其中包括 [jasmine](/zh-cn/wiki/jasmine/) 和 **Karma**。 Angular 的测试实用程序提供了独立测试组件和服务的方法。以下是如何测试组件的基本示例：
 
   ```
   import { TestBed, async } from '@angular/core/testing';
@@ -919,7 +919,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 - **保持测试隔离**：确保每个测试可以独立运行，而不依赖于另一个测试的状态。使用`beforeEach` 和`afterEach` 设置和拆除[测试环境](/zh-cn/wiki/test-environment/)。
 - **编写描述性[测试用例](/zh-cn/wiki/test-case/)**：为`describe` 和`it` 块使用清晰的描述性名称来传达[测试套件](/zh-cn/wiki/test-suite/) 和各个测试的意图。
-- **DRY（不要重复）**：将常见的 [setup](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
+- **DRY（不要重复）**：将常见的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
 - **根据规范测试一个方面**：每个 `it` 块应重点关注被测代码的单个行为或方面。
 - **使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语言**：编写描述功能行为而不是实现细节的测试。
 - **具有明确期望的断言**：使用 [jasmine](/zh-cn/wiki/jasmine/) 匹配器编写易于阅读和理解的断言。可以为特定于域的断言创建自定义匹配器。
@@ -944,7 +944,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 - **保持测试隔离**：确保每个测试可以独立运行，而不依赖于另一个测试的状态。使用`beforeEach` 和`afterEach` 设置和拆除[测试环境](/zh-cn/wiki/test-environment/)。
 - **编写描述性[测试用例](/zh-cn/wiki/test-case/)**：为`describe` 和`it` 块使用清晰的描述性名称来传达[测试套件](/zh-cn/wiki/test-suite/) 和各个测试的意图。
-- **DRY（不要重复）**：将常见的 [setup](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
+- **DRY（不要重复）**：将常见的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸步骤分解为 `beforeEach` 和 `afterEach` 块。使用辅助函数来执行重复性任务。
 - **根据规范测试一个方面**：每个 `it` 块应重点关注被测代码的单个行为或方面。
 - **使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语言**：编写描述功能行为而不是实现细节的测试。
 - **具有明确期望的断言**：使用 [jasmine](/zh-cn/wiki/jasmine/) 匹配器编写易于阅读和理解的断言。可以为特定于域的断言创建自定义匹配器。

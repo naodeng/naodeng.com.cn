@@ -135,7 +135,7 @@ order: 0
 
 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 通过确保软件版本之间的无缝过渡直接影响**用户体验 (UX)**。用户希望他们现有的工作流程、脚本和工具在更新后能够继续运行。当维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)时，用户在日常操作中享受**一致性**，避免重新学习或适应不必要的更改的挫败感。
   对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，[向后兼容性](/zh-cn/wiki/backward-compatibility/) 意味着[测试脚本](/zh-cn/wiki/test-script/) 在多个软件版本上保持**有效**和**可靠**。这种稳定性减少了对持续脚本维护的需求，使工程师能够专注于增强[测试覆盖率](/zh-cn/wiki/test-coverage/)或探索新功能。
-  但是，当[向后兼容性](/zh-cn/wiki/backward-compatibility/) 未保留时，用户可能会面临**中断**。他们可能需要**更新**或**重写**脚本、配置或集成，从而导致**停机**并降低生产力。在极端情况下，用户甚至可能被迫**放弃**该软件，寻求替代方案来兑现他们在[setup](/zh-cn/wiki/setup/)和培训方面的现有投资。
+  但是，当[向后兼容性](/zh-cn/wiki/backward-compatibility/) 未保留时，用户可能会面临**中断**。他们可能需要**更新**或**重写**脚本、配置或集成，从而导致**停机**并降低生产力。在极端情况下，用户甚至可能被迫**放弃**该软件，寻求替代方案来兑现他们在[环境搭建](/zh-cn/wiki/setup/)和培训方面的现有投资。
   维护[向后兼容性](/zh-cn/wiki/backward-compatibility/) 是对用户信任和满意度的**承诺**，确保新功能的引入不会以牺牲现有功能为代价。这是一种微妙的平衡，一旦实现，就会产生积极的用户体验，培养软件的**忠诚度**和**长期采用**。
 
 #### 流行软件中向后兼容的一些例子有哪些？
@@ -147,7 +147,7 @@ order: 0
 - **Python 2 到 Python 3**：虽然 Python 3 引入了重大更改，但 `2to3` 等工具和 `six` 等兼容性库有助于维护两个版本之间的桥梁。
 - **Adobe Photoshop**：新版本通常可以打开旧版本创建的文件，保留用户工作流程。
 - **Apple macOS**：尽管架构发生了变化，macOS 仍包含 Rosetta 2 等功能，允许为英特尔处理器编译的软件在 Apple Silicon 上运行。
-- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft 的[database](/zh-cn/wiki/database/) 服务器保持兼容性级别，允许旧版本的[databases](/zh-cn/wiki/database/) 恢复或附加到较新版本的[SQL](/zh-cn/wiki/sql/) 服务器。
+- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft 的[数据库](/zh-cn/wiki/database/) 服务器保持兼容性级别，允许旧版本的[数据库](/zh-cn/wiki/database/) 恢复或附加到较新版本的[SQL](/zh-cn/wiki/sql/) 服务器。
 - **WordPress**：CMS 确保插件和主题通常与新版本兼容，从而在更新后保护用户的网站功能。
 - **HTTP/2**：设计为向后兼容 HTTP/1.1，使客户端和服务器能够支持这两种协议。
 - **USB 标准**：较新的 USB 版本通常设计用于与以前的 [迭代](/zh-cn/wiki/iteration/) 中的设备和电缆配合使用，确保用户硬件投资保持有效。
@@ -157,7 +157,7 @@ order: 0
 - **Python 2 到 Python 3**：虽然 Python 3 引入了重大更改，但 `2to3` 等工具和 `six` 等兼容性库有助于维护两个版本之间的桥梁。
 - **Adobe Photoshop**：新版本通常可以打开旧版本创建的文件，保留用户工作流程。
 - **Apple macOS**：尽管架构发生了变化，macOS 仍包含 Rosetta 2 等功能，允许为英特尔处理器编译的软件在 Apple Silicon 上运行。
-- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft 的[database](/zh-cn/wiki/database/) 服务器保持兼容性级别，允许将旧版本的[databases](/zh-cn/wiki/database/) 恢复或附加到较新版本的[SQL](/zh-cn/wiki/sql/) 服务器。
+- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft 的[数据库](/zh-cn/wiki/database/) 服务器保持兼容性级别，允许将旧版本的[数据库](/zh-cn/wiki/database/) 恢复或附加到较新版本的[SQL](/zh-cn/wiki/sql/) 服务器。
 - **WordPress**：CMS 确保插件和主题通常与新版本兼容，从而在更新后保护用户的网站功能。
 - **HTTP/2**：设计为向后兼容 HTTP/1.1，使客户端和服务器能够支持这两种协议。
 - **USB 标准**：较新的 USB 版本通常设计用于与以前的[迭代](/zh-cn/wiki/iteration/) 中的设备和电缆配合使用，确保用户硬件投资保持有效。
@@ -308,7 +308,7 @@ order: 0
 - **Windows 操作系统**：Microsoft 确保为旧版本 Windows 开发的应用程序可以继续在新版本上运行。他们使用垫片和兼容模式来实现这一点。
 - **PlayStation 游戏机**：索尼的 PlayStation 2 与 PlayStation 1 游戏兼容，PlayStation 3 最初为 PS1 和 PS2 游戏提供[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
 - **HTTP/2**：较新的 HTTP/2 协议使用 HTTP/1.1 维护 [向后兼容性](/zh-cn/wiki/backward-compatibility/)。客户端和服务器可以协商要使用的协议版本，确保 Web 服务在不同的 HTTP 版本上继续运行。
-- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[databases](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
+- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[数据库](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
 - **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。
   这些示例展示了公司如何优先考虑 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 以保护用户投资并确保无缝过渡到较新的软件版本。
 
@@ -317,7 +317,7 @@ order: 0
 - **Windows 操作系统**：Microsoft 确保为旧版本 Windows 开发的应用程序可以继续在新版本上运行。他们使用垫片和兼容模式来实现这一点。
 - **PlayStation 游戏机**：索尼的 PlayStation 2 与 PlayStation 1 游戏兼容，PlayStation 3 最初为 PS1 和 PS2 游戏提供[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
 - **HTTP/2**：较新的 HTTP/2 协议使用 HTTP/1.1 维护 [向后兼容性](/zh-cn/wiki/backward-compatibility/)。客户端和服务器可以协商要使用的协议版本，确保 Web 服务在不同的 HTTP 版本上继续运行。
-- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[databases](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
+- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[数据库](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
 - **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。
 
 #### 您能否提供一个示例，说明软件必须在新功能上做出妥协才能保持向后兼容性？
@@ -343,7 +343,7 @@ order: 0
 - **Microsoft Windows**：Windows 操作系统以保持与旧应用程序的兼容性而闻名，通常允许为早期版本编写的软件在最新的 Windows 版本上运行。
 - **Java 运行时环境 (JRE)**：为旧版本 JRE 编写的 Java 应用程序通常无需修改即可在较新版本上运行，这要归功于 Java 平台对 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 的承诺。
 - **Ubuntu LTS 版本**：Ubuntu 的长期支持 (LTS) 版本提供五年更新，并确保针对 LTS 版本的软件在此期间保持兼容。
-- **PostgreSQL**：此[database](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[databases](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
+- **PostgreSQL**：此[数据库](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[数据库](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
 - **Python 2.7**：尽管Python 3引入了许多更改，但Python 2.7仍保留了较长一段时间，以便为现有Python 2应用程序提供稳定且兼容的平台。
 - **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。
   这些示例说明了对[向后兼容性](/zh-cn/wiki/backward-compatibility/)的承诺，使用户能够从新功能和改进中受益，而无需牺牲运行现有软件的能力。
@@ -351,6 +351,6 @@ order: 0
 - **Microsoft Windows**：Windows 操作系统以保持与旧应用程序的兼容性而闻名，通常允许为早期版本编写的软件在最新的 Windows 版本上运行。
 - **Java 运行时环境 (JRE)**：为旧版本 JRE 编写的 Java 应用程序通常无需修改即可在较新版本上运行，这要归功于 Java 平台对 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 的承诺。
 - **Ubuntu LTS 版本**：Ubuntu 的长期支持 (LTS) 版本提供五年更新，并确保针对 LTS 版本的软件在此期间保持兼容。
-- **PostgreSQL**：此[database](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[databases](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
+- **PostgreSQL**：此[数据库](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[数据库](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
 - **Python 2.7**：尽管Python 3引入了许多更改，但Python 2.7仍保留了较长一段时间，以便为现有Python 2应用程序提供稳定且兼容的平台。
 - **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。

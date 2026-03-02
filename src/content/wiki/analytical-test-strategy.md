@@ -115,7 +115,7 @@ order: 0
 5. **计划[测试环境](/zh-cn/wiki/test-environment/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 紧密模仿生产环境并满足要执行的测试的所有要求。
 6. **分配资源**：分配角色和职责，并为[测试执行](/zh-cn/wiki/test-execution/)分配必要的工具和人员。
 7. **开发[测试用例](/zh-cn/wiki/test-case/)**：根据所选技术创建详细的[测试用例](/zh-cn/wiki/test-case/) 和脚本，确保它们可追溯至需求和风险。
-8. **安排[测试执行](/zh-cn/wiki/test-execution/)**：定义测试周期的时间表，包括[setup](/zh-cn/wiki/setup/)、执行和分析的时间。
+8. **安排[测试执行](/zh-cn/wiki/test-execution/)**：定义测试周期的时间表，包括[环境搭建](/zh-cn/wiki/setup/)、执行和分析的时间。
 9. **执行测试**：根据计划运行测试，监控进度并根据需要进行调整。
 10. **分析结果**：根据定义的指标和目标评估[测试执行](/zh-cn/wiki/test-execution/) 的结果。
 11. **报告和沟通**：记录调查结果，向利益相关者报告状态，并传达出现的任何问题或见解。
@@ -127,7 +127,7 @@ order: 0
 5. **计划[测试环境](/zh-cn/wiki/test-environment/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 紧密模仿生产环境并满足要执行的测试的所有要求。
 6. **分配资源**：分配角色和职责，并为[测试执行](/zh-cn/wiki/test-execution/)分配必要的工具和人员。
 7. **开发[测试用例](/zh-cn/wiki/test-case/)**：根据所选技术创建详细的[测试用例](/zh-cn/wiki/test-case/) 和脚本，确保它们可追溯至需求和风险。
-8. **安排[测试执行](/zh-cn/wiki/test-execution/)**：定义测试周期的时间表，包括[setup](/zh-cn/wiki/setup/)、执行和分析的时间。
+8. **安排[测试执行](/zh-cn/wiki/test-execution/)**：定义测试周期的时间表，包括[环境搭建](/zh-cn/wiki/setup/)、执行和分析的时间。
 9. **执行测试**：根据计划运行测试，监控进度并根据需要进行调整。
 10. **分析结果**：根据定义的指标和目标评估[测试执行](/zh-cn/wiki/test-execution/) 的结果。
 11. **报告和沟通**：记录调查结果，向利益相关者报告状态，并传达出现的任何问题或见解。

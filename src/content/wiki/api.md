@@ -52,7 +52,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/API)
+- [维基百科](https://en.wikipedia.org/wiki/API)
 
 ## 有关 API 的问题吗？
 
@@ -413,7 +413,7 @@ order: 0
 [API 测试](/zh-cn/wiki/api-testing/) 涉及几个关键步骤，以确保应用程序编程接口的功能、可靠性、安全性和性能。以下是基本步骤：
 
 1. **了解[API](/zh-cn/wiki/api/)要求**：掌握[API](/zh-cn/wiki/api/)的预期功能、输入、输出和错误代码。
-2. **设置测试环境**：为[API](/zh-cn/wiki/api/) 测试配置必要的参数[databases](/zh-cn/wiki/database/) 和服务器。
+2. **设置测试环境**：为[API](/zh-cn/wiki/api/) 测试配置必要的参数[数据库](/zh-cn/wiki/database/) 和服务器。
 3. **编写[测试用例](/zh-cn/wiki/test-case/)**：创建涵盖[API](/zh-cn/wiki/api/)所有方面的[测试用例](/zh-cn/wiki/test-case/)，包括正测试、负测试、边界测试和安全测试。
 4. **选择正确的工具**：为 [API 测试](/zh-cn/wiki/api-testing/) 选择符合您的要求并与 CI/CD 管道集成的适当工具。
 5. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行测试以根据定义的要求验证[API](/zh-cn/wiki/api/)。这包括测试：
@@ -434,7 +434,7 @@ order: 0
   通过执行这些步骤，您可以确保全面覆盖[API 测试](/zh-cn/wiki/api-testing/)，从而实现稳健可靠的[API](/zh-cn/wiki/api/) 集成。
 
 1. **了解[API](/zh-cn/wiki/api/)要求**：掌握[API](/zh-cn/wiki/api/)的预期功能、输入、输出和错误代码。
-2. **设置测试环境**：为[API](/zh-cn/wiki/api/) 测试配置必要的参数[databases](/zh-cn/wiki/database/) 和服务器。
+2. **设置测试环境**：为[API](/zh-cn/wiki/api/) 测试配置必要的参数[数据库](/zh-cn/wiki/database/) 和服务器。
 3. **编写[测试用例](/zh-cn/wiki/test-case/)**：创建[测试用例](/zh-cn/wiki/test-case/)，涵盖[API](/zh-cn/wiki/api/)的所有方面，包括正测试、负测试、边界测试和安全测试。
 4. **选择正确的工具**：为 [API 测试](/zh-cn/wiki/api-testing/) 选择符合您的要求并与 CI/CD 管道集成的适当工具。
 5. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行测试以根据定义的要求验证[API](/zh-cn/wiki/api/)。这包括测试：

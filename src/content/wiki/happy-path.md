@@ -34,7 +34,7 @@ order: 0
 
 ## 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Happy_path)
+- [维基百科](https://en.wikipedia.org/wiki/Happy_path)
 
 ## 关于 快乐之路 有疑问吗？
 

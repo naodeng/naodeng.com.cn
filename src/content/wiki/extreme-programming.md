@@ -45,7 +45,7 @@ order: 0
 
 ### 另请参阅：
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Extreme_programming)
+- [维基百科](https://en.wikipedia.org/wiki/Extreme_programming)
 
 ## 关于极限编程的问题吗？
 

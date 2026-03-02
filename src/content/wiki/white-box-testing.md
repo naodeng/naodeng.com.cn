@@ -446,7 +446,7 @@ order: 0
 - 使用**代码分析工具**（例如 SonarQube 或 Coverity）自动扫描潜在问题，例如安全漏洞或代码异味。
 - 实施 **[测试覆盖率](/zh-cn/wiki/test-coverage/) 工具**，例如 JaCoCo 或 Istanbul，以确保测试覆盖足够数量的代码库，包括分支和路径。
 - 开发**自定义脚本**来测试特定的内部功能或模拟应用程序中的某些条件。
-  自动化白盒测试需要对代码库有深入的了解，并且可能涉及与 [API](/zh-cn/wiki/api/)、[databases](/zh-cn/wiki/database/) 或其他内部组件的接口。随着应用程序的发展，维护这些测试以确保它们保持有效和相关性至关重要。
+  自动化白盒测试需要对代码库有深入的了解，并且可能涉及与 [API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/) 或其他内部组件的接口。随着应用程序的发展，维护这些测试以确保它们保持有效和相关性至关重要。
 
 - 编写**单元测试**来验证各个函数或方法。它们通常使用与应用程序代码相同的语言编写，并使用 JUnit for Java 或 [NUnit](/zh-cn/wiki/nunit/) for C# 等框架运行。
 
@@ -494,7 +494,7 @@ order: 0
     }
     ```
 
-2. **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元/模块之间的交互。例如，测试数据处理服务如何与[database](/zh-cn/wiki/database/) 交互。
+2. **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元/模块之间的交互。例如，测试数据处理服务如何与[数据库](/zh-cn/wiki/database/) 交互。
 3. **[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析**：使用 Istanbul 或 JaCoCo 等工具来测量测试期间执行了多少代码，旨在获得高覆盖率。
 4. **静态代码分析**：SonarQube 或 ESLint 等工具分析代码而不执行代码，以发现潜在问题，例如安全漏洞或代码异味。
 5. **[安全测试](/zh-cn/wiki/security-testing/)**：渗透测试人员检查代码是否存在安全缺陷，例如 Web 应用程序身份验证模块中的 [SQL](/zh-cn/wiki/sql/) 注入漏洞。
@@ -510,7 +510,7 @@ order: 0
     }
     ```
 
-2. **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元/模块之间的交互。例如，测试数据处理服务如何与[database](/zh-cn/wiki/database/) 交互。
+2. **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元/模块之间的交互。例如，测试数据处理服务如何与[数据库](/zh-cn/wiki/database/) 交互。
 3. **[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析**：使用 Istanbul 或 JaCoCo 等工具来测量测试期间执行了多少代码，旨在获得高覆盖率。
 4. **静态代码分析**：SonarQube 或 ESLint 等工具分析代码而不执行代码，以发现潜在问题，例如安全漏洞或代码异味。
 5. **[安全测试](/zh-cn/wiki/security-testing/)**：渗透测试人员检查代码是否存在安全缺陷，例如 Web 应用程序身份验证模块中的 [SQL](/zh-cn/wiki/sql/) 注入漏洞。
