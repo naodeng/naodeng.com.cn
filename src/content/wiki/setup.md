@@ -216,13 +216,6 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
     npm install
     ```
 
-3. **配置与测试环境相关的环境变量**，例如[数据库](/zh-cn/wiki/database/) URL、服务端点和身份验证凭据。
-4. **设置外部服务**和[数据库](/zh-cn/wiki/database/)，确保它们尽可能地反映生产环境。
-5. **将 AUT** 部署到本地或专用测试服务器上的测试环境。
-6. **安装 [测试自动化](/zh-cn/wiki/test-automation/) 框架**和工具，例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright。
-7. **使用已部署 AUT 的正确基本 URL 和其他必要参数配置 [测试运行者](/zh-cn/wiki/test-runner/)**。
-8. **编写冒烟测试**以验证环境设置正确并且 AUT 可访问。
-
     ```
     describe('Smoke Test', () => {
       it('should load the application', async () => {
@@ -402,19 +395,10 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
     const driver = new RemoteWebDriver(new URL('http://localhost:4444/wd/hub'), capabilities);
     ```
 
-- **选择性测试**：实施智能测试选择策略，仅运行受最近代码更改影响的测试。这可以通过测试[影响分析](/zh-cn/wiki/impact-analysis/)工具来实现。
-- **缓存**：对依赖项和常用数据使用缓存以节省[环境搭建](/zh-cn/wiki/setup/) 上的时间。例如，Docker 层可用于缓存容器化环境中的依赖项。
-- **资源分配**：确保为测试环境分配足够的资源。这包括 CPU、内存和网络带宽。
-- **容器化**：使用容器创建轻量级、可重复且可扩展的测试环境。 Docker 和 Kubernetes 可以编排容器部署。
-
     ```
     // Docker command to run tests in a container
     docker run -v $(pwd):/e2e -w /e2e node:14 npm test
     ```
-
-- **预构建环境**：使用测试环境的预构建映像或快照以避免每次测试运行前的 [环境搭建](/zh-cn/wiki/setup/) 时间。
-- **监控和分析**：定期监控和分析[测试套件](/zh-cn/wiki/test-suite/) 以识别瓶颈并进行相应优化。
-- **异步[环境搭建](/zh-cn/wiki/setup/)**：在可能的情况下，异步执行[环境搭建](/zh-cn/wiki/setup/) 任务以更好地利用时间，尤其是在处理 I/O 操作时。
 
 #### 设置过程中需要避免哪些常见错误？
 

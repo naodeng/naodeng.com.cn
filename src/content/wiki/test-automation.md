@@ -120,9 +120,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
 这些功能使 [jasmine](/zh-cn/wiki/jasmine/) 成为编写和维护 JavaScript 应用程序测试的强大且多功能的工具。
 
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语法**：鼓励编写易于阅读和理解的测试。
-- **无外部依赖**：开箱即用，无需其他库。
-- **丰富的匹配器集**：为常见断言提供内置匹配器，例如
     `toEqual`
     ,
     `toBe`
@@ -138,14 +135,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
     /
     `await`
     。
-
-- **Spies** ：内置测试替身，用于跟踪函数调用、参数和返回值。
-- **时钟控制**：Jasmine 的模拟时钟允许测试时间相关的代码。
-- **自动测试发现**：自动查找并运行规范文件中定义的测试。
-- **灵活的报告**：支持多种报告器显示测试结果，可定制或扩展。
-- **可扩展性**：允许添加自定义匹配器和报告器以满足特定需求。
-- **跨平台**：在任何支持 JavaScript 的平台上运行。
-- **集成友好**：可以与其他工具和框架一起使用，例如 Karma、Protractor 等。
 
 #### Jasmine 与其他测试框架相比如何？
 
@@ -544,10 +533,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   还可以创建自定义匹配器来封装重复或复杂的逻辑。通过使用定义 `compare` 函数的匹配器对象扩展 `jasmine.addMatchers` 方法，将它们添加到 [jasmine](/zh-cn/wiki/jasmine/) 中。
   匹配器对于清晰简洁地表达测试意图至关重要，使测试更易于阅读和维护。它们是 [jasmine](/zh-cn/wiki/jasmine/) 框架的核心部分，提供丰富的语言来指定 [测试用例](/zh-cn/wiki/test-case/) 中的各种条件和期望。
 
-- `toBe` ：严格相等（===）比较。
-- `toEqual` ：深度相等比较，对于对象或数组很有用。
-- `toMatch` ：与正则表达式匹配的字符串。
-- `toBeDefined` ：检查变量是否不是
     `undefined`
     。
 
@@ -555,10 +540,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
     `null`
     。
 
-- `toBeTruthy` ：检查变量是否为真。
-- `toBeFalsy` ：检查变量是否为假。
-- `toContain` ：检查数组或字符串是否包含特定项目或子字符串。
-- `toBeGreaterThan`
     ,
     `toBeLessThan`：数值比较。
 
@@ -680,10 +661,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
 这些匹配器在 `expect` 函数中使用，并与正在测试的实际值链接。匹配器对于验证被测代码的行为至关重要。
 
-- `toBe` ：检查实际值是否与预期值相同（===）。
-- `toEqual` ：检查实际值和预期值是否相等，包括对象和数组。
-- `toMatch` ：检查值是否与指定的正则表达式匹配。
-- `toBeDefined` ：断言变量不是
     `undefined`
     。
 
@@ -982,14 +959,3 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
   10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。
   请记住通过单个用户运行来**验证您的测试**，以确保它在扩展之前按预期工作。根据 Web 服务的预期负载和性能目标调整配置。
-
-1. **通过在菜单上选择`Test Plan`来创建新的[测试计划](/zh-cn/wiki/test-plan/)**，然后右键单击并选择`Add` > `Threads (Users)` > `Thread Group`。
-  2. **配置线程组**，包括测试的线程（用户）数量、启动周期和循环计数。
-  3. **将采样器**添加到线程组，方法是右键单击它并导航到 `Add` > `Sampler` > `HTTP Request`。使用 Web 服务的 URL 和请求类型（GET、POST 等）配置 HTTP 请求。
-  4. **设置 HTTP 请求默认值**（可选），如果您有多个具有公共参数的 HTTP 请求，可以通过添加 `Config Element` > `HTTP Request Defaults` 来减少冗余。
-  5. **添加标头**（如果需要），方法是右键单击 HTTP 请求并选择 `Add` > `Config Element` > `HTTP Header Manager`。输入必要的标头，例如 `Content-Type` 或 `Authorization`。
-  6. **添加监听器** 通过右键单击线程组并选择 `Add` > `Listener` 来查看结果。常见的侦听器是`View Results Tree` 和`Summary Report`。
-  7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
-  8. **通过单击工具栏上的 `Start` 按钮运行测试**。
-  9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
-  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。

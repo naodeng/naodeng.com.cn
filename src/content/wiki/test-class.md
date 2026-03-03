@@ -149,10 +149,6 @@ order: 0
     assertEquals(expectedValue, actualValue);
     ```
 
-- **注释**：提供有关测试方法及其行为的信息的元数据，例如`@Test`、`@Before` 和`@After`。
-- **[测试数据](/zh-cn/wiki/test-data/)**：用于驱动测试的外部或内部数据，可以硬编码、生成或从文件或[数据库](/zh-cn/wiki/database/)加载。
-- **模拟对象**：可选择用于模拟未测试的真实对象的行为，以隔离被测单元。
-
 #### 测试类对整个测试过程有何贡献？
 
 **[测试类](/zh-cn/wiki/test-class/)** 充当测试过程中的结构组件，封装了一组测试方法，这些方法共同验证特定代码单元的行为。通过对相关测试进行分组，它增强了[可维护性](/zh-cn/wiki/maintainability/) 和清晰度，从而实现更高效的[测试执行](/zh-cn/wiki/test-execution/) 和结果分析。
@@ -392,7 +388,7 @@ order: 0
 
 - **JUnit**：一种流行的 Java 单元测试框架，通常与 Eclipse 或 IntelliJ IDEA 等 IDE 结合使用。
 - **TestNG**：受 JUnit 启发的测试框架，但引入了新功能（例如注释），使其更强大且更易于使用。
-- **[NUnit](/zh-cn/wiki/nunit/)** ：一个有影响力的 .NET 语言单元测试框架，在很多方面与 JUnit 类似。
+- **[NUnit](/zh-cn/wiki/nunit/)** ：一个有影响力的.NET 语言单元测试框架，在很多方面与 JUnit 类似。
 - **pytest**：一个强大的Python测试工具，支持简单的单元测试以及复杂的功能测试。
 - **RSpec**：Ruby 的行为驱动开发 (BDD) 框架，允许为代码编写人类可读的规范。
 - **Mocha**：一个在 Node.js 和浏览器中运行的灵活的 JavaScript 测试框架，使异步测试变得简单而有趣。
@@ -406,7 +402,7 @@ order: 0
 
 - **JUnit**：一种流行的 Java 单元测试框架，通常与 Eclipse 或 IntelliJ IDEA 等 IDE 结合使用。
 - **TestNG**：受 JUnit 启发的测试框架，但引入了新功能（例如注释），使其更强大且更易于使用。
-- **[NUnit](/zh-cn/wiki/nunit/)** ：一个有影响力的 .NET 语言单元测试框架，在很多方面与 JUnit 类似。
+- **[NUnit](/zh-cn/wiki/nunit/)** ：一个有影响力的.NET 语言单元测试框架，在很多方面与 JUnit 类似。
 - **pytest**：一个强大的Python测试工具，支持简单的单元测试以及复杂的功能测试。
 - **RSpec**：Ruby 的行为驱动开发 (BDD) 框架，允许为代码编写人类可读的规范。
 - **Mocha**：一个在 Node.js 和浏览器中运行的灵活的 JavaScript 测试框架，使异步测试变得简单而有趣。
@@ -803,14 +799,6 @@ order: 0
   }
   ```
 请记住**将集成测试**与单元测试隔离，可能通过使用不同的目录或命名约定来有效管理[测试执行](/zh-cn/wiki/test-execution/)和报告。
-
-1. **识别需要测试的集成点**。重点关注模块之间的接口。
-2. **[环境搭建](/zh-cn/wiki/setup/) [测试环境](/zh-cn/wiki/test-environment/)** 反映类似生产的场景，确保所有相关服务或模块可用。
-3. **实例化集成中涉及的类**或模块。如有必要，请使用模拟对象或服务虚拟化作为外部依赖项。
-4. **编写测试方法**，反映模块交互的真实世界[用例](/zh-cn/wiki/use-case/)。确保每个测试都是独立的并且可以按任何顺序运行。
-5. **断言结果**以验证集成模块是否按预期协同工作。检查正确的数据流、错误处理和副作用。
-6. **测试后清理资源**，避免对后续测试产生副作用。这可能涉及重置 [数据库](/zh-cn/wiki/database/) 或清除缓存。
-7. **使用相关元数据注释 [测试类](/zh-cn/wiki/test-class/)** 以指示它是集成测试（例如，在 Spring 中使用 `@IntegrationTest`）。
 
 #### 测试套件的概念是什么？它与测试类有何关系？
 

@@ -41,7 +41,7 @@ order: 0
       - [TestFixture 在 NUnit 中的作用是什么？](#testfixture-在-nunit-中的作用是什么)
       - [如何将 NUnit 与 Selenium 等其他工具集成以进行 e2e 测试？](#如何将-nunit-与-selenium-等其他工具集成以进行-e2e-测试)
 <!-- TOC END -->
-单位是一个开源的单元测试源自 JUnit 的 C# 框架。它有助于在 .NET 中编写和执行测试，例如单位 -console.exe 用于批处理测试执行。
+单位是一个开源的单元测试源自 JUnit 的 C# 框架。它有助于在.NET 中编写和执行测试，例如单位 -console.exe 用于批处理测试执行。
 
 ## 相关术语
 
@@ -59,12 +59,12 @@ order: 0
 
 #### NUnit 是什么？
 
-[NUnit](/zh-cn/wiki/nunit/) 是一个用于 .NET 语言的开源 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**，旨在成为用于编写和运行测试的灵活且用户友好的工具。它是 .NET 基金会的一部分，并因其创建简单和复杂[测试用例](/zh-cn/wiki/test-case/) 的能力而被广泛使用。
+[NUnit](/zh-cn/wiki/nunit/) 是一个用于.NET 语言的开源 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**，旨在成为用于编写和运行测试的灵活且用户友好的工具。它是.NET 基金会的一部分，并因其创建简单和复杂[测试用例](/zh-cn/wiki/test-case/) 的能力而被广泛使用。
   [NUnit](/zh-cn/wiki/nunit/) 中的测试是通过使用属性注释方法来创建的，例如 `[Test]` 表示测试方法，`[TestFixture]` 表示测试类，`[SetUp]` 和 `[TearDown]` 分别表示在每个测试之前和之后运行的方法。 [NUnit](/zh-cn/wiki/nunit/) 提供了一组丰富的断言，例如`Assert.AreEqual` 和`Assert.IsTrue`，以验证测试结果。
   要运行一组特定的测试，您可以使用[NUnit](/zh-cn/wiki/nunit/) 控制台运行程序中的`--where` 选项，或使用`[Category]` 属性对测试进行分类并相应地过滤它们。 [NUnit](/zh-cn/wiki/nunit/) 中的异常处理很简单；您可以使用`Assert.Throws` 方法或`ExpectedException` 属性来预期异常。
   [参数化测试](/zh-cn/wiki/parameterized-testing/) 通过`[TestCase]` 和`[TestCaseSource]` 等属性得到支持，从而实现数据驱动测试。为了与 [selenium](/zh-cn/wiki/selenium/) 等工具集成，[NUnit](/zh-cn/wiki/nunit/) 可以无缝工作，从而允许 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景。
   [NUnit](/zh-cn/wiki/nunit/) 的 `[TestFixture]` 属性在指示类包含测试方面起着至关重要的作用，并且还可以用于传递用于使用不同输入运行测试的参数。
-  总而言之，[NUnit](/zh-cn/wiki/nunit/) 是 .NET 测试生态系统中强大而重要的工具，为有效的[测试自动化](/zh-cn/wiki/test-automation/) 提供了一套全面的功能。
+  总而言之，[NUnit](/zh-cn/wiki/nunit/) 是.NET 测试生态系统中强大而重要的工具，为有效的[测试自动化](/zh-cn/wiki/test-automation/) 提供了一套全面的功能。
 
 #### 为什么 NUnit 在软件测试中很重要？
 
@@ -105,10 +105,10 @@ order: 0
 
 #### NUnit 与其他测试框架相比如何？
 
-[NUnit](/zh-cn/wiki/nunit/) 是 .NET 生态系统中流行的测试框架，通常与 **MSTest** 和 **xUnit** 等其他框架进行比较。
+[NUnit](/zh-cn/wiki/nunit/) 是.NET 生态系统中流行的测试框架，通常与 **MSTest** 和 **xUnit** 等其他框架进行比较。
   **MSTest** 是 Microsoft 的官方测试框架，与 Visual Studio 紧密集成，为在此 IDE 中工作的开发人员提供流畅的体验。然而，[NUnit](/zh-cn/wiki/nunit/) 往往更灵活、功能更丰富，[测试用例](/zh-cn/wiki/test-case/) 具有更广泛的属性，并且更好地支持参数化测试。 [NUnit](/zh-cn/wiki/nunit/)的断言库也被认为更强大。随着时间的推移，MSTest 不断得到改进，但通常被选择是因为它与 Microsoft 堆栈的无缝集成，而不是高级功能。
-  **xUnit** 是另一个开源框架，被 .NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化​​和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
-  总之，[NUnit](/zh-cn/wiki/nunit/) 在 MSTest 提供的易用性和 xUnit 的现代测试方法之间提供了平衡。它以其灵活性、广泛的断言库以及对数据驱动测试的强大支持而脱颖而出，使其成为许多 .NET 开发人员的可靠选择。然而，这些框架之间的选择通常取决于特定的项目需求、团队熟悉程度和集成要求。
+  **xUnit** 是另一个开源框架，被.NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化​​和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
+  总之，[NUnit](/zh-cn/wiki/nunit/) 在 MSTest 提供的易用性和 xUnit 的现代测试方法之间提供了平衡。它以其灵活性、广泛的断言库以及对数据驱动测试的强大支持而脱颖而出，使其成为许多.NET 开发人员的可靠选择。然而，这些框架之间的选择通常取决于特定的项目需求、团队熟悉程度和集成要求。
 
 ### 安装和设置
 
@@ -147,7 +147,7 @@ order: 0
   Install-Package NUnit -Version 3.x.x
   ```
 将 `3.x.x` 替换为所需的版本号。
-  对于 .NET Core 或 .NET Standard 项目，您还可以使用 `dotnet` CLI：
+  对于.NET Core 或.NET Standard 项目，您还可以使用 `dotnet` CLI：
 
   ```
   dotnet add package NUnit --version 3.x.x
@@ -185,12 +185,12 @@ order: 0
 
 [NUnit](/zh-cn/wiki/nunit/) 的系统要求因您使用的版本而异。对于 **[NUnit](/zh-cn/wiki/nunit/) 3**，要求如下：
 
-- **.NET Framework**：NUnit 与 .NET Framework 2.0 及更高版本兼容。但是，为了使用最新功能并获得最佳体验，建议使用 .NET Framework 4.5 或更高版本。
-- **.NET Core**：NUnit 支持 .NET Core 1.1 及更高版本，包括用于跨平台测试的 .NET 5 和 6。
+- **.NET Framework**：NUnit 与.NET Framework 2.0 及更高版本兼容。但是，为了使用最新功能并获得最佳体验，建议使用.NET Framework 4.5 或更高版本。
+- **.NET Core**：NUnit 支持.NET Core 1.1 及更高版本，包括用于跨平台测试的.NET 5 和 6。
 - **Mono** ：要在支持 Mono 的平台上运行，需要 4.6 或更高版本。
 - **操作系统**：NUnit 是跨平台的，可以在 Windows、macOS 和 Linux 上运行。
 - **IDE 支持**：NUnit 可与各种集成开发环境 (IDE) 配合使用，例如 Visual Studio，这需要 NUnit 3 测试适配器进行集成。
-  在安装 [NUnit](/zh-cn/wiki/nunit/) 之前，请确保您的系统上安装了适当版本的 .NET 平台。对于针对多个框架的项目，请确保所有目标框架都满足最低要求。
+  在安装 [NUnit](/zh-cn/wiki/nunit/) 之前，请确保您的系统上安装了适当版本的.NET 平台。对于针对多个框架的项目，请确保所有目标框架都满足最低要求。
 
   ```
   <ItemGroup>
@@ -206,8 +206,8 @@ order: 0
 要为新项目设置[NUnit](/zh-cn/wiki/nunit/)，请执行以下步骤：
 
 1. **在您首选的 IDE（例如 Visual Studio）中创建一个新项目**。
-2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于 .NET Core 或 .NET 5+ 项目，请在包管理器控制台中使用以下命令：
-    或者，对于 .NET Framework 项目或者如果您更喜欢使用 .NET CLI，请使用：
+2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令：
+    或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
 
     ```
     Install-Package NUnit
@@ -218,7 +218,7 @@ order: 0
     ```
 
 3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令：
-    或者，对于 .NET CLI：
+    或者，对于.NET CLI：
 
     ```
     Install-Package NUnit3TestAdapter
@@ -239,8 +239,8 @@ order: 0
 确保您的项目针对 [NUnit](/zh-cn/wiki/nunit/) 的兼容框架版本。如果遇到问题，请验证 [NUnit](/zh-cn/wiki/nunit/) 和测试适配器版本是否与项目的目标框架兼容。
 
 1. **在您首选的 IDE（例如 Visual Studio）中创建一个新项目**。
-2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于 .NET Core 或 .NET 5+ 项目，请在包管理器控制台中使用以下命令：
-    或者，对于 .NET Framework 项目或者如果您更喜欢使用 .NET CLI，请使用：
+2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令：
+    或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
 
     ```
     Install-Package NUnit
@@ -251,7 +251,7 @@ order: 0
     ```
 
 3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令：
-    或者，对于 .NET CLI：
+    或者，对于.NET CLI：
 
     ```
     Install-Package NUnit3TestAdapter
@@ -260,11 +260,6 @@ order: 0
     ```
     dotnet add package NUnit3TestAdapter
     ```
-
-4. **通过在测试文件顶部添加`using NUnit.Framework;` 指令来引用测试项目中的[NUnit](/zh-cn/wiki/nunit/) 框架**。
-5. **创建一个[测试类](/zh-cn/wiki/test-class/)**并用`[TestFixture]`装饰它。在类内部，定义测试方法并用`[Test]`对其进行注释。
-6. **构建项目**来编译[测试用例](/zh-cn/wiki/test-case/)。
-7. **使用 IDE 中的测试资源管理器或通过命令行运行测试。对于命令行，导航到您的项目目录并运行：
 
     ```
     dotnet test

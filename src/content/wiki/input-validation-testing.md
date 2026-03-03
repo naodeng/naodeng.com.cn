@@ -243,10 +243,6 @@ order: 0
 8. **监控和优化**：定期审查测试结果并优化测试，以随着应用程序的发展覆盖新的输入场景。
   通过遵循这些步骤，[输入验证测试](/zh-cn/wiki/input-validation-testing/) 成为软件开发生命周期中无缝且不可或缺的一部分，确保及时识别和解决与输入相关的漏洞。
 
-1. **自动化输入验证测试**：编写专注于验证输入字段的自动化测试。使用与您的 CI/CD 工具兼容的测试框架。
-2. **合并到版本控制挂钩**：在**预提交**或**预推送**挂钩上触发输入验证测试，以尽早发现问题。
-3. **配置 CI/CD 管道**：在管道配置文件中添加一个步骤来执行输入验证测试。例如，在 Jenkins 中，您可以在 `Jenkinsfile` 中添加一个阶段：
-
     ```
     stage('Input Validation') {
         steps {
@@ -254,12 +250,6 @@ order: 0
         }
     }
     ```
-
-4. **快速失败**：将管道设置为在第一次测试失败时失败，以防止有缺陷的代码进一步发展。
-5. **隔离并确定优先级**：在更耗时的测试之前运行输入验证测试，以快速获得反馈。
-6. **使用质量门**：实施质量门，以防止在输入验证测试失败时部署代码。
-7. **持续反馈**：配置通知以立即提醒开发人员测试失败。
-8. **监控和优化**：定期审查测试结果并优化测试，以随着应用程序的发展覆盖新的输入场景。
 
 #### 输入验证测试常用哪些工具？
 
@@ -275,7 +265,7 @@ order: 0
     // Assert the validation message
     ```
 
-- **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和 .NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
+- **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和.NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
 
     ```
     @Test
@@ -315,7 +305,7 @@ order: 0
     // Assert the validation message
     ```
 
-- **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和 .NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
+- **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和.NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
 
     ```
     @Test
@@ -337,12 +327,6 @@ order: 0
         }
     }
     ```
-
-- **OWASP ZAP**：安全工具，可以对 Web 应用程序执行自动攻击，以测试安全漏洞的输入验证。
-- **RestAssured**：用于轻松测试 REST 服务的 Java DSL，可用于验证针对不同输入的响应。
-- **[Cypress](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
-- **SQLMap**：一种自动化工具，可检测和利用[SQL](/zh-cn/wiki/sql/) 注入缺陷，测试与[SQL](/zh-cn/wiki/sql/) 查询相关的输入验证的稳健性。
-- **Regex101**：在线正则表达式测试工具，用于验证和调试用于输入验证的正则表达式。
 
 ### 挑战和解决方案
 

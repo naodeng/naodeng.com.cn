@@ -154,14 +154,6 @@ TPI 模型在**成熟度级别**基础上运行，每个级别都提供一组需
     Defect Detection Effectiveness = (Defects Found Pre-Release / Total Defects Found) * 100
     ```
 
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：使用[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具来测量测试执行的代码百分比。更高的覆盖率意味着更彻底的测试。
-- **[测试执行](/zh-cn/wiki/test-execution/) 时间**：跟踪运行[测试套件](/zh-cn/wiki/test-suite/) 所花费的时间。改进的目的应该是在不影响覆盖范围或质量的情况下减少这个时间。
-- **自动测试比例**：监控自动测试与手动测试的百分比。更高的自动化率可以带来更高效的测试。
-- **平均检测时间 (MTTD)**：测量检测问题的平均时间。较短的 MTTD 可以表明[测试过程](/zh-cn/wiki/test-process/) 的响应能力更强、更有效。
-- **平均修复时间 (MTTR)**：评估修复缺陷的平均时间。 MTTR 的减少表明开发和[测试过程](/zh-cn/wiki/test-process/) 敏捷性有所提高。
-- **质量成本 (CoQ)**：分析与预防、检测和纠正缺陷相关的成本。较低的 CoQ 表明 [测试过程](/zh-cn/wiki/test-process/) 效率更高。
-- **客户满意度**：收集最终用户对产品质量的反馈。客户满意度的提高可以作为有效 TPI 的有力指标。
-
 #### 实施测试过程改进过程中面临哪些常见挑战以及如何克服这些挑战？
 
 [测试流程改进](/zh-cn/wiki/test-process-improvement/) (TPI) 实施过程中的常见挑战包括**抵制变革**、**资源有限**、**缺乏熟练人员**和**工具不足**。克服这些问题需要采取战略方法：

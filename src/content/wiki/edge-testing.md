@@ -259,11 +259,6 @@ order: 0
   ```
 为了**自动化[边缘测试](/zh-cn/wiki/edge-testing/)**，请将这些工具集成到您的 CI/CD 管道中，确保定期、一致地测试边缘情况。使用数据驱动的方法将边缘情况输入到自动化测试中。
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：自动化 Web 浏览器，允许您在不同的 Web 应用程序上测试边缘情况。
-- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 边缘测试很有用，特别是在处理边界值和错误条件时。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：通过模拟重负载和压力条件帮助进行性能边缘测试。
-- **Appium**：对于移动边缘测试，它可以自动化 Android 和 iOS 平台上的场景。
-- **JUnit**
     和
     **TestNG**：通过参数化和数据驱动的测试支持单元测试中的边缘情况测试的框架。
 

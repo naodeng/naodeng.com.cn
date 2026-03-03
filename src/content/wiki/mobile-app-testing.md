@@ -238,14 +238,6 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Espresso**：Android 原生测试框架，提供用于编写​​ UI 测试的 API。
 
-- **Detox**：一个灰盒端到端测试框架，适用于在 React Native 平台上运行的移动应用程序。
-- **Calabash**：支持移动应用程序的自动化功能测试，允许用 Cucumber 编写测试并在 Android 和 iOS 上运行。
-- **Robotium**：一个 Android 测试框架，提供简单的 API 来编写 UI 自动化脚本。
-- **EarlGrey**：Google 的原生 iOS UI 自动化测试框架，与 XCTest 集成。
-- **Kobiton**：一个移动设备云平台，使用户能够在真实设备上进行测试。
-- **TestComplete Mobile**：为 Android 和 iOS 应用程序的自动化测试提供一套全面的功能。
-- **Ranorex Studio**：提供用于为移动、Web 和桌面应用程序创建自动化测试的工具。
-
 #### 对移动应用程序使用自动化测试工具有哪些好处？
 
 [自动化测试](/zh-cn/wiki/automated-testing/) 移动应用程序工具具有多种优势：

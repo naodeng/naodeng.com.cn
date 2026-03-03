@@ -298,11 +298,6 @@ order: 0
 - **Combine with other techniques**: Use boundary testing in conjunction with other test methods like equivalence partitioning, decision table testing, and state transition testing for comprehensive coverage.
 - **Be mindful of environment**: Test boundary conditions in an environment that closely mirrors production to catch environment-specific issues.
 
-- **识别精确边界**：确保您清楚地了解输入域并准确识别边界。
-- **包括极值**：使用精确边界处的值以及边界内部和外部的值进行测试。
-- **尽可能自动化**：使用测试自动化框架重复运行边界测试，尤其是回归测试。
-- **使用数据驱动测试**：实施数据驱动测试，可以轻松修改和扩展边界值，而无需更改测试代码。
-
 ### 实际应用和示例
 
 #### 您能提供一些边界测试的实际示例吗？
@@ -612,14 +607,6 @@ order: 0
       expect(inputField.validate(101)).toBe(false); // Above boundary
     });
     ```
-
-- **利用参数化测试**：创建可以使用不同输入运行的测试来覆盖边界条件，而无需编写多个[测试用例](/zh-cn/wiki/test-case/)。
-- **纳入随机性**：在边界限制内使用随机值生成器，以确保测试广泛的值。
-- **优先考虑关键边界**：重点关注最有可能受更改影响或对应用程序功能至关重要的边界。
-- **定期审查和更新测试**：随着软件的发展，边界测试也应该如此。定期审查和调整边界和 [测试用例](/zh-cn/wiki/test-case/) 以保持相关性。
-- **利用[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**：评估与每个边界相关的风险并相应地分配测试工作。
-- **与开发人员合作**：与开发人员密切合作，了解系统在边界的行为，并确保在开发阶段考虑边缘情况。
-- **使用静态代码分析工具**：这些工具可以帮助在运行时测试之前识别代码中潜在的与边界相关的错误。
 
 #### 边界测试在发现错误方面有多有效？
 

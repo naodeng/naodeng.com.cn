@@ -225,10 +225,6 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     **创建**
     新的工作流程。
 
-- 通过单击“添加状态”，“添加状态”以表示流程中的步骤。
-- **创建转换**以在状态之间移动问题。单击并从一种状态拖动到另一种状态以创建转换。
-- **编辑转换**以添加条件、验证器和后置函数：
-- **条件**
       控制谁可以执行转换。
 
 - **验证者**
@@ -310,12 +306,6 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     对于分层数据，或者
     *多选*
     对于多个值。
-
-- **数据捕获**：确保收集问题的所有必要信息。
-- **搜索和过滤**：支持 JQL（Jira 查询语言）以进行精确的问题搜索。
-- **报告**：通过 Jira 仪表板和报告生成见解。
-- **自动化**：基于字段值的触发规则，对于测试自动化工作流程至关重要。
-- **集成**：与外部工具交换数据，增强端到端测试自动化。
 
 ＃＃＃ 一体化
 
@@ -565,10 +555,6 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
     when Issue transitioned to 'Done'
     then Assign issue to DEVELOPER
     ```
-
-- **CI/CD 集成**：将 [jira](/zh-cn/wiki/jira/) 与 Jenkins 或 Bamboo 等 CI/CD 工具连接，以直接在问题中跟踪构建和部署状态。
-- **[测试管理](/zh-cn/wiki/test-management/) 附加组件**：利用 Zephyr 或 Xray 等附加组件来增强[测试用例管理](/zh-cn/wiki/test-case-management/)、执行跟踪和详细报告。
-- **智能提交**：使用智能提交语法将提交、分支和拉取请求链接到 [jira](/zh-cn/wiki/jira/) 问题以实现可追溯性。
 
     ```
     git commit -m "PROJ-123 add login test - #done #comment Test added"

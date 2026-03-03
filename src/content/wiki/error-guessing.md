@@ -282,8 +282,3 @@ order: 0
     ```
     DDE = (Defects found by error guessing / Time spent on error guessing)
     ```
-
-- **[严重性](/zh-cn/wiki/severity/) 缺陷**：评估[错误猜测](/zh-cn/wiki/error-guessing/) 捕获的缺陷的[严重性](/zh-cn/wiki/severity/)。发现关键缺陷可以体现该技术的价值。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：分析[错误猜测](/zh-cn/wiki/error-guessing/)是否会导致识别现有[测试用例](/zh-cn/wiki/test-case/)未覆盖的区域。
-- **来自回顾的反馈**：从团队回顾中收集有关 [错误猜测](/zh-cn/wiki/error-guessing/) 对测试过程的影响的定性数据。
-- **历史比较**：将当前项目指标与未使用 [错误猜测](/zh-cn/wiki/error-guessing/) 的过去项目进行比较。

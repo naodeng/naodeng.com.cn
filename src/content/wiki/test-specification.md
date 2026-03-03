@@ -206,11 +206,6 @@ order: 0
     runTestSuite('Login Feature');
     ```
 
-4. **结果分析**：将实际结果与[测试规范](/zh-cn/wiki/test-specification/)中指定的[预期结果](/zh-cn/wiki/expected-result/)进行比较。将任何差异记录为缺陷。
-5. **缺陷报告**：记录并报告测试期间发现的任何缺陷。包括重现步骤、[严重性](/zh-cn/wiki/severity/) 以及任何相关的屏幕截图或日志。
-6. **测试周期结束**：测试完成后，确保所有[测试用例](/zh-cn/wiki/test-case/) 均已执行，并且所有关键缺陷均已解决。如有必要，更新[测试规范](/zh-cn/wiki/test-specification/)以反映测试过程中所做的任何更改。
-7. **测试摘要报告**：生成摘要报告，提供 [软件质量](/zh-cn/wiki/software-quality/) 的测试活动、覆盖范围、缺陷统计数据和总体评估的概述。
-
 ### 类型和技术
 
 #### 测试规范有哪些不同类型？

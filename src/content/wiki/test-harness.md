@@ -136,7 +136,7 @@ order: 0
 不同类型的测试工具可满足不同的测试需求：
 
 - **自定义测试工具**：根据特定应用要求量身定制，通常是内部构建的。
-- **[单元测试框架](/zh-cn/wiki/unit-test-framework/)** ：专为单元测试而设计，示例包括用于 Java 的 JUnit、用于 .NET 的 NUnit 和用于 Python 的单元测试。
+- **[单元测试框架](/zh-cn/wiki/unit-test-framework/)** ：专为单元测试而设计，示例包括用于 Java 的 JUnit、用于.NET 的 NUnit 和用于 Python 的单元测试。
 
 @测试
   公共无效测试方法（）{
@@ -157,20 +157,14 @@ order: 0
   }
   ```
 - **持续集成 (CI) 测试工具**：与 CI 管道（例如 Jenkins 或 Travis CI）集成，以在构建过程中自动化测试。
-- **模拟框架**：在测试环境中模拟组件，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
+- **模拟框架**：在测试环境中模拟组件，例如用于 Java 的 Mockito 或用于.NET 的 Moq。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 框架**：结合文档和测试用例定义，例如 Cucumber 或 SpecFlow。
 - **安全测试工具**：专注于识别安全漏洞，使用 OWASP ZAP 或 Burp Suite 等工具。
 - **[数据库](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
   每种线束类型都是根据所需的[测试覆盖率](/zh-cn/wiki/test-coverage/) 以及被测应用程序的具体方面来选择的。
 
 - **自定义测试工具**：根据特定应用要求量身定制，通常是内部构建的。
-- **[单元测试框架](/zh-cn/wiki/unit-test-framework/)** ：专为单元测试而设计，示例包括用于 Java 的 JUnit、用于 .NET 的 NUnit 和用于 Python 的单元测试。
-
-- **持续集成 (CI) 测试工具**：与 CI 管道（例如 Jenkins 或 Travis CI）集成，以在构建过程中自动化测试。
-- **模拟框架**：在测试环境中模拟组件，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 框架**：结合文档和测试用例定义，例如 Cucumber 或 SpecFlow。
-- **安全测试工具**：专注于识别安全漏洞，使用 OWASP ZAP 或 Burp Suite 等工具。
-- **[数据库](/zh-cn/wiki/database/) 测试工具**：验证数据库交互和数据完整性，可以使用 DBUnit 或 tSQLt 等工具。
+- **[单元测试框架](/zh-cn/wiki/unit-test-framework/)** ：专为单元测试而设计，示例包括用于 Java 的 JUnit、用于.NET 的 NUnit 和用于 Python 的单元测试。
 
 #### 单元测试中如何使用测试工具？
 
@@ -456,7 +450,7 @@ order: 0
 - **[NUnit](/zh-cn/wiki/nunit/)**
     和
     **x单位**
-    对于 .NET 框架，为 .NET 生态系统提供与 JUnit 类似的功能。
+    对于.NET 框架，为.NET 生态系统提供与 JUnit 类似的功能。
 
 - **pytest**
     Python 以其简单的语法和处理复杂测试场景的能力而闻名。
@@ -504,7 +498,7 @@ order: 0
 - **[NUnit](/zh-cn/wiki/nunit/)**
     和
     **x单位**
-    对于 .NET 框架，为 .NET 生态系统提供与 JUnit 类似的功能。
+    对于.NET 框架，为.NET 生态系统提供与 JUnit 类似的功能。
 
 - **pytest**
     Python 以其简单的语法和处理复杂测试场景的能力而闻名。

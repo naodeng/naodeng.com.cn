@@ -118,19 +118,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
   ```
 除其他功能外，这些功能使 [browserstack](/zh-cn/wiki/browserstack/) 成为用于 Web 和移动应用程序测试的多功能平台。
 
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** ：在一系列真实的浏览器和操作系统上进行测试，无需维护内部实验室。
-- **真实设备云**：访问大量真实移动设备，以获得更准确的测试结果。
-- **本地测试**：使用本地测试功能安全地测试开发和登台环境。
-- **并行测试**：同时运行多个测试以减少执行时间。
-- **集成**：与 Jenkins、Travis CI 和 CircleCI 等流行的 CI/CD 工具无缝集成。
-- **交互式测试**：在桌面和移动设备上手动测试和调试。
-- **自动屏幕截图和视频**：自动捕获测试的屏幕截图和视频以进行视觉回归和文档记录。
-- **地理位置测试**：模拟和测试基于地理位置的场景。
-- **响应测试**：评估不同设备上 Web 应用程序的响应能力。
-- **DevTools** ：用于在桌面浏览器上进行调试和分析的 Chrome DevTools。
-- **网络节流**：在不同网络条件下测试应用程序。
-- **企业功能**：SSO、优先级支持、团队管理和满足企业需求的使用情况分析。
-
 #### BrowserStack 如何提高软件测试质量？
 
 [browserstack](/zh-cn/wiki/browserstack/) 通过提供**对各种真实设备和浏览器的访问**来增强[软件测试](/zh-cn/wiki/software-testing/) 质量。这种多样性确保应用程序在密切反映最终用户环境的条件下进行测试，从而检测到在模拟器或有限设备上进行测试时可能会错过的**边缘情况问题**。
@@ -223,10 +210,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 7. **分析测试结果**并使用[browserstack](/zh-cn/wiki/browserstack/) 提供的详细报告调试问题。
   请记住保护您的[browserstack](/zh-cn/wiki/browserstack/) 访问凭据，并且不要公开共享它们。为了持续集成，请使用环境变量来存储您的[browserstack](/zh-cn/wiki/browserstack/) 用户名和访问密钥。与 Jenkins 等 CI 工具集成时，添加 [browserstack](/zh-cn/wiki/browserstack/) 插件或使用提供的 [API](/zh-cn/wiki/api/) 来触发测试作为构建过程的一部分。
 
-1. **注册** [browserstack](/zh-cn/wiki/browserstack/) 帐户（如果您尚未注册）。
-2. 登录后，导航至 **自动化** 部分以访问您的自动化仪表板。
-3. **配置您的[测试脚本](/zh-cn/wiki/test-script/)** 以连接到[browserstack](/zh-cn/wiki/browserstack/) 的远程服务器。您需要在测试代码中设置[browserstack](/zh-cn/wiki/browserstack/) 的 URL 和访问凭据。使用[browserstack](/zh-cn/wiki/browserstack/) 帐户中提供的用户名和访问密钥。
-
     ```
     const capabilities = {
       'browserName' : 'Chrome',
@@ -234,11 +217,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
       'browserstack.key' : 'YOUR_ACCESS_KEY'
     }
     ```
-
-4. **通过在测试功能中指定来选择测试所需的浏览器和操作系统**配置。
-5. **使用您首选的[测试运行者](/zh-cn/wiki/test-runner/) 运行您的[测试脚本](/zh-cn/wiki/test-script/)**。您的测试现在将在[browserstack](/zh-cn/wiki/browserstack/) 的远程浏览器/设备上执行。
-6. 通过[browserstack](/zh-cn/wiki/browserstack/) Automate 仪表板实时监控您的测试，您可以在其中查看测试进度、视频记录、日志和屏幕截图。
-7. **分析测试结果**并使用[browserstack](/zh-cn/wiki/browserstack/) 提供的详细报告调试问题。
 
 #### 在 BrowserStack 上执行测试的步骤是什么？
 
@@ -503,10 +481,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
       **用户名**
       。
 
-- 指定所需的功能，包括设备和操作系统版本。
-- 运行您的测试脚本。它将在 BrowserStack 云上执行。
-- 确保您准备好使用 Appium 或 Espresso 等框架的自动化脚本。
-- 配置您的测试脚本以使用提供的连接到 BrowserStack
       **访问密钥**
       和
       **用户名**
@@ -711,9 +685,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
       **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**
       为您首选的编程语言安装。
 
-- 安装必要的特定于语言的绑定。
-2. **配置您的[测试脚本](/zh-cn/wiki/test-script/)**：
-- 从 Selenium 导入 WebDriver 和
       `DesiredCapabilities`
       模块。
 
@@ -721,12 +692,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 - 从 Selenium 导入 WebDriver 和
       `DesiredCapabilities`
       模块。
-
-- 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
-3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
-- 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
-4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
-- 使用与本地浏览器测试相同的 Selenium 命令。
 
 #### BrowserStack 如何与 Jenkins 集成？
 
@@ -828,17 +793,6 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
     desiredCapabilities.setCapability("browserstack.user", browserstackUser);
     desiredCapabilities.setCapability("browserstack.key", browserstackKey);
     ```
-
-- **[Cypress](/zh-cn/wiki/cypress/)**：[browserstack](/zh-cn/wiki/browserstack/) 支持[Cypress](/zh-cn/wiki/cypress/) 测试，允许您跨多个浏览器和操作系统运行它们。
-- **TestCafe**：您可以在 [browserstack](/zh-cn/wiki/browserstack/) 上运行 TestCafe 脚本以利用其 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 功能。
-- **Espresso**：对于Android应用程序测试，可以在[browserstack](/zh-cn/wiki/browserstack/)的真实设备云上执行Espresso测试。
-- **XCTest**：同样，支持 iOS 应用程序的 XCTest 框架，可以在一系列 Apple 设备上进行测试。
-- **Puppeteer**：[browserstack](/zh-cn/wiki/browserstack/) 使用 Puppeteer 提供对无头浏览器测试的支持，这对于快速反馈非常有用。
-- **Playwright**：集成 Playwright 测试以在 [browserstack](/zh-cn/wiki/browserstack/) 上运行，以测试跨所有浏览器的现代 Web 应用程序。
-- **GitHub Actions**：通过将[browserstack](/zh-cn/wiki/browserstack/) 与 GitHub Actions 集成以实现持续测试，自动化您的工作流程。
-- **Bitbucket Pipelines**：在 [browserstack](/zh-cn/wiki/browserstack/) 中运行测试，作为 Bitbucket Pipelines CI/CD 流程的一部分。
-- **TeamCity**：与 TeamCity 集成，自动在您的构建中触发 [browserstack](/zh-cn/wiki/browserstack/) 测试。
-- **Visual Studio Team Services**：将 VSTS 管道与 [browserstack](/zh-cn/wiki/browserstack/) 连接，以在发布过程中运行自动化测试。
 
 ### 高级功能
 

@@ -1128,8 +1128,3 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 
 - **Docker：**
     将您的 Selenium 测试容器化以实现一致的执行环境。将 Docker 镜像用于 Selenium Grid 和浏览器。
-
-1. 将代码推送到版本控制系统（例如 Git）。
-2. Jenkins 检测更改，触发构建。
-3. Maven 编译代码并运行 Selenium 测试。
-4. 测试结果返回给Jenkins。

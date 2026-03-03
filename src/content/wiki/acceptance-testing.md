@@ -144,15 +144,6 @@ order: 0
         Then the user is redirected to the dashboard
     ```
 
-- **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：真实用户在模拟生产的环境中测试软件，以验证端到端业务流程。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：测试人员在没有预定义[测试用例](/zh-cn/wiki/test-case/) 的情况下探索软件，以发现意外行为或[bugs](/zh-cn/wiki/bug/)。
-- **[基于会话的测试](/zh-cn/wiki/session-based-testing/)**：具有特定重点或目标以及设定时间范围的结构化[探索性测试](/zh-cn/wiki/exploratory-testing/) 会议。
-- **基于清单的测试**：使用功能或要求列表作为指南，以确保所有功能都得到验证。
-- **Alpha/[Beta 测试](/zh-cn/wiki/beta-testing/)**：将软件发布给组织外部的有限受众（alpha）或实际用户（beta）以收集反馈。
-- **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：运行自动化测试以确认最近的更改不会对现有功能产生不利影响。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：评估系统在负载下的性能，以确保其满足速度和响应能力的验收标准。
-- **合规性测试**：验证软件是否符合行业标准、法规或合同协议。
-
 #### 您如何制定验收测试策略？
 
 制定 **[验收测试](/zh-cn/wiki/acceptance-testing/) 策略**涉及几个关键步骤：
@@ -168,17 +159,6 @@ order: 0
 9. **审查和调整**：与团队定期审查[测试策略](/zh-cn/wiki/test-strategy/)，以适应应用程序或业务优先级的变化。
 10. **利益相关者沟通**：通过清晰、简洁的报告和仪表板让利益相关者了解情况，深入了解测试进度和结果。
   通过执行这些步骤，您可以创建一个稳健的 [验收测试](/zh-cn/wiki/acceptance-testing/) 策略，该策略与业务目标保持一致并确保高质量的产品。
-
-1. **定义验收标准**：与利益相关者合作，为每个功能或用户故事建立清晰且可衡量的验收标准。
-2. **优先考虑[测试用例](/zh-cn/wiki/test-case/)**：确定关键业务流程并相应地优先考虑[测试用例](/zh-cn/wiki/test-case/)。关注用户体验和业务需求。
-3. **选择测试技术**：选择适当的测试技术，例如[BDD](/zh-cn/wiki/bdd/)（行为驱动开发）或示例规范以创建可理解且可执行的规范。
-4. **规划[测试数据](/zh-cn/wiki/test-data/) 管理**：考虑数据隐私和合规性要求，确保不同场景下相关[测试数据](/zh-cn/wiki/test-data/) 的可用性。
-5. **设计[测试环境](/zh-cn/wiki/test-environment/)**：建立一个稳定的[测试环境](/zh-cn/wiki/test-environment/)，尽可能模仿生产以发现特定于环境的问题。
-6. **明智地自动化**：自动回归和高[priority](/zh-cn/wiki/priority/) [测试用例](/zh-cn/wiki/test-case/) 以节省时间和资源。保留[手动测试](/zh-cn/wiki/manual-testing/) 用于探索性、可用性和临时场景。
-7. **与 CI/CD 集成**：将验收测试嵌入 CI/CD 管道中，以实现应用程序的早期和频繁验证。
-8. **监控和测量**：实施监控以跟踪[测试覆盖率](/zh-cn/wiki/test-coverage/)、通过/失败率和缺陷密度。使用这些指标来完善测试过程。
-9. **审查和调整**：与团队定期审查[测试策略](/zh-cn/wiki/test-strategy/)，以适应应用程序或业务优先级的变化。
-10. **利益相关者沟通**：通过清晰、简洁的报告和仪表板让利益相关者了解情况，深入了解测试进度和结果。
 
 #### 自动化在验收测试中的作用是什么？
 

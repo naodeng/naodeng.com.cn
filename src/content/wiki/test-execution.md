@@ -192,12 +192,6 @@ order: 0
 5. **报告**：为利益相关者生成详细报告。
   自动化测试通常使用 Jenkins、GitLab CI 或 GitHub Actions 等工具集成到 CI/CD 管道中，从而允许持续测试并立即反馈代码更改。 [测试执行](/zh-cn/wiki/test-execution/) 可以使用 Docker 等容器化工具和 Kubernetes 等编排平台在多个环境中并行和分布，以提高速度和可扩展性。
 
-1. **初始化[测试环境](/zh-cn/wiki/test-environment/)**：设置数据库、服务器和其他依赖项。
-2. **运行测试**：使用命令行界面（CLI）或集成开发环境（IDE）插件。
-3. **监控**：实时观察测试进度和性能。
-4. **分析结果**：解释通过/失败结果、日志和屏幕截图。
-5. **报告**：为利益相关者生成详细报告。
-
 ### 测试执行策略
 
 #### 一些常见的测试执行策略有哪些？它们通常在何时使用？
@@ -297,11 +291,6 @@ order: 0
     });
     ```
 
-- 利用 **[测试数据](/zh-cn/wiki/test-data/) 管理** 确保数据在 [测试执行](/zh-cn/wiki/test-execution/) 之前准备就绪并处于正确的状态。
-- **定期审查和维护** [测试套件](/zh-cn/wiki/test-suite/) 以删除过时或多余的测试，保持套件的精简和相关性。
-- 应用**[测试用例](/zh-cn/wiki/test-case/)分组**一起执行相关测试，可以优化[环境搭建](/zh-cn/wiki/setup/)和拆卸操作。
-- 使用**持续集成 (CI)** 工具在每次提交后自动触发测试运行，确保立即反馈。
-
     ```
     // Example of a CI configuration snippet for automated test execution
     jobs:
@@ -312,10 +301,6 @@ order: 0
 - name: Run tests
           run: npm test
     ```
-
-- **监控和分析**测试结果，以识别 [片状测试](/zh-cn/wiki/flaky-test/) 或频繁发生故障的区域，并解决根本问题。
-- 利用 **[测试环境](/zh-cn/wiki/test-environment/) 管理** 确保环境在需要时一致且可用。
-- **根据目标环境或配置自定义[测试执行](/zh-cn/wiki/test-execution/)**，使用标志或环境变量来控制测试流程。
 
 ### 挑战和解决方案
 

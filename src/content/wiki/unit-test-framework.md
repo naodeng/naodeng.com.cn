@@ -73,7 +73,7 @@ order: 0
   });
   ```
 框架还可以支持**测试发现**，根据命名约定或配置自动查找和运行测试，以及用于共享公共[测试数据](/zh-cn/wiki/test-data/)或状态的**测试装置**。
-  流行的 [单元测试框架](/zh-cn/wiki/unit-test-framework/) 包括用于 Java 的 **JUnit**、用于 .NET 的 **[NUnit](/zh-cn/wiki/nunit/)**、用于 Python 的 **unittest** 和用于 JavaScript 的 **[Jest](/zh-cn/wiki/jest/)**。每个框架都有自己的语法和功能，但它们都服务于相同的基本目的，即促进软件开发中的[单元测试](/zh-cn/wiki/unit-testing/)。
+  流行的 [单元测试框架](/zh-cn/wiki/unit-test-framework/) 包括用于 Java 的 **JUnit**、用于.NET 的 **[NUnit](/zh-cn/wiki/nunit/)**、用于 Python 的 **unittest** 和用于 JavaScript 的 **[Jest](/zh-cn/wiki/jest/)**。每个框架都有自己的语法和功能，但它们都服务于相同的基本目的，即促进软件开发中的[单元测试](/zh-cn/wiki/unit-testing/)。
 
 - **断言**
     验证测试结果，例如
@@ -170,7 +170,7 @@ order: 0
 
 要设置[单元测试框架](/zh-cn/wiki/unit-test-framework/)，请执行以下步骤：
 
-1. **选择适合您的语言和项目需求的框架**，例如用于 Java 的 JUnit、用于 .NET 的[NUnit](/zh-cn/wiki/nunit/) 或用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
+1. **选择适合您的语言和项目需求的框架**，例如用于 Java 的 JUnit、用于.NET 的[NUnit](/zh-cn/wiki/nunit/) 或用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
 2. **使用项目的依赖关系管理工具安装框架**。例如，在 [node.js](/zh-cn/wiki/node-js/) 项目中，您将运行：
 
     ```
@@ -200,16 +200,12 @@ order: 0
 
 7. **与您的构建工具集成**。通过在 `package.json` 或构建配置中添加脚本来自动化[测试执行](/zh-cn/wiki/test-execution/)，以在构建过程中运行测试。
 8. **将配置**和测试提交到您的版本控制系统，以与您的团队共享[环境搭建](/zh-cn/wiki/setup/)并确保跨开发环境的一致性。
-1. **选择适合您的语言和项目需求的框架**，例如用于 Java 的 JUnit、用于 .NET 的[NUnit](/zh-cn/wiki/nunit/) 或用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
+1. **选择适合您的语言和项目需求的框架**，例如用于 Java 的 JUnit、用于.NET 的[NUnit](/zh-cn/wiki/nunit/) 或用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
 2. **使用项目的依赖关系管理工具安装框架**。例如，在 [node.js](/zh-cn/wiki/node-js/) 项目中，您将运行：
 
     ```
     npm install --save-dev jest
     ```
-
-3. **如有必要，配置框架**。这可能涉及创建一个配置文件，您可以在其中指定测试目录、模拟设置和报告器等选项。对于[Jest](/zh-cn/wiki/jest/)，您可以创建一个`jest.config.js` 文件。
-4. **设置您的环境**。确保您的开发环境已准备好进行测试。这可能包括设置任何必要的 [数据库](/zh-cn/wiki/database/)、环境变量或您的测试所依赖的其他服务。
-5. **编写示例测试**来验证[环境搭建](/zh-cn/wiki/setup/)。按照框架的约定创建一个测试文件，例如`example.test.js`，并编写一个简单的[测试用例](/zh-cn/wiki/test-case/)：
 
     ```
     test('true should be true', () => {
@@ -311,9 +307,6 @@ order: 0
 8. 如果测试失败，请使用提供的**堆栈跟踪**和**错误消息**来**识别**并**修复**问题。
   请记住在必要时**重构**您的测试并保持它们**可维护**和**可读**。定期运行单元测试可确保您的代码库保持**稳定**和**无回归**。
 
-1. **在终端或命令提示符中导航**到您的项目目录。
-2. 确保[单元测试框架](/zh-cn/wiki/unit-test-framework/) 已正确**安装**并**配置**。
-3. 使用特定于您的框架的 **[测试运行者](/zh-cn/wiki/test-runner/)** 命令。例如，在使用 [Jest](/zh-cn/wiki/jest/) 的 JavaScript 项目中，您将运行：
     对于使用 [NUnit](/zh-cn/wiki/nunit/) 的 C# 项目，您可以使用：
 
     ```
@@ -465,12 +458,6 @@ order: 0
     }
     ```
 
-- **模拟和存根**：促进复杂依赖项或外部系统的模拟，从而实现单元的隔离测试。
-- **[测试套件](/zh-cn/wiki/test-suite/)** ：对多个测试用例进行分组，允许有组织的执行和报告。
-- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析**：测量代码库测试的程度，识别未经测试的路径。
-- **数据驱动测试**：支持CSV、XML或数据库等外部数据源作为输入，使测试更加灵活和可维护。
-- **异步测试**：提供测试异步执行代码的机制，确保回调和承诺的正确行为。
-- **测试挂钩**：提供设置（
     `@Before`
     /
     `@BeforeEach`
@@ -480,10 +467,6 @@ order: 0
     `@AfterEach`
     ）准备和清理测试环境的方法。
 
-- **自定义断言**：允许使用特定于域的断言扩展框架，提高可读性和表达能力。
-- **测试随机化**：随机化测试顺序以发现测试间依赖性并确保测试隔离。
-- **与 IDE 和构建工具集成**：支持与开发和 CI/CD 环境无缝集成，以实现自动化测试执行。
-- **标记/过滤**：标记测试以在某些测试运行中包含或排除它们，对于对测试进行分类很有用（例如，
     `@Tag("slow")`
     ）。
 
@@ -647,11 +630,6 @@ order: 0
     ```
     assertEquals(expectedValue, actualValue);
     ```
-
-5. **参数化测试** 如果您需要使用不同的输入运行相同的测试逻辑，请使用 JUnit 的 `@ParameterizedTest` 等功能。
-6. **将测试组织成类别或标签（如果框架支持的话），以将相关测试分组并一起运行。
-7. **自动化 [测试执行](/zh-cn/wiki/test-execution/)** 作为构建过程或 CI/CD 管道的一部分。使用 Maven、Gradle 或 Jenkins 等工具来触发测试。
-8. **查看框架生成的 [测试报告](/zh-cn/wiki/test-report/)** 以分析通过/失败状态和覆盖率指标。
 
 #### 使用单元测试框架时有哪些最佳实践？
 

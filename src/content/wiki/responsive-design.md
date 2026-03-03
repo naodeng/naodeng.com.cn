@@ -193,11 +193,6 @@ order: 0
 - **灵活布局**：使用相对单位（例如宽度百分比）而不是固定单位（例如像素），以允许元素根据视口大小进行缩放。
 - **灵活的图像和媒体**：确保图像和其他媒体内容缩放或更改尺寸以适应不同的屏幕分辨率，而不会损失质量或变得对于视口来说太大。
 
-- **断点**：定义网站内容和布局将调整以提供最佳用户体验的点。断点通常基于常见的设备大小。
-- **CSS Flexbox 和网格**：现代布局技术，在页面上的元素定位和对齐方面提供更大的灵活性和控制力。
-- **排版调整**：通过调整不同设备的大小、间距和行高，确保文本保持可读性和可访问性。
-- **触摸目标**：使按钮和链接等交互元素足够大，以便在触摸设备上轻松点击。
-
 #### 媒体查询在响应式设计中如何工作？
 
 媒体查询是一项 CSS 功能，用于根据设备或显示器的当前状态应用样式。它们使开发人员能够通过更改网站的布局和外观以适应不同的屏幕尺寸、分辨率和方向来创建 **[响应式设计](/zh-cn/wiki/responsive-design/)**。
@@ -325,13 +320,6 @@ order: 0
     ```
     driver.manage().window().setSize(new Dimension(1024, 768)); // Set window size for a tablet
     ```
-2. **浏览器开发人员工具**：现代浏览器提供[响应式设计](/zh-cn/wiki/responsive-design/)模式。在各个断点处手动检查元素和布局，以确保正确的缩放和功能。
-3. **仿真器和模拟器**：使用 IDE 中的设备仿真器或独立工具来模拟不同的设备并测试网站的响应能力。
-4. **真实设备测试**：通过对实际设备进行手动检查来补充自动化测试，涵盖一系列操作系统、屏幕尺寸和分辨率。
-5. **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：实施 Percy 或 Applitools 等工具来捕获屏幕截图并检测不同屏幕尺寸的视觉差异。
-6. **[性能测试](/zh-cn/wiki/performance-testing/)**：确保网站的性能在不同设备上保持一致，特别是在速度至关重要的移动设备上。
-7. **持续集成 (CI)**：将响应测试集成到 CI 管道中，以便尽早且频繁地发现问题。
-8. **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等平台来测试跨多个浏览器及其版本的响应能力。
 
 #### 可以使用哪些工具来测试响应式设计？
 
@@ -395,11 +383,6 @@ order: 0
     driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
     # Add assertions to validate responsive elements
     ```
-- **[browserstack](/zh-cn/wiki/browserstack/)**：为不同设备和操作系统上的实时互动[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)提供云平台。
-- **CrossBrowserTesting**：为[browserstack](/zh-cn/wiki/browserstack/)提供类似的云服务，可以访问[自动化测试](/zh-cn/wiki/automated-testing/)的各种浏览器和设备。
-- **Galaxy**：该工具允许您使用不同的浏览器和设备组合创建和管理 Docker 容器。
-- **响应式 [测试工具](/zh-cn/wiki/test-tool/)**：Chrome 扩展程序，用于在各种分辨率下快速 [手动测试](/zh-cn/wiki/manual-testing/) 或 [响应式设计](/zh-cn/wiki/responsive-design/)。
-- **Puppeteer**：用于控制无头 Chrome 或 Chromium 的 Node 库，对于自动化响应测试很有用。
 
     ```
     const puppeteer = require('puppeteer');
@@ -448,11 +431,6 @@ order: 0
       /* Styles for tablets and above */
     }
     ```
-3. **在真实设备上测试**：仿真器和模拟器并不总是准确地代表真实世界的使用情况。在物理设备上进行测试，以发现虚拟设备上可能不会出现的问题。
-4. **验证 HTML/CSS**：使用验证器确保您的代码遵循标准，这可以防止呈现问题。
-5. **检查 JavaScript 交互**：确保事件侦听器和操作在不同的屏幕尺寸下按预期工作。
-6. **[性能测试](/zh-cn/wiki/performance-testing/)**：检查响应式图像和资源是否过大，导致移动网络加载速度缓慢。
-7. **[自动化测试](/zh-cn/wiki/automated-testing/) 工具**：利用[selenium](/zh-cn/wiki/selenium/) 或 Puppeteer 等工具跨各种设备和视口自动进行测试。
 
 #### 如何确保网站在所有设备和浏览器上都能响应？
 
@@ -484,12 +462,6 @@ order: 0
     // Add responsive tests here
     driver.quit();
     ```
-- **设备模拟**：Chrome DevTools 等工具允许您模拟各种设备。自动执行这些模拟，以测试不同屏幕尺寸和分辨率下的响应能力。
-- **基于云的平台**：[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等服务提供对多种设备和浏览器的访问以进行全面测试。
-- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：实施 Percy 或 Applitools 等工具来自动检测不同设备和浏览器上的 UI 更改和问题。
-- **响应式测试框架**：利用专门为响应式测试设计的框架，例如 Galen 或 BackstopJS。
-- **持续集成 (CI)**：将响应测试集成到 CI 管道中，以确保持续的兼容性。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [lighthouse](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。
 
 #### 自动化在测试响应式设计中的作用是什么？
 

@@ -222,7 +222,7 @@ order: 0
 
 1. **确定要用模拟替换的依赖项**。这可以是外部服务、[数据库](/zh-cn/wiki/database/) 或您的系统与之交互的任何其他组件。
 2. **定义依赖的接口**或类。模拟是基于真实对象实现的相同接口创建的。
-3. **使用模拟框架**创建模拟对象的实例。流行的框架包括用于 Java 的 Mockito、用于 .NET 的 Moq 和用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
+3. **使用模拟框架**创建模拟对象的实例。流行的框架包括用于 Java 的 Mockito、用于.NET 的 Moq 和用于 JavaScript 的[Jest](/zh-cn/wiki/jest/)。
 
     ```
     MyDependency mockDependency = Mockito.mock(MyDependency.class);
@@ -245,7 +245,7 @@ order: 0
 8. **运行测试**并检查结果。如果测试失败，请调查并纠正被测系统的行为或根据需要更新模拟配置。
 1. **确定要用模拟替换的依赖项**。这可以是外部服务、[数据库](/zh-cn/wiki/database/) 或您的系统与之交互的任何其他组件。
 2. **定义依赖的接口**或类。模拟是基于真实对象实现的相同接口创建的。
-3. **使用模拟框架**创建模拟对象的实例。流行的框架包括用于 Java 的 Mockito、用于 .NET 的 Moq 和用于 JavaScript 的 [Jest](/zh-cn/wiki/jest/)。
+3. **使用模拟框架**创建模拟对象的实例。流行的框架包括用于 Java 的 Mockito、用于.NET 的 Moq 和用于 JavaScript 的 [Jest](/zh-cn/wiki/jest/)。
 
     ```
     MyDependency mockDependency = Mockito.mock(MyDependency.class);
@@ -256,10 +256,6 @@ order: 0
     ```
     Mockito.when(mockDependency.method()).thenReturn(value);
     ```
-
-5. **将模拟注入**到被测系统中，替换真正的依赖项。这可以通过构造函数注入、setter 注入或使用依赖注入框架来完成。
-6. **编写测试**来测试被测系统，该系统现在使用模拟对象。
-7. **验证与模拟的交互**，以确保被测系统行为正确。这可能包括检查方法是否使用正确的参数调用或调用了一定次数。
 
     ```
     Mockito.verify(mockDependency).method(expectedArgument);
@@ -377,7 +373,7 @@ order: 0
 要为 [数据库](/zh-cn/wiki/database/) 创建模拟测试，请按照以下步骤操作：
 
 1. **识别您的应用程序执行的需要测试的[数据库](/zh-cn/wiki/database/) 操作**。
-2. **选择与您的测试环境兼容的模拟框架**，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
+2. **选择与您的测试环境兼容的模拟框架**，例如用于 Java 的 Mockito 或用于.NET 的 Moq。
 3. **创建一个模拟[数据库](/zh-cn/wiki/database/) 接口**，代表实际的[数据库](/zh-cn/wiki/database/) 操作。此接口应模仿真实[数据库](/zh-cn/wiki/database/) 服务的行为。
 
     ```
@@ -410,7 +406,7 @@ order: 0
   通过将系统与真实的[数据库](/zh-cn/wiki/database/)隔离，您可以测试各种数据条件和错误情况，而无需依赖实际的[数据库](/zh-cn/wiki/database/)，从而实现更快、更可靠的测试。
 
 1. **识别您的应用程序执行的需要测试的[数据库](/zh-cn/wiki/database/) 操作**。
-2. **选择与您的测试环境兼容的模拟框架**，例如用于 Java 的 Mockito 或用于 .NET 的 Moq。
+2. **选择与您的测试环境兼容的模拟框架**，例如用于 Java 的 Mockito 或用于.NET 的 Moq。
 3. **创建一个模拟[数据库](/zh-cn/wiki/database/) 接口**，代表实际的[数据库](/zh-cn/wiki/database/) 操作。该接口应该模仿真实[数据库](/zh-cn/wiki/database/) 服务的行为。
 
     ```

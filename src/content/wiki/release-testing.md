@@ -92,19 +92,6 @@ order: 0
 - **Monitoring Tools**: Systems to monitor the application's performance and stability post-release.
 这些组件可确保彻底、高效的 [发布测试](/zh-cn/wiki/release-testing/) 流程，从而实现稳定、可靠的软件部署。
 
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：稳定且隔离的环境，可镜像生产以确保结果准确。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：用于全面测试场景的相关且足够的数据。
-- **[测试用例](/zh-cn/wiki/test-case/)** ：测试人员确定应用程序是否正常工作的一组条件。
-- **[测试计划](/zh-cn/wiki/test-plan/)** ：详细说明预期测试活动的范围、方法、资源和时间表的文档。
-- **回归测试**：验证新的更改不会对现有功能产生不利影响。
-- **冒烟测试**：一组快速测试，用于在进行更详细的测试之前检查应用程序的关键功能。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：确保应用程序在预期工作负载场景下良好运行。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：验证应用程序的安全功能并识别潜在的漏洞。
-- **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：与真实用户一起进行，以确保系统满足他们的要求。
-- **缺陷跟踪系统**：报告、跟踪和管理测试期间发现的缺陷的工具。
-- **发行说明**：包含有关发行版中的新功能、更改、错误修复和已知问题的信息的文档。
-- **签署**：正式协议，表明应用程序符合所需标准并已准备好投入生产。
-
 #### 发布测试与其他类型的测试有何不同？
 
 [发布测试](/zh-cn/wiki/release-testing/) 与其他类型的测试的不同之处主要在于其**范围**和**目标**。 [单元测试](/zh-cn/wiki/unit-testing/) 专注于各个组件，[集成测试](/zh-cn/wiki/integration-testing/) 确保这些组件协同工作，而[发布测试](/zh-cn/wiki/release-testing/) 则是软件交付给用户之前的**最终验证**。它包括对产品的功能、性能、安全性和可用性的全面评估，以确保其满足发布标准。
@@ -368,15 +355,6 @@ By following these steps, you can maintain a clear overview of the defect landsc
   ```
 这些工具有助于自动执行重复性任务，确保测试环境的一致性，管理[测试用例](/zh-cn/wiki/test-case/)和缺陷，并提供对代码质量和性能的见解。选择正确的工具取决于项目要求、技术堆栈和团队专业知识。
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化网络浏览器的开源工具。它支持多种语言和浏览器。
-- **Jenkins**：一种持续集成工具，可以编排和自动化发布测试工作流程。
-- **[jira](/zh-cn/wiki/jira/)** ：问题跟踪工具通常用于管理和跟踪发布测试期间发现的缺陷。
-- **TestRail**：用于组织测试用例、计划和运行的测试管理工具。
-- **Git**：版本控制系统，用于管理代码更改和团队成员之间的协作。
-- **Docker**：可用于创建一致的测试环境的容器化平台。
-- **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[Postman](/zh-cn/wiki/postman/)** ：API测试工具，对于后端发布测试至关重要。
-- **负载运行器**
     或
     **[JMeter](/zh-cn/wiki/jmeter/)** ：用于模拟用户负载和测量系统性能的性能测试工具。
 
@@ -576,9 +554,6 @@ By following these steps, you can maintain a clear overview of the defect landsc
     **强大的数据管理**
     测试数据的实践。
 
-- 根据风险和影响确定测试用例的优先级。
-- 为发布测试分配专用资源。
-- 雇用
     **自动化[回归测试](/zh-cn/wiki/regression-testing/)**
     。
 
@@ -635,12 +610,6 @@ By following these steps, you can maintain a clear overview of the defect landsc
 - **Train your team**: Keep the team updated on the latest testing tools and practices.
 - **Review and adapt**: Regularly review the testing process and adapt based on lessons learned.
 By implementing these strategies, you can reduce the impact of common challenges and improve the effectiveness of your release testing efforts.
-
-- **确定测试优先级**：根据风险和影响，首先关注关键领域。
-- **尽可能自动化**：使用自动化来处理重复、耗时的任务。
-- **维护[测试环境](/zh-cn/wiki/test-environment/)** ：确保它们尽可能地反映生产情况，以避免特定于环境的问题。
-- **使用版本控制**：将测试和相关工件保留在版本控制中，以便更好地协作和跟踪。
-- **实施持续集成**：在代码签入时自动运行测试以尽早发现问题。
 
 #### 在发布测试期间可能会发现哪些问题示例？
 

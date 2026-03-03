@@ -55,7 +55,7 @@ order: 0
 [白盒测试](/zh-cn/wiki/white-box-testing/)，也称为 Clear、Glass Box 或 [结构测试](/zh-cn/wiki/structural-testing/)，是一种测试人员可以**完全了解**软件内部工作原理的方法，包括代码结构、算法和逻辑。该方法涉及**直接测试**各个级别的源代码，例如语句、分支、路径和条件。
   测试人员编写[测试用例](/zh-cn/wiki/test-case/)，**在代码库中执行特定路径**，以确保所有路径没有错误并按预期运行。这需要**深入理解代码**，因为测试是基于代码语句、分支和路径的覆盖范围。
   在[白盒测试](/zh-cn/wiki/white-box-testing/)中，测试人员经常使用**调试**来单步执行代码并检查变量和数据结构。他们还使用**静态代码分析工具**来检查和评估代码而不执行代码，这可以帮助识别潜在的漏洞或需要改进的地方。
-  该过程通常使用专为 [单元测试](/zh-cn/wiki/unit-testing/) 设计的测试框架和工具（例如用于 Java 的 JUnit 或用于 .NET 的[NUnit](/zh-cn/wiki/nunit/)）实现**自动化**。这些工具允许测试人员编写和执行[测试用例](/zh-cn/wiki/test-case/)，然后报告[代码覆盖率](/zh-cn/wiki/code-coverage/) 和结果。
+  该过程通常使用专为 [单元测试](/zh-cn/wiki/unit-testing/) 设计的测试框架和工具（例如用于 Java 的 JUnit 或用于.NET 的[NUnit](/zh-cn/wiki/nunit/)）实现**自动化**。这些工具允许测试人员编写和执行[测试用例](/zh-cn/wiki/test-case/)，然后报告[代码覆盖率](/zh-cn/wiki/code-coverage/) 和结果。
   为了有效地执行[白盒测试](/zh-cn/wiki/white-box-testing/)，测试人员需要具备**编程技能**并对软件的实现有透彻的了解。他们必须能够解释代码并识别正确的输入，以实现完整的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 
   ```
@@ -322,14 +322,14 @@ order: 0
 
 - **[NUnit](/zh-cn/wiki/nunit/)**
     和
-    **xUnit** ：与 JUnit 类似，但适用于 .NET 框架。
+    **xUnit** ：与 JUnit 类似，但适用于.NET 框架。
 
 - **艾玛**
     和
     **JaCoCo** ：提供代码覆盖率指标的 Java 工具。
 
 - **gcov** ：与 GCC 一起使用的测试覆盖程序，用于分析 C/C++ 程序。
-- **Visual Studio [测试工具](/zh-cn/wiki/test-tool/)** ：这些工具集成在 Visual Studio 中，支持测试 .NET 应用程序。
+- **Visual Studio [测试工具](/zh-cn/wiki/test-tool/)** ：这些工具集成在 Visual Studio 中，支持测试.NET 应用程序。
 - **PyUnit**
     /
     **unittest** ：Python 的单元测试框架。
@@ -355,15 +355,12 @@ order: 0
 
 - **[NUnit](/zh-cn/wiki/nunit/)**
     和
-    **xUnit** ：与 JUnit 类似，但适用于 .NET 框架。
+    **xUnit** ：与 JUnit 类似，但适用于.NET 框架。
 
 - **艾玛**
     和
     **JaCoCo** ：提供代码覆盖率指标的 Java 工具。
 
-- **gcov** ：与 GCC 一起使用的测试覆盖程序，用于分析 C/C++ 程序。
-- **Visual Studio [测试工具](/zh-cn/wiki/test-tool/)** ：这些工具集成在 Visual Studio 中，支持测试 .NET 应用程序。
-- **PyUnit**
     /
     **unittest** ：Python 的单元测试框架。
 
@@ -372,10 +369,6 @@ order: 0
     和
     **[Jest](/zh-cn/wiki/jest/)** ：支持 Node.js 应用程序的 JavaScript 测试框架。
 
-- **Istanbul**：JavaScript 测试覆盖率工具。
-- **Coverity**：提供静态代码分析来识别 C、C++、Java 和其他语言中的缺陷。
-- **SonarQube**：检查代码质量并提供有关错误、漏洞和代码异味的报告。
-- **日食**
     和
     **IntelliJ IDEA** ：提供集成测试和调试工具的 IDE。
 
@@ -396,17 +389,6 @@ order: 0
 9. **审查代码**：根据测试结果执行代码审查，以识别潜在的改进或重构机会。
 10. **记录结果**：记录测试过程的结果，包括发现的任何缺陷和实现的覆盖范围。
   在整个过程中，可以利用持续集成来自动执行白盒测试，确保对代码更改的即时反馈。这种集成对于在整个开发生命周期中保持代码质量至关重要。
-
-1. **收集需求**：了解应用程序的功能、设计和实现细节。
-2. **设计[测试用例](/zh-cn/wiki/test-case/)** ：基于理解，设计覆盖所有可能路径的测试用例，包括循环、分支和单独的语句。
-3. **准备[测试环境](/zh-cn/wiki/test-environment/)** ：使用调试和代码分析工具设置一个与生产环境非常相似的环境。
-4. **编写[测试脚本](/zh-cn/wiki/test-script/)** ：使用能够评估代码库的适当工具和语言开发自动化测试脚本。
-5. **执行测试**：运行测试脚本，确保它们执行代码并验证逻辑、数据流和错误处理。
-6. **分析结果**：检查结果的通过/失败状态、代码覆盖率指标以及测试未执行的潜在代码区域。
-7. **优化测试**：修改测试以覆盖任何错过的路径或根据分析提高测试深度。
-8. **[回归测试](/zh-cn/wiki/regression-testing/)** ：在任何代码更改后重新运行测试，以确保新更改不会对现有功能产生不利影响。
-9. **审查代码**：根据测试结果执行代码审查，以识别潜在的改进或重构机会。
-10. **记录结果**：记录测试过程的结果，包括发现的任何缺陷和实现的覆盖范围。
 
 #### 有效的白盒测试需要哪些技能？
 
@@ -464,11 +446,6 @@ order: 0
     }
     ```
 
-- 创建**集成测试**来测试组件或系统之间的交互。 TestNG 或 xUnit 等工具可用于自动化这些测试。
-- 使用**代码分析工具**（例如 SonarQube 或 Coverity）自动扫描潜在问题，例如安全漏洞或代码异味。
-- 实施 **[测试覆盖率](/zh-cn/wiki/test-coverage/) 工具**，例如 JaCoCo 或 Istanbul，以确保测试覆盖足够数量的代码库，包括分支和路径。
-- 开发**自定义脚本**来测试特定的内部功能或模拟应用程序中的某些条件。
-
 ### 案例研究和场景
 
 #### 您能否提供一个白盒测试特别有效的场景示例？
@@ -515,13 +492,6 @@ order: 0
         return length * width;
     }
     ```
-
-2. **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元/模块之间的交互。例如，测试数据处理服务如何与[数据库](/zh-cn/wiki/database/) 交互。
-3. **[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析**：使用 Istanbul 或 JaCoCo 等工具来测量测试期间执行了多少代码，旨在获得高覆盖率。
-4. **静态代码分析**：SonarQube 或 ESLint 等工具分析代码而不执行代码，以发现潜在问题，例如安全漏洞或代码异味。
-5. **[安全测试](/zh-cn/wiki/security-testing/)**：渗透测试人员检查代码是否存在安全缺陷，例如 Web 应用程序身份验证模块中的 [SQL](/zh-cn/wiki/sql/) 注入漏洞。
-6. **[性能测试](/zh-cn/wiki/performance-testing/)**：分析工具用于分析代码的执行并识别瓶颈，例如大型数据集中的缓慢排序算法。
-7. **[突变测试](/zh-cn/wiki/mutation-testing/)**：代码被修改（突变）以检查现有测试是否可以检测到更改。这确保了[测试套件](/zh-cn/wiki/test-suite/) 的稳健性。
 
 #### 您将如何在微服务架构中应用白盒测试？
 

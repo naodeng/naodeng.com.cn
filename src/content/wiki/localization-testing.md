@@ -189,10 +189,6 @@ order: 0
 - **Collaborate with translators and localization experts** to understand the context and ensure that translations are accurate and appropriate.
 By combining these strategies, you can achieve a high level of thoroughness in your localization testing efforts, ensuring a quality experience for all users, regardless of their language or region.
 
-- **开发全面的[测试计划](/zh-cn/wiki/test-plan/)**，其中包括所有区域设置和特定于语言的场景。这不仅应涵盖文本翻译，还应涵盖文化差异、法律要求以及日期、货币和计量单位的特定地区格式。
-- **利用自动化**执行重复性任务，例如切换区域设置和捕获屏幕截图以进行视觉比较。使用参数化测试有效地覆盖多种语言。
-- **将 [本地化测试](/zh-cn/wiki/localization-testing/) 集成到您的 CI/CD 管道**以尽早且经常发现问题。作为常规测试过程的一部分，自动化测试应该针对本地化构建运行。
-
 #### 本地化测试常用哪些工具？
 
 [本地化测试](/zh-cn/wiki/localization-testing/) 中使用的常用工具包括：

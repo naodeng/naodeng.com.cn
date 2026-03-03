@@ -191,7 +191,7 @@ order: 0
 - **SimpleCov** ：对于Ruby，它提供了强大的配置集，并且可以生成HTML报告。
 - **gcov** ：GCC（GNU 编译器集合）附带的用于 C 和 C++ 语言的工具。
 - **OpenCover**：支持多种测试框架的.NET框架工具。
-- **dotCover** ：JetBrains 的 .NET 代码覆盖工具，与 ReSharper 和 Rider 集成。
+- **dotCover** ：JetBrains 的.NET 代码覆盖工具，与 ReSharper 和 Rider 集成。
 - **lcov** ：gcov 的图形前端，主要用于 C 和 C++。
 - **Codecov**：一种在线服务，可以处理许多覆盖率工具生成的报告，并与 GitHub、Bitbucket 和 GitLab 集成。
 - **Coveralls** ：与 Codecov 类似，它适用于多种编程语言，并与 GitHub 集成。
@@ -226,7 +226,7 @@ order: 0
   Sys.Desktop.Keys("Hello, World!");
   ```
 
-- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用于 Java 和 .NET 中的单元测试的框架。它们不是成熟的自动化工具，但对于测试驱动开发至关重要。
+- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用于 Java 和.NET 中的单元测试的框架。它们不是成熟的自动化工具，但对于测试驱动开发至关重要。
 
   ```
   assertEquals("Expected", actual);
@@ -253,7 +253,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript，更现代，设置更快。提供实时重新加载和自动等待。主要针对网络应用程序，重点是端到端测试。
 - **Appium**：用于移动应用程序测试的开源工具。支持iOS和Android平台。与Selenium类似，它使用WebDriver协议。
 - **TestComplete**：带有 GUI 界面的商业工具。支持桌面、移动和 Web 应用程序。由于记录和回放功能，所需的编码更少。
-- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用于 Java 和 .NET 中的单元测试的框架。它们不是成熟的自动化工具，但对于测试驱动开发至关重要。
+- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用于 Java 和.NET 中的单元测试的框架。它们不是成熟的自动化工具，但对于测试驱动开发至关重要。
 - **Robot Framework**：关键字驱动的工具，对于非程序员来说很容易学习。支持测试用例的表格数据并与 Selenium 集成。
 - **[Jest](/zh-cn/wiki/jest/)** ：JavaScript 测试框架，注重简单性。适合 React 应用程序中的单元和集成测试。
 
@@ -276,10 +276,6 @@ order: 0
 6. **根据覆盖阈值设置通知或失败条件**。这可以在 CI 系统或覆盖报告服务内完成。
 7. **自动化流程**在每个提交或拉取请求上运行，以确保一致地跟踪覆盖范围。
   通过执行这些步骤，[代码覆盖率](/zh-cn/wiki/code-coverage/) 数据将成为 CI 流程的一个组成部分，为 [测试套件](/zh-cn/wiki/test-suite/) 及其涵盖的代码的质量提供持续的反馈。
-
-1. **选择与您的技术堆栈和 CI 系统兼容的 [代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**。流行的选择包括用于 Java 的 JaCoCo、用于 JavaScript 的 Istanbul 和用于 Python 的 Coverage.py。
-2. **在您的项目中安装并配置该工具**。这通常涉及将该工具添加为依赖项并将其配置为监视正确的文件和目录。
-3. **更新您的[测试脚本](/zh-cn/wiki/test-script/)** 以包含[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具的命令。这确保每次运行测试时都会收集覆盖率数据。例如，在使用 Istanbul 的 JavaScript 项目中，您可以更新 `npm test` 脚本：
 
     ```
     "scripts": {
@@ -538,8 +534,3 @@ order: 0
 4. **[Bug](/zh-cn/wiki/bug/) 检测**：经过良好测试的代码库可以帮助维护人员快速识别和修复错误，因为测试可以查明代码中存在问题的区域。
   但是，需要注意的是，[代码覆盖率](/zh-cn/wiki/code-coverage/) 并不是灵丹妙药。盲目追求高覆盖率而不考虑测试质量可能会导致错误的安全感。测试应该是有意义的，并关注关键路径和逻辑，而不是简单地增加覆盖率指标。过度关注覆盖率还可能导致为琐碎的代码编写测试，这会增加维护开销，但没有多大好处。
   总之，虽然 [代码覆盖率](/zh-cn/wiki/code-coverage/) 可以成为测试彻底性的有用指标，并且可以帮助 [可维护性](/zh-cn/wiki/maintainability/)，但它应该与测试质量和相关性相平衡，以确保可维护的代码库。
-
-1. **重构信心**：通过一套全面的测试，开发人员可以充满信心地重构代码，因为他们知道测试可能会发现任何引入的错误。
-2. **文档**：测试可以作为文档的一种形式，显示代码的行为方式。这对于不熟悉代码的维护人员来说非常宝贵。
-3. **设计质量**：争取高代码覆盖率可以鼓励更好的软件设计，因为测试精心设计的模块化代码通常更容易。这可以使代码库更易于理解和维护。
-4. **[Bug](/zh-cn/wiki/bug/) 检测**：经过良好测试的代码库可以帮助维护人员快速识别和修复错误，因为测试可以查明代码中存在问题的区域。

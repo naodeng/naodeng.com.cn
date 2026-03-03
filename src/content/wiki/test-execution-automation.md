@@ -178,11 +178,6 @@ order: 0
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
   这些工具提供了跨不同平台和技术实现 [测试执行](/zh-cn/wiki/test-execution/) 自动化的各种功能。它们可以集成到 CI/CD 管道中并支持并行执行、报告和[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
-- **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
-- **TestComplete** ：一种商业工具，支持使用脚本或无脚本方法进行桌面、移动和 Web 应用程序测试。
-- **JUnit**
     和
     **TestNG**：Java 中的单元测试框架，通常与 Selenium 结合用于自动化。
 

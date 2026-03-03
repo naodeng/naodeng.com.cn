@@ -178,10 +178,6 @@ order: 0
             run: npm test
     ```
 
-5. **集成静态代码分析**：在将代码合并到主分支之前，合并 SonarQube 等工具来分析代码是否存在潜在问题。
-6. **促进协作**：使用结对编程和代码审查来培养以质量为中心的文化，其中测试是共同的责任。
-7. **监控和测量**：跟踪 [测试覆盖率](/zh-cn/wiki/test-coverage/) 和缺陷率等关键指标，以持续改进测试过程。
-
 #### 成功的左移测试有哪些策略？
 
 为了确保成功**[左移测试](/zh-cn/wiki/shift-left-testing/)**，请考虑以下策略：
@@ -204,11 +200,6 @@ order: 0
 - **Feedback Loops**: Establish short feedback loops to quickly identify and address defects, reducing the cost and effort of fixing bugs later in the cycle.
 - **Risk Analysis**: Conduct risk analysis to prioritize testing efforts on the most critical areas of the application.
 By focusing on these strategies, test automation engineers can enhance the effectiveness of shift-left testing, leading to higher quality software and more efficient development processes.
-
-- **尽早嵌入测试**：将测试集成到开发的初始阶段。鼓励开发人员编写单元测试并参与测试设计。
-- **协作**：培养开发人员和测试人员密切合作的协作环境。使用结对编程和联合设计会议来分享知识和责任。
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：采用 TDD 实践，在代码之前编写测试，确保代码从一开始就设计为通过测试。
-- **明智地自动化**：专注于在正确的级别自动执行正确的测试。优先考虑可以快速运行并提供快速反馈的单元和集成测试。
 
 #### 左移测试如何适应敏捷和 DevOps 方法？
 
@@ -354,13 +345,6 @@ By focusing on these strategies, test automation engineers can enhance the effec
       Then they are granted access
     ```
 
-- **结对编程**：开发人员一起工作，一个编写代码，另一个编写相应的测试，促进即时反馈和质量。
-- **代码审查**：定期审查代码的可测试性可以鼓励开发人员在周期的早期考虑进行测试。
-- **静态代码分析**：分析代码而不执行代码的工具可以在运行之前识别潜在问题。
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：利用 JUnit、NUnit 或 pytest 等框架来有效地创建和运行测试。
-- **模拟和服务虚拟化**：模拟尚未可用于测试的组件和服务。
-- **持续测试**：将自动化测试集成到 CI/CD 管道中，以便在每次构建时运行。
-
     ```
     pipeline {
       agent any
@@ -432,13 +416,6 @@ By focusing on these strategies, test automation engineers can enhance the effec
 - uses: actions/checkout@v2
 - name: Run tests
         run: npm test
-
-2. **自动化集成测试**：开发集成测试以验证组件之间的交互。这些应该在单元测试通过后触发。
-3. **自动化系统测试**：创建系统级自动化测试以验证完整且集成的软件产品。
-4. **嵌入 CI 管道**：配置 CI 管道以按顺序运行这些自动化测试 - 单元、集成，然后系统测试 - 以确保每个集成都经过验证。
-5. **通过测试结果控制部署**：使用测试结果作为 CD 过程中部署的门控。仅当通过所有自动化测试时才将构建提升到下一个环境。
-6. **快速反馈**：确保测试结果尽快报告给开发人员，以便立即采取行动。
-7. **持续细化**：定期审查和细化测试，以随着代码库的发展保持其有效性和相关性。
 
 #### 左移测试的最佳实践有哪些？
 

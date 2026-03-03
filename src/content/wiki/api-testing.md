@@ -434,17 +434,6 @@ SoapUI 从其他 [API 测试](/zh-cn/wiki/api-testing/) 工具中脱颖而出，
 10. **报告**：生成[测试报告](/zh-cn/wiki/test-report/)，总结测试活动，包括通过/失败的测试数量以及任何未发现的问题。
   每个步骤对于确保对 [API](/zh-cn/wiki/api/) 的功能、可靠性、性能和安全性进行彻底评估都至关重要。
 
-1. **定义[API 测试](/zh-cn/wiki/api-testing/)的范围**：识别需要测试的端点和操作（GET、POST、PUT、DELETE）。
-2. **了解[API](/zh-cn/wiki/api/) 要求**：查看[API](/zh-cn/wiki/api/) 文档以了解预期的请求格式、标头、有效负载和响应代码。
-3. **设置测试环境**：配置必要的参数，例如基本 URL、身份验证凭据和任何所需的初始数据[环境搭建](/zh-cn/wiki/setup/)。
-4. **创建[测试用例](/zh-cn/wiki/test-case/)**：开发涵盖功能、可靠性、性能和安全性等各个方面的[测试用例](/zh-cn/wiki/test-case/)。包括积极、消极和极端情况场景。
-5. **自动化[测试用例](/zh-cn/wiki/test-case/)**：使用[API 测试](/zh-cn/wiki/api-testing/)工具编写脚本来发送请求并验证响应。使用断言来检查正确的状态代码、响应时间和数据准确性。
-6. **执行测试**：针对[API](/zh-cn/wiki/api/) 运行自动[测试用例](/zh-cn/wiki/test-case/)。这可以手动完成，也可以作为 CI/CD 管道的一部分完成。
-7. **验证并记录结果**：分析测试结果是否存在任何差异。记录任何失败测试的缺陷并记录结果。
-8. **审查[测试覆盖率](/zh-cn/wiki/test-coverage/)**：确保[API](/zh-cn/wiki/api/) 的所有方面都经过测试，并根据需要更新[测试用例](/zh-cn/wiki/test-case/) 以提高覆盖范围。
-9. **监视和维护**：持续监视[API](/zh-cn/wiki/api/) 是否存在任何性能问题，并维护[测试用例](/zh-cn/wiki/test-case/) 以适应[API](/zh-cn/wiki/api/) 中的任何更改。
-10. **报告**：生成[测试报告](/zh-cn/wiki/test-report/)，总结测试活动，包括通过/失败的测试数量以及任何未发现的问题。
-
 #### 什么是 API 端点测试？
 
 [API](/zh-cn/wiki/api/) 端点测试是验证客户端和[API](/zh-cn/wiki/api/) 之间各个交互点的过程。它确保**端点**使用适当的输入参数正确响应各种 HTTP 方法，例如 GET、POST、PUT 和 DELETE。此类测试侧重于：

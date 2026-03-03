@@ -255,11 +255,6 @@ order: 0
 10. **分析结果**：在 [测试执行](/zh-cn/wiki/test-execution/) 之后，分析结果以识别特定于浏览器的问题。
   请记住保持您的[WebDriver](/zh-cn/wiki/webdriver/) 二进制文件更新并使用最新版本的浏览器进行准确测试。
 
-1. **设置[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您拥有要测试的每个浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，适用于 Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-2. **创建基础[测试类](/zh-cn/wiki/test-class/)**：此类应处理[环境搭建](/zh-cn/wiki/setup/) 和[WebDriver](/zh-cn/wiki/webdriver/) 实例的拆卸。分别对[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法使用`@Before` 和`@After` 注释。
-3. **参数化浏览器选择**：使用配置文件或环境变量指定测试运行的浏览器类型。您还可以使用返回浏览器配置的数据提供程序。
-4. **实例化[WebDriver](/zh-cn/wiki/webdriver/)**：根据选择的浏览器，实例化相应的[WebDriver](/zh-cn/wiki/webdriver/)。例如：
-
     ```
     if(browser.equals("chrome")) {
         WebDriver driver = new ChromeDriver();
@@ -552,17 +547,6 @@ order: 0
   }
   ```
 通过执行这些步骤，您可以确保 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 是软件交付过程中无缝且不可或缺的一部分。
-
-1. **选择与 CI/CD 系统集成的 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 工具**（例如 [selenium](/zh-cn/wiki/selenium/) Grid、[browserstack](/zh-cn/wiki/browserstack/)、Sauce Labs）。
-2. **配置 CI/CD 管道**以触发跨浏览器测试。使用 CI/CD 平台（如 Jenkins、CircleCI、GitLab CI 等）提供的插件或本机集成来连接测试工具。
-3. **在测试配置中定义浏览器矩阵**，指定要测试的浏览器和版本。
-4. **编写可并行测试**，以确保它们可以在不同浏览器上同时运行，从而减少总体 [测试执行](/zh-cn/wiki/test-execution/) 时间。
-5. **设置环境变量**来存储敏感数据，例如基于云的 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 服务的访问密钥。
-6. **在您的存储库中创建 CI/CD 管道可以执行的[测试脚本](/zh-cn/wiki/test-script/)**。该脚本应安装任何必要的依赖项，启动[测试运行者](/zh-cn/wiki/test-runner/)，并执行测试。
-7. **使用条件逻辑**来确定何时应运行跨浏览器测试，例如仅合并到主分支或按计划运行。
-8. **实施测试结果报告**来收集和显示跨浏览器测试的结果，从而轻松识别问题。
-9. **通过缓存依赖项并使用容器化来优化测试运行**，以确保 [测试环境](/zh-cn/wiki/test-environment/) 的一致性。
-10. **通过设置警报或中断构建来处理测试失败**，以防止部署有错误的代码。
 
 #### 随着移动设备的兴​​起，跨浏览器测试的未来是什么？
 

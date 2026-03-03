@@ -484,15 +484,6 @@ order: 0
   8. **监控**发布后的问题（如果适用），以确保修复在生产环境中有效。
   1. **记录**[bug](/zh-cn/wiki/bug/)，提供清晰简洁的详细信息，包括重现步骤、预期与[actual results](/zh-cn/wiki/actual-result/)，以及屏幕截图或视频（如果适用）。
 
-  - **Issue**: Login fails with correct credentials
-  - **Steps to Reproduce**:
-    1. Navigate to login page
-    2. Enter valid username and password
-    3. Click 'Login' button
-  - **Expected Result**: User is logged in and redirected to dashboard
-  - **Actual Result**: Error message 'Invalid credentials' is displayed
-  - **Attachments**: Screenshot of the error
-
 2. 根据问题的[severity](/zh-cn/wiki/severity/) 以及对应用程序功能的影响来**确定问题的优先级**。
   3. **在项目的问题跟踪系统（例如 [JIRA](/zh-cn/wiki/jira/) 或 GitHub 问题）中**记录** [bug](/zh-cn/wiki/bug/)，以便查看和跟踪。
   4. **将调查结果传达给相关利益相关者（包括开发人员和项目经理），以促进及时解决。

@@ -121,7 +121,20 @@ function removeAdjacentDuplicateLines(input, stats) {
   return out.join("\n");
 }
 
-function removeDuplicateBulletBlocks(input, stats) {
+function isListItemLine(line) {
+  return /^\s*(?:[-*]|\d+\.)\s+/.test(line);
+}
+
+function normalizeListItem(line) {
+  const trimmed = line.trim();
+  if (/^\d+\.\s+/.test(trimmed)) {
+    // Normalize ordered-list numbering so "1./2./3." blocks can be compared safely.
+    return trimmed.replace(/^\d+\.\s+/, "1. ");
+  }
+  return trimmed.replace(/^[-*]\s+/, "- ");
+}
+
+function removeDuplicateListBlocks(input, stats) {
   const lines = input.split(/\r?\n/);
   let inFence = false;
   const blocks = [];
@@ -133,15 +146,15 @@ function removeDuplicateBulletBlocks(input, stats) {
       i += 1;
       continue;
     }
-    if (inFence || !/^\s*[-*]\s+/.test(lines[i])) {
+    if (inFence || !isListItemLine(lines[i])) {
       i += 1;
       continue;
     }
 
     const start = i;
     const items = [];
-    while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
-      items.push(lines[i].trim());
+    while (i < lines.length && isListItemLine(lines[i])) {
+      items.push(normalizeListItem(lines[i]));
       i += 1;
     }
     const end = i - 1;
@@ -151,9 +164,14 @@ function removeDuplicateBulletBlocks(input, stats) {
   const removeLine = new Set();
   for (let b = 0; b < blocks.length - 1; b += 1) {
     const a = blocks[b];
-    const c = blocks[b + 1];
-    const gap = c.start - a.end;
-    if (a.items.length >= 3 && a.key === c.key && gap <= 25) {
+    if (a.items.length < 3) continue;
+
+    for (let cIdx = b + 1; cIdx < blocks.length; cIdx += 1) {
+      const c = blocks[cIdx];
+      const gap = c.start - a.end;
+      if (gap > 80) break;
+      if (a.key !== c.key) continue;
+
       for (let lineNo = c.start; lineNo <= c.end; lineNo += 1) removeLine.add(lineNo);
       stats.duplicateBulletBlocksRemoved += 1;
     }
@@ -189,7 +207,7 @@ function cleanContent(raw) {
   body = repairTocMarkers(body, stats);
   body = unwrapProseFences(body, stats);
   body = removeAdjacentDuplicateLines(body, stats);
-  body = removeDuplicateBulletBlocks(body, stats);
+  body = removeDuplicateListBlocks(body, stats);
   body = normalizeBlankLinesAndEOF(body, stats);
 
   return {

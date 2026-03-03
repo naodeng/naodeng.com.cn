@@ -273,14 +273,6 @@ order: 0
   ```
 最后，熟悉 [Jest](/zh-cn/wiki/jest/) 的 [API](/zh-cn/wiki/api/) 和生命周期方法将有助于有效地构建测试。
 
-- **[node.js](/zh-cn/wiki/node-js/)** ：Jest 是一个基于 Node 的工具，因此您的系统上必须安装最新版本的 Node.js。
-- **npm 或 Yarn** ：用于安装 Jest 并管理其依赖项的包管理器。
-- **JavaScript 知识**：熟悉 JavaScript（或 TypeScript）至关重要，因为 Jest 是为测试 JS 代码库而设计的。
-- **项目 [环境搭建](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
-- **理解测试概念**：了解单元测试、模拟和断言以编写有意义的测试。
-- **ES 模块支持**：如果使用 ES 模块，请确保兼容性或配置 Babel 进行转译。
-- **版本控制**：（可选）像 Git 这样的版本控制系统，用于跟踪测试中的更改以及代码。
-
 #### 如何设置基本的 Jest 测试环境？
 
 要设置基本的 [Jest](/zh-cn/wiki/jest/) 测试环境，请按照以下步骤操作：
@@ -346,10 +338,6 @@ order: 0
       "test": "jest"
     }
     ```
-
-4. **如果需要，配置[Jest](/zh-cn/wiki/jest/)**。对于大多数项目，[Jest](/zh-cn/wiki/jest/) 可以零配置开箱即用。但是，如果您需要自定义 [Jest](/zh-cn/wiki/jest/) 的行为，请创建 `jest.config.js` 文件或在 `package.json` 中添加 `jest` 密钥。
-5. **编写您的测试**。创建带有`.test.js` 或`.spec.js` 后缀的文件，或将它们放入`__tests__` 文件夹中。 [Jest](/zh-cn/wiki/jest/) 将自动查找这些文件。
-6. **使用`test` 或`it`** 定义您的[测试用例](/zh-cn/wiki/test-case/)：
 
     ```
     test('adds 1 + 2 to equal 3', () => {
@@ -463,9 +451,6 @@ order: 0
 - **expect** ：创建关于测试用例的预期结果的断言。
   测试可以嵌套在**描述**块中以进行进一步组织。 **beforeAll** 和 **afterAll** 钩子也可用于[环境搭建](/zh-cn/wiki/setup/)/teardown，这些钩子只能在描述块中的所有测试之前/之后发生一次。
 
-- **描述**：对多个测试进行分组；对于按功能或组件组织测试很有用。
-- **beforeEach/afterEach** ：在描述块中的每个测试之前/之后运行的安装/拆卸挂钩。
-- **it/test** ：定义单个测试用例；
     `it`
     是一个别名
     `test`

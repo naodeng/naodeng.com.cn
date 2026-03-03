@@ -201,28 +201,15 @@ order: 0
 - **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
 - **Cucumber** ：通过普通语言解析器支持行为驱动开发（BDD），允许用自然语言编写测试脚本。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **SpecFlow** ：用于 BDD 的 .NET 工具，使用 Gherkin 语言创建人类可读的测试。
+- **SpecFlow** ：用于 BDD 的.NET 工具，使用 Gherkin 语言创建人类可读的测试。
 - **HP UFT（以前称为 QTP）**：用于功能和回归测试的商业工具，具有用于测试自动化的可视化界面。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，专注于 API 测试。
 - **LoadRunner**：Micro Focus 的性能测试工具，可模拟用户活动以进行负载、压力和可扩展性测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：专为负载测试和测量性能而设计的开源工具。
   每个工具都有自己的优势，并根据项目的具体要求进行选择，例如被测应用程序的类型、涉及的编程语言以及首选的测试方法。
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具。它广泛用于 Web 应用程序测试。
-- **Appium**：用于移动应用程序测试的开源工具。它支持 iOS 和 Android 平台。
-- **JUnit**
     和
     **TestNG**：Java 中的单元测试框架。它们提供注释来识别测试方法和各种其他功能来组织测试。
-
-- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的现代端到端测试框架。
-- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
-- **Cucumber** ：通过普通语言解析器支持行为驱动开发（BDD），允许用自然语言编写测试脚本。
-- **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **SpecFlow** ：用于 BDD 的 .NET 工具，使用 Gherkin 语言创建人类可读的测试。
-- **HP UFT（以前称为 QTP）**：用于功能和回归测试的商业工具，具有用于测试自动化的可视化界面。
-- **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，专注于 API 测试。
-- **LoadRunner**：Micro Focus 的性能测试工具，可模拟用户活动以进行负载、压力和可扩展性测试。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：专为负载测试和测量性能而设计的开源工具。
 
 #### Selenium 和 QTP 有什么区别？
 
@@ -276,13 +263,6 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
   }
   ```
 从本质上讲，Jenkins 通过自动化来增强测试过程，从而确保持续评估 [软件质量](/zh-cn/wiki/software-quality/) 并及时检测和解决问题。
-
-- **自动化[测试执行](/zh-cn/wiki/test-execution/)** ：对代码更改自动运行测试以快速识别问题。
-- **并行化测试**：并行执行测试以减少测试套件运行所需的时间。
-- **管理[测试环境](/zh-cn/wiki/test-environment/)**：作为管道的一部分设置和拆除测试环境。
-- **与[测试工具](/zh-cn/wiki/test-tool/)**集成：使用插件与各种测试框架和工具连接。
-- **可视化测试结果**：生成报告和仪表板来分析测试结果。
-- **通知利益相关者**：向开发人员和团队发送有关测试结果的通知。
 
 ### 测试管理
 

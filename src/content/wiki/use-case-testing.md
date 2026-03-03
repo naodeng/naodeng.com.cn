@@ -452,12 +452,6 @@ order: 0
     });
     ```
 
-- 实施**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（例如 Cucumber），以自然语言表达复杂的场景，使它们更易于理解和维护。
-- **参数化**测试以在不同条件下运行相同的测试逻辑。这对于仅因使用的数据而不同的复杂场景特别有用。
-- 使用**模拟和存根**来模拟与不是测试重点的外部系统或组件的复杂交互。
-- 在测试设计中应用**模块化**，创建可重用的函数和对象，可以以不同的方式组合以覆盖复杂的场景。
-- **定期审查和重构**测试以简化和删除冗余，这可能会掩盖[用例](/zh-cn/wiki/use-case/)的潜在复杂性。
-
 #### 可以使用哪些工具来促进用例测试？
 
 有多种工具可以促进[用例测试](/zh-cn/wiki/use-case-testing/)，每种工具都有自己的优势：
@@ -480,7 +474,7 @@ order: 0
       Then User is redirected to the dashboard
     ```
 
-- **SpecFlow**：与 Cucumber 类似，但专为 .NET 应用程序量身定制，它还使用 [gherkin](/zh-cn/wiki/gherkin/) 来定义 [测试用例](/zh-cn/wiki/test-case/)。
+- **SpecFlow**：与 Cucumber 类似，但专为.NET 应用程序量身定制，它还使用 [gherkin](/zh-cn/wiki/gherkin/) 来定义 [测试用例](/zh-cn/wiki/test-case/)。
 - **HP UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：支持基于关键字和脚本的测试的商业工具。它适用于[API](/zh-cn/wiki/api/)、Web 和移动测试。
 - **TestComplete**：提供用于创建自动化测试的 GUI，并支持各种脚本语言，例如 JavaScript 和 Python。
 - **SoapUI**：专为[API 测试](/zh-cn/wiki/api-testing/)设计，也可用于验证[用例](/zh-cn/wiki/use-case/)的后端部分。
@@ -505,13 +499,6 @@ order: 0
       When User enters valid credentials
       Then User is redirected to the dashboard
     ```
-
-- **SpecFlow**：与 Cucumber 类似，但专为 .NET 应用程序量身定制，它还使用 [gherkin](/zh-cn/wiki/gherkin/) 来定义 [测试用例](/zh-cn/wiki/test-case/)。
-- **HP UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：支持基于关键字和脚本的测试的商业工具。它适用于[API](/zh-cn/wiki/api/)、Web 和移动测试。
-- **TestComplete**：提供用于创建自动化测试的 GUI，并支持各种脚本语言，例如 JavaScript 和 Python。
-- **SoapUI**：专为[API 测试](/zh-cn/wiki/api-testing/)设计，也可用于验证[用例](/zh-cn/wiki/use-case/)的后端部分。
-- **[jira](/zh-cn/wiki/jira/) Xray**：与[jira](/zh-cn/wiki/jira/) 集成并支持[BDD](/zh-cn/wiki/bdd/)，允许您将测试作为[jira](/zh-cn/wiki/jira/) 问题进行管理，并将它们直接链接到[用例](/zh-cn/wiki/use-case/)。
-- **[Postman](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
 
 #### 如何实现用例测试自动化？
 

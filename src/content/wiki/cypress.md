@@ -396,10 +396,6 @@ Cypress
     }
     ```
 
-6. **在 `cypress/integration` 目录中组织测试文件**。您可以创建子目录来对相关测试进行分组。
-7. **使用[Cypress](/zh-cn/wiki/cypress/) 提供的`describe` 和`it` 函数编写测试**，并使用`.spec.js` 或`.spec.ts` 扩展名保存它们。
-8. **运行测试** 使用 `npx cypress open` 打开 [Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/) 或 `npx cypress run` 在无头模式下执行测试。
-
 #### 如何针对特定环境配置 Cypress？
 
 要为特定环境配置[Cypress](/zh-cn/wiki/cypress/)，您需要设置环境变量并可能调整您的`cypress.json` 配置文件。这是一个简洁的指南：
@@ -1287,12 +1283,6 @@ Cypress
 10. **重试能力**：了解 [Cypress](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
   通过结合这些工具和技术，您可以有效地调试 [Cypress](/zh-cn/wiki/cypress/) 测试并更快地解决问题。
 
-1. **使用[Cypress](/zh-cn/wiki/cypress/) [测试运行者](/zh-cn/wiki/test-runner/)**：它提供[测试执行](/zh-cn/wiki/test-execution/) 的视觉表示。您可以在命令运行时查看命令，并在每个步骤检查应用程序的状态。
-2. **时间旅行**：[Cypress](/zh-cn/wiki/cypress/) 在测试运行时拍摄快照。将鼠标悬停在命令日志中的命令上可准确查看每个步骤发生的情况。
-3. **实时重新加载**：只要您对测试进行更改，[Cypress](/zh-cn/wiki/cypress/)就会自动重新加载。您可以立即看到测试结果。
-4. **控制台输出**：检查浏览器的开发者控制台的日志。 [Cypress](/zh-cn/wiki/cypress/) 命令在此处记录附加信息，这对于调试很有用。
-5. **`.debug()` 命令**：将 `.debug()` 插入命令链以检查此时 DOM 的状态。它将导致浏览器的调试器启动。
-
     ```
     cy.get('.selector').debug().should('have.text', 'expected text');
     ```
@@ -1304,11 +1294,6 @@ Cypress
       debugger; // Execution will pause here
     });
     ```
-
-7. **网络请求**：检查 [测试运行者](/zh-cn/wiki/test-runner/) 的命令日志中的网络请求，以确保 [API](/zh-cn/wiki/api/) 调用按预期进行且数据正确。
-8. **错误消息**：仔细阅读错误消息。 [Cypress](/zh-cn/wiki/cypress/) 提供描述性错误消息，可以指导您找到问题的根源。
-9. **[Cypress](/zh-cn/wiki/cypress/) 日志**：通过设置`Cypress.config('log', true)` 启用详细日志记录，以获取有关[测试执行](/zh-cn/wiki/test-execution/) 的更多详细信息。
-10. **重试能力**：了解 [Cypress](/zh-cn/wiki/cypress/) 命令会自动重试，直到成功或超时。如果测试因应用程序准备就绪之前运行断言而失败，请考虑为中间状态添加等待或断言。
 
 #### 如何处理 Cypress 中的常见错误？
 
@@ -1445,7 +1430,3 @@ Cypress
     ```
     cy.request('POST', '/login', { username: 'user', password: 'pass' });
     ```
-
-- **缓存资源**：缓存测试之间不经常更改的数据，以避免重新加载。
-- **优化选择器**：使用高效的选择器来减少 [Cypress](/zh-cn/wiki/cypress/) 查询 DOM 所花费的时间。
-- **批量操作**：对可以一起执行的操作或命令进行分组，以最大程度地减少可生成的 [Cypress](/zh-cn/wiki/cypress/) 命令的数量。

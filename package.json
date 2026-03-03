@@ -22,6 +22,8 @@
     "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",
     "wiki:clean:check": "node scripts/wiki-markdown-cleaner.mjs --check",
     "wiki:clean": "node scripts/wiki-markdown-cleaner.mjs --write",
+    "wiki:style:check": "node scripts/wiki-markdown-style-check.mjs",
+    "wiki:style:fix": "node scripts/wiki-markdown-style-fix.mjs",
     "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {
@@ -35,7 +37,7 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "algoliasearch": "^5.47.0",
-    "astro": "^5.17.0",
+    "astro": "^5.18.0",
     "marked": "^15.0.7",
     "typescript": "^5.9.3"
   }

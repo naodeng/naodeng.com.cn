@@ -271,11 +271,6 @@ order: 0
     }
     ```
 
-- **数据复制**：从生产环境克隆现有数据，通常是匿名的以保护敏感信息。这可以提供真实的数据场景。
-- **合成数据生成**：创建生产中不存在的数据，但旨在模仿现实世界的场景和数据分布。
-- **数据子集**：从较大的数据集中选择真实数据的代表性子集，确保测试覆盖广泛的场景，而不会产生完整数据集的开销。
-- **组合方法**：使用上述方法的混合来生成[测试数据](/zh-cn/wiki/test-data/)，它既多样化又代表现实世界的[用例](/zh-cn/wiki/use-case/)。
-
 #### 有哪些工具可用于生成测试数据？
 
 **[测试数据](/zh-cn/wiki/test-data/) 生成**可使用多种工具来支持自动化测试：
@@ -290,7 +285,7 @@ order: 0
 
 - **Mockaroo**：基于 Web 的工具，允许您创建具有各种字段类型和格式的自定义 [测试数据](/zh-cn/wiki/test-data/) 集，可以以多种格式下载，例如 CSV、JSON、[SQL](/zh-cn/wiki/sql/) 和 Excel。
 - **GenerateData**：一种开源工具，提供基于 Web 的界面，用于创建各种格式的大量自定义数据以用于测试目的。
-- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [数据库](/zh-cn/wiki/database/)。
+- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的.NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [数据库](/zh-cn/wiki/database/)。
 - **JFairy**：一个 Java 库，可生成姓名、地址和电话号码等虚假数据。它对于需要类似于现实世界实体的数据的应用程序非常有用。
 - **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[数据库](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
 - **DataFactory**：一个 Java 库，可用于生成用于测试的各种数据类型，例如姓名、地址和电话号码。
@@ -304,14 +299,6 @@ order: 0
     fake = Faker()
     print(fake.name())
     ```
-
-- **Mockaroo**：基于 Web 的工具，允许您创建具有各种字段类型和格式的自定义 [测试数据](/zh-cn/wiki/test-data/) 集，可以以多种格式下载，例如 CSV、JSON、[SQL](/zh-cn/wiki/sql/) 和 Excel。
-- **GenerateData**：一种开源工具，提供基于 Web 的界面，用于创建各种格式的大量自定义数据以用于测试目的。
-- **TestDataGenerator**：用于生成 [测试数据](/zh-cn/wiki/test-data/) 的 .NET 库，它可以轻松集成到单元测试中，或用于用实际的 [测试数据](/zh-cn/wiki/test-data/) 填充 [数据库](/zh-cn/wiki/database/)。
-- **JFairy**：一个 Java 库，可生成姓名、地址和电话号码等虚假数据。它对于需要类似于现实世界实体的数据的应用程序非常有用。
-- **[SQL](/zh-cn/wiki/sql/) 数据生成器**：Redgate 的一款工具，可为[SQL](/zh-cn/wiki/sql/) 服务器[数据库](/zh-cn/wiki/database/) 生成真实的[测试数据](/zh-cn/wiki/test-data/)，允许您自定义数据生成规则。
-- **DataFactory**：一个 Java 库，可用于生成用于测试的各种数据类型，例如姓名、地址和电话号码。
-- **DBSchema**：该工具不仅可以设计[数据库](/zh-cn/wiki/database/) 模式，还可以生成[测试数据](/zh-cn/wiki/test-data/)，您可以根据需要进行自定义。
 
 #### 如何保证生成的测试数据的质量？
 

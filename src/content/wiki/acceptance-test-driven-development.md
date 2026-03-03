@@ -243,7 +243,7 @@ ATDD 通过从一开始就将开发活动与指定的验收标准相结合来集
 ATDD 的常用工具包括：
 
 - **Cucumber** ：利用 Gherkin 语言编写测试，实现技术和非技术利益相关者之间的协作。
-- **SpecFlow** ：与 Cucumber 类似，但针对 .NET 框架量身定制，它还使用 Gherkin 进行测试规范。
+- **SpecFlow** ：与 Cucumber 类似，但针对.NET 框架量身定制，它还使用 Gherkin 进行测试规范。
 - **FitNesse** ：将 wiki 文档与自动化测试框架相结合，允许以表格形式编写测试。
 - **Robot Framework**：关键字驱动的测试自动化框架，具有高度可扩展性并支持测试用例的表格数据。
 - **Concordion** ：与 JUnit 集成并允许在 HTML 中编写规范，可以链接到 Java 代码进行测试。

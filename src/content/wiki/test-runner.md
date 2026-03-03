@@ -171,7 +171,7 @@ order: 0
     });
     ```
 
-- **[NUnit](/zh-cn/wiki/nunit/)**：适用于 .NET 的 [测试运行者](/zh-cn/wiki/test-runner/)，具有丰富的测试功能，类似于 JUnit，但适用于 .NET 生态系统。
+- **[NUnit](/zh-cn/wiki/nunit/)**：适用于.NET 的 [测试运行者](/zh-cn/wiki/test-runner/)，具有丰富的测试功能，类似于 JUnit，但适用于.NET 生态系统。
 
     ```
     [TestFixture]
@@ -234,7 +234,7 @@ order: 0
     });
     ```
 
-- **[NUnit](/zh-cn/wiki/nunit/)**：适用于 .NET 的 [测试运行者](/zh-cn/wiki/test-runner/)，具有丰富的测试功能，类似于 JUnit，但适用于 .NET 生态系统。
+- **[NUnit](/zh-cn/wiki/nunit/)**：适用于.NET 的 [测试运行者](/zh-cn/wiki/test-runner/)，具有丰富的测试功能，类似于 JUnit，但适用于.NET 生态系统。
 
     ```
     [TestFixture]
@@ -544,21 +544,11 @@ order: 0
     npm install <test-runner-name>
     ```
 
-3. **配置[测试运行者](/zh-cn/wiki/test-runner/)**：设置配置文件以定义[测试套件](/zh-cn/wiki/test-suite/)、测试路径和其他选项。这可能涉及根据 [测试运行者](/zh-cn/wiki/test-runner/) 创建 `.json`、`.yml` 或 `.js` 文件。
-4. **更新[测试脚本](/zh-cn/wiki/test-script/)**：修改[测试脚本](/zh-cn/wiki/test-script/) 以遵守[测试运行者](/zh-cn/wiki/test-runner/) 所期望的约定。这可能涉及更改构建测试的方式或使用的语法。
-5. **与构建工具集成**：如果使用 **Webpack** 或 **Grunt** 等构建工具，请更新构建脚本以包含 [测试运行者](/zh-cn/wiki/test-runner/) 任务。
-6. **设置报告**：配置报告以生成所需格式的测试结果（例如，JUnit XML、HTML）。
-7. **持续集成 (CI)**：更新 CI 管道脚本以调用[测试运行者](/zh-cn/wiki/test-runner/)。例如：
-
     ```
 - run:
         name: Run Tests
         command: <test-runner-command>
     ```
-
-8. **本地运行测试**：通过在本地运行测试来测试集成，以确保所有内容都配置正确。
-9. **文档**：更新项目的文档以包含有关如何运行新[测试运行者](/zh-cn/wiki/test-runner/) 的说明。
-10. **培训**：如有必要，请为您的团队提供培训或资源，以使他们熟悉新的[测试运行者](/zh-cn/wiki/test-runner/)。
 
 #### 选择测试运行程序时有哪些兼容性注意事项？
 

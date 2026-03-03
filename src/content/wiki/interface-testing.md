@@ -571,11 +571,3 @@ order: 0
     ```
     DDR = (Defects Detected in Interface Testing / Total Defects Detected) * 100
     ```
-
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：确保覆盖所有接口路径和场景。可以使用工具来跟踪覆盖率指标。
-- **缺陷逃逸率**：监控[接口测试](/zh-cn/wiki/interface-testing/)期间遗漏但在后期阶段或最终用户发现的问题数量。较低的比率表明测试更有效。
-- **[测试执行](/zh-cn/wiki/test-execution/) Time**：分析执行接口测试所需的时间。在不影响质量的情况下减少执行时间可以表明效率的提高。
-- **自动测试通过率**：跟踪每次运行通过的自动化测试的百分比。持续的高通过率表明接口稳定。
-- **平均检测时间 (MTTD)**：测量 [接口测试](/zh-cn/wiki/interface-testing/) 期间检测问题所需的平均时间。更短的时间可以表明测试设计和执行有效。
-- **利益相关者的反馈**：从开发人员、测试人员和用户那里收集有关测试后界面的可用性和可靠性的定性反馈。
-- **测试工件的可重用性**：评估[测试用例](/zh-cn/wiki/test-case/)、数据和工具可以重用于其他测试的频率，这可以是精心设计的[测试自动化](/zh-cn/wiki/test-automation/) 的标志。

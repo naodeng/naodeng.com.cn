@@ -21,6 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Wiki style check (warning mode)
+        run: npm run wiki:style:check
+        continue-on-error: true
+
+      - name: Wiki style check (strict gate)
+        if: ${{ vars.WIKI_STYLE_STRICT == 'true' }}
+        run: npm run wiki:style:check
+
       - name: Build
         run: npm run build
 

@@ -214,8 +214,8 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
     或
     **JUnit**：与 Java 一起使用的框架，用于创建和管理测试套件，包括测试的分组和排序。
 
-- **Cucumber** ：支持行为驱动开发 (BDD)，并且与 Ruby、Java 和 .NET 等语言配合良好。
-- **SpecFlow** ：与 Cucumber 类似，但专为 .NET 定制。
+- **Cucumber** ：支持行为驱动开发 (BDD)，并且与 Ruby、Java 和.NET 等语言配合良好。
+- **SpecFlow** ：与 Cucumber 类似，但专为.NET 定制。
 - **pytest**：一个用 Python 编写和组织测试的强大工具，具有丰富的插件架构。
 - **HP UFT（以前称为 QTP）**：支持基于关键字和脚本的测试的商业工具。
 - **TestComplete** ：SmartBear 的商业工具，支持桌面、移动和 Web 测试。
@@ -232,18 +232,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
     或
     **JUnit**：与 Java 一起使用的框架，用于创建和管理测试套件，包括测试的分组和排序。
 
-- **Cucumber** ：支持行为驱动开发 (BDD)，并且与 Ruby、Java 和 .NET 等语言配合良好。
-- **SpecFlow** ：与 Cucumber 类似，但专为 .NET 定制。
-- **pytest**：一个用 Python 编写和组织测试的强大工具，具有丰富的插件架构。
-- **HP UFT（以前称为 QTP）**：支持基于关键字和脚本的测试的商业工具。
-- **TestComplete** ：SmartBear 的商业工具，支持桌面、移动和 Web 测试。
-- **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
-- **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 测试，允许您创建和管理 API 请求和响应作为测试套件的一部分。
-- **SoapUI**：另一个用于 Web 服务和 API 测试的工具，支持 SOAP 和 REST。
-- **Jenkins**：一种集成工具，可以作为 CI/CD 管道的一部分管理和运行测试套件。
-- **Git**：版本控制对于管理测试脚本和套件至关重要，尤其是在与团队协作时。
-
 #### 如何更新或修改测试套件？
 
 更新或修改 **[测试套件](/zh-cn/wiki/test-suite/)** 涉及多个步骤，以确保其在验证软件的功能和性能方面保持相关性和有效性。这是一个简洁的指南：
@@ -257,15 +245,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 7. **同行评审**：让同行评审更新后的[测试套件](/zh-cn/wiki/test-suite/)，以发现潜在问题并确保遵守最佳实践。
 8. **持续集成**：将 [测试套件](/zh-cn/wiki/test-suite/) 集成到 CI/CD 管道中，以便对代码库的每次更改自动运行测试，确保立即反馈更改的影响。
   请记住通过完整执行来验证更新的[测试套件](/zh-cn/wiki/test-suite/)，以确认所有测试都通过并且修改没有引入任何新问题。
-
-1. **审查当前测试**：检查现有[测试用例](/zh-cn/wiki/test-case/) 的相关性、准确性和有效性。删除或修改不再符合当前软件功能或要求的测试。
-2. **合并更改**：添加新的[测试用例](/zh-cn/wiki/test-case/) 以涵盖更新的功能、[bug](/zh-cn/wiki/bug/) 修复或新要求。确保这些新增内容有详细记录并符合与现有测试相同的标准。
-3. **重构**：提高测试代码的结构和可读性。这可能涉及为了清晰起见而重命名测试、通过抽象减少重复或改进断言以获得更好的测试输出。
-4. **优化**：分析[测试执行](/zh-cn/wiki/test-execution/)次数和资源使用情况。进行调整以提高效率，例如尽可能并行化测试或模拟外部依赖项。
-5. **更新文档**：确保对[测试套件](/zh-cn/wiki/test-suite/) 的所有更改都反映在相关文档中，包括[测试用例](/zh-cn/wiki/test-case/) 描述和任何修改的理由。
-6. **版本控制**：使用版本控制系统跟踪[测试套件](/zh-cn/wiki/test-suite/) 的更改。这允许在必要时轻松回滚并提供修改历史记录。
-7. **同行评审**：让同行评审更新后的[测试套件](/zh-cn/wiki/test-suite/)，以发现潜在问题并确保遵守最佳实践。
-8. **持续集成**：将 [测试套件](/zh-cn/wiki/test-suite/) 集成到 CI/CD 管道中，以便对代码库的每次更改自动运行测试，确保立即反馈更改的影响。
 
 ### 执行和结果
 
@@ -289,20 +268,9 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 9. **根据反馈采取行动**：利用从[测试套件](/zh-cn/wiki/test-suite/) 执行中获得的见解，就修复[bugs](/zh-cn/wiki/bug/)、改进[测试用例](/zh-cn/wiki/test-case/) 或更新软件做出明智的决策。
   请记住配置 [测试运行者](/zh-cn/wiki/test-runner/) 来处理超时、重试和清理操作，以保持稳健的执行过程。
 
-1. **选择[测试套件](/zh-cn/wiki/test-suite/)**：识别要运行的[测试套件](/zh-cn/wiki/test-suite/)，应配置所有必要的测试。
-2. **设置环境**：确保[测试环境](/zh-cn/wiki/test-environment/) 准备有正确的配置、数据和资源。
-3. **调用[测试运行者](/zh-cn/wiki/test-runner/)**：使用与您的测试框架兼容的[测试运行者](/zh-cn/wiki/test-runner/)工具来启动执行。这可以是命令行工具、IDE 的内置功能或持续集成服务器。
-
     ```
     test-runner --suite "path/to/test-suite"
     ```
-
-4. **执行测试**：[测试运行者](/zh-cn/wiki/test-runner/) 将顺序或并行（基于配置）执行 [测试套件](/zh-cn/wiki/test-suite/) 中的每个 [测试用例](/zh-cn/wiki/test-case/)，报告每个的通过/失败状态。
-5. **监控执行**：密切关注执行过程，留意任何可能需要立即注意的意外行为或错误。
-6. **收集结果**：完成后，[测试运行者](/zh-cn/wiki/test-runner/) 将生成一份报告，详细说明所有 [测试用例](/zh-cn/wiki/test-case/) 的结果，包括任何失败或错误。
-7. **分析故障**：调查任何失败的测试以确定故障原因，这可能是软件中的缺陷或 [测试用例](/zh-cn/wiki/test-case/) 本身的问题。
-8. **报告**：通常通过 [测试管理](/zh-cn/wiki/test-management/) 工具或作为持续集成管道的一部分与团队共享结果。
-9. **根据反馈采取行动**：利用从[测试套件](/zh-cn/wiki/test-suite/) 执行中获得的见解，就修复[bugs](/zh-cn/wiki/bug/)、改进[测试用例](/zh-cn/wiki/test-case/) 或更新软件做出明智的决策。
 
 #### 如果测试套件中的测试失败会发生什么？
 
@@ -537,15 +505,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
       test('Test 2', async () => { /* ... */ });
     });
     ```
-
-- **测试选择**：实施智能测试选择或测试 [影响分析](/zh-cn/wiki/impact-analysis/) 以仅运行受最近代码更改影响的测试。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：使用数据池和数据缓存策略来最大限度地减少数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸时间。
-- **异步操作**：如果可能，请使用非阻塞操作以避免 [测试执行](/zh-cn/wiki/test-execution/) 期间的空闲时间。
-- **优化[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：保持[环境搭建](/zh-cn/wiki/setup/) 和拆卸操作精简，以防止不必要的延迟。
-- **代码质量**：确保测试代码干净、结构良好且无冗余，以促进更快的执行和更轻松的维护。
-- **持续集成**：将 [测试套件](/zh-cn/wiki/test-suite/) 集成到 CI/CD 管道中，以便尽早发现问题并减少反馈时间。
-- **监控和分析**：定期分析[测试套件](/zh-cn/wiki/test-suite/) 以识别并消除性能瓶颈。
-- **定期维护**：定期审查和重构[测试套件](/zh-cn/wiki/test-suite/)以删除过时的测试并确保相关性和效率。
 
 #### 创建测试套件时要避免哪些常见错误？
 

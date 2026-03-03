@@ -177,10 +177,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   ```
 确保您的 [test environment](/zh-cn/wiki/test-environment/) 已正确配置为将 Chai 与您选择的 [test runner](/zh-cn/wiki/test-runner/) 和断言样式（`expect`、`should` 或 `assert`）结合使用。
 
-- **[Node.js](/zh-cn/wiki/node-js/)** ：Chai 是一个 Node.js 库，因此您需要在系统上安装 Node.js。该版本应与您计划使用的 Chai 版本兼容。
-  - **NPM 或 Yarn** ：这些是处理 Chai 及其依赖项的安装的包管理器。他们还管理特定于项目的包。
-  - **A [test runner](/zh-cn/wiki/test-runner/)** ：Chai 是一个断言库，不包含测试运行程序。您需要像 Mocha、Jest 或 Karma 这样的测试运行程序来执行您的测试。
-  - **项目[环境搭建](/zh-cn/wiki/setup/)** ：您的项目应该使用
     `package.json`
     文件（如果您使用的是 NPM 或 Yarn）。该文件跟踪与您的项目相关的依赖项和脚本。
 
@@ -312,10 +308,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   ```
 这里，`.include(2)` 检查数组是否包含数字 2，`.have.lengthOf(3)` 检查数组的长度是否为 3。`.and` 链用于组合同一主题的多个断言。
   断言对于验证代码是否按预期运行至关重要，并且是使用 [Chai.js](/zh-cn/wiki/chai-js/) 编写有效且可靠的测试的基本部分。
-
-1. **实际值** ：您正在测试的值，来自您的代码。
-  2. **期望值**：您在测试中定义的期望值。
-  3. **匹配器函数**：将实际值与期望值进行比较的函数。
 
 #### 如何在 Chai.js 中编写基本断言？
 
@@ -452,19 +444,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
     `===`
     ）。
 
-- **.eql(value)** ：断言深度相等。
-  - **.above(value)** ：断言数字大于值。
-  - **.least(value)** ：断言 number 至少等于 value。
-  - **.below(value)** ：断言数字小于值。
-  - **.most(value)** ：断言 number 至多等于 value。
-  - **.instanceOf(constructor)** ：断言构造函数的实例。
-  - **.property(name, [value])** ：断言对象有一个属性，可以选择有一个值。
-  - **.ownProperty(name)** ：断言对象有自己的属性。
-  - **.lengthOf(value)** ：断言数组或字符串的长度。
-  - **.match(regex)** ：断言值与正则表达式匹配。
-  - **.contain(value)** ：断言数组包含一个值。
-  - **.ok** ：断言真实性。
-  - **.true** ：断言严格等于
     `true`
     。
 
@@ -494,18 +473,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
     `===`
     ）。
 
-- **assert.deepEqual(actual, Expected)** ：断言深度相等。
-  - **assert.isAbove(valueToCheck, valueToBeAbove)** ：断言数量大于值。
-  - **assert.isAtLeast(valueToCheck, valueToBeAtLeast)** ：断言数量至少等于值。
-  - **assert.isBelow(valueToCheck, valueToBeBelow)** ：断言数量小于值。
-  - **assert.isAtMost(valueToCheck, valueToBeAtMost)** ：断言数量最多等于值。
-  - **assert.instanceOf(object, constructor)** ：断言构造函数的实例。
-  - **assert.property(object, property)** ：断言对象有一个属性。
-  - **assert.lengthOf(object, length)** ：断言数组或字符串的长度。
-  - **assert.match(value, regex)** ：断言值与正则表达式匹配。
-  - **assert.containsAllKeys(object, keys)** ：断言对象包含所有提供的键。
-  - **assert.ok(value)** ：断言真实性。
-  - **assert.isTrue(value)** ：断言严格等于
     `true`
     。
 
@@ -979,7 +946,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   ```
 **chai-as-promised** 支持在 `eventually` 之后链接附加断言，并与 **mocha** 和其他处理返回 Promise 的 [test runners](/zh-cn/wiki/test-runner/) 无缝集成。
 
-#### Chai.js 的 .should 接口是什么以及它是如何工作的？
+#### Chai.js 的.should 接口是什么以及它是如何工作的？
 
 [Chai.js](/zh-cn/wiki/chai-js/) 的 `.should` 接口是 [BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式断言，它使用 `should` 属性扩展每个对象以启动断言链。该界面允许更具可读性和表现力的测试。
   要使用`.should` 接口，首先需要执行`chai.should()` 对`Object.prototype` 进行必要的修改。这是一个例子：

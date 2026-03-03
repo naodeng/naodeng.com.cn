@@ -556,11 +556,6 @@ availability_checks:
 4. **采用[混沌工程](/zh-cn/wiki/chaos-engineering/)**：引入受控故障来测试系统弹性并提高可用性。
   通过将可用性作为 DevOps 流程的一部分，团队可以确保其应用程序满足预期的服务级别协议 (SLA) 并提供可靠的用户体验。
 
-1. **将测试集成到 CI/CD 管道中**：部署到暂存和生产后运行可用性测试。
-2. **利用基础设施即代码 (IaC)**：使用 IaC 创建可重现的测试环境。
-3. **利用监控和警报工具**：根据可用性指标设置警报以主动捕获问题。
-4. **采用[混沌工程](/zh-cn/wiki/chaos-engineering/)**：引入受控故障来测试系统弹性并提高可用性。
-
 #### 大型系统中如何进行可用性测试？
 
 在大型系统中进行[可用性测试](/zh-cn/wiki/availability-testing/)涉及模拟现实世界的使用情况和潜在的故障场景，以确保系统保持按预期运行。 **[负载测试](/zh-cn/wiki/load-testing/)** 和 **[压力测试](/zh-cn/wiki/stress-testing/)** 对于评估系统在高流量或数据处理需求下的性能至关重要。使用 Apache [JMeter](/zh-cn/wiki/jmeter/) 或 LoadRunner 等工具来模拟这些条件。

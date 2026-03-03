@@ -180,15 +180,6 @@ order: 0
   ```
 确保 **[实际结果](/zh-cn/wiki/actual-result/)** 足够详细，使开发人员能够明确地理解问题，从而促进更快的解决和[重新测试](/zh-cn/wiki/retesting/)。
 
-1. **执行[测试用例](/zh-cn/wiki/test-case/)**：按照概述的步骤运行测试。
-2. **观察**：仔细观察系统的行为或输出。
-3. **记录**：立即记录观察到的行为。使用清晰的语言描述发生的情况，包括任何错误消息、系统响应或结果。
-4. **屏幕截图/日志**：附加屏幕截图、日志文件或视频（如果它们可以增加清晰度），特别是对于 UI 问题或复杂错误。
-5. **时间戳**：记下测试的时间和日期，因为这对于调试至关重要。
-6. **环境详细信息**：包括有关测试环境的详细信息，例如浏览器版本、设备或系统配置。
-7. **再现性**：表明重新测试后结果是否一致。
-8. **链接缺陷**：如果结果表明存在缺陷，则创建错误报告并将其链接到测试用例以进行跟踪。
-
 #### 用于捕获“实际结果”的常用工具或方法有哪些？
 
 捕获[测试自动化](/zh-cn/wiki/test-automation/)中的**[实际结果](/zh-cn/wiki/actual-result/)**通常涉及多种工具和方法：
@@ -215,16 +206,6 @@ order: 0
     ```
     let actualResult = element.getText();
     ```
-
-- **日志**：自动化测试通常旨在记录结果和错误。 **Log4j** for Java 或 **Winston** for [node.js](/zh-cn/wiki/node-js/) 等工具可用于记录实际结果。
-- **屏幕截图**：像 **[selenium](/zh-cn/wiki/selenium/)** 这样的工具可以在执行测试步骤时截取应用程序状态的屏幕截图，这对于 UI 测试很有用。
-- **视频录制**：一些测试框架（例如 **TestCafe**）或云服务（例如 **Sauce Labs**）提供视频录制功能来捕获 [测试执行](/zh-cn/wiki/test-execution/)。
-- **[API](/zh-cn/wiki/api/) 响应**：对于 [API 测试](/zh-cn/wiki/api-testing/)，**[Postman](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具捕获代表 [实际结果](/zh-cn/wiki/actual-result/) 的 HTTP 响应数据。
-- **性能数据**：**[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具将时序和吞吐量数据捕获为 [实际结果](/zh-cn/wiki/actual-result/) for [性能测试](/zh-cn/wiki/performance-testing/)。
-- **[测试报告](/zh-cn/wiki/test-report/)**：**JUnit**、**TestNG** 或 **Mocha** 等框架生成包含 [实际结果](/zh-cn/wiki/actual-result/) 的报告。这些可以与 **Jenkins** 或 **GitLab CI** 等 CI/CD 工具进一步集成，以实现全面的报告。
-- **自定义处理程序**：在测试代码中实现自定义事件处理程序或回调以捕获应用程序的特定数据点或状态。
-- **[数据库](/zh-cn/wiki/database/) 验证**：使用[SQL](/zh-cn/wiki/sql/) 或NoSQL 命令直接查询[数据库](/zh-cn/wiki/database/) 以捕获数据更改。
-- **文件输出**：将结果写入文件，例如 CSV 或 JSON，以便稍后解析和分析。
 
 #### 如何使用“实际结果”来识别和诊断软件错误或问题？
 

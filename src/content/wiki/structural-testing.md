@@ -251,7 +251,7 @@ order: 0
 
 #### 结构测试如何实现自动化？
 
-自动化[结构测试](/zh-cn/wiki/structural-testing/) 涉及验证软件内部工作的脚本测试。利用 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**（例如用于 Java 的 JUnit 或用于 .NET 的 [NUnit](/zh-cn/wiki/nunit/)）来创建涵盖各种代码路径的 [测试用例](/zh-cn/wiki/test-case/)。利用 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**（例如 JaCoCo 或 Istanbul）来测量测试期间执行的代码的范围并识别未测试的部分。
+自动化[结构测试](/zh-cn/wiki/structural-testing/) 涉及验证软件内部工作的脚本测试。利用 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**（例如用于 Java 的 JUnit 或用于.NET 的 [NUnit](/zh-cn/wiki/nunit/)）来创建涵盖各种代码路径的 [测试用例](/zh-cn/wiki/test-case/)。利用 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**（例如 JaCoCo 或 Istanbul）来测量测试期间执行的代码的范围并识别未测试的部分。
 
   ```
   @Test

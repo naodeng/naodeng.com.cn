@@ -117,14 +117,6 @@ order: 0
 7. **结果处理**：[WebDriver](/zh-cn/wiki/webdriver/) 客户端处理响应并将结果返回给[测试脚本](/zh-cn/wiki/test-script/)，然后[测试脚本](/zh-cn/wiki/test-script/) 可以继续执行进一步的操作或断言。
   在整个交互过程中，[WebDriver](/zh-cn/wiki/webdriver/) 使用**[WebDriver](/zh-cn/wiki/webdriver/) 协议**，这是一种自动化 Web 浏览器交互的标准。该协议确保命令和响应在不同的浏览器和驱动程序中保持一致，从而允许使用相同的脚本[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
 
-1. **初始化**：当创建[WebDriver](/zh-cn/wiki/webdriver/)实例时，它会与浏览器驱动程序建立连接（例如，ChromeDriver用于Chrome，GeckoDriver用于Firefox）。
-2. **命令执行**：[测试脚本](/zh-cn/wiki/test-script/) 向[WebDriver](/zh-cn/wiki/webdriver/) 发送命令，然后客户端库将命令格式化为 RESTful HTTP 请求。
-3. **HTTP 请求**：格式化的命令通过 HTTP 发送到浏览器驱动程序。
-4. **浏览器驱动程序**：浏览器驱动程序接收HTTP请求并将其翻译成浏览器可以理解的一系列动作。
-5. **操作**：浏览器执行请求的操作，例如导航到 URL、单击元素或输入文本。
-6. **响应**：执行操作后，浏览器驱动程序将 HTTP 响应发送回 [WebDriver](/zh-cn/wiki/webdriver/) 客户端。此响应包含命令执行的结果，例如成功状态、元素属性或任何错误。
-7. **结果处理**：[WebDriver](/zh-cn/wiki/webdriver/) 客户端处理响应并将结果返回给[测试脚本](/zh-cn/wiki/test-script/)，然后[测试脚本](/zh-cn/wiki/test-script/) 可以继续执行进一步的操作或断言。
-
 #### Selenium RC 和 WebDriver 有什么区别？
 
 [selenium](/zh-cn/wiki/selenium/) RC（远程控制）和[WebDriver](/zh-cn/wiki/webdriver/) 都是用于浏览器自动化的[selenium](/zh-cn/wiki/selenium/) 套件的一部分，但它们的架构和与Web 应用程序的交互有很大不同。
