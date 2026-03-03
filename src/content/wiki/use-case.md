@@ -118,7 +118,7 @@ order: 0
 **[用例](/zh-cn/wiki/use-case/)** 是从最终用户角度对系统功能的高级描述。它概述了参与者（用户或其他系统）和系统之间为实现目标而进行的交互。 [用例](/zh-cn/wiki/use-case/) 关注系统行为的**意图**和**目的**，而不详细说明实现它的具体步骤。
   相反，**[测试用例](/zh-cn/wiki/test-case/)** 是一组条件和变量，测试人员将在这些条件和变量下确定被测系统是否满足要求或正常工作。 [测试用例](/zh-cn/wiki/test-case/) 更加细化，包括详细的输入、执行步骤和[预期结果](/zh-cn/wiki/expected-result/)。它们旨在验证软件的实施，确保其满足指定的要求。
   [用例](/zh-cn/wiki/use-case/) 是关于系统应该做什么**，而[测试用例](/zh-cn/wiki/test-case/) 是关于**如何** 验证系统是否执行其应该执行的操作。 [测试用例](/zh-cn/wiki/test-case/) 源自[用例](/zh-cn/wiki/use-case/) 和其他规范，例如[功能需求](/zh-cn/wiki/functional-requirements/)。它们对于系统测试至关重要，通常包括正面和负面场景，以确保全面覆盖。
-  总之，[用例](/zh-cn/wiki/use-case/) 描述了**所需的系统交互**，并作为创建 [测试用例](/zh-cn/wiki/test-case/) 的基础，这是验证这些交互的**实际步骤**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师使用[用例](/zh-cn/wiki/use-case/) 来了解系统功能的范围和上下文，然后开发[测试用例](/zh-cn/wiki/test-case/) 来自动化该功能的[verification](/zh-cn/wiki/verification/)。
+  总之，[用例](/zh-cn/wiki/use-case/) 描述了**所需的系统交互**，并作为创建 [测试用例](/zh-cn/wiki/test-case/) 的基础，这是验证这些交互的**实际步骤**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师使用[用例](/zh-cn/wiki/use-case/) 来了解系统功能的范围和上下文，然后开发[测试用例](/zh-cn/wiki/test-case/) 来自动化该功能的[验证 ](/zh-cn/wiki/verification/)。
 
 ### 用例图
 

@@ -199,7 +199,7 @@ order: 0
 单元 [回归测试](/zh-cn/wiki/regression-testing/) 涉及重新运行针对特定**代码单元**（例如函数、方法或类）的测试子集，以确保最近的更改不会对现有功能产生不利影响。这是一种**狭隘、集中的方法**，通常由开发人员在**单元级别**执行。
   另一方面，完整的[回归测试](/zh-cn/wiki/regression-testing/)是一个全面的测试过程，涉及重新运行[测试套件](/zh-cn/wiki/test-suite/)中的**所有[测试用例](/zh-cn/wiki/test-case/)**，以确保整个应用程序在进行更改后仍然按预期工作。此类测试范围更广，包括 **[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和 [验收测试](/zh-cn/wiki/acceptance-testing/)** 级别，以验证应用程序的整体行为。
   虽然单元 [回归测试](/zh-cn/wiki/regression-testing/) **快速高效**，可以快速反馈代码更改的影响，但完整的 [回归测试](/zh-cn/wiki/regression-testing/) **更加耗时**和彻底，通常需要大量资源和工具来执行。完整的 [回归测试](/zh-cn/wiki/regression-testing/) 通常执行频率较低，例如在主要版本之前，而单元回归测试可能在开发周期期间运行多次，通常作为 **持续集成** 过程的一部分。
-  总之，单元[回归测试](/zh-cn/wiki/regression-testing/) 是**快速、以开发人员为中心的[verification](/zh-cn/wiki/verification/)** 各个代码单元，而完整的[回归测试](/zh-cn/wiki/regression-testing/) 是对整个应用程序功能的**全面验证**。
+  总之，单元[回归测试](/zh-cn/wiki/regression-testing/) 是**快速、以开发人员为中心的[验证 ](/zh-cn/wiki/verification/)** 各个代码单元，而完整的[回归测试](/zh-cn/wiki/regression-testing/) 是对整个应用程序功能的**全面验证**。
 
 #### 在敏捷环境中如何进行回归测试？
 

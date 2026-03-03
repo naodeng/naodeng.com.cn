@@ -372,7 +372,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 [软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/)) 的不同模型提供了不同的测试方法，每种方法都有自己的优点和注意事项：
 
-- **[V 型](/zh-cn/wiki/v-model/)**：也称为[Verification](/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
+- **[V 型](/zh-cn/wiki/v-model/)**：也称为[验证 ](/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
 - **瀑布模型**：测试阶段遵循顺序，每个阶段仅在前一个阶段完成后才开始。一旦一个阶段完成，该模型就不容易适应变化。
 - **敏捷模型**：测试集成到开发过程中，并与开发同时进行。它允许持续反馈和[迭代](/zh-cn/wiki/iteration/)，使其适合需要灵活性和适应性的项目。
 - **螺旋模型**：将迭代开发与瀑布模型的系统方面相结合。它增加了风险分析，并且可以更灵活地适应整个开发过程中的变化。
@@ -381,7 +381,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 - **快速应用程序开发 (RAD)**：专注于快速原型设计和迭代交付，其中测试与开发一起以规定的时间进行。
   每个模型都有自己的**优点和缺点**，选择取决于项目要求、复杂性以及结构和灵活性之间所需的平衡。
 
-- **[V 型](/zh-cn/wiki/v-model/)**：也称为[Verification](/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
+- **[V 型](/zh-cn/wiki/v-model/)**：也称为[验证 ](/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
 - **瀑布模型**：测试阶段遵循顺序，每个阶段仅在前一个阶段完成后才开始。一旦一个阶段完成，该模型就不容易适应变化。
 - **敏捷模型**：测试集成到开发过程中，并与开发同时进行。它允许持续反馈和[迭代](/zh-cn/wiki/iteration/)，使其适合需要灵活性和适应性的项目。
 - **螺旋模型**：将迭代开发与瀑布模型的系统方面相结合。它增加了风险分析，并且可以更灵活地适应整个开发过程中的变化。
@@ -391,7 +391,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### STLC 中的 V 模型如何工作？
 
-[STLC](/zh-cn/wiki/stlc/) 中的[V 型](/zh-cn/wiki/v-model/) 是一种**验证和[verification](/zh-cn/wiki/verification/)** 方法，强调开发活动及其相应测试阶段之间的并行关系。它通过形成 V 形来扩展瀑布模型，其中左侧代表开发生命周期，右侧代表测试生命周期。
+[STLC](/zh-cn/wiki/stlc/) 中的[V 型](/zh-cn/wiki/v-model/) 是一种**验证和[验证 ](/zh-cn/wiki/verification/)** 方法，强调开发活动及其相应测试阶段之间的并行关系。它通过形成 V 形来扩展瀑布模型，其中左侧代表开发生命周期，右侧代表测试生命周期。
   在[V 型](/zh-cn/wiki/v-model/)中，每个开发阶段都有一个相应的并行计划的测试阶段。随着开发向下进行需求分析、系统设计和编码等阶段，相应的测试活动被并行定义，包括[系统测试](/zh-cn/wiki/system-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)和[单元测试](/zh-cn/wiki/unit-testing/)。
   该模型的优势在于其**早期测试规划**以及在开发阶段建立测试设计。这确保了每个可交付成果在实施开始之前都有预定义的测试策略，从而实现更彻底和结构化的测试。
   在**需求分析**阶段，设计验收测试。系统测试是在**系统设计**阶段准备的。在**高级设计**阶段概述集成测试，并在**详细设计**阶段规划单元测试。随着开发过程从设计过渡到编码，焦点转移到 V 的右侧，按照预定义的 [测试用例](/zh-cn/wiki/test-case/) 和策略进行实际测试。
@@ -459,18 +459,18 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 #### 软件测试生命周期 (STLC) 和软件开发生命周期 (SDLC) 之间有什么区别？
 
 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 是一个全面的多步骤过程，涵盖创建软件产品所涉及的所有阶段，从最初的规划和分析到设计、开发、测试、部署和维护。它定义了每个阶段执行的任务和活动，以确保软件的系统开发并满足指定的要求。
-  相比之下，**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 SDLC 的一个子集，专门关注软件开发的[verification](/zh-cn/wiki/verification/) 和验证方面。这是为执行[软件测试](/zh-cn/wiki/software-testing/)而进行的一系列活动，从测试计划开始，通过测试设计和[测试执行](/zh-cn/wiki/test-execution/)，直至测试结束。 [STLC](/zh-cn/wiki/stlc/) 确保软件的每个功能都根据要求进行测试。
+  相比之下，**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 SDLC 的一个子集，专门关注软件开发的[验证 ](/zh-cn/wiki/verification/) 和验证方面。这是为执行[软件测试](/zh-cn/wiki/software-testing/)而进行的一系列活动，从测试计划开始，通过测试设计和[测试执行](/zh-cn/wiki/test-execution/)，直至测试结束。 [STLC](/zh-cn/wiki/stlc/) 确保软件的每个功能都根据要求进行测试。
   虽然 SDLC 涵盖了软件创建的端到端过程，但 [STLC](/zh-cn/wiki/stlc/) 的重点是确保软件按预期运行并且没有缺陷。 [STLC](/zh-cn/wiki/stlc/) 对于 SDLC 至关重要，因为它直接影响软件产品的质量和可靠性。它在不同的点集成在 SDLC 中，具体取决于所使用的开发模型（例如，瀑布式、敏捷式、[V 型](/zh-cn/wiki/v-model/)）。
   了解 SDLC 和[STLC](/zh-cn/wiki/stlc/) 对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说至关重要，因为这使他们能够将测试策略与整个开发过程保持一致，确保测试不是事后的想法，而是创建高质量软件的一个组成部分。
 
 #### STLC 如何融入 SDLC？
 
-**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 的一个组成部分，是为确保 [软件质量](/zh-cn/wiki/software-quality/) 而进行的一系列活动。 SDLC 专注于软件开发，而[STLC](/zh-cn/wiki/stlc/) 则专注于[verification](/zh-cn/wiki/verification/) 和验证。
+**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 的一个组成部分，是为确保 [软件质量](/zh-cn/wiki/software-quality/) 而进行的一系列活动。 SDLC 专注于软件开发，而[STLC](/zh-cn/wiki/stlc/) 则专注于[验证 ](/zh-cn/wiki/verification/) 和验证。
   [STLC](/zh-cn/wiki/stlc/) 在定义**要求**之后和部署软件之前适合 SDLC。它与开发阶段并行运行，从**需求分析**开始，并通过**规划**、**[测试用例](/zh-cn/wiki/test-case/)开发**、**环境[环境搭建](/zh-cn/wiki/setup/)**、**[测试执行](/zh-cn/wiki/test-execution/)**和**测试周期结束**进行。
   在**开发阶段**，测试人员通过了解需求和设置环境来为即将进行的测试做好准备。随着开发的进展，测试人员开发并审查[测试用例](/zh-cn/wiki/test-case/)，确保它们准备好执行。
   一旦开发团队提供了软件的可测试版本，**[测试执行](/zh-cn/wiki/test-execution/) 阶段**就开始了。测试人员向开发人员报告[bugs](/zh-cn/wiki/bug/)，然后开发人员进行必要的修复。这个循环一直持续到软件满足质量标准。
   在**敏捷环境**中，[STLC](/zh-cn/wiki/stlc/) 更具迭代性，将测试集成到每个冲刺中，从而可以持续反馈并更快地解决问题。
-  [STLC](/zh-cn/wiki/stlc/) 确保每段代码在部署前都经过测试，降低部署后问题的风险并确保产品稳定。通过将[STLC](/zh-cn/wiki/stlc/) 活动与SDLC 阶段保持一致，组织可以实现从软件创建到软件[verification](/zh-cn/wiki/verification/) 的无缝过渡，最终产生可靠且高质量的软件产品。
+  [STLC](/zh-cn/wiki/stlc/) 确保每段代码在部署前都经过测试，降低部署后问题的风险并确保产品稳定。通过将[STLC](/zh-cn/wiki/stlc/) 活动与SDLC 阶段保持一致，组织可以实现从软件创建到软件[验证 ](/zh-cn/wiki/verification/) 的无缝过渡，最终产生可靠且高质量的软件产品。
 
 #### STLC 和 SDLC 有何相似之处？
 
@@ -486,7 +486,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 - **文档**：两者都需要大量文档以确保可追溯性并供将来参考。
 - **质量关注**：两者的目标都是提高最终产品的质量，尽管角度不同——SDLC 通过正确构建产品，[STLC](/zh-cn/wiki/stlc/) 通过确保其正常工作。
 - **迭代改进**：两者都可以迭代，在一个周期中吸取的经验教训可以在下一个周期中进行改进。
-  了解这些相似之处有助于[测试自动化](/zh-cn/wiki/test-automation/) 工程师将测试工作与开发流程结合起来，确保采用一致且高效的方法来创建软件和[verification](/zh-cn/wiki/verification/)。
+  了解这些相似之处有助于[测试自动化](/zh-cn/wiki/test-automation/) 工程师将测试工作与开发流程结合起来，确保采用一致且高效的方法来创建软件和[验证 ](/zh-cn/wiki/verification/)。
 
 - **结构化阶段**：[STLC](/zh-cn/wiki/stlc/) 和 SDLC 都分为不同的阶段，必须按顺序完成。每个阶段都有特定的可交付成果和活动。
 - **需求分析**：两个生命周期都从理解需求开始。在 SDLC 中，它是关于构建什么，而在 [STLC](/zh-cn/wiki/stlc/) 中，它是关于测试什么。

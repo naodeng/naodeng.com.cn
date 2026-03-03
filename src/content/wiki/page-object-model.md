@@ -201,7 +201,7 @@ order: 0
     }
     ```
 
-- **断言**：允许 [verification](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
+- **断言**：允许 [验证 ](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
 
     ```
     public boolean isLoginButtonVisible() {
@@ -251,7 +251,7 @@ order: 0
     }
     ```
 
-- **断言**：允许 [verification](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
+- **断言**：允许 [验证 ](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
 
     ```
     public boolean isLoginButtonVisible() {

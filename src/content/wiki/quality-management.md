@@ -229,7 +229,7 @@ order: 0
 
 #### 质量控制如何支持质量管理？
 
-质量控制 (QC) 通过提供**操作技术**和用于满足质量要求的活动来支持 [质量管理](/zh-cn/wiki/quality-management/) (QM)。 QM 概述了总体质量策略和目标，而 QC 则侧重于 **[verification](/zh-cn/wiki/verification/)** 方面，确保产品符合定义的质量标准。
+质量控制 (QC) 通过提供**操作技术**和用于满足质量要求的活动来支持 [质量管理](/zh-cn/wiki/quality-management/) (QM)。 QM 概述了总体质量策略和目标，而 QC 则侧重于 **[验证 ](/zh-cn/wiki/verification/)** 方面，确保产品符合定义的质量标准。
   质量控制活动包括**系统测量**、**与标准比较**、**流程监控**以及可预防错误的相关**反馈循环**。这可以是整个[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) 中使用的一系列[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、评论和测试。在[测试自动化](/zh-cn/wiki/test-automation/) 中，QC 可能涉及：
 
 - **自动化[测试执行](/zh-cn/wiki/test-execution/)**：运行预定义的测试脚本以根据预期结果检查软件功能。
@@ -319,7 +319,7 @@ order: 0
 
 #### 测试在质量管理中扮演什么角色？
 
-测试是**[质量管理](/zh-cn/wiki/quality-management/)** (QM) 的关键组成部分，充当[verification](/zh-cn/wiki/verification/) 和验证机制，以确保软件产品满足指定的要求和标准。它提供关于质量的**客观反馈**，并识别可能影响用户满意度和安全的缺陷。
+测试是**[质量管理](/zh-cn/wiki/quality-management/)** (QM) 的关键组成部分，充当[验证 ](/zh-cn/wiki/verification/) 和验证机制，以确保软件产品满足指定的要求和标准。它提供关于质量的**客观反馈**，并识别可能影响用户满意度和安全的缺陷。
   在质量管理中，测试活动是经过战略性规划和系统执行的，以与质量目标保持一致。这包括定义测试策略、设计[测试用例](/zh-cn/wiki/test-case/)、执行测试和报告测试结果。测试可以测量[软件质量](/zh-cn/wiki/software-quality/)并评估软件是否适合其预期目的。
   **[自动化测试](/zh-cn/wiki/automated-testing/)** 特别是通过在执行大量测试时提供**可重复性**、**一致性**和**速度**来增强质量管理，而这对于 [手动测试](/zh-cn/wiki/manual-testing/) 通常是不切实际的。它支持持续集成和交付管道，允许更频繁、更彻底的测试，从而尽早发现缺陷并降低风险。
   此外，[测试自动化](/zh-cn/wiki/test-automation/) 生成**定量数据**，可对其进行分析以识别趋势、查明改进领域并为质量管理流程中的决策提供信息。这种数据驱动的方法有助于在质量方面采取更积极主动的态度，从缺陷检测转向缺陷预防。
@@ -388,7 +388,7 @@ order: 0
 #### 质量管理和测试自动化之间的关系是什么？
 
 [测试自动化](/zh-cn/wiki/test-automation/) 是软件开发中[质量管理](/zh-cn/wiki/quality-management/) (QM) 的**战略推动者**。它通过提供**一致且可重复的测试**流程来直接支持质量管理，这对于确保产品质量至关重要。自动化测试可以频繁运行，并提供有关软件质量的**快速反馈**，从而可以更快地识别和解决缺陷。
-  通过自动化测试，团队可以覆盖测试中应用程序的更大部分，从而实现更彻底的[verification](/zh-cn/wiki/verification/) 需求并增强对软件质量的信心。这与 QM 的“持续改进”目标一致，因为 [测试自动化](/zh-cn/wiki/test-automation/) 可以集成到 CI/CD 管道中，以确保在整个开发生命周期中进行持续的质量检查。
+  通过自动化测试，团队可以覆盖测试中应用程序的更大部分，从而实现更彻底的[验证 ](/zh-cn/wiki/verification/) 需求并增强对软件质量的信心。这与 QM 的“持续改进”目标一致，因为 [测试自动化](/zh-cn/wiki/test-automation/) 可以集成到 CI/CD 管道中，以确保在整个开发生命周期中进行持续的质量检查。
   此外，[测试自动化](/zh-cn/wiki/test-automation/) 可以**减少测试中的人为错误**，并让[质量保证](/zh-cn/wiki/quality-assurance/) 专业人员专注于更复杂的测试场景和[探索性测试](/zh-cn/wiki/exploratory-testing/)，这对于质量管理来说更有价值。这一战略转变使团队能够更好地分配资源并提高质量管理流程的整体有效性。
   总之，[测试自动化](/zh-cn/wiki/test-automation/) 通过提供以下功能来增强质量管理：
 

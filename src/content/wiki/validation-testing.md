@@ -46,7 +46,7 @@ order: 0
 
 ## 相关术语
 
-- [Verification](/zh-cn/wiki/verification/)
+- [验证 ](/zh-cn/wiki/verification/)
 
 ## 有关验证测试的问题吗？
 
@@ -70,19 +70,19 @@ order: 0
 
 #### 验证测试和验证测试有什么区别？
 
-[Verification](/zh-cn/wiki/verification/) 测试和[验证测试](/zh-cn/wiki/validation-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同阶段，具有不同的目标：
+[验证 ](/zh-cn/wiki/verification/) 测试和[验证测试](/zh-cn/wiki/validation-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同阶段，具有不同的目标：
 
-- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
+- **[验证 ](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。
-  主要区别在于它们的重点：[verification](/zh-cn/wiki/verification/) 是关于开发过程中指定要求的一致性和遵守，而验证是关于产品的功能及其在现实场景中预期用途的适用性。 [Verification](/zh-cn/wiki/verification/) 回答了设计的一致性问题，而验证则解决了产品在解决问题或满足需求方面的有效性。
+  主要区别在于它们的重点：[验证 ](/zh-cn/wiki/verification/) 是关于开发过程中指定要求的一致性和遵守，而验证是关于产品的功能及其在现实场景中预期用途的适用性。 [验证 ](/zh-cn/wiki/verification/) 回答了设计的一致性问题，而验证则解决了产品在解决问题或满足需求方面的有效性。
 
-- **[Verification](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [Verification](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
+- **[验证 ](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。
 
 #### 验证测试在软件开发生命周期 (SDLC) 中的作用是什么？
 
 [验证测试](/zh-cn/wiki/validation-testing/) 充当软件产品发布到市场之前的**最终检查点**。在 SDLC 中，它确保软件满足**业务需求**和**用户需求**，确认产品提供预期价值。
-  在 SDLC 的**后期阶段**，[验证测试](/zh-cn/wiki/validation-testing/) 是在 [verification](/zh-cn/wiki/verification/) 活动（例如单元和 [集成测试](/zh-cn/wiki/integration-testing/)）完成之后进行的。它侧重于**用户视角**而不是代码正确性，验证软件**适合目的**并且行为符合最终用户的期望。
+  在 SDLC 的**后期阶段**，[验证测试](/zh-cn/wiki/validation-testing/) 是在 [验证 ](/zh-cn/wiki/verification/) 活动（例如单元和 [集成测试](/zh-cn/wiki/integration-testing/)）完成之后进行的。它侧重于**用户视角**而不是代码正确性，验证软件**适合目的**并且行为符合最终用户的期望。
   在**敏捷环境**中，[验证测试](/zh-cn/wiki/validation-testing/) 集成到**sprints** 或[迭代](/zh-cn/wiki/iteration/) 中，允许持续反馈和调整。这种迭代方法有助于及早发现问题，并在整个开发过程中使软件与用户需求保持一致。
   自动化在[验证测试](/zh-cn/wiki/validation-testing/) 中发挥着至关重要的作用，它可以**加快**流程并增加**[测试覆盖率](/zh-cn/wiki/test-coverage/)**。自动化验证测试可以频繁且一致地运行，确保新的更改不会破坏现有功能。
   [验证测试](/zh-cn/wiki/validation-testing/) 在 SDLC 中的作用不仅是发现缺陷，而且还**提高质量**。它为软件的可靠性和可用性提供了**信心**，这对于实现客户满意度和保持市场竞争优势至关重要。

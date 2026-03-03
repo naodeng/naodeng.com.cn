@@ -191,7 +191,7 @@ order: 0
     expect(actual).toEqual(expected);
     ```
 
-2. **[Verification](/zh-cn/wiki/verification/)**：某些框架提供[verification](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
+2. **[验证 ](/zh-cn/wiki/verification/)**：某些框架提供[验证 ](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
 3. **自定义比较逻辑**：对于复杂对象或非标准比较，可以实现自定义逻辑：
 
     ```
@@ -214,7 +214,7 @@ order: 0
     expect(actual).toEqual(expected);
     ```
 
-2. **[Verification](/zh-cn/wiki/verification/)**：某些框架提供[verification](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
+2. **[验证 ](/zh-cn/wiki/verification/)**：某些框架提供[验证 ](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
 3. **自定义比较逻辑**：对于复杂对象或非标准比较，可以实现自定义逻辑：
 
     ```
@@ -280,7 +280,7 @@ order: 0
 3. **沟通**​​：将问题通知相关利益相关者，例如开发人员和产品所有者，以便采取进一步行动。
 4. **解决**：开发团队解决缺陷，解决后，重新执行测试以验证修复。
 5. **[测试用例](/zh-cn/wiki/test-case/) 审核**：如果差异是由于不正确的测试用例造成的，请更新测试用例以与正确的预期行为保持一致。
-  这种不匹配是[软件测试](/zh-cn/wiki/software-testing/) 中反馈循环的关键部分，可提高质量并[verification](/zh-cn/wiki/verification/) 软件按预期运行。系统地处理这些差异对于保持测试过程的完整性至关重要。
+  这种不匹配是[软件测试](/zh-cn/wiki/software-testing/) 中反馈循环的关键部分，可提高质量并[验证 ](/zh-cn/wiki/verification/) 软件按预期运行。系统地处理这些差异对于保持测试过程的完整性至关重要。
 
 1. **调查**：确定差异的原因。这涉及审查测试用例、底层代码和需求。
 2. **[Bug](/zh-cn/wiki/bug/) 报告**：如果确认存在缺陷，请将其记录在错误跟踪系统中，并提供不匹配的详细信息和重现步骤。
@@ -292,7 +292,7 @@ order: 0
 
 当 **[预期结果](/zh-cn/wiki/expected-result/)** 和 **[实际结果](/zh-cn/wiki/actual-result/)** 之间出现差异时，会通过系统方法进行分析：
 
-1. **[Verification](/zh-cn/wiki/verification/)** ：确认实际结果准确，并非由于测试环境问题或测试数据问题。
+1. **[验证 ](/zh-cn/wiki/verification/)** ：确认实际结果准确，并非由于测试环境问题或测试数据问题。
 2. **重现**：尝试一致地重现问题，以确保它不是侥幸。
 3. **根本原因分析**：通过检查应用程序日志、调试代码或查看可能影响功能的最新更改来调查根本原因。
 4. **影响评估**：评估差异的严重性以及对应用程序功能和用户体验的影响。
@@ -302,7 +302,7 @@ order: 0
 8. **文档**：更新测试用例和文档以反映对功能的任何新理解或对系统所做的更改。
   在整个过程中，使用调试器、版本控制系统和缺陷跟踪软件等工具来促进分析和沟通。目标不仅是解决当前的差异，而且是完善测试策略并防止将来出现类似问题。
 
-1. **[Verification](/zh-cn/wiki/verification/)** ：确认实际结果准确，并非由于测试环境问题或测试数据问题。
+1. **[验证 ](/zh-cn/wiki/verification/)** ：确认实际结果准确，并非由于测试环境问题或测试数据问题。
 2. **重现**：尝试一致地重现问题，以确保它不是侥幸。
 3. **根本原因分析**：通过检查应用程序日志、调试代码或查看可能影响功能的最新更改来调查根本原因。
 4. **影响评估**：评估差异的严重性以及对应用程序功能和用户体验的影响。
@@ -372,7 +372,7 @@ order: 0
 - **参考屏幕截图或模型**：处理 UI 元素时，包括视觉参考以阐明 [预期结果](/zh-cn/wiki/expected-result/)。
 - **版本控制**：维护 [预期结果](/zh-cn/wiki/expected-result/) 的更改历史记录，以跟踪一段时间内的修改。
 - **协作**：确保 [预期结果](/zh-cn/wiki/expected-result/) 得到开发人员、测试人员和利益相关者的审查和同意，以避免误解。
-- **自动化[Verification](/zh-cn/wiki/verification/)**：如果可能，编写[预期结果](/zh-cn/wiki/expected-result/) 的[verification](/zh-cn/wiki/verification/) 脚本以减少手动工作并提高准确性。
+- **自动化[验证 ](/zh-cn/wiki/verification/)**：如果可能，编写[预期结果](/zh-cn/wiki/expected-result/) 的[验证 ](/zh-cn/wiki/verification/) 脚本以减少手动工作并提高准确性。
 - **保持最新**：定期审查和更新文档以反映系统或要求的变化。
   通过遵守这些准则，您可以确保 [预期结果](/zh-cn/wiki/expected-result/) 以对测试团队有用、清晰且可操作的方式记录。
 
@@ -400,7 +400,7 @@ order: 0
 - **参考屏幕截图或模型**：处理 UI 元素时，包括视觉参考以阐明 [预期结果](/zh-cn/wiki/expected-result/)。
 - **版本控制**：维护 [预期结果](/zh-cn/wiki/expected-result/) 的更改历史记录，以跟踪一段时间内的修改。
 - **协作**：确保 [预期结果](/zh-cn/wiki/expected-result/) 得到开发人员、测试人员和利益相关者的审查和同意，以避免误解。
-- **自动化[Verification](/zh-cn/wiki/verification/)**：如果可能，编写[预期结果](/zh-cn/wiki/expected-result/) 的[verification](/zh-cn/wiki/verification/) 脚本以减少手动工作并提高准确性。
+- **自动化[验证 ](/zh-cn/wiki/verification/)**：如果可能，编写[预期结果](/zh-cn/wiki/expected-result/) 的[验证 ](/zh-cn/wiki/verification/) 脚本以减少手动工作并提高准确性。
 - **保持最新**：定期审查和更新文档以反映系统或要求的变化。
 
 #### 定义“预期结果”时要避免哪些常见错误？

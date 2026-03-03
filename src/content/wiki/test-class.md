@@ -163,7 +163,7 @@ order: 0
 
 #### 测试类在单元测试中的作用是什么？
 
-在[单元测试](/zh-cn/wiki/unit-testing/) 中，**[测试类](/zh-cn/wiki/test-class/)** 封装了针对特定类或代码单元的测试，确保**隔离**和**[可维护性](/zh-cn/wiki/maintainability/)**。它充当测试方法的容器，用于测试单元行为的各个方面，包括**状态[verification](/zh-cn/wiki/verification/)**和**交互测试**。通过对相关测试进行分组，[测试类](/zh-cn/wiki/test-class/) 可以为测试人员提供**逻辑组织**和**轻松导航**。
+在[单元测试](/zh-cn/wiki/unit-testing/) 中，**[测试类](/zh-cn/wiki/test-class/)** 封装了针对特定类或代码单元的测试，确保**隔离**和**[可维护性](/zh-cn/wiki/maintainability/)**。它充当测试方法的容器，用于测试单元行为的各个方面，包括**状态[验证 ](/zh-cn/wiki/verification/)**和**交互测试**。通过对相关测试进行分组，[测试类](/zh-cn/wiki/test-class/) 可以为测试人员提供**逻辑组织**和**轻松导航**。
   测试类在**测试发现**和执行中发挥着关键作用。测试框架利用命名约定和注释来识别和运行这些类中的测试。例如，在 JUnit 中：
 
   ```

@@ -86,7 +86,7 @@ order: 0
 #### 为什么功能集成在软件开发中很重要？
 
 [功能整合](/zh-cn/wiki/functional-integration/) 在软件开发中至关重要，因为它确保各个功能或服务在组合时按预期协同工作。它验证集成组件是否正确交互，从而在更大的系统中提供无缝操作。这种集成对于识别接口缺陷并验证系统在模块组合时是否满足其 [功能需求](/zh-cn/wiki/functional-requirements/) 至关重要。
-  通过进行功能集成测试，团队可以在开发周期的早期发现问题，从而减少修复稍后在生产中发现的[bugs](/zh-cn/wiki/bug/) 的成本和工作量。它还支持[verification](/zh-cn/wiki/verification/)迭代开发过程中的新功能或更改，从而实现持续改进和交付。
+  通过进行功能集成测试，团队可以在开发周期的早期发现问题，从而减少修复稍后在生产中发现的[bugs](/zh-cn/wiki/bug/) 的成本和工作量。它还支持[验证 ](/zh-cn/wiki/verification/)迭代开发过程中的新功能或更改，从而实现持续改进和交付。
   此外，[功能整合](/zh-cn/wiki/functional-integration/) 充当[单元测试](/zh-cn/wiki/unit-testing/) 和[系统测试](/zh-cn/wiki/system-testing/) 之间的桥梁，[单元测试](/zh-cn/wiki/unit-testing/) 专注于单个组件，[系统测试](/zh-cn/wiki/system-testing/) 则评估完整的集成软件产品。它有助于在合并新功能时保持软件的完整性，确保增强功能不会破坏现有功能。
   在**持续交付**和**DevOps**的背景下，[功能整合](/zh-cn/wiki/functional-integration/) 是部署管道不可或缺的一部分，在开发的每个阶段启用集成系统的[自动化测试](/zh-cn/wiki/automated-testing/)。这种自动化促进了快速反馈循环，使开发人员能够及时解决问题并保持 [软件质量](/zh-cn/wiki/software-quality/) 的高标准。
   总的来说，[功能整合](/zh-cn/wiki/functional-integration/) 是一种基本实践，它通过确保系统的所有部分和谐地协同工作，支持创建强大、可靠的软件，从而提供预期的用户体验和商业价值。

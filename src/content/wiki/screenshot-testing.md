@@ -49,7 +49,7 @@ order: 0
 
 #### 什么是屏幕截图测试？
 
-[截图测试](/zh-cn/wiki/screenshot-testing/) 是一种可视化[verification](/zh-cn/wiki/verification/) 方法，其中捕获软件应用程序的用户界面 (UI) 并将其与基线图像进行比较以检测变化或异常。它涉及在应用程序流程的各个阶段对网页、移动应用程序或任何图形用户界面进行屏幕截图，以确保视觉一致性和功能。
+[截图测试](/zh-cn/wiki/screenshot-testing/) 是一种可视化[验证 ](/zh-cn/wiki/verification/) 方法，其中捕获软件应用程序的用户界面 (UI) 并将其与基线图像进行比较以检测变化或异常。它涉及在应用程序流程的各个阶段对网页、移动应用程序或任何图形用户界面进行屏幕截图，以确保视觉一致性和功能。
   要执行[截图测试](/zh-cn/wiki/screenshot-testing/)，请按照以下步骤操作：
 
 1. **捕获基线图像**：截取代表应用程序预期状态的 UI 元素或页面的屏幕截图。
@@ -147,11 +147,11 @@ order: 0
 
 #### 屏幕截图测试如何提高软件产品的质量？
 
-[截图测试](/zh-cn/wiki/screenshot-testing/) 通过在传统[测试自动化](/zh-cn/wiki/test-automation/) 之上提供**可视化[verification](/zh-cn/wiki/verification/) 层**来增强[软件质量](/zh-cn/wiki/software-quality/)。它确保 UI 按最终用户的预期显示，捕获其他自动化测试可能无法检测到的 **样式问题**、**布局问题** 和 **视觉回归**。
+[截图测试](/zh-cn/wiki/screenshot-testing/) 通过在传统[测试自动化](/zh-cn/wiki/test-automation/) 之上提供**可视化[验证 ](/zh-cn/wiki/verification/) 层**来增强[软件质量](/zh-cn/wiki/software-quality/)。它确保 UI 按最终用户的预期显示，捕获其他自动化测试可能无法检测到的 **样式问题**、**布局问题** 和 **视觉回归**。
   通过将基线图像与当前屏幕截图进行比较，测试人员可以识别 UI 中的意外更改或异常。这对于保持一致的用户体验至关重要，特别是当代码更改频繁时。 [截图测试](/zh-cn/wiki/screenshot-testing/) 还有助于验证跨不同浏览器和设备的**像素完美渲染**，这对于**跨平台兼容性**至关重要。
   此外，它还支持**[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**，允许测试人员根据可访问性标准检查颜色对比度和字体大小等视觉元素。这对于创建可供残疾人使用的包容性软件尤其重要。
   将 [截图测试](/zh-cn/wiki/screenshot-testing/) 合并到 **CI/CD 管道** 有助于在开发周期的早期发现视觉问题，从而减少以后修复这些问题所需的成本和工作量。它还提供视觉变化的**记录历史**，这对于跟踪和审核目的非常有用。
-  通过自动化视觉[verification](/zh-cn/wiki/verification/)过程，[截图测试](/zh-cn/wiki/screenshot-testing/)使人类测试人员能够专注于更复杂的测试场景，从而提高整体[测试覆盖率](/zh-cn/wiki/test-coverage/)和产品质量。
+  通过自动化视觉[验证 ](/zh-cn/wiki/verification/)过程，[截图测试](/zh-cn/wiki/screenshot-testing/)使人类测试人员能够专注于更复杂的测试场景，从而提高整体[测试覆盖率](/zh-cn/wiki/test-coverage/)和产品质量。
 
 #### 屏幕截图测试有哪些限制？
 

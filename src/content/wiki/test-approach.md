@@ -178,7 +178,7 @@ order: 0
 静态和动态测试方法在分析软件的时间和方式上有根本的不同。
   **[静态测试](/zh-cn/wiki/static-testing/)** 涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和静态分析工具，可在不运行软件的情况下检查代码质量、标准合规性和其他属性。 [静态测试](/zh-cn/wiki/static-testing/) 可以及早发现问题，这通常可以降低修复问题的成本。
   另一方面，**[动态测试](/zh-cn/wiki/dynamic-testing/)** 需要执行软件。它涉及使用各种输入运行软件并观察输出以确保软件按预期运行。这包括单元测试、集成测试、系统测试和验收测试。 [动态测试](/zh-cn/wiki/dynamic-testing/) 对于在现实条件下验证软件功能和性能至关重要。
-  总而言之，[静态测试](/zh-cn/wiki/static-testing/)是关于**不执行的分析**，而[动态测试](/zh-cn/wiki/dynamic-testing/)是关于**[verification](/zh-cn/wiki/verification/)通过执行**。两种方法是互补的，一起使用时可以对软件质量提供更全面的评估。
+  总而言之，[静态测试](/zh-cn/wiki/static-testing/)是关于**不执行的分析**，而[动态测试](/zh-cn/wiki/dynamic-testing/)是关于**[验证 ](/zh-cn/wiki/verification/)通过执行**。两种方法是互补的，一起使用时可以对软件质量提供更全面的评估。
 
 #### 风险分析在确定测试方法方面的作用是什么？
 

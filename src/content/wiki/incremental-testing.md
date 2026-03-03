@@ -49,7 +49,7 @@ order: 0
 
 #### 软件测试中什么是增量测试？
 
-[增量测试](/zh-cn/wiki/incremental-testing/) 是一种 **[软件测试](/zh-cn/wiki/software-testing/) 方法**，其中系统以 **增量** 或 **模块** 进行测试。当每个模块被测试时，它会被添加到之前测试的模块中，逐步构建系统，直到所有模块都被集成并作为一个整体进行测试。此方法允许**及早检测缺陷**和 **[verification](/zh-cn/wiki/verification/) 模块交互**（当它们组合在一起时）。
+[增量测试](/zh-cn/wiki/incremental-testing/) 是一种 **[软件测试](/zh-cn/wiki/software-testing/) 方法**，其中系统以 **增量** 或 **模块** 进行测试。当每个模块被测试时，它会被添加到之前测试的模块中，逐步构建系统，直到所有模块都被集成并作为一个整体进行测试。此方法允许**及早检测缺陷**和 **[验证 ](/zh-cn/wiki/verification/) 模块交互**（当它们组合在一起时）。
   要执行[增量测试](/zh-cn/wiki/incremental-testing/)，您通常遵循以下步骤：
 
 1. **识别模块**

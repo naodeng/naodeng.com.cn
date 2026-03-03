@@ -58,7 +58,7 @@ order: 0
 
 #### 为什么测试工具在软件测试中很重要？
 
-**[测试工具](/zh-cn/wiki/test-harness/)** 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它为自动化[测试执行](/zh-cn/wiki/test-execution/) 提供了受控且一致的环境。它可以独立于系统的其余部分来验证软件组件，从而确保测试的可重复性和可靠性。通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和评估，[测试工具](/zh-cn/wiki/test-harness/) 可以实现自动化结果[verification](/zh-cn/wiki/verification/)，减少人工监督的需要并最大限度地减少人为错误。
+**[测试工具](/zh-cn/wiki/test-harness/)** 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它为自动化[测试执行](/zh-cn/wiki/test-execution/) 提供了受控且一致的环境。它可以独立于系统的其余部分来验证软件组件，从而确保测试的可重复性和可靠性。通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和评估，[测试工具](/zh-cn/wiki/test-harness/) 可以实现自动化结果[验证 ](/zh-cn/wiki/verification/)，减少人工监督的需要并最大限度地减少人为错误。
   [测试工具](/zh-cn/wiki/test-harness/) 的重要性延伸到其在促进持续集成和交付 (CI/CD) 管道方面的作用。它可以与构建系统和版本控制集成，在代码提交时自动触发测试，确保立即反馈更改的影响。
   此外，[测试工具](/zh-cn/wiki/test-harness/) 通过提供必要的基础设施来模拟接口、消除外部依赖性和管理[测试数据](/zh-cn/wiki/test-data/)，支持从单元到集成的各种级别的测试。这种灵活性对于复杂系统的彻底测试至关重要。
   在[回归测试](/zh-cn/wiki/regression-testing/) 上下文中，[测试工具](/zh-cn/wiki/test-harness/) 是必不可少的。它可以针对新软件版本自动重新运行测试，以检测意外的更改或副作用，从而确保软件随时间的稳定性。

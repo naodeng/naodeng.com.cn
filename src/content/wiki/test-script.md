@@ -159,11 +159,11 @@ order: 0
   5. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用所选工具的脚本语言或通用编程语言开发脚本。这通常包括：
     - **初始化**：设置测试的任何先决条件。
     - **执行步骤**：将手动测试步骤转换为自动指令。
-    - **[Verification](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
+    - **[验证 ](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
     - **Teardown** ：测试执行后清理，例如关闭应用程序或连接。
     - **初始化**：设置测试的任何先决条件。
     - **执行步骤**：将手动测试步骤转换为自动指令。
-    - **[Verification](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
+    - **[验证 ](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
     - **Teardown** ：测试执行后清理，例如关闭应用程序或连接。
   6. **参数化输入**：如果适用，使用外部数据源来驱动数据驱动测试的测试输入。
   7. **审查和重构**：评估脚本的可读性、[可维护性](/zh-cn/wiki/maintainability/) 以及对最佳实践的遵守情况。
@@ -187,11 +187,11 @@ order: 0
   5. **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用所选工具的脚本语言或通用编程语言开发脚本。这通常包括：
     - **初始化**：设置测试的任何先决条件。
     - **执行步骤**：将手动测试步骤转换为自动指令。
-    - **[Verification](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
+    - **[验证 ](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
     - **Teardown** ：测试执行后清理，例如关闭应用程序或连接。
     - **初始化**：设置测试的任何先决条件。
     - **执行步骤**：将手动测试步骤转换为自动指令。
-    - **[Verification](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
+    - **[验证 ](/zh-cn/wiki/verification/) 点**：断言特定阶段的预期结果。
     - **Teardown** ：测试执行后清理，例如关闭应用程序或连接。
   6. **参数化输入**：如果适用，使用外部数据源来驱动数据驱动测试的测试输入。
   7. **审查和重构**：评估脚本的可读性、[可维护性](/zh-cn/wiki/maintainability/) 以及对最佳实践的遵守情况。
@@ -209,7 +209,7 @@ order: 0
   5. **运行测试**：使用所选自动化工具执行[测试脚本](/zh-cn/wiki/test-script/)。这可以通过命令行、[test runner](/zh-cn/wiki/test-runner/) 或持续集成 (CI) 管道启动。
   6. **监控**：观察[测试执行](/zh-cn/wiki/test-execution/)以捕获任何直接问题，例如崩溃或意外行为。
   7. **结果收集**：收集测试运行的结果，其中可能包括日志、屏幕截图和输出文件。
-  8. **[Verification](/zh-cn/wiki/verification/)**：根据[预期结果](/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
+  8. **[验证 ](/zh-cn/wiki/verification/)**：根据[预期结果](/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
   9. **报告**：生成总结[测试执行](/zh-cn/wiki/test-execution/)的报告，提供有关成功、失败和其他相关指标的详细信息。
   10. **清理**：将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试做好准备。
   11. **分析**：查看测试结果和日志，以确定 [测试脚本](/zh-cn/wiki/test-script/) 或被测应用程序中的任何缺陷或需要改进的地方。
@@ -222,7 +222,7 @@ order: 0
   5. **运行测试**：使用所选自动化工具执行[测试脚本](/zh-cn/wiki/test-script/)。这可以通过命令行、[test runner](/zh-cn/wiki/test-runner/) 或持续集成 (CI) 管道启动。
   6. **监控**：观察[测试执行](/zh-cn/wiki/test-execution/)以捕获任何直接问题，例如崩溃或意外行为。
   7. **结果收集**：收集测试运行的结果，其中可能包括日志、屏幕截图和输出文件。
-  8. **[Verification](/zh-cn/wiki/verification/)**：根据[预期结果](/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
+  8. **[验证 ](/zh-cn/wiki/verification/)**：根据[预期结果](/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
   9. **报告**：生成总结[测试执行](/zh-cn/wiki/test-execution/)的报告，提供有关成功、失败和其他相关指标的详细信息。
   10. **清理**：将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试做好准备。
   11. **分析**：查看测试结果和日志，以确定 [测试脚本](/zh-cn/wiki/test-script/) 或被测应用程序中的任何缺陷或需要改进的地方。
@@ -629,7 +629,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 #### 测试脚本在回归测试中的作用是什么？
 
 在[回归测试](/zh-cn/wiki/regression-testing/) 中，[测试脚本](/zh-cn/wiki/test-script/) 用作自动检查，以确保最近的代码更改不会对现有功能产生不利影响。它们对于在增强、修补或配置更改等修改后**验证软件的稳定性**至关重要。
-  [测试脚本](/zh-cn/wiki/test-script/) 自动执行每个新版本或[迭代](/zh-cn/wiki/iteration/) 必须运行的重复但必要的测试，提供[verification](/zh-cn/wiki/verification/) 的**快速且一致的**方法。这对于 [回归测试](/zh-cn/wiki/regression-testing/) 来说尤其重要，其目标是快速识别意外的副作用。
+  [测试脚本](/zh-cn/wiki/test-script/) 自动执行每个新版本或[迭代](/zh-cn/wiki/iteration/) 必须运行的重复但必要的测试，提供[验证 ](/zh-cn/wiki/verification/) 的**快速且一致的**方法。这对于 [回归测试](/zh-cn/wiki/regression-testing/) 来说尤其重要，其目标是快速识别意外的副作用。
   通过利用[测试脚本](/zh-cn/wiki/test-script/)，团队可以在更短的时间内执行大量测试，从而实现更高效的测试周期。它们通过与构建系统集成来实现持续集成和交付，以便在提交更改时自动运行测试。
   此外，[回归测试](/zh-cn/wiki/regression-testing/) 中的[测试脚本](/zh-cn/wiki/test-script/) 有助于维护系统预期行为的**动态文档**。它们充当安全网，可以在开发周期的早期捕获回归，从而降低 [bugs](/zh-cn/wiki/bug/) 投入生产的风险。
   自动化的 [测试脚本](/zh-cn/wiki/test-script/) 还可以轻松重复，并且可以在多种环境和配置上运行，确保应用程序在不同场景中按预期运行。

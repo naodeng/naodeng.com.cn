@@ -61,7 +61,7 @@ order: 0
 
 测试预言机在 [软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它是验证测试结果正确性的**真相来源**。它确定被测系统的行为是否符合[预期结果](/zh-cn/wiki/expected-result/)，这对于评估软件的可靠性和功能至关重要。
   如果没有测试预言机，测试人员将缺乏系统的方法来**验证测试结果**，从而导致主观判断和不一致的测试结果。这可能会导致未检测到的缺陷，增加生产失败的风险，并最终损害用户满意度和商业声誉。
-  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[verification](/zh-cn/wiki/verification/)** 的自动化，减少对手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
+  在[自动化测试](/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[验证 ](/zh-cn/wiki/verification/)** 的自动化，减少对手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
   此外，明确定义的测试预言机可以改进测试[可维护性](/zh-cn/wiki/maintainability/)并减少[误报](/zh-cn/wiki/false-positive/)或否定的可能性，这是[测试自动化](/zh-cn/wiki/test-automation/)中的常见挑战。通过明确指定预期行为，它有助于创建更“稳健”和“可靠”的自动化测试。
   综上所述，测试预言机对于确保自动化测试准确反映软件的预期行为是必不可少的，从而在高质量软件产品的交付中发挥着关键作用。
 
@@ -246,7 +246,7 @@ order: 0
     const expectedOutcome = "Success message displayed";
     ```
 
-2. **自动化[Verification](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
+2. **自动化[验证 ](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
 
     ```
     assert(actualOutcome === expectedOutcome);
@@ -286,7 +286,7 @@ order: 0
     const expectedOutcome = "Success message displayed";
     ```
 
-2. **自动化[Verification](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
+2. **自动化[验证 ](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
 
     ```
     assert(actualOutcome === expectedOutcome);
@@ -533,7 +533,7 @@ order: 0
 [测试预言机](/zh-cn/wiki/test-oracles/) 有几个限制，可能会影响它们在 [软件测试](/zh-cn/wiki/software-testing/) 中的有效性：
 
 - **模糊性**：预言机可能并不总是提供清晰或精确的预期结果，导致测试结果解释的不确定性。
-- **部分[verification](/zh-cn/wiki/verification/)** ：某些 Oracle 只能验证软件行为的子集，可能会遗漏未验证区域中的缺陷。
+- **部分[验证 ](/zh-cn/wiki/verification/)** ：某些 Oracle 只能验证软件行为的子集，可能会遗漏未验证区域中的缺陷。
 - **复杂性**：复杂的系统可能需要同样复杂的预言机，这可能很难创建和维护。
 - **演变**：随着软件的演变，必须更新预言机以反映变化，这可能非常耗时且容易出错。
 - **主观性**：基于人的预言机，如专家意见，可能会引入主观性，导致结果不一致。
@@ -543,7 +543,7 @@ order: 0
   为了减轻这些限制，结合多个预言机、不断审查和更新预言机并将它们与其他测试方法一起使用非常重要。此外，自动化 Oracle 更新并针对复杂或主观场景采用启发式 Oracle 可以帮助应对这些挑战。
 
 - **模糊性**：预言机可能并不总是提供清晰或精确的预期结果，导致测试结果解释的不确定性。
-- **部分[verification](/zh-cn/wiki/verification/)** ：某些 Oracle 只能验证软件行为的子集，可能会遗漏未验证区域中的缺陷。
+- **部分[验证 ](/zh-cn/wiki/verification/)** ：某些 Oracle 只能验证软件行为的子集，可能会遗漏未验证区域中的缺陷。
 - **复杂性**：复杂的系统可能需要同样复杂的预言机，这可能很难创建和维护。
 - **演变**：随着软件的演变，必须更新预言机以反映变化，这可能非常耗时且容易出错。
 - **主观性**：基于人的预言机，如专家意见，可能会引入主观性，导致结果不一致。

@@ -304,7 +304,7 @@ order: 0
 
 #### 功能需求如何验证和确认？
 
-[功能需求](/zh-cn/wiki/functional-requirements/) 通过 **[手动测试](/zh-cn/wiki/manual-testing/)** 和 **[自动化测试](/zh-cn/wiki/automated-testing/)** 的组合进行验证和验证。 [Verification](/zh-cn/wiki/verification/) 确保产品正确构建，符合指定要求，而验证则确认构建了正确的产品，满足用户需求。
+[功能需求](/zh-cn/wiki/functional-requirements/) 通过 **[手动测试](/zh-cn/wiki/manual-testing/)** 和 **[自动化测试](/zh-cn/wiki/automated-testing/)** 的组合进行验证和验证。 [验证 ](/zh-cn/wiki/verification/) 确保产品正确构建，符合指定要求，而验证则确认构建了正确的产品，满足用户需求。
   **自动[测试脚本](/zh-cn/wiki/test-script/)** 被写入以匹配[功能需求](/zh-cn/wiki/functional-requirements/)。这些脚本使用断言来检查软件是否按预期运行。例如：
 
   ```
@@ -321,8 +321,8 @@ order: 0
       Then the user is redirected to the dashboard
   ```
 **[探索性测试](/zh-cn/wiki/exploratory-testing/)** 通过允许测试人员以脚本可能无法涵盖的方式验证需求来补充自动化，从而确保人的视角。
-  **代码审查**和**结对编程**是通过对照预期功能仔细检查代码来帮助早期[verification](/zh-cn/wiki/verification/) 需求的实践。
-  **持续集成 (CI)** 系统对新代码提交运行自动化测试，提供有关 [功能需求](/zh-cn/wiki/functional-requirements/) 的 [verification](/zh-cn/wiki/verification/) 状态的即时反馈。
+  **代码审查**和**结对编程**是通过对照预期功能仔细检查代码来帮助早期[验证 ](/zh-cn/wiki/verification/) 需求的实践。
+  **持续集成 (CI)** 系统对新代码提交运行自动化测试，提供有关 [功能需求](/zh-cn/wiki/functional-requirements/) 的 [验证 ](/zh-cn/wiki/verification/) 状态的即时反馈。
   为了克服验证方面的挑战，请保持需求、测试和代码之间的**可追溯性**。使用 **[测试覆盖率](/zh-cn/wiki/test-coverage/) 工具** 确保测试所有要求。定期**审查和更新[测试用例](/zh-cn/wiki/test-case/)**以适应不断变化的需求。让[验收测试](/zh-cn/wiki/acceptance-testing/) 的**利益相关者**参与进来，根据现实场景和期望来验证软件。
 
 #### e2e 测试在功能需求验证中扮演什么角色？

@@ -187,7 +187,7 @@ order: 0
 - **[CMMI](/zh-cn/wiki/cmmi/)（能力成熟度模型集成）**：不是正式的 ISO 标准，而是广泛认可的流程改进框架，包括开发、维护和改进 [软件质量](/zh-cn/wiki/software-quality/) 流程的指南。
 - **IEEE 730**：该标准提供了软件质量保证计划的指南，详细说明了确保 [软件质量](/zh-cn/wiki/software-quality/) 的流程和活动。
 - **[IEEE 829](/zh-cn/wiki/ieee-829/)**：被称为软件测试文档的标准，它概述了软件测试期间应生成的可交付成果。
-- **IEEE 1012**：该标准涵盖[verification](/zh-cn/wiki/verification/) 和验证过程，提供软件生命周期每个阶段的要求。
+- **IEEE 1012**：该标准涵盖[验证 ](/zh-cn/wiki/verification/) 和验证过程，提供软件生命周期每个阶段的要求。
   这些标准指导[测试自动化](/zh-cn/wiki/test-automation/) 工程师建立和维护[质量管理](/zh-cn/wiki/quality-management/) 实践，确保软件满足所需的质量基准。
 
 - **ISO/IEC 25010**：该标准定义了软件产品质量和系统质量的模型，描述了软件应满足的各种特性和子特性。
@@ -197,7 +197,7 @@ order: 0
 - **[CMMI](/zh-cn/wiki/cmmi/)（能力成熟度模型集成）**：不是正式的 ISO 标准，而是广泛认可的流程改进框架，包括开发、维护和改进 [软件质量](/zh-cn/wiki/software-quality/) 流程的指南。
 - **IEEE 730**：该标准提供了软件质量保证计划的指南，详细说明了确保 [软件质量](/zh-cn/wiki/software-quality/) 的流程和活动。
 - **[IEEE 829](/zh-cn/wiki/ieee-829/)**：被称为软件测试文档的标准，它概述了软件测试期间应生成的可交付成果。
-- **IEEE 1012**：该标准涵盖[verification](/zh-cn/wiki/verification/) 和验证过程，提供软件生命周期每个阶段的要求。
+- **IEEE 1012**：该标准涵盖[验证 ](/zh-cn/wiki/verification/) 和验证过程，提供软件生命周期每个阶段的要求。
 
 #### 软件质量管理的最佳实践是什么？
 

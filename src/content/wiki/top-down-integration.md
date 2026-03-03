@@ -198,7 +198,7 @@ order: 0
 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 和[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 是[软件测试](/zh-cn/wiki/software-testing/) 的两种相反的方法。
   **[自上而下的集成](/zh-cn/wiki/top-down-integration/)** 从测试顶级模块（通常是用户界面或高级逻辑）开始，并逐步集成较低级别的模块。存根或虚拟模块用于模拟尚未集成或开发的较低级别模块的行为。
   另一方面，**[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)** 从最低级别模块的集成开始，例如实用程序函数或[数据库](/zh-cn/wiki/database/) 交互，然后向上延伸到用户界面。驱动程序是临时代码模块，用于模拟尚未集成的高级模块。
-  主要区别在于**集成顺序**和使用的**测试双打类型**。自上而下有利于主要功能和用户流程的早期[verification](/zh-cn/wiki/verification/)，而自下而上则允许在将基础组件合并到系统更广泛的结构之前对其进行彻底测试。自下而上还可以促进较低级别模块的并行开发和测试。
+  主要区别在于**集成顺序**和使用的**测试双打类型**。自上而下有利于主要功能和用户流程的早期[验证 ](/zh-cn/wiki/verification/)，而自下而上则允许在将基础组件合并到系统更广泛的结构之前对其进行彻底测试。自下而上还可以促进较低级别模块的并行开发和测试。
   在实践中，通常采用结合两种方法的**混合方法**来充分利用每种方法的优势。这可能涉及自上而下集成关键模块，同时自下而上组装实用组件，最终在中间相遇。该策略可以优化[测试覆盖率](/zh-cn/wiki/test-coverage/)和效率，特别是在依赖关系错综复杂的复杂系统中。
 
 #### 实施自上而下的集成面临哪些挑战以及如何缓解这些挑战？
@@ -323,7 +323,7 @@ order: 0
   在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 之后合并 **[系统测试](/zh-cn/wiki/system-testing/)** 可确保系统满足指定的要求并整体按预期运行。此步骤至关重要，因为它在模拟生产环境中验证系统的功能、性能和安全性。
   **[验收测试](/zh-cn/wiki/acceptance-testing/)** 可以遵循，其中测试系统的可接受性。它确保系统与其他系统的集成和交互满足最终用户的要求和业务目标。
   在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 中使用**模拟和存根**对于模拟尚未集成或开发的较低级别模块的行为至关重要。这允许测试顶层的集成，而无需等待整个系统完成。
-  在**CI/CD 管道**中，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 可以在合并新代码时自动运行集成测试，从而确保系统完整性的持续[verification](/zh-cn/wiki/verification/)。
+  在**CI/CD 管道**中，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 可以在合并新代码时自动运行集成测试，从而确保系统完整性的持续[验证 ](/zh-cn/wiki/verification/)。
   最后，在集成新模块时应定期执行**[回归测试](/zh-cn/wiki/regression-testing/)**，以确保新更改不会对现有功能产生不利影响。
   通过将 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 与这些方法相结合，您可以实现稳健、系统的测试方法，从而增强早期缺陷检测、系统可靠性和[软件质量](/zh-cn/wiki/software-quality/)。
 

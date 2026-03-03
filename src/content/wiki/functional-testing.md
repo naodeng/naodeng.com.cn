@@ -93,7 +93,7 @@ order: 0
 
 [功能测试](/zh-cn/wiki/functional-testing/) 的好处包括：
 
-- **[Verification](/zh-cn/wiki/verification/) 规格**：确保软件按照指定要求运行。
+- **[验证 ](/zh-cn/wiki/verification/) 规格**：确保软件按照指定要求运行。
 - **用户体验**：验证最终用户是否可以按预期使用应用程序的特性和功能。
 - **风险缓解**：尽早识别功能问题，降低发布后出现缺陷的风险。
 - **[质量保证](/zh-cn/wiki/quality-assurance/)** ：通过检查正确的行为来提高产品的整体质量。
@@ -105,7 +105,7 @@ order: 0
 - **自动化**：支持自动化，这可以带来更快的发布周期和更高效的资源利用。
   通过关注用户的观点，[功能测试](/zh-cn/wiki/functional-testing/) 在提供可靠且用户友好的产品方面发挥着关键作用。
 
-- **[Verification](/zh-cn/wiki/verification/) 规格**：确保软件按照指定要求运行。
+- **[验证 ](/zh-cn/wiki/verification/) 规格**：确保软件按照指定要求运行。
 - **用户体验**：验证最终用户是否可以按预期使用应用程序的特性和功能。
 - **风险缓解**：尽早识别功能问题，降低发布后出现缺陷的风险。
 - **[质量保证](/zh-cn/wiki/quality-assurance/)** ：通过检查正确的行为来提高产品的整体质量。

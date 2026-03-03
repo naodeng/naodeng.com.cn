@@ -69,7 +69,7 @@ order: 0
 [测试存根](/zh-cn/wiki/test-stub/) 和模拟对象都在 [单元测试](/zh-cn/wiki/unit-testing/) 中用于模拟依赖关系，但它们有不同的目的并在不同的上下文中使用。
   **[测试存根](/zh-cn/wiki/test-stub/)** 是返回硬编码数据的简单实现。它们主要用于通过用可预测和可控的替代品替换复杂、不可用或不确定的组件来隔离被测系统。存根通常没有任何断言；他们是被动的，只提供预设的回复。
   另一方面，**模拟对象**更加复杂。它们用于验证被测系统与其依赖项之间的交互。模拟可以根据期望进行编程，这意味着它们可以断言是否使用正确的参数、正确的次数或以正确的顺序调用它们。它们是活跃的，因为如果预期的交互没有发生，它们可能会导致测试失败。
-  总之，虽然 [测试存根](/zh-cn/wiki/test-stub/) 可用于模拟返回一组固定数据的数据源，但模拟对象将用于确保一个方法调用具有特定参数的另一个方法。模拟是关于行为[verification](/zh-cn/wiki/verification/)，而存根是关于状态[verification](/zh-cn/wiki/verification/)。
+  总之，虽然 [测试存根](/zh-cn/wiki/test-stub/) 可用于模拟返回一组固定数据的数据源，但模拟对象将用于确保一个方法调用具有特定参数的另一个方法。模拟是关于行为[验证 ](/zh-cn/wiki/verification/)，而存根是关于状态[验证 ](/zh-cn/wiki/verification/)。
   这是一个简单的例子来说明差异：
 
   ```
@@ -234,7 +234,7 @@ order: 0
 - **简化逻辑**：它们包含最少的逻辑，仅足以使测试通过。
 - **接口实现**：存根必须遵守它们所替换的组件的接口。
 - **配置**：可以将它们配置为针对不同的输入返回不同的输出，以模拟各种场景。
-- **状态[Verification](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
+- **状态[验证 ](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
 - **错误模拟**：它们可以设计为通过返回错误代码或引发异常来模拟错误条件。
 - **性能**：存根可以是轻量级的，以减少测试中的性能开销。
 
@@ -257,7 +257,7 @@ order: 0
 - **简化逻辑**：它们包含最少的逻辑，仅足以使测试通过。
 - **接口实现**：存根必须遵守它们所替换的组件的接口。
 - **配置**：可以将它们配置为针对不同的输入返回不同的输出，以模拟各种场景。
-- **状态[Verification](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
+- **状态[验证 ](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
 - **错误模拟**：它们可以设计为通过返回错误代码或引发异常来模拟错误条件。
 - **性能**：存根可以是轻量级的，以减少测试中的性能开销。
 - **集成**：存根应轻松与测试套件集成，不需要大量设置。
@@ -524,7 +524,7 @@ order: 0
         monkeypatch.setattr('module.Service.operation', mock_operation)
     ```
 
-- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[verification](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
+- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
 
     ```
     const sinon = require('sinon');
@@ -567,7 +567,7 @@ order: 0
         monkeypatch.setattr('module.Service.operation', mock_operation)
     ```
 
-- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[verification](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
+- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
 
     ```
     const sinon = require('sinon');

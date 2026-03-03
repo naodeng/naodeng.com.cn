@@ -166,7 +166,7 @@ gherkin 是一种特定于领域的语言，主要用于行为驱动开发（BDD
       When the user enters invalid credentials
       Then an error message is displayed
   ```
-场景中的每个步骤都应该是一个简单的语句，可以与[测试自动化](/zh-cn/wiki/test-automation/) 框架中的步骤定义相匹配，其中包含执行步骤所描述的操作或[verification](/zh-cn/wiki/verification/) 的代码。 [gherkin](/zh-cn/wiki/gherkin/) 的语法被设计为易于编写和理解，弥合了软件开发过程中技术和非技术参与者之间的差距。
+场景中的每个步骤都应该是一个简单的语句，可以与[测试自动化](/zh-cn/wiki/test-automation/) 框架中的步骤定义相匹配，其中包含执行步骤所描述的操作或[验证 ](/zh-cn/wiki/verification/) 的代码。 [gherkin](/zh-cn/wiki/gherkin/) 的语法被设计为易于编写和理解，弥合了软件开发过程中技术和非技术参与者之间的差距。
 
 #### Gherkin 中使用了哪些不同的关键字以及它们的含义是什么？
 

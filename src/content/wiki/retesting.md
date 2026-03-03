@@ -59,7 +59,7 @@ order: 0
   相比之下，**[回归测试](/zh-cn/wiki/regression-testing/)** 的范围更广泛。它旨在确认最近的更改（例如 [bug](/zh-cn/wiki/bug/) 修复或功能添加）并未对现有功能产生不利影响。运行回归测试是为了确保软件在修改后继续按预期运行。
   [重新测试](/zh-cn/wiki/retesting/) 关注的是确认特定修复的有效性，而[回归测试](/zh-cn/wiki/regression-testing/) 关注的是更新后维护整体软件完整性。自动化在这两者中都发挥着至关重要的作用，特别是在[回归测试](/zh-cn/wiki/regression-testing/) 中，测试的重复性使得自动化非常有益。
   在测试周期中，[重新测试](/zh-cn/wiki/retesting/) 通常在[回归测试](/zh-cn/wiki/regression-testing/) 之前执行。一旦失败的[测试用例](/zh-cn/wiki/test-case/)被重新执行并通过，[回归测试](/zh-cn/wiki/regression-testing/)就可以继续确保没有在应用程序的其他地方引入新的问题。
-  总之，**[重新测试](/zh-cn/wiki/retesting/)** 是修复[verification](/zh-cn/wiki/verification/)，而 **[回归测试](/zh-cn/wiki/regression-testing/)** 是变更影响评估。两者对于交付稳定可靠的软件产品都是必不可少的，但它们在 [测试自动化](/zh-cn/wiki/test-automation/) 框架中具有不同的用途。
+  总之，**[重新测试](/zh-cn/wiki/retesting/)** 是修复[验证 ](/zh-cn/wiki/verification/)，而 **[回归测试](/zh-cn/wiki/regression-testing/)** 是变更影响评估。两者对于交付稳定可靠的软件产品都是必不可少的，但它们在 [测试自动化](/zh-cn/wiki/test-automation/) 框架中具有不同的用途。
 
 #### 复试的主要目的是什么？
 
