@@ -22,6 +22,7 @@
     "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",
     "wiki:clean:check": "node scripts/wiki-markdown-cleaner.mjs --check",
     "wiki:clean": "node scripts/wiki-markdown-cleaner.mjs --write",
+    "wiki:toc:refresh": "node scripts/refresh-wiki-toc.mjs",
     "wiki:style:check": "node scripts/wiki-markdown-style-check.mjs",
     "wiki:style:check:strict": "node scripts/wiki-markdown-style-check.mjs --strict",
     "wiki:style:fix": "node scripts/wiki-markdown-style-fix.mjs",
