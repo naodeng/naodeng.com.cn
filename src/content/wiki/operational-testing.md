@@ -3,11 +3,12 @@ title: "运维测试 ｜ Operational Testing"
 description: "运维测试是一个阶段，在该阶段中，软件在**真实环境**下进行评估，以确保其满足预期用途的必要要求。这是一种**现场测试**，发生在高度模拟生产设置的环境中，涉及真实用户和实时数据。这一阶段对于识别受控**测试环境**中可能无法显现的问题（如与系统可靠性、安全性和维护相关的问题）至关重要。"
 section: "O"
 related:
-  - manual-testing
   - automated-testing
   - web-testing
+  - manual-testing
   - test-data
-  - test-suite
+  - validation-testing
+  - orthogonal-array-testing
 order: 0
 ---
 
@@ -72,8 +73,7 @@ order: 0
 - **目标**：主要目标是随着时间的推移评估系统的**可靠性和稳定性**，这通常不是其他优先在发布前发现缺陷的测试类型的重点。
 - **用户模拟**：[操作测试](/zh-cn/wiki/operational-testing/) 通常涉及**隐藏实时流量**或**金丝雀发布**，这些技术在 [发布测试](/zh-cn/wiki/release-testing/) 之前阶段不常用。
 - **监控和指标**：它严重依赖**监控工具**和**性能指标**来评估系统，而其他测试可能更多地关注特定功能的通过/失败标准。
-- **反馈循环**：[操作测试](/zh-cn/wiki/operational-testing/) 的发现可以导致在实时环境中立即采取行动，例如修补程序或回滚，而其他测试则在部署之前通知开发和 QA 团队。
-  总之，[操作测试](/zh-cn/wiki/operational-testing/) 在确保软件弹性和部署后用户满意度的现实方法中是独一无二的，补充了 SDLC 早期进行的更受控制和假设的测试场景。
+- **反馈循环**：[操作测试](/zh-cn/wiki/operational-testing/) 的发现可以导致在实时环境中立即采取行动，例如修补程序或回滚，而其他测试则在部署之前通知开发和 QA 团队。 总之，[操作测试](/zh-cn/wiki/operational-testing/) 在确保软件弹性和部署后用户满意度的现实方法中是独一无二的，补充了 SDLC 早期进行的更受控制和假设的测试场景。
 
 - **环境**：[操作测试](/zh-cn/wiki/operational-testing/) 在非常模仿生产设置的环境中执行，包括硬件、网络配置和外部依赖项，而其他测试可能使用简化或模拟的环境。
 - **数据**：它使用**真实数据**和**工作负载模式**来模拟实际用户行为，与[功能测试](/zh-cn/wiki/functional-testing/)中的合成[测试用例](/zh-cn/wiki/test-case/)形成鲜明对比。
@@ -101,11 +101,11 @@ order: 0
   一旦建立了配置文件，您就可以**设计反映已识别的使用模式的测试**。这确保了最重要和最常用的功能得到更严格的测试。例如，如果数据显示某个特定功能的使用时间为 80%，则该功能的 [测试用例](/zh-cn/wiki/test-case/) 应在 [测试套件](/zh-cn/wiki/test-suite/) 中更频繁地执行。
   将操作配置文件合并到自动[测试脚本](/zh-cn/wiki/test-script/) 中是通过调整[测试用例](/zh-cn/wiki/test-case/) 执行的频率和顺序以匹配实际使用情况来完成的。这可以通过以下方式实现：
 
-  ```
+```
   // Pseudocode for prioritizing test cases based on operational profile
   testSuite.sortByUsageFrequency();
   testSuite.executeTests();
-  ```
+```
 通过将 [测试自动化](/zh-cn/wiki/test-automation/) 与操作配置文件保持一致，您可以确保测试工作集中在最具影响力的领域，从而获得更可靠和相关的测试结果。
 
 #### 故障强度在操作测试中的作用是什么？
@@ -138,8 +138,7 @@ order: 0
 8. **报告结果**：记录结果，包括任何缺陷或性能问题，并将其传达给开发团队。
 9. **调整[测试用例](/zh-cn/wiki/test-case/)/环境**：根据发现修改[测试用例](/zh-cn/wiki/test-case/) 或环境[环境搭建](/zh-cn/wiki/setup/) 以更好地反映操作条件。
 10. **迭代**：重复测试周期、细化场景和[测试用例](/zh-cn/wiki/test-case/)，直到系统满足性能和可靠性标准。
-11. **最终审查**：进行最终评估，以确保所有关键场景都经过测试并且系统已准备好部署。
-  在整个这些步骤中，重点关注系统处理生产环境中的预期负载和用户行为的能力。战略性地使用自动化来有效地复制用户操作和系统流程。
+11. **最终审查**：进行最终评估，以确保所有关键场景都经过测试并且系统已准备好部署。 在整个这些步骤中，重点关注系统处理生产环境中的预期负载和用户行为的能力。战略性地使用自动化来有效地复制用户操作和系统流程。
 
 #### 运行测试的运行环境是如何设置的？
 
@@ -153,8 +152,7 @@ order: 0
 - **监控工具**：集成监控和日志记录工具以捕获测试期间的系统行为和性能指标。
 - **备份和恢复**：建立备份和恢复程序，以便在发生故障时快速恢复环境。
 - **安全设置**：应用与生产环境相同的安全配置和补丁。
-- **文档**：维护环境 [环境搭建](/zh-cn/wiki/setup/) 的详细文档，以确保一致性和可重复性。
-  以下是自动化部分环境 [环境搭建](/zh-cn/wiki/setup/) 的脚本片段示例：
+- **文档**：维护环境 [环境搭建](/zh-cn/wiki/setup/) 的详细文档，以确保一致性和可重复性。 以下是自动化部分环境 [环境搭建](/zh-cn/wiki/setup/) 的脚本片段示例：
 
 # Install application dependencies
 apt-get install -y dependency1 dependency2
@@ -191,8 +189,7 @@ cd repository-directory
 - **维护和更新**：计划测试系统维护程序，包括更新和补丁，以确保它们不会中断操作。
 - **法规遵从性**：验证系统在运行过程中是否符合相关法规和标准。
 - **自动化适用性**：确定自动化可以提高测试效率和可靠性的领域，同时识别可能需要手动测试的场景。
-- **反馈循环**：建立反馈循环，根据生产中遇到的操作问题不断改进测试场景。
-  通过关注这些因素，您可以设计有效验证系统是否适合实际使用的操作测试。
+- **反馈循环**：建立反馈循环，根据生产中遇到的操作问题不断改进测试场景。 通过关注这些因素，您可以设计有效验证系统是否适合实际使用的操作测试。
 
 #### 如何分析和解释操作测试结果？
 
@@ -201,13 +198,13 @@ cd repository-directory
   **根本原因分析**是在发现故障或问题时进行的。这涉及深入研究日志、跟踪和系统指标，以了解问题的根本原因。自动化工具可以帮助筛选大量数据，以查明与故障相关的异常或模式。
   **反馈循环**至关重要； [操作测试](/zh-cn/wiki/operational-testing/) 的结果应反馈给开发和 QA 团队，为未来的开发和测试工作提供信息。这可以增强软件的可靠性、性能和[可维护性](/zh-cn/wiki/maintainability/)。
 
-  ```
+```
   // Example of a simple trend analysis using a code snippet
   const analyzeTrends = (dataPoints) => {
     // Perform statistical analysis to identify trends
     return trendResults;
   };
-  ```
+```
 最终，我们的目标是利用从[操作测试](/zh-cn/wiki/operational-testing/)获得的见解来**优化系统在实际操作环境中的性能**和**可靠性**，确保它能够优雅地处理预期和意外的情况。
 
 ### 工具和最佳实践
@@ -218,73 +215,71 @@ cd repository-directory
 
 - **Nagios**：一种监控系统、网络和基础设施的开源工具。为服务器、交换机、应用程序和服务提供警报服务。
 
-  ```
+```
   nagios -v /usr/local/nagios/etc/nagios.cfg
-  ```
+```
 
 - **Grafana**：提供用于分析和监控的仪表板。它可以连接到多个数据源，例如 Prometheus 和 Elasticsearch。
 
-  ```
+```
   {
     "dashboard": {
       "id": null,
       "title": "Production Overview"
     }
   }
-  ```
+```
 
 - **Prometheus**：一个开源监控系统，具有维度数据模型、灵活的查询语言和警报功能。
 
-  ```
+```
   global:
     scrape_interval: 15s
-  ```
+```
 
-- **ELK 堆栈**
-    （Elasticsearch、Logstash、Kibana）：用于实时搜索、分析和可视化日志数据。
+- **ELK 堆栈** （Elasticsearch、Logstash、Kibana）：用于实时搜索、分析和可视化日志数据。
 
-  ```
+```
   {
     "query": {
       "match_all": {}
     }
   }
-  ```
+```
 
 - **New Relic**：基于云的可观察性平台，可帮助跟踪和优化应用程序的性能。
 
-  ```
+```
   newrelic.recordCustomEvent('OperationalTest', { 'success': true });
-  ```
+```
 
 - **Datadog**：针对云规模应用程序的监控服务，通过基于 SaaS 的数据分析平台提供对服务器、数据库、工具和服务的监控。
 
-  ```
+```
   init_config:
   instances:
 - min_collection_interval: 45
-  ```
+```
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化网络浏览器。对于端到端操作测试场景很有用。
 
-  ```
+```
   WebDriver driver = new ChromeDriver();
   driver.get("http://www.example.com");
-  ```
+```
 
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：开源负载测试工具。虽然主要用于性能测试，但它也可以用于模拟网络或服务器的重负载，以测试其强度或分析不同负载类型下的整体性能。
 
-  ```
+```
   <jmeterTestPlan version="1.2">
   </jmeterTestPlan>
-  ```
+```
 这些工具有助于自动化 [操作测试](/zh-cn/wiki/operational-testing/) 流程，确保软件在预期操作条件下良好运行。
 
 - **Nagios**：一种监控系统、网络和基础设施的开源工具。为服务器、交换机、应用程序和服务提供警报服务。
 - **Grafana**：提供用于分析和监控的仪表板。它可以连接到多个数据源，例如 Prometheus 和 Elasticsearch。
 - **Prometheus**：一个开源监控系统，具有维度数据模型、灵活的查询语言和警报功能。
-- **ELK 堆栈**
-    （Elasticsearch、Logstash、Kibana）：用于实时搜索、分析和可视化日志数据。
+- **ELK 堆栈** （Elasticsearch、Logstash、Kibana）：用于实时搜索、分析和可视化日志数据。
 
 - **New Relic**：基于云的可观察性平台，可帮助跟踪和优化应用程序的性能。
 - **Datadog**：针对云规模应用程序的监控服务，通过基于 SaaS 的数据分析平台提供对服务器、数据库、工具和服务的监控。
@@ -304,8 +299,7 @@ cd repository-directory
 - **让跨职能团队参与**：与开发、运营和支持团队合作，以获得对系统行为的不同见解。
 - **记录和审查事件**：详细记录遇到的任何问题并进行审查以改进未来的测试周期。
 - **迭代和完善**：使用[操作测试](/zh-cn/wiki/operational-testing/) 的反馈来完善[测试过程](/zh-cn/wiki/test-process/) 并提高后续版本的质量。
-- **保持技术更新**：及时了解 [操作测试](/zh-cn/wiki/operational-testing/) 中的最新趋势和工具，以增强您的测试策略。
-  通过遵循这些实践，您可以确保[操作测试](/zh-cn/wiki/operational-testing/)彻底、高效、有效地维护生产环境中软件的可靠性和稳定性。
+- **保持技术更新**：及时了解 [操作测试](/zh-cn/wiki/operational-testing/) 中的最新趋势和工具，以增强您的测试策略。 通过遵循这些实践，您可以确保[操作测试](/zh-cn/wiki/operational-testing/)彻底、高效、有效地维护生产环境中软件的可靠性和稳定性。
 
 #### 如何将自动化纳入操作测试？
 
@@ -316,7 +310,7 @@ cd repository-directory
   利用**[性能测试](/zh-cn/wiki/performance-testing/) 工具**自动执行负载和压力测试，确保系统能够满足操作需求。将这些工具与**警报机制**集成，以通知团队在自动化操作测试期间检测到的任何性能问题。
   使用**人工智能和机器学习**算法自动分析测试结果，以快速识别模式并在潜在的操作问题影响用户之前对其进行预测。
 
-  ```
+```
   // Example of an automated script snippet for operational testing
   const { simulateUserActivity, monitorPerformance } = require('operational-test-utils');
   simulateUserActivity('daily-user-workflow')
@@ -325,7 +319,7 @@ cd repository-directory
       console.error('Operational test failed:', error);
       process.exit(1);
     });
-  ```
+```
 通过自动化这些方面，您可以确保 [操作测试](/zh-cn/wiki/operational-testing/) 高效、一致，并集成到常规开发和部署工作流程中。
 
 #### 操作测试中常见的挑战有哪些以及如何缓解这些挑战？
@@ -339,5 +333,4 @@ cd repository-directory
 - **安全问题**：在[操作测试](/zh-cn/wiki/operational-testing/)期间可能会暴露安全缺陷。将**[安全测试](/zh-cn/wiki/security-testing/) 工具**和实践集成到[操作测试](/zh-cn/wiki/operational-testing/) 阶段。
 - **持续变化**：软件更新可能会破坏[操作测试](/zh-cn/wiki/operational-testing/)。采用**持续集成**和**持续部署**（CI/CD）实践来确保测试与开发保持同步。
 - **资源限制**：对环境或数据的访问受限可能会阻碍测试。利用**基于云的环境**和**容器化**来创建可扩展的、按需的[测试环境](/zh-cn/wiki/test-environment/)。
-- **自动化挑战**：由于环境的动态特性，自动化操作测试可能很困难。专注于**模块化测试设计**并使用支持灵活性和可扩展性的**强大的自动化框架**。
-  通过使用有针对性的策略和工具应对这些挑战，[操作测试](/zh-cn/wiki/operational-testing/) 可以更加有效，为系统在现实条件下的运行方式提供有价值的见解。
+- **自动化挑战**：由于环境的动态特性，自动化操作测试可能很困难。专注于**模块化测试设计**并使用支持灵活性和可扩展性的**强大的自动化框架**。 通过使用有针对性的策略和工具应对这些挑战，[操作测试](/zh-cn/wiki/operational-testing/) 可以更加有效，为系统在现实条件下的运行方式提供有价值的见解。

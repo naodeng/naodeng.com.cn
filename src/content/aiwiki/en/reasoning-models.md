@@ -3,7 +3,7 @@ title: "Reasoning Models"
 titleZh: "推理模型"
 slug: "reasoning-models"
 lang: "en"
-summary: "A new generation of AI models optimized for deep thinking and self-correction through built-in Chain of Thought (CoT), specifically designed for complex logic and architectural planning."
+summary: "A new generation of AI models optimized for deep thinking and self-correction through built-in Chain of Thought (CoT)…"
 topic: "ai-vibe-coding"
 aliases:
   - "Reasoning Models"

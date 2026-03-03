@@ -1,121 +1,121 @@
 {
   "A-B-Testing": [
-    "mutation-testing",
-    "manual-testing",
+    "keyword-driven-testing",
     "automated-testing",
-    "web-testing",
-    "test-suite"
+    "test-script",
+    "manual-testing",
+    "test-case"
   ],
   "acceptance-test-driven-development": [
     "acceptance-testing",
     "automated-testing",
+    "validation-testing",
     "manual-testing",
-    "test-suite",
-    "user-acceptance-testing"
+    "web-testing"
   ],
   "acceptance-testing": [
-    "manual-testing",
     "automated-testing",
     "validation-testing",
-    "test-suite",
-    "test-case-management"
+    "manual-testing",
+    "test-case",
+    "web-testing"
   ],
   "accessibility-testing": [
     "front-end-testing",
     "web-testing",
-    "screenshot-testing",
     "lighthouse",
-    "manual-testing"
+    "manual-testing",
+    "screenshot-testing"
   ],
   "actual-result": [
     "test-case",
     "expected-result",
+    "test-comparison",
     "automated-testing",
-    "manual-testing",
-    "test-comparison"
+    "validation-testing"
   ],
   "ad-hoc-testing": [
     "manual-testing",
     "automated-testing",
-    "session-based-testing",
-    "test-suite",
-    "test-case"
+    "test-case",
+    "validation-testing",
+    "web-testing"
   ],
   "agile-development": [
     "scrum",
     "automated-testing",
     "manual-testing",
-    "shift-left-testing",
-    "test-case-management"
+    "validation-testing",
+    "shift-left-testing"
   ],
   "agile-testing": [
-    "defect-management",
     "manual-testing",
     "test-management",
     "quality-management",
-    "test-case-management"
+    "test-case-management",
+    "inspection"
   ],
   "alpha-testing": [
     "manual-testing",
-    "automated-testing",
-    "web-testing",
     "validation-testing",
-    "test-suite"
+    "automated-testing",
+    "test-case",
+    "web-testing"
   ],
   "analytical-test-strategy": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
     "test-case-management",
-    "test-strategy"
+    "test-case",
+    "web-testing"
   ],
   "api-testing": [
     "api",
     "swagger",
     "automated-testing",
-    "manual-testing",
-    "web-testing"
+    "web-testing",
+    "manual-testing"
   ],
   "api": [
-    "api-testing",
     "swagger",
+    "api-testing",
+    "postman",
     "automated-testing",
-    "web-testing",
-    "web-test-automation-tools"
+    "web-testing"
   ],
   "astqb": [
     "istqb",
     "quality-management",
-    "manual-testing",
     "automated-testing",
-    "web-testing"
+    "manual-testing",
+    "validation-testing"
   ],
   "automated-testing": [
     "manual-testing",
-    "test-suite",
+    "test-case",
     "web-testing",
-    "test-case-management",
-    "test-case"
+    "test-script",
+    "test-case-management"
   ],
   "availability-testing": [
     "failover-testing",
     "usability-testing",
-    "manual-testing",
+    "web-testing",
     "automated-testing",
-    "web-testing"
+    "manual-testing"
   ],
   "back-end-testing": [
-    "api-testing",
     "end-to-end-testing",
-    "manual-testing",
+    "api-testing",
+    "test-data",
     "automated-testing",
-    "test-data"
+    "manual-testing"
   ],
   "back-to-back-testing": [
+    "test-case",
     "automated-testing",
     "manual-testing",
-    "test-case",
-    "test-suite",
+    "test-comparison",
     "test-case-management"
   ],
   "backward-compatibility": [
@@ -123,91 +123,91 @@
     "api",
     "web-testing",
     "automated-testing",
-    "api-testing"
+    "validation-testing"
   ],
   "baseline-testing": [
-    "visual-regression-testing",
-    "manual-testing",
     "automated-testing",
-    "screenshot-testing",
-    "test-suite"
+    "manual-testing",
+    "test-case",
+    "web-testing",
+    "visual-regression-testing"
   ],
   "bdd": [
     "automated-testing",
-    "acceptance-testing",
     "use-case-testing",
-    "manual-testing",
-    "gherkin"
+    "acceptance-testing",
+    "gherkin",
+    "validation-testing"
   ],
   "beta-testing": [
     "manual-testing",
     "automated-testing",
     "web-testing",
-    "test-suite",
-    "validation-testing"
+    "validation-testing",
+    "test-case"
   ],
   "big-bang-testing": [
     "manual-testing",
     "automated-testing",
-    "test-case-management",
-    "test-suite",
-    "test-case"
+    "test-case",
+    "web-testing",
+    "validation-testing"
   ],
   "black-box-testing": [
     "grey-box-testing",
-    "manual-testing",
     "glass-box-testing",
-    "automated-testing",
-    "white-box-testing"
+    "manual-testing",
+    "white-box-testing",
+    "automated-testing"
   ],
   "bottom-up-integration": [
-    "integration-testing",
     "incremental-testing",
-    "top-down-integration",
+    "integration-testing",
     "system-integration-testing",
+    "top-down-integration",
     "automated-testing"
   ],
   "boundary-testing": [
-    "edge-testing",
-    "automated-testing",
-    "manual-testing",
     "equivalence-partitioning",
-    "test-case"
+    "edge-testing",
+    "test-case",
+    "automated-testing",
+    "black-box-testing"
   ],
   "browserstack": [
     "cross-browser-testing",
     "web-testing",
     "screenshot-testing",
-    "compatibility-testing",
-    "automated-testing"
+    "automated-testing",
+    "compatibility-testing"
   ],
   "bs-7925-2": [
+    "test-case",
     "manual-testing",
     "automated-testing",
-    "test-case",
     "test-case-management",
-    "test-suite"
+    "validation-testing"
   ],
   "bug": [
     "priority",
     "severity",
     "inspection",
-    "manual-testing",
+    "validation-testing",
     "automated-testing"
   ],
   "build-verification-testing": [
+    "validation-testing",
     "automated-testing",
     "manual-testing",
-    "validation-testing",
     "test-suite",
     "web-testing"
   ],
   "canary-testing": [
+    "web-testing",
     "automated-testing",
     "manual-testing",
-    "web-testing",
-    "release-testing",
-    "test-suite"
+    "validation-testing",
+    "release-testing"
   ],
   "chai-js": [
     "test-automation",
@@ -220,154 +220,154 @@
     "change-requests",
     "automated-testing",
     "regression-testing",
-    "manual-testing",
-    "impact-analysis"
+    "impact-analysis",
+    "test-case"
   ],
   "change-requests": [
     "change-control",
-    "manual-testing",
     "automated-testing",
     "test-case-management",
-    "test-plan"
+    "test-case",
+    "manual-testing"
   ],
   "chaos-engineering": [
     "failover-testing",
     "availability-testing",
-    "fault-injection-testing",
     "robustness-testing",
-    "test-observability"
+    "test-observability",
+    "fault-injection-testing"
   ],
   "clean-slate": [
     "test-data",
     "automated-testing",
+    "web-testing",
     "manual-testing",
-    "test-suite",
-    "web-testing"
+    "test-suite"
   ],
   "cmmi": [
     "quality-management",
-    "test-process-improvement",
     "software-quality-management",
     "quality-assurance",
-    "software-quality"
+    "test-process-improvement",
+    "automated-testing"
   ],
   "code-coverage": [
     "test-coverage",
     "mutation-testing",
-    "automated-testing",
     "glass-box-testing",
-    "manual-testing"
+    "structural-testing",
+    "automated-testing"
   ],
   "compatibility-testing": [
     "browserstack",
-    "cross-browser-testing",
     "web-testing",
+    "cross-browser-testing",
     "automated-testing",
-    "manual-testing"
+    "mobile-device-testing"
   ],
   "concurrency-testing": [
     "web-test-automation-tools",
-    "jmeter",
     "performance-testing",
-    "manual-testing",
-    "automated-testing"
+    "jmeter",
+    "automated-testing",
+    "manual-testing"
   ],
   "control-flow-testing": [
     "path-testing",
     "data-flow-testing",
-    "manual-testing",
-    "automated-testing",
-    "white-box-testing"
+    "test-case",
+    "white-box-testing",
+    "automated-testing"
   ],
   "cross-browser-testing": [
     "browserstack",
     "web-testing",
     "web-automation",
-    "compatibility-testing",
-    "headless-testing"
+    "selenium",
+    "automated-testing"
   ],
   "cypress": [
     "automated-testing",
-    "test-runner",
     "browserstack",
     "web-testing",
-    "web-test-automation-tools"
+    "web-test-automation-tools",
+    "test-runner"
   ],
   "data-flow-testing": [
     "control-flow-testing",
     "test-data",
     "path-testing",
-    "automated-testing",
-    "manual-testing"
+    "white-box-testing",
+    "automated-testing"
   ],
   "database": [
     "sql",
     "test-data",
-    "api-testing",
     "automated-testing",
-    "api"
+    "web-testing",
+    "api-testing"
   ],
   "decision-table-testing": [
-    "automated-testing",
-    "manual-testing",
     "black-box-testing",
     "test-case",
+    "automated-testing",
+    "manual-testing",
     "test-case-management"
   ],
   "defect-management": [
-    "agile-testing",
-    "manual-testing",
-    "quality-management",
-    "test-management",
-    "test-case-management"
-  ],
-  "dependency-testing": [
+    "release-testing",
     "manual-testing",
     "automated-testing",
-    "test-suite",
+    "validation-testing",
+    "web-testing"
+  ],
+  "dependency-testing": [
+    "automated-testing",
+    "manual-testing",
+    "mock-testing",
     "web-testing",
-    "mock-testing"
+    "test-suite"
   ],
   "documentation-testing": [
     "postman",
     "manual-testing",
+    "validation-testing",
     "automated-testing",
-    "web-testing",
-    "test-suite"
+    "web-testing"
   ],
   "dynamic-testing": [
     "static-testing",
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "web-testing"
+    "validation-testing",
+    "test-case"
   ],
   "edge-testing": [
     "boundary-testing",
     "automated-testing",
     "manual-testing",
     "test-case",
-    "test-suite"
+    "test-data"
   ],
   "end-to-end-testing": [
     "test-pyramid",
     "automated-testing",
-    "manual-testing",
     "web-testing",
-    "test-data"
+    "test-data",
+    "manual-testing"
   ],
   "endurance-testing": [
-    "manual-testing",
     "automated-testing",
+    "manual-testing",
     "web-testing",
-    "test-suite",
-    "load-testing"
+    "validation-testing",
+    "test-case"
   ],
   "entry-criteria": [
     "manual-testing",
-    "test-plan",
     "automated-testing",
-    "test-suite",
+    "test-case",
+    "web-testing",
     "test-process"
   ],
   "equivalence-partitioning": [
@@ -381,148 +381,148 @@
     "heuristic-testing",
     "manual-testing",
     "automated-testing",
-    "validation-testing",
-    "black-box-testing"
+    "test-case",
+    "validation-testing"
   ],
   "expected-result": [
     "test-case",
-    "manual-testing",
-    "automated-testing",
     "test-comparison",
-    "validation-testing"
+    "validation-testing",
+    "automated-testing",
+    "test-case-management"
   ],
   "exploratory-testing": [
     "session-based-testing",
     "manual-testing",
     "heuristic-testing",
     "automated-testing",
-    "test-case-management"
+    "validation-testing"
   ],
   "extreme-programming": [
-    "quality-management",
-    "shift-left-testing",
-    "automated-testing",
     "scrum",
-    "manual-testing"
+    "quality-management",
+    "automated-testing",
+    "shift-left-testing",
+    "test-driven-development"
   ],
   "failover-testing": [
     "availability-testing",
-    "fault-injection-testing",
     "shift-left-testing",
+    "fault-injection-testing",
     "automated-testing",
     "manual-testing"
   ],
   "false-negative": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-script",
-    "test-case-management"
+    "test-case",
+    "validation-testing",
+    "test-suite"
   ],
   "false-positive": [
-    "test-script",
-    "manual-testing",
+    "test-case",
     "automated-testing",
-    "test-suite",
-    "test-case"
+    "manual-testing",
+    "test-data",
+    "validation-testing"
   ],
   "fat": [
-    "manual-testing",
-    "acceptance-testing",
-    "automated-testing",
     "test-case",
-    "test-case-management"
+    "validation-testing",
+    "acceptance-testing",
+    "manual-testing",
+    "automated-testing"
   ],
   "fault-injection-testing": [
     "failover-testing",
     "automated-testing",
+    "robustness-testing",
     "manual-testing",
-    "web-testing",
-    "api-testing"
+    "web-testing"
   ],
   "flaky-test": [
-    "manual-testing",
-    "test-suite",
     "automated-testing",
+    "test-suite",
+    "manual-testing",
     "web-testing",
-    "test-runner"
+    "test-data"
   ],
   "front-end-testing": [
     "accessibility-testing",
     "web-testing",
-    "screenshot-testing",
     "lighthouse",
-    "manual-testing"
+    "manual-testing",
+    "screenshot-testing"
   ],
   "functional-integration": [
     "automated-testing",
-    "manual-testing",
     "integration-testing",
+    "manual-testing",
     "web-testing",
-    "test-suite"
+    "validation-testing"
   ],
   "functional-requirements": [
-    "automated-testing",
-    "functional-testing",
+    "validation-testing",
     "use-case-testing",
-    "manual-testing",
-    "test-case"
+    "test-case",
+    "automated-testing",
+    "web-testing"
   ],
   "functional-testing": [
     "manual-testing",
-    "automated-testing",
     "test-case",
-    "web-testing",
-    "test-suite"
+    "automated-testing",
+    "validation-testing",
+    "web-testing"
   ],
   "future-proof-testing": [
     "automated-testing",
     "manual-testing",
-    "test-suite",
     "web-testing",
-    "test-case-management"
+    "test-suite",
+    "test-data"
   ],
   "fuzz-testing": [
+    "mutation-testing",
     "manual-testing",
     "automated-testing",
-    "mutation-testing",
-    "test-case-management",
-    "test-suite"
+    "test-case",
+    "security-testing"
   ],
   "gherkin": [
     "bdd",
-    "automated-testing",
     "use-case-testing",
+    "automated-testing",
     "test-case",
-    "keyword-driven-testing"
+    "A-B-Testing"
   ],
   "glass-box-testing": [
-    "white-box-testing",
-    "grey-box-testing",
     "black-box-testing",
+    "grey-box-testing",
+    "white-box-testing",
     "manual-testing",
     "automated-testing"
   ],
   "gorilla-testing": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "web-testing",
-    "test-case"
+    "test-case",
+    "validation-testing",
+    "web-testing"
   ],
   "grey-box-testing": [
     "black-box-testing",
-    "manual-testing",
     "glass-box-testing",
     "white-box-testing",
+    "manual-testing",
     "automated-testing"
   ],
   "happy-path": [
-    "automated-testing",
-    "manual-testing",
     "use-case-testing",
+    "automated-testing",
+    "test-case",
     "web-testing",
-    "test-case"
+    "manual-testing"
   ],
   "headless-testing": [
     "cross-browser-testing",
@@ -535,22 +535,22 @@
     "manual-testing",
     "exploratory-testing",
     "automated-testing",
-    "test-case-management",
-    "test-suite"
+    "test-case",
+    "test-case-management"
   ],
   "ieee-829": [
     "manual-testing",
-    "test-plan",
+    "test-case",
+    "bs-7925-2",
     "automated-testing",
-    "test-case-management",
-    "test-case"
+    "test-case-management"
   ],
   "impact-analysis": [
-    "regression-testing",
     "test-case-management",
-    "manual-testing",
+    "regression-testing",
+    "test-case",
     "automated-testing",
-    "test-suite"
+    "manual-testing"
   ],
   "incident-management": [
     "incident-report",
@@ -561,80 +561,80 @@
   ],
   "incident-report": [
     "incident-management",
-    "bug",
     "inspection",
-    "manual-testing",
-    "test-case-management"
+    "bug",
+    "ieee-829",
+    "manual-testing"
   ],
   "incremental-testing": [
     "bottom-up-integration",
     "top-down-integration",
     "integration-testing",
     "automated-testing",
-    "manual-testing"
+    "system-integration-testing"
   ],
   "independent-verification-and-validation": [
     "quality-management",
     "risk-based-testing",
-    "software-quality",
-    "verification",
-    "software-quality-management"
+    "validation-testing",
+    "software-quality-management",
+    "verification"
   ],
   "input-validation-testing": [
     "validation-testing",
     "boundary-testing",
+    "test-case",
     "automated-testing",
-    "fuzz-testing",
     "test-data"
   ],
   "inspection": [
     "static-testing",
     "verification",
     "validation-testing",
-    "automated-testing",
-    "manual-testing"
+    "test-case",
+    "use-case-testing"
   ],
   "integration-testing": [
     "bottom-up-integration",
-    "top-down-integration",
     "system-integration-testing",
     "incremental-testing",
-    "automated-testing"
+    "top-down-integration",
+    "functional-integration"
   ],
   "interface-testing": [
     "automated-testing",
     "manual-testing",
-    "api-testing",
     "web-testing",
-    "test-suite"
+    "validation-testing",
+    "api-testing"
   ],
   "internationalization-testing": [
     "localization-testing",
     "automated-testing",
-    "manual-testing",
     "web-testing",
+    "manual-testing",
     "test-data"
   ],
   "interoperability-testing": [
-    "manual-testing",
     "automated-testing",
     "api-testing",
-    "compatibility-testing",
-    "web-testing"
+    "web-testing",
+    "manual-testing",
+    "validation-testing"
   ],
   "istqb": [
     "astqb",
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-case-management"
+    "test-case",
+    "web-testing"
   ],
   "iteration": [
     "automated-testing",
-    "manual-testing",
-    "test-suite",
     "test-case",
-    "regression-testing"
+    "validation-testing",
+    "manual-testing",
+    "web-testing"
   ],
   "jasmine": [
     "test-automation",
@@ -647,35 +647,35 @@
     "test-automation",
     "jasmine",
     "automated-testing",
-    "test-runner",
-    "manual-testing"
+    "chai-js",
+    "test-runner"
   ],
   "jira": [
-    "test-case-management",
     "automated-testing",
+    "inspection",
+    "test-case-management",
     "test-management",
-    "manual-testing",
     "scrum"
   ],
   "jmeter": [
     "web-test-automation-tools",
     "performance-testing",
-    "test-plan",
     "web-testing",
+    "test-plan",
     "automated-testing"
   ],
   "junit-testing": [
-    "manual-testing",
     "test-class",
     "automated-testing",
+    "manual-testing",
     "test-runner",
     "test-suite"
   ],
   "keyword-driven-testing": [
+    "A-B-Testing",
     "automated-testing",
+    "test-script",
     "manual-testing",
-    "test-suite",
-    "test-case-management",
     "test-case"
   ],
   "lighthouse": [
@@ -683,272 +683,272 @@
     "front-end-testing",
     "web-testing",
     "web-test-automation-tools",
-    "web-automation"
+    "inspection"
   ],
   "load-testing": [
     "scalability-testing",
-    "manual-testing",
-    "web-test-automation-tools",
     "web-testing",
+    "web-test-automation-tools",
+    "manual-testing",
     "automated-testing"
   ],
   "localization-testing": [
     "internationalization-testing",
     "automated-testing",
-    "manual-testing",
     "web-testing",
-    "browserstack"
+    "browserstack",
+    "manual-testing"
   ],
   "maintainability": [
     "automated-testing",
+    "test-script",
     "test-suite",
-    "manual-testing",
     "test-data",
-    "web-testing"
+    "test-case"
   ],
   "maintenance-testing": [
-    "manual-testing",
     "automated-testing",
-    "test-suite",
+    "manual-testing",
+    "test-case",
     "test-case-management",
     "regression-testing"
   ],
   "manual-testing": [
     "automated-testing",
-    "test-case-management",
     "test-case",
-    "test-suite",
-    "web-testing"
+    "test-case-management",
+    "web-testing",
+    "validation-testing"
   ],
   "microservices-testing": [
     "api-testing",
     "automated-testing",
-    "manual-testing",
     "end-to-end-testing",
+    "mock-testing",
     "test-data"
   ],
   "mobile-app-testing": [
     "mobile-device-testing",
-    "automated-testing",
-    "web-testing",
     "browserstack",
+    "web-testing",
+    "automated-testing",
     "manual-testing"
   ],
   "mobile-device-testing": [
-    "mobile-app-testing",
     "browserstack",
-    "compatibility-testing",
+    "mobile-app-testing",
     "web-testing",
-    "automated-testing"
+    "automated-testing",
+    "compatibility-testing"
   ],
   "mock-testing": [
     "automated-testing",
-    "manual-testing",
     "dependency-testing",
-    "test-suite",
-    "web-testing"
+    "manual-testing",
+    "web-testing",
+    "test-case"
   ],
   "monkey-testing": [
-    "manual-testing",
     "automated-testing",
+    "manual-testing",
     "web-testing",
-    "test-suite",
-    "functional-testing"
+    "test-case",
+    "validation-testing"
   ],
   "mtbf": [
     "reliability-testing",
     "failover-testing",
-    "fault-injection-testing",
     "availability-testing",
+    "validation-testing",
     "automated-testing"
   ],
   "mutation-testing": [
     "test-suite",
-    "manual-testing",
+    "test-case",
     "automated-testing",
-    "test-case-management",
-    "test-case"
+    "manual-testing",
+    "test-case-management"
   ],
   "negative-testing": [
-    "manual-testing",
-    "automated-testing",
     "test-case",
-    "boundary-testing",
-    "test-data"
+    "automated-testing",
+    "manual-testing",
+    "test-data",
+    "validation-testing"
   ],
   "node-js": [
     "web-test-automation-tools",
     "cypress",
-    "database",
     "test-automation",
-    "jasmine"
+    "database",
+    "chai-js"
   ],
   "non-functional-testing": [
     "manual-testing",
-    "functional-testing",
-    "automated-testing",
+    "validation-testing",
     "web-testing",
-    "software-testing"
+    "automated-testing",
+    "functional-testing"
   ],
   "nunit": [
     "test-runner",
     "automated-testing",
-    "manual-testing",
-    "test-suite",
-    "test-class"
+    "test-class",
+    "test-case",
+    "web-testing"
   ],
   "operational-testing": [
-    "manual-testing",
     "automated-testing",
     "web-testing",
+    "manual-testing",
     "test-data",
-    "test-suite"
+    "validation-testing"
   ],
   "orthogonal-array-testing": [
+    "test-case",
     "manual-testing",
     "test-case-management",
-    "test-case",
     "automated-testing",
     "test-suite"
   ],
   "ott-testing": [
+    "web-testing",
     "automated-testing",
     "manual-testing",
-    "web-testing",
-    "api-testing",
-    "test-suite"
+    "validation-testing",
+    "test-data"
   ],
   "page-object-model": [
     "webdriver",
-    "web-automation",
     "selenium",
+    "web-automation",
     "ui-testing",
-    "automated-testing"
+    "web-testing"
   ],
   "pair-testing": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "session-based-testing",
+    "test-case",
+    "web-testing",
     "test-case-management"
   ],
   "parameterized-testing": [
     "test-data",
     "automated-testing",
+    "test-case",
     "manual-testing",
-    "test-suite",
-    "test-case"
+    "test-suite"
   ],
   "path-testing": [
     "control-flow-testing",
-    "manual-testing",
-    "automated-testing",
     "glass-box-testing",
-    "structural-testing"
+    "structural-testing",
+    "automated-testing",
+    "manual-testing"
   ],
   "peer-testing": [
     "manual-testing",
     "automated-testing",
     "inspection",
-    "test-suite",
-    "test-case-management"
+    "test-case",
+    "web-testing"
   ],
   "penetration-testing": [
     "security-testing",
     "manual-testing",
     "web-testing",
     "automated-testing",
-    "api-testing"
+    "software-testing"
   ],
   "performance-indicator": [
     "web-test-automation-tools",
-    "automated-testing",
-    "jmeter",
     "performance-testing",
-    "manual-testing"
+    "jmeter",
+    "automated-testing",
+    "web-testing"
   ],
   "performance-testing": [
     "web-test-automation-tools",
     "jmeter",
-    "test-plan",
     "web-testing",
+    "test-plan",
     "automated-testing"
   ],
   "positive-testing": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
     "validation-testing",
-    "test-case"
+    "test-case",
+    "test-suite"
   ],
   "postcondition": [
     "test-case",
     "use-case-testing",
-    "manual-testing",
     "automated-testing",
-    "test-suite"
+    "validation-testing",
+    "manual-testing"
   ],
   "postman": [
     "swagger",
     "documentation-testing",
     "api",
     "api-testing",
-    "manual-testing"
+    "web-testing"
   ],
   "priority": [
-    "automated-testing",
-    "manual-testing",
-    "test-case-management",
     "test-case",
-    "test-suite"
+    "automated-testing",
+    "bug",
+    "test-case-management",
+    "manual-testing"
   ],
   "qa-metrics": [
     "manual-testing",
-    "software-quality",
     "quality-management",
-    "test-case-management",
-    "automated-testing"
+    "test-data",
+    "software-quality",
+    "validation-testing"
   ],
   "quality-assurance": [
     "quality-management",
-    "manual-testing",
     "software-quality",
     "automated-testing",
-    "software-quality-management"
+    "software-quality-management",
+    "manual-testing"
   ],
   "quality-management": [
     "software-quality-management",
     "software-quality",
     "quality-assurance",
-    "manual-testing",
-    "automated-testing"
+    "automated-testing",
+    "manual-testing"
   ],
   "regression-testing": [
     "automated-testing",
     "manual-testing",
-    "test-suite",
+    "test-case",
     "test-case-management",
-    "test-case"
+    "web-testing"
   ],
   "release-testing": [
+    "defect-management",
     "manual-testing",
     "automated-testing",
-    "web-testing",
-    "test-suite",
-    "regression-testing"
+    "validation-testing",
+    "web-testing"
   ],
   "reliability-testing": [
     "mtbf",
-    "manual-testing",
     "automated-testing",
-    "web-testing",
-    "test-suite"
+    "manual-testing",
+    "validation-testing",
+    "web-testing"
   ],
   "requirements-management-tool": [
     "test-management",
     "test-case-management",
+    "test-design-tool",
     "traceability-matrix",
-    "test-execution-tool",
     "automated-testing"
   ],
   "responsive-design": [
@@ -956,196 +956,196 @@
     "cross-browser-testing",
     "screenshot-testing",
     "web-testing",
-    "visual-regression-testing"
+    "mobile-device-testing"
   ],
   "retesting": [
-    "manual-testing",
     "automated-testing",
-    "test-case-management",
+    "manual-testing",
+    "test-case",
     "regression-testing",
-    "test-case"
+    "test-case-management"
   ],
   "reviewer": [
     "automated-testing",
     "manual-testing",
     "web-testing",
-    "test-suite",
-    "test-case-management"
+    "inspection",
+    "test-case"
   ],
   "risk-based-testing": [
     "software-risk-analysis",
     "manual-testing",
-    "test-plan",
-    "test-approach",
-    "test-case-management"
+    "automated-testing",
+    "test-case-management",
+    "test-plan"
   ],
   "robustness-testing": [
-    "manual-testing",
     "automated-testing",
+    "manual-testing",
     "web-testing",
-    "test-suite",
-    "validation-testing"
+    "validation-testing",
+    "test-case"
   ],
   "rup": [
     "automated-testing",
     "manual-testing",
-    "test-plan",
-    "test-case-management",
-    "test-approach"
+    "test-case",
+    "validation-testing",
+    "web-testing"
   ],
   "sanity-testing": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "regression-testing",
-    "validation-testing"
+    "validation-testing",
+    "web-testing",
+    "test-case"
   ],
   "scalability-testing": [
-    "load-testing",
-    "manual-testing",
-    "automated-testing",
     "web-testing",
-    "web-test-automation-tools"
+    "automated-testing",
+    "manual-testing",
+    "web-test-automation-tools",
+    "test-data"
   ],
   "screenshot-testing": [
     "visual-regression-testing",
     "browserstack",
-    "cross-browser-testing",
     "automated-testing",
-    "manual-testing"
+    "web-testing",
+    "cross-browser-testing"
   ],
   "scrum": [
     "agile-development",
-    "jira",
     "inspection",
-    "extreme-programming",
-    "priority"
+    "jira",
+    "priority",
+    "extreme-programming"
   ],
   "security-testing": [
     "penetration-testing",
+    "web-testing",
     "fuzz-testing",
-    "manual-testing",
     "automated-testing",
-    "web-testing"
+    "manual-testing"
   ],
   "selenium-ide": [
     "selenium",
     "cross-browser-testing",
     "web-testing",
     "cypress",
-    "automated-testing"
+    "test-case"
   ],
   "selenium": [
     "webdriver",
     "selenium-ide",
     "cross-browser-testing",
-    "web-automation",
-    "web-testing"
+    "web-testing",
+    "web-automation"
   ],
   "session-based-testing": [
     "exploratory-testing",
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "web-testing"
+    "web-testing",
+    "test-case"
   ],
   "setup": [
     "automated-testing",
     "test-data",
+    "web-testing",
     "manual-testing",
-    "test-suite",
-    "web-testing"
+    "test-suite"
   ],
   "severity": [
     "bug",
     "priority",
-    "manual-testing",
     "inspection",
-    "automated-testing"
+    "test-case",
+    "validation-testing"
   ],
   "shift-left-testing": [
-    "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-approach",
-    "failover-testing"
+    "manual-testing",
+    "failover-testing",
+    "web-testing",
+    "validation-testing"
   ],
   "software-development-life-cycle": [
     "automated-testing",
-    "manual-testing",
     "stlc",
-    "web-testing",
-    "validation-testing"
+    "manual-testing",
+    "validation-testing",
+    "web-testing"
   ],
   "software-quality-management": [
     "quality-management",
     "software-quality",
+    "quality-assurance",
     "automated-testing",
-    "manual-testing",
-    "quality-assurance"
+    "test-management"
   ],
   "software-quality": [
     "quality-management",
     "software-quality-management",
-    "manual-testing",
     "quality-assurance",
-    "automated-testing"
+    "validation-testing",
+    "manual-testing"
   ],
   "software-risk-analysis": [
     "risk-based-testing",
-    "test-plan",
-    "test-approach",
+    "automated-testing",
+    "impact-analysis",
     "manual-testing",
-    "test-strategy"
+    "test-approach"
   ],
   "software-testing": [
     "manual-testing",
     "automated-testing",
-    "test-suite",
     "web-testing",
+    "validation-testing",
     "test-case"
   ],
   "sql": [
     "database",
     "test-data",
-    "automated-testing",
-    "api-testing",
-    "web-testing"
+    "xpath-query",
+    "web-testing",
+    "automated-testing"
   ],
   "state-transition-testing": [
-    "automated-testing",
-    "manual-testing",
     "test-case",
+    "black-box-testing",
+    "automated-testing",
     "test-case-management",
-    "black-box-testing"
+    "manual-testing"
   ],
   "static-testing": [
     "dynamic-testing",
     "inspection",
+    "software-testing",
     "manual-testing",
-    "verification",
-    "automated-testing"
+    "validation-testing"
   ],
   "stlc": [
     "manual-testing",
+    "test-case",
     "automated-testing",
     "test-case-management",
-    "test-case",
-    "test-plan"
+    "validation-testing"
   ],
   "stress-testing": [
-    "load-testing",
     "manual-testing",
     "automated-testing",
-    "endurance-testing",
-    "software-testing"
+    "software-testing",
+    "web-testing",
+    "load-testing"
   ],
   "structural-testing": [
+    "path-testing",
     "manual-testing",
     "automated-testing",
-    "path-testing",
-    "test-suite",
-    "white-box-testing"
+    "test-case",
+    "glass-box-testing"
   ],
   "swagger": [
     "postman",
@@ -1158,397 +1158,397 @@
     "bottom-up-integration",
     "integration-testing",
     "automated-testing",
-    "manual-testing",
-    "top-down-integration"
+    "incremental-testing",
+    "manual-testing"
   ],
   "system-testing": [
-    "manual-testing",
     "automated-testing",
-    "web-testing",
-    "test-suite",
-    "test-case"
+    "manual-testing",
+    "test-case",
+    "validation-testing",
+    "web-testing"
   ],
   "test-approach": [
-    "manual-testing",
     "automated-testing",
+    "manual-testing",
+    "test-case",
     "test-case-management",
-    "test-suite",
-    "test-case"
+    "web-testing"
   ],
   "test-automation": [
     "jasmine",
     "web-test-automation-tools",
-    "jmeter",
+    "jest",
     "performance-testing",
-    "jest"
+    "jmeter"
   ],
   "test-case-management": [
     "test-case",
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-management"
+    "test-management",
+    "use-case-testing"
   ],
   "test-case": [
     "test-case-management",
     "manual-testing",
     "automated-testing",
-    "test-suite",
-    "use-case-testing"
+    "use-case-testing",
+    "validation-testing"
   ],
   "test-class": [
     "automated-testing",
     "manual-testing",
     "test-suite",
-    "test-runner",
-    "junit-testing"
+    "web-testing",
+    "test-case"
   ],
   "test-comparison": [
-    "manual-testing",
     "automated-testing",
-    "visual-regression-testing",
-    "test-suite",
-    "test-case"
+    "manual-testing",
+    "test-case",
+    "web-testing",
+    "validation-testing"
   ],
   "test-coverage": [
     "code-coverage",
     "manual-testing",
     "automated-testing",
     "test-suite",
-    "test-case-management"
+    "test-case"
   ],
   "test-data": [
     "automated-testing",
     "database",
     "manual-testing",
-    "test-suite",
-    "web-testing"
+    "web-testing",
+    "test-case"
   ],
   "test-design-specification": [
-    "manual-testing",
-    "automated-testing",
-    "test-case-management",
     "test-case",
+    "automated-testing",
+    "manual-testing",
+    "test-case-management",
     "test-suite"
   ],
   "test-design-tool": [
+    "test-case",
+    "automated-testing",
     "test-case-management",
     "manual-testing",
-    "automated-testing",
-    "test-case",
-    "test-suite"
+    "web-testing"
   ],
   "test-driven-development": [
     "automated-testing",
     "manual-testing",
     "unit-testing",
     "test-suite",
-    "shift-left-testing"
+    "validation-testing"
   ],
   "test-environment": [
+    "test-data",
     "test-infrastructure",
     "automated-testing",
-    "test-data",
-    "manual-testing",
-    "web-testing"
+    "web-testing",
+    "manual-testing"
   ],
   "test-execution-automation": [
     "automated-testing",
     "manual-testing",
-    "test-suite",
     "web-testing",
-    "test-case-management"
+    "test-suite",
+    "test-data"
   ],
   "test-execution-schedule": [
     "manual-testing",
-    "test-plan",
     "automated-testing",
-    "test-suite",
-    "test-case-management"
+    "test-case-management",
+    "test-case",
+    "test-suite"
   ],
   "test-execution-technique": [
-    "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-case-management",
-    "test-case"
+    "manual-testing",
+    "test-case",
+    "test-data",
+    "web-testing"
   ],
   "test-execution-tool": [
     "automated-testing",
     "manual-testing",
-    "test-suite",
     "web-testing",
-    "test-case-management"
+    "test-suite",
+    "test-case"
   ],
   "test-execution": [
-    "manual-testing",
     "automated-testing",
-    "test-suite",
-    "test-case-management",
-    "test-data"
+    "manual-testing",
+    "test-case",
+    "test-data",
+    "test-suite"
   ],
   "test-harness": [
     "automated-testing",
     "manual-testing",
-    "test-suite",
     "web-testing",
-    "test-case-management"
+    "test-case",
+    "test-data"
   ],
   "test-infrastructure": [
     "automated-testing",
-    "manual-testing",
-    "test-suite",
     "test-data",
-    "web-testing"
+    "web-testing",
+    "manual-testing",
+    "test-suite"
   ],
   "test-log": [
     "manual-testing",
     "automated-testing",
+    "test-case",
     "test-case-management",
-    "test-suite",
-    "test-case"
+    "test-suite"
   ],
   "test-management": [
-    "manual-testing",
     "test-case-management",
+    "manual-testing",
+    "test-case",
     "automated-testing",
-    "test-plan",
-    "test-case"
+    "test-plan"
   ],
   "test-observability": [
-    "manual-testing",
     "automated-testing",
     "test-data",
-    "test-suite",
+    "manual-testing",
+    "web-testing",
     "test-case-management"
   ],
   "test-oracles": [
-    "manual-testing",
     "automated-testing",
     "test-case",
-    "test-suite",
-    "validation-testing"
+    "manual-testing",
+    "validation-testing",
+    "web-testing"
   ],
   "test-plan": [
     "manual-testing",
     "test-management",
+    "test-process",
     "automated-testing",
-    "test-suite",
-    "test-case-management"
+    "web-testing"
   ],
   "test-policy": [
     "test-strategy",
     "manual-testing",
-    "test-plan",
     "automated-testing",
-    "test-suite"
+    "test-plan",
+    "test-management"
   ],
   "test-process-improvement": [
     "manual-testing",
     "automated-testing",
+    "test-process",
     "test-case-management",
-    "test-suite",
     "test-management"
   ],
   "test-process": [
     "manual-testing",
     "automated-testing",
-    "test-plan",
-    "test-suite",
-    "test-case-management"
+    "test-case",
+    "test-case-management",
+    "web-testing"
   ],
   "test-pyramid": [
-    "automated-testing",
     "end-to-end-testing",
+    "automated-testing",
     "manual-testing",
     "test-suite",
     "web-testing"
   ],
   "test-report": [
     "manual-testing",
-    "test-suite",
+    "test-case",
     "automated-testing",
-    "test-case-management",
-    "test-case"
+    "test-suite",
+    "test-case-management"
   ],
   "test-runner": [
-    "test-suite",
     "automated-testing",
+    "test-suite",
     "manual-testing",
     "web-testing",
-    "test-case-management"
+    "test-case"
   ],
   "test-scenario": [
     "automated-testing",
-    "manual-testing",
-    "test-suite",
     "test-case",
-    "web-testing"
+    "manual-testing",
+    "web-testing",
+    "validation-testing"
   ],
   "test-script": [
     "automated-testing",
-    "false-positive",
+    "test-case",
     "manual-testing",
-    "test-suite",
+    "web-testing",
     "test-data"
   ],
   "test-specification": [
+    "test-case",
     "manual-testing",
     "automated-testing",
     "test-case-management",
-    "test-suite",
-    "test-case"
+    "test-suite"
   ],
   "test-strategy": [
     "manual-testing",
     "automated-testing",
+    "web-testing",
     "test-plan",
-    "test-approach",
-    "test-suite"
+    "test-case-management"
   ],
   "test-stub": [
     "mock-testing",
     "automated-testing",
+    "test-class",
     "manual-testing",
-    "test-suite",
-    "test-class"
+    "test-case"
   ],
   "test-suite": [
-    "manual-testing",
     "automated-testing",
-    "test-case-management",
     "test-case",
-    "test-runner"
+    "manual-testing",
+    "test-case-management",
+    "web-testing"
   ],
   "test-tool": [
     "automated-testing",
+    "test-harness",
     "manual-testing",
-    "test-case-management",
     "web-testing",
-    "test-harness"
+    "test-case-management"
   ],
   "timebox-testing": [
     "manual-testing",
+    "black-box-testing",
+    "grey-box-testing",
     "automated-testing",
-    "test-case-management",
-    "test-suite",
-    "grey-box-testing"
+    "glass-box-testing"
   ],
   "top-down-integration": [
+    "incremental-testing",
     "bottom-up-integration",
     "integration-testing",
-    "incremental-testing",
     "system-integration-testing",
-    "automated-testing"
+    "functional-integration"
   ],
   "traceability-matrix": [
     "test-case-management",
     "test-case",
     "manual-testing",
-    "automated-testing",
-    "test-management"
+    "test-management",
+    "automated-testing"
   ],
   "ui-testing": [
     "automated-testing",
-    "manual-testing",
     "web-testing",
-    "test-suite",
-    "test-case"
+    "manual-testing",
+    "test-case",
+    "validation-testing"
   ],
   "unit-test-framework": [
     "automated-testing",
-    "manual-testing",
     "unit-testing",
-    "test-runner",
-    "test-suite"
+    "test-class",
+    "manual-testing",
+    "test-case"
   ],
   "unit-testing": [
     "automated-testing",
     "manual-testing",
+    "test-case",
     "test-suite",
-    "test-runner",
-    "test-pyramid"
+    "web-testing"
   ],
   "usability-testing": [
     "availability-testing",
     "manual-testing",
     "web-testing",
-    "automated-testing",
-    "user-acceptance-testing"
+    "validation-testing",
+    "automated-testing"
   ],
   "use-case-testing": [
     "test-case",
     "test-case-management",
     "automated-testing",
     "manual-testing",
-    "use-case"
+    "validation-testing"
   ],
   "use-case": [
     "use-case-testing",
     "test-case",
     "test-case-management",
-    "manual-testing",
-    "automated-testing"
-  ],
-  "user-acceptance-testing": [
-    "acceptance-testing",
-    "manual-testing",
-    "validation-testing",
-    "automated-testing",
-    "test-case-management"
-  ],
-  "v-model": [
-    "manual-testing",
-    "test-plan",
-    "stlc",
     "automated-testing",
     "validation-testing"
   ],
-  "validation-testing": [
+  "user-acceptance-testing": [
+    "acceptance-testing",
+    "validation-testing",
     "manual-testing",
     "automated-testing",
+    "test-case"
+  ],
+  "v-model": [
+    "stlc",
+    "manual-testing",
+    "validation-testing",
+    "automated-testing",
+    "test-plan"
+  ],
+  "validation-testing": [
     "test-case",
-    "test-suite",
+    "manual-testing",
+    "automated-testing",
+    "web-testing",
     "test-case-management"
   ],
   "verification": [
     "inspection",
     "validation-testing",
+    "test-case",
     "static-testing",
-    "automated-testing",
-    "manual-testing"
+    "automated-testing"
   ],
   "visual-regression-testing": [
     "screenshot-testing",
-    "automated-testing",
     "regression-testing",
-    "manual-testing",
-    "web-testing"
+    "automated-testing",
+    "web-testing",
+    "ui-testing"
   ],
   "volume-testing": [
     "test-data",
     "automated-testing",
-    "manual-testing",
     "web-testing",
-    "test-suite"
+    "manual-testing",
+    "validation-testing"
   ],
   "web-automation": [
-    "cross-browser-testing",
     "web-testing",
+    "cross-browser-testing",
     "automated-testing",
-    "manual-testing",
-    "browserstack"
+    "browserstack",
+    "selenium"
   ],
   "web-performance-testing": [
     "web-testing",
-    "load-testing",
     "web-test-automation-tools",
-    "automated-testing",
-    "manual-testing"
+    "performance-testing",
+    "jmeter",
+    "automated-testing"
   ],
   "web-test-automation-tools": [
-    "jmeter",
     "performance-testing",
+    "jmeter",
     "web-testing",
     "test-plan",
     "automated-testing"
@@ -1556,29 +1556,29 @@
   "web-testing": [
     "automated-testing",
     "manual-testing",
-    "cross-browser-testing",
-    "test-suite",
-    "browserstack"
+    "browserstack",
+    "test-case",
+    "cross-browser-testing"
   ],
   "webdriver": [
     "selenium",
-    "cross-browser-testing",
     "web-automation",
+    "cross-browser-testing",
     "selenium-ide",
     "xpath-query"
   ],
   "white-box-testing": [
     "glass-box-testing",
     "grey-box-testing",
-    "manual-testing",
     "black-box-testing",
+    "manual-testing",
     "automated-testing"
   ],
   "xpath-query": [
     "webdriver",
-    "web-automation",
-    "selenium",
     "sql",
+    "selenium",
+    "web-automation",
     "selenium-ide"
   ]
 }

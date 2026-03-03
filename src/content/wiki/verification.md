@@ -5,9 +5,9 @@ section: "V"
 related:
   - inspection
   - validation-testing
+  - test-case
   - static-testing
   - automated-testing
-  - manual-testing
 order: 0
 ---
 
@@ -75,54 +75,37 @@ order: 0
 
 [验证 ](/zh-cn/wiki/verification/) 的主要目标是：
 
-- **确保合规性**
-    具有指定的要求、设计和开发标准。
+- **确保合规性**具有指定的要求、设计和开发标准。
 
-- **检测缺陷**
-    在开发生命周期的早期，这减少了修复它们的成本和时间。
+- **检测缺陷**在开发生命周期的早期，这减少了修复它们的成本和时间。
 
-- **防止缺陷**
-    在后续阶段使用之前通过审查工件来引入。
+- **防止缺陷**在后续阶段使用之前通过审查工件来引入。
 
-- **确认每个工作产品**
-    符合为其规定的标准，包括检查完整性、正确性和一致性。
+- **确认每个工作产品**符合为其规定的标准，包括检查完整性、正确性和一致性。
 
-- **验证假设**
-    在需求分析和设计阶段进行。
+- **验证假设**在需求分析和设计阶段进行。
 
-- **支持可追溯性**
-    通过验证所有要求均得到考虑并正确实施。
+- **支持可追溯性**通过验证所有要求均得到考虑并正确实施。
 
-- **促进清晰的沟通**
-    通过客观证据让团队成员了解产品的状态和质量。
+- **促进清晰的沟通**通过客观证据让团队成员了解产品的状态和质量。
 
-- **实现明智的决策**
-    关于软件下一阶段或发布的准备情况。
-  [验证 ](/zh-cn/wiki/verification/) 活动集成在整个软件开发生命周期中，以根据预定义的准则和标准持续评估工作产品。这种集成有助于保持软件的质量和可靠性，确保其符合技术规范和用户需求。
+- **实现明智的决策**关于软件下一阶段或发布的准备情况。 [验证 ](/zh-cn/wiki/verification/) 活动集成在整个软件开发生命周期中，以根据预定义的准则和标准持续评估工作产品。这种集成有助于保持软件的质量和可靠性，确保其符合技术规范和用户需求。
 
-- **确保合规性**
-    具有指定的要求、设计和开发标准。
+- **确保合规性**具有指定的要求、设计和开发标准。
 
-- **检测缺陷**
-    在开发生命周期的早期，这减少了修复它们的成本和时间。
+- **检测缺陷**在开发生命周期的早期，这减少了修复它们的成本和时间。
 
-- **防止缺陷**
-    在后续阶段使用之前通过审查工件来引入。
+- **防止缺陷**在后续阶段使用之前通过审查工件来引入。
 
-- **确认每个工作产品**
-    符合为其规定的标准，包括检查完整性、正确性和一致性。
+- **确认每个工作产品**符合为其规定的标准，包括检查完整性、正确性和一致性。
 
-- **验证假设**
-    在需求分析和设计阶段进行。
+- **验证假设**在需求分析和设计阶段进行。
 
-- **支持可追溯性**
-    通过验证所有要求均得到考虑并正确实施。
+- **支持可追溯性**通过验证所有要求均得到考虑并正确实施。
 
-- **促进清晰的沟通**
-    通过客观证据让团队成员了解产品的状态和质量。
+- **促进清晰的沟通**通过客观证据让团队成员了解产品的状态和质量。
 
-- **实现明智的决策**
-    关于软件下一阶段或发布的准备情况。
+- **实现明智的决策**关于软件下一阶段或发布的准备情况。
 
 #### 验证如何提高软件产品的质量？
 
@@ -147,8 +130,7 @@ order: 0
 - **[状态转换测试](/zh-cn/wiki/state-transition-testing/)**：检查应用程序针对不同输入序列的行为，确保其在状态之间正确转换。
 - **[用例测试](/zh-cn/wiki/use-case-testing/)**：从[用例](/zh-cn/wiki/use-case/) 派生[测试用例](/zh-cn/wiki/test-case/) 以确保所有用户交互都经过验证。
 - **组合测试**：通过组合不同的输入集生成[测试用例](/zh-cn/wiki/test-case/)，以确保测试参数之间的交互。
-- **[突变测试](/zh-cn/wiki/mutation-testing/)**：对代码进行一些小的更改，以检查现有的[测试用例](/zh-cn/wiki/test-case/)是否可以检测到这些突变，从而评估[测试套件](/zh-cn/wiki/test-suite/)的有效性。
-  每种技术都针对 [软件质量](/zh-cn/wiki/software-quality/) 的特定方面，并且可以与其他技术结合使用以提供全面的 [验证 ](/zh-cn/wiki/verification/) 策略。
+- **[突变测试](/zh-cn/wiki/mutation-testing/)**：对代码进行一些小的更改，以检查现有的[测试用例](/zh-cn/wiki/test-case/)是否可以检测到这些突变，从而评估[测试套件](/zh-cn/wiki/test-suite/)的有效性。 每种技术都针对 [软件质量](/zh-cn/wiki/software-quality/) 的特定方面，并且可以与其他技术结合使用以提供全面的 [验证 ](/zh-cn/wiki/verification/) 策略。
 
 #### 静态验证与动态验证有何不同？
 
@@ -168,9 +150,7 @@ order: 0
 - **单独审查**：检查员单独检查工件。
 - **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队讨论发现结果并记录缺陷。
 - **返工**：作者解决了已发现的问题。
-- **跟进**：主持人确保所有缺陷均得到纠正。
-  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 通过提供**人为驱动的分析**来补充其他[验证 ](/zh-cn/wiki/verification/) 技术，该分析可以捕获自动化工具可能错过的微妙之处。他们鼓励团队成员之间的**协作**和**知识共享**，从而形成对产品及其质量的集体理解。
-  总之，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是[验证 ](/zh-cn/wiki/verification/) 的**关键组件**，增强了软件的整体完整性，并有助于开发可靠的高质量产品。
+- **跟进**：主持人确保所有缺陷均得到纠正。 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 通过提供**人为驱动的分析**来补充其他[验证 ](/zh-cn/wiki/verification/) 技术，该分析可以捕获自动化工具可能错过的微妙之处。他们鼓励团队成员之间的**协作**和**知识共享**，从而形成对产品及其质量的集体理解。 总之，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是[验证 ](/zh-cn/wiki/verification/) 的**关键组件**，增强了软件的整体完整性，并有助于开发可靠的高质量产品。
 
 #### 演练如何用于验证？
 
@@ -240,8 +220,7 @@ order: 0
 7. **记录结果**：记录问题、缺陷和观察结果，以便于沟通和将来参考。
 8. **分析结果**：根据目标评估结果，以确定[验证 ](/zh-cn/wiki/verification/) 工作是否成功。
 9. **报告结果**：在简明报告中总结[验证 ](/zh-cn/wiki/verification/) 活动、结果以及任何改进建议。
-10. **后续行动**：解决已发现的问题并对软件或 [验证 ](/zh-cn/wiki/verification/) 方法实施任何必要的更改。
-  在整个过程中，团队成员之间的**沟通**​​和**协作**对于确保[验证 ](/zh-cn/wiki/verification/)活动与项目需求保持一致以及任何发现的问题得到有效解决至关重要。
+10. **后续行动**：解决已发现的问题并对软件或 [验证 ](/zh-cn/wiki/verification/) 方法实施任何必要的更改。 在整个过程中，团队成员之间的**沟通**​​和**协作**对于确保[验证 ](/zh-cn/wiki/verification/)活动与项目需求保持一致以及任何发现的问题得到有效解决至关重要。
 
 #### 验证过程的输入和输出是什么？
 
@@ -251,15 +230,13 @@ order: 0
 - **设计规范**：概述系统架构和组件的图表和文档。
 - **开发计划**：软件开发的时间表和策略。
 - **代码**：开发人员编写的实际源代码。
-- **[测试用例](/zh-cn/wiki/test-case/)** ：用于评估软件正确性的预定义条件和程序。
-  [验证 ](/zh-cn/wiki/verification/) 进程的输出是：
+- **[测试用例](/zh-cn/wiki/test-case/)** ：用于评估软件正确性的预定义条件和程序。 [验证 ](/zh-cn/wiki/verification/) 进程的输出是：
 
 - **缺陷报告**：代码或文档中发现的任何问题的文档。
 - **[验证 ](/zh-cn/wiki/verification/) 日志**：验证活动和结果的记录。
 - **指标**：反映验证过程有效性的定量数据，例如缺陷密度或代码覆盖率。
 - **状态更新**：有关验证过程当前状态的通信。
-- **行动项目**：已确定的任务，以纠正验证过程中发现的任何缺陷。
-  这些产出将纳入后续的开发活动，确保持续改进并符合要求。
+- **行动项目**：已确定的任务，以纠正验证过程中发现的任何缺陷。 这些产出将纳入后续的开发活动，确保持续改进并符合要求。
 
 - **软件需求规范 (SRS)**：软件预期行为的详细描述。
 - **设计规范**：概述系统架构和组件的图表和文档。
@@ -278,64 +255,64 @@ order: 0
 
 - **缺陷检测效率 (DDE)**：[验证 ](/zh-cn/wiki/verification/) 期间发现的缺陷数量除以发布前后发现的缺陷总数。 DDE 越高表示 [验证 ](/zh-cn/wiki/verification/) 进程越有效。
 
-    ```
+```
     DDE = (Defects found during verification / Total defects found) * 100
-    ```
+```
 
 - **缺陷密度**：每个软件组件大小（例如，每个 KLOC - 千行代码）在 [验证 ](/zh-cn/wiki/verification/) 阶段发现的缺陷数量。缺陷密度越低表明质量越好。
 
-    ```
+```
     Defect Density = (Number of defects / Size of the component) * 1000
-    ```
+```
 
 - **需求覆盖率**：[验证 ](/zh-cn/wiki/verification/) 活动涵盖的需求百分比。全面覆盖确保软件的各个方面都得到验证。
 
-    ```
+```
     Requirements Coverage = (Number of requirements verified / Total number of requirements) * 100
-    ```
+```
 
 - **[测试用例](/zh-cn/wiki/test-case/) 通过率**：[测试用例](/zh-cn/wiki/test-case/) 在[验证 ](/zh-cn/wiki/verification/) 阶段通过的百分比。高通过率可能表明软件运行状况良好，但应结合上下文进行分析。
 
-    ```
+```
     Test Case Pass Rate = (Number of test cases passed / Total number of test cases) * 100
-    ```
+```
 
 - **审核有效性**：审核和 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
 
-    ```
+```
     Review Effectiveness = Number of issues found / Time spent on reviews
-    ```
+```
 应**持续监控**和**分析**，以评估[验证 ](/zh-cn/wiki/verification/)流程的绩效，确定需要改进的领域，并确保与项目目标保持一致。根据这些见解，可能需要对流程进行调整以提高有效性。
 
 - **缺陷检测效率 (DDE)**：[验证 ](/zh-cn/wiki/verification/) 期间发现的缺陷数量除以发布前后发现的缺陷总数。 DDE 越高表示 [验证 ](/zh-cn/wiki/verification/) 进程越有效。
 
-    ```
+```
     DDE = (Defects found during verification / Total defects found) * 100
-    ```
+```
 
 - **缺陷密度**：每个软件组件大小（例如，每个 KLOC - 千行代码）在 [验证 ](/zh-cn/wiki/verification/) 阶段发现的缺陷数量。缺陷密度越低表明质量越好。
 
-    ```
+```
     Defect Density = (Number of defects / Size of the component) * 1000
-    ```
+```
 
 - **需求覆盖率**：[验证 ](/zh-cn/wiki/verification/) 活动涵盖的需求百分比。全面覆盖确保软件的各个方面都得到验证。
 
-    ```
+```
     Requirements Coverage = (Number of requirements verified / Total number of requirements) * 100
-    ```
+```
 
 - **[测试用例](/zh-cn/wiki/test-case/) 通过率**：[测试用例](/zh-cn/wiki/test-case/) 在[验证 ](/zh-cn/wiki/verification/) 阶段通过的百分比。高通过率可能表明软件运行状况良好，但应结合上下文进行分析。
 
-    ```
+```
     Test Case Pass Rate = (Number of test cases passed / Total number of test cases) * 100
-    ```
+```
 
 - **审核有效性**：审核和 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中发现的问题数量相对于所花费的时间。更高的效率意味着在更短的时间内发现更多的问题。
 
-    ```
+```
     Review Effectiveness = Number of issues found / Time spent on reviews
-    ```
+```
 
 #### 验证过程中遇到哪些常见挑战以及如何解决这些挑战？
 
@@ -350,8 +327,7 @@ order: 0
 - **资源限制**：有限的资源可能会限制测试的范围。优化[测试套件](/zh-cn/wiki/test-suite/) 关键路径并考虑并行执行或基于云的解决方案。
 - **与 CI/CD 集成**：将[验证 ](/zh-cn/wiki/verification/) 工具与 CI/CD 管道集成可能很复杂。利用 CI/CD 工具提供的插件和 [API](/zh-cn/wiki/api/) 进行无缝集成。
 - **可扩展性**：随着测试数量的增加，执行时间可能成为一个问题。通过删除冗余测试并并行运行测试来优化[测试执行](/zh-cn/wiki/test-execution/)。
-- **工具选择**：选择正确的工具可能令人畏惧。根据技术堆栈、社区支持和长期可行性评估工具。
-  通过仔细规划、持续监控以及在测试设计和执行中采用最佳实践来应对这些挑战。定期审查和重构测试以适应应用程序和测试环境的变化。
+- **工具选择**：选择正确的工具可能令人畏惧。根据技术堆栈、社区支持和长期可行性评估工具。 通过仔细规划、持续监控以及在测试设计和执行中采用最佳实践来应对这些挑战。定期审查和重构测试以适应应用程序和测试环境的变化。
 
 - **不稳定**：由于计时问题、外部依赖性或不确定性行为，测试可能会不一致地通过或失败。通过隔离测试、模拟外部服务并谨慎使用重试来解决这个问题。
 - **[可维护性](/zh-cn/wiki/maintainability/)**：随着软件的发展，测试可能很快就会过时。实施具有清晰抽象和模块化组件的稳健测试设计，以简化维护。
@@ -378,8 +354,7 @@ order: 0
 - **需求管理工具**：**DOORS** 和 **Jama Connect** 有助于管理需求并确保所有 [验证 ](/zh-cn/wiki/verification/) 活动均符合指定的需求。
 - **[测试管理](/zh-cn/wiki/test-management/) 工具**：**TestRail** 和 **qTest** 等工具管理 [测试用例](/zh-cn/wiki/test-case/) 和结果，确保所有 [验证 ](/zh-cn/wiki/verification/) 活动均记录在案且可追溯。
 - **持续集成工具**：**Jenkins**、**Travis CI** 和 **CircleCI** 可以自动化构建和 [验证 ](/zh-cn/wiki/verification/) 流程，在每个代码提交上运行静态和动态测试。
-- **版本控制系统**：**Git**、**SVN** 和 **Mercurial** 跟踪代码库中的更改，从而更轻松地进行代码审查和协作。
-  这些工具支持各种[验证 ](/zh-cn/wiki/verification/)活动，帮助团队确保软件在验证之前满足其要求并且没有缺陷。
+- **版本控制系统**：**Git**、**SVN** 和 **Mercurial** 跟踪代码库中的更改，从而更轻松地进行代码审查和协作。 这些工具支持各种[验证 ](/zh-cn/wiki/verification/)活动，帮助团队确保软件在验证之前满足其要求并且没有缺陷。
 
 #### 验证工具如何提高流程效率？
 
@@ -388,13 +363,13 @@ order: 0
   **自动化[验证 ](/zh-cn/wiki/verification/) 工具**还提供详细的报告和日志，使跟踪问题和趋势变得更加容易。这种数据驱动的方法有助于及早识别问题领域，从而更快地解决问题并提供更强大的产品。
   将这些工具纳入开发过程可以显着减少手动[验证 ](/zh-cn/wiki/verification/)所需的时间，从而加快发布周期并更敏捷地响应市场需求。然而，根据项目的具体需求选择正确的工具并确保它们得到正确配置以最大限度地发挥其效益至关重要。
 
-  ```
+```
   // Example of a static code analysis tool in action:
   const analysisResults = staticCodeAnalyzer.analyze(sourceCode);
   if (analysisResults.hasErrors()) {
     throw new Error('Verification failed: Code does not meet standards.');
   }
-  ```
+```
 最终，[验证 ](/zh-cn/wiki/verification/) 工具对于维护高标准的代码质量和确保软件按预期运行是不可或缺的，从而有助于[测试自动化](/zh-cn/wiki/test-automation/) 流程的整体效率。
 
 #### 选择验证工具时应考虑哪些因素？
@@ -412,8 +387,7 @@ order: 0
 - **报告**：提供对测试结果的见解并帮助决策的有效报告功能至关重要。
 - **可靠性**：选择具有经过验证的可靠性和稳定性记录的工具。
 - **供应商声誉**：研究供应商在质量和客户服务方面的声誉。
-- **试用期**：如果可能，请选择提供试用期的工具来评估其在您的环境中的有效性。
-  选择正确的[验证 ](/zh-cn/wiki/verification/) 工具是一项战略决策，可以显着影响您[测试自动化](/zh-cn/wiki/test-automation/) 工作的效率和成功。
+- **试用期**：如果可能，请选择提供试用期的工具来评估其在您的环境中的有效性。 选择正确的[验证 ](/zh-cn/wiki/verification/) 工具是一项战略决策，可以显着影响您[测试自动化](/zh-cn/wiki/test-automation/) 工作的效率和成功。
 
 #### 使用自动验证工具有哪些优点和缺点？
 
@@ -424,8 +398,7 @@ order: 0
 - **降低成本**：随着时间的推移，自动化可以通过最大限度地减少手动工作来降低测试成本。
 - **覆盖率**：自动化可以增加测试的深度和范围，提高整体软件质量。
 - **可靠性**：消除重复任务中人为错误的风险。
-- **持续集成**：通过频繁的代码检查和即时反馈来促进 CI/CD。
-  自动化 [验证 ](/zh-cn/wiki/verification/) 工具的缺点：
+- **持续集成**：通过频繁的代码检查和即时反馈来促进 CI/CD。 自动化 [验证 ](/zh-cn/wiki/verification/) 工具的缺点：
 
 - **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：工具和框架开发的高额前期投资。
 - **维护开销**：测试脚本需要定期更新以跟上应用程序的变化。
@@ -434,7 +407,7 @@ order: 0
 - **[误报](/zh-cn/wiki/false-positive/)/Negatives**：如果设计或解释不正确，自动化测试可能会产生误导性结果。
 - **工具限制**：工具可能不支持所有技术，或者可能与某些测试环境不兼容。
 
-  ```
+```
   // Example of a simple automated test script
   describe('Login Functionality', () => {
     it('should allow a user to log in', async () => {
@@ -445,7 +418,7 @@ order: 0
       expect(await page.url()).toBe('https://example.com/dashboard');
     });
   });
-  ```
+```
 
 - **效率**：自动化工具可以比人类更快地执行测试，从而可以在更短的时间内进行更多测试。
 - **可重复性**：测试可以以一致的精度重复运行，这对于回归测试至关重要。
@@ -470,9 +443,7 @@ order: 0
 - build
 - test
 - verify
-- deploy
-  verify:
-    script:
+- deploy verify: script:
 - run_verification_tool
 
 2. **配置管理**：使用支持**版本控制**集成的工具来跟踪更改并在代码更新时触发[验证 ](/zh-cn/wiki/verification/)任务。
@@ -482,8 +453,7 @@ order: 0
 6. **质量门**：在部署过程中实施**质量门**，依赖 [验证 ](/zh-cn/wiki/verification/) 结果来决定构建是否已准备好进入下一阶段。
 7. **仪表板和报告**：利用仪表板获得 [验证 ](/zh-cn/wiki/verification/) 结果的高级视图，并将详细报告集成到项目管理工具中以实现可见性和跟踪。
 8. **协作**：通过将[验证 ](/zh-cn/wiki/verification/)工具与通信平台集成来鼓励协作，使团队能够快速讨论和解决问题。
-9. **培训和文档**：提供清晰的文档和培训，以确保团队成员了解如何有效使用 [验证 ](/zh-cn/wiki/verification/) 工具。
-  通过在 SDLC 的这些方面嵌入 [验证 ](/zh-cn/wiki/verification/) 工具，团队可以主动检测和解决问题、维护代码质量并简化开发流程。
+9. **培训和文档**：提供清晰的文档和培训，以确保团队成员了解如何有效使用 [验证 ](/zh-cn/wiki/verification/) 工具。 通过在 SDLC 的这些方面嵌入 [验证 ](/zh-cn/wiki/verification/) 工具，团队可以主动检测和解决问题、维护代码质量并简化开发流程。
 
 1. **早期集成**：将 [验证 ](/zh-cn/wiki/verification/) 工具嵌入到 **持续集成/持续部署 (CI/CD)** 管道中。这可确保代码在提交后立即自动检查缺陷。
 

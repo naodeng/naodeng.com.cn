@@ -1,13 +1,13 @@
 ---
 title: "动态测试 ｜ Dynamic Testing"
-description: "动态测试 (Dynamic Testing) 涉及通过执行软件并提供各种输入来验证输出是否符合预期结果。这是一种“亲身实践”的方法，通过运行代码来识别运行时错误、性能问题等。这与静态测试（在不运行程序的情况下检查代码）形成对比。 动态测试涵盖功能和非功能各方面的验证。它通常包括： - 计划和设计。 - 搭建测试环境。 - 执行测试用例。 - 比较实际结果与预期结果。 - 报告并修复缺陷。"
+description: "动态测试 (Dynamic Testing) 涉及通过执行软件并提供各种输入来验证输出是否符合预期结果。这是一种“亲身实践”的方法，通过运行代码来识别运行时错误、性能问题等。这与静态测试（在不运行程序的情况下检查代码）形成对比。 动态测试涵盖功能和非功能各方面的验证。它通常包括： - 计划和设计…"
 section: "D"
 related:
   - static-testing
   - manual-testing
   - automated-testing
-  - test-suite
-  - web-testing
+  - validation-testing
+  - test-case
 order: 0
 ---
 
@@ -56,10 +56,7 @@ order: 0
   2.搭建测试环境。
 3. 执行测试用例。
 4. 将实际结果与预期结果进行比较。
-5. 报告和修复缺陷。
-  在现实场景中，[动态测试](/zh-cn/wiki/dynamic-testing/) 通常使用 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具集成到持续集成/持续部署 (CI/CD) 管道中。自动化框架有助于定期执行动态测试，帮助团队快速识别和解决问题。
-  [动态测试](/zh-cn/wiki/dynamic-testing/) 中的挑战包括维护[测试环境](/zh-cn/wiki/test-environment/)、处理[片状测试](/zh-cn/wiki/flaky-test/) 以及确保[测试覆盖率](/zh-cn/wiki/test-coverage/)。定期测试维护、优先考虑关键[测试用例](/zh-cn/wiki/test-case/) 以及使用模拟对象等最佳实践可以缓解这些问题。
-  有效性是通过缺陷检测率、[测试覆盖率](/zh-cn/wiki/test-coverage/) 以及给定时间内执行的[测试用例](/zh-cn/wiki/test-case/) 数量等指标来衡量的。
+5. 报告和修复缺陷。 在现实场景中，[动态测试](/zh-cn/wiki/dynamic-testing/) 通常使用 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具集成到持续集成/持续部署 (CI/CD) 管道中。自动化框架有助于定期执行动态测试，帮助团队快速识别和解决问题。 [动态测试](/zh-cn/wiki/dynamic-testing/) 中的挑战包括维护[测试环境](/zh-cn/wiki/test-environment/)、处理[片状测试](/zh-cn/wiki/flaky-test/) 以及确保[测试覆盖率](/zh-cn/wiki/test-coverage/)。定期测试维护、优先考虑关键[测试用例](/zh-cn/wiki/test-case/) 以及使用模拟对象等最佳实践可以缓解这些问题。 有效性是通过缺陷检测率、[测试覆盖率](/zh-cn/wiki/test-coverage/) 以及给定时间内执行的[测试用例](/zh-cn/wiki/test-case/) 数量等指标来衡量的。
 
 1.根据需求规划和设计测试。
   2.搭建测试环境。
@@ -80,65 +77,20 @@ order: 0
   主要区别：
 
 - **执行** ：静态测试不执行代码；动态确实如此。
-- **计时**：可以进行静态测试
-    **早**
-    在开发生命周期中，甚至在代码可运行之前。动态测试通常发生在构建准备好运行之后。
+- **计时**：可以进行静态测试 **早**在开发生命周期中，甚至在代码可运行之前。动态测试通常发生在构建准备好运行之后。
 
-- **焦点**：静态查看
-    **语法**
-    和
-    **结构**
-    ，动态于
-    **运行时行为**
-    和
-    **性能**
-    。
+- **焦点**：静态查看 **语法**和 **结构** ，动态于 **运行时行为**和 **性能** 。
 
-- **缺陷**：静态可以发现
-    **逻辑错误**
-    ,
-    **违反代码标准**
-    , 和
-    **安全问题**
-    早。动态标识
-    **functional [bugs](/zh-cn/wiki/bug/)**
-    ,
-    **集成问题**
-    , 和
-    **系统故障**
-    。
+- **缺陷**：静态可以发现 **逻辑错误** , **违反代码标准** , 和 **安全问题**早。动态标识 **functional [bugs](/zh-cn/wiki/bug/)** , **集成问题** , 和 **系统故障** 。
 
-- **工具**：静态使用 linter、静态分析器和手动检查表。 Dynamic 依赖于测试框架、调试器和性能测试工具。
-  总之，[静态测试](/zh-cn/wiki/static-testing/) 是通过早期检查工件来**防止缺陷**，而 [动态测试](/zh-cn/wiki/dynamic-testing/) 是关于通过与正在运行的应用程序交互来**检测缺陷**。将两者结合起来提供了一种全面的方法来确保[软件质量](/zh-cn/wiki/software-quality/)。
+- **工具**：静态使用 linter、静态分析器和手动检查表。 Dynamic 依赖于测试框架、调试器和性能测试工具。 总之，[静态测试](/zh-cn/wiki/static-testing/) 是通过早期检查工件来**防止缺陷**，而 [动态测试](/zh-cn/wiki/dynamic-testing/) 是关于通过与正在运行的应用程序交互来**检测缺陷**。将两者结合起来提供了一种全面的方法来确保[软件质量](/zh-cn/wiki/software-quality/)。
 
 - **执行** ：静态测试不执行代码；动态确实如此。
-- **计时**：可以进行静态测试
-    **早**
-    在开发生命周期中，甚至在代码可运行之前。动态测试通常发生在构建准备好运行之后。
+- **计时**：可以进行静态测试 **早**在开发生命周期中，甚至在代码可运行之前。动态测试通常发生在构建准备好运行之后。
 
-- **焦点**：静态查看
-    **语法**
-    和
-    **结构**
-    ，动态于
-    **运行时行为**
-    和
-    **性能**
-    。
+- **焦点**：静态查看 **语法**和 **结构** ，动态于 **运行时行为**和 **性能** 。
 
-- **缺陷**：静态可以发现
-    **逻辑错误**
-    ,
-    **违反代码标准**
-    , 和
-    **安全问题**
-    早。动态标识
-    **functional [bugs](/zh-cn/wiki/bug/)**
-    ,
-    **集成问题**
-    , 和
-    **系统故障**
-    。
+- **缺陷**：静态可以发现 **逻辑错误** , **违反代码标准** , 和 **安全问题**早。动态标识 **functional [bugs](/zh-cn/wiki/bug/)** , **集成问题** , 和 **系统故障** 。
 
 - **工具**：静态使用 linter、静态分析器和手动检查表。 Dynamic 依赖于测试框架、调试器和性能测试工具。
 
@@ -167,8 +119,7 @@ order: 0
 - **[安全测试](/zh-cn/wiki/security-testing/)** ：识别软件中的漏洞并确保数据和资源免受潜在的破坏。
 - **[兼容性测试](/zh-cn/wiki/compatibility-testing/)** ：确保软件在不同环境下正确运行，包括各种设备、操作系统和网络配置。
 - **冒烟测试**：在进行更深入的测试之前检查软件的基本功能的初步测试。
-- **[健全性测试](/zh-cn/wiki/sanity-testing/)** ：快速、非详尽地浏览软件的功能方面，以确保其在微小更改后按预期运行。
-  每种类型的[动态测试](/zh-cn/wiki/dynamic-testing/) 都针对软件的特定方面，有助于全面评估系统的性能、可靠性和用户满意度。
+- **[健全性测试](/zh-cn/wiki/sanity-testing/)** ：快速、非详尽地浏览软件的功能方面，以确保其在微小更改后按预期运行。 每种类型的[动态测试](/zh-cn/wiki/dynamic-testing/) 都针对软件的特定方面，有助于全面评估系统的性能、可靠性和用户满意度。
 
 - **[单元测试](/zh-cn/wiki/unit-testing/)** : Tests individual components or functions for correctness, typically done by developers.
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：检查集成组件或系统之间的接口和交互。
@@ -190,27 +141,25 @@ order: 0
 
 - 单元测试
 - 集成测试
-- 代码覆盖率分析
-  伪代码示例：
+- 代码覆盖率分析伪代码示例：
 
-  ```
+```
   function add(a, b) {
     return a + b;
   }
   // White box test case: Check if function correctly adds two numbers
   assert(add(2, 3) == 5);
-  ```
+```
 另一方面，**[黑盒测试](/zh-cn/wiki/black-box-testing/)** 将软件视为一个封闭的盒子。测试人员不了解内部实现，只关注软件的输入和输出。他们从最终用户的角度验证软件是否满足指定的要求和功能是否正确。 [黑盒测试](/zh-cn/wiki/black-box-testing/) 可有效验证系统行为并确保满足 [功能需求](/zh-cn/wiki/functional-requirements/) 要求，而无需深入研究代码库。技术包括：
 
 - 功能测试
 - 系统测试
-- 验收测试
-  伪代码示例：
+- 验收测试伪代码示例：
 
-  ```
+```
   // Black box test case: Check if 'Login' feature works with valid credentials
   assert(login('validUser', 'validPass') == 'Login Successful');
-  ```
+```
 这两种方法对于全面的测试策略都至关重要，[白盒测试](/zh-cn/wiki/white-box-testing/) 确保内部正确性，[黑盒测试](/zh-cn/wiki/black-box-testing/) 验证外部功能。
 
 - 单元测试
@@ -239,8 +188,7 @@ order: 0
 - 为这些领域开发自动化测试用例。
 - 将这些测试集成到构建过程中，以便在每次代码提交时自动运行。
 - 使用测试管理工具来跟踪测试用例和结果。
-- 分析测试结果以及时检测并修复回归问题。
-  通过自动化回归测试，团队可以快速解决变更带来的问题，从而保持软件的完整性并确保增强功能不会破坏现有功能。
+- 分析测试结果以及时检测并修复回归问题。 通过自动化回归测试，团队可以快速解决变更带来的问题，从而保持软件的完整性并确保增强功能不会破坏现有功能。
 
 ### 流程和实施
 
@@ -259,8 +207,7 @@ order: 0
 9. **[性能测试](/zh-cn/wiki/performance-testing/)** : Evaluate system performance under various conditions to ensure it meets requirements.
 10. **[安全测试](/zh-cn/wiki/security-testing/)** : Check for vulnerabilities and ensure data protection measures are effective.
 11. **[可用性测试](/zh-cn/wiki/usability-testing/)** : Assess ease of use and user satisfaction.
-12. **测试结束**：编译测试指标，记录经验教训，并发布测试软件以供将来使用。
-  在整个过程中，与利益相关者保持**沟通**​​并更新**测试文档**。在适当的情况下使用**自动化工具**来提高效率和可靠性。定期审查和调整流程以纳入**反馈**和**持续改进**实践。
+12. **测试结束**：编译测试指标，记录经验教训，并发布测试软件以供将来使用。 在整个过程中，与利益相关者保持**沟通**​​并更新**测试文档**。在适当的情况下使用**自动化工具**来提高效率和可靠性。定期审查和调整流程以纳入**反馈**和**持续改进**实践。
 
 1. **测试计划**：定义目标、范围、资源和时间表。根据风险和覆盖范围选择测试用例。
 2. **测试设计**：创建详细的测试用例和脚本。确定输入数据、预期结果和执行条件。
@@ -280,50 +227,33 @@ order: 0
 [动态测试](/zh-cn/wiki/dynamic-testing/) 通常集成到**持续集成/持续部署 (CI/CD)** 管道中。自动[测试脚本](/zh-cn/wiki/test-script/) 在代码提交或计划的时间间隔时触发。这些测试在运行时环境中与应用程序交互，模拟用户行为或系统进程来验证功能和性能。
   In practice, [动态测试](/zh-cn/wiki/dynamic-testing/) involves:
 
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**
-    镜像生产尽可能接近。
+- **设置[测试环境](/zh-cn/wiki/test-environment/)**镜像生产尽可能接近。
 
-- **Writing [测试用例](/zh-cn/wiki/test-case/)**
-    涵盖预期行为、边缘情况和潜在错误情况。
+- **Writing [测试用例](/zh-cn/wiki/test-case/)**涵盖预期行为、边缘情况和潜在错误情况。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**
-    例如 Selenium、Appium 或 JUnit 来执行测试。
+- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**例如 Selenium、Appium 或 JUnit 来执行测试。
 
-- **合并[API 测试](/zh-cn/wiki/api-testing/)工具**
-    例如用于后端测试的 Postman 或 REST-assured。
+- **合并[API 测试](/zh-cn/wiki/api-testing/)工具**例如用于后端测试的 Postman 或 REST-assured。
 
-- **利用服务虚拟化**
-    模拟不可用的系统或第三方服务。
+- **利用服务虚拟化**模拟不可用的系统或第三方服务。
 
-- **实施[性能测试](/zh-cn/wiki/performance-testing/)工具**
-    像 JMeter 或 LoadRunner 一样评估负载下的响应时间和稳定性。
+- **实施[性能测试](/zh-cn/wiki/performance-testing/)工具**像 JMeter 或 LoadRunner 一样评估负载下的响应时间和稳定性。
 
-- **Executing [安全测试](/zh-cn/wiki/security-testing/) tools**
-    例如 OWASP ZAP 或 Burp Suite 来识别漏洞。
-  通常借助 TestRail 或 Zephyr 等 **[测试管理](/zh-cn/wiki/test-management/) 工具** 来分析测试结果，并在 [jira](/zh-cn/wiki/jira/) 等问题跟踪系统中记录**缺陷。建立反馈循环是为了确保将调查结果及时传达给开发团队。
-  [动态测试](/zh-cn/wiki/dynamic-testing/) 自动化脚本与应用程序代码一起维护，确保它们随应用程序一起发展。 **版本控制系统**（如 Git）用于管理这些脚本，并应用**代码审查实践**来维护其质量。
-  跟踪**缺陷密度、[测试覆盖率](/zh-cn/wiki/test-coverage/) 和通过/失败率**等指标来衡量[动态测试](/zh-cn/wiki/dynamic-testing/) 工作的有效性，指导测试过程的持续改进。
+- **Executing [安全测试](/zh-cn/wiki/security-testing/) tools**例如 OWASP ZAP 或 Burp Suite 来识别漏洞。 通常借助 TestRail 或 Zephyr 等 **[测试管理](/zh-cn/wiki/test-management/) 工具** 来分析测试结果，并在 [jira](/zh-cn/wiki/jira/) 等问题跟踪系统中记录**缺陷。建立反馈循环是为了确保将调查结果及时传达给开发团队。 [动态测试](/zh-cn/wiki/dynamic-testing/) 自动化脚本与应用程序代码一起维护，确保它们随应用程序一起发展。 **版本控制系统**（如 Git）用于管理这些脚本，并应用**代码审查实践**来维护其质量。 跟踪**缺陷密度、[测试覆盖率](/zh-cn/wiki/test-coverage/) 和通过/失败率**等指标来衡量[动态测试](/zh-cn/wiki/dynamic-testing/) 工作的有效性，指导测试过程的持续改进。
 
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**
-    镜像生产尽可能接近。
+- **设置[测试环境](/zh-cn/wiki/test-environment/)**镜像生产尽可能接近。
 
-- **写[测试用例](/zh-cn/wiki/test-case/)**
-    涵盖预期行为、边缘情况和潜在错误情况。
+- **写[测试用例](/zh-cn/wiki/test-case/)**涵盖预期行为、边缘情况和潜在错误情况。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**
-    例如 Selenium、Appium 或 JUnit 来执行测试。
+- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**例如 Selenium、Appium 或 JUnit 来执行测试。
 
-- **合并[API 测试](/zh-cn/wiki/api-testing/)工具**
-    例如用于后端测试的 Postman 或 REST-assured。
+- **合并[API 测试](/zh-cn/wiki/api-testing/)工具**例如用于后端测试的 Postman 或 REST-assured。
 
-- **利用服务虚拟化**
-    模拟不可用的系统或第三方服务。
+- **利用服务虚拟化**模拟不可用的系统或第三方服务。
 
-- **Implementing [性能测试](/zh-cn/wiki/performance-testing/) tools**
-    像 JMeter 或 LoadRunner 一样评估负载下的响应时间和稳定性。
+- **Implementing [性能测试](/zh-cn/wiki/performance-testing/) tools**像 JMeter 或 LoadRunner 一样评估负载下的响应时间和稳定性。
 
-- **执行[安全测试](/zh-cn/wiki/security-testing/)工具**
-    例如 OWASP ZAP 或 Burp Suite 来识别漏洞。
+- **执行[安全测试](/zh-cn/wiki/security-testing/)工具**例如 OWASP ZAP 或 Burp Suite 来识别漏洞。
 
 #### 动态测试常用的工具有哪些？
 
@@ -338,8 +268,7 @@ order: 0
 - **Ranorex**：一个 GUI 测试自动化框架，支持广泛的桌面、Web 和移动应用程序测试。
 - **Cucumber**：支持行为驱动开发（BDD）并允许执行以面向业务的文本编写的功能文档。
 - **[Postman](/zh-cn/wiki/postman/)** ：一个 API 测试工具，允许用户构建、测试和修改 API。
-- **SoapUI** ：用于测试 SOAP 和 REST API 的工具，重点关注 API 功能测试。
-  这些工具支持各种脚本语言，并与持续集成/持续部署（CI/CD）管道集成，增强了它们在现实世界[动态测试](/zh-cn/wiki/dynamic-testing/)场景中的实用性。它们提供创建、执行和管理测试以及分析结果的功能，以确保 [软件质量](/zh-cn/wiki/software-quality/) 和性能。
+- **SoapUI** ：用于测试 SOAP 和 REST API 的工具，重点关注 API 功能测试。 这些工具支持各种脚本语言，并与持续集成/持续部署（CI/CD）管道集成，增强了它们在现实世界[动态测试](/zh-cn/wiki/dynamic-testing/)场景中的实用性。它们提供创建、执行和管理测试以及分析结果的功能，以确保 [软件质量](/zh-cn/wiki/software-quality/) 和性能。
 
 - **[selenium](/zh-cn/wiki/selenium/)** : An open-source framework for web application testing across different browsers and platforms.
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
@@ -356,15 +285,13 @@ order: 0
 
 [动态测试](/zh-cn/wiki/dynamic-testing/) 可以通过编写 [测试用例](/zh-cn/wiki/test-case/) 脚本来实现自动化，该脚本与用户一样与软件交互。自动化框架和工具执行这些脚本，提供有关系统行为的快速反馈。这是一个简洁的指南：
 
-- **识别[测试用例](/zh-cn/wiki/test-case/)**
-    适用于自动化，专注于重复性、高风险或耗时的测试。
+- **识别[测试用例](/zh-cn/wiki/test-case/)**适用于自动化，专注于重复性、高风险或耗时的测试。
 
-- **写[测试脚本](/zh-cn/wiki/test-script/)**
-    使用测试自动化工具提供的编程语言或领域特定语言。
+- **写[测试脚本](/zh-cn/wiki/test-script/)**使用测试自动化工具提供的编程语言或领域特定语言。
 
 - $
 
-    ```
+```
     describe('Login functionality', () => {
       it('should allow a user to log in', async () => {
         await navigateToLoginPage();
@@ -373,33 +300,25 @@ order: 0
         expect(await isLoggedIn()).toBe(true);
       });
     });
-    ```
+```
 
-- **选择自动化工具**
-    符合您的技术堆栈和测试需求，例如 Selenium、Appium 或 Cypress。
+- **选择自动化工具**符合您的技术堆栈和测试需求，例如 Selenium、Appium 或 Cypress。
 
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**
-    尽可能真实地反映生产情况，以确保结果准确。
+- **设置[测试环境](/zh-cn/wiki/test-environment/)**尽可能真实地反映生产情况，以确保结果准确。
 
-- **与 CI/CD 管道集成**
-    触发代码提交、合并或计划构建的一部分的测试。
+- **与 CI/CD 管道集成**触发代码提交、合并或计划构建的一部分的测试。
 
-- **分析测试结果**
-    使用自动化工具或第三方集成提供的报告和仪表板。
+- **分析测试结果**使用自动化工具或第三方集成提供的报告和仪表板。
 
-- **维护[测试脚本](/zh-cn/wiki/test-script/)**
-    跟上应用程序的变化，确保自动化保持可靠和相关。
-  自动化 [动态测试](/zh-cn/wiki/dynamic-testing/) 需要在脚本开发和环境配置方面进行初始投资，但它会带来更快的测试周期、早期[bug](/zh-cn/wiki/bug/) 检测以及频繁且一致地运行测试的能力。
+- **维护[测试脚本](/zh-cn/wiki/test-script/)**跟上应用程序的变化，确保自动化保持可靠和相关。 自动化 [动态测试](/zh-cn/wiki/dynamic-testing/) 需要在脚本开发和环境配置方面进行初始投资，但它会带来更快的测试周期、早期[bug](/zh-cn/wiki/bug/) 检测以及频繁且一致地运行测试的能力。
 
-- **识别[测试用例](/zh-cn/wiki/test-case/)**
-    适用于自动化，专注于重复性、高风险或耗时的测试。
+- **识别[测试用例](/zh-cn/wiki/test-case/)**适用于自动化，专注于重复性、高风险或耗时的测试。
 
-- **写[测试脚本](/zh-cn/wiki/test-script/)**
-    使用测试自动化工具提供的编程语言或领域特定语言。
+- **写[测试脚本](/zh-cn/wiki/test-script/)**使用测试自动化工具提供的编程语言或领域特定语言。
 
 - $
 
-    ```
+```
     describe('Login functionality', () => {
       it('should allow a user to log in', async () => {
         await navigateToLoginPage();
@@ -408,22 +327,17 @@ order: 0
         expect(await isLoggedIn()).toBe(true);
       });
     });
-    ```
+```
 
-- **选择自动化工具**
-    符合您的技术堆栈和测试需求，例如 Selenium、Appium 或 Cypress。
+- **选择自动化工具**符合您的技术堆栈和测试需求，例如 Selenium、Appium 或 Cypress。
 
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**
-    尽可能真实地反映生产情况，以确保结果准确。
+- **设置[测试环境](/zh-cn/wiki/test-environment/)**尽可能真实地反映生产情况，以确保结果准确。
 
-- **与 CI/CD 管道集成**
-    触发代码提交、合并或计划构建的一部分的测试。
+- **与 CI/CD 管道集成**触发代码提交、合并或计划构建的一部分的测试。
 
-- **分析测试结果**
-    使用自动化工具或第三方集成提供的报告和仪表板。
+- **分析测试结果**使用自动化工具或第三方集成提供的报告和仪表板。
 
-- **维护[测试脚本](/zh-cn/wiki/test-script/)**
-    跟上应用程序的变化，确保自动化保持可靠和相关。
+- **维护[测试脚本](/zh-cn/wiki/test-script/)**跟上应用程序的变化，确保自动化保持可靠和相关。
 
 ### 挑战和最佳实践
 
@@ -440,47 +354,24 @@ order: 0
 - **性能**：测试可能无法充分模拟实际使用情况，导致性能问题被忽视。
 - **与 CI/CD 集成**：将动态测试集成到持续集成和部署管道中需要仔细规划以避免瓶颈。
 - **工具限制**：测试自动化工具可能存在限制，影响创建有效动态测试的能力。
-- **维护**：随着软件的发展，测试需要更新，这可能是一项重大的持续工作。
-  缓解策略包括：
+- **维护**：随着软件的发展，测试需要更新，这可能是一项重大的持续工作。 缓解策略包括：
 
-- 实施
-    **重试**
-    用于片状测试或解决片状的根本原因。
+- 实施 **重试**用于片状测试或解决片状的根本原因。
 
-- 使用
-    **容器化**
-    或
-    **虚拟化**
-    以尽量减少环境的不一致。
+- 使用 **容器化**或 **虚拟化**以尽量减少环境的不一致。
 
-- 优先考虑
-    **[测试场景](/zh-cn/wiki/test-scenario/)**
-    基于风险和影响，重点关注最关键的路径。
+- 优先考虑 **[测试场景](/zh-cn/wiki/test-scenario/)**基于风险和影响，重点关注最关键的路径。
 
-- 雇用
-    **[测试数据](/zh-cn/wiki/test-data/) 管理**
-    简化数据处理的工具和策略。
+- 雇用 **[测试数据](/zh-cn/wiki/test-data/) 管理**简化数据处理的工具和策略。
 
-- 定期审查和
-    **重构测试**
-    保持覆盖范围并减少维护开销。
+- 定期审查和 **重构测试**保持覆盖范围并减少维护开销。
 
-- 整合
-    **[性能测试](/zh-cn/wiki/performance-testing/)**
-    进入动态测试过程。
+- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**进入动态测试过程。
 
-- 确保测试顺利集成
-    **CI/CD 管道**
-    使用适当的工具和实践。
+- 确保测试顺利集成 **CI/CD 管道**使用适当的工具和实践。
 
 - 选择和配置最适合项目需求的工具，并通过定制解决方案克服工具限制。
-- 使用以下指标衡量有效性
-    **缺陷逃逸率**
-    ,
-    **[测试覆盖率](/zh-cn/wiki/test-coverage/)**
-    , 和
-    **测试时间**
-    。
+- 使用以下指标衡量有效性 **缺陷逃逸率** , **[测试覆盖率](/zh-cn/wiki/test-coverage/)** , 和 **测试时间** 。
 
 - **测试不稳定**：由于计时问题、外部依赖性或不确定性行为，测试可能会不一致地通过或失败。
 - **环境不一致**：测试、登台和生产环境之间的差异可能会导致误报或误报。
@@ -492,44 +383,22 @@ order: 0
 - **与 CI/CD 集成**：将动态测试集成到持续集成和部署管道中需要仔细规划以避免瓶颈。
 - **工具限制**：测试自动化工具可能存在限制，影响创建有效动态测试的能力。
 - **维护**：随着软件的发展，测试需要更新，这可能是一项重大的持续工作。
-- 实施
-    **重试**
-    用于片状测试或解决片状的根本原因。
+- 实施 **重试**用于片状测试或解决片状的根本原因。
 
-- 使用
-    **容器化**
-    或
-    **虚拟化**
-    以尽量减少环境的不一致。
+- 使用 **容器化**或 **虚拟化**以尽量减少环境的不一致。
 
-- 优先考虑
-    **[测试场景](/zh-cn/wiki/test-scenario/)**
-    基于风险和影响，重点关注最关键的路径。
+- 优先考虑 **[测试场景](/zh-cn/wiki/test-scenario/)**基于风险和影响，重点关注最关键的路径。
 
-- 雇用
-    **[测试数据](/zh-cn/wiki/test-data/) 管理**
-    简化数据处理的工具和策略。
+- 雇用 **[测试数据](/zh-cn/wiki/test-data/) 管理**简化数据处理的工具和策略。
 
-- 定期审查和
-    **重构测试**
-    保持覆盖范围并减少维护开销。
+- 定期审查和 **重构测试**保持覆盖范围并减少维护开销。
 
-- 整合
-    **[性能测试](/zh-cn/wiki/performance-testing/)**
-    进入动态测试过程。
+- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**进入动态测试过程。
 
-- 确保测试顺利集成
-    **CI/CD 管道**
-    使用适当的工具和实践。
+- 确保测试顺利集成 **CI/CD 管道**使用适当的工具和实践。
 
 - 选择和配置最适合项目需求的工具，并通过定制解决方案克服工具限制。
-- 使用以下指标衡量有效性
-    **缺陷逃逸率**
-    ,
-    **[测试覆盖率](/zh-cn/wiki/test-coverage/)**
-    , 和
-    **测试时间**
-    。
+- 使用以下指标衡量有效性 **缺陷逃逸率** , **[测试覆盖率](/zh-cn/wiki/test-coverage/)** , 和 **测试时间** 。
 
 #### 进行动态测试时需要遵循哪些最佳实践？
 
@@ -546,7 +415,7 @@ order: 0
 - **保持更新**：保持最新的工具和技能，以利用最新的测试方法和技术。
 - **协作和沟通**：与开发人员、业务分析师和其他利益相关者密切合作，以确保测试工作的一致性和理解。
 
-  ```
+```
   // Example of a simple automated test case in TypeScript
   import { expect } from 'chai';
   import { Calculator } from './Calculator';
@@ -556,7 +425,7 @@ order: 0
       expect(calculator.add(2, 3)).to.equal(5);
     });
   });
-  ```
+```
 请记住，[动态测试](/zh-cn/wiki/dynamic-testing/) 是迭代的。根据反馈和结果不断完善您的方法。
 
 - **彻底计划**：定义明确的目标、范围和成功标准。使用风险分析来确定测试用例的优先级。
@@ -574,72 +443,49 @@ order: 0
 
 Mitigating challenges in [动态测试](/zh-cn/wiki/dynamic-testing/) involves strategic planning and efficient use of resources.以下是一些方法：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响。使用基于风险的测试来重点关注对应用程序功能至关重要的领域。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。使用基于风险的测试来重点关注对应用程序功能至关重要的领域。
 
-- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**
-    密切反映生产情况，以确保测试结果可靠且相关。
+- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**密切反映生产情况，以确保测试结果可靠且相关。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)**
-    在适当的情况下增加测试覆盖率并加快执行速度。自动回归测试可能特别有价值。
+- **利用[测试自动化](/zh-cn/wiki/test-automation/)**在适当的情况下增加测试覆盖率并加快执行速度。自动回归测试可能特别有价值。
 
-- **实施持续集成/持续部署（CI/CD）**
-    将动态测试集成到开发过程中的管道，以便及早发现问题。
+- **实施持续集成/持续部署（CI/CD）**将动态测试集成到开发过程中的管道，以便及早发现问题。
 
-- **利用并行测试**
-    同时运行多个测试，减少测试执行所需的时间。
+- **利用并行测试**同时运行多个测试，减少测试执行所需的时间。
 
-- **采用[测试数据](/zh-cn/wiki/test-data/)管理实践**
-    确保为动态测试场景提供高质量的相关测试数据。
+- **采用[测试数据](/zh-cn/wiki/test-data/)管理实践**确保为动态测试场景提供高质量的相关测试数据。
 
-- **Keep [测试用例](/zh-cn/wiki/test-case/) and scripts up to date**
-    反映应用程序中的变化并防止测试失败。
+- **Keep [测试用例](/zh-cn/wiki/test-case/) and scripts up to date**反映应用程序中的变化并防止测试失败。
 
-- **使用版本控制**
-    用于测试脚本来跟踪更改并在团队成员之间有效协作。
+- **使用版本控制**用于测试脚本来跟踪更改并在团队成员之间有效协作。
 
-- **投资于培训和知识共享**
-    确保团队成员精通动态测试技术和工具。
+- **投资于培训和知识共享**确保团队成员精通动态测试技术和工具。
 
-- **选择合适的工具**
-    与您的技术堆栈完美集成并满足您的动态测试策略的特定需求。
+- **选择合适的工具**与您的技术堆栈完美集成并满足您的动态测试策略的特定需求。
 
-- **监控和分析测试结果**
-    识别模式和重复出现的问题，从而在测试过程中实现有针对性的改进。
-  By addressing these areas, [测试自动化](/zh-cn/wiki/test-automation/) engineers can enhance the efficiency and effectiveness of [动态测试](/zh-cn/wiki/dynamic-testing/), leading to higher quality software releases.
+- **监控和分析测试结果**识别模式和重复出现的问题，从而在测试过程中实现有针对性的改进。 By addressing these areas, [测试自动化](/zh-cn/wiki/test-automation/) engineers can enhance the efficiency and effectiveness of [动态测试](/zh-cn/wiki/dynamic-testing/), leading to higher quality software releases.
 
-- **Prioritize [测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响。使用基于风险的测试来重点关注对应用程序功能至关重要的领域。
+- **Prioritize [测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。使用基于风险的测试来重点关注对应用程序功能至关重要的领域。
 
-- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**
-    密切反映生产情况，以确保测试结果可靠且相关。
+- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**密切反映生产情况，以确保测试结果可靠且相关。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)**
-    在适当的情况下增加测试覆盖率并加快执行速度。自动回归测试可能特别有价值。
+- **利用[测试自动化](/zh-cn/wiki/test-automation/)**在适当的情况下增加测试覆盖率并加快执行速度。自动回归测试可能特别有价值。
 
-- **实施持续集成/持续部署（CI/CD）**
-    将动态测试集成到开发过程中的管道，以便及早发现问题。
+- **实施持续集成/持续部署（CI/CD）**将动态测试集成到开发过程中的管道，以便及早发现问题。
 
-- **利用并行测试**
-    同时运行多个测试，减少测试执行所需的时间。
+- **利用并行测试**同时运行多个测试，减少测试执行所需的时间。
 
-- **采用[测试数据](/zh-cn/wiki/test-data/)管理实践**
-    确保为动态测试场景提供高质量的相关测试数据。
+- **采用[测试数据](/zh-cn/wiki/test-data/)管理实践**确保为动态测试场景提供高质量的相关测试数据。
 
-- **保持 [测试用例](/zh-cn/wiki/test-case/) 和脚本最新**
-    反映应用程序中的变化并防止测试失败。
+- **保持 [测试用例](/zh-cn/wiki/test-case/) 和脚本最新**反映应用程序中的变化并防止测试失败。
 
-- **使用版本控制**
-    用于测试脚本来跟踪更改并在团队成员之间有效协作。
+- **使用版本控制**用于测试脚本来跟踪更改并在团队成员之间有效协作。
 
-- **投资于培训和知识共享**
-    确保团队成员精通动态测试技术和工具。
+- **投资于培训和知识共享**确保团队成员精通动态测试技术和工具。
 
-- **选择合适的工具**
-    与您的技术堆栈完美集成并满足您的动态测试策略的特定需求。
+- **选择合适的工具**与您的技术堆栈完美集成并满足您的动态测试策略的特定需求。
 
-- **监控和分析测试结果**
-    识别模式和重复出现的问题，从而在测试过程中实现有针对性的改进。
+- **监控和分析测试结果**识别模式和重复出现的问题，从而在测试过程中实现有针对性的改进。
 
 #### 如何衡量动态测试的有效性？
 
@@ -647,10 +493,10 @@ Mitigating challenges in [动态测试](/zh-cn/wiki/dynamic-testing/) involves s
 
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：利用覆盖率工具来评估测试期间执行的代码的百分比。高覆盖率表明测试彻底，但并不能保证发现缺陷。
 
-  ```
+```
   // Example: Using Istanbul for JavaScript test coverage
   npx nyc --reporter=text mocha
-  ```
+```
 
 - **缺陷密度**：计算每个软件大小（例如每个 KLOC）发现的缺陷数量。发布后较低的缺陷密度表明测试有效。
 - **缺陷检测率**：跟踪测试检测到新缺陷的速率。较高的比率可以表明测试有效，但请考虑检测到的缺陷的[严重性](/zh-cn/wiki/severity/)。
@@ -659,8 +505,7 @@ Mitigating challenges in [动态测试](/zh-cn/wiki/dynamic-testing/) involves s
 - **测试时间**：测量运行测试所需的时间。更快的测试可以改善反馈循环，但确保它们保持全面。
 - **平均检测时间 (MTTD)**：评估测试检测故障的速度。较短的 MTTD 可以更快地解决问题。
 - **平均修复时间 (MTTR)**：评估修复缺陷的平均时间。较低的 MTTR 表明高效 [缺陷管理](/zh-cn/wiki/defect-management/)。
-- **客户发现的缺陷 (CFD)**：跟踪用户报告的缺陷。较少的差价合约表明有效的预[发布测试](/zh-cn/wiki/release-testing/)。
-  通过分析这些指标，您可以深入了解 [动态测试](/zh-cn/wiki/dynamic-testing/) 工作的有效性并确定需要改进的领域。
+- **客户发现的缺陷 (CFD)**：跟踪用户报告的缺陷。较少的差价合约表明有效的预[发布测试](/zh-cn/wiki/release-testing/)。 通过分析这些指标，您可以深入了解 [动态测试](/zh-cn/wiki/dynamic-testing/) 工作的有效性并确定需要改进的领域。
 
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：利用覆盖率工具来评估测试期间执行的代码的百分比。高覆盖率表明测试彻底，但并不能保证发现缺陷。
 - **缺陷密度**：计算每个软件大小（例如每个 KLOC）发现的缺陷数量。发布后较低的缺陷密度表明测试有效。

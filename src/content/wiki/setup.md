@@ -5,9 +5,10 @@ section: "S"
 related:
   - automated-testing
   - test-data
+  - web-testing
   - manual-testing
   - test-suite
-  - web-testing
+  - software-development-life-cycle
 order: 0
 ---
 
@@ -24,7 +25,7 @@ order: 0
       - [为什么在开始自动化过程之前需要进行正确的设置？](#为什么在开始自动化过程之前需要进行正确的设置)
     - [设置过程](#设置过程)
       - [e2e 测试的设置过程涉及哪些步骤？](#e2e-测试的设置过程涉及哪些步骤)
-      - [如何搭建e2e测试的测试环境？](#如何搭建e2e测试的测试环境)
+      - [如何搭建 e2e 测试的测试环境？](#如何搭建-e2e-测试的测试环境)
       - [设置过程中面临哪些常见挑战以及如何克服这些挑战？](#设置过程中面临哪些常见挑战以及如何克服这些挑战)
       - [e2e 测试的设置过程需要哪些工具？](#e2e-测试的设置过程需要哪些工具)
     - [最佳实践](#最佳实践)
@@ -38,7 +39,6 @@ order: 0
       - [如何自动化 e2e 测试的设置过程？](#如何自动化-e2e-测试的设置过程)
       - [e2e 测试设置的最新趋势和技术是什么？](#e2e-测试设置的最新趋势和技术是什么)
 <!-- TOC END -->
-＃ 设置安排必要的条件测试用例运行。
 
 ## 有关设置的问题吗？
 
@@ -63,14 +63,13 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **浏览器驱动程序**：对于基于浏览器的测试，包括 ChromeDriver 或 geckodriver 等驱动程序。
 - **无头浏览器**：可以选择使用无头浏览器（例如 Puppeteer）以加快执行速度。
 - **持续集成 (CI) 服务器**：设置 Jenkins、CircleCI 或 GitHub Actions 等 CI 工具以进行自动化测试运行。
-- **版本控制系统**：使用Git或类似的源代码管理。
+- **版本控制系统**：使用 Git 或类似的源代码管理。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：准备处理测试数据的机制，可能使用夹具或工厂。
 - **Mocking Tools** ：结合 Sinon.js 或 WireMock 等工具来模拟 API 或服务。
 - **报告工具**：集成报告实用程序（例如 Allure、ReportPortal）以实现测试结果可见性。
 - **容器化**：可以选择使用 Docker 进行一致的测试环境管理。
 - **配置管理**：如果需要基础设施即代码，请使用 Ansible、Chef 或 Puppet 等工具。
-- **环境变量**：设置一个系统来安全地管理环境变量。
-  确保所有组件兼容并正确集成，以实现无缝的端到端测试过程。
+- **环境变量**：设置一个系统来安全地管理环境变量。 确保所有组件兼容并正确集成，以实现无缝的端到端测试过程。
 
 #### 设置如何影响整个测试过程？
 
@@ -92,8 +91,7 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **集成**：适当的 [环境搭建](/zh-cn/wiki/setup/) 通常设计有 CI/CD 管道的集成点，使自动化 [测试执行](/zh-cn/wiki/test-execution/) 作为构建和部署过程的一部分。
 - **可重用性**：良好的[环境搭建](/zh-cn/wiki/setup/) 允许在不同项目或[测试套件](/zh-cn/wiki/test-suite/) 之间重用测试组件和配置，从而提高效率并减少重复工作。
 - **可靠性**：可靠的[环境搭建](/zh-cn/wiki/setup/)最大限度地减少可能影响测试结果的外部因素，从而获得更可靠的测试结果。
-- **版本控制**：正确的[环境搭建](/zh-cn/wiki/setup/)包括[测试脚本](/zh-cn/wiki/test-script/)和环境配置的版本控制，确保跟踪更改并在必要时可以回滚。
-  总之，正确的[环境搭建](/zh-cn/wiki/setup/) 是稳健可靠的[测试自动化](/zh-cn/wiki/test-automation/) 流程的基础，使团队能够快速、准确地交付优质软件。
+- **版本控制**：正确的[环境搭建](/zh-cn/wiki/setup/)包括[测试脚本](/zh-cn/wiki/test-script/)和环境配置的版本控制，确保跟踪更改并在必要时可以回滚。 总之，正确的[环境搭建](/zh-cn/wiki/setup/) 是稳健可靠的[测试自动化](/zh-cn/wiki/test-automation/) 流程的基础，使团队能够快速、准确地交付优质软件。
 
 ### 设置过程
 
@@ -101,34 +99,25 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 
 要设置 e2e 测试，请按照以下步骤操作：
 
-1. **选择合适的工具**
-    用于测试创建、管理和报告，例如 Cypress、Selenium 或 Puppeteer。
+1. **选择合适的工具**用于测试创建、管理和报告，例如 Cypress、Selenium 或 Puppeteer。
 
-2. **配置[测试环境](/zh-cn/wiki/test-environment/)**
-    尽可能地反映生产情况，包括数据库、服务器和网络配置。
+2. **配置[测试环境](/zh-cn/wiki/test-environment/)**尽可能地反映生产情况，包括数据库、服务器和网络配置。
 
-3. **建立[测试数据](/zh-cn/wiki/test-data/)管理策略**
-    确保测试能够访问必要的数据状态。
+3. **建立[测试数据](/zh-cn/wiki/test-data/)管理策略**确保测试能够访问必要的数据状态。
 
-4. **写首字母[测试用例](/zh-cn/wiki/test-case/)**
-    专注于反映现实世界使用情况的关键用户旅程。
+4. **写首字母[测试用例](/zh-cn/wiki/test-case/)**专注于反映现实世界使用情况的关键用户旅程。
 
-5. **与 CI/CD 管道集成**
-    在代码提交或计划的时间间隔上自动执行测试。
+5. **与 CI/CD 管道集成**在代码提交或计划的时间间隔上自动执行测试。
 
-6. **建立报告机制**
-    收集测试结果并与团队分享见解。
+6. **建立报告机制**收集测试结果并与团队分享见解。
 
-7. **实施监控**
-    跟踪测试不稳定和环境稳定性。
+7. **实施监控**跟踪测试不稳定和环境稳定性。
 
-8. **执行试运行**
-    验证设置，确保测试可以从头到尾顺利运行。
+8. **执行试运行**验证设置，确保测试可以从头到尾顺利运行。
 
-9. **审查和完善**
-    该设置基于试运行的反馈，根据需要调整配置和测试用例。
+9. **审查和完善**该设置基于试运行的反馈，根据需要调整配置和测试用例。
 
-  ```
+```
   // Example of a simple Cypress test
   describe('User Login', () => {
     it('should allow a user to sign in', () => {
@@ -139,51 +128,42 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
       cy.url().should('include', '/dashboard');
     });
   });
-  ```
+```
 请记住**记录[环境搭建](/zh-cn/wiki/setup/) 流程**以供团队参考，并确保遵循**安全最佳实践**来保护[测试数据](/zh-cn/wiki/test-data/) 和环境。
 
-1. **选择合适的工具**
-    用于测试创建、管理和报告，例如 Cypress、Selenium 或 Puppeteer。
+1. **选择合适的工具**用于测试创建、管理和报告，例如 Cypress、Selenium 或 Puppeteer。
 
-2. **配置[测试环境](/zh-cn/wiki/test-environment/)**
-    尽可能地反映生产情况，包括数据库、服务器和网络配置。
+2. **配置[测试环境](/zh-cn/wiki/test-environment/)**尽可能地反映生产情况，包括数据库、服务器和网络配置。
 
-3. **建立[测试数据](/zh-cn/wiki/test-data/)管理策略**
-    确保测试能够访问必要的数据状态。
+3. **建立[测试数据](/zh-cn/wiki/test-data/)管理策略**确保测试能够访问必要的数据状态。
 
-4. **写首字母[测试用例](/zh-cn/wiki/test-case/)**
-    专注于反映现实世界使用情况的关键用户旅程。
+4. **写首字母[测试用例](/zh-cn/wiki/test-case/)**专注于反映现实世界使用情况的关键用户旅程。
 
-5. **与 CI/CD 管道集成**
-    在代码提交或计划的时间间隔上自动执行测试。
+5. **与 CI/CD 管道集成**在代码提交或计划的时间间隔上自动执行测试。
 
-6. **建立报告机制**
-    收集测试结果并与团队分享见解。
+6. **建立报告机制**收集测试结果并与团队分享见解。
 
-7. **实施监控**
-    跟踪测试不稳定和环境稳定性。
+7. **实施监控**跟踪测试不稳定和环境稳定性。
 
-8. **执行试运行**
-    验证设置，确保测试可以从头到尾顺利运行。
+8. **执行试运行**验证设置，确保测试可以从头到尾顺利运行。
 
-9. **审查和完善**
-    该设置基于试运行的反馈，根据需要调整配置和测试用例。
+9. **审查和完善**该设置基于试运行的反馈，根据需要调整配置和测试用例。
 
-#### 如何搭建e2e测试的测试环境？
+#### 如何搭建 e2e 测试的测试环境？
 
 要设置 e2e 测试的测试环境，请按照以下简明步骤操作：
 
 1. **将应用程序存储库克隆到本地或 CI/CD 环境。
 
-    ```
+```
     git clone <repository_url>
-    ```
+```
 
 2. **为被测应用程序 (AUT) 安装依赖项**。
 
-    ```
+```
     npm install
-    ```
+```
 
 3. **配置与测试环境相关的环境变量**，例如[数据库](/zh-cn/wiki/database/) URL、服务端点和身份验证凭据。
 4. **设置外部服务**和[数据库](/zh-cn/wiki/database/)，确保它们尽可能地反映生产环境。
@@ -192,39 +172,38 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 7. **使用已部署 AUT 的正确基本 URL 和其他必要参数配置 [测试运行者](/zh-cn/wiki/test-runner/)**。
 8. **编写冒烟测试**以验证环境设置正确并且 AUT 可访问。
 
-    ```
+```
     describe('Smoke Test', () => {
       it('should load the application', async () => {
         await browser.get('<base_url>');
         expect(await browser.getTitle()).not.toBeNull();
       });
     });
-    ```
+```
 
 9. **执行冒烟测试**以确保环境和 AUT 准备好进行进一步的 e2e 测试。
-10. **与 CI/CD 管道集成**（如果适用），以自动化部署和测试过程。
-  请记住**验证网络配置**和**防火墙规则**，以确保[测试脚本](/zh-cn/wiki/test-script/) 可以与 AUT 和外部服务进行通信。定期**备份配置**并**记录[环境搭建](/zh-cn/wiki/setup/)**以实现可重复性和维护。
+10. **与 CI/CD 管道集成**（如果适用），以自动化部署和测试过程。 请记住**验证网络配置**和**防火墙规则**，以确保[测试脚本](/zh-cn/wiki/test-script/) 可以与 AUT 和外部服务进行通信。定期**备份配置**并**记录[环境搭建](/zh-cn/wiki/setup/)**以实现可重复性和维护。
 
 1. **将应用程序存储库克隆到本地或 CI/CD 环境。
 
-    ```
+```
     git clone <repository_url>
-    ```
+```
 
 2. **为被测应用程序 (AUT) 安装依赖项**。
 
-    ```
+```
     npm install
-    ```
+```
 
-    ```
+```
     describe('Smoke Test', () => {
       it('should load the application', async () => {
         await browser.get('<base_url>');
         expect(await browser.getTitle()).not.toBeNull();
       });
     });
-    ```
+```
 
 9. **执行冒烟测试**以确保环境和 AUT 准备好进行进一步的 e2e 测试。
 10. **与 CI/CD 管道集成**（如果适用），以自动化部署和测试过程。
@@ -240,8 +219,7 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **[片状测试](/zh-cn/wiki/flaky-test/)**：非确定性测试可能会导致[误报](/zh-cn/wiki/false-positive/) 或负面结果。通过编写稳定可靠的 [测试用例](/zh-cn/wiki/test-case/) 来解决这个问题，并且仅将重试作为最后的手段。
 - **资源分配**：确保并行​​测试有足够的资源可能具有挑战性。使用基于云的解决方案或虚拟化根据需要动态分配和扩展资源。
 - **安全约束**：对某些环境或数据的访问可能受到限制。与安全团队合作建立安全访问通道或在可能的情况下使用匿名数据。
-- **持续集成障碍**：将 [测试自动化](/zh-cn/wiki/test-automation/) 集成到 CI/CD 管道中可能很复杂。利用为 [测试自动化](/zh-cn/wiki/test-automation/) 提供本机支持的 ​​CI 工具，并确保您的 [环境搭建](/zh-cn/wiki/setup/) 与管道的要求兼容。
-  通过预测这些挑战并应用相应的解决方案，您可以建立强大且高效的[测试自动化](/zh-cn/wiki/test-automation/) [环境搭建](/zh-cn/wiki/setup/)。
+- **持续集成障碍**：将 [测试自动化](/zh-cn/wiki/test-automation/) 集成到 CI/CD 管道中可能很复杂。利用为 [测试自动化](/zh-cn/wiki/test-automation/) 提供本机支持的 ​​CI 工具，并确保您的 [环境搭建](/zh-cn/wiki/setup/) 与管道的要求兼容。 通过预测这些挑战并应用相应的解决方案，您可以建立强大且高效的[测试自动化](/zh-cn/wiki/test-automation/) [环境搭建](/zh-cn/wiki/setup/)。
 
 - **兼容性问题**：不同的工具和框架可能无法无缝地协同工作。通过研究和选择具有已知兼容性的工具或使用 Docker 等容器化技术来标准化环境来克服这一问题。
 - **复杂配置**：[测试环境](/zh-cn/wiki/test-environment/) 可能很复杂，需要特定设置。通过使用配置管理工具（例如 Ansible、Puppet 或 Chef）来自动化和记录环境 [环境搭建](/zh-cn/wiki/setup/) 来解决此问题。
@@ -268,10 +246,10 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **报告工具**：Allure、ReportPortal 或内置框架报告器用于生成测试报告。
 - **监控工具**：可选，Grafana 或 Kibana 等工具用于实时监控测试运行。
 
-  ```
+```
   # Example: Installing Cypress via npm
   npm install cypress --save-dev
-  ```
+```
 确保所有工具彼此兼容并正确配置以与您的应用程序和 CI/CD 管道交互。
 
 ### 最佳实践
@@ -280,78 +258,53 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 
 为了确保有效的端到端测试，请遵循以下最佳实践：
 
-- **隔离[测试环境](/zh-cn/wiki/test-environment/)**
-    从开发到生产，避免副作用并保持一致性。
+- **隔离[测试环境](/zh-cn/wiki/test-environment/)**从开发到生产，避免副作用并保持一致性。
 
-- **使用真实数据**
-    密切模仿生产场景，但确保敏感信息是匿名的。
+- **使用真实数据**密切模仿生产场景，但确保敏感信息是匿名的。
 
-- **实施版本控制**
-    用于测试脚本和数据来跟踪更改并促进协作。
+- **实施版本控制**用于测试脚本和数据来跟踪更改并促进协作。
 
-- **优先考虑关键路径**
-    在您的应用程序中进行测试，以最大限度地提高测试套件的影响和效率。
+- **优先考虑关键路径**在您的应用程序中进行测试，以最大限度地提高测试套件的影响和效率。
 
-- **设计幂等性测试**
-    ，这意味着它们可以运行多次而不影响后续运行。
+- **设计幂等性测试** ，这意味着它们可以运行多次而不影响后续运行。
 
-- **利用并行执行**
-    减少运行时间并提供更快的反馈。
+- **利用并行执行**减少运行时间并提供更快的反馈。
 
-- **合并[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**
-    捕获功能测试可能遗漏的 UI 差异。
+- **合并[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**捕获功能测试可能遗漏的 UI 差异。
 
-- **利用服务虚拟化**
-    或模拟来模拟外部依赖关系，确保测试可以独立于第三方服务运行。
+- **利用服务虚拟化**或模拟来模拟外部依赖关系，确保测试可以独立于第三方服务运行。
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**
-    在测试前后提供和清理数据，确保起始状态一致。
+- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**在测试前后提供和清理数据，确保起始状态一致。
 
-- **实施强大的错误处理和日志记录**
-    简化故障排除并减少维护时间。
+- **实施强大的错误处理和日志记录**简化故障排除并减少维护时间。
 
-- **定期审查和重构测试**
-    以减少片状现象并提高可靠性。
+- **定期审查和重构测试**以减少片状现象并提高可靠性。
 
-- **与 CI/CD 管道集成**
-    自动对代码更改运行测试，确保立即反馈这些更改的影响。
-  通过遵循这些实践，您将创建强大且可靠的 e2e 测试 [环境搭建](/zh-cn/wiki/setup/)，它可以显着提高软件的质量和稳定性。
+- **与 CI/CD 管道集成**自动对代码更改运行测试，确保立即反馈这些更改的影响。 通过遵循这些实践，您将创建强大且可靠的 e2e 测试 [环境搭建](/zh-cn/wiki/setup/)，它可以显着提高软件的质量和稳定性。
 
-- **隔离[测试环境](/zh-cn/wiki/test-environment/)**
-    从开发到生产，避免副作用并保持一致性。
+- **隔离[测试环境](/zh-cn/wiki/test-environment/)**从开发到生产，避免副作用并保持一致性。
 
-- **使用真实数据**
-    密切模仿生产场景，但确保敏感信息是匿名的。
+- **使用真实数据**密切模仿生产场景，但确保敏感信息是匿名的。
 
-- **实施版本控制**
-    用于测试脚本和数据来跟踪更改并促进协作。
+- **实施版本控制**用于测试脚本和数据来跟踪更改并促进协作。
 
-- **优先考虑关键路径**
-    在您的应用程序中进行测试，以最大限度地提高测试套件的影响和效率。
+- **优先考虑关键路径**在您的应用程序中进行测试，以最大限度地提高测试套件的影响和效率。
 
-- **设计幂等性测试**
-    ，这意味着它们可以运行多次而不影响后续运行。
+- **设计幂等性测试** ，这意味着它们可以运行多次而不影响后续运行。
 
-- **利用并行执行**
-    减少运行时间并提供更快的反馈。
+- **利用并行执行**减少运行时间并提供更快的反馈。
 
-- **合并[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**
-    捕获功能测试可能遗漏的 UI 差异。
+- **合并[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**捕获功能测试可能遗漏的 UI 差异。
 
-- **利用服务虚拟化**
-    或模拟来模拟外部依赖关系，确保测试可以独立于第三方服务运行。
+- **利用服务虚拟化**或模拟来模拟外部依赖关系，确保测试可以独立于第三方服务运行。
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**
-    在测试前后提供和清理数据，确保起始状态一致。
+- **自动化[测试数据](/zh-cn/wiki/test-data/) 管理**在测试前后提供和清理数据，确保起始状态一致。
 
-- **实施强大的错误处理和日志记录**
-    简化故障排除并减少维护时间。
+- **实施强大的错误处理和日志记录**简化故障排除并减少维护时间。
 
-- **定期审查和重构测试**
-    以减少片状现象并提高可靠性。
+- **定期审查和重构测试**以减少片状现象并提高可靠性。
 
-- **与 CI/CD 管道集成**
-    自动对代码更改运行测试，确保立即反馈这些更改的影响。
+- **与 CI/CD 管道集成**自动对代码更改运行测试，确保立即反馈这些更改的影响。
 
 #### 如何优化设置以获得更好的 e2e 测试性能？
 
@@ -359,7 +312,7 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 
 - **并行执行**：跨多台机器或虚拟环境并行运行测试以减少执行时间。 [selenium](/zh-cn/wiki/selenium/) Grid 等工具或 [browserstack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 等基于云的平台可以促进这一点。
 
-    ```
+```
     // Example using Selenium Grid
     const capabilities = {
       browserName: 'chrome',
@@ -367,26 +320,25 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
       platform: 'WIN10'
     };
     const driver = new RemoteWebDriver(new URL('http://localhost:4444/wd/hub'), capabilities);
-    ```
+```
 
 - **选择性测试**：实施智能测试选择策略，仅运行受最近代码更改影响的测试。这可以通过测试[影响分析](/zh-cn/wiki/impact-analysis/)工具来实现。
 - **缓存**：对依赖项和常用数据使用缓存以节省[环境搭建](/zh-cn/wiki/setup/) 上的时间。例如，Docker 层可用于缓存容器化环境中的依赖项。
 - **资源分配**：确保为测试环境分配足够的资源。这包括 CPU、内存和网络带宽。
-- **容器化**：使用容器创建轻量级、可重复且可扩展的测试环境。 Docker 和 Kubernetes 可以编排容器部署。
+- **容器化**：使用容器创建轻量级、可重复且可扩展的测试环境。Docker 和 Kubernetes 可以编排容器部署。
 
-    ```
+```
     // Docker command to run tests in a container
     docker run -v $(pwd):/e2e -w /e2e node:14 npm test
-    ```
+```
 
 - **预构建环境**：使用测试环境的预构建映像或快照以避免每次测试运行前的 [环境搭建](/zh-cn/wiki/setup/) 时间。
 - **监控和分析**：定期监控和分析[测试套件](/zh-cn/wiki/test-suite/) 以识别瓶颈并进行相应优化。
-- **异步[环境搭建](/zh-cn/wiki/setup/)**：在可能的情况下，异步执行[环境搭建](/zh-cn/wiki/setup/) 任务以更好地利用时间，尤其是在处理 I/O 操作时。
-  通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以显着减少[环境搭建](/zh-cn/wiki/setup/) 时间并提高其 e2e 测试套件的性能。
+- **异步[环境搭建](/zh-cn/wiki/setup/)**：在可能的情况下，异步执行[环境搭建](/zh-cn/wiki/setup/) 任务以更好地利用时间，尤其是在处理 I/O 操作时。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以显着减少[环境搭建](/zh-cn/wiki/setup/) 时间并提高其 e2e 测试套件的性能。
 
 - **并行执行**：跨多台机器或虚拟环境并行运行测试以减少执行时间。 [selenium](/zh-cn/wiki/selenium/) Grid 等工具或 [browserstack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 等基于云的平台可以促进这一点。
 
-    ```
+```
     // Example using Selenium Grid
     const capabilities = {
       browserName: 'chrome',
@@ -394,12 +346,12 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
       platform: 'WIN10'
     };
     const driver = new RemoteWebDriver(new URL('http://localhost:4444/wd/hub'), capabilities);
-    ```
+```
 
-    ```
+```
     // Docker command to run tests in a container
     docker run -v $(pwd):/e2e -w /e2e node:14 npm test
-    ```
+```
 
 #### 设置过程中需要避免哪些常见错误？
 
@@ -414,8 +366,7 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **糟糕的文档**：不记录 [环境搭建](/zh-cn/wiki/setup/) 流程和配置可能会阻碍知识转移并使故障排除变得更加困难。
 - **错误处理不足**：在 [测试脚本](/zh-cn/wiki/test-script/) 中不规划错误处理可能会导致无信息的测试失败并增加调试时间。
 - **忽略可扩展性**：不考虑 [环境搭建](/zh-cn/wiki/setup/) 如何随着测试数量的增加或更复杂的场景进行扩展可能会导致性能瓶颈。
-- **未能验证[环境搭建](/zh-cn/wiki/setup/)**：在开始自动化过程之前不验证[环境搭建](/zh-cn/wiki/setup/)可能会因配置错误而导致[误报](/zh-cn/wiki/false-positive/)或负面结果。
-  通过仔细规划、彻底记录并不断审查和完善您的 [环境搭建](/zh-cn/wiki/setup/) 流程，可以避免这些陷阱。
+- **未能验证[环境搭建](/zh-cn/wiki/setup/)**：在开始自动化过程之前不验证[环境搭建](/zh-cn/wiki/setup/)可能会因配置错误而导致[误报](/zh-cn/wiki/false-positive/)或负面结果。 通过仔细规划、彻底记录并不断审查和完善您的 [环境搭建](/zh-cn/wiki/setup/) 流程，可以避免这些陷阱。
 
 #### 如何维护和更新 e2e 测试设置？
 
@@ -444,135 +395,60 @@ By following these strategies, you can maintain a robust and adaptable e2e testi
 不同类型的测试环境的[环境搭建](/zh-cn/wiki/setup/) 根据每个环境的**具体要求**和**约束**而有所不同。以下是简要概述：
   **[单元测试](/zh-cn/wiki/unit-testing/)**：
 
-- **隔离**
-    是关键；通常需要模拟框架来模拟依赖关系。
+- **隔离**是关键；通常需要模拟框架来模拟依赖关系。
+
+- 设置通常是轻量级的，涉及单元测试框架（例如 JUnit、NUnit、pytest）的配置以及必要的依赖项的包含。 **[集成测试](/zh-cn/wiki/integration-testing/)**：
+
+- 需要配置环境以包括 **所有组件**彼此相互作用。
+
+- 通常涉及设置 **[数据库](/zh-cn/wiki/database/)** , **[API](/zh-cn/wiki/api/)** , 和 **服务**需要一起测试。
+
+- 可能需要 **网络配置**允许组件之间进行通信。 **[系统测试](/zh-cn/wiki/system-testing/)**：
+
+- 涉及设置 **整个系统**在一个与生产密切相关的环境中。
+
+- 需要 **数据[环境搭建](/zh-cn/wiki/setup/)**确保系统可以在现实条件下进行测试。
+
+- 可能需要 **专用工具**模拟外部系统和接口。 **[性能测试](/zh-cn/wiki/performance-testing/)**：
+
+- 设置涉及配置 **高容量硬件**和 **网络资源**来模拟负载。
+
+- 类似的工具 **负载生成器**和 **性能监控**解决方案已配置。
+
+- 需要 **基线性能数据**进行比较。 **[安全测试](/zh-cn/wiki/security-testing/)**：
+
+- 通常需要一个 **独立、安全的环境**以防止实际系统面临风险。
+
+- 工具 **漏洞扫描**和 **[渗透测试](/zh-cn/wiki/penetration-testing/)**已成立。
+
+- 可能涉及 **虚拟数据**以避免暴露敏感信息。 每个环境[环境搭建](/zh-cn/wiki/setup/) 必须考虑**测试目标**、**资源可用性**和**风险管理**。自动化工程师应编写环境配置脚本并记录环境配置，以确保跨测试周期的**可重复性**和**一致性**。
+
+- **隔离**是关键；通常需要模拟框架来模拟依赖关系。
 
 - 设置通常是轻量级的，涉及单元测试框架（例如 JUnit、NUnit、pytest）的配置以及必要的依赖项的包含。
-  **[集成测试](/zh-cn/wiki/integration-testing/)**：
+- 需要配置环境以包括 **所有组件**彼此相互作用。
 
-- 需要配置环境以包括
-    **所有组件**
-    彼此相互作用。
+- 通常涉及设置 **[数据库](/zh-cn/wiki/database/)** , **[API](/zh-cn/wiki/api/)** , 和 **服务**需要一起测试。
 
-- 通常涉及设置
-    **[数据库](/zh-cn/wiki/database/)**
-    ,
-    **[API](/zh-cn/wiki/api/)**
-    , 和
-    **服务**
-    需要一起测试。
+- 可能需要 **网络配置**允许组件之间进行通信。
 
-- 可能需要
-    **网络配置**
-    允许组件之间进行通信。
-  **[系统测试](/zh-cn/wiki/system-testing/)**：
+- 涉及设置 **整个系统**在一个与生产密切相关的环境中。
 
-- 涉及设置
-    **整个系统**
-    在一个与生产密切相关的环境中。
+- 需要 **数据[环境搭建](/zh-cn/wiki/setup/)**确保系统可以在现实条件下进行测试。
 
-- 需要
-    **数据[环境搭建](/zh-cn/wiki/setup/)**
-    确保系统可以在现实条件下进行测试。
+- 可能需要 **专用工具**模拟外部系统和接口。
 
-- 可能需要
-    **专用工具**
-    模拟外部系统和接口。
-  **[性能测试](/zh-cn/wiki/performance-testing/)**：
+- 设置涉及配置 **高容量硬件**和 **网络资源**来模拟负载。
 
-- 设置涉及配置
-    **高容量硬件**
-    和
-    **网络资源**
-    来模拟负载。
+- 类似的工具 **负载生成器**和 **性能监控**解决方案已配置。
 
-- 类似的工具
-    **负载生成器**
-    和
-    **性能监控**
-    解决方案已配置。
+- 需要 **基线性能数据**进行比较。
 
-- 需要
-    **基线性能数据**
-    进行比较。
-  **[安全测试](/zh-cn/wiki/security-testing/)**：
+- 通常需要一个 **独立、安全的环境**以防止实际系统面临风险。
 
-- 通常需要一个
-    **独立、安全的环境**
-    以防止实际系统面临风险。
+- 工具 **漏洞扫描**和 **[渗透测试](/zh-cn/wiki/penetration-testing/)**已成立。
 
-- 工具
-    **漏洞扫描**
-    和
-    **[渗透测试](/zh-cn/wiki/penetration-testing/)**
-    已成立。
-
-- 可能涉及
-    **虚拟数据**
-    以避免暴露敏感信息。
-  每个环境[环境搭建](/zh-cn/wiki/setup/) 必须考虑**测试目标**、**资源可用性**和**风险管理**。自动化工程师应编写环境配置脚本并记录环境配置，以确保跨测试周期的**可重复性**和**一致性**。
-
-- **隔离**
-    是关键；通常需要模拟框架来模拟依赖关系。
-
-- 设置通常是轻量级的，涉及单元测试框架（例如 JUnit、NUnit、pytest）的配置以及必要的依赖项的包含。
-- 需要配置环境以包括
-    **所有组件**
-    彼此相互作用。
-
-- 通常涉及设置
-    **[数据库](/zh-cn/wiki/database/)**
-    ,
-    **[API](/zh-cn/wiki/api/)**
-    , 和
-    **服务**
-    需要一起测试。
-
-- 可能需要
-    **网络配置**
-    允许组件之间进行通信。
-
-- 涉及设置
-    **整个系统**
-    在一个与生产密切相关的环境中。
-
-- 需要
-    **数据[环境搭建](/zh-cn/wiki/setup/)**
-    确保系统可以在现实条件下进行测试。
-
-- 可能需要
-    **专用工具**
-    模拟外部系统和接口。
-
-- 设置涉及配置
-    **高容量硬件**
-    和
-    **网络资源**
-    来模拟负载。
-
-- 类似的工具
-    **负载生成器**
-    和
-    **性能监控**
-    解决方案已配置。
-
-- 需要
-    **基线性能数据**
-    进行比较。
-
-- 通常需要一个
-    **独立、安全的环境**
-    以防止实际系统面临风险。
-
-- 工具
-    **漏洞扫描**
-    和
-    **[渗透测试](/zh-cn/wiki/penetration-testing/)**
-    已成立。
-
-- 可能涉及
-    **虚拟数据**
-    以避免暴露敏感信息。
+- 可能涉及 **虚拟数据**以避免暴露敏感信息。
 
 #### setup 在持续集成和持续部署中扮演什么角色？
 
@@ -581,13 +457,11 @@ By following these strategies, you can maintain a robust and adaptable e2e testi
 
 - 集成源代码控制挂钩以触发提交上的构建。
 - 定义构建步骤，例如编译和单元测试。
-- 配置构建结果的通知。
-  在 CD 中，[环境搭建](/zh-cn/wiki/setup/) 扩展了 CI 管道以实现自动化部署。这需要：
+- 配置构建结果的通知。 在 CD 中，[环境搭建](/zh-cn/wiki/setup/) 扩展了 CI 管道以实现自动化部署。这需要：
 
 - 配置暂存和生产环境。
 - 设置部署脚本或使用部署工具。
-- 建立失败部署的回滚机制。
-  CI 和 CD 都依赖强大的 [环境搭建](/zh-cn/wiki/setup/) 来及早检测集成问题、简化发布流程并减少人工干预，从而实现更快、更可靠的交付。
+- 建立失败部署的回滚机制。 CI 和 CD 都依赖强大的 [环境搭建](/zh-cn/wiki/setup/) 来及早检测集成问题、简化发布流程并减少人工干预，从而实现更快、更可靠的交付。
 
 - 集成源代码控制挂钩以触发提交上的构建。
 - 定义构建步骤，例如编译和单元测试。
@@ -602,53 +476,49 @@ By following these strategies, you can maintain a robust and adaptable e2e testi
 
 1. **版本控制**：将您的 [环境搭建](/zh-cn/wiki/setup/) 脚本和配置文件存储在版本控制系统（如 Git）中。这确保了更改被跟踪并且[环境搭建](/zh-cn/wiki/setup/)可以被复制。
 
-    ```
+```
     git clone https://repository-url/your-project.git
     cd your-project
-    ```
+```
 
 2. **配置管理**：使用 Ansible、Puppet 或 Chef 等工具来管理基础设施即代码，从而自动配置所需的服务和依赖项。
 
-- name: Install dependencies
-    apt:
-      name: "{{ packages }}"
-    vars:
-      packages:
+- name: Install dependencies apt: name: "{{ packages }}" vars: packages:
 - docker
 - docker-compose
 
-3. **容器化**：利用Docker或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
+3. **容器化**：利用 Docker 或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
 
-    ```
+```
     FROM node:14
     WORKDIR /app
     COPY . /app
     RUN npm install
     EXPOSE 3000
-    ```
+```
 
 4. **编排**：使用 Kubernetes 或 Docker Compose 编排容器、处理服务发现和扩展。
 
-    ```
+```
     version: '3'
     services:
       web:
         build: .
         ports:
 - "3000:3000"
-    ```
+```
 
 5. **自动化脚本**：编写脚本来自动执行重复性任务，例如 [数据库](/zh-cn/wiki/database/) 播种、迁移和环境变量 [环境搭建](/zh-cn/wiki/setup/)。
 
-    ```
+```
     # !/bin/bash
     npm run migrate
     npm run seed
-    ```
+```
 
 6. **持续集成 (CI)**：与 Jenkins、GitLab CI 或 GitHub Actions 等 CI 工具集成，以在代码推送时或定期触发 [环境搭建](/zh-cn/wiki/setup/) 流程。
 
-    ```
+```
     on: [push]
     jobs:
       build:
@@ -657,58 +527,50 @@ By following these strategies, you can maintain a robust and adaptable e2e testi
 - uses: actions/checkout@v2
 - name: Setup environment
           run: ./setup-script.sh
-    ```
+```
 通过自动化这些步骤，您可以确保[环境搭建](/zh-cn/wiki/setup/)流程可重复且可靠，减少手动错误并节省[测试自动化](/zh-cn/wiki/test-automation/)工程师的时间。
 
 1. **版本控制**：将您的 [环境搭建](/zh-cn/wiki/setup/) 脚本和配置文件存储在版本控制系统（如 Git）中。这确保了更改被跟踪并且[环境搭建](/zh-cn/wiki/setup/)可以被复制。
 
-    ```
+```
     git clone https://repository-url/your-project.git
     cd your-project
-    ```
+```
 
 2. **配置管理**：使用 Ansible、Puppet 或 Chef 等工具来管理基础设施即代码，从而自动配置所需的服务和依赖项。
 
-- name: Install dependencies
-    apt:
-      name: "{{ packages }}"
-    vars:
-      packages:
-- docker
-- docker-compose
+3. **容器化**：利用 Docker 或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
 
-3. **容器化**：利用Docker或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
-
-    ```
+```
     FROM node:14
     WORKDIR /app
     COPY . /app
     RUN npm install
     EXPOSE 3000
-    ```
+```
 
 4. **编排**：使用 Kubernetes 或 Docker Compose 编排容器、处理服务发现和扩展。
 
-    ```
+```
     version: '3'
     services:
       web:
         build: .
         ports:
 - "3000:3000"
-    ```
+```
 
 5. **自动化脚本**：编写脚本来自动执行重复性任务，例如 [数据库](/zh-cn/wiki/database/) 播种、迁移和环境变量 [环境搭建](/zh-cn/wiki/setup/)。
 
-    ```
+```
     # !/bin/bash
     npm run migrate
     npm run seed
-    ```
+```
 
 6. **持续集成 (CI)**：与 Jenkins、GitLab CI 或 GitHub Actions 等 CI 工具集成，以在代码推送时或定期触发 [环境搭建](/zh-cn/wiki/setup/) 流程。
 
-    ```
+```
     on: [push]
     jobs:
       build:
@@ -717,7 +579,7 @@ By following these strategies, you can maintain a robust and adaptable e2e testi
 - uses: actions/checkout@v2
 - name: Setup environment
           run: ./setup-script.sh
-    ```
+```
 
 #### e2e 测试设置的最新趋势和技术是什么？
 
@@ -733,5 +595,4 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 的最新趋势和技术包括：
 - **[性能测试](/zh-cn/wiki/performance-testing/) 集成**：将 Lighthouse 和 WebPageTest 等工具合并到 e2e 设置中以监控性能指标。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：用于创建、管理和处置测试数据的解决方案，以确保测试拥有处于正确状态的必要数据。
 - **[微服务测试](/zh-cn/wiki/microservices-testing/)** ：采用策略在微服务架构中进行测试，包括服务虚拟化和契约测试。
-- **可观察性和监控**：集成 Grafana、Prometheus 和 ELK 堆栈等工具来实时监控测试执行和系统运行状况。
-  这些技术有助于创建强大、灵活且高效的端到端测试[环境搭建](/zh-cn/wiki/setup/)，可以适应软件开发的动态特性。
+- **可观察性和监控**：集成 Grafana、Prometheus 和 ELK 堆栈等工具来实时监控测试执行和系统运行状况。 这些技术有助于创建强大、灵活且高效的端到端测试[环境搭建](/zh-cn/wiki/setup/)，可以适应软件开发的动态特性。

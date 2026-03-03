@@ -3,7 +3,7 @@ title: "Prompt Caching"
 titleZh: "提示缓存"
 slug: "prompt-caching"
 lang: "en"
-summary: "A technology that significantly improves AI response speeds and lowers token costs for long conversations by caching pre-parsed prompt context in the cloud."
+summary: "A technology that significantly improves AI response speeds and lowers token costs for long conversations by caching pre-parsed prompt context in the clou…"
 topic: "ai-vibe-coding"
 aliases:
   - "Prompt Caching"

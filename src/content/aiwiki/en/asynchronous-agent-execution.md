@@ -3,7 +3,7 @@ title: "Asynchronous Agent Execution"
 titleZh: "异步智能体执行"
 slug: "asynchronous-agent-execution"
 lang: "en"
-summary: "A collaboration mode that decouples AI instruction issuance from task execution, allowing developers to continue other operations while the AI performs tasks."
+summary: "A collaboration mode that decouples AI instruction issuance from task execution, allowing developers to continue other operations while the AI performs ta…"
 topic: "ai-vibe-coding"
 aliases:
   - "Asynchronous Agent Execution"

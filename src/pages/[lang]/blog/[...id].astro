@@ -9,6 +9,8 @@ import SidebarAd from "@/components/SidebarAd.astro";
 import { getCollection, render } from "astro:content";
 import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
 import type { Lang } from "@/i18n";
+import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/data/wiki";
+import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/aiwiki";
 
 /** 根据正文字符数估算阅读时长（约 1000 字/分钟，至少 1 分钟） */
 function readingTimeMinutes(rawBody: string): number {
@@ -88,6 +90,67 @@ const authorSlogan = typeof SITE_SLOGAN === "string" ? SITE_SLOGAN : (SITE_SLOGA
 const statsLabels = locale === "zh-cn"
   ? { articles: "文章", categories: "分类", tags: "标签", words: "字数" }
   : { articles: "Articles", categories: "Categories", tags: "Tags", words: "Words" };
+
+type TermLink = { label: string; href: string; score: number };
+const norm = (s: string) =>
+  String(s || "")
+    .toLowerCase()
+    .replace(/[`*_~#()[\]{}|\\/:;,.!?'"“”‘’·\-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const signals = [
+  title,
+  ...(post.data.tags ?? []),
+  ...(post.data.categories ?? []),
+  ...(post.data.series ?? []),
+]
+  .map((x) => norm(String(x)))
+  .filter(Boolean);
+
+const allAiWiki = await getCollection("aiwiki");
+const aiEntries = allAiWiki.filter((e) =>
+  (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale)
+);
+const wikiEntries = locale === "zh-cn" ? await getCollection("wiki") : [];
+
+const candidates: TermLink[] = [];
+for (const e of aiEntries) {
+  const slug = e.data.slug ?? aiwikiIdToSlug(e.id);
+  const label = getAiWikiDisplayTitle(e, locale);
+  const text = norm(`${slug} ${label}`);
+  let score = 0;
+  for (const s of signals) {
+    if (!s || s.length < 2) continue;
+    if (text === s) score = Math.max(score, 10);
+    else if (text.includes(s) || s.includes(text)) score = Math.max(score, 6);
+  }
+  candidates.push({ label, href: `/${locale}/AIWiki/${slug}/`, score });
+}
+
+if (locale === "zh-cn") {
+  for (const e of wikiEntries) {
+    const slug = wikiIdToSlug(e.id);
+    const label = getTitleZhFromBody(e.body) || getTitleZh(e.data.title ?? "") || slugToTitleEn(slug);
+    const text = norm(`${slug} ${label}`);
+    let score = 0;
+    for (const s of signals) {
+      if (!s || s.length < 2) continue;
+      if (text === s) score = Math.max(score, 10);
+      else if (text.includes(s) || s.includes(text)) score = Math.max(score, 6);
+    }
+    candidates.push({ label, href: `/${locale}/wiki/${slug}/`, score });
+  }
+}
+
+const relatedTerms: TermLink[] = [];
+const seenHref = new Set<string>();
+for (const item of candidates.sort((a, b) => b.score - a.score || a.label.localeCompare(b.label, locale === "zh-cn" ? "zh-CN" : "en"))) {
+  if (seenHref.has(item.href)) continue;
+  seenHref.add(item.href);
+  relatedTerms.push(item);
+  if (relatedTerms.length >= 5) break;
+}
 ---
 
 <Layout
@@ -175,6 +238,18 @@ const statsLabels = locale === "zh-cn"
         <div class="prose">
           <Content class="material-icons" />
         </div>
+        {relatedTerms.length > 0 && (
+          <section class="blog-related-terms" aria-labelledby="blog-related-terms-heading">
+            <h2 id="blog-related-terms-heading">
+              {locale === "zh-cn" ? "相关术语" : "Related Terms"}
+            </h2>
+            <div class="blog-related-terms-pills">
+              {relatedTerms.map((item) => (
+                <a href={item.href} class="blog-related-terms-pill">{item.label}</a>
+              ))}
+            </div>
+          </section>
+        )}
         <GoogleAd />
         <ArticleShare title={title} url={canonicalUrl} locale={locale as "zh-cn" | "en"} />
         <Giscus
@@ -369,6 +444,41 @@ const statsLabels = locale === "zh-cn"
   .article-main {
     margin-block-start: var(--sp-l);
     min-width: 0;
+  }
+  .blog-related-terms {
+    margin: 1.25rem 0 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+  .blog-related-terms h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--color-theme);
+  }
+  .blog-related-terms-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .blog-related-terms-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.32rem 0.62rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
+    color: var(--color-theme);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .blog-related-terms-pill:hover {
+    color: var(--color-base);
+    background: var(--color-theme);
+    border-color: var(--color-theme);
   }
 
   /* Markdown / 正文内容样式 */

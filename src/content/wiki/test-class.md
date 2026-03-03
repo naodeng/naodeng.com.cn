@@ -1,13 +1,13 @@
 ---
 title: "测试类 ｜ Test Class"
-description: "测试类 (Test Class) 是测试方法的集合，它们共同测试软件中特定类或单元的功能。它作为 测试用例 (test cases) 的容器，其结构通常包括设置必要的测试环境、执行测试方法以及在测试运行后进行清理。在面向对象编程中，测试类 通常镜像它打算测试的类，通常具有相似的名称，但位于专门用于测试的独立项目或命名空间中。例如，如果你有一个名为 `Calculator` 的类，你可能会有一个对应的名为 `CalculatorTests` 的 测试类。测试类 使用所使用的测试框架提供的特定语法和注解编写，例如 JUnit 或 TestNG 中的 `@Test`。这些注解向框架发出信号，表明哪些方法是测试，并可能提供有关如何运行测试的额外元数据。"
+description: "测试类 (Test Class) 是测试方法的集合，它们共同测试软件中特定类或单元的功能。它作为 测试用例 (test cases) 的容器，其结构通常包括设置必要的测试环境、执行测试方法以及在测试运行后进行清理。在面向对象编程中，测试类 通常镜像它打算测试的类，通常具有相似的名称…"
 section: "T"
 related:
   - automated-testing
   - manual-testing
   - test-suite
-  - test-runner
-  - junit-testing
+  - web-testing
+  - test-case
 order: 0
 ---
 
@@ -54,7 +54,7 @@ order: 0
   在面向对象的编程中，[测试类](/zh-cn/wiki/test-class/) 通常会镜像它要测试的类，通常具有相似的名称，但位于专用于测试的单独项目或命名空间中。例如，如果您有一个名为 `Calculator` 的类，则您可能有一个名为 `CalculatorTests` 的相应 [测试类](/zh-cn/wiki/test-class/)。
   测试类是使用所使用的测试框架提供的特定语法和注释编写的，例如 JUnit 或 TestNG 中各个测试方法的`@Test`。这些注释向框架发出哪些方法是测试的信号，并可能提供有关如何运行测试的附加元数据。
 
-  ```
+```
   public class CalculatorTests {
       @Test
       public void testAdd() {
@@ -62,7 +62,7 @@ order: 0
           assertEquals(5, calculator.add(2, 3));
       }
   }
-  ```
+```
 测试类可以由开发人员通过 IDE 手动执行，也可以作为构建过程或持续集成管道的一部分自动执行。它们对于验证代码更改不会引入回归以及新功能是否按预期运行至关重要。
 
 #### 为什么测试类在软件测试中很重要？
@@ -79,76 +79,75 @@ order: 0
 
 - **测试方法**：包含实际测试代码以执行目标功能的函数。每种方法都应该测试代码的特定方面。
 
-    ```
+```
     @Test
     public void testMethod() {
         // Test logic here
     }
-    ```
+```
 
 - **[环境搭建](/zh-cn/wiki/setup/) 方法**：可选方法，在每个测试方法之前运行以准备[测试环境](/zh-cn/wiki/test-environment/)，例如初始化对象。
 
-    ```
+```
     @Before
     public void setUp() {
         // Setup code here
     }
-    ```
+```
 
 - **Teardown Method**：可选方法，在每个测试方法之后运行，以清理[测试环境](/zh-cn/wiki/test-environment/)，例如释放资源。
 
-    ```
+```
     @After
     public void tearDown() {
         // Cleanup code here
     }
-    ```
+```
 
 - **测试装置**：多个测试方法使用的共享资源或状态，通常在[环境搭建](/zh-cn/wiki/setup/)方法中设置。
 - **断言**：检查测试条件是否满足的语句。它们是实际的测试验证。
 
-    ```
+```
     assertEquals(expectedValue, actualValue);
-    ```
+```
 
 - **注释**：提供有关测试方法及其行为的信息的元数据，例如`@Test`、`@Before` 和`@After`。
 - **[测试数据](/zh-cn/wiki/test-data/)**：用于驱动测试的外部或内部数据，可以硬编码、生成或从文件或[数据库](/zh-cn/wiki/database/)加载。
-- **模拟对象**：可选择用于模拟未测试的真实对象的行为，以隔离被测单元。
-  请记住让每个测试方法专注于单一行为，使用描述性方法名称，并保持测试之间的独立性以确保可靠的结果。
+- **模拟对象**：可选择用于模拟未测试的真实对象的行为，以隔离被测单元。 请记住让每个测试方法专注于单一行为，使用描述性方法名称，并保持测试之间的独立性以确保可靠的结果。
 
 - **测试方法**：包含实际测试代码以执行目标功能的函数。每种方法都应该测试代码的特定方面。
 
-    ```
+```
     @Test
     public void testMethod() {
         // Test logic here
     }
-    ```
+```
 
 - **[环境搭建](/zh-cn/wiki/setup/) 方法**：可选方法，在每个测试方法之前运行以准备[测试环境](/zh-cn/wiki/test-environment/)，例如初始化对象。
 
-    ```
+```
     @Before
     public void setUp() {
         // Setup code here
     }
-    ```
+```
 
 - **Teardown Method**：可选方法，在每个测试方法之后运行，以清理[测试环境](/zh-cn/wiki/test-environment/)，例如释放资源。
 
-    ```
+```
     @After
     public void tearDown() {
         // Cleanup code here
     }
-    ```
+```
 
 - **测试装置**：多个测试方法使用的共享资源或状态，通常在[环境搭建](/zh-cn/wiki/setup/)方法中设置。
 - **断言**：检查测试条件是否满足的语句。它们是实际的测试验证。
 
-    ```
+```
     assertEquals(expectedValue, actualValue);
-    ```
+```
 
 #### 测试类对整个测试过程有何贡献？
 
@@ -163,7 +162,7 @@ order: 0
 在[单元测试](/zh-cn/wiki/unit-testing/) 中，**[测试类](/zh-cn/wiki/test-class/)** 封装了针对特定类或代码单元的测试，确保**隔离**和**[可维护性](/zh-cn/wiki/maintainability/)**。它充当测试方法的容器，用于测试单元行为的各个方面，包括**状态[验证 ](/zh-cn/wiki/verification/)**和**交互测试**。通过对相关测试进行分组，[测试类](/zh-cn/wiki/test-class/) 可以为测试人员提供**逻辑组织**和**轻松导航**。
   测试类在**测试发现**和执行中发挥着关键作用。测试框架利用命名约定和注释来识别和运行这些类中的测试。例如，在 JUnit 中：
 
-  ```
+```
   import org.junit.jupiter.api.Test;
   public class ExampleTests {
       @Test
@@ -171,7 +170,7 @@ order: 0
           // Test code here
       }
   }
-  ```
+```
 它们还通过专用方法或注释促进**[环境搭建](/zh-cn/wiki/setup/) 和拆卸**操作，从而允许**[测试环境](/zh-cn/wiki/test-environment/) 准备**和**资源清理**。这确保每个测试都在**受控且可重复的环境**中运行。
   此外，测试类支持使用**参数化测试**和**测试生命周期回调**，从而增强测试的表现力和灵活性。它们在**自动化[回归测试](/zh-cn/wiki/regression-testing/)**中发挥了重要作用，确保新的更改不会破坏现有功能。
   总之，[测试类](/zh-cn/wiki/test-class/) 构建并组织测试，支持[测试执行](/zh-cn/wiki/test-execution/)，并提供[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制，从而为强大且可维护的[测试自动化](/zh-cn/wiki/test-automation/) 套件做出贡献。
@@ -188,7 +187,7 @@ order: 0
 4. **为 [测试类](/zh-cn/wiki/test-class/) 创建一个新文件**，遵循测试框架的命名约定（例如，`MyClassTest.java` 表示名为 `MyClass` 的 Java 类）。
 5. **通过在测试文件中定义类来编写[测试类](/zh-cn/wiki/test-class/)**。根据框架的语法，使用注释指定 [环境搭建](/zh-cn/wiki/setup/)、拆卸和测试方法。例如，在 JUnit 中：
 
-  ```
+```
   import org.junit.jupiter.api.*;
   public class MyClassTest {
       @BeforeEach
@@ -204,7 +203,7 @@ order: 0
           // Test cases here
       }
   }
-  ```
+```
 
 1. **在[测试类](/zh-cn/wiki/test-class/) 中编写测试方法**，确保每个测试都集中在功能的单个行为或方面。
 2. **断言预期结果** 使用框架的断言方法来验证测试结果。
@@ -224,37 +223,27 @@ order: 0
 
 要实施[测试类](/zh-cn/wiki/test-class/)，请执行以下步骤：
 
-1. **识别类或模块**
-    你想测试。了解其行为、输入和输出。
+1. **识别类或模块**你想测试。了解其行为、输入和输出。
 
-2. **搭建测试环境**
-    。确保您具有必要的依赖项，并且任何所需的数据或状态均已初始化。
+2. **搭建测试环境** 。确保您具有必要的依赖项，并且任何所需的数据或状态均已初始化。
 
-3. **创建一个新的[测试类](/zh-cn/wiki/test-class/)**
-    文件位于您的测试目录中，遵循项目或框架的命名约定。
+3. **创建一个新的[测试类](/zh-cn/wiki/test-class/)**文件位于您的测试目录中，遵循项目或框架的命名约定。
 
-4. **编写[环境搭建](/zh-cn/wiki/setup/)和拆卸方法**
-    如果您的测试框架支持它们。使用它们在每次测试之前和之后准备和清理环境。
+4. **编写[环境搭建](/zh-cn/wiki/setup/)和拆卸方法**如果您的测试框架支持它们。使用它们在每次测试之前和之后准备和清理环境。
 
-5. **定义测试方法**
-    班级内。每个方法都应该关注被测类的一个方面。
+5. **定义测试方法**班级内。每个方法都应该关注被测类的一个方面。
 
-6. **使用断言**
-    验证测试用例的结果。确保它们符合预期结果。
+6. **使用断言**验证测试用例的结果。确保它们符合预期结果。
 
-7. **模拟外部依赖**
-    如有必要，隔离被测类并避免意外的交互。
+7. **模拟外部依赖**如有必要，隔离被测类并避免意外的交互。
 
-8. **运行测试**
-    以验证它们是否通过。如果测试失败，请在继续之前调试并解决问题。
+8. **运行测试**以验证它们是否通过。如果测试失败，请在继续之前调试并解决问题。
 
-9. **重构[测试类](/zh-cn/wiki/test-class/)**
-    根据需要提高清晰度和可维护性。删除任何重复并确保测试是独立的。
+9. **重构[测试类](/zh-cn/wiki/test-class/)**根据需要提高清晰度和可维护性。删除任何重复并确保测试是独立的。
 
-10. **集成[测试类](/zh-cn/wiki/test-class/)**
-    与您的构建系统或 CI/CD 管道一起在代码更改时自动运行。
+10. **集成[测试类](/zh-cn/wiki/test-class/)**与您的构建系统或 CI/CD 管道一起在代码更改时自动运行。
 
-  ```
+```
   import { expect } from 'chai';
   import { MyClass } from './MyClass';
   describe('MyClass', () => {
@@ -271,38 +260,28 @@ order: 0
     });
     // Additional test cases...
   });
-  ```
+```
 请记住定期**审查和维护**[测试类](/zh-cn/wiki/test-class/)，对其进行更新以反映代码库中的更改并确保其保持有效和相关。
 
-1. **识别类或模块**
-    你想测试。了解其行为、输入和输出。
+1. **识别类或模块**你想测试。了解其行为、输入和输出。
 
-2. **搭建测试环境**
-    。确保您具有必要的依赖项，并且任何所需的数据或状态均已初始化。
+2. **搭建测试环境** 。确保您具有必要的依赖项，并且任何所需的数据或状态均已初始化。
 
-3. **创建一个新的[测试类](/zh-cn/wiki/test-class/)**
-    文件位于您的测试目录中，遵循项目或框架的命名约定。
+3. **创建一个新的[测试类](/zh-cn/wiki/test-class/)**文件位于您的测试目录中，遵循项目或框架的命名约定。
 
-4. **编写[环境搭建](/zh-cn/wiki/setup/)和拆卸方法**
-    如果您的测试框架支持它们。使用它们在每次测试之前和之后准备和清理环境。
+4. **编写[环境搭建](/zh-cn/wiki/setup/)和拆卸方法**如果您的测试框架支持它们。使用它们在每次测试之前和之后准备和清理环境。
 
-5. **定义测试方法**
-    班级内。每个方法都应该关注被测类的一个方面。
+5. **定义测试方法**班级内。每个方法都应该关注被测类的一个方面。
 
-6. **使用断言**
-    验证测试用例的结果。确保它们符合预期结果。
+6. **使用断言**验证测试用例的结果。确保它们符合预期结果。
 
-7. **模拟外部依赖**
-    如有必要，隔离被测类并避免意外的交互。
+7. **模拟外部依赖**如有必要，隔离被测类并避免意外的交互。
 
-8. **运行测试**
-    以验证它们是否通过。如果测试失败，请在继续之前调试并解决问题。
+8. **运行测试**以验证它们是否通过。如果测试失败，请在继续之前调试并解决问题。
 
-9. **重构[测试类](/zh-cn/wiki/test-class/)**
-    根据需要提高清晰度和可维护性。删除任何重复并确保测试是独立的。
+9. **重构[测试类](/zh-cn/wiki/test-class/)**根据需要提高清晰度和可维护性。删除任何重复并确保测试是独立的。
 
-10. **集成[测试类](/zh-cn/wiki/test-class/)**
-    与您的构建系统或 CI/CD 管道一起在代码更改时自动运行。
+10. **集成[测试类](/zh-cn/wiki/test-class/)**与您的构建系统或 CI/CD 管道一起在代码更改时自动运行。
 
 #### 创建测试类的最佳实践是什么？
 
@@ -317,17 +296,16 @@ order: 0
 - **文档**：对测试中的复杂逻辑进行评论以帮助理解，但避免对简单测试进行冗余评论。
 - **错误处理**：测试预期行为和错误条件。确保使用适当的断言方法正确测试异常。
 - **性能**：保持快速测试以维持快速反馈循环。如果需要，可以重构缓慢的测试或将其移动到单独的[测试套件](/zh-cn/wiki/test-suite/)。
-- **版本控制**：将测试类与生产代码签入，以确保它们一起发展。
-  以下是使用 [Jest](/zh-cn/wiki/jest/) 的 TypeScript 中结构良好的测试方法的示例：
+- **版本控制**：将测试类与生产代码签入，以确保它们一起发展。 以下是使用 [Jest](/zh-cn/wiki/jest/) 的 TypeScript 中结构良好的测试方法的示例：
 
-  ```
+```
   test('ShouldCalculateTotalInvoiceAmount', () => {
     const invoiceCalculator = new InvoiceCalculator();
     const lineItems = [{ price: 100, quantity: 2 }, { price: 200, quantity: 1 }];
     const totalAmount = invoiceCalculator.calculateTotal(lineItems);
     expect(totalAmount).toBe(400);
   });
-  ```
+```
 
 #### 如何使用测试类来测试特定的函数或方法？
 
@@ -338,10 +316,9 @@ order: 0
 3. **如有必要，请设置[测试环境](/zh-cn/wiki/test-environment/)**。这可能包括初始化对象、模拟依赖关系或设置任何所需的状态。
 4. **使用一组预定义输入调用函数**。应选择这些输入来测试函数行为的不同方面，包括边缘情况。
 5. **使用测试框架提供的适当断言方法断言[预期结果](/zh-cn/wiki/expected-result/)**。验证函数的输出是否与给定输入的预期输出匹配。
-6. **清理**任何资源或状态（如有必要）。
-  这是伪代码格式的示例：
+6. **清理**任何资源或状态（如有必要）。 这是伪代码格式的示例：
 
-  ```
+```
   class MathFunctionsTest {
       testCalculateSumWithPositiveNumbers() {
           // Arrange
@@ -355,7 +332,7 @@ order: 0
       }
       // Additional test methods for different scenarios...
   }
-  ```
+```
 请记住尽可能地**隔离函数**，对外部依赖项使用模拟或存根。这确保了测试的重点是函数本身，而不是其依赖项的行为。
 
 1. **确定您要测试的功能**。确保您了解其预期行为、输入和输出。
@@ -378,8 +355,7 @@ order: 0
 - **跳过断言**：确保每个测试都有有意义的断言来验证预期结果。即使存在问题，没有断言的测试也可能错误地通过。
 - **不使用描述性测试名称**：测试名称应清楚地描述其目的。这使得更容易识别失败的测试并了解它们正在验证的内容。
 - **缺乏注释或文档**：虽然测试应该是不言自明的，但有时复杂的逻辑需要额外的上下文。使用注释来解释 [测试场景](/zh-cn/wiki/test-scenario/) 背后的基本原理。
-- **忽略测试性能**：缓慢的测试可能会阻碍开发过程。优化测试以高效运行，尤其是在处理集成或端到端测试时。
-  请记住，精心设计的[测试类](/zh-cn/wiki/test-class/) 可以增强[测试套件](/zh-cn/wiki/test-suite/) 的[可维护性](/zh-cn/wiki/maintainability/)、可读性和可靠性。
+- **忽略测试性能**：缓慢的测试可能会阻碍开发过程。优化测试以高效运行，尤其是在处理集成或端到端测试时。 请记住，精心设计的[测试类](/zh-cn/wiki/test-class/) 可以增强[测试套件](/zh-cn/wiki/test-suite/) 的[可维护性](/zh-cn/wiki/maintainability/)、可读性和可靠性。
 
 ### 工具和框架
 
@@ -398,8 +374,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：现代 Web 自动化测试框架，旨在简化端到端测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Cucumber** ：支持行为驱动开发（BDD），允许以非程序员可以阅读的语言创建测试类。
-- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。
-  这些框架提供注释、断言和运行程序，以促进测试类的创建、组织和执行。它们通常与 **Jenkins**、**Travis CI** 或 **GitLab CI** 等 CI/CD 工具集成，以在软件开发管道中实现自动化[测试执行](/zh-cn/wiki/test-execution/)。
+- **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。 这些框架提供注释、断言和运行程序，以促进测试类的创建、组织和执行。它们通常与 **Jenkins**、**Travis CI** 或 **GitLab CI** 等 CI/CD 工具集成，以在软件开发管道中实现自动化[测试执行](/zh-cn/wiki/test-execution/)。
 
 - **JUnit**：一种流行的 Java 单元测试框架，通常与 Eclipse 或 IntelliJ IDEA 等 IDE 结合使用。
 - **TestNG**：受 JUnit 启发的测试框架，但引入了新功能（例如注释），使其更强大且更易于使用。
@@ -420,7 +395,7 @@ order: 0
   当 [测试套件](/zh-cn/wiki/test-suite/) 运行时，测试框架会实例化测试类。然后框架调用类中定义的测试方法。生命周期方法（例如[环境搭建](/zh-cn/wiki/setup/) 和teardown）在每个测试方法或所有测试之前和之后调用，具体取决于它们的配置。
   下面是 JUnit 中的一个基本示例：
 
-  ```
+```
   import org.junit.jupiter.api.*;
   public class CalculatorTests {
       private Calculator calculator;
@@ -437,7 +412,7 @@ order: 0
           calculator = null;
       }
   }
-  ```
+```
 在此代码段中，`CalculatorTests` 是一个[测试类](/zh-cn/wiki/test-class/)，其中包含测试方法`testAddition()`。 `@BeforeEach` 和 `@AfterEach` 注释分别表示在每个测试之前和之后运行的方法。
   测试类在测试之间启用**隔离**，确保一个测试的状态不会影响另一个测试。它们还支持[环境搭建](/zh-cn/wiki/setup/)和拆卸代码的**可重用性**，并且当与注释一起使用时，它们允许**灵活的测试配置**和**执行控制**。测试类对于构建测试至关重要，使测试能够在更大的[测试套件](/zh-cn/wiki/test-suite/) 中进行维护和扩展。
 
@@ -446,7 +421,7 @@ order: 0
 由于语法、结构和功能的不同，[测试类](/zh-cn/wiki/test-class/) 的创建在不同的测试框架中有所不同。以下是一些区别：
   **JUnit（Java）：**
 
-  ```
+```
   import org.junit.jupiter.api.Test;
   import static org.junit.jupiter.api.Assertions.*;
   class ExampleTest {
@@ -455,18 +430,13 @@ order: 0
           assertTrue(true);
       }
   }
-  ```
+```
 
-- 使用注释，例如
-    `@Test`
-    。
+- 使用注释，例如 `@Test` 。
 
-- 断言是一部分
-    `org.junit.jupiter.api.Assertions`
-    类。
-  **测试NG（Java）：**
+- 断言是一部分 `org.junit.jupiter.api.Assertions` 类。 **测试NG（Java）：**
 
-  ```
+```
   import org.testng.annotations.Test;
   import static org.testng.Assert.*;
   public class ExampleTest {
@@ -475,114 +445,70 @@ order: 0
           assertEquals(1, 1);
       }
   }
-  ```
+```
 
 - 与 JUnit 类似，但使用自己的一组注释和断言。
-- 支持更复杂的功能，例如参数化和分组。
-  **pytest（Python）：**
+- 支持更复杂的功能，例如参数化和分组。 **pytest（Python）：**
 
-  ```
+```
   def test_method():
       assert True
-  ```
+```
 
-- 函数前缀为
-    `test_`
-    被自动识别为测试。
+- 函数前缀为 `test_` 被自动识别为测试。
 
-- 使用内置
-    `assert`
-    声明。
-  **RSpec（红宝石）：**
+- 使用内置 `assert` 声明。 **RSpec（红宝石）：**
 
-  ```
+```
   describe 'Example' do
     it 'does something' do
       expect(true).to eq(true)
     end
   end
-  ```
+```
 
-- 描述性语言
-    `describe`
-    和
-    `it`
-    块。
+- 描述性语言 `describe` 和 `it` 块。
 
-- 用途
-    `expect`
-    断言的语法。
-  **摩卡（JavaScript）：**
+- 用途 `expect` 断言的语法。 **摩卡（JavaScript）：**
 
-  ```
+```
   const assert = require('assert');
   describe('Example', function() {
     it('does something', function() {
       assert.strictEqual(true, true);
     });
   });
-  ```
+```
 
-- 描述性块
-    `describe`
-    和
-    `it`
-    。
+- 描述性块 `describe` 和 `it` 。
 
-- 使用节点的
-    `assert`
-    模块或其他断言库。
-  每个框架都有自己的**约定**和**辅助方法**，它们会影响您构建测试类的方式。遵循您所使用的框架的惯用做法以充分利用其功能非常重要。
+- 使用节点的 `assert` 模块或其他断言库。 每个框架都有自己的**约定**和**辅助方法**，它们会影响您构建测试类的方式。遵循您所使用的框架的惯用做法以充分利用其功能非常重要。
 
-- 使用注释，例如
-    `@Test`
-    。
+- 使用注释，例如 `@Test` 。
 
-- 断言是一部分
-    `org.junit.jupiter.api.Assertions`
-    类。
+- 断言是一部分 `org.junit.jupiter.api.Assertions` 类。
 
 - 与 JUnit 类似，但使用自己的一组注释和断言。
 - 支持更复杂的功能，例如参数化和分组。
-- 函数前缀为
-    `test_`
-    被自动识别为测试。
+- 函数前缀为 `test_` 被自动识别为测试。
 
-- 使用内置
-    `assert`
-    声明。
+- 使用内置 `assert` 声明。
 
-- 描述性语言
-    `describe`
-    和
-    `it`
-    块。
+- 描述性语言 `describe` 和 `it` 块。
 
-- 用途
-    `expect`
-    断言的语法。
+- 用途 `expect` 断言的语法。
 
-- 描述性块
-    `describe`
-    和
-    `it`
-    。
+- 描述性块 `describe` 和 `it` 。
 
-- 使用节点的
-    `assert`
-    模块或其他断言库。
+- 使用节点的 `assert` 模块或其他断言库。
 
 #### 如何将测试类与 Jenkins 这样的持续集成工具集成？
 
 将 **[测试类](/zh-cn/wiki/test-class/)** 与 **Jenkins** 等持续集成工具集成涉及几个步骤：
 
-1. **配置您的构建工具**：确保项目的构建工具（例如 Maven、Gradle）设置为在构建过程中运行测试。你的
-    `pom.xml`
-    或
-    `build.gradle`
-    应包含必要的插件和依赖项。
+1. **配置您的构建工具**：确保项目的构建工具（例如 Maven、Gradle）设置为在构建过程中运行测试。你的 `pom.xml` 或 `build.gradle` 应包含必要的插件和依赖项。
 
-  ```
+```
   <!-- For Maven, ensure surefire plugin is configured -->
   <plugin>
       <groupId>org.apache.maven.plugins</groupId>
@@ -594,13 +520,11 @@ order: 0
           </includes>
       </configuration>
   </plugin>
-  ```
+```
 
-1. **设置 Jenkins 作业** ：在 Jenkins 中为您的项目创建一个新作业。下
-    **构建**
-    部分，添加一个构建步骤来调用构建工具，该工具又运行测试。
+1. **设置 Jenkins 作业** ：在 Jenkins 中为您的项目创建一个新作业。下 **构建**部分，添加一个构建步骤来调用构建工具，该工具又运行测试。
 
-  ```
+```
   // For a Jenkins pipeline, you might have a stage like this:
   pipeline {
       agent any
@@ -615,31 +539,24 @@ order: 0
           }
       }
   }
-  ```
+```
 
 1. **配置[测试报告](/zh-cn/wiki/test-report/)** ：配置Jenkins发布测试结果。对于 JUnit，Jenkins 可以使用 JUnit 插件归档和显示报告。
 
-  ```
+```
   post {
       always {
           junit '**/target/surefire-reports/*.xml'
       }
   }
-  ```
+```
 
 1. **触发构建**：设置 Jenkins 在代码提交时或按计划的时间间隔自动触发构建。
-2. **监控并采取行动**：集成后，监控每个构建的测试结果。调查故障并及时解决它们，以维持稳定的构建管道。
-  通过执行这些步骤，您的 **[测试类](/zh-cn/wiki/test-class/)** 成为 CI 管道不可或缺的一部分，确保自动运行测试并在每次构建时报告结果，从而帮助维护代码质量并尽早发现问题。
+2. **监控并采取行动**：集成后，监控每个构建的测试结果。调查故障并及时解决它们，以维持稳定的构建管道。 通过执行这些步骤，您的 **[测试类](/zh-cn/wiki/test-class/)** 成为 CI 管道不可或缺的一部分，确保自动运行测试并在每次构建时报告结果，从而帮助维护代码质量并尽早发现问题。
 
-1. **配置您的构建工具**：确保项目的构建工具（例如 Maven、Gradle）设置为在构建过程中运行测试。你的
-    `pom.xml`
-    或
-    `build.gradle`
-    应包含必要的插件和依赖项。
+1. **配置您的构建工具**：确保项目的构建工具（例如 Maven、Gradle）设置为在构建过程中运行测试。你的 `pom.xml` 或 `build.gradle` 应包含必要的插件和依赖项。
 
-1. **设置 Jenkins 作业** ：在 Jenkins 中为您的项目创建一个新作业。下
-    **构建**
-    部分，添加一个构建步骤来调用构建工具，该工具又运行测试。
+1. **设置 Jenkins 作业** ：在 Jenkins 中为您的项目创建一个新作业。下 **构建**部分，添加一个构建步骤来调用构建工具，该工具又运行测试。
 
 1. **配置[测试报告](/zh-cn/wiki/test-report/)** ：配置Jenkins发布测试结果。对于 JUnit，Jenkins 可以使用 JUnit 插件归档和显示报告。
 1. **触发构建**：设置 Jenkins 在代码提交时或按计划的时间间隔自动触发构建。
@@ -651,119 +568,102 @@ order: 0
 
 - **参数化测试**：使用不同的数据集运行相同的测试。对于数据驱动的测试很有用。
 
-    ```
+```
     @ParameterizedTest
     @ValueSource(strings = {"data1", "data2"})
     void testWithDifferentValues(String value) {
         // Test code here
     }
-    ```
+```
 
 - **Mocking 和 Stubbing** ：使用 Mockito 或 Sinon.js 等库模拟复杂依赖关系的行为。
 
-    ```
+```
     @Mock
     private Dependency dependency;
     @BeforeEach
     void setUp() {
         Mockito.when(dependency.method()).thenReturn("mocked response");
     }
-    ```
+```
 
 - **异步测试**：通过等待回调、promise 或 future 完成来测试异步代码。
 
-    ```
+```
     it('async test', async () => {
         const result = await asyncFunction();
         expect(result).toBe('expected result');
     });
-    ```
+```
 
-- **测试挂钩** ：在测试之前或之后执行代码，或者在类中的所有测试之前或之后执行代码，使用
-    `@Before`
-    ,
-    `@After`
-    ,
-    `@BeforeClass`
-    , 或
-    `@AfterClass`
-    注释。
+- **测试挂钩** ：在测试之前或之后执行代码，或者在类中的所有测试之前或之后执行代码，使用 `@Before` , `@After` , `@BeforeClass` , 或 `@AfterClass` 注释。
 
 - **分组和过滤**：将测试组织成组并使用标签或类别有选择地运行它们。
 
-    ```
+```
     @Tag("integration")
     class IntegrationTests {
         // Integration test methods here
     }
-    ```
+```
 
 - **并行执行**：并行运行测试以减少执行时间。在框架设置中配置并行性。
 - **自定义断言**：创建特定于域的断言以提高可读性并减少样板文件。
 
-    ```
+```
     assertThat(actual).hasCustomProperty(expectedValue);
-    ```
+```
 
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/) 分析**：与 JaCoCo 或 Istanbul 等工具集成以测量测试的覆盖范围。
-- **报告**：生成各种格式（HTML、XML、JSON）的详细测试报告，以获得更好的见解和持续改进。
-  这些功能有助于创建更健壮、可维护且高效的测试类，从而提高测试过程的整体质量。
+- **报告**：生成各种格式（HTML、XML、JSON）的详细测试报告，以获得更好的见解和持续改进。 这些功能有助于创建更健壮、可维护且高效的测试类，从而提高测试过程的整体质量。
 
 - **参数化测试**：使用不同的数据集运行相同的测试。对于数据驱动的测试很有用。
 
-    ```
+```
     @ParameterizedTest
     @ValueSource(strings = {"data1", "data2"})
     void testWithDifferentValues(String value) {
         // Test code here
     }
-    ```
+```
 
 - **Mocking 和 Stubbing** ：使用 Mockito 或 Sinon.js 等库模拟复杂依赖关系的行为。
 
-    ```
+```
     @Mock
     private Dependency dependency;
     @BeforeEach
     void setUp() {
         Mockito.when(dependency.method()).thenReturn("mocked response");
     }
-    ```
+```
 
 - **异步测试**：通过等待回调、promise 或 future 完成来测试异步代码。
 
-    ```
+```
     it('async test', async () => {
         const result = await asyncFunction();
         expect(result).toBe('expected result');
     });
-    ```
+```
 
-- **测试挂钩** ：在测试之前或之后执行代码，或者在类中的所有测试之前或之后执行代码，使用
-    `@Before`
-    ,
-    `@After`
-    ,
-    `@BeforeClass`
-    , 或
-    `@AfterClass`
-    注释。
+- **测试挂钩** ：在测试之前或之后执行代码，或者在类中的所有测试之前或之后执行代码，使用 `@Before` , `@After` , `@BeforeClass` , 或 `@AfterClass` 注释。
 
 - **分组和过滤**：将测试组织成组并使用标签或类别有选择地运行它们。
 
-    ```
+```
     @Tag("integration")
     class IntegrationTests {
         // Integration test methods here
     }
-    ```
+```
 
 - **并行执行**：并行运行测试以减少执行时间。在框架设置中配置并行性。
 - **自定义断言**：创建特定于域的断言以提高可读性并减少样板文件。
 
-    ```
+```
     assertThat(actual).hasCustomProperty(expectedValue);
-    ```
+```
 
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/) 分析**：与 JaCoCo 或 Istanbul 等工具集成以测量测试的覆盖范围。
 - **报告**：生成各种格式（HTML、XML、JSON）的详细测试报告，以获得更好的见解和持续改进。
@@ -780,10 +680,9 @@ order: 0
 4. **编写测试方法**，反映模块交互的真实世界[用例](/zh-cn/wiki/use-case/)。确保每个测试都是独立的并且可以按任何顺序运行。
 5. **断言结果**以验证集成模块是否按预期协同工作。检查正确的数据流、错误处理和副作用。
 6. **测试后清理资源**，避免对后续测试产生副作用。这可能涉及重置 [数据库](/zh-cn/wiki/database/) 或清除缓存。
-7. **使用相关元数据注释 [测试类](/zh-cn/wiki/test-class/)** 以指示它是集成测试（例如，在 Spring 中使用 `@IntegrationTest`）。
-  下面是一个使用 JUnit 的 Java 简单示例：
+7. **使用相关元数据注释 [测试类](/zh-cn/wiki/test-class/)** 以指示它是集成测试（例如，在 Spring 中使用 `@IntegrationTest`）。 下面是一个使用 JUnit 的 Java 简单示例：
 
-  ```
+```
   import org.junit.jupiter.api.Test;
   import static org.junit.jupiter.api.Assertions.*;
   class OrderProcessingTest {
@@ -798,7 +697,7 @@ order: 0
           assertNotNull(order.getPaymentConfirmation());
       }
   }
-  ```
+```
 请记住**将集成测试**与单元测试隔离，可能通过使用不同的目录或命名约定来有效管理[测试执行](/zh-cn/wiki/test-execution/)和报告。
 
 #### 测试套件的概念是什么？它与测试类有何关系？
@@ -808,7 +707,7 @@ order: 0
   [测试套件](/zh-cn/wiki/test-suite/) 对于将测试组织到更高级别的场景特别有用，例如 [集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 或冒烟测试。如有必要，它们可以按指定顺序执行相关测试类，并且可以配置为在第一次失败时停止以帮助调试。
   以下是在 JUnit 中定义 [测试套件](/zh-cn/wiki/test-suite/) 的示例：
 
-  ```
+```
   import org.junit.runner.RunWith;
   import org.junit.runners.Suite;
   @RunWith(Suite.class)
@@ -819,30 +718,24 @@ order: 0
   public class ExampleTestSuite {
       // This class remains empty, it's used only as a holder for the above annotations
   }
-  ```
+```
 在此示例中，`ExampleTestSuite` 是[测试套件](/zh-cn/wiki/test-suite/)，其中包括`TestClassOne` 和`TestClassTwo`。执行`ExampleTestSuite` 时，将运行`TestClassOne` 和`TestClassTwo` 中的所有测试。这种方法简化了测试的执行和报告，特别是在具有大量测试类的大型项目中。
 
 #### 如何使用测试类来执行端到端 (e2e) 测试？
 
 要使用 [测试类](/zh-cn/wiki/test-class/) 执行端到端 (e2e) 测试，您通常需要从头到尾模拟用户与应用程序的交互。这是一个简洁的指南：
 
-1. **初始化**
-    应用程序或其环境，以确保其在测试前处于已知状态。
+1. **初始化**应用程序或其环境，以确保其在测试前处于已知状态。
 
-2. **将多种测试方法链接在一起**
-    在测试类中反映用户旅程。每个方法应该代表工作流程的一个逻辑部分。
+2. **将多种测试方法链接在一起**在测试类中反映用户旅程。每个方法应该代表工作流程的一个逻辑部分。
 
-3. 使用
-    **[页面对象模型](/zh-cn/wiki/page-object-model/)**
-    与 UI 元素交互，确保您的测试可维护且可读。
+3. 使用 **[页面对象模型](/zh-cn/wiki/page-object-model/)**与 UI 元素交互，确保您的测试可维护且可读。
 
-4. **断言**
-    关键点的预期结果，以验证应用程序是否按预期运行。
+4. **断言**关键点的预期结果，以验证应用程序是否按预期运行。
 
-5. **清理**
-    测试后通过重置应用状态，确保后续测试不会产生副作用。
+5. **清理**测试后通过重置应用状态，确保后续测试不会产生副作用。
 
-  ```
+```
   class E2ETest {
     testCompleteUserJourney() {
       this.initializeApplication();
@@ -857,24 +750,18 @@ order: 0
     verifyOutcome() { /* Assertions to verify final state */ }
     cleanup() { /* Reset application state */ }
   }
-  ```
+```
 利用**异步调用**和**等待**来处理网络请求和 UI 渲染时间。如果需要不同的数据集来模拟不同的用户场景，请结合**数据驱动的测试**。最后，将 [测试类](/zh-cn/wiki/test-class/) 与 CI/CD 管道集成，以确保 e2e 测试成为常规构建过程的一部分，从而提供有关应用程序运行状况的持续反馈。
 
-1. **初始化**
-    应用程序或其环境，以确保其在测试前处于已知状态。
+1. **初始化**应用程序或其环境，以确保其在测试前处于已知状态。
 
-2. **将多种测试方法链接在一起**
-    在测试类中反映用户旅程。每个方法应该代表工作流程的一个逻辑部分。
+2. **将多种测试方法链接在一起**在测试类中反映用户旅程。每个方法应该代表工作流程的一个逻辑部分。
 
-3. 使用
-    **[页面对象模型](/zh-cn/wiki/page-object-model/)**
-    与 UI 元素交互，确保您的测试可维护且可读。
+3. 使用 **[页面对象模型](/zh-cn/wiki/page-object-model/)**与 UI 元素交互，确保您的测试可维护且可读。
 
-4. **断言**
-    关键点的预期结果，以验证应用程序是否按预期运行。
+4. **断言**关键点的预期结果，以验证应用程序是否按预期运行。
 
-5. **清理**
-    测试后通过重置应用状态，确保后续测试不会产生副作用。
+5. **清理**测试后通过重置应用状态，确保后续测试不会产生副作用。
 
 #### 测试类在自动化回归测试中的作用是什么？
 
@@ -883,7 +770,7 @@ order: 0
   测试类还促进[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法的重用，这些方法准备[测试环境](/zh-cn/wiki/test-environment/) 并在测试运行后进行清理。这在 [回归测试](/zh-cn/wiki/regression-testing/) 中特别有用，其中一致的起始条件对于获得可靠的结果至关重要。
   在持续集成管道中，测试类可以在代码提交时自动触发，确保回归测试一致执行而无需人工干预。这有助于在整个开发生命周期中保持高水平的代码质量。
 
-  ```
+```
   // Example of a Test Class in TypeScript using Jest
   import { Calculator } from './Calculator';
   describe('Calculator Tests', () => {
@@ -900,7 +787,7 @@ order: 0
     });
     // Additional tests for Calculator methods
   });
-  ```
+```
 通过将测试构建为测试类，[回归测试](/zh-cn/wiki/regression-testing/) 变得更加高效、易于管理，并且与 [自动化测试](/zh-cn/wiki/automated-testing/) 中的最佳实践保持一致。
 
 #### 如何使用测试类来执行负载或压力测试？
@@ -908,7 +795,7 @@ order: 0
 要使用[测试类](/zh-cn/wiki/test-class/) 执行加载或[压力测试](/zh-cn/wiki/stress-testing/)，您通常会利用为此目的设计的测试框架或工具，例如[JMeter](/zh-cn/wiki/jmeter/) 或LoadRunner。但是，您还可以通过创建同时调用被测方法或函数的多个线程或进程，在[测试类](/zh-cn/wiki/test-class/) 中模拟基本的[负载测试](/zh-cn/wiki/load-testing/)。
   下面是一个使用 Java 和 JUnit 的简化示例：
 
-  ```
+```
   public class LoadTestExample {
       @Test
       public void stressTestMethod() throws InterruptedException {
@@ -938,6 +825,6 @@ order: 0
           return true;
       }
   }
-  ```
+```
 在此示例中，`yourMethodUnderTest()` 是您要进行压力测试的方法。 `stressTestMethod()` 创建固定数量的线程，这些线程将同时调用`yourMethodUnderTest()`。所有线程完成执行后，您可以执行断言以确保系统在压力下正常运行。
   请记住，这种方法非常初级，缺乏专用 [负载测试](/zh-cn/wiki/load-testing/) 工具的复杂性，而专用 [负载测试](/zh-cn/wiki/load-testing/) 工具可以提供更全面的功能，例如分布式测试、详细报告和高级用户模拟。对于简单场景或没有专用工具时，请使用此方法。

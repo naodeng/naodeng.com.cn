@@ -5,9 +5,10 @@ section: "P"
 related:
   - test-case
   - use-case-testing
-  - manual-testing
   - automated-testing
-  - test-suite
+  - validation-testing
+  - manual-testing
+  - qa-metrics
 order: 0
 ---
 
@@ -54,9 +55,9 @@ order: 0
   管理多个[后置条件](/zh-cn/wiki/postcondition/) 时，必须在[测试脚本](/zh-cn/wiki/test-script/) 内按逻辑构建它们，确保它们清晰且可维护。这通常涉及将[测试用例](/zh-cn/wiki/test-case/) 分解为更小、更有针对性的测试，每个测试都有自己的一组[后置条件](/zh-cn/wiki/postcondition/)。
   为了验证[后置条件](/zh-cn/wiki/postcondition/)，自动化测试通常使用测试框架的断言方法。例如，在 [Jest](/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，您可能会看到：
 
-  ```
+```
   expect(actualValue).toBe(expectedValue);
-  ```
+```
 此行检查`actualValue` 是否与`expectedValue` 匹配，从而验证[后置条件](/zh-cn/wiki/postcondition/)。
   定义精确的[后置条件](/zh-cn/wiki/postcondition/)对于获得准确的测试结果至关重要，并且可以帮助有效地查明缺陷。虽然它们是测试过程中不可或缺的一部分，但确保其相关性和准确性可能具有挑战性，需要在 [测试用例](/zh-cn/wiki/test-case/) 设计期间仔细考虑。
 
@@ -73,20 +74,20 @@ order: 0
 先决条件和 [后置条件](/zh-cn/wiki/postcondition/) 都是 [测试用例](/zh-cn/wiki/test-case/) 结构的组成部分，但它们在测试生命周期中具有不同的用途。
   **前提条件**是执行测试之前**必须满足的特定状态或条件。他们为测试奠定了基础，确保系统处于正确状态并且所有必要的配置均已到位。前提条件是为测试成功运行创建一个受控环境。
 
-  ```
+```
   // Example: Preconditions for a login test might include
   // - The user account exists
   // - The application is accessible
   // - The login service is running
-  ```
+```
 另一方面，**[后置条件](/zh-cn/wiki/postcondition/)** 是 [测试执行](/zh-cn/wiki/test-execution/) **之后必须验证的预期状态或条件，以确认测试已通过。它们是用于确定[测试用例](/zh-cn/wiki/test-case/) 成功或失败的标准。 [后置条件](/zh-cn/wiki/postcondition/) 关注[测试执行](/zh-cn/wiki/test-execution/) 带来的结果和变化。
 
-  ```
+```
   // Example: Postconditions for a login test might include
   // - The user is redirected to the homepage
   // - A session token is generated
   // - The login timestamp is updated in the database
-  ```
+```
 前提条件是关于准备的，[后置条件](/zh-cn/wiki/postcondition/) 是关于验证的。他们共同构建了测试，明确了需要提前设置的内容以及之后要检查的结果。管理多个[后置条件](/zh-cn/wiki/postcondition/)需要一种结构化方法，通常涉及清单或自动断言，以确保正确评估每个[后置条件](/zh-cn/wiki/postcondition/)。
 
 #### 后置条件如何影响整个测试过程？
@@ -103,9 +104,9 @@ order: 0
   在处理多个[后置条件](/zh-cn/wiki/postcondition/) 时，系统地管理它们非常重要，通常是使用自动断言。这确保了每个[后置条件](/zh-cn/wiki/postcondition/)都按逻辑顺序进行验证，并且测试提供了场景的全面验证。
   在 [自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常表示为 [测试脚本](/zh-cn/wiki/test-script/) 中的断言：
 
-  ```
+```
   expect(actualBalance).toEqual(expectedBalance);
-  ```
+```
 这些断言会自动评估，测试框架会报告任何差异，有助于快速识别[bugs](/zh-cn/wiki/bug/)。
   定义 [后置条件](/zh-cn/wiki/postcondition/) 时，请考虑 [测试用例](/zh-cn/wiki/test-case/) 设计，以确保它们与应用程序的预期行为保持一致。复杂的系统状态或依赖关系可能会带来挑战，需要仔细考虑才能准确定义和验证[后置条件](/zh-cn/wiki/postcondition/)。
   总之，[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中的[后置条件](/zh-cn/wiki/postcondition/) 对于断言系统在测试后按预期运行、提供有关测试成功或失败的明确信号以及有助于被测试软件的稳健性至关重要。
@@ -116,44 +117,37 @@ order: 0
 
 为[测试用例](/zh-cn/wiki/test-case/) 定义**[后置条件](/zh-cn/wiki/postcondition/)** 涉及在[测试执行](/zh-cn/wiki/test-execution/) 之后指定系统的预期状态。此状态应反映测试旨在引起或验证的任何变化。要有效定义 [后置条件](/zh-cn/wiki/postcondition/)：
 
-- **识别**
-    系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
+- **识别**系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
 
-- **指定**
-    以清晰、明确的措辞表达结果。使用准确的语言以避免误解。
+- **指定**以清晰、明确的措辞表达结果。使用准确的语言以避免误解。
 
-- **焦点**
-    系统状态的相关方面与测试用例目标直接相关。
-  例如，在 [测试用例](/zh-cn/wiki/test-case/) 验证用户登录功能中：
+- **焦点**系统状态的相关方面与测试用例目标直接相关。 例如，在 [测试用例](/zh-cn/wiki/test-case/) 验证用户登录功能中：
 
-  ```
+```
   // Postcondition: User is logged in and redirected to the dashboard.
-  ```
+```
 如果有多个[后置条件](/zh-cn/wiki/postcondition/)，**枚举**每个预期结果，确保它们**不同**且**可管理**：
 
-  ```
+```
   // Postconditions:
   // 1. User session is started.
   // 2. Dashboard page is loaded.
   // 3. Login timestamp is recorded in the database.
-  ```
+```
 要**验证**[后置条件](/zh-cn/wiki/postcondition/)，请实施**断言**，根据预期结果检查系统状态：
 
-  ```
+```
   assert(userSession.isActive());
   assert(currentPage == 'dashboard');
   assert(database.hasLoginTimestampFor(user));
-  ```
+```
 请记住，[后置条件](/zh-cn/wiki/postcondition/) 对于验证测试不仅按预期执行而且导致系统状态的正确修改或维护至关重要**。
 
-- **识别**
-    系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
+- **识别**系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
 
-- **指定**
-    以清晰、明确的措辞表达结果。使用准确的语言以避免误解。
+- **指定**以清晰、明确的措辞表达结果。使用准确的语言以避免误解。
 
-- **焦点**
-    系统状态的相关方面与测试用例目标直接相关。
+- **焦点**系统状态的相关方面与测试用例目标直接相关。
 
 #### 软件测试中后置条件的一些示例是什么？
 
@@ -161,106 +155,106 @@ order: 0
 
 - **[数据库](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
 
-    ```
+```
     SELECT COUNT(*) FROM table WHERE condition;
-    ```
+```
 
 - **文件系统**：在文件创建测试之后，后置条件可以检查文件现在是否存在于指定位置。
 
-    ```
+```
     [ -f /path/to/file ]
-    ```
+```
 
 - **系统状态**：测试注销功能后，后置条件可能会验证用户的会话不再处于活动状态。
 
-    ```
+```
     expect(session.isActive).toBeFalsy();
-    ```
+```
 
 - **用户界面**：对于 UI 测试，后置条件可以确认操作后显示成功消息。
 
-    ```
+```
     expect(successMessage.isDisplayed()).toBeTruthy();
-    ```
+```
 
 - **[API](/zh-cn/wiki/api/) 响应**：API 调用后，后置条件可能会检查响应代码是否为 200 并且响应正文包含预期数据。
 
-    ```
+```
     {
       "statusCode": 200,
       "body": { "result": "success" }
     }
-    ```
+```
 
 - **性能指标**：后置条件可以断言系统的响应时间在可接受的限度内。
 
-    ```
+```
     expect(responseTime).toBeLessThan(200);
-    ```
+```
 
 - **应用程序状态**：确保应用程序在测试后返回到中立状态，为下一个测试做好准备。
 
-    ```
+```
     expect(application.isInNeutralState()).toBeTruthy();
-    ```
+```
 
 - **错误处理**：验证当测试模拟故障场景时是否显示或记录适当的错误消息。
 
-    ```
+```
     expect(error.message).toMatch(/expected error/);
-    ```
+```
 管理多个 [后置条件](/zh-cn/wiki/postcondition/) 涉及对断言进行逻辑分组并确保它们独立、清晰且与测试目标直接相关。
 
 - **[数据库](/zh-cn/wiki/database/) state** ：在数据库插入操作的测试用例之后，后置条件可能断言新记录存在且数据正确。
 
-    ```
+```
     SELECT COUNT(*) FROM table WHERE condition;
-    ```
+```
 
 - **文件系统**：在文件创建测试之后，后置条件可以检查文件现在是否存在于指定位置。
 
-    ```
+```
     [ -f /path/to/file ]
-    ```
+```
 
 - **系统状态**：测试注销功能后，后置条件可能会验证用户的会话不再处于活动状态。
 
-    ```
+```
     expect(session.isActive).toBeFalsy();
-    ```
+```
 
 - **用户界面**：对于 UI 测试，后置条件可以确认操作后显示成功消息。
 
-    ```
+```
     expect(successMessage.isDisplayed()).toBeTruthy();
-    ```
+```
 
 - **[API](/zh-cn/wiki/api/) 响应**：API 调用后，后置条件可能会检查响应代码是否为 200 并且响应正文包含预期数据。
 
-    ```
+```
     {
       "statusCode": 200,
       "body": { "result": "success" }
     }
-    ```
+```
 
 - **性能指标**：后置条件可以断言系统的响应时间在可接受的限度内。
 
-    ```
+```
     expect(responseTime).toBeLessThan(200);
-    ```
+```
 
 - **应用程序状态**：确保应用程序在测试后返回到中立状态，为下一个测试做好准备。
 
-    ```
+```
     expect(application.isInNeutralState()).toBeTruthy();
-    ```
+```
 
 - **错误处理**：验证当测试模拟故障场景时是否显示或记录适当的错误消息。
 
-    ```
+```
     expect(error.message).toMatch(/expected error/);
-    ```
+```
 
 #### 定义后置条件的最佳实践是什么？
 
@@ -273,13 +267,12 @@ order: 0
 - **自动化[验证 ](/zh-cn/wiki/verification/)**：只要有可能，自动验证[后置条件](/zh-cn/wiki/postcondition/)以减少手动工作并提高可靠性。
 - **使用断言**：在 [测试脚本](/zh-cn/wiki/test-script/) 中实现断言，以编程方式检查 [后置条件](/zh-cn/wiki/postcondition/)。例如：
 
-  ```
+```
   expect(actualState).toEqual(expectedState);
-  ```
+```
 
 - **文档更改**：如果[测试用例](/zh-cn/wiki/test-case/) 或基础功能发生更改，请相应更新[后置条件](/zh-cn/wiki/postcondition/) 以使其保持最新状态。
-- **定期审查**：作为测试维护的一部分定期审查[后置条件](/zh-cn/wiki/postcondition/)，以确保它们仍然符合应用程序的预期行为。
-  通过遵循这些实践，您将创建清晰、可靠且可维护的[后置条件](/zh-cn/wiki/postcondition/)，从而提高[自动化测试](/zh-cn/wiki/automated-testing/) 工作的有效性。
+- **定期审查**：作为测试维护的一部分定期审查[后置条件](/zh-cn/wiki/postcondition/)，以确保它们仍然符合应用程序的预期行为。 通过遵循这些实践，您将创建清晰、可靠且可维护的[后置条件](/zh-cn/wiki/postcondition/)，从而提高[自动化测试](/zh-cn/wiki/automated-testing/) 工作的有效性。
 
 - **具体**：在[测试执行](/zh-cn/wiki/test-execution/)之后清楚地说明系统的预期状态。歧义可能导致误解和不可靠的测试结果。
 - **保持相关性**：确保[后置条件](/zh-cn/wiki/postcondition/) 与[测试用例](/zh-cn/wiki/test-case/) 的目标直接相关。不相关的[后置条件](/zh-cn/wiki/postcondition/) 会增加噪音并降低测试结果的清晰度。
@@ -295,29 +288,29 @@ order: 0
 验证 [测试用例](/zh-cn/wiki/test-case/) 中是否满足 [后置条件](/zh-cn/wiki/postcondition/) 涉及在执行测试操作后断言应用程序的预期状态。使用**断言**将应用程序的实际状态与预期的[后置条件](/zh-cn/wiki/postcondition/)进行比较。如果断言通过，则满足[后置条件](/zh-cn/wiki/postcondition/)；如果失败，则不满足[后置条件](/zh-cn/wiki/postcondition/)，表明存在潜在问题。
   以下是基于 JavaScript 的测试框架中的简化示例：
 
-  ```
+```
   // Perform test steps...
   // ...
   // Validate postcondition
   expect(actualState).toEqual(expectedState);
-  ```
+```
 如果有多个[后置条件](/zh-cn/wiki/postcondition/)，请独立验证每个[后置条件](/zh-cn/wiki/postcondition/)，确保应用程序状态的所有必要方面均符合预期。将断言链接在一起或使用逻辑结构来管理复杂的验证。
   对于**[数据库](/zh-cn/wiki/database/) 验证**，执行查询以检索相关数据并将其与[预期结果](/zh-cn/wiki/expected-result/) 进行比较：
 
-  ```
+```
   // Retrieve data from the database
   const result = database.query('SELECT status FROM orders WHERE id = 123');
   // Validate postcondition
   expect(result.status).toEqual('Processed');
-  ```
+```
 对于 **UI 验证**，使用选择器查找元素并检查其属性或状态：
 
-  ```
+```
   // Check if a confirmation message is displayed
   const message = screen.getByText('Order processed successfully');
   // Validate postcondition
   expect(message).toBeInTheDocument();
-  ```
+```
 自动化测试应自行清理，确保 [后置条件](/zh-cn/wiki/postcondition/) 不会影响后续测试。这可能涉及重置应用程序状态、删除[测试数据](/zh-cn/wiki/test-data/)或回滚事务。
 
 #### 一个测试用例可以有多个后置条件吗？
@@ -325,52 +318,39 @@ order: 0
 如果是这样，你如何管理它们？
   是的，一个[测试用例](/zh-cn/wiki/test-case/) 可以有多个[后置条件](/zh-cn/wiki/postcondition/)。管理它们涉及明确定义每个[后置条件](/zh-cn/wiki/postcondition/)并确保它们是可独立验证的。以下是有效处理多个[后置条件](/zh-cn/wiki/postcondition/)的方法：
 
-- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**
-    分开以保持清晰度。
+- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**分开以保持清晰度。
 
-- **确保独立性**
-    这样一来，一个人的成功或失败就不会影响到其他人。
+- **确保独立性**这样一来，一个人的成功或失败就不会影响到其他人。
 
-- **使用断言**
-    在您的测试脚本中验证每个后置条件。
+- **使用断言**在您的测试脚本中验证每个后置条件。
 
-- **组织[后置条件](/zh-cn/wiki/postcondition/)**
-    从逻辑上讲，反映了被测系统状态变化的顺序。
+- **组织[后置条件](/zh-cn/wiki/postcondition/)**从逻辑上讲，反映了被测系统状态变化的顺序。
 
-- **文档依赖关系**
-    后置条件之间（如果存在），尽管这并不理想。
+- **文档依赖关系**后置条件之间（如果存在），尽管这并不理想。
 
-- **自动验证**
-    在可能的情况下，使用可以有效检查多个结果的工具或脚本。
-  例如，在文件上传功能的[测试用例](/zh-cn/wiki/test-case/)中，您可能有[后置条件](/zh-cn/wiki/postcondition/)，如下所示：
+- **自动验证**在可能的情况下，使用可以有效检查多个结果的工具或脚本。 例如，在文件上传功能的[测试用例](/zh-cn/wiki/test-case/)中，您可能有[后置条件](/zh-cn/wiki/postcondition/)，如下所示：
 
-  ```
+```
   // Check the file exists in the target directory
   assert(fileExists(targetDirectory, fileName));
   // Verify the file size matches the expected size
   assert(fileSize(targetDirectory, fileName) == expectedSize);
   // Confirm that a success message is displayed to the user
   assert(successMessageDisplayed(uploadPage));
-  ```
+```
 每个[后置条件](/zh-cn/wiki/postcondition/) 都通过断言进行验证，它们都与上传文件的单个操作相关，但代表操作后系统状态的不同方面。
 
-- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**
-    分开以保持清晰度。
+- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**分开以保持清晰度。
 
-- **确保独立性**
-    这样一来，一个人的成功或失败就不会影响到其他人。
+- **确保独立性**这样一来，一个人的成功或失败就不会影响到其他人。
 
-- **使用断言**
-    在您的测试脚本中验证每个后置条件。
+- **使用断言**在您的测试脚本中验证每个后置条件。
 
-- **组织[后置条件](/zh-cn/wiki/postcondition/)**
-    从逻辑上讲，反映了被测系统状态变化的顺序。
+- **组织[后置条件](/zh-cn/wiki/postcondition/)**从逻辑上讲，反映了被测系统状态变化的顺序。
 
-- **文档依赖关系**
-    后置条件之间（如果存在），尽管这并不理想。
+- **文档依赖关系**后置条件之间（如果存在），尽管这并不理想。
 
-- **自动验证**
-    在可能的情况下，使用可以有效检查多个结果的工具或脚本。
+- **自动验证**在可能的情况下，使用可以有效检查多个结果的工具或脚本。
 
 ### 高级概念
 
@@ -380,12 +360,12 @@ order: 0
   在[自动化测试](/zh-cn/wiki/automated-testing/)中，断言通常被编写为代码语句，将实际结果与预期结果进行比较，直接反映[后置条件](/zh-cn/wiki/postcondition/)。如果断言通过，则表明相应的[后置条件](/zh-cn/wiki/postcondition/)已得到满足。相反，如果断言失败，则表明预期状态与实际状态之间存在差异，从而表明存在潜在缺陷。
   以下是 JavaScript 测试框架中的示例：
 
-  ```
+```
   it('should add two numbers correctly', function() {
     const result = add(2, 3);
     assert.equal(result, 5); // Assertion reflecting the postcondition
   });
-  ```
+```
 在此代码段中，`assert.equal(result, 5);` 是验证 [后置条件](/zh-cn/wiki/postcondition/) 2 和 3 之和应为 5 的断言。
   断言是 [测试自动化](/zh-cn/wiki/test-automation/) 脚本不可或缺的一部分，可提供有关应用程序运行状况的即时反馈。它们使自动化 [测试套件](/zh-cn/wiki/test-suite/) 能够独立运行并确定测试结果，无需人工干预。在[测试用例](/zh-cn/wiki/test-case/) 中管理多个[后置条件](/zh-cn/wiki/postcondition/) 需要编写多个断言，每个断言都针对需要验证的特定条件进行定制。
 
@@ -395,17 +375,13 @@ order: 0
   在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被翻译成**断言**。这些断言是自动检查，将系统的实际状态与预期[后置条件](/zh-cn/wiki/postcondition/)进行比较。如果断言通过，则满足[后置条件](/zh-cn/wiki/postcondition/)；如果失败，则 [测试用例](/zh-cn/wiki/test-case/) 失败，表明存在潜在缺陷。
   多个[后置条件](/zh-cn/wiki/postcondition/) 可以与单个[测试用例](/zh-cn/wiki/test-case/) 关联，特别是在测试复杂场景时。管理它们需要一种结构化的方法，通常涉及：
 
-- **逻辑分组**
-    相关后置条件。
+- **逻辑分组**相关后置条件。
 
-- **顺序验证**
-    其中一个后置条件的结果可能会影响下一个后置条件的评估。
+- **顺序验证**其中一个后置条件的结果可能会影响下一个后置条件的评估。
 
-- **模块化断言**
-    保持代码的可维护性和可重用性。
-  例如，考虑使用 [测试用例](/zh-cn/wiki/test-case/) 作为登录功能：
+- **模块化断言**保持代码的可维护性和可重用性。 例如，考虑使用 [测试用例](/zh-cn/wiki/test-case/) 作为登录功能：
 
-  ```
+```
   // Test case: Successful user login
   // Precondition: Valid username and password
   // Postconditions: User is logged in, welcome message is displayed, session is started
@@ -415,17 +391,14 @@ order: 0
   assert(isLoggedIn());
   assert(welcomeMessageDisplayed());
   assert(sessionStarted());
-  ```
+```
 在此代码片段中，每个 [后置条件](/zh-cn/wiki/postcondition/) 都通过相应的断言进行检查。因此，[后置条件](/zh-cn/wiki/postcondition/) 和[测试用例](/zh-cn/wiki/test-case/) 设计之间的关系是指定预期结果并实施检查以确保在执行测试操作后实现这些结果的问题。
 
-- **逻辑分组**
-    相关后置条件。
+- **逻辑分组**相关后置条件。
 
-- **顺序验证**
-    其中一个后置条件的结果可能会影响下一个后置条件的评估。
+- **顺序验证**其中一个后置条件的结果可能会影响下一个后置条件的评估。
 
-- **模块化断言**
-    保持代码的可维护性和可重用性。
+- **模块化断言**保持代码的可维护性和可重用性。
 
 #### 后置条件如何帮助识别软件错误？
 
@@ -434,7 +407,7 @@ order: 0
   在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 可以通过编程方式断言。如果断言失败，自动化框架通常会记录此失败，然后可以对其进行调查。这种即时反馈对于在开发周期的早期识别和解决[bugs](/zh-cn/wiki/bug/) 至关重要。
   考虑以下使用 [Jest](/zh-cn/wiki/jest/) 等测试框架的 TypeScript 示例：
 
-  ```
+```
   test('User balance should increase after deposit', () => {
     // Precondition: User account is created and logged in
     const account = createAccount('user123', 'password');
@@ -444,7 +417,7 @@ order: 0
     // Postcondition: Account balance should be increased by 100
     expect(getBalance(account)).toBe(100);
   });
-  ```
+```
 在此示例中，`expect` 函数检查[后置条件](/zh-cn/wiki/postcondition/)。如果余额不是 100，则测试失败，并在存款功能中发出潜在的 [bug](/zh-cn/wiki/bug/) 信号。管理多个[后置条件](/zh-cn/wiki/postcondition/) 涉及单个[测试用例](/zh-cn/wiki/test-case/) 内或跨多个[测试用例](/zh-cn/wiki/test-case/) 的类似断言，确保在测试操作后验证系统状态的每个方面。
 
 #### 定义和验证后置条件有哪些挑战？
@@ -458,36 +431,25 @@ order: 0
   **工具限制**：用于[测试自动化](/zh-cn/wiki/test-automation/) 的工具可能不支持验证某些类型的[后置条件](/zh-cn/wiki/postcondition/)，尤其是那些涉及复杂数据结构或系统状态的工具。
   为了应对这些挑战，必须：
 
-- **协作**
-    与开发人员和业务分析师一起澄清需求。
+- **协作**与开发人员和业务分析师一起澄清需求。
 
-- **隔离**
-    尽可能多地进行测试以减少相互依赖性。
+- **隔离**尽可能多地进行测试以减少相互依赖性。
 
-- **使用模拟和存根**
-    模拟外部系统并控制测试环境。
+- **使用模拟和存根**模拟外部系统并控制测试环境。
 
-- **利用数据屏蔽**
-    敏感数据的技术。
+- **利用数据屏蔽**敏感数据的技术。
 
-- **选择合适的工具**
-    可以处理系统的复杂性和后置条件。
-  有效验证[后置条件](/zh-cn/wiki/postcondition/) 可确保软件在[测试用例](/zh-cn/wiki/test-case/) 执行后按预期运行，这对于[自动化测试](/zh-cn/wiki/automated-testing/) 的可靠性至关重要。
+- **选择合适的工具**可以处理系统的复杂性和后置条件。 有效验证[后置条件](/zh-cn/wiki/postcondition/) 可确保软件在[测试用例](/zh-cn/wiki/test-case/) 执行后按预期运行，这对于[自动化测试](/zh-cn/wiki/automated-testing/) 的可靠性至关重要。
 
-- **协作**
-    与开发人员和业务分析师一起澄清需求。
+- **协作**与开发人员和业务分析师一起澄清需求。
 
-- **隔离**
-    尽可能多地进行测试以减少相互依赖性。
+- **隔离**尽可能多地进行测试以减少相互依赖性。
 
-- **使用模拟和存根**
-    模拟外部系统并控制测试环境。
+- **使用模拟和存根**模拟外部系统并控制测试环境。
 
-- **利用数据屏蔽**
-    敏感数据的技术。
+- **利用数据屏蔽**敏感数据的技术。
 
-- **选择合适的工具**
-    可以处理系统的复杂性和后置条件。
+- **选择合适的工具**可以处理系统的复杂性和后置条件。
 
 #### 后置条件如何用于自动化测试？
 
@@ -495,9 +457,9 @@ order: 0
   通过将[后置条件](/zh-cn/wiki/postcondition/)合并到[测试脚本](/zh-cn/wiki/test-script/)中，自动化测试可以**断言**应用程序或环境的预期状态。这通常是通过检查 [数据库](/zh-cn/wiki/database/) 条目、文件状态或 UI 元素的代码来完成的，以确认测试已达到其预期效果。
   例如，在用户创建功能的测试中，[后置条件](/zh-cn/wiki/postcondition/) 可能涉及 [数据库](/zh-cn/wiki/database/) 查询来验证新用户记录：
 
-  ```
+```
   SELECT COUNT(*) FROM users WHERE username = 'newUser';
-  ```
+```
 如果测试框架支持，[后置条件](/zh-cn/wiki/postcondition/) 可以定义为**注释**或**装饰器**，在主要测试步骤之后自动执行。这有助于保持测试代码的整洁和集中。
   管理多个[后置条件](/zh-cn/wiki/postcondition/) 涉及按逻辑顺序构建它们并确保它们不会相互干扰。使用在每个 [测试用例](/zh-cn/wiki/test-case/) 之后运行的 **teardown** 方法或 **hook** 来重置环境通常是有益的，从而确保测试之间的隔离。
   总之，[自动化测试](/zh-cn/wiki/automated-testing/) 中的[后置条件](/zh-cn/wiki/postcondition/) 用于确认执行[测试用例](/zh-cn/wiki/test-case/) 后 SUT 的行为符合预期，从而增强测试可靠性并保持[测试环境](/zh-cn/wiki/test-environment/) 的完整性。

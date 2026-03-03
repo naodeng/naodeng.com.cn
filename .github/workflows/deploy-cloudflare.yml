@@ -29,6 +29,14 @@ jobs:
         if: ${{ vars.WIKI_STYLE_STRICT == 'true' }}
         run: npm run wiki:style:check:strict
 
+      - name: SEO static check (warning mode)
+        run: npm run seo:check
+        continue-on-error: true
+
+      - name: SEO static check (strict gate)
+        if: ${{ vars.SEO_STRICT == 'true' }}
+        run: npm run seo:check:strict
+
       - name: Build
         run: npm run build
 

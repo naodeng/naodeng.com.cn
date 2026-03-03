@@ -1,13 +1,13 @@
 ---
 title: "Jest ｜ Jest"
-description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。它广泛应用于前端（React, Vue, Angular）和后端（Node.js）项目。它支持单元测试 (Unit Testing)、集成测试 (Integration Testing) 和端到端测试 (E2E Testing)，并能通过与 Babel、TypeScript 的无缝集成实现并行执行以提高速度。"
+description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。它广泛应用于前端（React, Vue, Angular）和后端（Node.js）项目…"
 section: "J"
 related:
   - test-automation
   - jasmine
   - automated-testing
+  - chai-js
   - test-runner
-  - manual-testing
 order: 0
 ---
 
@@ -67,11 +67,11 @@ order: 0
   要将[Jest](/zh-cn/wiki/jest/)集成到项目中，通常通过npm或yarn安装它，然后根据需要创建配置文件，尽管由于其约定优于配置设计，许多项目可以使用[Jest](/zh-cn/wiki/jest/)而几乎不需要配置。
   以下是[Jest](/zh-cn/wiki/jest/) 测试的基本示例：
 
-  ```
+```
   test('adds 1 + 2 to equal 3', () => {
     expect(1 + 2).toBe(3);
   });
-  ```
+```
 [Jest](/zh-cn/wiki/jest/) 的断言库提供了一系列匹配器，可让您验证不同的事物，从简单的相等性检查到更复杂的条件。它的**交互式监视模式**允许您自动重新运行与更改的文件相关的测试，并且它的**内置覆盖率报告**可以帮助您了解代码库的哪些部分可能未被测试覆盖。
 
 #### 为什么 Jest 在测试 JavaScript 代码方面很受欢迎？
@@ -81,11 +81,11 @@ order: 0
   [Jest](/zh-cn/wiki/jest/) 的**并行[测试执行](/zh-cn/wiki/test-execution/)** 通过同时运行测试来优化性能，减少运行大量[测试套件](/zh-cn/wiki/test-suite/) 所需的时间。得益于自定义解析器和使用 JSDom 进行 DOM [API](/zh-cn/wiki/api/) 模拟，其跨测试运行的**一致的环境**确保了测试的可靠性。
   [Jest](/zh-cn/wiki/jest/) 周围的社区非常活跃，为增强其功能的 **插件** 和 **扩展** 的丰富生态系统做出了贡献。维护人员的定期更新和改进使 [Jest](/zh-cn/wiki/jest/) 保持在测试技术的最前沿。
 
-  ```
+```
   test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
   });
-  ```
+```
 上面的示例演示了 [Jest](/zh-cn/wiki/jest/) 的简单语法，使测试具有可读性和可维护性。 [Jest](/zh-cn/wiki/jest/) 的受欢迎程度证明了其平衡**灵活性**、**功能**和**开发人员体验**的能力，使其成为 JavaScript 测试的首选。
 
 #### Jest 与其他测试框架相比如何？
@@ -113,72 +113,41 @@ order: 0
 - **丰富的断言库**：[Jest](/zh-cn/wiki/jest/) 附带大量匹配器，可以为不同的 [用例](/zh-cn/wiki/use-case/) 启用各种断言。
 - **可扩展性**：[Jest](/zh-cn/wiki/jest/) 可以使用自定义报告器、自定义匹配器和自定义 [测试运行者](/zh-cn/wiki/test-runner/) 进行扩展，以满足任何项目的需求。
 - **轻松模拟 ES 模块**：[Jest](/zh-cn/wiki/jest/) 允许轻松模拟 ES6 模块，这在处理外部依赖项时特别有用。
-- **快照测试**：[Jest](/zh-cn/wiki/jest/) 可以捕获 React 树或其他可序列化值的“快照”，以简化 [用户界面测试](/zh-cn/wiki/ui-testing/) 并确保 UI 不会意外更改。
-- **交互式监视模式**：[Jest](/zh-cn/wiki/jest/) 可以在监视模式下运行，当检测到代码库中的更改时，该模式会自动重新运行测试，从而提高开发人员的工作效率。
-- **内置覆盖率报告**：[Jest](/zh-cn/wiki/jest/) 包括一个集成的 [代码覆盖率](/zh-cn/wiki/code-coverage/) 报告器，可以使用简单的命令行标志 (`--coverage`) 激活。
-- **隔离和并行[测试执行](/zh-cn/wiki/test-execution/)**：测试在单独的进程中并行运行，以最大限度地提高性能并确保测试不会相互影响。
-- **全局[环境搭建](/zh-cn/wiki/setup/)/Teardown**：[Jest](/zh-cn/wiki/jest/) 提供了用于在所有测试运行之前和之后设置和拆除环境的挂钩。
-- **手动模拟**：开发人员可以创建手动模拟，以通过模拟实现来消除功能。
-- **计时器模拟**：[Jest](/zh-cn/wiki/jest/) 可以在您的测试中模拟计时器，允许您控制时间的流逝。
-- **自定义匹配器**：使用自定义匹配器扩展[Jest](/zh-cn/wiki/jest/) 的匹配器库，以获得更具描述性的测试语句。
-- **无缝 TypeScript 集成**：[Jest](/zh-cn/wiki/jest/) 支持 TypeScript，无需额外配置即可进行类型安全测试。
-- **丰富的断言库**：[Jest](/zh-cn/wiki/jest/) 附带大量匹配器，可以为不同的 [用例](/zh-cn/wiki/use-case/) 启用各种断言。
-- **可扩展性**：[Jest](/zh-cn/wiki/jest/) 可以使用自定义报告器、自定义匹配器和自定义 [测试运行者](/zh-cn/wiki/test-runner/) 进行扩展，以满足任何项目的需求。
-- **轻松模拟 ES 模块**：[Jest](/zh-cn/wiki/jest/) 允许轻松模拟 ES6 模块，这在处理外部依赖项时特别有用。
 
 #### 为什么 Jest 被视为“零配置”测试平台？
 
 [Jest](/zh-cn/wiki/jest/) 被认为是一个**零配置**测试平台，因为它的目标是开箱即用，只需要最少的[环境搭建](/zh-cn/wiki/setup/)。安装后，[Jest](/zh-cn/wiki/jest/) 为大多数项目提供合理的默认值，允许开发人员立即开始编写和运行测试。
   该框架的设计符合约定，使其能够自动查找和执行测试。默认情况下，[Jest](/zh-cn/wiki/jest/) 会查找具有以下任何流行命名约定的测试文件：
 
-- 文件与
-    `.js`
-    后缀在
-    `__tests__`
-    文件夹。
+- 文件与 `.js` 后缀在 `__tests__` 文件夹。
 
-- 文件与
-    `.test.js`
-    后缀。
+- 文件与 `.test.js` 后缀。
 
-- 文件与
-    `.spec.js`
-    后缀。
-  [Jest](/zh-cn/wiki/jest/) 还附带内置断言库和[测试运行者](/zh-cn/wiki/test-runner/)，这意味着无需安装或配置其他模块即可开始测试。它通过 **Babel** 集成处理现代 JavaScript 功能的转换，并且可以开箱即用地模拟依赖项和计时器。
-  对于许多应用程序来说，默认配置足以开始测试。但是，如果需要自定义，[Jest](/zh-cn/wiki/jest/) 提供了一个易于使用的配置文件 (`jest.config.js`)，开发人员可以在其中覆盖默认值并根据其特定需求定制测试环境。
-  下面的示例说明了从 [Jest](/zh-cn/wiki/jest/) 开始是多么简单：
+- 文件与 `.spec.js` 后缀。 [Jest](/zh-cn/wiki/jest/) 还附带内置断言库和[测试运行者](/zh-cn/wiki/test-runner/)，这意味着无需安装或配置其他模块即可开始测试。它通过 **Babel** 集成处理现代 JavaScript 功能的转换，并且可以开箱即用地模拟依赖项和计时器。 对于许多应用程序来说，默认配置足以开始测试。但是，如果需要自定义，[Jest](/zh-cn/wiki/jest/) 提供了一个易于使用的配置文件 (`jest.config.js`)，开发人员可以在其中覆盖默认值并根据其特定需求定制测试环境。 下面的示例说明了从 [Jest](/zh-cn/wiki/jest/) 开始是多么简单：
 
-  ```
+```
   npm install --save-dev jest
-  ```
+```
 然后，在 `sum.test.js` 文件中：
 
-  ```
+```
   const sum = require('./sum');
   test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
   });
-  ```
+```
 使用以下命令运行测试：
 
-  ```
+```
   npx jest
-  ```
+```
 [环境搭建](/zh-cn/wiki/setup/) 的易用性和合理的默认设置使得 [Jest](/zh-cn/wiki/jest/) 成为许多开发人员的**零配置**测试平台。
 
-- 文件与
-    `.js`
-    后缀在
-    `__tests__`
-    文件夹。
+- 文件与 `.js` 后缀在 `__tests__` 文件夹。
 
-- 文件与
-    `.test.js`
-    后缀。
+- 文件与 `.test.js` 后缀。
 
-- 文件与
-    `.spec.js`
-    后缀。
+- 文件与 `.spec.js` 后缀。
 
 ### 安装和设置
 
@@ -187,51 +156,51 @@ order: 0
 要安装 [Jest](/zh-cn/wiki/jest/)，您需要在系统上安装 **[node.js](/zh-cn/wiki/node-js/)** 和 **npm** （节点包管理器）。如果您使用 **yarn**，也可以使用它。以下是安装 [Jest](/zh-cn/wiki/jest/) 的方法：
   对于 npm 用户：
 
-  ```
+```
   npm install --save-dev jest
-  ```
+```
 对于纱线用户：
 
-  ```
+```
   yarn add --dev jest
-  ```
+```
 此命令会将 [Jest](/zh-cn/wiki/jest/) 添加为项目的 `package.json` 文件中的开发依赖项。安装后，您可以将脚本添加到`package.json`以轻松运行[Jest](/zh-cn/wiki/jest/)：
 
-  ```
+```
   "scripts": {
     "test": "jest"
   }
-  ```
+```
 现在，您可以使用以下命令运行测试：
   对于 npm 用户：
 
-  ```
+```
   npm test
-  ```
+```
 对于纱线用户：
 
-  ```
+```
   yarn test
-  ```
+```
 确保您的测试文件使用`.test.js` 或`.spec.js` 后缀命名，或者放置在`__tests__` 文件夹中，以便[Jest](/zh-cn/wiki/jest/) 可以自动查找并执行它们。
   如果您使用 **TypeScript**，您还需要安装 `ts-jest` 和 `@types/jest` 来处理 TypeScript 编译和类型定义：
 
-  ```
+```
   npm install --save-dev ts-jest @types/jest
-  ```
+```
 或者用纱线：
 
-  ```
+```
   yarn add --dev ts-jest @types/jest
-  ```
+```
 然后，您需要将以下内容添加到 [Jest](/zh-cn/wiki/jest/) 配置中，将 [Jest](/zh-cn/wiki/jest/) 配置为使用 `ts-jest`：
 
-  ```
+```
   "jest": {
     "preset": "ts-jest",
     "testMatch": ["**/*.test.ts"]
   }
-  ```
+```
 这将指示[Jest](/zh-cn/wiki/jest/) 使用`ts-jest` 处理`.ts` 文件。
 
 #### 使用 Jest 的先决条件是什么？
@@ -244,34 +213,33 @@ order: 0
 - **项目 [环境搭建](/zh-cn/wiki/setup/)** ：一个 JavaScript 项目，带有 package.json 文件，用于配置 Jest 并将其包含为依赖项。
 - **理解测试概念**：了解单元测试、模拟和断言以编写有意义的测试。
 - **ES 模块支持**：如果使用 ES 模块，请确保兼容性或配置 Babel 进行转译。
-- **版本控制**：（可选）像 Git 这样的版本控制系统，用于跟踪测试中的更改以及代码。
-  使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)：
+- **版本控制**：（可选）像 Git 这样的版本控制系统，用于跟踪测试中的更改以及代码。 使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)：
 
-  ```
+```
   npm install --save-dev jest
-  ```
+```
 或者
 
-  ```
+```
   yarn add --dev jest
-  ```
+```
 确保您的`package.json` 包含[测试脚本](/zh-cn/wiki/test-script/)：
 
-  ```
+```
   "scripts": {
     "test": "jest"
   }
-  ```
+```
 对于 TypeScript 项目，安装 `ts-jest` 和 `@types/jest` 来处理类型检查并提供自动完成：
 
-  ```
+```
   npm install --save-dev ts-jest @types/jest
-  ```
+```
 或者
 
-  ```
+```
   yarn add --dev ts-jest @types/jest
-  ```
+```
 最后，熟悉 [Jest](/zh-cn/wiki/jest/) 的 [API](/zh-cn/wiki/api/) 和生命周期方法将有助于有效地构建测试。
 
 #### 如何设置基本的 Jest 测试环境？
@@ -279,89 +247,85 @@ order: 0
 要设置基本的 [Jest](/zh-cn/wiki/jest/) 测试环境，请按照以下步骤操作：
 
 1. **使用 `npm init` 或 `yarn init` 初始化您的项目**（如果尚未完成）。
-2. **使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)**：
-    或
+2. **使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)**： 或
 
-    ```
+```
     npm install --save-dev jest
-    ```
+```
 
-    ```
+```
     yarn add --dev jest
-    ```
+```
 
 3. 在`package.json` 中，添加以下脚本以运行[Jest](/zh-cn/wiki/jest/)：
 
-    ```
+```
     "scripts": {
       "test": "jest"
     }
-    ```
+```
 
 4. **如果需要，配置[Jest](/zh-cn/wiki/jest/)**。对于大多数项目，[Jest](/zh-cn/wiki/jest/) 可以零配置开箱即用。但是，如果您需要自定义 [Jest](/zh-cn/wiki/jest/) 的行为，请创建 `jest.config.js` 文件或在 `package.json` 中添加 `jest` 密钥。
 5. **编写您的测试**。创建带有`.test.js` 或`.spec.js` 后缀的文件，或将它们放入`__tests__` 文件夹中。 [Jest](/zh-cn/wiki/jest/) 将自动查找这些文件。
 6. **使用`test` 或`it`** 定义您的[测试用例](/zh-cn/wiki/test-case/)：
 
-    ```
+```
     test('adds 1 + 2 to equal 3', () => {
       expect(1 + 2).toBe(3);
     });
-    ```
+```
 
-7. **通过执行 [测试脚本](/zh-cn/wiki/test-script/) 来运行测试**：
-    或
+7. **通过执行 [测试脚本](/zh-cn/wiki/test-script/) 来运行测试**： 或
 
-    ```
+```
     npm test
-    ```
+```
 
-    ```
+```
     yarn test
-    ```
+```
 [Jest](/zh-cn/wiki/jest/) 将执行测试并提供结果摘要。根据测试运行的反馈调整您的测试和代码。
 
 1. **使用 `npm init` 或 `yarn init` 初始化您的项目**（如果尚未完成）。
-2. **使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)**：
-    或
+2. **使用 npm 或 Yarn 安装[Jest](/zh-cn/wiki/jest/)**： 或
 
-    ```
+```
     npm install --save-dev jest
-    ```
+```
 
-    ```
+```
     yarn add --dev jest
-    ```
+```
 
 3. 在`package.json` 中，添加以下脚本以运行[Jest](/zh-cn/wiki/jest/)：
 
-    ```
+```
     "scripts": {
       "test": "jest"
     }
-    ```
+```
 
-    ```
+```
     test('adds 1 + 2 to equal 3', () => {
       expect(1 + 2).toBe(3);
     });
-    ```
+```
 
-7. **通过执行 [测试脚本](/zh-cn/wiki/test-script/) 来运行测试**：
-    或
+7. **通过执行 [测试脚本](/zh-cn/wiki/test-script/) 来运行测试**： 或
 
-    ```
+```
     npm test
-    ```
+```
 
-    ```
+```
     yarn test
-    ```
+```
 
 #### 如何为项目配置 Jest？
 
 要为项目配置[Jest](/zh-cn/wiki/jest/)，请在项目的根目录中创建`jest.config.js` 文件，或在`package.json` 中定义`jest` 密钥。以下是 `jest.config.js` 文件的基本示例：
 
-  ```
+```
   module.exports = {
     verbose: true,
     testEnvironment: 'node',
@@ -382,7 +346,7 @@ order: 0
       },
     },
   };
-  ```
+```
 
 - **verbose** ：启用测试结果的详细输出。
 - **testEnvironment** ：设置运行测试的环境。
@@ -390,16 +354,14 @@ order: 0
 - **transform** ：指定如何使用转换器处理文件。
 - **testMatch** ：确定哪些文件被视为测试文件。
 - **moduleNameMapper** ：映射模块路径以便于导入。
-- **coverageThreshold** ：设置项目的最小覆盖阈值。
-  对于 TypeScript 项目，您需要安装 `ts-jest` 并配置 `transform` 属性才能使用它。
-  要将配置包含在`package.json`中，它看起来像这样：
+- **coverageThreshold** ：设置项目的最小覆盖阈值。 对于 TypeScript 项目，您需要安装 `ts-jest` 并配置 `transform` 属性才能使用它。 要将配置包含在`package.json`中，它看起来像这样：
 
-  ```
+```
   "jest": {
     "verbose": true,
     // ... other configurations
   }
-  ```
+```
 请记住安装项目所需的任何其他 [Jest](/zh-cn/wiki/jest/) 插件或预设。调整配置选项以匹配项目的特定需求，例如自定义全局变量、模块路径别名或不同的测试环境。
 
 ### 编写和运行测试
@@ -408,12 +370,12 @@ order: 0
 
 在[Jest](/zh-cn/wiki/jest/) 中编写基本测试涉及创建带有`.test.js` 或`.spec.js` 后缀的测试文件，导入必要的模块，并使用`test` 或`it` 全局函数来定义[测试用例](/zh-cn/wiki/test-case/)。这是一个简洁的例子：
 
-  ```
+```
   const sum = require('./sum'); // Import the function to test
   test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3); // Use expect and matchers to test the function
   });
-  ```
+```
 在此示例中，`sum` 是一个将两个数字相加的简单函数。 `test` 函数有两个参数：一个描述 [测试用例](/zh-cn/wiki/test-case/) 的字符串，以及一个编写实际测试代码的回调函数。 `expect` 函数用于断言预期结果，`.toBe` 是检查严格相等性的匹配器。
   请记住以逻辑清晰的方式构建测试，以便它们易于阅读和理解。使用准确反映您正在测试的行为的**描述性测试名称**和**断言**。让测试**集中**在单一功能上，使它们可维护，并在测试失败时更容易进行调试。
 
@@ -421,7 +383,7 @@ order: 0
 
 [Jest](/zh-cn/wiki/jest/) 测试结构通常由一系列将相关测试组合在一起的 **describe** 块以及定义各个 [测试用例](/zh-cn/wiki/test-case/) 的 **it** 或 **test** 块组成。这是一个基本轮廓：
 
-  ```
+```
   describe('Component or Functionality Group', () => {
     beforeEach(() => {
       // Initialization or setup before each test runs
@@ -439,18 +401,13 @@ order: 0
     });
     // Additional it/test cases as needed
   });
-  ```
+```
 
 - **描述**：对多个测试进行分组；对于按功能或组件组织测试很有用。
 - **beforeEach/afterEach** ：在描述块中的每个测试之前/之后运行的安装/拆卸挂钩。
-- **it/test** ：定义单个测试用例；
-    `it`
-    是一个别名
-    `test`
-    ，并且两者可以互换。
+- **it/test** ：定义单个测试用例； `it` 是一个别名 `test` ，并且两者可以互换。
 
-- **expect** ：创建关于测试用例的预期结果的断言。
-  测试可以嵌套在**描述**块中以进行进一步组织。 **beforeAll** 和 **afterAll** 钩子也可用于[环境搭建](/zh-cn/wiki/setup/)/teardown，这些钩子只能在描述块中的所有测试之前/之后发生一次。
+- **expect** ：创建关于测试用例的预期结果的断言。 测试可以嵌套在**描述**块中以进行进一步组织。 **beforeAll** 和 **afterAll** 钩子也可用于[环境搭建](/zh-cn/wiki/setup/)/teardown，这些钩子只能在描述块中的所有测试之前/之后发生一次。
 
     `it`
     是一个别名
@@ -466,179 +423,121 @@ order: 0
 1. **在终端中导航到您的项目目录**。
 2. 确保您的项目中有`package.json` 文件。如果没有，请使用 `npm init` 创建一个。
 3. **使用以下命令之一运行测试**：
-- 运行所有测试：
-      或者如果 Jest 没有全局安装：
-      或者通过使用 npm 脚本
-      `package.json`：
-      然后使用npm执行：
+- 运行所有测试： 或者如果 Jest 没有全局安装： 或者通过使用 npm 脚本 `package.json`： 然后使用npm执行：
 
-      ```
+```
       jest
-      ```
+```
 
-      ```
+```
       npx jest
-      ```
+```
 
-      ```
+```
       "scripts": {
         "test": "jest"
       }
-      ```
+```
 
-      ```
+```
       npm test
-      ```
-
-- 运行所有测试：
-      或者如果 Jest 没有全局安装：
-      或者通过使用 npm 脚本
-      `package.json`：
-      然后使用npm执行：
-
-      ```
-      jest
-      ```
-
-      ```
-      npx jest
-      ```
-
-      ```
-      "scripts": {
-        "test": "jest"
-      }
-      ```
-
-      ```
-      npm test
-      ```
-
+```
 4. **通过附加文件路径来运行特定的测试文件**：
 
-    ```
+```
     jest path/to/your_test_file.js
-    ```
+```
 
 5. **监视模式**：要在监视模式下运行 [Jest](/zh-cn/wiki/jest/)（对文件更改重新运行测试），请使用 `--watch` 标志：
 
-    ```
+```
     jest --watch
-    ```
+```
 
 6. **使用 `--testNamePattern` 标志按测试名称过滤测试**：
 
-    ```
+```
     jest --testNamePattern="pattern"
-    ```
+```
 
 7. **使用 `--testPathPattern` 标志运行与特定文件名模式匹配的测试：
 
-    ```
+```
     jest --testPathPattern="pattern"
-    ```
+```
 
 8. **基于您的 Git 存储库运行与已更改文件相关的测试**：
 
-    ```
+```
     jest --onlyChanged
-    ```
+```
 
 9. **通过在[Jest](/zh-cn/wiki/jest/) 配置中设置`testEnvironment` 在特定环境中运行测试**。
 10. **使用 `--coverage` 标志生成覆盖率报告**：
 
-    ```
+```
     jest --coverage
-    ```
+```
 [Jest](/zh-cn/wiki/jest/) CLI 提供了许多其他选项，可以通过运行 `jest --help` 列出这些选项。
 
-1. **在终端中导航到您的项目目录**。
-2. 确保您的项目中有`package.json` 文件。如果没有，请使用 `npm init` 创建一个。
-3. **使用以下命令之一运行测试**：
-- 运行所有测试：
       或者如果 Jest 没有全局安装：
       或者通过使用 npm 脚本
       `package.json`：
       然后使用npm执行：
 
-      ```
+```
       jest
-      ```
+```
 
-      ```
+```
       npx jest
-      ```
+```
 
-      ```
+```
       "scripts": {
         "test": "jest"
       }
-      ```
+```
 
-      ```
+```
       npm test
-      ```
-
-- 运行所有测试：
-      或者如果 Jest 没有全局安装：
-      或者通过使用 npm 脚本
-      `package.json`：
-      然后使用npm执行：
-
-      ```
-      jest
-      ```
-
-      ```
-      npx jest
-      ```
-
-      ```
-      "scripts": {
-        "test": "jest"
-      }
-      ```
-
-      ```
-      npm test
-      ```
-
+```
 4. **通过附加文件路径来运行特定的测试文件**：
 
-    ```
+```
     jest path/to/your_test_file.js
-    ```
+```
 
 5. **监视模式**：要在监视模式下运行 [Jest](/zh-cn/wiki/jest/)（对文件更改重新运行测试），请使用 `--watch` 标志：
 
-    ```
+```
     jest --watch
-    ```
+```
 
 6. **使用 `--testNamePattern` 标志按测试名称过滤测试**：
 
-    ```
+```
     jest --testNamePattern="pattern"
-    ```
+```
 
 7. **使用 `--testPathPattern` 标志运行与特定文件名模式匹配的测试：
 
-    ```
+```
     jest --testPathPattern="pattern"
-    ```
+```
 
 8. **基于您的 Git 存储库运行与已更改文件相关的测试**：
 
-    ```
+```
     jest --onlyChanged
-    ```
+```
 
 9. **通过在[Jest](/zh-cn/wiki/jest/) 配置中设置`testEnvironment` 在特定环境中运行测试**。
 10. **使用 `--coverage` 标志生成覆盖率报告**：
 
-    ```
+```
     jest --coverage
-    ```
+```
 
 #### Jest 中有哪些常见断言？
 
@@ -646,133 +545,70 @@ order: 0
 
 - **平等**：
 
-    ```
+```
     expect(5).toBe(5);
     expect({ a: 1 }).toEqual({ a: 1 });
-    ```
+```
 
-- `toBe(value)`
-      检查严格相等 (===)。
+- `toBe(value)` 检查严格相等 (===)。
 
-- `toEqual(value)`
-      检查值是否相等，对于对象和数组很有用。
-
-- `toBe(value)`
-      检查严格相等 (===)。
-
-- `toEqual(value)`
-      检查值是否相等，对于对象和数组很有用。
-
+- `toEqual(value)` 检查值是否相等，对于对象和数组很有用。
 - **真实性**：
 
-    ```
+```
     expect(null).toBeNull();
     expect(undefined).toBeUndefined();
     expect(1).toBeTruthy();
-    ```
+```
 
-- `toBeNull()`
-      检查一个值是否是
-      `null`
-      。
+- `toBeNull()` 检查一个值是否是 `null` 。
 
-- `toBeUndefined()`
-      检查一个值是否是
-      `undefined`
-      。
+- `toBeUndefined()` 检查一个值是否是 `undefined` 。
 
-- `toBeDefined()`
-      检查某个值是否不是
-      `undefined`
-      。
+- `toBeDefined()` 检查某个值是否不是 `undefined` 。
 
-- `toBeTruthy()`
-      检查值是否为真。
+- `toBeTruthy()` 检查值是否为真。
 
-- `toBeFalsy()`
-      检查一个值是否为假值。
-
-- `toBeNull()`
-      检查一个值是否是
-      `null`
-      。
-
-- `toBeUndefined()`
-      检查一个值是否是
-      `undefined`
-      。
-
-- `toBeDefined()`
-      检查某个值是否不是
-      `undefined`
-      。
-
-- `toBeTruthy()`
-      检查值是否为真。
-
-- `toBeFalsy()`
-      检查一个值是否为假值。
-
+- `toBeFalsy()` 检查一个值是否为假值。
 - **数字**：
 
-    ```
+```
     expect(10).toBeGreaterThan(5);
     expect(10).toBeLessThanOrEqual(10);
-    ```
+```
 
-- `toBeGreaterThan(number)`
-      检查一个值是否大于一个数字。
+- `toBeGreaterThan(number)` 检查一个值是否大于一个数字。
 
-- `toBeGreaterThanOrEqual(number)`
-      检查值是否大于或等于数字。
+- `toBeGreaterThanOrEqual(number)` 检查值是否大于或等于数字。
 
-- `toBeLessThan(number)`
-      检查值是否小于数字。
+- `toBeLessThan(number)` 检查值是否小于数字。
 
-- `toBeLessThanOrEqual(number)`
-      检查值是否小于或等于数字。
-
-- `toBeGreaterThan(number)`
-      检查一个值是否大于一个数字。
-
-- `toBeGreaterThanOrEqual(number)`
-      检查值是否大于或等于数字。
-
-- `toBeLessThan(number)`
-      检查值是否小于数字。
-
-- `toBeLessThanOrEqual(number)`
-      检查值是否小于或等于数字。
-
+- `toBeLessThanOrEqual(number)` 检查值是否小于或等于数字。
 - **字符串**：
 
-    ```
+```
     expect('team').toMatch(/T/i);
-    ```
+```
 
-- `toMatch(regexpOrString)`
-      检查字符串是否与正则表达式或字符串匹配。
+- `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
 
-- `toMatch(regexpOrString)`
-      检查字符串是否与正则表达式或字符串匹配。
+- `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
 
 - **数组**：
 
-    ```
+```
     expect(['Alice', 'Bob', 'Eve']).toContain('Bob');
-    ```
+```
 
-- `toContain(item)`
-      检查数组是否包含特定项目。
+- `toContain(item)` 检查数组是否包含特定项目。
 
-- `toContain(item)`
-      检查数组是否包含特定项目。
+- `toContain(item)` 检查数组是否包含特定项目。
 
 - **例外**：
 
-    ```
+```
     expect(() => { throw new Error('Error!'); }).toThrow('Error!');
-    ```
+```
 
 -`toThrow（错误？
       )`
@@ -784,148 +620,80 @@ order: 0
 
 - **对象**：
 
-    ```
+```
     expect({ a: { b: 1 } }).toHaveProperty('a.b', 1);
-    ```
+```
 
-- `toHaveProperty(keyPath, 值?
-      )`
-      检查对象在指定的键路径处是否具有属性，可以选择检查该值。
+- `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。
 
-- `toHaveProperty(keyPath, 值?
-      )`
-      检查对象在指定的键路径处是否具有属性，可以选择检查该值。
-  这些断言有助于确保代码的行为符合预期，并且它们是使用 [Jest](/zh-cn/wiki/jest/) 编写全面的 [测试套件](/zh-cn/wiki/test-suite/) 的关键部分。
+- `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。 这些断言有助于确保代码的行为符合预期，并且它们是使用 [Jest](/zh-cn/wiki/jest/) 编写全面的 [测试套件](/zh-cn/wiki/test-suite/) 的关键部分。
 
 - **平等**：
 
-    ```
+```
     expect(5).toBe(5);
     expect({ a: 1 }).toEqual({ a: 1 });
-    ```
+```
 
-- `toBe(value)`
-      检查严格相等 (===)。
+- `toBe(value)` 检查严格相等 (===)。
 
-- `toEqual(value)`
-      检查值是否相等，对于对象和数组很有用。
-
-- `toBe(value)`
-      检查严格相等 (===)。
-
-- `toEqual(value)`
-      检查值是否相等，对于对象和数组很有用。
-
+- `toEqual(value)` 检查值是否相等，对于对象和数组很有用。
 - **真实性**：
 
-    ```
+```
     expect(null).toBeNull();
     expect(undefined).toBeUndefined();
     expect(1).toBeTruthy();
-    ```
+```
 
-- `toBeNull()`
-      检查一个值是否是
-      `null`
-      。
+- `toBeNull()` 检查一个值是否是 `null` 。
 
-- `toBeUndefined()`
-      检查一个值是否是
-      `undefined`
-      。
+- `toBeUndefined()` 检查一个值是否是 `undefined` 。
 
-- `toBeDefined()`
-      检查某个值是否不是
-      `undefined`
-      。
+- `toBeDefined()` 检查某个值是否不是 `undefined` 。
 
-- `toBeTruthy()`
-      检查值是否为真。
+- `toBeTruthy()` 检查值是否为真。
 
-- `toBeFalsy()`
-      检查一个值是否为假值。
-
-- `toBeNull()`
-      检查一个值是否是
-      `null`
-      。
-
-- `toBeUndefined()`
-      检查一个值是否是
-      `undefined`
-      。
-
-- `toBeDefined()`
-      检查某个值是否不是
-      `undefined`
-      。
-
-- `toBeTruthy()`
-      检查值是否为真。
-
-- `toBeFalsy()`
-      检查一个值是否为假值。
-
+- `toBeFalsy()` 检查一个值是否为假值。
 - **数字**：
 
-    ```
+```
     expect(10).toBeGreaterThan(5);
     expect(10).toBeLessThanOrEqual(10);
-    ```
+```
 
-- `toBeGreaterThan(number)`
-      检查一个值是否大于一个数字。
+- `toBeGreaterThan(number)` 检查一个值是否大于一个数字。
 
-- `toBeGreaterThanOrEqual(number)`
-      检查值是否大于或等于数字。
+- `toBeGreaterThanOrEqual(number)` 检查值是否大于或等于数字。
 
-- `toBeLessThan(number)`
-      检查值是否小于数字。
+- `toBeLessThan(number)` 检查值是否小于数字。
 
-- `toBeLessThanOrEqual(number)`
-      检查值是否小于或等于数字。
-
-- `toBeGreaterThan(number)`
-      检查一个值是否大于一个数字。
-
-- `toBeGreaterThanOrEqual(number)`
-      检查值是否大于或等于数字。
-
-- `toBeLessThan(number)`
-      检查值是否小于数字。
-
-- `toBeLessThanOrEqual(number)`
-      检查值是否小于或等于数字。
-
+- `toBeLessThanOrEqual(number)` 检查值是否小于或等于数字。
 - **字符串**：
 
-    ```
+```
     expect('team').toMatch(/T/i);
-    ```
+```
 
-- `toMatch(regexpOrString)`
-      检查字符串是否与正则表达式或字符串匹配。
+- `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
 
-- `toMatch(regexpOrString)`
-      检查字符串是否与正则表达式或字符串匹配。
+- `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
 
 - **数组**：
 
-    ```
+```
     expect(['Alice', 'Bob', 'Eve']).toContain('Bob');
-    ```
+```
 
-- `toContain(item)`
-      检查数组是否包含特定项目。
+- `toContain(item)` 检查数组是否包含特定项目。
 
-- `toContain(item)`
-      检查数组是否包含特定项目。
+- `toContain(item)` 检查数组是否包含特定项目。
 
 - **例外**：
 
-    ```
+```
     expect(() => { throw new Error('Error!'); }).toThrow('Error!');
-    ```
+```
 
 -`toThrow（错误？
       )`
@@ -937,23 +705,19 @@ order: 0
 
 - **对象**：
 
-    ```
+```
     expect({ a: { b: 1 } }).toHaveProperty('a.b', 1);
-    ```
+```
 
-- `toHaveProperty(keyPath, 值?
-      )`
-      检查对象在指定的键路径处是否具有属性，可以选择检查该值。
+- `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。
 
-- `toHaveProperty(keyPath, 值?
-      )`
-      检查对象在指定的键路径处是否具有属性，可以选择检查该值。
+- `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。
 
 #### 在 Jest 中如何对测试进行分组？
 
 在[Jest](/zh-cn/wiki/jest/) 中，您可以使用`describe` 函数对测试进行分组。此功能允许您创建一个将多个相关测试组合在一起的块。这是一个基本示例：
 
-  ```
+```
   describe('My Feature', () => {
     test('should do behavior A', () => {
       // Test for behavior A
@@ -962,11 +726,11 @@ order: 0
       // Test for behavior B
     });
   });
-  ```
+```
 每个`describe` 块可以包含自己的[环境搭建](/zh-cn/wiki/setup/) 以及使用`beforeEach`、`afterEach`、`beforeAll` 和`afterAll` 函数进行的测试组的拆卸。这有助于逻辑地组织测试并有效管理共享[环境搭建](/zh-cn/wiki/setup/)和拆卸过程。
   嵌套`describe`块可用于更细粒度的分组：
 
-  ```
+```
   describe('My Feature', () => {
     describe('Behavior A', () => {
       test('should do something specific', () => {
@@ -979,7 +743,7 @@ order: 0
       });
     });
   });
-  ```
+```
 使用`describe` 块对于区分正在测试的功能的各种状态或条件特别有用，并且它通过清楚地显示失败的测试属于哪个组来增强[测试报告](/zh-cn/wiki/test-report/) 的可读性。
 
 ### 高级概念
@@ -989,22 +753,22 @@ order: 0
 [Jest](/zh-cn/wiki/jest/) 中的模拟是一种用于隔离和模拟一段代码所依赖的外部模块或函数的行为的技术。通过创建模拟函数或对象，您可以控制这些依赖项的输入和输出，从而实现更可预测和受控的测试环境。
   **模拟函数**可以使用 `jest.fn()` 创建来跟踪调用并定义返回值。它们可以替换模块中的实际函数，让您断言它们是如何调用的以及使用什么参数。
 
-  ```
+```
   const mockFunction = jest.fn();
   mockFunction.mockReturnValue('mocked value');
-  ```
+```
 **手动模拟**对于模块和复杂的依赖项很有用。您可以在模块附近创建一个 `__mocks__` 目录，并且在测试中调用 `jest.mock()` 函数时，[Jest](/zh-cn/wiki/jest/) 将使用模拟版本而不是真实版本。
 
-  ```
+```
   // In your test file
   jest.mock('./path/to/module');
-  ```
+```
 使用 `jest.mock()` 的 **自动模拟** 允许 [Jest](/zh-cn/wiki/jest/) 接管模块导入并将其替换为合适的模拟对象，所有导出都是模拟函数。
 
-  ```
+```
   // In your test file
   jest.mock('axios');
-  ```
+```
 模拟还用于**消除那些可能产生副作用的功能**，例如网络请求或文件系统操作，方法是将它们替换为模仿行为而不执行实际操作的模拟实现。
   [Jest](/zh-cn/wiki/jest/) 中的模拟对于创建独立于外部因素的单元测试以及确保测试是确定性的至关重要，这意味着它们每次运行时都会产生相同的结果。
 
@@ -1012,57 +776,39 @@ order: 0
 
 [Jest](/zh-cn/wiki/jest/) 通过提供多种方法来处理不同类型的异步代码来处理异步测试。这些包括：
 
-- **回调**：为了测试较旧的回调样式代码，Jest 提供了
-    `done`
-    测试函数中的参数。致电
-    `done()`
-    当异步操作完成时，向 Jest 发出测试已完成的信号。
+- **回调**：为了测试较旧的回调样式代码，Jest 提供了 `done` 测试函数中的参数。致电 `done()` 当异步操作完成时，向 Jest 发出测试已完成的信号。
 
-  ```
+```
   test('async test with callback', done => {
     setTimeout(() => {
       expect(true).toBe(true);
       done();
     }, 1000);
   });
-  ```
+```
 
 - **Promises** ：如果代码返回一个 Promise，则从测试中返回它，Jest 将等待它解析或拒绝。
 
-  ```
+```
   test('async test with promise', () => {
     return fetchData().then(data => {
       expect(data).toBe('expected data');
     });
   });
-  ```
+```
 
-- **Async/Await** ：对于现代异步代码，请使用
-    `async`
-    功能和
-    `await`
-    异步操作。杰斯特将等待
-    `async`
-    在完成测试之前要解决的函数。
+- **Async/Await** ：对于现代异步代码，请使用 `async` 功能和 `await` 异步操作。杰斯特将等待 `async` 在完成测试之前要解决的函数。
 
-  ```
+```
   test('async test with async/await', async () => {
     const data = await fetchData();
     expect(data).toBe('expected data');
   });
-  ```
+```
 
-- **计时器**：Jest 可以模拟计时器并控制使用的操作的时间
-    `setTimeout`
-    ,
-    `setInterval`
-    , 或
-    `setImmediate`
-    与
-    `jest.useFakeTimers()`
-    以及相关的定时器控制功能。
+- **计时器**：Jest 可以模拟计时器并控制使用的操作的时间 `setTimeout` , `setInterval` , 或 `setImmediate` 与 `jest.useFakeTimers()` 以及相关的定时器控制功能。
 
-  ```
+```
   jest.useFakeTimers();
   test('async test with timers', () => {
     const callback = jest.fn();
@@ -1070,52 +816,26 @@ order: 0
     jest.runAllTimers();
     expect(callback).toHaveBeenCalled();
   });
-  ```
+```
 这些方法允许对异步操作进行全面测试，确保仅在考虑了所有异步操作后才能完成测试。
 
-- **回调**：为了测试较旧的回调样式代码，Jest 提供了
-    `done`
-    测试函数中的参数。致电
-    `done()`
-    当异步操作完成时，向 Jest 发出测试已完成的信号。
+- **回调**：为了测试较旧的回调样式代码，Jest 提供了 `done` 测试函数中的参数。致电 `done()` 当异步操作完成时，向 Jest 发出测试已完成的信号。
 
 - **Promises** ：如果代码返回一个 Promise，则从测试中返回它，Jest 将等待它解析或拒绝。
-- **Async/Await** ：对于现代异步代码，请使用
-    `async`
-    功能和
-    `await`
-    异步操作。杰斯特将等待
-    `async`
-    在完成测试之前要解决的函数。
+- **Async/Await** ：对于现代异步代码，请使用 `async` 功能和 `await` 异步操作。杰斯特将等待 `async` 在完成测试之前要解决的函数。
 
-- **计时器**：Jest 可以模拟计时器并控制使用的操作的时间
-    `setTimeout`
-    ,
-    `setInterval`
-    , 或
-    `setImmediate`
-    与
-    `jest.useFakeTimers()`
-    以及相关的定时器控制功能。
+- **计时器**：Jest 可以模拟计时器并控制使用的操作的时间 `setTimeout` , `setInterval` , 或 `setImmediate` 与 `jest.useFakeTimers()` 以及相关的定时器控制功能。
 
 #### 如何使用 Jest 进行快照测试？
 
 [Jest](/zh-cn/wiki/jest/) 的快照测试功能允许您**测试代码输出的“形状”**。这对于 UI 组件特别有用，可确保对组件的更改不会导致意外结果。
   要使用 [Jest](/zh-cn/wiki/jest/) 进行快照测试，请执行以下步骤：
 
-1. **编写测试**
-    呈现您的组件或调用您的函数。
+1. **编写测试**呈现您的组件或调用您的函数。
 
-2. 使用
-    `expect`
-    连同
-    `toMatchSnapshot()`
-    匹配器到
-    **断言输出与保存的快照匹配**
-    。
-  这是使用 React 组件的基本示例：
+2. 使用 `expect` 连同 `toMatchSnapshot()` 匹配器到 **断言输出与保存的快照匹配** 。 这是使用 React 组件的基本示例：
 
-  ```
+```
   import React from 'react';
   import renderer from 'react-test-renderer';
   import MyComponent from './MyComponent';
@@ -1123,30 +843,23 @@ order: 0
     const tree = renderer.create(<MyComponent />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-  ```
+```
 第一次运行此测试时，[Jest](/zh-cn/wiki/jest/) 在测试文件旁边的 `__snapshots__` 目录中创建一个快照文件。快照包含组件渲染输出的字符串表示形式。
   在后续测试运行中，[Jest](/zh-cn/wiki/jest/) 会将渲染的输出与保存的快照进行比较。如果存在差异，则测试失败，并提示进行审核。如果更改是故意的，请使用 [Jest](/zh-cn/wiki/jest/) 的 `--updateSnapshot` 或 `-u` 标志**更新快照**：
 
-  ```
+```
   jest --updateSnapshot
-  ```
+```
 或者对于特定的测试文件：
 
-  ```
+```
   jest MyComponent.test.js --updateSnapshot
-  ```
+```
 请记住，快照应与代码更改一起提交。在代码审查期间审查快照以**捕获意外更改**。明智地使用快照测试，因为过度依赖可能会导致快照文件过大，并降低测试对有意义的更改的敏感性。
 
-1. **编写测试**
-    呈现您的组件或调用您的函数。
+1. **编写测试**呈现您的组件或调用您的函数。
 
-2. 使用
-    `expect`
-    连同
-    `toMatchSnapshot()`
-    匹配器到
-    **断言输出与保存的快照匹配**
-    。
+2. 使用 `expect` 连同 `toMatchSnapshot()` 匹配器到 **断言输出与保存的快照匹配** 。
 
 #### Jest 中“描述”功能的作用是什么？
 
@@ -1154,7 +867,7 @@ order: 0
   `describe` 块可以包含任意数量的`test` 或`it` 块，并且还可以**嵌套**在其他`describe` 块中，以进一步分层构建测试。每个`describe` 块还可以有自己的`beforeEach`、`afterEach`、`beforeAll` 和`afterAll` 生命周期方法，这些方法仅适用于该`describe` 块内的测试。
   以下是在 [Jest](/zh-cn/wiki/jest/) 中使用 `describe` 的基本示例：
 
-  ```
+```
   describe('MyComponent', () => {
     beforeEach(() => {
       // Setup code specific to this group
@@ -1166,7 +879,7 @@ order: 0
       // Test case for user input
     });
   });
-  ```
+```
 使用`describe` 允许组中的测试共享[环境搭建](/zh-cn/wiki/setup/) 和拆卸代码，有助于保持测试**干燥**（不要重复），并且它增强了测试输出的**组织** 和**可读性**，因为[Jest](/zh-cn/wiki/jest/) 将根据这些分组报告结果。
 
 #### 如何在 Jest 中使用 'beforeEach' 和 'afterEach'？
@@ -1174,21 +887,21 @@ order: 0
 在 [Jest](/zh-cn/wiki/jest/) 中，`beforeEach` 和 `afterEach` 是生命周期方法，用于在 `describe` 块中的每个测试之前和之后运行一些代码。它们帮助设置先决条件并在测试后进行清理以避免副作用。
   当您想要初始化某些变量、模拟函数或为每个[测试用例](/zh-cn/wiki/test-case/) 设置环境时，请使用`beforeEach`。它确保每个测试都以新状态运行。
 
-  ```
+```
   beforeEach(() => {
     // Initialization or setup code here
   });
-  ```
+```
 `afterEach` 用于拆卸活动，例如清除模拟、重置模块或释放测试使用的资源。
 
-  ```
+```
   afterEach(() => {
     // Teardown or cleanup code here
   });
-  ```
+```
 **例子：**
 
-  ```
+```
   describe('test suite', () => {
     beforeEach(() => {
       // Code to set up state before each test
@@ -1203,5 +916,5 @@ order: 0
       // Test code
     });
   });
-  ```
+```
 在此示例中，[环境搭建](/zh-cn/wiki/setup/) 代码将在`test case 1` 和`test case 2` 之前运行，而清理代码将在每个[测试用例](/zh-cn/wiki/test-case/) 完成之后运行。这确保了每个测试都是隔离的并且不会影响其他测试。

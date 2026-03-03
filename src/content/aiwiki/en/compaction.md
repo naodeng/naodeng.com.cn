@@ -120,7 +120,7 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 - [active-memory](/en/AIWiki/active-memory/)
 - [automatic-memory](/en/AIWiki/automatic-memory/)
 - [prompt-caching](/en/AIWiki/prompt-caching/)
-- [context-window](/en/AIWiki/context-window/)
+- [context-window-management](/en/AIWiki/context-window-management/)
 
 ### External References
 

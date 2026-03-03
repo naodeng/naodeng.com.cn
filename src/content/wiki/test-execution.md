@@ -1,13 +1,14 @@
 ---
 title: "测试执行 ｜ Test Execution"
-description: "测试执行 (Test Execution) 是在软件应用程序上运行一系列测试以验证其行为是否符合预期的过程。这涉及运行 自动化 (automated) 或 手动测试 (manual tests)，并将实际结果与 预期结果 (expected results) 进行比较。执行可以在不同级别进行，如单元测试、集成测试、系统测试和验收测试。"
+description: "测试执行 (Test Execution) 是在软件应用程序上运行一系列测试以验证其行为是否符合预期的过程。这涉及运行 自动化 (automated) 或 手动测试 (manual tests)，并将实际结果与 预期结果 (expected results) 进行比较。执行可以在不同级别进行…"
 section: "T"
 related:
-  - manual-testing
   - automated-testing
-  - test-suite
-  - test-case-management
+  - manual-testing
+  - test-case
   - test-data
+  - test-suite
+  - test-log
 order: 0
 ---
 
@@ -58,12 +59,12 @@ order: 0
   [测试执行](/zh-cn/wiki/test-execution/) 可以在不同的环境中完成，包括**开发**、**登台**和**类似生产**设置。确保环境稳定且一致，以避免 [误报](/zh-cn/wiki/false-positive/) 或负面影响至关重要。
   高效[测试执行](/zh-cn/wiki/test-execution/) 需要**组织良好的方法**，具有明确的目标并关注应用程序的关键领域。必须根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/) 的优先级，以充分利用资源和时间。
 
-  ```
+```
   // Example of a simple automated test case in TypeScript using Jest
   test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
   });
-  ```
+```
 总之，[测试执行](/zh-cn/wiki/test-execution/) 是测试生命周期中的核心活动，提供有关软件质量和发布准备情况的宝贵反馈。
 
 #### 为什么测试执行在软件开发生命周期中很重要？
@@ -82,10 +83,10 @@ order: 0
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或获取反映现实场景的[测试数据](/zh-cn/wiki/test-data/)。如果使用生产数据，请确保数据是匿名的。
 3. **[测试脚本](/zh-cn/wiki/test-script/) 执行**：使用所选的[测试自动化](/zh-cn/wiki/test-automation/) 工具或框架运行自动[测试脚本](/zh-cn/wiki/test-script/)。这可以是单个测试或一组测试。
 
-    ```
+```
     // Example of running a test suite using a hypothetical automation tool
     automationTool.runTestSuite('regressionTests');
-    ```
+```
 
 4. **监控**：观察[测试执行](/zh-cn/wiki/test-execution/)以确保测试按预期运行。查找 [测试自动化](/zh-cn/wiki/test-automation/) 框架中的任何意外行为或错误。
 5. **结果分析**：查看测试运行的结果。确定失败是否是由于代码缺陷、[测试脚本](/zh-cn/wiki/test-script/) 问题或环境问题造成的。
@@ -97,10 +98,10 @@ order: 0
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或获取反映实际场景的[测试数据](/zh-cn/wiki/test-data/)。如果使用生产数据，请确保数据是匿名的。
 3. **[测试脚本](/zh-cn/wiki/test-script/) 执行**：使用所选的[测试自动化](/zh-cn/wiki/test-automation/) 工具或框架运行自动[测试脚本](/zh-cn/wiki/test-script/)。这可以是单个测试或一组测试。
 
-    ```
+```
     // Example of running a test suite using a hypothetical automation tool
     automationTool.runTestSuite('regressionTests');
-    ```
+```
 
 4. **监控**：观察[测试执行](/zh-cn/wiki/test-execution/)以确保测试按预期运行。查找 [测试自动化](/zh-cn/wiki/test-automation/) 框架中的任何意外行为或错误。
 5. **结果分析**：查看测试运行的结果。确定失败是否是由于代码缺陷、[测试脚本](/zh-cn/wiki/test-script/) 问题或环境问题造成的。
@@ -132,14 +133,14 @@ order: 0
 - **清理**：执行后，清理环境以确保它们为下一个周期做好准备。这包括重置[数据库](/zh-cn/wiki/database/)、清除缓存和删除[测试数据](/zh-cn/wiki/test-data/)。
 - **审查和调整**：审查流程和结果，以确定需要改进的领域。此反馈循环有助于完善未来周期的[测试用例](/zh-cn/wiki/test-case/)、脚本和执行策略。
 
-  ```
+```
   // Example of a simple test execution command
   executeTests({
     environment: 'staging',
     testSuite: 'regression',
     reportFormat: 'html'
   });
-  ```
+```
 每个阶段对于确保[测试执行](/zh-cn/wiki/test-execution/) 高效、有效并有助于软件产品的持续改进至关重要。
 
 #### 测试执行计划通常是如何计划和管理的？
@@ -155,8 +156,7 @@ order: 0
 - **批量执行**：类似的测试批量在一起以简化执行。
 - **监控**：设置持续监控以跟踪进度和资源利用率。
 - **调整**：定期审查时间表并根据测试结果和项目变化进行调整。
-- **报告**：建立定期报告机制来沟通进展情况和阻碍因素。
-  有效的管理通常涉及使用 [测试管理](/zh-cn/wiki/test-management/) 软件或项目管理平台等工具来自动执行调度任务并提供对 [测试执行](/zh-cn/wiki/test-execution/) 流程的实时可见性。此外，与持续集成/持续部署 (CI/CD) 管道的集成有助于使 [测试执行](/zh-cn/wiki/test-execution/) 与开发工作流程保持一致。
+- **报告**：建立定期报告机制来沟通进展情况和阻碍因素。 有效的管理通常涉及使用 [测试管理](/zh-cn/wiki/test-management/) 软件或项目管理平台等工具来自动执行调度任务并提供对 [测试执行](/zh-cn/wiki/test-execution/) 流程的实时可见性。此外，与持续集成/持续部署 (CI/CD) 管道的集成有助于使 [测试执行](/zh-cn/wiki/test-execution/) 与开发工作流程保持一致。
 
 #### 测试执行计划的作用是什么？它通常包括什么？
 
@@ -170,8 +170,7 @@ order: 0
 - **执行计划**：提供执行测试的时间表，包括任何依赖项或测试顺序。
 - **风险管理**：识别潜在风险并概述缓解策略，以确保测试顺利执行。
 - **进入和退出标准**：定义开始测试必须满足的条件以及结束测试阶段的标准。
-- **报告和跟踪**：描述记录测试结果、记录缺陷以及向利益相关者传达状态更新的过程。
-  该计划作为测试团队的路线图，确保[测试执行](/zh-cn/wiki/test-execution/) 的所有方面都得到系统的考虑和管理。
+- **报告和跟踪**：描述记录测试结果、记录缺陷以及向利益相关者传达状态更新的过程。 该计划作为测试团队的路线图，确保[测试执行](/zh-cn/wiki/test-execution/) 的所有方面都得到系统的考虑和管理。
 
 #### 测试用例是如何执行的以及通常使用哪些工具来执行此目的？
 
@@ -183,15 +182,13 @@ order: 0
 - **JUnit/TestNG** ：用于 Java 单元测试的框架，提供注释和断言。
 - **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的端到端测试框架。
 - **Robot Framework**：用于验收测试的关键字驱动的测试自动化框架。
-- **SpecFlow/Cucumber** ：支持行为驱动开发（BDD）的工具，使用 Gherkin 语言进行测试用例定义。
-  执行通常涉及：
+- **SpecFlow/Cucumber** ：支持行为驱动开发（BDD）的工具，使用 Gherkin 语言进行测试用例定义。 执行通常涉及：
 
 1. **初始化[测试环境](/zh-cn/wiki/test-environment/)**：设置数据库、服务器和其他依赖项。
 2. **运行测试**：使用命令行界面（CLI）或集成开发环境（IDE）插件。
 3. **监控**：实时观察测试进度和性能。
 4. **分析结果**：解释通过/失败结果、日志和屏幕截图。
-5. **报告**：为利益相关者生成详细报告。
-  自动化测试通常使用 Jenkins、GitLab CI 或 GitHub Actions 等工具集成到 CI/CD 管道中，从而允许持续测试并立即反馈代码更改。 [测试执行](/zh-cn/wiki/test-execution/) 可以使用 Docker 等容器化工具和 Kubernetes 等编排平台在多个环境中并行和分布，以提高速度和可扩展性。
+5. **报告**：为利益相关者生成详细报告。 自动化测试通常使用 Jenkins、GitLab CI 或 GitHub Actions 等工具集成到 CI/CD 管道中，从而允许持续测试并立即反馈代码更改。 [测试执行](/zh-cn/wiki/test-execution/) 可以使用 Docker 等容器化工具和 Kubernetes 等编排平台在多个环境中并行和分布，以提高速度和可扩展性。
 
 ### 测试执行策略
 
@@ -205,8 +202,7 @@ order: 0
 - **关键字驱动执行**：使用表示操作和数据的关键字定义测试，使其易于阅读和维护。当需要将测试创建与[测试执行](/zh-cn/wiki/test-execution/)分开时，通常会使用此策略。
 - **基于风险的执行**：根据功能或组件的相关风险确定测试的优先级。首先测试高风险区域，以确保尽早验证关键功能。
 - **随机执行**：测试以随机顺序执行，这可以帮助识别测试独立性和测试之间的状态泄漏问题。
-- **跨浏览器/跨平台执行**：跨多个浏览器或平台运行测试，以确保兼容性和一致的行为。
-  每个策略的选择都是基于项目要求、时间限制、资源可用性和应用程序的关键性等因素。组合策略（例如并行执行和数据驱动执行）可以进一步优化测试过程。
+- **跨浏览器/跨平台执行**：跨多个浏览器或平台运行测试，以确保兼容性和一致的行为。 每个策略的选择都是基于项目要求、时间限制、资源可用性和应用程序的关键性等因素。组合策略（例如并行执行和数据驱动执行）可以进一步优化测试过程。
 
 - **顺序执行**：测试按特定顺序运行，通常在 [测试用例](/zh-cn/wiki/test-case/) 具有依赖项或需要模拟特定用户旅程时使用。
 - **并行执行**：多个测试同时运行，通常用于节省时间并同时测试不同的环境或配置。
@@ -242,8 +238,7 @@ order: 0
 - **可扩展性**：确保策略可以随着项目的增长而扩展。
 - **合规性和安全性**：遵守监管标准和安全最佳实践。
 - **成本**：平衡工具和基础设施的成本与收益。
-- **反馈循环**：建立快速反馈机制以持续改进。
-  选择符合项目特定需求、约束和目标的策略，确保彻底性、速度和资源利用率之间的平衡。
+- **反馈循环**：建立快速反馈机制以持续改进。 选择符合项目特定需求、约束和目标的策略，确保彻底性、速度和资源利用率之间的平衡。
 
 #### 如何优化测试执行策略以提高测试过程的效率？
 
@@ -252,20 +247,20 @@ order: 0
 - **根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/)** 的优先级。使用 [基于风险的测试](/zh-cn/wiki/risk-based-testing/) 等技术首先关注高风险区域。
 - 实施**并行测试**以同时运行多个测试，从而减少总体执行时间。像 [selenium](/zh-cn/wiki/selenium/) Grid 这样的工具可以促进这一点。
 
-    ```
+```
     // Example of running tests in parallel with a testing framework
     describe.parallel('Parallel Test Suite', () => {
       it('Test Case 1', () => { /* ... */ });
       it('Test Case 2', () => { /* ... */ });
     });
-    ```
+```
 
 - 利用 **[测试数据](/zh-cn/wiki/test-data/) 管理** 确保数据在 [测试执行](/zh-cn/wiki/test-execution/) 之前准备就绪并处于正确的状态。
 - **定期审查和维护** [测试套件](/zh-cn/wiki/test-suite/) 以删除过时或多余的测试，保持套件的精简和相关性。
 - 应用**[测试用例](/zh-cn/wiki/test-case/)分组**一起执行相关测试，可以优化[环境搭建](/zh-cn/wiki/setup/)和拆卸操作。
 - 使用**持续集成 (CI)** 工具在每次提交后自动触发测试运行，确保立即反馈。
 
-    ```
+```
     // Example of a CI configuration snippet for automated test execution
     jobs:
       test:
@@ -274,25 +269,24 @@ order: 0
 - uses: actions/checkout@v2
 - name: Run tests
           run: npm test
-    ```
+```
 
 - **监控和分析**测试结果，以识别 [片状测试](/zh-cn/wiki/flaky-test/) 或频繁发生故障的区域，并解决根本问题。
 - 利用 **[测试环境](/zh-cn/wiki/test-environment/) 管理** 确保环境在需要时一致且可用。
-- **根据目标环境或配置自定义[测试执行](/zh-cn/wiki/test-execution/)**，使用标志或环境变量来控制测试流程。
-  通过关注这些领域，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以简化[测试执行](/zh-cn/wiki/test-execution/) 阶段，从而实现更高效、更有效的测试流程。
+- **根据目标环境或配置自定义[测试执行](/zh-cn/wiki/test-execution/)**，使用标志或环境变量来控制测试流程。 通过关注这些领域，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以简化[测试执行](/zh-cn/wiki/test-execution/) 阶段，从而实现更高效、更有效的测试流程。
 
 - **根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/)** 的优先级。使用 [基于风险的测试](/zh-cn/wiki/risk-based-testing/) 等技术首先关注高风险区域。
 - 实施**并行测试**以同时运行多个测试，从而减少总体执行时间。 [selenium](/zh-cn/wiki/selenium/) Grid 等工具可以促进这一点。
 
-    ```
+```
     // Example of running tests in parallel with a testing framework
     describe.parallel('Parallel Test Suite', () => {
       it('Test Case 1', () => { /* ... */ });
       it('Test Case 2', () => { /* ... */ });
     });
-    ```
+```
 
-    ```
+```
     // Example of a CI configuration snippet for automated test execution
     jobs:
       test:
@@ -301,7 +295,7 @@ order: 0
 - uses: actions/checkout@v2
 - name: Run tests
           run: npm test
-    ```
+```
 
 ### 挑战和解决方案
 
@@ -315,8 +309,7 @@ order: 0
 - **工具集成**：集成各种工具和框架可能很复杂。选择具有强大社区支持的工具，并确保它们具有兼容的集成点。
 - **测试维护**：随着应用程序的发展，测试需要更新。通过使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 或类似模式将测试逻辑与[测试脚本](/zh-cn/wiki/test-script/) 分开来实现可维护的测试设计。
 - **资源限制**：有限的计算资源可能会减慢[测试执行](/zh-cn/wiki/test-execution/)。利用基于云的解决方案或在非高峰时段安排测试来优化资源使用。
-- **并行执行**：由于共享数据和资源，并行运行测试可能具有挑战性。将测试设计为独立的，并使用虚拟化或容器化来隔离测试运行。
-  通过结合良好实践、强大的设计模式以及利用正确的工具和技术来应对这些挑战。定期审查和重构测试以保持其有效性和效率。
+- **并行执行**：由于共享数据和资源，并行运行测试可能具有挑战性。将测试设计为独立的，并使用虚拟化或容器化来隔离测试运行。 通过结合良好实践、强大的设计模式以及利用正确的工具和技术来应对这些挑战。定期审查和重构测试以保持其有效性和效率。
 
 - **[片状测试](/zh-cn/wiki/flaky-test/)**：测试间歇性地通过和失败，无需对代码进行任何更改。通过隔离和修复根本原因来解决，通常与计时问题或外部依赖性相关。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：管理和维护[测试数据](/zh-cn/wiki/test-data/) 困难。使用数据管理工具和策略，例如数据池或合成数据生成，以确保一致和可靠[测试数据](/zh-cn/wiki/test-data/)。
@@ -341,93 +334,51 @@ order: 0
 
 自动化通过实现[测试用例](/zh-cn/wiki/test-case/)的**一致**和**重复**运行，在[测试执行](/zh-cn/wiki/test-execution/)中发挥着**关键作用**，从而提高效率和覆盖范围。可以通过遵循以下准则来有效实施：
 
-- **选择合适的工具**
-    与您的技术堆栈很好地集成，并在测试社区中得到广泛支持。
+- **选择合适的工具**与您的技术堆栈很好地集成，并在测试社区中得到广泛支持。
 
-- **自动化设计测试**
-    考虑到可重用性和可维护性。使用
-    **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**
-    或类似的设计模式来抽象测试步骤和元素。
+- **自动化设计测试**考虑到可重用性和可维护性。使用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**或类似的设计模式来抽象测试步骤和元素。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于他们的自动化
-    **频率**
-    ,
-    **复杂性**
-    , 和
-    **关键性**
-    到应用程序。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于他们的自动化 **频率** , **复杂性** , 和 **关键性**到应用程序。
 
-- **开发强大的[测试脚本](/zh-cn/wiki/test-script/)**
-    可以处理 UI 中的变化并且能够抵抗不稳定。实施
-    **显式等待**
-    和
-    **重试机制**
-    来处理同步问题。
+- **开发强大的[测试脚本](/zh-cn/wiki/test-script/)**可以处理 UI 中的变化并且能够抵抗不稳定。实施 **显式等待**和 **重试机制**来处理同步问题。
 
-- **使用数据驱动技术**
-    将不同的数据集输入同一测试用例，提高测试覆盖率并减少脚本冗余。
+- **使用数据驱动技术**将不同的数据集输入同一测试用例，提高测试覆盖率并减少脚本冗余。
 
-- **实施持续集成（CI）**
-    触发代码提交的自动化测试，确保立即反馈更改的影响。
+- **实施持续集成（CI）**触发代码提交的自动化测试，确保立即反馈更改的影响。
 
-- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**
-    具有稳定的测试数据，确保测试结果的可靠性。
+- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有稳定的测试数据，确保测试结果的可靠性。
 
-- **监控和分析测试结果**
-    定期识别不稳定的测试和需要改进的地方。使用仪表板和报告工具来提高可见性。
+- **监控和分析测试结果**定期识别不稳定的测试和需要改进的地方。使用仪表板和报告工具来提高可见性。
 
-- **重构和更新测试**
-    不断适应应用变化，提高测试效率和可读性。
+- **重构和更新测试**不断适应应用变化，提高测试效率和可读性。
 
-  ```
+```
   // Example of a simple automated test using POM and data-driven approach
   const loginPage = new LoginPage(driver);
   const userCredentials = dataProvider.getUserData();
   loginPage.open();
   loginPage.login(userCredentials.username, userCredentials.password);
   expect(loginPage.isLoggedIn()).toBeTruthy();
-  ```
+```
 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 可以显着**减少手动工作**，**加快反馈循环**，并**提高软件产品的整体质量**。
 
-- **选择合适的工具**
-    与您的技术堆栈很好地集成，并在测试社区中得到广泛支持。
+- **选择合适的工具**与您的技术堆栈很好地集成，并在测试社区中得到广泛支持。
 
-- **自动化设计测试**
-    考虑到可重用性和可维护性。使用
-    **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**
-    或类似的设计模式来抽象测试步骤和元素。
+- **自动化设计测试**考虑到可重用性和可维护性。使用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**或类似的设计模式来抽象测试步骤和元素。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于他们的自动化
-    **频率**
-    ,
-    **复杂性**
-    , 和
-    **关键性**
-    到应用程序。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于他们的自动化 **频率** , **复杂性** , 和 **关键性**到应用程序。
 
-- **开发强大的[测试脚本](/zh-cn/wiki/test-script/)**
-    可以处理 UI 中的变化并且能够抵抗不稳定。实施
-    **显式等待**
-    和
-    **重试机制**
-    来处理同步问题。
+- **开发强大的[测试脚本](/zh-cn/wiki/test-script/)**可以处理 UI 中的变化并且能够抵抗不稳定。实施 **显式等待**和 **重试机制**来处理同步问题。
 
-- **使用数据驱动技术**
-    将不同的数据集输入同一测试用例，提高测试覆盖率并减少脚本冗余。
+- **使用数据驱动技术**将不同的数据集输入同一测试用例，提高测试覆盖率并减少脚本冗余。
 
-- **实施持续集成（CI）**
-    触发代码提交的自动化测试，确保立即反馈更改的影响。
+- **实施持续集成（CI）**触发代码提交的自动化测试，确保立即反馈更改的影响。
 
-- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**
-    具有稳定的测试数据，确保测试结果的可靠性。
+- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有稳定的测试数据，确保测试结果的可靠性。
 
-- **监控和分析测试结果**
-    定期识别不稳定的测试和需要改进的地方。使用仪表板和报告工具来提高可见性。
+- **监控和分析测试结果**定期识别不稳定的测试和需要改进的地方。使用仪表板和报告工具来提高可见性。
 
-- **重构和更新测试**
-    不断适应应用变化，提高测试效率和可读性。
+- **重构和更新测试**不断适应应用变化，提高测试效率和可读性。
 
 #### 如何有效记录测试执行过程中遇到的问题并将其传达给相关利益相关者？
 

@@ -68,14 +68,14 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 [Chai.js](/zh-cn/wiki/chai-js/) 是一个**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** / **[test-driven development](/zh-cn/wiki/test-driven-development/) (TDD)** 断言库，适用于 [Node.js](/zh-cn/wiki/node-js/) 和浏览器，可以与任何 JavaScript 测试框架完美搭配。它为开发人员提供了一组丰富的、可读且富有表现力的断言。
   [Chai.js](/zh-cn/wiki/chai-js/) 提供三种不同风格的断言：**should**、**expect** 和 **assert**。每种样式都有自己的语法，允许开发人员选择最适合他们的偏好或项目需求的样式。
 
-  ```
+```
   // Should style
   should.exist(foo);
   // Expect style
   expect(foo).to.exist;
   // Assert style
   assert.exists(foo);
-  ```
+```
 [Chai.js](/zh-cn/wiki/chai-js/) 断言可以处理各种测试条件，包括但不限于属性值、深度相等检查和引发的异常。它还支持使用回调和承诺来测试异步操作。
   该库可通过插件进行扩展，可以添加新的断言和测试条件以满足特定的测试要求。这种可扩展性使[Chai.js](/zh-cn/wiki/chai-js/)能够适应各种[use cases](/zh-cn/wiki/use-case/)并与其他工具和库集成。
   [Chai.js](/zh-cn/wiki/chai-js/) 通常与其他测试工具（例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 Karma）结合使用，提供完整的测试解决方案。它通过 npm 安装，可以轻松集成到任何 JavaScript 项目中，使其成为希望增强测试能力的开发人员的便捷选择。
@@ -143,20 +143,20 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 要安装 **[Chai.js](/zh-cn/wiki/chai-js/)**，请确保已安装 **[Node.js](/zh-cn/wiki/node-js/)** 和 **npm**（节点包管理器）。打开终端或命令提示符并导航到您的项目目录。运行以下命令：
 
-  ```
+```
   npm install chai --save-dev
-  ```
+```
 此命令将 [Chai.js](/zh-cn/wiki/chai-js/) 作为开发依赖项安装，并将其添加到 `package.json` 文件中。安装完成后，您可以使用以下命令将 Chai 导入到测试文件中：
   对于 CommonJS 模块：
 
-  ```
+```
   const chai = require('chai');
-  ```
+```
 对于 ES6 模块：
 
-  ```
+```
   import chai from 'chai';
-  ```
+```
 然后，您可以使用 Chai 的 `expect`、`should` 或 `assert` 接口来编写测试。如果您还没有安装，请记住还要安装[test runner](/zh-cn/wiki/test-runner/)，如 **Mocha** 或 **[Jest](/zh-cn/wiki/jest/)**，因为 Chai 是一个断言库，本身不提供测试框架。
 
 #### 使用 Chai.js 有哪些先决条件？
@@ -166,32 +166,30 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 - **[Node.js](/zh-cn/wiki/node-js/)** ：Chai 是一个 Node.js 库，因此您需要在系统上安装 Node.js。该版本应与您计划使用的 Chai 版本兼容。
   - **NPM 或 Yarn** ：这些是处理 Chai 及其依赖项的安装的包管理器。他们还管理特定于项目的包。
   - **A [test runner](/zh-cn/wiki/test-runner/)** ：Chai 是一个断言库，不包含测试运行程序。您需要像 Mocha、Jest 或 Karma 这样的测试运行程序来执行您的测试。
-  - **项目[环境搭建](/zh-cn/wiki/setup/)** ：您的项目应该使用
-    `package.json`
-    文件（如果您使用的是 NPM 或 Yarn）。该文件跟踪与您的项目相关的依赖项和脚本。
+  - **项目[环境搭建](/zh-cn/wiki/setup/)** ：您的项目应该使用 `package.json` 文件（如果您使用的是 NPM 或 Yarn）。该文件跟踪与您的项目相关的依赖项和脚本。
 
 - **JavaScript 知识**：由于 Chai 是一个 JavaScript 库，因此对 JavaScript（包括 ES6 功能）的良好理解至关重要。
   - **理解测试概念**：熟悉单元测试、测试驱动开发 (TDD) 和行为驱动开发 (BDD) 是有益的，因为 Chai 支持这些测试方法。
   要安装 Chai，请在项目目录中运行以下命令：
 
-  ```
+```
   npm install chai --save-dev
-  ```
+```
 或者，如果您使用的是 Yarn：
 
-  ```
+```
   yarn add chai --dev
-  ```
+```
 安装后，您可以使用以下命令将 Chai 导入到测试文件中：
 
-  ```
+```
   const chai = require('chai');
-  ```
+```
 或者，如果您使用 ES6 模块：
 
-  ```
+```
   import chai from 'chai';
-  ```
+```
 确保您的 [test environment](/zh-cn/wiki/test-environment/) 已正确配置为将 Chai 与您选择的 [test runner](/zh-cn/wiki/test-runner/) 和断言样式（`expect`、`should` 或 `assert`）结合使用。
 
     `package.json`
@@ -204,68 +202,66 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 要为您的项目设置 [Chai.js](/zh-cn/wiki/chai-js/)，请按照以下步骤操作：
 
-1. **使用 npm 或 YARN 安装 Chai**（如果尚未安装）：
-    或
+1. **使用 npm 或 YARN 安装 Chai**（如果尚未安装）： 或
 
-    ```
+```
     npm install chai --save-dev
-    ```
+```
 
-    ```
+```
     yarn add chai --dev
-    ```
+```
 
 2. **在测试文件中导入 Chai**：
 
-    ```
+```
     const chai = require('chai');
-    ```
+```
 
 3. **选择并设置断言样式**。Chai 提供`should`、`expect` 和`assert` 样式。例如，要使用`expect`，您可以编写：
 
-    ```
+```
     const expect = chai.expect;
-    ```
+```
 
 4. **使用所选的断言样式编写测试**。这是使用 `expect` 的简单测试示例：
 
-    ```
+```
     expect(2 + 2).to.equal(4);
-    ```
+```
 
 5. **使用您选择的[test runner](/zh-cn/wiki/test-runner/)（例如，Mocha、[Jest](/zh-cn/wiki/jest/)）运行测试**。
   6. 或者，如果需要，**使用其他设置配置 Chai**，例如使用插件或向断言添加自定义消息。
   7. **将 Chai 与其他工具集成**，例如 [test runners](/zh-cn/wiki/test-runner/) 或测试环境所需的模拟库。
   请记住**检查项目的依赖项**以确保它们与您正在使用的 Chai 版本兼容。保持 Chai 和所有插件更新，以受益于最新功能和[bug](/zh-cn/wiki/bug/) 修复。
 
-1. **使用 npm 或 YARN 安装 Chai**（如果尚未安装）：
-    或
+1. **使用 npm 或 YARN 安装 Chai**（如果尚未安装）： 或
 
-    ```
+```
     npm install chai --save-dev
-    ```
+```
 
-    ```
+```
     yarn add chai --dev
-    ```
+```
 
 2. **在测试文件中导入 Chai**：
 
-    ```
+```
     const chai = require('chai');
-    ```
+```
 
 3. **选择并设置断言样式**。Chai 提供`should`、`expect` 和`assert` 样式。例如，要使用`expect`，您可以编写：
 
-    ```
+```
     const expect = chai.expect;
-    ```
+```
 
 4. **使用所选的断言样式编写测试**。这是使用 `expect` 的简单测试示例：
 
-    ```
+```
     expect(2 + 2).to.equal(4);
-    ```
+```
 
 5. **使用您选择的[test runner](/zh-cn/wiki/test-runner/)（例如，Mocha、[Jest](/zh-cn/wiki/jest/)）运行测试**。
   6. 或者，如果需要，**使用其他设置配置 Chai**，例如使用插件或向断言添加自定义消息。
@@ -277,28 +273,28 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   安装 Chai 后，您可以使用 CommonJS 或 ES6 模块语法将其导入 JavaScript 文件，具体取决于您的环境和项目 [环境搭建](/zh-cn/wiki/setup/)。
   对于 **CommonJS**（通常在 [Node.js](/zh-cn/wiki/node-js/) 环境中使用），请使用 `require` 函数：
 
-  ```
+```
   const chai = require('chai');
   const expect = chai.expect;
-  ```
+```
 对于 **ES6 模块**（可能在具有支持 ES6 模块的构建系统的前端项目中使用），请使用 `import` 语句：
 
-  ```
+```
   import chai from 'chai';
   const expect = chai.expect;
-  ```
+```
 导入后，您可以使用 Chai 的断言方法（例如 `expect`、`should` 或 `assert`）来编写测试。
   如果您使用 **TypeScript**，则可以以类似的方式导入 Chai，但您可能还需要安装 Chai 的类型定义：
 
-  ```
+```
   npm install @types/chai
-  ```
+```
 然后，在您的 TypeScript 文件中：
 
-  ```
+```
   import * as chai from 'chai';
   const expect = chai.expect;
-  ```
+```
 如果您使用 `import` 语句，请记住将 TypeScript 编译器配置为识别 ES6 语法。
 
 ### 断言
@@ -313,16 +309,16 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   3. **匹配器函数**：将实际值与期望值进行比较的函数。
   以下是使用 Chai 的 `expect` 接口的简单断言示例：
 
-  ```
+```
   const expect = require('chai').expect;
   expect(2 + 2).to.equal(4);
-  ```
+```
 在本例中，`2 + 2` 是实际值，`4` 是期望值，`.to.equal` 是匹配器函数。
   Chai 断言可以链接起来执行更复杂的检查：
 
-  ```
+```
   expect([1, 2, 3]).to.include(2).and.to.have.lengthOf(3);
-  ```
+```
 这里，`.include(2)` 检查数组是否包含数字 2，`.have.lengthOf(3)` 检查数组的长度是否为 3。`.and` 链用于组合同一主题的多个断言。
   断言对于验证代码是否按预期运行至关重要，并且是使用 [Chai.js](/zh-cn/wiki/chai-js/) 编写有效且可靠的测试的基本部分。
 
@@ -330,7 +326,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 要在 [Chai.js](/zh-cn/wiki/chai-js/) 中编写基本断言，您可以使用其任何接口：`expect`、`should` 或 `assert`。以下是使用 `expect` 接口的示例：
 
-  ```
+```
   const expect = require('chai').expect;
   describe('Array', function() {
     describe('#indexOf()', function() {
@@ -339,11 +335,11 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
       });
     });
   });
-  ```
+```
 在此示例中，`expect` 函数用于对`[1, 2, 3].indexOf(4)` 的结果进行断言。 `.to.equal(-1)` 链是实际的断言，表明[expected result](/zh-cn/wiki/expected-result/) 应该是`-1`。
   对于 `should` 接口，语法会略有不同：
 
-  ```
+```
   const should = require('chai').should();
   describe('Array', function() {
     describe('#indexOf()', function() {
@@ -352,10 +348,10 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
       });
     });
   });
-  ```
+```
 对于 `assert` 接口，它更传统并且不使用链接：
 
-  ```
+```
   const assert = require('chai').assert;
   describe('Array', function() {
     describe('#indexOf()', function() {
@@ -364,7 +360,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
       });
     });
   });
-  ```
+```
 这些示例中的每一个都完成相同的事情：它们断言 `indexOf` 方法在使用数组中不存在的值调用时返回 `-1`。选择最适合您的编码风格或团队标准的界面。
 
 #### Chai.js 中有哪些不同类型的断言可用？
@@ -373,9 +369,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   ### 应该和期望
   这些[BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式在功能上相似，但在语法上有所不同。它们提供了一种可链接的语言来构造断言。
 
-- **.equal(value)** ：断言严格相等（
-    `===`
-    ）。
+- **.equal(value)** ：断言严格相等（ `===` ）。
 
 - **.eql(value)** ：断言深度相等。
   - **.above(value)** ：断言数字大于值。
@@ -389,38 +383,24 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   - **.match(regex)** ：断言值与正则表达式匹配。
   - **.contain(value)** ：断言数组包含一个值。
   - **.ok** ：断言真实性。
-  - **.true** ：断言严格等于
-    `true`
-    。
+  - **.true** ：断言严格等于 `true` 。
 
-- **.false** ：断言严格等于
-    `false`
-    。
+- **.false** ：断言严格等于 `false` 。
 
-- **.null** ：断言严格等于
-    `null`
-    。
+- **.null** ：断言严格等于 `null` 。
 
-- **.undefined** ：断言严格等于
-    `undefined`
-    。
+- **.undefined** ：断言严格等于 `undefined` 。
 
-- **.NaN** ：断言值为
-    `NaN`
-    。
+- **.NaN** ：断言值为 `NaN` 。
 
 - **.exist** ：断言非空且非未定义。
   - **.empty** ：断言空数组、字符串或对象。
   ### 断言
   TDD ([Test-Driven Development](/zh-cn/wiki/test-driven-development/)) 风格使用更传统的断言方法，无需可链接语言。
 
-- **assert.equal(actual, Expected)** : 断言松散相等 (
-    `==`
-    ）。
+- **assert.equal(actual, Expected)** : 断言松散相等 ( `==` ）。
 
-- **assert.strictEqual(actual, Expected)** : 断言严格相等 (
-    `===`
-    ）。
+- **assert.strictEqual(actual, Expected)** : 断言严格相等 ( `===` ）。
 
 - **assert.deepEqual(actual, Expected)** ：断言深度相等。
   - **assert.isAbove(valueToCheck, valueToBeAbove)** ：断言数量大于值。
@@ -433,81 +413,49 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   - **assert.match(value, regex)** ：断言值与正则表达式匹配。
   - **assert.containsAllKeys(object, keys)** ：断言对象包含所有提供的键。
   - **assert.ok(value)** ：断言真实性。
-  - **assert.isTrue(value)** ：断言严格等于
-    `true`
-    。
+  - **assert.isTrue(value)** ：断言严格等于 `true` 。
 
-- **assert.isFalse(value)** ：断言严格等于
-    `false`
-    。
+- **assert.isFalse(value)** ：断言严格等于 `false` 。
 
-- **assert.isNull(value)** ：断言严格等于
-    `null`
-    。
+- **assert.isNull(value)** ：断言严格等于 `null` 。
 
-- **assert.isUndefined(value)** ：断言严格等于
-    `undefined`
-    。
+- **assert.isUndefined(value)** ：断言严格等于 `undefined` 。
 
-- **assert.isNaN(value)** ：断言值为
-    `NaN`
-    。
+- **assert.isNaN(value)** ：断言值为 `NaN` 。
 
 - **assert.exists(value)** ：断言非空且非未定义。
   - **assert.isEmpty(value)** ：断言空数组、字符串或对象。
   每个断言类型都满足特定的测试需求，允许进行全面且可读的测试。
 
-- **.equal(value)** ：断言严格相等（
-    `===`
-    ）。
+- **.equal(value)** ：断言严格相等（ `===` ）。
 
     `true`
     。
 
-- **.false** ：断言严格等于
-    `false`
-    。
+- **.false** ：断言严格等于 `false` 。
 
-- **.null** ：断言严格等于
-    `null`
-    。
+- **.null** ：断言严格等于 `null` 。
 
-- **.undefined** ：断言严格等于
-    `undefined`
-    。
+- **.undefined** ：断言严格等于 `undefined` 。
 
-- **.NaN** ：断言值为
-    `NaN`
-    。
+- **.NaN** ：断言值为 `NaN` 。
 
 - **.exist** ：断言非空且非未定义。
   - **.empty** ：断言空数组、字符串或对象。
-  - **assert.equal(actual, Expected)** : 断言松散相等 (
-    `==`
-    ）。
+  - **assert.equal(actual, Expected)** : 断言松散相等 ( `==` ）。
 
-- **assert.strictEqual(actual, Expected)** : 断言严格相等 (
-    `===`
-    ）。
+- **assert.strictEqual(actual, Expected)** : 断言严格相等 ( `===` ）。
 
     `true`
     。
 
-- **assert.isFalse(value)** ：断言严格等于
-    `false`
-    。
+- **assert.isFalse(value)** ：断言严格等于 `false` 。
 
-- **assert.isNull(value)** ：断言严格等于
-    `null`
-    。
+- **assert.isNull(value)** ：断言严格等于 `null` 。
 
-- **assert.isUndefined(value)** ：断言严格等于
-    `undefined`
-    。
+- **assert.isUndefined(value)** ：断言严格等于 `undefined` 。
 
-- **assert.isNaN(value)** ：断言值为
-    `NaN`
-    。
+- **assert.isNaN(value)** ：断言值为 `NaN` 。
 
 - **assert.exists(value)** ：断言非空且非未定义。
   - **assert.isEmpty(value)** ：断言空数组、字符串或对象。
@@ -517,26 +465,26 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 要断言函数在 [Chai.js](/zh-cn/wiki/chai-js/) 中引发错误，您可以使用 `expect` 或 `should` 接口中的 `throw` 或 `throws` 方法。以下是使用这两个界面执行此操作的方法：
   **使用`expect`接口：**
 
-  ```
+```
   const expect = require('chai').expect;
   expect(functionUnderTest).to.throw(ExpectedError);
   expect(functionUnderTest).to.throw("Error message");
   expect(functionUnderTest).to.throw(ExpectedError, "Error message");
   expect(functionUnderTest).to.throw(/Error message regex/);
-  ```
+```
 **使用`should`接口：**
 
-  ```
+```
   const should = require('chai').should();
   functionUnderTest.should.throw(ExpectedError);
   functionUnderTest.should.throw("Error message");
   functionUnderTest.should.throw(ExpectedError, "Error message");
   functionUnderTest.should.throw(/Error message regex/);
-  ```
+```
 将 `functionUnderTest` 替换为您正在测试的函数，将 `ExpectedError` 替换为您期望抛出的错误构造函数。如果您要检查特定的错误消息，则可以传递字符串或正则表达式来与错误消息进行匹配。
   **例子：**
 
-  ```
+```
   function willThrow() {
     throw new Error('This is an error!');
   }
@@ -544,7 +492,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   expect(willThrow).to.throw(Error, 'This is an error!');
   // Using should
   willThrow.should.throw(Error, 'This is an error!');
-  ```
+```
 确保函数被传递而不是直接调用它；否则，Chai 不会捕获该错误，并且断言将会失败。
 
 #### 如何在 Chai.js 中断言深度平等？
@@ -552,25 +500,25 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 要断言[Chai.js](/zh-cn/wiki/chai-js/) 中的深度相等，请使用`.deep` 链，后跟`.equal` 或`.eql` 断言。这将在考虑所有嵌套属性的情况下，在目标和预期对象之间执行深度比较。
   以下是使用 `expect` 接口的示例：
 
-  ```
+```
   const expect = require('chai').expect;
   const actual = { a: 1, b: { c: 3 } };
   const expected = { a: 1, b: { c: 3 } };
   expect(actual).to.deep.equal(expected);
-  ```
+```
 或者，使用 `should` 接口：
 
-  ```
+```
   const should = require('chai').should();
   const actual = { a: 1, b: { c: 3 } };
   const expected = { a: 1, b: { c: 3 } };
   actual.should.deep.equal(expected);
-  ```
+```
 对于数组，`deep.equal` 也有效：
 
-  ```
+```
   expect([1, 2, [3, 4]]).to.deep.equal([1, 2, [3, 4]]);
-  ```
+```
 请记住，如果没有`.deep` 链，`equal` 断言将检查严格相等性（使用`===`），这不适合比较对象或数组的内容。
 
 ### 插件
@@ -580,11 +528,11 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 [Chai.js](/zh-cn/wiki/chai-js/) 插件扩展了 Chai 断言库的功能，允许根据特定测试需求定制更专业或更复杂的断言。它们与 Chai 现有的[API](/zh-cn/wiki/api/) 无缝集成，通过附加方法和属性丰富了它。
   要使用 [Chai.js](/zh-cn/wiki/chai-js/) 插件，您通常在 Chai 之后需要它，然后使用 `use` 方法将其添加到您的 Chai [环境搭建](/zh-cn/wiki/setup/) 中：
 
-  ```
+```
   const chai = require('chai');
   const somePlugin = require('chai-some-plugin');
   chai.use(somePlugin);
-  ```
+```
 **流行插件**包括：
 
 - `chai-http` ：启用 HTTP 断言，使测试 Web 服务变得容易。
@@ -593,14 +541,14 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   - `sinon-chai` ：为 Sinon.js 间谍、存根和模拟提供断言，集成两个库。
   创建**自定义 [Chai.js](/zh-cn/wiki/chai-js/) 插件**涉及定义导出函数的模块。此函数应接受 Chai 实例，并应使用 Chai 的 [API](/zh-cn/wiki/api/) 添加新方法或属性：
 
-  ```
+```
   module.exports = function (chai, utils) {
     const Assertion = chai.Assertion;
     Assertion.addMethod('myAssertion', function (expected) {
       // Custom assertion logic here
     });
   };
-  ```
+```
 插件对于使 Chai 适应新框架、库或特定项目要求特别有用，使其成为[测试自动化](/zh-cn/wiki/test-automation/) 工程师武器库中的强大工具。
 
 #### 如何使用 Chai.js 插件？
@@ -609,110 +557,110 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 1. **通过 npm 或 yarn 安装**插件，例如：
 
-    ```
+```
     npm install chai-http
-    ```
+```
 
 2. **导入**测试文件中的插件：
 
-    ```
+```
     const chai = require('chai');
     const chaiHttp = require('chai-http');
-    ```
+```
 
 3. **使用** `chai` 对象上的 `use` 方法来添加插件：
 
-    ```
+```
     chai.use(chaiHttp);
-    ```
+```
 
 4. 添加插件后，您可以在测试中**利用其方法**。例如，使用 `chai-http` 您可以发出 HTTP 请求：
 
-    ```
+```
     chai.request('http://example.com')
         .get('/')
         .end((err, res) => {
             expect(res).to.have.status(200);
         });
-    ```
+```
 请记住**阅读插件的文档**以获取具体的使用说明，因为每个插件可能会引入独特的方法或语法。
   下面是一个使用 `chai-as-promised` 处理 Promise 的简短示例：
 
 1. **安装**插件：
 
-    ```
+```
     npm install chai-as-promised
-    ```
+```
 
 2. **导入**并**使用**插件：
 
-    ```
+```
     const chai = require('chai');
     const chaiAsPromised = require('chai-as-promised');
     chai.use(chaiAsPromised);
-    ```
+```
 
 3. **为 Promise 编写断言**：
 
-    ```
+```
     const expect = chai.expect;
     const promise = returnsAPromise(); // some function that returns a promise
     // Now you can use Chai as Promised for assertions
     expect(promise).to.eventually.equal('expected value');
-    ```
+```
 通过执行这些步骤，您可以扩展 Chai 的功能并根据项目的需求定制测试套件。
 
 1. **通过 npm 或 yarn 安装**插件，例如：
 
-    ```
+```
     npm install chai-http
-    ```
+```
 
 2. **导入**测试文件中的插件：
 
-    ```
+```
     const chai = require('chai');
     const chaiHttp = require('chai-http');
-    ```
+```
 
 3. **使用** `chai` 对象上的 `use` 方法来添加插件：
 
-    ```
+```
     chai.use(chaiHttp);
-    ```
+```
 
 4. 添加插件后，您可以在测试中**利用其方法**。例如，使用 `chai-http` 您可以发出 HTTP 请求：
 
-    ```
+```
     chai.request('http://example.com')
         .get('/')
         .end((err, res) => {
             expect(res).to.have.status(200);
         });
-    ```
+```
 
 1. **安装**插件：
 
-    ```
+```
     npm install chai-as-promised
-    ```
+```
 
 2. **导入**并**使用**插件：
 
-    ```
+```
     const chai = require('chai');
     const chaiAsPromised = require('chai-as-promised');
     chai.use(chaiAsPromised);
-    ```
+```
 
 3. **为 Promise 编写断言**：
 
-    ```
+```
     const expect = chai.expect;
     const promise = returnsAPromise(); // some function that returns a promise
     // Now you can use Chai as Promised for assertions
     expect(promise).to.eventually.equal('expected value');
-    ```
+```
 
 #### 有哪些流行的 Chai.js 插件以及它们的作用是什么？
 
@@ -720,104 +668,104 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 - **chai-as-promised** ：简化 Promise 的使用。它允许您以更具表现力的方式处理异步操作的断言。
 
-    ```
+```
     expect(promise).to.eventually.equal('foo');
-    ```
+```
 
 - **chai-http** ：对于 HTTP 集成测试很有用。它允许您向 HTTP 服务器发送请求并断言响应。
 
-    ```
+```
     chai.request(app).get('/').end((err, res) => {
       expect(res).to.have.status(200);
     });
-    ```
+```
 
 - **sinon-chai** ：为 Sinon.js spies、stubs 和 mocks 提供一组断言，使得使用测试替身更容易。
 
-    ```
+```
     expect(spy).to.have.been.calledOnce;
-    ```
+```
 
 - **chai-dom** ：使用 DOM 操作断言扩展 Chai，使其成为基于浏览器的测试的不错选择。
 
-    ```
+```
     expect(element).to.have.text('hello');
-    ```
+```
 
 - **chai-enzyme**：专为使用 Enzyme 进行 React.js 测试而定制。它为组件属性、状态和渲染添加了特定于酶的断言。
 
-    ```
+```
     expect(wrapper).to.have.className('foo');
-    ```
+```
 
 - **chai-jquery** ：将 Chai 与 jQuery 集成，为 jQuery 对象（例如 CSS、属性和事件）提供断言。
 
-    ```
+```
     expect($el).to.have.css('display', 'none');
-    ```
+```
 
 - **chai-subset** ：允许您断言一个对象是否是另一个对象的一部分，对于测试 API 响应很有用。
 
-    ```
+```
     expect(result).to.containSubset({ name: 'foo' });
-    ```
+```
 
 - **dirty-chai** ：提供一种将 Chai 断言用作函数而不是属性的方法，这对于 linting 目的很有帮助。
 
-    ```
+```
     expect(foo).to.be.a.function();
-    ```
+```
 每个插件都旨在满足特定的测试需求和场景，增强 Chai 断言的表现力和力量。
 
 - **chai-as-promised** ：简化 Promise 的使用。它允许您以更具表现力的方式处理异步操作的断言。
 
-    ```
+```
     expect(promise).to.eventually.equal('foo');
-    ```
+```
 
 - **chai-http** ：对于 HTTP 集成测试很有用。它允许您向 HTTP 服务器发送请求并断言响应。
 
-    ```
+```
     chai.request(app).get('/').end((err, res) => {
       expect(res).to.have.status(200);
     });
-    ```
+```
 
 - **sinon-chai** ：为 Sinon.js spies、stubs 和 mocks 提供一组断言，使得使用测试替身更容易。
 
-    ```
+```
     expect(spy).to.have.been.calledOnce;
-    ```
+```
 
 - **chai-dom** ：使用 DOM 操作断言扩展 Chai，使其成为基于浏览器的测试的不错选择。
 
-    ```
+```
     expect(element).to.have.text('hello');
-    ```
+```
 
 - **chai-enzyme**：专为使用 Enzyme 进行 React.js 测试而定制。它为组件属性、状态和渲染添加了特定于酶的断言。
 
-    ```
+```
     expect(wrapper).to.have.className('foo');
-    ```
+```
 
 - **chai-jquery** ：将 Chai 与 jQuery 集成，为 jQuery 对象（例如 CSS、属性和事件）提供断言。
 
-    ```
+```
     expect($el).to.have.css('display', 'none');
-    ```
+```
 
 - **chai-subset** ：允许您断言一个对象是否是另一个对象的一部分，对于测试 API 响应很有用。
 
-    ```
+```
     expect(result).to.containSubset({ name: 'foo' });
-    ```
+```
 
 - **dirty-chai** ：提供一种将 Chai 断言用作函数而不是属性的方法，这对于 linting 目的很有帮助。
 
-    ```
+```
     expect(foo).to.be.a.function();
-    ```
+```
 
 #### 如何创建自己的 Chai.js 插件？
 
@@ -827,22 +775,15 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   2. **为您的插件创建一个主文件**，例如`chai-myplugin.js`。
   3. **通过导出 Chai 将用来安装插件的函数来定义您的插件**：
 
-  ```
+```
   module.exports = function(chai, utils) {
     // Plugin code goes here
   };
-  ```
+```
 
-1. **添加方法或属性**
-    到 Chai 家
-    `Assertion`
-    对象。使用
-    `utils.addMethod`
-    对于新的断言方法或
-    `utils.addProperty`
-    对于新属性：
+1. **添加方法或属性**到 Chai 家 `Assertion` 对象。使用 `utils.addMethod` 对于新的断言方法或 `utils.addProperty` 对于新属性：
 
-  ```
+```
   utils.addMethod(chai.Assertion.prototype, 'myAssertion', function (expected) {
     var actual = this._obj;
     // Assertion logic here
@@ -854,32 +795,25 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
       actual
     );
   });
-  ```
+```
 
 1. **彻底测试您的插件**。使用 Mocha 或其他测试框架创建 [test cases](/zh-cn/wiki/test-case/) 以确保您的断言按预期工作。
   2. **记录您的插件**。清楚地解释如何安装和使用您的插件，包括断言的示例。
   3. **将您的插件**发布到 npm 以供其他人使用。在发布之前，使用有关您的插件的详细信息更新 `package.json` 文件。
   要使用您的插件，用户需要通过 npm 安装它并在测试文件中使用`chai.use()`：
 
-  ```
+```
   var chai = require('chai');
   var myPlugin = require('chai-myplugin');
   chai.use(myPlugin);
   // Now they can use your plugin's assertions
-  ```
+```
 请记住遵循命名插件的最佳实践，通常以 `chai-` 开头，并根据需要维护您的插件并提供更新和支持。
 
 1. **使用 `npm init` 为您的插件初始化一个新项目**，并将 Chai 安装为对等依赖项。
   2. **为您的插件创建一个主文件**，例如`chai-myplugin.js`。
   3. **通过导出 Chai 将用来安装插件的函数来定义您的插件**：
-  1. **添加方法或属性**
-    到 Chai 家
-    `Assertion`
-    对象。使用
-    `utils.addMethod`
-    对于新的断言方法或
-    `utils.addProperty`
-    对于新属性：
+  1. **添加方法或属性**到 Chai 家 `Assertion` 对象。使用 `utils.addMethod` 对于新的断言方法或 `utils.addProperty` 对于新属性：
 
 1. **彻底测试您的插件**。使用 Mocha 或其他测试框架创建 [test cases](/zh-cn/wiki/test-case/) 以确保您的断言按预期工作。
   2. **记录您的插件**。清楚地解释如何安装和使用您的插件，包括断言的示例。
@@ -892,52 +826,52 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 将 [Chai.js](/zh-cn/wiki/chai-js/) 与异步代码一起使用通常涉及使用 Promise 或 async/await 语法。Chai 提供了 `chai-as-promised` 插件来无缝处理 Promise 断言。
   首先，确保 `chai-as-promised` 已安装并添加到您的 Chai [环境搭建](/zh-cn/wiki/setup/) 中：
 
-  ```
+```
   const chai = require('chai');
   const chaiAsPromised = require('chai-as-promised');
   chai.use(chaiAsPromised);
   const expect = chai.expect;
-  ```
+```
 在处理 Promise 时，您可以将带有断言的 Promise 返回给 [test runner](/zh-cn/wiki/test-runner/)，它将等待 Promise 解析或拒绝：
 
-  ```
+```
   it('should eventually have a value of 42', function() {
     return expect(Promise.resolve(42)).to.eventually.equal(42);
   });
-  ```
+```
 对于 async/await，请在测试函数中使用 `async` 并等待承诺。将断言应用于解析值：
 
-  ```
+```
   it('should have a value of 42', async function() {
     const value = await Promise.resolve(42);
     expect(value).to.equal(42);
   });
-  ```
+```
 要处理被拒绝的承诺，请使用 `.rejected` 属性并链接任何其他断言：
 
-  ```
+```
   it('should be rejected with an error', function() {
     return expect(Promise.reject(new Error('fail'))).to.be.rejected;
   });
   it('should be rejected with an error message', function() {
     return expect(Promise.reject(new Error('fail'))).to.be.rejectedWith('fail');
   });
-  ```
+```
 请记住在测试中处理已解决和拒绝的情况，以确保异步操作的全面覆盖。
 
 #### 如何将 Chai.js 与 Promises 结合使用？
 
 将 **[Chai.js](/zh-cn/wiki/chai-js/)** 与 Promise 一起使用涉及利用 **chai-as-promised** 插件，该插件扩展了 Chai 以实现流畅的 Promise 断言。首先，确保安装 **chai-as-promised** 并将其与 Chai 集成：
 
-  ```
+```
   const chai = require('chai');
   const chaiAsPromised = require('chai-as-promised');
   chai.use(chaiAsPromised);
   const expect = chai.expect;
-  ```
+```
 使用 **chai-as-promised**，您可以以更具可读性的方式处理 Promise 断言。下面是测试返回 Promise 的函数的示例：
 
-  ```
+```
   const asyncFunction = () => {
     return new Promise((resolve, reject) => {
       // Asynchronous operation
@@ -949,10 +883,10 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   expect(asyncFunction()).to.be.rejectedWith(Error);
   // Assertion for a promise that resolves before a timeout
   expect(asyncFunction()).to.eventually.equal('expected value').and.notify(done);
-  ```
+```
 请记住从 [test case](/zh-cn/wiki/test-case/) 返回 Promise 或使用 `done` 回调来确保测试等待 Promise 解析：
 
-  ```
+```
   it('should resolve to the expected value', function() {
     return expect(asyncFunction()).to.eventually.equal('expected value');
   });
@@ -960,7 +894,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   it('should resolve to the expected value', function(done) {
     expect(asyncFunction()).to.eventually.equal('expected value').notify(done);
   });
-  ```
+```
 **chai-as-promised** 支持在 `eventually` 之后链接附加断言，并与 **mocha** 和其他处理返回 Promise 的 [test runners](/zh-cn/wiki/test-runner/) 无缝集成。
 
 #### Chai.js 的.should 接口是什么以及它是如何工作的？
@@ -968,20 +902,20 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 [Chai.js](/zh-cn/wiki/chai-js/) 的 `.should` 接口是 [BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式断言，它使用 `should` 属性扩展每个对象以启动断言链。该界面允许更具可读性和表现力的测试。
   要使用`.should` 接口，首先需要执行`chai.should()` 对`Object.prototype` 进行必要的修改。这是一个例子：
 
-  ```
+```
   const chai = require('chai');
   const should = chai.should();
   const number = 2;
   number.should.be.a('number');
   number.should.equal(2);
-  ```
+```
 .should` 接口的工作原理是向 `Object.prototype` 添加一个 getter，返回 `Should` 断言对象。然后可以使用该对象将进一步的断言链接到正在测试的值。请务必注意，使用 `.should` 会修改 `Object.prototype`，如果您的应用程序依赖于对象的枚举属性，这可能会导致意外行为。
   使用`.should` 的断言在失败时抛出`AssertionError`，然后[test runner](/zh-cn/wiki/test-runner/) 可以捕获该断言以报告失败。 `.should` 接口支持与 Chai 的 `expect` 和 `assert` 接口相同的所有断言，提供丰富的断言集，如 `.equal`、`.deep.equal`、`.have.property` 等。
   使用 `.should` 时，您还可以利用 Chai 的可链接语言来增强测试的可读性：
 
-  ```
+```
   'hello'.should.be.a('string').and.have.lengthOf(5);
-  ```
+```
 请记住处理正在测试的对象上可能不存在的属性，因为尝试访问 `null` 或 `undefined` 上的 `should` 属性将引发错误。
 
 #### 如何自定义 Chai.js 的断言错误消息？
@@ -989,40 +923,40 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 自定义[Chai.js](/zh-cn/wiki/chai-js/)断言错误消息可以增强测试结果的可读性和清晰度。要自定义错误消息，请使用 Chai 提供的 `.message` 可链接方法。此方法允许您指定断言失败时将显示的自定义消息。
   以下是使用 `expect` 接口的示例：
 
-  ```
+```
   const expect = require('chai').expect;
   expect(myFunction, 'custom error message if myFunction does not meet expectations').to.be.a('function');
-  ```
+```
 对于 `should` 接口，您可以将自定义消息作为第二个参数传递给断言方法：
 
-  ```
+```
   should = require('chai').should();
   myVariable.should.equal('expected value', 'custom error message if myVariable is not equal to expected value');
-  ```
+```
 对于 `assert` 接口，自定义消息通常是断言函数中的最后一个参数：
 
-  ```
+```
   const assert = require('chai').assert;
   assert.typeOf(myFunction, 'function', 'custom error message if myFunction is not a function');
-  ```
+```
 **注意：** 自定义消息应该简洁且具有足够的描述性，以便无需深入研究测试代码即可理解失败的上下文。
 [Chai.js](/zh-cn/wiki/chai-js/) 的 `.should` 接口是 [BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式断言，它使用 `should` 属性扩展每个对象以启动断言链。该界面允许更具可读性和表现力的测试。
   要使用`.should` 接口，首先需要执行`chai.should()` 对`Object.prototype` 进行必要的修改。这是一个例子：
 
-  ```
+```
   const chai = require('chai');
   const should = chai.should();
   const number = 2;
   number.should.be.a('number');
   number.should.equal(2);
-  ```
+```
 `.should` 接口的工作原理是向 `Object.prototype` 添加一个 getter，返回 `Should` 断言对象。然后可以使用该对象将进一步的断言链接到正在测试的值。请务必注意，使用 `.should` 会修改 `Object.prototype`，如果您的应用程序依赖于对象的枚举属性，这可能会导致意外行为。
   使用`.should` 的断言在失败时抛出`AssertionError`，然后[测试运行者](/zh-cn/wiki/test-runner/) 可以捕获该断言以报告失败。 `.should` 接口支持与 Chai 的 `expect` 和 `assert` 接口相同的所有断言，提供丰富的断言集，如 `.equal`、`.deep.equal`、`.have.property` 等。
   使用 `.should` 时，您还可以利用 Chai 的可链接语言来增强测试的可读性：
 
-  ```
+```
   'hello'.should.be.a('string').and.have.lengthOf(5);
-  ```
+```
 请记住处理正在测试的对象上可能不存在的属性，因为尝试访问 `null` 或 `undefined` 上的 `should` 属性将引发错误。
 
 #### 如何自定义 Chai.js 的断言错误消息？
@@ -1030,20 +964,20 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 自定义[Chai.js](/zh-cn/wiki/chai-js/)断言错误消息可以增强测试结果的可读性和清晰度。要自定义错误消息，请使用 Chai 提供的 `.message` 可链接方法。此方法允许您指定断言失败时将显示的自定义消息。
   以下是使用 `expect` 接口的示例：
 
-  ```
+```
   const expect = require('chai').expect;
   expect(myFunction, 'custom error message if myFunction does not meet expectations').to.be.a('function');
-  ```
+```
 对于 `should` 接口，您可以将自定义消息作为第二个参数传递给断言方法：
 
-  ```
+```
   should = require('chai').should();
   myVariable.should.equal('expected value', 'custom error message if myVariable is not equal to expected value');
-  ```
+```
 对于 `assert` 接口，自定义消息通常是断言函数中的最后一个参数：
 
-  ```
+```
   const assert = require('chai').assert;
   assert.typeOf(myFunction, 'function', 'custom error message if myFunction is not a function');
-  ```
+```
 **注意：** 自定义消息应该简洁且具有足够的描述性，以便无需深入研究测试代码即可理解失败的上下文。

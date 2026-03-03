@@ -3,11 +3,12 @@ title: "测试判定依据 ｜ Test Oracles"
 description: "测试判定依据 (Test Oracles) 是一种用于确定软件系统在测试期间是否产生正确结果的机制或原则。它充当真理来源 (source of truth)，可将测试的实际结果与其进行比较以确定正确性。"
 section: "T"
 related:
-  - manual-testing
   - automated-testing
   - test-case
-  - test-suite
+  - manual-testing
   - validation-testing
+  - web-testing
+  - test-policy
 order: 0
 ---
 
@@ -71,10 +72,10 @@ order: 0
 在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中，**测试 Oracle** 充当确定被测系统正确性的机制。它提供了与 [实际结果](/zh-cn/wiki/actual-result/) 进行比较的预期结果。鉴于端到端测试模拟真实的用户场景，测试预言机必须全面了解系统在各种环境和[用例](/zh-cn/wiki/use-case/) 中的行为。
   对于自动化端到端测试，测试预言机通常编码在 [测试脚本](/zh-cn/wiki/test-script/) 中。它在一系列操作之后断言应用程序的预期状态。这可能涉及检查 [数据库](/zh-cn/wiki/database/) 状态、消息队列或 UI 输出，以确保整个流程按预期工作。
 
-  ```
+```
   // Example assertion in an end-to-end test
   expect(actualOutput).toEqual(expectedOutput);
-  ```
+```
 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 中测试预言机的有效性至关重要，因为它直接影响捕获整个系统缺陷的能力。配置错误的 Oracle 可能会导致 [误报](/zh-cn/wiki/false-positive/) 或负面结果，从而破坏对自动化测试的信任。
   为了保持可靠性，应定期审查和更新[测试预言机](/zh-cn/wiki/test-oracles/)，以反映系统预期行为的变化。这确保了它们保持准确和相关，为自动化[端到端测试](/zh-cn/wiki/end-to-end-testing/)工作提供了坚实的基础。
 
@@ -97,8 +98,7 @@ order: 0
 - **共识预言机**：使用多个来源或专家之间的协议来确定预期结果。
 - **分析预言**：涉及数学或逻辑推理来确定正确的结果应该是什么。
 - **动态预言**：在测试执行期间动态生成预期结果，通常使用附加代码或算法。
-- **隐式预言**：基于一般期望，例如系统不应崩溃或产生未处理的异常，而没有特定的预期结果。
-  每种类型都通过提供不同的方法来验证结果来影响测试过程，从严格遵守规范到更灵活的概率方法。通过在[测试脚本](/zh-cn/wiki/test-script/) 中嵌入预言机检查或利用单独的预言机服务，可以将它们集成到[自动化测试](/zh-cn/wiki/automated-testing/) 中。挑战包括确保预言机的准确性、处理不完整的规范以及处理预言机的复杂性。克服这些问题通常涉及预言机类型的组合、对预言机本身的彻底验证以及随着系统的发展定期更新预言机。限制包括潜在的[误报](/zh-cn/wiki/false-positive/) 或负面影响以及为非确定性系统创建预言机的困难。有效性是通过预言机以一致且可靠的方式正确识别通过和失败条件的能力来衡量的。
+- **隐式预言**：基于一般期望，例如系统不应崩溃或产生未处理的异常，而没有特定的预期结果。 每种类型都通过提供不同的方法来验证结果来影响测试过程，从严格遵守规范到更灵活的概率方法。通过在[测试脚本](/zh-cn/wiki/test-script/) 中嵌入预言机检查或利用单独的预言机服务，可以将它们集成到[自动化测试](/zh-cn/wiki/automated-testing/) 中。挑战包括确保预言机的准确性、处理不完整的规范以及处理预言机的复杂性。克服这些问题通常涉及预言机类型的组合、对预言机本身的彻底验证以及随着系统的发展定期更新预言机。限制包括潜在的[误报](/zh-cn/wiki/false-positive/) 或负面影响以及为非确定性系统创建预言机的困难。有效性是通过预言机以一致且可靠的方式正确识别通过和失败条件的能力来衡量的。
 
 #### 您能否提供每种类型的测试预言机的示例？
 
@@ -106,76 +106,76 @@ order: 0
 
 - **派生预言**：使用现有系统文档或模型来预测预期结果。例如，如果记录了一个函数返回排序列表，则测试预言机将检查输出列表是否已排序。
 
-    ```
+```
     assert(isSorted(functionUnderTest(inputList)));
-    ```
+```
 
 - **指定的预言机**：基于明确的规范。例如，计算器应用程序的 [测试用例](/zh-cn/wiki/test-case/) 可能会检查加法函数是否返回指定的总和。
 
-    ```
+```
     assert(add(2, 2) === 4);
-    ```
+```
 
 - **一致性预言机**：比较软件不同版本或配置的结果一致性。一种常见的方法是在新版本上运行相同的测试，并将结果与​​旧版本进行比较。
 
-    ```
+```
     assert(resultNewVersion === resultOldVersion);
-    ```
+```
 
 - **统计预言**：使用统计方法来确定输出是否在可接受的方差范围内。这通常用于[性能测试](/zh-cn/wiki/performance-testing/)，其中响应时间可能会波动。
 
-    ```
+```
     assert(average(responseTimes) < maxAllowedTime);
-    ```
+```
 
 - **基于视角的预言机**：不同的利益相关者提供他们的期望，可以用作预言机。例如，安全专家可能会定义漏洞扫描的可接受阈值。
 
-    ```
+```
     assert(securityScanResults.vulnerabilities.length <= securityThreshold);
-    ```
+```
 
 - **程序化预言机**：直接实现预言机逻辑的代码。例如，函数的单元测试可能包含基于预期行为的断言。
 
-    ```
+```
     assert(myFunctionUnderTest('input') === expectedOutput);
-    ```
+```
 每种类型的预言机都提供了不同的视角来评估软件，从而有助于实现更彻底、更稳健的测试过程。
 
 - **派生预言**：使用现有系统文档或模型来预测预期结果。例如，如果记录了一个函数返回排序列表，则测试预言机将检查输出列表是否已排序。
 
-    ```
+```
     assert(isSorted(functionUnderTest(inputList)));
-    ```
+```
 
 - **指定的预言机**：基于明确的规范。例如，计算器应用程序的 [测试用例](/zh-cn/wiki/test-case/) 可能会检查加法函数是否返回指定的总和。
 
-    ```
+```
     assert(add(2, 2) === 4);
-    ```
+```
 
 - **一致性预言机**：比较软件不同版本或配置的结果一致性。一种常见的方法是在新版本上运行相同的测试，并将结果与​​旧版本进行比较。
 
-    ```
+```
     assert(resultNewVersion === resultOldVersion);
-    ```
+```
 
 - **统计预言**：使用统计方法来确定输出是否在可接受的方差范围内。这通常用于[性能测试](/zh-cn/wiki/performance-testing/)，其中响应时间可能会波动。
 
-    ```
+```
     assert(average(responseTimes) < maxAllowedTime);
-    ```
+```
 
 - **基于视角的预言机**：不同的利益相关者提供他们的期望，可以用作预言机。例如，安全专家可能会定义漏洞扫描的可接受阈值。
 
-    ```
+```
     assert(securityScanResults.vulnerabilities.length <= securityThreshold);
-    ```
+```
 
 - **程序化预言机**：直接实现预言机逻辑的代码。例如，函数的单元测试可能包含基于预期行为的断言。
 
-    ```
+```
     assert(myFunctionUnderTest('input') === expectedOutput);
-    ```
+```
 
 #### 不同类型的测试预言机如何影响测试过程？
 
@@ -185,8 +185,7 @@ order: 0
 - **派生预言**基于现有系统状态或以前的版本。它们启用**[回归测试](/zh-cn/wiki/regression-testing/)**，并且在正式规范不完整时很有用，但如果参考版本也有缺陷，则可能会错过新的缺陷。
 - **统计预言**依赖于概率模型，并在确切结果不可预测时使用。他们在测试中引入了**统计分析**，可以处理具有不确定性行为的复杂系统，但可能并不总能查明特定错误。
 - **共识预言机**使用多个来源或系统之间的协议来验证结果。当单一事实来源不可用时，它们可以有效地**检测异常**，但如果所有来源都具有相同的错误，则可能会**误导**。
-- **人类预言**涉及手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。
-  这些预言机的影响也体现在**测试设计**中，其中预言机的选择塑造了 [测试用例](/zh-cn/wiki/test-case/) 和 **[测试覆盖率](/zh-cn/wiki/test-coverage/)**。此外，预言机的**维护**至关重要，因为过时或不正确的预言机可能会导致[误报](/zh-cn/wiki/false-positive/)或负面结果，影响测试结果的**信任**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须平衡每种预言机类型的优点和缺点，以优化测试过程。
+- **人类预言**涉及手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。 这些预言机的影响也体现在**测试设计**中，其中预言机的选择塑造了 [测试用例](/zh-cn/wiki/test-case/) 和 **[测试覆盖率](/zh-cn/wiki/test-coverage/)**。此外，预言机的**维护**至关重要，因为过时或不正确的预言机可能会导致[误报](/zh-cn/wiki/false-positive/)或负面结果，影响测试结果的**信任**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须平衡每种预言机类型的优点和缺点，以优化测试过程。
 
 #### Test Oracle 使用的一些实际示例有哪些？
 
@@ -196,9 +195,9 @@ order: 0
 - **[数据库](/zh-cn/wiki/database/) 测试**：测试[数据库](/zh-cn/wiki/database/) 迁移时，测试Oracle 可以比较迁移前后的查询结果，以确保数据完整性和一致性。
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：软件更新后，测试 Oracle 可以将当前应用程序行为与先前测试运行中定义的预期行为进行比较，以检测任何意外的更改。
 
-  ```
+```
   assert.equal(currentBehavior, expectedBehavior);
-  ```
+```
 
 - **用户界面 (UI) 测试**：对于 Web 应用程序，测试 Oracle 可能会使用视觉回归工具来比较更改前后 UI 元素的屏幕截图，以确保像素完美的渲染。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：在[负载测试](/zh-cn/wiki/load-testing/)期间，测试Oracle可以评估重负载下的响应时间是否满足预定义的性能标准。
@@ -206,10 +205,10 @@ order: 0
 - **机器学习模型**：对于人工智能驱动的应用程序，测试预言机可以根据一组已知结果评估模型的预测，以衡量准确性。
 - **[API 测试](/zh-cn/wiki/api-testing/)**：测试[API](/zh-cn/wiki/api/) 时，测试Oracle 可以根据[API](/zh-cn/wiki/api/) 规范中定义的[预期结果](/zh-cn/wiki/expected-result/) 验证响应结构、数据和状态代码。
 
-  ```
+```
   expect(response.status).toBe(200);
   expect(response.data).toMatchObject(expectedData);
-  ```
+```
 这些示例说明了 [测试预言机](/zh-cn/wiki/test-oracles/) 如何成为验证各种领域和场景中软件正确性、一致性和合规性的不可或缺的一部分。
 
 - **一致性检查**：在多平台应用程序中，确保功能在 Windows、macOS 和 Linux 上表现一致。测试预言机验证这些环境中相同输入的输出是否一致。
@@ -229,80 +228,79 @@ order: 0
 
 1. **定义预期结果**：对于每个[测试用例](/zh-cn/wiki/test-case/)，指定[预期结果](/zh-cn/wiki/expected-result/)。这可能是系统在执行测试后应表现出的值、状态或行为。
 
-    ```
+```
     const expectedOutcome = "Success message displayed";
-    ```
+```
 
 2. **自动化[验证 ](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
 
-    ```
+```
     assert(actualOutcome === expectedOutcome);
-    ```
+```
 
 3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[数据库](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
 
-    ```
+```
     const referenceData = getReferenceDataFromAPI();
     assert(systemOutput === referenceData);
-    ```
+```
 
 4. **合并启发式**：对于启发式预言，编码输出应符合的规则或模式。
 
-    ```
+```
     assert(outputPattern.test(systemOutput));
-    ```
+```
 
 5. **处理非确定性**：在处理概率预言时，包括统计方法来评估可接受范围内的输出。
 
-    ```
+```
     assert(isWithinAcceptableRange(systemOutput, expectedRange));
-    ```
+```
 
 6. **利用工具和库**：利用现有库进行断言和比较，以简化实施。
 
-    ```
+```
     expect(systemOutput).to.equal(expectedOutcome);
-    ```
+```
 
-7. **持续改进**：随着系统的发展，不断更新预言机以确保其保持准确和相关。
-  请记住，预言机应该与 [测试用例](/zh-cn/wiki/test-case/) 一起**维护**，以确保它反映当前对系统正确行为的理解。
+7. **持续改进**：随着系统的发展，不断更新预言机以确保其保持准确和相关。 请记住，预言机应该与 [测试用例](/zh-cn/wiki/test-case/) 一起**维护**，以确保它反映当前对系统正确行为的理解。
 
 1. **定义预期结果**：对于每个[测试用例](/zh-cn/wiki/test-case/)，指定[预期结果](/zh-cn/wiki/expected-result/)。这可能是系统在执行测试后应表现出的值、状态或行为。
 
-    ```
+```
     const expectedOutcome = "Success message displayed";
-    ```
+```
 
 2. **自动化[验证 ](/zh-cn/wiki/verification/)**：编写断言语句，将实际结果与预期结果进行比较。
 
-    ```
+```
     assert(actualOutcome === expectedOutcome);
-    ```
+```
 
 3. **使用外部来源**：如果预言机依赖于外部数据或系统，请集成[API](/zh-cn/wiki/api/)或[数据库](/zh-cn/wiki/database/)以获取正确的状态或数据进行比较。
 
-    ```
+```
     const referenceData = getReferenceDataFromAPI();
     assert(systemOutput === referenceData);
-    ```
+```
 
 4. **合并启发式**：对于启发式预言，编码输出应符合的规则或模式。
 
-    ```
+```
     assert(outputPattern.test(systemOutput));
-    ```
+```
 
 5. **处理非确定性**：在处理概率预言时，包括统计方法来评估可接受范围内的输出。
 
-    ```
+```
     assert(isWithinAcceptableRange(systemOutput, expectedRange));
-    ```
+```
 
 6. **利用工具和库**：利用现有库进行断言和比较，以简化实施。
 
-    ```
+```
     expect(systemOutput).to.equal(expectedOutcome);
-    ```
+```
 
 7. **持续改进**：随着系统的发展，不断更新预言机以确保其保持准确和相关。
 
@@ -314,21 +312,21 @@ order: 0
 2. **为您的[测试用例](/zh-cn/wiki/test-case/) 选择适当的测试 Oracle 类型**。这可以是启发式的、正式的规范或之前记录的结果。
 3. **在您的 [测试自动化](/zh-cn/wiki/test-automation/) 框架内实施测试 Oracle**。这可能涉及编写一个函数或方法来封装用于确定预期结果的逻辑。
 
-    ```
+```
     function testOracle(input) {
       // Logic to determine expected outcome
       return expectedOutcome;
     }
-    ```
+```
 
 4. **执行[测试用例](/zh-cn/wiki/test-case/)**并捕获实际结果。这通常是通过运行与被测软件交互的[测试脚本](/zh-cn/wiki/test-script/)来完成的。
 5. **使用测试预言机将实际结果与预期结果进行比较**。此步骤通常在[测试脚本](/zh-cn/wiki/test-script/) 内自动执行。
 
-    ```
+```
     const actualOutcome = runTest();
     const expectedOutcome = testOracle(input);
     assert.equal(actualOutcome, expectedOutcome);
-    ```
+```
 
 6. **分析结果**。如果实际结果与预期结果相符，则测试通过。否则，它将失败，表明存在潜在缺陷。
 7. **记录任何差异**并将其报告为缺陷以供开发团队解决。
@@ -337,21 +335,21 @@ order: 0
 2. **为您的[测试用例](/zh-cn/wiki/test-case/) 选择适当的测试 Oracle 类型**。这可以是启发式的、正式的规范或之前记录的结果。
 3. **在[测试自动化](/zh-cn/wiki/test-automation/) 框架内实施测试Oracle**。这可能涉及编写一个函数或方法来封装用于确定预期结果的逻辑。
 
-    ```
+```
     function testOracle(input) {
       // Logic to determine expected outcome
       return expectedOutcome;
     }
-    ```
+```
 
 4. **执行[测试用例](/zh-cn/wiki/test-case/)**并捕获实际结果。这通常是通过运行与被测软件交互的[测试脚本](/zh-cn/wiki/test-script/)来完成的。
 5. **使用测试预言机将实际结果与预期结果进行比较**。此步骤通常在[测试脚本](/zh-cn/wiki/test-script/) 内自动执行。
 
-    ```
+```
     const actualOutcome = runTest();
     const expectedOutcome = testOracle(input);
     assert.equal(actualOutcome, expectedOutcome);
-    ```
+```
 
 6. **分析结果**。如果实际结果与预期结果相符，则测试通过。否则，它将失败，表明存在潜在缺陷。
 7. **记录任何差异**并将其报告为缺陷以供开发团队解决。
@@ -370,8 +368,7 @@ order: 0
 - **处理非确定性**：对于具有非确定性输出的系统，设计可以处理结果变化的[测试预言机](/zh-cn/wiki/test-oracles/)。
 - **验证[测试预言机](/zh-cn/wiki/test-oracles/)**：定期根据已知结果验证您的[测试预言机](/zh-cn/wiki/test-oracles/)，以确保它们正常运行。
 - **监控预言机性能**：跟踪[测试预言机](/zh-cn/wiki/test-oracles/)（包括[误报](/zh-cn/wiki/false-positive/) 和[假阴性](/zh-cn/wiki/false-negative/)）的性能，以随着时间的推移提高其准确性。
-- **平衡成本和收益**：考虑实施和维护[测试预言机](/zh-cn/wiki/test-oracles/) 的成本与它们在增加[测试覆盖率](/zh-cn/wiki/test-coverage/) 和缺陷检测方面提供的收益。
-  通过遵循这些最佳实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地利用[测试预言机](/zh-cn/wiki/test-oracles/) 来提高测试过程的可靠性和效率。
+- **平衡成本和收益**：考虑实施和维护[测试预言机](/zh-cn/wiki/test-oracles/) 的成本与它们在增加[测试覆盖率](/zh-cn/wiki/test-coverage/) 和缺陷检测方面提供的收益。 通过遵循这些最佳实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地利用[测试预言机](/zh-cn/wiki/test-oracles/) 来提高测试过程的可靠性和效率。
 
 - **定义明确的预期结果**：在使用测试预言机验证 [测试用例](/zh-cn/wiki/test-case/) 的结果之前，确保 [预期结果](/zh-cn/wiki/expected-result/) 得到明确定义和理解。
 - **使用多个预言机**：结合不同类型的[测试预言机](/zh-cn/wiki/test-oracles/)来增加测试的覆盖范围和可靠性。这可以帮助减轻任何单一预言机的限制。
@@ -394,18 +391,16 @@ order: 0
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：它们通过断言未更改的功能在其他地方修改后仍然可以正常运行来帮助快速识别回归。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：Oracle 通过根据可接受的阈值评估响应时间来评估系统性能。
 - **[API 测试](/zh-cn/wiki/api-testing/)**：它们验证[API](/zh-cn/wiki/api/) 响应、状态代码和数据完整性，以确保服务之间的无缝集成和通信。
-- **[用户界面测试](/zh-cn/wiki/ui-testing/)**：视觉预言根据预期的布局和功能评估用户界面，即使存在动态内容。
-  在[自动化测试](/zh-cn/wiki/automated-testing/) 中实现[测试预言机](/zh-cn/wiki/test-oracles/) 涉及编写断言脚本或使用断言库/框架。例如，在 [Jest](/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，您可以使用：
+- **[用户界面测试](/zh-cn/wiki/ui-testing/)**：视觉预言根据预期的布局和功能评估用户界面，即使存在动态内容。 在[自动化测试](/zh-cn/wiki/automated-testing/) 中实现[测试预言机](/zh-cn/wiki/test-oracles/) 涉及编写断言脚本或使用断言库/框架。例如，在 [Jest](/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，您可以使用：
 
-  ```
+```
   expect(actual).toBe(expected);
-  ```
+```
 最佳实践包括：
 
 - **[可维护性](/zh-cn/wiki/maintainability/)** ：保持预言机简单且可维护，以减少误报/漏报。
 - **相关性**：确保它们与测试环境相关并且能够检测有意义的故障。
-- **效率**：优化预言机以避免不必要的复杂性，从而减慢测试执行速度。
-  当绝对正确性无法实现时，可以通过改进预言机的逻辑并使用启发式或概率方法来缓解不稳定或预言机复杂性等挑战。测试预言机的有效性是通过其准确检测缺陷的能力及其对减少 [误报](/zh-cn/wiki/false-positive/) 和负面因素的贡献来衡量的。
+- **效率**：优化预言机以避免不必要的复杂性，从而减慢测试执行速度。 当绝对正确性无法实现时，可以通过改进预言机的逻辑并使用启发式或概率方法来缓解不稳定或预言机复杂性等挑战。测试预言机的有效性是通过其准确检测缺陷的能力及其对减少 [误报](/zh-cn/wiki/false-positive/) 和负面因素的贡献来衡量的。
 
 - **自动决策**：[测试预言机](/zh-cn/wiki/test-oracles/) 通过将预期结果与 [实际结果](/zh-cn/wiki/actual-result/) 进行比较，自动判定测试通过或失败。
 - **持续集成**：它们嵌入到 CI/CD 管道中，以确保自动化测试对新提交产生可靠的反馈。
@@ -430,32 +425,19 @@ order: 0
 - **维护开销**：随着系统的发展，维护测试预言机的相关性和准确性可能会占用大量资源。
 - **[误报](/zh-cn/wiki/false-positive/)/Negatives**：错误地识别测试结果可能会导致浪费精力调查非问题或忽视真正的缺陷。
 - **性能**：测试预言机，尤其是那些涉及复杂逻辑或外部系统的预言机，可能会减慢测试过程。
-- **主观性**：基于人的预言依赖于个人判断，这可能会引入偏见和不一致。
-  为了克服这些挑战，请考虑：
+- **主观性**：基于人的预言依赖于个人判断，这可能会引入偏见和不一致。 为了克服这些挑战，请考虑：
 
-- 使用
-    **启发式**
-    以降低复杂性。
+- 使用 **启发式**以降低复杂性。
 
-- 实施
-    **重试机制**
-    用于片状测试。
+- 实施 **重试机制**用于片状测试。
 
-- 定期
-    **审查和更新**
-    测试神谕。
+- 定期 **审查和更新**测试神谕。
 
-- 雇用
-    **自动一致性检查**
-    检测误报/漏报。
+- 雇用 **自动一致性检查**检测误报/漏报。
 
-- 平衡测试预言机的使用
-    **[探索性测试](/zh-cn/wiki/exploratory-testing/)**
-    对于意外行为。
+- 平衡测试预言机的使用 **[探索性测试](/zh-cn/wiki/exploratory-testing/)**对于意外行为。
 
-- 纳入
-    **监控和记录**
-    为不明确的测试结果提供额外信息。
+- 纳入 **监控和记录**为不明确的测试结果提供额外信息。
 
 - **Oracle问题**：确定正确的结果可能很困难，特别是对于定义预期结果并不简单的复杂系统。
 - **不稳定**：由于不确定性行为，测试预言机可能会产生不一致的结果，导致间歇性通过和失败的不稳定测试。
@@ -464,29 +446,17 @@ order: 0
 - **[误报](/zh-cn/wiki/false-positive/)/Negatives**：错误地识别测试结果可能会导致浪费精力调查非问题或忽视真正的缺陷。
 - **性能**：测试预言机，尤其是那些涉及复杂逻辑或外部系统的预言机，可能会减慢测试过程。
 - **主观性**：基于人的预言依赖于个人判断，这可能会引入偏见和不一致。
-- 使用
-    **启发式**
-    以降低复杂性。
+- 使用 **启发式**以降低复杂性。
 
-- 实施
-    **重试机制**
-    用于片状测试。
+- 实施 **重试机制**用于片状测试。
 
-- 定期
-    **审查和更新**
-    测试神谕。
+- 定期 **审查和更新**测试神谕。
 
-- 雇用
-    **自动一致性检查**
-    检测误报/漏报。
+- 雇用 **自动一致性检查**检测误报/漏报。
 
-- 平衡测试预言机的使用
-    **[探索性测试](/zh-cn/wiki/exploratory-testing/)**
-    对于意外行为。
+- 平衡测试预言机的使用 **[探索性测试](/zh-cn/wiki/exploratory-testing/)**对于意外行为。
 
-- 纳入
-    **监控和记录**
-    为不明确的测试结果提供额外信息。
+- 纳入 **监控和记录**为不明确的测试结果提供额外信息。
 
 #### 如何克服这些挑战？
 
@@ -501,8 +471,7 @@ order: 0
 - **持续学习**：鼓励**反馈循环**，其中预言机不断更新[测试执行](/zh-cn/wiki/test-execution/)的新发现，随着时间的推移提高其准确性。
 - **协作**：促进开发人员、测试人员和领域专家之间的**跨职能协作**，以完善预言机对应用程序预期行为的理解。
 - **工具集成**：将预言机与**现有测试框架**和**CI/CD管道**集成，以简化测试流程并确保预言机得到一致应用。
-- **文档**：维护关于如何使用和更新预言机的清晰**文档**，确保整个团队的知识转移和一致应用。
-  通过正面应对这些挑战，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试预言机](/zh-cn/wiki/test-oracles/) 保持有效并为软件质量保证流程做出积极贡献。
+- **文档**：维护关于如何使用和更新预言机的清晰**文档**，确保整个团队的知识转移和一致应用。 通过正面应对这些挑战，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试预言机](/zh-cn/wiki/test-oracles/) 保持有效并为软件质量保证流程做出积极贡献。
 
 - **增强预言机决策**：实施**启发式**和**概率模型**来处理不明确或部分预言机信息，减少[误报](/zh-cn/wiki/false-positive/)和否定。
 - **减少维护**：利用**自我修复脚本**，自动适应应用程序中的微小变化，最大限度地减少频繁更新预言机的需要。
@@ -526,8 +495,7 @@ order: 0
 - **主观性**：基于人的预言机，如专家意见，可能会引入主观性，导致结果不一致。
 - **Oracle 问题**：确定某些场景的正确行为本身就很困难，有时甚至无法创建明确的 Oracle。
 - **性能**：大规模测试需要高性能预言机，但创建和维护它们可能会占用大量资源。
-- **[误报](/zh-cn/wiki/false-positive/)/阴性**：不准确的预言机可能会导致误报（在没有缺陷时报告缺陷）或漏报（未能检测到实际缺陷）。
-  为了减轻这些限制，结合多个预言机、不断审查和更新预言机并将它们与其他测试方法一起使用非常重要。此外，自动化 Oracle 更新并针对复杂或主观场景采用启发式 Oracle 可以帮助应对这些挑战。
+- **[误报](/zh-cn/wiki/false-positive/)/阴性**：不准确的预言机可能会导致误报（在没有缺陷时报告缺陷）或漏报（未能检测到实际缺陷）。 为了减轻这些限制，结合多个预言机、不断审查和更新预言机并将它们与其他测试方法一起使用非常重要。此外，自动化 Oracle 更新并针对复杂或主观场景采用启发式 Oracle 可以帮助应对这些挑战。
 
 #### 如何衡量测试预言机的有效性？
 
@@ -535,18 +503,17 @@ order: 0
 
 - **准确度**：确定**[误报](/zh-cn/wiki/false-positive/) 率**（测试在不应通过时失败）和**[假阴性](/zh-cn/wiki/false-negative/) 率**（测试在不应通过时通过）。较低的比率表示预言机更准确。
 
-    ```
+```
     accuracy = (true_positives + true_negatives) / (total_tests)
-    ```
+```
 
 - **可靠性**：评估预言机在相同条件下产生相同结果的一致性。波动可能表明预言机决定论存在问题。
 - **效率**：评估预言机确定被测系统正确性所需的时间和资源。更快的结果和更少的计算成本是优选的。
 - **覆盖率**：分析预言机可以检测到各种缺陷的程度。这可以通过检查预言机执行的断言类型或检查来完成。
-- **[可维护性](/zh-cn/wiki/maintainability/)**：考虑软件发展时更新预言机所需的工作量。一个有效的预言机应该易于维护。
-  为了量化这些方面，需要收集和分析测试运行中的数据，例如发现的缺陷数量、运行测试所需的时间以及预言机维护所需的工作量。使用此数据来计算准确性和效率等指标，并将其与预定义的基准或历史数据进行比较以衡量有效性。定期检查这些指标有助于完善预言机以获得更好的性能。
+- **[可维护性](/zh-cn/wiki/maintainability/)**：考虑软件发展时更新预言机所需的工作量。一个有效的预言机应该易于维护。 为了量化这些方面，需要收集和分析测试运行中的数据，例如发现的缺陷数量、运行测试所需的时间以及预言机维护所需的工作量。使用此数据来计算准确性和效率等指标，并将其与预定义的基准或历史数据进行比较以衡量有效性。定期检查这些指标有助于完善预言机以获得更好的性能。
 
 - **准确度**：确定 **[误报](/zh-cn/wiki/false-positive/) 率**（测试在不应通过时失败）和 **[假阴性](/zh-cn/wiki/false-negative/) 率**（测试在不应通过时通过）。较低的比率表示预言机更准确。
 
-    ```
+```
     accuracy = (true_positives + true_negatives) / (total_tests)
-    ```
+```

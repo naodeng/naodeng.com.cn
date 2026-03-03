@@ -3,7 +3,7 @@ title: "Multi-agent Orchestration"
 titleZh: "多智能体编排"
 slug: "multi-agent-orchestration"
 lang: "en"
-summary: "An organizational framework coordinating multiple AI agents with different capabilities to complete complex, long-chain tasks that a single model cannot handle alone."
+summary: "An organizational framework coordinating multiple AI agents with different capabilities to complete complex…"
 topic: "ai-vibe-coding"
 aliases:
   - "Multi-agent Orchestration"

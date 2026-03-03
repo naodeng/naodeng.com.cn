@@ -3,11 +3,12 @@ title: "误报 ｜ False Positive"
 description: "在软件测试中，误报 (False Positive) 指的是测试用例错误地指出软件存在缺陷，即在没有问题的地方报错。这会导致不必要的调查并干扰测试流程。误报在自动化测试中尤为麻烦，因为它们会削弱团队对测试套件的信心。如果团队开始忽视失败的测试，真实的 Bug 就可能被漏掉。"
 section: "F"
 related:
-  - test-script
-  - manual-testing
-  - automated-testing
-  - test-suite
   - test-case
+  - automated-testing
+  - manual-testing
+  - test-data
+  - validation-testing
+  - fat
 order: 0
 ---
 
@@ -67,30 +68,30 @@ order: 0
 
 - **[误报](/zh-cn/wiki/false-positive/)**：由于环境问题、[片状测试](/zh-cn/wiki/flaky-test/) 或不正确的断言等原因，[测试脚本](/zh-cn/wiki/test-script/) 发出错误信号，但应用程序的功能是正确的。
 
-    ```
+```
     // Example: Test incorrectly fails due to timing issues
     await page.waitForSelector('.success-message', { timeout: 1000 }); // Fails if message takes longer
-    ```
+```
 - **[假阴性](/zh-cn/wiki/false-negative/)**：[测试脚本](/zh-cn/wiki/test-script/) 通过，由于 [测试覆盖率](/zh-cn/wiki/test-coverage/) 不足、过时的 [测试用例](/zh-cn/wiki/test-case/) 或错误配置的断言而错过了真正的缺陷。
 
-    ```
+```
     // Example: Test incorrectly passes because it doesn't check the correct condition
     expect(page.url()).toContain('/dashboard'); // Passes even if the dashboard is broken but URL is correct
-    ```
+```
 管理这些问题需要仔细分析测试结果，持续改进[测试用例](/zh-cn/wiki/test-case/)，并保持稳健的[测试环境](/zh-cn/wiki/test-environment/)。虽然[误报](/zh-cn/wiki/false-positive/) 可能会造成麻烦，但[假阴性](/zh-cn/wiki/false-negative/) 会对[软件质量](/zh-cn/wiki/software-quality/) 造成重大风险，必须通过更高的[priority](/zh-cn/wiki/priority/) 来解决。
 
 - **[误报](/zh-cn/wiki/false-positive/)**：由于环境问题、[片状测试](/zh-cn/wiki/flaky-test/) 或不正确的断言等原因，[测试脚本](/zh-cn/wiki/test-script/) 发出错误信号，但应用程序的功能是正确的。
 
-    ```
+```
     // Example: Test incorrectly fails due to timing issues
     await page.waitForSelector('.success-message', { timeout: 1000 }); // Fails if message takes longer
-    ```
+```
 - **[假阴性](/zh-cn/wiki/false-negative/)**：[测试脚本](/zh-cn/wiki/test-script/) 通过，由于 [测试覆盖率](/zh-cn/wiki/test-coverage/) 不足、过时的 [测试用例](/zh-cn/wiki/test-case/) 或错误配置的断言而错过了真正的缺陷。
 
-    ```
+```
     // Example: Test incorrectly passes because it doesn't check the correct condition
     expect(page.url()).toContain('/dashboard'); // Passes even if the dashboard is broken but URL is correct
-    ```
+```
 
 #### 软件测试中误报的常见原因有哪些？
 
@@ -115,80 +116,80 @@ order: 0
 
 1. **[片状测试](/zh-cn/wiki/flaky-test/)**：[测试用例](/zh-cn/wiki/test-case/) 由于计时问题（例如竞争条件或网络延迟）而不是代码中的实际缺陷而间歇性失败。
 
-    ```
+```
     // Flaky test example due to timing
     it('should load data within 500ms', async () => {
       const data = await fetchData();
       expect(data).toBeDefined();
     });
-    ```
+```
 2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [环境搭建](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
 3. **过时的[测试数据](/zh-cn/wiki/test-data/)**：测试失败，因为它依赖于由于应用程序或外部系统的更改而变得过时的硬编码值。
 
-    ```
+```
     // Outdated test data example
     it('should return the correct user', () => {
       const user = getUserById(1);
       expect(user.name).toEqual('John Doe'); // Fails if the user's name has been updated
     });
-    ```
+```
 4. **不正确的断言**：[测试用例](/zh-cn/wiki/test-case/) 失败是因为断言编写不正确，而不是因为应用程序行为不正确。
 
-    ```
+```
     // Incorrect assertion example
     it('should increment value', () => {
       let value = 1;
       value++;
       expect(value).toBe(1); // Incorrectly expecting the original value
     });
-    ```
+```
 5. **过于严格的测试**：测试因微小且无关紧要的更改而失败，例如不影响功能但改变测试所需的 DOM 结构的 UI 更改。
 
-    ```
+```
     // Overly strict test example
     it('should have a specific button class', () => {
       const button = document.querySelector('.btn-primary');
       expect(button.classList).toContain('btn-large'); // Fails if the class is changed to 'btn-lg'
     });
-    ```
+```
 1. **[片状测试](/zh-cn/wiki/flaky-test/)**：[测试用例](/zh-cn/wiki/test-case/) 由于计时问题（例如竞争条件或网络延迟）而不是代码中的实际缺陷而间歇性失败。
 
-    ```
+```
     // Flaky test example due to timing
     it('should load data within 500ms', async () => {
       const data = await fetchData();
       expect(data).toBeDefined();
     });
-    ```
+```
 2. **环境问题**：测试在本地计算机上通过，但在 CI/CD 管道中失败，因为环境 [环境搭建](/zh-cn/wiki/setup/) 存在差异，例如不同的操作系统版本或缺少依赖项。
 3. **过时的[测试数据](/zh-cn/wiki/test-data/)**：测试失败，因为它依赖于由于应用程序或外部系统的更改而变得过时的硬编码值。
 
-    ```
+```
     // Outdated test data example
     it('should return the correct user', () => {
       const user = getUserById(1);
       expect(user.name).toEqual('John Doe'); // Fails if the user's name has been updated
     });
-    ```
+```
 4. **不正确的断言**：[测试用例](/zh-cn/wiki/test-case/) 失败是因为断言编写不正确，而不是因为应用程序行为不正确。
 
-    ```
+```
     // Incorrect assertion example
     it('should increment value', () => {
       let value = 1;
       value++;
       expect(value).toBe(1); // Incorrectly expecting the original value
     });
-    ```
+```
 5. **过于严格的测试**：测试因微小且无关紧要的更改而失败，例如不影响功能但改变测试所需的 DOM 结构的 UI 更改。
 
-    ```
+```
     // Overly strict test example
     it('should have a specific button class', () => {
       const button = document.querySelector('.btn-primary');
       expect(button.classList).toContain('btn-large'); // Fails if the class is changed to 'btn-lg'
     });
-    ```
+```
 
 ### 预防和处理
 
@@ -205,8 +206,7 @@ order: 0
 - **采用持续集成实践**：将测试集成到 CI/CD 管道中以频繁运行它们并尽早发现问题。
 - **利用测试隔离**：将测试设计为彼此独立，以防止级联故障影响后续测试。
 - **进行同行评审**：让同行评审[测试脚本](/zh-cn/wiki/test-script/)，以发现可能导致[误报](/zh-cn/wiki/false-positive/) 的潜在问题。
-- **优化测试选择**：使用[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 重点关注影响最大的区域，减少不太重要的测试带来的噪音。
-  通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以最大限度地减少[误报](/zh-cn/wiki/false-positive/) 的发生，从而获得更可靠、更值得信赖的测试结果。
+- **优化测试选择**：使用[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 重点关注影响最大的区域，减少不太重要的测试带来的噪音。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以最大限度地减少[误报](/zh-cn/wiki/false-positive/) 的发生，从而获得更可靠、更值得信赖的测试结果。
 
 - **保持稳定[测试环境](/zh-cn/wiki/test-environment/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 尽可能稳定和一致。环境配置的波动可能会导致不可预测的测试结果。
 - **使用可靠的[测试数据](/zh-cn/wiki/test-data/)**：实施机制以将[测试数据](/zh-cn/wiki/test-data/)刷新或回滚到[测试执行](/zh-cn/wiki/test-execution/)之前的已知状态。这有助于维护数据的完整性和一致性。
@@ -230,151 +230,77 @@ order: 0
 - **调整阈值和容差**：在使用阈值或容差的测试中，微调这些值以更好地反映可接受的结果。
 - **与开发人员合作**：与开发人员密切合作，了解可能影响测试的代码更改，并确保测试与当前系统行为保持一致。
 - **使用版本控制**：在版本控制系统中维护测试脚本以跟踪更改并在更新导致误报时恢复到以前的版本。
-- **根本原因分析**：当发生误报时，执行根本原因分析以防止将来出现类似问题。
-  通过实施这些实践，您可以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 的发生并保持测试过程的完整性。
+- **根本原因分析**：当发生误报时，执行根本原因分析以防止将来出现类似问题。 通过实施这些实践，您可以最大限度地减少 [误报](/zh-cn/wiki/false-positive/) 的发生并保持测试过程的完整性。
 
 #### 发现误报时应采取哪些步骤？
 
 当 [测试自动化](/zh-cn/wiki/test-automation/) 中识别出 **[误报](/zh-cn/wiki/false-positive/)** 时，请执行以下步骤：
 
-1. **隔离**
-    测试用例以确认其为误报。
+1. **隔离**测试用例以确认其为误报。
 
-2. **审查**
-    测试代码和相关工件以识别任何错误或差异。
+2. **审查**测试代码和相关工件以识别任何错误或差异。
 
-3. **检查**
-    环境和数据设置是否不一致。
+3. **检查**环境和数据设置是否不一致。
 
-4. **运行**
-    手动测试以确定问题是否出在自动化脚本或产品上。
+4. **运行**手动测试以确定问题是否出在自动化脚本或产品上。
 
-5. **调试**
-    自动化脚本来查找根本原因。
+5. **调试**自动化脚本来查找根本原因。
 
-6. **更新**
-    如果误报是由于测试脚本问题造成的，则测试用例：
+6. **更新**如果误报是由于测试脚本问题造成的，则测试用例：
 
-- 纠正任何
-      **逻辑错误**
-      。
+- 纠正任何 **逻辑错误** 。
 
-- 改进
-      **选择器**
-      或
-      **等待**
-      处理动态内容。
+- 改进 **选择器**或 **等待**处理动态内容。
 
-- 调整
-      **断言**
-      反映当前的预期行为。
+- 调整 **断言**反映当前的预期行为。
+7. **文件**误报和应用的修复。
 
-- 纠正任何
-      **逻辑错误**
-      。
+8. **重新测试**更新的测试用例以确保它现在正确通过。
 
-- 改进
-      **选择器**
-      或
-      **等待**
-      处理动态内容。
+9. **监控**后续测试运行中的测试用例，以确保误报不会再次发生。
 
-- 调整
-      **断言**
-      反映当前的预期行为。
+10. **沟通**团队的变化让每个人都了解情况。
 
-7. **文件**
-    误报和应用的修复。
-
-8. **重新测试**
-    更新的测试用例以确保它现在正确通过。
-
-9. **监控**
-    后续测试运行中的测试用例，以确保误报不会再次发生。
-
-10. **沟通**
-    团队的变化让每个人都了解情况。
-
-  ```
+```
   // Example: Adjusting a wait to handle dynamic content
   await browser.wait(ExpectedConditions.visibilityOf(element), 10000, 'Element not visible');
-  ```
-1. **重构**
-    相关测试用例以防止类似问题。
+```
+1. **重构**相关测试用例以防止类似问题。
 
-2. **教育**
-    团队正在修复以避免将来出现类似问题。
+2. **教育**团队正在修复以避免将来出现类似问题。
 
-3. **分析**
-    误报趋势以提高测试可靠性。
-  通过系统地解决[误报](/zh-cn/wiki/false-positive/)，您可以维护自动化套件中的**完整性**和**信任**。
+3. **分析**误报趋势以提高测试可靠性。 通过系统地解决[误报](/zh-cn/wiki/false-positive/)，您可以维护自动化套件中的**完整性**和**信任**。
 
-1. **隔离**
-    测试用例以确认其为误报。
+1. **隔离**测试用例以确认其为误报。
 
-2. **审查**
-    测试代码和相关工件以识别任何错误或差异。
+2. **审查**测试代码和相关工件以识别任何错误或差异。
 
-3. **检查**
-    环境和数据设置是否不一致。
+3. **检查**环境和数据设置是否不一致。
 
-4. **运行**
-    手动测试以确定问题是否出在自动化脚本或产品上。
+4. **运行**手动测试以确定问题是否出在自动化脚本或产品上。
 
-5. **调试**
-    自动化脚本来查找根本原因。
+5. **调试**自动化脚本来查找根本原因。
 
-6. **更新**
-    如果误报是由于测试脚本问题造成的，则测试用例：
+6. **更新**如果误报是由于测试脚本问题造成的，则测试用例：
 
-- 纠正任何
-      **逻辑错误**
-      。
+- 纠正任何 **逻辑错误** 。
 
-- 改进
-      **选择器**
-      或
-      **等待**
-      处理动态内容。
+- 改进 **选择器**或 **等待**处理动态内容。
 
-- 调整
-      **断言**
-      反映当前的预期行为。
+- 调整 **断言**反映当前的预期行为。
+7. **文件**误报和应用的修复。
 
-- 纠正任何
-      **逻辑错误**
-      。
+8. **重新测试**更新的测试用例以确保它现在正确通过。
 
-- 改进
-      **选择器**
-      或
-      **等待**
-      处理动态内容。
+9. **监控**后续测试运行中的测试用例，以确保误报不会再次发生。
 
-- 调整
-      **断言**
-      反映当前的预期行为。
+10. **沟通**团队的变化让每个人都了解情况。
 
-7. **文件**
-    误报和应用的修复。
+1. **重构**相关测试用例以防止类似问题。
 
-8. **重新测试**
-    更新的测试用例以确保它现在正确通过。
+2. **教育**团队正在修复以避免将来出现类似问题。
 
-9. **监控**
-    后续测试运行中的测试用例，以确保误报不会再次发生。
-
-10. **沟通**
-    团队的变化让每个人都了解情况。
-
-1. **重构**
-    相关测试用例以防止类似问题。
-
-2. **教育**
-    团队正在修复以避免将来出现类似问题。
-
-3. **分析**
-    误报趋势以提高测试可靠性。
+3. **分析**误报趋势以提高测试可靠性。
 
 #### 自动化如何帮助减少误报的发生？
 
@@ -396,12 +322,11 @@ order: 0
 - **版本控制（Version Control）**：确保测试与应用程序变更保持同步，防止过时的测试错误通过。
 - **全面断言（Comprehensive Assertions）**：使用精确的断言来验证具体行为，降低遗漏失败问题的风险。
 
-  ```ts
+```ts
   assert.strictEqual(actual, expected);
-  ```
+```
 - **错误处理**：正确捕获和断言错误条件可确保在未按预期处理异常时测试失败。
-- **持续审查**：定期审查和重构测试以保持其有效性和相关性，减少误报。
-  通过关注这些元素，测试设计增强了 [测试套件](/zh-cn/wiki/test-suite/) 的完整性，确保通过的测试真正反映了正确的系统行为。
+- **持续审查**：定期审查和重构测试以保持其有效性和相关性，减少误报。 通过关注这些元素，测试设计增强了 [测试套件](/zh-cn/wiki/test-suite/) 的完整性，确保通过的测试真正反映了正确的系统行为。
 
 - **测试标准的精确性**：明确定义的预期结果和条件减少了歧义，确保测试在应该失败的时候失败。
 - **稳健性**：测试应处理不同的数据集和环境，而不会因外部因素而错误通过。
@@ -427,43 +352,29 @@ order: 0
   此外，[误报](/zh-cn/wiki/false-positive/) 可能会削弱测试过程中的信任。如果利益相关者认为测试不可靠，他们可能会**忽视真正的问题**，从而导致生产中出现性能问题。这种怀疑也使得证明[性能测试](/zh-cn/wiki/performance-testing/) 工具和基础设施投资的合理性变得更加困难。
   为了减轻这些影响，至关重要的是：
 
-- **审查和完善**
-    测试环境和数据集，以确保它们准确地代表生产条件。
+- **审查和完善**测试环境和数据集，以确保它们准确地代表生产条件。
 
-- **分析测试结果**
-    关键是寻找与预期模式的不一致或偏差。
+- **分析测试结果**关键是寻找与预期模式的不一致或偏差。
 
-- **与开发人员合作**
-    和运营团队了解差异的背景和潜在来源。
-  当检测到 [误报](/zh-cn/wiki/false-positive/) 时：
+- **与开发人员合作**和运营团队了解差异的背景和潜在来源。 当检测到 [误报](/zh-cn/wiki/false-positive/) 时：
 
-1. **文件**
-    事件发生及调查过程。
+1. **文件**事件发生及调查过程。
 
-2. **调整**
-    根据需要测试参数或环境。
+2. **调整**根据需要测试参数或环境。
 
-3. **沟通**
-    调查结果，以防止未来发生类似情况。
-  通过保持**严格的方法**来测试设计和执行，并促进团队成员之间的**开放式沟通**，[误报](/zh-cn/wiki/false-positive/) 对[性能测试](/zh-cn/wiki/performance-testing/) 的影响可以最小化，确保工作重点放在真正的性能增强上。
+3. **沟通**调查结果，以防止未来发生类似情况。 通过保持**严格的方法**来测试设计和执行，并促进团队成员之间的**开放式沟通**，[误报](/zh-cn/wiki/false-positive/) 对[性能测试](/zh-cn/wiki/performance-testing/) 的影响可以最小化，确保工作重点放在真正的性能增强上。
 
-- **审查和完善**
-    测试环境和数据集，以确保它们准确地代表生产条件。
+- **审查和完善**测试环境和数据集，以确保它们准确地代表生产条件。
 
-- **分析测试结果**
-    关键是寻找与预期模式的不一致或偏差。
+- **分析测试结果**关键是寻找与预期模式的不一致或偏差。
 
-- **与开发人员合作**
-    和运营团队了解差异的背景和潜在来源。
+- **与开发人员合作**和运营团队了解差异的背景和潜在来源。
 
-1. **文件**
-    事件发生及调查过程。
+1. **文件**事件发生及调查过程。
 
-2. **调整**
-    根据需要测试参数或环境。
+2. **调整**根据需要测试参数或环境。
 
-3. **沟通**
-    调查结果，以防止未来发生类似情况。
+3. **沟通**调查结果，以防止未来发生类似情况。
 
 #### 误报如何影响软件的安全测试？
 

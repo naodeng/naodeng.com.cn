@@ -3,7 +3,7 @@ title: "Flex Processing"
 titleZh: "弹性处理"
 slug: "flex-processing"
 lang: "en"
-summary: "A load-balancing mechanism that dynamically switches between models and inference strategies based on task urgency and complexity, balancing latency, cost, and quality."
+summary: "A load-balancing mechanism that dynamically switches between models and inference strategies based on task urgency and complexity, balancing latency…"
 topic: "ai-vibe-coding"
 aliases:
   - "Flex Processing"

@@ -116,7 +116,7 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 - [ai-agent](/en/AIWiki/ai-agent/)
 - [skill](/en/AIWiki/skill/)
-- [tool-use](/en/AIWiki/tool-use/)
+- [function-calling](/en/AIWiki/function-calling/)
 
 ### External References
 

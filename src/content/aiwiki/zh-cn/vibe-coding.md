@@ -14,6 +14,11 @@ related:
   - "agentic-workflow"
   - "prompt-driven-development"
   - "ai-pair-programming"
+  - "acp-agent-client-protocol"
+  - "antigravity"
+  - "cursor"
+  - "gemini"
+  - "zero-shot-coding"
 lastReviewedAt: "2026-03-02"
 ---
 

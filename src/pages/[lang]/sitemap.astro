@@ -29,9 +29,13 @@ const posts = (await getCollection("blog"))
 const wikiEntries = (await getCollection("wiki")).sort((a, b) =>
   slugToTitleEn(wikiIdToSlug(a.id)).localeCompare(slugToTitleEn(wikiIdToSlug(b.id)), "en")
 );
+const MAX_SITEMAP_WIKI_ITEMS = 200;
+const visibleWikiEntries = wikiEntries.slice(0, MAX_SITEMAP_WIKI_ITEMS);
 
 // 当前语言的标签集合
 const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
+const MAX_SITEMAP_POST_ITEMS = 200;
+const visiblePosts = posts.slice(0, MAX_SITEMAP_POST_ITEMS);
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -62,7 +66,7 @@ export const getStaticPaths = () =>
       <h2 class="section-title">{locale === "zh-cn" ? "百科词条" : "Wiki"}</h2>
       <ul class="link-list">
         <li><a href={getRelativeLocaleUrl(locale, "/wiki")}>{locale === "zh-cn" ? "百科首页" : "Wiki Home"}</a></li>
-        {wikiEntries.map((entry) => {
+        {visibleWikiEntries.map((entry) => {
           const slug = wikiIdToSlug(entry.id);
           const label =
             getTitleZhFromBody(entry.body) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slug);
@@ -72,6 +76,13 @@ export const getStaticPaths = () =>
             </li>
           );
         })}
+        {wikiEntries.length > MAX_SITEMAP_WIKI_ITEMS && (
+          <li class="sitemap-note">
+            {locale === "zh-cn"
+              ? `仅展示前 ${MAX_SITEMAP_WIKI_ITEMS} 条词条，完整列表请使用 XML 站点地图。`
+              : `Showing first ${MAX_SITEMAP_WIKI_ITEMS} wiki entries. Use XML sitemap for full list.`}
+          </li>
+        )}
       </ul>
     </section>
 
@@ -91,7 +102,7 @@ export const getStaticPaths = () =>
     <section class="sitemap-section">
       <h2 class="section-title">{locale === "zh-cn" ? "全部文章" : "All Posts"}</h2>
       <ul class="post-list">
-        {posts.map((post) => {
+        {visiblePosts.map((post) => {
           const [, ...idParts] = post.id.split("/");
           const url = getRelativeLocaleUrl(locale, `/blog/${idParts.join("/").toLowerCase()}`);
           return (
@@ -100,6 +111,13 @@ export const getStaticPaths = () =>
             </li>
           );
         })}
+        {posts.length > MAX_SITEMAP_POST_ITEMS && (
+          <li class="sitemap-note">
+            {locale === "zh-cn"
+              ? `仅展示前 ${MAX_SITEMAP_POST_ITEMS} 篇文章，完整列表请使用 XML 站点地图。`
+              : `Showing first ${MAX_SITEMAP_POST_ITEMS} posts. Use XML sitemap for full list.`}
+          </li>
+        )}
       </ul>
     </section>
 
@@ -143,6 +161,12 @@ export const getStaticPaths = () =>
   .link-list li,
   .post-list li {
     margin-block: 0.5rem;
+  }
+
+  .sitemap-note {
+    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    font-size: 0.92rem;
+    margin-top: 0.75rem;
   }
 
   .link-list a,

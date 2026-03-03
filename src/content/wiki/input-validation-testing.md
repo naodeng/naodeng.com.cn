@@ -1,13 +1,14 @@
 ---
 title: "输入验证测试 ｜ Input Validation Testing"
-description: "输入验证测试 (Input Validation Testing) 旨在确保应用程序能正确处理各种输入数据，包括预期的、畸形的或恶意的数据。它验证系统是否仅允许合法数据通过，并能有效拒绝或净化（Sanitize）非法数据。其核心维度包括： * 边界测试 (Boundary Testing)：验证极值（最大/最小值）的处理。 * 格式检查 (Format Checking)：验证如日期、邮箱等特定格式。 * 数据类型检查 (Data Type Checking)：确保输入符合预期的类型（如字符或整型）。 * 一致性检查 (Consistency Checking)：验证数据间的约束逻辑。 * 大小检查 (Size Checking)：防止输入超出预设长度。"
+description: "输入验证测试 (Input Validation Testing) 旨在确保应用程序能正确处理各种输入数据，包括预期的、畸形的或恶意的数据。它验证系统是否仅允许合法数据通过，并能有效拒绝或净化（Sanitize）非法数据…"
 section: "I"
 related:
   - validation-testing
   - boundary-testing
+  - test-case
   - automated-testing
-  - fuzz-testing
   - test-data
+  - interface-testing
 order: 0
 ---
 
@@ -54,18 +55,16 @@ order: 0
 - **格式检查**：验证输入是否与预期格式匹配，例如日期或电子邮件地址。
 - **数据类型检查**：确保输入的数据类型正确，例如字符串或整数。
 - **一致性检查**：验证输入是否与其他数据或约束一致。
-- **尺寸检查**：确认输入不超过预期的长度或尺寸。
-  要**识别用于验证的输入**，请考虑用户输入、[API](/zh-cn/wiki/api/) 请求、文件上传和任何外部数据源。重点关注恶意用户可能利用漏洞的领域。
-  **自动化**可以使用支持输入验证检查的测试框架和库来实现。例如，在 JavaScript 测试套件中：
+- **尺寸检查**：确认输入不超过预期的长度或尺寸。 要**识别用于验证的输入**，请考虑用户输入、[API](/zh-cn/wiki/api/) 请求、文件上传和任何外部数据源。重点关注恶意用户可能利用漏洞的领域。 **自动化**可以使用支持输入验证检查的测试框架和库来实现。例如，在 JavaScript 测试套件中：
 
-  ```
+```
   describe('Input Validation', () => {
     it('should reject invalid email format', () => {
       const input = 'invalid-email';
       expect(isValidEmail(input)).toBe(false);
     });
   });
-  ```
+```
 将输入验证测试合并到 **CI/CD 管道**中，以便在每次构建时自动运行，确保新的更改不会引入输入处理回归。
   **挑战**包括跟上不断发展的攻击媒介并确保验证逻辑不会变得过于复杂。定期更新[测试用例](/zh-cn/wiki/test-case/)并结合使用静态分析和[动态测试](/zh-cn/wiki/dynamic-testing/)来保持稳健的验证。
 
@@ -91,8 +90,7 @@ order: 0
 - **不可变数据**：将输入数据视为不可变。一旦验证，输入在处理之前不应更改。
 - **无状态验证**：尽可能执行无状态验证。每个输入都应独立于系统状态进行验证。
 - **自动化测试**：自动化输入验证测试以在每次构建或部署时运行，以尽早捕获回归。
-- **[安全测试](/zh-cn/wiki/security-testing/)**：在[安全测试](/zh-cn/wiki/security-testing/) 例程中包含输入验证以发现潜在的漏洞。
-  通过遵循这些原则，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建强大的[输入验证测试](/zh-cn/wiki/input-validation-testing/) 框架，从而增强软件的安全性和可靠性。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：在[安全测试](/zh-cn/wiki/security-testing/) 例程中包含输入验证以发现潜在的漏洞。 通过遵循这些原则，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建强大的[输入验证测试](/zh-cn/wiki/input-validation-testing/) 框架，从而增强软件的安全性和可靠性。
 
 ### 技术和策略
 
@@ -111,8 +109,7 @@ order: 0
 - **组合测试**：应用算法生成涵盖所有可能排列的最小输入组合集。
 - **数据类型检查**：验证输入是否与预期的数据类型匹配。
 - **正则表达式**：使用正则表达式模式来验证文本输入的格式和结构。
-- **自定义验证函数**：编写特定代码来检查无法使用通用方法轻松测试的复杂规则或业务逻辑。
-  这些技术可以混合和定制，以满足被测试软件的特定需求，确保稳健有效的输入验证。
+- **自定义验证函数**：编写特定代码来检查无法使用通用方法轻松测试的复杂规则或业务逻辑。 这些技术可以混合和定制，以满足被测试软件的特定需求，确保稳健有效的输入验证。
 
 - **边界值分析 (BVA)**：在输入范围的边缘进行测试，以捕获相差一的错误并确保正确处理边界条件。
 - **[等价划分](/zh-cn/wiki/equivalence-partitioning/)**：将输入数据划分为等效分区，其中每个分区中的 [测试用例](/zh-cn/wiki/test-case/) 应被软件同等对待。
@@ -136,10 +133,7 @@ order: 0
 - **用户输入可变性**：寻找具有高度用户控制的字段，这些字段更容易出现无效或意外输入。
 - **历史问题**：查看日志和错误报告以了解过去引起问题的输入。
 - **边界条件**：识别可能用边界值或极端情况进行测试的输入。
-- **数据类型期望**：验证预期采用特定格式的输入，例如日期、电子邮件或数字。
-  利用**风险评估**来确定验证工作的优先级，重点关注如果受到损害可能导致重大功能或安全问题的输入。此外，请考虑可能规定某些验证的**监管要求**，尤其是对于合规性驱动的项目。
-  合并 **用户故事** 和 **[用例](/zh-cn/wiki/use-case/)** 以了解预期的输入模式并派生反映实际使用情况的 [测试用例](/zh-cn/wiki/test-case/)。与开发人员合作，了解**代码结构**并确定应在何处进行输入验证。
-  最后，使用**自动化工具**扫描代码库中潜在的输入字段，并生成一个全面的列表，供 [测试自动化](/zh-cn/wiki/test-automation/) 团队审查和完善。
+- **数据类型期望**：验证预期采用特定格式的输入，例如日期、电子邮件或数字。 利用**风险评估**来确定验证工作的优先级，重点关注如果受到损害可能导致重大功能或安全问题的输入。此外，请考虑可能规定某些验证的**监管要求**，尤其是对于合规性驱动的项目。 合并 **用户故事** 和 **[用例](/zh-cn/wiki/use-case/)** 以了解预期的输入模式并派生反映实际使用情况的 [测试用例](/zh-cn/wiki/test-case/)。与开发人员合作，了解**代码结构**并确定应在何处进行输入验证。 最后，使用**自动化工具**扫描代码库中潜在的输入字段，并生成一个全面的列表，供 [测试自动化](/zh-cn/wiki/test-automation/) 团队审查和完善。
 
 #### 可以使用哪些策略来确保全面的输入验证测试？
 
@@ -154,8 +148,7 @@ order: 0
 - **利用数据驱动测试**：将输入值和 [预期结果](/zh-cn/wiki/expected-result/) 存储在外部数据源中，从而允许广泛且灵活的 [测试用例](/zh-cn/wiki/test-case/) 执行。
 - **执行[回归测试](/zh-cn/wiki/regression-testing/)**：进行任何更改后，确保输入验证对于新功能和现有功能仍然按预期工作。
 - **同行评审和结对编程**：鼓励开发人员和测试人员评审彼此的工作，以便及早发现潜在的输入验证问题。
-- **随时了解威胁情报**：及时了解新出现的威胁并调整输入验证测试以涵盖新的攻击媒介。
-  通过结合这些策略，您可以创建一个强大的[输入验证测试](/zh-cn/wiki/input-validation-testing/)框架，最大限度地减少由于输入处理不当而导致的安全漏洞和功能错误的风险。
+- **随时了解威胁情报**：及时了解新出现的威胁并调整输入验证测试以涵盖新的攻击媒介。 通过结合这些策略，您可以创建一个强大的[输入验证测试](/zh-cn/wiki/input-validation-testing/)框架，最大限度地减少由于输入处理不当而导致的安全漏洞和功能错误的风险。
 
 - **采用基于风险的方法**：根据输入验证缺陷的潜在影响确定测试的优先级。重点关注输入验证可能导致严重漏洞的领域，例如 [SQL](/zh-cn/wiki/sql/) 注入或跨站点脚本 (XSS)。
 - **使用[等价划分](/zh-cn/wiki/equivalence-partitioning/)**：将输入分组到等价类中，其中类的每个成员都应被软件以类似的方式处理。每个班级至少测试一名代表。
@@ -174,49 +167,24 @@ order: 0
 
 [输入验证测试](/zh-cn/wiki/input-validation-testing/) 的真实示例包括：
 
-- **Web 表单**：测试电子邮件字段以仅接受有效的电子邮件格式并拒绝无效的电子邮件格式。例如，确保
-    `user@example.com`
-    被接受，同时
-    `user@.com`
-    不是。
+- **Web 表单**：测试电子邮件字段以仅接受有效的电子邮件格式并拒绝无效的电子邮件格式。例如，确保 `user@example.com` 被接受，同时 `user@.com` 不是。
 
 - **电子商务结帐**：验证信用卡号字段仅接受数字并遵守卡类型（例如 Visa、MasterCard）的正确长度和校验和。
-- **移动应用程序**：确保联系表单上的电话号码输入仅接受数字和允许的符号，例如
-    `+`
-    ,
-    `-`
-    ，或空格，并符合国际标准。
+- **移动应用程序**：确保联系表单上的电话号码输入仅接受数字和允许的符号，例如 `+` , `-` ，或空格，并符合国际标准。
 
 - **[API](/zh-cn/wiki/api/)** ：验证 JSON 有效负载以确保所需字段存在并且数据类型与预期格式匹配，例如名称字段的字符串或年龄字段的整数。
-- **文件上传**：检查上传功能是否仅接受指定类型的文件（例如，
-    `.jpg`
-    ,
-    `.png`
-    对于图像）和大小，拒绝任何不符合这些条件的文件。
+- **文件上传**：检查上传功能是否仅接受指定类型的文件（例如， `.jpg` , `.png` 对于图像）和大小，拒绝任何不符合这些条件的文件。
 
 - **用户注册**：确认密码字段强制执行安全策略，例如最小长度、包含大小写字母、数字和特殊字符。
-- **搜索功能**：测试搜索输入字段是否正确处理特殊字符和 SQL 通配符以防止 SQL 注入攻击。
-  每个示例都涉及测试系统对各种输入类型的反应，确保只接受和处理格式正确的数据，而拒绝所有不适当或可能有害的数据。
+- **搜索功能**：测试搜索输入字段是否正确处理特殊字符和 SQL 通配符以防止 SQL 注入攻击。 每个示例都涉及测试系统对各种输入类型的反应，确保只接受和处理格式正确的数据，而拒绝所有不适当或可能有害的数据。
 
-- **Web 表单**：测试电子邮件字段以仅接受有效的电子邮件格式并拒绝无效的电子邮件格式。例如，确保
-    `user@example.com`
-    被接受，同时
-    `user@.com`
-    不是。
+- **Web 表单**：测试电子邮件字段以仅接受有效的电子邮件格式并拒绝无效的电子邮件格式。例如，确保 `user@example.com` 被接受，同时 `user@.com` 不是。
 
 - **电子商务结帐**：验证信用卡号字段仅接受数字并遵守卡类型（例如 Visa、MasterCard）的正确长度和校验和。
-- **移动应用程序**：确保联系表单上的电话号码输入仅接受数字和允许的符号，例如
-    `+`
-    ,
-    `-`
-    ，或空格，并符合国际标准。
+- **移动应用程序**：确保联系表单上的电话号码输入仅接受数字和允许的符号，例如 `+` , `-` ，或空格，并符合国际标准。
 
 - **[API](/zh-cn/wiki/api/)** ：验证 JSON 有效负载以确保存在所需字段并且数据类型与预期格式匹配，例如名称字段的字符串或年龄字段的整数。
-- **文件上传**：检查上传功能是否仅接受指定类型的文件（例如，
-    `.jpg`
-    ,
-    `.png`
-    对于图像）和大小，拒绝任何不符合这些条件的文件。
+- **文件上传**：检查上传功能是否仅接受指定类型的文件（例如， `.jpg` , `.png` 对于图像）和大小，拒绝任何不符合这些条件的文件。
 
 - **用户注册**：确认密码字段强制执行安全策略，例如最小长度、包含大小写字母、数字和特殊字符。
 - **搜索功能**：测试搜索输入字段是否正确处理特殊字符和 SQL 通配符以防止 SQL 注入攻击。
@@ -229,28 +197,27 @@ order: 0
 2. **合并到版本控制挂钩**：在**预提交**或**预推送**挂钩上触发输入验证测试，以尽早发现问题。
 3. **配置 CI/CD 管道**：在管道配置文件中添加一个步骤来执行输入验证测试。例如，在 Jenkins 中，您可以在 `Jenkinsfile` 中添加一个阶段：
 
-    ```
+```
     stage('Input Validation') {
         steps {
             sh 'npm run test:input-validation'
         }
     }
-    ```
+```
 
 4. **快速失败**：将管道设置为在第一次测试失败时失败，以防止有缺陷的代码进一步发展。
 5. **隔离并确定优先级**：在更耗时的测试之前运行输入验证测试，以快速获得反馈。
 6. **使用质量门**：实施质量门，以防止在输入验证测试失败时部署代码。
 7. **持续反馈**：配置通知以立即提醒开发人员测试失败。
-8. **监控和优化**：定期审查测试结果并优化测试，以随着应用程序的发展覆盖新的输入场景。
-  通过遵循这些步骤，[输入验证测试](/zh-cn/wiki/input-validation-testing/) 成为软件开发生命周期中无缝且不可或缺的一部分，确保及时识别和解决与输入相关的漏洞。
+8. **监控和优化**：定期审查测试结果并优化测试，以随着应用程序的发展覆盖新的输入场景。 通过遵循这些步骤，[输入验证测试](/zh-cn/wiki/input-validation-testing/) 成为软件开发生命周期中无缝且不可或缺的一部分，确保及时识别和解决与输入相关的漏洞。
 
-    ```
+```
     stage('Input Validation') {
         steps {
             sh 'npm run test:input-validation'
         }
     }
-    ```
+```
 
 #### 输入验证测试常用哪些工具？
 
@@ -258,27 +225,27 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)**：浏览器自动化工具，可以模拟用户输入并验证 Web 表单响应。
 
-    ```
+```
     WebElement inputField = driver.findElement(By.id("input"));
     inputField.sendKeys("Invalid input");
     WebElement submitButton = driver.findElement(By.id("submit"));
     submitButton.click();
     // Assert the validation message
-    ```
+```
 
 - **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和.NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
 
-    ```
+```
     @Test
     public void testInputValidation() {
         // Call method with invalid input
         // Assert expected validation exception or error message
     }
-    ```
+```
 
 - **[Postman](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
 
-    ```
+```
     {
         "method": "POST",
         "url": "http://api.example.com/endpoint",
@@ -287,38 +254,37 @@ order: 0
             "raw": "{ \"input\": \"<invalid_input>\" }"
         }
     }
-    ```
+```
 
 - **OWASP ZAP**：安全工具，可以对 Web 应用程序执行自动攻击，以测试安全漏洞的输入验证。
 - **RestAssured**：用于轻松测试 REST 服务的 Java DSL，可用于验证针对不同输入的响应。
 - **[Cypress](/zh-cn/wiki/cypress/)**：JavaScript [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，可用于测试 Web 应用程序中的输入验证。
 - **SQLMap**：一种自动化工具，可检测和利用[SQL](/zh-cn/wiki/sql/) 注入缺陷，测试与[SQL](/zh-cn/wiki/sql/) 查询相关的输入验证的稳健性。
-- **Regex101**：在线正则表达式测试工具，用于验证和调试用于输入验证的正则表达式。
-  每个工具都服务于[输入验证测试](/zh-cn/wiki/input-validation-testing/) 的特定方面，从单元级别到集成和[安全测试](/zh-cn/wiki/security-testing/)。选择正确的组合取决于应用程序堆栈和[测试计划](/zh-cn/wiki/test-plan/) 的具体要求。
+- **Regex101**：在线正则表达式测试工具，用于验证和调试用于输入验证的正则表达式。 每个工具都服务于[输入验证测试](/zh-cn/wiki/input-validation-testing/) 的特定方面，从单元级别到集成和[安全测试](/zh-cn/wiki/security-testing/)。选择正确的组合取决于应用程序堆栈和[测试计划](/zh-cn/wiki/test-plan/) 的具体要求。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：浏览器自动化工具，可以模拟用户输入并验证 Web 表单响应。
 
-    ```
+```
     WebElement inputField = driver.findElement(By.id("input"));
     inputField.sendKeys("Invalid input");
     WebElement submitButton = driver.findElement(By.id("submit"));
     submitButton.click();
     // Assert the validation message
-    ```
+```
 
 - **JUnit** 和 **[NUnit](/zh-cn/wiki/nunit/)**：分别在 Java 和.NET 中编写 [测试用例](/zh-cn/wiki/test-case/) 的框架，通常与断言一起使用来验证输入约束。
 
-    ```
+```
     @Test
     public void testInputValidation() {
         // Call method with invalid input
         // Assert expected validation exception or error message
     }
-    ```
+```
 
 - **[Postman](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
 
-    ```
+```
     {
         "method": "POST",
         "url": "http://api.example.com/endpoint",
@@ -327,7 +293,7 @@ order: 0
             "raw": "{ \"input\": \"<invalid_input>\" }"
         }
     }
-    ```
+```
 
 ### 挑战和解决方案
 
@@ -342,15 +308,14 @@ order: 0
 - **[误报](/zh-cn/wiki/false-positive/)/Negatives**：实施强大的错误处理和日志记录机制，以准确识别测试失败的原因。
 - **[可维护性](/zh-cn/wiki/maintainability/)**：定期更新[测试用例](/zh-cn/wiki/test-case/) 以反映输入验证逻辑的更改。使用版本控制来跟踪更改并促进协作。
 - **性能**：监控验证逻辑对应用程序的性能影响，并优化测试以在可接受的时间范围内运行。
-- **安全**：合并以安全为中心的[测试用例](/zh-cn/wiki/test-case/)，检查[SQL](/zh-cn/wiki/sql/) 注入和跨站点脚本（XSS）等漏洞。
-  通过使用正确的策略和工具应对这些挑战，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[输入验证测试](/zh-cn/wiki/input-validation-testing/) 有效并有助于提高软件的整体质量和安全性。
+- **安全**：合并以安全为中心的[测试用例](/zh-cn/wiki/test-case/)，检查[SQL](/zh-cn/wiki/sql/) 注入和跨站点脚本（XSS）等漏洞。 通过使用正确的策略和工具应对这些挑战，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[输入验证测试](/zh-cn/wiki/input-validation-testing/) 有效并有助于提高软件的整体质量和安全性。
 
 #### 输入验证测试如何自动化？
 
 自动化[输入验证测试](/zh-cn/wiki/input-validation-testing/)涉及编写测试脚本，系统地将一系列输入输入系统并断言预期结果。对于 Web 应用程序使用 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等自动化框架，对于移动应用程序使用 Appium。
   通过将 [测试数据](/zh-cn/wiki/test-data/) 外部化到 CSV、XML 或 JSON 等文件中，利用**数据驱动测试**技术。这样可以轻松扩展[测试用例](/zh-cn/wiki/test-case/)，而无需更改[测试脚本](/zh-cn/wiki/test-script/)。例如：
 
-  ```
+```
   @DataProvider(name = "inputData")
   public Object[][] inputData() {
       return new Object[][] {
@@ -363,7 +328,7 @@ order: 0
   public void testInputValidation(String input, boolean expectedResult) {
       // Test logic here
   }
-  ```
+```
 将**边界值分析**和**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**合并到您的脚本中，以有效覆盖边缘情况和输入范围。使用 **[模糊测试](/zh-cn/wiki/fuzz-testing/)** 工具（例如 AFL 或 Boofuzz）生成随机的、意外的输入并监视系统的行为。
   在脚本中实施**正则表达式**和**自定义验证规则**以检查输入模式和约束。
   通过故意提供无效的、意外的或恶意的输入来自动化**[负面测试](/zh-cn/wiki/negative-testing/)**，以确保系统妥善处理它们。
@@ -376,11 +341,11 @@ order: 0
   当正确实施输入验证时，它可以充当**第一道防线**，防止恶意数据进入系统并被处理。这一点至关重要，因为一旦系统内存在坏数据，就可能导致未经授权的访问、数据泄露，甚至整个系统被接管。
   自动化[输入验证测试](/zh-cn/wiki/input-validation-testing/) 在安全环境中特别有效。通过编写测试脚本以包含各种输入攻击，例如使用意外、随机或格式错误的数据进行模糊测试，测试人员可以模拟攻击并识别潜在的安全缺陷。例如：
 
-  ```
+```
   // Example of a simple automated test for SQL injection vulnerability
   const userInput = "105 OR 1=1";
   const query = `SELECT * FROM users WHERE id = ${userInput}`;
   // If the query returns more than one user, there's a vulnerability
-  ```
+```
 通过将这些测试合并到 **CI/CD 管道**，任何新代码更改都会自动测试漏洞，确保安全性是连续的 [priority](/zh-cn/wiki/priority/)。此外，使用 OWASP ZAP 或 SQLMap 等工具可以帮助自动发现与输入验证相关的安全风险。
   总之，[输入验证测试](/zh-cn/wiki/input-validation-testing/) 对于安全性至关重要，因为它可以主动识别和降低风险，保护应用程序免受各种基于输入的攻击。

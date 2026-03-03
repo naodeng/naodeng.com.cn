@@ -1,13 +1,13 @@
 ---
 title: "截图测试 ｜ Screenshot Testing"
-description: "截图测试是一种视觉验证方法，通过捕获软件应用程序的用户界面 (UI) 并将其与基准图像进行比较来检测更改或异常。它涉及在应用流程的不同阶段对网页、移动应用或任何图形界面进行截图，以确保视觉一致性和功能性。执行步骤：1. 捕获基准图像：代表预期状态的截图。2. 运行测试：执行自动化测试并在相同点捕获新截图。3. 比较截图：使用图像比较工具或算法检测差异。4. 分析结果：评审差异是预期的更改还是视觉缺陷。"
+description: "截图测试是一种视觉验证方法，通过捕获软件应用程序的用户界面 (UI) 并将其与基准图像进行比较来检测更改或异常。它涉及在应用流程的不同阶段对网页、移动应用或任何图形界面进行截图，以确保视觉一致性和功能性。执行步骤：1. 捕获基准图像：代表预期状态的截图。2. 运行测试：执行自动化测试并在相同点捕获新截图…"
 section: "S"
 related:
   - visual-regression-testing
   - browserstack
-  - cross-browser-testing
   - automated-testing
-  - manual-testing
+  - web-testing
+  - cross-browser-testing
 order: 0
 ---
 
@@ -58,11 +58,11 @@ order: 0
 3. **比较屏幕截图**：使用图像比较工具或算法来检测基线和新屏幕截图之间的差异。
 4. **分析结果**：检查差异以确定它们是否是有意更改或视觉缺陷。
 
-  ```
+```
   // Example of capturing a screenshot using a test automation tool
   await page.goto('https://example.com');
   await page.screenshot({path: 'example-page.png'});
-  ```
+```
 选择[截图测试](/zh-cn/wiki/screenshot-testing/) 工具时，请考虑**自动基线管理**、**与 CI/CD 管道集成**以及**支持多种环境和设备**等功能。工具还应该提供一种**忽略动态内容**的方法，并具有**减少[误报](/zh-cn/wiki/false-positive/)**的机制。
   对于动态内容，可以使用**屏蔽**、**等待元素稳定**或**用静态占位符替换动态数据**等策略来确保一致性。
   将 [截图测试](/zh-cn/wiki/screenshot-testing/) 合并到您的自动化套件中，以捕获仅通过功能测试可能无法检测到的视觉回归，确保跨不同平台和设备的高质量用户体验。
@@ -72,49 +72,33 @@ order: 0
 [截图测试](/zh-cn/wiki/screenshot-testing/) 在软件[测试自动化](/zh-cn/wiki/test-automation/) 中对于**视觉验证**至关重要。它确保 UI 向用户正确显示，捕捉传统功能测试可能错过的**视觉回归**。通过将当前屏幕截图与基线图像进行比较，测试人员可以检测应用程序布局和样式中的意外更改或异常。
   此方法在以下情况下尤其重要：
 
-- **重构**
-    或更新 UI，其中代码的更改可能会对视觉呈现产生副作用。
+- **重构**或更新 UI，其中代码的更改可能会对视觉呈现产生副作用。
 
-- **验证第三方集成**
-    或应用程序代码库可能无法一致控制的内容。
+- **验证第三方集成**或应用程序代码库可能无法一致控制的内容。
 
-- **在多个设备上测试**
-    和屏幕分辨率，以确保跨平台一致的用户体验。
-  要有效集成 [截图测试](/zh-cn/wiki/screenshot-testing/)，请考虑以下事项：
+- **在多个设备上测试**和屏幕分辨率，以确保跨平台一致的用户体验。 要有效集成 [截图测试](/zh-cn/wiki/screenshot-testing/)，请考虑以下事项：
 
-- **自动化捕获和比较过程**
-    简化工作流程并减少手动工作量。
+- **自动化捕获和比较过程**简化工作流程并减少手动工作量。
 
-- **与您的 CI/CD 管道集成**
-    对变化进行持续的视觉反馈。
+- **与您的 CI/CD 管道集成**对变化进行持续的视觉反馈。
 
-- **使用智能图像比较工具**
-    可以忽略动态内容或动画引起的差异。
+- **使用智能图像比较工具**可以忽略动态内容或动画引起的差异。
 
-- **组织和管理屏幕截图**
-    有效地快速访问和审查它们以进行任何必要的调整。
-  通过合并 [截图测试](/zh-cn/wiki/screenshot-testing/)，您可以及早发现视觉问题，维护精美的 UI，并向最终用户提供视觉上一致的高质量产品。
+- **组织和管理屏幕截图**有效地快速访问和审查它们以进行任何必要的调整。 通过合并 [截图测试](/zh-cn/wiki/screenshot-testing/)，您可以及早发现视觉问题，维护精美的 UI，并向最终用户提供视觉上一致的高质量产品。
 
-- **重构**
-    或更新 UI，其中代码的更改可能会对视觉呈现产生副作用。
+- **重构**或更新 UI，其中代码的更改可能会对视觉呈现产生副作用。
 
-- **验证第三方集成**
-    或应用程序代码库可能无法一致控制的内容。
+- **验证第三方集成**或应用程序代码库可能无法一致控制的内容。
 
-- **在多个设备上测试**
-    和屏幕分辨率，以确保跨平台一致的用户体验。
+- **在多个设备上测试**和屏幕分辨率，以确保跨平台一致的用户体验。
 
-- **自动化捕获和比较过程**
-    简化工作流程并减少手动工作量。
+- **自动化捕获和比较过程**简化工作流程并减少手动工作量。
 
-- **与您的 CI/CD 管道集成**
-    对变化进行持续的视觉反馈。
+- **与您的 CI/CD 管道集成**对变化进行持续的视觉反馈。
 
-- **使用智能图像比较工具**
-    可以忽略动态内容或动画引起的差异。
+- **使用智能图像比较工具**可以忽略动态内容或动画引起的差异。
 
-- **组织和管理屏幕截图**
-    有效地快速访问和审查它们以进行任何必要的调整。
+- **组织和管理屏幕截图**有效地快速访问和审查它们以进行任何必要的调整。
 
 #### 屏幕截图测试的主要优点是什么？
 
@@ -128,8 +112,7 @@ order: 0
 - **自动验证**：与自动化框架集成，无需手动干预即可验证视觉方面。
 - **时间效率**：减少手动目视检查所花费的时间，特别是对于大规模应用。
 - **改进协作**：可以与利益相关者共享屏幕截图以获取反馈，从而增强协作。
-- **文档**：作为设计和功能文档的一种形式，对于入门和参考很有用。
-  实施[截图测试](/zh-cn/wiki/screenshot-testing/)以获得这些好处，增强[用户界面测试](/zh-cn/wiki/ui-testing/)在您的软件自动化工作中的稳健性和可靠性。
+- **文档**：作为设计和功能文档的一种形式，对于入门和参考很有用。 实施[截图测试](/zh-cn/wiki/screenshot-testing/)以获得这些好处，增强[用户界面测试](/zh-cn/wiki/ui-testing/)在您的软件自动化工作中的稳健性和可靠性。
 
 #### 屏幕截图测试如何提高软件产品的质量？
 
@@ -150,8 +133,7 @@ order: 0
 - **范围有限**：屏幕截图测试仅捕获视觉状态，而不是应用程序的功能或交互行为。
 - **动态内容**：处理动态内容（例如广告、动画或日期和时间值）可能具有挑战性，因为它们可能在测试运行之间发生变化，从而导致漏报。
 - **本地化和国际化**：测试不同的语言和格式可能很麻烦，因为每种变体可能需要自己的一组屏幕截图。
-- **辅助功能**：屏幕截图测试不涵盖辅助功能问题；他们无法确保该应用程序可供残疾人使用。
-  为了减轻这些限制，重要的是用其他类型的测试（例如单元测试、集成测试和功能测试）来补充[截图测试](/zh-cn/wiki/screenshot-testing/)，以确保全面的覆盖范围。
+- **辅助功能**：屏幕截图测试不涵盖辅助功能问题；他们无法确保该应用程序可供残疾人使用。 为了减轻这些限制，重要的是用其他类型的测试（例如单元测试、集成测试和功能测试）来补充[截图测试](/zh-cn/wiki/screenshot-testing/)，以确保全面的覆盖范围。
 
 ### 工具和技术
 
@@ -161,68 +143,68 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
 
-    ```
+```
     TakesScreenshot ts = (TakesScreenshot)driver;
     File source = ts.getScreenshotAs(OutputType.FILE);
-    ```
+```
 
 - **Puppeteer**：一个节点库，提供高级 [API](/zh-cn/wiki/api/) 通过 DevTools 协议控制 Chrome 或 Chromium，非常适合 [自动化测试](/zh-cn/wiki/automated-testing/)。
 
-    ```
+```
     await page.screenshot({path: 'screenshot.png'});
-    ```
+```
 
 - **[Cypress](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
 
-    ```
+```
     cy.screenshot();
-    ```
+```
 
 - **Applitools Eyes**：对 [截图测试](/zh-cn/wiki/screenshot-testing/) 使用人工智能驱动的视觉比较，提供与多个测试框架集成的 SDK。
 - **Percy**：与 CI/CD 管道集成的可视化测试平台，捕获屏幕截图并突出显示视觉变化。
 - **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化，支持跨浏览器的 [截图测试](/zh-cn/wiki/screenshot-testing/)。
 
-    ```
+```
     await page.screenshot({ path: `screenshot.png` });
-    ```
+```
 
 - **Storybook**：主要用于组件测试，它可以与 Chromatic 等视觉回归工具配合使用来捕获和测试 UI 组件。
 - **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)，包括用于视觉测试的屏幕截图。
 
-    ```
+```
     await t.takeScreenshot();
-    ```
+```
 这些工具可以与断言库和图像比较工具以各种方式组合使用，以创建强大的[截图测试](/zh-cn/wiki/screenshot-testing/)工作流程。
 
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：与各种编程语言和框架集成，允许自动浏览器控制和屏幕截图捕获。
 
-    ```
+```
     TakesScreenshot ts = (TakesScreenshot)driver;
     File source = ts.getScreenshotAs(OutputType.FILE);
-    ```
+```
 
 - **Puppeteer**：一个节点库，提供高级 [API](/zh-cn/wiki/api/) 通过 DevTools 协议控制 Chrome 或 Chromium，非常适合 [自动化测试](/zh-cn/wiki/automated-testing/)。
 
-    ```
+```
     await page.screenshot({path: 'screenshot.png'});
-    ```
+```
 
 - **[Cypress](/zh-cn/wiki/cypress/)**：一个[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，包括[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的屏幕截图功能。
 
-    ```
+```
     cy.screenshot();
-    ```
+```
 
-    ```
+```
     await page.screenshot({ path: `screenshot.png` });
-    ```
+```
 
 - **Storybook**：主要用于组件测试，它可以与 Chromatic 等视觉回归工具配合使用来捕获和测试 UI 组件。
 - **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)，包括用于视觉测试的屏幕截图。
 
-    ```
+```
     await t.takeScreenshot();
-    ```
+```
 
 #### 如何选择合适的截图测试工具？
 
@@ -236,8 +218,7 @@ order: 0
 - **报告和分析**：一个好的工具应该提供全面的报告功能，以帮助您快速分析测试结果。
 - **易于使用**：该工具应具有用户友好的界面和清晰的文档，以最大限度地减少学习曲线。
 - **社区和支持**：考虑围绕该工具的社区以及提供商提供的支持，这对于故障排除和改进至关重要。
-- **成本**：评估该工具的定价模型，并确保它符合您的预算，同时满足您的要求。
-  考虑这些因素后，建议尝试一系列工具，看看它们在您的特定 [用例](/zh-cn/wiki/use-case/) 上的表现如何。这种实践方法将帮助您做出明智的决定。
+- **成本**：评估该工具的定价模型，并确保它符合您的预算，同时满足您的要求。 考虑这些因素后，建议尝试一系列工具，看看它们在您的特定 [用例](/zh-cn/wiki/use-case/) 上的表现如何。这种实践方法将帮助您做出明智的决定。
 
 #### 屏幕截图测试工具需要寻找哪些关键功能？
 
@@ -256,47 +237,46 @@ order: 0
 - **报告和通知**：提供有关测试结果的详细报告和警报。
 - **用户权限和访问控制**：管理团队协作的用户角色。
 - **可自定义阈值**：设置图像比较的敏感度级别以适应项目需求。
-- **[API](/zh-cn/wiki/api/) 访问**：通过记录齐全的 API 促进自动化以及与其他工具的集成。
-  这些功能共同提高了[自动化测试](/zh-cn/wiki/automated-testing/) 环境中[截图测试](/zh-cn/wiki/screenshot-testing/) 的效率、准确性和协作性。
+- **[API](/zh-cn/wiki/api/) 访问**：通过记录齐全的 API 促进自动化以及与其他工具的集成。 这些功能共同提高了[自动化测试](/zh-cn/wiki/automated-testing/) 环境中[截图测试](/zh-cn/wiki/screenshot-testing/) 的效率、准确性和协作性。
 
 #### 屏幕截图测试中使用哪些技术来比较屏幕截图？
 
 在[截图测试](/zh-cn/wiki/screenshot-testing/) 中，比较屏幕截图涉及多种技术来检测基线图像和当前图像之间的差异。以下是一些常用的方法：
   **逐像素比较**：此方法涉及比较两个图像的每个对应像素。如果像素颜色值不匹配，则会将其标记为差异。这种方法很简单，但可能对抗锯齿或颜色变化等微小变化过于敏感。
 
-  ```
+```
   compareImages(baselineImage, currentImage) {
     // Loop through each pixel and compare values
   }
-  ```
+```
 **感知哈希 (pHash)**：该技术根据图像的视觉内容将图像转换为哈希值，从而可以比较这些哈希以确定相似性。它对微小变化不太敏感，更关注感知变化。
 
-  ```
+```
   calculateImageHash(image) {
     // Generate a hash based on image content
   }
-  ```
+```
 **结构相似度指数（SSIM）**：SSIM是一种测量两幅图像之间相似度的方法。它考虑纹理、亮度和对比度的变化，提供更人性化的图像差异评估。
 
-  ```
+```
   calculateSSIM(image1, image2) {
     // Calculate similarity index
   }
-  ```
+```
 **基于特征的比较**：这涉及检测图像中的关键特征并比较它们的相对位置和特征。它对于布局保持一致但内容可能发生变化的动态内容很有用。
 
-  ```
+```
   compareImageFeatures(baselineFeatures, currentFeatures) {
     // Match and compare features
   }
-  ```
+```
 **阈值**：为了减少比较中的噪音，可以设置阈值，以便仅报告超过特定水平的差异。这有助于忽略细微的差异。
 
-  ```
+```
   applyThreshold(differenceValue) {
     // Ignore differences below a certain threshold
   }
-  ```
+```
 这些技术可以单独使用或组合使用，以在[截图测试](/zh-cn/wiki/screenshot-testing/)期间检测有意义的差异时实现灵敏度和特异性之间的平衡。
 
 #### 截图测试中如何处理动态内容？
@@ -305,33 +285,32 @@ order: 0
 
 - **排除动态区域**：修改屏幕截图测试工具以忽略屏幕的动态区域。这可以通过设置掩码或指定代表动态区域的选择器来完成。
 
-  ```
+```
   excludeSelectors: ['.dynamic-content']
-  ```
+```
 
 - **使用稳定的[测试数据](/zh-cn/wiki/test-data/)**：将[测试环境](/zh-cn/wiki/test-environment/) 配置为使用产生可预测输出的静态数据集，从而最大限度地减少 UI 中的更改。
 - **动态内容存根**：在测试期间用静态占位符替换动态内容以确保一致性。
 - **视觉回归阈值**：设置变化的容忍级别，允许动态内容发生微小变化而不会导致测试失败。
 
-  ```
+```
   compareThreshold: 0.01
-  ```
+```
 
 - **快照平均**：拍摄多个快照并对它们进行平均，以减轻随机动态内容的影响。
 - **DOM 操作**：在进行屏幕截图之前，操作 DOM 以删除或标准化动态内容。
 
-  ```
+```
   document.querySelector('.timestamp').innerText = '00:00:00';
-  ```
+```
 
 - **元素隐藏**：隐藏在测试运行之间容易更改的元素。
 
-  ```
+```
   document.querySelector('.live-feed').style.display = 'none';
-  ```
+```
 
-- **智能图像比较**：使用提供人工智能图像比较的工具来区分有意义的变化和动态内容噪音。
-  通过结合这些技术，您可以有效地管理[截图测试](/zh-cn/wiki/screenshot-testing/)中的动态内容，确保测试可靠且有意义。
+- **智能图像比较**：使用提供人工智能图像比较的工具来区分有意义的变化和动态内容噪音。 通过结合这些技术，您可以有效地管理[截图测试](/zh-cn/wiki/screenshot-testing/)中的动态内容，确保测试可靠且有意义。
 
 - **排除动态区域**：修改屏幕截图测试工具以忽略屏幕的动态区域。这可以通过设置掩码或指定代表动态区域的选择器来完成。
 - **使用稳定的[测试数据](/zh-cn/wiki/test-data/)**：将[测试环境](/zh-cn/wiki/test-environment/) 配置为使用产生可预测输出的静态数据集，从而最大限度地减少 UI 中的更改。
@@ -353,10 +332,10 @@ order: 0
 3. **写入 [测试用例](/zh-cn/wiki/test-case/)** 以导航到所需的应用程序状态。使用您的[测试自动化](/zh-cn/wiki/test-automation/) 框架与应用程序交互。
 4. 使用该工具的[API](/zh-cn/wiki/api/) 在[测试用例](/zh-cn/wiki/test-case/) 中的关键点**捕获屏幕截图**。例如，在基于 [selenium](/zh-cn/wiki/selenium/) 的项目中，您可以使用：
 
-    ```
+```
     File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     FileUtils.copyFile(screenshot, new File("path/to/screenshot.png"));
-    ```
+```
 
 5. **存储代表应用程序预期状态的基线图像**。将它们保存在版本控制的存储库中或使用 [截图测试](/zh-cn/wiki/screenshot-testing/) 工具提供的存储。
 6. **使用工具的比较引擎将捕获的屏幕截图**与基线图像进行比较。处理可接受范围内的差异以避免[误报](/zh-cn/wiki/false-positive/)。
@@ -369,10 +348,10 @@ order: 0
 3. **写入 [测试用例](/zh-cn/wiki/test-case/)** 以导航到所需的应用程序状态。使用您的[测试自动化](/zh-cn/wiki/test-automation/) 框架与应用程序交互。
 4. 使用该工具的[API](/zh-cn/wiki/api/) 在[测试用例](/zh-cn/wiki/test-case/) 中的关键点**捕获屏幕截图**。例如，在基于 [selenium](/zh-cn/wiki/selenium/) 的项目中，您可以使用：
 
-    ```
+```
     File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     FileUtils.copyFile(screenshot, new File("path/to/screenshot.png"));
-    ```
+```
 
 5. **存储代表应用程序预期状态的基线图像**。将它们保存在版本控制的存储库中或使用 [截图测试](/zh-cn/wiki/screenshot-testing/) 工具提供的存储。
 6. **使用工具的比较引擎将捕获的屏幕截图**与基线图像进行比较。处理可接受范围内的差异以避免[误报](/zh-cn/wiki/false-positive/)。
@@ -397,8 +376,7 @@ order: 0
 - **文档**：记录每个屏幕截图测试的目的和范围，以实现更好的可维护性。
 - **辅助功能检查**：将辅助功能测试与屏幕截图结合起来，以确保视觉元素符合辅助功能标准。
 - **性能注意事项**：注意对测试套件执行时间的影响并进行优化，以避免减慢 CI/CD 管道的速度。
-- **定期审查**：定期审查屏幕截图测试以消除冗余并确保它们符合当前的 UI 和 UX 期望。
-  通过遵循这些做法，您可以在 [测试自动化](/zh-cn/wiki/test-automation/) 策略中最大限度地发挥 [截图测试](/zh-cn/wiki/screenshot-testing/) 的有效性。
+- **定期审查**：定期审查屏幕截图测试以消除冗余并确保它们符合当前的 UI 和 UX 期望。 通过遵循这些做法，您可以在 [测试自动化](/zh-cn/wiki/test-automation/) 策略中最大限度地发挥 [截图测试](/zh-cn/wiki/screenshot-testing/) 的有效性。
 
 #### 如何管理和组织测试截图？
 
@@ -413,8 +391,7 @@ order: 0
 - **自动标记**：使用脚本根据[测试场景](/zh-cn/wiki/test-scenario/)使用相关关键字来标记屏幕截图。
 - **审核流程**：在工作流程中纳入审核步骤，以评估每个屏幕截图的必要性和相关性。
 - **与[测试报告](/zh-cn/wiki/test-report/)**集成：将屏幕截图嵌入自动[测试报告](/zh-cn/wiki/test-report/)中以直观地表示测试失败。
-- **工具**：利用提供屏幕截图管理功能的工具，例如自动组织、比较和云集成。
-  通过遵循这些实践，您可以维护一个组织良好的屏幕截图存储库，以支持您的测试工作并改进[测试自动化](/zh-cn/wiki/test-automation/)套件的[可维护性](/zh-cn/wiki/maintainability/)。
+- **工具**：利用提供屏幕截图管理功能的工具，例如自动组织、比较和云集成。 通过遵循这些实践，您可以维护一个组织良好的屏幕截图存储库，以支持您的测试工作并改进[测试自动化](/zh-cn/wiki/test-automation/)套件的[可维护性](/zh-cn/wiki/maintainability/)。
 
 - **命名约定**：对屏幕截图使用清晰一致的命名。包括 [测试用例](/zh-cn/wiki/test-case/) ID、日期和屏幕截图用途的简短说明。例如，`TC101_20230315_LoginPage.png`。
 - **目录结构**：以分层文件夹结构组织屏幕截图。按功能、测试运行或日期对它们进行分组。这使得在需要时更容易找到特定的屏幕截图。
@@ -440,8 +417,7 @@ order: 0
 7. **人工审核**：纳入人工审核流程，以确认发现的差异是真正的问题还是[误报](/zh-cn/wiki/false-positive/)。
 8. **自动批准**：实施自动化流程来批准不影响应用程序质量的已知差异。
 9. **版本控制集成**：使用版本控制系统跟踪屏幕截图中的更改并有效管理基线。
-10. **视觉降噪**：通过标准化字体和颜色等 UI 元素以及在测试期间避免动画来最小化视觉噪音。
-  通过应用这些策略，您可以显着减少 [截图测试](/zh-cn/wiki/screenshot-testing/) 中 [误报](/zh-cn/wiki/false-positive/) 的出现，使您的自动化工作更加可靠和高效。
+10. **视觉降噪**：通过标准化字体和颜色等 UI 元素以及在测试期间避免动画来最小化视觉噪音。 通过应用这些策略，您可以显着减少 [截图测试](/zh-cn/wiki/screenshot-testing/) 中 [误报](/zh-cn/wiki/false-positive/) 的出现，使您的自动化工作更加可靠和高效。
 
 #### 可以使用哪些策略来自动化屏幕截图测试？
 
@@ -450,10 +426,10 @@ order: 0
 - **基线图像创建**：建立一组基线图像，将来的屏幕截图将与这些图像进行比较。确保这些图像是在受控条件下捕获的，以尽量减少变化。
 - **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[Cypress](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到您的[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
 
-    ```
+```
     // Example using Puppeteer
     await page.screenshot({ path: 'example.png' });
-    ```
+```
 
 - **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：实施视觉回归工具，例如 BackstopJS、Percy 或 Applitools。这些工具将新的屏幕截图与基线图像进行比较以检测变化。
 - **阈值调整**：设置可接受的变化阈值以区分有意义的差异和噪音。这有助于减少[误报](/zh-cn/wiki/false-positive/)。
@@ -461,16 +437,15 @@ order: 0
 - **并行执行**：并行运行屏幕截图测试以减少执行时间。基于云的服务可以为并行化提供必要的基础设施。
 - **自动审核工作流程**：将 [截图测试](/zh-cn/wiki/screenshot-testing/) 结果集成到您的审核流程中。 GitHub Actions 或 GitLab CI 等工具可以自动化视觉更改的审批工作流程。
 - **图像版本控制**：将基线和测试图像存储在版本控制系统中。这允许跟踪更改并在必要时恢复到以前的版本。
-- **环境一致性**：确保测试在一致的环境中运行，具有相同的浏览器版本、屏幕分辨率和系统设置，以避免出现差异。
-  通过结合这些策略，您可以构建强大且高效的[截图测试](/zh-cn/wiki/screenshot-testing/) 流程，以补充您的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
+- **环境一致性**：确保测试在一致的环境中运行，具有相同的浏览器版本、屏幕分辨率和系统设置，以避免出现差异。 通过结合这些策略，您可以构建强大且高效的[截图测试](/zh-cn/wiki/screenshot-testing/) 流程，以补充您的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
 
 - **基线图像创建**：建立一组基线图像，将来的屏幕截图将与这些图像进行比较。确保这些图像是在受控条件下捕获的，以尽量减少变化。
 - **自动捕获**：使用[selenium](/zh-cn/wiki/selenium/)、Puppeteer 或[Cypress](/zh-cn/wiki/cypress/) 等工具将屏幕截图集成到[测试脚本](/zh-cn/wiki/test-script/) 中。在测试流程中的特定点触发捕获。
 
-    ```
+```
     // Example using Puppeteer
     await page.screenshot({ path: 'example.png' });
-    ```
+```
 
 ### 高级主题
 
@@ -491,8 +466,7 @@ order: 0
 7. **审查**：工程师审查不匹配的情况，以确定它们是否是预期的变化或真正的问题。
 8. **基线更新**：如果有意更改，则更新基线图像以反映 UI 的新状态。
 9. **修复问题**：如果不匹配是错误，开发人员会在继续之前修复它们。
-10. **继续**：如果所有测试都通过，管道将继续执行后续步骤，例如附加测试或部署到生产环境。
-  此过程通常由 CI/CD 工具（如 Jenkins、GitLab CI 或 CircleCI）以及 [截图测试](/zh-cn/wiki/screenshot-testing/) 工具（如 Percy 或 Screener）管理。为了集成[截图测试](/zh-cn/wiki/screenshot-testing/)，工程师编写[测试脚本](/zh-cn/wiki/test-script/)并配置CI/CD管道以在适当的阶段包含这些测试。目标是自动捕捉视觉回归，确保任何 UI 更改都不会在代码投入生产之前破坏现有功能。
+10. **继续**：如果所有测试都通过，管道将继续执行后续步骤，例如附加测试或部署到生产环境。 此过程通常由 CI/CD 工具（如 Jenkins、GitLab CI 或 CircleCI）以及 [截图测试](/zh-cn/wiki/screenshot-testing/) 工具（如 Percy 或 Screener）管理。为了集成[截图测试](/zh-cn/wiki/screenshot-testing/)，工程师编写[测试脚本](/zh-cn/wiki/test-script/)并配置CI/CD管道以在适当的阶段包含这些测试。目标是自动捕捉视觉回归，确保任何 UI 更改都不会在代码投入生产之前破坏现有功能。
 
 1. **代码提交**：开发人员向版本控制系统提交代码，触发 CI/CD 管道。
 2. **构建**：构建应用程序并将其部署到暂存环境。
@@ -513,7 +487,7 @@ order: 0
 2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具设置您的 [测试环境](/zh-cn/wiki/test-environment/)**，例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright。
 3. **编写[测试脚本](/zh-cn/wiki/test-script/)**，导航到目标网页并将浏览器窗口大小调整为指定尺寸。使用以下伪代码作为参考：
 
-    ```
+```
     // Example using Selenium WebDriver in TypeScript
     import { Builder, By, until } from 'selenium-webdriver';
     async function takeScreenshotAtWidth(width: number) {
@@ -528,20 +502,19 @@ order: 0
         await driver.quit();
       }
     }
-    ```
+```
 
 4. **在每个定义的视口尺寸处捕获屏幕截图**。在进行屏幕截图之前，请确保页面已完全加载且动态内容已稳定。
 5. **使用图像比较工具或 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 服务将屏幕截图与基线图像进行比较。
 6. **分析结果**以找出差异。请特别注意不同屏幕尺寸下可能发生的布局变化、重叠元素和截断。
 7. **记录并报告**任何视觉不一致或[bugs](/zh-cn/wiki/bug/)，由开发团队解决。
-8. **在 CI/CD 管道中实现流程自动化**，以确保 [响应式设计](/zh-cn/wiki/responsive-design/) 在每个构建或部署中得到一致的测试。
-  通过执行这些步骤，您可以有效地跨多种设备和屏幕尺寸验证响应式网页设计的视觉外观。
+8. **在 CI/CD 管道中实现流程自动化**，以确保 [响应式设计](/zh-cn/wiki/responsive-design/) 在每个构建或部署中得到一致的测试。 通过执行这些步骤，您可以有效地跨多种设备和屏幕尺寸验证响应式网页设计的视觉外观。
 
 1. **定义您要测试的屏幕尺寸范围**和分辨率，包括桌面、平板电脑和移动设备尺寸。
 2. **使用支持响应式 [截图测试](/zh-cn/wiki/screenshot-testing/) 的工具（例如 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)、Puppeteer 或 Playwright）设置您的 [测试环境](/zh-cn/wiki/test-environment/)**。
 3. **编写[测试脚本](/zh-cn/wiki/test-script/)**，导航到目标网页并将浏览器窗口大小调整为指定尺寸。使用以下伪代码作为参考：
 
-    ```
+```
     // Example using Selenium WebDriver in TypeScript
     import { Builder, By, until } from 'selenium-webdriver';
     async function takeScreenshotAtWidth(width: number) {
@@ -556,7 +529,7 @@ order: 0
         await driver.quit();
       }
     }
-    ```
+```
 
 #### 如何处理跨浏览器截图测试？
 
@@ -568,17 +541,16 @@ order: 0
 4. **标准化[测试数据](/zh-cn/wiki/test-data/)**以确保一致性。在所有浏览器测试中使用相同的输入数据，以避免由于动态内容而导致屏幕截图出现差异。
 5. 使用您选择的工具在不同浏览器上**自动捕获屏幕截图**。例如，[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 可用于以编程方式截取屏幕截图：
 
-  ```
+```
   driver.takeScreenshot().then(function(image, err) {
       require('fs').writeFileSync('screenshot.png', image, 'base64');
   });
-  ```
+```
 
 1. **实施视觉比较工具**，例如 Percy 或 Applitools，以自动检测视觉差异。这些工具可以逐像素比较屏幕截图或使用人工智能来关注可察觉的变化。
 2. **审查和分类**结果。自动化工具可能会标记需要人工判断才能确定它们是否是真正的 [bugs](/zh-cn/wiki/bug/) 或可接受的变体的问题。
 3. **与 CI/CD 管道集成**，在每次提交时运行屏幕截图测试，确保立即反馈视觉回归。
-4. **记录差异**并维护浏览器特定问题的日志，以简化未来的测试工作。
-  通过执行这些步骤，您可以创建一个强大的跨浏览器 [截图测试](/zh-cn/wiki/screenshot-testing/) 流程，帮助在所有受支持的浏览器之间保持视觉一致性。
+4. **记录差异**并维护浏览器特定问题的日志，以简化未来的测试工作。 通过执行这些步骤，您可以创建一个强大的跨浏览器 [截图测试](/zh-cn/wiki/screenshot-testing/) 流程，帮助在所有受支持的浏览器之间保持视觉一致性。
 
 1. **使用基于云的服务**或支持多个浏览器和版本的工具，例如[browserstack](/zh-cn/wiki/browserstack/)或Sauce Labs。这使您可以访问各种浏览器配置而无需维护它们。
 2. **通过根据用户分析定义一组目标浏览器和版本来标准化 [测试环境](/zh-cn/wiki/test-environment/)**。这有助于集中您的测试工作。
@@ -609,17 +581,16 @@ order: 0
 3. **编写[测试用例](/zh-cn/wiki/test-case/)**：开发导航到您要捕获的屏幕的[测试用例](/zh-cn/wiki/test-case/)。
 4. **捕获屏幕截图**：使用框架的[API](/zh-cn/wiki/api/) 在[测试用例](/zh-cn/wiki/test-case/) 中的所需位置进行屏幕截图。例如，在 Appium 中，您可以使用：
 
-  ```
+```
   File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
   FileUtils.copyFile(scrFile, new File("path/to/screenshot.png"));
-  ```
+```
 
 1. **验证屏幕截图**：将捕获的屏幕截图与基线图像进行比较。这可以手动完成，也可以使用提供视觉比较功能的工具完成。
 2. **处理不同的屏幕尺寸和分辨率**：可以通过捕获和比较多组基线图像来确保您的测试考虑到各种设备屏幕尺寸和分辨率。
 3. **自动化流程**：将屏幕截图捕获和比较集成到 CI/CD 管道中，以针对代码更改自动运行测试。
 4. **存储和查看结果**：保存屏幕截图和比较结果以供查看。 Allure 或 ExtentReports 等工具可以帮助组织和显示结果。
-5. **根据需要更新基线**：当有意更改 UI 时，更新基线图像以反映新的预期状态。
-  请记住从屏幕截图中**排除瞬态 UI 元素**，例如弹出窗口或 toast，因为这些元素可能会导致 [误报](/zh-cn/wiki/false-positive/)。在捕获屏幕截图之前，使用 **条件等待** 确保 UI 稳定。
+5. **根据需要更新基线**：当有意更改 UI 时，更新基线图像以反映新的预期状态。 请记住从屏幕截图中**排除瞬态 UI 元素**，例如弹出窗口或 toast，因为这些元素可能会导致 [误报](/zh-cn/wiki/false-positive/)。在捕获屏幕截图之前，使用 **条件等待** 确保 UI 稳定。
 
 1. **设置您的[测试环境](/zh-cn/wiki/test-environment/)**：确保您可以访问具有所需操作系统版本的必要设备或仿真器/模拟器。
 2. **与 [测试自动化](/zh-cn/wiki/test-automation/) 框架集成**：使用支持屏幕截图的框架，如 Appium、Espresso（适用于 Android）或 XCTest（适用于 iOS）。
