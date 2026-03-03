@@ -4,10 +4,11 @@ description: "测试执行进度表是一份时间表，概述了在测试阶段
 section: "T"
 related:
   - manual-testing
-  - test-plan
   - automated-testing
-  - test-suite
   - test-case-management
+  - test-case
+  - test-suite
+  - test-execution-technique
 order: 0
 ---
 
@@ -79,8 +80,7 @@ order: 0
 - **测试可交付成果**：要生成的工件，例如报告和日志。
 - **监控和控制机制**：跟踪进度和处理偏差的流程。
 - **应急计划**：处理意外事件或延误的策略。
-- **沟通计划**：用于向利益相关者更新测试进度的协议。
-  这些组件确保采用全面且结构化的方法来执行[测试用例](/zh-cn/wiki/test-case/)，从而实现测试过程的高效跟踪和管理。
+- **沟通计划**：用于向利益相关者更新测试进度的协议。 这些组件确保采用全面且结构化的方法来执行[测试用例](/zh-cn/wiki/test-case/)，从而实现测试过程的高效跟踪和管理。
 
 #### 测试执行计划如何对整体测试策略做出贡献？
 
@@ -104,8 +104,7 @@ order: 0
 5. **序列[测试用例](/zh-cn/wiki/test-case/)**：根据依赖性和优先级排序测试用例以执行。
 6. **定义里程碑**：设置关键里程碑和检查点以评估进度。
 7. **缓冲时间**：包括意外延迟和重新测试的缓冲时间。
-8. **审查和调整**：与利益相关者一起审查时间表并根据需要进行调整。
-  使用自动化工具安排测试、跟踪进度并实时调整。实施**持续集成（CI）**可以在代码提交时自动触发[测试用例](/zh-cn/wiki/test-case/)。利用**[测试管理](/zh-cn/wiki/test-management/) 工具**来维护计划并与问题跟踪系统集成。
+8. **审查和调整**：与利益相关者一起审查时间表并根据需要进行调整。 使用自动化工具安排测试、跟踪进度并实时调整。实施**持续集成（CI）**可以在代码提交时自动触发[测试用例](/zh-cn/wiki/test-case/)。利用**[测试管理](/zh-cn/wiki/test-management/) 工具**来维护计划并与问题跟踪系统集成。
 
 // Example of a simple automated test trigger in a CI tool configuration file
 pipeline:
@@ -113,8 +112,7 @@ pipeline:
     image: node:latest
     script:
 - npm install
-- npm test
-    only:
+- npm test only:
 - master
 根据实际进度定期审查时间表并根据需要进行调整。与团队的沟通对于及时解决任何偏差至关重要。
 
@@ -144,8 +142,7 @@ pipeline:
 - **合规性和法规**：考虑任何合规性或监管测试的截止日期。
 - **[非功能测试](/zh-cn/wiki/non-functional-testing/)** ：安排性能、安全性和可用性测试的时间。
 - **持续集成（CI）**：与 CI 管道集成以在适当的阶段触发自动化测试。
-- **监控和报告**：包括监控测试执行和报告结果的时间。
-  请记住随着项目的发展**审查和调整**时间表，确保其与项目需求和目标保持一致。
+- **监控和报告**：包括监控测试执行和报告结果的时间。 请记住随着项目的发展**审查和调整**时间表，确保其与项目需求和目标保持一致。
 
 #### 如何有效管理测试执行计划？
 
@@ -156,7 +153,7 @@ pipeline:
   结合**并行执行**策略来减少运行时间，但将其与可用的基础设施平衡以避免性能瓶颈。 **分析历史数据**以预测未来的测试持续时间并提高调度准确性。
   最后，确保时间表的**灵活性**，以适应变化而不中断整个测试过程。定期**回顾**调度流程，以确定改进并适应不断变化的项目需求。
 
-  ```
+```
   // Example: Tagging tests in an automation framework
   describe('Login Feature', () => {
     it('should test the basic login flow', () => {
@@ -166,7 +163,7 @@ pipeline:
       // Test code here
     }).tag('@regression');
   });
-  ```
+```
 
 #### 可以使用哪些工具来创建和管理测试执行计划？
 
@@ -178,8 +175,7 @@ pipeline:
 - **电子表格软件**：为简单起见，**Microsoft Excel** 或 **Google Sheets** 等工具可用于手动创建计划，尽管它们缺乏与其他测试工具的集成。
 - **自定义脚本**：使用 **Python**、**Bash** 或其他脚本语言编写自定义脚本可以自动执行调度过程，特别是与其他工具中的 [API](/zh-cn/wiki/api/) 集成时。
 - **日历应用程序**：**Google 日历** 或 **Outlook 日历** 可用于基本的日程安排需求和提醒，但它们未与 [测试执行](/zh-cn/wiki/test-execution/) 集成。
-- **专用调度软件**：**VisualCron** 或 **ActiveBatch** 等工具提供高级调度功能，包括触发器和基于事件的调度，这对于复杂的 [测试环境](/zh-cn/wiki/test-environment/) 非常有用。
-  这些工具之间的集成是高效[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的关键。 [API](/zh-cn/wiki/api/)、网络钩子和插件可以帮助跨平台同步数据，确保时间表是最新的且可操作的。
+- **专用调度软件**：**VisualCron** 或 **ActiveBatch** 等工具提供高级调度功能，包括触发器和基于事件的调度，这对于复杂的 [测试环境](/zh-cn/wiki/test-environment/) 非常有用。 这些工具之间的集成是高效[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的关键。 [API](/zh-cn/wiki/api/)、网络钩子和插件可以帮助跨平台同步数据，确保时间表是最新的且可操作的。
 
 - **项目管理工具**：**[jira](/zh-cn/wiki/jira/)**、**Asana** 或 **Trello** 等工具可用于安排测试、分配任务和跟踪进度。它们通常包括日历视图以及与 [测试管理](/zh-cn/wiki/test-management/) 插件的集成。
 - **[测试管理](/zh-cn/wiki/test-management/) 工具**：**TestRail**、**Zephyr** 或 **qTest** 提供用于规划、执行和报告测试的综合平台，并具有内置的调度功能。
@@ -204,21 +200,17 @@ pipeline:
 - **环境稳定性**：不稳定的[测试环境](/zh-cn/wiki/test-environment/)可能会导致与代码质量无关的测试失败，从而影响进度。
 - **与 CI/CD 集成**：将[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 与持续集成/持续部署管道集成需要仔细协调。
 - **监控和报告**：实时监控和报告[测试执行](/zh-cn/wiki/test-execution/)进度在技术上可能具有挑战性，但对于进度调整来说是必要的。
-- **平衡速度和覆盖范围**：在快速[测试执行](/zh-cn/wiki/test-execution/) 和足够的[测试覆盖率](/zh-cn/wiki/test-coverage/) 之间取得适当的平衡是一个持续的挑战。
-  缓解策略包括确定测试优先级、改进[测试数据](/zh-cn/wiki/test-data/) 管理、稳定[测试环境](/zh-cn/wiki/test-environment/) 以及使用强大的[测试自动化](/zh-cn/wiki/test-automation/) 框架。根据反馈和结果定期重新审视和调整时间表也至关重要。
+- **平衡速度和覆盖范围**：在快速[测试执行](/zh-cn/wiki/test-execution/) 和足够的[测试覆盖率](/zh-cn/wiki/test-coverage/) 之间取得适当的平衡是一个持续的挑战。 缓解策略包括确定测试优先级、改进[测试数据](/zh-cn/wiki/test-data/) 管理、稳定[测试环境](/zh-cn/wiki/test-environment/) 以及使用强大的[测试自动化](/zh-cn/wiki/test-automation/) 框架。根据反馈和结果定期重新审视和调整时间表也至关重要。
 
 #### 如何减轻或克服这些挑战？
 
 缓解创建 [测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 过程中的挑战涉及多种策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响，以确保首先测试关键功能。使用基于风险的方法来有效管理范围。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响，以确保首先测试关键功能。使用基于风险的方法来有效管理范围。
 
-- **分配缓冲时间**
-    对于意外的延误和问题。这有助于在不影响整体进度的情况下适应延误。
+- **分配缓冲时间**对于意外的延误和问题。这有助于在不影响整体进度的情况下适应延误。
 
-- **自动化重复任务**
-    以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
+- **自动化重复任务**以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
 
 // 示例：检查 [测试用例](/zh-cn/wiki/test-case/) 状态的脚本
   const checkTestCaseStatus = (testCaseId) => {
@@ -232,14 +224,11 @@ pipeline:
 - **Integrate with CI/CD pipelines** to ensure that the test execution schedule aligns with the development and deployment processes, enabling continuous testing.
 By implementing these strategies, test automation engineers can effectively overcome the challenges associated with creating and managing a Test Execution Schedule.
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响，以确保首先测试关键功能。使用基于风险的方法来有效管理范围。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响，以确保首先测试关键功能。使用基于风险的方法来有效管理范围。
 
-- **分配缓冲时间**
-    对于意外的延误和问题。这有助于在不影响整体进度的情况下适应延误。
+- **分配缓冲时间**对于意外的延误和问题。这有助于在不影响整体进度的情况下适应延误。
 
-- **自动化重复任务**
-    以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
+- **自动化重复任务**以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
 
 #### 创建测试执行计划时会犯哪些常见错误以及如何避免这些错误？
 
@@ -252,8 +241,7 @@ By implementing these strategies, test automation engineers can effectively over
 - **不计划意外情况**：包括测试失败或发现 [bugs](/zh-cn/wiki/bug/) 时的应急计划。这有助于保持动力并避免瓶颈。
 - **忽视维护**：分配时间来维护[测试脚本](/zh-cn/wiki/test-script/) 和环境。定期维护可防止技术债务并确保可靠性。
 - **缺乏沟通**：让所有利益相关者了解时间表和任何变化。使用通信工具共享更新并收集反馈。
-- **缺乏灵活性**：准备好根据需要调整时间表。敏捷方法可以帮助适应变化而不破坏总体计划。
-  通过解决这些领域，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建更强大、更有效的[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)。
+- **缺乏灵活性**：准备好根据需要调整时间表。敏捷方法可以帮助适应变化而不破坏总体计划。 通过解决这些领域，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建更强大、更有效的[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)。
 
 - **低估任务时间**：为不可预见的问题分配额外的时间。使用历史数据来告知估计并包括缓冲区。
 - **忽略依赖关系**：根据依赖关系识别和安排测试以避免延迟。使用依赖性跟踪工具来管理这些关系。
@@ -268,54 +256,37 @@ By implementing these strategies, test automation engineers can effectively over
 
 为了确保遵守 **[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)**，请考虑以下策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响。首先关注关键功能，以确保最重要的方面在时间表内得到测试。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。首先关注关键功能，以确保最重要的方面在时间表内得到测试。
 
-- **有效分配资源**
-    。确保团队成员没有超额预订，并拥有必要的工具和访问权限来立即执行测试。
+- **有效分配资源** 。确保团队成员没有超额预订，并拥有必要的工具和访问权限来立即执行测试。
 
-- **密切监控进展**
-    每日站立或状态更新。使用仪表板可视化进度并尽早识别瓶颈。
+- **密切监控进展**每日站立或状态更新。使用仪表板可视化进度并尽早识别瓶颈。
 
-- **尽可能自动化**
-    加快执行速度并减少手动工作量。维护一套可以按需运行的强大的自动化测试。
+- **尽可能自动化**加快执行速度并减少手动工作量。维护一套可以按需运行的强大的自动化测试。
 
-- **实施缓冲期**
-    解决意外的延误或问题。应急计划可以帮助管理不可预见的事件，而不会破坏计划。
+- **实施缓冲期**解决意外的延误或问题。应急计划可以帮助管理不可预见的事件，而不会破坏计划。
 
-- **有效沟通**
-    与所有利益相关者。让每个人都了解进度和日程安排的任何变化。
+- **有效沟通**与所有利益相关者。让每个人都了解进度和日程安排的任何变化。
 
-- **执行最后期限**
-    但保持灵活性。虽然遵守时间表很重要，但要准备好在必要时进行调整以保持质量。
+- **执行最后期限**但保持灵活性。虽然遵守时间表很重要，但要准备好在必要时进行调整以保持质量。
 
-- **审查和调整**
-    根据反馈和实际测试进度定期制定时间表。持续改进有助于完善未来的时间表。
-  通过关注这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高遵守[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的可能性，确保测试彻底且及时。
+- **审查和调整**根据反馈和实际测试进度定期制定时间表。持续改进有助于完善未来的时间表。 通过关注这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高遵守[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的可能性，确保测试彻底且及时。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
-    基于风险和影响。首先关注关键功能，以确保最重要的方面在时间表内得到测试。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。首先关注关键功能，以确保最重要的方面在时间表内得到测试。
 
-- **有效分配资源**
-    。确保团队成员没有超额预订，并拥有必要的工具和访问权限来立即执行测试。
+- **有效分配资源** 。确保团队成员没有超额预订，并拥有必要的工具和访问权限来立即执行测试。
 
-- **密切监控进展**
-    每日站立或状态更新。使用仪表板可视化进度并尽早识别瓶颈。
+- **密切监控进展**每日站立或状态更新。使用仪表板可视化进度并尽早识别瓶颈。
 
-- **尽可能自动化**
-    加快执行速度并减少手动工作量。维护一套可以按需运行的强大的自动化测试。
+- **尽可能自动化**加快执行速度并减少手动工作量。维护一套可以按需运行的强大的自动化测试。
 
-- **实施缓冲期**
-    解决意外的延误或问题。应急计划可以帮助管理不可预见的事件，而不会破坏计划。
+- **实施缓冲期**解决意外的延误或问题。应急计划可以帮助管理不可预见的事件，而不会破坏计划。
 
-- **有效沟通**
-    与所有利益相关者。让每个人都了解进度和日程安排的任何变化。
+- **有效沟通**与所有利益相关者。让每个人都了解进度和日程安排的任何变化。
 
-- **执行最后期限**
-    但保持灵活性。虽然遵守时间表很重要，但要准备好在必要时进行调整以保持质量。
+- **执行最后期限**但保持灵活性。虽然遵守时间表很重要，但要准备好在必要时进行调整以保持质量。
 
-- **审查和调整**
-    根据反馈和实际测试进度定期制定时间表。持续改进有助于完善未来的时间表。
+- **审查和调整**根据反馈和实际测试进度定期制定时间表。持续改进有助于完善未来的时间表。
 
 ### 高级概念
 
@@ -323,49 +294,33 @@ By implementing these strategies, test automation engineers can effectively over
 
 要优化 **[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)** 的效率，请考虑以下策略：
 
-- **优先测试**
-    基于风险和影响。首先关注关键功能，以便尽早发现重大问题。
+- **优先测试**基于风险和影响。首先关注关键功能，以便尽早发现重大问题。
 
-- 实施
-    **并行测试**
-    同时运行多个测试，减少总体执行时间。
+- 实施 **并行测试**同时运行多个测试，减少总体执行时间。
 
-    ```
+```
     // Example of parallel test execution in a test framework
     describe.parallel('Critical Test Suite', () => {
       test('Test 1', async () => { /* ... */ });
       test('Test 2', async () => { /* ... */ });
     });
-    ```
+```
 
-- 使用
-    **[测试数据](/zh-cn/wiki/test-data/) 管理**
-    确保数据准备就绪并可立即用于测试。
+- 使用 **[测试数据](/zh-cn/wiki/test-data/) 管理**确保数据准备就绪并可立即用于测试。
 
-- 优化测试用例
-    **最大覆盖范围和最小冗余**
-    ;删除或重构重叠的测试。
+- 优化测试用例 **最大覆盖范围和最小冗余** ;删除或重构重叠的测试。
 
-- 安排测试期间
-    **非高峰时段**
-    利用闲置资源并避免与其他进程发生冲突。
+- 安排测试期间 **非高峰时段**利用闲置资源并避免与其他进程发生冲突。
 
-- 申请
-    **测试结果分析**
-    识别不稳定的测试并提高其可靠性，防止误报浪费时间。
+- 申请 **测试结果分析**识别不稳定的测试并提高其可靠性，防止误报浪费时间。
 
-- 整合
-    **智能[测试执行](/zh-cn/wiki/test-execution/)**
-    可以根据代码更改选择要运行的相关测试的工具（测试影响分析）。
+- 整合 **智能[测试执行](/zh-cn/wiki/test-execution/)**可以根据代码更改选择要运行的相关测试的工具（测试影响分析）。
 
-- 定期
-    **审查和更新**
-    与项目变更保持一致并删除过时或已弃用的测试的时间表。
+- 定期 **审查和更新**与项目变更保持一致并删除过时或已弃用的测试的时间表。
 
-- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**
-    最大限度地减少人工干预并确保一致性。
+- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**最大限度地减少人工干预并确保一致性。
 
-    ```
+```
     // Example of automated environment setup in a test framework
     beforeAll(async () => {
       await setupTestEnvironment();
@@ -373,58 +328,37 @@ By implementing these strategies, test automation engineers can effectively over
     afterAll(async () => {
       await teardownTestEnvironment();
     });
-    ```
+```
 
-- 杠杆
-    **容器化**
-    和
-    **基础设施即代码**
-    快速启动与生产相匹配的测试环境。
-  通过关注这些领域，您可以简化[测试执行](/zh-cn/wiki/test-execution/) 流程、减少等待时间并提高[测试自动化](/zh-cn/wiki/test-automation/) 工作的整体效率。
+- 杠杆 **容器化**和 **基础设施即代码**快速启动与生产相匹配的测试环境。 通过关注这些领域，您可以简化[测试执行](/zh-cn/wiki/test-execution/) 流程、减少等待时间并提高[测试自动化](/zh-cn/wiki/test-automation/) 工作的整体效率。
 
-- **优先测试**
-    基于风险和影响。首先关注关键功能，以便尽早发现重大问题。
+- **优先测试**基于风险和影响。首先关注关键功能，以便尽早发现重大问题。
 
-- 实施
-    **并行测试**
-    同时运行多个测试，减少总体执行时间。
+- 实施 **并行测试**同时运行多个测试，减少总体执行时间。
 
-    ```
+```
     // Example of parallel test execution in a test framework
     describe.parallel('Critical Test Suite', () => {
       test('Test 1', async () => { /* ... */ });
       test('Test 2', async () => { /* ... */ });
     });
-    ```
+```
 
-- 使用
-    **[测试数据](/zh-cn/wiki/test-data/) 管理**
-    确保数据准备就绪并可立即用于测试。
+- 使用 **[测试数据](/zh-cn/wiki/test-data/) 管理**确保数据准备就绪并可立即用于测试。
 
-- 优化测试用例
-    **最大覆盖范围和最小冗余**
-    ;删除或重构重叠的测试。
+- 优化测试用例 **最大覆盖范围和最小冗余** ;删除或重构重叠的测试。
 
-- 安排测试期间
-    **非高峰时段**
-    利用闲置资源并避免与其他进程发生冲突。
+- 安排测试期间 **非高峰时段**利用闲置资源并避免与其他进程发生冲突。
 
-- 申请
-    **测试结果分析**
-    识别不稳定的测试并提高其可靠性，防止误报浪费时间。
+- 申请 **测试结果分析**识别不稳定的测试并提高其可靠性，防止误报浪费时间。
 
-- 整合
-    **智能[测试执行](/zh-cn/wiki/test-execution/)**
-    可以根据代码更改选择要运行的相关测试的工具（测试影响分析）。
+- 整合 **智能[测试执行](/zh-cn/wiki/test-execution/)**可以根据代码更改选择要运行的相关测试的工具（测试影响分析）。
 
-- 定期
-    **审查和更新**
-    与项目变更保持一致并删除过时或已弃用的测试的时间表。
+- 定期 **审查和更新**与项目变更保持一致并删除过时或已弃用的测试的时间表。
 
-- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**
-    最大限度地减少人工干预并确保一致性。
+- **自动化[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/) 和拆卸**最大限度地减少人工干预并确保一致性。
 
-    ```
+```
     // Example of automated environment setup in a test framework
     beforeAll(async () => {
       await setupTestEnvironment();
@@ -432,13 +366,9 @@ By implementing these strategies, test automation engineers can effectively over
     afterAll(async () => {
       await teardownTestEnvironment();
     });
-    ```
+```
 
-- 杠杆
-    **容器化**
-    和
-    **基础设施即代码**
-    快速启动与生产相匹配的测试环境。
+- 杠杆 **容器化**和 **基础设施即代码**快速启动与生产相匹配的测试环境。
 
 #### 测试执行计划如何适应更广泛的测试自动化环境？
 
@@ -455,84 +385,84 @@ By implementing these strategies, test automation engineers can effectively over
 
 - **[单元测试](/zh-cn/wiki/unit-testing/)**：安排在每次提交后或至少每天运行。使用**持续集成 (CI)** 系统来触发测试。根据代码更改和风险确定测试的优先级。
 
-    ```
+```
     CI.onCommit(() => {
       runUnitTests();
     });
-    ```
+```
 
 - **[集成测试](/zh-cn/wiki/integration-testing/)**：与外部系统或模块的可用性进行协调。如果需要，可以安排在非高峰时段，以尽量减少对其他团队的影响。
 
-    ```
+```
     nightlySchedule(() => {
       runIntegrationTests();
     });
-    ```
+```
 
 - **[系统测试](/zh-cn/wiki/system-testing/)**：与开发冲刺或发布周期的结束保持一致。确保所有组件均已集成。
 
-    ```
+```
     sprintEndSchedule(() => {
       runSystemTests();
     });
-    ```
+```
 
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：安排系统稳定且可以处理负载的时间。考虑反映生产的环境的可用性。
 
-    ```
+```
     preReleaseSchedule(() => {
       runPerformanceTests();
     });
-    ```
+```
 
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：与 CI/CD 管道集成以在重大更改之后或发布之前运行。
 
-    ```
+```
     preDeploymentSchedule(() => {
       runRegressionTests();
     });
-    ```
+```
 每个计划都应考虑应用程序的**[测试套件](/zh-cn/wiki/test-suite/) 的大小**、**资源可用性**和**关键性**。 **并行执行**和**测试优先级**可以优化计划以提高效率。根据反馈和测试结果调整频率和时序，以保持快速反馈和资源限制之间的平衡。
 
 - **[单元测试](/zh-cn/wiki/unit-testing/)**：安排在每次提交后或至少每天运行。使用**持续集成 (CI)** 系统来触发测试。根据代码更改和风险确定测试的优先级。
 
-    ```
+```
     CI.onCommit(() => {
       runUnitTests();
     });
-    ```
+```
 
 - **[集成测试](/zh-cn/wiki/integration-testing/)**：与外部系统或模块的可用性进行协调。如果需要，可以安排在非高峰时段，以尽量减少对其他团队的影响。
 
-    ```
+```
     nightlySchedule(() => {
       runIntegrationTests();
     });
-    ```
+```
 
 - **[系统测试](/zh-cn/wiki/system-testing/)**：与开发冲刺或发布周期的结束保持一致。确保所有组件均已集成。
 
-    ```
+```
     sprintEndSchedule(() => {
       runSystemTests();
     });
-    ```
+```
 
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：安排系统稳定且可以处理负载的时间。考虑反映生产的环境的可用性。
 
-    ```
+```
     preReleaseSchedule(() => {
       runPerformanceTests();
     });
-    ```
+```
 
 - **[回归测试](/zh-cn/wiki/regression-testing/)**：与 CI/CD 管道集成以在重大更改之后或发布之前运行。
 
-    ```
+```
     preDeploymentSchedule(() => {
       runRegressionTests();
     });
-    ```
+```
 
 #### 管理测试执行计划有哪些先进技术或策略？
 
@@ -547,5 +477,4 @@ By implementing these strategies, test automation engineers can effectively over
 - **不稳定的测试管理**：识别并隔离 [片状测试](/zh-cn/wiki/flaky-test/) 以防止它们影响进度。使用隔离机制分别处理它们。
 - **时间盒**：为某些测试活动分配固定的时间段，以确保集中注意力并有效管理时间。
 - **反馈循环**：实施实时报告和反馈机制，以快速识别和解决进度中的瓶颈或延迟。
-- **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发生命周期的早期纳入测试，以更快地发现问题并减少以后所需的测试时间。
-  通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以增强[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的管理，从而实现更高效、更有效的测试流程。
+- **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发生命周期的早期纳入测试，以更快地发现问题并减少以后所需的测试时间。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以增强[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的管理，从而实现更高效、更有效的测试流程。

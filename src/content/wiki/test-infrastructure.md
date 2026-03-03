@@ -1,13 +1,13 @@
 ---
 title: "测试基础设施 ｜ Test Infrastructure"
-description: "测试基础设施 (Test Infrastructure) 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 自动化测试 (automated tests) 的执行和管理。它包含了一系列支持 测试用例 (test cases) 创建、执行、分析以及结果报告的工具和流程。一个健壮的测试基础设施能够支持测试的 并行执行 (parallel execution)，适应各种测试类型（如单元测试、集成测试、系统测试和验收测试），并提供 测试数据管理 (test data management) 和 测试环境配置 (test environment configuration) 的框架。它被设计为具有 可扩展性 (scalable) 和 灵活性 (flexible)，允许根据需要添加新的工具和技术。为了确保 效率 (efficiency) 和 可靠性 (reliability)，测试基础设施应实施 版本控制 (version-controlled) 并被视为应用程序代码库的一部分，其变更需经过评审流程。"
+description: "测试基础设施 (Test Infrastructure) 是指为企业 IT 环境的生存、运行和管理所必需的集成硬件、软件、网络资源和服务的集合，该环境旨在促进 自动化测试 (automated tests) 的执行和管理…"
 section: "T"
 related:
   - automated-testing
-  - manual-testing
-  - test-suite
   - test-data
   - web-testing
+  - manual-testing
+  - test-suite
 order: 0
 ---
 
@@ -81,8 +81,7 @@ order: 0
 - **缺陷跟踪系统**：记录、跟踪和管理测试过程中发现的缺陷。
 - **报告工具**：生成测试执行报告，提供有关测试覆盖率、通过/失败率和其他关键指标的见解。
 - **访问控制**：确保安全访问测试基础设施组件，保持完整性和机密性。
-- **备份和恢复解决方案**：防止数据丢失并在出现故障时快速恢复测试环境。
-  每个组件在确保可靠、高效和可扩展的 [测试自动化](/zh-cn/wiki/test-automation/) 流程方面都发挥着关键作用。
+- **备份和恢复解决方案**：防止数据丢失并在出现故障时快速恢复测试环境。 每个组件在确保可靠、高效和可扩展的 [测试自动化](/zh-cn/wiki/test-automation/) 流程方面都发挥着关键作用。
 
 #### 测试基础设施如何提高软件产品的整体质量？
 
@@ -155,12 +154,8 @@ services:
   web:
     image: "my-web-app:latest"
     ports:
-- "80:80"
-  test-runner:
-    image: "my-test-runner:latest"
-    volumes:
-- .:/tests
-    command: ./run-tests.sh
+- "80:80" test-runner: image: "my-test-runner:latest" volumes:
+- .:/tests command: ./run-tests.sh
 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以构建强大、可靠且能够响应[敏捷开发](/zh-cn/wiki/agile-development/) 周期需求的[测试基础设施](/zh-cn/wiki/test-infrastructure/)。
 
 #### 如何针对大型软件项目扩展测试基础设施？
@@ -169,41 +164,40 @@ services:
 
 - **利用基于云的服务**：利用 AWS、Azure 或 GCP 等云平台根据需要动态分配和扩展资源。这允许按需扩展和经济高效的资源管理。
 
-  ```
+```
   services:
 - name: selenium-grid
       image: selenium/standalone-chrome
       scale: 5
-  ```
+```
 
 - **实施容器化**：使用 Docker 或 Kubernetes 创建隔离且可重复的测试环境，可以轻松扩展或缩小规模。
 
-  ```
+```
   kubectl scale deployment selenium-grid --replicas=10
-  ```
+```
 
 - **并行化测试**：跨多台机器或容器并行运行测试，以显着减少执行时间。
 
-  ```
+```
   test.concurrent('my parallel test', async () => {
     // test code
   });
-  ```
+```
 
 - **优化[测试套件](/zh-cn/wiki/test-suite/)**：定期审查和重构测试，以消除冗余并确保测试高效且有效。
 - **使用基础设施即代码 (IaC)**：使用 Terraform 或 Ansible 等工具自动配置和管理 [测试环境](/zh-cn/wiki/test-environment/)。
 
-  ```
+```
   resource "aws_instance" "test_instance" {
     count         = 10
     instance_type = "t2.medium"
     // ...
   }
-  ```
+```
 
 - **监控和分析**：实施监控工具来跟踪 [测试基础设施](/zh-cn/wiki/test-infrastructure/) 的性能和利用率，从而做出明智的扩展决策。
-- **利用服务虚拟化**：模拟外部服务和 [API](/zh-cn/wiki/api/) 以减少依赖性并允许更具可扩展性和并行测试。
-  通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试基础设施](/zh-cn/wiki/test-infrastructure/) 有效扩展以满足大型软件项目的需求，同时保持高效率和可靠性。
+- **利用服务虚拟化**：模拟外部服务和 [API](/zh-cn/wiki/api/) 以减少依赖性并允许更具可扩展性和并行测试。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试基础设施](/zh-cn/wiki/test-infrastructure/) 有效扩展以满足大型软件项目的需求，同时保持高效率和可靠性。
 
 - **利用基于云的服务**：利用 AWS、Azure 或 GCP 等云平台根据需要动态分配和扩展资源。这允许按需扩展和经济高效的资源管理。
 - **实施容器化**：使用 Docker 或 Kubernetes 创建隔离且可重复的测试环境，可以轻松扩展或缩小规模。
@@ -217,168 +211,112 @@ services:
 
 [测试基础设施](/zh-cn/wiki/test-infrastructure/)中常用的工具和技术包括：
 
-- **版本控制系统**
-    例如 Git，用于管理测试脚本并跟踪更改。
+- **版本控制系统**例如 Git，用于管理测试脚本并跟踪更改。
 
-- **持续集成服务器**
-    例如 Jenkins、CircleCI 或 GitHub Actions，用于自动运行测试。
+- **持续集成服务器**例如 Jenkins、CircleCI 或 GitHub Actions，用于自动运行测试。
 
-- **配置管理工具**
-    例如 Ansible、Puppet 或 Chef，用于维护一致的测试环境。
+- **配置管理工具**例如 Ansible、Puppet 或 Chef，用于维护一致的测试环境。
 
-- **集装箱化平台**
-    像 Docker 一样，创建和管理隔离的测试环境。
+- **集装箱化平台**像 Docker 一样，创建和管理隔离的测试环境。
 
-- **编排工具**
-    例如 Kubernetes，用于扩展和管理容器化测试环境。
+- **编排工具**例如 Kubernetes，用于扩展和管理容器化测试环境。
 
-- **测试框架**
-    包括用于 Java 的 JUnit、用于 Python 的 pytest 或用于 JavaScript 的 Mocha，为编写和运行测试提供了基础。
+- **测试框架**包括用于 Java 的 JUnit、用于 Python 的 pytest 或用于 JavaScript 的 Mocha，为编写和运行测试提供了基础。
 
-- **[selenium](/zh-cn/wiki/selenium/)**
-    用于 Web 应用程序测试，允许跨不同浏览器和平台实现自动化。
+- **[selenium](/zh-cn/wiki/selenium/)**用于 Web 应用程序测试，允许跨不同浏览器和平台实现自动化。
 
-- **阿皮姆**
-    用于移动应用测试，支持iOS和Android平台。
+- **阿皮姆**用于移动应用测试，支持iOS和Android平台。
 
-- **[API 测试](/zh-cn/wiki/api-testing/) 工具**
-    例如 Postman 或 RestAssured，用于测试 RESTful API。
+- **[API 测试](/zh-cn/wiki/api-testing/) 工具**例如 Postman 或 RestAssured，用于测试 RESTful API。
 
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**
-    例如 JMeter 或 Gatting，用于模拟高负载并测量系统性能。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**例如 JMeter 或 Gatting，用于模拟高负载并测量系统性能。
 
-- **监控和记录工具**
-    例如 ELK Stack（Elasticsearch、Logstash、Kibana）或 Splunk，用于实时监控和分析测试结果。
+- **监控和记录工具**例如 ELK Stack（Elasticsearch、Logstash、Kibana）或 Splunk，用于实时监控和分析测试结果。
 
-- **云服务**
-    例如 AWS、Azure 或 Google Cloud，为测试提供可扩展的基础设施。
+- **云服务**例如 AWS、Azure 或 Google Cloud，为测试提供可扩展的基础设施。
 
-- **虚拟化软件**
-    像VMware或VirtualBox一样，用于创建和管理虚拟机。
-  这些工具集成到[测试基础设施](/zh-cn/wiki/test-infrastructure/)中以支持各种测试活动，确保自动化测试高效且有效地执行。
+- **虚拟化软件**像VMware或VirtualBox一样，用于创建和管理虚拟机。 这些工具集成到[测试基础设施](/zh-cn/wiki/test-infrastructure/)中以支持各种测试活动，确保自动化测试高效且有效地执行。
 
-- **版本控制系统**
-    例如 Git，用于管理测试脚本并跟踪更改。
+- **版本控制系统**例如 Git，用于管理测试脚本并跟踪更改。
 
-- **持续集成服务器**
-    例如 Jenkins、CircleCI 或 GitHub Actions，用于自动运行测试。
+- **持续集成服务器**例如 Jenkins、CircleCI 或 GitHub Actions，用于自动运行测试。
 
-- **配置管理工具**
-    例如 Ansible、Puppet 或 Chef，用于维护一致的测试环境。
+- **配置管理工具**例如 Ansible、Puppet 或 Chef，用于维护一致的测试环境。
 
-- **集装箱化平台**
-    像 Docker 一样，创建和管理隔离的测试环境。
+- **集装箱化平台**像 Docker 一样，创建和管理隔离的测试环境。
 
-- **编排工具**
-    例如 Kubernetes，用于扩展和管理容器化测试环境。
+- **编排工具**例如 Kubernetes，用于扩展和管理容器化测试环境。
 
-- **测试框架**
-    包括用于 Java 的 JUnit、用于 Python 的 pytest 或用于 JavaScript 的 Mocha，为编写和运行测试提供了基础。
+- **测试框架**包括用于 Java 的 JUnit、用于 Python 的 pytest 或用于 JavaScript 的 Mocha，为编写和运行测试提供了基础。
 
-- **[selenium](/zh-cn/wiki/selenium/)**
-    用于 Web 应用程序测试，允许跨不同浏览器和平台实现自动化。
+- **[selenium](/zh-cn/wiki/selenium/)**用于 Web 应用程序测试，允许跨不同浏览器和平台实现自动化。
 
-- **阿皮姆**
-    用于移动应用测试，支持iOS和Android平台。
+- **阿皮姆**用于移动应用测试，支持iOS和Android平台。
 
-- **[API 测试](/zh-cn/wiki/api-testing/) 工具**
-    例如 Postman 或 RestAssured，用于测试 RESTful API。
+- **[API 测试](/zh-cn/wiki/api-testing/) 工具**例如 Postman 或 RestAssured，用于测试 RESTful API。
 
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**
-    例如 JMeter 或 Gatting，用于模拟高负载并测量系统性能。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**例如 JMeter 或 Gatting，用于模拟高负载并测量系统性能。
 
-- **监控和记录工具**
-    例如 ELK Stack（Elasticsearch、Logstash、Kibana）或 Splunk，用于实时监控和分析测试结果。
+- **监控和记录工具**例如 ELK Stack（Elasticsearch、Logstash、Kibana）或 Splunk，用于实时监控和分析测试结果。
 
-- **云服务**
-    例如 AWS、Azure 或 Google Cloud，为测试提供可扩展的基础设施。
+- **云服务**例如 AWS、Azure 或 Google Cloud，为测试提供可扩展的基础设施。
 
-- **虚拟化软件**
-    像VMware或VirtualBox一样，用于创建和管理虚拟机。
+- **虚拟化软件**像VMware或VirtualBox一样，用于创建和管理虚拟机。
 
 #### 随着时间的推移，您如何管理和维护测试基础设施？
 
 随着时间的推移，管理和维护[测试基础设施](/zh-cn/wiki/test-infrastructure/)需要采取积极主动的方法来确保其可靠性和效率。以下是一些策略：
 
-- **定期更新和补丁**
-    所有组件都可以降低安全风险并从性能改进中受益。
+- **定期更新和补丁**所有组件都可以降低安全风险并从性能改进中受益。
 
-- 实施
-    **版本控制**
-    用于测试脚本和基础设施配置来跟踪更改并在必要时促进回滚。
+- 实施 **版本控制**用于测试脚本和基础设施配置来跟踪更改并在必要时促进回滚。
 
-  ```
+```
   git commit -m "Update test script for new feature X"
-  ```
+```
 
-- 使用
-    **基础设施即代码 (IaC)**
-    Terraform 或 Ansible 等工具可自动配置并保持跨环境的一致性。
+- 使用 **基础设施即代码 (IaC)** Terraform 或 Ansible 等工具可自动配置并保持跨环境的一致性。
 
-  ```
+```
   resource "aws_instance" "example" {
     ami           = "ami-0c55b159cbfafe1f0"
     instance_type = "t2.micro"
   }
-  ```
+```
 
-- **监控**
-    基础设施性能，并针对停机或性能下降设置警报，以及时解决问题。
+- **监控**基础设施性能，并针对停机或性能下降设置警报，以及时解决问题。
 
-- 行为
-    **定期审核**
-    识别未使用的资源或潜在的优化，降低成本并提高效率。
+- 行为 **定期审核**识别未使用的资源或潜在的优化，降低成本并提高效率。
 
-- **文件**
-    彻底的更改和配置，以确保团队成员能够有效地理解和管理基础设施。
+- **文件**彻底的更改和配置，以确保团队成员能够有效地理解和管理基础设施。
 
-- 培养一个
-    **协作文化**
-    开发、QA 和运营团队之间共享测试基础设施的所有权。
+- 培养一个 **协作文化**开发、QA 和运营团队之间共享测试基础设施的所有权。
 
-- **安排停机时间**
-    在非高峰时段进行维护，以尽量减少对测试过程的干扰。
+- **安排停机时间**在非高峰时段进行维护，以尽量减少对测试过程的干扰。
 
-- **备份**
-    关键数据和配置，以防止发生故障时丢失。
+- **备份**关键数据和配置，以防止发生故障时丢失。
 
-- **审查和完善**
-    定期维护流程以适应测试自动化的新技术和实践。
-  通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试基础设施](/zh-cn/wiki/test-infrastructure/) 保持稳健、可扩展，并且能够支持软件项目不断变化的需求。
+- **审查和完善**定期维护流程以适应测试自动化的新技术和实践。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试基础设施](/zh-cn/wiki/test-infrastructure/) 保持稳健、可扩展，并且能够支持软件项目不断变化的需求。
 
-- **定期更新和补丁**
-    所有组件都可以降低安全风险并从性能改进中受益。
+- **定期更新和补丁**所有组件都可以降低安全风险并从性能改进中受益。
 
-- 实施
-    **版本控制**
-    用于测试脚本和基础设施配置来跟踪更改并在必要时促进回滚。
+- 实施 **版本控制**用于测试脚本和基础设施配置来跟踪更改并在必要时促进回滚。
 
-- 使用
-    **基础设施即代码 (IaC)**
-    Terraform 或 Ansible 等工具可自动配置并保持跨环境的一致性。
+- 使用 **基础设施即代码 (IaC)** Terraform 或 Ansible 等工具可自动配置并保持跨环境的一致性。
 
-- **监控**
-    基础设施性能，并针对停机或性能下降设置警报，以及时解决问题。
+- **监控**基础设施性能，并针对停机或性能下降设置警报，以及时解决问题。
 
-- 行为
-    **定期审核**
-    识别未使用的资源或潜在的优化，降低成本并提高效率。
+- 行为 **定期审核**识别未使用的资源或潜在的优化，降低成本并提高效率。
 
-- **文件**
-    彻底的更改和配置，以确保团队成员能够有效地理解和管理基础设施。
+- **文件**彻底的更改和配置，以确保团队成员能够有效地理解和管理基础设施。
 
-- 培养一个
-    **协作文化**
-    开发、QA 和运营团队之间共享测试基础设施的所有权。
+- 培养一个 **协作文化**开发、QA 和运营团队之间共享测试基础设施的所有权。
 
-- **安排停机时间**
-    在非高峰时段进行维护，以尽量减少对测试过程的干扰。
+- **安排停机时间**在非高峰时段进行维护，以尽量减少对测试过程的干扰。
 
-- **备份**
-    关键数据和配置，以防止发生故障时丢失。
+- **备份**关键数据和配置，以防止发生故障时丢失。
 
-- **审查和完善**
-    定期维护流程以适应测试自动化的新技术和实践。
+- **审查和完善**定期维护流程以适应测试自动化的新技术和实践。
 
 ### 集成和自动化
 
@@ -388,9 +326,9 @@ services:
 
 - **版本控制系统 (VCS)**：测试代码与应用程序代码一起存储和版本控制，从而实现测试用例和软件修订之间的同步和可追溯性。
 
-  ```
+```
   git commit -am "Add new tests for feature X"
-  ```
+```
 
 - **持续集成 (CI) 服务器**：在代码签入时触发自动化测试，确保立即反馈更改的影响。
 
@@ -400,34 +338,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 - uses: actions/checkout@v2
-- name: Run tests
-      run: npm test
+- name: Run tests run: npm test
 
 - **问题跟踪系统**：测试结果可以链接到问题或票证，提供对测试失败及其相应错误或功能的可见性。
 
-  ```
+```
   if (testFailed) {
     createIssue("Test failure on feature Y", testDetails);
   }
-  ```
+```
 
 - **部署自动化工具**：测试基础架构确保只有通过测试的代码才会部署到暂存或生产环境。
 
-  ```
+```
   ansible-playbook -i inventory/prod deploy.yml --extra-vars "version=1.2.3"
-  ```
+```
 
 - **监控和记录**：记录测试结果和性能指标以供分析，为有关代码质量和发布准备情况的决策提供信息。
 
-  ```
+```
   logger.info(`Test suite execution time: ${executionTime}`);
-  ```
+```
 
 - **协作工具**：有关测试结果的通知将发送到团队沟通渠道，让每个人都了解情况。
 
-  ```
+```
   curl -X POST -H 'Content-type: application/json' --data '{"text":"Test suite passed: all systems go!"}' [REDACTED_SLACK_WEBHOOK]
-  ```
+```
 通过与这些系统集成，[测试基础设施](/zh-cn/wiki/test-infrastructure/) 成为开发流程的一个紧密组成部分，增强协作并确保整个软件开发生命周期的质量。
 
 - **版本控制系统 (VCS)**：测试代码与应用程序代码一起存储和版本控制，从而实现测试用例和软件修订之间的同步和可追溯性。
@@ -460,8 +397,7 @@ jobs:
 - **版本控制**：保持测试脚本和基础设施代码与应用程序代码同步，以避免测试错误的软件版本。
 - **反馈循环**：确保测试结果及时且可操作的方式报告给开发人员。
 - **安全性**：保护测试中使用的敏感数据和凭据免遭暴露，尤其是在共享或公共 CI 环境中运行测试时。
-- **可扩展性**：扩展基础设施以处理更频繁的测试周期增加的负载，而不会产生过高的成本或复杂性。
-  应对这些挑战需要仔细规划、监控和维护，以确保 [测试基础设施](/zh-cn/wiki/test-infrastructure/) 仍然是 CI/CD 管道中可靠且有效的部分。
+- **可扩展性**：扩展基础设施以处理更频繁的测试周期增加的负载，而不会产生过高的成本或复杂性。 应对这些挑战需要仔细规划、监控和维护，以确保 [测试基础设施](/zh-cn/wiki/test-infrastructure/) 仍然是 CI/CD 管道中可靠且有效的部分。
 
 #### 测试基础设施如何帮助实现持续测试？
 
@@ -488,12 +424,12 @@ jobs:
 
 - **执行时间**：跟踪[测试套件](/zh-cn/wiki/test-suite/) 运行所需的时间。使用它来识别随着时间的推移出现的瓶颈或性能下降。
 
-    ```
+```
     const startTime = performance.now();
     // Test execution code
     const endTime = performance.now();
     console.log(`Test suite executed in ${endTime - startTime} milliseconds`);
-    ```
+```
 
 - **资源利用率**：监控 CPU、内存和磁盘使用情况，以确保基础设施没有过度或未充分利用。
 - **队列长度**：测量等待执行的测试数量。不断增长的队列可能表明需要更多资源或并行化。
@@ -501,17 +437,16 @@ jobs:
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：使用覆盖工具确保测试广泛的场景。
 - **失败率和成功率**：分析通过测试与失败测试的比率，以衡量代码库的稳定性和测试的有效性。
 - **维护开销**：跟踪更新测试和基础设施所花费的时间，旨在通过自动化和更好的设计来减少这种情况。
-- **可扩展性**：评估基础设施处理增加的负载的能力，无论是在并发测试还是更大的[测试套件](/zh-cn/wiki/test-suite/)方面。
-  定期查看这些指标以识别趋势并做出数据驱动的决策，以改进您的[测试基础设施](/zh-cn/wiki/test-infrastructure/)。实施**持续监控**，并在性能偏离预期阈值时设置**警报**。
+- **可扩展性**：评估基础设施处理增加的负载的能力，无论是在并发测试还是更大的[测试套件](/zh-cn/wiki/test-suite/)方面。 定期查看这些指标以识别趋势并做出数据驱动的决策，以改进您的[测试基础设施](/zh-cn/wiki/test-infrastructure/)。实施**持续监控**，并在性能偏离预期阈值时设置**警报**。
 
 - **执行时间**：跟踪[测试套件](/zh-cn/wiki/test-suite/) 运行所需的时间。使用它来识别随着时间的推移出现的瓶颈或性能下降。
 
-    ```
+```
     const startTime = performance.now();
     // Test execution code
     const endTime = performance.now();
     console.log(`Test suite executed in ${endTime - startTime} milliseconds`);
-    ```
+```
 
 #### 可以使用哪些策略来优化测试基础设施？
 
@@ -527,8 +462,7 @@ jobs:
 - **负载平衡**：跨可用资源分配测试，以防止任何单个节点过载并确保基础设施的高效使用。
 - **维护窗口**：定期安排维护以更新和修补系统，防止由于过时的组件而导致速度下降。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：有效管理测试数据，确保其相关、最新且可供测试快速访问。
-- **自动缩放**：实现自动缩放以根据当前负载或需求自动调整活动实例的数量。
-  通过应用这些策略，您可以提高 [测试基础设施](/zh-cn/wiki/test-infrastructure/) 的效率、可靠性和可扩展性。
+- **自动缩放**：实现自动缩放以根据当前负载或需求自动调整活动实例的数量。 通过应用这些策略，您可以提高 [测试基础设施](/zh-cn/wiki/test-infrastructure/) 的效率、可靠性和可扩展性。
 
 #### 如何针对不同的测试环境配置测试基础设施？
 
@@ -539,12 +473,12 @@ jobs:
   使用 **CI/CD 管道**，集成 Jenkins 或 GitLab CI 等工具，自动配置和拆除环境。这可确保环境仅在需要时启动，从而降低成本和潜在的配置漂移。
   最后，使用 Consul 或 etcd 等工具维护一个**集中式配置管理系统**来跟踪和审核跨环境的更改。
 
-  ```
+```
   # Example environment variable configuration
   DATABASE_URL: jdbc:postgresql://db-${ENVIRONMENT}.example.com:5432/myapp
-  ```
+```
 
-  ```
+```
   # Example Terraform snippet for infrastructure setup
   resource "aws_instance" "test_instance" {
     ami           = "ami-0c55b159cbfafe1f0"
@@ -553,7 +487,7 @@ jobs:
       Name = "TestInstance-${var.environment}"
     }
   }
-  ```
+```
 
 #### 可能影响测试基础设施性能的常见问题是什么以及如何缓解这些问题？
 
@@ -565,7 +499,7 @@ jobs:
 - **维护不善[测试数据](/zh-cn/wiki/test-data/)**：自动化测试数据管理，以确保数据是相关的、最新的，并且在测试执行之前处于已知状态。
 - **监控不足**：集成全面的监控工具来实时跟踪系统运行状况、测试执行和资源利用率。
 
-  ```
+```
   // Example of a simple retry mechanism in test code
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
@@ -577,7 +511,7 @@ jobs:
       console.log(`Retry ${attempt + 1}:`, error.message);
     }
   }
-  ```
+```
 定期**审查和优化**[测试基础设施](/zh-cn/wiki/test-infrastructure/)，考虑可以提高性能的新技术和方法。在**可扩展性**和**成本**之间保持平衡，确保基础设施能够处理负载而无需不必要的支出。
 
 #### 测试基础设施如何影响测试过程的速度和效率？

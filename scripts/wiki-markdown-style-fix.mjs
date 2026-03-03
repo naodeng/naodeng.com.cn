@@ -4,6 +4,8 @@
  * Auto-fix:
  * 1) Remove spaces before English punctuation after Chinese char:
  *    "中文 , . : ; ! ?" -> "中文, . : ; ! ?"
+ * 2) Normalize fenced code block indent:
+ *    - Always no indent for fence markers (``` / ```lang)
  *
  * Notes:
  * - Only body content is edited (frontmatter untouched).
@@ -52,13 +54,23 @@ function main() {
     let fileChanged = false;
 
     for (let i = 0; i < lines.length; i += 1) {
-      if (/^\s*```/.test(lines[i])) {
+      const before = lines[i];
+      const fenceMatch = before.match(/^(\s*)```(.*)$/);
+
+      if (fenceMatch) {
+        const afterFence = `\`\`\`${fenceMatch[2]}`;
+        if (before !== afterFence) {
+          lines[i] = afterFence;
+          fileChanged = true;
+          replacements += 1;
+        }
+
         inFence = !inFence;
         continue;
       }
+
       if (inFence) continue;
 
-      const before = lines[i];
       const after = fixLine(before);
       if (before !== after) {
         lines[i] = after;

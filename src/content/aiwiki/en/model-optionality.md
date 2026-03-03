@@ -3,7 +3,7 @@ title: "Model Optionality"
 titleZh: "模型可选性"
 slug: "model-optionality"
 lang: "en"
-summary: "The capability for developers to freely switch between and combine AI models from different providers and architectures based on specific engineering scenarios."
+summary: "The capability for developers to freely switch between and combine AI models from different providers and architectures based on specific engineering scen…"
 topic: "ai-vibe-coding"
 aliases:
   - "Model Optionality"

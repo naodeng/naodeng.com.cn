@@ -5,9 +5,10 @@ section: "N"
 related:
   - test-runner
   - automated-testing
-  - manual-testing
-  - test-suite
   - test-class
+  - test-case
+  - web-testing
+  - operational-testing
 order: 0
 ---
 
@@ -88,8 +89,7 @@ order: 0
 - **结果报告**：生成各种格式的详细测试结果报告，包括 XML，可用于进一步分析或与 CI/CD 工具集成。
 - **平台和运行时支持**：兼容多个平台和运行时，包括.NET Core和Mono，支持跨平台测试。
 - **可扩展性**：通过自定义属性、约束和事件侦听器扩展[NUnit](/zh-cn/wiki/nunit/)，以根据特定的测试需求进行定制。
-- **与各种 IDE 和 CI 工具集成**：与流行的开发环境和持续集成服务器无缝协作，增强开发工作流程。
-  这些功能共同使[测试自动化](/zh-cn/wiki/test-automation/) 工程师能够高效地编写、组织和执行测试，使[NUnit](/zh-cn/wiki/nunit/) 成为许多测试场景的多功能选择。
+- **与各种 IDE 和 CI 工具集成**：与流行的开发环境和持续集成服务器无缝协作，增强开发工作流程。 这些功能共同使[测试自动化](/zh-cn/wiki/test-automation/) 工程师能够高效地编写、组织和执行测试，使[NUnit](/zh-cn/wiki/nunit/) 成为许多测试场景的多功能选择。
 
 - **基于属性的测试配置**：使用 `[Test]`、`[TestCase]` 和 `[TestFixture]` 等属性来表示测试方法和类，可以轻松配置测试。
 - **[测试用例](/zh-cn/wiki/test-case/) 和 [测试套件](/zh-cn/wiki/test-suite/)**：将测试组织到案例和套件中，以实现更好的管理和结构。
@@ -118,69 +118,44 @@ order: 0
 要安装[NUnit](/zh-cn/wiki/nunit/)，您可以使用NuGet Package Manager，这是.NET项目最简单且最常用的方法。请按照下列步骤操作：
 
 1. 在 Visual Studio 中打开您的项目。
-2. 前往
-    **解决方案浏览器**
-    。
+2. 前往 **解决方案浏览器** 。
 
 3. 右键单击​​要添加 NUnit 的项目。
-4. 选择
-    **管理 NuGet 包**
-    。
+4. 选择 **管理 NuGet 包** 。
 
-5. 在 NuGet 包管理器中，单击
-    **浏览**
-    选项卡。
+5. 在 NuGet 包管理器中，单击 **浏览**选项卡。
 
-6. 搜索
-    `NUnit`
-    。
+6. 搜索 `NUnit` 。
 
-7. 选择
-    `NUnit`
-    列表中的包。
+7. 选择 `NUnit` 列表中的包。
 
-8. 单击
-    **安装**
-    按钮将 NUnit 添加到您的项目中。
-  或者，您可以使用程序包管理器控制台安装[NUnit](/zh-cn/wiki/nunit/)：
+8. 单击 **安装**按钮将 NUnit 添加到您的项目中。 或者，您可以使用程序包管理器控制台安装[NUnit](/zh-cn/wiki/nunit/)：
 
-  ```
+```
   Install-Package NUnit -Version 3.x.x
-  ```
+```
 将 `3.x.x` 替换为所需的版本号。
   对于.NET Core 或.NET Standard 项目，您还可以使用 `dotnet` CLI：
 
-  ```
+```
   dotnet add package NUnit --version 3.x.x
-  ```
+```
 再次将 `3.x.x` 替换为您要安装的特定版本。
   确保您的项目的目标框架与您正在安装的[NUnit](/zh-cn/wiki/nunit/) 版本兼容。安装后，您可以开始使用 [NUnit](/zh-cn/wiki/nunit/) 框架编写测试。如果您想在 Visual Studio 的测试资源管理器中运行测试，请记住还安装`NUnit3TestAdapter`。
 
 1. 在 Visual Studio 中打开您的项目。
-2. 前往
-    **解决方案浏览器**
-    。
+2. 前往 **解决方案浏览器** 。
 
 3. 右键单击​​要添加 NUnit 的项目。
-4. 选择
-    **管理 NuGet 包**
-    。
+4. 选择 **管理 NuGet 包** 。
 
-5. 在 NuGet 包管理器中，单击
-    **浏览**
-    选项卡。
+5. 在 NuGet 包管理器中，单击 **浏览**选项卡。
 
-6. 搜索
-    `NUnit`
-    。
+6. 搜索 `NUnit` 。
 
-7. 选择
-    `NUnit`
-    列表中的包。
+7. 选择 `NUnit` 列表中的包。
 
-8. 单击
-    **安装**
-    按钮将 NUnit 添加到您的项目中。
+8. 单击 **安装**按钮将 NUnit 添加到您的项目中。
 
 #### NUnit 有哪些系统要求？
 
@@ -190,16 +165,15 @@ order: 0
 - **.NET Core**：NUnit 支持.NET Core 1.1 及更高版本，包括用于跨平台测试的.NET 5 和 6。
 - **Mono** ：要在支持 Mono 的平台上运行，需要 4.6 或更高版本。
 - **操作系统**：NUnit 是跨平台的，可以在 Windows、macOS 和 Linux 上运行。
-- **IDE 支持**：NUnit 可与各种集成开发环境 (IDE) 配合使用，例如 Visual Studio，这需要 NUnit 3 测试适配器进行集成。
-  在安装 [NUnit](/zh-cn/wiki/nunit/) 之前，请确保您的系统上安装了适当版本的.NET 平台。对于针对多个框架的项目，请确保所有目标框架都满足最低要求。
+- **IDE 支持**：NUnit 可与各种集成开发环境 (IDE) 配合使用，例如 Visual Studio，这需要 NUnit 3 测试适配器进行集成。 在安装 [NUnit](/zh-cn/wiki/nunit/) 之前，请确保您的系统上安装了适当版本的.NET 平台。对于针对多个框架的项目，请确保所有目标框架都满足最低要求。
 
-  ```
+```
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.x.x" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="x.x.x" />
     <PackageReference Include="NUnit3TestAdapter" Version="x.x.x" />
   </ItemGroup>
-  ```
+```
 将 `3.x.x` 替换为您要使用的 [NUnit](/zh-cn/wiki/nunit/) 的特定版本，并将 `x.x.x` 替换为与您的开发环境兼容的测试 SDK 和测试适配器的版本。
 
 #### 如何为新项目设置 NUnit？
@@ -207,116 +181,107 @@ order: 0
 要为新项目设置[NUnit](/zh-cn/wiki/nunit/)，请执行以下步骤：
 
 1. **在您首选的 IDE（例如 Visual Studio）中创建一个新项目**。
-2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令：
-    或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
+2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令： 或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
 
-    ```
+```
     Install-Package NUnit
-    ```
+```
 
-    ```
+```
     dotnet add package NUnit
-    ```
+```
 
-3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令：
-    或者，对于.NET CLI：
+3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令： 或者，对于.NET CLI：
 
-    ```
+```
     Install-Package NUnit3TestAdapter
-    ```
+```
 
-    ```
+```
     dotnet add package NUnit3TestAdapter
-    ```
+```
 
 4. **通过在测试文件顶部添加`using NUnit.Framework;` 指令来引用测试项目中的[NUnit](/zh-cn/wiki/nunit/) 框架**。
 5. **创建一个[测试类](/zh-cn/wiki/test-class/)**并用`[TestFixture]`装饰它。在类内部，定义测试方法并用`[Test]`对其进行注释。
 6. **构建项目**来编译[测试用例](/zh-cn/wiki/test-case/)。
 7. **使用 IDE 中的测试资源管理器或通过命令行运行测试。对于命令行，导航到您的项目目录并运行：
 
-    ```
+```
     dotnet test
-    ```
+```
 确保您的项目针对 [NUnit](/zh-cn/wiki/nunit/) 的兼容框架版本。如果遇到问题，请验证 [NUnit](/zh-cn/wiki/nunit/) 和测试适配器版本是否与项目的目标框架兼容。
 
 1. **在您首选的 IDE（例如 Visual Studio）中创建一个新项目**。
-2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令：
-    或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
+2. **使用项目的包管理器安装 [NUnit](/zh-cn/wiki/nunit/) 框架**。对于.NET Core 或.NET 5+ 项目，请在包管理器控制台中使用以下命令： 或者，对于.NET Framework 项目或者如果您更喜欢使用.NET CLI，请使用：
 
-    ```
+```
     Install-Package NUnit
-    ```
+```
 
-    ```
+```
     dotnet add package NUnit
-    ```
+```
 
-3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令：
-    或者，对于.NET CLI：
+3. **安装[NUnit](/zh-cn/wiki/nunit/) 测试适配器**，它允许[测试运行者](/zh-cn/wiki/test-runner/) 执行您的测试。使用以下命令： 或者，对于.NET CLI：
 
-    ```
+```
     Install-Package NUnit3TestAdapter
-    ```
+```
 
-    ```
+```
     dotnet add package NUnit3TestAdapter
-    ```
+```
 
-    ```
+```
     dotnet test
-    ```
+```
 
 #### NUnit 安装过程中常见的问题有哪些以及如何解决？
 
 [NUnit](/zh-cn/wiki/nunit/) 安装过程中的常见问题及其解决方案包括：
 
 - **兼容性问题**：确保[NUnit](/zh-cn/wiki/nunit/) 版本与项目中的.NET Framework 版本兼容。如果不匹配，请更新项目的框架或选择兼容的 [NUnit](/zh-cn/wiki/nunit/) 版本。
-- **NuGet 包管理器问题**：有时，NuGet 包管理器可能无法按预期工作。尝试使用以下命令清除 NuGet 缓存：
-    或重新安装[NUnit](/zh-cn/wiki/nunit/) 软件包。
+- **NuGet 包管理器问题**：有时，NuGet 包管理器可能无法按预期工作。尝试使用以下命令清除 NuGet 缓存： 或重新安装[NUnit](/zh-cn/wiki/nunit/) 软件包。
 
-    ```
+```
     nuget locals all -clear
-    ```
+```
 
-- **不正确的安装**：[NUnit](/zh-cn/wiki/nunit/) 应作为 NuGet 包安装在测试项目中，而不是作为独立应用程序。使用包管理器控制台：
-    或 Visual Studio 中的 NuGet 包管理器 GUI。
+- **不正确的安装**：[NUnit](/zh-cn/wiki/nunit/) 应作为 NuGet 包安装在测试项目中，而不是作为独立应用程序。使用包管理器控制台： 或 Visual Studio 中的 NuGet 包管理器 GUI。
 
-    ```
+```
     Install-Package NUnit
-    ```
+```
 
 - **缺少[NUnit](/zh-cn/wiki/nunit/) 测试适配器**：如果没有[NUnit](/zh-cn/wiki/nunit/) 测试适配器，Visual Studio 将无法识别或运行您的测试。通过 NuGet 安装它：
 
-    ```
+```
     Install-Package NUnit3TestAdapter
-    ```
+```
 
 - **路径问题**：如果全局安装[NUnit](/zh-cn/wiki/nunit/)，请确保将[NUnit](/zh-cn/wiki/nunit/) 控制台运行程序的路径添加到系统的 PATH 环境变量中。
 - **访问权限**：缺乏适当的访问权限可能会导致安装失败。以管理员身份运行 IDE 或确保您的用户具有必要的权限。
 - **防火墙或防病毒干扰**：有时，防火墙或防病毒设置可能会阻止 [NUnit](/zh-cn/wiki/nunit/) 正确安装。暂时禁用这些或为 [NUnit](/zh-cn/wiki/nunit/) 添加例外。
-- **安装文件损坏**：如果安装文件损坏，请重新下载 [NUnit](/zh-cn/wiki/nunit/) 软件包或使用其他源。
-  如果问题仍然存在，请参阅 [NUnit](/zh-cn/wiki/nunit/) 文档或社区论坛以获取特定错误消息或故障排除步骤。
+- **安装文件损坏**：如果安装文件损坏，请重新下载 [NUnit](/zh-cn/wiki/nunit/) 软件包或使用其他源。 如果问题仍然存在，请参阅 [NUnit](/zh-cn/wiki/nunit/) 文档或社区论坛以获取特定错误消息或故障排除步骤。
 
 - **兼容性问题**：确保[NUnit](/zh-cn/wiki/nunit/) 版本与项目中的.NET Framework 版本兼容。如果不匹配，请更新项目的框架或选择兼容的 [NUnit](/zh-cn/wiki/nunit/) 版本。
-- **NuGet 包管理器问题**：有时，NuGet 包管理器可能无法按预期工作。尝试使用以下命令清除 NuGet 缓存：
-    或重新安装[NUnit](/zh-cn/wiki/nunit/) 软件包。
+- **NuGet 包管理器问题**：有时，NuGet 包管理器可能无法按预期工作。尝试使用以下命令清除 NuGet 缓存： 或重新安装[NUnit](/zh-cn/wiki/nunit/) 软件包。
 
-    ```
+```
     nuget locals all -clear
-    ```
+```
 
-- **不正确的安装**：[NUnit](/zh-cn/wiki/nunit/) 应作为 NuGet 包安装在测试项目中，而不是作为独立应用程序。使用包管理器控制台：
-    或 Visual Studio 中的 NuGet 包管理器 GUI。
+- **不正确的安装**：[NUnit](/zh-cn/wiki/nunit/) 应作为 NuGet 包安装在测试项目中，而不是作为独立应用程序。使用包管理器控制台： 或 Visual Studio 中的 NuGet 包管理器 GUI。
 
-    ```
+```
     Install-Package NUnit
-    ```
+```
 
 - **缺少[NUnit](/zh-cn/wiki/nunit/) 测试适配器**：如果没有[NUnit](/zh-cn/wiki/nunit/) 测试适配器，Visual Studio 将无法识别或运行您的测试。通过 NuGet 安装它：
 
-    ```
+```
     Install-Package NUnit3TestAdapter
-    ```
+```
 
 - **路径问题**：如果全局安装[NUnit](/zh-cn/wiki/nunit/)，请确保将[NUnit](/zh-cn/wiki/nunit/) 控制台运行程序的路径添加到系统的 PATH 环境变量中。
 - **访问权限**：缺乏适当的访问权限可能会导致安装失败。以管理员身份运行 IDE 或确保您的用户具有必要的权限。
@@ -331,25 +296,25 @@ order: 0
 
 1. **通过使用 `[TestFixture]` 属性标记类来创建 [测试类](/zh-cn/wiki/test-class/)**。此类将包含您的测试方法。
 
-    ```
+```
     [TestFixture]
     public class CalculatorTests
     {
     }
-    ```
+```
 
 2. 通过使用`[Test]` 属性标记方法，在[测试类](/zh-cn/wiki/test-class/) 中**定义测试方法**。该方法将代表一个单独的[测试用例](/zh-cn/wiki/test-case/)。
 
-    ```
+```
     [Test]
     public void Add_TwoNumbers_ReturnsSum()
     {
     }
-    ```
+```
 
 3. **在测试方法内实现测试逻辑**。实例化被测类、执行操作并使用断言来验证预期结果。
 
-    ```
+```
     [Test]
     public void Add_TwoNumbers_ReturnsSum()
     {
@@ -362,32 +327,31 @@ order: 0
         // Assert
         Assert.AreEqual(12, result);
     }
-    ```
+```
 
-4. **使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 或支持[NUnit](/zh-cn/wiki/nunit/) 的集成开发环境(IDE) 运行测试**。 [测试运行者](/zh-cn/wiki/test-runner/) 将执行测试方法并报告结果。
-  请记住**保持测试相互隔离**和**独立**。每个测试都应该关注单个行为或场景。如果您需要为每个测试执行常见的[环境搭建](/zh-cn/wiki/setup/) 或清理任务，请使用`[SetUp]` 和`[TearDown]` 方法。
+4. **使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 或支持[NUnit](/zh-cn/wiki/nunit/) 的集成开发环境(IDE) 运行测试**。 [测试运行者](/zh-cn/wiki/test-runner/) 将执行测试方法并报告结果。 请记住**保持测试相互隔离**和**独立**。每个测试都应该关注单个行为或场景。如果您需要为每个测试执行常见的[环境搭建](/zh-cn/wiki/setup/) 或清理任务，请使用`[SetUp]` 和`[TearDown]` 方法。
 
 1. **通过使用 `[TestFixture]` 属性标记类来创建 [测试类](/zh-cn/wiki/test-class/)**。此类将包含您的测试方法。
 
-    ```
+```
     [TestFixture]
     public class CalculatorTests
     {
     }
-    ```
+```
 
 2. 通过使用`[Test]` 属性标记方法，在[测试类](/zh-cn/wiki/test-class/) 中**定义测试方法**。该方法将代表一个单独的[测试用例](/zh-cn/wiki/test-case/)。
 
-    ```
+```
     [Test]
     public void Add_TwoNumbers_ReturnsSum()
     {
     }
-    ```
+```
 
 3. **在测试方法内实现测试逻辑**。实例化被测类、执行操作并使用断言来验证预期结果。
 
-    ```
+```
     [Test]
     public void Add_TwoNumbers_ReturnsSum()
     {
@@ -400,7 +364,7 @@ order: 0
         // Assert
         Assert.AreEqual(12, result);
     }
-    ```
+```
 
 4. **使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 或支持[NUnit](/zh-cn/wiki/nunit/) 的集成开发环境(IDE) 运行测试**。 [测试运行者](/zh-cn/wiki/test-runner/) 将执行测试方法并报告结果。
 
@@ -410,155 +374,155 @@ order: 0
 
 - **相等断言**：验证两个值是否相等。
 
-    ```
+```
     Assert.AreEqual(expected, actual);
     Assert.AreNotEqual(notExpected, actual);
-    ```
+```
 
 - **身份断言**：检查两个对象实例是否相同。
 
-    ```
+```
     Assert.AreSame(expected, actual);
     Assert.AreNotSame(notExpected, actual);
-    ```
+```
 
 - **布尔断言**：测试 `true` 或 `false` 条件。
 
-    ```
+```
     Assert.IsTrue(condition);
     Assert.IsFalse(condition);
-    ```
+```
 
 - **可为空断言**：确定对象是否为`null`。
 
-    ```
+```
     Assert.IsNull(object);
     Assert.IsNotNull(object);
-    ```
+```
 
 - **比较断言**：比较值以确定相对大小。
 
-    ```
+```
     Assert.Greater(value1, value2);
     Assert.GreaterOrEqual(value1, value2);
     Assert.Less(value1, value2);
     Assert.LessOrEqual(value1, value2);
-    ```
+```
 
 - **字符串断言**：特定于字符串操作，如包含、匹配等。
 
-    ```
+```
     Assert.AreEqual(expected, actual, ignoreCase, message);
     Assert.Contains(substring, string);
     Assert.StartsWith(substring, string);
     Assert.EndsWith(substring, string);
     Assert.IsMatch(regex, string);
-    ```
+```
 
 - **集合断言**：验证集合的各个方面，例如相等性、子集等。
 
-    ```
+```
     Assert.AreEqual(expected, actual, comparer);
     Assert.Contains(object, collection);
     Assert.AllItemsAreInstancesOfType(collection, expectedType);
     Assert.IsSubsetOf(subset, superset);
-    ```
+```
 
 - **异常断言**：断言抛出特定类型的异常。
 
-    ```
+```
     Assert.Throws<ExceptionType>(() => { /* code that throws exception */ });
     Assert.DoesNotThrow(() => { /* code that should not throw exception */ });
-    ```
+```
 
 - **约束模型**：使用流畅的界面编写断言的更具表现力的方式。
 
-    ```
+```
     Assert.That(actual, Is.EqualTo(expected));
     Assert.That(actual, Is.Not.Null);
     Assert.That(collection, Has.No.Member(item));
     Assert.That(() => { /* code */ }, Throws.TypeOf<ExceptionType>());
-    ```
+```
 这些断言有助于验证被测代码的行为，确保软件按预期运行。
 
 - **相等断言**：验证两个值是否相等。
 
-    ```
+```
     Assert.AreEqual(expected, actual);
     Assert.AreNotEqual(notExpected, actual);
-    ```
+```
 
 - **身份断言**：检查两个对象实例是否相同。
 
-    ```
+```
     Assert.AreSame(expected, actual);
     Assert.AreNotSame(notExpected, actual);
-    ```
+```
 
 - **布尔断言**：测试 `true` 或 `false` 条件。
 
-    ```
+```
     Assert.IsTrue(condition);
     Assert.IsFalse(condition);
-    ```
+```
 
 - **可为空断言**：确定对象是否为`null`。
 
-    ```
+```
     Assert.IsNull(object);
     Assert.IsNotNull(object);
-    ```
+```
 
 - **比较断言**：比较值以确定相对大小。
 
-    ```
+```
     Assert.Greater(value1, value2);
     Assert.GreaterOrEqual(value1, value2);
     Assert.Less(value1, value2);
     Assert.LessOrEqual(value1, value2);
-    ```
+```
 
 - **字符串断言**：特定于字符串操作，如包含、匹配等。
 
-    ```
+```
     Assert.AreEqual(expected, actual, ignoreCase, message);
     Assert.Contains(substring, string);
     Assert.StartsWith(substring, string);
     Assert.EndsWith(substring, string);
     Assert.IsMatch(regex, string);
-    ```
+```
 
 - **集合断言**：验证集合的各个方面，例如相等性、子集等。
 
-    ```
+```
     Assert.AreEqual(expected, actual, comparer);
     Assert.Contains(object, collection);
     Assert.AllItemsAreInstancesOfType(collection, expectedType);
     Assert.IsSubsetOf(subset, superset);
-    ```
+```
 
 - **异常断言**：断言抛出特定类型的异常。
 
-    ```
+```
     Assert.Throws<ExceptionType>(() => { /* code that throws exception */ });
     Assert.DoesNotThrow(() => { /* code that should not throw exception */ });
-    ```
+```
 
 - **约束模型**：使用流畅的界面编写断言的更具表现力的方式。
 
-    ```
+```
     Assert.That(actual, Is.EqualTo(expected));
     Assert.That(actual, Is.Not.Null);
     Assert.That(collection, Has.No.Member(item));
     Assert.That(() => { /* code */ }, Throws.TypeOf<ExceptionType>());
-    ```
+```
 
 #### 在 NUnit 中如何对测试进行分组？
 
 在[NUnit](/zh-cn/wiki/nunit/) 中，可以使用**属性** 对测试进行分组，以有效地组织和管理它们。用于分组的主要属性是`[TestFixture]`，它表示包含测试方法的类。在测试装置中，您可以使用 `[Category]` 属性进一步对测试进行分组。
   以下是使用 `[Category]` 对测试进行分组的示例：
 
-  ```
+```
   [TestFixture]
   public class MathTests
   {
@@ -575,10 +539,10 @@ order: 0
           // Test code here
       }
   }
-  ```
+```
 您还可以将多个类别应用于单个测试：
 
-  ```
+```
   [Test]
   [Category("Addition")]
   [Category("Boundary")]
@@ -586,12 +550,12 @@ order: 0
   {
       // Test code here
   }
-  ```
+```
 要运行特定组的测试，请使用 `--where` 命令行选项以及 `cat` 关键字，后跟类别名称：
 
-  ```
+```
   nunit-console --where "cat == Addition" MyTests.dll
-  ```
+```
 对于更复杂的分组，您可以使用**[NUnit](/zh-cn/wiki/nunit/) 的测试选择语言**来包含或排除基于多个类别或其他属性的测试。
   请记住，对测试进行分组有助于根据其类别执行测试子集，这对于在测试期间定位应用程序的特定区域非常有用。它还有助于维护组织良好的[测试套件](/zh-cn/wiki/test-suite/)。
 
@@ -601,25 +565,25 @@ order: 0
   **使用测试选择语言：**
   [NUnit](/zh-cn/wiki/nunit/) 的测试选择语言允许您根据测试的属性（例如名称、类别或自定义属性）选择测试。例如，要按名称运行测试：
 
-  ```
+```
   nunit3-console.exe --where "test==MyNamespace.MyTestClass.MyTestMethod" path\to\test\assembly.dll
-  ```
+```
 要运行属于特定类别的测试：
 
-  ```
+```
   nunit3-console.exe --where "cat==Urgent" path\to\test\assembly.dll
-  ```
+```
 **使用命令行选项：**
   使用 [NUnit](/zh-cn/wiki/nunit/) Console Runner 时，您可以通过其完全限定名称指定要运行的测试：
 
-  ```
+```
   nunit3-console.exe --test=MyNamespace.MyTestClass.MyTestMethod path\to\test\assembly.dll
-  ```
+```
 您还可以通过用逗号分隔来运行多个测试：
 
-  ```
+```
   nunit3-console.exe --test=MyNamespace.MyTestClass.MyTestMethod1,MyNamespace.MyTestClass.MyTestMethod2 path\to\test\assembly.dll
-  ```
+```
 **在 Visual Studio 中使用 [NUnit](/zh-cn/wiki/nunit/) 测试适配器：**
   如果您使用的是 Visual Studio，则可以使用 **测试资源管理器** 运行一组特定的测试。您可以按名称、结果、持续时间和特征过滤测试。右键单击要运行的测试或测试组，然后选择“**运行**”。
   **注意：** 确保使用 `[Category]` 等属性对您的测试进行正确分组，以便在运行特定测试集时更轻松地进行选择。
@@ -629,22 +593,22 @@ order: 0
 在[NUnit](/zh-cn/wiki/nunit/) 中，`SetUp` 和`TearDown` 是定义在`TestFixture` 内每个测试之前和之后运行的方法的属性。
   **`SetUp`** 用于在每次测试运行之前初始化对象或设置状态。这确保每个测试都从已知环境开始，从而潜在地减少测试之间依赖的可能性。
 
-  ```
+```
   [SetUp]
   public void Initialize()
   {
       // Code to set up test environment
   }
-  ```
+```
 另一方面，**`TearDown`** 用于在测试运行后进行清理。这可能涉及释放资源，例如关闭[数据库](/zh-cn/wiki/database/)连接或删除[测试数据](/zh-cn/wiki/test-data/)，以确保不会留下可能影响后续测试的副作用。
 
-  ```
+```
   [TearDown]
   public void Cleanup()
   {
       // Code to clean up after the test
   }
-  ```
+```
 使用`SetUp` 和`TearDown` 有助于保持干净的[测试环境](/zh-cn/wiki/test-environment/) 并可以防止测试相互干扰，这对于获得准确可靠的测试结果至关重要。当测试不是独立的、共享必须重置的资源或状态时，它们特别有用。但是，重要的是使这些方法尽可能轻量，以尽量减少对整体 [测试套件](/zh-cn/wiki/test-suite/) 执行时间的影响。
 
 ### 高级概念
@@ -653,7 +617,7 @@ order: 0
 
 [NUnit](/zh-cn/wiki/nunit/) 使用其内置断言模型处理异常，允许[测试自动化](/zh-cn/wiki/test-automation/) 工程师断言在[测试执行](/zh-cn/wiki/test-execution/) 期间按预期抛出异常。要验证是否引发了特定异常，可以使用 `Assert.Throws` 方法或其通用对应方法 `Assert.Throws<T>`，其中 `T` 是预期异常的类型。这是一个例子：
 
-  ```
+```
   [Test]
   public void ShouldThrowException()
   {
@@ -662,10 +626,10 @@ order: 0
           // Code that should throw the InvalidOperationException
       });
   }
-  ```
+```
 对于需要进一步检查异常的情况，可以通过如下方式捕获：
 
-  ```
+```
   [Test]
   public void ShouldThrowExceptionWithSpecificProperties()
   {
@@ -675,10 +639,10 @@ order: 0
       });
       Assert.That(ex.Message, Is.EqualTo("Expected message"));
   }
-  ```
+```
 如果您希望不会引发异常，可以使用`Assert.DoesNotThrow`：
 
-  ```
+```
   [Test]
   public void ShouldNotThrowException()
   {
@@ -687,7 +651,7 @@ order: 0
           // Code that should not throw any exceptions
       });
   }
-  ```
+```
 [NUnit](/zh-cn/wiki/nunit/) 还提供 `ExpectedException` 属性，但它被认为已过时，有利于 `Assert.Throws` 方法，该方法提供更多控制和更好的可读性。通过使用这些断言，您可以确保您的代码不仅在正常条件下正确运行，而且还可以按预期处理错误状态。
 
 #### NUnit 中的参数化测试是什么？
@@ -695,7 +659,7 @@ order: 0
 [NUnit](/zh-cn/wiki/nunit/) 中的[参数化测试](/zh-cn/wiki/parameterized-testing/) 允许您使用不同的输入数据集多次运行相同的测试。这种方法对于覆盖广泛的输入组合非常有用，而无需编写多个测试方法。要实现参数化测试，您可以使用`[TestCase]`、`[TestCaseSource]` 或`[ValueSource]` 等属性。
   使用`[TestCase]` 属性，您可以直接在测试方法上指定内联参数。例如：
 
-  ```
+```
   [Test]
   [TestCase(1, 2, 3)]
   [TestCase(3, 3, 6)]
@@ -704,10 +668,10 @@ order: 0
   {
       Assert.AreEqual(expectedSum, Add(a, b));
   }
-  ```
+```
 `[TestCaseSource]` 属性允许您定义返回[测试用例](/zh-cn/wiki/test-case/) 的`IEnumerable` 的单独方法、属性或字段。当您有复杂的数据或需要在多个测试方法之间共享[测试数据](/zh-cn/wiki/test-data/)时，这特别有用。
 
-  ```
+```
   public static IEnumerable<TestCaseData> AddCases
   {
       get
@@ -722,7 +686,7 @@ order: 0
   {
       return Add(a, b);
   }
-  ```
+```
 `[ValueSource]` 属性与`[TestCaseSource]` 类似，但用于向测试方法提供单个参数。
   参数化测试增强了[测试覆盖率](/zh-cn/wiki/test-coverage/) 和[可维护性](/zh-cn/wiki/maintainability/)，因为它们将测试逻辑与[测试数据](/zh-cn/wiki/test-data/) 分开，从而可以轻松更新和添加[测试场景](/zh-cn/wiki/test-scenario/)。
 
@@ -731,7 +695,7 @@ order: 0
 要在[NUnit](/zh-cn/wiki/nunit/) 中实现数据驱动测试，您可以使用`TestCaseSource` 属性来指定[测试数据](/zh-cn/wiki/test-data/) 的源。此源可以是返回 `IEnumerable` 的属性、字段或方法。
   这是一个简洁的例子：
 
-  ```
+```
   [TestFixture]
   public class DataDrivenTests
   {
@@ -753,7 +717,7 @@ order: 0
           Assert.AreEqual(expected, actual);
       }
   }
-  ```
+```
 在此示例中，`TestData` 是一个生成 [测试用例](/zh-cn/wiki/test-case/) 的 `IEnumerable<TestCaseData>`。每个`TestCaseData` 实例代表一组要传递给`TestMethod` 的参数。
   **注意**：确保数据源返回与您的测试方法的参数兼容的对象。 [NUnit](/zh-cn/wiki/nunit/) 将使用数据源提供的每组参数调用测试方法。
   对于更复杂的场景，您还可以使用外部数据源，例如 CSV 文件、[数据库](/zh-cn/wiki/database/) 或 XML 文件。您需要编写一个方法来读取数据并将其转换为 `TestCaseData` 对象。
@@ -764,7 +728,7 @@ order: 0
 在[NUnit](/zh-cn/wiki/nunit/) 中，**TestFixture** 是一个属性，它将类标记为包含测试以及（可选）[环境搭建](/zh-cn/wiki/setup/) 或拆卸方法。它充当一组相关测试的容器，并允许在执行测试之前或之后运行任何初始化或清理代码。
   这是 TestFixture 的示例：
 
-  ```
+```
   [TestFixture]
   public class CalculatorTests
   {
@@ -792,13 +756,12 @@ order: 0
       }
       // More tests...
   }
-  ```
+```
 使用**TestFixture**，您可以：
 
 - 按逻辑对测试进行分组。
 - 在多个测试中共享设置和清理代码，减少冗余。
-- 将公共上下文应用于一组测试，这在数据驱动测试中特别有用。
-  **TestFixture** 还可以采用参数，允许使用不同的输入运行同一组测试，从而促进[参数化测试](/zh-cn/wiki/parameterized-testing/)。当您想要在各种条件下测试相同的逻辑时，这特别有用。
+- 将公共上下文应用于一组测试，这在数据驱动测试中特别有用。 **TestFixture** 还可以采用参数，允许使用不同的输入运行同一组测试，从而促进[参数化测试](/zh-cn/wiki/parameterized-testing/)。当您想要在各种条件下测试相同的逻辑时，这特别有用。
 
 #### 如何将 NUnit 与 Selenium 等其他工具集成以进行 e2e 测试？
 
@@ -806,13 +769,13 @@ order: 0
 
 1. **引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
 
-    ```
+```
     Install-Package Selenium.WebDriver
-    ```
+```
 
 2. **创建[测试用例](/zh-cn/wiki/test-case/)**：使用[NUnit](/zh-cn/wiki/nunit/)的注解编写[测试用例](/zh-cn/wiki/test-case/)。在这些测试中使用 [selenium](/zh-cn/wiki/selenium/) [API](/zh-cn/wiki/api/) 与 Web 浏览器进行交互。
 
-    ```
+```
     [TestFixture]
     public class SeleniumTests
     {
@@ -837,20 +800,19 @@ order: 0
             driver.Quit();
         }
     }
-    ```
+```
 
-3. **运行测试**：使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 执行测试。这可以通过命令行、持续集成 (CI) 服务器或支持 [NUnit](/zh-cn/wiki/nunit/) 的 IDE 来完成。
-  通过执行这些步骤，您可以利用 [NUnit](/zh-cn/wiki/nunit/) 的测试功能和 [selenium](/zh-cn/wiki/selenium/) 的浏览器自动化来创建强大的 e2e 测试。请记住正确管理[WebDriver](/zh-cn/wiki/webdriver/)实例以避免资源泄漏，并考虑在测试完成后使用`TearDown`属性关闭浏览器。
+3. **运行测试**：使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 执行测试。这可以通过命令行、持续集成 (CI) 服务器或支持 [NUnit](/zh-cn/wiki/nunit/) 的 IDE 来完成。 通过执行这些步骤，您可以利用 [NUnit](/zh-cn/wiki/nunit/) 的测试功能和 [selenium](/zh-cn/wiki/selenium/) 的浏览器自动化来创建强大的 e2e 测试。请记住正确管理[WebDriver](/zh-cn/wiki/webdriver/)实例以避免资源泄漏，并考虑在测试完成后使用`TearDown`属性关闭浏览器。
 
 1. **引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：确保您的项目引用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)。这可以通过 NuGet 包管理器来完成。
 
-    ```
+```
     Install-Package Selenium.WebDriver
-    ```
+```
 
 2. **创建[测试用例](/zh-cn/wiki/test-case/)**：使用[NUnit](/zh-cn/wiki/nunit/)的注解编写[测试用例](/zh-cn/wiki/test-case/)。在这些测试中使用 [selenium](/zh-cn/wiki/selenium/) [API](/zh-cn/wiki/api/) 与 Web 浏览器进行交互。
 
-    ```
+```
     [TestFixture]
     public class SeleniumTests
     {
@@ -875,6 +837,6 @@ order: 0
             driver.Quit();
         }
     }
-    ```
+```
 
 3. **运行测试**：使用[NUnit](/zh-cn/wiki/nunit/) 的[测试运行者](/zh-cn/wiki/test-runner/) 执行测试。这可以通过命令行、持续集成 (CI) 服务器或支持 [NUnit](/zh-cn/wiki/nunit/) 的 IDE 来完成。

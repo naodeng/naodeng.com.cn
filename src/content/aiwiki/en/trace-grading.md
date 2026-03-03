@@ -121,8 +121,8 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 - [agent-evals](/en/AIWiki/agent-evals/)
 - [graders](/en/AIWiki/graders/)
-- [reflection](/en/AIWiki/reflection/)
-- [autonomous-agents](/en/AIWiki/autonomous-agents/)
+- [reasoning-models](/en/AIWiki/reasoning-models/)
+- [ai-agent](/en/AIWiki/ai-agent/)
 
 ### External References
 

@@ -4,9 +4,9 @@ description: "在软件测试中，测试脚本是由自动化测试工具执行
 section: "T"
 related:
   - automated-testing
-  - false-positive
+  - test-case
   - manual-testing
-  - test-suite
+  - web-testing
   - test-data
 order: 0
 ---
@@ -53,7 +53,7 @@ order: 0
 **[测试脚本](/zh-cn/wiki/test-script/)** 是由 [自动化测试](/zh-cn/wiki/automated-testing/) 工具执行的一组指令，用于验证软件应用程序的功能。它本质上是一个与被测试的软件交互的程序，按照用户的意愿执行操作，并检查预期结果。 [测试脚本](/zh-cn/wiki/test-script/) 是用正在使用的[测试自动化](/zh-cn/wiki/test-automation/) 框架支持的特定脚本或编程语言编写的。
   以下是使用流行测试框架 WebDriverIO 的 JavaScript 基本示例：
 
-  ```
+```
   describe('Login Page Test', () => {
     it('should let user log in', () => {
       browser.url('https://example.com/login');
@@ -63,7 +63,7 @@ order: 0
       expect(browser).toHaveUrl('https://example.com/dashboard');
     });
   });
-  ```
+```
 此脚本导航到登录页面，输入凭据，单击登录按钮，并验证用户是否已重定向到仪表板。
   脚本通常与应用程序代码一起存储在版本控制系统中，以便团队成员之间轻松维护和协作。它们是持续集成/持续部署 (CI/CD) 管道的组成部分，确保任何代码更改都不会破坏现有功能。
 
@@ -89,7 +89,7 @@ order: 0
   - **元数据**：测试标识符、描述以及相关要求或被测应用程序区域等信息。
   这是 TypeScript 中的一个简化示例：
 
-  ```
+```
   import { expect } from 'chai';
   describe('Login Feature', () => {
     before(() => {
@@ -105,7 +105,7 @@ order: 0
       // Test Teardown
     });
   });
-  ```
+```
 每个组件在确保[测试脚本](/zh-cn/wiki/test-script/) 可靠、可维护并提供清晰的结果方面发挥着关键作用。
 
 - **测试[Setup](/zh-cn/wiki/setup/)**：准备[测试环境](/zh-cn/wiki/test-environment/)的初始化代码，例如启动 Web 服务器、初始化[database](/zh-cn/wiki/database/)连接或设置初始条件。
@@ -132,26 +132,13 @@ order: 0
   另一方面，**[测试脚本](/zh-cn/wiki/test-script/)** 是在[自动化测试](/zh-cn/wiki/automated-testing/) 环境中实现[测试用例](/zh-cn/wiki/test-case/) 的实际代码。它是用于自动执行的指令序列，用于测试系统的特定功能或部分。 [测试脚本](/zh-cn/wiki/test-script/) 用编程或脚本语言编写，可以由[测试自动化](/zh-cn/wiki/test-automation/) 工具自动运行。
   主要区别在于它们的性质和用途：
 
-- **[测试用例](/zh-cn/wiki/test-case/)**
-    更多关于
-    **什么**
-    ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
+- **[测试用例](/zh-cn/wiki/test-case/)**更多关于 **什么** ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
 
-- **[测试脚本](/zh-cn/wiki/test-script/)**
-    专注于
-    **如何**
-    ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。
-  本质上，[测试用例](/zh-cn/wiki/test-case/)可以在没有自动化的情况下存在，作为[手工测试](/zh-cn/wiki/manual-testing/)的指南，而[测试脚本](/zh-cn/wiki/test-script/)本质上与自动化相关，并且是[测试用例](/zh-cn/wiki/test-case/)在自动化框架中的实际执行。
+- **[测试脚本](/zh-cn/wiki/test-script/)**专注于 **如何** ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。 本质上，[测试用例](/zh-cn/wiki/test-case/)可以在没有自动化的情况下存在，作为[手工测试](/zh-cn/wiki/manual-testing/)的指南，而[测试脚本](/zh-cn/wiki/test-script/)本质上与自动化相关，并且是[测试用例](/zh-cn/wiki/test-case/)在自动化框架中的实际执行。
 
-- **[测试用例](/zh-cn/wiki/test-case/)**
-    更多关于
-    **什么**
-    ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
+- **[测试用例](/zh-cn/wiki/test-case/)**更多关于 **什么** ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
 
-- **[测试脚本](/zh-cn/wiki/test-script/)**
-    专注于
-    **如何**
-    ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。
+- **[测试脚本](/zh-cn/wiki/test-script/)**专注于 **如何** ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。
 
 ### 创建和执行
 
@@ -178,7 +165,7 @@ order: 0
   9. **版本控制**：将脚本签入版本控制系统以跟踪更改并与其他团队成员协作。
   伪代码中的简单 [测试脚本](/zh-cn/wiki/test-script/) 示例：
 
-  ```
+```
   initializeTestEnvironment();
   loginToApplication("username", "password");
   verifyLoginSuccess();
@@ -186,7 +173,7 @@ order: 0
   executeFunction("Function Y");
   assertExpectedOutcome("Expected Result");
   cleanupTestEnvironment();
-  ```
+```
 1. **确定测试要求**：根据应用程序的功能和[测试计划](/zh-cn/wiki/test-plan/)确定需要测试的内容。
   2. **定义测试目标**：明确说明脚本旨在在应用程序中验证的内容。
   3. **选择测试工具**：选择支持应用程序技术堆栈的合适自动化工具。
@@ -234,118 +221,118 @@ order: 0
 
 - **[Selenium](/zh-cn/wiki/selenium/)**：[web 自动化](/zh-cn/wiki/web-automation/) 的开源框架，支持多种语言和浏览器。
 
-    ```
+```
     WebDriver driver = new ChromeDriver();
     driver.get("https://example.com");
-    ```
+```
 - **Appium**：将 [Selenium](/zh-cn/wiki/selenium/) 的框架扩展到移动应用程序（Android 和 iOS）。
 
-    ```
+```
     DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability("platformName", "iOS");
-    ```
+```
 - **[Cypress](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
 
-    ```
+```
     cy.visit('https://example.com');
     cy.get('.element').click();
-    ```
+```
 - **JUnit**/**TestNG**：Java 中[unit testing](/zh-cn/wiki/unit-testing/) 的框架，通常与[Selenium](/zh-cn/wiki/selenium/) 一起用于自动化。
 
-    ```
+```
     @Test
     public void testExample() {
         Assert.assertTrue(true);
     }
-    ```
+```
 - **RSpec**/**Cucumber**：行为驱动开发工具（[BDD](/zh-cn/wiki/bdd/)），允许以自然语言风格编写测试。
 
-    ```
+```
     describe "An example test" do
       it "should pass" do
         expect(true).to eq(true)
       end
     end
-    ```
+```
 - **[Postman](/zh-cn/wiki/postman/)**：对于[API testing](/zh-cn/wiki/api-testing/)，能够为 RESTful [APIs](/zh-cn/wiki/api/) 编写和执行测试。
 
-    ```
+```
     pm.test("Status code is 200", function () {
         pm.response.to.have.status(200);
     });
-    ```
+```
 - **机器人框架**：用于[acceptance testing](/zh-cn/wiki/acceptance-testing/) 和接受[test-driven development](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
-    ```
+```
     *** Test Cases ***
     Example Test
         Open Browser  https://example.com  Chrome
         Title Should Be  Example Domain
-    ```
+```
 - **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。
 
-    ```
+```
     await page.goto('https://example.com');
     await page.click('text="More information"');
-    ```
+```
 这些工具为不同的测试需求提供各种功能，并且可以集成到持续集成/持续部署（CI/CD）管道中以实现自动化[测试执行](/zh-cn/wiki/test-execution/)。
 
 - **[Selenium](/zh-cn/wiki/selenium/)**：[web 自动化](/zh-cn/wiki/web-automation/) 的开源框架，支持多种语言和浏览器。
 
-    ```
+```
     WebDriver driver = new ChromeDriver();
     driver.get("https://example.com");
-    ```
+```
 - **Appium**：将 [Selenium](/zh-cn/wiki/selenium/) 的框架扩展到移动应用程序（Android 和 iOS）。
 
-    ```
+```
     DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability("platformName", "iOS");
-    ```
+```
 - **[Cypress](/zh-cn/wiki/cypress/)**：在浏览器中运行的基于 JavaScript 的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。
 
-    ```
+```
     cy.visit('https://example.com');
     cy.get('.element').click();
-    ```
+```
 - **JUnit**/**TestNG**：Java 中[unit testing](/zh-cn/wiki/unit-testing/) 的框架，通常与[Selenium](/zh-cn/wiki/selenium/) 一起用于自动化。
 
-    ```
+```
     @Test
     public void testExample() {
         Assert.assertTrue(true);
     }
-    ```
+```
 - **RSpec**/**Cucumber**：行为驱动开发工具（[BDD](/zh-cn/wiki/bdd/)），允许以自然语言风格编写测试。
 
-    ```
+```
     describe "An example test" do
       it "should pass" do
         expect(true).to eq(true)
       end
     end
-    ```
+```
 - **[Postman](/zh-cn/wiki/postman/)**：对于[API testing](/zh-cn/wiki/api-testing/)，能够为 RESTful [APIs](/zh-cn/wiki/api/) 编写和执行测试。
 
-    ```
+```
     pm.test("Status code is 200", function () {
         pm.response.to.have.status(200);
     });
-    ```
+```
 - **机器人框架**：用于[acceptance testing](/zh-cn/wiki/acceptance-testing/) 和接受[test-driven development](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
-    ```
+```
     *** Test Cases ***
     Example Test
         Open Browser  https://example.com  Chrome
         Title Should Be  Example Domain
-    ```
+```
 - **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。
 
-    ```
+```
     await page.goto('https://example.com');
     await page.click('text="More information"');
-    ```
+```
 #### 编写测试脚本的最佳实践是什么？
 
 编写 [测试脚本](/zh-cn/wiki/test-script/) 的最佳实践包括：
@@ -353,18 +340,18 @@ order: 0
 - **[可维护性](/zh-cn/wiki/maintainability/)** ：使用有意义的变量名称和注释编写清晰、易于理解的代码。这使得其他人更容易修改和维护脚本。
 - **模块化**：将测试脚本分解为更小的、可重用的函数或方法，以促进代码重用并简化更新。
 
-  ```
+```
 函数登录（用户名，密码）{
   // 执行登录的代码
   }
 
-  ```
+```
 - **版本控制（Version Control）**：使用 Git 等版本控制系统来跟踪变更，并与团队成员协作。
 - **错误处理（Error Handling）**：实现健壮的错误处理机制，确保脚本在遇到异常情况时能够优雅地处理。
 - **断言（Assertions）**：有效使用断言来验证测试结果。断言应具体明确，并提供清晰的失败信息。
 ```ts
   assert.strictEqual(actualValue, expectedValue, "Value mismatch error");
-  ```
+```
 - **数据分离**：使用数据驱动技术将测试数据与脚本分开，以实现轻松更新和可扩展性。
 - **一致性**：遵循一致的命名约定和编码标准，以确保脚本之间的一致性。
 - **性能**：优化脚本以高效运行，避免不必要的等待或占用大量资源的操作。
@@ -383,20 +370,20 @@ order: 0
 
 - **使用日志记录**：在脚本中实现日志记录以捕获执行期间的详细信息。这可以帮助查明脚本失败的位置。
 
-  ```
+```
   console.log('Current step: Checking the login functionality');
-  ```
+```
 - **断点**：在测试脚本中设置断点以在特定点暂停执行。这允许您检查当前状态和变量。
 
-  ```
+```
   debugger; // In browser-based tools or IDEs that support JavaScript debugging
-  ```
+```
 - **单步执行**：使用 IDE 的调试工具逐行单步执行脚本。这可以帮助您观察每一步的执行流程和应用程序的状态。
   - **检查断言**：验证您的断言是否正确并且正在测试您所期望的内容。不正确的断言可能导致[false positives](/zh-cn/wiki/false-positive/) 或否定。
 
-  ```
+```
   assert.equal(actualValue, expectedValue, 'Values do not match');
-  ```
+```
 - **隔离测试**：运行单个测试或一小组测试，以确保失败不是由于与其他测试的交互造成的。
   - **检查[测试环境](/zh-cn/wiki/test-environment/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 与预期配置匹配并且外部依赖项正常运行。
   - **分析[测试数据](/zh-cn/wiki/test-data/)**：确认用于测试的数据有效且采用预期格式。
@@ -451,16 +438,16 @@ order: 0
   另一方面，自动化[测试脚本](/zh-cn/wiki/test-script/)是用编程语言或脚本语言编写的，并由软件工具执行。它们可以自动在应用程序上执行预定义的操作，无需人工干预。自动化脚本对于重复性任务来说更快、更可靠，但需要初始 [setup](/zh-cn/wiki/setup/) 时间和维护才能适应应用程序中的更改。
   **手册[测试脚本](/zh-cn/wiki/test-script/) 示例：**
 
-  ```
+```
   1. Open the application.
   2. Navigate to the login page.
   3. Enter username and password.
   4. Click the login button.
   5. Verify that the homepage is displayed.
-  ```
+```
 **自动 [测试脚本](/zh-cn/wiki/test-script/) 示例（伪代码）：**
 
-  ```
+```
   describe("Login functionality", () => {
     it("should display the homepage upon successful login", () => {
       openApplication();
@@ -470,7 +457,7 @@ order: 0
       expect(homepage).toBeDisplayed();
     });
   });
-  ```
+```
 主要区别在于**执行**——手动脚本需要人工操作，而自动化脚本则由工具运行。此外，自动化脚本可以集成到持续集成/持续交付（CI/CD）管道中，从而实现持续测试和更快的反馈循环。
 
 #### 与测试脚本相关的数据驱动测试是什么？
@@ -479,45 +466,34 @@ order: 0
   在 DDT 中，[测试数据](/zh-cn/wiki/test-data/) 通常存储在外部数据源中，例如 CSV 文件、Excel 电子表格、XML 文件或[数据库](/zh-cn/wiki/database/)。 [测试脚本](/zh-cn/wiki/test-script/) 读取数据，对每个数据集执行相同的一组操作，并验证结果。此方法使单个 [测试脚本](/zh-cn/wiki/test-script/) 通过迭代数据集来覆盖多个 [测试用例](/zh-cn/wiki/test-case/)。
   这是伪代码的简化示例：
 
-  ```
+```
   for each data_row in data_source:
       input_value = data_row['input']
       expected_result = data_row['expected']
       actual_result = perform_test(input_value)
       assert actual_result == expected_result
-  ```
+```
 通过使用 DDT，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以：
 
-- **减少冗余**
-    在测试脚本中，导致更干净、更易于管理的代码。
+- **减少冗余**在测试脚本中，导致更干净、更易于管理的代码。
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**
-    只需添加新的数据集即可轻松添加新的测试场景。
+- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**只需添加新的数据集即可轻松添加新的测试场景。
 
-- **提高测试准确性**
-    通过系统地覆盖边缘情况和边界条件。
+- **提高测试准确性**通过系统地覆盖边缘情况和边界条件。
 
-- **简化调试**
-    因为可以快速识别和隔离导致故障的数据。
+- **简化调试**因为可以快速识别和隔离导致故障的数据。
 
-- **加强协作**
-    允许非技术利益相关者参与测试数据的创建和审查。
-  当测试处理各种输入并需要针对不同数据组合进行验证的应用程序（例如表单提交、数据处理系统和 [API](/zh-cn/wiki/api/) 端点）时，DDT 特别有用。
+- **加强协作**允许非技术利益相关者参与测试数据的创建和审查。 当测试处理各种输入并需要针对不同数据组合进行验证的应用程序（例如表单提交、数据处理系统和 [API](/zh-cn/wiki/api/) 端点）时，DDT 特别有用。
 
-- **减少冗余**
-    在测试脚本中，导致更干净、更易于管理的代码。
+- **减少冗余**在测试脚本中，导致更干净、更易于管理的代码。
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**
-    只需添加新的数据集即可轻松添加新的测试场景。
+- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**只需添加新的数据集即可轻松添加新的测试场景。
 
-- **提高测试准确性**
-    通过系统地覆盖边缘情况和边界条件。
+- **提高测试准确性**通过系统地覆盖边缘情况和边界条件。
 
-- **简化调试**
-    因为可以快速识别和隔离导致故障的数据。
+- **简化调试**因为可以快速识别和隔离导致故障的数据。
 
-- **加强协作**
-    允许非技术利益相关者参与测试数据的创建和审查。
+- **加强协作**允许非技术利益相关者参与测试数据的创建和审查。
 
 #### 与测试脚本相关的关键字驱动测试是什么？
 
@@ -525,13 +501,13 @@ order: 0
   在此方法中，[测试脚本](/zh-cn/wiki/test-script/) 由一系列关键字组成，每个关键字代表一个更高级别的操作，例如“单击”、“输入文本”或“验证”。关键字与提供上下文的参数相关联，例如要交互的特定 UI 元素或要验证的值。
   以下是关键字驱动[测试脚本](/zh-cn/wiki/test-script/) 的简化示例：
 
-  ```
+```
   OpenBrowser "http://example.com/login"
   EnterText "username_field", "testuser"
   EnterText "password_field", "securepassword"
   ClickButton "login_button"
   VerifyText "dashboard_page", "Welcome, testuser"
-  ```
+```
 每行代表一条由关键字及其参数组成的指令。与应用程序交互的实际代码被抽象为解释这些关键字并执行相应操作的库或框架。
   关键字驱动的测试促进了[测试脚本](/zh-cn/wiki/test-script/)的**可重用性**和**[可维护性](/zh-cn/wiki/maintainability/)**，因为关键字可以跨多个[测试用例](/zh-cn/wiki/test-case/)使用。它还通过使用[测试自动化](/zh-cn/wiki/test-automation/) 的通用、易于理解的语言来增强技术和非技术团队成员之间的**协作**。然而，它需要一组精心设计的关键字和一个强大的框架来有效地解释和执行它们。
 
@@ -541,7 +517,7 @@ order: 0
 
 - **定期重构**：通过重构以提高可读性和[可维护性](/zh-cn/wiki/maintainability/)，保持代码干净。删除重复并改进脚本结构。
   - **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将 UI 结构更改封装在页面对象内，以减少维护并提高清晰度。
-    ```
+```
 类登录页面 {
   private By usernameField = By.id("用户名");
   公共无效 enterUsername（字符串用户名）{
@@ -549,7 +525,7 @@ order: 0
   }
   }
 
-  ```
+```
 - **优先级排序测试（Prioritize tests）**：聚焦关键路径和核心功能。采用基于风险的测试方法（Risk-based Testing），识别最关键、最具影响力的测试领域。
 - **并行执行（Parallel execution）**：并发运行测试以缩短执行时间。同时确保测试之间相互独立，避免资源冲突或数据干扰。
 ```xml
@@ -560,15 +536,15 @@ order: 0
           </classes>
       </test>
   </suite>
-  ```
+```
 - **有效利用[测试数据](/zh-cn/wiki/test-data/)**：使用数据提供者或外部数据源为测试提供必要的数据，而无需硬编码。
 - **明智地实施等待**：使用显式等待而不是隐式等待来减少不必要的延迟和不稳定。
 
-    ```
+```
 WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myElement")));
 
-  ```
+```
 - **监控和分析测试结果（Monitor and analyze test results）**：使用仪表盘和报告工具识别不稳定测试（flaky tests）以及需要改进的领域。
 - **利用缓存（Leverage caching）**：在可能的情况下缓存初始化数据，避免在每个测试中重复执行耗时的初始化任务。
 - **持续集成（Continuous Integration, CI）**：将测试集成到 CI 流水线中，以便尽早发现问题并更快修复。
@@ -620,7 +596,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 通过实施**模块化**、**参数化**和**抽象**技术，[测试脚本](/zh-cn/wiki/test-script/) 可以在不同的测试场景中重复使用。
   **模块化**涉及将[测试脚本](/zh-cn/wiki/test-script/) 分解为更小的、可重用的模块或执行特定任务的函数。这些模块可以通过各种 [测试用例](/zh-cn/wiki/test-case/) 的不同输入被多次调用。
 
-  ```
+```
   function login(username, password) {
       // Code to perform login
   }
@@ -632,10 +608,10 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   verifyLogin();
   login('user2', 'pass2');
   verifyLogin();
-  ```
+```
 **参数化**允许[测试脚本](/zh-cn/wiki/test-script/)接受外部输入，使其灵活且适用于多个数据集或环境。数据驱动的测试框架通过将 [测试数据](/zh-cn/wiki/test-data/) 与脚本分开来促进这一点。
 
-  ```
+```
   function testLogin(data) {
       login(data.username, data.password);
       verifyLogin();
@@ -646,10 +622,10 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
       { username: 'user2', password: 'pass2' }
   ];
   testData.forEach(data => testLogin(data));
-  ```
+```
 **抽象**层，例如 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)，封装了 UI 元素和对象内交互的详细信息。当 UI 发生更改时，这可以促进重用并简化维护。
 
-  ```
+```
   class LoginPage {
       constructor() {
           this.usernameField = '#username';
@@ -662,7 +638,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   }
   const loginPage = new LoginPage();
   loginPage.login('user1', 'pass1');
-  ```
+```
 通过采用这些策略，[测试脚本](/zh-cn/wiki/test-script/) 变得更加**可维护**、**可扩展**和**高效**，从而能够在不同的测试场景中重用它们。
 
 #### 维护测试脚本有哪些挑战以及如何克服这些挑战？
@@ -676,8 +652,8 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   使用静态分析工具自动检测已弃用或未使用的代码。这有助于保持测试代码库干净且最新。
   最后，根据风险和价值确定测试的优先级。将维护工作重点放在高价值测试上，以确保始终覆盖关键应用程序路径。
 
-  ```
+```
   // Example of a deterministic wait in a test script
   await driver.wait(until.elementLocated(By.id('username')), 10000);
-  ```
+```
 通过使用战略实践和工具应对这些挑战，[测试脚本](/zh-cn/wiki/test-script/) 维护变得更加易于管理，确保测试过程的可靠性和效率。

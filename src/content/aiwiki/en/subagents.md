@@ -3,7 +3,7 @@ title: "Subagents"
 titleZh: "子智能体"
 slug: "subagents"
 lang: "en"
-summary: "Short-term task execution units dynamically created by a master agent, equipped with specific tool permissions, and dedicated to performing a single concrete task."
+summary: "Short-term task execution units dynamically created by a master agent, equipped with specific tool permissions…"
 topic: "ai-vibe-coding"
 aliases:
   - "Subagents"

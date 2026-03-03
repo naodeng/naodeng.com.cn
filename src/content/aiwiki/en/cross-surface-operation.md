@@ -3,7 +3,7 @@ title: "Cross-surface Operation"
 titleZh: "跨界面协同"
 slug: "cross-surface-operation"
 lang: "en"
-summary: "The ability of an AI Agent to seamlessly switch between different software interfaces (e.g., IDE, terminal, browser, mobile emulator), share state, and coordinate long-chain tasks."
+summary: "The ability of an AI Agent to seamlessly switch between different software interfaces (e.g., IDE, terminal, browser, mobile emulator), share state…"
 topic: "ai-vibe-coding"
 aliases:
   - "Cross-surface Operation"

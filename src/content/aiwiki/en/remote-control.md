@@ -3,7 +3,7 @@ title: "Remote Control"
 titleZh: "远程控制"
 slug: "remote-control"
 lang: "en"
-summary: "The capability for human developers to monitor, intervene, and authorize AI programming agents running asynchronously through external terminals, mobile devices, or web interfaces."
+summary: "The capability for human developers to monitor, intervene, and authorize AI programming agents running asynchronously through external terminals…"
 topic: "ai-vibe-coding"
 aliases:
   - "Remote Control"

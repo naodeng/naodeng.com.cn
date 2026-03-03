@@ -1,13 +1,13 @@
 ---
 title: "用例测试 ｜ Use Case Testing"
-description: "用例测试 是一种涉及根据 用例 (Use Cases) 创建和执行测试的技术。这些是关于用户如何与系统交互以实现特定目标的详细描述。与可能侧重于技术方面的其他测试方法不同，用例测试 强调 真实世界的使用 和 用户交互。要进行 用例测试，您通常需要：1. 识别用例的 主流程 (Main Flows)，它代表标准系统行为。2. 确定 替代流程 (Alternative Flows)，它涵盖由于异常或错误而可能采取的不同路径。3. 为每个流程创建 测试用例 (Test Cases)，确保验证功能和非功能需求。4. 执行这些测试用例以验证系统是否按照最终用户的预期运行。用例测试 对于发现单元或组件测试中可能不明显的 集成 和 全系统问题 特别有效。它还有助于理解 用户的观点，这对于提供积极的用户体验至关重要。对于自动化，可以使用 Selenium、Cucumber 或 SpecFlow 等工具来模拟基于 用例 的用户交互。这些工具允许编写脚本或使用行为驱动开发 (BDD) 语法来定义与 用例 描述一致的 测试场景。"
+description: "用例测试 是一种涉及根据 用例 (Use Cases) 创建和执行测试的技术。这些是关于用户如何与系统交互以实现特定目标的详细描述。与可能侧重于技术方面的其他测试方法不同，用例测试 强调 真实世界的使用 和 用户交互。要进行 用例测试，您通常需要：1. 识别用例的 主流程 (Main Flows)…"
 section: "U"
 related:
   - test-case
   - test-case-management
   - automated-testing
   - manual-testing
-  - use-case
+  - validation-testing
 order: 0
 ---
 
@@ -53,30 +53,19 @@ order: 0
 [用例测试](/zh-cn/wiki/use-case-testing/) 是一种涉及基于 **[用例](/zh-cn/wiki/use-case/)** 创建和执行测试的技术。这些是用户如何与系统交互以实现特定目标的详细描述。与其他可能关注技术方面的测试方法不同，[用例测试](/zh-cn/wiki/use-case-testing/) 强调**真实世界的使用**和**用户交互**。
   要执行[用例测试](/zh-cn/wiki/use-case-testing/)，您通常：
 
-1. 识别
-    **主要流程**
-    用例的一部分，代表标准系统行为。
+1. 识别 **主要流程**用例的一部分，代表标准系统行为。
 
-2. 确定
-    **替代流程**
-    ，其中涵盖了由于异常或错误而可能采取的不同路径。
+2. 确定 **替代流程** ，其中涵盖了由于异常或错误而可能采取的不同路径。
 
 3.创建
     **[测试用例](/zh-cn/wiki/test-case/)**
     对于每个流程，确保功能和非功能需求均得到验证。
 
-4. 执行这些测试用例以验证系统的行为是否符合最终用户的预期。
-  [用例测试](/zh-cn/wiki/use-case-testing/) 对于发现在单元或组件测试中可能不明显的**集成**和**系统范围的问题**特别有效。它还有助于理解**用户的观点**，这对于提供积极的用户体验至关重要。
-  对于自动化，可以使用 **[selenium](/zh-cn/wiki/selenium/)**、**Cucumber** 或 **SpecFlow** 等工具来模拟基于 [用例](/zh-cn/wiki/use-case/) 的用户交互。这些工具允许编写脚本或使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语法来定义与[用例](/zh-cn/wiki/use-case/) 描述一致的[测试场景](/zh-cn/wiki/test-scenario/)。
-  总之，[用例测试](/zh-cn/wiki/use-case-testing/) 是一种以用户为中心的方法，可确保软件满足其预期用途，在用户期望和系统功能之间架起一座桥梁。
+4. 执行这些测试用例以验证系统的行为是否符合最终用户的预期。 [用例测试](/zh-cn/wiki/use-case-testing/) 对于发现在单元或组件测试中可能不明显的**集成**和**系统范围的问题**特别有效。它还有助于理解**用户的观点**，这对于提供积极的用户体验至关重要。 对于自动化，可以使用 **[selenium](/zh-cn/wiki/selenium/)**、**Cucumber** 或 **SpecFlow** 等工具来模拟基于 [用例](/zh-cn/wiki/use-case/) 的用户交互。这些工具允许编写脚本或使用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 语法来定义与[用例](/zh-cn/wiki/use-case/) 描述一致的[测试场景](/zh-cn/wiki/test-scenario/)。 总之，[用例测试](/zh-cn/wiki/use-case-testing/) 是一种以用户为中心的方法，可确保软件满足其预期用途，在用户期望和系统功能之间架起一座桥梁。
 
-1. 识别
-    **主要流程**
-    用例的一部分，代表标准系统行为。
+1. 识别 **主要流程**用例的一部分，代表标准系统行为。
 
-2. 确定
-    **替代流程**
-    ，其中涵盖了由于异常或错误而可能采取的不同路径。
+2. 确定 **替代流程** ，其中涵盖了由于异常或错误而可能采取的不同路径。
 
 3.创建
     **[测试用例](/zh-cn/wiki/test-case/)**
@@ -94,8 +83,7 @@ order: 0
 - **促进沟通**：用例为利益相关者（包括业务分析师、开发人员和测试人员）提供通用语言来讨论需求和功能。
 - **指南用户文档**：它们可以作为用户手册和帮助指南的基础，因为它们从用户的角度描述系统。
 - **支持[回归测试](/zh-cn/wiki/regression-testing/)**：可以重复使用用例来验证现有功能在软件更改后是否保持不变。
-- **[验收测试](/zh-cn/wiki/acceptance-testing/)** 中的辅助工具：它们与验收标准紧密一致，有助于确保软件已准备好部署。
-  鉴于这些优势，[用例测试](/zh-cn/wiki/use-case-testing/) 是一种战略方法，可确保该软件不仅在技术上正常运行，而且能够有效且高效地实现其预期目的。
+- **[验收测试](/zh-cn/wiki/acceptance-testing/)** 中的辅助工具：它们与验收标准紧密一致，有助于确保软件已准备好部署。 鉴于这些优势，[用例测试](/zh-cn/wiki/use-case-testing/) 是一种战略方法，可确保该软件不仅在技术上正常运行，而且能够有效且高效地实现其预期目的。
 
 - **验证业务需求**：它确保应用程序满足业务流程和用户需求，因为它专注于用户交互和交付给他们的价值。
 - **检测集成错误**：通过模拟现实场景，它发现与数据流和组件之间的集成相关的问题。
@@ -119,8 +107,7 @@ order: 0
 - **例外**：可能导致用例失败的特定条件。
 - **触发器**：导致用例启动的事件。
 - **使用频率**：表明用例可能启动的频率。
-- **[Priority](/zh-cn/wiki/priority/)** ：用例在整个系统上下文中的重要性。
-  每个组件在定义[用例](/zh-cn/wiki/use-case/) 的范围和边界方面发挥着关键作用，确保[测试场景](/zh-cn/wiki/test-scenario/) 全面且与用户的需求相关。
+- **[Priority](/zh-cn/wiki/priority/)** ：用例在整个系统上下文中的重要性。 每个组件在定义[用例](/zh-cn/wiki/use-case/) 的范围和边界方面发挥着关键作用，确保[测试场景](/zh-cn/wiki/test-scenario/) 全面且与用户的需求相关。
 
 #### 用例测试与其他类型的测试有何不同？
 
@@ -182,14 +169,12 @@ order: 0
 - **[错误猜测](/zh-cn/wiki/error-guessing/)**：利用测试人员的经验来预测[用例](/zh-cn/wiki/use-case/) 执行期间可能发生的常见错误。
 - **基于清单的测试**：使用预定义的条件和操作列表来验证 [用例](/zh-cn/wiki/use-case/) 的功能。
 - **用户故事为[测试用例](/zh-cn/wiki/test-case/)**：在敏捷中，用户故事通常兼作[用例](/zh-cn/wiki/use-case/)，验收标准可以直接转换为[测试用例](/zh-cn/wiki/test-case/)。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：同时学习、测试设计和[测试执行](/zh-cn/wiki/test-execution/)，以难以预测的方式探索[用例](/zh-cn/wiki/use-case/) 的行为。
-  自动化技术包括：
+- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：同时学习、测试设计和[测试执行](/zh-cn/wiki/test-execution/)，以难以预测的方式探索[用例](/zh-cn/wiki/use-case/) 的行为。 自动化技术包括：
 
 - **数据驱动测试**：使用相同 [用例](/zh-cn/wiki/use-case/) 的不同输入数据集自动化 [测试执行](/zh-cn/wiki/test-execution/)。
 - **关键字驱动测试**：使用代表 [用例](/zh-cn/wiki/use-case/) 中操作的关键字表来驱动自动化测试。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：用自然语言编写测试，直接翻译成自动化测试，通常用于验证[用例](/zh-cn/wiki/use-case/)。
-- **基于模型的测试**：从代表[用例](/zh-cn/wiki/use-case/)场景的模型生成[测试用例](/zh-cn/wiki/test-case/)。
-  这些技术有助于确保[用例](/zh-cn/wiki/use-case/)经过彻底测试，捕获潜在缺陷并验证软件是否按预期运行。
+- **基于模型的测试**：从代表[用例](/zh-cn/wiki/use-case/)场景的模型生成[测试用例](/zh-cn/wiki/test-case/)。 这些技术有助于确保[用例](/zh-cn/wiki/use-case/)经过彻底测试，捕获潜在缺陷并验证软件是否按预期运行。
 
 - **[路径测试](/zh-cn/wiki/path-testing/)**：通过[用例](/zh-cn/wiki/use-case/)跟踪所有可能的路径，包括替代路径和异常路径，以确保全面覆盖。
 - **边界值分析 (BVA)**：测试 [用例](/zh-cn/wiki/use-case/) 中输入值的边界，因为这些是常见的故障点。
@@ -209,108 +194,57 @@ order: 0
 
 要编写 [用例](/zh-cn/wiki/use-case/) 进行测试，请按照以下简明步骤操作：
 
-1. **确定目标**
-    从最终用户的角度来看用例。
+1. **确定目标**从最终用户的角度来看用例。
 
-2. **定义主要演员**
-    谁将与系统交互以实现目标。
+2. **定义主要演员**谁将与系统交互以实现目标。
 
-3. **概述步骤**
-    参与者将从用例启动开始直到达到目标为止。这包括：
+3. **概述步骤**参与者将从用例启动开始直到达到目标为止。这包括：
 
-- 的
-      **触发**
-      或启动用例的事件。
+- 的 **触发**或启动用例的事件。
 
-- 的
-      **正常流量**
-      逐步序列中的交互。
+- 的 **正常流量**逐步序列中的交互。
 
-- **替代流程**
-      以及非标准场景的异常处理。
+- **替代流程**以及非标准场景的异常处理。
+4. **指定前提条件**在启动用例之前，这必须是正确的。
 
-- 的
-      **触发**
-      或启动用例的事件。
+5. **列出[后置条件](/zh-cn/wiki/postcondition/)**一旦用例完成，这一定是正确的。
 
-- 的
-      **正常流量**
-      逐步序列中的交互。
+6. **详细说明任何质量要求**例如性能限制或安全考虑。
 
-- **替代流程**
-      以及非标准场景的异常处理。
+7. **创建数据集**用于执行用例期间所需的输入值。
 
-4. **指定前提条件**
-    在启动用例之前，这必须是正确的。
+8. **写断言**以获得预期结果来验证系统的正确行为。 使用**受保护的代码块**来编写自动化[测试用例](/zh-cn/wiki/test-case/)脚本，确保它们与概述的步骤一致：
 
-5. **列出[后置条件](/zh-cn/wiki/postcondition/)**
-    一旦用例完成，这一定是正确的。
-
-6. **详细说明任何质量要求**
-    例如性能限制或安全考虑。
-
-7. **创建数据集**
-    用于执行用例期间所需的输入值。
-
-8. **写断言**
-    以获得预期结果来验证系统的正确行为。
-  使用**受保护的代码块**来编写自动化[测试用例](/zh-cn/wiki/test-case/)脚本，确保它们与概述的步骤一致：
-
-  ```
+```
   // Example TypeScript code for automated test
   describe('Use Case Description', () => {
     it('should achieve the expected outcome', () => {
       // Test steps implementation
     });
   });
-  ```
+```
 请记住与利益相关者一起**审查和完善**[用例](/zh-cn/wiki/use-case/)，以确保完整性和准确性。这种迭代方法可确保[用例](/zh-cn/wiki/use-case/) 对于[测试自动化](/zh-cn/wiki/test-automation/) 保持相关性和价值。
 
-1. **确定目标**
-    从最终用户的角度来看用例。
+1. **确定目标**从最终用户的角度来看用例。
 
-2. **定义主要演员**
-    谁将与系统交互以实现目标。
+2. **定义主要演员**谁将与系统交互以实现目标。
 
-3. **概述步骤**
-    参与者将从用例启动开始直到达到目标为止。这包括：
+3. **概述步骤**参与者将从用例启动开始直到达到目标为止。这包括：
 
-- 的
-      **触发**
-      或启动用例的事件。
+- 的 **触发**或启动用例的事件。
 
-- 的
-      **正常流量**
-      逐步序列中的交互。
+- 的 **正常流量**逐步序列中的交互。
 
-- **替代流程**
-      以及非标准场景的异常处理。
+- **替代流程**以及非标准场景的异常处理。
+4. **指定前提条件**在启动用例之前，这必须是正确的。
 
-- 的
-      **触发**
-      或启动用例的事件。
+5. **列出[后置条件](/zh-cn/wiki/postcondition/)**一旦用例完成，这一定是正确的。
 
-- 的
-      **正常流量**
-      逐步序列中的交互。
+6. **详细说明任何质量要求**例如性能限制或安全考虑。
 
-- **替代流程**
-      以及非标准场景的异常处理。
+7. **创建数据集**用于执行用例期间所需的输入值。
 
-4. **指定前提条件**
-    在启动用例之前，这必须是正确的。
-
-5. **列出[后置条件](/zh-cn/wiki/postcondition/)**
-    一旦用例完成，这一定是正确的。
-
-6. **详细说明任何质量要求**
-    例如性能限制或安全考虑。
-
-7. **创建数据集**
-    用于执行用例期间所需的输入值。
-
-8. **写断言**
-    以获得预期结果来验证系统的正确行为。
+8. **写断言**以获得预期结果来验证系统的正确行为。
 
 #### 参与者在用例测试中的作用是什么？
 
@@ -318,7 +252,7 @@ order: 0
   在[测试自动化](/zh-cn/wiki/test-automation/)期间，参与者通常通过**[测试脚本](/zh-cn/wiki/test-script/)**或**自动化框架**来模拟这些外部实体的操作和行为。这包括像真正的参与者一样提供输入、接收输出以及维护状态。通过准确模拟参与者的角色，测试人员可以确保系统正确响应外部刺激，并且 [用例](/zh-cn/wiki/use-case/) 的执行就像在真实场景中一样。
   例如，在电子商务应用程序中，参与者可以是执行搜索产品、将商品添加到购物车和结账等操作的客户。自动化测试将使用脚本复制这些操作：
 
-  ```
+```
   describe('E-commerce Checkout Use Case', () => {
     it('should allow a customer to checkout with items in their cart', () => {
       const customer = new Actor('Customer');
@@ -330,7 +264,7 @@ order: 0
       expect(customer).toHaveCompleted(Checkout);
     });
   });
-  ```
+```
 通过关注参与者的视角，[用例测试](/zh-cn/wiki/use-case-testing/) 确保系统的功能符合用户的需求和期望，这对于提供优质产品至关重要。
 
 #### 在用例测试中如何确定要测试的场景？
@@ -346,8 +280,7 @@ order: 0
 7. **确定场景优先级**：根据风险、使用频率和对业务的重要性确定场景优先级。
 8. **与利益相关者合作**：与业务分析师、开发人员和最终用户合作，以​​确保涵盖所有相关场景。
 9. **基于模型的测试方法**：使用基于模型的测试工具从[用例](/zh-cn/wiki/use-case/) 模型生成[测试场景](/zh-cn/wiki/test-scenario/)。
-10. **迭代细化**：随着系统的发展，不断细化和添加新场景以覆盖[用例](/zh-cn/wiki/use-case/)中的变化。
-  通过系统地分析 [用例](/zh-cn/wiki/use-case/) 文档并与利益相关者合作，您可以全面识别确保全面测试覆盖的场景。
+10. **迭代细化**：随着系统的发展，不断细化和添加新场景以覆盖[用例](/zh-cn/wiki/use-case/)中的变化。 通过系统地分析 [用例](/zh-cn/wiki/use-case/) 文档并与利益相关者合作，您可以全面识别确保全面测试覆盖的场景。
 
 1. **查看[用例](/zh-cn/wiki/use-case/)文档**：检查[用例](/zh-cn/wiki/use-case/)的主要流程和替代流程，重点关注参与者和系统之间的交互。
 2. **识别[快乐之路](/zh-cn/wiki/happy-path/)**：确定一切按预期进行的主要场景，称为[快乐之路](/zh-cn/wiki/happy-path/) 或主要成功场景。
@@ -374,8 +307,7 @@ order: 0
 - **用户界面动态**：测试涉及动态用户界面的用例可能需要先进的自动化技术。
 - **非[功能需求](/zh-cn/wiki/functional-requirements/)** ：捕获和测试用例测试中的性能和安全性等非功能方面可能会被忽略。
 - **维护**：随着系统的发展，维护和更新用例测试以反映变化可能会占用大量资源。
-- **可追溯性**：在需求、用例和测试之间保持清晰的跟踪，以确保覆盖范围并在发生变化时进行影响分析。
-  为了应对这些挑战，重点关注清晰简洁的文档，有效优先考虑[用例](/zh-cn/wiki/use-case/)，采用强大的[测试数据](/zh-cn/wiki/test-data/)管理策略，确保[集成测试](/zh-cn/wiki/integration-testing/)是流程的一部分，使用先进的动态接口自动化工具，将非[功能需求](/zh-cn/wiki/functional-requirements/)纳入您的测试范围，维护强大的可追溯性流程，并为持续的测试维护分配资源。
+- **可追溯性**：在需求、用例和测试之间保持清晰的跟踪，以确保覆盖范围并在发生变化时进行影响分析。 为了应对这些挑战，重点关注清晰简洁的文档，有效优先考虑[用例](/zh-cn/wiki/use-case/)，采用强大的[测试数据](/zh-cn/wiki/test-data/)管理策略，确保[集成测试](/zh-cn/wiki/integration-testing/)是流程的一部分，使用先进的动态接口自动化工具，将非[功能需求](/zh-cn/wiki/functional-requirements/)纳入您的测试范围，维护强大的可追溯性流程，并为持续的测试维护分配资源。
 
 #### 如何克服这些挑战？
 
@@ -391,8 +323,7 @@ order: 0
 - **性能监控**：包括性能检查，以确保用例不会降低系统的响应能力。
 - **反馈循环**：建立快速反馈机制，告知开发人员测试结果，促进迅速采取行动。
 - **定期重构**：保持测试代码干净并与应用程序更改保持同步，以保持测试有效性。
-- **培训和知识共享**：鼓励团队成员之间不断学习和分享最佳实践。
-  通过解决这些领域的问题，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高[用例测试](/zh-cn/wiki/use-case-testing/) 的有效性，并确保其在面对不断变化的挑战时继续提供价值。
+- **培训和知识共享**：鼓励团队成员之间不断学习和分享最佳实践。 通过解决这些领域的问题，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高[用例测试](/zh-cn/wiki/use-case-testing/) 的有效性，并确保其在面对不断变化的挑战时继续提供价值。
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)** ：首先关注高风险和高影响的场景，以优化资源的使用。
 - **模块化测试**：将复杂的用例分解为更小的、可管理的模块，可以独立测试。
@@ -413,7 +344,7 @@ order: 0
 - **分解**复杂的[用例](/zh-cn/wiki/use-case/) 为更小、更易于管理的部分。在将这些部分集成到更大的[测试场景](/zh-cn/wiki/test-scenario/)之前，单独测试这些部分。
 - 利用**数据驱动测试**将各种输入输入到您的[测试用例](/zh-cn/wiki/test-case/)中。这样可以实现广泛的覆盖范围，而无需增加 [测试脚本](/zh-cn/wiki/test-script/) 的数量。
 
-    ```
+```
     // Example: Data-driven test structure
     describe("Login functionality", () => {
       const testCases = [
@@ -426,19 +357,18 @@ order: 0
         });
       });
     });
-    ```
+```
 
 - 实施**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（例如 Cucumber），以自然语言表达复杂的场景，使它们更易于理解和维护。
 - **参数化**测试以在不同条件下运行相同的测试逻辑。这对于仅因使用的数据而不同的复杂场景特别有用。
 - 使用**模拟和存根**来模拟与不是测试重点的外部系统或组件的复杂交互。
 - 在测试设计中应用**模块化**，创建可重用的函数和对象，可以以不同的方式组合以覆盖复杂的场景。
-- **定期审查和重构**测试以简化和删除冗余，这可能会掩盖[用例](/zh-cn/wiki/use-case/)的潜在复杂性。
-  通过分解复杂性并采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 可以变得更加有效和易于管理。
+- **定期审查和重构**测试以简化和删除冗余，这可能会掩盖[用例](/zh-cn/wiki/use-case/)的潜在复杂性。 通过分解复杂性并采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 可以变得更加有效和易于管理。
 
 - **分解**复杂的[用例](/zh-cn/wiki/use-case/) 为更小、更易于管理的部分。在将这些部分集成到更大的[测试场景](/zh-cn/wiki/test-scenario/) 之前，单独测试这些部分。
 - 利用**数据驱动测试**将各种输入输入到您的[测试用例](/zh-cn/wiki/test-case/)中。这样可以实现广泛的覆盖范围，而无需增加 [测试脚本](/zh-cn/wiki/test-script/) 的数量。
 
-    ```
+```
     // Example: Data-driven test structure
     describe("Login functionality", () => {
       const testCases = [
@@ -451,7 +381,7 @@ order: 0
         });
       });
     });
-    ```
+```
 
 #### 可以使用哪些工具来促进用例测试？
 
@@ -459,64 +389,63 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)**：支持多种语言和浏览器的开源工具。它非常适合自动化 Web 应用程序测试。
 
-    ```
+```
     WebDriver driver = new ChromeDriver();
     driver.get("http://example.com");
     // Use case steps
-    ```
+```
 
 - **Cucumber**：与行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 配合良好，并允许您使用接近自然语言的 [gherkin](/zh-cn/wiki/gherkin/) 语言编写测试。
 
-    ```
+```
     Feature: User login
     Scenario: Valid login
       Given User is on login page
       When User enters valid credentials
       Then User is redirected to the dashboard
-    ```
+```
 
 - **SpecFlow**：与 Cucumber 类似，但专为.NET 应用程序量身定制，它还使用 [gherkin](/zh-cn/wiki/gherkin/) 来定义 [测试用例](/zh-cn/wiki/test-case/)。
 - **HP UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：支持基于关键字和脚本的测试的商业工具。它适用于[API](/zh-cn/wiki/api/)、Web 和移动测试。
 - **TestComplete**：提供用于创建自动化测试的 GUI，并支持各种脚本语言，例如 JavaScript 和 Python。
 - **SoapUI**：专为[API 测试](/zh-cn/wiki/api-testing/)设计，也可用于验证[用例](/zh-cn/wiki/use-case/)的后端部分。
 - **[jira](/zh-cn/wiki/jira/) Xray**：与[jira](/zh-cn/wiki/jira/) 集成并支持[BDD](/zh-cn/wiki/bdd/)，允许您将测试作为[jira](/zh-cn/wiki/jira/) 问题进行管理，并将它们直接链接到[用例](/zh-cn/wiki/use-case/)。
-- **[Postman](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
-  每个工具都有自己的脚本或描述性语言来定义[测试用例](/zh-cn/wiki/test-case/)，并且大多数工具都提供与持续集成系统的集成以实现自动化[测试执行](/zh-cn/wiki/test-execution/)。选择正确的工具取决于项目的具体需求，例如被测应用程序的类型和首选的开发方法。
+- **[Postman](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。 每个工具都有自己的脚本或描述性语言来定义[测试用例](/zh-cn/wiki/test-case/)，并且大多数工具都提供与持续集成系统的集成以实现自动化[测试执行](/zh-cn/wiki/test-execution/)。选择正确的工具取决于项目的具体需求，例如被测应用程序的类型和首选的开发方法。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：支持多种语言和浏览器的开源工具。它非常适合自动化 Web 应用程序测试。
 
-    ```
+```
     WebDriver driver = new ChromeDriver();
     driver.get("http://example.com");
     // Use case steps
-    ```
+```
 
 - **Cucumber**：与行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 配合良好，并允许您使用接近自然语言的 [gherkin](/zh-cn/wiki/gherkin/) 语言编写测试。
 
-    ```
+```
     Feature: User login
     Scenario: Valid login
       Given User is on login page
       When User enters valid credentials
       Then User is redirected to the dashboard
-    ```
+```
 
 #### 如何实现用例测试自动化？
 
 自动化[用例测试](/zh-cn/wiki/use-case-testing/)涉及将[用例](/zh-cn/wiki/use-case/)场景转换为可执行的[测试脚本](/zh-cn/wiki/test-script/)。 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 像 **Cucumber** 或 **SpecFlow** 这样的框架非常适合于此，因为它们允许您以与 [用例](/zh-cn/wiki/use-case/) 步骤相对应的自然语言定义测试。
   首先，确定每个[用例](/zh-cn/wiki/use-case/) 的**主要成功场景**和**替代流程**。然后，编写描述这些场景的 **[gherkin](/zh-cn/wiki/gherkin/)** 语法功能文件：
 
-  ```
+```
   Feature: Account withdrawal
   Scenario: Account has sufficient funds
     Given the account balance is $100
     When the user attempts to withdraw $20
     Then the withdrawal should be successful
     And the account balance should be $80
-  ```
+```
 接下来，实现将 [gherkin](/zh-cn/wiki/gherkin/) 步骤映射到自动化代码的**步骤定义**。这些步骤将使用 [测试自动化](/zh-cn/wiki/test-automation/) 框架中的方法与应用程序交互：
 
-  ```
+```
   Given('the account balance is ${int}', (balance) => {
     account.setBalance(balance);
   });
@@ -529,7 +458,7 @@ order: 0
   And('the account balance should be ${int}', (expectedBalance) => {
     assert.equal(account.getBalance(), expectedBalance);
   });
-  ```
+```
 使用**数据驱动技术**来测试同一场景中数据的不同排列。 **模拟**和**服务虚拟化**可以模拟与外部系统的交互或难以重现的状态。
   将自动化 [用例](/zh-cn/wiki/use-case/) 测试集成到您的**CI/CD 管道**中，以确保它们定期运行。这可确保针对新代码更改持续检查[用例](/zh-cn/wiki/use-case/) 验证，从而及早捕获回归。
   请记住随着 [用例](/zh-cn/wiki/use-case/) 的发展维护自动化代码，确保测试保持可靠和相关。
@@ -545,30 +474,26 @@ order: 0
 
 - 客户已注册并登录。
 - 产品有库存。
-- 客户拥有有效的信用卡。
-  **测试步骤**：
+- 客户拥有有效的信用卡。 **测试步骤**：
 
 1. 客户导航至产品页面。
 2. 客户选择所需的产品。
 3. 客户点击“添加到购物车”。
 4. 客户查看购物车并单击“结账”。
 5. 客户输入信用卡详细信息。
-6. 客户确认购买。
-  **[预期结果](/zh-cn/wiki/expected-result/)**：
+6. 客户确认购买。 **[预期结果](/zh-cn/wiki/expected-result/)**：
 
 - 产品已添加到购物车。
 - 购物车显示正确的商品和价格。
 - 结帐流程提示输入付款详细信息。
 - 购买后显示订单确认。
 - 库存更新以反映购买情况。
-- 客户收到一封确认电子邮件。
-  **[后置条件](/zh-cn/wiki/postcondition/)**：
+- 客户收到一封确认电子邮件。 **[后置条件](/zh-cn/wiki/postcondition/)**：
 
 - 产品已运送给客户。
-- 客户的信用卡被扣款。
-  **自动化测试**（伪代码）：
+- 客户的信用卡被扣款。 **自动化测试**（伪代码）：
 
-  ```
+```
   describe('Purchase Product', () => {
     it('should allow a customer to purchase a product', () => {
       loginAsCustomer();
@@ -582,7 +507,7 @@ order: 0
       expect(emailReceived()).toBeTruthy();
     });
   });
-  ```
+```
 此测试验证购买产品的端到端流程，确保所有系统组件正确交互以实现[用例](/zh-cn/wiki/use-case/)。
 
 - 客户已注册并登录。
@@ -625,30 +550,21 @@ order: 0
   将 [用例测试](/zh-cn/wiki/use-case-testing/) 纳入**持续集成** (CI) 管道可确保根据用户场景评估新代码提交，及早发现回归或冲突。此外，[用例](/zh-cn/wiki/use-case/) 测试可以作为**文档**的一种形式，阐明系统应该如何工作，这对于新团队成员或移交项目时特别有用。
   为了有效地识别问题，测试人员应该：
 
-- **优先考虑[用例](/zh-cn/wiki/use-case/)**
-    基于风险和重要性，以确保首先测试关键路径。
+- **优先考虑[用例](/zh-cn/wiki/use-case/)**基于风险和重要性，以确保首先测试关键路径。
 
-- **创建自动[测试脚本](/zh-cn/wiki/test-script/)**
-    用于实现频繁且一致执行的用例。
+- **创建自动[测试脚本](/zh-cn/wiki/test-script/)**用于实现频繁且一致执行的用例。
 
-- **与[测试数据](/zh-cn/wiki/test-data/)管理集成**
-    模拟各种数据条件的解决方案。
+- **与[测试数据](/zh-cn/wiki/test-data/)管理集成**模拟各种数据条件的解决方案。
 
-- **监控测试结果**
-    并分析故障以检测模式或重复出现的问题。
-  通过将 [用例测试](/zh-cn/wiki/use-case-testing/) 集成到开发的早期阶段，团队可以确保软件符合用户需求和业务目标，从而减少开发周期后期修复问题的成本和工作量。
+- **监控测试结果**并分析故障以检测模式或重复出现的问题。 通过将 [用例测试](/zh-cn/wiki/use-case-testing/) 集成到开发的早期阶段，团队可以确保软件符合用户需求和业务目标，从而减少开发周期后期修复问题的成本和工作量。
 
-- **优先考虑[用例](/zh-cn/wiki/use-case/)**
-    基于风险和重要性，以确保首先测试关键路径。
+- **优先考虑[用例](/zh-cn/wiki/use-case/)**基于风险和重要性，以确保首先测试关键路径。
 
-- **创建自动[测试脚本](/zh-cn/wiki/test-script/)**
-    用于实现频繁且一致执行的用例。
+- **创建自动[测试脚本](/zh-cn/wiki/test-script/)**用于实现频繁且一致执行的用例。
 
-- **与[测试数据](/zh-cn/wiki/test-data/)管理集成**
-    模拟各种数据条件的解决方案。
+- **与[测试数据](/zh-cn/wiki/test-data/)管理集成**模拟各种数据条件的解决方案。
 
-- **监控测试结果**
-    并分析故障以检测模式或重复出现的问题。
+- **监控测试结果**并分析故障以检测模式或重复出现的问题。
 
 #### 哪些行业或类型的软件从用例测试中受益最多？
 
@@ -659,8 +575,7 @@ order: 0
 - **电子商务**：在线零售平台依靠[用例测试](/zh-cn/wiki/use-case-testing/)来验证端到端交易，包括产品选择、购物车管理、结帐流程和支付集成。
 - **航空航天和国防**：飞行软件、控制系统和模拟工具涉及复杂的[用例](/zh-cn/wiki/use-case/)，必须对其进行可靠性测试并遵守严格的安全标准。
 - **汽车**：车载软件、远程信息处理和自动驾驶系统使用[用例测试](/zh-cn/wiki/use-case-testing/)来模拟真实场景并确保各种条件下的系统完整性。
-- **电信**：管理网络、计费和客户服务交互的系统受益于[用例测试](/zh-cn/wiki/use-case-testing/)来处理复杂的用户场景并保持服务质量。
-  在这些领域，[用例测试](/zh-cn/wiki/use-case-testing/) 确保软件在现实场景中按预期运行，这对于 **运营成功** 和 **客户满意度** 至关重要。自动化这些测试可以显着提高效率和覆盖范围，从而可以对关键工作流程进行频繁且彻底的验证。
+- **电信**：管理网络、计费和客户服务交互的系统受益于[用例测试](/zh-cn/wiki/use-case-testing/)来处理复杂的用户场景并保持服务质量。 在这些领域，[用例测试](/zh-cn/wiki/use-case-testing/) 确保软件在现实场景中按预期运行，这对于 **运营成功** 和 **客户满意度** 至关重要。自动化这些测试可以显着提高效率和覆盖范围，从而可以对关键工作流程进行频繁且彻底的验证。
 
 - **金融服务**：银行应用程序、保险平台和交易系统具有复杂的用户工作流程，必须对其进行彻底测试，以确保准确性并符合法规。
 - **医疗保健**：患者管理系统、电子健康记录和远程医疗应用程序需要 [用例测试](/zh-cn/wiki/use-case-testing/) 来验证关键工作流程并维护患者安全和隐私。

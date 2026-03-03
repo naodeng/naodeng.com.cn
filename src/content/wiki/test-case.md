@@ -6,8 +6,8 @@ related:
   - test-case-management
   - manual-testing
   - automated-testing
-  - test-suite
   - use-case-testing
+  - validation-testing
 order: 0
 ---
 
@@ -90,8 +90,7 @@ order: 0
 - **[Priority](/zh-cn/wiki/priority/)** ：测试用例的重要性级别，通常指导执行顺序。
 - **自动/手动**：指示测试是自动执行还是需要手动执行。
 - **可追溯性**：链接到需求或设计文档以确保覆盖范围。
-- **评论**：附加注释或观察结果。
-  Markdown 中的示例：
+- **评论**：附加注释或观察结果。 Markdown 中的示例：
 
 - **Test Case ID**: TC_001
 - **Title/Description**: Verify login with valid credentials
@@ -129,8 +128,7 @@ order: 0
 
 - 测试案例 1：使用有效凭据验证登录。
 - 测试案例 2：使用无效凭据验证登录。
-- 测试案例 3：使用空白用户名和密码字段验证登录。
-  本质上，[测试场景](/zh-cn/wiki/test-scenario/) 不太详细，涵盖了更广泛的应用程序行为，而[测试用例](/zh-cn/wiki/test-case/) 是旨在验证软件特定功能的详细指令。
+- 测试案例 3：使用空白用户名和密码字段验证登录。 本质上，[测试场景](/zh-cn/wiki/test-scenario/) 不太详细，涵盖了更广泛的应用程序行为，而[测试用例](/zh-cn/wiki/test-case/) 是旨在验证软件特定功能的详细指令。
 
 ### 创建和执行
 
@@ -149,8 +147,7 @@ order: 0
 9. **记录[实际结果](/zh-cn/wiki/actual-result/)**：记录[测试用例](/zh-cn/wiki/test-case/) 执行的结果。
 10. **比较预期和[实际结果](/zh-cn/wiki/actual-result/)**：根据预期和[实际结果](/zh-cn/wiki/actual-result/)的对齐情况评估[测试用例](/zh-cn/wiki/test-case/)是否通过或失败。
 11. **记录缺陷**：如果[测试用例](/zh-cn/wiki/test-case/) 失败，记录遇到的任何缺陷或问题。
-12. **审查和完善**：定期审查和更新[测试用例](/zh-cn/wiki/test-case/)，以确保其仍然有效和相关。
-  请记住在每个步骤中保持清晰和简洁，以促进其他团队成员的理解和执行。
+12. **审查和完善**：定期审查和更新[测试用例](/zh-cn/wiki/test-case/)，以确保其仍然有效和相关。 请记住在每个步骤中保持清晰和简洁，以促进其他团队成员的理解和执行。
 
 1. **确定测试需求**：根据软件需求和规范确定需要测试的内容。
 2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在验证或确认的内容。
@@ -174,8 +171,7 @@ order: 0
 - **通过**：软件的行为与预期结果一致。
 - **失败**：软件的行为偏离预期结果，表明存在缺陷。
 - **阻止**：由于外部因素（例如对其他测试用例的依赖或未解决的错误），测试用例无法执行。
-- **跳过**：故意不执行测试用例，可能是因为它超出了特定测试运行的范围。
-  [测试用例](/zh-cn/wiki/test-case/) 执行的结果对于识别缺陷、验证修复和确保软件满足其要求至关重要。通过仔细记录结果，测试人员向开发团队提供有价值的反馈，这对于维护 [软件质量](/zh-cn/wiki/software-quality/) 和指导未来的开发工作至关重要。
+- **跳过**：故意不执行测试用例，可能是因为它超出了特定测试运行的范围。 [测试用例](/zh-cn/wiki/test-case/) 执行的结果对于识别缺陷、验证修复和确保软件满足其要求至关重要。通过仔细记录结果，测试人员向开发团队提供有价值的反馈，这对于维护 [软件质量](/zh-cn/wiki/software-quality/) 和指导未来的开发工作至关重要。
 
 #### 如何执行测试用例？
 
@@ -183,14 +179,13 @@ order: 0
 
 1. **选择[测试用例](/zh-cn/wiki/test-case/)**：识别您要从[测试管理](/zh-cn/wiki/test-management/) 工具或存储库执行的[测试用例](/zh-cn/wiki/test-case/)。
 2. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保[测试环境](/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
-3. **运行测试**：使用[测试自动化](/zh-cn/wiki/test-automation/) 工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以通过命令行界面、GUI 或集成开发环境 (IDE) 来完成。例如：
-    或
+3. **运行测试**：使用[测试自动化](/zh-cn/wiki/test-automation/) 工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以通过命令行界面、GUI 或集成开发环境 (IDE) 来完成。例如： 或
 
-    ```
+```
     testcafe chrome tests/e2e/test-case.js
-    ```
+```
 
-    ```
+```
     describe('Login Test', () => {
       it('should navigate to login page and login', () => {
         browser.url('https://example.com/login');
@@ -200,24 +195,22 @@ order: 0
         expect(browser).toHaveUrl('https://example.com/dashboard');
       });
     });
-    ```
+```
 
 4. **监控执行**：实时或通过查看日志来观察[测试执行](/zh-cn/wiki/test-execution/) 进程，以确保其按预期进行。
 5. **查看结果**：执行后，分析结果，根据预期结果确定[测试用例](/zh-cn/wiki/test-case/) 是通过还是失败。
 6. **报告**：在 [测试管理](/zh-cn/wiki/test-management/) 工具或缺陷跟踪系统中记录结果，包括任何屏幕截图、日志或错误消息。
-7. **清理**：如有必要，将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，为下一个[测试执行](/zh-cn/wiki/test-execution/)做好准备。
-  请记住根据被测应用程序的最新版本验证[测试用例](/zh-cn/wiki/test-case/)，以确保测试结果的准确性和相关性。
+7. **清理**：如有必要，将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，为下一个[测试执行](/zh-cn/wiki/test-execution/)做好准备。 请记住根据被测应用程序的最新版本验证[测试用例](/zh-cn/wiki/test-case/)，以确保测试结果的准确性和相关性。
 
 1. **选择 [测试用例](/zh-cn/wiki/test-case/)**：识别您想要从 [测试管理](/zh-cn/wiki/test-management/) 工具或存储库执行的 [测试用例](/zh-cn/wiki/test-case/)。
 2. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保为[测试环境](/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
-3. **运行测试**：使用[测试自动化](/zh-cn/wiki/test-automation/) 工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以通过命令行界面、GUI 或集成开发环境 (IDE) 来完成。例如：
-    或
+3. **运行测试**：使用[测试自动化](/zh-cn/wiki/test-automation/) 工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以通过命令行界面、GUI 或集成开发环境 (IDE) 来完成。例如： 或
 
-    ```
+```
     testcafe chrome tests/e2e/test-case.js
-    ```
+```
 
-    ```
+```
     describe('Login Test', () => {
       it('should navigate to login page and login', () => {
         browser.url('https://example.com/login');
@@ -227,7 +220,7 @@ order: 0
         expect(browser).toHaveUrl('https://example.com/dashboard');
       });
     });
-    ```
+```
 
 #### 可以使用哪些工具来创建和管理测试用例？
 
@@ -241,61 +234,40 @@ order: 0
 - **PractiTest**：一种 SaaS 测试管理工具，为测试用例管理提供全面的解决方案，包括与自动化框架的集成。
 - **TestLodge**：一个简单的测试管理工具，可让您轻松管理测试用例、需求和运行。
 - **TestCaseLab**：一个简单的测试用例管理工具，专为 QA 工程师设计，可以有效地创建和管理测试用例。
-- **SpiraTest**：提供具有需求和缺陷跟踪的集成测试用例管理，支持手动和自动测试。
-  这些工具通常包括**版本控制**、**[测试执行](/zh-cn/wiki/test-execution/) 历史**、**可追溯性**和**报告功能**等功能，以帮助简化[测试用例管理](/zh-cn/wiki/test-case-management/) 流程。选择工具时，请考虑集成功能、易用性以及与团队工作流程和目标相符的特定功能等因素。
+- **SpiraTest**：提供具有需求和缺陷跟踪的集成测试用例管理，支持手动和自动测试。 这些工具通常包括**版本控制**、**[测试执行](/zh-cn/wiki/test-execution/) 历史**、**可追溯性**和**报告功能**等功能，以帮助简化[测试用例管理](/zh-cn/wiki/test-case-management/) 流程。选择工具时，请考虑集成功能、易用性以及与团队工作流程和目标相符的特定功能等因素。
 
 #### 如何确定测试用例的成功或失败？
 
 确定[测试用例](/zh-cn/wiki/test-case/) 的**成功或失败**取决于**预期结果**与**[实际结果](/zh-cn/wiki/actual-result/)**。如果软件的行为与预定义的 **[预期结果](/zh-cn/wiki/expected-result/)** 一致，则 [测试用例](/zh-cn/wiki/test-case/) 被视为**成功**。相反，如果结果出现偏差，则表明存在潜在缺陷或需求不匹配，则失败。
   要对此进行评估，请按照下列步骤操作：
 
-1. **运行[测试用例](/zh-cn/wiki/test-case/)**
-    使用所选的测试自动化工具或框架。
+1. **运行[测试用例](/zh-cn/wiki/test-case/)**使用所选的测试自动化工具或框架。
 
-2. **捕获[实际结果](/zh-cn/wiki/actual-result/)**
-    当被测软件执行这些步骤时。
+2. **捕获[实际结果](/zh-cn/wiki/actual-result/)**当被测软件执行这些步骤时。
 
-3. **比较**
-    实际结果与
-    **[预期结果](/zh-cn/wiki/expected-result/)**
-    记录在测试用例中。
+3. **比较**实际结果与 **[预期结果](/zh-cn/wiki/expected-result/)**记录在测试用例中。
 
-4. **标记[测试用例](/zh-cn/wiki/test-case/)**
-    作为
-    **通过**
-    如果结果一致，或者
-    **失败**
-    如果他们不这样做。
+4. **标记[测试用例](/zh-cn/wiki/test-case/)**作为 **通过**如果结果一致，或者 **失败**如果他们不这样做。
 
 5.可选地，
     **记录缺陷**
     对于失败的案例，提供详细信息供开发人员解决。
   自动化测试通常利用**断言**以编程方式执行此比较：
 
-  ```
+```
   assert.equals(actualResult, expectedResult, "Test Case failed: Actual result does not match expected result.");
-  ```
+```
 测试中的**不稳定**可能会使评估变得复杂。如果 [测试用例](/zh-cn/wiki/test-case/) 不一致地通过或失败，请调查环境问题、计时问题或非确定性行为。
   **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 工具还可以通过突出显示未经测试的路径来帮助确定[测试用例](/zh-cn/wiki/test-case/) 的有效性，尽管它们并不直接指示通过/失败状态。
   请记住，一次失败可能很严重，并且通过并不能保证[bugs](/zh-cn/wiki/bug/) 不存在。持续监控和分析测试结果对于保持 [测试套件](/zh-cn/wiki/test-suite/) 有效性至关重要。
 
-1. **运行[测试用例](/zh-cn/wiki/test-case/)**
-    使用所选的测试自动化工具或框架。
+1. **运行[测试用例](/zh-cn/wiki/test-case/)**使用所选的测试自动化工具或框架。
 
-2. **捕获[实际结果](/zh-cn/wiki/actual-result/)**
-    当被测软件执行这些步骤时。
+2. **捕获[实际结果](/zh-cn/wiki/actual-result/)**当被测软件执行这些步骤时。
 
-3. **比较**
-    实际结果与
-    **[预期结果](/zh-cn/wiki/expected-result/)**
-    记录在测试用例中。
+3. **比较**实际结果与 **[预期结果](/zh-cn/wiki/expected-result/)**记录在测试用例中。
 
-4. **标记[测试用例](/zh-cn/wiki/test-case/)**
-    作为
-    **通过**
-    如果结果一致，或者
-    **失败**
-    如果他们不这样做。
+4. **标记[测试用例](/zh-cn/wiki/test-case/)**作为 **通过**如果结果一致，或者 **失败**如果他们不这样做。
 
 5.可选地，
     **记录缺陷**
@@ -320,8 +292,7 @@ order: 0
 - **兼容性[测试用例](/zh-cn/wiki/test-case/)**：检查软件是否在不同设备、浏览器、操作系统等上按预期运行。
 - **探索性[测试用例](/zh-cn/wiki/test-case/)**：基于测试人员的知识、经验、分析技能和直觉来探索软件的功能，无需预定义步骤。
 - **[API](/zh-cn/wiki/api/) [测试用例](/zh-cn/wiki/test-case/)**：通过测试 [API](/zh-cn/wiki/api/) 及其交互来验证应用程序内构建架构的逻辑。
-- **UI [测试用例](/zh-cn/wiki/test-case/)**：专注于图形界面以及用户如何与其交互，确保元素可见、操作可行且 UI 正确响应。
-  每种类型的[测试用例](/zh-cn/wiki/test-case/) 在确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/) 和高质量软件产品的交付方面都发挥着至关重要的作用。
+- **UI [测试用例](/zh-cn/wiki/test-case/)**：专注于图形界面以及用户如何与其交互，确保元素可见、操作可行且 UI 正确响应。 每种类型的[测试用例](/zh-cn/wiki/test-case/) 在确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/) 和高质量软件产品的交付方面都发挥着至关重要的作用。
 
 - **单元[测试用例](/zh-cn/wiki/test-case/)**：以代码的各个组件或函数为目标，以验证每个部分是否独立正确运行。
 - **集成[测试用例](/zh-cn/wiki/test-case/)**：确保多个组件或系统按预期协同工作。
@@ -340,7 +311,7 @@ order: 0
 
 #### 你能提供一个好的测试用例的例子吗？
 
-  ```
+```
   Example Test Case: **User Login Functionality**
   **ID**: TC_LOGIN_01
   **Title**: Verify successful login with valid credentials
@@ -365,13 +336,13 @@ order: 0
   **Version**: 1.0
   **Tags**: `Login`, `Smoke Test`
   This test case ensures that users with valid credentials can access the system, which is critical for any application requiring authentication. It's designed to be concise for quick understanding and execution while providing all necessary details for automation scripts.
-  ```
+```
 
 #### 什么是正测试用例和负测试用例？
 
 正 [测试用例](/zh-cn/wiki/test-case/) 旨在验证系统在提供有效输入或在预期条件下执行时是否按预期运行。他们确认软件的功能按照要求和规范正常工作。主要目标是证明该软件能够实现其应有的功能。
 
-  ```
+```
   // Example of a positive test case in pseudocode
   function testLoginWithValidCredentials() {
     enterUsername("validUser");
@@ -379,10 +350,10 @@ order: 0
     clickLogin();
     assert(isLoggedIn() == true);
   }
-  ```
+```
 另一方面，否定[测试用例](/zh-cn/wiki/test-case/)确保系统可以正常处理无效输入或意外的用户行为。这些[测试用例](/zh-cn/wiki/test-case/)对于验证软件的稳健性和错误处理能力至关重要。他们的目的是通过以软件设计无法处理的方式测试软件来暴露缺陷。
 
-  ```
+```
   // Example of a negative test case in pseudocode
   function testLoginWithInvalidCredentials() {
     enterUsername("invalidUser");
@@ -391,7 +362,7 @@ order: 0
     assert(isLoggedIn() == false);
     assert(getErrorMessage() == "Invalid credentials");
   }
-  ```
+```
 正面和负面[测试用例](/zh-cn/wiki/test-case/)对于全面的测试策略都至关重要，有助于确保软件功能齐全且具有弹性。
 
 #### 什么是功能测试用例？
@@ -402,10 +373,9 @@ order: 0
 
 1. 确定要测试的功能。
 2. 定义测试输入或条件。
-3. 确定预期结果。
-  这是伪代码的简化示例：
+3. 确定预期结果。 这是伪代码的简化示例：
 
-  ```
+```
   // Test Case: Verify login functionality for a valid user
   function testLoginValidUser() {
     navigateToLoginPage();
@@ -414,7 +384,7 @@ order: 0
     clickLoginButton();
     assertUserIsLoggedIn();
   }
-  ```
+```
 在此示例中，[测试用例](/zh-cn/wiki/test-case/) 旨在确认具有有效凭据的用户可以成功登录。 [测试用例](/zh-cn/wiki/test-case/) 是否成功由最后的断言决定，该断言检查用户是否登录。如果断言通过，则认为[测试用例](/zh-cn/wiki/test-case/) 成功；否则，[测试用例](/zh-cn/wiki/test-case/) 成功。如果失败，则[测试用例](/zh-cn/wiki/test-case/) 已发现缺陷。
 
 #### 什么是非功能测试用例？
@@ -424,7 +394,7 @@ order: 0
   例如，用于性能的非功能性 [测试用例](/zh-cn/wiki/test-case/) 可能会测量系统在重负载下响应请求所需的时间。用于安全的[测试用例](/zh-cn/wiki/test-case/) 可能会评估系统抵御[SQL](/zh-cn/wiki/sql/) 注入攻击的能力。
   以下是用于提高性能的非功能性 [测试用例](/zh-cn/wiki/test-case/) 示例：
 
-  ```
+```
   Test Case ID: NF_TC_001
   Objective: Assess system response time under peak load.
   Preconditions: System is operational with a database containing 1 million records.
@@ -432,7 +402,7 @@ order: 0
 1. Simulate 1000 concurrent users accessing the system.
 2. Measure the response time for each user action.
   Expected Result: All user actions should receive a response within 2 seconds.
-  ```
+```
 非功能性[测试用例](/zh-cn/wiki/test-case/)对于确保软件的稳健性、效率和用户满意度至关重要。它们使用各种工具和技术执行，例如用于[负载测试](/zh-cn/wiki/load-testing/)的[性能测试](/zh-cn/wiki/performance-testing/)工具（例如[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner）和用于漏洞扫描的[安全测试](/zh-cn/wiki/security-testing/)工具（例如OWASP ZAP、Nessus）。
 
 ### 最佳实践
@@ -455,8 +425,7 @@ order: 0
 - **定期重构**：使 [测试用例](/zh-cn/wiki/test-case/) 保持最新状态，并随着应用程序的发展进行重构，以提高效率和清晰度。
 - **明智地使用注释**：包括注释来解释 [测试用例](/zh-cn/wiki/test-case/) 中的复杂逻辑或决策，但避免过度注释。
 - **避免 [测试用例](/zh-cn/wiki/test-case/) 重复**：在创建新的 [测试用例](/zh-cn/wiki/test-case/) 之前检查现有的 [测试用例](/zh-cn/wiki/test-case/) 以防止冗余。
-- **平衡正面和负面测试**：确保正面（预期行为）和负面（处理无效或意外输入）[测试用例](/zh-cn/wiki/test-case/) 的混合。
-  通过坚持这些实践，[测试用例](/zh-cn/wiki/test-case/) 将变得健壮、可维护并且在确保软件产品的质量方面具有价值。
+- **平衡正面和负面测试**：确保正面（预期行为）和负面（处理无效或意外输入）[测试用例](/zh-cn/wiki/test-case/) 的混合。 通过坚持这些实践，[测试用例](/zh-cn/wiki/test-case/) 将变得健壮、可维护并且在确保软件产品的质量方面具有价值。
 
 - **清晰简洁**：写出简单易懂的[测试用例](/zh-cn/wiki/test-case/)。避免歧义，以确保任何人都可以执行它们。
 - **使用描述性名称**：选择反映[测试用例](/zh-cn/wiki/test-case/)用途的名称，使其更容易一目了然地识别其意图。
@@ -488,8 +457,7 @@ order: 0
 - **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：通过临时会话补充结构化测试，以发现正式方法可能遗漏的场景。
 - **用户故事和验收标准**：确保测试用例符合用户期望和业务需求。
 - **同行评审**：让其他工程师评审测试用例以识别缺失的场景。
-- **自动测试生成工具**：利用可以根据模型或规范生成测试用例的工具。
-  请记住，由于时间和资源的限制，测试每种可能的场景并不总是可行或实际的。专注于最关键的路径并使用风险评估来指导[测试覆盖率](/zh-cn/wiki/test-coverage/)。定期重新访问和更新 [测试用例](/zh-cn/wiki/test-case/) 以适应软件的变化以及对其使用的新理解。
+- **自动测试生成工具**：利用可以根据模型或规范生成测试用例的工具。 请记住，由于时间和资源的限制，测试每种可能的场景并不总是可行或实际的。专注于最关键的路径并使用风险评估来指导[测试覆盖率](/zh-cn/wiki/test-coverage/)。定期重新访问和更新 [测试用例](/zh-cn/wiki/test-case/) 以适应软件的变化以及对其使用的新理解。
 
 - **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** ：将输入分为应同等对待的组。测试每个分区的一名代表。
 - **边界值分析**：关注输入范围的边缘情况，因为边界处经常出现错误。
@@ -542,10 +510,9 @@ order: 0
 - **新功能发布后**：新功能可能需要新的测试用例或对现有测试用例的修改。
 - **当发现缺陷时**：如果发现错误，则审查相关测试用例以识别覆盖范围中的任何差距至关重要。
 - **在敏捷环境中定期**：在敏捷中，在每次迭代或冲刺结束时审查测试用例以针对未来的周期进行改进是有益的。
-- **在 [测试用例](/zh-cn/wiki/test-case/) 维护周期**：建立定期间隔（例如每季度、每半年）对测试用例套件进行全面审查。
-  自动化工具可以通过跟踪应用程序代码库中的更改来帮助标记过时的[测试用例](/zh-cn/wiki/test-case/)。此外，版本控制系统可用于管理 [测试用例](/zh-cn/wiki/test-case/) 的更新，确保它们与软件修订版同步。
+- **在 [测试用例](/zh-cn/wiki/test-case/) 维护周期**：建立定期间隔（例如每季度、每半年）对测试用例套件进行全面审查。 自动化工具可以通过跟踪应用程序代码库中的更改来帮助标记过时的[测试用例](/zh-cn/wiki/test-case/)。此外，版本控制系统可用于管理 [测试用例](/zh-cn/wiki/test-case/) 的更新，确保它们与软件修订版同步。
 
-  ```
+```
   // Example: Pseudo-code for a scheduled Test Case review process
   scheduleTestCaseReview(frequency) {
     if (frequency === 'afterChange') {
@@ -556,7 +523,7 @@ order: 0
       setTimeInterval(reviewTestCases, frequency);
     }
   }
-  ```
+```
 **一致性**和**适应性**是关键； [测试用例](/zh-cn/wiki/test-case/) 应该与它们旨在测试的软件一起发展。
 
 #### 如何提高测试用例的可重用性？
@@ -565,18 +532,18 @@ order: 0
 
 - **模块化测试**：将测试用例分解为更小的、可重用的模块或功能，可以以不同的方式组合以创建新的测试用例。
 
-  ```
+```
   function login(username, password) {
     // Code to perform login
   }
   function addItemToCart(item) {
     // Code to add item to shopping cart
   }
-  ```
+```
 
 - **使用数据驱动的测试**：从测试脚本中外部化测试数据。这允许使用不同的数据集执行相同的测试用例，而无需修改代码。
 
-  ```
+```
   dataProvider("credentials", function*() {
     yield ["user1", "password1"];
     yield ["user2", "password2"];
@@ -585,11 +552,11 @@ order: 0
     await login(username, password);
     // Assertions here
   });
-  ```
+```
 
 - **实现 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将 UI 结构和行为封装在页面对象中。这减少了重复工作，并且在 UI 更改时使维护变得更加容易。
 
-  ```
+```
   class LoginPage {
     constructor() {
       this.usernameField = "#username";
@@ -602,22 +569,21 @@ order: 0
       await click(this.submitButton);
     }
   }
-  ```
+```
 
 - **参数化测试**：使用参数来概括测试用例，使其适用于不同的情况。
 
-  ```
+```
   test("Add multiple items to cart", async (items) => {
     for (const item of items) {
       await addItemToCart(item);
     }
     // Assertions here
   });
-  ```
+```
 
 - **采用版本控制最佳实践**：在版本控制系统中以清晰的命名约定和目录结构组织[测试脚本](/zh-cn/wiki/test-script/)，以方便共享和重用[测试用例](/zh-cn/wiki/test-case/)。
-- **记录可重用组件**：确保所有可重用模块、函数和页面对象都有详细记录，使其他人更容易理解和使用它们。
-  通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建一套灵活、可维护且可重用的[测试用例](/zh-cn/wiki/test-case/)，从而实现更高效的测试流程。
+- **记录可重用组件**：确保所有可重用模块、函数和页面对象都有详细记录，使其他人更容易理解和使用它们。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建一套灵活、可维护且可重用的[测试用例](/zh-cn/wiki/test-case/)，从而实现更高效的测试流程。
 
 - **模块化测试**：将测试用例分解为更小的、可重用的模块或功能，可以以不同的方式组合以创建新的测试用例。
 - **使用数据驱动的测试**：从测试脚本中外部化测试数据。这允许使用不同的数据集执行相同的测试用例，而无需修改代码。

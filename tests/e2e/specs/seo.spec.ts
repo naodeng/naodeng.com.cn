@@ -2,6 +2,19 @@ import { test, expect } from "@playwright/test";
 import { getMainPageUrls } from "../support/constants";
 
 test.describe("SEO 元数据", () => {
+  const normalizeBase = (baseURL?: string) => (baseURL || "").replace(/\/$/, "");
+  const normalize = (s: string) => s.replace(/\/+$/, "/");
+  const expectCanonicalEquals = async (page: any, expected: string) => {
+    const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+    expect(canonical).toBeTruthy();
+    expect(normalize(String(canonical))).toBe(normalize(expected));
+  };
+  const expectAlternateSet = async (page: any) => {
+    await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
+  };
+
   const mainPages = getMainPageUrls("");
 
   for (const { locale, path, name } of mainPages.slice(0, 4)) {
@@ -79,15 +92,15 @@ test.describe("SEO 元数据", () => {
   });
 
   test("en 首页：canonical 链接存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
-    expect(canonical).toBeTruthy();
+    const url = normalizeBase(baseURL) + "/en/";
+    await page.goto(url, { waitUntil: "networkidle" });
+    await expectCanonicalEquals(page, url);
   });
 
   test("zh-cn 首页：canonical 链接存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
-    expect(canonical).toBeTruthy();
+    const url = normalizeBase(baseURL) + "/zh-cn/";
+    await page.goto(url, { waitUntil: "networkidle" });
+    await expectCanonicalEquals(page, url);
   });
 
   test("en 页面：lang 属性正确", async ({ page, baseURL }) => {
@@ -118,5 +131,72 @@ test.describe("SEO 元数据", () => {
     
     expect(twitterCard).toBeTruthy();
     expect(twitterTitle).toBeTruthy();
+  });
+
+  test("首页：hreflang 互链完整", async ({ page, baseURL }) => {
+    const url = normalizeBase(baseURL) + "/zh-cn/";
+    await page.goto(url, { waitUntil: "networkidle" });
+    const alternates = page.locator('link[rel="alternate"][hreflang]');
+    const count = await alternates.count();
+    expect(count).toBeGreaterThan(1);
+    await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
+  });
+
+  test("en 博客详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
+    const base = normalizeBase(baseURL);
+    await page.goto(base + "/en/blog/", { waitUntil: "networkidle" });
+    const firstPost = page.locator("main a[href*='/en/blog/']").first();
+    await expect(firstPost).toBeVisible({ timeout: 10000 });
+    const href = await firstPost.getAttribute("href");
+    expect(href).toBeTruthy();
+    const url = new URL(String(href), base).href;
+    await page.goto(url, { waitUntil: "networkidle" });
+    await expectCanonicalEquals(page, url);
+    await expectAlternateSet(page);
+  });
+
+  test("zh-cn AIWiki 详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
+    const base = normalizeBase(baseURL);
+    await page.goto(base + "/zh-cn/AIWiki/", { waitUntil: "networkidle" });
+    const firstTerm = page.locator("main a[href*='/zh-cn/AIWiki/']").first();
+    await expect(firstTerm).toBeVisible({ timeout: 10000 });
+    const href = await firstTerm.getAttribute("href");
+    expect(href).toBeTruthy();
+    const url = new URL(String(href), base).href;
+    await page.goto(url, { waitUntil: "networkidle" });
+    await expectCanonicalEquals(page, url);
+    await expectAlternateSet(page);
+  });
+
+  test("robots 与 sitemap 规则一致（不包含 /en/wiki/）", async ({ page, baseURL }) => {
+    const base = normalizeBase(baseURL);
+
+    const robotsResp = await page.request.get(base + "/robots.txt");
+    expect(robotsResp.ok()).toBeTruthy();
+    const robotsText = await robotsResp.text();
+    expect(robotsText).toContain("Sitemap:");
+    expect(robotsText).toContain("/sitemap-index.xml");
+
+    const sitemapResp = await page.request.get(base + "/sitemap-index.xml");
+    expect(sitemapResp.ok()).toBeTruthy();
+    const sitemapText = await sitemapResp.text();
+    expect(sitemapText).not.toContain("/en/wiki/");
+  });
+
+  test("首页：JSON-LD 可解析且包含 WebSite", async ({ page, baseURL }) => {
+    await page.goto(normalizeBase(baseURL) + "/en/", { waitUntil: "networkidle" });
+    const scripts = page.locator('script[type="application/ld+json"]');
+    const count = await scripts.count();
+    expect(count).toBeGreaterThan(0);
+    let hasWebSite = false;
+    for (let i = 0; i < count; i++) {
+      const content = await scripts.nth(i).textContent();
+      if (!content) continue;
+      const data = JSON.parse(content);
+      if (data && data["@type"] === "WebSite") hasWebSite = true;
+    }
+    expect(hasWebSite).toBeTruthy();
   });
 });

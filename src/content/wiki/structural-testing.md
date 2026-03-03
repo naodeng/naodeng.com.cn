@@ -1,13 +1,13 @@
 ---
 title: "结构测试 ｜ Structural Testing"
-description: "结构测试 (Structural testing) 又称 白盒测试 (white box testing)，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 测试用例 (test cases)，确保代码中的所有路径、分支和语句至少执行一次。在 结构测试 (structural testing) 中，代码覆盖率 (code coverage) 是一个关键指标，包括 语句覆盖 (statement coverage)（确保每一行代码都执行到）和 分支覆盖 (branch coverage)（测试控制结构中所有可能的路由，如 if-else 或 switch-case 语句）。路径测试 (Path testing) 是另一种技术，涉及测试代码中所有可能的路径，虽然可能非常耗时，但能确保彻底的测试。自动化 结构测试 (structural testing) 涉及编写直接与代码交互的 测试脚本 (test scripts)。可以使用 Java 的 JUnit 或 Python 的 pytest 等工具编写执行结构测试的单元测试。"
+description: "结构测试 (Structural testing) 又称 白盒测试 (white box testing)，侧重于软件代码的内部结构。它要求了解应用的内部工作原理来设计 测试用例 (test cases)，确保代码中的所有路径、分支和语句至少执行一次…"
 section: "S"
 related:
+  - path-testing
   - manual-testing
   - automated-testing
-  - path-testing
-  - test-suite
-  - white-box-testing
+  - test-case
+  - glass-box-testing
 order: 0
 ---
 
@@ -51,38 +51,21 @@ order: 0
   自动化 [结构测试](/zh-cn/wiki/structural-testing/) 涉及编写直接与代码交互的[测试脚本](/zh-cn/wiki/test-script/)。 Java 的 **JUnit** 或 Python 的 **pytest** 等工具可用于编写执行 [结构测试](/zh-cn/wiki/structural-testing/) 的单元测试。这些测试可以集成到 **CI/CD 管道**中，在每次代码提交时自动运行，以确保持续的质量控制。
   [结构测试](/zh-cn/wiki/structural-testing/) 中的最佳实践包括：
 
-- 写作
-    **清晰、可维护[测试用例](/zh-cn/wiki/test-case/)**
-    当代码更改时可以轻松更新。
+- 写作 **清晰、可维护[测试用例](/zh-cn/wiki/test-case/)**当代码更改时可以轻松更新。
 
-- 确保
-    **高[代码覆盖率](/zh-cn/wiki/code-coverage/)**
-    捕获尽可能多的问题。
+- 确保 **高[代码覆盖率](/zh-cn/wiki/code-coverage/)**捕获尽可能多的问题。
 
-- 将测试集成到
-    **构建过程**
-    以获得持续的反馈。
+- 将测试集成到 **构建过程**以获得持续的反馈。
 
-- 使用
-    **模拟和存根**
-    隔离部分代码以进行更有针对性的测试。
-  [结构测试](/zh-cn/wiki/structural-testing/) 中的挑战通常涉及维护复杂代码库的[测试用例](/zh-cn/wiki/test-case/) 并确保测试跟上快速开发的步伐。定期重构测试代码并确定测试关键路径的优先级可以帮助缓解这些挑战。
+- 使用 **模拟和存根**隔离部分代码以进行更有针对性的测试。 [结构测试](/zh-cn/wiki/structural-testing/) 中的挑战通常涉及维护复杂代码库的[测试用例](/zh-cn/wiki/test-case/) 并确保测试跟上快速开发的步伐。定期重构测试代码并确定测试关键路径的优先级可以帮助缓解这些挑战。
 
-- 写作
-    **清晰、可维护[测试用例](/zh-cn/wiki/test-case/)**
-    当代码更改时可以轻松更新。
+- 写作 **清晰、可维护[测试用例](/zh-cn/wiki/test-case/)**当代码更改时可以轻松更新。
 
-- 确保
-    **高[代码覆盖率](/zh-cn/wiki/code-coverage/)**
-    捕获尽可能多的问题。
+- 确保 **高[代码覆盖率](/zh-cn/wiki/code-coverage/)**捕获尽可能多的问题。
 
-- 将测试集成到
-    **构建过程**
-    以获得持续的反馈。
+- 将测试集成到 **构建过程**以获得持续的反馈。
 
-- 使用
-    **模拟和存根**
-    隔离部分代码以进行更有针对性的测试。
+- 使用 **模拟和存根**隔离部分代码以进行更有针对性的测试。
 
 #### 为什么结构测试在软件开发中很重要？
 
@@ -91,14 +74,14 @@ order: 0
   最佳实践包括在开发周期的早期开始，优先考虑关键路径以获得最大影响，并根据代码更改不断完善测试。诸如初始 [环境搭建](/zh-cn/wiki/setup/) 时间长和保持测试相关性等挑战可以通过增量实施和定期审查来缓解。
   成功的[结构测试](/zh-cn/wiki/structural-testing/) 示例通常涉及可靠性至关重要的复杂系统，例如金融软件或安全关键系统。在这些场景中，结构方法提供的测试深度对于确保系统完整性和性能至关重要。
 
-  ```
+```
   // Example of a simple automated structural test case in TypeScript
   describe('Calculator', () => {
     test('should add two numbers correctly', () => {
       expect(add(2, 3)).toBe(5);
     });
   });
-  ```
+```
 总之，[结构测试](/zh-cn/wiki/structural-testing/) 是全面测试策略的关键组成部分，提供对代码质量和系统行为的深入洞察。
 
 #### 结构测试和功能测试之间的主要区别是什么？
@@ -111,8 +94,7 @@ order: 0
 - **知识**：结构需要深入的代码知识；功能性则不然。
 - **[测试用例](/zh-cn/wiki/test-case/) Design** ：结构测试用例源自代码；功能测试用例源自需求和用户故事。
 - **目标**：结构性目标是发现内部缺陷；功能的目的是验证软件是否从最终用户的角度完成了它应该做的事情。
-- **工具**：结构测试经常使用可以分析和检测代码的工具；功能测试工具模拟用户交互。
-  在实践中，两种测试类型是相辅相成的，[结构测试](/zh-cn/wiki/structural-testing/) 确保代码在内部按预期工作，[功能测试](/zh-cn/wiki/functional-testing/) 确认其满足外部期望。
+- **工具**：结构测试经常使用可以分析和检测代码的工具；功能测试工具模拟用户交互。 在实践中，两种测试类型是相辅相成的，[结构测试](/zh-cn/wiki/structural-testing/) 确保代码在内部按预期工作，[功能测试](/zh-cn/wiki/functional-testing/) 确认其满足外部期望。
 
 #### 结构测试如何提高软件产品的整体质量？
 
@@ -135,12 +117,12 @@ order: 0
 - **数据流覆盖**：重点关注变量接收值的点和使用这些值的点，确保测试这些点之间的路径。
 - **[突变测试](/zh-cn/wiki/mutation-testing/)** ：涉及对代码进行小的更改（突变体）并检查测试用例是否可以检测到更改，从而评估测试用例的有效性。
 
-  ```
+```
   // Example of condition coverage in pseudocode
   if (a && b) {
     // Test with a=true, b=false; a=false, b=true; a=true, b=true
   }
-  ```
+```
 每种技术都针对代码结构的不同方面，结合起来可以提供更全面的评估。经验丰富的自动化工程师可以利用这些技术来识别代码中可能容易出错的特定区域，从而确保稳健的测试策略。
 
 #### 什么是白盒测试以及它与结构测试有何关系？
@@ -149,14 +131,14 @@ order: 0
   相对于[结构测试](/zh-cn/wiki/structural-testing/)，[白盒测试](/zh-cn/wiki/white-box-testing/) 是**核心组件**。 [结构测试](/zh-cn/wiki/structural-testing/) 重点关注软件的内部结构，[白盒测试](/zh-cn/wiki/white-box-testing/) 提供检查和验证该结构的方法。它涉及根据应用程序的内部路径、代码结构和编码实践创建[测试用例](/zh-cn/wiki/test-case/)。
   [白盒测试](/zh-cn/wiki/white-box-testing/) 的典型执行方式如下：
 
-  ```
+```
 1. Analyze the source code for potential vulnerabilities.
 2. Identify all possible execution paths.
 3. Develop and execute test cases that cover these paths.
 4. Assess the code for logic errors, dead code, and possible optimizations.
 5. Verify the flow of inputs and outputs through the code.
 6. Ensure that all paths are tested for maximum coverage.
-  ```
+```
 [白盒测试](/zh-cn/wiki/white-box-testing/) 是实现**高[代码覆盖率](/zh-cn/wiki/code-coverage/)** 指标（例如语句和分支覆盖率）不可或缺的一部分。它允许测试人员识别现有[测试用例](/zh-cn/wiki/test-case/)未执行的代码区域，确保发现并纠正隐藏的缺陷。
   通过在[结构测试](/zh-cn/wiki/structural-testing/)中利用[白盒测试](/zh-cn/wiki/white-box-testing/)，自动化工程师可以确保对软件架构进行彻底检查，从而获得更强大、更可靠的软件产品。
 
@@ -165,23 +147,23 @@ order: 0
 语句覆盖率和分支覆盖率都是[结构测试](/zh-cn/wiki/structural-testing/) 中用于评估[测试用例](/zh-cn/wiki/test-case/) 彻底性的指标。
   **语句覆盖率** 测量代码中已由 [测试套件](/zh-cn/wiki/test-suite/) 执行的可执行语句的百分比。目标是确保每行代码至少测试一次。但是，它并不能保证所有可能的结果或路径都经过测试。
 
-  ```
+```
   if (condition) {
     executeStatement1(); // Tested
   }
   executeStatement2(); // Tested
-  ```
+```
 在上面的示例中，如果在测试期间同时执行`executeStatement1` 和`executeStatement2`，则无论`condition` 为真还是假，语句覆盖率为100%。
   **分支覆盖率**，也称为决策覆盖率，更进一步确保每个控制结构的每个分支（例如 `if` 和 `case` 语句）都得到执行。这意味着每个条件的正确结果和错误结果都会被测试。
 
-  ```
+```
   if (condition) {
     executeStatement1(); // Tested when condition is true
   } else {
     executeStatement3(); // Must be tested when condition is false
   }
   executeStatement2(); // Tested
-  ```
+```
 要实现 100% 分支覆盖率，测试必须覆盖 `if` 条件的 true 和 false 分支。这通常需要比语句覆盖更多的[测试用例](/zh-cn/wiki/test-case/)，因为它侧重于代码中的决策点。
   总之，**语句覆盖**涉及执行所有代码行，而**分支覆盖**确保采用通过控制结构的每条可能的路线。分支覆盖通常意味着语句覆盖，但反之则不然；实现高语句覆盖率并不能保证高分支覆盖率。
 
@@ -191,20 +173,13 @@ order: 0
   在[路径测试](/zh-cn/wiki/path-testing/)中，主要目标是确保所有路径至少执行一次，这有助于发现很少使用的路径中可能发生的错误。这是通过创建将遍历每个路径的 **[测试用例](/zh-cn/wiki/test-case/)** 来实现的。
   为了有效地实现[路径测试](/zh-cn/wiki/path-testing/)，您通常会使用：
 
-- **控制流程图 (CFG)**
-    可视化路径。
+- **控制流程图 (CFG)**可视化路径。
 
-- **循环复杂度**
-    确定线性独立路径的数量，从而确定所需测试用例的数量。
-  [路径测试](/zh-cn/wiki/path-testing/) 比分支覆盖范围更细化，因为它考虑事件的顺序，而不仅仅是条件分支的覆盖范围。它对于需要对代码可靠性具有高度信心的关键组件特别有用。
-  然而，由于复杂系统中可能存在大量路径，[路径测试](/zh-cn/wiki/path-testing/) 可能具有挑战性。为了管理这一点，您可以关注**高风险路径**或使用启发式方法来确定更有可能包含缺陷的路径的优先级。
-  自动化工具可以通过从 CFG 生成 [测试用例](/zh-cn/wiki/test-case/) 或识别尚未测试的路径来协助 [路径测试](/zh-cn/wiki/path-testing/)。将 [路径测试](/zh-cn/wiki/path-testing/) 集成到 [测试套件](/zh-cn/wiki/test-suite/) 中可以确保所有代码路径在测试条件下得到验证，从而显着增强软件的稳健性。
+- **循环复杂度**确定线性独立路径的数量，从而确定所需测试用例的数量。 [路径测试](/zh-cn/wiki/path-testing/) 比分支覆盖范围更细化，因为它考虑事件的顺序，而不仅仅是条件分支的覆盖范围。它对于需要对代码可靠性具有高度信心的关键组件特别有用。 然而，由于复杂系统中可能存在大量路径，[路径测试](/zh-cn/wiki/path-testing/) 可能具有挑战性。为了管理这一点，您可以关注**高风险路径**或使用启发式方法来确定更有可能包含缺陷的路径的优先级。 自动化工具可以通过从 CFG 生成 [测试用例](/zh-cn/wiki/test-case/) 或识别尚未测试的路径来协助 [路径测试](/zh-cn/wiki/path-testing/)。将 [路径测试](/zh-cn/wiki/path-testing/) 集成到 [测试套件](/zh-cn/wiki/test-suite/) 中可以确保所有代码路径在测试条件下得到验证，从而显着增强软件的稳健性。
 
-- **控制流程图 (CFG)**
-    可视化路径。
+- **控制流程图 (CFG)**可视化路径。
 
-- **循环复杂度**
-    确定线性独立路径的数量，从而确定所需测试用例的数量。
+- **循环复杂度**确定线性独立路径的数量，从而确定所需测试用例的数量。
 
 ### 实施和工具
 
@@ -222,8 +197,7 @@ order: 0
 8. **报告结果**：记录缺陷、覆盖级别以及与 [测试计划](/zh-cn/wiki/test-plan/) 的任何偏差。将这些内容传达给开发团队。
 9. **重新测试**：修复后，重新测试受影响的区域，以确保问题得到解决并且不会引入新问题。
 10. **完善测试**：根据调查结果和代码更改不断改进[测试用例](/zh-cn/wiki/test-case/) 和覆盖范围。
-11. **与 CI/CD 集成**：在 CI/CD 管道内自动执行结构测试，以确保持续反馈和[质量保证](/zh-cn/wiki/quality-assurance/)。
-  通过执行以下步骤，您可以系统地实施[结构测试](/zh-cn/wiki/structural-testing/)，以增强软件的可靠性和[可维护性](/zh-cn/wiki/maintainability/)。
+11. **与 CI/CD 集成**：在 CI/CD 管道内自动执行结构测试，以确保持续反馈和[质量保证](/zh-cn/wiki/quality-assurance/)。 通过执行以下步骤，您可以系统地实施[结构测试](/zh-cn/wiki/structural-testing/)，以增强软件的可靠性和[可维护性](/zh-cn/wiki/maintainability/)。
 
 1. **确定测试项目**：选择需要测试的组件或系统。
 2. **了解结构**：熟悉测试项的内部工作原理，包括控制流、数据流以及相关代码复杂度。
@@ -247,24 +221,23 @@ order: 0
 - **模拟框架**：**Mockito** (Java)、**Moq** (.NET) 和 **unittest.mock** (Python) 等工具模拟未测试的组件，允许对特定代码路径进行隔离测试。
 - **Profiler 工具**：**VisualVM**、**YourKit** 和 **dotTrace** 有助于识别性能瓶颈并优化代码路径，这些可以作为结构测试的目标。
 - **集成开发环境 (IDE)**：**Eclipse**、**IntelliJ IDEA** 和 **Visual Studio** 通常具有 [代码覆盖率](/zh-cn/wiki/code-coverage/) 和 [单元测试](/zh-cn/wiki/unit-testing/) 的内置或插件支持功能，从而在开发环境中促进 [结构测试](/zh-cn/wiki/structural-testing/)。
-- **持续集成工具**：**Jenkins**、**Travis CI** 和 **CircleCI** 可以作为 CI/CD 管道的一部分自动执行结构测试。
-  这些工具通过提供对代码结构和[测试覆盖率](/zh-cn/wiki/test-coverage/)的详细见解，帮助自动化并增强[结构测试](/zh-cn/wiki/structural-testing/)的有效性，最终有助于提高代码质量和可靠性。
+- **持续集成工具**：**Jenkins**、**Travis CI** 和 **CircleCI** 可以作为 CI/CD 管道的一部分自动执行结构测试。 这些工具通过提供对代码结构和[测试覆盖率](/zh-cn/wiki/test-coverage/)的详细见解，帮助自动化并增强[结构测试](/zh-cn/wiki/structural-testing/)的有效性，最终有助于提高代码质量和可靠性。
 
 #### 结构测试如何实现自动化？
 
 自动化[结构测试](/zh-cn/wiki/structural-testing/) 涉及验证软件内部工作的脚本测试。利用 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**（例如用于 Java 的 JUnit 或用于.NET 的 [NUnit](/zh-cn/wiki/nunit/)）来创建涵盖各种代码路径的 [测试用例](/zh-cn/wiki/test-case/)。利用 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**（例如 JaCoCo 或 Istanbul）来测量测试期间执行的代码的范围并识别未测试的部分。
 
-  ```
+```
   @Test
   public void testMethod() {
       MyClass myClass = new MyClass();
       int result = myClass.computeSomething();
       assertEquals("Expected result not obtained", expectedValue, result);
   }
-  ```
+```
 结合 SonarQube 等**静态分析工具**，无需执行代码即可检测潜在问题。使用**模拟框架**（例如 Mockito 或 Moq）来模拟依赖关系，确保代码单元的隔离测试。
 
-  ```
+```
   import { MyClass } from './MyClass';
   import { MyDependency } from './MyDependency';
   import { jest } from '@jest/globals';
@@ -275,7 +248,7 @@ order: 0
     myClassInstance.performAction();
     expect(myDependencyInstance.someMethod).toHaveBeenCalled();
   });
-  ```
+```
 使用 Randoop 或 EvoSuite 等工具自动生成 [测试用例](/zh-cn/wiki/test-case/)，这些工具根据代码的行为创建测试。将这些工具集成到您的 **CI/CD 管道**中，以便在每次提交或构建时自动运行测试，确保立即反馈更改的影响。
   请记住定期**重构测试**以保持其有效性和可读性。保持测试**集中且快速**，以促进频繁执行，并确定测试关键路径的优先级，以最大限度地提高自动化工作的价值。
 
@@ -283,17 +256,6 @@ order: 0
 
 实施 [结构测试](/zh-cn/wiki/structural-testing/) 时，请考虑以下最佳实践：
 
-- **设计[测试用例](/zh-cn/wiki/test-case/)**，覆盖代码中所有可能的路径、分支和语句。使用工具来衡量覆盖率并瞄准高覆盖率指标，但不要仅仅依赖这些数字；了解背景和风险领域。
-- **优先考虑关键路径**和更容易出错或对系统影响更大的组件。分配更多资源来彻底测试这些领域。
-- **纳入代码审查**以确保代码可测试并识别可能需要更深入测试的潜在领域。
-- **在必要时重构代码**以使其更具可测试性。这可能涉及将复杂的功能分解为更小、更易于管理的部分。
-- **尽可能自动化**，特别是对于[回归测试](/zh-cn/wiki/regression-testing/)。使用与您的开发环境完美集成的自动化框架和工具。
-- **在单元测试、集成测试和系统测试之间保持平衡**。确保不同级别的测试足以涵盖代码的结构方面。
-- **通过代码更改使测试保持最新**。实施更新测试和代码修改的流程，以防止测试失效。
-- **使用模拟对象和存根**来隔离被测代码，尤其是在处理外部依赖项或复杂的系统交互时。
-- **将 [结构测试](/zh-cn/wiki/structural-testing/) 集成到 CI/CD 管道**，以确保每次构建时自动运行测试，为开发人员提供即时反馈。
-- **清楚地记录[测试用例](/zh-cn/wiki/test-case/)和结果**，使其他人更容易理解测试的目的和结果的影响。
-- **根据反馈和指标不断审查和改进**测试流程，以适应代码库和技术堆栈的变化。
 - **设计[测试用例](/zh-cn/wiki/test-case/)**，覆盖代码中所有可能的路径、分支和语句。使用工具来衡量覆盖率并瞄准高覆盖率指标，但不要仅仅依赖这些数字；了解背景和风险领域。
 - **优先考虑关键路径**和更容易出错或对系统影响更大的组件。分配更多资源来彻底测试这些领域。
 - **纳入代码审查**以确保代码可测试并识别可能需要更深入测试的潜在领域。
@@ -319,8 +281,7 @@ order: 0
 - **维护[测试用例](/zh-cn/wiki/test-case/)**：随着代码库的发展，维护和更新测试用例以反映变化可能具有挑战性。
 - **不稳定**：由于计时问题或外部依赖性，测试可能会间歇性地通过或失败，从而导致不可靠的结果。
 - **理解代码内部**：测试人员需要深入了解代码内部，这可能并不总是可行或可用。
-- **与 CI/CD 集成**：确保结构测试在 CI/CD 管道中高效运行而不减慢交付过程需要仔细规划和优化。
-  缓解策略包括优先考虑[测试用例](/zh-cn/wiki/test-case/)、使用模拟对象来模拟复杂的依赖关系、采用静态代码分析工具以及将测试集成到更小、更易于管理的单元中。 [测试用例](/zh-cn/wiki/test-case/) 的持续重构以及开发人员和测试人员之间的协作也可以帮助解决这些挑战。
+- **与 CI/CD 集成**：确保结构测试在 CI/CD 管道中高效运行而不减慢交付过程需要仔细规划和优化。 缓解策略包括优先考虑[测试用例](/zh-cn/wiki/test-case/)、使用模拟对象来模拟复杂的依赖关系、采用静态代码分析工具以及将测试集成到更小、更易于管理的单元中。 [测试用例](/zh-cn/wiki/test-case/) 的持续重构以及开发人员和测试人员之间的协作也可以帮助解决这些挑战。
 
 #### 如何缓解这些挑战？
 
@@ -340,8 +301,7 @@ order: 0
 - **NASA 的软件保障技术中心 (SATC)**：通过应用 [结构测试](/zh-cn/wiki/structural-testing/) 技术，SATC 能够检测飞行软件中的关键错误，如果不解决这些错误可能会导致任务失败。
 - **Netflix 的 Chaos Monkey**：虽然不是一个纯粹的 [结构测试](/zh-cn/wiki/structural-testing/) 工具，但 Chaos Monkey 通过故意禁用服务器来测试 Netflix 基础设施的弹性，以确保系统能够承受任何单个实例的损失。
 - **Microsoft 使用静态分析工具**：Microsoft 将静态分析工具集成到其开发过程中，这些工具在部署之前执行 [结构测试](/zh-cn/wiki/structural-testing/) 以识别安全漏洞和关键代码缺陷。
-- **开源项目**：许多开源项目使用 Travis CI 等持续集成服务，它在每次提交时运行结构测试。 Django 和 Angular 等项目具有强大的 [测试套件](/zh-cn/wiki/test-suite/)，其中包括 [结构测试](/zh-cn/wiki/structural-testing/) 来维护代码质量。
-  在每种情况下，[结构测试](/zh-cn/wiki/structural-testing/) 通过确保软件组件的内部工作尽可能无缺陷，成为维护高质量、可靠软件的关键。
+- **开源项目**：许多开源项目使用 Travis CI 等持续集成服务，它在每次提交时运行结构测试。 Django 和 Angular 等项目具有强大的 [测试套件](/zh-cn/wiki/test-suite/)，其中包括 [结构测试](/zh-cn/wiki/structural-testing/) 来维护代码质量。 在每种情况下，[结构测试](/zh-cn/wiki/structural-testing/) 通过确保软件组件的内部工作尽可能无缺陷，成为维护高质量、可靠软件的关键。
 
 - **谷歌的厕所测试**：谷歌工程师通过在浴室隔间张贴的一系列传单分享测试知识。一份传单重点介绍了使用[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具来识别代码库中未经测试的部分，从而改进[测试套件](/zh-cn/wiki/test-suite/)。
 - **NASA 的软件保障技术中心 (SATC)**：通过应用 [结构测试](/zh-cn/wiki/structural-testing/) 技术，SATC 能够检测飞行软件中的关键错误，如果不解决这些错误可能会导致任务失败。
@@ -362,8 +322,7 @@ order: 0
 7. **快速失败**：将管道配置为在测试失败时停止。这确保了即时反馈并防止错误代码在管道中进一步发展。
 8. **质量关卡**：根据[结构测试](/zh-cn/wiki/structural-testing/) 指标（例如[代码覆盖率](/zh-cn/wiki/code-coverage/) 阈值）建立质量关卡。仅当构建符合定义的标准时才允许它们通过这些门。
 9. **反馈循环**：集成通知以提醒开发人员测试结果，从而能够快速响应故障或问题。
-10. **持续改进**：定期审查测试结果和覆盖率报告，以确定 [测试套件](/zh-cn/wiki/test-suite/) 中需要额外测试或潜在改进的领域。
-  通过遵循这些步骤，[结构测试](/zh-cn/wiki/structural-testing/) 成为 CI/CD 流程的无缝且不可或缺的一部分，有助于提高代码质量和更可靠的软件版本。
+10. **持续改进**：定期审查测试结果和覆盖率报告，以确定 [测试套件](/zh-cn/wiki/test-suite/) 中需要额外测试或潜在改进的领域。 通过遵循这些步骤，[结构测试](/zh-cn/wiki/structural-testing/) 成为 CI/CD 流程的无缝且不可或缺的一部分，有助于提高代码质量和更可靠的软件版本。
 
 1. **自动化结构测试**：确保使用适当的工具和框架自动化所有结构测试。测试应该可以通过命令行或通过 [测试运行者](/zh-cn/wiki/test-runner/) [API](/zh-cn/wiki/api/) 执行。
 2. **配置构建管道**：修改构建脚本以包含结构[测试执行](/zh-cn/wiki/test-execution/)。使用 Jenkins、Travis CI 或 GitLab CI 等工具来触发这些测试。

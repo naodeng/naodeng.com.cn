@@ -4,10 +4,10 @@ description: "关于预期结果的问题？"
 section: "E"
 related:
   - test-case
-  - manual-testing
-  - automated-testing
   - test-comparison
   - validation-testing
+  - automated-testing
+  - test-case-management
 order: 0
 ---
 
@@ -51,13 +51,13 @@ order: 0
   [预期结果](/zh-cn/wiki/expected-result/) 应**清晰**、**简洁**和**明确**，以确保[测试自动化](/zh-cn/wiki/test-automation/) 可靠。它们通常以自动化工具可以轻松比较的格式表示，例如布尔值、字符串、数字或更复杂的数据结构。
   例如，登录函数的测试可能会将 [预期结果](/zh-cn/wiki/expected-result/) 定义为：
 
-  ```
+```
   {
     success: true,
     userId: 12345,
     message: "User logged in successfully."
   }
-  ```
+```
 然后，自动化脚本将断言 [实际结果](/zh-cn/wiki/actual-result/) 与该对象匹配以验证测试。如果 [实际结果](/zh-cn/wiki/actual-result/) 出现偏差，脚本会将测试标记为失败，从而促使进一步调查。
 
 #### 为什么定义“预期结果”在软件测试中很重要？
@@ -73,9 +73,9 @@ order: 0
   在缺乏明确定义的[预期结果](/zh-cn/wiki/expected-result/)的情况下，自动化测试缺乏方向，可能导致**[误报](/zh-cn/wiki/false-positive/)或负面**。这种清晰度确保自动化测试**可靠**和**可维护**，因为团队成员可以轻松理解和更新它们。
   在[测试执行](/zh-cn/wiki/test-execution/)期间，自动化框架**比较**[预期结果](/zh-cn/wiki/expected-result/)与实际结果，标记差异。 [测试脚本](/zh-cn/wiki/test-script/) 中的 **断言** 通常可以促进这种比较：
 
-  ```
+```
   assert.equals(actualResult, expectedResult, "The results do not match.");
-  ```
+```
 当发生不匹配时，它们会触发对测试或应用程序代码中潜在缺陷或必要更新的**调查**。因此，[预期结果](/zh-cn/wiki/expected-result/) 充当[质量保证](/zh-cn/wiki/quality-assurance/) 的**控制点**，确保软件满足其要求。
   此外，有据可查的[预期结果](/zh-cn/wiki/expected-result/) 支持团队成员之间的**协作**，因为它们可以清楚地了解每个测试旨在验证的内容。这种透明度对于**持续集成**和**交付管道**至关重要，其中测试需要由各个利益相关者执行和理解。
   总之，[预期结果](/zh-cn/wiki/expected-result/) 是 [测试自动化](/zh-cn/wiki/test-automation/) 流程的**效率**和**有效性**不可或缺的一部分，确保 [软件质量](/zh-cn/wiki/software-quality/) 始终根据既定标准进行衡量。
@@ -89,8 +89,7 @@ order: 0
 - **沟通不畅**：预期结果的模糊性可能会导致团队成员之间产生混乱，从而可能导致测试实施不一致和产品目标不一致。
 - **无效测试**：测试套件的有效性受到损害，因为它可能无法准确反映用户要求或业务需求。
 - **延迟交付**：错误定义的预期结果可能会导致开发周期延迟，因为需要额外的时间来纠正和重新运行测试。
-- **差[质量保证](/zh-cn/wiki/quality-assurance/)**：最终，如果未识别缺陷或由于预期结果不准确而错误地排除缺陷，则软件的质量可能会受到影响。
-  为了缓解这些问题，请确保 [预期结果](/zh-cn/wiki/expected-result/) 在 [测试执行](/zh-cn/wiki/test-execution/) 之前由所有利益相关者**明确定义**、**审核**并**同意**。定期**审查和更新** [预期结果](/zh-cn/wiki/expected-result/) 以适应不断变化的需求。
+- **差[质量保证](/zh-cn/wiki/quality-assurance/)**：最终，如果未识别缺陷或由于预期结果不准确而错误地排除缺陷，则软件的质量可能会受到影响。 为了缓解这些问题，请确保 [预期结果](/zh-cn/wiki/expected-result/) 在 [测试执行](/zh-cn/wiki/test-execution/) 之前由所有利益相关者**明确定义**、**审核**并**同意**。定期**审查和更新** [预期结果](/zh-cn/wiki/expected-result/) 以适应不断变化的需求。
 
 ### 创建和使用
 
@@ -107,13 +106,13 @@ order: 0
 7. **准确记录**：以清晰、明确的方式记录[预期结果](/zh-cn/wiki/expected-result/)，通常记录在[测试用例](/zh-cn/wiki/test-case/) 本身内。
 8. **验证**：确保[预期结果](/zh-cn/wiki/expected-result/) 符合验收标准并经过同行评审。
 
-  ```
+```
   // Example: Test Case Expected Result Documentation
   test('User login with valid credentials', () => {
     const expected = { success: true, userId: '12345' };
     // ... test implementation ...
   });
-  ```
+```
 请记住，[预期结果](/zh-cn/wiki/expected-result/) 应该是**客观**、**可测试**和**可验证**。保持**简洁**和**精确**至关重要，以便于在[测试执行](/zh-cn/wiki/test-execution/)期间进行自动比较。
 
 #### 谁通常负责定义“预期结果”？
@@ -127,15 +126,15 @@ order: 0
 
 在测试过程中，**[预期结果](/zh-cn/wiki/expected-result/)** 作为验证被测软件行为的基准。它用于**自动比较**与[测试执行](/zh-cn/wiki/test-execution/) 生成的**[实际结果](/zh-cn/wiki/actual-result/)**。这种比较通常是通过 [测试脚本](/zh-cn/wiki/test-script/) 中的断言完成的：
 
-  ```
+```
   assert.equal(actualResult, expectedResult, "The actual result does not match the expected result.");
-  ```
+```
 如果比较结果匹配，则测试标记为**通过**；否则，将被标记为**失败**，提示进一步调查。 [预期结果](/zh-cn/wiki/expected-result/) 确保测试**客观**和**可重复**，为每个[测试用例](/zh-cn/wiki/test-case/) 提供明确的成功标准。
   在[自动化测试](/zh-cn/wiki/automated-testing/)框架中，[预期结果](/zh-cn/wiki/expected-result/)通常嵌入在测试代码或外部数据源中，例如CSV文件、[数据库](/zh-cn/wiki/database/)或JSON对象，然后在[测试执行](/zh-cn/wiki/test-execution/)期间加载和使用：
 
-  ```
+```
   const expectedResult = loadData("expectedResult.json");
-  ```
+```
 以这种方式使用 [预期结果](/zh-cn/wiki/expected-result/) 使**持续集成**和**持续部署** (CI/CD) 管道能够自动执行测试并报告应用程序的运行状况，而无需手动干预。这种自动化对于[敏捷开发](/zh-cn/wiki/agile-development/) 实践至关重要，可以快速反馈并确保新功能或[bug](/zh-cn/wiki/bug/) 修复不会引入回归。
 
 #### 在测试过程中“预期结果”会改变吗？
@@ -146,14 +145,12 @@ order: 0
 - **需求变更**：如果软件需求更新或细化，则预期结果必须相应调整以符合新的期望。
 - **澄清误解**：在测试期间，可能会澄清有关功能的误解，因此需要更改预期结果以反映正确的行为。
 - **软件演化**：随着软件在其开发生命周期中的演化，可能会添加、删除或修改功能，这可能会导致预期结果发生变化。
-- **[测试用例](/zh-cn/wiki/test-case/) 细化**：可以对测试用例进行细化以确保准确性或完整性，其中可以包括更新预期结果以确保它们的精确性和相关性。
-  当 [预期结果](/zh-cn/wiki/expected-result/) 发生变化时，至关重要的是：
+- **[测试用例](/zh-cn/wiki/test-case/) 细化**：可以对测试用例进行细化以确保准确性或完整性，其中可以包括更新预期结果以确保它们的精确性和相关性。 当 [预期结果](/zh-cn/wiki/expected-result/) 发生变化时，至关重要的是：
 
 - **更新[测试用例](/zh-cn/wiki/test-case/)**：修改测试用例以反映新的预期结果。
 - **传达变更**：将变更通知所有相关利益相关者，以确保每个人都掌握最新信息。
 - **版本控制**：使用版本控制进行测试用例管理来跟踪更改并维护修改历史记录。
-- **重新执行测试**：再次运行受影响的测试用例以验证实际结果现在是否与更新的预期结果匹配。
-  应谨慎处理对 [预期结果](/zh-cn/wiki/expected-result/) 的更改，以保持测试过程的完整性并确保软件满足其预期要求。
+- **重新执行测试**：再次运行受影响的测试用例以验证实际结果现在是否与更新的预期结果匹配。 应谨慎处理对 [预期结果](/zh-cn/wiki/expected-result/) 的更改，以保持测试过程的完整性并确保软件满足其预期要求。
 
 - **需求变更**：如果软件需求更新或细化，则预期结果必须相应调整以符合新的期望。
 - **澄清误解**：在测试期间，可能会澄清有关功能的误解，因此需要更改预期结果以反映正确的行为。
@@ -172,43 +169,42 @@ order: 0
 
 1. **断言**：测试框架提供断言方法来比较值，如果比较失败则抛出错误。例如，在 JavaScript 的 [Jest](/zh-cn/wiki/jest/) 框架中：
 
-    ```
+```
     expect(actual).toEqual(expected);
-    ```
+```
 
 2. **[验证 ](/zh-cn/wiki/verification/)**：某些框架提供[验证 ](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
 3. **自定义比较逻辑**：对于复杂对象或非标准比较，可以实现自定义逻辑：
 
-    ```
+```
     if (deepCompare(actual, expected)) {
       // Pass
     } else {
       // Fail and log differences
     }
-    ```
+```
 
 4. **视觉验证**：对于[用户界面测试](/zh-cn/wiki/ui-testing/)，可以使用屏幕截图比较工具将UI的当前状态与预期图像进行比较。
 5. **[API](/zh-cn/wiki/api/) 响应验证**：测试[API](/zh-cn/wiki/api/) 时，可以将响应正文、状态代码和标头与预期值进行比较。
 6. **[数据库](/zh-cn/wiki/database/) 验证**：对于后端测试，可以查询[数据库](/zh-cn/wiki/database/) 的状态并将其与预期数据集进行比较。
-7. **日志和输出**：可以捕获控制台日志、文件和其他输出并将其与预期内容进行比较。
-  [测试报告](/zh-cn/wiki/test-report/) 通常会突出显示不匹配的情况，从而促使进一步调查。对于自动化工程师来说，确保比较逻辑准确反映被测应用程序的预期行为至关重要。
+7. **日志和输出**：可以捕获控制台日志、文件和其他输出并将其与预期内容进行比较。 [测试报告](/zh-cn/wiki/test-report/) 通常会突出显示不匹配的情况，从而促使进一步调查。对于自动化工程师来说，确保比较逻辑准确反映被测应用程序的预期行为至关重要。
 
 1. **断言**：测试框架提供断言方法来比较值，如果比较失败则抛出错误。例如，在 JavaScript 的 [Jest](/zh-cn/wiki/jest/) 框架中：
 
-    ```
+```
     expect(actual).toEqual(expected);
-    ```
+```
 
 2. **[验证 ](/zh-cn/wiki/verification/)**：某些框架提供[验证 ](/zh-cn/wiki/verification/) 函数，可以在不停止[测试执行](/zh-cn/wiki/test-execution/) 的情况下记录失败的比较。
 3. **自定义比较逻辑**：对于复杂对象或非标准比较，可以实现自定义逻辑：
 
-    ```
+```
     if (deepCompare(actual, expected)) {
       // Pass
     } else {
       // Fail and log differences
     }
-    ```
+```
 
 #### 使用哪些工具或技术来比较“预期结果”与“实际结果”？
 
@@ -216,34 +212,33 @@ order: 0
 
 - **断言库**：JUnit、TestNG 和 NUnit 等框架提供断言方法来验证结果。例如：
 
-    ```
+```
     assertEquals(expectedResult, actualResult);
-    ```
+```
 
 - **Matchers** ：像 Hamcrest 或 AssertJ 这样的库提供流畅的 API 来实现更具表现力的断言：
 
-    ```
+```
     assertThat(actualResult, equalTo(expectedResult));
-    ```
+```
 
 - **视觉比较工具**：Applitools 或 Percy 等工具捕获屏幕截图并将视觉元素与基线进行比较。
 - **[API 测试](/zh-cn/wiki/api-testing/) 工具**：Postman 和 RestAssured 包含内置函数，可根据预期数据验证 API 响应。
 - **自定义验证函数**：有时，编写自定义逻辑来处理复杂的比较，特别是在处理非标准输出时。
 - **快照测试**：Jest 等工具拍摄输出快照，并在后续测试运行中将其与存储的快照进行比较。
-- **[BDD](/zh-cn/wiki/bdd/) 框架**：Cucumber 和 SpecFlow 允许使用 Gherkin 语言定义预期结果，并通过步骤定义与实际结果进行匹配。
-  这些工具和技术促进了结果比较的自动化，使其成为持续集成和交付管道的关键部分。它们有助于快速识别差异，确保软件按预期运行。
+- **[BDD](/zh-cn/wiki/bdd/) 框架**：Cucumber 和 SpecFlow 允许使用 Gherkin 语言定义预期结果，并通过步骤定义与实际结果进行匹配。 这些工具和技术促进了结果比较的自动化，使其成为持续集成和交付管道的关键部分。它们有助于快速识别差异，确保软件按预期运行。
 
 - **断言库**：JUnit、TestNG 和 NUnit 等框架提供断言方法来验证结果。例如：
 
-    ```
+```
     assertEquals(expectedResult, actualResult);
-    ```
+```
 
 - **Matchers** ：像 Hamcrest 或 AssertJ 这样的库提供流畅的 API 来实现更具表现力的断言：
 
-    ```
+```
     assertThat(actualResult, equalTo(expectedResult));
-    ```
+```
 
 #### 如果“预期结果”与“实际结果”不匹配，这意味着什么？
 
@@ -253,8 +248,7 @@ order: 0
 2. **[Bug](/zh-cn/wiki/bug/) 报告**：如果确认存在缺陷，请将其记录在错误跟踪系统中，并提供不匹配的详细信息和重现步骤。
 3. **沟通**​​：将问题通知相关利益相关者，例如开发人员和产品所有者，以便采取进一步行动。
 4. **解决**：开发团队解决缺陷，解决后，重新执行测试以验证修复。
-5. **[测试用例](/zh-cn/wiki/test-case/) 审核**：如果差异是由于不正确的测试用例造成的，请更新测试用例以与正确的预期行为保持一致。
-  这种不匹配是[软件测试](/zh-cn/wiki/software-testing/) 中反馈循环的关键部分，可提高质量并[验证 ](/zh-cn/wiki/verification/) 软件按预期运行。系统地处理这些差异对于保持测试过程的完整性至关重要。
+5. **[测试用例](/zh-cn/wiki/test-case/) 审核**：如果差异是由于不正确的测试用例造成的，请更新测试用例以与正确的预期行为保持一致。 这种不匹配是[软件测试](/zh-cn/wiki/software-testing/) 中反馈循环的关键部分，可提高质量并[验证 ](/zh-cn/wiki/verification/) 软件按预期运行。系统地处理这些差异对于保持测试过程的完整性至关重要。
 
 1. **调查**：确定差异的原因。这涉及审查测试用例、底层代码和需求。
 2. **[Bug](/zh-cn/wiki/bug/) 报告**：如果确认存在缺陷，请将其记录在错误跟踪系统中，并提供不匹配的详细信息和重现步骤。
@@ -273,8 +267,7 @@ order: 0
 5. **缺陷记录**：如果确认为缺陷，请将其记录在跟踪系统中，并提供详细信息，例如重现步骤、环境和屏幕截图（如果适用）。
 6. **沟通**​​：通知相关利益相关者，例如开发人员和产品所有者，确定问题的优先级并解决问题。
 7. **[回归测试](/zh-cn/wiki/regression-testing/)** ：修复后，执行回归测试以确保修复不会影响应用程序的其他区域。
-8. **文档**：更新测试用例和文档以反映对功能的任何新理解或对系统所做的更改。
-  在整个过程中，使用调试器、版本控制系统和缺陷跟踪软件等工具来促进分析和沟通。目标不仅是解决当前的差异，而且是完善测试策略并防止将来出现类似问题。
+8. **文档**：更新测试用例和文档以反映对功能的任何新理解或对系统所做的更改。 在整个过程中，使用调试器、版本控制系统和缺陷跟踪软件等工具来促进分析和沟通。目标不仅是解决当前的差异，而且是完善测试策略并防止将来出现类似问题。
 
 ### 最佳实践
 
@@ -293,8 +286,7 @@ order: 0
 - **同行评审**：让另一位团队成员评审[预期结果](/zh-cn/wiki/expected-result/) 以发现错误或遗漏。
 - **自动比较**：只要有可能，请使用自动化工具来比较预期和 [实际结果](/zh-cn/wiki/actual-result/) 以减少人为错误。
 - **维护可追溯性**：将[预期结果](/zh-cn/wiki/expected-result/)链接到特定的[测试用例](/zh-cn/wiki/test-case/)以及易于参考和[影响分析](/zh-cn/wiki/impact-analysis/)的要求。
-- **根据需要更新**：当需求发生变化时修改[预期结果](/zh-cn/wiki/expected-result/)，确保它们保持相关性和准确性。
-  通过遵守这些实践，您可以确保[预期结果](/zh-cn/wiki/expected-result/) 清晰、可靠，并保持测试过程的完整性。
+- **根据需要更新**：当需求发生变化时修改[预期结果](/zh-cn/wiki/expected-result/)，确保它们保持相关性和准确性。 通过遵守这些实践，您可以确保[预期结果](/zh-cn/wiki/expected-result/) 清晰、可靠，并保持测试过程的完整性。
 
 - **具体**：清楚地阐明结果，避免含糊不清。使用可以测量或观察的精确值和条件。
 - **参考文档**：与需求、规范或用户故事保持一致，以确保与预期功能的一致性。
@@ -325,30 +317,29 @@ order: 0
 - **利用数据集**：如果适用，请提供输入数据和相应预期输出的示例。这可以在 [测试用例](/zh-cn/wiki/test-case/) 中以表格格式完成。
 - $
 
-    ```
+```
     {
       "input": "ValidEmailAddress@example.com",
       "expectedOutput": "Email is valid"
     }
-    ```
+```
 
 - **参考屏幕截图或模型**：处理 UI 元素时，包括视觉参考以阐明 [预期结果](/zh-cn/wiki/expected-result/)。
 - **版本控制**：维护 [预期结果](/zh-cn/wiki/expected-result/) 的更改历史记录，以跟踪一段时间内的修改。
 - **协作**：确保 [预期结果](/zh-cn/wiki/expected-result/) 得到开发人员、测试人员和利益相关者的审查和同意，以避免误解。
 - **自动化[验证 ](/zh-cn/wiki/verification/)**：如果可能，编写[预期结果](/zh-cn/wiki/expected-result/) 的[验证 ](/zh-cn/wiki/verification/) 脚本以减少手动工作并提高准确性。
-- **保持最新**：定期审查和更新文档以反映系统或要求的变化。
-  通过遵守这些准则，您可以确保 [预期结果](/zh-cn/wiki/expected-result/) 以对测试团队有用、清晰且可操作的方式记录。
+- **保持最新**：定期审查和更新文档以反映系统或要求的变化。 通过遵守这些准则，您可以确保 [预期结果](/zh-cn/wiki/expected-result/) 以对测试团队有用、清晰且可操作的方式记录。
 
 - **具体**：明确定义结果，不含糊。例如，指定“系统在 2 秒内将数据保存到[数据库](/zh-cn/wiki/database/)，并且用户收到‘数据保存成功’消息”，而不是“系统应保存数据”。
 - **使用验收标准**：将 [预期结果](/zh-cn/wiki/expected-result/) 与用户故事或需求的验收标准保持一致。这确保了与商定的功能的一致性。
 - $
 
-    ```
+```
     {
       "input": "ValidEmailAddress@example.com",
       "expectedOutput": "Email is valid"
     }
-    ```
+```
 
 #### 定义“预期结果”时要避免哪些常见错误？
 
@@ -363,8 +354,7 @@ order: 0
 - **缺乏细节**：提供足够的细节以实现精确验证而不会产生歧义。
 - **协作失败**：与开发人员、业务分析师和其他利益相关者合作，以确保预期结果的准确性和相关性。
 - **忽略数据变异性**：考虑可能影响结果的不同数据集。如果适用，请使用数据驱动的测试。
-- **忘记非功能方面**：记住定义性能、安全性和可用性测试的预期结果，而不仅仅是功能行为。
-  通过避免这些陷阱，您可以确保“[预期结果](/zh-cn/wiki/expected-result/)”对于验证 [自动化测试](/zh-cn/wiki/automated-testing/) 期间的软件行为清晰、准确且有用。
+- **忘记非功能方面**：记住定义性能、安全性和可用性测试的预期结果，而不仅仅是功能行为。 通过避免这些陷阱，您可以确保“[预期结果](/zh-cn/wiki/expected-result/)”对于验证 [自动化测试](/zh-cn/wiki/automated-testing/) 期间的软件行为清晰、准确且有用。
 
 #### 如何将“预期结果”有效地传达给测试团队？
 
@@ -373,35 +363,34 @@ order: 0
 - **使用清晰简洁的语言**来描述预期结果，避免歧义。
 - **利用结构化格式**，例如用户故事或验收标准，提供上下文和清晰度。
 
-    ```
+```
     Given: <Initial Condition>
     When: <Action Performed>
     Then: <Expected Result>
-    ```
+```
 
 - **结合视觉辅助工具**，例如流程图、图表或屏幕截图来说明复杂的场景。
 - **利用[测试管理](/zh-cn/wiki/test-management/) 工具**，支持在团队成员之间追踪和共享[预期结果](/zh-cn/wiki/expected-result/)。
 - **为[测试用例](/zh-cn/wiki/test-case/) 实施版本控制**，以跟踪[预期结果](/zh-cn/wiki/expected-result/) 随时间的变化。
 - **在 [测试脚本](/zh-cn/wiki/test-script/) 中使用自动断言**，明确说明 [预期结果](/zh-cn/wiki/expected-result/)。
 
-    ```
+```
     expect(actualResult).toEqual(expectedResult);
-    ```
+```
 
 - **与开发人员、业务分析师和其他利益相关者进行评审会议**，以确保达成共识。
 - **提供示例**和边缘案例以涵盖一系列可能的结果。
-- **提供培训课程**，了解如何在被测应用程序的上下文中解释和应用 [预期结果](/zh-cn/wiki/expected-result/)。
-  通过采用这些做法，您可以确保有效地传达[预期结果](/zh-cn/wiki/expected-result/)，从而实现更准确、更高效的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
+- **提供培训课程**，了解如何在被测应用程序的上下文中解释和应用 [预期结果](/zh-cn/wiki/expected-result/)。 通过采用这些做法，您可以确保有效地传达[预期结果](/zh-cn/wiki/expected-result/)，从而实现更准确、更高效的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
 
 - **使用清晰简洁的语言**来描述预期结果，避免歧义。
 - **利用结构化格式**，例如用户故事或验收标准，提供上下文和清晰度。
 
-    ```
+```
     Given: <Initial Condition>
     When: <Action Performed>
     Then: <Expected Result>
-    ```
+```
 
-    ```
+```
     expect(actualResult).toEqual(expectedResult);
-    ```
+```

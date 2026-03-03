@@ -3,7 +3,7 @@ title: "Batch Processing"
 titleZh: "批处理"
 slug: "batch-processing"
 lang: "en"
-summary: "A processing method that bundles multiple non-urgent AI requests together for submission, exchanging immediate feedback for significantly higher cost-efficiency and system throughput."
+summary: "A processing method that bundles multiple non-urgent AI requests together for submission…"
 topic: "ai-vibe-coding"
 aliases:
   - "Batch Processing"

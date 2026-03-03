@@ -1,717 +1,584 @@
 ---
-title: "无障碍测试 ｜ Accessibility Testing"
-description: "无障碍测试 (Accessibility Testing) 是确保软件和 Web 应用可供具有广泛障碍的人群使用的过程，这些障碍包括视觉、听觉、身体、言语、认知、语言、学习和神经系统障碍。这种形式的测试检查应用程序是否可以被使用辅助技术（如屏幕阅读器、盲文终端和替代输入设备）的个人有效操作和理解。"
-section: "A"
+title: "前端测试 ｜ Front End Testing"
+description: "前端测试是验证 Web 应用程序或网站的视觉和交互方面的过程。它专注于用户界面 (UI) 和用户体验 (UX)，确保应用在不同浏览器和设备上的表现符合预期。这包括测试布局、设计元素、响应能力和客户端逻辑。前端测试通常使用 JavaScript 编写，并利用 Jest、Cypress 等框架模拟用户操作…"
+section: "F"
 related:
   - accessibility-testing
   - web-testing
-  - screenshot-testing
   - lighthouse
   - manual-testing
+  - screenshot-testing
 order: 0
 ---
 
-# 无障碍测试 ｜ Accessibility Testing
+# 前端测试 ｜ Front End Testing
 
 <!-- TOC START -->
 
-- [无障碍测试 ｜ Accessibility Testing](#无障碍测试--accessibility-testing)
-  - [相关术语](#相关术语)
-  - [有关辅助功能测试的问题吗？](#有关辅助功能测试的问题吗)
+- [前端测试 ｜ Front End Testing](#前端测试--front-end-testing)
+  - [相关术语：](#相关术语)
+  - [关于前端测试的问题？](#关于前端测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
-      - [什么是可访问性测试？](#什么是可访问性测试)
-      - [为什么可访问性测试很重要？](#为什么可访问性测试很重要)
-      - [可访问性测试的目标是什么？](#可访问性测试的目标是什么)
-      - [可访问性测试如何使用户受益？](#可访问性测试如何使用户受益)
-      - [不进行可访问性测试有什么影响？](#不进行可访问性测试有什么影响)
-    - [标准和指南](#标准和指南)
-      - [可访问性测试的关键标准和指南是什么？](#可访问性测试的关键标准和指南是什么)
-      - [什么是 WCAG？为什么它很重要？](#什么是-wcag为什么它很重要)
-      - [WCAG 合规性有哪些不同级别？](#wcag-合规性有哪些不同级别)
-      - [第 508 节是什么以及它与可访问性测试有何关系？](#第-508-节是什么以及它与可访问性测试有何关系)
-      - [ARIA 角色是什么以及它们如何在可访问性测试中使用？](#aria-角色是什么以及它们如何在可访问性测试中使用)
+      - [什么是前端测试？](#什么是前端测试)
+      - [为什么前端测试很重要？](#为什么前端测试很重要)
+      - [前端测试有哪些不同类型？](#前端测试有哪些不同类型)
+      - [前端测试在软件开发中的作用是什么？](#前端测试在软件开发中的作用是什么)
+      - [前端测试有什么好处？](#前端测试有什么好处)
     - [工具和技术](#工具和技术)
-      - [可访问性测试常用哪些工具？](#可访问性测试常用哪些工具)
-      - [可访问性测试有哪些手动技术？](#可访问性测试有哪些手动技术)
-      - [如何在可访问性测试中使用自动化工具？](#如何在可访问性测试中使用自动化工具)
-      - [自动化可访问性测试工具有哪些限制？](#自动化可访问性测试工具有哪些限制)
-      - [如何测试不同类型的残疾？](#如何测试不同类型的残疾)
-    - [实施和最佳实践](#实施和最佳实践)
-      - [实施可访问性测试的最佳实践有哪些？](#实施可访问性测试的最佳实践有哪些)
-      - [如何将可访问性测试纳入软件开发生命周期？](#如何将可访问性测试纳入软件开发生命周期)
-      - [如何确保持续的无障碍合规性？](#如何确保持续的无障碍合规性)
-      - [需要注意哪些常见的可访问性问题？](#需要注意哪些常见的可访问性问题)
-      - [如何使网站更易于访问？](#如何使网站更易于访问)
+      - [前端测试常用的工具有哪些？](#前端测试常用的工具有哪些)
+      - [前端上下文中的单元测试和集成测试有什么区别？](#前端上下文中的单元测试和集成测试有什么区别)
+      - [如何使用 Selenium 进行前端测试？](#如何使用-selenium-进行前端测试)
+      - [Jest 在前端测试中的作用是什么？](#jest-在前端测试中的作用是什么)
+      - [有效的前端测试有哪些技术？](#有效的前端测试有哪些技术)
+    - [最佳实践](#最佳实践)
+      - [前端测试的最佳实践有哪些？](#前端测试的最佳实践有哪些)
+      - [如何确保前端测试的全面覆盖？](#如何确保前端测试的全面覆盖)
+      - [前端测试中需要避免哪些常见错误？](#前端测试中需要避免哪些常见错误)
+      - [如何让前端测试更加高效？](#如何让前端测试更加高效)
+      - [您如何处理不同浏览器和设备的测试？](#您如何处理不同浏览器和设备的测试)
+    - [高级概念](#高级概念)
+      - [前端测试中的端到端测试是什么？](#前端测试中的端到端测试是什么)
+      - [前端测试如何融入 DevOps 模型？](#前端测试如何融入-devops-模型)
+      - [自动化在前端测试中的作用是什么？](#自动化在前端测试中的作用是什么)
+      - [在前端测试中如何处理动态内容的测试？](#在前端测试中如何处理动态内容的测试)
+      - [A/B 测试在前端测试中的作用是什么？](#ab-测试在前端测试中的作用是什么)
 <!-- TOC END -->
-辅助功能测试确保每个人都可以使用移动和网络应用程序，包括视力或听力障碍以及其他身体或认知障碍等残疾人。
+（又名浏览器测试、功能测试）前端测试重点关注用户界面 (UI) 及其在应用程序中的交互。
 
-## 相关术语
+## 相关术语：
 
-- [可用性测试](/zh-cn/wiki/usability-testing/)
+- [用户界面测试](/zh-cn/wiki/ui-testing/)
+- [Back-end Testing](/zh-cn/wiki/back-end-testing/)
 
-## 有关辅助功能测试的问题吗？
+## 关于前端测试的问题？
 
 ### 基础知识和重要性
 
-#### 什么是可访问性测试？
+#### 什么是前端测试？
 
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 是确保软件和 Web 应用程序可供患有各种残疾的人使用的过程，包括视觉、听觉、身体、言语、认知、语言、学习和神经障碍。这种形式的测试检查应用程序是否可以被使用屏幕阅读器、盲文终端和替代输入设备等辅助技术的个人有效地操作和理解。
-  [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的 **关键方面** 包括：
+[前端测试](/zh-cn/wiki/front-end-testing/) 是验证 Web 应用程序或网站的视觉和交互方面的过程。它专注于用户界面 (UI) 和用户体验 (UX)，以确保应用程序在不同浏览器和设备上按预期运行。这包括测试布局、设计元素、响应能力和客户端逻辑。
+  测试通常使用与前端开发相同或相似的语言编写，例如 JavaScript。它们可以使用旨在模拟用户交互和验证前端组件功能的框架和工具来实现自动化。
+  例如，使用 [Jest](/zh-cn/wiki/jest/) 等测试框架进行的 JavaScript 基本测试可能如下所示：
 
-- **导航性**：用户可以使用键盘或辅助设备在应用程序中导航吗？
-- **可读性**：内容对于有视觉障碍的用户来说是否可读且易于理解？
-- **兼容性**：该应用程序是否可以与各种辅助技术配合使用？
-- **语义 HTML**：HTML 元素是否用于传达含义和结构？
-- **动态内容**：动态内容可以通过屏幕阅读器访问吗？
-- **视觉设计**：对于弱视用户来说，文本和背景之间是否有足够的对比度？
-- **多媒体**：视频和音频内容是否可以通过字幕和文字记录来访问？
-  **技术**涉及自动化和[手动测试](/zh-cn/wiki/manual-testing/)方法。自动化工具可以扫描某些类型的问题，例如缺少替代文本或不正确的 ARIA 角色，而 [手动测试](/zh-cn/wiki/manual-testing/) 可能包括使用屏幕阅读器使用应用程序或仅通过键盘导航。
-  **使用自动化工具检查图像替代文本的代码示例**：
-
-  ```
-  it('should have alt text for all images', () => {
-    cy.get('img').each(($img) => {
-      expect($img.attr('alt')).to.be.a('string').and.not.be.empty;
-    });
+```
+  test('Homepage should load with correct title', () => {
+    // Code to render the homepage component
+    const title = homepage.getTitle();
+    expect(title).toBe('Welcome to Our Website!');
   });
-  ```
-总之，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 是软件质量保证的关键组成部分，可确保包容性和法律合规性。
+```
+此代码片段演示了一个简单的单元测试，用于检查主页标题是否与预期字符串匹配。
+  [前端测试](/zh-cn/wiki/front-end-testing/) 是开发过程中不可或缺的一部分，确保代码更改不会破坏现有功能，并且应用程序保持稳定且用户友好。它补充了其他测试类型，例如后端和[集成测试](/zh-cn/wiki/integration-testing/)，以提供全面的[质量保证](/zh-cn/wiki/quality-assurance/) 策略。
 
-#### 为什么可访问性测试很重要？
+#### 为什么前端测试很重要？
 
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 至关重要，因为它确保**所有用户**，包括残疾人，都可以有效地访问和使用软件产品。通过识别和解决可访问性障碍，它促进了**包容性设计**并增强了不同受众的**用户体验**。此类测试不仅是道德责任和用户倡导的问题，也是许多司法管辖区的法律要求，帮助组织遵守法律并避免潜在的**法律后果**。
-  此外，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 可以带来**改进的 SEO**，因为搜索引擎更喜欢可访问的网站，从而有可能增加网站的可见性和覆盖范围。它还鼓励**最佳编码实践**，从而产生更干净、更易于维护的代码。通过在开发过程的早期整合可访问性考虑因素，公司可以减少以后改造可访问性功能所需的成本和工作量。
-  总之，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 很重要，因为它：
+[前端测试](/zh-cn/wiki/front-end-testing/) 至关重要，因为它直接评估**用户界面**（UI）和**用户体验**（UX），这是用户和应用程序之间交互的主要点。它确保用户在各种设备和浏览器上都能遇到功能齐全、直观且视觉一致的界面。此类测试验证**UI 逻辑的正确性**、**各种前端组件的集成**以及它们与后端系统的交互。
+  通过关注前端，测试人员可以检测与**布局渲染**、**[响应式设计](/zh-cn/wiki/responsive-design/)**、**用户输入处理**和**可访问性**相关的问题，这些问题可能会对用户满意度和可访问性合规性产生负面影响。它还在验证**动态内容**行为（例如动画和实时数据更新）方面发挥着至关重要的作用，这通常对应用程序的成功至关重要。
+  此外，[前端测试](/zh-cn/wiki/front-end-testing/) 有助于识别可能降低用户体验的**性能瓶颈**，例如缓慢的页面加载时间和缓慢的交互。由于前端是应用程序最明显的部分，因此任何缺陷或不一致都可能导致用户失去信任和信誉。
+  总之，[前端测试](/zh-cn/wiki/front-end-testing/)对于提供满足用户期望并保持市场竞争优势的高质量产品是不可或缺的。它是软件开发生命周期不可或缺的一部分，确保应用程序不仅功能健全，而且还提供无缝且引人入胜的用户体验。
 
-- **促进包容性**
-    确保软件可供具有广泛能力的人使用。
+#### 前端测试有哪些不同类型？
 
-- **履行法律义务**
-    ，帮助组织遵守无障碍标准并避免法律问题。
+不同类型的 [前端测试](/zh-cn/wiki/front-end-testing/) 包括：
 
-- **增强搜索引擎优化**
-    ，有可能提高软件的可见性和覆盖范围。
+- **[单元测试](/zh-cn/wiki/unit-testing/)** ：测试各个组件或函数的正确性，通常使用 Jest 或 Mocha 等框架。
+- **[集成测试](/zh-cn/wiki/integration-testing/)** ：检查应用程序使用的不同模块或服务是否正确交互。
+- **[功能测试](/zh-cn/wiki/functional-testing/)** ：根据功能要求验证软件，重点关注用户交互和 UI 元素。
+- **[用户界面测试](/zh-cn/wiki/ui-testing/)** ：确保用户界面在不同设备和浏览器上的外观和功能符合预期。
+- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** ：通过将当前屏幕截图与基线图像进行比较来检测意外的视觉变化。
+- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：确认该应用程序可供残疾人使用，并遵守 WCAG 等标准。
+- **[性能测试](/zh-cn/wiki/performance-testing/)** ：测量应用程序在各种条件下的行为，包括加载时间和响应能力。
+- **[可用性测试](/zh-cn/wiki/usability-testing/)** ：评估应用程序的易用性和用户满意度，通常涉及真实的用户反馈。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** ：确保应用程序在多个 Web 浏览器上正常工作。
+- **响应式测试**：检查应用程序在不同屏幕尺寸和方向上的布局和功能。
+- **[安全测试](/zh-cn/wiki/security-testing/)** ：识别前端中可能被恶意攻击利用的漏洞。 每种类型的测试都针对前端的特定方面，以确保应用程序健壮、用户友好且安全。
 
-- **鼓励更好的编码实践**
-    ，从而带来更可维护和更健壮的软件。
-  忽略[辅助功能测试](/zh-cn/wiki/accessibility-testing/)可能会导致**用户群缩小**、潜在的**法律挑战**以及错失**产品改进**的机会。
+#### 前端测试在软件开发中的作用是什么？
 
-- **促进包容性**
-    确保软件可供具有广泛能力的人使用。
+[前端测试](/zh-cn/wiki/front-end-testing/) 在软件开发中的作用是**验证用户界面** (UI) 并**确保无缝的用户体验** (UX)。它涉及验证 UI 是否在各种浏览器和设备上正常运行、符合设计规范以及向最终用户提供预期功能。 [前端测试](/zh-cn/wiki/front-end-testing/) 在开发周期早期**识别视觉和功能缺陷**方面也发挥着至关重要的作用，这减少了以后修复问题的成本和工作量。
+  通过模拟用户交互，[前端测试](/zh-cn/wiki/front-end-testing/) 检查应用程序的响应能力、性能和可访问性，确保产品具有包容性并在不同条件下表现良好。它还通过根据现有功能验证新代码更改来防止回归。
+  在**持续集成/持续部署 (CI/CD)** 管道的背景下，[前端测试](/zh-cn/wiki/front-end-testing/) 会自动提供有关代码更改影响的快速反馈，从而促进软件开发的 **DevOps 方法**。这种自动化对于维持高质量标准同时实现频繁发布至关重要。
+  此外，[前端测试](/zh-cn/wiki/front-end-testing/) 通过从用户的角度提供系统行为的清晰描述来为**技术文档**做出贡献，这对开发人员和利益相关者都很有价值。
+  总之，[前端测试](/zh-cn/wiki/front-end-testing/) 是提供强大、用户友好的应用程序不可或缺的一部分，并且在软件开发生命周期内的整体 [质量保证](/zh-cn/wiki/quality-assurance/) 策略中发挥着关键作用。
 
-- **履行法律义务**
-    ，帮助组织遵守无障碍标准并避免法律问题。
+#### 前端测试有什么好处？
 
-- **增强搜索引擎优化**
-    ，有可能提高软件的可见性和覆盖范围。
+[前端测试](/zh-cn/wiki/front-end-testing/) 的好处包括：
 
-- **鼓励更好的编码实践**
-    ，从而带来更可维护和更健壮的软件。
-
-#### 可访问性测试的目标是什么？
-
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的目标是**确保**软件产品可供各种**能力和残障**的人**使用**。这包括验证产品是否**符合**无障碍标准**和**指南**，例如网络内容无障碍指南 (WCAG) 和第 508 条。通过这样做，它的目的是提供**包容性的用户体验**，让有视觉、听觉、身体、言语、认知、语言、学习和神经障碍等障碍的个人可以有效地**导航**、**互动**和**访问内容**。
-  [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 还力求**识别并消除可能阻止残疾人使用该产品的障碍**，确保所有用户都**平等地访问**信息和功能。它涉及**自动化工具**和**手动技术**的组合，以涵盖仅靠自动化可能无法捕获的各个方面。
-  最终的目标是**维护法律和道德标准**，**避免歧视**，并通过让更广泛的受众接触到产品来**扩大市场覆盖范围**。这不仅仅是合规性的问题；这是关于**拥抱多样性**和**提高用户满意度**。
-
-#### 可访问性测试如何使用户受益？
-
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 通过确保软件产品可供各种能力和残障人士使用来使用户受益。这种包容性允许**更广泛的受众**与应用程序、网站或工具有效地交互，无论他们的身体或认知挑战如何。通过适应屏幕阅读器、盲文终端和语音识别软件等**辅助技术**，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 有助于创建更**公平的用户体验**。
-  对于残障用户来说，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 可能意味着能够在线执行基本任务和面临重大障碍之间的区别。它实现了**独立导航**和交互，这对于个人自主和尊严至关重要。此外，它可以**减少用户的挫败感**并**提高用户的效率**，因为他们可以访问和使用功能和信息而不会受到不必要的阻碍。
-  除了直接的用户利益之外，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 还可以为所有用户带来**提高可用性**。许多辅助功能（例如清晰的导航和可读字体）增强了整体用户体验。通过关注可访问性，开发人员可以无意中为更广泛的用户群改进设计和功能，从而打造出更加**直观和用户友好的产品**。
-  最后，[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 可以帮助**避免因不遵守无障碍法律和法规而可能产生的法律后果**，确保该软件不仅具有包容性，而且符合法律规定。
-
-#### 不进行可访问性测试有什么影响？
-
-不执行 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 可能会产生重大影响：
-
-- **排除用户**：如果没有辅助功能测试，残障人士可能无法使用软件，从而有效地排除他们访问产品或服务。
-- **法律影响**：不遵守《美国残疾人法案》(ADA) 或第 508 条等法律标准可能会导致诉讼和经济处罚。
-- **品牌损害**：无法访问可能会损害公司的声誉，因为这表明缺乏对所有用户的考虑。
-- **市场覆盖范围缩小**：忽视无障碍测试会限制潜在的用户群，因为残疾人代表了一个重要的市场领域。
-- **用户体验差**：辅助功能问题可能会导致令人沮丧的用户体验，不仅对于残障用户，而且对于那些受到临时或情况限制的用户也是如此。
-- **成本增加**：在开发后期或发布后识别和修复可访问性问题通常比在常规测试周期中解决这些问题更昂贵。
-  总之，忽视[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 可能会产生道德、法律、财务和声誉后果，同时还会损害软件的整体质量和可用性。
-
-### 标准和指南
-
-#### 可访问性测试的关键标准和指南是什么？
-
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的主要标准和指南包括：
-
-- **网页内容无障碍指南 (WCAG)**：网页无障碍的主要国际标准，详细说明了如何使残障人士更容易访问网页内容。遵循最新版本（当前为 WCAG 2.1），并争取至少达到 AA 级合规性。
-- **可访问的富互联网应用程序 (ARIA)**：定义了一种使残障人士更容易访问 Web 内容和 Web 应用程序的方法。使用 ARIA 角色和属性来增强动态内容和复杂用户界面组件的可访问性。
-- **第 508 条**：美国联邦法律要求联邦政府开发、采购、维护或使用的所有电子和信息技术均可供残疾人使用。如果您的软件将由联邦机构或承包商使用，请确保您的软件符合这些标准。
-- **EN 301 549**：欧洲数字无障碍标准，规定了 ICT 产品和服务的要求，以确保残障人士更容易使用它们。
-- **ISO/IEC 40500**：与 WCAG 2.0 相同的国际标准，提供稳定、可参考的技术标准。
-  进行[辅助功能测试](/zh-cn/wiki/accessibility-testing/)时，请遵守以下准则：
-
-- **尽可能自动化**：使用自动化工具来捕获易于检测的问题，但请记住它们无法捕获所有内容。
-- **[手动测试](/zh-cn/wiki/manual-testing/)**：通过手动检查补充[自动化测试](/zh-cn/wiki/automated-testing/)，特别是对于易于导航和理解等主观标准。
-- **用户测试**：让真实的残疾用户参与测试，以获得有关可访问性的真实反馈。
-- **持续合规性**：将 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 集成到您的持续集成/持续部署 (CI/CD) 管道中，以确保持续合规性。
-- **保持更新**：随时了解可访问性标准和指南的更新，因为它们随着时间的推移而发展。
-- **网页内容无障碍指南 (WCAG)**：网页无障碍的主要国际标准，详细说明了如何使残障人士更容易访问网页内容。遵循最新版本（当前为 WCAG 2.1），并争取至少达到 AA 级合规性。
-- **可访问的富互联网应用程序 (ARIA)**：定义了一种使残障人士更容易访问 Web 内容和 Web 应用程序的方法。使用 ARIA 角色和属性来增强动态内容和复杂用户界面组件的可访问性。
-- **第 508 条**：美国联邦法律要求联邦政府开发、采购、维护或使用的所有电子和信息技术均可供残疾人使用。如果您的软件将由联邦机构或承包商使用，请确保您的软件符合这些标准。
-- **EN 301 549**：欧洲数字无障碍标准，规定了 ICT 产品和服务的要求，以确保残障人士更容易使用它们。
-- **ISO/IEC 40500**：与 WCAG 2.0 相同的国际标准，提供稳定、可参考的技术标准。
-- **尽可能自动化**：使用自动化工具来捕获易于检测的问题，但请记住它们无法捕获所有内容。
-- **[手动测试](/zh-cn/wiki/manual-testing/)**：通过手动检查补充[自动化测试](/zh-cn/wiki/automated-testing/)，特别是对于易于导航和理解等主观标准。
-- **用户测试**：让真实的残疾用户参与测试，以获得有关可访问性的真实反馈。
-- **持续合规性**：将 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 集成到您的持续集成/持续部署 (CI/CD) 管道中，以确保持续合规性。
-- **保持更新**：随时了解可访问性标准和指南的更新，因为它们随着时间的推移而发展。
-
-#### 什么是 WCAG？为什么它很重要？
-
-WCAG（即 **Web 内容可访问性指南**）是一组旨在使残障人士更容易访问 Web 内容的建议。它是通过 W3C 流程与世界各地的个人和组织合作开发的，旨在为 Web 内容可访问性提供单一共享标准，以满足国际上个人、组织和政府的需求。
-  WCAG 很重要，因为它作为网络可访问性的**全球基准**，确保每个人都可以使用网站、应用程序和数字工具，包括那些有听觉、认知、神经、身体、言语和视觉障碍的人。遵守 WCAG 有助于消除阻碍残疾人互动或访问网站的障碍。当网站被正确设计、开发和编辑时，所有用户都可以平等地访问信息和功能。
-  遵循 WCAG 指南不仅是**道德责任**和**包容性**的问题，也是许多司法管辖区的法律要求。不遵守规定可能会导致法律后果并损害组织的声誉。此外，遵守 WCAG 可以改善整体用户体验，并有可能增加受众范围，因为可访问的网站往往对 SEO 更友好，并且对所有用户（而不仅仅是残疾人）具有更好的可用性。
-
-#### WCAG 合规性有哪些不同级别？
-
-WCAG 合规性分为三个合规级别：
-
-- **A 级**：最基本的网络辅助功能。网站必须满足此级别，以免将残疾人群体排除在外。它包括为非文本内容提供文本替代品以及确保可以使用键盘进行导航等内容。
-- **AA 级**：解决残疾用户面临的最大和最常见的障碍。此级别引入了一些标准，例如为音频内容提供字幕并确保文本可读且易于理解。达到这一水平通常是许多组织和政府的法律要求。
-- **AAA 级**：WCAG 合规性的最高且最严格的级别。该级别包括更广泛的标准，以改善不同类型残疾人的无障碍环境。它包含所有 A 级和 AA 级要求，并增加了更多内容，例如为音频内容提供手语翻译并确保现场音频内容具有较低的背景噪音水平。然而，某些内容并不总是能够满足所有 AAA 级成功标准，因此这并不是完全合规的严格要求。
-  每个级别都建立在前一个级别的基础上，AAA 包括 AA 和 A 中的所有标准。在追求合规性时，请务必注意，AA 级通常是大多数网站的目标标准，因为它在提高可访问性和实际可实现性之间提供了平衡。
-
-#### 第 508 节是什么以及它与可访问性测试有何关系？
-
-第 508 条是 1973 年《康复法案》的一部分，该法案要求联邦机构向残疾人士提供电子和信息技术 (EIT)。在软件 [测试自动化](/zh-cn/wiki/test-automation/) 的背景下，第 508 条合规性意味着确保应用程序和网站可供患有一系列残疾的个人使用，包括视觉、听觉、身体、言语、认知、语言、学习和神经障碍。
-  为了遵守第 508 节，自动化测试应包括以下检查：
-
-- **键盘导航**：确保所有功能都可以通过键盘命令操作，无需鼠标。
-- **屏幕阅读器兼容性**：验证内容的结构是否适合屏幕阅读器可以正确解释和发音的方式。
-- **颜色对比度**：测试文本和背景之间是否有足够的对比度，以帮助有视觉障碍的用户。
-- **图像的替代文本**：检查所有图像是否都为无法看到图像的用户提供描述性替代文本。
-- **字幕和音频描述**：确保多媒体内容为有听力或视觉障碍的用户提供字幕和描述。
-  自动化工具可以帮助识别一些第 508 条合规性问题，但 [手动测试](/zh-cn/wiki/manual-testing/) 对于完全确保可访问性也是必要的。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师应将自动和手动可访问性检查集成到他们的测试策略中，以涵盖第 508 节中概述的广泛要求。这种集成有助于创建包容性的用户体验，并减轻与不合规相关的法律和声誉风险。
-
-#### ARIA 角色是什么以及它们如何在可访问性测试中使用？
-
-ARIA 角色是可访问的富互联网应用程序规范的一部分，该规范定义了使残障人士更容易访问 Web 内容和 Web 应用程序的方法。ARIA 角色提供有关功能、结构和行为的语义信息，允许辅助技术向用户传达适当的信息。
-  在 **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** 中，ARIA 角色用于：
-
-- **识别 UI 元素**
-    通过定义诸如屏幕阅读器之类的角色来使用辅助技术
-    `button`
-    ,
-    `dialog`
-    ,
-    `menu`
-    , 和
-    `progressbar`
-    。
-
-- **沟通状态**
-    具有以下角色的 UI 元素
-    `aria-expanded`
-    对于可折叠内容或
-    `aria-checked`
-    对于复选框。
-
-- **定义结构**
-    具有以下角色的网络内容
-    `navigation`
-    ,
-    `main`
-    ,
-    `complementary`
-    , 和
-    `contentinfo`
-    。
-  要测试 ARIA 角色：
-
-1. **验证正确实施**
-    使用自动化工具或手动检查来确定角色和属性。
-
-2. **确保角色匹配**
-    元素的功能（例如，
-    `role="button"`
-    对于可点击的元素）。
-
-3. **检查动态变化**
-    在 ARIA 状态和属性中与用户交互。
-
-4. **使用屏幕阅读器**
-    确认角色和状态已正确宣布。
-  具有 ARIA 角色的按钮示例：
-
-  ```
-  <button role="button" aria-pressed="false">Toggle</button>
-  ```
-在此示例中，`role="button"` 传达元素的功能，`aria-pressed` 指示切换状态。
-  **[测试自动化](/zh-cn/wiki/test-automation/) 工程师** 应将 ARIA 角色验证集成到他们的测试套件中，以确保 Web 应用程序可访问并为辅助技术提供必要的上下文。
-
-- **识别 UI 元素**
-    通过定义诸如屏幕阅读器之类的角色来使用辅助技术
-    `button`
-    ,
-    `dialog`
-    ,
-    `menu`
-    , 和
-    `progressbar`
-    。
-
-- **沟通状态**
-    具有以下角色的 UI 元素
-    `aria-expanded`
-    对于可折叠内容或
-    `aria-checked`
-    对于复选框。
-
-- **定义结构**
-    具有以下角色的网络内容
-    `navigation`
-    ,
-    `main`
-    ,
-    `complementary`
-    , 和
-    `contentinfo`
-    。
-
-1. **验证正确实施**
-    使用自动化工具或手动检查来确定角色和属性。
-
-2. **确保角色匹配**
-    元素的功能（例如，
-    `role="button"`
-    对于可点击的元素）。
-
-3. **检查动态变化**
-    在 ARIA 状态和属性中与用户交互。
-
-4. **使用屏幕阅读器**
-    确认角色和状态已正确宣布。
+- **增强的用户体验**：确保 UI/UX 按预期工作，为用户提供流畅的体验。
+- **提高可靠性**：尽早发现视觉和功能问题，减少生产中的错误。
+- **更快的反馈循环**：在开发过程中快速识别问题，促进快速修复。
+- **跨浏览器/设备兼容性**：验证应用程序是否可以跨不同环境运行，确保所有用户的可访问性。
+- **性能优化**：帮助查明性能瓶颈，从而实现更快的页面加载和更好的响应能力。
+- **代码[质量保证](/zh-cn/wiki/quality-assurance/)**：鼓励更好的编码实践并维护标准。
+- **重构信心**：在进行更改或添加新功能时防止回归。
+- **自动化[回归测试](/zh-cn/wiki/regression-testing/)** ：自动执行重复任务，从长远来看节省时间和资源。
+- **提高开发速度**：允许开发人员专注于新功能而不是解决问题。
+- **更好的协作**：提供对前端行为的清晰理解，有助于团队内部的沟通。
+- **SEO 优势**：通过确保前端代码遵循最佳实践来提高搜索引擎排名。
+- **辅助功能合规性**：检查应用程序是否符合辅助功能标准，避免法律后果并扩大市场范围。 通过将 [前端测试](/zh-cn/wiki/front-end-testing/) 集成到开发流程中，团队可以交付更高质量的应用程序，减少发布后问题，从而提高客户满意度和信任度。
 
 ### 工具和技术
 
-#### 可访问性测试常用哪些工具？
+#### 前端测试常用的工具有哪些？
 
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的常用工具包括：
+[前端测试](/zh-cn/wiki/front-end-testing/) 的常用工具包括：
 
-- **Axe**：一个可以集成到测试框架中的开源库。它可作为浏览器扩展和 CLI 工具使用。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源自动化工具。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，可实现快速、简单且可靠的测试。
+- **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium，通常用于自动化测试和抓取。
+- **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持多页面场景和浏览器上下文。
+- **Mocha**：一个功能丰富的 JavaScript 测试框架，在 Node.js 和浏览器中运行，使异步测试变得简单。
+- **[jasmine](/zh-cn/wiki/jasmine/)** ：行为驱动的开发框架，用于使用易于阅读的语法测试 JavaScript 代码。
+- **Karma**：适合我们所有测试需求的测试运行器，通常与 Angular 应用程序一起使用。
+- **Protractor**：用于 Angular 和 AngularJS 应用程序的端到端测试框架，构建在 WebDriverJS 之上。
+- **TestCafe** ：一个用于自动化端到端 Web 测试的 Node.js 工具，不需要 WebDriver。
+- **Nightwatch.js**：用于 Web 应用程序和网站的自动化测试框架，用 Node.js 编写并使用 W3C WebDriver API。
+- **WebDriverIO** ：Selenium 的 W3C WebDriver API 的自定义实现，旨在更加灵活和用户友好。 这些工具提供各种功能，可以根据项目的具体需求进行选择，例如[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)、并行执行或与持续集成管道集成。
 
-    ```
-    npm install axe-core --save-dev
-    ```
+#### 前端上下文中的单元测试和集成测试有什么区别？
 
-- **WAVE（Web 可访问性评估工具）**：一套评估工具，可帮助作者使其 Web 内容更易于访问。它包括浏览器扩展和在线服务。
-- **[lighthouse](/zh-cn/wiki/lighthouse/)** ：一种用于提高网页质量的开源自动化工具。它对性能、可访问性、渐进式 Web 应用程序等进行审核。
+[单元测试](/zh-cn/wiki/unit-testing/) 在前端上下文中涉及与系统其余部分隔离地测试应用程序的各个组件或模块。目标是确保每个单元作为独立实体正常运行。这通常涉及模拟依赖关系并使用 [Jest](/zh-cn/wiki/jest/) 等测试框架来验证组件的逻辑、渲染和行为。
 
-    ```
-    lighthouse https://example.com --only-categories=accessibility
-    ```
-
-- **JAWS（通过语音获取工作）**：适用于 Windows 的屏幕阅读器，允许视障用户通过文本转语音输出或盲文显示器阅读屏幕。
-- **NVDA（非可视化桌面访问）**：适用于 Windows 的免费开源屏幕阅读器。
-- **VoiceOver**：Apple Inc. 的 macOS 和 iOS 操作系统内置的屏幕阅读器。
-- **颜色对比度分析器**：颜色对比度分析器 (CCA) 等工具可帮助您确定文本的易读性和视觉元素的对比度。
-- **Tenon.io**：一个 API 优先的自动化可访问性测试工具，可以集成到开发管道中。
-- **Pa11y**：一种自动可访问性测试工具，可从命令行运行 HTML CodeSniffer 以进行编程可访问性报告。
-
-    ```
-    pa11y http://example.com
-    ```
-
-- **Accessibility Insights**：一种为可访问性测试提供指导和解决方案的工具，可作为浏览器扩展和 Windows 应用程序使用。
-  这些工具有助于自动检测辅助功能问题，然后解决这些问题，以确保软件产品可供各种残障人士使用。
-
-- **Axe**：一个可以集成到测试框架中的开源库。它可作为浏览器扩展和 CLI 工具使用。
-
-    ```
-    npm install axe-core --save-dev
-    ```
-
-- **WAVE（Web 可访问性评估工具）**：一套评估工具，可帮助作者使其 Web 内容更易于访问。它包括浏览器扩展和在线服务。
-- **[lighthouse](/zh-cn/wiki/lighthouse/)** ：一种用于提高网页质量的开源自动化工具。它对性能、可访问性、渐进式 Web 应用程序等进行审核。
-
-    ```
-    lighthouse https://example.com --only-categories=accessibility
-    ```
-
-    ```
-    pa11y http://example.com
-    ```
-
-- **Accessibility Insights**：一种为可访问性测试提供指导和解决方案的工具，可作为浏览器扩展和 Windows 应用程序使用。
-
-#### 可访问性测试有哪些手动技术？
-
-[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的手动技术涉及**用户模拟**、**辅助技术使用**和**清单**的组合，以确保软件可以由各种残疾人使用。以下是一些技巧：
-
-- **键盘导航**：仅使用键盘导航应用程序，以确保无需鼠标即可访问和使用所有交互元素。
-- **屏幕阅读器测试**：使用 NVDA 或 JAWS 等屏幕阅读器来像视障用户一样体验应用程序。检查元素、顺序和上下文的阅读是否正确。
-- **颜色对比度分析**：使用颜色对比度分析器等工具手动检查颜色组合，以确保色觉缺陷的用户获得足够的对比度。
-- **手动代码[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：查看 HTML/CSS 代码的语义结构、正确使用辅助技术所依赖的标题、标签和角色。
-- **缩放和放大**：在不同级别的缩放和放大倍率下测试应用程序，以确保内容保持可读性和功能性。
-- **内容可读性**：评估内容的可读性，确保语言清晰简单，这对有认知障碍的用户有利。
-- **焦点管理**：确保焦点顺序符合逻辑且可见，这对于通过键盘或辅助技术导航的用户至关重要。
-- **与残疾参与者进行用户测试**：让残疾用户参与测试过程，以获得有关应用程序可访问性的直接反馈。
-  这些手动方法通过涵盖需要人类判断和视角的方面来补充[自动化测试](/zh-cn/wiki/automated-testing/)，而自动化工具经常会忽略这些方面。
-
-#### 如何在可访问性测试中使用自动化工具？
-
-自动化工具通过快速扫描网页和应用程序以查找常见的可访问性问题来简化[辅助功能测试](/zh-cn/wiki/accessibility-testing/)。它们可以集成到 CI/CD 管道中，以确保**持续符合**可访问性标准。 **axe-core**、**WAVE** 或 **[lighthouse](/zh-cn/wiki/lighthouse/)** 等工具提供 [API](/zh-cn/wiki/api/) 以及用于与 [selenium](/zh-cn/wiki/selenium/)、[Jest](/zh-cn/wiki/jest/) 或 [Cypress](/zh-cn/wiki/cypress/) 等测试框架集成的插件。
-  使用自动化工具来：
-
-- **检测代码级问题**：识别缺少替代文本、ARIA 角色使用不当以及颜色对比度不足等问题。
-- **运行回归测试**：确保新代码不会引入可访问性回归。
-- **生成报告**：为技术和非技术利益相关者创建详细报告。
-- **优先修复**：突出显示对用户影响最大的关键问题。
-  将 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具与测试框架集成的示例：
-
-  ```
-  const axe = require('axe-core');
-  const { browser, by, element } = require('protractor');
-  describe('Accessibility checks', () => {
-    it('should analyze the page', async () => {
-      await browser.get('https://example.com');
-      const results = await axe.run();
-      expect(results.violations.length).toBe(0, 'Accessibility violations found');
-    });
+```
+  // Example of a unit test for a React component
+  import { render, screen } from '@testing-library/react';
+  import MyComponent from './MyComponent';
+  test('renders with correct text', () => {
+    render(<MyComponent />);
+    expect(screen.getByText('Hello World')).toBeInTheDocument();
   });
-  ```
-自动化工具并不能取代 [手动测试](/zh-cn/wiki/manual-testing/) 或对残疾人进行用户测试，但它们是识别和减轻可访问性障碍的**宝贵的第一步**。它们有助于维护可访问性基线并减少需要手动审核的问题数量。
+```
+另一方面，[集成测试](/zh-cn/wiki/integration-testing/) 侧重于多个单元或组件之间的交互，以验证它们是否按预期协同工作。在前端，这可能意味着测试父组件与其子组件之间的交互，或者确保 [API](/zh-cn/wiki/api/) 调用与显示数据的 UI 组件正确集成。
 
-#### 自动化可访问性测试工具有哪些限制？
+```
+  // Example of an integration test for a React component
+  import { render, fireEvent, waitFor } from '@testing-library/react';
+  import App from './App';
+  import { server, rest } from './testServer';
+  test('loads and displays greeting', async () => {
+    render(<App />);
+    fireEvent.click(screen.getByText('Load Greeting'));
+    await waitFor(() => screen.getByRole('heading'));
+    expect(screen.getByRole('heading')).toHaveTextContent('hello there');
+  });
+```
+虽然**单元测试**通常更快、更精细，但**集成测试**提供了对系统整体功能的信心，特别是模块连接和交互的部分。两者对于稳健的 [前端测试](/zh-cn/wiki/front-end-testing/) 策略都是必不可少的。
 
-自动化 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具有几个限制：
+#### 如何使用 Selenium 进行前端测试？
 
-- **[误报](/zh-cn/wiki/false-positive/)/Negatives**：工具可能会报告不是实际障碍的问题（误报）或错过真正的问题（误报）。
-- **上下文理解**：他们缺乏理解上下文和含义的能力，这对于某些可访问性检查至关重要。
-- **用户体验**：自动化工具无法全面评估用户体验，包括残疾用户的导航难易度和理解能力。
-- **动态内容**：他们经常会遇到因用户操作而变化的动态内容或复杂的 JavaScript 交互。
-- **视觉设计和可读性**：工具可能无法准确判断视觉设计元素，例如对比度和可读性，尤其是在图形内容中。
-- **键盘导航**：虽然某些工具可以模拟键盘导航，但它们可能无法有效识别仅使用键盘的用户遇到的所有问题。
-- **屏幕阅读器兼容性**：需要使用实际的屏幕阅读器进行测试，因为工具无法复制屏幕阅读器用户的体验。
-- **辅助技术差异**：辅助技术种类繁多，自动化工具无法测试与所有技术的兼容性。
-- **全面测试**：没有一个工具可以涵盖所有可访问性准则；彻底的测试通常需要多种工具和手动测试。
-  为了减轻这些限制，请将 [自动化测试](/zh-cn/wiki/automated-testing/) 与 **[手动测试](/zh-cn/wiki/manual-testing/)** 以及针对残障人士的 **用户测试** 结合起来。这种方法提供了对可达性的更准确和全面的评估。
+将[selenium](/zh-cn/wiki/selenium/) 用于[前端测试](/zh-cn/wiki/front-end-testing/) 涉及几个步骤：
 
-#### 如何测试不同类型的残疾？
+1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
+2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)**对象来控制浏览器。例如，对于 Chrome：
 
-针对不同类型的残疾的测试涉及模拟具有各种缺陷的个人的用户体验。这包括视觉、听觉、运动和认知障碍。以下是一些策略：
+```
+    WebDriver driver = new ChromeDriver();
+```
 
-- **视觉障碍**：使用 NVDA 或 JAWS 等屏幕阅读器来导航您的应用程序。确保所有内容均可读，并且无需视觉提示即可进行导航。使用不同的对比度设置和字体大小进行测试，以适应弱视用户的需求。
-- **听觉障碍**：验证所有音频内容是否都有替代文本，例如字幕或文字记录。测试应用程序在没有声音的情况下是否可用，并且没有仅通过音频传达重要信息。
-- **运动障碍**：仅使用 Tab 键、Enter、空格和箭头键测试键盘导航。确保所有交互元素均可通过键盘访问和操作。考虑无法使用鼠标或精细运动控制有限的用户的需求。
-- **认知障碍**：简化和构建内容以支持有认知障碍的用户。测试一致的导航和可预测的交互。使用清晰的语言并在适用的情况下提供延长时间限制的能力。
-  将**辅助技术**和**用户偏好**纳入您的测试环境中，以模拟不同的残疾场景。这包括语音控制软件、替代输入设备以及修改显示设置的浏览器扩展。
-  请记住，虽然自动化工具可以捕获许多可访问性问题，但它们无法检测残疾人用户体验的所有细微差别。 **[手动测试](/zh-cn/wiki/manual-testing/)** 与真实用户或可访问性专家一起进行综合评估至关重要。
+3. **导航到要使用 `get` 方法测试的网页**：
 
-### 实施和最佳实践
+```
+    driver.get("https://www.example.com");
+```
 
-#### 实施可访问性测试的最佳实践有哪些？
+4. **使用 `id`、`name`、`className`、`xpath` 或 `cssSelector` 等定位器来定位 Web 元素**。使用 `findElement` 或 `findElements` 方法：
 
-实施 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 的最佳实践包括：
+```
+    WebElement element = driver.findElement(By.id("element_id"));
+```
 
-- **尽早集成[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**
-    在开发过程中发现并解决问题的成本较低。
+5. **对元素执行操作**，例如单击按钮或在字段中输入文本：
 
-- **教育你的团队**
-    关于无障碍原则和包容性设计的重要性。
+```
+    element.click();
+    element.sendKeys("Test input");
+```
 
-- **创建清单**
-    基于 WCAG 指南，确保满足所有无障碍要求。
+6. **断言结果** 以验证应用程序的行为是否符合预期。可以对文本、元素状态或其他属性进行断言：
 
-- **使用自动化和[手动测试](/zh-cn/wiki/manual-testing/)的组合**
-    涵盖可访问性问题的广度和深度。
+```
+    assertEquals("Expected Text", element.getText());
+```
 
-- **自动化重复任务**
-    例如颜色对比检查和键盘导航，以节省时间和资源。
+7. **通过处理 cookie、向后或向前导航以及在必要时控制窗口或选项卡来管理浏览器会话**。
+8. **测试完成后关闭浏览器**以释放资源：
 
-- **进行用户测试**
-    与残障人士一起获得有关您产品的可访问性的真实反馈。
+```
+    driver.quit();
+```
+请记住使用 JUnit 或 TestNG 等测试框架构建测试，以便更好地管理和报告。通过将页面信息封装在 [测试脚本](/zh-cn/wiki/test-script/) 之外，实现可维护代码的 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)。使用显式等待来处理动态内容和异步操作。
 
-- **定期审查和更新您的可访问性测试**
-    跟上新的标准和技术。
+1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
+2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)** 对象来控制浏览器。例如，对于 Chrome：
 
-- **文档可访问性问题**
-    提供清晰的描述、屏幕截图或视频来帮助开发人员理解和解决问题。
+```
+    WebDriver driver = new ChromeDriver();
+```
 
-- **确定问题的优先顺序**
-    基于它们对用户的影响和修复的复杂性。
+3. **导航到要使用 `get` 方法测试的网页**：
 
-- **在完成的定义中包含[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**
-    确保功能在可访问之前才被视为完整。
+```
+    driver.get("https://www.example.com");
+```
 
-- **利用浏览器开发工具**
-    和可访问性插件，可快速识别开发过程中的问题。
+4. **使用 `id`、`name`、`className`、`xpath` 或 `cssSelector` 等定位器来定位 Web 元素**。使用 `findElement` 或 `findElements` 方法：
 
-- **及时了解法律要求**
-    和行业标准，以确保合规性并避免潜在的法律后果。
-  通过遵循这些实践，您可以创建更具包容性的产品并改善残障人士的整体用户体验。
+```
+    WebElement element = driver.findElement(By.id("element_id"));
+```
 
-- **尽早集成[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**
-    在开发过程中发现并解决问题的成本较低。
+5. **对元素执行操作**，例如单击按钮或在字段中输入文本：
 
-- **教育你的团队**
-    关于无障碍原则和包容性设计的重要性。
+```
+    element.click();
+    element.sendKeys("Test input");
+```
 
-- **创建清单**
-    基于 WCAG 指南，确保满足所有无障碍要求。
+6. **断言结果** 以验证应用程序的行为是否符合预期。可以对文本、元素状态或其他属性进行断言：
 
-- **结合使用自动化和[手动测试](/zh-cn/wiki/manual-testing/)**
-    涵盖可访问性问题的广度和深度。
+```
+    assertEquals("Expected Text", element.getText());
+```
 
-- **自动化重复任务**
-    例如颜色对比检查和键盘导航，以节省时间和资源。
+7. **通过处理 cookie、向后或向前导航以及在必要时控制窗口或选项卡来管理浏览器会话**。
+8. **测试完成后关闭浏览器**以释放资源：
 
-- **进行用户测试**
-    与残障人士一起获得有关您产品的可访问性的真实反馈。
+```
+    driver.quit();
+```
 
-- **定期审查和更新您的可访问性测试**
-    跟上新的标准和技术。
+#### Jest 在前端测试中的作用是什么？
 
-- **文档可访问性问题**
-    提供清晰的描述、屏幕截图或视频来帮助开发人员理解和解决问题。
+[Jest](/zh-cn/wiki/jest/) 是一个 **JavaScript 测试框架**，专注于简单性和对大型 Web 应用程序的支持。它适用于使用 React、Angular、Vue 和其他现代 JavaScript 框架和库的项目。 [Jest](/zh-cn/wiki/jest/) 通常用于前端上下文中的 **[单元测试](/zh-cn/wiki/unit-testing/)** 和 **[集成测试](/zh-cn/wiki/integration-testing/)**。
+  主要特点包括：
 
-- **确定问题的优先顺序**
-    基于它们对用户的影响和修复的复杂性。
+- **零配置**：Jest 的目标是开箱即用，只需最少的设置。
+- **快照测试**：此功能允许开发人员拍摄组件渲染输出的“快照”，以确保 UI 不会意外更改。
+- **隔离且快速**：测试并行运行，这加快了测试套件的执行速度。
+- **模拟支持**：Jest 提供了一组丰富的模拟函数，可以轻松消除依赖项。
+- **[代码覆盖率](/zh-cn/wiki/code-coverage/)** ：集成支持跟踪测试覆盖了多少代码。 以下是 [Jest](/zh-cn/wiki/jest/) 测试的基本示例：
 
-- **在完成的定义中包含[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**
-    确保功能在可访问之前才被视为完整。
+```
+  test('adds 1 + 2 to equal 3', () => {
+    expect(1 + 2).toBe(3);
+  });
+```
+在 [前端测试](/zh-cn/wiki/front-end-testing/) 上下文中，[Jest](/zh-cn/wiki/jest/) 对于**隔离组件**并测试其行为（无需浏览器环境）特别有用。与某些 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具相比，这使得测试更加可靠且不那么不稳定。 [Jest](/zh-cn/wiki/jest/) 的 **监视模式** 还可以通过自动运行与更改的文件相关的测试来帮助开发人员，这对 [测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD) 实践是一种推动。
+  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，[Jest](/zh-cn/wiki/jest/) 代表了一种工具，可以简化编写和维护测试的过程，确保前端代码随着应用程序的发展而按预期运行。
 
-- **利用浏览器开发工具**
-    和可访问性插件，可快速识别开发过程中的问题。
+#### 有效的前端测试有哪些技术？
 
-- **及时了解法律要求**
-    和行业标准，以确保合规性并避免潜在的法律后果。
+要执行有效的[前端测试](/zh-cn/wiki/front-end-testing/)，请考虑以下技术：
 
-#### 如何将可访问性测试纳入软件开发生命周期？
+- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：使用 Percy 或 BackstopJS 等工具捕获屏幕截图并将视觉元素与基线进行比较，以检测意外的更改。
+- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：实施 Cucumber 等框架以自然语言编写测试，确保所有利益相关者理解 [测试场景](/zh-cn/wiki/test-scenario/)。
+- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将页面详细信息抽象为类，通过将页面结构与测试逻辑分离，使测试更具可读性和可维护性。
+- **组件测试**：利用 Storybook 等工具以及测试库在受控环境中隔离和测试各个组件。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：利用[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等平台跨多个浏览器自动进行测试并确保行为一致。
+- **响应式测试**：使用 Galen 等工具验证不同屏幕尺寸上的布局，确保您的应用程序响应灵敏且可访问。
+- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：集成 axe-core 等工具来自动执行可访问性检查并确保符合 WCAG 等标准。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：合并[性能测试](/zh-cn/wiki/performance-testing/) 工具（如[灯塔](/zh-cn/wiki/lighthouse/)）来测量和优化前端性能指标。
+- **模拟和存根**：应用像 Sinon.js 这样的库来模拟[API](/zh-cn/wiki/api/)和存根函数，允许您在不依赖后端服务的情况下测试前端行为。
+- **持续集成 (CI)**：使用 Jenkins 或 GitHub Actions 等工具设置 CI 管道，在每次提交时自动运行测试，尽早发现问题。
+- **不稳定管理**：对[片状测试](/zh-cn/wiki/flaky-test/)实施重试并调查根本原因以维持[测试套件](/zh-cn/wiki/test-suite/)可靠性。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**：使用工厂或夹具生成[测试数据](/zh-cn/wiki/test-data/)，确保一致性并降低测试脆弱性。
+- **错误跟踪**：集成错误跟踪工具来监控并快速解决测试过程中出现的问题。 通过结合这些技术，您可以创建强大的 [前端测试](/zh-cn/wiki/front-end-testing/) 策略，确保高质量、可靠且用户友好的应用程序。
 
-将 [辅助功能测试](/zh-cn/wiki/accessibility-testing/) 纳入软件开发生命周期 (SDLC) 涉及将其集成到每个阶段，以确保从一开始和整个过程就考虑可访问性。
-  **在需求收集阶段**，根据 WCAG 和第 508 条等标准定义可访问性标准。指定所需的合规级别并包括满足残疾人需求的用户故事。
-  **在设计阶段**，使用线框和原型来评估可访问性考虑因素，例如颜色对比度和导航顺序。可以尽早使用色彩对比度分析仪等工具，以避免以后的设计返工。
-  **在开发阶段**，实现语义 HTML 和 ARIA 角色以增强可访问性。开发人员应使用自动化工具来运行初步检查并在编码时解决问题。例如：
+### 最佳实践
 
-  ```
-  // Example of an automated test using Axe-core
-  const { AxePuppeteer } = require('axe-puppeteer');
-  async function checkAccessibility(page) {
-    const results = await new AxePuppeteer(page).analyze();
-    console.log(results);
+#### 前端测试的最佳实践有哪些？
+
+为了确保有效[前端测试](/zh-cn/wiki/front-end-testing/)，请遵循以下最佳实践：
+
+- **优先测试**基于用户流和业务关键功能。重点关注最常用且影响最大的路径。
+
+- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有专用测试数据。这可以防止测试相互影响并确保一致性。
+
+- **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**为页面元素创建一个抽象层，这使得代码更易于维护和可读。
+
+- **实施[响应式设计](/zh-cn/wiki/responsive-design/)测试**验证应用程序是否正确适应不同的屏幕尺寸和方向。
+
+- **自动化回归测试**在代码更改后快速捕获现有功能中的新错误。
+
+- **写得清晰、描述性[测试用例](/zh-cn/wiki/test-case/)**和断言，以便更容易理解测试目的和失败。
+
+- **利用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)工具**自动检测功能测试可能无法发现的 UI 差异。
+
+- **纳入可访问性检查**进行测试，以确保残疾人可以使用该应用程序。
+
+- **模拟外部依赖项**例如 API 或数据库来隔离前端并独立测试。
+
+- **并行运行测试**减少执行时间并提供更快的反馈。
+
+- **保持测试独立**以避免级联故障并允许以任何顺序运行测试。
+
+- **持续审查和重构测试**消除片状现象并提高可靠性。
+
+- **将测试集成到 CI/CD 管道中**用于持续反馈和早期错误检测。 通过遵循这些实践，您将创建一个强大且可靠的 [前端测试](/zh-cn/wiki/front-end-testing/) 套件，支持高质量软件的交付。
+
+- **优先测试**基于用户流和业务关键功能。重点关注最常用且影响最大的路径。
+
+- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有专用测试数据。这可以防止测试相互影响并确保一致性。
+
+- **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**为页面元素创建一个抽象层，这使得代码更易于维护和可读。
+
+- **实施[响应式设计](/zh-cn/wiki/responsive-design/)测试**验证应用程序是否正确适应不同的屏幕尺寸和方向。
+
+- **自动化回归测试**在代码更改后快速捕获现有功能中的新错误。
+
+- **写得清晰、描述性[测试用例](/zh-cn/wiki/test-case/)**和断言，以便更容易理解测试目的和失败。
+
+- **利用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)工具**自动检测功能测试可能无法发现的 UI 差异。
+
+- **纳入可访问性检查**进行测试，以确保残疾人可以使用该应用程序。
+
+- **模拟外部依赖项**例如 API 或数据库来隔离前端并独立测试。
+
+- **并行运行测试**减少执行时间并提供更快的反馈。
+
+- **保持测试独立**以避免级联故障并允许以任何顺序运行测试。
+
+- **持续审查和重构测试**消除片状现象并提高可靠性。
+
+- **将测试集成到 CI/CD 管道中**用于持续反馈和早期错误检测。
+
+#### 如何确保前端测试的全面覆盖？
+
+为了确保 [前端测试](/zh-cn/wiki/front-end-testing/) 的全面覆盖，请遵循以下策略：
+
+- **定义明确的测试目标**基于需求和用户故事，专注于关键功能。
+
+- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**确定覆盖应用程序最关键和高风险区域的测试用例的优先级。
+
+- 实施 **[测试用例](/zh-cn/wiki/test-case/)设计技巧**例如边界值分析、等价划分和用于彻底输入验证的决策表测试。
+
+- 雇用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**像 Cucumber 这样的框架来创建反映用户行为和场景的测试。
+
+- 合并 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**自动检测 UI 差异和布局问题的工具。
+
+- 杠杆 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**识别代码库中未经测试的部分，并通过编写额外的测试来增加覆盖范围。
+
+- **跨多个浏览器和设备进行测试**使用 BrowserStack 或 Sauce Labs 等基于云的平台来确保兼容性和响应能力。
+
+- 利用 **[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具**确保应用程序可供残疾人使用，并遵守 WCAG 等标准。
+
+- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**验证前端在各种条件下的响应能力和速度。
+
+- **查看并更新[测试用例](/zh-cn/wiki/test-case/)**定期适应新功能、用户行为的变化以及不断变化的业务需求。
+
+- 培养一个 **品质文化**开发人员、设计人员和测试人员密切合作，在开发周期的早期发现并解决潜在问题。 通过将这些策略与强大的 [测试自动化](/zh-cn/wiki/test-automation/) 框架相结合，您可以实现符合应用程序质量目标和用户期望的全面覆盖。
+
+- **定义明确的测试目标**基于需求和用户故事，专注于关键功能。
+
+- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**确定覆盖应用程序最关键和高风险区域的测试用例的优先级。
+
+- 实施 **[测试用例](/zh-cn/wiki/test-case/)设计技巧**例如边界值分析、等价划分和用于彻底输入验证的决策表测试。
+
+- 雇用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**像 Cucumber 这样的框架来创建反映用户行为和场景的测试。
+
+- 合并 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**自动检测 UI 差异和布局问题的工具。
+
+- 杠杆 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**识别代码库中未经测试的部分，并通过编写额外的测试来增加覆盖范围。
+
+- **跨多个浏览器和设备进行测试**使用 BrowserStack 或 Sauce Labs 等基于云的平台来确保兼容性和响应能力。
+
+- 利用 **[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具**确保应用程序可供残疾人使用，并遵守 WCAG 等标准。
+
+- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**验证前端在各种条件下的响应能力和速度。
+
+- **审查和更新[测试用例](/zh-cn/wiki/test-case/)**定期适应新功能、用户行为的变化以及不断变化的业务需求。
+
+- 培养一个 **品质文化**开发人员、设计人员和测试人员密切合作，在开发周期的早期发现并解决潜在问题。
+
+#### 前端测试中需要避免哪些常见错误？
+
+为了避免 [前端测试](/zh-cn/wiki/front-end-testing/) 中的常见错误：
+
+- **不优先考虑测试**：首先关注关键路径和用户流程。忽视这一点可能会导致关键功能未经测试。
+- **过度依赖[手动测试](/zh-cn/wiki/manual-testing/)**：自动执行重复任务以节省时间并减少人为错误。
+- **忽略跨浏览器兼容性**：在多个浏览器和版本上进行测试，以确保一致的用户体验。
+- **忽略[响应式设计](/zh-cn/wiki/responsive-design/)** ：在各种屏幕尺寸和设备上进行测试以验证 UI 响应能力。
+- **忽略可访问性**：包括可访问性检查，以确保所有用户（包括残疾人）都可以使用该应用程序。
+- **跳过状态测试**：测试不同状态下的 UI 组件（例如，悬停、单击、禁用）以捕获与状态相关的错误。
+- **硬编码[测试数据](/zh-cn/wiki/test-data/)** ：使用动态数据生成以避免测试因数据更改而中断。
+- **不模拟外部服务** ：模拟 API 和服务以隔离前端并避免由于外部依赖而导致测试失败。
+- **忽略视觉回归**：实施视觉回归测试以检测意外的 UI 更改。
+- **未能清理**：确保每个测试都清理其状态，以防止干扰后续测试。
+- **测试中缺乏错误处理**：编写正确处理错误的测试以避免误报。
+- **不是版本控制测试代码** ：将测试代码视为生产代码；对其进行版本控制以实现更好的协作和历史记录跟踪。
+- **报告不充分**：实施详细报告以快速识别和解决问题。
+- **不审查测试失败**：定期审查和解决测试失败以维护测试套件的可靠性。 通过意识到这些陷阱，您可以创建更强大、更可靠的 [前端测试](/zh-cn/wiki/front-end-testing/) 策略。
+
+#### 如何让前端测试更加高效？
+
+为了提高[前端测试](/zh-cn/wiki/front-end-testing/)的效率：
+
+- **优先测试**：关注关键路径和用户旅程。使用基于风险的测试来确定哪些领域最关键且可能失败。
+- **实现 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：此设计模式通过将页面结构与测试脚本分离来提高可维护性，使 UI 更改时更容易更新。
+- $
+
+```
+类登录页面 {
+  构造函数（）{
+  this.usernameField = '#用户名';
+  this.passwordField = '#password';
+  this.submitButton = '#submit';
   }
-  ```
-**在测试阶段**，在 [测试用例](/zh-cn/wiki/test-case/) 中包含可访问性并执行自动和手动测试。自动化测试可以发现一系列问题，但 [手动测试](/zh-cn/wiki/manual-testing/) 对于从人类角度评估可用性至关重要。
-  **在部署阶段**，执行最终的可访问性审查和验证，以确保没有引入新问题。
-  **部署后**，与用户建立反馈循环，以发现可能遗漏的任何可访问性问题，并保持对用户需求的响应。定期更新您的[测试套件](/zh-cn/wiki/test-suite/) 和工具，以适应不断发展的标准和技术。
-  通过将可访问性嵌入到 SDLC 中，您可以确保持续考虑它，从而降低成本高昂的返工风险并确保产品更具包容性。
+  // 与页面交互的方法
+  }
 
-#### 如何确保持续的无障碍合规性？
+- **Use visual regression tools**: Tools like Percy or BackstopJS can automatically detect UI changes and regressions.
+- **Leverage headless browsers**: Running tests in headless mode (e.g., Headless Chrome) speeds up execution as it doesn't need to render UI.
+- **Parallelize tests**: Run tests concurrently across different environments to reduce execution time.
+- **Mock external dependencies**: Use tools like Sinon.js to stub or mock APIs, databases, or services to isolate the front-end and reduce test flakiness.
+- **Cache resources**: Reuse setup steps and data across tests where possible to minimize redundant operations.
+- **Optimize selectors**: Use efficient CSS or XPath selectors to reduce the time it takes to locate elements.
+- **Continuous Integration (CI)**: Integrate tests into a CI pipeline to detect issues early and reduce manual effort.
+- **Monitor performance**: Use tools like Lighthouse to ensure that performance benchmarks are met during testing.
+By applying these strategies, you can streamline front-end testing, making it more efficient and effective.
 
-为了确保软件 [测试自动化](/zh-cn/wiki/test-automation/) 中持续的可访问性合规性：
+- **优先测试**：关注关键路径和用户旅程。使用基于风险的测试来确定哪些领域最关键且可能失败。
+- **实现 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：此设计模式通过将页面结构与测试脚本分离来提高可维护性，使 UI 更改时更容易更新。
+- $
 
-- **集成可访问性检查**
-    进入您的常规测试套件。使用 Axe 或 Wave 等工具自动执行这些检查。
+```
 
-- **实施持续集成**
-    (CI) 流程，包括可访问性测试，确保它们在每次构建时都运行。
+#### 您如何处理不同浏览器和设备的测试？
 
-职位：
-  可访问性_测试：
-  运行：ubuntu-latest
-  步骤：
+要处理跨不同浏览器和设备的测试，请实施 **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** 和 **[响应式设计](/zh-cn/wiki/responsive-design/) 测试** 策略的组合：
 
-- 名称：运行可访问性检查
-  运行：npm 运行测试：可访问性
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
 
-- **Adopt a shift-left approach**, incorporating accessibility testing early in the development cycle to catch issues sooner.
-- **Update your test cases** regularly to cover new accessibility standards and guidelines as they evolve.
-- **Educate your team** on accessibility importance, encouraging developers to write accessible code from the start.
-- **Conduct periodic manual audits** to catch issues that automated tools might miss.
-- **Use real user metrics** (RUM) to monitor how actual users interact with your application, which can help identify accessibility barriers.
-- **Engage with users with disabilities** for feedback and incorporate their insights into your testing strategy.
-- **Stay informed** about legal requirements and industry best practices to ensure compliance with the latest standards.
-By embedding these practices into your development and testing workflows, you can maintain a high level of accessibility compliance over time.
+```
+    // Example using Selenium WebDriver to initiate a browser instance
+    WebDriver driver = new ChromeDriver();
+    driver.get("http://www.yourwebsite.com");
+    // Your test code here
+    driver.quit();
+```
 
-- **集成可访问性检查**
-    进入您的常规测试套件。使用 Axe 或 Wave 等工具自动执行这些检查。
+- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[Cypress](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
 
-- **实施持续集成**
-    (CI) 流程，包括可访问性测试，确保它们在每次构建时都运行。
+```
+    // Example of a media query in CSS
+    @media only screen and (max-width: 600px) {
+      body {
+        background-color: lightblue;
+      }
+    }
+```
 
-#### 需要注意哪些常见的可访问性问题？
+- **并行测试**：并行运行测试以节省时间。大多数现代[测试自动化](/zh-cn/wiki/test-automation/)框架都支持并行执行，这对于快速测试多个浏览器和设备至关重要。
+- **优先级**：并非所有浏览器和设备都是平等的。根据您的用户分析确定优先级，重点关注最常用的配置。
+- **持续集成 (CI)**：将您的测试集成到 CI 管道中，以确保它们定期运行，尽早且经常发现问题。 请记住保持您的[测试用例](/zh-cn/wiki/test-case/) **模块化**和**可重用**，以便轻松调整以适应不同的环境，并始终验证您的自动化工具是否与最新的浏览器和设备更新兼容。
 
-测试期间要查找的常见可访问性问题包括：
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等工具，它允许您编写可在多个浏览器上执行的[测试脚本](/zh-cn/wiki/test-script/)。利用 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 等基于云的平台来访问各种浏览器和操作系统组合，而无需维护大量物理机库存。
 
-- **替代文本**：缺失
-    `alt`
-    图像文本，这对于屏幕阅读器用户至关重要。
+```
+    // Example using Selenium WebDriver to initiate a browser instance
+    WebDriver driver = new ChromeDriver();
+    driver.get("http://www.yourwebsite.com");
+    // Your test code here
+    driver.quit();
+```
 
-- **键盘导航**：无法单独使用键盘导航网站，这会影响行动不便的用户。
-- **颜色对比度**：文本和背景之间的对比度不足，导致有视觉障碍的用户难以阅读内容。
-- **焦点指示器**：缺乏可见的焦点指示器，这对于依赖键盘导航的用户来说至关重要。
-- **表单标签**：屏幕阅读器用户难以解释的未标记表单。
-- **ARIA 误用**：ARIA 属性不正确或缺失，导致屏幕阅读器体验不佳。
-- **基于时间的媒体**：缺少音频和视频内容的字幕或文字记录。
-- **可调整大小的文本**：在不损失内容或功能的情况下无法调整或缩放的文本。
-- **语言识别**：缺少告知屏幕阅读器有关文本语言的语言属性。
-- **错误识别**：错误消息传递不足，无法指导用户纠正错误。
-- **一致的导航**：导航顺序或命名不一致，导致依赖模式的用户感到困惑。
-- **动态内容更新**：动态内容更新发生时缺乏屏幕阅读器的警报。
-  这些问题可以通过自动化工具和[手动测试](/zh-cn/wiki/manual-testing/)的组合来识别，以确保全面的可访问性评估。
+- **[响应式设计](/zh-cn/wiki/responsive-design/) 测试**：确保您的测试考虑到各种屏幕尺寸和分辨率。 **Galaxy**、**Selenide** 或 **[Cypress](/zh-cn/wiki/cypress/)** 等工具可以模拟不同的设备。此外，在测试中使用 CSS 媒体查询技术来模拟特定于设备的条件。
 
-- **替代文本**：缺失
-    `alt`
-    图像文本，这对于屏幕阅读器用户至关重要。
+```
+    // Example of a media query in CSS
+    @media only screen and (max-width: 600px) {
+      body {
+        background-color: lightblue;
+      }
+    }
+```
 
-#### 如何使网站更易于访问？
+### 高级概念
 
-为了增强网站的可访问性：
+#### 前端测试中的端到端测试是什么？
 
-- **使用语义 HTML**
-    构建内容，确保标题等元素（
-    `<h1>`
-    到
-    `<h6>`
-    ), 列出 (
-    `<ul>`
-    ,
-    `<ol>`
-    ) 和按钮 (
-    `<button>`
-    ）被正确使用。
+[前端测试](/zh-cn/wiki/front-end-testing/) 上下文中的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 是指对应用程序从开始到结束的集成工作流程进行验证。它模拟真实的用户场景，确保系统从用户界面到数据层和网络交互都按预期运行。此类测试涵盖整个应用程序环境，包括其与其他系统、[databases](/zh-cn/wiki/database/) 和服务的接口。
+  与专注于特定组件或交互的单元或集成测试不同，端到端测试与技术堆栈的所有其他部分一起评估前端。例如，在测试 Web 应用程序时，端到端测试将涉及浏览器中的用户操作、服务器上的数据处理以及流回前端的后续响应。
+  自动化工程师通常在前端场景中使用 [Cypress](/zh-cn/wiki/cypress/)、Protractor 或 Nightwatch.js 等工具来处理[端到端测试](/zh-cn/wiki/end-to-end-testing/)。这些工具允许创建自动化[测试脚本](/zh-cn/wiki/test-script/)，模仿用户与应用程序的交互，例如登录、浏览页面、填写表单和验证结果。
+  端到端测试对于识别在单元或[集成测试](/zh-cn/wiki/integration-testing/) 阶段可能不明显的系统范围问题至关重要。它们通常在小规模测试通过后执行，在软件发布到生产环境之前提供最终检查。
 
-- **提供替代文本**
-    （
-    `alt`
-    属性）用于非文本内容（例如图像）。
+#### 前端测试如何融入 DevOps 模型？
 
-- **确保足够的对比度**
-    文本和背景颜色之间。
+**DevOps 模型**中的 [前端测试](/zh-cn/wiki/front-end-testing/) 是实现持续集成 (CI) 和持续交付 (CD) 不可或缺的一部分。它确保自动测试每个代码提交，并提供有关更改影响的即时反馈。这符合 **自动化**、**协作**和**快速 [迭代](/zh-cn/wiki/iteration/)** 的 DevOps 原则。
+  在 DevOps 中，[前端测试](/zh-cn/wiki/front-end-testing/) 通常通过 **CI/CD 管道** 进行编排。自动 [测试套件](/zh-cn/wiki/test-suite/) 在代码提交或拉取请求时触发。Jenkins、GitLab CI 或 GitHub Actions 等工具配置为运行前端测试，包括单元测试、集成测试和端到端测试。
+  **[测试自动化](/zh-cn/wiki/test-automation/) 框架**（例如 [selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/)）已集成到这些管道中。他们在各种环境和浏览器中执行测试，确保应用程序在不同平台上的行为符合预期。
+  **容器化**技术（例如 Docker）可用于创建一致的测试环境，减少“它在我的机器上运行”综合症。在容器中运行的测试是隔离的且可重复的，这对于可靠的[前端测试](/zh-cn/wiki/front-end-testing/) 至关重要。
+  **基础设施即代码 (IaC)** 工具，例如 Terraform 或 AWS CloudFormation，可以按需配置测试环境，进一步提高 DevOps 中 [前端测试](/zh-cn/wiki/front-end-testing/) 的效率。
+  为了保持高速，通常采用**并行测试**，同时执行多个[测试场景](/zh-cn/wiki/test-scenario/)，从而减少反馈循环时间。
+  总之，[前端测试](/zh-cn/wiki/front-end-testing/) 通过自动化管道融入 DevOps 结构，确保在整个软件开发生命周期中保持质量和速度。
 
-- **通过键盘使用所有功能**
-    通过使用可聚焦元素并管理焦点顺序。
+#### 自动化在前端测试中的作用是什么？
 
-- **创建标签**
-    对于交互元素，使用
-    `<label>`
-    元素或
-    `aria-label`
-    和
-    `aria-labelledby`
-    。
+自动化在[前端测试](/zh-cn/wiki/front-end-testing/)中发挥着**关键作用**，通过启用重复和广泛的[测试用例](/zh-cn/wiki/test-case/)**执行来确保用户界面按预期工作。它显着**减少了手动工作量**，使测试工程师能够专注于更复杂的[测试场景](/zh-cn/wiki/test-scenario/) 和[探索性测试](/zh-cn/wiki/exploratory-testing/)。
+  自动化前端测试可以在**多个浏览器和设备上同时运行**，确保应用程序在各种条件下进行测试，无需人工干预。这对于验证**跨浏览器和跨设备兼容性**至关重要。
+  此外，自动化通过提供有关代码更改影响的快速反馈来支持**持续集成 (CI) 和持续交付 (CD)** 管道。每次提交都可以触发自动化测试，使团队能够在开发周期的早期检测并修复问题。
+  自动化还允许在前端实现**[非功能测试](/zh-cn/wiki/non-functional-testing/)**，例如性能和[负载测试](/zh-cn/wiki/load-testing/)，这对于手动执行来说是困难且耗时的。
+  此外，自动化测试可以设计为捕获测试会话的**屏幕截图或视频**，这对于调试和理解导致失败的操作顺序非常宝贵。
+  以下是使用 JavaScript 在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具中进行简单自动化测试的示例：
 
-- **避免或提供导致癫痫发作的内容的替代品**
-    ，如闪烁的灯光。
+```
+  const { Builder, By, Key, until } = require('selenium-webdriver');
+  (async function example() {
+      let driver = await new Builder().forBrowser('firefox').build();
+      try {
+          await driver.get('http://www.example.com');
+          await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
+          await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+      } finally {
+          await driver.quit();
+      }
+  })();
+```
+总之，自动化提高了[前端测试](/zh-cn/wiki/front-end-testing/)的效率、可靠性和覆盖范围，使其成为现代软件开发实践中不可或缺的一个方面。
 
-- **提供清晰一致的导航**
-    。
+#### 在前端测试中如何处理动态内容的测试？
 
-- **包括跳过导航链接**
-    允许用户绕过重复的内容。
+在[前端测试](/zh-cn/wiki/front-end-testing/) 中测试动态内容需要能够适应根据用户交互或异步更新而变化的内容的策略。以下是一些方法：
 
-- **确保表格可访问**
-    ，带有清晰的标签和错误消息。
+- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
 
-- **使用 ARIA 地标**
-    定义页面区域（
-    `<nav>`
-    ,
-    `<main>`
-    ,
-    `<aside>`
-    等）。
+```
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("dynamicElement")));
+```
 
-- **使用屏幕阅读器进行测试**
-    和其他辅助技术来识别问题。
+- **轮询**：在特定时间范围内重复检查元素的存在或状态。这可以使用捕获异常并重试的循环来完成，直到找到元素或达到超时。
+- **JavaScript 执行**：执行 JavaScript 以直接与 DOM 交互或检查动态内容是否已加载。
 
-- **提供控制或停止动画、视频和音频的选项**
-    。
+```
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    String content = (String) js.executeScript("return document.getElementById('dynamicContent').innerText;");
+```
 
-- **设计响应式布局**
-    适用于各种设备和屏幕尺寸。
+- **[API](/zh-cn/wiki/api/) 模拟**：模拟后端 [API](/zh-cn/wiki/api/) 响应来控制动态内容以获得一致的测试结果。
+- **视觉测试**：使用视觉测试工具来检测 UI 中的更改，这对于影响布局或样式的动态内容非常有用。
+- **自定义预期条件**：创建自定义预期条件，封装等待动态内容的复杂逻辑。
+- **事件侦听器**：在测试代码中附加事件侦听器，以等待指示动态内容已加载的特定事件。 请记住，保持测试对微小更改具有**弹性**，并**关注**动态内容的行为而不是实现细节。
 
-- **使用可访问的调色板**
-    并考虑色盲。
+- **等待命令**：使用显式等待命令来处理异步加载的元素。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具提供 `WebDriverWait` 和等待元素出现、可见或可单击的预期条件。
 
-- **提供字幕和文字记录**
-    用于音频和视频内容。
+```
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("dynamicElement")));
+```
 
-- **确保动态内容更新传达给辅助技术**
-    使用 ARIA 现场区域。
+- **轮询**：在特定时间范围内重复检查元素的存在或状态。这可以使用捕获异常并重试的循环来完成，直到找到元素或达到超时。
+- **JavaScript 执行**：执行 JavaScript 以直接与 DOM 交互或检查动态内容是否已加载。
 
-- **与真实用户进行测试**
-    残疾人士以获得有关您网站的可访问性的反馈。
-  请记住，可访问性是一项持续的承诺，应该集成到定期的开发和测试周期中。
+```
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    String content = (String) js.executeScript("return document.getElementById('dynamicContent').innerText;");
+```
 
-- **使用语义 HTML**
-    构建内容，确保标题等元素（
-    `<h1>`
-    到
-    `<h6>`
-    ), 列出 (
-    `<ul>`
-    ,
-    `<ol>`
-    ) 和按钮 (
-    `<button>`
-    ）被正确使用。
+#### A/B 测试在前端测试中的作用是什么？
 
-- **提供替代文本**
-    （
-    `alt`
-    属性）用于非文本内容（例如图像）。
-
-- **确保足够的对比度**
-    文本和背景颜色之间。
-
-- **通过键盘使用所有功能**
-    通过使用可聚焦元素并管理焦点顺序。
-
-- **创建标签**
-    对于交互元素，使用
-    `<label>`
-    元素或
-    `aria-label`
-    和
-    `aria-labelledby`
-    。
-
-- **避免或提供导致癫痫发作的内容的替代品**
-    ，如闪烁的灯光。
-
-- **提供清晰一致的导航**
-    。
-
-- **包括跳过导航链接**
-    允许用户绕过重复的内容。
-
-- **确保表格可访问**
-    ，带有清晰的标签和错误消息。
-
-- **使用 ARIA 地标**
-    定义页面区域（
-    `<nav>`
-    ,
-    `<main>`
-    ,
-    `<aside>`
-    等）。
-
-- **使用屏幕阅读器进行测试**
-    和其他辅助技术来识别问题。
-
-- **提供控制或停止动画、视频和音频的选项**
-    。
-
-- **设计响应式布局**
-    适用于各种设备和屏幕尺寸。
-
-- **使用可访问的调色板**
-    并考虑色盲。
-
-- **提供字幕和文字记录**
-    用于音频和视频内容。
-
-- **确保动态内容更新传达给辅助技术**
-    使用 ARIA 现场区域。
-
-- **与真实用户进行测试**
-    残疾人士以获得有关您网站的可访问性的反馈。
+[A/B testing](/zh-cn/wiki/A-B-Testing/) 也称为对比测试，是 [前端测试](/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
+  在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](/zh-cn/wiki/A-B-Testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](/zh-cn/wiki/bug/)。
+  在[A/B testing](/zh-cn/wiki/A-B-Testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
+  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](/zh-cn/wiki/A-B-Testing/) 的角色对于与 UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](/zh-cn/wiki/test-scenario/) 中测试的变化。

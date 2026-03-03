@@ -5,9 +5,10 @@ section: "P"
 related:
   - test-data
   - automated-testing
+  - test-case
   - manual-testing
   - test-suite
-  - test-case
+  - peer-testing
 order: 0
 ---
 
@@ -47,13 +48,13 @@ order: 0
 [参数化测试](/zh-cn/wiki/parameterized-testing/) 涉及使用不同的输入值执行相同的[测试用例](/zh-cn/wiki/test-case/)。该技术允许输入数据的外部化，只需定义一次即可使用多组数据运行测试。当被测试的逻辑应该在一系列输入中产生一致的结果时，它特别有用。
   在实践中，参数化测试通常被构造为单个测试方法，该方法从数据源提供不同的值。以下是使用 JUnit 5 的示例：
 
-  ```
+```
   @ParameterizedTest
   @ValueSource(strings = { "input1", "input2", "input3" })
   void testWithDifferentInputs(String input) {
       assertNotNull(input);
   }
-  ```
+```
 在此代码片段中，`testWithDifferentInputs` 方法将运行三次，每次使用不同的 `input` 值。
   为了传递数据，大多数框架都提供可用于指定参数来源的注释或函数，例如 JUnit 5 中的 `@ValueSource`、`@CsvSource`、`@MethodSource` 或 `@ArgumentsSource`。
   在实现参数化测试时，确保测试逻辑不与特定数据值绑定，并且尽管输入值是抽象的，但测试仍然清晰易懂，这一点至关重要。这通常涉及测试方法的仔细命名和 [测试数据](/zh-cn/wiki/test-data/) 的深思熟虑的组织。
@@ -66,13 +67,13 @@ order: 0
   此外，[参数化测试](/zh-cn/wiki/parameterized-testing/) 促进了**数据驱动的测试**策略，其中[测试数据](/zh-cn/wiki/test-data/) 可以源自外部文件或在运行时生成，从而更容易扩展[测试覆盖率](/zh-cn/wiki/test-coverage/)。它还有助于**隔离故障**，因为每个数据集都作为测试的单独实例运行，从而清楚地表明哪个特定输入导致了故障。
   为了实现[参数化测试](/zh-cn/wiki/parameterized-testing/)，大多数测试框架提供注释或函数来定义数据集并将它们链接到[测试用例](/zh-cn/wiki/test-case/)。例如，在 JUnit 5 中，您可以使用 `@ParameterizedTest` 以及 `@ValueSource`、`@CsvSource` 或 `@MethodSource` 来提供参数。
 
-  ```
+```
   @ParameterizedTest
   @ValueSource(strings = {"input1", "input2", "input3"})
   void testWithDifferentInputs(String input) {
       // Test logic here
   }
-  ```
+```
 处理故障时，重要的是要确保 [测试报告](/zh-cn/wiki/test-report/) 清楚地指示哪些参数导致测试失败，以便快速识别和解决问题。
 
 #### 使用参数化测试有什么好处？
@@ -85,8 +86,7 @@ order: 0
 - **覆盖率**：它们使您能够测试边缘情况和边界值，而无需编写额外的测试，从而提高覆盖率。
 - **调试**：当参数化测试失败时，通常更容易查明问题，因为您确切地知道哪个输入导致了问题。
 - **可重用性**：参数化测试可以重用于不同的测试场景，包括跨浏览器测试、本地化等。
-- **灵活性**：您可以轻松地将它们与其他测试技术（例如等价划分或组合测试）结合起来，以获得更全面的测试覆盖率。
-  通过利用参数化测试，您可以确保更强大、更可靠的测试套件，该套件可以适应软件不断变化的需求，而无需进行大量重写或手动干预。
+- **灵活性**：您可以轻松地将它们与其他测试技术（例如等价划分或组合测试）结合起来，以获得更全面的测试覆盖率。 通过利用参数化测试，您可以确保更强大、更可靠的测试套件，该套件可以适应软件不断变化的需求，而无需进行大量重写或手动干预。
 
 #### 参数化测试如何提高软件质量？
 
@@ -104,8 +104,7 @@ order: 0
 - **可重用性**：单个[测试用例](/zh-cn/wiki/test-case/)可以覆盖多种场景，减少编写重复测试代码的需要，使维护更容易。
 - **覆盖**：通过使用各种输入运行测试，您可以覆盖更多代码路径和边缘情况，从而对软件的行为进行更彻底的检查。
 - **灵活性**：添加新的[测试用例](/zh-cn/wiki/test-case/)通常只需要添加新的数据集，而不需要更改测试代码本身，从而更容易扩展覆盖范围。
-- **可扩展性**：参数化测试可以轻松地随着应用程序扩展，随着软件的发展适应新的参数和数据集。
-  通过使用测试框架提供的构造（例如注释或装饰器）来实现这些原则，以指示测试已参数化并指定数据集的来源。在测试中使用 [迭代](/zh-cn/wiki/iteration/) 或循环机制来循环提供的数据集，根据需要应用断言。始终确保每个数据集都明确定义并与[测试用例](/zh-cn/wiki/test-case/)相关，以保持测试的完整性和目的。
+- **可扩展性**：参数化测试可以轻松地随着应用程序扩展，随着软件的发展适应新的参数和数据集。 通过使用测试框架提供的构造（例如注释或装饰器）来实现这些原则，以指示测试已参数化并指定数据集的来源。在测试中使用 [迭代](/zh-cn/wiki/iteration/) 或循环机制来循环提供的数据集，根据需要应用断言。始终确保每个数据集都明确定义并与[测试用例](/zh-cn/wiki/test-case/)相关，以保持测试的完整性和目的。
 
 ### 执行
 
@@ -115,17 +114,17 @@ order: 0
   **JUnit（Java）：**
   JUnit 5 引入了 `@ParameterizedTest` 注释。使用`@ValueSource`、`@CsvSource`、`@CsvFileSource` 或`@MethodSource` 提供参数。
 
-  ```
+```
   @ParameterizedTest
   @ValueSource(strings = {"Hello", "World"})
   void testWithStringParameter(String argument) {
       assertNotNull(argument);
   }
-  ```
+```
 **测试NG（Java）：**
   对于更复杂的场景，TestNG 使用 `@Parameters` 注释或 `@DataProvider` 方法。
 
-  ```
+```
   @Test(dataProvider = "dataMethod")
   public void testWithDataProvider(String data) {
       assertNotNull(data);
@@ -134,20 +133,20 @@ order: 0
   public Object[][] dataMethod() {
       return new Object[][] {{"data1"}, {"data2"}};
   }
-  ```
+```
 **Pytest（Python）：**
   Pytest 允许使用 `@pytest.mark.parametrize` 装饰器进行参数化。
 
-  ```
+```
   import pytest
   @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6)])
   def test_eval(test_input, expected):
       assert eval(test_input) == expected
-  ```
+```
 **RSpec（红宝石）：**
   RSpec 使用 `it` 块，并将不同的参数传递到示例中。
 
-  ```
+```
   describe "An example of parameterized testing" do
     [1, 2, 3].each do |value|
       it "should be the number #{value}" do
@@ -155,18 +154,18 @@ order: 0
       end
     end
   end
-  ```
+```
 **[NUnit](/zh-cn/wiki/nunit/) (C#):**
   [NUnit](/zh-cn/wiki/nunit/) 提供`TestCase` 属性来定义内联参数，并提供`TestCaseSource` 来定义外部数据源。
 
-  ```
+```
   [Test]
   [TestCase(12)]
   [TestCase(42)]
   public void TestMethod(int number) {
       Assert.That(number, Is.Positive);
   }
-  ```
+```
 每个框架都有自己的方法，但核心概念仍然存在：将测试逻辑与数据分离，以使用不同的输入运行相同的测试。
 
 #### 创建参数化测试的步骤是什么？
@@ -176,52 +175,51 @@ order: 0
 1. **识别需要多组数据输入的[测试用例](/zh-cn/wiki/test-case/)**。
 2. **定义测试方法**签名以接受参数。例如，在 JUnit 5 中：
 
-    ```
+```
     @ParameterizedTest
     @MethodSource("dataProvider")
     void testWithMultipleParameters(String input, int expected) {
         // test code
     }
-    ```
+```
 
 3. **提供参数的数据源**。这可以是方法、CSV 文件或外部源。对于 JUnit 5 中的方法源：
 
-    ```
+```
     static Stream<Arguments> dataProvider() {
         return Stream.of(
             Arguments.of("input1", 1),
             Arguments.of("input2", 2)
         );
     }
-    ```
+```
 
 4. **在测试方法中编写测试逻辑**，利用参数来断言预期结果。
 5. **运行测试**以确保它迭代提供的数据集。
 6. **重构和清理**测试以确保可读性和[可维护性](/zh-cn/wiki/maintainability/)。
-7. **审查每组参数的测试结果**，确保故障与导致故障的特定数据集明确相关。
-  请记住**验证数据源**的正确性和与[测试用例](/zh-cn/wiki/test-case/)的相关性，并在测试中优雅地**处理异常**以避免[假阴性](/zh-cn/wiki/false-negative/)。尽可能为[测试用例](/zh-cn/wiki/test-case/) 使用**描述性名称**，以提高[测试报告](/zh-cn/wiki/test-report/) 中的清晰度。
+7. **审查每组参数的测试结果**，确保故障与导致故障的特定数据集明确相关。 请记住**验证数据源**的正确性和与[测试用例](/zh-cn/wiki/test-case/)的相关性，并在测试中优雅地**处理异常**以避免[假阴性](/zh-cn/wiki/false-negative/)。尽可能为[测试用例](/zh-cn/wiki/test-case/) 使用**描述性名称**，以提高[测试报告](/zh-cn/wiki/test-report/) 中的清晰度。
 
 1. **识别需要多组数据输入的[测试用例](/zh-cn/wiki/test-case/)**。
 2. **定义测试方法**签名以接受参数。例如，在 JUnit 5 中：
 
-    ```
+```
     @ParameterizedTest
     @MethodSource("dataProvider")
     void testWithMultipleParameters(String input, int expected) {
         // test code
     }
-    ```
+```
 
 3. **提供参数的数据源**。这可以是方法、CSV 文件或外部源。对于 JUnit 5 中的方法源：
 
-    ```
+```
     static Stream<Arguments> dataProvider() {
         return Stream.of(
             Arguments.of("input1", 1),
             Arguments.of("input2", 2)
         );
     }
-    ```
+```
 
 #### 如何将不同的数据集传递给参数化测试？
 
@@ -229,18 +227,18 @@ order: 0
 
 - **外部数据源**：从 CSV 文件、JSON 文件或数据库等外部源加载测试数据。使用库或内置支持来读取数据并将其传递给您的测试。
 
-  ```
+```
   // Example in pseudocode for CSV data source
   @ParameterizedTest
   @CsvFileSource(resources = "/testdata.csv")
   void testWithCsvFileSource(String firstParam, int secondParam) {
       // test code here
   }
-  ```
+```
 
 - **代码内数据提供程序**：使用提供数据数组或集合的注释或方法直接在测试代码中定义数据。
 
-  ```
+```
   // Example in pseudocode for in-code data provider
   @ParameterizedTest
   @MethodSource("dataProviderMethod")
@@ -253,29 +251,29 @@ order: 0
           Arguments.of("data2", 2)
       );
   }
-  ```
+```
 
 - **枚举**：使用枚举定义一组表示测试数据的常量。
 
-  ```
+```
   // Example in pseudocode for enum data source
   @ParameterizedTest
   @EnumSource(MyEnum.class)
   void testWithEnumSource(MyEnum myEnum) {
       // test code here
   }
-  ```
+```
 
 - **自定义注释**：创建封装数据配置逻辑的自定义注释，使您的测试更清晰、更具表现力。
 
-  ```
+```
   // Example in pseudocode for custom annotation
   @ParameterizedTest
   @CustomDataSource
   void testWithCustomSource(String firstParam, int secondParam) {
       // test code here
   }
-  ```
+```
 请记住在测试中使用数据之前**验证**数据，以确保其符合预期的格式和类型。另外，考虑将通用数据配置代码重构为共享方法或类，以提高可重用性和[可维护性](/zh-cn/wiki/maintainability/)。
 
 - **外部数据源**：从 CSV 文件、JSON 文件或数据库等外部源加载测试数据。使用库或内置支持来读取数据并将其传递给您的测试。
@@ -296,8 +294,7 @@ order: 0
 - **缺乏数据验证**：验证输入数据以确保其在预期的范围和格式内。
 - **忘记清理**：在测试执行后始终清理任何状态或数据，以防止对后续测试产生副作用。
 - **报告不充分**：自定义测试报告以清楚地显示哪些参数导致测试失败。
-- **未有效使用数据类型**：确保参数化测试中使用的数据类型适合测试场景。
-  通过避开这些陷阱，您将提高参数化测试的有效性和[可维护性](/zh-cn/wiki/maintainability/)。
+- **未有效使用数据类型**：确保参数化测试中使用的数据类型适合测试场景。 通过避开这些陷阱，您将提高参数化测试的有效性和[可维护性](/zh-cn/wiki/maintainability/)。
 
 - **过于复杂化[测试用例](/zh-cn/wiki/test-case/)** ：保持测试集中且简单。复杂的测试可能难以调试和维护。
 - **忽略命名约定**：使用测试用例的描述性名称来传达目的和预期结果。
@@ -317,16 +314,15 @@ order: 0
 
 1. 确定被测输入字段的边界值。这些通常包括上限和下限、边界内部和边界外部。
 2. 创建一个接受 [测试用例](/zh-cn/wiki/test-case/) 输入的参数化测试方法。
-3. 使用测试框架的数据提供程序机制将边界值作为参数提供给测试方法。
-  例如，在 JUnit 等基于 Java 的框架中，您可以使用 `@ParameterizedTest` 注释以及 `@ValueSource`、`@CsvSource` 或 `@MethodSource` 来提供边界值：
+3. 使用测试框架的数据提供程序机制将边界值作为参数提供给测试方法。 例如，在 JUnit 等基于 Java 的框架中，您可以使用 `@ParameterizedTest` 注释以及 `@ValueSource`、`@CsvSource` 或 `@MethodSource` 来提供边界值：
 
-  ```
+```
   @ParameterizedTest
   @ValueSource(ints = {Integer.MIN_VALUE, -1, 0, 1, Integer.MAX_VALUE})
   void testBoundaryValues(int input) {
       // Test logic here
   }
-  ```
+```
 这种方法确保以隔离且可重复的方式测试每个边界值。它还简化了向 [测试套件](/zh-cn/wiki/test-suite/) 添加新边界值的过程，因为您只需要更新数据提供程序。通过利用 BVA 参数化测试，您可以系统地验证软件在边缘情况下的行为，这对于发现潜在缺陷至关重要。
 
 1. 确定被测输入字段的边界值。这些通常包括上限和下限、边界内部和边界外部。
@@ -352,7 +348,7 @@ order: 0
 - **审查和重构**：定期审查参数化测试，以细化和优化测试数据和场景。
 - **记录 [测试数据](/zh-cn/wiki/test-data/) 源**：如果使用外部数据源，请记录其位置以及如何更新它们。
 
-  ```
+```
   // Example of a well-named parameterized test in TypeScript
   describe('Login functionality', () => {
     test.each([
@@ -363,7 +359,7 @@ order: 0
       expect(result).toBe(expected);
     });
   });
-  ```
+```
 
 #### 如何确保参数化测试可维护且可读？
 
@@ -377,10 +373,9 @@ order: 0
 - **文档数据选择**：评论为什么选择某些数据值，特别是对于边界或边缘情况，为未来的维护者提供上下文。
 - **优雅地处理异常**：当测试失败时，确保错误消息包含有关导致失败的参数值的详细信息。
 - **定期重构**：定期审查和重构测试以提高清晰度并减少重复。
-- **版本控制[测试数据](/zh-cn/wiki/test-data/)**：如果使用外部数据源，请将其置于版本控制之下以跟踪更改并保持与测试代码的同步。
-  以下是使用 [Jest](/zh-cn/wiki/jest/) 在 TypeScript 中进行结构良好的参数化测试的示例：
+- **版本控制[测试数据](/zh-cn/wiki/test-data/)**：如果使用外部数据源，请将其置于版本控制之下以跟踪更改并保持与测试代码的同步。 以下是使用 [Jest](/zh-cn/wiki/jest/) 在 TypeScript 中进行结构良好的参数化测试的示例：
 
-  ```
+```
   describe.each([
     { input: 1, expected: 'One' },
     { input: 2, expected: 'Two' },
@@ -390,7 +385,7 @@ order: 0
       expect(convertNumberToWord(input)).toBe(expected);
     });
   });
-  ```
+```
 该测试清晰、简洁，每个案例都是不言自明的，提高了[可维护性](/zh-cn/wiki/maintainability/) 和可读性。
 
 #### 如何管理参数化测试的大量测试数据？
@@ -399,7 +394,7 @@ order: 0
 
 - **外部数据源**：将测试数据存储在外部源中，例如 CSV 文件、JSON 文件、数据库或 Excel 电子表格。使用库或内置功能在测试执行期间读取数据。
 
-  ```
+```
   import csv
   import pytest
   def load_test_data(file_name):
@@ -409,11 +404,11 @@ order: 0
   @pytest.mark.parametrize("test_input,expected", load_test_data('test_data.csv'))
   def test_example(test_input, expected):
       assert function_to_test(test_input) == expected
-  ```
+```
 
 - **数据生成库**：利用 Faker 等库动态生成真实的测试数据。
 
-  ```
+```
   from faker import Faker
   fake = Faker()
   def generate_test_data(num):
@@ -421,15 +416,14 @@ order: 0
   @pytest.mark.parametrize("name,email", generate_test_data(100))
   def test_user_creation(name, email):
       assert create_user(name, email).is_successful()
-  ```
+```
 
 - **[测试数据](/zh-cn/wiki/test-data/) 管理工具**：考虑使用专门的[测试数据](/zh-cn/wiki/test-data/) 管理工具来帮助创建、管理和配置大型数据集。
 - **版本控制**：将[测试数据](/zh-cn/wiki/test-data/)置于版本控制之下，以跟踪更改并保持不同环境之间的一致性。
 - **数据清理**：实施清理机制以删除数据或将数据恢复到 [测试执行](/zh-cn/wiki/test-execution/) 后的原始状态，以确保测试独立性。
 - **延迟加载**：为了提高性能，延迟加载数据，尤其是在处理 [数据库](/zh-cn/wiki/database/) 或网络资源时。
 - **数据缓存**：缓存计算或加载成本高昂的数据，并在适用时在测试中重复使用它。
-- **模块化代码**：编写模块化代码来处理数据[环境搭建](/zh-cn/wiki/setup/)和检索，使其可重用且更易于管理。
-  通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地管理大型数据集，确保参数化测试既可扩展又可维护。
+- **模块化代码**：编写模块化代码来处理数据[环境搭建](/zh-cn/wiki/setup/)和检索，使其可重用且更易于管理。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地管理大型数据集，确保参数化测试既可扩展又可维护。
 
 - **外部数据源**：将测试数据存储在外部源中，例如 CSV 文件、JSON 文件、数据库或 Excel 电子表格。使用库或内置功能在测试执行期间读取数据。
 - **数据生成库**：利用 Faker 等库动态生成真实的测试数据。
@@ -451,8 +445,7 @@ order: 0
 - **数据驱动技术**：利用 CSV 文件、[数据库](/zh-cn/wiki/database/) 或 [API](/zh-cn/wiki/api/) 等外部数据源将各种 [测试数据](/zh-cn/wiki/test-data/) 动态输入到您的测试中。
 - **随机测试**：在定义的输入域内生成随机数据集以发现意外问题。这对于压力和[负载测试](/zh-cn/wiki/load-testing/)特别有用。
 - **用户行为模式**：分析生产日志或用户分析，以确定在测试中复制的常见或关键使用模式。
-- **回归工件**：合并来自之前[bug](/zh-cn/wiki/bug/) 报告或已知问题的数据，以验证修复是否适用于一系列输入。
-  请记住平衡 [测试数据](/zh-cn/wiki/test-data/) 的全面性与执行时间和资源。有效选择[测试数据](/zh-cn/wiki/test-data/)可以产生健壮且可维护的[测试套件](/zh-cn/wiki/test-suite/)。
+- **回归工件**：合并来自之前[bug](/zh-cn/wiki/bug/) 报告或已知问题的数据，以验证修复是否适用于一系列输入。 请记住平衡 [测试数据](/zh-cn/wiki/test-data/) 的全面性与执行时间和资源。有效选择[测试数据](/zh-cn/wiki/test-data/)可以产生健壮且可维护的[测试套件](/zh-cn/wiki/test-suite/)。
 
 #### 如何处理参数化测试中的失败？
 
@@ -465,10 +458,9 @@ order: 0
 - **独立测试**：将每个测试设计为独立运行，确保一个测试的失败不会影响其他测试。
 - **分析[测试报告](/zh-cn/wiki/test-report/)** ：使用测试报告来分析故障模式，这些模式可能表明测试设置或应用程序存在更深层次的问题。
 - **重试机制**：为不稳定的测试实现重试逻辑，但请谨慎使用以避免掩盖真正的问题。
-- **参数化测试挂钩**：利用测试框架提供的挂钩在参数化测试之前或之后执行操作，例如清理或设置，这可以帮助防止由于测试环境设置不当而导致的失败。
-  以下是使用 try-catch 块处理参数化测试中的异常的示例：
+- **参数化测试挂钩**：利用测试框架提供的挂钩在参数化测试之前或之后执行操作，例如清理或设置，这可以帮助防止由于测试环境设置不当而导致的失败。 以下是使用 try-catch 块处理参数化测试中的异常的示例：
 
-  ```
+```
   it('should handle different input values', (input, expected) => {
     try {
       const result = myFunction(input);
@@ -478,7 +470,7 @@ order: 0
       throw error; // Rethrow to ensure the test is marked as failed
     }
   });
-  ```
+```
 通过实施这些策略，您可以确保有效处理参数化测试中的失败，从而实现高效调试和持续测试。
 
 - **明智地使用断言**：断言应该是特定的，以避免级联故障，其中一个故障会阻止后续断言的运行。

@@ -26,6 +26,10 @@
     "wiki:style:check": "node scripts/wiki-markdown-style-check.mjs",
     "wiki:style:check:strict": "node scripts/wiki-markdown-style-check.mjs --strict",
     "wiki:style:fix": "node scripts/wiki-markdown-style-fix.mjs",
+    "wiki:integrity:check": "node scripts/wiki-aiwiki-integrity-check.mjs",
+    "wiki:integrity:check:strict": "node scripts/wiki-aiwiki-integrity-check.mjs --strict",
+    "seo:check": "node scripts/seo-static-check.mjs",
+    "seo:check:strict": "node scripts/seo-static-check.mjs --strict",
     "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {

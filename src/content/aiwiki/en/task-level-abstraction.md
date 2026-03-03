@@ -3,7 +3,7 @@ title: "Task-level Abstraction"
 titleZh: "任务级抽象"
 slug: "task-level-abstraction"
 lang: "en"
-summary: "Deconstructing complex engineering problems into minimal Task Units with independent goals, explicit constraints, and verifiable standards to achieve efficient human-AI collaboration."
+summary: "Deconstructing complex engineering problems into minimal Task Units with independent goals, explicit constraints…"
 topic: "ai-vibe-coding"
 aliases:
   - "Task-level Abstraction"

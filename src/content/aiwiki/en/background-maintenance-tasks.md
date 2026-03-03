@@ -3,7 +3,7 @@ title: "Background Maintenance Tasks"
 titleZh: "后台维护任务"
 slug: "background-maintenance-tasks"
 lang: "en"
-summary: "Long-term, low-interference tasks executed automatically by background agents to maintain codebase health and engineering consistency, such as cleanup, synchronization, and indexing."
+summary: "Long-term, low-interference tasks executed automatically by background agents to maintain codebase health and engineering consistency, such as cleanup…"
 topic: "ai-vibe-coding"
 aliases:
   - "Background Maintenance Tasks"

@@ -5,9 +5,10 @@ section: "T"
 related:
   - manual-testing
   - automated-testing
+  - test-case
   - test-case-management
   - test-suite
-  - test-case
+  - test-oracles
 order: 0
 ---
 
@@ -51,7 +52,7 @@ order: 0
   分析[测试日志](/zh-cn/wiki/test-log/) 涉及检查条目以识别模式，例如特定区域中的频繁故障，这可以表明潜在的系统问题。它还用于验证是否已执行所有必需的测试。
   在团队设置中，[测试日志](/zh-cn/wiki/test-log/) 是一种沟通工具，可以清晰地记录测试内容、测试时间以及测试结果，从而促进协作和决策。
 
-  ```
+```
   // Example of a Test Log entry in a hypothetical automation framework
   {
     timestamp: '2023-04-01T10:00:00Z',
@@ -61,7 +62,7 @@ order: 0
     tester: 'AutomatedSystem',
     notes: 'All assertions passed. No manual intervention required.'
   }
-  ```
+```
 
 #### 为什么测试日志在软件测试中很重要？
 
@@ -85,15 +86,13 @@ order: 0
 - **通过/失败状态**：根据预期结果与实际结果的比较指示测试用例是否通过或失败。
 - **测试者姓名或 ID**：执行测试的个人。
 - **缺陷/[bugs](/zh-cn/wiki/bug/) 已识别** ：对测试期间发现的任何问题的引用，通常与缺陷跟踪系统相关联。
-- **注释**：测试人员所做的附加注释或观察。
-  日志还可能包括：
+- **注释**：测试人员所做的附加注释或观察。 日志还可能包括：
 
 - **屏幕截图或视频**：测试执行的视觉证据。
 - **来自 [测试工具](/zh-cn/wiki/test-tool/)** 的日志：来自自动化测试工具或脚本的输出。
 - **[严重性](/zh-cn/wiki/severity/) 和 [priority](/zh-cn/wiki/priority/) 问题**：已识别缺陷的分类。
 - **重现步骤**：重现发现的任何问题的详细说明。
-- **解决状态**：有关缺陷是否已修复、正在等待重新测试或已推迟的信息。
-  [测试日志](/zh-cn/wiki/test-log/) 通常会在每次 [测试执行](/zh-cn/wiki/test-execution/)** 之后进行更新，以确保测试文档的准确性和完整性。
+- **解决状态**：有关缺陷是否已修复、正在等待重新测试或已推迟的信息。 [测试日志](/zh-cn/wiki/test-log/) 通常会在每次 [测试执行](/zh-cn/wiki/test-execution/)** 之后进行更新，以确保测试文档的准确性和完整性。
 
 - **[测试用例](/zh-cn/wiki/test-case/) 标识符**：执行的每个测试用例的唯一 ID。
 - **测试描述**：测试用例正在验证的内容的简要描述。
@@ -139,17 +138,16 @@ order: 0
 4. **执行测试**：运行自动化测试。该框架将根据发生的事件和脚本中的日志语句生成日志条目。
 5. **收集日志**：日志通常写入文件系统 [数据库](/zh-cn/wiki/database/) 上的文件，或转发到日志记录服务器。确保可以访问输出目标以进行分析。
 6. **格式化日志**：（可选）格式化日志以提高可读性或符合标准。这可能涉及时间戳格式、条目排序或突出显示错误。
-7. **查看和存档**：[测试执行](/zh-cn/wiki/test-execution/) 之后，查看日志以获取即时见解，然后将其存档以供将来参考或合规性目的。
-  [测试脚本](/zh-cn/wiki/test-script/) 中使用 JavaScript 和 `winston` 日志记录库的日志记录语句示例：
+7. **查看和存档**：[测试执行](/zh-cn/wiki/test-execution/) 之后，查看日志以获取即时见解，然后将其存档以供将来参考或合规性目的。 [测试脚本](/zh-cn/wiki/test-script/) 中使用 JavaScript 和 `winston` 日志记录库的日志记录语句示例：
 
-  ```
+```
   const logger = require('winston');
   logger.info('Test case XYZ started');
   // Test steps...
   logger.error('An error occurred on step 3');
   // More test steps...
   logger.info('Test case XYZ completed');
-  ```
+```
 确保日志记录机制可靠，并且不会引入可能影响测试性能的开销。
 
 1. **配置测试框架**：确保您的 [测试自动化](/zh-cn/wiki/test-automation/) 框架已设置为记录事件。大多数框架都有内置的日志记录功能，可以配置这些功能来捕获不同级别的详细信息。
@@ -171,18 +169,16 @@ order: 0
 
 创建和维护 [测试日志](/zh-cn/wiki/test-log/) 可以使用各种工具（从简单到复杂）进行有效管理，具体取决于项目的需求和团队的偏好。以下是一些常用的工具：
 
-- **电子表格**
-    Microsoft Excel 或 Google Sheets 等易于访问且易于使用，用于手动记录测试结果。它们支持基本的格式化和计算。
+- **电子表格** Microsoft Excel 或 Google Sheets 等易于访问且易于使用，用于手动记录测试结果。它们支持基本的格式化和计算。
 
-  ```
+```
   // Example of a simple test log entry in a spreadsheet
   Date | Test Case ID | Tester | Action | Expected Result | Actual Result | Pass/Fail | Notes
-  ```
+```
 
-- **[测试管理](/zh-cn/wiki/test-management/) 工具**
-    TestRail、Zephyr 或 qTest 等提供了用于测试规划、执行和记录的集成解决方案。它们提供仪表板、报告和可追溯性等功能。
+- **[测试管理](/zh-cn/wiki/test-management/) 工具** TestRail、Zephyr 或 qTest 等提供了用于测试规划、执行和记录的集成解决方案。它们提供仪表板、报告和可追溯性等功能。
 
-  ```
+```
   // Pseudocode for creating a test log entry in a test management tool
   testLog.createEntry({
     testCaseId: "TC101",
@@ -193,12 +189,11 @@ order: 0
     status: "Pass",
     notes: "No issues encountered"
   });
-  ```
+```
 
-- **问题跟踪系统**
-    像 JIRA 一样，可以配置为记录测试结果，通常与测试管理插件结合使用。
+- **问题跟踪系统**像 JIRA 一样，可以配置为记录测试结果，通常与测试管理插件结合使用。
 
-  ```
+```
   // Pseudocode for logging a test result in an issue tracking system
   issueTracker.logTestResult({
     issueId: "BUG123",
@@ -207,39 +202,32 @@ order: 0
       comment: "Error message displayed instead of login confirmation"
     }
   });
-  ```
+```
 
-- **自动化框架**
-    例如 Selenium、JUnit 或 TestNG 在测试执行期间自动生成日志。这些日志可以进行定制和格式化以满足项目要求。
+- **自动化框架**例如 Selenium、JUnit 或 TestNG 在测试执行期间自动生成日志。这些日志可以进行定制和格式化以满足项目要求。
 
-  ```
+```
   // Example of a custom log message in an automation framework
   logger.info("Test Case TC101 Passed - User successfully logged in");
-  ```
+```
 
-- **持续集成工具**
-    像 Jenkins 或 TeamCity 这样的工具可以在构建过程中捕获和存储测试日志，从而提供测试执行的历史记录。
+- **持续集成工具**像 Jenkins 或 TeamCity 这样的工具可以在构建过程中捕获和存储测试日志，从而提供测试执行的历史记录。
 
-  ```
+```
   // Example of accessing test logs in a CI tool
   build.getTestLog("build_12345");
-  ```
+```
 选择正确的工具取决于[测试环境](/zh-cn/wiki/test-environment/)的复杂性、与其他系统的集成以及利益相关者的报告需求。
 
-- **电子表格**
-    Microsoft Excel 或 Google Sheets 等易于访问且易于使用，用于手动记录测试结果。它们支持基本的格式化和计算。
+- **电子表格** Microsoft Excel 或 Google Sheets 等易于访问且易于使用，用于手动记录测试结果。它们支持基本的格式化和计算。
 
-- **[测试管理](/zh-cn/wiki/test-management/) 工具**
-    TestRail、Zephyr 或 qTest 等提供了用于测试规划、执行和记录的集成解决方案。它们提供仪表板、报告和可追溯性等功能。
+- **[测试管理](/zh-cn/wiki/test-management/) 工具** TestRail、Zephyr 或 qTest 等提供了用于测试规划、执行和记录的集成解决方案。它们提供仪表板、报告和可追溯性等功能。
 
-- **问题跟踪系统**
-    像 JIRA 一样，可以配置为记录测试结果，通常与测试管理插件结合使用。
+- **问题跟踪系统**像 JIRA 一样，可以配置为记录测试结果，通常与测试管理插件结合使用。
 
-- **自动化框架**
-    例如 Selenium、JUnit 或 TestNG 在测试执行期间自动生成日志。这些日志可以进行定制和格式化以满足项目要求。
+- **自动化框架**例如 Selenium、JUnit 或 TestNG 在测试执行期间自动生成日志。这些日志可以进行定制和格式化以满足项目要求。
 
-- **持续集成工具**
-    像 Jenkins 或 TeamCity 这样的工具可以在构建过程中捕获和存储测试日志，从而提供测试执行的历史记录。
+- **持续集成工具**像 Jenkins 或 TeamCity 这样的工具可以在构建过程中捕获和存储测试日志，从而提供测试执行的历史记录。
 
 #### 测试日志应该多久更新一次？
 
@@ -248,26 +236,17 @@ order: 0
   对于持续集成 (CI) 环境，测试可能由代码提交或计划构建触发，[测试日志](/zh-cn/wiki/test-log/) 应作为 CI 管道中测试后操作的一部分进行更新。这确保日志反映最新的测试结果，并可用于立即反馈或根据测试结果触发后续操作。
   总之，更新[测试日志](/zh-cn/wiki/test-log/)：
 
-- **每次[测试用例](/zh-cn/wiki/test-case/)执行后**
-    为了准确性。
+- **每次[测试用例](/zh-cn/wiki/test-case/)执行后**为了准确性。
 
-- **自动**
-    通过自动化测试中的脚本或框架。
+- **自动**通过自动化测试中的脚本或框架。
 
-- 作为一部分
-    **CI 管道中的测试后操作**
-    用于持续集成环境。
-  通过坚持这些做法，[测试日志](/zh-cn/wiki/test-log/) 仍然是实时测试状态的可靠来源，有助于团队内的及时决策和高效沟通。
+- 作为一部分 **CI 管道中的测试后操作**用于持续集成环境。 通过坚持这些做法，[测试日志](/zh-cn/wiki/test-log/) 仍然是实时测试状态的可靠来源，有助于团队内的及时决策和高效沟通。
 
-- **每次[测试用例](/zh-cn/wiki/test-case/)执行后**
-    为了准确性。
+- **每次[测试用例](/zh-cn/wiki/test-case/)执行后**为了准确性。
 
-- **自动**
-    通过自动化测试中的脚本或框架。
+- **自动**通过自动化测试中的脚本或框架。
 
-- 作为一部分
-    **CI 管道中的测试后操作**
-    用于持续集成环境。
+- 作为一部分 **CI 管道中的测试后操作**用于持续集成环境。
 
 #### 维护测试日志的最佳实践是什么？
 
@@ -277,9 +256,9 @@ order: 0
 - **自动化**：将日志记录集成到您的 [测试自动化](/zh-cn/wiki/test-automation/) 框架中。这确保了日志被实时捕获并且在不同的测试运行中保持一致。
 - $
 
-    ```
+```
     logger.info("Test case started: TC001_LoginTest");
-    ```
+```
 
 - **修剪**：定期检查和修剪日志以删除过时或不相关的信息，保持日志的相关性和可管理性。
 - **可访问性**：将日志存储在可访问的中央位置。使用 **ELK Stack**（Elasticsearch、Logstash、Kibana）或 **Splunk** 等工具进行存储和轻松访问。
@@ -287,16 +266,15 @@ order: 0
 - **关联**：包括[测试用例](/zh-cn/wiki/test-case/) 或会话的唯一标识符，以将日志条目与特定[测试执行](/zh-cn/wiki/test-execution/) 相关联。
 - **审查**：定期审查日志以识别模式或重复出现的问题。这可以改进被测应用程序和测试过程本身。
 - **文档**：记录日志记录过程及其任何更改。这可确保团队成员了解如何阅读和解释日志。
-- **集成**：将日志分析集成到 CI/CD 管道中，以自动标记问题并防止它们进展到后续阶段。
-  通过遵守这些实践，[测试日志](/zh-cn/wiki/test-log/) 仍然是故障排除、合规性以及提高软件和测试过程质量的宝贵资产。
+- **集成**：将日志分析集成到 CI/CD 管道中，以自动标记问题并防止它们进展到后续阶段。 通过遵守这些实践，[测试日志](/zh-cn/wiki/test-log/) 仍然是故障排除、合规性以及提高软件和测试过程质量的宝贵资产。
 
 - **一致性**：使用标准格式的条目以确保可读性和易于分析。这包括一致的时间戳格式、日志级别（信息、警告、错误）和术语。
 - **自动化**：将日志记录集成到您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中。这确保了日志被实时捕获并且在不同的测试运行中保持一致。
 - $
 
-    ```
+```
     logger.info("Test case started: TC001_LoginTest");
-    ```
+```
 
 ### 分析和报告
 
@@ -319,8 +297,7 @@ order: 0
 - **回归识别**：连续测试运行中反复出现的失败可能表明存在回归。
 - **环境和配置问题**：某些环境中的一致故障可能会揭示配置或兼容性问题。
 - **根本原因分析**：堆栈跟踪和错误消息可以帮助查明故障的确切原因。
-- **趋势分析**：随着时间的推移，可以分析趋势以预测未来的测试结果和需要改进的重点领域。
-  通过利用这些见解，团队可以完善​​他们的测试策略，改进[软件质量](/zh-cn/wiki/software-quality/)，并缩短上市时间。
+- **趋势分析**：随着时间的推移，可以分析趋势以预测未来的测试结果和需要改进的重点领域。 通过利用这些见解，团队可以完善​​他们的测试策略，改进[软件质量](/zh-cn/wiki/software-quality/)，并缩短上市时间。
 
 #### 测试日志如何用于改进未来的测试？
 
@@ -347,5 +324,4 @@ order: 0
 - **审核**：审核员能够通过查看日志条目来验证测试过程是否符合标准。
 - **一致性**：证明测试在不同的测试周期和环境中是一致的，遵守标准程序。
 - **问责制**：确定每次测试的执行者和时间，确保合格人员遵循标准。
-- **错误处理**：记录如何管理差异和错误，表明遵守标准解决程序。
-  通过维护全面的[测试日志](/zh-cn/wiki/test-log/)，您可以提供透明且负责任的记录，可以对其进行仔细检查以确认已满足测试标准。这对于整个软件开发生命周期中的认证、法规遵从性和维护 [质量保证](/zh-cn/wiki/quality-assurance/) 至关重要。
+- **错误处理**：记录如何管理差异和错误，表明遵守标准解决程序。 通过维护全面的[测试日志](/zh-cn/wiki/test-log/)，您可以提供透明且负责任的记录，可以对其进行仔细检查以确认已满足测试标准。这对于整个软件开发生命周期中的认证、法规遵从性和维护 [质量保证](/zh-cn/wiki/quality-assurance/) 至关重要。

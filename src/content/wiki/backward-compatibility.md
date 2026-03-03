@@ -7,7 +7,8 @@ related:
   - api
   - web-testing
   - automated-testing
-  - api-testing
+  - validation-testing
+  - baseline-testing
 order: 0
 ---
 
@@ -48,64 +49,39 @@ order: 0
   对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，[向后兼容性](/zh-cn/wiki/backward-compatibility/) 意味着为以前版本设计的自动化测试应该继续适用于新版本。这很重要，因为它允许**连续测试**，而不需要不断更新[测试脚本](/zh-cn/wiki/test-script/)。
   为了维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，工程师经常：
 
-- 使用
-    **版本化[API](/zh-cn/wiki/api/)**
-    以防止更改影响老客户。
+- 使用 **版本化[API](/zh-cn/wiki/api/)**以防止更改影响老客户。
 
-- 实施
-    **功能切换**
-    在不破坏现有功能的情况下逐步引入更改。
+- 实施 **功能切换**在不破坏现有功能的情况下逐步引入更改。
 
-- 申请
-    **弃用政策**
-    给用户和开发人员时间来适应新版本。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 对于 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 通常涉及：
+- 申请 **弃用政策**给用户和开发人员时间来适应新版本。 [自动化测试](/zh-cn/wiki/automated-testing/) 对于 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 通常涉及：
 
-- 运行一个
-    **回归测试套件**
-    反对新版本。
+- 运行一个 **回归测试套件**反对新版本。
 
-- 使用
-    **虚拟机或容器**
-    跨不同环境和版本进行测试。
+- 使用 **虚拟机或容器**跨不同环境和版本进行测试。
 
-- 纳入
-    **[向后兼容性](/zh-cn/wiki/backward-compatibility/) 检查**
-    进入 CI/CD 管道。
+- 纳入 **[向后兼容性](/zh-cn/wiki/backward-compatibility/) 检查**进入 CI/CD 管道。
 
-  ```
+```
   // Example of a simple backward compatibility check in an automated test
   function testBackwardCompatibility(newVersionFunction) {
     const oldVersionResult = oldVersionFunction(input);
     const newVersionResult = newVersionFunction(input);
     assert.equal(newVersionResult, oldVersionResult, 'The function is not backward compatible');
   }
-  ```
+```
 维护[向后兼容性](/zh-cn/wiki/backward-compatibility/) 是创新与稳定性之间的**微妙平衡**，需要仔细规划和测试以确保进步不会扰乱现有用户的工作流程。
 
-- 使用
-    **版本化[API](/zh-cn/wiki/api/)**
-    以防止更改影响老客户。
+- 使用 **版本化[API](/zh-cn/wiki/api/)**以防止更改影响老客户。
 
-- 实施
-    **功能切换**
-    在不破坏现有功能的情况下逐步引入更改。
+- 实施 **功能切换**在不破坏现有功能的情况下逐步引入更改。
 
-- 申请
-    **弃用政策**
-    给用户和开发人员时间来适应新版本。
+- 申请 **弃用政策**给用户和开发人员时间来适应新版本。
 
-- 运行一个
-    **回归测试套件**
-    反对新版本。
+- 运行一个 **回归测试套件**反对新版本。
 
-- 使用
-    **虚拟机或容器**
-    跨不同环境和版本进行测试。
+- 使用 **虚拟机或容器**跨不同环境和版本进行测试。
 
-- 纳入
-    **[向后兼容性](/zh-cn/wiki/backward-compatibility/) 检查**
-    进入 CI/CD 管道。
+- 纳入 **[向后兼容性](/zh-cn/wiki/backward-compatibility/) 检查**进入 CI/CD 管道。
 
 #### 为什么向后兼容性在软件开发中很重要？
 
@@ -126,8 +102,7 @@ order: 0
 - **失去信任**：无法升级或选择不升级的用户如果感到被抛弃或被迫进行更改，可能会失去对软件的信任。
 - **数据不兼容性**：新软件版本可能使用不同的数据格式，从而在尝试访问旧数据时导致潜在的数据丢失或损坏。
 - **市场份额减少**：潜在客户可能会选择与其现有基础设施具有更好兼容性的竞争对手的产品。
-- **法律和合规风险**：在某些行业中，由于兼容性问题而无法访问或使用数据可能会导致不遵守监管标准。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 可以通过验证新软件版本是否与以前版本保持兼容性来减轻这些风险，确保现有功能不受更新影响。
+- **法律和合规风险**：在某些行业中，由于兼容性问题而无法访问或使用数据可能会导致不遵守监管标准。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以通过验证新软件版本是否与以前版本保持兼容性来减轻这些风险，确保现有功能不受更新影响。
 
 #### 向后兼容性如何影响用户体验？
 
@@ -176,8 +151,7 @@ order: 0
 7. **文档**：保留所有更改的完整文档，包括用户从旧版本过渡的迁移指南。
 8. **用户反馈**：与您的用户社区互动，了解他们的需求以及更改可能如何影响他们。
 9. **旧系统支持**：维护镜像旧系统的[测试环境](/zh-cn/wiki/test-environment/)以确保兼容性。
-10. **代码审查**：进行彻底的代码审查，重点关注潜在的[向后兼容性](/zh-cn/wiki/backward-compatibility/)问题。
-  通过遵循这些步骤，您可以最大限度地降低引入重大更改的风险，并为用户维护稳定可靠的软件产品。
+10. **代码审查**：进行彻底的代码审查，重点关注潜在的[向后兼容性](/zh-cn/wiki/backward-compatibility/)问题。 通过遵循这些步骤，您可以最大限度地降低引入重大更改的风险，并为用户维护稳定可靠的软件产品。
 
 #### 保持向后兼容性时面临哪些常见挑战？
 
@@ -226,14 +200,13 @@ Experienced test automation engineers must navigate these challenges carefully, 
 - **隔离遗留系统**：必要时，封装旧代码，防止其干扰新的开发。
 - **利用抽象层**：引入抽象层将新实现与旧接口分开，使它们能够独立发展。
 - **执行[影响分析](/zh-cn/wiki/impact-analysis/)** ：在更改现有功能之前，分析对当前用户的影响以了解更改的范围。
-- **收集用户反馈**：与您的用户社区互动，了解他们对兼容性的需求和担忧。
-  通过遵循这些实践，您可以确保您的软件即使在不断发展时仍然可靠且用户友好。
+- **收集用户反馈**：与您的用户社区互动，了解他们对兼容性的需求和担忧。 通过遵循这些实践，您可以确保您的软件即使在不断发展时仍然可靠且用户友好。
 
 #### 自动化测试如何帮助确保向后兼容性？
 
 [自动化测试](/zh-cn/wiki/automated-testing/) 通过提供系统方法来验证新代码更改不会破坏现有功能，在确保 **[向后兼容性](/zh-cn/wiki/backward-compatibility/)** 方面发挥着至关重要的作用。通过实施一整套自动化回归测试，开发人员可以快速识别并解决开发过程中出现的任何兼容性问题。
 
-  ```
+```
   // Example of an automated regression test
   describe('Backward Compatibility Tests', () => {
     it('should work with legacy data formats', () => {
@@ -242,7 +215,7 @@ Experienced test automation engineers must navigate these challenges carefully, 
       expect(result).toBeCompatibleWithLegacySystems();
     });
   });
-  ```
+```
 可以针对软件的多个版本运行自动化测试，确保新更新与旧版本保持兼容。当处理[API](/zh-cn/wiki/api/)、数据格式或外部系统依赖一致行为的协议时，这一点尤其重要。
   通过将 [自动化测试](/zh-cn/wiki/automated-testing/) 集成到 CI/CD 管道中，团队可以在每次构建时持续验证 [向后兼容性](/zh-cn/wiki/backward-compatibility/)，使其成为开发工作流程中不可或缺的一部分。这种方法降低了引入重大更改的风险，并有助于维持与依赖软件稳定性的用户的信任。
   此外，可以使用以前软件版本的实际数据和工作流程来设计自动化测试来模拟现实场景。这可确保测试代表用户环境，从而确保[向后兼容性](/zh-cn/wiki/backward-compatibility/) 保留在实际[用例](/zh-cn/wiki/use-case/) 中。
@@ -275,8 +248,7 @@ Experienced test automation engineers must navigate these challenges carefully, 
 - **PlayStation 游戏机**：索尼的 PlayStation 2 与 PlayStation 1 游戏兼容，PlayStation 3 最初为 PS1 和 PS2 游戏提供[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
 - **HTTP/2**：较新的 HTTP/2 协议使用 HTTP/1.1 维护 [向后兼容性](/zh-cn/wiki/backward-compatibility/)。客户端和服务器可以协商要使用的协议版本，确保 Web 服务在不同的 HTTP 版本上继续运行。
 - **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[数据库](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
-- **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。
-  这些示例展示了公司如何优先考虑 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 以保护用户投资并确保无缝过渡到较新的软件版本。
+- **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。 这些示例展示了公司如何优先考虑 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 以保护用户投资并确保无缝过渡到较新的软件版本。
 
 #### 您能否提供一个示例，说明软件必须在新功能上做出妥协才能保持向后兼容性？
 
@@ -285,12 +257,12 @@ Experienced test automation engineers must navigate these challenges carefully, 
   在**Python 3**的开发过程中，核心团队面临着[向后兼容性](/zh-cn/wiki/backward-compatibility/)的重大挑战。 Python 3 引入了许多新功能和改进，但它并不完全向后兼容 Python 2。这是一个经过深思熟虑的决定，旨在清理语言语法并删除冗余的操作方式，这意味着一些较旧的 Python 2 代码将无法在未经修改的情况下在 Python 3 上运行。
   例如，`print` 语句成为一个函数：
 
-  ```
+```
   # Python 2 code
   print "Hello, world!"
   # Python 3 code
   print("Hello, world!")
-  ```
+```
 这一更改提高了语言的一致性和清晰度，但要求开发人员修改现有的 Python 2 代码以保持兼容性。因此，Python 社区不得不在立即采用 Python 3 中的新功能方面做出妥协，以维护现有的代码库。这导致了 Python 2 和 Python 3 都在使用的过渡期延长，Python 2 的生命周期终止日期多次延长，以便有更多的时间进行迁移。
   Python 增强提案 (PEP) 404 正式声明 Python 2.8 永远不会发布，确保不会抱有向后兼容新版本的错误希望。这个例子强调了语言现代化和维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)之间的权衡，Python核心团队选择彻底决裂，为未来的创新铺平道路。
 
@@ -303,5 +275,4 @@ Experienced test automation engineers must navigate these challenges carefully, 
 - **Ubuntu LTS 版本**：Ubuntu 的长期支持 (LTS) 版本提供五年更新，并确保针对 LTS 版本的软件在此期间保持兼容。
 - **PostgreSQL**：此[数据库](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[数据库](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
 - **Python 2.7**：尽管Python 3引入了许多更改，但Python 2.7仍保留了较长一段时间，以便为现有Python 2应用程序提供稳定且兼容的平台。
-- **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。
-  这些示例说明了对[向后兼容性](/zh-cn/wiki/backward-compatibility/)的承诺，使用户能够从新功能和改进中受益，而无需牺牲运行现有软件的能力。
+- **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。 这些示例说明了对[向后兼容性](/zh-cn/wiki/backward-compatibility/)的承诺，使用户能够从新功能和改进中受益，而无需牺牲运行现有软件的能力。

@@ -6,8 +6,9 @@ related:
   - automated-testing
   - manual-testing
   - web-testing
-  - test-suite
-  - test-case-management
+  - inspection
+  - test-case
+  - rup
 order: 0
 ---
 
@@ -64,37 +65,27 @@ order: 0
 
 [reviewer](/zh-cn/wiki/reviewer/) 在软件 [test automation](/zh-cn/wiki/test-automation/) 中的基本职责包括：
 
-- **验证**
-    根据指定的需求和设计文档测试用例和脚本的准确性和完整性。
+- **验证**根据指定的需求和设计文档测试用例和脚本的准确性和完整性。
 
-- **评估**
-    测试自动化框架和工具的适用性、可维护性和可扩展性。
+- **评估**测试自动化框架和工具的适用性、可维护性和可扩展性。
 
-- **确保**
-    测试脚本中遵循编码标准、最佳实践和指南。
+- **确保**测试脚本中遵循编码标准、最佳实践和指南。
 
-- **评估**
-    实施测试用例，以确保它们稳健、高效并提供足够的覆盖范围。
+- **评估**实施测试用例，以确保它们稳健、高效并提供足够的覆盖范围。
 
-- **识别**
-    测试改进的领域，包括添加新测试或修改现有测试。
+- **识别**测试改进的领域，包括添加新测试或修改现有测试。
 
-- **正在审查**
-    测试结果和报告，以确认它们清晰、简洁，并提供可操作的见解。
+- **正在审查**测试结果和报告，以确认它们清晰、简洁，并提供可操作的见解。
 
-- **合作**
-    与测试自动化工程师讨论发现结果并提出更改或增强建议。
+- **合作**与测试自动化工程师讨论发现结果并提出更改或增强建议。
 
-- **验证**
-    正确记录发现的任何问题或错误并传达给相关利益相关者。
+- **验证**正确记录发现的任何问题或错误并传达给相关利益相关者。
 
-- **监控**
-    持续集成和部署流程，以确保自动化测试按预期集成和执行。
+- **监控**持续集成和部署流程，以确保自动化测试按预期集成和执行。
 
-- **随时了解情况**
-    关于测试自动化中的新技术和方法，以建议对当前流程的改进。
+- **随时了解情况**关于测试自动化中的新技术和方法，以建议对当前流程的改进。
 
-  ```
+```
   // Example of a code review comment in a test script
   it('should navigate to the dashboard', async () => {
     await page.goto('/dashboard');
@@ -102,38 +93,28 @@ order: 0
     const dashboardLoaded = await page.waitForSelector('.dashboard-content');
     expect(dashboardLoaded).toBeTruthy();
   });
-  ```
+```
 *注意：上面的代码块是测试脚本的简化示例，代码审查员可能会评估其清晰度、正确性和效率。*
 
-- **验证**
-    根据指定的需求和设计文档测试用例和脚本的准确性和完整性。
+- **验证**根据指定的需求和设计文档测试用例和脚本的准确性和完整性。
 
-- **评估**
-    测试自动化框架和工具的适用性、可维护性和可扩展性。
+- **评估**测试自动化框架和工具的适用性、可维护性和可扩展性。
 
-- **确保**
-    测试脚本中遵循编码标准、最佳实践和指南。
+- **确保**测试脚本中遵循编码标准、最佳实践和指南。
 
-- **评估**
-    实施测试用例，以确保它们稳健、高效并提供足够的覆盖范围。
+- **评估**实施测试用例，以确保它们稳健、高效并提供足够的覆盖范围。
 
-- **识别**
-    测试改进的领域，包括添加新测试或修改现有测试。
+- **识别**测试改进的领域，包括添加新测试或修改现有测试。
 
-- **正在审查**
-    测试结果和报告，以确认它们清晰、简洁，并提供可操作的见解。
+- **正在审查**测试结果和报告，以确认它们清晰、简洁，并提供可操作的见解。
 
-- **合作**
-    与测试自动化工程师讨论发现结果并提出更改或增强建议。
+- **合作**与测试自动化工程师讨论发现结果并提出更改或增强建议。
 
-- **验证**
-    正确记录发现的任何问题或错误并传达给相关利益相关者。
+- **验证**正确记录发现的任何问题或错误并传达给相关利益相关者。
 
-- **监控**
-    持续集成和部署流程，以确保自动化测试按预期集成和执行。
+- **监控**持续集成和部署流程，以确保自动化测试按预期集成和执行。
 
-- **随时了解情况**
-    关于测试自动化中的新技术和方法，以建议对当前流程的改进。
+- **随时了解情况**关于测试自动化中的新技术和方法，以建议对当前流程的改进。
 
 ### 技能和资格
 
@@ -141,38 +122,27 @@ order: 0
 
 要成为软件[test automation](/zh-cn/wiki/test-automation/) 中有效的[reviewer](/zh-cn/wiki/reviewer/)，某些技能是必不可少的：
 
-- **批判性思维**
-    评估测试用例、脚本和结果的完整性和有效性。
+- **批判性思维**评估测试用例、脚本和结果的完整性和有效性。
 
-- **注重细节**
-    发现差异和可能导致缺陷的潜在问题。
+- **注重细节**发现差异和可能导致缺陷的潜在问题。
 
-- 精通
-    **编程语言**
-    与自动化框架相关，例如 Python、Java 或 JavaScript。
+- 精通 **编程语言**与自动化框架相关，例如 Python、Java 或 JavaScript。
 
-- **了解软件开发**
-    以及软件开发生命周期，使测试与项目目标保持一致。
+- **了解软件开发**以及软件开发生命周期，使测试与项目目标保持一致。
 
-- **自动化工具知识**
-    以及 Selenium、Appium 或 Cypress 等框架。
+- **自动化工具知识**以及 Selenium、Appium 或 Cypress 等框架。
 
-- **具有持续集成/持续部署 (CI/CD) 经验**
-    Jenkins、GitLab CI 或 CircleCI 等工具。
+- **具有持续集成/持续部署 (CI/CD) 经验** Jenkins、GitLab CI 或 CircleCI 等工具。
 
-- **熟悉版本控制系统**
-    像 Git 一样管理测试脚本中的更改。
+- **熟悉版本控制系统**像 Git 一样管理测试脚本中的更改。
 
-- **解决问题的能力**
-    排除和解决测试过程中出现的复杂问题。
+- **解决问题的能力**排除和解决测试过程中出现的复杂问题。
 
-- **沟通技巧**
-    有效地传达调查结果并与开发团队合作。
+- **沟通技巧**有效地传达调查结果并与开发团队合作。
 
-- **适应性**
-    跟上不断发展的测试方法和技术。
+- **适应性**跟上不断发展的测试方法和技术。
 
-  ```
+```
   // Example of a code review comment in an automation script
   if (user.isLoggedIn()) {
     // Ensure the user's session is active before proceeding with the test
@@ -181,173 +151,105 @@ order: 0
     throw new Error('User is not logged in.');
   }
   // Suggestion: Consider adding a retry mechanism for login before throwing an error.
-  ```
+```
 
-- **分析能力**
-    解释测试结果和指标，为质量决策提供信息。
+- **分析能力**解释测试结果和指标，为质量决策提供信息。
 
-- **风险管理**
-    根据潜在影响确定测试工作的优先顺序。
+- **风险管理**根据潜在影响确定测试工作的优先顺序。
 
-- **合作**
-    与跨职能团队合作，以确保测试过程的一致性和效率。
+- **合作**与跨职能团队合作，以确保测试过程的一致性和效率。
 
-- **批判性思维**
-    评估测试用例、脚本和结果的完整性和有效性。
+- **批判性思维**评估测试用例、脚本和结果的完整性和有效性。
 
-- **注重细节**
-    发现差异和可能导致缺陷的潜在问题。
+- **注重细节**发现差异和可能导致缺陷的潜在问题。
 
-- 精通
-    **编程语言**
-    与自动化框架相关，例如 Python、Java 或 JavaScript。
+- 精通 **编程语言**与自动化框架相关，例如 Python、Java 或 JavaScript。
 
-- **了解软件开发**
-    以及软件开发生命周期，使测试与项目目标保持一致。
+- **了解软件开发**以及软件开发生命周期，使测试与项目目标保持一致。
 
-- **自动化工具知识**
-    以及 Selenium、Appium 或 Cypress 等框架。
+- **自动化工具知识**以及 Selenium、Appium 或 Cypress 等框架。
 
-- **具有持续集成/持续部署 (CI/CD) 经验**
-    Jenkins、GitLab CI 或 CircleCI 等工具。
+- **具有持续集成/持续部署 (CI/CD) 经验** Jenkins、GitLab CI 或 CircleCI 等工具。
 
-- **熟悉版本控制系统**
-    像 Git 一样管理测试脚本中的更改。
+- **熟悉版本控制系统**像 Git 一样管理测试脚本中的更改。
 
-- **解决问题的能力**
-    排除和解决测试过程中出现的复杂问题。
+- **解决问题的能力**排除和解决测试过程中出现的复杂问题。
 
-- **沟通技巧**
-    有效地传达调查结果并与开发团队合作。
+- **沟通技巧**有效地传达调查结果并与开发团队合作。
 
-- **适应性**
-    跟上不断发展的测试方法和技术。
+- **适应性**跟上不断发展的测试方法和技术。
 
-- **分析能力**
-    解释测试结果和指标，为质量决策提供信息。
+- **分析能力**解释测试结果和指标，为质量决策提供信息。
 
-- **风险管理**
-    根据潜在影响确定测试工作的优先顺序。
+- **风险管理**根据潜在影响确定测试工作的优先顺序。
 
-- **合作**
-    与跨职能团队合作，以确保测试过程的一致性和效率。
+- **合作**与跨职能团队合作，以确保测试过程的一致性和效率。
 
 #### e2e 测试中的代码审查员通常需要什么资格？
 
 通常，端到端 (e2e) 测试中的 [reviewer](/zh-cn/wiki/reviewer/) 应具备以下资格：
 
-- **专业经验**
-    在软件测试中，重点关注端到端测试场景。
+- **专业经验**在软件测试中，重点关注端到端测试场景。
 
-- 扎实的理解
-    **[software development life cycle](/zh-cn/wiki/software-development-life-cycle/)**
-    （SDLC）和
-    **测试方法**
-    。
+- 扎实的理解 **[software development life cycle](/zh-cn/wiki/software-development-life-cycle/)** （SDLC）和 **测试方法** 。
 
-- 精通
-    **[test automation](/zh-cn/wiki/test-automation/) 工具**
-    以及与 e2e 测试相关的框架，例如 Selenium、Cypress 或 Playwright。
+- 精通 **[test automation](/zh-cn/wiki/test-automation/) 工具**以及与 e2e 测试相关的框架，例如 Selenium、Cypress 或 Playwright。
 
-- 写作和复习的能力
-    **[test scripts](/zh-cn/wiki/test-script/)**
-    测试自动化中常用的编程语言，例如 JavaScript、Python 或 Java。
+- 写作和复习的能力 **[test scripts](/zh-cn/wiki/test-script/)**测试自动化中常用的编程语言，例如 JavaScript、Python 或 Java。
 
-- 熟悉
-    **持续集成/持续部署**
-    (CI/CD) 管道和工具，例如 Jenkins、GitLab CI 或 CircleCI。
+- 熟悉 **持续集成/持续部署** (CI/CD) 管道和工具，例如 Jenkins、GitLab CI 或 CircleCI。
 
-- 知识
-    **版本控制系统**
-    例如 Git，用于管理测试脚本并与开发团队协作。
+- 知识 **版本控制系统**例如 Git，用于管理测试脚本并与开发团队协作。
 
 - 强大的分析能力，可评估测试覆盖率并找出测试中的差距。
-  - 经验
-    **问题跟踪系统**
-    像 JIRA 或 Bugzilla 一样，用于记录和跟踪缺陷。
+  - 经验 **问题跟踪系统**像 JIRA 或 Bugzilla 一样，用于记录和跟踪缺陷。
 
-- 理解
-    **[quality assurance](/zh-cn/wiki/quality-assurance/) 指标**
-    以及如何使用它们来评估测试的有效性。
+- 理解 **[quality assurance](/zh-cn/wiki/quality-assurance/) 指标**以及如何使用它们来评估测试的有效性。
 
-- 优秀
-    **沟通技巧**
-    阐明调查结果并与跨职能团队合作。
+- 优秀 **沟通技巧**阐明调查结果并与跨职能团队合作。
 
-- 背景
-    **风险管理**
-    根据潜在影响确定测试工作的优先顺序。
-  [Reviewers](/zh-cn/wiki/reviewer/) 还应该善于在**敏捷环境**中工作，适应快速变化，并保持高水平的细节导向，以确保全面的 e2e [test coverage](/zh-cn/wiki/test-coverage/)。
+- 背景 **风险管理**根据潜在影响确定测试工作的优先顺序。 [Reviewers](/zh-cn/wiki/reviewer/) 还应该善于在**敏捷环境**中工作，适应快速变化，并保持高水平的细节导向，以确保全面的 e2e [test coverage](/zh-cn/wiki/test-coverage/)。
 
-- **专业经验**
-    在软件测试中，重点关注端到端测试场景。
+- **专业经验**在软件测试中，重点关注端到端测试场景。
 
-- 扎实的理解
-    **[software development life cycle](/zh-cn/wiki/software-development-life-cycle/)**
-    （SDLC）和
-    **测试方法**
-    。
+- 扎实的理解 **[software development life cycle](/zh-cn/wiki/software-development-life-cycle/)** （SDLC）和 **测试方法** 。
 
-- 精通
-    **[test automation](/zh-cn/wiki/test-automation/) 工具**
-    以及与 e2e 测试相关的框架，例如 Selenium、Cypress 或 Playwright。
+- 精通 **[test automation](/zh-cn/wiki/test-automation/) 工具**以及与 e2e 测试相关的框架，例如 Selenium、Cypress 或 Playwright。
 
-- 写作和复习的能力
-    **[test scripts](/zh-cn/wiki/test-script/)**
-    测试自动化中常用的编程语言，例如 JavaScript、Python 或 Java。
+- 写作和复习的能力 **[test scripts](/zh-cn/wiki/test-script/)**测试自动化中常用的编程语言，例如 JavaScript、Python 或 Java。
 
-- 熟悉
-    **持续集成/持续部署**
-    (CI/CD) 管道和工具，例如 Jenkins、GitLab CI 或 CircleCI。
+- 熟悉 **持续集成/持续部署** (CI/CD) 管道和工具，例如 Jenkins、GitLab CI 或 CircleCI。
 
-- 知识
-    **版本控制系统**
-    例如 Git，用于管理测试脚本并与开发团队协作。
+- 知识 **版本控制系统**例如 Git，用于管理测试脚本并与开发团队协作。
 
 - 强大的分析能力，可评估测试覆盖率并找出测试中的差距。
-  - 经验
-    **问题跟踪系统**
-    像 JIRA 或 Bugzilla 一样，用于记录和跟踪缺陷。
+  - 经验 **问题跟踪系统**像 JIRA 或 Bugzilla 一样，用于记录和跟踪缺陷。
 
-- 理解
-    **[quality assurance](/zh-cn/wiki/quality-assurance/) 指标**
-    以及如何使用它们来评估测试的有效性。
+- 理解 **[quality assurance](/zh-cn/wiki/quality-assurance/) 指标**以及如何使用它们来评估测试的有效性。
 
-- 优秀
-    **沟通技巧**
-    阐明调查结果并与跨职能团队合作。
+- 优秀 **沟通技巧**阐明调查结果并与跨职能团队合作。
 
-- 背景
-    **风险管理**
-    根据潜在影响确定测试工作的优先顺序。
+- 背景 **风险管理**根据潜在影响确定测试工作的优先顺序。
 
 #### 代码审查员的技术知识对 e2e 测试过程有何贡献？
 
 [reviewer](/zh-cn/wiki/reviewer/) 的**技术知识**在**e2e 测试**中至关重要，因为它直接影响[test scenarios](/zh-cn/wiki/test-scenario/) 的**质量**和**有效性**。通过对系统架构和技术堆栈的深入了解，[reviewer](/zh-cn/wiki/reviewer/) 可以：
 
-- **确定关键集成点**
-    并确保它们经过充分的测试。
+- **确定关键集成点**并确保它们经过充分的测试。
 
-- **优化[test coverage](/zh-cn/wiki/test-coverage/)**
-    通过识别可能受变更影响的系统组件，从而防止过度测试或测试不足。
+- **优化[test coverage](/zh-cn/wiki/test-coverage/)**通过识别可能受变更影响的系统组件，从而防止过度测试或测试不足。
 
-- **增强[test scripts](/zh-cn/wiki/test-script/)**
-    通过结合与应用程序的技术细微差别相一致的先进技术和最佳实践。
+- **增强[test scripts](/zh-cn/wiki/test-script/)**通过结合与应用程序的技术细微差别相一致的先进技术和最佳实践。
 
-- **解决问题**
-    更高效，从而更快地解决问题并减少测试周期中的停机时间。
+- **解决问题**更高效，从而更快地解决问题并减少测试周期中的停机时间。
 
-- **评估测试结果**
-    凭借敏锐的洞察力，区分真正的缺陷和由环境问题或测试数据不一致引起的误报。
-  技术专长还使 [reviewer](/zh-cn/wiki/reviewer/) 能够：
+- **评估测试结果**凭借敏锐的洞察力，区分真正的缺陷和由环境问题或测试数据不一致引起的误报。 技术专长还使 [reviewer](/zh-cn/wiki/reviewer/) 能够：
 
-- **完善自动化测试**
-    为了获得更好的可靠性和可维护性，请使用页面对象模型 (POM) 或剧本模式等模式。
+- **完善自动化测试**为了获得更好的可靠性和可维护性，请使用页面对象模型 (POM) 或剧本模式等模式。
 
-- **实施持续集成**
-    (CI) 和持续部署 (CD) 有效实践，确保自动触发测试并将结果无缝集成到开发工作流程中。
+- **实施持续集成** (CI) 和持续部署 (CD) 有效实践，确保自动触发测试并将结果无缝集成到开发工作流程中。
 
-  ```
+```
   // Example: Implementing a POM in TypeScript
   class LoginPage {
     private usernameField: WebElement;
@@ -364,29 +266,22 @@ order: 0
       await this.submitButton.click();
     }
   }
-  ```
+```
 从本质上讲，[reviewer](/zh-cn/wiki/reviewer/) 的技术敏锐度有助于制定**稳健**、**可扩展**和**高效**的端到端测试，以适应应用程序的复杂性和技术需求。
 
-- **确定关键集成点**
-    并确保它们经过充分的测试。
+- **确定关键集成点**并确保它们经过充分的测试。
 
-- **优化[test coverage](/zh-cn/wiki/test-coverage/)**
-    通过识别可能受变更影响的系统组件，从而防止过度测试或测试不足。
+- **优化[test coverage](/zh-cn/wiki/test-coverage/)**通过识别可能受变更影响的系统组件，从而防止过度测试或测试不足。
 
-- **增强[test scripts](/zh-cn/wiki/test-script/)**
-    通过结合与应用程序的技术细微差别相一致的先进技术和最佳实践。
+- **增强[test scripts](/zh-cn/wiki/test-script/)**通过结合与应用程序的技术细微差别相一致的先进技术和最佳实践。
 
-- **解决问题**
-    更高效，从而更快地解决问题并减少测试周期中的停机时间。
+- **解决问题**更高效，从而更快地解决问题并减少测试周期中的停机时间。
 
-- **评估测试结果**
-    凭借敏锐的洞察力，区分真正的缺陷和由环境问题或测试数据不一致引起的误报。
+- **评估测试结果**凭借敏锐的洞察力，区分真正的缺陷和由环境问题或测试数据不一致引起的误报。
 
-- **完善自动化测试**
-    为了获得更好的可靠性和可维护性，请使用页面对象模型 (POM) 或剧本模式等模式。
+- **完善自动化测试**为了获得更好的可靠性和可维护性，请使用页面对象模型 (POM) 或剧本模式等模式。
 
-- **实施持续集成**
-    (CI) 和持续部署 (CD) 有效实践，确保自动触发测试并将结果无缝集成到开发工作流程中。
+- **实施持续集成** (CI) 和持续部署 (CD) 有效实践，确保自动触发测试并将结果无缝集成到开发工作流程中。
 
 ### 流程和技术
 
@@ -405,7 +300,7 @@ order: 0
   9. **确保可追溯性**：将测试映射到覆盖范围确认的要求。
   10. **提供反馈**：提供有关测试策略和有效性的见解。
 
-  ```
+```
   // Example of a code review snippet for an automated test script
   describe('Login functionality', () => {
     it('should allow a user to log in with valid credentials', async () => {
@@ -416,7 +311,7 @@ order: 0
       expect(await page.url()).toBe('https://example.com/dashboard');
     });
   });
-  ```
+```
 在此示例中，[reviewer](/zh-cn/wiki/reviewer/) 将确保脚本干净、可维护，并准确反映从登录到仪表板访问的用户旅程。
 
 1. **审查[test plans](/zh-cn/wiki/test-plan/) 和案例**：确保它们符合用户故事和验收标准。
@@ -499,60 +394,41 @@ order: 0
 
 软件中的[Reviewers](/zh-cn/wiki/reviewer/) [test automation](/zh-cn/wiki/test-automation/) 通常使用各种工具来促进其审查过程。这些包括：
 
-- **版本控制系统**
-    (VCS)，如 Git，用于跟踪测试脚本的更改并与团队成员协作。
+- **版本控制系统** (VCS)，如 Git，用于跟踪测试脚本的更改并与团队成员协作。
 
-- **代码审查工具**
-    例如 Gerrit、GitHub 或 Bitbucket 拉取请求，支持对代码更改进行详细检查和讨论。
+- **代码审查工具**例如 Gerrit、GitHub 或 Bitbucket 拉取请求，支持对代码更改进行详细检查和讨论。
 
-- **持续集成/持续部署 (CI/CD) 工具**
-    像 Jenkins、CircleCI 或 Travis CI 一样，自动测试共享存储库中的代码更改。
+- **持续集成/持续部署 (CI/CD) 工具**像 Jenkins、CircleCI 或 Travis CI 一样，自动测试共享存储库中的代码更改。
 
-- **静态代码分析工具**
-    为了检测代码质量或遵守编码标准的潜在问题，示例包括 SonarQube 和 ESLint。
+- **静态代码分析工具**为了检测代码质量或遵守编码标准的潜在问题，示例包括 SonarQube 和 ESLint。
 
-- **[Test Management](/zh-cn/wiki/test-management/) 工具**
-    例如 TestRail 或 Zephyr，它们有助于组织测试用例、计划和运行，以及跟踪测试活动的状态。
+- **[Test Management](/zh-cn/wiki/test-management/) 工具**例如 TestRail 或 Zephyr，它们有助于组织测试用例、计划和运行，以及跟踪测试活动的状态。
 
-- **问题跟踪系统**
-    像 JIRA 或 Bugzilla 一样，用于记录和跟踪测试期间发现的错误和问题。
+- **问题跟踪系统**像 JIRA 或 Bugzilla 一样，用于记录和跟踪测试期间发现的错误和问题。
 
-- **[Automated Testing](/zh-cn/wiki/automated-testing/) 框架**
-    以及执行测试用例和脚本的工具（例如 Selenium、Appium、Cypress）。
+- **[Automated Testing](/zh-cn/wiki/automated-testing/) 框架**以及执行测试用例和脚本的工具（例如 Selenium、Appium、Cypress）。
 
-- **[Performance Testing](/zh-cn/wiki/performance-testing/) 工具**
-    例如 JMeter 或 LoadRunner，用于查看与性能相关的测试结果。
+- **[Performance Testing](/zh-cn/wiki/performance-testing/) 工具**例如 JMeter 或 LoadRunner，用于查看与性能相关的测试结果。
 
-- **[Security Testing](/zh-cn/wiki/security-testing/) 工具**
-    例如 OWASP ZAP 或 Fortify，以确保安全测试成为审核过程的一部分。
-  这些工具帮助[reviewers](/zh-cn/wiki/reviewer/) 高效管理代码质量、与团队成员协作、跟踪问题并确保软件在发布前满足所需标准。
+- **[Security Testing](/zh-cn/wiki/security-testing/) 工具**例如 OWASP ZAP 或 Fortify，以确保安全测试成为审核过程的一部分。 这些工具帮助[reviewers](/zh-cn/wiki/reviewer/) 高效管理代码质量、与团队成员协作、跟踪问题并确保软件在发布前满足所需标准。
 
-- **版本控制系统**
-    (VCS)，如 Git，用于跟踪测试脚本的更改并与团队成员协作。
+- **版本控制系统** (VCS)，如 Git，用于跟踪测试脚本的更改并与团队成员协作。
 
-- **代码审查工具**
-    例如 Gerrit、GitHub 或 Bitbucket 拉取请求，支持对代码更改进行详细检查和讨论。
+- **代码审查工具**例如 Gerrit、GitHub 或 Bitbucket 拉取请求，支持对代码更改进行详细检查和讨论。
 
-- **持续集成/持续部署 (CI/CD) 工具**
-    像 Jenkins、CircleCI 或 Travis CI 一样，自动测试共享存储库中的代码更改。
+- **持续集成/持续部署 (CI/CD) 工具**像 Jenkins、CircleCI 或 Travis CI 一样，自动测试共享存储库中的代码更改。
 
-- **静态代码分析工具**
-    为了检测代码质量或遵守编码标准的潜在问题，示例包括 SonarQube 和 ESLint。
+- **静态代码分析工具**为了检测代码质量或遵守编码标准的潜在问题，示例包括 SonarQube 和 ESLint。
 
-- **[Test Management](/zh-cn/wiki/test-management/) 工具**
-    例如 TestRail 或 Zephyr，它们有助于组织测试用例、计划和运行，以及跟踪测试活动的状态。
+- **[Test Management](/zh-cn/wiki/test-management/) 工具**例如 TestRail 或 Zephyr，它们有助于组织测试用例、计划和运行，以及跟踪测试活动的状态。
 
-- **问题跟踪系统**
-    像 JIRA 或 Bugzilla 一样，用于记录和跟踪测试期间发现的错误和问题。
+- **问题跟踪系统**像 JIRA 或 Bugzilla 一样，用于记录和跟踪测试期间发现的错误和问题。
 
-- **[Automated Testing](/zh-cn/wiki/automated-testing/) 框架**
-    以及执行测试用例和脚本的工具（例如 Selenium、Appium、Cypress）。
+- **[Automated Testing](/zh-cn/wiki/automated-testing/) 框架**以及执行测试用例和脚本的工具（例如 Selenium、Appium、Cypress）。
 
-- **[Performance Testing](/zh-cn/wiki/performance-testing/) 工具**
-    例如 JMeter 或 LoadRunner，用于查看与性能相关的测试结果。
+- **[Performance Testing](/zh-cn/wiki/performance-testing/) 工具**例如 JMeter 或 LoadRunner，用于查看与性能相关的测试结果。
 
-- **[Security Testing](/zh-cn/wiki/security-testing/) 工具**
-    例如 OWASP ZAP 或 Fortify，以确保安全测试成为审核过程的一部分。
+- **[Security Testing](/zh-cn/wiki/security-testing/) 工具**例如 OWASP ZAP 或 Fortify，以确保安全测试成为审核过程的一部分。
 
 #### 代码审查员如何使用技术来改进 e2e 测试流程？
 
@@ -562,7 +438,7 @@ order: 0
   **人工智能和机器学习**越来越多地用于识别测试结果中的模式、预测潜在问题区域并针对[risk-based testing](/zh-cn/wiki/risk-based-testing/) 优化[test suites](/zh-cn/wiki/test-suite/)。 [Reviewers](/zh-cn/wiki/reviewer/) 还实施**代码质量工具**，例如 SonarQube，以强制实施编码标准并在开发周期的早期防止缺陷。
   为了简化问题跟踪和协作，[reviewers](/zh-cn/wiki/reviewer/) 将[JIRA](/zh-cn/wiki/jira/) 等**问题跟踪系统**与[test management](/zh-cn/wiki/test-management/) 工具集成，从而实现从[test cases](/zh-cn/wiki/test-case/) 到缺陷的可追溯性。
 
-  ```
+```
   // Example of a CI pipeline script snippet for automated e2e testing
   pipeline {
     agent any
@@ -580,7 +456,7 @@ order: 0
       }
     }
   }
-  ```
+```
 通过利用这些技术，[reviewers](/zh-cn/wiki/reviewer/) 确保端到端测试过程高效、可靠，并与现代软件开发实践保持一致。
 
 #### 代码审查员在工作中可能会使用哪些常见软件平台？
@@ -615,39 +491,19 @@ order: 0
   为了应对这些挑战，[reviewers](/zh-cn/wiki/reviewer/) 经常采用以下策略：
 
 - 优先考虑并关注关键的用户旅程。
-  - 实施稳健的
-    **重试机制**
-    和
-    **等待策略**
-    。
+  - 实施稳健的 **重试机制**和 **等待策略** 。
 
-- 使用
-    **服务虚拟化**
-    或
-    **嘲笑**
-    稳定外部依赖。
+- 使用 **服务虚拟化**或 **嘲笑**稳定外部依赖。
 
-- 确保
-    **[test environment](/zh-cn/wiki/test-environment/) 奇偶校验**
-    与生产。
+- 确保 **[test environment](/zh-cn/wiki/test-environment/) 奇偶校验**与生产。
 
-- 领养
-    **[test data](/zh-cn/wiki/test-data/)一代**
-    工具和匿名化技术。
+- 领养 **[test data](/zh-cn/wiki/test-data/)一代**工具和匿名化技术。
 
-- 利用
-    **持续集成**
-    (CI) 经常运行测试并尽早发现问题。
+- 利用 **持续集成** (CI) 经常运行测试并尽早发现问题。
 
-- 实施
-    **[cross-browser testing](/zh-cn/wiki/cross-browser-testing/) 工具**
-    跨不同平台实现自动化。
+- 实施 **[cross-browser testing](/zh-cn/wiki/cross-browser-testing/) 工具**跨不同平台实现自动化。
 
-- 加强与
-    **详细报告**
-    和
-    **仪表板**
-    为了能见度。
+- 加强与 **详细报告**和 **仪表板**为了能见度。
 
 - **不稳定**：测试可能不可靠，由于计时问题、外部依赖性或网络不稳定而间歇性地通过和失败。
   - **复杂性**：E2e 测试覆盖整个堆栈，这可能是复杂且多方面的，因此很难查明问题的根本原因。
@@ -658,120 +514,63 @@ order: 0
   - **跨浏览器/设备测试**：确保跨不同浏览器和设备的一致行为增加了复杂性。
   - **可见性和沟通**：向开发团队提供清晰的反馈和结果，特别是在处理间歇性问题时。
   - 优先考虑并关注关键的用户旅程。
-  - 实施稳健的
-    **重试机制**
-    和
-    **等待策略**
-    。
+  - 实施稳健的 **重试机制**和 **等待策略** 。
 
-- 使用
-    **服务虚拟化**
-    或
-    **嘲笑**
-    稳定外部依赖。
+- 使用 **服务虚拟化**或 **嘲笑**稳定外部依赖。
 
-- 确保
-    **[test environment](/zh-cn/wiki/test-environment/) 奇偶校验**
-    与生产。
+- 确保 **[test environment](/zh-cn/wiki/test-environment/) 奇偶校验**与生产。
 
-- 领养
-    **[test data](/zh-cn/wiki/test-data/)一代**
-    工具和匿名化技术。
+- 领养 **[test data](/zh-cn/wiki/test-data/)一代**工具和匿名化技术。
 
-- 利用
-    **持续集成**
-    (CI) 经常运行测试并尽早发现问题。
+- 利用 **持续集成** (CI) 经常运行测试并尽早发现问题。
 
-- 实施
-    **[cross-browser testing](/zh-cn/wiki/cross-browser-testing/) 工具**
-    跨不同平台实现自动化。
+- 实施 **[cross-browser testing](/zh-cn/wiki/cross-browser-testing/) 工具**跨不同平台实现自动化。
 
-- 加强与
-    **详细报告**
-    和
-    **仪表板**
-    为了能见度。
+- 加强与 **详细报告**和 **仪表板**为了能见度。
 
 #### 代码审查员如何克服这些挑战？
 
 为了克服 e2e 测试中的挑战，[reviewers](/zh-cn/wiki/reviewer/) 应该：
 
-- **优先测试**
-    基于风险和影响，首先关注关键功能。
+- **优先测试**基于风险和影响，首先关注关键功能。
 
-- 实施
-    **持续集成**
-    （CI）和
-    **持续部署**
-    (CD) 简化测试流程并确保即时反馈。
+- 实施 **持续集成** （CI）和 **持续部署** (CD) 简化测试流程并确保即时反馈。
 
-- 使用
-    **版本控制**
-    系统来管理测试脚本并跟踪更改，从而在必要时促进协作和回滚。
+- 使用 **版本控制**系统来管理测试脚本并跟踪更改，从而在必要时促进协作和回滚。
 
-- 申请
-    **模块化测试设计**
-    创建可重用的组件，减少维护并提高可扩展性。
+- 申请 **模块化测试设计**创建可重用的组件，减少维护并提高可扩展性。
 
-- **自动化[test data](/zh-cn/wiki/test-data/)生成**
-    和管理，以确保测试拥有必要的数据而无需人工干预。
+- **自动化[test data](/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
 
-- 利用
-    **并行执行**
-    同时运行测试，减少总体测试执行时间。
+- 利用 **并行执行**同时运行测试，减少总体测试执行时间。
 
-- **查看测试结果**
-    定期使用仪表板和报告工具来快速识别和解决故障。
+- **查看测试结果**定期使用仪表板和报告工具来快速识别和解决故障。
 
-- **重构测试**
-    定期进行，以提高清晰度、效率和可维护性。
+- **重构测试**定期进行，以提高清晰度、效率和可维护性。
 
-- 保持更新
-    **最新的测试工具和框架**
-    利用新功能和社区支持。
+- 保持更新 **最新的测试工具和框架**利用新功能和社区支持。
 
-- 培养一个
-    **协作文化**
-    开发人员、测试人员和其他利益相关者之间加强沟通并及时解决问题。
-  通过采用这些策略，[reviewers](/zh-cn/wiki/reviewer/) 可以有效管理软件自动化中端到端测试的复杂性。
+- 培养一个 **协作文化**开发人员、测试人员和其他利益相关者之间加强沟通并及时解决问题。 通过采用这些策略，[reviewers](/zh-cn/wiki/reviewer/) 可以有效管理软件自动化中端到端测试的复杂性。
 
-- **优先测试**
-    基于风险和影响，首先关注关键功能。
+- **优先测试**基于风险和影响，首先关注关键功能。
 
-- 实施
-    **持续集成**
-    （CI）和
-    **持续部署**
-    (CD) 简化测试流程并确保即时反馈。
+- 实施 **持续集成** （CI）和 **持续部署** (CD) 简化测试流程并确保即时反馈。
 
-- 使用
-    **版本控制**
-    系统来管理测试脚本并跟踪更改，从而在必要时促进协作和回滚。
+- 使用 **版本控制**系统来管理测试脚本并跟踪更改，从而在必要时促进协作和回滚。
 
-- 申请
-    **模块化测试设计**
-    创建可重用的组件，减少维护并提高可扩展性。
+- 申请 **模块化测试设计**创建可重用的组件，减少维护并提高可扩展性。
 
-- **自动化[test data](/zh-cn/wiki/test-data/)生成**
-    和管理，以确保测试拥有必要的数据而无需人工干预。
+- **自动化[test data](/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
 
-- 利用
-    **并行执行**
-    同时运行测试，减少总体测试执行时间。
+- 利用 **并行执行**同时运行测试，减少总体测试执行时间。
 
-- **查看测试结果**
-    定期使用仪表板和报告工具来快速识别和解决故障。
+- **查看测试结果**定期使用仪表板和报告工具来快速识别和解决故障。
 
-- **重构测试**
-    定期进行，以提高清晰度、效率和可维护性。
+- **重构测试**定期进行，以提高清晰度、效率和可维护性。
 
-- 保持更新
-    **最新的测试工具和框架**
-    利用新功能和社区支持。
+- 保持更新 **最新的测试工具和框架**利用新功能和社区支持。
 
-- 培养一个
-    **协作文化**
-    开发人员、测试人员和其他利益相关者之间加强沟通并及时解决问题。
+- 培养一个 **协作文化**开发人员、测试人员和其他利益相关者之间加强沟通并及时解决问题。
 
 #### 业界开发了哪些解决方案来支持评审员进行 e2e 测试？
 
