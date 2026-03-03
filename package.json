@@ -23,6 +23,7 @@
     "wiki:clean:check": "node scripts/wiki-markdown-cleaner.mjs --check",
     "wiki:clean": "node scripts/wiki-markdown-cleaner.mjs --write",
     "wiki:style:check": "node scripts/wiki-markdown-style-check.mjs",
+    "wiki:style:check:strict": "node scripts/wiki-markdown-style-check.mjs --strict",
     "wiki:style:fix": "node scripts/wiki-markdown-style-fix.mjs",
     "test": "cd tests && npm run test:unit"
   },

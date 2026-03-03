@@ -30,7 +30,7 @@ jobs:
 
       - name: Wiki style check (strict gate)
         if: ${{ vars.WIKI_STYLE_STRICT == 'true' }}
-        run: npm run wiki:style:check
+        run: npm run wiki:style:check:strict
 
       - name: Build
         run: npm run build

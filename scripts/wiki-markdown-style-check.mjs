@@ -15,6 +15,7 @@ import path from "path";
 
 const WIKI_DIR = path.join(process.cwd(), "src", "content", "wiki");
 const JSON_OUT = process.argv.includes("--json");
+const STRICT = process.argv.includes("--strict");
 
 function parseBody(content) {
   if (!content.startsWith("---\n")) return null;
@@ -147,7 +148,7 @@ function main() {
     }
   }
 
-  if (totalIssues > 0) process.exitCode = 1;
+  if (STRICT && totalIssues > 0) process.exitCode = 1;
 }
 
 main();
