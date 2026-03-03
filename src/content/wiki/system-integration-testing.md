@@ -80,7 +80,7 @@ order: 0
 - **支持[增量测试](/zh-cn/wiki/incremental-testing/)**：允许分阶段测试，这有利于识别复杂系统中的问题。
 - **启用[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景**：提供一种执行和验证跨多个系统组件的端到端工作流程的方法。
 - **澄清依赖关系**：帮助理解和管理不同系统模块之间的依赖关系。
-- **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[Verification](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
+- **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[验证 ](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
   通过关注这些优势，SIT 致力于提供与功能性和非[功能需求](/zh-cn/wiki/functional-requirements/) 相一致的强大且可靠的软件系统。
 
 - **确保互操作性**：验证不同的系统模块或服务是否按预期协同工作。
@@ -92,7 +92,7 @@ order: 0
 - **支持[增量测试](/zh-cn/wiki/incremental-testing/)**：允许分阶段测试，这有利于识别复杂系统中的问题。
 - **启用[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景**：提供一种执行和验证跨多个系统组件的端到端工作流程的方法。
 - **澄清依赖关系**：帮助理解和管理不同系统模块之间的依赖关系。
-- **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[Verification](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
+- **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[验证 ](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
 
 #### 跳过系统集成测试的潜在后果是什么？
 

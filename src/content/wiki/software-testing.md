@@ -106,7 +106,7 @@ order: 0
 
 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 和测试是软件开发中密切相关的概念，但它们有不同的目的。
   **QA** 是一个主动的流程，重点是通过确保用于管理和创建可交付成果的流程充分且有效来防止缺陷。它涵盖整个软件开发生命周期，旨在改进开发和测试流程，以便在开发产品时不会出现缺陷。质量保证活动包括流程定义和实施、培训、审核和流程改进计划。
-  另一方面，**测试**是一个反应过程，也是 QA 的一个子集。它涉及系统或应用程序的实际执行，旨在查找软件[bugs](/zh-cn/wiki/bug/)。测试涉及 [verification](/zh-cn/wiki/verification/) 和验证 - 确保软件满足指导其设计和开发的业务和技术要求，并按预期工作。
+  另一方面，**测试**是一个反应过程，也是 QA 的一个子集。它涉及系统或应用程序的实际执行，旨在查找软件[bugs](/zh-cn/wiki/bug/)。测试涉及 [验证 ](/zh-cn/wiki/verification/) 和验证 - 确保软件满足指导其设计和开发的业务和技术要求，并按预期工作。
   本质上，QA 是关于**过程**和**预防**，而测试是关于**产品**和**检测**。质量保证的目的是改进和稳定生产（及其流程），以避免导致缺陷的问题，而测试的目的是识别产品本身的缺陷。测试是更广泛的 QA 流程中的一项关键活动，涉及软件和开发流程的整体 [质量管理](/zh-cn/wiki/quality-management/)。
 
 ### 测试技术
@@ -115,7 +115,7 @@ order: 0
 
 [白盒测试](/zh-cn/wiki/white-box-testing/)，也称为透明、玻璃或[结构测试](/zh-cn/wiki/structural-testing/)，涉及测试应用程序的内部结构或工作方式，而不是其功能。在[白盒测试](/zh-cn/wiki/white-box-testing/) 中，[测试用例](/zh-cn/wiki/test-case/) 是根据应用程序的内部代码路径、代码结构和软件本身的实现派生的。测试人员需要了解内部代码，通常是具有开发技能的开发人员或测试人员。
   另一方面，[黑盒测试](/zh-cn/wiki/black-box-testing/) 将软件视为“黑匣子”——不了解内部实现。 [测试用例](/zh-cn/wiki/test-case/)是根据软件的规范和要求编写的。 [黑盒测试](/zh-cn/wiki/black-box-testing/) 专注于使用各种输入测试软件并根据预期结果验证输出。它通常由不需要了解应用程序的编码或内部结构的测试人员执行。
-  总之，**[白盒测试](/zh-cn/wiki/white-box-testing/)** 是基于代码的测试，测试人员需要了解应用程序的内部工作原理，而 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 是输入/输出驱动的测试，不需要了解代码。两者之间的选择取决于测试目标，[白盒测试](/zh-cn/wiki/white-box-testing/) 适用于算法测试、安全性和优化，[黑盒测试](/zh-cn/wiki/black-box-testing/) 非常适合验证，[verification](/zh-cn/wiki/verification/) 适用于软件行为。
+  总之，**[白盒测试](/zh-cn/wiki/white-box-testing/)** 是基于代码的测试，测试人员需要了解应用程序的内部工作原理，而 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 是输入/输出驱动的测试，不需要了解代码。两者之间的选择取决于测试目标，[白盒测试](/zh-cn/wiki/white-box-testing/) 适用于算法测试、安全性和优化，[黑盒测试](/zh-cn/wiki/black-box-testing/) 非常适合验证，[验证 ](/zh-cn/wiki/verification/) 适用于软件行为。
 
 #### 什么是灰盒测试？
 
@@ -391,7 +391,7 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
 - **优先级**：评估缺陷的紧迫性和重要性，以确定缺陷的解决顺序。
 - **分配**：将缺陷分配给适当的团队或个人来解决。
 - **解决方案**：通过代码更改或配置调整来纠正缺陷。
-- **[Verification](/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
+- **[验证 ](/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
 - **关闭**：一旦验证并满足验收标准，就正式关闭缺陷。
   在整个过程中，团队成员之间的沟通与协作至关重要。 [缺陷管理](/zh-cn/wiki/defect-management/) 工具通过提供用于跟踪和管理缺陷的集中平台来促进这一点。这些工具通常与其他软件开发和测试工具集成，从而实现从缺陷发现到解决的无缝工作流程。
   在 [测试自动化](/zh-cn/wiki/test-automation/) 的背景下，[缺陷管理](/zh-cn/wiki/defect-management/) 确保自动化测试在捕获回归方面保持有效，并且及时解决代码更改引入的任何新缺陷，从而保持软件的整体质量和可靠性。
@@ -401,7 +401,7 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
 - **优先级**：评估缺陷的紧迫性和重要性，以确定缺陷的解决顺序。
 - **分配**：将缺陷分配给适当的团队或个人来解决。
 - **解决方案**：通过代码更改或配置调整来纠正缺陷。
-- **[Verification](/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
+- **[验证 ](/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
 - **关闭**：一旦验证并满足验收标准，就正式关闭缺陷。
 
 #### 测试经理的角色是什么？
@@ -564,7 +564,7 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
 [安全测试](/zh-cn/wiki/security-testing/) 是一个旨在发现软件中可能导致安全漏洞的漏洞、威胁和风险的过程。其目标是确保软件系统即使在面临恶意攻击或其他安全威胁时也能够按预期保护数据并维持功能。
   [安全测试](/zh-cn/wiki/security-testing/) 的关键方面包括：
 
-- **[Verification](/zh-cn/wiki/verification/) 身份验证和授权**
+- **[验证 ](/zh-cn/wiki/verification/) 身份验证和授权**
     确保用户身份真实且拥有适当访问权限的机制。
 
 - **数据加密验证**
@@ -584,7 +584,7 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
   [安全测试](/zh-cn/wiki/security-testing/) 在开发生命周期中至关重要，应集成到持续集成/持续部署 (CI/CD) 管道中。自动化 [安全测试](/zh-cn/wiki/security-testing/) 工具，例如静态应用程序 [安全测试](/zh-cn/wiki/security-testing/) (SAST)、动态应用程序 [安全测试](/zh-cn/wiki/security-testing/) (DAST) 和交互式应用程序 [安全测试](/zh-cn/wiki/security-testing/) (IAST)，可用于尽早且频繁地识别安全问题。
   总之，[安全测试](/zh-cn/wiki/security-testing/) 可防止未经授权的访问和数据泄露，确保软件系统的机密性、完整性和可用性。
 
-- **[Verification](/zh-cn/wiki/verification/) 身份验证和授权**
+- **[验证 ](/zh-cn/wiki/verification/) 身份验证和授权**
     确保用户身份真实且拥有适当访问权限的机制。
 
 - **数据加密验证**

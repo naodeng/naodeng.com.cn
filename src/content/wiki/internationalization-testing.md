@@ -209,7 +209,7 @@ order: 0
     进行测试。
 
 - **资源文件**：确保资源文件易于访问和编辑。自动化
-    **[verification](/zh-cn/wiki/verification/) 键值对**
+    **[验证 ](/zh-cn/wiki/verification/) 键值对**
     在资源文件中。
 
 - **性能**：某些语言可能会因文本扩展而影响性能。包括
@@ -244,7 +244,7 @@ order: 0
     进行测试。
 
 - **资源文件**：确保资源文件易于访问和编辑。自动化
-    **[verification](/zh-cn/wiki/verification/) 键值对**
+    **[验证 ](/zh-cn/wiki/verification/) 键值对**
     在资源文件中。
 
 - **性能**：某些语言可能会因文本扩展而影响性能。包括

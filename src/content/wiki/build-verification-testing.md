@@ -136,7 +136,7 @@ order: 0
 
 #### 如何确定构建验证测试套件中包含哪些测试？
 
-确定要包含在 **构建 [Verification](/zh-cn/wiki/verification/) 测试 (BVT)** 套件中的测试涉及确定以下测试子集：
+确定要包含在 **构建 [验证 ](/zh-cn/wiki/verification/) 测试 (BVT)** 套件中的测试涉及确定以下测试子集：
 
 - **关键**：重点关注验证应用程序核心功能的测试。这些应该涵盖您的产品离不开的主要功能。
 - **快速**：选择快速执行的测试以提供即时反馈。BVT 并不意味着详尽无遗，但应该能够在几分钟内运行。
@@ -386,7 +386,7 @@ order: 0
       run: make deploy-staging
     ```
 
-7. **部署后 [Verification](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
+7. **部署后 [验证 ](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
 
     ```
 - name: Smoke Test Production
@@ -450,7 +450,7 @@ order: 0
       run: make deploy-staging
     ```
 
-7. **部署后 [Verification](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
+7. **部署后 [验证 ](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
 
     ```
 - name: Smoke Test Production

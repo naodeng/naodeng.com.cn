@@ -444,7 +444,7 @@ order: 0
     }
     ```
 
-3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
+3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [验证 ](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
 
     ```
     // Arrange
@@ -471,7 +471,7 @@ order: 0
     }
     ```
 
-3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [verification](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
+3. **安排、执行和断言 (AAA) 模式**：使用 [环境搭建](/zh-cn/wiki/setup/) (`Arrange`)、调用 (`Act`) 和 [验证 ](/zh-cn/wiki/verification/) (`Assert`) 构建测试。
 
     ```
     // Arrange

@@ -163,8 +163,8 @@ order: 0
   要应用[进入标准](/zh-cn/wiki/entry-criteria/)：
 
 1. **在测试开始之前查看标准**，以确认满足所有条件。这包括可测试代码的可用性、[测试环境](/zh-cn/wiki/test-environment/) 准备情况、[测试数据](/zh-cn/wiki/test-data/) [环境搭建](/zh-cn/wiki/setup/) 以及先前开发里程碑的完成。
-2. **经常使用清单[verification](/zh-cn/wiki/verification/)**。测试人员检查[进入标准](/zh-cn/wiki/entry-criteria/) 项目列表，将每个项目标记为满足或未满足。只有当所有项目都检查合格后，测试才会继续进行。
-3. **尽可能自动化[verification](/zh-cn/wiki/verification/)**。例如，脚本可用于验证环境[环境搭建](/zh-cn/wiki/setup/) 或[测试数据](/zh-cn/wiki/test-data/) 的可用性。
+2. **经常使用清单[验证 ](/zh-cn/wiki/verification/)**。测试人员检查[进入标准](/zh-cn/wiki/entry-criteria/) 项目列表，将每个项目标记为满足或未满足。只有当所有项目都检查合格后，测试才会继续进行。
+3. **尽可能自动化[验证 ](/zh-cn/wiki/verification/)**。例如，脚本可用于验证环境[环境搭建](/zh-cn/wiki/setup/) 或[测试数据](/zh-cn/wiki/test-data/) 的可用性。
 4. **与利益相关者举行启动会议**，讨论 [进入标准](/zh-cn/wiki/entry-criteria/) 的状态。这确保了测试准备情况的透明度和一致性。
 5. **在[测试计划](/zh-cn/wiki/test-plan/) 或测试准备报告中记录[进入标准](/zh-cn/wiki/entry-criteria/) 的履行情况**。这是项目已准备好进行测试的正式记录。
 6. **与[测试管理](/zh-cn/wiki/test-management/) 工具集成**以跟踪和执行[进入标准](/zh-cn/wiki/entry-criteria/)。许多工具允许设置在下一阶段开始之前必须通过的关卡。
@@ -172,8 +172,8 @@ order: 0
   本质上，[进入标准](/zh-cn/wiki/entry-criteria/) 被用作**前提条件检查**，以促进结构化和有效的测试，防止过早[测试执行](/zh-cn/wiki/test-execution/) 和潜在的返工。
 
 1. **在测试开始之前查看标准**，以确认满足所有条件。这包括可测试代码的可用性、[测试环境](/zh-cn/wiki/test-environment/) 准备情况、[测试数据](/zh-cn/wiki/test-data/) [环境搭建](/zh-cn/wiki/setup/) 以及先前开发里程碑的完成。
-2. **经常使用清单[verification](/zh-cn/wiki/verification/)**。测试人员检查 [进入标准](/zh-cn/wiki/entry-criteria/) 项目列表，将每个项目标记为满足或未满足。只有当所有项目都检查合格后，测试才会继续进行。
-3. **尽可能自动化[verification](/zh-cn/wiki/verification/)**。例如，脚本可用于验证环境[环境搭建](/zh-cn/wiki/setup/) 或[测试数据](/zh-cn/wiki/test-data/) 的可用性。
+2. **经常使用清单[验证 ](/zh-cn/wiki/verification/)**。测试人员检查 [进入标准](/zh-cn/wiki/entry-criteria/) 项目列表，将每个项目标记为满足或未满足。只有当所有项目都检查合格后，测试才会继续进行。
+3. **尽可能自动化[验证 ](/zh-cn/wiki/verification/)**。例如，脚本可用于验证环境[环境搭建](/zh-cn/wiki/setup/) 或[测试数据](/zh-cn/wiki/test-data/) 的可用性。
 4. **与利益相关者举行启动会议**，讨论 [进入标准](/zh-cn/wiki/entry-criteria/) 的状态。这确保了测试准备情况的透明度和一致性。
 5. **在[测试计划](/zh-cn/wiki/test-plan/) 或测试准备报告中记录[进入标准](/zh-cn/wiki/entry-criteria/) 的履行情况**。这是项目已准备好进行测试的正式记录。
 6. **与[测试管理](/zh-cn/wiki/test-management/) 工具集成**以跟踪和执行[进入标准](/zh-cn/wiki/entry-criteria/)。许多工具允许设置在下一阶段开始之前必须通过的关卡。

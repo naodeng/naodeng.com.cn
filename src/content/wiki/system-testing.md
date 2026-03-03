@@ -58,7 +58,7 @@ order: 0
 
 #### 为什么系统测试在软件开发生命周期中很重要？
 
-[系统测试](/zh-cn/wiki/system-testing/) 在软件开发生命周期中至关重要，因为它充当全面的[verification](/zh-cn/wiki/verification/) 阶段，以确保软件在类似生产的环境中按预期运行。它验证各种系统组件的**集成**，并根据指定的要求检查端到端系统功能。通过模拟现实世界的场景，[系统测试](/zh-cn/wiki/system-testing/) 发现了单元或集成测试可能遗漏的缺陷，因为它们专注于单个模块或有限的交互。
+[系统测试](/zh-cn/wiki/system-testing/) 在软件开发生命周期中至关重要，因为它充当全面的[验证 ](/zh-cn/wiki/verification/) 阶段，以确保软件在类似生产的环境中按预期运行。它验证各种系统组件的**集成**，并根据指定的要求检查端到端系统功能。通过模拟现实世界的场景，[系统测试](/zh-cn/wiki/system-testing/) 发现了单元或集成测试可能遗漏的缺陷，因为它们专注于单个模块或有限的交互。
   此级别的测试是评估系统在各种条件下的行为以及评估非[功能需求](/zh-cn/wiki/functional-requirements/)（例如**性能**、**安全性**和**可用性**）的第一次机会。这是最终用户可以访问软件之前的一个关键检查点，可以降低部署后问题的风险，这些问题可能会造成高昂的成本并损害组织的声誉。
   此外，[系统测试](/zh-cn/wiki/system-testing/) 有助于确保**法规遵从性**，并且可以成为具有严格质量标准的行业的强制性步骤。它提供了软件能够满足技术和业务需求的一定程度的保证，这对于利益相关者的信心和产品的成功至关重要。
   总之，[系统测试](/zh-cn/wiki/system-testing/) 是充当看门人的关键阶段，确认软件已准备好发布并能够为用户提供预期价值，同时最大限度地减少对运营和客户满意度的潜在负面影响。
@@ -108,7 +108,7 @@ order: 0
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：确保多个单元或组件按预期协同工作。
 - **[验收测试](/zh-cn/wiki/acceptance-testing/)** ：根据业务需求验证软件，通常由最终用户执行，以确定系统是否可以接受交付。
   相比之下，[系统测试](/zh-cn/wiki/system-testing/) 更全面，关注整个被测系统的行为。它是在一个紧密**模拟生产**的环境中执行的，包括硬件、软件和网络配置。此级别的测试旨在识别仅在组件在整个系统环境中集成和交互时才会出现的缺陷。
-  [系统测试](/zh-cn/wiki/system-testing/) 通常是**测试团队的责任**，而不是编写代码的开发人员。它在[集成测试](/zh-cn/wiki/integration-testing/) 之后和[验收测试](/zh-cn/wiki/acceptance-testing/) 之前进行，作为软件发布到市场或移交给[验收测试](/zh-cn/wiki/acceptance-testing/) 之前的最终[verification](/zh-cn/wiki/verification/)。
+  [系统测试](/zh-cn/wiki/system-testing/) 通常是**测试团队的责任**，而不是编写代码的开发人员。它在[集成测试](/zh-cn/wiki/integration-testing/) 之后和[验收测试](/zh-cn/wiki/acceptance-testing/) 之前进行，作为软件发布到市场或移交给[验收测试](/zh-cn/wiki/acceptance-testing/) 之前的最终[验证 ](/zh-cn/wiki/verification/)。
   虽然其他测试类型可能单独关注**功能**、**性能**或**安全性**，但 [系统测试](/zh-cn/wiki/system-testing/) 涵盖所有这些方面，以确保对软件质量进行全面评估。这是捕获可能影响用户体验或在现实场景中导致系统故障的问题的关键步骤。
 
 - **[单元测试](/zh-cn/wiki/unit-testing/)** ：专注于单个组件或代码片段，以验证每个单元是否能够独立正常运行。

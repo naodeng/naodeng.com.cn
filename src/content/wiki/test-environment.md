@@ -2,12 +2,6 @@
 title: "测试环境 ｜ Test Environment"
 description: "测试环境 (Test Environment) 是执行软件测试的受控设置。它包括硬件、软件、网络配置以及模拟类似生产环境所需的其他工具和服务。这种设置允许测试人员验证新构建的版本，确保应用程序在各种条件下按预期运行，而不会影响实际的生产系统。为了保持测试的完整性，将被隔离在 生产环境 (production environment) 之外至关重要。这种分离有助于防止对在线系统和用户产生意外影响。测试环境应是生产环境的近似副本，以便尽早发现特定于环境的问题。确保测试环境的保真度涉及将其配置与生产环境对齐，包括软件版本、网络设置和 数据库 (database) 副本。基础设施即代码 (Infrastructure as Code, IaC) 等工具可以自动化该设置，使其更容易复制并保持一致性。测试环境通常会与重大更改或发布同步刷新或更新。这些更新的频率取决于项目的需求和应用程序的变更率。有效的测试环境管理涉及监督这些环境的可用性、维护和分配。必须解决配置漂移、资源争用和数据管理等挑战，以确保操作顺畅。测试环境中的安全性至关重要，尤其是在处理敏感数据时。"
 section: "T"
-related:
-  - test-infrastructure
-  - automated-testing
-  - test-data
-  - manual-testing
-  - web-testing
 order: 0
 ---
 
@@ -341,26 +335,25 @@ order: 0
 - **基础设施即代码 (IaC)**：使用 Terraform 或 Ansible 等 IaC 工具自动设置环境。这确保了一致性和可重复性。
 
 #### 使用 Terraform 的 IaC 示例
+  ```
   资源“aws_instance”“示例”{
   ami =“ami-0c55b159cbfafe1f0”
   实例类型=“t2.micro”
   }
 
   ```
-- **Containerization**: Utilize Docker or Kubernetes to create isolated and reproducible environments that can be spun up quickly.
-- **Monitoring and Logging**: Implement robust monitoring and logging to quickly identify and address issues.
-- **Access Control**: Define and enforce access controls to maintain security and prevent unauthorized changes.
-- **Environment Synchronization**: Regularly sync test environments with production data and configurations, while sanitizing sensitive information.
-- **Test Data Management**: Use tools and scripts to manage and generate test data, ensuring data is relevant and up-to-date.
-- **Communication Tools**: Employ communication tools to keep team members informed about environment status and changes.
-- **Environment Booking System**: Implement a booking system to manage environment usage and avoid conflicts.
-- **Performance Testing**: Conduct regular performance testing to ensure the test environment can handle load and does not become a bottleneck.
-  By integrating these strategies, test automation engineers can address common challenges and maintain efficient and effective test environments.
-  ```
-
+- **容器化（Containerization）**：使用 Docker 或 Kubernetes 创建隔离且可复现的环境，并能够快速启动和销毁。
+- **监控与日志（Monitoring and Logging）**：实施完善的监控和日志机制，以便快速识别并解决问题。
+- **访问控制（Access Control）**：定义并强制执行访问控制策略，保障安全性并防止未授权的更改。
+- **环境同步（Environment Synchronization）**：定期将测试环境与生产环境的数据和配置进行同步，同时对敏感信息进行脱敏处理。
+- **测试数据管理（Test Data Management）**：使用工具和脚本管理和生成测试数据，确保数据相关、准确且保持最新。
+- **沟通工具（Communication Tools）**：使用沟通协作工具，让团队成员及时了解环境状态和变更情况。
+- **环境预订系统（Environment Booking System）**：实施环境预订机制，管理环境使用情况，避免冲突。
+- **性能测试（Performance Testing）**：定期开展性能测试，确保测试环境能够承载负载，避免成为瓶颈。
 - **版本控制**：使用环境配置的版本控制系统来跟踪更改并在必要时回滚。
 - **基础设施即代码 (IaC)**：使用 Terraform 或 Ansible 等 IaC 工具自动设置环境。这确保了一致性和可重复性。
 
+通过整合这些策略，测试自动化工程师可以有效应对常见挑战，维持高效且稳定的测试环境。
 
 #### 测试环境经理的角色和职责是什么？
 
@@ -542,9 +535,9 @@ order: 0
 #### 云测试环境如何保证安全？
 
 确保基于云的[测试环境](/zh-cn/wiki/test-environment/) 的安全性涉及实施最佳实践和利用特定于云的安全功能。 **访问控制**至关重要；使用**身份和访问管理 (IAM)** 策略向用户和服务授予所需的最少权限。启用**多重身份验证 (MFA)** 以获得额外的安全层。
-  **数据保护**至关重要。使用云提供商提供的 TLS 和存储加密选项等协议对 **传输中** 和 **静态** 的敏感数据进行加密。定期更新**加密密钥**并安全地管理它们，最好使用基于云的密钥管理服务。
-  **网络安全**措施应包括设置**防火墙**和**虚拟专用网络（VPN）**来控制到[测试环境](/zh-cn/wiki/test-environment/)的流量。使用**安全组**和**网络访问控制列表 (NACL)** 定义入站和出站流量的精细规则。
-  **监控和记录**对于检测和响应安全事件至关重要。启用**审核日志**并为异常活动设置**警报**。使用云原生工具或第三方解决方案进行持续监控。
-  应保持**遵守**行业标准和法规。定期执行**安全评估**和**[渗透测试](/zh-cn/wiki/penetration-testing/)**来识别漏洞。
-  使用**基础设施即代码 (IaC)** 自动化**安全配置和补丁管理，以确保所有环境中应用程序的一致性。
-  最后，实施带有定期**备份**的**灾难恢复计划**，并定义明确的**事件响应程序**，以最大程度地减少任何安全漏洞的影响。
+**数据保护**至关重要。使用云提供商提供的 TLS 和存储加密选项等协议对 **传输中** 和 **静态** 的敏感数据进行加密。定期更新**加密密钥**并安全地管理它们，最好使用基于云的密钥管理服务。
+**网络安全**措施应包括设置**防火墙**和**虚拟专用网络（VPN）**来控制到[测试环境](/zh-cn/wiki/test-environment/)的流量。使用**安全组**和**网络访问控制列表 (NACL)** 定义入站和出站流量的精细规则。
+**监控和记录**对于检测和响应安全事件至关重要。启用**审核日志**并为异常活动设置**警报**。使用云原生工具或第三方解决方案进行持续监控。
+应保持**遵守**行业标准和法规。定期执行**安全评估**和**[渗透测试](/zh-cn/wiki/penetration-testing/)**来识别漏洞。
+使用**基础设施即代码 (IaC)** 自动化**安全配置和补丁管理，以确保所有环境中应用程序的一致性。
+最后，实施带有定期**备份**的**灾难恢复计划**，并定义明确的**事件响应程序**，以最大程度地减少任何安全漏洞的影响。

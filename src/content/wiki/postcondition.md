@@ -93,7 +93,7 @@ order: 0
 [后置条件](/zh-cn/wiki/postcondition/) 通过确保 [测试场景](/zh-cn/wiki/test-scenario/) 在执行后使系统处于稳定的预期状态，对整个测试过程做出贡献。这对于维护测试完整性至关重要，特别是在自动化[测试套件](/zh-cn/wiki/test-suite/) 中，其中后续测试可能依赖于处于特定状态的系统。通过验证[后置条件](/zh-cn/wiki/postcondition/)，测试人员可以确认系统的行为与预期结果一致，这对于测试结果的准确性至关重要。
   在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被实现为必须通过测试才能成功的断言。这些断言充当检查点，验证系统的状态是否与 [测试用例](/zh-cn/wiki/test-case/) 运行后的预期结果相匹配。如果不满足[后置条件](/zh-cn/wiki/postcondition/)，则可能表示应用程序存在缺陷或[测试用例](/zh-cn/wiki/test-case/) 本身存在缺陷。
   管理多个[后置条件](/zh-cn/wiki/postcondition/)涉及构建测试以逻辑地、干净地检查每个条件，通常使用拆卸方法来重置系统状态并确保测试之间的隔离。这种方法有助于维持[测试套件](/zh-cn/wiki/test-suite/)可靠性并防止[误报](/zh-cn/wiki/false-positive/)或由于环境问题而产生负面影响。
-  总体而言，[后置条件](/zh-cn/wiki/postcondition/) 是测试[verification](/zh-cn/wiki/verification/) 流程的组成部分，提供了明确的成功标准，并有助于确保每个[测试用例](/zh-cn/wiki/test-case/) 都有助于对软件的功能和稳健性进行全面评估。
+  总体而言，[后置条件](/zh-cn/wiki/postcondition/) 是测试[验证 ](/zh-cn/wiki/verification/) 流程的组成部分，提供了明确的成功标准，并有助于确保每个[测试用例](/zh-cn/wiki/test-case/) 都有助于对软件的功能和稳健性进行全面评估。
 
 #### 后置条件在端到端测试中的作用是什么？
 
@@ -269,7 +269,7 @@ order: 0
 - **保持相关性**：确保[后置条件](/zh-cn/wiki/postcondition/) 与[测试用例](/zh-cn/wiki/test-case/) 的目标直接相关。不相关的 [后置条件](/zh-cn/wiki/postcondition/) 会增加噪音并降低测试结果的清晰度。
 - **保持一致性**：在所有[测试用例](/zh-cn/wiki/test-case/) 中对[后置条件](/zh-cn/wiki/postcondition/) 使用一致的格式和术语，以便于理解和维护。
 - **确保隔离**：[后置条件](/zh-cn/wiki/postcondition/) 不应依赖于其他[测试用例](/zh-cn/wiki/test-case/) 的结果。每个测试都应该自行清理以保持测试独立性。
-- **自动化[Verification](/zh-cn/wiki/verification/)**：只要有可能，自动验证[后置条件](/zh-cn/wiki/postcondition/)以减少手动工作并提高可靠性。
+- **自动化[验证 ](/zh-cn/wiki/verification/)**：只要有可能，自动验证[后置条件](/zh-cn/wiki/postcondition/)以减少手动工作并提高可靠性。
 - **使用断言**：在 [测试脚本](/zh-cn/wiki/test-script/) 中实现断言，以编程方式检查 [后置条件](/zh-cn/wiki/postcondition/)。例如：
 
   ```
@@ -284,7 +284,7 @@ order: 0
 - **保持相关性**：确保[后置条件](/zh-cn/wiki/postcondition/) 与[测试用例](/zh-cn/wiki/test-case/) 的目标直接相关。不相关的[后置条件](/zh-cn/wiki/postcondition/) 会增加噪音并降低测试结果的清晰度。
 - **保持一致性**：在所有[测试用例](/zh-cn/wiki/test-case/) 中对[后置条件](/zh-cn/wiki/postcondition/) 使用一致的格式和术语，以便于理解和维护。
 - **确保隔离**：[后置条件](/zh-cn/wiki/postcondition/) 不应依赖于其他[测试用例](/zh-cn/wiki/test-case/) 的结果。每个测试都应该自行清理以保持测试独立性。
-- **自动化[Verification](/zh-cn/wiki/verification/)**：只要有可能，自动验证[后置条件](/zh-cn/wiki/postcondition/)以减少手动工作并提高可靠性。
+- **自动化[验证 ](/zh-cn/wiki/verification/)**：只要有可能，自动验证[后置条件](/zh-cn/wiki/postcondition/)以减少手动工作并提高可靠性。
 - **使用断言**：在 [测试脚本](/zh-cn/wiki/test-script/) 中实现断言，以编程方式检查 [后置条件](/zh-cn/wiki/postcondition/)。例如：
 - **文档更改**：如果[测试用例](/zh-cn/wiki/test-case/) 或基础功能发生更改，请相应更新[后置条件](/zh-cn/wiki/postcondition/) 以使其保持最新状态。
 - **定期审查**：作为测试维护的一部分定期审查[后置条件](/zh-cn/wiki/postcondition/)，以确保它们仍然符合应用程序的预期行为。

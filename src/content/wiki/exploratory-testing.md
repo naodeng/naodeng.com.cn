@@ -70,7 +70,7 @@ order: 0
 [探索性测试](/zh-cn/wiki/exploratory-testing/) 和脚本化测试与[软件测试](/zh-cn/wiki/software-testing/) 是根本不同的方法。 **脚本化测试**涉及预定义的[测试用例](/zh-cn/wiki/test-case/)以及特定步骤和预期结果。这些测试是提前计划的，并通常在 [测试管理](/zh-cn/wiki/test-management/) 工具中精确地按照编写的内容执行。
   相比之下，**[探索性测试](/zh-cn/wiki/exploratory-testing/)** 是一种非正式的、无脚本的方法，测试人员可以动态探索软件，即时设计和执行测试。它依靠测试人员的创造力、经验和直觉来指导测试过程。使用这种方法的测试人员并不局限于预先编写的[测试脚本](/zh-cn/wiki/test-script/)，而是积极地与软件互动以发现脚本测试可能遗漏的问题。
   虽然脚本化测试提供了一组结构化且可重复的测试，但 [探索性测试](/zh-cn/wiki/exploratory-testing/) 的适应性更强，可用于调查难以编写脚本或行为未知或复杂的区域。它允许测试人员实时响应软件，探索测试计划阶段可能未考虑的不同场景和用户路径。
-  [探索性测试](/zh-cn/wiki/exploratory-testing/) 通常与脚本测试结合使用，在结构化[verification](/zh-cn/wiki/verification/) 和创造性发现之间提供平衡。当需求发生变化或对系统行为的了解有限时，它在早期开发阶段特别有价值。另一方面，脚本测试通常用于 [回归测试](/zh-cn/wiki/regression-testing/) 并验证稳定产品中已知的预期行为。
+  [探索性测试](/zh-cn/wiki/exploratory-testing/) 通常与脚本测试结合使用，在结构化[验证 ](/zh-cn/wiki/verification/) 和创造性发现之间提供平衡。当需求发生变化或对系统行为的了解有限时，它在早期开发阶段特别有价值。另一方面，脚本测试通常用于 [回归测试](/zh-cn/wiki/regression-testing/) 并验证稳定产品中已知的预期行为。
 
 #### 探索性测试的主要好处是什么？
 

@@ -168,7 +168,7 @@ order: 0
 - **一致性**：自动化测试每次运行都能提供一致的结果，消除人为错误。评估测试结果的重复性。
 - **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[环境搭建](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
 - **维护**：自动化测试需要定期更新以跟上应用程序的变化。评估维护[测试用例](/zh-cn/wiki/test-case/) 所需的工作量。
-- **复杂性**：某些测试，尤其是涉及视觉 [verification](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定[测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
+- **复杂性**：某些测试，尤其是涉及视觉 [验证 ](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定[测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
 - **覆盖率**：自动化可以通过快速执行大量测试来增加[测试覆盖率](/zh-cn/wiki/test-coverage/)。分析每种方法所实现的[测试覆盖率](/zh-cn/wiki/test-coverage/) 的广度和深度。
 - **技能要求**：[自动化测试](/zh-cn/wiki/automated-testing/) 通常需要编程技能，而 [手动测试](/zh-cn/wiki/manual-testing/) 可能更多地依赖领域专业知识。考虑您团队中可用的技能。
 - **反馈**：[手动测试](/zh-cn/wiki/manual-testing/) 可以提供即时且直观的反馈，这在 [探索性测试](/zh-cn/wiki/exploratory-testing/) 期间非常有价值。评估所需反馈的类型以及所需的速度。
@@ -178,7 +178,7 @@ order: 0
 - **一致性**：自动化测试每次运行都能提供一致的结果，消除人为错误。评估测试结果的重复性。
 - **成本**：最初，[自动化测试](/zh-cn/wiki/automated-testing/) 需要更高的工具投资和[环境搭建](/zh-cn/wiki/setup/)，但随着时间的推移，它可以更具成本效益。比较两种方法的长期成本。
 - **维护**：自动化测试需要定期更新以跟上应用程序的变化。评估维护[测试用例](/zh-cn/wiki/test-case/) 所需的工作量。
-- **复杂性**：某些测试，尤其是涉及视觉 [verification](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定 [测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
+- **复杂性**：某些测试，尤其是涉及视觉 [验证 ](/zh-cn/wiki/verification/) 或复杂用户交互的测试，手动执行可能会更有效。确定 [测试场景](/zh-cn/wiki/test-scenario/) 的复杂性及其自动化的适用性。
 - **覆盖率**：自动化可以通过快速执行大量测试来增加[测试覆盖率](/zh-cn/wiki/test-coverage/)。分析每种方法实现的[测试覆盖率](/zh-cn/wiki/test-coverage/) 的广度和深度。
 - **技能要求**：[自动化测试](/zh-cn/wiki/automated-testing/) 通常需要编程技能，而 [手动测试](/zh-cn/wiki/manual-testing/) 可能更多地依赖领域专业知识。考虑您团队中可用的技能。
 - **反馈**：[手动测试](/zh-cn/wiki/manual-testing/) 可以提供即时且直观的反馈，这在 [探索性测试](/zh-cn/wiki/exploratory-testing/) 期间非常有价值。评估所需反馈的类型以及所需的速度。
