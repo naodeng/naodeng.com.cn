@@ -235,12 +235,20 @@ const breadcrumbSchema =
           crossorigin="anonymous"
         />
         <!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) -->
-        <script is:inline
-          id="counterscale-script"
-          data-site-id="inaodeng.com"
-          src="https://analytics.inaodeng.com/tracker.js"
-          defer
-        />
+        <script is:inline>
+          (() => {
+            const allowedHosts = new Set(["inaodeng.com", "www.inaodeng.com"]);
+            const hostname = (window.location.hostname || "").toLowerCase();
+            if (!allowedHosts.has(hostname)) return;
+            if (document.getElementById("counterscale-script")) return;
+            const script = document.createElement("script");
+            script.id = "counterscale-script";
+            script.defer = true;
+            script.src = "https://analytics.inaodeng.com/tracker.js";
+            script.setAttribute("data-site-id", "inaodeng.com");
+            document.head.appendChild(script);
+          })();
+        </script>
       </>
     )}
   </head>
