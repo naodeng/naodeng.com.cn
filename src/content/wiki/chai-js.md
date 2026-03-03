@@ -120,16 +120,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   - **异步支持**：内置支持使用 Promises 和 async/await 模式测试异步代码。
   通过利用这些优势，[Chai.js](/zh-cn/wiki/chai-js/) 增强了[test suites](/zh-cn/wiki/test-suite/) 的效率、可读性和[maintainability](/zh-cn/wiki/maintainability/)，从而有助于实现更加稳健和可靠的自动化流程。
 
-- **流畅且可读的语法**：Chai 的可链接语言结构使测试更易于阅读和编写。其 [BDD](/zh-cn/wiki/bdd/)/TDD 风格断言为 [test cases](/zh-cn/wiki/test-case/) 提供了清晰的语言。
-  - **灵活性**：通过 `expect`、`should` 和 `assert` 等接口，Chai 可以适应不同的测试风格和偏好。
-  - **可扩展性**：可以创建自定义插件或使用现有插件来扩展 Chai 的功能，从而允许根据特定需求定制更专业的断言。
-  - **兼容性**：与 Mocha、[Jest](/zh-cn/wiki/jest/) 和 Karma 等各种测试框架无缝协作，使其适用于不同环境。
-  - **丰富的断言库**：提供各种开箱即用的断言，减少了为测试编写复杂逻辑的需要。
-  - **跨平台**：可在[Node.js](/zh-cn/wiki/node-js/)和浏览器环境中使用，确保跨平台测试的一致性。
-  - **社区支持**：大型社区和生态系统意味着更好的支持、持续改进以及丰富的故障排除资源。
-  - **错误处理**：提供详细的错误消息，其中可以包括堆栈跟踪，使调试更容易。
-  - **异步支持**：内置支持使用 Promises 和 async/await 模式测试异步代码。
-
 ### 安装和设置
 
 #### 如何安装 Chai.js？
@@ -628,11 +618,6 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   };
   ```
 插件对于使 Chai 适应新框架、库或特定项目要求特别有用，使其成为[测试自动化](/zh-cn/wiki/test-automation/) 工程师武器库中的强大工具。
-
-- `chai-http` ：启用 HTTP 断言，使测试 Web 服务变得容易。
-  - `chai-as-promised` ：简化在断言中使用 Promise 的过程。
-  - `chai-dom` ：为 DOM 元素提供断言，在浏览器或基于 DOM 的测试中很有用。
-  - `sinon-chai` ：为 Sinon.js 间谍、存根和模拟提供断言，集成两个库。
 
 #### 如何使用 Chai.js 插件？
 

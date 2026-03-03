@@ -57,11 +57,6 @@ order: 0
   **最佳实践**涉及定期更新、同行评审和用户反馈纳入。可以通过使用脚本检查损坏的链接、过时的内容以及对模板的遵守情况来集成自动化。
   测试人员在确保文档符合质量标准方面发挥着至关重要的作用，并且是用户的有效工具。有效的[文档测试](/zh-cn/wiki/documentation-testing/) 需要关注细节、强大的语言能力以及对所记录的软件的深刻理解。持续学习和实践可以增强测试人员的[文档测试](/zh-cn/wiki/documentation-testing/) 技能。沟通技巧对于与团队合作和清晰表达反馈至关重要。
 
-- **一致性**：确保整个文档中的术语和说明是统一的。
-- **清晰度**：确保信息易于理解且明确。
-- **完整性**：验证是否包含所有必要的信息并且没有间隙。
-- **准确性**：确认文档正确描述了软件的行为和功能。
-
 #### 为什么文档测试在软件开发中很重要？
 
 [文档测试](/zh-cn/wiki/documentation-testing/) 在软件开发中至关重要，原因如下：
@@ -74,14 +69,6 @@ order: 0
 - **提高质量**：它揭示了软件及其文档之间的差异，从而产生更加精致和可靠的产品。
 - **帮助测试**：准确的文档可以为测试人员提供参考，帮助他们了解要测试的内容和期望的内容，从而提高测试覆盖率和有效性。
   将[文档测试](/zh-cn/wiki/documentation-testing/) 纳入软件开发生命周期不仅是为了查找文档本身的错误，也是为了增强整个软件产品的质量和可靠性。
-
-- **确保可用性**：经过充分测试的文档可确保最终用户能够理解并有效使用该软件，从而减少支持电话和不满。
-- **保持一致性**：它验证软件的行为与文档是否一致，确保一致的用户体验。
-- **促进入职**：新团队成员可以通过准确的文档快速上手，从而提高工作效率。
-- **支持[可维护性](/zh-cn/wiki/maintainability/)**：清晰的文档有助于将来的维护和更新，因为开发人员可以轻松理解软件的功能和结构。
-- **实现合规性**：对于受监管的行业，文档测试有助于满足法律和合规性要求。
-- **提高质量**：它揭示了软件及其文档之间的差异，从而产生更加精致和可靠的产品。
-- **帮助测试**：准确的文档可以为测试人员提供参考，帮助他们了解要测试的内容和期望的内容，从而提高测试覆盖率和有效性。
 
 #### 文档测试的关键要素是什么？
 
@@ -96,15 +83,6 @@ order: 0
 - **视觉辅助**：包含图表、屏幕截图和视频可以增强对信息的理解和保留。
 - **反馈机制**：为用户提供对文档进行反馈的方式，有助于持续改进和纠错。
   将这些元素与**以用户为中心的方法**结合起来，重点关注最终用户的需求和期望。定期**审查和更新**文档以保持其有用性和相关性。参与**同行评审**和**用户测试**以收集不同的观点和见解。实施**版本控制**来跟踪更改并维护历史版本以供参考。
-
-- **清晰度**：文档应该清晰易懂，没有歧义。句子必须简洁并有效地传达预期信息。
-- **完整性**：应包含所有必要的信息。其中包括安装指南、用户手册、API 文档和发行说明。
-- **一致性**：整个文档中术语、格式和风格的使用应保持一致。一致的声音和时态至关重要。
-- **准确性**：提供的信息必须正确且最新。代码示例、命令行片段和配置设置需要根据实际软件行为进行验证。
-- **相关性**：内容应与用户的需求相关，并与软件的功能和限制保持一致。
-- **可访问性**：文档应该具有逻辑结构，易于导航。使用索引、搜索功能和清晰的标题很重要。
-- **视觉辅助**：包含图表、屏幕截图和视频可以增强对信息的理解和保留。
-- **反馈机制**：为用户提供对文档进行反馈的方式，有助于持续改进和纠错。
 
 #### 文档测试如何提高软件产品的整体质量？
 
@@ -453,15 +431,6 @@ order: 0
 - **持续改进**：采取持续改进的心态。定期审查和完善[文档测试](/zh-cn/wiki/documentation-testing/) 流程。
   通过实施这些策略，您可以降低文档过时或不准确的风险，确保它对于开发团队和最终用户来说仍然是宝贵的资产。
 
-- **定期更新**：通过将文档任务集成到开发工作流程中，使文档与软件更改保持同步。使用版本控制系统来跟踪更改。
-- **自动验证**：实施自动检查损坏的链接、过时的内容和不一致的脚本。 `Sphinx`、`MkDocs` 或 `Doxygen` 等工具可能很有用。
-- **同行评审**：鼓励团队成员评审彼此的工作。这可以捕获自动化工具可能遗漏的错误。
-- **用户反馈**：收集并合并最终用户的反馈，以确保文档满足他们的需求并且易于理解。
-- **模板和标准**：开发模板和样式指南以保持文档之间的一致性。这减少了测试人员和用户的认知负担。
-- **培训**：为团队成员提供有关文档最佳实践和流程中使用的工具的培训。
-- **与[测试用例](/zh-cn/wiki/test-case/)集成**：在可能的情况下将文档链接到自动[测试用例](/zh-cn/wiki/test-case/)。这可确保 [测试用例](/zh-cn/wiki/test-case/) 中的更改反映在文档中。
-- **持续改进**：采取持续改进的心态。定期审查和完善[文档测试](/zh-cn/wiki/documentation-testing/) 流程。
-
 #### 有效文档测试的最佳实践有哪些？
 
 有效[文档测试](/zh-cn/wiki/documentation-testing/) 的最佳实践包括：
@@ -592,17 +561,6 @@ order: 0
 - **反馈集成**：纳入同行评审和用户反馈的输入。
   将这些技能融入您的日常工作中，以提高[文档测试](/zh-cn/wiki/documentation-testing/) 的质量和有效性。
 
-- **注重细节**：检查文件的准确性和一致性。
-- **分析技能**：逻辑评估信息并解决问题。
-- **技术熟练程度**：了解软件和相关技术。
-- **语言技能**：拥有较强的语法、拼写和写作能力。
-- **用户视角**：采用最终用户的观点以确保清晰度和实用性。
-- **批判性思维**：质疑假设并预见潜在的用户问题或问题。
-- **组织**：系统地管理文档和测试任务。
-- **适应性**：适应软件功能和要求的变化。
-- **协作**：与开发人员、产品经理和其他利益相关者有效合作。
-- **反馈集成**：纳入同行评审和用户反馈的输入。
-
 #### 如何提高文档测试技能？
 
 要增强[文档测试](/zh-cn/wiki/documentation-testing/) 技能，请专注于**批判性思维**和**关注细节**。培养**预测用户问题**和可能未明确涵盖的场景的能力。通过审查现有文档并识别模糊或潜在混淆的区域来进行练习。
@@ -612,7 +570,6 @@ order: 0
   **定期练习写作**，以提高您以清晰简洁的方式传达复杂信息的能力。这可能涉及创建示例文档或为了清晰起见重写现有文档。
   最后，利用**最终用户的反馈**来了解文档的有效性。实施一个收集和分析用户反馈的系统，并使用这些数据来完善[文档测试](/zh-cn/wiki/documentation-testing/) 的方法。
 
-  ```
 - **Critical Thinking**: Anticipate user questions and scenarios.
 - **Attention to Detail**: Ensure clarity and prevent misunderstandings.
 - **Consistency**: Maintain uniformity in terminology and formatting.
@@ -621,7 +578,6 @@ order: 0
 - **Continuous Learning**: Stay informed about documentation trends and tools.
 - **Writing Practice**: Regularly work on conveying information clearly.
 - **User Feedback**: Use end-user feedback to refine documentation testing.
-  ```
 
 #### 沟通技巧在文档测试中的作用是什么？
 
@@ -753,46 +709,40 @@ order: 0
 
 2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
-          - name: version
-            in: query
-            required: true
-            type: string
-            enum:
-              - v1
-              - v2
-        # ...
-    ```
+  /api/pets:
+    get:
+      parameters:
+        - name: version
+          in: query
+          required: true
+          type: string
+          enum:
+            - v1
+            - v2
+      # ...
 
 3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
-          - name: X-API-Version
-            in: header
-            required: true
-            type: string
-            enum:
-              - v1
-              - v2
-        # ...
-    ```
+  /api/pets:
+    get:
+      parameters:
+        - name: X-API-Version
+          in: header
+          required: true
+          type: string
+          enum:
+            - v1
+            - v2
+      # ...
 
 4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
-    ```
-    /api/pets:
-      get:
-        produces:
-          - application/vnd.myapi.v1+json
-          - application/vnd.myapi.v2+json
-        # ...
-    ```
+  /api/pets:
+    get:
+      produces:
+        - application/vnd.myapi.v1+json
+        - application/vnd.myapi.v2+json
+      # ...
 选择最适合您的[API](/zh-cn/wiki/api/) 需求的版本控制策略，并确保您的[API](/zh-cn/wiki/api/) 文档的一致性。 **[Swagger](/zh-cn/wiki/swagger/) UI** 将显示不同的版本，允许用户与他们感兴趣的[API](/zh-cn/wiki/api/) 的特定版本进行交互。请记住在新版本发布时更新您的[Swagger](/zh-cn/wiki/swagger/) 文件，以保持您的[API](/zh-cn/wiki/api/) 文档准确且最新。
 
 1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
@@ -808,46 +758,40 @@ order: 0
 
 2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
-          - name: version
-            in: query
-            required: true
-            type: string
-            enum:
-              - v1
-              - v2
-        # ...
-    ```
+  /api/pets:
+    get:
+      parameters:
+        - name: version
+          in: query
+          required: true
+          type: string
+          enum:
+            - v1
+            - v2
+      # ...
 
 3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
-          - name: X-API-Version
-            in: header
-            required: true
-            type: string
-            enum:
-              - v1
-              - v2
-        # ...
-    ```
+  /api/pets:
+    get:
+      parameters:
+        - name: X-API-Version
+          in: header
+          required: true
+          type: string
+          enum:
+            - v1
+            - v2
+      # ...
 
 4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
-    ```
-    /api/pets:
-      get:
-        produces:
-          - application/vnd.myapi.v1+json
-          - application/vnd.myapi.v2+json
-        # ...
-    ```
+  /api/pets:
+    get:
+      produces:
+        - application/vnd.myapi.v1+json
+        - application/vnd.myapi.v2+json
+      # ...
 
 #### 如何使用 Swagger 处理身份验证和授权？
 

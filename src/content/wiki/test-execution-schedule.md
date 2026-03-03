@@ -81,20 +81,6 @@ order: 0
 - **沟通计划**：用于向利益相关者更新测试进度的协议。
   这些组件确保采用全面且结构化的方法来执行[测试用例](/zh-cn/wiki/test-case/)，从而实现测试过程的高效跟踪和管理。
 
-- **[测试套件](/zh-cn/wiki/test-suite/)** ：要运行的测试用例的组织集合。
-- **[测试环境](/zh-cn/wiki/test-environment/) 信息**：硬件、软件、网络配置和其他相关设置的详细信息。
-- **资源分配**：分配测试执行的人员和工具。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：测试执行所需的特定数据集。
-- **执行时间范围**：开始和结束日期，包括测试运行的具体时间。
-- **依赖性**：识别测试之间的任何先决条件或相互依赖性。
-- **风险评估**：根据潜在风险确定测试的优先级。
-- **[测试执行](/zh-cn/wiki/test-execution/) Order**：测试执行的顺序。
-- **进入和退出标准**：开始和结束测试阶段必须满足的条件。
-- **测试可交付成果**：要生成的工件，例如报告和日志。
-- **监控和控制机制**：跟踪进度和处理偏差的流程。
-- **应急计划**：处理意外事件或延误的策略。
-- **沟通计划**：用于向利益相关者更新测试进度的协议。
-
 #### 测试执行计划如何对整体测试策略做出贡献？
 
 **[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)** 使测试活动与项目的时间表和资源保持一致，确保系统、高效地进行测试。它作为测试团队的路线图，详细说明了何时以及如何执行测试以满足项目目标。
@@ -120,17 +106,15 @@ order: 0
 8. **审查和调整**：与利益相关者一起审查时间表并根据需要进行调整。
   使用自动化工具安排测试、跟踪进度并实时调整。实施**持续集成（CI）**可以在代码提交时自动触发[测试用例](/zh-cn/wiki/test-case/)。利用**[测试管理](/zh-cn/wiki/test-management/) 工具**来维护计划并与问题跟踪系统集成。
 
-  ```
-  // Example of a simple automated test trigger in a CI tool configuration file
-  pipeline:
-    test:
-      image: node:latest
-      script:
+// Example of a simple automated test trigger in a CI tool configuration file
+pipeline:
+  test:
+    image: node:latest
+    script:
 - npm install
 - npm test
-      only:
+    only:
 - master
-  ```
 根据实际进度定期审查时间表并根据需要进行调整。与团队的沟通对于及时解决任何偏差至关重要。
 
 1. **识别测试项目**：列出要测试的特性、组件或功能。
@@ -161,21 +145,6 @@ order: 0
 - **持续集成（CI）**：与 CI 管道集成以在适当的阶段触发自动化测试。
 - **监控和报告**：包括监控测试执行和报告结果的时间。
   请记住随着项目的发展**审查和调整**时间表，确保其与项目需求和目标保持一致。
-
-- **资源可用性**：使计划与测试环境、工具和人员的可用性保持一致。
-- **测试依赖关系**：根据依赖关系对测试进行排序，以确保依赖于其他测试的测试以正确的顺序执行。
-- **风险评估**：根据风险确定测试的优先级，确保首先测试高风险区域。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：确保时间表能够充分覆盖所有功能和要求。
-- **维护时间**：分配时间用于维护和更新测试脚本、环境和数据。
-- **缓冲时间**：包括意外延迟或问题的缓冲时间。
-- **并行执行**：规划可以并行运行的测试，以最大限度地提高效率。
-- **里程碑对齐**：将时间表与项目里程碑和发布日期同步。
-- **历史数据**：使用过去的执行时间来更好地估计未来的测试持续时间。
-- **反馈循环**：安排分析结果和实施反馈的时间。
-- **合规性和法规**：考虑任何合规性或监管测试的截止日期。
-- **[非功能测试](/zh-cn/wiki/non-functional-testing/)** ：安排性能、安全性和可用性测试的时间。
-- **持续集成（CI）**：与 CI 管道集成以在适当的阶段触发自动化测试。
-- **监控和报告**：包括监控测试执行和报告结果的时间。
 
 #### 如何有效管理测试执行计划？
 
@@ -237,17 +206,6 @@ order: 0
 - **平衡速度和覆盖范围**：在快速[测试执行](/zh-cn/wiki/test-execution/) 和足够的[测试覆盖率](/zh-cn/wiki/test-coverage/) 之间取得适当的平衡是一个持续的挑战。
   缓解策略包括确定测试优先级、改进[测试数据](/zh-cn/wiki/test-data/) 管理、稳定[测试环境](/zh-cn/wiki/test-environment/) 以及使用强大的[测试自动化](/zh-cn/wiki/test-automation/) 框架。根据反馈和结果定期重新审视和调整时间表也至关重要。
 
-- **资源分配**：确保[测试环境](/zh-cn/wiki/test-environment/)、工具和人员等必要资源的可用性可能很困难。由于共享环境或竞争项目，可能会出现冲突。
-- **测试依赖性管理**：测试可能依赖于其他测试、数据或组件。管理这些依赖关系以避免执行延迟具有挑战性。
-- **自动化测试中的不稳定**：[片状测试](/zh-cn/wiki/flaky-test/) 可能会导致不可预测的时间表，并需要额外的时间进行调查和重新运行。
-- **更改需求**：[敏捷开发](/zh-cn/wiki/agile-development/) 实践可能会导致频繁的需求更改，从而影响进度。
-- **不可预见的[Bugs](/zh-cn/wiki/bug/)**：遇到高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 可能会停止测试，直到问题得到解决，从而导致延迟。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：确保自动化测试的[测试数据](/zh-cn/wiki/test-data/) 的可用性和有效性可能非常复杂且耗时。
-- **环境稳定性**：不稳定的[测试环境](/zh-cn/wiki/test-environment/)可能会导致与代码质量无关的测试失败，从而影响进度。
-- **与 CI/CD 集成**：将[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 与持续集成/持续部署管道集成需要仔细协调。
-- **监控和报告**：实时监控和报告[测试执行](/zh-cn/wiki/test-execution/)进度在技术上可能具有挑战性，但对于进度调整来说是必要的。
-- **平衡速度和覆盖范围**：在快速[测试执行](/zh-cn/wiki/test-execution/) 和足够的[测试覆盖率](/zh-cn/wiki/test-coverage/) 之间取得适当的平衡是一个持续的挑战。
-
 #### 如何减轻或克服这些挑战？
 
 缓解创建 [测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 过程中的挑战涉及多种策略：
@@ -261,20 +219,17 @@ order: 0
 - **自动化重复任务**
     以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
 
-
 // 示例：检查 [测试用例](/zh-cn/wiki/test-case/) 状态的脚本
   const checkTestCaseStatus = (testCaseId) => {
   // 检查并返回 [测试用例](/zh-cn/wiki/test-case/) 状态的逻辑
   };
 
-  ```
 - **Collaborate with stakeholders** to align expectations and resources. Use communication tools to keep everyone informed about the schedule progress.
 - **Monitor progress regularly** and adjust the schedule dynamically based on real-time feedback. Implement dashboards for a quick overview of the test execution status.
 - **Conduct retrospective meetings** to learn from past scheduling challenges and improve future schedules. Document lessons learned and best practices.
 - **Leverage test management tools** to streamline scheduling and provide visibility into test execution. Tools like JIRA, TestRail, or QTest can be used for efficient management.
 - **Integrate with CI/CD pipelines** to ensure that the test execution schedule aligns with the development and deployment processes, enabling continuous testing.
-  By implementing these strategies, test automation engineers can effectively overcome the challenges associated with creating and managing a Test Execution Schedule.
-  ```
+By implementing these strategies, test automation engineers can effectively overcome the challenges associated with creating and managing a Test Execution Schedule.
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
     基于风险和影响，以确保首先测试关键功能。使用基于风险的方法来有效管理范围。
@@ -284,8 +239,6 @@ order: 0
 
 - **自动化重复任务**
     以节省时间并减少人为错误。利用脚本和工具来创建和维护计划。
-
-
 
 #### 创建测试执行计划时会犯哪些常见错误以及如何避免这些错误？
 
@@ -595,14 +548,3 @@ order: 0
 - **反馈循环**：实施实时报告和反馈机制，以快速识别和解决进度中的瓶颈或延迟。
 - **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发生命周期的早期纳入测试，以更快地发现问题并减少以后所需的测试时间。
   通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以增强[测试执行时间表](/zh-cn/wiki/test-execution-schedule/) 的管理，从而实现更高效、更有效的测试流程。
-
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/) (RBT)**：根据失败风险和潜在缺陷的影响确定测试的优先级。使用风险评估来分配时间来进行涵盖最关键功能的测试。
-- **并行执行**：跨不同环境或机器同时运行测试以减少执行时间。利用基于云的服务或容器化来动态扩展[测试环境](/zh-cn/wiki/test-environment/)。
-- **[测试套件](/zh-cn/wiki/test-suite/) 优化**：定期审查和修剪[测试用例](/zh-cn/wiki/test-case/) 以删除冗余。应用组合测试等技术来减少 [测试用例](/zh-cn/wiki/test-case/) 的数量，同时保持覆盖范围。
-- **预测分析**：使用历史[测试数据](/zh-cn/wiki/test-data/) 来预测未来[测试执行](/zh-cn/wiki/test-execution/) 时间和结果。根据这些预测调整时间表以提高准确性和效率。
-- **机器学习**：实施机器学习算法来识别测试结果中的模式，这有助于预测测试失败并优化时间表。
-- **[测试执行](/zh-cn/wiki/test-execution/) 触发器**：将 [测试执行](/zh-cn/wiki/test-execution/) 与持续集成/持续部署 (CI/CD) 管道集成，以在某些事件（例如代码提交或构建）时自动触发测试。
-- **不稳定的测试管理**：识别并隔离 [片状测试](/zh-cn/wiki/flaky-test/) 以防止它们影响进度。使用隔离机制分别处理它们。
-- **时间盒**：为某些测试活动分配固定的时间段，以确保集中注意力并有效管理时间。
-- **反馈循环**：实施实时报告和反馈机制，以快速识别和解决进度中的瓶颈或延迟。
-- **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发生命周期的早期纳入测试，以更快地发现问题并减少以后所需的测试时间。

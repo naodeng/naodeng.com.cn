@@ -55,11 +55,6 @@ order: 0
   [可靠性测试](/zh-cn/wiki/reliability-testing/) 通常集成到**持续集成/持续部署 (CI/CD)** 管道中，以确保在整个开发生命周期中进行持续评估。自动化工程师使用 **[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner 或自定义脚本** 等工具来模拟负载和监控软件行为。
   最佳实践包括**[增量测试](/zh-cn/wiki/incremental-testing/)**，从小负载开始并逐渐增加，以及**监视系统资源**以识别潜在的瓶颈或内存泄漏。克服[可靠性测试](/zh-cn/wiki/reliability-testing/)中的挑战需要透彻理解系统架构、现实的[测试环境](/zh-cn/wiki/test-environment/)以及全面的监控和日志记录策略。
 
-- **容错**：评估软件在出现故障时维持运行的能力。
-- **恢复测试**：确保软件可以从崩溃中恢复并恢复运行而不会丢失数据。
-- **数据完整性**：检查正常操作期间的数据损坏问题。
-- **一致性**：验证任务的重复执行是否会产生相同的结果。
-
 #### 为什么可靠性测试在软件开发中很重要？
 
 [可靠性测试](/zh-cn/wiki/reliability-testing/) 在软件开发中至关重要，因为它确保应用程序在预期条件下始终如一地执行。它有助于识别和减轻软件故障的风险，这些风险可能导致数据丢失、安全漏洞或停机，这对开发人员和最终用户来说代价高昂。通过严格测试软件以查找并修复影响可靠性的缺陷，开发人员可以增强稳定性、建立用户信任并保持竞争优势。
@@ -195,10 +190,6 @@ order: 0
   });
   ```
 通过将 [负载测试](/zh-cn/wiki/load-testing/) 集成到**持续测试管道**中，团队可以在整个开发生命周期中持续评估和提高软件的可靠性。
-
-- **可扩展性增强**：调整系统以处理增加的负载。
-- **资源优化**：确保在负载下有效利用系统资源。
-- **稳定性修复**：解决导致系统降级或故障的问题。
 
 #### 用于衡量软件可靠性的技术有哪些？
 
@@ -435,7 +426,6 @@ order: 0
 - **监控系统行为**
     使用日志记录和性能跟踪工具进行测试。寻找潜在可靠性问题的指标，例如内存泄漏或响应时间缓慢。
 
-
 // TypeScript 中的监控片段示例
   从“perf_hooks”导入{性能}；
   const start = Performance.now();
@@ -443,14 +433,12 @@ order: 0
   const end = Performance.now();
   console.log(`Test duration: ${end - start} milliseconds`);
 
-  ```
 - **Incorporate fault injection techniques** to evaluate how the system handles unexpected failures. This can include network outages, corrupted data inputs, or hardware malfunctions.
 - **Use version control** for test scripts to track changes and understand the impact of modifications on reliability.
 - **Prioritize issues based on severity and likelihood of occurrence**. Focus on resolving high-impact defects that could significantly affect reliability.
 - **Conduct root cause analysis** for any failures to prevent recurrence. Implement fixes and regression test to ensure the issue is resolved.
 - **Iterate and refine testing** based on feedback and newly discovered information. Continuous improvement is key to maintaining and enhancing reliability.
 - **Document test results and insights** to inform future testing efforts and provide evidence of reliability for stakeholders.
-  ```
 
 - **定义明确的可靠性目标**
     基于用户期望和系统要求。这些应该是可量化的并与业务目标保持一致。

@@ -113,15 +113,6 @@ order: 0
 - **语法测试**：专注于输入的语法方面，以确保系统拒绝不正确的格式。
   这些技术有助于发现仅通过积极测试可能无法发现的缺陷。通过自动化这些测试，您可以重复一致地验证系统针对无效或意外输入的稳健性。
 
-- **边界值分析 (BVA)**：在输入范围的边缘进行测试，以引发由边界条件引起的故障。
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** ：将输入数据划分为等效分区，其中测试用例设计为覆盖每个分区。
-- **[错误猜测](/zh-cn/wiki/error-guessing/)** ：利用经验来预测可能容易出错的区域并相应地设计测试用例。
-- **故障注入**：故意引入错误来观察系统的行为方式。
-- **[输入验证测试](/zh-cn/wiki/input-validation-testing/)** ：输入无效、意外或随机数据作为输入，以确保系统妥善处理它。
-- **[决策表测试](/zh-cn/wiki/decision-table-testing/)** ：使用决策表来表示复杂的业务规则并使用导致负面结果的组合进行测试。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：检查系统对不应触发状态更改的各种输入组合的响应。
-- **语法测试**：专注于输入的语法方面，以确保系统拒绝不正确的格式。
-
 #### 如何设计负面测试用例？
 
 设计负[测试用例](/zh-cn/wiki/test-case/)涉及故意输入无效、意外或极端数据，以确保软件在此类条件下正常运行。这是一个简洁的指南：
@@ -172,18 +163,6 @@ order: 0
 - **用户行为模拟**：模拟意外或不正确的用户行为，例如系统突然退出或不正确的导航流程。
 - **与外部系统的合规性**：测试系统如何处理与其交互的外部系统的无效响应或意外行为。
   通过结合这些策略，您可以系统地发现各种负面情况，从而确保软件的稳健性和弹性。
-
-- **边界值分析 (BVA)**：测试输入范围的极值，即在有效边界之外。这通常会发现意外输入值的处理错误。
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)**：划分系统可以同等对待的输入数据，然后用无效数据测试每个分区中的一个。
-- **[错误猜测](/zh-cn/wiki/error-guessing/)**：利用经验来预测常见错误，例如空输入、空字符串或无效格式。
-- **故障注入**：故意引入错误以查看系统的行为方式，例如模拟网络故障或损坏数据。
-- **[用例](/zh-cn/wiki/use-case/) 分析**：检查[用例](/zh-cn/wiki/use-case/) 是否有不应该发生的场景，并测试系统对这些事件的响应。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)**：识别无效的状态转换并尝试通过测试诱导它们。
-- **数据驱动测试**：使用各种无效输入数据集自动运行相同测试的过程。
-- **基于清单的测试**：根据特定于应用程序域的常见错误模式创建负面测试条件列表。
-- **自动负面测试生成工具**：使用可以根据提供的规范或通过分析代码生成负面[测试用例](/zh-cn/wiki/test-case/) 的工具。
-- **用户行为模拟**：模拟意外或不正确的用户行为，例如系统突然退出或不正确的导航流程。
-- **与外部系统的合规性**：测试系统如何处理与其交互的外部系统的无效响应或意外行为。
 
 #### 自动化如何用于负面测试？
 
@@ -245,14 +224,6 @@ order: 0
 - **维护测试**：随着系统的发展，维护和更新负面测试以保持相关性可能非常耗时。
   为了克服这些挑战，请重点关注**[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**来确定场景的优先级，对[测试数据](/zh-cn/wiki/test-data/)使用**数据驱动的方法**，并确保预期结果的**清晰记录**。在自动化框架中实施**强大的错误处理**来管理意外的应用程序行为。定期**审查和完善**负面测试以与应用程序更改保持一致。
 
-- **识别相关的负面场景**：预测用户或系统可能滥用应用程序的所有方式是具有挑战性的。
-- **[测试数据](/zh-cn/wiki/test-data/) Generation**：制作有效模拟无效、意外或随机输入的测试数据可能很困难。
-- **处理各种错误情况**：确保系统正常处理各种错误情况需要对应用程序及其潜在故障点有广泛的了解。
-- **[测试环境](/zh-cn/wiki/test-environment/) 配置**：负面测试可能需要专门的环境来模拟网络中断或硬件故障等故障。
-- **平衡覆盖范围与努力**：实现彻底覆盖而不在边缘情况上花费过多精力是一项持续的斗争。
-- **解释结果**：理解失败的阴性测试是否是缺陷的迹象或预期结果可能是不明确的。
-- **维护测试**：随着系统的发展，维护和更新负面测试以保持相关性可能非常耗时。
-
 #### 如何克服这些挑战？
 
 克服[负面测试](/zh-cn/wiki/negative-testing/) 中的挑战需要结合**战略规划**、**工具选择**和**流程改进**。以下是一些方法：
@@ -263,29 +234,24 @@ order: 0
 - **明智地自动化**
     。选择可以处理意外输入和结果的强大自动化工具。将负面测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。
 
-
 // 自动化脚本中的否定 [测试用例](/zh-cn/wiki/test-case/) 示例
   it('应该优雅地处理无效输入', () => {
   const invalidInput = '无效数据';
   Expect(() => myFunction(invalidInput)).toThrowError();
   });
 
-  ```
 - **Enhance test data management**. Use data-driven testing to feed a variety of negative test data into your tests. Consider tools that can generate test data dynamically.
 - **Improve reporting and analysis**. Ensure your test reports clearly distinguish between positive and negative test results and provide actionable insights.
 - **Collaborate with developers** to understand system boundaries and create more effective negative tests.
 - **Educate your team** on the importance of negative testing. Encourage a culture where testers and developers proactively think about edge cases and failure modes.
 - **Review and refine** your negative testing approach regularly. Learn from defects that slip through and adjust your strategy accordingly.
-  By addressing these areas, you can enhance the effectiveness of negative testing within your test automation efforts, leading to more resilient and reliable software.
-  ```
+By addressing these areas, you can enhance the effectiveness of negative testing within your test automation efforts, leading to more resilient and reliable software.
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
     基于风险和影响。使用基于风险的测试来重点关注如果失败可能会造成最严重损害的场景。
 
 - **明智地自动化**
     。选择可以处理意外输入和结果的强大自动化工具。将负面测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。
-
-
 
 #### 阴性测试期间常见的错误有哪些？
 
@@ -302,17 +268,6 @@ order: 0
 - **忽略性能**：不评估系统在无效或意外条件下的性能。
 - **不优先考虑**：平等对待所有阴性测试，而不是关注那些最有可能发生或产生重大影响的测试。
   为了避免这些错误，请确保全面的测试计划、了解用户行为、尽可能实现自动化、彻底记录并定期审查和更新[测试用例](/zh-cn/wiki/test-case/)。
-
-- **忽略边缘情况**：专注于典型的负面场景，而不考虑极端或边界条件。
-- **覆盖率不足**：未测试所有可能的无效输入或条件，导致测试覆盖率存在差距。
-- **定义不明确[测试用例](/zh-cn/wiki/test-case/)**：编写没有明确目标或预期结果的负面测试用例。
-- **忽略错误处理**：无法评估系统如何处理错误或显示错误消息。
-- **忽略用户行为**：不考虑真实用户可能如何错误地与系统交互。
-- **自动化不足**：仅依靠手动测试来应对负面场景，这可能非常耗时且容易出错。
-- **缺乏文档**：没有记录负面测试用例及其结果，导致难以复制或理解失败。
-- **不更新测试**：当软件需求发生变化时未能修改负面测试用例。
-- **忽略性能**：不评估系统在无效或意外条件下的性能。
-- **不优先考虑**：平等对待所有阴性测试，而不是关注那些最有可能发生或产生重大影响的测试。
 
 #### 如何确保阴性检测有效且高效？
 

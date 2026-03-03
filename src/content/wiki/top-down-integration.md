@@ -219,21 +219,18 @@ order: 0
   返回增强数据；
   }
 
-  ```
 - **Automated regression testing**: Implement automated tests to quickly identify integration issues as new modules are added.
 - **Mocking frameworks**: Utilize frameworks to create sophisticated mocks that can simulate lower-level module behavior more accurately.
 - **Continuous integration**: Integrate changes frequently to minimize the complexity of integrating multiple modules at once.
 - **Early prototyping**: Develop prototypes to identify high-level design flaws before full-scale integration.
 - **Collaboration tools**: Use tools that facilitate communication and collaboration between teams to address integration challenges promptly.
-  By applying these strategies, test automation engineers can address the challenges of top-down integration, ensuring a smoother and more efficient integration process.
-  ```
+By applying these strategies, test automation engineers can address the challenges of top-down integration, ensuring a smoother and more efficient integration process.
 
 - **存根开发**：为较低级别的模块创建存根可能非常耗时，并且可能需要随着模块的发展进行更新。
 - **集成复杂性**：随着集成的模块越来越多，复杂性也会增加，可能会导致集成问题。
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：如果没有完全开发的底层模块，确保顶层模块有足够的测试覆盖率可能会很困难。
 - **早期设计缺陷**：在集成较低级别的模块之前，高级设计问题可能并不明显。
 - **增量存根增强**：随着模块开发一起发展存根，以保持测试相关性并减少返工。
-
 
 ### 工具和应用程序
 
@@ -280,17 +277,15 @@ order: 0
 3. **配置 CI 管道** ：设置 CI 管道，以便在将更改提交到顶级模块时自动触发集成测试。
 4. **通过反馈进行迭代**：使用测试结果不断完善和进一步集成，随着更多组件准备就绪，向下移动层次结构。
 
-  ```
-  stages:
+stages:
 - build
 - test
 - deploy
-  top_down_integration_test:
-    stage: test
-    script:
+top_down_integration_test:
+  stage: test
+  script:
 - build_stubs_for_lower_modules
 - run_integration_tests
-  ```
 **持续反馈**至关重要，测试结果可为后续开发和集成工作提供信息。随着较低级别的模块完成，它们将替换存根，并且集成测试将扩展以涵盖这些新组件。
   **并行开发**可以在处理不同模块的团队中进行，但协调对于确保 CI/CD 管道反映集成的当前状态并相应更新测试至关重要。
   通过在 CI/CD 中应用[自上而下的集成](/zh-cn/wiki/top-down-integration/)，团队可以始终维护软件的**功能版本**，从而促进**及早发现问题**并更顺利地实现完全集成的系统。
@@ -381,14 +376,6 @@ order: 0
 - **监控和测量**：持续监控集成流程并测量关键绩效指标 (KPI)，以识别瓶颈并随着时间的推移改进流程。
   通过遵循这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以针对大型项目扩展[自上而下的集成](/zh-cn/wiki/top-down-integration/)，确保系统保持可管理性并且集成过程保持高效。
 
-- **架构模块化**：将系统分解为定义明确、可管理且接口清晰的模块。这简化了集成并允许并行开发和测试。
-- **优先考虑关键模块**：首先专注于集成和测试最关键的模块。这有助于在开发周期的早期识别主要问题。
-- **使用存根和驱动程序**：开发存根和驱动程序来模拟尚未开发或集成的较低级别组件的行为。这允许测试更高级别的模块，而无需等待整个系统构建完成。
-- **实施持续集成 (CI)**：使用 CI 工具自动化构建和集成过程。这可确保定期测试和集成变更，从而减少集成问题。
-- **利用功能切换**：在测试期间使用功能切换来启用或禁用应用程序的某些部分。这使得新功能的增量集成和测试更加顺利。
-- **自动化[回归测试](/zh-cn/wiki/regression-testing/)** ：自动化回归测试以确保新集成不会破坏现有功能。随着项目规模的扩大，这对于保持软件质量至关重要。
-- **监控和测量**：持续监控集成流程并测量关键绩效指标 (KPI)，以识别瓶颈并随着时间的推移改进流程。
-
 #### 自上而下集成的未来趋势是什么？
 
 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 的未来趋势可能包括：
@@ -404,17 +391,6 @@ order: 0
 - **容器化**：使用容器以自上而下的方式隔离和测试各个组件，确保跨环境的一致性。
 - **自动化治理**：实施自动化检查以确保集成测试符合法规和合规性要求。
   这些趋势将塑造[自上而下的集成](/zh-cn/wiki/top-down-integration/)的演变，使其更加高效并与现代软件开发实践保持一致。
-
-- **增强的人工智能和机器学习算法**：利用人工智能和机器学习来预测集成问题并优化测试套件。
-- **增加服务虚拟化的使用**：模拟尚未开发的组件以允许并行开发和测试。
-- **左移方法**：在开发过程的早期集成测试，以更快地发现问题并降低成本。
-- **测试编排平台**：利用在复杂的自上而下集成场景中管理和自动化测试执行的平台。
-- **微服务架构**：随着系统变得更加解耦，自上而下的集成测试将专注于服务级别集成而不是完整的系统集成。
-- **云原生工具**：利用基于云的工具和环境来促进可扩展和按需自上而下的集成测试。
-- **与 DevOps 集成**：与 DevOps 实践更紧密地结合，以确保持续测试和交付。
-- **预测分析**：使用分析来预测潜在的集成故障并优化测试工作。
-- **容器化**：使用容器以自上而下的方式隔离和测试各个组件，确保跨环境的一致性。
-- **自动化治理**：实施自动化检查以确保集成测试符合法规和合规性要求。
 
 #### 自上而下的集成如何适应更广泛的软件测试策略？
 

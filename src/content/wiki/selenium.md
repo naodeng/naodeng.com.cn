@@ -104,12 +104,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - **[selenium](/zh-cn/wiki/selenium/) 独立服务器**：与[WebDriver](/zh-cn/wiki/webdriver/) 和网格结合使用，它充当从[测试脚本](/zh-cn/wiki/test-script/) 和浏览器发送的命令之间的中间人。
   [selenium](/zh-cn/wiki/selenium/) 套件中的每个组件都有不同的用途，从而提供灵活且强大的测试框架，可以根据各种测试需求和环境进行定制。
 
-- **[selenium IDE](/zh-cn/wiki/selenium-ide/)（集成开发环境）**：Firefox 和 Chrome 扩展，允许记录和回放用户与浏览器的交互。它对于在不编写代码的情况下创建快速[测试脚本](/zh-cn/wiki/test-script/) 非常有用。
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：[API](/zh-cn/wiki/api/) 和库，允许更复杂和强大的浏览器自动化。它在操作系统级别直接与浏览器交互，并支持多种编程语言，如 Java、C#、Python、Ruby 和 JavaScript。
-- **[selenium](/zh-cn/wiki/selenium/) Grid**：允许测试使用在远程计算机上运行的 Web 浏览器实例的服务器。使用 Grid，您可以在不同的计算机和浏览器上并行运行测试，这可以加快执行速度并有助于[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
-- **[selenium](/zh-cn/wiki/selenium/) 远程控制 (RC)**：现已弃用，它是第一个允许不仅仅是简单浏览器操作和线性执行的测试框架。 [WebDriver](/zh-cn/wiki/webdriver/) 是其继承者。
-- **[selenium](/zh-cn/wiki/selenium/) 独立服务器**：与[WebDriver](/zh-cn/wiki/webdriver/) 和网格结合使用，它充当从[测试脚本](/zh-cn/wiki/test-script/) 和浏览器发送的命令之间的中间人。
-
 #### Selenium 与其他测试工具有何不同？
 
 [selenium](/zh-cn/wiki/selenium/) 与其他测试工具的不同之处主要在于其**开源性质**和**浏览器兼容性**。与 QTP/UFT 或 TestComplete 等专有工具不同，[selenium](/zh-cn/wiki/selenium/) 允许免费使用和修改，从而培育大型社区并与其他开源工具集成。
@@ -214,15 +208,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   WebDriver driver = new ChromeDriver();
   ```
 确保您的系统满足这些先决条件，以充分发挥 [selenium](/zh-cn/wiki/selenium/) 和 [测试自动化](/zh-cn/wiki/test-automation/) 的潜力。
-
-- **编程语言熟练程度**：了解 Selenium 支持的编程语言（例如 Java、C#、Python、Ruby 或 JavaScript）至关重要。
-- **了解 Web 技术**：熟悉 HTML、CSS 和 JavaScript 对于识别 Web 元素和理解页面结构至关重要。
-- **浏览器驱动程序**：为您计划自动化的浏览器安装适当的驱动程序（例如，适用于 Google Chrome 的 ChromeDriver、适用于 Firefox 的 GeckoDriver）。
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：确保您拥有最新版本的 Selenium WebDriver，可以通过 Maven 或 npm 等包管理器将其添加到您的项目中。
-- **IDE 或代码编辑器**：用于编写和管理测试脚本的开发环境，例如 Eclipse、IntelliJ IDEA 或 Visual Studio Code。
-- **测试框架**：了解与 Selenium 兼容的测试框架（例如用于 Java 的 JUnit 或 TestNG，或用于 Python 的 pytest）对于构建测试是必要的。
-- **构建工具**：对于 Java 项目，建议使用 Maven 或 Gradle 等构建自动化工具来管理依赖项和运行测试。
-- **版本控制系统**：熟悉 Git 等版本控制系统，用于跟踪更改并与他人协作。
 
 #### 如何在 Selenium 中编写基本测试用例？
 
@@ -589,25 +574,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - 由于服务器通信的开销而速度较慢
 - 不太真实的用户交互模拟
   总而言之，[WebDriver](/zh-cn/wiki/webdriver/)通过在操作系统级别与浏览器交互，提供了更高效、更真实的测试体验，这就是为什么它已成为基于[selenium](/zh-cn/wiki/selenium/)的[测试自动化](/zh-cn/wiki/test-automation/)的标准。
-
-- **[WebDriver](/zh-cn/wiki/webdriver/)**：
-- 与浏览器直接通信
-- 无需单独的服务器
-- 更好的性能和速度
-- 与网页元素的交互更加准确和真实
-- 与浏览器直接通信
-- 无需单独的服务器
-- 更好的性能和速度
-- 与网页元素的交互更加准确和真实
-- **[selenium](/zh-cn/wiki/selenium/) RC**：
-- 需要服务器来协调命令
-- 将 JavaScript 代码注入浏览器
-- 由于服务器通信的开销而速度较慢
-- 不太真实的用户交互模拟
-- 需要服务器来协调命令
-- 将 JavaScript 代码注入浏览器
-- 由于服务器通信的开销而速度较慢
-- 不太真实的用户交互模拟
 
 #### 如何在 Selenium 中处理警报和弹出窗口？
 

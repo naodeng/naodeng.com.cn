@@ -71,21 +71,6 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **环境变量**：设置一个系统来安全地管理环境变量。
   确保所有组件兼容并正确集成，以实现无缝的端到端测试过程。
 
-- **[测试自动化](/zh-cn/wiki/test-automation/) Framework** ：选择支持 e2e 测试的框架，例如 Selenium、Cypress 或 Playwright。
-- **编程语言**：选择您的框架支持的语言（例如 JavaScript、Python、Java）。
-- **[测试运行者](/zh-cn/wiki/test-runner/)** ：使用 Mocha、Jest 或 Jasmine 等工具来运行测试。
-- **断言库**：集成断言库（例如 Chai、Assert）以验证测试结果。
-- **浏览器驱动程序**：对于基于浏览器的测试，包括 ChromeDriver 或 geckodriver 等驱动程序。
-- **无头浏览器**：可以选择使用无头浏览器（例如 Puppeteer）以加快执行速度。
-- **持续集成 (CI) 服务器**：设置 Jenkins、CircleCI 或 GitHub Actions 等 CI 工具以进行自动化测试运行。
-- **版本控制系统**：使用Git或类似的源代码管理。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：准备处理测试数据的机制，可能使用夹具或工厂。
-- **Mocking Tools** ：结合 Sinon.js 或 WireMock 等工具来模拟 API 或服务。
-- **报告工具**：集成报告实用程序（例如 Allure、ReportPortal）以实现测试结果可见性。
-- **容器化**：可以选择使用 Docker 进行一致的测试环境管理。
-- **配置管理**：如果需要基础设施即代码，请使用 Ansible、Chef 或 Puppet 等工具。
-- **环境变量**：设置一个系统来安全地管理环境变量。
-
 #### 设置如何影响整个测试过程？
 
 [环境搭建](/zh-cn/wiki/setup/) 通过建立一个可以可靠地执行测试的**稳定且一致的**环境来影响整个测试过程。配置良好的[环境搭建](/zh-cn/wiki/setup/) 可确保测试针对已知配置运行，从而减少可能导致[片状测试](/zh-cn/wiki/flaky-test/) 和[误报](/zh-cn/wiki/false-positive/)/负面结果的**可变性**。
@@ -108,15 +93,6 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **可靠性**：可靠的[环境搭建](/zh-cn/wiki/setup/)最大限度地减少可能影响测试结果的外部因素，从而获得更可靠的测试结果。
 - **版本控制**：正确的[环境搭建](/zh-cn/wiki/setup/)包括[测试脚本](/zh-cn/wiki/test-script/)和环境配置的版本控制，确保跟踪更改并在必要时可以回滚。
   总之，正确的[环境搭建](/zh-cn/wiki/setup/) 是稳健可靠的[测试自动化](/zh-cn/wiki/test-automation/) 流程的基础，使团队能够快速、准确地交付优质软件。
-
-- **一致性**：标准化[环境搭建](/zh-cn/wiki/setup/) 确保测试在一致的环境中运行，减少遇到可能导致[误报](/zh-cn/wiki/false-positive/) 或负面结果的环境特定问题的可能性。
-- **效率**：明确定义的 [环境搭建](/zh-cn/wiki/setup/) 简化了 [测试执行](/zh-cn/wiki/test-execution/) 流程，从而实现更快的测试周期和更快地向开发团队提供反馈。
-- **可扩展性**：适当的[环境搭建](/zh-cn/wiki/setup/) 有助于扩展[测试自动化](/zh-cn/wiki/test-automation/) 工作，无需进行大量重新配置即可容纳更多测试或并行执行。
-- **调试**：当测试失败时，具有清晰日志记录和报告机制的适当[环境搭建](/zh-cn/wiki/setup/)可以简化识别和解决问题的过程。
-- **集成**：适当的 [环境搭建](/zh-cn/wiki/setup/) 通常设计有 CI/CD 管道的集成点，使自动化 [测试执行](/zh-cn/wiki/test-execution/) 作为构建和部署过程的一部分。
-- **可重用性**：良好的[环境搭建](/zh-cn/wiki/setup/) 允许在不同项目或[测试套件](/zh-cn/wiki/test-suite/) 之间重用测试组件和配置，从而提高效率并减少重复工作。
-- **可靠性**：可靠的[环境搭建](/zh-cn/wiki/setup/)最大限度地减少可能影响测试结果的外部因素，从而获得更可靠的测试结果。
-- **版本控制**：正确的[环境搭建](/zh-cn/wiki/setup/)包括[测试脚本](/zh-cn/wiki/test-script/)和环境配置的版本控制，确保跟踪更改并在必要时可以回滚。
 
 ### 设置过程
 
@@ -304,18 +280,6 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
   ```
 确保所有工具彼此兼容并正确配置以与您的应用程序和 CI/CD 管道交互。
 
-- **测试框架**：选择支持 e2e 测试的框架，例如 Cypress、Selenium WebDriver、Protractor 或 Playwright。
-- **特定于语言的 SDK**：确保您拥有所使用语言所需的 SDK，例如 Java、JavaScript、Python 等。
-- **浏览器**：安装您计划测试的浏览器，例如 Chrome、Firefox、Safari 或其无头版本。
-- **浏览器驱动程序**：对于基于 Selenium 的测试，请下载特定于浏览器的驱动程序，例如 ChromeDriver 或 GeckoDriver。
-- **[API 测试](/zh-cn/wiki/api-testing/) 工具** ：Postman 或 REST-assured 等工具用于测试 API（如果它们是 e2e 测试的一部分）。
-- **版本控制**：Git 或类似系统来管理您的测试代码。
-- **CI/CD 工具**：Jenkins、GitLab CI 或 GitHub Actions，用于将 e2e 测试集成到 CI/CD 管道中。
-- **虚拟化软件**：如果您在隔离环境中运行测试，则使用 Docker 或 Kubernetes 进行容器化和编排。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：用于创建和管理测试数据的工具或脚本。
-- **报告工具**：Allure、ReportPortal 或内置框架报告器用于生成测试报告。
-- **监控工具**：可选，Grafana 或 Kibana 等工具用于实时监控测试运行。
-
 ### 最佳实践
 
 #### 设置 e2e 测试的最佳实践是什么？
@@ -468,17 +432,6 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 - **未能验证[环境搭建](/zh-cn/wiki/setup/)**：在开始自动化过程之前不验证[环境搭建](/zh-cn/wiki/setup/)可能会因配置错误而导致[误报](/zh-cn/wiki/false-positive/)或负面结果。
   通过仔细规划、彻底记录并不断审查和完善您的 [环境搭建](/zh-cn/wiki/setup/) 流程，可以避免这些陷阱。
 
-- **忽略版本控制**：不使用 [测试脚本](/zh-cn/wiki/test-script/) 和配置的版本控制可能会导致跟踪更改的不一致和困难。
-- **资源分配不足**：低估测试环境所需的资源，例如内存、CPU 和网络带宽，可能会导致测试失败或产生不可靠的结果。
-- **忽略[测试数据](/zh-cn/wiki/test-data/) 管理**：未能正确管理[测试数据](/zh-cn/wiki/test-data/)，包括没有创建、维护和清理数据的策略，可能会影响测试准确性。
-- **[测试环境](/zh-cn/wiki/test-environment/) 中缺乏隔离**：不将[测试环境](/zh-cn/wiki/test-environment/) 与开发或生产隔离可能会因外部影响而导致不可预测的结果。
-- **硬编码值**：硬编码 [测试数据](/zh-cn/wiki/test-data/) 或 [测试脚本](/zh-cn/wiki/test-script/) 中的环境特定值会使它们不太灵活，并且在条件发生变化时更容易失败。
-- **跳过安全注意事项**：忽视测试 [环境搭建](/zh-cn/wiki/setup/) 的安全方面可能会使敏感数据或测试基础设施面临风险。
-- **糟糕的文档**：不记录 [环境搭建](/zh-cn/wiki/setup/) 流程和配置可能会阻碍知识转移并使故障排除变得更加困难。
-- **错误处理不足**：在 [测试脚本](/zh-cn/wiki/test-script/) 中不规划错误处理可能会导致无信息的测试失败并增加调试时间。
-- **忽略可扩展性**：不考虑 [环境搭建](/zh-cn/wiki/setup/) 如何随着测试数量的增加或更复杂的场景进行扩展可能会导致性能瓶颈。
-- **未能验证[环境搭建](/zh-cn/wiki/setup/)**：在开始自动化过程之前不验证[环境搭建](/zh-cn/wiki/setup/)可能会因配置错误而导致[误报](/zh-cn/wiki/false-positive/)或负面结果。
-
 #### 如何维护和更新 e2e 测试设置？
 
 维护和更新用于 e2e 测试的 [环境搭建](/zh-cn/wiki/setup/) 对于确保自动化测试的可靠性和效率至关重要。以下是一些策略：
@@ -488,19 +441,16 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 所需的基本组件包括：
 
 npm 更新
 
-  ```
 - **Modular Design**: Design your test suite with modularity in mind. Encapsulate setup logic in functions or classes that can be easily modified or replaced without affecting other parts of the test suite.
 - **Configuration Management**: Externalize configuration settings into files or environment variables. Use configuration management tools to manage different environments and avoid hardcoding values.
 - **Documentation**: Document any changes in the setup process. Ensure that team members can understand and follow the setup updates without confusion.
 - **Automated Health Checks**: Implement automated health checks for your test environments to ensure they are always ready for testing. Alert the team if an environment is down or misconfigured.
 - **Continuous Integration**: Integrate setup updates into your CI pipeline. This ensures that any changes are automatically tested and validated before being merged.
 - **Feedback Loop**: Establish a feedback loop with the team. Regularly review the setup process to identify pain points and areas for improvement.
-  By following these strategies, you can maintain a robust and adaptable e2e testing setup that evolves with your project's needs.
-  ```
+By following these strategies, you can maintain a robust and adaptable e2e testing setup that evolves with your project's needs.
 
 - **版本控制**：使用 Git 等版本控制系统来管理 [测试脚本](/zh-cn/wiki/test-script/)、配置文件和依赖项中的更改。这使您可以跟踪更改、恢复到以前的状态并有效协作。
 - **定期更新**：使您的测试工具、库和环境保持最新。使用 Dependabot 或 Renovate 等工具自动进行依赖项更新，以减少手动工作并保持最新功能和安全补丁。
-
 
 ### 高级概念
 
@@ -674,15 +624,13 @@ npm 更新
 
 2. **配置管理**：使用 Ansible、Puppet 或 Chef 等工具来管理基础设施即代码，从而自动配置所需的服务和依赖项。
 
-    ```
 - name: Install dependencies
-      apt:
-        name: "{{ packages }}"
-      vars:
-        packages:
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
 - docker
 - docker-compose
-    ```
 
 3. **容器化**：利用Docker或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
 
@@ -736,15 +684,13 @@ npm 更新
 
 2. **配置管理**：使用 Ansible、Puppet 或 Chef 等工具来管理基础设施即代码，从而自动配置所需的服务和依赖项。
 
-    ```
 - name: Install dependencies
-      apt:
-        name: "{{ packages }}"
-      vars:
-        packages:
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
 - docker
 - docker-compose
-    ```
 
 3. **容器化**：利用Docker或类似的容器平台来封装您的应用程序及其环境，确保不同开发阶段的一致性。
 
@@ -804,15 +750,3 @@ e2e 测试 [环境搭建](/zh-cn/wiki/setup/) 的最新趋势和技术包括：
 - **[微服务测试](/zh-cn/wiki/microservices-testing/)** ：采用策略在微服务架构中进行测试，包括服务虚拟化和契约测试。
 - **可观察性和监控**：集成 Grafana、Prometheus 和 ELK 堆栈等工具来实时监控测试执行和系统运行状况。
   这些技术有助于创建强大、灵活且高效的端到端测试[环境搭建](/zh-cn/wiki/setup/)，可以适应软件开发的动态特性。
-
-- **容器化和编排**：Docker 和 Kubernetes 等工具可实现一致、可扩展和隔离的环境，从而简化设置过程。
-- **基于云的测试平台**：BrowserStack 和 Sauce Labs 等服务为 e2e 测试提供按需浏览器和设备环境。
-- **基础设施即代码 (IaC)** ：Terraform 和 AWS CloudFormation 等工具可以通过代码配置测试环境，确保可重复性和版本控制。
-- **人工智能和机器学习**：人工智能驱动的工具可以优化测试套件、预测故障并根据代码更改智能选择要运行的测试。
-- **无头浏览器**：Puppeteer 和 Playwright 等工具提供快速、轻量级的浏览器环境，用于在没有 UI 的情况下运行 e2e 测试。
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 工具**：现代工具提供自动化跨浏览器测试功能，以确保应用程序兼容性。
-- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** ：Applitools 和 Percy 等工具可以自动检测测试运行之间的视觉差异。
-- **[性能测试](/zh-cn/wiki/performance-testing/) 集成**：将 Lighthouse 和 WebPageTest 等工具合并到 e2e 设置中以监控性能指标。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：用于创建、管理和处置测试数据的解决方案，以确保测试拥有处于正确状态的必要数据。
-- **[微服务测试](/zh-cn/wiki/microservices-testing/)** ：采用策略在微服务架构中进行测试，包括服务虚拟化和契约测试。
-- **可观察性和监控**：集成 Grafana、Prometheus 和 ELK 堆栈等工具来实时监控测试执行和系统运行状况。

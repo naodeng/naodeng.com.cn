@@ -201,12 +201,6 @@ order: 0
   ```
 将 `3.x.x` 替换为您要使用的 [NUnit](/zh-cn/wiki/nunit/) 的特定版本，并将 `x.x.x` 替换为与您的开发环境兼容的测试 SDK 和测试适配器的版本。
 
-- **.NET Framework**：NUnit 与 .NET Framework 2.0 及更高版本兼容。但是，为了使用最新功能并获得最佳体验，建议使用 .NET Framework 4.5 或更高版本。
-- **.NET Core**：NUnit 支持 .NET Core 1.1 及更高版本，包括用于跨平台测试的 .NET 5 和 6。
-- **Mono** ：要在支持 Mono 的平台上运行，需要 4.6 或更高版本。
-- **操作系统**：NUnit 是跨平台的，可以在 Windows、macOS 和 Linux 上运行。
-- **IDE 支持**：NUnit 可与各种集成开发环境 (IDE) 配合使用，例如 Visual Studio，这需要 NUnit 3 测试适配器进行集成。
-
 #### 如何为新项目设置 NUnit？
 
 要为新项目设置[NUnit](/zh-cn/wiki/nunit/)，请执行以下步骤：
@@ -809,10 +803,6 @@ order: 0
 - 在多个测试中共享设置和清理代码，减少冗余。
 - 将公共上下文应用于一组测试，这在数据驱动测试中特别有用。
   **TestFixture** 还可以采用参数，允许使用不同的输入运行同一组测试，从而促进[参数化测试](/zh-cn/wiki/parameterized-testing/)。当您想要在各种条件下测试相同的逻辑时，这特别有用。
-
-- 按逻辑对测试进行分组。
-- 在多个测试中共享设置和清理代码，减少冗余。
-- 将公共上下文应用于一组测试，这在数据驱动测试中特别有用。
 
 #### 如何将 NUnit 与 Selenium 等其他工具集成以进行 e2e 测试？
 

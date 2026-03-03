@@ -122,19 +122,6 @@ order: 0
 - **网络测试**：评估不同网络条件下的性能，包括不同的速度和连接稳定性。
   这些技术有助于识别可能影响用户体验的潜在性能问题，从而实现有针对性的优化和改进。
 
-- **基准测试**：将性能与行业标准或竞争对手网站进行比较以设定性能目标。
-- **真实用户监控 (RUM)**：收集有关真实用户如何与网站交互的数据，通常使用注入页面的 JavaScript。
-- **综合测试**：在受控条件下模拟用户行为，以预测新的或更新的代码将如何影响性能。
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：模拟正常和峰值流量，以了解系统在预期条件下的行为方式。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：使系统超出正常运行能力，以识别其断点并观察故障模式。
-- **浸泡测试**：长时间运行测试，以识别在较短的测试中可能不会出现的内存泄漏等问题。
-- **尖峰测试**：突然增加或减少负载，看看系统如何应对流量的突然变化。
-- **[音量测试](/zh-cn/wiki/volume-testing/)** ：测试系统处理大量数据的能力。
-- **[并发测试](/zh-cn/wiki/concurrency-testing/)** ：检查当多个用户同时执行相同操作时系统的执行情况。
-- **配置测试**：尝试系统的不同配置以确定性能的最佳设置。
-- **隔离测试**：隔离和测试各个组件以识别架构内的瓶颈或性能问题。
-- **网络测试**：评估不同网络条件下的性能，包括不同的速度和连接稳定性。
-
 #### Web性能测试常用哪些工具？
 
 [网页性能测试](/zh-cn/wiki/web-performance-testing/) 的常用工具包括：
@@ -220,15 +207,6 @@ order: 0
 - **Apdex 分数**：衡量用户对 Web 应用程序和服务响应时间满意度的行业标准。
   使用这些指标来识别性能瓶颈，确保应用程序可以处理预期的流量，并保持无缝的用户体验。定期监控和分析这些指标，以主动管理和优化网络性能。
 
-- **响应时间**：处理请求并将响应发送回客户端所需的时间。
-- **页面加载时间**：用户请求后完全显示页面内容的总时间。
-- **第一个字节的时间 (TTFB)** ：从用户发出 HTTP 请求到浏览器收到页面第一个字节的时间。
-- **吞吐量**：应用程序在给定时间范围内处理的事务或请求的数量。
-- **并发用户**：同时访问应用程序的用户数量。
-- **错误率**：导致错误的所有请求的百分比。
-- **资源利用率**：CPU、内存、磁盘 I/O 和网络 I/O 等指标，指示服务器上的负载。
-- **Apdex 分数**：衡量用户对 Web 应用程序和服务响应时间满意度的行业标准。
-
 #### Web性能测试的结果如何分析？
 
 分析[网页性能测试](/zh-cn/wiki/web-performance-testing/)结果涉及检查各种指标以识别瓶颈、性能回归和优化领域。 **响应时间**、**吞吐量**和**错误率**经过仔细审查，以确保它们满足预定义的性能标准。
@@ -299,16 +277,6 @@ order: 0
 - **持续监控**：建立持续的绩效监控以发现回归并确保持续改进。
   通过系统地解决 [网页性能测试](/zh-cn/wiki/web-performance-testing/) 突出显示的问题，您可以显着提高站点速度、可靠性和用户满意度。
 
-- **识别瓶颈**：可以揭示并随后解决缓慢加载的脚本、未优化的图像或服务器端问题。
-- **优化资源加载**：使用延迟加载或推迟非必要脚本等技术确定关键资源的优先级。
-- **改善响应时间**：分析第一个字节的时间 (TTFB) 和服务器响应时间以增强后端性能。
-- **增强可扩展性**：确定站点处理流量峰值的能力并相应地扩展基础设施。
-- **完善缓存策略**：调整静态资源的缓存策略以减少加载时间和服务器请求。
-- **简化代码**：缩小 CSS、JavaScript 和 HTML，以减小文件大小并提高解析效率。
-- **调整配置**：调整服务器和数据库配置，以在各种条件下实现最佳性能。
-- **执行[A/B testing](/zh-cn/wiki/A-B-Testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
-- **持续监控**：建立持续的绩效监控以发现回归并确保持续改进。
-
 ### 挑战和解决方案
 
 #### Web 性能测试中常见的挑战有哪些？
@@ -351,7 +319,6 @@ order: 0
 - **利用基于云的服务**
     根据需要扩展您的测试环境，而无需对硬件进行大量投资。
 
-
 // 示例：在基于云的环境中运行测试
   cloudTestService.runPerformanceTest({
   testSuite: '关键用户旅程',
@@ -359,15 +326,13 @@ order: 0
   区域：“us-east-1”
   });
 
-  ```
 - **Automate the setup and teardown** of test environments to ensure consistency and save time.
 - **Integrate performance testing into CI/CD pipelines** to catch issues early and often. This also helps in maintaining performance benchmarks as part of the regular development process.
 - **Use APM (Application Performance Management) tools** to monitor applications in production and feed insights back into the testing process.
 - **Optimize test data management** to ensure tests are running with realistic data sets, which can be anonymized if necessary.
 - **Collaborate with developers** to ensure they understand the importance of performance considerations and to foster a performance-minded culture.
 - **Stay updated with the latest testing tools and methodologies** to take advantage of advancements in performance testing and analysis.
-  By implementing these strategies, test automation engineers can effectively address the challenges in web performance testing and ensure that applications meet the desired performance standards.
-  ```
+By implementing these strategies, test automation engineers can effectively address the challenges in web performance testing and ensure that applications meet the desired performance standards.
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
     基于用户流量和业务影响。关注用户最有可能采取的关键路径。
@@ -377,8 +342,6 @@ order: 0
 
 - **利用基于云的服务**
     根据需要扩展您的测试环境，而无需对硬件进行大量投资。
-
-
 
 #### Web 性能测试有哪些最佳实践？
 
@@ -399,21 +362,6 @@ order: 0
 - **从生产中学习**：使用真实的用户监控数据来指导性能优化工作。
 - **迭代和完善**：根据以前的结果和不断变化的用户期望不断完善测试。
   通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[网页性能测试](/zh-cn/wiki/web-performance-testing/) 有效、高效并符合用户需求。
-
-- **优先考虑关键用户旅程**：专注于对用户体验最重要的场景。
-- **模拟现实世界条件**：使用各种网络速度、设备和浏览器进行测试，以模拟实际的用户环境。
-- **使用实际数据量**：确保测试数据反映生产量，以准确衡量性能。
-- **实施持续测试**：将性能测试集成到 CI/CD 管道中以进行持续评估。
-- **监控系统资源**：检查 CPU、内存、磁盘 I/O 和网络利用率以识别瓶颈。
-- **超出峰值负载的测试**：将系统推到预期峰值负载之外以了解其断裂点。
-- **尽可能自动化**：使用脚本和工具自动执行重复任务并确保一致性。
-- **将性能与更改相关联**：随着时间的推移跟踪性能，以确定新代码或基础架构更改的影响。
-- **考虑第三方服务**：测试外部 API 或服务如何影响您的 Web 性能。
-- **使用 APM 工具**：应用程序性能管理工具可以深入了解运行时性能并帮助查明问题。
-- **基于指标优化**：专注于优化直接影响用户体验的指标，例如加载时间和响应时间。
-- **记录并共享结果**：确保所有利益相关者均可获取测试结果，以便做出明智的决策。
-- **从生产中学习**：使用真实的用户监控数据来指导性能优化工作。
-- **迭代和完善**：根据以前的结果和不断变化的用户期望不断完善测试。
 
 #### Web 性能测试如何集成到软件开发生命周期中？
 

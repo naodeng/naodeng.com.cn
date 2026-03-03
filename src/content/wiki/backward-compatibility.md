@@ -128,15 +128,6 @@ order: 0
 - **法律和合规风险**：在某些行业中，由于兼容性问题而无法访问或使用数据可能会导致不遵守监管标准。
   [自动化测试](/zh-cn/wiki/automated-testing/) 可以通过验证新软件版本是否与以前版本保持兼容性来减轻这些风险，确保现有功能不受更新影响。
 
-- **支持成本增加**：使用旧版本的用户可能会遇到需要支持的问题，从而增加帮助台和支持团队的工作量。
-- **碎片**：用户群可能会在不同版本之间变得碎片化，从而使更新和安全补丁的部署变得复杂。
-- **强制升级**：用户可能被迫升级其系统或硬件以运行最新的软件版本，这可能既昂贵又耗时。
-- **集成问题**：第三方集成或依赖系统如果依赖于较旧的 API 或软件版本，则可能会失败，从而可能会中断工作流程和业务运营。
-- **失去信任**：无法升级或选择不升级的用户如果感到被抛弃或被迫进行更改，可能会失去对软件的信任。
-- **数据不兼容性**：新软件版本可能使用不同的数据格式，从而在尝试访问旧数据时导致潜在的数据丢失或损坏。
-- **市场份额减少**：潜在客户可能会选择与其现有基础设施具有更好兼容性的竞争对手的产品。
-- **法律和合规风险**：在某些行业中，由于兼容性问题而无法访问或使用数据可能会导致不遵守监管标准。
-
 #### 向后兼容性如何影响用户体验？
 
 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 通过确保软件版本之间的无缝过渡直接影响**用户体验 (UX)**。用户希望他们现有的工作流程、脚本和工具在更新后能够继续运行。当维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)时，用户在日常操作中享受**一致性**，避免重新学习或适应不必要的更改的挫败感。
@@ -211,20 +202,16 @@ order: 0
   测试(`Ensure feature X works on ${version}`, () => {
   // 测试实现
   });
-  });
 
-  ```
 - **Dependency Management**: External libraries or APIs may not maintain their own backward compatibility, forcing updates that could break existing functionality.
 - **Performance**: Backward compatibility layers can introduce performance bottlenecks, as legacy support code may not be optimized for current hardware.
 - **Code Bloat**: Maintaining legacy code can lead to bloated software, as deprecated features must coexist with new ones.
 - **Resource Allocation**: Balancing current development with maintaining old versions can strain resources, potentially slowing down new feature rollouts.
 - **Documentation**: Keeping documentation up-to-date for multiple versions is challenging and can lead to confusion if not managed properly.
-  Experienced test automation engineers must navigate these challenges carefully, often employing strategies like feature flags, versioned APIs, and modular architecture to mitigate the risks while ensuring a seamless user experience.
-  ```
+Experienced test automation engineers must navigate these challenges carefully, often employing strategies like feature flags, versioned APIs, and modular architecture to mitigate the risks while ensuring a seamless user experience.
 
 - **复杂性**：随着软件的发展，代码库变得越来越复杂，使得预测更改将如何与旧版本交互变得更加困难。
 - **测试开销**：确保兼容性需要跨多个版本进行广泛的测试，这可能非常耗时且占用资源。
-
 
 #### 软件开发人员如何在引入新功能和保持向后兼容性之间取得平衡？
 
@@ -251,17 +238,6 @@ order: 0
 - **执行[影响分析](/zh-cn/wiki/impact-analysis/)** ：在更改现有功能之前，分析对当前用户的影响以了解更改的范围。
 - **收集用户反馈**：与您的用户社区互动，了解他们对兼容性的需求和担忧。
   通过遵循这些实践，您可以确保您的软件即使在不断发展时仍然可靠且用户友好。
-
-- **遵守语义版本控制**：在进行不兼容的 API 更改时增加主要版本号，以向后兼容的方式添加功能的次要版本，以及向后兼容的错误修复的补丁版本。
-- **使用弃用策略**：逐步淘汰功能。对已弃用的 API 提供警告，并在删除前将其维护一段合理的时间。
-- **利用功能切换**：引入新功能，同时保持旧功能运行，允许用户根据需要进行切换。
-- **维护全面的[测试套件](/zh-cn/wiki/test-suite/)** ：包括覆盖旧功能的回归测试以捕获重大更改。
-- **细致地记录变更**：保留详细的变更日志，以便用户了解版本之间的修改。
-- **采用强大的[API](/zh-cn/wiki/api/)策略**：设计API时考虑到可扩展性，使用开放/封闭原则等原则，其中软件实体应该对扩展开放，但对修改关闭。
-- **隔离遗留系统**：必要时，封装旧代码，防止其干扰新的开发。
-- **利用抽象层**：引入抽象层将新实现与旧接口分开，使它们能够独立发展。
-- **执行[影响分析](/zh-cn/wiki/impact-analysis/)** ：在更改现有功能之前，分析对当前用户的影响以了解更改的范围。
-- **收集用户反馈**：与您的用户社区互动，了解他们对兼容性的需求和担忧。
 
 #### 自动化测试如何帮助确保向后兼容性？
 
@@ -312,14 +288,6 @@ order: 0
 - **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。
   这些示例展示了公司如何优先考虑 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 以保护用户投资并确保无缝过渡到较新的软件版本。
 
-- **Java**：Oracle 的 Java 平台以其对 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 的坚定承诺而闻名。 Java 运行时环境 (JRE) 允许用旧版本编写的应用程序无需修改即可在最新的 JRE 上运行。
-- **Python 2 到 3**：虽然从 Python 2 到 3 的过渡很重要，但提供了 `2to3` 等工具和 `six` 等兼容性库来帮助维护 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 并简化迁移过程。
-- **Windows 操作系统**：Microsoft 确保为旧版本 Windows 开发的应用程序可以继续在新版本上运行。他们使用垫片和兼容模式来实现这一点。
-- **PlayStation 游戏机**：索尼的 PlayStation 2 与 PlayStation 1 游戏兼容，PlayStation 3 最初为 PS1 和 PS2 游戏提供[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
-- **HTTP/2**：较新的 HTTP/2 协议使用 HTTP/1.1 维护 [向后兼容性](/zh-cn/wiki/backward-compatibility/)。客户端和服务器可以协商要使用的协议版本，确保 Web 服务在不同的 HTTP 版本上继续运行。
-- **[SQL](/zh-cn/wiki/sql/) 服务器**：Microsoft [SQL](/zh-cn/wiki/sql/) 服务器通过允许在较新版本的[SQL](/zh-cn/wiki/sql/) 服务器上恢复旧版本的[数据库](/zh-cn/wiki/database/) 来维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)。
-- **WordPress**：WordPress CMS 通过插件和主题维护[向后兼容性](/zh-cn/wiki/backward-compatibility/)，确保核心软件的更新不会破坏现有功能。
-
 #### 您能否提供一个示例，说明软件必须在新功能上做出妥协才能保持向后兼容性？
 
 当然！这是按要求格式化的示例：
@@ -347,10 +315,3 @@ order: 0
 - **Python 2.7**：尽管Python 3引入了许多更改，但Python 2.7仍保留了较长一段时间，以便为现有Python 2应用程序提供稳定且兼容的平台。
 - **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。
   这些示例说明了对[向后兼容性](/zh-cn/wiki/backward-compatibility/)的承诺，使用户能够从新功能和改进中受益，而无需牺牲运行现有软件的能力。
-
-- **Microsoft Windows**：Windows 操作系统以保持与旧应用程序的兼容性而闻名，通常允许为早期版本编写的软件在最新的 Windows 版本上运行。
-- **Java 运行时环境 (JRE)**：为旧版本 JRE 编写的 Java 应用程序通常无需修改即可在较新版本上运行，这要归功于 Java 平台对 [向后兼容性](/zh-cn/wiki/backward-compatibility/) 的承诺。
-- **Ubuntu LTS 版本**：Ubuntu 的长期支持 (LTS) 版本提供五年更新，并确保针对 LTS 版本的软件在此期间保持兼容。
-- **PostgreSQL**：此[数据库](/zh-cn/wiki/database/) 管理系统因确保较新版本与旧版本创建的[数据库](/zh-cn/wiki/database/) 保持兼容性而享有盛誉，从而实现无缝升级。
-- **Python 2.7**：尽管Python 3引入了许多更改，但Python 2.7仍保留了较长一段时间，以便为现有Python 2应用程序提供稳定且兼容的平台。
-- **企业软件（SAP、Oracle）**：企业软件供应商经常强调[向后兼容性](/zh-cn/wiki/backward-compatibility/)，以确保其大型企业客户可以在不中断业务运营的情况下升级系统。

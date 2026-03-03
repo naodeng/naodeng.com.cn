@@ -466,16 +466,14 @@ order: 0
 
 1. **记录**[bug](/zh-cn/wiki/bug/)，提供清晰简明的详细信息，包括重现步骤、预期与[actual results](/zh-cn/wiki/actual-result/)，以及屏幕截图或视频（如果适用）。
 
-    ```
-    - **Issue**: Login fails with correct credentials
-    - **Steps to Reproduce**:
-      1. Navigate to login page
-      2. Enter valid username and password
-      3. Click 'Login' button
-    - **Expected Result**: User is logged in and redirected to dashboard
-    - **Actual Result**: Error message 'Invalid credentials' is displayed
-    - **Attachments**: Screenshot of the error
-    ```
+  - **Issue**: Login fails with correct credentials
+  - **Steps to Reproduce**:
+    1. Navigate to login page
+    2. Enter valid username and password
+    3. Click 'Login' button
+  - **Expected Result**: User is logged in and redirected to dashboard
+  - **Actual Result**: Error message 'Invalid credentials' is displayed
+  - **Attachments**: Screenshot of the error
 
 2. 根据问题的[severity](/zh-cn/wiki/severity/) 以及对应用程序功能的影响来**确定问题的优先级**。
   3. **在项目的问题跟踪系统（例如 [JIRA](/zh-cn/wiki/jira/) 或 GitHub 问题）中**记录** [bug](/zh-cn/wiki/bug/)，以便查看和跟踪。
@@ -486,16 +484,14 @@ order: 0
   8. **监控**发布后的问题（如果适用），以确保修复在生产环境中有效。
   1. **记录**[bug](/zh-cn/wiki/bug/)，提供清晰简洁的详细信息，包括重现步骤、预期与[actual results](/zh-cn/wiki/actual-result/)，以及屏幕截图或视频（如果适用）。
 
-    ```
-    - **Issue**: Login fails with correct credentials
-    - **Steps to Reproduce**:
-      1. Navigate to login page
-      2. Enter valid username and password
-      3. Click 'Login' button
-    - **Expected Result**: User is logged in and redirected to dashboard
-    - **Actual Result**: Error message 'Invalid credentials' is displayed
-    - **Attachments**: Screenshot of the error
-    ```
+  - **Issue**: Login fails with correct credentials
+  - **Steps to Reproduce**:
+    1. Navigate to login page
+    2. Enter valid username and password
+    3. Click 'Login' button
+  - **Expected Result**: User is logged in and redirected to dashboard
+  - **Actual Result**: Error message 'Invalid credentials' is displayed
+  - **Attachments**: Screenshot of the error
 
 2. 根据问题的[severity](/zh-cn/wiki/severity/) 以及对应用程序功能的影响来**确定问题的优先级**。
   3. **在项目的问题跟踪系统（例如 [JIRA](/zh-cn/wiki/jira/) 或 GitHub 问题）中**记录** [bug](/zh-cn/wiki/bug/)，以便查看和跟踪。
@@ -609,16 +605,6 @@ order: 0
   - **移动测试平台**：[BrowserStack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 提供基于云的平台，用于跨各种设备和操作系统测试移动应用程序。
   - **协作工具**：Confluence、Slack 和 Microsoft Teams 促进测试团队之间的沟通和文档共享。
   这些平台支持[reviewers](/zh-cn/wiki/reviewer/)，确保测试全面，问题得到有效跟踪和解决，并在整个开发生命周期中保持软件的整体质量。
-
-- **[Test Management](/zh-cn/wiki/test-management/) 工具**：TestRail、Zephyr 和 qTest 等平台帮助[reviewers](/zh-cn/wiki/reviewer/) 组织[test cases](/zh-cn/wiki/test-case/)、计划测试运行并报告测试进度。
-  - **问题跟踪系统**：[JIRA](/zh-cn/wiki/jira/)、Bugzilla 和 Redmine 广泛用于跟踪缺陷和管理测试期间出现的问题。
-  - **持续集成/持续部署 (CI/CD) 工具**：Jenkins、GitLab CI 和 CircleCI 自动执行构建、测试和部署流程，允许 [reviewers](/zh-cn/wiki/reviewer/) 将测试集成到 CI/CD 管道中。
-  - **版本控制系统**：Git 和 Subversion (SVN) 对于维护 [test scripts](/zh-cn/wiki/test-script/) 的不同版本以及协作进行代码更改至关重要。
-  - **[Automated Testing](/zh-cn/wiki/automated-testing/) 框架**：[Selenium](/zh-cn/wiki/selenium/)、Appium 和[Cypress](/zh-cn/wiki/cypress/) 提供用于编写​​和运行自动化[test scripts](/zh-cn/wiki/test-script/) 的基础设施。
-  - **[Performance Testing](/zh-cn/wiki/performance-testing/) 工具**：LoadRunner、[JMeter](/zh-cn/wiki/jmeter/) 和 Gattle 帮助[reviewers](/zh-cn/wiki/reviewer/) 评估被测应用程序的性能和可扩展性。
-  - **[API Testing](/zh-cn/wiki/api-testing/) 工具**：[Postman](/zh-cn/wiki/postman/) 和 SoapUI 用于测试 [APIs](/zh-cn/wiki/api/) 和 Web 服务。
-  - **移动测试平台**：[BrowserStack](/zh-cn/wiki/browserstack/) 和 Sauce Labs 提供基于云的平台，用于跨各种设备和操作系统测试移动应用程序。
-  - **协作工具**：Confluence、Slack 和 Microsoft Teams 促进测试团队之间的沟通和文档共享。
 
 ### 挑战和解决方案
 
@@ -810,14 +796,3 @@ order: 0
   - **代码质量工具**：静态代码分析器和 linter（例如 SonarQube 和 ESLint）有助于维护代码质量，这对于可靠的 e2e 测试至关重要。
   - **模拟和服务虚拟化**：WireMock 和 Mountebank 等工具允许模拟外部服务来测试边缘情况和错误条件，而无需依赖实际的第三方系统。
   这些解决方案简化了审核流程，确保端到端测试高效、可靠，并向开发团队提供有价值的反馈。
-
-- **自动化测试框架**：Selenium、Cypress 和 Playwright 等工具可实现基于浏览器的测试自动化，模拟真实的用户交互。
-  - **持续集成 (CI) 系统**：Jenkins、CircleCI 和 GitHub Actions 等平台允许在每次代码更改时自动运行测试，从而提供即时反馈。
-  - **[Test Management](/zh-cn/wiki/test-management/) 工具**：TestRail 和 Zephyr 等应用程序跟踪测试用例、结果并促进团队成员之间的协作。
-  - **[Bug](/zh-cn/wiki/bug/) 跟踪系统**：JIRA、Bugzilla 和类似工具可帮助代码审查员管理测试期间发现的问题并确定其优先级。
-  - **版本控制集成**：Git 和其他版本控制系统与测试工具集成，将测试结果与代码更改链接起来。
-  - **报告和分析**：测试框架内的仪表板和报告工具提供了对测试覆盖率、通过/失败率和随时间变化的趋势的见解。
-  - **基于云的测试服务**：BrowserStack 和 Sauce Labs 等服务提供基于云的平台，用于在各种设备和浏览器上进行测试。
-  - **性能和[Load Testing](/zh-cn/wiki/load-testing/)工具**：JMeter 和 LoadRunner 等工具模拟高流量并分析负载下的系统性能。
-  - **代码质量工具**：静态代码分析器和 linter（例如 SonarQube 和 ESLint）有助于维护代码质量，这对于可靠的 e2e 测试至关重要。
-  - **模拟和服务虚拟化**：WireMock 和 Mountebank 等工具允许模拟外部服务来测试边缘情况和错误条件，而无需依赖实际的第三方系统。

@@ -73,11 +73,6 @@ order: 0
 - 加强团队之间的沟通和理解。
   通过关注用户交互和结果，[用例](/zh-cn/wiki/use-case/) 有助于开发强大的、以用户为中心的软件系统以及创建有效的自动化测试。
 
-- 定义系统范围和功能。
-- 帮助创建有效的自动化测试计划。
-- 根据用户交互确定测试的优先级。
-- 加强团队之间的沟通和理解。
-
 #### 用例的关键组成部分是什么？
 
 [用例](/zh-cn/wiki/use-case/) 的关键组件包括：
@@ -93,17 +88,6 @@ order: 0
 - **使用频率**：表明用例可能启动的频率。
 - **杂项**：任何其他相关信息，例如数据变化或相关业务规则。
   这些组件确保[用例](/zh-cn/wiki/use-case/)是全面的，并提供对参与者和系统之间交互的清晰理解。它们充当创建 [测试用例](/zh-cn/wiki/test-case/) 和验证系统预期行为的场景的基础。
-
-- **标题**：一个清晰的描述性名称，封装了用例的目的。
-- **主要参与者**：启动用例的主要实体，通常是用户角色或外部系统。
-- **利益相关者和利益**：在用例结果中拥有既得利益的其他实体的列表。
-- **先决条件**：在启动用例之前必须满足的条件。
-- **[后置条件](/zh-cn/wiki/postcondition/)** ：成功完成用例后必须满足的条件。
-- **主要成功场景**：逐步叙述，描述实现目标的标准事件流程。
-- **扩展**：可能发生的替代流程，包括异常和错误情况。
-- **特殊要求**：任何相关的非功能性要求或约束，例如性能标准或法规遵从性。
-- **使用频率**：表明用例可能启动的频率。
-- **杂项**：任何其他相关信息，例如数据变化或相关业务规则。
 
 #### 用例如何帮助理解系统功能？
 
@@ -157,14 +141,6 @@ order: 0
 - **泛化**：带有空心箭头的实线，说明参与者或用例之间的继承。
   [用例](/zh-cn/wiki/use-case/) 图是指定系统内参与者和 [用例](/zh-cn/wiki/use-case/) 之间的关系和交互的可视化表示。它们充当讨论和管理系统需求的工具。
 
-- **Actors** ：代表与系统交互的外部实体，例如用户或其他系统。
-- **[用例](/zh-cn/wiki/use-case/)** ：描述参与者与系统之间为实现目标而进行的交互的省略号。
-- **系统边界**：框架用例的矩形，定义系统的范围。
-- **关联**：将参与者连接到用例的线，表示参与交互。
-- **包含**：带有虚线的定向箭头，表明一个用例包含另一个用例的功能。
-- **扩展**：带有虚线的有向箭头，表示一个用例在某些条件下扩展另一个用例。
-- **泛化**：带有空心箭头的实线，说明参与者或用例之间的继承。
-
 #### 如何创建用例图？
 
 创建**[用例](/zh-cn/wiki/use-case/) 图**涉及以下步骤：
@@ -177,27 +153,25 @@ order: 0
 6. **审查和验证**：确保图表准确地表示所有用户交互和系统功能。
   这是一个使用文本描述的 Markdown 简单示例：
 
-  ```
-  # Use Case Diagram Example
-  ## System Boundary
-  Rectangle: Online Shopping System
-  ## Actors
+# Use Case Diagram Example
+## System Boundary
+Rectangle: Online Shopping System
+## Actors
 - Customer
 - Payment Gateway
-  ## Use Cases
+## Use Cases
 - Browse Items
 - Add Item to Cart
 - Checkout
 - Make Payment
-  ## Connections
+## Connections
 - Customer -> Browse Items
 - Customer -> Add Item to Cart
 - Customer -> Checkout
 - Checkout -> Make Payment
 - Make Payment -> Payment Gateway
-  ## Relationships
+## Relationships
 - Checkout -> Make Payment (include)
-  ```
 请记住保持图表**简单**并**关注**用户交互。避免出现太多细节混乱，这些细节可以保留用于更详细的 [用例](/zh-cn/wiki/use-case/) 场景或其他图表。
 
 1. **标识系统边界**：定义系统内部和外部的内容，通常用矩形表示。
@@ -226,13 +200,12 @@ order: 0
   [用例](/zh-cn/wiki/use-case/) 场景对于**[测试自动化](/zh-cn/wiki/test-automation/)** 很有帮助，因为它们为创建[测试脚本](/zh-cn/wiki/test-script/) 提供了基础。它们有助于可视化功能的端到端功能，可以将其转换为自动化[测试用例](/zh-cn/wiki/test-case/)。这些场景确保自动化测试涵盖应用程序的实际使用情况。
   以下是 Markdown 格式的 [用例](/zh-cn/wiki/use-case/) 场景示例：
 
-  ```
-  **Title:** Withdraw Cash from ATM
-  **Primary Actor:** Bank Customer
-  **Preconditions:**
+**Title:** Withdraw Cash from ATM
+**Primary Actor:** Bank Customer
+**Preconditions:**
 - The ATM is operational.
 - The customer has a valid bank card and PIN.
-  **Main Flow:**
+**Main Flow:**
 1. Customer inserts their bank card.
 2. System prompts for the PIN.
 3. Customer enters the PIN.
@@ -244,11 +217,10 @@ order: 0
 9. Customer takes the cash and receipt.
 10. System ejects the bank card.
 11. Customer takes the card.
-  **Postconditions:**
+**Postconditions:**
 - Customer has received the correct amount of cash.
 - The customer's account balance is updated.
 - The ATM is ready for the next transaction.
-  ```
 在[测试自动化](/zh-cn/wiki/test-automation/) 中，此类场景对于定义[测试用例](/zh-cn/wiki/test-case/) 的范围并确保自动化测试准确反映用户交互至关重要。它们还有助于在边缘情况和潜在系统问题影响最终用户之前识别它们。
 
 #### 用例场景与用例有何不同？
@@ -287,27 +259,25 @@ order: 0
 7. **包括成功标准**：从参与者的角度定义什么将使 [用例](/zh-cn/wiki/use-case/) 成功。
   以下是登录 [用例](/zh-cn/wiki/use-case/) 场景的简化示例：
 
-  ```
-  Actor: User
-  Goal: Successfully log into the system
-  Preconditions:
+Actor: User
+Goal: Successfully log into the system
+Preconditions:
 - User is registered.
 - Login page is accessible.
-  Main Flow:
+Main Flow:
 1. User navigates to the login page.
 2. User enters username and password.
 3. User clicks the login button.
 4. System validates credentials.
 5. User is redirected to the homepage.
-  Alternative Flows:
-  A. Invalid credentials:
+Alternative Flows:
+A. Invalid credentials:
 1. System displays an error message.
 2. User can attempt to re-enter credentials.
-  Postconditions:
+Postconditions:
 - User is logged in and has access to the system.
-  Success Criteria:
+Success Criteria:
 - User gains access to the homepage within 5 seconds after clicking the login button.
-  ```
 请记住保持场景**现实**并**关注**用户交互，避免使用技术术语以确保利益相关者的清晰度。
 
 1. **识别参与者**：确定谁正在与系统交互（例如，用户、外部系统）。
@@ -338,14 +308,6 @@ order: 0
 - **需求差距**：通过详细说明具体的操作和结果，[用例](/zh-cn/wiki/use-case/) 场景可以暴露缺失的需求或对预期功能的误解。
 - **回归效应**：当系统发生更改时，场景有助于确保现有功能不受影响，从而揭示潜在的回归问题。
   将[用例](/zh-cn/wiki/use-case/) 场景纳入[测试自动化](/zh-cn/wiki/test-automation/) 策略可确保测试以用户为中心并专注于实际应用程序，从而形成更强大、更可靠的系统。
-
-- **边缘案例**：场景可以突出显示用户可能采取的不太明显的路径或交互，这些路径或交互经常被忽视，但可能会导致意外行为。
-- **集成点**：它们揭示系统如何与外部系统或模块交互，查明潜在的集成问题。
-- **用户体验问题**：通过逐步完成用户所执行的步骤，场景可能会揭示出可能导致用户错误的繁琐或不直观的工作流程。
-- **安全漏洞**：它们可以通过概述不同类型的用户如何与系统交互来帮助识别与安全相关的场景，例如访问控制问题或数据隐私问题。
-- **性能瓶颈**：涉及复杂交互或高数据负载的场景可以帮助识别实际条件下的性能问题。
-- **需求差距**：通过详细说明具体的操作和结果，[用例](/zh-cn/wiki/use-case/) 场景可以暴露缺失的需求或对预期功能的误解。
-- **回归效应**：当系统发生更改时，场景有助于确保现有功能不受影响，从而揭示潜在的回归问题。
 
 ### 高级概念
 
@@ -444,14 +406,3 @@ order: 0
 - **术语不一致**：在整个 [用例](/zh-cn/wiki/use-case/) 中使用一致的语言和术语以避免混淆。
 - **跳过验证**：与利益相关者一起验证 [用例](/zh-cn/wiki/use-case/) 以确保准确性和完整性。
   请记住，精心设计的[用例](/zh-cn/wiki/use-case/) 是有效[测试自动化](/zh-cn/wiki/test-automation/) 的基础，为测试团队提供清晰且可操作的场景。
-
-- **忽视用户视角**：始终关注用户的观点。 [用例](/zh-cn/wiki/use-case/) 过于以系统为中心可能会错过用户交互和期望。
-- **太笼统或太详细**：取得平衡是关键。过于笼统的[用例](/zh-cn/wiki/use-case/) 缺乏可操作的信息，而太多的细节可能会让人不知所措和困惑。
-- **忽略替代流程**：不要只关注[快乐之路](/zh-cn/wiki/happy-path/)。考虑替代流程和例外流程以确保全面覆盖。
-- **混合功能**：每个[用例](/zh-cn/wiki/use-case/) 应代表一个功能或目标。组合多个目标可能会导致混乱和可测试性问题。
-- **忽略非[功能需求](/zh-cn/wiki/functional-requirements/)**：虽然[用例](/zh-cn/wiki/use-case/) 主要关注[功能需求](/zh-cn/wiki/functional-requirements/)，但考虑可能影响场景的性能、可用​​性和安全性方面也很重要。
-- **无法更新**：随着系统的发展，[用例](/zh-cn/wiki/use-case/) 也应该如此。过时的[用例](/zh-cn/wiki/use-case/)会导致不相关或不正确的测试。
-- **缺乏清晰的范围**：定义[用例](/zh-cn/wiki/use-case/)将覆盖和不覆盖的范围，以防止范围蔓延并确保集中测试。
-- **定义不明确的参与者**：清楚地识别所涉及的参与者及其角色。这里的歧义可能会导致测试不完整。
-- **术语不一致**：在整个 [用例](/zh-cn/wiki/use-case/) 中使用一致的语言和术语以避免混淆。
-- **跳过验证**：与利益相关者一起验证 [用例](/zh-cn/wiki/use-case/) 以确保准确性和完整性。

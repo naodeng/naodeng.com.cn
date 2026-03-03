@@ -92,17 +92,6 @@ order: 0
 - **安全**：检查 UI 中是否存在可通过用户输入或交互利用的漏洞。
   有效的[用户界面测试](/zh-cn/wiki/ui-testing/)通常涉及手动和自动测试的组合，重点关注对最终用户最可见和最有影响力的领域。根据用户旅程和关键业务功能确定测试的优先级至关重要，以确保高质量的用户体验。
 
-- **一致性**：验证 UI 在不同设备、浏览器和操作系统之间是否保持一致。
-- **功能**：检查所有 UI 元素（例如按钮、文本字段、下拉列表和其他交互式组件）是否按预期工作。
-- **可用性**：确保 UI 直观、可访问且易于用户导航。
-- **错误处理**：测试应用程序在错误条件下的行为以及是否显示适当的错误消息。
-- **视觉外观**：确认 UI 的布局、颜色、字体大小和其他视觉方面符合设计规范。
-- **性能**：评估 UI 的响应能力和速度，尤其是在加载数据或执行操作时。
-- **本地化**：确保 UI 根据用户区域设置正确支持不同的语言和格式。
-- **状态管理**：确保 UI 正确反映应用程序状态的变化，例如数据更新或用户交互后。
-- **兼容性**：测试UI与不同版本的浏览器和设备的兼容性，包括响应能力和移动兼容性。
-- **安全**：检查 UI 中是否存在可通过用户输入或交互利用的漏洞。
-
 #### UI 测试如何融入整个软件测试过程？
 
 [用户界面测试](/zh-cn/wiki/ui-testing/) 是 **[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 的关键组件，确保用户界面符合设计规范并提供无缝的用户体验。它通常发生在 **unit** 和 **[集成测试](/zh-cn/wiki/integration-testing/)** 之后，其中重点是各个组件及其交互。但是，[用户界面测试](/zh-cn/wiki/ui-testing/) 从用户的角度验证应用程序的**端到端功能**和**视觉方面**。
@@ -176,17 +165,6 @@ order: 0
 - **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium，通常用于 Web 应用程序测试。
 - **Playwright**：一个开源 Node 库，用于通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
   这些工具提供各种功能，从记录和回放功能到高级脚本编写，并且可以集成到 CI/CD 管道中以进行持续测试。它们迎合不同的平台和技术，确保有适合大多数 [用户界面测试](/zh-cn/wiki/ui-testing/) 需求的工具。
-
-- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，支持实时交互测试。
-- **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
-- **TestComplete** ：一种商业工具，支持具有脚本和无脚本操作的桌面、移动和 Web 应用程序。
-- **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：以前称为 QTP，它是一种广泛使用的商业工具，用于功能和回归测试，具有丰富的功能集。
-- **Ranorex**：一个 GUI 测试自动化框架，支持广泛的桌面、Web 和移动应用程序测试。
-- **Espresso**：Android 移动测试框架，提供用于编写​​ UI 测试的 API，以模拟单个应用程序中的用户交互。
-- **XCTest/XCUITest** ：Apple 用于 UI 测试 iOS 和 macOS 应用程序的测试框架，与 Xcode 集成。
-- **Katalon Studio**：一款多功能测试自动化工具，支持 Web、API、移动和桌面应用程序测试，构建于 Selenium 和 Appium 之上。
-- **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium，通常用于 Web 应用程序测试。
-- **Playwright**：一个开源 Node 库，用于通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
 
 #### 自动化 UI 测试的优点和缺点是什么？
 
@@ -266,11 +244,9 @@ order: 0
 - **实施等待策略**
     例如显式等待处理异步操作和动态内容，确保测试稳定可靠。
 
-
 WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
   WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("elementId")));
 
-  ```
 - **Use Page Object Model (POM)** to abstract UI structure from test logic, enhancing maintainability and readability.
 - **Employ assertions wisely** to verify UI states without overloading tests with unnecessary checks. Focus on critical elements that reflect the success of a test.
 - **Test across multiple browsers and devices** to ensure compatibility and responsiveness. Utilize cloud-based services for a wider range of environments.
@@ -278,8 +254,7 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - **Regularly review and refactor tests** to adapt to UI changes and remove flakiness. Keep tests lean and focused.
 - **Monitor test results** using dashboards or reporting tools to quickly identify and address failures.
 - **Collaborate with developers** to ensure UI components are testable, with proper IDs and attributes that facilitate automation.
-  By following these practices, you can create robust, maintainable, and efficient UI tests that contribute to the overall quality of the software product.
-  ```
+By following these practices, you can create robust, maintainable, and efficient UI tests that contribute to the overall quality of the software product.
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
     基于用户流量和业务重要性。重点关注反映现实世界使用情况的高影响力场景。
@@ -289,8 +264,6 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 - **实施等待策略**
     例如显式等待处理异步操作和动态内容，确保测试稳定可靠。
-
-
 
 #### 如何使用 Selenium 进行 UI 测试？
 
@@ -429,19 +402,6 @@ WebDriverWait 等待 = new WebDriverWait(driver, Duration.ofSeconds(10));
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：包括可访问性的自动检查，以确保残疾人可以使用 UI。
 - **性能监控**：将性能指标纳入 UI 测试中，以检测影响用户体验的回归。
   通过应用这些策略，您可以增强 UI 测试的稳健性和可靠性，确保它们在您的软件开发生命周期中保留宝贵的资产。
-
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**：专注于承载最高业务价值或用户流量的关键路径和功能。
-- **模拟外部依赖项**：使用模拟或存根来模拟外部服务和 API，以确保测试不会因外部因素而不稳定。
-- **实现 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将 UI 结构更改封装在页面对象中以最大程度地减少维护工作。
-- **使用等待策略**：采用显式等待来处理异步操作和动态内容，确保元素在继续之前可交互。
-- **并行执行**：利用支持并发测试运行的工具并行运行测试以减少执行时间。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：创建可重用且易于维护的测试数据集或使用数据工厂即时生成测试数据。
-- **不稳定检测**：结合不稳定检测机制来及时识别和解决非确定性测试。
-- **持续反馈**：使用支持与构建和部署系统集成的工具，将 UI 测试集成到 CI/CD 管道中，以便立即反馈更改。
-- **测试工件的版本控制**：在版本控制中存储测试脚本、数据和配置，以跟踪更改并有效协作。
-- **定期重构**：定期审查和重构测试，以提高清晰度、效率和可维护性。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：包括可访问性的自动检查，以确保残疾人可以使用 UI。
-- **性能监控**：将性能指标纳入 UI 测试中，以检测影响用户体验的回归。
 
 #### 如何确保我的 UI 测试有效且高效？
 

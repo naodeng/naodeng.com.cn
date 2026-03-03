@@ -96,16 +96,6 @@ order: 0
 - **遵守标准**：遵守行业和监管标准可确保产品满足必要的质量基准。
   这些原则指导 QA 专家创建强大的[质量保证](/zh-cn/wiki/quality-assurance/) 框架，该框架不仅确保交付高质量的软件，而且还增强了整体开发过程。
 
-- **预防胜于检测**：QA 强调预防缺陷，而不是在缺陷发生后进行检测。这种主动方法旨在改进开发流程，从一开始就消除错误的引入。
-- **持续改进**：QA 是一个依赖于持续反馈和学习的迭代过程。我们的目标是不断完善和增强产品及其制造流程。
-- **以客户为中心的方法**：质量保证活动与客户的需求和期望保持一致。确保产品满足或超过这些期望至关重要。
-- **流程标准化**：实施和遵循标准化流程有助于实现质量的一致性。它还使过程可预测和可衡量。
-- **综合团队责任**：质量不仅仅是 QA 团队的责任；它是参与开发生命周期的每个人职责的一个组成部分。
-- **整体测试策略**：测试应涵盖产品的所有方面，包括功能、性能、安全性、可用性和兼容性。
-- **风险管理**：在整个开发过程中识别和管理风险至关重要。 QA 应根据不同产品功能的风险评估确定测试的优先级。
-- **指标驱动的管理**：使用指标和 KPI 来客观衡量质量并指导决策。
-- **遵守标准**：遵守行业和监管标准可确保产品满足必要的质量基准。
-
 ### 流程和技术
 
 #### 质量保证涉及哪些关键流程？
@@ -123,16 +113,6 @@ order: 0
 - **测试结束**：确保满足所有测试目标并记录结果以供将来参考。
   每个流程都是迭代的，通常带有反馈循环，以确保持续改进并遵守质量保证标准。自动化在简化这些流程方面发挥着关键作用，特别是在[测试执行](/zh-cn/wiki/test-execution/) 和缺陷跟踪方面。
 
-- **需求分析**：理解并记录软件必须做什么。
-- **测试计划**：定义测试活动的范围、方法、资源和时间表。
-- **[测试用例](/zh-cn/wiki/test-case/) 开发**：根据需求创建详细的测试用例和测试脚本。
-- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置测试所需的硬件和软件要求。
-- **[测试执行](/zh-cn/wiki/test-execution/)** ：运行测试用例并记录结果。
-- **缺陷跟踪**：记录发现的任何问题并跟踪其解决方案。
-- **风险分析**：识别软件中的潜在风险并据此确定测试的优先级。
-- **测试报告**：在报告中总结测试活动和结果。
-- **测试结束**：确保满足所有测试目标并记录结果以供将来参考。
-
 #### 一些常见的质量保证技术有哪些？
 
 常见的 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 技术包括：
@@ -145,9 +125,7 @@ order: 0
   it('应该将两个数字相加', () => {
   期望(添加(2, 3)).toEqual(5);
   });
-  });
 
-  ```
 - **Performance Testing**: Evaluating the speed, responsiveness, and stability of a system under a particular workload. Tools like JMeter or LoadRunner are often used.
 - **Security Testing**: Identifying vulnerabilities, threats, and risks in the software. Techniques include penetration testing and using automated security scanning tools.
 - **Compatibility Testing**: Ensuring software operates as expected across different browsers, devices, and operating systems.
@@ -155,12 +133,10 @@ order: 0
 - **Code Reviews**: Peers review source code to find defects and suggest improvements. This can be manual or supported by tools like SonarQube.
 - **Static Code Analysis**: Tools analyze source code to detect potential vulnerabilities, code smells, and adherence to coding standards without executing the program.
 - **Risk-Based Testing**: Prioritizing testing efforts based on the risk of failure and its impact on the project.
-  Each technique plays a crucial role in identifying defects, ensuring functionality, and maintaining the overall quality of the software product.
-  ```
+Each technique plays a crucial role in identifying defects, ensuring functionality, and maintaining the overall quality of the software product.
 
 - **[手动测试](/zh-cn/wiki/manual-testing/)**：人类测试人员在没有自动化工具的情况下手动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[探索性测试](/zh-cn/wiki/exploratory-testing/)、临时测试和[可用性测试](/zh-cn/wiki/usability-testing/)。
 - **[自动化测试](/zh-cn/wiki/automated-testing/)**：使用工具和脚本自动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[回归测试](/zh-cn/wiki/regression-testing/)。
-
 
 #### 质量保证流程通常如何运作？
 
@@ -254,17 +230,6 @@ order: 0
 - **SonarQube**：一种持续检查工具，通过静态分析执行自动审查，以检测错误、代码异味和安全漏洞。
   这些工具是 QA 流程不可或缺的一部分，有助于自动化任务、识别缺陷并确保[软件质量](/zh-cn/wiki/software-quality/)。经验丰富的[测试自动化](/zh-cn/wiki/test-automation/)工程师会根据项目的具体需求（例如技术堆栈、应用程序类型和测试要求）来选择工具。
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：一种开源工具，可自动化 Web 浏览器，允许跨各种平台和浏览器进行测试。
-- **JUnit/TestNG**：用于 Java 单元测试的框架，提供注释和断言来帮助构建和运行测试。
-- **Cucumber** ：支持行为驱动开发（BDD），无需详细说明如何实现该功能即可定义软件行为。
-- **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
-- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应、自动化测试和创建工作流程。
-- **HP UFT（以前称为 QTP）**：一种具有图形用户界面的功能和回归测试商业工具。
-- **SoapUI**：用于面向服务的架构 (SOA) 和表述性状态传输 (REST) 的开源 Web 服务测试应用程序。
-- **LoadRunner**：Micro Focus 的性能测试工具，可模拟数千个用户来识别和诊断性能瓶颈。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：一个 Apache 项目，可用于测试静态和动态资源上的性能，模拟服务器上的重负载来测试强度并分析整体性能。
-- **SonarQube**：一种持续检查工具，通过静态分析执行自动审查，以检测错误、代码异味和安全漏洞。
-
 ### 角色和职责
 
 #### 质量保证专家的角色和职责是什么？
@@ -350,10 +315,6 @@ order: 0
 - 共享有关测试进度和质量指标的文档和报告。
 - 联合解决问题会议来解决复杂的问题。
   通过与这些角色建立牢固的关系，质量保证专家帮助创建一种渗透到整个开发生命周期的质量文化。
-
-- 通过站立会议、会议和聊天工具进行定期沟通。
-- 共享有关测试进度和质量指标的文档和报告。
-- 联合解决问题会议来解决复杂的问题。
 
 #### 质量保证专家需要哪些技能？
 
@@ -492,12 +453,6 @@ order: 0
 - **启用基准测试**：标准提供了衡量性能和质量的基线，使团队能够跟踪一段时间内的改进情况。
   在[测试自动化](/zh-cn/wiki/test-automation/)中，标准可能包括编码约定、命名方案、文档实践以及促进**可重用性**和**可扩展性**的框架和工具的使用。例如，遵循[selenium](/zh-cn/wiki/selenium/) 中的[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 可以导致更易于维护和更健壮的[测试脚本](/zh-cn/wiki/test-script/)。
   最终，质量保证中的标准通过确保测试彻底、系统化并与行业最佳实践保持一致，有助于提高软件的**整体质量**。这使得软件能够同时满足功能性和非[功能需求](/zh-cn/wiki/functional-requirements/)的要求，从而降低缺陷风险并提高用户满意度。
-
-- **减少歧义**：清晰的指导方针有助于避免误解并确保每个人都达成共识。
-- **促进协作**：共享标准使团队成员更容易一起工作，并使新成员快速融入。
-- **改进[可维护性](/zh-cn/wiki/maintainability/)**：随着时间的推移，标准化测试更容易理解、更新和维护。
-- **增强可移植性**：遵守标准可以更轻松地在不同环境或工具之间传输测试。
-- **启用基准测试**：标准提供了衡量性能和质量的基线，使团队能够跟踪一段时间内的改进情况。
 
 #### 如何在软件开发项目中实施质量保证标准？
 

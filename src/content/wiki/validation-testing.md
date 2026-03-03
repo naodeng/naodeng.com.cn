@@ -151,18 +151,6 @@ order: 0
 - **用户界面 (UI) 测试**：检查图形界面的可用性和可访问性。
   将这些技术合并到自动化[验证测试](/zh-cn/wiki/validation-testing/)中可以通过模拟用户交互、检查合规性并根据预期结果验证软件行为的脚本和工具来实现。可以利用自动化框架和库来创建稳健、可重复且高效的验证测试。
 
-- **边界值分析 (BVA)**：测试输入范围边缘的功能。
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** ：将输入数据划分为等效分区以减少测试用例的数量。
-- **[决策表测试](/zh-cn/wiki/decision-table-testing/)** ：使用表格表示输入和预期结果之间的逻辑关系。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：检查应用程序在序列中不同输入条件下的行为。
-- **[用例测试](/zh-cn/wiki/use-case-testing/)** ：通过执行用例来验证系统的功能。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：鼓励测试人员在测试时探索和学习软件。
-- **[错误猜测](/zh-cn/wiki/error-guessing/)** ：依靠测试人员的经验来猜测应用程序的问题区域。
-- **基于图形的测试方法**：使用图形表示来识别可能的测试路径。
-- **比较测试**：将软件的性能与以前的版本或竞争对手的产品进行比较。
-- **合规性测试**：确保软件符合行业标准和法规。
-- **用户界面 (UI) 测试**：检查图形界面的可用性和可访问性。
-
 #### 静态验证测试和动态验证测试有什么区别？
 
 静态[验证测试](/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
@@ -187,11 +175,6 @@ order: 0
 - 实施自动回归测试，以确保新的更改不会破坏现有功能。
 - 为自动化无法覆盖的探索性、临时性和可用性测试保留手动测试。
   请记住，UAT 的目标是让最终用户相信软件将在现实世界中按预期运行。
-
-- 自动设置和拆除测试环境。
-- 使用数据驱动的测试来模拟各种用户输入和工作流程。
-- 实施自动回归测试，以确保新的更改不会破坏现有功能。
-- 为自动化无法覆盖的探索性、临时性和可用性测试保留手动测试。
 
 ### 流程和实施
 
@@ -225,14 +208,6 @@ order: 0
 3. **测试设计**：创建符合用户要求的详细[测试用例](/zh-cn/wiki/test-case/) 和[测试场景](/zh-cn/wiki/test-scenario/)。
 4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
 5. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。该步骤包括：
-- 输入有效和无效数据
-- 检查预期结果
-- 记录测试用例的结果
-- 记录任何差异的缺陷
-- 输入有效和无效数据
-- 检查预期结果
-- 记录测试用例的结果
-- 记录任何差异的缺陷
 6. **缺陷跟踪**：监控和跟踪测试过程中发现的缺陷。使用缺陷跟踪系统来管理缺陷生命周期。
 7. **[重新测试](/zh-cn/wiki/retesting/) 和[回归测试](/zh-cn/wiki/regression-testing/)**：修复缺陷后，重新测试特定功能并执行[回归测试](/zh-cn/wiki/regression-testing/) 以确保新更改不会对现有功能产生不利影响。
 8. **结果分析**：根据预期结果评估测试结果，以确定软件是否按预期运行。
@@ -383,12 +358,6 @@ order: 0
 1. **识别[测试场景](/zh-cn/wiki/test-scenario/)**：确定[测试用例](/zh-cn/wiki/test-case/) 将验证哪些功能或要求。
 2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在证明或反驳什么。
 3. **设计[测试用例](/zh-cn/wiki/test-case/)**：
-- **输入数据**：指定执行测试所需的输入数据。
-- **执行步骤**：概述测试期间要遵循的步骤。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：描述软件按预期运行时的预期结果。
-- **输入数据**：指定执行测试所需的输入数据。
-- **执行步骤**：概述测试期间要遵循的步骤。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：描述软件按预期运行时的预期结果。
 4. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保环境与软件的使用条件相匹配。
 5. **自动化[测试用例](/zh-cn/wiki/test-case/)**：
 
@@ -586,16 +555,13 @@ order: 0
 - **自动化重复任务**
     以节省时间并减少人为错误。使用脚本和工具自动执行测试用例、数据设置和结果验证。
 
-
 // 使用测试框架的自动化 [测试用例](/zh-cn/wiki/test-case/) 示例
   描述('登录功能', () => {
   it('应该允许用户使用有效凭据登录', async () => {
   等待登录页面.enterCredentials('用户', '密码');
   期望（等待仪表板页面.isUserLoggedIn（））。toBe（true）;
   });
-  });
 
-  ```
 - Implement **continuous integration** (CI) to automatically run validation tests on new code commits, ensuring immediate feedback.
 - Use **service virtualization** to simulate dependent systems, allowing tests to run without waiting for actual integrations to be available.
 - **Parallelize tests** to run simultaneously across different environments or machines, reducing the overall execution time.
@@ -603,16 +569,13 @@ order: 0
 - Apply **smart test selection** techniques, such as test case prioritization and test suite minimization, to run only the necessary tests.
 - **Monitor and analyze** test results to identify patterns and areas for improvement, using metrics like test coverage and defect density.
 - **Leverage AI and machine learning** to predict high-risk areas and optimize the test suite accordingly.
-  By implementing these strategies, test automation engineers can enhance the efficiency of validation testing, leading to faster release cycles and higher-quality software.
-  ```
+By implementing these strategies, test automation engineers can enhance the efficiency of validation testing, leading to faster release cycles and higher-quality software.
 
 - **优先考虑[测试用例](/zh-cn/wiki/test-case/)**
     基于风险和影响。专注于影响应用程序最重要方面的关键功能。
 
 - **自动化重复任务**
     以节省时间并减少人为错误。使用脚本和工具自动执行测试用例、数据设置和结果验证。
-
-
 
 #### 如何处理验证测试中的误报和漏报？
 

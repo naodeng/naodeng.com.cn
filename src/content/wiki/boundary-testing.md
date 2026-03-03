@@ -290,22 +290,18 @@ order: 0
   测试(`Value ${data} should be handled correctly`, () => {
   期望（处理输入（数据））。toBe（预期结果）
   })
-  })
 
-  ```
 - **Prioritize based on risk**: Focus on boundary conditions that are most likely to yield defects or have the highest impact.
 - **Consider non-numeric boundaries**: Remember to test boundaries for other data types like strings, dates, and collections.
 - **Document test cases**: Maintain clear documentation for each boundary test case to facilitate maintenance and understanding.
 - **Review and revise**: Regularly review boundary test cases to ensure they remain relevant as the software evolves.
 - **Combine with other techniques**: Use boundary testing in conjunction with other test methods like equivalence partitioning, decision table testing, and state transition testing for comprehensive coverage.
 - **Be mindful of environment**: Test boundary conditions in an environment that closely mirrors production to catch environment-specific issues.
-  ```
 
 - **识别精确边界**：确保您清楚地了解输入域并准确识别边界。
 - **包括极值**：使用精确边界处的值以及边界内部和外部的值进行测试。
 - **尽可能自动化**：使用测试自动化框架重复运行边界测试，尤其是回归测试。
 - **使用数据驱动测试**：实施数据驱动测试，可以轻松修改和扩展边界值，而无需更改测试代码。
-
 
 ### 实际应用和示例
 
@@ -422,12 +418,6 @@ order: 0
   使用支持移动平台（例如 Appium 或 Espresso）的框架自动执行边界测试，为各种输入和状态编写边缘案例脚本。合并参数化测试以有效覆盖一系列边界值。
   请记住优先考虑更可能受边界条件影响的关键路径和功能。这种有针对性的方法有助于保持效率，同时确保最重要的地方得到彻底覆盖。
 
-- **用户输入字段**：测试文本输入、滑块和其他小部件的最大值、最小值以及超出可接受的范围。
-- **设备兼容性**：检查应用程序如何处理设备规格的边界，例如内存不足或处理器速度最低。
-- **屏幕方向**：验证应用程序对屏幕方向变化的响应，确保 UI 元素在屏幕边缘正确调整。
-- **手势输入**：确保在触摸屏的边界正确识别滑动、捏合和其他基于手势的输入。
-- **网络条件**：在网络强度边界测试应用程序的功能，例如在 Wi-Fi 和蜂窝数据之间或在低信号强度下切换。
-
 #### 边界测试过程中常见的错误有哪些？
 
 [边界测试](/zh-cn/wiki/boundary-testing/) 中的常见错误包括：
@@ -442,16 +432,6 @@ order: 0
 - **更改后未能重新测试**：代码更改后不重新测试边界条件可能会导致新的或回归的错误被忽视。
 - **文档不足**：边界条件和测试用例的文档记录不充分可能会导致测试覆盖范围的混乱和差距。
   避免这些错误需要仔细规划、对被测系统的透彻理解以及严格执行边界测试。
-
-- **忽略差一错误**：未能立即测试边界之外的值可能会错过严重的差一错误，这在循环和数组索引中很常见。
-- **忽略非数字边界**：不考虑字符串长度、文件大小或日期范围等非数字输入可能会导致错过边缘情况。
-- **忽略隐式边界**：缺少业务逻辑或用户需求隐含的边界，而不仅仅是软件规范中明确定义的边界。
-- **假设边界行为的同质性**：假设所有边界的行为相似并且不单独测试每个边界可能会导致未检测到的缺陷。
-- **忘记 UI 和 UX 边界**：跳过用户界面限制测试，例如最大字段长度或文件上传大小，可能会影响用户体验。
-- **忽略[数据库](/zh-cn/wiki/database/)限制**：不测试数据库字段的限制，例如最大记录数或数据类型约束，可能会导致数据处理失败。
-- **省略错误处理路径**：不测试系统如何处理超出边界的输入，这对于确保强大的错误处理和系统稳定性至关重要。
-- **更改后未能重新测试**：代码更改后不重新测试边界条件可能会导致新的或回归的错误被忽视。
-- **文档不足**：边界条件和测试用例的文档记录不充分可能会导致测试覆盖范围的混乱和差距。
 
 #### 边界测试如何自动化？
 
@@ -679,12 +659,3 @@ order: 0
   });
   ```
 通过遵循这些策略，您可以在[边界测试](/zh-cn/wiki/boundary-testing/)中实现全面覆盖，确保有效测试边缘情况并识别潜在缺陷。
-
-- **识别所有边界**：确保您已识别规范中的所有边界，包括最小值和最大值以及边缘情况。
-- **包括相差一错误**：在边界值的上方和下方进行测试，以捕获常见的相差一错误。
-- **考虑数据类型**：注意所使用的数据类型。例如，如果需要一个整数，请使用最大和最小的可能整数进行测试。
-- **明智地使用自动化**：自动化边界测试以有效覆盖大量边界条件和变化，而不会出现人为错误。
-- **参数化测试**：使用参数化测试以不同的边界值运行相同的测试，减少代码重复并提高可维护性。
-- **审查和更新**：定期审查和更新边界测试，以反映系统需求和边界的变化。
-- **与其他技术结合**：将边界测试与其他测试技术（例如等价划分、决策表测试和状态转换测试）结合使用，以实现彻底的覆盖。
-- **利用[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**：根据故障风险和潜在缺陷的影响确定边界测试的优先级。

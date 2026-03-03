@@ -79,14 +79,6 @@ order: 0
 - **持续集成**：当新组件可用时持续集成，这与敏捷和 DevOps 实践保持一致。
   实际上，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 需要 **[测试工具](/zh-cn/wiki/test-harness/)** 来协调测试驱动程序并管理[测试用例](/zh-cn/wiki/test-case/)。这对于独立开发服务的**微服务架构**至关重要。有效的[测试用例](/zh-cn/wiki/test-case/) 设计应针对集成组件之间的接口。持续集成工具可以自动化构建和[测试过程](/zh-cn/wiki/test-process/)，从而强化自下而上的方法。最佳实践包括维护**干净的代码库**、**自动化回归测试**和**频繁集成**以最大程度地减少集成问题。
 
-- **首先测试低级组件**：开始使用最基本的代码单元进行测试，以确保它们在与更高级别的组件集成之前正常工作。
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：一次集成和测试一个组件，这有助于隔离错误并简化调试。
-- **使用测试驱动程序**：使用测试驱动程序来模拟尚未开发或集成的高级模块。
-- **早期原型**：允许早期部分系统原型，为早期评估提供有形产品。
-- **存根替换**：随着集成的升级，用实际组件替换存根（在自上而下的集成中使用）。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：在每个集成步骤之后，执行回归测试以确保新的更改不会破坏现有功能。
-- **持续集成**：当新组件可用时持续集成，这与敏捷和 DevOps 实践保持一致。
-
 #### 自下而上的集成与自上而下的集成有何不同？
 
 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 和[自上而下的集成](/zh-cn/wiki/top-down-integration/) 是[软件测试](/zh-cn/wiki/software-testing/) 的两种相反的方法。
@@ -179,14 +171,6 @@ order: 0
 - **测试工具**：可以开发自定义测试工具来执行和管理集成组件的测试，特别是在处理复杂的交互或特定的测试场景时。
   使用这些工具，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地实施[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)，确保每个组件在进行更高级别的集成之前在系统中正确运行。
 
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：JUnit (Java)、[NUnit](/zh-cn/wiki/nunit/) (.NET) 或 unittest (Python) 等工具对于在各个组件上创建和运行单元测试至关重要。
-- **模拟框架**：Mockito (Java)、Moq (.NET) 和 unittest.mock (Python) 允许测试人员创建模拟对象并模拟已测试和集成的较低级别模块的行为。
-- **[集成测试](/zh-cn/wiki/integration-testing/) 工具**：TestNG (Java) 和 SpecFlow (.NET) 可用于编写更高级别的集成测试，以验证集成组件之间的交互。
-- **构建自动化工具**：Jenkins、Travis CI 和 CircleCI 支持持续集成，通常与 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 结合使用以自动化构建和 [测试过程](/zh-cn/wiki/test-process/)。
-- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**：JaCoCo (Java)、dotCover (.NET) 和coverage.py (Python) 有助于评估测试覆盖代码库的程度，确保在所有集成级别进行彻底的测试。
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：[JMeter](/zh-cn/wiki/jmeter/) 和 Gadling 可用于测试集成组件的性能，确保它们满足所需的基准。
-- **测试工具**：可以开发自定义测试工具来执行和管理集成组件的测试，特别是在处理复杂的交互或特定的测试场景时。
-
 #### 实施自下而上集成有哪些挑战以及如何克服这些挑战？
 
 **[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)** 中的挑战主要围绕**驱动程序开发**、**部分[系统测试](/zh-cn/wiki/system-testing/)** 和**顶层设计问题的后期检测**。克服这些需要战略方法：
@@ -198,13 +182,6 @@ order: 0
 - **[测试用例](/zh-cn/wiki/test-case/) 设计**：在没有清晰的系统视图的情况下设计[测试用例](/zh-cn/wiki/test-case/) 可能具有挑战性。专注于**接口契约**和**行为规范**以确保彻底的测试。
 - **工具**：选择支持[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 并可以处理驱动程序和存根创建的工具。用于 [单元测试](/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG** 以及用于模拟的 **Mockito** 或 **WireMock** 等工具可能会很有用。
   通过使用正确的策略和工具应对这些挑战，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 可以得到有效管理，以确保软件产品强大而可靠。
-
-- **驱动程序开发**：驱动程序模拟更高级别的模块，创建起来可能很复杂。为了缓解这种情况，请使用**自动化工具**根据接口定义生成驱动程序，确保一致性并节省时间。
-- **部分系统功能**：首先测试较低级别的模块意味着完整的系统功能要到后期才可用。使用模拟完整系统的模拟对象或服务来实现 **[增量测试](/zh-cn/wiki/incremental-testing/)** 以尽早验证交互。
-- **高级问题的晚期检测**：由于高级模块是最后测试的，因此设计缺陷可能直到过程后期才被注意到。定期审查高层设计并使用**持续集成**来尽快发现问题。
-- **集成复杂性**：随着集成的组件越来越多，复杂性也会增加。利用**模块化设计**和**重构**来保持系统的可管理性。
-- **[测试用例](/zh-cn/wiki/test-case/) 设计**：在没有清晰的系统视图的情况下设计[测试用例](/zh-cn/wiki/test-case/) 可能具有挑战性。专注于**接口契约**和**行为规范**以确保彻底的测试。
-- **工具**：选择支持[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 并可以处理驱动程序和存根创建的工具。用于 [单元测试](/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG** 以及用于模拟的 **Mockito** 或 **WireMock** 等工具可能会很有用。
 
 #### 您能否提供一个自下而上集成的实际示例？
 
@@ -261,14 +238,6 @@ order: 0
 - **性能测试**：在集成组件时评估系统的性能，确保满足性能基准。
 - **端到端测试**：虽然在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 中更常见，但一旦构建了足够的系统来模拟真实场景，就可以在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中应用一些端到端测试。
   这些测试通常是自动化的，以提高效率和可靠性。 [测试自动化](/zh-cn/wiki/test-automation/) 框架和工具（例如 **JUnit**、**TestNG**、**[selenium](/zh-cn/wiki/selenium/)** 和 **Mockito**）通常用于促进自下而上的集成测试。
-
-- **单元测试**：验证各个组件或单元的功能。这些是首次以自下而上的方法进行的测试。
-- **组件集成测试**：确保单元在组合时按预期一起工作。这些测试侧重于单元之间的交互。
-- **子系统测试**：随着更大的组件或子系统的集成，进行测试以验证它们的交互和行为。
-- **系统集成测试**：子系统组合后，系统集成测试将检查系统内不同子系统之间的通信和数据流是否正确。
-- **回归测试**：在每个集成步骤之后，都会运行回归测试以确认新代码不会对现有功能产生不利影响。
-- **性能测试**：在集成组件时评估系统的性能，确保满足性能基准。
-- **端到端测试**：虽然在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 中更常见，但一旦构建了足够的系统来模拟真实场景，就可以在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中应用一些端到端测试。
 
 #### 自下而上的集成如何影响整个测试过程？
 
@@ -379,11 +348,6 @@ order: 0
 - **促进协作**：开发人员会立即收到有关其承诺的反馈，从而促进采用更具协作性和主动性的方法来解决集成问题。
   CI 通过维护稳定的代码库充当[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的**支柱**，在该代码库中可以持续集成和验证较低级别的组件，从而实现更可靠、更高效的开发流程。
 
-- **自动化构建**：随着较低级别组件的开发，CI 服务器会自动编译代码并检查集成问题。
-- **运行自动化测试**：定期执行为较低级别组件创建的单元测试，确保新代码不会破坏现有功能。
-- **尽早检测集成问题**：通过经常集成和测试，可以快速识别问题，从而降低故障排除的复杂性。
-- **促进协作**：开发人员会立即收到有关其承诺的反馈，从而促进采用更具协作性和主动性的方法来解决集成问题。
-
 #### 自下而上的集成如何运用在微服务架构中？
 
 在**微服务架构**中，可以通过启动与**单个微服务**及其各自的**单元测试**的集成过程来利用[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)。一旦这些较小的组件经过测试，测试人员就可以逐渐集成和测试这些服务之间的交互。
@@ -418,9 +382,7 @@ order: 0
   获取输出（）{
   // 获取组件的输出
   }
-  }
 
-  ```
 - **Incremental testing**: Integrate and test one component at a time. After adding a component, run all relevant tests to ensure it integrates correctly with the already tested components.
 - **Automate regression tests**: Use automation tools like Selenium or Appium to run regression tests after each integration to catch any new defects introduced.
 - **Use continuous integration (CI)**: Implement a CI system like Jenkins, CircleCI, or GitHub Actions to automatically build and test the application after each commit, ensuring early detection of integration issues.
@@ -428,11 +390,9 @@ order: 0
 - **Prioritize critical path testing**: Focus on the critical paths through the system that are most likely to be used in production to ensure they are robust and well-tested.
 - **Refactor as necessary**: Don't hesitate to refactor code and tests when integrating components if it improves maintainability and readability.
 - **Document the integration process**: Keep clear documentation of the integration steps and test results to facilitate communication among team members and for future reference.
-  ```
 
 - **从单元测试开始**：确保每个组件在集成之前都经过彻底的单元测试。使用 JUnit for Java 或 PyTest for Python 等测试框架来自动执行这些测试。
 - **创建[测试存根](/zh-cn/wiki/test-stub/)和驱动程序**：为尚未开发的较高级别组件开发[测试存根](/zh-cn/wiki/test-stub/)，为较低级别组件开发驱动程序，以模拟系统中尚未集成的部分。
-
 
 #### 自下而上的集成如何提高软件质量和可靠性？
 

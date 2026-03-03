@@ -269,11 +269,6 @@ order: 0
 - **与 SwaggerHub 集成**：对于使用 SwaggerHub 的团队，在 Swagger Inspector 中创建的测试和定义可以直接推送到 SwaggerHub 以进行进一步的协作和集成。
   通过提供用于进行[API](/zh-cn/wiki/api/) 调用和分析响应的简单界面，[swagger](/zh-cn/wiki/swagger/) Inspector 帮助[测试自动化](/zh-cn/wiki/test-automation/) 工程师快速识别问题并确保[API](/zh-cn/wiki/api/) 满足其设计规范。这加速了测试阶段，并有助于提高 [API](/zh-cn/wiki/api/) 开发生命周期。
 
-- **执行[API](/zh-cn/wiki/api/)请求**：它允许用户向任何端点发送请求并查看响应，有助于快速验证API行为。
-- **验证 [API](/zh-cn/wiki/api/) 响应**：用户可以检查状态代码、响应内容和标头，以确保 API 按预期响应。
-- **生成 OpenAPI 定义** ：经过测试，Swagger Inspector 可以自动生成 OpenAPI（以前称为 Swagger）定义，可用于进一步的文档或代码生成。
-- **与 SwaggerHub 集成**：对于使用 SwaggerHub 的团队，在 Swagger Inspector 中创建的测试和定义可以直接推送到 SwaggerHub 以进行进一步的协作和集成。
-
 #### SwaggerHub 是什么以及它如何增强 API 开发？
 
 SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通过支持[API](/zh-cn/wiki/api/) 设计和文档的协作、标准化和版本控制来增强[API](/zh-cn/wiki/api/) 开发。它为团队在[API](/zh-cn/wiki/api/) 上协同工作提供了一个中心枢纽，其功能支持从设计到部署的整个[API](/zh-cn/wiki/api/) 生命周期。
@@ -762,46 +757,40 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 
 2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
+  /api/pets:
+    get:
+      parameters:
 - name: version
-            in: query
-            required: true
-            type: string
-            enum:
+          in: query
+          required: true
+          type: string
+          enum:
 - v1
 - v2
-        # ...
-    ```
+      # ...
 
 3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
+  /api/pets:
+    get:
+      parameters:
 - name: X-API-Version
-            in: header
-            required: true
-            type: string
-            enum:
+          in: header
+          required: true
+          type: string
+          enum:
 - v1
 - v2
-        # ...
-    ```
+      # ...
 
 4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
-    ```
-    /api/pets:
-      get:
-        produces:
+  /api/pets:
+    get:
+      produces:
 - application/vnd.myapi.v1+json
 - application/vnd.myapi.v2+json
-        # ...
-    ```
+      # ...
 选择最适合您的[API](/zh-cn/wiki/api/) 需求的版本控制策略，并确保您的[API](/zh-cn/wiki/api/) 文档的一致性。 **[swagger](/zh-cn/wiki/swagger/) UI** 将显示不同的版本，允许用户与他们感兴趣的[API](/zh-cn/wiki/api/) 的特定版本进行交互。请记住在新版本发布时更新您的[swagger](/zh-cn/wiki/swagger/) 文件，以保持您的[API](/zh-cn/wiki/api/) 文档准确且最新。
 
 1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
@@ -817,46 +806,40 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 
 2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
+  /api/pets:
+    get:
+      parameters:
 - name: version
-            in: query
-            required: true
-            type: string
-            enum:
+          in: query
+          required: true
+          type: string
+          enum:
 - v1
 - v2
-        # ...
-    ```
+      # ...
 
 3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
 
-    ```
-    /api/pets:
-      get:
-        parameters:
+  /api/pets:
+    get:
+      parameters:
 - name: X-API-Version
-            in: header
-            required: true
-            type: string
-            enum:
+          in: header
+          required: true
+          type: string
+          enum:
 - v1
 - v2
-        # ...
-    ```
+      # ...
 
 4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
-    ```
-    /api/pets:
-      get:
-        produces:
+  /api/pets:
+    get:
+      produces:
 - application/vnd.myapi.v1+json
 - application/vnd.myapi.v2+json
-        # ...
-    ```
+      # ...
 
 #### 如何使用 Swagger 处理身份验证和授权？
 

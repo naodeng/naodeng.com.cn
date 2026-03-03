@@ -82,13 +82,6 @@ order: 0
 - **自动化**：功能测试可以使用 [selenium](/zh-cn/wiki/selenium/)、QTP 或 TestComplete 等工具实现自动化。但是，对于其他测试类型，自动化方法可能有所不同，例如 **[负载测试](/zh-cn/wiki/load-testing/)**，它使用 [JMeter](/zh-cn/wiki/jmeter/) 或 LoadRunner 等工具来模拟多个用户。
   总之，[功能测试](/zh-cn/wiki/functional-testing/) 的独特之处在于它侧重于根据定义的要求验证应用程序的操作，而其他测试类型则评估软件的不同质量属性。
 
-- **范围**：[功能测试](/zh-cn/wiki/functional-testing/) 评估应用程序的特定行为，而其他测试（如 **[性能测试](/zh-cn/wiki/performance-testing/)** 或 **[安全测试](/zh-cn/wiki/security-testing/)**）则评估非功能方面，例如响应能力、可扩展性和漏洞。
-- **目标**：[功能测试](/zh-cn/wiki/functional-testing/) 的主要目标是确保应用程序按预期运行。相比之下，**[非功能测试](/zh-cn/wiki/non-functional-testing/)**旨在验证系统在各种条件下的性能、可用​​性和可靠性。
-- **测试基础**：功能测试基于 **[功能需求](/zh-cn/wiki/functional-requirements/)** 或应用程序的业务规则。其他测试，如**单元测试**，通常基于代码的结构，而**可用性测试**基于用户交互模式。
-- **粒度**：[功能测试](/zh-cn/wiki/functional-testing/) 可以在各个级别执行，包括单元、集成、系统和验收。其他类型的测试（例如**[单元测试](/zh-cn/wiki/unit-testing/)**）更加精细，侧重于单个组件或模块。
-- **用户视角**：[功能测试](/zh-cn/wiki/functional-testing/) 通常涉及**黑盒测试**技术，其中测试人员不需要了解应用程序的内部工作原理。其他测试类型，例如**白盒测试**，需要了解内部结构。
-- **自动化**：功能测试可以使用 [selenium](/zh-cn/wiki/selenium/)、QTP 或 TestComplete 等工具实现自动化。但是，对于其他测试类型，自动化方法可能有所不同，例如 **[负载测试](/zh-cn/wiki/load-testing/)**，它使用 [JMeter](/zh-cn/wiki/jmeter/) 或 LoadRunner 等工具来模拟多个用户。
-
 #### 功能测试有哪些好处？
 
 [功能测试](/zh-cn/wiki/functional-testing/) 的好处包括：
@@ -104,17 +97,6 @@ order: 0
 - **文档**：提供系统行为的清晰描述，这对于入职和培训非常有用。
 - **自动化**：支持自动化，这可以带来更快的发布周期和更高效的资源利用。
   通过关注用户的观点，[功能测试](/zh-cn/wiki/functional-testing/) 在提供可靠且用户友好的产品方面发挥着关键作用。
-
-- **[验证 ](/zh-cn/wiki/verification/) 规格**：确保软件按照指定要求运行。
-- **用户体验**：验证最终用户是否可以按预期使用应用程序的特性和功能。
-- **风险缓解**：尽早识别功能问题，降低发布后出现缺陷的风险。
-- **[质量保证](/zh-cn/wiki/quality-assurance/)** ：通过检查正确的行为来提高产品的整体质量。
-- **回归检测**：在对代码库进行更改时帮助捕获回归。
-- **合规性**：确保软件符合适用的法规和合规标准。
-- **市场准备**：通过确认所有功能按预期工作，为市场准备软件。
-- **信心**：通过展示功能稳定性来建立利益相关者的信心。
-- **文档**：提供系统行为的清晰描述，这对于入职和培训非常有用。
-- **自动化**：支持自动化，这可以带来更快的发布周期和更高效的资源利用。
 
 ### 技术和类型
 
@@ -161,14 +143,6 @@ order: 0
 - **[错误猜测](/zh-cn/wiki/error-guessing/)**：依靠经验猜测潜在的容易出错的区域并专门为其设计测试。
 - **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：同时学习、设计和执行测试以探索软件的功能，而无需预定义[测试用例](/zh-cn/wiki/test-case/)。
   结合这些技术有助于确保应用程序功能的全面覆盖，并且可以在手动和[自动化测试](/zh-cn/wiki/automated-testing/)环境中使用。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师经常使用这些技术来设计强大的[测试套件](/zh-cn/wiki/test-suite/)，以根据其预期功能有效验证软件的行为。
-
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)**：将输入划分为等效数据分区，并使用每个分区的代表值进行测试，以减少[测试用例](/zh-cn/wiki/test-case/) 的数量。
-- **边界值分析**：测试输入范围的边界，因为错误经常发生在极端情况。
-- **[决策表测试](/zh-cn/wiki/decision-table-testing/)**：创建一个表来表示输入（条件）和预期结果（操作）之间的逻辑关系，确保涵盖所有组合。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)**：通过触发不同的状态并验证转换和输出来测试应用程序的行为。
-- **[用例测试](/zh-cn/wiki/use-case-testing/)**：基于[用例](/zh-cn/wiki/use-case/) 进行基础测试，以确保涵盖真实场景和用户交互。
-- **[错误猜测](/zh-cn/wiki/error-guessing/)**：依靠经验猜测潜在的容易出错的区域并专门为其设计测试。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：同时学习、设计和执行测试以探索软件的功能，而无需预定义[测试用例](/zh-cn/wiki/test-case/)。
 
 #### 系统测试和功能测试有什么区别？
 
@@ -333,19 +307,6 @@ order: 0
 - **Appium**：用于在 iOS 和 Android 平台上自动测试移动应用程序的开源工具。
 - **Espresso/XCTest**：分别用于 Android 和 iOS UI 测试的本机框架。
   这些工具通常集成到 CI/CD 管道中，以确保 [功能需求](/zh-cn/wiki/functional-requirements/) 的持续验证。经验丰富的自动化工程师会根据项目的具体需求，考虑应用程序类型、平台、语言支持和集成能力等因素来选择工具。
-
-- **[selenium](/zh-cn/wiki/selenium/)** ：支持多种浏览器和语言的开源工具，非常适合 Web 应用程序测试。
-- **HP UFT（以前称为 QTP）**：一种流行的商业工具，用于功能和回归测试，具有丰富的功能集。
-- **TestComplete**：提供全面的测试解决方案，支持桌面、移动和 Web 应用程序。
-- **Katalon Studio**：一款用于 Web、API、移动和桌面测试的多功能工具，可与其他 CI/CD 工具集成。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：一种基于 JavaScript 的现代工具，可为 Web 应用程序提供快速、可靠的测试。
-- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别在 Java 和 .NET 环境中进行单元测试的框架，也可用于某些功能测试。
-- **SpecFlow**：使用 Gherkin 语法弥合业务和技术语言之间的差距，促进行为驱动开发 (BDD)。
-- **Cucumber** ：支持 BDD，强调最终用户体验，使用简单的语言来定义测试。
-- **SoapUI** ：专门从事 API 测试，包括 SOAP 和 RESTful 服务。
-- **[Postman](/zh-cn/wiki/postman/)** ：主要用于 API 测试，具有创建复杂请求和分析响应的功能。
-- **Appium**：用于在 iOS 和 Android 平台上自动测试移动应用程序的开源工具。
-- **Espresso/XCTest**：分别用于 Android 和 iOS UI 测试的本机框架。
 
 #### 如何编写功能测试用例？
 
@@ -619,13 +580,3 @@ order: 0
 - **跨浏览器/设备测试**：利用基于云的平台（例如 BrowserStack 或 Sauce Labs）来广泛覆盖跨环境。
 - **文档**：使用实时文档等工具使测试文档保持最新，以确保测试内容清晰。
   通过采用有针对性的策略解决这些领域，您可以显着提高[功能测试](/zh-cn/wiki/functional-testing/) 在软件开发生命周期中的有效性和可靠性。
-
-- **测试不稳定**：实施强大的错误处理和重试。使用稳定的定位器并等待元素以确保一致性。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：创建用于测试数据生成和管理的专用服务。利用数据池确保测试拥有必要的数据而不会发生冲突。
-- **环境稳定性**：使用容器化（如 Docker）来维护一致的测试环境。使用服务虚拟化来模拟外部依赖关系。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：根据风险和业务影响确定测试用例的优先级。使用代码覆盖率工具来识别未经测试的区域。
-- **[测试执行](/zh-cn/wiki/test-execution/) Time** ：跨多台机器或线程并行测试。优化测试代码，减少不必要的等待。
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：遵循页面对象模型 (POM) 或类似模式将测试逻辑与 UI 结构分开。定期重构测试以保持它们干净且易于理解。
-- **反馈循环**：与 CI/CD 管道集成以获取即时测试反馈。使用仪表板可视化测试结果以快速获得见解。
-- **跨浏览器/设备测试**：利用基于云的平台（例如 BrowserStack 或 Sauce Labs）来广泛覆盖跨环境。
-- **文档**：使用实时文档等工具使测试文档保持最新，以确保测试内容清晰。

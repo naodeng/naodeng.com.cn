@@ -74,9 +74,7 @@ order: 0
   it('应该使用有效凭据对用户进行身份验证', () => {
   //这里测试代码
   });
-  });
 
-  ```
 - **Setup and Teardown Procedures**: Code that prepares the environment before tests run and cleans up afterward.
 - **Test Data**: Sets of inputs, files, and databases necessary to execute test cases.
 - **Assertions**: Statements that check if the software behaves as expected.
@@ -85,12 +83,10 @@ order: 0
 - **Test Execution Engine**: The platform or service that runs the test scripts, such as a Continuous Integration server.
 - **Result Reports**: Summaries of test outcomes, often including pass/fail status, logs, and error messages.
 - **Version Control**: Systems to track changes in test scripts and related artifacts.
-  Each component plays a crucial role in ensuring the **Test Suite** is comprehensive, maintainable, and effective at catching regressions and validating new features. Proper organization and documentation of these components are essential for the smooth operation of the test automation process.
-  ```
+Each component plays a crucial role in ensuring the **Test Suite** is comprehensive, maintainable, and effective at catching regressions and validating new features. Proper organization and documentation of these components are essential for the smooth operation of the test automation process.
 
 - **[测试用例](/zh-cn/wiki/test-case/)** ：验证特定功能或要求的单独测试单元。
 - **[测试脚本](/zh-cn/wiki/test-script/)** ：执行测试用例的自动化序列，通常用脚本或编程语言编写。
-
 
 #### 测试套件如何提高软件产品的整体质量？
 
@@ -192,21 +188,6 @@ order: 0
 - **失败处理**：计划测试失败处理，包括重试、详细日志记录和 UI 测试的屏幕截图。
   通过考虑这些因素，您将创建一个健壮、可靠且高效的[测试套件](/zh-cn/wiki/test-suite/)，从而有助于提高软件产品的质量。
 
-- **范围**：定义您想要测试的内容，确保其符合项目要求和目标。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：确保套件涵盖所有功能、用户路径和边缘情况。使用覆盖工具来识别差距。
-- **优先级**：根据风险、功能重要性和用户影响对测试进行排序。高风险地区应首先进行测试。
-- **依赖关系**：识别测试之间的任何依赖关系并确保它们以正确的顺序运行。
-- **数据管理**：计划测试数据的创建、管理和清理。使用数据工厂或固定装置来保持一致性。
-- **环境**：确保测试设计为在各种环境（开发、登台、类似生产等）中运行。
-- **资源利用率**：注意测试消耗的资源（时间、CPU、内存），尤其是在 CI/CD 管道中。
-- **不稳定**：旨在通过使用可靠的定位器和同步策略来最大程度地减少不稳定测试。
-- **并行执行**：设计并行执行测试以减少运行时间。确保它们是独立且线程安全的。
-- **模块化**：使用可重用组件编写模块化测试，以便于维护和更新。
-- **版本控制**：将您的测试套件与版本控制系统集成以跟踪更改和协作。
-- **文档**：记录每次测试的目的和方法，以便清晰和将来参考。
-- **评审流程**：对测试代码实施同行评审流程，以确保质量并遵守标准。
-- **失败处理**：计划测试失败处理，包括重试、详细日志记录和 UI 测试的屏幕截图。
-
 #### 如何有效管理测试套件？
 
 有效管理 **[测试套件](/zh-cn/wiki/test-suite/)** 涉及几个关键实践：
@@ -223,18 +204,6 @@ order: 0
 - **文档**：为每个测试维护清晰的文档，以方便理解和维护。
 - **反馈循环**：使用测试结果来通知开发实践并确定错误修复的优先顺序。
   通过坚持这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以保持高效、相关且有效的[测试套件](/zh-cn/wiki/test-suite/)，从而有助于交付高质量的软件。
-
-- **确定测试优先级**：按关键功能和失败可能性对测试进行排序。使用基于风险的测试来关注高影响领域。
-- **对测试进行分类**：对测试进行逻辑分组（例如按功能或模块），以简化执行和分析。
-- **版本控制**：将测试用例和脚本存储在版本控制系统中以跟踪更改并维护历史记录。
-- **尽可能自动化**：自动化套件中重复且稳定的部分，以节省时间并减少人为错误。
-- **参数化测试**：使用数据驱动的测试使用不同的输入运行相同的测试，在不增加测试用例的情况下增加覆盖范围。
-- **定期审查**：定期审查套件以删除过时的测试并确保符合当前要求。
-- **监控执行**：实施仪表板或报告工具来跟踪测试执行结果并识别趋势或重复出现的问题。
-- **处理依赖关系**：确保测试是独立的或管理依赖关系以避免级联故障。
-- **持续集成**：将测试执行集成到 CI/CD 管道中，以便及早且频繁地发现问题。
-- **文档**：为每个测试维护清晰的文档，以方便理解和维护。
-- **反馈循环**：使用测试结果来通知开发实践并确定错误修复的优先顺序。
 
 #### 可以使用哪些工具来创建和管理测试套件？
 
@@ -650,16 +619,3 @@ order: 0
 - **报告和分析**：实施详细的报告和分析，以快速识别和解决失败的测试和趋势。
 - **定期清理**：定期审查并删除过时或多余的测试，以保持套件的精简和相关性。
   通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以保持对[测试套件](/zh-cn/wiki/test-suite/) 的控制，确保它们在复杂性不断增加的情况下保持有效和可管理。
-
-- **模块化测试**：将测试分解为更小的、可重用的模块或功能，以提高可重用性并减少冗余。
-- **使用标记/标签**：为测试分配标签以过滤和运行特定子集，从而促进有针对性的测试和更好的组织。
-- **实施测试优先级**：根据风险、变更频率和功能关键性对测试进行优先级排序，以专注于最重要的测试。
-- **利用测试模式**：应用页面对象模型等设计模式来增强可维护性和可读性。
-- **优化[测试数据](/zh-cn/wiki/test-data/) 管理**：使用数据驱动测试将测试逻辑与数据分离，从而实现更轻松的更新和可扩展性。
-- **并行执行**：并行运行测试以减少执行时间，特别是对于大型套件。
-- **持续集成 (CI)**：将测试集成到 CI 管道中，以确保它们定期运行并及早发现问题。
-- **版本控制**：将测试存储在版本控制系统中以跟踪更改并有效协作。
-- **定期重构**：定期审查和重构测试以提高清晰度并降低复杂性。
-- **自动化测试维护**：当应用程序发生更改时，使用工具检测和更新受影响的测试。
-- **报告和分析**：实施详细的报告和分析，以快速识别和解决失败的测试和趋势。
-- **定期清理**：定期审查并删除过时或多余的测试，以保持套件的精简和相关性。

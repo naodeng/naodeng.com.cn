@@ -109,17 +109,6 @@ order: 0
 - **持续改进**：鼓励产品和流程的持续改进，因为从每个增量中学到的知识可以应用于后续增量。
   这些好处有助于提高测试过程的效率和效果，从而产生更高质量的软件产品。
 
-- **早期缺陷检测**：通过增量测试，可以在开发周期的早期识别缺陷，从而减少以后修复它们的成本和工作量。
-- **风险管理**：增量测试允许首先确定关键功能的优先级并测试关键功能，从而更有效地管理风险。
-- **反馈循环**：为开发人员提供持续的反馈循环，确保问题得到及时有效的解决。
-- **渐进式集成**：支持组件的渐进式集成，这有助于及早识别集成问题。
-- **可管理的测试周期**：将测试过程分解为更小、更易于管理的周期，防止不堪重负并允许更集中的测试。
-- **促进[回归测试](/zh-cn/wiki/regression-testing/)** ：使回归测试更容易，因为在每个增量中只需要测试修改或新添加的组件。
-- **资源优化**：由于每个测试周期的范围都明确定义，因此可以更好地分配和利用测试资源。
-- **客户满意度**：能够在每个增量结束时交付工作产品，这可以提高客户满意度和信任度。
-- **适应性**：提供适应需求或范围变化的灵活性，因为每个增量都可以在不影响整个系统的情况下进行调整。
-- **持续改进**：鼓励产品和流程的持续改进，因为从每个增量中学到的知识可以应用于后续增量。
-
 #### 增量测试如何提高软件质量？
 
 [增量测试](/zh-cn/wiki/incremental-testing/) 通过允许**早期检测**和**纠正缺陷**来增强[软件质量](/zh-cn/wiki/software-quality/)。当软件以可管理的小增量进行测试时，可以在问题复合为更大、更复杂的问题之前识别并解决它们。这种方法促进对每个组件的功能和交互进行更**彻底的检查**，从而使整个系统更加**可靠的集成**。
@@ -492,21 +481,17 @@ order: 0
   it('应该正确添加数字', () => {
   期望(calc.add(2, 3)).to.equal(5);
   });
-  });
 
-  ```
 - **Manage Dependencies**: Use tools to manage and track dependencies between increments to avoid integration issues.
 - **Prioritize Test Cases**: Focus on high-risk areas first. Prioritize test cases based on the impact of potential defects.
 - **Mock Stubs and Drivers**: Use mock objects, stubs, and drivers to simulate parts of the system that are not yet developed or are unavailable for testing.
 - **Communicate Changes**: Ensure that all team members are aware of changes in the codebase and understand how these changes may affect their work.
 - **Adapt to Feedback**: Use feedback from testing to make informed decisions about future development and testing efforts.
 - **Maintain Documentation**: Keep test documentation up to date to ensure that the purpose and scope of each test are clear.
-  By employing these strategies, you can mitigate the challenges associated with incremental testing and maintain a high-quality software product throughout its development lifecycle.
-  ```
+By employing these strategies, you can mitigate the challenges associated with incremental testing and maintain a high-quality software product throughout its development lifecycle.
 
 - **持续集成**：使用持续集成 (CI) 工具自动合并和测试增量。这确保了新代码始终与现有代码库兼容。
 - **自动化回归测试**：开发一套强大的自动化回归测试来针对每个增量运行，确保新的更改不会破坏现有功能。
-
 
 ### 场景和案例研究
 
@@ -645,13 +630,11 @@ order: 0
   此方法可确保仅测试应用程序的修改部分或新部分，从而减少测试时间和资源。它还可以及早发现缺陷并更顺利地集成变更，从而保持软件的稳定性和可靠性。
   CI/CD 管道脚本中的用法示例：
 
-  ```
-  steps:
+steps:
 - name: Incremental Test
-      script:
+    script:
 - echo "Running incremental tests for the latest changes"
 - run_tests --incremental
-  ```
 在此脚本中，`run_tests --incremental` 将仅执行与最近代码更改相关的测试，而不是整个[测试套件](/zh-cn/wiki/test-suite/)。这种有针对性的方法非常高效，并且符合 DevOps 中的快速部署周期。
 
 1. **自动化[测试用例](/zh-cn/wiki/test-case/)**

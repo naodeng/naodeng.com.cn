@@ -258,11 +258,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
 这将为您的测试设置基本配置和目录结构。您现在可以开始编写 [jasmine](/zh-cn/wiki/jasmine/) 测试。
 
-- **[node.js](/zh-cn/wiki/node-js/)**：[jasmine](/zh-cn/wiki/jasmine/) 需要 [node.js](/zh-cn/wiki/node-js/) 才能运行。确保您安装了最新的稳定版本。您可以从官方[Node.js website](https://nodejs.org/)下载。
-- **npm（节点包管理器）**：npm 包含在[node.js](/zh-cn/wiki/node-js/) 中，用于安装[jasmine](/zh-cn/wiki/jasmine/)。通过在终端中运行 `npm -v` 来验证其安装。
-- **JavaScript 环境**：[jasmine](/zh-cn/wiki/jasmine/) 可用于基于浏览器的应用程序和[node.js](/zh-cn/wiki/node-js/) 应用程序。确保您为您的项目设置了合适的环境。
-- **package.json 文件**：如果您的项目中没有该文件，请通过在项目的根目录中运行 `npm init` 来创建它。这将管理项目的依赖关系。
-
 #### 如何设置基本的 Jasmine 测试环境？
 
 要设置基本 [jasmine](/zh-cn/wiki/jasmine/) [测试环境](/zh-cn/wiki/test-environment/)，请执行以下步骤：

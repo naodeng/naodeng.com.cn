@@ -91,24 +91,6 @@ order: 0
 - **历史**：所采取的所有操作的日志，包括日期和涉及的个人。
   这些组件可确保全面的记录，促进有效的[事件管理](/zh-cn/wiki/incident-management/) 并有助于[软件质量](/zh-cn/wiki/software-quality/) 的持续改进。
 
-- **事件 ID**：用于跟踪的唯一标识符。
-- **标题**：事件的简要描述。
-- **[严重性](/zh-cn/wiki/severity/)** ：指示影响级别，通常按等级划分（例如，严重、高、中、低）。
-- **[Priority](/zh-cn/wiki/priority/)** ：解决的紧迫性（例如，立即、高、中、低）。
-- **状态**：事件的当前状态（例如，新事件、进行中、已解决）。
-- **环境**：事件发生的地方（例如生产、分期、测试）。
-- **日期/时间**：发现并报告事件的时间。
-- **记者**：谁发现并报告了该事件。
-- **受让人**：负责解决事件的个人或团队。
-- **描述**：事件的详细说明，包括重现步骤。
-- **预期与[实际结果](/zh-cn/wiki/actual-result/)** ：澄清应该发生的情况与正在发生的情况。
-- **附件**：屏幕截图、日志或其他相关文件。
-- **[影响分析](/zh-cn/wiki/impact-analysis/)** ：评估事件对用户和系统的影响。
-- **解决方案**：有关如何解决或缓解事件的详细信息。
-- **根本原因**：分析导致事件的根本问题。
-- **行动项目**：防止复发或改善反应的步骤。
-- **历史**：所采取的所有操作的日志，包括日期和涉及的个人。
-
 #### 事件报告如何提高软件产品的整体质量？
 
 [事故报告](/zh-cn/wiki/incident-report/) 对于软件产品的**持续质量改进**至关重要。他们提供了测试期间发现的异常的**详细说明**，这有助于开发人员有效地理解和**解决问题**。通过记录事件的性质、影响和重现步骤，这些报告可以对缺陷进行**有针对性的响应**，确保它们不仅得到修复，而且**分析根本原因**。
@@ -188,7 +170,6 @@ order: 0
     关于事件的解决进度，用任何新的发现或状态变化更新报告。
   记住要客观、实事求是，避免假设或主观语言。使用 Markdown 进行格式化：
 
-  ```
 - **Severity**: Critical
 - **Priority**: High
 - **Environment**: Staging
@@ -199,7 +180,6 @@ order: 0
 3. Click the login button.
 - **Expected Result**: User is logged in and redirected to the dashboard.
 - **Actual Result**: User receives an error message and cannot log in.
-  ```
 确保报告具有可操作性，并提供足够的详细信息，以便开发团队理解和解决问题。
 
 1. **识别**
@@ -254,7 +234,6 @@ order: 0
 - **注释**：任何附加信息或观察结果。
 - **解决方案**：有关如何解决事件的详细信息（如果适用）。
 
-  ```
 - Identifier: ID-12345
 - Title: Login button unresponsive on mobile
 - Severity: Major
@@ -272,7 +251,6 @@ order: 0
 - Attachments: `login_issue_screenshot.png`, `app_logs.txt`
 - Notes: Issue does not occur on desktop version.
 - Resolution: (To be filled upon issue resolution)
-  ```
 这种格式可确保所有相关信息以清晰、可操作的方式呈现，从而促进高效[事件管理](/zh-cn/wiki/incident-management/) 和解决。
 
 - **标识符**：用于跟踪的唯一 ID。
@@ -354,17 +332,6 @@ order: 0
 - **保密**：确保按照组织的安全策略正确处理敏感信息。
   请记住，目标是有效沟通，以促进对事件做出迅速、适当的反应。
 
-- **准确**：清楚地描述问题，避免含糊的语言。包括具体详细信息，例如错误消息、代码以及事件发生的条件。
-- **客观**：坚持事实，不做假设或指责。
-- **再现性**：提供再现事件的步骤。如果它不可重现，请说明这一点并包括任何相关的模式或观察结果。
-- **[影响分析](/zh-cn/wiki/impact-analysis/)** ：评估并记录对系统或用户的潜在影响。
-- **附件**：包括屏幕截图、日志或任何其他可以提供额外上下文的支持材料。
-- **优先级**：根据影响和紧急程度建议严重性级别，以帮助确定事件的优先级。
-- **使用模板**：利用标准化模板来确保报告的一致性和完整性。
-- **审查和编辑**：提交前进行校对以确保清晰度和准确性。
-- **后续**：准备在解决过程中根据需要提供额外信息或澄清。
-- **保密**：确保按照组织的安全策略正确处理敏感信息。
-
 ### 使用事件报告
 
 #### 软件测试过程中如何使用事件报告？
@@ -428,13 +395,11 @@ order: 0
     让利益相关者了解进展和解决努力。
   通过提供测试结果的**透明视图**，[事故报告](/zh-cn/wiki/incident-report/) 帮助利益相关者做出明智的决策并协调优先事项，从而促进[质量保证](/zh-cn/wiki/quality-assurance/) 的协作方法。
 
-  ```
 - Incident summary: Briefly describe the issue.
 - Impact analysis: Detail how the incident affects the project or users.
 - Quantitative data: Include metrics or statistics.
 - Recommendations: Suggest next steps for stakeholders.
 - Regular updates: Keep stakeholders informed on resolution progress.
-  ```
 有效[事故报告](/zh-cn/wiki/incident-report/) **建立信任**并**鼓励利益相关者积极参与**，确保每个人都在交付高质量软件产品的道路上保持一致。
 
 - **总结事件**

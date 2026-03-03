@@ -671,9 +671,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 - 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
 3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
-- 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
-- 使用与本地浏览器测试相同的 Selenium 命令。
 - 使用与本地浏览器测试相同的 Selenium 命令。
   这是 Java 中的一个基本示例：
 
@@ -727,9 +725,7 @@ browserstack是一个基于云的 Web 和移动测试平台，允许开发人员
 - 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
 3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
-- 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
-- 使用与本地浏览器测试相同的 Selenium 命令。
 - 使用与本地浏览器测试相同的 Selenium 命令。
 
 #### BrowserStack 如何与 Jenkins 集成？

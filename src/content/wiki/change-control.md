@@ -81,17 +81,6 @@ order: 0
 - **审计和审查**：定期审查变更流程的合规性和有效性。
   将这些组件集成到您的[变更控制](/zh-cn/wiki/change-control/) 流程中将有助于保持软件产品的稳定性和质量，同时适应必要的更改。
 
-- **变更识别**：明确定义变更的构成。
-- **更改[影响分析](/zh-cn/wiki/impact-analysis/)**：评估更改对项目的潜在影响。
-- **更改优先级**：根据紧急程度、重要性和资源进行排名更改。
-- **批准机制**：为谁可以批准变更建立明确的协议。
-- **变更实施计划**：制定执行变更的详细计划。
-- **沟通计划**：确保所有利益相关者都了解变更及其影响。
-- **监控和报告**：跟踪变更进度并报告其状态。
-- **反馈循环**：创建一种在实施后收集反馈的方法，以从每次更改中学习。
-- **文档**：更新所有相关文档以反映更改。
-- **审计和审查**：定期审查变更流程的合规性和有效性。
-
 #### 变更控制如何提高软件产品的整体质量？
 
 [变更控制](/zh-cn/wiki/change-control/) 确保对软件的任何修改都得到系统管理，从而降低引入缺陷或不一致的风险。通过维护变更的**清晰记录**，测试人员可以快速识别应用程序的哪些区域可能受到影响并需要[重新测试](/zh-cn/wiki/retesting/)。这对于 **[回归测试](/zh-cn/wiki/regression-testing/)** 至关重要，因为需要在不影响现有功能的情况下验证更改。
@@ -527,19 +516,17 @@ order: 0
 
 - **CI 集成**：配置 CI 管道以在代码提交时触发自动构建和测试。这可确保立即测试更改，并提供有关其影响的快速反馈。
 
-    ```
-    on:
-      push:
-        branches:
+  on:
+    push:
+      branches:
 - 'feature/*'
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
 - uses: actions/checkout@v2
 - name: Run tests
-          run: make test
-    ```
+        run: make test
 
 - **自动化部署**：如果自动化测试通过，CI 系统可以将更改部署到暂存环境以进行进一步测试，确保只有经过验证的更改才能部署到生产环境。
 - **监控和反馈**：部署后，监控应用程序是否存在问题，并将此信息反馈到 [变更控制](/zh-cn/wiki/change-control/) 流程中，以通知未来的更改。
@@ -559,19 +546,17 @@ order: 0
 
 - **CI 集成**：配置 CI 管道以在代码提交时触发自动构建和测试。这可确保立即测试更改，并提供有关其影响的快速反馈。
 
-    ```
-    on:
-      push:
-        branches:
+  on:
+    push:
+      branches:
 - 'feature/*'
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
 - uses: actions/checkout@v2
 - name: Run tests
-          run: make test
-    ```
+        run: make test
 
 - **自动化部署**：如果自动化测试通过，CI 系统可以将更改部署到暂存环境以进行进一步测试，确保只有经过验证的更改才能部署到生产环境。
 - **监控和反馈**：部署后，监控应用程序是否存在问题，并将此信息反馈到 [变更控制](/zh-cn/wiki/change-control/) 流程中，以通知未来的更改。
@@ -594,17 +579,15 @@ order: 0
   自动化 [回归测试](/zh-cn/wiki/regression-testing/) 通常集成到 CI/CD 管道中。当变更请求被批准并实施时，可以自动触发相应的回归测试。这提供了有关更改影响的即时反馈，并有助于维护[软件质量](/zh-cn/wiki/software-quality/)。
   以下是如何使用伪代码在 CI/CD 管道中触发回归测试的示例：
 
-  ```
-  pipeline:
-    trigger:
+pipeline:
+  trigger:
 - on: push
-        branches:
+      branches:
 - main
-    jobs:
+  jobs:
 - name: Run Regression Tests
-        script:
+      script:
 - execute_regression_tests.sh
-  ```
 在这种情况下，每次推送到`main`分支都会启动`Run Regression Tests`作业，该作业执行一个脚本来运行回归[测试套件](/zh-cn/wiki/test-suite/)。如果测试通过，则更改得到验证；如果没有，团队就会收到由最近的更改引起的潜在问题的警报。
 
 #### 变更控制如何帮助管理测试环境？

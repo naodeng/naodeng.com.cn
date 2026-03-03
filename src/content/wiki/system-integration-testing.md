@@ -83,17 +83,6 @@ order: 0
 - **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[验证 ](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
   通过关注这些优势，SIT 致力于提供与功能性和非[功能需求](/zh-cn/wiki/functional-requirements/) 相一致的强大且可靠的软件系统。
 
-- **确保互操作性**：验证不同的系统模块或服务是否按预期协同工作。
-- **检测接口缺陷**：识别与集成组件之间的数据交换和交互相关的问题。
-- **验证功能合规性**：确认系统在组合组件时满足指定要求。
-- **促进[回归测试](/zh-cn/wiki/regression-testing/)** ：帮助检查新代码更改不会对现有集成组件产生不利影响。
-- **降低故障风险**：通过在集成阶段的早期进行测试，可以最大限度地降低生产中系统故障的风险。
-- **提高质量**：通过关注集成单元之间的交互来生产更高质量的产品。
-- **支持[增量测试](/zh-cn/wiki/incremental-testing/)**：允许分阶段测试，这有利于识别复杂系统中的问题。
-- **启用[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景**：提供一种执行和验证跨多个系统组件的端到端工作流程的方法。
-- **澄清依赖关系**：帮助理解和管理不同系统模块之间的依赖关系。
-- **对非[功能需求](/zh-cn/wiki/functional-requirements/)** 的[验证 ](/zh-cn/wiki/verification/) 的帮助：例如性能、可靠性和可扩展性，这些在单元级别上很难评估。
-
 #### 跳过系统集成测试的潜在后果是什么？
 
 跳过 [系统集成测试](/zh-cn/wiki/system-integration-testing/) (SIT) 可能会导致一些负面结果：
@@ -107,15 +96,6 @@ order: 0
 - **延迟发布**：在开发过程后期发现的不可预见的问题可能会延迟产品发布和更新，影响市场竞争力和收入。
 - **资源浪费**：可能需要更多资源来处理跳过 SIT 的后果，包括增加支持电话、手动解决方法和紧急补丁。
   总之，绕过 SIT 可能会损害软件的稳定性、可靠性和性能，从而导致更高的成本、客户不满以及潜在的声誉损害。
-
-- **未检测到的集成问题**：如果没有 SIT，模块或系统之间的集成缺陷可能仍未被发现，从而可能导致生产故障。
-- **风险增加**：系统故障和业务中断的风险不断升级，因为系统在现实场景下的运行能力尚未经过彻底测试。
-- **昂贵的修复**：由于集成环境的复杂性，在开发周期后期或发布后发现的缺陷通常修复成本更高。
-- **用户体验差**：用户可能会遇到意外行为、崩溃或数据不一致，导致对应用程序不满意和失去信任。
-- **不准确的数据**：系统之间的数据流问题可能会导致数据损坏，影响决策和运营。
-- **不合规**：未能进行 SIT 可能会导致不遵守需要测试和质量保证流程证据的监管标准。
-- **延迟发布**：在开发过程后期发现的不可预见的问题可能会延迟产品发布和更新，影响市场竞争力和收入。
-- **资源浪费**：可能需要更多资源来处理跳过 SIT 的后果，包括增加支持电话、手动解决方法和紧急补丁。
 
 ### 技术和方法
 
@@ -282,19 +262,6 @@ order: 0
 - **FitNesse**：[验收测试](/zh-cn/wiki/acceptance-testing/) 的基于 wiki 的框架，允许测试人员在 wiki 中创建和编辑测试。
 - **Jenkins**：虽然主要是一个 CI/CD 工具，但 Jenkins 可用于通过编排 [测试套件](/zh-cn/wiki/test-suite/) 和管理 [测试环境](/zh-cn/wiki/test-environment/) 来自动化 SIT。
   这些工具可以单独使用，也可以组合使用，以创建强大的 SIT 框架，具体取决于被测系统的具体要求。 SIT 中的自动化对于确保集成组件按预期协同工作至关重要，而这些工具促进了这一过程。
-
-- **[selenium](/zh-cn/wiki/selenium/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
-- **[Postman](/zh-cn/wiki/postman/)**：广泛用于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送HTTP请求并分析响应。
-- **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，重点关注 [API 测试](/zh-cn/wiki/api-testing/)。
-- **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/) 并分析和测量各种服务性能的 Apache 项目。
-- **TestComplete**：支持桌面、移动和 Web 应用程序测试的商业工具。
-- **Rational Integration Tester (IBM)**：专为持续集成和 [系统集成测试](/zh-cn/wiki/system-integration-testing/) 而设计，尤其是在复杂的环境中。
-- **Tosca Testsuite (Tricentis)**：支持多种技术和平台的持续测试平台。
-- **HP Unified [功能测试](/zh-cn/wiki/functional-testing/) (UFT)**：广泛认可的功能性和[回归测试](/zh-cn/wiki/regression-testing/) 工具，具有支持 SIT 的功能集。
-- **Ranorex**：一个 GUI [测试自动化](/zh-cn/wiki/test-automation/) 框架，支持桌面、Web 和移动应用程序。
-- **SpecFlow**：基于 Cucumber 的工具，它允许以自然语言风格编写测试，并与 .NET 集成。
-- **FitNesse**：[验收测试](/zh-cn/wiki/acceptance-testing/) 的基于 wiki 的框架，允许测试人员在 wiki 中创建和编辑测试。
-- **Jenkins**：虽然主要是一个 CI/CD 工具，但 Jenkins 可用于通过编排 [测试套件](/zh-cn/wiki/test-suite/) 和管理 [测试环境](/zh-cn/wiki/test-environment/) 来自动化 SIT。
 
 #### 自动化如何应用于系统集成测试？
 

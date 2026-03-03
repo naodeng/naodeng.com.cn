@@ -55,11 +55,6 @@ order: 0
 - 使用测试工件的版本控制来跟踪更改并促进协作。
   常见的挑战包括处理非确定性行为和管理大型数据集以进行比较。缓解这些问题的策略包括隔离非确定性元素、使用数据采样以及采用稳健的数据比较技术。
 
-- 尽可能实现自动化以提高效率。
-- 确保测试用例全面并能代表现实世界的使用情况。
-- 为预期结果背后的理由保留清晰的文档。
-- 使用测试工件的版本控制来跟踪更改并促进协作。
-
 #### 为什么背对背测试在软件开发中很重要？
 
 [背靠背测试](/zh-cn/wiki/back-to-back-testing/) 在软件开发中至关重要，当代码库发生更改时，尤其是在具有多个组件或版本的系统中，**验证一致性**和**确保可靠性**。它是一种比较两个系统（例如旧版本和新版本）的输出，或将参考模型与测试中的实现进行比较的方法。这种比较有助于识别可能导致现实场景中失败的差异。
@@ -104,13 +99,6 @@ order: 0
 - **规范一致性**：通过与参考实现进行比较，验证系统是否符合指定要求。
   实施[背靠背测试](/zh-cn/wiki/back-to-back-testing/)可能很复杂，但它在系统一致性和可靠性方面提供的保证是一个显着的优势，特别是在不允许出现故障的关键应用程序中。
 
-- **一致性验证**：确保两个或多个系统版本产生一致的结果，这在升级或重构时至关重要。
-- **回归检测**：帮助识别软件版本之间行为的意外变化或回归。
-- **基准测试**：提供一种比较同一算法或系统的不同实现之间的性能和输出的方法。
-- **增加信心**：建立对系统可靠性和正确性的信心，特别是在安全关键系统中，其中的差异可能导致严重后果。
-- **错误隔离**：通过比较不同系统或版本的输出来帮助查明错误源。
-- **规范一致性**：通过与参考实现进行比较，验证系统是否符合指定要求。
-
 #### 背靠背测试在什么情况下最有效？
 
 [背靠背测试](/zh-cn/wiki/back-to-back-testing/) 在**高可靠性**至关重要且系统可以通过**可预测的输出**进行测试的情况下最为有效。这包括：
@@ -122,13 +110,6 @@ order: 0
 - **旧系统更换**：在更换或重构系统部件时，确保新组件的行为与旧组件相同。
 - **跨平台软件**：验证软件在不同操作系统或环境中的行为是否相同。
   在这些场景中，[背靠背测试](/zh-cn/wiki/back-to-back-testing/) 提供了一种方法来比较给定相同输入的两个系统（测试系统和参考系统）的输出，确保被测系统的行为与预期结果一致。当参考系统被认为是**黄金标准**或者当存在定义正确行为的**oracle**时，它特别有用。
-
-- **安全关键系统**：例如航空航天、汽车和医疗设备中的系统，这些系统的故障可能会导致重大伤害。
-- **具有正式规范的系统**：可以创建规范的独立实现以作为参考。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：当需要针对先前版本验证软件的新版本以确保行为的一致性时。
-- **算法比较**：用于验证新算法与已建立算法的正确性。
-- **旧系统更换**：在更换或重构系统部件时，确保新组件的行为与旧组件相同。
-- **跨平台软件**：验证软件在不同操作系统或环境中的行为是否相同。
 
 ### 实施和技术
 
@@ -340,16 +321,6 @@ order: 0
 - **错误诊断**：隔离和诊断差异的根本原因可能非常耗时，因为可能不清楚问题是出在新系统、旧系统还是测试本身。
   缓解这些挑战通常需要仔细规划、使用专门的比较工具以及管理 [测试数据](/zh-cn/wiki/test-data/) 和环境的强大流程。
 
-- **[测试环境](/zh-cn/wiki/test-environment/) 配置**：确保新旧系统的测试环境相同可能很困难，因为差异可能会扭曲结果。
-- **数据同步**：在系统之间调整数据以确保比较测试的输入一致具有挑战性，特别是对于动态或实时数据。
-- **[测试用例](/zh-cn/wiki/test-case/) 对齐**：创建适用于两个系统并准确反映预期行为的测试用例可能很复杂。
-- **输出比较**：分析和比较输出可能需要复杂的工具或脚本，因为差异可能很微妙并且不会立即显现出来。
-- **非确定性行为**：处理具有不确定性输出的系统，例如涉及时间戳或随机化的系统，会使比较复杂化。
-- **性能问题**：系统之间的性能差异可能会导致测试结果出现误报或误报。
-- **资源密集度**：背对背测试可能会占用大量资源，需要大量的计算能力和时间，特别是对于大型系统。
-- **变更管理**：管理和跟踪被测两个系统之间的变更以了解对测试结果的影响可能很麻烦。
-- **错误诊断**：隔离和诊断差异的根本原因可能非常耗时，因为可能不清楚问题是出在新系统、旧系统还是测试本身。
-
 #### 如何缓解这些挑战？
 
 缓解[背靠背测试](/zh-cn/wiki/back-to-back-testing/) 中的挑战涉及规划、执行和分析的战略方法：
@@ -409,19 +380,16 @@ order: 0
   返回 deepEqual(oldVersionOutput, newVersionOutput);
   }
 
-  ```
 - **Use Version Control**: Keep test cases and data under version control to track changes and ensure that the correct versions are used for each test cycle.
 - **Prioritize Test Cases**: Focus on critical test cases that validate the most important functionality. This helps in identifying major issues early.
 - **Analyze Differences**: When discrepancies are found, analyze them to determine if they are due to bugs, expected changes, or test environment inconsistencies.
 - **Document Everything**: Keep detailed records of test cases, data, environment settings, and test results. This documentation is crucial for debugging and future test cycles.
 - **Communicate Results**: Share test results with stakeholders promptly. Clear communication helps in making informed decisions about the software release.
 - **Iterate and Refine**: Use feedback from each test cycle to refine test cases and improve the testing process for future iterations.
-  Following these practices will help ensure that **Back-to-Back Testing** is as effective and efficient as possible, providing valuable insights into the behavior and reliability of the software being tested.
-  ```
+Following these practices will help ensure that **Back-to-Back Testing** is as effective and efficient as possible, providing valuable insights into the behavior and reliability of the software being tested.
 
 - **保持一致性**：确保 [测试环境](/zh-cn/wiki/test-environment/) 和条件对于正在测试的每个版本的软件都是一致的。这包括硬件、软件、网络配置和数据集。
 - **尽可能自动化**：使用自动化工具运行测试并比较结果。自动化提高了比较的可重复性和准确性。
-
 
 #### 在背靠背测试期间，您如何处理失败或错误？
 

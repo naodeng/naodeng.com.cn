@@ -413,14 +413,6 @@ order: 0
   ```
 请记住安装项目所需的任何其他 [Jest](/zh-cn/wiki/jest/) 插件或预设。调整配置选项以匹配项目的特定需求，例如自定义全局变量、模块路径别名或不同的测试环境。
 
-- **verbose** ：启用测试结果的详细输出。
-- **testEnvironment** ：设置运行测试的环境。
-- **setupFilesAfterEnv** ：列出在环境中安装测试框架后运行的脚本。
-- **transform** ：指定如何使用转换器处理文件。
-- **testMatch** ：确定哪些文件被视为测试文件。
-- **moduleNameMapper** ：映射模块路径以便于导入。
-- **coverageThreshold** ：设置项目的最小覆盖阈值。
-
 ### 编写和运行测试
 
 #### 如何在 Jest 中编写基本测试？

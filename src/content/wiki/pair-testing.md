@@ -101,14 +101,6 @@ order: 0
 - **专注**：合作伙伴的存在可以帮助保持专注并减少由于疲劳或单调而忽视问题的可能性。
   通过利用这些优势，[配对测试](/zh-cn/wiki/pair-testing/) 可以成为全面的[测试策略](/zh-cn/wiki/test-strategy/) 的宝贵补充，从而增强流程和产品。
 
-- **增强学习**：测试人员可以互相学习技术和观点，从而实现技能发展和知识共享。
-- **增加创造力**：两种思维可以生成更多样化的测试场景和边缘案例，从而对软件进行更彻底的探索。
-- **即时反馈**：实时讨论可以快速解决需求或功能中的误解或歧义。
-- **提高士气**：随着测试人员互相支持和学习，一起工作可以增强团队精神和动力。
-- **效率**：结对测试可以更快地识别缺陷并更快地做出决策，从而加快测试过程。
-- **交叉培训**：它提供了团队成员之间交叉培训的机会，这有利于团队灵活性和减少知识孤岛。
-- **专注**：合作伙伴的存在可以帮助保持专注并减少由于疲劳或单调而忽视问题的可能性。
-
 #### 结对测试如何提高软件质量？
 
 [配对测试](/zh-cn/wiki/pair-testing/) 通过促进**协作**和**多样化观点**来增强[软件质量](/zh-cn/wiki/software-quality/)。当两名测试人员一起工作时，他们会结合自己独特的技能和知识，从而实现更彻底的[测试覆盖率](/zh-cn/wiki/test-coverage/) 并发现可能被个人忽视的细微缺陷。这种合作鼓励实时反馈和集思广益，这可以产生创意[测试场景](/zh-cn/wiki/test-scenario/)并更深入地了解软件的行为。
@@ -173,18 +165,15 @@ order: 0
   }
   // 然后 B 编写下一个失败的测试，A 实现该功能
 
-  ```
 - **Silent Observation**: One person tests silently while the other observes without interrupting. After a set period, discuss findings. This can lead to insights that might be missed in a more interactive approach.
 - **Touring**: Navigate the application as if on a tour, exploring different features and functions systematically. This can help uncover unexpected behavior in less frequently used areas of the software.
 - **Scenario Testing**: Create real-world user scenarios and act them out. This helps ensure the software is tested in a way that reflects actual use cases.
 - **Note-Taking**: Document findings and ideas as you test. This can be useful for future reference and ensures that insights are not lost.
 - **Debriefing Sessions**: After each pair testing session, hold a brief meeting to discuss what was learned, what could be improved, and to plan next steps.
-  Remember, the key to effective pair testing is communication and collaboration. Regularly reflect on your techniques and adapt them to suit your specific context and challenges.
-  ```
+Remember, the key to effective pair testing is communication and collaboration. Regularly reflect on your techniques and adapt them to suit your specific context and challenges.
 
 - **角色切换**：定期在操作软件的驱动程序和审查和指导流程的导航员之间切换角色。这可以让测试人员保持参与并促进对[测试场景](/zh-cn/wiki/test-scenario/) 的更深入理解。
 - **Ping Pong**：轮流谁编写测试以及谁使代码通过测试。这在 [测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD) 环境中特别有效。
-
 
 #### 如何选择合适的配对进行测试？
 
@@ -232,13 +221,6 @@ order: 0
 - **协作工具**：利用敏捷友好的工具进行测试用例管理和通信，以保持配对一致。
   通过将 [配对测试](/zh-cn/wiki/pair-testing/) 嵌入敏捷仪式并利用该框架的协作工具，您可以确保它补充现有的开发和测试流程。
 
-- **冲刺计划**：将结对测试任务纳入冲刺待办事项中。根据技能组合和学习机会分配对。
-- **每日站立会议**：利用这些会议向团队通报配对测试进度的最新情况并解决任何障碍。
-- **结对轮换**：在每个冲刺中轮换结对，以传播知识并提高团队动力。
-- **持续反馈**：利用敏捷对持续反馈的重视来实时完善配对测试实践。
-- **回顾**：讨论回顾期间结对测试的结果，以确定下一个冲刺的改进。
-- **协作工具**：利用敏捷友好的工具进行测试用例管理和通信，以保持配对一致。
-
 ### 挑战和解决方案
 
 #### 结对测试中面临哪些常见挑战以及如何克服这些挑战？
@@ -265,10 +247,6 @@ order: 0
   ```
 利用专为协作设计的工具，例如**配对编程 IDE 插件**或**共享测试环境**，来简化 [配对测试](/zh-cn/wiki/pair-testing/) 流程。根据反馈和课程的有效性定期审查和调整您的方法。
 
-- **不同的技能水平**：通过结合互补技能来平衡两人。鼓励知识共享和持续学习，以尽量减少技能差距。
-- **通信问题**：建立明确的通信协议。使用即时消息和视频会议等工具促进对话。定期转换角色，以确保双方保持参与并做出贡献。
-- **日程安排冲突**：提前协调日程安排。使用共享日历和计划工具来查找共同的可用性。考虑限时会议以保持专注和效率。
-- **低效协作**：为每个会话设定目标并使用结对测试技术，例如
     *乒乓球*
     其中一个编写测试，另一个使其通过。利用版本控制系统来跟踪更改并实现平稳移交。
 
@@ -287,17 +265,6 @@ order: 0
 - **轮换配对**：如果冲突仍然存在，请考虑轮换合作伙伴以找到更兼容的测试对。
 - **回顾**：测试结束后，讨论哪些进展顺利，哪些进展不佳，包括如何处理冲突，以改善未来的互动。
   请记住，我们的目标是维持**积极且富有成效的**工作关系，而不是赢得争论。如果建设性地处理分歧，可以带来更好的测试结果和创新。
-
-- **建立基本规则**：在开始之前，就如何做出决策和解决冲突达成一致。
-- **积极倾听**：确保双方不间断地倾听对方的观点。
-- **同理心**：尝试理解他人的观点及其观点背后的原因。
-- **专注于目标**：提醒彼此共同的目标，即提高软件的质量。
-- **使用数据**：基于数据和事实而不是观点的论点。这可以包括日志、测试结果或记录的要求。
-- **妥协**：愿意付出和接受。并非所有分歧都需要产生一个胜利者。
-- **分解问题**：将问题分解为更小的部分，一次解决一个分歧。
-- **寻求第三方意见**：如果无法达成解决方案，请调解员或其他团队成员提供公正的意见。
-- **轮换配对**：如果冲突仍然存在，请考虑轮换合作伙伴以找到更兼容的测试对。
-- **回顾**：测试结束后，讨论哪些进展顺利，哪些进展不佳，包括如何处理冲突，以改善未来的互动。
 
 #### 如何为远程团队有效管理结对测试？
 
@@ -415,12 +382,3 @@ order: 0
 - **笔记应用程序**：Evernote 和 OneNote 可用于在测试过程中记下观察结果和想法，以供以后参考。
 - **时间管理工具**：番茄计时器或 Toggl 可以帮助配对者有效地管理他们的测试会话和休息时间。
   这些工具有助于维持[配对测试](/zh-cn/wiki/pair-testing/) 会话的流程，并确保测试人员无论身在何处都能够投入并高效工作。
-
-- **代码共享工具**：Visual Studio Live Share 等工具允许实时代码协作，即使在远程情况下，也可以让两人无缝协作。
-- **通信平台**：Slack、Microsoft Teams 和 Zoom 提供即时消息和视频通话，以实现有效沟通。
-- **问题跟踪软件**：Jira 和 Trello 帮助在测试会话期间跟踪错误并记录发现的结果。
-- **版本控制系统**：Git 和 SVN 允许结对管理代码库的更改并在不同分支上进行协作，而不会发生冲突。
-- **带有结对编程插件的 IDE**：IntelliJ IDEA 和 Eclipse 都有支持结对编程的插件，例如分别是 Code With Me 和 Saros。
-- **屏幕共享工具**：TeamViewer 和 AnyDesk 使一名测试人员能够查看和控制另一名测试人员的屏幕，这对于快速演示或指导复杂场景时非常有用。
-- **笔记应用程序**：Evernote 和 OneNote 可用于在测试过程中记下观察结果和想法，以供以后参考。
-- **时间管理工具**：番茄计时器或 Toggl 可以帮助配对者有效地管理他们的测试会话和休息时间。

@@ -20,6 +20,8 @@
     "update-blog-tags": "node scripts/update-blog-tags.mjs",
     "algolia-index": "node --env-file=.env scripts/algolia-index.mjs",
     "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",
+    "wiki:clean:check": "node scripts/wiki-markdown-cleaner.mjs --check",
+    "wiki:clean": "node scripts/wiki-markdown-cleaner.mjs --write",
     "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {

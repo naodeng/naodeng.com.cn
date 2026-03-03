@@ -77,15 +77,6 @@ order: 0
 - **风险缓解**：有助于及早识别和缓解风险，这可以防止项目延误并确保遵守行业标准和法规。
   通过将这些优势融入到 SDLC 中，[左移测试](/zh-cn/wiki/shift-left-testing/) 极大地促进了更加稳健、高效和可靠的软件开发流程。
 
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：在开发过程的早期发现错误，与后期阶段相比，减少了修复它们的成本和工作量。
-- **改进协作**：鼓励开发人员、测试人员和运营人员之间更密切的协作，促进更好的沟通和对项目目标和要求的理解。
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：允许更全面的测试覆盖范围，因为测试更早开始并且可以与开发一起进行。
-- **更快的反馈循环**：向开发人员提供有关代码质量和功能的快速反馈，从而实现更快的迭代和改进。
-- **缩短上市时间**：通过将测试集成到开发的早期阶段，加速功能的交付和错误修复，从而缩短发布周期。
-- **增强的[质量保证](/zh-cn/wiki/quality-assurance/)** ：促进渗透到整个 SDLC 的质量第一思维，从而带来更高质量的软件产品。
-- **成本节省**：减少与后期缺陷修复和部署后问题导致的潜在停机相关的成本。
-- **风险缓解**：有助于及早识别和缓解风险，这可以防止项目延误并确保遵守行业标准和法规。
-
 #### 左移测试如何提高软件产品的质量？
 
 [左移测试](/zh-cn/wiki/shift-left-testing/) 通过在开发生命周期的早期和经常嵌入测试来增强[软件质量](/zh-cn/wiki/software-quality/)。这种主动方法可以实现**早期缺陷检测**和解决，这比在周期后期修复问题更具成本效益且耗时更少。通过将测试集成到开发的初始阶段，团队可以确保代码从一开始就稳健，从而减少投入生产的 [bugs](/zh-cn/wiki/bug/)** 的数量。
@@ -107,16 +98,6 @@ order: 0
 - **[增量测试](/zh-cn/wiki/incremental-testing/)** ：在开发的同时逐步进行测试，以避免未经测试的代码累积，从而导致风险增加。
 - **左移心态**：培养一种从项目一开始就重视早期测试和质量考虑的心态。
   通过遵守这些原则，[左移测试](/zh-cn/wiki/shift-left-testing/) 旨在改进[软件质量](/zh-cn/wiki/software-quality/)、缩短上市时间并降低总体项目成本。
-
-- **早期测试**：在开发生命周期中尽快开始测试，最好是在需求和设计阶段。
-- **协作**：培养一个协作环境，让开发人员、测试人员和业务分析师一起工作以了解需求并创建测试用例。
-- **[测试自动化](/zh-cn/wiki/test-automation/)** ：利用自动化频繁且一致地运行测试，从而实现快速反馈和回归测试。
-- **持续测试**：将测试集成到持续集成管道中，以确保新代码在编写时得到测试。
-- **预防胜于检测**：专注于预防缺陷，而不是在周期后期检测缺陷，后者成本更高且耗时。
-- **质量责任**：鼓励所有团队成员对质量负责，而不仅仅是测试人员。
-- **反馈循环**：实施短反馈循环以快速识别和解决问题，从而更有效地解决问题。
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：在开发的同时逐步进行测试，以避免未经测试的代码累积，从而导致风险增加。
-- **左移心态**：培养一种从项目一开始就重视早期测试和质量考虑的心态。
 
 ### 实施和策略
 
@@ -216,22 +197,18 @@ order: 0
   it('应该将两个数字相加', () => {
   期望(添加(2, 3)).toBe(5);
   });
-  });
 
-  ```
 - **Continuous Testing**: Integrate automated tests into the CI/CD pipeline to run tests at every code commit, ensuring immediate feedback on the impact of changes.
 - **Quality Metrics**: Implement and monitor quality metrics to measure the effectiveness of testing efforts and guide improvements.
 - **Education and Training**: Provide ongoing training for developers in testing techniques and tools to enhance their testing skills.
 - **Feedback Loops**: Establish short feedback loops to quickly identify and address defects, reducing the cost and effort of fixing bugs later in the cycle.
 - **Risk Analysis**: Conduct risk analysis to prioritize testing efforts on the most critical areas of the application.
-  By focusing on these strategies, test automation engineers can enhance the effectiveness of shift-left testing, leading to higher quality software and more efficient development processes.
-  ```
+By focusing on these strategies, test automation engineers can enhance the effectiveness of shift-left testing, leading to higher quality software and more efficient development processes.
 
 - **尽早嵌入测试**：将测试集成到开发的初始阶段。鼓励开发人员编写单元测试并参与测试设计。
 - **协作**：培养开发人员和测试人员密切合作的协作环境。使用结对编程和联合设计会议来分享知识和责任。
 - **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：采用 TDD 实践，在代码之前编写测试，确保代码从一开始就设计为通过测试。
 - **明智地自动化**：专注于在正确的级别自动执行正确的测试。优先考虑可以快速运行并提供快速反馈的单元和集成测试。
-
 
 #### 左移测试如何适应敏捷和 DevOps 方法？
 
@@ -309,17 +286,6 @@ order: 0
 - **基础设施即代码 (IaC) 工具**：Terraform 和 Ansible 支持创建可以像应用程序代码一样进行版本控制和控制的测试环境。
 - **服务虚拟化**：WireMock 和 Mountebank 等工具允许模拟服务依赖关系，以便在受控环境中进行测试。
   这些工具有助于在开发生命周期的早期嵌入测试，确保更快地识别和解决问题。
-
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：JUnit、NUnit 和 TestNG 等工具使开发人员能够编写和运行单元测试，这是左移方法不可或缺的一部分。
-- **模拟框架**：Mockito、Moq 和 Sinon.js 帮助模拟复杂对象的行为以隔离测试组件。
-- **静态代码分析工具**：SonarQube 和 ESLint 在运行前分析代码是否存在潜在问题。
-- **集成开发环境 (IDE)**：Visual Studio 和 IntelliJ IDEA 等 IDE 通常具有支持左移实践的内置测试和调试工具。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 工具**：Cucumber 和 SpecFlow 促进 BDD，允许用简单的语言定义应用程序行为。
-- **[测试自动化](/zh-cn/wiki/test-automation/) 框架**：Selenium、Appium 和 Cypress 提供了在开发周期早期自动化功能测试的功能。
-- **持续集成工具**：Jenkins、CircleCI 和 GitHub Actions 自动化构建和测试过程，强化了左移方法。
-- **版本控制系统 (VCS)** ：Git 和 Subversion 通过集成代码更改和频繁测试来支持左移。
-- **基础设施即代码 (IaC) 工具**：Terraform 和 Ansible 支持创建可以像应用程序代码一样进行版本控制和控制的测试环境。
-- **服务虚拟化**：WireMock 和 Mountebank 等工具允许模拟服务依赖关系，以便在受控环境中进行测试。
 
 #### 哪些技术在左移测试中有效？
 
@@ -435,18 +401,16 @@ order: 0
 
 1. **自动化单元测试**：编写并自动化在每次代码提交时运行的单元测试。使用 Jenkins、CircleCI 或 GitHub Actions 等 CI 服务器来触发这些测试。
 
-    ```
-    # Example GitHub Actions workflow to run unit tests
-    name: Run Unit Tests
-    on: [push, pull_request]
-    jobs:
-      test:
-        runs-on: ubuntu-latest
-        steps:
+  # Example GitHub Actions workflow to run unit tests
+  name: Run Unit Tests
+  on: [push, pull_request]
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
 - uses: actions/checkout@v2
 - name: Run tests
-          run: npm test
-    ```
+        run: npm test
 
 2. **自动化集成测试**：开发集成测试以验证组件之间的交互。这些应该在单元测试通过后触发。
 3. **自动化系统测试**：创建系统级自动化测试以验证完整且集成的软件产品。
@@ -458,18 +422,16 @@ order: 0
 
 1. **自动化单元测试**：编写并自动化在每次代码提交时运行的单元测试。使用 Jenkins、CircleCI 或 GitHub Actions 等 CI 服务器来触发这些测试。
 
-    ```
-    # Example GitHub Actions workflow to run unit tests
-    name: Run Unit Tests
-    on: [push, pull_request]
-    jobs:
-      test:
-        runs-on: ubuntu-latest
-        steps:
+  # Example GitHub Actions workflow to run unit tests
+  name: Run Unit Tests
+  on: [push, pull_request]
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
 - uses: actions/checkout@v2
 - name: Run tests
-          run: npm test
-    ```
+        run: npm test
 
 2. **自动化集成测试**：开发集成测试以验证组件之间的交互。这些应该在单元测试通过后触发。
 3. **自动化系统测试**：创建系统级自动化测试以验证完整且集成的软件产品。
@@ -784,12 +746,3 @@ order: 0
 - **用户体验**：右移可以直接洞察用户体验和性能问题，而这些问题可能无法在预生产测试中发现。
 - **合规性和监管**：具有严格合规性要求的行业可能倾向于左移，以确保在发布之前完成所有检查。
   最终，选择可能不是二元的。结合这两种方法可以产生更强大的测试策略，利用每种方法的优势来提高整体 [软件质量](/zh-cn/wiki/software-quality/) 和可靠性。
-
-- **项目阶段**：左移更适合早期开发阶段，重点是防止缺陷。右移适用于发布后，强调现实世界的使用和反馈。
-- **反馈循环**：左移旨在开发过程中快速反馈。右移依赖于生产中用户的监控和反馈。
-- **风险容忍度**：左移可以尽早降低风险，但可能会错过仅在生产中可见的问题。右移接受较高的早期风险，以从实际使用中获得见解。
-- **资源分配**：左移需要在 CI/CD 管道内进行测试的前期投资。右移可能需要资源来监视和分析生产环境。
-- **技能和协作**：左移通常需要开发人员与测试人员协作并共同承担质量责任。右移可能会更多地涉及运营和支持团队。
-- **技术堆栈**：考虑您的堆栈是否支持这两种方法所需的工具和环境，例如用于左移的测试自动化框架或用于右移的监控工具。
-- **用户体验**：右移可以直接洞察用户体验和性能问题，而这些问题可能无法在预生产测试中发现。
-- **合规性和监管**：具有严格合规性要求的行业可能倾向于左移，以确保在发布之前完成所有检查。

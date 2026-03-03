@@ -87,11 +87,9 @@ order: 0
 - **发行说明**：包含有关发行版中的新功能、更改、错误修复和已知问题的信息的文档。
 - **签署**：正式协议，表明应用程序符合所需标准并已准备好投入生产。
 
-  ```
 - **Automated Test Suites**: Pre-written scripts to execute a large number of tests consistently and quickly.
 - **Rollback Procedures**: Defined steps to revert to a previous version if the release introduces critical issues.
 - **Monitoring Tools**: Systems to monitor the application's performance and stability post-release.
-  ```
 这些组件可确保彻底、高效的 [发布测试](/zh-cn/wiki/release-testing/) 流程，从而实现稳定、可靠的软件部署。
 
 - **[测试环境](/zh-cn/wiki/test-environment/)** ：稳定且隔离的环境，可镜像生产以确保结果准确。
@@ -180,19 +178,6 @@ order: 0
 - **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：与真实用户一起进行，以确保软件满足他们的要求并准备好部署。
   这些技术通常得到持续集成/持续部署 (CI/CD) 管道的支持，这些管道自动执行构建、部署和测试流程，从而实现频繁且可靠的 [发布测试](/zh-cn/wiki/release-testing/)。
 
-- **冒烟测试**：一组快速测试，以确保最重要的功能正常工作。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：自动测试以验证新更改不会对现有功能产生不利影响。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：根据潜在的失败风险确定测试的优先级。
-- **[健全性测试](/zh-cn/wiki/sanity-testing/)** ：检查特定功能或错误修复是否按预期工作。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：用于探索应用程序行为的无脚本测试。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：评估系统在负载下的性能。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：识别应用程序中的漏洞。
-- **[可用性测试](/zh-cn/wiki/usability-testing/)** ：确保应用程序用户友好并符合用户体验标准。
-- **[兼容性测试](/zh-cn/wiki/compatibility-testing/)** ：检查软件在不同环境和平台上的性能。
-- **[API 测试](/zh-cn/wiki/api-testing/)** ：验证应用程序 API 的功能、可靠性、性能和安全性。
-- **[数据库](/zh-cn/wiki/database/) 测试**：验证数据库更新和数据检索的完整性。
-- **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：与真实用户一起进行，以确保软件满足他们的要求并准备好部署。
-
 #### 如何确定发布测试的范围？
 
 确定[发布测试](/zh-cn/wiki/release-testing/) 的范围涉及评估对软件所做的**更改以及这些更改可能对产品产生的**影响**。考虑以下因素：
@@ -207,16 +192,6 @@ order: 0
 - **客户反馈**：合并以前版本的反馈，重点关注用户关注的领域。
 - **法规遵从性**：确保满足所有法规要求并针对发布进行测试。
   结合使用**手动和自动测试**来有效覆盖范围。自动回归测试可以快速验证现有功能是否不受影响，而[探索性测试](/zh-cn/wiki/exploratory-testing/)可用于评估新功能和复杂区域。根据上述因素确定 [测试用例](/zh-cn/wiki/test-case/) 的优先级，以确保 [发布测试](/zh-cn/wiki/release-testing/) 流程彻底且高效。
-
-- **功能添加和修改**：识别新功能和对现有功能的更改。重点关注更新最显着或最复杂的领域。
-- **[Bug](/zh-cn/wiki/bug/) 修复**：查看已解决问题的列表并确保测试涵盖更正的功能。
-- **风险评估**：执行风险分析，根据潜在影响和失败的可能性确定测试的优先级。
-- **依赖关系**：评估可能影响软件的第三方库或服务的更改。
-- **资源可用性**：使范围与可用时间、人员和工具保持一致。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：分析现有测试覆盖率以确定需要解决的差距。
-- **非[功能需求](/zh-cn/wiki/functional-requirements/)** ：包括可能受该版本影响的性能、安全性和可用性方面。
-- **客户反馈**：合并以前版本的反馈，重点关注用户关注的领域。
-- **法规遵从性**：确保满足所有法规要求并针对发布进行测试。
 
 #### 进行发布测试的最佳实践有哪些？
 
@@ -327,7 +302,6 @@ order: 0
 - **集成您的[测试自动化](/zh-cn/wiki/test-automation/)框架**
     使用问题跟踪器自动为新缺陷创建票证。
 
-
 // 用于集成问题跟踪的示例伪代码
   如果（测试失败）{
   issuesTracker.createIssue({
@@ -338,15 +312,13 @@ order: 0
   });
   }
 
-  ```
 - **Regularly review and triage** new issues to determine their impact on the release.
 - **Monitor progress** with dashboards that display open, in-progress, and closed issues.
 - **Communicate effectively** with stakeholders about the status of defects and their resolution.
 - **Automate reminders** for overdue issues to ensure they are addressed promptly.
 - **Use labels or tags** to mark issues related to release testing for easy filtering.
 - **Conduct post-release retrospectives** to analyze defect trends and improve future testing cycles.
-  By following these steps, you can maintain a clear overview of the defect landscape and ensure that critical issues are resolved before the software is released.
-  ```
+By following these steps, you can maintain a clear overview of the defect landscape and ensure that critical issues are resolved before the software is released.
 
 - **利用问题跟踪系统**
     例如 JIRA、Bugzilla 或 GitHub 问题。确保使用唯一标识符记录每个缺陷。
@@ -359,8 +331,6 @@ order: 0
 
 - **集成您的[测试自动化](/zh-cn/wiki/test-automation/)框架**
     使用问题跟踪器自动为新缺陷创建票证。
-
-
 
 ### 工具和技术
 
@@ -463,17 +433,6 @@ order: 0
 - **性能**：评估工具的性能并确保它不会成为发布过程中的瓶颈。
 - **可靠性**：选择具有经过验证的可靠性记录的工具，以避免发布测试期间出现中断。
   通过仔细评估这些标准，您可以选择能够提高 [发布测试](/zh-cn/wiki/release-testing/) 工作效率和效果的工具。请记住定期检查您选择的工具，以确保它们继续满足软件开发生命周期不断变化的需求。
-
-- **兼容性**：确保该工具支持您的项目中使用的技术（例如编程语言、框架和平台）。
-- **集成**：寻找与现有 CI/CD 管道和其他开发工具顺利集成的工具。
-- **可用性**：选择用户友好且符合您团队技能水平的工具。
-- **可扩展性**：该工具应该能够处理测试套件和项目复杂性的增长。
-- **报告**：选择提供全面报告功能的工具，帮助您做出明智的决策。
-- **成本**：考虑工具的成本，包括许可、维护和培训费用。
-- **社区和支持**：强大的社区和良好的支持对于故障排除和保持工具保持最新状态非常宝贵。
-- **定制**：定制工具的能力对于适应特定的测试需求至关重要。
-- **性能**：评估工具的性能并确保它不会成为发布过程中的瓶颈。
-- **可靠性**：选择具有经过验证的可靠性记录的工具，以避免发布测试期间出现中断。
 
 #### 技术在发布测试中扮演什么角色？
 
@@ -670,24 +629,18 @@ order: 0
   步骤{
   sh 'execute_release_tests.sh'
   }
-  }
-  }
-  }
 
-  ```
 - **Monitor and measure**: Use dashboards and reporting tools to track test progress and quality metrics.
 - **Collaborate**: Encourage communication between developers, testers, and operations to address issues swiftly.
 - **Train your team**: Keep the team updated on the latest testing tools and practices.
 - **Review and adapt**: Regularly review the testing process and adapt based on lessons learned.
-  By implementing these strategies, you can reduce the impact of common challenges and improve the effectiveness of your release testing efforts.
-  ```
+By implementing these strategies, you can reduce the impact of common challenges and improve the effectiveness of your release testing efforts.
 
 - **确定测试优先级**：根据风险和影响，首先关注关键领域。
 - **尽可能自动化**：使用自动化来处理重复、耗时的任务。
 - **维护[测试环境](/zh-cn/wiki/test-environment/)** ：确保它们尽可能地反映生产情况，以避免特定于环境的问题。
 - **使用版本控制**：将测试和相关工件保留在版本控制中，以便更好地协作和跟踪。
 - **实施持续集成**：在代码签入时自动运行测试以尽早发现问题。
-
 
 #### 在发布测试期间可能会发现哪些问题示例？
 
@@ -704,17 +657,6 @@ order: 0
 - **本地化和国际化错误**：与支持多种语言和区域设置相关的问题。
 - **监管合规问题**：不符合行业或法律标准，可能导致处罚或限制。
   在软件发布之前识别并解决这些问题对于确保成功部署并保持产品的质量和可靠性至关重要。
-
-- **集成问题**：组件交互时出现的问题，特别是如果它们是单独开发的或自集成测试以来更新的。
-- **性能瓶颈**：响应时间缓慢或在类似生产负载下吞吐量降低。
-- **安全漏洞**：可被利用的漏洞，通常使用专门的安全测试工具发现。
-- **用户界面缺陷**：UI 中影响用户体验的不一致或错误，通常是由于最后一刻的更改造成的。
-- **数据迁移问题**：从旧系统或版本转换时出现数据完整性或丢失问题。
-- **配置错误**：部署环境中的错误设置会导致故障或性能不佳。
-- **资源泄漏**：未释放的内存、数据库连接或文件句柄可能会随着时间的推移导致系统不稳定。
-- **跨平台兼容性问题**：仅在某些环境或特定硬件配置下出现的缺陷。
-- **本地化和国际化错误**：与支持多种语言和区域设置相关的问题。
-- **监管合规问题**：不符合行业或法律标准，可能导致处罚或限制。
 
 #### 在发布测试期间发现关键问题时，您如何处理？
 
