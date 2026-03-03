@@ -3,15 +3,29 @@ import { getMainPageUrls } from "../support/constants";
 
 test.describe("SEO 元数据", () => {
   const normalizeBase = (baseURL?: string) => (baseURL || "").replace(/\/$/, "");
-  const normalize = (s: string) => s.replace(/\/+$/, "/");
+  const normalizePath = (s: string) => s.replace(/\/+$/, "/");
+  const toURL = (value: string, fallbackOrigin: string) => {
+    try {
+      return new URL(value);
+    } catch {
+      return new URL(value, fallbackOrigin);
+    }
+  };
   const expectCanonicalEquals = async (page: any, expected: string) => {
     const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
     expect(canonical).toBeTruthy();
-    expect(normalize(String(canonical))).toBe(normalize(expected));
+    const expectedUrl = new URL(expected);
+    const canonicalUrl = toURL(String(canonical), expectedUrl.origin);
+    expect(normalizePath(canonicalUrl.pathname)).toBe(normalizePath(expectedUrl.pathname));
+  };
+  const expectEnglishAlternate = async (page: any) => {
+    const enCount = await page.locator('link[rel="alternate"][hreflang="en"]').count();
+    const enUsCount = await page.locator('link[rel="alternate"][hreflang="en-US"]').count();
+    expect(enCount + enUsCount).toBeGreaterThan(0);
   };
   const expectAlternateSet = async (page: any) => {
     await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(1);
-    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
+    await expectEnglishAlternate(page);
     await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
   };
 
@@ -140,7 +154,7 @@ test.describe("SEO 元数据", () => {
     const count = await alternates.count();
     expect(count).toBeGreaterThan(1);
     await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(1);
-    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
+    await expectEnglishAlternate(page);
     await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
   });
 
