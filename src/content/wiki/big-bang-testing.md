@@ -229,7 +229,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于 Web 应用程序的端到端测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：主要用于性能测试，也可用于对集成系统进行压力测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
 - **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用 Java 和 .NET 编写测试用例的框架；可用于创建集成测试。
 - **TestComplete**：一个 GUI 测试自动化工具，可用于在集成环境中为桌面、移动和 Web 应用程序创建自动化测试。
 - **QTP/UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：功能和回归测试自动化工具，可应用于集成系统。
@@ -237,7 +237,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于 Web 应用程序的端到端测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：主要用于性能测试，也可用于对集成系统进行压力测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
 - **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用 Java 和 .NET 编写测试用例的框架；可用于创建集成测试。
 - **TestComplete**：一个 GUI 测试自动化工具，可用于在集成环境中为桌面、移动和 Web 应用程序创建自动化测试。
 - **QTP/UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：功能和回归测试自动化工具，可应用于集成系统。

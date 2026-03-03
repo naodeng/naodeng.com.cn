@@ -324,7 +324,7 @@ order: 0
 [互操作性测试](/zh-cn/wiki/interoperability-testing/) 的常用工具包括：
 
 - **SoapUI**：广泛用于测试 SOAP 和 REST Web 服务，提供断言来验证响应并模拟系统之间的请求。
-- **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 可用于性能测试并支持各种协议，使其适合互操作性测试。
 - **Wireshark**：一种网络协议分析器，可捕获和显示网络流量，对于解决互操作性问题很有用。
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动化跨浏览器测试以确保互操作性。
@@ -336,7 +336,7 @@ order: 0
   这些工具有助于验证系统交互，确保不同的软件系统按预期协同工作。经验丰富的[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以利用这些工具来模拟场景、验证通信协议并验证不同系统之间的数据交换。
 
 - **SoapUI**：广泛用于测试 SOAP 和 REST Web 服务，提供断言来验证响应并模拟系统之间的请求。
-- **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户创建和共享请求和测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 可用于性能测试并支持各种协议，使其适合互操作性测试。
 - **Wireshark**：一种网络协议分析器，可捕获和显示网络流量，对于解决互操作性问题很有用。
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：对于 Web 应用程序，Selenium 可以自动执行跨浏览器测试以确保互操作性。
@@ -368,7 +368,7 @@ order: 0
 
 - **重复使用[测试脚本](/zh-cn/wiki/test-script/)**
     对于不同版本的被测系统，保持测试执行的一致性。
-  例如，使用 [邮递员](/zh-cn/wiki/postman/) 或 SoapUI 等工具，测试人员可以在不同服务之间自动执行 [API](/zh-cn/wiki/api/) 调用，以验证它们是否正确通信。同样，[selenium](/zh-cn/wiki/selenium/) 或 Appium 等工具可以自动化 Web 和移动交互，确保应用程序在不同设备和浏览器上表现一致。
+  例如，使用 [Postman](/zh-cn/wiki/postman/) 或 SoapUI 等工具，测试人员可以在不同服务之间自动执行 [API](/zh-cn/wiki/api/) 调用，以验证它们是否正确通信。同样，[selenium](/zh-cn/wiki/selenium/) 或 Appium 等工具可以自动化 Web 和移动交互，确保应用程序在不同设备和浏览器上表现一致。
 
   ```
   // Example of an automated API test using Postman

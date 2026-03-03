@@ -212,7 +212,7 @@ order: 0
 - **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在开发功能之前先编写失败的测试，确保在构建软件时考虑到测试。
 - **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：虽然通常不是自动化的，但它可以通过在没有预定义脚本的情况下探索应用程序，识别潜在的自动化领域来为自动化测试提供信息。
 - **持续测试**：将自动化测试集成到持续集成/持续部署 (CI/CD) 管道中，以提供有关变更影响的即时反馈。
-- **[API 测试](/zh-cn/wiki/api-testing/)**：专注于直接测试 [API](/zh-cn/wiki/api/) 的功能、可靠性、性能和安全性，通常使用 [邮递员](/zh-cn/wiki/postman/) 或 REST-assured 等工具。
+- **[API 测试](/zh-cn/wiki/api-testing/)**：专注于直接测试 [API](/zh-cn/wiki/api/) 的功能、可靠性、性能和安全性，通常使用 [Postman](/zh-cn/wiki/postman/) 或 REST-assured 等工具。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：使用[JMeter](/zh-cn/wiki/jmeter/)或LoadRunner等工具模拟大量用户并测量负载下的系统性能。
 - **[安全测试](/zh-cn/wiki/security-testing/)**：使用 OWASP ZAP 或 Fortify 等自动化工具来识别软件中的漏洞。
   将这些技术合并到 **[测试方法](/zh-cn/wiki/test-approach/)** 取决于项目要求、团队专业知识和技术堆栈。它们可以进行组合和定制，以创建符合项目目标的强大的自动化策略。
@@ -226,7 +226,7 @@ order: 0
 - **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在开发功能之前先编写失败的测试，确保在构建软件时考虑到测试。
 - **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：虽然通常不是自动化的，但它可以通过在没有预定义脚本的情况下探索应用程序，识别潜在的自动化领域来为自动化测试提供信息。
 - **持续测试**：将自动化测试集成到持续集成/持续部署 (CI/CD) 管道中，以提供有关变更影响的即时反馈。
-- **[API 测试](/zh-cn/wiki/api-testing/)**：专注于直接测试 [API](/zh-cn/wiki/api/) 的功能、可靠性、性能和安全性，通常使用 [邮递员](/zh-cn/wiki/postman/) 或 REST-assured 等工具。
+- **[API 测试](/zh-cn/wiki/api-testing/)**：专注于直接测试 [API](/zh-cn/wiki/api/) 的功能、可靠性、性能和安全性，通常使用 [Postman](/zh-cn/wiki/postman/) 或 REST-assured 等工具。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：使用[JMeter](/zh-cn/wiki/jmeter/)或LoadRunner等工具模拟大量用户并测量负载下的系统性能。
 - **[安全测试](/zh-cn/wiki/security-testing/)**：使用 OWASP ZAP 或 Fortify 等自动化工具来识别软件中的漏洞。
 

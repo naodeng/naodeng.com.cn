@@ -581,7 +581,7 @@ order: 0
 - **浏览器开发者工具**：内置于大多数现代网络浏览器（例如 Chrome 开发者工具、Firefox 开发者工具）中，它们允许 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) HTML、CSS 和 JavaScript，以及网络活动和性能。
 - **[selenium IDE](/zh-cn/wiki/selenium-ide/)**：一个浏览器扩展，用于记录用户与 Web 应用程序的交互并回放它们以测试回归。
 - **Appium Inspector**：对于移动应用程序，此工具提供了一个 GUI 来启动会话并检查应用程序的 UI 元素以生成 [测试脚本](/zh-cn/wiki/test-script/)。
-- **[邮递员](/zh-cn/wiki/postman/)**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
+- **[Postman](/zh-cn/wiki/postman/)**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
 - **Wireshark**：一种网络协议分析仪，有助于检查 e2e 测试期间通过网络传输的数据。
 - **Fiddler**：记录 HTTP(S) 流量数据的 Web 调试代理，可以检查该数据以了解应用程序的网络通信。
 - **Charles Proxy**：与 Fiddler 类似，用于监控和调试客户端和服务器之间的 HTTP/HTTPS 流量。
@@ -590,7 +590,7 @@ order: 0
 - **浏览器开发者工具**：内置于大多数现代网络浏览器（例如 Chrome 开发者工具、Firefox 开发者工具）中，它们允许 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) HTML、CSS 和 JavaScript，以及网络活动和性能。
 - **[selenium IDE](/zh-cn/wiki/selenium-ide/)**：一个浏览器扩展，用于记录用户与 Web 应用程序的交互并回放它们以测试回归。
 - **Appium Inspector**：对于移动应用程序，此工具提供了一个 GUI 来启动会话并检查应用程序的 UI 元素以生成 [测试脚本](/zh-cn/wiki/test-script/)。
-- **[邮递员](/zh-cn/wiki/postman/)**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
+- **[Postman](/zh-cn/wiki/postman/)**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
 - **Wireshark**：一种网络协议分析仪，有助于检查 e2e 测试期间通过网络传输的数据。
 - **Fiddler**：记录 HTTP(S) 流量数据的 Web 调试代理，可以检查该数据以了解应用程序的网络通信。
 - **Charles Proxy**：与 Fiddler 类似，用于监控和调试客户端和服务器之间的 HTTP/HTTPS 流量。

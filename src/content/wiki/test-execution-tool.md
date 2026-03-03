@@ -133,7 +133,7 @@ order: 0
 - **[功能测试](/zh-cn/wiki/functional-testing/) 工具**：重点测试软件系统的功能。示例：[selenium](/zh-cn/wiki/selenium/)、QTP/UFT、TestComplete。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估负载下系统的性能、可扩展性和可靠性。示例：[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner、加特林。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 工具**：结合规范和 [测试执行工具](/zh-cn/wiki/test-execution-tool/) 的功能，允许可执行规范。示例：Cucumber、SpecFlow、Behat。
-- **[API 测试](/zh-cn/wiki/api-testing/) 工具**：专门设计用于测试应用程序之间的接口和通信。示例：[邮递员](/zh-cn/wiki/postman/)、SoapUI、RestAssured。
+- **[API 测试](/zh-cn/wiki/api-testing/) 工具**：专门设计用于测试应用程序之间的接口和通信。示例：[Postman](/zh-cn/wiki/postman/)、SoapUI、RestAssured。
 - **移动测试工具**：满足移动应用测试的需求，包括不同的操作系统和设备配置。示例：Appium、Espresso、XCUITest。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：识别应用程序中的漏洞和安全缺陷。示例：OWASP ZAP、Fortify、Veracode。
 - **持续测试工具**：与 CI/CD 管道集成，以在持续集成环境中自动执行测试。示例：Jenkins、Bamboo、带有测试插件的 TeamCity。
@@ -144,7 +144,7 @@ order: 0
 - **[功能测试](/zh-cn/wiki/functional-testing/) 工具**：重点测试软件系统的功能。示例：[selenium](/zh-cn/wiki/selenium/)、QTP/UFT、TestComplete。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：评估负载下系统的性能、可扩展性和可靠性。示例：[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner、加特林。
 - **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 工具**：结合规范和 [测试执行工具](/zh-cn/wiki/test-execution-tool/) 的功能，允许可执行规范。示例：Cucumber、SpecFlow、Behat。
-- **[API 测试](/zh-cn/wiki/api-testing/) 工具**：专门设计用于测试应用程序之间的接口和通信。示例：[邮递员](/zh-cn/wiki/postman/)、SoapUI、RestAssured。
+- **[API 测试](/zh-cn/wiki/api-testing/) 工具**：专门设计用于测试应用程序之间的接口和通信。示例：[Postman](/zh-cn/wiki/postman/)、SoapUI、RestAssured。
 - **移动测试工具**：满足移动应用测试的需求，包括不同的操作系统和设备配置。示例：Appium、Espresso、XCUITest。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：识别应用程序中的漏洞和安全缺陷。示例：OWASP ZAP、Fortify、Veracode。
 - **持续测试工具**：与 CI/CD 管道集成，以在持续集成环境中自动执行测试。示例：Jenkins、Bamboo、带有测试插件的 TeamCity。
@@ -208,7 +208,7 @@ order: 0
         Then I expect a result
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)/Newman**：流行于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)/Newman**：流行于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送 HTTP 请求并分析响应。
 
     ```
     {
@@ -276,7 +276,7 @@ order: 0
         Then I expect a result
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)/Newman**：流行于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)/Newman**：流行于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送 HTTP 请求并分析响应。
 
     ```
     {

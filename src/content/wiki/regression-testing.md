@@ -226,7 +226,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
 - **JUnit/TestNG**：用于单元测试的框架，也可以扩展用于 Java 环境中的回归测试。
 - **RSpec** ：Ruby 的行为驱动开发（BDD）框架，通常用于编写人类可读的自动化测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。
   这些工具可以与 Jenkins、TeamCity 或 Travis CI 等持续集成系统集成，以将 [回归测试](/zh-cn/wiki/regression-testing/) 流程自动化，作为 CI/CD 管道的一部分。此外，其中许多工具支持与缺陷跟踪系统和版本控制系统集成，以简化测试工作流程。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具，非常适合 Web 应用程序测试。
@@ -239,7 +239,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的、基于 JavaScript 的端到端测试框架，在浏览器中运行，使其快速且易于使用。
 - **JUnit/TestNG**：用于单元测试的框架，也可以扩展用于 Java 环境中的回归测试。
 - **RSpec** ：Ruby 的行为驱动开发（BDD）框架，通常用于编写人类可读的自动化测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：主要用于API测试，也可用于对服务执行回归测试。
 
 #### 回归测试是如何自动化的？
 

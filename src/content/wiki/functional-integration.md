@@ -295,7 +295,7 @@ order: 0
 功能集成测试的常用工具包括：
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的 Web 应用程序的开源框架。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应。
 - **SoapUI**：专门从事 SOAP 和 REST API 测试，为面向服务的架构提供全面的套件。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：用于性能测试的 Apache 项目，也可以配置用于功能测试。
 - **TestComplete**：一种商业工具，提供用于为桌面、移动和 Web 应用程序创建自动化测试的 GUI。
@@ -307,7 +307,7 @@ order: 0
   这些工具通常使用 **Jenkins**、**TeamCity** 或 **GitLab CI** 等平台集成到 CI/CD 管道中，以在构建过程中自动执行 [功能整合](/zh-cn/wiki/functional-integration/) 测试。它们可以与版本控制系统、问题跟踪工具和其他[测试管理](/zh-cn/wiki/test-management/)软件结合使用，以简化测试工作流程。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的 Web 应用程序的开源框架。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应。
 - **SoapUI**：专门从事 SOAP 和 REST API 测试，为面向服务的架构提供全面的套件。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：用于性能测试的 Apache 项目，也可以配置用于功能测试。
 - **TestComplete**：一种商业工具，提供用于为桌面、移动和 Web 应用程序创建自动化测试的 GUI。

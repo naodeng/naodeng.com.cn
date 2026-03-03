@@ -393,7 +393,7 @@ order: 0
 
 [API 测试](/zh-cn/wiki/api-testing/) 的常用工具包括：
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 开发和测试的流行工具，提供用户友好的界面以及用于发送请求、分析响应和自动化测试的各种功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 开发和测试的流行工具，提供用户友好的界面以及用于发送请求、分析响应和自动化测试的各种功能。
 - **SoapUI** ：专门为 SOAP 和 REST API 测试而设计的开源工具，提供全面的测试功能，包括功能、回归和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：JMeter 主要是一个性能测试工具，也可用于 API 测试，特别是压力和负载测试。
 - **Rest-Assured**：一种 Java DSL，用于简化 RESTful API 的测试，与现有的基于 Java 的测试框架无缝集成。
@@ -404,7 +404,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：虽然 Cypress 主要以 Web 应用程序的端到端测试而闻名，但它也可以通过在测试中直接发送 HTTP 请求来用于 API 测试。
   这些工具提供各种功能，例如[测试自动化](/zh-cn/wiki/test-automation/)、请求链接、环境变量以及与 CI/CD 管道的集成，以简化和增强[API 测试](/zh-cn/wiki/api-testing/) 流程。
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 开发和测试的流行工具，提供用户友好的界面以及用于发送请求、分析响应和自动化测试的各种功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 开发和测试的流行工具，提供用户友好的界面以及用于发送请求、分析响应和自动化测试的各种功能。
 - **SoapUI** ：专门为 SOAP 和 REST API 测试而设计的开源工具，提供全面的测试功能，包括功能、回归和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：JMeter 主要是一个性能测试工具，也可用于 API 测试，特别是压力和负载测试。
 - **Rest-Assured**：一种 Java DSL，用于简化 RESTful API 的测试，与现有的基于 Java 的测试框架无缝集成。
@@ -464,7 +464,7 @@ order: 0
 要自动化 [API 测试](/zh-cn/wiki/api-testing/)，请按照下列步骤操作：
 
 1. **定义[测试用例](/zh-cn/wiki/test-case/)**：确定各种[API](/zh-cn/wiki/api/)请求的预期结果，包括成功和错误场景。
-2. **选择测试工具**：选择支持 [API](/zh-cn/wiki/api/) 自动化的工具，如 [邮递员](/zh-cn/wiki/postman/)、RestAssured 或 SoapUI。
+2. **选择测试工具**：选择支持 [API](/zh-cn/wiki/api/) 自动化的工具，如 [Postman](/zh-cn/wiki/postman/)、RestAssured 或 SoapUI。
 3. **设置环境**：使用必要的标头、身份验证令牌和其他先决条件配置测试环境。
 4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：开发发出[API](/zh-cn/wiki/api/) 调用并验证响应的脚本。根据工具使用 JavaScript、Python 或 Java 等编程语言。
 
@@ -487,7 +487,7 @@ order: 0
   通过自动化 [API](/zh-cn/wiki/api/) 测试，您可以确保对 [API](/zh-cn/wiki/api/) 功能、可靠性和安全性进行一致且高效的验证。
 
 1. **定义[测试用例](/zh-cn/wiki/test-case/)**：确定各种[API](/zh-cn/wiki/api/)请求的预期结果，包括成功和错误场景。
-2. **选择测试工具**：选择[邮递员](/zh-cn/wiki/postman/)、RestAssured 或支持[API](/zh-cn/wiki/api/) 自动化的SoapUI 等工具。
+2. **选择测试工具**：选择[Postman](/zh-cn/wiki/postman/)、RestAssured 或支持[API](/zh-cn/wiki/api/) 自动化的SoapUI 等工具。
 3. **设置环境**：使用必要的标头、身份验证令牌和其他先决条件配置测试环境。
 4. **编写[测试脚本](/zh-cn/wiki/test-script/)**：开发发出[API](/zh-cn/wiki/api/) 调用并验证响应的脚本。根据工具使用 JavaScript、Python 或 Java 等编程语言。
 
@@ -768,7 +768,7 @@ SSL/TLS 通过在客户端和服务器之间建立加密链接，在**[API](/zh-
           summary: "List all users"
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)**：主要是[API 测试](/zh-cn/wiki/api-testing/) 的平台，[邮递员](/zh-cn/wiki/postman/) 还包括用于记录[API](/zh-cn/wiki/api/) 的功能。它可以生成和托管交互式文档，并允许从文档页面直接[API](/zh-cn/wiki/api/) 调用。
+- **[Postman](/zh-cn/wiki/postman/)**：主要是[API 测试](/zh-cn/wiki/api-testing/) 的平台，[Postman](/zh-cn/wiki/postman/) 还包括用于记录[API](/zh-cn/wiki/api/) 的功能。它可以生成和托管交互式文档，并允许从文档页面直接[API](/zh-cn/wiki/api/) 调用。
 - **Apiary**：使用 [API](/zh-cn/wiki/api/) Blueprint，一种基于 Markdown 的文档格式。 Apiary 提供了一个模拟服务器和其他工具来设计和原型 [API](/zh-cn/wiki/api/) 以及文档。
 - **阅读文档**：与版本控制系统集成，以在每次提交时自动更新文档。它支持 Sphinx，这是一个可以轻松创建智能且美观的文档的工具。
 - **Docusaurus**：一个用于轻松构建、部署和维护开源项目网站的项目。它支持 Markdown，并且与 JSDoc for JavaScript 代码库等文档生成器结合使用时可以记录 [API](/zh-cn/wiki/api/)。
@@ -784,7 +784,7 @@ SSL/TLS 通过在客户端和服务器之间建立加密链接，在**[API](/zh-
           summary: "List all users"
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)**：主要是[API 测试](/zh-cn/wiki/api-testing/) 的平台，[邮递员](/zh-cn/wiki/postman/) 还包括用于记录[API](/zh-cn/wiki/api/) 的功能。它可以生成和托管交互式文档，并允许从文档页面直接[API](/zh-cn/wiki/api/) 调用。
+- **[Postman](/zh-cn/wiki/postman/)**：主要是[API 测试](/zh-cn/wiki/api-testing/) 的平台，[Postman](/zh-cn/wiki/postman/) 还包括用于记录[API](/zh-cn/wiki/api/) 的功能。它可以生成和托管交互式文档，并允许从文档页面直接[API](/zh-cn/wiki/api/) 调用。
 - **Apiary**：使用 [API](/zh-cn/wiki/api/) Blueprint，一种基于 Markdown 的文档格式。 Apiary 提供了一个模拟服务器和其他工具来设计和原型 [API](/zh-cn/wiki/api/) 以及文档。
 - **阅读文档**：与版本控制系统集成，以在每次提交时自动更新文档。它支持 Sphinx，这是一个可以轻松创建智能且美观的文档的工具。
 - **Docusaurus**：一个用于轻松构建、部署和维护开源项目网站的项目。它支持 Markdown，并且与 JSDoc for JavaScript 代码库等文档生成器结合使用时可以记录 [API](/zh-cn/wiki/api/)。

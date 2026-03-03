@@ -252,7 +252,7 @@ order: 0
 - **TestComplete** ：SmartBear 的商业工具，支持桌面、移动和 Web 测试。
 - **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，允许您创建和管理 API 请求和响应作为测试套件的一部分。
+- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 测试，允许您创建和管理 API 请求和响应作为测试套件的一部分。
 - **SoapUI**：另一个用于 Web 服务和 API 测试的工具，支持 SOAP 和 REST。
 - **Jenkins**：一种集成工具，可以作为 CI/CD 管道的一部分管理和运行测试套件。
 - **Git**：版本控制对于管理测试脚本和套件至关重要，尤其是在与团队协作时。
@@ -270,7 +270,7 @@ order: 0
 - **TestComplete** ：SmartBear 的商业工具，支持桌面、移动和 Web 测试。
 - **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，允许您创建和管理 API 请求和响应作为测试套件的一部分。
+- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 测试，允许您创建和管理 API 请求和响应作为测试套件的一部分。
 - **SoapUI**：另一个用于 Web 服务和 API 测试的工具，支持 SOAP 和 REST。
 - **Jenkins**：一种集成工具，可以作为 CI/CD 管道的一部分管理和运行测试套件。
 - **Git**：版本控制对于管理测试脚本和套件至关重要，尤其是在与团队协作时。

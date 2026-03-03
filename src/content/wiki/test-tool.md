@@ -337,7 +337,7 @@ order: 0
       java -Dwebdriver.chrome.driver=./chromedriver -jar selenium-server-standalone.jar -role node -hub http://localhost:4444/grid/register &
       mvn test
   ```
-**[API 测试](/zh-cn/wiki/api-testing/)**：**[邮递员](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具用于验证 RESTful [API](/zh-cn/wiki/api/)。自动化脚本将 HTTP 请求发送到 [API](/zh-cn/wiki/api/) 端点并断言响应。
+**[API 测试](/zh-cn/wiki/api-testing/)**：**[Postman](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具用于验证 RESTful [API](/zh-cn/wiki/api/)。自动化脚本将 HTTP 请求发送到 [API](/zh-cn/wiki/api/) 端点并断言响应。
 
   ```
   given().contentType(ContentType.JSON)

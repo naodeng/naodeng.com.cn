@@ -20,6 +20,7 @@ order: 0
       - [什么是分析测试策略？](#什么是分析测试策略)
       - [为什么分析测试策略在软件测试中很重要？](#为什么分析测试策略在软件测试中很重要)
       - [分析测试策略的关键组成部分是什么？](#分析测试策略的关键组成部分是什么)
+    - [执行](#执行)
       - [分析测试策略是如何实施的？](#分析测试策略是如何实施的)
       - [创建分析测试策略涉及哪些步骤？](#创建分析测试策略涉及哪些步骤)
       - [实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战？](#实施分析测试策略时存在哪些常见挑战以及如何克服这些挑战)
@@ -83,7 +84,7 @@ order: 0
 - **维护计划**：随着软件的发展制定维护和更新测试用例和自动化脚本的策略。
 - **合规性和标准**：遵守影响测试过程和结果的相关行业标准和监管要求。
 
-＃＃＃ 执行
+### 执行
 
 #### 分析测试策略是如何实施的？
 
@@ -170,7 +171,7 @@ order: 0
 
 - **静态分析工具**：SonarQube 或 Coverity 等工具在运行前扫描代码以查找潜在问题。
 - **[测试管理](/zh-cn/wiki/test-management/) 工具**：TestRail 或 qTest 等工具管理测试用例、计划和运行，提供有关测试覆盖率和有效性的分析。
-- **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**：用于 UI 测试的 Selenium、Appium 和 Cypress； JUnit、TestNG 用于单元测试；以及用于 API 测试的 Postman、RestAssured。
+- **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**：用于 UI 测试的 Selenium、Appium 和 Cypress；JUnit、TestNG 用于单元测试；以及用于 API 测试的 Postman、RestAssured。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：JMeter 或 LoadRunner 模拟用户负载并测量系统性能。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：OWASP ZAP 或 Burp Suite 识别安全漏洞。
 - **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**：JaCoCo 或 Istanbul 监视测试期间执行了多少代码。
@@ -197,7 +198,7 @@ order: 0
 
 - **静态分析工具**：SonarQube 或 Coverity 等工具在运行前扫描代码以查找潜在问题。
 - **[测试管理](/zh-cn/wiki/test-management/) 工具**：TestRail 或 qTest 等工具管理测试用例、计划和运行，提供有关测试覆盖率和有效性的分析。
-- **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**：用于 UI 测试的 Selenium、Appium 和 Cypress； JUnit、TestNG 用于单元测试；以及用于 API 测试的 Postman、RestAssured。
+- **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**：用于 UI 测试的 Selenium、Appium 和 Cypress；JUnit、TestNG 用于单元测试；以及用于 API 测试的 Postman、RestAssured。
 - **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：JMeter 或 LoadRunner 模拟用户负载并测量系统性能。
 - **[安全测试](/zh-cn/wiki/security-testing/) 工具**：OWASP ZAP 或 Burp Suite 识别安全漏洞。
 - **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**：JaCoCo 或 Istanbul 监视测试期间执行了多少代码。

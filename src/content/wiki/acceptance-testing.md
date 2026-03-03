@@ -304,7 +304,7 @@ order: 0
 - **JBehave**：BDD 框架，允许将故事编写为文档的一部分。
 - **TestComplete** ：为 Web、移动和桌面测试提供一套全面的功能。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：广泛使用的功能和回归测试工具，支持关键字和脚本接口。
-- **[邮递员](/zh-cn/wiki/postman/)** ：简化 API 测试，允许用户创建和共享测试套件。
+- **[Postman](/zh-cn/wiki/postman/)** ：简化 API 测试，允许用户创建和共享测试套件。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具。
   这些工具有助于根据业务需求验证软件，通常通过模拟用户行为的自动化 [测试用例](/zh-cn/wiki/test-case/) 或 [API](/zh-cn/wiki/api/) 调用来确保系统满足商定的标准。它们可以集成到 CI/CD 管道中以进行持续验证，并支持各种编程语言和平台。每个工具都有其独特的功能，可能更适合某些场景或类型的应用程序。选择正确的工具取决于项目的具体需求，例如[测试用例](/zh-cn/wiki/test-case/)的复杂性、技术堆栈和团队的专业知识。
 
@@ -316,7 +316,7 @@ order: 0
 - **JBehave**：BDD 框架，允许将故事编写为文档的一部分。
 - **TestComplete** ：为 Web、移动和桌面测试提供一套全面的功能。
 - **UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：广泛使用的功能和回归测试工具，支持关键字和脚本接口。
-- **[邮递员](/zh-cn/wiki/postman/)** ：简化 API 测试，允许用户创建和共享测试套件。
+- **[Postman](/zh-cn/wiki/postman/)** ：简化 API 测试，允许用户创建和共享测试套件。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具。
 
 #### 这些工具在验收测试过程中有何帮助？
@@ -345,11 +345,11 @@ order: 0
 - **缺点**：学习曲线陡峭，用户界面不够现代，可能无法很好地适应大型项目。
   **规格流程**：
 
-- **优点**：与.NET集成，支持BDD，允许用自然语言编写测试。
+- **优点**：与.NET 集成，支持 BDD，允许用自然语言编写测试。
 - **缺点**：主要针对.NET 项目，需要了解 BDD 原理。
   **Robot Framework**：
 
-- **优点**：关键字驱动，支持BDD，有许多针对不同应用程序的库。
+- **优点**：关键字驱动，支持 BDD，有许多针对不同应用程序的库。
 - **缺点**：语法对于开发人员来说可能不太直观，可能需要额外的 Python 知识。
   **测试咖啡馆**：
 
@@ -367,9 +367,9 @@ order: 0
 - **缺点**：设置可能很复杂，由于浏览器自动化而执行速度较慢，可能需要额外的 API 测试工具。
 - **优点**：结合 wiki 进行文档记录和测试执行，有利于利益相关者之间的协作。
 - **缺点**：学习曲线陡峭，用户界面不够现代，可能无法很好地适应大型项目。
-- **优点**：与.NET集成，支持BDD，允许用自然语言编写测试。
+- **优点**：与.NET 集成，支持 BDD，允许用自然语言编写测试。
 - **缺点**：主要针对.NET 项目，需要了解 BDD 原理。
-- **优点**：关键字驱动，支持BDD，有许多针对不同应用程序的库。
+- **优点**：关键字驱动，支持 BDD，有许多针对不同应用程序的库。
 - **缺点**：语法对于开发人员来说可能不太直观，可能需要额外的 Python 知识。
 - **优点**：不需要 WebDriver，测试可以在所有流行的浏览器上运行，易于设置。
 - **缺点**：与 Selenium 相比不太成熟，集成可能较少。
@@ -582,12 +582,12 @@ order: 0
   最后，维护一个随项目一起发展的**动态文档**或 wiki，从验收测试中获取见解和决策。这既可以作为历史记录，也可以作为未来参考的知识库。
 
   ```
-- **Dashboards** for real-time updates
-- **Automated reports** with essential details
-- **Visual aids** like charts and graphs
-- **Notification systems** for immediate alerts
-- **Issue tracking systems** for defect management
-- **Accessible test results** for all stakeholders
-- **Regular reviews** in team meetings
-- **Living document** for historical insights
+- **仪表盘（Dashboards）**：提供实时更新的可视化数据展示。
+- **自动化报告（Automated reports）**：生成包含关键信息的自动化测试报告。
+- **可视化辅助（Visual aids）**：使用图表和图形提升数据的可读性和理解度。
+- **通知系统（Notification systems）**：提供即时告警，确保问题能够第一时间被关注。
+- **缺陷跟踪系统（Issue tracking systems）**：用于缺陷管理和状态追踪。
+- **可访问的测试结果（Accessible test results）**：确保所有相关干系人都能便捷查看测试结果。
+- **定期评审（Regular reviews）**：在团队会议中定期回顾测试状态与改进点。
+- **动态文档（Living document）**：维护持续更新的文档，用于沉淀历史经验和数据洞察。
   ```

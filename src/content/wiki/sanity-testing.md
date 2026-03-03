@@ -225,7 +225,7 @@ order: 0
     **[NUnit](/zh-cn/wiki/nunit/)**
     （针对 .NET）：可适用于健全性检查的单元测试框架。
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
 - **QTP/UFT**：Micro Focus 的多功能工具，用于功能和回归测试。
 - **RationalFunctionalTester**：IBM 的自动化功能和回归测试解决方案。
 - **[Cypress](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。
@@ -260,7 +260,7 @@ order: 0
     **[NUnit](/zh-cn/wiki/nunit/)**
     （针对 .NET）：可适用于健全性检查的单元测试框架。
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 健全性测试，允许快速检查 RESTful 服务。
 - **QTP/UFT**：Micro Focus 的多功能工具，用于功能和回归测试。
 - **RationalFunctionalTester**：IBM 的自动化功能和回归测试解决方案。
 - **[Cypress](/zh-cn/wiki/cypress/)** ：专为 Web 应用程序设计的现代端到端测试框架。

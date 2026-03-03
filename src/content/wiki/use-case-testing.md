@@ -507,7 +507,7 @@ order: 0
 - **TestComplete**：提供用于创建自动化测试的 GUI，并支持各种脚本语言，例如 JavaScript 和 Python。
 - **SoapUI**：专为[API 测试](/zh-cn/wiki/api-testing/)设计，也可用于验证[用例](/zh-cn/wiki/use-case/)的后端部分。
 - **[jira](/zh-cn/wiki/jira/) Xray**：与[jira](/zh-cn/wiki/jira/) 集成并支持[BDD](/zh-cn/wiki/bdd/)，允许您将测试作为[jira](/zh-cn/wiki/jira/) 问题进行管理，并将它们直接链接到[用例](/zh-cn/wiki/use-case/)。
-- **[邮递员](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
+- **[Postman](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
   每个工具都有自己的脚本或描述性语言来定义[测试用例](/zh-cn/wiki/test-case/)，并且大多数工具都提供与持续集成系统的集成以实现自动化[测试执行](/zh-cn/wiki/test-execution/)。选择正确的工具取决于项目的具体需求，例如被测应用程序的类型和首选的开发方法。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：支持多种语言和浏览器的开源工具。它非常适合自动化 Web 应用程序测试。
@@ -533,7 +533,7 @@ order: 0
 - **TestComplete**：提供用于创建自动化测试的 GUI，并支持各种脚本语言，例如 JavaScript 和 Python。
 - **SoapUI**：专为[API 测试](/zh-cn/wiki/api-testing/)设计，也可用于验证[用例](/zh-cn/wiki/use-case/)的后端部分。
 - **[jira](/zh-cn/wiki/jira/) Xray**：与[jira](/zh-cn/wiki/jira/) 集成并支持[BDD](/zh-cn/wiki/bdd/)，允许您将测试作为[jira](/zh-cn/wiki/jira/) 问题进行管理，并将它们直接链接到[用例](/zh-cn/wiki/use-case/)。
-- **[邮递员](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
+- **[Postman](/zh-cn/wiki/postman/)**：虽然主要是[API 测试](/zh-cn/wiki/api-testing/) 工具，但它可用于验证[用例](/zh-cn/wiki/use-case/) 的服务器端逻辑。
 
 #### 如何实现用例测试自动化？
 

@@ -270,7 +270,7 @@ order: 0
 [系统集成测试](/zh-cn/wiki/system-integration-testing/) (SIT) 的常用工具包括：
 
 - **[selenium](/zh-cn/wiki/selenium/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
-- **[邮递员](/zh-cn/wiki/postman/)**：广泛用于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送HTTP请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)**：广泛用于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送HTTP请求并分析响应。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，重点关注 [API 测试](/zh-cn/wiki/api-testing/)。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/) 并分析和测量各种服务性能的 Apache 项目。
 - **TestComplete**：支持桌面、移动和 Web 应用程序测试的商业工具。
@@ -284,7 +284,7 @@ order: 0
   这些工具可以单独使用，也可以组合使用，以创建强大的 SIT 框架，具体取决于被测系统的具体要求。 SIT 中的自动化对于确保集成组件按预期协同工作至关重要，而这些工具促进了这一过程。
 
 - **[selenium](/zh-cn/wiki/selenium/)**：用于自动化 Web 浏览器的开源工具。它支持多种语言和浏览器。
-- **[邮递员](/zh-cn/wiki/postman/)**：广泛用于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送HTTP请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)**：广泛用于[API 测试](/zh-cn/wiki/api-testing/)，允许测试人员发送HTTP请求并分析响应。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，重点关注 [API 测试](/zh-cn/wiki/api-testing/)。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/) 并分析和测量各种服务性能的 Apache 项目。
 - **TestComplete**：支持桌面、移动和 Web 应用程序测试的商业工具。

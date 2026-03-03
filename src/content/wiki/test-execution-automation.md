@@ -170,7 +170,7 @@ order: 0
     **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     和
     **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
 
@@ -197,7 +197,7 @@ order: 0
     **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     和
     **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
 

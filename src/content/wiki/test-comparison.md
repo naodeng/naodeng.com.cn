@@ -243,7 +243,7 @@ order: 0
 
 不同的测试工具在**功能**和**易用性**方面差异很大。 **[selenium](/zh-cn/wiki/selenium/)** 等工具为 [网络自动化](/zh-cn/wiki/web-automation/) 提供了广泛的功能，支持多种语言和浏览器，但需要更多的编码专业知识。另一方面，**[Cypress](/zh-cn/wiki/cypress/)** 由于其简单的语法和实时反馈，对于初学者来说更容易，但它主要专注于 Web 应用程序。
   **Appium** 是具有跨平台支持的移动测试的流行选择，但学习曲线更陡峭。 **Espresso**（适用于 Android）和 **XCTest**（适用于 iOS）提供更高效但仅限于各自平台的本机框架。
-  对于[API 测试](/zh-cn/wiki/api-testing/)，**[邮递员](/zh-cn/wiki/postman/)** 是用户友好的，具有用于构建请求的 GUI，而 **RestAssured** 与基于 Java 的 [测试套件](/zh-cn/wiki/test-suite/) 集成良好，但需要编码知识。
+  对于[API 测试](/zh-cn/wiki/api-testing/)，**[Postman](/zh-cn/wiki/postman/)** 是用户友好的，具有用于构建请求的 GUI，而 **RestAssured** 与基于 Java 的 [测试套件](/zh-cn/wiki/test-suite/) 集成良好，但需要编码知识。
   **Cucumber** 以其 [gherkin](/zh-cn/wiki/gherkin/) 语言擅长行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))，促进协作，但对于复杂的 [测试场景](/zh-cn/wiki/test-scenario/) 可能没有那么强大。
   **TestComplete** 和 **Ranorex** 提供强大的记录和回放功能，使非开发人员可以使用它们，但如果使用不当，可能会导致脆弱的测试。
   易用性往往是以灵活性为代价的。具有 GUI 和记录回放功能的工具对于初学者来说更容易上手，但可能无法提供复杂[测试用例](/zh-cn/wiki/test-case/) 所需的深度。相反，需要编程技能的工具提供更多的控制和集成功能，但学习曲线更陡。
@@ -300,7 +300,7 @@ order: 0
   ```
 
 - **[API 测试](/zh-cn/wiki/api-testing/) 工具**：
-    **[邮递员](/zh-cn/wiki/postman/)**
+    **[Postman](/zh-cn/wiki/postman/)**
     和
     **肥皂用户界面**
     允许将 API 响应与预期状态代码和响应正文进行比较。
@@ -386,7 +386,7 @@ order: 0
     将响应时间、吞吐量和资源使用情况与性能基准进行比较。
 
 - **[API 测试](/zh-cn/wiki/api-testing/) 工具**：
-    **[邮递员](/zh-cn/wiki/postman/)**
+    **[Postman](/zh-cn/wiki/postman/)**
     和
     **肥皂用户界面**
     允许将 API 响应与预期状态代码和响应正文进行比较。

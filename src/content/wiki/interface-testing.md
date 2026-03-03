@@ -53,7 +53,7 @@ order: 0
 
 [接口测试](/zh-cn/wiki/interface-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 的一个关键方面，重点是验证不同软件组件或系统之间的交互。它确保软件模块之间的接口正常工作，数据正确交换，控制流程符合预期。此类测试对于检测系统各部分之间的通信和数据处理问题至关重要。
   在[接口测试](/zh-cn/wiki/interface-testing/)中，**存根**和**驱动程序**通常用于模拟丢失或不完整模块的行为。存根充当被调用模块的临时替代品，为调用模块提供预定义的响应。相反，驱动程序模拟调用模块来测试从属模块的响应。
-  自动化在[接口测试](/zh-cn/wiki/interface-testing/) 中发挥着重要作用，无需人工干预即可实现重复和广泛的[测试执行](/zh-cn/wiki/test-execution/)。可以使用各种技术编写自动化测试，例如用于 Web 服务的 **SOAP UI** 或用于 REST [API](/zh-cn/wiki/api/) 的 **[邮递员](/zh-cn/wiki/postman/)**，以验证接口。
+  自动化在[接口测试](/zh-cn/wiki/interface-testing/) 中发挥着重要作用，无需人工干预即可实现重复和广泛的[测试执行](/zh-cn/wiki/test-execution/)。可以使用各种技术编写自动化测试，例如用于 Web 服务的 **SOAP UI** 或用于 REST [API](/zh-cn/wiki/api/) 的 **[Postman](/zh-cn/wiki/postman/)**，以验证接口。
   为了确保彻底性，测试应涵盖交互过程中可能发生的所有可能的数据变化和控制路径。有效性可以通过检测到的缺陷数量和接口场景的覆盖范围来衡量。
   最佳实践包括定义清晰的接口契约、维护一组强大的[测试用例](/zh-cn/wiki/test-case/)，以及确保自动化测试是持续集成管道的一部分。要避免的常见错误是忽略边界条件、不考虑负面[测试场景](/zh-cn/wiki/test-scenario/)以及测试维护不足。
 
@@ -346,7 +346,7 @@ order: 0
 [接口测试](/zh-cn/wiki/interface-testing/) 的常用工具包括：
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种开源工具，可自动化 Web 浏览器，提供用于测试 Web 应用程序的单一界面。
-- **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户发送 HTTP 请求并分析响应。
 - **SoapUI**：专为 SOAP 和 REST API 测试而设计，提供功能和性能测试功能。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 用于性能测试，也可用于 API 测试。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
@@ -371,7 +371,7 @@ order: 0
 这些工具支持各种脚本语言并与持续集成系统集成，使其适合作为 CI/CD 管道的一部分自动进行接口测试。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种开源工具，可自动化 Web 浏览器，提供用于测试 Web 应用程序的单一界面。
-- **[邮递员](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：流行于 API 测试，允许用户发送 HTTP 请求并分析响应。
 - **SoapUI**：专为 SOAP 和 REST API 测试而设计，提供功能和性能测试功能。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：Apache JMeter 用于性能测试，也可用于 API 测试。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
@@ -471,7 +471,7 @@ order: 0
 [接口测试](/zh-cn/wiki/interface-testing/) 的技术根据接口类型和所需测试级别的不同而有所不同。以下是一些示例：
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于测试 Web 界面。
-- **[邮递员](/zh-cn/wiki/postman/)** ：广泛用于 API 测试，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：广泛用于 API 测试，允许测试人员发送 HTTP 请求并分析响应。
 - **SoapUI**：专门测试 SOAP 和 REST Web 服务。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：专为性能测试而设计，也可用于接口测试，特别是API和服务。
@@ -484,7 +484,7 @@ order: 0
   每个工具都提供独特的功能来满足不同的测试需求，例如[功能测试](/zh-cn/wiki/functional-testing/)、[性能测试](/zh-cn/wiki/performance-testing/)或监控网络流量。选择正确的技术取决于被测接口的具体要求。
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于测试 Web 界面。
-- **[邮递员](/zh-cn/wiki/postman/)** ：广泛用于 API 测试，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：广泛用于 API 测试，允许测试人员发送 HTTP 请求并分析响应。
 - **SoapUI**：专门测试 SOAP 和 REST Web 服务。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：专为性能测试而设计，也可用于接口测试，特别是API和服务。

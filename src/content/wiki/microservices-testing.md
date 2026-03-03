@@ -254,7 +254,7 @@ order: 0
 
 [微服务测试](/zh-cn/wiki/microservices-testing/) 的常用工具包括：
 
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     和
     **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
 
@@ -276,7 +276,7 @@ order: 0
     **Zipkin**：用于分布式跟踪，帮助监控跨微服务的事务并对其进行故障排除。
   这些工具集成到开发和部署管道的各个阶段，有助于微服务的持续测试和交付。它们是根据测试策略的特定需求来选择的，例如[API](/zh-cn/wiki/api/)验证、[负载测试](/zh-cn/wiki/load-testing/)、服务虚拟化或端到端[验证 ](/zh-cn/wiki/verification/)。
 
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     和
     **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
 

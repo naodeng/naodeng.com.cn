@@ -276,7 +276,7 @@ order: 0
 
 - **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](/zh-cn/wiki/integration-testing/)。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：为[负载测试](/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](/zh-cn/wiki/integration-testing/)，特别是用于测试[API](/zh-cn/wiki/api/) 和服务。
-- **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
+- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
 - **[selenium](/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](/zh-cn/wiki/api/) 作为集成测试的一部分。
 - **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](/zh-cn/wiki/api-testing/) 提供综合平台。
 - **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](/zh-cn/wiki/integration-testing/)。
@@ -288,7 +288,7 @@ order: 0
 
 - **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](/zh-cn/wiki/integration-testing/)。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：为[负载测试](/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](/zh-cn/wiki/integration-testing/)，特别是用于测试[API](/zh-cn/wiki/api/) 和服务。
-- **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
+- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
 - **[selenium](/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](/zh-cn/wiki/api/) 作为集成测试的一部分。
 - **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](/zh-cn/wiki/api-testing/) 提供综合平台。
 - **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](/zh-cn/wiki/integration-testing/)。

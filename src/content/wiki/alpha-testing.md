@@ -269,16 +269,16 @@ Alpha 测试人员在 [软件测试](/zh-cn/wiki/software-testing/) 的早期阶
 
 #### alpha 测试团队如何与开发团队互动？
 
-**[阿尔法测试](/zh-cn/wiki/alpha-testing/) 团队**通常通过定期沟通渠道（例如会议、电子邮件、即时消息和问题跟踪系统）与**开发团队**进行交互。他们直接向开发人员提供**反馈**和**报告[bugs](/zh-cn/wiki/bug/)**，通常使用**[bug](/zh-cn/wiki/bug/)跟踪系统**，可以记录、跟踪问题并分配解决方案。
+- **[阿尔法测试](/zh-cn/wiki/alpha-testing/) 团队**通常通过定期沟通渠道（例如会议、电子邮件、即时消息和问题跟踪系统）与**开发团队**进行交互。他们直接向开发人员提供**反馈**和**报告[bugs](/zh-cn/wiki/bug/)**，通常使用**[bug](/zh-cn/wiki/bug/)跟踪系统**，可以记录、跟踪问题并分配解决方案。
 
-  ```
-- **Daily Stand-ups**: Short, focused meetings to sync on progress, blockers, and next steps.
-- **Bug Reports**: Detailed reports with steps to reproduce, expected vs. actual results, and severity.
-- **Feedback Sessions**: Discussions on usability, functionality, and performance of the software.
-- **Retrospectives**: Meetings at the end of a testing cycle to review what went well and what could be improved.
-  ```
-这种交互是协作性的，旨在在软件达到 [Beta 测试](/zh-cn/wiki/beta-testing/) 或发布之前**识别并修复问题**。 Alpha 团队还可能提供**改进建议**或**增强**，从而提高软件的整体质量。开发人员应及时**确定优先级**并**处理反馈**，并经常与测试人员密切合作以了解所提出问题的背景。
-  目标是创建一个**反馈循环**，开发团队可以快速实施修复，[阿尔法测试](/zh-cn/wiki/alpha-testing/) 团队可以重新测试以确认问题已得到解决。这种密切的合作有助于确保软件在开发生命周期中进一步发展之前保持稳定并满足质量标准。
+- **每日站会（Daily Stand-ups）**：简短且聚焦的会议，用于同步进展、当前阻碍以及下一步计划。
+- **缺陷报告（Bug Reports）**：包含复现步骤、预期结果与实际结果对比以及严重程度的详细报告。
+- **反馈会议（Feedback Sessions）**：围绕软件的可用性、功能性和性能进行讨论。
+- **回顾会议（Retrospectives）**：在测试周期结束时召开，回顾做得好的地方以及需要改进的方面。
+
+这种交互是协作性的，旨在在软件达到 [Beta 测试](/zh-cn/wiki/beta-testing/) 或发布之前**识别并修复问题**。Alpha 团队还可能提供**改进建议**或**增强**，从而提高软件的整体质量。开发人员应及时**确定优先级**并**处理反馈**，并经常与测试人员密切合作以了解所提出问题的背景。
+
+目标是创建一个**反馈循环**，开发团队可以快速实施修复，[阿尔法测试](/zh-cn/wiki/alpha-testing/) 团队可以重新测试以确认问题已得到解决。这种密切的合作有助于确保软件在开发生命周期中进一步发展之前保持稳定并满足质量标准。
 
 ### 挑战和解决方案
 

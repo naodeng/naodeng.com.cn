@@ -310,7 +310,7 @@ order: 0
     }
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
+- **[Postman](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
 
     ```
     {
@@ -350,7 +350,7 @@ order: 0
     }
     ```
 
-- **[邮递员](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
+- **[Postman](/zh-cn/wiki/postman/)**：对于[API 测试](/zh-cn/wiki/api-testing/)，它可以将各种输入发送到端点并检查响应以进行正确验证。
 
     ```
     {

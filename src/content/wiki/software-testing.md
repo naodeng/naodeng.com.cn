@@ -204,7 +204,7 @@ order: 0
     **TestNG**：Java 中的单元测试框架。它们提供注释来识别测试方法和各种其他功能来组织测试。
 
 - **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的现代端到端测试框架。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
 - **Cucumber** ：通过普通语言解析器支持行为驱动开发（BDD），允许用自然语言编写测试脚本。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：用于 BDD 的 .NET 工具，使用 Gherkin 语言创建人类可读的测试。
@@ -221,7 +221,7 @@ order: 0
     **TestNG**：Java 中的单元测试框架。它们提供注释来识别测试方法和各种其他功能来组织测试。
 
 - **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的现代端到端测试框架。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
 - **Cucumber** ：通过普通语言解析器支持行为驱动开发（BDD），允许用自然语言编写测试脚本。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：用于 BDD 的 .NET 工具，使用 Gherkin 语言创建人类可读的测试。

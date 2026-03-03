@@ -275,7 +275,7 @@ order: 0
     **[Jest](/zh-cn/wiki/jest/)**
     JavaScript：单元测试框架，鼓励模块化和可维护的测试代码。
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
 - **Docker**：容器化有助于创建一致的环境，减少“它在我的机器上运行”问题。
 - **Jenkins**
     /
@@ -305,7 +305,7 @@ order: 0
     **[Jest](/zh-cn/wiki/jest/)**
     JavaScript：单元测试框架，鼓励模块化和可维护的测试代码。
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
+- **[Postman](/zh-cn/wiki/postman/)** ：对于 API 测试，确保针对未来的 API 更改对后端服务进行测试。
 - **Docker**：容器化有助于创建一致的环境，减少“它在我的机器上运行”问题。
 - **Jenkins**
     /

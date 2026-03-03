@@ -466,7 +466,7 @@ order: 0
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **JUnit/TestNG**：用于 Java 代码单元测试的框架，通常与 Selenium 集成以实现 Web 自动化。
 - **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
 - **Cucumber** ：支持行为驱动开发（BDD），允许执行用 Gherkin 语言编写的功能文件。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：类似于 Cucumber 的 .NET BDD 框架，允许用 Gherkin 编写测试。
@@ -480,7 +480,7 @@ order: 0
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **JUnit/TestNG**：用于 Java 代码单元测试的框架，通常与 Selenium 集成以实现 Web 自动化。
 - **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
 - **Cucumber** ：支持行为驱动开发（BDD），允许执行用 Gherkin 语言编写的功能文件。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：类似于 Cucumber 的 .NET BDD 框架，允许用 Gherkin 编写测试。

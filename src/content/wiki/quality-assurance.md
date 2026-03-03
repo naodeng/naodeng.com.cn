@@ -246,7 +246,7 @@ order: 0
 - **JUnit/TestNG**：用于 Java 单元测试的框架，提供注释和断言来帮助构建和运行测试。
 - **Cucumber** ：支持行为驱动开发（BDD），无需详细说明如何实现该功能即可定义软件行为。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应、自动化测试和创建工作流程。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应、自动化测试和创建工作流程。
 - **HP UFT（以前称为 QTP）**：一种具有图形用户界面的功能和回归测试商业工具。
 - **SoapUI**：用于面向服务的架构 (SOA) 和表述性状态传输 (REST) 的开源 Web 服务测试应用程序。
 - **LoadRunner**：Micro Focus 的性能测试工具，可模拟数千个用户来识别和诊断性能瓶颈。
@@ -258,7 +258,7 @@ order: 0
 - **JUnit/TestNG**：用于 Java 单元测试的框架，提供注释和断言来帮助构建和运行测试。
 - **Cucumber** ：支持行为驱动开发（BDD），无需详细说明如何实现该功能即可定义软件行为。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应、自动化测试和创建工作流程。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应、自动化测试和创建工作流程。
 - **HP UFT（以前称为 QTP）**：一种具有图形用户界面的功能和回归测试商业工具。
 - **SoapUI**：用于面向服务的架构 (SOA) 和表述性状态传输 (REST) 的开源 Web 服务测试应用程序。
 - **LoadRunner**：Micro Focus 的性能测试工具，可模拟数千个用户来识别和诊断性能瓶颈。

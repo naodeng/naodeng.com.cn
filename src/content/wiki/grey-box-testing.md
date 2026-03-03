@@ -150,7 +150,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于 Web 应用程序测试，允许测试人员与应用程序交互，同时还访问浏览器控制台日志和网络流量。
 - **SoapUI**：可用于测试 Web 服务，提供对功能方面和通信层的深入了解。
-- **[邮递员](/zh-cn/wiki/postman/)** ：虽然主要用于 API 测试，但它也可以用于灰盒测试，以检查系统如何处理请求和响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：虽然主要用于 API 测试，但它也可以用于灰盒测试，以检查系统如何处理请求和响应。
 - **Burp Suite**：一种安全测试工具，可适用于灰盒方法，提供对应用程序数据流和潜在漏洞的洞察。
 - **Wireshark**：网络协议分析器，帮助测试人员了解应用程序和服务器之间的网络流量。
 - **Fiddler**：一种 Web 调试代理，允许检查 HTTP(S) 流量，可用于修改请求和分析响应。
@@ -160,7 +160,7 @@ order: 0
 
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于 Web 应用程序测试，允许测试人员与应用程序交互，同时还访问浏览器控制台日志和网络流量。
 - **SoapUI**：可用于测试 Web 服务，提供对功能方面和通信层的深入了解。
-- **[邮递员](/zh-cn/wiki/postman/)** ：虽然主要用于 API 测试，但它也可以用于灰盒测试，以检查系统如何处理请求和响应。
+- **[Postman](/zh-cn/wiki/postman/)** ：虽然主要用于 API 测试，但它也可以用于灰盒测试，以检查系统如何处理请求和响应。
 - **Burp Suite**：一种安全测试工具，可适用于灰盒方法，提供对应用程序数据流和潜在漏洞的洞察。
 - **Wireshark**：网络协议分析器，帮助测试人员了解应用程序和服务器之间的网络流量。
 - **Fiddler**：一种 Web 调试代理，允许检查 HTTP(S) 流量，可用于修改请求和分析响应。
@@ -173,7 +173,7 @@ order: 0
 
 1. **识别可访问的内部信息**，例如 [数据库](/zh-cn/wiki/database/) 模式、算法模式或内部状态，这可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
 2. **开发利用内部信息和外部接口的[测试用例](/zh-cn/wiki/test-case/)**。使用脚本或编程语言创建可以与软件的 [API](/zh-cn/wiki/api/)、Web 服务或其他公开接口进行交互的自动化脚本。
-3. **选择适当的自动化工具**，既支持 [API 测试](/zh-cn/wiki/api-testing/) 又支持整合内部知识，例如 [邮递员](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
+3. **选择适当的自动化工具**，既支持 [API 测试](/zh-cn/wiki/api-testing/) 又支持整合内部知识，例如 [Postman](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
 4. **编写执行[测试用例](/zh-cn/wiki/test-case/)的自动化脚本**，模拟用户行为，同时检查内部状态或数据。例如：
 
   ```
@@ -190,7 +190,7 @@ order: 0
 
 1. **识别可访问的内部信息**，例如 [数据库](/zh-cn/wiki/database/) 模式、算法模式或内部状态，它们可以指导创建更有效的[测试用例](/zh-cn/wiki/test-case/)。
 2. **开发利用内部信息和外部接口的[测试用例](/zh-cn/wiki/test-case/)**。使用脚本或编程语言创建可以与软件的 [API](/zh-cn/wiki/api/)、Web 服务或其他公开接口进行交互的自动化脚本。
-3. **选择适当的自动化工具**，支持 [API 测试](/zh-cn/wiki/api-testing/) 和整合内部知识的能力，例如 [邮递员](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
+3. **选择适当的自动化工具**，支持 [API 测试](/zh-cn/wiki/api-testing/) 和整合内部知识的能力，例如 [Postman](/zh-cn/wiki/postman/) 用于 [API 测试](/zh-cn/wiki/api-testing/) 或 [selenium](/zh-cn/wiki/selenium/) 用于 Web 应用程序，并通过自定义脚本进行增强以利用内部信息。
 4. **编写执行[测试用例](/zh-cn/wiki/test-case/)的自动化脚本**，模拟用户行为，同时检查内部状态或数据。例如：
 1. **将脚本集成到您的[测试套件](/zh-cn/wiki/test-suite/)** 并将它们配置为自动运行，可以按需运行，也可以由代码提交或构建等特定事件触发。
 2. **分析测试结果**以确保外部行为和内部结构都按预期运行。使用 [测试自动化](/zh-cn/wiki/test-automation/) 框架的日志记录和报告功能来捕获和查看结果。
@@ -414,7 +414,7 @@ order: 0
 - **提供反馈**
     快速反馈给开发团队，确保问题可以在冲刺内得到解决。
   测试人员使用**[API](/zh-cn/wiki/api/) 调用**、**[数据库](/zh-cn/wiki/database/) 查询**和**代码分析**来制作超越用户界面的[测试场景](/zh-cn/wiki/test-scenario/)。通过这样做，他们可以查明集成级别和应用程序堆栈各层之间的弱点。
-  敏捷中的 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 通常使用支持功能性和 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的工具实现自动化，例如用于 Web 应用程序的 **[selenium](/zh-cn/wiki/selenium/)** 或用于 [API 测试](/zh-cn/wiki/api-testing/) 的 **[邮递员](/zh-cn/wiki/postman/)**。自动化脚本与应用程序代码一起在版本控制中维护，确保它们随着应用程序的发展而更新。
+  敏捷中的 [灰盒测试](/zh-cn/wiki/grey-box-testing/) 通常使用支持功能性和 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的工具实现自动化，例如用于 Web 应用程序的 **[selenium](/zh-cn/wiki/selenium/)** 或用于 [API 测试](/zh-cn/wiki/api-testing/) 的 **[Postman](/zh-cn/wiki/postman/)**。自动化脚本与应用程序代码一起在版本控制中维护，确保它们随着应用程序的发展而更新。
   将[灰盒测试](/zh-cn/wiki/grey-box-testing/) 纳入**持续集成 (CI)** 管道至关重要。每次构建都会触发自动灰盒测试，提供有关最近更改影响的即时反馈，从而支持**持续改进**的敏捷原则。
 
 - **协作**

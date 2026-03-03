@@ -221,7 +221,7 @@ order: 0
       Submit Credentials
   ```
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应、创建自动化测试以及与 CI/CD 管道集成。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应、创建自动化测试以及与 CI/CD 管道集成。
 
   ```
   {
@@ -253,7 +253,7 @@ order: 0
 
 - **[Cypress](/zh-cn/wiki/cypress/)** ：一个在浏览器中运行的基于 JavaScript 的端到端测试框架，可以对浏览器中运行的任何内容进行快速、简单且可靠的测试。
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应、创建自动化测试以及与 CI/CD 管道集成。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许用户发送 HTTP 请求并分析响应、创建自动化测试以及与 CI/CD 管道集成。
 - **Cucumber** ：支持行为驱动开发（BDD），允许用简单的语言规范应用程序行为。
 
 #### 这些工具之间有什么区别？

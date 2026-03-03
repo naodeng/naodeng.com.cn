@@ -376,7 +376,7 @@ order: 0
 [测试金字塔](/zh-cn/wiki/test-pyramid/) 通过强调每个级别测试的**比例和范围**，充当开发自动化策略的蓝图。它提倡**大量的单元测试**、**适量的集成测试**和**最少的端到端测试**。这种分布确保大多数问题都能在单元级别尽早发现，这样测试的运行速度更快、成本更低。
   通过遵循金字塔，自动化工作的重点是创建**快速可靠的单元测试**，以单独验证各个组件。该基础允许进行更少但更复杂的集成测试，以确保组件正确地协同工作。最后，可以自动化一小套端到端测试，以在模拟生产的环境中验证整个系统。
   金字塔还建议优先考虑**可能频繁执行**并提供**最高投资回报**的测试自动化。在自动化之前，应严格评估脆弱、不稳定或难以维护的测试。
-  在实践中，这意味着利用非常适合各个测试级别的工具和框架。例如，对[单元测试](/zh-cn/wiki/unit-testing/)使用JUnit或[NUnit](/zh-cn/wiki/nunit/)等框架，对[集成测试](/zh-cn/wiki/integration-testing/)使用[邮递员](/zh-cn/wiki/postman/)或WireMock等工具，对[端到端测试](/zh-cn/wiki/end-to-end-testing/)使用[selenium](/zh-cn/wiki/selenium/)或[Cypress](/zh-cn/wiki/cypress/)。
+  在实践中，这意味着利用非常适合各个测试级别的工具和框架。例如，对[单元测试](/zh-cn/wiki/unit-testing/)使用JUnit或[NUnit](/zh-cn/wiki/nunit/)等框架，对[集成测试](/zh-cn/wiki/integration-testing/)使用[Postman](/zh-cn/wiki/postman/)或WireMock等工具，对[端到端测试](/zh-cn/wiki/end-to-end-testing/)使用[selenium](/zh-cn/wiki/selenium/)或[Cypress](/zh-cn/wiki/cypress/)。
 
   ```
   // Example of a unit test using JUnit

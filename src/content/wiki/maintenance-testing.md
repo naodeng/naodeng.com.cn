@@ -325,7 +325,7 @@ order: 0
 - **Git**：用于管理测试脚本并与团队成员协作的版本控制系统。
 - **[jira](/zh-cn/wiki/jira/)** ：问题和项目跟踪工具，用于在维护期间管理缺陷和任务。
 - **TestRail**：测试用例管理工具，帮助组织和跟踪测试用例的状态。
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，这通常是维护测试的关键部分，以确保后端功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 测试，这通常是维护测试的关键部分，以确保后端功能。
 - **SoapUI** ：另一个用于 API 测试的工具，它支持 SOAP 和 REST 服务。
   这些工具促进各种[维护测试](/zh-cn/wiki/maintenance-testing/)活动，从[测试用例管理](/zh-cn/wiki/test-case-management/)到缺陷跟踪和自动化[回归测试](/zh-cn/wiki/regression-testing/)，确保软件在更改或更新后继续按预期运行。
 
@@ -338,7 +338,7 @@ order: 0
 - **Git**：用于管理测试脚本并与团队成员协作的版本控制系统。
 - **[jira](/zh-cn/wiki/jira/)** ：问题和项目跟踪工具，用于在维护期间管理缺陷和任务。
 - **TestRail**：测试用例管理工具，帮助组织和跟踪测试用例的状态。
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，这通常是维护测试的关键部分，以确保后端功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 测试，这通常是维护测试的关键部分，以确保后端功能。
 - **SoapUI** ：另一个用于 API 测试的工具，它支持 SOAP 和 REST 服务。
 
 #### 如何将自动化纳入维护测试？

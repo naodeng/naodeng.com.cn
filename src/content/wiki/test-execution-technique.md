@@ -378,7 +378,7 @@ order: 0
       Then I will get a result
   ```
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，具有用户友好的界面和脚本功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 测试，具有用户友好的界面和脚本功能。
 
   ```
   pm.test("Status code is 200", function () {
@@ -395,7 +395,7 @@ order: 0
 - **[Cypress](/zh-cn/wiki/cypress/)** ：专为现代 Web 应用程序设计的基于 JavaScript 的端到端测试框架。
 - **Robot Framework**：用于验收级别测试的关键字驱动的测试自动化框架。
 - **Cucumber** ：支持行为驱动开发（BDD），允许用简单的语言指定测试规范。
-- **[邮递员](/zh-cn/wiki/postman/)** ：用于 API 测试，具有用户友好的界面和脚本功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：用于 API 测试，具有用户友好的界面和脚本功能。
 - **LoadRunner/性能中心**：用于性能测试，模拟数千个用户以了解负载下的行为。
 
 ### 挑战和解决方案

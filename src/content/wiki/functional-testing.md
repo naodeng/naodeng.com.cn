@@ -329,7 +329,7 @@ order: 0
 - **SpecFlow**：使用 Gherkin 语法弥合业务和技术语言之间的差距，促进行为驱动开发 (BDD)。
 - **Cucumber** ：支持 BDD，强调最终用户体验，使用简单的语言来定义测试。
 - **SoapUI** ：专门从事 API 测试，包括 SOAP 和 RESTful 服务。
-- **[邮递员](/zh-cn/wiki/postman/)** ：主要用于 API 测试，具有创建复杂请求和分析响应的功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：主要用于 API 测试，具有创建复杂请求和分析响应的功能。
 - **Appium**：用于在 iOS 和 Android 平台上自动测试移动应用程序的开源工具。
 - **Espresso/XCTest**：分别用于 Android 和 iOS UI 测试的本机框架。
   这些工具通常集成到 CI/CD 管道中，以确保 [功能需求](/zh-cn/wiki/functional-requirements/) 的持续验证。经验丰富的自动化工程师会根据项目的具体需求，考虑应用程序类型、平台、语言支持和集成能力等因素来选择工具。
@@ -343,7 +343,7 @@ order: 0
 - **SpecFlow**：使用 Gherkin 语法弥合业务和技术语言之间的差距，促进行为驱动开发 (BDD)。
 - **Cucumber** ：支持 BDD，强调最终用户体验，使用简单的语言来定义测试。
 - **SoapUI** ：专门从事 API 测试，包括 SOAP 和 RESTful 服务。
-- **[邮递员](/zh-cn/wiki/postman/)** ：主要用于 API 测试，具有创建复杂请求和分析响应的功能。
+- **[Postman](/zh-cn/wiki/postman/)** ：主要用于 API 测试，具有创建复杂请求和分析响应的功能。
 - **Appium**：用于在 iOS 和 Android 平台上自动测试移动应用程序的开源工具。
 - **Espresso/XCTest**：分别用于 Android 和 iOS UI 测试的本机框架。
 

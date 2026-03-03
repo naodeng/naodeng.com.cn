@@ -202,7 +202,7 @@ order: 0
 - **日志**：自动化测试通常旨在记录结果和错误。 **Log4j** for Java 或 **Winston** for [node.js](/zh-cn/wiki/node-js/) 等工具可用于记录实际结果。
 - **屏幕截图**：像 **[selenium](/zh-cn/wiki/selenium/)** 这样的工具可以在执行测试步骤时截取应用程序状态的屏幕截图，这对于 UI 测试很有用。
 - **视频录制**：一些测试框架（例如 **TestCafe**）或云服务（例如 **Sauce Labs**）提供视频录制功能来捕获 [测试执行](/zh-cn/wiki/test-execution/)。
-- **[API](/zh-cn/wiki/api/) 响应**：对于 [API 测试](/zh-cn/wiki/api-testing/)，**[邮递员](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具捕获代表 [实际结果](/zh-cn/wiki/actual-result/) 的 HTTP 响应数据。
+- **[API](/zh-cn/wiki/api/) 响应**：对于 [API 测试](/zh-cn/wiki/api-testing/)，**[Postman](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具捕获代表 [实际结果](/zh-cn/wiki/actual-result/) 的 HTTP 响应数据。
 - **性能数据**：**[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具将时序和吞吐量数据捕获为 [实际结果](/zh-cn/wiki/actual-result/) for [性能测试](/zh-cn/wiki/performance-testing/)。
 - **[测试报告](/zh-cn/wiki/test-report/)**：**JUnit**、**TestNG** 或 **Mocha** 等框架生成包含 [实际结果](/zh-cn/wiki/actual-result/) 的报告。这些可以与 **Jenkins** 或 **GitLab CI** 等 CI/CD 工具进一步集成，以实现全面的报告。
 - **自定义处理程序**：在测试代码中实现自定义事件处理程序或回调以捕获应用程序的特定数据点或状态。
@@ -219,7 +219,7 @@ order: 0
 - **日志**：自动化测试通常旨在记录结果和错误。 **Log4j** for Java 或 **Winston** for [node.js](/zh-cn/wiki/node-js/) 等工具可用于记录实际结果。
 - **屏幕截图**：像 **[selenium](/zh-cn/wiki/selenium/)** 这样的工具可以在执行测试步骤时截取应用程序状态的屏幕截图，这对于 UI 测试很有用。
 - **视频录制**：一些测试框架（例如 **TestCafe**）或云服务（例如 **Sauce Labs**）提供视频录制功能来捕获 [测试执行](/zh-cn/wiki/test-execution/)。
-- **[API](/zh-cn/wiki/api/) 响应**：对于 [API 测试](/zh-cn/wiki/api-testing/)，**[邮递员](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具捕获代表 [实际结果](/zh-cn/wiki/actual-result/) 的 HTTP 响应数据。
+- **[API](/zh-cn/wiki/api/) 响应**：对于 [API 测试](/zh-cn/wiki/api-testing/)，**[Postman](/zh-cn/wiki/postman/)** 或 **RestAssured** 等工具捕获代表 [实际结果](/zh-cn/wiki/actual-result/) 的 HTTP 响应数据。
 - **性能数据**：**[JMeter](/zh-cn/wiki/jmeter/)** 或 **Gattle** 等工具将时序和吞吐量数据捕获为 [实际结果](/zh-cn/wiki/actual-result/) for [性能测试](/zh-cn/wiki/performance-testing/)。
 - **[测试报告](/zh-cn/wiki/test-report/)**：**JUnit**、**TestNG** 或 **Mocha** 等框架生成包含 [实际结果](/zh-cn/wiki/actual-result/) 的报告。这些可以与 **Jenkins** 或 **GitLab CI** 等 CI/CD 工具进一步集成，以实现全面的报告。
 - **自定义处理程序**：在测试代码中实现自定义事件处理程序或回调以捕获应用程序的特定数据点或状态。

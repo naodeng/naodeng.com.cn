@@ -345,7 +345,7 @@ order: 0
 - **TestComplete**：一款商业 UI 自动化工具，支持桌面、移动和 Web 应用程序。
 - **Ranorex**：一个 GUI 测试自动化框架，支持广泛的桌面、Web 和移动应用程序测试。
 - **Cucumber**：支持行为驱动开发（BDD）并允许执行以面向业务的文本编写的功能文档。
-- **[邮递员](/zh-cn/wiki/postman/)** ：一个 API 测试工具，允许用户构建、测试和修改 API。
+- **[Postman](/zh-cn/wiki/postman/)** ：一个 API 测试工具，允许用户构建、测试和修改 API。
 - **SoapUI** ：用于测试 SOAP 和 REST API 的工具，重点关注 API 功能测试。
   这些工具支持各种脚本语言，并与持续集成/持续部署（CI/CD）管道集成，增强了它们在现实世界[动态测试](/zh-cn/wiki/dynamic-testing/)场景中的实用性。它们提供创建、执行和管理测试以及分析结果的功能，以确保 [软件质量](/zh-cn/wiki/software-quality/) 和性能。
 
@@ -357,7 +357,7 @@ order: 0
 - **TestComplete**：一款商业 UI 自动化工具，支持桌面、移动和 Web 应用程序。
 - **Ranorex**：一个 GUI 测试自动化框架，支持广泛的桌面、Web 和移动应用程序测试。
 - **Cucumber**：支持行为驱动开发（BDD）并允许执行以面向业务的文本编写的功能文档。
-- **[邮递员](/zh-cn/wiki/postman/)** : An API testing tool that allows users to build, test, and modify APIs.
+- **[Postman](/zh-cn/wiki/postman/)** : An API testing tool that allows users to build, test, and modify APIs.
 - **SoapUI** ：用于测试 SOAP 和 REST API 的工具，重点关注 API 功能测试。
 
 #### 动态测试如何实现自动化？

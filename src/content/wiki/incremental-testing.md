@@ -407,7 +407,7 @@ order: 0
 - **阿皮姆**
     用于移动应用测试，支持各种设备和平台上的增量自动化测试。
 
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     用于 API 测试，支持为 RESTful 服务创建增量测试。
   这些工具支持[增量测试](/zh-cn/wiki/incremental-testing/)的各个方面，从单元级别到集成和[系统测试](/zh-cn/wiki/system-testing/)，并且可以集成到自动化管道中以进行连续测试。它们有助于确保软件的每个增量都经过彻底测试，从而在整个开发过程中保持质量。
 
@@ -446,7 +446,7 @@ order: 0
 - **阿皮姆**
     用于移动应用测试，支持各种设备和平台上的增量自动化测试。
 
-- **[邮递员](/zh-cn/wiki/postman/)**
+- **[Postman](/zh-cn/wiki/postman/)**
     用于 API 测试，支持为 RESTful 服务创建增量测试。
 
 #### 实施增量测试有哪些挑战？

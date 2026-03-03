@@ -48,7 +48,7 @@ order: 0
 ## 相关术语
 
 - [API documentation](/zh-cn/wiki/swagger/)
-- [邮递员](/zh-cn/wiki/postman/)
+- [Postman](/zh-cn/wiki/postman/)
 
 ### 另请参阅：
 
@@ -936,7 +936,7 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
   **装饰器**：在 Java 或 TypeScript 等语言中，使用装饰器来丰富您的 [API](/zh-cn/wiki/api/) 注释。这可以提供额外的元数据，[swagger](/zh-cn/wiki/swagger/) 可以使用这些元数据来生成更详细的文档或客户端库。
   **中间件集成**：将[swagger](/zh-cn/wiki/swagger/) 与应用程序框架中的中间件集成，以添加或修改[API](/zh-cn/wiki/api/) 行为。例如，您可以使用中间件根据 [swagger](/zh-cn/wiki/swagger/) 定义验证请求参数。
   **[swagger](/zh-cn/wiki/swagger/) 扩展**：利用 [swagger](/zh-cn/wiki/swagger/) 扩展 (`x-`) 将自定义属性添加到您的 OpenAPI 定义中。这些可用于文档目的或由理解这些扩展的工具使用。
-  **第三方工具**：将[swagger](/zh-cn/wiki/swagger/) 与第三方工具（例如[邮递员](/zh-cn/wiki/postman/) for [API 测试](/zh-cn/wiki/api-testing/)）结合起来。您可以将[swagger](/zh-cn/wiki/swagger/) 定义导入[邮递员](/zh-cn/wiki/postman/) 以快速创建[测试套件](/zh-cn/wiki/test-suite/)。
+  **第三方工具**：将[swagger](/zh-cn/wiki/swagger/) 与第三方工具（例如[Postman](/zh-cn/wiki/postman/) for [API 测试](/zh-cn/wiki/api-testing/)）结合起来。您可以将[swagger](/zh-cn/wiki/swagger/) 定义导入[Postman](/zh-cn/wiki/postman/) 以快速创建[测试套件](/zh-cn/wiki/test-suite/)。
   **[API](/zh-cn/wiki/api/) 网关**：使用支持[swagger](/zh-cn/wiki/swagger/)/OpenAPI 的[API](/zh-cn/wiki/api/) 网关自动导入定义并应用速率限制或身份验证等策略。
   **[swagger](/zh-cn/wiki/swagger/) Codegen 自定义模板**：在 [swagger](/zh-cn/wiki/swagger/) Codegen 中自定义代码生成模板，以根据您的需求定制生成的代码。
 

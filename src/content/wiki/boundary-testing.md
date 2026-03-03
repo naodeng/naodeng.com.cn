@@ -392,7 +392,7 @@ order: 0
     });
   });
   ```
-[selenium](/zh-cn/wiki/selenium/) 或 Playwright 等自动化工具与 Web 应用程序的 UI 进行交互，而 [邮递员](/zh-cn/wiki/postman/) 或 REST-assured 等 [API 测试](/zh-cn/wiki/api-testing/) 工具则测试服务层的边界。不仅要验证客户端验证，还要验证服务器端边界条件处理，以确保针对意外输入的稳健性，这一点至关重要。
+[selenium](/zh-cn/wiki/selenium/) 或 Playwright 等自动化工具与 Web 应用程序的 UI 进行交互，而 [Postman](/zh-cn/wiki/postman/) 或 REST-assured 等 [API 测试](/zh-cn/wiki/api-testing/) 工具则测试服务层的边界。不仅要验证客户端验证，还要验证服务器端边界条件处理，以确保针对意外输入的稳健性，这一点至关重要。
 
 - **最大值和最小值**
     用于文本框、文件上传和数字输入。

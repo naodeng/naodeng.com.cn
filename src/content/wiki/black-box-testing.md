@@ -495,7 +495,7 @@ order: 0
 - **TestComplete**：另一个支持桌面、移动和 Web 应用程序的商业工具。
 - **SoapUI**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它允许测试人员在不同的 Web [API](/zh-cn/wiki/api/) 上执行自动化功能、回归、合规性和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/)的Apache项目，也可以为[功能测试](/zh-cn/wiki/functional-testing/)的Web应用程序进行配置。
-- **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
+- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
 - **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
   每个工具都提供独特的功能和集成，允许测试人员根据被测应用程序和测试过程的具体要求选择最合适的工具。
 
@@ -505,7 +505,7 @@ order: 0
 - **TestComplete**：另一个支持桌面、移动和 Web 应用程序的商业工具。
 - **SoapUI**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它允许测试人员在不同的 Web [API](/zh-cn/wiki/api/) 上执行自动化功能、回归、合规性和负载测试。
 - **[JMeter](/zh-cn/wiki/jmeter/)**：用于[性能测试](/zh-cn/wiki/performance-testing/)的Apache项目，也可以为[功能测试](/zh-cn/wiki/functional-testing/)的Web应用程序进行配置。
-- **[邮递员](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
+- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的工具，允许用户通过用户友好的界面构建和执行自动化测试。
 - **Robot Framework**：用于[验收测试](/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](/zh-cn/wiki/test-automation/) 框架。
 
 #### 黑盒测试中如何编写有效的测试用例？

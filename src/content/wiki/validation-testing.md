@@ -290,7 +290,7 @@ order: 0
   </httprequest>
   ```
 
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，确保 API 满足验证标准。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，确保 API 满足验证标准。
 
   ```
   {
@@ -339,7 +339,7 @@ order: 0
 - **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化网络浏览器的开源工具。它支持多种语言和框架。
 - **Appium** ：将 Selenium 的框架扩展到移动应用程序（Android 和 iOS）。
 - **[JMeter](/zh-cn/wiki/jmeter/)** ：用于性能测试，还可以验证 Web 服务的功能。
-- **[邮递员](/zh-cn/wiki/postman/)** ：API 测试工具，确保 API 满足验证标准。
+- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，确保 API 满足验证标准。
 - **HP UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：一种具有可视化界面的功能和回归测试商业工具。
 - **TestComplete**：为桌面、移动和 Web 应用程序测试提供一套全面的功能。
 - **Cucumber** ：支持具有简单语言规范的行为驱动开发（BDD）。

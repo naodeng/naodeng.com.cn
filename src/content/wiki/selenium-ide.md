@@ -912,7 +912,7 @@ JavaScript 在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中发挥着至关重要
   **导出测试**：[selenium IDE](/zh-cn/wiki/selenium-ide/) 允许以各种编程语言导出测试。导出测试并将其与 JUnit、TestNG 或 [NUnit](/zh-cn/wiki/nunit/) 等测试框架集成，以进行进一步的自定义和执行。
   **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：对于复杂的[测试场景](/zh-cn/wiki/test-scenario/)，将[selenium IDE](/zh-cn/wiki/selenium-ide/) 测试转换为[WebDriver](/zh-cn/wiki/webdriver/) 代码。 [WebDriver](/zh-cn/wiki/webdriver/) 可以与 Maven 或 Gradle 等工具集成，以进行依赖管理和构建过程。
   **CI/CD 工具**：与 Jenkins、Bamboo 或 GitLab CI 等 CI/CD 工具集成。使用插件或编写自定义脚本来触发 [selenium](/zh-cn/wiki/selenium/) 测试作为构建管道的一部分。
-  **[API 测试](/zh-cn/wiki/api-testing/) 工具**：与 [邮递员](/zh-cn/wiki/postman/) 或 Rest-Assured for [API 测试](/zh-cn/wiki/api-testing/) 等工具结合使用。使用 [selenium IDE](/zh-cn/wiki/selenium-ide/) 进行 UI 测试，使用 [API](/zh-cn/wiki/api/) 工具进行后端验证。
+  **[API 测试](/zh-cn/wiki/api-testing/) 工具**：与 [Postman](/zh-cn/wiki/postman/) 或 Rest-Assured for [API 测试](/zh-cn/wiki/api-testing/) 等工具结合使用。使用 [selenium IDE](/zh-cn/wiki/selenium-ide/) 进行 UI 测试，使用 [API](/zh-cn/wiki/api/) 工具进行后端验证。
   **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：与 [JMeter](/zh-cn/wiki/jmeter/) 或 Gatting for [性能测试](/zh-cn/wiki/performance-testing/) 集成。将功能测试转换为性能@@PR​​OTECTED_22@@。
   **版本控制系统**：将测试存储在 Git 等版本控制系统中。这可以实现协作和版本跟踪。
   **[测试管理](/zh-cn/wiki/test-management/) 工具**：与 TestRail 或 Zephyr 等 [测试管理](/zh-cn/wiki/test-management/) 工具链接，以管理 [测试用例](/zh-cn/wiki/test-case/) 并报告结果。
