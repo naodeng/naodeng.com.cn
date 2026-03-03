@@ -14,6 +14,7 @@ order: 0
 # 依赖测试 ｜ Dependency Testing
 
 <!-- TOC START -->
+
 - [依赖测试 ｜ Dependency Testing](#依赖测试--dependency-testing)
   - [相关术语](#相关术语)
   - [关于依赖性测试的问题？](#关于依赖性测试的问题)
@@ -41,6 +42,9 @@ order: 0
       - [依赖性测试中需要避免哪些常见错误？](#依赖性测试中需要避免哪些常见错误)
       - [如何优化依赖性测试以获得更好的性能？](#如何优化依赖性测试以获得更好的性能)
       - [依赖性测试的结果应该如何记录和传达？](#依赖性测试的结果应该如何记录和传达)
+  - [Dependency Testing Results - Summary](#dependency-testing-results---summary)
+  - [Environment Details](#environment-details)
+  - [Action Items](#action-items)
 <!-- TOC END -->
 依赖性测试在软件测试指检查不同软件模块或组件之间的交互和依赖关系以确保它们正确交互的过程。此类测试的重点是识别当一个组件依赖另一个组件正常运行时可能出现的问题。
 

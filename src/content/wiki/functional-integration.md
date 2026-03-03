@@ -14,6 +14,7 @@ order: 0
 # 功能集成 ｜ Functional Integration
 
 <!-- TOC START -->
+
 - [功能集成 ｜ Functional Integration](#功能集成--functional-integration)
   - [相关术语](#相关术语)
   - [关于功能集成的问题吗？](#关于功能集成的问题吗)
@@ -34,6 +35,7 @@ order: 0
       - [如何选择正确的功能集成测试工具？](#如何选择正确的功能集成测试工具)
       - [自动化在功能集成测试中扮演什么角色？](#自动化在功能集成测试中扮演什么角色)
       - [持续集成工具如何帮助功能集成测试？](#持续集成工具如何帮助功能集成测试)
+- [Example CI pipeline configuration snippet for functional integration testing](#example-ci-pipeline-configuration-snippet-for-functional-integration-testing)
       - [功能集成测试的最新趋势和技术是什么？](#功能集成测试的最新趋势和技术是什么)
     - [实际应用](#实际应用)
       - [您能提供实际应用程序中功能集成测试的示例吗？](#您能提供实际应用程序中功能集成测试的示例吗)

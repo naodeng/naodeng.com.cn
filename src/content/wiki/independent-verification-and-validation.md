@@ -14,6 +14,7 @@ order: 0
 # 独立确认与验证 ｜ Independent Verification And Validation
 
 <!-- TOC START -->
+
 - [独立确认与验证 ｜ Independent Verification And Validation](#独立确认与验证--independent-verification-and-validation)
   - [相关术语](#相关术语)
   - [关于独立验证和确认的问题？](#关于独立验证和确认的问题)

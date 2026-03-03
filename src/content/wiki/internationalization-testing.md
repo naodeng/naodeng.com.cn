@@ -14,6 +14,7 @@ order: 0
 # 国际化测试 ｜ Internationalization Testing
 
 <!-- TOC START -->
+
 - [国际化测试 ｜ Internationalization Testing](#国际化测试--internationalization-testing)
   - [关于国际化测试的问题？](#关于国际化测试的问题)
     - [基础知识和重要性](#基础知识和重要性)

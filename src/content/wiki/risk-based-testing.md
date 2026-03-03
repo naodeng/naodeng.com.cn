@@ -14,6 +14,7 @@ order: 0
 # 基于风险的测试 ｜ Risk-based Testing
 
 <!-- TOC START -->
+
 - [基于风险的测试 ｜ Risk-based Testing](#基于风险的测试--risk-based-testing)
   - [相关术语](#相关术语)
   - [关于基于风险的测试有疑问吗？](#关于基于风险的测试有疑问吗)

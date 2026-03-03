@@ -14,6 +14,7 @@ order: 0
 # 截图测试 ｜ Screenshot Testing
 
 <!-- TOC START -->
+
 - [截图测试 ｜ Screenshot Testing](#截图测试--screenshot-testing)
   - [有关屏幕截图测试的问题吗？](#有关屏幕截图测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

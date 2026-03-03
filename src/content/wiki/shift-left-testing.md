@@ -14,6 +14,7 @@ order: 0
 # 左移测试 ｜ Shift-left Testing
 
 <!-- TOC START -->
+
 - [左移测试 ｜ Shift-left Testing](#左移测试--shift-left-testing)
   - [关于左移测试的问题吗？](#关于左移测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

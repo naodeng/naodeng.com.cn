@@ -14,6 +14,7 @@ order: 0
 # 探索性测试 ｜ Exploratory Testing
 
 <!-- TOC START -->
+
 - [探索性测试 ｜ Exploratory Testing](#探索性测试--exploratory-testing)
   - [相关术语](#相关术语)
   - [关于探索性测试的问题？](#关于探索性测试的问题)

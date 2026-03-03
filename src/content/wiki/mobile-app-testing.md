@@ -14,6 +14,7 @@ order: 0
 # 移动应用测试 ｜ Mobile App Testing
 
 <!-- TOC START -->
+
 - [移动应用测试 ｜ Mobile App Testing](#移动应用测试--mobile-app-testing)
   - [相关术语](#相关术语)
   - [有关移动应用程序测试的问题吗？](#有关移动应用程序测试的问题吗)

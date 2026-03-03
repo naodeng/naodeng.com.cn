@@ -14,6 +14,7 @@ order: 0
 # Selenium Ide ｜ Selenium Ide
 
 <!-- TOC START -->
+
 - [Selenium Ide ｜ Selenium Ide](#selenium-ide--selenium-ide)
   - [相关术语](#相关术语)
   - [有关 Selenium IDE 的问题吗？](#有关-selenium-ide-的问题吗)

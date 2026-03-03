@@ -14,6 +14,7 @@ order: 0
 # 构建验证测试 ｜ Build Verification Testing
 
 <!-- TOC START -->
+
 - [构建验证测试 ｜ Build Verification Testing](#构建验证测试--build-verification-testing)
   - [有关构建验证测试的问题吗？](#有关构建验证测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

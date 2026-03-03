@@ -14,6 +14,7 @@ order: 0
 # 用例 ｜ Use Case
 
 <!-- TOC START -->
+
 - [用例 ｜ Use Case](#用例--use-case)
   - [相关术语](#相关术语)
   - [有关用例的问题吗？](#有关用例的问题吗)
@@ -27,6 +28,12 @@ order: 0
       - [什么是用例图？](#什么是用例图)
       - [用例图的元素是什么？](#用例图的元素是什么)
       - [如何创建用例图？](#如何创建用例图)
+- [Use Case Diagram Example](#use-case-diagram-example)
+  - [System Boundary](#system-boundary)
+  - [Actors](#actors)
+  - [Use Cases](#use-cases)
+  - [Connections](#connections)
+  - [Relationships](#relationships)
       - [用例图中参与者的角色是什么？](#用例图中参与者的角色是什么)
       - [用例图如何帮助系统设计？](#用例图如何帮助系统设计)
     - [用例场景](#用例场景)

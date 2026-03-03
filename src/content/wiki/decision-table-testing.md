@@ -14,6 +14,7 @@ order: 0
 # 判定表测试 ｜ Decision Table Testing
 
 <!-- TOC START -->
+
 - [判定表测试 ｜ Decision Table Testing](#判定表测试--decision-table-testing)
   - [关于决策表测试的问题吗？](#关于决策表测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

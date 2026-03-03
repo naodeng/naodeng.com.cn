@@ -14,6 +14,7 @@ order: 0
 # 状态转换测试 ｜ State Transition Testing
 
 <!-- TOC START -->
+
 - [状态转换测试 ｜ State Transition Testing](#状态转换测试--state-transition-testing)
   - [关于状态转换测试的问题吗？](#关于状态转换测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

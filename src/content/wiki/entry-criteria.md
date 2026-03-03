@@ -14,6 +14,7 @@ order: 0
 # 准入条件的问题？ ｜ Entry Criteria
 
 <!-- TOC START -->
+
 - [准入条件的问题？ ｜ Entry Criteria](#准入条件的问题--entry-criteria)
   - [关于入学标准有疑问吗？](#关于入学标准有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)

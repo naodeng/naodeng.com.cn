@@ -14,6 +14,7 @@ order: 0
 # 集成测试 ｜ Integration Testing
 
 <!-- TOC START -->
+
 - [集成测试 ｜ Integration Testing](#集成测试--integration-testing)
   - [有关集成测试的问题吗？](#有关集成测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -31,6 +32,7 @@ order: 0
     - [工具和实践](#工具和实践)
       - [集成测试常用哪些工具？](#集成测试常用哪些工具)
       - [在持续集成环境中如何进行集成测试？](#在持续集成环境中如何进行集成测试)
+- [Example of a CI pipeline configuration snippet for integration testing](#example-of-a-ci-pipeline-configuration-snippet-for-integration-testing)
       - [有效集成测试的最佳实践有哪些？](#有效集成测试的最佳实践有哪些)
       - [自动化工具如何用于集成测试？](#自动化工具如何用于集成测试)
       - [集成测试中有哪些挑战以及如何克服这些挑战？](#集成测试中有哪些挑战以及如何克服这些挑战)

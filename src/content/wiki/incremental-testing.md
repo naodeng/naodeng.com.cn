@@ -14,6 +14,7 @@ order: 0
 # 渐进式测试 ｜ Incremental Testing
 
 <!-- TOC START -->
+
 - [渐进式测试 ｜ Incremental Testing](#渐进式测试--incremental-testing)
   - [有关增量测试的问题吗？](#有关增量测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

@@ -14,6 +14,7 @@ order: 0
 # 功能测试 ｜ Functional Testing
 
 <!-- TOC START -->
+
 - [功能测试 ｜ Functional Testing](#功能测试--functional-testing)
   - [相关术语](#相关术语)
   - [有关功能测试的问题吗？](#有关功能测试的问题吗)

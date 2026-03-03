@@ -14,6 +14,7 @@ order: 0
 # Beta 测试 ｜ Beta Testing
 
 <!-- TOC START -->
+
 - [Beta 测试 ｜ Beta Testing](#beta-测试--beta-testing)
   - [有关 Beta 测试的问题吗？](#有关-beta-测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

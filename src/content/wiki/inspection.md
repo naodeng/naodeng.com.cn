@@ -14,7 +14,8 @@ order: 0
 # 检查 ｜ [检查](/zh-cn/wiki/inspection/)
 
 <!-- TOC START -->
-- [检查 ｜ [检查](/zh-cn/wiki/inspection/)](#检查--[检查](/zh-cn/wiki/inspection/))
+
+- [检查 ｜ [检查](/zh-cn/wiki/inspection/)](#检查--检查zh-cnwikiinspection)
   - [相关术语](#相关术语)
   - [关于检查的问题？](#关于检查的问题)
     - [基础知识和重要性](#基础知识和重要性)

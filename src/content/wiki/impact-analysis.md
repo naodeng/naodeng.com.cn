@@ -14,6 +14,7 @@ order: 0
 # 影响分析 ｜ Impact Analysis
 
 <!-- TOC START -->
+
 - [影响分析 ｜ Impact Analysis](#影响分析--impact-analysis)
   - [相关术语](#相关术语)
   - [关于影响分析的问题？](#关于影响分析的问题)

@@ -14,6 +14,7 @@ order: 0
 # 变更控制 ｜ Change Control
 
 <!-- TOC START -->
+
 - [变更控制 ｜ Change Control](#变更控制--change-control)
   - [相关术语](#相关术语)
   - [有关变更控制的问题吗？](#有关变更控制的问题吗)

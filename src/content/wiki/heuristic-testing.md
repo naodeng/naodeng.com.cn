@@ -14,6 +14,7 @@ order: 0
 # 启发式测试 ｜ Heuristic Testing
 
 <!-- TOC START -->
+
 - [启发式测试 ｜ Heuristic Testing](#启发式测试--heuristic-testing)
   - [关于启发式测试的问题？](#关于启发式测试的问题)
     - [基础知识和重要性](#基础知识和重要性)

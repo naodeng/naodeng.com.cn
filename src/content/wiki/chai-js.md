@@ -13,22 +13,39 @@ order: 0
 # Chai.js
 
 <!-- TOC START -->
+
 - [Chai.js](#chaijs)
   - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 Chai.js 有疑问吗？](#关于-chaijs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Chai.js 是什么？](#chaijs-是什么)
+      - [为什么在测试中使用 Chai.js？](#为什么在测试中使用-chaijs)
+      - [Chai.js 的主要功能是什么？](#chaijs-的主要功能是什么)
+      - [Chai.js 与其他 JavaScript 测试库相比如何？](#chaijs-与其他-javascript-测试库相比如何)
+      - [使用 Chai.js 进行测试有哪些优势？](#使用-chaijs-进行测试有哪些优势)
+    - [安装和设置](#安装和设置)
+      - [如何安装 Chai.js？](#如何安装-chaijs)
       - [使用 Chai.js 有哪些先决条件？](#使用-chaijs-有哪些先决条件)
       - [如何为项目设置 Chai.js？](#如何为项目设置-chaijs)
       - [如何将 Chai.js 导入 JavaScript 文件？](#如何将-chaijs-导入-javascript-文件)
     - [断言](#断言)
       - [Chai.js 中的断言是什么？](#chaijs-中的断言是什么)
       - [如何在 Chai.js 中编写基本断言？](#如何在-chaijs-中编写基本断言)
+      - [Chai.js 中有哪些不同类型的断言可用？](#chaijs-中有哪些不同类型的断言可用)
+      - [如何断言 Chai.js 中的函数抛出错误？](#如何断言-chaijs-中的函数抛出错误)
+      - [如何在 Chai.js 中断言深度平等？](#如何在-chaijs-中断言深度平等)
     - [插件](#插件)
       - [Chai.js 插件是什么？](#chaijs-插件是什么)
+      - [如何使用 Chai.js 插件？](#如何使用-chaijs-插件)
+      - [有哪些流行的 Chai.js 插件以及它们的作用是什么？](#有哪些流行的-chaijs-插件以及它们的作用是什么)
+      - [如何创建自己的 Chai.js 插件？](#如何创建自己的-chaijs-插件)
     - [高级概念](#高级概念)
       - [如何将 Chai.js 与异步代码结合使用？](#如何将-chaijs-与异步代码结合使用)
+      - [如何将 Chai.js 与 Promises 结合使用？](#如何将-chaijs-与-promises-结合使用)
+      - [Chai.js 的.should 接口是什么以及它是如何工作的？](#chaijs-的should-接口是什么以及它是如何工作的)
+      - [如何自定义 Chai.js 的断言错误消息？](#如何自定义-chaijs-的断言错误消息)
+      - [如何自定义 Chai.js 的断言错误消息？](#如何自定义-chaijs-的断言错误消息-1)
 <!-- TOC END -->
 Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动开发 ) 断言库 Node.js 和浏览器。它与流行的 JavaScript 测试框架无缝配对，例如 Mocha 和 jasmine。Chai 为开发人员提供了以可读语言表达断言的能力，模仿自然语言结构。
 

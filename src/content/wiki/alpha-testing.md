@@ -14,6 +14,7 @@ order: 0
 # Alpha 测试 ｜ Alpha Testing
 
 <!-- TOC START -->
+
 - [Alpha 测试 ｜ Alpha Testing](#alpha-测试--alpha-testing)
   - [相关术语](#相关术语)
   - [有关 Alpha 测试的问题吗？](#有关-alpha-测试的问题吗)

@@ -14,6 +14,7 @@ order: 0
 # 后置条件 ｜ Postcondition
 
 <!-- TOC START -->
+
 - [后置条件 ｜ Postcondition](#后置条件--postcondition)
   - [相关术语](#相关术语)
   - [关于后置条件的问题吗？](#关于后置条件的问题吗)

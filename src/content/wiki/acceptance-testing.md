@@ -14,6 +14,7 @@ order: 0
 # 验收测试 ｜ Acceptance Testing
 
 <!-- TOC START -->
+
 - [验收测试 ｜ Acceptance Testing](#验收测试--acceptance-testing)
   - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)

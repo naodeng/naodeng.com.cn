@@ -14,6 +14,7 @@ order: 0
 # 质量管理 ｜ Quality Management
 
 <!-- TOC START -->
+
 - [质量管理 ｜ Quality Management](#质量管理--quality-management)
   - [相关术语](#相关术语)
   - [关于质量管理的问题？](#关于质量管理的问题)

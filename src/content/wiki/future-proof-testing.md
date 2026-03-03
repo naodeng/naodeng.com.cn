@@ -14,6 +14,7 @@ order: 0
 # 前瞻性测试 ｜ Future Proof Testing
 
 <!-- TOC START -->
+
 - [前瞻性测试 ｜ Future Proof Testing](#前瞻性测试--future-proof-testing)
   - [有关面向未来的测试的问题吗？](#有关面向未来的测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)

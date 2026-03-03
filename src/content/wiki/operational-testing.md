@@ -14,6 +14,7 @@ order: 0
 # 运维测试 ｜ Operational Testing
 
 <!-- TOC START -->
+
 - [运维测试 ｜ Operational Testing](#运维测试--operational-testing)
   - [有关操作测试的问题吗？](#有关操作测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -29,6 +30,9 @@ order: 0
     - [操作测试流程](#操作测试流程)
       - [操作测试过程涉及哪些步骤？](#操作测试过程涉及哪些步骤)
       - [运行测试的运行环境是如何设置的？](#运行测试的运行环境是如何设置的)
+- [Install application dependencies](#install-application-dependencies)
+- [Deploy the application](#deploy-the-application)
+- [Load test data](#load-test-data)
       - [规划和设计操作测试时需要考虑哪些关键因素？](#规划和设计操作测试时需要考虑哪些关键因素)
       - [如何分析和解释操作测试结果？](#如何分析和解释操作测试结果)
     - [工具和最佳实践](#工具和最佳实践)
