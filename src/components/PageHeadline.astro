@@ -1,11 +1,12 @@
 ---
 interface Props {
   title: string;
+  compact?: boolean;
 }
-const { title } = Astro.props;
+const { title, compact = false } = Astro.props;
 ---
 
-<header>
+<header class:list={[compact && "compact"]}>
   <h1>{title}</h1>
   <slot />
 </header>
@@ -39,5 +40,13 @@ const { title } = Astro.props;
   }
   header :global(.headline-intro) {
     padding-inline: var(--sp-s);
+  }
+
+  header.compact {
+    padding-block: var(--sp-m) var(--sp-s);
+  }
+
+  header.compact h1 {
+    font-size: 1.5rem;
   }
 </style>

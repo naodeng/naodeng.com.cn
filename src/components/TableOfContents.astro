@@ -14,8 +14,12 @@ interface Props {
 
 const { headings, label = "目录", placement = "right" } = Astro.props;
 
-// 7.1: 展示 h2（depth 2）和 h3（depth 3）
-const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
+// 7.1: 目录层级控制：
+// - left / below: 展示 h2+h3（博文详情页侧栏需要更细粒度）
+// - right: 仅展示 h2（控制长度）
+const tocItems = headings.filter((h) =>
+  placement === "right" ? h.depth === 2 : h.depth === 2 || h.depth === 3
+);
 ---
 
 {tocItems.length > 0 ? (
@@ -69,6 +73,8 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     position: sticky;
     top: var(--sp-m, 1rem);
     align-self: start;
+    max-height: min(60vh, calc(100vh - 8rem));
+    overflow-y: auto;
   }
 
   /* 左侧：脚本控制在博文区域内浮动，不占流；默认 absolute 随页滚动 */
@@ -90,10 +96,45 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     position: static;
     width: 100%;
     max-width: none;
-    margin-block-end: var(--sp-l, 1.5rem);
+    margin-block-end: var(--sp-m, 1rem);
+    max-height: none;
+    overflow: visible;
   }
   .toc-sidebar--below .toc-list {
     display: block;
+  }
+  .toc-sidebar--below .toc-nav {
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-theme) 4%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+  .toc-sidebar--below .toc-title {
+    margin: 0 0 0.45rem 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+  .toc-sidebar--below .toc-list--desktop {
+    max-height: none;
+    overflow: visible;
+    padding-inline-end: 0;
+  }
+  .toc-sidebar--below .toc-item {
+    margin-block-end: 0.18rem;
+  }
+  .toc-sidebar--below .toc-link {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    padding: 0.24rem 0.36rem;
+    border-radius: 8px;
+    opacity: 0.9;
+    word-break: break-word;
+  }
+  .toc-sidebar--below .toc-link:hover {
+    background: color-mix(in srgb, var(--color-theme) 9%, transparent);
+  }
+  .toc-sidebar--below .toc-link[aria-current="true"] {
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
   }
 
   .toc-nav {
@@ -320,9 +361,17 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     const toc = document.querySelector(".toc-sidebar") as HTMLElement | null;
     const main = document.querySelector(".article-main");
     if (!toc || !main) return;
+    const contentScope = (main.querySelector(".prose") as HTMLElement | null) || (main as HTMLElement);
 
     const links = toc.querySelectorAll(".toc-link");
-    const headings = main.querySelectorAll("h2[id], h3[id], h4[id]");
+    const headingTargets = new Set(
+      Array.from(links)
+        .map((a) => (a.getAttribute("href") || "").replace(/^#/, ""))
+        .filter(Boolean)
+    );
+    const headings = Array.from(contentScope.querySelectorAll<HTMLElement>("h2[id], h3[id], h4[id]")).filter((el) =>
+      headingTargets.has(el.id)
+    );
     if (links.length === 0 || headings.length === 0) return;
 
     // 7.4: Check prefers-reduced-motion for scrollIntoView behavior
@@ -336,42 +385,85 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
         a.setAttribute("aria-current", isActive ? "true" : "false");
         if (isActive) activeLink = a as HTMLElement;
       });
-      // 7.4: Keep active link visible via scrollIntoView
-      // Skip when footer is in view to avoid interfering with footer scroll
+      // Keep active link visible in its nearest scroll container.
       const footer = document.querySelector(".l-footer");
       const footerInView = footer && footer.getBoundingClientRect().top < window.innerHeight;
-      if (activeLink && !footerInView && toc.scrollHeight > toc.clientHeight) {
-        (activeLink as HTMLElement).scrollIntoView({
-          block: "nearest",
-          behavior: prefersReducedMotion ? "instant" : "smooth",
-        });
+      const findScrollableAncestor = (el: HTMLElement): HTMLElement | null => {
+        let node: HTMLElement | null = el.parentElement;
+        while (node && node !== document.body) {
+          const style = window.getComputedStyle(node);
+          const canScroll = /(auto|scroll)/.test(style.overflowY) && node.scrollHeight > node.clientHeight;
+          if (canScroll) return node;
+          node = node.parentElement;
+        }
+        return null;
+      };
+
+      if (activeLink && !footerInView) {
+        const scrollContainer = findScrollableAncestor(activeLink);
+        if (!scrollContainer) return;
+        const linkRect = activeLink.getBoundingClientRect();
+        const tocRect = scrollContainer.getBoundingClientRect();
+        const outOfViewTop = linkRect.top < tocRect.top + 8;
+        const outOfViewBottom = linkRect.bottom > tocRect.bottom - 8;
+        if (outOfViewTop || outOfViewBottom) {
+          const delta = linkRect.top - tocRect.top - scrollContainer.clientHeight * 0.35;
+          scrollContainer.scrollTo({
+            top: Math.max(0, scrollContainer.scrollTop + delta),
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+          });
+        }
       }
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => {
-            const topA = (a.boundingClientRect?.top ?? 0) + window.scrollY;
-            const topB = (b.boundingClientRect?.top ?? 0) + window.scrollY;
-            return topA - topB;
-          });
-        if (visible.length > 0) {
-          setActive(visible[0].target.id);
-        }
-      },
-      { rootMargin: "-80px 0px -66% 0px", threshold: 0 }
-    );
+    // Use a viewport-relative activation line so current section updates
+    // when the heading enters the main reading area (not only near top edge).
+    const getActivationOffset = () =>
+      Math.max(120, Math.floor(window.innerHeight * 0.38));
+    let ticking = false;
 
-    headings.forEach((el) => observer.observe(el));
+    const updateActiveByScroll = () => {
+      const activationOffset = getActivationOffset();
+      const pairs = headings.map((el) => ({
+        id: el.id,
+        top: el.getBoundingClientRect().top,
+        level: Number(el.tagName.slice(1)) || 2,
+      }));
+      let currentId = pairs[0]?.id ?? null;
 
-    // 初始高亮第一个可见标题
-    const firstVisible = Array.from(headings).find((el) => {
-      const rect = el.getBoundingClientRect();
-      return rect.top <= window.innerHeight * 0.5;
-    });
-    setActive(firstVisible?.id ?? (headings[0]?.id ?? null));
+      // Prefer headings currently in reading area; prioritize h2 to keep section switching intuitive.
+      const readingZoneBottom = Math.floor(window.innerHeight * 0.55);
+      const inView = pairs.filter((p) => p.top >= 0 && p.top <= readingZoneBottom);
+      const firstInViewH2 = inView.find((p) => p.level === 2);
+      if (firstInViewH2) {
+        currentId = firstInViewH2.id;
+      } else if (inView.length > 0) {
+        currentId = inView[0].id;
+      } else {
+        // Fallback: last heading above activation line.
+        const above = pairs.filter((p) => p.top <= activationOffset);
+        currentId = above.length > 0 ? above[above.length - 1].id : pairs[0]?.id ?? null;
+      }
+
+      // 页面最底部时兜底高亮最后一个标题
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        currentId = headings[headings.length - 1]?.id ?? currentId;
+      }
+      setActive(currentId);
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateActiveByScroll();
+        ticking = false;
+      });
+    };
+
+    updateActiveByScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
   }
 
   function init() {

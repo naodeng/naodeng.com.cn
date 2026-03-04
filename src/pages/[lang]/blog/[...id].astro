@@ -263,23 +263,25 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     </div>
 
     <aside class="article-sidebar" aria-label={locale === "zh-cn" ? "侧栏" : "Sidebar"}>
-      <AuthorStatsCard
-        avatarUrl="/favicon.svg"
-        authorName={authorName}
-        slogan={authorSlogan}
-        authorLink={`/${lang}/`}
-        stats={{ articles: totalArticles, categories: allCategories.size, tags: allTags.size, words: totalChars }}
-        labels={statsLabels}
-        social={{
-          github: "https://github.com/naodeng",
-          medium: "https://naodeng.medium.com/",
-          x: "https://x.com/inaodeng",
-          weibo: "https://weibo.com/u/1651778270",
-          rss: `/${lang}/rss.xml`,
-        }}
-      />
-      <TableOfContents headings={headings} label={tocLabel} placement="below" />
-      <SidebarAd />
+      <div class="article-sidebar-inner">
+        <AuthorStatsCard
+          avatarUrl="/favicon.svg"
+          authorName={authorName}
+          slogan={authorSlogan}
+          authorLink={`/${lang}/`}
+          stats={{ articles: totalArticles, categories: allCategories.size, tags: allTags.size, words: totalChars }}
+          labels={statsLabels}
+          social={{
+            github: "https://github.com/naodeng",
+            medium: "https://naodeng.medium.com/",
+            x: "https://x.com/inaodeng",
+            weibo: "https://weibo.com/u/1651778270",
+            rss: `/${lang}/rss.xml`,
+          }}
+        />
+        <TableOfContents headings={headings} label={tocLabel} placement="below" />
+        <SidebarAd />
+      </div>
     </aside>
   </div>
 </Layout>
@@ -300,12 +302,25 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
       justify-content: start;
     }
     .article-sidebar {
+      align-self: start;
+      height: var(--article-prose-height, auto);
+      margin-inline-start: 6%;
+      min-height: 0;
+    }
+    .article-sidebar-inner {
       position: sticky;
       top: var(--sp-m, 1rem);
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      margin-inline-start: 6%;
+      max-height: calc(100vh - var(--sp-m, 1rem) * 2);
+      overflow-y: auto;
+      padding-inline-end: 0.25rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .article-sidebar-inner::-webkit-scrollbar {
+      display: none;
     }
   }
   .article-body {
@@ -318,9 +333,12 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .article-sidebar {
     min-width: 0;
   }
+  .article-sidebar-inner {
+    min-width: 0;
+  }
   header {
     text-align: center;
-    border-block-end: 1px solid var(--color-theme);
+    border-block-end: none;
     padding-block-end: var(--sp-m);
     display: flex;
     flex-direction: column;
@@ -599,4 +617,37 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     background: color-mix(in srgb, var(--color-theme) 12%, transparent);
     font-weight: 600;
   }
+  @media (max-width: 959px) {
+    .article-sidebar {
+      height: auto !important;
+      margin-inline-start: 0;
+    }
+    .article-sidebar-inner {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      padding-inline-end: 0;
+    }
+  }
 </style>
+
+<script>
+  function syncSidebarHeightToProse() {
+    const sidebar = document.querySelector(".article-sidebar") as HTMLElement | null;
+    const prose = document.querySelector(".article-main .prose") as HTMLElement | null;
+    if (!sidebar || !prose) return;
+    if (window.innerWidth < 960) {
+      sidebar.style.removeProperty("--article-prose-height");
+      return;
+    }
+    sidebar.style.setProperty("--article-prose-height", `${Math.ceil(prose.offsetHeight)}px`);
+  }
+
+  document.addEventListener("DOMContentLoaded", syncSidebarHeightToProse);
+  window.addEventListener("load", syncSidebarHeightToProse);
+  window.addEventListener("resize", syncSidebarHeightToProse);
+  if (typeof ResizeObserver !== "undefined") {
+    const prose = document.querySelector(".article-main .prose");
+    if (prose) new ResizeObserver(syncSidebarHeightToProse).observe(prose);
+  }
+</script>
