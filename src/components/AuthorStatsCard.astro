@@ -104,7 +104,7 @@ function formatWords(n: number): string {
 
 <style>
   .author-stats-card {
-    padding: var(--sp-m);
+    padding: calc(var(--sp-m) * 0.75);
     border-radius: 16px;
     background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
     border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
@@ -112,19 +112,19 @@ function formatWords(n: number): string {
   }
   .author-avatar-link {
     display: block;
-    margin-block-end: 0.75rem;
+    margin-block-end: 0.5rem;
   }
   .author-avatar {
-    width: 80px;
-    height: 80px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
     margin-inline: auto;
   }
   .author-name {
-    margin: 0 0 0.35em 0;
-    font-size: 1.15rem;
+    margin: 0 0 0.2em 0;
+    font-size: 1.05rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -132,23 +132,23 @@ function formatWords(n: number): string {
   }
   .author-slogan {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .author-social {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-block-start: 0.75rem;
+    margin-block-start: 0.6rem;
   }
   .social-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 1px solid color-mix(in srgb, var(--color-main) 20%, transparent);
     color: color-mix(in srgb, var(--color-main) 65%, transparent);
@@ -170,29 +170,29 @@ function formatWords(n: number): string {
     outline-offset: 2px;
   }
   .author-divider {
-    margin: 1rem 0;
+    margin: 0.75rem 0;
     border: none;
     border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
   }
   .author-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem 1rem;
+    gap: 0.55rem 0.8rem;
     text-align: center;
   }
   .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.1rem;
   }
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: color-mix(in srgb, var(--color-main) 60%, transparent);
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
   .stat-value {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--color-main);
   }
