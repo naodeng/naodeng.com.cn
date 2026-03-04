@@ -363,7 +363,7 @@ const tocItems = headings.filter((h) =>
     if (!toc || !main) return;
     const contentScope = (main.querySelector(".prose") as HTMLElement | null) || (main as HTMLElement);
 
-    const links = toc.querySelectorAll(".toc-link");
+    const links = toc.querySelectorAll<HTMLElement>(".toc-link");
     const headingTargets = new Set(
       Array.from(links)
         .map((a) => (a.getAttribute("href") || "").replace(/^#/, ""))
@@ -378,12 +378,12 @@ const tocItems = headings.filter((h) =>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const setActive = (id: string | null) => {
-      let activeLink: HTMLElement | null = null;
+      const activeHref = id ? `#${id}` : null;
+      const activeLink =
+        activeHref ? Array.from(links).find((a) => a.getAttribute("href") === activeHref) ?? null : null;
       links.forEach((a) => {
-        const href = a.getAttribute("href");
-        const isActive = href === `#${id}`;
+        const isActive = a.getAttribute("href") === activeHref;
         a.setAttribute("aria-current", isActive ? "true" : "false");
-        if (isActive) activeLink = a as HTMLElement;
       });
       // Keep active link visible in its nearest scroll container.
       const footer = document.querySelector(".l-footer");
