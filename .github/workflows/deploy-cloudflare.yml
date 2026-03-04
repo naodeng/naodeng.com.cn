@@ -37,6 +37,9 @@ jobs:
         if: ${{ vars.SEO_STRICT == 'true' }}
         run: npm run seo:check:strict
 
+      - name: Clean Astro cache
+        run: rm -rf .astro
+
       - name: Build
         run: npm run build
 
