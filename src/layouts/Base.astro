@@ -225,7 +225,7 @@ const breadcrumbSchema =
     ))}
     <LocaleHtmlHead />
     <Analytics />
-    {!import.meta.env.DEV && (
+    {import.meta.env.PROD && (
       <>
         <!-- Google AdSense -->
         <script
@@ -238,7 +238,12 @@ const breadcrumbSchema =
         <script is:inline>
           (() => {
             const allowedHosts = new Set(["inaodeng.com", "www.inaodeng.com"]);
+            const blockedHosts = new Set(["localhost", "127.0.0.1", "::1"]);
             const hostname = (window.location.hostname || "").toLowerCase();
+            const ref = document.referrer || "";
+            const isLocalReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?\/?/i.test(ref);
+            if (!hostname || blockedHosts.has(hostname) || hostname.endsWith(".local")) return;
+            if (isLocalReferrer) return;
             if (!allowedHosts.has(hostname)) return;
             if (document.getElementById("counterscale-script")) return;
             const script = document.createElement("script");
