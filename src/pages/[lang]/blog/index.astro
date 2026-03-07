@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS } from "@/consts";
+import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS, NAV_ARCHIVE } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -61,6 +61,7 @@ export const getStaticPaths = () =>
       <div class="headline-actions">
         <a href={getRelativeLocaleUrl(locale, "/series")} class="headline-btn">{t(NAV_SERIES)}</a>
         <a href={getRelativeLocaleUrl(locale, "/tags")} class="headline-btn">{t(NAV_TAGS)}</a>
+        <a href={getRelativeLocaleUrl(locale, "/archive")} class="headline-btn">{t(NAV_ARCHIVE)}</a>
       </div>
     </PageHeadline>
   </section>
