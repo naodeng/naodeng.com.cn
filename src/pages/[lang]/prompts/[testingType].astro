@@ -47,7 +47,13 @@ const t = useTranslations(lang);
 // Extract usage tip blockquote from body (first > ... line after the h1)
 function extractUsageTip(body: string): string {
   const match = body.match(/^>\s*(.+?)(?:\n(?!>)|$)/m);
-  return match ? match[1].trim() : "";
+  if (!match) return "";
+
+  return match[1]
+    .trim()
+    .replace(/^💡\s*/u, "")
+    .replace(/^\*\*(使用说明|Usage Tip)\*\*[:：]\s*/i, "")
+    .replace(/^(使用说明|Usage Tip)[:：]\s*/i, "");
 }
 
 // Render all entries, stripping Change Log from copy body
