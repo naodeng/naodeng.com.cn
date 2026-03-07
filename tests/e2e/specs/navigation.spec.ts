@@ -32,16 +32,16 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("en 从首页点击「归档」进入归档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    await page.locator("header a[href*='/en/archive'], header nav a[href*='/archive']").first().click();
+  test("en 从博客首页点击「归档」按钮进入归档页", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.locator(".headline-actions a[href*='/en/archive']").first().click();
     await expect(page).toHaveURL(/\/(en)\/archive\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("zh-cn 从首页点击「归档」进入归档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    await page.locator("header a[href*='/zh-cn/archive'], header nav a[href*='/archive']").first().click();
+  test("zh-cn 从博客首页点击「归档」按钮进入归档页", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.locator(".headline-actions a[href*='/zh-cn/archive']").first().click();
     await expect(page).toHaveURL(/\/(zh-cn)\/archive\/?/);
     await expect(page.locator("main")).toBeVisible();
   });

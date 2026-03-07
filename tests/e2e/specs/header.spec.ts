@@ -40,9 +40,9 @@ test.describe("Header 导航", () => {
     const nav = page.locator("header nav");
     await expect(nav.locator("a[href*='/en/blog']")).toBeVisible();
     await expect(nav.locator("a[href*='/en/guild']")).toBeVisible();
-    await expect(nav.locator("a[href*='/en/archive']")).toBeVisible();
     await expect(nav.locator("a[href*='/en/about']")).toBeVisible();
     await expect(nav.locator("a[href*='/en/sponsor']")).toBeVisible();
+    await expect(nav.locator("a[href*='/en/archive']")).toHaveCount(0);
   });
 
   test("zh-cn 首页：所有主导航链接可见", async ({ page, baseURL }) => {
@@ -51,8 +51,8 @@ test.describe("Header 导航", () => {
     await expect(nav.locator("a[href*='/zh-cn/blog']")).toBeVisible();
     await expect(nav.locator("a[href*='/zh-cn/guild']")).toBeVisible();
     await expect(nav.locator("a[href*='/zh-cn/wiki']")).toBeVisible();
-    await expect(nav.locator("a[href*='/zh-cn/archive']")).toBeVisible();
     await expect(nav.locator("a[href*='/zh-cn/about']")).toBeVisible();
+    await expect(nav.locator("a[href*='/zh-cn/archive']")).toHaveCount(0);
   });
 
   test("en 博客页：博客导航链接有 active 样式", async ({ page, baseURL }) => {
