@@ -25,6 +25,7 @@ import {
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
+import TrackingEvents from "@/components/TrackingEvents.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -97,6 +98,10 @@ const aiWikiEntries = (await getCollection("aiwiki"))
     return { slug, label, summary };
   });
 const aiWikiShowcaseItems = shuffle(aiWikiEntries).slice(0, 12);
+const heroSummary =
+  locale === "zh-cn"
+    ? "聚焦 QA、AI、测试工程与专业术语，提供双语博客、AI 百科、测试百科与实战项目入口，帮助你快速进入核心内容。"
+    : "Focused on QA, AI, testing engineering, and terminology, with fast entry points to bilingual posts, AI Wiki, QA Wiki, and hands-on projects.";
 
 const introHtmlRaw = marked(t(HOME_INTRO), { gfm: true }) as string;
 const wechatQrUrl = "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015%27QR%20Code%20for%20%E5%85%AC%E4%BC%97%E5%8F%B7.jpg";
@@ -143,6 +148,7 @@ const homePageSchema = {
     <div class="intro-card-wrap">
       <div class="intro-row">
         <div class="intro-main">
+          <p class="intro-summary">{heroSummary}</p>
           <div class="intro-card" set:html={introHtml} />
         </div>
         <aside class="intro-sidebar">
@@ -154,6 +160,17 @@ const homePageSchema = {
             </div>
             <p class="intro-greeting">{t(HOME_INTRO_GREETING)}</p>
             <p class="intro-slogan">{t(SITE_SLOGAN)}</p>
+            <nav class="intro-quick-nav" aria-label={locale === "zh-cn" ? "快速入口" : "Quick links"}>
+              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/guild/")}>
+                {locale === "zh-cn" ? "测试指南" : "Testing Guide"}
+              </a>
+              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/prompts/")}>
+                {locale === "zh-cn" ? "测试提示词" : "Testing Prompts"}
+              </a>
+              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/wiki/")}>
+                {locale === "zh-cn" ? "测试百科" : "Testing Wiki"}
+              </a>
+            </nav>
           </div>
         </aside>
       </div>
@@ -331,6 +348,7 @@ const homePageSchema = {
               <div class="post-content">
                 <time class="post-date">{dateStr}</time>
                 <h3 class="post-title">{post.data.title}</h3>
+                <p class="post-excerpt">{post.data.description}</p>
               </div>
             </a>
             <div class="post-footer">
@@ -390,6 +408,8 @@ const homePageSchema = {
   </section>
 </Layout>
 
+<TrackingEvents mode="home" locale={locale} />
+
 <style is:global>
   :root {
     --card-bg: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
@@ -426,7 +446,7 @@ const homePageSchema = {
     margin-block-end: var(--sp-l);
   }
   .intro-card-wrap {
-    padding: var(--sp-m) var(--sp-l);
+    padding: clamp(1.25rem, 2.2vw, 2rem) clamp(1.25rem, 3.2vw, 3rem);
     border-radius: 20px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -435,9 +455,9 @@ const homePageSchema = {
   }
   .intro-row {
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: var(--sp-l);
-    align-items: start;
+    grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    align-items: stretch;
   }
   @media (max-width: 720px) {
     .intro-card-wrap {
@@ -446,15 +466,16 @@ const homePageSchema = {
     .intro-row {
       grid-template-columns: 1fr;
     }
-  .intro-sidebar {
-    order: -1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--sp-m);
-    padding-block-start: var(--sp-s);
-    padding-inline: 0;
-  }
+    .intro-sidebar {
+      order: -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-m);
+      padding-block-start: var(--sp-s);
+      padding-inline: 0;
+      border-left: none;
+    }
     .intro-sidebar-inner {
       align-items: center;
     }
@@ -462,24 +483,46 @@ const homePageSchema = {
     .intro-slogan {
       text-align: center;
     }
+    .intro-summary {
+      margin-inline: auto;
+      text-align: center;
+    }
   }
   .intro-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
     min-width: 0;
     overflow: visible;
+  }
+  .intro-summary {
+    margin: 0 0 0.25rem;
+    max-width: 60ch;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--color-main) 76%, transparent);
   }
   .intro-card {
     padding: 0;
     line-height: 1.65;
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
     overflow: visible;
   }
+  .intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block-start: 1rem;
+  }
   .intro-card :global(ul) {
-    margin-block-start: 0;
+    margin: 0.25rem 0 0;
     list-style: none;
     padding-inline-start: 0;
+    display: grid;
+    gap: 0.2rem;
   }
   .intro-card :global(li) {
-    margin-block: 0.4rem;
+    margin: 0;
     position: relative;
     padding-inline-start: 1.35rem;
     overflow: visible;
@@ -495,8 +538,10 @@ const homePageSchema = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    padding-inline-start: var(--sp-m);
+    padding-inline-start: clamp(0.5rem, 1.4vw, 1.2rem);
+    border-left: 1px solid color-mix(in srgb, var(--card-border) 78%, transparent);
     align-self: stretch;
     min-height: 0;
     min-width: 12rem;
@@ -505,9 +550,11 @@ const homePageSchema = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.6rem;
     min-width: 0;
     width: 100%;
+    max-width: 24rem;
     padding-block: 0.15rem;
     text-align: center;
   }
@@ -567,14 +614,56 @@ const homePageSchema = {
     filter: brightness(1.08);
     box-shadow: 0 4px 14px color-mix(in srgb, var(--color-theme) 50%, transparent);
   }
+  .intro-quick-nav {
+    margin-top: 0.45rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+  .intro-sidebar .intro-quick-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 65%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 18%, var(--color-base));
+    color: var(--color-theme) !important;
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 15%, transparent);
+    transition: var(--transition-fast);
+  }
+  .intro-sidebar .intro-quick-pill:hover,
+  .intro-sidebar .intro-quick-pill:focus-visible {
+    background: var(--color-theme);
+    color: var(--color-base);
+    border-color: var(--color-theme);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--color-theme) 28%, transparent);
+  }
+  @media (max-width: 560px) {
+    .intro-quick-nav {
+      grid-template-columns: 1fr;
+      max-width: 14rem;
+    }
+  }
   .intro-card :global(a) {
     color: var(--color-theme);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--color-theme);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    border-bottom: none;
     transition: var(--transition);
   }
   .intro-card :global(a:hover) {
-    border-bottom-style: solid;
+    text-decoration-style: solid;
     opacity: 0.8;
   }
 
@@ -809,7 +898,7 @@ const homePageSchema = {
     transform: rotate(-10deg);
   }
 
-  .wiki-showcase {
+  :is(.wiki-showcase, .aiwiki-showcase) {
     margin-block-start: var(--sp-l);
     padding: 3rem 2rem;
     background: linear-gradient(135deg, 
@@ -818,13 +907,13 @@ const homePageSchema = {
     border-radius: 24px;
   }
   
-  .wiki-showcase .section-header {
+  :is(.wiki-showcase, .aiwiki-showcase) .section-header {
     text-align: center;
     border-bottom: none;
     margin-bottom: 1rem;
   }
   
-  .wiki-showcase .section-title {
+  :is(.wiki-showcase, .aiwiki-showcase) .section-title {
     font-size: 2rem;
     font-weight: 800;
     background: linear-gradient(135deg, var(--color-theme) 0%, #ff8c5a 100%);
@@ -833,7 +922,7 @@ const homePageSchema = {
     background-clip: text;
   }
   
-  .wiki-showcase .wiki-intro {
+  :is(.wiki-showcase, .aiwiki-showcase) .wiki-intro {
     margin: 0 auto 2.5rem;
     padding-inline: var(--sp-m);
     font-size: 1.05rem;
@@ -895,16 +984,16 @@ const homePageSchema = {
   }
   
   @media (max-width: 560px) {
-    .wiki-showcase {
+    :is(.wiki-showcase, .aiwiki-showcase) {
       padding: 2rem 1rem;
       border-radius: 16px;
     }
     
-    .wiki-showcase .section-title {
+    :is(.wiki-showcase, .aiwiki-showcase) .section-title {
       font-size: 1.5rem;
     }
     
-    .wiki-showcase .wiki-intro {
+    :is(.wiki-showcase, .aiwiki-showcase) .wiki-intro {
       font-size: 0.95rem;
       margin-bottom: 2rem;
     }
@@ -1053,6 +1142,17 @@ const homePageSchema = {
     font-weight: 700;
     line-height: 1.4;
     color: var(--color-main);
+    margin: 0;
+  }
+  .post-excerpt {
+    margin: 0.65rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--color-main) 72%, transparent);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .post-footer {
     display: flex;

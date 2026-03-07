@@ -1,10 +1,16 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("响应式布局", () => {
+  const MOBILE_VIEWPORT = { width: 390, height: 844 };
+  const TABLET_VIEWPORT = { width: 768, height: 1024 };
+  const LAPTOP_VIEWPORT = { width: 1024, height: 768 };
+  const DESKTOP_VIEWPORT = { width: 1440, height: 900 };
+
   const viewports = [
-    { name: "Mobile", width: 375, height: 667 },
-    { name: "Tablet", width: 768, height: 1024 },
-    { name: "Desktop", width: 1920, height: 1080 },
+    { name: "Mobile", ...MOBILE_VIEWPORT },
+    { name: "Tablet", ...TABLET_VIEWPORT },
+    { name: "Laptop", ...LAPTOP_VIEWPORT },
+    { name: "Desktop", ...DESKTOP_VIEWPORT },
   ];
 
   for (const viewport of viewports) {
@@ -40,7 +46,7 @@ test.describe("响应式布局", () => {
   }
 
   test("en 移动端：导航菜单可展开收起", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     
     const menuToggle = page.locator('button[aria-label*="menu" i], button[aria-label*="navigation" i], [class*="menu-toggle"], [class*="hamburger"]').first();
@@ -60,7 +66,7 @@ test.describe("响应式布局", () => {
   });
 
   test("zh-cn 移动端：导航菜单可展开收起", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     
     const menuToggle = page.locator('button[aria-label*="菜单"], button[aria-label*="导航"], [class*="menu-toggle"], [class*="hamburger"]').first();
@@ -80,7 +86,7 @@ test.describe("响应式布局", () => {
   });
 
   test("en 博客列表在移动端正常显示", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
     
     await expect(page.locator("main")).toBeVisible();
@@ -90,7 +96,7 @@ test.describe("响应式布局", () => {
   });
 
   test("zh-cn 博客列表在移动端正常显示", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
     
     await expect(page.locator("main")).toBeVisible();
@@ -100,7 +106,7 @@ test.describe("响应式布局", () => {
   });
 
   test("en 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "networkidle" });
     
     const sidebarToggle = page.locator('button[aria-label*="sidebar" i], button[aria-label*="menu" i], [class*="sidebar-toggle"]').first();
@@ -117,7 +123,7 @@ test.describe("响应式布局", () => {
   });
 
   test("zh-cn 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "networkidle" });
     
     const sidebarToggle = page.locator('button[aria-label*="侧边栏"], button[aria-label*="菜单"], [class*="sidebar-toggle"]').first();
@@ -134,7 +140,7 @@ test.describe("响应式布局", () => {
   });
 
   test("平板视口下内容布局合理", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.setViewportSize(TABLET_VIEWPORT);
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     
     const main = page.locator("main");
@@ -144,7 +150,7 @@ test.describe("响应式布局", () => {
   });
 
   test("桌面视口下内容居中且有合理宽度", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 1920, height: 1080 });
+    await page.setViewportSize(DESKTOP_VIEWPORT);
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     
     const main = page.locator("main");

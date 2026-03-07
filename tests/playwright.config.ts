@@ -22,14 +22,14 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: process.env.CI
     ? {
-        command: "npm run preview",
+        command: "env -u NO_COLOR npm run preview",
         url: "http://localhost:4321",
         cwd: projectRoot,
         reuseExistingServer: false,
         timeout: 60_000,
       }
     : {
-        command: "npm run build && npm run preview",
+        command: "env -u NO_COLOR npm run build && env -u NO_COLOR npm run preview",
         url: "http://localhost:4321",
         cwd: projectRoot,
         reuseExistingServer: true,

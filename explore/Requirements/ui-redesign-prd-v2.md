@@ -141,6 +141,24 @@
   - 定义：Lighthouse 移动端四项得分 + Web Vitals；
   - 来源：CI 报告与抽样实测。
 
+## Tracking Contract（埋点契约）
+- 事件：`home_entry_click`
+  - 触发：首页首屏核心入口（Blog/Wiki/AIWiki/Guild）点击。
+  - 字段：`lang`、`entry_name`、`position`、`session_id`。
+  - 口径：同一会话同一入口 10 秒内去重 1 次。
+- 事件：`detail_scroll_depth`
+  - 触发：详情页滚动首次达到 `25/50/75/100` 分位。
+  - 字段：`lang`、`channel`、`slug`、`depth`、`session_id`。
+  - 口径：每个 depth 每会话仅记 1 次。
+- 事件：`term_second_click`
+  - 触发：进入 Wiki/AIWiki 词条后继续访问同频道第二篇。
+  - 字段：`lang`、`channel`、`from_slug`、`to_slug`、`session_id`。
+  - 口径：30 分钟内同频道二跳计 1 次成功。
+- 事件：`ad_impression` / `ad_click`
+  - 触发：广告进入视口（曝光）与点击。
+  - 字段：`lang`、`page_type`、`slot_id`、`position`、`session_id`。
+  - 口径：曝光按可见 >= 1 秒计 1 次；点击按真实跳转计 1 次。
+
 ## 验收标准
 - 视觉验收：5 类核心页面均符合新 token 与排版规范。
 - 交互验收：TOC、筛选、复制、相关词条、广告槽位均正常。

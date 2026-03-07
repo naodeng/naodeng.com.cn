@@ -61,10 +61,21 @@
   - h2/h3 高亮策略、滚动容器可见性、边界限制。
 - `src/components/AuthorStatsCard.astro`
   - 紧凑版信息布局，避免占用过高。
-- `src/components/RelatedTerms*.astro`（命名按现状）
-  - 统一相关词条卡/标签样式。
-- `src/components/PostCard*.astro`（如有）
-  - 统一封面比例、内容密度、底部标签。
+- `src/components/ArticleShare.astro`
+  - 详情页分享入口样式与密度统一。
+- `src/components/GoogleAd.astro` / `src/components/GoogleAdThin.astro` / `src/components/SidebarAd.astro`
+  - 广告槽位统一占位、低干扰视觉与加载策略。
+
+## 组件映射表（需求 -> 实现）
+- TOC 导航：`src/components/TableOfContents.astro`
+- 作者信息卡：`src/components/AuthorStatsCard.astro`
+- 分享区：`src/components/ArticleShare.astro`
+- 评论区：`src/components/Giscus.astro`
+- 广告区：`src/components/GoogleAd.astro`、`src/components/GoogleAdThin.astro`、`src/components/SidebarAd.astro`
+- 博客详情页容器：`src/pages/[lang]/blog/[...id].astro`
+- Wiki 详情页容器：`src/pages/[lang]/wiki/[...slug].astro`
+- AIWiki 详情页容器：`src/pages/[lang]/AIWiki/[...slug].astro`
+- Guild 详情页容器：`src/pages/[lang]/guild/[...slug].astro`
 
 ### 页面层
 - `src/pages/[lang]/index.astro`
@@ -113,6 +124,18 @@
   - H2: 24/28
   - H3: 20/24
   - Body: 16/28
+
+## 品牌视觉锚点（Document-like, Not Plain）
+- 字体策略：
+  - 中文正文：保持高可读无衬线；
+  - 标题：允许更强字重或字宽对比，形成品牌识别点；
+  - 英文标题与中文标题保持同级视觉权重，不出现一端明显偏弱。
+- 强调色策略：
+  - 主强调色仅用于 H1/关键 CTA/当前激活态；
+  - 页面强调色面积建议 < 12%，避免“满屏高亮”。
+- Hero 语法：
+  - 2-3 行摘要 + 主次 CTA + 一组结构化补充信息；
+  - 禁止把信息丰富度通过加长首屏段落实现。
 - 广告位规则：
   - 每页至少保留 1 个广告位；
   - 列表页按“视口”控制为每屏最多 1 个；

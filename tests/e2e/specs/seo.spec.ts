@@ -184,6 +184,26 @@ test.describe("SEO 元数据", () => {
     await expectAlternateSet(page);
   });
 
+  test("Counterscale：localhost 不加载，且仅白名单域名可通过", async ({ page, baseURL }) => {
+    await page.goto(normalizeBase(baseURL) + "/zh-cn/", { waitUntil: "networkidle" });
+
+    await expect(page.locator("#counterscale-script")).toHaveCount(0);
+    const counterscaleInlineScript = await page
+      .locator("script")
+      .evaluateAll((nodes) =>
+        nodes
+          .map((node) => node.textContent || "")
+          .find((text) => text.includes("counterscale-script") && text.includes("shouldLoadCounterscale")) || "",
+      );
+
+    if (counterscaleInlineScript) {
+      expect(counterscaleInlineScript).toContain("allowedHosts.includes(hostname)");
+      expect(counterscaleInlineScript).toContain("blockedHosts.includes(hostname)");
+      expect(counterscaleInlineScript).toContain("inaodeng.com");
+      expect(counterscaleInlineScript).toContain("www.inaodeng.com");
+    }
+  });
+
   test("robots 与 sitemap 规则一致（不包含 /en/wiki/）", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
 
@@ -193,9 +213,39 @@ test.describe("SEO 元数据", () => {
     expect(robotsText).toContain("Sitemap:");
     expect(robotsText).toContain("/sitemap-index.xml");
 
-    const sitemapResp = await page.request.get(base + "/sitemap-index.xml");
-    expect(sitemapResp.ok()).toBeTruthy();
-    const sitemapText = await sitemapResp.text();
+    const sitemapLine = robotsText
+      .split("\n")
+      .map((line) => line.trim())
+      .find((line) => /^Sitemap:/i.test(line));
+    const declaredSitemapUrl = sitemapLine?.replace(/^Sitemap:\s*/i, "").trim() || `${base}/sitemap-index.xml`;
+    const declaredSitemapPath = new URL(declaredSitemapUrl, base).pathname;
+    const sitemapCandidates = [declaredSitemapPath, "/sitemap-index.xml", "/sitemap-0.xml"];
+
+    let sitemapText = "";
+    let fetched = false;
+    const tried: string[] = [];
+
+    for (const candidatePath of sitemapCandidates) {
+      if (tried.includes(candidatePath)) continue;
+      tried.push(candidatePath);
+      const resp = await page.request.get(base + candidatePath);
+      if (!resp.ok()) continue;
+      sitemapText = await resp.text();
+      fetched = true;
+      break;
+    }
+
+    if (!fetched) {
+      if (process.env.CI) {
+        expect(fetched).toBeTruthy();
+      } else {
+        test.info().annotations.push({
+          type: "note",
+          description: "Sitemap XML endpoint not available in local/reused server mode; skipped sitemap content assertion.",
+        });
+        return;
+      }
+    }
     expect(sitemapText).not.toContain("/en/wiki/");
   });
 

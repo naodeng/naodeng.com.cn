@@ -6,6 +6,7 @@ import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import SidebarAd from "@/components/SidebarAd.astro";
+import TrackingEvents from "@/components/TrackingEvents.astro";
 import { getCollection, render } from "astro:content";
 import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
 import type { Lang } from "@/i18n";
@@ -285,6 +286,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     </aside>
   </div>
 </Layout>
+<TrackingEvents mode="detail" locale={locale} channel="blog" slug={String(id ?? "")} detailLinkSelector=".blog-related-terms-pill" />
 
 <style>
   /* 主内容保持 800px，侧栏在右侧额外空间，不占用正文区域 */
@@ -443,11 +445,14 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     margin-block-start: 0.5rem;
   }
   .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     background-color: var(--color-theme);
     color: white;
-    padding: 0.2rem 0.5rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
@@ -487,7 +492,8 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     padding: 0.32rem 0.62rem;
     border-radius: 999px;
     border: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
-    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    color: color-mix(in srgb, var(--color-main) 92%, transparent);
     text-decoration: none;
     font-size: 0.86rem;
     font-weight: 600;
