@@ -10,7 +10,7 @@ import path from "node:path";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import GoogleAdThin from "@/components/GoogleAdThin.astro";
+import TrackingEvents from "@/components/TrackingEvents.astro";
 import { NAV_HOME } from "@/consts";
 import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
@@ -146,7 +146,7 @@ const definedTermSchema = {
 >
   <article class="wiki-article">
     <Content />
-    <GoogleAdThin />
+    <GoogleAd />
     {relatedItems.length > 0 && (
       <section class="wiki-related" aria-labelledby="wiki-related-heading">
         <h2 id="wiki-related-heading" class="wiki-related-title">相关词条</h2>
@@ -158,9 +158,9 @@ const definedTermSchema = {
       </section>
     )}
   </article>
-  <GoogleAd />
   <Giscus lang="zh-CN" inputPosition="bottom" />
 </DocsLayout>
+<TrackingEvents mode="detail" locale={locale} channel="wiki" slug={slugParam} detailLinkSelector=".wiki-related-pill" />
 
 <script>
   // Scroll the active sidebar link into view on page load

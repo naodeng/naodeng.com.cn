@@ -41,6 +41,7 @@ export const getStaticPaths = () =>
       {seriesList.length} {locale === "zh-cn" ? "个系列" : "series"}
     </p>
   </PageHeadline>
+  <GoogleAd />
 
   <div class="aggregate-container">
     {seriesList.length > 0 ? (

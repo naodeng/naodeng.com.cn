@@ -39,6 +39,8 @@ interface Props {
   contentWide?: boolean;
   /** 页面级额外结构化数据（如 DefinedTerm），每项输出为独立 ld+json */
   extraStructuredData?: Record<string, unknown>[];
+  /** robots 指令，默认 index, follow */
+  robots?: string;
   frontmatter?: undefined;
 }
 
@@ -57,6 +59,7 @@ const {
   nextUrl,
   contentWide = false,
   extraStructuredData = [],
+  robots = "index, follow",
 } = Astro.props.frontmatter || Astro.props;
 
 const locale = Astro.currentLocale as Lang;
@@ -125,6 +128,21 @@ const breadcrumbSchema =
         })),
       }
     : null;
+
+const counterscaleTrackerUrl =
+  (import.meta.env.PUBLIC_COUNTERSCALE_TRACKER_URL as string | undefined)?.trim() ||
+  "https://analytics.inaodeng.com/tracker.js";
+const counterscaleSiteId =
+  (import.meta.env.PUBLIC_COUNTERSCALE_SITE_ID as string | undefined)?.trim() || "inaodeng.com";
+const counterscaleAllowedHosts = (
+  ((import.meta.env.PUBLIC_COUNTERSCALE_ALLOWED_HOSTS as string | undefined) || "")
+    .split(",")
+    .map((item) => item.trim().toLowerCase())
+    .filter(Boolean)
+);
+const counterscaleResolvedAllowedHosts =
+  counterscaleAllowedHosts.length > 0 ? counterscaleAllowedHosts : ["inaodeng.com", "www.inaodeng.com"];
+const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERSCALE_DEBUG === "true";
 ---
 
 <html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null} data-locale={locale}>
@@ -134,7 +152,7 @@ const breadcrumbSchema =
     <meta name="description" content={localeDescription} />
     <meta name="keywords" content={keywords || (typeof SITE_KEYWORDS === "string" ? SITE_KEYWORDS : t(SITE_KEYWORDS))} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="author" content={articleAuthor || "Nao Deng"} />
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
@@ -235,22 +253,76 @@ const breadcrumbSchema =
           crossorigin="anonymous"
         />
         <!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) -->
-        <script is:inline>
+        <script
+          is:inline
+          define:vars={{
+            counterscaleTrackerUrl,
+            counterscaleSiteId,
+            counterscaleResolvedAllowedHosts,
+            counterscaleDebug,
+          }}
+        >
           (() => {
-            const allowedHosts = new Set(["inaodeng.com", "www.inaodeng.com"]);
-            const blockedHosts = new Set(["localhost", "127.0.0.1", "::1"]);
+            const blockedHosts = ["localhost", "127.0.0.1", "::1"];
+            const shouldLoadCounterscale = ({
+              isProdBuild,
+              hostname,
+              pathname,
+              referrer,
+              siteId,
+              trackerUrl,
+              allowedHosts,
+              blockedHosts,
+              doNotTrack,
+              globalPrivacyControl,
+            }) => {
+              if (!isProdBuild) return false;
+              if (!siteId || !trackerUrl) return false;
+              if (doNotTrack || globalPrivacyControl) return false;
+              if (!hostname) return false;
+              const cleanPath = (pathname || "").replace(/\/+$/, "") || "/";
+              if (
+                cleanPath === "/404" ||
+                cleanPath === "/en/404" ||
+                cleanPath === "/zh-cn/404"
+              ) {
+                return false;
+              }
+              if (blockedHosts.includes(hostname) || hostname.endsWith(".local")) return false;
+              if (!allowedHosts.includes(hostname)) return false;
+              const isLocalReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?\/?/i.test(referrer || "");
+              if (isLocalReferrer) return false;
+              return true;
+            };
             const hostname = (window.location.hostname || "").toLowerCase();
-            const ref = document.referrer || "";
-            const isLocalReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?\/?/i.test(ref);
-            if (!hostname || blockedHosts.has(hostname) || hostname.endsWith(".local")) return;
-            if (isLocalReferrer) return;
-            if (!allowedHosts.has(hostname)) return;
+            const doNotTrack =
+              navigator.doNotTrack === "1" ||
+              window.doNotTrack === "1" ||
+              navigator.msDoNotTrack === "1";
+            const globalPrivacyControl = navigator.globalPrivacyControl === true;
+            const shouldLoad = shouldLoadCounterscale({
+              isProdBuild: true,
+              hostname,
+              pathname: window.location.pathname || "",
+              referrer: document.referrer || "",
+              siteId: counterscaleSiteId,
+              trackerUrl: counterscaleTrackerUrl,
+              allowedHosts: counterscaleResolvedAllowedHosts,
+              blockedHosts,
+              doNotTrack,
+              globalPrivacyControl,
+            });
+            if (!shouldLoad) return;
             if (document.getElementById("counterscale-script")) return;
             const script = document.createElement("script");
             script.id = "counterscale-script";
             script.defer = true;
-            script.src = "https://analytics.inaodeng.com/tracker.js";
-            script.setAttribute("data-site-id", "inaodeng.com");
+            script.src = counterscaleTrackerUrl;
+            script.setAttribute("data-site-id", counterscaleSiteId);
+            script.onerror = () => {
+              if (!counterscaleDebug) return;
+              console.warn(`[Counterscale] Failed to load tracker script: ${counterscaleTrackerUrl}`);
+            };
             document.head.appendChild(script);
           })();
         </script>

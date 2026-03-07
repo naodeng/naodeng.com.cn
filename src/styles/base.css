@@ -21,6 +21,14 @@
   }
 
   --color-warn: #f59e0b;
+  --color-text-primary: var(--color-main);
+  --color-text-secondary: color-mix(in srgb, var(--color-main) 72%, transparent);
+  --color-text-tertiary: color-mix(in srgb, var(--color-main) 50%, transparent);
+  --color-surface-muted: color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+  --color-surface-elevated: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+  --color-border-strong: color-mix(in srgb, var(--color-theme) 24%, var(--color-border));
+  --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, transparent);
+  --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, transparent);
 
   /* Glow & gradient tokens */
   --glow-theme: color-mix(in srgb, var(--color-theme) 20%, transparent);
@@ -46,6 +54,13 @@
   --sp-m: 32px;
   --sp-s: 16px;
   --sp-xs: 8px;
+  --space-2: 0.125rem;
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
   @media (width < 480px) {
     --sp-l: 48px;
     --sp-m: 16px;
@@ -60,6 +75,16 @@
 
   /* Transition token */
   --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 160ms ease;
+
+  /* Density tokens */
+  --control-height: 2.875rem;
+  --control-padding-inline: 1rem;
+  --card-padding: 1rem;
+  --card-gap: 0.875rem;
+  --pill-padding-block: 0.35rem;
+  --pill-padding-inline: 0.75rem;
+  --section-gap: var(--sp-m);
 
   --english-font: "Noto Sans", "Robot", "Avenir Next", "Avenir",
     "Century Gothic", "SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont,
@@ -83,6 +108,16 @@
   @media (width < 480px) {
     font-size: 16px;
   }
+}
+
+:root[data-density="compact"] {
+  --control-height: 2.5rem;
+  --control-padding-inline: 0.875rem;
+  --card-padding: 0.875rem;
+  --card-gap: 0.75rem;
+  --pill-padding-block: 0.28rem;
+  --pill-padding-inline: 0.65rem;
+  --section-gap: var(--sp-s);
 }
 
 /* Disable decorative animations for users who prefer reduced motion */
@@ -122,13 +157,13 @@ p a {
 
 a,
 button {
-  transition: 0.2s ease-out;
+  transition: var(--transition-fast);
 }
 a:hover,
 a:active,
 button:hover,
 button:active {
-  transition: 0.2s ease-out;
+  transition: var(--transition-fast);
 }
 a:focus-visible,
 button:focus-visible,
@@ -137,6 +172,100 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--color-theme);
   outline-offset: 2px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:where(.cta-button, .filter-pill, .tag-pill, .tag-link, .tag, .wiki-letter-link, .blog-related-terms-pill, .aiwiki-related-pill, .guild-related-terms-pill, .docs-sidebar-link) {
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+:where(.cta-button, .filter-pill) {
+  min-height: 44px;
+}
+
+:where(.cta-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: var(--control-height);
+  padding-inline: var(--control-padding-inline);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+:where(.cta-button:hover, .cta-button:focus-visible) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+:where(.tag-pill, .tag-link, .tag, .blog-related-terms-pill, .aiwiki-related-pill, .guild-related-terms-pill) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: var(--pill-padding-block) var(--pill-padding-inline);
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-theme-soft);
+  color: var(--color-theme);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+:where(.tag-pill:hover, .tag-pill:focus-visible, .tag-link:hover, .tag-link:focus-visible, .tag:hover, .tag:focus-visible, .blog-related-terms-pill:hover, .blog-related-terms-pill:focus-visible, .aiwiki-related-pill:hover, .aiwiki-related-pill:focus-visible, .guild-related-terms-pill:hover, .guild-related-terms-pill:focus-visible) {
+  background: var(--color-theme-soft-hover);
+  border-color: var(--color-theme);
+}
+
+:where(.wiki-letter-link, .docs-sidebar-link) {
+  border-radius: var(--radius-md);
+}
+:where(.wiki-letter-link) {
+  color: var(--color-main);
+}
+
+:where(.wiki-search-input, .docs-sidebar-search-input, .search-input) {
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  box-shadow: none;
+}
+
+:where(.wiki-search-input::placeholder, .docs-sidebar-search-input::placeholder, .search-input::placeholder) {
+  color: var(--color-text-tertiary);
+}
+
+:where(.wiki-search-input:focus, .docs-sidebar-search-input:focus, .search-input:focus) {
+  border-color: var(--color-theme);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-theme) 18%, transparent);
+}
+
+:where(.filter-pill) {
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+}
+
+:where(.ui-card) {
+  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 svg,
