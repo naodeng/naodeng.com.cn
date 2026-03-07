@@ -45,6 +45,7 @@ export const getStaticPaths = () =>
       {tagsList.length} {locale === "zh-cn" ? "个标签" : "tags"}
     </p>
   </PageHeadline>
+  <GoogleAd />
 
   <div class="aggregate-container">
     {tagsList.length > 0 ? (

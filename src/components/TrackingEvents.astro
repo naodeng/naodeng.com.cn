@@ -1,0 +1,153 @@
+---
+interface Props {
+  mode: "home" | "detail";
+  locale: string;
+  channel?: string;
+  slug?: string;
+  detailLinkSelector?: string;
+}
+
+const { mode, locale, channel = "", slug = "", detailLinkSelector = "a" } = Astro.props as Props;
+---
+
+<script is:inline define:vars={{ mode, locale, channel, slug, detailLinkSelector }}>
+  (() => {
+    const getSessionId = () => {
+      const key = "nd:session-id";
+      try {
+        const existing = sessionStorage.getItem(key);
+        if (existing) return existing;
+        const created = `nd_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+        sessionStorage.setItem(key, created);
+        return created;
+      } catch {
+        return `nd_${Date.now()}_fallback`;
+      }
+    };
+
+    const safeEmit = (eventName, payload) => {
+      const data = { ...payload, lang: locale, session_id: getSessionId(), timestamp: Date.now() };
+      try {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, data);
+        }
+      } catch {}
+      try {
+        window.dispatchEvent(new CustomEvent("nd:track", { detail: { eventName, payload: data } }));
+      } catch {}
+    };
+
+    if (mode === "home") {
+      const getEntryName = (pathname) => {
+        const p = (pathname || "").toLowerCase();
+        const prefix = `/${String(locale).toLowerCase()}/`;
+        if (!p.startsWith(prefix)) return "";
+        if (p.startsWith(`${prefix}blog`)) return "blog";
+        if (p.startsWith(`${prefix}wiki`)) return "wiki";
+        if (p.startsWith(`${prefix}aiwiki`)) return "aiwiki";
+        if (p.startsWith(`${prefix}guild`)) return "guild";
+        return "";
+      };
+
+      document.addEventListener("click", (evt) => {
+        const anchor = evt.target instanceof Element ? evt.target.closest("a[href]") : null;
+        if (!anchor) return;
+        let url;
+        try {
+          url = new URL(anchor.getAttribute("href") || "", window.location.origin);
+        } catch {
+          return;
+        }
+        if (url.origin !== window.location.origin) return;
+        const entryName = getEntryName(url.pathname);
+        if (!entryName) return;
+
+        const dedupeKey = `nd:home-entry:${entryName}`;
+        const now = Date.now();
+        const last = Number(sessionStorage.getItem(dedupeKey) || 0);
+        if (now - last < 10_000) return;
+        sessionStorage.setItem(dedupeKey, String(now));
+
+        safeEmit("home_entry_click", {
+          page_type: "home",
+          entry_name: entryName,
+          position: "auto-detected",
+          path: url.pathname,
+        });
+      });
+      return;
+    }
+
+    if (mode === "detail") {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const checkpoints = [25, 50, 75, 100];
+      const seen = new Set();
+      const seenPrefix = `nd:scroll-depth:${channel}:${slug}:`;
+      let ticking = false;
+
+      const emitDepth = () => {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = maxScroll <= 0 ? 100 : Math.min(100, Math.max(0, Math.round((window.scrollY / maxScroll) * 100)));
+        for (const cp of checkpoints) {
+          if (ratio >= cp && !seen.has(cp)) {
+            seen.add(cp);
+            sessionStorage.setItem(`${seenPrefix}${cp}`, "1");
+            safeEmit("detail_scroll_depth", {
+              channel,
+              slug,
+              depth: cp,
+              page_type: "detail",
+            });
+          }
+        }
+      };
+
+      for (const cp of checkpoints) {
+        if (sessionStorage.getItem(`${seenPrefix}${cp}`) === "1") {
+          seen.add(cp);
+        }
+      }
+      if (total <= 0 && !seen.has(100)) {
+        seen.add(100);
+        sessionStorage.setItem(`${seenPrefix}100`, "1");
+        safeEmit("detail_scroll_depth", { channel, slug, depth: 100, page_type: "detail" });
+      } else {
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            emitDepth();
+            ticking = false;
+          });
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        emitDepth();
+      }
+
+      const secondClickKey = `nd:term-second:${channel}:${slug}`;
+      document.addEventListener("click", (evt) => {
+        const anchor = evt.target instanceof Element ? evt.target.closest(detailLinkSelector) : null;
+        if (!anchor) return;
+        if (sessionStorage.getItem(secondClickKey) === "1") return;
+        const href = anchor.getAttribute("href") || "";
+        if (!href) return;
+        let toSlug = "";
+        try {
+          const url = new URL(href, window.location.origin);
+          const segs = url.pathname.split("/").filter(Boolean);
+          toSlug = segs[segs.length - 1] || "";
+        } catch {
+          toSlug = href;
+        }
+        sessionStorage.setItem(secondClickKey, "1");
+        safeEmit("term_second_click", {
+          channel,
+          from_slug: slug,
+          to_slug: toSlug,
+          page_type: "detail",
+        });
+      });
+    }
+  })();
+</script>

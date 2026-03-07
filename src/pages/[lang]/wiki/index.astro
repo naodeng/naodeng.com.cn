@@ -242,7 +242,8 @@ const definedTermSetSchema = !isEn ? {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-inline-size: 2.25rem;
+    min-height: 44px;
+    min-inline-size: 44px;
     padding: 0.4em 0.5em;
     font-size: 0.9rem;
     font-weight: 600;
@@ -276,7 +277,7 @@ const definedTermSetSchema = !isEn ? {
   .wiki-letter-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-theme);
+    color: var(--color-main);
     margin: 0 0 var(--sp-s);
     letter-spacing: 0.02em;
   }
@@ -292,24 +293,25 @@ const definedTermSetSchema = !isEn ? {
   }
 
   /* ── Entry cards (glassmorphism) ── */
-  .wiki-letter-link {
+  .wiki-letter-list .wiki-letter-link {
     display: block;
+    min-height: 44px;
     padding: 0.6em 0.9em;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    color: color-mix(in srgb, var(--color-main) 88%, transparent);
+    color: var(--color-main);
     text-decoration: none;
     font-size: 0.95rem;
     transition: var(--transition-base);
   }
-  .wiki-letter-link:hover {
+  .wiki-letter-list .wiki-letter-link:hover {
     color: var(--color-theme);
     border-color: var(--color-theme);
     transform: translateY(-2px);
     box-shadow: 0 0 20px var(--glow-theme);
   }
-  .wiki-letter-link:focus-visible {
+  .wiki-letter-list .wiki-letter-link:focus-visible {
     outline: 2px solid var(--color-theme);
     outline-offset: 2px;
   }

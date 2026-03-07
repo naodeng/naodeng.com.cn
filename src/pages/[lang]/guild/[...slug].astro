@@ -21,6 +21,7 @@ import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/ai
 import { getGuildConfig } from "@/config/guild.config";
 import { readingTime } from "@/utils/readingTime";
 import type { Lang } from "@/i18n";
+import TrackingEvents from "@/components/TrackingEvents.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("guild");
@@ -291,6 +292,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
         </div>
       </section>
     )}
+    <GoogleAd />
 
     <!-- 前后导航 -->
     {(prev || next) && (
@@ -311,9 +313,9 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     )}
   </article>
 
-  <GoogleAd />
   <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
 </DocsLayout>
+<TrackingEvents mode="detail" locale={locale} channel="guild" slug={slugParam} detailLinkSelector=".guild-related-terms-pill" />
 
 <script>
   // 13.7: Scroll sidebar to current article on page load

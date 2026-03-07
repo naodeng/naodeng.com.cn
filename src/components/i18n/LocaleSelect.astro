@@ -15,9 +15,31 @@ const { compact = false } = Astro.props;
 const localePaths = getLocalePaths(Astro.url);
 const currentLocale = Astro.currentLocale as string;
 const currentFlag = LANG_FLAGS[currentLocale] ?? LOCALES[currentLocale]?.label ?? currentLocale;
+const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
+const sectionRoots = [
+  "/blog",
+  "/wiki",
+  "/AIWiki",
+  "/guild",
+  "/prompts",
+  "/archive",
+  "/projects",
+  "/about",
+  "/sponsor",
+  "/links",
+  "/privacy",
+  "/copyright",
+  "/series",
+  "/tags",
+  "/docs",
+];
+const getFallbackPath = (lang: string) => {
+  const matched = sectionRoots.find((root) => pathWithoutLang === root || pathWithoutLang.startsWith(`${root}/`));
+  return matched ? `/${lang}${matched}/` : `/${lang}/`;
+};
 ---
 
-<div class:list={["locale-dropdown", { compact }]} data-locale-dropdown>
+<div class:list={["locale-dropdown", { compact }]} data-locale-dropdown data-current-path={Astro.url.pathname}>
   <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger>
     <span class="material-icons-sharp icon-lang" aria-hidden="true">translate</span>
     <span class="locale-flag">{currentFlag}</span>
@@ -28,7 +50,7 @@ const currentFlag = LANG_FLAGS[currentLocale] ?? LOCALES[currentLocale]?.label ?
       {
         localePaths.map(({ path, lang }) => (
           <li>
-            <a href={path} data-lang={lang} data-locale-option>
+            <a href={path} data-lang={lang} data-fallback={getFallbackPath(lang)} data-locale-option>
               {LOCALES[lang].label}
             </a>
           </li>
@@ -59,10 +81,42 @@ const currentFlag = LANG_FLAGS[currentLocale] ?? LOCALES[currentLocale]?.label ?
       toggle();
     });
 
+    const canNavigate = async (url: string): Promise<boolean> => {
+      const ctrl = new AbortController();
+      const timer = window.setTimeout(() => ctrl.abort(), 2000);
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          credentials: "same-origin",
+          redirect: "follow",
+          cache: "no-store",
+          signal: ctrl.signal,
+        });
+        return res.status < 400;
+      } catch {
+        return false;
+      } finally {
+        window.clearTimeout(timer);
+      }
+    };
+
     root.querySelectorAll("[data-locale-option]").forEach((link) => {
-      link.addEventListener("click", () => {
-        const lang = (link as HTMLElement).dataset.lang;
+      link.addEventListener("click", async (event) => {
+        const anchor = link as HTMLAnchorElement;
+        const lang = anchor.dataset.lang;
         if (lang) localStorage.setItem("selectedLang", lang);
+
+        if (event.defaultPrevented) return;
+        const mouse = event as MouseEvent;
+        if (mouse.button !== 0 || mouse.metaKey || mouse.ctrlKey || mouse.shiftKey || mouse.altKey) return;
+
+        event.preventDefault();
+        const targetHref = anchor.href;
+        const fallbackHref = new URL(anchor.dataset.fallback || `/${lang || "en"}/`, window.location.origin).href;
+        if (targetHref === window.location.href) return;
+
+        const ok = await canNavigate(targetHref);
+        window.location.assign(ok ? targetHref : fallbackHref);
       });
     });
 

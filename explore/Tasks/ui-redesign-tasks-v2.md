@@ -9,7 +9,7 @@
 - M5 发布完成：回归通过并一次性发布。
 
 ## Phase 0: Alignment（需求定稿）
-- [ ] T0.1 评审并确认 `ui-redesign-prd-v2.md` 的范围与非范围。
+- [x] T0.1 评审并确认 `ui-redesign-prd-v2.md` 的范围与非范围。
 - [x] 视觉方向确认：偏文档克制（信息优先、弱装饰）。
 - [x] 卡片封面策略确认：弱化封面（信息优先）。
 - [x] 确认广告位密度规则：每页>=1；列表页每屏<=1；详情页正文中部<=1。
@@ -35,19 +35,20 @@
 - Exit Criteria: token 与全局样式统一完成，基础页面无明显回归
 
 ### Tasks
-- [ ] T1.1 收敛全局 token（color/typography/spacing/radius/shadow/motion）。
-- [ ] T1.2 定义组件密度档位（default/compact）。
-- [ ] T1.3 统一按钮、链接、输入、标签、卡片基础样式。
-- [ ] T1.4 完成 dark/light + reduced-motion 兼容。
+- [x] T1.1 收敛全局 token（color/typography/spacing/radius/shadow/motion）。
+- [x] T1.2 定义组件密度档位（default/compact）。
+- [x] T1.3 统一按钮、链接、输入、标签、卡片基础样式。
+- [x] T1.4 完成 dark/light + reduced-motion 兼容。
+- [x] T1.5 建立组件映射清单（需求模块 -> 组件文件 -> owner）。
 
 ### Deliverables
-- [ ] `src/styles/base.css` token 清单与注释完善。
-- [ ] 设计规范速查表（可附在 `explore/Design`）。
+- [x] `src/styles/base.css` token 清单与注释完善。
+- [x] 设计规范速查表（可附在 `explore/Design`）。
 
 ### Acceptance
 - [ ] 基础组件在 Blog/Wiki/AIWiki/Guild 外观一致。
 - [ ] 无明显颜色与间距漂移。
-- [ ] 键盘焦点可见，且不依赖鼠标悬停状态。
+- [x] 键盘焦点可见，且不依赖鼠标悬停状态。
 
 ## Phase 2: Homepage Experience（首页体验）
 ### Execution Meta
@@ -57,22 +58,23 @@
 - Exit Criteria: 首页首屏与卡片规范生效，中英文首页一致
 
 ### Tasks
-- [ ] T2.1 重构 Hero：2-3 行摘要 + 主/次 CTA。
-- [ ] T2.2 在 Hero 下方新增“信息补充模块”（能力点/专题入口/关键数据）。
-- [ ] T2.3 增加/优化快速入口区（Blog/Wiki/AIWiki/Guild）。
-- [ ] T2.4 统一首页卡片样式（弱化封面、标题/摘要优先、标签/动作统一）。
-- [ ] T2.5 调整区块垂直间距，压缩非必要留白。
+- [x] T2.1 重构 Hero：2-3 行摘要 + 主/次 CTA。
+- [x] T2.2 在 Hero 下方新增“信息补充模块”（能力点/专题入口/关键数据）。
+- [x] T2.3 增加/优化快速入口区（Blog/Wiki/AIWiki/Guild）。
+- [x] T2.4 统一首页卡片样式（弱化封面、标题/摘要优先、标签/动作统一）。
+- [x] T2.5 调整区块垂直间距，压缩非必要留白。
+- [x] T2.6 补齐首页关键埋点（home_entry_click）。
 
 ### Deliverables
-- [ ] `/[lang]/index.astro` 改造。
-- [ ] 首页卡片样式与交互规范。
+- [x] `/[lang]/index.astro` 改造。
+- [x] 首页卡片样式与交互规范。
 
 ### Acceptance
 - [ ] 首屏关键路径可在 3 秒内识别并点击。
-- [ ] 中英首页视觉一致且无溢出问题。
-- [ ] 首屏文案控制在 2-3 行，信息丰富度由次级模块承担。
-- [ ] 卡片封面不抢占注意力，标题与摘要在首屏可优先扫读。
-- [ ] 列表页广告密度满足每屏最多 1 个，且不遮挡主要信息。
+- [x] 中英首页视觉一致且无溢出问题。
+- [x] 首屏文案控制在 2-3 行，信息丰富度由次级模块承担。
+- [x] 卡片封面不抢占注意力，标题与摘要在首屏可优先扫读。
+- [x] 列表页广告密度满足每屏最多 1 个，且不遮挡主要信息。
 
 ## Phase 3: Detail Reading Flow（详情页阅读流）
 ### Execution Meta
@@ -82,20 +84,21 @@
 - Exit Criteria: TOC/侧栏/相关词条稳定，详情阅读体验达标
 
 ### Tasks
-- [ ] T3.1 TOC 高亮策略统一（h2/h3、页底兜底、滚动跟随）。
-- [ ] T3.2 右侧栏高度限制在正文范围内。
-- [ ] T3.3 作者卡高度压缩并保持信息完整。
-- [ ] T3.4 统一“相关词条/相关文章”模块样式与位置。
-- [ ] T3.5 代码块工具条（语言标识 + 复制）统一。
+- [x] T3.1 TOC 高亮策略统一（h2/h3、页底兜底、滚动跟随）。
+- [x] T3.2 右侧栏高度限制在正文范围内。
+- [x] T3.3 作者卡高度压缩并保持信息完整。
+- [x] T3.4 统一“相关词条/相关文章”模块样式与位置。
+- [x] T3.5 代码块工具条（语言标识 + 复制）统一。
+- [x] T3.6 补齐详情页埋点（detail_scroll_depth、term_second_click）。
 
 ### Deliverables
-- [ ] `TableOfContents.astro`、作者卡、相关词条组件改造。
-- [ ] Blog/Wiki/AIWiki/Guild 详情页样式一致化。
+- [x] `TableOfContents.astro`、作者卡、相关词条组件改造。
+- [x] Blog/Wiki/AIWiki/Guild 详情页样式一致化。
 
 ### Acceptance
-- [ ] 滚动过程中 TOC 不丢焦、不乱跳。
-- [ ] 移动端折叠导航可正常使用。
-- [ ] TOC 仅在正文可视高度范围内展示，不侵入评论/页脚区域。
+- [x] 滚动过程中 TOC 不丢焦、不乱跳。
+- [x] 移动端折叠导航可正常使用。
+- [x] TOC 仅在正文可视高度范围内展示，不侵入评论/页脚区域。
 
 ## Phase 4: Wiki + AIWiki + Guild（内容发现层）
 ### Execution Meta
@@ -105,16 +108,17 @@
 - Exit Criteria: 三频道统一与广告低干扰规则全部落地
 
 ### Tasks
-- [ ] T4.1 Wiki/AIWiki 首页卡片密度统一，筛选与字母导航增强。
-- [ ] T4.2 Guild 详情页补齐相关词条或相关文章推荐。
-- [ ] T4.3 统一详情页广告槽视觉与占位策略。
-- [ ] T4.4 按规则实现广告密度控制（每页>=1、列表页每屏<=1、详情页正文中部<=1）。
-- [ ] T4.5 实现广告“低干扰”约束（禁入 H1-首段区、弱视觉样式、稳定占位高度）。
-- [ ] T4.6 为广告例外页建立白名单逻辑（404、条款、短内容页）。
+- [x] T4.1 Wiki/AIWiki 首页卡片密度统一，筛选与字母导航增强。
+- [x] T4.2 Guild 详情页补齐相关词条或相关文章推荐。
+- [x] T4.3 统一详情页广告槽视觉与占位策略。
+- [x] T4.4 按规则实现广告密度控制（每页>=1、列表页每屏<=1、详情页正文中部<=1）。
+- [x] T4.5 实现广告“低干扰”约束（禁入 H1-首段区、弱视觉样式、稳定占位高度）。
+- [x] T4.6 为广告例外页建立白名单逻辑（404、条款、短内容页）。
+- [x] T4.7 收敛 Guild 首页路由实现，避免 `en/zh-cn` 双份页面维护分叉。
 
 ### Deliverables
-- [ ] `wiki/*`, `AIWiki/*`, `guild/*` 页面风格统一清单。
-- [ ] 相关词条推荐规则说明（来源与优先级）。
+- [x] `wiki/*`, `AIWiki/*`, `guild/*` 页面风格统一清单。
+- [x] 相关词条推荐规则说明（来源与优先级）。
 
 ### Acceptance
 - [ ] 三类频道可互相导流，二跳路径清晰。
@@ -132,22 +136,24 @@
 - Exit Criteria: 指标与回归达标，满足一次性发布条件
 
 ### Tasks
-- [ ] T5.1 增补 E2E：TOC、筛选、搜索、复制、相关词条、移动端导航。
-- [ ] T5.2 跑 Lighthouse 与 Web Vitals 对比基线。
-- [ ] T5.3 增加广告低干扰专项检查（位置、误触风险、视觉层级、CLS）。
-- [ ] T5.4 进行双语页面抽样视觉回归（至少 10 页）。
-- [ ] T5.5 制定回滚方案（样式开关/组件开关）。
-- [ ] T5.6 发布前冻结 UI 变更窗口，完成一次性切换演练。
+- [x] T5.1 增补 E2E：TOC、筛选、搜索、复制、相关词条、移动端导航。
+- [x] T5.2 跑 Lighthouse 与 Web Vitals 对比基线。
+- [x] T5.3 增加广告低干扰专项检查（位置、误触风险、视觉层级、CLS）。
+- [x] T5.4 进行双语页面抽样视觉回归（至少 10 页）。
+- [x] T5.5 制定回滚方案（样式开关/组件开关）。
+- [x] T5.6 发布前冻结 UI 变更窗口，完成一次性切换演练。
+- [x] T5.7 建立断点回归矩阵：`390/768/1024/1440` 四档必测。
 
 ### Deliverables
-- [ ] 测试报告与问题清单。
-- [ ] 发布说明与回滚手册。
+- [x] 测试报告与问题清单。
+- [x] 发布说明与回滚手册。
 
 ### Acceptance
 - [ ] 无 P1/P2 回归。
-- [ ] 指标达到 PRD 目标或给出偏差说明。
-- [ ] 可访问性硬指标通过（对比度/触控面积/最小字号）。
-- [ ] CLS <= 0.1，广告低干扰专项检查通过。
+- [x] 指标达到 PRD 目标或给出偏差说明。
+- [x] 可访问性硬指标通过（对比度/触控面积/最小字号）。
+- [x] CLS <= 0.1，广告低干扰专项检查通过。
+- [x] 埋点事件与字段符合 PRD Tracking Contract，口径一致。
 
 ## Day-by-Day Suggested Sequence（8-12 天）
 - Day 1: 完成 Phase 0 与基线采集（T0.1/T0.2）。
@@ -161,6 +167,31 @@
 - [ ] SEO 改造项与 UI 改造项冲突排期。
 - [ ] 内容团队确认中英文文案长度边界。
 - [ ] 广告位实现与 CLS 监控联调（防止影响体验与稳定性）。
+
+## QA Artifacts
+- `explore/Temporary/seo/lighthouse-baseline-2026-03-05.md`
+- `explore/Temporary/seo/lighthouse-baseline-2026-03-05.json`
+- `explore/Temporary/seo/ad-low-intrusion-check-2026-03-05.md`
+- `explore/Temporary/seo/accessibility-hard-metrics-2026-03-06.md`
+- `explore/Temporary/seo/accessibility-contrast-audit-2026-03-06.md`
+- `explore/Temporary/seo/toc-boundary-check-2026-03-06.md`
+- `explore/Temporary/seo/ui-redesign-acceptance-closeout-2026-03-06.md`
+- `explore/Temporary/seo/visual-regression-2026-03-06/report.md`
+- `explore/Temporary/seo/ui-redesign-launch-runbook-2026-03-06.md`
+- `explore/Temporary/seo/ui-redesign-qa-summary-2026-03-06.md`
+- `explore/Design/ui-redesign-component-map-v2.md`
+- `explore/Design/ui-redesign-channel-checklist-v2.md`
+- `explore/Design/related-terms-rule-v2.md`
+
+## Notes
+- `T0.2` 仍未完成：当前已有 Lighthouse/技术基线，但缺少“上线前连续 28 天”的业务指标基线（CTR/滚动深度/二跳率）。
+- “指标达到 PRD 目标或给出偏差说明”已满足“给出偏差说明”这半项，当前 Lighthouse 平均分仍低于部分目标，详见 QA summary 与 baseline report。
+- `T4.6` 当前实现为公共广告策略：`404 / privacy / copyright` 白名单禁投；短内容页自动关闭正文中部广告，仅保留页面级广告位。
+- `T4.1` 当前范围已覆盖 Wiki / AIWiki 首页：搜索、字母导航、词条卡片密度和返回顶部交互已统一到同一模式。
+- `T1` 当前已完成 token / density / 基础交互样式 / 组件映射清单；但“全频道视觉完全一致”仍需后续页面级回归继续收口。
+- 2026-03-06 已完成可访问性硬指标抽样检查：根字号、最小触控面积、最小字号与 `contrast` 专项审计均有自动化与报告支撑。
+- 2026-03-06 已基于 `responsive / toc / ad-low-intrusion / visual regression` 收口一部分 `T2/T3` 验收项；其余涉及主观设计判断或缺少专门自动化的项继续保持未完成。
+- 2026-03-06 首页首屏已补入克制摘要文案、主次 CTA 和无封面摘要卡片；因此 `首屏文案控制在 2-3 行` 与 `标题/摘要优先扫读` 两项已具备代码与构建证据，但“3 秒识别并点击”仍缺用户测试或更强代理指标。
 
 ## 优先级建议
 1. P0：TOC 稳定性、正文可读性、首页首屏路径。

@@ -2,9 +2,9 @@
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
+import TrackingEvents from "@/components/TrackingEvents.astro";
 import { NAV_HOME } from "@/consts";
 import type { Lang } from "@/i18n";
 import {
@@ -109,7 +109,7 @@ const structuredData = {
 >
   <article class="aiwiki-article" data-locale={locale}>
     <Content />
-    <GoogleAdThin />
+    <GoogleAd />
 
     {entry.data.related && entry.data.related.length > 0 && (
       <section class="aiwiki-related" aria-labelledby="aiwiki-related-heading">
@@ -123,11 +123,10 @@ const structuredData = {
     )}
   </article>
 
-  <GoogleAd />
   <ArticleShare title={pageTitle} url={canonicalUrl} locale={shareLocale} />
-  <GoogleAd />
   <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
 </DocsLayout>
+<TrackingEvents mode="detail" locale={locale} channel="aiwiki" slug={slugParam} detailLinkSelector=".aiwiki-related-pill" />
 
 <script>
   // Keep old markdown links and external links usable after publication.
