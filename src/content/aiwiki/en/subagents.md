@@ -111,10 +111,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [multi-agent-orchestration](/en/AIWiki/multi-agent-orchestration/)
-- [background-agents](/en/AIWiki/background-agents/)
-- [task-level-abstraction](/en/AIWiki/task-level-abstraction/)
-- [asynchronous-agent-execution](/en/AIWiki/asynchronous-agent-execution/)
+- [multi-agent-orchestration](https://inaodeng.com/en/AIWiki/multi-agent-orchestration/)
+- [background-agents](https://inaodeng.com/en/AIWiki/background-agents/)
+- [task-level-abstraction](https://inaodeng.com/en/AIWiki/task-level-abstraction/)
+- [asynchronous-agent-execution](https://inaodeng.com/en/AIWiki/asynchronous-agent-execution/)
 
 ### External References
 

@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
-- [skill](/zh-cn/AIWiki/skill/)
-- [function-calling](/zh-cn/AIWiki/function-calling/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
+- [skill](https://inaodeng.com/zh-cn/AIWiki/skill/)
+- [function-calling](https://inaodeng.com/zh-cn/AIWiki/function-calling/)
 
 ### 外部参考
 

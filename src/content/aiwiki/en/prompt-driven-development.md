@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [vibe-coding](/en/AIWiki/vibe-coding/)
-- [context-window-management](/en/AIWiki/context-window-management/)
-- [skill](/en/AIWiki/skill/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
 
 ### Term Metadata
 

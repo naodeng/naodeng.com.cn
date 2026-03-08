@@ -116,9 +116,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [context-window-management](/en/AIWiki/context-window-management/)
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [model-context-protocol-mcp](/en/AIWiki/model-context-protocol-mcp/)
+- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [model-context-protocol-mcp](https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/)
 
 ### Term Metadata
 

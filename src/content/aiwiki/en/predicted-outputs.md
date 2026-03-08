@@ -109,10 +109,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [structured-outputs](/en/AIWiki/structured-outputs/)
-- [flex-processing](/en/AIWiki/flex-processing/)
-- [prompt-caching](/en/AIWiki/prompt-caching/)
-- [context-window-management](/en/AIWiki/context-window-management/)
+- [structured-outputs](https://inaodeng.com/en/AIWiki/structured-outputs/)
+- [flex-processing](https://inaodeng.com/en/AIWiki/flex-processing/)
+- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
+- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
 
 ### External References
 

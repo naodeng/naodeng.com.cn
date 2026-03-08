@@ -55,7 +55,7 @@
 
 #### P2（专项与治理，12 个）
 
-1. 合同测试（Contract Testing）
+1. 契约测试（Contract Testing）
 2. 组件测试（Component Testing）
 3. 冒烟检查自动化（Smoke Check Automation）
 4. 生产验证测试（Production Verification Testing）

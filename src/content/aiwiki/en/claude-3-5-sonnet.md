@@ -113,17 +113,17 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [claude](/en/AIWiki/claude/)
-- [vibe-coding](/en/AIWiki/vibe-coding/)
-- [ai-pair-programming](/en/AIWiki/ai-pair-programming/)
+- [claude](https://inaodeng.com/en/AIWiki/claude/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
 
 ## Related Resources
 
 ### Related Terms
 
-- [claude](/en/AIWiki/claude/)
-- [vibe-coding](/en/AIWiki/vibe-coding/)
-- [ai-pair-programming](/en/AIWiki/ai-pair-programming/)
+- [claude](https://inaodeng.com/en/AIWiki/claude/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
 
 ### Term Metadata
 

@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [rules-cursorrules](/en/AIWiki/rules-cursorrules/)
-- [vibe-coding](/en/AIWiki/vibe-coding/)
-- [ai-pair-programming](/en/AIWiki/ai-pair-programming/)
+- [rules-cursorrules](https://inaodeng.com/en/AIWiki/rules-cursorrules/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
 
 ### Term Metadata
 

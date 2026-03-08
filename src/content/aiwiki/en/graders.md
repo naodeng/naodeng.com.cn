@@ -118,9 +118,9 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [agent-evals](/en/AIWiki/agent-evals/)
-- [trace-grading](/en/AIWiki/trace-grading/)
-- [self-healing-code](/en/AIWiki/self-healing-code/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
+- [self-healing-code](https://inaodeng.com/en/AIWiki/self-healing-code/)
 
 ### External References
 

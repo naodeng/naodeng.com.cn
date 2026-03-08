@@ -25,8 +25,8 @@ order: 0
 <!-- TOC END -->
 ## 相关术语：
 
-- [质量保证 (Quality Assurance)](/zh-cn/wiki/quality-assurance/)
-- [敏捷开发 (Agile Development)](/zh-cn/wiki/agile-development/)
+- [质量保证 (Quality Assurance)](https://inaodeng.com/zh-cn/wiki/quality-assurance/)
+- [敏捷开发 (Agile Development)](https://inaodeng.com/zh-cn/wiki/agile-development/)
 
 ## 关于 Web 测试自动化工具 (Web Test Automation Tools) 的问题？
 

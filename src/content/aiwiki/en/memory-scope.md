@@ -114,10 +114,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [active-memory](/en/AIWiki/active-memory/)
-- [automatic-memory](/en/AIWiki/automatic-memory/)
-- [privacy-mode](/en/AIWiki/privacy-mode/)
-- [rules-and-memories](/en/AIWiki/rules-and-memories/)
+- [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
+- [automatic-memory](https://inaodeng.com/en/AIWiki/automatic-memory/)
+- [privacy-mode](https://inaodeng.com/en/AIWiki/privacy-mode/)
+- [rules-and-memories](https://inaodeng.com/en/AIWiki/rules-and-memories/)
 
 ### External References
 

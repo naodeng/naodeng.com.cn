@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [self-healing-code](/en/AIWiki/self-healing-code/)
-- [human-in-the-loop](/en/AIWiki/human-in-the-loop/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
+- [self-healing-code](https://inaodeng.com/en/AIWiki/self-healing-code/)
+- [human-in-the-loop](https://inaodeng.com/en/AIWiki/human-in-the-loop/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
 
 ### Term Metadata
 

@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [rules-cursorrules](/zh-cn/AIWiki/rules-cursorrules/)
-- [vibe-coding](/zh-cn/AIWiki/vibe-coding/)
-- [ai-pair-programming](/zh-cn/AIWiki/ai-pair-programming/)
+- [rules-cursorrules](https://inaodeng.com/zh-cn/AIWiki/rules-cursorrules/)
+- [vibe-coding](https://inaodeng.com/zh-cn/AIWiki/vibe-coding/)
+- [ai-pair-programming](https://inaodeng.com/zh-cn/AIWiki/ai-pair-programming/)
 
 ### 术语元数据
 

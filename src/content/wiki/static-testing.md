@@ -47,7 +47,7 @@ order: 0
 
 ## 相关术语
 
-- [动态测试](/zh-cn/wiki/dynamic-testing/)
+- [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)
 
 ## 有关静态测试的问题吗？
 
@@ -55,29 +55,29 @@ order: 0
 
 #### 什么是静态测试？
 
-[静态测试](/zh-cn/wiki/static-testing/) 是在不执行代码的情况下检查软件工件。它涉及**分析**文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。这种类型的测试通常是通过结合使用**手动**工作（例如同行评审）和执行静态代码分析的**自动化工具**来完成的。
-  [静态测试](/zh-cn/wiki/static-testing/) 的自动化工具扫描代码库以查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成管道中，为开发人员提供即时反馈。它们的范围从强制执行编码标准的简单 linter 到可以检测潜在安全漏洞或性能瓶颈等更微妙问题的复杂静态分析工具。
-  [静态测试](/zh-cn/wiki/static-testing/) 不仅是关于查找[bugs](/zh-cn/wiki/bug/)，而且还关于**代码质量**和**[可维护性](/zh-cn/wiki/maintainability/)**。它有助于确保代码符合标准并且易于理解和修改。通过在开发过程的早期发现问题，[静态测试](/zh-cn/wiki/static-testing/) 有助于降低修复缺陷的成本，因为较早发现的问题通常解决起来成本更低。
-  为了有效实施[静态测试](/zh-cn/wiki/static-testing/)，选择与项目语言和框架相一致的适当工具和技术至关重要。此外，建立重视代码质量和定期审查的文化可以增强[静态测试](/zh-cn/wiki/static-testing/) 的好处。
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 是在不执行代码的情况下检查软件工件。它涉及**分析**文档和源代码以查找错误，其中可能包括语法错误、代码标准违规和设计问题。这种类型的测试通常是通过结合使用**手动**工作（例如同行评审）和执行静态代码分析的**自动化工具**来完成的。
+  [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的自动化工具扫描代码库以查找指示潜在问题的预定义模式。这些工具可以集成到开发环境或持续集成管道中，为开发人员提供即时反馈。它们的范围从强制执行编码标准的简单 linter 到可以检测潜在安全漏洞或性能瓶颈等更微妙问题的复杂静态分析工具。
+  [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 不仅是关于查找[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，而且还关于**代码质量**和**[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)**。它有助于确保代码符合标准并且易于理解和修改。通过在开发过程的早期发现问题，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 有助于降低修复缺陷的成本，因为较早发现的问题通常解决起来成本更低。
+  为了有效实施[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)，选择与项目语言和框架相一致的适当工具和技术至关重要。此外，建立重视代码质量和定期审查的文化可以增强[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的好处。
 
 #### 为什么静态测试在软件开发过程中很重要？
 
-[静态测试](/zh-cn/wiki/static-testing/) 在软件开发过程中至关重要，因为它允许在[动态测试](/zh-cn/wiki/dynamic-testing/) 开始之前**及早发现缺陷**。通过检查代码、需求和设计文档而不执行代码，它有助于在**修复成本较低**的阶段识别错误。这种主动方法通过确保问题在初始阶段得到解决来提高**最终产品的质量**，从而降低开发生命周期后期出现复合错误的风险。
-  此外，[静态测试](/zh-cn/wiki/static-testing/) 有助于**更好地理解**代码库和系统架构，这可以带来更可维护和更健壮的软件。它还支持**遵守**编码标准，并可以突出显示潜在的**安全漏洞**。通过捕获文档和代码中的歧义和不一致，[静态测试](/zh-cn/wiki/static-testing/) 增强了软件需求和设计的清晰度，从而实现更准确、更可靠的实施。
-  本质上，[静态测试](/zh-cn/wiki/static-testing/) 是一种**预防措施**，它通过在运行任何功能测试之前确保代码库具有高质量来补充 [动态测试](/zh-cn/wiki/dynamic-testing/)。它是全面[质量保证](/zh-cn/wiki/quality-assurance/) 战略的一个组成部分，有助于简化开发流程并有助于交付更可靠的软件产品。
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 在软件开发过程中至关重要，因为它允许在[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 开始之前**及早发现缺陷**。通过检查代码、需求和设计文档而不执行代码，它有助于在**修复成本较低**的阶段识别错误。这种主动方法通过确保问题在初始阶段得到解决来提高**最终产品的质量**，从而降低开发生命周期后期出现复合错误的风险。
+  此外，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 有助于**更好地理解**代码库和系统架构，这可以带来更可维护和更健壮的软件。它还支持**遵守**编码标准，并可以突出显示潜在的**安全漏洞**。通过捕获文档和代码中的歧义和不一致，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 增强了软件需求和设计的清晰度，从而实现更准确、更可靠的实施。
+  本质上，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 是一种**预防措施**，它通过在运行任何功能测试之前确保代码库具有高质量来补充 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)。它是全面[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 战略的一个组成部分，有助于简化开发流程并有助于交付更可靠的软件产品。
 
 #### 静态测试与动态测试有何不同？
 
-[静态测试](/zh-cn/wiki/static-testing/) 涉及在不执行程序的情况下检查代码、要求或文档。它是 [验证 ](/zh-cn/wiki/verification/) 的一种形式，用于在开发过程的早期检查问题。另一方面，[动态测试](/zh-cn/wiki/dynamic-testing/) 要求执行代码并根据定义的要求验证软件操作。这是一种验证形式，通常涉及单元测试、集成测试、系统测试和验收测试。
-  **[静态测试](/zh-cn/wiki/static-testing/):**
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 涉及在不执行程序的情况下检查代码、要求或文档。它是 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 的一种形式，用于在开发过程的早期检查问题。另一方面，[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 要求执行代码并根据定义的要求验证软件操作。这是一种验证形式，通常涉及单元测试、集成测试、系统测试和验收测试。
+  **[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/):**
 
 - 无需运行程序即可分析代码结构、语法和用法。
 - 包括审查、检查和静态代码分析。
-- 旨在在代码执行之前及早发现缺陷。 **[动态测试](/zh-cn/wiki/dynamic-testing/):**
+- 旨在在代码执行之前及早发现缺陷。 **[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/):**
 
 - 涉及在各种条件下执行代码并检查系统行为。
 - 包括功能和非功能测试方法。
-- 旨在发现仅在软件运行时才出现的缺陷。 [静态测试](/zh-cn/wiki/static-testing/) 是为了防止缺陷，[动态测试](/zh-cn/wiki/dynamic-testing/) 是为了发现缺陷。 [静态测试](/zh-cn/wiki/static-testing/) 可以更具成本效益，因为它无需运行环境即可识别错误。然而，[动态测试](/zh-cn/wiki/dynamic-testing/) 对于确保软件在现实场景中按预期工作至关重要。这两种测试类型是互补的，一起使用时，可以提供全面的软件质量保证方法。
+- 旨在发现仅在软件运行时才出现的缺陷。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 是为了防止缺陷，[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 是为了发现缺陷。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 可以更具成本效益，因为它无需运行环境即可识别错误。然而，[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 对于确保软件在现实场景中按预期工作至关重要。这两种测试类型是互补的，一起使用时，可以提供全面的软件质量保证方法。
 
 - 无需运行程序即可分析代码结构、语法和用法。
 - 包括审查、检查和静态代码分析。
@@ -88,21 +88,21 @@ order: 0
 
 #### 静态测试有什么好处？
 
-[静态测试](/zh-cn/wiki/static-testing/) 的好处包括：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的好处包括：
 
 - **早期缺陷检测**：在代码执行之前识别问题，减少开发周期后期修复错误的成本和工作量。
 - **提高代码质量**：鼓励遵守编码标准和最佳实践，从而生成更干净、更易于维护的代码。
-- **文档[验证 ](/zh-cn/wiki/verification/)**：确保文档准确反映软件的预期功能和设计。
+- **文档[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：确保文档准确反映软件的预期功能和设计。
 - **效率**：通过捕获错误来节省时间和资源，无需运行环境或创建测试用例。
 - **全面分析**：可以一次性分析整个代码库和文档，从而对软件质量进行全面评估。
 - **非侵入式**：不改变程序的行为，因为它不需要代码执行。
 - **风险缓解**：帮助尽早识别潜在的安全漏洞和合规性问题。
 - **团队协作**：通过审查和检查促进团队成员之间的讨论和知识共享。
-- **流程改进**：提供对开发流程的见解，突出需要改进的领域并确保整个项目的一致性。 [静态测试](/zh-cn/wiki/static-testing/) 通过提供关于质量和可靠性的不同视角来补充[动态测试](/zh-cn/wiki/dynamic-testing/)，最终有助于提供更强大且无错误的软件产品。
+- **流程改进**：提供对开发流程的见解，突出需要改进的领域并确保整个项目的一致性。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 通过提供关于质量和可靠性的不同视角来补充[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)，最终有助于提供更强大且无错误的软件产品。
 
 #### 静态测试的主要目标是什么？
 
-[静态测试](/zh-cn/wiki/static-testing/) 的主要目标是：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的主要目标是：
 
 - **尽早识别缺陷**：在动态测试开始之前检测文档、代码或设计中的问题。
 - **提高质量**：通过捕获后期阶段可能难以发现的错误来提高软件的整体质量。
@@ -113,19 +113,19 @@ order: 0
 - **优化代码**：确定代码优化和重构的机会，以提高性能和可维护性。
 - **增强安全性**：发现如果未被发现则可能被利用的安全漏洞。
 - **促进团队合作**：通过审查和检查鼓励团队成员之间的协作，从而实现知识共享并就最佳实践达成共识。
-- **文档验证**：确保所有必需的文档准确、完整且明确。 通过专注于这些目标，[静态测试](/zh-cn/wiki/static-testing/) 有助于实现更强大、更可靠的软件开发生命周期。
+- **文档验证**：确保所有必需的文档准确、完整且明确。 通过专注于这些目标，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 有助于实现更强大、更可靠的软件开发生命周期。
 
 ### 技术和方法
 
 #### 静态测试中常用的技术有哪些？
 
-[静态测试](/zh-cn/wiki/static-testing/) 中使用的常用技术包括：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 中使用的常用技术包括：
 
 - **语法检查**：自动化工具根据编程语言的规范检查代码的语法正确性。
 - **代码审查**：同行手动检查源代码以识别缺陷、执行编码标准并共享知识。
 - **结对编程**：两名开发人员在一个工作站上一起工作，其中一名开发人员编写代码，另一名开发人员同时检查代码。
-- **模型[验证 ](/zh-cn/wiki/verification/)**：确保系统模型遵守规则和约定，通常使用建模工具。
-- **文档审查**：检查需求规范、设计文档、[测试计划](/zh-cn/wiki/test-plan/) 和用户手册的完整性、正确性和清晰度。
+- **模型[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：确保系统模型遵守规则和约定，通常使用建模工具。
+- **文档审查**：检查需求规范、设计文档、[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 和用户手册的完整性、正确性和清晰度。
 - **静态分析工具**：分析代码而不执行代码的自动化工具，以发现安全漏洞、死代码和内存泄漏等潜在问题。
 - **Linter 工具**：专门的静态分析工具，用于检查源代码的风格错误、编程错误和可疑结构。
 - **形式方法**：用于在不同抽象级别指定和验证软件的数学方法。
@@ -133,27 +133,27 @@ order: 0
 - **控制流分析**：检查程序的流程以确保正确使用控制结构（循环、条件）。
 - **数据流分析**：通过代码分析数据流，以检测潜在问题，例如未初始化的变量或无法访问的代码。
 - **接口分析**：确保正确定义和使用模块、功能或系统之间的接口。
-- **合规性检查**：验证代码是否符合行业标准、法规和指南。 每种技术都针对[软件质量](/zh-cn/wiki/software-quality/)的不同方面，并且可以组合使用以实现全面的[静态测试](/zh-cn/wiki/static-testing/)覆盖。
+- **合规性检查**：验证代码是否符合行业标准、法规和指南。 每种技术都针对[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)的不同方面，并且可以组合使用以实现全面的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)覆盖。
 
 #### 静态测试中的走查、检查和审查有什么区别？
 
-演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和评论都是 [静态测试](/zh-cn/wiki/static-testing/) 的方法，每种方法都有不同的特征：
+演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和评论都是 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的方法，每种方法都有不同的特征：
 
 - **演练**：这些是非正式会议，软件工件（如代码或设计文档）的作者将其呈现给同行以获取反馈。目标是提供更好的理解并发现异常情况。没有正式的流程；它更像是对材料的引导，通常是为了教育或集思广益。
-- **[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
-- **评论**：这个术语更广泛，可以包含演练和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。 从本质上讲，演练是教育和头脑风暴会议，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是正式的缺陷查找会议，审查可以是其中之一，具体取决于上下文。每个在[静态测试](/zh-cn/wiki/static-testing/) 中都有一个目的，即在[动态测试](/zh-cn/wiki/dynamic-testing/) 开始之前改进[软件质量](/zh-cn/wiki/software-quality/)。
+- **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
+- **评论**：这个术语更广泛，可以包含演练和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。 从本质上讲，演练是教育和头脑风暴会议，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是正式的缺陷查找会议，审查可以是其中之一，具体取决于上下文。每个在[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 中都有一个目的，即在[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 开始之前改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。
 
 - **演练**：这些是非正式会议，软件工件（如代码或设计文档）的作者将其呈现给同行以获取反馈。目标是提供更好的理解并发现异常情况。没有正式的流程；它更像是对材料的引导，通常是为了教育或集思广益。
-- **[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导，并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
-- **评论**：这个术语更广泛，可以包含演练和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
+- **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：这些比演练更正式，并且涉及对软件工件的彻底检查。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 由主持人（而非作者）领导，并遵循规定的流程。该团队包括诸如逐行浏览文档的读者和识别缺陷的检查员等角色。重点是缺陷检测，通常包括后续会议以确保所有问题都得到解决。
+- **评论**：这个术语更广泛，可以包含演练和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。评审可以是正式的或非正式的，包括检查软件工件以发现缺陷、确保符合标准并评估质量。根据组织的流程，审核的形式和结构可能会有很大差异。
 
 #### 什么是静态代码分析？
 
-静态代码分析是在执行源代码之前对其进行自动检查，以识别潜在的漏洞、[bugs](/zh-cn/wiki/bug/) 以及违反编码标准的行为。与需要执行代码的[动态测试](/zh-cn/wiki/dynamic-testing/)不同，静态代码分析是在不运行程序的情况下进行的。这是白盒测试的一种形式，工具扫描整个代码库以检测安全漏洞、内存泄漏、并发问题以及其他可能导致性能不佳、系统崩溃或安全​​漏洞的缺陷等问题。
+静态代码分析是在执行源代码之前对其进行自动检查，以识别潜在的漏洞、[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 以及违反编码标准的行为。与需要执行代码的[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)不同，静态代码分析是在不运行程序的情况下进行的。这是白盒测试的一种形式，工具扫描整个代码库以检测安全漏洞、内存泄漏、并发问题以及其他可能导致性能不佳、系统崩溃或安全​​漏洞的缺陷等问题。
   专为静态代码分析而设计的工具通常与 IDE 或构建环境集成，使开发人员能够在开发阶段检测并修复问题。这些工具可以是基于规则的，也可以使用复杂的算法来理解代码结构和数据流。静态分析工具支持的一些常见语言包括 C、C++、Java 和 C#。
   静态代码分析的**主要优点**包括：
 
-- **早期[bug](/zh-cn/wiki/bug/)检测**：在运行之前识别问题。
+- **早期[bug](https://inaodeng.com/zh-cn/wiki/bug/)检测**：在运行之前识别问题。
 - **代码质量改进**：确保遵守编码标准。
 - **安全保证**：发现安全缺陷。
 - **降低成本**：通过尽早发现错误来降低错误修复的成本。 **静态代码分析工具的示例**包括：
@@ -162,7 +162,7 @@ order: 0
 - **Fortify**：专注于识别安全相关问题。
 - **ESLint**：用于 JavaScript 和 JSX 的可插入 linting 实用程序。 为了有效地将静态代码分析合并到开发工作流程中，应该将其配置为自动运行，例如持续集成（CI）管道的一部分，为开发人员提供即时反馈。
 
-- **早期[bug](/zh-cn/wiki/bug/)检测**：在运行之前识别问题。
+- **早期[bug](https://inaodeng.com/zh-cn/wiki/bug/)检测**：在运行之前识别问题。
 - **代码质量改进**：确保遵守编码标准。
 - **安全保证**：发现安全缺陷。
 - **降低成本**：通过尽早发现错误来降低错误修复的成本。
@@ -172,7 +172,7 @@ order: 0
 
 #### 在软件开发的早期阶段如何进行静态测试？
 
-[静态测试](/zh-cn/wiki/static-testing/) 在软件开发的早期阶段通常涉及一系列不需要代码执行的活动。这些活动旨在在不运行程序的情况下评估和提高文档和代码的质量。下面是它的执行方式：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 在软件开发的早期阶段通常涉及一系列不需要代码执行的活动。这些活动旨在在不运行程序的情况下评估和提高文档和代码的质量。下面是它的执行方式：
 
 - **审核要求**和设计文档以确保清晰度、完整性和可测试性。这可能涉及检查一致性、识别歧义以及确保与业务需求保持一致。
 
@@ -196,7 +196,7 @@ order: 0
 
 #### 静态测试使用哪些工具？
 
-[静态测试](/zh-cn/wiki/static-testing/) 工具根据其功能和执行的分析类型进行分类。以下是一些常用的工具：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 工具根据其功能和执行的分析类型进行分类。以下是一些常用的工具：
 
 - **代码检查器和格式化程序**：类似的工具 `ESLint` , `JSHint` , `Pylint` , 和 `StyleCop` 帮助识别编程错误、错误、风格错误和可疑结构。
 
@@ -208,7 +208,7 @@ order: 0
 
 - **文档工具**： `Doxygen` , `Javadoc` , 和 `Sphinx` 是帮助审查和维护软件文档的工具示例。
 
-- **指标和复杂性分析器**：类似的工具 `CodeClimate` 和 `NDepend` 评估代码复杂性、可维护性指数和其他可以指示潜在问题区域的指标。 这些工具通常使用 `Jenkins`、`Travis CI` 或 `GitHub Actions` 等平台集成到持续集成 (CI) 管道中，以自动化 [静态测试](/zh-cn/wiki/static-testing/) 流程，作为软件开发生命周期的一部分。
+- **指标和复杂性分析器**：类似的工具 `CodeClimate` 和 `NDepend` 评估代码复杂性、可维护性指数和其他可以指示潜在问题区域的指标。 这些工具通常使用 `Jenkins`、`Travis CI` 或 `GitHub Actions` 等平台集成到持续集成 (CI) 管道中，以自动化 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程，作为软件开发生命周期的一部分。
 
 - **代码检查器和格式化程序**：类似的工具 `ESLint` , `JSHint` , `Pylint` , 和 `StyleCop` 帮助识别编程错误、错误、风格错误和可疑结构。
 
@@ -226,29 +226,29 @@ order: 0
 
 #### 静态测试过程涉及哪些步骤？
 
-[静态测试](/zh-cn/wiki/static-testing/) 涉及几个步骤，以确保在[动态测试](/zh-cn/wiki/dynamic-testing/) 开始之前软件工件满足质量标准。以下是该过程的简要概述：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 涉及几个步骤，以确保在[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 开始之前软件工件满足质量标准。以下是该过程的简要概述：
 
-1. **规划**：定义范围、目标和策略。确定要审查的工件，例如需求、设计文档、代码和[测试用例](/zh-cn/wiki/test-case/)。
-2. **准备**：收集必要的文件和工具。创建适合 [静态测试](/zh-cn/wiki/static-testing/) 的特定工件和目标的清单或指南。
+1. **规划**：定义范围、目标和策略。确定要审查的工件，例如需求、设计文档、代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+2. **准备**：收集必要的文件和工具。创建适合 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的特定工件和目标的清单或指南。
 3. **检查**：单独或在团队环境中检查工件。这可能涉及手动审查、演练或自动静态代码分析。
 4. **报告**：记录发现的结果，例如缺陷、与标准的偏差以及需要改进的领域。使用标准化格式以实现一致性和可追溯性。
 5. **修复**：解决报告的问题。开发人员或负责的团队成员纠正检查阶段发现的缺陷和不合格项。
 6. **重新检查**：验证所有报告的问题均已得到充分解决。这可能涉及重新审查工件或再次运行静态分析工具。
-7. **后续**：确保实施 [静态测试](/zh-cn/wiki/static-testing/) 期间确定的任何流程改进，以防止将来出现类似问题。
-8. **结束**：一旦所有活动完成并且工件满足质量标准，则结束[静态测试](/zh-cn/wiki/static-testing/) 流程。记录结果和吸取的教训以供将来参考。 在这些步骤中，团队成员之间的协作和沟通对于有效的 [静态测试](/zh-cn/wiki/static-testing/) 流程至关重要。
+7. **后续**：确保实施 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 期间确定的任何流程改进，以防止将来出现类似问题。
+8. **结束**：一旦所有活动完成并且工件满足质量标准，则结束[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程。记录结果和吸取的教训以供将来参考。 在这些步骤中，团队成员之间的协作和沟通对于有效的 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程至关重要。
 
-1. **规划**：定义范围、目标和策略。确定要审查的工件，例如需求、设计文档、代码和[测试用例](/zh-cn/wiki/test-case/)。
-2. **准备**：收集必要的文件和工具。创建针对 [静态测试](/zh-cn/wiki/static-testing/) 的特定工件和目标量身定制的清单或指南。
+1. **规划**：定义范围、目标和策略。确定要审查的工件，例如需求、设计文档、代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+2. **准备**：收集必要的文件和工具。创建针对 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的特定工件和目标量身定制的清单或指南。
 3. **检查**：单独或在团队环境中检查工件。这可能涉及手动审查、演练或自动静态代码分析。
 4. **报告**：记录发现的结果，例如缺陷、与标准的偏差以及需要改进的领域。使用标准化格式以实现一致性和可追溯性。
 5. **修复**：解决报告的问题。开发人员或负责的团队成员纠正检查阶段发现的缺陷和不合格项。
 6. **重新检查**：验证所有报告的问题均已得到充分解决。这可能涉及重新审查工件或再次运行静态分析工具。
-7. **后续**：确保实施 [静态测试](/zh-cn/wiki/static-testing/) 期间确定的任何流程改进，以防止将来出现类似问题。
-8. **结束**：一旦所有活动完成并且工件满足质量标准，则结束[静态测试](/zh-cn/wiki/static-testing/) 流程。记录结果和吸取的教训以供将来参考。
+7. **后续**：确保实施 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 期间确定的任何流程改进，以防止将来出现类似问题。
+8. **结束**：一旦所有活动完成并且工件满足质量标准，则结束[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程。记录结果和吸取的教训以供将来参考。
 
 #### 如何准备静态测试？
 
-准备 [静态测试](/zh-cn/wiki/static-testing/) 涉及一系列步骤，以确保该过程彻底且有效：
+准备 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 涉及一系列步骤，以确保该过程彻底且有效：
 
 1. **定义范围**：清楚地概述将检查代码库或文档的哪些部分。
 2. **收集文档**：收集所有相关文档，包括需求、设计规范和用户故事。
@@ -259,50 +259,50 @@ order: 0
 7. **培训参与者**：向团队提供有关如何有效执行静态测试的培训或指南，包括工具的使用和检查表的遵守。
 8. **安排会议**：计划和安排审核会议或分配静态分析时间，确保其符合开发时间表。
 9. **传达期望**：确保所有参与者了解静态测试阶段的目标和期望。
-10. **回顾过去的缺陷**：分析过去缺陷的历史数据，以针对已知漏洞领域定制静态测试方法。 通过精心准备，您可以最大限度地发挥[静态测试](/zh-cn/wiki/static-testing/)的有效性，并确保它有助于提高软件产品的整体质量。
+10. **回顾过去的缺陷**：分析过去缺陷的历史数据，以针对已知漏洞领域定制静态测试方法。 通过精心准备，您可以最大限度地发挥[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的有效性，并确保它有助于提高软件产品的整体质量。
 
 #### 静态测试参与者的角色和职责是什么？
 
-[静态测试](/zh-cn/wiki/static-testing/) 的参与者具有不同的角色和责任，以确保流程有效且高效：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的参与者具有不同的角色和责任，以确保流程有效且高效：
 
-- **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
+- **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
 - **开发人员**：他们参与同行评审和结对编程，以检查彼此的代码是否存在潜在缺陷。他们还确保代码遵守编码标准和最佳实践。
-- **[代码审查员](/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
-- **主持人（[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
+- **[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
+- **主持人（[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
 - **作者**：正在审核的工作产品的创建者。他们在评审期间回答问题并阐明其工作背后的意图。他们还负责在发现问题后进行必要的更改。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保 [静态测试](/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](/zh-cn/wiki/static-testing/)的结果以确保质量。 每个参与者都必须明确自己的责任，并积极为[静态测试](/zh-cn/wiki/static-testing/) 的成功做出贡献。所有参与者之间的协作和沟通至关重要。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的结果以确保质量。 每个参与者都必须明确自己的责任，并积极为[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的成功做出贡献。所有参与者之间的协作和沟通至关重要。
 
-- **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
+- **测试人员/分析师**：他们负责根据要求和设计文档准备[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和清单。他们使用这些工件来执行[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)，查找不一致、缺失的需求或潜在的错误。
 - **开发人员**：他们参与同行评审和结对编程，以检查彼此的代码是否存在潜在缺陷。他们还确保代码遵守编码标准和最佳实践。
-- **[代码审查员](/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
-- **主持人（[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
+- **[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)（同行）**：[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/) 通常是检查工作产品（例如代码、设计文档和缺陷要求）的其他团队成员。他们提供反馈并提出改进建议。
+- **主持人（[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)）**：在正式的 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 中，主持人领导审核流程，确保审核系统化，并且所有参与者都做好准备并了解自己的角色。
 - **作者**：正在审核的工作产品的创建者。他们在评审期间回答问题并阐明其工作背后的意图。他们还负责在发现问题后进行必要的更改。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保[静态测试](/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](/zh-cn/wiki/static-testing/)的结果以确保质量。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 团队**：QA 团队确保[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程遵守组织标准和流程。他们还可以审核[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的结果以确保质量。
 
 #### 静态测试过程中面临哪些常见挑战以及如何克服这些挑战？
 
-[静态测试](/zh-cn/wiki/static-testing/) 中的常见挑战包括：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 中的常见挑战包括：
 
-- **有限覆盖**：[静态测试](/zh-cn/wiki/static-testing/) 可能无法覆盖所有代码路径或场景。为了克服这个问题，请将[静态测试](/zh-cn/wiki/static-testing/) 与[动态测试](/zh-cn/wiki/dynamic-testing/) 结合起来以确保全面覆盖。
-- **[误报](/zh-cn/wiki/false-positive/)/Negatives**：静态分析工具可以生成[误报](/zh-cn/wiki/false-positive/)（标记非问题）或[假阴性](/zh-cn/wiki/false-negative/)（缺少实际问题）。优化工具配置并定期审查规则以最大程度地减少不准确性。
+- **有限覆盖**：[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 可能无法覆盖所有代码路径或场景。为了克服这个问题，请将[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 与[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 结合起来以确保全面覆盖。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)/Negatives**：静态分析工具可以生成[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)（标记非问题）或[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)（缺少实际问题）。优化工具配置并定期审查规则以最大程度地减少不准确性。
 - **代码的复杂性**：复杂的代码可能难以分析。鼓励开发人员编写干净、简单的代码，并使用结对编程来审查复杂的部分。
 - **工具限制**：没有工具可以检测所有问题。选择最适合您的项目语言和框架的工具，并在必要时使用多种工具。
-- **抵制变革**：开发人员可能会抵制 [静态测试](/zh-cn/wiki/static-testing/) 的引入。通过培训以及展示[静态测试](/zh-cn/wiki/static-testing/) 如何节省时间和提高代码质量来展示[静态测试](/zh-cn/wiki/static-testing/) 的价值。
-- **与开发流程集成**：将 [静态测试](/zh-cn/wiki/static-testing/) 集成到开发工作流程中可能具有挑战性。将 [静态测试](/zh-cn/wiki/static-testing/) 流程自动化，作为持续集成管道的一部分，以确保它是工作流程的无缝部分。
-- **理解结果并采取行动**：解释 [静态测试](/zh-cn/wiki/static-testing/) 工具的结果需要专业知识。提供充分的培训，以确保团队成员能够理解调查结果并有效采取行动。
-- **维护[测试套件](/zh-cn/wiki/test-suite/)**：随着代码库的发展，必须更新静态[测试套件](/zh-cn/wiki/test-suite/)。定期审查和维护[测试用例](/zh-cn/wiki/test-case/)，以确保它们保持相关性和有效性。
-- **有限覆盖**：[静态测试](/zh-cn/wiki/static-testing/) 可能无法覆盖所有代码路径或场景。为了克服这个问题，请将 [静态测试](/zh-cn/wiki/static-testing/) 与 [动态测试](/zh-cn/wiki/dynamic-testing/) 结合起来以确保全面覆盖。
-- **[误报](/zh-cn/wiki/false-positive/)/Negatives**：静态分析工具可以生成[误报](/zh-cn/wiki/false-positive/)（标记非问题）或[假阴性](/zh-cn/wiki/false-negative/)（缺少实际问题）。优化工具配置并定期审查规则以最大程度地减少不准确性。
+- **抵制变革**：开发人员可能会抵制 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的引入。通过培训以及展示[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 如何节省时间和提高代码质量来展示[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的价值。
+- **与开发流程集成**：将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 集成到开发工作流程中可能具有挑战性。将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程自动化，作为持续集成管道的一部分，以确保它是工作流程的无缝部分。
+- **理解结果并采取行动**：解释 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 工具的结果需要专业知识。提供充分的培训，以确保团队成员能够理解调查结果并有效采取行动。
+- **维护[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：随着代码库的发展，必须更新静态[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。定期审查和维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保它们保持相关性和有效性。
+- **有限覆盖**：[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 可能无法覆盖所有代码路径或场景。为了克服这个问题，请将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 与 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 结合起来以确保全面覆盖。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)/Negatives**：静态分析工具可以生成[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)（标记非问题）或[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)（缺少实际问题）。优化工具配置并定期审查规则以最大程度地减少不准确性。
 - **代码的复杂性**：复杂的代码可能难以分析。鼓励开发人员编写干净、简单的代码，并使用结对编程来审查复杂的部分。
 - **工具限制**：没有工具可以检测所有问题。选择最适合您的项目语言和框架的工具，并在必要时使用多种工具。
-- **抵制变革**：开发人员可能会抵制[静态测试](/zh-cn/wiki/static-testing/)的引入。通过培训以及展示[静态测试](/zh-cn/wiki/static-testing/) 如何节省时间和提高代码质量来展示[静态测试](/zh-cn/wiki/static-testing/) 的价值。
-- **与开发流程集成**：将 [静态测试](/zh-cn/wiki/static-testing/) 集成到开发工作流程中可能具有挑战性。将 [静态测试](/zh-cn/wiki/static-testing/) 流程自动化，作为持续集成管道的一部分，以确保它是工作流程的无缝部分。
-- **理解结果并采取行动**：解释 [静态测试](/zh-cn/wiki/static-testing/) 工具的结果需要专业知识。提供充分的培训，以确保团队成员能够理解调查结果并有效采取行动。
-- **维护[测试套件](/zh-cn/wiki/test-suite/)**：随着代码库的发展，静态[测试套件](/zh-cn/wiki/test-suite/)必须更新。定期审查和维护[测试用例](/zh-cn/wiki/test-case/)，以确保它们保持相关性和有效性。
+- **抵制变革**：开发人员可能会抵制[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的引入。通过培训以及展示[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 如何节省时间和提高代码质量来展示[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的价值。
+- **与开发流程集成**：将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 集成到开发工作流程中可能具有挑战性。将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程自动化，作为持续集成管道的一部分，以确保它是工作流程的无缝部分。
+- **理解结果并采取行动**：解释 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 工具的结果需要专业知识。提供充分的培训，以确保团队成员能够理解调查结果并有效采取行动。
+- **维护[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：随着代码库的发展，静态[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)必须更新。定期审查和维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保它们保持相关性和有效性。
 
 #### 如何衡量静态测试的有效性？
 
-衡量[静态测试](/zh-cn/wiki/static-testing/) 的有效性涉及评估对代码质量、开发速度和总体项目成本的影响。关键指标包括：
+衡量[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的有效性涉及评估对代码质量、开发速度和总体项目成本的影响。关键指标包括：
 
 - **缺陷密度**：计算每行代码 (LOC) 或每个模块发现的缺陷数量。静态测试后缺陷密度越低表明代码质量越高。
 
@@ -316,30 +316,30 @@ order: 0
   defectDetectionRate = (defectsFoundInStaticTesting / totalDefectsFound) * 100
 ```
 
-- **质量成本**：比较预防成本（包括[静态测试](/zh-cn/wiki/static-testing/)）和失败成本（因缺陷而产生的成本）。有效的[静态测试](/zh-cn/wiki/static-testing/) 应减少故障成本。
-- **上市时间**：监控发布软件所需时间的任何变化。有效的[静态测试](/zh-cn/wiki/static-testing/) 可以通过及早发现缺陷来减少这种情况。
-- **代码复杂度**：使用工具测量[静态测试](/zh-cn/wiki/static-testing/)之前和之后的圈复杂度。 [静态测试](/zh-cn/wiki/static-testing/) 之后较低的复杂性可以表明改进的代码[可维护性](/zh-cn/wiki/maintainability/)。
-- **审核效率**：计算每小时审核发现的缺陷数量。更高的效率意味着[静态测试](/zh-cn/wiki/static-testing/) 流程更有效。
+- **质量成本**：比较预防成本（包括[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)）和失败成本（因缺陷而产生的成本）。有效的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 应减少故障成本。
+- **上市时间**：监控发布软件所需时间的任何变化。有效的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 可以通过及早发现缺陷来减少这种情况。
+- **代码复杂度**：使用工具测量[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)之前和之后的圈复杂度。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 之后较低的复杂性可以表明改进的代码[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
+- **审核效率**：计算每小时审核发现的缺陷数量。更高的效率意味着[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程更有效。
 
 ```
   reviewEfficiency = numberOfDefectsFound / hoursSpentReviewing
 ```
 
-- **返工百分比**：静态测试后需要返工的代码量。较低的百分比表明初始代码质量较高。 定期跟踪这些指标以评估和完善您的 [静态测试](/zh-cn/wiki/static-testing/) 流程，确保其保持有效并与项目目标保持一致。
+- **返工百分比**：静态测试后需要返工的代码量。较低的百分比表明初始代码质量较高。 定期跟踪这些指标以评估和完善您的 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程，确保其保持有效并与项目目标保持一致。
 
 - **缺陷密度**：计算每行代码 (LOC) 或每个模块发现的缺陷数量。静态测试后缺陷密度越低表明代码质量越高。
 - **缺陷检测率**：静态测试期间发现的缺陷占整个项目生命周期中发现的缺陷总数的百分比。较高的比率表明静态测试对于早期缺陷识别是有效的。
-- **质量成本**：比较预防成本（包括[静态测试](/zh-cn/wiki/static-testing/)）和失败成本（因缺陷而产生的成本）。有效的[静态测试](/zh-cn/wiki/static-testing/) 应减少故障成本。
-- **上市时间**：监控发布软件所需时间的任何变化。有效的[静态测试](/zh-cn/wiki/static-testing/) 可以通过及早发现缺陷来减少这种情况。
-- **代码复杂度**：使用工具测量[静态测试](/zh-cn/wiki/static-testing/)之前和之后的圈复杂度。 [静态测试](/zh-cn/wiki/static-testing/) 之后较低的复杂性可以表明改进的代码[可维护性](/zh-cn/wiki/maintainability/)。
-- **审核效率**：计算每小时审核发现的缺陷数量。更高的效率意味着[静态测试](/zh-cn/wiki/static-testing/) 流程更有效。
+- **质量成本**：比较预防成本（包括[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)）和失败成本（因缺陷而产生的成本）。有效的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 应减少故障成本。
+- **上市时间**：监控发布软件所需时间的任何变化。有效的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 可以通过及早发现缺陷来减少这种情况。
+- **代码复杂度**：使用工具测量[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)之前和之后的圈复杂度。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 之后较低的复杂性可以表明改进的代码[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
+- **审核效率**：计算每小时审核发现的缺陷数量。更高的效率意味着[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 流程更有效。
 - **返工百分比**：静态测试后需要返工的代码量。较低的百分比表明初始代码质量较高。
 
 ### 最佳实践
 
 #### 静态测试的最佳实践是什么？
 
-[静态测试](/zh-cn/wiki/static-testing/) 的最佳实践包括：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的最佳实践包括：
 
 - **早期集成**：尽早将静态测试集成到开发过程中，以便在缺陷传播之前识别它们。
 - **定期执行**：经常运行静态测试以及时发现问题，最好是在每次提交新代码时进行测试。
@@ -351,11 +351,11 @@ order: 0
 - **培训**：为团队成员提供有关如何有效使用静态测试工具并解释其结果的培训。
 - **持续改进**：根据反馈和指标定期审查和完善静态测试流程，以提高其有效性。
 - **与 CI/CD 集成**：在持续集成/持续部署 (CI/CD) 管道中自动执行静态测试，以确保它们不会被跳过。
-- **可操作的报告**：确保静态测试工具生成清晰、可操作的报告，开发人员可以使用这些报告做出明智的决策。 通过遵循这些实践，团队可以最大限度地发挥 [静态测试](/zh-cn/wiki/static-testing/) 的优势，从而实现更简洁的代码、更少的 [bugs](/zh-cn/wiki/bug/) 以及更高效的开发流程。
+- **可操作的报告**：确保静态测试工具生成清晰、可操作的报告，开发人员可以使用这些报告做出明智的决策。 通过遵循这些实践，团队可以最大限度地发挥 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的优势，从而实现更简洁的代码、更少的 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 以及更高效的开发流程。
 
 #### 如何提高静态测试效率？
 
-为了提高[静态测试](/zh-cn/wiki/static-testing/)的效率：
+为了提高[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的效率：
 
 - **优先考虑**根据复杂性、更改频率和过去的缺陷趋势确定最关键的代码区域和模块。
 
@@ -363,19 +363,19 @@ order: 0
 
 - **自定义分析规则**以满足您项目的特定需求，减少误报并关注相关问题。
 
-- **将 [静态测试](/zh-cn/wiki/static-testing/) 集成到您的 CI/CD 管道中** ，确保每次提交或构建时都会自动检查代码。
+- **将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 集成到您的 CI/CD 管道中** ，确保每次提交或构建时都会自动检查代码。
 
 - 开发一个 **知识库**常见问题和解决方案，以简化识别和解决过程。
 
 - **密切合作**与开发人员合作，确保他们理解静态测试报告并能够及时采取行动。
 
-- **完善您的[静态测试](/zh-cn/wiki/static-testing/)流程**定期基于反馈和指标，以与项目目标和质量标准保持一致。
+- **完善您的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)流程**定期基于反馈和指标，以与项目目标和质量标准保持一致。
 
 - **教育你的团队**关于编码标准和最佳实践的重要性，以尽量减少缺陷的引入。
 
 - 使用 **同行评审**作为自动化工具的补充，利用团队内的多样化专业知识进行更全面的分析。
 
-- **跟踪和分析指标**例如缺陷密度和修复时间，使用这些数据不断改进您的静态测试方法。 通过关注这些策略，您可以显着提高软件开发过程中 [静态测试](/zh-cn/wiki/static-testing/) 的效率。
+- **跟踪和分析指标**例如缺陷密度和修复时间，使用这些数据不断改进您的静态测试方法。 通过关注这些策略，您可以显着提高软件开发过程中 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的效率。
 
 - **优先考虑**根据复杂性、更改频率和过去的缺陷趋势确定最关键的代码区域和模块。
 
@@ -383,13 +383,13 @@ order: 0
 
 - **自定义分析规则**以满足您项目的特定需求，减少误报并关注相关问题。
 
-- **将 [静态测试](/zh-cn/wiki/static-testing/) 集成到您的 CI/CD 管道中** ，确保每次提交或构建时都会自动检查代码。
+- **将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 集成到您的 CI/CD 管道中** ，确保每次提交或构建时都会自动检查代码。
 
 - 开发一个 **知识库**常见问题和解决方案，以简化识别和解决过程。
 
 - **密切合作**与开发人员合作，确保他们理解静态测试报告并能够及时采取行动。
 
-- **完善您的[静态测试](/zh-cn/wiki/static-testing/)流程**定期基于反馈和指标，以与项目目标和质量标准保持一致。
+- **完善您的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)流程**定期基于反馈和指标，以与项目目标和质量标准保持一致。
 
 - **教育你的团队**关于编码标准和最佳实践的重要性，以尽量减少缺陷的引入。
 
@@ -399,37 +399,37 @@ order: 0
 
 #### 静态测试中需要避免哪些常见错误？
 
-[静态测试](/zh-cn/wiki/static-testing/) 中要避免的常见错误包括：
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 中要避免的常见错误包括：
 
-- **忽视早期参与**：[静态测试](/zh-cn/wiki/static-testing/) 应在开发过程的早期开始。忽视这一点可能会导致遗漏缺陷，如果尽早发现这些缺陷，本可以轻松识别和解决这些缺陷。
+- **忽视早期参与**：[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 应在开发过程的早期开始。忽视这一点可能会导致遗漏缺陷，如果尽早发现这些缺陷，本可以轻松识别和解决这些缺陷。
 - **覆盖范围不足**：仅关注代码或文档的某些方面可能会导致测试中的空白。确保彻底检查所有相关材料。
 - **审核团队缺乏多样性**：拥有相似背景或专业知识的团队可能会导致视角狭窄。让具有不同技能的团队成员参与进来，以解决更广泛的问题。
 - **跳过准备**：充分的准备（例如定义清单和标准）至关重要。如果没有它，评论可能会不一致并且效率较低。
-- **忽略非代码工件**：[静态测试](/zh-cn/wiki/static-testing/) 不仅仅适用于代码。未能审查设计文档、需求和其他工件可能会导致后期出现问题。
+- **忽略非代码工件**：[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 不仅仅适用于代码。未能审查设计文档、需求和其他工件可能会导致后期出现问题。
 - **过度依赖工具**：虽然工具很有帮助，但它们并不能抓住一切。通过手动审查补充自动化工具，以确保进行全面的分析。
-- **后续行动不足**：发现缺陷只是成功的一半。如果不对已发现的问题进行适当的跟踪和解决，[静态测试](/zh-cn/wiki/static-testing/) 的优势就会丧失。
-- **沟通不畅**：有效的[静态测试](/zh-cn/wiki/static-testing/)依赖于清晰的沟通。确保反馈具有建设性，并且对调查结果和所需采取的行动有相互理解。
-- **对调查结果的抵制**：有时，人们倾向于捍卫工作而不是解决问题。鼓励采取开放的态度，重点是改进，而不是批评。 请记住，[静态测试](/zh-cn/wiki/static-testing/) 的目标是通过及早有效地识别缺陷来提高软件质量。避免这些常见陷阱可以显着提高您[静态测试](/zh-cn/wiki/static-testing/) 工作的有效性。
+- **后续行动不足**：发现缺陷只是成功的一半。如果不对已发现的问题进行适当的跟踪和解决，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的优势就会丧失。
+- **沟通不畅**：有效的[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)依赖于清晰的沟通。确保反馈具有建设性，并且对调查结果和所需采取的行动有相互理解。
+- **对调查结果的抵制**：有时，人们倾向于捍卫工作而不是解决问题。鼓励采取开放的态度，重点是改进，而不是批评。 请记住，[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的目标是通过及早有效地识别缺陷来提高软件质量。避免这些常见陷阱可以显着提高您[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 工作的有效性。
 
 #### 如何将静态测试集成到软件开发生命周期中？
 
-将[静态测试](/zh-cn/wiki/static-testing/) 集成到软件开发生命周期 (SDLC) 中涉及将其嵌入到各个阶段以确保及早发现缺陷。以下是如何有效地做到这一点：
-  **1.需求分析：** 通过查看需求文档来引入[静态测试](/zh-cn/wiki/static-testing/)。使用检查表来验证需求的完整性、一致性和可测试性。
-  **2.设计阶段：** 通过审查或模型分析将 [静态测试](/zh-cn/wiki/static-testing/) 应用到设计规范。 UML 检查器等工具可以帮助验证设计图。
+将[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 集成到软件开发生命周期 (SDLC) 中涉及将其嵌入到各个阶段以确保及早发现缺陷。以下是如何有效地做到这一点：
+  **1.需求分析：** 通过查看需求文档来引入[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)。使用检查表来验证需求的完整性、一致性和可测试性。
+  **2.设计阶段：** 通过审查或模型分析将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 应用到设计规范。 UML 检查器等工具可以帮助验证设计图。
   **3.编码阶段：** 实施静态代码分析工具，在开发人员编写代码时自动扫描代码以查找潜在问题。将这些工具集成到您的 IDE 和版本控制系统中，以确保持续分析。
   **4.代码审查：** 正式进行同行审查或结对编程，以检查代码是否有逻辑错误、是否遵守编码标准以及潜在的性能问题。
   **5.构建和部署：** 在 CI/CD 管道中包含静态分析。配置触发静态分析检查的预提交或预推送挂钩，如果发现关键问题则阻止构建。
-  **6。测试计划：** 在测试计划期间，使用[静态测试](/zh-cn/wiki/static-testing/) 来审查测试策略、计划和案例。确保它们涵盖软件的所有方面并符合要求。
-  **7.维护：** 持续将 [静态测试](/zh-cn/wiki/static-testing/) 应用于代码库的任何更改或添加，确保即使在维护期间，[软件质量](/zh-cn/wiki/software-quality/) 仍保持高电平。
-  通过在整个 SDLC 中集成[静态测试](/zh-cn/wiki/static-testing/)，您可以及早发现缺陷、降低成本并保持高质量标准。请记住选择与您的开发实践相符的工具和技术，并培训您的团队有效地使用 [静态测试](/zh-cn/wiki/static-testing/) 方法。
+  **6。测试计划：** 在测试计划期间，使用[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 来审查测试策略、计划和案例。确保它们涵盖软件的所有方面并符合要求。
+  **7.维护：** 持续将 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 应用于代码库的任何更改或添加，确保即使在维护期间，[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 仍保持高电平。
+  通过在整个 SDLC 中集成[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)，您可以及早发现缺陷、降低成本并保持高质量标准。请记住选择与您的开发实践相符的工具和技术，并培训您的团队有效地使用 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 方法。
 
 #### 静态测试的行业标准是什么？
 
-[静态测试](/zh-cn/wiki/static-testing/) 的行业标准是确保在不执行代码的情况下评估软件工件的一致且有效的方法的指南和实践。这些标准通常源自正式组织和集体行业经验。
-  **ISO/IEC 20246:2019** 是一项广泛认可的标准，提供了 [静态测试](/zh-cn/wiki/static-testing/) 的要求，重点是工作产品审查。它概述了执行审核的流程，包括计划、准备、执行和记录。
-  **IEEE 1028** 定义了软件审查和审计的标准实践，其中包括 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)、演练、技术审查和管理审查。该标准强调在开发过程的早期识别缺陷和问题。
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的行业标准是确保在不执行代码的情况下评估软件工件的一致且有效的方法的指南和实践。这些标准通常源自正式组织和集体行业经验。
+  **ISO/IEC 20246:2019** 是一项广泛认可的标准，提供了 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 的要求，重点是工作产品审查。它概述了执行审核的流程，包括计划、准备、执行和记录。
+  **IEEE 1028** 定义了软件审查和审计的标准实践，其中包括 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)、演练、技术审查和管理审查。该标准强调在开发过程的早期识别缺陷和问题。
   **MISRA（汽车行业软件可靠性协会）** 指南（特别与嵌入式系统相关）提供了一组静态代码分析规则，以确保软件的安全性和可靠性。
   **CERT（计算机紧急响应小组）**编码标准提供了一系列静态分析规则和建议，以避免可能导致安全漏洞的常见编程错误。
   **OWASP（开放 Web 应用程序安全项目）** 提供了一系列针对 Web 应用程序安全性的静态代码分析的最佳实践和工具。
-  **SANS Top 25** 列出了导致安全[bugs](/zh-cn/wiki/bug/) 的最常见编程错误，并提供了如何通过静态分析避免这些错误的指导。
-  遵守这些标准有助于组织保持质量、减少缺陷并确保遵守安全法规。支持[静态测试](/zh-cn/wiki/static-testing/)的工具通常包含这些标准，以根据定义的规则和指南提供自动检查。
+  **SANS Top 25** 列出了导致安全[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的最常见编程错误，并提供了如何通过静态分析避免这些错误的指导。
+  遵守这些标准有助于组织保持质量、减少缺陷并确保遵守安全法规。支持[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)的工具通常包含这些标准，以根据定义的规则和指南提供自动检查。

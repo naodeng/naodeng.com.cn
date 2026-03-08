@@ -117,10 +117,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [active-memory](/en/AIWiki/active-memory/)
-- [automatic-memory](/en/AIWiki/automatic-memory/)
-- [prompt-caching](/en/AIWiki/prompt-caching/)
-- [context-window-management](/en/AIWiki/context-window-management/)
+- [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
+- [automatic-memory](https://inaodeng.com/en/AIWiki/automatic-memory/)
+- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
+- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
 
 ### External References
 

@@ -39,9 +39,9 @@ order: 0
 
 ## 相关术语
 
-- [网络自动化](/zh-cn/wiki/web-automation/)
-- [selenium IDE](/zh-cn/wiki/selenium-ide/)
-- [WebDriver](/zh-cn/wiki/webdriver/)
+- [网络自动化](https://inaodeng.com/zh-cn/wiki/web-automation/)
+- [selenium IDE](https://inaodeng.com/zh-cn/wiki/selenium-ide/)
+- [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)
 
 ## 有关页面对象模型的问题吗？
 
@@ -49,8 +49,8 @@ order: 0
 
 #### 自动化测试中的页面对象模型是什么？
 
-**[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 是自动化测试中的一种设计模式，它将网页的属性和行为封装在一个类中。每个页面类都充当网页的接口，与该页面的所有交互都通过页面对象，隐藏底层的 [selenium](/zh-cn/wiki/selenium/) 调用。
-  下面是使用 [selenium](/zh-cn/wiki/selenium/) 的 Java 基本示例：
+**[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** 是自动化测试中的一种设计模式，它将网页的属性和行为封装在一个类中。每个页面类都充当网页的接口，与该页面的所有交互都通过页面对象，隐藏底层的 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 调用。
+  下面是使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的 Java 基本示例：
 
 ```
   public class LoginPage {
@@ -72,8 +72,8 @@ order: 0
       }
   }
 ```
-在此模型中，测试与页面对象交互，而不是直接与 Web 元素交互。这种抽象减少了代码重复并改进了[可维护性](/zh-cn/wiki/maintainability/)。当页面更改时，仅需要更新页面对象，而不需要更新与其交互的测试。
-  要与页面对象交互，测试将使用对 [WebDriver](/zh-cn/wiki/webdriver/) 的引用来实例化页面对象，并使用其方法来执行操作：
+在此模型中，测试与页面对象交互，而不是直接与 Web 元素交互。这种抽象减少了代码重复并改进了[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。当页面更改时，仅需要更新页面对象，而不需要更新与其交互的测试。
+  要与页面对象交互，测试将使用对 [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 的引用来实例化页面对象，并使用其方法来执行操作：
 
 ```
   LoginPage loginPage = new LoginPage(driver);
@@ -85,38 +85,38 @@ order: 0
 
 #### 为什么页面对象模型被认为是自动化测试中的良好实践？
 
-[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 被认为是自动化测试中的良好实践，因为它**增强了测试维护**并**减少了代码重复**。通过将页面信息与实际测试分开，它可以实现**清晰的关注点分离**。这意味着对 UI 的更改只需要在页面对象类中进行更新，而不需要在测试本身中进行更新，从而使测试对应用程序 UI 中的更改更具**弹性**。
-  此外，POM 促进了代码的**更好的组织**并**提高了可读性**，因为该模型鼓励采用模块化的脚本编写方法。 [测试用例](/zh-cn/wiki/test-case/) 变得更**易于理解**和**更易于导航**，因为它们与表示页面的方法交互，而不是直接与 UI 元素交互。
+[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 被认为是自动化测试中的良好实践，因为它**增强了测试维护**并**减少了代码重复**。通过将页面信息与实际测试分开，它可以实现**清晰的关注点分离**。这意味着对 UI 的更改只需要在页面对象类中进行更新，而不需要在测试本身中进行更新，从而使测试对应用程序 UI 中的更改更具**弹性**。
+  此外，POM 促进了代码的**更好的组织**并**提高了可读性**，因为该模型鼓励采用模块化的脚本编写方法。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 变得更**易于理解**和**更易于导航**，因为它们与表示页面的方法交互，而不是直接与 UI 元素交互。
   使用 POM 还可以促进**团队协作**。由于该模型为页面提供的服务或操作提供了一个存储库，因此多个测试工程师可以处理自动化脚本，而不会互相干扰。
-  最后，POM可以轻松地**与其他设计模式集成**，例如Singleton或Factory，以进一步提高[测试自动化](/zh-cn/wiki/test-automation/)框架的效率和可扩展性。这种集成可以带来更**强大和灵活的**测试架构，可以轻松处理复杂的[测试场景](/zh-cn/wiki/test-scenario/)。
-  从本质上讲，POM 是现代 [测试自动化](/zh-cn/wiki/test-automation/) 策略的基石，提供了一种符合良好软件设计原则的结构化且可维护的方法。
+  最后，POM可以轻松地**与其他设计模式集成**，例如Singleton或Factory，以进一步提高[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架的效率和可扩展性。这种集成可以带来更**强大和灵活的**测试架构，可以轻松处理复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+  从本质上讲，POM 是现代 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略的基石，提供了一种符合良好软件设计原则的结构化且可维护的方法。
 
 #### 使用页面对象模型有哪些好处？
 
-**[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 为 [测试自动化](/zh-cn/wiki/test-automation/) 提供了多项优势：
+**[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** 为 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 提供了多项优势：
 
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：通过封装页面详细信息，POM 减少了维护工作。 UI 的更改只需要更新页面对象类，而不需要更新测试。
+- **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** ：通过封装页面详细信息，POM 减少了维护工作。 UI 的更改只需要更新页面对象类，而不需要更新测试。
 - **可读性**：由于页面操作和断言的清晰分离，测试变得更具可读性。这使得新团队成员更容易理解代码。
 - **可重用性**：页面方法可以在多个测试中重用，减少代码重复。
 - **减少不稳定**：集中元素定位器和交互可以带来更稳定的测试，因为对这些元素的更改只需要在一处更新。
 - **更好的协作**：清晰的结构允许开发人员和测试人员在测试代码库上更有效地合作。
 - **易于报告**：使用表示页面操作的方法，可以更简单地生成有意义的测试报告和日志。
-- **可扩展性**：POM 支持通过添加新的页面对象和测试来扩展测试套件，而不会显着增加复杂性。 通过利用 POM，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以构建一个健壮、可扩展且可维护的[测试套件](/zh-cn/wiki/test-suite/)，它可以适应应用程序 UI 的变化，同时对现有测试的影响最小。
+- **可扩展性**：POM 支持通过添加新的页面对象和测试来扩展测试套件，而不会显着增加复杂性。 通过利用 POM，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以构建一个健壮、可扩展且可维护的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，它可以适应应用程序 UI 的变化，同时对现有测试的影响最小。
 
 #### 页面对象模型如何提高测试代码的可维护性？
 
-[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 通过**封装**页面对象中的 UI 结构和行为来增强测试代码的[可维护性](/zh-cn/wiki/maintainability/)。这种分离意味着对 UI 的更改只需要在一处进行更新，从而降低了重复代码的风险并使其更易于管理。
+[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 通过**封装**页面对象中的 UI 结构和行为来增强测试代码的[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。这种分离意味着对 UI 的更改只需要在一处进行更新，从而降低了重复代码的风险并使其更易于管理。
   通过抽象页面细节，POM 允许测试**可读**和**可理解**，类似于特定于领域的语言。这种清晰度使任何人都可以在必要时轻松更新测试。
   POM 促进**可重用性**。跨页面共享的公共元素和功能可以抽象为基类或实用程序类，页面对象可以从中继承或使用。这种方法最大限度地减少了为类似 UI 组件编写和维护测试所需的工作量。
   使用 POM，测试对于 UI 中的更改不会那么脆弱。由于定位器和与 UI 的交互仅限于页面对象，因此页面结构中的任何修改仅需要在页面对象类中进行更改，而不是在测试本身中进行更改。这种**解耦**确保测试逻辑保持稳定并且不受 UI 更改的影响。
-  最后，POM 支持**并行开发**。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师可以在开发应用程序 UI 的同时开发和维护页面对象，从而实现持续集成和测试。
-  总之，POM 通过集中更改、增强可读性、促进可重用性、降低脆弱性和支持并行开发工作来改进[可维护性](/zh-cn/wiki/maintainability/)。
+  最后，POM 支持**并行开发**。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以在开发应用程序 UI 的同时开发和维护页面对象，从而实现持续集成和测试。
+  总之，POM 通过集中更改、增强可读性、促进可重用性、降低脆弱性和支持并行开发工作来改进[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
 
 ### 执行
 
 #### Selenium 中的页面对象模型是如何实现的？
 
-在[selenium](/zh-cn/wiki/selenium/) 中实现[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 需要为每个网页创建一个单独的类文件。每个类都封装了网页的结构和行为，提供与其元素交互的方法。
+在[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 中实现[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 需要为每个网页创建一个单独的类文件。每个类都封装了网页的结构和行为，提供与其元素交互的方法。
   这是分步指南：
 
 1. **使用 ID、名称、CSS 选择器或 XPath 等定位器识别网页上的元素**。
@@ -163,7 +163,7 @@ order: 0
     private By loginButton = By.id("login");
 ```
 
-- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](/zh-cn/wiki/webdriver/)** 作为参数。
+- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** 作为参数。
 
 ```
     public LoginPage(WebDriver driver) {
@@ -187,7 +187,7 @@ order: 0
     }
 ```
 
-- **断言**：允许 [验证 ](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
+- **断言**：允许 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
 
 ```
     public boolean isLoginButtonVisible() {
@@ -213,7 +213,7 @@ order: 0
     private By loginButton = By.id("login");
 ```
 
-- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](/zh-cn/wiki/webdriver/)** 作为参数。
+- **构造函数**：初始化页面对象，通常确保页面处于预期状态。可以使用 **[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** 作为参数。
 
 ```
     public LoginPage(WebDriver driver) {
@@ -237,7 +237,7 @@ order: 0
     }
 ```
 
-- **断言**：允许 [验证 ](/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
+- **断言**：允许 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 页面或某些元素的状态的方法，确保页面在操作后按预期运行。
 
 ```
     public boolean isLoginButtonVisible() {
@@ -258,7 +258,7 @@ order: 0
 
 #### 如何处理页面对象模型中的动态元素？
 
-处理 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 中的动态元素涉及允许您的测试与可能具有不一致标识符或可能在测试运行之间更改状态的元素进行交互的策略。以下是一些方法：
+处理 [页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 中的动态元素涉及允许您的测试与可能具有不一致标识符或可能在测试运行之间更改状态的元素进行交互的策略。以下是一些方法：
 
 - **使用等待**：实现显式等待来处理在特定条件或时间后出现的元素。这确保了当您的测试尝试访问这些元素时，这些元素是可交互的。
 
@@ -304,8 +304,8 @@ order: 0
 
 #### 如何在页面对象模型中使用页面工厂类？
 
-在 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 中使用 **Page Factory** 类涉及以支持 POM 设计原则的方式初始化元素。 Page Factory 提供了 `initElements` 方法来初始化所有使用 `@FindBy`、`@FindBys` 或 `@FindAll` 注释进行注释的 WebElement 字段。
-  下面是使用 [selenium](/zh-cn/wiki/selenium/) 的 PageFactory 的 Java 基本示例：
+在 [页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 中使用 **Page Factory** 类涉及以支持 POM 设计原则的方式初始化元素。 Page Factory 提供了 `initElements` 方法来初始化所有使用 `@FindBy`、`@FindBys` 或 `@FindAll` 注释进行注释的 WebElement 字段。
+  下面是使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的 PageFactory 的 Java 基本示例：
 
 ```
   import org.openqa.selenium.WebDriver;
@@ -339,17 +339,17 @@ order: 0
   **页面工厂** 特别适用于：
 
 - **可读性**：它清楚地将页面结构与测试逻辑分开。
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：对元素定位器的更改仅需要在一处更新。
+- **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** ：对元素定位器的更改仅需要在一处更新。
 - **可重用性**：常用的元素和交互可以封装在方法中以便在测试中重用。
 - **可读性**：它清楚地将页面结构与测试逻辑分开。
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：对元素定位器的更改仅需要在一处更新。
+- **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** ：对元素定位器的更改仅需要在一处更新。
 - **可重用性**：常用的元素和交互可以封装在方法中以便在测试中重用。
 
 ### 高级概念
 
 #### 页面对象模型如何与单例或工厂等其他设计模式一起使用？
 
-**[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 可以通过与 **Singleton** 和 **Factory** 等其他设计模式集成来增强，以提高测试维护和可扩展性。
+**[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** 可以通过与 **Singleton** 和 **Factory** 等其他设计模式集成来增强，以提高测试维护和可扩展性。
   **单例**确保一个类只有一个实例并提供对其的全局访问点。在POM中，Singleton可以管理浏览器会话的实例化。通过对浏览器实例使用 Singleton，您可以确保测试不会无意中生成多个浏览器窗口。
 
 ```
@@ -378,16 +378,16 @@ order: 0
       }
   }
 ```
-通过将 POM 与 Factory 相结合，您可以在运行时动态创建页面对象，这在处理共享相似功能的多个页面时特别有用。 Singleton与POM一起使用时，可以确保[WebDriver](/zh-cn/wiki/webdriver/)实例被有效地重用，从而减少资源消耗并加快[测试执行](/zh-cn/wiki/test-execution/)的速度。这些模式共同构建了一个更健壮、可维护和可扩展的 [测试自动化](/zh-cn/wiki/test-automation/) 框架。
+通过将 POM 与 Factory 相结合，您可以在运行时动态创建页面对象，这在处理共享相似功能的多个页面时特别有用。 Singleton与POM一起使用时，可以确保[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)实例被有效地重用，从而减少资源消耗并加快[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的速度。这些模式共同构建了一个更健壮、可维护和可扩展的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架。
 
 #### 如何在页面对象模型中处理页面导航？
 
-处理 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 中的页面导航涉及将导航逻辑封装在页面对象本身内。这种方法保持了关注点的分离，并使测试保持干净和可读。
+处理 **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** 中的页面导航涉及将导航逻辑封装在页面对象本身内。这种方法保持了关注点的分离，并使测试保持干净和可读。
   这是一个总体策略：
 
 - **定义方法**用于在页面对象类中导航。这些方法执行导致页面转换的操作，例如单击链接或提交表单。
 
-- **返回一个新的页面对象**代表目标页面的实例。这允许在测试中提供流畅的界面和链接操作。 例如，在基于 [selenium](/zh-cn/wiki/selenium/) 的 [测试自动化](/zh-cn/wiki/test-automation/) 框架中：
+- **返回一个新的页面对象**代表目标页面的实例。这允许在测试中提供流畅的界面和链接操作。 例如，在基于 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架中：
 
 ```
   public class HomePage {
@@ -419,7 +419,7 @@ order: 0
 
 #### 页面对象模型中抽象的作用是什么？
 
-[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 中的抽象用于将网页的**实现细节**与使用它们的测试分开。通过将网页交互抽象为**高级方法**，POM 允许 [测试脚本](/zh-cn/wiki/test-script/) 与页面元素交互，而无需了解底层 HTML 或 CSS。这种封装意味着页面结构的更改仅需要在页面对象类中进行更新，而不是在测试本身中进行更新。
+[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 中的抽象用于将网页的**实现细节**与使用它们的测试分开。通过将网页交互抽象为**高级方法**，POM 允许 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 与页面元素交互，而无需了解底层 HTML 或 CSS。这种封装意味着页面结构的更改仅需要在页面对象类中进行更新，而不是在测试本身中进行更新。
   例如，考虑带有用户名和密码字段的登录页面。您无需在测试中直接编写代码与这些字段进行交互，而是在页面对象中创建一个方法：
 
 ```
@@ -436,12 +436,12 @@ order: 0
   LoginPage loginPage = new LoginPage(driver);
   HomePage homePage = loginPage.login("user", "pass");
 ```
-这种抽象使得测试**更易于阅读和维护**，因为它们专注于正在测试的**行为**，而不是用户界面的**机制**。它还减少了**代码重复**，因为常见的交互集中在页面对象方法中。当 UI 发生更改时，您只需更新页面对象，而不需要更新测试，从而确保 [测试套件](/zh-cn/wiki/test-suite/) 的**稳健性**和**可扩展性**。
+这种抽象使得测试**更易于阅读和维护**，因为它们专注于正在测试的**行为**，而不是用户界面的**机制**。它还减少了**代码重复**，因为常见的交互集中在页面对象方法中。当 UI 发生更改时，您只需更新页面对象，而不需要更新测试，从而确保 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的**稳健性**和**可扩展性**。
 
 #### 如何使用页面对象模型处理多个窗口或框架？
 
-处理 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 中的多个窗口或框架涉及为每个窗口或框架创建单独的页面对象。这封装了每个上下文中的交互，维护了 POM 的模块化和可重用性原则。
-  对于**窗口之间的切换**，可以使用[WebDriver](/zh-cn/wiki/webdriver/) 的`switchTo().window()` 方法。在与窗口中的元素交互之前，存储窗口句柄并切换到所需的窗口。
+处理 [页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM) 中的多个窗口或框架涉及为每个窗口或框架创建单独的页面对象。这封装了每个上下文中的交互，维护了 POM 的模块化和可重用性原则。
+  对于**窗口之间的切换**，可以使用[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 的`switchTo().window()` 方法。在与窗口中的元素交互之前，存储窗口句柄并切换到所需的窗口。
 
 ```
   Set<String> windowHandles = driver.getWindowHandles();
@@ -452,7 +452,7 @@ order: 0
       }
   }
 ```
-对于**处理框架或 iframe**，请使用 [WebDriver](/zh-cn/wiki/webdriver/) 的 `switchTo().frame()` 方法。您可以按索引、名称或 WebElement 切换到框架。切换后，通过其专用的页面对象与框架的内容进行交互。
+对于**处理框架或 iframe**，请使用 [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 的 `switchTo().frame()` 方法。您可以按索引、名称或 WebElement 切换到框架。切换后，通过其专用的页面对象与框架的内容进行交互。
 
 ```
   driver.switchTo().frame("frameName");
@@ -460,4 +460,4 @@ order: 0
   driver.switchTo().defaultContent(); // Switch back to the main page
 ```
 请记住在交互完成后切换回主要内容或原始窗口，以保持后续操作的稳定状态。这可以通过对框架使用 `driver.switchTo().defaultContent()` 或通过切换到窗口的原始窗口句柄来完成。
-  通过将窗口和框架处理封装在页面对象中，您可以保持关注点的清晰分离并改进测试代码的[可维护性](/zh-cn/wiki/maintainability/)。
+  通过将窗口和框架处理封装在页面对象中，您可以保持关注点的清晰分离并改进测试代码的[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。

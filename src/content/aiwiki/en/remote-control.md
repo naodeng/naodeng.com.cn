@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [cross-surface-operation](/en/AIWiki/cross-surface-operation/)
-- [background-agents](/en/AIWiki/background-agents/)
-- [human-in-the-loop](/en/AIWiki/human-in-the-loop/)
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
+- [cross-surface-operation](https://inaodeng.com/en/AIWiki/cross-surface-operation/)
+- [background-agents](https://inaodeng.com/en/AIWiki/background-agents/)
+- [human-in-the-loop](https://inaodeng.com/en/AIWiki/human-in-the-loop/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
 
 ### External References
 

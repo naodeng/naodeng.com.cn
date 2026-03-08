@@ -115,10 +115,10 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [rule](/zh-cn/AIWiki/rule/)
-- [skill](/zh-cn/AIWiki/skill/)
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
-- [prompt-driven-development](/zh-cn/AIWiki/prompt-driven-development/)
+- [rule](https://inaodeng.com/zh-cn/AIWiki/rule/)
+- [skill](https://inaodeng.com/zh-cn/AIWiki/skill/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
+- [prompt-driven-development](https://inaodeng.com/zh-cn/AIWiki/prompt-driven-development/)
 
 ### 术语元数据
 

@@ -128,8 +128,8 @@ const isPromptsSection = () => pathWithoutLang === "/prompts" || pathWithoutLang
   .l-header {
     display: grid;
     place-items: center;
-    gap: var(--sp-m);
-    padding-block: var(--sp-s) var(--sp-m);
+    gap: 0.45rem;
+    padding-block: 0.35rem 0.55rem;
     border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
     background: linear-gradient(
       180deg,
@@ -167,15 +167,15 @@ const isPromptsSection = () => pathWithoutLang === "/prompts" || pathWithoutLang
     transform: translateY(-1px);
   }
   h1 {
-    margin-block-start: var(--sp-l);
-    font-size: 40px;
+    margin: 0;
+    font-size: 34px;
     font-family: var(--english-font);
     font-weight: 900;
     letter-spacing: -0.02em;
   }
   @media (width < 480px) {
     h1 {
-      font-size: 28px;
+      font-size: 26px;
     }
   }
   h1 a {
@@ -216,7 +216,7 @@ const isPromptsSection = () => pathWithoutLang === "/prompts" || pathWithoutLang
     flex-wrap: nowrap;
     align-items: center;
     gap: 0.15rem;
-    margin-block-start: var(--sp-s);
+    margin-block-start: 0;
   }
   @media (max-width: 880px) {
     nav ul {

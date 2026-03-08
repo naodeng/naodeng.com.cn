@@ -127,9 +127,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [self-healing-code](/en/AIWiki/self-healing-code/)
-- [ai-agent](/en/AIWiki/ai-agent/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [self-healing-code](https://inaodeng.com/en/AIWiki/self-healing-code/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
 
 ### Term Metadata
 

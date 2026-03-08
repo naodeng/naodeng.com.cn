@@ -58,42 +58,42 @@ order: 0
 
 #### 什么是软件测试中的错误？
 
-在[软件测试](/zh-cn/wiki/software-testing/) 中，**[bug](/zh-cn/wiki/bug/)** 是应用程序中的缺陷或差异，导致其偏离预期或期望的行为。这是软件的一个方面不满足要求或最终用户的期望，可能导致不正确或意外的结果。 [Bugs](/zh-cn/wiki/bug/) 通过各种测试方法（包括手动和自动流程）进行识别，并记录下来供开发团队进一步分析和解决。
-  [Bugs](/zh-cn/wiki/bug/) 可能源自多种来源，例如代码中的逻辑错误、设计过程中做出的错误假设或软件不同部分之间不可预见的交互。一旦被识别，它们通常会被输入 [bug](/zh-cn/wiki/bug/) 跟踪系统，该系统有助于通过定义的**[bug](/zh-cn/wiki/bug/) 生命周期**管理其解决过程。该周期包括识别、[验证 ](/zh-cn/wiki/verification/)、解决和关闭等阶段，确保每个[bug](/zh-cn/wiki/bug/) 都得到系统解决。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 在[bug](/zh-cn/wiki/bug/) 检测中特别有效，因为它允许进行手动可能不切实际的重复和广泛的测试。自动化测试可以快速识别软件中的回归和不一致，这表明[bugs](/zh-cn/wiki/bug/)。
-  有效地理解和管理[bugs](/zh-cn/wiki/bug/) 对于维护[软件质量](/zh-cn/wiki/software-quality/) 和可靠性至关重要，直接影响用户满意度和软件的商业成功。
+在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中，**[bug](https://inaodeng.com/zh-cn/wiki/bug/)** 是应用程序中的缺陷或差异，导致其偏离预期或期望的行为。这是软件的一个方面不满足要求或最终用户的期望，可能导致不正确或意外的结果。 [Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 通过各种测试方法（包括手动和自动流程）进行识别，并记录下来供开发团队进一步分析和解决。
+  [Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能源自多种来源，例如代码中的逻辑错误、设计过程中做出的错误假设或软件不同部分之间不可预见的交互。一旦被识别，它们通常会被输入 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 跟踪系统，该系统有助于通过定义的**[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期**管理其解决过程。该周期包括识别、[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)、解决和关闭等阶段，确保每个[bug](https://inaodeng.com/zh-cn/wiki/bug/) 都得到系统解决。
+  [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 在[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测中特别有效，因为它允许进行手动可能不切实际的重复和广泛的测试。自动化测试可以快速识别软件中的回归和不一致，这表明[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+  有效地理解和管理[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 对于维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性至关重要，直接影响用户满意度和软件的商业成功。
 
 #### 为什么识别和修复错误很重要？
 
-识别和修复[bugs](/zh-cn/wiki/bug/)对于维护软件的**完整性**和**可靠性**至关重要。 [Bugs](/zh-cn/wiki/bug/) 可能会导致**安全漏洞**，如果被利用，可能会对用户和组织造成重大损害。确保软件安全可以保护敏感数据免遭未经授权的访问并维护用户信任。
-  从**开发角度**来看，早期[bug](/zh-cn/wiki/bug/)检测可以减少修复问题的成本和工作量。在开发周期后期或发布后发现的[Bugs](/zh-cn/wiki/bug/) 解决起来可能要花费更多的成本。这是由于所需更改的**复杂性**以及对补丁或修补程序的潜在需求。
-  此外，修复[bugs](/zh-cn/wiki/bug/) 有助于**代码质量**。高质量的代码是可维护的、可扩展的，并且更容易通过新功能进行增强。它还促进了开发人员之间的**协作**，因为干净且无 [bug](/zh-cn/wiki/bug/) 的代码更易于理解和构建。
-  在**竞争优势**的背景下，[bugs](/zh-cn/wiki/bug/) 较少的软件可以带来更高的客户满意度和保留率。它还可以提高公司的声誉并带来更好的市场定位。
-  最后，在受监管的行业中，[bug](/zh-cn/wiki/bug/) 修复通常是**合规性要求**。不遵守行业标准可能会导致法律后果和经济处罚。
-  总之，识别和修复 [bugs](/zh-cn/wiki/bug/) 对于安全性、成本效率、代码质量、市场竞争力和法规遵从性至关重要。
+识别和修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/)对于维护软件的**完整性**和**可靠性**至关重要。 [Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能会导致**安全漏洞**，如果被利用，可能会对用户和组织造成重大损害。确保软件安全可以保护敏感数据免遭未经授权的访问并维护用户信任。
+  从**开发角度**来看，早期[bug](https://inaodeng.com/zh-cn/wiki/bug/)检测可以减少修复问题的成本和工作量。在开发周期后期或发布后发现的[Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 解决起来可能要花费更多的成本。这是由于所需更改的**复杂性**以及对补丁或修补程序的潜在需求。
+  此外，修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 有助于**代码质量**。高质量的代码是可维护的、可扩展的，并且更容易通过新功能进行增强。它还促进了开发人员之间的**协作**，因为干净且无 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 的代码更易于理解和构建。
+  在**竞争优势**的背景下，[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 较少的软件可以带来更高的客户满意度和保留率。它还可以提高公司的声誉并带来更好的市场定位。
+  最后，在受监管的行业中，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复通常是**合规性要求**。不遵守行业标准可能会导致法律后果和经济处罚。
+  总之，识别和修复 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 对于安全性、成本效率、代码质量、市场竞争力和法规遵从性至关重要。
 
 #### bug 对软件整体性能有什么影响？
 
-[Bugs](/zh-cn/wiki/bug/) 会显着**降低软件性能**，导致诸如**响应时间增加**、**内存泄漏**或**系统崩溃**等问题。性能@@PR​​OTECTED_53@@可能会导致软件系统消耗超出必要的资源，这不仅会影响用户的体验，而且随着用户群的增长，还会导致**可扩展性问题**。在严重的情况下，性能下降可能会导致**服务中断**或**数据丢失**，这可能对公司的声誉和收入产生直接影响。
-  从技术角度来看，[bugs](/zh-cn/wiki/bug/) 可能会引入**意外的计算复杂性**，导致算法运行速度比设计慢。它们还可能干扰**并发机制**，导致**死锁**或**竞争条件**，这可能难以诊断和解决。在分布式系统中，[bugs](/zh-cn/wiki/bug/) 可能会影响**网络通信**，导致跨服务的**延迟问题**或**不一致的数据状态**。
-  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[bugs](/zh-cn/wiki/bug/) 对性能的影响对于确定首先解决哪个[bugs](/zh-cn/wiki/bug/) 的优先级至关重要。不仅要检测和报告[bugs](/zh-cn/wiki/bug/)，还要评估它们对系统性能的潜在影响并相应地分配资源，以确保软件满足所需的性能基准。自动化[性能测试](/zh-cn/wiki/performance-testing/)可以集成到 CI/CD 管道中，以尽早捕获与性能相关的[bugs](/zh-cn/wiki/bug/)并保持软件效率和可靠性。
+[Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 会显着**降低软件性能**，导致诸如**响应时间增加**、**内存泄漏**或**系统崩溃**等问题。性能@@PR​​OTECTED_53@@可能会导致软件系统消耗超出必要的资源，这不仅会影响用户的体验，而且随着用户群的增长，还会导致**可扩展性问题**。在严重的情况下，性能下降可能会导致**服务中断**或**数据丢失**，这可能对公司的声誉和收入产生直接影响。
+  从技术角度来看，[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能会引入**意外的计算复杂性**，导致算法运行速度比设计慢。它们还可能干扰**并发机制**，导致**死锁**或**竞争条件**，这可能难以诊断和解决。在分布式系统中，[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能会影响**网络通信**，导致跨服务的**延迟问题**或**不一致的数据状态**。
+  对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说，了解[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 对性能的影响对于确定首先解决哪个[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的优先级至关重要。不仅要检测和报告[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，还要评估它们对系统性能的潜在影响并相应地分配资源，以确保软件满足所需的性能基准。自动化[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)可以集成到 CI/CD 管道中，以尽早捕获与性能相关的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)并保持软件效率和可靠性。
 
 #### bug 如何影响用户体验？
 
-[Bugs](/zh-cn/wiki/bug/) 会以各种方式**降低用户体验**，从轻微的烦恼到严重的系统故障。它们可能会导致**意外行为**、**崩溃**或**数据丢失**，从而导致**沮丧**和对软件缺乏信任。用户可能会遇到**不便**，例如性能缓慢、结果不正确或**可用性问题**，从而阻碍他们有效完成任务的能力。在严重的情况下，[bugs](/zh-cn/wiki/bug/) 可能会损害**安全性**，使用户面临潜在的**数据泄露**。软件的整体**满意度**和**认知**受到[bugs](/zh-cn/wiki/bug/)的存在的显着影响，这可能导致**用户保留率**、**品牌声誉**和**收入**的下降。及时有效地解决 [bugs](/zh-cn/wiki/bug/) 对于保持**积极的用户体验**并确保软件满足预期的质量和可靠性标准至关重要。
+[Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 会以各种方式**降低用户体验**，从轻微的烦恼到严重的系统故障。它们可能会导致**意外行为**、**崩溃**或**数据丢失**，从而导致**沮丧**和对软件缺乏信任。用户可能会遇到**不便**，例如性能缓慢、结果不正确或**可用性问题**，从而阻碍他们有效完成任务的能力。在严重的情况下，[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能会损害**安全性**，使用户面临潜在的**数据泄露**。软件的整体**满意度**和**认知**受到[bugs](https://inaodeng.com/zh-cn/wiki/bug/)的存在的显着影响，这可能导致**用户保留率**、**品牌声誉**和**收入**的下降。及时有效地解决 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 对于保持**积极的用户体验**并确保软件满足预期的质量和可靠性标准至关重要。
 
 #### bug 和错误有什么区别？
 
-在软件开发和测试环境中，术语 **[bug](/zh-cn/wiki/bug/)** 和 **错误** 通常可以互换使用，但它们具有不同的含义。
+在软件开发和测试环境中，术语 **[bug](https://inaodeng.com/zh-cn/wiki/bug/)** 和 **错误** 通常可以互换使用，但它们具有不同的含义。
   **错误**是指开发人员编写的代码中的错误。这是一种人为错误，会导致程序逻辑或语法中出现不正确或意外的行为。通常在软件发布给最终用户之前的开发或测试阶段发现错误。
-  另一方面，**[bug](/zh-cn/wiki/bug/)** 是软件中的缺陷，导致软件产生意外结果或以意想不到的方式运行。 [Bugs](/zh-cn/wiki/bug/) 的存在可能是由于代码中的错误，但它们也可能是由于不同代码段之间不可预见的交互、开发人员做出的错误假设或软件运行环境的变化而产生的。
-  总之，**错误**是开发人员的错误，可能会导致 [bug](/zh-cn/wiki/bug/)，而 **[bug](/zh-cn/wiki/bug/)** 是在执行期间在软件行为中观察到的错误（或其他因素）的实际表现。通过代码审查和静态分析尽早识别错误可以防止它们成为[bugs](/zh-cn/wiki/bug/)，而测试的目的是在部署软件之前检测并解决[bugs](/zh-cn/wiki/bug/)。
+  另一方面，**[bug](https://inaodeng.com/zh-cn/wiki/bug/)** 是软件中的缺陷，导致软件产生意外结果或以意想不到的方式运行。 [Bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的存在可能是由于代码中的错误，但它们也可能是由于不同代码段之间不可预见的交互、开发人员做出的错误假设或软件运行环境的变化而产生的。
+  总之，**错误**是开发人员的错误，可能会导致 [bug](https://inaodeng.com/zh-cn/wiki/bug/)，而 **[bug](https://inaodeng.com/zh-cn/wiki/bug/)** 是在执行期间在软件行为中观察到的错误（或其他因素）的实际表现。通过代码审查和静态分析尽早识别错误可以防止它们成为[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，而测试的目的是在部署软件之前检测并解决[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
 
 ### 错误生命周期
 
 #### 什么是 bug 生命周期？
 
-**[bug](/zh-cn/wiki/bug/) 生命周期**是指 [bug](/zh-cn/wiki/bug/) 从发现到解决的过程。它通常包括以下几个阶段：
+**[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期**是指 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 从发现到解决的过程。它通常包括以下几个阶段：
 
 1. **新增** ：发现 bug 后，上报并进入生命周期。
 2. **已分配**：开发人员的任务是解决错误。
@@ -103,86 +103,86 @@ order: 0
 6. **重新测试**：QA 测试修复以确保错误得到解决。
 7. **已验证**：QA 确认错误已修复。
 8. **已关闭**：该错误已解决，无需采取进一步操作。
-9. **重新打开**：如果问题仍然存在或再次发生，则重新打开错误并继续循环。 了解这个周期对于有效跟踪和管理 [bugs](/zh-cn/wiki/bug/) 至关重要，确保系统、及时地解决这些问题。它还有助于根据影响和紧迫性对 [bugs](/zh-cn/wiki/bug/) 进行优先级排序。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以加速[bug](/zh-cn/wiki/bug/) 检测，而详细记录的[bug](/zh-cn/wiki/bug/) 报告则简化了调试过程。 [jira](/zh-cn/wiki/jira/)、Bugzilla 或 Redmine 等工具有助于[bug](/zh-cn/wiki/bug/) 报告和跟踪，使团队能够监控[bugs](/zh-cn/wiki/bug/) 在其整个生命周期中的状态和进度。
+9. **重新打开**：如果问题仍然存在或再次发生，则重新打开错误并继续循环。 了解这个周期对于有效跟踪和管理 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 至关重要，确保系统、及时地解决这些问题。它还有助于根据影响和紧迫性对 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 进行优先级排序。 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 可以加速[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测，而详细记录的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告则简化了调试过程。 [jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla 或 Redmine 等工具有助于[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告和跟踪，使团队能够监控[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 在其整个生命周期中的状态和进度。
 
 #### bug 生命周期有哪些不同阶段？
 
-[bug](/zh-cn/wiki/bug/) 生命周期通常由以下阶段组成：
+[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期通常由以下阶段组成：
 
 1. **识别**：测试人员发现缺陷并创建初始报告。
 2. **报告**：该错误记录了详细信息，例如重现步骤、预期结果与实际结果以及环境。
-3. **[验证 ](/zh-cn/wiki/verification/)** ：分类团队审查该错误以确认其有效性并确保它不是重复的。
-4. **优先级**：该错误被分配一个 **[priority](/zh-cn/wiki/priority/)**和 **[严重性](/zh-cn/wiki/severity/)**级别来确定其紧迫性和影响。
+3. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：分类团队审查该错误以确认其有效性并确保它不是重复的。
+4. **优先级**：该错误被分配一个 **[priority](https://inaodeng.com/zh-cn/wiki/priority/)**和 **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**级别来确定其紧迫性和影响。
 
 5. **分配** ：将错误分配给负责解决它的开发人员。
 6. **解决方案**：开发人员致力于修复错误，然后将其标记为已解决。
-7. **[验证 ](/zh-cn/wiki/verification/)** ：测试人员在发现错误的同一环境中验证修复。
+7. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：测试人员在发现错误的同一环境中验证修复。
 8. **关闭**：如果修复得到验证，则错误状态将更新为已关闭。如果没有，可能会重新开放或标记为延期。
-9. **[回归测试](/zh-cn/wiki/regression-testing/)** ：额外的测试确保修复不会导致其他问题。
+9. **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：额外的测试确保修复不会导致其他问题。
 10. **文档**：错误修复的所有详细信息均已记录下来以供将来参考。 在这些阶段中，沟通和协作工具对于跟踪进度和确保团队成员之间的透明度至关重要。
 
-    **[priority](/zh-cn/wiki/priority/)**
+    **[priority](https://inaodeng.com/zh-cn/wiki/priority/)**
     和
-    **[严重性](/zh-cn/wiki/severity/)**
+    **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**
     级别来确定其紧迫性和影响。
 
 #### 软件测试中如何管理错误生命周期？
 
-管理[软件测试](/zh-cn/wiki/software-testing/) 中的[bug](/zh-cn/wiki/bug/) 生命周期涉及跟踪和解决从发现到关闭的缺陷。 [bug](/zh-cn/wiki/bug/) 被识别后，将在 [bug](/zh-cn/wiki/bug/) 跟踪系统中**报告**并**记录**。该报告包含基本详细信息，例如重现步骤、预期与 [实际结果](/zh-cn/wiki/actual-result/) 以及环境详细信息。
-  **分类团队**评估[bug](/zh-cn/wiki/bug/)，分配**[严重性](/zh-cn/wiki/severity/)** 和 **[priority](/zh-cn/wiki/priority/)**。 [严重性](/zh-cn/wiki/severity/) 反映[bug](/zh-cn/wiki/bug/) 对系统的影响，而[priority](/zh-cn/wiki/priority/) 表示[bug](/zh-cn/wiki/bug/) 的处理顺序。然后将 [bug](/zh-cn/wiki/bug/) 分配给开发人员。
-  开发人员**分析**[bug](/zh-cn/wiki/bug/)，确定其根本原因。他们在进行修复时可能会将其状态设置为**“正在进行”**。如果[bug](/zh-cn/wiki/bug/) 不可重现或缺少信息，它可能会被标记为 **“需要更多信息”** 或 **“无法重现”** 并返回给测试人员进行进一步调查。
-  实施修复后，[bug](/zh-cn/wiki/bug/) 的状态将更改为 **“已修复”**。然后对软件进行**重新测试**，以确保修复解决问题而不引入新的缺陷。如果修复得到验证，[bug](/zh-cn/wiki/bug/) 状态将更新为 **“已验证”**。
-  最后一步是将修复部署到生产环境。部署后，如果没有出现进一步问题，[bug](/zh-cn/wiki/bug/) 将被标记为 **“已关闭”**。但是，如果问题仍然存在或修复导致新问题，[bug](/zh-cn/wiki/bug/) 可能会 **重新打开** 并重复该循环，直到 [bug](/zh-cn/wiki/bug/) 得到满意解决。
-  在整个周期中，沟通和记录对于透明度和效率至关重要。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以简化检测和[回归测试](/zh-cn/wiki/regression-testing/)，而详细记录的[bug](/zh-cn/wiki/bug/) 报告有助于更快地解决问题。
+管理[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期涉及跟踪和解决从发现到关闭的缺陷。 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 被识别后，将在 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 跟踪系统中**报告**并**记录**。该报告包含基本详细信息，例如重现步骤、预期与 [实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/) 以及环境详细信息。
+  **分类团队**评估[bug](https://inaodeng.com/zh-cn/wiki/bug/)，分配**[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** 和 **[priority](https://inaodeng.com/zh-cn/wiki/priority/)**。 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 反映[bug](https://inaodeng.com/zh-cn/wiki/bug/) 对系统的影响，而[priority](https://inaodeng.com/zh-cn/wiki/priority/) 表示[bug](https://inaodeng.com/zh-cn/wiki/bug/) 的处理顺序。然后将 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 分配给开发人员。
+  开发人员**分析**[bug](https://inaodeng.com/zh-cn/wiki/bug/)，确定其根本原因。他们在进行修复时可能会将其状态设置为**“正在进行”**。如果[bug](https://inaodeng.com/zh-cn/wiki/bug/) 不可重现或缺少信息，它可能会被标记为 **“需要更多信息”** 或 **“无法重现”** 并返回给测试人员进行进一步调查。
+  实施修复后，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 的状态将更改为 **“已修复”**。然后对软件进行**重新测试**，以确保修复解决问题而不引入新的缺陷。如果修复得到验证，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 状态将更新为 **“已验证”**。
+  最后一步是将修复部署到生产环境。部署后，如果没有出现进一步问题，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 将被标记为 **“已关闭”**。但是，如果问题仍然存在或修复导致新问题，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 可能会 **重新打开** 并重复该循环，直到 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 得到满意解决。
+  在整个周期中，沟通和记录对于透明度和效率至关重要。 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 可以简化检测和[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)，而详细记录的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告有助于更快地解决问题。
 
 #### 了解 e2e 测试中 bug 生命周期的重要性是什么？
 
-了解端到端 (e2e) 测试中的**[bug](/zh-cn/wiki/bug/) 生命周期**至关重要，原因如下：
+了解端到端 (e2e) 测试中的**[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期**至关重要，原因如下：
 
-- **高效跟踪**：它允许[测试自动化](/zh-cn/wiki/test-automation/) 工程师系统地跟踪[bug](/zh-cn/wiki/bug/) 从发现到解决的整个过程。这种跟踪可确保在测试阶段[bugs](/zh-cn/wiki/bug/)不会漏掉漏洞。
-- **改进协作**：对[bug](/zh-cn/wiki/bug/) 生命周期的清晰理解可以促进开发人员、测试人员和其他利益相关者之间更好的沟通。它有助于对 [bug](/zh-cn/wiki/bug/) 解决方案的流程和时间表设定明确的期望。
-- **优先级**：认识[bug](/zh-cn/wiki/bug/) 生命周期的阶段有助于确定[bug](/zh-cn/wiki/bug/) 修复的优先级。这在 e2e 测试中尤其重要，因为重点是整个系统，并且必须立即解决关键路径[bugs](/zh-cn/wiki/bug/)。
-- **[质量保证](/zh-cn/wiki/quality-assurance/)**：通过遵循[bug](/zh-cn/wiki/bug/) 生命周期，团队可以确保每个[bug](/zh-cn/wiki/bug/) 在修复后都得到验证，并执行正确的[回归测试](/zh-cn/wiki/regression-testing/)。此步骤对于维护软件质量至关重要。
-- **指标和报告**：了解生命周期有助于生成准确的指标，例如修复 [bug](/zh-cn/wiki/bug/) 所需的时间或特定阶段中 [bugs](/zh-cn/wiki/bug/) 的数量。这些指标对于评估测试过程和软件产品的健康状况至关重要。
-- **流程改进**：分析[bug](/zh-cn/wiki/bug/)生命周期可以揭示模式和常见瓶颈，为流程改进和更有效的[测试自动化](/zh-cn/wiki/test-automation/)策略提供见解。 总之，彻底掌握 [bug](/zh-cn/wiki/bug/) 生命周期对于编排精简、透明且有效的端到端测试流程是必不可少的。
+- **高效跟踪**：它允许[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师系统地跟踪[bug](https://inaodeng.com/zh-cn/wiki/bug/) 从发现到解决的整个过程。这种跟踪可确保在测试阶段[bugs](https://inaodeng.com/zh-cn/wiki/bug/)不会漏掉漏洞。
+- **改进协作**：对[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期的清晰理解可以促进开发人员、测试人员和其他利益相关者之间更好的沟通。它有助于对 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 解决方案的流程和时间表设定明确的期望。
+- **优先级**：认识[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期的阶段有助于确定[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复的优先级。这在 e2e 测试中尤其重要，因为重点是整个系统，并且必须立即解决关键路径[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)**：通过遵循[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期，团队可以确保每个[bug](https://inaodeng.com/zh-cn/wiki/bug/) 在修复后都得到验证，并执行正确的[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。此步骤对于维护软件质量至关重要。
+- **指标和报告**：了解生命周期有助于生成准确的指标，例如修复 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 所需的时间或特定阶段中 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的数量。这些指标对于评估测试过程和软件产品的健康状况至关重要。
+- **流程改进**：分析[bug](https://inaodeng.com/zh-cn/wiki/bug/)生命周期可以揭示模式和常见瓶颈，为流程改进和更有效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)策略提供见解。 总之，彻底掌握 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期对于编排精简、透明且有效的端到端测试流程是必不可少的。
 
-- **高效跟踪**：它允许[测试自动化](/zh-cn/wiki/test-automation/) 工程师系统地跟踪[bug](/zh-cn/wiki/bug/) 从发现到解决的整个过程。这种跟踪可确保在测试阶段[bugs](/zh-cn/wiki/bug/)不会漏掉漏洞。
-- **改进协作**：对 [bug](/zh-cn/wiki/bug/) 生命周期的清晰了解可以促进开发人员、测试人员和其他利益相关者之间更好的沟通。它有助于对 [bug](/zh-cn/wiki/bug/) 解决方案的流程和时间表设定明确的期望。
-- **优先级**：认识[bug](/zh-cn/wiki/bug/) 生命周期的阶段有助于确定[bug](/zh-cn/wiki/bug/) 修复的优先级。这在 e2e 测试中尤其重要，因为重点是整个系统，并且必须立即解决关键路径[bugs](/zh-cn/wiki/bug/)。
-- **[质量保证](/zh-cn/wiki/quality-assurance/)**：通过遵循[bug](/zh-cn/wiki/bug/) 生命周期，团队可以确保每个[bug](/zh-cn/wiki/bug/) 在修复后都得到验证，并执行正确的[回归测试](/zh-cn/wiki/regression-testing/)。此步骤对于维护软件质量至关重要。
-- **指标和报告**：了解生命周期有助于生成准确的指标，例如修复 [bug](/zh-cn/wiki/bug/) 所需的时间或特定阶段中 [bugs](/zh-cn/wiki/bug/) 的数量。这些指标对于评估测试过程和软件产品的健康状况至关重要。
-- **流程改进**：分析[bug](/zh-cn/wiki/bug/)生命周期可以揭示模式和常见瓶颈，为流程改进和更有效的[测试自动化](/zh-cn/wiki/test-automation/)策略提供见解。
+- **高效跟踪**：它允许[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师系统地跟踪[bug](https://inaodeng.com/zh-cn/wiki/bug/) 从发现到解决的整个过程。这种跟踪可确保在测试阶段[bugs](https://inaodeng.com/zh-cn/wiki/bug/)不会漏掉漏洞。
+- **改进协作**：对 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期的清晰了解可以促进开发人员、测试人员和其他利益相关者之间更好的沟通。它有助于对 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 解决方案的流程和时间表设定明确的期望。
+- **优先级**：认识[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期的阶段有助于确定[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复的优先级。这在 e2e 测试中尤其重要，因为重点是整个系统，并且必须立即解决关键路径[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)**：通过遵循[bug](https://inaodeng.com/zh-cn/wiki/bug/) 生命周期，团队可以确保每个[bug](https://inaodeng.com/zh-cn/wiki/bug/) 在修复后都得到验证，并执行正确的[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。此步骤对于维护软件质量至关重要。
+- **指标和报告**：了解生命周期有助于生成准确的指标，例如修复 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 所需的时间或特定阶段中 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的数量。这些指标对于评估测试过程和软件产品的健康状况至关重要。
+- **流程改进**：分析[bug](https://inaodeng.com/zh-cn/wiki/bug/)生命周期可以揭示模式和常见瓶颈，为流程改进和更有效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)策略提供见解。
 
 ### 错误报告
 
 #### 什么是错误报告？
 
-[Bug](/zh-cn/wiki/bug/) 报告是向开发团队**记录**和**传达**有关软件中发现的缺陷的详细信息的过程。它涉及创建 **[bug](/zh-cn/wiki/bug/) 报告**，这是一份全面的记录，其中包含理解、重现和解决问题所需的所有信息。
-  结构良好的[bug](/zh-cn/wiki/bug/) 报告通常包含：
+[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告是向开发团队**记录**和**传达**有关软件中发现的缺陷的详细信息的过程。它涉及创建 **[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告**，这是一份全面的记录，其中包含理解、重现和解决问题所需的所有信息。
+  结构良好的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告通常包含：
 
 - **标题**：问题的简明摘要。
 - **描述**：对该错误的详细说明，包括重现步骤、预期结果和实际结果。
 - **环境**：有关遇到错误的系统、浏览器或设备的信息。
-- **[严重性](/zh-cn/wiki/severity/)** ：评估错误对系统的影响。
-- **[Priority](/zh-cn/wiki/priority/)** ：建议如何紧急地解决该错误。
+- **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** ：评估错误对系统的影响。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/)** ：建议如何紧急地解决该错误。
 - **附件**：提供额外上下文的屏幕截图、日志或视频。
 - **报告者**：报告错误的人的姓名或标识符。
-- **状态**：生命周期中错误的当前状态（例如，新的、进行中、已解决）。 [Bug](/zh-cn/wiki/bug/) 报告工具（如 [jira](/zh-cn/wiki/jira/)、Bugzilla 或 MantisBT）通常用于管理和跟踪这些报告，确保及时、有组织地处理这些报告。 有效的[bug](/zh-cn/wiki/bug/) 报告对于**高效调试**和**[质量保证](/zh-cn/wiki/quality-assurance/)** 至关重要。它确保开发人员拥有**快速解决问题**所需的所有信息，并帮助维护过去问题和解决方案的**记录**，这对于未来的测试和开发工作非常宝贵。
+- **状态**：生命周期中错误的当前状态（例如，新的、进行中、已解决）。 [Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告工具（如 [jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla 或 MantisBT）通常用于管理和跟踪这些报告，确保及时、有组织地处理这些报告。 有效的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告对于**高效调试**和**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)** 至关重要。它确保开发人员拥有**快速解决问题**所需的所有信息，并帮助维护过去问题和解决方案的**记录**，这对于未来的测试和开发工作非常宝贵。
 
 #### 错误报告中应包含哪些关键要素？
 
-制作 [bug](/zh-cn/wiki/bug/) 报告时，请包含以下关键要素以确保清晰度和有效性：
+制作 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告时，请包含以下关键要素以确保清晰度和有效性：
 
 - **标题**：提供一个简洁且描述性的标题来总结该错误。
 - **标识符/号码**：分配唯一的 ID 以进行跟踪和参考。
 - **环境** ：指定环境详细信息，例如操作系统、浏览器版本、设备等。
 - **版本**：记下发现错误的软件版本。
 - **重现步骤**：列出重现错误的清晰的分步说明。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：描述没有错误时会发生什么。
-- **[实际结果](/zh-cn/wiki/actual-result/)** ：详细说明实际发生的情况，突出显示差异。
+- **[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)** ：描述没有错误时会发生什么。
+- **[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)** ：详细说明实际发生的情况，突出显示差异。
 - **频率**：指示错误发生的频率（总是、有时、一次）。
-- **[严重性](/zh-cn/wiki/severity/)** ：对错误对系统的影响进行分类（严重、主要、次要等）。
-- **[Priority](/zh-cn/wiki/priority/)** ：建议修复错误的紧迫性（高、中、低）。
+- **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** ：对错误对系统的影响进行分类（严重、主要、次要等）。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/)** ：建议修复错误的紧迫性（高、中、低）。
 - **附件**：包括屏幕截图、视频、日志或其他相关文件。
 - **报告者**：提及报告错误的人的姓名或 ID。
 - **受让人**：指定负责解决错误的个人或团队。
@@ -191,33 +191,33 @@ order: 0
 
 #### 详细记录的错误报告如何帮助调试过程？
 
-文档齐全的[bug](/zh-cn/wiki/bug/) 报告对于开发人员在调试过程中来说是一个**关键工具**。它提供了问题的**清晰简洁的描述**，有助于快速理解问题，而无需进行额外的查询。以下是它如何帮助调试：
+文档齐全的[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告对于开发人员在调试过程中来说是一个**关键工具**。它提供了问题的**清晰简洁的描述**，有助于快速理解问题，而无需进行额外的查询。以下是它如何帮助调试：
 
 - **再现性**：包括再现错误的步骤，使开发人员能够第一手看到问题并验证修复。
 - **上下文**：深入了解错误发生的环境，例如软件版本、操作系统和硬件，这对于识别特定于平台的问题至关重要。
 - **错误日志**：包含错误消息和堆栈跟踪，可查明代码中发生问题的位置。
-- **预期与[实际结果](/zh-cn/wiki/actual-result/)**：澄清应该发生的情况与实际发生的情况之间的差异，指导开发人员找到根本原因。
+- **预期与[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)**：澄清应该发生的情况与实际发生的情况之间的差异，指导开发人员找到根本原因。
 - **视觉辅助**：屏幕截图或视频可以说明难以用语言描述的问题，提供视觉背景。
-- **优先级**：指示严重性和优先级，有助于首先分类和解决最关键的错误。 通过提供[bug](/zh-cn/wiki/bug/)的全面图片，开发人员可以**最大限度地减少诊断时间**并专注于制定解决方案，最终**加速解决过程**并改进[软件质量](/zh-cn/wiki/software-quality/)。
+- **优先级**：指示严重性和优先级，有助于首先分类和解决最关键的错误。 通过提供[bug](https://inaodeng.com/zh-cn/wiki/bug/)的全面图片，开发人员可以**最大限度地减少诊断时间**并专注于制定解决方案，最终**加速解决过程**并改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。
 
 #### 错误报告常用的工具有哪些？
 
-[bug](/zh-cn/wiki/bug/) 报告的常用工具包括：
+[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告的常用工具包括：
 
-- **[jira](/zh-cn/wiki/jira/)** ：一种广泛使用的问题跟踪和项目管理工具，提供可定制的工作流程以及与各种开发工具的集成。
+- **[jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：一种广泛使用的问题跟踪和项目管理工具，提供可定制的工作流程以及与各种开发工具的集成。
 - **Bugzilla**：一种开源工具，允许详细的错误跟踪和报告，通常用于大型开源项目。
 - **MantisBT**：另一个开源错误跟踪器，提供一个简单的、基于 Web 的界面来跟踪问题和协作。
 - **Redmine**：一个灵活的项目管理 Web 应用程序，包括错误跟踪系统，支持多个项目并与各种版本控制系统集成。
 - **Trello**：一种可视化协作工具，可通过其基于卡片的系统进行错误跟踪，从而轻松对错误进行分类和优先级排序。
 - **Asana**：一种项目管理工具，可用于通过为每个错误创建任务并通过解决的不同阶段对其进行管理来进行错误跟踪。
 - **GitHub Issues**：与 GitHub 存储库集成，它允许直接在代码库旁边跟踪错误，并具有标记、评论和分配问题的功能。
-- **GitLab 问题**：与 GitHub 类似，GitLab 提供与其存储库集成的问题跟踪，以及用于里程碑跟踪和问题板的附加功能。 这些工具促进团队成员之间的协作，确定 [bug](/zh-cn/wiki/bug/) 修复的优先级，并维护问题历史记录以供将来参考。与 [测试自动化](/zh-cn/wiki/test-automation/) 工具和持续集成/持续部署 (CI/CD) 管道集成可以进一步简化 [bug](/zh-cn/wiki/bug/) 报告和解决流程。
+- **GitLab 问题**：与 GitHub 类似，GitLab 提供与其存储库集成的问题跟踪，以及用于里程碑跟踪和问题板的附加功能。 这些工具促进团队成员之间的协作，确定 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复的优先级，并维护问题历史记录以供将来参考。与 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具和持续集成/持续部署 (CI/CD) 管道集成可以进一步简化 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告和解决流程。
 
 ### 错误严重性和优先级
 
 #### 错误的严重程度是什么？
 
-[Bug](/zh-cn/wiki/bug/) [严重性](/zh-cn/wiki/severity/) 指的是[bug](/zh-cn/wiki/bug/) 对系统运行的**影响**，考虑到**功能**、**数据完整性**和**可用性**等因素。它是一种分类，用于指示缺陷对软件的影响程度**。 [严重性](/zh-cn/wiki/severity/) 级别通常分类如下：
+[Bug](https://inaodeng.com/zh-cn/wiki/bug/) [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 指的是[bug](https://inaodeng.com/zh-cn/wiki/bug/) 对系统运行的**影响**，考虑到**功能**、**数据完整性**和**可用性**等因素。它是一种分类，用于指示缺陷对软件的影响程度**。 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 级别通常分类如下：
 
 - **严重**：该错误导致系统 **崩溃**或 **数据丢失** ，并且没有解决方法。
 
@@ -225,7 +225,7 @@ order: 0
 
 - **中**：该错误通过可用的解决方法影响功能，导致 **不便**但不妨碍操作。
 
-- **低**：该错误有一个 **影响较小** ，常常与 **用户界面**和 **外观问题** ，对系统性能几乎没有影响。 [严重性](/zh-cn/wiki/severity/) 是一项客观衡量标准，并未考虑[bug](/zh-cn/wiki/bug/) 的**固定订单**或**业务需求**，这些需求由**[priority](/zh-cn/wiki/priority/)** 涵盖。在[bug](/zh-cn/wiki/bug/) 管理中，了解[严重性](/zh-cn/wiki/severity/) 有助于适当地**分配资源**和**安排修复**。这对于保持**质量**并确保首先解决最**关键的问题**至关重要。 [自动化测试](/zh-cn/wiki/automated-testing/) 可以通过运行预定义的**[严重性](/zh-cn/wiki/severity/) 级检查**来标记潜在的严重性。
+- **低**：该错误有一个 **影响较小** ，常常与 **用户界面**和 **外观问题** ，对系统性能几乎没有影响。 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 是一项客观衡量标准，并未考虑[bug](https://inaodeng.com/zh-cn/wiki/bug/) 的**固定订单**或**业务需求**，这些需求由**[priority](https://inaodeng.com/zh-cn/wiki/priority/)** 涵盖。在[bug](https://inaodeng.com/zh-cn/wiki/bug/) 管理中，了解[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 有助于适当地**分配资源**和**安排修复**。这对于保持**质量**并确保首先解决最**关键的问题**至关重要。 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 可以通过运行预定义的**[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 级检查**来标记潜在的严重性。
 
 - **严重**：该错误导致系统 **崩溃**或 **数据丢失** ，并且没有解决方法。
 
@@ -237,87 +237,87 @@ order: 0
 
 #### bug 优先级是什么？
 
-[Bug](/zh-cn/wiki/bug/) [priority](/zh-cn/wiki/priority/) 指的是[bug](/zh-cn/wiki/bug/) 应修复的**顺序**，考虑到其对项目进度和可交付成果的**重要性**和**影响**。它是一种分类，指导开发团队首先解决哪些问题。 [Priority](/zh-cn/wiki/priority/) 一般由**产品经理**或**项目经理**设置，它可能受到**客户需求**、**业务目标**和**发布截止日期**等因素的影响。
-  [Priority](/zh-cn/wiki/priority/) 级别通常从**低**到**高**：
+[Bug](https://inaodeng.com/zh-cn/wiki/bug/) [priority](https://inaodeng.com/zh-cn/wiki/priority/) 指的是[bug](https://inaodeng.com/zh-cn/wiki/bug/) 应修复的**顺序**，考虑到其对项目进度和可交付成果的**重要性**和**影响**。它是一种分类，指导开发团队首先解决哪些问题。 [Priority](https://inaodeng.com/zh-cn/wiki/priority/) 一般由**产品经理**或**项目经理**设置，它可能受到**客户需求**、**业务目标**和**发布截止日期**等因素的影响。
+  [Priority](https://inaodeng.com/zh-cn/wiki/priority/) 级别通常从**低**到**高**：
 
 - **低**：该错误不会影响功能或可以轻松解决。
 - **中**：该错误影响某些功能，但不需要立即修复。
 - **高**：该错误严重影响功能，应尽快解决。
-- **严重/紧急**：必须立即修复该错误，因为它可能会停止开发或发布过程，或者影响关键功能。 了解并设置正确的[priority](/zh-cn/wiki/priority/) 可确保团队首先关注最关键的问题，从而优化资源和时间的使用。它还有助于管理利益相关者的期望并使[bug](/zh-cn/wiki/bug/)修复工作与战略目标保持一致。
+- **严重/紧急**：必须立即修复该错误，因为它可能会停止开发或发布过程，或者影响关键功能。 了解并设置正确的[priority](https://inaodeng.com/zh-cn/wiki/priority/) 可确保团队首先关注最关键的问题，从而优化资源和时间的使用。它还有助于管理利益相关者的期望并使[bug](https://inaodeng.com/zh-cn/wiki/bug/)修复工作与战略目标保持一致。
 
 #### 如何确定错误的严重性和优先级？
 
-确定[bug](/zh-cn/wiki/bug/) 的 **[严重性](/zh-cn/wiki/severity/)** 和 **[priority](/zh-cn/wiki/priority/)** 需要评估其对系统的影响以及需要解决的紧迫性。 [严重性](/zh-cn/wiki/severity/) 通过[bug](/zh-cn/wiki/bug/) 对系统功能、稳定性或可用性的影响程度来衡量。它分为**严重**、**主要**、**中等**和**次要**等级别。严重[严重性](/zh-cn/wiki/severity/) 表示系统崩溃或数据丢失，而次要[严重性](/zh-cn/wiki/severity/) 可能涉及影响最小的外观问题。
-  另一方面，[Priority](/zh-cn/wiki/priority/) 是根据修复[bug](/zh-cn/wiki/bug/) 的重要性和紧迫性而设置的，通常受到业务需求的影响。它被分类为**高**、**中**或**低**。高 [priority](/zh-cn/wiki/priority/) [bugs](/zh-cn/wiki/bug/) 是那些必须立即解决的问题，例如影响大量用户或关键功能的问题。低 [priority](/zh-cn/wiki/priority/) [bugs](/zh-cn/wiki/bug/) 的影响可能很小，可以安排稍后解决。
+确定[bug](https://inaodeng.com/zh-cn/wiki/bug/) 的 **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** 和 **[priority](https://inaodeng.com/zh-cn/wiki/priority/)** 需要评估其对系统的影响以及需要解决的紧迫性。 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 通过[bug](https://inaodeng.com/zh-cn/wiki/bug/) 对系统功能、稳定性或可用性的影响程度来衡量。它分为**严重**、**主要**、**中等**和**次要**等级别。严重[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 表示系统崩溃或数据丢失，而次要[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 可能涉及影响最小的外观问题。
+  另一方面，[Priority](https://inaodeng.com/zh-cn/wiki/priority/) 是根据修复[bug](https://inaodeng.com/zh-cn/wiki/bug/) 的重要性和紧迫性而设置的，通常受到业务需求的影响。它被分类为**高**、**中**或**低**。高 [priority](https://inaodeng.com/zh-cn/wiki/priority/) [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 是那些必须立即解决的问题，例如影响大量用户或关键功能的问题。低 [priority](https://inaodeng.com/zh-cn/wiki/priority/) [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的影响可能很小，可以安排稍后解决。
   该决定通常是开发人员、测试人员和产品经理共同努力的结果，并考虑以下因素：
 
 - **用户影响**：有多少用户受到影响以及影响程度。
 - **功能**：错误是否导致功能无法使用或导致不正确的行为。
 - **解决方法**：为用户提供临时修复或替代方法。
-- **业务目标**：与当前业务优先事项和截止日期保持一致。 通过了解[严重性](/zh-cn/wiki/severity/) 和[priority](/zh-cn/wiki/priority/)，团队可以有效地对[bugs](/zh-cn/wiki/bug/) 进行分类并分配资源，以确保首先解决最关键的问题，从而优化软件的可靠性和用户满意度。
+- **业务目标**：与当前业务优先事项和截止日期保持一致。 通过了解[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和[priority](https://inaodeng.com/zh-cn/wiki/priority/)，团队可以有效地对[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 进行分类并分配资源，以确保首先解决最关键的问题，从而优化软件的可靠性和用户满意度。
 
 #### bug 严重性和优先级之间有什么区别？
 
-[Bug](/zh-cn/wiki/bug/) **[严重性](/zh-cn/wiki/severity/)** 指[bug](/zh-cn/wiki/bug/) 对系统功能的影响级别。它是对 [bug](/zh-cn/wiki/bug/) 如何影响系统运行的客观评估，范围从**严重**（系统崩溃或数据丢失）到**轻微**（外观问题）。
-  另一方面，**[Priority](/zh-cn/wiki/priority/)** 表示应解决 [bug](/zh-cn/wiki/bug/) 的紧迫性，并且通常是主观的，基于项目的需求和利益相关者的要求。它的范围可以从**高**（必须立即修复）到**低**（可以在未来版本中修复）。
-  [严重性](/zh-cn/wiki/severity/) 与技术影响有关，而 [priority](/zh-cn/wiki/priority/) 则与业务或战略重要性有关。如果高[严重性](/zh-cn/wiki/severity/) [bug](/zh-cn/wiki/bug/) 出现在很少使用的功能中，则它可能具有低[priority](/zh-cn/wiki/priority/)，而低[严重性](/zh-cn/wiki/severity/) [bug](/zh-cn/wiki/bug/) 如果影响即将发布的关键功能，则它可能具有高[priority](/zh-cn/wiki/priority/)。 [priority](/zh-cn/wiki/priority/) 的决策通常受到用户需求、截止日期和可用资源等因素的影响。
+[Bug](https://inaodeng.com/zh-cn/wiki/bug/) **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** 指[bug](https://inaodeng.com/zh-cn/wiki/bug/) 对系统功能的影响级别。它是对 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 如何影响系统运行的客观评估，范围从**严重**（系统崩溃或数据丢失）到**轻微**（外观问题）。
+  另一方面，**[Priority](https://inaodeng.com/zh-cn/wiki/priority/)** 表示应解决 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 的紧迫性，并且通常是主观的，基于项目的需求和利益相关者的要求。它的范围可以从**高**（必须立即修复）到**低**（可以在未来版本中修复）。
+  [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 与技术影响有关，而 [priority](https://inaodeng.com/zh-cn/wiki/priority/) 则与业务或战略重要性有关。如果高[严重性](https://inaodeng.com/zh-cn/wiki/severity/) [bug](https://inaodeng.com/zh-cn/wiki/bug/) 出现在很少使用的功能中，则它可能具有低[priority](https://inaodeng.com/zh-cn/wiki/priority/)，而低[严重性](https://inaodeng.com/zh-cn/wiki/severity/) [bug](https://inaodeng.com/zh-cn/wiki/bug/) 如果影响即将发布的关键功能，则它可能具有高[priority](https://inaodeng.com/zh-cn/wiki/priority/)。 [priority](https://inaodeng.com/zh-cn/wiki/priority/) 的决策通常受到用户需求、截止日期和可用资源等因素的影响。
 
 #### 了解错误严重性和优先级对错误管理有何帮助？
 
-了解[bug](/zh-cn/wiki/bug/) [严重性](/zh-cn/wiki/severity/) 和[priority](/zh-cn/wiki/priority/) 对于高效[bug](/zh-cn/wiki/bug/) 管理至关重要，因为它有助于有效地**分类**和**分配资源**。 [严重性](/zh-cn/wiki/severity/) 表示 [bug](/zh-cn/wiki/bug/) 对系统的影响，从严重的系统崩溃到轻微的 UI 问题，而 [priority](/zh-cn/wiki/priority/) 则根据业务需求和客户影响等因素确定 [bugs](/zh-cn/wiki/bug/) 的处理顺序。
-  通过评估 [严重性](/zh-cn/wiki/severity/) 和 [priority](/zh-cn/wiki/priority/)，团队可以：
+了解[bug](https://inaodeng.com/zh-cn/wiki/bug/) [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和[priority](https://inaodeng.com/zh-cn/wiki/priority/) 对于高效[bug](https://inaodeng.com/zh-cn/wiki/bug/) 管理至关重要，因为它有助于有效地**分类**和**分配资源**。 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 表示 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 对系统的影响，从严重的系统崩溃到轻微的 UI 问题，而 [priority](https://inaodeng.com/zh-cn/wiki/priority/) 则根据业务需求和客户影响等因素确定 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的处理顺序。
+  通过评估 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和 [priority](https://inaodeng.com/zh-cn/wiki/priority/)，团队可以：
 
 - **优先修复**：专注于解决影响关键功能或构成重大风险的高优先级和高严重性错误。
 - **明智地分配资源**：将最熟练的开发人员分配给最严重的错误，并通过适当安排不太关键的问题来管理工作负载。
 - **简化工作流程**：为开发和 QA 团队制定明确的行动计划，减少停机时间并改善协作。
 - **管理利益相关者的期望**：与利益相关者就最紧迫的问题和预期解决时间表进行有效沟通。
-- **改进[软件质量](/zh-cn/wiki/software-quality/)** ：确保首先修复最有害的错误，从而获得更稳定、更可靠的产品。 总之，了解[bug](/zh-cn/wiki/bug/) [严重性](/zh-cn/wiki/severity/) 和[priority](/zh-cn/wiki/priority/) 对于就[bug](/zh-cn/wiki/bug/) 解决方案做出明智的决策、确保最关键的问题得到及时解决以及维持[软件质量](/zh-cn/wiki/software-quality/) 的高标准至关重要。
+- **改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)** ：确保首先修复最有害的错误，从而获得更稳定、更可靠的产品。 总之，了解[bug](https://inaodeng.com/zh-cn/wiki/bug/) [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和[priority](https://inaodeng.com/zh-cn/wiki/priority/) 对于就[bug](https://inaodeng.com/zh-cn/wiki/bug/) 解决方案做出明智的决策、确保最关键的问题得到及时解决以及维持[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的高标准至关重要。
 
 - **优先修复**：专注于解决影响关键功能或构成重大风险的高优先级和高严重性错误。
 - **明智地分配资源**：将最熟练的开发人员分配给最严重的错误，并通过适当安排不太关键的问题来管理工作负载。
 - **简化工作流程**：为开发和 QA 团队制定明确的行动计划，减少停机时间并改善协作。
 - **管理利益相关者的期望**：与利益相关者就最紧迫的问题和预期解决时间表进行有效沟通。
-- **改进[软件质量](/zh-cn/wiki/software-quality/)** ：确保首先修复最有害的错误，从而获得更稳定和可靠的产品。
+- **改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)** ：确保首先修复最有害的错误，从而获得更稳定和可靠的产品。
 
 ### 错误预防和检测
 
 #### 预防错误的策略有哪些？
 
-要防止软件[测试自动化](/zh-cn/wiki/test-automation/)中出现[bugs](/zh-cn/wiki/bug/)，请考虑以下策略：
+要防止软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中出现[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，请考虑以下策略：
 
 - **代码审查**：定期进行同行审查以尽早发现缺陷。使用 Gerrit 或 GitHub 等工具进行协作代码分析。
 - **静态分析**：实施静态代码分析工具（例如 SonarQube 或 ESLint）来自动识别潜在问题。
-- **[单元测试](/zh-cn/wiki/unit-testing/)**：使用 JUnit 或 [NUnit](/zh-cn/wiki/nunit/) 等框架编写全面的单元测试来验证各个组件。
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：首先编写测试，然后创建通过这些测试的代码来开发软件，从一开始就确保高[测试覆盖率](/zh-cn/wiki/test-coverage/)。
-- **持续集成 (CI)**：使用 Jenkins 或 Travis CI 等 CI 系统在每次提交时自动运行测试，在开发周期的早期捕获[bugs](/zh-cn/wiki/bug/)。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：使用 JUnit 或 [NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 等框架编写全面的单元测试来验证各个组件。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：首先编写测试，然后创建通过这些测试的代码来开发软件，从一开始就确保高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
+- **持续集成 (CI)**：使用 Jenkins 或 Travis CI 等 CI 系统在每次提交时自动运行测试，在开发周期的早期捕获[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
 - **设计模式**：应用设计模式和最佳实践来降低复杂性并防止常见错误。
 - **结对编程**：两人一组编写代码，一个人编码，另一个人实时审阅。
-- **重构**：定期重构代码以提高可读性和[可维护性](/zh-cn/wiki/maintainability/)，这可以帮助防止[bugs](/zh-cn/wiki/bug/)。
-- **文档**：维护代码和[测试用例](/zh-cn/wiki/test-case/)的清晰且最新的文档，以确保一致的理解和实施。
+- **重构**：定期重构代码以提高可读性和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)，这可以帮助防止[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+- **文档**：维护代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的清晰且最新的文档，以确保一致的理解和实施。
 - **教育和培训**：投资于您的团队的持续教育和培训，以随时了解最佳实践和新技术。
 - **风险分析**：执行风险分析以确定需要更彻底测试的应用程序关键区域。
-- **反馈循环**：与开发人员、测试人员和用户建立快速反馈循环，以快速解决问题。 通过将这些策略集成到您的开发和测试流程中，您可以显着减少 [bugs](/zh-cn/wiki/bug/) 的发生并提高软件的质量。
+- **反馈循环**：与开发人员、测试人员和用户建立快速反馈循环，以快速解决问题。 通过将这些策略集成到您的开发和测试流程中，您可以显着减少 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的发生并提高软件的质量。
 
 - **代码审查**：定期进行同行审查以尽早发现缺陷。使用 Gerrit 或 GitHub 等工具进行协作代码分析。
 - **静态分析**：实施静态代码分析工具（例如 SonarQube 或 ESLint）来自动识别潜在问题。
-- **[单元测试](/zh-cn/wiki/unit-testing/)**：使用 JUnit 或 [NUnit](/zh-cn/wiki/nunit/) 等框架编写全面的单元测试来验证各个组件。
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：通过首先编写测试，然后创建通过这些测试的代码来开发软件，从一开始就确保高[测试覆盖率](/zh-cn/wiki/test-coverage/)。
-- **持续集成 (CI)**：使用 Jenkins 或 Travis CI 等 CI 系统在每次提交时自动运行测试，在开发周期的早期捕获[bugs](/zh-cn/wiki/bug/)。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：使用 JUnit 或 [NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 等框架编写全面的单元测试来验证各个组件。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：通过首先编写测试，然后创建通过这些测试的代码来开发软件，从一开始就确保高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
+- **持续集成 (CI)**：使用 Jenkins 或 Travis CI 等 CI 系统在每次提交时自动运行测试，在开发周期的早期捕获[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
 - **设计模式**：应用设计模式和最佳实践来降低复杂性并防止常见错误。
 - **结对编程**：两人一组编写代码，一个人编码，另一个人实时审阅。
-- **重构**：定期重构代码以提高可读性和[可维护性](/zh-cn/wiki/maintainability/)，这可以帮助防止[bugs](/zh-cn/wiki/bug/)。
-- **文档**：维护代码和[测试用例](/zh-cn/wiki/test-case/)的清晰且最新的文档，以确保一致的理解和实施。
+- **重构**：定期重构代码以提高可读性和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)，这可以帮助防止[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+- **文档**：维护代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的清晰且最新的文档，以确保一致的理解和实施。
 - **教育和培训**：投资于您的团队的持续教育和培训，以随时了解最佳实践和新技术。
 - **风险分析**：执行风险分析以确定需要更彻底测试的应用程序关键区域。
 - **反馈循环**：与开发人员、测试人员和用户建立快速反馈循环，以快速解决问题。
 
 #### bug 检测常用的技术有哪些？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 中[bug](/zh-cn/wiki/bug/) 检测的常用技术包括：
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测的常用技术包括：
 
-- **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
+- **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
 - **动态分析**：监控程序执行并实时报告问题的工具，例如内存泄漏或指针滥用。
-- **[单元测试](/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
 ```
 描述 ('计算器', () => {
   it('应该正确地添加两个数字', () => {
@@ -336,18 +336,18 @@ order: 0
 - **冒烟测试（Sanity Testing）**：对关键功能进行快速且非全面的验证，确保其按预期运行。
 - **烟雾测试（Smoke Testing）**：在正式测试前进行的初步测试，用于发现严重到需要拒绝发布的软件缺陷。
 - **安全测试（Security Testing）**：识别软件中的漏洞、威胁和潜在风险。
-- **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
+- **静态代码分析**：工具在执行前分析源代码以查找潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。示例包括具有严格警告设置的 linter 和编译器。
 - **动态分析**：监控程序执行并实时报告问题的工具，例如内存泄漏或指针滥用。
-- **[单元测试](/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：验证源代码各个单元功能的自动化测试。
 每种技术都有其优势，通常结合使用，以构建全面的缺陷检测策略。
 
 #### 自动化测试如何帮助错误检测？
 
-[自动化测试](/zh-cn/wiki/automated-testing/) 通过以比 [手动测试](/zh-cn/wiki/manual-testing/) 快得多的速度执行预定义的 [测试用例](/zh-cn/wiki/test-case/) 来简化 **[bug](/zh-cn/wiki/bug/) 检测**过程，从而允许在更短的时间内运行更多测试。这增加了在开发周期早期发现[bugs](/zh-cn/wiki/bug/)**的可能性，这对于维护[软件质量](/zh-cn/wiki/software-quality/)和降低修复问题的成本至关重要。
-  通过利用自动化，可以在每个新的构建或代码更改中**重复**且**一致地**运行测试，确保先前检测到的[bugs](/zh-cn/wiki/bug/)已得到解决，并且没有引入新的[bugs](/zh-cn/wiki/bug/)。自动化测试还可以涵盖广泛的场景，包括[手动测试](/zh-cn/wiki/manual-testing/)期间可能被忽略的边缘情况。
-  此外，[自动化测试](/zh-cn/wiki/automated-testing/) 工具通常与**[bug](/zh-cn/wiki/bug/) 跟踪系统**集成，在测试失败时自动记录问题。这种集成可确保捕获[bugs](/zh-cn/wiki/bug/) 以及所有相关详细信息，例如[测试用例](/zh-cn/wiki/test-case/)、环境和故障点，这对于高效调试至关重要。
-  自动化测试可以设计为专注于已知**容易出错**或最近发生更改的应用程序的特定区域。这种有针对性的方法在检测[bugs](/zh-cn/wiki/bug/)方面比广泛的[手动测试](/zh-cn/wiki/manual-testing/)策略更有效。
-  总之，[自动化测试](/zh-cn/wiki/automated-testing/) 通过提供以下功能来增强 [bug](/zh-cn/wiki/bug/) 检测：
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 通过以比 [手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/) 快得多的速度执行预定义的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 来简化 **[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**过程，从而允许在更短的时间内运行更多测试。这增加了在开发周期早期发现[bugs](https://inaodeng.com/zh-cn/wiki/bug/)**的可能性，这对于维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)和降低修复问题的成本至关重要。
+  通过利用自动化，可以在每个新的构建或代码更改中**重复**且**一致地**运行测试，确保先前检测到的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)已得到解决，并且没有引入新的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。自动化测试还可以涵盖广泛的场景，包括[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)期间可能被忽略的边缘情况。
+  此外，[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 工具通常与**[bug](https://inaodeng.com/zh-cn/wiki/bug/) 跟踪系统**集成，在测试失败时自动记录问题。这种集成可确保捕获[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 以及所有相关详细信息，例如[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、环境和故障点，这对于高效调试至关重要。
+  自动化测试可以设计为专注于已知**容易出错**或最近发生更改的应用程序的特定区域。这种有针对性的方法在检测[bugs](https://inaodeng.com/zh-cn/wiki/bug/)方面比广泛的[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)策略更有效。
+  总之，[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 通过提供以下功能来增强 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测：
 
 - **执行速度更快**测试次数
 
@@ -357,7 +357,7 @@ order: 0
 
 - **整合**带有错误跟踪工具
 
-- **有针对性的测试**脆弱地区的这些好处有助于保持较高的[软件质量](/zh-cn/wiki/software-quality/) 并有助于提高开发流程的效率和效果。
+- **有针对性的测试**脆弱地区的这些好处有助于保持较高的[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 并有助于提高开发流程的效率和效果。
 
 - **执行速度更快**测试次数
 
@@ -371,11 +371,11 @@ order: 0
 
 #### e2e 测试在错误检测和预防中发挥什么作用？
 
-通过从头到尾模拟真实的用户场景，端到端 (E2E) 测试在**[bug](/zh-cn/wiki/bug/) 检测和预防**中发挥着至关重要的作用。它确保应用程序在类似生产的环境中按预期运行，涵盖系统的整个流程。
-  E2E 测试旨在验证集成组件并检测单元和集成测试可能遗漏的问题。通过自动化这些测试，您可以快速识别影响应用程序关键路径的[bugs](/zh-cn/wiki/bug/)，例如用户注册、登录、数据处理和支付系统。
+通过从头到尾模拟真实的用户场景，端到端 (E2E) 测试在**[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测和预防**中发挥着至关重要的作用。它确保应用程序在类似生产的环境中按预期运行，涵盖系统的整个流程。
+  E2E 测试旨在验证集成组件并检测单元和集成测试可能遗漏的问题。通过自动化这些测试，您可以快速识别影响应用程序关键路径的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，例如用户注册、登录、数据处理和支付系统。
   自动化 E2E 测试有助于：
 
-- **检测回归[bugs](/zh-cn/wiki/bug/)**：确保新代码更改不会破坏现有功能。
+- **检测回归[bugs](https://inaodeng.com/zh-cn/wiki/bug/)**：确保新代码更改不会破坏现有功能。
 - **验证系统基础设施**：检查应用程序是否与数据库、网络和其他服务正确交互。
 - **确保数据完整性**：确保数据正确地流经系统，并在不同的系统组件之间维护状态。
-- **验证跨浏览器和跨设备兼容性**：确认应用程序可以在最终用户可能使用的各种环境中运行。 通过将 E2E 测试合并到持续集成/持续部署 (CI/CD) 管道中，团队可以为每个构建自动运行这些测试，从而尽早检测[bugs](/zh-cn/wiki/bug/)。这种主动检测 [bug](/zh-cn/wiki/bug/) 的方法不仅可以减少修复问题的成本和工作量，还有助于维护稳定可靠的软件产品，最终防止 [bugs](/zh-cn/wiki/bug/) 到达最终用户。
+- **验证跨浏览器和跨设备兼容性**：确认应用程序可以在最终用户可能使用的各种环境中运行。 通过将 E2E 测试合并到持续集成/持续部署 (CI/CD) 管道中，团队可以为每个构建自动运行这些测试，从而尽早检测[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。这种主动检测 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 的方法不仅可以减少修复问题的成本和工作量，还有助于维护稳定可靠的软件产品，最终防止 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 到达最终用户。

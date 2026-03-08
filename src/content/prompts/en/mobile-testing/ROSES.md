@@ -388,7 +388,7 @@ public void testLoginFunctionality() {
 ### 3. User Experience Focus
 - **Interaction Experience Verification:** Focus on verifying mobile touch interaction experience
 - **Performance Experience Assurance:** Ensure application launch speed and response performance
-- **Visual Effect [检查](/zh-cn/wiki/inspection/):** Verify visual effects and adaptation on different devices
+- **Visual Effect [检查](https://inaodeng.com/zh-cn/wiki/inspection/):** Verify visual effects and adaptation on different devices
 - **Usability Assessment:** Evaluate application usability and user-friendliness
 
 ### 4. Technical Implementation Feasibility

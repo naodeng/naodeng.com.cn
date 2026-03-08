@@ -114,10 +114,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [subagents](/en/AIWiki/subagents/)
-- [task-level-abstraction](/en/AIWiki/task-level-abstraction/)
-- [artifacts](/en/AIWiki/artifacts/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
+- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
+- [task-level-abstraction](https://inaodeng.com/en/AIWiki/task-level-abstraction/)
+- [artifacts](https://inaodeng.com/en/AIWiki/artifacts/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
 
 ### External References
 

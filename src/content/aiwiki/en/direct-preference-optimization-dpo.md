@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [reinforcement-fine-tuning-rft](/en/AIWiki/reinforcement-fine-tuning-rft/)
-- [reasoning-models](/en/AIWiki/reasoning-models/)
-- [agent-evals](/en/AIWiki/agent-evals/)
-- [graders](/en/AIWiki/graders/)
+- [reinforcement-fine-tuning-rft](https://inaodeng.com/en/AIWiki/reinforcement-fine-tuning-rft/)
+- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [graders](https://inaodeng.com/en/AIWiki/graders/)
 
 ### External References
 

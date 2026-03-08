@@ -110,10 +110,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [compaction](/en/AIWiki/compaction/)
-- [context-window-management](/en/AIWiki/context-window-management/)
-- [predicted-outputs](/en/AIWiki/predicted-outputs/)
-- [batch-processing](/en/AIWiki/batch-processing/)
+- [compaction](https://inaodeng.com/en/AIWiki/compaction/)
+- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
+- [predicted-outputs](https://inaodeng.com/en/AIWiki/predicted-outputs/)
+- [batch-processing](https://inaodeng.com/en/AIWiki/batch-processing/)
 
 ### External References
 

@@ -111,10 +111,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [o1-o3](/en/AIWiki/o1-o3/)
-- [deepseek](/en/AIWiki/deepseek/)
-- [reinforcement-fine-tuning-rft](/en/AIWiki/reinforcement-fine-tuning-rft/)
-- [model-optionality](/en/AIWiki/model-optionality/)
+- [o1-o3](https://inaodeng.com/en/AIWiki/o1-o3/)
+- [deepseek](https://inaodeng.com/en/AIWiki/deepseek/)
+- [reinforcement-fine-tuning-rft](https://inaodeng.com/en/AIWiki/reinforcement-fine-tuning-rft/)
+- [model-optionality](https://inaodeng.com/en/AIWiki/model-optionality/)
 
 ### External References
 

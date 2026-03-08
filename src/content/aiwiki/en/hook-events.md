@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [hooks](/en/AIWiki/hooks/)
-- [function-calling](/en/AIWiki/function-calling/)
-- [custom-commands](/en/AIWiki/custom-commands/)
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [custom-commands](https://inaodeng.com/en/AIWiki/custom-commands/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
 
 ### External References
 

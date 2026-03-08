@@ -112,9 +112,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [llama](/zh-cn/AIWiki/llama/)
-- [qwen](/zh-cn/AIWiki/qwen/)
-- [small-language-models-slms](/zh-cn/AIWiki/small-language-models-slms/)
+- [llama](https://inaodeng.com/zh-cn/AIWiki/llama/)
+- [qwen](https://inaodeng.com/zh-cn/AIWiki/qwen/)
+- [small-language-models-slms](https://inaodeng.com/zh-cn/AIWiki/small-language-models-slms/)
 
 ### 术语元数据
 

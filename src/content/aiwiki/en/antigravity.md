@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [vibe-coding](/en/AIWiki/vibe-coding/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
 
 ### Term Metadata
 

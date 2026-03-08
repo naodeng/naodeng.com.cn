@@ -112,9 +112,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [claude-3-5-sonnet](/zh-cn/AIWiki/claude-3-5-sonnet/)
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
-- [model-context-protocol-mcp](/zh-cn/AIWiki/model-context-protocol-mcp/)
+- [claude-3-5-sonnet](https://inaodeng.com/zh-cn/AIWiki/claude-3-5-sonnet/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
+- [model-context-protocol-mcp](https://inaodeng.com/zh-cn/AIWiki/model-context-protocol-mcp/)
 
 ### 术语元数据
 

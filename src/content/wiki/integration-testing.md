@@ -51,21 +51,21 @@ order: 0
 
 #### 软件测试中的集成测试是什么？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 是 [软件测试](/zh-cn/wiki/software-testing/) 的一个级别，其中各个单元或组件作为一个组进行组合和测试。目的是暴露集成单元之间交互中的故障。测试驱动程序和[测试存根](/zh-cn/wiki/test-stub/) 通常用于协助[集成测试](/zh-cn/wiki/integration-testing/)。
-  **[集成测试](/zh-cn/wiki/integration-testing/)** 发生在[单元测试](/zh-cn/wiki/unit-testing/) 之后和[系统测试](/zh-cn/wiki/system-testing/) 之前。它的目的是验证集成模块是否能够正确地协同工作，以及系统作为一个凝聚单元的行为是否符合预期。该测试可以以迭代和增量的方式执行，特别是在[敏捷开发](/zh-cn/wiki/agile-development/)环境中。
-  [集成测试](/zh-cn/wiki/integration-testing/) 的不同方法包括：
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的一个级别，其中各个单元或组件作为一个组进行组合和测试。目的是暴露集成单元之间交互中的故障。测试驱动程序和[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 通常用于协助[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+  **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 发生在[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 之后和[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 之前。它的目的是验证集成模块是否能够正确地协同工作，以及系统作为一个凝聚单元的行为是否符合预期。该测试可以以迭代和增量的方式执行，特别是在[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/)环境中。
+  [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 的不同方法包括：
 
-- **Big Bang [集成测试](/zh-cn/wiki/integration-testing/)** ：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
-- **增量[集成测试](/zh-cn/wiki/integration-testing/)** ：模块一一集成并进行功能测试，可进一步分为：
+- **Big Bang [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
+- **增量[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：模块一一集成并进行功能测试，可进一步分为：
 - **自上而下**：首先测试较高级别的模块，然后逐步测试较低级别的模块。
 - **自下而上**：与自上而下相反，首先测试较低级别的模块。
 - **三明治/混合**：自上而下和自下而上方法的组合。
 - **自上而下**：首先测试较高级别的模块，然后逐步测试较低级别的模块。
 - **自下而上**：与自上而下相反，首先测试较低级别的模块。
-- **三明治/混合**：自上而下和自下而上方法的组合。 [集成测试](/zh-cn/wiki/integration-testing/) 可以揭示与模块之间的接口相关的问题，例如数据格式问题、接口使用不当或意外交互。这对于确保集成系统满足指定要求并正确运行至关重要。 自动化工具可用于执行集成测试，这在频繁集成和测试更改的持续集成环境中特别有用。这些工具可以帮助简化测试过程，使其更加高效和可靠。
+- **三明治/混合**：自上而下和自下而上方法的组合。 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 可以揭示与模块之间的接口相关的问题，例如数据格式问题、接口使用不当或意外交互。这对于确保集成系统满足指定要求并正确运行至关重要。 自动化工具可用于执行集成测试，这在频繁集成和测试更改的持续集成环境中特别有用。这些工具可以帮助简化测试过程，使其更加高效和可靠。
 
-- **Big Bang [集成测试](/zh-cn/wiki/integration-testing/)** ：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
-- **增量[集成测试](/zh-cn/wiki/integration-testing/)** ：模块一一集成并测试功能，可进一步分为：
+- **Big Bang [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
+- **增量[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：模块一一集成并测试功能，可进一步分为：
 - **自上而下**：首先测试较高级别的模块，然后逐步测试较低级别的模块。
 - **自下而上**：与自上而下相反，首先测试较低级别的模块。
 - **三明治/混合**：自上而下和自下而上方法的组合。
@@ -75,15 +75,15 @@ order: 0
 
 #### 为什么集成测试在软件开发生命周期中很重要？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 在软件开发生命周期中至关重要，因为它确保不同的模块或服务按预期协同工作。测试各个单元后，[集成测试](/zh-cn/wiki/integration-testing/) 验证这些单元之间的交互是否产生正确的结果并且表现得一致。这对于识别单元测试可能遗漏的问题至关重要，例如接口、数据流和系统范围逻辑的问题。
-  **[集成测试](/zh-cn/wiki/integration-testing/)** 还暴露了软件模块的功能、性能和可靠性要求之间的差异，这对于系统的整体质量至关重要。它有助于及早检测和修复集成错误，从而减少开发过程后期修复问题所需的成本和工作量。
-  此外，[集成测试](/zh-cn/wiki/integration-testing/) 提供了一种用于组装复杂系统的系统技术，否则该系统可能是一个混乱且容易出错的过程。它验证系统是否满足指定的要求，并且在转移到 [系统测试](/zh-cn/wiki/system-testing/) 和最终部署之前通常充当看门人。
-  从本质上讲，[集成测试](/zh-cn/wiki/integration-testing/) 是一项关键的质量控制措施，可确保软件系统的不同部分无缝协作，从而在系统到达最终用户之前提供对系统可靠性和功能的信心。如果没有它，当不同组件在现实环境中交互时，软件将存在无法按预期执行的重大风险。
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 在软件开发生命周期中至关重要，因为它确保不同的模块或服务按预期协同工作。测试各个单元后，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 验证这些单元之间的交互是否产生正确的结果并且表现得一致。这对于识别单元测试可能遗漏的问题至关重要，例如接口、数据流和系统范围逻辑的问题。
+  **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 还暴露了软件模块的功能、性能和可靠性要求之间的差异，这对于系统的整体质量至关重要。它有助于及早检测和修复集成错误，从而减少开发过程后期修复问题所需的成本和工作量。
+  此外，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 提供了一种用于组装复杂系统的系统技术，否则该系统可能是一个混乱且容易出错的过程。它验证系统是否满足指定的要求，并且在转移到 [系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 和最终部署之前通常充当看门人。
+  从本质上讲，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是一项关键的质量控制措施，可确保软件系统的不同部分无缝协作，从而在系统到达最终用户之前提供对系统可靠性和功能的信心。如果没有它，当不同组件在现实环境中交互时，软件将存在无法按预期执行的重大风险。
 
 #### 单元测试和集成测试之间的主要区别是什么？
 
-[单元测试](/zh-cn/wiki/unit-testing/) 和[集成测试](/zh-cn/wiki/integration-testing/) 在[软件测试](/zh-cn/wiki/software-testing/) 进程中具有不同的用途。 **[单元测试](/zh-cn/wiki/unit-testing/)** 专注于验证应用程序的最小部分，通常是单独的函数或方法，与系统的其余部分隔离。这意味着依赖项通常会被模拟或存根，以确保可以在受控环境中测试该单元。
-  相反，**[集成测试](/zh-cn/wiki/integration-testing/)** 评估系统的不同单元或组件之间的交互。目标是确保这些单元组合在一起时能够按预期协同工作。集成测试不太关心各个组件的内部行为，而更多地关心它们之间的数据流和通信。
+[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 和[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 进程中具有不同的用途。 **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 专注于验证应用程序的最小部分，通常是单独的函数或方法，与系统的其余部分隔离。这意味着依赖项通常会被模拟或存根，以确保可以在受控环境中测试该单元。
+  相反，**[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 评估系统的不同单元或组件之间的交互。目标是确保这些单元组合在一起时能够按预期协同工作。集成测试不太关心各个组件的内部行为，而更多地关心它们之间的数据流和通信。
   主要区别包括：
 
 - **范围**：单元测试涵盖单个组件；集成测试涵盖交互。
@@ -91,43 +91,25 @@ order: 0
 - **复杂性**：由于涉及多个组件，集成测试通常更加复杂。
 - **环境**：单元测试在简化的环境中运行；集成测试可能需要更复杂的设置，更接近生产。
 - **故障诊断**：单元测试中的故障更容易诊断；集成测试失败可能更难追踪到特定组件。
-- **执行速度**：单元测试执行速度更快；由于范围更广，集成测试需要更长的时间。 了解这些差异有助于 [测试自动化](/zh-cn/wiki/test-automation/) 工程师更有效地设计和执行测试，确保各个组件及其交互在软件系统中正常运行。
+- **执行速度**：单元测试执行速度更快；由于范围更广，集成测试需要更长的时间。 了解这些差异有助于 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师更有效地设计和执行测试，确保各个组件及其交互在软件系统中正常运行。
 
 #### 集成测试如何融入敏捷方法？
 
-在**敏捷方法**中，[集成测试](/zh-cn/wiki/integration-testing/) 是一个与迭代开发周期保持一致的连续过程。敏捷团队优先考虑协作、反馈和小型、频繁的发布，这需要定期集成和测试软件的不同组件。
-  敏捷中的 [集成测试](/zh-cn/wiki/integration-testing/) 通常作为 **持续集成 (CI)** 流程的一部分进行。每当将一段新代码提交到版本控制存储库时，它就会触发自动构建和测试序列。这包括运行集成测试以确保新代码与现有组件按预期工作。
-  敏捷中经常使用的 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 实践也支持[集成测试](/zh-cn/wiki/integration-testing/)。开发人员在实际代码之前编写新功能的测试，其中包括单元之间交互的测试。这确保了在开发过程的早期就考虑集成点。
-  敏捷团队还可以使用**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**，其中测试以非技术利益相关者可以理解的语言编写。这种方法有助于阐明组件之间的需求和预期交互，这对于有效[集成测试](/zh-cn/wiki/integration-testing/) 至关重要。
-  敏捷中的[集成测试](/zh-cn/wiki/integration-testing/) 不是一次性阶段，而是支持工作软件的**增量交付**的持续活动。它有助于及早发现问题，降低开发后期阶段出现缺陷的风险，并确保软件持续满足客户的需求。
+在**敏捷方法**中，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是一个与迭代开发周期保持一致的连续过程。敏捷团队优先考虑协作、反馈和小型、频繁的发布，这需要定期集成和测试软件的不同组件。
+  敏捷中的 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 通常作为 **持续集成 (CI)** 流程的一部分进行。每当将一段新代码提交到版本控制存储库时，它就会触发自动构建和测试序列。这包括运行集成测试以确保新代码与现有组件按预期工作。
+  敏捷中经常使用的 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 实践也支持[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。开发人员在实际代码之前编写新功能的测试，其中包括单元之间交互的测试。这确保了在开发过程的早期就考虑集成点。
+  敏捷团队还可以使用**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**，其中测试以非技术利益相关者可以理解的语言编写。这种方法有助于阐明组件之间的需求和预期交互，这对于有效[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 至关重要。
+  敏捷中的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 不是一次性阶段，而是支持工作软件的**增量交付**的持续活动。它有助于及早发现问题，降低开发后期阶段出现缺陷的风险，并确保软件持续满足客户的需求。
 
 #### 测试人员在集成测试中的作用是什么？
 
-在[集成测试](/zh-cn/wiki/integration-testing/) 中，测试人员的角色是多方面的，重点是验证集成组件或系统之间的接口和交互。测试人员负责：
+在[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 中，测试人员的角色是多方面的，重点是验证集成组件或系统之间的接口和交互。测试人员负责：
 
-- **设计[测试用例](/zh-cn/wiki/test-case/)**涵盖组件之间的交互，确保数据正确流动以及集成单元在组合时按预期运行。
+- **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**涵盖组件之间的交互，确保数据正确流动以及集成单元在组合时按预期运行。
 
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**模拟生产环境以在现实条件下验证集成组件。
+- **设置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**模拟生产环境以在现实条件下验证集成组件。
 
-- **执行[测试用例](/zh-cn/wiki/test-case/)**手动和使用自动化工具来识别单元之间交互中的缺陷。
-
-- **分析测试结果**查明任何故障的根源，这通常需要深入了解系统架构和组件交互。
-
-- **记录和跟踪缺陷**测试过程中发现的问题，提供详细信息，使开发人员能够高效地解决问题。
-
-- **与开发人员合作**了解集成点并确保对单个组件所做的任何更改不会对集成系统产生不利影响。
-
-- **验证修复**一旦缺陷得到解决，重新运行测试以确认问题已得到解决并且没有引入新问题。
-
-- **确保[测试覆盖率](/zh-cn/wiki/test-coverage/)**通过不断审查和更新测试用例以反映系统中的变化并覆盖新集成的功能。
-
-- **报告测试进度和质量**向利益相关者提供有关系统是否准备好进行进一步测试阶段或生产发布的见解。 测试人员在确保集成系统无缝运行并满足功能性和非[功能需求](/zh-cn/wiki/functional-requirements/)方面发挥着关键作用。
-
-- **设计[测试用例](/zh-cn/wiki/test-case/)**涵盖组件之间的交互，确保数据正确流动以及集成单元在组合时按预期运行。
-
-- **设置[测试环境](/zh-cn/wiki/test-environment/)**模拟生产环境以在现实条件下验证集成组件。
-
-- **执行[测试用例](/zh-cn/wiki/test-case/)**手动和使用自动化工具来识别单元之间交互中的缺陷。
+- **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**手动和使用自动化工具来识别单元之间交互中的缺陷。
 
 - **分析测试结果**查明任何故障的根源，这通常需要深入了解系统架构和组件交互。
 
@@ -137,7 +119,25 @@ order: 0
 
 - **验证修复**一旦缺陷得到解决，重新运行测试以确认问题已得到解决并且没有引入新问题。
 
-- **确保[测试覆盖率](/zh-cn/wiki/test-coverage/)**通过不断审查和更新测试用例以反映系统中的变化并覆盖新集成的功能。
+- **确保[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**通过不断审查和更新测试用例以反映系统中的变化并覆盖新集成的功能。
+
+- **报告测试进度和质量**向利益相关者提供有关系统是否准备好进行进一步测试阶段或生产发布的见解。 测试人员在确保集成系统无缝运行并满足功能性和非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)方面发挥着关键作用。
+
+- **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**涵盖组件之间的交互，确保数据正确流动以及集成单元在组合时按预期运行。
+
+- **设置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**模拟生产环境以在现实条件下验证集成组件。
+
+- **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**手动和使用自动化工具来识别单元之间交互中的缺陷。
+
+- **分析测试结果**查明任何故障的根源，这通常需要深入了解系统架构和组件交互。
+
+- **记录和跟踪缺陷**测试过程中发现的问题，提供详细信息，使开发人员能够高效地解决问题。
+
+- **与开发人员合作**了解集成点并确保对单个组件所做的任何更改不会对集成系统产生不利影响。
+
+- **验证修复**一旦缺陷得到解决，重新运行测试以确认问题已得到解决并且没有引入新问题。
+
+- **确保[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**通过不断审查和更新测试用例以反映系统中的变化并覆盖新集成的功能。
 
 - **报告测试进度和质量**向利益相关者提供有关系统是否准备好进行进一步测试阶段或生产发布的见解。
 
@@ -145,19 +145,19 @@ order: 0
 
 #### 集成测试有哪些不同类型？
 
-不同类型的[集成测试](/zh-cn/wiki/integration-testing/) 超出了基本的自上而下、自下而上和三明治方法。以下是一些变化：
+不同类型的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 超出了基本的自上而下、自下而上和三明治方法。以下是一些变化：
 
-- **大爆炸[集成测试](/zh-cn/wiki/integration-testing/)**：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
-- **增量[集成测试](/zh-cn/wiki/integration-testing/)**：系统一次集成并测试一个模块或组件。
-- **持续[集成测试](/zh-cn/wiki/integration-testing/)**：定期集成和测试代码更改以尽早发现问题。
-- **[系统集成测试](/zh-cn/wiki/system-integration-testing/) (SIT)**：涉及测试不同系统的集成，并可能包括 [数据库](/zh-cn/wiki/database/) 和其他应用程序等外部元素。
-- **组件[集成测试](/zh-cn/wiki/integration-testing/) (CIT)**：重点关注软件组件之间的交互，通常在[单元测试](/zh-cn/wiki/unit-testing/) 之后完成。
-- **接口[集成测试](/zh-cn/wiki/integration-testing/)**：集中于组件之间的连接点，确保接口按预期工作。
-- **混合[集成测试](/zh-cn/wiki/integration-testing/)**：结合了自上而下和自下而上的方法，通常用于充分利用这两种方法的优势。 每种类型都解决特定的集成问题，并且可以根据项目的要求、体系结构和可用资源进行选择。 [集成测试](/zh-cn/wiki/integration-testing/) 对于验证软件的不同部分是否协同工作至关重要，并且可以发现单元测试可能遗漏的问题，例如接口、数据流和系统范围行为的问题。
+- **大爆炸[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：所有组件或模块同时集成，之后所有内容都作为一个整体进行测试。
+- **增量[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：系统一次集成并测试一个模块或组件。
+- **持续[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：定期集成和测试代码更改以尽早发现问题。
+- **[系统集成测试](https://inaodeng.com/zh-cn/wiki/system-integration-testing/) (SIT)**：涉及测试不同系统的集成，并可能包括 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 和其他应用程序等外部元素。
+- **组件[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) (CIT)**：重点关注软件组件之间的交互，通常在[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 之后完成。
+- **接口[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：集中于组件之间的连接点，确保接口按预期工作。
+- **混合[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：结合了自上而下和自下而上的方法，通常用于充分利用这两种方法的优势。 每种类型都解决特定的集成问题，并且可以根据项目的要求、体系结构和可用资源进行选择。 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 对于验证软件的不同部分是否协同工作至关重要，并且可以发现单元测试可能遗漏的问题，例如接口、数据流和系统范围行为的问题。
 
 #### 自上而下和自下而上集成测试有什么区别？
 
-自上而下和自下而上是 **[集成测试](/zh-cn/wiki/integration-testing/)** 的两种方法，其不同之处在于测试和集成组件的顺序。
+自上而下和自下而上是 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 的两种方法，其不同之处在于测试和集成组件的顺序。
   **自上而下的集成测试**从最高级别的模块开始，然后沿着层次结构向下进行，一次集成一层模块。它使用**存根**（虚拟模块）来模拟尚未集成或开发的较低级别组件。这种方法可以尽早验证主要功能和整体系统设计。
 
 ```
@@ -179,14 +179,14 @@ order: 0
 
 #### 什么是三明治集成测试？
 
-三明治 [集成测试](/zh-cn/wiki/integration-testing/) 是一种混合方法，结合了 **自上而下** 和 **自下而上** [集成测试](/zh-cn/wiki/integration-testing/) 方法。它也称为**混合**或**组合**方法。在此策略中，测试是分层进行的，其中较高级别的模块与较低级别的模块同时进行测试。这是通过对缺少的较高级别模块使用**存根**和对缺少的较低级别模块使用**驱动程序**来实现的。
+三明治 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是一种混合方法，结合了 **自上而下** 和 **自下而上** [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 方法。它也称为**混合**或**组合**方法。在此策略中，测试是分层进行的，其中较高级别的模块与较低级别的模块同时进行测试。这是通过对缺少的较高级别模块使用**存根**和对缺少的较低级别模块使用**驱动程序**来实现的。
   该过程首先测试应用程序的中间层，其中高层和低层模块尚未完全开发或集成。随着开发的进展，存根和驱动程序将替换为实际的模块。当应用程序的顶部和底部部分由不同团队开发或可在不同时间进行集成时，此方法特别有用。
-  三明治 [集成测试](/zh-cn/wiki/integration-testing/) 允许及早检测与应用程序各层之间的交互相关的缺陷。它还有助于并行开发和测试，这有利于缩短上市时间。然而，由于需要存根和驱动程序，管理起来可能很复杂，并且需要仔细规划以确保所有路径都经过充分测试。
-  总之，三明治[集成测试](/zh-cn/wiki/integration-testing/) 是一种综合方法，它利用自上而下和自下而上方法的优点来促进应用程序中不同层的并发测试。
+  三明治 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 允许及早检测与应用程序各层之间的交互相关的缺陷。它还有助于并行开发和测试，这有利于缩短上市时间。然而，由于需要存根和驱动程序，管理起来可能很复杂，并且需要仔细规划以确保所有路径都经过充分测试。
+  总之，三明治[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是一种综合方法，它利用自上而下和自下而上方法的优点来促进应用程序中不同层的并发测试。
 
 #### 存根和驱动程序在集成测试中的作用是什么？
 
-存根和驱动程序是 **[集成测试](/zh-cn/wiki/integration-testing/)** 中的重要组件，特别是在采用 **增量 [集成测试](/zh-cn/wiki/integration-testing/)** 策略（例如 **自上而下** 和 **自下而上** 方法）时。
+存根和驱动程序是 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 中的重要组件，特别是在采用 **增量 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 策略（例如 **自上而下** 和 **自下而上** 方法）时。
   **存根**用于**自上而下的集成测试**。它们模拟尚未集成或开发的较低级别模块的行为。存根为上层模块提供预定义的响应，允许测试人员隔离和测试更高层的功能，而无需等待所有组件完成。
 
 ```
@@ -205,7 +205,7 @@ order: 0
 
 #### 集成测试中使用了哪些不同的技术？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 涉及组合软件模块并将它们作为一个组进行测试的各种技术。以下是其他主题未涵盖的一些技术：
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 涉及组合软件模块并将它们作为一个组进行测试的各种技术。以下是其他主题未涵盖的一些技术：
 
 - **大爆炸集成**：将所有或大部分单元组合在一起并一次性进行测试。这种方法可能存在风险，因为可能很难隔离错误。
 - **增量集成**：模块一一添加并测试。这又可以进一步分为：
@@ -223,39 +223,39 @@ order: 0
 
 #### 集成测试常用哪些工具？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 的常用工具包括：
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 的常用工具包括：
 
-- **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](/zh-cn/wiki/integration-testing/)。
-- **[JMeter](/zh-cn/wiki/jmeter/)**：为[负载测试](/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](/zh-cn/wiki/integration-testing/)，特别是用于测试[API](/zh-cn/wiki/api/) 和服务。
-- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
-- **[selenium](/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](/zh-cn/wiki/api/) 作为集成测试的一部分。
-- **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](/zh-cn/wiki/api-testing/) 提供综合平台。
-- **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](/zh-cn/wiki/integration-testing/)。
-- **Mockito**：Java 中单元测试的模拟框架，也可用于模拟[集成测试](/zh-cn/wiki/integration-testing/) 中的组件，允许对特定交互进行隔离测试。
-- **Cucumber**：支持行为驱动开发（[BDD](/zh-cn/wiki/bdd/)）的工具，可用于以人类可读的格式编写集成测试。
+- **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**：为[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)，特别是用于测试[API](https://inaodeng.com/zh-cn/wiki/api/) 和服务。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**：[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](https://inaodeng.com/zh-cn/wiki/api/) [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 的理想选择。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](https://inaodeng.com/zh-cn/wiki/api/) 作为集成测试的一部分。
+- **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/) 提供综合平台。
+- **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+- **Mockito**：Java 中单元测试的模拟框架，也可用于模拟[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 中的组件，允许对特定交互进行隔离测试。
+- **Cucumber**：支持行为驱动开发（[BDD](https://inaodeng.com/zh-cn/wiki/bdd/)）的工具，可用于以人类可读的格式编写集成测试。
 - **GitLab CI/CD**：提供持续集成服务，并且可以配置为作为 CI/CD 管道的一部分自动运行集成测试。
-- **Travis CI**：一种托管持续集成服务，用于构建和测试托管在 GitHub 和 Bitbucket 上的软件项目。 这些工具可以集成到开发管道的各个阶段，以确保组件按预期协同工作，并且它们通常支持自动化[测试执行](/zh-cn/wiki/test-execution/)，这对于敏捷和持续交付实践至关重要。
+- **Travis CI**：一种托管持续集成服务，用于构建和测试托管在 GitHub 和 Bitbucket 上的软件项目。 这些工具可以集成到开发管道的各个阶段，以确保组件按预期协同工作，并且它们通常支持自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)，这对于敏捷和持续交付实践至关重要。
 
-- **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](/zh-cn/wiki/integration-testing/)。
-- **[JMeter](/zh-cn/wiki/jmeter/)**：为[负载测试](/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](/zh-cn/wiki/integration-testing/)，特别是用于测试[API](/zh-cn/wiki/api/) 和服务。
-- **[Postman](/zh-cn/wiki/postman/)**：[API 测试](/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](/zh-cn/wiki/api/) [集成测试](/zh-cn/wiki/integration-testing/) 的理想选择。
-- **[selenium](/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](/zh-cn/wiki/api/) 作为集成测试的一部分。
-- **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](/zh-cn/wiki/api-testing/) 提供综合平台。
-- **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](/zh-cn/wiki/integration-testing/)。
-- **Mockito**：Java 中单元测试的模拟框架，也可用于模拟 [集成测试](/zh-cn/wiki/integration-testing/) 中的组件，允许对特定交互进行隔离测试。
-- **Cucumber**：支持行为驱动开发（[BDD](/zh-cn/wiki/bdd/)）的工具，可用于以人类可读的格式编写集成测试。
+- **Jenkins**：开源自动化服务器，使开发人员能够构建、测试和部署他们的应用程序。它支持持续集成，可用于自动化[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**：为[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 设计的流行工具，但也广泛用于[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)，特别是用于测试[API](https://inaodeng.com/zh-cn/wiki/api/) 和服务。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**：[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/) 的强大工具，允许测试人员向服务器发送 HTTP 请求并检查响应，使其成为 [API](https://inaodeng.com/zh-cn/wiki/api/) [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 的理想选择。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**：主要用于 Web 应用程序测试，[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 也可用于测试 Web 服务，[API](https://inaodeng.com/zh-cn/wiki/api/) 作为集成测试的一部分。
+- **SoapUI**：专门为测试 SOAP 和 REST Web 服务而设计的工具，为面向服务的架构 (SOA) 和 [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/) 提供综合平台。
+- **TestNG**：受 JUnit 启发的测试框架，但引入了新功能，这使其更强大且更易于用于 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+- **Mockito**：Java 中单元测试的模拟框架，也可用于模拟 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 中的组件，允许对特定交互进行隔离测试。
+- **Cucumber**：支持行为驱动开发（[BDD](https://inaodeng.com/zh-cn/wiki/bdd/)）的工具，可用于以人类可读的格式编写集成测试。
 - **GitLab CI/CD**：提供持续集成服务，并且可以配置为作为 CI/CD 管道的一部分自动运行集成测试。
 - **Travis CI**：一种托管持续集成服务，用于构建和测试托管在 GitHub 和 Bitbucket 上的软件项目。
 
 #### 在持续集成环境中如何进行集成测试？
 
-在**持续集成 (CI)** 环境中，[集成测试](/zh-cn/wiki/integration-testing/) 是自动发生的，并且经常发生，通常在每次提交之后或至少每天发生。该过程通常涉及以下步骤：
+在**持续集成 (CI)** 环境中，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 是自动发生的，并且经常发生，通常在每次提交之后或至少每天发生。该过程通常涉及以下步骤：
 
 1. **代码提交**：开发人员将代码推送到共享存储库。
 2. **自动构建**：CI服务器在提交新代码时自动触发构建。
-3. **自动化[测试执行](/zh-cn/wiki/test-execution/)** ：成功构建后，运行集成测试。这些测试侧重于集成组件或系统之间的交互。
+3. **自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** ：成功构建后，运行集成测试。这些测试侧重于集成组件或系统之间的交互。
 4. **测试报告**：结果报告给团队。成功使该过程继续进行，而失败则使管道停止，从而引起立即关注。
-5. **修复和迭代**：开发人员在重新提交代码之前解决任何问题，循环回到步骤 1。 CI 中的集成测试通常使用 Java 的 **JUnit** 或 **TestNG**、Python 的 **pytest** 或 JavaScript 的 **Mocha** 等框架编写。它们可以通过[API](/zh-cn/wiki/api/)、消息队列、[数据库](/zh-cn/wiki/database/) 或其他接口与应用程序交互。 测试被设计为**幂等**和**隔离**，以确保它们可以按任何顺序运行而不会产生副作用。模拟、存根或服务虚拟化可用于模拟外部依赖关系。 CI 工具（如 **Jenkins**、**Travis CI**、**CircleCI** 或 **GitLab CI**）配置为处理工作流程。它们与 **Git** 等版本控制系统集成，还可以将应用程序部署到暂存环境以进行进一步测试。
+5. **修复和迭代**：开发人员在重新提交代码之前解决任何问题，循环回到步骤 1。 CI 中的集成测试通常使用 Java 的 **JUnit** 或 **TestNG**、Python 的 **pytest** 或 JavaScript 的 **Mocha** 等框架编写。它们可以通过[API](https://inaodeng.com/zh-cn/wiki/api/)、消息队列、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 或其他接口与应用程序交互。 测试被设计为**幂等**和**隔离**，以确保它们可以按任何顺序运行而不会产生副作用。模拟、存根或服务虚拟化可用于模拟外部依赖关系。 CI 工具（如 **Jenkins**、**Travis CI**、**CircleCI** 或 **GitLab CI**）配置为处理工作流程。它们与 **Git** 等版本控制系统集成，还可以将应用程序部署到暂存环境以进行进一步测试。
 
 # Example of a CI pipeline configuration snippet for integration testing
 stages:
@@ -273,27 +273,27 @@ integration_test_job:
 
 #### 有效集成测试的最佳实践有哪些？
 
-为了确保有效[集成测试](/zh-cn/wiki/integration-testing/)，请遵循以下最佳实践：
+为了确保有效[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)，请遵循以下最佳实践：
 
 - **彻底计划**：定义明确的集成测试目标和范围。确定您想要实现的目标以及如何衡量成功。
-- **仔细设计[测试用例](/zh-cn/wiki/test-case/)**：创建涵盖组件之间交互的测试用例，重点关注接口和数据流。
+- **仔细设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：创建涵盖组件之间交互的测试用例，重点关注接口和数据流。
 - **使用解耦技术**：使用模拟和服务虚拟化来隔离组件，允许您在不依赖外部系统的情况下测试交互。
 - **确定关键路径的优先级**：重点关注对应用程序功能至关重要的最重要的交互。
 - **尽可能自动化**：使用自动化工具执行重复和回归测试，节省时间并确保一致性。
-- **维护干净的[测试环境](/zh-cn/wiki/test-environment/)** ：确保测试环境密切反映生产环境，并在测试之间重置以保持一致的状态。
+- **维护干净的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：确保测试环境密切反映生产环境，并在测试之间重置以保持一致的状态。
 - **监控和测量**：实施日志记录和监控以捕获测试结果和性能指标。使用此数据来提高测试覆盖率和质量。
 - **迭代和发展**：随着系统的增长，不断审查和更新集成测试以覆盖新的场景和组件。
-- **与团队沟通**：与开发人员和利益相关者分享测试结果和见解，以促进协作和快速解决问题。 通过遵循这些实践，您将增强 [集成测试](/zh-cn/wiki/integration-testing/) 流程的可靠性，并为软件产品的整体质量做出贡献。
+- **与团队沟通**：与开发人员和利益相关者分享测试结果和见解，以促进协作和快速解决问题。 通过遵循这些实践，您将增强 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 流程的可靠性，并为软件产品的整体质量做出贡献。
 
 #### 自动化工具如何用于集成测试？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 中的自动化工具简化了验证不同软件模块之间交互的过程。它们可用于：
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 中的自动化工具简化了验证不同软件模块之间交互的过程。它们可用于：
 
-- **执行[测试套件](/zh-cn/wiki/test-suite/)**高效，确保集成组件在组合时按预期工作。
+- **执行[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**高效，确保集成组件在组合时按预期工作。
 
 - **模拟或模拟组件** （使用存根和驱动程序）尚未开发或可供测试。
 
-- **生成[测试数据](/zh-cn/wiki/test-data/)**验证模块之间的集成点和数据流。
+- **生成[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**验证模块之间的集成点和数据流。
 
 - **监控系统行为**和测试中的性能，以确定集成点的瓶颈或故障。
 
@@ -324,13 +324,13 @@ integration_test_job:
       }
   }
 ```
-通过自动化[集成测试](/zh-cn/wiki/integration-testing/)，团队可以及早检测集成问题，减少手动工作，并加速可靠软件的交付。
+通过自动化[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)，团队可以及早检测集成问题，减少手动工作，并加速可靠软件的交付。
 
-- **执行[测试套件](/zh-cn/wiki/test-suite/)**高效，确保集成组件在组合时按预期工作。
+- **执行[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**高效，确保集成组件在组合时按预期工作。
 
 - **模拟或模拟组件** （使用存根和驱动程序）尚未开发或可供测试。
 
-- **生成[测试数据](/zh-cn/wiki/test-data/)**验证模块之间的集成点和数据流。
+- **生成[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**验证模块之间的集成点和数据流。
 
 - **监控系统行为**和测试中的性能，以确定集成点的瓶颈或故障。
 
@@ -342,35 +342,35 @@ integration_test_job:
 
 #### 集成测试中有哪些挑战以及如何克服这些挑战？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 可能会带来一些挑战：
-  **环境配置**：确保[测试环境](/zh-cn/wiki/test-environment/) 紧密复制生产可能很困难。通过使用**容器化**和**基础设施即代码**来克服这个问题以保持一致性。
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 可能会带来一些挑战：
+  **环境配置**：确保[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 紧密复制生产可能很困难。通过使用**容器化**和**基础设施即代码**来克服这个问题以保持一致性。
   **服务间依赖性**：服务可能依赖于不稳定或不可用的外部系统。利用**服务虚拟化**或**模拟**来模拟这些依赖关系。
-  **数据管理**：[测试数据](/zh-cn/wiki/test-data/) 应该具有代表性和独立性。实施**数据管理策略**，例如使用单独的[数据库](/zh-cn/wiki/database/)或数据模拟来确保数据完整性。
+  **数据管理**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 应该具有代表性和独立性。实施**数据管理策略**，例如使用单独的[数据库](https://inaodeng.com/zh-cn/wiki/database/)或数据模拟来确保数据完整性。
   **复杂故障**：由于多个交互组件，故障可能很难诊断。通过增强**日志记录**和**监控**功能以及使用**分布式跟踪**工具来解决此问题。
-  **[片状测试](/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试可能会不一致地通过或失败。通过增加**超时阈值**、**重试机制**并确保操作的**幂等性**来缓解不稳定。
-  **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：跨集成组件实现足够的[测试覆盖率](/zh-cn/wiki/test-coverage/) 可能具有挑战性。使用**[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**并执行**差距分析**来识别未经测试的路径。
+  **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试可能会不一致地通过或失败。通过增加**超时阈值**、**重试机制**并确保操作的**幂等性**来缓解不稳定。
+  **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：跨集成组件实现足够的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 可能具有挑战性。使用**[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具**并执行**差距分析**来识别未经测试的路径。
   **持续集成**：将测试集成到 CI 管道中需要仔细编排。利用支持**并行执行**和**测试结果分析**的**CI工具**来简化流程。
-  **版本兼容性**：确保不同版本服务之间的兼容性至关重要。采用**版本控制**和**[向后兼容性](/zh-cn/wiki/backward-compatibility/) 检查**来防止集成问题。
-  通过使用正确的策略和工具应对这些挑战，[集成测试](/zh-cn/wiki/integration-testing/) 可以更加有效且不易出错。
+  **版本兼容性**：确保不同版本服务之间的兼容性至关重要。采用**版本控制**和**[向后兼容性](https://inaodeng.com/zh-cn/wiki/backward-compatibility/) 检查**来防止集成问题。
+  通过使用正确的策略和工具应对这些挑战，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 可以更加有效且不易出错。
 
 ### 实际应用
 
 #### 您能否提供一个集成测试至关重要的现实场景示例？
 
-在医疗保健领域，一家公司开发了一款管理患者记录的应用程序。该系统由多个模块组成：用于数据输入的用户界面、用于存储的[数据库](/zh-cn/wiki/database/)以及用于分析的报告模块。每个模块都由不同的团队开发并单独进行单元测试。
-  在部署过程中，应用程序遇到了严重故障。用户界面无法将记录保存到[数据库](/zh-cn/wiki/database/)，并且报告模块生成了错误的分析。根本原因可以追溯到模块之间交换信息时对数据类型和格式的不当处理。
-  **[集成测试](/zh-cn/wiki/integration-testing/)** 对于确保模块无缝协作至关重要。缺乏[集成测试](/zh-cn/wiki/integration-testing/)导致部署严重延迟，修补程序成本增加，最重要的是，暂时无法提供可靠的患者护理。
-  事件后分析显示，如果团队执行集成测试，他们就会检测到数据处理中的不匹配情况。这一现实场景强调了 [集成测试](/zh-cn/wiki/integration-testing/) 在验证不同软件组件之间的交互方面的重要性，特别是在准确的数据处理对于应用程序的功能和最终用户的福祉至关重要的系统中。
+在医疗保健领域，一家公司开发了一款管理患者记录的应用程序。该系统由多个模块组成：用于数据输入的用户界面、用于存储的[数据库](https://inaodeng.com/zh-cn/wiki/database/)以及用于分析的报告模块。每个模块都由不同的团队开发并单独进行单元测试。
+  在部署过程中，应用程序遇到了严重故障。用户界面无法将记录保存到[数据库](https://inaodeng.com/zh-cn/wiki/database/)，并且报告模块生成了错误的分析。根本原因可以追溯到模块之间交换信息时对数据类型和格式的不当处理。
+  **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 对于确保模块无缝协作至关重要。缺乏[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)导致部署严重延迟，修补程序成本增加，最重要的是，暂时无法提供可靠的患者护理。
+  事件后分析显示，如果团队执行集成测试，他们就会检测到数据处理中的不匹配情况。这一现实场景强调了 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 在验证不同软件组件之间的交互方面的重要性，特别是在准确的数据处理对于应用程序的功能和最终用户的福祉至关重要的系统中。
 
 #### 集成测试在微服务架构中如何工作？
 
-在微服务架构中，[集成测试](/zh-cn/wiki/integration-testing/) 专注于确保独立开发的服务按预期协同工作。该过程涉及：
+在微服务架构中，[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 专注于确保独立开发的服务按预期协同工作。该过程涉及：
 
 - **定义服务契约**：为每个微服务建立清晰的 API 和预期行为。
-- **创建 [测试环境](/zh-cn/wiki/test-environment/)** ：使用服务依赖项和数据模拟类似生产的设置。
+- **创建 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：使用服务依赖项和数据模拟类似生产的设置。
 - **测试服务交互**：使用 API 调用验证服务之间的通信路径和数据流。
 - **模拟外部服务**：使用工具模拟外部 API 并减少测试过程中的依赖关系。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** ：验证所有服务的整个工作流程，通常使用自动化测试套件。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)** ：验证所有服务的整个工作流程，通常使用自动化测试套件。
 - **监控**：实施日志记录和监控以跟踪服务间通信并识别问题。
 
 ```
@@ -381,41 +381,41 @@ integration_test_job:
 ```
 
 - **持续集成 (CI)**：将测试集成到 CI 管道中，以便在代码更改时自动运行它们。
-- **[混沌工程](/zh-cn/wiki/chaos-engineering/)** ：引入故障来测试服务之间的弹性和错误处理。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：检查系统是否满足负载下的性能标准。 微服务中的[集成测试](/zh-cn/wiki/integration-testing/) 需要一种战略方法来处理多个松散耦合服务的复杂性。这对于检测服务集成中出现的问题并确保无缝的用户体验至关重要。
+- **[混沌工程](https://inaodeng.com/zh-cn/wiki/chaos-engineering/)** ：引入故障来测试服务之间的弹性和错误处理。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：检查系统是否满足负载下的性能标准。 微服务中的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 需要一种战略方法来处理多个松散耦合服务的复杂性。这对于检测服务集成中出现的问题并确保无缝的用户体验至关重要。
 
 - **定义服务契约**：为每个微服务建立清晰的 API 和预期行为。
-- **创建 [测试环境](/zh-cn/wiki/test-environment/)** ：使用服务依赖项和数据模拟类似生产的设置。
+- **创建 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：使用服务依赖项和数据模拟类似生产的设置。
 - **测试服务交互**：使用 API 调用验证服务之间的通信路径和数据流。
 - **模拟外部服务**：使用工具模拟外部 API 并减少测试过程中的依赖关系。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** ：通常使用自动化测试套件验证所有服务的整个工作流程。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)** ：通常使用自动化测试套件验证所有服务的整个工作流程。
 - **监控**：实施日志记录和监控以跟踪服务间通信并识别问题。
 - **持续集成 (CI)**：将测试集成到 CI 管道中，以便在代码更改时自动运行它们。
-- **[混沌工程](/zh-cn/wiki/chaos-engineering/)** ：引入故障来测试服务之间的弹性和错误处理。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：检查系统是否满足负载下的性能标准。
+- **[混沌工程](https://inaodeng.com/zh-cn/wiki/chaos-engineering/)** ：引入故障来测试服务之间的弹性和错误处理。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：检查系统是否满足负载下的性能标准。
 
 #### 集成测试在分布式系统中如何工作？
 
-分布式系统中的[集成测试](/zh-cn/wiki/integration-testing/) 涉及验证分布在各种服务器、进程甚至地理位置的不同服务或组件之间的交互。目标是确保这些分布式组件按预期协同工作。
-  **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：尽可能模仿生产环境。使用服务虚拟化或容器化来模拟不可用或正在开发的服务。
+分布式系统中的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 涉及验证分布在各种服务器、进程甚至地理位置的不同服务或组件之间的交互。目标是确保这些分布式组件按预期协同工作。
+  **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：尽可能模仿生产环境。使用服务虚拟化或容器化来模拟不可用或正在开发的服务。
   **服务依赖关系**：识别和管理服务之间的依赖关系。对不属于当前测试范围的服务使用模拟对象或存根。
   **网络通信**：测试网络通信路径，包括延迟、带宽和错误处理。验证服务可以通过网络有效通信。
-  **数据一致性**：确保不同服务之间的数据一致性，尤其是在复制或分发[数据库](/zh-cn/wiki/database/) 或数据存储时。
+  **数据一致性**：确保不同服务之间的数据一致性，尤其是在复制或分发[数据库](https://inaodeng.com/zh-cn/wiki/database/) 或数据存储时。
   **配置管理**：验证服务或环境之间可能不同的配置文件和环境变量。
   **安全和访问控制**：验证安全协议和访问控制机制是否跨服务边界正确运行。
   **错误处理**：测试系统如何处理各个服务的故障，包括超时、重试和回退。
-  **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**：执行涵盖所有服务的整个工作流程的端到端测试，以验证集成系统的行为。
-  **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：实施自动化回归测试以在每个构建或版本中运行，以尽早发现集成问题。
+  **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**：执行涵盖所有服务的整个工作流程的端到端测试，以验证集成系统的行为。
+  **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：实施自动化回归测试以在每个构建或版本中运行，以尽早发现集成问题。
   **持续集成 (CI)**：尽早并经常进行集成，使用 CI 工具在共享环境中自动部署和测试组件。
-  **监控和日志记录**：利用监控和日志记录来诊断 [集成测试](/zh-cn/wiki/integration-testing/) 期间的问题，确保系统在组件交互时保持性能和可靠性。
+  **监控和日志记录**：利用监控和日志记录来诊断 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 期间的问题，确保系统在组件交互时保持性能和可靠性。
 
 #### 集成测试可以检测到哪些现实问题？
 
-[集成测试](/zh-cn/wiki/integration-testing/) 可以检测[单元测试](/zh-cn/wiki/unit-testing/) 期间可能不明显的各种现实问题。这些包括：
+[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 可以检测[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 期间可能不明显的各种现实问题。这些包括：
 
 - **数据格式问题**当系统的不同部分期望或产生不兼容的数据格式时。
 
-- **[API](/zh-cn/wiki/api/) 违反合同** API 的实际使用与其预期用途不同，从而导致失败。
+- **[API](https://inaodeng.com/zh-cn/wiki/api/) 违反合同** API 的实际使用与其预期用途不同，从而导致失败。
 
 - **数据流处理不当**系统无法正确处理模块之间传递的数据。
 
@@ -431,11 +431,11 @@ integration_test_job:
 
 - **第三方服务集成问题** ，包括处理停机时间和有关外部服务的错误假设。
 
-- **端到端功能故障**当所有部分协同工作时，系统无法满足用户的要求或期望。 通过[集成测试](/zh-cn/wiki/integration-testing/) 及早检测这些问题有助于确保软件在生产中正常运行，从而降低昂贵的发布后修复和停机的风险。
+- **端到端功能故障**当所有部分协同工作时，系统无法满足用户的要求或期望。 通过[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 及早检测这些问题有助于确保软件在生产中正常运行，从而降低昂贵的发布后修复和停机的风险。
 
 - **数据格式问题**当系统的不同部分期望或产生不兼容的数据格式时。
 
-- **[API](/zh-cn/wiki/api/) 违反合同** API 的实际使用与其预期用途不同，从而导致失败。
+- **[API](https://inaodeng.com/zh-cn/wiki/api/) 违反合同** API 的实际使用与其预期用途不同，从而导致失败。
 
 - **数据流处理不当**系统无法正确处理模块之间传递的数据。
 
@@ -455,7 +455,7 @@ integration_test_job:
 
 #### 您能否提供一个未正确完成集成测试的项目示例以及随之而来的后果？
 
-在 2012 年臭名昭著的骑士资本集团案中，**不当[集成测试](/zh-cn/wiki/integration-testing/)**导致了灾难性的财务损失。该公司在生产环境中部署了一款新的交易软件，但没有足够的[集成测试](/zh-cn/wiki/integration-testing/)。该软件旨在取代旧系统，并包含一个本应删除但无意中留在代码中的**重新调整用途的功能**。
+在 2012 年臭名昭著的骑士资本集团案中，**不当[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**导致了灾难性的财务损失。该公司在生产环境中部署了一款新的交易软件，但没有足够的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。该软件旨在取代旧系统，并包含一个本应删除但无意中留在代码中的**重新调整用途的功能**。
   部署当天，旧功能被触发，导致新系统对 150 只不同股票进行**高买低卖**。该软件在不到一小时内执行了**数百万笔交易**，然后就被停止，导致公司损失约**4.4亿美元**。
-  这一事件强调了彻底[集成测试](/zh-cn/wiki/integration-testing/)的重要性，特别是在处理金融交易平台等复杂且高风险的系统时。由于未能正确测试新软件与现有系统和股票市场环境的集成，导致了历史上最迅速且代价最高的交易错误之一。
-  Knight Capital 事件清楚地提醒我们，跳过或仓促的 [集成测试](/zh-cn/wiki/integration-testing/) 可能会导致严重且直接的现实后果，这强调了在软件部署过程中需要严格的测试协议。
+  这一事件强调了彻底[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)的重要性，特别是在处理金融交易平台等复杂且高风险的系统时。由于未能正确测试新软件与现有系统和股票市场环境的集成，导致了历史上最迅速且代价最高的交易错误之一。
+  Knight Capital 事件清楚地提醒我们，跳过或仓促的 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 可能会导致严重且直接的现实后果，这强调了在软件部署过程中需要严格的测试协议。

@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [slash-commands](/en/AIWiki/slash-commands/)
-- [hooks](/en/AIWiki/hooks/)
-- [function-calling](/en/AIWiki/function-calling/)
-- [rule-types](/en/AIWiki/rule-types/)
+- [slash-commands](https://inaodeng.com/en/AIWiki/slash-commands/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [rule-types](https://inaodeng.com/en/AIWiki/rule-types/)
 
 ### External References
 

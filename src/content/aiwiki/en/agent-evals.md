@@ -118,10 +118,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [graders](/en/AIWiki/graders/)
-- [trace-grading](/en/AIWiki/trace-grading/)
-- [self-healing-code](/en/AIWiki/self-healing-code/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
+- [graders](https://inaodeng.com/en/AIWiki/graders/)
+- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
+- [self-healing-code](https://inaodeng.com/en/AIWiki/self-healing-code/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
 
 ### External References
 

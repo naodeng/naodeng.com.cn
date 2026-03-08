@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [llama](/en/AIWiki/llama/)
-- [deepseek](/en/AIWiki/deepseek/)
-- [mistral-mixtral](/en/AIWiki/mistral-mixtral/)
+- [llama](https://inaodeng.com/en/AIWiki/llama/)
+- [deepseek](https://inaodeng.com/en/AIWiki/deepseek/)
+- [mistral-mixtral](https://inaodeng.com/en/AIWiki/mistral-mixtral/)
 
 ### Term Metadata
 

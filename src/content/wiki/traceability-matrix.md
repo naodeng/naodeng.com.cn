@@ -43,7 +43,7 @@ order: 0
 
 ## 相关术语
 
-- [需求管理工具](/zh-cn/wiki/requirements-management-tool/)
+- [需求管理工具](https://inaodeng.com/zh-cn/wiki/requirements-management-tool/)
 
 ## 关于可追溯性矩阵的问题？
 
@@ -51,42 +51,42 @@ order: 0
 
 #### 软件测试中的可追溯性矩阵是什么？
 
-**[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** (TM) 是一个用[测试用例](/zh-cn/wiki/test-case/) 映射和跟踪用户需求的文档。它确保为系统定义的所有需求都在测试协议中进行测试。该矩阵用于跟踪测试工作的进度，并确保每个需求至少被一个[测试用例](/zh-cn/wiki/test-case/)覆盖，从而确保所有需求都经过测试。
-  创建 TM 涉及在一列中列出所有要求，并在相邻列中列出相应的[测试用例](/zh-cn/wiki/test-case/)。这使得测试人员和利益相关者能够快速评估哪些测试涵盖哪些需求，反之亦然。这是一个动态文档，应该随着新需求的添加以及 [测试用例](/zh-cn/wiki/test-case/) 创建或修改而更新。
-  在实践中，TM 通常在电子表格或专门的 [测试管理](/zh-cn/wiki/test-management/) 工具中进行管理，这些工具支持跨软件开发生命周期链接工件。维护 TM 的责任通常由测试经理或主管承担，但也可以是业务分析师、开发人员和[质量保证](/zh-cn/wiki/quality-assurance/) 专业人员的协作努力。
-  测试过程中，参考TM根据代码或需求的变化选择[测试用例](/zh-cn/wiki/test-case/)执行，保证[回归测试](/zh-cn/wiki/regression-testing/)和[影响分析](/zh-cn/wiki/impact-analysis/)的专注和高效。它在变化频繁且快速发生的敏捷环境中特别有用，可以帮助团队清楚地了解已测试的内容和仍需要测试的内容。
-  维护 TM 的挑战包括使其与 [敏捷开发](/zh-cn/wiki/agile-development/) 的快节奏保持同步，并确保其在整个项目生命周期中保持准确。通过将 TM 集成到团队的工作流程中并使用自动化工具来促进可追溯性和报告，可以缓解这些挑战。
+**[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** (TM) 是一个用[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 映射和跟踪用户需求的文档。它确保为系统定义的所有需求都在测试协议中进行测试。该矩阵用于跟踪测试工作的进度，并确保每个需求至少被一个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)覆盖，从而确保所有需求都经过测试。
+  创建 TM 涉及在一列中列出所有要求，并在相邻列中列出相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这使得测试人员和利益相关者能够快速评估哪些测试涵盖哪些需求，反之亦然。这是一个动态文档，应该随着新需求的添加以及 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 创建或修改而更新。
+  在实践中，TM 通常在电子表格或专门的 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具中进行管理，这些工具支持跨软件开发生命周期链接工件。维护 TM 的责任通常由测试经理或主管承担，但也可以是业务分析师、开发人员和[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 专业人员的协作努力。
+  测试过程中，参考TM根据代码或需求的变化选择[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)执行，保证[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)和[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)的专注和高效。它在变化频繁且快速发生的敏捷环境中特别有用，可以帮助团队清楚地了解已测试的内容和仍需要测试的内容。
+  维护 TM 的挑战包括使其与 [敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 的快节奏保持同步，并确保其在整个项目生命周期中保持准确。通过将 TM 集成到团队的工作流程中并使用自动化工具来促进可追溯性和报告，可以缓解这些挑战。
 
 #### 为什么可追溯性矩阵在软件测试中很重要？
 
-[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，可确保考虑和测试所有需求。它提供了一个**可视化地图**，将需求链接到相应的[测试用例](/zh-cn/wiki/test-case/)，确保每个需求已被一个或多个[测试用例](/zh-cn/wiki/test-case/)覆盖。这对于**验证测试过程的完整性**至关重要。
-  通过维护[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)，团队可以快速识别需求中的任何变化并评估所需的**重新测试范围**。这在需求经常变化的环境中尤其重要，因为它有助于最大限度地减少由于未经测试或过时的需求而导致缺陷的风险。
-  此外，[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 作为**利益相关者沟通**的关键文件，提供了测试状态和覆盖范围的清晰简洁的视图。它有助于向客户和审计师展示尽职调查和**[测试覆盖率](/zh-cn/wiki/test-coverage/)**，这对于必须遵守严格监管标准的项目至关重要。
-  如果出现缺陷或故障，[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 可以通过追溯到所涉及的特定要求来加快**调试过程**，从而进行有针对性的调查和更快的解决方案。
-  总体而言，[软件测试](/zh-cn/wiki/software-testing/) 中[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 的重要性在于它能够增强[测试过程](/zh-cn/wiki/test-process/) 的**可靠性、透明度和效率**，从而为高质量软件产品的交付做出重大贡献。
+[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，可确保考虑和测试所有需求。它提供了一个**可视化地图**，将需求链接到相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，确保每个需求已被一个或多个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)覆盖。这对于**验证测试过程的完整性**至关重要。
+  通过维护[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)，团队可以快速识别需求中的任何变化并评估所需的**重新测试范围**。这在需求经常变化的环境中尤其重要，因为它有助于最大限度地减少由于未经测试或过时的需求而导致缺陷的风险。
+  此外，[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 作为**利益相关者沟通**的关键文件，提供了测试状态和覆盖范围的清晰简洁的视图。它有助于向客户和审计师展示尽职调查和**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**，这对于必须遵守严格监管标准的项目至关重要。
+  如果出现缺陷或故障，[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 可以通过追溯到所涉及的特定要求来加快**调试过程**，从而进行有针对性的调查和更快的解决方案。
+  总体而言，[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 的重要性在于它能够增强[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的**可靠性、透明度和效率**，从而为高质量软件产品的交付做出重大贡献。
 
 #### 可追溯性矩阵的关键组成部分是什么？
 
-**[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** 的关键组件包括：
+**[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** 的关键组件包括：
 
 - **需求 ID**：每个需求或用户故事的唯一标识符。
 - **需求描述**：需求的简要描述。
-- **[Priority](/zh-cn/wiki/priority/)** ：每个要求的重要性或实施顺序。
-- **[测试用例](/zh-cn/wiki/test-case/) ID**：关联测试用例的唯一标识符。
-- **[测试用例](/zh-cn/wiki/test-case/) 描述**：每个测试用例正在验证的内容的摘要。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/)** ：每个要求的重要性或实施顺序。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) ID**：关联测试用例的唯一标识符。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 描述**：每个测试用例正在验证的内容的摘要。
 - **测试状态**：测试用例的当前状态（例如，通过、失败、阻止）。
 - **缺陷 ID**：引用与需求或测试用例相关的任何缺陷或问题。
-- **发布或 [迭代](/zh-cn/wiki/iteration/)** ：有关该需求所属的软件发布或迭代的信息。
+- **发布或 [迭代](https://inaodeng.com/zh-cn/wiki/iteration/)** ：有关该需求所属的软件发布或迭代的信息。
 - **用户故事或功能链接**：与敏捷方法中的用户故事或功能的连接。
 - **追踪设计规范**：指向详细说明如何实现需求的设计文档的链接。
-- **[测试脚本](/zh-cn/wiki/test-script/) Location** ：对测试脚本或自动化代码存储位置的引用。 维护 **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** 涉及确保所有这些组件在整个软件开发生命周期中得到准确反映和更新。它充当一个地图，将需求链接到相应的[测试用例](/zh-cn/wiki/test-case/) 和缺陷，提供项目的[测试覆盖率](/zh-cn/wiki/test-coverage/) 的清晰视图，并在发生更改时促进[影响分析](/zh-cn/wiki/impact-analysis/)。
+- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) Location** ：对测试脚本或自动化代码存储位置的引用。 维护 **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** 涉及确保所有这些组件在整个软件开发生命周期中得到准确反映和更新。它充当一个地图，将需求链接到相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和缺陷，提供项目的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的清晰视图，并在发生更改时促进[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)。
 
 #### 可追溯性矩阵如何提高软件产品的整体质量？
 
-[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) (TM) 通过确保需求、[测试用例](/zh-cn/wiki/test-case/) 和可交付成果之间的**一致性**来增强[软件质量](/zh-cn/wiki/software-quality/)。它提供了一个**可视化地图**，帮助团队验证测试是否涵盖了所有**需求**，并且每个测试都链接到**特定需求**或用户故事。这种联系确保在测试过程中不会忽略任何关键功能，从而产生更**可靠**和**一致**的产品。
-  通过使用 TM，团队可以轻松识别**未测试**或**被忽视的区域**，从而降低缺陷流入生产的风险。它还通过提供对测试内容和结果的清晰了解，促进利益相关者之间的**有效沟通**。如果发生更改或更新，TM 会在**[影响分析](/zh-cn/wiki/impact-analysis/)** 中提供帮助，使团队能够快速评估哪些测试需要更新或添加，从而保持[测试套件](/zh-cn/wiki/test-suite/) 的完整性。
-  此外，在**持续集成**和**持续部署**（CI/CD）的背景下，TM 通过提供一个**重新测试**相关领域的框架，有助于确保新功能或更改不会破坏现有功能。这有助于形成稳健的 **[回归测试](/zh-cn/wiki/regression-testing/)** 策略。
-  总之，[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 通过以下方式为 [软件质量](/zh-cn/wiki/software-quality/) 做出贡献：
+[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) (TM) 通过确保需求、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和可交付成果之间的**一致性**来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。它提供了一个**可视化地图**，帮助团队验证测试是否涵盖了所有**需求**，并且每个测试都链接到**特定需求**或用户故事。这种联系确保在测试过程中不会忽略任何关键功能，从而产生更**可靠**和**一致**的产品。
+  通过使用 TM，团队可以轻松识别**未测试**或**被忽视的区域**，从而降低缺陷流入生产的风险。它还通过提供对测试内容和结果的清晰了解，促进利益相关者之间的**有效沟通**。如果发生更改或更新，TM 会在**[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** 中提供帮助，使团队能够快速评估哪些测试需要更新或添加，从而保持[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的完整性。
+  此外，在**持续集成**和**持续部署**（CI/CD）的背景下，TM 通过提供一个**重新测试**相关领域的框架，有助于确保新功能或更改不会破坏现有功能。这有助于形成稳健的 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 策略。
+  总之，[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 通过以下方式为 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 做出贡献：
 
 - 确保全面的测试覆盖率。
 - 促进变革影响分析。
@@ -103,14 +103,14 @@ order: 0
 
 #### 可追溯性矩阵是如何创建的？
 
-创建 **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** 涉及以下步骤：
+创建 **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** 涉及以下步骤：
 
-1. **识别工件**：列出所有需要跟踪的项目工件。这通常包括需求、设计文档、[测试用例](/zh-cn/wiki/test-case/) 和缺陷日志。
-2. **定义关系**：确定这些工件之间的关系。例如，which [测试用例](/zh-cn/wiki/test-case/) 验证哪些要求。
+1. **识别工件**：列出所有需要跟踪的项目工件。这通常包括需求、设计文档、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和缺陷日志。
+2. **定义关系**：确定这些工件之间的关系。例如，which [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 验证哪些要求。
 3. **选择格式**：决定矩阵的格式。这可以是电子表格中的简单表格，也可以是专用工具中的更复杂的结构。
 4. **填充矩阵**：用已识别的工件及其关系填充矩阵。每个行和列的交叉点应表明项目之间的可追溯性。
-5. **验证完整性**：确保每个需求都有相应的[测试用例](/zh-cn/wiki/test-case/)并且涵盖所有设计元素。
-6. **审查和更新**：定期审查矩阵以反映需求、[测试用例](/zh-cn/wiki/test-case/) 和其他工件的变化。
+5. **验证完整性**：确保每个需求都有相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并且涵盖所有设计元素。
+6. **审查和更新**：定期审查矩阵以反映需求、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和其他工件的变化。
 
 ```
   | Requirement ID | Test Case ID | Test Result | Defect ID |
@@ -120,64 +120,64 @@ order: 0
   | REQ-003        | TC-103       | Pass        |           |
 ```
 
-1. **维护双向可追溯性**：确保 [测试用例](/zh-cn/wiki/test-case/) 中的更改反映回需求，反之亦然。
+1. **维护双向可追溯性**：确保 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中的更改反映回需求，反之亦然。
 2. **使用自动化工具**：尽可能利用工具自动创建和维护矩阵。 请记住，矩阵应该是随项目一起发展的**动态文档**。这对于确保所有需求都经过测试以及所有更改一致地反映在所有项目工件中至关重要。
 
-1. **识别工件**：列出所有需要跟踪的项目工件。这通常包括需求、设计文档、[测试用例](/zh-cn/wiki/test-case/) 和缺陷日志。
-2. **定义关系**：确定这些工件之间的关系。例如，which [测试用例](/zh-cn/wiki/test-case/) 验证哪些要求。
+1. **识别工件**：列出所有需要跟踪的项目工件。这通常包括需求、设计文档、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和缺陷日志。
+2. **定义关系**：确定这些工件之间的关系。例如，which [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 验证哪些要求。
 3. **选择格式**：决定矩阵的格式。这可以是电子表格中的简单表格，也可以是专用工具中的更复杂的结构。
 4. **填充矩阵**：用已识别的工件及其关系填充矩阵。每个行和列的交叉点应表明项目之间的可追溯性。
-5. **验证完整性**：确保每个需求都有相应的[测试用例](/zh-cn/wiki/test-case/)并且涵盖所有设计元素。
-6. **审查和更新**：定期审查矩阵以反映需求、[测试用例](/zh-cn/wiki/test-case/) 和其他工件的变化。
-1. **维护双向可追溯性**：确保 [测试用例](/zh-cn/wiki/test-case/) 中的更改反映回需求，反之亦然。
+5. **验证完整性**：确保每个需求都有相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并且涵盖所有设计元素。
+6. **审查和更新**：定期审查矩阵以反映需求、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和其他工件的变化。
+1. **维护双向可追溯性**：确保 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中的更改反映回需求，反之亦然。
 2. **使用自动化工具**：尽可能利用工具自动创建和维护矩阵。
 
 #### 通常使用哪些工具来创建和维护可追溯性矩阵？
 
-创建和维护[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)的常用工具包括：
+创建和维护[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)的常用工具包括：
 
 - **Microsoft Excel**：由于其灵活性和可用性而被广泛使用。可以创建自定义模板以实现可追溯性。
-- **Atlassian [jira](/zh-cn/wiki/jira/)** ：通过 Xray 或 Zephyr 等插件，Jira 可以管理需求、测试用例和缺陷，提供可追溯性报告。
+- **Atlassian [jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：通过 Xray 或 Zephyr 等插件，Jira 可以管理需求、测试用例和缺陷，提供可追溯性报告。
 - **HP ALM/质量中心**：提供全面的测试管理功能，包括链接需求、测试和缺陷的能力。
 - **SpiraTest**：将需求、测试管理和缺陷跟踪与完全可追溯性集成在一起。
 - **IBM Rational DOORS**：一种提供可跟踪性、版本控制和基线的需求管理工具。
 - **TestRail**：一种测试管理工具，允许将测试用例链接到需求并跟踪其执行状态。
 - **qTest**：作为 Tricentis 平台的一部分，它通过链接需求、测试用例和缺陷来提供可追溯性。
-- **ReqTest** ：一种具有可追溯性功能的管理需求、测试和错误的工具。 这些工具通常提供**仪表板**和**报告功能**来可视化[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)并根据需求跟踪测试活动的状态。自动化工程师可以利用**[API](/zh-cn/wiki/api/)**或**插件**将这些工具与其[测试自动化](/zh-cn/wiki/test-automation/)框架集成，确保在执行测试时实时更新可追溯性。
+- **ReqTest** ：一种具有可追溯性功能的管理需求、测试和错误的工具。 这些工具通常提供**仪表板**和**报告功能**来可视化[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)并根据需求跟踪测试活动的状态。自动化工程师可以利用**[API](https://inaodeng.com/zh-cn/wiki/api/)**或**插件**将这些工具与其[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架集成，确保在执行测试时实时更新可追溯性。
 
 #### 应采取哪些步骤来保持可追溯性矩阵最新？
 
-要使 **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** 保持最新状态，请执行以下步骤：
+要使 **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** 保持最新状态，请执行以下步骤：
 
-1. **与版本控制集成**：将您的[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)链接到您的版本控制系统，以便在需求、[测试用例](/zh-cn/wiki/test-case/)或代码更改时自动更新。
-2. **自动更新**：使用可以自动反映需求变化的脚本或工具或矩阵中的[测试用例](/zh-cn/wiki/test-case/)。
+1. **与版本控制集成**：将您的[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)链接到您的版本控制系统，以便在需求、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)或代码更改时自动更新。
+2. **自动更新**：使用可以自动反映需求变化的脚本或工具或矩阵中的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
 3. **定期审查**：安排对矩阵的定期审查，以确保其反映项目的当前状态。
-4. **[变更控制](/zh-cn/wiki/change-control/) 流程**：实施[变更控制](/zh-cn/wiki/change-control/) 流程，其中包括每当对需求、设计或[测试用例](/zh-cn/wiki/test-case/) 进行更改时更新[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)。
+4. **[变更控制](https://inaodeng.com/zh-cn/wiki/change-control/) 流程**：实施[变更控制](https://inaodeng.com/zh-cn/wiki/change-control/) 流程，其中包括每当对需求、设计或[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 进行更改时更新[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)。
 5. **分配所有权**：指定一名团队成员负责矩阵的完整性并监督更新。
 6. **持续集成**：在 CI/CD 管道中，确保矩阵更新是集成过程的一部分。
 7. **审计跟踪**：维护矩阵的审计跟踪，以跟踪问责制的更改和更新。
 8. **反馈循环**：鼓励团队就矩阵的实用性和准确性提供反馈，并根据需要进行调整。
 9. **文档**：记录更新矩阵的过程并确保团队接受相关培训。
-10. **工具同步**：如果使用多个工具，请确保它们同步，以便跨平台一致地更新矩阵。 通过执行这些步骤，您可以保持准确且有价值的[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)，从而增强您的[测试自动化](/zh-cn/wiki/test-automation/) 工作。
+10. **工具同步**：如果使用多个工具，请确保它们同步，以便跨平台一致地更新矩阵。 通过执行这些步骤，您可以保持准确且有价值的[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)，从而增强您的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工作。
 
 #### 软件开发团队中通常由谁负责维护可追溯性矩阵？
 
-在软件开发团队中，**测试主管**或**测试经理**通常负责维护[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)。他们确保所有[测试用例](/zh-cn/wiki/test-case/) 均符合要求，并且要求中的任何更改均反映在[测试用例](/zh-cn/wiki/test-case/) 中。此外，当需求发生变化时，**业务分析师**可能会参与更新矩阵，而**[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**成员（包括**测试人员**）则负责在创建或修改新的[测试用例](/zh-cn/wiki/test-case/) 时更新矩阵。
-  [可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 的维护是一项协作工作，所有利益相关者（包括**开发人员**和**项目经理**）都了解其状态至关重要。这确保了矩阵仍然是一个准确且有用的工具，用于验证所有需求都经过测试并促进团队成员之间的沟通。
-  在敏捷团队中，**产品负责人**也可能参与 [可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 的维护，特别是确保用户故事正确追踪到 [测试用例](/zh-cn/wiki/test-case/)。
-  值得注意的是，职责可能会根据组织的结构和项目的复杂性而有所不同。在某些情况下，可能会指定专门的**需求工程师**或**工具专家**来管理[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)，特别是在具有严格监管要求的环境中。
+在软件开发团队中，**测试主管**或**测试经理**通常负责维护[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)。他们确保所有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 均符合要求，并且要求中的任何更改均反映在[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中。此外，当需求发生变化时，**业务分析师**可能会参与更新矩阵，而**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 团队**成员（包括**测试人员**）则负责在创建或修改新的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 时更新矩阵。
+  [可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 的维护是一项协作工作，所有利益相关者（包括**开发人员**和**项目经理**）都了解其状态至关重要。这确保了矩阵仍然是一个准确且有用的工具，用于验证所有需求都经过测试并促进团队成员之间的沟通。
+  在敏捷团队中，**产品负责人**也可能参与 [可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 的维护，特别是确保用户故事正确追踪到 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+  值得注意的是，职责可能会根据组织的结构和项目的复杂性而有所不同。在某些情况下，可能会指定专门的**需求工程师**或**工具专家**来管理[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)，特别是在具有严格监管要求的环境中。
 
 ### 用法和应用
 
 #### 在软件测试过程中如何使用可追溯性矩阵？
 
-在 [软件测试](/zh-cn/wiki/software-testing/) 过程中，**[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** (TM) 用于：
+在 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 过程中，**[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** (TM) 用于：
 
-- **地图[测试用例](/zh-cn/wiki/test-case/)**到需求，确保每个需求都有相应的测试用例并被测试套件覆盖。
+- **地图[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**到需求，确保每个需求都有相应的测试用例并被测试套件覆盖。
 
-- **验证[测试覆盖率](/zh-cn/wiki/test-coverage/)**通过突出显示未经测试的需求，促使创建额外的测试用例。
+- **验证[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**通过突出显示未经测试的需求，促使创建额外的测试用例。
 
-- **追踪[测试执行](/zh-cn/wiki/test-execution/)**根据要求，提供测试进度的可见性并促进状态报告。
+- **追踪[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**根据要求，提供测试进度的可见性并促进状态报告。
 
 - **分析影响**通过识别受影响的测试用例来跟踪需求的变化，这有助于回归测试和风险管理。
 
@@ -187,7 +187,7 @@ order: 0
 
 - **加强测试维护**通过在需求变化时查明过时或冗余的测试，简化测试套件。 要有效地使用 TM：
 
-1. **链接[测试用例](/zh-cn/wiki/test-case/)**符合 TM 中的相应要求。
+1. **链接[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**符合 TM 中的相应要求。
 
 2. **更新TM**当创建新的测试用例或修改现有的测试用例时。
 
@@ -195,11 +195,11 @@ order: 0
 
 4. **使用TM**为利益相关者生成报告，展示测试覆盖范围和项目状态。 总之，TM 是一个动态工具，可以指导测试过程，确保全面覆盖并在任何时间点提供对项目质量的洞察。
 
-- **地图[测试用例](/zh-cn/wiki/test-case/)**到需求，确保每个需求都有相应的测试用例并被测试套件覆盖。
+- **地图[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**到需求，确保每个需求都有相应的测试用例并被测试套件覆盖。
 
-- **验证[测试覆盖率](/zh-cn/wiki/test-coverage/)**通过突出显示未经测试的需求，促使创建额外的测试用例。
+- **验证[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**通过突出显示未经测试的需求，促使创建额外的测试用例。
 
-- **追踪[测试执行](/zh-cn/wiki/test-execution/)**根据要求，提供测试进度的可见性并促进状态报告。
+- **追踪[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**根据要求，提供测试进度的可见性并促进状态报告。
 
 - **分析影响**通过识别受影响的测试用例来跟踪需求的变化，这有助于回归测试和风险管理。
 
@@ -209,7 +209,7 @@ order: 0
 
 - **加强测试维护**通过在需求变化时查明过时或冗余的测试，简化测试套件。
 
-1. **链接[测试用例](/zh-cn/wiki/test-case/)**符合 TM 中的相应要求。
+1. **链接[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**符合 TM 中的相应要求。
 
 2. **更新TM**当创建新的测试用例或修改现有的测试用例时。
 
@@ -219,67 +219,67 @@ order: 0
 
 #### 哪些类型的测试可以从可追溯性矩阵中受益？
 
-可以受益于 **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** 的测试类型包括：
+可以受益于 **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** 的测试类型包括：
 
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：确保软件的每个单元按设计运行。可追溯性矩阵可以将测试用例链接到特定的代码单元，确保所有单元都经过测试。
-- **[集成测试](/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口。该矩阵有助于验证测试用例是否涵盖了所有交互。
-- **[系统测试](/zh-cn/wiki/system-testing/)** ：验证完整且集成的软件产品。该矩阵确保所有系统要求都经过测试。
-- **[验收测试](/zh-cn/wiki/acceptance-testing/)** ：确认系统满足业务要求。该矩阵表明所有用户故事或需求都有相应的测试。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：检查新代码更改是否不会对现有功能产生不利影响。该矩阵可以识别要重新运行哪些测试用例以覆盖更改。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：评估软件的速度、响应能力和稳定性。该矩阵可以将性能要求与特定的测试场景联系起来。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：确保软件没有漏洞。该矩阵有助于确保所有安全要求都有相应的测试。
-- **[可用性测试](/zh-cn/wiki/usability-testing/)** ：评估软件的用户界面和用户体验。该矩阵可以跟踪用户反馈和测试用例之间的关系。 通过将测试映射到需求，[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 可以确保所有这些测试类型的全面[测试覆盖率](/zh-cn/wiki/test-coverage/)，从而促进更高效和有效的[测试过程](/zh-cn/wiki/test-process/)。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：确保软件的每个单元按设计运行。可追溯性矩阵可以将测试用例链接到特定的代码单元，确保所有单元都经过测试。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口。该矩阵有助于验证测试用例是否涵盖了所有交互。
+- **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** ：验证完整且集成的软件产品。该矩阵确保所有系统要求都经过测试。
+- **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)** ：确认系统满足业务要求。该矩阵表明所有用户故事或需求都有相应的测试。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：检查新代码更改是否不会对现有功能产生不利影响。该矩阵可以识别要重新运行哪些测试用例以覆盖更改。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：评估软件的速度、响应能力和稳定性。该矩阵可以将性能要求与特定的测试场景联系起来。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：确保软件没有漏洞。该矩阵有助于确保所有安全要求都有相应的测试。
+- **[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)** ：评估软件的用户界面和用户体验。该矩阵可以跟踪用户反馈和测试用例之间的关系。 通过将测试映射到需求，[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 可以确保所有这些测试类型的全面[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，从而促进更高效和有效的[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)。
 
 #### 可追溯性矩阵如何帮助识别测试覆盖范围中的差距？
 
-[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) (TM) 可以通过将[测试用例](/zh-cn/wiki/test-case/) 映射到特定需求或用户故事来突出[测试覆盖率](/zh-cn/wiki/test-coverage/) 差距。当您交叉引用该矩阵时，没有相应 [测试用例](/zh-cn/wiki/test-case/) 的区域会变得明显，表明功能未经验证的潜在风险。这种视觉表示允许快速扫描，以确保 [测试计划](/zh-cn/wiki/test-plan/) 中已考虑到所有要求。
+[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) (TM) 可以通过将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 映射到特定需求或用户故事来突出[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 差距。当您交叉引用该矩阵时，没有相应 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的区域会变得明显，表明功能未经验证的潜在风险。这种视觉表示允许快速扫描，以确保 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 中已考虑到所有要求。
   识别差距：
 
 - 查看 TM 并查找没有关联测试用例的需求或用户故事。
 - 检查与多个需求相关的测试用例，这些需求可能过于宽泛并且遗漏了特定的细节。
-- 分析矩阵中未反映在更新或新测试用例中的任何需求变化。 通过维护最新的 TM，您可以确保立即评估工作范围中的任何修改对现有 [测试覆盖率](/zh-cn/wiki/test-coverage/) 的影响。这种主动方法可以及早发现可能需要额外测试的区域，从而防止差距在开发后期或发布后才被忽视。
+- 分析矩阵中未反映在更新或新测试用例中的任何需求变化。 通过维护最新的 TM，您可以确保立即评估工作范围中的任何修改对现有 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的影响。这种主动方法可以及早发现可能需要额外测试的区域，从而防止差距在开发后期或发布后才被忽视。
 
 #### 可追溯性矩阵如何协助影响分析？
 
-[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) (TM) 可以通过在需求、[测试用例](/zh-cn/wiki/test-case/) 和代码之间提供清晰、简洁的映射来显着简化 **[影响分析](/zh-cn/wiki/impact-analysis/)**。当发生变化时，无论是需求、代码还是环境，TM 都可以让您快速识别哪些 [测试用例](/zh-cn/wiki/test-case/) 受到影响。
-  例如，如果修改了要求，您可以参考 TM 查看所有关联的[测试用例](/zh-cn/wiki/test-case/)。这种直接关联使您能够评估更改的范围并确定应用程序的哪些部分需要 [重新测试](/zh-cn/wiki/retesting/)。同样，如果发现缺陷，TM 会帮助追溯到相关要求和[测试用例](/zh-cn/wiki/test-case/)，确保在修复过程中不会忽略任何相关功能。
-  此外，TM 有助于评估代码更改的连锁反应。通过检查 [测试用例](/zh-cn/wiki/test-case/) 及其相应代码单元之间的链接，您可以预测哪些测试可能会失败，并主动计划在 [测试脚本](/zh-cn/wiki/test-script/) 中进行其他测试或调整。
-  在变化频繁且迭代的敏捷环境中，TM 成为维持对[测试套件](/zh-cn/wiki/test-suite/) 对修改的响应的控制的重要工具。它确保 [测试覆盖率](/zh-cn/wiki/test-coverage/) 保持全面性，并且尽管发展具有动态性，但仍能保持质量。
-  总之，TM 对于有效[影响分析](/zh-cn/wiki/impact-analysis/) 至关重要，可以快速响应变化并确保考虑到所有影响，从而保持[软件测试](/zh-cn/wiki/software-testing/) 流程的完整性和可靠性。
+[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) (TM) 可以通过在需求、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和代码之间提供清晰、简洁的映射来显着简化 **[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)**。当发生变化时，无论是需求、代码还是环境，TM 都可以让您快速识别哪些 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 受到影响。
+  例如，如果修改了要求，您可以参考 TM 查看所有关联的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这种直接关联使您能够评估更改的范围并确定应用程序的哪些部分需要 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)。同样，如果发现缺陷，TM 会帮助追溯到相关要求和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，确保在修复过程中不会忽略任何相关功能。
+  此外，TM 有助于评估代码更改的连锁反应。通过检查 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 及其相应代码单元之间的链接，您可以预测哪些测试可能会失败，并主动计划在 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 中进行其他测试或调整。
+  在变化频繁且迭代的敏捷环境中，TM 成为维持对[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 对修改的响应的控制的重要工具。它确保 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 保持全面性，并且尽管发展具有动态性，但仍能保持质量。
+  总之，TM 对于有效[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 至关重要，可以快速响应变化并确保考虑到所有影响，从而保持[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 流程的完整性和可靠性。
 
 ### 高级概念
 
 #### 追溯矩阵中双向追溯的概念是什么？
 
-[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 中的双向可追溯性确保所有项目需求都链接到其相应的[测试用例](/zh-cn/wiki/test-case/)，反之亦然。这种双向映射有助于[验证 ](/zh-cn/wiki/verification/)：
+[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 中的双向可追溯性确保所有项目需求都链接到其相应的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，反之亦然。这种双向映射有助于[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)：
 
 - 每个要求都经过充分测试（前向可追溯性）。
-- 每个测试用例都与特定需求相关联（向后可追溯性）。 这个概念对于验证不存在多余或缺失的测试以及覆盖所有要求至关重要。当需求发生变化时，它还简化了受影响测试的识别。双向可追溯性支持高效[影响分析](/zh-cn/wiki/impact-analysis/)，并有助于在整个软件开发生命周期中保持测试过程的完整性。 为了实现双向可追溯性，您应该：
+- 每个测试用例都与特定需求相关联（向后可追溯性）。 这个概念对于验证不存在多余或缺失的测试以及覆盖所有要求至关重要。当需求发生变化时，它还简化了受影响测试的识别。双向可追溯性支持高效[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)，并有助于在整个软件开发生命周期中保持测试过程的完整性。 为了实现双向可追溯性，您应该：
 
 - **链接每个要求**相应的测试用例、设计元素和代码工件。
 
-- **确保[测试用例](/zh-cn/wiki/test-case/)**映射回其特定要求和设计参考。 在实践中，双向可追溯性可以可视化为一个矩阵，其中行和列分别代表需求和[测试用例](/zh-cn/wiki/test-case/)，交叉点表示链接。该矩阵成为利益相关者评估测试活动的进度和完整性的关键参考点。 随着项目需求和测试工件的发展，维护双向可追溯性需要勤奋和定期更新。这是一项集体责任，通常由 QA 领导或测试经理监督，以确保[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) 准确地反映项目的当前状态。
+- **确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**映射回其特定要求和设计参考。 在实践中，双向可追溯性可以可视化为一个矩阵，其中行和列分别代表需求和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，交叉点表示链接。该矩阵成为利益相关者评估测试活动的进度和完整性的关键参考点。 随着项目需求和测试工件的发展，维护双向可追溯性需要勤奋和定期更新。这是一项集体责任，通常由 QA 领导或测试经理监督，以确保[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) 准确地反映项目的当前状态。
 
 - 每个要求都经过充分测试（前向可追溯性）。
 - 每个测试用例都与特定需求相关联（向后可追溯性）。
 - **链接每个要求**相应的测试用例、设计元素和代码工件。
 
-- **确保[测试用例](/zh-cn/wiki/test-case/)**映射回其特定要求和设计参考。
+- **确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**映射回其特定要求和设计参考。
 
 #### 可追溯性矩阵如何用于敏捷开发方法？
 
-在[敏捷开发](/zh-cn/wiki/agile-development/) 方法中，利用**[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** (TM) 来确保所有用户故事、需求和产品待办事项都得到充分测试。敏捷团队使用 TM 来：
+在[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 方法中，利用**[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** (TM) 来确保所有用户故事、需求和产品待办事项都得到充分测试。敏捷团队使用 TM 来：
 
 - **使测试与需求保持一致**：敏捷强调工作软件而不是全面的文档，但维护 TM 有助于确保每个功能都有相应的测试用例。
 - **促进沟通**：TM 提供了已测试内容和未测试内容的清晰概述，这对于依赖透明度和快速反馈循环的敏捷团队至关重要。
 - **支持敏捷仪式**：在冲刺计划期间，TM 帮助确定测试需求。在回顾中，他们可以根据测试覆盖率和缺陷趋势突出显示需要改进的领域。
-- **管理[回归测试](/zh-cn/wiki/regression-testing/)** ：敏捷团队经常处理频繁的变化。 TM 有助于快速识别需要执行哪些测试用例来验证更改，确保新代码不会破坏现有功能。
+- **管理[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：敏捷团队经常处理频繁的变化。 TM 有助于快速识别需要执行哪些测试用例来验证更改，确保新代码不会破坏现有功能。
 - **增强测试优先级**：通过将测试映射到业务价值或风险，团队可以确定测试工作的优先级，首先关注最关键的领域。
 - **适应变化**：敏捷就是拥抱变化。当需求发生变化时，TM 可以更轻松地更新测试用例，从而保持测试套件的相关性和有效性。 为了将 TM 有效地集成到敏捷中，它们应该在协作工具中维护，整个团队可以轻松更新和访问它们，反映敏捷项目的迭代和动态本质。
 
 #### 实施追溯矩阵有哪些挑战以及如何克服这些挑战？
 
-实施 **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/) (TM)** 可能面临多项挑战：
+实施 **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/) (TM)** 可能面临多项挑战：
 
 - **复杂性**：随着项目的增长，TM 可能会变得笨拙。 **克服**通过使用可扩展的工具并将矩阵分解为更小的、可管理的部分。
 
@@ -298,7 +298,7 @@ order: 0
     // Logic to update the matrix with new test cases for a requirement
   };
 ```
-对 TM 的定期审查和审计确保它仍然是[测试覆盖率](/zh-cn/wiki/test-coverage/) 和[影响分析](/zh-cn/wiki/impact-analysis/) 的有效工具。
+对 TM 的定期审查和审计确保它仍然是[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 的有效工具。
 
 - **复杂性**：随着项目的增长，TM 可能会变得笨拙。 **克服**通过使用可扩展的工具并将矩阵分解为更小的、可管理的部分。
 
@@ -314,7 +314,7 @@ order: 0
 
 #### 可追溯性矩阵在法规遵从和审计中的作用是什么？
 
-在法规遵从和审计中，**[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)** (TM) 作为关键文档，展示如何系统地测试和满足要求。它为审核员提供了**要求**、**[测试用例](/zh-cn/wiki/test-case/)** 和**测试结果**之间的清晰、记录的联系。这种联系确保在测试过程中考虑并解决所有监管要求。
+在法规遵从和审计中，**[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)** (TM) 作为关键文档，展示如何系统地测试和满足要求。它为审核员提供了**要求**、**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 和**测试结果**之间的清晰、记录的联系。这种联系确保在测试过程中考虑并解决所有监管要求。
   出于合规性目的，TM 是展示测试策略彻底性的关键工件。它有助于识别任何未经测试的要求，从而防止潜在的不合规问题。审核员可以轻松追踪每项要求及其相应的测试和结果，确保软件满足所有指定的监管标准。
-  在审核期间，TM 通过说明在测试中应用了尽职调查以及软件产品的可靠性和使用安全性来支持软件开发生命周期 (SDLC) 的[验证 ](/zh-cn/wiki/verification/)。它还通过提供结构化方法来根据定义的要求评估[测试套件](/zh-cn/wiki/test-suite/) 的覆盖范围和有效性，从而帮助**审查过程**。
+  在审核期间，TM 通过说明在测试中应用了尽职调查以及软件产品的可靠性和使用安全性来支持软件开发生命周期 (SDLC) 的[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)。它还通过提供结构化方法来根据定义的要求评估[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的覆盖范围和有效性，从而帮助**审查过程**。
   维护最新的 TM 对于实时审计准备就绪至关重要。它可以快速响应审计询问，并可以显着减少审计业务期间所需的时间和精力。在医疗保健或金融等受到严格监管的行业中，维护良好的 TM 可能是顺利审核和揭示关键合规问题的区别。

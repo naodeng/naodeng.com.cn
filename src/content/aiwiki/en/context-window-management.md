@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [codebase-indexing-rag](/en/AIWiki/codebase-indexing-rag/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
-- [model-context-protocol-mcp](/en/AIWiki/model-context-protocol-mcp/)
+- [codebase-indexing-rag](https://inaodeng.com/en/AIWiki/codebase-indexing-rag/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
+- [model-context-protocol-mcp](https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/)
 
 ### Term Metadata
 

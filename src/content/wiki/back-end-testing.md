@@ -31,12 +31,12 @@ order: 0
 
 ## 相关术语
 
-- [前端测试](/zh-cn/wiki/front-end-testing/)
-- [API 测试](/zh-cn/wiki/api-testing/)
-- [数据库](/zh-cn/wiki/database/)
-- [集成测试](/zh-cn/wiki/integration-testing/)
-- [性能测试](/zh-cn/wiki/performance-testing/)
-- [安全测试](/zh-cn/wiki/security-testing/)
+- [前端测试](https://inaodeng.com/zh-cn/wiki/front-end-testing/)
+- [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)
+- [数据库](https://inaodeng.com/zh-cn/wiki/database/)
+- [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)
+- [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)
+- [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)
 
 ## 什么是后端测试？
 
@@ -44,7 +44,7 @@ order: 0
 
 - 业务逻辑是否按规则执行
 - 数据是否被正确写入、更新、删除与回滚
-- [API](/zh-cn/wiki/api/) 输入输出是否满足契约
+- [API](https://inaodeng.com/zh-cn/wiki/api/) 输入输出是否满足契约
 - 服务在异常条件下是否能稳定处理并给出正确错误响应
 
 它通常由 QA、测试开发或后端工程师协作完成，常结合自动化回归执行。
@@ -71,12 +71,12 @@ order: 0
 
 ## 后端测试常见类型
 
-- [单元测试](/zh-cn/wiki/unit-testing/)：验证函数/类级别逻辑
-- [集成测试](/zh-cn/wiki/integration-testing/)：验证模块与数据库、中间件协作
-- [API 测试](/zh-cn/wiki/api-testing/)：验证接口契约与业务结果
-- [回归测试](/zh-cn/wiki/regression-testing/)：确认改动未破坏既有能力
-- [性能测试](/zh-cn/wiki/performance-testing/)：验证高并发与稳定性
-- [安全测试](/zh-cn/wiki/security-testing/)：验证认证、授权和输入防护
+- [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)：验证函数/类级别逻辑
+- [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)：验证模块与数据库、中间件协作
+- [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)：验证接口契约与业务结果
+- [回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)：确认改动未破坏既有能力
+- [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)：验证高并发与稳定性
+- [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)：验证认证、授权和输入防护
 
 ## 后端测试常用工具
 

@@ -116,9 +116,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [codebase-indexing-rag](/zh-cn/AIWiki/codebase-indexing-rag/)
-- [prompt-driven-development](/zh-cn/AIWiki/prompt-driven-development/)
-- [model-context-protocol-mcp](/zh-cn/AIWiki/model-context-protocol-mcp/)
+- [codebase-indexing-rag](https://inaodeng.com/zh-cn/AIWiki/codebase-indexing-rag/)
+- [prompt-driven-development](https://inaodeng.com/zh-cn/AIWiki/prompt-driven-development/)
+- [model-context-protocol-mcp](https://inaodeng.com/zh-cn/AIWiki/model-context-protocol-mcp/)
 
 ### 术语元数据
 

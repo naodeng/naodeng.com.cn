@@ -49,29 +49,29 @@ order: 0
 
 #### 软件测试中的重新测试是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的[重新测试](/zh-cn/wiki/retesting/) 是验证早期测试中发现的缺陷是否已成功修复的过程。它涉及在开发团队解决缺陷后运行最初因缺陷而失败的相同[测试用例](/zh-cn/wiki/test-case/)。 [重新测试](/zh-cn/wiki/retesting/) 的主要重点是确保特定问题已得到解决，并且更正后的功能现在按预期运行。
-  与[回归测试](/zh-cn/wiki/regression-testing/)（检查应用程序中其他地方的意外副作用）不同，[重新测试](/zh-cn/wiki/retesting/) 的目标是并仅限于已知问题区域。这是一项验证活动，用于确认原始缺陷已得到修复并且不再存在于软件中。
-  [重新测试](/zh-cn/wiki/retesting/) 通常根据[严重性](/zh-cn/wiki/severity/) 和缺陷的影响确定优先级。 [测试用例](/zh-cn/wiki/test-case/) 和 [重新测试](/zh-cn/wiki/retesting/) 的选择是基于它们与已修复缺陷的直接关联。在[回归测试](/zh-cn/wiki/regression-testing/) 之前执行[重新测试](/zh-cn/wiki/retesting/) 至关重要，以确保在检查更改引起的任何连锁反应之前缺陷修复有效。
-  将[重新测试](/zh-cn/wiki/retesting/)合并到[测试自动化](/zh-cn/wiki/test-automation/)框架中可以显着提高效率，尤其是在处理频繁的代码更改和[迭代](/zh-cn/wiki/iteration/)时。自动化的 [重新测试](/zh-cn/wiki/retesting/) 可以作为持续集成 (CI) 管道的一部分进行调度和执行，确保对缺陷修复成功的即时反馈。
-  [重新测试](/zh-cn/wiki/retesting/) 的有效性是通过执行[测试用例](/zh-cn/wiki/test-case/) 的通过率来衡量的。如果忽略 [重新测试](/zh-cn/wiki/retesting/)，可能会导致发布具有未解决缺陷的软件，从而可能导致生产中出现更严重的问题，并损害用户对应用程序的信任。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 是验证早期测试中发现的缺陷是否已成功修复的过程。它涉及在开发团队解决缺陷后运行最初因缺陷而失败的相同[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的主要重点是确保特定问题已得到解决，并且更正后的功能现在按预期运行。
+  与[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)（检查应用程序中其他地方的意外副作用）不同，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的目标是并仅限于已知问题区域。这是一项验证活动，用于确认原始缺陷已得到修复并且不再存在于软件中。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 通常根据[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和缺陷的影响确定优先级。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的选择是基于它们与已修复缺陷的直接关联。在[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 之前执行[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 至关重要，以确保在检查更改引起的任何连锁反应之前缺陷修复有效。
+  将[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)合并到[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架中可以显着提高效率，尤其是在处理频繁的代码更改和[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)时。自动化的 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 可以作为持续集成 (CI) 管道的一部分进行调度和执行，确保对缺陷修复成功的即时反馈。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的有效性是通过执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的通过率来衡量的。如果忽略 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)，可能会导致发布具有未解决缺陷的软件，从而可能导致生产中出现更严重的问题，并损害用户对应用程序的信任。
 
 #### 重新测试与回归测试有何不同？
 
-[重新测试](/zh-cn/wiki/retesting/) 和[回归测试](/zh-cn/wiki/regression-testing/) 是软件[测试自动化](/zh-cn/wiki/test-automation/) 中不同的进程。 **[重新测试](/zh-cn/wiki/retesting/)** 涉及验证特定缺陷在最初发现后是否已得到修复。它是一种有针对性的测试形式，重点关注先前导致故障的确切条件，确保已识别的问题得到解决。
-  相比之下，**[回归测试](/zh-cn/wiki/regression-testing/)** 的范围更广泛。它旨在确认最近的更改（例如 [bug](/zh-cn/wiki/bug/) 修复或功能添加）并未对现有功能产生不利影响。运行回归测试是为了确保软件在修改后继续按预期运行。
-  [重新测试](/zh-cn/wiki/retesting/) 关注的是确认特定修复的有效性，而[回归测试](/zh-cn/wiki/regression-testing/) 关注的是更新后维护整体软件完整性。自动化在这两者中都发挥着至关重要的作用，特别是在[回归测试](/zh-cn/wiki/regression-testing/) 中，测试的重复性使得自动化非常有益。
-  在测试周期中，[重新测试](/zh-cn/wiki/retesting/) 通常在[回归测试](/zh-cn/wiki/regression-testing/) 之前执行。一旦失败的[测试用例](/zh-cn/wiki/test-case/)被重新执行并通过，[回归测试](/zh-cn/wiki/regression-testing/)就可以继续确保没有在应用程序的其他地方引入新的问题。
-  总之，**[重新测试](/zh-cn/wiki/retesting/)** 是修复[验证 ](/zh-cn/wiki/verification/)，而 **[回归测试](/zh-cn/wiki/regression-testing/)** 是变更影响评估。两者对于交付稳定可靠的软件产品都是必不可少的，但它们在 [测试自动化](/zh-cn/wiki/test-automation/) 框架中具有不同的用途。
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 和[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 是软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中不同的进程。 **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)** 涉及验证特定缺陷在最初发现后是否已得到修复。它是一种有针对性的测试形式，重点关注先前导致故障的确切条件，确保已识别的问题得到解决。
+  相比之下，**[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 的范围更广泛。它旨在确认最近的更改（例如 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复或功能添加）并未对现有功能产生不利影响。运行回归测试是为了确保软件在修改后继续按预期运行。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 关注的是确认特定修复的有效性，而[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 关注的是更新后维护整体软件完整性。自动化在这两者中都发挥着至关重要的作用，特别是在[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 中，测试的重复性使得自动化非常有益。
+  在测试周期中，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 通常在[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 之前执行。一旦失败的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)被重新执行并通过，[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)就可以继续确保没有在应用程序的其他地方引入新的问题。
+  总之，**[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)** 是修复[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)，而 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 是变更影响评估。两者对于交付稳定可靠的软件产品都是必不可少的，但它们在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架中具有不同的用途。
 
 #### 复试的主要目的是什么？
 
-**[重新测试](/zh-cn/wiki/retesting/)** 的主要目的是验证早期测试周期中发现的 **缺陷** 或 **[bugs](/zh-cn/wiki/bug/)** 是否已成功 **修复** 并且特定问题不再存在。它涉及在相同条件下重新运行最初由于这些缺陷而失败的[测试用例](/zh-cn/wiki/test-case/)，以确保开发团队采取的纠正措施有效解决了问题。 [重新测试](/zh-cn/wiki/retesting/) 确保对代码所做的更改不会在之前失败的区域中引入新的错误。它是一种有针对性的测试形式，仅关注已知问题及其直接影响，而不是评估软件的整体稳定性（这是[回归测试](/zh-cn/wiki/regression-testing/) 的目标）。
-  [重新测试](/zh-cn/wiki/retesting/) 至关重要，因为它直接影响软件的**可靠性**和**功能**。通过确认 [bugs](/zh-cn/wiki/bug/) 已修复，有助于保持软件功能的完整性并确保最终产品符合所需的质量标准。如果没有[重新测试](/zh-cn/wiki/retesting/)，则存在软件发布时可能存在未解决的缺陷的风险，可能会导致**用户不满意**、**声誉受损**以及由于发布后的补丁和修复而导致**成本增加**。
+**[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)** 的主要目的是验证早期测试周期中发现的 **缺陷** 或 **[bugs](https://inaodeng.com/zh-cn/wiki/bug/)** 是否已成功 **修复** 并且特定问题不再存在。它涉及在相同条件下重新运行最初由于这些缺陷而失败的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保开发团队采取的纠正措施有效解决了问题。 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 确保对代码所做的更改不会在之前失败的区域中引入新的错误。它是一种有针对性的测试形式，仅关注已知问题及其直接影响，而不是评估软件的整体稳定性（这是[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 的目标）。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 至关重要，因为它直接影响软件的**可靠性**和**功能**。通过确认 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 已修复，有助于保持软件功能的完整性并确保最终产品符合所需的质量标准。如果没有[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)，则存在软件发布时可能存在未解决的缺陷的风险，可能会导致**用户不满意**、**声誉受损**以及由于发布后的补丁和修复而导致**成本增加**。
 
 #### 在软件测试生命周期中什么时候应该进行重新测试？
 
-[重新测试](/zh-cn/wiki/retesting/) 应在[软件测试](/zh-cn/wiki/software-testing/) 生命周期**在缺陷修复后**执行。一旦开发人员解决了问题并集成了新代码，[重新测试](/zh-cn/wiki/retesting/) 就需要验证修复是否有效以及原始缺陷是否不再存在。这是一种有针对性的测试形式，专门针对之前失败的[测试用例](/zh-cn/wiki/test-case/)。
-  [重新测试](/zh-cn/wiki/retesting/) 也适用于以下情况：
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 应在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期**在缺陷修复后**执行。一旦开发人员解决了问题并集成了新代码，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 就需要验证修复是否有效以及原始缺陷是否不再存在。这是一种有针对性的测试形式，专门针对之前失败的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 也适用于以下情况：
 
 - **代码更改**是为了应对其他缺陷或作为功能增强的一部分而做出的。
 
@@ -79,7 +79,7 @@ order: 0
 
 - **配置更改**可能会影响软件的功能或性能。
 
-- **新版本**的软件可用，其中包括错误修复并需要确认问题已解决。 [重新测试](/zh-cn/wiki/retesting/) 应根据原始缺陷的**[严重性](/zh-cn/wiki/severity/) 和影响**确定优先级，确保首先验证最关键的修复。必须在相同的**环境**中重新测试并使用与初始测试相同的**数据**以确保一致性。 在**持续集成**和**持续交付**（CI/CD）管道中，[重新测试](/zh-cn/wiki/retesting/)可以在代码更改提交并成功合并到主分支后自动触发。这确保了缺陷得到及时解决，并确保软件在整个开发过程中保持高质量标准。 总之，[重新测试](/zh-cn/wiki/retesting/) 是一个关键步骤，应在任何旨在纠正缺陷或以可能影响先前发现的问题的方式修改软件的操作之后执行。
+- **新版本**的软件可用，其中包括错误修复并需要确认问题已解决。 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 应根据原始缺陷的**[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和影响**确定优先级，确保首先验证最关键的修复。必须在相同的**环境**中重新测试并使用与初始测试相同的**数据**以确保一致性。 在**持续集成**和**持续交付**（CI/CD）管道中，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)可以在代码更改提交并成功合并到主分支后自动触发。这确保了缺陷得到及时解决，并确保软件在整个开发过程中保持高质量标准。 总之，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 是一个关键步骤，应在任何旨在纠正缺陷或以可能影响先前发现的问题的方式修改软件的操作之后执行。
 
 - **代码更改**是为了应对其他缺陷或作为功能增强的一部分而做出的。
 
@@ -91,30 +91,30 @@ order: 0
 
 #### 重新测试过程涉及哪些步骤？
 
-[重新测试](/zh-cn/wiki/retesting/) 过程通常涉及以下步骤：
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 过程通常涉及以下步骤：
 
 1. **识别缺陷**：从初始测试阶段报告的缺陷列表开始。
-2. **确定缺陷的优先​​级**：根据缺陷[严重性](/zh-cn/wiki/severity/)、频率以及对应用程序的影响确定缺陷的优先​​级。
+2. **确定缺陷的优先​​级**：根据缺陷[严重性](https://inaodeng.com/zh-cn/wiki/severity/)、频率以及对应用程序的影响确定缺陷的优先​​级。
 3. **与开发人员沟通**：与开发团队合作，确保他们了解缺陷和预期行为。
-4. **验证修复**：开发人员解决缺陷后，验证修复是否已部署在 [测试环境](/zh-cn/wiki/test-environment/) 中。
-5. **准备[测试用例](/zh-cn/wiki/test-case/)**：选择并准备与缺陷专门相关的[测试用例](/zh-cn/wiki/test-case/)。这些应该与最初识别缺陷的 [测试用例](/zh-cn/wiki/test-case/) 相同。
-6. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行[测试用例](/zh-cn/wiki/test-case/) 以验证修复。这应该在与原始测试相同的条件下进行，以确保一致性。
+4. **验证修复**：开发人员解决缺陷后，验证修复是否已部署在 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 中。
+5. **准备[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：选择并准备与缺陷专门相关的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这些应该与最初识别缺陷的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 相同。
+6. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以验证修复。这应该在与原始测试相同的条件下进行，以确保一致性。
 7. **记录结果**：记录重新测试的结果，记录缺陷是否已修复或仍然存在。
 8. **更新测试状态**：更新跟踪系统中缺陷的状态以反映重新测试的结果。
-9. **[回归测试](/zh-cn/wiki/regression-testing/)**：执行快速回归测试以确保修复不会在其他地方引入新的缺陷。
-10. **传达结果**：与团队（包括开发人员和利益相关者）分享结果，告知他们 [重新测试](/zh-cn/wiki/retesting/) 结果。
+9. **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：执行快速回归测试以确保修复不会在其他地方引入新的缺陷。
+10. **传达结果**：与团队（包括开发人员和利益相关者）分享结果，告知他们 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 结果。
 11. **关闭或重新打开缺陷**：如果缺陷得到解决，则在跟踪系统中将其关闭。如果没有，请重新打开以进行进一步调查和修复。
 12. **根据需要重新测试**：如果重新提出缺陷，则循环将继续，直到缺陷得到解决并且软件满足质量标准。
 1. **识别缺陷**：从初始测试阶段报告的缺陷列表开始。
-2. **确定缺陷的优先​​级**：根据[严重性](/zh-cn/wiki/severity/)、频率以及对应用程序的影响确定缺陷的优先​​级。
+2. **确定缺陷的优先​​级**：根据[严重性](https://inaodeng.com/zh-cn/wiki/severity/)、频率以及对应用程序的影响确定缺陷的优先​​级。
 3. **与开发人员沟通**：与开发团队合作，确保他们了解缺陷和预期行为。
-4. **验证修复**：开发人员解决缺陷后，验证修复是否已部署在[测试环境](/zh-cn/wiki/test-environment/) 中。
-5. **准备[测试用例](/zh-cn/wiki/test-case/)**：选择并准备与缺陷专门相关的[测试用例](/zh-cn/wiki/test-case/)。这些应该与最初识别缺陷的 [测试用例](/zh-cn/wiki/test-case/) 相同。
-6. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行[测试用例](/zh-cn/wiki/test-case/) 以验证修复。这应该在与原始测试相同的条件下进行，以确保一致性。
+4. **验证修复**：开发人员解决缺陷后，验证修复是否已部署在[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 中。
+5. **准备[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：选择并准备与缺陷专门相关的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这些应该与最初识别缺陷的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 相同。
+6. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以验证修复。这应该在与原始测试相同的条件下进行，以确保一致性。
 7. **记录结果**：记录重新测试的结果，记录缺陷是否已修复或仍然存在。
 8. **更新测试状态**：更新跟踪系统中缺陷的状态以反映重新测试的结果。
-9. **[回归测试](/zh-cn/wiki/regression-testing/)**：执行快速回归测试以确保修复不会在其他地方引入新的缺陷。
-10. **传达结果**：与团队（包括开发人员和利益相关者）分享结果，告知他们 [重新测试](/zh-cn/wiki/retesting/) 结果。
+9. **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：执行快速回归测试以确保修复不会在其他地方引入新的缺陷。
+10. **传达结果**：与团队（包括开发人员和利益相关者）分享结果，告知他们 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 结果。
 11. **关闭或重新打开缺陷**：如果缺陷得到解决，则在跟踪系统中将其关闭。如果没有，请重新打开以进行进一步调查和修复。
 12. **根据需要重新测试**：如果重新提出缺陷，则循环将继续，直到缺陷得到解决并且软件满足质量标准。
 
@@ -122,14 +122,14 @@ order: 0
 
 #### 为什么重新测试在软件开发过程中很重要？
 
-[重新测试](/zh-cn/wiki/retesting/) 在软件开发过程中至关重要，因为它确保在早期测试周期中发现的**特定缺陷**已**成功解决**。开发人员修复[bug](/zh-cn/wiki/bug/) 后，[重新测试](/zh-cn/wiki/retesting/) 通过运行最初由于[bug](/zh-cn/wiki/bug/) 而失败的同一[测试用例](/zh-cn/wiki/test-case/) 来验证修复。这种有针对性的方法有助于确认代码更改没有在已纠正的区域引入新问题。
-  [重新测试](/zh-cn/wiki/retesting/) 与其他测试活动不同，因为它仅关注应用程序的**更改或受影响的部分**，而不是寻找新的或不相关的缺陷。这是一个**受控**测试过程，通常使用一组**预定义的[测试用例](/zh-cn/wiki/test-case/)**，执行这些测试是为了验证[bug](/zh-cn/wiki/bug/)修复的有效性。
-  [重新测试](/zh-cn/wiki/retesting/) 的重要性还在于它能够提供最近更改的**稳定性反馈**。如果[重新测试](/zh-cn/wiki/retesting/)失败，则表明问题尚未得到充分解决，这对于开发团队来说是至关重要的信息。另一方面，通过重新测试意味着该软件距离满足发布所需的质量标准又近了一步。
-  总之，[重新测试](/zh-cn/wiki/retesting/) 是软件开发生命周期中不可或缺的一部分，它提供了集中且可靠的方法来确保正确解决缺陷，从而保持软件产品的完整性和质量。
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 在软件开发过程中至关重要，因为它确保在早期测试周期中发现的**特定缺陷**已**成功解决**。开发人员修复[bug](https://inaodeng.com/zh-cn/wiki/bug/) 后，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 通过运行最初由于[bug](https://inaodeng.com/zh-cn/wiki/bug/) 而失败的同一[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 来验证修复。这种有针对性的方法有助于确认代码更改没有在已纠正的区域引入新问题。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 与其他测试活动不同，因为它仅关注应用程序的**更改或受影响的部分**，而不是寻找新的或不相关的缺陷。这是一个**受控**测试过程，通常使用一组**预定义的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**，执行这些测试是为了验证[bug](https://inaodeng.com/zh-cn/wiki/bug/)修复的有效性。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的重要性还在于它能够提供最近更改的**稳定性反馈**。如果[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)失败，则表明问题尚未得到充分解决，这对于开发团队来说是至关重要的信息。另一方面，通过重新测试意味着该软件距离满足发布所需的质量标准又近了一步。
+  总之，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 是软件开发生命周期中不可或缺的一部分，它提供了集中且可靠的方法来确保正确解决缺陷，从而保持软件产品的完整性和质量。
 
 #### 重新测试如何提高软件的整体质量？
 
-[重新测试](/zh-cn/wiki/retesting/) 通过确保有效解决初始测试期间发现的特定缺陷，在提高软件的**整体质量**方面发挥着至关重要的作用。通过专注于验证[bug](/zh-cn/wiki/bug/) 修复，[重新测试](/zh-cn/wiki/retesting/) 提供了一种有针对性的方法来验证软件在修改后是否按预期运行。此过程有助于：
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 通过确保有效解决初始测试期间发现的特定缺陷，在提高软件的**整体质量**方面发挥着至关重要的作用。通过专注于验证[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 提供了一种有针对性的方法来验证软件在修改后是否按预期运行。此过程有助于：
 
 - **确认有效性**修复错误，确保问题得到真正解决。
 
@@ -137,7 +137,7 @@ order: 0
 
 - **维护软件可靠性** ，因为每个修复都经过彻底检查，以避免引入新的错误。
 
-- **维护用户满意度** ，通过交付满足要求且功能正常的产品。 [重新测试](/zh-cn/wiki/retesting/) 是一项重点验证活动，通过在其涵盖的领域提供**狭窄的范围**和**高水平的确定性**来补充其他测试工作。这是[质量保证](/zh-cn/wiki/quality-assurance/) 流程中的关键步骤，有助于提高软件产品的整体完整性和稳健性。
+- **维护用户满意度** ，通过交付满足要求且功能正常的产品。 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 是一项重点验证活动，通过在其涵盖的领域提供**狭窄的范围**和**高水平的确定性**来补充其他测试工作。这是[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 流程中的关键步骤，有助于提高软件产品的整体完整性和稳健性。
 
 - **确认有效性**修复错误，确保问题得到真正解决。
 
@@ -149,94 +149,94 @@ order: 0
 
 #### 不进行重新测试的潜在后果是什么？
 
-不执行[重新测试](/zh-cn/wiki/retesting/)可能会导致一些负面结果：
+不执行[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)可能会导致一些负面结果：
 
-- **未检测到[Bugs](/zh-cn/wiki/bug/)** ：主要后果是应该修复的特定问题可能仍未解决，从而导致软件不稳定。
+- **未检测到[Bugs](https://inaodeng.com/zh-cn/wiki/bug/)** ：主要后果是应该修复的特定问题可能仍未解决，从而导致软件不稳定。
 - **质量差**：软件的质量可能会下降，因为新的更改可能会引入由于缺乏重新测试而未被识别的其他缺陷。
 - **用户不满意**：用户可能会遇到已报告但未重新测试的错误，这可能会导致沮丧和对产品缺乏信任。
 - **成本增加**：跳过重新测试可能会导致开发周期后期的成本更高，因为发布后修复错误的成本变得更高。
 - **声誉损害**：发布具有未解决缺陷的产品可能会损害公司的声誉并导致现有和潜在客户的流失。
 - **合规问题**：对于受监管的行业，不重新测试可能意味着不遵守行业标准，这可能会产生法律和财务影响。
-- **延迟发布**：如果发布后发现严重错误，可能需要紧急修复和计划外发布，从而扰乱发布周期并延迟未来的更新。 总之，忽视[重新测试](/zh-cn/wiki/retesting/) 可能会损害软件的可靠性和用户体验，可能导致成本增加、客户不满以及公司声誉受损。
+- **延迟发布**：如果发布后发现严重错误，可能需要紧急修复和计划外发布，从而扰乱发布周期并延迟未来的更新。 总之，忽视[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 可能会损害软件的可靠性和用户体验，可能导致成本增加、客户不满以及公司声誉受损。
 
 ### 重新测试策略和技术
 
 #### 重新测试时使用哪些常见策略和技术？
 
-[重新测试](/zh-cn/wiki/retesting/) 中使用的常见策略和技术包括：
+[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 中使用的常见策略和技术包括：
 
-- **[测试用例](/zh-cn/wiki/test-case/)** 的优先级：首先关注关键和高影响领域。根据缺陷的严重性和频率确定测试用例的优先级。
-- **[测试环境](/zh-cn/wiki/test-environment/)** 的隔离：确保测试环境与可能影响重新测试结果的更改隔离。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的优先级：首先关注关键和高影响领域。根据缺陷的严重性和频率确定测试用例的优先级。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 的隔离：确保测试环境与可能影响重新测试结果的更改隔离。
 - **数据管理**：使用可以重现缺陷的特定测试数据来准确验证修复。
 - **版本控制**：跟踪软件版本和测试用例，以确保针对正确的构建执行重新测试。
 - **冒烟测试**：执行一轮快速测试，以确认主要功能在缺陷修复后正常工作。
-- **[测试用例](/zh-cn/wiki/test-case/) 变化**：稍微修改测试用例以涵盖可能受修复影响的相关场景和边缘情况。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 变化**：稍微修改测试用例以涵盖可能受修复影响的相关场景和边缘情况。
 - **文档**：更新测试用例和文档以反映软件或测试方法中的任何更改。
 - **明确的缺陷定义**：确保缺陷定义明确，以便重新测试有针对性和有效。
 - **自动重新测试脚本**：利用自动化脚本快速重新测试已修复的缺陷，特别是对于重复和容易回归的区域。
 - **持续监控**：重新测试后监控系统的行为以捕获任何即时故障。
-- **反馈循环**：及时向开发团队传达结果，以解决任何遗留问题。 通过采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保彻底且高效的[重新测试](/zh-cn/wiki/retesting/) 流程，从而有助于交付高质量的软件产品。
+- **反馈循环**：及时向开发团队传达结果，以解决任何遗留问题。 通过采用这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保彻底且高效的[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 流程，从而有助于交付高质量的软件产品。
 
 #### 如何确定要重新测试哪些测试用例？
 
-确定要重新测试哪些 [测试用例](/zh-cn/wiki/test-case/) 需要分析对软件所做的**具体更改**并确定受这些更改直接影响的所有区域。重点关注：
+确定要重新测试哪些 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 需要分析对软件所做的**具体更改**并确定受这些更改直接影响的所有区域。重点关注：
 
 - **缺陷修复**：之前因缺陷而失败的任何测试用例都应在缺陷解决后重新测试。
 - **代码更改**：检查源代码提交的修改、增强或修复。重新测试涵盖更改的代码路径的案例。
 - **需求更新**：如果需求已更改，请重新测试验证新需求的场景。
-- **[影响分析](/zh-cn/wiki/impact-analysis/)** ：进行影响分析以了解更改的依赖性和潜在的连锁反应。重新测试涵盖具有高度依赖性的组件的案例。
+- **[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** ：进行影响分析以了解更改的依赖性和潜在的连锁反应。重新测试涵盖具有高度依赖性的组件的案例。
 - **风险评估**：根据风险确定测试用例的优先级，首先重新测试高风险区域。这包括关键功能和有缺陷历史的区域。
-- **[测试用例](/zh-cn/wiki/test-case/) 历史记录**：查看测试用例的历史记录，以识别可能需要重新检查的不稳定或经常失败的测试。 使用**自动化工具**来简化选择过程。工具可以标记与最近代码提交相关的测试或突出显示更改频率高的区域。实施**[测试用例管理](/zh-cn/wiki/test-case-management/)系统**可以帮助跟踪[测试用例](/zh-cn/wiki/test-case/)、缺陷和代码更改之间的关联，从而更轻松地为[重新测试](/zh-cn/wiki/retesting/)选择相关测试。 请记住，目标是确保最近的更改不会对现有功能产生不利影响，因此选择 [测试用例](/zh-cn/wiki/test-case/) 将有效验证更改后应用程序的稳定性和完整性。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 历史记录**：查看测试用例的历史记录，以识别可能需要重新检查的不稳定或经常失败的测试。 使用**自动化工具**来简化选择过程。工具可以标记与最近代码提交相关的测试或突出显示更改频率高的区域。实施**[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)系统**可以帮助跟踪[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、缺陷和代码更改之间的关联，从而更轻松地为[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)选择相关测试。 请记住，目标是确保最近的更改不会对现有功能产生不利影响，因此选择 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 将有效验证更改后应用程序的稳定性和完整性。
 
 #### 计划重新测试时应考虑哪些因素？
 
-规划 [重新测试](/zh-cn/wiki/retesting/) 时，请考虑以下因素：
+规划 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 时，请考虑以下因素：
 
 - **缺陷修复**：确保提示重新测试的问题已得到解决，并且代码更改已部署在测试环境中。
-- **[测试用例](/zh-cn/wiki/test-case/) 优先级**：根据错误修复的重要性及其影响的功能对测试用例进行优先级排序。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：验证测试环境与生产环境尽可能匹配，以确保结果准确。
-- **数据[环境搭建](/zh-cn/wiki/setup/)**：准备必要的测试数据来验证缺陷修复，而不影响其他测试场景。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 优先级**：根据错误修复的重要性及其影响的功能对测试用例进行优先级排序。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：验证测试环境与生产环境尽可能匹配，以确保结果准确。
+- **数据[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：准备必要的测试数据来验证缺陷修复，而不影响其他测试场景。
 - **资源可用性**：分配足够的人力和机器资源，以在项目时间表内执行重新测试。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：确认重新测试的范围涵盖了可能受代码更改影响的所有领域。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：确认重新测试的范围涵盖了可能受代码更改影响的所有领域。
 - **依赖关系**：识别可能影响重新测试过程的任何依赖关系，例如外部系统或并发测试活动。
 - **文档**：更新测试用例和文档以反映自上次执行以来软件或测试方法中的任何更改。
 - **时间限制**：考虑完成重新测试所需的时间，特别是如果它影响发布时间表。
-- **反馈循环**：与开发团队建立快速反馈循环，以解决重新测试期间出现的任何新问题。 通过考虑这些因素，可以有效地规划和执行[重新测试](/zh-cn/wiki/retesting/)，确保软件在发布前满足所需的质量标准。
+- **反馈循环**：与开发团队建立快速反馈循环，以解决重新测试期间出现的任何新问题。 通过考虑这些因素，可以有效地规划和执行[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)，确保软件在发布前满足所需的质量标准。
 
 ### 重新测试工具和自动化
 
 #### 复测常用哪些工具？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/)中[重新测试](/zh-cn/wiki/retesting/)的常用工具包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：支持各种浏览器和编程语言的开源工具，可实现 Web 应用程序测试的自动化。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：支持各种浏览器和编程语言的开源工具，可实现 Web 应用程序测试的自动化。
 - **TestComplete**：一种商业工具，使测试人员能够为 Microsoft Windows、Web、Android 和 iOS 应用程序创建自动化测试。
-- **QTP/UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：Micro Focus 的一款流行的商业工具，用于功能和回归测试自动化，支持关键字和脚本接口以及广泛的软件应用程序和环境。
+- **QTP/UFT (Unified [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/))**：Micro Focus 的一款流行的商业工具，用于功能和回归测试自动化，支持关键字和脚本接口以及广泛的软件应用程序和环境。
 - **Ranorex**：提供用于桌面、Web 和移动应用程序测试的工具，并具有用于创建自动化测试的用户友好界面。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **JUnit/TestNG**：与 Selenium 结合使用的框架，用于在基于 Java 的环境中编写测试用例并生成报告。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的现代端到端测试框架，在浏览器中运行，简化了异步测试。
-- **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。 这些工具支持 [重新测试](/zh-cn/wiki/retesting/) 的各个方面，例如执行之前失败的特定[测试用例](/zh-cn/wiki/test-case/)、验证[bug](/zh-cn/wiki/bug/) 修复以及确保软件在更改后按预期运行。自动化工程师通常根据被测应用程序、使用的编程语言和框架以及[重新测试](/zh-cn/wiki/retesting/)流程的具体要求来选择工具。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的现代端到端测试框架，在浏览器中运行，简化了异步测试。
+- **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。 这些工具支持 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的各个方面，例如执行之前失败的特定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、验证[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复以及确保软件在更改后按预期运行。自动化工程师通常根据被测应用程序、使用的编程语言和框架以及[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)流程的具体要求来选择工具。
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：支持各种浏览器和编程语言的开源工具，可实现 Web 应用程序测试的自动化。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：支持各种浏览器和编程语言的开源工具，可实现 Web 应用程序测试的自动化。
 - **TestComplete**：一种商业工具，使测试人员能够为 Microsoft Windows、Web、Android 和 iOS 应用程序创建自动化测试。
-- **QTP/UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：Micro Focus 的一款流行的商业工具，用于功能和回归测试自动化，支持关键字和脚本接口以及广泛的软件应用程序和环境。
+- **QTP/UFT (Unified [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/))**：Micro Focus 的一款流行的商业工具，用于功能和回归测试自动化，支持关键字和脚本接口以及广泛的软件应用程序和环境。
 - **Ranorex**：提供用于桌面、Web 和移动应用程序测试的工具，并具有用于创建自动化测试的用户友好界面。
 - **Appium**：一种开源工具，用于自动化 iOS 和 Android 平台上的移动应用程序以及 Windows 桌面应用程序。
 - **JUnit/TestNG**：与 Selenium 结合使用的框架，用于在基于 Java 的环境中编写测试用例并生成报告。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：一个现代的基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了异步测试。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：一个现代的基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了异步测试。
 - **Robot Framework**：一个开源的、关键字驱动的测试自动化框架，用于验收测试和验收测试驱动开发（ATDD）。
 
 #### 自动化如何应用于重新测试？
 
-通过识别由于缺陷修复或代码更改而需要重新运行的特定[测试用例](/zh-cn/wiki/test-case/)，可以有效地应用[重新测试](/zh-cn/wiki/retesting/) 中的自动化。然后，这些[测试用例](/zh-cn/wiki/test-case/)会自动进行，以确保问题得到解决，而无需引入新的[bugs](/zh-cn/wiki/bug/)。
-  要自动化[重新测试](/zh-cn/wiki/retesting/)：
+通过识别由于缺陷修复或代码更改而需要重新运行的特定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，可以有效地应用[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 中的自动化。然后，这些[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)会自动进行，以确保问题得到解决，而无需引入新的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+  要自动化[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)：
 
-- **选择[测试用例](/zh-cn/wiki/test-case/)**与错误修复直接相关。这些通常是在之前的测试运行中失败的。
+- **选择[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**与错误修复直接相关。这些通常是在之前的测试运行中失败的。
 
-- **更新[测试脚本](/zh-cn/wiki/test-script/)**以反映自上次测试执行以来应用程序或测试环境中发生的任何更改。
+- **更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**以反映自上次测试执行以来应用程序或测试环境中发生的任何更改。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**执行选定的测试用例。根据应用程序类型，可以使用 Selenium、Appium 或 JUnit 等框架。
+- **利用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架**执行选定的测试用例。根据应用程序类型，可以使用 Selenium、Appium 或 JUnit 等框架。
 
 - **与构建工具集成**例如 Jenkins 或 TeamCity 在部署新版本后触发自动重新测试。
 
@@ -254,13 +254,13 @@ order: 0
     });
   });
 ```
-自动化[重新测试](/zh-cn/wiki/retesting/) 确保**一致性**和**效率**，特别是在处理频繁的代码更改时。它还允许向开发人员提供**快速反馈**，这在敏捷和 DevOps 环境中至关重要。
+自动化[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 确保**一致性**和**效率**，特别是在处理频繁的代码更改时。它还允许向开发人员提供**快速反馈**，这在敏捷和 DevOps 环境中至关重要。
 
-- **选择[测试用例](/zh-cn/wiki/test-case/)**与错误修复直接相关。这些通常是在之前的测试运行中失败的。
+- **选择[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**与错误修复直接相关。这些通常是在之前的测试运行中失败的。
 
-- **更新[测试脚本](/zh-cn/wiki/test-script/)**以反映自上次测试执行以来应用程序或测试环境中发生的任何更改。
+- **更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**以反映自上次测试执行以来应用程序或测试环境中发生的任何更改。
 
-- **利用[测试自动化](/zh-cn/wiki/test-automation/)框架**执行选定的测试用例。根据应用程序类型，可以使用 Selenium、Appium 或 JUnit 等框架。
+- **利用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架**执行选定的测试用例。根据应用程序类型，可以使用 Selenium、Appium 或 JUnit 等框架。
 
 - **与构建工具集成**例如 Jenkins 或 TeamCity 在部署新版本后触发自动重新测试。
 
@@ -268,7 +268,7 @@ order: 0
 
 #### 自动化重新测试的好处和挑战是什么？
 
-自动化 [重新测试](/zh-cn/wiki/retesting/) 提供了几个**好处**：
+自动化 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 提供了几个**好处**：
 
 - **效率**：自动化加快了重新测试过程，允许在更短的时间内执行更多的测试。
 - **一致性**：自动化测试每次都精确地执行相同的步骤，确保测试执行的一致性。
@@ -280,7 +280,7 @@ order: 0
 - **维护**：测试脚本需要定期更新以跟上应用程序的变化。
 - **学习曲线**：团队可能需要学习新的工具和脚本语言。
 - **不稳定**：由于计时问题、环境不一致或外部依赖性，自动化测试可能会不稳定。
-- **复杂性**：某些测试可能太复杂而无法自动化，并且仍然需要手动干预。 总之，虽然自动化可以显着改进 [重新测试](/zh-cn/wiki/retesting/) 流程，但它需要仔细规划和持续维护才能确保其有效性。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须权衡利弊，以确定适合其特定环境的最佳方法。
+- **复杂性**：某些测试可能太复杂而无法自动化，并且仍然需要手动干预。 总之，虽然自动化可以显着改进 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 流程，但它需要仔细规划和持续维护才能确保其有效性。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师必须权衡利弊，以确定适合其特定环境的最佳方法。
 
 - **效率**：自动化加快了重新测试过程，允许在更短的时间内执行更多的测试。
 - **一致性**：自动化测试每次都精确地执行相同的步骤，确保测试执行的一致性。
@@ -297,35 +297,35 @@ order: 0
 
 #### 敏捷方法中如何处理重新测试？
 
-在敏捷方法中，[重新测试](/zh-cn/wiki/retesting/) 作为迭代开发过程的一部分进行处理。修复缺陷后，将重新测试最初失败的特定场景以确认修复。这通常是在解决缺陷的同一冲刺内完成的。
-  敏捷团队优先考虑[重新测试](/zh-cn/wiki/retesting/)，以确保立即反馈[bug](/zh-cn/wiki/bug/)修复的有效性。该过程通常是自动化的，以加快验证速度，并允许随着代码的不断集成而频繁地重新执行[测试用例](/zh-cn/wiki/test-case/)。
-  敏捷中的 [重新测试](/zh-cn/wiki/retesting/) 是由以下因素推动的：
+在敏捷方法中，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 作为迭代开发过程的一部分进行处理。修复缺陷后，将重新测试最初失败的特定场景以确认修复。这通常是在解决缺陷的同一冲刺内完成的。
+  敏捷团队优先考虑[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)，以确保立即反馈[bug](https://inaodeng.com/zh-cn/wiki/bug/)修复的有效性。该过程通常是自动化的，以加快验证速度，并允许随着代码的不断集成而频繁地重新执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+  敏捷中的 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 是由以下因素推动的：
 
 - **用户故事**：重新测试任务通常与特定的用户故事或错误相关联，以跟踪进度并确保它们在冲刺中得到解决。
 - **完成的定义 (DoD)** ：DoD 通常包括在故事被认为完成之前必须重新测试并确认已修复错误的标准。
 - **持续集成 (CI)**：自动化测试用例作为 CI 管道的一部分重新运行，以验证新代码提交没有破坏现有功能。
-- **[测试用例管理](/zh-cn/wiki/test-case-management/) 工具**：这些工具有助于管理和跟踪重新测试工作，确保团队内的可见性和可追溯性。 敏捷团队的目标是在每个冲刺结束时维持**零[bug](/zh-cn/wiki/bug/) 政策**，这意味着[重新测试](/zh-cn/wiki/retesting/) 对于实现这一目标至关重要。敏捷的协作本质确保开发人员、测试人员和整个团队对 [重新测试](/zh-cn/wiki/retesting/) 的重要性及其在增量交付高质量软件中的作用保持一致。
+- **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 工具**：这些工具有助于管理和跟踪重新测试工作，确保团队内的可见性和可追溯性。 敏捷团队的目标是在每个冲刺结束时维持**零[bug](https://inaodeng.com/zh-cn/wiki/bug/) 政策**，这意味着[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 对于实现这一目标至关重要。敏捷的协作本质确保开发人员、测试人员和整个团队对 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的重要性及其在增量交付高质量软件中的作用保持一致。
 
 #### 重新测试在 DevOps 中扮演什么角色？
 
-在 **DevOps** 中，[重新测试](/zh-cn/wiki/retesting/) 对于确保成功解决早期测试周期中发现的特定缺陷至关重要。它在维护**持续反馈循环**方面发挥着重要作用，这对于 DevOps 实践至关重要。通过及时[重新测试](/zh-cn/wiki/retesting/)修复问题，团队可以快速验证更改并将修复合并到主分支中，支持**持续集成（CI）**和**持续交付（CD）**管道。
-  DevOps 中的 [重新测试](/zh-cn/wiki/retesting/) 通常是自动化的，以跟上频繁的部署周期。自动[重新测试](/zh-cn/wiki/retesting/) 允许快速验证[bug](/zh-cn/wiki/bug/) 修复，而不会减慢开发过程。这种自动化通常集成到 CI/CD 管道中，以便任何代码更改都会自动触发必要的重新测试套件。
-  [重新测试](/zh-cn/wiki/retesting/) 的作用扩展到**风险管理**，确保相同的错误不会再次出现，特别是在添加新功能或代码库发生重大更改时。它有助于在整个迭代开发过程中保持**代码质量**和**稳定性**。
-  在**敏捷方法**的背景下，[重新测试](/zh-cn/wiki/retesting/) 无缝地融入到冲刺中，允许立即反馈和[迭代](/zh-cn/wiki/iteration/)。这与敏捷强调适应性和对变化的快速响应是一致的。
-  通过努力[重新测试](/zh-cn/wiki/retesting/)，团队可以避免如果不及时解决[bugs](/zh-cn/wiki/bug/) 可能累积的潜在**技术债务**。这种[质量保证](/zh-cn/wiki/quality-assurance/) 的主动方法符合快速交付高质量软件的 DevOps 目标。
+在 **DevOps** 中，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 对于确保成功解决早期测试周期中发现的特定缺陷至关重要。它在维护**持续反馈循环**方面发挥着重要作用，这对于 DevOps 实践至关重要。通过及时[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)修复问题，团队可以快速验证更改并将修复合并到主分支中，支持**持续集成（CI）**和**持续交付（CD）**管道。
+  DevOps 中的 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 通常是自动化的，以跟上频繁的部署周期。自动[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 允许快速验证[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复，而不会减慢开发过程。这种自动化通常集成到 CI/CD 管道中，以便任何代码更改都会自动触发必要的重新测试套件。
+  [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 的作用扩展到**风险管理**，确保相同的错误不会再次出现，特别是在添加新功能或代码库发生重大更改时。它有助于在整个迭代开发过程中保持**代码质量**和**稳定性**。
+  在**敏捷方法**的背景下，[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 无缝地融入到冲刺中，允许立即反馈和[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)。这与敏捷强调适应性和对变化的快速响应是一致的。
+  通过努力[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)，团队可以避免如果不及时解决[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能累积的潜在**技术债务**。这种[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的主动方法符合快速交付高质量软件的 DevOps 目标。
 
 #### 重新测试如何集成到持续集成和持续交付管道中？
 
-将[重新测试](/zh-cn/wiki/retesting/) 集成到**CI/CD 管道**中可确保[bugs](/zh-cn/wiki/bug/) 得到快速修复和验证。为此，请按照下列步骤操作：
+将[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 集成到**CI/CD 管道**中可确保[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 得到快速修复和验证。为此，请按照下列步骤操作：
 
 1. **自动化重新测试用例** ：将手动重新测试用例转换为自动化脚本。
 2. **与版本控制集成**：当开发人员将代码更改推送到存储库时触发重新测试。
 3. **配置 CI 服务器**：设置 CI 服务器（例如 Jenkins、CircleCI）以在构建过程中运行重新测试。
 4. **使用容器化**：采用 Docker 等容器化环境来确保测试执行的一致性。
 5. **并行执行**：并行运行重新测试以减少反馈时间。
-6. **[测试数据](/zh-cn/wiki/test-data/) 管理**：实施管理测试数据的策略，以确保使用适当的数据集执行重新测试。
+6. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：实施管理测试数据的策略，以确保使用适当的数据集执行重新测试。
 7. **结果报告**：配置重新测试结果的自动报告，突出显示修复和剩余缺陷。
 8. **反馈循环**：针对任何失败的重新测试建立向开发人员的反馈循环。
 9. **分支策略**：使用功能分支来隔离更改并在合并之前仅重新测试受影响的区域。
 10. **把关**：实施质量关卡，防止代码升级到生产环境，除非重新测试通过。
-11. **持续监控**：监控部署后的应用程序以识别可能需要重新测试的问题。 通过将 [重新测试](/zh-cn/wiki/retesting/) 嵌入到 CI/CD 工作流程中，团队可以保持高质量标准并加速交付流程。 **[selenium](/zh-cn/wiki/selenium/)**、**TestNG** 和 **JUnit**（用于 [测试自动化](/zh-cn/wiki/test-automation/)）等工具，以及用于版本控制的 **Git** 和用于持续集成的 **Jenkins** 或 **Travis CI**，促进了这种集成。
+11. **持续监控**：监控部署后的应用程序以识别可能需要重新测试的问题。 通过将 [重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 嵌入到 CI/CD 工作流程中，团队可以保持高质量标准并加速交付流程。 **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**、**TestNG** 和 **JUnit**（用于 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)）等工具，以及用于版本控制的 **Git** 和用于持续集成的 **Jenkins** 或 **Travis CI**，促进了这种集成。

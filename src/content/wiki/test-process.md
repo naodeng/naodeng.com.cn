@@ -51,31 +51,31 @@ order: 0
 
 #### 软件测试中的测试流程是怎样的？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的[测试过程](/zh-cn/wiki/test-process/) 是一种结构化方法，用于**验证**和**验证**软件应用程序是否满足其**规范**和**要求**。它涉及在软件发布之前**识别缺陷**、确保**功能**和**提高质量**的一系列活动。
-  **测试分析**和**设计**至关重要，其中审查**要求**以制定**测试条件**和**[测试用例](/zh-cn/wiki/test-case/)**。此阶段确保测试涵盖应用程序的所有方面，并考虑**风险**、**[priority](/zh-cn/wiki/priority/)** 和 **复杂性**。
-  **测试实施**涉及设置 **[测试环境](/zh-cn/wiki/test-environment/)** 和准备 **[测试数据](/zh-cn/wiki/test-data/)**。在此阶段，通常使用 Python、Java 等编程语言或[测试自动化](/zh-cn/wiki/test-automation/) 框架提供的特定于领域的语言来编写和审查自动化的[测试脚本](/zh-cn/wiki/test-script/)。
-  **[测试执行](/zh-cn/wiki/test-execution/)** 是运行自动化测试的阶段。将结果与**预期结果**进行比较，以确定**通过/失败**状态。 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具通常用于促进此过程。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 是一种结构化方法，用于**验证**和**验证**软件应用程序是否满足其**规范**和**要求**。它涉及在软件发布之前**识别缺陷**、确保**功能**和**提高质量**的一系列活动。
+  **测试分析**和**设计**至关重要，其中审查**要求**以制定**测试条件**和**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。此阶段确保测试涵盖应用程序的所有方面，并考虑**风险**、**[priority](https://inaodeng.com/zh-cn/wiki/priority/)** 和 **复杂性**。
+  **测试实施**涉及设置 **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 和准备 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**。在此阶段，通常使用 Python、Java 等编程语言或[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架提供的特定于领域的语言来编写和审查自动化的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
+  **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** 是运行自动化测试的阶段。将结果与**预期结果**进行比较，以确定**通过/失败**状态。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具通常用于促进此过程。
   **测试监控和控制**涉及跟踪测试活动的进度和质量。分析指标和**KPI**，以便就测试过程做出明智的决策并确定任何必要的调整。
-  **测试评估**确定测试是否充分以及软件是否已准备好发布。它涉及评估**[测试覆盖率](/zh-cn/wiki/test-coverage/)**、**缺陷趋势**和**风险分析**。
+  **测试评估**确定测试是否充分以及软件是否已准备好发布。它涉及评估**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**、**缺陷趋势**和**风险分析**。
   **测试结束**包括**归档测试工件**、分析经验教训以及提供**测试完成报告**。此阶段对于未来测试周期中的**持续改进**至关重要。
   在整个过程中，**沟通**​​和**文件**是确保透明度和问责制的关键。测试结果、**缺陷日志**和**状态报告**对于利益相关者了解软件的质量和测试的有效性至关重要。
 
 #### 为什么测试过程在软件开发中很重要？
 
-[测试过程](/zh-cn/wiki/test-process/) 在软件开发中对于**识别和减轻风险**至关重要。它使团队能够系统地发现可能导致软件故障的缺陷，从而防止潜在的业务损失和对用户的伤害。通过将测试集成到开发生命周期中，您可以确保在进入下一阶段之前仔细检查每个组件，从而促进**构建质量**方法。
-  测试还为开发人员提供了**反馈循环**，突出显示需要改进或完善的领域。随着新功能和 [bug](/zh-cn/wiki/bug/) 修复的不断发展，这种反馈对于维护**软件的完整性**至关重要。此外，[测试过程](/zh-cn/wiki/test-process/) 有助于**验证软件是否满足用户要求**并在不同环境和场景中按预期运行。
-  在受监管的行业中，[测试过程](/zh-cn/wiki/test-process/) 是**合规性要求**。它展示了在确保软件可靠性和安全性方面的尽职调查，这对于维护信任和法律地位至关重要。
-  最后，[测试过程](/zh-cn/wiki/test-process/) 是**优化催化剂**。通过分析测试结果，团队可以识别性能瓶颈和可以增强用户体验的领域。这种持续改进周期不仅提高了当前产品的质量，而且还为未来项目提供了最佳实践，有助于组织软件开发流程的成熟。
+[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 在软件开发中对于**识别和减轻风险**至关重要。它使团队能够系统地发现可能导致软件故障的缺陷，从而防止潜在的业务损失和对用户的伤害。通过将测试集成到开发生命周期中，您可以确保在进入下一阶段之前仔细检查每个组件，从而促进**构建质量**方法。
+  测试还为开发人员提供了**反馈循环**，突出显示需要改进或完善的领域。随着新功能和 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复的不断发展，这种反馈对于维护**软件的完整性**至关重要。此外，[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 有助于**验证软件是否满足用户要求**并在不同环境和场景中按预期运行。
+  在受监管的行业中，[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 是**合规性要求**。它展示了在确保软件可靠性和安全性方面的尽职调查，这对于维护信任和法律地位至关重要。
+  最后，[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 是**优化催化剂**。通过分析测试结果，团队可以识别性能瓶颈和可以增强用户体验的领域。这种持续改进周期不仅提高了当前产品的质量，而且还为未来项目提供了最佳实践，有助于组织软件开发流程的成熟。
 
 #### 测试过程中有哪些关键阶段？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/) 的[测试过程](/zh-cn/wiki/test-process/) 中的关键阶段通常包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 中的关键阶段通常包括：
 
 - **需求分析**：根据功能和非功能需求了解需要测试的内容。
 - **测试计划**：概述策略和后勤工作，已在您的 wiki 中介绍。
-- **[测试用例](/zh-cn/wiki/test-case/) Development** ：根据测试计划创建自动化脚本，这在您的 wiki 中也有详细说明。
-- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置将运行自动化测试的硬件和软件环境。
-- **[测试执行](/zh-cn/wiki/test-execution/)** ：运行自动化测试、捕获结果并监控过程中是否存在任何需要干预的问题。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) Development** ：根据测试计划创建自动化脚本，这在您的 wiki 中也有详细说明。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** ：配置将运行自动化测试的硬件和软件环境。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** ：运行自动化测试、捕获结果并监控过程中是否存在任何需要干预的问题。
 - **缺陷记录**：记录测试执行期间检测到的任何故障或错误，以供进一步调查和解决。
 - **测试报告**：总结测试执行的结果，包括通过/失败率、覆盖率和任何已识别的缺陷。
 - **测试结束**：完成测试阶段，存档测试工件，并从过程中学习以进行未来的改进，如您的 wiki 中所述。
@@ -83,9 +83,9 @@ order: 0
 
 - **需求分析**：根据功能和非功能需求了解需要测试的内容。
 - **测试计划**：概述策略和后勤工作，已在您的 wiki 中介绍。
-- **[测试用例](/zh-cn/wiki/test-case/) 开发**：根据测试计划创建自动化脚本，这在您的 wiki 中也有详细说明。
-- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** ：配置将运行自动化测试的硬件和软件环境。
-- **[测试执行](/zh-cn/wiki/test-execution/)** ：运行自动化测试、捕获结果并监控过程中是否存在任何需要干预的问题。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发**：根据测试计划创建自动化脚本，这在您的 wiki 中也有详细说明。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** ：配置将运行自动化测试的硬件和软件环境。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** ：运行自动化测试、捕获结果并监控过程中是否存在任何需要干预的问题。
 - **缺陷记录**：记录测试执行期间检测到的任何故障或错误，以供进一步调查和解决。
 - **测试报告**：总结测试执行的结果，包括通过/失败率、覆盖率和任何已识别的缺陷。
 - **测试结束**：完成测试阶段，存档测试工件，并从过程中学习以进行未来的改进，如您的 wiki 中所述。
@@ -93,22 +93,22 @@ order: 0
 
 #### 测试过程如何保证软件的质量？
 
-[测试过程](/zh-cn/wiki/test-process/) 通过在发布前**系统地识别和消除缺陷**来确保[软件质量](/zh-cn/wiki/software-quality/)。它涉及**验证**软件是否满足指定的要求以及**验证**它是否满足用户需求。质量通过以下方式得到保证：
+[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 通过在发布前**系统地识别和消除缺陷**来确保[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。它涉及**验证**软件是否满足指定的要求以及**验证**它是否满足用户需求。质量通过以下方式得到保证：
 
-- **全面[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：确保测试所有功能和场景，包括边缘情况。
+- **全面[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：确保测试所有功能和场景，包括边缘情况。
 - **持续测试**：将自动化测试集成到 CI/CD 管道中，以便立即反馈代码更改。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：根据潜在影响确定测试的优先级，确保关键领域得到更多关注。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：确认新的更改不会对现有功能产生不利影响。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：检查软件在预期负载下是否表现良好。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：识别漏洞以防止潜在的违规行为。
-- **[可用性测试](/zh-cn/wiki/usability-testing/)** ：确保软件用户友好并满足客户期望。 使用 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具执行自动化测试，并分析结果以识别缺陷。然后[Bugs](/zh-cn/wiki/bug/)被**跟踪**和**修复**，并重新运行测试以确认解决方案。这个循环一直持续到软件达到发布的**质量阈值**。 该流程还包括**审查和完善** [测试用例](/zh-cn/wiki/test-case/) 以提高有效性和效率。通过记录结果和学习内容，团队构建了一个知识库，为未来的测试提供信息，从而实现 [质量保证](/zh-cn/wiki/quality-assurance/) 实践的**持续改进**。
+- **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：根据潜在影响确定测试的优先级，确保关键领域得到更多关注。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：确认新的更改不会对现有功能产生不利影响。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：检查软件在预期负载下是否表现良好。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：识别漏洞以防止潜在的违规行为。
+- **[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)** ：确保软件用户友好并满足客户期望。 使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具执行自动化测试，并分析结果以识别缺陷。然后[Bugs](https://inaodeng.com/zh-cn/wiki/bug/)被**跟踪**和**修复**，并重新运行测试以确认解决方案。这个循环一直持续到软件达到发布的**质量阈值**。 该流程还包括**审查和完善** [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以提高有效性和效率。通过记录结果和学习内容，团队构建了一个知识库，为未来的测试提供信息，从而实现 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 实践的**持续改进**。
 
 ### 测试计划
 
 #### 测试计划在测试过程中的作用是什么？
 
 测试计划对于**调整测试活动**与业务目标和项目时间表至关重要。它作为测试团队的**蓝图**，概述了进行有效且高效的测试所需的方法、资源、时间表和职责。
-  精心设计的[测试计划](/zh-cn/wiki/test-plan/) 可确保：
+  精心设计的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 可确保：
 
 - **范围和目标**明确定义，防止范围蔓延并确保所有关键功能都经过测试。
 
@@ -118,15 +118,15 @@ order: 0
 
 - **资源规划**解决问题，包括人员、工具和环境，以避免瓶颈和停机。
 
-- **[测试环境](/zh-cn/wiki/test-environment/) 要求**已确定，确保必要的硬件、软件和网络配置的可用性。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 要求**已确定，确保必要的硬件、软件和网络配置的可用性。
 
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**策略已经到位，这对于可重复且可靠的自动化测试至关重要。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**策略已经到位，这对于可重复且可靠的自动化测试至关重要。
 
 - **工具选择**最终确定，符合被测软件的技术需求和兼容性。
 
 - **可追溯性**建立测试用例、需求和缺陷之间的关系，增强测试覆盖率和影响分析。
 
-- **进入和退出标准**设置，为何时开始和停止测试阶段提供明确的指标。 从本质上讲，测试计划是为战术执行奠定基础的战略阶段，使 [测试自动化](/zh-cn/wiki/test-automation/) 工程师能够在时间和资源的限制内交付**高质量的软件**。
+- **进入和退出标准**设置，为何时开始和停止测试阶段提供明确的指标。 从本质上讲，测试计划是为战术执行奠定基础的战略阶段，使 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师能够在时间和资源的限制内交付**高质量的软件**。
 
 - **范围和目标**明确定义，防止范围蔓延并确保所有关键功能都经过测试。
 
@@ -136,9 +136,9 @@ order: 0
 
 - **资源规划**解决问题，包括人员、工具和环境，以避免瓶颈和停机。
 
-- **[测试环境](/zh-cn/wiki/test-environment/) 要求**已确定，确保必要的硬件、软件和网络配置的可用性。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 要求**已确定，确保必要的硬件、软件和网络配置的可用性。
 
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**策略已经到位，这对于可重复且可靠的自动化测试至关重要。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**策略已经到位，这对于可重复且可靠的自动化测试至关重要。
 
 - **工具选择**最终确定，符合被测软件的技术需求和兼容性。
 
@@ -148,15 +148,15 @@ order: 0
 
 #### 测试计划应包括哪些要素？
 
-[测试计划](/zh-cn/wiki/test-plan/) 应包含以下元素：
+[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 应包含以下元素：
 
 - **目标**：定义测试旨在实现的目标。
 - **范围**：概述要测试的功能以及任何超出范围的功能。
 - **资源**：列出所需的人员、工具和环境。
 - **时间表**：提供测试准备、执行和评估的时间表。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：指定硬件、软件、网络配置和其他必要的设置详细信息。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：指定硬件、软件、网络配置和其他必要的设置详细信息。
 - **风险分析**：识别潜在风险和缓解策略。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：描述测试所需的数据集。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：描述测试所需的数据集。
 - **测试标准**：
 - *入学标准*：测试开始前必须满足的条件。
 - *退出标准*：结束测试必须满足的条件。
@@ -165,7 +165,7 @@ order: 0
 - *退出标准*：结束测试必须满足的条件。
 - *通过/失败标准*：定义测试成功或失败的要素。
 - **测试可交付成果**：列出要生成的文档、报告和日志。
-- **[缺陷管理](/zh-cn/wiki/defect-management/)** ：概述跟踪和解决缺陷的流程。
+- **[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/)** ：概述跟踪和解决缺陷的流程。
 - **沟通计划**：详细说明如何在利益相关者之间共享信息。
 - **版本控制**：描述如何管理测试用例和软件的更改。
 - **培训需求**：确定测试团队所需的任何培训。
@@ -192,81 +192,81 @@ order: 0
 
 #### 测试计划如何提高测试过程的效率？
 
-测试计划通过建立指导所有后续活动的清晰路线图来提高[测试过程](/zh-cn/wiki/test-process/) 的**效率**。它有助于确定测试的**范围**和**目标**，确保工作重点突出并与项目目标保持一致。通过定义**测试标准**和**里程碑**，团队可以衡量进度并做出明智的决策，从而减少花在非生产性任务上的时间。
-  结构良好的[测试计划](/zh-cn/wiki/test-plan/) 概述了**资源分配**，确保人员和工具得到最佳利用。它还为**风险管理**奠定了基础，使团队能够在潜在问题影响测试周期之前预测并缓解它们。
-  将 **[测试环境](/zh-cn/wiki/test-environment/)** 要求纳入规划阶段可确保必要的基础设施到位，避免[环境搭建](/zh-cn/wiki/setup/) 出现延误。规划还促进 **[测试数据](/zh-cn/wiki/test-data/)** 和 **[测试用例](/zh-cn/wiki/test-case/)** 的开发，简化设计和开发阶段。
+测试计划通过建立指导所有后续活动的清晰路线图来提高[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的**效率**。它有助于确定测试的**范围**和**目标**，确保工作重点突出并与项目目标保持一致。通过定义**测试标准**和**里程碑**，团队可以衡量进度并做出明智的决策，从而减少花在非生产性任务上的时间。
+  结构良好的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 概述了**资源分配**，确保人员和工具得到最佳利用。它还为**风险管理**奠定了基础，使团队能够在潜在问题影响测试周期之前预测并缓解它们。
+  将 **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 要求纳入规划阶段可确保必要的基础设施到位，避免[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 出现延误。规划还促进 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** 和 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的开发，简化设计和开发阶段。
   有效的测试计划包括**安排**，它优先考虑测试活动并有助于在整个测试周期中保持动力。它还定义了**进入和退出标准**，为何时开始和结束测试阶段提供了明确的基准。
   通过建立**通信协议**和**报告机制**，测试规划可确保利益相关者随时了解情况，促进协作并快速解决阻碍因素。
-  从本质上讲，测试计划是实现[测试自动化](/zh-cn/wiki/test-automation/) 的系统性、组织性和主动性方法的基础，显着提高了成功和及时交付项目的可能性。
+  从本质上讲，测试计划是实现[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的系统性、组织性和主动性方法的基础，显着提高了成功和及时交付项目的可能性。
 
 #### 测试计划涉及哪些步骤？
 
 **测试计划**涉及的步骤如下：
 
 1. **定义测试目标**：确定您想要通过测试过程实现的目标，与项目目标和质量期望保持一致。
-2. **资源规划**：确定所需的人力和技术资源，包括团队角色、技能和[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)。
-3. **风险分析**：评估可能影响[测试过程](/zh-cn/wiki/test-process/) 的潜在风险并规划缓解策略。
+2. **资源规划**：确定所需的人力和技术资源，包括团队角色、技能和[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
+3. **风险分析**：评估可能影响[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的潜在风险并规划缓解策略。
 4. **测试范围**：清楚地概述要测试的特性和功能，以及超出范围的特性和功能。
-5. **[测试策略](/zh-cn/wiki/test-strategy/) 和方法**：决定要执行的测试方法、技术和测试类型（例如，单元、集成、系统、验收）。
-6. **[测试环境](/zh-cn/wiki/test-environment/) 和工具**：指定[测试环境](/zh-cn/wiki/test-environment/) 所需的硬件、软件、网络配置和自动化工具。
+5. **[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 和方法**：决定要执行的测试方法、技术和测试类型（例如，单元、集成、系统、验收）。
+6. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 和工具**：指定[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 所需的硬件、软件、网络配置和自动化工具。
 7. **时间表和里程碑**：创建包含关键里程碑的时间表，包括测试准备、执行和评估阶段。
-8. **测试可交付成果**：列出预期输出，例如[测试用例](/zh-cn/wiki/test-case/)、[测试脚本](/zh-cn/wiki/test-script/)、缺陷报告和测试指标。
+8. **测试可交付成果**：列出预期输出，例如[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)、缺陷报告和测试指标。
 9. **进入和退出标准**：定义开始测试必须满足的条件以及结束测试周期的标准。
-10. **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 的创建、维护和处置计划。
-11. **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)**：建立一种方法来跟踪 [测试用例](/zh-cn/wiki/test-case/) 的需求，确保覆盖范围和问责制。
-12. **审核和批准**：让利益相关者审核[测试计划](/zh-cn/wiki/test-plan/)，并获得批准以继续处理[测试执行](/zh-cn/wiki/test-execution/)。
+10. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的创建、维护和处置计划。
+11. **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)**：建立一种方法来跟踪 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的需求，确保覆盖范围和问责制。
+12. **审核和批准**：让利益相关者审核[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)，并获得批准以继续处理[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
 13. **沟通计划**：概述如何在团队和利益相关者之间共享信息，包括会议时间表和报告格式。
-14. **应急计划**：为意外事件或延误做好准备，采取替代行动以保持[测试过程](/zh-cn/wiki/test-process/) 正常运行。
+14. **应急计划**：为意外事件或延误做好准备，采取替代行动以保持[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 正常运行。
 1. **定义测试目标**：确定您想要通过测试过程实现的目标，与项目目标和质量期望保持一致。
-2. **资源规划**：确定所需的人力和技术资源，包括团队角色、技能和[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)。
-3. **风险分析**：评估可能影响[测试过程](/zh-cn/wiki/test-process/) 的潜在风险并规划缓解策略。
+2. **资源规划**：确定所需的人力和技术资源，包括团队角色、技能和[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
+3. **风险分析**：评估可能影响[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的潜在风险并规划缓解策略。
 4. **测试范围**：清楚地概述要测试的特性和功能，以及超出范围的特性和功能。
-5. **[测试策略](/zh-cn/wiki/test-strategy/) 和方法**：决定要执行的测试方法、技术和测试类型（例如，单元、集成、系统、验收）。
-6. **[测试环境](/zh-cn/wiki/test-environment/) 和工具**：指定[测试环境](/zh-cn/wiki/test-environment/) 所需的硬件、软件、网络配置和自动化工具。
+5. **[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 和方法**：决定要执行的测试方法、技术和测试类型（例如，单元、集成、系统、验收）。
+6. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 和工具**：指定[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 所需的硬件、软件、网络配置和自动化工具。
 7. **时间表和里程碑**：创建包含关键里程碑的时间表，包括测试准备、执行和评估阶段。
-8. **测试可交付成果**：列出预期输出，例如[测试用例](/zh-cn/wiki/test-case/)、[测试脚本](/zh-cn/wiki/test-script/)、缺陷报告和测试指标。
+8. **测试可交付成果**：列出预期输出，例如[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)、缺陷报告和测试指标。
 9. **进入和退出标准**：定义开始测试必须满足的条件以及结束测试周期的标准。
-10. **[测试数据](/zh-cn/wiki/test-data/) 管理**：[测试数据](/zh-cn/wiki/test-data/) 的创建、维护和处置计划。
-11. **[可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)**：建立一种方法来追踪 [测试用例](/zh-cn/wiki/test-case/) 的需求，确保覆盖范围和问责制。
-12. **审核和批准**：让利益相关者审核[测试计划](/zh-cn/wiki/test-plan/)，并获得批准以继续处理[测试执行](/zh-cn/wiki/test-execution/)。
+10. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的创建、维护和处置计划。
+11. **[可追溯性矩阵](https://inaodeng.com/zh-cn/wiki/traceability-matrix/)**：建立一种方法来追踪 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的需求，确保覆盖范围和问责制。
+12. **审核和批准**：让利益相关者审核[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)，并获得批准以继续处理[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
 13. **沟通计划**：概述如何在团队和利益相关者之间共享信息，包括会议时间表和报告格式。
-14. **应急计划**：为意外事件或延误做好准备，采取替代行动以保持[测试过程](/zh-cn/wiki/test-process/) 正常运行。
+14. **应急计划**：为意外事件或延误做好准备，采取替代行动以保持[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 正常运行。
 
 ### 测试设计和开发
 
 #### 测试过程中测试设计的目的是什么？
 
-[测试过程](/zh-cn/wiki/test-process/) 中**测试设计**的目的是创建一种结构化方法来生成[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/)，以有效验证被测软件的功能、性能和安全性。它包括确定测试条件、设计[测试用例](/zh-cn/wiki/test-case/) 和准备[测试数据](/zh-cn/wiki/test-data/)。测试设计确保测试**可重复**、**可靠**和**全面**，涵盖软件的所有相关方面，包括正面和负面场景。
-  通过专注于测试设计，自动化工程师可以创建可维护和可扩展的测试，这对于项目的长期成功至关重要。精心设计的 [测试套件](/zh-cn/wiki/test-suite/) 可以降低出现缺陷的风险，并确保软件在各种条件下都能按预期运行。它还有助于**可追溯性**，将测试与需求或用户故事联系起来，这对于验证覆盖范围和了解测试影响至关重要。
-  此外，测试设计对于优化[测试过程](/zh-cn/wiki/test-process/)至关重要，方法是确定应该自动化的最关键的[测试场景](/zh-cn/wiki/test-scenario/)，从而最大限度地提高自动化工作的投资回报。它有助于根据风险和影响确定测试的优先级，确保最重要的功能得到彻底的测试。
-  总之，测试设计是支撑[测试过程](/zh-cn/wiki/test-process/) 有效性和效率的核心活动，从而带来更高质量的软件产品和更简化的开发生命周期。
+[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 中**测试设计**的目的是创建一种结构化方法来生成[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，以有效验证被测软件的功能、性能和安全性。它包括确定测试条件、设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和准备[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。测试设计确保测试**可重复**、**可靠**和**全面**，涵盖软件的所有相关方面，包括正面和负面场景。
+  通过专注于测试设计，自动化工程师可以创建可维护和可扩展的测试，这对于项目的长期成功至关重要。精心设计的 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可以降低出现缺陷的风险，并确保软件在各种条件下都能按预期运行。它还有助于**可追溯性**，将测试与需求或用户故事联系起来，这对于验证覆盖范围和了解测试影响至关重要。
+  此外，测试设计对于优化[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)至关重要，方法是确定应该自动化的最关键的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)，从而最大限度地提高自动化工作的投资回报。它有助于根据风险和影响确定测试的优先级，确保最重要的功能得到彻底的测试。
+  总之，测试设计是支撑[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 有效性和效率的核心活动，从而带来更高质量的软件产品和更简化的开发生命周期。
 
 #### 测试用例是如何开发的？
 
-[测试用例](/zh-cn/wiki/test-case/) 是通过从**需求分析**开始的系统方法开发的。工程师剖析软件需求以了解预期的行为。根据这种理解，精心设计了**[测试场景](/zh-cn/wiki/test-scenario/)**，它概述了要测试的情况。
-  接下来，进行 **[测试用例](/zh-cn/wiki/test-case/) 设计**，其中详细说明了每个场景的具体输入、执行条件和预期结果。此阶段通常涉及创建 **[测试数据](/zh-cn/wiki/test-data/)** 将用于模拟现实世界的条件。工程师使用边界值分析、[等价划分](/zh-cn/wiki/equivalence-partitioning/) 和[决策表测试](/zh-cn/wiki/decision-table-testing/) 等技术来确保全面覆盖。
-  然后编写**自动化脚本**来执行这些[测试用例](/zh-cn/wiki/test-case/)。通常使用 Python 和 PyTest、JavaScript 和 [Jest](/zh-cn/wiki/jest/) 或 Java 和 JUnit 等语言和框架。脚本被设计为**可重用**和**可维护**，具有可以轻松修改或扩展的功能和模块。
-  **断言**被编码到脚本中，以根据[预期结果](/zh-cn/wiki/expected-result/)自动验证结果。例如：
+[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是通过从**需求分析**开始的系统方法开发的。工程师剖析软件需求以了解预期的行为。根据这种理解，精心设计了**[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)**，它概述了要测试的情况。
+  接下来，进行 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计**，其中详细说明了每个场景的具体输入、执行条件和预期结果。此阶段通常涉及创建 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** 将用于模拟现实世界的条件。工程师使用边界值分析、[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) 和[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 等技术来确保全面覆盖。
+  然后编写**自动化脚本**来执行这些[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。通常使用 Python 和 PyTest、JavaScript 和 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 或 Java 和 JUnit 等语言和框架。脚本被设计为**可重用**和**可维护**，具有可以轻松修改或扩展的功能和模块。
+  **断言**被编码到脚本中，以根据[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)自动验证结果。例如：
 
 ```
   expect(actualOutput).toEqual(expectedOutput);
 ```
-[测试用例](/zh-cn/wiki/test-case/) 和脚本的**同行评审**可确保质量并遵守标准。此协作步骤有助于捕获错误并提高[测试套件](/zh-cn/wiki/test-suite/) 的有效性。
-  最后，[测试用例](/zh-cn/wiki/test-case/) 集成到**[测试自动化](/zh-cn/wiki/test-automation/) 框架**中，并包含在**持续集成/持续部署 (CI/CD) 管道**中。这允许定期执行并立即反馈软件质量，与敏捷实践保持一致并促进快速开发周期。
+[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和脚本的**同行评审**可确保质量并遵守标准。此协作步骤有助于捕获错误并提高[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的有效性。
+  最后，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 集成到**[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**中，并包含在**持续集成/持续部署 (CI/CD) 管道**中。这允许定期执行并立即反馈软件质量，与敏捷实践保持一致并促进快速开发周期。
 
 #### 设计测试时主要考虑哪些因素？
 
-设计测试时，请考虑测试的**范围**，以确保其符合项目目标和要求。 [测试用例](/zh-cn/wiki/test-case/)的**可重用性**可以节省时间；将它们设计为模块化以促进这一点。 **[可维护性](/zh-cn/wiki/maintainability/)** 至关重要；随着软件的发展，测试应该很容易更新。目标是**可读性**和清晰度，以便其他工程师可以理解并在必要时修改测试。
-  **数据驱动测试**可以通过将测试逻辑与[测试数据](/zh-cn/wiki/test-data/)分离来增强[测试覆盖率](/zh-cn/wiki/test-coverage/)，从而允许轻松扩展[测试场景](/zh-cn/wiki/test-scenario/)。结合**边界值分析**和**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**来有效覆盖输入范围并减少冗余。
+设计测试时，请考虑测试的**范围**，以确保其符合项目目标和要求。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的**可重用性**可以节省时间；将它们设计为模块化以促进这一点。 **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** 至关重要；随着软件的发展，测试应该很容易更新。目标是**可读性**和清晰度，以便其他工程师可以理解并在必要时修改测试。
+  **数据驱动测试**可以通过将测试逻辑与[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)分离来增强[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，从而允许轻松扩展[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。结合**边界值分析**和**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)**来有效覆盖输入范围并减少冗余。
   **测试独立性** 确保一项测试的结果不会影响另一项测试，从而获得更可靠的结果。 **决定论**是关键；测试应该在相同条件下产生相同的结果才值得信赖。
-  **性能**考虑因素包括优化[测试执行](/zh-cn/wiki/test-execution/)时间和资源使用。 **并行执行**策略可以显着减少[测试套件](/zh-cn/wiki/test-suite/)运行时间。
-  测试中的**错误处理**应该是稳健的，捕获足够的信息进行调试，同时不会导致[误报](/zh-cn/wiki/false-positive/)或负面结果。 **断言**应该精确，以避免测试结果含糊不清。
+  **性能**考虑因素包括优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)时间和资源使用。 **并行执行**策略可以显着减少[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)运行时间。
+  测试中的**错误处理**应该是稳健的，捕获足够的信息进行调试，同时不会导致[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)或负面结果。 **断言**应该精确，以避免测试结果含糊不清。
   最后，**与 CI/CD 管道集成**确保测试自动运行，提供有关代码更改影响的即时反馈。这种集成应该是无缝的，并支持**报告机制**，以便向团队清楚地传达测试结果。
 
 #### 测试设计和开发如何融入整个测试过程？
 
-测试设计和开发是 **[测试过程](/zh-cn/wiki/test-process/)** 不可或缺的一部分，弥合了规划和执行之间的差距。此阶段涉及**将需求和测试目标**转化为详细的测试条件和案例。
-  在测试设计过程中，工程师使用编程语言或测试工具创建**自动化脚本**，然后**将其映射到特定的[测试用例](/zh-cn/wiki/test-case/)**。这确保了每个[测试用例](/zh-cn/wiki/test-case/)都可以自动执行，提供一致且可重复的结果。
+测试设计和开发是 **[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)** 不可或缺的一部分，弥合了规划和执行之间的差距。此阶段涉及**将需求和测试目标**转化为详细的测试条件和案例。
+  在测试设计过程中，工程师使用编程语言或测试工具创建**自动化脚本**，然后**将其映射到特定的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。这确保了每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)都可以自动执行，提供一致且可重复的结果。
 
 ```
   // Example of a simple automated test case in TypeScript
@@ -279,17 +279,17 @@ order: 0
     });
   });
 ```
-**[可维护性](/zh-cn/wiki/maintainability/) 和可扩展性**是关键考虑因素；脚本的编写方式应能够随着应用程序功能的发展而轻松更新。使用**数据驱动**或**关键字驱动**方法可以通过将[测试数据](/zh-cn/wiki/test-data/) 与脚本分离来增强这些方面，使非技术利益相关者能够为[测试用例](/zh-cn/wiki/test-case/) 开发做出贡献。
-  测试开发还包括设置 **[测试环境](/zh-cn/wiki/test-environment/)** 和 **数据**，确保测试在密切模拟真实场景的条件下运行。 **版本控制**系统用于管理[测试脚本](/zh-cn/wiki/test-script/)，允许协作和历史跟踪。
-  [测试用例](/zh-cn/wiki/test-case/) 开发完成后，它们就会集成到**CI/CD 管道**中，从而允许作为构建过程的一部分自动执行。这种集成对于**持续测试**和反馈至关重要，这对于敏捷和 DevOps 实践至关重要。
-  总之，测试设计和开发可操作[测试计划](/zh-cn/wiki/test-plan/)，将策略转化为可操作的自动化步骤，推动测试阶段向前发展。
+**[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/) 和可扩展性**是关键考虑因素；脚本的编写方式应能够随着应用程序功能的发展而轻松更新。使用**数据驱动**或**关键字驱动**方法可以通过将[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 与脚本分离来增强这些方面，使非技术利益相关者能够为[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发做出贡献。
+  测试开发还包括设置 **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 和 **数据**，确保测试在密切模拟真实场景的条件下运行。 **版本控制**系统用于管理[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，允许协作和历史跟踪。
+  [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发完成后，它们就会集成到**CI/CD 管道**中，从而允许作为构建过程的一部分自动执行。这种集成对于**持续测试**和反馈至关重要，这对于敏捷和 DevOps 实践至关重要。
+  总之，测试设计和开发可操作[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)，将策略转化为可操作的自动化步骤，推动测试阶段向前发展。
 
 ### 测试执行
 
 #### 测试过程中测试执行涉及哪些内容？
 
-[测试执行](/zh-cn/wiki/test-execution/) 涉及**运行之前设计和开发的[测试用例](/zh-cn/wiki/test-case/)**。在此阶段，使用[测试自动化](/zh-cn/wiki/test-automation/) 工具自动执行[测试脚本](/zh-cn/wiki/test-script/)。主要目标是根据定义的需求**验证**软件并**识别缺陷**。
-  执行可以通过持续集成/持续部署 (CI/CD) 管道中的特定事件进行**调度**或触发。 [测试环境](/zh-cn/wiki/test-environment/) 必须在运行测试之前进行准备和配置，以确保结果的一致性和可靠性。
+[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 涉及**运行之前设计和开发的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。在此阶段，使用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具自动执行[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。主要目标是根据定义的需求**验证**软件并**识别缺陷**。
+  执行可以通过持续集成/持续部署 (CI/CD) 管道中的特定事件进行**调度**或触发。 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 必须在运行测试之前进行准备和配置，以确保结果的一致性和可靠性。
   **主要活动**包括：
 
 - **设置**测试环境。
@@ -302,12 +302,12 @@ order: 0
 
 - **捕获**必要时截图或视频作为证据。
 
-- **收集**用于分析的测试数据和指标。 自动化测试可以使用不同的数据集、配置或跨各种环境运行多次。结果通常记录在 [测试管理](/zh-cn/wiki/test-management/) 工具中或直接记录在 CI/CD 管道中。 **CI/CD 脚本中的 [测试执行](/zh-cn/wiki/test-execution/) 命令示例**：
+- **收集**用于分析的测试数据和指标。 自动化测试可以使用不同的数据集、配置或跨各种环境运行多次。结果通常记录在 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具中或直接记录在 CI/CD 管道中。 **CI/CD 脚本中的 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 命令示例**：
 
 ```
   npm run test-automation
 ```
-完成后，**结果分析**对于确定后续步骤至关重要。这包括审查通过/失败的测试、调查故障以及记录缺陷以供开发团队解决。有效的[测试执行](/zh-cn/wiki/test-execution/) 可确保及早发现问题并确保软件在发布前满足预期的质量标准。
+完成后，**结果分析**对于确定后续步骤至关重要。这包括审查通过/失败的测试、调查故障以及记录缺陷以供开发团队解决。有效的[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 可确保及早发现问题并确保软件在发布前满足预期的质量标准。
 
 - **设置**测试环境。
 
@@ -323,34 +323,34 @@ order: 0
 
 #### 测试执行涉及哪些步骤？
 
-**[测试执行](/zh-cn/wiki/test-execution/)** 涉及的步骤通常包括：
+**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** 涉及的步骤通常包括：
 
-1. **环境[环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/)并确保所有必要的硬件、软件和网络配置均已到位。
-2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或获取执行所需的[测试数据](/zh-cn/wiki/test-data/)。这可能涉及使用脚本生成数据或设置[数据库](/zh-cn/wiki/database/)。
-3. **[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)**：考虑依赖性和优先级，确定[测试用例](/zh-cn/wiki/test-case/) 的执行顺序。
-4. **运行测试**：使用自动化工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以手动完成或通过持续集成 (CI) 管道触发。
+1. **环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)并确保所有必要的硬件、软件和网络配置均已到位。
+2. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 准备**：创建或获取执行所需的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。这可能涉及使用脚本生成数据或设置[数据库](https://inaodeng.com/zh-cn/wiki/database/)。
+3. **[测试执行时间表](https://inaodeng.com/zh-cn/wiki/test-execution-schedule/)**：考虑依赖性和优先级，确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的执行顺序。
+4. **运行测试**：使用自动化工具执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这可以手动完成或通过持续集成 (CI) 管道触发。
 
 ```
     testRunner.run(selectedTestSuite);
 ```
 
-5. **监控**：观察[测试执行](/zh-cn/wiki/test-execution/)以识别任何直接问题，例如崩溃或环境问题。
+5. **监控**：观察[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)以识别任何直接问题，例如崩溃或环境问题。
 6. **日志收集**：收集日志、屏幕截图或其他有助于调试和分析的工件。
-7. **结果分析**：查看测试结果以确定每个[测试用例](/zh-cn/wiki/test-case/) 的通过/失败状态。
+7. **结果分析**：查看测试结果以确定每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的通过/失败状态。
 8. **缺陷报告**：记录任何失败测试的缺陷，提供可重复性的详细信息。
 
 ```
     defectTracker.report(new Defect(details, logs, screenshots));
 ```
 
-9. **结果报告**：将 [测试执行](/zh-cn/wiki/test-execution/) 结果编译为利益相关者的报告。
-10. **[测试套件](/zh-cn/wiki/test-suite/) 维护**：根据发现的缺陷、应用程序中的更改或执行过程中发现的改进来更新 [测试用例](/zh-cn/wiki/test-case/) 和自动化脚本。
+9. **结果报告**：将 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 结果编译为利益相关者的报告。
+10. **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 维护**：根据发现的缺陷、应用程序中的更改或执行过程中发现的改进来更新 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和自动化脚本。
 11. **重新运行失败的测试**：解决缺陷后，重新运行失败的测试以确认修复。
-12. **持续改进**：分析执行模式和结果，以优化 [测试套件](/zh-cn/wiki/test-suite/) 和未来周期的流程。
-1. **环境[环境搭建](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/)并确保所有必要的硬件、软件和网络配置均已到位。
-2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或获取执行所需的[测试数据](/zh-cn/wiki/test-data/)。这可能涉及使用脚本生成数据或设置[数据库](/zh-cn/wiki/database/)。
-3. **[测试执行时间表](/zh-cn/wiki/test-execution-schedule/)**：考虑依赖性和优先级，确定[测试用例](/zh-cn/wiki/test-case/) 的执行顺序。
-4. **运行测试**：使用自动化工具执行[测试用例](/zh-cn/wiki/test-case/)。这可以手动完成或通过持续集成 (CI) 管道触发。
+12. **持续改进**：分析执行模式和结果，以优化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 和未来周期的流程。
+1. **环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)并确保所有必要的硬件、软件和网络配置均已到位。
+2. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 准备**：创建或获取执行所需的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。这可能涉及使用脚本生成数据或设置[数据库](https://inaodeng.com/zh-cn/wiki/database/)。
+3. **[测试执行时间表](https://inaodeng.com/zh-cn/wiki/test-execution-schedule/)**：考虑依赖性和优先级，确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的执行顺序。
+4. **运行测试**：使用自动化工具执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这可以手动完成或通过持续集成 (CI) 管道触发。
 
 ```
     testRunner.run(selectedTestSuite);
@@ -360,15 +360,15 @@ order: 0
     defectTracker.report(new Defect(details, logs, screenshots));
 ```
 
-9. **结果报告**：将 [测试执行](/zh-cn/wiki/test-execution/) 结果编译为利益相关者的报告。
-10. **[测试套件](/zh-cn/wiki/test-suite/) 维护**：根据发现的缺陷、应用程序中的更改或执行过程中发现的改进来更新 [测试用例](/zh-cn/wiki/test-case/) 和自动化脚本。
+9. **结果报告**：将 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 结果编译为利益相关者的报告。
+10. **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 维护**：根据发现的缺陷、应用程序中的更改或执行过程中发现的改进来更新 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和自动化脚本。
 11. **重新运行失败的测试**：解决缺陷后，重新运行失败的测试以确认修复。
-12. **持续改进**：分析执行模式和结果，以优化 [测试套件](/zh-cn/wiki/test-suite/) 和未来周期的流程。
+12. **持续改进**：分析执行模式和结果，以优化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 和未来周期的流程。
 
 #### 在测试执行期间如何确定测试是否成功？
 
-执行期间测试是否成功取决于**断言**，这些断言**将测试的实际结果与[预期结果](/zh-cn/wiki/expected-result/)进行比较。如果实际结果与[预期结果](/zh-cn/wiki/expected-result/)**匹配**，则认为测试**通过**；否则，**失败**。自动化测试通常使用提供断言方法的测试框架来执行这些检查。
-  例如，在 [Jest](/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，简单的 [测试用例](/zh-cn/wiki/test-case/) 可能如下所示：
+执行期间测试是否成功取决于**断言**，这些断言**将测试的实际结果与[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)进行比较。如果实际结果与[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)**匹配**，则认为测试**通过**；否则，**失败**。自动化测试通常使用提供断言方法的测试框架来执行这些检查。
+  例如，在 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中，简单的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 可能如下所示：
 
 ```
   test('adds 1 + 2 to equal 3', () => {
@@ -376,33 +376,33 @@ order: 0
   });
 ```
 在本例中，`expect(1 + 2).toBe(3);` 是断言。如果表达式的计算结果为`true`，则测试**通过**；如果没有，它**失败**。
-  此外，测试必须**完成且没有错误**，例如异常或超时。未处理的异常或[测试脚本](/zh-cn/wiki/test-script/)错误通常会导致**失败**测试，因为它们表明测试代码或被测应用程序中存在问题。
+  此外，测试必须**完成且没有错误**，例如异常或超时。未处理的异常或[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)错误通常会导致**失败**测试，因为它们表明测试代码或被测应用程序中存在问题。
   **片状**是另一个因素；间歇性地通过和失败的测试是不可靠的。此类测试需要进行调查以稳定他们的行为。
-  **[测试覆盖率](/zh-cn/wiki/test-coverage/)** 指标也可以影响[测试执行](/zh-cn/wiki/test-execution/) 的成功感知，尽管它们不能确定单个测试的通过/失败状态。高覆盖率和高通过率表明强大的[测试套件](/zh-cn/wiki/test-suite/)。
+  **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 指标也可以影响[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的成功感知，尽管它们不能确定单个测试的通过/失败状态。高覆盖率和高通过率表明强大的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
   最后，可以为性能关键型应用程序设置**性能基准**，其中即使功能断言通过，超过响应时间阈值也可能导致测试失败。
 
 #### 测试执行过程中常用哪些工具？
 
-[测试执行](/zh-cn/wiki/test-execution/)期间使用的常用工具包括：
+[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间使用的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源框架。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：用于跨不同浏览器和平台测试 Web 应用程序的开源框架。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
 - **JUnit/TestNG**：用于 Java 代码单元测试的框架，通常与 Selenium 集成以实现 Web 自动化。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
-- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)** ：API 测试工具，允许测试人员发送 HTTP 请求并分析响应。
 - **Cucumber** ：支持行为驱动开发（BDD），允许执行用 Gherkin 语言编写的功能文件。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：类似于 Cucumber 的.NET BDD 框架，允许用 Gherkin 编写测试。
 - **HP UFT/QTP**：用于软件应用程序功能和回归测试自动化的商业工具。
 - **LoadRunner**：一种性能测试工具，用于检查负载下的系统行为。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：一种开源工具，旨在加载测试功能行为和测量性能。
-- **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具。 这些工具通常使用 **Jenkins**、**TeamCity** 或 **GitLab CI** 等工具与持续集成/持续部署 (CI/CD) 管道集成，以在软件交付过程中自动执行测试。此外，[测试管理](/zh-cn/wiki/test-management/) 工具（例如**TestRail**、**Zephyr** 或**qTest**）可用于管理[测试用例](/zh-cn/wiki/test-case/) 并报告[测试执行](/zh-cn/wiki/test-execution/) 结果。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：一种开源工具，旨在加载测试功能行为和测量性能。
+- **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具。 这些工具通常使用 **Jenkins**、**TeamCity** 或 **GitLab CI** 等工具与持续集成/持续部署 (CI/CD) 管道集成，以在软件交付过程中自动执行测试。此外，[测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具（例如**TestRail**、**Zephyr** 或**qTest**）可用于管理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 并报告[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 结果。
 
 ### 测试结束
 
 #### 测试结束在测试过程中的作用是什么？
 
-测试结束是[测试过程](/zh-cn/wiki/test-process/) 的最后阶段，标志着测试活动的完成。它涉及**整合**测试结果，**根据原始目标评估**测试工作，以及**确保**所有重要信息都被**捕获**以供将来参考。此阶段对于后续项目中的**学习**和**改进**至关重要。
+测试结束是[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的最后阶段，标志着测试活动的完成。它涉及**整合**测试结果，**根据原始目标评估**测试工作，以及**确保**所有重要信息都被**捕获**以供将来参考。此阶段对于后续项目中的**学习**和**改进**至关重要。
   主要活动包括：
 
 - **最终确定**以及归档测试工件，例如测试用例、测试数据和测试脚本。
@@ -415,7 +415,7 @@ order: 0
 
 - **释放**用于其他项目或目的的测试环境和资源。
 
-- **移交**通过清晰的状态报告将产品转移到下一阶段（例如部署或生产）。 测试结束的作用是为测试活动提供**明确的终点**，确保产品满足所需的质量标准并满足所有目标。它还充当未来项目的**知识库**，帮助团队避免过去的错误并利用成功的策略。通过正确关闭[测试过程](/zh-cn/wiki/test-process/)，团队可以确保**平稳过渡**到维护或进一步开发阶段，并在软件交付过程中保持高标准的质量。
+- **移交**通过清晰的状态报告将产品转移到下一阶段（例如部署或生产）。 测试结束的作用是为测试活动提供**明确的终点**，确保产品满足所需的质量标准并满足所有目标。它还充当未来项目的**知识库**，帮助团队避免过去的错误并利用成功的策略。通过正确关闭[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)，团队可以确保**平稳过渡**到维护或进一步开发阶段，并在软件交付过程中保持高标准的质量。
 
 - **最终确定**以及归档测试工件，例如测试用例、测试数据和测试脚本。
 
@@ -439,12 +439,12 @@ order: 0
 - **经验教训**：进行回顾，讨论哪些进展顺利，哪些需要改进。
 - **问题结束**：验证所有报告的缺陷均已解决或跟踪以供将来解决。
 - **发布决策**：根据测试结果为通过/不通过决策提供输入。
-- **[测试环境](/zh-cn/wiki/test-environment/) decommission** ：清理并释放测试环境资源。
-- **正式结束**：获得利益相关者签字以正式结束测试阶段。 这些活动确保了问责制，为未来项目提供了宝贵的见解，并有助于[测试过程](/zh-cn/wiki/test-process/)的持续改进。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) decommission** ：清理并释放测试环境资源。
+- **正式结束**：获得利益相关者签字以正式结束测试阶段。 这些活动确保了问责制，为未来项目提供了宝贵的见解，并有助于[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)的持续改进。
 
 #### 为什么记录测试过程的结果和经验教训很重要？
 
-出于以下几个原因，记录 [测试过程](/zh-cn/wiki/test-process/) 的结果和经验教训至关重要：
+出于以下几个原因，记录 [测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的结果和经验教训至关重要：
 
 - **知识共享**：它允许团队成员了解测试的内容、测试的方式以及结果，从而促进协作和集体解决问题。
 - **历史证据**：文档作为未来参考的记录，有助于理解过去的决策并避免重复错误。
@@ -453,12 +453,12 @@ order: 0
 - **审计跟踪**：在受监管的行业中，维护测试活动的详细日志通常是合规性要求。
 - **自动化基线**：记录的测试用例和结果可以用作自动化回归测试和其他重复测试活动的基线。
 - **缺陷分析**：发现的缺陷及其解决方案的详细记录有助于了解缺陷趋势并提高软件质量。
-- **利益相关者沟通**：文档可用于与利益相关者（包括管理层、客户和其他团队）进行沟通，从而提供测试过程和结果的透明度。 总之，完整的文档是成熟[测试过程](/zh-cn/wiki/test-process/) 的基石，使团队能够一致、高效地交付高质量的软件。
+- **利益相关者沟通**：文档可用于与利益相关者（包括管理层、客户和其他团队）进行沟通，从而提供测试过程和结果的透明度。 总之，完整的文档是成熟[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 的基石，使团队能够一致、高效地交付高质量的软件。
 
 #### 测试结束对未来的测试过程有何贡献？
 
-测试结束是一个关键阶段，它**巩固了 [测试过程](/zh-cn/wiki/test-process/) 未来项目的价值**。它涉及**分析测试工件**以确定需要改进的领域并**记录吸取的经验教训**。这种回顾性分析可确保知识不会丢失，并可用于提高后续测试周期的效率和有效性。
-  通过**存档测试结果**和**评估[测试覆盖率](/zh-cn/wiki/test-coverage/)**，团队可以随着时间的推移建立基准并**识别趋势**。这些历史数据对于**预测未来的测试结果**、**估计工作量**和**分配资源**非常宝贵。
-  此外，测试结束活动包括**根据目标评估[测试过程](/zh-cn/wiki/test-process/)**以确定其成功。此评估有助于完善测试策略和方法，从而形成**持续改进周期**。团队可以根据已证明有效和无效的方法来调整他们的方法，定制他们的测试流程，使其更加**符合项目目标**和**组织标准**。
-  最后，与利益相关者一起**正式结束测试活动**，确保明确的**信息移交**。这种透明度对于维护**软件开发生命周期的完整性**以及支持任何未来的维护或[回归测试](/zh-cn/wiki/regression-testing/)工作至关重要。
-  总之，测试结束不仅是一个终点，而且是未来测试过程的**跳板**，为**推动 [测试自动化](/zh-cn/wiki/test-automation/) 实践的持续改进**提供了知识和经验的基础。
+测试结束是一个关键阶段，它**巩固了 [测试过程](https://inaodeng.com/zh-cn/wiki/test-process/) 未来项目的价值**。它涉及**分析测试工件**以确定需要改进的领域并**记录吸取的经验教训**。这种回顾性分析可确保知识不会丢失，并可用于提高后续测试周期的效率和有效性。
+  通过**存档测试结果**和**评估[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**，团队可以随着时间的推移建立基准并**识别趋势**。这些历史数据对于**预测未来的测试结果**、**估计工作量**和**分配资源**非常宝贵。
+  此外，测试结束活动包括**根据目标评估[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)**以确定其成功。此评估有助于完善测试策略和方法，从而形成**持续改进周期**。团队可以根据已证明有效和无效的方法来调整他们的方法，定制他们的测试流程，使其更加**符合项目目标**和**组织标准**。
+  最后，与利益相关者一起**正式结束测试活动**，确保明确的**信息移交**。这种透明度对于维护**软件开发生命周期的完整性**以及支持任何未来的维护或[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)工作至关重要。
+  总之，测试结束不仅是一个终点，而且是未来测试过程的**跳板**，为**推动 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 实践的持续改进**提供了知识和经验的基础。

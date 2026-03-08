@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [skill](/en/AIWiki/skill/)
-- [function-calling](/en/AIWiki/function-calling/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
 
 ### External References
 

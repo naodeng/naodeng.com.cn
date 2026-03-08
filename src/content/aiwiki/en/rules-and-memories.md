@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [rule-types](/en/AIWiki/rule-types/)
-- [active-memory](/en/AIWiki/active-memory/)
-- [automatic-memory](/en/AIWiki/automatic-memory/)
-- [memory-scope](/en/AIWiki/memory-scope/)
+- [rule-types](https://inaodeng.com/en/AIWiki/rule-types/)
+- [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
+- [automatic-memory](https://inaodeng.com/en/AIWiki/automatic-memory/)
+- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
 
 ### External References
 

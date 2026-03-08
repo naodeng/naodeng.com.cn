@@ -1,0 +1,214 @@
+{
+  "terms": [
+    {
+      "zh": "测试章程",
+      "en": "Test Charter",
+      "slug": "test-charter"
+    },
+    {
+      "zh": "测试会话",
+      "en": "Test Session",
+      "slug": "test-session"
+    },
+    {
+      "zh": "会话报告",
+      "en": "Session Report",
+      "slug": "session-report"
+    },
+    {
+      "zh": "缺陷分流",
+      "en": "Bug Triage",
+      "slug": "bug-triage"
+    },
+    {
+      "zh": "缺陷生命周期",
+      "en": "Defect Lifecycle",
+      "slug": "defect-lifecycle"
+    },
+    {
+      "zh": "缺陷根因分析",
+      "en": "Defect Root Cause Analysis",
+      "slug": "defect-root-cause-analysis"
+    },
+    {
+      "zh": "发布准入/准出标准",
+      "en": "Release Entry/Exit Criteria",
+      "slug": "release-entry-exit-criteria"
+    },
+    {
+      "zh": "风险评估矩阵",
+      "en": "Risk Matrix",
+      "slug": "risk-matrix"
+    },
+    {
+      "zh": "需求可测性",
+      "en": "Requirement Testability",
+      "slug": "requirement-testability"
+    },
+    {
+      "zh": "需求评审",
+      "en": "Requirement Review",
+      "slug": "requirement-review"
+    },
+    {
+      "zh": "AI 辅助测试用例生成",
+      "en": "AI-assisted Test Case Generation",
+      "slug": "ai-assisted-test-case-generation"
+    },
+    {
+      "zh": "AI 辅助测试数据生成",
+      "en": "AI-assisted Test Data Generation",
+      "slug": "ai-assisted-test-data-generation"
+    },
+    {
+      "zh": "AI 辅助测试脚本生成",
+      "en": "AI-assisted Test Script Generation",
+      "slug": "ai-assisted-test-script-generation"
+    },
+    {
+      "zh": "AI 辅助缺陷分析",
+      "en": "AI-assisted Defect Analysis",
+      "slug": "ai-assisted-defect-analysis"
+    },
+    {
+      "zh": "AI 辅助回归测试选择",
+      "en": "AI-assisted Regression Test Selection",
+      "slug": "ai-assisted-regression-test-selection"
+    },
+    {
+      "zh": "自愈测试自动化",
+      "en": "Self-healing Test Automation",
+      "slug": "self-healing-test-automation"
+    },
+    {
+      "zh": "质量门禁",
+      "en": "Quality Gate",
+      "slug": "quality-gate"
+    },
+    {
+      "zh": "测试成熟度模型",
+      "en": "Test Maturity Model",
+      "slug": "test-maturity-model"
+    },
+    {
+      "zh": "测试估算",
+      "en": "Test Estimation",
+      "slug": "test-estimation"
+    },
+    {
+      "zh": "测试能力矩阵",
+      "en": "QA Skill Matrix",
+      "slug": "qa-skill-matrix"
+    },
+    {
+      "zh": "用例评审",
+      "en": "Test Case Review",
+      "slug": "test-case-review"
+    },
+    {
+      "zh": "缺陷漏测分析",
+      "en": "Defect Leakage Analysis",
+      "slug": "defect-leakage-analysis"
+    },
+    {
+      "zh": "质量成本",
+      "en": "Cost of Quality",
+      "slug": "cost-of-quality"
+    },
+    {
+      "zh": "测试债",
+      "en": "Test Debt",
+      "slug": "test-debt"
+    },
+    {
+      "zh": "AI 测试可观测性",
+      "en": "AI Test Observability",
+      "slug": "ai-test-observability"
+    },
+    {
+      "zh": "AI 辅助测试优先级排序",
+      "en": "AI-assisted Test Prioritization",
+      "slug": "ai-assisted-test-prioritization"
+    },
+    {
+      "zh": "AI 辅助测试影响分析",
+      "en": "AI-assisted Test Impact Analysis",
+      "slug": "ai-assisted-test-impact-analysis"
+    },
+    {
+      "zh": "AI 辅助缺陷去重",
+      "en": "AI-assisted Defect Deduplication",
+      "slug": "ai-assisted-defect-deduplication"
+    },
+    {
+      "zh": "AI 辅助根因定位",
+      "en": "AI-assisted Root Cause Localization",
+      "slug": "ai-assisted-root-cause-localization"
+    },
+    {
+      "zh": "AI 辅助测试报告总结",
+      "en": "AI-assisted Test Report Summarization",
+      "slug": "ai-assisted-test-report-summarization"
+    },
+    {
+      "zh": "契约测试",
+      "en": "Contract Testing",
+      "slug": "contract-testing"
+    },
+    {
+      "zh": "组件测试",
+      "en": "Component Testing",
+      "slug": "component-testing"
+    },
+    {
+      "zh": "冒烟检查自动化",
+      "en": "Smoke Check Automation",
+      "slug": "smoke-check-automation"
+    },
+    {
+      "zh": "生产验证测试",
+      "en": "Production Verification Testing",
+      "slug": "production-verification-testing"
+    },
+    {
+      "zh": "灰度验证",
+      "en": "Canary Verification",
+      "slug": "canary-verification"
+    },
+    {
+      "zh": "可发布性评估",
+      "en": "Release Readiness Assessment",
+      "slug": "release-readiness-assessment"
+    },
+    {
+      "zh": "AI 视觉回归测试",
+      "en": "AI-powered Visual Regression Testing",
+      "slug": "ai-powered-visual-regression-testing"
+    },
+    {
+      "zh": "AI 辅助探索性测试",
+      "en": "AI-assisted Exploratory Testing",
+      "slug": "ai-assisted-exploratory-testing"
+    },
+    {
+      "zh": "AI 辅助性能异常检测",
+      "en": "AI-assisted Performance Anomaly Detection",
+      "slug": "ai-assisted-performance-anomaly-detection"
+    },
+    {
+      "zh": "AI 辅助测试环境异常诊断",
+      "en": "AI-assisted Test Environment Diagnostics",
+      "slug": "ai-assisted-test-environment-diagnostics"
+    },
+    {
+      "zh": "AI 辅助用例维护",
+      "en": "AI-assisted Test Case Maintenance",
+      "slug": "ai-assisted-test-case-maintenance"
+    },
+    {
+      "zh": "AI 测试治理",
+      "en": "AI Test Governance",
+      "slug": "ai-test-governance"
+    }
+  ]
+}

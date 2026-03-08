@@ -56,9 +56,9 @@ order: 0
 
 #### 什么是软件测试？
 
-[软件测试](/zh-cn/wiki/software-testing/) 是**评估**和**验证**软件应用程序或系统是否执行其应执行的操作的过程。测试的目的可以是质量保证、功能@@PR​​OTECTED_32@@、性能评估或发现缺陷。测试涉及执行软件组件或系统组件以评估一个或多个感兴趣的属性。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 上下文中，[软件测试](/zh-cn/wiki/software-testing/) 通常指的是在将软件应用程序发布到生产环境之前使用**自动化工具和框架**对软件应用程序执行预先编写脚本的测试。自动化测试的范围可以从验证单个功能的简单单元测试到验证集成系统工作流程的复杂端到端测试。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 的目标是**提高效率**、**减少[测试执行](/zh-cn/wiki/test-execution/) 时间**，并提供**一致的[测试覆盖率](/zh-cn/wiki/test-coverage/)**。它对于[回归测试](/zh-cn/wiki/regression-testing/) 特别有用，它确保新的更改不会给现有功能引入新的缺陷。自动化测试可以频繁运行，并且可以集成到持续集成和部署管道中，从而可以及早发现问题并更快地向开发人员提供反馈。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 是**评估**和**验证**软件应用程序或系统是否执行其应执行的操作的过程。测试的目的可以是质量保证、功能@@PR​​OTECTED_32@@、性能评估或发现缺陷。测试涉及执行软件组件或系统组件以评估一个或多个感兴趣的属性。
+  在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 上下文中，[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 通常指的是在将软件应用程序发布到生产环境之前使用**自动化工具和框架**对软件应用程序执行预先编写脚本的测试。自动化测试的范围可以从验证单个功能的简单单元测试到验证集成系统工作流程的复杂端到端测试。
+  [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 的目标是**提高效率**、**减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间**，并提供**一致的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。它对于[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 特别有用，它确保新的更改不会给现有功能引入新的缺陷。自动化测试可以频繁运行，并且可以集成到持续集成和部署管道中，从而可以及早发现问题并更快地向开发人员提供反馈。
 
 ```
   // Example of a simple automated test case in TypeScript
@@ -69,81 +69,81 @@ order: 0
     });
   });
 ```
-[自动化测试](/zh-cn/wiki/automated-testing/) 需要仔细的规划和设计才能有效，并应随着软件的发展进行维护，以确保持续的相关性和有效性。
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 需要仔细的规划和设计才能有效，并应随着软件的发展进行维护，以确保持续的相关性和有效性。
 
 #### 为什么软件测试很重要？
 
-[软件测试](/zh-cn/wiki/software-testing/) 至关重要，因为它确保软件在部署给用户之前**正确**、**安全**和**高效**地运行。它可以识别开发阶段可能引入的缺陷和错误，从而提高软件的**质量**和**用户体验**。测试还验证软件要求是否得到满足，并有助于保持不同设备和平台之间的**一致性**。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 至关重要，因为它确保软件在部署给用户之前**正确**、**安全**和**高效**地运行。它可以识别开发阶段可能引入的缺陷和错误，从而提高软件的**质量**和**用户体验**。测试还验证软件要求是否得到满足，并有助于保持不同设备和平台之间的**一致性**。
   此外，测试对于**风险管理**至关重要，因为它可以防止现实操作中代价高昂且具有潜在危险的故障。从长远来看，它还可以通过尽早发现问题来节省成本，从而减少发布后对补丁和大量维护的需求。
   在**法规遵从性**的背景下，某些行业要求软件在发布之前满足特定标准。测试可确保合规性并避免因发布不合规软件而可能出现的法律问题。
   最后，在竞争激烈的市场中，公司的**声誉**可能会受到其软件产品质量的显着影响。有效的测试有助于通过提供可靠且高性能的产品来建立客户信任和忠诚度。
-  总之，[软件测试](/zh-cn/wiki/software-testing/) 是软件开发生命周期中不可或缺的一部分，有助于交付高质量的软件，从而提高客户满意度、降低成本和强大的市场声誉。
+  总之，[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 是软件开发生命周期中不可或缺的一部分，有助于交付高质量的软件，从而提高客户满意度、降低成本和强大的市场声誉。
 
 #### 软件测试有哪些不同级别？
 
-不同级别的[软件测试](/zh-cn/wiki/software-testing/) 确保软件的各个方面在开发生命周期的各个阶段都经过检查和验证。这些级别包括：
+不同级别的[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 确保软件的各个方面在开发生命周期的各个阶段都经过检查和验证。这些级别包括：
 
-- **[单元测试](/zh-cn/wiki/unit-testing/)**：专注于单个组件或代码单元，以验证每个组件或代码单元是否能够单独正常运行。通常，开发人员使用 JUnit 或 [NUnit](/zh-cn/wiki/nunit/) 等框架编写和运行这些测试。
-- **[集成测试](/zh-cn/wiki/integration-testing/)**：测试集成单元或组件之间的交互以检测接口缺陷。这可以使用增量方法（将单元一一组合）或使用存根和驱动程序来完成。
-- **[系统测试](/zh-cn/wiki/system-testing/)**：验证完整且完全集成的软件产品，以确保其满足指定的要求。此级别涵盖广泛的测试类型，包括功能测试和非功能测试。
-- **[验收测试](/zh-cn/wiki/acceptance-testing/)**：用于确定系统是否已准备好发布，通常涉及利益相关者或最终用户。它包括根据用户要求验证系统，并且可以细分为 Alpha 和[Beta 测试](/zh-cn/wiki/beta-testing/) 阶段。
-- **[回归测试](/zh-cn/wiki/regression-testing/)**：在软件发生更改（如增强、修补或配置更改）后执行，以确保现有功能不受影响。这就是[测试自动化](/zh-cn/wiki/test-automation/) 对于重复运行一组[测试用例](/zh-cn/wiki/test-case/) 特别有利的地方。 每个级别都建立在前一个级别的基础上，确保在开发过程中尽早发现并解决问题。 [测试自动化](/zh-cn/wiki/test-automation/) 可以应用于所有这些级别，以提高效率和可靠性。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：专注于单个组件或代码单元，以验证每个组件或代码单元是否能够单独正常运行。通常，开发人员使用 JUnit 或 [NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 等框架编写和运行这些测试。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：测试集成单元或组件之间的交互以检测接口缺陷。这可以使用增量方法（将单元一一组合）或使用存根和驱动程序来完成。
+- **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)**：验证完整且完全集成的软件产品，以确保其满足指定的要求。此级别涵盖广泛的测试类型，包括功能测试和非功能测试。
+- **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**：用于确定系统是否已准备好发布，通常涉及利益相关者或最终用户。它包括根据用户要求验证系统，并且可以细分为 Alpha 和[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/) 阶段。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：在软件发生更改（如增强、修补或配置更改）后执行，以确保现有功能不受影响。这就是[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 对于重复运行一组[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 特别有利的地方。 每个级别都建立在前一个级别的基础上，确保在开发过程中尽早发现并解决问题。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 可以应用于所有这些级别，以提高效率和可靠性。
 
 #### 软件测试员的角色是什么？
 
-**软件测试人员**的角色涉及设计、开发和执行[测试用例](/zh-cn/wiki/test-case/)，以根据需求验证软件功能。测试人员通过进行不同类型的测试（例如单元、集成、系统和[验收测试](/zh-cn/wiki/acceptance-testing/)）来确保软件在各种条件下按预期运行。他们负责识别缺陷，将其报告给开发团队，并在实施后验证修复。
-  软件测试人员在 **[测试自动化](/zh-cn/wiki/test-automation/)** 过程中也发挥着至关重要的作用。他们使用适合被测应用程序的语言和框架编写自动化脚本。测试人员维护和改进现有的[测试自动化](/zh-cn/wiki/test-automation/)基础设施，确保自动化测试集成到持续集成和交付管道中。他们必须选择适当的工具用于[测试用例管理](/zh-cn/wiki/test-case-management/)、缺陷跟踪和报告，以增强测试过程。
+**软件测试人员**的角色涉及设计、开发和执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以根据需求验证软件功能。测试人员通过进行不同类型的测试（例如单元、集成、系统和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)）来确保软件在各种条件下按预期运行。他们负责识别缺陷，将其报告给开发团队，并在实施后验证修复。
+  软件测试人员在 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** 过程中也发挥着至关重要的作用。他们使用适合被测应用程序的语言和框架编写自动化脚本。测试人员维护和改进现有的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)基础设施，确保自动化测试集成到持续集成和交付管道中。他们必须选择适当的工具用于[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)、缺陷跟踪和报告，以增强测试过程。
   除了技术任务外，测试人员还与开发人员、产品经理和利益相关者合作，了解需求并确保在整个软件开发生命周期中满足质量标准。他们提供有关产品可用性、性能和安全性的宝贵反馈，有助于提高最终产品的整体质量。
   测试人员必须不断更新他们的技能，以跟上不断发展的测试方法和工具。他们应该倡导测试方面的最佳实践，并为软件开发中优先考虑质量的文化的发展做出贡献。
 
 #### 质量保证和测试有什么区别？
 
-[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 和测试是软件开发中密切相关的概念，但它们有不同的目的。
+[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 和测试是软件开发中密切相关的概念，但它们有不同的目的。
   **QA** 是一个主动的流程，重点是通过确保用于管理和创建可交付成果的流程充分且有效来防止缺陷。它涵盖整个软件开发生命周期，旨在改进开发和测试流程，以便在开发产品时不会出现缺陷。质量保证活动包括流程定义和实施、培训、审核和流程改进计划。
-  另一方面，**测试**是一个反应过程，也是 QA 的一个子集。它涉及系统或应用程序的实际执行，旨在查找软件[bugs](/zh-cn/wiki/bug/)。测试涉及 [验证 ](/zh-cn/wiki/verification/) 和验证 - 确保软件满足指导其设计和开发的业务和技术要求，并按预期工作。
-  本质上，QA 是关于**过程**和**预防**，而测试是关于**产品**和**检测**。质量保证的目的是改进和稳定生产（及其流程），以避免导致缺陷的问题，而测试的目的是识别产品本身的缺陷。测试是更广泛的 QA 流程中的一项关键活动，涉及软件和开发流程的整体 [质量管理](/zh-cn/wiki/quality-management/)。
+  另一方面，**测试**是一个反应过程，也是 QA 的一个子集。它涉及系统或应用程序的实际执行，旨在查找软件[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。测试涉及 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证 - 确保软件满足指导其设计和开发的业务和技术要求，并按预期工作。
+  本质上，QA 是关于**过程**和**预防**，而测试是关于**产品**和**检测**。质量保证的目的是改进和稳定生产（及其流程），以避免导致缺陷的问题，而测试的目的是识别产品本身的缺陷。测试是更广泛的 QA 流程中的一项关键活动，涉及软件和开发流程的整体 [质量管理](https://inaodeng.com/zh-cn/wiki/quality-management/)。
 
 ### 测试技术
 
 #### 白盒测试和黑盒测试有什么区别？
 
-[白盒测试](/zh-cn/wiki/white-box-testing/)，也称为透明、玻璃或[结构测试](/zh-cn/wiki/structural-testing/)，涉及测试应用程序的内部结构或工作方式，而不是其功能。在[白盒测试](/zh-cn/wiki/white-box-testing/) 中，[测试用例](/zh-cn/wiki/test-case/) 是根据应用程序的内部代码路径、代码结构和软件本身的实现派生的。测试人员需要了解内部代码，通常是具有开发技能的开发人员或测试人员。
-  另一方面，[黑盒测试](/zh-cn/wiki/black-box-testing/) 将软件视为“黑匣子”——不了解内部实现。 [测试用例](/zh-cn/wiki/test-case/)是根据软件的规范和要求编写的。 [黑盒测试](/zh-cn/wiki/black-box-testing/) 专注于使用各种输入测试软件并根据预期结果验证输出。它通常由不需要了解应用程序的编码或内部结构的测试人员执行。
-  总之，**[白盒测试](/zh-cn/wiki/white-box-testing/)** 是基于代码的测试，测试人员需要了解应用程序的内部工作原理，而 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 是输入/输出驱动的测试，不需要了解代码。两者之间的选择取决于测试目标，[白盒测试](/zh-cn/wiki/white-box-testing/) 适用于算法测试、安全性和优化，[黑盒测试](/zh-cn/wiki/black-box-testing/) 非常适合验证，[验证 ](/zh-cn/wiki/verification/) 适用于软件行为。
+[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/)，也称为透明、玻璃或[结构测试](https://inaodeng.com/zh-cn/wiki/structural-testing/)，涉及测试应用程序的内部结构或工作方式，而不是其功能。在[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/) 中，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是根据应用程序的内部代码路径、代码结构和软件本身的实现派生的。测试人员需要了解内部代码，通常是具有开发技能的开发人员或测试人员。
+  另一方面，[黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 将软件视为“黑匣子”——不了解内部实现。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)是根据软件的规范和要求编写的。 [黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 专注于使用各种输入测试软件并根据预期结果验证输出。它通常由不需要了解应用程序的编码或内部结构的测试人员执行。
+  总之，**[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/)** 是基于代码的测试，测试人员需要了解应用程序的内部工作原理，而 **[黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/)** 是输入/输出驱动的测试，不需要了解代码。两者之间的选择取决于测试目标，[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/) 适用于算法测试、安全性和优化，[黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 非常适合验证，[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 适用于软件行为。
 
 #### 什么是灰盒测试？
 
-[灰盒测试](/zh-cn/wiki/grey-box-testing/) 是一种混合方法，结合了 **黑盒** 和 **[白盒测试](/zh-cn/wiki/white-box-testing/)** 方法的元素。它需要对应用程序的内部工作原理有部分了解，这使得测试人员能够更好地理解系统来设计[测试用例](/zh-cn/wiki/test-case/)。这种方法在测试 Web 应用程序时特别有用。
-  在[灰盒测试](/zh-cn/wiki/grey-box-testing/) 中，测试人员可以访问详细的设计文档和[数据库](/zh-cn/wiki/database/) 模式，但无法完全查看源代码。他们使用此信息来创建涵盖应用程序的用户界面及其底层结构（例如 [数据库](/zh-cn/wiki/database/) 和服务器）的测试。
-  测试人员可以使用**调试器**或**监控系统**等工具来观察应用程序在[测试执行](/zh-cn/wiki/test-execution/)期间的行为。这使他们能够识别与数据流和异常处理相关的问题，而仅通过 [黑盒测试](/zh-cn/wiki/black-box-testing/) 无法轻松找到这些问题。
-  [灰盒测试](/zh-cn/wiki/grey-box-testing/) 对于 **[集成测试](/zh-cn/wiki/integration-testing/)**、**[安全测试](/zh-cn/wiki/security-testing/)** 和 **网络测试** 有效。它有助于识别与数据通信、用户权限和会话管理相关的问题，这对于应用程序的整体安全性和性能至关重要。
-  通过利用黑盒和[白盒测试](/zh-cn/wiki/white-box-testing/) 的优势，[灰盒测试](/zh-cn/wiki/grey-box-testing/) 可以更全面地了解应用程序的行为和潜在漏洞。对于希望优化[测试覆盖率](/zh-cn/wiki/test-coverage/) 和效率的[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，这是一个战略选择。
+[灰盒测试](https://inaodeng.com/zh-cn/wiki/grey-box-testing/) 是一种混合方法，结合了 **黑盒** 和 **[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/)** 方法的元素。它需要对应用程序的内部工作原理有部分了解，这使得测试人员能够更好地理解系统来设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这种方法在测试 Web 应用程序时特别有用。
+  在[灰盒测试](https://inaodeng.com/zh-cn/wiki/grey-box-testing/) 中，测试人员可以访问详细的设计文档和[数据库](https://inaodeng.com/zh-cn/wiki/database/) 模式，但无法完全查看源代码。他们使用此信息来创建涵盖应用程序的用户界面及其底层结构（例如 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 和服务器）的测试。
+  测试人员可以使用**调试器**或**监控系统**等工具来观察应用程序在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间的行为。这使他们能够识别与数据流和异常处理相关的问题，而仅通过 [黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 无法轻松找到这些问题。
+  [灰盒测试](https://inaodeng.com/zh-cn/wiki/grey-box-testing/) 对于 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**、**[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** 和 **网络测试** 有效。它有助于识别与数据通信、用户权限和会话管理相关的问题，这对于应用程序的整体安全性和性能至关重要。
+  通过利用黑盒和[白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/) 的优势，[灰盒测试](https://inaodeng.com/zh-cn/wiki/grey-box-testing/) 可以更全面地了解应用程序的行为和潜在漏洞。对于希望优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和效率的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说，这是一个战略选择。
 
 #### 什么是静态测试和动态测试？
 
-[静态测试](/zh-cn/wiki/static-testing/) 和[动态测试](/zh-cn/wiki/dynamic-testing/) 是用于检测软件应用程序中的缺陷的两种方法。
-  **[静态测试](/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](/zh-cn/wiki/bug/)，并确保符合最佳实践。
-  另一方面，**[动态测试](/zh-cn/wiki/dynamic-testing/)** 需要**执行**。它通过在各种条件下运行软件来验证软件的功能行为。此类测试检查给定输入的正确输出，并在模拟实际使用的环境中执行。 [动态测试](/zh-cn/wiki/dynamic-testing/) 可以进一步分为[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[验收测试](/zh-cn/wiki/acceptance-testing/)。
-  两种测试类型是互补的。 [静态测试](/zh-cn/wiki/static-testing/) 有助于及早发现问题，从而更具成本效益地修复问题，而 [动态测试](/zh-cn/wiki/dynamic-testing/) 则可验证软件在压力下的操作行为和性能。结合这两种方法可以确保对软件质量进行更彻底的评估。
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 和[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 是用于检测软件应用程序中的缺陷的两种方法。
+  **[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，并确保符合最佳实践。
+  另一方面，**[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)** 需要**执行**。它通过在各种条件下运行软件来验证软件的功能行为。此类测试检查给定输入的正确输出，并在模拟实际使用的环境中执行。 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 可以进一步分为[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)、[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)、[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)。
+  两种测试类型是互补的。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 有助于及早发现问题，从而更具成本效益地修复问题，而 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 则可验证软件在压力下的操作行为和性能。结合这两种方法可以确保对软件质量进行更彻底的评估。
 
 #### 什么是探索性测试？
 
-[探索性测试](/zh-cn/wiki/exploratory-testing/) 是 [软件测试](/zh-cn/wiki/software-testing/) 的一种方法，强调个人测试人员的个人自由和责任，通过将测试相关的学习、测试设计、[测试执行](/zh-cn/wiki/test-execution/) 和测试结果解释视为在整个项目中并行运行的相互支持的活动，不断优化其工作质量。它与更传统的脚本化测试形成鲜明对比，在脚本化测试中，[测试用例](/zh-cn/wiki/test-case/) 是提前设计的，详细指定了要采取的步骤和预期结果。
-  在[探索性测试](/zh-cn/wiki/exploratory-testing/) 中，测试人员不受一组预定义[测试用例](/zh-cn/wiki/test-case/) 的限制，从而使他们能够更有创意、更灵敏地探测软件。他们通过动态设计和执行测试来探索应用程序，并在进展过程中了解系统的行为和风险。当没有规范或规范有限，或者在复杂、不断变化的环境中很难预测软件在所有情况下应如何表现时，这种方法特别有用。
-  测试人员利用他们的技能、经验和直觉来发现、调查和了解系统。他们可能会使用工具来协助测试，但[探索性测试](/zh-cn/wiki/exploratory-testing/) 的核心是测试人员积极参与产品，经常记录他们的发现和想法，而不是遵循预先编写的计划。
-  [探索性测试](/zh-cn/wiki/exploratory-testing/) 不是随机测试；这是一个结构化且深思熟虑的过程，依赖于测试人员的智力、创造力以及对在任何特定时刻最重要的检查内容的洞察力。它通常与其他测试方法结合使用，以确保全面的测试过程。
+[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 是 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的一种方法，强调个人测试人员的个人自由和责任，通过将测试相关的学习、测试设计、[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 和测试结果解释视为在整个项目中并行运行的相互支持的活动，不断优化其工作质量。它与更传统的脚本化测试形成鲜明对比，在脚本化测试中，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是提前设计的，详细指定了要采取的步骤和预期结果。
+  在[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 中，测试人员不受一组预定义[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的限制，从而使他们能够更有创意、更灵敏地探测软件。他们通过动态设计和执行测试来探索应用程序，并在进展过程中了解系统的行为和风险。当没有规范或规范有限，或者在复杂、不断变化的环境中很难预测软件在所有情况下应如何表现时，这种方法特别有用。
+  测试人员利用他们的技能、经验和直觉来发现、调查和了解系统。他们可能会使用工具来协助测试，但[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 的核心是测试人员积极参与产品，经常记录他们的发现和想法，而不是遵循预先编写的计划。
+  [探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 不是随机测试；这是一个结构化且深思熟虑的过程，依赖于测试人员的智力、创造力以及对在任何特定时刻最重要的检查内容的洞察力。它通常与其他测试方法结合使用，以确保全面的测试过程。
 
 #### 功能测试和非功能测试有什么区别？
 
-[功能测试](/zh-cn/wiki/functional-testing/) 专注于通过测试功能和操作方面来评估系统行为与指定要求的**合规性**。它回答了“该软件是否能完成其应有的功能？”的问题。示例包括单元、集成、系统和[验收测试](/zh-cn/wiki/acceptance-testing/)。
-  另一方面，[非功能测试](/zh-cn/wiki/non-functional-testing/) 根据[功能需求](/zh-cn/wiki/functional-requirements/) 未涵盖的标准评估系统的**准备情况**。它评估性能、可用​​性、可靠性和安全性等特征。这种形式的测试可以回答诸如“软件性能如何？”之类的问题。或“该软件的安全性如何？”常见类型包括性能、负载、压力、可用性和[安全测试](/zh-cn/wiki/security-testing/)。
+[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/) 专注于通过测试功能和操作方面来评估系统行为与指定要求的**合规性**。它回答了“该软件是否能完成其应有的功能？”的问题。示例包括单元、集成、系统和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)。
+  另一方面，[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 根据[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/) 未涵盖的标准评估系统的**准备情况**。它评估性能、可用​​性、可靠性和安全性等特征。这种形式的测试可以回答诸如“软件性能如何？”之类的问题。或“该软件的安全性如何？”常见类型包括性能、负载、压力、可用性和[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)。
   功能测试验证应用程序的特定操作和响应，而非功能测试则衡量应用程序在各种条件下的整体操作。两者对于确保全面了解软件质量都至关重要。
 
 ### 测试工具和自动化
 
 #### 什么是自动化测试？
 
-[自动化测试](/zh-cn/wiki/automated-testing/) 是使用软件工具执行 **[测试用例](/zh-cn/wiki/test-case/)** 的过程，这些软件工具无需手动干预即可在软件应用程序上运行预先编写的测试。该方法用于验证软件产品的功能、可靠性和稳定性。自动化测试可以在一天中的任何时间重复运行，为开发团队提供即时反馈。
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 是使用软件工具执行 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的过程，这些软件工具无需手动干预即可在软件应用程序上运行预先编写的测试。该方法用于验证软件产品的功能、可靠性和稳定性。自动化测试可以在一天中的任何时间重复运行，为开发团队提供即时反馈。
   以下是使用假设测试框架的 TypeScript 基本示例：
 
 ```
@@ -157,19 +157,19 @@ order: 0
     });
   });
 ```
-在此示例中，编写 **[测试脚本](/zh-cn/wiki/test-script/)** 来自动执行测试登录功能的过程。该脚本导航到登录页面，输入有效凭据，提交表单，并验证登录是否成功。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 对于 **[回归测试](/zh-cn/wiki/regression-testing/)** 特别有用，它确保新的更改不会破坏现有功能。它也有利于执行难以手动执行的**复杂[测试用例](/zh-cn/wiki/test-case/)**，或者需要在多个平台和设备上运行的测试。然而，这并不是灵丹妙药。随着应用程序的发展，自动化测试需要维护，并且最初的设置成本可能很高。
+在此示例中，编写 **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** 来自动执行测试登录功能的过程。该脚本导航到登录页面，输入有效凭据，提交表单，并验证登录是否成功。
+  [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 对于 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 特别有用，它确保新的更改不会破坏现有功能。它也有利于执行难以手动执行的**复杂[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**，或者需要在多个平台和设备上运行的测试。然而，这并不是灵丹妙药。随着应用程序的发展，自动化测试需要维护，并且最初的设置成本可能很高。
 
 #### 自动化测试有什么好处？
 
-[自动化测试](/zh-cn/wiki/automated-testing/) 提供了多项优势，可以显着提高软件开发生命周期的效率和有效性：
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 提供了多项优势，可以显着提高软件开发生命周期的效率和有效性：
 
 - **一致性和准确性**：自动化确保每次都以相同的方式执行测试，从而消除人为错误。
 - **速度**：自动化测试的运行速度比手动测试快得多，从而实现更快的反馈和更快的开发周期。
 - **增加覆盖范围**：自动化可以轻松增加测试的范围和深度，从而提高软件质量。
 - **可重用性**：即使用户界面发生变化，测试脚本也可以在应用程序的不同版本之间重用。
 - **效率**：创建后，自动化测试可以以最小的额外成本运行任意多次。
-- **早期[Bug](/zh-cn/wiki/bug/)检测**：自动化测试可以集成到持续集成管道中，从而可以及早检测缺陷。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/)检测**：自动化测试可以集成到持续集成管道中，从而可以及早检测缺陷。
 - **并行执行**：测试可以在不同的机器上并行运行，减少执行所需的时间。
 - **成本降低**：虽然有初始投资，但随着时间的推移，自动化测试通过减少每个测试周期所需的工作量来降低测试成本。
 - **改进的报告**：自动化工具可以生成详细的日志和报告，提供对测试执行和结果的见解。
@@ -180,7 +180,7 @@ order: 0
 - **增加覆盖范围**：自动化可以轻松增加测试的范围和深度，从而提高软件质量。
 - **可重用性**：即使用户界面发生变化，测试脚本也可以在应用程序的不同版本之间重用。
 - **效率**：创建后，自动化测试可以以最小的额外成本运行任意多次。
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：自动化测试可以集成到持续集成管道中，从而可以及早检测缺陷。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：自动化测试可以集成到持续集成管道中，从而可以及早检测缺陷。
 - **并行执行**：测试可以在不同的机器上并行运行，减少执行所需的时间。
 - **成本降低**：虽然有初始投资，但随着时间的推移，自动化测试通过减少每个测试周期所需的工作量来降低测试成本。
 - **改进的报告**：自动化工具可以生成详细的日志和报告，提供对测试执行和结果的见解。
@@ -188,47 +188,47 @@ order: 0
 
 #### 自动化测试有哪些流行的工具？
 
-[自动化测试](/zh-cn/wiki/automated-testing/) 的热门工具包括：
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 的热门工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具。它广泛用于 Web 应用程序测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：支持多种语言和浏览器的开源工具。它广泛用于 Web 应用程序测试。
 - **Appium**：用于移动应用程序测试的开源工具。它支持 iOS 和 Android 平台。
 - **JUnit**和 **TestNG**：Java 中的单元测试框架。它们提供注释来识别测试方法和各种其他功能来组织测试。
 
-- **[Cypress](/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的现代端到端测试框架。
-- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：在浏览器中运行的基于 JavaScript 的现代端到端测试框架。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)** ：API 测试工具，可轻松创建和执行 API 请求和自动化测试。
 - **Cucumber** ：通过普通语言解析器支持行为驱动开发（BDD），允许用自然语言编写测试脚本。
 - **Robot Framework**：用于验收级别测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
 - **SpecFlow** ：用于 BDD 的.NET 工具，使用 Gherkin 语言创建人类可读的测试。
 - **HP UFT（以前称为 QTP）**：用于功能和回归测试的商业工具，具有用于测试自动化的可视化界面。
 - **SoapUI**：用于测试 SOAP 和 REST Web 服务的工具，专注于 API 测试。
 - **LoadRunner**：Micro Focus 的性能测试工具，可模拟用户活动以进行负载、压力和可扩展性测试。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：专为负载测试和测量性能而设计的开源工具。 每个工具都有自己的优势，并根据项目的具体要求进行选择，例如被测应用程序的类型、涉及的编程语言以及首选的测试方法。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：专为负载测试和测量性能而设计的开源工具。 每个工具都有自己的优势，并根据项目的具体要求进行选择，例如被测应用程序的类型、涉及的编程语言以及首选的测试方法。
 
     和
     **TestNG**：Java 中的单元测试框架。它们提供注释来识别测试方法和各种其他功能来组织测试。
 
 #### Selenium 和 QTP 有什么区别？
 
-[selenium](/zh-cn/wiki/selenium/) 和 QTP (QuickTest Professional)，现在称为 UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))，都是用于测试 Web 应用程序的自动化工具，但它们在几个方面有所不同：
+[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 和 QTP (QuickTest Professional)，现在称为 UFT (Unified [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/))，都是用于测试 Web 应用程序的自动化工具，但它们在几个方面有所不同：
 
-- **开源与商业**：[selenium](/zh-cn/wiki/selenium/) 是一个开源工具，这意味着它可以免费使用并且任何人都可以修改。另一方面，UFT 是 Micro Focus 开发的商业产品，需要付费许可证。
-- **语言支持**：[selenium](/zh-cn/wiki/selenium/) 支持多种编程语言，如 Java、C#、Python、Ruby 和 JavaScript，从而实现[测试脚本](/zh-cn/wiki/test-script/) 开发的灵活性。 UFT 主要使用 VBScript。
-- **浏览器兼容性**：[selenium](/zh-cn/wiki/selenium/) 支持多种浏览器，包括 Chrome、Firefox、Internet Explorer、Safari 和 Opera。 UFT 的浏览器支持更为有限。
-- **操作系统支持**：[selenium](/zh-cn/wiki/selenium/)可以在Windows、macOS和Linux等各种操作系统上运行。 UFT 主要限于 Windows。
-- **与其他工具集成**：[selenium](/zh-cn/wiki/selenium/) 可以轻松地与 Jenkins for CI/CD 等其他工具集成，并且可以与 TestNG 或 JUnit 等各种框架一起使用。 UFT 具有内置集成功能，但可能无法提供相同级别的灵活性。
-- **社区和支持**：[selenium](/zh-cn/wiki/selenium/) 是开源的，拥有一个庞大的支持和协作社区。 UFT 是专有的，依赖于 Micro Focus 的官方支持，并且可能拥有较小的用户社区。
-- **IDE 支持**：[selenium](/zh-cn/wiki/selenium/) 有一个用于浏览器的 IDE 插件，用于录制和播放功能，而 UFT 则配备了成熟的 IDE。
-- **移动测试**：[selenium](/zh-cn/wiki/selenium/) 可以扩展到使用 Appium 的移动测试。 UFT 有一个姊妹工具 UFT Mobile，用于移动测试。 总之，[selenium](/zh-cn/wiki/selenium/) 和 UFT 之间的选择可能取决于预算、语言偏好、浏览器支持以及对强大商业支持结构的需求等因素。
+- **开源与商业**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 是一个开源工具，这意味着它可以免费使用并且任何人都可以修改。另一方面，UFT 是 Micro Focus 开发的商业产品，需要付费许可证。
+- **语言支持**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 支持多种编程语言，如 Java、C#、Python、Ruby 和 JavaScript，从而实现[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 开发的灵活性。 UFT 主要使用 VBScript。
+- **浏览器兼容性**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 支持多种浏览器，包括 Chrome、Firefox、Internet Explorer、Safari 和 Opera。 UFT 的浏览器支持更为有限。
+- **操作系统支持**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)可以在Windows、macOS和Linux等各种操作系统上运行。 UFT 主要限于 Windows。
+- **与其他工具集成**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 可以轻松地与 Jenkins for CI/CD 等其他工具集成，并且可以与 TestNG 或 JUnit 等各种框架一起使用。 UFT 具有内置集成功能，但可能无法提供相同级别的灵活性。
+- **社区和支持**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 是开源的，拥有一个庞大的支持和协作社区。 UFT 是专有的，依赖于 Micro Focus 的官方支持，并且可能拥有较小的用户社区。
+- **IDE 支持**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 有一个用于浏览器的 IDE 插件，用于录制和播放功能，而 UFT 则配备了成熟的 IDE。
+- **移动测试**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 可以扩展到使用 Appium 的移动测试。 UFT 有一个姊妹工具 UFT Mobile，用于移动测试。 总之，[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 和 UFT 之间的选择可能取决于预算、语言偏好、浏览器支持以及对强大商业支持结构的需求等因素。
 
 #### Jenkins 在测试中的作用是什么？
 
-Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着至关重要的作用，自动执行[测试套件](/zh-cn/wiki/test-suite/)并提供有关软件运行状况的即时反馈。它可以配置为触发对各种事件的测试，例如提交到版本控制系统或按计划进行。
+Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着至关重要的作用，自动执行[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)并提供有关软件运行状况的即时反馈。它可以配置为触发对各种事件的测试，例如提交到版本控制系统或按计划进行。
   使用Jenkins，您可以：
 
-- **自动化[测试执行](/zh-cn/wiki/test-execution/)** ：对代码更改自动运行测试以快速识别问题。
+- **自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** ：对代码更改自动运行测试以快速识别问题。
 - **并行化测试**：并行执行测试以减少测试套件运行所需的时间。
-- **管理[测试环境](/zh-cn/wiki/test-environment/)**：作为管道的一部分设置和拆除测试环境。
-- **与[测试工具](/zh-cn/wiki/test-tool/)**集成：使用插件与各种测试框架和工具连接。
+- **管理[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：作为管道的一部分设置和拆除测试环境。
+- **与[测试工具](https://inaodeng.com/zh-cn/wiki/test-tool/)**集成：使用插件与各种测试框架和工具连接。
 - **可视化测试结果**：生成报告和仪表板来分析测试结果。
 - **通知利益相关者**：向开发人员和团队发送有关测试结果的通知。 用于运行测试的 Jenkins 管道脚本示例：
 
@@ -256,23 +256,23 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
       }
   }
 ```
-从本质上讲，Jenkins 通过自动化来增强测试过程，从而确保持续评估 [软件质量](/zh-cn/wiki/software-quality/) 并及时检测和解决问题。
+从本质上讲，Jenkins 通过自动化来增强测试过程，从而确保持续评估 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 并及时检测和解决问题。
 
 ### 测试管理
 
 #### 什么是测试用例？
 
-**[测试用例](/zh-cn/wiki/test-case/)** 是一组条件或变量，测试人员将在这些条件或变量下确定应用程序或软件系统是否正常工作。它本质上是一个特定场景，由一系列步骤、[预期结果](/zh-cn/wiki/expected-result/) 和[实际结果](/zh-cn/wiki/actual-result/) 组成，旨在验证软件的特定功能或特性。
-  每个[测试用例](/zh-cn/wiki/test-case/) 包括：
+**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 是一组条件或变量，测试人员将在这些条件或变量下确定应用程序或软件系统是否正常工作。它本质上是一个特定场景，由一系列步骤、[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 和[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/) 组成，旨在验证软件的特定功能或特性。
+  每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 包括：
 
-- **[测试用例](/zh-cn/wiki/test-case/) ID**：用于跟踪的唯一标识符。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) ID**：用于跟踪的唯一标识符。
 - **描述**：关于正在测试的内容的简介。
 - **先决条件**：执行之前必须满足的任何要求。
 - **测试步骤**：详细的执行说明。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：软件正常运行时的预期结果。
-- **[实际结果](/zh-cn/wiki/actual-result/)** ：执行测试时观察到的行为。
-- **[后置条件](/zh-cn/wiki/postcondition/)** ：测试执行后系统的状态。
-- **状态**：通过或失败取决于实际结果是否与预期结果匹配。 [测试用例](/zh-cn/wiki/test-case/) 是手册和[自动化测试](/zh-cn/wiki/automated-testing/) 的基础，为测试人员验证软件功能提供了清晰的框架。在[自动化测试](/zh-cn/wiki/automated-testing/)、[测试用例](/zh-cn/wiki/test-case/)中，使用特定于测试环境的工具和语言编写脚本，例如[selenium](/zh-cn/wiki/selenium/)使用Java或Python，并且可以重复执行而无需人工干预。
+- **[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)** ：软件正常运行时的预期结果。
+- **[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)** ：执行测试时观察到的行为。
+- **[后置条件](https://inaodeng.com/zh-cn/wiki/postcondition/)** ：测试执行后系统的状态。
+- **状态**：通过或失败取决于实际结果是否与预期结果匹配。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是手册和[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 的基础，为测试人员验证软件功能提供了清晰的框架。在[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)中，使用特定于测试环境的工具和语言编写脚本，例如[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)使用Java或Python，并且可以重复执行而无需人工干预。
 
 ```
   // Example of a simple automated test case in TypeScript using a testing framework
@@ -286,27 +286,27 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
     });
   });
 ```
-精心设计的[测试用例](/zh-cn/wiki/test-case/) 对于有效[测试覆盖率](/zh-cn/wiki/test-coverage/) 并确保软件满足其要求至关重要。
+精心设计的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 对于有效[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 并确保软件满足其要求至关重要。
 
 #### 什么是测试计划？
 
-**[测试计划](/zh-cn/wiki/test-plan/)** 是一份正式文件，详细说明了预期测试活动的策略、资源、范围和时间表。它定义了项目内测试阶段的目标和里程碑，并作为行动的蓝图。 [测试计划](/zh-cn/wiki/test-plan/) 通常包括：
+**[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)** 是一份正式文件，详细说明了预期测试活动的策略、资源、范围和时间表。它定义了项目内测试阶段的目标和里程碑，并作为行动的蓝图。 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 通常包括：
 
 - **测试目标**：测试应实现的明确目标。
 - **测试范围**：要测试的功能和要排除的功能。
-- **[测试策略](/zh-cn/wiki/test-strategy/)** ：测试采用的高级方法。
+- **[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)** ：测试采用的高级方法。
 - **资源分配**：分配测试执行的人员和工具。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：将执行测试的硬件和软件的规格。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：将执行测试的硬件和软件的规格。
 - **测试时间表**：测试准备、执行和评估的时间表。
 - **风险分析**：测试过程中的潜在风险和缓解计划。
 - **进入和退出标准**：开始和结束测试阶段必须满足的条件。
-- **可交付成果**：要生成的工件，例如测试用例、报告和缺陷日志。 它是一个指南，使测试团队的工作与项目目标保持一致，并确保软件的关键方面得到系统验证。精心设计的[测试计划](/zh-cn/wiki/test-plan/) 对于高效[测试管理](/zh-cn/wiki/test-management/) 至关重要，并可作为整个测试过程的参考点。
+- **可交付成果**：要生成的工件，例如测试用例、报告和缺陷日志。 它是一个指南，使测试团队的工作与项目目标保持一致，并确保软件的关键方面得到系统验证。精心设计的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 对于高效[测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 至关重要，并可作为整个测试过程的参考点。
 
 #### 什么是测试套件？
 
-**[测试套件](/zh-cn/wiki/test-suite/)** 是 **[测试用例](/zh-cn/wiki/test-case/)** 的集合，它们组合在一起以测试软件应用程序或应用程序中的特定功能。在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[测试套件](/zh-cn/wiki/test-suite/) 可以由[测试运行者](/zh-cn/wiki/test-runner/) 执行，并且通常以允许批量执行多个测试的方式构建。它充当逻辑上相关的测试的容器，无论是按测试目的（例如功能集）还是按级别（例如集成或[系统测试](/zh-cn/wiki/system-testing/)）。
-  [测试套件](/zh-cn/wiki/test-suite/) 通常按层次结构组织，套件位于顶层，各个[测试用例](/zh-cn/wiki/test-case/) 或更小的套件位于其下方。这可以更好地管理和执行测试以及聚合测试结果。 [测试套件](/zh-cn/wiki/test-suite/) 可以设计为作为持续集成 (CI) 管道的一部分运行，从而能够定期反馈代码库的运行状况。
-  在代码中，[测试套件](/zh-cn/wiki/test-suite/) 可能表示为类或模块，具体取决于所使用的编程语言和测试框架。例如，在像 JUnit 这样的基于 Java 的框架中，[测试套件](/zh-cn/wiki/test-suite/) 可以用 `@RunWith(Suite.class)` 进行注释，并包含要运行的测试类的列表：
+**[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 是 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的集合，它们组合在一起以测试软件应用程序或应用程序中的特定功能。在[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 中，[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可以由[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/) 执行，并且通常以允许批量执行多个测试的方式构建。它充当逻辑上相关的测试的容器，无论是按测试目的（例如功能集）还是按级别（例如集成或[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)）。
+  [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 通常按层次结构组织，套件位于顶层，各个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 或更小的套件位于其下方。这可以更好地管理和执行测试以及聚合测试结果。 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可以设计为作为持续集成 (CI) 管道的一部分运行，从而能够定期反馈代码库的运行状况。
+  在代码中，[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可能表示为类或模块，具体取决于所使用的编程语言和测试框架。例如，在像 JUnit 这样的基于 Java 的框架中，[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可以用 `@RunWith(Suite.class)` 进行注释，并包含要运行的测试类的列表：
 
 ```
   @RunWith(Suite.class)
@@ -318,19 +318,19 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
       // This class remains empty, it is used only as a holder for the above annotations
   }
 ```
-[测试套件](/zh-cn/wiki/test-suite/) 对于组织和维护大量自动化测试至关重要，使它们更具可维护性和可扩展性。它们还有助于有针对性的测试，并可用于对特定测试运行的测试进行分组，例如冒烟测试或[回归测试](/zh-cn/wiki/regression-testing/)。
+[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 对于组织和维护大量自动化测试至关重要，使它们更具可维护性和可扩展性。它们还有助于有针对性的测试，并可用于对特定测试运行的测试进行分组，例如冒烟测试或[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。
 
 #### 什么是缺陷管理？
 
-[缺陷管理](/zh-cn/wiki/defect-management/) 是识别、记录、跟踪和解决软件产品缺陷的系统过程。它从发现缺陷开始，一直持续到缺陷被修复和验证或被认为不相关并被驳回。有效的[缺陷管理](/zh-cn/wiki/defect-management/) 涉及几个关键步骤：
+[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 是识别、记录、跟踪和解决软件产品缺陷的系统过程。它从发现缺陷开始，一直持续到缺陷被修复和验证或被认为不相关并被驳回。有效的[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 涉及几个关键步骤：
 
 - **识别**：通过测试或用户反馈识别缺陷。
 - **文档**：足够详细地记录缺陷，包括重现步骤、严重性和潜在影响。
 - **优先级**：评估缺陷的紧迫性和重要性，以确定缺陷的解决顺序。
 - **分配**：将缺陷分配给适当的团队或个人来解决。
 - **解决方案**：通过代码更改或配置调整来纠正缺陷。
-- **[验证 ](/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
-- **关闭**：一旦验证并满足验收标准，就正式关闭缺陷。 在整个过程中，团队成员之间的沟通与协作至关重要。 [缺陷管理](/zh-cn/wiki/defect-management/) 工具通过提供用于跟踪和管理缺陷的集中平台来促进这一点。这些工具通常与其他软件开发和测试工具集成，从而实现从缺陷发现到解决的无缝工作流程。 在 [测试自动化](/zh-cn/wiki/test-automation/) 的背景下，[缺陷管理](/zh-cn/wiki/defect-management/) 确保自动化测试在捕获回归方面保持有效，并且及时解决代码更改引入的任何新缺陷，从而保持软件的整体质量和可靠性。
+- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：测试修复以确保缺陷得到解决并且没有引入新问题。
+- **关闭**：一旦验证并满足验收标准，就正式关闭缺陷。 在整个过程中，团队成员之间的沟通与协作至关重要。 [缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 工具通过提供用于跟踪和管理缺陷的集中平台来促进这一点。这些工具通常与其他软件开发和测试工具集成，从而实现从缺陷发现到解决的无缝工作流程。 在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的背景下，[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 确保自动化测试在捕获回归方面保持有效，并且及时解决代码更改引入的任何新缺陷，从而保持软件的整体质量和可靠性。
 
 #### 测试经理的角色是什么？
 
@@ -354,7 +354,7 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
 
 - **评估**和 **实施**提高测试效率和有效性的测试工具和技术。
 
-- **维护**和 **改进**测试环境和基础设施。 测试经理必须深入了解[软件测试](/zh-cn/wiki/software-testing/) 原则和实践，以及强大的领导和沟通技巧，以有效指导其团队并与利益相关者互动。他们通过确保正确的流程、工具和人员到位来交付高质量的软件，在 [测试自动化](/zh-cn/wiki/test-automation/) 工作的成功中发挥着关键作用。
+- **维护**和 **改进**测试环境和基础设施。 测试经理必须深入了解[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 原则和实践，以及强大的领导和沟通技巧，以有效指导其团队并与利益相关者互动。他们通过确保正确的流程、工具和人员到位来交付高质量的软件，在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工作的成功中发挥着关键作用。
 
 - **制定策略**总体测试方法和方法。
 
@@ -380,15 +380,15 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
 
 #### 什么是性能测试？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 是 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的一种类型，用于评估系统在各种条件下的性能。它主要关注软件应用程序的**速度**、**可扩展性**、**可靠性**和**资源使用**。性能测试旨在模拟不同的场景，包括高用户负载、有限的计算资源和大数据输入/输出，以识别潜在的瓶颈并确保软件满足性能标准。
-  [性能测试](/zh-cn/wiki/performance-testing/) 的主要子类型包括：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 是 [非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 的一种类型，用于评估系统在各种条件下的性能。它主要关注软件应用程序的**速度**、**可扩展性**、**可靠性**和**资源使用**。性能测试旨在模拟不同的场景，包括高用户负载、有限的计算资源和大数据输入/输出，以识别潜在的瓶颈并确保软件满足性能标准。
+  [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 的主要子类型包括：
 
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：确定系统在预期用户负载下的行为方式。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：评估极端条件下的系统稳定性。
-- **[耐力测试](/zh-cn/wiki/endurance-testing/)** ：检查长时间内正常工作负载下的系统性能。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：确定系统在预期用户负载下的行为方式。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：评估极端条件下的系统稳定性。
+- **[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)** ：检查长时间内正常工作负载下的系统性能。
 - **峰值测试**：评估系统对用户负载突然大幅峰值的反应。
-- **[音量测试](/zh-cn/wiki/volume-testing/)** ：测试系统处理大量数据的能力。
-- **[可扩展性测试](/zh-cn/wiki/scalability-testing/)** ：确定系统是否可以纵向扩展或横向扩展以及对性能的影响。 [性能测试](/zh-cn/wiki/performance-testing/) 工具通常提供响应时间、吞吐率和资源利用率水平等指标，这有助于识别与性能相关的问题。常见工具包括 **Apache [JMeter](/zh-cn/wiki/jmeter/)**、**LoadRunner** 和 **Gadling**。
+- **[音量测试](https://inaodeng.com/zh-cn/wiki/volume-testing/)** ：测试系统处理大量数据的能力。
+- **[可扩展性测试](https://inaodeng.com/zh-cn/wiki/scalability-testing/)** ：确定系统是否可以纵向扩展或横向扩展以及对性能的影响。 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具通常提供响应时间、吞吐率和资源利用率水平等指标，这有助于识别与性能相关的问题。常见工具包括 **Apache [JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**、**LoadRunner** 和 **Gadling**。
 
 ```
   // Example of a simple JMeter test plan snippet
@@ -396,62 +396,62 @@ Jenkins 在**持续集成（CI）**和**持续交付（CD）**管道中发挥着
       HTTPSampler domain="www.example.com" path="/api/test" method="GET"
   }
 ```
-[性能测试](/zh-cn/wiki/performance-testing/) 对于验证软件能否在预期工作负载及超出预期工作负载下良好运行、确保良好的用户体验和系统可靠性至关重要。
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 对于验证软件能否在预期工作负载及超出预期工作负载下良好运行、确保良好的用户体验和系统可靠性至关重要。
 
 #### 什么是负载测试？
 
-[负载测试](/zh-cn/wiki/load-testing/) 是 **[非功能测试](/zh-cn/wiki/non-functional-testing/)** 的一种类型，用于评估系统在给定时间内在预期负载下的性能。主要目标是在软件应用程序上线之前识别性能瓶颈。
-  在[负载测试](/zh-cn/wiki/load-testing/)期间，系统会受到不断增加的请求量的影响，直到达到其指定容量的阈值。测量响应时间、吞吐量和资源利用率等关键指标，以确保应用程序可以处理高流量而不降低性能。
-  [负载测试](/zh-cn/wiki/load-testing/) 工具，例如 Apache [JMeter](/zh-cn/wiki/jmeter/) 或 LoadRunner，模拟多个用户同时访问应用程序。这些工具可以深入了解系统在压力下的行为方式，并有助于调整性能。
-  区分 [负载测试](/zh-cn/wiki/load-testing/) 和 **[压力测试](/zh-cn/wiki/stress-testing/)** 至关重要。 [负载测试](/zh-cn/wiki/load-testing/) 检查系统在预期负载条件下的性能，[压力测试](/zh-cn/wiki/stress-testing/) 则将系统推向极限以了解其如何处理极端条件。
-  总之，[负载测试](/zh-cn/wiki/load-testing/) 对于验证应用程序能否满足其性能目标并在峰值负载条件下提供良好的用户体验至关重要。这是确保应用程序健壮、可靠并准备好发布的关键步骤。
+[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 是 **[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)** 的一种类型，用于评估系统在给定时间内在预期负载下的性能。主要目标是在软件应用程序上线之前识别性能瓶颈。
+  在[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)期间，系统会受到不断增加的请求量的影响，直到达到其指定容量的阈值。测量响应时间、吞吐量和资源利用率等关键指标，以确保应用程序可以处理高流量而不降低性能。
+  [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 工具，例如 Apache [JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 或 LoadRunner，模拟多个用户同时访问应用程序。这些工具可以深入了解系统在压力下的行为方式，并有助于调整性能。
+  区分 [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 和 **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** 至关重要。 [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 检查系统在预期负载条件下的性能，[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 则将系统推向极限以了解其如何处理极端条件。
+  总之，[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 对于验证应用程序能否满足其性能目标并在峰值负载条件下提供良好的用户体验至关重要。这是确保应用程序健壮、可靠并准备好发布的关键步骤。
 
 #### 什么是压力测试？
 
-[压力测试](/zh-cn/wiki/stress-testing/) 是 **[非功能测试](/zh-cn/wiki/non-functional-testing/)** 的一种，用于评估系统在极端条件下的性能。它涉及使系统承受超出其正常运行能力的负载和要求，以确定其在高应力下的行为并确定其断裂点。目标是确保系统保持可靠并优雅地失败，为其**阈值和限制**提供有价值的见解。
-  在[压力测试](/zh-cn/wiki/stress-testing/)期间，各种参数可能会达到极限，例如：
+[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 是 **[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)** 的一种，用于评估系统在极端条件下的性能。它涉及使系统承受超出其正常运行能力的负载和要求，以确定其在高应力下的行为并确定其断裂点。目标是确保系统保持可靠并优雅地失败，为其**阈值和限制**提供有价值的见解。
+  在[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)期间，各种参数可能会达到极限，例如：
 
 - **CPU使用率**
 - **内存消耗**
 - **磁盘 I/O**
-- **网络流量**这种形式的测试可以揭示在正常情况下可能不会出现的**同步问题**、**竞争条件**和**内存泄漏**。这对于**关键应用程序**尤其重要，因为停机可能会导致重大问题或成本。 自动化工具通常用于模拟高压力条件，并分析结果以识别系统中任何潜在的瓶颈或弱点。这些信息对于开发人员在系统上线前优化系统性能和稳定性至关重要。 总之，[压力测试](/zh-cn/wiki/stress-testing/) 旨在将系统推向极限，以确保其能够承受极端条件，并发现可能损害其性能和可靠性的潜在故障点。
+- **网络流量**这种形式的测试可以揭示在正常情况下可能不会出现的**同步问题**、**竞争条件**和**内存泄漏**。这对于**关键应用程序**尤其重要，因为停机可能会导致重大问题或成本。 自动化工具通常用于模拟高压力条件，并分析结果以识别系统中任何潜在的瓶颈或弱点。这些信息对于开发人员在系统上线前优化系统性能和稳定性至关重要。 总之，[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 旨在将系统推向极限，以确保其能够承受极端条件，并发现可能损害其性能和可靠性的潜在故障点。
 
 #### 什么是可用性测试？
 
-[可用性测试](/zh-cn/wiki/usability-testing/) 是一种通过对用户进行测试来评估产品的技术。这种形式的测试对于衡量软件应用程序的直观性和用户友好性至关重要。它涉及观察真实用户尝试完成产品任务并识别任何可用性问题、收集定性和定量数据以及确定参与者对产品的满意度。
-  与其他可能关注功能正确性的测试方法不同，[可用性测试](/zh-cn/wiki/usability-testing/) 关注用户体验方面。它旨在揭示如何改进软件以提供更好的用户体验，其中包括确保界面易于导航、易于查找信息以及产品易于使用。
-  在[可用性测试](/zh-cn/wiki/usability-testing/)期间，参与者通常被要求执行一系列任务，而观察者则观看、聆听和做笔记。目标是识别用户面临的任何困惑或问题，这可能会导致沮丧或错误。
-  [可用性测试](/zh-cn/wiki/usability-testing/)期间经常评估的关键指标包括：
+[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 是一种通过对用户进行测试来评估产品的技术。这种形式的测试对于衡量软件应用程序的直观性和用户友好性至关重要。它涉及观察真实用户尝试完成产品任务并识别任何可用性问题、收集定性和定量数据以及确定参与者对产品的满意度。
+  与其他可能关注功能正确性的测试方法不同，[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 关注用户体验方面。它旨在揭示如何改进软件以提供更好的用户体验，其中包括确保界面易于导航、易于查找信息以及产品易于使用。
+  在[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)期间，参与者通常被要求执行一系列任务，而观察者则观看、聆听和做笔记。目标是识别用户面临的任何困惑或问题，这可能会导致沮丧或错误。
+  [可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)期间经常评估的关键指标包括：
 
 - **任务成功率**：用户是否能够成功完成任务。
 - **错误率**：用户犯错误的频率以及这些错误的严重性。
 - **任务完成时间**：用户完成任务需要多长时间。
-- **用户满意度**：用户对与产品交互的感受如何。 [可用性测试](/zh-cn/wiki/usability-testing/) 可以在开发的各个阶段进行，从早期原型到最终产品，从而实现迭代改进。它是以用户为中心的设计的重要组成部分，有助于确保软件满足预期用户的需求和期望。
+- **用户满意度**：用户对与产品交互的感受如何。 [可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 可以在开发的各个阶段进行，从早期原型到最终产品，从而实现迭代改进。它是以用户为中心的设计的重要组成部分，有助于确保软件满足预期用户的需求和期望。
 
 #### 什么是安全测试？
 
-[安全测试](/zh-cn/wiki/security-testing/) 是一个旨在发现软件中可能导致安全漏洞的漏洞、威胁和风险的过程。其目标是确保软件系统即使在面临恶意攻击或其他安全威胁时也能够按预期保护数据并维持功能。
-  [安全测试](/zh-cn/wiki/security-testing/) 的关键方面包括：
+[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 是一个旨在发现软件中可能导致安全漏洞的漏洞、威胁和风险的过程。其目标是确保软件系统即使在面临恶意攻击或其他安全威胁时也能够按预期保护数据并维持功能。
+  [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 的关键方面包括：
 
-- **[验证 ](/zh-cn/wiki/verification/) 身份验证和授权**确保用户身份真实且拥有适当访问权限的机制。
+- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 身份验证和授权**确保用户身份真实且拥有适当访问权限的机制。
 
 - **数据加密验证**在存储和传输过程中保护敏感信息。
 
 - **软件和基础设施评估**使用漏洞扫描器等工具查找已知漏洞。
 
-- **[渗透测试](/zh-cn/wiki/penetration-testing/)** ，它模拟攻击以识别可利用的弱点。
+- **[渗透测试](https://inaodeng.com/zh-cn/wiki/penetration-testing/)** ，它模拟攻击以识别可利用的弱点。
 
 - **安全代码审查**检测特定于安全的编码缺陷。
 
-- **配置和部署管理测试**以确保安全的部署设置。 [安全测试](/zh-cn/wiki/security-testing/) 在开发生命周期中至关重要，应集成到持续集成/持续部署 (CI/CD) 管道中。自动化 [安全测试](/zh-cn/wiki/security-testing/) 工具，例如静态应用程序 [安全测试](/zh-cn/wiki/security-testing/) (SAST)、动态应用程序 [安全测试](/zh-cn/wiki/security-testing/) (DAST) 和交互式应用程序 [安全测试](/zh-cn/wiki/security-testing/) (IAST)，可用于尽早且频繁地识别安全问题。 总之，[安全测试](/zh-cn/wiki/security-testing/) 可防止未经授权的访问和数据泄露，确保软件系统的机密性、完整性和可用性。
+- **配置和部署管理测试**以确保安全的部署设置。 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 在开发生命周期中至关重要，应集成到持续集成/持续部署 (CI/CD) 管道中。自动化 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 工具，例如静态应用程序 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) (SAST)、动态应用程序 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) (DAST) 和交互式应用程序 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) (IAST)，可用于尽早且频繁地识别安全问题。 总之，[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 可防止未经授权的访问和数据泄露，确保软件系统的机密性、完整性和可用性。
 
-- **[验证 ](/zh-cn/wiki/verification/) 身份验证和授权**确保用户身份真实且拥有适当访问权限的机制。
+- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 身份验证和授权**确保用户身份真实且拥有适当访问权限的机制。
 
 - **数据加密验证**在存储和传输过程中保护敏感信息。
 
 - **软件和基础设施评估**使用漏洞扫描器等工具查找已知漏洞。
 
-- **[渗透测试](/zh-cn/wiki/penetration-testing/)** ，它模拟攻击以识别可利用的弱点。
+- **[渗透测试](https://inaodeng.com/zh-cn/wiki/penetration-testing/)** ，它模拟攻击以识别可利用的弱点。
 
 - **安全代码审查**检测特定于安全的编码缺陷。
 

@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [active-memory](/en/AIWiki/active-memory/)
-- [automatic-memory](/en/AIWiki/automatic-memory/)
-- [memory-scope](/en/AIWiki/memory-scope/)
-- [compaction](/en/AIWiki/compaction/)
+- [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
+- [automatic-memory](https://inaodeng.com/en/AIWiki/automatic-memory/)
+- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
+- [compaction](https://inaodeng.com/en/AIWiki/compaction/)
 
 ### External References
 

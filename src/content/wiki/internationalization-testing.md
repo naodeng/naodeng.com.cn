@@ -46,7 +46,7 @@ order: 0
 
 #### 什么是国际化测试？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/)，通常缩写为 i18n 测试，确保软件应用程序可以适应各种语言和地区，而无需进行工程更改。它重点关注应用程序支持多种语言、字符集和文化惯例的能力。
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)，通常缩写为 i18n 测试，确保软件应用程序可以适应各种语言和地区，而无需进行工程更改。它重点关注应用程序支持多种语言、字符集和文化惯例的能力。
   **关键方面**包括验证语言支持、数据格式（日期、货币、数字）和用户界面布局适应性。验证外部化字符串是否正确检索和显示以及应用程序是否可以处理多种语言的输入和输出至关重要。
   测试通常涉及：
 
@@ -56,9 +56,9 @@ order: 0
 
 - 使用 **资源文件**用于字符串和区域设置数据。
 
-- 实施 **自动化[测试用例](/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
+- 实施 **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
 
-- **代码[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。 **挑战**包括：
+- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。 **挑战**包括：
 
 - 确保字符串和区域设置数据的完全外部化。
 - 处理复杂的脚本和双向文本。
@@ -69,22 +69,22 @@ order: 0
 - **输入和输出验证**：检查应用程序处理和显示特定于区域设置的字符和数据格式的能力。
 - 使用 **资源文件**用于字符串和区域设置数据。
 
-- 实施 **自动化[测试用例](/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
+- 实施 **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
 
-- **代码[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。
+- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。
 
 #### 为什么国际化测试在软件开发中很重要？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 在软件开发中至关重要，因为它确保产品可以适应各种语言和地区，而无需进行工程更改。此类测试对于**全球市场覆盖**和**客户满意度**至关重要，因为它有助于在开发周期的早期识别语言、文化规范和技术兼容性方面的潜在问题。
-  通过执行[国际化测试](/zh-cn/wiki/internationalization-testing/)，开发人员可以确保他们的软件可以处理不同的**字符集**、**日期和时间格式**、**货币值**以及其他特定于语言环境的元素。这对于避免昂贵的发布后修复以及在国际上保持**积极的品牌声誉**至关重要。
-  此外，[国际化测试](/zh-cn/wiki/internationalization-testing/) 对于不同国家/地区的**法律合规性**非常重要，因为它有助于满足与语言和可访问性相关的各种**法规要求**。它还在**竞争优势**中发挥着重要作用，因为支持多种语言和区域设置的软件可以吸引更广泛的受众。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[国际化测试](/zh-cn/wiki/internationalization-testing/) 可以通过使用支持**多语言测试**并且可以在不同区域设置之间轻松切换的自动化框架和工具来简化。在上市时间至关重要的敏捷和持续交付环境中，这种效率是关键。
-  总体而言，[国际化测试](/zh-cn/wiki/internationalization-testing/) 是一项战略投资，如果有效实施，可以增加全球市场的**市场份额**、**客户忠诚度**和**收入增长**。
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 在软件开发中至关重要，因为它确保产品可以适应各种语言和地区，而无需进行工程更改。此类测试对于**全球市场覆盖**和**客户满意度**至关重要，因为它有助于在开发周期的早期识别语言、文化规范和技术兼容性方面的潜在问题。
+  通过执行[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)，开发人员可以确保他们的软件可以处理不同的**字符集**、**日期和时间格式**、**货币值**以及其他特定于语言环境的元素。这对于避免昂贵的发布后修复以及在国际上保持**积极的品牌声誉**至关重要。
+  此外，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 对于不同国家/地区的**法律合规性**非常重要，因为它有助于满足与语言和可访问性相关的各种**法规要求**。它还在**竞争优势**中发挥着重要作用，因为支持多种语言和区域设置的软件可以吸引更广泛的受众。
+  在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 可以通过使用支持**多语言测试**并且可以在不同区域设置之间轻松切换的自动化框架和工具来简化。在上市时间至关重要的敏捷和持续交付环境中，这种效率是关键。
+  总体而言，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 是一项战略投资，如果有效实施，可以增加全球市场的**市场份额**、**客户忠诚度**和**收入增长**。
 
 #### 国际化和本地化测试有什么区别？
 
-国际化 (i18n) 和本地化 (l10n) 测试是全球软件开发领域中不同的过程。 **[国际化测试](/zh-cn/wiki/internationalization-testing/)** 确保软件可以适应各种语言和地区，而无需进行工程更改。它重点关注软件的架构，验证它是否可以处理不同的语言、字符集和文化习俗。
-  另一方面，**[本地化测试](/zh-cn/wiki/localization-testing/)** 是为了验证软件对特定区域或语言的适应性。这包括检查翻译准确性、文化适宜性以及日期、货币和数字的本地格式。这是确保本地化版本满足目标受众期望的[质量保证](/zh-cn/wiki/quality-assurance/) 步骤。
+国际化 (i18n) 和本地化 (l10n) 测试是全球软件开发领域中不同的过程。 **[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)** 确保软件可以适应各种语言和地区，而无需进行工程更改。它重点关注软件的架构，验证它是否可以处理不同的语言、字符集和文化习俗。
+  另一方面，**[本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)** 是为了验证软件对特定区域或语言的适应性。这包括检查翻译准确性、文化适宜性以及日期、货币和数字的本地格式。这是确保本地化版本满足目标受众期望的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 步骤。
   国际化创造了灵活的基础，而本地化则根据语言环境定制软件。在自动化中，这些测试的范围有所不同：
 
 - **国际化**：自动化测试验证框架功能，例如 Unicode 支持、区域设置感知功能和资源处理。
@@ -99,62 +99,62 @@ order: 0
   // Example: Check date format for German locale
   expect(formatDate('de-DE', new Date(2023, 3, 1))).toEqual('01.04.2023');
 ```
-本质上，[国际化测试](/zh-cn/wiki/internationalization-testing/) 是关于潜力：确保软件可以本地化。 [本地化测试](/zh-cn/wiki/localization-testing/) 关乎现实：确保本地化体验正确且完整。
+本质上，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 是关于潜力：确保软件可以本地化。 [本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/) 关乎现实：确保本地化体验正确且完整。
 
 - **国际化**：自动化测试验证框架功能，例如 Unicode 支持、区域设置感知功能和资源处理。
 - **本地化**：自动化测试检查特定的本地化内容和格式。
 
 #### 国际化测试如何促进整体用户体验？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 通过确保软件能够**无缝地适应**各种区域、文化和语言环境而无需进行重大更改，从而增强用户体验。它验证应用程序的功能在应用不同的区域设置时不会受到影响，这对于**全球覆盖**和**用户满意度**至关重要。通过尽早识别与区域设置相关的问题，开发人员可以解决潜在的可用性问题，否则可能会导致国际用户的误解或沮丧。此类测试证实，全球用户无论使用何种语言或位于何处，都能获得**一致且高质量的体验**。它还通过表现出对当地需求和偏好的承诺，有助于在用户之间建立信任和**品牌忠诚度**。最终，[国际化测试](/zh-cn/wiki/internationalization-testing/) 是提供**灵活且包容性的产品**的关键，该产品可以满足多样化的用户群、增强整体用户体验并扩大软件的市场吸引力。
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 通过确保软件能够**无缝地适应**各种区域、文化和语言环境而无需进行重大更改，从而增强用户体验。它验证应用程序的功能在应用不同的区域设置时不会受到影响，这对于**全球覆盖**和**用户满意度**至关重要。通过尽早识别与区域设置相关的问题，开发人员可以解决潜在的可用性问题，否则可能会导致国际用户的误解或沮丧。此类测试证实，全球用户无论使用何种语言或位于何处，都能获得**一致且高质量的体验**。它还通过表现出对当地需求和偏好的承诺，有助于在用户之间建立信任和**品牌忠诚度**。最终，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 是提供**灵活且包容性的产品**的关键，该产品可以满足多样化的用户群、增强整体用户体验并扩大软件的市场吸引力。
 
 ### 技术和策略
 
 #### 国际化测试中常用的技术有哪些？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 中使用的常用技术包括：
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 中使用的常用技术包括：
 
 - **伪本地化**：通过用重音字符和其他符号替换原始语言中的字符来模仿其他语言，从而模拟本地化过程。这有助于识别字符编码和布局问题，而无需实际翻译内容。
 - **资源文件测试**：确保 UI 元素和消息不是硬编码的，而是存储在资源文件中，可以在不更改代码的情况下交换为不同的语言。
 - **特定于区域设置的测试**：使用不同的区域设置测试应用程序，以验证日期、时间、货币和数字格式以及排序算法是否正常运行。
 - **输入和输出测试**：验证应用程序可以处理多种语言的输入和显示输出，特别是那些具有独特字符集（如中文、日语或阿拉伯语）的语言。
-- **[数据库](/zh-cn/wiki/database/) 测试**：确保[数据库](/zh-cn/wiki/database/) 可以以各种语言存储、检索和排序数据，并且支持 Unicode。
-- **用户[接口测试](/zh-cn/wiki/interface-testing/)**：检查 UI 是否适应不同语言的文本扩展或收缩，以及按钮、标签和菜单等元素是否正确显示文本。
-- **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：使用自动化测试来验证新代码更改不会破坏应用程序的国际化方面。
-- **[兼容性测试](/zh-cn/wiki/compatibility-testing/)**：确保应用程序能够与可能具有不同默认语言设置的各种操作系统、浏览器和设备无缝协作。
+- **[数据库](https://inaodeng.com/zh-cn/wiki/database/) 测试**：确保[数据库](https://inaodeng.com/zh-cn/wiki/database/) 可以以各种语言存储、检索和排序数据，并且支持 Unicode。
+- **用户[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)**：检查 UI 是否适应不同语言的文本扩展或收缩，以及按钮、标签和菜单等元素是否正确显示文本。
+- **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：使用自动化测试来验证新代码更改不会破坏应用程序的国际化方面。
+- **[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)**：确保应用程序能够与可能具有不同默认语言设置的各种操作系统、浏览器和设备无缝协作。
 - **镜像测试**：对于从右到左阅读的语言（例如阿拉伯语或希伯来语），确保应用程序的布局和导航正确镜像。 这些技术有助于在开发周期的早期识别潜在的国际化问题，确保本地化过程顺利高效。
 
 #### 您如何规划国际化测试并制定策略？
 
-要有效地规划[国际化测试](/zh-cn/wiki/internationalization-testing/)并制定策略，请按照以下步骤操作：
+要有效地规划[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)并制定策略，请按照以下步骤操作：
 
 1. **确定目标区域设置**：确定您的应用程序将支持的语言和区域。根据市场研究和业务目标确定优先级。
-2. **定义范围和目标**：清楚地概述将测试应用程序的哪些方面，例如 UI、内容或 [数据库](/zh-cn/wiki/database/) 层。
+2. **定义范围和目标**：清楚地概述将测试应用程序的哪些方面，例如 UI、内容或 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 层。
 3. **与主题专家合作**：与语言学家或文化顾问合作，了解细微差别并避免文化失礼。
-4. **设计[测试用例](/zh-cn/wiki/test-case/)**：创建全面的[测试用例](/zh-cn/wiki/test-case/)，涵盖所有国际化方面，包括语言、格式和文化考虑因素。
+4. **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：创建全面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，涵盖所有国际化方面，包括语言、格式和文化考虑因素。
 5. **利用伪本地化**：使用伪本地化来模拟翻译并在开发周期的早期检测潜在问题。
-6. **尽可能实现自动化**：实施支持国际化的自动化框架，重点关注重复性和大容量[测试场景](/zh-cn/wiki/test-scenario/)。
-7. **合并特定于区域设置的 [测试数据](/zh-cn/wiki/test-data/)**：确保 [测试数据](/zh-cn/wiki/test-data/) 是多样化且特定于区域设置的，以发现本地化问题。
-8. **设置强大的[测试环境](/zh-cn/wiki/test-environment/)**：配置您的[测试环境](/zh-cn/wiki/test-environment/)以在区域设置和字符集之间轻松切换。
+6. **尽可能实现自动化**：实施支持国际化的自动化框架，重点关注重复性和大容量[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+7. **合并特定于区域设置的 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：确保 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 是多样化且特定于区域设置的，以发现本地化问题。
+8. **设置强大的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：配置您的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)以在区域设置和字符集之间轻松切换。
 9. **与 CI/CD 集成**：将国际化测试嵌入到持续集成和部署管道中以获取定期反馈。
-10. **监控和更新**：跟踪特定于区域设置的问题并持续更新[测试用例](/zh-cn/wiki/test-case/) 以反映应用程序或目标市场的变化。
-11. **审查和报告**：定期审查测试结果，并提供有关国际化工作状况的清晰报告。 通过遵循这些步骤，您可以确保采用彻底且高效的方法来实现[国际化测试](/zh-cn/wiki/internationalization-testing/)，最终打造出能与不同地区的用户产生良好共鸣的产品。
+10. **监控和更新**：跟踪特定于区域设置的问题并持续更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以反映应用程序或目标市场的变化。
+11. **审查和报告**：定期审查测试结果，并提供有关国际化工作状况的清晰报告。 通过遵循这些步骤，您可以确保采用彻底且高效的方法来实现[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)，最终打造出能与不同地区的用户产生良好共鸣的产品。
 
 1. **确定目标区域设置**：确定您的应用程序将支持的语言和区域。根据市场研究和业务目标确定优先级。
-2. **定义范围和目标**：清楚地概述将测试应用程序的哪些方面，例如 UI、内容或 [数据库](/zh-cn/wiki/database/) 层。
+2. **定义范围和目标**：清楚地概述将测试应用程序的哪些方面，例如 UI、内容或 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 层。
 3. **与主题专家合作**：与语言学家或文化顾问合作，了解细微差别并避免文化失礼。
-4. **设计[测试用例](/zh-cn/wiki/test-case/)**：创建全面的[测试用例](/zh-cn/wiki/test-case/)，涵盖所有国际化方面，包括语言、格式和文化考虑因素。
+4. **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：创建全面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，涵盖所有国际化方面，包括语言、格式和文化考虑因素。
 5. **利用伪本地化**：使用伪本地化来模拟翻译并在开发周期的早期检测潜在问题。
-6. **尽可能自动化**：实施支持国际化的自动化框架，重点关注重复性和大容量[测试场景](/zh-cn/wiki/test-scenario/)。
-7. **合并特定于区域设置的 [测试数据](/zh-cn/wiki/test-data/)**：确保 [测试数据](/zh-cn/wiki/test-data/) 是多样化且特定于区域设置的，以发现本地化问题。
-8. **设置强大的[测试环境](/zh-cn/wiki/test-environment/)**：配置您的[测试环境](/zh-cn/wiki/test-environment/)以在区域设置和字符集之间轻松切换。
+6. **尽可能自动化**：实施支持国际化的自动化框架，重点关注重复性和大容量[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+7. **合并特定于区域设置的 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：确保 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 是多样化且特定于区域设置的，以发现本地化问题。
+8. **设置强大的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：配置您的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)以在区域设置和字符集之间轻松切换。
 9. **与 CI/CD 集成**：将国际化测试嵌入到持续集成和部署管道中以获取定期反馈。
-10. **监控和更新**：跟踪特定于区域设置的问题并持续更新[测试用例](/zh-cn/wiki/test-case/) 以反映应用程序或目标市场的变化。
+10. **监控和更新**：跟踪特定于区域设置的问题并持续更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以反映应用程序或目标市场的变化。
 11. **审查和报告**：定期审查测试结果，并提供有关国际化工作状况的清晰报告。
 
 #### 国际化测试面临哪些挑战以及如何克服这些挑战？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 中的挑战通常围绕**复杂性**、**资源可用性**和**[测试覆盖率](/zh-cn/wiki/test-coverage/)**。克服这些问题需要采取战略方法：
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 中的挑战通常围绕**复杂性**、**资源可用性**和**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。克服这些问题需要采取战略方法：
 
 - **复杂脚本**：阿拉伯语或希伯来语等语言是从右到左的，可能会导致显示问题。使用 **统一码**并确保您的工具支持复杂的脚本。
 
@@ -166,11 +166,11 @@ order: 0
 
 - **数据驱动测试**：创建可以使用不同区域设置数据轻松参数化的测试。使用 **模板化**和 **外部数据源**进行测试。
 
-- **资源文件**：确保资源文件易于访问和编辑。自动化 **[验证 ](/zh-cn/wiki/verification/) 键值对**在资源文件中。
+- **资源文件**：确保资源文件易于访问和编辑。自动化 **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 键值对**在资源文件中。
 
 - **性能**：某些语言可能会因文本扩展而影响性能。包括 **性能测试**对于不同的语言。
 
-- **文化细微差别**：颜色、图标和图像可能具有不同的含义。包括 **文化检查**在你的测试计划中。 尽可能实现自动化，但请记住，**手动[探索性测试](/zh-cn/wiki/exploratory-testing/)** 对于捕获微妙的国际化问题非常有用。 **持续集成 (CI)** 系统可以通过定期运行国际化测试来提供帮助。最后，**众包测试**可以提供来自不同地区的母语人士的见解。
+- **文化细微差别**：颜色、图标和图像可能具有不同的含义。包括 **文化检查**在你的测试计划中。 尽可能实现自动化，但请记住，**手动[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** 对于捕获微妙的国际化问题非常有用。 **持续集成 (CI)** 系统可以通过定期运行国际化测试来提供帮助。最后，**众包测试**可以提供来自不同地区的母语人士的见解。
 
 - **复杂脚本**：阿拉伯语或希伯来语等语言是从右到左的，可能会导致显示问题。使用 **统一码**并确保您的工具支持复杂的脚本。
 
@@ -182,7 +182,7 @@ order: 0
 
 - **数据驱动测试**：创建可以使用不同区域设置数据轻松参数化的测试。使用 **模板化**和 **外部数据源**进行测试。
 
-- **资源文件**：确保资源文件易于访问和编辑。自动化 **[验证 ](/zh-cn/wiki/verification/) 键值对**在资源文件中。
+- **资源文件**：确保资源文件易于访问和编辑。自动化 **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 键值对**在资源文件中。
 
 - **性能**：某些语言可能会因文本扩展而影响性能。包括 **性能测试**对于不同的语言。
 
@@ -190,19 +190,19 @@ order: 0
 
 #### 国际化测试常用哪些工具？
 
-**[国际化测试](/zh-cn/wiki/internationalization-testing/)** 的常用工具包括：
+**[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)** 的常用工具包括：
 
 - **伪本地化**：**PseudoL10n** 和 **Accentuate.js** 等工具通过用重音字符或其他脚本替换源语言中的字符来模拟翻译。这有助于识别 UI 问题，而无需实际翻译。
-- **自动化框架**：**[selenium](/zh-cn/wiki/selenium/)**、**Appium** 和 **WebDriverIO** 等框架可以使用自定义脚本进行扩展，以跨不同语言和区域自动化 UI 和功能测试。
-- **本地化平台**：**Crowdin**、**Transifex** 和 **Phrase** 等服务提供管理翻译的功能，并且可以集成到 [自动化测试](/zh-cn/wiki/automated-testing/) 工作流程中，以确保新字符串得到正确测试。
+- **自动化框架**：**[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**、**Appium** 和 **WebDriverIO** 等框架可以使用自定义脚本进行扩展，以跨不同语言和区域自动化 UI 和功能测试。
+- **本地化平台**：**Crowdin**、**Transifex** 和 **Phrase** 等服务提供管理翻译的功能，并且可以集成到 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 工作流程中，以确保新字符串得到正确测试。
 - **国际化库**：**i18next**和**Globalize.js**等库提供了促进应用程序国际化过程的功能，可以与测试工具结合使用。
 - **静态代码分析工具**：**ESLint-plugin-i18n** 和 **Globalyzer** 等工具扫描代码以查找国际化问题，例如硬编码字符串或不正确的日期和数字格式。
 - **持续集成服务**：CI/CD 平台（例如 **Jenkins**、**Travis CI** 和 **GitHub Actions**）可以配置为在不同区域设置中自动运行国际化测试，作为构建过程的一部分。
-- **屏幕比较工具**：**Applitools** 和 **Percy** 等可视化测试工具可以比较不同语言的屏幕截图以检测布局问题。 将这些工具集成到 [测试自动化](/zh-cn/wiki/test-automation/) 套件中有助于确保国际化方面在整个开发生命周期中持续有效地得到验证。
+- **屏幕比较工具**：**Applitools** 和 **Percy** 等可视化测试工具可以比较不同语言的屏幕截图以检测布局问题。 将这些工具集成到 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 套件中有助于确保国际化方面在整个开发生命周期中持续有效地得到验证。
 
 - **伪本地化**：**PseudoL10n** 和 **Accentuate.js** 等工具通过用重音字符或其他脚本替换源语言中的字符来模拟翻译。这有助于识别 UI 问题，而无需实际翻译。
-- **自动化框架**：**[selenium](/zh-cn/wiki/selenium/)**、**Appium** 和 **WebDriverIO** 等框架可以使用自定义脚本进行扩展，以自动化跨不同语言和区域的 UI 和功能测试。
-- **本地化平台**：**Crowdin**、**Transifex** 和 **Phrase** 等服务提供管理翻译的功能，并且可以集成到 [自动化测试](/zh-cn/wiki/automated-testing/) 工作流程中，以确保新字符串得到正确测试。
+- **自动化框架**：**[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**、**Appium** 和 **WebDriverIO** 等框架可以使用自定义脚本进行扩展，以自动化跨不同语言和区域的 UI 和功能测试。
+- **本地化平台**：**Crowdin**、**Transifex** 和 **Phrase** 等服务提供管理翻译的功能，并且可以集成到 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 工作流程中，以确保新字符串得到正确测试。
 - **国际化库**：**i18next**和**Globalize.js**等库提供了促进应用程序国际化过程的功能，可以与测试工具结合使用。
 - **静态代码分析工具**：**ESLint-plugin-i18n** 和 **Globalyzer** 等工具扫描代码以查找国际化问题，例如硬编码字符串或不正确的日期和数字格式。
 - **持续集成服务**：CI/CD 平台（例如 **Jenkins**、**Travis CI** 和 **GitHub Actions**）可以配置为在不同区域设置中自动运行国际化测试，作为构建过程的一部分。
@@ -212,7 +212,7 @@ order: 0
 
 #### 国际化测试的一些现实例子是什么？
 
-**[国际化测试](/zh-cn/wiki/internationalization-testing/)** 的真实示例包括：
+**[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)** 的真实示例包括：
 
 1. **电子商务平台**：测试电子商务网站，确保其可以毫无问题地处理多种货币、日期格式和地址格式。例如，验证欧洲用户 (€1.234,56) 与美国用户 ($1,234.56) 的价格格式是否正确调整。
 2. **社交媒体应用程序**：确保社交媒体应用程序可以支持各种语言和文字，包括从右到左的语言，例如阿拉伯语或希伯来语。这包括测试正确的文本对齐和布局方向。
@@ -223,17 +223,17 @@ order: 0
 
 #### 如何对多语言软件应用程序执行国际化测试？
 
-要对多语言软件应用程序执行[国际化测试](/zh-cn/wiki/internationalization-testing/)，请执行以下步骤：
+要对多语言软件应用程序执行[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)，请执行以下步骤：
 
-1. **准备 [测试环境](/zh-cn/wiki/test-environment/)** 各种语言设置和区域配置。如果适用，请包括不同的操作系统和设备。
-2. **创建 [测试用例](/zh-cn/wiki/test-case/)** 涵盖：
+1. **准备 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 各种语言设置和区域配置。如果适用，请包括不同的操作系统和设备。
+2. **创建 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 涵盖：
 - 用于正确翻译和布局的 UI 元素。
 - 输入字段接受和处理国际字符。
 - 处理不同时区、货币和日期格式的功能。
 - 用于正确翻译和布局的 UI 元素。
 - 输入字段接受和处理国际字符。
 - 处理不同时区、货币和日期格式的功能。
-3. **使用[selenium](/zh-cn/wiki/selenium/)或 Appium 等支持多语言测试的工具自动化[测试用例](/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
+3. **使用[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)或 Appium 等支持多语言测试的工具自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
 
 ```
     // Example of parameterized test case in a pseudo-code
@@ -245,16 +245,16 @@ order: 0
     });
 ```
 4. **利用字符串的资源文件**，并验证应用程序是否可以以不同的语言正确加载和显示它们。
-5. **检查 [数据库](/zh-cn/wiki/database/) 支持**以各种语言存储和检索数据，确保正确的编码和排序。
+5. **检查 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 支持**以各种语言存储和检索数据，确保正确的编码和排序。
 6. **验证错误消息**和其他系统响应以确保它们正确本地化。
 7. **执行伪本地化**以模拟翻译并识别 UI 布局或字符显示的潜在问题。
-8. **以不同语言执行[探索性测试](/zh-cn/wiki/exploratory-testing/)** 以捕获意外问题。
+8. **以不同语言执行[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** 以捕获意外问题。
 9. **查看测试结果**和日志以查找任何特定于区域设置的错误或警告。
-10. **根据调查结果迭代和完善** [测试用例](/zh-cn/wiki/test-case/) 以确保全面覆盖。 通过自动化和不断完善测试，您可以确保应用程序在不同区域设置中按预期运行，从而增强全球用户体验。
+10. **根据调查结果迭代和完善** [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以确保全面覆盖。 通过自动化和不断完善测试，您可以确保应用程序在不同区域设置中按预期运行，从而增强全球用户体验。
 
-1. **准备 [测试环境](/zh-cn/wiki/test-environment/)** 以及各种语言设置和区域配置。如果适用，请包括不同的操作系统和设备。
-2. **创建 [测试用例](/zh-cn/wiki/test-case/)** 涵盖：
-3. **使用 [selenium](/zh-cn/wiki/selenium/) 或 Appium 等支持多语言测试的工具自动化 [测试用例](/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
+1. **准备 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 以及各种语言设置和区域配置。如果适用，请包括不同的操作系统和设备。
+2. **创建 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 涵盖：
+3. **使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 或 Appium 等支持多语言测试的工具自动化 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。使用参数化使用不同的区域设置输入运行相同的测试。
 
 ```
     // Example of parameterized test case in a pseudo-code
@@ -268,13 +268,13 @@ order: 0
 
 #### 国际化测试中如何处理字符编码？
 
-处理[国际化测试](/zh-cn/wiki/internationalization-testing/) 中的字符编码涉及确保软件可以正确处理和显示各种语言和脚本的文本。为此，请按照下列步骤操作：
+处理[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 中的字符编码涉及确保软件可以正确处理和显示各种语言和脚本的文本。为此，请按照下列步骤操作：
 
 1. **使用 Unicode**：采用 Unicode（UTF-8 或 UTF-16）作为整个应用程序的标准编码，以支持广泛的字符和符号。
 2. **设置编码标准**：在前端和后端定义并强制执行编码标准。确保标头和元标记指定正确的编码。
 3. **输入验证**：验证输入以处理来自不同语言的字符，包括从右到左的脚本以及重音符号和变音符号等特殊字符。
-4. **[数据库](/zh-cn/wiki/database/) 存储**：验证[数据库](/zh-cn/wiki/database/) 是否配置为以正确的编码存储和检索数据，而不会丢失或损坏数据。
-5. **外部接口**：检查[API](/zh-cn/wiki/api/)、Web 服务和其他外部接口是否正确处理字符编码。
+4. **[数据库](https://inaodeng.com/zh-cn/wiki/database/) 存储**：验证[数据库](https://inaodeng.com/zh-cn/wiki/database/) 是否配置为以正确的编码存储和检索数据，而不会丢失或损坏数据。
+5. **外部接口**：检查[API](https://inaodeng.com/zh-cn/wiki/api/)、Web 服务和其他外部接口是否正确处理字符编码。
 6. **自动化测试**：编写自动化测试来验证文本输入、输出和存储是否按预期使用各种编码工作。使用具有不同国际字符集的数据驱动测试。
 
 ```
@@ -288,13 +288,13 @@ order: 0
   });
 ```
 1. **内容交付**：确保内容交付网络 (CDN) 和 Web 服务器配置为以正确的编码提供内容。
-2. **字体支持**：检查应用程序的字体是否支持正在测试的语言的字符集。 通过仔细解决这些方面的问题，您可以有效地处理 [国际化测试](/zh-cn/wiki/internationalization-testing/) 中的字符编码，避免 mojibake（乱码）等常见陷阱，并确保跨不同区域设置的无缝用户体验。
+2. **字体支持**：检查应用程序的字体是否支持正在测试的语言的字符集。 通过仔细解决这些方面的问题，您可以有效地处理 [国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 中的字符编码，避免 mojibake（乱码）等常见陷阱，并确保跨不同区域设置的无缝用户体验。
 
 1. **使用 Unicode**：采用 Unicode（UTF-8 或 UTF-16）作为整个应用程序的标准编码，以支持广泛的字符和符号。
 2. **设置编码标准**：在前端和后端定义并强制执行编码标准。确保标头和元标记指定正确的编码。
 3. **输入验证**：验证输入以处理来自不同语言的字符，包括从右到左的脚本以及重音符号和变音符号等特殊字符。
-4. **[数据库](/zh-cn/wiki/database/) 存储**：验证[数据库](/zh-cn/wiki/database/) 是否配置为以正确的编码存储和检索数据，而不会丢失或损坏数据。
-5. **外部接口**：检查[API](/zh-cn/wiki/api/)、Web 服务和其他外部接口是否正确处理字符编码。
+4. **[数据库](https://inaodeng.com/zh-cn/wiki/database/) 存储**：验证[数据库](https://inaodeng.com/zh-cn/wiki/database/) 是否配置为以正确的编码存储和检索数据，而不会丢失或损坏数据。
+5. **外部接口**：检查[API](https://inaodeng.com/zh-cn/wiki/api/)、Web 服务和其他外部接口是否正确处理字符编码。
 6. **自动化测试**：编写自动化测试来验证文本输入、输出和存储是否按预期使用各种编码工作。使用具有不同国际字符集的数据驱动测试。
 1. **内容交付**：确保内容交付网络 (CDN) 和 Web 服务器配置为以正确的编码提供内容。
 2. **字体支持**：检查应用程序的字体是否支持正在测试的语言的字符集。
@@ -312,21 +312,21 @@ order: 0
 - **外部库和依赖项**：确保您的应用程序依赖的第三方库或服务也是国际化的。
 - **性能**：评估应用程序在处理不同语言时的性能，尤其是那些具有复杂脚本的语言。
 - **后备机制**：测试缺少翻译或不受支持的语言环境的后备机制。
-- **自动化[测试脚本](/zh-cn/wiki/test-script/)** ：调整自动化测试脚本以覆盖各种区域设置，可能使用参数化来迭代不同的设置。
+- **自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** ：调整自动化测试脚本以覆盖各种区域设置，可能使用参数化来迭代不同的设置。
 - **持续集成**：将国际化测试集成到您的 CI 管道中以尽早发现问题。 请记住根据您的目标市场和用户群确定场景的优先级。使用模拟器和物理设备在现实条件下进行测试，并考虑语言之外的区域设置的影响，例如网络条件和硬件变化。
 
 ### 高级概念
 
 #### 国际化测试如何适应更广泛的软件测试环境？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 是 **[软件测试](/zh-cn/wiki/software-testing/) 生命周期** ([STLC](/zh-cn/wiki/stlc/)) 的关键组成部分，确保应用程序可以轻松适应各种语言和区域，而无需进行工程更改。它通过满足**全球市场准备**和**文化敏感性**的需求，适应[软件测试](/zh-cn/wiki/software-testing/)的更广泛背景，这在全球互联的世界中至关重要。
-  作为 [STLC](/zh-cn/wiki/stlc/) 的一部分，[国际化测试](/zh-cn/wiki/internationalization-testing/) 通常出现在 **单元和 [集成测试](/zh-cn/wiki/integration-testing/)** 之后，但 **在 [本地化测试](/zh-cn/wiki/localization-testing/)** 之前。它确保软件的底层结构足够强大，能够支持多种语言和文化格式，而不会破坏功能。此类测试对于验证软件在翻译时是否可以处理各种**输入和显示语言**、**日期和时间格式**、**货币转换**以及**文本扩展**至关重要。
-  在 **[测试自动化](/zh-cn/wiki/test-automation/)** 的上下文中，[国际化测试](/zh-cn/wiki/internationalization-testing/) 通常涉及创建可以**验证特定于区域设置的行为**而无需手动干预的脚本。自动化工程师必须确保他们的框架可以跨不同[测试用例](/zh-cn/wiki/test-case/)一致地处理**区域设置切换**和**字符编码**。
-  通过确保软件可以轻松适应不同的区域设置，[国际化测试](/zh-cn/wiki/internationalization-testing/) 有助于**无缝的用户体验**，并有助于防止在开发后期阶段进行昂贵的重新设计或代码重构。这是一种以**全球视角**构建软件的主动方法，与 [质量保证](/zh-cn/wiki/quality-assurance/) 的更广泛目标保持一致，以提供满足不同用户需求并符合国际标准的产品。
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 是 **[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期** ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/)) 的关键组成部分，确保应用程序可以轻松适应各种语言和区域，而无需进行工程更改。它通过满足**全球市场准备**和**文化敏感性**的需求，适应[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/)的更广泛背景，这在全球互联的世界中至关重要。
+  作为 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的一部分，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 通常出现在 **单元和 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 之后，但 **在 [本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)** 之前。它确保软件的底层结构足够强大，能够支持多种语言和文化格式，而不会破坏功能。此类测试对于验证软件在翻译时是否可以处理各种**输入和显示语言**、**日期和时间格式**、**货币转换**以及**文本扩展**至关重要。
+  在 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** 的上下文中，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 通常涉及创建可以**验证特定于区域设置的行为**而无需手动干预的脚本。自动化工程师必须确保他们的框架可以跨不同[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)一致地处理**区域设置切换**和**字符编码**。
+  通过确保软件可以轻松适应不同的区域设置，[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 有助于**无缝的用户体验**，并有助于防止在开发后期阶段进行昂贵的重新设计或代码重构。这是一种以**全球视角**构建软件的主动方法，与 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的更广泛目标保持一致，以提供满足不同用户需求并符合国际标准的产品。
 
 #### 国际化测试有哪些先进技术？
 
-[国际化测试](/zh-cn/wiki/internationalization-testing/) 中的先进技术通常涉及自动化来处理任务的复杂性和规模。以下是一些技巧：
+[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 中的先进技术通常涉及自动化来处理任务的复杂性和规模。以下是一些技巧：
 
 - **伪本地化**：自动用更改后的版本替换文本以模拟不同的语言。这可以突出显示文本扩展、字符编码和布局方面的问题，而无需完整翻译。
 - **自动视觉测试**：使用工具捕获本地化 UI 的屏幕截图并将其与基线进行比较，以检测文本截断或未对齐等布局问题。
@@ -337,7 +337,7 @@ order: 0
 ```ts
   lintLocalizations('/path/to/resource/files');
 ```
-- **自动语言测试**：使用自然语言处理 (NLP) 工具来评估语法、用法和风格方面的翻译质量。 通过利用这些先进技术，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保稳健高效的[国际化测试](/zh-cn/wiki/internationalization-testing/) 流程，为全球受众带来高质量的用户体验。
+- **自动语言测试**：使用自然语言处理 (NLP) 工具来评估语法、用法和风格方面的翻译质量。 通过利用这些先进技术，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保稳健高效的[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 流程，为全球受众带来高质量的用户体验。
 
 - **伪本地化**：自动用更改后的版本替换文本以模拟不同的语言。这可以突出显示文本扩展、字符编码和布局方面的问题，而无需完整翻译。
 - **自动视觉测试**：使用工具捕获本地化 UI 的屏幕截图并将其与基线进行比较，以检测文本截断或未对齐等布局问题。
@@ -346,9 +346,9 @@ order: 0
 
 #### 自动化在国际化测试中如何发挥作用？
 
-自动化通过**简化重复任务**并确保不同区域设置之间的**一致性**，在[国际化测试](/zh-cn/wiki/internationalization-testing/)中发挥着至关重要的作用。它允许执行大量测试，检查 UI 元素、日期和时间格式、货币以及跨多种语言和地区的其他特定于语言环境的功能，如果手动完成，这将是**耗时且容易出错**。
+自动化通过**简化重复任务**并确保不同区域设置之间的**一致性**，在[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)中发挥着至关重要的作用。它允许执行大量测试，检查 UI 元素、日期和时间格式、货币以及跨多种语言和地区的其他特定于语言环境的功能，如果手动完成，这将是**耗时且容易出错**。
   自动化测试可以设计为**切换区域设置**并验证应用程序行为是否正确，无需人工干预。这包括检查内容是否以正确的语言显示，输入字段是否接受并处理特定于区域设置的字符和数据格式，以及应用程序是否可以动态处理**语言切换**。
-  通过使用自动化框架，工程师可以创建**参数化测试**，其中使用不同的区域设置数据集执行相同的 [测试用例](/zh-cn/wiki/test-case/)。这种方法最大限度地提高了[测试覆盖率](/zh-cn/wiki/test-coverage/) 和效率。例如：
+  通过使用自动化框架，工程师可以创建**参数化测试**，其中使用不同的区域设置数据集执行相同的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这种方法最大限度地提高了[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和效率。例如：
 
 ```
   describe('Internationalization tests', () => {
@@ -362,13 +362,13 @@ order: 0
   });
 ```
 作为 CI/CD 管道的一部分，自动化还有助于**持续测试**，确保在开发周期的早期发现国际化问题。这种集成有助于维持全球发布的高质量标准。
-  总之，自动化通过提供**可扩展性、准确性和速度**来增强[国际化测试](/zh-cn/wiki/internationalization-testing/)的有效性，这对于交付全球兼容的软件产品至关重要。
+  总之，自动化通过提供**可扩展性、准确性和速度**来增强[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/)的有效性，这对于交付全球兼容的软件产品至关重要。
 
 #### 您如何衡量国际化测试的成功？
 
-衡量[国际化测试](/zh-cn/wiki/internationalization-testing/) 的成功涉及评估几个关键的[绩效指标](/zh-cn/wiki/performance-indicator/) (KPI)，它们反映了该软件针对全球市场的准备情况：
+衡量[国际化测试](https://inaodeng.com/zh-cn/wiki/internationalization-testing/) 的成功涉及评估几个关键的[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) (KPI)，它们反映了该软件针对全球市场的准备情况：
 
-- **[测试用例](/zh-cn/wiki/test-case/)的通过率**：国际化特定的[测试用例](/zh-cn/wiki/test-case/) 的通过率较高，表明应用程序可以正确处理各种国际输入和格式。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的通过率**：国际化特定的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的通过率较高，表明应用程序可以正确处理各种国际输入和格式。
 - **缺陷检测效率**：在发布之前发现并修复的国际化相关缺陷的数量可以证明测试过程的有效性。
 - **用户界面 (UI) 一致性**：确保 UI 元素在不同语言和文化中一致显示，没有截断或错位。
 - **区域覆盖率**：测试覆盖的目标区域设置的百分比。全面覆盖意味着该应用程序已针对所有目标市场进行了测试。
@@ -376,4 +376,4 @@ order: 0
 - **响应时间和性能**：衡量应用程序在处理国际化方面（如多字节字符或特定于区域设置的数据排序）时是否保持可接受的性能水平。
 - **资源文件完整性**：检查外部化字符串和资源的完整性和正确性，确保它们可以轻松适应本地化，而无需更改代码。
 - **回退机制**：如果缺少特定于区域设置的资源，应用程序应正常恢复到默认区域设置，而不会崩溃或出现重大问题。
-- **遵守国际标准**：遵守国际标准（例如 Unicode）对于确保不同系统和区域之间的兼容性和互操作性至关重要。 通过跟踪这些指标，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以量化应用程序国际化的稳健性，并确保它为全球用户提供一致的高质量体验。
+- **遵守国际标准**：遵守国际标准（例如 Unicode）对于确保不同系统和区域之间的兼容性和互操作性至关重要。 通过跟踪这些指标，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以量化应用程序国际化的稳健性，并确保它为全球用户提供一致的高质量体验。

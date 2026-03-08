@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [qwen](/en/AIWiki/qwen/)
-- [mistral-mixtral](/en/AIWiki/mistral-mixtral/)
-- [small-language-models-slms](/en/AIWiki/small-language-models-slms/)
+- [qwen](https://inaodeng.com/en/AIWiki/qwen/)
+- [mistral-mixtral](https://inaodeng.com/en/AIWiki/mistral-mixtral/)
+- [small-language-models-slms](https://inaodeng.com/en/AIWiki/small-language-models-slms/)
 
 ### Term Metadata
 

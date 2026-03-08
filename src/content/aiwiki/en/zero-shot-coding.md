@@ -112,9 +112,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [gpt](/en/AIWiki/gpt/)
-- [large-language-models-llms](/en/AIWiki/large-language-models-llms/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
+- [gpt](https://inaodeng.com/en/AIWiki/gpt/)
+- [large-language-models-llms](https://inaodeng.com/en/AIWiki/large-language-models-llms/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 
 ### Term Metadata
 

@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [structured-outputs](/en/AIWiki/structured-outputs/)
-- [hooks](/en/AIWiki/hooks/)
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
-- [custom-commands](/en/AIWiki/custom-commands/)
+- [structured-outputs](https://inaodeng.com/en/AIWiki/structured-outputs/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
+- [custom-commands](https://inaodeng.com/en/AIWiki/custom-commands/)
 
 ### External References
 

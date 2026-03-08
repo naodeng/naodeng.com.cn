@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [codex](/zh-cn/AIWiki/codex/)
-- [o1-o3](/zh-cn/AIWiki/o1-o3/)
-- [large-language-models-llms](/zh-cn/AIWiki/large-language-models-llms/)
+- [codex](https://inaodeng.com/zh-cn/AIWiki/codex/)
+- [o1-o3](https://inaodeng.com/zh-cn/AIWiki/o1-o3/)
+- [large-language-models-llms](https://inaodeng.com/zh-cn/AIWiki/large-language-models-llms/)
 
 ### 术语元数据
 

@@ -120,9 +120,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
-- [ai-pair-programming](/en/AIWiki/ai-pair-programming/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
+- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
 
 ### Term Metadata
 

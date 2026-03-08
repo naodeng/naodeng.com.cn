@@ -113,10 +113,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [batch-processing](/en/AIWiki/batch-processing/)
-- [model-optionality](/en/AIWiki/model-optionality/)
-- [reasoning-models](/en/AIWiki/reasoning-models/)
-- [prompt-caching](/en/AIWiki/prompt-caching/)
+- [batch-processing](https://inaodeng.com/en/AIWiki/batch-processing/)
+- [model-optionality](https://inaodeng.com/en/AIWiki/model-optionality/)
+- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
+- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
 
 ### External References
 

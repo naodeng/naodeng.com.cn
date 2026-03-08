@@ -119,9 +119,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [model-context-protocol-mcp](/en/AIWiki/model-context-protocol-mcp/)
-- [skill](/en/AIWiki/skill/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [model-context-protocol-mcp](https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
 
 ### Term Metadata
 

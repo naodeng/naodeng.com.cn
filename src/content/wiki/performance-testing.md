@@ -50,71 +50,71 @@ order: 0
 
 #### 软件测试中的性能测试是什么？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 评估系统在特定条件下的行为方式，重点关注响应能力、稳定性、可扩展性和资源使用情况。它旨在在产品上线之前识别与性能相关的缺陷，确保系统满足其预期的服务级别协议（SLA）并为最终用户提供满意的体验。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 上下文中，[性能测试](/zh-cn/wiki/performance-testing/) 通常涉及编写脚本并执行模拟各种类型的负载和使用模式的测试。自动化测试可以快速生成和复制多个用户交互，从而可以评估高需求下的系统性能并查明可能导致性能下降或故障的问题。
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 评估系统在特定条件下的行为方式，重点关注响应能力、稳定性、可扩展性和资源使用情况。它旨在在产品上线之前识别与性能相关的缺陷，确保系统满足其预期的服务级别协议（SLA）并为最终用户提供满意的体验。
+  在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 上下文中，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 通常涉及编写脚本并执行模拟各种类型的负载和使用模式的测试。自动化测试可以快速生成和复制多个用户交互，从而可以评估高需求下的系统性能并查明可能导致性能下降或故障的问题。
   自动化性能测试集成到持续集成/持续部署 (CI/CD) 管道中，以便在发生更改时提供有关系统性能的持续反馈。这种集成可以帮助团队快速检测性能回归并验证优化的影响。
-  自动化性能测试的关键考虑因素包括选择适当的工作负载、了解系统的吞吐量和响应时间要求以及确保[测试环境](/zh-cn/wiki/test-environment/) 密切反映生产[setup](/zh-cn/wiki/setup/)。应持续监控和分析自动化性能测试的结果，以跟踪一段时间内的性能趋势，并为有关系统增强和容量规划的决策提供信息。
+  自动化性能测试的关键考虑因素包括选择适当的工作负载、了解系统的吞吐量和响应时间要求以及确保[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 密切反映生产[setup](https://inaodeng.com/zh-cn/wiki/setup/)。应持续监控和分析自动化性能测试的结果，以跟踪一段时间内的性能趋势，并为有关系统增强和容量规划的决策提供信息。
 
 #### 为什么性能测试很重要？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 至关重要，因为它直接影响**系统可靠性**和**可扩展性**。它确保应用程序可以处理预期负载而不会降低性能，否则可能会导致**客户不满意**和**收入损失**。通过模拟各种环境和用户场景，它可以识别潜在的**瓶颈**和**资源限制**。
-  在开发周期的早期纳入 [性能测试](/zh-cn/wiki/performance-testing/) 可以在问题升级为昂贵的发布后修复之前检测和纠正问题。它还有助于验证**基础设施的充足性**，确保系统满足**服务级别协议（SLA）**并可以扩展以适应增长。
-  自动化[性能测试](/zh-cn/wiki/performance-testing/)在[测试执行](/zh-cn/wiki/test-execution/)中提供了**可重复性**和**一致性**的优势，从而能够在整个生命周期中进行持续的性能评估。它允许将 [性能测试](/zh-cn/wiki/performance-testing/) 集成到**CI/CD 管道**中，从而培养**持续改进**的文化。
-  [性能测试](/zh-cn/wiki/performance-testing/) 还通过提供有关系统性能如何随着负载增加而受到影响的数据来支持**容量规划**。此信息对于做出有关硬件和基础设施投资的明智决策至关重要。
-  最终，[性能测试](/zh-cn/wiki/performance-testing/) 是关于**风险缓解**。它有助于防止可能导致重大**业务影响**的系统故障，包括**声誉损害**。通过确保满足性能标准，它有助于提供符合用户期望和业务目标的高质量产品。
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 至关重要，因为它直接影响**系统可靠性**和**可扩展性**。它确保应用程序可以处理预期负载而不会降低性能，否则可能会导致**客户不满意**和**收入损失**。通过模拟各种环境和用户场景，它可以识别潜在的**瓶颈**和**资源限制**。
+  在开发周期的早期纳入 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 可以在问题升级为昂贵的发布后修复之前检测和纠正问题。它还有助于验证**基础设施的充足性**，确保系统满足**服务级别协议（SLA）**并可以扩展以适应增长。
+  自动化[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)中提供了**可重复性**和**一致性**的优势，从而能够在整个生命周期中进行持续的性能评估。它允许将 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 集成到**CI/CD 管道**中，从而培养**持续改进**的文化。
+  [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 还通过提供有关系统性能如何随着负载增加而受到影响的数据来支持**容量规划**。此信息对于做出有关硬件和基础设施投资的明智决策至关重要。
+  最终，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 是关于**风险缓解**。它有助于防止可能导致重大**业务影响**的系统故障，包括**声誉损害**。通过确保满足性能标准，它有助于提供符合用户期望和业务目标的高质量产品。
 
 #### 性能测试有哪些不同类型？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 包含针对负载下系统行为不同方面的各种类型。以下是不同的类型：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 包含针对负载下系统行为不同方面的各种类型。以下是不同的类型：
 
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：模拟任何应用程序的真实负载，以验证系统在正常和峰值条件下的行为方式。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：通过逐渐增加负载或更改其他变量（如 CPU 或内存）直至崩溃来确定系统的限制。
-- **[耐力测试](/zh-cn/wiki/endurance-testing/)** ：也称为浸泡测试，它涉及在较长时间内施加大量负载以识别内存泄漏等系统问题。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：模拟任何应用程序的真实负载，以验证系统在正常和峰值条件下的行为方式。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：通过逐渐增加负载或更改其他变量（如 CPU 或内存）直至崩溃来确定系统的限制。
+- **[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)** ：也称为浸泡测试，它涉及在较长时间内施加大量负载以识别内存泄漏等系统问题。
 - **峰值测试**：涉及突然增加或减少负载并观察系统的反应，对于模拟闪购等现实世界事件很有用。
-- **[音量测试](/zh-cn/wiki/volume-testing/)** ：专注于数据库。当数据库卷增长到很大时，它会检查系统性能。
-- **[可扩展性测试](/zh-cn/wiki/scalability-testing/)** ：确定应用程序是否可以针对增加的用户负载进行扩展，通常是通过逐步添加更多用户或事务并测量系统维持性能的能力。
+- **[音量测试](https://inaodeng.com/zh-cn/wiki/volume-testing/)** ：专注于数据库。当数据库卷增长到很大时，它会检查系统性能。
+- **[可扩展性测试](https://inaodeng.com/zh-cn/wiki/scalability-testing/)** ：确定应用程序是否可以针对增加的用户负载进行扩展，通常是通过逐步添加更多用户或事务并测量系统维持性能的能力。
 - **容量测试**：通过了解系统容量何时达到最大，帮助规划未来的增长，确保系统可以处理大量用户或交易而不降低性能。 每种类型都针对特定的性能方面，有助于确保应用程序在真实用户可能遇到的各种条件下都能良好运行。
 
 #### 性能测试如何影响用户体验？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 通过确保软件应用程序在各种条件下按预期运行，直接影响**用户体验 (UX)**。它可以识别潜在的**性能问题**，例如响应时间慢、加载时间长和系统崩溃，这些问题可能会让用户感到沮丧并导致不满意或放弃产品。
-  通过模拟真实场景，[性能测试](/zh-cn/wiki/performance-testing/) 有助于了解应用程序在多个用户、高数据量和压力下的行为方式。这可确保用户获得一致、响应迅速且可靠的体验，这对于维持用户参与度和忠诚度至关重要。
-  此外，[性能测试](/zh-cn/wiki/performance-testing/) 有助于发现**可扩展性**挑战。它验证应用程序可以在不降低性能的情况下处理预期的用户增长，这对于随着用户群的扩大保持积极的用户体验至关重要。
-  将[性能测试](/zh-cn/wiki/performance-testing/)结果纳入**优化工作**可确保应用程序不仅满足[功能需求](/zh-cn/wiki/functional-requirements/)，而且还提供无缝且高效的用户旅程。这种主动的性能方法可以防止负面的用户体验发生。
-  最终，[性能测试](/zh-cn/wiki/performance-testing/) 是提供高质量产品的关键因素，该产品在速度、稳定性和可扩展性方面满足或超出用户的期望，而这些都是积极的用户体验的基本方面。
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 通过确保软件应用程序在各种条件下按预期运行，直接影响**用户体验 (UX)**。它可以识别潜在的**性能问题**，例如响应时间慢、加载时间长和系统崩溃，这些问题可能会让用户感到沮丧并导致不满意或放弃产品。
+  通过模拟真实场景，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 有助于了解应用程序在多个用户、高数据量和压力下的行为方式。这可确保用户获得一致、响应迅速且可靠的体验，这对于维持用户参与度和忠诚度至关重要。
+  此外，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 有助于发现**可扩展性**挑战。它验证应用程序可以在不降低性能的情况下处理预期的用户增长，这对于随着用户群的扩大保持积极的用户体验至关重要。
+  将[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)结果纳入**优化工作**可确保应用程序不仅满足[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)，而且还提供无缝且高效的用户旅程。这种主动的性能方法可以防止负面的用户体验发生。
+  最终，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 是提供高质量产品的关键因素，该产品在速度、稳定性和可扩展性方面满足或超出用户的期望，而这些都是积极的用户体验的基本方面。
 
 #### 性能测试在软件开发生命周期中的作用是什么？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 通过确保应用程序满足指定的性能标准并能够处理预期的负载场景，在软件开发生命周期 (SDLC) 中发挥**关键作用**。它被集成在 SDLC 的各个阶段，以便：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 通过确保应用程序满足指定的性能标准并能够处理预期的负载场景，在软件开发生命周期 (SDLC) 中发挥**关键作用**。它被集成在 SDLC 的各个阶段，以便：
 
 - **尽早识别性能问题**：通过在开发和集成阶段进行性能测试，团队可以在性能瓶颈升级为更严重的问题之前检测并解决它们。
 - **支持持续集成/持续部署 (CI/CD)**：自动化性能测试可以成为 CI/CD 管道的一部分，允许对每个构建或版本进行定期且一致的性能评估。
-- **验证系统的可扩展性和可靠性**：[性能测试](/zh-cn/wiki/performance-testing/) 有助于验证系统是否可以根据需求扩展或缩小，并在不同条件下保持可靠。
+- **验证系统的可扩展性和可靠性**：[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 有助于验证系统是否可以根据需求扩展或缩小，并在不同条件下保持可靠。
 - **确保符合 SLA**：它检查系统是否遵守有关响应时间、吞吐量和资源利用率的服务级别协议 (SLA)。
 - **促进明智的决策**：性能测试数据指导利益相关者做出有关基础设施需求、架构变更和功能增强的决策。
-- **防止代价高昂的停机**：通过识别在压力下可能导致系统故障的问题，[性能测试](/zh-cn/wiki/performance-testing/) 有助于防止潜在的停机，而这种停机可能在金钱和声誉方面造成高昂的代价。
+- **防止代价高昂的停机**：通过识别在压力下可能导致系统故障的问题，[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 有助于防止潜在的停机，而这种停机可能在金钱和声誉方面造成高昂的代价。
 - **优化用户满意度**：虽然不能直接解决用户体验问题，但确保系统在负载下良好运行可以避免与响应时间缓慢或系统不可用相关的挫败感，从而间接带来积极的用户体验。
 
 ### 工具和技术
 
 #### 性能测试常用哪些工具？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 的常用工具包括：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 的常用工具包括：
 
-- **[JMeter](/zh-cn/wiki/jmeter/)**：专为[负载测试](/zh-cn/wiki/load-testing/) 和测量性能而设计的开源工具。它支持多种协议，例如 HTTP、FTP 和 SOAP。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**：专为[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 和测量性能而设计的开源工具。它支持多种协议，例如 HTTP、FTP 和 SOAP。
 - **LoadRunner**：Micro Focus 广泛使用的工具，可模拟数千个用户对应用程序施加负载并测量性能。
-- **Gattle**：基于 Scala、Akka 和 Netty 的开源 [负载测试](/zh-cn/wiki/load-testing/) 工具，专注于高性能。
-- **Locust**：一个用 Python 编写的开源工具，允许您在 Py​​thon 代码中编写[测试场景](/zh-cn/wiki/test-scenario/)并执行分布式负载测试。
-- **BlazeMeter**：基于云的[负载测试](/zh-cn/wiki/load-testing/) 服务，与[JMeter](/zh-cn/wiki/jmeter/) 兼容，提供易于使用的平台来运行和分析性能测试。
-- **WebLOAD**：一种为 Web 应用程序提供[负载测试](/zh-cn/wiki/load-testing/) 的工具，具有灵活的脚本编写功能和详细的报告。
-- **NeoLoad**：专为网络和移动应用程序设计的 [性能测试](/zh-cn/wiki/performance-testing/) 工具，强调易用性和自动化。
-- **Silk Performer**：该工具允许模拟各种企业应用程序协议和真实的 [负载测试](/zh-cn/wiki/load-testing/) 场景。
-- **Apache Bench (ab)**：一个简单的命令行工具，用于快速 [性能测试](/zh-cn/wiki/performance-testing/) Web 服务器。
-- **k6**：一个开源的、以开发人员为中心的 [性能测试](/zh-cn/wiki/performance-testing/) 工具，重点是自动化和集成到开发工作流程中。 每个工具都有其优点，并根据特定的项目要求进行选择，例如被测应用程序的类型、负载的复杂性[测试场景](/zh-cn/wiki/test-scenario/)以及首选的编程语言或环境。
+- **Gattle**：基于 Scala、Akka 和 Netty 的开源 [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 工具，专注于高性能。
+- **Locust**：一个用 Python 编写的开源工具，允许您在 Py​​thon 代码中编写[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)并执行分布式负载测试。
+- **BlazeMeter**：基于云的[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 服务，与[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 兼容，提供易于使用的平台来运行和分析性能测试。
+- **WebLOAD**：一种为 Web 应用程序提供[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 的工具，具有灵活的脚本编写功能和详细的报告。
+- **NeoLoad**：专为网络和移动应用程序设计的 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具，强调易用性和自动化。
+- **Silk Performer**：该工具允许模拟各种企业应用程序协议和真实的 [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 场景。
+- **Apache Bench (ab)**：一个简单的命令行工具，用于快速 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) Web 服务器。
+- **k6**：一个开源的、以开发人员为中心的 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具，重点是自动化和集成到开发工作流程中。 每个工具都有其优点，并根据特定的项目要求进行选择，例如被测应用程序的类型、负载的复杂性[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)以及首选的编程语言或环境。
 
 #### 如何选择合适的性能测试工具？
 
-为[性能测试](/zh-cn/wiki/performance-testing/) 选择正确的工具涉及评估几个因素：
+为[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 选择正确的工具涉及评估几个因素：
 
 - **兼容性**：确保该工具支持您的应用程序的技术堆栈（例如，网络、移动、桌面）。
 - **测试要求**：将工具功能与所需测试类型（负载、压力、尖峰等）相匹配。
@@ -133,29 +133,29 @@ order: 0
     console.log('Tool is compatible with our JavaScript-based test scripts.');
   }
 ```
-最终，正确的工具应符合您团队的技能、项目要求和组织限制，从而促进高效且有效的[性能测试](/zh-cn/wiki/performance-testing/)。
+最终，正确的工具应符合您团队的技能、项目要求和组织限制，从而促进高效且有效的[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)。
 
 #### 性能测试有哪些常用技术？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 的常用技术包括：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 的常用技术包括：
 
-- **[负载测试](/zh-cn/wiki/load-testing/)**：模拟特定数量的用户以了解系统在预期负载条件下的行为方式。
-- **[压力测试](/zh-cn/wiki/stress-testing/)**：逐渐增加系统的负载或输入，直到达到断点以确定其上限。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)**：模拟特定数量的用户以了解系统在预期负载条件下的行为方式。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)**：逐渐增加系统的负载或输入，直到达到断点以确定其上限。
 - **峰值测试**：在短时间内突然显着增加负载，以了解系统如何应对突然爆发的活动。
 - **浸泡测试**：长时间在高负载水平下运行系统，以识别内存泄漏等潜在问题。
-- **[并发测试](/zh-cn/wiki/concurrency-testing/)**：检查当多个用户同时执行相同操作时系统的执行情况。
+- **[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)**：检查当多个用户同时执行相同操作时系统的执行情况。
 - **隔离测试**：隔离系统的一部分并使其承受各种负载，以查明性能问题的原因。
-- **[音量测试](/zh-cn/wiki/volume-testing/)**：用大量数据填充[database](/zh-cn/wiki/database/) 并测量系统对此类数据的处理。
-- **[可扩展性测试](/zh-cn/wiki/scalability-testing/)**：确定系统在“扩展”方面的有效性，以通过添加硬件、软件或带宽来支持增加的负载。
+- **[音量测试](https://inaodeng.com/zh-cn/wiki/volume-testing/)**：用大量数据填充[database](https://inaodeng.com/zh-cn/wiki/database/) 并测量系统对此类数据的处理。
+- **[可扩展性测试](https://inaodeng.com/zh-cn/wiki/scalability-testing/)**：确定系统在“扩展”方面的有效性，以通过添加硬件、软件或带宽来支持增加的负载。
 - **配置测试**：更改系统配置以确定对系统性能的影响。
-- **[耐力测试](/zh-cn/wiki/endurance-testing/)**：评估系统在正常工作负载下长时间运行的情况，以检查系统性能下降情况。 [性能测试](/zh-cn/wiki/performance-testing/) 技术通常根据被测系统的具体要求和约束进行组合和定制。自动化工具可用于模拟这些场景、收集结果并提供对系统性能的见解。
+- **[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)**：评估系统在正常工作负载下长时间运行的情况，以检查系统性能下降情况。 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 技术通常根据被测系统的具体要求和约束进行组合和定制。自动化工具可用于模拟这些场景、收集结果并提供对系统性能的见解。
 
 #### 如何实现性能测试自动化？
 
-要自动化 [性能测试](/zh-cn/wiki/performance-testing/)，请按照下列步骤操作：
+要自动化 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)，请按照下列步骤操作：
 
 1. **识别性能场景**：确定模拟哪些用户操作以测试各种条件下的系统性能。
-2. **脚本创建**：使用 [性能测试](/zh-cn/wiki/performance-testing/) 工具编写脚本以自动执行这些场景。使用 JavaScript 等编程语言或该工具提供的特定于领域的语言。
+2. **脚本创建**：使用 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具编写脚本以自动执行这些场景。使用 JavaScript 等编程语言或该工具提供的特定于领域的语言。
 
 ```
     // Example performance test script snippet
@@ -168,16 +168,16 @@ order: 0
     }
 ```
 
-3. **环境[setup](/zh-cn/wiki/setup/)**：配置[测试环境](/zh-cn/wiki/test-environment/)以密切模仿生产[setup](/zh-cn/wiki/setup/)，包括硬件、软件和网络配置。
-4. **[测试执行](/zh-cn/wiki/test-execution/)**：使用[性能测试](/zh-cn/wiki/performance-testing/) 工具运行脚本来模拟多个用户并收集响应时间、吞吐量和错误率等指标。
-5. **监控**：使用监控工具观察[测试执行](/zh-cn/wiki/test-execution/)期间 CPU、内存、网络等系统资源的使用情况。
+3. **环境[setup](https://inaodeng.com/zh-cn/wiki/setup/)**：配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)以密切模仿生产[setup](https://inaodeng.com/zh-cn/wiki/setup/)，包括硬件、软件和网络配置。
+4. **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：使用[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具运行脚本来模拟多个用户并收集响应时间、吞吐量和错误率等指标。
+5. **监控**：使用监控工具观察[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间 CPU、内存、网络等系统资源的使用情况。
 6. **结果分析**：评估收集的数据以识别任何性能问题或瓶颈。
 7. **优化**：根据分析，对代码、配置或基础架构进行必要的更改以提高性能。
-8. **[回归测试](/zh-cn/wiki/regression-testing/)**：重新运行测试以验证性能增强是否达到了预期效果，而不会引入新问题。 自动化 [性能测试](/zh-cn/wiki/performance-testing/) 需要持续集成和交付 (CI/CD) 管道来定期执行测试并监控性能。将[性能测试](/zh-cn/wiki/performance-testing/) 集成到开发过程中可确保尽早发现并解决任何性能下降问题。
+8. **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：重新运行测试以验证性能增强是否达到了预期效果，而不会引入新问题。 自动化 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 需要持续集成和交付 (CI/CD) 管道来定期执行测试并监控性能。将[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 集成到开发过程中可确保尽早发现并解决任何性能下降问题。
 
 #### 负载生成器在性能测试中的作用是什么？
 
-负载生成器在 **[性能测试](/zh-cn/wiki/performance-testing/)** 中至关重要，用于模拟用户流量并测量系统在各种负载条件下的行为方式。它们生成多个虚拟用户和交易来模仿现实世界的使用模式，使测试人员能够：
+负载生成器在 **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** 中至关重要，用于模拟用户流量并测量系统在各种负载条件下的行为方式。它们生成多个虚拟用户和交易来模仿现实世界的使用模式，使测试人员能够：
 
 - **验证可扩展性**：确定应用程序是否可以处理预期数量的并发用户。
 - **评估资源利用率**：监控负载下系统资源的消耗情况。
@@ -188,15 +188,15 @@ order: 0
 
 #### 性能测试过程涉及哪些步骤？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 遵循结构化流程，以确保系统满足预期基准和服务水平。以下是所涉及步骤的简要概述：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 遵循结构化流程，以确保系统满足预期基准和服务水平。以下是所涉及步骤的简要概述：
 
 1. **定义性能标准**：建立明确的性能目标，包括吞吐量、响应时间和资源利用率阈值。
-2. **创建[测试环境](/zh-cn/wiki/test-environment/)**：设置一个尽可能镜像生产系统的环境，以确保结果准确。
-3. **设计性能测试**：开发模拟各种用户与应用程序交互的[测试场景](/zh-cn/wiki/test-scenario/)。
-4. **配置[测试工具](/zh-cn/wiki/test-tool/)**：选择并设置工具来生成负载和监控性能指标。
-5. **实施测试设计**：将场景转换为可由所选工具执行的实际[测试脚本](/zh-cn/wiki/test-script/)。
+2. **创建[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：设置一个尽可能镜像生产系统的环境，以确保结果准确。
+3. **设计性能测试**：开发模拟各种用户与应用程序交互的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+4. **配置[测试工具](https://inaodeng.com/zh-cn/wiki/test-tool/)**：选择并设置工具来生成负载和监控性能指标。
+5. **实施测试设计**：将场景转换为可由所选工具执行的实际[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
 6. **执行测试**：运行测试来模拟系统上的负载，从基线开始，逐渐增加到峰值负载场景。
-7. **监控和捕获数据**：在[测试执行](/zh-cn/wiki/test-execution/)期间从各个系统组件收集性能数据。
+7. **监控和捕获数据**：在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间从各个系统组件收集性能数据。
 8. **分析结果**：根据性能标准评估数据，以识别任何偏差或瓶颈。
 9. **微调系统**：根据分析，对系统配置、代码或架构进行调整，以提高性能。
 10. **重新测试**：调整后，重新运行测试以验证改进并确保没有引入新问题。
@@ -205,22 +205,22 @@ order: 0
 
 #### 您如何计划性能测试？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 的规划涉及几个关键步骤，以确保测试有效并提供有关系统在各种条件下的性能的宝贵见解。这是一个简洁的指南：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 的规划涉及几个关键步骤，以确保测试有效并提供有关系统在各种条件下的性能的宝贵见解。这是一个简洁的指南：
 
 1. **了解系统**：深入了解系统架构、技术堆栈和可能影响性能的关键组件。
 2. **确定性能标准**：根据用户期望和业务需求定义明确的性能目标，例如响应时间、吞吐量和资源利用率。
-3. **制定[测试策略](/zh-cn/wiki/test-strategy/)**：创建全面的[测试策略](/zh-cn/wiki/test-strategy/)，概述与[性能测试](/zh-cn/wiki/performance-testing/) 活动相关的范围、方法、资源、时间表和风险。
-4. **创建性能@@PR​​OTECTED_23@@**：设计模拟真实使用场景的[测试用例](/zh-cn/wiki/test-case/)，包括峰值、正常和压力条件。
-5. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置密切反映生产环境的[测试环境](/zh-cn/wiki/test-environment/)，以确保结果准确。这包括硬件、软件、网络配置和[databases](/zh-cn/wiki/database/)。
-6. **实施监控**：建立对关键[绩效指标](/zh-cn/wiki/performance-indicator/) (KPI) 的监控，以跟踪测试期间的系统行为。
+3. **制定[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)**：创建全面的[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)，概述与[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 活动相关的范围、方法、资源、时间表和风险。
+4. **创建性能@@PR​​OTECTED_23@@**：设计模拟真实使用场景的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，包括峰值、正常和压力条件。
+5. **准备[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：设置密切反映生产环境的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，以确保结果准确。这包括硬件、软件、网络配置和[databases](https://inaodeng.com/zh-cn/wiki/database/)。
+6. **实施监控**：建立对关键[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) (KPI) 的监控，以跟踪测试期间的系统行为。
 7. **执行测试**：根据计划的场景运行性能测试并实时监控系统的行为。
 8. **收集和分析数据**：收集测试结果并根据定义的性能标准对其进行分析，以识别任何偏差或问题。
 9. **报告结果**：记录结果，包括任何性能瓶颈和改进建议。
-10. **迭代**：利用获得的见解来改进系统的性能。根据需要重复测试过程以验证更改和增强。 通过执行这些步骤，您可以确保 [性能测试](/zh-cn/wiki/performance-testing/) 的结构化方法与项目目标保持一致并提供可操作的见解。
+10. **迭代**：利用获得的见解来改进系统的性能。根据需要重复测试过程以验证更改和增强。 通过执行这些步骤，您可以确保 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 的结构化方法与项目目标保持一致并提供可操作的见解。
 
 #### 设置性能测试目标时应考虑哪些因素？
 
-设置[性能测试](/zh-cn/wiki/performance-testing/) 目标时，请考虑以下因素：
+设置[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 目标时，请考虑以下因素：
 
 - **业务需求**：使目标与业务目标保持一致，例如预期的用户负载和交易量。
 - **用户期望**：了解用户对延迟和吞吐量的容忍度，以设置可接受的性能水平。
@@ -229,17 +229,17 @@ order: 0
 - **可扩展性目标**：定义系统如何​​随着负载的增加而扩展（垂直和水平）。
 - **合规性和监管标准**：遵守行业特定的性能标准和法规。
 - **风险评估**：识别可能影响系统稳定性和用户满意度的关键性能风险。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：将测试环境与生产环境尽可能匹配，以确保相关结果。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：将测试环境与生产环境尽可能匹配，以确保相关结果。
 - **预算限制**：根据可用预算和资源平衡测试的深度和广度。
 - **时间表**：考虑项目时间表，以便进行正确的测试规划、执行和分析。
 - **历史数据**：使用过去的性能数据来告知目标并预测未来的系统行为。
 - **技术堆栈**：考虑应用程序中使用的技术堆栈的限制和功能。
 - **集成点**：考虑可能影响性能的外部依赖项和第三方服务。
-- **维护和监控**：部署后持续性能监控和维护的计划。 这些考虑因素确保[性能测试](/zh-cn/wiki/performance-testing/) 目标是现实的、可衡量的，并且与项目的总体目标保持一致。
+- **维护和监控**：部署后持续性能监控和维护的计划。 这些考虑因素确保[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 目标是现实的、可衡量的，并且与项目的总体目标保持一致。
 
 #### 您如何定义性能测试指标？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 指标量化被测系统的属性，提供客观数据来评估其行为。关键指标包括：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 指标量化被测系统的属性，提供客观数据来评估其行为。关键指标包括：
 
 - **响应时间**：请求和相应响应之间的持续时间。
 - **吞吐量**：每单位时间处理的事务或操作的数量。
@@ -248,16 +248,16 @@ order: 0
 - **可扩展性**：系统在负载增加时维持或提高性能的能力。
 - **每秒点击数**：一秒钟内向服务器发出的请求数。
 - **每秒交易数 (TPS)** ：一秒内完成的交易。
-- **错误率**：导致错误的所有请求的百分比。 指标应与系统的性能目标相关并提供可行的见解。它们通常是在 [测试执行](/zh-cn/wiki/test-execution/) 期间通过监控工具收集的，并在测试后进行分析，以便为有关系统优化和容量规划的决策提供信息。
+- **错误率**：导致错误的所有请求的百分比。 指标应与系统的性能目标相关并提供可行的见解。它们通常是在 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间通过监控工具收集的，并在测试后进行分析，以便为有关系统优化和容量规划的决策提供信息。
 
 #### 基线在性能测试中的作用是什么？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 中的基线用作**参考点**，可以与未来的性能测试进行比较。它们代表了一组特定条件下系统性能的**标准指标**。建立基线对于以下方面至关重要：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 中的基线用作**参考点**，可以与未来的性能测试进行比较。它们代表了一组特定条件下系统性能的**标准指标**。建立基线对于以下方面至关重要：
 
 - **识别性能趋势**：随着时间的推移，基线有助于发现性能下降或改进。
 - **验证更改**：当系统更新发生时，基线有助于确定更改是否对性能产生不利影响。
 - **设置性能目标**：它们提供了性能改进和优化的目标。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：基线确保新功能或补丁没有引入性能回归。 要建立基线，您通常：
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：基线确保新功能或补丁没有引入性能回归。 要建立基线，您通常：
 
 1. 在受控条件下运行性能测试。
 2. 记录关键性能指标，例如响应时间、吞吐量和资源利用率。
@@ -268,7 +268,7 @@ order: 0
 
 #### 您如何分析性能测试结果？
 
-分析[性能测试](/zh-cn/wiki/performance-testing/)结果涉及几个关键步骤：
+分析[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)结果涉及几个关键步骤：
 
 1. **汇总数据**：收集并整合所有测试运行的数据以获得全面的视图。
 2. **与基准比较**：根据预定义的性能基准或 SLA 评估结果。
@@ -283,12 +283,12 @@ order: 0
 11. **使用可视化工具**：图形和图表可以帮助可视化复杂的数据并更容易发现问题。
 12. **生成报告**：为利益相关者创建综合报告，总结调查结果并提出改进建议。
 13. **建议行动**：建议对配置、代码或基础设施进行具体更改，以解决已识别的问题。
-14. **记录结果**：保留分析记录以供将来参考并衡量优化的影响。 通过执行这些步骤，您可以有效地分析 [性能测试](/zh-cn/wiki/performance-testing/) 结果，以确保您的系统满足其性能目标。
+14. **记录结果**：保留分析记录以供将来参考并衡量优化的影响。 通过执行这些步骤，您可以有效地分析 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 结果，以确保您的系统满足其性能目标。
 
 #### 一些常见的性能瓶颈是什么以及如何识别它们？
 
-常见的性能瓶颈通常包括 **CPU 限制**、**内存泄漏**、**网络限制**、**磁盘 I/O** 问题和 **[database](/zh-cn/wiki/database/) 性能** 问题。识别这些瓶颈通常涉及在 [负载测试](/zh-cn/wiki/load-testing/) 期间监视系统资源和应用程序性能指标。
-  要查明 CPU 问题，请观察 **CPU 使用率**，看看它在测试期间是否达到或保持在 100%，这表明存在瓶颈。可以通过监控一段时间内的**内存消耗**来检测内存泄漏；持续增加可能表明存在泄漏。可以通过分析**网络吞吐量和延迟**来识别与网络相关的瓶颈；低吞吐量或高延迟可能表明存在问题。磁盘 I/O 瓶颈通常通过查看**磁盘队列长度**和**读/写速度**来发现；排长队或速度慢可能是争用的迹象。最后，[database](/zh-cn/wiki/database/) 性能可以通过检查**查询执行时间**和**锁争用**来评估。
+常见的性能瓶颈通常包括 **CPU 限制**、**内存泄漏**、**网络限制**、**磁盘 I/O** 问题和 **[database](https://inaodeng.com/zh-cn/wiki/database/) 性能** 问题。识别这些瓶颈通常涉及在 [负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/) 期间监视系统资源和应用程序性能指标。
+  要查明 CPU 问题，请观察 **CPU 使用率**，看看它在测试期间是否达到或保持在 100%，这表明存在瓶颈。可以通过监控一段时间内的**内存消耗**来检测内存泄漏；持续增加可能表明存在泄漏。可以通过分析**网络吞吐量和延迟**来识别与网络相关的瓶颈；低吞吐量或高延迟可能表明存在问题。磁盘 I/O 瓶颈通常通过查看**磁盘队列长度**和**读/写速度**来发现；排长队或速度慢可能是争用的迹象。最后，[database](https://inaodeng.com/zh-cn/wiki/database/) 性能可以通过检查**查询执行时间**和**锁争用**来评估。
   **分析器**、**APM（应用程序性能管理）**解决方案和**监控系统**等工具可以自动收集和分析这些指标。此外，检查**日志文件**并使用**基准测试工具**可以深入了解负载下的系统行为。
 
 ```
@@ -299,7 +299,7 @@ order: 0
 
 #### 如何使用性能测试结果来优化系统性能？
 
-[性能测试](/zh-cn/wiki/performance-testing/) 结果提供了可用于**优化系统性能**的关键数据。通过分析这些结果，团队可以查明系统未达到性能预期的特定区域。以下是如何使用结果：
+[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 结果提供了可用于**优化系统性能**的关键数据。通过分析这些结果，团队可以查明系统未达到性能预期的特定区域。以下是如何使用结果：
 
 - **识别瓶颈**：详细报告可以揭示降低系统速度的组件，例如低效的数据库查询或内存泄漏。
 - **资源利用率**：CPU、内存、磁盘 I/O 和网络使用情况的指标可以指示系统是否过度利用或未充分利用，从而指导资源分配或扩展决策。
@@ -347,15 +347,15 @@ order: 0
 
 为确保绩效改进的有效实施：
 
-- **尽早集成[性能测试](/zh-cn/wiki/performance-testing/)**在开发周期中。这样可以及早发现并纠正性能问题。
+- **尽早集成[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**在开发周期中。这样可以及早发现并纠正性能问题。
 
 - **自动回归性能测试**快速评估变更的影响。
 
 ```
-// 自动性能示例[测试脚本](/zh-cn/wiki/test-script/)
+// 自动性能示例[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)
   描述 ('性能回归套件', () => {
   test('响应时间不应超过阈值', async () => {
-  const 响应 = 等待 makeRequest('/[API](/zh-cn/wiki/api/)/resource');
+  const 响应 = 等待 makeRequest('/[API](https://inaodeng.com/zh-cn/wiki/api/)/resource');
   期望（响应。时间）。toBeLessThan（200）； // 毫秒
   });
   });

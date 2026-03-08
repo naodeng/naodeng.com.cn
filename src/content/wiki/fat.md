@@ -49,77 +49,77 @@ order: 0
 
 #### FAT 在软件测试中代表什么？
 
-[FAT](/zh-cn/wiki/fat/) 代表**工厂[验收测试](/zh-cn/wiki/acceptance-testing/)**。这是一种预交付[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)，其中软件在受控环境（通常是在开发人员的站点）中进行测试，以确保其在运送到客户所在地之前满足商定的规范和要求。此阶段对于根据定义的标准验证软件的功能和性能至关重要，并且通常是合同义务。
-  在[FAT](/zh-cn/wiki/fat/)期间，将验证软件与硬件的集成（如果适用）以及与其他系统的交互。记录和跟踪缺陷，并在软件被认为可以交付之前确认其解决方案。测试环境尽可能反映生产环境，以确保结果准确。
-  [测试用例](/zh-cn/wiki/test-case/) 在[FAT](/zh-cn/wiki/fat/) 中发挥核心作用，指导测试过程以涵盖所有必要的功能和场景。自动化可以通过执行重复且耗时的测试来提高[FAT](/zh-cn/wiki/fat/)的效率，从而允许在更短的时间内进行更严格的测试。
+[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 代表**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**。这是一种预交付[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)，其中软件在受控环境（通常是在开发人员的站点）中进行测试，以确保其在运送到客户所在地之前满足商定的规范和要求。此阶段对于根据定义的标准验证软件的功能和性能至关重要，并且通常是合同义务。
+  在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，将验证软件与硬件的集成（如果适用）以及与其他系统的交互。记录和跟踪缺陷，并在软件被认为可以交付之前确认其解决方案。测试环境尽可能反映生产环境，以确保结果准确。
+  [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中发挥核心作用，指导测试过程以涵盖所有必要的功能和场景。自动化可以通过执行重复且耗时的测试来提高[FAT](https://inaodeng.com/zh-cn/wiki/fat/)的效率，从而允许在更短的时间内进行更严格的测试。
   包括项目经理、测试工程师、客户和最终用户在内的利益相关者进行协作，以确保软件做好部署准备。客户或最终用户的参与对于验证软件的可用性以及与实际操作的相关性尤其重要。
-  [FAT](/zh-cn/wiki/fat/) 的最佳实践包括完整的测试结果记录和解决出现的任何问题的清晰流程。克服环境差异或利益相关者之间的沟通障碍等挑战对于[FAT](/zh-cn/wiki/fat/) 取得成功至关重要。
+  [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的最佳实践包括完整的测试结果记录和解决出现的任何问题的清晰流程。克服环境差异或利益相关者之间的沟通障碍等挑战对于[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 取得成功至关重要。
 
 #### 工厂验收测试 (FAT) 的目的是什么？
 
-工厂[验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 在软件产品交付给客户之前充当**初步[验证 ](/zh-cn/wiki/verification/)**。它确保软件满足商定的规范并能够在预期环境中运行。在[FAT](/zh-cn/wiki/fat/)期间，**及早发现缺陷**，允许在现场安装之前进行纠正，从而降低了昂贵的部署后修复的风险。
-  [FAT](/zh-cn/wiki/fat/) 的[测试环境](/zh-cn/wiki/test-environment/) 模仿客户的生产环境，以在现实条件下验证软件的功能。 [测试用例](/zh-cn/wiki/test-case/) 旨在涵盖所有[功能需求](/zh-cn/wiki/functional-requirements/)，并且可以利用自动化来有效地执行重复或复杂的场景。
-  测试工程师在执行 [FAT](/zh-cn/wiki/fat/) 过程中发挥着关键作用，确保所有功能按预期运行。客户或最终用户经常参与根据他们的要求验证系统，提供可在最终部署之前纳入的有价值的反馈。
-  利益相关者（包括项目经理和测试工程师）协作解决[FAT](/zh-cn/wiki/fat/)期间发现的任何问题。 **结果记录**对于透明度至关重要，并可作为符合要求的证据。
-  为了克服日程紧张或资源限制等挑战，最佳实践包括全面规划、清晰沟通和利用 [测试自动化](/zh-cn/wiki/test-automation/)。通过有效地应对这些挑战，[FAT](/zh-cn/wiki/fat/) 为高质量软件产品的交付做出了重大贡献。
+工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 在软件产品交付给客户之前充当**初步[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**。它确保软件满足商定的规范并能够在预期环境中运行。在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，**及早发现缺陷**，允许在现场安装之前进行纠正，从而降低了昂贵的部署后修复的风险。
+  [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 模仿客户的生产环境，以在现实条件下验证软件的功能。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 旨在涵盖所有[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)，并且可以利用自动化来有效地执行重复或复杂的场景。
+  测试工程师在执行 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 过程中发挥着关键作用，确保所有功能按预期运行。客户或最终用户经常参与根据他们的要求验证系统，提供可在最终部署之前纳入的有价值的反馈。
+  利益相关者（包括项目经理和测试工程师）协作解决[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间发现的任何问题。 **结果记录**对于透明度至关重要，并可作为符合要求的证据。
+  为了克服日程紧张或资源限制等挑战，最佳实践包括全面规划、清晰沟通和利用 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)。通过有效地应对这些挑战，[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 为高质量软件产品的交付做出了重大贡献。
 
 #### 为什么 FAT 被视为软件开发过程的重要组成部分？
 
-[FAT](/zh-cn/wiki/fat/) 是软件开发不可或缺的一部分，因为它在部署之前充当系统功能的**初步验证**。它确保软件遵守商定的规范并可以在预期环境中运行。在受控设置中执行 [FAT](/zh-cn/wiki/fat/) 可以**及早发现关键问题**，从而降低成本高昂的部署后修复的风险。
-  在[FAT](/zh-cn/wiki/fat/)期间，利益相关者（包括客户、开发人员和测试人员）协作验证系统的性能。这种协作对于调整期望并确认系统满足业务需求至关重要。 **客户**或最终用户在[FAT](/zh-cn/wiki/fat/) 期间的参与也增强了他们对产品的信心，并有助于更顺利地过渡到站点[验收测试](/zh-cn/wiki/acceptance-testing/) (SAT) 阶段。
-  [FAT](/zh-cn/wiki/fat/) 中的自动化可以简化流程，使其更加**高效且可重复**。自动化[测试用例](/zh-cn/wiki/test-case/)可以重复使用，提供一致性并节省时间，特别是对于[回归测试](/zh-cn/wiki/regression-testing/)。然而，有必要根据系统的复杂性和性质来平衡自动化和[手动测试](/zh-cn/wiki/manual-testing/)。
-  记录 [FAT](/zh-cn/wiki/fat/) 结果对于**可追溯性**和**合规性**至关重要。它提供了系统符合要求的证据，并作为未来维护或升级的参考。
-  为了解决常见的挑战，例如环境差异或需求误解，最佳实践包括全面的规划、清晰的沟通以及适应不可预见问题的灵活性。通过预测潜在的障碍并制定缓解策略，团队可以确保[FAT](/zh-cn/wiki/fat/) 取得成功的结果。
+[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 是软件开发不可或缺的一部分，因为它在部署之前充当系统功能的**初步验证**。它确保软件遵守商定的规范并可以在预期环境中运行。在受控设置中执行 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 可以**及早发现关键问题**，从而降低成本高昂的部署后修复的风险。
+  在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，利益相关者（包括客户、开发人员和测试人员）协作验证系统的性能。这种协作对于调整期望并确认系统满足业务需求至关重要。 **客户**或最终用户在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 期间的参与也增强了他们对产品的信心，并有助于更顺利地过渡到站点[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) (SAT) 阶段。
+  [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中的自动化可以简化流程，使其更加**高效且可重复**。自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)可以重复使用，提供一致性并节省时间，特别是对于[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。然而，有必要根据系统的复杂性和性质来平衡自动化和[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)。
+  记录 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 结果对于**可追溯性**和**合规性**至关重要。它提供了系统符合要求的证据，并作为未来维护或升级的参考。
+  为了解决常见的挑战，例如环境差异或需求误解，最佳实践包括全面的规划、清晰的沟通以及适应不可预见问题的灵活性。通过预测潜在的障碍并制定缓解策略，团队可以确保[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 取得成功的结果。
 
 #### 进行 FAT 的主要好处是什么？
 
-执行 Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 的主要好处包括：
+执行 Factory [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 的主要好处包括：
 
 - **风险缓解**：FAT 有助于在部署软件之前识别关键问题，从而降低生产环境中出现故障的风险。
 - **节省成本**：与部署后修复相比，尽早检测缺陷可以显着降低修复缺陷的成本。
 - **客户信心**：它向客户保证软件在发货前满足其要求和规格，从而增强信任和满意度。
-- **合规性 [验证 ](/zh-cn/wiki/verification/)** ：确保软件符合行业标准、法规和任何合同义务。
+- **合规性 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：确保软件符合行业标准、法规和任何合同义务。
 - **操作准备**：验证软件与硬件、其他系统和接口的集成，确认操作准备情况。
 - **培训机会**：为最终用户提供在受控环境中获得系统实践经验和培训的机会。
 - **文档验证**：确认用户手册和维护指南准确且完整。
-- **性能基准**：建立可用于将来参考和比较的性能基准。 通过关注这些优势，[FAT](/zh-cn/wiki/fat/) 成为交付高质量软件产品的关键步骤，确保它们为下一阶段做好准备，该阶段通常是站点 [验收测试](/zh-cn/wiki/acceptance-testing/) (SAT) 或部署到生产环境。
+- **性能基准**：建立可用于将来参考和比较的性能基准。 通过关注这些优势，[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 成为交付高质量软件产品的关键步骤，确保它们为下一阶段做好准备，该阶段通常是站点 [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) (SAT) 或部署到生产环境。
 
 #### FAT 如何提高软件产品的整体质量？
 
-[FAT](/zh-cn/wiki/fat/) 通过确保应用程序在部署前在受控环境中按预期运行来增强 [软件质量](/zh-cn/wiki/software-quality/)。通过模拟实际使用情况，[FAT](/zh-cn/wiki/fat/) 识别系统设计功能与其实际性能之间的差异。此过程有助于**验证软件的可靠性和稳健性**，有助于更稳定的产品发布。
-  在[FAT](/zh-cn/wiki/fat/)期间，可以检测并解决**集成问题**，这对于依赖多个组件无缝协作的系统至关重要。它还为利益相关者提供了一个见证系统功能的平台，增强了对产品质量的信心。
-  来自[FAT](/zh-cn/wiki/fat/) 的**反馈循环**对于持续改进至关重要。发现的问题被记录下来并得到解决，从而产生完善的产品。这种针对 [质量保证](/zh-cn/wiki/quality-assurance/) 的主动方法可最大限度地降低昂贵的部署后修复和潜在停机的风险。
-  总之，[FAT](/zh-cn/wiki/fat/) 对[软件质量](/zh-cn/wiki/software-quality/) 的贡献是多方面的，包括**可靠性、稳定性和用户信心**。它充当软件到达最终用户之前的关键检查点，确保只发布经过良好测试和验证的产品。
+[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 通过确保应用程序在部署前在受控环境中按预期运行来增强 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。通过模拟实际使用情况，[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 识别系统设计功能与其实际性能之间的差异。此过程有助于**验证软件的可靠性和稳健性**，有助于更稳定的产品发布。
+  在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，可以检测并解决**集成问题**，这对于依赖多个组件无缝协作的系统至关重要。它还为利益相关者提供了一个见证系统功能的平台，增强了对产品质量的信心。
+  来自[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的**反馈循环**对于持续改进至关重要。发现的问题被记录下来并得到解决，从而产生完善的产品。这种针对 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的主动方法可最大限度地降低昂贵的部署后修复和潜在停机的风险。
+  总之，[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 对[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的贡献是多方面的，包括**可靠性、稳定性和用户信心**。它充当软件到达最终用户之前的关键检查点，确保只发布经过良好测试和验证的产品。
 
 ### 流程和技术
 
 #### FAT 涉及哪些关键步骤？
 
-Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 涉及的关键步骤如下：
+Factory [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 涉及的关键步骤如下：
 
-1. **审查[FAT](/zh-cn/wiki/fat/)协议**：确保FAT协议符合项目要求和标准。
-2. **准备[测试环境](/zh-cn/wiki/test-environment/)** ：根据规格设置硬件、软件和网络配置。
-3. **[验证 ](/zh-cn/wiki/verification/) of [测试用例](/zh-cn/wiki/test-case/)** ：确认测试用例涵盖了预期测试的所有功能和场景。
-4. **执行[测试用例](/zh-cn/wiki/test-case/)**：手动或使用自动化运行测试用例，以根据商定的标准验证系统。
+1. **审查[FAT](https://inaodeng.com/zh-cn/wiki/fat/)协议**：确保FAT协议符合项目要求和标准。
+2. **准备[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：根据规格设置硬件、软件和网络配置。
+3. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) of [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：确认测试用例涵盖了预期测试的所有功能和场景。
+4. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：手动或使用自动化运行测试用例，以根据商定的标准验证系统。
 5. **记录测试结果**：记录结果，包括通过/失败状态以及与预期结果的任何偏差。
 6. **问题报告和跟踪**：记录缺陷并跟踪其状态直至解决。
 7. **审查会议**：与利益相关者定期举行会议，讨论进展、问题和任何障碍。
-8. **[重新测试](/zh-cn/wiki/retesting/) 和 [回归测试](/zh-cn/wiki/regression-testing/)** ：问题解决后，执行重新测试和回归测试，以确保修复不会影响其他区域。
+8. **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/) 和 [回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：问题解决后，执行重新测试和回归测试，以确保修复不会影响其他区域。
 9. **最终验收**：成功完成所有测试用例并解决缺陷后，系统即可接受客户的最终验收。
-10. **签核**：获得客户或最终用户的正式批准，表明系统满足他们的要求。 在整个[FAT](/zh-cn/wiki/fat/) 流程中，与利益相关者的沟通对于确保透明度和有效管理期望至关重要。此外，利用自动化可以简化重复[测试用例](/zh-cn/wiki/test-case/)的执行，节省时间并减少人为错误。
+10. **签核**：获得客户或最终用户的正式批准，表明系统满足他们的要求。 在整个[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 流程中，与利益相关者的沟通对于确保透明度和有效管理期望至关重要。此外，利用自动化可以简化重复[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的执行，节省时间并减少人为错误。
 
 #### FAT 中常用哪些技术？
 
-**工厂 [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))** 中使用的常用技术包括：
+**工厂 [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))** 中使用的常用技术包括：
 
 - **脚本化测试**：执行预定义的测试用例以根据商定的要求验证特定功能。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：测试人员探索软件以识别脚本测试未涵盖的问题。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：测试人员探索软件以识别脚本测试未涵盖的问题。
 - **用户接受场景**：模拟现实世界的使用情况，以确保软件满足用户期望。
-- **[接口测试](/zh-cn/wiki/interface-testing/)** ：验证软件与其他系统或硬件之间的接口是否正常工作。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：确保新的更改不会对现有功能产生不利影响。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：评估软件在各种条件下的性能，以确保其满足性能标准。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：检查漏洞并确保数据免受未经授权的访问。
-- **合规性测试**：确保软件符合行业标准和法规。 在[FAT](/zh-cn/wiki/fat/)期间，自动化可以应用于：
+- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)** ：验证软件与其他系统或硬件之间的接口是否正常工作。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：确保新的更改不会对现有功能产生不利影响。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：评估软件在各种条件下的性能，以确保其满足性能标准。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：检查漏洞并确保数据免受未经授权的访问。
+- **合规性测试**：确保软件符合行业标准和法规。 在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，自动化可以应用于：
 
 - **自动化重复任务**：使用脚本执行重复测试，节省时间并减少人为错误。
 - **数据驱动测试**：使用不同的输入数据集自动运行测试。
@@ -138,15 +138,15 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
     });
   });
 ```
-自动化测试应设计为**可重用**和**可维护**，以最大限度地发挥 [FAT](/zh-cn/wiki/fat/) 中自动化的优势。
+自动化测试应设计为**可重用**和**可维护**，以最大限度地发挥 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中自动化的优势。
 
 - **脚本化测试**：执行预定义的测试用例以根据商定的要求验证特定功能。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：测试人员探索软件以识别脚本测试未涵盖的问题。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：测试人员探索软件以识别脚本测试未涵盖的问题。
 - **用户接受场景**：模拟现实世界的使用情况，以确保软件满足用户期望。
-- **[接口测试](/zh-cn/wiki/interface-testing/)** ：验证软件与其他系统或硬件之间的接口是否正常工作。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：确保新的更改不会对现有功能产生不利影响。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：评估软件在各种条件下的性能，以确保其满足性能标准。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：检查漏洞并确保数据免受未经授权的访问。
+- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)** ：验证软件与其他系统或硬件之间的接口是否正常工作。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：确保新的更改不会对现有功能产生不利影响。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：评估软件在各种条件下的性能，以确保其满足性能标准。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：检查漏洞并确保数据免受未经授权的访问。
 - **合规性测试**：确保软件符合行业标准和法规。
 - **自动化重复任务**：使用脚本执行重复测试，节省时间并减少人为错误。
 - **数据驱动测试**：使用不同的输入数据集自动运行测试。
@@ -155,34 +155,34 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 #### FAT 的测试环境是如何搭建的？
 
-为 Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 设置 **[测试环境](/zh-cn/wiki/test-environment/)** 涉及几个关键步骤：
+为 Factory [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 设置 **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 涉及几个关键步骤：
 
-1. **复制生产环境**：尽可能模仿生产环境，以确保软件在部署时按预期运行。这包括硬件、网络配置、[数据库](/zh-cn/wiki/database/) 和其他系统集成。
-2. **数据准备**：使用反映真实场景的数据填充[测试环境](/zh-cn/wiki/test-environment/)。如果该数据源自实际用户数据，则应进行匿名化以维护隐私。
-3. **工具配置**：设置和配置任何必要的[测试自动化](/zh-cn/wiki/test-automation/) 工具和框架。确保它们与正在测试的软件兼容。
+1. **复制生产环境**：尽可能模仿生产环境，以确保软件在部署时按预期运行。这包括硬件、网络配置、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 和其他系统集成。
+2. **数据准备**：使用反映真实场景的数据填充[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。如果该数据源自实际用户数据，则应进行匿名化以维护隐私。
+3. **工具配置**：设置和配置任何必要的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具和框架。确保它们与正在测试的软件兼容。
 4. **访问控制**：为测试团队建立适当的访问权限，以在不影响安全性的情况下部署和测试软件。
 5. **基线快照**：在测试开始之前创建环境的基线快照。这样可以在出现问题时快速恢复到已知状态。
-6. **监控[环境搭建](/zh-cn/wiki/setup/)**：实施监控工具来跟踪系统性能并记录测试期间的错误。
-7. **文档**：确保环境[环境搭建](/zh-cn/wiki/setup/) 有完整的文档记录，包括软件的版本号、配置设置和应用的任何补丁。
-8. **[验证 ](/zh-cn/wiki/verification/)**：在启动[FAT](/zh-cn/wiki/fat/) 之前，请验证环境是否按预期运行以及所有组件是否正确通信。
-9. **备份计划**：制定备份和恢复计划，以防环境遇到需要回滚到之前状态的问题。 通过遵循这些步骤，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保强大可靠的[测试环境](/zh-cn/wiki/test-environment/) 来执行[FAT](/zh-cn/wiki/fat/)。
+6. **监控[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：实施监控工具来跟踪系统性能并记录测试期间的错误。
+7. **文档**：确保环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 有完整的文档记录，包括软件的版本号、配置设置和应用的任何补丁。
+8. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：在启动[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 之前，请验证环境是否按预期运行以及所有组件是否正确通信。
+9. **备份计划**：制定备份和恢复计划，以防环境遇到需要回滚到之前状态的问题。 通过遵循这些步骤，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保强大可靠的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 来执行[FAT](https://inaodeng.com/zh-cn/wiki/fat/)。
 
 #### FAT 中测试用例的作用是什么？
 
-**工厂 [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))** 中的 [测试用例](/zh-cn/wiki/test-case/) 是在将软件交付给客户之前验证和验证软件是否满足其指定要求的明确标准。它们是结构化的操作序列和预期结果，旨在测试软件的特定功能或特性。
-  在[FAT](/zh-cn/wiki/fat/) 中，[测试用例](/zh-cn/wiki/test-case/) 至关重要：
+**工厂 [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))** 中的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是在将软件交付给客户之前验证和验证软件是否满足其指定要求的明确标准。它们是结构化的操作序列和预期结果，旨在测试软件的特定功能或特性。
+  在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 至关重要：
 
 - **确保覆盖范围**：他们确认所有用户要求都经过测试，并且软件在出厂设置中的行为符合预期。
 - **可重复性**：测试用例允许在不同的测试周期或由不同的工程师一致地执行测试。
 - **验证**：它们提供了一种根据商定的规范和验收标准验证软件的方法。
 - **效率**：明确定义的测试用例可以简化测试过程，使其更快、更有效。
 - **可追溯性**：测试用例链接回特定要求，确保所有要求都经过测试并满足。
-- **文档**：它们记录了测试内容、测试方式以及测试结果，这对于将来的参考和合规性至关重要。 通过在[FAT](/zh-cn/wiki/fat/)期间精心设计和执行[测试用例](/zh-cn/wiki/test-case/)，[测试自动化](/zh-cn/wiki/test-automation/)工程师可以向利益相关者保证该软件已准备好在其预期环境中部署和使用。
+- **文档**：它们记录了测试内容、测试方式以及测试结果，这对于将来的参考和合规性至关重要。 通过在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间精心设计和执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师可以向利益相关者保证该软件已准备好在其预期环境中部署和使用。
 
 #### FAT 期间如何识别和管理缺陷？
 
-**工厂[验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))**期间的缺陷是通过系统执行**[测试用例](/zh-cn/wiki/test-case/)**（模拟客户端或最终用户的实际使用情况）来识别的。这些[测试用例](/zh-cn/wiki/test-case/) 旨在根据商定的规范验证软件的功能、性能和可靠性。
-  当 [测试用例](/zh-cn/wiki/test-case/) 失败时，缺陷跟踪系统中会记录**缺陷。每个缺陷均按[严重性](/zh-cn/wiki/severity/) 和[priority](/zh-cn/wiki/priority/) 进行分类，并包括详细信息，例如重现步骤、预期与[实际结果](/zh-cn/wiki/actual-result/) 以及任何相关的屏幕截图或日志。这使开发人员能够有效地理解和解决问题。
+**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))**期间的缺陷是通过系统执行**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**（模拟客户端或最终用户的实际使用情况）来识别的。这些[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 旨在根据商定的规范验证软件的功能、性能和可靠性。
+  当 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 失败时，缺陷跟踪系统中会记录**缺陷。每个缺陷均按[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和[priority](https://inaodeng.com/zh-cn/wiki/priority/) 进行分类，并包括详细信息，例如重现步骤、预期与[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/) 以及任何相关的屏幕截图或日志。这使开发人员能够有效地理解和解决问题。
   缺陷管理包括：
 
 - **正在审查**缺陷以确认其有效性。
@@ -191,9 +191,9 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 - **追踪**各个阶段的缺陷状态：开放、进行中、已修复、重新测试和关闭。
 
-- **[重新测试](/zh-cn/wiki/retesting/)**已修复的缺陷，以确保它们已得到解决。
+- **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)**已修复的缺陷，以确保它们已得到解决。
 
-- **沟通**与利益相关者讨论缺陷的影响和解决进展。 [FAT](/zh-cn/wiki/fat/)期间的缺陷解决是一个协作过程，需要测试人员、开发人员、项目经理，有时还需要客户之间的协调。目标是在软件交付现场安装或发布到市场之前解决所有关键和高[priority](/zh-cn/wiki/priority/) 缺陷。 [FAT](/zh-cn/wiki/fat/) 中未解决的缺陷可以根据其影响和紧迫性，经利益相关者同意，推迟到以后的版本。该决定通过 **[变更控制](/zh-cn/wiki/change-control/) 流程**记录和管理。
+- **沟通**与利益相关者讨论缺陷的影响和解决进展。 [FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间的缺陷解决是一个协作过程，需要测试人员、开发人员、项目经理，有时还需要客户之间的协调。目标是在软件交付现场安装或发布到市场之前解决所有关键和高[priority](https://inaodeng.com/zh-cn/wiki/priority/) 缺陷。 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中未解决的缺陷可以根据其影响和紧迫性，经利益相关者同意，推迟到以后的版本。该决定通过 **[变更控制](https://inaodeng.com/zh-cn/wiki/change-control/) 流程**记录和管理。
 
 - **正在审查**缺陷以确认其有效性。
 
@@ -201,7 +201,7 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 - **追踪**各个阶段的缺陷状态：开放、进行中、已修复、重新测试和关闭。
 
-- **[重新测试](/zh-cn/wiki/retesting/)**已修复的缺陷，以确保它们已得到解决。
+- **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)**已修复的缺陷，以确保它们已得到解决。
 
 - **沟通**与利益相关者讨论缺陷的影响和解决进展。
 
@@ -209,9 +209,9 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 #### FAT 涉及的主要利益相关者有哪些？
 
-**工厂 [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))** 的主要利益相关者包括：
+**工厂 [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))** 的主要利益相关者包括：
 
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督测试过程以确保符合标准并与其他利益相关者进行协调。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督测试过程以确保符合标准并与其他利益相关者进行协调。
 - **软件开发人员**：解决 FAT 期间发现的问题并进行必要的代码调整。
 - **项目经理**：确保 FAT 与项目时间表和可交付成果保持一致。
 - **产品负责人**：提供需求清晰度和产品验收决策。
@@ -221,17 +221,17 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 - **销售和营销团队**：了解产品功能和限制，以准确告知潜在客户。
 - **合规性和监管机构**：确保软件符合行业特定标准和法规。
 - **外部供应商**：如果集成了第三方解决方案，则可能需要供应商参与来验证兼容性和功能。
-- **最终用户或客户代表**：提供有关可用性和功能的反馈，确保软件满足他们的需求。 每个利益相关者都通过提供他们独特的视角和专业知识，为全面和彻底的测试过程做出贡献，在[FAT](/zh-cn/wiki/fat/) 的成功中发挥着关键作用。
+- **最终用户或客户代表**：提供有关可用性和功能的反馈，确保软件满足他们的需求。 每个利益相关者都通过提供他们独特的视角和专业知识，为全面和彻底的测试过程做出贡献，在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的成功中发挥着关键作用。
 
 #### FAT 期间测试工程师的角色和职责是什么？
 
-在**工厂[验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))**期间，测试工程师的职责包括：
+在**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))**期间，测试工程师的职责包括：
 
-- **准备[测试计划](/zh-cn/wiki/test-plan/)和案例**与 FAT 目标保持一致，确保全面覆盖软件功能。
+- **准备[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)和案例**与 FAT 目标保持一致，确保全面覆盖软件功能。
 
 - **设置和配置**测试环境尽可能模仿生产或客户端环境。
 
-- **执行[测试用例](/zh-cn/wiki/test-case/)**和脚本，通常侧重于反映现实世界使用情况的端到端场景。
+- **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**和脚本，通常侧重于反映现实世界使用情况的端到端场景。
 
 - **监控系统行为**和测试条件下的性能，以确保软件满足商定的规格。
 
@@ -245,13 +245,13 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 - **确保可追溯性**通过将测试用例与其相应的要求联系起来，证明所有规范都已经过测试。
 
-- **提供反馈**产品质量及其在现场性能的任何潜在风险。 在整个[FAT](/zh-cn/wiki/fat/)过程中，测试工程师必须保持**挑剔的眼光**和**注重细节的方法**，平衡彻底测试的需要与时间线和资源的实际限制。
+- **提供反馈**产品质量及其在现场性能的任何潜在风险。 在整个[FAT](https://inaodeng.com/zh-cn/wiki/fat/)过程中，测试工程师必须保持**挑剔的眼光**和**注重细节的方法**，平衡彻底测试的需要与时间线和资源的实际限制。
 
-- **准备[测试计划](/zh-cn/wiki/test-plan/)和案例**与 FAT 目标保持一致，确保全面覆盖软件功能。
+- **准备[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)和案例**与 FAT 目标保持一致，确保全面覆盖软件功能。
 
 - **设置和配置**测试环境尽可能模仿生产或客户端环境。
 
-- **执行[测试用例](/zh-cn/wiki/test-case/)**和脚本，通常侧重于反映现实世界使用情况的端到端场景。
+- **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**和脚本，通常侧重于反映现实世界使用情况的端到端场景。
 
 - **监控系统行为**和测试条件下的性能，以确保软件满足商定的规格。
 
@@ -269,7 +269,7 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 #### 项目经理如何为 FAT 做出贡献？
 
-**项目经理**在**工厂 [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))** 中发挥着至关重要的作用，确保测试阶段与项目的目标和约束保持一致。他们负责**规划**和**协调**[FAT](/zh-cn/wiki/fat/) 的所有方面，其中包括定义范围、调度、资源分配和风险管理。
+**项目经理**在**工厂 [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))** 中发挥着至关重要的作用，确保测试阶段与项目的目标和约束保持一致。他们负责**规划**和**协调**[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的所有方面，其中包括定义范围、调度、资源分配和风险管理。
   项目经理的贡献包括：
 
 - **沟通**与利益相关者一起明确对 FAT 的期望和要求。
@@ -290,7 +290,7 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 - **监督**缺陷管理流程，以确保有效记录、跟踪和解决问题。
 
-- **确保** FAT 结果已完整记录并获得所有必要的签字。 通过有效管理这些方面，项目经理有助于最大限度地发挥 [FAT](/zh-cn/wiki/fat/) 的价值，从而有助于交付高质量的软件产品。
+- **确保** FAT 结果已完整记录并获得所有必要的签字。 通过有效管理这些方面，项目经理有助于最大限度地发挥 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的价值，从而有助于交付高质量的软件产品。
 
 - **沟通**与利益相关者一起明确对 FAT 的期望和要求。
 
@@ -314,81 +314,81 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 #### 客户端或最终用户在 FAT 中的角色是什么？
 
-在**工厂[验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/))**中，**客户端**或**最终用户**在发货或部署之前验证软件是否满足其特定要求方面发挥着至关重要的作用。他们的参与确保了软件的功能与其业务流程和[用例](/zh-cn/wiki/use-case/)保持一致。
+在**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/))**中，**客户端**或**最终用户**在发货或部署之前验证软件是否满足其特定要求方面发挥着至关重要的作用。他们的参与确保了软件的功能与其业务流程和[用例](https://inaodeng.com/zh-cn/wiki/use-case/)保持一致。
   客户的责任包括：
 
-- **审查和批准[测试计划](/zh-cn/wiki/test-plan/)**：确保测试场景涵盖其操作要求的所有方面。
+- **审查和批准[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**：确保测试场景涵盖其操作要求的所有方面。
 - **参与测试**：通过见证测试或自行执行测试用例，积极参与 FAT 流程。
 - **提供反馈**：提供有关软件性能、可用​​性以及符合商定规范的见解和反馈。
-- **决策**：根据测试结果授权软件发货或请求进一步修改。 最终用户的观点至关重要，因为他们对软件运行的环境和条件有实际的了解。他们的批准通常是软件被视为准备交付和后续 **Site [验收测试](/zh-cn/wiki/acceptance-testing/) (SAT)** 之前的最后一步。
+- **决策**：根据测试结果授权软件发货或请求进一步修改。 最终用户的观点至关重要，因为他们对软件运行的环境和条件有实际的了解。他们的批准通常是软件被视为准备交付和后续 **Site [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) (SAT)** 之前的最后一步。
 
 ### 挑战和最佳实践
 
 #### FAT 期间遇到哪些常见挑战？
 
-[FAT](/zh-cn/wiki/fat/)期间遇到的常见挑战包括：
+[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间遇到的常见挑战包括：
 
 - **集成问题**：确保软件与现有系统无缝集成可能很困难，这通常是由于配置或硬件的差异造成的。
-- **环境差异**：[测试环境](/zh-cn/wiki/test-environment/) 可能无法完美复制生产环境，从而导致测试结果存在潜在差异。
-- **数据复杂性**：创建真实且全面的[测试数据](/zh-cn/wiki/test-data/)来准确模拟现实世界场景可能具有挑战性。
-- **资源限制**：硬件、软件或人力资源的有限可用性可能会影响[FAT](/zh-cn/wiki/fat/) 的彻底性和时间安排。
-- **时间压力**：紧张的项目时间表可能会迫使团队匆忙[FAT](/zh-cn/wiki/fat/)，可能会影响测试质量。
-- **变更管理**：在开发周期后期处理需求或设计的变更可能会破坏 [FAT](/zh-cn/wiki/fat/) 流程。
+- **环境差异**：[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 可能无法完美复制生产环境，从而导致测试结果存在潜在差异。
+- **数据复杂性**：创建真实且全面的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)来准确模拟现实世界场景可能具有挑战性。
+- **资源限制**：硬件、软件或人力资源的有限可用性可能会影响[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的彻底性和时间安排。
+- **时间压力**：紧张的项目时间表可能会迫使团队匆忙[FAT](https://inaodeng.com/zh-cn/wiki/fat/)，可能会影响测试质量。
+- **变更管理**：在开发周期后期处理需求或设计的变更可能会破坏 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 流程。
 - **用户接受度**：在接受标准上获得所有利益相关者的共识可能很困难，特别是在存在利益冲突的情况下。
 - **沟通障碍**：开发人员、测试人员和最终用户之间的有效沟通至关重要，但可能会受到技术术语或误解的阻碍。
-- **文档**：在[FAT](/zh-cn/wiki/fat/) 中维护清晰详细的文档至关重要，但可能非常耗时且经常被忽视。
-- **缺陷解决**：识别缺陷是一方面；如果不能有效管理，及时解决和[重新测试](/zh-cn/wiki/retesting/)可能会成为瓶颈。 为了应对这些挑战，团队通常采用利益相关者的早期参与、严格的测试计划和持续沟通等策略来确保[FAT](/zh-cn/wiki/fat/)过程顺利和成功。
+- **文档**：在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中维护清晰详细的文档至关重要，但可能非常耗时且经常被忽视。
+- **缺陷解决**：识别缺陷是一方面；如果不能有效管理，及时解决和[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)可能会成为瓶颈。 为了应对这些挑战，团队通常采用利益相关者的早期参与、严格的测试计划和持续沟通等策略来确保[FAT](https://inaodeng.com/zh-cn/wiki/fat/)过程顺利和成功。
 
 - **集成问题**：确保软件与现有系统无缝集成可能很困难，这通常是由于配置或硬件的差异造成的。
-- **环境差异**：[测试环境](/zh-cn/wiki/test-environment/) 可能无法完美复制生产环境，从而导致测试结果存在潜在差异。
-- **数据复杂性**：创建真实且全面的[测试数据](/zh-cn/wiki/test-data/)来准确模拟现实世界场景可能具有挑战性。
-- **资源限制**：硬件、软件或人力资源的有限可用性可能会影响[FAT](/zh-cn/wiki/fat/) 的彻底性和时间安排。
-- **时间压力**：紧张的项目时间表可能会迫使团队匆忙[FAT](/zh-cn/wiki/fat/)，可能会影响测试质量。
-- **变更管理**：在开发周期后期处理需求或设计的变更可能会扰乱 [FAT](/zh-cn/wiki/fat/) 流程。
+- **环境差异**：[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 可能无法完美复制生产环境，从而导致测试结果存在潜在差异。
+- **数据复杂性**：创建真实且全面的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)来准确模拟现实世界场景可能具有挑战性。
+- **资源限制**：硬件、软件或人力资源的有限可用性可能会影响[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的彻底性和时间安排。
+- **时间压力**：紧张的项目时间表可能会迫使团队匆忙[FAT](https://inaodeng.com/zh-cn/wiki/fat/)，可能会影响测试质量。
+- **变更管理**：在开发周期后期处理需求或设计的变更可能会扰乱 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 流程。
 - **用户接受度**：在接受标准上获得所有利益相关者的共识可能很困难，特别是在存在利益冲突的情况下。
 - **沟通障碍**：开发人员、测试人员和最终用户之间的有效沟通至关重要，但可能会受到技术术语或误解的阻碍。
-- **文档**：在整个[FAT](/zh-cn/wiki/fat/) 中维护清晰详细的文档至关重要，但可能非常耗时且经常被忽视。
-- **缺陷解决**：识别缺陷是一方面；如果不能有效管理，及时解决和[重新测试](/zh-cn/wiki/retesting/)可能会成为瓶颈。
+- **文档**：在整个[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中维护清晰详细的文档至关重要，但可能非常耗时且经常被忽视。
+- **缺陷解决**：识别缺陷是一方面；如果不能有效管理，及时解决和[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)可能会成为瓶颈。
 
 #### 克服这些挑战的最佳实践有哪些？
 
-要克服 Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 中的挑战，请考虑以下最佳实践：
+要克服 Factory [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 中的挑战，请考虑以下最佳实践：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和关键功能，以确保最重要的方面得到彻底测试。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于风险和关键功能，以确保最重要的方面得到彻底测试。
 
 - **自动化重复任务**以节省时间并减少人为错误，但确保可以针对复杂场景进行手动测试。
 
-- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**密切反映生产环境，以确保准确的测试结果。
+- **保持强大的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**密切反映生产环境，以确保准确的测试结果。
 
 - **实施版本控制**用于测试脚本跟踪更改并保持跨测试周期的一致性。
 
 - **使用数据驱动测试**针对各种输入场景验证系统，而无需编写额外的测试用例。
 
-- **定期审查和更新[测试用例](/zh-cn/wiki/test-case/)**以反映系统要求和功能的变化。
+- **定期审查和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**以反映系统要求和功能的变化。
 
 - **促进清晰的沟通**团队成员和利益相关者之间，以确保测试目标和结果保持一致。
 
-- **为[bug](/zh-cn/wiki/bug/) 修复分配足够的时间**并重新测试以确保问题在部署前得到解决。
+- **为[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复分配足够的时间**并重新测试以确保问题在部署前得到解决。
 
 - **进行根本原因分析**缺陷，以防止将来出现类似问题。
 
-- **收集所有利益相关者的反馈** FAT 后改进后续项目的流程。 通过实施这些策略，您可以提高[FAT](/zh-cn/wiki/fat/) 的有效性，并为高质量软件产品的交付做出贡献。
+- **收集所有利益相关者的反馈** FAT 后改进后续项目的流程。 通过实施这些策略，您可以提高[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 的有效性，并为高质量软件产品的交付做出贡献。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和关键功能，以确保最重要的方面得到彻底测试。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于风险和关键功能，以确保最重要的方面得到彻底测试。
 
 - **自动化重复任务**以节省时间并减少人为错误，但确保可以针对复杂场景进行手动测试。
 
-- **保持强大的[测试环境](/zh-cn/wiki/test-environment/)**密切反映生产环境，以确保准确的测试结果。
+- **保持强大的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**密切反映生产环境，以确保准确的测试结果。
 
 - **实施版本控制**用于测试脚本跟踪更改并保持跨测试周期的一致性。
 
 - **使用数据驱动测试**针对各种输入场景验证系统，而无需编写额外的测试用例。
 
-- **定期审查和更新[测试用例](/zh-cn/wiki/test-case/)**以反映系统要求和功能的变化。
+- **定期审查和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**以反映系统要求和功能的变化。
 
 - **促进清晰的沟通**团队成员和利益相关者之间，以确保测试目标和结果保持一致。
 
-- **为[bug](/zh-cn/wiki/bug/) 修复分配足够的时间**并重新测试以确保问题在部署前得到解决。
+- **为[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复分配足够的时间**并重新测试以确保问题在部署前得到解决。
 
 - **进行根本原因分析**缺陷，以防止将来出现类似问题。
 
@@ -396,14 +396,14 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 
 #### 如何在 FAT 中利用自动化？
 
-自动化可以通过简化重复且耗时的任务来显着提高工厂[验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 的效率。可以开发自动化脚本来**模拟实际操作**并验证软件在客户环境中是否按预期运行。
-  要利用 [FAT](/zh-cn/wiki/fat/) 中的自动化，请考虑以下事项：
+自动化可以通过简化重复且耗时的任务来显着提高工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 的效率。可以开发自动化脚本来**模拟实际操作**并验证软件在客户环境中是否按预期运行。
+  要利用 [FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中的自动化，请考虑以下事项：
 
-- **自动化[环境搭建](/zh-cn/wiki/setup/)流程**：使用脚本准备测试环境，确保一致性并节省时间。
+- **自动化[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)流程**：使用脚本准备测试环境，确保一致性并节省时间。
 - **数据驱动测试**：采用允许使用各种输入数据集进行测试的框架来验证不同条件下的软件行为。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：集成自动回归测试以快速验证现有功能是否不受新更改的影响。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：集成自动回归测试以快速验证现有功能是否不受新更改的影响。
 - **持续集成 (CI)**：实施 CI 管道，在代码提交时自动触发 FAT 相关测试，确保立即反馈。
-- **报告**：利用自动化运行后生成详细报告的工具，提供对测试结果的清晰见解。 例如，使用 TypeScript 等语言的自动化 [测试脚本](/zh-cn/wiki/test-script/) 可能如下所示：
+- **报告**：利用自动化运行后生成详细报告的工具，提供对测试结果的清晰见解。 例如，使用 TypeScript 等语言的自动化 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 可能如下所示：
 
 ```
   describe('Factory Acceptance Tests', () => {
@@ -418,11 +418,11 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
     });
   });
 ```
-请记住根据**[FAT](/zh-cn/wiki/fat/) 验收标准**验证自动化测试，以确保它们符合客户的要求。通过将自动化集成到[FAT](/zh-cn/wiki/fat/)，测试工程师可以专注于更复杂的场景和[探索性测试](/zh-cn/wiki/exploratory-testing/)，而自动化测试则处理例行检查。
+请记住根据**[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 验收标准**验证自动化测试，以确保它们符合客户的要求。通过将自动化集成到[FAT](https://inaodeng.com/zh-cn/wiki/fat/)，测试工程师可以专注于更复杂的场景和[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)，而自动化测试则处理例行检查。
 
 #### 记录 FAT 结果的最佳实践有哪些？
 
-记录 Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)) 的结果对于透明度和问责制至关重要。以下是一些最佳实践：
+记录 Factory [验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) ([FAT](https://inaodeng.com/zh-cn/wiki/fat/)) 的结果对于透明度和问责制至关重要。以下是一些最佳实践：
 
 - **简洁明了**：使用清晰的语言描述结果，确保结果易于理解，无需过多细节。
 - **标准化文档**：采用一致的格式报告测试结果，包括测试用例标识符、描述、结果和任何偏差。
@@ -433,4 +433,4 @@ Factory [验收测试](/zh-cn/wiki/acceptance-testing/) ([FAT](/zh-cn/wiki/fat/)
 - **突出风险**：明确指出可能影响软件发布或生产使用的任何风险或问题。
 - **提供摘要和详细信息**：提供用于快速审查的高级摘要和用于深入分析的详细说明。
 - **审查和批准**：确保测试文档得到相关利益相关者的审查和批准，包括测试工程师、项目经理和客户。
-- **可操作的项目**：根据测试结果提出可操作的项目或建议。 通过遵循这些做法，您可以确保[FAT](/zh-cn/wiki/fat/)结果得到有效传达，为决策和进一步行动提供可靠的基础。
+- **可操作的项目**：根据测试结果提出可操作的项目或建议。 通过遵循这些做法，您可以确保[FAT](https://inaodeng.com/zh-cn/wiki/fat/)结果得到有效传达，为决策和进一步行动提供可靠的基础。

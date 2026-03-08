@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [vibe-coding](/en/AIWiki/vibe-coding/)
-- [skill](/en/AIWiki/skill/)
-- [human-in-the-loop](/en/AIWiki/human-in-the-loop/)
+- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
+- [human-in-the-loop](https://inaodeng.com/en/AIWiki/human-in-the-loop/)
 
 ### Term Metadata
 

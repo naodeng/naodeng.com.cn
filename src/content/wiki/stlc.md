@@ -50,47 +50,47 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### 什么是软件测试生命周期（STLC）？
 
-[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/)) 是在测试过程中进行的一系列特定活动，以确保[软件质量](/zh-cn/wiki/software-quality/)。 [STLC](/zh-cn/wiki/stlc/) 中的每项活动都是以有计划、系统的方式进行的。尽管[STLC](/zh-cn/wiki/stlc/) 是[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC) 的组成部分，但它仅专注于测试目标、活动和可交付成果。
-  在[STLC](/zh-cn/wiki/stlc/) 中，**测试人员**发挥着关键作用，从理解需求到开发[测试用例](/zh-cn/wiki/test-case/)、执行它们，并最终确保软件满足所需的质量标准。 [STLC](/zh-cn/wiki/stlc/) 的结构化方法有助于及早发现缺陷，从而降低修复缺陷的成本并确保产品更加稳定。
-  **[V 型](/zh-cn/wiki/v-model/)** 和 **瀑布模型** 强调顺序方法，其中测试阶段对应于开发阶段。相比之下，**敏捷模型**提倡在整个开发过程中进行持续测试，提供快速反馈和迭代改进。 **螺旋模型**结合了风险分析和迭代细化，使其适合复杂和高风险的项目。
-  了解 [STLC](/zh-cn/wiki/stlc/) 和 SDLC 至关重要，因为它使团队能够将测试无缝集成到整个开发过程中，确保质量是持续关注的焦点，而不是事后的想法。 [STLC](/zh-cn/wiki/stlc/) 为测试人员提供了一个工作框架，而 SDLC 则为测试如何融入整个软件创建和部署周期提供了更广泛的背景。他们共同确保最终产品满足功能和质量基准。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/)) 是在测试过程中进行的一系列特定活动，以确保[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中的每项活动都是以有计划、系统的方式进行的。尽管[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 是[软件开发生命周期](https://inaodeng.com/zh-cn/wiki/software-development-life-cycle/) (SDLC) 的组成部分，但它仅专注于测试目标、活动和可交付成果。
+  在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中，**测试人员**发挥着关键作用，从理解需求到开发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、执行它们，并最终确保软件满足所需的质量标准。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的结构化方法有助于及早发现缺陷，从而降低修复缺陷的成本并确保产品更加稳定。
+  **[V 型](https://inaodeng.com/zh-cn/wiki/v-model/)** 和 **瀑布模型** 强调顺序方法，其中测试阶段对应于开发阶段。相比之下，**敏捷模型**提倡在整个开发过程中进行持续测试，提供快速反馈和迭代改进。 **螺旋模型**结合了风险分析和迭代细化，使其适合复杂和高风险的项目。
+  了解 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 和 SDLC 至关重要，因为它使团队能够将测试无缝集成到整个开发过程中，确保质量是持续关注的焦点，而不是事后的想法。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 为测试人员提供了一个工作框架，而 SDLC 则为测试如何融入整个软件创建和部署周期提供了更广泛的背景。他们共同确保最终产品满足功能和质量基准。
 
 #### 为什么 STLC 在软件开发中很重要？
 
-[STLC](/zh-cn/wiki/stlc/) 在软件开发中至关重要，因为它确保对产品进行**系统且一致的测试**，从而在部署之前识别并解决缺陷。它提供了一个指导测试过程（从计划到结束）的框架，这有助于**保持软件的质量和可靠性**。通过将 [STLC](/zh-cn/wiki/stlc/) 集成到开发过程中，组织可以更好地管理测试的复杂性、有效地分配资源并遵守项目时间表。
-  在开发生命周期的早期纳入 [STLC](/zh-cn/wiki/stlc/) 可以**及早发现缺陷**，这样既具有成本效益，又可以降低后期出现重大问题的风险。它还有助于团队成员之间的**清晰沟通**，因为每个人都了解测试目标、方法和指标。这种协调对于**协作故障排除**至关重要，并增强了团队快速解决问题的能力。
-  此外，[STLC](/zh-cn/wiki/stlc/) 提供了**可追溯且可重复的**测试流程，这对于满足监管标准和审计要求非常宝贵。它可以为每个测试阶段创建详细的文档，这对于团队内的**持续改进**和知识转移至关重要。
-  总之，[STLC](/zh-cn/wiki/stlc/) 是软件开发中的一个基本元素，支持**[质量保证](/zh-cn/wiki/quality-assurance/)**、**风险管理**和**高效的资源利用**，最终有助于交付强大且可靠的软件产品。
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 在软件开发中至关重要，因为它确保对产品进行**系统且一致的测试**，从而在部署之前识别并解决缺陷。它提供了一个指导测试过程（从计划到结束）的框架，这有助于**保持软件的质量和可靠性**。通过将 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 集成到开发过程中，组织可以更好地管理测试的复杂性、有效地分配资源并遵守项目时间表。
+  在开发生命周期的早期纳入 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 可以**及早发现缺陷**，这样既具有成本效益，又可以降低后期出现重大问题的风险。它还有助于团队成员之间的**清晰沟通**，因为每个人都了解测试目标、方法和指标。这种协调对于**协作故障排除**至关重要，并增强了团队快速解决问题的能力。
+  此外，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 提供了**可追溯且可重复的**测试流程，这对于满足监管标准和审计要求非常宝贵。它可以为每个测试阶段创建详细的文档，这对于团队内的**持续改进**和知识转移至关重要。
+  总之，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 是软件开发中的一个基本元素，支持**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)**、**风险管理**和**高效的资源利用**，最终有助于交付强大且可靠的软件产品。
 
 #### STLC 的关键阶段是什么？
 
-**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 的关键阶段如下：
+**[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/))** 的关键阶段如下：
 
 1. **需求分析**：测试人员评估需求的清晰度、可测试性和完整性，以确定要执行的测试类型。
-2. **测试计划**：此阶段涉及制定 [测试方法](/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](/zh-cn/wiki/test-plan/) 文档。
-3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/) 的创建以及[测试数据](/zh-cn/wiki/test-data/) 的准备均在此处进行。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
-5. **[测试执行](/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
-6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有 [测试用例](/zh-cn/wiki/test-case/) 均得到执行，并记录学习内容和结果以供将来参考。 每个阶段对于确保软件满足所需的质量标准和按预期运行至关重要。 [测试自动化](/zh-cn/wiki/test-automation/)工程师应该专注于优化这些阶段，以提高测试过程的效率和有效性。
+2. **测试计划**：此阶段涉及制定 [测试方法](https://inaodeng.com/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 文档。
+3. **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发**：[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 的创建以及[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的准备均在此处进行。
+4. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发阶段并行完成。
+5. **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
+6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 均得到执行，并记录学习内容和结果以供将来参考。 每个阶段对于确保软件满足所需的质量标准和按预期运行至关重要。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师应该专注于优化这些阶段，以提高测试过程的效率和有效性。
 
 1. **需求分析**：测试人员评估需求的清晰度、可测试性和完整性，以确定要执行的测试类型。
-2. **测试计划**：此阶段涉及制定 [测试方法](/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](/zh-cn/wiki/test-plan/) 文档。
-3. **[测试用例](/zh-cn/wiki/test-case/) 开发**：[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/) 的创建以及[测试数据](/zh-cn/wiki/test-data/) 的准备均在此处进行。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](/zh-cn/wiki/test-case/) 开发阶段并行完成。
-5. **[测试执行](/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
-6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有[测试用例](/zh-cn/wiki/test-case/) 均得到执行，并记录学习和结果以供将来参考。
+2. **测试计划**：此阶段涉及制定 [测试方法](https://inaodeng.com/zh-cn/wiki/test-approach/) 策略，定义范围、资源、时间表和可交付成果，如 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 文档。
+3. **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发**：[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 的创建以及[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的准备均在此处进行。
+4. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：涉及配置执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 所需的硬件和软件，这可以与[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发阶段并行完成。
+5. **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：测试人员运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，记录结果，并记录发现的任何差异的缺陷。
+6. **测试周期结束**：最后阶段涉及分析测试结果，确保所有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 均得到执行，并记录学习和结果以供将来参考。
 
 #### STLC 如何提高软件的整体质量？
 
-[STLC](/zh-cn/wiki/stlc/) 通过确保在开发过程的每个阶段进行**系统测试**和**验证**来增强[软件质量](/zh-cn/wiki/software-quality/)。它有助于及早识别和解决缺陷，减少修复所需的成本和时间。通过关注**需求**，[STLC](/zh-cn/wiki/stlc/) 确保软件满足功能和非功能期望。
-  将**测试规划**和**设计**纳入生命周期可以促进创建全面的[测试用例](/zh-cn/wiki/test-case/)和涵盖广泛[用例](/zh-cn/wiki/use-case/)（包括边缘情况）的场景。这种彻底性有助于实现更高的覆盖范围，进而实现更强大的软件产品。
-  在 **[测试执行](/zh-cn/wiki/test-execution/)** 期间，[STLC](/zh-cn/wiki/stlc/) 允许评估各种条件下的软件行为，确保满足可靠性和性能标准。 [STLC](/zh-cn/wiki/stlc/) 的迭代性质，特别是在敏捷环境中，允许持续反馈和改进，使产品更紧密地与用户需求和质量基准保持一致。
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 通过确保在开发过程的每个阶段进行**系统测试**和**验证**来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。它有助于及早识别和解决缺陷，减少修复所需的成本和时间。通过关注**需求**，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 确保软件满足功能和非功能期望。
+  将**测试规划**和**设计**纳入生命周期可以促进创建全面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)和涵盖广泛[用例](https://inaodeng.com/zh-cn/wiki/use-case/)（包括边缘情况）的场景。这种彻底性有助于实现更高的覆盖范围，进而实现更强大的软件产品。
+  在 **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** 期间，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 允许评估各种条件下的软件行为，确保满足可靠性和性能标准。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的迭代性质，特别是在敏捷环境中，允许持续反馈和改进，使产品更紧密地与用户需求和质量基准保持一致。
   最后，**测试周期结束**阶段确保满足所有测试目标，并记录和解决任何剩余风险。此阶段还包括创建测试指标和报告，为未来的项目提供宝贵的见解，有助于形成组织内持续改进和学习的文化。
-  通过在整个开发过程中嵌入质量检查，[STLC](/zh-cn/wiki/stlc/) 在提供符合用户要求和行业标准的高质量软件方面发挥着关键作用。
+  通过在整个开发过程中嵌入质量检查，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 在提供符合用户要求和行业标准的高质量软件方面发挥着关键作用。
 
 #### 测试员在 STLC 中的角色是什么？
 
-[STLC](/zh-cn/wiki/stlc/) 中测试人员的角色包含确保交付高质量软件的各种职责。测试人员参与：
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中测试人员的角色包含确保交付高质量软件的各种职责。测试人员参与：
 
 - **定义**测试目标和标准，使测试活动与业务需求和风险评估保持一致。
 
@@ -110,7 +110,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 - **确保**测试环境配置正确，测试结果准确。
 
-- **参与**不断改进测试流程并根据需要采用新的工具和方法。 测试人员在整个[STLC](/zh-cn/wiki/stlc/) 中倡导质量方面发挥着关键作用，影响软件开发过程以防止缺陷并确保最终产品满足用户的需求和期望。
+- **参与**不断改进测试流程并根据需要采用新的工具和方法。 测试人员在整个[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中倡导质量方面发挥着关键作用，影响软件开发过程以防止缺陷并确保最终产品满足用户的需求和期望。
 
 - **定义**测试目标和标准，使测试活动与业务需求和风险评估保持一致。
 
@@ -136,7 +136,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### STLC 的需求分析阶段执行哪些活动？
 
-在[STLC](/zh-cn/wiki/stlc/) 的**需求分析阶段**，执行了多项关键活动，以确保测试过程符合项目目标和利益相关者的期望：
+在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的**需求分析阶段**，执行了多项关键活动，以确保测试过程符合项目目标和利益相关者的期望：
 
 - **审查需求**：测试人员仔细检查所有可用的文档，包括业务需求、技术规范和设计文档，以了解需要测试的内容。
 - **确定可测试的需求**：并非所有需求都是可测试的。此步骤涉及查明哪些需求可以通过测试进行验证。
@@ -144,11 +144,11 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 - **风险分析**：识别和评估与要求相关的潜在风险。这有助于根据风险严重程度确定测试工作的优先级。
 - **设置可追溯性**：建立可追溯性矩阵可确保每个需求都由一个或多个测试用例覆盖，从而在需求和测试之间创建清晰的链接。
 - **准备需求查询列表**：有关需求的任何问题或疑虑都会记录下来并传达给利益相关者以进行澄清。
-- **自动化可行性分析**：测试人员评估需求是否适合自动化，考虑稳定性、可重用性和投资回报等因素。 这些活动是创建稳健有效的[测试策略](/zh-cn/wiki/test-strategy/) 的基础，它将指导[STLC](/zh-cn/wiki/stlc/) 的后续阶段。
+- **自动化可行性分析**：测试人员评估需求是否适合自动化，考虑稳定性、可重用性和投资回报等因素。 这些活动是创建稳健有效的[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 的基础，它将指导[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的后续阶段。
 
 #### STLC 中测试计划阶段的目的是什么？
 
-[STLC](/zh-cn/wiki/stlc/) 中**测试计划阶段**的目的是建立指导整个测试过程的路线图。它涉及定义测试所需的**目标**、**范围**、**方法**和**资源**。在此阶段，测试主管或经理创建 **[测试计划](/zh-cn/wiki/test-plan/)** 文档，该文档充当要执行的测试活动的蓝图。
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中**测试计划阶段**的目的是建立指导整个测试过程的路线图。它涉及定义测试所需的**目标**、**范围**、**方法**和**资源**。在此阶段，测试主管或经理创建 **[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)** 文档，该文档充当要执行的测试活动的蓝图。
   主要活动包括：
 
 - **确定测试目标**：阐明测试应实现的目标。
@@ -160,13 +160,13 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### STLC 中的测试用例开发阶段涉及哪些内容？
 
-在[STLC](/zh-cn/wiki/stlc/) 的**[测试用例](/zh-cn/wiki/test-case/) 开发阶段**，重点是创建详细的[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/)。这涉及：
+在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发阶段**，重点是创建详细的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。这涉及：
 
-- **派生[测试场景](/zh-cn/wiki/test-scenario/)** ：根据要求识别可能的场景。
-- **设计[测试用例](/zh-cn/wiki/test-case/)**：制定涵盖场景所有方面的分步说明。
-- **编写[测试脚本](/zh-cn/wiki/test-script/)** ：使用适当的工具和语言开发自动化脚本。
-- **创建[测试数据](/zh-cn/wiki/test-data/)** ：生成模拟真实条件的数据集以进行彻底测试。
-- **审查和返工**：与同行合作审查测试用例/脚本的完整性和准确性。 [测试用例](/zh-cn/wiki/test-case/) 开发至关重要，因为它将需求转化为可执行的检查。它需要对应用程序的功能和用户的观点有深入的了解。自动化工程师必须确保[测试用例](/zh-cn/wiki/test-case/)可重用、可维护并提供良好的覆盖范围。 TypeScript 中的简单 [测试脚本](/zh-cn/wiki/test-script/) 示例：
+- **派生[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：根据要求识别可能的场景。
+- **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：制定涵盖场景所有方面的分步说明。
+- **编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** ：使用适当的工具和语言开发自动化脚本。
+- **创建[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：生成模拟真实条件的数据集以进行彻底测试。
+- **审查和返工**：与同行合作审查测试用例/脚本的完整性和准确性。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发至关重要，因为它将需求转化为可执行的检查。它需要对应用程序的功能和用户的观点有深入的了解。自动化工程师必须确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)可重用、可维护并提供良好的覆盖范围。 TypeScript 中的简单 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 示例：
 
 ```
   describe('Login Functionality', () => {
@@ -179,27 +179,27 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
     });
   });
 ```
-此阶段是迭代的，通常会随着新见解的出现而返回以完善[测试用例](/zh-cn/wiki/test-case/)。自动化工程师必须平衡全面测试的需求与时间和资源的实际限制。
+此阶段是迭代的，通常会随着新见解的出现而返回以完善[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。自动化工程师必须平衡全面测试的需求与时间和资源的实际限制。
 
-- **派生[测试场景](/zh-cn/wiki/test-scenario/)** ：根据要求识别可能的场景。
-- **设计[测试用例](/zh-cn/wiki/test-case/)**：制定涵盖场景所有方面的分步说明。
-- **编写[测试脚本](/zh-cn/wiki/test-script/)**：使用适当的工具和语言开发自动化脚本。
-- **创建[测试数据](/zh-cn/wiki/test-data/)**：生成模拟真实条件的数据集以进行彻底测试。
+- **派生[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：根据要求识别可能的场景。
+- **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：制定涵盖场景所有方面的分步说明。
+- **编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：使用适当的工具和语言开发自动化脚本。
+- **创建[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：生成模拟真实条件的数据集以进行彻底测试。
 - **审查和返工**：与同行合作审查测试用例/脚本的完整性和准确性。
 
 #### STLC 的测试环境设置阶段会发生什么？
 
-在[STLC](/zh-cn/wiki/stlc/) 中的 **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** 阶段，执行以下活动：
+在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中的 **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** 阶段，执行以下活动：
 
 - **配置**与生产环境或项目要求相匹配的必要硬件和软件。
 
 - **安装**以及测试服务器、数据库、操作系统和任何其他相关服务的配置。
 
-- **网络[环境搭建](/zh-cn/wiki/setup/)**确保组件之间的连接和正确通信。
+- **网络[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**确保组件之间的连接和正确通信。
 
 - **创建和配置**密切模仿生产数据或满足特定测试用例需求的测试数据。
 
-- **工具[环境搭建](/zh-cn/wiki/setup/)** ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
+- **工具[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
 
 - **访问控制**配置以确保测试团队拥有执行测试所需的权限。
 
@@ -211,11 +211,11 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 - **安装**以及测试服务器、数据库、操作系统和任何其他相关服务的配置。
 
-- **网络[环境搭建](/zh-cn/wiki/setup/)**确保组件之间的连接和正确通信。
+- **网络[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**确保组件之间的连接和正确通信。
 
 - **创建和配置**密切模仿生产数据或满足特定测试用例需求的测试数据。
 
-- **工具[环境搭建](/zh-cn/wiki/setup/)** ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
+- **工具[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** ，其中包括设置测试自动化框架、持续集成工具以及测试所需的其他软件。
 
 - **访问控制**配置以确保测试团队拥有执行测试所需的权限。
 
@@ -225,15 +225,15 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### STLC 中测试执行阶段的作用是什么？
 
-**[测试执行](/zh-cn/wiki/test-execution/) 阶段** 是针对被测软件 (SUT) 运行准备好的 [测试用例](/zh-cn/wiki/test-case/) 的阶段。此阶段至关重要，因为在此阶段根据需求验证软件并识别缺陷。自动化测试是使用[测试自动化](/zh-cn/wiki/test-automation/)框架和工具执行的，其中可以包括单元测试、集成测试、系统测试和验收测试。
-  在执行期间，[测试脚本](/zh-cn/wiki/test-script/) 与应用程序交互，并将结果与​​预期结果进行比较。任何差异都会记录为**缺陷**，供开发团队解决。自动化工程师监控测试运行，确保自动化套件按预期运行，并调查任何测试失败以找出 SUT 或测试本身的潜在问题。
-  此阶段的效率在很大程度上取决于[测试用例](/zh-cn/wiki/test-case/) 的质量和[测试自动化](/zh-cn/wiki/test-automation/) 框架的稳健性。自动化测试应设计为**可重用、可维护且可靠**，以提供一致的结果。
+**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 阶段** 是针对被测软件 (SUT) 运行准备好的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的阶段。此阶段至关重要，因为在此阶段根据需求验证软件并识别缺陷。自动化测试是使用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架和工具执行的，其中可以包括单元测试、集成测试、系统测试和验收测试。
+  在执行期间，[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 与应用程序交互，并将结果与​​预期结果进行比较。任何差异都会记录为**缺陷**，供开发团队解决。自动化工程师监控测试运行，确保自动化套件按预期运行，并调查任何测试失败以找出 SUT 或测试本身的潜在问题。
+  此阶段的效率在很大程度上取决于[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的质量和[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架的稳健性。自动化测试应设计为**可重用、可维护且可靠**，以提供一致的结果。
   此阶段的结果将输入**测试周期结束阶段**，在此阶段评估软件的整体质量，并就产品的发布准备情况做出决策。
-  总之，[测试执行](/zh-cn/wiki/test-execution/)阶段是对[STLC](/zh-cn/wiki/stlc/)的有效性进行测试，并实现测试工作的实际价值的阶段。它是直接影响**对软件质量的信心**和生产准备情况的关键组件。
+  总之，[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)阶段是对[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)的有效性进行测试，并实现测试工作的实际价值的阶段。它是直接影响**对软件质量的信心**和生产准备情况的关键组件。
 
 #### STLC 中测试周期结束阶段的意义是什么？
 
-[STLC](/zh-cn/wiki/stlc/) 中的**测试周期结束阶段**对于确保测试过程彻底、正式结束至关重要。它涉及几项关键活动：
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中的**测试周期结束阶段**对于确保测试过程彻底、正式结束至关重要。它涉及几项关键活动：
 
 - **评估可交付成果**：这确保所有测试工件都符合预定义的标准并且完整。
 - **报告**：创建详细的测试报告来记录测试工作的结果，包括对软件质量的指标和见解。
@@ -249,7 +249,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 - 促进 **持续改进**在测试过程中通过分析经验教训。
 
-- 确保 **合规性**通过正确归档所有相关文件，符合组织或监管标准。 从本质上讲，测试周期结束阶段是[STLC](/zh-cn/wiki/stlc/)的**顶峰**，确保在测试中投入的努力转化为切实的质量改进和对未来项目的可操作的见解。
+- 确保 **合规性**通过正确归档所有相关文件，符合组织或监管标准。 从本质上讲，测试周期结束阶段是[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)的**顶峰**，确保在测试中投入的努力转化为切实的质量改进和对未来项目的可操作的见解。
 
 - **评估可交付成果**：这确保所有测试工件都符合预定义的标准并且完整。
 - **报告**：创建详细的测试报告来记录测试工作的结果，包括对软件质量的指标和见解。
@@ -270,40 +270,40 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### STLC 有哪些不同型号？
 
-[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/)) 的不同模型提供了不同的测试方法，每种方法都有自己的优点和注意事项：
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/)) 的不同模型提供了不同的测试方法，每种方法都有自己的优点和注意事项：
 
-- **[V 型](/zh-cn/wiki/v-model/)**：也称为[验证 ](/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
+- **[V 型](https://inaodeng.com/zh-cn/wiki/v-model/)**：也称为[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证模型，它强调开发和测试活动之间的并行关系。每个开发阶段都有相应的测试阶段。
 - **瀑布模型**：测试阶段遵循顺序，每个阶段仅在前一个阶段完成后才开始。一旦一个阶段完成，该模型就不容易适应变化。
-- **敏捷模型**：测试集成到开发过程中，并与开发同时进行。它允许持续反馈和[迭代](/zh-cn/wiki/iteration/)，使其适合需要灵活性和适应性的项目。
+- **敏捷模型**：测试集成到开发过程中，并与开发同时进行。它允许持续反馈和[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)，使其适合需要灵活性和适应性的项目。
 - **螺旋模型**：将迭代开发与瀑布模型的系统方面相结合。它增加了风险分析，并且可以更灵活地适应整个开发过程中的变化。
-- **迭代模型**：开发和测试在[迭代](/zh-cn/wiki/iteration/)中进行，允许每个周期进行增量改进。随着时间的推移，该模型有助于完善软件和测试。
+- **迭代模型**：开发和测试在[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)中进行，允许每个周期进行增量改进。随着时间的推移，该模型有助于完善软件和测试。
 - **大爆炸模型**：仅在整个系统开发完成后才进行测试。这种模型的结构性较差，可能会在跟踪问题和确保覆盖范围方面带来挑战。
 - **快速应用程序开发 (RAD)**：专注于快速原型设计和迭代交付，其中测试与开发一起以规定的时间进行。 每个模型都有自己的**优点和缺点**，选择取决于项目要求、复杂性以及结构和灵活性之间所需的平衡。
 
 #### STLC 中的 V 模型如何工作？
 
-[STLC](/zh-cn/wiki/stlc/) 中的[V 型](/zh-cn/wiki/v-model/) 是一种**验证和[验证 ](/zh-cn/wiki/verification/)** 方法，强调开发活动及其相应测试阶段之间的并行关系。它通过形成 V 形来扩展瀑布模型，其中左侧代表开发生命周期，右侧代表测试生命周期。
-  在[V 型](/zh-cn/wiki/v-model/)中，每个开发阶段都有一个相应的并行计划的测试阶段。随着开发向下进行需求分析、系统设计和编码等阶段，相应的测试活动被并行定义，包括[系统测试](/zh-cn/wiki/system-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)和[单元测试](/zh-cn/wiki/unit-testing/)。
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中的[V 型](https://inaodeng.com/zh-cn/wiki/v-model/) 是一种**验证和[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 方法，强调开发活动及其相应测试阶段之间的并行关系。它通过形成 V 形来扩展瀑布模型，其中左侧代表开发生命周期，右侧代表测试生命周期。
+  在[V 型](https://inaodeng.com/zh-cn/wiki/v-model/)中，每个开发阶段都有一个相应的并行计划的测试阶段。随着开发向下进行需求分析、系统设计和编码等阶段，相应的测试活动被并行定义，包括[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)、[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)和[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)。
   该模型的优势在于其**早期测试规划**以及在开发阶段建立测试设计。这确保了每个可交付成果在实施开始之前都有预定义的测试策略，从而实现更彻底和结构化的测试。
-  在**需求分析**阶段，设计验收测试。系统测试是在**系统设计**阶段准备的。在**高级设计**阶段概述集成测试，并在**详细设计**阶段规划单元测试。随着开发过程从设计过渡到编码，焦点转移到 V 的右侧，按照预定义的 [测试用例](/zh-cn/wiki/test-case/) 和策略进行实际测试。
-  [V 型](/zh-cn/wiki/v-model/) 开发和测试之间的明确联系可确保及早发现和解决任何问题，从而产生更可靠、更优质的软件产品。它在需求易于理解且变化最小的环境中特别有用。
+  在**需求分析**阶段，设计验收测试。系统测试是在**系统设计**阶段准备的。在**高级设计**阶段概述集成测试，并在**详细设计**阶段规划单元测试。随着开发过程从设计过渡到编码，焦点转移到 V 的右侧，按照预定义的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和策略进行实际测试。
+  [V 型](https://inaodeng.com/zh-cn/wiki/v-model/) 开发和测试之间的明确联系可确保及早发现和解决任何问题，从而产生更可靠、更优质的软件产品。它在需求易于理解且变化最小的环境中特别有用。
 
 #### STLC 中的敏捷模型是什么？它与传统模型有何不同？
 
-[STLC](/zh-cn/wiki/stlc/) 中的 **敏捷模型** 是 [软件测试](/zh-cn/wiki/software-testing/) 的迭代和增量方法，符合敏捷软件开发的原则。它强调协作、客户反馈以及对变化的快速、灵活的响应。与瀑布等线性和顺序的传统模型不同，敏捷允许在整个开发过程中进行连续测试。
-  在敏捷[STLC](/zh-cn/wiki/stlc/)中，测试活动被集成到每个[迭代](/zh-cn/wiki/iteration/)或冲刺中，允许**持续反馈**和**适应**。测试人员与开发人员和利益相关者密切合作，以确保产品的每个增量都满足客户的需求，并及时解决任何问题。
+[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中的 **敏捷模型** 是 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的迭代和增量方法，符合敏捷软件开发的原则。它强调协作、客户反馈以及对变化的快速、灵活的响应。与瀑布等线性和顺序的传统模型不同，敏捷允许在整个开发过程中进行连续测试。
+  在敏捷[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)中，测试活动被集成到每个[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)或冲刺中，允许**持续反馈**和**适应**。测试人员与开发人员和利益相关者密切合作，以确保产品的每个增量都满足客户的需求，并及时解决任何问题。
   与传统模型的主要区别包括：
 
 - **迭代测试**：测试不是一个单独的阶段，而是与开发同时进行。
 - **适应性**：测试计划和案例随着项目的发展而变化，适应需求或范围的变化。
 - **协作**：测试人员是跨职能团队的一部分，确保持续的沟通和协作。
 - **客户参与**：客户反馈被纳入每次迭代中，影响测试场景和优先级。
-- **早期和频繁的测试**：测试从第一天开始并频繁进行，尽早发现缺陷并降低修复它们的成本。 敏捷的灵活性意味着[STLC](/zh-cn/wiki/stlc/) 不是一个一刀切的过程，而是一个适应每个项目需求的框架，确保测试成为高效交付高质量软件的一个组成部分。
+- **早期和频繁的测试**：测试从第一天开始并频繁进行，尽早发现缺陷并降低修复它们的成本。 敏捷的灵活性意味着[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 不是一个一刀切的过程，而是一个适应每个项目需求的框架，确保测试成为高效交付高质量软件的一个组成部分。
 
 #### 螺旋模型在 STLC 中的作用是什么？
 
-螺旋模型通过在每个测试阶段引入迭代风险分析和细化，在 [软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/)) 中发挥战略作用。与线性模型不同，螺旋模型通过其**循环性质**允许**持续改进**，与[测试自动化](/zh-cn/wiki/test-automation/)的增量方法很好地保持一致。
-  在 [STLC](/zh-cn/wiki/stlc/) 的背景下，螺旋模型有助于：
+螺旋模型通过在每个测试阶段引入迭代风险分析和细化，在 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/)) 中发挥战略作用。与线性模型不同，螺旋模型通过其**循环性质**允许**持续改进**，与[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的增量方法很好地保持一致。
+  在 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的背景下，螺旋模型有助于：
 
 - **早期识别风险**和不确定性，允许测试人员确定优先级并创建首先解决最关键方面的测试用例。
 
@@ -311,7 +311,7 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 - **适应性**适应需求或技术的变化，因为该模型支持在每次迭代中重新审视和修改测试计划和案例。
 
-- **客户反馈整合** ，因为该模型鼓励定期审查，这在测试自动化中特别有用，可以根据最终用户的需求调整测试脚本。 通过将螺旋模型纳入[STLC](/zh-cn/wiki/stlc/)，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保更加**灵活**和**响应性**的测试流程，能够处理复杂且不断发展的软件项目。该模型强调了 [测试自动化](/zh-cn/wiki/test-automation/) 领域**持续评估**和**适应**的重要性，确保测试策略与其旨在验证的软件一起发展。
+- **客户反馈整合** ，因为该模型鼓励定期审查，这在测试自动化中特别有用，可以根据最终用户的需求调整测试脚本。 通过将螺旋模型纳入[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保更加**灵活**和**响应性**的测试流程，能够处理复杂且不断发展的软件项目。该模型强调了 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 领域**持续评估**和**适应**的重要性，确保测试策略与其旨在验证的软件一起发展。
 
 - **早期识别风险**和不确定性，允许测试人员确定优先级并创建首先解决最关键方面的测试用例。
 
@@ -323,52 +323,52 @@ STLC 这 STLC （软件测试生命周期）概述了测试软件中的顺序任
 
 #### 瀑布模型如何影响 STLC？
 
-瀑布模型以其顺序和非迭代的方法，在[STLC](/zh-cn/wiki/stlc/) 的各个阶段中施加**线性进展**。在此模型中，测试活动是**严格有序的**，通常要等到开发阶段完成后才开始。这可能会导致测试期间发现的问题的**延迟反馈**，因为发现的任何缺陷只有在整个系统开发后才能得到解决。
+瀑布模型以其顺序和非迭代的方法，在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的各个阶段中施加**线性进展**。在此模型中，测试活动是**严格有序的**，通常要等到开发阶段完成后才开始。这可能会导致测试期间发现的问题的**延迟反馈**，因为发现的任何缺陷只有在整个系统开发后才能得到解决。
   因此，瀑布模型可能会导致**压缩测试阶段**，其中测试人员执行所有计划测试的窗口有限。这可能会导致测试团队的**压力增加**，并且由于时间限制而可能导致遗漏缺陷的风险更高。
   此外，由于需求是在周期开始时定义和锁定的，因此需求中的任何更改或误解仅在测试阶段才会浮出水面，这可能导致**成本高昂的返工**和项目延迟。
-  与更多的迭代模型相比，瀑布模型在将测试阶段的**学习和改进**合并到开发过程中的灵活性较低。这可能会影响[STLC](/zh-cn/wiki/stlc/)内测试工作的整体质量和有效性，因为对产品和测试过程本身进行**增量改进**的机会极小。
-  测试人员必须在 **规划** 和 **设计** 阶段一丝不苟，以确保全面覆盖，因为一旦 [测试执行](/zh-cn/wiki/test-execution/) 开始，就几乎没有余地重新审视这些内容。该模型的刚性要求测试人员具有**高度的纪律**和**前瞻性思维**，以便提前预测潜在问题。
+  与更多的迭代模型相比，瀑布模型在将测试阶段的**学习和改进**合并到开发过程中的灵活性较低。这可能会影响[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)内测试工作的整体质量和有效性，因为对产品和测试过程本身进行**增量改进**的机会极小。
+  测试人员必须在 **规划** 和 **设计** 阶段一丝不苟，以确保全面覆盖，因为一旦 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 开始，就几乎没有余地重新审视这些内容。该模型的刚性要求测试人员具有**高度的纪律**和**前瞻性思维**，以便提前预测潜在问题。
 
 ### STLC 与 SDLC
 
 #### 软件测试生命周期 (STLC) 和软件开发生命周期 (SDLC) 之间有什么区别？
 
-**[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 是一个全面的多步骤过程，涵盖创建软件产品所涉及的所有阶段，从最初的规划和分析到设计、开发、测试、部署和维护。它定义了每个阶段执行的任务和活动，以确保软件的系统开发并满足指定的要求。
-  相比之下，**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 SDLC 的一个子集，专门关注软件开发的[验证 ](/zh-cn/wiki/verification/) 和验证方面。这是为执行[软件测试](/zh-cn/wiki/software-testing/)而进行的一系列活动，从测试计划开始，通过测试设计和[测试执行](/zh-cn/wiki/test-execution/)，直至测试结束。 [STLC](/zh-cn/wiki/stlc/) 确保软件的每个功能都根据要求进行测试。
-  虽然 SDLC 涵盖了软件创建的端到端过程，但 [STLC](/zh-cn/wiki/stlc/) 的重点是确保软件按预期运行并且没有缺陷。 [STLC](/zh-cn/wiki/stlc/) 对于 SDLC 至关重要，因为它直接影响软件产品的质量和可靠性。它在不同的点集成在 SDLC 中，具体取决于所使用的开发模型（例如，瀑布式、敏捷式、[V 型](/zh-cn/wiki/v-model/)）。
-  了解 SDLC 和[STLC](/zh-cn/wiki/stlc/) 对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说至关重要，因为这使他们能够将测试策略与整个开发过程保持一致，确保测试不是事后的想法，而是创建高质量软件的一个组成部分。
+**[软件开发生命周期](https://inaodeng.com/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 是一个全面的多步骤过程，涵盖创建软件产品所涉及的所有阶段，从最初的规划和分析到设计、开发、测试、部署和维护。它定义了每个阶段执行的任务和活动，以确保软件的系统开发并满足指定的要求。
+  相比之下，**[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/))** 是 SDLC 的一个子集，专门关注软件开发的[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证方面。这是为执行[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/)而进行的一系列活动，从测试计划开始，通过测试设计和[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)，直至测试结束。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 确保软件的每个功能都根据要求进行测试。
+  虽然 SDLC 涵盖了软件创建的端到端过程，但 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 的重点是确保软件按预期运行并且没有缺陷。 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 对于 SDLC 至关重要，因为它直接影响软件产品的质量和可靠性。它在不同的点集成在 SDLC 中，具体取决于所使用的开发模型（例如，瀑布式、敏捷式、[V 型](https://inaodeng.com/zh-cn/wiki/v-model/)）。
+  了解 SDLC 和[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说至关重要，因为这使他们能够将测试策略与整个开发过程保持一致，确保测试不是事后的想法，而是创建高质量软件的一个组成部分。
 
 #### STLC 如何融入 SDLC？
 
-**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 是 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 的一个组成部分，是为确保 [软件质量](/zh-cn/wiki/software-quality/) 而进行的一系列活动。 SDLC 专注于软件开发，而[STLC](/zh-cn/wiki/stlc/) 则专注于[验证 ](/zh-cn/wiki/verification/) 和验证。
-  [STLC](/zh-cn/wiki/stlc/) 在定义**要求**之后和部署软件之前适合 SDLC。它与开发阶段并行运行，从**需求分析**开始，并通过**规划**、**[测试用例](/zh-cn/wiki/test-case/)开发**、**环境[环境搭建](/zh-cn/wiki/setup/)**、**[测试执行](/zh-cn/wiki/test-execution/)**和**测试周期结束**进行。
-  在**开发阶段**，测试人员通过了解需求和设置环境来为即将进行的测试做好准备。随着开发的进展，测试人员开发并审查[测试用例](/zh-cn/wiki/test-case/)，确保它们准备好执行。
-  一旦开发团队提供了软件的可测试版本，**[测试执行](/zh-cn/wiki/test-execution/) 阶段**就开始了。测试人员向开发人员报告[bugs](/zh-cn/wiki/bug/)，然后开发人员进行必要的修复。这个循环一直持续到软件满足质量标准。
-  在**敏捷环境**中，[STLC](/zh-cn/wiki/stlc/) 更具迭代性，将测试集成到每个冲刺中，从而可以持续反馈并更快地解决问题。
-  [STLC](/zh-cn/wiki/stlc/) 确保每段代码在部署前都经过测试，降低部署后问题的风险并确保产品稳定。通过将[STLC](/zh-cn/wiki/stlc/) 活动与SDLC 阶段保持一致，组织可以实现从软件创建到软件[验证 ](/zh-cn/wiki/verification/) 的无缝过渡，最终产生可靠且高质量的软件产品。
+**[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/))** 是 **[软件开发生命周期](https://inaodeng.com/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 的一个组成部分，是为确保 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 而进行的一系列活动。 SDLC 专注于软件开发，而[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 则专注于[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证。
+  [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 在定义**要求**之后和部署软件之前适合 SDLC。它与开发阶段并行运行，从**需求分析**开始，并通过**规划**、**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)开发**、**环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**、**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**和**测试周期结束**进行。
+  在**开发阶段**，测试人员通过了解需求和设置环境来为即将进行的测试做好准备。随着开发的进展，测试人员开发并审查[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，确保它们准备好执行。
+  一旦开发团队提供了软件的可测试版本，**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 阶段**就开始了。测试人员向开发人员报告[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，然后开发人员进行必要的修复。这个循环一直持续到软件满足质量标准。
+  在**敏捷环境**中，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 更具迭代性，将测试集成到每个冲刺中，从而可以持续反馈并更快地解决问题。
+  [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 确保每段代码在部署前都经过测试，降低部署后问题的风险并确保产品稳定。通过将[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 活动与SDLC 阶段保持一致，组织可以实现从软件创建到软件[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 的无缝过渡，最终产生可靠且高质量的软件产品。
 
 #### STLC 和 SDLC 有何相似之处？
 
-**[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 和 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 有一些相似之处：
+**[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/))** 和 **[软件开发生命周期](https://inaodeng.com/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 有一些相似之处：
 
-- **结构化阶段**：[STLC](/zh-cn/wiki/stlc/) 和 SDLC 都分为不同的阶段，必须按顺序完成。每个阶段都有特定的可交付成果和活动。
-- **需求分析**：两个生命周期都从理解需求开始。在 SDLC 中，它是关于构建什么，而在 [STLC](/zh-cn/wiki/stlc/) 中，它是关于测试什么。
-- **规划**：两者都涉及规划阶段。 SDLC 有一个项目规划阶段，而[STLC](/zh-cn/wiki/stlc/) 包括测试规划，其中确定策略和资源。
-- **设计**：SDLC 有系统架构的设计阶段，而[STLC](/zh-cn/wiki/stlc/) 有[测试用例](/zh-cn/wiki/test-case/) 开发阶段，其中设计[测试场景](/zh-cn/wiki/test-scenario/) 和案例。
-- **执行**：两者都包含执行阶段。在SDLC中，它是实际编码，在[STLC](/zh-cn/wiki/stlc/)中，它是[测试用例](/zh-cn/wiki/test-case/)的执行。
-- **测试和调试**：测试是两个周期的核心部分。在SDLC中，它被集成到各个阶段，而[STLC](/zh-cn/wiki/stlc/)则致力于测试自身。
-- **交付/部署**：两者都包括交付产品的阶段。 SDLC 具有部署阶段，[STLC](/zh-cn/wiki/stlc/) 具有测试周期结束，这确保产品已准备好部署。
+- **结构化阶段**：[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 和 SDLC 都分为不同的阶段，必须按顺序完成。每个阶段都有特定的可交付成果和活动。
+- **需求分析**：两个生命周期都从理解需求开始。在 SDLC 中，它是关于构建什么，而在 [STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 中，它是关于测试什么。
+- **规划**：两者都涉及规划阶段。 SDLC 有一个项目规划阶段，而[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 包括测试规划，其中确定策略和资源。
+- **设计**：SDLC 有系统架构的设计阶段，而[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发阶段，其中设计[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 和案例。
+- **执行**：两者都包含执行阶段。在SDLC中，它是实际编码，在[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)中，它是[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的执行。
+- **测试和调试**：测试是两个周期的核心部分。在SDLC中，它被集成到各个阶段，而[STLC](https://inaodeng.com/zh-cn/wiki/stlc/)则致力于测试自身。
+- **交付/部署**：两者都包括交付产品的阶段。 SDLC 具有部署阶段，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 具有测试周期结束，这确保产品已准备好部署。
 - **文档**：两者都需要大量文档以确保可追溯性并供将来参考。
-- **质量关注**：两者的目标都是提高最终产品的质量，尽管角度不同——SDLC 通过正确构建产品，[STLC](/zh-cn/wiki/stlc/) 通过确保其正常工作。
-- **迭代改进**：两者都可以迭代，在一个周期中吸取的经验教训可以在下一个周期中进行改进。 了解这些相似之处有助于[测试自动化](/zh-cn/wiki/test-automation/) 工程师将测试工作与开发流程结合起来，确保采用一致且高效的方法来创建软件和[验证 ](/zh-cn/wiki/verification/)。
+- **质量关注**：两者的目标都是提高最终产品的质量，尽管角度不同——SDLC 通过正确构建产品，[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 通过确保其正常工作。
+- **迭代改进**：两者都可以迭代，在一个周期中吸取的经验教训可以在下一个周期中进行改进。 了解这些相似之处有助于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师将测试工作与开发流程结合起来，确保采用一致且高效的方法来创建软件和[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)。
 
 #### 为什么理解 STLC 和 SDLC 很重要？
 
-了解 **[软件测试](/zh-cn/wiki/software-testing/) 生命周期 ([STLC](/zh-cn/wiki/stlc/))** 和 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 至关重要，因为它可以确保测试无缝集成到开发过程中。这种集成的关键是：
+了解 **[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期 ([STLC](https://inaodeng.com/zh-cn/wiki/stlc/))** 和 **[软件开发生命周期](https://inaodeng.com/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 至关重要，因为它可以确保测试无缝集成到开发过程中。这种集成的关键是：
 
 - **尽早识别缺陷**：了解 SDLC 有助于测试人员预测缺陷可能发生的时间和地点，从而实现早期检测和经济高效的解决。
 - **改善沟通**：熟悉 SDLC 的测试人员可以更有效地与开发人员沟通，因为他们了解开发过程的上下文和约束。
 - **增强协作**：两个周期的知识可以促进测试人员和开发人员之间更好的协作，从而形成更具凝聚力和效率的团队。
 - **调整目标**：测试人员需要将其测试目标与开发周期的目标保持一致，以确保软件满足所需的质量标准。
 - **优化资源分配**：了解SDLC使测试人员能够更有效地计划和分配测试资源，避免瓶颈并确保及时交付。
-- **适应方法**：不同的 SDLC 方法（例如敏捷、瀑布）需要不同的测试方法。测试人员必须调整他们的 STLC 以适应所选的开发方法。 从本质上讲，对[STLC](/zh-cn/wiki/stlc/) 和SDLC 的深刻理解使[测试自动化](/zh-cn/wiki/test-automation/) 工程师能够有效地将测试集成到开发过程中，确保[软件质量](/zh-cn/wiki/software-quality/) 从一开始就内置，而不是事后添加。
+- **适应方法**：不同的 SDLC 方法（例如敏捷、瀑布）需要不同的测试方法。测试人员必须调整他们的 STLC 以适应所选的开发方法。 从本质上讲，对[STLC](https://inaodeng.com/zh-cn/wiki/stlc/) 和SDLC 的深刻理解使[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师能够有效地将测试集成到开发过程中，确保[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 从一开始就内置，而不是事后添加。

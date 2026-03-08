@@ -43,7 +43,7 @@ order: 0
 
 ## 相关术语
 
-- [误报](/zh-cn/wiki/false-positive/)
+- [误报](https://inaodeng.com/zh-cn/wiki/false-positive/)
 
 ### 另请参阅：
 
@@ -55,24 +55,24 @@ order: 0
 
 #### 软件测试中的漏报是什么？
 
-在[软件测试](/zh-cn/wiki/software-testing/) 中，当测试错误地通过而未能检测到现有缺陷时，会发生 **[假阴性](/zh-cn/wiki/false-negative/)**。这可能会导致未检测到的问题被推入生产环境，从而可能导致操作问题并影响用户体验。
-  处理 [假阴性](/zh-cn/wiki/false-negative/) 涉及：
+在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中，当测试错误地通过而未能检测到现有缺陷时，会发生 **[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)**。这可能会导致未检测到的问题被推入生产环境，从而可能导致操作问题并影响用户体验。
+  处理 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 涉及：
 
 1. **调查**根本原因。
 
 2. **修正**测试用例或环境设置。
 
-3. **[重新测试](/zh-cn/wiki/retesting/)**以确认现在已检测到问题。
+3. **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)**以确认现在已检测到问题。
 
 4. **审查**类似问题的相关测试用例。
 
-5. **更新中**测试策略以减轻未来发生的情况。 自动化可以通过确保[测试执行](/zh-cn/wiki/test-execution/)和环境[环境搭建](/zh-cn/wiki/setup/)的一致性来减少[假阴性](/zh-cn/wiki/false-negative/)。然而，定期**审查和维护**自动化测试以保持其有效性至关重要。 [质量保证](/zh-cn/wiki/quality-assurance/) 通过执行严格的测试设计、彻底的审查流程和持续改进实践，在防止 [假阴性](/zh-cn/wiki/false-negative/) 方面发挥着关键作用。 [假阴性](/zh-cn/wiki/false-negative/) 可能会给[测试覆盖率](/zh-cn/wiki/test-coverage/) 带来软件运行状况的误导性印象，从而破坏[测试覆盖率](/zh-cn/wiki/test-coverage/)。他们还可以通过允许 [bugs](/zh-cn/wiki/bug/) 不被发现来破坏 [回归测试](/zh-cn/wiki/regression-testing/)，从而可能在以后引起更严重的问题。 在[敏捷开发](/zh-cn/wiki/agile-development/) 中，[假阴性](/zh-cn/wiki/false-negative/) 由于延迟了缺陷检测而与“快速失败”原则发生冲突。对于持续集成和部署，它们可能会损害自动化管道的可靠性，从而导致错误构建的升级。 为了最大限度地减少[假阴性](/zh-cn/wiki/false-negative/)的影响，必须培养质量文化，投资于稳健的测试设计，并对[测试执行](/zh-cn/wiki/test-execution/)和分析保持警惕。
+5. **更新中**测试策略以减轻未来发生的情况。 自动化可以通过确保[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)和环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)的一致性来减少[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)。然而，定期**审查和维护**自动化测试以保持其有效性至关重要。 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 通过执行严格的测试设计、彻底的审查流程和持续改进实践，在防止 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 方面发挥着关键作用。 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会给[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 带来软件运行状况的误导性印象，从而破坏[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。他们还可以通过允许 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 不被发现来破坏 [回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)，从而可能在以后引起更严重的问题。 在[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 中，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 由于延迟了缺陷检测而与“快速失败”原则发生冲突。对于持续集成和部署，它们可能会损害自动化管道的可靠性，从而导致错误构建的升级。 为了最大限度地减少[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)的影响，必须培养质量文化，投资于稳健的测试设计，并对[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)和分析保持警惕。
 
 1. **调查**根本原因。
 
 2. **修正**测试用例或环境设置。
 
-3. **[重新测试](/zh-cn/wiki/retesting/)**以确认现在已检测到问题。
+3. **[重新测试](https://inaodeng.com/zh-cn/wiki/retesting/)**以确认现在已检测到问题。
 
 4. **审查**类似问题的相关测试用例。
 
@@ -80,17 +80,17 @@ order: 0
 
 #### 假阴性与假阳性有何不同？
 
-与 **[假阴性](/zh-cn/wiki/false-negative/)** 相比，**[假阴性](/zh-cn/wiki/false-negative/)** 测试错误地通过了缺陷，而 **[误报](/zh-cn/wiki/false-positive/)** 则在测试错误地使功能功能失败时发生。 [误报](/zh-cn/wiki/false-positive/) 可能与 [假阴性](/zh-cn/wiki/false-negative/) 一样具有破坏性，导致在调试不存在的问题时浪费精力。
-  虽然 [假阴性](/zh-cn/wiki/false-negative/) 可能允许 [bugs](/zh-cn/wiki/bug/) 进入生产环境，但 [误报](/zh-cn/wiki/false-positive/) 可能会破坏对测试套件的信任并引起不必要的警报。这两种类型的错误都需要检查 [测试用例](/zh-cn/wiki/test-case/) 和自动化脚本以确保准确性和可靠性。
-  [误报](/zh-cn/wiki/false-positive/) 通常源于：
+与 **[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)** 相比，**[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)** 测试错误地通过了缺陷，而 **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)** 则在测试错误地使功能功能失败时发生。 [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 可能与 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 一样具有破坏性，导致在调试不存在的问题时浪费精力。
+  虽然 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能允许 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 进入生产环境，但 [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 可能会破坏对测试套件的信任并引起不必要的警报。这两种类型的错误都需要检查 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和自动化脚本以确保准确性和可靠性。
+  [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 通常源于：
 
 - 由于计时问题或外部依赖性而导致不稳定的测试
 - 不正确的测试断言或数据
-- 环境问题，例如配置问题或网络不稳定处理 [误报](/zh-cn/wiki/false-positive/) 涉及：
+- 环境问题，例如配置问题或网络不稳定处理 [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 涉及：
 
 - 分析并纠正根本原因
 - 提高测试稳定性和准确性
-- 确保测试是幂等且可重复的在自动化 CI/CD 管道中，[误报](/zh-cn/wiki/false-positive/) 可以停止交付过程，需要立即注意以维持流程。平衡测试的敏感性以检测真正的问题而不被误报所困扰是至关重要的。
+- 确保测试是幂等且可重复的在自动化 CI/CD 管道中，[误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 可以停止交付过程，需要立即注意以维持流程。平衡测试的敏感性以检测真正的问题而不被误报所困扰是至关重要的。
 
 - 由于计时问题或外部依赖性而导致不稳定的测试
 - 不正确的测试断言或数据
@@ -101,41 +101,41 @@ order: 0
 
 #### 软件测试中漏报的潜在原因有哪些？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中[假阴性](/zh-cn/wiki/false-negative/) 的潜在原因可能包括：
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的潜在原因可能包括：
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性通过或失败的测试可以掩盖真正的问题。
-- **不充分的[测试数据](/zh-cn/wiki/test-data/)** ：如果测试数据不能代表生产数据，则可能不会触发某些缺陷。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性通过或失败的测试可以掩盖真正的问题。
+- **不充分的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：如果测试数据不能代表生产数据，则可能不会触发某些缺陷。
 - **写得不好的断言**：不能准确反映需求的断言可能无法检测缺陷。
 - **计时问题**：未正确处理的异步操作可能会导致测试在确定实际结果之前通过。
-- **[测试环境](/zh-cn/wiki/test-environment/) 差异**：测试环境和生产环境之间的差异可能会导致问题被忽视。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 差异**：测试环境和生产环境之间的差异可能会导致问题被忽视。
 - **过时的测试**：尚未更新以反映最近的代码更改的测试可能无法捕获新的缺陷。
-- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 间隙**：没有足够测试覆盖的应用程序区域可能包含未检测到的错误。
-- **配置错误[测试工具](/zh-cn/wiki/test-tool/)**：工具设置不正确可能会导致错过缺陷或误解测试结果。
-- **人为错误**：测试用例设计、实施或结果解释中的错误可能会导致被忽视的问题。 为了缓解这些原因，定期检查和维护[测试用例](/zh-cn/wiki/test-case/)、数据和环境至关重要。此外，实施强大的日志记录和监控可以帮助识别测试结果和实际系统行为之间的差异。
+- **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 间隙**：没有足够测试覆盖的应用程序区域可能包含未检测到的错误。
+- **配置错误[测试工具](https://inaodeng.com/zh-cn/wiki/test-tool/)**：工具设置不正确可能会导致错过缺陷或误解测试结果。
+- **人为错误**：测试用例设计、实施或结果解释中的错误可能会导致被忽视的问题。 为了缓解这些原因，定期检查和维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、数据和环境至关重要。此外，实施强大的日志记录和监控可以帮助识别测试结果和实际系统行为之间的差异。
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过或失败的测试可以掩盖真正的问题。
-- **不充分的[测试数据](/zh-cn/wiki/test-data/)** ：如果测试数据不能代表生产数据，则可能不会触发某些缺陷。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过或失败的测试可以掩盖真正的问题。
+- **不充分的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：如果测试数据不能代表生产数据，则可能不会触发某些缺陷。
 - **写得不好的断言**：不能准确反映需求的断言可能无法检测缺陷。
 - **计时问题**：未正确处理的异步操作可能会导致测试在确定实际结果之前通过。
-- **[测试环境](/zh-cn/wiki/test-environment/) 差异**：测试环境和生产环境之间的差异可能会导致问题被忽视。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 差异**：测试环境和生产环境之间的差异可能会导致问题被忽视。
 - **过时的测试**：尚未更新以反映最近的代码更改的测试可能无法捕获新的缺陷。
-- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 间隙**：没有足够测试覆盖的应用程序区域可能包含未检测到的错误。
-- **配置错误[测试工具](/zh-cn/wiki/test-tool/)**：工具设置不正确可能会导致错过缺陷或误解测试结果。
+- **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 间隙**：没有足够测试覆盖的应用程序区域可能包含未检测到的错误。
+- **配置错误[测试工具](https://inaodeng.com/zh-cn/wiki/test-tool/)**：工具设置不正确可能会导致错过缺陷或误解测试结果。
 - **人为错误**：测试用例设计、实施或结果解释中的错误可能会导致被忽视的问题。
 
 #### 漏报如何影响整个测试过程？
 
-[假阴性](/zh-cn/wiki/false-negative/) 可能会**破坏测试过程中的信任**，导致**错误的安全感**。当测试未能检测到实际缺陷时，团队可能会继续部署，但只会在生产中遇到问题。这可能会导致**计划外工作**、**客户不满意**以及潜在的**收入损失**。
-  随着时间的推移，[假阴性](/zh-cn/wiki/false-negative/) 可能会**侵蚀[测试套件](/zh-cn/wiki/test-suite/) 的可信度**。如果利益相关者认为测试不可靠，他们可能会**降低其价值**，这可能会导致测试基础设施和资源的投资减少。
-  此外，[假阴性](/zh-cn/wiki/false-negative/) 可以**掩盖其他问题的存在**。例如，由于缺陷而应失败的测试可能会因不相关的问题而通过，例如[测试环境](/zh-cn/wiki/test-environment/)中的配置错误。这可能会分散对真正问题的注意力，导致在故障排除和诊断问题时**浪费精力**。
-  在**风险管理**的背景下，[假阴性](/zh-cn/wiki/false-negative/)可能导致**不充分的风险评估**。基于有缺陷的测试结果做出的决策可能无法准确反映实际风险，可能导致修复和更新的**不适当的优先级**。
-  最后，在**敏捷或 CI/CD 环境**中，[假阴性](/zh-cn/wiki/false-negative/) 的存在可能会破坏连续反馈流。这可能会减慢开发速度并延迟功能和修复的交付，最终影响开发周期的**速度和效率**。
+[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会**破坏测试过程中的信任**，导致**错误的安全感**。当测试未能检测到实际缺陷时，团队可能会继续部署，但只会在生产中遇到问题。这可能会导致**计划外工作**、**客户不满意**以及潜在的**收入损失**。
+  随着时间的推移，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会**侵蚀[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的可信度**。如果利益相关者认为测试不可靠，他们可能会**降低其价值**，这可能会导致测试基础设施和资源的投资减少。
+  此外，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可以**掩盖其他问题的存在**。例如，由于缺陷而应失败的测试可能会因不相关的问题而通过，例如[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)中的配置错误。这可能会分散对真正问题的注意力，导致在故障排除和诊断问题时**浪费精力**。
+  在**风险管理**的背景下，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)可能导致**不充分的风险评估**。基于有缺陷的测试结果做出的决策可能无法准确反映实际风险，可能导致修复和更新的**不适当的优先级**。
+  最后，在**敏捷或 CI/CD 环境**中，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的存在可能会破坏连续反馈流。这可能会减慢开发速度并延迟功能和修复的交付，最终影响开发周期的**速度和效率**。
 
 #### 软件测试中有哪些误报的例子？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的 [假阴性](/zh-cn/wiki/false-negative/) 示例可能会因上下文和正在运行的测试类型而有很大差异。以下是一些场景：
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 示例可能会因上下文和正在运行的测试类型而有很大差异。以下是一些场景：
 
-1. **[片状测试](/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试间歇性失败，但在特定运行中，尽管存在缺陷，但测试仍然通过。
+1. **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试间歇性失败，但在特定运行中，尽管存在缺陷，但测试仍然通过。
 
 ```
     // Flaky test example
@@ -160,7 +160,7 @@ order: 0
     });
 ```
 
-3. **[测试环境](/zh-cn/wiki/test-environment/) 差异**：[测试环境](/zh-cn/wiki/test-environment/) 与生产不匹配，导致缺陷未被检测到。
+3. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 差异**：[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 与生产不匹配，导致缺陷未被检测到。
 
 ```
     // Environment-specific test
@@ -185,7 +185,7 @@ order: 0
     });
 ```
 
-5. **数据敏感性**：[测试数据](/zh-cn/wiki/test-data/) 并不代表现实世界的场景，因此会遗漏边缘情况。
+5. **数据敏感性**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 并不代表现实世界的场景，因此会遗漏边缘情况。
 
 ```
     // Data sensitivity example
@@ -196,9 +196,9 @@ order: 0
       expect(result).toHaveProperty('status', 'success');
     });
 ```
-在每种情况下，[测试套件](/zh-cn/wiki/test-suite/) 可能会报告通过，但由于概述的问题，代码库中可能仍然存在缺陷。
+在每种情况下，[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 可能会报告通过，但由于概述的问题，代码库中可能仍然存在缺陷。
 
-1. **[片状测试](/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试间歇性失败，但在特定运行中，尽管存在缺陷，但测试仍会通过。
+1. **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：由于计时问题或外部依赖性，测试间歇性失败，但在特定运行中，尽管存在缺陷，但测试仍会通过。
 
 ```
     // Flaky test example
@@ -223,7 +223,7 @@ order: 0
     });
 ```
 
-3. **[测试环境](/zh-cn/wiki/test-environment/) 差异**：[测试环境](/zh-cn/wiki/test-environment/) 与生产不匹配，导致缺陷未被检测到。
+3. **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 差异**：[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 与生产不匹配，导致缺陷未被检测到。
 
 ```
     // Environment-specific test
@@ -248,7 +248,7 @@ order: 0
     });
 ```
 
-5. **数据敏感性**：[测试数据](/zh-cn/wiki/test-data/) 并不代表现实世界的场景，因此会遗漏边缘情况。
+5. **数据敏感性**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 并不代表现实世界的场景，因此会遗漏边缘情况。
 
 ```
     // Data sensitivity example
@@ -264,44 +264,44 @@ order: 0
 
 #### 可以使用哪些策略来防止漏报？
 
-要防止软件 [测试自动化](/zh-cn/wiki/test-automation/) 中出现 [假阴性](/zh-cn/wiki/false-negative/)，请考虑以下策略：
+要防止软件 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中出现 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)，请考虑以下策略：
 
-- **审查和完善[测试用例](/zh-cn/wiki/test-case/)**：定期审查[测试用例](/zh-cn/wiki/test-case/) 的准确性和相关性。更新它们以反映应用程序中的更改并消除任何可能导致误解的歧义。
-- **提高[测试数据](/zh-cn/wiki/test-data/) 质量**：确保[测试数据](/zh-cn/wiki/test-data/) 代表生产数据。使用数据清理和匿名技术来维护数据完整性而不损害隐私。
-- **增强[测试环境](/zh-cn/wiki/test-environment/)稳定性**：尽可能模仿生产环境。解决可能导致不稳定测试行为的环境问题，例如网络延迟或资源限制。
+- **审查和完善[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：定期审查[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的准确性和相关性。更新它们以反映应用程序中的更改并消除任何可能导致误解的歧义。
+- **提高[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 质量**：确保[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 代表生产数据。使用数据清理和匿名技术来维护数据完整性而不损害隐私。
+- **增强[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)稳定性**：尽可能模仿生产环境。解决可能导致不稳定测试行为的环境问题，例如网络延迟或资源限制。
 - **有效利用断言**：写出清晰准确的断言。避免过于宽泛或不具体的断言，否则可能会错过失败。
 - **实施强大的错误处理**：设计测试以优雅地处理意外情况。这包括正确的异常处理和恢复场景。
-- **同步[测试执行](/zh-cn/wiki/test-execution/)**：引入等待或同步点来处理异步操作和动态内容，减少与时序相关的[假阴性](/zh-cn/wiki/false-negative/)。
-- **定期更新自动化工具**：保持自动化框架和工具处于最新状态，以利用改进和[bug](/zh-cn/wiki/bug/)修复，从而减少[假阴性](/zh-cn/wiki/false-negative/)。
-- **进行代码审查**：对 [测试脚本](/zh-cn/wiki/test-script/) 进行同行审查，以发现可能导致 [假阴性](/zh-cn/wiki/false-negative/) 的潜在问题。
-- **监控测试不稳定**：跟踪 [片状测试](/zh-cn/wiki/flaky-test/) 并调查根本原因。解决竞争条件或不可靠依赖项等问题。
-- **促进协作**：鼓励开发人员、测试人员和运营人员之间进行协作，以分享有助于识别和预防 [假阴性](/zh-cn/wiki/false-negative/) 的知识和见解。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以最大限度地减少[假阴性](/zh-cn/wiki/false-negative/) 的发生，确保测试过程更加可靠和有效。
+- **同步[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：引入等待或同步点来处理异步操作和动态内容，减少与时序相关的[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)。
+- **定期更新自动化工具**：保持自动化框架和工具处于最新状态，以利用改进和[bug](https://inaodeng.com/zh-cn/wiki/bug/)修复，从而减少[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)。
+- **进行代码审查**：对 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 进行同行审查，以发现可能导致 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的潜在问题。
+- **监控测试不稳定**：跟踪 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 并调查根本原因。解决竞争条件或不可靠依赖项等问题。
+- **促进协作**：鼓励开发人员、测试人员和运营人员之间进行协作，以分享有助于识别和预防 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的知识和见解。 通过实施这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以最大限度地减少[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的发生，确保测试过程更加可靠和有效。
 
 #### 发生漏报时如何处理？
 
-有效处理[假阴性](/zh-cn/wiki/false-negative/)需要立即采取行动和长期战略相结合。这是一个简洁的指南：
+有效处理[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)需要立即采取行动和长期战略相结合。这是一个简洁的指南：
 
 1. **隔离事件**：一旦检测到漏报，隔离测试用例，防止其影响其他测试。
 2. **分析和重现** ：分析测试结果和环境，了解发生假阴性的原因。尝试重现该问题以确保它不是一次性事件。
 3. **修复测试**：如果漏报是由于测试本身的缺陷造成的，例如不正确的断言或计时问题，请更新测试以准确反映预期行为。
-4. **改进[测试数据](/zh-cn/wiki/test-data/)** ：确保测试数据具有代表性和最新性，以避免测试场景与实际使用情况不匹配。
-5. **增强[测试环境](/zh-cn/wiki/test-environment/)** ：使测试环境与生产环境尽可能保持一致，以减少差异。
+4. **改进[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：确保测试数据具有代表性和最新性，以避免测试场景与实际使用情况不匹配。
+5. **增强[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：使测试环境与生产环境尽可能保持一致，以减少差异。
 6. **监控不稳定**：实施一个系统来跟踪不稳定的测试。如果测试经常导致漏报，请优先修复或重构它。
 7. **更新文档**：记录误报以及解决该问题所采取的步骤，以便有记录供将来参考。
-8. **教育团队**：与您的团队分享经验教训，以防止将来出现类似问题。 通过执行这些步骤，您可以减轻[假阴性](/zh-cn/wiki/false-negative/) 的影响并提高[测试自动化](/zh-cn/wiki/test-automation/) 套件的可靠性。请记住，目标是确保您的自动化测试始终提供值得信赖的反馈来支持开发过程。
+8. **教育团队**：与您的团队分享经验教训，以防止将来出现类似问题。 通过执行这些步骤，您可以减轻[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的影响并提高[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 套件的可靠性。请记住，目标是确保您的自动化测试始终提供值得信赖的反馈来支持开发过程。
 
 1. **隔离事件**：一旦检测到漏报，隔离测试用例，防止其影响其他测试。
 2. **分析和重现** ：分析测试结果和环境，了解发生假阴性的原因。尝试重现该问题以确保它不是一次性事件。
 3. **修复测试**：如果漏报是由于测试本身的缺陷造成的，例如不正确的断言或计时问题，请更新测试以准确反映预期行为。
-4. **改进[测试数据](/zh-cn/wiki/test-data/)** ：确保测试数据具有代表性和最新性，以避免测试场景与实际使用情况不匹配。
-5. **增强[测试环境](/zh-cn/wiki/test-environment/)** ：使测试环境尽可能与生产环境保持一致，以减少差异。
+4. **改进[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：确保测试数据具有代表性和最新性，以避免测试场景与实际使用情况不匹配。
+5. **增强[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：使测试环境尽可能与生产环境保持一致，以减少差异。
 6. **监控不稳定**：实施一个系统来跟踪不稳定的测试。如果测试经常导致漏报，请优先修复或重构它。
 7. **更新文档**：记录误报以及解决该问题所采取的步骤，以便有记录供将来参考。
 8. **教育团队**：与您的团队分享经验教训，以防止将来出现类似问题。
 
 #### 识别漏报后应采取哪些步骤？
 
-识别[假阴性](/zh-cn/wiki/false-negative/)后：
+识别[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)后：
 
 1. **分析**通过检查测试日志、代码和测试数据来找出根本原因。
 
@@ -370,41 +370,41 @@ order: 0
 
 #### 自动化如何帮助减少漏报的发生？
 
-通过确保[测试执行](/zh-cn/wiki/test-execution/)中的**一致性**和**准确性**，自动化可以显着**减少[软件测试](/zh-cn/wiki/software-testing/)中的[假阴性](/zh-cn/wiki/false-negative/)**。自动化测试是脚本化的，一旦编写，每次运行时都会执行相同的操作，这消除了可能导致[假阴性](/zh-cn/wiki/false-negative/)的人为错误因素。
-  使用**持续集成**工具，可以频繁运行自动化测试，确保代码库中的更改得到一致验证，这有助于及早发现可能会被遗漏和错误标记为通过的问题（[假阴性](/zh-cn/wiki/false-negative/)）。
-  此外，自动化支持实现**全面的[测试套件](/zh-cn/wiki/test-suite/)**，它可以覆盖广泛的场景，包括可能无法彻底手动测试的边缘情况。这种广泛的覆盖范围增加了发现缺陷的可能性。
-  自动化测试还可以与实时跟踪和报告测试结果的**监控工具**集成。这种集成可以帮助快速识别测试结果中可能指示[假阴性](/zh-cn/wiki/false-negative/)的任何异常，从而可以立即进行调查和解决。
-  此外，自动化框架通常带有**内置重试机制**，可以配置为自动重新运行失败的测试，以排除间歇性问题或环境问题作为失败的原因，从而减少[假阴性](/zh-cn/wiki/false-negative/)的机会。
-  最后，自动化允许实施**数据驱动测试**，其中使用各种输入组合执行测试。这种方法确保应用程序针对更广泛的数据集进行测试，这可以发现如果不进行测试则可能导致[假阴性](/zh-cn/wiki/false-negative/) 的缺陷。
+通过确保[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)中的**一致性**和**准确性**，自动化可以显着**减少[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/)中的[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)**。自动化测试是脚本化的，一旦编写，每次运行时都会执行相同的操作，这消除了可能导致[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)的人为错误因素。
+  使用**持续集成**工具，可以频繁运行自动化测试，确保代码库中的更改得到一致验证，这有助于及早发现可能会被遗漏和错误标记为通过的问题（[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)）。
+  此外，自动化支持实现**全面的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**，它可以覆盖广泛的场景，包括可能无法彻底手动测试的边缘情况。这种广泛的覆盖范围增加了发现缺陷的可能性。
+  自动化测试还可以与实时跟踪和报告测试结果的**监控工具**集成。这种集成可以帮助快速识别测试结果中可能指示[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)的任何异常，从而可以立即进行调查和解决。
+  此外，自动化框架通常带有**内置重试机制**，可以配置为自动重新运行失败的测试，以排除间歇性问题或环境问题作为失败的原因，从而减少[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)的机会。
+  最后，自动化允许实施**数据驱动测试**，其中使用各种输入组合执行测试。这种方法确保应用程序针对更广泛的数据集进行测试，这可以发现如果不进行测试则可能导致[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的缺陷。
   总之，自动化通过提供一致、准确和广泛的测试能力来增强对真阴性的检测。
 
 #### 质量保证在防止漏报方面发挥什么作用？
 
-[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 通过确保[测试自动化](/zh-cn/wiki/test-automation/) 框架、[测试用例](/zh-cn/wiki/test-case/) 和整体测试环境稳健可靠，在**预防[假阴性](/zh-cn/wiki/false-negative/)** 中发挥着关键作用。质量检查团队负责：
+[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 通过确保[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和整体测试环境稳健可靠，在**预防[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)** 中发挥着关键作用。质量检查团队负责：
 
-- **设计全面的[测试用例](/zh-cn/wiki/test-case/)**涵盖广泛的场景，包括边缘情况，以最大限度地减少由于未经测试的路径而导致漏报的风险。
+- **设计全面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**涵盖广泛的场景，包括边缘情况，以最大限度地减少由于未经测试的路径而导致漏报的风险。
 
-- **保持准确和最新的[测试数据](/zh-cn/wiki/test-data/)**确保测试反映现实条件并能够准确检测故障。
+- **保持准确和最新的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**确保测试反映现实条件并能够准确检测故障。
 
-- **定期审查和更新[测试脚本](/zh-cn/wiki/test-script/)**与应用程序中的更改保持一致，从而防止过时的测试造成的漏报。
+- **定期审查和更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与应用程序中的更改保持一致，从而防止过时的测试造成的漏报。
 
 - **实施制衡**例如代码审查和结对编程，以捕获测试代码中可能导致漏报的错误。
 
-- **监控[测试执行](/zh-cn/wiki/test-execution/)**快速识别并解决测试环境或测试基础设施中可能导致漏报的任何问题。
+- **监控[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**快速识别并解决测试环境或测试基础设施中可能导致漏报的任何问题。
 
 - **分析测试结果**彻底区分真实通行证和漏报，确保调查任何可疑通行证。
 
-- **确保正确的配置管理**以便测试在一致的环境中运行，减少环境因素导致漏报的机会。 通过关注这些领域，QA 有助于为[测试自动化](/zh-cn/wiki/test-automation/) 奠定坚实的基础，降低[假阴性](/zh-cn/wiki/false-negative/) 的可能性并保持测试过程的完整性。
+- **确保正确的配置管理**以便测试在一致的环境中运行，减少环境因素导致漏报的机会。 通过关注这些领域，QA 有助于为[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 奠定坚实的基础，降低[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 的可能性并保持测试过程的完整性。
 
-- **设计全面的[测试用例](/zh-cn/wiki/test-case/)**涵盖广泛的场景，包括边缘情况，以最大限度地减少由于未经测试的路径而导致漏报的风险。
+- **设计全面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**涵盖广泛的场景，包括边缘情况，以最大限度地减少由于未经测试的路径而导致漏报的风险。
 
-- **保持准确和最新的[测试数据](/zh-cn/wiki/test-data/)**确保测试反映现实条件并能够准确检测故障。
+- **保持准确和最新的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**确保测试反映现实条件并能够准确检测故障。
 
-- **定期审查和更新[测试脚本](/zh-cn/wiki/test-script/)**与应用程序中的更改保持一致，从而防止过时的测试造成的漏报。
+- **定期审查和更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与应用程序中的更改保持一致，从而防止过时的测试造成的漏报。
 
 - **实施制衡**例如代码审查和结对编程，以捕获测试代码中可能导致漏报的错误。
 
-- **监控[测试执行](/zh-cn/wiki/test-execution/)**快速识别并解决测试环境或测试基础设施中可能导致漏报的任何问题。
+- **监控[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**快速识别并解决测试环境或测试基础设施中可能导致漏报的任何问题。
 
 - **分析测试结果**彻底区分真实通行证和漏报，确保调查任何可疑通行证。
 
@@ -414,20 +414,20 @@ order: 0
 
 #### 漏报与测试覆盖率的概念有何关系？
 
-[假阴性](/zh-cn/wiki/false-negative/) 可以通过提供**误导性的安全感**来**破坏[测试覆盖率](/zh-cn/wiki/test-coverage/) 的有效性**。 [测试覆盖率](/zh-cn/wiki/test-coverage/) 通常测量 [测试套件](/zh-cn/wiki/test-suite/) 执行源代码的程度。但是，如果 [测试用例](/zh-cn/wiki/test-case/) 由于 [假阴性](/zh-cn/wiki/false-negative/)（存在缺陷但测试未检测到它）而通过，则覆盖率指标可能无法准确反映代码可靠性的真实状态。
-  在 [测试覆盖率](/zh-cn/wiki/test-coverage/) 较高的情况下，利益相关者可能会相信该软件经过了充分测试且稳定。但是，[假阴性](/zh-cn/wiki/false-negative/) 可能意味着某些缺陷未被捕获，尽管在测试期间正在执行代码路径。这可能会导致软件版本中出现**未识别的风险**，因为覆盖率指标不考虑测试结果的准确性。
-  为了保持 [测试覆盖率](/zh-cn/wiki/test-coverage/) 的完整性，确保测试不仅覆盖代码，而且**有效地断言**正确的行为至关重要。这涉及：
+[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可以通过提供**误导性的安全感**来**破坏[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的有效性**。 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 通常测量 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 执行源代码的程度。但是，如果 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 由于 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)（存在缺陷但测试未检测到它）而通过，则覆盖率指标可能无法准确反映代码可靠性的真实状态。
+  在 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 较高的情况下，利益相关者可能会相信该软件经过了充分测试且稳定。但是，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能意味着某些缺陷未被捕获，尽管在测试期间正在执行代码路径。这可能会导致软件版本中出现**未识别的风险**，因为覆盖率指标不考虑测试结果的准确性。
+  为了保持 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的完整性，确保测试不仅覆盖代码，而且**有效地断言**正确的行为至关重要。这涉及：
 
 - 严格的测试用例设计，覆盖不同场景。
 - 持续审查和增强测试用例以捕获边缘情况。
-- 实施 **强大的断言机制**以减少忽视故障的可能性。 通过主动解决[假阴性](/zh-cn/wiki/false-negative/)，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保高[测试覆盖率](/zh-cn/wiki/test-coverage/) 转化为高[软件质量](/zh-cn/wiki/software-quality/)，从而保持对[测试套件](/zh-cn/wiki/test-suite/) 检测缺陷能力的信任。
+- 实施 **强大的断言机制**以减少忽视故障的可能性。 通过主动解决[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 转化为高[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)，从而保持对[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 检测缺陷能力的信任。
 
     **强大的断言机制**
     以减少忽视故障的可能性。
 
 #### 假阴性对回归测试有什么影响？
 
-[回归测试](/zh-cn/wiki/regression-testing/) 中的[假阴性](/zh-cn/wiki/false-negative/) 可能会对软件的质量和稳定性产生**重大影响**。当测试未能检测到现有缺陷时，软件可能会通过管道进行**未检测到的问题**，并有可能进入生产阶段。这可能会导致：
+[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 中的[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会对软件的质量和稳定性产生**重大影响**。当测试未能检测到现有缺陷时，软件可能会通过管道进行**未检测到的问题**，并有可能进入生产阶段。这可能会导致：
 
 - **未发现的回归**：关键功能可能会在未被注意到的情况下崩溃，从而导致糟糕的用户体验。
 - **风险增加**：随着测试套件提供的安全网变得不可靠，对发布的信心会降低。
@@ -438,9 +438,9 @@ order: 0
 
 - 实施 **强大的日志记录**和 **监控**发现测试中漏掉的问题。
 
-- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**优先考虑应用程序中最关键的领域。
+- 使用 **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**优先考虑应用程序中最关键的领域。
 
-- 培养一个 **品质文化** ，开发人员和测试人员密切合作以了解变更及其潜在影响。 总之，[假阴性](/zh-cn/wiki/false-negative/) 可能会破坏[回归测试](/zh-cn/wiki/regression-testing/) 的有效性，但通过积极主动的策略和对质量的关注，可以将其影响降至最低。
+- 培养一个 **品质文化** ，开发人员和测试人员密切合作以了解变更及其潜在影响。 总之，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会破坏[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 的有效性，但通过积极主动的策略和对质量的关注，可以将其影响降至最低。
 
 - **未发现的回归**：关键功能可能会在未被注意到的情况下崩溃，从而导致糟糕的用户体验。
 - **风险增加**：随着测试套件提供的安全网变得不可靠，对发布的信心会降低。
@@ -450,21 +450,21 @@ order: 0
 
 - 实施 **强大的日志记录**和 **监控**发现测试中漏掉的问题。
 
-- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**优先考虑应用程序中最关键的领域。
+- 使用 **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**优先考虑应用程序中最关键的领域。
 
 - 培养一个 **品质文化** ，开发人员和测试人员密切合作以了解变更及其潜在影响。
 
 #### 漏报如何影响测试套件的可靠性？
 
-[假阴性](/zh-cn/wiki/false-negative/) 可以**破坏[测试套件](/zh-cn/wiki/test-suite/) 中的信任**，导致**错误的安全感**。当测试未能检测到实际缺陷时，团队可能会继续部署，但只会在生产中遇到问题。这可能会导致**意外停机**、**客户不满意**以及**由于需要修补或回滚而导致成本增加**。
-  此外，[假阴性](/zh-cn/wiki/false-negative/) 可以**扭曲用于衡量软件质量的指标**，例如缺陷密度或平均故障时间。这种不实陈述可能会影响决策过程、资源分配和开发任务的优先级。
-  在**持续集成 (CI)** 和 **持续部署 (CD)** 的背景下，[假阴性](/zh-cn/wiki/false-negative/) 可能会导致通过管道推广不稳定的构建，从而损害交付过程的完整性。这也可能**增加开发人员和测试人员的工作量**，他们必须识别并纠正遗漏的缺陷。
-  为了维护 [测试套件](/zh-cn/wiki/test-suite/) 的可靠性，**定期审查和更新** [测试用例](/zh-cn/wiki/test-case/) 至关重要，确保它们对应用程序中的更改敏感。此外，结合**代码审查**、**结对编程**和**跨职能团队协作**可以帮助及早发现和预防[假阴性](/zh-cn/wiki/false-negative/)。
-  在奉行“快速失败”理念的敏捷环境中，[假阴性](/zh-cn/wiki/false-negative/) 可能会破坏反馈循环，延迟问题的识别和产品的迭代改进。因此，维护健壮可靠的[测试套件](/zh-cn/wiki/test-suite/) 对于敏捷团队实现快速[迭代](/zh-cn/wiki/iteration/) 和频繁发布的好处至关重要。
+[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可以**破坏[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中的信任**，导致**错误的安全感**。当测试未能检测到实际缺陷时，团队可能会继续部署，但只会在生产中遇到问题。这可能会导致**意外停机**、**客户不满意**以及**由于需要修补或回滚而导致成本增加**。
+  此外，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可以**扭曲用于衡量软件质量的指标**，例如缺陷密度或平均故障时间。这种不实陈述可能会影响决策过程、资源分配和开发任务的优先级。
+  在**持续集成 (CI)** 和 **持续部署 (CD)** 的背景下，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会导致通过管道推广不稳定的构建，从而损害交付过程的完整性。这也可能**增加开发人员和测试人员的工作量**，他们必须识别并纠正遗漏的缺陷。
+  为了维护 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的可靠性，**定期审查和更新** [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 至关重要，确保它们对应用程序中的更改敏感。此外，结合**代码审查**、**结对编程**和**跨职能团队协作**可以帮助及早发现和预防[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)。
+  在奉行“快速失败”理念的敏捷环境中，[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会破坏反馈循环，延迟问题的识别和产品的迭代改进。因此，维护健壮可靠的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 对于敏捷团队实现快速[迭代](https://inaodeng.com/zh-cn/wiki/iteration/) 和频繁发布的好处至关重要。
 
 #### 漏报如何影响敏捷开发中“快速失败”的概念？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 中的[假阴性](/zh-cn/wiki/false-negative/) 可能会严重破坏[敏捷开发](/zh-cn/wiki/agile-development/) 中的**快速失败**原则。该原则强调快速识别和解决问题以保持快速开发速度并确保高质量交付成果的重要性。当测试由于[假阴性](/zh-cn/wiki/false-negative/)而错误地通过时，缺陷可能会漏掉而未被发现，从而导致：
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 可能会严重破坏[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 中的**快速失败**原则。该原则强调快速识别和解决问题以保持快速开发速度并确保高质量交付成果的重要性。当测试由于[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)而错误地通过时，缺陷可能会漏掉而未被发现，从而导致：
 
 - **延迟反馈**：开发人员不会实时收到缺陷警报，这可能会导致在开发周期后期进行更复杂且耗时的修复。
 - **技术债务增加**：随着缺陷的累积而未被注意到，代码库的质量会下降，可能会导致更难以解决的问题的滚雪球效应。
@@ -493,7 +493,7 @@ order: 0
 
 #### 漏报如何影响持续集成和部署过程？
 
-[假阴性](/zh-cn/wiki/false-negative/) 在持续集成 (CI) 和部署的背景下可能会导致**重大风险**和**低效率**。当测试未能检测到实际缺陷时，这些 [bugs](/zh-cn/wiki/bug/) 可能会通过 CI 管道传播，并可能到达生产环境。这可能会导致：
+[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 在持续集成 (CI) 和部署的背景下可能会导致**重大风险**和**低效率**。当测试未能检测到实际缺陷时，这些 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 可能会通过 CI 管道传播，并可能到达生产环境。这可能会导致：
 
 - **未检测到的问题**：严重错误可能会进入生产环境，导致系统故障或用户面临的问题，从而损害软件和组织的声誉。
 - **无效的反馈循环**：CI 依赖自动化测试来提供快速反馈。漏报会破坏这一点，导致错误的安全感和延迟识别问题。
@@ -503,7 +503,7 @@ order: 0
 - **审查测试结果**：定期分析测试结果以确保准确性。
 - **监控部署**：实施监控和警报工具以快速捕获部署后的问题。
 - **改进测试设计**：不断完善测试以涵盖可能导致漏报的边缘情况和场景。
-- **促进协作**：鼓励开发人员、测试人员和运营人员共同努力，了解和解决误报的根本原因。 通过主动解决[假阴性](/zh-cn/wiki/false-negative/)，团队可以维护 CI/CD 管道的完整性，确保只有经过充分测试的高质量代码才能部署到生产中。
+- **促进协作**：鼓励开发人员、测试人员和运营人员共同努力，了解和解决误报的根本原因。 通过主动解决[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/)，团队可以维护 CI/CD 管道的完整性，确保只有经过充分测试的高质量代码才能部署到生产中。
 
 - **未检测到的问题**：严重错误可能会进入生产环境，导致系统故障或用户面临的问题，从而损害软件和组织的声誉。
 - **无效的反馈循环**：CI 依赖自动化测试来提供快速反馈。漏报会破坏这一点，导致错误的安全感和延迟识别问题。
