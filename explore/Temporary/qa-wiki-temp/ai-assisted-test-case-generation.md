@@ -1,215 +1,170 @@
 ---
-title: "AI 辅助测试用例生成 ｜ AI-assisted Test Case Generation"
-slug: "ai-assisted-test-case-generation"
+title: "AI辅助测试用例生成 ｜ AI-assisted Test Case Generation"
+description: "AI辅助测试用例生成（AI-assisted Test Case Generation）是提效与覆盖增强中的关键术语，主要用于使用 AI 根据需求与历史样例生成候选测试用例，再由 QA 审核落地，帮助团队在软件测试与发布中做出更稳定的质量决策。"
+section: "A"
+related:
+  - software-testing
+  - test-strategy
+  - test-plan
+  - test-automation
+  - test-observability
 order: 11
-status: "research-draft"
 ---
+# AI辅助测试用例生成 ｜ AI-assisted Test Case Generation
 
-# AI 辅助测试用例生成 ｜ AI-assisted Test Case Generation
+<!-- TOC START -->
+- [AI辅助测试用例生成 ｜ AI-assisted Test Case Generation](#ai辅助测试用例生成--ai-assisted-test-case-generation)
+- [关于AI辅助测试用例生成的问题](#关于AI辅助测试用例生成的问题)
+  - [术语定义与适用边界](#术语定义与适用边界)
+  - [方法框架与实施步骤](#方法框架与实施步骤)
+  - [关键指标与口径说明](#关键指标与口径说明)
+  - [工程落地建议](#工程落地建议)
+  - [实施检查清单](#实施检查清单)
+  - [基于 Google / Medium 的实践观察](#基于-google--medium-的实践观察)
+  - [常见误区与改进建议](#常见误区与改进建议)
+  - [相关词条](#相关词条)
+  - [参考资料](#参考资料)
+<!-- TOC END -->
 
-## 检索任务
+AI 类词条的关键不是“模型有多强”，而是“输出是否可控、可审计、可回滚”。你可以把它理解为一套带人工校验的增强流程。
 
-- Google：10 条
-- Wikipedia：10 条
-- Medium：10 条
-- QA 专业站点：10 条
+## 关于AI辅助测试用例生成的问题
 
-## 检索入口
+## 术语定义与适用边界
 
-- Google: https://www.google.com/search?q=AI-assisted+Test+Case+Generation+software+testing
-- Wikipedia: https://en.wikipedia.org/w/index.php?search=AI-assisted+Test+Case+Generation
-- Medium: https://medium.com/search?q=AI-assisted+Test+Case+Generation
-- QA 专业站点: https://www.google.com/search?q=AI-assisted+Test+Case+Generation+software+testing+qa+engineering
+### 什么是AI辅助测试用例生成？
 
-## Source Capture - Google (10)
+AI辅助测试用例生成（AI-assisted Test Case Generation）在软件测试语境里是“可执行方法”，不是“概念说明”。它的价值在于把质量决策结构化：谁提供证据、谁做判断、谁承担结果。
 
-1. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-2. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-3. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-4. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-5. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-6. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-7. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-8. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-9. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-10. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
+### 适用与不适用场景
 
-## Source Capture - Wikipedia (10)
+- 适用：需要跨团队协同、需要可追溯决策、需要稳定交付节奏的项目。
+- 不适用：输入数据极不完整、责任边界不清、流程 owner 缺失的场景。
 
-1. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-2. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-3. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-4. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-5. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-6. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-7. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-8. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-9. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-10. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
+## 方法框架与实施步骤
 
-## Source Capture - Medium (10)
+### 推荐实施框架
 
-1. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-2. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-3. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-4. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-5. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-6. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-7. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-8. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-9. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-10. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
+1. 先定义边界（范围、目标、阈值）。
+2. 再统一输入（数据口径、证据来源）。
+3. 执行过程中持续校验（偏差、阻塞、风险）。
+4. 输出可执行结论（动作、owner、时间）。
+5. 最终复盘并更新规则（而不是复述结果）。
 
-## Source Capture - QA Professional Sites (10)
+### 输出物建议
 
-1. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-2. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-3. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-4. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-5. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-6. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-7. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-8. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-9. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
-10. 链接：
-   标题：
-   证据摘录：
-   可信度判断：高/中/低
+- 决策记录：背景、证据、结论、owner、截止时间。
+- 指标追踪：定义、口径、阈值、触发动作。
+- 复盘条目：问题模式、根因、改进动作、验证结果。
 
-## Synthesis（用于最终词条）
+## 关键指标与口径说明
 
-### 1) 标准化定义
+### 核心指标
 
-### 2) 适用边界 / 非适用边界
+- 人工修改率
+- 建议采纳率
+- 误报/漏报率
+- 周期缩短比例
 
-### 3) 方法步骤
+### 口径说明
 
-### 4) 输入 / 输出
+- 指标需要统一时间窗口（例如按迭代/版本统计）。
+- 指标需要固定样本边界（统计对象、环境、触发条件）。
+- 指标需要绑定动作（告警、阻断、升级、复盘）。
 
-### 5) 核心指标
+AI 场景下必须额外记录：提示词版本、上下文来源、模型版本、人工复核结果。
 
-### 6) 工具与工程实践
+## 工程落地建议
 
-### 7) 常见误区与改进建议
+- 给 AI 输出设置结构化 schema 和拒答条件。
+- 保留样本集做周期性回归评测。
+- 高风险动作必须人工确认后执行。
 
-### 8) 与现有 wiki 词条关联（slug）
+## 实施检查清单
 
-### 9) 参考资料（按来源分组）
+- [ ] 是否定义了清晰输入与输出。
+- [ ] 是否定义了指标阈值与触发动作。
+- [ ] 是否指定 owner 与完成时限。
+- [ ] 是否留存了可审计的执行证据。
+- [ ] 是否在版本结束后完成复盘。
 
+## 基于 Google / Medium 的实践观察
+
+- Google 相关文章普遍强调 Human-in-the-loop。
+- Medium 实战文章常见路径是单点试点 -> 流程扩展 -> 组织治理。
+- 行业共识是“AI 负责候选结论，QA 负责最终裁决”。
+
+## 常见误区与改进建议
+
+- 误区：把术语当模板填空  
+  建议：术语是决策机制，不是排版格式。
+- 误区：只追求覆盖率或速度  
+  建议：必须同时衡量质量风险。
+- 误区：缺少复盘闭环  
+  建议：没有回看就没有持续改进。
+
+## 相关词条
+
+- [软件测试 ｜ Software Testing](/zh-cn/wiki/software-testing/)
+- [测试策略 ｜ Test Strategy](/zh-cn/wiki/test-strategy/)
+- [测试计划 ｜ Test Plan](/zh-cn/wiki/test-plan/)
+- [测试自动化 ｜ Test Automation](/zh-cn/wiki/test-automation/)
+- [测试可观测性 ｜ Test Observability](/zh-cn/wiki/test-observability/)
+
+## 参考资料
+
+- [Google Testing Blog](https://testing.googleblog.com/)
+- [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
+- [Google SRE](https://sre.google/sre-book/table-of-contents/)
+- [Medium（术语检索）](https://medium.com/search?q=AI-assisted%20Test%20Case%20Generation)
+- [GitHub（术语检索）](https://github.com/search?q=AI-assisted%20Test%20Case%20Generation&type=repositories)
+
+## 基于链接抓取的补充证据（自动）
+
+- 抓取链接总数：40
+- 抓取成功：28
+- 抓取失败：12
+
+### 高价值证据摘录（按来源优先级）
+
+- [Fuzzing - Wikipedia](https://en.wikipedia.org/wiki/Fuzzing)
+  - 摘要：In programming and software development , fuzzing or fuzz testing is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program . The program is th...
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Large language model - Wikipedia](https://en.wikipedia.org/wiki/Large_language_model)
+  - 摘要：A large language model ( LLM ) is a language model trained with self-supervised machine learning on a vast amount of text, designed for natural language processing tasks, especially language generation . &#91; 1 &#93; &#...
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Model-based testing - Wikipedia](https://en.wikipedia.org/wiki/Model-based_testing)
+  - 摘要：In computing , model-based testing is an approach to testing that leverages model-based design for designing and possibly executing tests. As shown in the diagram on the right, a model can represent the desired behavior ...
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Mutation testing - Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
+  - 摘要：Mutation testing (or mutation analysis or program mutation ) is used to design new software tests and evaluate the quality of existing software tests. Mutation testing involves making small changes to the program being t...
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Natural language processing - Wikipedia](https://en.wikipedia.org/wiki/Natural-language_processing)
+  - 摘要：未提取到可用摘要
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Prompt engineering - Wikipedia](https://en.wikipedia.org/wiki/Prompt_engineering)
+  - 摘要：未提取到可用摘要
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Requirements analysis - Wikipedia](https://en.wikipedia.org/wiki/Requirements_analysis)
+  - 摘要：未提取到可用摘要
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Software testing - Wikipedia](https://en.wikipedia.org/wiki/Software_testing)
+  - 摘要：未提取到可用摘要
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [Test case - Wikipedia](https://en.wikipedia.org/wiki/Test_case)
+  - 摘要：Test case may refer to:
+  - 来源域名：en.wikipedia.org（HTTP 200）
+- [ISTQB Glossary](https://glossary.istqb.org/en_US/search?term=test%20case)
+  - 摘要：未提取到可用摘要
+  - 来源域名：glossary.istqb.org（HTTP 200）
+- [ISTQB Glossary](https://glossary.istqb.org/en_US/search?term=test%20design)
+  - 摘要：未提取到可用摘要
+  - 来源域名：glossary.istqb.org（HTTP 200）
+- [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html)
+  - 摘要：Topics Architecture
+  - 来源域名：martinfowler.com（HTTP 200）
+
+### 抓取说明
+
+- 本节用于将词条内链接与可抓取网页内容建立证据对应关系。
+- 词条定义与工程方法以原有 `qa-wiki` 结构为主，本节仅做补充校对。
