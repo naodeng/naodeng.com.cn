@@ -5,7 +5,7 @@ import type { Multilingual } from "@/i18n";
 
 export const SITE_TITLE: string | Multilingual = {
   en: "Nao's Blog",
-  "zh-cn": "软件测试同学",
+  "zh-cn": "软件测试同学 X naodeng",
 };
 
 export const SITE_DESCRIPTION: string | Multilingual = {
@@ -99,7 +99,7 @@ export const NAV_DOCS: Multilingual = {
 /** 顶部导航：百科（中文站内）/ QA wiki（英文跳转 ray.run） */
 export const NAV_QA_WIKI: Multilingual = {
   en: "QA wiki",
-  "zh-cn": "百科",
+  "zh-cn": "软件测试百科",
 };
 
 /** 顶部导航：AI Wiki（中英文站内） */
@@ -111,7 +111,7 @@ export const NAV_AI_WIKI: Multilingual = {
 /** 顶部导航：指南 / Guild */
 export const NAV_GUILD: Multilingual = {
   en: "Guild",
-  "zh-cn": "指南",
+  "zh-cn": "自动化测试指南",
 };
 
 /** 底部导航：软件测试百科 */
