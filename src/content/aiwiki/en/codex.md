@@ -115,9 +115,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [gpt](/en/AIWiki/gpt/)
-- [o1-o3](/en/AIWiki/o1-o3/)
-- [ai-agent](/en/AIWiki/ai-agent/)
+- [gpt](https://inaodeng.com/en/AIWiki/gpt/)
+- [o1-o3](https://inaodeng.com/en/AIWiki/o1-o3/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
 
 ### Term Metadata
 

@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [vibe-coding](/zh-cn/AIWiki/vibe-coding/)
-- [context-window-management](/zh-cn/AIWiki/context-window-management/)
-- [skill](/zh-cn/AIWiki/skill/)
+- [vibe-coding](https://inaodeng.com/zh-cn/AIWiki/vibe-coding/)
+- [context-window-management](https://inaodeng.com/zh-cn/AIWiki/context-window-management/)
+- [skill](https://inaodeng.com/zh-cn/AIWiki/skill/)
 
 ### 术语元数据
 

@@ -110,10 +110,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [asynchronous-agent-execution](/en/AIWiki/asynchronous-agent-execution/)
-- [remote-control](/en/AIWiki/remote-control/)
-- [subagents](/en/AIWiki/subagents/)
-- [task-level-abstraction](/en/AIWiki/task-level-abstraction/)
+- [asynchronous-agent-execution](https://inaodeng.com/en/AIWiki/asynchronous-agent-execution/)
+- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
+- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
+- [task-level-abstraction](https://inaodeng.com/en/AIWiki/task-level-abstraction/)
 
 ### External References
 

@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [rules-and-memories](/en/AIWiki/rules-and-memories/)
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
-- [privacy-mode](/en/AIWiki/privacy-mode/)
-- [custom-commands](/en/AIWiki/custom-commands/)
+- [rules-and-memories](https://inaodeng.com/en/AIWiki/rules-and-memories/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
+- [privacy-mode](https://inaodeng.com/en/AIWiki/privacy-mode/)
+- [custom-commands](https://inaodeng.com/en/AIWiki/custom-commands/)
 
 ### External References
 

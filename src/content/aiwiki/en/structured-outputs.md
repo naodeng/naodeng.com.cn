@@ -128,10 +128,10 @@ A: Track parse success rate, post-processing effort, and downstream failure rate
 
 ### Related Terms
 
-- [function-calling](/en/AIWiki/function-calling/)
-- [graders](/en/AIWiki/graders/)
-- [verification-artifacts](/en/AIWiki/verification-artifacts/)
-- [predicted-outputs](/en/AIWiki/predicted-outputs/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [graders](https://inaodeng.com/en/AIWiki/graders/)
+- [verification-artifacts](https://inaodeng.com/en/AIWiki/verification-artifacts/)
+- [predicted-outputs](https://inaodeng.com/en/AIWiki/predicted-outputs/)
 
 ### External References
 

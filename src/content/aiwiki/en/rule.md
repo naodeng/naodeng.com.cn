@@ -113,9 +113,9 @@ A: Definitely not. Rules significantly reduce "low-level style errors" and "comm
 
 ### Related Terms
 
-- [rules-cursorrules](/en/AIWiki/rules-cursorrules/)
-- [skill](/en/AIWiki/skill/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
+- [rules-cursorrules](https://inaodeng.com/en/AIWiki/rules-cursorrules/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 
 ### Term Metadata
 

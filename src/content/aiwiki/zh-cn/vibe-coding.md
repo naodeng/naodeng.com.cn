@@ -120,9 +120,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [agentic-workflow](/zh-cn/AIWiki/agentic-workflow/)
-- [prompt-driven-development](/zh-cn/AIWiki/prompt-driven-development/)
-- [ai-pair-programming](/zh-cn/AIWiki/ai-pair-programming/)
+- [agentic-workflow](https://inaodeng.com/zh-cn/AIWiki/agentic-workflow/)
+- [prompt-driven-development](https://inaodeng.com/zh-cn/AIWiki/prompt-driven-development/)
+- [ai-pair-programming](https://inaodeng.com/zh-cn/AIWiki/ai-pair-programming/)
 
 ### 术语元数据
 

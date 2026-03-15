@@ -111,10 +111,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [flex-processing](/en/AIWiki/flex-processing/)
-- [predicted-outputs](/en/AIWiki/predicted-outputs/)
-- [asynchronous-agent-execution](/en/AIWiki/asynchronous-agent-execution/)
-- [background-maintenance-tasks](/en/AIWiki/background-maintenance-tasks/)
+- [flex-processing](https://inaodeng.com/en/AIWiki/flex-processing/)
+- [predicted-outputs](https://inaodeng.com/en/AIWiki/predicted-outputs/)
+- [asynchronous-agent-execution](https://inaodeng.com/en/AIWiki/asynchronous-agent-execution/)
+- [background-maintenance-tasks](https://inaodeng.com/en/AIWiki/background-maintenance-tasks/)
 
 ### External References
 

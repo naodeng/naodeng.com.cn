@@ -45,42 +45,42 @@ order: 0
 
 #### 什么是决策表测试？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 是一种捕获复杂业务规则并验证其在软件应用程序中实施的系统方法。它涉及将条件和操作制成表格，以确保覆盖和测试所有组合。该方法对于具有可以以表格形式表达的逻辑关系的功能特别有效。
-  **决策表**封装了输入（条件）及其相应的输出（操作），允许测试人员识别执行全方位决策逻辑的[测试用例](/zh-cn/wiki/test-case/)。此测试对于验证多条件系统至关重要，确保不会忽略任何条件组合。
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 是一种捕获复杂业务规则并验证其在软件应用程序中实施的系统方法。它涉及将条件和操作制成表格，以确保覆盖和测试所有组合。该方法对于具有可以以表格形式表达的逻辑关系的功能特别有效。
+  **决策表**封装了输入（条件）及其相应的输出（操作），允许测试人员识别执行全方位决策逻辑的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。此测试对于验证多条件系统至关重要，确保不会忽略任何条件组合。
   创建决策表涉及识别条件和操作，然后用所有可能的组合填充表。通过针对应用程序系统地测试每个组合来执行执行。
-  Excel、TestComplete 或专门的决策表软件等工具可以促进这一过程，其中一些工具还提供自动化功能。可以使用[测试自动化](/zh-cn/wiki/test-automation/) 框架将自动化[决策表测试](/zh-cn/wiki/decision-table-testing/) 集成到持续集成管道中。
-  在具有大量相互依赖变量的场景中，例如财务计算或基于规则的系统，[决策表测试](/zh-cn/wiki/decision-table-testing/) 通过提供清晰、有组织的方法来验证复杂逻辑而大放异彩。
+  Excel、TestComplete 或专门的决策表软件等工具可以促进这一过程，其中一些工具还提供自动化功能。可以使用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架将自动化[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 集成到持续集成管道中。
+  在具有大量相互依赖变量的场景中，例如财务计算或基于规则的系统，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 通过提供清晰、有组织的方法来验证复杂逻辑而大放异彩。
   挑战包括管理具有多种条件的大型表并确保表的完整性。通过将复杂的表分解为更简单的表并使用软件工具来管理和执行测试，可以缓解这些问题。
-  当处理条件很少的简单系统或创建表的工作超过其结构化方法的好处时，应避免使用[决策表测试](/zh-cn/wiki/decision-table-testing/)。
+  当处理条件很少的简单系统或创建表的工作超过其结构化方法的好处时，应避免使用[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)。
 
 #### 为什么决策表测试在软件测试中很重要？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它可以系统地检查**复杂的决策逻辑**。通过映射输入及其相应输出的每种可能的组合，测试人员可以确保覆盖所有场景，这对于具有大量相互依赖的变量和规则的系统尤其重要。
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它可以系统地检查**复杂的决策逻辑**。通过映射输入及其相应输出的每种可能的组合，测试人员可以确保覆盖所有场景，这对于具有大量相互依赖的变量和规则的系统尤其重要。
   此方法在识别需求差距或被忽视的条件方面非常有效，从而可以更彻底地验证应用程序行为。它还有助于发现通过其他测试技术可能不会立即显现出来的“隐藏缺陷”，尤其是在处理复杂的业务规则时。
-  此外，[决策表测试](/zh-cn/wiki/decision-table-testing/) 支持利益相关者之间的**清晰沟通**，因为表格提供了业务逻辑的可视化和结构化表示，技术和非技术团队成员都可以轻松理解。
-  就 **[可维护性](/zh-cn/wiki/maintainability/)** 而言，当业务规则发生变化时，这些表的更新相对简单，这使它们成为[回归测试](/zh-cn/wiki/regression-testing/) 的宝贵资产。它们有助于确保系统中的修改不会引入新的错误或破坏现有功能。
-  最后，[决策表测试](/zh-cn/wiki/decision-table-testing/)有利于**[测试自动化](/zh-cn/wiki/test-automation/)**，因为决策表可以直接转换为自动化[测试脚本](/zh-cn/wiki/test-script/)。这种自动化进一步提高了测试过程的效率和可重复性，允许在 DevOps 环境中快速反馈和持续集成。
+  此外，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 支持利益相关者之间的**清晰沟通**，因为表格提供了业务逻辑的可视化和结构化表示，技术和非技术团队成员都可以轻松理解。
+  就 **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** 而言，当业务规则发生变化时，这些表的更新相对简单，这使它们成为[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 的宝贵资产。它们有助于确保系统中的修改不会引入新的错误或破坏现有功能。
+  最后，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)有利于**[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**，因为决策表可以直接转换为自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。这种自动化进一步提高了测试过程的效率和可重复性，允许在 DevOps 环境中快速反馈和持续集成。
 
 #### 决策表的关键组成部分是什么？
 
 **决策表**的关键组成部分是：
 
-- **条件**：这些是可能影响结果的输入或原因。它们代表不同的[测试场景](/zh-cn/wiki/test-scenario/)。
+- **条件**：这些是可能影响结果的输入或原因。它们代表不同的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
 - **操作**：这些是由条件产生的输出或效果。它们代表系统在特定条件下的响应或行为。
 - **条件存根**：这些是将要测试的条件的特定实例或变量。
 - **操作存根**：这些是响应条件存根而发生的特定实例或操作。
 - **规则**：这些是决策表的列，表示条件存根和应执行的相应操作存根的唯一组合。
 - **条件条目**：这些是表中的单元格，测试人员在其中指定特定规则的条件是真还是假。
-- **操作条目**：这些单元格指示满足规则条件时要执行的操作。 决策表中的每个规则本质上都是一个[测试用例](/zh-cn/wiki/test-case/)。通过涵盖条件和操作的所有可能组合，决策表可确保对复杂的业务规则和决策流程进行全面测试。
+- **操作条目**：这些单元格指示满足规则条件时要执行的操作。 决策表中的每个规则本质上都是一个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。通过涵盖条件和操作的所有可能组合，决策表可确保对复杂的业务规则和决策流程进行全面测试。
 
 #### 决策表测试与其他类型的软件测试有何不同？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 通过将不同的输入组合映射到其预期结果，独特地解决了具有**复杂业务逻辑**的场景。与其他测试类型不同，例如专注于单个组件的 **[单元测试](/zh-cn/wiki/unit-testing/)** 或确保组件协同工作的 **[集成测试](/zh-cn/wiki/integration-testing/)**，[决策表测试](/zh-cn/wiki/decision-table-testing/) 特别擅长验证具有大量相互依赖的变量和规则的系统。
-  与 **[探索性测试](/zh-cn/wiki/exploratory-testing/)** 不同，[决策表测试](/zh-cn/wiki/decision-table-testing/) 依赖于测试人员的创造力和经验，而 [决策表测试](/zh-cn/wiki/decision-table-testing/) 则系统且详尽。它确保考虑所有可能的组合，从而降低错过边缘情况的风险。
-  虽然**边界值**和**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**技术侧重于输入值范围并对具有相似结果的输入进行分组，但[决策表测试](/zh-cn/wiki/decision-table-testing/)进一步检查不同输入组合的影响，使其在某些情况下更加全面。
-  与 **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** 相比，[决策表测试](/zh-cn/wiki/decision-table-testing/) 的重点是系统如何从一种状态转换到另一种状态，[决策表测试](/zh-cn/wiki/decision-table-testing/) 提供了一个清晰的结构，用于以表格形式验证不同的输入状态如何影响系统的行为。
-  它从 **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)** 中脱颖而出，后者通过更细粒度和技术性来评估系统对最终用户的适用性，通常在开发过程的早期使用，以在 UAT 开始之前细化业务逻辑。
-  总体而言，[决策表测试](/zh-cn/wiki/decision-table-testing/) 处理复杂决策逻辑的结构化方法使其有别于其他测试方法，使其对于验证具有复杂规则和多个决策点的系统不可或缺。
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 通过将不同的输入组合映射到其预期结果，独特地解决了具有**复杂业务逻辑**的场景。与其他测试类型不同，例如专注于单个组件的 **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 或确保组件协同工作的 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 特别擅长验证具有大量相互依赖的变量和规则的系统。
+  与 **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** 不同，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 依赖于测试人员的创造力和经验，而 [决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 则系统且详尽。它确保考虑所有可能的组合，从而降低错过边缘情况的风险。
+  虽然**边界值**和**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)**技术侧重于输入值范围并对具有相似结果的输入进行分组，但[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)进一步检查不同输入组合的影响，使其在某些情况下更加全面。
+  与 **[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** 相比，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 的重点是系统如何从一种状态转换到另一种状态，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 提供了一个清晰的结构，用于以表格形式验证不同的输入状态如何影响系统的行为。
+  它从 **[用户验收测试](https://inaodeng.com/zh-cn/wiki/user-acceptance-testing/) (UAT)** 中脱颖而出，后者通过更细粒度和技术性来评估系统对最终用户的适用性，通常在开发过程的早期使用，以在 UAT 开始之前细化业务逻辑。
+  总体而言，[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 处理复杂决策逻辑的结构化方法使其有别于其他测试方法，使其对于验证具有复杂规则和多个决策点的系统不可或缺。
 
 ### 实施和执行
 
@@ -92,9 +92,9 @@ order: 0
 2. **建表**：创建一个以条件为行、案例（条件组合）为列的表格。列出后续行中的操作。
 3. **填写表格**：对于每种情况，用符号指示每个操作的结果，例如 Y（是）表示要执行的操作，N（否）表示不执行的操作。
 4. **简化表格**：应用规则合并相似案例，降低复杂性。
-5. **转换为[测试用例](/zh-cn/wiki/test-case/)**：将每列转换为具有指定输入和[预期结果](/zh-cn/wiki/expected-result/) 的[测试用例](/zh-cn/wiki/test-case/)。
-6. **执行[测试用例](/zh-cn/wiki/test-case/)**：针对系统自动或手动运行[测试用例](/zh-cn/wiki/test-case/)。
-7. **验证结果**：检查系统的实际结果是否与决策表中的[预期结果](/zh-cn/wiki/expected-result/)匹配。
+5. **转换为[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：将每列转换为具有指定输入和[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+6. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：针对系统自动或手动运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+7. **验证结果**：检查系统的实际结果是否与决策表中的[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)匹配。
 8. **根据需要进行细化**：针对规则或其他场景的更改更新决策表。 以下是如何用代码表示决策表的简单示例：
 
 ```
@@ -114,25 +114,25 @@ order: 0
 
 #### 决策表测试涉及哪些步骤？
 
-**[决策表测试](/zh-cn/wiki/decision-table-testing/)**涉及的步骤如下：
+**[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)**涉及的步骤如下：
 
-1. **识别[测试场景](/zh-cn/wiki/test-scenario/)** ：确定要测试的功能以及相关的业务规则或条件。
+1. **识别[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：确定要测试的功能以及相关的业务规则或条件。
 2. **定义条件和操作**：列出所有可能的条件以及根据这些条件发生的操作。
 3. **构建决策表**：创建一个以条件为行、测试用例为列的表，填写每个条件组合对应的操作。
 4. **简化表格**：查找冗余或矛盾并删除它们以简化表格。
-5. **确定 [测试用例](/zh-cn/wiki/test-case/)** ：简化表中的每一列代表一个测试用例，具有唯一的条件组合及其结果操作。
-6. **编写[测试脚本](/zh-cn/wiki/test-script/)**：开发与决策表中标识的每个测试用例相对应的自动化测试脚本。
+5. **确定 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：简化表中的每一列代表一个测试用例，具有唯一的条件组合及其结果操作。
+6. **编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：开发与决策表中标识的每个测试用例相对应的自动化测试脚本。
 7. **执行测试**：针对软件运行测试脚本，以验证是否针对每组条件采取了正确的操作。
 8. **审查结果**：分析测试执行的结果，以确保软件按预期运行。
 9. **报告缺陷**：如果发现差异，请记录缺陷以供开发团队解决。
 10. **完善测试**：根据测试结果以及对软件或业务规则的任何更改，根据需要更新决策表和测试脚本。 这种结构化方法确保了业务规则组合的全面覆盖，并有助于识别与复杂决策逻辑相关的缺陷。
 
-1. **识别[测试场景](/zh-cn/wiki/test-scenario/)** ：确定要测试的功能以及相关的业务规则或条件。
+1. **识别[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：确定要测试的功能以及相关的业务规则或条件。
 2. **定义条件和操作**：列出所有可能的条件以及根据这些条件发生的操作。
 3. **构建决策表**：创建一个以条件为行、测试用例为列的表，填写每个条件组合对应的操作。
 4. **简化表格**：查找冗余或矛盾并删除它们以简化表格。
-5. **确定[测试用例](/zh-cn/wiki/test-case/)** ：简化表中的每一列代表一个测试用例，具有唯一的条件组合及其结果操作。
-6. **编写[测试脚本](/zh-cn/wiki/test-script/)**：开发与决策表中标识的每个测试用例相对应的自动化测试脚本。
+5. **确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：简化表中的每一列代表一个测试用例，具有唯一的条件组合及其结果操作。
+6. **编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：开发与决策表中标识的每个测试用例相对应的自动化测试脚本。
 7. **执行测试**：针对软件运行测试脚本，以验证是否针对每组条件采取了正确的操作。
 8. **审查结果**：分析测试执行的结果，以确保软件按预期运行。
 9. **报告缺陷**：如果发现差异，请记录缺陷以供开发团队解决。
@@ -140,7 +140,7 @@ order: 0
 
 #### 哪些工具可用于决策表测试？
 
-**[决策表测试](/zh-cn/wiki/decision-table-testing/)** 可使用多种工具，每种工具都提供独特的功能来帮助创建、管理和执行决策表：
+**[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)** 可使用多种工具，每种工具都提供独特的功能来帮助创建、管理和执行决策表：
 
 - **CA 敏捷需求设计师** （以前称为 Grid-Tools Agile Designer）允许测试人员将需求建模为决策表并自动生成测试用例。
 
@@ -152,7 +152,7 @@ order: 0
 
 - **卡塔隆工作室**是一款支持数据驱动测试的测试自动化工具，可应用于决策表测试场景。
 
-- **健身**是一个开源工具，允许用户在决策表中定义示例并将其自动化作为验收测试。 这些工具通常与其他[测试管理](/zh-cn/wiki/test-management/) 和自动化框架集成，增强其功能以满足[决策表测试](/zh-cn/wiki/decision-table-testing/) 需求。经验丰富的[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以利用这些工具有效地验证复杂的业务规则和逻辑，确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/) 并检测到使用其他测试方法可能会遗漏的缺陷。
+- **健身**是一个开源工具，允许用户在决策表中定义示例并将其自动化作为验收测试。 这些工具通常与其他[测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 和自动化框架集成，增强其功能以满足[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 需求。经验丰富的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以利用这些工具有效地验证复杂的业务规则和逻辑，确保全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 并检测到使用其他测试方法可能会遗漏的缺陷。
 
 - **CA 敏捷需求设计师** （以前称为 Grid-Tools Agile Designer）允许测试人员将需求建模为决策表并自动生成测试用例。
 
@@ -168,7 +168,7 @@ order: 0
 
 #### 决策表测试如何自动化？
 
-自动化 [决策表测试](/zh-cn/wiki/decision-table-testing/) 涉及将决策表转换为可由 [测试自动化](/zh-cn/wiki/test-automation/) 框架执行的 [测试脚本](/zh-cn/wiki/test-script/)。这是一个简洁的指南：
+自动化 [决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 涉及将决策表转换为可由 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架执行的 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。这是一个简洁的指南：
 
 1. **识别**要自动化的决策表。
 
@@ -195,7 +195,7 @@ order: 0
 
 4. **自动化**设置和拆卸过程以确保一致的测试环境。
 
-5. **运行**将自动化测试作为持续集成管道的一部分，以确保更改不会破坏现有功能。 通过遵循这些步骤，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地将决策表转换为自动化测试，确保复杂的业务规则在每个软件[迭代](/zh-cn/wiki/iteration/) 中得到一致的验证。
+5. **运行**将自动化测试作为持续集成管道的一部分，以确保更改不会破坏现有功能。 通过遵循这些步骤，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以有效地将决策表转换为自动化测试，确保复杂的业务规则在每个软件[迭代](https://inaodeng.com/zh-cn/wiki/iteration/) 中得到一致的验证。
 
 1. **识别**要自动化的决策表。
 
@@ -219,7 +219,7 @@ order: 0
 
 #### 您能否提供一个决策表测试特别有用的场景示例？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 在系统行为受到多个输入条件组合影响（可能导致不同操作或结果）的情况下特别有用。一个典型的例子是贷款资格申请，批准或拒绝贷款的决定是基于各种标准，例如信用评分、收入水平、就业状况和贷款金额。
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 在系统行为受到多个输入条件组合影响（可能导致不同操作或结果）的情况下特别有用。一个典型的例子是贷款资格申请，批准或拒绝贷款的决定是基于各种标准，例如信用评分、收入水平、就业状况和贷款金额。
   考虑一个简化的场景，其中银行的贷款审批流程由以下规则决定：
 
 - 如果申请人有 **高信用评分**和一个 **稳定工作** ，贷款获得批准。
@@ -263,7 +263,7 @@ order: 0
 
 5. **执行**这些测试用例可以手动或使用自动化测试工具，验证系统的操作是否与表中的预期结果相匹配。 对于自动化：
 
-- 使用脚本来 **生成[测试用例](/zh-cn/wiki/test-case/)**从决策表中，将它们输入到测试自动化框架中。
+- 使用脚本来 **生成[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**从决策表中，将它们输入到测试自动化框架中。
 
 - **验证**系统针对决策表中定义的预期操作的响应。
 
@@ -289,7 +289,7 @@ order: 0
 
 5. **执行**这些测试用例可以手动或使用自动化测试工具，验证系统的操作是否与表中的预期结果相匹配。
 
-- 使用脚本来 **生成[测试用例](/zh-cn/wiki/test-case/)**从决策表中，将它们输入到测试自动化框架中。
+- 使用脚本来 **生成[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**从决策表中，将它们输入到测试自动化框架中。
 
 - **验证**系统针对决策表中定义的预期操作的响应。
 
@@ -297,7 +297,7 @@ order: 0
 
 #### 决策表测试可以检测哪些类型的软件错误？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 擅长发现各种与以下相关的软件[bugs](/zh-cn/wiki/bug/)：
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 擅长发现各种与以下相关的软件[bugs](https://inaodeng.com/zh-cn/wiki/bug/)：
 
 - **复杂的业务规则验证**：它可以检测应用程序行为与指定业务规则不符的场景。
 - **输入组合的处理**：不同输入组合之间意外交互产生的错误经常会被发现。
@@ -305,13 +305,13 @@ order: 0
 - **错误处理**：它可以暴露软件如何处理错误条件或异常情况的问题。
 - **数据完整性问题**：决策表可以通过测试数据状态的不同排列来帮助确保操作保持数据完整性。
 - **功能差距**：可以检测到根据决策逻辑应该存在的缺失逻辑或功能。
-- **不正确的系统状态**：通过在决策表中表示不同的系统状态，您可以找到系统在状态之间无法正确转换的错误。 [决策表测试](/zh-cn/wiki/decision-table-testing/) 对于具有可以清晰列表的逻辑条件的系统特别有效，允许根据定义的标准对软件行为进行全面和系统的测试。
+- **不正确的系统状态**：通过在决策表中表示不同的系统状态，您可以找到系统在状态之间无法正确转换的错误。 [决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 对于具有可以清晰列表的逻辑条件的系统特别有效，允许根据定义的标准对软件行为进行全面和系统的测试。
 
 ### 挑战和限制
 
 #### 决策表测试有哪些挑战或限制？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 虽然功能强大，但也面临着一系列挑战：
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 虽然功能强大，但也面临着一系列挑战：
 
 - **复杂性**：随着变量数量的增加，组合数量会呈指数级增长，使得表格变得复杂且难以管理。
 - **维护**：决策表需要随着业务规则的变化而更新，这可能很麻烦且容易出错。
@@ -322,21 +322,21 @@ order: 0
 
 #### 如何克服这些挑战？
 
-克服[决策表测试](/zh-cn/wiki/decision-table-testing/) (DTT) 中的挑战涉及战略规划和工具利用。为了解决为复杂的业务规则创建决策表的**复杂性**，请使用**模块化**将规则分解为更小的、可管理的组件。这简化了表格并增强了[可维护性](/zh-cn/wiki/maintainability/)。
-  对于业务规则频繁更改时的**维护开销**，实施**版本控制**和**自动化[回归测试](/zh-cn/wiki/regression-testing/)**。这可确保跟踪更改并自动评估对现有[测试用例](/zh-cn/wiki/test-case/) 的影响。
-  为了解决手动[测试执行](/zh-cn/wiki/test-execution/) **耗时**的问题，请利用支持 DTT 的 **[测试自动化](/zh-cn/wiki/test-automation/) 框架**。 **[selenium](/zh-cn/wiki/selenium/)**、**TestComplete** 或 **SpecFlow** 等工具可以与决策表库或插件集成，以自动化执行过程。
-  当处理大量可能导致**冗余**的[测试用例](/zh-cn/wiki/test-case/)时，应用**测试优化技术**（例如成对测试或组合测试工具）以最大限度地减少[测试用例](/zh-cn/wiki/test-case/)的数量，同时仍然覆盖所有可能的场景。
+克服[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) (DTT) 中的挑战涉及战略规划和工具利用。为了解决为复杂的业务规则创建决策表的**复杂性**，请使用**模块化**将规则分解为更小的、可管理的组件。这简化了表格并增强了[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
+  对于业务规则频繁更改时的**维护开销**，实施**版本控制**和**自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**。这可确保跟踪更改并自动评估对现有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的影响。
+  为了解决手动[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) **耗时**的问题，请利用支持 DTT 的 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**。 **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**、**TestComplete** 或 **SpecFlow** 等工具可以与决策表库或插件集成，以自动化执行过程。
+  当处理大量可能导致**冗余**的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)时，应用**测试优化技术**（例如成对测试或组合测试工具）以最大限度地减少[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的数量，同时仍然覆盖所有可能的场景。
   对于**知识转移**问题，请确保决策表有详细记录，并使用**协作工具**，例如 Confluence 或共享存储库，团队成员可以在其中贡献和访问决策表。
   最后，为了减轻覆盖所有可能组合的**监督**风险，请执行**同行评审**并使用**覆盖率分析工具**来验证决策表中是否已考虑所有逻辑路径。
 
 #### 何时不应使用决策表测试？
 
-[决策表测试](/zh-cn/wiki/decision-table-testing/) 不应在以下场景中使用：
+[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 不应在以下场景中使用：
 
 - **规则很少的简单场景**：如果应用程序逻辑简单且条件极少，那么使用决策表可能会有点过头了。更简单的测试方法可能更有效。
 - **高度动态的系统**：在业务规则频繁更改的系统中，维护决策表可能会变得很麻烦并且容易出错。
-- **有限的输入组合**：当可能的输入组合很少时，其他测试技术（例如边界值分析或[等价划分](/zh-cn/wiki/equivalence-partitioning/)）可能更合适。
-- **非基于规则的逻辑**：如果系统的行为不基于明确的规则，决策表可能无法有效捕获必要的[测试场景](/zh-cn/wiki/test-scenario/)。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：[决策表测试](/zh-cn/wiki/decision-table-testing/) 不是为 [性能测试](/zh-cn/wiki/performance-testing/) 设计的，因为它侧重于功能正确性而不是系统性能指标。
-- **用户[接口测试](/zh-cn/wiki/interface-testing/)**：对于测试用户界面来说，它并不理想，因为视觉元素和用户交互比底层业务逻辑更重要。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：当目标是在没有预定义期望的情况下探索软件时，决策表等结构化方法可能会限制意外问题的发现。 请记住，测试技术的选择应与被测应用程序的复杂性和性质相一致。 [决策表测试](/zh-cn/wiki/decision-table-testing/) 在具有复杂业务规则和多个决策点的场景中表现出色，但可能并不最适合所有测试需求。
+- **有限的输入组合**：当可能的输入组合很少时，其他测试技术（例如边界值分析或[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)）可能更合适。
+- **非基于规则的逻辑**：如果系统的行为不基于明确的规则，决策表可能无法有效捕获必要的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 不是为 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 设计的，因为它侧重于功能正确性而不是系统性能指标。
+- **用户[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)**：对于测试用户界面来说，它并不理想，因为视觉元素和用户交互比底层业务逻辑更重要。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：当目标是在没有预定义期望的情况下探索软件时，决策表等结构化方法可能会限制意外问题的发现。 请记住，测试技术的选择应与被测应用程序的复杂性和性质相一致。 [决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/) 在具有复杂业务规则和多个决策点的场景中表现出色，但可能并不最适合所有测试需求。

@@ -47,40 +47,40 @@ order: 0
 
 #### 什么是构建验证测试 (BVT)？
 
-[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT)，也称为*冒烟测试*，是在新版本上运行的一组自动化测试，以确保该版本在发布给测试团队进行进一步测试之前是可测试的。BVT 是[测试套件](/zh-cn/wiki/test-suite/) 的子集，专注于应用程序的主要功能，以检查可能阻碍进一步测试的关键问题。
+[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT)，也称为*冒烟测试*，是在新版本上运行的一组自动化测试，以确保该版本在发布给测试团队进行进一步测试之前是可测试的。BVT 是[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的子集，专注于应用程序的主要功能，以检查可能阻碍进一步测试的关键问题。
   BVT 通常由**自动化脚本**执行，旨在快速运行，为开发团队提供即时反馈。BVT 测试的选择应涵盖应用程序的**核心功能**，确保任何主要功能都不会被破坏。
   在**持续集成 (CI)** 的背景下，当新版本可用时，BVT 会自动触发。他们充当看门人，确保只有通过这些测试的构建才会被提升到测试或部署的后续阶段。
-  为了保持 BVT 的有效性，定期**审查和更新** [测试用例](/zh-cn/wiki/test-case/) 以适应不断发展的应用程序功能至关重要。此外，测试应该**隔离**以减少依赖性和不稳定，并且**优先**首先运行最关键的测试。
+  为了保持 BVT 的有效性，定期**审查和更新** [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以适应不断发展的应用程序功能至关重要。此外，测试应该**隔离**以减少依赖性和不稳定，并且**优先**首先运行最关键的测试。
   当 BVT 发生故障时，必须**及时解决故障**以保持构建管道的稳定性。这通常需要开发人员和测试人员之间的协作来诊断和解决问题。
-  总之，BVT 是**[质量保证](/zh-cn/wiki/quality-assurance/) 流程**的关键组成部分，可以快速检查构建的运行状况并确保开发周期可以放心地进行。
+  总之，BVT 是**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 流程**的关键组成部分，可以快速检查构建的运行状况并确保开发周期可以放心地进行。
 
 #### 为什么构建验证测试在软件开发中很重要？
 
-[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 在软件开发中至关重要，原因如下：
+[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 在软件开发中至关重要，原因如下：
 
 - **确保基本稳定性**：BVT 充当看门人，验证构建是否足够稳定以进行进一步测试。这可以防止在不稳定的构建上浪费时间和资源。
 - **快速反馈**：它向开发团队提供有关代码库运行状况的快速反馈，以便快速修复并保持高速开发。
 - **降低集成风险**：通过尽早发现问题，BVT 降低了将新代码合并到主分支时出现集成问题的风险。
 - **促进持续集成**：BVT 是 CI/CD 管道中的关键组件，可实现频繁且可靠的软件发布。
-- **[质量保证](/zh-cn/wiki/quality-assurance/)** ：它通过确保关键功能在每次构建后按预期工作来帮助保持一致的质量水平。 将 BVT 纳入软件开发流程是一种尽早识别和解决潜在缺陷的战略方法，最终实现更可靠、更高效的发布流程。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)** ：它通过确保关键功能在每次构建后按预期工作来帮助保持一致的质量水平。 将 BVT 纳入软件开发流程是一种尽早识别和解决潜在缺陷的战略方法，最终实现更可靠、更高效的发布流程。
 
 #### 构建验证测试的主要目标是什么？
 
-**[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT)** 的主要目标是**验证软件构建的稳定性和核心功能**，确保其足够可靠以进行进一步测试。BVT 充当看门人，确认构建符合质量阈值，以保证进行全套更详尽的测试。通过在开发周期的早期快速识别任何主要问题，BVT 可以节省时间和资源，使团队能够专注于可能通过更严格测试阶段的构建。
+**[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT)** 的主要目标是**验证软件构建的稳定性和核心功能**，确保其足够可靠以进行进一步测试。BVT 充当看门人，确认构建符合质量阈值，以保证进行全套更详尽的测试。通过在开发周期的早期快速识别任何主要问题，BVT 可以节省时间和资源，使团队能够专注于可能通过更严格测试阶段的构建。
 
 #### 构建验证测试如何融入整个软件开发生命周期？
 
-[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 在**持续集成 (CI)** 阶段集成到软件开发生命周期 (SDLC) 中。开发人员将代码更改提交到版本控制存储库后，自动化流程将构建应用程序。然后，BVT 充当**看门人**，确保这个新版本足够稳定以进行进一步测试。
-  作为 **CI 管道**的一部分，BVT 在构建上运行一组精心策划的自动化测试。这些测试旨在**快速**和**广泛**，涵盖应用程序的主要功能，以验证没有引入重大问题。如果构建通过了 BVT，则它被视为更详尽的测试阶段的候选者，例如 **[系统测试](/zh-cn/wiki/system-testing/)** 或 **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**。
+[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 在**持续集成 (CI)** 阶段集成到软件开发生命周期 (SDLC) 中。开发人员将代码更改提交到版本控制存储库后，自动化流程将构建应用程序。然后，BVT 充当**看门人**，确保这个新版本足够稳定以进行进一步测试。
+  作为 **CI 管道**的一部分，BVT 在构建上运行一组精心策划的自动化测试。这些测试旨在**快速**和**广泛**，涵盖应用程序的主要功能，以验证没有引入重大问题。如果构建通过了 BVT，则它被视为更详尽的测试阶段的候选者，例如 **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 或 **[用户验收测试](https://inaodeng.com/zh-cn/wiki/user-acceptance-testing/) (UAT)**。
   如果发生 BVT 失败，构建将被拒绝，并提醒开发人员修复问题。该反馈循环对于维持 SDLC 的**质量**和**速度**至关重要，因为它允许**快速识别**和**纠正**缺陷。
-  BVT 在 SDLC 中的放置支持**左移**测试方法，促进在开发过程的早期进行缺陷检测。这种早期检测对于减少修复 [bugs](/zh-cn/wiki/bug/) 的成本和工作量至关重要。
+  BVT 在 SDLC 中的放置支持**左移**测试方法，促进在开发过程的早期进行缺陷检测。这种早期检测对于减少修复 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的成本和工作量至关重要。
   总而言之，BVT 是 SDLC 中的一个关键检查点，可确保只有高质量的构建才能进入后续阶段，从而保护软件的完整性并优化开发和发布流程。
 
 ### 流程和技术
 
 #### 构建验证测试涉及哪些步骤？
 
-**[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT)** 涉及的步骤如下：
+**[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT)** 涉及的步骤如下：
 
 1. **检查最新代码**：确保最新版本的应用程序代码可供测试。
 2. **编译代码**：构建应用程序以生成用于测试的可执行文件。
@@ -106,28 +106,28 @@ order: 0
 
 #### 构建验证测试中常用哪些技术？
 
-**[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT)** 中的常用技术包括：
+**[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT)** 中的常用技术包括：
 
 - **冒烟测试**：测试的子集，用于检查应用程序最关键的功能，以确保它们在新构建后正常工作。
-- **[健全性测试](/zh-cn/wiki/sanity-testing/)** ：一轮快速测试，以验证特定功能或错误修复是否按预期工作。
-- **自动化[回归测试](/zh-cn/wiki/regression-testing/)** ：自动化测试可确保先前开发和测试的软件在更改后仍能正常运行。
+- **[健全性测试](https://inaodeng.com/zh-cn/wiki/sanity-testing/)** ：一轮快速测试，以验证特定功能或错误修复是否按预期工作。
+- **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：自动化测试可确保先前开发和测试的软件在更改后仍能正常运行。
 - **脚本化测试**：系统执行的预先编写的测试用例。
-- **[API 测试](/zh-cn/wiki/api-testing/)** ：确保应用程序编程接口 (API) 满足功能、可靠性、性能和安全性期望。
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：测试系统的各个组件或代码段。
-- **[集成测试](/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口以确保它们正确协同工作。 要为 BVT 套件选择测试，请考虑：
+- **[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)** ：确保应用程序编程接口 (API) 满足功能、可靠性、性能和安全性期望。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：测试系统的各个组件或代码段。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口以确保它们正确协同工作。 要为 BVT 套件选择测试，请考虑：
 
 - **关键路径测试**：涵盖应用程序的主要功能。
 - **高风险区域**：重点关注应用程序中最有可能损坏的部分。
 - **最近更改**：包括与新功能或最近错误修复相关的测试。
-- **环境特定测试**：确保构建在其预期的特定配置中工作。 使用**自动化框架**有效地执行这些测试，并将它们集成到**CI/CD管道**中以进行持续验证。通过维护组织良好的[测试套件](/zh-cn/wiki/test-suite/)、有效地确定测试的优先级以及使测试与应用程序更改保持同步来应对挑战。通过不断审查和完善 [测试套件](/zh-cn/wiki/test-suite/) 以消除冗余并专注于高影响力测试来优化 BVT。
+- **环境特定测试**：确保构建在其预期的特定配置中工作。 使用**自动化框架**有效地执行这些测试，并将它们集成到**CI/CD管道**中以进行持续验证。通过维护组织良好的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)、有效地确定测试的优先级以及使测试与应用程序更改保持同步来应对挑战。通过不断审查和完善 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 以消除冗余并专注于高影响力测试来优化 BVT。
 
 - **冒烟测试**：测试的子集，用于检查应用程序最关键的功能，以确保它们在新构建后正常工作。
-- **[健全性测试](/zh-cn/wiki/sanity-testing/)** ：一轮快速测试，以验证特定功能或错误修复是否按预期工作。
-- **自动化[回归测试](/zh-cn/wiki/regression-testing/)** ：自动化测试可确保先前开发和测试的软件在更改后仍能正常运行。
+- **[健全性测试](https://inaodeng.com/zh-cn/wiki/sanity-testing/)** ：一轮快速测试，以验证特定功能或错误修复是否按预期工作。
+- **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：自动化测试可确保先前开发和测试的软件在更改后仍能正常运行。
 - **脚本化测试**：系统执行的预先编写的测试用例。
-- **[API 测试](/zh-cn/wiki/api-testing/)** ：确保应用程序编程接口 (API) 满足功能、可靠性、性能和安全性期望。
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：测试系统的各个组件或代码段。
-- **[集成测试](/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口以确保它们正确地协同工作。
+- **[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)** ：确保应用程序编程接口 (API) 满足功能、可靠性、性能和安全性期望。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：测试系统的各个组件或代码段。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：测试组件之间的接口以确保它们正确地协同工作。
 - **关键路径测试**：涵盖应用程序的主要功能。
 - **高风险区域**：重点关注应用程序中最有可能损坏的部分。
 - **最近更改**：包括与新功能或最近错误修复相关的测试。
@@ -135,13 +135,13 @@ order: 0
 
 #### 如何确定构建验证测试套件中包含哪些测试？
 
-确定要包含在 **构建 [验证 ](/zh-cn/wiki/verification/) 测试 (BVT)** 套件中的测试涉及确定以下测试子集：
+确定要包含在 **构建 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试 (BVT)** 套件中的测试涉及确定以下测试子集：
 
 - **关键**：重点关注验证应用程序核心功能的测试。这些应该涵盖您的产品离不开的主要功能。
 - **快速**：选择快速执行的测试以提供即时反馈。BVT 并不意味着详尽无遗，但应该能够在几分钟内运行。
 - **稳定**：包括具有一致结果历史记录的测试，以避免可能误导团队的误报或漏报。
 - **可自动化**：确保测试可以自动化并且不需要手动干预，因为 BVT 通常作为 CI/CD 管道的一部分运行。
-- **独立**：选择不依赖于其他测试结果的测试，允许它们并行运行以加快进程。 使用基于风险的方法根据 [bugs](/zh-cn/wiki/bug/) 对应用程序不同区域的潜在影响来确定测试的优先级。合并涵盖最近变化或频繁回归的区域的测试。定期检查和更新 BVT 套件以反映应用程序风险状况的变化以及删除或替换不再提供价值的测试也是有益的。
+- **独立**：选择不依赖于其他测试结果的测试，允许它们并行运行以加快进程。 使用基于风险的方法根据 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 对应用程序不同区域的潜在影响来确定测试的优先级。合并涵盖最近变化或频繁回归的区域的测试。定期检查和更新 BVT 套件以反映应用程序风险状况的变化以及删除或替换不再提供价值的测试也是有益的。
 
 ```
   // Example of a simple BVT test in TypeScript
@@ -156,16 +156,16 @@ order: 0
 
 #### 自动化在构建验证测试中的作用是什么？
 
-自动化在 [构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 中发挥着 **关键作用**，确保新版本稳定并准备好进行进一步测试。每次创建新版本时，它都可以自动执行一组一致的预定义测试。这种快速反馈循环对于在开发周期的早期识别关键问题至关重要。
+自动化在 [构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 中发挥着 **关键作用**，确保新版本稳定并准备好进行进一步测试。每次创建新版本时，它都可以自动执行一组一致的预定义测试。这种快速反馈循环对于在开发周期的早期识别关键问题至关重要。
   自动化 BVT 通常被设计为**快速**和**可靠**，专注于核心功能以验证构建没有破坏任何主要功能。通过自动化这些测试，团队可以：
 
 - **减少手动工作** ，让 QA 工程师能够专注于更复杂的测试场景。
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**和频率，因为自动化测试可以根据需要经常运行，而无需额外成本。
+- **增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**和频率，因为自动化测试可以根据需要经常运行，而无需额外成本。
 
 - **提高准确性**通过最大限度地减少人为错误。
 
-- **加速反馈**给开发商，这样问题就可以得到及时解决。 将自动化纳入 BVT 通常涉及使用流行的框架和工具（如 [selenium](/zh-cn/wiki/selenium/)、JUnit 或 TestNG）编写测试脚本。然后，这些脚本会集成到 **CI/CD 管道** 中，以便在触发新构建时自动运行。
+- **加速反馈**给开发商，这样问题就可以得到及时解决。 将自动化纳入 BVT 通常涉及使用流行的框架和工具（如 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、JUnit 或 TestNG）编写测试脚本。然后，这些脚本会集成到 **CI/CD 管道** 中，以便在触发新构建时自动运行。
 
 ```
   // Example of a simple automated BVT script
@@ -180,7 +180,7 @@ order: 0
 
 - **减少手动工作** ，让 QA 工程师能够专注于更复杂的测试场景。
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**和频率，因为自动化测试可以根据需要经常运行，而无需额外成本。
+- **增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**和频率，因为自动化测试可以根据需要经常运行，而无需额外成本。
 
 - **提高准确性**通过最大限度地减少人为错误。
 
@@ -190,7 +190,7 @@ order: 0
 
 #### 构建验证测试常用哪些工具？
 
-[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 的常用工具包括：
+[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 的常用工具包括：
 
 - **Jenkins**：一个开源自动化服务器，可用于自动执行与构建、测试和部署软件相关的各种任务。
 - **TeamCity**：来自 JetBrains 的构建管理和持续集成服务器。
@@ -199,11 +199,11 @@ order: 0
 - **CircleCI** ：支持自动化测试和部署的 CI/CD 工具。
 - **GitLab CI/CD** ：GitLab 的集成部分，作为 CI/CD 管道中的一个阶段提供构建验证。
 - **Azure DevOps**：为软件团队提供一组开发工具，包括带有 Azure Pipelines 的 CI/CD。
-- **Bitbucket Pipelines** ：Bitbucket 内构建的 CI/CD 服务，提供构建验证和部署自动化。 这些工具自动执行[测试套件](/zh-cn/wiki/test-suite/) 并提供有关构建运行状况的反馈。它们可以配置为在每次提交时自动触发或按计划任务触发。与版本控制系统的集成使他们能够提取最新的代码进行测试。报告功能提供对测试结果的深入了解，帮助团队快速识别和解决问题。为了获得最佳 BVT，这些工具通常配置为运行 [测试套件](/zh-cn/wiki/test-suite/) 的子集，涵盖应用程序最关键的功能。
+- **Bitbucket Pipelines** ：Bitbucket 内构建的 CI/CD 服务，提供构建验证和部署自动化。 这些工具自动执行[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 并提供有关构建运行状况的反馈。它们可以配置为在每次提交时自动触发或按计划任务触发。与版本控制系统的集成使他们能够提取最新的代码进行测试。报告功能提供对测试结果的深入了解，帮助团队快速识别和解决问题。为了获得最佳 BVT，这些工具通常配置为运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的子集，涵盖应用程序最关键的功能。
 
 #### 这些工具在构建验证测试过程中有何帮助？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 工具通过在每个新构建时自动执行一组预定义的测试来简化 **[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT)**。这些工具可以快速**检测回归**并**验证核心功能**，确保构建足够稳定以进行进一步测试。
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具通过在每个新构建时自动执行一组预定义的测试来简化 **[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT)**。这些工具可以快速**检测回归**并**验证核心功能**，确保构建足够稳定以进行进一步测试。
   通过自动化 BVT，团队可以实现：
 
 - **一致性**：自动化测试每次都精确执行相同的步骤，减少人为错误。
@@ -227,11 +227,11 @@ order: 0
 
 #### 使用这些工具进行构建验证测试时有哪些最佳实践？
 
-将[测试自动化](/zh-cn/wiki/test-automation/) 工具用于[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 时，请考虑以下最佳实践：
+将[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具用于[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 时，请考虑以下最佳实践：
 
-- **保持专注[测试套件](/zh-cn/wiki/test-suite/)** 。仅包括那些验证最关键功能的测试。这可确保 BVT 快速且相关。
+- **保持专注[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 。仅包括那些验证最关键功能的测试。这可确保 BVT 快速且相关。
 
-- **自动化[环境搭建](/zh-cn/wiki/setup/) 和拆卸**测试环境，以确保一致性并节省时间。
+- **自动化[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸**测试环境，以确保一致性并节省时间。
 
 - **优先消除片状现象** 。不稳定的测试削弱了对构建过程的信心。立即解决任何不确定的行为。
 
@@ -239,7 +239,7 @@ order: 0
 
 - **实施质量门** 。如果 BVT 失败，构建不应进入进一步的阶段。
 
-- **版本控制您的[测试脚本](/zh-cn/wiki/test-script/)**与您的应用程序代码一起保持测试用例和应用程序状态之间的同步。
+- **版本控制您的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与您的应用程序代码一起保持测试用例和应用程序状态之间的同步。
 
 - **定期审查和更新测试**确保它们与应用程序及其要求保持一致。
 
@@ -247,7 +247,7 @@ order: 0
 
 - **利用容器化**用于一致的测试执行环境，可以根据需要上下旋转。
 
-- **与通知系统集成**当构建失败时立即提醒团队。 [测试自动化](/zh-cn/wiki/test-automation/) 工具中的并行执行配置示例：
+- **与通知系统集成**当构建失败时立即提醒团队。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具中的并行执行配置示例：
 
 ```
   // Example configuration for parallel execution in a test automation framework
@@ -256,9 +256,9 @@ order: 0
 ```
 通过遵循这些实践，您可以确保 BVT 成为持续集成和交付管道的高效可靠的基础。
 
-- **保持专注[测试套件](/zh-cn/wiki/test-suite/)** 。仅包括那些验证最关键功能的测试。这可确保 BVT 快速且相关。
+- **保持专注[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 。仅包括那些验证最关键功能的测试。这可确保 BVT 快速且相关。
 
-- **自动化[环境搭建](/zh-cn/wiki/setup/) 和拆卸**测试环境，以确保一致性并节省时间。
+- **自动化[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸**测试环境，以确保一致性并节省时间。
 
 - **优先消除片状现象** 。不稳定的测试削弱了对构建过程的信心。立即解决任何不确定的行为。
 
@@ -266,7 +266,7 @@ order: 0
 
 - **实施质量门** 。如果 BVT 失败，构建不应进入进一步的阶段。
 
-- **版本控制您的[测试脚本](/zh-cn/wiki/test-script/)**与您的应用程序代码一起保持测试用例和应用程序状态之间的同步。
+- **版本控制您的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与您的应用程序代码一起保持测试用例和应用程序状态之间的同步。
 
 - **定期审查和更新测试**确保它们与应用程序及其要求保持一致。
 
@@ -278,7 +278,7 @@ order: 0
 
 #### 如何将这些工具集成到持续集成/持续交付管道中？
 
-将 [测试自动化](/zh-cn/wiki/test-automation/) 工具集成到 **CI/CD 管道** 涉及几个关键步骤：
+将 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具集成到 **CI/CD 管道** 涉及几个关键步骤：
 
 1. **源代码存储库触发器**：配置管道以在代码提交或拉取请求时触发。这确保了每个更改都会被自动测试。
 
@@ -302,7 +302,7 @@ order: 0
             run: make build
 ```
 
-3. **[测试执行](/zh-cn/wiki/test-execution/)**：添加一个步骤来运行自动[测试套件](/zh-cn/wiki/test-suite/)。这可以是 BVT 或更广泛的[测试用例](/zh-cn/wiki/test-case/)，具体取决于管道阶段。
+3. **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：添加一个步骤来运行自动[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。这可以是 BVT 或更广泛的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，具体取决于管道阶段。
 
 ```
 - name: Run Tests
@@ -335,14 +335,14 @@ order: 0
       run: make deploy-staging
 ```
 
-7. **部署后 [验证 ](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
+7. **部署后 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
 
 ```
 - name: Smoke Test Production
       if: github.ref == 'refs/heads/main'
       run: make smoke-test
 ```
-通过自动化这些步骤，您可以确保将 [测试自动化](/zh-cn/wiki/test-automation/) 稳健可靠地集成到 CI/CD 管道中，从而促进快速反馈和高质量的软件交付。
+通过自动化这些步骤，您可以确保将 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 稳健可靠地集成到 CI/CD 管道中，从而促进快速反馈和高质量的软件交付。
 
 1. **源代码存储库触发器**：配置管道以在代码提交或拉取请求时触发。这确保了每个更改都会被自动测试。
 
@@ -366,7 +366,7 @@ order: 0
             run: make build
 ```
 
-3. **[测试执行](/zh-cn/wiki/test-execution/)**：添加一个步骤来运行自动[测试套件](/zh-cn/wiki/test-suite/)。这可以是 BVT 或更广泛的[测试用例](/zh-cn/wiki/test-case/)，具体取决于管道阶段。
+3. **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：添加一个步骤来运行自动[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。这可以是 BVT 或更广泛的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，具体取决于管道阶段。
 
 ```
 - name: Run Tests
@@ -399,7 +399,7 @@ order: 0
       run: make deploy-staging
 ```
 
-7. **部署后 [验证 ](/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
+7. **部署后 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：（可选）在部署后运行其他测试以验证实时环境。
 
 ```
 - name: Smoke Test Production
@@ -411,14 +411,14 @@ order: 0
 
 #### 构建验证测试期间面临哪些常见挑战？
 
-[构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 期间的常见挑战包括：
+[构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 期间的常见挑战包括：
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过和失败的测试可能会破坏对测试过程的信心。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过和失败的测试可能会破坏对测试过程的信心。
 - **环境一致性**：确保测试环境与生产环境相匹配，以避免误报或漏报。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：生成和维护准确反映生产场景的质量测试数据。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：生成和维护准确反映生产场景的质量测试数据。
 - **资源限制**：有限的计算资源可能导致排队时间长和反馈循环慢。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：平衡测试的广度和深度，以确保验证关键功能而不会造成延迟。
-- **最新的[测试套件](/zh-cn/wiki/test-suite/)** ：使测试与新功能和更改保持同步可能具有挑战性，特别是在快节奏的开发环境中。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：平衡测试的广度和深度，以确保验证关键功能而不会造成延迟。
+- **最新的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** ：使测试与新功能和更改保持同步可能具有挑战性，特别是在快节奏的开发环境中。
 - **集成依赖项**：处理与软件交互的外部依赖项和服务，这些依赖项和服务可能并不总是可用或稳定。
 - **优先级**：随着应用程序复杂性的增加，决定哪些测试对于 BVT 至关重要。
 - **维护开销**：随着代码库的发展，测试需要更新，这可能非常耗时。
@@ -428,26 +428,26 @@ order: 0
 
 - 使用 **容器化**保持一致的环境。
 
-- 自动化 **[测试数据](/zh-cn/wiki/test-data/)一代**并采用数据管理工具。
+- 自动化 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)一代**并采用数据管理工具。
 
 - 通过扩展资源 **云服务**或 **并行执行** 。
 
-- 定期审查和 **更新[测试用例](/zh-cn/wiki/test-case/)** 。
+- 定期审查和 **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 。
 
 - **嘲笑或存根**外部依赖。
 
-- 根据测试的优先顺序 **风险和[影响分析](/zh-cn/wiki/impact-analysis/)** 。
+- 根据测试的优先顺序 **风险和[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** 。
 
 - 建立一个流程 **定期维护**测试套件的。
 
 - 设置 **警报阈值**和 **通知政策**区分片状故障和真正的故障。
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过和失败的测试可能会破坏对测试过程的信心。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** ：在不更改代码的情况下间歇性地通过和失败的测试可能会破坏对测试过程的信心。
 - **环境一致性**：确保测试环境与生产环境相匹配，以避免误报或漏报。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：生成和维护准确反映生产场景的质量测试数据。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：生成和维护准确反映生产场景的质量测试数据。
 - **资源限制**：有限的计算资源可能导致排队时间长和反馈循环慢。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：平衡测试的广度和深度，以确保验证关键功能而不会造成延迟。
-- **最新的[测试套件](/zh-cn/wiki/test-suite/)** ：使测试与新功能和更改保持同步可能具有挑战性，特别是在快节奏的开发环境中。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：平衡测试的广度和深度，以确保验证关键功能而不会造成延迟。
+- **最新的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** ：使测试与新功能和更改保持同步可能具有挑战性，特别是在快节奏的开发环境中。
 - **集成依赖项**：处理与软件交互的外部依赖项和服务，这些依赖项和服务可能并不总是可用或稳定。
 - **优先级**：随着应用程序复杂性的增加，决定哪些测试对于 BVT 至关重要。
 - **维护开销**：随着代码库的发展，测试需要更新，这可能非常耗时。
@@ -456,15 +456,15 @@ order: 0
 
 - 使用 **容器化**保持一致的环境。
 
-- 自动化 **[测试数据](/zh-cn/wiki/test-data/)一代**并采用数据管理工具。
+- 自动化 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)一代**并采用数据管理工具。
 
 - 通过扩展资源 **云服务**或 **并行执行** 。
 
-- 定期审查和 **更新[测试用例](/zh-cn/wiki/test-case/)** 。
+- 定期审查和 **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 。
 
 - **嘲笑或存根**外部依赖。
 
-- 根据测试的优先顺序 **风险和[影响分析](/zh-cn/wiki/impact-analysis/)** 。
+- 根据测试的优先顺序 **风险和[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** 。
 
 - 建立一个流程 **定期维护**测试套件的。
 
@@ -472,25 +472,25 @@ order: 0
 
 #### 如何减轻或克服这些挑战？
 
-缓解 [构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 中的挑战涉及战略规划和高效执行：
+缓解 [构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 中的挑战涉及战略规划和高效执行：
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)**：实施强大的错误处理和重试。使用[页面对象模型](/zh-cn/wiki/page-object-model/) 等模式来增强[可维护性](/zh-cn/wiki/maintainability/)。定期审查和重构测试以确保可靠性。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：创建管理和生成[测试数据](/zh-cn/wiki/test-data/) 的策略。利用数据池或合成数据生成来确保一致性和可用性。
-- **环境稳定性**：使用容器化或虚拟化来保持一致的[测试环境](/zh-cn/wiki/test-environment/)。自动化环境 [环境搭建](/zh-cn/wiki/setup/) 和拆卸以减少手动干预。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：根据风险和功能重要性确定测试的优先级。使用[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具来识别差距并不断完善[测试套件](/zh-cn/wiki/test-suite/)。
-- **资源限制**：通过并行测试并利用基于云的解决方案根据需要扩展资源来优化[测试执行](/zh-cn/wiki/test-execution/)。
-- **[测试执行](/zh-cn/wiki/test-execution/) 速度**：分析测试以识别瓶颈。通过关注最慢的测试来优化并考虑拆分或简化它们。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：实施强大的错误处理和重试。使用[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) 等模式来增强[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。定期审查和重构测试以确保可靠性。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：创建管理和生成[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的策略。利用数据池或合成数据生成来确保一致性和可用性。
+- **环境稳定性**：使用容器化或虚拟化来保持一致的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。自动化环境 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸以减少手动干预。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：根据风险和功能重要性确定测试的优先级。使用[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具来识别差距并不断完善[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
+- **资源限制**：通过并行测试并利用基于云的解决方案根据需要扩展资源来优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 速度**：分析测试以识别瓶颈。通过关注最慢的测试来优化并考虑拆分或简化它们。
 - **维护开销**：采用模块化方法进行测试设计以简化更新。鼓励定期进行代码审查，以便及早发现潜在的维护问题。
 - **与 CI/CD 集成**：自动触发 CI/CD 管道中的 BVT。确保测试结果得到清晰报告且可操作。
 - **保持测试最新**：实施更新测试和功能开发的流程。鼓励开发人员和测试人员之间的协作，使测试更新与代码更改保持一致。
 - **工具**：选择与您的技术堆栈和 CI/CD 管道良好集成的工具。保持工具更新并培训团队有效地使用它们。 通过主动应对这些挑战，您可以确保 BVT 仍然是软件开发生命周期的一项资产，提供有关构建运行状况的快速可靠的反馈。
 
-- **[片状测试](/zh-cn/wiki/flaky-test/)**：实施强大的错误处理和重试。使用[页面对象模型](/zh-cn/wiki/page-object-model/) 等模式来增强[可维护性](/zh-cn/wiki/maintainability/)。定期审查和重构测试以确保可靠性。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：创建用于管理和生成[测试数据](/zh-cn/wiki/test-data/) 的策略。利用数据池或合成数据生成来确保一致性和可用性。
-- **环境稳定性**：使用容器化或虚拟化来保持一致的[测试环境](/zh-cn/wiki/test-environment/)。自动化环境 [环境搭建](/zh-cn/wiki/setup/) 和拆卸以减少手动干预。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：根据风险和功能重要性确定测试的优先级。使用[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具来识别差距并不断完善[测试套件](/zh-cn/wiki/test-suite/)。
-- **资源限制**：通过并行测试并利用基于云的解决方案根据需要扩展资源来优化[测试执行](/zh-cn/wiki/test-execution/)。
-- **[测试执行](/zh-cn/wiki/test-execution/) 速度**：分析测试以识别瓶颈。通过关注最慢的测试来优化并考虑拆分或简化它们。
+- **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：实施强大的错误处理和重试。使用[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) 等模式来增强[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。定期审查和重构测试以确保可靠性。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：创建用于管理和生成[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的策略。利用数据池或合成数据生成来确保一致性和可用性。
+- **环境稳定性**：使用容器化或虚拟化来保持一致的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。自动化环境 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸以减少手动干预。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：根据风险和功能重要性确定测试的优先级。使用[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具来识别差距并不断完善[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
+- **资源限制**：通过并行测试并利用基于云的解决方案根据需要扩展资源来优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 速度**：分析测试以识别瓶颈。通过关注最慢的测试来优化并考虑拆分或简化它们。
 - **维护开销**：采用模块化方法进行测试设计以简化更新。鼓励定期进行代码审查，以便及早发现潜在的维护问题。
 - **与 CI/CD 集成**：自动触发 CI/CD 管道中的 BVT。确保测试结果得到清晰报告且可操作。
 - **保持测试最新**：实施更新测试和功能开发的流程。鼓励开发人员和测试人员之间的协作，使测试更新与代码更改保持一致。
@@ -498,60 +498,60 @@ order: 0
 
 #### 确保有效且高效的构建验证测试有哪些最佳实践？
 
-为了确保 [构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 有效且高效，请遵循以下最佳实践：
+为了确保 [构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 有效且高效，请遵循以下最佳实践：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于关键功能和过去的缺陷。专注于高风险领域，以最大限度地发挥 BVT 套件的影响。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于关键功能和过去的缺陷。专注于高风险领域，以最大限度地发挥 BVT 套件的影响。
 
-- **保持精益[测试套件](/zh-cn/wiki/test-suite/)**通过定期审查和删除过时或多余的测试。这有助于缩短运行时间并加快反馈循环。
-
-- **使用模拟对象和服务虚拟化**隔离被测系统，确保 BVT 不依赖于可能导致延迟或漏报的外部系统。
-
-- **实现并行执行**以减少测试运行时间。利用多线程或分布式测试框架并发执行测试。
-
-- **优化[环境搭建](/zh-cn/wiki/setup/)和拆卸过程**以尽量减少开销。使用可以快速准备测试环境并在测试运行后进行清理的脚本。
-
-- **监控和分析测试结果**快速识别不稳定的测试或失败模式。解决根本原因以保持测试套件的可靠性。
-
-- **版本控制您的[测试脚本](/zh-cn/wiki/test-script/)**与您的应用程序代码一起确保测试和他们验证的构建之间的一致性。
-
-- **将 BVT 集成到您的 CI/CD 管道中**自动触发每个构建的测试，提供有关构建运行状况的即时反馈。 通过坚持这些实践，您将提高 BVT 的有效性，为新构建提供快速、可靠的反馈，并保持 [软件质量](/zh-cn/wiki/software-quality/) 的高标准。
-
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于关键功能和过去的缺陷。专注于高风险领域，以最大限度地发挥 BVT 套件的影响。
-
-- **保持精益[测试套件](/zh-cn/wiki/test-suite/)**通过定期审查和删除过时或多余的测试。这有助于缩短运行时间并加快反馈循环。
+- **保持精益[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**通过定期审查和删除过时或多余的测试。这有助于缩短运行时间并加快反馈循环。
 
 - **使用模拟对象和服务虚拟化**隔离被测系统，确保 BVT 不依赖于可能导致延迟或漏报的外部系统。
 
 - **实现并行执行**以减少测试运行时间。利用多线程或分布式测试框架并发执行测试。
 
-- **优化[环境搭建](/zh-cn/wiki/setup/)和拆卸过程**以尽量减少开销。使用可以快速准备测试环境并在测试运行后进行清理的脚本。
+- **优化[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)和拆卸过程**以尽量减少开销。使用可以快速准备测试环境并在测试运行后进行清理的脚本。
 
 - **监控和分析测试结果**快速识别不稳定的测试或失败模式。解决根本原因以保持测试套件的可靠性。
 
-- **版本控制您的[测试脚本](/zh-cn/wiki/test-script/)**与您的应用程序代码一起确保测试和他们验证的构建之间的一致性。
+- **版本控制您的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与您的应用程序代码一起确保测试和他们验证的构建之间的一致性。
+
+- **将 BVT 集成到您的 CI/CD 管道中**自动触发每个构建的测试，提供有关构建运行状况的即时反馈。 通过坚持这些实践，您将提高 BVT 的有效性，为新构建提供快速、可靠的反馈，并保持 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的高标准。
+
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于关键功能和过去的缺陷。专注于高风险领域，以最大限度地发挥 BVT 套件的影响。
+
+- **保持精益[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**通过定期审查和删除过时或多余的测试。这有助于缩短运行时间并加快反馈循环。
+
+- **使用模拟对象和服务虚拟化**隔离被测系统，确保 BVT 不依赖于可能导致延迟或漏报的外部系统。
+
+- **实现并行执行**以减少测试运行时间。利用多线程或分布式测试框架并发执行测试。
+
+- **优化[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)和拆卸过程**以尽量减少开销。使用可以快速准备测试环境并在测试运行后进行清理的脚本。
+
+- **监控和分析测试结果**快速识别不稳定的测试或失败模式。解决根本原因以保持测试套件的可靠性。
+
+- **版本控制您的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**与您的应用程序代码一起确保测试和他们验证的构建之间的一致性。
 
 - **将 BVT 集成到您的 CI/CD 管道中**自动触发每个构建的测试，提供有关构建运行状况的即时反馈。
 
 #### 如何优化构建验证测试以节省时间和资源？
 
-要优化 [构建验证测试](/zh-cn/wiki/build-verification-testing/) (BVT) 并节省时间和资源，请考虑以下策略：
+要优化 [构建验证测试](https://inaodeng.com/zh-cn/wiki/build-verification-testing/) (BVT) 并节省时间和资源，请考虑以下策略：
 
-- **确定测试优先级**：通过分析代码更改并相应地确定测试优先级来关注高影响领域。使用[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 来确定哪些区域是最关键的。
+- **确定测试优先级**：通过分析代码更改并相应地确定测试优先级来关注高影响领域。使用[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/) 来确定哪些区域是最关键的。
 - **并行执行**：跨多台机器或容器并行运行测试以减少执行时间。
 - **测试选择**：实现智能测试选择机制，仅运行受最近代码更改影响的测试，通常称为*测试影响分析*或*基于更改的测试*。
-- **[测试环境](/zh-cn/wiki/test-environment/) 稳定性**：确保 [测试环境](/zh-cn/wiki/test-environment/) 稳定且一致，以避免 [假阴性](/zh-cn/wiki/false-negative/) 浪费时间调查非问题。
-- **缓存依赖项**：使用依赖项缓存并构建工件来加速 BVT 的 [环境搭建](/zh-cn/wiki/setup/) 阶段。
-- **优化测试代码**：定期重构测试代码，以保持其高效和可维护。删除对置信水平没有贡献的冗余或[片状测试](/zh-cn/wiki/flaky-test/)。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 稳定性**：确保 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 稳定且一致，以避免 [假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 浪费时间调查非问题。
+- **缓存依赖项**：使用依赖项缓存并构建工件来加速 BVT 的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 阶段。
+- **优化测试代码**：定期重构测试代码，以保持其高效和可维护。删除对置信水平没有贡献的冗余或[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
 - **监控和分析**：持续监控测试结果和执行时间，以识别瓶颈或效率低下。使用这些数据做出有关优化的明智决策。
-- **利用存根和模拟**：在适当的情况下，使用存根和模拟来模拟未直接测试的系统部分，从而减少[测试执行](/zh-cn/wiki/test-execution/)的复杂性和时间。
+- **利用存根和模拟**：在适当的情况下，使用存根和模拟来模拟未直接测试的系统部分，从而减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的复杂性和时间。
 - **持续反馈**：针对测试失败实施反馈机制，以快速解决问题并维护 BVT 套件的健康。 通过应用这些策略，您可以简化 BVT 流程，确保它仍然是 CI/CD 管道中快速且可靠的看门人。
 
-- **确定测试优先级**：通过分析代码更改并相应地确定测试优先级来关注高影响领域。使用[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 来确定哪些区域是最关键的。
+- **确定测试优先级**：通过分析代码更改并相应地确定测试优先级来关注高影响领域。使用[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/) 来确定哪些区域是最关键的。
 - **并行执行**：跨多台机器或容器并行运行测试以减少执行时间。
 - **测试选择**：实现智能测试选择机制，仅运行受最近代码更改影响的测试，通常称为*测试影响分析*或*基于更改的测试*。
-- **[测试环境](/zh-cn/wiki/test-environment/) 稳定性**：确保[测试环境](/zh-cn/wiki/test-environment/) 稳定且一致，以避免[假阴性](/zh-cn/wiki/false-negative/) 浪费时间调查非问题。
-- **缓存依赖项**：使用依赖项缓存并构建工件来加速 BVT 的 [环境搭建](/zh-cn/wiki/setup/) 阶段。
-- **优化测试代码**：定期重构测试代码，以保持其高效和可维护。删除对置信水平没有贡献的冗余或[片状测试](/zh-cn/wiki/flaky-test/)。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 稳定性**：确保[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 稳定且一致，以避免[假阴性](https://inaodeng.com/zh-cn/wiki/false-negative/) 浪费时间调查非问题。
+- **缓存依赖项**：使用依赖项缓存并构建工件来加速 BVT 的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 阶段。
+- **优化测试代码**：定期重构测试代码，以保持其高效和可维护。删除对置信水平没有贡献的冗余或[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
 - **监控和分析**：持续监控测试结果和执行时间，以识别瓶颈或效率低下。使用这些数据做出有关优化的明智决策。
-- **利用存根和模拟**：在适当的情况下，使用存根和模拟来模拟未直接测试的系统部分，从而减少[测试执行](/zh-cn/wiki/test-execution/)的复杂性和时间。
+- **利用存根和模拟**：在适当的情况下，使用存根和模拟来模拟未直接测试的系统部分，从而减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的复杂性和时间。
 - **持续反馈**：针对测试失败实施反馈机制，以快速解决问题并维护 BVT 套件的健康。

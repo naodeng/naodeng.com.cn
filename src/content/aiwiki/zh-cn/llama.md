@@ -112,9 +112,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [qwen](/zh-cn/AIWiki/qwen/)
-- [mistral-mixtral](/zh-cn/AIWiki/mistral-mixtral/)
-- [small-language-models-slms](/zh-cn/AIWiki/small-language-models-slms/)
+- [qwen](https://inaodeng.com/zh-cn/AIWiki/qwen/)
+- [mistral-mixtral](https://inaodeng.com/zh-cn/AIWiki/mistral-mixtral/)
+- [small-language-models-slms](https://inaodeng.com/zh-cn/AIWiki/small-language-models-slms/)
 
 ### 术语元数据
 

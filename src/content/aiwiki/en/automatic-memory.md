@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [active-memory](/en/AIWiki/active-memory/)
-- [memory-scope](/en/AIWiki/memory-scope/)
-- [compaction](/en/AIWiki/compaction/)
-- [prompt-caching](/en/AIWiki/prompt-caching/)
+- [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
+- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
+- [compaction](https://inaodeng.com/en/AIWiki/compaction/)
+- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
 
 ### External References
 

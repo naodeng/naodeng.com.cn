@@ -46,8 +46,8 @@ order: 0
 
 ## 相关术语
 
-- [测试自动化](/zh-cn/wiki/test-automation/)
-- [自动化测试](/zh-cn/wiki/automated-testing/)
+- [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)
+- [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)
 
 ## 关于测试执行自动化的问题？
 
@@ -55,8 +55,8 @@ order: 0
 
 #### 什么是测试执行自动化？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/)是指使用专门的软件来控制测试的执行、将实际结果与预测结果进行比较、设置测试前提条件以及其他测试控制和测试报告功能的过程。本质上，它涉及自动化手动过程，否则测试人员将逐步执行该过程。
-  实际上，这意味着编写脚本或使用工具针对被测应用程序 (AUT) 运行 [测试套件](/zh-cn/wiki/test-suite/)。这些脚本与 AUT 交互，输入数据、单击按钮并提取结果以验证应用程序的行为是否符合预期。
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/)是指使用专门的软件来控制测试的执行、将实际结果与预测结果进行比较、设置测试前提条件以及其他测试控制和测试报告功能的过程。本质上，它涉及自动化手动过程，否则测试人员将逐步执行该过程。
+  实际上，这意味着编写脚本或使用工具针对被测应用程序 (AUT) 运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。这些脚本与 AUT 交互，输入数据、单击按钮并提取结果以验证应用程序的行为是否符合预期。
   这是使用假设的自动化框架的伪代码的基本示例：
 
 ```
@@ -77,26 +77,26 @@ order: 0
     });
   });
 ```
-此代码将自动执行登录功能的测试过程，包括成功登录和失败登录尝试。自动化框架通常在无头浏览器或专用[测试环境](/zh-cn/wiki/test-environment/)中执行这些测试，并报告结果以供进一步分析。
+此代码将自动执行登录功能的测试过程，包括成功登录和失败登录尝试。自动化框架通常在无头浏览器或专用[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)中执行这些测试，并报告结果以供进一步分析。
 
 #### 为什么测试执行自动化很重要？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 对于**扩展测试工作**和确保多次测试运行的**一致性**至关重要。它允许团队在短时间内执行大量测试，这对于[回归测试](/zh-cn/wiki/regression-testing/) 并确保新的更改不会引入任何缺陷尤其重要。
-  自动化[测试执行](/zh-cn/wiki/test-execution/)还支持**频繁集成**和**部署周期**，使团队能够有效地采用**CI/CD**实践。通过自动化执行过程，缩短了反馈循环，使开发人员能够立即了解其更改的影响。
-  此外，与[手动测试](/zh-cn/wiki/manual-testing/)相比，自动化有助于以更少的努力实现**更高的[测试覆盖率](/zh-cn/wiki/test-coverage/)**。它允许包含复杂的[测试场景](/zh-cn/wiki/test-scenario/)，由于时间或人为错误的限制，这些复杂的[测试场景](/zh-cn/wiki/test-scenario/)可能难以手动执行。
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 对于**扩展测试工作**和确保多次测试运行的**一致性**至关重要。它允许团队在短时间内执行大量测试，这对于[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 并确保新的更改不会引入任何缺陷尤其重要。
+  自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)还支持**频繁集成**和**部署周期**，使团队能够有效地采用**CI/CD**实践。通过自动化执行过程，缩短了反馈循环，使开发人员能够立即了解其更改的影响。
+  此外，与[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)相比，自动化有助于以更少的努力实现**更高的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。它允许包含复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)，由于时间或人为错误的限制，这些复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)可能难以手动执行。
   在需要测试多个配置或平台的环境中，自动化可确保测试在所有所需组合中一致运行，从而**降低由于未经测试的场景而出现缺陷的风险**。
-  最后，自动化[测试执行](/zh-cn/wiki/test-execution/) 为测试人员释放了宝贵的时间，使他们能够专注于更多的**战略活动**，例如[探索性测试](/zh-cn/wiki/exploratory-testing/) 和测试设计，而不是重复的执行任务。这种转变不仅提高了测试过程的整体质量，还提高了测试专业人​​员的工作满意度。
+  最后，自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 为测试人员释放了宝贵的时间，使他们能够专注于更多的**战略活动**，例如[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 和测试设计，而不是重复的执行任务。这种转变不仅提高了测试过程的整体质量，还提高了测试专业人​​员的工作满意度。
 
 #### 自动化测试执行有哪些好处？
 
-自动化 [测试执行](/zh-cn/wiki/test-execution/) 的好处包括：
+自动化 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的好处包括：
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**：自动化允许在相同的时间内执行更多的测试，涵盖更多的功能和场景。
+- **增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：自动化允许在相同的时间内执行更多的测试，涵盖更多的功能和场景。
 - **可重复性**：测试可以以一致的精度运行多次，确保结果的可靠性。
 - **速度**：自动化测试的执行速度比手动测试快得多，显着减少了开发人员的反馈循环。
 - **效率**：创建后，自动化测试可以在不同版本的软件之间重复使用，从长远来看节省时间。
 - **成本降低**：虽然存在初始设置成本，但随着时间的推移，自动化通过最大限度地减少手动工作的需要来降低测试成本。
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：自动化测试可以集成到构建过程中，在开发周期的早期发现问题。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：自动化测试可以集成到构建过程中，在开发周期的早期发现问题。
 - **提高准确性**：自动化消除了人为错误的风险，从而获得更精确的测试结果。
 - **更好地利用资源**：自动化使 QA 工程师能够专注于需要人工判断的更复杂的测试任务。
 - **增强的报告**：可以设置自动测试来生成详细的日志和报告，提供对应用程序性能和质量的见解。
@@ -106,13 +106,13 @@ order: 0
 
 #### 测试执行自动化有哪些潜在的缺点或挑战？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 可能会带来一些挑战：
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 可能会带来一些挑战：
 
-- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：建立自动化框架需要在时间和资源方面进行大量的前期投资。
+- **初始[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 成本**：建立自动化框架需要在时间和资源方面进行大量的前期投资。
 - **维护开销**：自动化测试可能很脆弱，需要定期更新才能跟上应用程序的变化。
 - **技能要求**：编写和维护脚本需要一定水平的技术专业知识。
-- **[误报](/zh-cn/wiki/false-positive/)/Negatives** ：测试可能会报告并非实际错误的故障（误报）或尽管存在缺陷但仍会通过（误报）。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：实现全面的测试覆盖可能很困难；有些场景可能仍然需要手动测试。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)/Negatives** ：测试可能会报告并非实际错误的故障（误报）或尽管存在缺陷但仍会通过（误报）。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：实现全面的测试覆盖可能很困难；有些场景可能仍然需要手动测试。
 - **工具限制**：工具可能不支持所有技术或接口，从而导致自动化方面的差距。
 - **执行时间**：虽然自动化比手动测试更快，但复杂的测试套件可能需要相当长的时间才能执行。
 - **环境差异**：测试和生产环境之间的差异可能导致测试错误地通过或失败。
@@ -121,11 +121,11 @@ order: 0
 - **集成复杂性**：将测试自动化集成到 CI/CD 管道和其他系统中可能很复杂，并且需要额外的工具。
 - **可扩展性**：随着应用程序的增长，扩展测试自动化套件以匹配可能会成为一个挑战。 应对这些挑战需要仔细规划、持续监控和定期完善自动化策略。
 
-- **初始[环境搭建](/zh-cn/wiki/setup/) 成本**：建立自动化框架需要在时间和资源方面进行大量的前期投资。
+- **初始[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 成本**：建立自动化框架需要在时间和资源方面进行大量的前期投资。
 - **维护开销**：自动化测试可能很脆弱，需要定期更新才能跟上应用程序的变化。
 - **技能要求**：编写和维护脚本需要一定水平的技术专业知识。
-- **[误报](/zh-cn/wiki/false-positive/)/Negatives** ：测试可能会报告并非实际错误的失败（误报）或尽管存在缺陷但仍会通过（误报）。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：实现全面的测试覆盖可能很困难；有些场景可能仍然需要手动测试。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)/Negatives** ：测试可能会报告并非实际错误的失败（误报）或尽管存在缺陷但仍会通过（误报）。
+- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：实现全面的测试覆盖可能很困难；有些场景可能仍然需要手动测试。
 - **工具限制**：工具可能不支持所有技术或接口，从而导致自动化方面的差距。
 - **执行时间**：虽然自动化比手动测试更快，但复杂的测试套件可能需要相当长的时间才能执行。
 - **环境差异**：测试和生产环境之间的差异可能导致测试错误地通过或失败。
@@ -138,83 +138,83 @@ order: 0
 
 #### 测试执行自动化常用哪些工具？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 的常用工具包括：
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：用于自动化 Web 浏览器的开源工具。它支持多种编程语言和浏览器类型。
 - **Appium**：用于在 iOS 和 Android 平台上自动化移动应用程序的开源工具。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：基于 JavaScript 的端到端测试框架，在浏览器中运行，简化了现代 Web 应用程序测试。
 - **TestComplete** ：一种商业工具，支持使用脚本或无脚本方法进行桌面、移动和 Web 应用程序测试。
 - **JUnit**和 **TestNG**：Java 中的单元测试框架，通常与 Selenium 结合用于自动化。
 
 - **R规格** , **水豚** , 和 **Watir** ：基于 Ruby 的测试工具，用于行为驱动开发 (BDD) 和 Web 应用程序测试。
 
-- **[NUnit](/zh-cn/wiki/nunit/)**和 **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
+- **[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/)**和 **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **[Postman](/zh-cn/wiki/postman/)**和 **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**和 **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
 
 - **Cucumber** ：支持具有简单语言规范的 BDD，可以使用各种编程语言实现自动化。
-- **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。 这些工具提供了跨不同平台和技术实现 [测试执行](/zh-cn/wiki/test-execution/) 自动化的各种功能。它们可以集成到 CI/CD 管道中并支持并行执行、报告和[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
+- **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。 这些工具提供了跨不同平台和技术实现 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 自动化的各种功能。它们可以集成到 CI/CD 管道中并支持并行执行、报告和[跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)。
 
     和
     **TestNG**：Java 中的单元测试框架，通常与 Selenium 结合用于自动化。
 
 - **R规格** , **水豚** , 和 **Watir** ：基于 Ruby 的测试工具，用于行为驱动开发 (BDD) 和 Web 应用程序测试。
 
-- **[NUnit](/zh-cn/wiki/nunit/)**和 **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
+- **[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/)**和 **SpecFlow** ：.NET 框架的工具，支持测试驱动开发 (TDD) 和 BDD。
 
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的关键字驱动测试自动化框架。
-- **[Postman](/zh-cn/wiki/postman/)**和 **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**和 **RestAssured** ：用于 API 测试的工具，Postman 专注于探索性测试，而 RestAssured 则为 API 测试提供 Java DSL。
 
 - **Cucumber** ：支持具有简单语言规范的 BDD，可以使用各种编程语言实现自动化。
 - **Playwright**：一个 Node 库，可通过单个 API 自动化 Chromium、Firefox 和 WebKit，支持跨浏览器测试。
 
 #### 这些工具之间有什么区别？
 
-比较 [测试自动化](/zh-cn/wiki/test-automation/) 工具时，请考虑以下主要差异：
+比较 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具时，请考虑以下主要差异：
 
-- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
+- **语言支持**：工具因其支持的编程语言而异。例如，**[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** 支持多种语言，如 Java、C# 和 Python，而 **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** 是基于 JavaScript 的。
 - **生态系统和集成**：一些工具提供更丰富的生态系统和集成。例如，**TestComplete** 提供了与其他工具的广泛集成，而 **Watir** 的开箱即用集成可能较少。
-- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
-- **执行速度**：执行速度可能会有很大差异。 **[Cypress](/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
-- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[Cypress](/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
-- **浏览器支持**：考虑支持的浏览器范围。 [selenium](/zh-cn/wiki/selenium/) 支持多种浏览器，包括较旧的浏览器，而 **Puppeteer** 主要专注于 Chrome。
+- **易于使用**：**Katalon Studio** 等工具的设计目的是为了易于使用，并具有用户友好的界面，而 **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** 等其他工具则需要更多的编码专业知识。
+- **执行速度**：执行速度可能会有很大差异。 **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** 和 **Playwright** 与 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 相比，以其快速执行时间而闻名。
+- **并行测试**：并行运行测试的能力因工具而异。 **TestNG** 与 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 可以并行运行测试，这在 **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** 中不原生支持，无需额外的插件。
+- **浏览器支持**：考虑支持的浏览器范围。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 支持多种浏览器，包括较旧的浏览器，而 **Puppeteer** 主要专注于 Chrome。
 - **移动测试**：一些工具，例如**Appium**，是专门为移动测试而设计的，而其他工具则更侧重于网络。
-- **记录和回放**：**[selenium IDE](/zh-cn/wiki/selenium-ide/)** 等工具为测试创建提供记录和回放功能，这是无需编写代码即可快速生成测试的方法。
-- **社区和支持**：工具社区的规模和活动可能会影响您获得的支持。 [selenium](/zh-cn/wiki/selenium/) 拥有一个大型、活跃的社区，而较新或不太流行的工具可能只有有限的社区支持。
-- **开源与商业**：**[selenium](/zh-cn/wiki/selenium/)** 等开源工具可以免费使用和修改，而 **QTP/UFT** 等商业工具需要支付许可费用，但可能会提供更多专用支持和高级功能。
+- **记录和回放**：**[selenium IDE](https://inaodeng.com/zh-cn/wiki/selenium-ide/)** 等工具为测试创建提供记录和回放功能，这是无需编写代码即可快速生成测试的方法。
+- **社区和支持**：工具社区的规模和活动可能会影响您获得的支持。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 拥有一个大型、活跃的社区，而较新或不太流行的工具可能只有有限的社区支持。
+- **开源与商业**：**[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** 等开源工具可以免费使用和修改，而 **QTP/UFT** 等商业工具需要支付许可费用，但可能会提供更多专用支持和高级功能。
 
 #### 如何选择合适的测试执行自动化工具？
 
-为[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 选择正确的工具需要评估几个因素，以确保该工具符合您项目的特定需求：
+为[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 选择正确的工具需要评估几个因素，以确保该工具符合您项目的特定需求：
 
 - **语言和框架支持**：选择支持您的项目使用的编程语言和框架的工具。这确保了无缝集成，并允许您的团队在熟悉的环境中编写测试。
-- **被测应用程序 (AUT)**：考虑您正在测试的应用程序的类型。不同的工具更适合不同类型的应用程序，例如 Web、移动、桌面或 [API](/zh-cn/wiki/api/)。
+- **被测应用程序 (AUT)**：考虑您正在测试的应用程序的类型。不同的工具更适合不同类型的应用程序，例如 Web、移动、桌面或 [API](https://inaodeng.com/zh-cn/wiki/api/)。
 - **易于使用**：寻找具有用户友好界面和功能的工具，以简化测试创建、执行和维护。这可以包括记录和回放功能、无脚本自动化或强大的脚本接口。
 - **集成功能**：确保该工具可以与您现有的 CI/CD 管道、版本控制系统以及开发生态系统中的其他工具集成。
 - **报告和分析**：选择提供全面报告和分析的工具，以帮助您了解测试结果并确定需要改进的领域。
 - **社区和支持**：强大的社区和专业支持对于故障排除和跟上最佳实践非常宝贵。
 - **成本**：考虑该工具的初始成本和持续成本，包括许可、培训和维护费用。
 - **可扩展性**：确保该工具可以随着项目的增长而处理不断增加的复杂性和测试量。
-- **供应商稳定性和路线图**：研究该工具的供应商，确保他们拥有稳定的历史记录和清晰的未来发展路线图。 通过仔细考虑这些因素，您可以选择[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 工具来增强您的测试过程并有助于提高软件开发生命周期的整体质量和效率。
+- **供应商稳定性和路线图**：研究该工具的供应商，确保他们拥有稳定的历史记录和清晰的未来发展路线图。 通过仔细考虑这些因素，您可以选择[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 工具来增强您的测试过程并有助于提高软件开发生命周期的整体质量和效率。
 
 #### Selenium 在测试执行自动化中的作用是什么？
 
-[selenium](/zh-cn/wiki/selenium/) 在[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 中发挥**核心作用**，主要用于Web 应用程序。它提供了一套工具，使自动化工程师能够**与 Web 浏览器交互**并跨各种平台**自动化 Web 应用程序测试**。
-  [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 是一个关键组件，允许创建基于浏览器的回归自动化套件和测试，从而可以使用每个浏览器对自动化的本机支持直接调用浏览器。这意味着测试的运行就像真实用户正在浏览应用程序一样，确保**高保真度**测试结果。
-  使用[selenium](/zh-cn/wiki/selenium/)，工程师可以用多种编程语言编写[测试脚本](/zh-cn/wiki/test-script/)，包括Java、C#、Python、Ruby 和JavaScript。这种灵活性对于团队利用现有技能并与其他工具或框架集成至关重要。
-  [selenium](/zh-cn/wiki/selenium/) 的功能包括：
+[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 在[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 中发挥**核心作用**，主要用于Web 应用程序。它提供了一套工具，使自动化工程师能够**与 Web 浏览器交互**并跨各种平台**自动化 Web 应用程序测试**。
+  [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 是一个关键组件，允许创建基于浏览器的回归自动化套件和测试，从而可以使用每个浏览器对自动化的本机支持直接调用浏览器。这意味着测试的运行就像真实用户正在浏览应用程序一样，确保**高保真度**测试结果。
+  使用[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)，工程师可以用多种编程语言编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，包括Java、C#、Python、Ruby 和JavaScript。这种灵活性对于团队利用现有技能并与其他工具或框架集成至关重要。
+  [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的功能包括：
 
-- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** ：确保不同浏览器之间的兼容性。
+- **[跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)** ：确保不同浏览器之间的兼容性。
 - **定位元素**：使用各种定位器策略识别要交互的网络元素。
 - **同步**：处理异步操作并等待元素变得可用或事件发生。
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：鼓励更好的测试维护并减少代码重复。 [selenium](/zh-cn/wiki/selenium/) 与 TestNG、JUnit for [测试管理](/zh-cn/wiki/test-management/) 等工具以及 Cucumber for [BDD](/zh-cn/wiki/bdd/) 等框架集成。它还无缝地融入 CI/CD 管道，与 Jenkins 等工具一起工作，在构建和部署过程中实现自动化[测试执行](/zh-cn/wiki/test-execution/)。 总之，[selenium](/zh-cn/wiki/selenium/) 提供了一个**强大、灵活且广泛采用的**解决方案，用于自动执行 Web 应用程序测试，使其成为 [测试自动化](/zh-cn/wiki/test-automation/) 工程师工具包中的主要内容。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：鼓励更好的测试维护并减少代码重复。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 与 TestNG、JUnit for [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 等工具以及 Cucumber for [BDD](https://inaodeng.com/zh-cn/wiki/bdd/) 等框架集成。它还无缝地融入 CI/CD 管道，与 Jenkins 等工具一起工作，在构建和部署过程中实现自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。 总之，[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 提供了一个**强大、灵活且广泛采用的**解决方案，用于自动执行 Web 应用程序测试，使其成为 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师工具包中的主要内容。
 
 #### 测试执行自动化中还使用了哪些其他技术或框架？
 
-除了常见的工具之外，还有其他几种技术和框架在 [测试执行自动化](/zh-cn/wiki/test-execution-automation/) 中发挥着重要作用：
+除了常见的工具之外，还有其他几种技术和框架在 [测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 中发挥着重要作用：
 
-- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的端到端测试框架，在浏览器中运行，使开发人员能够编写更快、更简单、更可靠的测试。
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **TestCafe**：一个用于自动化端到端 Web 测试的 Node.js 工具。它是为现代 Web 开发而构建的，不需要 WebDriver。
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。它使用关键字驱动的测试方法，并且很容易使用 Python 或 Java 进行扩展。
@@ -223,63 +223,63 @@ order: 0
 - **Espresso**：Android 移动测试框架，提供一组丰富的 API 来编写 UI 测试。
 - **XCTest/XCUITest** ：Apple 提供的用于 iOS 和 macOS 应用程序的单元和 UI 测试的框架。
 - **加特林**：用于负载测试的强大工具，其设计易于使用、可维护性和高性能。
-- **K6**：一个开源负载测试工具，用于测试后端服务的性能，用 Go 开发并可使用 JavaScript 编写脚本。 这些框架和工具均提供独特的特性和功能，可用于增强 [测试自动化](/zh-cn/wiki/test-automation/) 工作，具体取决于项目和所涉及技术堆栈的具体要求。
+- **K6**：一个开源负载测试工具，用于测试后端服务的性能，用 Go 开发并可使用 JavaScript 编写脚本。 这些框架和工具均提供独特的特性和功能，可用于增强 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工作，具体取决于项目和所涉及技术堆栈的具体要求。
 
 ### 实施和最佳实践
 
 #### 如何在项目中实现测试执行自动化？
 
-要在项目中实施 [测试执行自动化](/zh-cn/wiki/test-execution-automation/)，请按照下列步骤操作：
+要在项目中实施 [测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/)，请按照下列步骤操作：
 
 1. **定义范围**基于关键和高频测试用例的自动化。
 
-2. **设计[测试用例](/zh-cn/wiki/test-case/)**适合自动化，确保它们清晰、简洁且可维护。
+2. **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**适合自动化，确保它们清晰、简洁且可维护。
 
 3. **搭建环境**具有所有必要的硬件、软件和网络配置。
 
 4. **选择版本控制系统**管理您的测试脚本和文档，例如 Git。
 
-5. **编写自动[测试脚本](/zh-cn/wiki/test-script/)**使用所选工具，遵守可读性和可维护性的编码标准。
+5. **编写自动[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**使用所选工具，遵守可读性和可维护性的编码标准。
 
-6. **创建[测试数据](/zh-cn/wiki/test-data/)**可以在测试运行中一致使用，并考虑数据驱动测试（如果适用）。
+6. **创建[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**可以在测试运行中一致使用，并考虑数据驱动测试（如果适用）。
 
 7. **实施报告机制**捕获测试结果并促进故障分析。
 
-8. **配置[测试运行者](/zh-cn/wiki/test-runner/)**执行测试，这可能涉及设置测试套件和指定执行顺序。
+8. **配置[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)**执行测试，这可能涉及设置测试套件和指定执行顺序。
 
 9. **与构建工具集成**如果使用 Java，则类似 Maven 或 Gradle，或者其他语言的相应等效项。
 
 10. **设置 CI/CD 管道**对代码提交、合并或按计划的时间间隔触发自动化测试。
 
-11. **监控[测试执行](/zh-cn/wiki/test-execution/)**识别可能影响一致性的不稳定测试或环境问题。
+11. **监控[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**识别可能影响一致性的不稳定测试或环境问题。
 
 12. **查看测试结果**并根据需要完善测试以提高覆盖范围和可靠性。
 
 13. **记录自动化过程**并随着项目的进展进行更新。
 
-14. **培训团队成员**自动化框架和脚本，以确保集体所有权和知识共享。 请记住定期**重构和优化**您的[测试脚本](/zh-cn/wiki/test-script/)，以适应应用程序中的变化并提高[测试执行](/zh-cn/wiki/test-execution/) 的效率。
+14. **培训团队成员**自动化框架和脚本，以确保集体所有权和知识共享。 请记住定期**重构和优化**您的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，以适应应用程序中的变化并提高[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的效率。
 
 1. **定义范围**基于关键和高频测试用例的自动化。
 
-2. **设计[测试用例](/zh-cn/wiki/test-case/)**适合自动化，确保它们清晰、简洁且可维护。
+2. **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**适合自动化，确保它们清晰、简洁且可维护。
 
 3. **搭建环境**具有所有必要的硬件、软件和网络配置。
 
 4. **选择版本控制系统**管理您的测试脚本和文档，例如 Git。
 
-5. **编写自动[测试脚本](/zh-cn/wiki/test-script/)**使用所选工具，遵守可读性和可维护性的编码标准。
+5. **编写自动[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**使用所选工具，遵守可读性和可维护性的编码标准。
 
-6. **创建[测试数据](/zh-cn/wiki/test-data/)**可以在测试运行中一致使用，并考虑数据驱动测试（如果适用）。
+6. **创建[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**可以在测试运行中一致使用，并考虑数据驱动测试（如果适用）。
 
 7. **实施报告机制**捕获测试结果并促进故障分析。
 
-8. **配置[测试运行者](/zh-cn/wiki/test-runner/)**执行测试，这可能涉及设置测试套件和指定执行顺序。
+8. **配置[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)**执行测试，这可能涉及设置测试套件和指定执行顺序。
 
 9. **与构建工具集成**如果使用 Java，则类似 Maven 或 Gradle，或者其他语言的相应等效项。
 
 10. **设置 CI/CD 管道**对代码提交、合并或按计划的时间间隔触发自动化测试。
 
-11. **监控[测试执行](/zh-cn/wiki/test-execution/)**识别可能影响一致性的不稳定测试或环境问题。
+11. **监控[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**识别可能影响一致性的不稳定测试或环境问题。
 
 12. **查看测试结果**并根据需要完善测试以提高覆盖范围和可靠性。
 
@@ -289,7 +289,7 @@ order: 0
 
 #### 测试执行自动化的最佳实践是什么？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 中的最佳实践包括：
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 中的最佳实践包括：
 
 - **优先测试**：专注于自动化经常运行、容易出现人为错误或覆盖关键功能的高价值测试。
 - **可重用性设计**：使用可重用组件创建模块化测试，以简化维护并增强可扩展性。
@@ -301,27 +301,27 @@ order: 0
 - **配置环境管理**：自动设置和拆除测试环境，以确保一致性并节省时间。
 - **监控测试结果**：实施报告机制来跟踪测试结果、趋势并提供可行的见解。
 - **执行定期审查**：定期审查和重构测试以提高效率并删除冗余或过时的测试。
-- **平衡 UI 和 [API 测试](/zh-cn/wiki/api-testing/)** ：将 UI 测试与 API 测试相结合，以获得更快的反馈并降低脆弱性。
-- **与 CI/CD 集成**：作为 CI/CD 管道的一部分自动触发测试，以确保对代码更改的即时反馈。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保他们的自动化[测试执行](/zh-cn/wiki/test-execution/) 高效、可靠，并为开发生命周期提供价值。
+- **平衡 UI 和 [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)** ：将 UI 测试与 API 测试相结合，以获得更快的反馈并降低脆弱性。
+- **与 CI/CD 集成**：作为 CI/CD 管道的一部分自动触发测试，以确保对代码更改的即时反馈。 通过遵循这些实践，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保他们的自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 高效、可靠，并为开发生命周期提供价值。
 
 #### 如何维护和更新自动化测试脚本？
 
-维护和更新自动化[测试脚本](/zh-cn/wiki/test-script/) 对于确保其长期有效性至关重要。以下是一些关键做法：
+维护和更新自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 对于确保其长期有效性至关重要。以下是一些关键做法：
 
-- **版本控制**：使用 Git 等工具来跟踪更改并管理 [测试脚本](/zh-cn/wiki/test-script/) 的版本。这样可以轻松回滚并了解随时间的变化。
+- **版本控制**：使用 Git 等工具来跟踪更改并管理 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 的版本。这样可以轻松回滚并了解随时间的变化。
 - **模块化设计**：使用可重用组件以模块化方式编写测试，以简化更新和维护。
-- **文档**：为每个[测试用例](/zh-cn/wiki/test-case/)保留简洁的文档，包括目的和任何特殊注意事项，以帮助将来的更新。
-- **定期审查**：定期审查[测试用例](/zh-cn/wiki/test-case/)，以确保它们对于当前应用程序状态和要求仍然有效。
-- **重构**：持续重构测试以提高清晰度、效率和[可维护性](/zh-cn/wiki/maintainability/)。删除已弃用的测试并更新受应用程序更改影响的测试。
-- **自动化维护任务**：在可能的情况下，自动检测 [测试脚本](/zh-cn/wiki/test-script/) 中已弃用的选择器或未使用的函数。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：使用可轻松更新[测试数据](/zh-cn/wiki/test-data/) 的数据管理策略，例如外部数据源或数据生成工具。
+- **文档**：为每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)保留简洁的文档，包括目的和任何特殊注意事项，以帮助将来的更新。
+- **定期审查**：定期审查[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保它们对于当前应用程序状态和要求仍然有效。
+- **重构**：持续重构测试以提高清晰度、效率和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。删除已弃用的测试并更新受应用程序更改影响的测试。
+- **自动化维护任务**：在可能的情况下，自动检测 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 中已弃用的选择器或未使用的函数。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：使用可轻松更新[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 的数据管理策略，例如外部数据源或数据生成工具。
 - **持续集成**：将测试维护集成到 CI/CD 管道中，以确保自动检查每个构建的测试是否存在问题。
 - **监控**：实施监控工具来跟踪一段时间内测试的性能和可靠性，提醒您潜在的维护需求。
-- **协作**：鼓励团队成员之间协作，共享知识并共同应对测试维护挑战。 通过遵循这些实践，您可以确保您的自动化 [测试脚本](/zh-cn/wiki/test-script/) 保持稳健、可靠，并符合软件项目不断变化的需求。
+- **协作**：鼓励团队成员之间协作，共享知识并共同应对测试维护挑战。 通过遵循这些实践，您可以确保您的自动化 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 保持稳健、可靠，并符合软件项目不断变化的需求。
 
 #### 如何处理测试执行自动化中的动态元素？
 
-处理 [测试自动化](/zh-cn/wiki/test-automation/) 中的动态元素需要允许您的脚本适应 UI 中的变化的策略。以下是一些技巧：
+处理 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的动态元素需要允许您的脚本适应 UI 中的变化的策略。以下是一些技巧：
 
 - **使用智能等待**：实现显式等待，允许您的脚本在继续之前等待某些条件（例如元素可见性）。
 
@@ -347,36 +347,36 @@ order: 0
                                     .collect(Collectors.toList());
 ```
 
-- **参数化**：使用参数来处理根据用户输入或 [测试数据](/zh-cn/wiki/test-data/) 更改的元素。
-- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
+- **参数化**：使用参数来处理根据用户输入或 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 更改的元素。
+- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
 
 ```
   JavascriptExecutor js = (JavascriptExecutor) driver;
   WebElement element = (WebElement) js.executeScript("return document.querySelector('#dynamic');");
 ```
 
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将与动态元素的交互封装在页面对象中以集中更改。 请记住**保持定位器尽可能稳定**并**避免过度依赖绝对路径**。当元素高度动态时，请考虑与开发人员合作，为 UI 元素添加更稳定的标识符。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** ：将与动态元素的交互封装在页面对象中以集中更改。 请记住**保持定位器尽可能稳定**并**避免过度依赖绝对路径**。当元素高度动态时，请考虑与开发人员合作，为 UI 元素添加更稳定的标识符。
 
 - **使用智能等待**：实现显式等待，允许您的脚本在继续之前等待某些条件（例如元素可见性）。
 - **动态选择器**：工艺定位器可以根据模式或关系而不是固定属性来匹配元素。
 - **正则表达式**：在定位器中利用正则表达式将元素与动态文本或属性进行匹配。
-- **参数化**：使用参数来处理根据用户输入或[测试数据](/zh-cn/wiki/test-data/)而更改的元素。
-- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** ：将与页面对象中的动态元素的交互封装起来以集中更改。
+- **参数化**：使用参数来处理根据用户输入或[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)而更改的元素。
+- **JavaScript 执行**：执行 JavaScript 来与难以用标准 [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 方法处理的元素进行交互。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)** ：将与页面对象中的动态元素的交互封装起来以集中更改。
 
 #### 确保有效的测试执行自动化的策略是什么？
 
-为了确保有效[测试执行自动化](/zh-cn/wiki/test-execution-automation/)，请考虑以下策略：
+为了确保有效[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/)，请考虑以下策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于投资回报 (ROI)、关键性和执行频率的自动化。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于投资回报 (ROI)、关键性和执行频率的自动化。
 
-- 开发一个 **模块化[测试脚本](/zh-cn/wiki/test-script/)结构**以增强可重用性和可维护性。使用函数、方法和类来封装测试步骤。
+- 开发一个 **模块化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)结构**以增强可重用性和可维护性。使用函数、方法和类来封装测试步骤。
 
 - 实施 **数据驱动测试**将测试数据与脚本分开，以便轻松进行数据更新和可扩展性。
 
 - 利用 **并行执行**利用多线程或分布式测试工具来减少测试运行所需的时间。
 
-- **管理[测试环境](/zh-cn/wiki/test-environment/)**尽可能使用基础设施即代码 (IaC) 工具，有效地确保它们的一致性和可用性。
+- **管理[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**尽可能使用基础设施即代码 (IaC) 工具，有效地确保它们的一致性和可用性。
 
 - **版本控制**您的测试脚本用于跟踪更改、与团队成员协作以及与 CI/CD 管道集成。
 
@@ -386,21 +386,21 @@ order: 0
 
 - **利用人工智能和机器学习**预测测试结果、优化测试套件并主动识别缺陷。
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
+- **自动化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
 
 - **与缺陷跟踪系统集成**自动记录问题并将测试失败链接到错误报告。
 
-- **保持更新**利用最新的测试趋势和工具来不断改进您的自动化策略。 通过应用这些策略，您可以提高自动化 [测试执行](/zh-cn/wiki/test-execution/) 的效率、可靠性和覆盖范围。
+- **保持更新**利用最新的测试趋势和工具来不断改进您的自动化策略。 通过应用这些策略，您可以提高自动化 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的效率、可靠性和覆盖范围。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于投资回报 (ROI)、关键性和执行频率的自动化。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于投资回报 (ROI)、关键性和执行频率的自动化。
 
-- 开发一个 **模块化[测试脚本](/zh-cn/wiki/test-script/)结构**以增强可重用性和可维护性。使用函数、方法和类来封装测试步骤。
+- 开发一个 **模块化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)结构**以增强可重用性和可维护性。使用函数、方法和类来封装测试步骤。
 
 - 实施 **数据驱动测试**将测试数据与脚本分开，以便轻松进行数据更新和可扩展性。
 
 - 利用 **并行执行**利用多线程或分布式测试工具来减少测试运行所需的时间。
 
-- **管理[测试环境](/zh-cn/wiki/test-environment/)**尽可能使用基础设施即代码 (IaC) 工具，有效地确保它们的一致性和可用性。
+- **管理[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**尽可能使用基础设施即代码 (IaC) 工具，有效地确保它们的一致性和可用性。
 
 - **版本控制**您的测试脚本用于跟踪更改、与团队成员协作以及与 CI/CD 管道集成。
 
@@ -410,7 +410,7 @@ order: 0
 
 - **利用人工智能和机器学习**预测测试结果、优化测试套件并主动识别缺陷。
 
-- **自动化[测试数据](/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
+- **自动化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)生成**和管理，以确保测试拥有必要的数据而无需人工干预。
 
 - **与缺陷跟踪系统集成**自动记录问题并将测试失败链接到错误报告。
 
@@ -420,8 +420,8 @@ order: 0
 
 #### 测试执行自动化如何适应持续集成/持续部署（CI/CD）？
 
-[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 是**CI/CD 管道**的重要组成部分，确保自动验证每个代码提交，从而尽早发现缺陷并快速向开发人员提供反馈。在 CI/CD 环境中，自动化测试通常由各种事件触发，例如新代码提交或拉取请求。
-  将 [测试自动化](/zh-cn/wiki/test-automation/) 集成到 CI/CD 中涉及配置 CI/CD 服务器以在成功构建后执行 [测试套件](/zh-cn/wiki/test-suite/)。这可以使用与 [测试自动化](/zh-cn/wiki/test-automation/) 框架交互的插件或脚本来实现。例如，在 Jenkins 中，您可以使用以下管道脚本来运行自动化测试：
+[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 是**CI/CD 管道**的重要组成部分，确保自动验证每个代码提交，从而尽早发现缺陷并快速向开发人员提供反馈。在 CI/CD 环境中，自动化测试通常由各种事件触发，例如新代码提交或拉取请求。
+  将 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 集成到 CI/CD 中涉及配置 CI/CD 服务器以在成功构建后执行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。这可以使用与 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架交互的插件或脚本来实现。例如，在 Jenkins 中，您可以使用以下管道脚本来运行自动化测试：
 
 ```
   pipeline {
@@ -462,33 +462,33 @@ order: 0
 
 #### 测试执行自动化在 DevOps 中的作用是什么？
 
-在 DevOps 中，**[测试执行自动化](/zh-cn/wiki/test-execution-automation/)** 充当 **持续集成/持续部署 (CI/CD)** 管道的关键组件。它确保对代码库所做的每项更改都会自动测试，从而快速识别缺陷并更快地向开发人员提供反馈。这种做法对于保持 DevOps 的高发布速度特征至关重要。
-  每当提交新代码时，都会触发自动化测试作为 **CI 管道**的一部分。这可确保新更改不会破坏现有功能 (**[回归测试](/zh-cn/wiki/regression-testing/)**) 并且应用程序满足指定的要求 (**[验收测试](/zh-cn/wiki/acceptance-testing/)**)。通过自动化这些测试，团队可以减少手动工作，最大限度地降低人为错误的风险，并实现更频繁的[测试执行](/zh-cn/wiki/test-execution/)。
+在 DevOps 中，**[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/)** 充当 **持续集成/持续部署 (CI/CD)** 管道的关键组件。它确保对代码库所做的每项更改都会自动测试，从而快速识别缺陷并更快地向开发人员提供反馈。这种做法对于保持 DevOps 的高发布速度特征至关重要。
+  每当提交新代码时，都会触发自动化测试作为 **CI 管道**的一部分。这可确保新更改不会破坏现有功能 (**[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**) 并且应用程序满足指定的要求 (**[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**)。通过自动化这些测试，团队可以减少手动工作，最大限度地降低人为错误的风险，并实现更频繁的[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
   在**CD 管道**中，自动化测试会在将应用程序部署到生产之前验证其稳定性和可靠性。这种把关功能对于确保只发布高质量的代码至关重要，从而保持生产环境的完整性。
-  此外，[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 支持**基础设施即代码 (IaC)** 实践，允许自动化测试在通过代码配置和管理的环境中运行。这符合自动化整个软件交付流程的 DevOps 理念。
-  总之，[测试执行自动化](/zh-cn/wiki/test-execution-automation/) 是 DevOps 不可或缺的一部分，通过确保每个集成都经过验证、每个版本都是可靠的以及在整个开发生命周期中维护软件的整体质量，促进从开发到部署的无缝流程。
+  此外，[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 支持**基础设施即代码 (IaC)** 实践，允许自动化测试在通过代码配置和管理的环境中运行。这符合自动化整个软件交付流程的 DevOps 理念。
+  总之，[测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 是 DevOps 不可或缺的一部分，通过确保每个集成都经过验证、每个版本都是可靠的以及在整个开发生命周期中维护软件的整体质量，促进从开发到部署的无缝流程。
 
 #### 如何将自动化测试集成到软件开发生命周期中？
 
-将[自动化测试](/zh-cn/wiki/automated-testing/) 集成到软件开发生命周期 (SDLC) 中需要战略规划并遵守最佳实践。首先**建立明确的自动化目标**，并确保它们与总体项目目标保持一致。
-  **在开发过程中尽早纳入自动化测试**，最好是在设计阶段。这种做法称为 **[左移测试](/zh-cn/wiki/shift-left-testing/)**，有助于更快地发现问题，从而减少以后修复问题的成本和工作量。
-  **选择适当的 [测试用例](/zh-cn/wiki/test-case/)** 进行自动化，重点关注那些重复的、需要多个数据集或对业务至关重要的项目。仅偶尔运行或更容易手动执行的测试可能不是自动化的最佳选择。
-  **创建一个强大的[测试环境](/zh-cn/wiki/test-environment/)**，尽可能地反映生产情况。使用服务虚拟化和容器化来管理依赖关系并确保跨测试阶段的一致性。
-  **开发模块化且可重用的[测试脚本](/zh-cn/wiki/test-script/)架构**以增强[可维护性](/zh-cn/wiki/maintainability/)。采用 **[页面对象模型](/zh-cn/wiki/page-object-model/)** 或类似的设计模式将测试逻辑与 UI 结构分开，使应用程序更改时更容易更新。
+将[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 集成到软件开发生命周期 (SDLC) 中需要战略规划并遵守最佳实践。首先**建立明确的自动化目标**，并确保它们与总体项目目标保持一致。
+  **在开发过程中尽早纳入自动化测试**，最好是在设计阶段。这种做法称为 **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)**，有助于更快地发现问题，从而减少以后修复问题的成本和工作量。
+  **选择适当的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 进行自动化，重点关注那些重复的、需要多个数据集或对业务至关重要的项目。仅偶尔运行或更容易手动执行的测试可能不是自动化的最佳选择。
+  **创建一个强大的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**，尽可能地反映生产情况。使用服务虚拟化和容器化来管理依赖关系并确保跨测试阶段的一致性。
+  **开发模块化且可重用的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)架构**以增强[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。采用 **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/)** 或类似的设计模式将测试逻辑与 UI 结构分开，使应用程序更改时更容易更新。
   **将自动化测试与 CI/CD 管道集成**，以便在每次提交或构建时运行它们。这可确保立即反馈代码更改的影响。
-  **持续监控和分析测试结果**，以识别 [片状测试](/zh-cn/wiki/flaky-test/) 或故障率增加的区域。使用此数据来完善您的[测试套件](/zh-cn/wiki/test-suite/) 并提高可靠性。
-  **定期审查和重构**您的[测试自动化](/zh-cn/wiki/test-automation/) 代码库，以保持其干净、高效并与应用程序更改保持同步。这包括删除过时的测试和更新现有的测试以反映新功能或要求。
-  通过遵循这些步骤，[自动化测试](/zh-cn/wiki/automated-testing/) 成为 SDLC 的无缝且高效的部分，提供快速反馈并确保高质量的软件交付。
+  **持续监控和分析测试结果**，以识别 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 或故障率增加的区域。使用此数据来完善您的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 并提高可靠性。
+  **定期审查和重构**您的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 代码库，以保持其干净、高效并与应用程序更改保持同步。这包括删除过时的测试和更新现有的测试以反映新功能或要求。
+  通过遵循这些步骤，[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 成为 SDLC 的无缝且高效的部分，提供快速反馈并确保高质量的软件交付。
 
 #### 什么是持续测试以及它与测试执行自动化有何关系？
 
 持续测试 (CT) 是一个过程，其中自动化测试作为软件交付管道的一部分运行，以获得与候选软件发布相关的业务风险的即时反馈。 CT 是**持续集成** (CI) 和**持续部署** (CD) 不可或缺的一部分，可确保每次对代码库进行更改时自动进行测试。
-  CT 与 [测试执行自动化](/zh-cn/wiki/test-execution-automation/) 相关，是其核心推动者。自动化测试旨在按需触发或根据 CI/CD 管道中的特定事件触发，例如新的提交或合并的拉取请求。这可确保测试频繁且一致地运行，这对于 CT 至关重要。
+  CT 与 [测试执行自动化](https://inaodeng.com/zh-cn/wiki/test-execution-automation/) 相关，是其核心推动者。自动化测试旨在按需触发或根据 CI/CD 管道中的特定事件触发，例如新的提交或合并的拉取请求。这可确保测试频繁且一致地运行，这对于 CT 至关重要。
   在实践中，CT 涉及：
 
 - **自动化执行**单元、集成、系统和验收测试。
 
-- **集成[测试套件](/zh-cn/wiki/test-suite/)**进入 CI/CD 管道以在各个阶段运行测试。
+- **集成[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**进入 CI/CD 管道以在各个阶段运行测试。
 
 - **监控和分析**测试结果可以及早发现并解决问题。
 
@@ -500,11 +500,11 @@ order: 0
 - Execute integration and system tests
 - Perform exploratory testing if necessary
 - Deploy to production if all tests pass
-CT 的目标是在整个开发生命周期中提供持续反馈和[质量保证](/zh-cn/wiki/quality-assurance/)，减少[手动测试](/zh-cn/wiki/manual-testing/) 所需的时间和精力并提高交付速度。
+CT 的目标是在整个开发生命周期中提供持续反馈和[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)，减少[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/) 所需的时间和精力并提高交付速度。
 
 - **自动化执行**单元、集成、系统和验收测试。
 
-- **集成[测试套件](/zh-cn/wiki/test-suite/)**进入 CI/CD 管道以在各个阶段运行测试。
+- **集成[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**进入 CI/CD 管道以在各个阶段运行测试。
 
 - **监控和分析**测试结果可以及早发现并解决问题。
 

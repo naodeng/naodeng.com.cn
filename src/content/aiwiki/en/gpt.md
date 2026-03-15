@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [codex](/en/AIWiki/codex/)
-- [o1-o3](/en/AIWiki/o1-o3/)
-- [large-language-models-llms](/en/AIWiki/large-language-models-llms/)
+- [codex](https://inaodeng.com/en/AIWiki/codex/)
+- [o1-o3](https://inaodeng.com/en/AIWiki/o1-o3/)
+- [large-language-models-llms](https://inaodeng.com/en/AIWiki/large-language-models-llms/)
 
 ### Term Metadata
 

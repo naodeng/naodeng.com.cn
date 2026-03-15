@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [multi-agent-orchestration](/en/AIWiki/multi-agent-orchestration/)
-- [subagents](/en/AIWiki/subagents/)
-- [verification-artifacts](/en/AIWiki/verification-artifacts/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
+- [multi-agent-orchestration](https://inaodeng.com/en/AIWiki/multi-agent-orchestration/)
+- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
+- [verification-artifacts](https://inaodeng.com/en/AIWiki/verification-artifacts/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
 
 ### External References
 

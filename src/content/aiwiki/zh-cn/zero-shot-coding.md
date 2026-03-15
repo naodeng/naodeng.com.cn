@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [gpt](/zh-cn/AIWiki/gpt/)
-- [large-language-models-llms](/zh-cn/AIWiki/large-language-models-llms/)
-- [prompt-driven-development](/zh-cn/AIWiki/prompt-driven-development/)
+- [gpt](https://inaodeng.com/zh-cn/AIWiki/gpt/)
+- [large-language-models-llms](https://inaodeng.com/zh-cn/AIWiki/large-language-models-llms/)
+- [prompt-driven-development](https://inaodeng.com/zh-cn/AIWiki/prompt-driven-development/)
 
 ### 术语元数据
 

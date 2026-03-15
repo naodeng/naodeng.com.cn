@@ -110,10 +110,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [reasoning-models](/en/AIWiki/reasoning-models/)
-- [flex-processing](/en/AIWiki/flex-processing/)
-- [small-language-models-slms](/en/AIWiki/small-language-models-slms/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
+- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
+- [flex-processing](https://inaodeng.com/en/AIWiki/flex-processing/)
+- [small-language-models-slms](https://inaodeng.com/en/AIWiki/small-language-models-slms/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
 
 ### External References
 

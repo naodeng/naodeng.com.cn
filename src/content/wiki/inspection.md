@@ -1,6 +1,6 @@
 ---
-title: "检查 ｜ [检查](/zh-cn/wiki/inspection/)"
-description: "检查 ([检查](/zh-cn/wiki/inspection/)) 是一种正式、严谨的同行评审过程。由指定的评审员 (Inspectors) 对工作产品（如需求、设计、代码）进行详细审查，以发现缺陷、违规及设计问题。它是静态分析的一种，不涉及代码执行，主要依靠人工及查核表（Checklists）进行。"
+title: "检查 ｜ [检查](https://inaodeng.com/zh-cn/wiki/inspection/)"
+description: "检查 ([检查](https://inaodeng.com/zh-cn/wiki/inspection/)) 是一种正式、严谨的同行评审过程。由指定的评审员 (Inspectors) 对工作产品（如需求、设计、代码）进行详细审查，以发现缺陷、违规及设计问题。它是静态分析的一种，不涉及代码执行，主要依靠人工及查核表（Checklists）进行。"
 section: "I"
 related:
   - static-testing
@@ -11,11 +11,11 @@ related:
 order: 0
 ---
 
-# 检查 ｜ [检查](/zh-cn/wiki/inspection/)
+# 检查 ｜ [检查](https://inaodeng.com/zh-cn/wiki/inspection/)
 
 <!-- TOC START -->
 
-- [检查 ｜ [检查](/zh-cn/wiki/inspection/)](#检查--检查zh-cnwikiinspection)
+- [检查 ｜ [检查](https://inaodeng.com/zh-cn/wiki/inspection/)](#检查--检查zh-cnwikiinspection)
   - [相关术语](#相关术语)
   - [关于检查的问题？](#关于检查的问题)
     - [基础知识和重要性](#基础知识和重要性)
@@ -47,7 +47,7 @@ order: 0
 
 ## 相关术语
 
-- [代码审查员](/zh-cn/wiki/reviewer/)
+- [代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)
 
 ## 关于检查的问题？
 
@@ -55,90 +55,90 @@ order: 0
 
 #### 软件测试中的检查是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的**[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** 是一个正式、严格的同行评审流程，指定的[代码审查员](/zh-cn/wiki/reviewer/)（检查员）检查工作产品以检测缺陷、违反开发标准和其他问题。与涉及执行代码的[动态测试](/zh-cn/wiki/dynamic-testing/) 不同，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是静态分析的一种形式，涉及对产品进行手动检查而不执行。
-  检查员通常包括同行、技术专家，有时还包括工作产品的作者。他们使用清单、规则和预定义的标准来评估软件工件的质量，例如需求、设计文档、代码、[测试计划](/zh-cn/wiki/test-plan/) 和[测试用例](/zh-cn/wiki/test-case/)。
-  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是高度结构化的，并遵循特定的协议，并为参与者定义了角色。该过程通常包括规划、概述、准备、[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议、返工和后续阶段。在[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议期间，缺陷被识别、分类和记录。会议结束后，作者进行返工以纠正已发现的问题。
-  [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的结果是一份报告，其中列出了发现的缺陷、它们的[严重性](/zh-cn/wiki/severity/) 以及改进建议。该报告对于跟踪缺陷解决和流程改进至关重要。
-  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 由于其结构化方法和检查表的使用而不同于不太正式的审查和演练。它们也与[动态测试](/zh-cn/wiki/dynamic-testing/)不同，后者需要执行代码才能发现缺陷。
-  有效的[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)可以通过防止缺陷向开发生命周期的下游转移来实现早期缺陷检测并降低质量成本。它们通过捕获自动化工具可能遗漏的问题（例如偏离标准或设计缺​​陷）来补充[自动化测试](/zh-cn/wiki/automated-testing/)。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的**[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 是一个正式、严格的同行评审流程，指定的[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)（检查员）检查工作产品以检测缺陷、违反开发标准和其他问题。与涉及执行代码的[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 不同，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是静态分析的一种形式，涉及对产品进行手动检查而不执行。
+  检查员通常包括同行、技术专家，有时还包括工作产品的作者。他们使用清单、规则和预定义的标准来评估软件工件的质量，例如需求、设计文档、代码、[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+  [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是高度结构化的，并遵循特定的协议，并为参与者定义了角色。该过程通常包括规划、概述、准备、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议、返工和后续阶段。在[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议期间，缺陷被识别、分类和记录。会议结束后，作者进行返工以纠正已发现的问题。
+  [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的结果是一份报告，其中列出了发现的缺陷、它们的[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 以及改进建议。该报告对于跟踪缺陷解决和流程改进至关重要。
+  [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 由于其结构化方法和检查表的使用而不同于不太正式的审查和演练。它们也与[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)不同，后者需要执行代码才能发现缺陷。
+  有效的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)可以通过防止缺陷向开发生命周期的下游转移来实现早期缺陷检测并降低质量成本。它们通过捕获自动化工具可能遗漏的问题（例如偏离标准或设计缺​​陷）来补充[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)。
 
 #### 为什么检查在软件测试中很重要？
 
-[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 对于[软件测试](/zh-cn/wiki/software-testing/) 中的**早期缺陷检测**和**纠正**至关重要，这可以显着减少后期测试和维护所需的成本和时间。它们涉及由同行团队对设计文档、需求规范、源代码和其他工件进行彻底检查，以识别与规范和标准的差异。
-  良好的[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)可以**防止缺陷**被引入代码库，从而增强软件的整体**可靠性**和**[可维护性](/zh-cn/wiki/maintainability/)**。 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 还促进团队成员之间的**知识共享**，从而更好地理解软件产品和测试过程本身。
-  检查员的作用是领导 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程，确保其彻底且有效。参与者通常包括作者、[代码审查员](/zh-cn/wiki/reviewer/) 和测试人员，每个人都为流程带来了独特的视角。
-  静态分析工具可以集成到[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)中，以自动检测某些类型的缺陷，例如语法错误或潜在的安全漏洞，从而提高[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)流程的**效率**和**有效性**。
-  选择正确的[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 技术取决于项目的**上下文**、正在检查的**工件类型**以及[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的**具体目标**。 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)流程中常用的工具包括静态分析工具、同行评审工具和协作[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)工具。
-  尽管有这些好处，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 仍面临一些挑战，例如时间限制、规范不完整或不明确以及参与者的专业知识水平参差不齐。克服这些挑战需要仔细的规划、清晰的沟通以及对 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的持续改进的承诺。
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 对于[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的**早期缺陷检测**和**纠正**至关重要，这可以显着减少后期测试和维护所需的成本和时间。它们涉及由同行团队对设计文档、需求规范、源代码和其他工件进行彻底检查，以识别与规范和标准的差异。
+  良好的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)可以**防止缺陷**被引入代码库，从而增强软件的整体**可靠性**和**[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)**。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 还促进团队成员之间的**知识共享**，从而更好地理解软件产品和测试过程本身。
+  检查员的作用是领导 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程，确保其彻底且有效。参与者通常包括作者、[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/) 和测试人员，每个人都为流程带来了独特的视角。
+  静态分析工具可以集成到[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)中，以自动检测某些类型的缺陷，例如语法错误或潜在的安全漏洞，从而提高[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)流程的**效率**和**有效性**。
+  选择正确的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 技术取决于项目的**上下文**、正在检查的**工件类型**以及[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的**具体目标**。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)流程中常用的工具包括静态分析工具、同行评审工具和协作[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)工具。
+  尽管有这些好处，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 仍面临一些挑战，例如时间限制、规范不完整或不明确以及参与者的专业知识水平参差不齐。克服这些挑战需要仔细的规划、清晰的沟通以及对 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的持续改进的承诺。
 
 #### 检查和测试有什么区别？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和测试是软件开发中不同的[质量保证](/zh-cn/wiki/quality-assurance/) 活动。 **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** 是一种静态分析方法，涉及手动检查文档、代码或设计，而不实际执行软件。它旨在通过审查需求、设计文档、源代码和[测试计划](/zh-cn/wiki/test-plan/)等工件来识别缺陷、不合格项或改进领域。
-  另一方面，**测试**是一个动态过程，执行软件以根据 [预期结果](/zh-cn/wiki/expected-result/) 验证其行为。它涉及在受控条件下运行软件以识别任何错误、[bugs](/zh-cn/wiki/bug/) 或与指定要求的偏差。
-  主要区别在于它们的执行：[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是不可执行的评估，而测试要求软件处于可运行状态。 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是预防措施，在错误传播到代码之前捕获错误，而测试是一种纠正措施，在软件开发后识别缺陷。
-  [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 通常是手动的，依赖于人类的专业知识和判断，而测试可以是手动的，也可以是自动的，[测试自动化](/zh-cn/wiki/test-automation/) 在有效执行重复和回归测试方面发挥着重要作用。
-  总之，[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是通过在开发过程中及早检测来**预防**缺陷，而测试则是通过在各种场景和[测试用例](/zh-cn/wiki/test-case/) 中执行软件来**检测**缺陷。两者是互补的，对于交付高质量的软件产品至关重要。
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和测试是软件开发中不同的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 活动。 **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 是一种静态分析方法，涉及手动检查文档、代码或设计，而不实际执行软件。它旨在通过审查需求、设计文档、源代码和[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)等工件来识别缺陷、不合格项或改进领域。
+  另一方面，**测试**是一个动态过程，执行软件以根据 [预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 验证其行为。它涉及在受控条件下运行软件以识别任何错误、[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 或与指定要求的偏差。
+  主要区别在于它们的执行：[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是不可执行的评估，而测试要求软件处于可运行状态。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是预防措施，在错误传播到代码之前捕获错误，而测试是一种纠正措施，在软件开发后识别缺陷。
+  [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 通常是手动的，依赖于人类的专业知识和判断，而测试可以是手动的，也可以是自动的，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 在有效执行重复和回归测试方面发挥着重要作用。
+  总之，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是通过在开发过程中及早检测来**预防**缺陷，而测试则是通过在各种场景和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中执行软件来**检测**缺陷。两者是互补的，对于交付高质量的软件产品至关重要。
 
 #### 检查如何提高软件产品的质量？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 通过确保及早发现和纠正缺陷，显着增强了[软件质量](/zh-cn/wiki/software-quality/)。通过仔细检查需求、设计文档、源代码和[测试计划](/zh-cn/wiki/test-plan/)等工件，检查员可以识别自动化测试可能遗漏的差异。这种主动方法降低了昂贵的后期 [bug](/zh-cn/wiki/bug/) 修复的风险，并有助于团队成员保持对软件预期行为的一致理解。
-  **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** 通过在不执行的情况下发现错误来补充[动态测试](/zh-cn/wiki/dynamic-testing/)，从而节省时间和资源。它还促进对标准和最佳实践的遵守，从而产生更可维护和更可靠的软件。通过协作检查，它促进了产品质量的知识共享和集体所有权。
-  将 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 纳入开发生命周期充当质量门，确保只有经过彻底审查的组件才能进入后续阶段。这种把关功能对于维持高标准和防止技术债务积累至关重要。
-  此外，从[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)获得的见解可用于改进开发流程并提高未来[测试自动化](/zh-cn/wiki/test-automation/)工作的有效性。通过识别常见的缺陷类型及其根本原因，团队可以调整策略以防止类似问题再次发生。
-  总之，[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 是一项至关重要的[质量保证](/zh-cn/wiki/quality-assurance/) 活动，它通过识别非明显缺陷、执行标准和促进持续流程改进来补充[自动化测试](/zh-cn/wiki/automated-testing/)。
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 通过确保及早发现和纠正缺陷，显着增强了[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。通过仔细检查需求、设计文档、源代码和[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)等工件，检查员可以识别自动化测试可能遗漏的差异。这种主动方法降低了昂贵的后期 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复的风险，并有助于团队成员保持对软件预期行为的一致理解。
+  **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 通过在不执行的情况下发现错误来补充[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)，从而节省时间和资源。它还促进对标准和最佳实践的遵守，从而产生更可维护和更可靠的软件。通过协作检查，它促进了产品质量的知识共享和集体所有权。
+  将 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 纳入开发生命周期充当质量门，确保只有经过彻底审查的组件才能进入后续阶段。这种把关功能对于维持高标准和防止技术债务积累至关重要。
+  此外，从[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)获得的见解可用于改进开发流程并提高未来[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工作的有效性。通过识别常见的缺陷类型及其根本原因，团队可以调整策略以防止类似问题再次发生。
+  总之，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 是一项至关重要的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 活动，它通过识别非明显缺陷、执行标准和促进持续流程改进来补充[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)。
 
 #### 检查过程的关键要素是什么？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/) 中[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的关键要素包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的关键要素包括：
 
-- **规划**：定义[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
-- **概览会议**：向参与者简要介绍 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 计划和要审查的文件。确保理解背景和目的。
+- **规划**：定义[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
+- **概览会议**：向参与者简要介绍 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 计划和要审查的文件。确保理解背景和目的。
 - **准备**：参与者单独审查文件，使用清单或指南来识别缺陷。
-- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队集体讨论调查结果。 **检查员**或主持人主持会议，确保采用系统方法并解决每个问题。
+- **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议**：团队集体讨论调查结果。 **检查员**或主持人主持会议，确保采用系统方法并解决每个问题。
 - **返工**：检查材料的作者解决已识别的缺陷并进行必要的更改。
 - **后续**：验证所有缺陷均已纠正，并且返工期间没有引入新问题。
-- **报告**：记录[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的结果，包括发现的缺陷、所做的更改以及任何未解决的问题。
-- **流程改进**：分析[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 数据以确定流程增强的趋势和领域。 在整个[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 过程中，**沟通**​​和**协作**至关重要。工具和自动化可以简化各种步骤，例如调度、缺陷跟踪和报告，但人的因素对于有效[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)仍然至关重要。
+- **报告**：记录[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的结果，包括发现的缺陷、所做的更改以及任何未解决的问题。
+- **流程改进**：分析[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 数据以确定流程增强的趋势和领域。 在整个[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 过程中，**沟通**​​和**协作**至关重要。工具和自动化可以简化各种步骤，例如调度、缺陷跟踪和报告，但人的因素对于有效[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)仍然至关重要。
 
-- **规划**：定义[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
-- **概述会议**：向参与者简要介绍[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 计划和要审查的文件。确保理解背景和目的。
+- **规划**：定义[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
+- **概述会议**：向参与者简要介绍[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 计划和要审查的文件。确保理解背景和目的。
 - **准备**：参与者单独审查文件，使用清单或指南来识别缺陷。
-- **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队集体讨论调查结果。 **检查员**或主持人主持会议，确保采用系统方法并解决每个问题。
+- **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议**：团队集体讨论调查结果。 **检查员**或主持人主持会议，确保采用系统方法并解决每个问题。
 - **返工**：检查材料的作者解决已识别的缺陷并进行必要的更改。
 - **后续**：验证所有缺陷均已纠正，并且返工期间没有引入新问题。
-- **报告**：记录[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的结果，包括发现的缺陷、所做的更改以及任何未解决的问题。
-- **流程改进**：分析[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 数据以确定流程增强的趋势和领域。
+- **报告**：记录[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的结果，包括发现的缺陷、所做的更改以及任何未解决的问题。
+- **流程改进**：分析[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 数据以确定流程增强的趋势和领域。
 
 ### 检验流程
 
 #### 检查过程涉及哪些步骤？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 过程涉及的步骤通常包括：
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 过程涉及的步骤通常包括：
 
-1. **规划**：定义[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
-2. **概述会议**：向[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 团队简要介绍[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 下的目标、范围和文件。确保每个人都了解自己的角色和[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程。
+1. **规划**：定义[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
+2. **概述会议**：向[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 团队简要介绍[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 下的目标、范围和文件。确保每个人都了解自己的角色和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程。
 3. **准备**：每个检查员单独检查要检查的文件，使用清单或规则作为指导来发现潜在的缺陷。
-4. **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队开会讨论调查结果。主持人主持会议，确保对文件进行系统审查。问题被记录并分类。
+4. **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议**：团队开会讨论调查结果。主持人主持会议，确保对文件进行系统审查。问题被记录并分类。
 5. **返工**：检查材料的作者解决了提出的问题并进行了必要的更正。
-6. **跟进**：主持人或指定检查员验证所有问题均已得到妥善处理和解决。如有必要，将安排第二个[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。
-7. **报告**：记录 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的结果，包括发现的缺陷、所做的更改以及有关过程的任何观察结果。该报告向利益相关者通报并指导未来[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。 在这些步骤中，有效的沟通、细致的记录保存以及遵守定义的流程对于 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的成功至关重要。
+6. **跟进**：主持人或指定检查员验证所有问题均已得到妥善处理和解决。如有必要，将安排第二个[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。
+7. **报告**：记录 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的结果，包括发现的缺陷、所做的更改以及有关过程的任何观察结果。该报告向利益相关者通报并指导未来[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。 在这些步骤中，有效的沟通、细致的记录保存以及遵守定义的流程对于 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的成功至关重要。
 
-1. **规划**：定义[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
-2. **概述会议**：向[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 团队简要介绍[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 下的目标、范围和文件。确保每个人都了解自己的角色和[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程。
+1. **规划**：定义[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的范围、目标和时间表。确定要检查的文件并为参与者分配角色。
+2. **概述会议**：向[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 团队简要介绍[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 下的目标、范围和文件。确保每个人都了解自己的角色和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程。
 3. **准备**：每个检查员单独检查要检查的文件，使用清单或规则作为指导来发现潜在的缺陷。
-4. **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议**：团队开会讨论调查结果。主持人主持会议，确保对文件进行系统审查。问题被记录并分类。
+4. **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议**：团队开会讨论调查结果。主持人主持会议，确保对文件进行系统审查。问题被记录并分类。
 5. **返工**：检查材料的作者解决了提出的问题并进行了必要的更正。
-6. **跟进**：主持人或指定检查员验证所有问题均已得到妥善处理和解决。如有必要，将安排第二个[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。
-7. **报告**：记录[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的结果，包括发现的缺陷、所做的更改以及有关过程的任何观察结果。该报告向利益相关者通报并指导未来[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。
+6. **跟进**：主持人或指定检查员验证所有问题均已得到妥善处理和解决。如有必要，将安排第二个[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。
+7. **报告**：记录[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的结果，包括发现的缺陷、所做的更改以及有关过程的任何观察结果。该报告向利益相关者通报并指导未来[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。
 
 #### 检查过程的参与者有哪些？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 进程的参与者通常包括以下角色：
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 进程的参与者通常包括以下角色：
 
 - **作者**：创建正在检查的工作产品（例如代码或文档）的人。
 - **主持人** （也称为 **检查员** )：促进检查，确保流程遵循，并经常引导讨论。
 
-- **[代码审查员](/zh-cn/wiki/reviewer/)** （或 **检查器** ）：通常以特定的专业知识或观点检查工作产品的缺陷和改进机会。
+- **[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)** （或 **检查器** ）：通常以特定的专业知识或观点检查工作产品的缺陷和改进机会。
 
 - **抄写员** （或 **录音机** )：记录检查期间的发现、讨论和决定。
 
@@ -146,40 +146,40 @@ order: 0
 
 - **测试人员**：从测试角度提供见解，重点关注如何测试工作产品。
 - **主题专家 (SME)**：提供有关工作产品主题或领域的专业知识。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 代表**：确保检查符合组织标准和质量要求。 每个参与者都带来独特的视角，有助于对工作产品的全面评估。这些角色之间的协作对于识别缺陷和提高软件产品的整体质量至关重要。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 代表**：确保检查符合组织标准和质量要求。 每个参与者都带来独特的视角，有助于对工作产品的全面评估。这些角色之间的协作对于识别缺陷和提高软件产品的整体质量至关重要。
 
 - **作者**：创建正在检查的工作产品（例如代码或文档）的人。
 - **主持人** （也称为 **检查员** )：促进检查，确保流程遵循，并经常引导讨论。
 
-- **[代码审查员](/zh-cn/wiki/reviewer/)** （或 **检查器** ）：通常以特定的专业知识或观点检查工作产品的缺陷和改进机会。
+- **[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/)** （或 **检查器** ）：通常以特定的专业知识或观点检查工作产品的缺陷和改进机会。
 
 - **抄写员** （或 **录音机** )：记录检查期间的发现、讨论和决定。
 
 - **读者**：向小组展示工作产品，确保对内容达成共识。
 - **测试人员**：从测试角度提供见解，重点关注如何测试工作产品。
 - **主题专家 (SME)**：提供有关工作产品主题或领域的专业知识。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 代表**：确保检查符合组织标准和质量要求。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 代表**：确保检查符合组织标准和质量要求。
 
 #### 检查员在软件测试中的作用是什么？
 
-在[软件测试](/zh-cn/wiki/software-testing/) 中，**检查员** 通常负责仔细检查软件工件，例如需求、设计文档、代码和[测试用例](/zh-cn/wiki/test-case/)，以在缺陷传播到开发的后期阶段之前识别缺陷。与执行软件的[动态测试](/zh-cn/wiki/dynamic-testing/)不同，检查员执行静态分析以确保工件的质量，而无需运行程序。
-  检查员利用他们的专业知识来**检测不一致**、**偏离标准**以及**不符合规范的情况**。他们经常在团队中工作，在正式的[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议期间与作者、主持人和[代码审查员](/zh-cn/wiki/reviewer/) 合作。他们的发现有助于[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 报告，该报告记录了需要解决的问题。
-  该角色需要**对细节的敏锐洞察**以及对软件预期行为、设计原则和编码标准的**深入理解**。检查员还必须善于使用各种[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具来自动化部分流程，例如静态代码分析器，这可以帮助更有效地识别潜在的问题区域。
+在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中，**检查员** 通常负责仔细检查软件工件，例如需求、设计文档、代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以在缺陷传播到开发的后期阶段之前识别缺陷。与执行软件的[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)不同，检查员执行静态分析以确保工件的质量，而无需运行程序。
+  检查员利用他们的专业知识来**检测不一致**、**偏离标准**以及**不符合规范的情况**。他们经常在团队中工作，在正式的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议期间与作者、主持人和[代码审查员](https://inaodeng.com/zh-cn/wiki/reviewer/) 合作。他们的发现有助于[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 报告，该报告记录了需要解决的问题。
+  该角色需要**对细节的敏锐洞察**以及对软件预期行为、设计原则和编码标准的**深入理解**。检查员还必须善于使用各种[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具来自动化部分流程，例如静态代码分析器，这可以帮助更有效地识别潜在的问题区域。
   有效的检查员对于防止缺陷影响生产至关重要，从而通过及早发现问题来节省时间和资源。它们在维护软件的**完整性**和**可靠性**方面发挥着关键作用，最终有助于交付高质量的产品。
 
 #### 检查报告是如何准备的？
 
-**[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 报告** 通常是在 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 会议之后准备的，其中包括以下内容：
+**[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 报告** 通常是在 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 会议之后准备的，其中包括以下内容：
 
 - **标识**：项目名称、审查的文件、检查日期和参与者。
 - **摘要**：检查结果的简要概述，包括文件是否符合验收标准。
 - **发现**：发现的问题的详细列表，通常按严重性（例如，关键、主要、次要）或类型（例如，功能错误、偏离标准、设计问题）进行分类。
 - **统计**：定量数据，例如发现的缺陷数量、检查率（每页或每小时的缺陷数）以及准备和检查时间。
 - **行动项目**：分配给个人以解决调查结果的具体任务，并规定完成期限。
-- **结论**：评估文件的质量和下一阶段的准备情况，以及流程改进的任何建议。 该报告简洁明了，重点关注可操作的见解。它与所有[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)参与者和其他相关利益相关者共享，以确保纠正措施的透明度和后续行动。
+- **结论**：评估文件的质量和下一阶段的准备情况，以及流程改进的任何建议。 该报告简洁明了，重点关注可操作的见解。它与所有[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)参与者和其他相关利益相关者共享，以确保纠正措施的透明度和后续行动。
 
 ```
-  ## [检查](/zh-cn/wiki/inspection/) Report
+  ## [检查](https://inaodeng.com/zh-cn/wiki/inspection/) Report
   **Project:** XYZ
   **Document:** Test Plan
   **Date:** 2023-04-01
@@ -192,21 +192,21 @@ order: 0
 3. Minor: Several typos in the prerequisites section.
   **Statistics:**
 - Defects Found: 15
-- [检查](/zh-cn/wiki/inspection/) Rate: 5 defects/page
+- [检查](https://inaodeng.com/zh-cn/wiki/inspection/) Rate: 5 defects/page
 - Preparation Time: 2 hours
-- [检查](/zh-cn/wiki/inspection/) Time: 1 hour
+- [检查](https://inaodeng.com/zh-cn/wiki/inspection/) Time: 1 hour
   **Action Items:**
 - [ ] A. Tester to add missing test cases by 2023-04-05.
 - [ ] B. Developer to standardize naming conventions by 2023-04-07.
 - [ ] C. Analyst to correct typos by 2023-04-03.
   **Conclusions:**
-  The document is of high quality but requires minor revisions before proceeding. The [检查](/zh-cn/wiki/inspection/) process has highlighted areas for improvement in document preparation guidelines.
+  The document is of high quality but requires minor revisions before proceeding. The [检查](https://inaodeng.com/zh-cn/wiki/inspection/) process has highlighted areas for improvement in document preparation guidelines.
 ```
-该报告作为[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的正式记录，并指导后续修订和[质量保证](/zh-cn/wiki/quality-assurance/) 活动。
+该报告作为[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的正式记录，并指导后续修订和[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 活动。
 
 #### 检查过程中面临哪些常见挑战？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 过程中的常见挑战包括：
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 过程中的常见挑战包括：
 
 - **时间限制**：检查可能非常耗时，并且在彻底性和效率之间找到平衡通常很困难。
 - **主观性**：不同的检查员可能对同一工件有不同的解释，导致结果不一致。
@@ -217,25 +217,25 @@ order: 0
 - **工具限制**：自动化工具可能无法满足所有检查需求或与现有系统良好集成，从而限制了它们的实用性。
 - **保持注意力**：在长时间的检查过程中，参与者可能会失去注意力，从而降低检查的有效性。
 - **培训不足**：未经充分培训的检查员可能无法有效识别问题或可能误解工件。
-- **文化差异**：在不同的团队中，文化差异会影响检查期间的沟通和理解。 应对这些挑战需要仔细规划、清晰沟通并致力于持续改进 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程。
+- **文化差异**：在不同的团队中，文化差异会影响检查期间的沟通和理解。 应对这些挑战需要仔细规划、清晰沟通并致力于持续改进 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程。
 
 ### 检查技术
 
 #### 软件测试中有哪些不同的检查技术？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的不同[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 技术侧重于软件的各个方面，以在[动态测试](/zh-cn/wiki/dynamic-testing/) 阶段之前识别缺陷。以下是一些技巧：
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的不同[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 技术侧重于软件的各个方面，以在[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 阶段之前识别缺陷。以下是一些技巧：
 
 - **代码审查**：同行检查源代码以发现缺陷并提出改进建议。这是其他开发人员对代码的系统检查。
 - **结对编程**：两名开发人员在一个工作站上一起工作。一个人编写代码，另一个人检查输入的每一行代码。角色可以频繁切换。
 - **静态分析**：工具用于在不执行代码的情况下检查代码是否存在潜在缺陷、是否遵守编码标准以及其他质量指标。
-- **正式[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：一个严格的、结构化的过程，涉及多个团队成员，他们检查软件产品以检测缺陷、与标准的差异和其他问题。
-- **非正式审查**：由一个或多个人对软件产品进行的随意而快速的检查，与正式的 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 相比，这种检查可能是无计划的且结构性较差。
+- **正式[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：一个严格的、结构化的过程，涉及多个团队成员，他们检查软件产品以检测缺陷、与标准的差异和其他问题。
+- **非正式审查**：由一个或多个人对软件产品进行的随意而快速的检查，与正式的 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 相比，这种检查可能是无计划的且结构性较差。
 - **演练**：软件产品作者向同行解释产品及其策略的会议，目的是获得见解并发现缺陷。
-- **技术审查**：关于软件产品技术方面的小组讨论，包括其设计、代码和[测试用例](/zh-cn/wiki/test-case/)，以识别任何潜在问题。 每种技术都有其自身的优势，并根据[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 的具体目标进行选择，例如审查深度、可用资源以及所检查软件的性质。
+- **技术审查**：关于软件产品技术方面的小组讨论，包括其设计、代码和[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以识别任何潜在问题。 每种技术都有其自身的优势，并根据[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的具体目标进行选择，例如审查深度、可用资源以及所检查软件的性质。
 
 #### 如何针对特定测试场景选择正确的检查技术？
 
-为特定测试场景选择正确的[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 技术需要评估多个因素，以确保采用最有效和高效的方法。这是一个简洁的指南：
+为特定测试场景选择正确的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 技术需要评估多个因素，以确保采用最有效和高效的方法。这是一个简洁的指南：
 
 - **软件的复杂性**：对于复杂的系统，可能需要更正式的检查技术（例如 Fagan 检查）来发现微妙的问题。
 - **项目阶段**：早期开发阶段可能会受益于非正式审查或演练，而后期阶段可能需要正式检查以根据严格标准验证产品。
@@ -244,20 +244,20 @@ order: 0
 - **可用资源**：评估可用的时间、工具和人员。时间有限的环境可能需要更快、不那么正式的审查。
 - **风险评估**：高风险区域需要彻底检查。对于风险较低的组件，轻量级技术可能就足够了。
 - **以前的缺陷数据**：分析历史缺陷数据，以确定哪些区域容易出现错误，并可能从更严格的检查中受益。
-- **反馈循环**：选择能够向开发人员快速反馈的技术，尤其是在快速迭代至关重要的敏捷环境中。 将这些考虑因素纳入您的决策过程中，为您的特定测试场景选择最合适的 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 技术。请记住，目标是有效地识别和解决缺陷，以提高软件产品的质量。
+- **反馈循环**：选择能够向开发人员快速反馈的技术，尤其是在快速迭代至关重要的敏捷环境中。 将这些考虑因素纳入您的决策过程中，为您的特定测试场景选择最合适的 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 技术。请记住，目标是有效地识别和解决缺陷，以提高软件产品的质量。
 
 #### 演练、检查和评​​论之间有什么区别？
 
-演练、[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和评论都是[软件测试](/zh-cn/wiki/software-testing/) 中的**静态分析**方法，但它们在形式、目标和参与者方面有所不同。
+演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和评论都是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的**静态分析**方法，但它们在形式、目标和参与者方面有所不同。
   **演练**是非正式会议，软件工件（如代码或设计文档）的作者向同事展示材料并征求反馈。目标是更好地理解工件并发现潜在问题。没有正式的流程，它通常用于教育目的或获得早期见解。
-  **[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** 更加正式和结构化。它们涉及由同行团队对软件工件进行彻底检查以识别缺陷。该过程由训练有素的主持人（而不是作者）领导，并遵循明确的协议，包括准备、正式会议和后续行动。 [[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 比演练更严格，旨在在缺陷传播到下一开发阶段之前找到缺陷。
-  **评论**是一个更广泛的类别，涵盖对软件工件的任何检查，其中可以包括演练和[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。审查的形式可能有所不同，通常涉及分析软件产品以发现缺陷，确保符合标准，并评估产品是否为进一步开发或部署做好准备。
-  总之，**演练**是非正式的和教育性的，**[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)** 是正式的和以缺陷为中心的，而**评论**是软件工件的正式和非正式分析的通用术语。
+  **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 更加正式和结构化。它们涉及由同行团队对软件工件进行彻底检查以识别缺陷。该过程由训练有素的主持人（而不是作者）领导，并遵循明确的协议，包括准备、正式会议和后续行动。 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 比演练更严格，旨在在缺陷传播到下一开发阶段之前找到缺陷。
+  **评论**是一个更广泛的类别，涵盖对软件工件的任何检查，其中可以包括演练和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。审查的形式可能有所不同，通常涉及分析软件产品以发现缺陷，确保符合标准，并评估产品是否为进一步开发或部署做好准备。
+  总之，**演练**是非正式的和教育性的，**[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 是正式的和以缺陷为中心的，而**评论**是软件工件的正式和非正式分析的通用术语。
 
 #### 静态分析如何融入检查过程？
 
-静态分析是一种**预执行** [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 方法，它可以在不实际运行程序的情况下评估源代码或编译代码。它通过提供一种在开发周期早期检测潜在缺陷、代码风格违规和安全漏洞的自动化方法来适应 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程。
-  将静态分析工具合并到[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)流程中允许团队：
+静态分析是一种**预执行** [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 方法，它可以在不实际运行程序的情况下评估源代码或编译代码。它通过提供一种在开发周期早期检测潜在缺陷、代码风格违规和安全漏洞的自动化方法来适应 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程。
+  将静态分析工具合并到[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)流程中允许团队：
 
 - **识别问题**在手动审查期间可能会错过这些内容，例如复杂的代码路径或边缘情况。
 
@@ -267,7 +267,7 @@ order: 0
 
 - **确定问题的优先顺序**根据严重性，帮助团队首先关注最关键的问题。
 
-- **与 CI/CD 管道集成** ，向开发人员提供即时反馈并防止缺陷向下游蔓延。 要在 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 进程中有效使用静态分析，请考虑以下事项：
+- **与 CI/CD 管道集成** ，向开发人员提供即时反馈并防止缺陷向下游蔓延。 要在 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 进程中有效使用静态分析，请考虑以下事项：
 
 - **选择工具**支持您的项目中使用的语言和框架。
 
@@ -275,7 +275,7 @@ order: 0
 
 - **审查和分类**区分真阳性和假阳性的结果。
 
-- **纳入调查结果**纳入代码审查流程，确保在合并代码更改之前解决已识别的问题。 通过将静态分析集成到[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)流程中，团队可以提高软件的整体质量并简化[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)工作流程。
+- **纳入调查结果**纳入代码审查流程，确保在合并代码更改之前解决已识别的问题。 通过将静态分析集成到[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)流程中，团队可以提高软件的整体质量并简化[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)工作流程。
 
 - **识别问题**在手动审查期间可能会错过这些内容，例如复杂的代码路径或边缘情况。
 
@@ -297,7 +297,7 @@ order: 0
 
 #### 不同检查技术的优点和缺点是什么？
 
-不同[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 技术的优点和缺点因[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的背景和目标而异。
+不同[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 技术的优点和缺点因[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的背景和目标而异。
   **代码审查的优点：**
 
 - **协作学习：**团队成员分享知识并共同进步。
@@ -330,7 +330,7 @@ order: 0
 
 - **自动化：**可以集成到 CI/CD 管道中以获得持续反馈。 **静态分析工具的缺点：**
 
-- **[误报](/zh-cn/wiki/false-positive/):**可能会报告不是实际缺陷的问题。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/):**可能会报告不是实际缺陷的问题。
 
 - **配置开销：**需要初始设置和调整才能有效。
 
@@ -366,7 +366,7 @@ order: 0
 
 - **自动化：**可以集成到 CI/CD 管道中以获得持续反馈。
 
-- **[误报](/zh-cn/wiki/false-positive/):**可能会报告不是实际缺陷的问题。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/):**可能会报告不是实际缺陷的问题。
 
 - **配置开销：**需要初始设置和调整才能有效。
 
@@ -376,35 +376,35 @@ order: 0
 
 #### 检查过程中常用的工具有哪些？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/)的[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)过程中使用的常用工具包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)过程中使用的常用工具包括：
 
-- **静态代码分析工具**：**SonarQube**、**ESLint** 和 **Checkstyle** 等工具扫描源代码以查找潜在问题，例如违反编码标准、[bugs](/zh-cn/wiki/bug/) 和安全漏洞。
+- **静态代码分析工具**：**SonarQube**、**ESLint** 和 **Checkstyle** 等工具扫描源代码以查找潜在问题，例如违反编码标准、[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 和安全漏洞。
 - **代码审查工具**：**GitHub**、**GitLab**、**Bitbucket** 和 **Gerrit** 等平台通过提供评论、讨论和批准更改的界面来促进同行代码审查。
-- **文档审阅工具**：**Confluence** 或 **Google Docs** 等具有评论和建议功能的工具可实现项目文档的协作 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。
-- **测试代码审查工具**：与代码审查工具类似，但专门用于测试代码； **Crucible** 和 **Review Board** 是支持 [测试脚本](/zh-cn/wiki/test-script/) 审核的示例。
-- **自动审核工具**：一些持续集成 (CI) 系统（例如 **Jenkins** 或 **Travis CI**）可以配置插件，以便在代码提交时自动执行某些 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 任务。
-- **[质量管理](/zh-cn/wiki/quality-management/) 工具**：**TestRail**、**qTest** 和 **Zephyr** 提供管理[测试用例](/zh-cn/wiki/test-case/)、计划[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 和跟踪[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 过程中发现的缺陷的功能。
-- **协作工具**：**Slack**、**Microsoft Teams** 和 **Asana** 可用于在 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程中进行沟通和协调，确保所有参与者保持一致。 这些工具有助于自动化 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的各个方面，从代码分析到协作审查，从而提高效率和一致性。选择工具时，请考虑与现有系统的集成能力、易用性以及[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)流程的特定需求等因素。
+- **文档审阅工具**：**Confluence** 或 **Google Docs** 等具有评论和建议功能的工具可实现项目文档的协作 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。
+- **测试代码审查工具**：与代码审查工具类似，但专门用于测试代码； **Crucible** 和 **Review Board** 是支持 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 审核的示例。
+- **自动审核工具**：一些持续集成 (CI) 系统（例如 **Jenkins** 或 **Travis CI**）可以配置插件，以便在代码提交时自动执行某些 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 任务。
+- **[质量管理](https://inaodeng.com/zh-cn/wiki/quality-management/) 工具**：**TestRail**、**qTest** 和 **Zephyr** 提供管理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、计划[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和跟踪[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 过程中发现的缺陷的功能。
+- **协作工具**：**Slack**、**Microsoft Teams** 和 **Asana** 可用于在 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程中进行沟通和协调，确保所有参与者保持一致。 这些工具有助于自动化 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的各个方面，从代码分析到协作审查，从而提高效率和一致性。选择工具时，请考虑与现有系统的集成能力、易用性以及[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)流程的特定需求等因素。
 
-- **静态代码分析工具**：**SonarQube**、**ESLint** 和 **Checkstyle** 等工具扫描源代码以查找潜在问题，例如违反编码标准、[bugs](/zh-cn/wiki/bug/) 和安全漏洞。
+- **静态代码分析工具**：**SonarQube**、**ESLint** 和 **Checkstyle** 等工具扫描源代码以查找潜在问题，例如违反编码标准、[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 和安全漏洞。
 - **代码审查工具**：**GitHub**、**GitLab**、**Bitbucket** 和 **Gerrit** 等平台通过提供评论、讨论和批准更改的界面来促进同行代码审查。
-- **文档审阅工具**：**Confluence** 或 **Google Docs** 等具有评论和建议功能的工具可实现项目文档的协作 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)。
-- **测试代码审查工具**：与代码审查工具类似，但专门用于测试代码； **Crucible** 和 **Review Board** 是支持 [测试脚本](/zh-cn/wiki/test-script/) 审核的示例。
-- **自动审核工具**：一些持续集成 (CI) 系统（例如 **Jenkins** 或 **Travis CI**）可以配置插件，以便在代码提交时自动执行某些 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 任务。
-- **[质量管理](/zh-cn/wiki/quality-management/) 工具**：**TestRail**、**qTest** 和 **Zephyr** 提供管理[测试用例](/zh-cn/wiki/test-case/)、计划[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 以及跟踪[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 过程中发现的缺陷的功能。
-- **协作工具**：**Slack**、**Microsoft Teams** 和 **Asana** 可用于在 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程中进行沟通和协调，确保所有参与者保持一致。
+- **文档审阅工具**：**Confluence** 或 **Google Docs** 等具有评论和建议功能的工具可实现项目文档的协作 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)。
+- **测试代码审查工具**：与代码审查工具类似，但专门用于测试代码； **Crucible** 和 **Review Board** 是支持 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 审核的示例。
+- **自动审核工具**：一些持续集成 (CI) 系统（例如 **Jenkins** 或 **Travis CI**）可以配置插件，以便在代码提交时自动执行某些 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 任务。
+- **[质量管理](https://inaodeng.com/zh-cn/wiki/quality-management/) 工具**：**TestRail**、**qTest** 和 **Zephyr** 提供管理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、计划[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 以及跟踪[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 过程中发现的缺陷的功能。
+- **协作工具**：**Slack**、**Microsoft Teams** 和 **Asana** 可用于在 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程中进行沟通和协调，确保所有参与者保持一致。
 
 #### 检查工具如何帮助提高流程效率？
 
-[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具通过自动执行代码、文档和其他工件的**静态分析**来简化**[测试自动化](/zh-cn/wiki/test-automation/) 流程**。它们可以快速识别**缺陷**、**代码异味**和**不符合编码标准的情况**，而手动完成这些工作可能会非常耗时。
+[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具通过自动执行代码、文档和其他工件的**静态分析**来简化**[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 流程**。它们可以快速识别**缺陷**、**代码异味**和**不符合编码标准的情况**，而手动完成这些工作可能会非常耗时。
   这些工具集成到**持续集成（CI）**管道中，为开发人员提供**实时反馈**。这种集成可确保及早发现问题，从而减少后期纠正所需的**成本和工作量**。通过自动化例行检查，工程师可以专注于更复杂的测试场景和**战略任务**。
-  **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 工具是[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具的子集，用于评估[测试套件](/zh-cn/wiki/test-suite/) 执行代码库的程度。它们突出显示**未经测试的路径**，指导测试人员改进[测试用例](/zh-cn/wiki/test-case/)并确保全面覆盖。
-  此外，[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具通过在人工审核之前自动检测潜在问题来促进**同行评审**流程。这提高了同行评审的效率，并允许进行更有针对性和富有成效的讨论。
-  本质上，[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具充当**第一道防线**，确保只有更高质量的代码才能进入[动态测试](/zh-cn/wiki/dynamic-testing/) 阶段。这有助于实现更高效、更有效的[测试自动化](/zh-cn/wiki/test-automation/)流程，最终带来更强大、更可靠的软件产品。
+  **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)** 工具是[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具的子集，用于评估[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 执行代码库的程度。它们突出显示**未经测试的路径**，指导测试人员改进[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并确保全面覆盖。
+  此外，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具通过在人工审核之前自动检测潜在问题来促进**同行评审**流程。这提高了同行评审的效率，并允许进行更有针对性和富有成效的讨论。
+  本质上，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具充当**第一道防线**，确保只有更高质量的代码才能进入[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 阶段。这有助于实现更高效、更有效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)流程，最终带来更强大、更可靠的软件产品。
 
 #### 选择检测工具时应考虑哪些因素？
 
-为软件 [测试自动化](/zh-cn/wiki/test-automation/) 选择 **[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具**时，请考虑以下因素：
+为软件 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 选择 **[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具**时，请考虑以下因素：
 
 - **兼容性**：确保该工具支持您的项目使用的编程语言和框架。
 - **集成**：寻找与现有开发和测试环境无缝集成的工具，包括 IDE、构建系统和版本控制。
@@ -416,36 +416,36 @@ order: 0
 - **支持和社​​区**：寻找具有强大社区支持或供应商提供帮助的工具，以确保您可以在需要时获得帮助。
 - **可扩展性**：该工具应该能够随着您的项目而增长，处理增加的代码量和复杂性，而不会降低性能。
 - **自动化支持**：验证该工具是否可以作为持续集成/持续部署 (CI/CD) 管道的一部分实现自动化。
-- **报告**：有效的报告功能对于跟踪缺陷和长期维护代码质量至关重要。 选择一个在这些因素之间取得适当平衡的工具，以增强您的 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程并保持较高的代码质量。
+- **报告**：有效的报告功能对于跟踪缺陷和长期维护代码质量至关重要。 选择一个在这些因素之间取得适当平衡的工具，以增强您的 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程并保持较高的代码质量。
 
 #### 自动化如何集成到检测过程中？
 
-将自动化集成到[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程中可以简化并增强软件质量保证的有效性。自动化可以通过多种方式应用：
+将自动化集成到[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程中可以简化并增强软件质量保证的有效性。自动化可以通过多种方式应用：
 
-- **自动代码分析**：SonarQube 或 Coverity 等工具可以集成到 CI/CD 管道中以执行静态代码分析，在潜在问题到达 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 阶段之前识别它们。
+- **自动代码分析**：SonarQube 或 Coverity 等工具可以集成到 CI/CD 管道中以执行静态代码分析，在潜在问题到达 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 阶段之前识别它们。
 - **自动评审系统**：Gerrit 或 Review Board 等平台可以自动分发代码以进行同行评审、跟踪评论和批准状态。
-- **清单执行**：自动化脚本可以确保在代码进入下一阶段之前解决所有[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)清单项目。
-- **自动指标收集**：脚本可以收集诸如代码复杂性、对编码标准的遵守情况和[测试覆盖率](/zh-cn/wiki/test-coverage/)等指标，这对于知情的[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)至关重要。
-- **与跟踪系统集成**：[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 报告和问题跟踪系统（如 [jira](/zh-cn/wiki/jira/)）之间的自动链接可确保可追溯性和问责制。
-- **自动化[测试执行](/zh-cn/wiki/test-execution/)**：合并自动化单元、集成和系统测试，以在手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程之前验证代码。
-- **自动化文档**：工具可以从代码库和测试结果生成文档，为检查员提供最新信息。 实施这些自动化策略需要仔细规划和选择工具，以补充 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程的人性化方面。自动化不应取代人类判断，而应增强人类判断，使检查员能够专注于[软件质量](/zh-cn/wiki/software-quality/) 更复杂和微妙的方面。
+- **清单执行**：自动化脚本可以确保在代码进入下一阶段之前解决所有[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)清单项目。
+- **自动指标收集**：脚本可以收集诸如代码复杂性、对编码标准的遵守情况和[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)等指标，这对于知情的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)至关重要。
+- **与跟踪系统集成**：[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 报告和问题跟踪系统（如 [jira](https://inaodeng.com/zh-cn/wiki/jira/)）之间的自动链接可确保可追溯性和问责制。
+- **自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：合并自动化单元、集成和系统测试，以在手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程之前验证代码。
+- **自动化文档**：工具可以从代码库和测试结果生成文档，为检查员提供最新信息。 实施这些自动化策略需要仔细规划和选择工具，以补充 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程的人性化方面。自动化不应取代人类判断，而应增强人类判断，使检查员能够专注于[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 更复杂和微妙的方面。
 
-- **自动代码分析**：SonarQube 或 Coverity 等工具可以集成到 CI/CD 管道中以执行静态代码分析，在潜在问题到达 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 阶段之前识别它们。
+- **自动代码分析**：SonarQube 或 Coverity 等工具可以集成到 CI/CD 管道中以执行静态代码分析，在潜在问题到达 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 阶段之前识别它们。
 - **自动评审系统**：Gerrit 或 Review Board 等平台可以自动分发代码以进行同行评审、跟踪评论和批准状态。
-- **清单执行**：自动化脚本可以确保在代码进入下一阶段之前解决所有[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 清单项目。
-- **自动指标收集**：脚本可以收集诸如代码复杂性、遵守编码标准和[测试覆盖率](/zh-cn/wiki/test-coverage/)等指标，这对于知情的[[检查](/zh-cn/wiki/inspection/)s](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)至关重要。
-- **与跟踪系统集成**：[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 报告和问题跟踪系统（如 [jira](/zh-cn/wiki/jira/)）之间的自动链接可确保可追溯性和问责制。
-- **自动化[测试执行](/zh-cn/wiki/test-execution/)**：合并自动化单元、集成和系统测试，以在手动[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 流程之前验证代码。
+- **清单执行**：自动化脚本可以确保在代码进入下一阶段之前解决所有[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 清单项目。
+- **自动指标收集**：脚本可以收集诸如代码复杂性、遵守编码标准和[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)等指标，这对于知情的[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)至关重要。
+- **与跟踪系统集成**：[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 报告和问题跟踪系统（如 [jira](https://inaodeng.com/zh-cn/wiki/jira/)）之间的自动链接可确保可追溯性和问责制。
+- **自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**：合并自动化单元、集成和系统测试，以在手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 流程之前验证代码。
 - **自动化文档**：工具可以从代码库和测试结果生成文档，为检查员提供最新信息。
 
 #### e2e 测试中使用的检查工具有哪些示例？
 
-在 e2e 测试中，[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) 工具对于检查应用程序状态和了解测试下系统的行为至关重要。此类工具的示例包括：
+在 e2e 测试中，[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 工具对于检查应用程序状态和了解测试下系统的行为至关重要。此类工具的示例包括：
 
-- **浏览器开发者工具**：内置于大多数现代网络浏览器（例如 Chrome 开发者工具、Firefox 开发者工具）中，它们允许 [[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/) HTML、CSS 和 JavaScript，以及网络活动和性能。
-- **[selenium IDE](/zh-cn/wiki/selenium-ide/)**：一个浏览器扩展，用于记录用户与 Web 应用程序的交互并回放它们以测试回归。
-- **Appium Inspector**：对于移动应用程序，此工具提供了一个 GUI 来启动会话并检查应用程序的 UI 元素以生成 [测试脚本](/zh-cn/wiki/test-script/)。
-- **[Postman](/zh-cn/wiki/postman/)**：主要用于[API 测试](/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
+- **浏览器开发者工具**：内置于大多数现代网络浏览器（例如 Chrome 开发者工具、Firefox 开发者工具）中，它们允许 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) HTML、CSS 和 JavaScript，以及网络活动和性能。
+- **[selenium IDE](https://inaodeng.com/zh-cn/wiki/selenium-ide/)**：一个浏览器扩展，用于记录用户与 Web 应用程序的交互并回放它们以测试回归。
+- **Appium Inspector**：对于移动应用程序，此工具提供了一个 GUI 来启动会话并检查应用程序的 UI 元素以生成 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**：主要用于[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)，它也可用于通过发送请求和分析响应来检查和调试 RESTful 服务。
 - **Wireshark**：一种网络协议分析仪，有助于检查 e2e 测试期间通过网络传输的数据。
 - **Fiddler**：记录 HTTP(S) 流量数据的 Web 调试代理，可以检查该数据以了解应用程序的网络通信。
-- **Charles Proxy**：与 Fiddler 类似，用于监控和调试客户端和服务器之间的 HTTP/HTTPS 流量。 这些工具有助于识别 UI 元素、监控网络流量、分析 [API](/zh-cn/wiki/api/) 响应等，这对于创建强大的 e2e [测试用例](/zh-cn/wiki/test-case/) 至关重要。
+- **Charles Proxy**：与 Fiddler 类似，用于监控和调试客户端和服务器之间的 HTTP/HTTPS 流量。 这些工具有助于识别 UI 元素、监控网络流量、分析 [API](https://inaodeng.com/zh-cn/wiki/api/) 响应等，这对于创建强大的 e2e [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 至关重要。

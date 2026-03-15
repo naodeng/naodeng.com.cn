@@ -119,10 +119,10 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [agentic-workflow](/zh-cn/AIWiki/agentic-workflow/)
-- [mcp](/zh-cn/AIWiki/model-context-protocol-mcp/)
-- [human-in-the-loop](/zh-cn/AIWiki/human-in-the-loop/)
-- [multi-agent-orchestration](/zh-cn/AIWiki/multi-agent-orchestration/)
+- [agentic-workflow](https://inaodeng.com/zh-cn/AIWiki/agentic-workflow/)
+- [mcp](https://inaodeng.com/zh-cn/AIWiki/model-context-protocol-mcp/)
+- [human-in-the-loop](https://inaodeng.com/zh-cn/AIWiki/human-in-the-loop/)
+- [multi-agent-orchestration](https://inaodeng.com/zh-cn/AIWiki/multi-agent-orchestration/)
 
 ### 外部参考
 

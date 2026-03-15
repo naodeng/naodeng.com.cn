@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [agentic-workflow](/zh-cn/AIWiki/agentic-workflow/)
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
-- [vibe-coding](/zh-cn/AIWiki/vibe-coding/)
+- [agentic-workflow](https://inaodeng.com/zh-cn/AIWiki/agentic-workflow/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
+- [vibe-coding](https://inaodeng.com/zh-cn/AIWiki/vibe-coding/)
 
 ### 术语元数据
 

@@ -116,9 +116,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [self-healing-code](/en/AIWiki/self-healing-code/)
-- [zero-shot-coding](/en/AIWiki/zero-shot-coding/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [self-healing-code](https://inaodeng.com/en/AIWiki/self-healing-code/)
+- [zero-shot-coding](https://inaodeng.com/en/AIWiki/zero-shot-coding/)
 
 ### Term Metadata
 

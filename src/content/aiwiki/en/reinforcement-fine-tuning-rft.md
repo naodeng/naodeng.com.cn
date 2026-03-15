@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [direct-preference-optimization-dpo](/en/AIWiki/direct-preference-optimization-dpo/)
-- [reasoning-models](/en/AIWiki/reasoning-models/)
-- [agent-evals](/en/AIWiki/agent-evals/)
-- [trace-grading](/en/AIWiki/trace-grading/)
+- [direct-preference-optimization-dpo](https://inaodeng.com/en/AIWiki/direct-preference-optimization-dpo/)
+- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
 
 ### External References
 

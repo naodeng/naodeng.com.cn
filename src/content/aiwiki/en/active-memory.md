@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [automatic-memory](/en/AIWiki/automatic-memory/)
-- [memory-scope](/en/AIWiki/memory-scope/)
-- [conversation-state](/en/AIWiki/conversation-state/)
-- [rules-and-memories](/en/AIWiki/rules-and-memories/)
+- [automatic-memory](https://inaodeng.com/en/AIWiki/automatic-memory/)
+- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
+- [conversation-state](https://inaodeng.com/en/AIWiki/conversation-state/)
+- [rules-and-memories](https://inaodeng.com/en/AIWiki/rules-and-memories/)
 
 ### External References
 

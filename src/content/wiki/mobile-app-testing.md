@@ -42,9 +42,9 @@ order: 0
 
 ## 相关术语
 
-- [移动设备测试](/zh-cn/wiki/mobile-device-testing/)
-- [网页测试](/zh-cn/wiki/web-testing/)
-- [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)
+- [移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)
+- [网页测试](https://inaodeng.com/zh-cn/wiki/web-testing/)
+- [跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)
 
 ## 有关移动应用程序测试的问题吗？
 
@@ -52,7 +52,7 @@ order: 0
 
 #### 什么是移动应用测试？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 涉及验证为手持设备设计的应用程序的功能、可用性和一致性。这是应用程序开发的关键阶段，旨在确保应用程序在到达最终用户之前满足所需的质量标准。测试包括检查应用程序在各种条件下的行为，包括不同的网络性能、设备特定功能和操作系统版本。
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 涉及验证为手持设备设计的应用程序的功能、可用性和一致性。这是应用程序开发的关键阶段，旨在确保应用程序在到达最终用户之前满足所需的质量标准。测试包括检查应用程序在各种条件下的行为，包括不同的网络性能、设备特定功能和操作系统版本。
   **关键方面**包括评估应用程序的：
 
 - **用户界面 (UI)**：确保应用程序的视觉元素和导航组件在不同的屏幕尺寸和分辨率下按预期运行。
@@ -72,18 +72,18 @@ order: 0
     expect(await app.isVisible('welcomeMessage')).toBe(true);
   });
 ```
-[自动化测试](/zh-cn/wiki/automated-testing/) 是[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的组成部分，可有效执行重复测试和回归测试，确保应用程序的可靠性和稳健性。
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 是[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 的组成部分，可有效执行重复测试和回归测试，确保应用程序的可靠性和稳健性。
 
 #### 为什么移动应用测试很重要？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 对于确保不同设备上应用程序的**质量**、**性能**和**安全性**至关重要。随着智能手机和平板电脑的普及，应用程序必须在各种屏幕尺寸、操作系统和硬件配置上提供无缝的用户体验。测试可以识别可能对用户满意度产生负面影响的问题，例如崩溃、响应缓慢或电池耗尽，这对于保持应用程序市场的竞争优势至关重要。
-  此外，移动应用程序通常可以访问敏感数据和个人信息，这使得 [安全测试](/zh-cn/wiki/security-testing/) 对于防范漏洞和防止数据泄露不可或缺。由于移动设备在不同的网络和各种条件下运行，测试还可以验证应用程序在网络速度波动以及在 Wi-Fi 和蜂窝数据之间转换时仍然可靠。
-  [自动化测试](/zh-cn/wiki/automated-testing/) 工具简化了此过程，支持跨多个设备环境进行频繁且一致的测试，这对于 [敏捷开发](/zh-cn/wiki/agile-development/) 周期和持续集成工作流程至关重要。通过及早发现缺陷，[自动化测试](/zh-cn/wiki/automated-testing/) 降低了修复[bugs](/zh-cn/wiki/bug/) 的成本并加快了上市时间，同时还使人类测试人员能够专注于需要人工关注的更复杂的[测试场景](/zh-cn/wiki/test-scenario/)。
-  从本质上讲，[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 是提供强大、用户友好且安全的应用程序体验的支柱，这对于用户保留、声誉以及最终应用程序在竞争激烈的市场中的成功至关重要。
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 对于确保不同设备上应用程序的**质量**、**性能**和**安全性**至关重要。随着智能手机和平板电脑的普及，应用程序必须在各种屏幕尺寸、操作系统和硬件配置上提供无缝的用户体验。测试可以识别可能对用户满意度产生负面影响的问题，例如崩溃、响应缓慢或电池耗尽，这对于保持应用程序市场的竞争优势至关重要。
+  此外，移动应用程序通常可以访问敏感数据和个人信息，这使得 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 对于防范漏洞和防止数据泄露不可或缺。由于移动设备在不同的网络和各种条件下运行，测试还可以验证应用程序在网络速度波动以及在 Wi-Fi 和蜂窝数据之间转换时仍然可靠。
+  [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 工具简化了此过程，支持跨多个设备环境进行频繁且一致的测试，这对于 [敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 周期和持续集成工作流程至关重要。通过及早发现缺陷，[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 降低了修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的成本并加快了上市时间，同时还使人类测试人员能够专注于需要人工关注的更复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。
+  从本质上讲，[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 是提供强大、用户友好且安全的应用程序体验的支柱，这对于用户保留、声誉以及最终应用程序在竞争激烈的市场中的成功至关重要。
 
 #### 移动应用程序测试和 Web 应用程序测试之间的主要区别是什么？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 和 Web 应用程序测试之间的主要区别包括：
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 和 Web 应用程序测试之间的主要区别包括：
 
 - **环境多样性**：移动应用程序必须在各种设备、操作系统和屏幕尺寸上进行测试。Web 应用程序通常在不同的浏览器和版本上进行测试。
 - **交互方法**：移动应用程序通常使用滑动和捏合等触摸手势，这些手势通常在 Web 应用程序中不使用。
@@ -93,71 +93,71 @@ order: 0
 - **外围交互**：与大多数 Web 应用程序不同，移动应用程序可以与特定于设备的功能（如相机、GPS 和传感器）进行交互。
 - **生命周期管理**：移动应用程序具有不同的生命周期，包括后台状态和中断（如来电），需要进行测试。
 - **安全问题**：移动应用程序可能会在设备上存储敏感数据，与在服务器上存储数据的 Web 应用程序相比，会引发不同的安全问题。
-- **用户界面**：移动应用程序的 UI 是为较小的屏幕设计的，必须测试响应能力和可扩展性，而 Web 应用程序是为更广泛的屏幕尺寸设计的。 了解这些差异对于定制 [测试自动化](/zh-cn/wiki/test-automation/) 策略以有效验证移动和 Web 应用程序至关重要。
+- **用户界面**：移动应用程序的 UI 是为较小的屏幕设计的，必须测试响应能力和可扩展性，而 Web 应用程序是为更广泛的屏幕尺寸设计的。 了解这些差异对于定制 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略以有效验证移动和 Web 应用程序至关重要。
 
 ### 移动应用测试的类型
 
 #### 移动应用测试有哪些不同类型？
 
-除了基础知识之外，[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的不同类型包括：
+除了基础知识之外，[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 的不同类型包括：
 
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：无脚本测试以探索应用程序功能。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：确保应用程序免受威胁。
-- **[本地化测试](/zh-cn/wiki/localization-testing/)** ：检查不同区域设置下的应用程序行为。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：无脚本测试以探索应用程序功能。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：确保应用程序免受威胁。
+- **[本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)** ：检查不同区域设置下的应用程序行为。
 - **安装测试**：验证各种设备上的安装过程。
 - **中断测试**：评估应用程序对呼叫或通知等中断的响应。
 - **恢复测试**：测试应用程序承受故障和从故障中恢复的能力。
-- **[Beta 测试](/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以在现实世界中曝光。
-- **[A/B Testing](/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
+- **[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以在现实世界中曝光。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
 - **一致性测试**：确保应用程序遵守标准和指南。
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
-- **[音量测试](/zh-cn/wiki/volume-testing/)** ：使用大量数据检查应用程序行为。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
+- **[音量测试](https://inaodeng.com/zh-cn/wiki/volume-testing/)** ：使用大量数据检查应用程序行为。
 - **网络测试**：测试不同网络条件下的应用程序性能。
 - **认证测试**：在发布之前验证应用程序是否符合某些认证标准。 每种类型都针对应用程序质量和用户体验的特定方面，有助于打造强大且可靠的移动应用程序。
 
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：无脚本测试以探索应用程序功能。
-- **[安全测试](/zh-cn/wiki/security-testing/)** ：确保应用程序防范威胁。
-- **[本地化测试](/zh-cn/wiki/localization-testing/)** ：检查不同区域设置下的应用程序行为。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：无脚本测试以探索应用程序功能。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)** ：确保应用程序防范威胁。
+- **[本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)** ：检查不同区域设置下的应用程序行为。
 - **安装测试**：验证各种设备上的安装过程。
 - **中断测试**：评估应用程序对呼叫或通知等中断的响应。
 - **恢复测试**：测试应用程序承受故障和从故障中恢复的能力。
-- **[Beta 测试](/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以供真实世界使用。
-- **[A/B Testing](/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
+- **[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以供真实世界使用。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
 - **一致性测试**：确保应用程序遵守标准和指南。
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
-- **[音量测试](/zh-cn/wiki/volume-testing/)** ：使用大量数据检查应用程序行为。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
+- **[音量测试](https://inaodeng.com/zh-cn/wiki/volume-testing/)** ：使用大量数据检查应用程序行为。
 - **网络测试**：测试不同网络条件下的应用程序性能。
 - **认证测试**：在发布之前验证应用程序是否符合某些认证标准。
 
 #### 移动应用程序中的功能测试和非功能测试有什么区别？
 
-移动应用程序中的[功能测试](/zh-cn/wiki/functional-testing/) 侧重于验证应用程序的功能和操作是否按预期运行。它涉及测试应用程序的用户交互、数据处理和业务逻辑，以确保其满足指定的要求。示例包括测试用户流程、表单提交和应用内购买。
-  另一方面，[非功能测试](/zh-cn/wiki/non-functional-testing/) 评估在各种条件下定义应用程序质量的方面，而不是与特定行为或功能直接相关。这包括性能、安全性、兼容性、可用性和可扩展性测试。它是关于应用程序的行为和执行方式，而不是它的用途。例如，检查应用程序如何处理压力、负载，或者其针对潜在违规的安全性如何。
-  总之，[功能测试](/zh-cn/wiki/functional-testing/) 回答“它有效吗？”而[非功能测试](/zh-cn/wiki/non-functional-testing/) 则回答“它在各种条件下都能正常、安全地工作吗？”两者对于提供强大的移动应用程序都至关重要。
+移动应用程序中的[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/) 侧重于验证应用程序的功能和操作是否按预期运行。它涉及测试应用程序的用户交互、数据处理和业务逻辑，以确保其满足指定的要求。示例包括测试用户流程、表单提交和应用内购买。
+  另一方面，[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 评估在各种条件下定义应用程序质量的方面，而不是与特定行为或功能直接相关。这包括性能、安全性、兼容性、可用性和可扩展性测试。它是关于应用程序的行为和执行方式，而不是它的用途。例如，检查应用程序如何处理压力、负载，或者其针对潜在违规的安全性如何。
+  总之，[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/) 回答“它有效吗？”而[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 则回答“它在各种条件下都能正常、安全地工作吗？”两者对于提供强大的移动应用程序都至关重要。
 
 #### 移动应用程序中的可用性测试是什么？
 
-移动应用程序的 [可用性测试](/zh-cn/wiki/usability-testing/) 侧重于通过观察真实用户尝试在应用程序内完成任务来评估**用户体验** (UX)。它的目的是识别任何可用性问题，收集定性数据，并确定参与者对产品的满意度。与其他形式的测试不同，[可用性测试](/zh-cn/wiki/usability-testing/) 本质上是**以用户为中心**。
+移动应用程序的 [可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 侧重于通过观察真实用户尝试在应用程序内完成任务来评估**用户体验** (UX)。它的目的是识别任何可用性问题，收集定性数据，并确定参与者对产品的满意度。与其他形式的测试不同，[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 本质上是**以用户为中心**。
   关键方面包括：
 
 - **易用性**：新用户导航应用程序的直观程度如何？
 - **使用效率**：用户熟悉界面后执行任务的速度有多快？
 - **记忆力**：一段时间不使用该应用程序后，用户恢复熟练程度有多容易？
-- **错误频率和[严重性](/zh-cn/wiki/severity/)**：用户犯错误的频率，这些错误有多严重，以及他们如何从中恢复？
-- **满意度**：使用该设计的愉快程度如何？ [可用性测试](/zh-cn/wiki/usability-testing/) 可以在开发的任何阶段进行，从线框到最终产品。它通常涉及**任务场景**，其中要求用户完成特定操作，而观察者做笔记或记录会话。然后使用反馈来完善 UI/UX 元素。 在移动环境中，其他考虑因素包括**屏幕尺寸**、**触摸界面**和**移动特定功能**，例如手势和设备方向。在**实际设备**上进行测试以准确评估用户体验至关重要。 总之，移动应用程序中的[可用性测试](/zh-cn/wiki/usability-testing/) 是一种定性方法，可确保应用程序的设计符合用户期望和可用性标准，最终产生更加**用户友好**和**成功**的产品。
+- **错误频率和[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**：用户犯错误的频率，这些错误有多严重，以及他们如何从中恢复？
+- **满意度**：使用该设计的愉快程度如何？ [可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 可以在开发的任何阶段进行，从线框到最终产品。它通常涉及**任务场景**，其中要求用户完成特定操作，而观察者做笔记或记录会话。然后使用反馈来完善 UI/UX 元素。 在移动环境中，其他考虑因素包括**屏幕尺寸**、**触摸界面**和**移动特定功能**，例如手势和设备方向。在**实际设备**上进行测试以准确评估用户体验至关重要。 总之，移动应用程序中的[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 是一种定性方法，可确保应用程序的设计符合用户期望和可用性标准，最终产生更加**用户友好**和**成功**的产品。
 
 - **易用性**：新用户导航应用程序的直观程度如何？
 - **使用效率**：用户熟悉界面后执行任务的速度有多快？
 - **记忆力**：一段时间不使用该应用程序后，用户恢复熟练程度有多容易？
-- **错误频率和[严重性](/zh-cn/wiki/severity/)**：用户犯错误的频率如何，这些错误有多严重，以及他们如何从中恢复？
+- **错误频率和[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**：用户犯错误的频率如何，这些错误有多严重，以及他们如何从中恢复？
 - **满意度**：使用该设计的愉快程度如何？
 
 #### 什么是移动应用程序中的兼容性测试？
 
-移动应用程序中的[兼容性测试](/zh-cn/wiki/compatibility-testing/) 是验证应用程序在不同设备、操作系统、屏幕尺寸、分辨率和其他变量（例如网络条件或硬件传感器）上是否按预期运行的过程。它确保应用程序提供一致的用户体验，无论其使用的设备或环境如何。
-  为了有效地进行[兼容性测试](/zh-cn/wiki/compatibility-testing/)：
+移动应用程序中的[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/) 是验证应用程序在不同设备、操作系统、屏幕尺寸、分辨率和其他变量（例如网络条件或硬件传感器）上是否按预期运行的过程。它确保应用程序提供一致的用户体验，无论其使用的设备或环境如何。
+  为了有效地进行[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)：
 
 - **识别最流行的设备和操作系统版本**并将其纳入您的测试矩阵中。
 
@@ -169,7 +169,7 @@ order: 0
 
 - 验证应用程序的 **与设备特定功能集成**例如相机、GPS 和加速计。
 
-- 确保应用程序兼容 **不同的用户设置** ，例如语言和辅助功能选项。 [自动化测试](/zh-cn/wiki/automated-testing/) 工具可用于跨多个设备执行重复的兼容性测试。但是，对于自动化测试无法捕获的细微问题，[手动测试](/zh-cn/wiki/manual-testing/) 也可能是必要的。随着新设备和操作系统更新的发布，定期确定 [兼容性测试](/zh-cn/wiki/compatibility-testing/) 策略的优先级并进行更新至关重要。
+- 确保应用程序兼容 **不同的用户设置** ，例如语言和辅助功能选项。 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 工具可用于跨多个设备执行重复的兼容性测试。但是，对于自动化测试无法捕获的细微问题，[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/) 也可能是必要的。随着新设备和操作系统更新的发布，定期确定 [兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/) 策略的优先级并进行更新至关重要。
 
 - **识别最流行的设备和操作系统版本**并将其纳入您的测试矩阵中。
 
@@ -187,7 +187,7 @@ order: 0
 
 #### 用于移动应用程序测试的一些流行工具有哪些？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的热门工具包括：
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 的热门工具包括：
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Espresso**：Android 原生测试框架，提供用于编写​​ UI 测试的 API。
@@ -204,14 +204,14 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **EarlGrey**：Google 的原生 iOS UI 自动化测试框架，与 XCTest 集成。
 - **Kobiton**：一个移动设备云平台，使用户能够在真实设备上进行测试。
 - **TestComplete Mobile**：为 Android 和 iOS 应用程序的自动化测试提供一套全面的功能。
-- **Ranorex Studio**：提供用于为移动、Web 和桌面应用程序创建自动化测试的工具。 每个工具都有自己的优势，并根据平台、应用程序类型和集成要求等因素进行选择。经验丰富的工程师通常会选择这些工具的组合来有效地覆盖[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/)的所有方面。
+- **Ranorex Studio**：提供用于为移动、Web 和桌面应用程序创建自动化测试的工具。 每个工具都有自己的优势，并根据平台、应用程序类型和集成要求等因素进行选择。经验丰富的工程师通常会选择这些工具的组合来有效地覆盖[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/)的所有方面。
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
 - **Espresso**：Android 原生测试框架，提供用于编写​​ UI 测试的 API。
 
 #### 对移动应用程序使用自动化测试工具有哪些好处？
 
-[自动化测试](/zh-cn/wiki/automated-testing/) 移动应用程序工具具有多种优势：
+[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 移动应用程序工具具有多种优势：
 
 - **提高效率**：自动化可以高精度执行重复的测试用例，节省时间和资源。
 - **一致性**：确保每次都以相同的方式执行测试，减少人为错误。
@@ -220,24 +220,24 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **可重用性**：测试脚本可以在应用程序的不同版本之间重用，从而减少为每个版本编写新测试的需要。
 - **并行执行**：支持同时在多个设备或模拟器上运行测试，这对于在不同的移动平台上进行测试至关重要。
 - **持续集成 (CI)**：与 CI 管道集成以实现持续测试和交付。
-- **早期[bug](/zh-cn/wiki/bug/) 检测**：在开发周期的早期识别问题，减少以后修复问题的成本和工作量。
+- **早期[bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：在开发周期的早期识别问题，减少以后修复问题的成本和工作量。
 - **客观评估**：提供公正的结果，不受人为解释或疲劳。
 - **报告**：生成详细的报告和日志以供分析，帮助快速识别问题。 通过利用这些优势，团队可以更有信心、更快地交付高质量的移动应用程序。
 
 #### 模拟器和仿真器在移动应用测试中的作用是什么？
 
-仿真器和模拟器通过模仿实际设备的行为，在[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中发挥着至关重要的作用，允许测试人员在受控环境中执行[测试用例](/zh-cn/wiki/test-case/)。 **模拟器**在计算机上复制移动设备的硬件和软件，使开发人员无需物理设备即可测试应用程序。它们对于固件交互等**低级操作**特别有用。另一方面，**模拟器**创建一个与原始设备操作系统类似的环境，但不模拟硬件，使它们更快，更适合像用户[接口测试](/zh-cn/wiki/interface-testing/)这样的**高级操作**。
+仿真器和模拟器通过模仿实际设备的行为，在[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 中发挥着至关重要的作用，允许测试人员在受控环境中执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。 **模拟器**在计算机上复制移动设备的硬件和软件，使开发人员无需物理设备即可测试应用程序。它们对于固件交互等**低级操作**特别有用。另一方面，**模拟器**创建一个与原始设备操作系统类似的环境，但不模拟硬件，使它们更快，更适合像用户[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)这样的**高级操作**。
   这两种工具都是不可或缺的：
 
 - **早期测试**：它们允许对移动应用程序进行快速和早期的测试，甚至在实际硬件可用之前。
 - **成本效益**：减少对大量物理设备库存的需求，特别是在跨多个设备配置进行测试时。
 - **持续集成（CI）**：它们可以集成到 CI 管道中以进行自动化测试，确保新的代码更改不会破坏现有功能。
 - **调试**：提供有助于诊断问题的详细日志和信息。
-- **可扩展性**：模拟器和仿真器可以轻松扩展以同时模拟多个设备，这有利于负载和压力测试。 然而，它们无法完全取代真实设备测试的需求，因为它们可能无法准确复制所有特定于设备的行为和特征，例如电池使用情况、网络状况或传感器交互。因此，它们经常与物理设备结合使用，以实现全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
+- **可扩展性**：模拟器和仿真器可以轻松扩展以同时模拟多个设备，这有利于负载和压力测试。 然而，它们无法完全取代真实设备测试的需求，因为它们可能无法准确复制所有特定于设备的行为和特征，例如电池使用情况、网络状况或传感器交互。因此，它们经常与物理设备结合使用，以实现全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
 
 #### 有效的移动应用测试有哪些技术？
 
-为了确保有效[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/)，请考虑以下技术：
+为了确保有效[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/)，请考虑以下技术：
 
 - **优先考虑关键测试路径**：专注于最常见的用户旅程以最大化影响。
 - **自动化回归测试**：使用自动化来处理重复检查，从而腾出时间进行探索性测试。
@@ -245,7 +245,7 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **在真实设备上测试**：用物理设备补充模拟器以捕获特定于硬件的问题。
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
-- **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
+- **应用行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
 ```
 功能：用户登录
   场景：使用有效凭据成功登录
@@ -265,14 +265,14 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **在真实设备上测试**：用物理设备补充模拟器以捕获特定于硬件的问题。
 - **利用基于云的设备群**：访问各种设备和操作系统版本，而无需维护大型设备库。
 - **实施网络状况测试**：模拟各种网络速度和断开连接以测试应用程序的弹性。
-- **应用行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
+- **应用行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** ：用自然语言编写测试以符合业务需求。
 通过整合这些技术，你可以提升移动应用的质量和可靠性，从而提供更好的用户体验。
 
 ### 挑战和最佳实践
 
 #### 移动应用测试中有哪些常见挑战？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中的常见挑战包括：
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 中的常见挑战包括：
 
 - **设备碎片**：许多设备具有不同的屏幕尺寸、分辨率和硬件配置，因此很难确保所有设备上的应用程序行为一致。
 - **操作系统变化**：不同版本的操作系统以及制造商特定的定制增加了测试工作的复杂性。
@@ -282,13 +282,13 @@ Espresso.onView(withId(R.id.my_view)).perform(click());
 - **中断条件**：来电、短信、通知和其他中断可能会影响应用程序行为，必须进行测试。
 - **本地化和国际化**：应用程序必须针对不同的语言和区域设置进行测试，以确保在不同市场中正常运行。
 - **用户界面和体验**：触摸屏交互和手势需要彻底的测试，以确保流畅的用户体验。
-- **安全问题**：移动应用程序经常处理敏感数据，因此 [安全测试](/zh-cn/wiki/security-testing/) 对于保护用户信息至关重要。
+- **安全问题**：移动应用程序经常处理敏感数据，因此 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 对于保护用户信息至关重要。
 - **应用程序商店批准**：满足应用程序商店的具体准则以确保应用程序被接受可能具有挑战性。
-- **[自动化测试](/zh-cn/wiki/automated-testing/) 限制**：并非所有场景都可以自动化，并且由于频繁的应用程序和操作系统更新，维护自动化测试可能非常耗时。 克服这些挑战通常需要结合手动和[自动化测试](/zh-cn/wiki/automated-testing/)、强大的设备实验室或设备场，以及在整个开发生命周期中持续测试的重点。
+- **[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 限制**：并非所有场景都可以自动化，并且由于频繁的应用程序和操作系统更新，维护自动化测试可能非常耗时。 克服这些挑战通常需要结合手动和[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)、强大的设备实验室或设备场，以及在整个开发生命周期中持续测试的重点。
 
 #### 如何克服这些挑战？
 
-克服[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中的挑战需要采取战略方法：
+克服[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 中的挑战需要采取战略方法：
 
 - **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
 
@@ -298,7 +298,7 @@ pipeline:
 - build_script.sh test: script:
 - test_script.sh deploy: script:
 - deploy_script.sh
-- **基于云的测试服务**：利用 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台访问各种设备和操作系统组合，确保全面的 [兼容性测试](/zh-cn/wiki/compatibility-testing/)。
+- **基于云的测试服务**：利用 [browserstack](https://inaodeng.com/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台访问各种设备和操作系统组合，确保全面的 [兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)。
 - **测试并行化**：并行运行测试以减少执行时间。大多数自动化框架支持并行执行。
 
 ```
@@ -307,26 +307,26 @@ pipeline:
     test('Test 2', async () => { /* ... */ });
   });
 ```
-- **人工智能和机器学习**：利用人工智能驱动的工具进行测试创建、维护和分析，以识别[片状测试](/zh-cn/wiki/flaky-test/)并优化[测试套件](/zh-cn/wiki/test-suite/)。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**：根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/) 的优先级，首先关注关键功能，以使测试过程更加高效。
-- **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发周期的早期集成测试，以更快地识别和修复问题，从而减少总体测试时间和成本。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：自动生成和管理[测试数据](/zh-cn/wiki/test-data/)，以确保测试拥有必要的数据而无需人工干预。
+- **人工智能和机器学习**：利用人工智能驱动的工具进行测试创建、维护和分析，以识别[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)并优化[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
+- **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**：根据风险和影响确定 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的优先级，首先关注关键功能，以使测试过程更加高效。
+- **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)**：在开发周期的早期集成测试，以更快地识别和修复问题，从而减少总体测试时间和成本。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：自动生成和管理[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，以确保测试拥有必要的数据而无需人工干预。
 - **性能分析**：使用分析工具在测试期间监控应用程序性能，有助于及早发现瓶颈。
-- **反馈循环**：与开发团队建立强大的反馈机制，以快速解决测试过程中发现的问题。 通过采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以解决[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 的复杂性，确保高质量、高性能且可靠的移动应用程序。
+- **反馈循环**：与开发团队建立强大的反馈机制，以快速解决测试过程中发现的问题。 通过采用这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以解决[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 的复杂性，确保高质量、高性能且可靠的移动应用程序。
 
 - **持续集成/持续部署 (CI/CD)** ：实施 CI/CD 管道以自动化构建、测试和部署流程。Jenkins、GitLab CI 和 CircleCI 等工具可以促进这一点。
-- **基于云的测试服务**：利用[browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台访问各种设备和操作系统组合，确保全面的[兼容性测试](/zh-cn/wiki/compatibility-testing/)。
+- **基于云的测试服务**：利用[browserstack](https://inaodeng.com/zh-cn/wiki/browserstack/) 或 Sauce Labs 等基于云的平台访问各种设备和操作系统组合，确保全面的[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)。
 - **测试并行化**：并行运行测试以减少执行时间。大多数自动化框架支持并行执行。
-- **人工智能和机器学习**：利用人工智能驱动的工具进行测试创建、维护和分析，以识别[片状测试](/zh-cn/wiki/flaky-test/)并优化[测试套件](/zh-cn/wiki/test-suite/)。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**：根据风险和影响确定[测试用例](/zh-cn/wiki/test-case/)的优先级，首先关注关键功能，以使测试过程更加高效。
-- **[左移测试](/zh-cn/wiki/shift-left-testing/)**：在开发周期的早期集成测试，以更快地识别和解决问题，从而减少总体测试时间和成本。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：自动生成和管理[测试数据](/zh-cn/wiki/test-data/)，以确保测试拥有必要的数据而无需人工干预。
+- **人工智能和机器学习**：利用人工智能驱动的工具进行测试创建、维护和分析，以识别[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)并优化[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
+- **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**：根据风险和影响确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的优先级，首先关注关键功能，以使测试过程更加高效。
+- **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)**：在开发周期的早期集成测试，以更快地识别和解决问题，从而减少总体测试时间和成本。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：自动生成和管理[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，以确保测试拥有必要的数据而无需人工干预。
 - **性能分析**：使用分析工具在测试期间监控应用程序性能，有助于及早发现瓶颈。
 - **反馈循环**：与开发团队建立强大的反馈机制，以快速解决测试过程中发现的问题。
 
 #### 移动应用程序测试有哪些最佳实践？
 
-[移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中的最佳实践包括：
+[移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 中的最佳实践包括：
 
 - **优先考虑真实设备测试**捕捉真实的用户体验，考虑电池使用情况、中断和网络状况等因素。
 
@@ -338,21 +338,21 @@ pipeline:
 
 - **针对不同用户条件设计测试** ，例如电池电量低、来电或通知，以确保应用程序的稳健性。
 
-- **合并[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**确保该应用程序可供各种残障人士使用。
+- **合并[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)**确保该应用程序可供各种残障人士使用。
 
 - **利用分析和崩溃报告**确定需要更多测试重点的领域并确定优先级。
 
 - **应用测试分片**并行运行测试，减少总体执行时间。
 
-- **保持平衡[测试金字塔](/zh-cn/wiki/test-pyramid/)** ，有大量的单元测试、适量的集成测试和少量的 UI 测试。
+- **保持平衡[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)** ，有大量的单元测试、适量的集成测试和少量的 UI 测试。
 
 - **保持测试独立和幂等**确保它们可以按任何顺序运行，并且一项测试的结果不会影响其他测试。
 
 - **使用网络模拟和虚拟化**模拟不同的网络速度和条件。
 
-- **定期更新[测试用例](/zh-cn/wiki/test-case/)**以反映用户行为和应用程序功能的变化。
+- **定期更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**以反映用户行为和应用程序功能的变化。
 
-- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)**与自动化测试一起发现脚本测试可能遗漏的问题。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/)工程师可以确保全面的覆盖和高质量的移动应用。
+- **执行[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**与自动化测试一起发现脚本测试可能遗漏的问题。 通过遵循这些实践，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师可以确保全面的覆盖和高质量的移动应用。
 
 - **优先考虑真实设备测试**捕捉真实的用户体验，考虑电池使用情况、中断和网络状况等因素。
 
@@ -364,29 +364,29 @@ pipeline:
 
 - **针对不同用户条件设计测试** ，例如电池电量低、来电或通知，以确保应用程序的稳健性。
 
-- **合并[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**确保该应用程序可供各种残障人士使用。
+- **合并[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)**确保该应用程序可供各种残障人士使用。
 
 - **利用分析和崩溃报告**确定需要更多测试重点的领域并确定优先级。
 
 - **应用测试分片**并行运行测试，减少总体执行时间。
 
-- **保持平衡[测试金字塔](/zh-cn/wiki/test-pyramid/)** ，有大量的单元测试、适量的集成测试和少量的 UI 测试。
+- **保持平衡[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)** ，有大量的单元测试、适量的集成测试和少量的 UI 测试。
 
 - **保持测试独立和幂等**确保它们可以按任何顺序运行，并且一项测试的结果不会影响其他测试。
 
 - **使用网络模拟和虚拟化**模拟不同的网络速度和条件。
 
-- **定期更新[测试用例](/zh-cn/wiki/test-case/)**以反映用户行为和应用程序功能的变化。
+- **定期更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**以反映用户行为和应用程序功能的变化。
 
-- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)**与自动化测试一起发现脚本测试可能遗漏的问题。
+- **执行[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**与自动化测试一起发现脚本测试可能遗漏的问题。
 
 #### 如何优化移动应用测试中的性能？
 
-要优化 [移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 中的性能：
+要优化 [移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 中的性能：
 
-- **优先考虑关键[测试用例](/zh-cn/wiki/test-case/)**通过识别最常见的使用场景并关注它们。
+- **优先考虑关键[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**通过识别最常见的使用场景并关注它们。
 
-- 使用 **高效[测试自动化](/zh-cn/wiki/test-automation/)框架**例如针对移动环境进行优化的 Appium 或 Espresso。
+- 使用 **高效[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架**例如针对移动环境进行优化的 Appium 或 Espresso。
 
 - 实施 **并行测试**跨不同设备和平台同时运行多个测试。
 
@@ -398,7 +398,7 @@ pipeline:
 
 - **限制模拟器/模拟器的使用**用于性能测试；更喜欢真实设备以获得更准确的结果。
 
-- **清理[测试数据](/zh-cn/wiki/test-data/)**测试运行之前和之后，以防止性能随着时间的推移而下降。
+- **清理[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**测试运行之前和之后，以防止性能随着时间的推移而下降。
 
 - **监控系统资源**例如测试运行期间的 CPU、内存和网络使用情况，以确保它们不会影响性能。
 
@@ -406,11 +406,11 @@ pipeline:
 
 - 使用 **缓存机制**在适当的情况下加快测试设置和拆卸。
 
-- **定期更新您的测试工具**和框架从性能改进和错误修复中受益。 通过实施这些策略，您可以简化 [移动应用程序测试](/zh-cn/wiki/mobile-app-testing/) 流程、减少执行时间并提高测试结果的可靠性。
+- **定期更新您的测试工具**和框架从性能改进和错误修复中受益。 通过实施这些策略，您可以简化 [移动应用程序测试](https://inaodeng.com/zh-cn/wiki/mobile-app-testing/) 流程、减少执行时间并提高测试结果的可靠性。
 
-- **优先考虑关键[测试用例](/zh-cn/wiki/test-case/)**通过识别最常见的使用场景并关注它们。
+- **优先考虑关键[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**通过识别最常见的使用场景并关注它们。
 
-- 使用 **高效的[测试自动化](/zh-cn/wiki/test-automation/)框架**例如针对移动环境进行优化的 Appium 或 Espresso。
+- 使用 **高效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)框架**例如针对移动环境进行优化的 Appium 或 Espresso。
 
 - 实施 **并行测试**跨不同设备和平台同时运行多个测试。
 
@@ -422,7 +422,7 @@ pipeline:
 
 - **限制模拟器/模拟器的使用**用于性能测试；更喜欢真实设备以获得更准确的结果。
 
-- **清理[测试数据](/zh-cn/wiki/test-data/)**测试运行之前和之后，以防止性能随着时间的推移而下降。
+- **清理[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**测试运行之前和之后，以防止性能随着时间的推移而下降。
 
 - **监控系统资源**例如测试运行期间的 CPU、内存和网络使用情况，以确保它们不会影响性能。
 

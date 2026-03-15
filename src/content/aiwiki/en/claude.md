@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [claude-3-5-sonnet](/en/AIWiki/claude-3-5-sonnet/)
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [model-context-protocol-mcp](/en/AIWiki/model-context-protocol-mcp/)
+- [claude-3-5-sonnet](https://inaodeng.com/en/AIWiki/claude-3-5-sonnet/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [model-context-protocol-mcp](https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/)
 
 ### Term Metadata
 

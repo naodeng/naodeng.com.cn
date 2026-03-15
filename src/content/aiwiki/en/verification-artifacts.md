@@ -128,9 +128,9 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [artifact-feedback-loop](/en/AIWiki/artifact-feedback-loop/)
-- [trace-grading](/en/AIWiki/trace-grading/)
-- [agent-evals](/en/AIWiki/agent-evals/)
+- [artifact-feedback-loop](https://inaodeng.com/en/AIWiki/artifact-feedback-loop/)
+- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
 
 ### External References
 

@@ -45,8 +45,8 @@ order: 0
 
 #### 什么是测试存根？
 
-**[测试存根](/zh-cn/wiki/test-stub/)** 是测试期间使用的接口或类的最小实现，用于替换被测系统与之交互的真实组件。存根为测试期间进行的函数调用提供预定义的响应，而不执行它们所替换的组件的任何实际代码。
-  实现 [测试存根](/zh-cn/wiki/test-stub/) 通常涉及创建符合所需接口的新类或对象。该存根将包括预期由被测系统调用的方法，这些方法将返回与[测试用例](/zh-cn/wiki/test-case/)相关的固定值。
+**[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 是测试期间使用的接口或类的最小实现，用于替换被测系统与之交互的真实组件。存根为测试期间进行的函数调用提供预定义的响应，而不执行它们所替换的组件的任何实际代码。
+  实现 [测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 通常涉及创建符合所需接口的新类或对象。该存根将包括预期由被测系统调用的方法，这些方法将返回与[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)相关的固定值。
 
 ```
   public class PaymentServiceStub implements PaymentService {
@@ -56,23 +56,23 @@ order: 0
       }
   }
 ```
-存根对于模拟难以用真实组件生成的场景特别有用，例如网络故障或[数据库](/zh-cn/wiki/database/) 错误。通过返回特定值或引发异常，它们可以模仿这些条件。
-  创建[测试存根](/zh-cn/wiki/test-stub/) 时，必须确保它们简单并专注于测试的需求。它们不应包含复杂的逻辑，而应易于理解和维护。与测试框架的集成通常很简单，因为存根可以在 [测试用例](/zh-cn/wiki/test-case/) 中直接实例化和使用，或者使用框架的依赖注入机制进行设置。
+存根对于模拟难以用真实组件生成的场景特别有用，例如网络故障或[数据库](https://inaodeng.com/zh-cn/wiki/database/) 错误。通过返回特定值或引发异常，它们可以模仿这些条件。
+  创建[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 时，必须确保它们简单并专注于测试的需求。它们不应包含复杂的逻辑，而应易于理解和维护。与测试框架的集成通常很简单，因为存根可以在 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中直接实例化和使用，或者使用框架的依赖注入机制进行设置。
 
 #### 为什么测试存根在软件测试中很重要？
 
-[测试存根](/zh-cn/wiki/test-stub/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它们通过模拟与被测单元交互的软件模块的行为来促进组件的**隔离测试**。这种隔离有助于查明设备本身内部的缺陷，而不会受到可能与当前测试无关或尚未开发的系统其他部分的干扰。
-  通过使用存根，测试人员可以更有效地**控制[测试环境](/zh-cn/wiki/test-environment/)**，提供特定的输入并模拟各种场景，包括错误条件。这种控制对于确保单元测试**可靠**和**可重复**至关重要，这是可靠测试策略的关键方面。
+[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它们通过模拟与被测单元交互的软件模块的行为来促进组件的**隔离测试**。这种隔离有助于查明设备本身内部的缺陷，而不会受到可能与当前测试无关或尚未开发的系统其他部分的干扰。
+  通过使用存根，测试人员可以更有效地**控制[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**，提供特定的输入并模拟各种场景，包括错误条件。这种控制对于确保单元测试**可靠**和**可重复**至关重要，这是可靠测试策略的关键方面。
   存根还在**持续集成**环境中发挥着重要作用，其中自动化测试需要快速高效地运行。它们通过避免依赖于缓慢、不稳定或不可用的外部系统或组件来帮助降低测试的复杂性和执行时间。
   此外，存根可用于**模拟具有法律或道德限制的功能**，例如第三方服务或支付网关，从而允许在不违反协议或产生费用的情况下进行全面测试。
-  从本质上讲，[测试存根](/zh-cn/wiki/test-stub/) 是确保高质量、健壮和可维护代码不可或缺的工具，因为它们使开发人员能够以受控和可预测的方式验证代码的正确性。
+  从本质上讲，[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 是确保高质量、健壮和可维护代码不可或缺的工具，因为它们使开发人员能够以受控和可预测的方式验证代码的正确性。
 
 #### 测试存根与模拟对象有何不同？
 
-[测试存根](/zh-cn/wiki/test-stub/) 和模拟对象都在 [单元测试](/zh-cn/wiki/unit-testing/) 中用于模拟依赖关系，但它们有不同的目的并在不同的上下文中使用。
-  **[测试存根](/zh-cn/wiki/test-stub/)** 是返回硬编码数据的简单实现。它们主要用于通过用可预测和可控的替代品替换复杂、不可用或不确定的组件来隔离被测系统。存根通常没有任何断言；他们是被动的，只提供预设的回复。
+[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 和模拟对象都在 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 中用于模拟依赖关系，但它们有不同的目的并在不同的上下文中使用。
+  **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 是返回硬编码数据的简单实现。它们主要用于通过用可预测和可控的替代品替换复杂、不可用或不确定的组件来隔离被测系统。存根通常没有任何断言；他们是被动的，只提供预设的回复。
   另一方面，**模拟对象**更加复杂。它们用于验证被测系统与其依赖项之间的交互。模拟可以根据期望进行编程，这意味着它们可以断言是否使用正确的参数、正确的次数或以正确的顺序调用它们。它们是活跃的，因为如果预期的交互没有发生，它们可能会导致测试失败。
-  总之，虽然 [测试存根](/zh-cn/wiki/test-stub/) 可用于模拟返回一组固定数据的数据源，但模拟对象将用于确保一个方法调用具有特定参数的另一个方法。模拟是关于行为[验证 ](/zh-cn/wiki/verification/)，而存根是关于状态[验证 ](/zh-cn/wiki/verification/)。
+  总之，虽然 [测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 可用于模拟返回一组固定数据的数据源，但模拟对象将用于确保一个方法调用具有特定参数的另一个方法。模拟是关于行为[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)，而存根是关于状态[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)。
   这是一个简单的例子来说明差异：
 
 ```
@@ -90,9 +90,9 @@ order: 0
 
 #### 单元测试中测试存根的作用是什么？
 
-在[单元测试](/zh-cn/wiki/unit-testing/) 中，**[测试存根](/zh-cn/wiki/test-stub/)** 充当与被测单元交互的缺失组件或模块的**占位符**。它们为测试期间进行的方法调用提供**预定义的响应**，确保单元测试可以独立于外部系统或服务运行。
-  通过使用[测试存根](/zh-cn/wiki/test-stub/)，您可以隔离被测单元，这使您可以在受控环境中验证单元行为的正确性。存根对于模拟在测试期间交互**不可用**或**昂贵**的组件的行为特别有用，例如[数据库](/zh-cn/wiki/database/)、Web 服务或第三方库。
-  实现[测试存根](/zh-cn/wiki/test-stub/) 时，您通常会硬编码与[测试用例](/zh-cn/wiki/test-case/) 相关的响应。例如，如果被测单元需要来自 [数据库](/zh-cn/wiki/database/) 的数据，则存根可能会返回一组固定的记录，而无需实际查询真正的 [数据库](/zh-cn/wiki/database/)。
+在[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 中，**[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 充当与被测单元交互的缺失组件或模块的**占位符**。它们为测试期间进行的方法调用提供**预定义的响应**，确保单元测试可以独立于外部系统或服务运行。
+  通过使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)，您可以隔离被测单元，这使您可以在受控环境中验证单元行为的正确性。存根对于模拟在测试期间交互**不可用**或**昂贵**的组件的行为特别有用，例如[数据库](https://inaodeng.com/zh-cn/wiki/database/)、Web 服务或第三方库。
+  实现[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 时，您通常会硬编码与[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 相关的响应。例如，如果被测单元需要来自 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 的数据，则存根可能会返回一组固定的记录，而无需实际查询真正的 [数据库](https://inaodeng.com/zh-cn/wiki/database/)。
 
 ```
   function fetchDataStub() {
@@ -103,11 +103,11 @@ order: 0
   }
 ```
 存根还可以配置为通过引发异常或返回错误代码来模拟**错误条件**，从而允许您测试被测单元如何处理故障。
-  将[测试存根](/zh-cn/wiki/test-stub/) 纳入您的测试策略可增强[测试套件](/zh-cn/wiki/test-suite/) 的**可靠性**和**速度**，因为它们消除了对外部因素的依赖。当使用 JUnit 或 Mockito 等测试框架时，可以使用内置机制或注释轻松集成存根，从而简化测试过程并保持不同 [测试用例](/zh-cn/wiki/test-case/) 之间的一致性。
+  将[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 纳入您的测试策略可增强[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的**可靠性**和**速度**，因为它们消除了对外部因素的依赖。当使用 JUnit 或 Mockito 等测试框架时，可以使用内置机制或注释轻松集成存根，从而简化测试过程并保持不同 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 之间的一致性。
 
 #### 使用测试存根有哪些优点和缺点？
 
-**使用[测试存根](/zh-cn/wiki/test-stub/)的优点：**
+**使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)的优点：**
 
 - **隔离：**存根允许通过模拟相关组件的行为来隔离测试单个代码单元。
 
@@ -117,7 +117,7 @@ order: 0
 
 - **速度：**存根比与真实依赖项或复杂模拟集成更快，从而加快测试执行速度。
 
-- **决定论：**它们提供一致的结果，确保测试不受外部因素或依赖项状态变化的影响。 **使用[测试存根](/zh-cn/wiki/test-stub/)的缺点：**
+- **决定论：**它们提供一致的结果，确保测试不受外部因素或依赖项状态变化的影响。 **使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)的缺点：**
 
 - **有限反馈：**存根可能会过度简化依赖项的行为，这可能无法揭示集成或交互问题。
 
@@ -127,7 +127,7 @@ order: 0
 
 - **整合缺陷：**它们无助于发现集成缺陷，因为它们没有模仿真实组件的确切行为。
 
-- **状态管理：**存根可以是无状态的，并且可能不适合依赖项状态很重要的测试场景。 有效使用[测试存根](/zh-cn/wiki/test-stub/)需要平衡其优点与潜在缺点，确保它们补充其他测试策略以提供全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
+- **状态管理：**存根可以是无状态的，并且可能不适合依赖项状态很重要的测试场景。 有效使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)需要平衡其优点与潜在缺点，确保它们补充其他测试策略以提供全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
 
 - **隔离：**存根允许通过模拟相关组件的行为来隔离测试单个代码单元。
 
@@ -153,7 +153,7 @@ order: 0
 
 #### 测试存根是如何实现的？
 
-实施 **[测试存根](/zh-cn/wiki/test-stub/)** 通常涉及以下步骤：
+实施 **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 通常涉及以下步骤：
 
 1. **确定依赖关系**需要用存根替换的被测单元。
 
@@ -180,7 +180,7 @@ order: 0
   const componentUnderTest = new ComponentThatUsesEmailService(testEmailService);
   // Assert that the component behaves correctly when email sending is successful
 ```
-请记住**保持存根简单**并仅关注测试所需的行为。避免存根中的逻辑与[测试场景](/zh-cn/wiki/test-scenario/) 不直接相关。这确保了测试保持可维护性，并且存根不会成为测试套件中复杂性或潜在[bugs](/zh-cn/wiki/bug/) 的来源。
+请记住**保持存根简单**并仅关注测试所需的行为。避免存根中的逻辑与[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 不直接相关。这确保了测试保持可维护性，并且存根不会成为测试套件中复杂性或潜在[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的来源。
 
 1. **确定依赖关系**需要用存根替换的被测单元。
 
@@ -194,13 +194,13 @@ order: 0
 
 #### 测试存根的关键要素是什么？
 
-**[测试存根](/zh-cn/wiki/test-stub/)** 的关键要素包括：
+**[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 的关键要素包括：
 
 - **预定义响应**：存根为测试期间进行的函数调用提供硬编码响应。
 - **简化逻辑**：它们包含最少的逻辑，仅足以使测试通过。
 - **接口实现**：存根必须遵守它们所替换的组件的接口。
 - **配置**：可以将它们配置为针对不同的输入返回不同的输出，以模拟各种场景。
-- **状态[验证 ](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
+- **状态[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
 - **错误模拟**：它们可以设计为通过返回错误代码或引发异常来模拟错误条件。
 - **性能**：存根可以是轻量级的，以减少测试中的性能开销。
 
@@ -215,23 +215,23 @@ order: 0
 ```
 
 - **集成**：存根应轻松与测试套件集成，不需要大量设置。
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：随着接口或需求的变化，它们应该易于维护和更新。
+- **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** ：随着接口或需求的变化，它们应该易于维护和更新。
 - **隔离**：存根通过消除对外部系统或组件的依赖来帮助隔离被测系统。 请记住使存根尽可能**简单**，并且仅在必要时使用它们以避免测试过于复杂。它们应该是实现隔离的工具，而不是复制复杂逻辑的手段。
 
 - **预定义响应**：存根为测试期间进行的函数调用提供硬编码响应。
 - **简化逻辑**：它们包含最少的逻辑，仅足以使测试通过。
 - **接口实现**：存根必须遵守它们所替换的组件的接口。
 - **配置**：可以将它们配置为针对不同的输入返回不同的输出，以模拟各种场景。
-- **状态[验证 ](/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
+- **状态[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：某些存根可能允许在测试执行后进行状态验证。
 - **错误模拟**：它们可以设计为通过返回错误代码或引发异常来模拟错误条件。
 - **性能**：存根可以是轻量级的，以减少测试中的性能开销。
 - **集成**：存根应轻松与测试套件集成，不需要大量设置。
-- **[可维护性](/zh-cn/wiki/maintainability/)** ：随着接口或需求的变化，它们应该易于维护和更新。
+- **[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)** ：随着接口或需求的变化，它们应该易于维护和更新。
 - **隔离**：存根通过消除对外部系统或组件的依赖来帮助隔离被测系统。
 
 #### 您能提供一个测试存根的示例吗？
 
-当然！下面是一个假设场景中的 [测试存根](/zh-cn/wiki/test-stub/) 示例，您正在测试依赖于数据存储库的服务。存根将模拟数据存储库的行为。
+当然！下面是一个假设场景中的 [测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 示例，您正在测试依赖于数据存储库的服务。存根将模拟数据存储库的行为。
 
 ```
   public class DataRepositoryStub extends DataRepository {
@@ -265,7 +265,7 @@ order: 0
 
 #### 测试存根如何用于模拟异常或错误情况？
 
-[测试存根](/zh-cn/wiki/test-stub/) 可用于模拟异常或错误条件，方法是显式编码它们以在调用时返回错误响应或引发异常。这使得测试人员能够验证被测系统 (SUT) 如何处理这些场景，而不必依赖实际的依赖项来失败。
+[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 可用于模拟异常或错误条件，方法是显式编码它们以在调用时返回错误响应或引发异常。这使得测试人员能够验证被测系统 (SUT) 如何处理这些场景，而不必依赖实际的依赖项来失败。
   要模拟异常，您可以将存根配置为在调用某个方法时抛出特定的异常类型。当您想要测试 SUT 的错误处理或对外部服务故障的恢复能力时，这特别有用。
   例如，在使用 JUnit 的 Java 中，您可以创建一个抛出 `IOException` 的存根：
 
@@ -293,16 +293,16 @@ order: 0
 
 #### 创建测试存根时有哪些最佳实践？
 
-创建[测试存根](/zh-cn/wiki/test-stub/)时，请遵循以下最佳实践，以确保它们有效且可维护：
+创建[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)时，请遵循以下最佳实践，以确保它们有效且可维护：
 
 - **保持存根简单**：存根应该简单，仅模拟测试所需的行为。避免添加不直接有助于测试目的的逻辑。
 - **使用描述性名称**：选择能够清楚表明存根角色及其模拟条件的名称，有助于可读性和维护。
 - **隔离测试**：确保每个存根的使用方式不会影响其他测试。存根不应在测试之间引入共享状态。
-- **参数化存根**：如果可能，使存根可配置，以便它们可以在不同的 [测试场景](/zh-cn/wiki/test-scenario/) 之间重复使用。
+- **参数化存根**：如果可能，使存根可配置，以便它们可以在不同的 [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 之间重复使用。
 - **验证交互**：如果与存根的交互很重要，请验证被测系统是否按预期与存根交互。
 - **清理**：每次测试后，清理所有资源或状态，以防止对后续测试产生副作用。
 - **文档存根**：评论为什么需要存根以及应该如何使用它，特别是如果它的行为从其实现中不是立即显而易见的。
-- **匹配真实行为**：确保存根的行为与其所代表的真实组件的行为紧密匹配，以避免 [误报](/zh-cn/wiki/false-positive/) 或负面结果。
+- **匹配真实行为**：确保存根的行为与其所代表的真实组件的行为紧密匹配，以避免 [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 或负面结果。
 - **版本控制**：将存根视为代码库的一部分，通过适当的更改跟踪在版本控制下维护它们。
 - **审查和重构**：定期审查和重构存根，以保持它们的相关性并与不断发展的代码库保持一致。
 
@@ -312,13 +312,13 @@ order: 0
     return true;
   }
 ```
-通过遵循这些实践，您将创建健壮且可靠的[测试存根](/zh-cn/wiki/test-stub/)，从而有助于更有效和高效的测试过程。
+通过遵循这些实践，您将创建健壮且可靠的[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)，从而有助于更有效和高效的测试过程。
 
 ### 与测试框架集成
 
 #### 测试存根如何与流行的测试框架集成？
 
-将[测试存根](/zh-cn/wiki/test-stub/) 与流行的测试框架集成通常涉及利用框架的功能在[测试执行](/zh-cn/wiki/test-execution/) 期间用存根替换真正的依赖项。这是一个简洁的指南：
+将[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 与流行的测试框架集成通常涉及利用框架的功能在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间用存根替换真正的依赖项。这是一个简洁的指南：
   **JUnit**：
   JUnit 没有内置的存根机制，但它允许与存根库轻松集成。使用 `@BeforeEach` 或 `@Before` 注释在每次测试之前设置存根。
 
@@ -372,7 +372,7 @@ order: 0
 
 #### 如何在 JUnit 中创建测试存根？
 
-在 JUnit 中创建 [测试存根](/zh-cn/wiki/test-stub/) 涉及编写具有预定义行为的接口或类的简单实现。此行为被硬编码以返回特定值或执行模拟真实场景的某些操作。这是分步指南：
+在 JUnit 中创建 [测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 涉及编写具有预定义行为的接口或类的简单实现。此行为被硬编码以返回特定值或执行模拟真实场景的某些操作。这是分步指南：
 
 1. **识别您想要存根的依赖项**。这可以是被测单元与之交互的接口或具体类。
 2. **创建一个存根类**来实现接口或扩展您要存根的类。
@@ -400,11 +400,11 @@ order: 0
       }
   }
 ```
-在此示例中，`ExternalServiceStub` 是通过返回固定值来模拟外部服务行为的存根。 `MyClass` 实例在测试中使用此存根，允许您在与外部服务交互时控制[测试环境](/zh-cn/wiki/test-environment/) 并验证`MyClass` 的行为。
+在此示例中，`ExternalServiceStub` 是通过返回固定值来模拟外部服务行为的存根。 `MyClass` 实例在测试中使用此存根，允许您在与外部服务交互时控制[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 并验证`MyClass` 的行为。
 
 #### 如何在 Mockito 中创建测试存根？
 
-在 Mockito 中创建 [测试存根](/zh-cn/wiki/test-stub/) 非常简单。使用`mock` 方法创建所需类或接口的存根。然后，使用 `when` 和 `thenReturn` 方法为要存根的特定调用定义存根的行为。这是一个简洁的例子：
+在 Mockito 中创建 [测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 非常简单。使用`mock` 方法创建所需类或接口的存根。然后，使用 `when` 和 `thenReturn` 方法为要存根的特定调用定义存根的行为。这是一个简洁的例子：
 
 ```
   import static org.mockito.Mockito.*;
@@ -435,7 +435,7 @@ order: 0
 
 #### 在不同的测试框架中使用测试存根有什么区别？
 
-在各种测试框架中使用[测试存根](/zh-cn/wiki/test-stub/) 的差异源于每个框架提供的**语法**、**功能**和**集成功能**：
+在各种测试框架中使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 的差异源于每个框架提供的**语法**、**功能**和**集成功能**：
 
 - **JUnit**：存根手动创建为简单类，或使用带有 Mockito 扩展的 `@Mock` 注释。 JUnit 5 的扩展模型允许与模拟库无缝集成。
 
@@ -463,7 +463,7 @@ order: 0
     allow(service).to receive(:operation).and_return("stubbed response")
 ```
 
-- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸功能。
+- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸功能。
 
 ```
     def test_operation(monkeypatch):
@@ -472,13 +472,13 @@ order: 0
         monkeypatch.setattr('module.Service.operation', mock_operation)
 ```
 
-- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
+- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和存根提供丰富的[API](https://inaodeng.com/zh-cn/wiki/api/) 行为。
 
 ```
     const sinon = require('sinon');
     let stub = sinon.stub(service, 'operation').returns("stubbed response");
 ```
-每个框架的存根方法都会影响 [测试自动化](/zh-cn/wiki/test-automation/) 工程师如何**快速**和**轻松**地编写和维护测试。框架的选择通常取决于语言生态系统和项目的具体需求，例如测试的复杂性或对某些功能（如异步测试或与其他工具的集成）的需求。
+每个框架的存根方法都会影响 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师如何**快速**和**轻松**地编写和维护测试。框架的选择通常取决于语言生态系统和项目的具体需求，例如测试的复杂性或对某些功能（如异步测试或与其他工具的集成）的需求。
 
 - **JUnit**：存根手动创建为简单类，或使用带有 Mockito 扩展的 `@Mock` 注释。 JUnit 5 的扩展模型允许与模拟库无缝集成。
 
@@ -506,7 +506,7 @@ order: 0
     allow(service).to receive(:operation).and_return("stubbed response")
 ```
 
-- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸功能。
+- **Pytest (Python)**：利用固定装置和猴子补丁来存根方法或函数。 Pytest 的装置提供强大的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸功能。
 
 ```
     def test_operation(monkeypatch):
@@ -515,7 +515,7 @@ order: 0
         monkeypatch.setattr('module.Service.operation', mock_operation)
 ```
 
-- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](/zh-cn/wiki/verification/) 和存根提供丰富的[API](/zh-cn/wiki/api/) 行为。
+- **Mocha (JavaScript)**：存根是使用Sinon.js 或其他库创建的，为[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和存根提供丰富的[API](https://inaodeng.com/zh-cn/wiki/api/) 行为。
 
 ```
     const sinon = require('sinon');
@@ -524,14 +524,14 @@ order: 0
 
 #### 测试存根如何与其他测试工具和技术结合使用？
 
-[测试存根](/zh-cn/wiki/test-stub/) 可以与各种测试工具和技术集成以增强测试过程：
+[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/) 可以与各种测试工具和技术集成以增强测试过程：
 
-- **[集成测试](/zh-cn/wiki/integration-testing/)**：存根可以模拟尚未开发或不可用的组件，从而允许早期[集成测试](/zh-cn/wiki/integration-testing/)。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：存根可以模拟尚未开发或不可用的组件，从而允许早期[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
 - **持续集成 (CI)**：在 CI 管道中，存根确保测试可以自主运行，而不依赖于外部系统，从而实现更可靠的构建。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：存根可用于模拟系统的预期行为，即使某些组件未完全实现，也允许测试 [BDD](/zh-cn/wiki/bdd/) 场景。
-- **服务虚拟化**：存根可以充当虚拟服务，模仿第三方[API](/zh-cn/wiki/api/)或在测试期间成本高昂或难以访问的服务。
-- **[性能测试](/zh-cn/wiki/performance-testing/)**：通过删除系统的某些部分，您可以隔离特定组件并对其进行压力测试，以识别性能瓶颈。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[数据库](/zh-cn/wiki/database/)。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**：虽然不能替代实际集成的测试，但可以在早期[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中使用存根来模拟外部系统的行为。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：存根可用于模拟系统的预期行为，即使某些组件未完全实现，也允许测试 [BDD](https://inaodeng.com/zh-cn/wiki/bdd/) 场景。
+- **服务虚拟化**：存根可以充当虚拟服务，模仿第三方[API](https://inaodeng.com/zh-cn/wiki/api/)或在测试期间成本高昂或难以访问的服务。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：通过删除系统的某些部分，您可以隔离特定组件并对其进行压力测试，以识别性能瓶颈。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：存根可以配置为返回不同的数据集，方便使用各种数据场景进行测试，而无需操作真实的[数据库](https://inaodeng.com/zh-cn/wiki/database/)。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**：虽然不能替代实际集成的测试，但可以在早期[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 中使用存根来模拟外部系统的行为。
 - **测试隔离**：存根有助于隔离被测系统，从而更容易查明故障。
-- **[回归测试](/zh-cn/wiki/regression-testing/)**：它们使回归测试能够独立于外部系统运行，外部系统可能会随着时间的推移而变化并影响测试结果。 通过将[测试存根](/zh-cn/wiki/test-stub/)与这些工具和技术相结合，[测试自动化](/zh-cn/wiki/test-automation/)工程师可以创建一个强大而灵活的测试环境，满足各种测试需求，同时最大限度地减少对外部系统的依赖。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：它们使回归测试能够独立于外部系统运行，外部系统可能会随着时间的推移而变化并影响测试结果。 通过将[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)与这些工具和技术相结合，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师可以创建一个强大而灵活的测试环境，满足各种测试需求，同时最大限度地减少对外部系统的依赖。

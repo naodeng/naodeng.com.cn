@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [verification-artifacts](/en/AIWiki/verification-artifacts/)
-- [artifact-feedback-loop](/en/AIWiki/artifact-feedback-loop/)
-- [multi-agent-orchestration](/en/AIWiki/multi-agent-orchestration/)
-- [task-level-abstraction](/en/AIWiki/task-level-abstraction/)
+- [verification-artifacts](https://inaodeng.com/en/AIWiki/verification-artifacts/)
+- [artifact-feedback-loop](https://inaodeng.com/en/AIWiki/artifact-feedback-loop/)
+- [multi-agent-orchestration](https://inaodeng.com/en/AIWiki/multi-agent-orchestration/)
+- [task-level-abstraction](https://inaodeng.com/en/AIWiki/task-level-abstraction/)
 
 ### External References
 

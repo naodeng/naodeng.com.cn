@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [custom-commands](/en/AIWiki/custom-commands/)
-- [hooks](/en/AIWiki/hooks/)
-- [function-calling](/en/AIWiki/function-calling/)
-- [conversation-state](/en/AIWiki/conversation-state/)
+- [custom-commands](https://inaodeng.com/en/AIWiki/custom-commands/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [conversation-state](https://inaodeng.com/en/AIWiki/conversation-state/)
 
 ### External References
 

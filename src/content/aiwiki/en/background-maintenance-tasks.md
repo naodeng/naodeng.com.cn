@@ -112,10 +112,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [background-agents](/en/AIWiki/background-agents/)
-- [asynchronous-agent-execution](/en/AIWiki/asynchronous-agent-execution/)
-- [codebase-indexing-rag](/en/AIWiki/codebase-indexing-rag/)
-- [prompt-caching](/en/AIWiki/prompt-caching/)
+- [background-agents](https://inaodeng.com/en/AIWiki/background-agents/)
+- [asynchronous-agent-execution](https://inaodeng.com/en/AIWiki/asynchronous-agent-execution/)
+- [codebase-indexing-rag](https://inaodeng.com/en/AIWiki/codebase-indexing-rag/)
+- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
 
 ### External References
 

@@ -27,8 +27,8 @@ order: 0
 
 ## 相关术语：
 
-- [API 测试](/zh-cn/wiki/api-testing/)
-- [Swagger](/zh-cn/wiki/swagger/)
+- [API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)
+- [Swagger](https://inaodeng.com/zh-cn/wiki/swagger/)
 
 ## 了解更多：
 

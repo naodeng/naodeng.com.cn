@@ -31,10 +31,10 @@ order: 0
 
 ## 相关术语
 
-- [逆向测试/负面测试](/zh-cn/wiki/negative-testing/)
-- [测试用例](/zh-cn/wiki/test-case/)
-- [输入验证测试](/zh-cn/wiki/input-validation-testing/)
-- [回归测试](/zh-cn/wiki/regression-testing/)
+- [逆向测试/负面测试](https://inaodeng.com/zh-cn/wiki/negative-testing/)
+- [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)
+- [输入验证测试](https://inaodeng.com/zh-cn/wiki/input-validation-testing/)
+- [回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)
 
 ## 什么是正向测试？
 

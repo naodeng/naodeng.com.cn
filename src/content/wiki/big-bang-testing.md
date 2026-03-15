@@ -41,11 +41,12 @@ order: 0
       - [您什么时候会选择大爆炸测试而不是系统测试或集成测试？](#您什么时候会选择大爆炸测试而不是系统测试或集成测试)
       - [Big Bang 测试的复杂性与其他测试方法相比如何？](#big-bang-测试的复杂性与其他测试方法相比如何)
 <!-- TOC END -->
+
 大爆炸测试是一种所有系统单元同时链接的方法，而不考虑它们之间的相互作用。这种方法可能会给错误隔离带来挑战，因为它需要关注各个单元的接口。
 
 ## 相关术语
 
-- [增量测试](/zh-cn/wiki/incremental-testing/)
+- [增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)
 
 ## 有关 Big Bang 测试的问题吗？
 
@@ -53,62 +54,60 @@ order: 0
 
 #### 软件测试中的大爆炸测试是什么？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 是一种**软件[集成测试](/zh-cn/wiki/integration-testing/)** 方法，其中所有组件或模块同时集成，然后将所有内容作为一个整体进行测试。当需要一次性验证整个系统时（通常是由于项目的限制或特定要求），通常会使用此方法。
-  要执行[大爆炸测试](/zh-cn/wiki/big-bang-testing/)，**[测试环境](/zh-cn/wiki/test-environment/)** 镜像生产[环境搭建](/zh-cn/wiki/setup/) 是必不可少的。所有组件都必须完全开发并准备好进行测试。然后，测试团队将执行一系列**[测试用例](/zh-cn/wiki/test-case/)**，旨在评估模块之间的交互和系统的整体功能。
-  鉴于其性质，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 最适合**小型系统**或当对各个模块的稳定性有很高的信心时。它与测试的粒度无关，而更多地与查看系统的整体行为有关。
-  [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的有效性是通过系统在类似生产场景中是否按预期执行来衡量的。通常根据系统的 **[功能需求](/zh-cn/wiki/functional-requirements/)** 和 **性能标准** 评估结果。
-  虽然 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可以成为更大的 [测试策略](/zh-cn/wiki/test-strategy/) 的一部分，但它并不总是首选，因为它可能会占用大量资源，并且对于缺陷识别来说隔离性较差。它通常与**增量**和**[单元测试](/zh-cn/wiki/unit-testing/)**形成对比，前者将模块一一集成和测试，而后者则专注于应用程序的最小可测试部分。
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 是一种**软件[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 方法，其中所有组件或模块同时集成，然后将所有内容作为一个整体进行测试。当需要一次性验证整个系统时（通常是由于项目的限制或特定要求），通常会使用此方法。
+
+要执行[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)，**[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** 镜像生产[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 是必不可少的。所有组件都必须完全开发并准备好进行测试。然后，测试团队将执行一系列**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**，旨在评估模块之间的交互和系统的整体功能。
+
+鉴于其性质，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 最适合**小型系统**或当对各个模块的稳定性有很高的信心时。它与测试的粒度无关，而更多地与查看系统的整体行为有关。
+
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 的有效性是通过系统在类似生产场景中是否按预期执行来衡量的。通常根据系统的 **[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)** 和 **性能标准** 评估结果。
+
+虽然 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 可以成为更大的 [测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 的一部分，但它并不总是首选，因为它可能会占用大量资源，并且对于缺陷识别来说隔离性较差。它通常与**增量**和**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**形成对比，前者将模块一一集成和测试，而后者则专注于应用程序的最小可测试部分。
 
 #### Big Bang 测试与其他类型的测试有何不同？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 与其他测试策略的不同之处主要在于其**一次性方法**。与增量、单元或 [集成测试](/zh-cn/wiki/integration-testing/) 不同，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 涉及将所有组件集成在一起并将它们作为一个 **整体** 进行测试。这意味着没有单独的组件经过自身测试；相反，重点是系统所有部分之间的交互。
-  这种方法与 **[增量测试](/zh-cn/wiki/incremental-testing/)** 形成鲜明对比，**[增量测试](/zh-cn/wiki/incremental-testing/)** 中的组件是一一集成和测试的，而 **[单元测试](/zh-cn/wiki/unit-testing/)** 则隔离并验证各个代码单元。 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 粒度较小，不允许隔离特定单元或集成点内的缺陷，从而更难查明问题的确切根源。
-  与**[系统测试](/zh-cn/wiki/system-testing/)**（也评估整个系统）相比，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 不一定遵循具有特定要求的结构化测试流程。它通常在没有详细[测试用例](/zh-cn/wiki/test-case/) 和[系统测试](/zh-cn/wiki/system-testing/) 中典型场景的情况下执行。
-  当系统相对较小或测试时间有限时，通常会选择 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 而不是其他方法。然而，由于其潜在的复杂性和隔离问题的难度，它不太适合更大、更复杂的系统，在这些系统中，更**增量**或**模块化**方法更有利。
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 与其他测试策略的不同之处主要在于其**一次性方法**。与增量、单元或 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 不同，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 涉及将所有组件集成在一起并将它们作为一个 **整体** 进行测试。这意味着没有单独的组件经过自身测试；相反，重点是系统所有部分之间的交互。
+
+这种方法与 **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** 形成鲜明对比，**[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** 中的组件是一一集成和测试的，而 **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 则隔离并验证各个代码单元。 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 粒度较小，不允许隔离特定单元或集成点内的缺陷，从而更难查明问题的确切根源。
+
+与**[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)**（也评估整个系统）相比，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 不一定遵循具有特定要求的结构化测试流程。它通常在没有详细[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 中典型场景的情况下执行。
+
+当系统相对较小或测试时间有限时，通常会选择 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 而不是其他方法。然而，由于其潜在的复杂性和隔离问题的难度，它不太适合更大、更复杂的系统，在这些系统中，更**增量**或**模块化**方法更有利。
 
 #### Big Bang 测试的主要组成部分是什么？
 
-**[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的主要组件通常包括：
+**[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 的主要组件通常包括：
 
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：将软件的所有组件组合在一起并准备好进行测试的设置。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：将软件的所有组件组合在一起并准备好进行测试的设置。
 - **完整系统配置**：所有模块和组件的完整集成，无需增量测试。
-- **[测试用例](/zh-cn/wiki/test-case/)** ：涵盖整个系统功能的一组全面的场景。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：模拟用户输入和与系统交互的真实数据。
-- **[测试执行](/zh-cn/wiki/test-execution/) 计划**：概述针对集成系统执行测试用例的方法的策略。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：涵盖整个系统功能的一组全面的场景。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：模拟用户输入和与系统交互的真实数据。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 计划**：概述针对集成系统执行测试用例的方法的策略。
 - **缺陷跟踪系统**：用于报告、跟踪和管理测试期间发现的错误的工具。
 - **测试结果文档**：测试结果的记录，包括通过、失败和阻止的测试用例。
-- **退出标准**：确定测试何时完成且系统准备好投入生产的定义条件。 在实践中，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 涉及**单点测试方法**，其中整个系统在所有开发完成后作为一个整体进行测试，而不是增量测试。它需要**准备充分的[测试环境](/zh-cn/wiki/test-environment/)**和**强大的[测试用例](/zh-cn/wiki/test-case/)**来确保全面覆盖。有效的缺陷跟踪和清晰的文档对于管理同时测试所有组件所产生的复杂性至关重要。必须建立退出标准来评估系统发布的准备情况。
-
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：软件的所有组件组合在一起并准备好进行测试的设置。
-- **完整系统配置**：所有模块和组件的完整集成，无需增量测试。
-- **[测试用例](/zh-cn/wiki/test-case/)** ：涵盖整个系统功能的一组全面的场景。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：模拟用户输入和与系统交互的真实数据。
-- **[测试执行](/zh-cn/wiki/test-execution/) 计划**：概述针对集成系统执行测试用例的方法的策略。
-- **缺陷跟踪系统**：用于报告、跟踪和管理测试期间发现的错误的工具。
-- **测试结果文档**：测试结果的记录，包括通过、失败和阻止的测试用例。
-- **退出标准**：确定测试何时完成且系统准备好投入生产的定义条件。
+- **退出标准**：确定测试何时完成且系统准备好投入生产的定义条件。在实践中，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 涉及**单点测试方法**，其中整个系统在所有开发完成后作为一个整体进行测试，而不是增量测试。它需要**准备充分的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**和**强大的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**来确保全面覆盖。有效的缺陷跟踪和清晰的文档对于管理同时测试所有组件所产生的复杂性至关重要。必须建立退出标准来评估系统发布的准备情况。
 
 #### Big Bang 测试涉及哪些过程？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 涉及同时集成软件系统的所有组件或模块，然后将整个集合作为一个整体进行测试。该过程通常遵循以下步骤：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 涉及同时集成软件系统的所有组件或模块，然后将整个集合作为一个整体进行测试。该过程通常遵循以下步骤：
 
-1. **准备[测试环境](/zh-cn/wiki/test-environment/)** ：确保测试环境尽可能地反映生产环境。
-2. **开发[测试用例](/zh-cn/wiki/test-case/)** ：创建涵盖系统所有功能的综合测试用例。
+1. **准备[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：确保测试环境尽可能地反映生产环境。
+2. **开发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：创建涵盖系统所有功能的综合测试用例。
 3. **集成所有组件**：组合所有模块，无需事先进行单独测试。
-4. **执行[测试用例](/zh-cn/wiki/test-case/)** ：针对集成系统运行准备好的测试用例。
+4. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：针对集成系统运行准备好的测试用例。
 5. **记录缺陷**：记录测试过程中发现的任何问题或错误。
 6. **分析结果**：评估测试结果以识别缺陷高度集中的模式或区域。
 7. **报告结果**：记录结果并将其传达给开发团队。
-8. **返工和回归**：解决缺陷并执行回归测试，以确保修复不会引入新问题。 这种方法通常在时间有限或系统相对较小且简单的情况下使用。它需要一组强大的[测试用例](/zh-cn/wiki/test-case/) 和一个准备充分的环境才能有效。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师应该准备好在没有早期单元或集成测试提供的见解的情况下处理调试的复杂性。根据按预期工作的功能和满足其要求的系统来评估结果。
+8. **返工和回归**：解决缺陷并执行回归测试，以确保修复不会引入新问题。这种方法通常在时间有限或系统相对较小且简单的情况下使用。它需要一组强大的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和一个准备充分的环境才能有效。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师应该准备好在没有早期单元或集成测试提供的见解的情况下处理调试的复杂性。根据按预期工作的功能和满足其要求的系统来评估结果。
 
 #### Big Bang 测试的先决条件是什么？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的先决条件包括：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 的先决条件包括：
 
 - **完整的软件系统**：所有组件和模块必须完全开发并可供测试。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：镜像生产设置以确保准确结果的稳定环境。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：充足且多样化的数据集来模拟真实场景和边缘情况。
-- **[测试用例](/zh-cn/wiki/test-case/)** ：涵盖所有功能的综合测试用例，具有明确的预期结果。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：镜像生产设置以确保准确结果的稳定环境。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：充足且多样化的数据集来模拟真实场景和边缘情况。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：涵盖所有功能的综合测试用例，具有明确的预期结果。
 - **资源可用性**：有足够的硬件、软件和人力资源来进行测试。
 - **文档**：详细的系统设计和架构文档，以了解集成点和依赖关系。
 - **备份计划**：在测试期间发生严重故障时恢复更改或恢复数据的策略。
@@ -131,101 +130,99 @@ order: 0
     // Additional test cases...
   ];
 ```
-在启动 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 之前，请确保满足所有先决条件，以最大限度地减少干扰并最大限度地提高测试过程的效率。
+在启动 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 之前，请确保满足所有先决条件，以最大限度地减少干扰并最大限度地提高测试过程的效率。
 
 ### 优点和缺点
 
 #### Big Bang 测试有哪些优势？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的优点包括：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 的优点包括：
 
 - **简单**：该方法很简单，所有组件同时测试，减少了对复杂集成测试策略的需求。
 - **小型系统的理想选择**：对于组件较少的小型系统，大爆炸测试可以是一次验证整个系统的有效方法。
 - **全面的环境测试**：它允许在非常模拟生产的环境中测试系统，这可以揭示在更孤立的测试方法中可能不会出现的问题。
 - **对验证有用**：它可以有效地进行最终验证，以确保系统的所有部分在发布前按预期协同工作。
-- **检测高级问题**：帮助识别与各个组件之间的交互相关的问题，这些问题在单元或集成测试期间可能并不明显。 请记住，虽然 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 在某些情况下可能具有优势，但重要的是要权衡这些好处与潜在的缺点，并考虑项目的具体环境，以确定这种方法是否最合适。
+- **检测高级问题**：帮助识别与各个组件之间的交互相关的问题，这些问题在单元或集成测试期间可能并不明显。请记住，虽然 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 在某些情况下可能具有优势，但重要的是要权衡这些好处与潜在的缺点，并考虑项目的具体环境，以确定这种方法是否最合适。
 
 #### 大爆炸测试有哪些潜在缺点？
 
-**[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的潜在缺点包括：
+**[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 的潜在缺点包括：
 
 - **难以隔离缺陷**：由于所有组件都是同时测试的，因此查明故障的确切原因可能具有挑战性。
 - **资源密集型**：需要大量资源来设置和执行，因为整个系统必须在测试开始之前正常运行。
 - **高风险**：如果在流程后期发现关键问题，可能会导致严重延误并增加成本。
 - **有限的早期反馈**：开发人员只有在整个系统准备好进行测试后才会收到有关其代码的反馈，这可能会减慢开发过程。
 - **不适合大型项目**：同时管理所有组件的复杂性使得大爆炸测试对于大型系统来说不切实际。
-- **对于查找某些类型的[bugs](/zh-cn/wiki/bug/)** 效率低下：对于查找由于较小的组件子集之间的交互而发生的错误是无效的。
+- **对于查找某些类型的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)** 效率低下：对于查找由于较小的组件子集之间的交互而发生的错误是无效的。
 - **风险管理不善**：它不允许在整个开发周期中进行增量风险评估和缓解。
-- **压倒性的结果**：一次识别出的潜在缺陷数量对于团队来说可能难以有效解决。 总之，虽然 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 在某些情况下很有用，但与更多增量测试方法相比，其缺点往往使其不太有利。
+- **压倒性的结果**：一次识别出的潜在缺陷数量对于团队来说可能难以有效解决。总之，虽然 **[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 在某些情况下很有用，但与更多增量测试方法相比，其缺点往往使其不太有利。
 
 #### Big Bang 测试在什么情况下最有益？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 在软件相对较小或组件之间的交互非常复杂以至于最好将其作为一个整体来理解的情况下最有用。当系统的各个模块是单独开发的并且通常由于时间限制或资源限制而需要一次性测试集成时，这种方法也很有用。
-  当项目有**紧迫的期限**并且需要提供对整个系统功能的快速评估时，它特别有利。此外，当使用**遗留系统**时，它可能是一种战略选择，其中模块分解不明确，并且增量集成的成本超过了后期集成的潜在风险。
-  [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 也适合教育目的，其目标是演示系统中**所有组件**的相互作用，而不是专注于增量集成的复杂性。
-  如果团队对系统架构有深入的了解并且潜在的集成问题众所周知，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可以提供系统在模拟生产环境下的行为和性能的**全面视图**。
-  最后，当测试团队仅在开发周期结束时收到整个软件时，它可能是一种首选方法，使其成为[集成测试](/zh-cn/wiki/integration-testing/) 在给定限制内唯一可行的选择。
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 在软件相对较小或组件之间的交互非常复杂以至于最好将其作为一个整体来理解的情况下最有用。当系统的各个模块是单独开发的并且通常由于时间限制或资源限制而需要一次性测试集成时，这种方法也很有用。
+
+当项目有**紧迫的期限**并且需要提供对整个系统功能的快速评估时，它特别有利。此外，当使用**遗留系统**时，它可能是一种战略选择，其中模块分解不明确，并且增量集成的成本超过了后期集成的潜在风险。
+
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 也适合教育目的，其目标是演示系统中**所有组件**的相互作用，而不是专注于增量集成的复杂性。
+
+如果团队对系统架构有深入的了解并且潜在的集成问题众所周知，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 可以提供系统在模拟生产环境下的行为和性能的**全面视图**。
+
+最后，当测试团队仅在开发周期结束时收到整个软件时，它可能是一种首选方法，使其成为[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 在给定限制内唯一可行的选择。
 
 #### 什么时候应该避免大爆炸测试？
 
-在以下情况下应避免[大爆炸测试](/zh-cn/wiki/big-bang-testing/)：
+在以下情况下应避免[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)：
 
 - **复杂项目**：在处理具有众多组件和复杂交互的系统时，遗漏关键集成问题的风险会增加。
 - **资源有限**：如果团队缺乏足够的资源来处理大爆炸测试可能会一次性暴露的大量潜在缺陷。
 - **持续交付**：在实行持续集成和交付的环境中，由于需要频繁的增量更改，大爆炸测试是不切实际的。
 - **早期反馈的必要性**：当系统组件的早期反馈至关重要时，大爆炸测试并不理想，因为它会延迟反馈，直到所有组件准备好一起测试。
 - **风险管理**：如果项目需要仔细的风险管理和缺陷隔离，大爆炸测试可能会适得其反，因为它使查明缺陷来源变得更具挑战性。
-- **迭代开发**：在敏捷或迭代开发过程中，测试和开发预计同时进行，大爆炸测试与增量验证的基本方法相矛盾。 总之，在处理复杂的系统、有限的资源、持续交付模型、需要早期反馈、严格的风险管理或迭代开发流程时，请避免[大爆炸测试](/zh-cn/wiki/big-bang-testing/)。
+- **迭代开发**：在敏捷或迭代开发过程中，测试和开发预计同时进行，大爆炸测试与增量验证的基本方法相矛盾。总之，在处理复杂的系统、有限的资源、持续交付模型、需要早期反馈、严格的风险管理或迭代开发流程时，请避免[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)。
 
 ### 实际应用
 
 #### Big Bang 测试中常用的工具有哪些？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 通常涉及将系统的所有组件集成在一起并将它们作为一个整体进行测试。虽然此方法不依赖于为[大爆炸测试](/zh-cn/wiki/big-bang-testing/)定制的特定自动化工具，但可以利用各种通用[测试自动化](/zh-cn/wiki/test-automation/)工具来促进该过程：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 通常涉及将系统的所有组件集成在一起并将它们作为一个整体进行测试。虽然此方法不依赖于为[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)定制的特定自动化工具，但可以利用各种通用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工具来促进该过程：
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于 Web 应用程序的端到端测试。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：主要用于性能测试，也可用于对集成系统进行压力测试。
-- **[Postman](/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
-- **JUnit/[NUnit](/zh-cn/wiki/nunit/)** ：分别用 Java 和.NET 编写测试用例的框架；可用于创建集成测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：一种流行的自动化 Web 浏览器工具，可用于 Web 应用程序的端到端测试。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：主要用于性能测试，也可用于对集成系统进行压力测试。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)** ：用于测试集成系统内的 API，确保它们在组合应用程序的所有部分时按预期工作。
+- **JUnit/[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/)** ：分别用 Java 和.NET 编写测试用例的框架；可用于创建集成测试。
 - **TestComplete**：一个 GUI 测试自动化工具，可用于在集成环境中为桌面、移动和 Web 应用程序创建自动化测试。
-- **QTP/UFT（统一[功能测试](/zh-cn/wiki/functional-testing/)）**：功能和回归测试自动化工具，可应用于集成系统。 这些工具可用于创建和运行[测试用例](/zh-cn/wiki/test-case/)，以大爆炸的方式覆盖整个系统。自动化工程师可以编写脚本来模拟用户与系统的交互或系统组件之间的 [API](/zh-cn/wiki/api/) 调用，以验证所有集成部件是否按预期协同工作。工具的选择取决于被测系统、测试团队的技能以及项目的具体要求。
+- **QTP/UFT（统一[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)）**：功能和回归测试自动化工具，可应用于集成系统。这些工具可用于创建和运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以大爆炸的方式覆盖整个系统。自动化工程师可以编写脚本来模拟用户与系统的交互或系统组件之间的 [API](https://inaodeng.com/zh-cn/wiki/api/) 调用，以验证所有集成部件是否按预期协同工作。工具的选择取决于被测系统、测试团队的技能以及项目的具体要求。
 
 #### 大爆炸测试如何在项目中有效实施？
 
-要在项目中有效实施 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)**，请按照以下步骤操作：
+要在项目中有效实施 **[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)**，请按照以下步骤操作：
 
-1. **确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)**：创建涵盖所有功能的详细[测试计划](/zh-cn/wiki/test-plan/)。使用边界值分析和[等价划分](/zh-cn/wiki/equivalence-partitioning/) 等测试设计技术来确保不会忽略任何功能。
-2. **准备[测试环境](/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[环境搭建](/zh-cn/wiki/setup/) 中可能不明显的问题。
-3. **开发健壮的[测试用例](/zh-cn/wiki/test-case/)**：编写清晰、简洁的[测试用例](/zh-cn/wiki/test-case/)，并明确定义预期结果。尽可能实现自动化以促进[回归测试](/zh-cn/wiki/regression-testing/)。
+1. **确保全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：创建涵盖所有功能的详细[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)。使用边界值分析和[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) 等测试设计技术来确保不会忽略任何功能。
+2. **准备[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：设置类似生产的环境，以发现在开发或分阶段[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 中可能不明显的问题。
+3. **开发健壮的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：编写清晰、简洁的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，并明确定义预期结果。尽可能实现自动化以促进[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。
 4. **分配足够的资源**：确保团队拥有足够的带宽和必要的工具来执行测试和解决问题。
 5. **进行预测试检查**：验证所有组件是否已集成并且系统已准备好进行测试。
-6. **系统地执行测试**：严格遵循[测试计划](/zh-cn/wiki/test-plan/)，记录所有故障和意外行为。
-7. **确定缺陷的优先​​级并修复缺陷**：根据[严重性](/zh-cn/wiki/severity/) 和影响对[bugs](/zh-cn/wiki/bug/) 进行分类。先解决关键问题，然后再转向不太重要的问题。
-8. **执行[回归测试](/zh-cn/wiki/regression-testing/)**：修复后，重新测试以确认更改没有引入新问题。
+6. **系统地执行测试**：严格遵循[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)，记录所有故障和意外行为。
+7. **确定缺陷的优先​​级并修复缺陷**：根据[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和影响对[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 进行分类。先解决关键问题，然后再转向不太重要的问题。
+8. **执行[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：修复后，重新测试以确认更改没有引入新问题。
 9. **有效沟通**：让利益相关者了解测试进度和结果。使用仪表板或报告来提高可见性。
-10. **学习和适应**：测试后，检查流程以确定哪些有效，哪些无效。利用这些见解来改进未来的测试周期。 通过遵守这些准则，您可以最大限度地提高 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的有效性并降低其固有风险。
+10. **学习和适应**：测试后，检查流程以确定哪些有效，哪些无效。利用这些见解来改进未来的测试周期。通过遵守这些准则，您可以最大限度地提高 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 的有效性并降低其固有风险。
 
 #### 大爆炸测试的一些现实例子是什么？
 
-**[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的现实示例通常发生在集成点定义不明确或数量众多的场景中，从而导致增量集成不切实际。以下是一些示例：
+**[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 的现实示例通常发生在集成点定义不明确或数量众多的场景中，从而导致增量集成不切实际。以下是一些示例：
 
-- **旧系统大修**：当旧系统完全被新系统替换，并且切换一次性发生时，将进行[大爆炸测试](/zh-cn/wiki/big-bang-testing/)以确保新系统在上线前按预期工作。
-- **小型项目**：在范围有限且组件较少的项目中，可能会选择[大爆炸测试](/zh-cn/wiki/big-bang-testing/)，因为它简单且集成问题的风险较低。
-- **教育目的**：在学术环境中，学生可以使用 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 来了解同时集成多个组件的复杂性，并了解这种方法的潜在陷阱。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 关键补丁**：当必须将关键补丁或更新应用于系统时，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可用于在尽可能接近地反映生产的环境中验证补丁。
-- **硬件 - 软件集成**：在软件与硬件紧密耦合的嵌入式系统中，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可用于在集成所有组件后验证整个系统的功能。 请记住，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 由于其高风险和调试失败的复杂性，在现代迭代开发环境中不太常见。它通常保留用于其他形式的测试不可行或项目的规模和范围允许风险可控水平的特定情况。
-
-- **旧系统大修**：当旧系统完全被新系统替换，并且切换同时发生时，将进行[大爆炸测试](/zh-cn/wiki/big-bang-testing/)以确保新系统在上线前按预期工作。
-- **小型项目**：在范围有限且组件较少的项目中，可能会选择[大爆炸测试](/zh-cn/wiki/big-bang-testing/)，因为它简单且集成问题的风险较低。
-- **教育目的**：在学术环境中，学生可以使用 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 来了解同时集成多个组件的复杂性，并了解这种方法的潜在陷阱。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/) 关键补丁**：当必须将关键补丁或更新应用于系统时，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可用于在尽可能接近地反映生产的环境中验证补丁。
-- **硬件 - 软件集成**：在软件与硬件紧密耦合的嵌入式系统中，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可用于在集成所有组件后验证整个系统的功能。
+- **旧系统大修**：当旧系统完全被新系统替换，并且切换一次性发生时，将进行[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)以确保新系统在上线前按预期工作。
+- **小型项目**：在范围有限且组件较少的项目中，可能会选择[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)，因为它简单且集成问题的风险较低。
+- **教育目的**：在学术环境中，学生可以使用 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 来了解同时集成多个组件的复杂性，并了解这种方法的潜在陷阱。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 关键补丁**：当必须将关键补丁或更新应用于系统时，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 可用于在尽可能接近地反映生产的环境中验证补丁。
+- **硬件 - 软件集成**：在软件与硬件紧密耦合的嵌入式系统中，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 可用于在集成所有组件后验证整个系统的功能。请记住，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 由于其高风险和调试失败的复杂性，在现代迭代开发环境中不太常见。它通常保留用于其他形式的测试不可行或项目的规模和范围允许风险可控水平的特定情况。
 
 #### 如何评估 Big Bang 测试的结果？
 
-评估 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的结果涉及在所有组件同时集成和测试后分析系统的整体行为。评估结果：
+评估 **[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 的结果涉及在所有组件同时集成和测试后分析系统的整体行为。评估结果：
 
-- **审查[测试用例](/zh-cn/wiki/test-case/)** ：确保执行所有计划的测试场景并检查完整性。
+- **审查[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：确保执行所有计划的测试场景并检查完整性。
 - **分析通过/失败率**：确定通过的测试与失败的测试的比例。
 - **识别缺陷**：记录发现的错误或问题，按严重性和影响进行分类。
 - **评估缺陷密度**：计算相对于软件大小或测试用例数量的缺陷数量。
@@ -234,38 +231,45 @@ order: 0
 - **评估测试有效性**：确定测试是否能够发现重大缺陷以及它们是否代表实际使用情况。
 - **查看日志和输出**：检查测试日志、错误消息和系统输出是否存在异常。
 - **收集测试人员的反馈**：从测试团队收集有关过程、遇到的困难以及可能需要重新测试的领域的见解。
-- **针对目标进行衡量**：将结果与初始测试目标进行比较，以确定是否已达到目标。 评估后，确定要修复的缺陷的优先​​级，并考虑是否需要进行额外的测试。在 [测试报告](/zh-cn/wiki/test-report/) 中为利益相关者记录调查结果，突出显示关键问题和对未来测试周期的建议。
+- **针对目标进行衡量**：将结果与初始测试目标进行比较，以确定是否已达到目标。评估后，确定要修复的缺陷的优先​​级，并考虑是否需要进行额外的测试。在 [测试报告](https://inaodeng.com/zh-cn/wiki/test-report/) 中为利益相关者记录调查结果，突出显示关键问题和对未来测试周期的建议。
 
 ### 与其他测试方法的比较
 
 #### 大爆炸测试与增量测试相比如何？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 和[增量测试](/zh-cn/wiki/incremental-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的对比方法。 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 涉及一次集成所有组件并一步测试整个系统。在组装完整系统之前，此方法并不关注模块连接或交互。
-  相比之下，**[增量测试](/zh-cn/wiki/incremental-testing/)** 采用模块化方法，其中组件或系统被逐个或以小组形式集成和测试。重复此过程直到测试整个系统。 [增量测试](/zh-cn/wiki/incremental-testing/) 可以进一步分为**自上而下**、**自下而上**和**功能性[增量测试](/zh-cn/wiki/incremental-testing/)** 等方法。
-  关键比较点是：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 和[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/) 是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的对比方法。 **[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 涉及一次集成所有组件并一步测试整个系统。在组装完整系统之前，此方法并不关注模块连接或交互。
+
+相比之下，**[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** 采用模块化方法，其中组件或系统被逐个或以小组形式集成和测试。重复此过程直到测试整个系统。 [增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/) 可以进一步分为**自上而下**、**自下而上**和**功能性[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** 等方法。
+
+关键比较点是：
 
 - **整合方法**：Big Bang 一次性整合，而增量则一点一点整合。
 - **故障隔离**：增量测试由于逐步集成，使得隔离缺陷变得更加容易。
 - **风险管理**：增量测试通过识别较小代码部分中的问题来降低风险，而大爆炸由于调试完全集成的系统的复杂性而带来更高的风险。
 - **资源分配**：增量测试允许更灵活的资源分配，因为不同的团队可以同时处理不同的模块。
-- **反馈循环**：增量测试在每个集成和测试周期后提供持续的反馈，而大爆炸测试则不然。 [增量测试](/zh-cn/wiki/incremental-testing/) 通常适用于较大、较复杂的系统，在这些系统中，早期故障检测和持续反馈至关重要，而 Big Bang 可能适用于组件之间交互较少的较小或不太复杂的系统。
+- **反馈循环**：增量测试在每个集成和测试周期后提供持续的反馈，而大爆炸测试则不然。 [增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/) 通常适用于较大、较复杂的系统，在这些系统中，早期故障检测和持续反馈至关重要，而 Big Bang 可能适用于组件之间交互较少的较小或不太复杂的系统。
 
 #### 大爆炸测试和单元测试之间的主要区别是什么？
 
-[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 和[单元测试](/zh-cn/wiki/unit-testing/) 与[软件测试](/zh-cn/wiki/software-testing/) 是根本不同的方法。
-  **[单元测试](/zh-cn/wiki/unit-testing/)** 专注于应用程序的最小部分，通常是单个函数或方法。它在开发周期的早期进行，并且通常是自动化的。单元测试与依赖项隔离，这意味着它们需要模拟或存根外部组件，以确保被测单元是唯一的活动部分。
-  相比之下，**[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 涉及集成系统的所有组件以验证它们协同工作。这是一种高级测试方法，通常在 [单元测试](/zh-cn/wiki/unit-testing/) 完成后执行。此方法不会单独测试组件，而是将其作为一个整体进行测试，这使得识别故障的根本原因变得更具挑战性。
-  主要区别包括：
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 和[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 与[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 是根本不同的方法。
+
+**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 专注于应用程序的最小部分，通常是单个函数或方法。它在开发周期的早期进行，并且通常是自动化的。单元测试与依赖项隔离，这意味着它们需要模拟或存根外部组件，以确保被测单元是唯一的活动部分。
+
+相比之下，**[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 涉及集成系统的所有组件以验证它们协同工作。这是一种高级测试方法，通常在 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 完成后执行。此方法不会单独测试组件，而是将其作为一个整体进行测试，这使得识别故障的根本原因变得更具挑战性。
+
+主要区别包括：
 
 - **范围**：单元测试范围狭窄且专注，而大爆炸测试范围广泛，涵盖整个系统。
 - **隔离**：单元测试是隔离的；大爆炸测试则不然。
 - **时机**：单元测试在开发过程中持续进行；大爆炸测试通常在开发过程结束时进行。
 - **复杂性**：单元测试处理单个单元的复杂性，而大爆炸测试处理整个系统交互的复杂性。
-- **调试**：单元测试中的失败更容易查明，而大爆炸测试可能需要进行广泛的调查才能追溯到问题的根源。 总之，[单元测试](/zh-cn/wiki/unit-testing/) 是细粒度和孤立的，而 [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 是全面和综合的，每个在软件开发生命周期中服务于不同的目的。
+- **调试**：单元测试中的失败更容易查明，而大爆炸测试可能需要进行广泛的调查才能追溯到问题的根源。
+
+总之，[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 是细粒度和孤立的，而 [大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 是全面和综合的，每个在软件开发生命周期中服务于不同的目的。
 
 #### 您什么时候会选择大爆炸测试而不是系统测试或集成测试？
 
-在以下特定情况下，您会选择 **[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 而不是 [系统测试](/zh-cn/wiki/system-testing/) 或 [集成测试](/zh-cn/wiki/integration-testing/)：
+在以下特定情况下，您会选择 **[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 而不是 [系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 或 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)：
 
 - 软件相对来说 **小**并且可以一次性测试。
 
@@ -281,27 +285,14 @@ order: 0
 
 - 项目利益相关者需要 **示范**在执行任何详细测试之前，先了解完整的系统功能。
 
-- 你正在处理一个 **旧系统**模块之间的耦合非常紧密，以至于增量测试是不切实际的。 请记住，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 与偏好无关，而与由于项目限制或所使用的软件开发过程的性质而导致的**必要性**有关。这是一种高风险的方法，当其他更增量的测试方法不可行时，应该选择它。
-
-- 软件相对来说 **小**并且可以一次性测试。
-
-- 你有 **限时**并且需要对整个系统进行快速评估。
-
-- 系统的各个组件是 **不可用**直到最后进行测试。
-
-- 你想测试 **互动**在一个阶段中各个完全开发的模块之间。
-
-- 需要评估系统的行为 **完整**而不是增量，这可能是由于项目的性质或客户的要求。
-
-- 采用的开发模式较多 **传统** ，就像 Waterfall 一样，软件的工作版本仅在稍后阶段可用。
-
-- 项目利益相关者需要 **示范**在执行任何详细测试之前，先了解完整的系统功能。
-
-- 你正在处理一个 **旧系统**模块之间的耦合非常紧密，以至于增量测试是不切实际的。
+- 你正在处理一个 **旧系统**模块之间的耦合非常紧密，以至于增量测试是不切实际的。请记住，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 与偏好无关，而与由于项目限制或所使用的软件开发过程的性质而导致的**必要性**有关。这是一种高风险的方法，当其他更增量的测试方法不可行时，应该选择它。
 
 #### Big Bang 测试的复杂性与其他测试方法相比如何？
 
-**[大爆炸测试](/zh-cn/wiki/big-bang-testing/)** 的复杂性通常高于更多 **增量** 或 **模块化** 测试方法。这是由于一次性集成所有组件的性质，而不是先单独或小组测试它们。相比之下，**[单元测试](/zh-cn/wiki/unit-testing/)** 或 **[集成测试](/zh-cn/wiki/integration-testing/)** 等方法会逐个处理系统，从而简化故障排除并更有效地隔离故障。
-  [大爆炸测试](/zh-cn/wiki/big-bang-testing/) 可能会导致**复杂的调试过程**，因为当所有内容同时测试时，识别缺陷来源可能具有挑战性。复杂性还源于需要全面了解整个系统的交互，这对于单独测试组件的方法来说不太重要。
-  与 **[系统测试](/zh-cn/wiki/system-testing/)** 相比，Big Bang 的范围可能相似，但 [系统测试](/zh-cn/wiki/system-testing/) 通常在成功的较低级别测试之后进行，通过在检查整个系统之前确认各个部件的工作来降低复杂性。另一方面，Big Bang 跳过了这些步骤，导致可能更加复杂且充满风险的测试阶段。
-  总体而言，[大爆炸测试](/zh-cn/wiki/big-bang-testing/) 的复杂性是其在 [环境搭建](/zh-cn/wiki/setup/) 中的简单性的权衡——无需精心设计复杂的集成测试或存根/模拟——但这往往被诊断和解决这种整体方法所产生的问题的困难所抵消。
+**[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/)** 的复杂性通常高于更多 **增量** 或 **模块化** 测试方法。这是由于一次性集成所有组件的性质，而不是先单独或小组测试它们。相比之下，**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 或 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 等方法会逐个处理系统，从而简化故障排除并更有效地隔离故障。
+
+[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 可能会导致**复杂的调试过程**，因为当所有内容同时测试时，识别缺陷来源可能具有挑战性。复杂性还源于需要全面了解整个系统的交互，这对于单独测试组件的方法来说不太重要。
+
+与 **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 相比，Big Bang 的范围可能相似，但 [系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 通常在成功的较低级别测试之后进行，通过在检查整个系统之前确认各个部件的工作来降低复杂性。另一方面，Big Bang 跳过了这些步骤，导致可能更加复杂且充满风险的测试阶段。
+
+总体而言，[大爆炸测试](https://inaodeng.com/zh-cn/wiki/big-bang-testing/) 的复杂性是其在 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 中的简单性的权衡——无需精心设计复杂的集成测试或存根/模拟——但这往往被诊断和解决这种整体方法所产生的问题的困难所抵消。

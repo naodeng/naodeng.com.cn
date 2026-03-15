@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [privacy-mode](/en/AIWiki/privacy-mode/)
-- [rule-types](/en/AIWiki/rule-types/)
-- [function-calling](/en/AIWiki/function-calling/)
-- [hooks](/en/AIWiki/hooks/)
+- [privacy-mode](https://inaodeng.com/en/AIWiki/privacy-mode/)
+- [rule-types](https://inaodeng.com/en/AIWiki/rule-types/)
+- [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
 
 ### External References
 

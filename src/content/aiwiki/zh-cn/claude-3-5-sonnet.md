@@ -112,9 +112,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [claude](/zh-cn/AIWiki/claude/)
-- [vibe-coding](/zh-cn/AIWiki/vibe-coding/)
-- [ai-pair-programming](/zh-cn/AIWiki/ai-pair-programming/)
+- [claude](https://inaodeng.com/zh-cn/AIWiki/claude/)
+- [vibe-coding](https://inaodeng.com/zh-cn/AIWiki/vibe-coding/)
+- [ai-pair-programming](https://inaodeng.com/zh-cn/AIWiki/ai-pair-programming/)
 
 ### 术语元数据
 

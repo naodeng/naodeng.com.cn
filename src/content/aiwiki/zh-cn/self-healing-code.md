@@ -116,9 +116,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [shadow-engineering](/zh-cn/AIWiki/shadow-engineering/)
-- [agentic-workflow](/zh-cn/AIWiki/agentic-workflow/)
-- [human-in-the-loop](/zh-cn/AIWiki/human-in-the-loop/)
+- [shadow-engineering](https://inaodeng.com/zh-cn/AIWiki/shadow-engineering/)
+- [agentic-workflow](https://inaodeng.com/zh-cn/AIWiki/agentic-workflow/)
+- [human-in-the-loop](https://inaodeng.com/zh-cn/AIWiki/human-in-the-loop/)
 
 ### 术语元数据
 

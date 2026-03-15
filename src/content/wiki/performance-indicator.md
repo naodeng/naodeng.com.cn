@@ -40,7 +40,7 @@ order: 0
 
 ## 相关术语
 
-- [性能测试](/zh-cn/wiki/performance-testing/)
+- [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)
 
 ## 关于绩效指标的问题？
 
@@ -48,17 +48,17 @@ order: 0
 
 #### 什么是绩效指标？
 
-**[绩效指标](/zh-cn/wiki/performance-indicator/)** 是一种可量化的衡量标准，用于评估软件 [测试自动化](/zh-cn/wiki/test-automation/) 中特定活动的成功或特定方面的性能。与一般指标不同，[绩效指标](/zh-cn/wiki/performance-indicator/) 是理解和跟踪预定义目标进度的关键。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 中，它们提供了有关测试过程的效率、有效性和质量的见解。例如，[绩效指标](/zh-cn/wiki/performance-indicator/) 可以是自动[测试套件](/zh-cn/wiki/test-suite/) 的**执行时间**，它反映了测试过程的速度。
-  [绩效指标](/zh-cn/wiki/performance-indicator/) 通常使用在 [测试执行](/zh-cn/wiki/test-execution/) 期间捕获相关数据的专用工具进行测量。然后分析这些数据以确定趋势、模式和需要改进的领域。通过关注这些指标，团队可以简化他们的自动化工作，增强[测试覆盖率](/zh-cn/wiki/test-coverage/)，并最终交付更可靠的软件。
-  要测量[绩效指标](/zh-cn/wiki/performance-indicator/)，可以使用[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner 或自定义脚本等工具。这些工具可以模拟用户行为并测量负载下的系统性能。
-  在自动化项目中实施 [绩效指标](/zh-cn/wiki/performance-indicator/) 涉及定义需要测量的内容、设置基准以及将测量工具集成到 CI/CD 管道中。这使得持续监控和反馈成为可能。
-  为了识别瓶颈，[绩效指标](/zh-cn/wiki/performance-indicator/) 可以突出显示运行缓慢的测试或性能不佳的应用程序部分。改善这些指标的策略包括优化测试代码、提高应用程序性能以及调整[测试环境](/zh-cn/wiki/test-environment/)。
-  总之，[绩效指标](/zh-cn/wiki/performance-indicator/) 对于维护软件[测试自动化](/zh-cn/wiki/test-automation/) 的健康和有效性至关重要，指导团队实现更高的绩效和更好的结果。
+**[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)** 是一种可量化的衡量标准，用于评估软件 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中特定活动的成功或特定方面的性能。与一般指标不同，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 是理解和跟踪预定义目标进度的关键。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中，它们提供了有关测试过程的效率、有效性和质量的见解。例如，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 可以是自动[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的**执行时间**，它反映了测试过程的速度。
+  [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 通常使用在 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间捕获相关数据的专用工具进行测量。然后分析这些数据以确定趋势、模式和需要改进的领域。通过关注这些指标，团队可以简化他们的自动化工作，增强[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，并最终交付更可靠的软件。
+  要测量[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)，可以使用[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)、LoadRunner 或自定义脚本等工具。这些工具可以模拟用户行为并测量负载下的系统性能。
+  在自动化项目中实施 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 涉及定义需要测量的内容、设置基准以及将测量工具集成到 CI/CD 管道中。这使得持续监控和反馈成为可能。
+  为了识别瓶颈，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 可以突出显示运行缓慢的测试或性能不佳的应用程序部分。改善这些指标的策略包括优化测试代码、提高应用程序性能以及调整[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。
+  总之，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 对于维护软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的健康和有效性至关重要，指导团队实现更高的绩效和更好的结果。
 
 #### 为什么性能指标在软件自动化中很重要？
 
-[绩效指标](/zh-cn/wiki/performance-indicator/) 在软件[测试自动化](/zh-cn/wiki/test-automation/) 中至关重要，因为它们提供系统性能和可靠性的**定量测量**。它们使团队能够：
+[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 在软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中至关重要，因为它们提供系统性能和可靠性的**定量测量**。它们使团队能够：
 
 - **监控**系统行为受到严格测试。
 
@@ -70,7 +70,7 @@ order: 0
 
 - **沟通**利益相关者之间有效的绩效特征。
 
-- **确保客户满意度**通过提供满足性能预期的产品。 通过关注关键指标，团队可以有效地**对用户体验影响最大的问题进行优先级排序**。这种有针对性的性能优化方法有助于保持高质量的产品，同时管理软件开发生命周期的复杂性。 在实践中，[绩效指标](/zh-cn/wiki/performance-indicator/) 被集成到持续集成/持续部署 (CI/CD) 管道中，以提供**实时反馈**，并在违反性能阈值时允许**立即采取行动**。这种集成对于保持开发过程的敏捷性同时确保维护性能标准至关重要。 总之，[绩效指标](/zh-cn/wiki/performance-indicator/) 不仅仅是指标；更是指标。它们是维护[软件质量](/zh-cn/wiki/software-quality/)并确保最终产品符合用户期望和业务目标的**战略工具**。
+- **确保客户满意度**通过提供满足性能预期的产品。 通过关注关键指标，团队可以有效地**对用户体验影响最大的问题进行优先级排序**。这种有针对性的性能优化方法有助于保持高质量的产品，同时管理软件开发生命周期的复杂性。 在实践中，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 被集成到持续集成/持续部署 (CI/CD) 管道中，以提供**实时反馈**，并在违反性能阈值时允许**立即采取行动**。这种集成对于保持开发过程的敏捷性同时确保维护性能标准至关重要。 总之，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 不仅仅是指标；更是指标。它们是维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)并确保最终产品符合用户期望和业务目标的**战略工具**。
 
 - **监控**系统行为受到严格测试。
 
@@ -86,20 +86,20 @@ order: 0
 
 #### 性能指标与软件测试中的其他指标有何不同？
 
-[绩效指标](/zh-cn/wiki/performance-indicator/)，通常称为关键[绩效指标](/zh-cn/wiki/performance-indicator/) (KPI)，是专门为其与关键成功因素的相关性而选择的指标子集。虽然指标可以很多并且可以跟踪 [软件测试](/zh-cn/wiki/software-testing/) 的任何可量化方面，但 [绩效指标](/zh-cn/wiki/performance-indicator/) 是一组重点集中的指标，可提供对 [测试自动化](/zh-cn/wiki/test-automation/) 流程的性能和运行状况的见解。
-  与一般指标（可能衡量从 [代码覆盖率](/zh-cn/wiki/code-coverage/) 到执行的 [测试用例](/zh-cn/wiki/test-case/) 数量之间的任何指标）相比，[绩效指标](/zh-cn/wiki/performance-indicator/) 的选择是因为它们与业务目标、测试效率和有效性直接相关。它们是利益相关者最感兴趣的指标，因为它们反映了 [测试自动化](/zh-cn/wiki/test-automation/) 努力的价值和投资回报。
-  例如，虽然一般指标可能是发现的缺陷总数，但 [绩效指标](/zh-cn/wiki/performance-indicator/) 是缺陷检测率，它衡量发布前发现的缺陷与用户发布后报告的缺陷的百分比。此 KPI 更能说明[测试自动化](/zh-cn/wiki/test-automation/) 在捕获关键问题方面的有效性。
-  [绩效指标](/zh-cn/wiki/performance-indicator/) 通常是：
+[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)，通常称为关键[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) (KPI)，是专门为其与关键成功因素的相关性而选择的指标子集。虽然指标可以很多并且可以跟踪 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的任何可量化方面，但 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 是一组重点集中的指标，可提供对 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 流程的性能和运行状况的见解。
+  与一般指标（可能衡量从 [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 到执行的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 数量之间的任何指标）相比，[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的选择是因为它们与业务目标、测试效率和有效性直接相关。它们是利益相关者最感兴趣的指标，因为它们反映了 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 努力的价值和投资回报。
+  例如，虽然一般指标可能是发现的缺陷总数，但 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 是缺陷检测率，它衡量发布前发现的缺陷与用户发布后报告的缺陷的百分比。此 KPI 更能说明[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 在捕获关键问题方面的有效性。
+  [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 通常是：
 
 - **可操作**：它们为需要改进的领域提供了清晰的见解。
 - **可比较**：可以根据行业标准或过去的表现进行基准测试。
-- **相关**：它们与战略目标密切相关。 为了保持 [绩效指标](/zh-cn/wiki/performance-indicator/) 的实用性，应定期审查和更新它们，以确保它们继续与 [测试自动化](/zh-cn/wiki/test-automation/) 项目不断发展的目标和流程保持一致。
+- **相关**：它们与战略目标密切相关。 为了保持 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的实用性，应定期审查和更新它们，以确保它们继续与 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 项目不断发展的目标和流程保持一致。
 
 ### 类型和示例
 
 #### e2e 测试中的性能指标有哪些示例？
 
-在端到端 (e2e) 测试中，**[绩效指标](/zh-cn/wiki/performance-indicator/)** 是反映被测软件的效率、可靠性和速度的具体指标。示例包括：
+在端到端 (e2e) 测试中，**[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)** 是反映被测软件的效率、可靠性和速度的具体指标。示例包括：
 
 - **响应时间**：系统响应用户操作所需的时间。
 - **吞吐量**：系统在给定时间范围内处理的事务或操作的数量。
@@ -114,22 +114,22 @@ order: 0
 
 #### 绩效指标有哪些不同类型？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/) 中不同类型的 **[绩效指标](/zh-cn/wiki/performance-indicator/)** 包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中不同类型的 **[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)** 包括：
 
 - **吞吐量**：衡量给定时间范围内系统执行的事务或操作的数量。
 - **响应时间**：捕获系统在特定条件下响应请求所花费的时间。
-- **错误率**：跟踪[测试执行](/zh-cn/wiki/test-execution/)期间遇到的错误数量相对于请求总数。
-- **资源利用率**：在[测试执行](/zh-cn/wiki/test-execution/)期间监控CPU、内存、磁盘I/O和网络带宽等系统资源的使用情况。
+- **错误率**：跟踪[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间遇到的错误数量相对于请求总数。
+- **资源利用率**：在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间监控CPU、内存、磁盘I/O和网络带宽等系统资源的使用情况。
 - **可扩展性**：评估系统在不降低性能的情况下处理不断增加的负载的能力。
 - **可用性**：衡量系统运行和可供使用的时间比例。
 - **并发性**：评估多个用户或进程同时运行时系统的性能。
 - **容量**：确定系统在无法满足性能标准之前可以处理的最大负载。
 - **事务时间**：记录从开始到结束完成一个逻辑工作单元所花费的时间。
-- **用户体验指标**：包括感知的[绩效指标](/zh-cn/wiki/performance-indicator/)，例如页面加载时间和交互响应能力，这直接影响用户满意度。 这些指标通常使用专门的工具捕获并进行分析，以确定趋势、模式和潜在的优化领域。它们提供了可行的见解，可以有针对性地改进软件的性能、稳定性和可扩展性。
+- **用户体验指标**：包括感知的[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)，例如页面加载时间和交互响应能力，这直接影响用户满意度。 这些指标通常使用专门的工具捕获并进行分析，以确定趋势、模式和潜在的优化领域。它们提供了可行的见解，可以有针对性地改进软件的性能、稳定性和可扩展性。
 
 #### 您能否举一个软件自动化背景下的绩效指标示例？
 
-软件 [测试自动化](/zh-cn/wiki/test-automation/) 上下文中 [绩效指标](/zh-cn/wiki/performance-indicator/) 的示例是 **[测试执行](/zh-cn/wiki/test-execution/) 时间**。该指标衡量从开始到结束运行一组自动化测试所需的持续时间。这对于确定测试运行时间随时间变化的趋势至关重要，并且可以突出 [测试套件](/zh-cn/wiki/test-suite/) 中的低效率或性能下降。
+软件 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 上下文中 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的示例是 **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间**。该指标衡量从开始到结束运行一组自动化测试所需的持续时间。这对于确定测试运行时间随时间变化的趋势至关重要，并且可以突出 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中的低效率或性能下降。
 
 ```
   // Pseudo-code example to measure Test Execution Time
@@ -139,18 +139,18 @@ order: 0
   const testExecutionTime = endTime - startTime;
   console.log(`Test Execution Time: ${testExecutionTime} milliseconds`);
 ```
-监控**[测试执行](/zh-cn/wiki/test-execution/) 时间**有助于确保[测试自动化](/zh-cn/wiki/test-automation/) 套件保持快速高效，为开发人员提供快速反馈并保持 CI/CD 管道的敏捷性。如果该指标呈显着上升趋势，则可能表明测试需要优化，或者应用程序存在影响性能的潜在问题。
+监控**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间**有助于确保[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 套件保持快速高效，为开发人员提供快速反馈并保持 CI/CD 管道的敏捷性。如果该指标呈显着上升趋势，则可能表明测试需要优化，或者应用程序存在影响性能的潜在问题。
 
 ### 测量与分析
 
 #### 软件自动化中的性能指标是如何衡量的？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/) 中的[绩效指标](/zh-cn/wiki/performance-indicator/) 通过自动化工具和脚本的组合进行测量，这些工具和脚本在[测试执行](/zh-cn/wiki/test-execution/) 期间捕获特定数据点。然后对这些数据点进行汇总、分析和报告，以深入了解软件的性能和自动化流程的效率。
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 通过自动化工具和脚本的组合进行测量，这些工具和脚本在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间捕获特定数据点。然后对这些数据点进行汇总、分析和报告，以深入了解软件的性能和自动化流程的效率。
   为了衡量这些指标，您通常：
 
 1. **定义具体指标**构成您的性能指标，例如响应时间、错误率或吞吐量。
 
-2. **检测您的[测试环境](/zh-cn/wiki/test-environment/)**收集数据。这可能涉及与监控工具集成或向测试脚本添加自定义日志记录。
+2. **检测您的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**收集数据。这可能涉及与监控工具集成或向测试脚本添加自定义日志记录。
 
 3. **执行自动化测试**生成性能数据。这可以在各种环境中完成，包括开发、QA 或登台。
 
@@ -158,7 +158,7 @@ order: 0
 
 5. **分析数据**使用统计方法或可视化工具来识别趋势、异常或需要改进的领域。
 
-6. **报告调查结果**通常通过提供实时见解的仪表板或定期绩效报告以清晰、简洁的方式进行。 例如，要测量负载测试期间 [API](/zh-cn/wiki/api/) 的响应时间，您可以在 [JMeter](/zh-cn/wiki/jmeter/) 等工具或自定义脚本中使用以下代码片段：
+6. **报告调查结果**通常通过提供实时见解的仪表板或定期绩效报告以清晰、简洁的方式进行。 例如，要测量负载测试期间 [API](https://inaodeng.com/zh-cn/wiki/api/) 的响应时间，您可以在 [JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 等工具或自定义脚本中使用以下代码片段：
 
 ```
   const startTime = performance.now();
@@ -168,11 +168,11 @@ order: 0
     console.log(`Response Time: ${responseTime}`);
   });
 ```
-此代码捕获 [API](/zh-cn/wiki/api/) 调用的开始和结束时间，计算响应时间，并将其记录下来以供以后分析。
+此代码捕获 [API](https://inaodeng.com/zh-cn/wiki/api/) 调用的开始和结束时间，计算响应时间，并将其记录下来以供以后分析。
 
 1. **定义具体指标**构成您的性能指标，例如响应时间、错误率或吞吐量。
 
-2. **检测您的[测试环境](/zh-cn/wiki/test-environment/)**收集数据。这可能涉及与监控工具集成或向测试脚本添加自定义日志记录。
+2. **检测您的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**收集数据。这可能涉及与监控工具集成或向测试脚本添加自定义日志记录。
 
 3. **执行自动化测试**生成性能数据。这可以在各种环境中完成，包括开发、QA 或登台。
 
@@ -184,9 +184,9 @@ order: 0
 
 #### 衡量绩效指标常用的工具有哪些？
 
-用于测量 [测试自动化](/zh-cn/wiki/test-automation/) 中的 [绩效指标](/zh-cn/wiki/performance-indicator/) 的常用工具包括：
+用于测量 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的 [绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的常用工具包括：
 
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：一个开源负载测试工具，用于分析和测量各种服务的性能。
+- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：一个开源负载测试工具，用于分析和测量各种服务的性能。
 - **LoadRunner**：Micro Focus 广泛使用的性能测试工具，可模拟数千个用户同时使用应用程序软件。
 - **Gattle** ：基于 Scala、Akka 和 Netty 的高性能负载测试框架，重点关注 Web 应用程序。
 - **WebLOAD**：强大的企业级负载测试工具，具有灵活的脚本编写功能。
@@ -210,26 +210,26 @@ order: 0
 
 #### 如何分析性能指标中的数据以提高软件性能？
 
-分析来自 **[绩效指标](/zh-cn/wiki/performance-indicator/)** 的数据涉及增强软件性能的几个步骤：
+分析来自 **[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)** 的数据涉及增强软件性能的几个步骤：
 
 1. **汇总数据**：收集并整合来自各种测试运行的数据，以识别模式和趋势。
 2. **基线比较**：将当前性能与既定基线或基准进行比较，以检测偏差。
 3. **趋势分析**：使用统计方法分析一段时间内的趋势。 **Splunk** 或 **ELK Stack** 等工具可以可视化这些趋势。
-4. **相关性分析**：确定不同[绩效指标](/zh-cn/wiki/performance-indicator/) 之间的关系，以确定一个指标的变化是否会影响另一个指标。
-5. **根本原因分析**：当发现性能问题时，深入查找根本原因。这可能涉及代码分析或[数据库](/zh-cn/wiki/database/)查询分析。
+4. **相关性分析**：确定不同[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 之间的关系，以确定一个指标的变化是否会影响另一个指标。
+5. **根本原因分析**：当发现性能问题时，深入查找根本原因。这可能涉及代码分析或[数据库](https://inaodeng.com/zh-cn/wiki/database/)查询分析。
 6. **确定问题的优先级**：重点关注对性能影响最大的问题。使用优先级矩阵来决定首先解决哪些问题。
 7. **优化**：应用性能优化技术，例如代码重构、查询优化或硬件升级。
 8. **反馈循环**：实施变更并重新衡量以评估影响。这个迭代过程有助于微调系统。
 9. **回归分析**：确保性能改进不会对系统的其他方面产生负面影响。
-10. **文件**：记录调查结果和采取的行动，为未来的绩效改进工作提供信息。 通过系统地分析[绩效指标](/zh-cn/wiki/performance-indicator/)，您可以做出明智的决策来增强软件性能，从而实现更高效、更可靠的自动化流程。
+10. **文件**：记录调查结果和采取的行动，为未来的绩效改进工作提供信息。 通过系统地分析[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)，您可以做出明智的决策来增强软件性能，从而实现更高效、更可靠的自动化流程。
 
 ### 实施和改进
 
 #### 如何在软件自动化项目中实施绩效指标？
 
-在软件自动化项目中实现 **[绩效指标](/zh-cn/wiki/performance-indicator/)** 涉及几个步骤：
+在软件自动化项目中实现 **[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)** 涉及几个步骤：
 
-1. **定义明确的目标**：使[绩效指标](/zh-cn/wiki/performance-indicator/) 与自动化项目的具体目标保持一致，例如减少[测试执行](/zh-cn/wiki/test-execution/) 时间或增加[测试覆盖率](/zh-cn/wiki/test-coverage/)。
+1. **定义明确的目标**：使[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 与自动化项目的具体目标保持一致，例如减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间或增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
 2. **选择相关指标**：选择直接反映自动化套件性能的指标，例如每小时运行的测试数量或成功构建的百分比。
 3. **自动数据收集**：使用自动收集所选指标数据的工具。例如，将测试框架与 CI/CD 管道集成，以在每次运行后收集指标。
 
@@ -252,8 +252,8 @@ order: 0
 
 4. **设置基准**：为每个指标建立基准值，以衡量和识别偏差。
 5. **实施持续监控**：使用仪表板或监控工具实时跟踪这些指标。
-6. **集成反馈循环**：确保有一个分析数据并做出明智决策的流程，以完善 [测试自动化](/zh-cn/wiki/test-automation/) 策略。
-7. **根据需要调整指标**：随着项目的发展，审查和调整指标以与项目目标保持一致。 通过系统地实施这些步骤，您可以确保[绩效指标](/zh-cn/wiki/performance-indicator/) 有效地指导和改进[测试自动化](/zh-cn/wiki/test-automation/) 流程，从而实现更高效、更可靠的软件交付。
+6. **集成反馈循环**：确保有一个分析数据并做出明智决策的流程，以完善 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略。
+7. **根据需要调整指标**：随着项目的发展，审查和调整指标以与项目目标保持一致。 通过系统地实施这些步骤，您可以确保[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 有效地指导和改进[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 流程，从而实现更高效、更可靠的软件交付。
 
 ```
     // Example: Automated data collection in a CI pipeline script
@@ -274,23 +274,23 @@ order: 0
 
 #### 可以使用哪些策略来提高绩效指标？
 
-要改进软件 [测试自动化](/zh-cn/wiki/test-automation/) 中的**[绩效指标](/zh-cn/wiki/performance-indicator/)**，请考虑以下策略：
+要改进软件 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的**[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)**，请考虑以下策略：
 
-- **定期审查和完善**：持续评估您的[绩效指标](/zh-cn/wiki/performance-indicator/)，以确保它们保持相关性并与您的项目目标保持一致。删除或调整那些不再有用的内容。
+- **定期审查和完善**：持续评估您的[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/)，以确保它们保持相关性并与您的项目目标保持一致。删除或调整那些不再有用的内容。
 - **自动数据收集**：使用自动收集性能数据的工具来减少手动错误并节省时间。
 - **设置清晰的基准**：建立性能阈值，以快速识别被测系统何时偏离预期性能水平。
-- **实施持续集成/持续部署 (CI/CD)**：将[性能测试](/zh-cn/wiki/performance-testing/) 集成到您的 CI/CD 管道中，以便尽早且经常发现问题。
-- **使用真实的[测试数据](/zh-cn/wiki/test-data/) 和环境**：模拟类似生产的条件，以确保[绩效指标](/zh-cn/wiki/performance-indicator/) 反映真实世界的使用情况。
-- **优化[测试套件](/zh-cn/wiki/test-suite/)**：优先考虑并简化[测试用例](/zh-cn/wiki/test-case/)以专注于关键性能路径，减少运行时间和资源消耗。
+- **实施持续集成/持续部署 (CI/CD)**：将[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 集成到您的 CI/CD 管道中，以便尽早且经常发现问题。
+- **使用真实的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 和环境**：模拟类似生产的条件，以确保[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 反映真实世界的使用情况。
+- **优化[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：优先考虑并简化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)以专注于关键性能路径，减少运行时间和资源消耗。
 - **并行执行**：尽可能并行运行测试，以加快流程并获得更快的反馈。
 - **监控一段时间内的趋势**：查看性能趋势以预测未来问题并主动解决它们。
 - **协作和沟通**：在团队之间分享绩效见解，以培养绩效意识和集体责任的文化。
-- **教育和培训**：让您的团队了解[性能测试](/zh-cn/wiki/performance-testing/) 中的最佳实践以及[绩效指标](/zh-cn/wiki/performance-indicator/) 的重要性。
-- **利用人工智能和机器学习**：使用高级分析来预测潜在的性能下降并优化[测试执行](/zh-cn/wiki/test-execution/)。 通过关注这些策略，您可以提高[绩效指标](/zh-cn/wiki/performance-indicator/) 的有效性，从而实现更高效、更可靠的软件[测试自动化](/zh-cn/wiki/test-automation/) 流程。
+- **教育和培训**：让您的团队了解[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 中的最佳实践以及[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的重要性。
+- **利用人工智能和机器学习**：使用高级分析来预测潜在的性能下降并优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。 通过关注这些策略，您可以提高[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) 的有效性，从而实现更高效、更可靠的软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 流程。
 
 #### 如何使用性能指标来识别软件自动化过程中的瓶颈？
 
-[绩效指标](/zh-cn/wiki/performance-indicator/) (PI) 可以通过突出显示自动化流程偏离预期性能水平的区域来查明瓶颈。识别瓶颈：
+[绩效指标](https://inaodeng.com/zh-cn/wiki/performance-indicator/) (PI) 可以通过突出显示自动化流程偏离预期性能水平的区域来查明瓶颈。识别瓶颈：
 
 1. **监控 PI**例如测试运行期间的执行时间、内存使用情况和 CPU 负载。
 

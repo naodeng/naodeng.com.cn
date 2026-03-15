@@ -112,9 +112,9 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [background-agents](/en/AIWiki/background-agents/)
-- [batch-processing](/en/AIWiki/batch-processing/)
-- [hooks](/en/AIWiki/hooks/)
+- [background-agents](https://inaodeng.com/en/AIWiki/background-agents/)
+- [batch-processing](https://inaodeng.com/en/AIWiki/batch-processing/)
+- [hooks](https://inaodeng.com/en/AIWiki/hooks/)
 
 ### External References
 

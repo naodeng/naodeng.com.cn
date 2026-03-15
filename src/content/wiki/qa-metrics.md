@@ -44,8 +44,8 @@ order: 0
 
 ## 相关术语
 
-- [软件质量](/zh-cn/wiki/software-quality/)
-- [软件质量管理](/zh-cn/wiki/software-quality-management/)
+- [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)
+- [软件质量管理](https://inaodeng.com/zh-cn/wiki/software-quality-management/)
 
 ## 有关 QA 指标的问题吗？
 
@@ -53,19 +53,19 @@ order: 0
 
 #### 什么是质量检查指标？
 
-[质量检查指标](/zh-cn/wiki/qa-metrics/) 是用于评估软件开发中测试过程的质量和有效性的定量措施。它们提供了对测试周期各个方面的见解，例如效率、有效性和进度，这对于明智的决策和持续改进至关重要。
-  **常见[质量检查指标](/zh-cn/wiki/qa-metrics/)** 包括：
+[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 是用于评估软件开发中测试过程的质量和有效性的定量措施。它们提供了对测试周期各个方面的见解，例如效率、有效性和进度，这对于明智的决策和持续改进至关重要。
+  **常见[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/)** 包括：
 
 - **缺陷发现率**：特定时期内发现的缺陷数量。
-- **[测试执行](/zh-cn/wiki/test-execution/) Rate** ：在给定测试周期中执行的测试的百分比。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) Rate** ：在给定测试周期中执行的测试的百分比。
 - **通过/失败率**：通过的测试与失败的测试的比例。
 - **缺陷解决时间**：修复报告的缺陷所需的时间。
-- **自动化[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：自动化测试覆盖代码库或功能的程度。 在**敏捷方法**中，还使用**Sprint Burndown**（跟踪冲刺中的剩余工作）和**速度**（冲刺中完成的平均工作量）等指标。 [质量检查指标](/zh-cn/wiki/qa-metrics/) 由以下人员实施：
+- **自动化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：自动化测试覆盖代码库或功能的程度。 在**敏捷方法**中，还使用**Sprint Burndown**（跟踪冲刺中的剩余工作）和**速度**（冲刺中完成的平均工作量）等指标。 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 由以下人员实施：
 
 1. 确定目的和目标。
 2. 选择相关指标。
 3. 测试过程中收集数据。
-4. 分析数据以获得可行的见解。 [jira](/zh-cn/wiki/jira/)、TestRail 和 Jenkins 等**工具**通常用于跟踪和分析这些指标。 为了避免误用或误解，必须：
+4. 分析数据以获得可行的见解。 [jira](https://inaodeng.com/zh-cn/wiki/jira/)、TestRail 和 Jenkins 等**工具**通常用于跟踪和分析这些指标。 为了避免误用或误解，必须：
 
 - 确保指标与业务目标保持一致。
 - 避免依赖单一指标来了解完整情况。
@@ -75,10 +75,10 @@ order: 0
 - 使用指标来促进协作而不是竞争。
 - 将定量数据与定性见解相结合以获得平衡的观点。
 - **缺陷发现率**：特定时期内发现的缺陷数量。
-- **[测试执行](/zh-cn/wiki/test-execution/) Rate** ：在给定测试周期中执行的测试的百分比。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) Rate** ：在给定测试周期中执行的测试的百分比。
 - **通过/失败率**：通过的测试与失败的测试的比例。
 - **缺陷解决时间**：修复报告的缺陷所需的时间。
-- **自动化[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：自动化测试覆盖代码库或功能的程度。
+- **自动化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：自动化测试覆盖代码库或功能的程度。
 1. 确定目的和目标。
 2. 选择相关指标。
 3. 测试过程中收集数据。
@@ -92,7 +92,7 @@ order: 0
 
 #### 为什么 QA 指标在软件测试中很重要？
 
-[质量检查指标](/zh-cn/wiki/qa-metrics/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它们提供反映测试过程的**效率和有效性**的**定量数据**。它们使团队能够：
+[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它们提供反映测试过程的**效率和有效性**的**定量数据**。它们使团队能够：
 
 - **跟踪进度**和 **性能**随着时间的推移，可以进行趋势分析。
 
@@ -104,7 +104,7 @@ order: 0
 
 - **证明决定的合理性**具有经验证据，例如何时停止测试或发布软件。
 
-- **验证影响**对流程所做的更改，无论是新工具、技术还是方法。 通过利用[质量检查指标](/zh-cn/wiki/qa-metrics/)，团队可以**持续改进**他们的[测试自动化](/zh-cn/wiki/test-automation/)策略，确保它们与项目和组织的总体目标保持一致。这种持续改进循环对于保持竞争优势和及时交付高质量软件至关重要。然而，选择正确的指标并正确解释它们很重要，以避免误导团队或误导利益相关者。
+- **验证影响**对流程所做的更改，无论是新工具、技术还是方法。 通过利用[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/)，团队可以**持续改进**他们的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)策略，确保它们与项目和组织的总体目标保持一致。这种持续改进循环对于保持竞争优势和及时交付高质量软件至关重要。然而，选择正确的指标并正确解释它们很重要，以避免误导团队或误导利益相关者。
 
 - **跟踪进度**和 **性能**随着时间的推移，可以进行趋势分析。
 
@@ -120,46 +120,46 @@ order: 0
 
 #### QA Metrics 在提高软件质量方面的作用是什么？
 
-[质量检查指标](/zh-cn/wiki/qa-metrics/) 作为**持续反馈机制**来增强[软件质量](/zh-cn/wiki/software-quality/)。通过分析这些指标中的趋势和模式，团队可以查明**特定的质量问题**并主动解决它们。这导致了**精细的测试策略**，更有效地分配资源，重点关注产生最高质量改进的领域。
+[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 作为**持续反馈机制**来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。通过分析这些指标中的趋势和模式，团队可以查明**特定的质量问题**并主动解决它们。这导致了**精细的测试策略**，更有效地分配资源，重点关注产生最高质量改进的领域。
   指标还通过提供质量的共同语言来促进整个团队的**沟通**​​。当每个人都了解指标时，关于质量的讨论就会变得更加**数据驱动**和**客观**。这有助于使团队的努力与交付高质量软件的总体目标保持一致。
-  此外，[质量检查指标](/zh-cn/wiki/qa-metrics/) 可以识别测试过程中的**瓶颈**。通过突出效率低下的问题，团队可以简化他们的工作流程，这通常会导致**缩短上市时间**和**降低成本**。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，指标可以指导**[测试套件](/zh-cn/wiki/test-suite/)** 的优化。例如，他们可以根据**风险和缺陷频率**等因素帮助确定下一步要自动化哪些测试。它们还提供了对自动化测试本身的**稳定性和可靠性**的见解。
-  最终，[质量检查指标](/zh-cn/wiki/qa-metrics/) 在改进[软件质量](/zh-cn/wiki/software-quality/) 中的作用是**利用数据**做出明智的决策，从而在产品和流程中实现**有形的质量增强**。
+  此外，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 可以识别测试过程中的**瓶颈**。通过突出效率低下的问题，团队可以简化他们的工作流程，这通常会导致**缩短上市时间**和**降低成本**。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，指标可以指导**[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 的优化。例如，他们可以根据**风险和缺陷频率**等因素帮助确定下一步要自动化哪些测试。它们还提供了对自动化测试本身的**稳定性和可靠性**的见解。
+  最终，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 在改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 中的作用是**利用数据**做出明智的决策，从而在产品和流程中实现**有形的质量增强**。
 
 #### QA Metrics 如何帮助软件开发过程中的决策制定？
 
-[质量检查指标](/zh-cn/wiki/qa-metrics/) 充当软件开发生命周期中的**决策指南针**。他们提供**定量数据**，让利益相关者了解产品和流程的健康、进展和质量。通过分析这些指标的趋势和模式，团队可以就在何处分配资源、何时释放以及哪些领域需要额外关注或改进做出**明智的决策**。
-  例如，特定模块中的高缺陷密度可能表明需要重构或更严格的测试。像 **[测试用例](/zh-cn/wiki/test-case/) 有效性** 这样的指标可以突出 [测试套件](/zh-cn/wiki/test-suite/) 的效率，促进审查和潜在的检修，以确保测试按预期发现缺陷。 **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 数据可能会揭示未经测试的路径，指导开发人员编写额外的测试，从而降低未被检测到的[bugs](/zh-cn/wiki/bug/) 的风险。
-  在敏捷环境中，指标可以帮助确定团队是否正在实现发布目标，以及测试策略是否与快速[迭代](/zh-cn/wiki/iteration/)周期保持一致。指标还可以表明需要调整测试实践以更好地支持持续集成和交付。
-  最终，[质量检查指标](/zh-cn/wiki/qa-metrics/) 使团队能够**引导项目**，清楚地了解当前情况，**预测潜在问题**，并**衡量流程变更的影响**。这将带来更好的资源管理、更高的产品质量以及更高效的开发流程。
+[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 充当软件开发生命周期中的**决策指南针**。他们提供**定量数据**，让利益相关者了解产品和流程的健康、进展和质量。通过分析这些指标的趋势和模式，团队可以就在何处分配资源、何时释放以及哪些领域需要额外关注或改进做出**明智的决策**。
+  例如，特定模块中的高缺陷密度可能表明需要重构或更严格的测试。像 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 有效性** 这样的指标可以突出 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的效率，促进审查和潜在的检修，以确保测试按预期发现缺陷。 **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)** 数据可能会揭示未经测试的路径，指导开发人员编写额外的测试，从而降低未被检测到的[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的风险。
+  在敏捷环境中，指标可以帮助确定团队是否正在实现发布目标，以及测试策略是否与快速[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)周期保持一致。指标还可以表明需要调整测试实践以更好地支持持续集成和交付。
+  最终，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 使团队能够**引导项目**，清楚地了解当前情况，**预测潜在问题**，并**衡量流程变更的影响**。这将带来更好的资源管理、更高的产品质量以及更高效的开发流程。
 
 ### QA 指标的类型
 
 #### QA 指标有哪些不同类型？
 
-除常见类型外，[质量检查指标](/zh-cn/wiki/qa-metrics/) 的不同类型包括：
+除常见类型外，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 的不同类型包括：
 
 - **平均检测时间 (MTTD)**：识别缺陷所需的平均时间。
 - **平均修复时间 (MTTR)**：修复缺陷所需的平均时间。
-- **[测试执行](/zh-cn/wiki/test-execution/) Time**：运行一组测试所需的持续时间。
-- **自动化[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：自动化测试用例的百分比。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) Time**：运行一组测试所需的持续时间。
+- **自动化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：自动化测试用例的百分比。
 - **不稳定分数**：测试结果在不更改代码的情况下发生变化的频率。
 - **构建成功率**：一段时间内成功构建的百分比。
-- **失败[测试用例](/zh-cn/wiki/test-case/)** ：在给定周期内未通过的测试数量。
+- **失败[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：在给定周期内未通过的测试数量。
 - **测试效率**：运行的测试数量与发现的缺陷数量的比率。
 - **需求覆盖率**：测试覆盖需求的程度。
-- **[严重性](/zh-cn/wiki/severity/) 和 [Priority](/zh-cn/wiki/priority/)** 的缺陷：根据其影响和紧急程度对缺陷进行分类。
+- **[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和 [Priority](https://inaodeng.com/zh-cn/wiki/priority/)** 的缺陷：根据其影响和紧急程度对缺陷进行分类。
 - **缺陷泄漏**：发布后发现的缺陷数量与测试期间发现的缺陷数量。
 - **缺陷拒绝率**：报告的问题不被视为实际缺陷的百分比。
 - **缺陷消除效率 (DRE)**：衡量开发过程中缺陷消除的有效性。
 - **质量成本 (CoQ)**：与确保和不确保质量相关的成本。
 - **更改量**：一段时间内进行的代码更改数量。
 - **测试与开发工作量比率**：测试与开发所花费的工作量的比较。
-- **发布后缺陷**：产品发布后用户报告的缺陷数量。 这些指标提供了测试过程的详细视图，使团队能够查明需要改进的特定领域并保持 [软件质量](/zh-cn/wiki/software-quality/) 中的高标准。
+- **发布后缺陷**：产品发布后用户报告的缺陷数量。 这些指标提供了测试过程的详细视图，使团队能够查明需要改进的特定领域并保持 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 中的高标准。
 
 #### 流程、项目和产品指标之间有什么区别？
 
-了解**流程**、**项目**和**产品指标**之间的区别对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师有效应用[质量检查指标](/zh-cn/wiki/qa-metrics/) 至关重要。
+了解**流程**、**项目**和**产品指标**之间的区别对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师有效应用[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 至关重要。
 
 - **流程指标**专注于 **效率和效果**测试过程本身。他们衡量最终产品流程的健康状况，例如每天执行的测试用例数量、运行测试所需的时间或自动测试与手动测试的百分比。
 
@@ -178,7 +178,7 @@ order: 0
 ```
   defectDensity = totalDefects / sizeOfProduct
 ```
-每种类型的指标都有不同的目的，并提供对软件[测试自动化](/zh-cn/wiki/test-automation/)各个方面的见解。通过正确理解和利用这些指标，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保采用平衡的方法来提高流程效率、项目管理和产品质量。
+每种类型的指标都有不同的目的，并提供对软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)各个方面的见解。通过正确理解和利用这些指标，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保采用平衡的方法来提高流程效率、项目管理和产品质量。
 
 - **流程指标**专注于 **效率和效果**测试过程本身。他们衡量最终产品流程的健康状况，例如每天执行的测试用例数量、运行测试所需的时间或自动测试与手动测试的百分比。
 
@@ -193,38 +193,38 @@ order: 0
 ```
   defectDensity = totalDefects / sizeOfCode
 ```
-[测试用例](/zh-cn/wiki/test-case/) 有效性衡量**识别缺陷的测试比例**与执行的测试总数相比。它是 [测试用例](/zh-cn/wiki/test-case/) 质量及其发现缺陷能力的直接指标。
+[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 有效性衡量**识别缺陷的测试比例**与执行的测试总数相比。它是 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 质量及其发现缺陷能力的直接指标。
 
 ```
   testCaseEffectiveness = (totalDefectsFound / totalTestsRun) * 100
 ```
-[代码覆盖率](/zh-cn/wiki/code-coverage/) 评估**源代码测试的程度**。它是一个可以用百分比表示的指标，指示 [测试套件](/zh-cn/wiki/test-suite/) 使用了多少代码库。高[代码覆盖率](/zh-cn/wiki/code-coverage/) 可能意味着未检测到[bugs](/zh-cn/wiki/bug/) 的可能性较低。
+[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 评估**源代码测试的程度**。它是一个可以用百分比表示的指标，指示 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 使用了多少代码库。高[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 可能意味着未检测到[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的可能性较低。
 
 ```
   codeCoverage = (linesOfCodeTested / totalLinesOfCode) * 100
 ```
-当一起分析这些指标时，可以提供测试过程有效性和可能需要额外关注的领域的全面视图。它们对于维持 [软件质量](/zh-cn/wiki/software-quality/) 高标准并确保测试工作集中且高效至关重要。
+当一起分析这些指标时，可以提供测试过程有效性和可能需要额外关注的领域的全面视图。它们对于维持 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 高标准并确保测试工作集中且高效至关重要。
 
 #### 敏捷方法中使用的 QA 指标有哪些示例？
 
-在敏捷方法论中，[质量检查指标](/zh-cn/wiki/qa-metrics/) 通常关注开发过程和产品质量的持续改进。以下是一些示例：
+在敏捷方法论中，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 通常关注开发过程和产品质量的持续改进。以下是一些示例：
 
 - **Sprint Burndown**：跟踪冲刺期间工作的完成情况，帮助团队了解他们是否按进度完成承诺。
 - **速度**：衡量团队在冲刺期间完成的工作量，有助于未来的冲刺计划。
 - **缺陷逃逸率**：计算发布后发现的问题与冲刺期间发现的问题的百分比，表明测试的有效性。
-- **[测试执行](/zh-cn/wiki/test-execution/)** ：监控特定时间段内运行的测试数量，提供对团队测试工作的深入了解。
-- **自动化[测试覆盖率](/zh-cn/wiki/test-coverage/)**：评估自动化测试覆盖代码库的程度，突出显示潜在的风险区域。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)** ：监控特定时间段内运行的测试数量，提供对团队测试工作的深入了解。
+- **自动化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：评估自动化测试覆盖代码库的程度，突出显示潜在的风险区域。
 - **平均检测时间 (MTTD)**：检测问题所需的平均时间，反映测试过程的响应能力。
 - **平均修复时间 (MTTR)**：修复问题所需的平均时间，显示团队解决缺陷的效率。
 - **失败的部署**：计算不成功的发布数量，这可以表明 CI/CD 管道或测试过程中的问题。
 - **变更前置时间**：测量从代码提交到代码在生产中成功运行的时间，提供对交付过程整体速度的洞察。
-- **变更失败率**：导致生产失败的变更百分比，有助于衡量发布过程的稳定性。 跟踪和分析这些指标后，可以指导[测试自动化](/zh-cn/wiki/test-automation/) 工程师优化其测试策略并改善[敏捷开发](/zh-cn/wiki/agile-development/) 流程的整体健康状况。
+- **变更失败率**：导致生产失败的变更百分比，有助于衡量发布过程的稳定性。 跟踪和分析这些指标后，可以指导[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师优化其测试策略并改善[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 流程的整体健康状况。
 
 ### 实现与分析
 
 #### QA Metrics 如何在软件测试项目中实施？
 
-在[软件测试](/zh-cn/wiki/software-testing/) 项目中实现[质量检查指标](/zh-cn/wiki/qa-metrics/) 涉及几个步骤：
+在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 项目中实现[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 涉及几个步骤：
 
 1. **定义目标**：通过指标确定您想要实现的目标，与项目目标保持一致。
 2. **选择相关指标**：选择能够深入了解测试过程的质量、效率和有效性的指标。
@@ -237,14 +237,14 @@ order: 0
 
 #### 通常使用哪些工具来跟踪和分析 QA 指标？
 
-为了有效地跟踪和分析[质量检查指标](/zh-cn/wiki/qa-metrics/)，自动化工程师通常使用各种工具，每种工具都适合测试生命周期的不同方面：
+为了有效地跟踪和分析[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/)，自动化工程师通常使用各种工具，每种工具都适合测试生命周期的不同方面：
 
-- **[jira](/zh-cn/wiki/jira/)** ：广泛用于错误跟踪、问题跟踪和项目管理。它允许创建自定义仪表板以可视化 QA 指标。
+- **[jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：广泛用于错误跟踪、问题跟踪和项目管理。它允许创建自定义仪表板以可视化 QA 指标。
 - **TestRail**：一种测试管理工具，可为您的测试用例、计划和运行提供全面的报告和统计数据。
 - **Zephyr**：JIRA 的附加组件，它使团队能够直接在 JIRA 中管理测试，提供对测试进度的实时洞察。
 - **Quality Center/ALM**：Micro Focus 的测试管理工具，支持需求管理、测试计划、测试执行和缺陷跟踪。
 - **Jenkins**：一种开源 CI/CD 工具，可用于自动化软件部署和测试，并提供可用于测试结果跟踪的插件。
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：通常用于自动化 Web 应用程序，它可以与 TestNG 或 JUnit 等工具集成以生成测试执行报告。
 - **SonarQube**：分析源代码质量，提供有关代码覆盖率、技术债务和代码气味的指标。
 - **GitLab CI/CD**：提供可配置为运行测试并提供有关测试结果和覆盖率的报告的管道。
 - **Grafana**：用于从各种数据源创建仪表板和图表，包括测试结果和性能指标。
@@ -252,15 +252,15 @@ order: 0
 
 #### 如何使用 QA 指标来确定测试过程中需要改进的领域？
 
-[质量检查指标](/zh-cn/wiki/qa-metrics/) 可以通过突出测试过程中的低效率和瓶颈来查明需要增强的领域。例如，如果**缺陷逃逸率**很高，则可能表明[测试覆盖率](/zh-cn/wiki/test-coverage/)不足或[测试用例](/zh-cn/wiki/test-case/)设计不佳，表明需要重新审视测试计划和执行策略。
-  较低的**测试通过百分比**可能会揭示[片状测试](/zh-cn/wiki/flaky-test/)或不稳定的[测试环境](/zh-cn/wiki/test-environment/)，从而促使对测试可靠性和基础设施稳健性进行审查。 **平均检测时间** (MTTD) 和**平均修复时间** (MTTR) 等指标可能分别暴露出对故障的缓慢响应和漫长的解决时间，这表明需要更快的反馈机制和更有效的问题解决方法。
-  **[测试自动化](/zh-cn/wiki/test-automation/) 百分比**可以识别在仍然依赖[手动测试](/zh-cn/wiki/manual-testing/) 的领域中提高自动化的机会，从而有可能缩短周期时间并为更复杂的[测试场景](/zh-cn/wiki/test-scenario/) 释放资源。相反，自动化测试的高维护成本可能表明自动化套件需要优化或重构。
-  通过分析一段时间内的趋势，[质量检查指标](/zh-cn/wiki/qa-metrics/) 还可以发现单个快照中可能不明显的模式，例如特定模块中[bug](/zh-cn/wiki/bug/) 比率的增加，这可能表明代码复杂性或设计缺陷方面存在更深层次的问题。
-  总之，[质量检查指标](/zh-cn/wiki/qa-metrics/) 充当诊断工具，提供有关测试过程健康状况的可行见解，并指导测试工程师进行有针对性的改进，以提高效率、有效性和整体[软件质量](/zh-cn/wiki/software-quality/)。
+[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 可以通过突出测试过程中的低效率和瓶颈来查明需要增强的领域。例如，如果**缺陷逃逸率**很高，则可能表明[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)不足或[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)设计不佳，表明需要重新审视测试计划和执行策略。
+  较低的**测试通过百分比**可能会揭示[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)或不稳定的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，从而促使对测试可靠性和基础设施稳健性进行审查。 **平均检测时间** (MTTD) 和**平均修复时间** (MTTR) 等指标可能分别暴露出对故障的缓慢响应和漫长的解决时间，这表明需要更快的反馈机制和更有效的问题解决方法。
+  **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 百分比**可以识别在仍然依赖[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/) 的领域中提高自动化的机会，从而有可能缩短周期时间并为更复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 释放资源。相反，自动化测试的高维护成本可能表明自动化套件需要优化或重构。
+  通过分析一段时间内的趋势，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 还可以发现单个快照中可能不明显的模式，例如特定模块中[bug](https://inaodeng.com/zh-cn/wiki/bug/) 比率的增加，这可能表明代码复杂性或设计缺陷方面存在更深层次的问题。
+  总之，[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 充当诊断工具，提供有关测试过程健康状况的可行见解，并指导测试工程师进行有针对性的改进，以提高效率、有效性和整体[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。
 
 #### 分析 QA Metrics 数据的步骤是什么？
 
-要有效分析[质量检查指标](/zh-cn/wiki/qa-metrics/)数据：
+要有效分析[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/)数据：
 
 1. **收集**来自测试工具和存储库的相关数据。
 
@@ -284,7 +284,7 @@ order: 0
 
 11. **制定**基于分析的行动计划，以解决任何问题或发挥优势。
 
-12. **追踪**随着时间的推移实施的变更的影响以验证改进。 请记住关注可操作的见解，这些见解可以带来测试过程的切实改进。避免迷失在无助于增强 [软件质量](/zh-cn/wiki/software-quality/) 和效率的总体目标的数据中。
+12. **追踪**随着时间的推移实施的变更的影响以验证改进。 请记住关注可操作的见解，这些见解可以带来测试过程的切实改进。避免迷失在无助于增强 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和效率的总体目标的数据中。
 
 1. **收集**来自测试工具和存储库的相关数据。
 
@@ -314,7 +314,7 @@ order: 0
 
 #### 有效使用 QA Metrics 有哪些挑战？
 
-有效地使用 [质量检查指标](/zh-cn/wiki/qa-metrics/) 会带来一些挑战：
+有效地使用 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 会带来一些挑战：
 
 - **数据过载**：收集太多数据可能会让团队不堪重负，从而很难专注于真正重要的指标。
 - **相关性**：指标必须与项目目标相关。不相关的指标可能会误导团队并浪费资源。
@@ -348,20 +348,20 @@ order: 0
 
 #### 如何克服这些挑战？
 
-克服有效使用 [质量检查指标](/zh-cn/wiki/qa-metrics/) 的挑战需要采取战略方法：
+克服有效使用 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 的挑战需要采取战略方法：
 
-- **将指标与工具集成**：通过与 [测试管理](/zh-cn/wiki/test-management/) 和 CI/CD 工具集成，自动收集和报告指标，以减少手动工作和错误。
+- **将指标与工具集成**：通过与 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 和 CI/CD 工具集成，自动收集和报告指标，以减少手动工作和错误。
 - **自定义指标**：根据项目或组织的特定需求定制指标。避免一刀切的指标，并确保它们反映您的测试工作的目标。
 - **教育团队**：确保所有团队成员了解每个指标的目的和用途。这有助于防止误解和误用。
 - **结合定性和定量分析**：使用指标作为更深入调查的起点。将它们与团队的定性见解相结合，以便更全面地了解测试过程。
 - **定期审查和更新**：持续审查指标的相关性并根据需要进行更新，以适应不断变化的项目目标和市场条件。
 - **避免指标固定**：关注整体质量和结果，而不是过分强调指标本身。指标应该为决策提供信息，而不是决定决策。
 - **可行的见解**：使用指标来得出可行的见解。它们应该带来明确的改进步骤，而不是仅仅被视为数字。
-- **平衡**：在太少和太多指标之间保持平衡。过多的指标可能会与测量不足一样适得其反。 通过解决这些问题，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高[质量检查指标](/zh-cn/wiki/qa-metrics/) 的有效性，从而改善决策和[软件质量](/zh-cn/wiki/software-quality/)。
+- **平衡**：在太少和太多指标之间保持平衡。过多的指标可能会与测量不足一样适得其反。 通过解决这些问题，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以提高[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 的有效性，从而改善决策和[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。
 
 #### 使用 QA 指标的最佳实践有哪些？
 
-在[测试自动化](/zh-cn/wiki/test-automation/) 中使用[质量检查指标](/zh-cn/wiki/qa-metrics/) 的最佳实践包括：
+在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中使用[质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 的最佳实践包括：
 
 - **使指标与业务目标保持一致**：确保您跟踪的指标与业务目标直接相关并提供可操作的见解。
 - **选择相关指标**：选择与您的项目相关并将推动有意义的改进的指标。避免收集不会产生可行结果的数据。
@@ -373,12 +373,12 @@ order: 0
 - **避免虚荣指标**：重点关注那些能够深入了解测试过程的质量和有效性的指标，而不是那些纸面上看起来不错但不能推动决策的指标。
 - **使用指标来改进，而不是惩罚**：指标应该用于指导改进和了解趋势，而不是责备或惩罚团队成员。
 - **考虑上下文**：始终在项目上下文中解释指标。没有背景的数字可能会导致误解和错误的决策。
-- **维护数据完整性**：确保用于计算指标的数据准确可靠。垃圾进来，垃圾出去。 通过遵循这些最佳实践，您可以确保 [质量检查指标](/zh-cn/wiki/qa-metrics/) 成为您的 [测试自动化](/zh-cn/wiki/test-automation/) 策略中的宝贵工具，推动改进并帮助交付高质量的软件。
+- **维护数据完整性**：确保用于计算指标的数据准确可靠。垃圾进来，垃圾出去。 通过遵循这些最佳实践，您可以确保 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 成为您的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略中的宝贵工具，推动改进并帮助交付高质量的软件。
 
 #### QA 指标如何被滥用或误解？
 
-如果在没有上下文的情况下解释 [质量检查指标](/zh-cn/wiki/qa-metrics/) 或将其用作成功的唯一指标，则 [质量检查指标](/zh-cn/wiki/qa-metrics/) 可能会被误用或误解。当孤立地看待指标时，就会出现**误解**，从而导致对项目的质量或进度得出错误的结论。例如，如果测试不是为了有效地挑战代码的逻辑而设计的，那么高[代码覆盖率](/zh-cn/wiki/code-coverage/)可能会给人一种错误的安全感。
-  当指标成为目标时，**滥用**可能会发生。这就是所谓的**古德哈特定律**：当一项措施成为目标时，它就不再是一个好的措施。例如，如果执行的[测试用例](/zh-cn/wiki/test-case/) 数量成为目标，测试人员可能会关注数量而不是质量，可能会忽略测试的关键但难以量化的方面。
+如果在没有上下文的情况下解释 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 或将其用作成功的唯一指标，则 [质量检查指标](https://inaodeng.com/zh-cn/wiki/qa-metrics/) 可能会被误用或误解。当孤立地看待指标时，就会出现**误解**，从而导致对项目的质量或进度得出错误的结论。例如，如果测试不是为了有效地挑战代码的逻辑而设计的，那么高[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)可能会给人一种错误的安全感。
+  当指标成为目标时，**滥用**可能会发生。这就是所谓的**古德哈特定律**：当一项措施成为目标时，它就不再是一个好的措施。例如，如果执行的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 数量成为目标，测试人员可能会关注数量而不是质量，可能会忽略测试的关键但难以量化的方面。
   如果指标与项目目标不一致，也可能会产生“误导”。低缺陷密度可能意味着高质量，但如果没有测试最关键的功能，该指标就不能真实反映系统的可靠性。
-  **玩弄系统**是另一个风险，团队成员操纵测试活动来实现指标目标，而没有真正提高质量。这可能会导致一些实践，例如编写简单的测试来增强[代码覆盖率](/zh-cn/wiki/code-coverage/)或推迟缺陷报告以保持较低的缺陷数量。
+  **玩弄系统**是另一个风险，团队成员操纵测试活动来实现指标目标，而没有真正提高质量。这可能会导致一些实践，例如编写简单的测试来增强[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)或推迟缺陷报告以保持较低的缺陷数量。
   为了避免这些陷阱，至关重要的是使用指标作为指标而不是绝对值，始终与其他定性评估相结合，并清楚地了解其局限性。指标应该为决策提供信息，而不是决定决策。

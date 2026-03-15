@@ -50,61 +50,61 @@ order: 0
 
 #### 什么是左移测试？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 是将测试活动尽早集成到软件开发生命周期 (SDLC) 中的做法。它强调通过在问题升级为更大问题之前识别和解决问题来**预防胜于检测**。这种方法主张测试**与开发同时进行**，而不是作为后续阶段进行。
-  为了实施 [左移测试](/zh-cn/wiki/shift-left-testing/)，团队通常采用 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 和 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 方法。这些涉及在实际代码之前编写测试，确保从一开始就考虑到测试来开发代码。此外，**[单元测试](/zh-cn/wiki/unit-testing/)** 被大量使用，开发人员在开发时为各个代码单元编写和运行测试。
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 是将测试活动尽早集成到软件开发生命周期 (SDLC) 中的做法。它强调通过在问题升级为更大问题之前识别和解决问题来**预防胜于检测**。这种方法主张测试**与开发同时进行**，而不是作为后续阶段进行。
+  为了实施 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)，团队通常采用 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 和 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 方法。这些涉及在实际代码之前编写测试，确保从一开始就考虑到测试来开发代码。此外，**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 被大量使用，开发人员在开发时为各个代码单元编写和运行测试。
   **开发人员、测试人员和运营人员之间的协作**至关重要。开发人员承担更多的测试职责，而测试人员则更早地参与开发过程，为需求和设计讨论做出贡献。 **结对编程**和**群体编程**实践促进了这种协作。
-  结合**自动化**是[左移测试](/zh-cn/wiki/shift-left-testing/) 的关键。自动化[测试套件](/zh-cn/wiki/test-suite/)从项目一开始就被构建和扩展。这些自动化测试集成到 **CI/CD 管道**中，确保每次提交时都对代码进行持续测试。
+  结合**自动化**是[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的关键。自动化[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)从项目一开始就被构建和扩展。这些自动化测试集成到 **CI/CD 管道**中，确保每次提交时都对代码进行持续测试。
   为了克服开发人员工作量增加和文化变革潜在阻力等挑战，团队应重点关注“左移实践的增量采用”，并确保“充分的培训”和“资源分配”。保持与右移测试的平衡也很重要，其中生产环境中的监视和测试用于捕获实际使用的反馈。
 
 #### 为什么左移测试在软件开发中很重要？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 在软件开发中对于**早期缺陷检测**和**缓解**至关重要。通过将测试集成到开发生命周期的早期阶段，团队可以在问题不那么复杂且修复成本较低时识别和解决问题。这种方法促进了**质量文化**，鼓励开发人员从一开始就考虑可测试性和质量，而不是事后才考虑。
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 在软件开发中对于**早期缺陷检测**和**缓解**至关重要。通过将测试集成到开发生命周期的早期阶段，团队可以在问题不那么复杂且修复成本较低时识别和解决问题。这种方法促进了**质量文化**，鼓励开发人员从一开始就考虑可测试性和质量，而不是事后才考虑。
   合并左移实践意味着测试不再是最后的障碍，而是开发的一个持续的方面。这种**持续的反馈循环**增强了开发人员和测试人员之间的协作，从而形成更具**凝聚力和高效的团队活力**。因此，开发过程变得更加主动而不是被动，从而降低了周期后期出现重大缺陷或问题的风险。
-  此外，[左移测试](/zh-cn/wiki/shift-left-testing/) 与敏捷和 DevOps 等**现代开发实践**保持一致，其中快速[迭代](/zh-cn/wiki/iteration/) 和持续交付是关键。通过确保测试跟上开发速度，它使团队能够在不影响质量的情况下保持交付节奏。
-  为了有效地实施[左移测试](/zh-cn/wiki/shift-left-testing/)，团队通常依靠**自动化**来处理重复且详细的[测试用例](/zh-cn/wiki/test-case/)，从而使测试人员能够专注于更复杂和高价值的测试活动。这种对资源的战略性利用不仅提高了效率，而且还利用了自动化工具和人类洞察力的优势。
-  总之，[左移测试](/zh-cn/wiki/shift-left-testing/) 是一种战略方法，可促进**早期[质量保证](/zh-cn/wiki/quality-assurance/)**、**团队协作**和**高效的资源利用**，所有这些对于及时交付高质量软件至关重要。
+  此外，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 与敏捷和 DevOps 等**现代开发实践**保持一致，其中快速[迭代](https://inaodeng.com/zh-cn/wiki/iteration/) 和持续交付是关键。通过确保测试跟上开发速度，它使团队能够在不影响质量的情况下保持交付节奏。
+  为了有效地实施[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)，团队通常依靠**自动化**来处理重复且详细的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，从而使测试人员能够专注于更复杂和高价值的测试活动。这种对资源的战略性利用不仅提高了效率，而且还利用了自动化工具和人类洞察力的优势。
+  总之，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 是一种战略方法，可促进**早期[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)**、**团队协作**和**高效的资源利用**，所有这些对于及时交付高质量软件至关重要。
 
 #### 左移测试有什么好处？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 提供了多项优势，可以提高软件开发生命周期 (SDLC) 的整体效率和有效性：
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 提供了多项优势，可以提高软件开发生命周期 (SDLC) 的整体效率和有效性：
 
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：在开发过程的早期发现错误，与后期阶段相比，减少了修复它们的成本和工作量。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：在开发过程的早期发现错误，与后期阶段相比，减少了修复它们的成本和工作量。
 - **改进协作**：鼓励开发人员、测试人员和运营人员之间更密切的协作，促进更好的沟通和对项目目标和要求的理解。
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：允许更全面的测试覆盖范围，因为测试更早开始并且可以与开发一起进行。
+- **增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：允许更全面的测试覆盖范围，因为测试更早开始并且可以与开发一起进行。
 - **更快的反馈循环**：向开发人员提供有关代码质量和功能的快速反馈，从而实现更快的迭代和改进。
 - **缩短上市时间**：通过将测试集成到开发的早期阶段，加速功能的交付和错误修复，从而缩短发布周期。
-- **增强的[质量保证](/zh-cn/wiki/quality-assurance/)** ：促进渗透到整个 SDLC 的质量第一思维，从而带来更高质量的软件产品。
+- **增强的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)** ：促进渗透到整个 SDLC 的质量第一思维，从而带来更高质量的软件产品。
 - **成本节省**：减少与后期缺陷修复和部署后问题导致的潜在停机相关的成本。
-- **风险缓解**：有助于及早识别和缓解风险，这可以防止项目延误并确保遵守行业标准和法规。 通过将这些优势融入到 SDLC 中，[左移测试](/zh-cn/wiki/shift-left-testing/) 极大地促进了更加稳健、高效和可靠的软件开发流程。
+- **风险缓解**：有助于及早识别和缓解风险，这可以防止项目延误并确保遵守行业标准和法规。 通过将这些优势融入到 SDLC 中，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 极大地促进了更加稳健、高效和可靠的软件开发流程。
 
 #### 左移测试如何提高软件产品的质量？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 通过在开发生命周期的早期和经常嵌入测试来增强[软件质量](/zh-cn/wiki/software-quality/)。这种主动方法可以实现**早期缺陷检测**和解决，这比在周期后期修复问题更具成本效益且耗时更少。通过将测试集成到开发的初始阶段，团队可以确保代码从一开始就稳健，从而减少投入生产的 [bugs](/zh-cn/wiki/bug/)** 的数量。
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 通过在开发生命周期的早期和经常嵌入测试来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。这种主动方法可以实现**早期缺陷检测**和解决，这比在周期后期修复问题更具成本效益且耗时更少。通过将测试集成到开发的初始阶段，团队可以确保代码从一开始就稳健，从而减少投入生产的 [bugs](https://inaodeng.com/zh-cn/wiki/bug/)** 的数量。
   结合左移实践，开发人员可以获得有关其代码的即时反馈，从而培养**质量文化**并共同承担产品可靠性的责任。开发人员和测试人员之间的这种协作可以更全面地了解代码库及其潜在漏洞，从而有助于**更高的整体软件完整性**。
-  此外，[左移测试](/zh-cn/wiki/shift-left-testing/) 鼓励使用**[自动化测试](/zh-cn/wiki/automated-testing/) 框架**和工具，这些框架和工具可以快速且可重复地验证新功能和[回归测试](/zh-cn/wiki/regression-testing/)。自动化不仅加快了测试过程，还确保了[测试执行](/zh-cn/wiki/test-execution/)的一致性和准确性，从而使产品更加稳定和可靠。
-  通过从一开始就关注质量，[左移测试](/zh-cn/wiki/shift-left-testing/) 最大限度地降低了后期意外的风险，并确保软件的构建具有**强大的质量基础**，最终产生满足用户需求和期望的卓越产品。
+  此外，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 鼓励使用**[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 框架**和工具，这些框架和工具可以快速且可重复地验证新功能和[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)。自动化不仅加快了测试过程，还确保了[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的一致性和准确性，从而使产品更加稳定和可靠。
+  通过从一开始就关注质量，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 最大限度地降低了后期意外的风险，并确保软件的构建具有**强大的质量基础**，最终产生满足用户需求和期望的卓越产品。
 
 #### 左移测试的关键原则是什么？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 以几个关键原则为基础：
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 以几个关键原则为基础：
 
 - **早期测试**：在开发生命周期中尽快开始测试，最好是在需求和设计阶段。
 - **协作**：培养一个协作环境，让开发人员、测试人员和业务分析师一起工作以了解需求并创建测试用例。
-- **[测试自动化](/zh-cn/wiki/test-automation/)** ：利用自动化频繁且一致地运行测试，从而实现快速反馈和回归测试。
+- **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** ：利用自动化频繁且一致地运行测试，从而实现快速反馈和回归测试。
 - **持续测试**：将测试集成到持续集成管道中，以确保新代码在编写时得到测试。
 - **预防胜于检测**：专注于预防缺陷，而不是在周期后期检测缺陷，后者成本更高且耗时。
 - **质量责任**：鼓励所有团队成员对质量负责，而不仅仅是测试人员。
 - **反馈循环**：实施短反馈循环以快速识别和解决问题，从而更有效地解决问题。
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：在开发的同时逐步进行测试，以避免未经测试的代码累积，从而导致风险增加。
-- **左移心态**：培养一种从项目一开始就重视早期测试和质量考虑的心态。 通过遵守这些原则，[左移测试](/zh-cn/wiki/shift-left-testing/) 旨在改进[软件质量](/zh-cn/wiki/software-quality/)、缩短上市时间并降低总体项目成本。
+- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** ：在开发的同时逐步进行测试，以避免未经测试的代码累积，从而导致风险增加。
+- **左移心态**：培养一种从项目一开始就重视早期测试和质量考虑的心态。 通过遵守这些原则，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 旨在改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)、缩短上市时间并降低总体项目成本。
 
 ### 实施和策略
 
 #### 在软件开发过程中如何实施左移测试？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 是通过将测试活动尽早集成到软件开发生命周期 (SDLC) 中来实现的。操作方法如下：
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 是通过将测试活动尽早集成到软件开发生命周期 (SDLC) 中来实现的。操作方法如下：
 
-1. **将测试嵌入需求阶段**：与利益相关者合作定义可测试的需求。使用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（例如 Cucumber）来编写可执行规范。
+1. **将测试嵌入需求阶段**：与利益相关者合作定义可测试的需求。使用 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 框架（例如 Cucumber）来编写可执行规范。
 
 ```
     Feature: User login
@@ -114,7 +114,7 @@ order: 0
         Then they are granted access to the dashboard
 ```
 
-2. **引入[单元测试](/zh-cn/wiki/unit-testing/)**：鼓励开发人员在代码旁边编写单元测试。使用 JUnit for Java 或 Mocha for JavaScript 等测试框架。
+2. **引入[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：鼓励开发人员在代码旁边编写单元测试。使用 JUnit for Java 或 Mocha for JavaScript 等测试框架。
 
 ```
     describe('Calculator', () => {
@@ -124,7 +124,7 @@ order: 0
     });
 ```
 
-3. **实现[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在编写使测试通过的代码之前编写测试。这确保了代码从一开始就被设计为可测试的。
+3. **实现[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：在编写使测试通过的代码之前编写测试。这确保了代码从一开始就被设计为可测试的。
 4. **自动化构建过程**：使用 Jenkins 或 GitHub Actions 等工具自动构建并在每次提交时运行测试，确保立即反馈代码更改。
 
 ```
@@ -140,9 +140,9 @@ order: 0
 
 5. **集成静态代码分析**：在将代码合并到主分支之前，合并 SonarQube 等工具来分析代码是否存在潜在问题。
 6. **促进协作**：使用结对编程和代码审查来培养以质量为中心的文化，其中测试是共同的责任。
-7. **监控和测量**：跟踪 [测试覆盖率](/zh-cn/wiki/test-coverage/) 和缺陷率等关键指标，以持续改进测试过程。 通过向左移动测试，您可以确保尽早发现并解决缺陷，从而减少稍后在 SDLC 中修复这些缺陷的成本和工作量。
+7. **监控和测量**：跟踪 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和缺陷率等关键指标，以持续改进测试过程。 通过向左移动测试，您可以确保尽早发现并解决缺陷，从而减少稍后在 SDLC 中修复这些缺陷的成本和工作量。
 
-1. **将测试嵌入需求阶段**：与利益相关者合作定义可测试的需求。使用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 框架（例如 Cucumber）来编写可执行规范。
+1. **将测试嵌入需求阶段**：与利益相关者合作定义可测试的需求。使用 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 框架（例如 Cucumber）来编写可执行规范。
 
 ```
     Feature: User login
@@ -152,7 +152,7 @@ order: 0
         Then they are granted access to the dashboard
 ```
 
-2. **引入[单元测试](/zh-cn/wiki/unit-testing/)**：鼓励开发人员在代码旁边编写单元测试。使用 JUnit for Java 或 Mocha for JavaScript 等测试框架。
+2. **引入[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：鼓励开发人员在代码旁边编写单元测试。使用 JUnit for Java 或 Mocha for JavaScript 等测试框架。
 
 ```
     describe('Calculator', () => {
@@ -162,7 +162,7 @@ order: 0
     });
 ```
 
-3. **实现[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在编写使测试通过的代码之前编写测试。这确保了代码从一开始就被设计为可测试的。
+3. **实现[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：在编写使测试通过的代码之前编写测试。这确保了代码从一开始就被设计为可测试的。
 4. **自动化构建过程**：使用 Jenkins 或 GitHub Actions 等工具自动构建并在每次提交时运行测试，确保立即反馈代码更改。
 
 ```
@@ -178,11 +178,11 @@ order: 0
 
 #### 成功的左移测试有哪些策略？
 
-为了确保成功**[左移测试](/zh-cn/wiki/shift-left-testing/)**，请考虑以下策略：
+为了确保成功**[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)**，请考虑以下策略：
 
 - **尽早嵌入测试**：将测试集成到开发的初始阶段。鼓励开发人员编写单元测试并参与测试设计。
 - **协作**：培养开发人员和测试人员密切合作的协作环境。使用结对编程和联合设计会议来分享知识和责任。
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：采用 TDD 实践，在代码之前编写测试，确保代码从一开始就设计为通过测试。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：采用 TDD 实践，在代码之前编写测试，确保代码从一开始就设计为通过测试。
 - **明智地自动化**：专注于在正确的级别自动执行正确的测试。优先考虑可以快速运行并提供快速反馈的单元和集成测试。
 
 // TypeScript 中的简单自动化单元测试示例
@@ -201,9 +201,9 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 左移测试如何适应敏捷和 DevOps 方法？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 通过在软件开发生命周期中尽早且经常嵌入测试，与 **Agile** 和 **DevOps** 无缝集成。在敏捷中，它与迭代开发模型保持一致，确保测试与开发同时进行，从而实现快速反馈和持续改进。这种方法支持敏捷对**增量质量**和**以用户为中心的产品**的强调。
-  在 **DevOps** 中，[左移测试](/zh-cn/wiki/shift-left-testing/) 是一个自然的选择，因为它增强了开发、测试和运营之间的 **协作**。它通过自动化测试并将其作为集成过程的一部分运行来为 **CI/CD 管道**做出贡献，这有助于更早地识别缺陷。这种做法不仅减少了部署时间，而且保持了软件在生产中的稳定性和可靠性。
-  通过合并[左移测试](/zh-cn/wiki/shift-left-testing/)，敏捷和DevOps都受益于**缩短上市时间**、**降低成本**和**提高产品质量**。它鼓励对质量采取“预防性方法”，而不是被动的方法，从而在整个团队中培养一种共同承担质量责任的文化。
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 通过在软件开发生命周期中尽早且经常嵌入测试，与 **Agile** 和 **DevOps** 无缝集成。在敏捷中，它与迭代开发模型保持一致，确保测试与开发同时进行，从而实现快速反馈和持续改进。这种方法支持敏捷对**增量质量**和**以用户为中心的产品**的强调。
+  在 **DevOps** 中，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 是一个自然的选择，因为它增强了开发、测试和运营之间的 **协作**。它通过自动化测试并将其作为集成过程的一部分运行来为 **CI/CD 管道**做出贡献，这有助于更早地识别缺陷。这种做法不仅减少了部署时间，而且保持了软件在生产中的稳定性和可靠性。
+  通过合并[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)，敏捷和DevOps都受益于**缩短上市时间**、**降低成本**和**提高产品质量**。它鼓励对质量采取“预防性方法”，而不是被动的方法，从而在整个团队中培养一种共同承担质量责任的文化。
 
 ```
   // Example of a CI pipeline script incorporating shift-left testing
@@ -226,49 +226,49 @@ By focusing on these strategies, test automation engineers can enhance the effec
       }
   }
 ```
-从本质上讲，[左移测试](/zh-cn/wiki/shift-left-testing/) 是敏捷和 DevOps 的战略推动者，促进**早期测试**、**自动化**和**跨职能团队协作**，以快速实现高质量的软件交付。
+从本质上讲，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 是敏捷和 DevOps 的战略推动者，促进**早期测试**、**自动化**和**跨职能团队协作**，以快速实现高质量的软件交付。
 
 #### 实施左移测试有哪些挑战以及如何克服这些挑战？
 
-实施 [左移测试](/zh-cn/wiki/shift-left-testing/) 会带来一些挑战，包括：
+实施 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 会带来一些挑战，包括：
 
-- **文化阻力**：开发人员和测试人员可能习惯传统的测试模型。通过培育协作文化并提供有关 [左移测试](/zh-cn/wiki/shift-left-testing/) 的好处和实践的培训来克服这一问题。
+- **文化阻力**：开发人员和测试人员可能习惯传统的测试模型。通过培育协作文化并提供有关 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的好处和实践的培训来克服这一问题。
 - **技能差距**：左移要求开发人员具备测试技能，测试人员了解编码。通过交叉培训团队成员并鼓励持续学习来解决这个问题。
-- **工具集成**：现有工具可能不支持早期测试。选择并集成有助于左移的工具，例如在开发环境中启用[测试自动化](/zh-cn/wiki/test-automation/)的工具。
+- **工具集成**：现有工具可能不支持早期测试。选择并集成有助于左移的工具，例如在开发环境中启用[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的工具。
 - **流程适应**：左移需要更改开发流程。实施增量变更并利用回顾来完善流程。
 - **质量所有权**：对于谁负责质量可能存在混淆。明确角色并强调质量是集体责任。
-- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：早期测试需要稳定的环境。自动化环境配置并使用容器化来确保一致性。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：访问适当的[测试数据](/zh-cn/wiki/test-data/) 可能是一个障碍。利用[测试数据](/zh-cn/wiki/test-data/)管理工具和技术为早期测试阶段提供相关数据。
-- **持续反馈**：左移依赖于快速反馈，这可能会让人不知所措。实施强大的监控和警报以有效管理反馈。 通过采用有针对性的策略应对这些挑战，[左移测试](/zh-cn/wiki/shift-left-testing/) 可以成功集成到软件开发生命周期中，从而增强早期缺陷检测并提高整体产品质量。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：早期测试需要稳定的环境。自动化环境配置并使用容器化来确保一致性。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：访问适当的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 可能是一个障碍。利用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理工具和技术为早期测试阶段提供相关数据。
+- **持续反馈**：左移依赖于快速反馈，这可能会让人不知所措。实施强大的监控和警报以有效管理反馈。 通过采用有针对性的策略应对这些挑战，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 可以成功集成到软件开发生命周期中，从而增强早期缺陷检测并提高整体产品质量。
 
-- **文化阻力**：开发人员和测试人员可能习惯传统的测试模型。通过培养协作文化并提供有关 [左移测试](/zh-cn/wiki/shift-left-testing/) 的好处和实践的培训来克服这一问题。
+- **文化阻力**：开发人员和测试人员可能习惯传统的测试模型。通过培养协作文化并提供有关 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的好处和实践的培训来克服这一问题。
 - **技能差距**：左移要求开发人员具备测试技能，测试人员了解编码。通过交叉培训团队成员并鼓励持续学习来解决这个问题。
-- **工具集成**：现有工具可能不支持早期测试。选择并集成有助于左移的工具，例如在开发环境中启用 [测试自动化](/zh-cn/wiki/test-automation/) 的工具。
+- **工具集成**：现有工具可能不支持早期测试。选择并集成有助于左移的工具，例如在开发环境中启用 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的工具。
 - **流程适应**：左移需要更改开发流程。实施增量变更并利用回顾来完善流程。
 - **质量所有权**：对于谁负责质量可能存在混淆。明确角色并强调质量是集体责任。
-- **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：早期测试需要稳定的环境。自动化环境配置并使用容器化来确保一致性。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：访问适当的[测试数据](/zh-cn/wiki/test-data/) 可能是一个障碍。利用[测试数据](/zh-cn/wiki/test-data/)管理工具和技术为早期测试阶段提供相关数据。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：早期测试需要稳定的环境。自动化环境配置并使用容器化来确保一致性。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：访问适当的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 可能是一个障碍。利用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理工具和技术为早期测试阶段提供相关数据。
 - **持续反馈**：左移依赖于快速反馈，这可能会让人不知所措。实施强大的监控和警报以有效管理反馈。
 
 #### 左移测试如何影响开发人员和测试人员的角色？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 通过促进[质量保证](/zh-cn/wiki/quality-assurance/) 的更密切合作和分担责任，重新定义了**开发人员**和**测试人员**的角色。鼓励开发人员承担更多的**测试职责**，在开发周期的早期纳入单元测试和集成测试。这种主动的测试方法要求开发人员更加关注可测试性，并具备编写和维护自动化测试的技能。
-  另一方面，测试人员更多地参与软件开发生命周期的**上游活动**。他们参与需求分析、设计讨论，并从一开始就为[测试场景](/zh-cn/wiki/test-scenario/) 的创建做出贡献。他们的角色转变为质量倡导者和测试架构师，设计测试框架并指导开发人员测试最佳实践。
-  这两个角色都必须适应更加**迭代和增量**的开发过程，测试人员经常在功能开发的同时完善[测试自动化](/zh-cn/wiki/test-automation/)。开发人员和测试人员角色之间的界限变得模糊，培育了一种每个人都对质量负责的文化。
-  从本质上讲，[左移测试](/zh-cn/wiki/shift-left-testing/) 带来了**技能的交叉授粉**，开发人员可以更深入地了解测试方法，而测试人员则可以更深入地了解代码库和开发实践。这种协同作用增强了团队尽早识别和解决缺陷的能力，减少了后期修复[bugs](/zh-cn/wiki/bug/) 的成本和工作量。
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 通过促进[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的更密切合作和分担责任，重新定义了**开发人员**和**测试人员**的角色。鼓励开发人员承担更多的**测试职责**，在开发周期的早期纳入单元测试和集成测试。这种主动的测试方法要求开发人员更加关注可测试性，并具备编写和维护自动化测试的技能。
+  另一方面，测试人员更多地参与软件开发生命周期的**上游活动**。他们参与需求分析、设计讨论，并从一开始就为[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 的创建做出贡献。他们的角色转变为质量倡导者和测试架构师，设计测试框架并指导开发人员测试最佳实践。
+  这两个角色都必须适应更加**迭代和增量**的开发过程，测试人员经常在功能开发的同时完善[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)。开发人员和测试人员角色之间的界限变得模糊，培育了一种每个人都对质量负责的文化。
+  从本质上讲，[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 带来了**技能的交叉授粉**，开发人员可以更深入地了解测试方法，而测试人员则可以更深入地了解代码库和开发实践。这种协同作用增强了团队尽早识别和解决缺陷的能力，减少了后期修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的成本和工作量。
 
 ### 工具和技术
 
 #### 左移测试常用哪些工具？
 
-**[左移测试](/zh-cn/wiki/shift-left-testing/)** 中使用的常用工具包括：
+**[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)** 中使用的常用工具包括：
 
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：JUnit、NUnit 和 TestNG 等工具使开发人员能够编写和运行单元测试，这是左移方法不可或缺的一部分。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**：JUnit、NUnit 和 TestNG 等工具使开发人员能够编写和运行单元测试，这是左移方法不可或缺的一部分。
 - **模拟框架**：Mockito、Moq 和 Sinon.js 帮助模拟复杂对象的行为以隔离测试组件。
 - **静态代码分析工具**：SonarQube 和 ESLint 在运行前分析代码是否存在潜在问题。
 - **集成开发环境 (IDE)**：Visual Studio 和 IntelliJ IDEA 等 IDE 通常具有支持左移实践的内置测试和调试工具。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 工具**：Cucumber 和 SpecFlow 促进 BDD，允许用简单的语言定义应用程序行为。
-- **[测试自动化](/zh-cn/wiki/test-automation/) 框架**：Selenium、Appium 和 Cypress 提供了在开发周期早期自动化功能测试的功能。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/)) 工具**：Cucumber 和 SpecFlow 促进 BDD，允许用简单的语言定义应用程序行为。
+- **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**：Selenium、Appium 和 Cypress 提供了在开发周期早期自动化功能测试的功能。
 - **持续集成工具**：Jenkins、CircleCI 和 GitHub Actions 自动化构建和测试过程，强化了左移方法。
 - **版本控制系统 (VCS)** ：Git 和 Subversion 通过集成代码更改和频繁测试来支持左移。
 - **基础设施即代码 (IaC) 工具**：Terraform 和 Ansible 支持创建可以像应用程序代码一样进行版本控制和控制的测试环境。
@@ -276,9 +276,9 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 哪些技术在左移测试中有效？
 
-**[左移测试](/zh-cn/wiki/shift-left-testing/)** 中的有效技术包括：
+**[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)** 中的有效技术包括：
 
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** ：在代码之前编写测试可确保测试是开发过程中不可或缺的一部分。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** ：在代码之前编写测试可确保测试是开发过程中不可或缺的一部分。
 
 ```
     describe('Calculator', () => {
@@ -288,7 +288,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
     });
 ```
 
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：使用人类可读的描述来定义应用程序的行为，使开发人员和测试人员与期望保持一致。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** ：使用人类可读的描述来定义应用程序的行为，使开发人员和测试人员与期望保持一致。
 
 ```
     Feature: User login
@@ -301,7 +301,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 - **结对编程**：开发人员一起工作，一个编写代码，另一个编写相应的测试，促进即时反馈和质量。
 - **代码审查**：定期审查代码的可测试性可以鼓励开发人员在周期的早期考虑进行测试。
 - **静态代码分析**：分析代码而不执行代码的工具可以在运行之前识别潜在问题。
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：利用 JUnit、NUnit 或 pytest 等框架来有效地创建和运行测试。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**：利用 JUnit、NUnit 或 pytest 等框架来有效地创建和运行测试。
 - **模拟和服务虚拟化**：模拟尚未可用于测试的组件和服务。
 - **持续测试**：将自动化测试集成到 CI/CD 管道中，以便在每次构建时运行。
 
@@ -318,9 +318,9 @@ By focusing on these strategies, test automation engineers can enhance the effec
     }
 ```
 
-- **组件测试**：在开发过程的早期隔离和测试各个组件。 通过应用这些技术，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保测试成为开发生命周期不可或缺的一部分，从而更早地检测和解决缺陷。
+- **组件测试**：在开发过程的早期隔离和测试各个组件。 通过应用这些技术，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保测试成为开发生命周期不可或缺的一部分，从而更早地检测和解决缺陷。
 
-- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** ：在代码之前编写测试可确保测试是开发过程中不可或缺的一部分。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** ：在代码之前编写测试可确保测试是开发过程中不可或缺的一部分。
 
 ```
     describe('Calculator', () => {
@@ -330,7 +330,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
     });
 ```
 
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** ：使用人类可读的描述来定义应用程序的行为，使开发人员和测试人员与期望保持一致。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** ：使用人类可读的描述来定义应用程序的行为，使开发人员和测试人员与期望保持一致。
 
 ```
     Feature: User login
@@ -357,10 +357,10 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 自动化在左移测试中如何发挥作用？
 
-自动化通过实现早期和频繁的测试在 **[左移测试](/zh-cn/wiki/shift-left-testing/)** 中发挥着至关重要的作用，这是这种方法的基础。通过将自动化测试集成到**开发管道**，团队可以在提交代码后立即运行测试，确保立即反馈更改的影响。
+自动化通过实现早期和频繁的测试在 **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)** 中发挥着至关重要的作用，这是这种方法的基础。通过将自动化测试集成到**开发管道**，团队可以在提交代码后立即运行测试，确保立即反馈更改的影响。
   自动化测试，尤其是**单元测试**和**集成测试**，可以比手动测试更快、更频繁地执行，这对于左移强调持续测试至关重要。这样可以在开发周期的早期检测和解决缺陷，从而减少稍后修复这些缺陷的成本和工作量。
   此外，自动化支持创建**可重复且一致的**测试流程。它确保每次都以相同的方式运行相同的测试，这对于快速识别新问题至关重要。自动化测试还可以在不同环境和开发过程的不同阶段轻松共享和重用，从而促进开发人员和测试人员之间的协作。
-  为了在 [左移测试](/zh-cn/wiki/shift-left-testing/) 中实现自动化，团队通常使用支持 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**、**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 和 **持续集成 (CI)** 的工具。这些工具有助于将需求编码为自动化测试并将其集成到构建过程中。
+  为了在 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 中实现自动化，团队通常使用支持 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**、**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 和 **持续集成 (CI)** 的工具。这些工具有助于将需求编码为自动化测试并将其集成到构建过程中。
 
 ```
   // Example of an automated unit test in TypeScript
@@ -372,11 +372,11 @@ By focusing on these strategies, test automation engineers can enhance the effec
     });
   });
 ```
-总之，自动化是[左移测试](/zh-cn/wiki/shift-left-testing/) 的支柱，提供早期和经常测试所需的速度、频率和可靠性，与该方法的核心原则保持一致。
+总之，自动化是[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的支柱，提供早期和经常测试所需的速度、频率和可靠性，与该方法的核心原则保持一致。
 
 #### 左移测试如何与持续集成和持续交付（CI/CD）集成？
 
-将 **[左移测试](/zh-cn/wiki/shift-left-testing/)** 与 **CI/CD** 集成需要尽早且经常在开发流程中嵌入测试。这是通过自动化测试并确保它们作为**持续集成**过程的一部分运行来实现的。操作方法如下：
+将 **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)** 与 **CI/CD** 集成需要尽早且经常在开发流程中嵌入测试。这是通过自动化测试并确保它们作为**持续集成**过程的一部分运行来实现的。操作方法如下：
 
 1. **自动化单元测试**：编写并自动化在每次代码提交时运行的单元测试。使用 Jenkins、CircleCI 或 GitHub Actions 等 CI 服务器来触发这些测试。
 
@@ -411,13 +411,13 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 左移测试的最佳实践有哪些？
 
-[左移测试](/zh-cn/wiki/shift-left-testing/) 的最佳实践包括：
+[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的最佳实践包括：
 
 - **嵌入测试专业知识**在开发团队内部确保共同承担质量责任。
 
 - **自动化单元测试**尽早并经常验证各个组件。使用 JUnit 或 NUnit 等框架来提高效率。
 
-- **利用[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**在代码之前编写测试，确保代码从一开始就满足要求。
+- **利用[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**在代码之前编写测试，确保代码从一开始就满足要求。
 
 - **结对编程**一名开发人员编写代码，而另一名开发人员实时检查代码，这样可以及早发现问题。
 
@@ -435,7 +435,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **与产品所有者合作**定义可以转化为自动化测试的明确验收标准。
 
-- **确保充分的[测试数据](/zh-cn/wiki/test-data/)管理**提供可靠且现实的测试场景。
+- **确保充分的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理**提供可靠且现实的测试场景。
 
 - **定期重新审视和重构测试**保持它们的相关性并与不断发展的代码库保持一致。 通过遵循这些实践，团队可以有效地将测试转移到左侧，更早地发现问题并提高软件的整体质量。
 
@@ -443,7 +443,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **自动化单元测试**尽早并经常验证各个组件。使用 JUnit 或 NUnit 等框架来提高效率。
 
-- **利用[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**在代码之前编写测试，确保代码从一开始就满足要求。
+- **利用[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**在代码之前编写测试，确保代码从一开始就满足要求。
 
 - **结对编程**一名开发人员编写代码，而另一名开发人员实时检查代码，这样可以及早发现问题。
 
@@ -461,7 +461,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **与产品所有者合作**定义可以转化为自动化测试的明确验收标准。
 
-- **确保充分的[测试数据](/zh-cn/wiki/test-data/) 管理**提供可靠且现实的测试场景。
+- **确保充分的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**提供可靠且现实的测试场景。
 
 - **定期重新审视和重构测试**保持它们的相关性并与不断发展的代码库保持一致。
 
@@ -469,15 +469,15 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 左移测试和右移测试有什么区别？
 
-左移和右移测试是 [软件测试](/zh-cn/wiki/software-testing/) 的补充方法，专注于软件开发生命周期 (SDLC) 的不同阶段。
-  **[左移测试](/zh-cn/wiki/shift-left-testing/)** 是将测试尽早集成到开发过程中的做法。它强调预防胜于检测，目标是尽快发现并解决问题。这种方法通常让开发人员参与测试过程，鼓励他们在软件到达 QA 团队之前编写单元测试并进行 [集成测试](/zh-cn/wiki/integration-testing/)。
+左移和右移测试是 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的补充方法，专注于软件开发生命周期 (SDLC) 的不同阶段。
+  **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)** 是将测试尽早集成到开发过程中的做法。它强调预防胜于检测，目标是尽快发现并解决问题。这种方法通常让开发人员参与测试过程，鼓励他们在软件到达 QA 团队之前编写单元测试并进行 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
   相比之下，**右移测试**将测试扩展到发布前阶段的传统范围之外，并进入发布后阶段。它侧重于在生命周期后期添加测试活动，包括监视和收集来自生产环境的反馈。右移测试旨在确保软件在现实条件和使用模式下表现良好，这在预发布测试中很难复制。
-  左移强调早期 [bug](/zh-cn/wiki/bug/) 检测和预防，而右移则认识到真实用户反馈的重要性以及在类似生产环境中进行测试的必要性。右移可能涉及[A/B testing](/zh-cn/wiki/A-B-Testing/)、金丝雀发布和功能标记等技术，以评估软件在实时环境中的性能和稳定性。
-  结合这两种方法可以更全面地了解[软件质量](/zh-cn/wiki/software-quality/)，确保彻底的预[发布测试](/zh-cn/wiki/release-testing/)，同时适应部署后的实际反馈和使用情况。这种双重策略可以带来更具弹性、用户友好且高质量的软件产品。
+  左移强调早期 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测和预防，而右移则认识到真实用户反馈的重要性以及在类似生产环境中进行测试的必要性。右移可能涉及[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)、金丝雀发布和功能标记等技术，以评估软件在实时环境中的性能和稳定性。
+  结合这两种方法可以更全面地了解[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)，确保彻底的预[发布测试](https://inaodeng.com/zh-cn/wiki/release-testing/)，同时适应部署后的实际反馈和使用情况。这种双重策略可以带来更具弹性、用户友好且高质量的软件产品。
 
 #### 什么时候应该使用左移测试而不是右移测试？
 
-当目标是在软件开发生命周期 (SDLC) 中**检测并尽早解决缺陷**时，应使用 [左移测试](/zh-cn/wiki/shift-left-testing/)。它在以下情况下特别有用：
+当目标是在软件开发生命周期 (SDLC) 中**检测并尽早解决缺陷**时，应使用 [左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/)。它在以下情况下特别有用：
 
 - **早期反馈**对于开发过程至关重要。
 
@@ -495,7 +495,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - 主要关注的是 **系统在类似生产环境中的行为** 。
 
-- 需要重点关注 **非[功能需求](/zh-cn/wiki/functional-requirements/)**例如在部署状态下进行最佳评估的性能、安全性和可用性。
+- 需要重点关注 **非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)**例如在部署状态下进行最佳评估的性能、安全性和可用性。
 
 - 申请需要 **真实世界的曝光**从实际使用模式和数据中收集见解。
 
@@ -517,7 +517,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - 主要关注的是 **系统在类似生产环境中的行为** 。
 
-- 需要重点关注 **非[功能需求](/zh-cn/wiki/functional-requirements/)**例如在部署状态下进行最佳评估的性能、安全性和可用性。
+- 需要重点关注 **非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)**例如在部署状态下进行最佳评估的性能、安全性和可用性。
 
 - 申请需要 **真实世界的曝光**从实际使用模式和数据中收集见解。
 
@@ -525,9 +525,9 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 #### 与右移测试相比，左移测试有哪些优点和缺点？
 
-**[左移测试](/zh-cn/wiki/shift-left-testing/) 的优点：**
+**[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的优点：**
 
-- **早期[Bug](/zh-cn/wiki/bug/)检测：**在开发周期的早期发现问题，从而减少修复问题的成本和工作量。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/)检测：**在开发周期的早期发现问题，从而减少修复问题的成本和工作量。
 
 - **改进设计：**通过尽早整合测试见解来鼓励更好的设计和架构。
 
@@ -535,7 +535,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **更快的发布周期：**通过更快地发现和解决问题来加快上市时间。
 
-- **增强[测试覆盖率](/zh-cn/wiki/test-coverage/)：**由于测试在生命周期的早期开始，因此可以实现更全面的测试覆盖范围。 **[左移测试](/zh-cn/wiki/shift-left-testing/) 的缺点：**
+- **增强[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)：**由于测试在生命周期的早期开始，因此可以实现更全面的测试覆盖范围。 **[左移测试](https://inaodeng.com/zh-cn/wiki/shift-left-testing/) 的缺点：**
 
 - **增加初始努力：**需要开发人员和测试人员进行更多的前期工作来计划和执行测试。
 
@@ -551,13 +551,13 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **性能洞察：**专注于性能和可扩展性，这在生产环境中至关重要。 **右移测试的缺点：**
 
-- **稍后[Bug](/zh-cn/wiki/bug/)检测：**稍后会发现错误，修复起来可能会花费更多成本和时间。
+- **稍后[Bug](https://inaodeng.com/zh-cn/wiki/bug/)检测：**稍后会发现错误，修复起来可能会花费更多成本和时间。
 
 - **用户体验不佳的风险：**如果发现重大问题，可能会对用户对产品的看法产生负面影响。
 
 - **延迟反馈循环：**反馈循环较长，可能会延迟问题的解决和软件的发布。
 
-- **早期[Bug](/zh-cn/wiki/bug/)检测：**在开发周期的早期发现问题，从而减少修复问题的成本和工作量。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/)检测：**在开发周期的早期发现问题，从而减少修复问题的成本和工作量。
 
 - **改进设计：**通过尽早整合测试见解来鼓励更好的设计和架构。
 
@@ -565,7 +565,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **更快的发布周期：**通过更快地发现和解决问题来加快上市时间。
 
-- **增强[测试覆盖率](/zh-cn/wiki/test-coverage/)：**由于测试在生命周期的早期开始，因此可以实现更全面的测试覆盖范围。
+- **增强[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)：**由于测试在生命周期的早期开始，因此可以实现更全面的测试覆盖范围。
 
 - **增加初始努力：**需要开发人员和测试人员进行更多的前期工作来计划和执行测试。
 
@@ -581,7 +581,7 @@ By focusing on these strategies, test automation engineers can enhance the effec
 
 - **性能洞察：**专注于性能和可扩展性，这在生产环境中至关重要。
 
-- **稍后[Bug](/zh-cn/wiki/bug/)检测：**稍后会发现错误，修复起来可能会花费更多成本和时间。
+- **稍后[Bug](https://inaodeng.com/zh-cn/wiki/bug/)检测：**稍后会发现错误，修复起来可能会花费更多成本和时间。
 
 - **用户体验不佳的风险：**如果发现重大问题，可能会对用户对产品的看法产生负面影响。
 
@@ -590,8 +590,8 @@ By focusing on these strategies, test automation engineers can enhance the effec
 #### 如何将左移和右移测试结合到测试策略中？
 
 结合**左移**和**右移**测试策略创建了一种全面的方法，可确保整个软件开发生命周期 (SDLC) 的质量。要集成两者，首先在开发过程的早期嵌入测试（左移）并在发布后继续测试（右移）。
-  在开发阶段合并**单元测试**、**集成测试**和**[API](/zh-cn/wiki/api/) 测试**。使用 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 和 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 来促进这一点。自动执行这些测试以在每次构建时运行，确保通过**CI/CD 管道**立即反馈。
-  对于右移，重点关注生产中的**监控**和**可观察性**，以收集真实的用户数据。实施**金丝雀版本**和**功能标志**以测试新功能在实时环境中的性能和稳定性。使用 **[A/B testing](/zh-cn/wiki/A-B-Testing/)** 做出有关功能推出的数据驱动决策。
+  在开发阶段合并**单元测试**、**集成测试**和**[API](https://inaodeng.com/zh-cn/wiki/api/) 测试**。使用 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 和 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 来促进这一点。自动执行这些测试以在每次构建时运行，确保通过**CI/CD 管道**立即反馈。
+  对于右移，重点关注生产中的**监控**和**可观察性**，以收集真实的用户数据。实施**金丝雀版本**和**功能标志**以测试新功能在实时环境中的性能和稳定性。使用 **[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)** 做出有关功能推出的数据驱动决策。
   在两种策略中利用**自动化**来有效地执行重复和复杂的测试。自动化测试应设计为可重用且适用于部署前和部署后测试。
   为了确保左移和右移之间的无缝过渡，维护测试和结果的共享存储库，并鼓励开发、质量保证和运营团队之间的持续沟通。这种合作对于快速有效地解决问题至关重要。
   总之，将左移的主动缺陷预防与右移的以用户为中心的测试相结合，以覆盖软件质量的全部范围。这种整体方法带来了强大、可靠且经过用户验证的产品。
@@ -607,4 +607,4 @@ By focusing on these strategies, test automation engineers can enhance the effec
 - **技能和协作**：左移通常需要开发人员与测试人员协作并共同承担质量责任。右移可能会更多地涉及运营和支持团队。
 - **技术堆栈**：考虑您的堆栈是否支持这两种方法所需的工具和环境，例如用于左移的测试自动化框架或用于右移的监控工具。
 - **用户体验**：右移可以直接洞察用户体验和性能问题，而这些问题可能无法在预生产测试中发现。
-- **合规性和监管**：具有严格合规性要求的行业可能倾向于左移，以确保在发布之前完成所有检查。 最终，选择可能不是二元的。结合这两种方法可以产生更强大的测试策略，利用每种方法的优势来提高整体 [软件质量](/zh-cn/wiki/software-quality/) 和可靠性。
+- **合规性和监管**：具有严格合规性要求的行业可能倾向于左移，以确保在发布之前完成所有检查。 最终，选择可能不是二元的。结合这两种方法可以产生更强大的测试策略，利用每种方法的优势来提高整体 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性。

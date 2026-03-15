@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA Wiki Term Research"
+  short_description: "Research QA terms and draft evidence-based wiki pages"
+  default_prompt: "Use $qa-wiki-term-research to research planned QA terms and generate evidence-based wiki drafts in explore/Temporary/qa-wiki-temp."

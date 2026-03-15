@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [gpt](/en/AIWiki/gpt/)
-- [claude](/en/AIWiki/claude/)
-- [large-language-models-llms](/en/AIWiki/large-language-models-llms/)
+- [gpt](https://inaodeng.com/en/AIWiki/gpt/)
+- [claude](https://inaodeng.com/en/AIWiki/claude/)
+- [large-language-models-llms](https://inaodeng.com/en/AIWiki/large-language-models-llms/)
 
 ### Term Metadata
 

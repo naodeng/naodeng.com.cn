@@ -47,7 +47,7 @@ order: 0
 
 ## 相关术语
 
-- [自上而下的集成](/zh-cn/wiki/top-down-integration/)
+- [自上而下的集成](https://inaodeng.com/zh-cn/wiki/top-down-integration/)
 
 ## 关于自下而上集成的问题吗？
 
@@ -55,51 +55,51 @@ order: 0
 
 #### 什么是自下而上集成？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 是一种**测试方法**，首先测试应用程序的最低级别（例如单个功能或模块），然后将它们集成到更高级别的组合中，并最终集成到完整的系统中。此方法依赖于使用**测试驱动程序**来模拟可能尚未开发或测试的更高级别模块。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 是一种**测试方法**，首先测试应用程序的最低级别（例如单个功能或模块），然后将它们集成到更高级别的组合中，并最终集成到完整的系统中。此方法依赖于使用**测试驱动程序**来模拟可能尚未开发或测试的更高级别模块。
   在实践中，开发人员首先为最小的代码单元编写单元测试，然后逐渐集成这些单元以形成更大的组件。每个集成组件都经过功能测试，此过程将持续进行，直到整个系统完成集成和验证。
-  [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的常用工具集包括 [单元测试](/zh-cn/wiki/unit-testing/) 框架（例如 JUnit for Java 或 PyTest for Python）以及模拟对象或存根来模拟更高级别模块的行为。 [测试用例](/zh-cn/wiki/test-case/) 应重点关注集成单元之间的接口，以确保正确的通信和数据流。
-  [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 在系统的较低级别组件稳定且定义明确的情况下特别有效。它允许及早检测单元级别的缺陷，与开发周期后期发现的缺陷相比，修复这些缺陷更具成本效益。然而，它可能会将系统整体功能和用户界面的测试推迟到集成过程的后期阶段。
-  在**持续集成**环境中，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 可以在提交新代码时自动频繁运行单元测试，确保更改不会破坏现有功能。
+  [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的常用工具集包括 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架（例如 JUnit for Java 或 PyTest for Python）以及模拟对象或存根来模拟更高级别模块的行为。 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 应重点关注集成单元之间的接口，以确保正确的通信和数据流。
+  [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 在系统的较低级别组件稳定且定义明确的情况下特别有效。它允许及早检测单元级别的缺陷，与开发周期后期发现的缺陷相比，修复这些缺陷更具成本效益。然而，它可能会将系统整体功能和用户界面的测试推迟到集成过程的后期阶段。
+  在**持续集成**环境中，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 可以在提交新代码时自动频繁运行单元测试，确保更改不会破坏现有功能。
 
 #### 为什么自下而上的集成在软件测试中很重要？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它允许在开发或测试高级组件之前**早期测试低级组件**及其交互。这种方法有助于在**组件级别**问题升级为更复杂的系统范围问题之前识别它们。通过首先关注应用程序的**构建块**，开发人员和测试人员可以确保每个部分都能独立正常运行，从而简化与系统其他部分集成时的调试过程。
-  此外，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 支持创建 **[测试存根](/zh-cn/wiki/test-stub/)** 和 **驱动程序**，这对于模拟尚未开发的更高级别模块的行为至关重要。这实现了**连续测试环境**，可以在其中独立验证组件，从而促进更加**模块化和可扩展**的测试方法。
-  在 **[测试自动化](/zh-cn/wiki/test-automation/)** 的上下文中，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 与各个模块的 **单元测试** 和 **集成测试** 的开发非常一致。随着新组件的开发，可以逐步构建自动化测试，从而允许在进行更改时有效地执行**[回归测试](/zh-cn/wiki/regression-testing/)**。
-  [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的重要性还体现在它对 **[软件质量](/zh-cn/wiki/software-quality/) 和可靠性** 的贡献。通过确保每个组件在集成之前都经过彻底测试，最终产品出现缺陷的可能性会大大降低。这种方法在复杂系统中或使用**微服务架构**时特别有用，其中服务是独立开发和部署的。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它允许在开发或测试高级组件之前**早期测试低级组件**及其交互。这种方法有助于在**组件级别**问题升级为更复杂的系统范围问题之前识别它们。通过首先关注应用程序的**构建块**，开发人员和测试人员可以确保每个部分都能独立正常运行，从而简化与系统其他部分集成时的调试过程。
+  此外，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 支持创建 **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 和 **驱动程序**，这对于模拟尚未开发的更高级别模块的行为至关重要。这实现了**连续测试环境**，可以在其中独立验证组件，从而促进更加**模块化和可扩展**的测试方法。
+  在 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** 的上下文中，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 与各个模块的 **单元测试** 和 **集成测试** 的开发非常一致。随着新组件的开发，可以逐步构建自动化测试，从而允许在进行更改时有效地执行**[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**。
+  [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的重要性还体现在它对 **[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性** 的贡献。通过确保每个组件在集成之前都经过彻底测试，最终产品出现缺陷的可能性会大大降低。这种方法在复杂系统中或使用**微服务架构**时特别有用，其中服务是独立开发和部署的。
 
 #### 自下而上集成的关键原则是什么？
 
-**[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)** 的关键原则侧重于从**基本单元向上**构建系统。它从**最低级别模块**的集成开始，然后是依赖于这些模块的较高级别模块。以下是原则：
+**[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)** 的关键原则侧重于从**基本单元向上**构建系统。它从**最低级别模块**的集成开始，然后是依赖于这些模块的较高级别模块。以下是原则：
 
 - **首先测试低级组件**：开始使用最基本的代码单元进行测试，以确保它们在与更高级别的组件集成之前正常工作。
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：一次集成和测试一个组件，这有助于隔离错误并简化调试。
+- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** ：一次集成和测试一个组件，这有助于隔离错误并简化调试。
 - **使用测试驱动程序**：使用测试驱动程序来模拟尚未开发或集成的高级模块。
 - **早期原型**：允许早期部分系统原型，为早期评估提供有形产品。
 - **存根替换**：随着集成的升级，用实际组件替换存根（在自上而下的集成中使用）。
-- **[回归测试](/zh-cn/wiki/regression-testing/)** ：在每个集成步骤之后，执行回归测试以确保新的更改不会破坏现有功能。
-- **持续集成**：当新组件可用时持续集成，这与敏捷和 DevOps 实践保持一致。 实际上，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 需要 **[测试工具](/zh-cn/wiki/test-harness/)** 来协调测试驱动程序并管理[测试用例](/zh-cn/wiki/test-case/)。这对于独立开发服务的**微服务架构**至关重要。有效的[测试用例](/zh-cn/wiki/test-case/) 设计应针对集成组件之间的接口。持续集成工具可以自动化构建和[测试过程](/zh-cn/wiki/test-process/)，从而强化自下而上的方法。最佳实践包括维护**干净的代码库**、**自动化回归测试**和**频繁集成**以最大程度地减少集成问题。
+- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：在每个集成步骤之后，执行回归测试以确保新的更改不会破坏现有功能。
+- **持续集成**：当新组件可用时持续集成，这与敏捷和 DevOps 实践保持一致。 实际上，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 需要 **[测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/)** 来协调测试驱动程序并管理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这对于独立开发服务的**微服务架构**至关重要。有效的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计应针对集成组件之间的接口。持续集成工具可以自动化构建和[测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)，从而强化自下而上的方法。最佳实践包括维护**干净的代码库**、**自动化回归测试**和**频繁集成**以最大程度地减少集成问题。
 
 #### 自下而上的集成与自上而下的集成有何不同？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 和[自上而下的集成](/zh-cn/wiki/top-down-integration/) 是[软件测试](/zh-cn/wiki/software-testing/) 的两种相反的方法。
-  **[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)** 从[单元测试](/zh-cn/wiki/unit-testing/) 最低级别的模块开始，逐渐向上至较高级别的模块，从控制流的底部向上进行集成。通常不需要测试驱动程序，但很少使用[测试存根](/zh-cn/wiki/test-stub/)，因为重点是从最低级别向上进行集成。
-  相比之下，**[自上而下的集成](/zh-cn/wiki/top-down-integration/)** 从顶层模块开始，逐步向下集成。这种方法需要使用[测试存根](/zh-cn/wiki/test-stub/)来模拟尚未集成或开发的较低级别模块。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 和[自上而下的集成](https://inaodeng.com/zh-cn/wiki/top-down-integration/) 是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 的两种相反的方法。
+  **[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)** 从[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 最低级别的模块开始，逐渐向上至较高级别的模块，从控制流的底部向上进行集成。通常不需要测试驱动程序，但很少使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)，因为重点是从最低级别向上进行集成。
+  相比之下，**[自上而下的集成](https://inaodeng.com/zh-cn/wiki/top-down-integration/)** 从顶层模块开始，逐步向下集成。这种方法需要使用[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)来模拟尚未集成或开发的较低级别模块。
   主要区别在于整合过程的**起点**和**方向**。自下而上有利于对基本组件进行早期测试，而自上而下则强调对整个系统功能的早期测试。自下而上可以在继续之前展示较低级别的可靠性，而自上而下可以在流程的早期向利益相关者提供系统的工作框架。
   在实践中，这些方法可以结合在**三明治/混合集成**中，利用两者的优势来实现更全面、更高效的测试过程。这种方法同时集成了一些高层模块和低层模块，允许并行开发和测试。
 
 #### 自下而上集成的优点和缺点是什么？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)的优点：
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)的优点：
 
 - **低级组件的早期测试**：允许在进入更高级别的模块之前验证基本实用程序和服务功能。
 - **并行开发**：团队可以同时处理不同的模块，从而可能加快开发周期。
 - **早期原型**：有利于在流程的早期创建工作系统，这对于演示或进一步开发非常有用。
 - **故障定位**：由于高级模块尚未集成，因此更容易查明测试的较低级别模块内的缺陷。
-- **可重用代码**：鼓励创建可以独立测试的可重用模块。 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的缺点：
+- **可重用代码**：鼓励创建可以独立测试的可重用模块。 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的缺点：
 
 - **延迟系统功能测试**：高级功能通常对用户最可见，在开发周期的后期进行测试。
-- **[测试存根](/zh-cn/wiki/test-stub/)** ：可能需要开发测试驱动程序或存根来模拟更高级别的模块，这可能非常耗时并且需要额外的资源。
+- **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** ：可能需要开发测试驱动程序或存根来模拟更高级别的模块，这可能非常耗时并且需要额外的资源。
 - **集成复杂性**：随着添加更多模块，集成的复杂性可能会增加，可能导致管理依赖项的困难。
 - **有限的早期反馈**：利益相关者可能需要等待更长的时间才能看到系统的完整功能，这可能会延迟对系统范围问题的反馈。
 - **冗余测试的潜力**：如果不仔细管理，当模块集成到更大的系统中时，可能会出现冗余测试。
@@ -109,7 +109,7 @@ order: 0
 - **故障定位**：由于高级模块尚未集成，因此更容易查明测试的较低级别模块内的缺陷。
 - **可重用代码**：鼓励创建可以独立测试的可重用模块。
 - **延迟系统功能测试**：高级功能通常对用户最可见，在开发周期的后期进行测试。
-- **[测试存根](/zh-cn/wiki/test-stub/)** ：可能需要开发测试驱动程序或存根来模拟更高级别的模块，这可能非常耗时并且需要额外的资源。
+- **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** ：可能需要开发测试驱动程序或存根来模拟更高级别的模块，这可能非常耗时并且需要额外的资源。
 - **集成复杂性**：随着添加更多模块，集成的复杂性可能会增加，可能导致管理依赖项的困难。
 - **有限的早期反馈**：利益相关者可能需要等待更长的时间才能看到系统的完整功能，这可能会延迟对系统范围问题的反馈。
 - **冗余测试的潜力**：如果不仔细管理，当模块集成到更大的系统中时，可能会出现冗余测试。
@@ -118,63 +118,63 @@ order: 0
 
 #### 在软件开发过程中如何实现自下而上的集成？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 在软件开发过程中实现，首先侧重于**低级单元**的测试**，例如函数、过程或类，然后逐步将它们集成到执行特定任务的集群或**子系统**中。一旦这些子系统得到验证，它们就会被组合起来形成应用程序的更大组件。
-  在实现过程中，通常不需要**[测试存根](/zh-cn/wiki/test-stub/)**，因为测试从层次结构底部的实际组件开始。但是，**测试驱动程序**可用于模拟尚未开发或集成的更高级别的模块。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 在软件开发过程中实现，首先侧重于**低级单元**的测试**，例如函数、过程或类，然后逐步将它们集成到执行特定任务的集群或**子系统**中。一旦这些子系统得到验证，它们就会被组合起来形成应用程序的更大组件。
+  在实现过程中，通常不需要**[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)**，因为测试从层次结构底部的实际组件开始。但是，**测试驱动程序**可用于模拟尚未开发或集成的更高级别的模块。
   该过程涉及：
 
-1. **[单元测试](/zh-cn/wiki/unit-testing/)** ：对各个单元进行功能测试。
+1. **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：对各个单元进行功能测试。
 2. **子系统集成**：将单元组合成子系统，然后进行测试。
 3. **子系统测试**：确保子系统内的集成单元正确协同工作。
 4. **系统集成**：子系统集成以形成完整的系统。
-5. **[系统测试](/zh-cn/wiki/system-testing/)** ：整个系统经过测试是否符合要求。 开发人员或测试工程师编写特定于单元和子系统功能的**[测试用例](/zh-cn/wiki/test-case/)**。这些 [测试用例](/zh-cn/wiki/test-case/) 使用自动化工具执行，例如 JUnit、[NUnit](/zh-cn/wiki/nunit/) 或用于 [单元测试](/zh-cn/wiki/unit-testing/) 的 TestNG，以及用于更高级别集成测试的 [selenium](/zh-cn/wiki/selenium/) 或 Appium。 在整个过程中，**持续集成**工具（例如 Jenkins、Travis CI 或 CircleCI）可用于自动化构建和测试周期，确保新更改顺利集成并且不会破坏现有功能。 当所有子系统组合在一起并且整个系统按预期运行并且所有测试均成功通过时，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 就完成了。
+5. **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** ：整个系统经过测试是否符合要求。 开发人员或测试工程师编写特定于单元和子系统功能的**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。这些 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 使用自动化工具执行，例如 JUnit、[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 或用于 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 的 TestNG，以及用于更高级别集成测试的 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 或 Appium。 在整个过程中，**持续集成**工具（例如 Jenkins、Travis CI 或 CircleCI）可用于自动化构建和测试周期，确保新更改顺利集成并且不会破坏现有功能。 当所有子系统组合在一起并且整个系统按预期运行并且所有测试均成功通过时，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 就完成了。
 
 #### 自下而上集成涉及哪些步骤？
 
-**[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)**涉及的步骤如下：
+**[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)**涉及的步骤如下：
 
-1. **[单元测试](/zh-cn/wiki/unit-testing/)**：首先测试最低级别的模块，通常称为**[单元测试](/zh-cn/wiki/unit-testing/)**。确保每个模块独立正常运行。
+1. **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：首先测试最低级别的模块，通常称为**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**。确保每个模块独立正常运行。
 2. **集成**：将逻辑上相关的模块组合成集群或**子系统**。如有必要，使用**驱动程序脚本**测试这些交互。
 3. **子系统测试**：验证每个子系统的功能和性能。解决此阶段发现的任何缺陷。
 4. **存根替换**：如果使用任何**存根**来模拟更高级别的模块，则当它们可用并经过测试时，它们将被替换为实际模块。
 5. **系统组装**：逐步整合子系统，形成完整的系统。对于每个集成步骤，运行**回归测试**以确保新代码不会破坏现有功能。
-6. **[系统测试](/zh-cn/wiki/system-testing/)**：系统完全集成后，执行彻底的 **[系统测试](/zh-cn/wiki/system-testing/)** 以验证端到端功能和非[功能需求](/zh-cn/wiki/functional-requirements/)。
-7. **[验收测试](/zh-cn/wiki/acceptance-testing/)**：执行 **[验收测试](/zh-cn/wiki/acceptance-testing/)** 以确保系统满足业务要求并做好生产准备。 在这些步骤中，使用**持续集成**实践来自动化构建和测试，确保对集成工作的即时反馈。利用**[测试工具](/zh-cn/wiki/test-harness/)** 管理[测试执行](/zh-cn/wiki/test-execution/) 和报告。请记住使用专为 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 设计的有效 [测试用例](/zh-cn/wiki/test-case/) 来维护 **[测试套件](/zh-cn/wiki/test-suite/)**。
+6. **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)**：系统完全集成后，执行彻底的 **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 以验证端到端功能和非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)。
+7. **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**：执行 **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)** 以确保系统满足业务要求并做好生产准备。 在这些步骤中，使用**持续集成**实践来自动化构建和测试，确保对集成工作的即时反馈。利用**[测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/)** 管理[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 和报告。请记住使用专为 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 设计的有效 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 来维护 **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**。
 
-1. **[单元测试](/zh-cn/wiki/unit-testing/)**：首先测试最低级别的模块，通常称为**[单元测试](/zh-cn/wiki/unit-testing/)**。确保每个模块独立正常运行。
+1. **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**：首先测试最低级别的模块，通常称为**[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)**。确保每个模块独立正常运行。
 2. **集成**：将逻辑上相关的模块组合成集群或**子系统**。如有必要，使用**驱动程序脚本**测试这些交互。
 3. **子系统测试**：验证每个子系统的功能和性能。解决此阶段发现的任何缺陷。
 4. **存根替换**：如果使用任何**存根**来模拟更高级别的模块，则当它们可用并经过测试时，它们将被替换为实际模块。
 5. **系统组装**：逐步整合子系统，形成完整的系统。对于每个集成步骤，运行**回归测试**以确保新代码不会破坏现有功能。
-6. **[系统测试](/zh-cn/wiki/system-testing/)**：系统完全集成后，执行彻底的**[系统测试](/zh-cn/wiki/system-testing/)** 以验证端到端功能和非[功能需求](/zh-cn/wiki/functional-requirements/)。
-7. **[验收测试](/zh-cn/wiki/acceptance-testing/)**：执行 **[验收测试](/zh-cn/wiki/acceptance-testing/)** 以确保系统满足业务要求并做好生产准备。
+6. **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)**：系统完全集成后，执行彻底的**[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 以验证端到端功能和非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)。
+7. **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**：执行 **[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)** 以确保系统满足业务要求并做好生产准备。
 
 #### 自下而上集成常用哪些工具？
 
-在[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)中，[测试自动化](/zh-cn/wiki/test-automation/)工程师通常使用各种工具来促进该过程：
+在[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)中，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师通常使用各种工具来促进该过程：
 
-- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：JUnit (Java)、[NUnit](/zh-cn/wiki/nunit/) (.NET) 或 unittest (Python) 等工具对于在各个组件上创建和运行单元测试至关重要。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**：JUnit (Java)、[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) (.NET) 或 unittest (Python) 等工具对于在各个组件上创建和运行单元测试至关重要。
 - **模拟框架**：Mockito (Java)、Moq (.NET) 和 unittest.mock (Python) 允许测试人员创建模拟对象并模拟已测试和集成的较低级别模块的行为。
-- **[集成测试](/zh-cn/wiki/integration-testing/) 工具**：TestNG (Java) 和 SpecFlow (.NET) 可用于编写更高级别的集成测试，以验证集成组件之间的交互。
-- **构建自动化工具**：Jenkins、Travis CI 和 CircleCI 支持持续集成，通常与 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 结合使用以自动化构建和 [测试过程](/zh-cn/wiki/test-process/)。
-- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**：JaCoCo (Java)、dotCover (.NET) 和coverage.py (Python) 有助于评估测试覆盖代码库的程度，确保在所有集成级别进行彻底的测试。
-- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：[JMeter](/zh-cn/wiki/jmeter/) 和 Gadling 可用于测试集成组件的性能，确保它们满足所需的基准。
-- **测试工具**：可以开发自定义测试工具来执行和管理集成组件的测试，特别是在处理复杂的交互或特定的测试场景时。 使用这些工具，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地实施[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)，确保每个组件在进行更高级别的集成之前在系统中正确运行。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 工具**：TestNG (Java) 和 SpecFlow (.NET) 可用于编写更高级别的集成测试，以验证集成组件之间的交互。
+- **构建自动化工具**：Jenkins、Travis CI 和 CircleCI 支持持续集成，通常与 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 结合使用以自动化构建和 [测试过程](https://inaodeng.com/zh-cn/wiki/test-process/)。
+- **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具**：JaCoCo (Java)、dotCover (.NET) 和coverage.py (Python) 有助于评估测试覆盖代码库的程度，确保在所有集成级别进行彻底的测试。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具**：[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 和 Gadling 可用于测试集成组件的性能，确保它们满足所需的基准。
+- **测试工具**：可以开发自定义测试工具来执行和管理集成组件的测试，特别是在处理复杂的交互或特定的测试场景时。 使用这些工具，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以有效地实施[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)，确保每个组件在进行更高级别的集成之前在系统中正确运行。
 
 #### 实施自下而上集成有哪些挑战以及如何克服这些挑战？
 
-**[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)** 中的挑战主要围绕**驱动程序开发**、**部分[系统测试](/zh-cn/wiki/system-testing/)** 和**顶层设计问题的后期检测**。克服这些需要战略方法：
+**[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)** 中的挑战主要围绕**驱动程序开发**、**部分[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 和**顶层设计问题的后期检测**。克服这些需要战略方法：
 
 - **驱动程序开发**：驱动程序模拟更高级别的模块，创建起来可能很复杂。为了缓解这种情况，请使用**自动化工具**根据接口定义生成驱动程序，确保一致性并节省时间。
-- **部分系统功能**：首先测试较低级别的模块意味着完整的系统功能要到后期才可用。使用模拟完整系统的模拟对象或服务来实现 **[增量测试](/zh-cn/wiki/incremental-testing/)** 以尽早验证交互。
+- **部分系统功能**：首先测试较低级别的模块意味着完整的系统功能要到后期才可用。使用模拟完整系统的模拟对象或服务来实现 **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** 以尽早验证交互。
 - **高级问题的晚期检测**：由于高级模块是最后测试的，因此设计缺陷可能直到过程后期才被注意到。定期审查高层设计并使用**持续集成**来尽快发现问题。
 - **集成复杂性**：随着集成的组件越来越多，复杂性也会增加。利用**模块化设计**和**重构**来保持系统的可管理性。
-- **[测试用例](/zh-cn/wiki/test-case/) 设计**：在没有清晰的系统视图的情况下设计[测试用例](/zh-cn/wiki/test-case/) 可能具有挑战性。专注于**接口契约**和**行为规范**以确保彻底的测试。
-- **工具**：选择支持[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 并可以处理驱动程序和存根创建的工具。用于 [单元测试](/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG** 以及用于模拟的 **Mockito** 或 **WireMock** 等工具可能会很有用。 通过使用正确的策略和工具应对这些挑战，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 可以得到有效管理，以确保软件产品强大而可靠。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计**：在没有清晰的系统视图的情况下设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 可能具有挑战性。专注于**接口契约**和**行为规范**以确保彻底的测试。
+- **工具**：选择支持[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 并可以处理驱动程序和存根创建的工具。用于 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 的 **JUnit** 或 **TestNG** 以及用于模拟的 **Mockito** 或 **WireMock** 等工具可能会很有用。 通过使用正确的策略和工具应对这些挑战，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 可以得到有效管理，以确保软件产品强大而可靠。
 
 #### 您能否提供一个自下而上集成的实际示例？
 
 考虑一个场景，您正在集成**支付处理系统**。该系统由`PaymentGateway`、`TransactionProcessor`、`AccountManager` 和`NotificationService` 等模块组成。
-  在**[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)**方法中，您首先测试`PaymentGateway`模块，该模块直接与银行[API](/zh-cn/wiki/api/)交互。您为银行[API](/zh-cn/wiki/api/) 创建一个 **[测试存根](/zh-cn/wiki/test-stub/)** 来模拟响应。
+  在**[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)**方法中，您首先测试`PaymentGateway`模块，该模块直接与银行[API](https://inaodeng.com/zh-cn/wiki/api/)交互。您为银行[API](https://inaodeng.com/zh-cn/wiki/api/) 创建一个 **[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)** 来模拟响应。
 
 ```
   function mockBankAPI(response) {
@@ -200,11 +200,11 @@ order: 0
 
 #### 自下而上集成中的测试是如何进行的？
 
-在**自下而上的集成测试**中，测试是从软件层次结构的最低级别启动的。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师专注于**单元级别**，其中首先使用**单元测试**来测试各个组件或模块。这些组件通常不依赖于任何较低级别的模块或服务。
+在**自下而上的集成测试**中，测试是从软件层次结构的最低级别启动的。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师专注于**单元级别**，其中首先使用**单元测试**来测试各个组件或模块。这些组件通常不依赖于任何较低级别的模块或服务。
   一旦单元测试通过，测试人员就会继续测试**更高级别的模块**，通常使用**测试驱动程序**来模拟尚未开发或测试的更高级别模块的行为。这一过程不断迭代，组件被逐一集成和测试，沿着层次结构向上移动，直到整个系统作为一个整体进行测试。
   在此过程中，**存根**在实际模块可用并经过测试时将被替换。这种方法可以及早发现单元级别的缺陷，修复起来比开发周期后期发现的缺陷更具成本效益。
-  [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中的[测试自动化](/zh-cn/wiki/test-automation/) 通常涉及编写[测试脚本](/zh-cn/wiki/test-script/)，首先单独验证模块的功能，然后与其他模块组合。自动化框架和工具如 **JUnit**、**TestNG**、**Mockito** 或 **[selenium](/zh-cn/wiki/selenium/)**（用于基于 Web 的界面）可用于创建和运行这些测试。
-  下面是使用 **[Jest](/zh-cn/wiki/jest/)** 在 TypeScript 中进行简单单元测试的示例：
+  [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 中的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 通常涉及编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，首先单独验证模块的功能，然后与其他模块组合。自动化框架和工具如 **JUnit**、**TestNG**、**Mockito** 或 **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**（用于基于 Web 的界面）可用于创建和运行这些测试。
+  下面是使用 **[Jest](https://inaodeng.com/zh-cn/wiki/jest/)** 在 TypeScript 中进行简单单元测试的示例：
 
 ```
   import { add } from './math';
@@ -224,24 +224,24 @@ order: 0
 - **系统集成测试**：子系统组合后，系统集成测试将检查系统内不同子系统之间的通信和数据流是否正确。
 - **回归测试**：在每个集成步骤之后，都会运行回归测试以确认新代码不会对现有功能产生不利影响。
 - **性能测试**：在集成组件时评估系统的性能，确保满足性能基准。
-- **端到端测试**：虽然在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 中更常见，但一旦构建了足够的系统来模拟真实场景，就可以在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中应用一些端到端测试。 这些测试通常是自动化的，以提高效率和可靠性。 [测试自动化](/zh-cn/wiki/test-automation/) 框架和工具（例如 **JUnit**、**TestNG**、**[selenium](/zh-cn/wiki/selenium/)** 和 **Mockito**）通常用于促进自下而上的集成测试。
+- **端到端测试**：虽然在 [自上而下的集成](https://inaodeng.com/zh-cn/wiki/top-down-integration/) 中更常见，但一旦构建了足够的系统来模拟真实场景，就可以在 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 中应用一些端到端测试。 这些测试通常是自动化的，以提高效率和可靠性。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架和工具（例如 **JUnit**、**TestNG**、**[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** 和 **Mockito**）通常用于促进自下而上的集成测试。
 
 #### 自下而上的集成如何影响整个测试过程？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 通过**将焦点**转移到首先测试较低级别的组件，然后将它们集成到更大的系统中来影响整个测试过程。这种方法**有利于早期发现较小单元内的缺陷**，与后来在更高级别的集成中发现的缺陷相比，修复起来更具成本效益。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 通过**将焦点**转移到首先测试较低级别的组件，然后将它们集成到更大的系统中来影响整个测试过程。这种方法**有利于早期发现较小单元内的缺陷**，与后来在更高级别的集成中发现的缺陷相比，修复起来更具成本效益。
   由于测试从最基本的单元开始，因此**依赖测试驱动程序**和存根来模拟尚未开发的更高级别的模块。这可能会导致**额外的开发开销**，但可以确保每个组件都经过彻底的隔离测试。
-  该方法还会影响 **[测试用例](/zh-cn/wiki/test-case/) 设计**，该设计必须细粒度以涵盖各个单元的功能。随着组件的集成，[测试用例](/zh-cn/wiki/test-case/) 需要不断发展以涵盖集成单元之间的交互。
-  在自下而上的集成测试过程中， **[测试工具](/zh-cn/wiki/test-harness/)** 在管理和执行 [测试用例](/zh-cn/wiki/test-case/) 以及捕获较低级别组件的测试结果方面发挥着至关重要的作用。随着更多组件的集成，线束需要坚固耐用，以应对系统的复杂性。
-  总体而言，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 可以带来**更加模块化和解耦的设计**，因为每个组件在集成到更大的系统之前都是单独开发和测试的。这可以增强[可维护性](/zh-cn/wiki/maintainability/) 和软件的可扩展性。
+  该方法还会影响 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计**，该设计必须细粒度以涵盖各个单元的功能。随着组件的集成，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 需要不断发展以涵盖集成单元之间的交互。
+  在自下而上的集成测试过程中， **[测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/)** 在管理和执行 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以及捕获较低级别组件的测试结果方面发挥着至关重要的作用。随着更多组件的集成，线束需要坚固耐用，以应对系统的复杂性。
+  总体而言，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 可以带来**更加模块化和解耦的设计**，因为每个组件在集成到更大的系统之前都是单独开发和测试的。这可以增强[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/) 和软件的可扩展性。
   集成过程是迭代的，在集成的每个阶段都进行**持续测试**。这与**敏捷和 DevOps 实践**非常吻合，其中持续集成和持续测试是关键组成部分。
-  通过首先关注基本元素，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 确保核心功能是可靠的，这有助于提高软件的**整体质量和可靠性**。
+  通过首先关注基本元素，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 确保核心功能是可靠的，这有助于提高软件的**整体质量和可靠性**。
 
 #### 测试工具在自下而上的集成中扮演什么角色？
 
-在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中， **[测试工具](/zh-cn/wiki/test-harness/)** 对于在开发或测试依赖于较低级别组件的较高级别组件之前验证较低级别组件的行为至关重要。它充当那些较高级别组件的临时替代品，为较低级别的模块提供必要的输入并控制环境。
-  [测试工具](/zh-cn/wiki/test-harness/) 通常包括 **驱动程序** 或 **[测试脚本](/zh-cn/wiki/test-script/)**，它们通过调用较低级别的模块并处理其输出来模拟较高模块的行为。这允许单独测试单个单元或小组单元，确保它们在集成到更大的系统中时正常工作。
-  使用[测试工具](/zh-cn/wiki/test-harness/) 有助于在开发过程的最早阶段识别缺陷，这比稍后检测缺陷更具成本效益。它还允许回归测试的自动化，每次进行更改时都可以运行回归测试，以确保现有功能没有被破坏。
-  以下是如何在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 测试中使用 [测试工具](/zh-cn/wiki/test-harness/) 的简单示例：
+在 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 中， **[测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/)** 对于在开发或测试依赖于较低级别组件的较高级别组件之前验证较低级别组件的行为至关重要。它充当那些较高级别组件的临时替代品，为较低级别的模块提供必要的输入并控制环境。
+  [测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/) 通常包括 **驱动程序** 或 **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**，它们通过调用较低级别的模块并处理其输出来模拟较高模块的行为。这允许单独测试单个单元或小组单元，确保它们在集成到更大的系统中时正常工作。
+  使用[测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/) 有助于在开发过程的最早阶段识别缺陷，这比稍后检测缺陷更具成本效益。它还允许回归测试的自动化，每次进行更改时都可以运行回归测试，以确保现有功能没有被破坏。
+  以下是如何在 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 测试中使用 [测试工具](https://inaodeng.com/zh-cn/wiki/test-harness/) 的简单示例：
 
 ```
   // Example driver function to test a lower-level component
@@ -250,11 +250,11 @@ order: 0
     assert(expectedOutput, result);
   }
 ```
-在此示例中，`lowerLevelComponent` 是正在测试的单元，`inputData` 是模拟输入，`expectedOutput` 是测试的[预期结果](/zh-cn/wiki/expected-result/)。 `assert` 函数检查实际输出是否与预期输出匹配。
+在此示例中，`lowerLevelComponent` 是正在测试的单元，`inputData` 是模拟输入，`expectedOutput` 是测试的[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)。 `assert` 函数检查实际输出是否与预期输出匹配。
 
 #### 如何有效地设计测试用例以实现自下而上的集成？
 
-为[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 有效地设计[测试用例](/zh-cn/wiki/test-case/) 需要首先关注**单元级别**，并确保在与更高级别的模块集成之前对每个组件进行彻底的测试。以下是一些策略：
+为[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 有效地设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 需要首先关注**单元级别**，并确保在与更高级别的模块集成之前对每个组件进行彻底的测试。以下是一些策略：
 
 - **从单元测试开始**：为最低级别的模块编写全面的单元测试。使用适合您所使用的语言和环境的单元测试框架。
 
@@ -277,7 +277,7 @@ order: 0
   };
 ```
 
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：由于模块已集成，请编写 **集成测试**对于新的组合，确保它们正确交互。
+- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** ：由于模块已集成，请编写 **集成测试**对于新的组合，确保它们正确交互。
 
 ```
   describe('IntegratedModules', () => {
@@ -295,44 +295,44 @@ order: 0
 - **从单元测试开始**：为最低级别的模块编写全面的单元测试。使用适合您所使用的语言和环境的单元测试框架。
 - **模拟依赖** ：由于尚未集成更高级别的模块，因此使用 **模拟**或 **存根**模拟依赖模块的行为。
 
-- **[增量测试](/zh-cn/wiki/incremental-testing/)** ：由于模块已集成，请编写 **集成测试**对于新的组合，确保它们正确交互。
+- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)** ：由于模块已集成，请编写 **集成测试**对于新的组合，确保它们正确交互。
 
 ### 高级概念
 
 #### 自下而上的集成与敏捷或 DevOps 等其他软件开发方法有何关系？
 
-自下而上的集成测试通过支持迭代开发和持续集成，与**敏捷**和**DevOps**方法相一致。在敏捷中，开发是渐进式的，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 允许在开发时测试更小的功能组件，非常适合 **sprints** 和 **[迭代](/zh-cn/wiki/iteration/)**。这种方法确保模块尽早且频繁地进行测试，这符合敏捷对**持续反馈**和**适应**的强调。
-  在 **DevOps** 上下文中，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 补充了 **CI/CD 管道**。随着较低级别组件的开发和测试，它们可以持续集成和交付，确保快速检测和解决集成问题。这支持**自动化**、**协作**和**快速交付**的 DevOps 目标。
-  这两种方法都依赖于**模块化**和**[测试自动化](/zh-cn/wiki/test-automation/)**，这是[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 所固有的。可以为每个单元和服务编写自动化测试，当它们组合在一起时，测试可以扩展到涵盖集成组件，从而促进从开发到部署的平稳过渡。
-  此外，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 首先关注较低级别的组件在使用 **微服务** 或组件由不同团队开发时（DevOps 环境中的常见场景）特别有用。它允许独立开发、测试和部署各个服务，从而增强**可扩展性**和**灵活性**——敏捷和DevOps的关键原则。
+自下而上的集成测试通过支持迭代开发和持续集成，与**敏捷**和**DevOps**方法相一致。在敏捷中，开发是渐进式的，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 允许在开发时测试更小的功能组件，非常适合 **sprints** 和 **[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)**。这种方法确保模块尽早且频繁地进行测试，这符合敏捷对**持续反馈**和**适应**的强调。
+  在 **DevOps** 上下文中，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 补充了 **CI/CD 管道**。随着较低级别组件的开发和测试，它们可以持续集成和交付，确保快速检测和解决集成问题。这支持**自动化**、**协作**和**快速交付**的 DevOps 目标。
+  这两种方法都依赖于**模块化**和**[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**，这是[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 所固有的。可以为每个单元和服务编写自动化测试，当它们组合在一起时，测试可以扩展到涵盖集成组件，从而促进从开发到部署的平稳过渡。
+  此外，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 首先关注较低级别的组件在使用 **微服务** 或组件由不同团队开发时（DevOps 环境中的常见场景）特别有用。它允许独立开发、测试和部署各个服务，从而增强**可扩展性**和**灵活性**——敏捷和DevOps的关键原则。
 
 #### 持续集成在自下而上集成中的作用是什么？
 
-持续集成 (CI) 在[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 中发挥着**关键作用**，它确保独立开发和测试的各个单元在集成时**一致地协同工作**。 CI 自动化构建和测试过程，允许将代码更改“频繁集成”到共享存储库中。
-  在 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的背景下，CI 通过以下方式提供帮助：
+持续集成 (CI) 在[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 中发挥着**关键作用**，它确保独立开发和测试的各个单元在集成时**一致地协同工作**。 CI 自动化构建和测试过程，允许将代码更改“频繁集成”到共享存储库中。
+  在 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的背景下，CI 通过以下方式提供帮助：
 
 - **自动化构建**：随着较低级别组件的开发，CI 服务器会自动编译代码并检查集成问题。
 - **运行自动化测试**：定期执行为较低级别组件创建的单元测试，确保新代码不会破坏现有功能。
 - **尽早检测集成问题**：通过经常集成和测试，可以快速识别问题，从而降低故障排除的复杂性。
-- **促进协作**：开发人员会立即收到有关其承诺的反馈，从而促进采用更具协作性和主动性的方法来解决集成问题。 CI 通过维护稳定的代码库充当[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的**支柱**，在该代码库中可以持续集成和验证较低级别的组件，从而实现更可靠、更高效的开发流程。
+- **促进协作**：开发人员会立即收到有关其承诺的反馈，从而促进采用更具协作性和主动性的方法来解决集成问题。 CI 通过维护稳定的代码库充当[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的**支柱**，在该代码库中可以持续集成和验证较低级别的组件，从而实现更可靠、更高效的开发流程。
 
 #### 自下而上的集成如何运用在微服务架构中？
 
-在**微服务架构**中，可以通过启动与**单个微服务**及其各自的**单元测试**的集成过程来利用[自下而上的集成](/zh-cn/wiki/bottom-up-integration/)。一旦这些较小的组件经过测试，测试人员就可以逐渐集成和测试这些服务之间的交互。
-  要在微服务中应用 [自下而上的集成](/zh-cn/wiki/bottom-up-integration/)，请按照以下步骤操作：
+在**微服务架构**中，可以通过启动与**单个微服务**及其各自的**单元测试**的集成过程来利用[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)。一旦这些较小的组件经过测试，测试人员就可以逐渐集成和测试这些服务之间的交互。
+  要在微服务中应用 [自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/)，请按照以下步骤操作：
 
 1. **开发和测试单个微服务**：确保每个微服务独立按预期工作。
 2. **创建存根和驱动程序**：这些将模拟尚未集成的更高级别服务或组件的行为。
 3. **集成和测试微服务对**：重点关注它们之间的交互和接口。
 4. **扩展集成**：逐步向集成测试套件添加更多服务，验证它们的交互。
-5. **集成并测试整个系统**：集成所有微服务后，执行端到端测试以确保系统作为一个整体运行。 在此过程中，使用**持续集成 (CI)** 工具来自动化测试和集成阶段，确保新代码提交不会破坏现有功能。 对于微服务，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 有助于在问题升级到系统级别之前识别 **服务级别** 的问题，从而使调试更轻松、更高效。它还与微服务的**独立部署**性质非常吻合，因为每个服务都可以按照自己的时间表进行测试和部署。
+5. **集成并测试整个系统**：集成所有微服务后，执行端到端测试以确保系统作为一个整体运行。 在此过程中，使用**持续集成 (CI)** 工具来自动化测试和集成阶段，确保新代码提交不会破坏现有功能。 对于微服务，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 有助于在问题升级到系统级别之前识别 **服务级别** 的问题，从而使调试更轻松、更高效。它还与微服务的**独立部署**性质非常吻合，因为每个服务都可以按照自己的时间表进行测试和部署。
 
 #### 自下而上集成的最佳实践是什么？
 
-软件[测试自动化](/zh-cn/wiki/test-automation/) 中[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 的最佳实践包括：
+软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 的最佳实践包括：
 
 - **从单元测试开始**：确保每个组件在集成之前都经过彻底的单元测试。使用 JUnit for Java 或 PyTest for Python 等测试框架来自动执行这些测试。
-- **创建[测试存根](/zh-cn/wiki/test-stub/)和驱动程序**：为尚未开发的高层组件开发[测试存根](/zh-cn/wiki/test-stub/)，为低层组件开发驱动程序，以模拟系统中尚未集成的部分。
+- **创建[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)和驱动程序**：为尚未开发的高层组件开发[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)，为低层组件开发驱动程序，以模拟系统中尚未集成的部分。
 
 // TypeScript 中的示例测试驱动程序
   类 ComponentDriver {
@@ -352,18 +352,18 @@ order: 0
 - **Document the integration process**: Keep clear documentation of the integration steps and test results to facilitate communication among team members and for future reference.
 
 - **从单元测试开始**：确保每个组件在集成之前都经过彻底的单元测试。使用 JUnit for Java 或 PyTest for Python 等测试框架来自动执行这些测试。
-- **创建[测试存根](/zh-cn/wiki/test-stub/)和驱动程序**：为尚未开发的较高级别组件开发[测试存根](/zh-cn/wiki/test-stub/)，为较低级别组件开发驱动程序，以模拟系统中尚未集成的部分。
+- **创建[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)和驱动程序**：为尚未开发的较高级别组件开发[测试存根](https://inaodeng.com/zh-cn/wiki/test-stub/)，为较低级别组件开发驱动程序，以模拟系统中尚未集成的部分。
 
 #### 自下而上的集成如何提高软件质量和可靠性？
 
-[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 通过确保首先测试应用程序的最基本单元，有助于 **[软件质量](/zh-cn/wiki/software-quality/) 和可靠性**。这种方法允许在系统层次结构的**最低级别**检测和纠正错误，这比修复开发过程后期发现的问题更具成本效益且更简单。通过关注**组件和子系统**，开发人员可以在将其集成到更大的系统之前验证其功能和稳健性。
-  每个单元在成为更大集合的一部分之前都经过彻底测试并证明可以按预期工作，因此可靠性得到增强。这降低了由较低级别的缺陷引起的系统范围故障的风险。此外，随着集成的向上推进，**[测试覆盖率](/zh-cn/wiki/test-coverage/)** 逐渐扩展，这有助于为应用程序奠定坚实的基础。
+[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 通过确保首先测试应用程序的最基本单元，有助于 **[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性**。这种方法允许在系统层次结构的**最低级别**检测和纠正错误，这比修复开发过程后期发现的问题更具成本效益且更简单。通过关注**组件和子系统**，开发人员可以在将其集成到更大的系统之前验证其功能和稳健性。
+  每个单元在成为更大集合的一部分之前都经过彻底测试并证明可以按预期工作，因此可靠性得到增强。这降低了由较低级别的缺陷引起的系统范围故障的风险。此外，随着集成的向上推进，**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 逐渐扩展，这有助于为应用程序奠定坚实的基础。
   测试期间较低级别模块的**隔离**允许更有针对性和更高效的调试。当测试失败时，很明显问题在于被测试的特定单元，而不是更高级别组件之间的交互。这种精度可以在开发周期中节省时间和资源。
-  总之，[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 通过以下方式支持 [软件质量](/zh-cn/wiki/software-quality/) 和可靠性：
+  总之，[自下而上的集成](https://inaodeng.com/zh-cn/wiki/bottom-up-integration/) 通过以下方式支持 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性：
 
 - **早期发现**单位层面的缺陷。
 
-- **增量[测试覆盖率](/zh-cn/wiki/test-coverage/)**这建立了对系统的信心。
+- **增量[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**这建立了对系统的信心。
 
 - **高效调试**由于组件的隔离测试。
 

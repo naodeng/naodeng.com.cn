@@ -46,22 +46,22 @@ order: 0
 
 #### 什么是移动设备测试？
 
-[移动设备测试](/zh-cn/wiki/mobile-device-testing/) 涉及验证跨各种设备的移动应用程序的功能、一致性和可靠性。此类测试可确保应用程序在不同的硬件、操作系统和网络环境上按预期运行。它涵盖一系列测试，包括但不限于**界面**、**服务**、**数据处理**、**集成**和**用户交互**。
-  在自动化的背景下，[移动设备测试](/zh-cn/wiki/mobile-device-testing/) 利用工具和框架有效地执行重复且复杂的[测试用例](/zh-cn/wiki/test-case/)。自动化脚本模拟用户操作并根据[预期结果](/zh-cn/wiki/expected-result/)验证结果。 **持续集成 (CI)** 和 **持续部署 (CD)** 管道通常集成这些自动化测试以促进持续测试和交付。
+[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 涉及验证跨各种设备的移动应用程序的功能、一致性和可靠性。此类测试可确保应用程序在不同的硬件、操作系统和网络环境上按预期运行。它涵盖一系列测试，包括但不限于**界面**、**服务**、**数据处理**、**集成**和**用户交互**。
+  在自动化的背景下，[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 利用工具和框架有效地执行重复且复杂的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。自动化脚本模拟用户操作并根据[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)验证结果。 **持续集成 (CI)** 和 **持续部署 (CD)** 管道通常集成这些自动化测试以促进持续测试和交付。
   对于自动化，经常使用 **Appium**、**Espresso** 和 **XCUITest** 等工具。这些工具支持本机、混合和 Web 应用程序测试，提供跨平台功能。自动化脚本是用 Java、Python 或 JavaScript 等语言编写的，可以在真实设备、模拟器或基于云的设备场上执行。
   为了处理设备和操作系统的多样性，可以对自动化测试进行参数化以跨多种配置运行。 **基于云的服务**提供对大量设备和操作系统版本的访问，无需物理设备库即可实现全面覆盖。
-  自动化[移动设备测试](/zh-cn/wiki/mobile-device-testing/)对于快速反馈、及早发现缺陷以及确保一致的用户体验至关重要。这是在当今快速发展的技术环境中管理移动应用程序开发的复杂性和节奏的战略方法。
+  自动化[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)对于快速反馈、及早发现缺陷以及确保一致的用户体验至关重要。这是在当今快速发展的技术环境中管理移动应用程序开发的复杂性和节奏的战略方法。
 
 #### 为什么移动设备测试很重要？
 
-由于智能手机和平板电脑在日常生活中**无处不在**，[移动设备测试](/zh-cn/wiki/mobile-device-testing/) 至关重要。这些设备是全球越来越多的用户访问互联网和应用程序的主要方式。确保软件在这些平台上正常运行对于**用户满意度**、**市场覆盖率**和**竞争优势**至关重要。
+由于智能手机和平板电脑在日常生活中**无处不在**，[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 至关重要。这些设备是全球越来越多的用户访问互联网和应用程序的主要方式。确保软件在这些平台上正常运行对于**用户满意度**、**市场覆盖率**和**竞争优势**至关重要。
   通过各种**操作系统**、**硬件配置**和**网络条件**，移动测试有助于识别和解决可能对**用户体验**产生负面影响的问题。对于验证应用程序是否**响应**、**直观**以及在不同设备和上下文中**可访问**至关重要。
   此外，移动测试是确保应用程序遵守**应用程序商店指南**和**监管标准**的关键，这些标准可能与桌面软件的标准有很大差异。它还有助于在现实条件下优化**电池使用**、**数据消耗**和**性能**，这些都是移动用户的关键因素。
-  在**持续交付**和**[敏捷开发](/zh-cn/wiki/agile-development/)实践**的背景下，[移动设备测试](/zh-cn/wiki/mobile-device-testing/)可以实现快速反馈，[迭代](/zh-cn/wiki/iteration/)可以缩短上市时间并提高产品质量。它是开发生命周期中不可或缺的一部分，可帮助团队交付强大、用户友好且安全的应用程序，以满足当今以移动为中心的世界的高期望。
+  在**持续交付**和**[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/)实践**的背景下，[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)可以实现快速反馈，[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)可以缩短上市时间并提高产品质量。它是开发生命周期中不可或缺的一部分，可帮助团队交付强大、用户友好且安全的应用程序，以满足当今以移动为中心的世界的高期望。
 
 #### 移动设备测试和桌面测试之间的主要区别是什么？
 
-[移动设备测试](/zh-cn/wiki/mobile-device-testing/) 和桌面测试之间的主要区别包括：
+[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 和桌面测试之间的主要区别包括：
 
 - **环境变化**：移动设备具有多种屏幕尺寸、分辨率、硬件配置和操作系统。桌面更加标准化。
 - **交互方法**：移动设备使用带有滑动和捏合等手势的触摸屏，而台式机主要使用鼠标和键盘输入。
@@ -71,30 +71,30 @@ order: 0
 - **安装和更新**：移动应用程序通常通过具有特定打包和更新机制的应用程序商店分发，这与可以直接下载和更新的桌面应用程序不同。
 - **生命周期管理**：由于移动操作系统对应用程序后台和终止的控制，移动应用程序具有复杂的生命周期状态，这在桌面上不太常见。
 - **位置服务**：移动测试通常包括桌面应用程序中不常用的基于位置的服务和传感器使用（例如 GPS、加速计）。
-- **安全问题**：移动设备有不同的安全考虑，例如沙箱和权限请求，这些在桌面环境中并不那么突出。 了解这些差异对于设计和执行针对每个平台的独特特征量身定制的有效[测试自动化](/zh-cn/wiki/test-automation/) 策略至关重要。
+- **安全问题**：移动设备有不同的安全考虑，例如沙箱和权限请求，这些在桌面环境中并不那么突出。 了解这些差异对于设计和执行针对每个平台的独特特征量身定制的有效[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略至关重要。
 
 ### 移动设备测试的类型
 
 #### 移动设备中的功能测试和非功能测试有什么区别？
 
-移动设备上的[功能测试](/zh-cn/wiki/functional-testing/) 侧重于验证应用程序的功能和操作是否按预期工作。它涉及测试用户交互、数据处理和业务逻辑，以确保应用程序根据指定的要求正确运行。示例包括测试用户流程、表单提交或应用内购买。
-  另一方面，[非功能测试](/zh-cn/wiki/non-functional-testing/) 处理应用程序的非行为方面。它保证了软件在各种条件下的可靠性、可用性和性能。这包括测试应用程序如何处理压力、负载、可扩展性以及它针对潜在威胁的安全性。虽然性能、安全性和[可用性测试](/zh-cn/wiki/usability-testing/) 是[非功能测试](/zh-cn/wiki/non-functional-testing/) 的子集，但它们分别专门解决了应用程序在压力下的性能、针对安全漏洞的恢复能力以及易用性。
-  总之，**[功能测试](/zh-cn/wiki/functional-testing/)** 检查功能的**正确性**，而 **[非功能测试](/zh-cn/wiki/non-functional-testing/)** 评估移动应用程序的**质量属性**。两者对于提供强大的移动体验都至关重要，但都侧重于应用程序行为和性能的不同方面。
+移动设备上的[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/) 侧重于验证应用程序的功能和操作是否按预期工作。它涉及测试用户交互、数据处理和业务逻辑，以确保应用程序根据指定的要求正确运行。示例包括测试用户流程、表单提交或应用内购买。
+  另一方面，[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 处理应用程序的非行为方面。它保证了软件在各种条件下的可靠性、可用性和性能。这包括测试应用程序如何处理压力、负载、可扩展性以及它针对潜在威胁的安全性。虽然性能、安全性和[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 是[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/) 的子集，但它们分别专门解决了应用程序在压力下的性能、针对安全漏洞的恢复能力以及易用性。
+  总之，**[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)** 检查功能的**正确性**，而 **[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)** 评估移动应用程序的**质量属性**。两者对于提供强大的移动体验都至关重要，但都侧重于应用程序行为和性能的不同方面。
 
 #### 移动设备中的可用性测试是什么？
 
-移动设备上的[可用性测试](/zh-cn/wiki/usability-testing/) 重点评估**用户体验**以及与应用程序的**交互**。它涉及真实用户执行任务来识别任何可用性问题。关键方面包括：
+移动设备上的[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 重点评估**用户体验**以及与应用程序的**交互**。它涉及真实用户执行任务来识别任何可用性问题。关键方面包括：
 
 - **易用性**：新用户浏览应用程序的直观性和便捷性。
 - **效率**：熟练用户执行任务的速度。
 - **记忆力**：用户在一段时间不使用该应用程序后重新建立熟练程度的容易程度。
 - **错误率**：用户犯错误的频率和严重程度，以及他们恢复错误的难易程度。
-- **满意度**：该应用程序的使用体验如何令人愉悦和满意。 在移动环境中，[可用性测试](/zh-cn/wiki/usability-testing/) 还考虑：
+- **满意度**：该应用程序的使用体验如何令人愉悦和满意。 在移动环境中，[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/) 还考虑：
 
 - **触摸交互**：对点击、滑动和其他手势的响应。
 - **屏幕尺寸**：界面对于不同屏幕尺寸的适当性。
 - **方向**：在纵向和横向之间切换时应用程序的行为方式。
-- **使用上下文**：应用程序在不同的物理环境和情况下的执行情况。 [可用性测试](/zh-cn/wiki/usability-testing/)可以通过各种方法进行，例如**用户访谈**、**调查**、**任务分析**和**[A/B testing](/zh-cn/wiki/A-B-Testing/)**。选择具有代表性的用户样本并在密切模仿真实使用场景的环境中进行测试至关重要。来自[可用性测试](/zh-cn/wiki/usability-testing/)的反馈应整合到开发周期中，以不断增强用户体验。
+- **使用上下文**：应用程序在不同的物理环境和情况下的执行情况。 [可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)可以通过各种方法进行，例如**用户访谈**、**调查**、**任务分析**和**[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**。选择具有代表性的用户样本并在密切模仿真实使用场景的环境中进行测试至关重要。来自[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)的反馈应整合到开发周期中，以不断增强用户体验。
 
 - **易用性**：新用户浏览应用程序的直观性和便捷性。
 - **效率**：熟练用户执行任务的速度。
@@ -108,8 +108,8 @@ order: 0
 
 #### 什么是移动设备兼容性测试？
 
-移动设备中的[兼容性测试](/zh-cn/wiki/compatibility-testing/) 可确保应用程序在各种设备型号、操作系统、屏幕尺寸、分辨率和网络环境中按预期运行。对于验证应用程序的特性和功能在不同设备上协调工作而没有任何差异至关重要。
-  为了有效地进行[兼容性测试](/zh-cn/wiki/compatibility-testing/)：
+移动设备中的[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/) 可确保应用程序在各种设备型号、操作系统、屏幕尺寸、分辨率和网络环境中按预期运行。对于验证应用程序的特性和功能在不同设备上协调工作而没有任何差异至关重要。
+  为了有效地进行[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)：
 
 - **优先考虑设备和操作系统版本**基于市场份额和目标受众。
 
@@ -137,38 +137,38 @@ order: 0
 
 #### 什么是移动设备性能测试？
 
-移动设备中的[性能测试](/zh-cn/wiki/performance-testing/) 评估移动应用程序在特定工作负载下的响应能力、稳定性和可扩展性。它关注**应用程序速度**、**网络性能**、**资源使用**和**电池消耗**等各种因素。目标是确定性能瓶颈并确保应用程序满足其预期性能标准。
+移动设备中的[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 评估移动应用程序在特定工作负载下的响应能力、稳定性和可扩展性。它关注**应用程序速度**、**网络性能**、**资源使用**和**电池消耗**等各种因素。目标是确定性能瓶颈并确保应用程序满足其预期性能标准。
   关键方面包括：
 
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：评估正常和峰值条件下的应用程序行为。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
-- **[耐力测试](/zh-cn/wiki/endurance-testing/)** ：检查应用程序在较长时间内的性能。 [性能测试](/zh-cn/wiki/performance-testing/) 用于移动设备的工具通常提供模拟网络条件、测量渲染时间和监视系统资源的功能。示例包括：
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估正常和峰值条件下的应用程序行为。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
+- **[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)** ：检查应用程序在较长时间内的性能。 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 用于移动设备的工具通常提供模拟网络条件、测量渲染时间和监视系统资源的功能。示例包括：
 
 ```
   LoadRunner, JMeter, NeoLoad, Appium, Espresso
 ```
-在实际设备和网络条件上进行测试以捕获准确的性能指标至关重要。 [性能测试](/zh-cn/wiki/performance-testing/) 应集成到 CI/CD 管道中以进行持续改进。必须对结果进行分析，以查明内存泄漏、响应时间缓慢或电池使用过多等问题，这些问题可能会严重影响用户体验。
+在实际设备和网络条件上进行测试以捕获准确的性能指标至关重要。 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 应集成到 CI/CD 管道中以进行持续改进。必须对结果进行分析，以查明内存泄漏、响应时间缓慢或电池使用过多等问题，这些问题可能会严重影响用户体验。
 
-- **[负载测试](/zh-cn/wiki/load-testing/)** ：评估正常和峰值条件下的应用行为。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
-- **[耐力测试](/zh-cn/wiki/endurance-testing/)** ：检查应用程序在较长时间内的性能。
+- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估正常和峰值条件下的应用行为。
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
+- **[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)** ：检查应用程序在较长时间内的性能。
 
 #### 什么是移动设备安全测试？
 
-移动设备上的[安全测试](/zh-cn/wiki/security-testing/) 涉及评估应用程序针对恶意攻击的恢复能力并确保数据保护。它包含各种测试方法，例如：
+移动设备上的[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 涉及评估应用程序针对恶意攻击的恢复能力并确保数据保护。它包含各种测试方法，例如：
 
-- **静态应用程序[安全测试](/zh-cn/wiki/security-testing/) (SAST)**：分析源代码中的安全漏洞而不执行它。
-- **动态应用程序[安全测试](/zh-cn/wiki/security-testing/) (DAST)**：通过在运行时检查应用程序来识别安全问题。
-- **[渗透测试](/zh-cn/wiki/penetration-testing/)** ：模拟网络攻击以识别可利用的漏洞。
+- **静态应用程序[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) (SAST)**：分析源代码中的安全漏洞而不执行它。
+- **动态应用程序[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) (DAST)**：通过在运行时检查应用程序来识别安全问题。
+- **[渗透测试](https://inaodeng.com/zh-cn/wiki/penetration-testing/)** ：模拟网络攻击以识别可利用的漏洞。
 - **身份验证和授权测试**：确保只有合法用户才能访问敏感功能和数据。
 - **数据加密测试**：验证敏感数据在静态和传输过程中是否已加密。
-- **安全补丁测试**：检查应用程序在应用更新或补丁后是否保持安全。 OWASP ZAP、Nessus 和 Burp Suite 等自动化工具可以通过自动执行重复任务和模拟攻击向量来帮助 [安全测试](/zh-cn/wiki/security-testing/)。将 [安全测试](/zh-cn/wiki/security-testing/) 集成到 CI/CD 管道中以尽早发现漏洞至关重要。定期更新安全测试以涵盖新威胁并使用真实设备和模拟器进行测试可以提高[安全测试](/zh-cn/wiki/security-testing/)工作的有效性。
+- **安全补丁测试**：检查应用程序在应用更新或补丁后是否保持安全。 OWASP ZAP、Nessus 和 Burp Suite 等自动化工具可以通过自动执行重复任务和模拟攻击向量来帮助 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)。将 [安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 集成到 CI/CD 管道中以尽早发现漏洞至关重要。定期更新安全测试以涵盖新威胁并使用真实设备和模拟器进行测试可以提高[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)工作的有效性。
 
 ### 测试工具和技术
 
 #### 移动设备测试常用哪些工具？
 
-**[移动设备测试](/zh-cn/wiki/mobile-device-testing/)** 的常用工具包括：
+**[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)** 的常用工具包括：
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。它使用 WebDriver 协议。
 
@@ -177,7 +177,7 @@ order: 0
     appium
 ```
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：虽然主要用于 Web 应用程序，但它可以扩展到使用 Appium 的移动测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：虽然主要用于 Web 应用程序，但它可以扩展到使用 Appium 的移动测试。
 - **浓缩咖啡** (Android)：Google 为 Android 应用程序提供的本机测试框架，允许编写简洁可靠的 UI 测试。
 
 ```
@@ -197,7 +197,7 @@ order: 0
 - **Calabash** ：支持 Android 和 iOS，允许在 Cucumber 中编写测试并在多个设备上运行它们。
 - **格雷伯爵茶** (iOS)：一个开源的原生 iOS UI 自动化测试框架，可实现精确可靠的测试自动化。
 
-- **猴子赛跑者** (Android)：提供 API，用于编写从 Android 代码外部控制 Android 设备或模拟器的程序。 这些工具支持移动测试的各个方面，例如 UI、功能和[兼容性测试](/zh-cn/wiki/compatibility-testing/)。它们可以集成到 CI/CD 管道中以进行连续测试，并且可以与真实设备和仿真器/模拟器一起使用。
+- **猴子赛跑者** (Android)：提供 API，用于编写从 Android 代码外部控制 Android 设备或模拟器的程序。 这些工具支持移动测试的各个方面，例如 UI、功能和[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)。它们可以集成到 CI/CD 管道中以进行连续测试，并且可以与真实设备和仿真器/模拟器一起使用。
 
 - **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。它使用 WebDriver 协议。
 
@@ -206,7 +206,7 @@ order: 0
     appium
 ```
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：虽然主要用于 Web 应用程序，但它可以扩展到使用 Appium 的移动测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：虽然主要用于 Web 应用程序，但它可以扩展到使用 Appium 的移动测试。
 - **浓缩咖啡** (Android)：Google 为 Android 应用程序提供的本机测试框架，允许编写简洁可靠的 UI 测试。
 
 ```
@@ -230,36 +230,36 @@ order: 0
 
 #### 有效的移动设备测试有哪些技术？
 
-为了确保[移动设备测试](/zh-cn/wiki/mobile-device-testing/)有效，请考虑以下技术：
+为了确保[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)有效，请考虑以下技术：
 
-- **基于云的测试平台**：利用 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等云服务来访问各种设备和操作系统组合，无需物理设备即可进行全面测试。
+- **基于云的测试平台**：利用 [browserstack](https://inaodeng.com/zh-cn/wiki/browserstack/) 或 Sauce Labs 等云服务来访问各种设备和操作系统组合，无需物理设备即可进行全面测试。
 - **持续集成 (CI)**：使用 Jenkins 或 GitLab CI 等工具将测试与 CI 管道集成。这确保了每次代码提交时都会自动运行测试，从而尽早发现问题。
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：为可维护的[测试脚本](/zh-cn/wiki/test-script/) 实施 POM。此设计模式将页面结构与[测试脚本](/zh-cn/wiki/test-script/)分开，使得UI更改时更新更容易。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：为可维护的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 实施 POM。此设计模式将页面结构与[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)分开，使得UI更改时更新更容易。
 - **数据驱动测试**：使用外部数据源将不同的数据集输入到您的测试中。这种方法有助于覆盖更多场景并减少人为错误的可能性。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：采用 Cucumber 等 [BDD](/zh-cn/wiki/bdd/) 框架以自然语言编写测试，弥合技术和非技术利益相关者之间的差距。
-- **并行执行**：在不同设备上并行运行测试以加快测试过程。 Appium 和 TestNG 等工具支持并行 [测试执行](/zh-cn/wiki/test-execution/)。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：采用 Cucumber 等 [BDD](https://inaodeng.com/zh-cn/wiki/bdd/) 框架以自然语言编写测试，弥合技术和非技术利益相关者之间的差距。
+- **并行执行**：在不同设备上并行运行测试以加快测试过程。 Appium 和 TestNG 等工具支持并行 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
 - **网络调节**：模拟不同的网络速度和条件，以测试您的应用程序在各种连接场景下的性能。
-- **模拟和存根**：使用工具模拟后端服务或[API](/zh-cn/wiki/api/)来隔离移动应用程序的测试并确保测试不依赖于外部因素。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：将辅助功能检查纳入您的自动化套件中，以确保残疾人可以使用该应用程序。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：使用[探索性测试](/zh-cn/wiki/exploratory-testing/) 会话补充自动化测试，以发现脚本测试可能遗漏的问题。 通过将这些技术集成到您的测试策略中，您可以提高 [移动设备测试](/zh-cn/wiki/mobile-device-testing/) 工作的有效性和覆盖范围。
+- **模拟和存根**：使用工具模拟后端服务或[API](https://inaodeng.com/zh-cn/wiki/api/)来隔离移动应用程序的测试并确保测试不依赖于外部因素。
+- **[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)**：将辅助功能检查纳入您的自动化套件中，以确保残疾人可以使用该应用程序。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：使用[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 会话补充自动化测试，以发现脚本测试可能遗漏的问题。 通过将这些技术集成到您的测试策略中，您可以提高 [移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 工作的有效性和覆盖范围。
 
-- **基于云的测试平台**：利用 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等云服务来访问各种设备和操作系统组合，无需物理设备即可进行全面测试。
+- **基于云的测试平台**：利用 [browserstack](https://inaodeng.com/zh-cn/wiki/browserstack/) 或 Sauce Labs 等云服务来访问各种设备和操作系统组合，无需物理设备即可进行全面测试。
 - **持续集成 (CI)**：使用 Jenkins 或 GitLab CI 等工具将测试与 CI 管道集成。这确保了每次代码提交时都会自动运行测试，从而尽早发现问题。
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：为可维护的[测试脚本](/zh-cn/wiki/test-script/) 实施 POM。这种设计模式将页面结构与[测试脚本](/zh-cn/wiki/test-script/)分开，使得UI更改时更新更容易。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：为可维护的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 实施 POM。这种设计模式将页面结构与[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)分开，使得UI更改时更新更容易。
 - **数据驱动测试**：使用外部数据源将不同的数据集输入到您的测试中。这种方法有助于覆盖更多场景并减少人为错误的可能性。
-- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：采用 Cucumber 等 [BDD](/zh-cn/wiki/bdd/) 框架以自然语言编写测试，弥合技术和非技术利益相关者之间的差距。
-- **并行执行**：在不同设备上并行运行测试以加快测试过程。 Appium 和 TestNG 等工具支持并行[测试执行](/zh-cn/wiki/test-execution/)。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：采用 Cucumber 等 [BDD](https://inaodeng.com/zh-cn/wiki/bdd/) 框架以自然语言编写测试，弥合技术和非技术利益相关者之间的差距。
+- **并行执行**：在不同设备上并行运行测试以加快测试过程。 Appium 和 TestNG 等工具支持并行[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
 - **网络调节**：模拟不同的网络速度和条件，以测试您的应用程序在各种连接场景下的性能。
-- **模拟和存根**：使用工具来模拟后端服务或[API](/zh-cn/wiki/api/)来隔离移动应用程序的测试并确保测试不依赖于外部因素。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：将辅助功能检查纳入您的自动化套件中，以确保残疾人可以使用该应用程序。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：使用[探索性测试](/zh-cn/wiki/exploratory-testing/) 会话补充自动化测试，以发现脚本测试可能遗漏的问题。
+- **模拟和存根**：使用工具来模拟后端服务或[API](https://inaodeng.com/zh-cn/wiki/api/)来隔离移动应用程序的测试并确保测试不依赖于外部因素。
+- **[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)**：将辅助功能检查纳入您的自动化套件中，以确保残疾人可以使用该应用程序。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：使用[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 会话补充自动化测试，以发现脚本测试可能遗漏的问题。
 
 #### 自动化在移动设备测试中的作用是什么？
 
-自动化在[移动设备测试](/zh-cn/wiki/mobile-device-testing/)中发挥着**关键作用**，通过**提高效率**、**减少人工工作**和**增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**。它使团队能够自动执行重复且耗时的测试，确保应用程序在各种设备和场景中按预期运行。
+自动化在[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)中发挥着**关键作用**，通过**提高效率**、**减少人工工作**和**增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。它使团队能够自动执行重复且耗时的测试，确保应用程序在各种设备和场景中按预期运行。
   通过自动化，测试可以在**多个设备上同时运行**，从而节省时间和资源。自动化测试还可以集成到持续集成/持续部署（CI/CD）管道中，从而允许**持续测试**并立即反馈代码更改的影响。
   与手动测试相比，自动化测试**更可靠**并且**不易出现人为错误**，从而获得更一致的结果。它们可以设计为涵盖可能难以一致地手动复制的**边缘情况**和**复杂的用户交互**。
-  此外，自动化通过模拟大量用户来支持**[非功能测试](/zh-cn/wiki/non-functional-testing/)**，例如**压力**和**[负载测试](/zh-cn/wiki/load-testing/)**，这对于[手动测试](/zh-cn/wiki/manual-testing/)来说通常是不切实际的。
+  此外，自动化通过模拟大量用户来支持**[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)**，例如**压力**和**[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)**，这对于[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)来说通常是不切实际的。
   为了有效地实现自动化，工程师应该使用支持移动平台的框架和工具，例如 Appium、Espresso 或 XCUITest。应根据应用程序的技术堆栈和团队的专业知识来选择这些工具。
 
 ```
@@ -272,17 +272,17 @@ order: 0
     await driver.findElementByAccessibilityId('submit').click();
   })();
 ```
-总之，自动化是[移动设备测试](/zh-cn/wiki/mobile-device-testing/)不可或缺的一部分，在跨不同设备生态系统验证移动应用程序时提供**可扩展性**、**一致性**和**效率**。
+总之，自动化是[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)不可或缺的一部分，在跨不同设备生态系统验证移动应用程序时提供**可扩展性**、**一致性**和**效率**。
 
 #### 在移动设备测试中使用模拟器有哪些优点和缺点？
 
-在[移动设备测试](/zh-cn/wiki/mobile-device-testing/)中使用模拟器的优点：
+在[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)中使用模拟器的优点：
 
 - **成本效益**：仿真器减少了对大量物理设备库存的需求，从而减少了开支。
 - **便捷**：随时可用，即时启动，方便快速接入各种设备环境。
 - **可扩展性**：允许在多个操作系统版本和屏幕分辨率上同时进行测试，从而增强测试覆盖范围。
 - **调试**：提供高级调试功能来诊断问题。
-- **环境控制**：提供受控的测试环境，不受呼叫或通知等外部因素的影响。 在[移动设备测试](/zh-cn/wiki/mobile-device-testing/)中使用模拟器的缺点：
+- **环境控制**：提供受控的测试环境，不受呼叫或通知等外部因素的影响。 在[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)中使用模拟器的缺点：
 
 - **性能差异**：模拟器可能无法准确反映真实设备的性能，从而导致误导性的测试结果。
 - **硬件限制**：无法复制特定于硬件的功能，例如相机、电池使用情况或传感器行为。
@@ -305,7 +305,7 @@ order: 0
 
 #### 移动设备测试中有哪些常见挑战？
 
-[移动设备测试](/zh-cn/wiki/mobile-device-testing/) 中的常见挑战包括：
+[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 中的常见挑战包括：
 
 - **碎片**：大量具有不同硬件功能、屏幕尺寸和分辨率的设备使得很难确保所有设备上一致的应用程序性能。
 - **操作系统版本**：正在使用多个版本的操作系统 (OS)，需要进行测试以涵盖操作系统和设备的各种组合。
@@ -316,11 +316,11 @@ order: 0
 - **用户中断**：来电、短信、通知和其他中断可能会影响应用程序功能，需要进行测试。
 - **触摸屏和手势**：确保触摸输入和手势在不同设备和屏幕尺寸上顺利工作是一项挑战。
 - **应用程序商店批准**：浏览应用程序商店批准的规则和要求可能非常耗时，并且需要遵守特定的准则。
-- **自动化工具限制**：并非所有测试工具都支持每个功能、设备或操作系统版本，这可能会限制自动化工作。 为了应对这些挑战，工程师必须优先考虑[测试用例](/zh-cn/wiki/test-case/)，利用基于云的设备场，并不断将新设备和操作系统版本集成到他们的测试周期中。
+- **自动化工具限制**：并非所有测试工具都支持每个功能、设备或操作系统版本，这可能会限制自动化工作。 为了应对这些挑战，工程师必须优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，利用基于云的设备场，并不断将新设备和操作系统版本集成到他们的测试周期中。
 
 #### 移动设备测试有哪些最佳实践？
 
-为了确保有效[移动设备测试](/zh-cn/wiki/mobile-device-testing/)，请考虑以下最佳实践：
+为了确保有效[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)，请考虑以下最佳实践：
 
 - **优先考虑设备**基于市场份额和目标受众。专注于与用户最相关的设备。
 
@@ -344,7 +344,7 @@ order: 0
 
 - **保持更新**具有最新的操作系统版本和补丁，以确保兼容性和安全性。
 
-- **优化[测试执行](/zh-cn/wiki/test-execution/)**通过并行运行测试并在设备之间分配负载来减少反馈时间。 通过整合这些实践，您可以提高 [移动设备测试](/zh-cn/wiki/mobile-device-testing/) 工作的可靠性和效率。
+- **优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**通过并行运行测试并在设备之间分配负载来减少反馈时间。 通过整合这些实践，您可以提高 [移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 工作的可靠性和效率。
 
 - **优先考虑设备**基于市场份额和目标受众。专注于与用户最相关的设备。
 
@@ -368,11 +368,11 @@ order: 0
 
 - **保持更新**具有最新的操作系统版本和补丁，以确保兼容性和安全性。
 
-- **优化[测试执行](/zh-cn/wiki/test-execution/)**通过并行运行测试并在设备之间分配负载来减少反馈时间。
+- **优化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**通过并行运行测试并在设备之间分配负载来减少反馈时间。
 
 #### 如何确保移动设备测试的质量？
 
-为确保[移动设备测试](/zh-cn/wiki/mobile-device-testing/)的质量，重点关注以下策略：
+为确保[移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/)的质量，重点关注以下策略：
 
 - **优先考虑真实设备测试**对于特定于硬件的功能至关重要的场景，因为模拟器可能无法准确地复制这些特征。
 
@@ -382,7 +382,7 @@ order: 0
 
 - **自动化重复任务**还包括探索性测试会话，以发现脚本测试可能遗漏的问题。
 
-- **优化[测试用例](/zh-cn/wiki/test-case/)**覆盖关键的用户旅程和边缘情况，避免不增加价值的冗余测试。
+- **优化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**覆盖关键的用户旅程和边缘情况，避免不增加价值的冗余测试。
 
 - 使用 **数据驱动测试**通过将各种数据集输入测试脚本来验证应用程序在不同输入和条件下的行为。
 
@@ -392,7 +392,7 @@ order: 0
 
 - **保持更新**最新的操作系统版本和设备版本，以确保您的测试具有相关性并涵盖最新的功能和安全补丁。
 
-- **与跨职能团队合作**包括开发人员、用户体验设计师和产品经理，使测试工作与业务目标和用户期望保持一致。 通过将这些策略集成到您的测试工作流程中，您可以提高 [移动设备测试](/zh-cn/wiki/mobile-device-testing/) 工作的有效性和可靠性。
+- **与跨职能团队合作**包括开发人员、用户体验设计师和产品经理，使测试工作与业务目标和用户期望保持一致。 通过将这些策略集成到您的测试工作流程中，您可以提高 [移动设备测试](https://inaodeng.com/zh-cn/wiki/mobile-device-testing/) 工作的有效性和可靠性。
 
 - **优先考虑真实设备测试**对于特定于硬件的功能至关重要的场景，因为模拟器可能无法准确地复制这些特征。
 
@@ -402,7 +402,7 @@ order: 0
 
 - **自动化重复任务**还包括探索性测试会话，以发现脚本测试可能遗漏的问题。
 
-- **优化[测试用例](/zh-cn/wiki/test-case/)**覆盖关键的用户旅程和边缘情况，避免不增加价值的冗余测试。
+- **优化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**覆盖关键的用户旅程和边缘情况，避免不增加价值的冗余测试。
 
 - 使用 **数据驱动测试**通过将各种数据集输入测试脚本来验证应用程序在不同输入和条件下的行为。
 
@@ -420,7 +420,7 @@ order: 0
 
 - **优先考虑设备和操作系统版本**基于市场份额和目标受众分析。关注最常用的组合。
 
-- 实施 **[响应式设计](/zh-cn/wiki/responsive-design/)原则**在应用程序中确保不同屏幕尺寸的兼容性。
+- 实施 **[响应式设计](https://inaodeng.com/zh-cn/wiki/responsive-design/)原则**在应用程序中确保不同屏幕尺寸的兼容性。
 
 - 使用 **基于云的设备群**像 BrowserStack 或 Sauce Labs 一样，无需物理所有权即可访问各种设备和操作系统组合。
 
@@ -428,17 +428,17 @@ order: 0
 
 - 杠杆 **条件代码**在测试脚本中处理操作系统或设备特定的场景。
 
-- **优化[测试覆盖率](/zh-cn/wiki/test-coverage/)**混合使用真实设备、仿真器和模拟器，了解每种工具的局限性和最佳用例。
+- **优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**混合使用真实设备、仿真器和模拟器，了解每种工具的局限性和最佳用例。
 
 - 申请 **视觉测试工具**像 Applitools 一样，可以自动检测不同屏幕分辨率下 UI 的不一致。
 
 - **定期更新您的设备实验室**与新的设备和操作系统版本保持同步市场趋势。
 
-- 使用 **分析和崩溃报告**识别给用户带来问题的特定设备或操作系统版本上的问题并确定优先级。 通过将这些策略集成到您的[测试自动化](/zh-cn/wiki/test-automation/) 框架中，您可以高效地管理大量移动设备和配置，确保全面的[测试覆盖率](/zh-cn/wiki/test-coverage/) 和高质量的用户体验。
+- 使用 **分析和崩溃报告**识别给用户带来问题的特定设备或操作系统版本上的问题并确定优先级。 通过将这些策略集成到您的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架中，您可以高效地管理大量移动设备和配置，确保全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和高质量的用户体验。
 
 - **优先考虑设备和操作系统版本**基于市场份额和目标受众分析。关注最常用的组合。
 
-- 实施 **[响应式设计](/zh-cn/wiki/responsive-design/)原则**在应用程序中确保不同屏幕尺寸的兼容性。
+- 实施 **[响应式设计](https://inaodeng.com/zh-cn/wiki/responsive-design/)原则**在应用程序中确保不同屏幕尺寸的兼容性。
 
 - 使用 **基于云的设备群**像 BrowserStack 或 Sauce Labs 一样，无需物理所有权即可访问各种设备和操作系统组合。
 
@@ -446,7 +446,7 @@ order: 0
 
 - 杠杆 **条件代码**在测试脚本中处理操作系统或设备特定的场景。
 
-- **优化[测试覆盖率](/zh-cn/wiki/test-coverage/)**混合使用真实设备、仿真器和模拟器，了解每种工具的局限性和最佳用例。
+- **优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**混合使用真实设备、仿真器和模拟器，了解每种工具的局限性和最佳用例。
 
 - 申请 **视觉测试工具**像 Applitools 一样，可以自动检测不同屏幕分辨率下 UI 的不一致。
 

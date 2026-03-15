@@ -112,9 +112,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [gpt](/zh-cn/AIWiki/gpt/)
-- [o1-o3](/zh-cn/AIWiki/o1-o3/)
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
+- [gpt](https://inaodeng.com/zh-cn/AIWiki/gpt/)
+- [o1-o3](https://inaodeng.com/zh-cn/AIWiki/o1-o3/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
 
 ### 术语元数据
 

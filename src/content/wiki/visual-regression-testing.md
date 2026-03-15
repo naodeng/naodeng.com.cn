@@ -50,62 +50,62 @@ order: 0
 
 #### 什么是视觉回归测试？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 是一个[质量保证](/zh-cn/wiki/quality-assurance/) 过程，涉及捕获网页或应用程序屏幕的屏幕截图并将其与基线图像进行比较以检测更改。这种比较通常是逐像素进行的，突出显示功能测试可能无法捕获的视觉差异。
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 是一个[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 过程，涉及捕获网页或应用程序屏幕的屏幕截图并将其与基线图像进行比较以检测更改。这种比较通常是逐像素进行的，突出显示功能测试可能无法捕获的视觉差异。
   **关键步骤**包括：
 
 1. **建立基线** ：捕获 UI 的屏幕截图，作为将来测试的参考。
 2. **运行测试**：拍摄新的屏幕截图以与基线图像进行比较。
 3. **比较屏幕截图**：使用自动化工具检测视觉差异。
 4. **分析结果**：检查差异以确定它们是无意的回归还是故意的更改。
-5. **更新基线**：验证更改后，更新基线图像以反映 UI 的新接受状态。 要**解释结果**，请重点关注测试工具提供的突出显示的差异。调查每个差异以确认它是 [bug](/zh-cn/wiki/bug/) 还是预期的更改。 **常见挑战**包括处理动态内容并确保一致[测试环境](/zh-cn/wiki/test-environment/)。屏蔽动态区域、使用稳定的[测试数据](/zh-cn/wiki/test-data/)以及保持一致的浏览器和屏幕设置等策略可以缓解这些问题。 在 **CI/CD 管道**中，视觉回归测试会在每次提交或构建时自动运行，确保对视觉变化进行即时反馈。 **与其他测试的集成**是通过将视觉检查合并到现有功能@@PR​​OTECTED_34@@ 中或作为[端到端测试](/zh-cn/wiki/end-to-end-testing/) 场景的一部分来实现的。 对于**动态内容**，采用了等待元素稳定、使用占位符或在比较期间忽略某些区域等技术。 **未来趋势**可能涉及人工智能和机器学习，以改进对重大视觉变化的检测，同时减少[误报](/zh-cn/wiki/false-positive/)。
+5. **更新基线**：验证更改后，更新基线图像以反映 UI 的新接受状态。 要**解释结果**，请重点关注测试工具提供的突出显示的差异。调查每个差异以确认它是 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 还是预期的更改。 **常见挑战**包括处理动态内容并确保一致[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。屏蔽动态区域、使用稳定的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)以及保持一致的浏览器和屏幕设置等策略可以缓解这些问题。 在 **CI/CD 管道**中，视觉回归测试会在每次提交或构建时自动运行，确保对视觉变化进行即时反馈。 **与其他测试的集成**是通过将视觉检查合并到现有功能@@PR​​OTECTED_34@@ 中或作为[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 场景的一部分来实现的。 对于**动态内容**，采用了等待元素稳定、使用占位符或在比较期间忽略某些区域等技术。 **未来趋势**可能涉及人工智能和机器学习，以改进对重大视觉变化的检测，同时减少[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)。
 
 #### 为什么视觉回归测试很重要？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 至关重要，因为它通过检测可能影响用户体验的意外更改或异常来确保应用程序的**视觉完整性**。它通过关注功能测试可能错过的**视觉方面**来补充其他测试方法，例如布局变化、颜色变化或字体不一致。
-  鉴于用户与用户界面交互，视觉差异可能会导致**误解**或**沮丧**，可能会影响**品牌声誉**和**信任**。自动化[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)允许**可扩展**和**可重复**检查，这在频繁更改的敏捷和 CI/CD 环境中尤其重要。它有助于在不同的浏览器和设备上保持一致的外观和感觉，这对于**跨平台兼容性**至关重要。
-  通过尽早发现视觉问题，团队可以**降低修复[bugs](/zh-cn/wiki/bug/)的成本**并**加快高质量软件的交付**。它还释放了 QA 资源，以专注于更复杂的 [测试场景](/zh-cn/wiki/test-scenario/)，从而增强整体 **[测试覆盖率](/zh-cn/wiki/test-coverage/)**。
-  将[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 与其他类型的测试集成，创建了**全面的[测试套件](/zh-cn/wiki/test-suite/)**，涵盖应用程序的功能和美观方面，从而形成强大且可靠的软件产品。
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 至关重要，因为它通过检测可能影响用户体验的意外更改或异常来确保应用程序的**视觉完整性**。它通过关注功能测试可能错过的**视觉方面**来补充其他测试方法，例如布局变化、颜色变化或字体不一致。
+  鉴于用户与用户界面交互，视觉差异可能会导致**误解**或**沮丧**，可能会影响**品牌声誉**和**信任**。自动化[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)允许**可扩展**和**可重复**检查，这在频繁更改的敏捷和 CI/CD 环境中尤其重要。它有助于在不同的浏览器和设备上保持一致的外观和感觉，这对于**跨平台兼容性**至关重要。
+  通过尽早发现视觉问题，团队可以**降低修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/)的成本**并**加快高质量软件的交付**。它还释放了 QA 资源，以专注于更复杂的 [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)，从而增强整体 **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。
+  将[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 与其他类型的测试集成，创建了**全面的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**，涵盖应用程序的功能和美观方面，从而形成强大且可靠的软件产品。
 
 #### 视觉回归测试的关键组成部分是什么？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的关键组件包括：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的关键组件包括：
 
 - **基线图像**：应用程序 UI 元素处于预期状态的参考屏幕截图，用于与测试运行进行比较。
 - **图像比较引擎**：用于检测基线图像和后续测试执行的屏幕截图之间的视觉差异的软件。
-- **[测试运行者](/zh-cn/wiki/test-runner/)** ：驱动可视化测试执行的框架或工具，通常是较大的测试自动化套件的一部分。
+- **[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)** ：驱动可视化测试执行的框架或工具，通常是较大的测试自动化套件的一部分。
 - **屏幕截图捕获工具**：测试运行程序中的实用程序或独立工具，可在测试期间截取应用程序的屏幕截图。
 - **阈值设置**：可配置参数，用于定义测试标记为失败之前可接受的像素差异水平。
 - **报告仪表板**：显示测试结果的界面，包括视觉差异和指标，以帮助分析和解释变化。
 - **工件存储**：用于存储基线图像、测试屏幕截图和差异图像以进行历史比较和审计的系统。
 - **集成挂钩**：将视觉回归测试与 CI/CD 管道、问题跟踪系统和通知服务集成的机制。
 - **测试配置**：指定要测试的页面、屏幕尺寸和浏览器的设置，以及测试环境所需的任何设置或拆卸步骤。
-- **动态内容处理**：管理和稳定涉及动态内容的测试的策略，例如使用占位符、忽略区域或在捕获屏幕截图之前等待元素稳定。 这些组件协同工作，确保视觉回归测试可靠、可维护，并集成到更广泛的 [测试自动化](/zh-cn/wiki/test-automation/) 策略中。
+- **动态内容处理**：管理和稳定涉及动态内容的测试的策略，例如使用占位符、忽略区域或在捕获屏幕截图之前等待元素稳定。 这些组件协同工作，确保视觉回归测试可靠、可维护，并集成到更广泛的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略中。
 
 #### 视觉回归测试如何融入整体测试策略？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 通过关注应用程序的**视觉方面**来补充其他测试策略，确保 UI 按用户预期显示。它适合 **[用户界面测试](/zh-cn/wiki/ui-testing/) 级别**的整体测试策略，通常是在功能测试验证应用程序的行为之后。
-  在 **[测试金字塔](/zh-cn/wiki/test-pyramid/)** 中，视觉回归测试位于顶部，表明与单元或集成测试相比，此类测试较少。它们在**持续集成/持续部署 (CI/CD)** 管道中至关重要，可以在部署之前捕获意外的视觉变化。
-  [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 最好通过**分层测试方法**与其他测试集成。例如，在单元测试验证各个组件并集成测试确保组件协同工作之后，视觉回归测试可以确认 UI 是否正确呈现。
-  自动视觉回归测试通常在**临时环境**中成功部署后触发，或者作为预发布[测试套件](/zh-cn/wiki/test-suite/)的一部分。它们可以与其他自动化测试并行运行，但需要仔细考虑，因为它们**对微小变化敏感**以及[误报](/zh-cn/wiki/false-positive/)的潜力。
-  要有效集成 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，请考虑：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 通过关注应用程序的**视觉方面**来补充其他测试策略，确保 UI 按用户预期显示。它适合 **[用户界面测试](https://inaodeng.com/zh-cn/wiki/ui-testing/) 级别**的整体测试策略，通常是在功能测试验证应用程序的行为之后。
+  在 **[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)** 中，视觉回归测试位于顶部，表明与单元或集成测试相比，此类测试较少。它们在**持续集成/持续部署 (CI/CD)** 管道中至关重要，可以在部署之前捕获意外的视觉变化。
+  [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 最好通过**分层测试方法**与其他测试集成。例如，在单元测试验证各个组件并集成测试确保组件协同工作之后，视觉回归测试可以确认 UI 是否正确呈现。
+  自动视觉回归测试通常在**临时环境**中成功部署后触发，或者作为预发布[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)的一部分。它们可以与其他自动化测试并行运行，但需要仔细考虑，因为它们**对微小变化敏感**以及[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)的潜力。
+  要有效集成 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，请考虑：
 
 - 对关键用户旅程运行可视化测试，以最大限度地提高覆盖范围，而不会导致测试套件超载。
 - 使用 **基线图像**管理 UI 更改和更新的策略。
 
 - 实施 **审核流程**用于区分错误和故意更改的视觉差异。
 
-- 结合视觉回归测试 **跨浏览器和[响应式设计](/zh-cn/wiki/responsive-design/)测试**确保不同环境下的一致性。 通过战略性地将 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 合并到更广泛的 [测试策略](/zh-cn/wiki/test-strategy/) 中，团队可以保持高质量的用户界面，同时继续高效地提供新功能和更新。
+- 结合视觉回归测试 **跨浏览器和[响应式设计](https://inaodeng.com/zh-cn/wiki/responsive-design/)测试**确保不同环境下的一致性。 通过战略性地将 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 合并到更广泛的 [测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 中，团队可以保持高质量的用户界面，同时继续高效地提供新功能和更新。
 
 - 对关键用户旅程运行可视化测试，以最大限度地提高覆盖范围，而不会导致测试套件超载。
 - 使用 **基线图像**管理 UI 更改和更新的策略。
 
 - 实施 **审核流程**用于区分错误和故意更改的视觉差异。
 
-- 结合视觉回归测试 **跨浏览器和[响应式设计](/zh-cn/wiki/responsive-design/)测试**确保不同环境下的一致性。
+- 结合视觉回归测试 **跨浏览器和[响应式设计](https://inaodeng.com/zh-cn/wiki/responsive-design/)测试**确保不同环境下的一致性。
 
 #### 视觉回归测试的优点和缺点是什么？
 
-**[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的好处：**
+**[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的好处：**
 
 - **检测 UI 缺陷：**捕获其他类型的测试可能会遗漏的视觉差异。
 
@@ -115,9 +115,9 @@ order: 0
 
 - **历史比较：**允许与基线图像进行比较以跟踪随时间的变化。
 
-- **全面覆盖：**可以覆盖不同屏幕尺寸和浏览器的各种视觉元素。 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的缺点：**
+- **全面覆盖：**可以覆盖不同屏幕尺寸和浏览器的各种视觉元素。 **[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的缺点：**
 
-- **[误报](/zh-cn/wiki/false-positive/):**对微小变化敏感，导致误报。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/):**对微小变化敏感，导致误报。
 
 - **资源密集型：**需要大量存储空间来存储基线和比较图像。
 
@@ -147,7 +147,7 @@ order: 0
 
 - **全面覆盖：**可以覆盖不同屏幕尺寸和浏览器的各种视觉元素。
 
-- **[误报](/zh-cn/wiki/false-positive/):**对微小变化敏感，导致误报。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/):**对微小变化敏感，导致误报。
 
 - **资源密集型：**需要大量存储空间来存储基线和比较图像。
 
@@ -171,47 +171,47 @@ order: 0
 
 #### 视觉回归测试常用哪些工具？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的常用工具包括：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的常用工具包括：
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：与诸如 **WebDriverIO**和 **量角器**捕获屏幕截图进行比较。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：与诸如 **WebDriverIO**和 **量角器**捕获屏幕截图进行比较。
 
 - **Puppeteer**：一个无头 Chrome Node API，可用于截取屏幕截图。
-- **[Cypress](/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：提供屏幕截图功能以及端到端测试功能。
 - **Applitools Eyes**：使用人工智能来比较视觉元素并检测差异。
 - **Percy**：与 CI 工具和版本控制系统集成以自动化视觉审查。
 - **BackstopJS**：Web 应用程序的开源工具，提供屏幕截图比较。
 - **Storybook** ：主要针对组件库，可搭配可视化测试工具。
 - **筛选器**：提供视觉回归测试，重点关注组件状态。
 - **Wraith**：由 BBC 创建，它捕获屏幕截图并在不同环境中进行比较。
-- **Gemini**：用于回归测试网页视觉外观的实用程序。 每个工具都有自己的**[API](/zh-cn/wiki/api/)**、**集成功能**和**比较算法**。有些提供**基于云的存储**和**协作功能**，而其他则更适合**本地开发环境**。选择工具时，请考虑诸如**易于集成**、**可扩展性**、**报告功能**和**成本**等因素。自动化视觉回归测试通常涉及捕获基线图像、运行测试以捕获新的屏幕截图以及将它们与基线进行比较。结果解释可以是手动的或自动的，具体取决于工具的功能。
+- **Gemini**：用于回归测试网页视觉外观的实用程序。 每个工具都有自己的**[API](https://inaodeng.com/zh-cn/wiki/api/)**、**集成功能**和**比较算法**。有些提供**基于云的存储**和**协作功能**，而其他则更适合**本地开发环境**。选择工具时，请考虑诸如**易于集成**、**可扩展性**、**报告功能**和**成本**等因素。自动化视觉回归测试通常涉及捕获基线图像、运行测试以捕获新的屏幕截图以及将它们与基线进行比较。结果解释可以是手动的或自动的，具体取决于工具的功能。
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：与框架集成，例如 **WebDriverIO**和 **量角器**捕获屏幕截图进行比较。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：与框架集成，例如 **WebDriverIO**和 **量角器**捕获屏幕截图进行比较。
 
 #### 这些工具之间有什么区别？
 
-在比较**[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 工具**时，必须考虑它们的**核心功能**、**集成功能**、**易用性**和**报告功能**。以下是一些差异：
+在比较**[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 工具**时，必须考虑它们的**核心功能**、**集成功能**、**易用性**和**报告功能**。以下是一些差异：
 
-- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](/zh-cn/wiki/setup/) 进行视觉测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量级，但需要额外的视觉回归库，例如`jest-image-snapshot`。
-- **[Cypress](/zh-cn/wiki/cypress/)**：通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
-- **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**：通过`cypress-image-snapshot` 等插件内置[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 框架。提供丰富的[API](https://inaodeng.com/zh-cn/wiki/api/) 和实时重新加载。
+- **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](https://inaodeng.com/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
-- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](/zh-cn/wiki/setup/)。
+- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
 - **Storybook**：本身不是一个测试工具，但它可以与视觉回归工具一起使用来单独测试 UI 组件。
-- **wdio-visual-regression-service**：[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](/zh-cn/wiki/test-runner/) 集成。 每个工具都有其**优点**和**局限性**。选择取决于现有技术堆栈、预算和特定项目要求等因素。与 CI/CD 集成、轻松捕获和比较屏幕截图以及处理动态内容是关键考虑因素。
+- **wdio-visual-regression-service**：[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/) 集成。 每个工具都有其**优点**和**局限性**。选择取决于现有技术堆栈、预算和特定项目要求等因素。与 CI/CD 集成、轻松捕获和比较屏幕截图以及处理动态内容是关键考虑因素。
 
-- **[selenium](/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](/zh-cn/wiki/setup/) 进行视觉测试。
+- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)**：主要是一个浏览器自动化工具，不专门从事视觉回归，但可以通过插件进行扩展。需要更多 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 进行视觉测试。
 - **Puppeteer**：无头 Chrome 浏览器自动化工具。它快速且轻量，但需要额外的视觉回归库，例如`jest-image-snapshot`。
-- **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架通过`cypress-image-snapshot` 等插件内置[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。提供丰富的[API](/zh-cn/wiki/api/) 和实时重新加载。
-- **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**：[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 框架通过`cypress-image-snapshot` 等插件内置[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)。提供丰富的[API](https://inaodeng.com/zh-cn/wiki/api/) 和实时重新加载。
+- **Applitools Eyes**：人工智能驱动的工具，专门从事视觉 [用户界面测试](https://inaodeng.com/zh-cn/wiki/ui-testing/) 和跨浏览器比较。它更复杂，但成本也更高。
 - **Percy**：可视化测试作为与 CI/CD 管道集成的服务。它捕获屏幕截图并突出显示视觉变化。它很容易使用，但需要订阅。
-- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](/zh-cn/wiki/setup/)。
+- **BackstopJS**：专为视觉回归设计的开源工具。它是可配置的，并包括一个报告仪表板。但是，它可能需要更多手动[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
 - **Storybook**：本身不是一个测试工具，但它可以与视觉回归工具一起使用来单独测试 UI 组件。
-- **wdio-visual-regression-service**：[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](/zh-cn/wiki/test-runner/) 集成。
+- **wdio-visual-regression-service**：[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的 WebdriverIO 服务，与 WebdriverIO 的 [测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/) 集成。
 
 #### 使用哪些技术来执行视觉回归测试？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 技术根据被测应用程序的具体要求和上下文而有所不同。以下是使用的一些技术：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 技术根据被测应用程序的具体要求和上下文而有所不同。以下是使用的一些技术：
 
 - **屏幕截图比较**：捕获 UI 元素或页面的屏幕截图，并将它们与基线图像逐像素进行比较以检测更改。
 - **基于 DOM 的比较**：分析页面的文档对象模型 (DOM)，并将其与基线 DOM 进行比较，以识别结构变化。
@@ -220,37 +220,37 @@ order: 0
 - **跨浏览器和跨设备测试**：通过捕获和比较来自多个环境的视觉效果，确保不同浏览器和设备之间的一致性。
 - **基于阈值的比较**：为可接受的更改设置容差级别，以最大程度地减少比较过程中细微差异带来的噪音。
 - **视觉审查工作流程**：实施手动审查检测到的更改的流程，允许人工判断以确定更改是错误还是有意更新。
-- **自动化测试编排**：将视觉回归测试集成到自动化测试套件中，作为 CI/CD 管道的一部分运行，确保每次构建时都进行视觉检查。 这些技术可以组合或独立使用，以满足项目的需要。选择正确的方法来平衡对变化的敏感性和避免[误报](/zh-cn/wiki/false-positive/) 是至关重要的。
+- **自动化测试编排**：将视觉回归测试集成到自动化测试套件中，作为 CI/CD 管道的一部分运行，确保每次构建时都进行视觉检查。 这些技术可以组合或独立使用，以满足项目的需要。选择正确的方法来平衡对变化的敏感性和避免[误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 是至关重要的。
 
 #### 如何选择合适的视觉回归测试工具？
 
-为[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 选择正确的工具需要评估几个因素，以确保它符合您的项目需求：
+为[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 选择正确的工具需要评估几个因素，以确保它符合您的项目需求：
 
-- **与现有工具集成**：选择与您当前的技术堆栈无缝集成的工具，包括 CI/CD 管道、[测试管理](/zh-cn/wiki/test-management/) 和问题跟踪系统。
+- **与现有工具集成**：选择与您当前的技术堆栈无缝集成的工具，包括 CI/CD 管道、[测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 和问题跟踪系统。
 - **支持的技术**：确保该工具支持您使用的技术，例如 Web 框架、移动平台和浏览器。
-- **易于使用**：寻找具有用户友好界面和简单[环境搭建](/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
+- **易于使用**：寻找具有用户友好界面和简单[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)流程的工具，以促进快速采用。
 - **基线管理**：选择一种能够提供高效基线图像管理并允许在发生有意更改时轻松更新的工具。
-- **灵敏度设置**：调整比较灵敏度的能力对于最小化 [误报](/zh-cn/wiki/false-positive/) 至关重要。
+- **灵敏度设置**：调整比较灵敏度的能力对于最小化 [误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 至关重要。
 - **审查和批准流程**：一个好的工具应该提供一个简化的流程来审查差异和批准更改。
 - **可扩展性**：考虑工具的性能和可扩展性来处理应用程序视觉元素的增长。
 - **成本**：评估工具的定价模型，以确保它符合您的预算，同时满足您的要求。
 - **社区和支持**：具有强大社区和响应支持的工具对于故障排除和最佳实践来说非常宝贵。
-- **试用期**：如果可能，请利用试用期来测试该工具在您的环境中的功能。 通过仔细考虑这些因素，您可以选择[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 工具来增强您的[测试自动化](/zh-cn/wiki/test-automation/) 策略并保持应用程序的视觉完整性。
+- **试用期**：如果可能，请利用试用期来测试该工具在您的环境中的功能。 通过仔细考虑这些因素，您可以选择[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 工具来增强您的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略并保持应用程序的视觉完整性。
 
 #### 如何自动化视觉回归测试？
 
-要自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，请按照下列步骤操作：
+要自动化 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，请按照下列步骤操作：
 
 1. **选择一个符合您的技术堆栈和测试需求的工具**。 Percy、Applitools 或 BackstopJS 等工具是流行的选择。
-2. **将该工具集成**到您的[测试套件](/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 等测试框架集成。
-3. **捕获要测试的 UI 元素或页面的基线图像**。这是通过运行 [测试套件](/zh-cn/wiki/test-suite/) 并保存屏幕截图来完成的。
-4. **编写 [测试脚本](/zh-cn/wiki/test-script/)** 来浏览您的应用程序并在关键点捕获屏幕截图。使用您选择的工具的[API](/zh-cn/wiki/api/) 来截取这些屏幕截图。
+2. **将该工具集成**到您的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)中。大多数工具都提供 SDK 或插件，用于与 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/) 或 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 等测试框架集成。
+3. **捕获要测试的 UI 元素或页面的基线图像**。这是通过运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 并保存屏幕截图来完成的。
+4. **编写 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** 来浏览您的应用程序并在关键点捕获屏幕截图。使用您选择的工具的[API](https://inaodeng.com/zh-cn/wiki/api/) 来截取这些屏幕截图。
 5. **在一致的环境中运行测试**，以避免由于不同的浏览器或屏幕分辨率而导致的差异。
 6. **将屏幕截图**与基线进行比较。该工具将标记它检测到的任何视觉差异。
 7. **审查标记的差异**，以确定它们是有意更改还是真正的回归。
 8. **当有意更改时更新基线图像**，以便未来的测试反映新的预期状态。
 9. **与 CI/CD 集成**，在每次提交或构建时自动运行可视化回归测试。
-10. **通过使用等待元素稳定、忽略区域或使用模拟数据等策略来处理动态内容**。 以下是如何使用假设工具的 [API](/zh-cn/wiki/api/) 捕获和比较屏幕截图的示例：
+10. **通过使用等待元素稳定、忽略区域或使用模拟数据等策略来处理动态内容**。 以下是如何使用假设工具的 [API](https://inaodeng.com/zh-cn/wiki/api/) 捕获和比较屏幕截图的示例：
 
 ```
   test('Homepage visual regression', async () => {
@@ -259,28 +259,28 @@ order: 0
     expect(screenshot).toMatchBaseline();
   });
 ```
-自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 需要仔细[环境搭建](/zh-cn/wiki/setup/) 以确保一致性和可靠性，但一旦到位，它可以显着减少检测 UI 回归所需的工作量。
+自动化 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 需要仔细[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 以确保一致性和可靠性，但一旦到位，它可以显着减少检测 UI 回归所需的工作量。
 
 ### 实际应用
 
 #### 视觉回归测试的真实示例有哪些？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的真实示例包括：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的真实示例包括：
 
-- **电子商务平台**使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)来确保产品页面在各种设备上正确显示，特别是在更新UI组件或CSS之后。这对于保持一致的购物体验至关重要。
+- **电子商务平台**使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)来确保产品页面在各种设备上正确显示，特别是在更新UI组件或CSS之后。这对于保持一致的购物体验至关重要。
 - **新闻网站**应用视觉回归测试来验证发布新文章和多媒体内容时的布局稳定性，防止可能影响可读性和用户参与度的视觉问题。
-- **银行应用程序** 利用 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 来确认财务仪表板和交易页面的准确呈现，这对于用户信任和遵守财务法规至关重要。
-- **移动应用程序开发人员**使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)来检查UI元素是否正确适应不同的屏幕尺寸和分辨率，确保纵向和横向模式下的无缝体验。
-- 大型组织内的**设计系统**受益于[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，以验证不同项目和团队中 UI 组件的外观一致，从而保持品牌一致性。
-- **营销网站** 在活动启动前使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，以确保登陆页面在浏览器和设备上按预期呈现，从而优化转化率。
-- **软件即服务 (SaaS) 提供商**在每次发布后都会执行视觉回归测试，以确认 UI 没有回归，这对于竞争激烈的市场中的用户体验至关重要。 在每种情况下，[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 都有助于保持视觉一致性和功能性，这对于用户满意度和业务成功至关重要。
+- **银行应用程序** 利用 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 来确认财务仪表板和交易页面的准确呈现，这对于用户信任和遵守财务法规至关重要。
+- **移动应用程序开发人员**使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)来检查UI元素是否正确适应不同的屏幕尺寸和分辨率，确保纵向和横向模式下的无缝体验。
+- 大型组织内的**设计系统**受益于[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，以验证不同项目和团队中 UI 组件的外观一致，从而保持品牌一致性。
+- **营销网站** 在活动启动前使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，以确保登陆页面在浏览器和设备上按预期呈现，从而优化转化率。
+- **软件即服务 (SaaS) 提供商**在每次发布后都会执行视觉回归测试，以确认 UI 没有回归，这对于竞争激烈的市场中的用户体验至关重要。 在每种情况下，[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 都有助于保持视觉一致性和功能性，这对于用户满意度和业务成功至关重要。
 
-- **电子商务平台**使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)来确保产品页面在各种设备上正确显示，特别是在更新UI组件或CSS之后。这对于保持一致的购物体验至关重要。
+- **电子商务平台**使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)来确保产品页面在各种设备上正确显示，特别是在更新UI组件或CSS之后。这对于保持一致的购物体验至关重要。
 - **新闻网站**应用视觉回归测试来验证发布新文章和多媒体内容时的布局稳定性，防止可能影响可读性和用户参与度的视觉问题。
-- **银行应用程序** 利用 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 来确认财务仪表板和交易页面的准确呈现，这对于用户信任和遵守财务法规至关重要。
-- **移动应用程序开发人员**使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)来检查UI元素是否正确适应不同的屏幕尺寸和分辨率，确保纵向和横向模式下的无缝体验。
-- 大型组织内的**设计系统**受益于[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，以验证不同项目和团队中 UI 组件的外观一致，从而保持品牌一致性。
-- **营销网站**在活动启动前使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)，以确保登陆页面在浏览器和设备上按预期呈现，从而优化转化率。
+- **银行应用程序** 利用 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 来确认财务仪表板和交易页面的准确呈现，这对于用户信任和遵守财务法规至关重要。
+- **移动应用程序开发人员**使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)来检查UI元素是否正确适应不同的屏幕尺寸和分辨率，确保纵向和横向模式下的无缝体验。
+- 大型组织内的**设计系统**受益于[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，以验证不同项目和团队中 UI 组件的外观一致，从而保持品牌一致性。
+- **营销网站**在活动启动前使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)，以确保登陆页面在浏览器和设备上按预期呈现，从而优化转化率。
 - **软件即服务 (SaaS) 提供商**在每次发布后都会执行视觉回归测试，以确认 UI 没有回归，这对于竞争激烈的市场中的用户体验至关重要。
 
 #### 如何设置视觉回归测试？
@@ -288,23 +288,23 @@ order: 0
 要设置视觉回归测试，请按照下列步骤操作：
 
 1. **选择适合您的项目需求并与您的技术堆栈兼容的工具**。常见的选择包括 Percy、Applitools 或 BackstopJS。
-2. **通过运行 [测试套件](/zh-cn/wiki/test-suite/) 创建基线**，以捕获要监控的 UI 元素或页面的初始屏幕截图。
-3. **通过将视觉回归库添加到现有的 [测试脚本](/zh-cn/wiki/test-script/) 来与您的测试框架集成**。例如，在基于 [selenium](/zh-cn/wiki/selenium/) 的框架中，您可以添加：
+2. **通过运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 创建基线**，以捕获要监控的 UI 元素或页面的初始屏幕截图。
+3. **通过将视觉回归库添加到现有的 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 来与您的测试框架集成**。例如，在基于 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的框架中，您可以添加：
 
 ```
   visualRegressionTool.compareScreenshots("homepage");
 ```
 
-1. **配置[测试环境](/zh-cn/wiki/test-environment/)**以确保屏幕尺寸、浏览器版本以及其他可能影响视觉输出的环境因素的一致性。
+1. **配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**以确保屏幕尺寸、浏览器版本以及其他可能影响视觉输出的环境因素的一致性。
 2. **为可接受的像素差异设置阈值**，因为大多数工具允许您定义应标记的变化的敏感度。
 3. **通过将可视化回归测试合并到 CI/CD 管道中，触发代码提交或计划时间间隔的测试，实现流程自动化**。
 4. **在有意进行 UI 更改时根据需要审查和更新基线**，以确保测试保持相关性和准确性。
-5. **通过工具的仪表板或报告系统监控测试结果**，并调查基线和最新屏幕截图之间的任何差异。 通过执行这些步骤，您可以建立一个强大的[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) [环境搭建](/zh-cn/wiki/setup/)，它可以补充您的整体测试策略并帮助保持整个应用程序 UI 的视觉一致性。
+5. **通过工具的仪表板或报告系统监控测试结果**，并调查基线和最新屏幕截图之间的任何差异。 通过执行这些步骤，您可以建立一个强大的[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)，它可以补充您的整体测试策略并帮助保持整个应用程序 UI 的视觉一致性。
 
 1. **选择适合您的项目需求并与您的技术堆栈兼容的工具**。常见的选择包括 Percy、Applitools 或 BackstopJS。
-2. **通过运行 [测试套件](/zh-cn/wiki/test-suite/) 创建基线**，以捕获要监控的 UI 元素或页面的初始屏幕截图。
-3. **通过将视觉回归库添加到现有的 [测试脚本](/zh-cn/wiki/test-script/) 来与您的测试框架集成**。例如，在基于 [selenium](/zh-cn/wiki/selenium/) 的框架中，您可以添加：
-1. **配置[测试环境](/zh-cn/wiki/test-environment/)**以确保屏幕尺寸、浏览器版本以及其他可能影响视觉输出的环境因素的一致性。
+2. **通过运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 创建基线**，以捕获要监控的 UI 元素或页面的初始屏幕截图。
+3. **通过将视觉回归库添加到现有的 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 来与您的测试框架集成**。例如，在基于 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 的框架中，您可以添加：
+1. **配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**以确保屏幕尺寸、浏览器版本以及其他可能影响视觉输出的环境因素的一致性。
 2. **为可接受的像素差异设置阈值**，因为大多数工具允许您定义应标记的变化的敏感度。
 3. **通过将可视化回归测试合并到 CI/CD 管道中，触发代码提交或计划时间间隔的测试，实现流程自动化**。
 4. **在有意进行 UI 更改时根据需要审查和更新基线**，以确保测试保持相关性和准确性。
@@ -316,13 +316,13 @@ order: 0
 
 1. **确定范围**：确定哪些页面和组件需要测试。
 2. **捕获基线图像**：使用您选择的工具在定义的范围内截取 UI 元素的屏幕截图。这些将作为未来比较的参考图像。
-3. **与[测试套件](/zh-cn/wiki/test-suite/)** 集成：确保视觉回归测试是自动化测试套件的一部分，可以在关键点运行，例如提交后或夜间构建期间。
+3. **与[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 集成：确保视觉回归测试是自动化测试套件的一部分，可以在关键点运行，例如提交后或夜间构建期间。
 4. **运行测试**：执行视觉回归测试，这将捕获新的屏幕截图并将其与基线图像进行比较。
 5. **分析差异**：查看测试结果，重点关注基线和新屏幕截图之间突出显示的差异。
 6. **更新基线**：如果更改是有意且正确的，则更新基线图像以反映 UI 的新接受状态。
 7. **修复问题**：如果差异是无意的，请找出根本原因并修复代码库中的问题。
 8. **文档更改**：记录基线图像的更改和更新，以便为团队保留清晰的历史记录。
-9. **优化测试**：定期审查和细化可接受变更的范围和阈值，以提高测试准确性和效率。 使用以下代码片段将 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 集成到您的 [测试套件](/zh-cn/wiki/test-suite/) 中：
+9. **优化测试**：定期审查和细化可接受变更的范围和阈值，以提高测试准确性和效率。 使用以下代码片段将 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 集成到您的 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中：
 
 ```
   describe('Visual Regression Tests', () => {
@@ -343,7 +343,7 @@ order: 0
 
 - **像素差异**：量化像素差异百分比的变化。微小的差异可能是可以接受的，而重大的变化则需要进行调查。
 - **上下文**：考虑更改的上下文。它是在动态内容区域内，还是不应变化的静态组件？
-- **[误报](/zh-cn/wiki/false-positive/)** ：识别并排除由于动态内容、动画或其他可接受的变化而可能发生的误报。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)** ：识别并排除由于动态内容、动画或其他可接受的变化而可能发生的误报。
 - **阈值**：使用阈值来确定可接受的变化水平。根据历史数据和所测试区域的敏感性进行调整。
 - **一致性** ：确保测试环境一致，避免因环境因素造成差异。 确定更改后：
 
@@ -353,22 +353,22 @@ order: 0
 
 #### 视觉回归测试中有哪些常见挑战以及如何克服这些挑战？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 可能面临几个挑战：
-  **由于非确定性 UI 导致的不稳定**：测试可能会由于 UI 中微小的、不相关的更改（例如广告或动画）而失败。 **解决方案**：实现稳定的[测试环境](/zh-cn/wiki/test-environment/)并使用工具忽略动态区域。
-  **大量[误报](/zh-cn/wiki/false-positive/)**：小的、可接受的视觉变化可能会触发测试失败。 **解决方案**：调整比较算法的灵敏度并检查像素差异的阈值。
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 可能面临几个挑战：
+  **由于非确定性 UI 导致的不稳定**：测试可能会由于 UI 中微小的、不相关的更改（例如广告或动画）而失败。 **解决方案**：实现稳定的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)并使用工具忽略动态区域。
+  **大量[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)**：小的、可接受的视觉变化可能会触发测试失败。 **解决方案**：调整比较算法的灵敏度并检查像素差异的阈值。
   **资源密集型**：存储和处理大量屏幕截图的成本可能很高。 **解决方案**：通过压缩图像并仅保留相关版本来优化存储。
   **缓慢的反馈循环**：视觉测试的运行和分析可能会很慢。 **解决方案**：并行运行视觉回归测试并优先考虑关键视觉元素。
   **跨设备和跨浏览器问题**：不同浏览器和设备之间的视觉不一致会使测试变得复杂。 **解决方案**：使用基于云的服务来提供对多个浏览器和设备组合的访问。
   **维护开销**：更新合法更改的基线可能很乏味。 **解决方案**：尽可能自动化基线更新并简化审核流程。
-  **复杂[Setups](/zh-cn/wiki/setup/)**：配置准确的视觉测试环境可能很复杂。 **解决方案**：使用容器化来维护一致的环境并与 CI/CD 管道集成，以便于[环境搭建](/zh-cn/wiki/setup/)。
-  **处理[响应式设计](/zh-cn/wiki/responsive-design/)**：确保各种屏幕尺寸上的 UI 一致性具有挑战性。 **解决方案**：使用允许指定视口尺寸并在一组有代表性的屏幕尺寸上进行测试的工具。
-  通过采用战略解决方案应对这些挑战，[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 可以成为全面的[测试自动化](/zh-cn/wiki/test-automation/) 战略的重要组成部分。
+  **复杂[Setups](https://inaodeng.com/zh-cn/wiki/setup/)**：配置准确的视觉测试环境可能很复杂。 **解决方案**：使用容器化来维护一致的环境并与 CI/CD 管道集成，以便于[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
+  **处理[响应式设计](https://inaodeng.com/zh-cn/wiki/responsive-design/)**：确保各种屏幕尺寸上的 UI 一致性具有挑战性。 **解决方案**：使用允许指定视口尺寸并在一组有代表性的屏幕尺寸上进行测试的工具。
+  通过采用战略解决方案应对这些挑战，[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 可以成为全面的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 战略的重要组成部分。
 
 ### 高级概念
 
 #### 视觉回归测试在持续集成/持续部署 (CI/CD) 环境中如何工作？
 
-在**CI/CD 环境**中，[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 是自动化的并集成到部署管道中。它通常是这样工作的：
+在**CI/CD 环境**中，[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 是自动化的并集成到部署管道中。它通常是这样工作的：
 
 1. **代码提交**：开发人员将代码更改推送到版本控制系统。
 2. **触发器**：此提交触发 CI/CD 管道，启动构建过程。
@@ -392,7 +392,7 @@ order: 0
 7. **审查**：开发人员通常通过视觉测试平台审查视觉差异，以确定它们是故意的还是错误。
 8. **批准**：批准有意更改，更新基线图像。
 9. **修复**：修复了意外的更改并重新运行管道。
-10. **部署**：如果所有测试都通过，则更改将部署到生产中。 此过程可确保视觉效果不会因新代码更改而降低，从而保持一致的用户体验。 **CI/CD 中的自动化 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** 对于快节奏的开发周期至关重要，使团队能够及早发现视觉问题并充满信心地进行部署。
+10. **部署**：如果所有测试都通过，则更改将部署到生产中。 此过程可确保视觉效果不会因新代码更改而降低，从而保持一致的用户体验。 **CI/CD 中的自动化 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)** 对于快节奏的开发周期至关重要，使团队能够及早发现视觉问题并充满信心地进行部署。
 
 ```
     runVisualRegressionTests();
@@ -407,14 +407,14 @@ order: 0
 
 #### 视觉回归测试如何与其他类型的测试集成？
 
-将[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 与其他类型的测试集成可以增强[测试套件](/zh-cn/wiki/test-suite/) 的稳健性。以下是如何有效地结合它：
+将[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 与其他类型的测试集成可以增强[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的稳健性。以下是如何有效地结合它：
 
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：单元测试确保各个组件正常运行后，视觉回归测试可以确认它们也正确渲染。
-- **[集成测试](/zh-cn/wiki/integration-testing/)** ：视觉回归测试可以遵循集成测试来验证组合组件是否保持预期的布局和样式。
-- **[功能测试](/zh-cn/wiki/functional-testing/)** ：将功能测试与视觉回归测试配对，以确保当功能按预期运行时，它们也按预期显示。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** ：将视觉检查纳入 E2E 测试中，以在完全集成的环境中验证 UI，捕获仅在类似生产的设置中可能出现的问题。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：性能测试后，运行视觉回归测试以检测性能优化可能导致的任何 UI 降级。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：与视觉回归相结合，确保视觉变化不会对辅助功能产生负面影响。 使用 [selenium](/zh-cn/wiki/selenium/) 或 [Cypress](/zh-cn/wiki/cypress/) 等工具在 CI/CD 管道中实现此集成以进行功能测试，使用 Percy 或 Applitools 进行视觉回归。使用代码块定义在其他测试类型后触发可视化测试的钩子或侦听器：
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：单元测试确保各个组件正常运行后，视觉回归测试可以确认它们也正确渲染。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：视觉回归测试可以遵循集成测试来验证组合组件是否保持预期的布局和样式。
+- **[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)** ：将功能测试与视觉回归测试配对，以确保当功能按预期运行时，它们也按预期显示。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)** ：将视觉检查纳入 E2E 测试中，以在完全集成的环境中验证 UI，捕获仅在类似生产的设置中可能出现的问题。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：性能测试后，运行视觉回归测试以检测性能优化可能导致的任何 UI 降级。
+- **[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)** ：与视觉回归相结合，确保视觉变化不会对辅助功能产生负面影响。 使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 或 [Cypress](https://inaodeng.com/zh-cn/wiki/cypress/) 等工具在 CI/CD 管道中实现此集成以进行功能测试，使用 Percy 或 Applitools 进行视觉回归。使用代码块定义在其他测试类型后触发可视化测试的钩子或侦听器：
 
 ```
   afterEach(() => {
@@ -424,44 +424,44 @@ order: 0
 ```
 确保您的视觉回归工具支持与测试框架和 CI/CD 工具的集成。这将简化流程并提供有关视觉差异以及其他测试结果的即时反馈。
 
-- **[单元测试](/zh-cn/wiki/unit-testing/)** ：单元测试确保各个组件正常运行后，视觉回归测试可以确认它们也正确渲染。
-- **[集成测试](/zh-cn/wiki/integration-testing/)** ：视觉回归测试可以遵循集成测试，以验证组合组件是否保持预期的布局和样式。
-- **[功能测试](/zh-cn/wiki/functional-testing/)** ：将功能测试与视觉回归测试配对，以确保当功能按预期运行时，它们看起来也如预期。
-- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** ：将视觉检查纳入 E2E 测试中，以在完全集成的环境中验证 UI，捕获仅在类似生产的设置中可能出现的问题。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：性能测试后，运行视觉回归测试以检测性能优化可能导致的任何 UI 降级。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：与视觉回归相结合，确保视觉变化不会对辅助功能产生负面影响。
+- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** ：单元测试确保各个组件正常运行后，视觉回归测试可以确认它们也正确渲染。
+- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：视觉回归测试可以遵循集成测试，以验证组合组件是否保持预期的布局和样式。
+- **[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)** ：将功能测试与视觉回归测试配对，以确保当功能按预期运行时，它们看起来也如预期。
+- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)** ：将视觉检查纳入 E2E 测试中，以在完全集成的环境中验证 UI，捕获仅在类似生产的设置中可能出现的问题。
+- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** ：性能测试后，运行视觉回归测试以检测性能优化可能导致的任何 UI 降级。
+- **[辅助功能测试](https://inaodeng.com/zh-cn/wiki/accessibility-testing/)** ：与视觉回归相结合，确保视觉变化不会对辅助功能产生负面影响。
 
 #### 视觉回归测试有哪些先进技术？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 中的高级技术包括：
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 中的高级技术包括：
 
-- **人工智能和机器学习**：可以训练算法来识别和忽略可接受的视觉差异，减少[误报](/zh-cn/wiki/false-positive/)并专注于真正的问题。
+- **人工智能和机器学习**：可以训练算法来识别和忽略可接受的视觉差异，减少[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)并专注于真正的问题。
 - **智能阈值**：智能阈值不是单个像素到像素比较阈值，而是可以根据屏幕区域或内容类型调整灵敏度。
 - **跨设备测试**：使用云服务跨多种设备和屏幕尺寸进行测试，确保跨平台的一致性。
 - **视觉优先级**：根据对用户体验的潜在影响对视觉变化进行排名，使测试人员能够首先解决最关键的问题。
 - **自动审核工作流程**：集成支持视觉变更自动审批流程的工具，简化审核周期。
 - **动态内容处理**：实施管理动态内容的策略，例如使用占位符或在比较过程中忽略某些区域。
-- **可视化[测试覆盖率](/zh-cn/wiki/test-coverage/) 分析**：提供深入了解应用程序的哪些部分经过可视化测试以及哪些区域可能需要更多覆盖的工具。
+- **可视化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 分析**：提供深入了解应用程序的哪些部分经过可视化测试以及哪些区域可能需要更多覆盖的工具。
 - **性能视觉测试**：测量和跟踪应用程序的视觉性能，例如图像的加载时间和渲染速度。
-- **组件级测试**：在可视化 [测试套件](/zh-cn/wiki/test-suite/) 中隔离和测试各个 UI 组件，以确保其独立于整页测试的完整性。
-- **可视化测试结果分类**：使用算法对可视化测试结果进行分类，帮助团队快速识别新问题、已知问题和[片状测试](/zh-cn/wiki/flaky-test/)。
-- **与用户反馈集成**：将用户报告的视觉问题纳入自动化[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 流程中，以实现以用户为中心的方法。 通过利用这些先进技术，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以在其软件开发生命周期内提高[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的有效性和效率。
+- **组件级测试**：在可视化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中隔离和测试各个 UI 组件，以确保其独立于整页测试的完整性。
+- **可视化测试结果分类**：使用算法对可视化测试结果进行分类，帮助团队快速识别新问题、已知问题和[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+- **与用户反馈集成**：将用户报告的视觉问题纳入自动化[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 流程中，以实现以用户为中心的方法。 通过利用这些先进技术，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以在其软件开发生命周期内提高[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的有效性和效率。
 
-- **人工智能和机器学习**：可以训练算法来识别和忽略可接受的视觉差异，减少[误报](/zh-cn/wiki/false-positive/)并专注于真正的问题。
+- **人工智能和机器学习**：可以训练算法来识别和忽略可接受的视觉差异，减少[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)并专注于真正的问题。
 - **智能阈值**：智能阈值不是单个像素到像素比较阈值，而是可以根据屏幕区域或内容类型调整灵敏度。
 - **跨设备测试**：使用云服务跨多种设备和屏幕尺寸进行测试，确保跨平台的一致性。
 - **视觉优先级**：根据对用户体验的潜在影响对视觉变化进行排名，使测试人员能够首先解决最关键的问题。
 - **自动审核工作流程**：集成支持视觉变更自动审批流程的工具，简化审核周期。
 - **动态内容处理**：实施管理动态内容的策略，例如使用占位符或在比较过程中忽略某些区域。
-- **可视化 [测试覆盖率](/zh-cn/wiki/test-coverage/) 分析**：可深入了解应用程序的哪些部分经过可视化测试以及哪些区域可能需要更多覆盖的工具。
+- **可视化 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 分析**：可深入了解应用程序的哪些部分经过可视化测试以及哪些区域可能需要更多覆盖的工具。
 - **性能视觉测试**：测量和跟踪应用程序的视觉性能，例如图像的加载时间和渲染速度。
-- **组件级测试**：在可视化 [测试套件](/zh-cn/wiki/test-suite/) 中隔离和测试各个 UI 组件，以确保其独立于整页测试的完整性。
-- **视觉测试结果分类**：使用算法对视觉测试结果进行分类，帮助团队快速识别新问题、已知问题和[片状测试](/zh-cn/wiki/flaky-test/)。
-- **与用户反馈集成**：将用户报告的视觉问题纳入自动化[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 流程中，以实现以用户为中心的方法。
+- **组件级测试**：在可视化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中隔离和测试各个 UI 组件，以确保其独立于整页测试的完整性。
+- **视觉测试结果分类**：使用算法对视觉测试结果进行分类，帮助团队快速识别新问题、已知问题和[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+- **与用户反馈集成**：将用户报告的视觉问题纳入自动化[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 流程中，以实现以用户为中心的方法。
 
 #### 视觉回归测试如何处理动态内容？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 通过采用策略来处理动态内容，以确保一致性，尽管存在固有的可变性。一种常见的方法是**排除或屏蔽**应用程序中易于更改的区域，例如广告或实时提要。这可以通过配置测试工具在比较过程中忽略这些部分来完成。
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 通过采用策略来处理动态内容，以确保一致性，尽管存在固有的可变性。一种常见的方法是**排除或屏蔽**应用程序中易于更改的区域，例如广告或实时提要。这可以通过配置测试工具在比较过程中忽略这些部分来完成。
   另一种方法是对动态数据使用**存根或模拟**来返回一组固定的数据。这可确保每次测试运行显示相同的内容，从而实现可靠的视觉比较。例如，如果测试新闻网站，可以使用预定义的内容来模拟最新的新闻部分。
   一些工具提供**动态内容识别**功能，可以检测并忽略可接受参数范围内的视觉变化。这利用机器学习算法来区分动态内容中有意义的变化和可接受的差异。
   此外，可以设置**更改敏感度的阈值**，因此不影响用户体验的微小更改不会被标记为失败。该阈值通常可以根据测试所需的精度水平进行调整。
@@ -474,14 +474,14 @@ order: 0
     ignore: ignoreRegions
   });
 ```
-通过实施这些策略，即使在具有动态内容的应用程序中也可以有效地使用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)。
+通过实施这些策略，即使在具有动态内容的应用程序中也可以有效地使用[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)。
 
 #### 视觉回归测试的未来趋势是什么？
 
-[视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的未来趋势可能会集中在**提高自动化**、**人工智能和机器学习集成**以及**增强的分析能力**。随着机器学习算法变得更加复杂，它们可用于以更高的精度**自动检测和分类视觉回归**，从而减少手动审查的需要。
-  **自我修复测试**可能会变得更加普遍，其中测试会自动调整以适应 UI 中细微的、有意的更改，而不会造成破坏。这将显着减少[测试套件](/zh-cn/wiki/test-suite/) 的维护开销。
-  **跨设备和跨浏览器一致性**将继续是[priority](/zh-cn/wiki/priority/)，工具将提高在各种环境中测试和比较视觉元素的能力。随着用户设备的多样性不断增长，这一点尤为重要。
+[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的未来趋势可能会集中在**提高自动化**、**人工智能和机器学习集成**以及**增强的分析能力**。随着机器学习算法变得更加复杂，它们可用于以更高的精度**自动检测和分类视觉回归**，从而减少手动审查的需要。
+  **自我修复测试**可能会变得更加普遍，其中测试会自动调整以适应 UI 中细微的、有意的更改，而不会造成破坏。这将显着减少[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的维护开销。
+  **跨设备和跨浏览器一致性**将继续是[priority](https://inaodeng.com/zh-cn/wiki/priority/)，工具将提高在各种环境中测试和比较视觉元素的能力。随着用户设备的多样性不断增长，这一点尤为重要。
   与**CI/CD管道**的集成将变得更加无缝，视觉回归测试作为标准部署过程的一部分运行，提供有关视觉问题的即时反馈。
-  [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的 **基于云的平台** 可能会扩展，提供可扩展的按需测试资源，可以处理大型 [测试套件](/zh-cn/wiki/test-suite/) 和并行执行，而无需本地基础设施。
+  [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 的 **基于云的平台** 可能会扩展，提供可扩展的按需测试资源，可以处理大型 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 和并行执行，而无需本地基础设施。
   **高级报告和分析**将提供对应用程序随时间推移的视觉稳定性的更深入见解，帮助团队了解趋势并识别容易频繁更改或不稳定的 UI 区域。
-  最后，围绕 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 工具的**开源社区**可能会发展，从而导致更多的协作和共享解决方案来应对该领域的常见挑战。
+  最后，围绕 [视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/) 工具的**开源社区**可能会发展，从而导致更多的协作和共享解决方案来应对该领域的常见挑战。

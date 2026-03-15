@@ -41,7 +41,7 @@ order: 0
 
 ## 相关术语
 
-- [变更控制](/zh-cn/wiki/change-control/)
+- [变更控制](https://inaodeng.com/zh-cn/wiki/change-control/)
 
 ## 有关变更请求的问题吗？
 
@@ -49,47 +49,47 @@ order: 0
 
 #### 软件开发中的变更请求是什么？
 
-软件开发中的**变更请求**是对项目任何方面进行变更的正式提案。这可能涉及对代码、设计、架构甚至需求本身的修改。 [变更请求](/zh-cn/wiki/change-requests/) 来自各种来源，例如利益相关者、项目团队成员或客户，必须评估它们对项目时间表、预算和资源的影响。
+软件开发中的**变更请求**是对项目任何方面进行变更的正式提案。这可能涉及对代码、设计、架构甚至需求本身的修改。 [变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 来自各种来源，例如利益相关者、项目团队成员或客户，必须评估它们对项目时间表、预算和资源的影响。
   提交变更请求时，它通常包括拟议变更的详细描述、其背后的理由以及对当前系统或产品的任何潜在影响。这对于保持项目与业务目标的一致性、确保产品质量以及适应不断变化的需求至关重要。
-  [变更请求](/zh-cn/wiki/change-requests/) 不仅仅是添加新功能；它们也可以是关于修复缺陷、删除功能或进行改进。一旦变更请求获得批准，它就成为项目范围的一部分，并且必须进行相应的管理。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[变更请求](/zh-cn/wiki/change-requests/) 可以导致[测试用例](/zh-cn/wiki/test-case/)、[测试脚本](/zh-cn/wiki/test-script/) 和自动化框架中的更新。测试人员必须敏捷并准备好更新他们的[测试套件](/zh-cn/wiki/test-suite/)，以确保他们继续覆盖修改后的需求并保持测试过程的完整性。
+  [变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 不仅仅是添加新功能；它们也可以是关于修复缺陷、删除功能或进行改进。一旦变更请求获得批准，它就成为项目范围的一部分，并且必须进行相应的管理。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可以导致[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 和自动化框架中的更新。测试人员必须敏捷并准备好更新他们的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，以确保他们继续覆盖修改后的需求并保持测试过程的完整性。
 
 #### 为什么变更请求在项目中很重要？
 
-[变更请求](/zh-cn/wiki/change-requests/) 在项目中对于利益相关者不断变化的需求和项目可交付成果之间**保持一致性**至关重要。它们是建议对产品进行调整的正式方法，无论是添加、修改还是删除功能。
+[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 在项目中对于利益相关者不断变化的需求和项目可交付成果之间**保持一致性**至关重要。它们是建议对产品进行调整的正式方法，无论是添加、修改还是删除功能。
   通过记录和跟踪这些请求，团队确保对变更进行**系统评估**并**连贯地整合**到项目计划中。这有助于保持项目的**完整性**和**可追溯性**，确保每次更改都是合理的并与业务目标保持一致。
-  此外，[变更请求](/zh-cn/wiki/change-requests/) 促进团队成员、利益相关者和客户之间的**沟通**​​，促进对提议的变更及其潜在影响的清晰了解。这种透明度对于**管理期望**和**确保所有相关方的支持**至关重要。
-  在[测试自动化](/zh-cn/wiki/test-automation/)的上下文中，[变更请求](/zh-cn/wiki/change-requests/)可以导致[测试脚本](/zh-cn/wiki/test-script/)、框架和策略的更新。测试人员必须敏捷，准备好**调整他们的[测试套件](/zh-cn/wiki/test-suite/)**以反映这些变化，确保软件继续根据更新的要求进行彻底的测试。
-  有效处理[变更请求](/zh-cn/wiki/change-requests/) 也有助于**持续改进**。通过分析变更的性质和频率，团队可以识别流程增强的模式和领域，从而在未来实现更**高效的开发**和测试周期。
+  此外，[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 促进团队成员、利益相关者和客户之间的**沟通**​​，促进对提议的变更及其潜在影响的清晰了解。这种透明度对于**管理期望**和**确保所有相关方的支持**至关重要。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的上下文中，[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)可以导致[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)、框架和策略的更新。测试人员必须敏捷，准备好**调整他们的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**以反映这些变化，确保软件继续根据更新的要求进行彻底的测试。
+  有效处理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 也有助于**持续改进**。通过分析变更的性质和频率，团队可以识别流程增强的模式和领域，从而在未来实现更**高效的开发**和测试周期。
 
 #### 处理变更请求的典型流程是什么？
 
-当收到**更改请求**时，在软件[测试自动化](/zh-cn/wiki/test-automation/)上下文中处理它的典型过程涉及以下步骤：
+当收到**更改请求**时，在软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)上下文中处理它的典型过程涉及以下步骤：
 
 1. **审查**：检查请求以了解建议的更改及其对现有测试套件的影响。
-2. **[影响分析](/zh-cn/wiki/impact-analysis/)** ：评估变更将如何影响当前的自动化框架、测试用例和测试数据。
+2. **[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** ：评估变更将如何影响当前的自动化框架、测试用例和测试数据。
 3. **估计**：估计在测试自动化环境中实施更改所需的工作量。
 4. **批准**：如果估计的工作量与项目优先级一致，则获得相关利益相关者（可能包括变更控制委员会）的批准。
-5. **更新[测试策略](/zh-cn/wiki/test-strategy/)**：修改测试策略以合并更改，确保识别和解决新风险。
+5. **更新[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)**：修改测试策略以合并更改，确保识别和解决新风险。
 6. **实施更改**：更新自动化代码库，这可能涉及修改现有脚本、创建新脚本或更新测试数据。
 7. **测试**：执行更新的测试以验证它们在更改后是否按预期工作。
 8. **审查和文档**：审查测试结果是否存在异常并更新文档以反映对测试自动化套件所做的更改。
 9. **沟通**​​：告知利益相关者所做的更改、测试结果以及对发布计划的任何潜在影响。
-10. **监控**：部署变更后，继续监控测试结果，以确保变更没有引入新问题。 在整个过程中，与开发团队和其他利益相关者保持清晰的沟通至关重要，以确保 [测试自动化](/zh-cn/wiki/test-automation/) 工作与项目不断变化的需求保持一致。
+10. **监控**：部署变更后，继续监控测试结果，以确保变更没有引入新问题。 在整个过程中，与开发团队和其他利益相关者保持清晰的沟通至关重要，以确保 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工作与项目不断变化的需求保持一致。
 
 #### 变更请求如何影响项目范围？
 
-[变更请求](/zh-cn/wiki/change-requests/) 可以通过引入新功能、修改现有功能或删除需求来显着**改变项目的范围**。这些变化可能导致：
+[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可以通过引入新功能、修改现有功能或删除需求来显着**改变项目的范围**。这些变化可能导致：
 
 - **工作量增加**：需要设计新的测试用例，现有的测试用例可能需要重新评估或丢弃。
 - **资源重新分配**：可能需要额外的人员或工具来适应扩大的范围。
 - **时间表调整**：截止日期可能需要延长以涵盖额外的测试工作。
 - **预算影响**：更多的测试时间和资源会转化为成本的增加。
-- **范围蔓延**：如果没有适当的管理，持续的变更请求可能会导致项目范围不受控制的增长。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须敏捷，准备好**更新自动化[测试脚本](/zh-cn/wiki/test-script/)** 并**重新确定[测试用例](/zh-cn/wiki/test-case/)** 的优先级，以与修订后的项目范围保持一致。尽管需求不断变化，但高效的变更管理可确保 [测试自动化](/zh-cn/wiki/test-automation/) 策略保持相关性和有效性。
+- **范围蔓延**：如果没有适当的管理，持续的变更请求可能会导致项目范围不受控制的增长。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师必须敏捷，准备好**更新自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** 并**重新确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的优先级，以与修订后的项目范围保持一致。尽管需求不断变化，但高效的变更管理可确保 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略保持相关性和有效性。
 
 #### 变更控制委员会在管理变更请求方面的作用是什么？
 
-**[变更控制](/zh-cn/wiki/change-control/) 委员会 (CCB)** 是一组利益相关者，负责审查、评估以及批准或拒绝 **[变更请求](/zh-cn/wiki/change-requests/)**。在[测试自动化](/zh-cn/wiki/test-automation/) 的背景下，CCB 在确保变更与项目目标保持一致且不会引入不当风险方面发挥着至关重要的作用。
+**[变更控制](https://inaodeng.com/zh-cn/wiki/change-control/) 委员会 (CCB)** 是一组利益相关者，负责审查、评估以及批准或拒绝 **[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)**。在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的背景下，CCB 在确保变更与项目目标保持一致且不会引入不当风险方面发挥着至关重要的作用。
   当提交变更请求时，CCB：
 
 - **评估**拟议更改对现有测试自动化框架和脚本的影响。
@@ -98,13 +98,13 @@ order: 0
 
 - **优先**基于紧急性、重要性和资源可用性等因素的变更请求。
 
-- **决定**批准或拒绝变更，确保每项决定都有详细记录并传达给相关方。 对于[测试自动化](/zh-cn/wiki/test-automation/)工程师来说，CCB的决策直接影响：
+- **决定**批准或拒绝变更，确保每项决定都有详细记录并传达给相关方。 对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师来说，CCB的决策直接影响：
 
-- **[测试策略](/zh-cn/wiki/test-strategy/) 调整** ，包括添加、修改或删除自动化测试。
+- **[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 调整** ，包括添加、修改或删除自动化测试。
 
 - **资源分配** ，因为变更可能需要转移重点或付出额外的努力来实施和验证。
 
-- **日程安排** ，因为包含新的更改可能会影响时间表和交付里程碑。 通过管理[变更请求](/zh-cn/wiki/change-requests/)，CCB 帮助维护[测试自动化](/zh-cn/wiki/test-automation/) 流程的完整性并最大限度地减少干扰，确保测试保持有效并与项目目标保持一致。
+- **日程安排** ，因为包含新的更改可能会影响时间表和交付里程碑。 通过管理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)，CCB 帮助维护[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 流程的完整性并最大限度地减少干扰，确保测试保持有效并与项目目标保持一致。
 
 - **评估**拟议更改对现有测试自动化框架和脚本的影响。
 
@@ -114,7 +114,7 @@ order: 0
 
 - **决定**批准或拒绝变更，确保每项决定都有详细记录并传达给相关方。
 
-- **[测试策略](/zh-cn/wiki/test-strategy/) 调整** ，包括添加、修改或删除自动化测试。
+- **[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 调整** ，包括添加、修改或删除自动化测试。
 
 - **资源分配** ，因为变更可能需要转移重点或付出额外的努力来实施和验证。
 
@@ -130,36 +130,36 @@ order: 0
 2. **记录**：请求被记录到变更管理系统或跟踪器中以进行记录和跟踪。
 3. **审查**：初步审查以确定请求是否有效并符合项目目标。
 4. **分析**：详细分析以评估对项目的影响，包括时间表、资源和成本。
-5. **批准**：[变更控制](/zh-cn/wiki/change-control/) 董事会 (CCB) 或授权的利益相关者审查分析并决定是否批准、拒绝或请求更多信息。
+5. **批准**：[变更控制](https://inaodeng.com/zh-cn/wiki/change-control/) 董事会 (CCB) 或授权的利益相关者审查分析并决定是否批准、拒绝或请求更多信息。
 6. **规划**：如果获得批准，则会规划变更，包括更新项目计划、进度表和文档。
 7. **实施**：将变更实施到项目工作流程中，确保所有团队成员都了解情况并有能力处理修改。
 8. **测试**：对更改进行彻底测试，以确保它们满足要求并且不会引入新问题。
-9. **文档**：所有更改和结果均已记录，包括[测试用例](/zh-cn/wiki/test-case/) 和用户手册的更新。
-10. **关闭**：一旦变更完全集成并稳定，请求将在跟踪系统中正式关闭。 在这些步骤中，沟通对于让所有利益相关者了解情况并参与其中至关重要。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师必须调整他们的[测试套件](/zh-cn/wiki/test-suite/) 和策略以适应这些变化，确保软件继续满足质量标准。
+9. **文档**：所有更改和结果均已记录，包括[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和用户手册的更新。
+10. **关闭**：一旦变更完全集成并稳定，请求将在跟踪系统中正式关闭。 在这些步骤中，沟通对于让所有利益相关者了解情况并参与其中至关重要。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师必须调整他们的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 和策略以适应这些变化，确保软件继续满足质量标准。
 
 #### 有效的变更请求管理如何使项目受益？
 
 有效的变更请求管理可以**简化利益相关者之间的沟通**，确保每个人在项目修改方面都达成共识。它有助于确定变更的**优先级**，使团队能够专注于最重要的事情并避免范围蔓延。通过保留请求和决策的清晰记录，它可以促进**问责制**和**可追溯性**，这对于项目审计和项目后审查至关重要。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 的背景下，有效管理[变更请求](/zh-cn/wiki/change-requests/) 可以导致**更加健壮和灵活的[测试套件](/zh-cn/wiki/test-suite/)**。测试人员可以以最小的干扰**预测**并**适应**变化，从而保持测试过程的完整性。它还有助于**优化资源**，因为团队可以将工作分配到受变更影响最大的项目领域。
-  此外，管理良好的[变更请求](/zh-cn/wiki/change-requests/)可以通过确保所有修改都经过测试并满足项目的质量标准来**提高产品质量**。它通过整合反馈并从每次变更中学习来支持**持续改进**，从而产生更加精致和稳定的产品。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的背景下，有效管理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可以导致**更加健壮和灵活的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**。测试人员可以以最小的干扰**预测**并**适应**变化，从而保持测试过程的完整性。它还有助于**优化资源**，因为团队可以将工作分配到受变更影响最大的项目领域。
+  此外，管理良好的[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)可以通过确保所有修改都经过测试并满足项目的质量标准来**提高产品质量**。它通过整合反馈并从每次变更中学习来支持**持续改进**，从而产生更加精致和稳定的产品。
   最后，它可以通过尽早发现潜在问题（在修复成本高昂之前）来**减少返工**，并且可以帮助项目团队保持**可持续的节奏**，防止倦怠和人员流动。
 
 #### 变更请求管理常用哪些工具？
 
 **变更请求管理**的常用工具包括：
 
-- **[jira](/zh-cn/wiki/jira/)** ：广泛用于跟踪问题和更改。它提供可定制的工作流程以及与各种开发工具的集成。
+- **[jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：广泛用于跟踪问题和更改。它提供可定制的工作流程以及与各种开发工具的集成。
 - **TFS (Team Foundation Server)**：Microsoft 用于源代码管理、报告、需求管理、项目管理、自动化构建、测试和发布管理的解决方案。
 - **ServiceNow**：提供具有变更管理功能的 IT 服务管理软件，通常在大型组织中使用。
 - **GitLab**：在单个应用程序中提供整个 DevOps 生命周期，包括问题跟踪和变更管理功能。
 - **GitHub**：以源代码管理而闻名，它还提供可用于管理更改请求的问题跟踪功能。
 - **Asana**：一种项目管理工具，可通过任务分配和进度更新进行变更请求跟踪。
 - **Rally（以前称为 CA Agile Central）**：专注于敏捷项目管理，可用于跟踪整个开发过程中的更改和功能。
-- **VersionOne**：一种一体化敏捷项目管理工具，支持变更请求管理作为其功能集的一部分。 这些工具有助于自动化变更请求流程，确保系统地记录、审查和实施变更。它们通常包括分配任务、设置优先级和跟踪进度的功能，这些功能对于保持对变更管理流程的控制至关重要。与 [测试自动化](/zh-cn/wiki/test-automation/) 工具和持续集成/持续部署 (CI/CD) 管道的集成也是一项常见功能，这有助于使测试活动与 [变更请求](/zh-cn/wiki/change-requests/) 保持一致。
+- **VersionOne**：一种一体化敏捷项目管理工具，支持变更请求管理作为其功能集的一部分。 这些工具有助于自动化变更请求流程，确保系统地记录、审查和实施变更。它们通常包括分配任务、设置优先级和跟踪进度的功能，这些功能对于保持对变更管理流程的控制至关重要。与 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具和持续集成/持续部署 (CI/CD) 管道的集成也是一项常见功能，这有助于使测试活动与 [变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 保持一致。
 
 #### 管理变更请求的最佳实践有哪些？
 
-在[测试自动化](/zh-cn/wiki/test-automation/) 中管理[变更请求](/zh-cn/wiki/change-requests/) 的最佳实践包括：
+在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中管理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 的最佳实践包括：
 
 - **确定变更的优先顺序**基于其影响和紧迫性。这有助于有效地分配资源。
 
@@ -167,7 +167,7 @@ order: 0
 
 - **沟通变更**所有利益相关者保持透明度并让团队为工作流程中的任何调整做好准备。
 
-- **重新评估[测试用例](/zh-cn/wiki/test-case/)**确定哪些受到更改的影响并需要更新或编写新的测试。
+- **重新评估[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**确定哪些受到更改的影响并需要更新或编写新的测试。
 
 - **版本控制**应用于测试脚本和相关工件以跟踪更改并在必要时恢复。
 
@@ -177,11 +177,11 @@ order: 0
 
 - **分配返工时间**在冲刺计划中，以适应由于变更请求而更新测试所需的工作。
 
-- **执行[影响分析](/zh-cn/wiki/impact-analysis/)**了解所请求的更改对当前测试套件和整个项目的连锁反应。
+- **执行[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)**了解所请求的更改对当前测试套件和整个项目的连锁反应。
 
 - **使用标准化模板**用于提交变更请求以确保捕获和评估所有必要的信息。
 
-- **审查和重构**定期测试自动化代码，以在发生更改时保持灵活性和易于更新。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以维护一个强大且适应性强的[测试自动化](/zh-cn/wiki/test-automation/) 框架，该框架可以有效地处理[变更请求](/zh-cn/wiki/change-requests/)。
+- **审查和重构**定期测试自动化代码，以在发生更改时保持灵活性和易于更新。 通过遵循这些实践，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以维护一个强大且适应性强的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架，该框架可以有效地处理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)。
 
 - **确定变更的优先顺序**基于其影响和紧迫性。这有助于有效地分配资源。
 
@@ -189,7 +189,7 @@ order: 0
 
 - **沟通变更**所有利益相关者保持透明度并让团队为工作流程中的任何调整做好准备。
 
-- **重新评估[测试用例](/zh-cn/wiki/test-case/)**确定哪些受到更改的影响并需要更新或编写新的测试。
+- **重新评估[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**确定哪些受到更改的影响并需要更新或编写新的测试。
 
 - **版本控制**应用于测试脚本和相关工件以跟踪更改并在必要时恢复。
 
@@ -199,7 +199,7 @@ order: 0
 
 - **分配返工时间**在冲刺计划中，以适应由于变更请求而更新测试所需的工作。
 
-- **执行[影响分析](/zh-cn/wiki/impact-analysis/)**了解所请求的更改对当前测试套件和整个项目的连锁反应。
+- **执行[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)**了解所请求的更改对当前测试套件和整个项目的连锁反应。
 
 - **使用标准化模板**用于提交变更请求以确保捕获和评估所有必要的信息。
 
@@ -208,19 +208,19 @@ order: 0
 #### 变更请求管理如何帮助缓解风险？
 
 变更请求管理通过确保系统地评估和实施项目的任何变更，在**风险缓解**中发挥着至关重要的作用。此过程有助于及早识别与变更相关的潜在风险，从而采取主动措施。
-  当提交变更请求时，它会经历**彻底的[影响分析](/zh-cn/wiki/impact-analysis/)**。此分析检查拟议的变更如何影响现有系统、依赖项、项目时间表和资源。通过了解这些影响，团队可以预测并减轻风险，例如范围蔓延、预算超支和时间表延迟。
+  当提交变更请求时，它会经历**彻底的[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)**。此分析检查拟议的变更如何影响现有系统、依赖项、项目时间表和资源。通过了解这些影响，团队可以预测并减轻风险，例如范围蔓延、预算超支和时间表延迟。
   此外，变更请求管理可确保所有变更都被**记录和跟踪**。该文档提供了清晰的审计跟踪，这对于分析变更的成功和了解其对系统的影响至关重要。它还有助于保持透明度和问责制，减少沟通不畅和错误的风险。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，管理[变更请求](/zh-cn/wiki/change-requests/) 有助于维护[测试套件](/zh-cn/wiki/test-suite/)** 的**完整性。更改获得批准后，可能需要添加、删除或修改 [测试用例](/zh-cn/wiki/test-case/) 以符合新要求。适当的管理可确保系统地进行这些调整，防止 [测试覆盖率](/zh-cn/wiki/test-coverage/) 中出现空白并降低缺陷漏掉的风险。
+  在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，管理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 有助于维护[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 的**完整性。更改获得批准后，可能需要添加、删除或修改 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以符合新要求。适当的管理可确保系统地进行这些调整，防止 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 中出现空白并降低缺陷漏掉的风险。
   最后，通过让测试团队参与变更管理流程，组织可以利用他们的专业知识及早发现潜在的质量或性能问题，进一步降低部署后问题的风险。
 
 ### 变更请求和测试
 
 #### 变更请求如何影响软件测试？
 
-[变更请求](/zh-cn/wiki/change-requests/) 可以显着改变 **[测试自动化](/zh-cn/wiki/test-automation/)** 景观。当更改请求获得批准后，**[测试用例](/zh-cn/wiki/test-case/)** 可能需要**更新**或**创建新的**以涵盖功能更改。这可能会导致维护 [测试脚本](/zh-cn/wiki/test-script/) 方面的额外工作，特别是在更改大量或频繁的情况下。
-  必须**审查**自动化测试，以确保它们仍然验证正确的需求。如果更改影响**用户界面**、**[API](/zh-cn/wiki/api/)**或**业务逻辑**，则需要修改自动化代码中相应的**选择器**、**端点**或**验证检查**。
-  此外，[变更请求](/zh-cn/wiki/change-requests/) 可以通过应用程序引入**新路径**，需要开发**新的[测试场景](/zh-cn/wiki/test-scenario/)**。这可能会增加 [测试套件](/zh-cn/wiki/test-suite/) 的**复杂性**及其运行时间，可能会影响 CI/CD 管道的**速度**。
-  为了管理这些影响，[测试自动化](/zh-cn/wiki/test-automation/) 工程师应该：
+[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可以显着改变 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** 景观。当更改请求获得批准后，**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 可能需要**更新**或**创建新的**以涵盖功能更改。这可能会导致维护 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 方面的额外工作，特别是在更改大量或频繁的情况下。
+  必须**审查**自动化测试，以确保它们仍然验证正确的需求。如果更改影响**用户界面**、**[API](https://inaodeng.com/zh-cn/wiki/api/)**或**业务逻辑**，则需要修改自动化代码中相应的**选择器**、**端点**或**验证检查**。
+  此外，[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可以通过应用程序引入**新路径**，需要开发**新的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)**。这可能会增加 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的**复杂性**及其运行时间，可能会影响 CI/CD 管道的**速度**。
+  为了管理这些影响，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师应该：
 
 - 维护 **模块化**和 **可重复使用**测试代码以简化更新。
 
@@ -228,7 +228,7 @@ order: 0
 
 - 实施 **强大的日志记录**快速识别并解决因变更而出现的问题。
 
-- 优先考虑 **测试维护**作为保持自动化套件可靠的冲刺的一部分。 从本质上讲，[变更请求](/zh-cn/wiki/change-requests/) 需要一个**灵活**和**适应性强** [测试自动化](/zh-cn/wiki/test-automation/) 策略来确保持续交付高质量的软件。
+- 优先考虑 **测试维护**作为保持自动化套件可靠的冲刺的一部分。 从本质上讲，[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 需要一个**灵活**和**适应性强** [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略来确保持续交付高质量的软件。
 
 - 维护 **模块化**和 **可重复使用**测试代码以简化更新。
 
@@ -240,7 +240,7 @@ order: 0
 
 #### 测试人员在处理变更请求时扮演什么角色？
 
-测试人员在**处理[变更请求](/zh-cn/wiki/change-requests/)**中发挥着关键作用，确保修改不会对现有功能产生不利影响并且满足新要求。他们必须：
+测试人员在**处理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)**中发挥着关键作用，确保修改不会对现有功能产生不利影响并且满足新要求。他们必须：
 
 - **评论**变更请求以了解新的要求或修改。
 
@@ -254,7 +254,7 @@ order: 0
 
 - **文件**测试结果以及由于更改而发现的任何新缺陷。
 
-- **参与**如有必要，重新评估项目时间表和资源分配。 测试人员必须**主动**和**适应性**，准备好根据变化的性质和程度修改他们的方法。他们应该利用**自动化工具**快速重新运行受影响的[测试用例](/zh-cn/wiki/test-case/)并确保全面覆盖。测试人员有效处理[变更请求](/zh-cn/wiki/change-requests/) 对于维护[软件质量](/zh-cn/wiki/software-quality/) 和项目时间表至关重要。
+- **参与**如有必要，重新评估项目时间表和资源分配。 测试人员必须**主动**和**适应性**，准备好根据变化的性质和程度修改他们的方法。他们应该利用**自动化工具**快速重新运行受影响的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并确保全面覆盖。测试人员有效处理[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 对于维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和项目时间表至关重要。
 
 - **评论**变更请求以了解新的要求或修改。
 
@@ -272,14 +272,14 @@ order: 0
 
 #### 变更请求如何影响测试计划？
 
-[变更请求](/zh-cn/wiki/change-requests/) 可能会通过需要更新 **[测试用例](/zh-cn/wiki/test-case/)**、**[测试脚本](/zh-cn/wiki/test-script/)** 和 **[测试数据](/zh-cn/wiki/test-data/)** 来显着影响 [测试计划](/zh-cn/wiki/test-plan/)。变更请求获得批准后，可能会引入新功能、修改现有功能或修复缺陷，所有这些都需要重新访问 [测试计划](/zh-cn/wiki/test-plan/) 以确保覆盖范围。
+[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 可能会通过需要更新 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**、**[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** 和 **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** 来显着影响 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)。变更请求获得批准后，可能会引入新功能、修改现有功能或修复缺陷，所有这些都需要重新访问 [测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 以确保覆盖范围。
 
-- **[测试用例](/zh-cn/wiki/test-case/)** ：新的或更新的要求意味着必须审查测试用例，并可能重写或添加新的测试用例以覆盖更改。
-- **[测试脚本](/zh-cn/wiki/test-script/)** ：可能需要修改自动化测试脚本以符合新要求。这可能涉及更改选择器、添加新步骤或更新验证点。
-- **[测试数据](/zh-cn/wiki/test-data/)** ：应用程序逻辑的更改可能需要创建不同的测试数据以充分测试新的或更改的功能。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：新的或更新的要求意味着必须审查测试用例，并可能重写或添加新的测试用例以覆盖更改。
+- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)** ：可能需要修改自动化测试脚本以符合新要求。这可能涉及更改选择器、添加新步骤或更新验证点。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：应用程序逻辑的更改可能需要创建不同的测试数据以充分测试新的或更改的功能。
 - **执行计划**：测试的时间表可能会受到影响，需要额外的时间来适应变化。这可能会导致测试活动重新确定优先级。
 - **资源分配**：可能需要更多或不同的资源（人力或基础设施）来处理更新的测试工作负载。
-- **风险分析**：必须更新测试计划的风险评估，以反映变更引入的任何新风险。 [自动化测试](/zh-cn/wiki/automated-testing/) 框架和持续集成系统可能需要调整以纳入这些变化。例如：
+- **风险分析**：必须更新测试计划的风险评估，以反映变更引入的任何新风险。 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 框架和持续集成系统可能需要调整以纳入这些变化。例如：
 
 ```
   // Before change request
@@ -300,15 +300,15 @@ order: 0
     expect(await page.find('.welcome-message').textContent).toBe('Welcome, user2!');
   });
 ```
-适应[变更请求](/zh-cn/wiki/change-requests/) 是一个动态过程，需要[测试自动化](/zh-cn/wiki/test-automation/) 工程师灵活且快速响应，以确保[测试计划](/zh-cn/wiki/test-plan/) 保持有效和相关性。
+适应[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 是一个动态过程，需要[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师灵活且快速响应，以确保[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/) 保持有效和相关性。
 
 #### 测试人员应该如何调整他们的策略来适应变更请求？
 
-测试人员应该通过以下方式**调整他们的策略**以适应[变更请求](/zh-cn/wiki/change-requests/)：
+测试人员应该通过以下方式**调整他们的策略**以适应[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)：
 
 - **正在审查**彻底了解变更请求，以了解其对现有测试用例的影响。
 
-- **更新**的 **[测试计划](/zh-cn/wiki/test-plan/)**和 **[测试用例](/zh-cn/wiki/test-case/)**为了符合新的要求，确保涵盖新功能并删除或修改过时的测试。
+- **更新**的 **[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**和 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**为了符合新的要求，确保涵盖新功能并删除或修改过时的测试。
 
 - **优先考虑**基于变更的风险和影响的测试用例，首先关注关键领域。
 
@@ -322,11 +322,11 @@ order: 0
 
 - **版本控制**测试脚本并使用源代码控制来管理测试代码库中的更改。
 
-- **监控**更新测试的有效性，并根据反馈和测试结果进行必要的进一步调整。 通过遵循这些步骤，测试人员可以确保他们的[测试自动化](/zh-cn/wiki/test-automation/)工作保持稳健并响应[变更请求](/zh-cn/wiki/change-requests/)，从而保持被测软件的质量和可靠性。
+- **监控**更新测试的有效性，并根据反馈和测试结果进行必要的进一步调整。 通过遵循这些步骤，测试人员可以确保他们的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工作保持稳健并响应[变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/)，从而保持被测软件的质量和可靠性。
 
 - **正在审查**彻底了解变更请求，以了解其对现有测试用例的影响。
 
-- **更新**的 **[测试计划](/zh-cn/wiki/test-plan/)**和 **[测试用例](/zh-cn/wiki/test-case/)**为了符合新的要求，确保涵盖新功能并删除或修改过时的测试。
+- **更新**的 **[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**和 **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**为了符合新的要求，确保涵盖新功能并删除或修改过时的测试。
 
 - **优先考虑**基于变更的风险和影响的测试用例，首先关注关键领域。
 
@@ -344,20 +344,20 @@ order: 0
 
 #### 由于变更请求，测试中可能会出现哪些挑战以及如何解决这些挑战？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 中 [变更请求](/zh-cn/wiki/change-requests/) 面临的挑战包括：
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中 [变更请求](https://inaodeng.com/zh-cn/wiki/change-requests/) 面临的挑战包括：
 
-- **[测试脚本](/zh-cn/wiki/test-script/) 维护**：自动化测试可能会中断或变得无关紧要。通过实施**模块化测试设计**并使用**[页面对象模型](/zh-cn/wiki/page-object-model/)**来最小化更改对[测试脚本](/zh-cn/wiki/test-script/)的影响来解决这个问题。
-- **覆盖范围差距**：现有测试可能无法立即涵盖新功能或更改。通过定期**更新[测试用例](/zh-cn/wiki/test-case/)**并确保它们符合最新要求来解决这个问题。
-- **资源限制**：额外的测试工作可能会导致资源紧张。通过**根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/)** 的优先级，并使用 **[测试用例管理](/zh-cn/wiki/test-case-management/) 工具**来提高效率，从而进行缓解。
-- **回归风险**：更改可能会在之前测试的代码中引入新的[bugs](/zh-cn/wiki/bug/)。通过彻底的 **[回归测试](/zh-cn/wiki/regression-testing/)** 和 **持续集成** 来解决这个问题，以便及早发现问题。
-- **数据管理**：[测试数据](/zh-cn/wiki/test-data/) 可能需要更新以反映更改。使用**数据驱动的测试**方法并维护易于修改的**[测试数据](/zh-cn/wiki/test-data/)**存储库。
+- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 维护**：自动化测试可能会中断或变得无关紧要。通过实施**模块化测试设计**并使用**[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/)**来最小化更改对[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)的影响来解决这个问题。
+- **覆盖范围差距**：现有测试可能无法立即涵盖新功能或更改。通过定期**更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**并确保它们符合最新要求来解决这个问题。
+- **资源限制**：额外的测试工作可能会导致资源紧张。通过**根据风险和影响确定 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的优先级，并使用 **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 工具**来提高效率，从而进行缓解。
+- **回归风险**：更改可能会在之前测试的代码中引入新的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。通过彻底的 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 和 **持续集成** 来解决这个问题，以便及早发现问题。
+- **数据管理**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 可能需要更新以反映更改。使用**数据驱动的测试**方法并维护易于修改的**[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**存储库。
 - **通信故障**：对更改的误解可能会导致错误的测试。培养**清晰的沟通**渠道并确保**文档是最新的**。
-- **环境不一致**：更改可能需要不同的[测试环境](/zh-cn/wiki/test-environment/)。利用**容器化**和**基础设施即代码**来快速适应环境。 通过保持敏捷、与开发团队保持良好的沟通以及不断完善您的 [测试自动化](/zh-cn/wiki/test-automation/) 策略来应对这些挑战。使用**版本控制**和**自动部署**等工具来保持[测试环境](/zh-cn/wiki/test-environment/)和脚本与最新更改保持一致。
+- **环境不一致**：更改可能需要不同的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。利用**容器化**和**基础设施即代码**来快速适应环境。 通过保持敏捷、与开发团队保持良好的沟通以及不断完善您的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略来应对这些挑战。使用**版本控制**和**自动部署**等工具来保持[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)和脚本与最新更改保持一致。
 
-- **[测试脚本](/zh-cn/wiki/test-script/) 维护**：自动化测试可能会中断或变得无关紧要。通过实施**模块化测试设计**并使用**[页面对象模型](/zh-cn/wiki/page-object-model/)**来解决这个问题，以尽量减少更改对[测试脚本](/zh-cn/wiki/test-script/)的影响。
-- **覆盖范围差距**：现有测试可能无法立即涵盖新功能或更改。通过定期**更新[测试用例](/zh-cn/wiki/test-case/)**并确保它们符合最新要求来解决这个问题。
-- **资源限制**：额外的测试工作可能会导致资源紧张。通过**根据风险和影响确定 [测试用例](/zh-cn/wiki/test-case/)** 的优先级，并使用 **[测试用例管理](/zh-cn/wiki/test-case-management/) 工具**来提高效率，从而进行缓解。
-- **回归风险**：更改可能会在之前测试的代码中引入新的[bugs](/zh-cn/wiki/bug/)。通过彻底的 **[回归测试](/zh-cn/wiki/regression-testing/)** 和 **持续集成** 来解决这个问题，以便及早发现问题。
-- **数据管理**：[测试数据](/zh-cn/wiki/test-data/) 可能需要更新以反映更改。使用**数据驱动的测试**方法并维护易于修改的**[测试数据](/zh-cn/wiki/test-data/)**存储库。
+- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 维护**：自动化测试可能会中断或变得无关紧要。通过实施**模块化测试设计**并使用**[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/)**来解决这个问题，以尽量减少更改对[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)的影响。
+- **覆盖范围差距**：现有测试可能无法立即涵盖新功能或更改。通过定期**更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**并确保它们符合最新要求来解决这个问题。
+- **资源限制**：额外的测试工作可能会导致资源紧张。通过**根据风险和影响确定 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** 的优先级，并使用 **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 工具**来提高效率，从而进行缓解。
+- **回归风险**：更改可能会在之前测试的代码中引入新的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。通过彻底的 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 和 **持续集成** 来解决这个问题，以便及早发现问题。
+- **数据管理**：[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 可能需要更新以反映更改。使用**数据驱动的测试**方法并维护易于修改的**[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**存储库。
 - **通信故障**：对更改的误解可能会导致错误的测试。培养**清晰的沟通**渠道并确保**文档是最新的**。
-- **环境不一致**：更改可能需要不同的[测试环境](/zh-cn/wiki/test-environment/)。利用**容器化**和**基础设施即代码**来快速适应环境。
+- **环境不一致**：更改可能需要不同的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。利用**容器化**和**基础设施即代码**来快速适应环境。

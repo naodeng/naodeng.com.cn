@@ -114,9 +114,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [model-context-protocol-mcp](/en/AIWiki/model-context-protocol-mcp/)
-- [rules-cursorrules](/en/AIWiki/rules-cursorrules/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [model-context-protocol-mcp](https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/)
+- [rules-cursorrules](https://inaodeng.com/en/AIWiki/rules-cursorrules/)
 
 ### Term Metadata
 

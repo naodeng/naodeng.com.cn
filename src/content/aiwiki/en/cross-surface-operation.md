@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [task-level-abstraction](/en/AIWiki/task-level-abstraction/)
-- [remote-control](/en/AIWiki/remote-control/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [subagents](/en/AIWiki/subagents/)
+- [task-level-abstraction](https://inaodeng.com/en/AIWiki/task-level-abstraction/)
+- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
 
 ### External References
 

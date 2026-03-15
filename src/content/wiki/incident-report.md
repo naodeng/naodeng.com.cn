@@ -47,8 +47,8 @@ order: 0
 
 ## 相关术语
 
-- [Defect](/zh-cn/wiki/bug/)
-- [Bug](/zh-cn/wiki/bug/)
+- [Defect](https://inaodeng.com/zh-cn/wiki/bug/)
+- [Bug](https://inaodeng.com/zh-cn/wiki/bug/)
 
 ## 有关事故报告的问题吗？
 
@@ -56,68 +56,68 @@ order: 0
 
 #### 软件测试中的事件报告是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的[事故报告](/zh-cn/wiki/incident-report/) 是详细说明软件中与[预期结果](/zh-cn/wiki/expected-result/) 不同的事件或行为的文档。它比 [bug](/zh-cn/wiki/bug/) 报告更广泛，因为它不仅可能包含软件缺陷，还可能包含其他问题，例如环境条件、[测试用例](/zh-cn/wiki/test-case/) 故障以及不一定归因于软件本身故障的人为错误。
-  [事故报告](/zh-cn/wiki/incident-report/) 对于识别、管理和解决测试期间出现的问题至关重要。它们提供了一种结构化的方式来捕获和传达事件的具体情况，从而促进分析和纠正措施。该报告通常包含事件描述、重现步骤、预期与 [实际结果](/zh-cn/wiki/actual-result/)、[严重性](/zh-cn/wiki/severity/) 等详细信息，以及任何附件或屏幕截图。
-  **编写 [事故报告](/zh-cn/wiki/incident-report/) 的最佳实践**包括清晰简洁、注重事实并避免猜测。必须包含所有相关信息以帮助调查和解决事件。
-  在**敏捷和 DevOps** 环境中，[事故报告](/zh-cn/wiki/incident-report/) 的处理重点是协作和持续改进。它们通常被纳入冲刺回顾中，以评估出了什么问题以及如何防止未来发生类似事件。在 CI/CD 管道中，[事故报告](/zh-cn/wiki/incident-report/) 通过确保及时记录和解决任何问题来帮助维护软件的质量和可靠性。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 是详细说明软件中与[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 不同的事件或行为的文档。它比 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告更广泛，因为它不仅可能包含软件缺陷，还可能包含其他问题，例如环境条件、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 故障以及不一定归因于软件本身故障的人为错误。
+  [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 对于识别、管理和解决测试期间出现的问题至关重要。它们提供了一种结构化的方式来捕获和传达事件的具体情况，从而促进分析和纠正措施。该报告通常包含事件描述、重现步骤、预期与 [实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)、[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 等详细信息，以及任何附件或屏幕截图。
+  **编写 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 的最佳实践**包括清晰简洁、注重事实并避免猜测。必须包含所有相关信息以帮助调查和解决事件。
+  在**敏捷和 DevOps** 环境中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 的处理重点是协作和持续改进。它们通常被纳入冲刺回顾中，以评估出了什么问题以及如何防止未来发生类似事件。在 CI/CD 管道中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 通过确保及时记录和解决任何问题来帮助维护软件的质量和可靠性。
 
 #### 为什么事件报告在软件测试中很重要？
 
-[事故报告](/zh-cn/wiki/incident-report/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它**记录意外事件**或与系统预期行为的**偏差**。它作为正式记录，确保向团队清晰一致地传达事件的详细信息。这有助于问题的**优先级**和**解决**，这对于维护软件的完整性至关重要。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它**记录意外事件**或与系统预期行为的**偏差**。它作为正式记录，确保向团队清晰一致地传达事件的详细信息。这有助于问题的**优先级**和**解决**，这对于维护软件的完整性至关重要。
   通过捕获事件的全面描述，包括重现步骤、环境详细信息和影响评估，该报告使开发人员能够有效地**理解**并**解决**根本原因。它还为问题提供**可追溯性**和**责任**，这对于审计目的和遵守监管标准非常重要。
-  [事故报告](/zh-cn/wiki/incident-report/) 是**事后分析**和**经验教训**会议不可或缺的一部分，可帮助团队识别并实施产品和测试过程中的改进。他们有助于建立一个知识库，可以**防止未来发生类似事件**。
-  在**敏捷和 DevOps** 环境中，[事故报告](/zh-cn/wiki/incident-report/) 帮助维护跨职能团队之间的沟通流程，支持**快速[迭代](/zh-cn/wiki/iteration/)** 和**持续改进**。它们在**冲刺回顾**期间也很有价值，团队可以反思哪些方面进展顺利，哪些方面可以改进，从而提高未来冲刺的有效性。
-  总体而言，[事故报告](/zh-cn/wiki/incident-report/) 是**管理风险**、**改进[软件质量](/zh-cn/wiki/software-quality/)** 以及确保产品满足客户期望和业务目标的关键工具。
+  [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 是**事后分析**和**经验教训**会议不可或缺的一部分，可帮助团队识别并实施产品和测试过程中的改进。他们有助于建立一个知识库，可以**防止未来发生类似事件**。
+  在**敏捷和 DevOps** 环境中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 帮助维护跨职能团队之间的沟通流程，支持**快速[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)** 和**持续改进**。它们在**冲刺回顾**期间也很有价值，团队可以反思哪些方面进展顺利，哪些方面可以改进，从而提高未来冲刺的有效性。
+  总体而言，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 是**管理风险**、**改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)** 以及确保产品满足客户期望和业务目标的关键工具。
 
 #### 事故报告的关键组成部分是什么？
 
-[事故报告](/zh-cn/wiki/incident-report/) 的关键组件通常包括：
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 的关键组件通常包括：
 
 - **事件 ID**：用于跟踪的唯一标识符。
 - **标题**：事件的简要描述。
-- **[严重性](/zh-cn/wiki/severity/)** ：指示影响级别，通常按等级划分（例如，严重、高、中、低）。
-- **[Priority](/zh-cn/wiki/priority/)** ：解决的紧迫性（例如，立即、高、中、低）。
+- **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** ：指示影响级别，通常按等级划分（例如，严重、高、中、低）。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/)** ：解决的紧迫性（例如，立即、高、中、低）。
 - **状态**：事件的当前状态（例如，新事件、进行中、已解决）。
 - **环境**：事件发生的地方（例如生产、分期、测试）。
 - **日期/时间**：发现并报告事件的时间。
 - **记者**：谁发现并报告了该事件。
 - **受让人**：负责解决事件的个人或团队。
 - **描述**：事件的详细说明，包括重现步骤。
-- **预期与[实际结果](/zh-cn/wiki/actual-result/)** ：澄清应该发生的情况与正在发生的情况。
+- **预期与[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)** ：澄清应该发生的情况与正在发生的情况。
 - **附件**：屏幕截图、日志或其他相关文件。
-- **[影响分析](/zh-cn/wiki/impact-analysis/)** ：评估事件对用户和系统的影响。
+- **[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** ：评估事件对用户和系统的影响。
 - **解决方案**：有关如何解决或缓解事件的详细信息。
 - **根本原因**：分析导致事件的根本问题。
 - **行动项目**：防止复发或改善反应的步骤。
-- **历史**：所采取的所有操作的日志，包括日期和涉及的个人。 这些组件可确保全面的记录，促进有效的[事件管理](/zh-cn/wiki/incident-management/) 并有助于[软件质量](/zh-cn/wiki/software-quality/) 的持续改进。
+- **历史**：所采取的所有操作的日志，包括日期和涉及的个人。 这些组件可确保全面的记录，促进有效的[事件管理](https://inaodeng.com/zh-cn/wiki/incident-management/) 并有助于[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的持续改进。
 
 #### 事件报告如何提高软件产品的整体质量？
 
-[事故报告](/zh-cn/wiki/incident-report/) 对于软件产品的**持续质量改进**至关重要。他们提供了测试期间发现的异常的**详细说明**，这有助于开发人员有效地理解和**解决问题**。通过记录事件的性质、影响和重现步骤，这些报告可以对缺陷进行**有针对性的响应**，确保它们不仅得到修复，而且**分析根本原因**。
-  从[事故报告](/zh-cn/wiki/incident-report/) 获得的见解可以导致产品和开发过程的**增强**。它们经常揭示**潜在的系统性问题**或**知识差距**，一旦解决，可以防止将来出现类似问题。随着时间的推移，这种主动的质量方法可以减少缺陷的**频率和[严重性](/zh-cn/wiki/severity/)**。
-  此外，[事故报告](/zh-cn/wiki/incident-report/) 有助于团队成员之间的**知识共享**，培养**透明度和协作**的文化。当用于**回顾**时，它们可以帮助团队反思并**从过去的经验中学习**，完善他们的测试策略和开发实践。
-  在敏捷和 DevOps 环境中，[事故报告](/zh-cn/wiki/incident-report/) 进入**持续反馈循环**，通知**待办事项优先级**和**冲刺计划**。他们确保质量嵌入 **CI/CD 管道**，每个事件都充当 **[质量保证](/zh-cn/wiki/quality-assurance/)** 的检查点。
-  最终，[事故报告](/zh-cn/wiki/incident-report/) 不仅仅是跟踪[bugs](/zh-cn/wiki/bug/)；它们是一种**质量控制机制**，有效利用时，可以带来更加**可靠、稳健和以用户为中心的**软件产品。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 对于软件产品的**持续质量改进**至关重要。他们提供了测试期间发现的异常的**详细说明**，这有助于开发人员有效地理解和**解决问题**。通过记录事件的性质、影响和重现步骤，这些报告可以对缺陷进行**有针对性的响应**，确保它们不仅得到修复，而且**分析根本原因**。
+  从[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 获得的见解可以导致产品和开发过程的**增强**。它们经常揭示**潜在的系统性问题**或**知识差距**，一旦解决，可以防止将来出现类似问题。随着时间的推移，这种主动的质量方法可以减少缺陷的**频率和[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**。
+  此外，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 有助于团队成员之间的**知识共享**，培养**透明度和协作**的文化。当用于**回顾**时，它们可以帮助团队反思并**从过去的经验中学习**，完善他们的测试策略和开发实践。
+  在敏捷和 DevOps 环境中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 进入**持续反馈循环**，通知**待办事项优先级**和**冲刺计划**。他们确保质量嵌入 **CI/CD 管道**，每个事件都充当 **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)** 的检查点。
+  最终，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 不仅仅是跟踪[bugs](https://inaodeng.com/zh-cn/wiki/bug/)；它们是一种**质量控制机制**，有效利用时，可以带来更加**可靠、稳健和以用户为中心的**软件产品。
 
 #### 事件报告和错误报告有什么区别？
 
-**[事故报告](/zh-cn/wiki/incident-report/)** 和 **[bug](/zh-cn/wiki/bug/) 报告** 之间的主要区别在于它们的范围和上下文。 [事故报告](/zh-cn/wiki/incident-report/) 是一个更广泛的术语，涵盖系统中的任何意外事件，可能是[bug](/zh-cn/wiki/bug/)、系统故障或任何偏离预期行为的问题。它不仅限于软件缺陷，还可以包括硬件、网络或影响系统的任何外部因素的问题。
-  另一方面，[bug](/zh-cn/wiki/bug/) 报告专门关注软件缺陷。它详细说明了应用程序代码或设计中导致不正确或意外行为的问题。 [Bug](/zh-cn/wiki/bug/) 报告通常由遇到与软件功能直接相关问题的测试人员或最终用户创建。
-  虽然这两个报告都是 [质量保证](/zh-cn/wiki/quality-assurance/) 流程的组成部分，但 [事故报告](/zh-cn/wiki/incident-report/) 可能会触发一系列调查以查明问题的确切性质，如果发现软件缺陷，可能会导致创建一个或多个 [bug](/zh-cn/wiki/bug/) 报告。
+**[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)** 和 **[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告** 之间的主要区别在于它们的范围和上下文。 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 是一个更广泛的术语，涵盖系统中的任何意外事件，可能是[bug](https://inaodeng.com/zh-cn/wiki/bug/)、系统故障或任何偏离预期行为的问题。它不仅限于软件缺陷，还可以包括硬件、网络或影响系统的任何外部因素的问题。
+  另一方面，[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告专门关注软件缺陷。它详细说明了应用程序代码或设计中导致不正确或意外行为的问题。 [Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告通常由遇到与软件功能直接相关问题的测试人员或最终用户创建。
+  虽然这两个报告都是 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 流程的组成部分，但 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 可能会触发一系列调查以查明问题的确切性质，如果发现软件缺陷，可能会导致创建一个或多个 [bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告。
   总之：
 
-- **[事故报告](/zh-cn/wiki/incident-report/)** ：描述任何偏离预期行为的事件的文档，不限于软件错误。
-- **[Bug](/zh-cn/wiki/bug/) 报告**：专门描述软件缺陷的文档，详细说明应用程序代码或设计中的问题。 两种类型的报告对于维护和改进[软件质量](/zh-cn/wiki/software-quality/) 都至关重要，但它们在识别和解决问题方面具有不同的目的。
+- **[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)** ：描述任何偏离预期行为的事件的文档，不限于软件错误。
+- **[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告**：专门描述软件缺陷的文档，详细说明应用程序代码或设计中的问题。 两种类型的报告对于维护和改进[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 都至关重要，但它们在识别和解决问题方面具有不同的目的。
 
-- **[事故报告](/zh-cn/wiki/incident-report/)** ：描述任何偏离预期行为的事件的文档，不限于软件错误。
-- **[Bug](/zh-cn/wiki/bug/) 报告**：专门描述软件缺陷的文档，详细说明应用程序代码或设计中的问题。
+- **[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)** ：描述任何偏离预期行为的事件的文档，不限于软件错误。
+- **[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告**：专门描述软件缺陷的文档，详细说明应用程序代码或设计中的问题。
 
 ### 创建事件报告
 
 #### 事故报告中应包含哪些信息？
 
-在 **[事故报告](/zh-cn/wiki/incident-report/)** 中，包含事件发生的**环境详细信息**，例如操作系统、浏览器版本和设备详细信息。指定**软件版本**和任何相关的**配置设置**。提及发现该事件的**[测试用例](/zh-cn/wiki/test-case/)**或**自动化脚本**，包括重现步骤、预期与[实际结果](/zh-cn/wiki/actual-result/)，以及任何**错误消息**或**日志**。附加**屏幕截图**或**视频**以获取视觉背景。
-  指明事件的 **[严重性](/zh-cn/wiki/severity/)** 和 **[priority](/zh-cn/wiki/priority/)** 以指导响应的紧迫性。如果可能，请提供对应用程序其他区域的潜在原因或影响的初步**分析**。请注意测试期间发现的任何**解决方法**。
+在 **[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)** 中，包含事件发生的**环境详细信息**，例如操作系统、浏览器版本和设备详细信息。指定**软件版本**和任何相关的**配置设置**。提及发现该事件的**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**或**自动化脚本**，包括重现步骤、预期与[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)，以及任何**错误消息**或**日志**。附加**屏幕截图**或**视频**以获取视觉背景。
+  指明事件的 **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** 和 **[priority](https://inaodeng.com/zh-cn/wiki/priority/)** 以指导响应的紧迫性。如果可能，请提供对应用程序其他区域的潜在原因或影响的初步**分析**。请注意测试期间发现的任何**解决方法**。
   包括**元数据**，例如事件 ID、标题、提交日期、报告者姓名和受让人。如果事件已被**分类**，请记录结果和做出的任何决定。
   确保报告**清晰**和**简洁**，以促进快速理解和采取行动。为了清楚起见，使用**要点**，并使用**代码块**了解技术细节：
 
@@ -129,11 +129,11 @@ order: 0
     });
   });
 ```
-**链接**到相关事件、[bug](/zh-cn/wiki/bug/) 报告或用户故事以进行追踪。最后，随着解决过程的进展，用事件的**状态**更新报告。
+**链接**到相关事件、[bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告或用户故事以进行追踪。最后，随着解决过程的进展，用事件的**状态**更新报告。
 
 #### 创建事件报告的过程是什么？
 
-创建 [事故报告](/zh-cn/wiki/incident-report/) 涉及记录测试期间遇到的问题。请按照下列步骤操作：
+创建 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 涉及记录测试期间遇到的问题。请按照下列步骤操作：
 
 1. **识别**测试执行期间的事件。
 
@@ -191,19 +191,19 @@ order: 0
 
 #### 事件报告应该如何构建？
 
-[事故报告](/zh-cn/wiki/incident-report/) 的结构应能够快速、清晰地传达关键信息。这是一个简洁的格式：
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 的结构应能够快速、清晰地传达关键信息。这是一个简洁的格式：
 
 - **标识符**：用于跟踪的唯一 ID。
 - **标题**：简短的描述性标题。
-- **[严重性](/zh-cn/wiki/severity/)** ：指示影响级别，例如阻碍、严重、主要、次要或微不足道。
+- **[严重性](https://inaodeng.com/zh-cn/wiki/severity/)** ：指示影响级别，例如阻碍、严重、主要、次要或微不足道。
 - **状态**：当前状态，例如新建、进行中、已解决、已关闭。
 - **环境**：事件发生的环境详细信息，包括软件版本、硬件和网络配置。
 - **日期/时间**：观察到事件的时间。
 - **报告者**：报告者的联系信息。
 - **描述**：对事件的清晰、简洁的总结。
 - **重现步骤**：导致事件的步骤的编号列表。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：如果事件没有发生，应该会发生什么。
-- **[实际结果](/zh-cn/wiki/actual-result/)** ：实际发生了什么，注意差异。
+- **[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)** ：如果事件没有发生，应该会发生什么。
+- **[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/)** ：实际发生了什么，注意差异。
 - **附件**：屏幕截图、日志或其他相关文件。
 - **注释**：任何附加信息或观察结果。
 - **解决方案**：有关如何解决事件的详细信息（如果适用）。
@@ -225,13 +225,13 @@ order: 0
 - Attachments: `login_issue_screenshot.png`, `app_logs.txt`
 - Notes: Issue does not occur on desktop version.
 - Resolution: (To be filled upon issue resolution)
-这种格式可确保所有相关信息以清晰、可操作的方式呈现，从而促进高效[事件管理](/zh-cn/wiki/incident-management/) 和解决。
+这种格式可确保所有相关信息以清晰、可操作的方式呈现，从而促进高效[事件管理](https://inaodeng.com/zh-cn/wiki/incident-management/) 和解决。
 
 #### 可以使用哪些工具来创建事件报告？
 
-要创建[事故报告](/zh-cn/wiki/incident-report/)，可以使用各种工具，从简单的文档软件到专门的缺陷跟踪系统。以下是一些常用的工具：
+要创建[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)，可以使用各种工具，从简单的文档软件到专门的缺陷跟踪系统。以下是一些常用的工具：
 
-- **[jira](/zh-cn/wiki/jira/)** ：一种流行的项目管理工具，包括问题跟踪。它允许详细的事件报告，并且可以使用特定于您的项目需求的字段进行自定义。
+- **[jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：一种流行的项目管理工具，包括问题跟踪。它允许详细的事件报告，并且可以使用特定于您的项目需求的字段进行自定义。
 
 ```
   Create a new issue -> Select 'Incident' -> Fill in the details -> Attach evidence -> Assign and track
@@ -268,7 +268,7 @@ order: 0
 ```
 选择一个与您现有工作流程良好集成并提供有效事件跟踪和沟通所需功能的工具。
 
-- **[jira](/zh-cn/wiki/jira/)** ：一种流行的项目管理工具，包括问题跟踪。它允许详细的事件报告，并且可以使用特定于您的项目需求的字段进行自定义。
+- **[jira](https://inaodeng.com/zh-cn/wiki/jira/)** ：一种流行的项目管理工具，包括问题跟踪。它允许详细的事件报告，并且可以使用特定于您的项目需求的字段进行自定义。
 - **Bugzilla**：一个开源问题跟踪系统，提供一个简单的平台来报告事件、跟踪其进度并管理其解决方案。
 - **MantisBT**：另一个基于网络的开源错误跟踪工具，提供报告事件的功能，包括电子邮件通知和可自定义字段。
 - **Microsoft Excel 或 Google Sheets**：对于更手动的方法，可以使用电子表格来记录事件，从而允许自定义列和数据操作。
@@ -277,12 +277,12 @@ order: 0
 
 #### 撰写事件报告的最佳实践有哪些？
 
-制作 [事故报告](/zh-cn/wiki/incident-report/) 时，请遵循以下最佳实践：
+制作 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 时，请遵循以下最佳实践：
 
 - **准确**：清楚地描述问题，避免含糊的语言。包括具体详细信息，例如错误消息、代码以及事件发生的条件。
 - **客观**：坚持事实，不做假设或指责。
 - **再现性**：提供再现事件的步骤。如果它不可重现，请说明这一点并包括任何相关的模式或观察结果。
-- **[影响分析](/zh-cn/wiki/impact-analysis/)** ：评估并记录对系统或用户的潜在影响。
+- **[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** ：评估并记录对系统或用户的潜在影响。
 - **附件**：包括屏幕截图、日志或任何其他可以提供额外上下文的支持材料。
 - **优先级**：根据影响和紧急程度建议严重性级别，以帮助确定事件的优先级。
 - **使用模板**：利用标准化模板来确保报告的一致性和完整性。
@@ -294,43 +294,43 @@ order: 0
 
 #### 软件测试过程中如何使用事件报告？
 
-[事故报告](/zh-cn/wiki/incident-report/) 充当[软件测试](/zh-cn/wiki/software-testing/) 进程中的**跟踪机制**。它们用于**记录测试期间发生的异常**，这些异常不一定是缺陷，但可能表明需要关注的领域。通过记录这些事件，团队可以确保任何问题，无论多小，都可以在必要时得到考虑和解决。
-  这些报告成为**历史数据**的一部分，团队可以对其进行分析以识别模式或重复出现的问题。这些数据对于**风险评估**非常宝贵，有助于确定未来测试周期或项目中测试工作的优先顺序。 [事故报告](/zh-cn/wiki/incident-report/) 还通过提供清晰简洁的发现问题记录来促进测试人员、开发人员和其他利益相关者之间的**沟通**​​，这在大型或分布式团队中特别有用。
-  在**监管环境**中，[事故报告](/zh-cn/wiki/incident-report/) 通常需要**合规性**，并且可用于证明测试过程中的尽职调查。他们提供**审计跟踪**，可以在内部或外部审计期间进行审查。
-  在**根本原因分析**期间，[事故报告](/zh-cn/wiki/incident-report/) 可以帮助查明缺陷的根源，从而实现更有效的故障排除和修复。这有助于**持续改进周期**，从过去的事件中吸取的经验教训可以提供更好的实践并增强软件的稳健性。
-  最后，[事故报告](/zh-cn/wiki/incident-report/) 可用于**衡量测试有效性**以及事件对项目时间线的影响，这对于项目管理和规划至关重要。它们提供了测试活动和结果的切实证据，可用于证明测试工具或基础设施的资源分配和投资的合理性。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 充当[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 进程中的**跟踪机制**。它们用于**记录测试期间发生的异常**，这些异常不一定是缺陷，但可能表明需要关注的领域。通过记录这些事件，团队可以确保任何问题，无论多小，都可以在必要时得到考虑和解决。
+  这些报告成为**历史数据**的一部分，团队可以对其进行分析以识别模式或重复出现的问题。这些数据对于**风险评估**非常宝贵，有助于确定未来测试周期或项目中测试工作的优先顺序。 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 还通过提供清晰简洁的发现问题记录来促进测试人员、开发人员和其他利益相关者之间的**沟通**​​，这在大型或分布式团队中特别有用。
+  在**监管环境**中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 通常需要**合规性**，并且可用于证明测试过程中的尽职调查。他们提供**审计跟踪**，可以在内部或外部审计期间进行审查。
+  在**根本原因分析**期间，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 可以帮助查明缺陷的根源，从而实现更有效的故障排除和修复。这有助于**持续改进周期**，从过去的事件中吸取的经验教训可以提供更好的实践并增强软件的稳健性。
+  最后，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 可用于**衡量测试有效性**以及事件对项目时间线的影响，这对于项目管理和规划至关重要。它们提供了测试活动和结果的切实证据，可用于证明测试工具或基础设施的资源分配和投资的合理性。
 
 #### 谁应该收到事故报告？
 
-[事故报告](/zh-cn/wiki/incident-report/) 应由负责[软件质量](/zh-cn/wiki/software-quality/) 的**维护**、**解决**和**监督**的团队成员接收。这通常包括：
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 应由负责[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的**维护**、**解决**和**监督**的团队成员接收。这通常包括：
 
 - **开发人员**：解决并解决根本问题。
 - **测试人员**：验证修复并确保没有出现相关问题。
 - **项目经理**：确定事件的优先顺序并在项目时间表内管理其解决方案。
 - **产品负责人**：了解对产品的影响并做出明智的决策。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督质量控制流程并确保事件得到妥善处理。 在某些情况下，报告还可能与以下人员共享：
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督质量控制流程并确保事件得到妥善处理。 在某些情况下，报告还可能与以下人员共享：
 
 - **客户支持**：通知他们可能影响用户的已知问题。
-- **运营团队**：如果事件对部署或正在进行的运营有影响。 在敏捷和 DevOps 环境中，整个跨职能团队，包括 **DevOps 工程师**和 **利益相关者**，可能会参与 [事故报告](/zh-cn/wiki/incident-report/) 以促进协作和快速解决。 通过适当的**通信渠道**（例如电子邮件、问题跟踪系统或项目管理工具）分发[事故报告](/zh-cn/wiki/incident-report/) 非常重要，以确保其及时到达所有相关方。
+- **运营团队**：如果事件对部署或正在进行的运营有影响。 在敏捷和 DevOps 环境中，整个跨职能团队，包括 **DevOps 工程师**和 **利益相关者**，可能会参与 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 以促进协作和快速解决。 通过适当的**通信渠道**（例如电子邮件、问题跟踪系统或项目管理工具）分发[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 非常重要，以确保其及时到达所有相关方。
 
 - **开发人员**：解决并解决根本问题。
 - **测试人员**：验证修复并确保没有出现相关问题。
 - **项目经理**：确定事件的优先顺序并在项目时间表内管理其解决方案。
 - **产品负责人**：了解对产品的影响并做出明智的决策。
-- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督质量控制流程并确保事件得到妥善处理。
+- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 经理**：监督质量控制流程并确保事件得到妥善处理。
 - **客户支持**：通知他们可能影响用户的已知问题。
 - **运营团队**：如果事件对部署或正在进行的运营有影响。
 
 #### 如何使用事件报告来改进未来的测试工作？
 
-[事故报告](/zh-cn/wiki/incident-report/) 作为过去问题的历史记录，有助于完善未来的测试工作。它们帮助识别软件缺陷中的**趋势**和**模式**，使团队能够预测并防止类似问题。通过分析这些报告，团队可以通过为导致事件的错过场景添加新的[测试用例](/zh-cn/wiki/test-case/)来改进他们的**[测试覆盖率](/zh-cn/wiki/test-coverage/)**。此分析还有助于查明现有[测试套件](/zh-cn/wiki/test-suite/) 和**测试策略**中的弱点，从而促进更加集中和有效的测试方法。
-  此外，[事故报告](/zh-cn/wiki/incident-report/) 可以突出显示 **[测试自动化](/zh-cn/wiki/test-automation/)** 可能需要增强或扩展的区域。例如，如果频繁报告某些类型的错误，则可能表明自动化测试无法有效地模拟用户行为或系统状态。然后，团队可以相应地调整或扩展自动化脚本。
-  [事故报告](/zh-cn/wiki/incident-report/) 中包含的**根本原因分析**对于未来的测试特别有价值。了解缺陷的根本原因可以在这些领域进行更全面的测试，从而降低复发的可能性。此外，从过去的事件中学习可以指导测试人员设计更具**弹性和稳健的**[测试环境](/zh-cn/wiki/test-environment/)，更好地模拟生产，从而获得更准确的测试结果。
-  将[事故报告](/zh-cn/wiki/incident-report/) 中汲取的经验教训纳入**持续改进流程**，确保每次[迭代](/zh-cn/wiki/iteration/) 测试都比上一次更加明智和有效，从而有助于在软件开发生命周期中形成质量和可靠性文化。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 作为过去问题的历史记录，有助于完善未来的测试工作。它们帮助识别软件缺陷中的**趋势**和**模式**，使团队能够预测并防止类似问题。通过分析这些报告，团队可以通过为导致事件的错过场景添加新的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)来改进他们的**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。此分析还有助于查明现有[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 和**测试策略**中的弱点，从而促进更加集中和有效的测试方法。
+  此外，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 可以突出显示 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)** 可能需要增强或扩展的区域。例如，如果频繁报告某些类型的错误，则可能表明自动化测试无法有效地模拟用户行为或系统状态。然后，团队可以相应地调整或扩展自动化脚本。
+  [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 中包含的**根本原因分析**对于未来的测试特别有价值。了解缺陷的根本原因可以在这些领域进行更全面的测试，从而降低复发的可能性。此外，从过去的事件中学习可以指导测试人员设计更具**弹性和稳健的**[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，更好地模拟生产，从而获得更准确的测试结果。
+  将[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 中汲取的经验教训纳入**持续改进流程**，确保每次[迭代](https://inaodeng.com/zh-cn/wiki/iteration/) 测试都比上一次更加明智和有效，从而有助于在软件开发生命周期中形成质量和可靠性文化。
 
 #### 如何使用事件报告与利益相关者进行沟通？
 
-[事故报告](/zh-cn/wiki/incident-report/) 充当**沟通工具**，向利益相关者通报影响软件质量和操作的问题。它们提供问题的**快照**，使利益相关者能够了解事件的**[严重性](/zh-cn/wiki/severity/)**、**影响**和**状态**。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 充当**沟通工具**，向利益相关者通报影响软件质量和操作的问题。它们提供问题的**快照**，使利益相关者能够了解事件的**[严重性](https://inaodeng.com/zh-cn/wiki/severity/)**、**影响**和**状态**。
   与利益相关者沟通时：
 
 - **总结事件**清晰简洁，重点关注它如何影响业务目标或用户体验。
@@ -341,14 +341,14 @@ order: 0
 
 - **建议行动**或利益相关者需要做出的决定，例如额外资源或优先级转变。
 
-- **定期更新**让利益相关者了解进展和解决努力。 通过提供测试结果的**透明视图**，[事故报告](/zh-cn/wiki/incident-report/) 帮助利益相关者做出明智的决策并协调优先事项，从而促进[质量保证](/zh-cn/wiki/quality-assurance/) 的协作方法。
+- **定期更新**让利益相关者了解进展和解决努力。 通过提供测试结果的**透明视图**，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 帮助利益相关者做出明智的决策并协调优先事项，从而促进[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的协作方法。
 
 - Incident summary: Briefly describe the issue.
 - Impact analysis: Detail how the incident affects the project or users.
 - Quantitative data: Include metrics or statistics.
 - Recommendations: Suggest next steps for stakeholders.
 - Regular updates: Keep stakeholders informed on resolution progress.
-有效[事故报告](/zh-cn/wiki/incident-report/) **建立信任**并**鼓励利益相关者积极参与**，确保每个人都在交付高质量软件产品的道路上保持一致。
+有效[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) **建立信任**并**鼓励利益相关者积极参与**，确保每个人都在交付高质量软件产品的道路上保持一致。
 
 - **总结事件**清晰简洁，重点关注它如何影响业务目标或用户体验。
 
@@ -362,7 +362,7 @@ order: 0
 
 #### 事件报告在事件管理中的作用是什么？
 
-在[事件管理](/zh-cn/wiki/incident-management/) 中，**[事故报告](/zh-cn/wiki/incident-report/)** 充当偏离软件系统内预期行为的事件的正式记录。它在以下方面发挥着至关重要的作用：
+在[事件管理](https://inaodeng.com/zh-cn/wiki/incident-management/) 中，**[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)** 充当偏离软件系统内预期行为的事件的正式记录。它在以下方面发挥着至关重要的作用：
 
 - **跟踪和记录**事件，以确保它们得到承认和解决。
 
@@ -374,7 +374,7 @@ order: 0
 
 - 支持 **事后回顾**评估应对措施的有效性并从事件中吸取教训。
 
-- 贡献于 **持续改进**通过告知开发团队可能需要额外关注或重新设计的软件潜在领域。 该报告通常包含事件描述、重现步骤、预期与[实际结果](/zh-cn/wiki/actual-result/) 以及[严重性](/zh-cn/wiki/severity/) 级别等详细信息。这些信息对于开发人员了解上下文以及项目经理做出明智的决策至关重要。在敏捷和 DevOps 环境中，[事故报告](/zh-cn/wiki/incident-report/) 融入**迭代流程**和**持续反馈循环**，帮助团队快速解决问题并改进后续版本中的软件。在**冲刺回顾**期间也会对它们进行审查，以完善测试策略并防止将来发生类似事件。
+- 贡献于 **持续改进**通过告知开发团队可能需要额外关注或重新设计的软件潜在领域。 该报告通常包含事件描述、重现步骤、预期与[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/) 以及[严重性](https://inaodeng.com/zh-cn/wiki/severity/) 级别等详细信息。这些信息对于开发人员了解上下文以及项目经理做出明智的决策至关重要。在敏捷和 DevOps 环境中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 融入**迭代流程**和**持续反馈循环**，帮助团队快速解决问题并改进后续版本中的软件。在**冲刺回顾**期间也会对它们进行审查，以完善测试策略并防止将来发生类似事件。
 
 - **跟踪和记录**事件，以确保它们得到承认和解决。
 
@@ -392,44 +392,44 @@ order: 0
 
 #### 敏捷方法中如何处理事件报告？
 
-在敏捷方法中，[事故报告](/zh-cn/wiki/incident-report/) 通过**协作**和**迭代**方法进行处理。报告事件后，通常会作为用户故事、[bug](/zh-cn/wiki/bug/) 或任务记录到 **积压工作** 中，具体取决于问题的性质和 [严重性](/zh-cn/wiki/severity/)。
-  然后，团队通常在**积压工作细化**或**冲刺计划**会议期间，根据事件的影响和紧迫性对事件进行**优先级**。高[priority](/zh-cn/wiki/priority/) 事件可能会立即得到解决或包含在即将到来的冲刺中，而不太重要的问题可能会安排在未来的冲刺中。
+在敏捷方法中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 通过**协作**和**迭代**方法进行处理。报告事件后，通常会作为用户故事、[bug](https://inaodeng.com/zh-cn/wiki/bug/) 或任务记录到 **积压工作** 中，具体取决于问题的性质和 [严重性](https://inaodeng.com/zh-cn/wiki/severity/)。
+  然后，团队通常在**积压工作细化**或**冲刺计划**会议期间，根据事件的影响和紧迫性对事件进行**优先级**。高[priority](https://inaodeng.com/zh-cn/wiki/priority/) 事件可能会立即得到解决或包含在即将到来的冲刺中，而不太重要的问题可能会安排在未来的冲刺中。
   在冲刺期间，团队致力于解决该事件，并以**每日站会**作为讨论进展和任何障碍的平台。敏捷强调**透明度**，因此所有利益相关者都可以通过使用**看板**或类似工具看到事件的状态。
-  一旦解决，修复将通过自动或[手动测试](/zh-cn/wiki/manual-testing/)进行**验证**，以确保事件得到充分解决。然后，通常在**冲刺审查**会议期间，与团队和利益相关者一起**审查**该决议。
+  一旦解决，修复将通过自动或[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)进行**验证**，以确保事件得到充分解决。然后，通常在**冲刺审查**会议期间，与团队和利益相关者一起**审查**该决议。
   如果该事件具有更广泛的影响，则可以在**冲刺回顾**中进行讨论，以找出经验教训和潜在的流程改进，以防止将来发生类似事件。
   在整个过程中，沟通是关键。敏捷团队经常使用**聊天应用程序**、**问题跟踪系统**和**协作平台**来让每个人了解并参与事件解决过程。
 
 #### DevOps 中如何处理事件报告？
 
-在 DevOps 中，[事故报告](/zh-cn/wiki/incident-report/) 通过**协作和迭代方法**进行处理。一旦报告事件，它就会触发**自动化工作流程**，通常涉及以下步骤：
+在 DevOps 中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 通过**协作和迭代方法**进行处理。一旦报告事件，它就会触发**自动化工作流程**，通常涉及以下步骤：
 
 1. **通知**：通过 Slack、电子邮件或事件管理系统等通信工具向相关团队成员发出警报。
 2. **分类**：评估事件的严重性和影响。在此基础上，确定优先级并分配给适当的人员。
 3. **调查和诊断**：团队共同使用日志、指标和跟踪来了解根本原因。
 4. **解决方案**：已实施修复，可能涉及代码更改、配置更新或回滚到之前的稳定状态。
-5. **[验证 ](/zh-cn/wiki/verification/)** ：测试分辨率以确保事件得到解决，系统稳定。
+5. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：测试分辨率以确保事件得到解决，系统稳定。
 6. **监控**：系统受到密切监控，以确保修复后不会再次出现或出现新问题。
 7. **记录**：进行事后分析，并将结果记录下来以供将来参考。
-8. **反馈循环**：事件的见解被反馈到开发管道中，以防止类似的问题，通常会导致新的测试或监控检查。 在整个过程中，**自动化**在加快响应时间和减少人为错误方面发挥着关键作用。持续改进是一项核心原则，每个事件都是改进测试、监控和部署实践的学习机会。 DevOps 中的 [事故报告](/zh-cn/wiki/incident-report/) 不仅仅是被动措施，而且是增强系统可靠性和弹性的主动工具。
+8. **反馈循环**：事件的见解被反馈到开发管道中，以防止类似的问题，通常会导致新的测试或监控检查。 在整个过程中，**自动化**在加快响应时间和减少人为错误方面发挥着关键作用。持续改进是一项核心原则，每个事件都是改进测试、监控和部署实践的学习机会。 DevOps 中的 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 不仅仅是被动措施，而且是增强系统可靠性和弹性的主动工具。
 
 #### 事件报告如何适应持续集成和持续部署（CI/CD）？
 
-[事故报告](/zh-cn/wiki/incident-report/) 通过确保在 [自动化测试](/zh-cn/wiki/automated-testing/) 期间发现的任何问题得到及时记录、跟踪和解决，在 **CI/CD 管道** 中发挥着至关重要的作用。在 CI/CD 环境中，[事故报告](/zh-cn/wiki/incident-report/) 的生成和处理通常是自动化的，以保持管道的速度和效率。
-  当测试失败时，会自动创建[事故报告](/zh-cn/wiki/incident-report/)，捕获有关失败的详细信息。这通常会通过与 [jira](/zh-cn/wiki/jira/)、Slack 或电子邮件等工具集成来触发向相关团队成员发出**通知**。该报告包含开发人员**重现和修复**问题所需的信息。
-  CI/CD 管道可以配置为在报告严重事件时**停止部署**，从而确保不会将错误代码部署到生产中。或者，可以记录非关键事件以供将来关注，从而允许管道继续运行，同时团队根据其 [严重性](/zh-cn/wiki/severity/) 确定问题的优先级。
-  CI/CD 中的 [事故报告](/zh-cn/wiki/incident-report/) 也有助于**持续改进**。通过分析事件趋势，团队可以识别代码库中容易出现问题并可能需要重构的区域。这种针对 [质量保证](/zh-cn/wiki/quality-assurance/) 的主动方法有助于减少未来发生类似事件的可能性。
-  总之，CI/CD 中的[事故报告](/zh-cn/wiki/incident-report/) 充当反馈机制，能够快速识别、沟通和解决问题，这对于维护软件交付过程的**完整性和可靠性**至关重要。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 通过确保在 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 期间发现的任何问题得到及时记录、跟踪和解决，在 **CI/CD 管道** 中发挥着至关重要的作用。在 CI/CD 环境中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 的生成和处理通常是自动化的，以保持管道的速度和效率。
+  当测试失败时，会自动创建[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)，捕获有关失败的详细信息。这通常会通过与 [jira](https://inaodeng.com/zh-cn/wiki/jira/)、Slack 或电子邮件等工具集成来触发向相关团队成员发出**通知**。该报告包含开发人员**重现和修复**问题所需的信息。
+  CI/CD 管道可以配置为在报告严重事件时**停止部署**，从而确保不会将错误代码部署到生产中。或者，可以记录非关键事件以供将来关注，从而允许管道继续运行，同时团队根据其 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 确定问题的优先级。
+  CI/CD 中的 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 也有助于**持续改进**。通过分析事件趋势，团队可以识别代码库中容易出现问题并可能需要重构的区域。这种针对 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的主动方法有助于减少未来发生类似事件的可能性。
+  总之，CI/CD 中的[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 充当反馈机制，能够快速识别、沟通和解决问题，这对于维护软件交付过程的**完整性和可靠性**至关重要。
 
 #### 事件报告在冲刺回顾中的作用是什么？
 
-在**冲刺回顾**中，[事故报告](/zh-cn/wiki/incident-report/) 在**反思冲刺期间发生的问题并从中学习**方面发挥着至关重要的作用。它作为团队的**讨论点**来分析出了什么问题、为什么会发生以及如何防止将来发生类似事件。
+在**冲刺回顾**中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 在**反思冲刺期间发生的问题并从中学习**方面发挥着至关重要的作用。它作为团队的**讨论点**来分析出了什么问题、为什么会发生以及如何防止将来发生类似事件。
   该报告提供了问题的**具体示例**，这可以帮助识别**流程弱点**或**需要改进的领域**。通过详细检查事件，团队可以提出并计划**可行的步骤**来增强其实践，从而可能导致**测试策略**、**自动化框架**或**开发流程**的更新。
-  此外，在回顾中讨论 [事故报告](/zh-cn/wiki/incident-report/) 强化了团队成员之间**透明度**和**协作**的重要性。它鼓励**持续学习**和成功和失败的**集体所有权**的文化。
-  从这些讨论中获得的见解可以转化为**回顾性行动项目**，然后在后续冲刺中确定优先级并实施，从而推动团队[软件质量](/zh-cn/wiki/software-quality/) 和可靠性方法的**持续改进**。
+  此外，在回顾中讨论 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 强化了团队成员之间**透明度**和**协作**的重要性。它鼓励**持续学习**和成功和失败的**集体所有权**的文化。
+  从这些讨论中获得的见解可以转化为**回顾性行动项目**，然后在后续冲刺中确定优先级并实施，从而推动团队[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和可靠性方法的**持续改进**。
 
 #### 如何使用事件报告来改进敏捷和 DevOps 环境中的软件开发生命周期？
 
-[事故报告](/zh-cn/wiki/incident-report/) 在敏捷和 DevOps 环境中充当**持续改进**的催化剂。它们提供了问题的切实证据，经过分析，可以改进开发过程和最终产品。通过将 [事故报告](/zh-cn/wiki/incident-report/) 集成到**冲刺回顾**中，团队可以识别缺陷的模式和根本原因，从而在流程调整和技术改进方面做出更明智的决策。
-  在 DevOps 中，[事故报告](/zh-cn/wiki/incident-report/) 对于**反馈循环**至关重要。它们通过触发自动化测试和代码分析工具来通知**持续集成**（CI）和**持续部署**（CD）管道，以防止将来发生类似事件。这种集成可以通过 [jira](/zh-cn/wiki/jira/) 或 GitLab 等工具来实现，这些工具跟踪事件并可以配置为与 CI/CD 工作流程交互。
-  此外，[事故报告](/zh-cn/wiki/incident-report/) 在这些环境中鼓励**透明文化**和**共同责任**。它们不仅是跟踪[bugs](/zh-cn/wiki/bug/)的一种方式，也是一种跨团队沟通、促进协作和集体解决问题的方式。这在运营和开发团队必须密切合作以实现**快速[迭代](/zh-cn/wiki/iteration/)**和**高质量发布**的环境中至关重要。
-  为了最大限度地发挥其影响，应定期审查[事故报告](/zh-cn/wiki/incident-report/)，并将获得的见解及时反馈到开发生命周期中。这确保了从事件中吸取的经验教训得到迅速应用，从而形成更具弹性和更高效的开发流程。
+[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 在敏捷和 DevOps 环境中充当**持续改进**的催化剂。它们提供了问题的切实证据，经过分析，可以改进开发过程和最终产品。通过将 [事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 集成到**冲刺回顾**中，团队可以识别缺陷的模式和根本原因，从而在流程调整和技术改进方面做出更明智的决策。
+  在 DevOps 中，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 对于**反馈循环**至关重要。它们通过触发自动化测试和代码分析工具来通知**持续集成**（CI）和**持续部署**（CD）管道，以防止将来发生类似事件。这种集成可以通过 [jira](https://inaodeng.com/zh-cn/wiki/jira/) 或 GitLab 等工具来实现，这些工具跟踪事件并可以配置为与 CI/CD 工作流程交互。
+  此外，[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/) 在这些环境中鼓励**透明文化**和**共同责任**。它们不仅是跟踪[bugs](https://inaodeng.com/zh-cn/wiki/bug/)的一种方式，也是一种跨团队沟通、促进协作和集体解决问题的方式。这在运营和开发团队必须密切合作以实现**快速[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)**和**高质量发布**的环境中至关重要。
+  为了最大限度地发挥其影响，应定期审查[事故报告](https://inaodeng.com/zh-cn/wiki/incident-report/)，并将获得的见解及时反馈到开发生命周期中。这确保了从事件中吸取的经验教训得到迅速应用，从而形成更具弹性和更高效的开发流程。

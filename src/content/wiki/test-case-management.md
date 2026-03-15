@@ -50,31 +50,31 @@ order: 0
 
 #### 什么是测试用例管理？
 
-[测试用例管理](/zh-cn/wiki/test-case-management/) (TCM) 是组织、管理和跟踪[软件测试](/zh-cn/wiki/software-testing/) 各个方面的过程。它涉及记录[测试用例](/zh-cn/wiki/test-case/)、概述测试步骤、[预期结果](/zh-cn/wiki/expected-result/) 和[测试数据](/zh-cn/wiki/test-data/)。 TCM 还包括将[测试用例](/zh-cn/wiki/test-case/) 分配给测试人员、监控[测试执行](/zh-cn/wiki/test-execution/) 并记录结果。
-  TCM 充当所有与测试相关的工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供用于访问和更新[测试用例](/zh-cn/wiki/test-case/) 的共享平台来促进团队成员之间的协作。
-  在 TCM 中，[测试用例](/zh-cn/wiki/test-case/) 通常被分类和分组以反映不同的测试需求，例如功能、回归或[性能测试](/zh-cn/wiki/performance-testing/)。此分类有助于根据测试目标或被测应用程序中的更改来选择相关的 [测试用例](/zh-cn/wiki/test-case/) 来执行。
-  TCM 中的[测试执行](/zh-cn/wiki/test-execution/) 涉及运行[测试用例](/zh-cn/wiki/test-case/) 并记录结果，结果可以通过、失败或阻止。然后分析结果以识别缺陷、评估风险并确定软件的发布准备情况。
-  TCM 工具通常与版本控制系统、持续集成管道和缺陷跟踪工具集成，以简化测试过程。这种集成允许自动触发[测试用例](/zh-cn/wiki/test-case/)、更新测试结果以及将缺陷链接到失败的[测试用例](/zh-cn/wiki/test-case/)，从而提高测试过程的整体效率。
+[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM) 是组织、管理和跟踪[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 各个方面的过程。它涉及记录[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、概述测试步骤、[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 和[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。 TCM 还包括将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 分配给测试人员、监控[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 并记录结果。
+  TCM 充当所有与测试相关的工件的中央存储库，使团队能够在整个测试生命周期中保持一致性和可追溯性。它通过提供用于访问和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的共享平台来促进团队成员之间的协作。
+  在 TCM 中，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 通常被分类和分组以反映不同的测试需求，例如功能、回归或[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)。此分类有助于根据测试目标或被测应用程序中的更改来选择相关的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 来执行。
+  TCM 中的[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 涉及运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 并记录结果，结果可以通过、失败或阻止。然后分析结果以识别缺陷、评估风险并确定软件的发布准备情况。
+  TCM 工具通常与版本控制系统、持续集成管道和缺陷跟踪工具集成，以简化测试过程。这种集成允许自动触发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、更新测试结果以及将缺陷链接到失败的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，从而提高测试过程的整体效率。
   有效的 TCM 可确保测试工作与项目时间表和目标保持一致，提供测试进度的清晰概览并促进明智的决策。
 
 #### 为什么测试用例管理在软件测试中很重要？
 
-[测试用例管理](/zh-cn/wiki/test-case-management/) (TCM) 在[软件测试](/zh-cn/wiki/software-testing/) 中对于**组织**、**跟踪**和**分析**[测试用例](/zh-cn/wiki/test-case/) 至关重要，以确保全面覆盖和高效[测试执行](/zh-cn/wiki/test-execution/)。它使团队能够维护[测试用例](/zh-cn/wiki/test-case/) 存储库，可以在不同的测试周期和项目中轻松访问、修改和重用该存储库。
-  有效的 TCM 可确保每个功能和要求均由相应的 [测试用例](/zh-cn/wiki/test-case/) 进行验证，从而降低缺陷流入生产的风险。它提供了一种结构化方法，可以根据风险、复杂性或业务影响对 [测试用例](/zh-cn/wiki/test-case/) 进行优先级排序，这对于在时间限制下优化测试工作至关重要。
-  TCM 工具允许团队成员实时共享更新、分配任务和监控进度，从而促进团队成员之间的协作。这在快速变化和频繁[迭代](/zh-cn/wiki/iteration/) 很常见的敏捷环境中尤其重要。
-  此外，TCM 有助于维护 [测试执行](/zh-cn/wiki/test-execution/) 的历史记录，这对于 **[回归测试](/zh-cn/wiki/regression-testing/)** 和 **审计跟踪** 非常宝贵。可以分析这些历史数据来识别趋势、改进测试策略并就未来的测试需求做出明智的决策。
-  总之，TCM 是有效[软件测试](/zh-cn/wiki/software-testing/) 策略的基石，提供必要的结构和工具来确保测试彻底、高效并与项目目标保持一致。它通过确保所有[测试用例](/zh-cn/wiki/test-case/) 都得到系统管理并且不遗漏任何内容，从而增强了交付高质量软件的能力。
+[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM) 在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中对于**组织**、**跟踪**和**分析**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 至关重要，以确保全面覆盖和高效[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。它使团队能够维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 存储库，可以在不同的测试周期和项目中轻松访问、修改和重用该存储库。
+  有效的 TCM 可确保每个功能和要求均由相应的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 进行验证，从而降低缺陷流入生产的风险。它提供了一种结构化方法，可以根据风险、复杂性或业务影响对 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 进行优先级排序，这对于在时间限制下优化测试工作至关重要。
+  TCM 工具允许团队成员实时共享更新、分配任务和监控进度，从而促进团队成员之间的协作。这在快速变化和频繁[迭代](https://inaodeng.com/zh-cn/wiki/iteration/) 很常见的敏捷环境中尤其重要。
+  此外，TCM 有助于维护 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的历史记录，这对于 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 和 **审计跟踪** 非常宝贵。可以分析这些历史数据来识别趋势、改进测试策略并就未来的测试需求做出明智的决策。
+  总之，TCM 是有效[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 策略的基石，提供必要的结构和工具来确保测试彻底、高效并与项目目标保持一致。它通过确保所有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 都得到系统管理并且不遗漏任何内容，从而增强了交付高质量软件的能力。
 
 #### 测试用例管理的关键组成部分是什么？
 
-**[测试用例管理](/zh-cn/wiki/test-case-management/)** (TCM) 的关键组成部分包括：
+**[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)** (TCM) 的关键组成部分包括：
 
-- **[测试用例](/zh-cn/wiki/test-case/) 存储库**：所有测试用例的集中存储，可轻松访问、组织和维护。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 存储库**：所有测试用例的集中存储，可轻松访问、组织和维护。
 - **版本控制**：跟踪测试用例的更改，确保测试人员使用最新版本。
 - **测试计划**：允许创建概述测试活动的范围、目标和时间表的测试计划。
-- **[测试执行](/zh-cn/wiki/test-execution/) 记录**：保留测试执行结果的日志，提供测试运行和结果的历史记录。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 记录**：保留测试执行结果的日志，提供测试运行和结果的历史记录。
 - **可追溯性**：将测试用例链接到需求或用户故事，确保覆盖范围并启用影响分析。
-- **[测试套件](/zh-cn/wiki/test-suite/) 管理**：将测试用例组织成套件以用于有针对性的测试目的，例如回归或冒烟测试。
+- **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 管理**：将测试用例组织成套件以用于有针对性的测试目的，例如回归或冒烟测试。
 - **缺陷跟踪集成**：将失败的测试用例连接到缺陷跟踪系统，促进错误报告和跟踪。
 - **报告和分析**：生成报告和仪表板，以提供有关测试覆盖率、缺陷趋势和团队生产力的见解。
 - **基于角色的访问控制**：管理不同用户的权限，以确保安全性和对测试用例的适当访问。
@@ -83,125 +83,125 @@ order: 0
 
 #### 测试用例管理如何提高软件质量？
 
-[测试用例管理](/zh-cn/wiki/test-case-management/) (TCM) 通过确保测试中的**一致性**和**全面性**来增强[软件质量](/zh-cn/wiki/software-quality/)。它有助于组织 [测试用例](/zh-cn/wiki/test-case/)，从而更容易识别覆盖范围中的差距并避免冗余测试。通过跟踪 [测试执行](/zh-cn/wiki/test-execution/) 的历史记录和结果，TCM 为测试过程提供**可追溯性**和**可见性**，这有助于评估软件随着时间的推移的质量。
-  借助 TCM，团队可以更好地管理现代软件系统的**复杂性**，因为它允许根据功能、风险或 [priority](/zh-cn/wiki/priority/) 等各种标准对 [测试用例](/zh-cn/wiki/test-case/) 进行分类和过滤。这种分类有助于将测试工作集中在最需要的地方，从而提高测试过程的有效性。
-  TCM 工具通常包括**报告**和**分析**功能，可以深入了解测试进度、通过/失败率和高缺陷密度区域。这些见解使团队能够做出数据驱动的决策来提高质量，例如在高风险区域增加[测试覆盖率](/zh-cn/wiki/test-coverage/)或重新评估现有[测试用例](/zh-cn/wiki/test-case/)的充分性。
-  此外，TCM 通过为 [测试用例](/zh-cn/wiki/test-case/) 提供中央存储库来支持团队成员之间的**协作**，从而促进知识共享并降低信息孤岛的风险。这种协作环境有助于维护[测试用例](/zh-cn/wiki/test-case/) 的质量，并确保团队的集体专业知识在测试工作中得到体现。
-  总之，TCM 通过提供测试过程的结构、可追溯性和洞察力，使团队能够做出明智的决策，并将其精力集中在对[软件质量](/zh-cn/wiki/software-quality/) 产生最大影响的领域，从而为更高的[软件质量](/zh-cn/wiki/software-quality/) 做出贡献。
+[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM) 通过确保测试中的**一致性**和**全面性**来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。它有助于组织 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，从而更容易识别覆盖范围中的差距并避免冗余测试。通过跟踪 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的历史记录和结果，TCM 为测试过程提供**可追溯性**和**可见性**，这有助于评估软件随着时间的推移的质量。
+  借助 TCM，团队可以更好地管理现代软件系统的**复杂性**，因为它允许根据功能、风险或 [priority](https://inaodeng.com/zh-cn/wiki/priority/) 等各种标准对 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 进行分类和过滤。这种分类有助于将测试工作集中在最需要的地方，从而提高测试过程的有效性。
+  TCM 工具通常包括**报告**和**分析**功能，可以深入了解测试进度、通过/失败率和高缺陷密度区域。这些见解使团队能够做出数据驱动的决策来提高质量，例如在高风险区域增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)或重新评估现有[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的充分性。
+  此外，TCM 通过为 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 提供中央存储库来支持团队成员之间的**协作**，从而促进知识共享并降低信息孤岛的风险。这种协作环境有助于维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的质量，并确保团队的集体专业知识在测试工作中得到体现。
+  总之，TCM 通过提供测试过程的结构、可追溯性和洞察力，使团队能够做出明智的决策，并将其精力集中在对[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 产生最大影响的领域，从而为更高的[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 做出贡献。
 
 #### 测试用例管理在敏捷开发中的作用是什么？
 
-在[敏捷开发](/zh-cn/wiki/agile-development/) 中，**[测试用例管理](/zh-cn/wiki/test-case-management/)** 在确保测试活动与敏捷项目的迭代和增量性质保持一致方面发挥着关键作用。它有助于[测试用例](/zh-cn/wiki/test-case/) 的组织、跟踪和更新，以适应敏捷冲刺的快速节奏。
-  由于敏捷专注于**持续集成**和**交付**，[测试用例管理](/zh-cn/wiki/test-case-management/) 必须支持快速修改和重新确定[测试用例](/zh-cn/wiki/test-case/) 的优先级，以适应不断变化的需求。它使测试人员能够维护随项目一起发展的**动态文档**，确保[测试用例](/zh-cn/wiki/test-case/) 在整个开发生命周期中保持相关性和价值。
-  敏捷中有效的[测试用例管理](/zh-cn/wiki/test-case-management/) 有助于识别**变更的影响**，允许有针对性的[回归测试](/zh-cn/wiki/regression-testing/) 并降低缺陷漏掉的风险。它还通过提供测试进度的透明视图并促进关于测试结果的**沟通**​​来鼓励跨职能团队之间的协作。
-  此外，敏捷中的[测试用例管理](/zh-cn/wiki/test-case-management/) 通过将[测试用例](/zh-cn/wiki/test-case/) 链接到用户故事和验收标准来支持**可追溯性**，确保所有功能都得到充分测试。这种可追溯性对于维持高质量标准以及让利益相关者深入了解测试工作的覆盖范围和有效性至关重要。
-  总之，[测试用例管理](/zh-cn/wiki/test-case-management/) 是[敏捷开发](/zh-cn/wiki/agile-development/) 不可或缺的一部分，因为它增强了适应性、促进协作、确保可追溯性并支持软件产品的持续发展。这是一个动态过程，需要持续关注，以确保 [测试用例](/zh-cn/wiki/test-case/) 在面对频繁变化时提供最大价值。
+在[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 中，**[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)** 在确保测试活动与敏捷项目的迭代和增量性质保持一致方面发挥着关键作用。它有助于[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的组织、跟踪和更新，以适应敏捷冲刺的快速节奏。
+  由于敏捷专注于**持续集成**和**交付**，[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 必须支持快速修改和重新确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的优先级，以适应不断变化的需求。它使测试人员能够维护随项目一起发展的**动态文档**，确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 在整个开发生命周期中保持相关性和价值。
+  敏捷中有效的[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 有助于识别**变更的影响**，允许有针对性的[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 并降低缺陷漏掉的风险。它还通过提供测试进度的透明视图并促进关于测试结果的**沟通**​​来鼓励跨职能团队之间的协作。
+  此外，敏捷中的[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 通过将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 链接到用户故事和验收标准来支持**可追溯性**，确保所有功能都得到充分测试。这种可追溯性对于维持高质量标准以及让利益相关者深入了解测试工作的覆盖范围和有效性至关重要。
+  总之，[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 是[敏捷开发](https://inaodeng.com/zh-cn/wiki/agile-development/) 不可或缺的一部分，因为它增强了适应性、促进协作、确保可追溯性并支持软件产品的持续发展。这是一个动态过程，需要持续关注，以确保 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 在面对频繁变化时提供最大价值。
 
 ### 测试用例设计和执行
 
 #### 测试用例管理中的测试用例是如何设计的？
 
-在[测试用例管理](/zh-cn/wiki/test-case-management/) (TCM) 中设计[测试用例](/zh-cn/wiki/test-case/) 需要采用系统方法来确保全面的覆盖范围和可追溯性。这是一个简洁的概述：
+在[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM) 中设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 需要采用系统方法来确保全面的覆盖范围和可追溯性。这是一个简洁的概述：
 
 - **确定测试需求**：首先分析软件需求和规范，以确定需要测试的内容。这包括功能、性能、安全性和可用性方面。
-- **定义测试目标**：明确说明每个[测试用例](/zh-cn/wiki/test-case/) 旨在验证的内容。目标应该具体、可衡量并符合要求。
-- **设计[测试场景](/zh-cn/wiki/test-scenario/)**：创建为实现测试目标而采取的测试操作的高级描述。
-- **编写[测试用例](/zh-cn/wiki/test-case/)**：为每个场景制定详细的[测试用例](/zh-cn/wiki/test-case/)，包括测试步骤、[预期结果](/zh-cn/wiki/expected-result/) 和[测试数据](/zh-cn/wiki/test-data/)。使用结构化格式以保持一致性。
-- **将[测试用例](/zh-cn/wiki/test-case/) 映射到要求**：通过将[测试用例](/zh-cn/wiki/test-case/) 链接到其相应的要求来确保可追溯性。这有助于[影响分析](/zh-cn/wiki/impact-analysis/) 和覆盖范围跟踪。
-- **审查和完善**：同行评审或演练可以帮助发现错误并提高[测试用例](/zh-cn/wiki/test-case/) 的质量。
-- **版本控制**：维护[测试用例](/zh-cn/wiki/test-case/) 的版本以管理随时间的变化。
-- **参数化**：在适用的情况下，使用参数使 [测试用例](/zh-cn/wiki/test-case/) 可重用并支持数据驱动的测试。
-- **标记和分类**：使用标签或类别来组织[测试用例](/zh-cn/wiki/test-case/)，从而更轻松地为不同的测试周期选择和执行相关集。
-- **维护**：定期查看和更新​​[测试用例](/zh-cn/wiki/test-case/)，以使其及时了解软件更改。 通过遵循这些步骤，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以在 TCM 系统中创建强大且有效的[测试用例](/zh-cn/wiki/test-case/) 套件，确保软件经过彻底测试并降低任何风险。
+- **定义测试目标**：明确说明每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 旨在验证的内容。目标应该具体、可衡量并符合要求。
+- **设计[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)**：创建为实现测试目标而采取的测试操作的高级描述。
+- **编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：为每个场景制定详细的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，包括测试步骤、[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 和[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。使用结构化格式以保持一致性。
+- **将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 映射到要求**：通过将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 链接到其相应的要求来确保可追溯性。这有助于[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 和覆盖范围跟踪。
+- **审查和完善**：同行评审或演练可以帮助发现错误并提高[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的质量。
+- **版本控制**：维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的版本以管理随时间的变化。
+- **参数化**：在适用的情况下，使用参数使 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 可重用并支持数据驱动的测试。
+- **标记和分类**：使用标签或类别来组织[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，从而更轻松地为不同的测试周期选择和执行相关集。
+- **维护**：定期查看和更新​​[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以使其及时了解软件更改。 通过遵循这些步骤，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以在 TCM 系统中创建强大且有效的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 套件，确保软件经过彻底测试并降低任何风险。
 
 - **确定测试需求**：首先分析软件需求和规范，以确定需要测试的内容。这包括功能、性能、安全性和可用性方面。
-- **定义测试目标**：明确说明每个[测试用例](/zh-cn/wiki/test-case/) 旨在验证的内容。目标应该具体、可衡量并符合要求。
-- **设计[测试场景](/zh-cn/wiki/test-scenario/)**：创建为实现测试目标而采取的测试操作的高级描述。
-- **编写[测试用例](/zh-cn/wiki/test-case/)**：为每个场景制定详细的[测试用例](/zh-cn/wiki/test-case/)，包括测试步骤、[预期结果](/zh-cn/wiki/expected-result/) 和[测试数据](/zh-cn/wiki/test-data/)。使用结构化格式以保持一致性。
-- **将[测试用例](/zh-cn/wiki/test-case/) 映射到要求**：通过将[测试用例](/zh-cn/wiki/test-case/) 链接到其相应的要求来确保可追溯性。这有助于[影响分析](/zh-cn/wiki/impact-analysis/) 和覆盖范围跟踪。
-- **审查和完善**：同行评审或演练可以帮助发现错误并提高[测试用例](/zh-cn/wiki/test-case/) 的质量。
-- **版本控制**：维护[测试用例](/zh-cn/wiki/test-case/) 的版本以管理随时间的变化。
-- **参数化**：在适用的情况下，使用参数使 [测试用例](/zh-cn/wiki/test-case/) 可重用并支持数据驱动的测试。
-- **标记和分类**：使用标签或类别来组织[测试用例](/zh-cn/wiki/test-case/)，从而更轻松地为不同的测试周期选择和执行相关集。
-- **维护**：定期查看和更新​​[测试用例](/zh-cn/wiki/test-case/)，以使它们及时了解软件更改。
+- **定义测试目标**：明确说明每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 旨在验证的内容。目标应该具体、可衡量并符合要求。
+- **设计[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)**：创建为实现测试目标而采取的测试操作的高级描述。
+- **编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：为每个场景制定详细的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，包括测试步骤、[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 和[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。使用结构化格式以保持一致性。
+- **将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 映射到要求**：通过将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 链接到其相应的要求来确保可追溯性。这有助于[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 和覆盖范围跟踪。
+- **审查和完善**：同行评审或演练可以帮助发现错误并提高[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的质量。
+- **版本控制**：维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的版本以管理随时间的变化。
+- **参数化**：在适用的情况下，使用参数使 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 可重用并支持数据驱动的测试。
+- **标记和分类**：使用标签或类别来组织[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，从而更轻松地为不同的测试周期选择和执行相关集。
+- **维护**：定期查看和更新​​[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以使它们及时了解软件更改。
 
 #### 执行测试用例涉及哪些步骤？
 
-在软件[测试自动化](/zh-cn/wiki/test-automation/)中执行[测试用例](/zh-cn/wiki/test-case/)通常涉及以下步骤：
+在软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)通常涉及以下步骤：
 
-1. **选择[测试用例](/zh-cn/wiki/test-case/)**：从[测试套件](/zh-cn/wiki/test-suite/)中识别需要执行的[测试用例](/zh-cn/wiki/test-case/)。
-2. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保为[测试环境](/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
-3. **初始化[测试数据](/zh-cn/wiki/test-data/)**：加载或创建执行[测试用例](/zh-cn/wiki/test-case/)所需的[测试数据](/zh-cn/wiki/test-data/)。
-4. **运行测试**：使用自动化工具或框架执行[测试用例](/zh-cn/wiki/test-case/)。这可能涉及运行脚本或一组命令。
-
-```
-    automationTool.runTestCase(testCaseId);
-```
-5. **监视执行**：观察[测试执行](/zh-cn/wiki/test-execution/) 以确保其按预期进行。这可能是自动的或需要人工监督。
-6. **验证结果**：对照[预期结果](/zh-cn/wiki/expected-result/) 检查实际结果，以确定[测试用例](/zh-cn/wiki/test-case/) 是否通过或失败。
-7. **日志结果**：记录[测试执行](/zh-cn/wiki/test-execution/) 的结果，包括任何屏幕截图、日志或错误消息。
-
-```
-    report.logResults(testCaseId, executionOutcome);
-```
-8. **清理**：将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
-9. **分析故障**：如果[测试用例](/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
-10. **报告**：编制[测试执行](/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
-11. **更新[测试用例](/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。
-1. **选择[测试用例](/zh-cn/wiki/test-case/)**：从[测试套件](/zh-cn/wiki/test-suite/)中识别需要执行的[测试用例](/zh-cn/wiki/test-case/)。
-2. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保为[测试环境](/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
-3. **初始化[测试数据](/zh-cn/wiki/test-data/)**：加载或创建执行[测试用例](/zh-cn/wiki/test-case/)所需的[测试数据](/zh-cn/wiki/test-data/)。
-4. **运行测试**：使用自动化工具或框架执行[测试用例](/zh-cn/wiki/test-case/)。这可能涉及运行脚本或一组命令。
+1. **选择[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：从[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)中识别需要执行的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+2. **设置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：确保为[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
+3. **初始化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：加载或创建执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)所需的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。
+4. **运行测试**：使用自动化工具或框架执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这可能涉及运行脚本或一组命令。
 
 ```
     automationTool.runTestCase(testCaseId);
 ```
+5. **监视执行**：观察[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 以确保其按预期进行。这可能是自动的或需要人工监督。
+6. **验证结果**：对照[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 检查实际结果，以确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是否通过或失败。
+7. **日志结果**：记录[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的结果，包括任何屏幕截图、日志或错误消息。
 
 ```
     report.logResults(testCaseId, executionOutcome);
 ```
-8. **清理**：将[测试环境](/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
-9. **分析故障**：如果[测试用例](/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
-10. **报告**：编制[测试执行](/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
-11. **更新[测试用例](/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。
+8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
+9. **分析故障**：如果[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
+10. **报告**：编制[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
+11. **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。
+1. **选择[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：从[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)中识别需要执行的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+2. **设置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：确保为[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。
+3. **初始化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：加载或创建执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)所需的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。
+4. **运行测试**：使用自动化工具或框架执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这可能涉及运行脚本或一组命令。
+
+```
+    automationTool.runTestCase(testCaseId);
+```
+
+```
+    report.logResults(testCaseId, executionOutcome);
+```
+8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
+9. **分析故障**：如果[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
+10. **报告**：编制[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
+11. **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。
 
 #### 如何确保测试用例涵盖所有可能的场景？
 
-确保[测试用例](/zh-cn/wiki/test-case/)覆盖所有可能的场景需要一种将彻底分析与系统测试技术相结合的战略方法：
+确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)覆盖所有可能的场景需要一种将彻底分析与系统测试技术相结合的战略方法：
 
 - **需求可追溯性**：将每个测试用例映射到特定需求或用户故事，以确保所有功能都经过测试。
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** ：将输入分为由软件同等对待的类，因此您可以测试每个类的一个代表，而不是测试所有值。
+- **[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)** ：将输入分为由软件同等对待的类，因此您可以测试每个类的一个代表，而不是测试所有值。
 - **边界值分析**：关注输入类边界的边缘情况，因为这些是常见的故障点。
-- **[决策表测试](/zh-cn/wiki/decision-table-testing/)** ：创建决策表，涵盖复杂业务逻辑的条件和操作的所有可能组合。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：测试状态相关系统中所有可能的状态和转换，以确保覆盖所有路径。
-- **[用例测试](/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：通过探索性会话补充结构化测试，以发现可能未预料到的场景。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
-- **测试审查和[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
-- **自动测试生成**：利用基于模型或代码分析生成测试用例的工具来查找可能被手动忽略的场景。 通过应用这些技术，您可以系统地确保您的[测试用例](/zh-cn/wiki/test-case/) 是全面的并涵盖所有可能的场景。
+- **[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)** ：创建决策表，涵盖复杂业务逻辑的条件和操作的所有可能组合。
+- **[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** ：测试状态相关系统中所有可能的状态和转换，以确保覆盖所有路径。
+- **[用例测试](https://inaodeng.com/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：通过探索性会话补充结构化测试，以发现可能未预料到的场景。
+- **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
+- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
+- **自动测试生成**：利用基于模型或代码分析生成测试用例的工具来查找可能被手动忽略的场景。 通过应用这些技术，您可以系统地确保您的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是全面的并涵盖所有可能的场景。
 
 - **需求可追溯性**：将每个测试用例映射到特定需求或用户故事，以确保所有功能都经过测试。
-- **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** ：将输入分为由软件同等对待的类，因此您可以测试每个类的一个代表，而不是测试所有值。
+- **[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)** ：将输入分为由软件同等对待的类，因此您可以测试每个类的一个代表，而不是测试所有值。
 - **边界值分析**：关注输入类边界的边缘情况，因为这些是常见的故障点。
-- **[决策表测试](/zh-cn/wiki/decision-table-testing/)** ：创建决策表，涵盖复杂业务逻辑的条件和操作的所有可能组合。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：测试状态相关系统中所有可能的状态和转换，以确保覆盖所有路径。
-- **[用例测试](/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：通过探索性会议补充结构化测试，以发现可能未预料到的场景。
-- **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
-- **测试审查和[[检查](/zh-cn/wiki/inspection/)](/zh-cn/wiki/[检查](/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
+- **[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)** ：创建决策表，涵盖复杂业务逻辑的条件和操作的所有可能组合。
+- **[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** ：测试状态相关系统中所有可能的状态和转换，以确保覆盖所有路径。
+- **[用例测试](https://inaodeng.com/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：通过探索性会议补充结构化测试，以发现可能未预料到的场景。
+- **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
+- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
 - **自动测试生成**：利用基于模型或代码分析生成测试用例的工具来查找可能被手动忽略的场景。
 
 #### 自动化在测试用例执行中的作用是什么？
 
-自动化通过实现[测试用例](/zh-cn/wiki/test-case/) 的**快速、一致和可重复**运行，在[测试用例](/zh-cn/wiki/test-case/) 执行中发挥**关键作用**。它显着**减少了手动工作**并**提高了效率**，允许在更短的时间内执行更多的测试。自动化[测试执行](/zh-cn/wiki/test-execution/)可以安排为**无人值守**运行，通常在非高峰时段运行，从而最大限度地提高资源利用率。
-  通过自动执行[测试用例](/zh-cn/wiki/test-case/)，团队可以确保每次都以**完全相同的方式**执行测试，从而最大限度地减少人为错误的风险并提高测试结果的**可靠性**。这对于 **[回归测试](/zh-cn/wiki/regression-testing/)** 尤其重要，在每次更改代码库后都需要重复运行同一组测试，以确保现有功能不会被破坏。
-  自动化[测试执行](/zh-cn/wiki/test-execution/)还通过提供有关代码更改影响的即时反馈来支持**持续集成/持续部署（CI/CD）**实践，从而实现**更快地识别和解决**缺陷。
-  此外，自动化允许**收集和分析[测试数据](/zh-cn/wiki/test-data/)**，以提供对[软件质量](/zh-cn/wiki/software-quality/) 和[测试覆盖率](/zh-cn/wiki/test-coverage/) 的深入了解。该数据可用于**提高测试有效性**并为有关软件发布的决策提供信息。
-  总之，[测试用例](/zh-cn/wiki/test-case/) 执行中的自动化是现代软件开发方法的**关键推动因素**，提供**速度、准确性和可操作的见解**，有助于交付高质量的软件产品。
+自动化通过实现[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的**快速、一致和可重复**运行，在[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 执行中发挥**关键作用**。它显着**减少了手动工作**并**提高了效率**，允许在更短的时间内执行更多的测试。自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)可以安排为**无人值守**运行，通常在非高峰时段运行，从而最大限度地提高资源利用率。
+  通过自动执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，团队可以确保每次都以**完全相同的方式**执行测试，从而最大限度地减少人为错误的风险并提高测试结果的**可靠性**。这对于 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 尤其重要，在每次更改代码库后都需要重复运行同一组测试，以确保现有功能不会被破坏。
+  自动化[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)还通过提供有关代码更改影响的即时反馈来支持**持续集成/持续部署（CI/CD）**实践，从而实现**更快地识别和解决**缺陷。
+  此外，自动化允许**收集和分析[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**，以提供对[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 和[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的深入了解。该数据可用于**提高测试有效性**并为有关软件发布的决策提供信息。
+  总之，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 执行中的自动化是现代软件开发方法的**关键推动因素**，提供**速度、准确性和可操作的见解**，有助于交付高质量的软件产品。
 
 #### 你如何处理测试用例失败？
 
-处理[测试用例](/zh-cn/wiki/test-case/) 故障涉及一种系统方法来识别、分析和解决导致测试失败的问题。这是一个简洁的指南：
+处理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 故障涉及一种系统方法来识别、分析和解决导致测试失败的问题。这是一个简洁的指南：
 
 1. **隔离**无法理解这是测试脚本问题还是应用程序中的缺陷。
 
@@ -221,7 +221,7 @@ order: 0
 
 9. **文件**失败和解决方案以供将来参考和改进测试套件。
 
-10. **沟通**与团队讨论故障及其对产品质量的影响。 使用自动化工具协助此过程，利用屏幕截图、视频录制和详细日志等功能来帮助进行故障分析。与问题跟踪系统集成以简化[缺陷管理](/zh-cn/wiki/defect-management/)。定期审查和重构[测试用例](/zh-cn/wiki/test-case/)以保持其有效性和可靠性。
+10. **沟通**与团队讨论故障及其对产品质量的影响。 使用自动化工具协助此过程，利用屏幕截图、视频录制和详细日志等功能来帮助进行故障分析。与问题跟踪系统集成以简化[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/)。定期审查和重构[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)以保持其有效性和可靠性。
 
 1. **隔离**无法理解这是测试脚本问题还是应用程序中的缺陷。
 
@@ -247,7 +247,7 @@ order: 0
 
 #### 测试用例管理有哪些流行的工具？
 
-**[测试用例管理](/zh-cn/wiki/test-case-management/)** 的热门工具包括：
+**[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)** 的热门工具包括：
 
 - **TestRail**：提供全面的测试用例管理，帮助组织测试工作并实时了解测试活动。
 - **Zephyr**：为测试管理提供端到端解决方案，包括高级分析和 DevOps 集成。
@@ -258,42 +258,42 @@ order: 0
 - **TestLodge**：一种简单的工具，可以轻松管理测试计划，而无需大型系统的复杂性。
 - **TestCaseLab**：专为需要简单、直观的平台来管理测试用例的 QA 工程师而设计。
 - **SpiraTest**：提供具有需求和缺陷跟踪的集成测试管理，以实现质量保证的整体方法。
-- **Testuff**：一款 SaaS 测试管理工具，注重简单性和易用性，具有视频录制和编辑功能。 每个工具都提供独特的功能和集成，因此**选择正确的工具**取决于您的特定项目需求、团队规模和现有工作流程。选择 [测试用例管理](/zh-cn/wiki/test-case-management/) 工具时，请考虑易用性、集成功能、报告功能和成本等因素。
+- **Testuff**：一款 SaaS 测试管理工具，注重简单性和易用性，具有视频录制和编辑功能。 每个工具都提供独特的功能和集成，因此**选择正确的工具**取决于您的特定项目需求、团队规模和现有工作流程。选择 [测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 工具时，请考虑易用性、集成功能、报告功能和成本等因素。
 
 #### 这些工具如何帮助管理测试用例？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 工具通过提供用于组织和存储[测试用例](/zh-cn/wiki/test-case/) 的**集中存储库** 来简化[测试用例管理](/zh-cn/wiki/test-case-management/)，从而更轻松地访问、编辑和管理它们。它们支持**版本控制**，确保团队使用最新的[测试用例](/zh-cn/wiki/test-case/)，并可以跟踪随时间的变化。
-  借助**批量编辑**功能，这些工具可以跨多个[测试用例](/zh-cn/wiki/test-case/)进行快速更新，从而节省时间并减少手动工作量。它们通过允许自动调度和运行[测试用例](/zh-cn/wiki/test-case/)来促进**[测试执行](/zh-cn/wiki/test-execution/)**，通常能够并行执行多个测试，从而加快测试过程。
-  **可追溯性**功能将[测试用例](/zh-cn/wiki/test-case/)链接到需求或用户故事，确保测试涵盖应用程序的所有方面。当发生更改时，这也有助于[影响分析](/zh-cn/wiki/impact-analysis/)。 [测试自动化](/zh-cn/wiki/test-automation/) 工具提供**报告和分析**，深入了解[测试覆盖率](/zh-cn/wiki/test-coverage/)、通过/失败率以及其他有助于做出明智决策的关键指标。
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具通过提供用于组织和存储[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的**集中存储库** 来简化[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)，从而更轻松地访问、编辑和管理它们。它们支持**版本控制**，确保团队使用最新的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，并可以跟踪随时间的变化。
+  借助**批量编辑**功能，这些工具可以跨多个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)进行快速更新，从而节省时间并减少手动工作量。它们通过允许自动调度和运行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)来促进**[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)**，通常能够并行执行多个测试，从而加快测试过程。
+  **可追溯性**功能将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)链接到需求或用户故事，确保测试涵盖应用程序的所有方面。当发生更改时，这也有助于[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工具提供**报告和分析**，深入了解[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)、通过/失败率以及其他有助于做出明智决策的关键指标。
   集成功能使这些工具能够与持续集成/持续部署 (CI/CD) 管道、问题跟踪系统以及软件开发生命周期中的其他工具无缝协作，从而创建**统一的工作流程**。
-  通过自动化重复任务并促进协作，这些工具有助于维护**高效且有组织的[测试用例管理](/zh-cn/wiki/test-case-management/)**流程，最终有助于更高的[软件质量](/zh-cn/wiki/software-quality/)和更高效的发布周期。
+  通过自动化重复任务并促进协作，这些工具有助于维护**高效且有组织的[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)**流程，最终有助于更高的[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)和更高效的发布周期。
 
 #### 测试用例管理工具需要具备哪些功能？
 
-选择 **[测试用例管理](/zh-cn/wiki/test-case-management/) (TCM)** 工具时，请考虑以下功能：
+选择 **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM)** 工具时，请考虑以下功能：
 
-- **集成能力**：确保该工具与各种无缝集成 **版本控制系统** , **[bug](/zh-cn/wiki/bug/) 跟踪工具** , 和 **持续集成**服务。
+- **集成能力**：确保该工具与各种无缝集成 **版本控制系统** , **[bug](https://inaodeng.com/zh-cn/wiki/bug/) 跟踪工具** , 和 **持续集成**服务。
 
 - **自定义**：寻找自定义字段、工作流程和用户角色的选项，以满足您团队的特定需求。
 - **可追溯性**：该工具应提供从需求到测试用例和缺陷的可追溯性，以确保覆盖范围并促进影响分析。
 - **报告和分析**：测试执行结果、进度跟踪和质量指标的高质量报告功能至关重要。
 - **协作**：支持团队协作的功能（例如共享测试步骤、评论和通知）可以提高工作效率。
-- **[测试执行](/zh-cn/wiki/test-execution/) 管理**：管理测试运行、配置和环境的能力有助于有效地组织和执行测试。
+- **[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 管理**：管理测试运行、配置和环境的能力有助于有效地组织和执行测试。
 - **版本控制**：测试用例应该是版本控制的，允许您跟踪更改并维护修改历史记录。
-- **可重用[测试用例](/zh-cn/wiki/test-case/)组件**：支持创建可重用测试步骤或数据集可以节省时间并提高一致性。
+- **可重用[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)组件**：支持创建可重用测试步骤或数据集可以节省时间并提高一致性。
 - **访问控制**：强大的权限设置来控制谁可以查看、编辑或删除测试用例和结果。
 - **可扩展性**：该工具应根据您的项目和团队规模进行扩展，而不会降低性能。
 - **搜索和过滤**：高级搜索和过滤功能，可快速查找和组织测试用例。
-- **[API](/zh-cn/wiki/api/) Access**：用于自动化并与其他系统或自定义工具集成的 API。
+- **[API](https://inaodeng.com/zh-cn/wiki/api/) Access**：用于自动化并与其他系统或自定义工具集成的 API。
 - **用户友好的界面**：直观的 UI/UX，可缩短学习曲线并提高团队成员的采用率。 选择适合您团队工作流程、提高效率并提供富有洞察力的数据来指导决策的 TCM 工具。
 
-- **集成能力**：确保该工具与各种无缝集成 **版本控制系统** , **[bug](/zh-cn/wiki/bug/) 跟踪工具** , 和 **持续集成**服务。
+- **集成能力**：确保该工具与各种无缝集成 **版本控制系统** , **[bug](https://inaodeng.com/zh-cn/wiki/bug/) 跟踪工具** , 和 **持续集成**服务。
 
 #### 如何将测试用例管理工具与其他测试工具集成？
 
-将 [测试用例管理](/zh-cn/wiki/test-case-management/) (TCM) 工具与其他测试工具集成涉及建立连接和工作流程，以实现无缝数据交换和流程自动化。这是一个简洁的指南：
+将 [测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) (TCM) 工具与其他测试工具集成涉及建立连接和工作流程，以实现无缝数据交换和流程自动化。这是一个简洁的指南：
 
-1. **[API](/zh-cn/wiki/api/)集成**：使用TCM工具的[API](/zh-cn/wiki/api/)来连接自动化框架（如[selenium](/zh-cn/wiki/selenium/)、Appium）、持续集成服务器（Jenkins、Bamboo）、版本控制系统（Git、SVN）和[bug](/zh-cn/wiki/bug/)跟踪工具（[jira](/zh-cn/wiki/jira/)、Bugzilla）。这允许触发测试运行、更新测试结果并自动记录缺陷。
+1. **[API](https://inaodeng.com/zh-cn/wiki/api/)集成**：使用TCM工具的[API](https://inaodeng.com/zh-cn/wiki/api/)来连接自动化框架（如[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、Appium）、持续集成服务器（Jenkins、Bamboo）、版本控制系统（Git、SVN）和[bug](https://inaodeng.com/zh-cn/wiki/bug/)跟踪工具（[jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla）。这允许触发测试运行、更新测试结果并自动记录缺陷。
 
 ```
     // Example pseudo-code for API call to update test case result
@@ -302,10 +302,10 @@ order: 0
 2. **Webhooks**：配置Webhook以通知TCM工具其他系统中的事件，例如CI服务器中的新构建完成，提示TCM启动测试运行。
 3. **插件和附加组件**：利用流行工具的可用插件来促进集成。例如，Jenkins 插件可以在构建后将测试结果发送到 TCM 工具。
 4. **自定义脚本**：编写自定义脚本来弥补无法直接集成的工具之间的差距。这些脚本可以解析测试结果并将其与TCM工具同步。
-5. **通用数据格式**：导出和导入[测试用例](/zh-cn/wiki/test-case/)，并以XML或JSON等通用格式生成结果，以确保不同工具之间的兼容性。
-6. **报告仪表板**：集成报告工具或仪表板以聚合来自 TCM 和其他来源的数据，提供测试状态的统一视图。 通过将 TCM 工具与其他测试工具集成，您可以创建一个高效的 [自动化测试](/zh-cn/wiki/automated-testing/) 生态系统，该生态系统可以增强协作、减少手动工作量并提高测试过程的可见性。
+5. **通用数据格式**：导出和导入[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，并以XML或JSON等通用格式生成结果，以确保不同工具之间的兼容性。
+6. **报告仪表板**：集成报告工具或仪表板以聚合来自 TCM 和其他来源的数据，提供测试状态的统一视图。 通过将 TCM 工具与其他测试工具集成，您可以创建一个高效的 [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 生态系统，该生态系统可以增强协作、减少手动工作量并提高测试过程的可见性。
 
-1. **[API](/zh-cn/wiki/api/)集成**：使用TCM工具的[API](/zh-cn/wiki/api/)来连接自动化框架（如[selenium](/zh-cn/wiki/selenium/)、Appium）、持续集成服务器（Jenkins、Bamboo）、版本控制系统（Git、SVN）和[bug](/zh-cn/wiki/bug/)跟踪工具（[jira](/zh-cn/wiki/jira/)、Bugzilla）。这允许触发测试运行、更新测试结果并自动记录缺陷。
+1. **[API](https://inaodeng.com/zh-cn/wiki/api/)集成**：使用TCM工具的[API](https://inaodeng.com/zh-cn/wiki/api/)来连接自动化框架（如[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、Appium）、持续集成服务器（Jenkins、Bamboo）、版本控制系统（Git、SVN）和[bug](https://inaodeng.com/zh-cn/wiki/bug/)跟踪工具（[jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla）。这允许触发测试运行、更新测试结果并自动记录缺陷。
 
 ```
     // Example pseudo-code for API call to update test case result
@@ -314,21 +314,21 @@ order: 0
 
 #### 人工智能和机器学习在测试用例管理中的作用是什么？
 
-人工智能和机器学习 (ML) 正在通过提高效率、准确性和预测能力来改变 **[测试用例管理](/zh-cn/wiki/test-case-management/)**。这些技术有助于：
+人工智能和机器学习 (ML) 正在通过提高效率、准确性和预测能力来改变 **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)**。这些技术有助于：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**：人工智能算法分析历史数据以预测哪些测试用例更有可能检测到新缺陷，从而优化测试工作。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：人工智能算法分析历史数据以预测哪些测试用例更有可能检测到新缺陷，从而优化测试工作。
 - **识别冗余**：机器学习可以检测相似或重复的测试用例，有助于简化测试套件并减少维护。
 - **预测结果**：通过从过去的测试结果中学习，人工智能可以预测失败的可能性，从而可以采取先发制人的行动。
-- **自动化[测试用例](/zh-cn/wiki/test-case/)生成**：人工智能可以根据需求和用户故事生成测试用例，节省时间并确保全面覆盖。
-- **优化[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：ML 模型建议人类测试人员可能错过的其他测试场景，从而提高覆盖率。
+- **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)生成**：人工智能可以根据需求和用户故事生成测试用例，节省时间并确保全面覆盖。
+- **优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：ML 模型建议人类测试人员可能错过的其他测试场景，从而提高覆盖率。
 - **增强可追溯性**：人工智能工具链接需求、代码更改和测试用例，提供更好的可追溯性和影响分析。
-- **不稳定检测**：人工智能通过分析间歇性故障的模式和趋势来识别不稳定的测试，然后可以解决这些问题以提高测试可靠性。 将人工智能和机器学习集成到[测试用例管理](/zh-cn/wiki/test-case-management/)工具中需要数据驱动的方法和持续学习，以适应不断发展的软件和测试环境。随着这些技术的成熟，它们将成为[测试管理](/zh-cn/wiki/test-management/)流程中不可或缺的一部分，提供更复杂的见解并进一步自动化日常任务。
+- **不稳定检测**：人工智能通过分析间歇性故障的模式和趋势来识别不稳定的测试，然后可以解决这些问题以提高测试可靠性。 将人工智能和机器学习集成到[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)工具中需要数据驱动的方法和持续学习，以适应不断发展的软件和测试环境。随着这些技术的成熟，它们将成为[测试管理](https://inaodeng.com/zh-cn/wiki/test-management/)流程中不可或缺的一部分，提供更复杂的见解并进一步自动化日常任务。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**：人工智能算法分析历史数据以预测哪些测试用例更有可能检测到新缺陷，从而优化测试工作。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：人工智能算法分析历史数据以预测哪些测试用例更有可能检测到新缺陷，从而优化测试工作。
 - **识别冗余**：机器学习可以检测相似或重复的测试用例，有助于简化测试套件并减少维护。
 - **预测结果**：通过从过去的测试结果中学习，人工智能可以预测失败的可能性，从而可以采取先发制人的行动。
-- **自动化[测试用例](/zh-cn/wiki/test-case/)生成**：人工智能可以根据需求和用户故事生成测试用例，节省时间并确保全面覆盖。
-- **优化[测试覆盖率](/zh-cn/wiki/test-coverage/)**：机器学习模型建议人类测试人员可能错过的其他测试场景，从而提高覆盖率。
+- **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)生成**：人工智能可以根据需求和用户故事生成测试用例，节省时间并确保全面覆盖。
+- **优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：机器学习模型建议人类测试人员可能错过的其他测试场景，从而提高覆盖率。
 - **增强可追溯性**：人工智能工具链接需求、代码更改和测试用例，提供更好的可追溯性和影响分析。
 - **不稳定检测**：人工智能通过分析间歇性故障的模式和趋势来识别不稳定的测试，然后可以解决这些问题以提高测试可靠性。
 
@@ -336,9 +336,9 @@ order: 0
 
 #### 测试用例管理的最佳实践有哪些？
 
-[测试用例管理](/zh-cn/wiki/test-case-management/) 的最佳实践包括：
+[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 的最佳实践包括：
 
-- **组织[测试用例](/zh-cn/wiki/test-case/)**分为逻辑类别或套件，以便于导航和维护。使用标记或标签来促进过滤和选择。
+- **组织[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**分为逻辑类别或套件，以便于导航和维护。使用标记或标签来促进过滤和选择。
 
 - **定义明确的目标**每个测试用例，以确保它们的重点和价值。目标应与特定需求或用户故事相关联。
 
@@ -356,9 +356,9 @@ order: 0
 
 - **在适当的情况下实现自动化**以节省时间并减少人为错误。但是，请有选择性地仅对那些将从自动化中受益最多的测试用例进行自动化。
 
-- **记录假设和先决条件**确保执行或审查测试用例的任何人都清楚测试用例的上下文。 通过坚持这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高测试过程的效率和可靠性，从而获得更高质量的软件和更可预测的发布周期。
+- **记录假设和先决条件**确保执行或审查测试用例的任何人都清楚测试用例的上下文。 通过坚持这些实践，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以提高测试过程的效率和可靠性，从而获得更高质量的软件和更可预测的发布周期。
 
-- **组织[测试用例](/zh-cn/wiki/test-case/)**分为逻辑类别或套件，以便于导航和维护。使用标记或标签来促进过滤和选择。
+- **组织[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**分为逻辑类别或套件，以便于导航和维护。使用标记或标签来促进过滤和选择。
 
 - **定义明确的目标**每个测试用例，以确保它们的重点和价值。目标应与特定需求或用户故事相关联。
 
@@ -380,7 +380,7 @@ order: 0
 
 #### 您如何确定测试用例的优先级？
 
-优先考虑 [测试用例](/zh-cn/wiki/test-case/) 对于优化测试工作并首先关注最关键的方面至关重要。这是一个简洁的指南：
+优先考虑 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 对于优化测试工作并首先关注最关键的方面至关重要。这是一个简洁的指南：
 
 - **基于风险的优先级**：根据失败的影响和可能性为每个测试用例分配风险级别。高风险地区应首先进行测试。
 - **业务价值**：优先考虑涵盖具有最高业务重要性或客户可见性的功能的测试。
@@ -389,17 +389,17 @@ order: 0
 - **更改频率**：关注应用程序中经常更改的区域，因为这些区域更容易出现回归。
 - **容易出现缺陷的区域**：优先测试历史上存在更多缺陷的应用程序部分。
 - **用户流量**：根据接收最多用户流量的应用程序区域确定测试的优先级。
-- **[测试用例](/zh-cn/wiki/test-case/) 有效性**：使用历史数据来识别过去在发现缺陷方面有效的测试用例。 综合使用这些因素来对您的[测试用例](/zh-cn/wiki/test-case/) 进行评分和排名。工具可以通过与问题跟踪和版本控制系统集成来提取相关数据点来自动化此过程。请记住随着项目情况的变化审查和调整优先级。
+- **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 有效性**：使用历史数据来识别过去在发现缺陷方面有效的测试用例。 综合使用这些因素来对您的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 进行评分和排名。工具可以通过与问题跟踪和版本控制系统集成来提取相关数据点来自动化此过程。请记住随着项目情况的变化审查和调整优先级。
 
 #### 随着时间的推移，可以使用哪些策略来维护测试用例？
 
-随着时间的推移维护[测试用例](/zh-cn/wiki/test-case/)需要**战略方法**来确保它们保持有效和相关。以下是需要考虑的策略：
+随着时间的推移维护[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)需要**战略方法**来确保它们保持有效和相关。以下是需要考虑的策略：
 
 - **定期审查**：安排定期审查测试用例以验证其相关性和准确性。让利益相关者参与进来，提出不同的观点。
 - **重构**：不断重构测试用例以提高清晰度并降低复杂性。这包括更新命名约定、删除冗余和优化测试步骤。
 - **版本控制**：使用版本控制系统来跟踪更改并维护测试用例演变的历史记录。
 
-git commit -m“为了清晰起见，重构登录[测试用例](/zh-cn/wiki/test-case/)”
+git commit -m“为了清晰起见，重构登录[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)”
 
 - **Parameterization**: Use parameterized tests to handle multiple data sets, making test cases more flexible and reducing the number of test cases needed.
 - **Test Case Categorization**: Group test cases by functionality, priority, or other relevant criteria to simplify management and execution.
@@ -410,28 +410,28 @@ git commit -m“为了清晰起见，重构登录[测试用例](/zh-cn/wiki/test
 - **文档**：使文档与测试用例更改保持同步，以确保目的和步骤始终清晰。
 - **持续集成**：将测试用例集成到 CI/CD 管道中，以确保它们定期执行并与代码库保持同步。
 - **监控**：使用仪表板和报告工具来监控测试用例的有效性并确定需要维护的区域。
-- **反馈循环**：与开发团队建立反馈循环，以随时了解可能影响测试用例的代码更改。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[测试用例](/zh-cn/wiki/test-case/) 得到有效维护，从而在软件开发生命周期中提供持续的价值。
+- **反馈循环**：与开发团队建立反馈循环，以随时了解可能影响测试用例的代码更改。 通过实施这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 得到有效维护，从而在软件开发生命周期中提供持续的价值。
 
 #### 您如何管理不同环境和平台的测试用例？
 
-跨不同环境和平台管理[测试用例](/zh-cn/wiki/test-case/)需要采用战略方法来确保一致性和覆盖范围。以下是有效管理它们的方法：
+跨不同环境和平台管理[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)需要采用战略方法来确保一致性和覆盖范围。以下是有效管理它们的方法：
 
-- **参数化[测试用例](/zh-cn/wiki/test-case/)**：使用环境特定数据的变量，允许相同的测试在多个环境中运行而无需修改。
+- **参数化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：使用环境特定数据的变量，允许相同的测试在多个环境中运行而无需修改。
 
 ```
     const url = process.env.TEST_URL;
     const userCredentials = { username: process.env.USER_NAME, password: process.env.PASSWORD };
 ```
-- **标记**：将标记分配给[测试用例](/zh-cn/wiki/test-case/) 以过滤和运行适用于特定环境或平台的子集。
-- **版本控制**：将[测试用例](/zh-cn/wiki/test-case/)存储在版本控制系统中，必要时针对不同环境进行分支或分叉。
+- **标记**：将标记分配给[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 以过滤和运行适用于特定环境或平台的子集。
+- **版本控制**：将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)存储在版本控制系统中，必要时针对不同环境进行分支或分叉。
 - **环境抽象**：创建一个抽象层来处理特定于环境的配置，允许测试与其交互，而不是直接与环境交互。
-- **持续集成 (CI)**：将 [测试用例](/zh-cn/wiki/test-case/) 与 CI 管道集成，触发目标环境的适当测试。
-- **容器化**：使用容器（例如Docker）封装[测试环境](/zh-cn/wiki/test-environment/)，确保跨平台的一致性。
-- **跨平台工具**：利用支持多个平台的工具（例如，用于 Web 的 [selenium](/zh-cn/wiki/selenium/)，用于移动设备的 Appium）来维护统一的方法。
-- **报告**：确保[测试报告](/zh-cn/wiki/test-report/) 包含环境和平台详细信息以实现可追溯性。
-- **维护**：定期审查和更新[测试用例](/zh-cn/wiki/test-case/)，以适应不断变化的环境和平台。 通过实施这些实践，您可以维护一个强大的[测试用例](/zh-cn/wiki/test-case/) 套件，该套件灵活且可适应各种测试需求。
+- **持续集成 (CI)**：将 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 与 CI 管道集成，触发目标环境的适当测试。
+- **容器化**：使用容器（例如Docker）封装[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，确保跨平台的一致性。
+- **跨平台工具**：利用支持多个平台的工具（例如，用于 Web 的 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)，用于移动设备的 Appium）来维护统一的方法。
+- **报告**：确保[测试报告](https://inaodeng.com/zh-cn/wiki/test-report/) 包含环境和平台详细信息以实现可追溯性。
+- **维护**：定期审查和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以适应不断变化的环境和平台。 通过实施这些实践，您可以维护一个强大的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 套件，该套件灵活且可适应各种测试需求。
 
-- **参数化[测试用例](/zh-cn/wiki/test-case/)**：使用环境特定数据的变量，允许相同的测试在多个环境中运行而无需修改。
+- **参数化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：使用环境特定数据的变量，允许相同的测试在多个环境中运行而无需修改。
 
 ```
     const url = process.env.TEST_URL;
@@ -440,12 +440,12 @@ git commit -m“为了清晰起见，重构登录[测试用例](/zh-cn/wiki/test
 
 #### 测试用例管理如何与业务目标保持一致？
 
-将 **[测试用例管理](/zh-cn/wiki/test-case-management/)** 与业务目标保持一致涉及确保 [测试用例](/zh-cn/wiki/test-case/) 反映与业务目标相关的优先级和风险。以下是实现这种对齐的方法：
+将 **[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/)** 与业务目标保持一致涉及确保 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 反映与业务目标相关的优先级和风险。以下是实现这种对齐的方法：
 
 - **识别关键业务流程**：专注于为对业务成功最关键的功能和流程创建测试用例。
 - **基于风险的优先级**：根据测试用例失败时给业务带来的风险来确定测试用例的优先级。高风险地区应进行更彻底的检测。
-- **将[测试用例](/zh-cn/wiki/test-case/)映射到需求**：确保每个业务需求都有对应的测试用例，保证业务需求的覆盖。
+- **将[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)映射到需求**：确保每个业务需求都有对应的测试用例，保证业务需求的覆盖。
 - **反馈循环**：与利益相关者建立反馈循环，根据不断变化的业务目标不断完善测试用例。
 - **性能指标**：使用与业务相关的指标来衡量测试工作的有效性，例如客户满意度、缺陷泄漏和上市时间。
 - **注重投资回报率的方法**：根据投资回报优化测试用例执行，重点关注以最少的努力提供最大价值的测试。
-- **持续改进**：定期审查和更新测试用例，以适应新功能、业务方向的变化或市场状况。 通过将这些实践集成到您的[测试用例管理](/zh-cn/wiki/test-case-management/) 流程中，您可以确保测试工作不仅在技术上合理，而且还可以为业务提供战略价值。
+- **持续改进**：定期审查和更新测试用例，以适应新功能、业务方向的变化或市场状况。 通过将这些实践集成到您的[测试用例管理](https://inaodeng.com/zh-cn/wiki/test-case-management/) 流程中，您可以确保测试工作不仅在技术上合理，而且还可以为业务提供战略价值。

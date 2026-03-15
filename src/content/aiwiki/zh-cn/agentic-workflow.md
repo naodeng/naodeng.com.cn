@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [ai-agent](/zh-cn/AIWiki/ai-agent/)
-- [human-in-the-loop](/zh-cn/AIWiki/human-in-the-loop/)
-- [model-context-protocol-mcp](/zh-cn/AIWiki/model-context-protocol-mcp/)
+- [ai-agent](https://inaodeng.com/zh-cn/AIWiki/ai-agent/)
+- [human-in-the-loop](https://inaodeng.com/zh-cn/AIWiki/human-in-the-loop/)
+- [model-context-protocol-mcp](https://inaodeng.com/zh-cn/AIWiki/model-context-protocol-mcp/)
 
 ### 术语元数据
 

@@ -128,10 +128,10 @@ A: Track fix success rate, repeated-defect rate, and iteration-to-resolution tim
 
 ### Related Terms
 
-- [artifacts](/en/AIWiki/artifacts/)
-- [verification-artifacts](/en/AIWiki/verification-artifacts/)
-- [agent-evals](/en/AIWiki/agent-evals/)
-- [trace-grading](/en/AIWiki/trace-grading/)
+- [artifacts](https://inaodeng.com/en/AIWiki/artifacts/)
+- [verification-artifacts](https://inaodeng.com/en/AIWiki/verification-artifacts/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
 
 ### External References
 

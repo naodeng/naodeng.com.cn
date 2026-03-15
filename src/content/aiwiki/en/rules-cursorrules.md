@@ -114,19 +114,19 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [rule](/en/AIWiki/rule/)
-- [skill](/en/AIWiki/skill/)
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
+- [rule](https://inaodeng.com/en/AIWiki/rule/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 
 ## Related Resources
 
 ### Related Terms
 
-- [rule](/en/AIWiki/rule/)
-- [skill](/en/AIWiki/skill/)
-- [ai-agent](/en/AIWiki/ai-agent/)
-- [prompt-driven-development](/en/AIWiki/prompt-driven-development/)
+- [rule](https://inaodeng.com/en/AIWiki/rule/)
+- [skill](https://inaodeng.com/en/AIWiki/skill/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
+- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 
 ### Term Metadata
 

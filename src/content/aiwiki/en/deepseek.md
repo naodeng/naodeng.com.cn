@@ -113,9 +113,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [large-language-models-llms](/en/AIWiki/large-language-models-llms/)
-- [small-language-models-slms](/en/AIWiki/small-language-models-slms/)
-- [qwen](/en/AIWiki/qwen/)
+- [large-language-models-llms](https://inaodeng.com/en/AIWiki/large-language-models-llms/)
+- [small-language-models-slms](https://inaodeng.com/en/AIWiki/small-language-models-slms/)
+- [qwen](https://inaodeng.com/en/AIWiki/qwen/)
 
 ### Term Metadata
 

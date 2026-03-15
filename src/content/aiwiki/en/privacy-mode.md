@@ -128,10 +128,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
-- [memory-scope](/en/AIWiki/memory-scope/)
-- [rules-and-memories](/en/AIWiki/rules-and-memories/)
-- [remote-control](/en/AIWiki/remote-control/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
+- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
+- [rules-and-memories](https://inaodeng.com/en/AIWiki/rules-and-memories/)
+- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
 
 ### External References
 

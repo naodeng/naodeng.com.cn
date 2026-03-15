@@ -47,7 +47,7 @@ order: 0
 
 ## 相关术语
 
-- [代码覆盖率](/zh-cn/wiki/code-coverage/)
+- [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)
 
 ## 关于测试覆盖率的问题？
 
@@ -55,33 +55,33 @@ order: 0
 
 #### 软件测试中的测试覆盖率是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的[测试覆盖率](/zh-cn/wiki/test-coverage/) 指的是[测试套件](/zh-cn/wiki/test-suite/) 评估被测应用程序的程度。它是一种通过考虑各种标准（例如功能数量、代码路径或测试检查的条件）来量化执行的测试量的指标。 **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 专门衡量测试期间执行了多少代码库，而 **[测试覆盖率](/zh-cn/wiki/test-coverage/)** 涵盖了更广泛的视角，包括需求、风险和用户场景。
-  为了确保 [测试覆盖率](/zh-cn/wiki/test-coverage/) 是全面的，将测试映射到需求并识别关键功能可能未得到充分测试的任何差距至关重要。这涉及彻底分析应用程序以确定所有可能的[用例](/zh-cn/wiki/use-case/)，然后编写测试来执行这些场景。
-  **覆盖率指标**可作为衡量 [测试套件](/zh-cn/wiki/test-suite/) 有效性的指南。常见指标包括**函数覆盖率**、**语句覆盖率**、**分支覆盖率**和**条件覆盖率**，每个指标侧重于代码和应用程​​序行为的不同方面。
-  使用工具来测量[测试覆盖率](/zh-cn/wiki/test-coverage/)有助于自动化该过程，并为缺乏足够测试的区域提供视觉反馈。 Istanbul、JaCoCo 或 Clover 等工具是与持续集成管道集成的流行选择，可增强 [测试自动化](/zh-cn/wiki/test-automation/) 工程师的反馈循环。
-  为了随着时间的推移保持高[测试覆盖率](/zh-cn/wiki/test-coverage/)，请定期审查和更新测试，以适应新功能、代码更改和不断变化的用户需求。避免常见的陷阱，例如以牺牲测试质量为代价追求 100% 覆盖率，或者忽略测试不太明显但关键的系统行为。战略性地增加[测试覆盖率](/zh-cn/wiki/test-coverage/)涉及优先考虑高风险领域、重构测试以获得更好的[可维护性](/zh-cn/wiki/maintainability/)以及持续监控覆盖率指标以深入了解潜在的改进。
+[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 指的是[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 评估被测应用程序的程度。它是一种通过考虑各种标准（例如功能数量、代码路径或测试检查的条件）来量化执行的测试量的指标。 **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)** 专门衡量测试期间执行了多少代码库，而 **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 涵盖了更广泛的视角，包括需求、风险和用户场景。
+  为了确保 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 是全面的，将测试映射到需求并识别关键功能可能未得到充分测试的任何差距至关重要。这涉及彻底分析应用程序以确定所有可能的[用例](https://inaodeng.com/zh-cn/wiki/use-case/)，然后编写测试来执行这些场景。
+  **覆盖率指标**可作为衡量 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 有效性的指南。常见指标包括**函数覆盖率**、**语句覆盖率**、**分支覆盖率**和**条件覆盖率**，每个指标侧重于代码和应用程​​序行为的不同方面。
+  使用工具来测量[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)有助于自动化该过程，并为缺乏足够测试的区域提供视觉反馈。 Istanbul、JaCoCo 或 Clover 等工具是与持续集成管道集成的流行选择，可增强 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师的反馈循环。
+  为了随着时间的推移保持高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，请定期审查和更新测试，以适应新功能、代码更改和不断变化的用户需求。避免常见的陷阱，例如以牺牲测试质量为代价追求 100% 覆盖率，或者忽略测试不太明显但关键的系统行为。战略性地增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)涉及优先考虑高风险领域、重构测试以获得更好的[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)以及持续监控覆盖率指标以深入了解潜在的改进。
 
 #### 为什么测试覆盖率在软件测试中很重要？
 
-[测试覆盖率](/zh-cn/wiki/test-coverage/) 对于识别代码库中未经测试的部分至关重要，确保检查每个功能并尽早发现潜在缺陷。它作为衡量 [测试套件](/zh-cn/wiki/test-suite/) 覆盖其要验证的代码的有效性的指标。高[测试覆盖率](/zh-cn/wiki/test-coverage/) 可以降低[bugs](/zh-cn/wiki/bug/) 投入生产的风险，从而实现更稳定的版本并增强对软件可靠性的信心。
-  虽然争取 100% [测试覆盖率](/zh-cn/wiki/test-coverage/) 通常是不切实际的，但争取高百分比可以确保关键路径和边缘情况不会被忽视。它还有助于随着时间的推移保持代码质量，因为它要求测试与代码更改一起更新，从而防止回归。
-  [测试覆盖率](/zh-cn/wiki/test-coverage/) 也是重构决策中的一个关键因素，因为它提供了一个安全网，可以在不引入新的[bugs](/zh-cn/wiki/bug/) 的情况下促进更改。它可以突出显示代码中过于复杂或未充分利用的区域，指导开发人员进行改进和优化。
-  在持续集成环境中，可以随着时间的推移跟踪[测试覆盖率](/zh-cn/wiki/test-coverage/) 指标以监控代码库的运行状况。明智地解释这些指标非常重要，重点关注测试的质量而不仅仅是数量。覆盖范围应与其他质量实践（例如代码审查、静态分析和[手动测试](/zh-cn/wiki/manual-testing/)）相补充，以确保全面的测试策略。
+[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 对于识别代码库中未经测试的部分至关重要，确保检查每个功能并尽早发现潜在缺陷。它作为衡量 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 覆盖其要验证的代码的有效性的指标。高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 可以降低[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 投入生产的风险，从而实现更稳定的版本并增强对软件可靠性的信心。
+  虽然争取 100% [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 通常是不切实际的，但争取高百分比可以确保关键路径和边缘情况不会被忽视。它还有助于随着时间的推移保持代码质量，因为它要求测试与代码更改一起更新，从而防止回归。
+  [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 也是重构决策中的一个关键因素，因为它提供了一个安全网，可以在不引入新的[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的情况下促进更改。它可以突出显示代码中过于复杂或未充分利用的区域，指导开发人员进行改进和优化。
+  在持续集成环境中，可以随着时间的推移跟踪[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 指标以监控代码库的运行状况。明智地解释这些指标非常重要，重点关注测试的质量而不仅仅是数量。覆盖范围应与其他质量实践（例如代码审查、静态分析和[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)）相补充，以确保全面的测试策略。
 
 #### 高测试覆盖率的主要好处是什么？
 
-高[测试覆盖率](/zh-cn/wiki/test-coverage/) 具有几个主要优点：
+高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 具有几个主要优点：
 
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：随着测试的代码库越来越多，在开发周期的早期捕获[bugs](/zh-cn/wiki/bug/) 的机会就更大，从而减少以后修复它们的成本和工作量。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：随着测试的代码库越来越多，在开发周期的早期捕获[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的机会就更大，从而减少以后修复它们的成本和工作量。
 - **重构信心**：高覆盖率提供了一个安全网，有利于信心十足的重构。工程师可以进行更改，因为他们知道测试会发现任何意外后果。
 - **文档**：测试充当文档的一种形式，显示系统的行为方式。高覆盖率意味着更多的行为被记录下来。
 - **设计反馈**：为高覆盖率编写测试通常会突出设计问题，例如紧密耦合或缺乏内聚力，从而改进软件设计。
 - **风险缓解**：它降低了回归风险，因为更改后会验证更多功能。
 - **利益相关者信心**：它可以增强利益相关者对应用程序经过彻底测试且可靠的信心。
 - **持续集成 (CI) 效率**：在 CI 管道中，高覆盖率可确保每次集成时都会检查大多数代码路径，从而使管道更加健壮。
-- **代码质量**：它通常与更高的代码质量相关，因为编写测试所需的规则可以带来更好的编码实践。 请记住，虽然高 [测试覆盖率](/zh-cn/wiki/test-coverage/) 是有益的，但它本身并不是目的。目标是创建一套有意义的测试，为软件的行为提供价值和信心。
+- **代码质量**：它通常与更高的代码质量相关，因为编写测试所需的规则可以带来更好的编码实践。 请记住，虽然高 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 是有益的，但它本身并不是目的。目标是创建一套有意义的测试，为软件的行为提供价值和信心。
 
-- **早期[Bug](/zh-cn/wiki/bug/) 检测**：随着测试的代码库增多，在开发周期的早期捕获[bugs](/zh-cn/wiki/bug/) 的机会就更大，从而减少了以后修复它们的成本和工作量。
+- **早期[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 检测**：随着测试的代码库增多，在开发周期的早期捕获[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 的机会就更大，从而减少了以后修复它们的成本和工作量。
 - **重构信心**：高覆盖率提供了一个安全网，有利于信心十足的重构。工程师可以进行更改，因为他们知道测试会发现任何意外后果。
 - **文档**：测试充当文档的一种形式，显示系统的行为方式。高覆盖率意味着更多的行为被记录下来。
 - **设计反馈**：为高覆盖率编写测试通常会突出设计问题，例如紧密耦合或缺乏内聚力，从而改进软件设计。
@@ -92,14 +92,14 @@ order: 0
 
 #### 测试覆盖率如何影响软件质量？
 
-[测试覆盖率](/zh-cn/wiki/test-coverage/) 会暴露未经测试的代码区域，从而直接影响**软件质量**，这些区域可能包含未检测到的[bugs](/zh-cn/wiki/bug/) 或问题。高 [测试覆盖率](/zh-cn/wiki/test-coverage/) 通常与较低的缺陷率相关，因为根据需求验证了更多代码路径并探索了潜在的边缘情况。然而，重要的是要明白，[测试覆盖率](/zh-cn/wiki/test-coverage/) 本身并不是灵丹妙药。测试的有效性同样重要。测试需要精心设计以断言正确的行为，并且覆盖率指标应该用于指导质量工作，而不是定义它们。
+[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 会暴露未经测试的代码区域，从而直接影响**软件质量**，这些区域可能包含未检测到的[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 或问题。高 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 通常与较低的缺陷率相关，因为根据需求验证了更多代码路径并探索了潜在的边缘情况。然而，重要的是要明白，[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 本身并不是灵丹妙药。测试的有效性同样重要。测试需要精心设计以断言正确的行为，并且覆盖率指标应该用于指导质量工作，而不是定义它们。
   覆盖率差距可以作为可能需要额外测试的地方的指南，但要注意 **以 100% 覆盖率为目标的陷阱**。它可能会导致错误的安全感，并且可能不具有成本效益。相反，重点关注**基于风险的覆盖范围**，优先考虑具有更高业务影响或更容易出错的关键路径和功能。
-  请记住，高 [测试覆盖率](/zh-cn/wiki/test-coverage/) 可以降低 **回归** 的可能性，因为更多代码正在接受自动检查的审查。这可以实现更安全的重构，并可以通过尽早发现问题来加快开发过程。然而，平衡是关键；维持与项目目标和时间表相一致的 [测试覆盖率](/zh-cn/wiki/test-coverage/) 战略方法。使用覆盖率数据就测试工作的重点做出明智的决定，确保应用程序最重要的方面得到彻底测试，并且[测试自动化](/zh-cn/wiki/test-automation/)仍然是维护[软件质量](/zh-cn/wiki/software-quality/)的宝贵资产。
+  请记住，高 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 可以降低 **回归** 的可能性，因为更多代码正在接受自动检查的审查。这可以实现更安全的重构，并可以通过尽早发现问题来加快开发过程。然而，平衡是关键；维持与项目目标和时间表相一致的 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 战略方法。使用覆盖率数据就测试工作的重点做出明智的决定，确保应用程序最重要的方面得到彻底测试，并且[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)仍然是维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)的宝贵资产。
 
 #### 代码覆盖率和测试覆盖率有什么区别？
 
-[代码覆盖率](/zh-cn/wiki/code-coverage/) 和[测试覆盖率](/zh-cn/wiki/test-coverage/) 是在[软件测试](/zh-cn/wiki/software-testing/) 中经常互换使用的术语，但它们具有不同的含义。
-  **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 是一个量化 [测试套件](/zh-cn/wiki/test-suite/) 运行时执行的代码量的指标。它通常以百分比来衡量，并且可以分为各种类型，例如语句覆盖率、分支覆盖率和函数覆盖率。 [代码覆盖率](/zh-cn/wiki/code-coverage/) 提供了测试已执行哪些代码行的精细技术视图。
+[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 和[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 是在[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中经常互换使用的术语，但它们具有不同的含义。
+  **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)** 是一个量化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 运行时执行的代码量的指标。它通常以百分比来衡量，并且可以分为各种类型，例如语句覆盖率、分支覆盖率和函数覆盖率。 [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 提供了测试已执行哪些代码行的精细技术视图。
 
 ```
   // Example: A simple function and test case
@@ -111,15 +111,15 @@ order: 0
     expect(add(1, 2)).toBe(3);
   });
 ```
-在上面的示例中，`add` 函数的 [测试用例](/zh-cn/wiki/test-case/) 将导致 `add` 的 100% 函数覆盖率，但如果代码库中有更多函数未被测试覆盖，则总体函数覆盖率将会较低。
-  另一方面，**[测试覆盖率](/zh-cn/wiki/test-coverage/)** 是一个更广泛的术语，涵盖了评估测试有效性的所有努力。它包括 [代码覆盖率](/zh-cn/wiki/code-coverage/) 作为其指标之一，但也考虑了测试的质量和范围，包括是否进行了不同类型的测试（如单元、集成、系统）以及它们是否涵盖了应用程序功能、用户场景和需求的各个方面。
-  本质上，[代码覆盖率](/zh-cn/wiki/code-coverage/) 关注的是代码本身，而 [测试覆盖率](/zh-cn/wiki/test-coverage/) 则关注测试验证软件功能和需求的程度。两者对于理解[测试套件](/zh-cn/wiki/test-suite/) 的有效性都很重要，但[测试覆盖率](/zh-cn/wiki/test-coverage/) 提供了该软件的[质量保证](/zh-cn/wiki/quality-assurance/) 的更全面的视图。
+在上面的示例中，`add` 函数的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 将导致 `add` 的 100% 函数覆盖率，但如果代码库中有更多函数未被测试覆盖，则总体函数覆盖率将会较低。
+  另一方面，**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 是一个更广泛的术语，涵盖了评估测试有效性的所有努力。它包括 [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 作为其指标之一，但也考虑了测试的质量和范围，包括是否进行了不同类型的测试（如单元、集成、系统）以及它们是否涵盖了应用程序功能、用户场景和需求的各个方面。
+  本质上，[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 关注的是代码本身，而 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 则关注测试验证软件功能和需求的程度。两者对于理解[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的有效性都很重要，但[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 提供了该软件的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的更全面的视图。
 
 ### 测试覆盖率类型
 
 #### 测试覆盖率有哪些不同类型？
 
-不同类型的 [测试覆盖率](/zh-cn/wiki/test-coverage/) 包括：
+不同类型的 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 包括：
 
 - **路径覆盖**：确保执行代码给定部分的每条可能的路线。这包括循环和条件路径。
 - **数据流覆盖**：重点关注变量接收值的点以及使用这些值的点。
@@ -128,8 +128,8 @@ order: 0
 - **状态覆盖**：验证软件是否正确处理有限状态机内的每个状态。
 - **参数值覆盖**：测试采用多个参数的方法、构造函数或系统的参数值的所有组合。
 - **错误处理覆盖率**：确保触发并正确处理所有可能的错误或异常情况。
-- **手动[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：跟踪软件的哪些部分已经通过手动测试进行了测试。
-- **自动化[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：指示自动化测试测试的代码库的范围。
+- **手动[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：跟踪软件的哪些部分已经通过手动测试进行了测试。
+- **自动化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：指示自动化测试测试的代码库的范围。
 - **UI 覆盖**：确保所有用户界面元素都经过功能和可用性测试。
 - **安全覆盖**：重点测试代码是否存在安全威胁和漏洞。
 - **性能覆盖率**：测试系统的性能，包括负载、压力和可扩展性测试。 每种类型的覆盖范围都针对软件的不同方面，以确保全面的测试策略。组合多种覆盖类型可以更全面地了解软件的可靠性和稳健性。
@@ -160,13 +160,13 @@ order: 0
     return 0; // Statement 3
   }
 ```
-如果 [测试套件](/zh-cn/wiki/test-suite/) 仅检查“add”操作，则函数覆盖率将为 100%，因为调用了 `calculate` 函数，但语句覆盖率将低于 100%，因为语句 2 和语句 3 从未执行。
+如果 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 仅检查“add”操作，则函数覆盖率将为 100%，因为调用了 `calculate` 函数，但语句覆盖率将低于 100%，因为语句 2 和语句 3 从未执行。
   总之，函数覆盖率是一个更广泛的指标，确保每个函数都经过测试，而语句覆盖率需要更彻底的检查，确保这些函数中的每一行代码都被执行。
 
 #### 什么是分支覆盖以及如何使用它？
 
 分支覆盖，也称为**决策覆盖**，确保每个决策点的每个可能的分支至少执行一次。例如，在 `if` 语句的上下文中，应该测试 true 和 false 分支。
-  要应用分支覆盖，请识别代码中的所有决策点，例如 `if`、`else`、`switch` 和循环语句。然后，创建遍历每个可能路径的[测试用例](/zh-cn/wiki/test-case/)。这比语句覆盖范围更细化，语句覆盖范围可能不需要测试条件的所有分支。
+  要应用分支覆盖，请识别代码中的所有决策点，例如 `if`、`else`、`switch` 和循环语句。然后，创建遍历每个可能路径的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。这比语句覆盖范围更细化，语句覆盖范围可能不需要测试条件的所有分支。
   考虑以下伪代码：
 
 ```
@@ -181,11 +181,11 @@ order: 0
 
 - 检测语句覆盖可能遗漏的特定分支中的缺陷。
 - 确保错误处理和边缘情况经过测试。
-- 提高测试套件的稳健性。 虽然分支覆盖可以提高测试质量，但这并不是灵丹妙药。它不保证所有路径的执行（路径覆盖）或分支内所有逻辑条件的测试（条件覆盖）。它是用于评估测试工作彻底性的几个指标之一。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师应将其与其他覆盖类型结合起来以创建全面的[测试套件](/zh-cn/wiki/test-suite/)。
+- 提高测试套件的稳健性。 虽然分支覆盖可以提高测试质量，但这并不是灵丹妙药。它不保证所有路径的执行（路径覆盖）或分支内所有逻辑条件的测试（条件覆盖）。它是用于评估测试工作彻底性的几个指标之一。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师应将其与其他覆盖类型结合起来以创建全面的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
 
 #### 测试覆盖率中的条件覆盖率是什么？
 
-条件覆盖率也称为谓词覆盖率，是 [测试覆盖率](/zh-cn/wiki/test-coverage/) 中的一个度量标准，用于评估决策点内的每个布尔子表达式是否已被评估为 `true` 和 `false`。这与决策覆盖不同，决策覆盖侧重于评估 `true` 和 `false` 的决策点本身。
+条件覆盖率也称为谓词覆盖率，是 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 中的一个度量标准，用于评估决策点内的每个布尔子表达式是否已被评估为 `true` 和 `false`。这与决策覆盖不同，决策覆盖侧重于评估 `true` 和 `false` 的决策点本身。
   例如，考虑代码中基于两个条件的决策：
 
 ```
@@ -224,8 +224,8 @@ order: 0
     是
     `false`
     。
-  条件覆盖比决策覆盖更精细，可以揭示决策覆盖可能遗漏的问题，例如复杂决策中的错误逻辑。但是，实现 100% 条件覆盖率并不能保证检测到与决策逻辑相关的所有[bugs](/zh-cn/wiki/bug/)，因为它没有覆盖所有可能的条件组合（这是通过多个条件覆盖来解决的）。
-  在实践中，条件覆盖有助于识别边缘情况，并通过确保条件表达式的每个部分都经过独立测试来提高 [测试套件](/zh-cn/wiki/test-suite/) 的稳健性。
+  条件覆盖比决策覆盖更精细，可以揭示决策覆盖可能遗漏的问题，例如复杂决策中的错误逻辑。但是，实现 100% 条件覆盖率并不能保证检测到与决策逻辑相关的所有[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，因为它没有覆盖所有可能的条件组合（这是通过多个条件覆盖来解决的）。
+  在实践中，条件覆盖有助于识别边缘情况，并通过确保条件表达式的每个部分都经过独立测试来提高 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的稳健性。
 
 1.`conditionA`
     是
@@ -259,7 +259,7 @@ order: 0
 
 #### 决策覆盖率如何影响整体测试覆盖率？
 
-决策覆盖率也称为**分支覆盖率**，通过确保每个决策点的每个可能的分支至少执行一次，增强了整体[测试覆盖率](/zh-cn/wiki/test-coverage/)。这意味着每个决策语句的所有真/假结果（例如 `if` 条件）都会在测试期间进行评估。
+决策覆盖率也称为**分支覆盖率**，通过确保每个决策点的每个可能的分支至少执行一次，增强了整体[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。这意味着每个决策语句的所有真/假结果（例如 `if` 条件）都会在测试期间进行评估。
   与仅确认每行代码已执行的**语句覆盖**相比，决策覆盖通过验证所有分支是否都产生正确的结果来提供更细粒度的测试。这很重要，因为它有助于发现特定条件可能导致错误或意外行为的场景。
   例如，考虑以下伪代码：
 
@@ -270,18 +270,18 @@ order: 0
       // Branch 2
   }
 ```
-为了实现决策覆盖，必须设计测试来评估`conditionA`、`true`（分支1）和`false`（分支2）。这确保了处理两种情况的逻辑都是正确的，并且识别出潜在的[bugs](/zh-cn/wiki/bug/)。
-  通过关注决策点，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以创建更强大的[测试套件](/zh-cn/wiki/test-suite/)，以更好地评估软件的逻辑和决策能力。这有助于实现高 [测试覆盖率](/zh-cn/wiki/test-coverage/) 的总体目标，即降低缺陷风险并提高软件的可靠性。
+为了实现决策覆盖，必须设计测试来评估`conditionA`、`true`（分支1）和`false`（分支2）。这确保了处理两种情况的逻辑都是正确的，并且识别出潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+  通过关注决策点，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以创建更强大的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，以更好地评估软件的逻辑和决策能力。这有助于实现高 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的总体目标，即降低缺陷风险并提高软件的可靠性。
 
 ### 测量和工具
 
 #### 测试覆盖率是如何衡量的？
 
-[测试覆盖率](/zh-cn/wiki/test-coverage/) 通过确定[测试套件](/zh-cn/wiki/test-suite/) 已使用的软件比例来量化。这通常是通过使用监控和报告各种覆盖标准的专用工具来完成的。以下是测量 [测试覆盖率](/zh-cn/wiki/test-coverage/) 的简明方法：
+[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 通过确定[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 已使用的软件比例来量化。这通常是通过使用监控和报告各种覆盖标准的专用工具来完成的。以下是测量 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的简明方法：
 
 1. **选择覆盖标准**：决定与您的项目相关的覆盖类型，例如语句、分支或路径覆盖。
 2. **检测代码**：使用工具检测代码库，它将跟踪测试期间执行的代码部分。
-3. **运行[测试套件](/zh-cn/wiki/test-suite/)**：针对检测的代码执行自动化测试。
+3. **运行[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：针对检测的代码执行自动化测试。
 4. **收集数据**：该工具将收集有关代码的哪些部分被执行的数据。
 5. **分析结果**：查看工具生成的覆盖率报告，以确定覆盖率方面的差距。
 6. **相应地调整测试**：编写额外的测试以覆盖未覆盖的代码或删除冗余测试。 例如，在 JavaScript 项目中，您可以使用 Istanbul (nyc) 来测量覆盖范围：
@@ -289,12 +289,12 @@ order: 0
 ```
   nyc --reporter=html --reporter=text mocha
 ```
-此命令运行 Mocha [测试套件](/zh-cn/wiki/test-suite/) with Istanbul 收集覆盖率数据，输出 HTML 和文本摘要。
-  请记住，虽然高覆盖率可以表明进行了彻底的测试，但它并不能保证不存在缺陷。覆盖范围应与其他质量衡量标准相平衡，例如良好的[测试用例](/zh-cn/wiki/test-case/) 设计、同行评审和[手动测试](/zh-cn/wiki/manual-testing/)。
+此命令运行 Mocha [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) with Istanbul 收集覆盖率数据，输出 HTML 和文本摘要。
+  请记住，虽然高覆盖率可以表明进行了彻底的测试，但它并不能保证不存在缺陷。覆盖范围应与其他质量衡量标准相平衡，例如良好的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计、同行评审和[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)。
 
 #### 衡量测试覆盖率常用的工具有哪些？
 
-用于测量[测试覆盖率](/zh-cn/wiki/test-coverage/)的常用工具包括：
+用于测量[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)的常用工具包括：
 
 - **JaCoCo** ：与 Maven、Ant 和 Gradle 集成的 Java 代码覆盖库。
 - **Cobertura**：另一个报告行、分支和包覆盖率的 Java 工具。
@@ -312,16 +312,16 @@ order: 0
 
 #### 覆盖率指标在测试覆盖率中的作用是什么？
 
-覆盖率指标作为[测试套件](/zh-cn/wiki/test-suite/) 对软件评估程度的定量指标。它们提供了一个**数值**，反映了测试所执行的代码库的比例，提供了一种衡量测试工作有效性的方法。
-  这些指标对于识别应用程序的**未经测试的部分**至关重要，这些部分可能隐藏着未检测到的[bugs](/zh-cn/wiki/bug/)。通过突出显示覆盖率低的区域，他们将注意力转移到需要额外测试的潜在风险区域。
-  此外，覆盖率指标可用于随着时间的推移**跟踪进度**，确保[测试套件](/zh-cn/wiki/test-suite/) 与应用程序一起发展。它们通过告知决策将测试资源集中在哪里以获得最大影响，帮助保持测试彻底性和开发速度之间的平衡。
+覆盖率指标作为[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 对软件评估程度的定量指标。它们提供了一个**数值**，反映了测试所执行的代码库的比例，提供了一种衡量测试工作有效性的方法。
+  这些指标对于识别应用程序的**未经测试的部分**至关重要，这些部分可能隐藏着未检测到的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。通过突出显示覆盖率低的区域，他们将注意力转移到需要额外测试的潜在风险区域。
+  此外，覆盖率指标可用于随着时间的推移**跟踪进度**，确保[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 与应用程序一起发展。它们通过告知决策将测试资源集中在哪里以获得最大影响，帮助保持测试彻底性和开发速度之间的平衡。
   在持续集成 (CI) 环境中，覆盖率指标可以集成到构建过程中，为开发人员提供**实时反馈**。这种集成有助于防止代码更改，从而减少合并到代码库中的覆盖范围。
-  然而，重要的是要记住，高覆盖率并不能保证不存在缺陷。覆盖率指标应与其他质量衡量标准相辅相成，例如**同行评审**、**[手动测试](/zh-cn/wiki/manual-testing/)** 和 **[探索性测试](/zh-cn/wiki/exploratory-testing/)**，以确保全面的质量策略。
-  总之，覆盖率指标是强大[测试自动化](/zh-cn/wiki/test-automation/) 策略的重要组成部分，提供有助于优化[测试覆盖率](/zh-cn/wiki/test-coverage/) 和维护[软件质量](/zh-cn/wiki/software-quality/) 的见解。
+  然而，重要的是要记住，高覆盖率并不能保证不存在缺陷。覆盖率指标应与其他质量衡量标准相辅相成，例如**同行评审**、**[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)** 和 **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**，以确保全面的质量策略。
+  总之，覆盖率指标是强大[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略的重要组成部分，提供有助于优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和维护[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的见解。
 
 #### 如何在测试覆盖范围中使用覆盖图？
 
-**覆盖图**是一种视觉或数据驱动的表示形式，显示您的 [测试用例](/zh-cn/wiki/test-case/) 与其所覆盖的应用程序的要求或部分之间的关​​系。在[测试覆盖率](/zh-cn/wiki/test-coverage/) 中使用覆盖图可确保所有功能都经过测试，并有助于识别[测试套件](/zh-cn/wiki/test-suite/) 中的差距。
+**覆盖图**是一种视觉或数据驱动的表示形式，显示您的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 与其所覆盖的应用程序的要求或部分之间的关​​系。在[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 中使用覆盖图可确保所有功能都经过测试，并有助于识别[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中的差距。
   要有效地使用覆盖图，请按照下列步骤操作：
 
 1. **识别组件**：将应用程序分解为其组件、模块或功能。
@@ -330,14 +330,14 @@ order: 0
 4. **根据风险确定优先级**：重点关注对应用程序性能至关重要或具有高故障风险的组件。
 5. **填补空白**：为未充分覆盖的组件创建额外的测试用例。
 6. **避免重复**：使用地图来发现并消除冗余测试，优化测试套件。
-7. **持续更新**：随着应用程序的发展，通过添加新组件和测试来保持覆盖图最新。 在实践中，覆盖图可能看起来像一个表格或矩阵，一个轴上列出了组件，另一个轴上列出了[测试用例](/zh-cn/wiki/test-case/)，标记每个测试的应用位置。或者，更复杂的工具可能提供交互式可视化。
+7. **持续更新**：随着应用程序的发展，通过添加新组件和测试来保持覆盖图最新。 在实践中，覆盖图可能看起来像一个表格或矩阵，一个轴上列出了组件，另一个轴上列出了[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，标记每个测试的应用位置。或者，更复杂的工具可能提供交互式可视化。
 
 ```
   // Example of a simple coverage map structure in code comments
   // Component: Login Functionality
   // Test Cases: TC_Login_001, TC_Login_002, TC_Login_003
 ```
-通过将覆盖图集成到您的[测试策略](/zh-cn/wiki/test-strategy/)中，您可以确保采用结构化方法来实现全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)，这可以带来更强大、更可靠的软件。
+通过将覆盖图集成到您的[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)中，您可以确保采用结构化方法来实现全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，这可以带来更强大、更可靠的软件。
 
 #### 使用工具衡量测试覆盖率的最佳实践有哪些？
 
@@ -348,50 +348,50 @@ order: 0
   结合多种形式的覆盖范围（例如语句、分支、路径）以获得全面的视图。依赖单一指标可能会产生误导。
   定期**审查和重构测试**。随着代码的发展，测试也应该随之发展。删除冗余测试并更新现有测试以反映代码库中的更改。
   使用**覆盖率数据来指导代码审查**。突出显示在审查过程中未充分测试的代码区域。
-  利用 **test [影响分析](/zh-cn/wiki/impact-analysis/) 工具** 仅运行受最近代码更改影响的测试，在保持覆盖范围的同时优化反馈循环。
-  请记住，[测试覆盖率](/zh-cn/wiki/test-coverage/) 是达到目的的手段，而不是目的本身。低质量测试的高覆盖率可能比精心设计的测试的低覆盖率更糟糕。始终致力于有效验证代码行为的测试。
+  利用 **test [影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 工具** 仅运行受最近代码更改影响的测试，在保持覆盖范围的同时优化反馈循环。
+  请记住，[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 是达到目的的手段，而不是目的本身。低质量测试的高覆盖率可能比精心设计的测试的低覆盖率更糟糕。始终致力于有效验证代码行为的测试。
 
 ### 策略和最佳实践
 
 #### 可以使用哪些策略来提高测试覆盖率？
 
-要增加软件[测试自动化](/zh-cn/wiki/test-automation/)中的[测试覆盖率](/zh-cn/wiki/test-coverage/)，请考虑以下策略：
+要增加软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，请考虑以下策略：
 
-- **优先考虑[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
-- **实施参数化测试**：创建可以使用不同输入数据集运行的测试，使您可以用更少的 [测试用例](/zh-cn/wiki/test-case/) 覆盖更多场景。
-- **利用测试设计技术**：利用[等价划分](/zh-cn/wiki/equivalence-partitioning/)、边界值分析和成对测试来确保涵盖广泛的输入和条件。
+- **优先考虑[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
+- **实施参数化测试**：创建可以使用不同输入数据集运行的测试，使您可以用更少的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 覆盖更多场景。
+- **利用测试设计技术**：利用[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)、边界值分析和成对测试来确保涵盖广泛的输入和条件。
 - **扩展自动化范围**：在自动化套件中包括集成、系统和端到端测试，而不仅仅是单元测试。
 - **使用模拟和存根**：模拟依赖关系以隔离测试组件并覆盖更多执行路径。
-- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)**：将自动化测试与手动[探索性测试](/zh-cn/wiki/exploratory-testing/)相结合，以发现自动化测试可能遗漏的区域。
+- **执行[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：将自动化测试与手动[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)相结合，以发现自动化测试可能遗漏的区域。
 - **定期审查和更新测试**：随着应用程序的发展，更新您的测试以涵盖新功能并弃用过时的测试。
 - **与 CI/CD 集成**：作为持续集成/持续部署管道的一部分运行自动化测试，以确保覆盖每个构建。
-- **监控[片状测试](/zh-cn/wiki/flaky-test/)**：识别并修复可能削弱您对[测试套件](/zh-cn/wiki/test-suite/) 覆盖范围的信心的非确定性测试。
+- **监控[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**：识别并修复可能削弱您对[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 覆盖范围的信心的非确定性测试。
 - **利用覆盖工具**：Istanbul、JaCoCo 或 Clover 等工具可以帮助识别未经测试的代码路径。
 - **与开发者合作**：鼓励开发者编写单元测试并参与测试评审，以确保全面覆盖。
 - **从测试角度进行代码审查**：在代码审查期间寻找未经测试的逻辑和潜在的边缘情况。
-- **采用[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在代码之前编写测试可以带来更好的[测试覆盖率](/zh-cn/wiki/test-coverage/) 和设计。 通过实施这些策略，您可以系统地增加[测试覆盖率](/zh-cn/wiki/test-coverage/)并提高软件的质量。
+- **采用[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：在代码之前编写测试可以带来更好的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和设计。 通过实施这些策略，您可以系统地增加[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)并提高软件的质量。
 
 #### 如何确保我的测试覆盖范围全面？
 
-为了确保 [测试自动化](/zh-cn/wiki/test-automation/) 中的全面 [测试覆盖率](/zh-cn/wiki/test-coverage/)，请遵循以下策略：
+为了确保 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的全面 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，请遵循以下策略：
 
-- **优先考虑[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
-- **实施[等价划分](/zh-cn/wiki/equivalence-partitioning/)和边界值分析**：这有助于减少测试用例的数量，同时确保覆盖不同的输入范围。
+- **优先考虑[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
+- **实施[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)和边界值分析**：这有助于减少测试用例的数量，同时确保覆盖不同的输入范围。
 - **利用决策表**：它们有助于覆盖复杂的业务规则和逻辑条件。
-- **使用[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：这对于具有有限状态的应用程序至关重要，确保覆盖所有可能的转换。
+- **使用[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** ：这对于具有有限状态的应用程序至关重要，确保覆盖所有可能的转换。
 - **采用成对测试**：这是使用正交数组测试输入组合的有效方法，确保覆盖参数之间的相互作用。
-- **合并[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：自动化测试可能会错过意外问题。通过手动探索性测试来补充它们，以发现隐藏的错误。
+- **合并[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：自动化测试可能会错过意外问题。通过手动探索性测试来补充它们，以发现隐藏的错误。
 - **利用基于模型的测试**：创建系统的抽象模型以生成覆盖所有可能路径的测试用例。
 - **执行组合测试**：使用工具生成涵盖输入参数所有可能组合的测试用例。
 - **定期审查和更新测试**：随着软件的发展，测试也应该如此。定期审查测试用例的相关性和完整性。
-- **与持续集成/持续部署 (CI/CD) 集成**：这可确保频繁运行测试并持续监控覆盖范围。 请记住，目标不是实现 100% [测试覆盖率](/zh-cn/wiki/test-coverage/)，而是有效覆盖应用程序最关键的方面。
+- **与持续集成/持续部署 (CI/CD) 集成**：这可确保频繁运行测试并持续监控覆盖范围。 请记住，目标不是实现 100% [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，而是有效覆盖应用程序最关键的方面。
 
-- **优先考虑[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** ：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
-- **实施[等价划分](/zh-cn/wiki/equivalence-partitioning/)和边界值分析**：这有助于减少测试用例的数量，同时确保覆盖不同的输入范围。
+- **优先考虑[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：重点关注故障风险最高或对用户影响最大的领域。使用历史数据和专家判断来识别这些区域。
+- **实施[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)和边界值分析**：这有助于减少测试用例的数量，同时确保覆盖不同的输入范围。
 - **利用决策表**：它们有助于覆盖复杂的业务规则和逻辑条件。
-- **使用[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：这对于具有有限状态的应用程序至关重要，确保涵盖所有可能的转换。
+- **使用[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** ：这对于具有有限状态的应用程序至关重要，确保涵盖所有可能的转换。
 - **采用成对测试**：这是使用正交数组测试输入组合的有效方法，确保覆盖参数之间的相互作用。
-- **合并[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：自动化测试可能会错过意外问题。通过手动探索性测试来补充它们，以发现隐藏的错误。
+- **合并[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：自动化测试可能会错过意外问题。通过手动探索性测试来补充它们，以发现隐藏的错误。
 - **利用基于模型的测试**：创建系统的抽象模型以生成覆盖所有可能路径的测试用例。
 - **执行组合测试**：使用工具生成涵盖输入参数所有可能组合的测试用例。
 - **定期审查和更新测试**：随着软件的发展，测试也应该如此。定期审查测试用例的相关性和完整性。
@@ -399,32 +399,32 @@ order: 0
 
 #### 在追求高测试覆盖率时需要避免哪些常见陷阱？
 
-在追求高[测试覆盖率](/zh-cn/wiki/test-coverage/)时要避免常见的陷阱，需要注意以下几点：
+在追求高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)时要避免常见的陷阱，需要注意以下几点：
 
 - **错误的安全感**：高测试覆盖率并不能保证不存在错误。关注测试的质量和意义，而不仅仅是数量。
 - **忽视维护**：随着代码的发展，测试必须更新。过时的测试可能会导致误报或误报。
 - **过度模拟**：过度使用模拟可能会导致测试通过，尽管实际集成点存在问题。确保测试验证真实场景。
 - **测试实现细节**：测试应该关注行为而不是实现的细节，这可能导致脆弱的测试，任何代码更改都会中断。
-- **忽略[片状测试](/zh-cn/wiki/flaky-test/)** ：不稳定的测试破坏了对测试套件的信心。及时解决不稳定的根本原因。
+- **忽略[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** ：不稳定的测试破坏了对测试套件的信心。及时解决不稳定的根本原因。
 - **注重数量而非质量**：编写大量低价值测试可能不如一组较小的高价值、有针对性的测试有益。
 - **省略负面测试**：确保测试不仅涵盖预期用例，还涵盖错误条件和边缘情况。
 - **缺乏优先级**：优先测试对用户体验具有较高风险或影响的关键路径和功能。
 - **重构不足**：定期重构测试以提高清晰度并减少冗余，这有助于保持高测试覆盖率。
-- **忽略[非功能测试](/zh-cn/wiki/non-functional-testing/)** ：性能、安全性和可用性测试也至关重要，在追求高测试覆盖率时不应忽视。 请记住，我们的目标是创建一个强大且可靠的 [测试套件](/zh-cn/wiki/test-suite/) 来有效支持开发过程，而不是实现任意的覆盖率指标。
+- **忽略[非功能测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)** ：性能、安全性和可用性测试也至关重要，在追求高测试覆盖率时不应忽视。 请记住，我们的目标是创建一个强大且可靠的 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 来有效支持开发过程，而不是实现任意的覆盖率指标。
 
 #### 如何平衡高测试覆盖率的需求和快速交付软件的需求？
 
-在高[测试覆盖率](/zh-cn/wiki/test-coverage/)与快速软件交付之间取得平衡需要采取战略方法：
+在高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)与快速软件交付之间取得平衡需要采取战略方法：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。重点关注最有可能发生故障或发生重大问题的关键路径和功能。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于风险和影响。重点关注最有可能发生故障或发生重大问题的关键路径和功能。
 
-- 实施 **[测试自动化](/zh-cn/wiki/test-automation/)**用于重复且耗时的测试以加快该过程。使用 Selenium、Jest 或 Cypress 等工具实现高效自动化。
+- 实施 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**用于重复且耗时的测试以加快该过程。使用 Selenium、Jest 或 Cypress 等工具实现高效自动化。
 
 - 采用 **持续集成（CI）**和 **持续部署 (CD)**频繁集成和部署代码，确保在开发周期的早期经常运行测试。
 
-- 利用 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**或 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**确保测试是在代码之前编写的，这可以导致更彻底的覆盖范围和更快的开发周期。
+- 利用 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**或 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**确保测试是在代码之前编写的，这可以导致更彻底的覆盖范围和更快的开发周期。
 
-- 杠杆 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**以确定需要更彻底测试的区域和可以接受较低覆盖范围的区域。
+- 杠杆 **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**以确定需要更彻底测试的区域和可以接受较低覆盖范围的区域。
 
 - 使用 **代码分析工具**识别未经测试或无效的代码。 Istanbul 或 JaCoCo 等工具可以帮助突出覆盖范围差距。
 
@@ -432,17 +432,17 @@ order: 0
 
 - 鼓励 **开发人员和测试人员之间的协作**分担质量责任并确保测试与代码更改保持一致。
 
-- **监控和分析测试结果**确定趋势和需要改进的领域，从而有针对性地增加覆盖范围。 通过关注这些策略，您可以在实现高[测试覆盖率](/zh-cn/wiki/test-coverage/) 和快速交付软件之间保持平衡。
+- **监控和分析测试结果**确定趋势和需要改进的领域，从而有针对性地增加覆盖范围。 通过关注这些策略，您可以在实现高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和快速交付软件之间保持平衡。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。重点关注最有可能发生故障或发生重大问题的关键路径和功能。
+- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于风险和影响。重点关注最有可能发生故障或发生重大问题的关键路径和功能。
 
-- 实施 **[测试自动化](/zh-cn/wiki/test-automation/)**用于重复且耗时的测试以加快该过程。使用 Selenium、Jest 或 Cypress 等工具实现高效自动化。
+- 实施 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**用于重复且耗时的测试以加快该过程。使用 Selenium、Jest 或 Cypress 等工具实现高效自动化。
 
 - 采用 **持续集成（CI）**和 **持续部署 (CD)**频繁集成和部署代码，确保在开发周期的早期经常运行测试。
 
-- 利用 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**或 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**确保测试是在代码之前编写的，这可以导致更彻底的覆盖范围和更快的开发周期。
+- 利用 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**或 **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**确保测试是在代码之前编写的，这可以导致更彻底的覆盖范围和更快的开发周期。
 
-- 杠杆 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**以确定需要更彻底测试的区域和可以接受较低覆盖范围的区域。
+- 杠杆 **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)**以确定需要更彻底测试的区域和可以接受较低覆盖范围的区域。
 
 - 使用 **代码分析工具**识别未经测试或无效的代码。 Istanbul 或 JaCoCo 等工具可以帮助突出覆盖范围差距。
 
@@ -454,7 +454,7 @@ order: 0
 
 #### 随着时间的推移保持高测试覆盖率有哪些最佳实践？
 
-要长期保持高[测试覆盖率](/zh-cn/wiki/test-coverage/)，请遵循以下最佳实践：
+要长期保持高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，请遵循以下最佳实践：
 
 - **定期审查和更新测试**以适应新功能和代码更改。过时的测试可能会导致误报并降低承保范围的有效性。
 
@@ -466,7 +466,7 @@ order: 0
 
 - **将测试集成到 CI/CD 管道中**确保每次构建时自动运行测试。这有助于及早发现问题并保持一致的覆盖范围。
 
-- **监控[片状测试](/zh-cn/wiki/flaky-test/)**并解决根本原因，以防止它们破坏测试覆盖率的可靠性。
+- **监控[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**并解决根本原因，以防止它们破坏测试覆盖率的可靠性。
 
 - **使用覆盖工具**找出覆盖范围的差距并针对这些领域进行改进。工具可以深入了解代码库的哪些部分未经过测试。
 
@@ -474,7 +474,7 @@ order: 0
 
 - **执行定期代码审查**重点关注测试覆盖率，以确保新代码附带相应的测试。
 
-- **设定覆盖目标**并跟踪进度，但避免以 100% 覆盖为目标，因为这可能不具有成本效益。相反，目标是提供有意义的覆盖范围，以提供对应用程序稳定性的信心。 通过实施这些实践，您可以维持高[测试覆盖率](/zh-cn/wiki/test-coverage/)，以适应软件的发展并保持其可靠性。
+- **设定覆盖目标**并跟踪进度，但避免以 100% 覆盖为目标，因为这可能不具有成本效益。相反，目标是提供有意义的覆盖范围，以提供对应用程序稳定性的信心。 通过实施这些实践，您可以维持高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)，以适应软件的发展并保持其可靠性。
 
 - **定期审查和更新测试**以适应新功能和代码更改。过时的测试可能会导致误报并降低承保范围的有效性。
 
@@ -486,7 +486,7 @@ order: 0
 
 - **将测试集成到 CI/CD 管道中**确保每次构建时自动运行测试。这有助于及早发现问题并保持一致的覆盖范围。
 
-- **监控[片状测试](/zh-cn/wiki/flaky-test/)**并解决根本原因，以防止它们破坏测试覆盖率的可靠性。
+- **监控[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**并解决根本原因，以防止它们破坏测试覆盖率的可靠性。
 
 - **使用覆盖工具**找出覆盖范围的差距并针对这些领域进行改进。工具可以深入了解代码库的哪些部分未经过测试。
 

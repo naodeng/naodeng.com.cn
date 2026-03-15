@@ -115,9 +115,9 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 
 ### Related Terms
 
-- [shadow-engineering](/en/AIWiki/shadow-engineering/)
-- [agentic-workflow](/en/AIWiki/agentic-workflow/)
-- [human-in-the-loop](/en/AIWiki/human-in-the-loop/)
+- [shadow-engineering](https://inaodeng.com/en/AIWiki/shadow-engineering/)
+- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
+- [human-in-the-loop](https://inaodeng.com/en/AIWiki/human-in-the-loop/)
 
 ### Term Metadata
 

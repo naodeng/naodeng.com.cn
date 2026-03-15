@@ -47,41 +47,41 @@ order: 0
 
 #### 什么是片状测试？
 
-**[片状测试](/zh-cn/wiki/flaky-test/)** 是一种表现出不确定性行为的行为，这意味着在相同条件下运行时它可能会通过或失败。不稳定并不是源于代码库或环境的变化，而是源于测试或测试过程中固有的不稳定性。这些测试可能会产生误导，因为它们的结果不可靠，并且通常需要额外的审查才能确定被测系统的真实状态。
-  识别 [片状测试](/zh-cn/wiki/flaky-test/) 通常需要观察一段时间内的测试运行情况。如果测试结果不一致，而应用程序或测试代码没有任何相关更改，则它可能是不稳定的。为了精确定位此类测试，工程师可以使用跟踪和分析多次执行的测试结果的工具。
-  解决不稳定问题通常需要对测试代码及其运行条件进行彻底调查。这可能涉及检查竞争条件、确保正确同步、管理[测试数据](/zh-cn/wiki/test-data/) 和状态，以及确认[测试环境](/zh-cn/wiki/test-environment/) 稳定且一致。
-  为了防止[片状测试](/zh-cn/wiki/flaky-test/)，设计能够适应时序问题和环境变化的测试至关重要。这包括使用显式等待而不是固定睡眠，确保每次运行干净[测试数据](/zh-cn/wiki/test-data/)，以及保持测试之间的隔离以避免副作用。自动化框架可以通过提供有助于有效管理这些方面的功能来提供帮助。
-  总之，[片状测试](/zh-cn/wiki/flaky-test/) 是[测试自动化](/zh-cn/wiki/test-automation/) 中的一个挑战，需要仔细关注测试设计、执行和维护，以确保结果可靠且有意义。
+**[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)** 是一种表现出不确定性行为的行为，这意味着在相同条件下运行时它可能会通过或失败。不稳定并不是源于代码库或环境的变化，而是源于测试或测试过程中固有的不稳定性。这些测试可能会产生误导，因为它们的结果不可靠，并且通常需要额外的审查才能确定被测系统的真实状态。
+  识别 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 通常需要观察一段时间内的测试运行情况。如果测试结果不一致，而应用程序或测试代码没有任何相关更改，则它可能是不稳定的。为了精确定位此类测试，工程师可以使用跟踪和分析多次执行的测试结果的工具。
+  解决不稳定问题通常需要对测试代码及其运行条件进行彻底调查。这可能涉及检查竞争条件、确保正确同步、管理[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 和状态，以及确认[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 稳定且一致。
+  为了防止[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，设计能够适应时序问题和环境变化的测试至关重要。这包括使用显式等待而不是固定睡眠，确保每次运行干净[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，以及保持测试之间的隔离以避免副作用。自动化框架可以通过提供有助于有效管理这些方面的功能来提供帮助。
+  总之，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 是[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的一个挑战，需要仔细关注测试设计、执行和维护，以确保结果可靠且有意义。
 
 #### 为什么片状测试会出现问题？
 
-[片状测试](/zh-cn/wiki/flaky-test/) 是有问题的，因为它们**侵蚀测试套件中的信任**并**浪费宝贵的资源**。当测试产生不一致的结果时，就很难区分真正的[bugs](/zh-cn/wiki/bug/) 和[误报](/zh-cn/wiki/false-positive/)。这种不确定性可能导致**忽略测试结果**，这违背了测试的目的，并可能导致真正的问题溜到生产中。
-  此外，[片状测试](/zh-cn/wiki/flaky-test/) 消耗了**开发人员的时间**和**注意力**，这些时间本可以更好地花在功能开发或解决实际缺陷上。工程师可能需要多次**重新运行测试**才能确定结果，这会减慢开发周期并导致**计算资源的使用效率低下**。
-  [片状测试](/zh-cn/wiki/flaky-test/) 的**维护成本**很高，因为它们需要定期检查和修复以保持[测试套件](/zh-cn/wiki/test-suite/) 的可靠性。这项持续的工作将资源从改进 [测试覆盖率](/zh-cn/wiki/test-coverage/) 或提高测试代码库的质量上转移。
-  在**持续集成**环境中，[片状测试](/zh-cn/wiki/flaky-test/) 可能特别具有破坏性。它们可能会导致**误报**，导致不必要的调查，或者更糟的是，如果团队开始忽略测试失败，它们可能会掩盖真正的问题。这可能会损害构建过程的完整性并延迟软件的交付。
-  最终，[片状测试](/zh-cn/wiki/flaky-test/) 可能会导致对[自动化测试](/zh-cn/wiki/automated-testing/) 流程**失去信心**，从而使团队不太可能依赖它来确保[软件质量](/zh-cn/wiki/software-quality/)。解决[片状测试](/zh-cn/wiki/flaky-test/)对于维持稳健、可靠和高效的[测试自动化](/zh-cn/wiki/test-automation/)策略至关重要。
+[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 是有问题的，因为它们**侵蚀测试套件中的信任**并**浪费宝贵的资源**。当测试产生不一致的结果时，就很难区分真正的[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 和[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)。这种不确定性可能导致**忽略测试结果**，这违背了测试的目的，并可能导致真正的问题溜到生产中。
+  此外，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 消耗了**开发人员的时间**和**注意力**，这些时间本可以更好地花在功能开发或解决实际缺陷上。工程师可能需要多次**重新运行测试**才能确定结果，这会减慢开发周期并导致**计算资源的使用效率低下**。
+  [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的**维护成本**很高，因为它们需要定期检查和修复以保持[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的可靠性。这项持续的工作将资源从改进 [测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 或提高测试代码库的质量上转移。
+  在**持续集成**环境中，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能特别具有破坏性。它们可能会导致**误报**，导致不必要的调查，或者更糟的是，如果团队开始忽略测试失败，它们可能会掩盖真正的问题。这可能会损害构建过程的完整性并延迟软件的交付。
+  最终，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能会导致对[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 流程**失去信心**，从而使团队不太可能依赖它来确保[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)对于维持稳健、可靠和高效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)策略至关重要。
 
 #### 片状测试对软件开发和测试过程有什么影响？
 
-[片状测试](/zh-cn/wiki/flaky-test/) 通过削弱对测试套件的信任并导致**资源使用效率低下**，极大地破坏了**软件开发生命周期**。当测试产生不一致的结果时，开发人员可能会浪费时间调查非问题，从而导致**生产力降低**。这也可能导致**“狼来了”**场景，其中真正的缺陷被忽略，因为假定了脆弱性。随着时间的推移，随着维护 [测试套件](/zh-cn/wiki/test-suite/) 的工作量的增加，[片状测试](/zh-cn/wiki/flaky-test/) 可能会导致**技术债务的积累**。
-  此外，[片状测试](/zh-cn/wiki/flaky-test/) 可以**破坏发布过程**。它们给软件的稳定性带来了不确定性，可能会延迟发布或导致部署有缺陷的软件。这可能会对**客户满意度**和**收入**产生直接影响，特别是在快速交付至关重要的持续部署环境中。
-  就团队动力而言，[片状测试](/zh-cn/wiki/flaky-test/) 可能会导致工程师感到**沮丧**和**士气低落**，因为他们可能会觉得自己的时间没有得到有效利用。这可能会对**软件质量**和**开发团队的健康状况**产生长期影响。
-  为了减轻这些影响，必须优先考虑**[测试套件](/zh-cn/wiki/test-suite/)**的维护并投资于**强大的测试实践**。这包括为测试结果建立**监控和警报**系统，采用**测试隔离**策略，并确保**质量文化**，其中每个团队成员都对[测试自动化](/zh-cn/wiki/test-automation/)的可靠性负责。
+[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 通过削弱对测试套件的信任并导致**资源使用效率低下**，极大地破坏了**软件开发生命周期**。当测试产生不一致的结果时，开发人员可能会浪费时间调查非问题，从而导致**生产力降低**。这也可能导致**“狼来了”**场景，其中真正的缺陷被忽略，因为假定了脆弱性。随着时间的推移，随着维护 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的工作量的增加，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能会导致**技术债务的积累**。
+  此外，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可以**破坏发布过程**。它们给软件的稳定性带来了不确定性，可能会延迟发布或导致部署有缺陷的软件。这可能会对**客户满意度**和**收入**产生直接影响，特别是在快速交付至关重要的持续部署环境中。
+  就团队动力而言，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能会导致工程师感到**沮丧**和**士气低落**，因为他们可能会觉得自己的时间没有得到有效利用。这可能会对**软件质量**和**开发团队的健康状况**产生长期影响。
+  为了减轻这些影响，必须优先考虑**[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**的维护并投资于**强大的测试实践**。这包括为测试结果建立**监控和警报**系统，采用**测试隔离**策略，并确保**质量文化**，其中每个团队成员都对[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的可靠性负责。
 
 #### 为什么解决软件自动化中的不稳定测试很重要？
 
-在软件[测试自动化](/zh-cn/wiki/test-automation/) 中解决[片状测试](/zh-cn/wiki/flaky-test/) 对于维护测试过程的**可信性**和**有效性**至关重要。 [片状测试](/zh-cn/wiki/flaky-test/) 可能会**削弱测试结果中的信任**，导致真正的故障可能被视为[误报](/zh-cn/wiki/false-positive/)。这可能会导致实际缺陷被忽略，从而可能导致生产中**昂贵的[bugs](/zh-cn/wiki/bug/)**。
-  此外，[片状测试](/zh-cn/wiki/flaky-test/) 向反馈循环添加**噪声**。开发团队依靠[测试自动化](/zh-cn/wiki/test-automation/)来快速识别新代码引入的问题。当测试不可靠时，识别和修复[bugs](/zh-cn/wiki/bug/)的**速度**就会受到影响，从而减慢开发周期并降低生产力。
-  投入时间解决[片状测试](/zh-cn/wiki/flaky-test/) 还可以**优化资源利用率**。 [片状测试](/zh-cn/wiki/flaky-test/) 通常需要手动干预来调查和重新运行，这会消耗宝贵的时间和精力，而这些时间和精力本可以更好地用于新功能开发或改进现有测试。
-  此外，具有最少 [片状测试](/zh-cn/wiki/flaky-test/) 的套件**增强了持续集成** (CI) 实践。它允许更一致的部署管道，并有助于实现软件产品的**更快的上市时间**。
-  最后，通过解决[片状测试](/zh-cn/wiki/flaky-test/)，团队可以**提高[测试覆盖率](/zh-cn/wiki/test-coverage/)**和**信心**。它确保 [测试套件](/zh-cn/wiki/test-suite/) 仍然是 [软件质量](/zh-cn/wiki/software-quality/) 的可靠指标，这对于做出有关版本的明智决策至关重要。
-  总之，解决[片状测试](/zh-cn/wiki/flaky-test/) 问题是维护稳健、高效和值得信赖的[自动化测试](/zh-cn/wiki/automated-testing/) 环境的一个**不可协商的方面**。
+在软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 对于维护测试过程的**可信性**和**有效性**至关重要。 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能会**削弱测试结果中的信任**，导致真正的故障可能被视为[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)。这可能会导致实际缺陷被忽略，从而可能导致生产中**昂贵的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)**。
+  此外，[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 向反馈循环添加**噪声**。开发团队依靠[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)来快速识别新代码引入的问题。当测试不可靠时，识别和修复[bugs](https://inaodeng.com/zh-cn/wiki/bug/)的**速度**就会受到影响，从而减慢开发周期并降低生产力。
+  投入时间解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 还可以**优化资源利用率**。 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 通常需要手动干预来调查和重新运行，这会消耗宝贵的时间和精力，而这些时间和精力本可以更好地用于新功能开发或改进现有测试。
+  此外，具有最少 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的套件**增强了持续集成** (CI) 实践。它允许更一致的部署管道，并有助于实现软件产品的**更快的上市时间**。
+  最后，通过解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，团队可以**提高[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**和**信心**。它确保 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 仍然是 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的可靠指标，这对于做出有关版本的明智决策至关重要。
+  总之，解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 问题是维护稳健、高效和值得信赖的[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 环境的一个**不可协商的方面**。
 
 ### 识别和原因
 
 #### 如何识别不稳定的测试？
 
-识别[片状测试](/zh-cn/wiki/flaky-test/)通常涉及监视和分析多次运行的测试结果。以下是一些精确定位[片状测试](/zh-cn/wiki/flaky-test/)的方法：
+识别[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)通常涉及监视和分析多次运行的测试结果。以下是一些精确定位[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)的方法：
 
 - **历史分析**：查看测试历史记录，以发现有时会失败、有时会在不更改代码的情况下通过的测试。
 - **异常检测**：使用应用统计分析的工具来测试结果以标记不一致之处。
@@ -89,11 +89,11 @@ order: 0
 - **并行执行**：并行或在不同环境中运行相同的测试，看看结果是否有所不同。
 - **确定性检查**：通过检查随机数据使用或依赖时间的操作，确保测试具有确定性结果。
 - **日志记录和监控**：在测试中实现详细的日志记录，以捕获发生故障时的状态和上下文。
-- **隔离**：将片状测试与主测试套件隔离并单独运行它们以确认其不稳定性。 使用这些见解来确定优先级并解决[片状测试](/zh-cn/wiki/flaky-test/)，保持[测试套件](/zh-cn/wiki/test-suite/) 的完整性。
+- **隔离**：将片状测试与主测试套件隔离并单独运行它们以确认其不稳定性。 使用这些见解来确定优先级并解决[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，保持[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的完整性。
 
 #### 不稳定测试的常见原因有哪些？
 
-[片状测试](/zh-cn/wiki/flaky-test/) 的常见原因包括：
+[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的常见原因包括：
 
 - **非确定性行为**：依赖于为相同输入产生不同输出的组件的测试可能会导致不稳定。示例包括随机数生成器或当前日期/时间函数。
 - **外部依赖**：如果这些系统不稳定或行为不一致，依赖于外部系统（例如数据库或 Web 服务）的测试可能会失败。
@@ -103,24 +103,24 @@ order: 0
 - **测试顺序依赖性**：如果测试的结果取决于测试运行的顺序，则可能会导致不稳定。
 - **特定于平台的问题**：操作系统、浏览器或环境的差异可能导致测试在一种环境中通过，但在另一种环境中失败。
 - **资源泄漏**：如果一次测试或被测系统没有正确释放资源，后续测试可能会因资源耗尽而失败。
-- **不可靠[测试数据](/zh-cn/wiki/test-data/)** ：依赖于在测试运行之间可能更改或未重置的数据的测试可能会不稳定。
-- **代码更改**：应用程序代码中的修改可能会带来副作用，导致以前稳定的测试变得不稳定。 解决这些原因需要仔细设计[测试用例](/zh-cn/wiki/test-case/)、正确管理[测试环境](/zh-cn/wiki/test-environment/)以及勤奋维护[测试套件](/zh-cn/wiki/test-suite/)。
+- **不可靠[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：依赖于在测试运行之间可能更改或未重置的数据的测试可能会不稳定。
+- **代码更改**：应用程序代码中的修改可能会带来副作用，导致以前稳定的测试变得不稳定。 解决这些原因需要仔细设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、正确管理[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)以及勤奋维护[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
 
 #### 测试环境如何促成片状测试？
 
-[测试环境](/zh-cn/wiki/test-environment/) 的稳定性和一致性对于最大限度地减少[片状测试](/zh-cn/wiki/flaky-test/) 至关重要。 [片状测试](/zh-cn/wiki/flaky-test/) 通常由环境因素引起，例如：
+[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 的稳定性和一致性对于最大限度地减少[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 至关重要。 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 通常由环境因素引起，例如：
 
 - **非确定性配置**：测试可能会通过或失败，具体取决于环境设置。确保跨环境的相同配置可以降低这种风险。
 - **共享资源**：依赖数据库或服务等共享资源的并发测试可能会相互干扰，从而导致不可预测的结果。
 - **网络问题**：网络条件波动可能导致依赖外部服务的测试行为不一致。
 - **数据状态**：如果数据意外更改，不以干净或定义明确的数据状态开始的测试可能会产生不同的结果。
-- **系统负载**：高系统负载可能会引入计时问题，导致在正常条件下通过的测试在系统承受压力时失败。 要为稳定的 [测试环境](/zh-cn/wiki/test-environment/) 做出贡献，请考虑：
+- **系统负载**：高系统负载可能会引入计时问题，导致在正常条件下通过的测试在系统承受压力时失败。 要为稳定的 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 做出贡献，请考虑：
 
 - **隔离**：使用容器化或虚拟化来隔离测试并确保它们在受控、一致的状态下运行。
 - **资源管理**：实施资源配额或使用专用资源进行测试，以防止冲突。
 - **网络稳定性**：利用服务虚拟化或网络条件模拟工具来创建可预测的网络行为。
 - **数据管理**：在每次测试运行之前采用数据沙箱或使用数据库快照重置数据状态。
-- **监控**：持续监控环境以检测和解决可能影响测试可靠性的性能问题。 通过保持稳定的[测试环境](/zh-cn/wiki/test-environment/)，您可以减少由于外部因素导致测试失败的可能性，从而减少[片状测试](/zh-cn/wiki/flaky-test/) 的发生。
+- **监控**：持续监控环境以检测和解决可能影响测试可靠性的性能问题。 通过保持稳定的[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，您可以减少由于外部因素导致测试失败的可能性，从而减少[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的发生。
 
 - **非确定性配置**：测试可能会通过或失败，具体取决于环境设置。确保跨环境的相同配置可以降低这种风险。
 - **共享资源**：依赖数据库或服务等共享资源的并发测试可能会相互干扰，从而导致不可预测的结果。
@@ -135,8 +135,8 @@ order: 0
 
 #### 计时问题如何导致不稳定的测试？
 
-由于执行速度的变化，计时问题可能会导致测试意外地通过或失败，从而导致[片状测试](/zh-cn/wiki/flaky-test/)。这些差异可能源于**网络延迟**、**硬件性能差异**或**资源争用**。例如，当服务器快速响应时测试可能会通过，但当响应延迟时测试可能会失败，即使功能正常工作也是如此。
-  异步操作特别容易出现时序问题。如果测试没有正确等待异步进程完成，它可能会过早断言预期状态，从而导致间歇性故障。在涉及**AJAX 调用**、**[数据库](/zh-cn/wiki/database/) 事务**或**后台作业**的测试中经常会看到这种情况。
+由于执行速度的变化，计时问题可能会导致测试意外地通过或失败，从而导致[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。这些差异可能源于**网络延迟**、**硬件性能差异**或**资源争用**。例如，当服务器快速响应时测试可能会通过，但当响应延迟时测试可能会失败，即使功能正常工作也是如此。
+  异步操作特别容易出现时序问题。如果测试没有正确等待异步进程完成，它可能会过早断言预期状态，从而导致间歇性故障。在涉及**AJAX 调用**、**[数据库](https://inaodeng.com/zh-cn/wiki/database/) 事务**或**后台作业**的测试中经常会看到这种情况。
   为了缓解时序问题：
 
 - 使用 **显式等待**与应用程序状态同步而不是固定 **睡觉**间隔。
@@ -145,13 +145,13 @@ order: 0
 
 - 设计 **与时间无关的断言**在可能的情况下，关注最终状态而不是达到它所需的时间。
 
-- 利用 **模拟**或 **存根**为外部依赖项提供一致的响应时间。 以下是在 [selenium](/zh-cn/wiki/selenium/) 测试中使用显式等待的示例：
+- 利用 **模拟**或 **存根**为外部依赖项提供一致的响应时间。 以下是在 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 测试中使用显式等待的示例：
 
 ```
   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myElement")));
 ```
-在此代码中，测试将等待长达 10 秒的时间，以便 ID 为 `myElement` 的元素变得可见，然后再继续，从而降低出现与计时相关的 [片状测试](/zh-cn/wiki/flaky-test/) 的可能性。
+在此代码中，测试将等待长达 10 秒的时间，以便 ID 为 `myElement` 的元素变得可见，然后再继续，从而降低出现与计时相关的 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的可能性。
 
 - 使用 **显式等待**与应用程序状态同步而不是固定 **睡觉**间隔。
 
@@ -165,7 +165,7 @@ order: 0
 
 #### 可以使用哪些策略来防止不稳定的测试？
 
-要防止软件[测试自动化](/zh-cn/wiki/test-automation/) 中出现[片状测试](/zh-cn/wiki/flaky-test/)，请考虑以下策略：
+要防止软件[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中出现[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，请考虑以下策略：
 
 - **设计确定性测试**：确保测试具有可预测的结果。避免依赖可能在测试运行之间发生变化的外部系统或数据。
 - **使用显式等待**：使用条件等待与应用程序状态同步，而不是硬编码睡眠。
@@ -174,44 +174,44 @@ order: 0
   await driver.wait(until.elementLocated(By.id('myElement')), 10000);
 ```
 
-- **模拟外部依赖项**：用模拟或存根替换外部服务或[数据库](/zh-cn/wiki/database/)，以确保数据的一致性和控制。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：为每次测试运行创建唯一的[测试数据](/zh-cn/wiki/test-data/) 或使用数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来保持一致的状态。
+- **模拟外部依赖项**：用模拟或存根替换外部服务或[数据库](https://inaodeng.com/zh-cn/wiki/database/)，以确保数据的一致性和控制。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：为每次测试运行创建唯一的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 或使用数据[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸方法来保持一致的状态。
 - **测试代码的版本控制**：将测试代码视为生产代码。使用版本控制和代码审查来保持质量。
 - **代码健康**：定期重构测试，删除过时的测试，并保持代码库干净且易于理解。
 - **谨慎并行执行**：并行运行测试时，确保它们完全隔离，并且不共享任何可能导致干扰的资源。
 - **幂等测试**：设计可以多次运行而不改变结果或系统状态的测试。
-- **定期审查和更新测试**：定期审查[测试套件](/zh-cn/wiki/test-suite/) 以确保它们仍然有效并更新它们以反映应用程序中的更改。
-- **教育团队成员**：分享有关最佳实践的知识，并鼓励形成一种文化，将预防和解决 [片状测试](/zh-cn/wiki/flaky-test/) 视为共同责任。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以显着减少[片状测试](/zh-cn/wiki/flaky-test/) 的发生并维持可靠且高效的测试流程。
+- **定期审查和更新测试**：定期审查[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 以确保它们仍然有效并更新它们以反映应用程序中的更改。
+- **教育团队成员**：分享有关最佳实践的知识，并鼓励形成一种文化，将预防和解决 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 视为共同责任。 通过实施这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以显着减少[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的发生并维持可靠且高效的测试流程。
 
 - **设计确定性测试**：确保测试具有可预测的结果。避免依赖可能在测试运行之间发生变化的外部系统或数据。
 - **使用显式等待**：使用条件等待与应用程序状态同步，而不是硬编码睡眠。
-- **模拟外部依赖项**：用模拟或存根替换外部服务或[数据库](/zh-cn/wiki/database/)，以确保数据的一致性和控制。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：为每次测试运行创建唯一的[测试数据](/zh-cn/wiki/test-data/) 或使用数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来保持一致的状态。
+- **模拟外部依赖项**：用模拟或存根替换外部服务或[数据库](https://inaodeng.com/zh-cn/wiki/database/)，以确保数据的一致性和控制。
+- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：为每次测试运行创建唯一的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 或使用数据[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸方法来保持一致的状态。
 - **测试代码的版本控制**：将测试代码视为生产代码。使用版本控制和代码审查来保持质量。
 - **代码健康**：定期重构测试，删除过时的测试，并保持代码库干净且易于理解。
 - **谨慎并行执行**：并行运行测试时，确保它们完全隔离，并且不共享任何可能导致干扰的资源。
 - **幂等测试**：设计可以多次运行而不改变结果或系统状态的测试。
-- **定期审查和更新测试**：定期审查[测试套件](/zh-cn/wiki/test-suite/) 以确保它们仍然有效并更新它们以反映应用程序中的更改。
-- **教育团队成员**：分享有关最佳实践的知识，并鼓励形成一种文化，将预防和解决 [片状测试](/zh-cn/wiki/flaky-test/) 视为共同责任。
+- **定期审查和更新测试**：定期审查[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 以确保它们仍然有效并更新它们以反映应用程序中的更改。
+- **教育团队成员**：分享有关最佳实践的知识，并鼓励形成一种文化，将预防和解决 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 视为共同责任。
 
 #### 如何减轻不稳定测试的影响？
 
-为了减轻[片状测试](/zh-cn/wiki/flaky-test/) 的影响，请实施**隔离机制**，将[片状测试](/zh-cn/wiki/flaky-test/) 与稳定的[测试套件](/zh-cn/wiki/test-suite/) 分开。这可以防止它们影响持续集成管道的可靠性。一旦隔离，**优先修复或重构**这些测试。
+为了减轻[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的影响，请实施**隔离机制**，将[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 与稳定的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 分开。这可以防止它们影响持续集成管道的可靠性。一旦隔离，**优先修复或重构**这些测试。
   谨慎使用**断言重试**，其中测试将在失败之前重试断言一定次数，以考虑瞬态条件。然而，这不能替代解决不稳定的根本原因。
   **通过使用显式等待或轮询机制来处理异步操作，而不是固定睡眠（可能不可靠），提高测试稳定性。
-  **定期审查[测试日志](/zh-cn/wiki/test-log/) 和指标**，以识别测试失败中可能指出潜在问题的模式或共性。
-  **版本控制测试工件**，例如 [测试数据](/zh-cn/wiki/test-data/) 和配置文件，以确保测试运行之间的一致性。
-  实施**智能测试选择**或**测试优先级**技术，根据代码库中的更改运行最相关的测试，从而减少不相关的[片状测试](/zh-cn/wiki/flaky-test/)失败的机会。
+  **定期审查[测试日志](https://inaodeng.com/zh-cn/wiki/test-log/) 和指标**，以识别测试失败中可能指出潜在问题的模式或共性。
+  **版本控制测试工件**，例如 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 和配置文件，以确保测试运行之间的一致性。
+  实施**智能测试选择**或**测试优先级**技术，根据代码库中的更改运行最相关的测试，从而减少不相关的[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)失败的机会。
   **教育团队**了解不稳定的成本，并促进每个人都有责任维护测试可靠性的文化。
-  **彻底记录[片状测试](/zh-cn/wiki/flaky-test/)**，包括诊断和修复它们所采取的步骤，以构建知识库以供将来参考。
+  **彻底记录[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**，包括诊断和修复它们所采取的步骤，以构建知识库以供将来参考。
   最后，考虑**与开发人员结对**来审查和改进测试，因为新的观点通常可以发现原作者可能忽视的问题。
 
 #### 测试隔离在防止不稳定测试方面发挥什么作用？
 
-测试隔离对于防止 [片状测试](/zh-cn/wiki/flaky-test/) 至关重要，确保每个测试都可以独立运行，而不依赖于其他测试或共享状态。这意味着一项测试的结果不会影响另一项测试，从而使结果可预测且可重复。
+测试隔离对于防止 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 至关重要，确保每个测试都可以独立运行，而不依赖于其他测试或共享状态。这意味着一项测试的结果不会影响另一项测试，从而使结果可预测且可重复。
   要实现测试隔离，请遵循以下做法：
 
-- **在每次测试之前和之后初始化和清理** [测试环境](/zh-cn/wiki/test-environment/)。这可以使用大多数测试框架提供的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来完成。
+- **在每次测试之前和之后初始化和清理** [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。这可以使用大多数测试框架提供的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸方法来完成。
 
 ```
     beforeEach(() => {
@@ -240,9 +240,9 @@ order: 0
       expect(instance.getState()).toBe('fresh state');
     });
 ```
-通过隔离测试，您可以降低可能导致不稳定行为的副作用和测试间依赖性的风险。这种做法有助于维持稳健可靠的[测试套件](/zh-cn/wiki/test-suite/)，从而可以更准确地评估[软件质量](/zh-cn/wiki/software-quality/)。
+通过隔离测试，您可以降低可能导致不稳定行为的副作用和测试间依赖性的风险。这种做法有助于维持稳健可靠的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，从而可以更准确地评估[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。
 
-- **在每次测试之前和之后初始化和清理** [测试环境](/zh-cn/wiki/test-environment/)。这可以使用大多数测试框架提供的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸方法来完成。
+- **在每次测试之前和之后初始化和清理** [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。这可以使用大多数测试框架提供的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸方法来完成。
 
 ```
     beforeEach(() => {
@@ -274,9 +274,9 @@ order: 0
 
 #### 重新运行测试如何帮助处理不稳定的测试？
 
-重新运行测试，通常称为**[片状测试](/zh-cn/wiki/flaky-test/) 重试**或**测试片状性缓解**，可以通过区分真阳性和[误报](/zh-cn/wiki/false-positive/) 来帮助处理[片状测试](/zh-cn/wiki/flaky-test/)。当测试失败时，重新运行多次可以确认失败是一致的还是间歇性的。如果测试在后续运行中通过，而没有对代码进行任何更改，则可能是 [片状测试](/zh-cn/wiki/flaky-test/) 而不是真正的问题。
-  此方法在频繁运行测试的**持续集成 (CI)** 环境中非常有用。通过在将构建标记为失败之前自动重新运行失败的测试，您可以减少来自 [片状测试](/zh-cn/wiki/flaky-test/) 的噪音并专注于真正的失败。然而，明智地使用重新运行以避免掩盖真正的问题非常重要。
-  实现重新运行就像在 [测试自动化](/zh-cn/wiki/test-automation/) 框架或 CI 管道中添加重试机制一样简单。例如，在 **[Jest](/zh-cn/wiki/jest/)** 这样的 JavaScript 测试框架中，您可以使用 `--bail` 和 `--retryTimes` 标志来指定失败测试的重试次数：
+重新运行测试，通常称为**[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 重试**或**测试片状性缓解**，可以通过区分真阳性和[误报](https://inaodeng.com/zh-cn/wiki/false-positive/) 来帮助处理[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。当测试失败时，重新运行多次可以确认失败是一致的还是间歇性的。如果测试在后续运行中通过，而没有对代码进行任何更改，则可能是 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 而不是真正的问题。
+  此方法在频繁运行测试的**持续集成 (CI)** 环境中非常有用。通过在将构建标记为失败之前自动重新运行失败的测试，您可以减少来自 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的噪音并专注于真正的失败。然而，明智地使用重新运行以避免掩盖真正的问题非常重要。
+  实现重新运行就像在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架或 CI 管道中添加重试机制一样简单。例如，在 **[Jest](https://inaodeng.com/zh-cn/wiki/jest/)** 这样的 JavaScript 测试框架中，您可以使用 `--bail` 和 `--retryTimes` 标志来指定失败测试的重试次数：
 
 ```
   jest --bail --retryTimes=2
@@ -287,21 +287,21 @@ order: 0
 
 #### 有哪些工具可用于检测和管理不稳定测试？
 
-有多种工具可用于检测和管理[测试自动化](/zh-cn/wiki/test-automation/) 中的[片状测试](/zh-cn/wiki/flaky-test/)：
+有多种工具可用于检测和管理[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 中的[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)：
 
-- **测试重试**：许多测试框架（如 JUnit、TestNG 和 pytest）支持自动重试失败的测试，以快速识别 [片状测试](/zh-cn/wiki/flaky-test/)。
-- **不稳定的测试管理插件**：诸如 Jenkins 的 **[片状测试](/zh-cn/wiki/flaky-test/) 处理程序插件** 之类的工具可以通过将测试标记为不稳定并报告其随时间变化的行为来帮助跟踪和管理 [片状测试](/zh-cn/wiki/flaky-test/)。
+- **测试重试**：许多测试框架（如 JUnit、TestNG 和 pytest）支持自动重试失败的测试，以快速识别 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+- **不稳定的测试管理插件**：诸如 Jenkins 的 **[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 处理程序插件** 之类的工具可以通过将测试标记为不稳定并报告其随时间变化的行为来帮助跟踪和管理 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
 - **构建工具**：像 Maven 和 Gradle 这样的构建系统可以选择重新运行失败的测试，这可以用来检测不稳定情况。
-- **隔离机制**：一些 CI/CD 系统提供隔离 [片状测试](/zh-cn/wiki/flaky-test/) 的功能，将它们与主 [测试套件](/zh-cn/wiki/test-suite/) 分开，直到它们被修复。
-- **测试 [影响分析](/zh-cn/wiki/impact-analysis/) 工具**：像 Google 的 **测试不稳定分析器** 和 **TeamCity 的测试历史** 等工具可以分析 [测试执行](/zh-cn/wiki/test-execution/) 历史记录，以识别可能表明不稳定的模式。
-- **监控和分析**：**TestRail** 和 **Allure TestOps** 等平台提供了对测试稳定性的见解，并可以突出显示 [片状测试](/zh-cn/wiki/flaky-test/)。
+- **隔离机制**：一些 CI/CD 系统提供隔离 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的功能，将它们与主 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 分开，直到它们被修复。
+- **测试 [影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/) 工具**：像 Google 的 **测试不稳定分析器** 和 **TeamCity 的测试历史** 等工具可以分析 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 历史记录，以识别可能表明不稳定的模式。
+- **监控和分析**：**TestRail** 和 **Allure TestOps** 等平台提供了对测试稳定性的见解，并可以突出显示 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
 - **自定义脚本**：团队经常编写自定义脚本来分析持续集成运行的测试结果，以检测不稳定模式。
 - **版本控制挂钩**：Git 挂钩可用于触发特定操作，例如当测试的行为从通过变为失败时通知团队，反之亦然。
-- **专用服务**：**Buildkite 的测试分析**和 **CircleCI 的洞察**等服务提供 [片状测试](/zh-cn/wiki/flaky-test/) 检测和洞察，作为其 CI/CD 产品的一部分。 这些工具与测试设计和维护方面的最佳实践相结合，可以显着减少[自动化测试](/zh-cn/wiki/automated-testing/)套件中[片状测试](/zh-cn/wiki/flaky-test/)的发生和影响。
+- **专用服务**：**Buildkite 的测试分析**和 **CircleCI 的洞察**等服务提供 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 检测和洞察，作为其 CI/CD 产品的一部分。 这些工具与测试设计和维护方面的最佳实践相结合，可以显着减少[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)套件中[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)的发生和影响。
 
 #### 持续集成如何帮助管理不稳定的测试？
 
-持续集成 (CI) 通过提供**一致且自动化的方式**来构建、测试和验证代码更改，成为管理 [片状测试](/zh-cn/wiki/flaky-test/) 的关键工具。当检测到 [片状测试](/zh-cn/wiki/flaky-test/) 时，CI 可以：
+持续集成 (CI) 通过提供**一致且自动化的方式**来构建、测试和验证代码更改，成为管理 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的关键工具。当检测到 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 时，CI 可以：
 
 - **自动重新运行测试**以确认故障是暂时的还是一致的。这可以使用 CI 管道中的测试后挂钩或脚本进行设置。
 
@@ -311,10 +311,10 @@ order: 0
 ```
 
 - **通过在干净、受控的环境中运行测试来隔离故障**，减少可能导致不稳定的外部因素的影响。
-- 通过与记录测试历史记录的 [测试管理](/zh-cn/wiki/test-management/) 工具集成，**随着时间的推移跟踪不稳定**，从而更容易发现测试行为的模式或趋势。
+- 通过与记录测试历史记录的 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具集成，**随着时间的推移跟踪不稳定**，从而更容易发现测试行为的模式或趋势。
 - **通过立即通知开发人员测试失败，促进快速反馈循环**，以便及时调查和解决。
-- **支持并行执行**以更频繁地在各种配置上运行测试，在不同条件下更快地暴露[片状测试](/zh-cn/wiki/flaky-test/)。
-- **通过收集和可视化 [测试数据](/zh-cn/wiki/test-data/) 实现趋势分析**，帮助团队根据[片状测试](/zh-cn/wiki/flaky-test/) 对开发流程的影响确定要解决的优先级。 通过利用 CI，团队可以主动管理[片状测试](/zh-cn/wiki/flaky-test/)，维护[测试套件](/zh-cn/wiki/test-suite/) 的稳定性和可靠性，并最终保证软件产品的质量。
+- **支持并行执行**以更频繁地在各种配置上运行测试，在不同条件下更快地暴露[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+- **通过收集和可视化 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 实现趋势分析**，帮助团队根据[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 对开发流程的影响确定要解决的优先级。 通过利用 CI，团队可以主动管理[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，维护[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的稳定性和可靠性，并最终保证软件产品的质量。
 
 - **自动重新运行测试**以确认故障是暂时的还是一致的。这可以使用 CI 管道中的测试后挂钩或脚本进行设置。
 
@@ -324,33 +324,33 @@ order: 0
 ```
 
 - **通过在干净、受控的环境中运行测试来隔离故障**，减少可能导致不稳定的外部因素的影响。
-- 通过与记录测试历史记录的 [测试管理](/zh-cn/wiki/test-management/) 工具集成，**随着时间的推移跟踪不稳定**，从而更容易发现测试行为的模式或趋势。
+- 通过与记录测试历史记录的 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具集成，**随着时间的推移跟踪不稳定**，从而更容易发现测试行为的模式或趋势。
 - **通过立即通知开发人员测试失败，促进快速反馈循环**，以便及时调查和解决。
-- **支持并行执行**以更频繁地在各种配置上运行测试，在不同条件下更快地暴露[片状测试](/zh-cn/wiki/flaky-test/)。
-- **通过收集和可视化 [测试数据](/zh-cn/wiki/test-data/) 实现趋势分析**，帮助团队根据 [片状测试](/zh-cn/wiki/flaky-test/) 对开发流程的影响确定要解决的优先级。
+- **支持并行执行**以更频繁地在各种配置上运行测试，在不同条件下更快地暴露[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+- **通过收集和可视化 [测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 实现趋势分析**，帮助团队根据 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 对开发流程的影响确定要解决的优先级。
 
 #### 可以使用哪些技术来调试不稳定的测试？
 
-要调试[片状测试](/zh-cn/wiki/flaky-test/)，请考虑以下技术：
+要调试[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)，请考虑以下技术：
 
 - **增量调试**：首先隔离测试并在循环中运行它以重现不稳定的情况。重现后，增量添加日志或使用调试器来查明确切的故障点。
 - **版本控制二分**：使用 `git bisect` 等工具通过在各种提交中自动运行测试来识别引入片状性的特定提交。
-- **测试隔离**：暂时将[片状测试](/zh-cn/wiki/flaky-test/)移出主[测试套件](/zh-cn/wiki/test-suite/)，以避免在调试它们时阻塞开发过程。
-- **记录和重播**：使用允许您重播场景的工具捕获[测试执行](/zh-cn/wiki/test-execution/)。这可以深入了解测试期间出现的问题。
-- **并行执行分析**：如果在并行[测试执行](/zh-cn/wiki/test-execution/)期间发生不稳定，请按顺序运行测试以检查相互依赖性。
-- **清洁状态强制**：通过重置[数据库](/zh-cn/wiki/database/)、清除缓存或刷新环境，确保每次测试运行都以干净状态开始。
+- **测试隔离**：暂时将[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)移出主[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，以避免在调试它们时阻塞开发过程。
+- **记录和重播**：使用允许您重播场景的工具捕获[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。这可以深入了解测试期间出现的问题。
+- **并行执行分析**：如果在并行[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间发生不稳定，请按顺序运行测试以检查相互依赖性。
+- **清洁状态强制**：通过重置[数据库](https://inaodeng.com/zh-cn/wiki/database/)、清除缓存或刷新环境，确保每次测试运行都以干净状态开始。
 - **视觉差异**：对于 UI 测试，使用屏幕截图比较工具来检测测试输出中可能不明显的视觉差异。
 - **网络流量分析**：在测试运行期间监控和分析网络流量，以识别任何外部依赖性或数据不一致。
 - **模拟外部服务**：用模拟或存根替换外部服务，以排除第三方服务导致不稳定的情况。
-- **资源监控**：在 [测试执行](/zh-cn/wiki/test-execution/) 期间检查资源限制，例如内存泄漏、CPU 峰值或缓慢的磁盘 I/O。
-- **时间旅行调试**：一些高级调试工具允许您记录执行情况并及时回退以检查应用程序在各个点的状态。 通过系统地应用这些技术，您可以识别不稳定的根本原因，并应用适当的修复来稳定您的[测试套件](/zh-cn/wiki/test-suite/)。
+- **资源监控**：在 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间检查资源限制，例如内存泄漏、CPU 峰值或缓慢的磁盘 I/O。
+- **时间旅行调试**：一些高级调试工具允许您记录执行情况并及时回退以检查应用程序在各个点的状态。 通过系统地应用这些技术，您可以识别不稳定的根本原因，并应用适当的修复来稳定您的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
 
 #### 测试自动化框架如何帮助处理不稳定的测试？
 
-[测试自动化](/zh-cn/wiki/test-automation/) 框架可以通过提供**结构化方法**和**内置功能**来显着帮助管理[片状测试](/zh-cn/wiki/flaky-test/)。他们提供**重试机制**，自动重新运行失败的测试，这可以区分真正失败的测试和不稳定的测试。框架通常包括**日志记录和报告功能**，可以提供对测试运行的详细见解，有助于查明不稳定的根本原因。
+[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架可以通过提供**结构化方法**和**内置功能**来显着帮助管理[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。他们提供**重试机制**，自动重新运行失败的测试，这可以区分真正失败的测试和不稳定的测试。框架通常包括**日志记录和报告功能**，可以提供对测试运行的详细见解，有助于查明不稳定的根本原因。
   使用**数据驱动测试**功能，框架可以确保使用各种输入集运行测试，从而减少由于未经测试的数据组合而导致不稳定的可能性。它们还支持**并行执行**，这可能会暴露在顺序测试运行期间可能不明显的并发问题。
-  框架鼓励**最佳实践**，例如**测试隔离**和**模块化**，这可以防止测试之间导致不稳定的副作用。此外，它们还可以与**版本控制**和**持续集成系统**集成，从而允许随着时间的推移即时反馈和跟踪[片状测试](/zh-cn/wiki/flaky-test/)。
-  此外，框架通常具有**可扩展性**选项，允许团队插入用于[片状测试](/zh-cn/wiki/flaky-test/)检测和管理的附加工具，例如**[片状测试](/zh-cn/wiki/flaky-test/)识别插件**或**高级分析**。
+  框架鼓励**最佳实践**，例如**测试隔离**和**模块化**，这可以防止测试之间导致不稳定的副作用。此外，它们还可以与**版本控制**和**持续集成系统**集成，从而允许随着时间的推移即时反馈和跟踪[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)。
+  此外，框架通常具有**可扩展性**选项，允许团队插入用于[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)检测和管理的附加工具，例如**[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)识别插件**或**高级分析**。
 
 ```
   // Example of a retry mechanism in a test automation framework
@@ -360,4 +360,4 @@ order: 0
     }).retries(3);
   });
 ```
-通过利用这些功能，[测试自动化](/zh-cn/wiki/test-automation/) 框架为最大限度地减少[片状测试](/zh-cn/wiki/flaky-test/) 的发生和影响提供了坚实的基础。
+通过利用这些功能，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架为最大限度地减少[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 的发生和影响提供了坚实的基础。

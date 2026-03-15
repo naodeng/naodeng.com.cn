@@ -119,10 +119,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [agent-evals](/en/AIWiki/agent-evals/)
-- [graders](/en/AIWiki/graders/)
-- [reasoning-models](/en/AIWiki/reasoning-models/)
-- [ai-agent](/en/AIWiki/ai-agent/)
+- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [graders](https://inaodeng.com/en/AIWiki/graders/)
+- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
+- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
 
 ### External References
 

@@ -51,14 +51,14 @@ order: 0
 
 #### 什么是并发测试？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/)是当多个进程或线程并发访问共享资源时验证系统稳定性和可靠性的方法。它旨在发现由于进程同时执行而出现的问题，例如数据损坏、死锁、竞争条件和[priority](/zh-cn/wiki/priority/)冲突。
-  为了进行[并发测试](/zh-cn/wiki/concurrency-testing/)，工程师通常模拟多用户环境来强调系统的同步、锁定机制和资源共享策略。这涉及创建并行执行操作的测试，通常以比生产中预期更高的强度，将系统推向极限并确保它可以处理并发操作而不会出现故障。
-  **[并发测试](/zh-cn/wiki/concurrency-testing/)** 的关键方面包括：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)是当多个进程或线程并发访问共享资源时验证系统稳定性和可靠性的方法。它旨在发现由于进程同时执行而出现的问题，例如数据损坏、死锁、竞争条件和[priority](https://inaodeng.com/zh-cn/wiki/priority/)冲突。
+  为了进行[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)，工程师通常模拟多用户环境来强调系统的同步、锁定机制和资源共享策略。这涉及创建并行执行操作的测试，通常以比生产中预期更高的强度，将系统推向极限并确保它可以处理并发操作而不会出现故障。
+  **[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)** 的关键方面包括：
 
 - **模拟多个用户**：模仿多个用户同时与系统交互的操作。
 - **时序考虑因素**：改变操作时序以识别与时序相关的缺陷。
 - **资源争用**：强制系统争夺共享资源以识别潜在的瓶颈或冲突。
-- **同步机制**：测试锁、信号量和其他同步技术的有效性。 **简单并发[测试用例](/zh-cn/wiki/test-case/)的示例**：
+- **同步机制**：测试锁、信号量和其他同步技术的有效性。 **简单并发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的示例**：
 
 ```
   // Pseudo-code for a basic concurrency test case
@@ -71,18 +71,18 @@ order: 0
     assert(sharedResource.isValidState());
   }
 ```
-在这个[测试用例](/zh-cn/wiki/test-case/)中，`accessSharedResource`表示多个线程或进程会并发调用的函数，而`isValidState`将是并发访问后验证共享资源完整性的方法。
+在这个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)中，`accessSharedResource`表示多个线程或进程会并发调用的函数，而`isValidState`将是并发访问后验证共享资源完整性的方法。
 
 #### 为什么并发测试很重要？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 至关重要，因为它确保软件应用程序可以同时处理多个进程或用户，而不会降低性能或损坏数据。在当今的多用户环境中，应用程序经常面临并发访问，因此在这种情况下验证其稳定性和可靠性至关重要。
-  通过模拟多个用户或进程，[并发测试](/zh-cn/wiki/concurrency-testing/) 可以发现其他类型的测试中可能不会出现的死锁、竞争条件和数据不一致等问题。它有助于识别同步问题并确保正确处理事务并有效共享资源而不会发生冲突。
-  此外，[并发测试](/zh-cn/wiki/concurrency-testing/)对于需要高可用性和稳健性的应用程序至关重要，例如银行系统、在线零售平台和云服务。它使人们相信应用程序可以处理峰值负载并保持数据完整性，这对于用户满意度和业务连续性至关重要。
-  将 [并发测试](/zh-cn/wiki/concurrency-testing/) 纳入开发周期可以防止代价高昂的停机和数据丢失事件。它是确保应用程序已做好生产准备并能够满足实际使用需求的不可或缺的一部分。
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 至关重要，因为它确保软件应用程序可以同时处理多个进程或用户，而不会降低性能或损坏数据。在当今的多用户环境中，应用程序经常面临并发访问，因此在这种情况下验证其稳定性和可靠性至关重要。
+  通过模拟多个用户或进程，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 可以发现其他类型的测试中可能不会出现的死锁、竞争条件和数据不一致等问题。它有助于识别同步问题并确保正确处理事务并有效共享资源而不会发生冲突。
+  此外，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)对于需要高可用性和稳健性的应用程序至关重要，例如银行系统、在线零售平台和云服务。它使人们相信应用程序可以处理峰值负载并保持数据完整性，这对于用户满意度和业务连续性至关重要。
+  将 [并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 纳入开发周期可以防止代价高昂的停机和数据丢失事件。它是确保应用程序已做好生产准备并能够满足实际使用需求的不可或缺的一部分。
 
 #### 并发测试的主要好处是什么？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 的主要优点包括：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 的主要优点包括：
 
 - **提高系统可靠性**：确保应用程序可以无故障地处理同时的用户操作，从而形成更强大的系统。
 - **增强性能**：识别并发执行多个进程时的性能瓶颈，从而进行优化。
@@ -92,62 +92,62 @@ order: 0
 - **竞态条件解决**：揭示竞态条件，其中系统的行为可能取决于不可控事件的顺序或时间。
 - **数据完整性保证**：确认并发事务不会导致数据损坏或丢失。
 - **用户体验改进**：通过确保系统在负载下正常运行，用户体验在高峰使用时间不会受到影响。
-- **监管合规性**：在某些行业中，处理并发操作的能力是一项监管要求，因此并发测试对于合规性至关重要。 通过解决这些问题，[并发测试](/zh-cn/wiki/concurrency-testing/) 在提供高质量、可靠且用户友好的产品方面发挥着至关重要的作用。
+- **监管合规性**：在某些行业中，处理并发操作的能力是一项监管要求，因此并发测试对于合规性至关重要。 通过解决这些问题，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 在提供高质量、可靠且用户友好的产品方面发挥着至关重要的作用。
 
 #### 通过并发测试可以发现哪些潜在问题？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 可以揭示对多线程应用程序的性能和稳定性至关重要的各种问题。以下是一些可以识别的潜在问题：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 可以揭示对多线程应用程序的性能和稳定性至关重要的各种问题。以下是一些可以识别的潜在问题：
 
 - **死锁**：两个或多个线程无法继续进行的情况，因为每个线程都在等待另一个线程释放资源。
 - **竞争条件**：当系统的行为依赖于其他不可控事件的顺序或时间时发生的缺陷。
 - **资源泄漏**：线程在不再需要资源（例如内存、文件句柄）时无法正确释放资源，导致资源耗尽的情况。
-- **[Priority](/zh-cn/wiki/priority/) 反转**：较低优先级任务持有较高优先级任务所需的资源，但被中间优先级任务抢占，从而阻塞较高优先级任务。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/) 反转**：较低优先级任务持有较高优先级任务所需的资源，但被中间优先级任务抢占，从而阻塞较高优先级任务。
 - **饥饿**：线程永远被拒绝获取继续运行所需的资源的情况，通常是由于优先级问题或其他线程的资源垄断。
 - **吞吐量问题**：系统未按预期速度处理事务的问题，这可能是由于锁定或线程管理效率低下所致。
 - **性能瓶颈**：系统中由于单个或少数组件而导致并发处理速度显着降低的点。
 - **不正确的处理**：仅在特定时间或事件顺序下才会出现的逻辑错误，导致不正确的结果或行为。
-- **活锁**：线程未被阻塞，但它们无法取得进展的情况，因为它们不断相互响应而不做任何有用的工作。 通过[并发测试](/zh-cn/wiki/concurrency-testing/) 尽早识别这些问题对于确保软件能够处理同时操作而不会对性能或功能产生不利影响至关重要。
+- **活锁**：线程未被阻塞，但它们无法取得进展的情况，因为它们不断相互响应而不做任何有用的工作。 通过[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 尽早识别这些问题对于确保软件能够处理同时操作而不会对性能或功能产生不利影响至关重要。
 
 #### 并发测试和其他类型的测试有什么区别？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 与其他类型的测试不同，它重点关注同时执行多个操作或事务时应用程序的行为。与[单元测试](/zh-cn/wiki/unit-testing/)（隔离一段代码以验证其正确性）或[集成测试](/zh-cn/wiki/integration-testing/)（确保不同模块按预期协同工作）不同，[并发测试](/zh-cn/wiki/concurrency-testing/) 旨在发现仅在并发访问或修改共享资源时出现的问题。
-  [功能测试](/zh-cn/wiki/functional-testing/) 在给定特定输入的情况下检查正确的输出，而不考虑并发用户的系统状态。 [性能测试](/zh-cn/wiki/performance-testing/) 虽然可能涉及多个用户，但通常评估系统在负载下的整体响应能力和稳定性，而不是评估并发处理下应用程序行为的正确性。
-  相比之下，[并发测试](/zh-cn/wiki/concurrency-testing/) 专门针对其他测试类型通常不会暴露的竞争条件、死锁和数据一致性问题。它需要不同的方法，通常涉及创建模拟多个用户或进程同时与应用程序交互的测试，以尝试强制解决可能导致不正确行为或系统崩溃的计时问题。
-  虽然[压力测试](/zh-cn/wiki/stress-testing/) 还涉及大量并发用户或请求，但其主要目标是确定应用程序的限制和稳健性，而不是识别特定于并发的缺陷。另一方面，[并发测试](/zh-cn/wiki/concurrency-testing/) 更关心确保系统能够正确管理同时操作且不会发生冲突，而不管整体系统负载如何。
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 与其他类型的测试不同，它重点关注同时执行多个操作或事务时应用程序的行为。与[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)（隔离一段代码以验证其正确性）或[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)（确保不同模块按预期协同工作）不同，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 旨在发现仅在并发访问或修改共享资源时出现的问题。
+  [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/) 在给定特定输入的情况下检查正确的输出，而不考虑并发用户的系统状态。 [性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 虽然可能涉及多个用户，但通常评估系统在负载下的整体响应能力和稳定性，而不是评估并发处理下应用程序行为的正确性。
+  相比之下，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 专门针对其他测试类型通常不会暴露的竞争条件、死锁和数据一致性问题。它需要不同的方法，通常涉及创建模拟多个用户或进程同时与应用程序交互的测试，以尝试强制解决可能导致不正确行为或系统崩溃的计时问题。
+  虽然[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 还涉及大量并发用户或请求，但其主要目标是确定应用程序的限制和稳健性，而不是识别特定于并发的缺陷。另一方面，[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 更关心确保系统能够正确管理同时操作且不会发生冲突，而不管整体系统负载如何。
 
 ### 技术和方法
 
 #### 并发测试中常用的技术有哪些？
 
-**[并发测试](/zh-cn/wiki/concurrency-testing/)** 中使用的常用技术包括：
+**[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)** 中使用的常用技术包括：
 
 - **线程池**：利用线程池来模拟并发访问和与应用程序的交互。
 - **锁测试**：显式获取和释放锁以测试应用程序处理同步的能力。
 - **共享数据操作**：同时读取和写入共享数据结构以发现数据损坏或不一致问题。
 - **资源匮乏**：故意限制资源，以确保应用程序可以处理低资源场景，而不会出现死锁或性能下降。
-- **[Priority](/zh-cn/wiki/priority/) 测试**：为并发进程分配不同的优先级，以验证应用程序在不同优先级条件下的行为。
+- **[Priority](https://inaodeng.com/zh-cn/wiki/priority/) 测试**：为并发进程分配不同的优先级，以验证应用程序在不同优先级条件下的行为。
 - **定时测试**：引入延迟或计时约束来测试应用程序对计时问题（例如竞争条件）的响应。
 - **随机测试**：随机化操作的顺序和时间以模拟不可预测的并发交互。
-- **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** ：监控并发使用下应用程序的状态转换，以确保状态一致性。 这些技术通常在受控环境中组合和执行，以模拟现实世界的场景。自动化工具可用于编写这些测试的脚本并重复运行它们，确保彻底覆盖并检测并发相关的缺陷。
+- **[状态转换测试](https://inaodeng.com/zh-cn/wiki/state-transition-testing/)** ：监控并发使用下应用程序的状态转换，以确保状态一致性。 这些技术通常在受控环境中组合和执行，以模拟现实世界的场景。自动化工具可用于编写这些测试的脚本并重复运行它们，确保彻底覆盖并检测并发相关的缺陷。
 
 #### 如何设计并发测试的测试用例？
 
-为[并发测试](/zh-cn/wiki/concurrency-testing/) 设计[测试用例](/zh-cn/wiki/test-case/) 需要模拟多个用户或进程同时与系统交互，以发现死锁、竞争条件和数据不一致等问题。这是创建并发[测试用例](/zh-cn/wiki/test-case/)的简洁指南：
+为[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 需要模拟多个用户或进程同时与系统交互，以发现死锁、竞争条件和数据不一致等问题。这是创建并发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的简洁指南：
 
 1. **识别应用程序的关键部分**，其中预计会发生并发访问或最有可能出现问题。
 2. **定义并发测试的范围**，包括并发用户或进程的数量以及他们将执行的具体操作。
-3. **创建 [测试场景](/zh-cn/wiki/test-scenario/)** 概述每个用户或进程将执行的步骤。确保场景包含可能导致争用的操作，例如同时读取和写入共享资源。
+3. **创建 [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** 概述每个用户或进程将执行的步骤。确保场景包含可能导致争用的操作，例如同时读取和写入共享资源。
 4. **设置测试所需的前提条件**，例如用户帐户、数据状态和系统配置。
 5. **确定测试的预期结果**，包括系统在并发负载下的行为以及共享资源的最终状态。
 6. **如果需要协调并发用户或进程的操作，请使用同步机制**，确保它们按所需的顺序发生。
-7. **使用支持并发的合适自动化工具（例如 [JMeter](/zh-cn/wiki/jmeter/) 或自定义脚本）实现 [测试用例](/zh-cn/wiki/test-case/)**。
-8. **执行[测试用例](/zh-cn/wiki/test-case/)**并监视系统是否有任何意外行为、错误或性能下降。
+7. **使用支持并发的合适自动化工具（例如 [JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 或自定义脚本）实现 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。
+8. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**并监视系统是否有任何意外行为、错误或性能下降。
 9. **记录结果**并分析它们以识别任何与并发相关的问题。
-10. 根据调查结果，**迭代和完善**[测试用例](/zh-cn/wiki/test-case/)，根据需要调整并发级别和交互的复杂性。
+10. 根据调查结果，**迭代和完善**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，根据需要调整并发级别和交互的复杂性。
 
 #### 负载生成器在并发测试中的作用是什么？
 
-负载生成器通过模拟多个用户或进程同时与软件应用程序交互，在 **[并发测试](/zh-cn/wiki/concurrency-testing/)** 中发挥着至关重要的作用。它们生成大量虚拟用户活动来对应用程序及其基础设施施加压力，从而使测试人员能够：
+负载生成器通过模拟多个用户或进程同时与软件应用程序交互，在 **[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)** 中发挥着至关重要的作用。它们生成大量虚拟用户活动来对应用程序及其基础设施施加压力，从而使测试人员能够：
 
 - **评估绩效**在预期和峰值负载条件下。
 
@@ -179,15 +179,15 @@ order: 0
 
 #### 压力测试和并发测试有什么区别？
 
-[压力测试](/zh-cn/wiki/stress-testing/) 和[并发测试](/zh-cn/wiki/concurrency-testing/) 是不同类型的[性能测试](/zh-cn/wiki/performance-testing/)，每种类型都针对负载下系统行为的不同方面。
-  **[压力测试](/zh-cn/wiki/stress-testing/)** 评估系统在极端条件下（通常超出其指定限制）的性能，以确定其断点或故障模式。它涉及逐步增加负载直到系统变得无响应或崩溃，识别最大容量和系统在故障下的行为。
-  另一方面，**[并发测试](/zh-cn/wiki/concurrency-testing/)** 专注于确保系统能够按预期处理同时操作或事务。它旨在发现多个进程或线程同时访问共享资源时出现的死锁、竞争条件和数据不一致等问题。
-  [压力测试](/zh-cn/wiki/stress-testing/) 旨在将系统推向极限以观察其何时以及如何发生故障，而[并发测试](/zh-cn/wiki/concurrency-testing/) 则旨在确保系统能够正确管理多个同时交互。 [并发测试](/zh-cn/wiki/concurrency-testing/) 在同时访问很常见的多用户环境中至关重要，而 [压力测试](/zh-cn/wiki/stress-testing/) 对于了解系统容量和稳定性的上限至关重要。
-  总之，[压力测试](/zh-cn/wiki/stress-testing/) 是面向负载的，将系统推向极端条件，而[并发测试](/zh-cn/wiki/concurrency-testing/) 是面向交互的，确保同时使用时的正确行为。两者对于综合性能评估都至关重要，但在 [软件测试](/zh-cn/wiki/software-testing/) 生命周期中具有不同的用途。
+[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 和[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 是不同类型的[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)，每种类型都针对负载下系统行为的不同方面。
+  **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** 评估系统在极端条件下（通常超出其指定限制）的性能，以确定其断点或故障模式。它涉及逐步增加负载直到系统变得无响应或崩溃，识别最大容量和系统在故障下的行为。
+  另一方面，**[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)** 专注于确保系统能够按预期处理同时操作或事务。它旨在发现多个进程或线程同时访问共享资源时出现的死锁、竞争条件和数据不一致等问题。
+  [压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 旨在将系统推向极限以观察其何时以及如何发生故障，而[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 则旨在确保系统能够正确管理多个同时交互。 [并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 在同时访问很常见的多用户环境中至关重要，而 [压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 对于了解系统容量和稳定性的上限至关重要。
+  总之，[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/) 是面向负载的，将系统推向极端条件，而[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 是面向交互的，确保同时使用时的正确行为。两者对于综合性能评估都至关重要，但在 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 生命周期中具有不同的用途。
 
 #### 并发测试的最佳实践是什么？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 的最佳实践包括：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 的最佳实践包括：
 
 - **优先考虑关键部分**可能发生并发访问的应用程序，例如共享资源或数据争用点。
 
@@ -233,9 +233,9 @@ order: 0
 
 #### 并发测试常用哪些工具？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 的常用工具包括：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 的常用工具包括：
 
-- **Apache [JMeter](/zh-cn/wiki/jmeter/)** ：一个专为性能测试而设计的开源工具，可以模拟多个用户和各种并发场景。
+- **Apache [JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：一个专为性能测试而设计的开源工具，可以模拟多个用户和各种并发场景。
 - **LoadRunner** ：Micro Focus 广泛使用的性能测试工具，它可以为并发测试创建准确的实际负载。
 - **Gattle** ：基于 Scala 的开源负载测试框架，Gattle 通过易于编写的脚本提供并发测试功能。
 - **Locust**：一个用Python编写的开源负载测试工具，允许您用代码定义用户行为并测试系统性能。
@@ -246,7 +246,7 @@ order: 0
 
 #### 并发测试工具需要具备哪些功能？
 
-选择 [并发测试](/zh-cn/wiki/concurrency-testing/) 工具时，请考虑以下功能：
+选择 [并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 工具时，请考虑以下功能：
 
 - **可扩展性**：能够模拟各种并发用户或进程来测试不同的负载级别。
 - **实时监控**：在测试过程中提供系统性能和资源利用率的实时反馈。
@@ -260,15 +260,15 @@ order: 0
 - **资源管理**：在测试期间有效利用系统资源，以防止由于工具开销而导致结果偏差。
 - **错误检测**：识别并记录特定于并发的问题，例如死锁、竞争条件和线程安全违规。
 - **可重用性**：促进跨不同测试和环境的测试脚本和场景的重用。
-- **支持和社​​区**：提供强大的支持选项，并拥有一个活跃的社区，用于故障排除和分享最佳实践。 选择符合您的特定测试要求并无缝集成到您现有的 [测试自动化](/zh-cn/wiki/test-automation/) 生态系统的工具。
+- **支持和社​​区**：提供强大的支持选项，并拥有一个活跃的社区，用于故障排除和分享最佳实践。 选择符合您的特定测试要求并无缝集成到您现有的 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 生态系统的工具。
 
 #### 如何使用JMeter进行并发测试？
 
-将**[JMeter](/zh-cn/wiki/jmeter/)** 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 涉及模拟多个用户或线程同时与软件应用程序交互。这是分步指南：
+将**[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** 用于[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 涉及模拟多个用户或线程同时与软件应用程序交互。这是分步指南：
 
-1. **安装[JMeter](/zh-cn/wiki/jmeter/)**：从 Apache 网站下载并将其安装在您的系统上。
-2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：打开[JMeter](/zh-cn/wiki/jmeter/)并创建一个新的[测试计划](/zh-cn/wiki/test-plan/)。
-3. **添加线程组**：右键单击[测试计划](/zh-cn/wiki/test-plan/)并添加新的线程组以定义并发用户数。
+1. **安装[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**：从 Apache 网站下载并将其安装在您的系统上。
+2. **创建[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**：打开[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)并创建一个新的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)。
+3. **添加线程组**：右键单击[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)并添加新的线程组以定义并发用户数。
 4. **配置线程属性**：
 - 设置 **线程数** （用户）来模拟并发。
 
@@ -297,11 +297,11 @@ order: 0
     <stringProp name="ThreadGroup.delay"></stringProp>
   </ThreadGroup>
 ```
-请记住**保存您的[测试计划](/zh-cn/wiki/test-plan/)**并**查看[JMeter](/zh-cn/wiki/jmeter/)的文档**以了解特定配置和高级功能。
+请记住**保存您的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**并**查看[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)的文档**以了解特定配置和高级功能。
 
-1. **安装[JMeter](/zh-cn/wiki/jmeter/)**：从 Apache 网站下载并将其安装在您的系统上。
-2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：打开[JMeter](/zh-cn/wiki/jmeter/)并创建新的[测试计划](/zh-cn/wiki/test-plan/)。
-3. **添加线程组**：右键单击[测试计划](/zh-cn/wiki/test-plan/)并添加新的线程组以定义并发用户数。
+1. **安装[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**：从 Apache 网站下载并将其安装在您的系统上。
+2. **创建[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**：打开[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)并创建新的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)。
+3. **添加线程组**：右键单击[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)并添加新的线程组以定义并发用户数。
 4. **配置线程属性**：
 - 设置 **线程数** （用户）来模拟并发。
 
@@ -310,8 +310,8 @@ order: 0
 - （可选）设置 **循环计数**为迭代次数。
 #### Selenium 在并发测试中的作用是什么？
 
-[selenium](/zh-cn/wiki/selenium/) 主要是一个用于自动化 Web 浏览器的工具，通过模拟多个用户同时与 Web 应用程序交互，在 [并发测试](/zh-cn/wiki/concurrency-testing/) 中发挥**支持作用**。它通过创建可以并行执行操作的多个浏览器实例或会话来实现这一点。
-  为了方便[并发测试](/zh-cn/wiki/concurrency-testing/)，用[selenium](/zh-cn/wiki/selenium/)编写的[测试脚本](/zh-cn/wiki/test-script/)可以与支持并行执行的框架或工具集成，例如**TestNG**或**JUnit**。这些框架允许您注释测试方法或类以并发运行，管理幕后的线程和执行。
+[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 主要是一个用于自动化 Web 浏览器的工具，通过模拟多个用户同时与 Web 应用程序交互，在 [并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 中发挥**支持作用**。它通过创建可以并行执行操作的多个浏览器实例或会话来实现这一点。
+  为了方便[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)，用[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)编写的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)可以与支持并行执行的框架或工具集成，例如**TestNG**或**JUnit**。这些框架允许您注释测试方法或类以并发运行，管理幕后的线程和执行。
   以下是使用 TestNG 运行多个实例的基本示例：
 
 ```
@@ -320,47 +320,47 @@ order: 0
     // Your Selenium test code here
   }
 ```
-在此代码片段中，`threadPoolSize` 指示要使用的线程数，而 `invocationCount` 指定将调用该方法的次数。 `timeOut` 确保挂起测试不会无限期地阻止[测试套件](/zh-cn/wiki/test-suite/)。
-  但是，需要注意的是，[selenium](/zh-cn/wiki/selenium/) 本身并不管理并发方面。它依赖**外部库**或**[测试运行者](/zh-cn/wiki/test-runner/)**来处理线程和执行顺序的复杂性。当将[selenium](/zh-cn/wiki/selenium/) 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 时，请确保[测试环境](/zh-cn/wiki/test-environment/) 具有鲁棒性，并且可以处理并行执行，而不会因资源争用或计时问题而导致[误报](/zh-cn/wiki/false-positive/)。
-  对于更复杂的[并发测试](/zh-cn/wiki/concurrency-testing/)，特别是在[API](/zh-cn/wiki/api/)或服务级别，更常用的工具是**[JMeter](/zh-cn/wiki/jmeter/)**或**Gadling**，因为它们是专门为负载和[性能测试](/zh-cn/wiki/performance-testing/)（包括并发场景）而设计的。
+在此代码片段中，`threadPoolSize` 指示要使用的线程数，而 `invocationCount` 指定将调用该方法的次数。 `timeOut` 确保挂起测试不会无限期地阻止[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。
+  但是，需要注意的是，[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 本身并不管理并发方面。它依赖**外部库**或**[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)**来处理线程和执行顺序的复杂性。当将[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 用于[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 时，请确保[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 具有鲁棒性，并且可以处理并行执行，而不会因资源争用或计时问题而导致[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)。
+  对于更复杂的[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)，特别是在[API](https://inaodeng.com/zh-cn/wiki/api/)或服务级别，更常用的工具是**[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**或**Gadling**，因为它们是专门为负载和[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)（包括并发场景）而设计的。
 
 #### 基于云的工具如何帮助进行并发测试？
 
-基于云的工具为[并发测试](/zh-cn/wiki/concurrency-testing/)提供了多项优势：
+基于云的工具为[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)提供了多项优势：
 
 - **可扩展性**：云环境可以快速扩展以模拟数千个用户，为并发问题提供现实的测试平台。
 - **成本效益**：即用即付模式消除了与本地测试环境相关的昂贵的硬件设置和维护成本。
 - **全球覆盖**：云服务可以跨多个地理位置部署测试，确保在各种网络条件下测试并发性。
 - **资源可用性**：云平台提供对各种测试资源的按需访问，减少了设置和执行并发测试的时间。
 - **隔离**：云中的测试可以在隔离的环境中完成，确保测试不会相互干扰或与生产系统干扰。
-- **自动化**：基于云的工具通常具有内置的自动化功能，可以更轻松地将并发测试集成到持续集成/持续部署（CI/CD）管道中。 通过利用基于云的工具，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以高效地执行并发测试，识别潜在的同步问题，并确保应用程序能够以最小的性能下降处理预期的用户负载。
+- **自动化**：基于云的工具通常具有内置的自动化功能，可以更轻松地将并发测试集成到持续集成/持续部署（CI/CD）管道中。 通过利用基于云的工具，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以高效地执行并发测试，识别潜在的同步问题，并确保应用程序能够以最小的性能下降处理预期的用户负载。
 
 ### 挑战和解决方案
 
 #### 并发测试有哪些挑战？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 挑战通常源于线程或进程之间的复杂交互。以下是一些关键挑战：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 挑战通常源于线程或进程之间的复杂交互。以下是一些关键挑战：
 
 - **确定适当的负载**：建立一个可以发现并发问题而不使系统过载的实际负载是很棘手的。
 - **时序问题**：竞态条件等并发缺陷可能仅在特定时序场景下出现，使其难以重现。
 - **资源争用**：识别和管理共享资源可能很复杂，因为测试需要确保并发实体正确访问资源。
 - **死锁**：检测和解决死锁需要仔细分析和理解锁定机制和资源获取顺序。
 - **非确定性行为**：并发问题的不可重现性意味着测试可能一次通过而下一次失败，从而使调试和解决变得复杂。
-- **[测试环境](/zh-cn/wiki/test-environment/)** ：密切模仿生产环境对于有意义的并发测试至关重要，但它可能会占用大量资源且成本高昂。
+- **[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：密切模仿生产环境对于有意义的并发测试至关重要，但它可能会占用大量资源且成本高昂。
 - **工具**：选择能够有效模拟并发操作并收集相关数据的工具至关重要，但由于选项多种多样且功能各异，因此可能具有挑战性。 应对这些挑战通常需要结合周密的规划、强大的工具以及测试设计和执行的迭代方法。
 
 #### 如何克服并发测试中的挑战？
 
-为了克服[并发测试](/zh-cn/wiki/concurrency-testing/)中的挑战，请重点关注**战略规划**和**强大的工具**。首先**优先考虑反映实际用户交互和系统负载的[测试场景](/zh-cn/wiki/test-scenario/)**。利用**模块化测试设计**创建可重用组件，从而随着系​​统的发展实现高效更新。
+为了克服[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)中的挑战，请重点关注**战略规划**和**强大的工具**。首先**优先考虑反映实际用户交互和系统负载的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)**。利用**模块化测试设计**创建可重用组件，从而随着系​​统的发展实现高效更新。
   实施**自动化测试编排**来管理并发测试的执行，确保它们以受控和可预测的方式运行。利用**监控和日志记录**来捕获有关被测系统行为的详细信息，帮助识别和诊断并发问题。
   **逐步扩展测试**，从少量并发用户开始，逐步增加负载。这种方法有助于隔离问题并评估系统阈值。利用**虚拟化**或**容器化**以经济高效且可扩展的方式模拟多个用户或服务。
-  投资**先进的 [并发测试](/zh-cn/wiki/concurrency-testing/) 工具**，这些工具提供实时分析、分布式测试以及竞争条件和死锁自动检测等功能。将这些工具与您的**持续集成/持续部署 (CI/CD) 管道**集成，以确保并发测试成为常规测试周期的一部分。
+  投资**先进的 [并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 工具**，这些工具提供实时分析、分布式测试以及竞争条件和死锁自动检测等功能。将这些工具与您的**持续集成/持续部署 (CI/CD) 管道**集成，以确保并发测试成为常规测试周期的一部分。
   定期**审查和更新**您的并发测试，以适应系统架构中的新功能和变化。鼓励开发人员、测试人员和运营团队之间的**协作**文化，以分享见解并提高测试效率。
-  最后，在重要的测试运行后进行**回顾**，以确定哪些效果好，哪些可以改进，从而在[并发测试](/zh-cn/wiki/concurrency-testing/)实践中培养持续改进的心态。
+  最后，在重要的测试运行后进行**回顾**，以确定哪些效果好，哪些可以改进，从而在[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)实践中培养持续改进的心态。
 
 #### 并发测试中常见的错误有哪些以及如何避免？
 
-[并发测试](/zh-cn/wiki/concurrency-testing/) 中的常见错误包括：
+[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 中的常见错误包括：
 
 - **覆盖范围不足**：专注于有限数量的场景可能会错过关键的并发问题。确保测试广泛的交互和时间安排。
 - **忽略时序问题**：时序在并发中至关重要；不考虑操作的时间可能会导致未检测到的竞争条件。使用可以模拟各种时序和延迟的工具。
@@ -370,7 +370,7 @@ order: 0
 - **仅依赖自动化测试**：一些并发问题很微妙，自动化测试可能无法捕获。补充代码审查和手动测试。
 - **不清理状态**：并发测试可能会使系统处于不可预测的状态。实施稳健的设置和拆卸例程以确保一致性。 为了避免这些错误：
 
-- **展开[测试场景](/zh-cn/wiki/test-scenario/)** ：使用组合方法生成一组全面的测试用例。
+- **展开[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：使用组合方法生成一组全面的测试用例。
 - **模拟现实世界的计时**：引入延迟和抖动来模拟现实世界的操作。
 - **强制线程安全**：检查代码以确保正确同步并使用静态分析工具。
 - **在类似生产环境中进行测试**：使用容器或虚拟机复制生产设置。
@@ -384,7 +384,7 @@ order: 0
 - **低估资源争用**：高水平的争用可能会导致死锁或性能瓶颈。监控和测试高并发下的资源使用情况。
 - **仅依赖自动化测试**：一些并发问题很微妙，自动化测试可能无法捕获。补充代码审查和手动测试。
 - **不清理状态**：并发测试可能会使系统处于不可预测的状态。实施稳健的设置和拆卸例程以确保一致性。
-- **展开[测试场景](/zh-cn/wiki/test-scenario/)** ：使用组合方法生成一组全面的测试用例。
+- **展开[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** ：使用组合方法生成一组全面的测试用例。
 - **模拟现实世界的计时**：引入延迟和抖动来模拟现实世界的操作。
 - **强制线程安全**：检查代码以确保正确同步并使用静态分析工具。
 - **在类似生产环境中进行测试**：使用容器或虚拟机复制生产设置。
@@ -394,7 +394,7 @@ order: 0
 
 #### 如何保证并发测试的有效性？
 
-为了确保[并发测试](/zh-cn/wiki/concurrency-testing/)的有效性，请遵循以下策略：
+为了确保[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/)的有效性，请遵循以下策略：
 
 - **实施强大的监控系统**：实时跟踪系统性能和行为以识别发生的问题。
 - **使用现实场景**：模拟现实世界的使用模式以发现用户可能遇到的潜在并发问题。
@@ -406,7 +406,7 @@ order: 0
 - **采用同步机制**：利用锁、信号量和其他同步工具来管理对共享资源的访问。
 - **迭代和完善**：根据以前的测试结果和代码更改不断审查和调整测试。
 - **分析线程转储和日志**：检查线程转储和日志是否存在死锁、竞争条件和其他并发问题。
-- **与开发人员合作**：与开发人员密切合作，了解应用程序的并发模型并将他们的见解融入到测试中。 通过将这些策略集成到您的[并发测试](/zh-cn/wiki/concurrency-testing/) 方法中，您可以增强软件在多用户并发环境中的可靠性和稳定性。
+- **与开发人员合作**：与开发人员密切合作，了解应用程序的并发模型并将他们的见解融入到测试中。 通过将这些策略集成到您的[并发测试](https://inaodeng.com/zh-cn/wiki/concurrency-testing/) 方法中，您可以增强软件在多用户并发环境中的可靠性和稳定性。
 
 #### 并发测试中的死锁和竞争条件有哪些解决方案？
 
@@ -421,7 +421,7 @@ order: 0
 - **同步机制**：利用互斥体、信号量和临界区来确保一次只有一个线程访问共享资源。
 - **原子操作** ：使用编程语言或硬件提供的原子操作来保证一系列相关操作不间断地完成。
 - **线程安全库**：采用设计为在并发环境中安全的库。
-- **不可变对象**：设计对象一旦创建就无法修改，从而从本质上避免竞争条件。 在这两种情况下，彻底的**代码审查**和**静态分析工具**可以帮助及早发现潜在的问题。此外，专注于并发问题的**[自动化测试](/zh-cn/wiki/automated-testing/)**（例如使用模拟竞争条件或死锁的工具）对于防止这些问题影响到生产来说是非常宝贵的。
+- **不可变对象**：设计对象一旦创建就无法修改，从而从本质上避免竞争条件。 在这两种情况下，彻底的**代码审查**和**静态分析工具**可以帮助及早发现潜在的问题。此外，专注于并发问题的**[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)**（例如使用模拟竞争条件或死锁的工具）对于防止这些问题影响到生产来说是非常宝贵的。
 
 - **锁顺序**：建立必须获取锁的全局顺序，以防止循环等待条件。
 - **Lock Timeout** ：在尝试获取锁时实现超时，允许系统在发生死锁时恢复。

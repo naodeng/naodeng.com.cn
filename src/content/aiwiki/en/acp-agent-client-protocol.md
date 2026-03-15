@@ -116,10 +116,10 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 ### Related Terms
 
-- [cross-surface-operation](/en/AIWiki/cross-surface-operation/)
-- [remote-control](/en/AIWiki/remote-control/)
-- [permission-policies-allowed-command-list](/en/AIWiki/permission-policies-allowed-command-list/)
-- [subagents](/en/AIWiki/subagents/)
+- [cross-surface-operation](https://inaodeng.com/en/AIWiki/cross-surface-operation/)
+- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
+- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
+- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
 
 ### External References
 

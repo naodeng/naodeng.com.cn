@@ -115,9 +115,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [self-healing-code](/zh-cn/AIWiki/self-healing-code/)
-- [human-in-the-loop](/zh-cn/AIWiki/human-in-the-loop/)
-- [agentic-workflow](/zh-cn/AIWiki/agentic-workflow/)
+- [self-healing-code](https://inaodeng.com/zh-cn/AIWiki/self-healing-code/)
+- [human-in-the-loop](https://inaodeng.com/zh-cn/AIWiki/human-in-the-loop/)
+- [agentic-workflow](https://inaodeng.com/zh-cn/AIWiki/agentic-workflow/)
 
 ### 术语元数据
 

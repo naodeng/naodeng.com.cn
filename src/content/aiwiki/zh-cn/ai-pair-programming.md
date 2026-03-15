@@ -114,9 +114,9 @@ A: 看三件事：交付更稳、返工更少、团队协作更顺畅。
 
 ### 相关词条
 
-- [vibe-coding](/zh-cn/AIWiki/vibe-coding/)
-- [skill](/zh-cn/AIWiki/skill/)
-- [human-in-the-loop](/zh-cn/AIWiki/human-in-the-loop/)
+- [vibe-coding](https://inaodeng.com/zh-cn/AIWiki/vibe-coding/)
+- [skill](https://inaodeng.com/zh-cn/AIWiki/skill/)
+- [human-in-the-loop](https://inaodeng.com/zh-cn/AIWiki/human-in-the-loop/)
 
 ### 术语元数据
 
