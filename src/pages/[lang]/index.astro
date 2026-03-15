@@ -36,6 +36,7 @@ const allPosts = (await getCollection("blog"))
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
+const heroLatestPosts = latestPosts.slice(0, 4);
 
 const allWorkflows = await getCollection("workflows");
 const tagCounts = allPosts.flatMap((post) => post.data.tags || []).reduce((acc, tag) => {
@@ -65,11 +66,15 @@ for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
 }
 const promptTypeCards = Array.from(promptTypeMap.values())
   .sort((a, b) => TESTING_TYPE_ORDER.indexOf(a.data.testingType) - TESTING_TYPE_ORDER.indexOf(b.data.testingType));
+const heroPromptCards = shuffle(promptTypeCards).slice(0, 4);
 
 const localeWorkflows = allWorkflows
   .filter((w) => w.data.lang === locale)
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
+const allGuildEntries = await getCollection("guild");
+const localeGuildEntries = allGuildEntries.filter((entry) => entry.id.split("/")[0] === locale);
+const heroGuildArticles = shuffle(localeGuildEntries).slice(0, 4);
 
 const wikiEntries =
   locale === "zh-cn"
@@ -107,7 +112,6 @@ const introHtmlRaw = marked(t(HOME_INTRO), { gfm: true }) as string;
 const wechatQrUrl = "https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015%27QR%20Code%20for%20%E5%85%AC%E4%BC%97%E5%8F%B7.jpg";
 const wechatTriggerHtml = `<span class="intro-wechat-trigger" tabindex="0" title="${locale === "zh-cn" ? "微信公众号：软件测试同学" : "WeChat: 软件测试同学"}">软件测试同学<span class="intro-wechat-qr"><img src="${wechatQrUrl}" alt="微信公众号 软件测试同学 二维码" width="400" height="400" loading="lazy" /></span></span>`;
 const introHtml = introHtmlRaw.replace("<strong>软件测试同学</strong>", wechatTriggerHtml);
-
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
     params: { lang },
@@ -144,35 +148,143 @@ const homePageSchema = {
   keywords={t(HOME_PAGE_KEYWORDS)}
   extraStructuredData={[homePageSchema]}
 >
-  <section class="intro-section">
-    <div class="intro-card-wrap">
-      <div class="intro-row">
-        <div class="intro-main">
-          <p class="intro-summary">{heroSummary}</p>
-          <div class="intro-card" set:html={introHtml} />
-        </div>
-        <aside class="intro-sidebar">
-          <div class="intro-sidebar-inner">
-            <div class="intro-logo-wrap">
-              <a href={getRelativeLocaleUrl(locale, "/about")} class="intro-logo-link" title={locale === "zh-cn" ? "关于我" : "About me"}>
-                <img src="/favicon.svg" alt={t(SITE_TITLE)} class="intro-logo" width="140" height="140" />
-              </a>
+  <section class="home-hero-switcher" aria-label={locale === "zh-cn" ? "首页模块切换" : "Homepage module switcher"}>
+    <div class="hero-switcher-shell" data-hero-switcher>
+      <button
+        type="button"
+        class="hero-switcher-arrow hero-switcher-arrow--prev"
+        data-hero-prev
+        aria-label={locale === "zh-cn" ? "切换到上一个模块" : "Previous module"}
+      >
+        <span class="material-icons-sharp" aria-hidden="true">chevron_left</span>
+      </button>
+      <button
+        type="button"
+        class="hero-switcher-arrow hero-switcher-arrow--next"
+        data-hero-next
+        aria-label={locale === "zh-cn" ? "切换到下一个模块" : "Next module"}
+      >
+        <span class="material-icons-sharp" aria-hidden="true">chevron_right</span>
+      </button>
+      <div class="hero-switcher-panels">
+        <section
+          class="hero-switcher-panel is-active"
+          id="hero-panel-overview"
+          role="tabpanel"
+          aria-label={locale === "zh-cn" ? "首页概览" : "Overview"}
+          data-hero-panel="overview"
+        >
+          <div class="intro-section">
+            <div class="intro-card-wrap">
+              <div class="intro-row">
+                <div class="intro-main">
+                  <p class="intro-summary">{heroSummary}</p>
+                  <div class="intro-card" set:html={introHtml} />
+                </div>
+                <aside class="intro-sidebar">
+                  <div class="intro-sidebar-inner">
+                    <div class="intro-logo-wrap">
+                      <a href={getRelativeLocaleUrl(locale, "/about")} class="intro-logo-link" title={locale === "zh-cn" ? "关于我" : "About me"}>
+                        <img src="/favicon.svg" alt={t(SITE_TITLE)} class="intro-logo" width="140" height="140" />
+                      </a>
+                    </div>
+                    <p class="intro-greeting">{t(HOME_INTRO_GREETING)}</p>
+                    <p class="intro-slogan">{t(SITE_SLOGAN)}</p>
+                    <nav class="intro-quick-nav" aria-label={locale === "zh-cn" ? "快速入口" : "Quick links"}>
+                      <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/guild/")}>
+                        {locale === "zh-cn" ? "测试指南" : "Testing Guide"}
+                      </a>
+                      <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/prompts/")}>
+                        {locale === "zh-cn" ? "测试提示词" : "Testing Prompts"}
+                      </a>
+                      <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/wiki/")}>
+                        {locale === "zh-cn" ? "测试百科" : "Testing Wiki"}
+                      </a>
+                    </nav>
+                  </div>
+                </aside>
+              </div>
             </div>
-            <p class="intro-greeting">{t(HOME_INTRO_GREETING)}</p>
-            <p class="intro-slogan">{t(SITE_SLOGAN)}</p>
-            <nav class="intro-quick-nav" aria-label={locale === "zh-cn" ? "快速入口" : "Quick links"}>
-              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/guild/")}>
-                {locale === "zh-cn" ? "测试指南" : "Testing Guide"}
-              </a>
-              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/prompts/")}>
-                {locale === "zh-cn" ? "测试提示词" : "Testing Prompts"}
-              </a>
-              <a class="intro-quick-pill tag-pill" href={getRelativeLocaleUrl(locale, "/wiki/")}>
-                {locale === "zh-cn" ? "测试百科" : "Testing Wiki"}
-              </a>
-            </nav>
           </div>
-        </aside>
+        </section>
+
+        <section
+          class="hero-switcher-panel"
+          id="hero-panel-playground"
+          role="tabpanel"
+          aria-label={locale === "zh-cn" ? "最新博客" : "Latest Blog Posts"}
+          data-hero-panel="playground"
+          hidden
+        >
+          <div class="hero-feature-card hero-feature-card--highlights">
+            <section class="hero-feature-block hero-feature-block--single">
+              <h3>{locale === "zh-cn" ? "最新文章" : "Recent Posts"}</h3>
+              <div class="hero-feature-list hero-feature-list--single">
+                {heroLatestPosts.map((post) => {
+                  const [, ...idParts] = post.id.split("/");
+                  const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
+                  return (
+                    <a href={postUrl} class="hero-feature-item">
+                      <strong>{post.data.title}</strong>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section
+          class="hero-switcher-panel"
+          id="hero-panel-lab"
+          role="tabpanel"
+          aria-label={locale === "zh-cn" ? "随机提示词" : "Random Prompts"}
+          data-hero-panel="lab"
+          hidden
+        >
+          <div class="hero-feature-card hero-feature-card--latest">
+            <section class="hero-feature-block hero-feature-block--single">
+              <h3>{locale === "zh-cn" ? "提示词" : "Prompts"}</h3>
+              <div class="hero-feature-list hero-feature-list--single">
+                {heroPromptCards.map((entry) => (
+                  <a
+                    href={getRelativeLocaleUrl(locale, `/prompts/${entry.data.testingType}/`)}
+                    class="hero-feature-item"
+                  >
+                    <strong>{entry.data.title.replace(/^[^-]+ - /, "")}</strong>
+                    <span>{entry.data.description}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section
+          class="hero-switcher-panel"
+          id="hero-panel-guild"
+          role="tabpanel"
+          aria-label={locale === "zh-cn" ? "自动化测试指南" : "Automation Testing Guides"}
+          data-hero-panel="guild"
+          hidden
+        >
+          <div class="hero-feature-card hero-feature-card--guild">
+            <section class="hero-feature-block hero-feature-block--single">
+              <h3>{locale === "zh-cn" ? "Guild 文章" : "Guild Articles"}</h3>
+              <div class="hero-feature-list hero-feature-list--single">
+                {heroGuildArticles.map((entry) => {
+                  const [, ...slugParts] = entry.id.split("/");
+                  const guildUrl = getRelativeLocaleUrl(locale, `/guild/${slugParts.join("/")}/`);
+                  return (
+                    <a href={guildUrl} class="hero-feature-item">
+                      <strong>{entry.data.title}</strong>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        </section>
       </div>
     </div>
   </section>
@@ -410,6 +522,187 @@ const homePageSchema = {
 
 <TrackingEvents mode="home" locale={locale} />
 
+<script is:inline>
+  const initHeroSwitcher = () => {
+    const root = document.querySelector("[data-hero-switcher]");
+    if (!(root instanceof HTMLElement)) return;
+
+    const tabs = Array.from(root.querySelectorAll("[data-hero-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-hero-panel]"));
+    const prevButton = root.querySelector("[data-hero-prev]");
+    const nextButton = root.querySelector("[data-hero-next]");
+    if (panels.length === 0) return;
+    const progressBar = root.querySelector("[data-hero-progress]");
+    const overviewPanel = panels.find((panel) => panel.getAttribute("data-hero-panel") === "overview");
+    const overviewCard = overviewPanel?.querySelector(".intro-card-wrap");
+    const panelIds = panels
+      .map((panel) => panel.getAttribute("data-hero-panel"))
+      .filter((id) => Boolean(id));
+    if (panelIds.length === 0) return;
+
+    const AUTOPLAY_MS = 6500;
+    let activeIndex = 0;
+    let elapsed = 0;
+    let isPaused = false;
+    let rafId = 0;
+    let lastTime = performance.now();
+
+    const setProgress = (ratio) => {
+      if (!(progressBar instanceof HTMLElement)) return;
+      const safeRatio = Math.max(0, Math.min(1, ratio));
+      progressBar.style.transform = `scaleX(${safeRatio})`;
+    };
+
+    const syncPanelHeightToOverview = () => {
+      if (!(overviewPanel instanceof HTMLElement) || !(overviewCard instanceof HTMLElement)) return;
+
+      const wasHidden = overviewPanel.hasAttribute("hidden");
+      const previousStyle = overviewPanel.getAttribute("style");
+
+      if (wasHidden) {
+        overviewPanel.hidden = false;
+        overviewPanel.style.position = "absolute";
+        overviewPanel.style.visibility = "hidden";
+        overviewPanel.style.pointerEvents = "none";
+        overviewPanel.style.inset = "0";
+      }
+
+    const measuredHeight = Math.ceil(overviewCard.scrollHeight);
+      if (measuredHeight > 0) root.style.setProperty("--hero-panel-height", `${measuredHeight}px`);
+
+      if (wasHidden) {
+        if (previousStyle === null) {
+          overviewPanel.removeAttribute("style");
+        } else {
+          overviewPanel.setAttribute("style", previousStyle);
+        }
+        overviewPanel.hidden = true;
+      }
+    };
+
+    const activate = (targetId, shouldResetProgress = false) => {
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute("data-hero-tab") === targetId;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.getAttribute("data-hero-panel") === targetId;
+        panel.classList.toggle("is-active", isActive);
+        panel.toggleAttribute("hidden", !isActive);
+      });
+
+      const foundIndex = panelIds.findIndex((id) => id === targetId);
+      if (foundIndex >= 0) activeIndex = foundIndex;
+      if (shouldResetProgress) {
+        elapsed = 0;
+        setProgress(0);
+      }
+    };
+
+    const activateRelative = (delta) => {
+      const nextIndex = (activeIndex + delta + panelIds.length) % panelIds.length;
+      const targetId = panelIds[nextIndex];
+      if (targetId) activate(targetId, true);
+    };
+
+    const step = (now) => {
+      const delta = now - lastTime;
+      lastTime = now;
+
+      if (!isPaused) {
+        elapsed += delta;
+        if (elapsed >= AUTOPLAY_MS) {
+          const nextIndex = (activeIndex + 1) % panelIds.length;
+          const targetId = panelIds[nextIndex];
+          if (targetId) activate(targetId, true);
+        } else {
+          setProgress(elapsed / AUTOPLAY_MS);
+        }
+      }
+
+      rafId = requestAnimationFrame(step);
+    };
+
+    const setPaused = (paused) => {
+      if (isPaused === paused) return;
+      isPaused = paused;
+      lastTime = performance.now();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("data-hero-tab");
+        if (targetId) activate(targetId, true);
+      });
+
+      tab.addEventListener("keydown", (event) => {
+        if (!(event instanceof KeyboardEvent)) return;
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+
+        event.preventDefault();
+        const delta = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (index + delta + tabs.length) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        const targetId = nextTab?.getAttribute("data-hero-tab");
+        if (targetId) activate(targetId, true);
+        if (nextTab instanceof HTMLElement) nextTab.focus();
+      });
+    });
+
+    if (prevButton instanceof HTMLElement) {
+      prevButton.addEventListener("click", () => {
+        activateRelative(-1);
+        prevButton.blur();
+      });
+    }
+    if (nextButton instanceof HTMLElement) {
+      nextButton.addEventListener("click", () => {
+        activateRelative(1);
+        nextButton.blur();
+      });
+    }
+
+    root.addEventListener("mouseenter", () => setPaused(true));
+    root.addEventListener("mouseleave", () => setPaused(false));
+    root.addEventListener("focusin", () => setPaused(true));
+    root.addEventListener("focusout", () => {
+      const active = document.activeElement;
+      if (!active || !root.contains(active)) setPaused(false);
+    });
+    document.addEventListener("visibilitychange", () => {
+      setPaused(document.hidden);
+    });
+
+    let resizeRaf = 0;
+    const onResize = () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(syncPanelHeightToOverview);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+
+    syncPanelHeightToOverview();
+    setProgress(0);
+    rafId = requestAnimationFrame(step);
+    window.addEventListener(
+      "pagehide",
+      () => {
+        cancelAnimationFrame(rafId);
+        if (resizeRaf) cancelAnimationFrame(resizeRaf);
+        window.removeEventListener("resize", onResize);
+      },
+      { once: true }
+    );
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroSwitcher, { once: true });
+  } else {
+    initHeroSwitcher();
+  }
+</script>
+
 <style is:global>
   :root {
     --card-bg: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
@@ -420,6 +713,245 @@ const homePageSchema = {
 </style>
 
 <style>
+  .home-hero-switcher {
+    position: relative;
+    margin-block-start: -2px;
+    margin-block-end: var(--sp-l);
+  }
+  .hero-switcher-shell {
+    --hero-panel-height: clamp(420px, 48vw, 540px);
+    position: relative;
+    padding: clamp(0.85rem, 1.8vw, 1.15rem);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--color-theme) 12%, transparent), transparent 28%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-theme) 4%, var(--card-bg)) 0%, var(--card-bg) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    box-shadow: var(--card-shadow);
+    overflow: visible;
+  }
+  .hero-switcher-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(115deg, color-mix(in srgb, white 4%, transparent) 0%, transparent 24%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 26px,
+        color-mix(in srgb, var(--color-theme) 4%, transparent) 26px,
+        color-mix(in srgb, var(--color-theme) 4%, transparent) 27px
+      );
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-switcher-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    appearance: none;
+    padding: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+    background: color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+    color: color-mix(in srgb, var(--color-main) 62%, white 8%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--color-theme) 8%, transparent);
+    opacity: 0.8;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hero-switcher-arrow:hover,
+  .hero-switcher-arrow:focus-visible {
+    opacity: 1;
+    color: color-mix(in srgb, white 88%, var(--color-theme) 12%);
+    background: color-mix(in srgb, var(--color-theme) 16%, var(--color-base));
+    border-color: color-mix(in srgb, var(--color-theme) 28%, transparent);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--color-theme) 18%, transparent);
+    outline: none;
+  }
+  .hero-switcher-arrow span {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .hero-switcher-arrow--prev {
+    left: -60px;
+  }
+  .hero-switcher-arrow--next {
+    right: -60px;
+  }
+  .hero-switcher-panels {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-switcher-panels {
+    height: var(--hero-panel-height);
+  }
+  .hero-switcher-panel {
+    animation: heroPanelFade 0.35s ease;
+    height: 100%;
+  }
+  .hero-switcher-panel > * {
+    height: 100%;
+    min-height: 0;
+  }
+  .hero-feature-card {
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 1rem;
+    padding: clamp(1.6rem, 4vw, 3rem);
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 16%, transparent), transparent 30%),
+      color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+    overflow: hidden;
+  }
+  .hero-feature-card--highlights {
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, #ffd28a 16%, transparent), transparent 30%),
+      color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+  }
+  .hero-feature-card--latest {
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, #7dd3fc 16%, transparent), transparent 30%),
+      color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+  }
+  .hero-feature-card--guild {
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, #86efac 16%, transparent), transparent 30%),
+      color-mix(in srgb, var(--color-base) 92%, var(--color-main));
+  }
+  .hero-feature-intro {
+    display: grid;
+    gap: 0.9rem;
+    margin-block-end: 1rem;
+  }
+  .hero-placeholder-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.72rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    border-radius: 999px;
+  }
+  .hero-placeholder-title {
+    margin: 0;
+    font-size: clamp(1.8rem, 3.8vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .hero-placeholder-summary {
+    margin: 0;
+    max-width: 54ch;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--color-main) 76%, transparent);
+  }
+  .hero-feature-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    min-height: 0;
+  }
+  .hero-feature-block {
+    display: grid;
+    gap: 0.8rem;
+    min-height: 0;
+  }
+  .hero-feature-block--single {
+    width: 100%;
+  }
+  .hero-feature-block h3 {
+    margin: 0;
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-theme) 82%, white 8%);
+  }
+  .hero-feature-list {
+    display: grid;
+    gap: 0.75rem;
+    min-height: 0;
+    overflow: auto;
+    padding-inline-end: 0.3rem;
+  }
+  .hero-feature-list--single {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-feature-item {
+    display: grid;
+    gap: 0.32rem;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    background: color-mix(in srgb, var(--color-base) 90%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .hero-feature-item:hover,
+  .hero-feature-item:focus-visible {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-base));
+    border-color: color-mix(in srgb, var(--color-theme) 20%, transparent);
+    outline: none;
+  }
+  .hero-feature-item strong {
+    font-size: 0.96rem;
+    line-height: 1.35;
+  }
+  .hero-feature-item span {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--color-main) 72%, transparent);
+  }
+  .hero-feature-item--accent {
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-theme) 10%, transparent), color-mix(in srgb, var(--color-base) 88%, transparent));
+  }
+  .hero-placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    width: min(100%, 38rem);
+    margin-block-start: 0.4rem;
+  }
+  .hero-placeholder-grid span {
+    height: 4.8rem;
+    border-radius: 16px;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-theme) 14%, transparent), color-mix(in srgb, var(--color-base) 85%, transparent));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+  }
+  @keyframes heroPanelFade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .hero {
     margin-block-end: 0;
     line-height: 0;
@@ -442,8 +974,7 @@ const homePageSchema = {
   }
 
   .intro-section {
-    margin-block-start: -2px;
-    margin-block-end: var(--sp-l);
+    margin: 0;
   }
   .intro-card-wrap {
     padding: clamp(1.25rem, 2.2vw, 2rem) clamp(1.25rem, 3.2vw, 3rem);
@@ -460,6 +991,40 @@ const homePageSchema = {
     align-items: stretch;
   }
   @media (max-width: 720px) {
+    .hero-switcher-shell {
+      --hero-panel-height: clamp(440px, 120vw, 560px);
+      padding: 0.9rem;
+      border-radius: 20px;
+    }
+    .hero-feature-card {
+      min-height: var(--hero-panel-height);
+      justify-items: center;
+      text-align: center;
+    }
+    .hero-feature-columns {
+      grid-template-columns: 1fr;
+    }
+    .hero-feature-list--single {
+      grid-template-columns: 1fr;
+    }
+    .hero-switcher-arrow {
+      width: 42px;
+      height: 42px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .hero-switcher-arrow span {
+      font-size: 1.35rem;
+    }
+    .hero-switcher-arrow--prev {
+      left: 8px;
+    }
+    .hero-switcher-arrow--next {
+      right: 8px;
+    }
+    .hero-placeholder-grid {
+      width: 100%;
+    }
     .intro-card-wrap {
       padding: var(--sp-m);
     }
