@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-const AD_SELECTOR = ".ad-wrap, .ad-thin-wrap, .home-ad-wrap, ins.adsbygoogle";
+const AD_WRAPPER_SELECTOR = ".ad-wrap, .ad-thin-wrap, .home-ad-wrap";
+const AD_INNER_SELECTOR = "ins.adsbygoogle";
 
 test.describe("广告低干扰专项检查", () => {
   test("列表页：首屏广告密度每屏不超过 1", async ({ page, baseURL }) => {
@@ -14,13 +15,22 @@ test.describe("广告低干扰专项检查", () => {
       await page.setViewportSize(vp);
       for (const route of routes) {
         await page.goto((baseURL || "") + route, { waitUntil: "networkidle" });
-        const visibleInViewport = await page.evaluate(({ selector, viewportHeight }) => {
-          const nodes = Array.from(document.querySelectorAll(selector));
-          return nodes.filter((node) => {
+        const visibleInViewport = await page.evaluate(({ wrapperSelector, innerSelector, viewportHeight }) => {
+          const wrappers = Array.from(document.querySelectorAll(wrapperSelector));
+          const visibleWrappers = wrappers.filter((node) => {
             const rect = (node as HTMLElement).getBoundingClientRect();
             return rect.bottom > 0 && rect.top < viewportHeight && rect.width > 0;
-          }).length;
-        }, { selector: AD_SELECTOR, viewportHeight: vp.height });
+          });
+
+          // 避免重复统计：优先统计外层广告容器；仅把不在容器内的裸 ins 作为补充。
+          const extraInners = Array.from(document.querySelectorAll(innerSelector)).filter((node) => {
+            const rect = (node as HTMLElement).getBoundingClientRect();
+            if (!(rect.bottom > 0 && rect.top < viewportHeight && rect.width > 0)) return false;
+            return !node.closest(wrapperSelector);
+          });
+
+          return visibleWrappers.length + extraInners.length;
+        }, { wrapperSelector: AD_WRAPPER_SELECTOR, innerSelector: AD_INNER_SELECTOR, viewportHeight: vp.height });
 
         expect(
           visibleInViewport,
@@ -46,7 +56,7 @@ test.describe("广告低干扰专项检查", () => {
           const beforeFirstP = !!(ad.compareDocumentPosition(firstParagraph) & Node.DOCUMENT_POSITION_FOLLOWING);
           return afterH1 && beforeFirstP;
         });
-      }, AD_SELECTOR);
+      }, `${AD_WRAPPER_SELECTOR}, ${AD_INNER_SELECTOR}`);
 
       expect(isBetween, `route=${route}`).toBeFalsy();
     }

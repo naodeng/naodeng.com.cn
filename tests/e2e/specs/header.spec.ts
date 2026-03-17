@@ -21,11 +21,10 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header .site-logo")).toBeVisible();
   });
 
-  test("en 首页：site slogan 可见", async ({ page, baseURL }) => {
+  test("en 首页：site slogan 不显示", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const slogan = page.locator(".site-slogan");
-    await expect(slogan).toBeVisible();
-    await expect(slogan).toContainText("Quality Analyst");
+    await expect(slogan).toHaveCount(0);
   });
 
   test("zh-cn 首页：site slogan 可见", async ({ page, baseURL }) => {
@@ -94,13 +93,11 @@ test.describe("Header 导航", () => {
     await expect(wikiLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("en 首页：搜索按钮可见且有 ⌘K 提示", async ({ page, baseURL }) => {
+  test("en 首页：搜索按钮可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const searchBtn = page.locator("header button[data-search-open]");
     await expect(searchBtn).toBeVisible();
-    // 快捷键提示文字
-    await expect(page.locator("header .btn-icon-kbd")).toBeVisible();
-    await expect(page.locator("header .btn-icon-kbd")).toContainText("⌘K");
+    await expect(searchBtn).toHaveAttribute("aria-label", "Search");
   });
 
   test("zh-cn 首页：搜索按钮可见", async ({ page, baseURL }) => {
