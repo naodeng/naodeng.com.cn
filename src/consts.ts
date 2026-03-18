@@ -216,10 +216,6 @@ export const SEARCH_OPEN_HINT: Multilingual = {
   en: "⌘K or Ctrl+K to open search",
   "zh-cn": "⌘K 或 Ctrl+K 打开搜索",
 };
-export const SEARCH_SOURCE_ALGOLIA: Multilingual = {
-  en: "From Algolia",
-  "zh-cn": "来自 Algolia",
-};
 export const SEARCH_SOURCE_LOCAL: Multilingual = {
   en: "Local search",
   "zh-cn": "本地索引",

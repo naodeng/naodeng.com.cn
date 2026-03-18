@@ -1,0 +1,4 @@
+version: 1
+display_name: Blog Series Drafting
+short_description: Draft and polish publish-ready testing blog series
+default_prompt: Create a 6-part software testing application series with consistent structure, source-grounded claims, and publish-ready markdown.

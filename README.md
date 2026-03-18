@@ -43,7 +43,7 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 
 ### 搜索与评论 | Search & Comments
 
-![Algolia](https://img.shields.io/badge/Algolia-5468FF?style=for-the-badge&logo=algolia&logoColor=white)
+![Local Search](https://img.shields.io/badge/Local_Search-334155?style=for-the-badge&logo=search&logoColor=white)
 ![Giscus](https://img.shields.io/badge/Giscus-181717?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
@@ -52,7 +52,7 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 
 - 🌍 **双语支持 | Bilingual Support** - 完整支持中英文 | Full support for English and Chinese
 - 🎨 **现代设计 | Modern Design** - 简洁响应式界面 | Clean and responsive UI
-- 🔍 **Algolia 搜索 | Algolia Search** - 快速准确的搜索功能 | Fast and accurate search functionality
+- 🔍 **本地搜索 | Local Search** - 基于本地索引的快速搜索 | Fast search powered by local index
 - 💬 **Giscus 评论 | Giscus Comments** - 基于 GitHub 的评论系统 | GitHub-based comment system
 - 📊 **Google Analytics** - 访客数据分析 | Track visitor insights
 - 🚀 **边缘部署 | Edge Deployment** - 部署在 Cloudflare Workers 实现全球高性能 | Deployed on Cloudflare Workers for global performance

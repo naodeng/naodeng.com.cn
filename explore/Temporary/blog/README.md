@@ -6,6 +6,8 @@
 
 - AI 软件测试应用系列
 - Midscene.js 在软件测试中的应用系列
+- Page Agent 在软件测试中的应用系列
+- browser-use 在软件测试中的应用系列
 
 系列建议写法：
 

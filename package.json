@@ -18,8 +18,6 @@
     "generate-covers": "node scripts/generate-blog-covers.mjs",
     "wiki:related": "node scripts/generate-wiki-related.mjs",
     "update-blog-tags": "node scripts/update-blog-tags.mjs",
-    "algolia-index": "node --env-file=.env scripts/algolia-index.mjs",
-    "create-instantsearch-app": "node scripts/create-instantsearch-app.mjs",
     "wiki:clean:check": "node scripts/wiki-markdown-cleaner.mjs --check",
     "wiki:clean": "node scripts/wiki-markdown-cleaner.mjs --write",
     "wiki:toc:refresh": "node scripts/refresh-wiki-toc.mjs",
@@ -42,7 +40,6 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
-    "algoliasearch": "^5.47.0",
     "astro": "^5.18.0",
     "marked": "^15.0.7",
     "typescript": "^5.9.3"
