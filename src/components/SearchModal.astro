@@ -5,14 +5,9 @@ import { useTranslations, type Lang } from "@/i18n";
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-// 必须同时配置 PUBLIC_ 前缀的这三个变量，前端才会走 Algolia（否则用本地 search-index.json）
-const algoliaAppId = import.meta.env.PUBLIC_ALGOLIA_APP_ID ?? "";
-const algoliaSearchKey = import.meta.env.PUBLIC_ALGOLIA_SEARCH_KEY ?? "";
-const algoliaIndexName = import.meta.env.PUBLIC_ALGOLIA_INDEX_NAME ?? "";
-const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName);
 ---
 
-<dialog id="search-dialog" class="search-dialog" aria-label={t(SEARCH_PLACEHOLDER)} data-algolia-key={algoliaSearchKey}>
+<dialog id="search-dialog" class="search-dialog" aria-label={t(SEARCH_PLACEHOLDER)}>
   <div class="search-backdrop" data-close></div>
   <div class="search-box">
     <label for="search-input" class="visually-hidden">{t(SEARCH_PLACEHOLDER)}</label>
@@ -26,29 +21,13 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     />
     <div class="search-hint-row">
       <span class="search-hint" data-hint>{t(SEARCH_OPEN_HINT)}</span>
-      <p class="search-algolia-badge">
-        <a
-          href="https://www.algolia.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="search-algolia-link"
-          aria-label="Search by Algolia"
-        >
-          <span class="search-algolia-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </span>
-          <span class="search-algolia-text"><span class="search-algolia-by">Search by</span> Algolia</span>
-        </a>
-      </p>
     </div>
   </div>
   <div class="search-results" id="search-results" role="list"></div>
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
-<script is:inline define:vars={{ useAlgolia, algoliaAppId, algoliaIndexName }}>
+<script is:inline>
   /* @ts-nocheck - define:vars 注入的变量无法被类型检查识别 */
   const dialog = document.getElementById("search-dialog");
   const input = document.getElementById("search-input");
@@ -56,13 +35,9 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   const emptyEl = document.getElementById("search-empty");
   const backdrop = document.querySelector(".search-backdrop[data-close]");
   const hintEl = document.querySelector("[data-hint]");
-  const algoliaKey = dialog ? (dialog.getAttribute("data-algolia-key") || "") : "";
 
   let index = [];
   let locale = "en";
-  let algoliaClient = null;
-  let algoliaDebounce = null;
-  let lastAlgoliaQuery = "";
 
   function getLocale() {
     const el = document.documentElement.getAttribute("data-locale");
@@ -94,7 +69,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
-    resultsEl.setAttribute("data-search-source", fromAlgolia ? "algolia" : "local");
+    resultsEl.setAttribute("data-search-source", "local");
 
     items.slice(0, 20).forEach((item) => {
       const a = document.createElement("a");
@@ -140,53 +115,9 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     );
   }
 
-  async function algoliaSearch(query) {
-    if (!algoliaClient) {
-      // is:inline 脚本未打包，从 ESM CDN 加载
-      const mod = await import("https://esm.sh/algoliasearch@5");
-      const { algoliasearch } = mod;
-      algoliaClient = algoliasearch(algoliaAppId, algoliaKey);
-    }
-    locale = getLocale();
-    const { hits } = await algoliaClient.searchSingleIndex({
-      indexName: algoliaIndexName,
-      searchParams: {
-        query,
-        hitsPerPage: 30,
-      },
-    });
-    // 按当前语言在客户端再过滤，避免 facet 与索引不一致导致 0 结果
-    const currentLang = locale === "zh-cn" ? "zh-cn" : "en";
-    return hits.filter((h) => h.lang === currentLang).slice(0, 20);
-  }
-
   function onInput() {
     const q = input.value;
     const hasQuery = q.trim().length > 0;
-
-    if (useAlgolia) {
-      if (!hasQuery) {
-        renderItems([], false, false);
-        return;
-      }
-      if (algoliaDebounce) clearTimeout(algoliaDebounce);
-      algoliaDebounce = setTimeout(async () => {
-        const queryAtRequest = q;
-        lastAlgoliaQuery = queryAtRequest;
-        algoliaDebounce = null;
-        try {
-          const items = await algoliaSearch(queryAtRequest);
-          if (lastAlgoliaQuery === queryAtRequest) {
-            if (items.length === 0) console.warn("[Algolia] 无结果: index=" + algoliaIndexName + " query=" + queryAtRequest + " lang=" + locale);
-            renderItems(items, true, true);
-          }
-        } catch (err) {
-          console.error("[Algolia] 请求失败（检查 Referrer/API Key 权限）:", err);
-          if (lastAlgoliaQuery === queryAtRequest) renderItems([], true, true);
-        }
-      }, 200);
-      return;
-    }
 
     if (!index.length) {
       resultsEl.hidden = true;
@@ -199,15 +130,6 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
 
   function openSearch() {
     locale = getLocale();
-    if (useAlgolia) {
-      dialog.showModal();
-      input.value = "";
-      input.focus();
-      resultsEl.hidden = true;
-      emptyEl.hidden = true;
-      if (hintEl) hintEl.style.display = "block";
-      return;
-    }
     loadIndex().then(() => {
       dialog.showModal();
       input.value = "";
@@ -336,7 +258,7 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
   .search-hint-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
     margin-block-start: 0.5rem;
     flex-wrap: wrap;
@@ -401,56 +323,4 @@ const useAlgolia = Boolean(algoliaAppId && algoliaSearchKey && algoliaIndexName)
     opacity: 0.8;
   }
 
-  .search-algolia-badge {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .search-algolia-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: inherit;
-    text-decoration: none;
-    opacity: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  .search-algolia-link:hover,
-  .search-algolia-link:focus-visible {
-    opacity: 0.9;
-  }
-
-  .search-algolia-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #5468ff;
-    flex-shrink: 0;
-  }
-
-  .search-algolia-text {
-    display: inline-block;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .search-algolia-by {
-    color: var(--color-main);
-    opacity: 0.95;
-    margin-inline-end: 0.25rem;
-  }
-
-  .search-algolia-link .search-algolia-text {
-    color: #5468ff;
-  }
-
-  .search-algolia-link:hover .search-algolia-text,
-  .search-algolia-link:focus-visible .search-algolia-text {
-    text-decoration: underline;
-  }
 </style>

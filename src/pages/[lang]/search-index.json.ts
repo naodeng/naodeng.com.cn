@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
+import { wikiIdToSlug, getTitleZhFromBody, getTitleZh } from "@/data/wiki";
 
 export interface SearchIndexItem {
   title: string;
@@ -72,6 +73,18 @@ export const GET: APIRoute = async ({ params }) => {
     tags: [p.data.testingType],
     type: "prompts",
   }));
+  // 提示词库入口页（便于直接搜索“提示词库 / prompts”）
+  promptsIndex.unshift({
+    title: lang === "zh-cn" ? "测试提示词库" : "QA Prompts Library",
+    description:
+      lang === "zh-cn"
+        ? "浏览全部测试提示词与分类入口"
+        : "Browse all testing prompts and categories",
+    url: `/${lang}/prompts/`,
+    date: new Date().toISOString(),
+    tags: [lang === "zh-cn" ? "提示词库" : "prompts"],
+    type: "prompts",
+  });
 
   // 获取 workflows 条目，每条生成一条索引项
   const allWorkflows = await getCollection("workflows");
@@ -87,7 +100,11 @@ export const GET: APIRoute = async ({ params }) => {
 
   // 获取 AI Wiki 条目
   const allAiWiki = await getCollection("aiwiki");
-  const aiWikiEntries = allAiWiki.filter((e) => e.data.lang === lang || e.id.startsWith(`${lang}/`));
+  const aiWikiEntries = allAiWiki.filter((e) => {
+    const inferredLang = e.id.startsWith("zh-cn/") ? "zh-cn" : "en";
+    const entryLang = e.data.lang ?? inferredLang;
+    return entryLang === lang;
+  });
   const aiWikiIndex: SearchIndexItem[] = aiWikiEntries.map((entry) => {
     const slug = entry.data.slug || entry.id.split("/").pop()?.replace(/\.md$/, "") || entry.id;
     return {
@@ -100,7 +117,27 @@ export const GET: APIRoute = async ({ params }) => {
     };
   });
 
-  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex, ...aiWikiIndex];
+  // 获取测试 Wiki 条目（当前仅中文）
+  const wikiIndex: SearchIndexItem[] = [];
+  if (lang === "zh-cn") {
+    const allWikiEntries = await getCollection("wiki");
+    wikiIndex.push(
+      ...allWikiEntries.map((entry) => {
+        const slug = wikiIdToSlug(entry.id);
+        const title = getTitleZhFromBody(entry.body) || getTitleZh(entry.data.title ?? "") || slug;
+        return {
+          title,
+          description: entry.data.description || "",
+          url: `/${lang}/wiki/${slug}/`,
+          date: new Date().toISOString(),
+          tags: ["wiki"],
+          type: "wiki",
+        };
+      })
+    );
+  }
+
+  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex, ...wikiIndex, ...aiWikiIndex];
 
   return new Response(JSON.stringify(fullIndex), {
     headers: {
