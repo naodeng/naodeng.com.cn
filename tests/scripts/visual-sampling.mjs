@@ -4,7 +4,7 @@ import { chromium } from "@playwright/test";
 
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:4321";
 const stamp = new Date().toISOString().slice(0, 10);
-const outDir = path.resolve(process.cwd(), `explore/Temporary/seo/visual-regression-${stamp}`);
+const outDir = path.resolve(process.cwd(), `docs/temporary/seo/visual-regression-${stamp}`);
 fs.mkdirSync(outDir, { recursive: true });
 
 const routes = [

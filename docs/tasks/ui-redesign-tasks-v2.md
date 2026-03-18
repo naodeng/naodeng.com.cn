@@ -23,8 +23,8 @@
 - Exit Criteria: 决策项全确认，基线数据已记录
 
 ### Outputs
-- `explore/Requirements/ui-redesign-prd-v2.md`（冻结版本）
-- `explore/Design/ui-redesign-design-v2.md`（冻结版本）
+- `docs/requirements/ui-redesign-prd-v2.md`（冻结版本）
+- `docs/design/ui-redesign-design-v2.md`（冻结版本）
 - 基线数据记录（文档或表格链接）
 
 ## Phase 1: Design Tokens & Base（基础层）
@@ -43,7 +43,7 @@
 
 ### Deliverables
 - [x] `src/styles/base.css` token 清单与注释完善。
-- [x] 设计规范速查表（可附在 `explore/Design`）。
+- [x] 设计规范速查表（可附在 `docs/design`）。
 
 ### Acceptance
 - [ ] 基础组件在 Blog/Wiki/AIWiki/Guild 外观一致。
@@ -169,19 +169,19 @@
 - [ ] 广告位实现与 CLS 监控联调（防止影响体验与稳定性）。
 
 ## QA Artifacts
-- `explore/Temporary/seo/lighthouse-baseline-2026-03-05.md`
-- `explore/Temporary/seo/lighthouse-baseline-2026-03-05.json`
-- `explore/Temporary/seo/ad-low-intrusion-check-2026-03-05.md`
-- `explore/Temporary/seo/accessibility-hard-metrics-2026-03-06.md`
-- `explore/Temporary/seo/accessibility-contrast-audit-2026-03-06.md`
-- `explore/Temporary/seo/toc-boundary-check-2026-03-06.md`
-- `explore/Temporary/seo/ui-redesign-acceptance-closeout-2026-03-06.md`
-- `explore/Temporary/seo/visual-regression-2026-03-06/report.md`
-- `explore/Temporary/seo/ui-redesign-launch-runbook-2026-03-06.md`
-- `explore/Temporary/seo/ui-redesign-qa-summary-2026-03-06.md`
-- `explore/Design/ui-redesign-component-map-v2.md`
-- `explore/Design/ui-redesign-channel-checklist-v2.md`
-- `explore/Design/related-terms-rule-v2.md`
+- `docs/temporary/seo/lighthouse-baseline-2026-03-05.md`
+- `docs/temporary/seo/lighthouse-baseline-2026-03-05.json`
+- `docs/temporary/seo/ad-low-intrusion-check-2026-03-05.md`
+- `docs/temporary/seo/accessibility-hard-metrics-2026-03-06.md`
+- `docs/temporary/seo/accessibility-contrast-audit-2026-03-06.md`
+- `docs/temporary/seo/toc-boundary-check-2026-03-06.md`
+- `docs/temporary/seo/ui-redesign-acceptance-closeout-2026-03-06.md`
+- `docs/temporary/seo/visual-regression-2026-03-06/report.md`
+- `docs/temporary/seo/ui-redesign-launch-runbook-2026-03-06.md`
+- `docs/temporary/seo/ui-redesign-qa-summary-2026-03-06.md`
+- `docs/design/ui-redesign-component-map-v2.md`
+- `docs/design/ui-redesign-channel-checklist-v2.md`
+- `docs/design/related-terms-rule-v2.md`
 
 ## Notes
 - `T0.2` 仍未完成：当前已有 Lighthouse/技术基线，但缺少“上线前连续 28 天”的业务指标基线（CTR/滚动深度/二跳率）。

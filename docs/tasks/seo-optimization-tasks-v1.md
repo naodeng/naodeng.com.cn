@@ -47,7 +47,7 @@
 - 已新增脚本：`scripts/seo-static-check.mjs`
 - 已新增命令：`npm run seo:check`、`npm run seo:check:strict`
 - 已接入 CI：`e2e.yml`、`deploy-cloudflare.yml`、`gh-pages.yml`
-- 已产出报告目录：`explore/Temporary/seo`
+- 已产出报告目录：`docs/temporary/seo`
 - 当前基线结果：
   - missingDescription: `0`
   - longDescription: `196`

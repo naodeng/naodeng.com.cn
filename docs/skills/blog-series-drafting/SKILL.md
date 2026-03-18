@@ -16,7 +16,7 @@ Use this skill when the user asks for recurring blog drafting work, especially s
 
 Default output path:
 
-- `explore/Temporary/blog/<series-slug>/`
+- `docs/temporary/blog/<series-slug>/`
 
 Default files:
 
@@ -71,7 +71,7 @@ When requested, also provide:
 Use the bundled script to initialize a 6-part series quickly:
 
 ```bash
-python3 skills/blog-series-drafting/scripts/init_series.py \
+python3 docs/skills/blog-series-drafting/scripts/init_series.py \
   --root /Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn \
   --slug <series-slug> \
   --series-title "<系列中文标题>" \
@@ -81,7 +81,7 @@ python3 skills/blog-series-drafting/scripts/init_series.py \
 Example:
 
 ```bash
-python3 skills/blog-series-drafting/scripts/init_series.py \
+python3 docs/skills/blog-series-drafting/scripts/init_series.py \
   --root /Users/nao.deng/Desktop/AwsomeCode/naodeng.com.cn \
   --slug page-agent-testing \
   --series-title "Page Agent 在软件测试中的应用" \

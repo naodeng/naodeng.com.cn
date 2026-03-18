@@ -63,9 +63,8 @@ const t = useTranslations(locale);
    * 渲染搜索结果
    * @param {Array} items - 结果列表
    * @param {boolean} hasQuery - 是否有搜索词
-   * @param {boolean} fromAlgolia - 是否为 Algolia 返回的结果（否则为本地 search-index.json）
    */
-  function renderItems(items, hasQuery, fromAlgolia) {
+  function renderItems(items, hasQuery) {
     resultsEl.innerHTML = "";
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
@@ -125,7 +124,7 @@ const t = useTranslations(locale);
       return;
     }
     const items = filter(q);
-    renderItems(items, hasQuery, false);
+    renderItems(items, hasQuery);
   }
 
   function openSearch() {

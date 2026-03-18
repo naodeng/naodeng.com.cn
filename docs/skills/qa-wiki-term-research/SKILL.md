@@ -1,6 +1,6 @@
 ---
 name: qa-wiki-term-research
-description: Research and enrich QA wiki term entries from an English term list using Google, Wikipedia, Medium, and QA engineering sources. Use when building or refining term pages from explore/Requirements/qa-wiki-term-plan-v1.md and outputting structured drafts to explore/Temporary/qa-wiki-temp.
+description: Research and enrich QA wiki term entries from an English term list using Google, Wikipedia, Medium, and QA engineering sources. Use when building or refining term pages from docs/requirements/qa-wiki-term-plan-v1.md and outputting structured drafts to docs/temporary/qa-wiki-temp.
 ---
 
 # QA Wiki Term Research
@@ -12,10 +12,10 @@ Run this skill when you need to turn planned QA terms into evidence-based wiki d
 ### 1) Load scope and template
 
 1. Read term scope from:
-- `explore/Requirements/qa-wiki-term-plan-v1.md`
+- `docs/requirements/qa-wiki-term-plan-v1.md`
 
 2. Read writing template from:
-- `explore/Templates/qa-wiki-term-template-zh-cn.md`
+- `docs/architecture/qa-wiki-term-template-zh-cn.md`
 
 3. If template file is missing, use existing wiki structure from `src/content/wiki/*.md` as fallback.
 
@@ -29,7 +29,7 @@ The script extracts Chinese/English term pairs and slug candidates.
 ### 3) Create research workbooks
 
 Use:
-- `python3 scripts/create_term_workbooks.py --terms <json> --out-dir explore/Temporary/qa-wiki-temp`
+- `python3 scripts/create_term_workbooks.py --terms <json> --out-dir docs/temporary/qa-wiki-temp`
 
 This creates one markdown workbook per term with fixed capture sections.
 
@@ -63,7 +63,7 @@ For each term, write:
 ### 6) Output format
 
 Write term files to:
-- `explore/Temporary/qa-wiki-temp/<slug>.md`
+- `docs/temporary/qa-wiki-temp/<slug>.md`
 
 Each file must include:
 - Frontmatter (`title`, `description`, `section`, `related`, `order`)

@@ -15,7 +15,7 @@ const STRICT = process.argv.includes("--strict");
 
 const WIKI_DIR = path.join(ROOT, "src/content/wiki");
 const AIWIKI_DIR = path.join(ROOT, "src/content/aiwiki");
-const OUT_DIR = path.join(ROOT, "explore/Temporary/issue");
+const OUT_DIR = path.join(ROOT, "docs/temporary/issue");
 const OUT_JSON = path.join(OUT_DIR, "wiki-aiwiki-integrity-report.json");
 const OUT_MD = path.join(OUT_DIR, "wiki-aiwiki-integrity-report.md");
 
