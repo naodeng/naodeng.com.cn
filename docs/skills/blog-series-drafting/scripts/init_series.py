@@ -101,13 +101,13 @@ def readme_template(series_title: str, slug: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Initialize 6-part testing blog series scaffold")
     parser.add_argument("--root", required=True, help="Project root path")
-    parser.add_argument("--slug", required=True, help="Series folder slug under explore/Temporary/blog")
+    parser.add_argument("--slug", required=True, help="Series folder slug under docs/temporary/blog")
     parser.add_argument("--series-title", required=True, help="Series title in Chinese")
     parser.add_argument("--status", default="草稿", help="Article status, e.g. 草稿/发布版")
     parser.add_argument("--force", action="store_true", help="Overwrite existing files")
     args = parser.parse_args()
 
-    base = Path(args.root) / "explore" / "Temporary" / "blog" / args.slug
+    base = Path(args.root) / "explore" / "temporary" / "blog" / args.slug
     base.mkdir(parents=True, exist_ok=True)
 
     file_names = [f"{num}-{args.slug.replace('-testing', '').replace(' ', '-')}-{suffix}.md" for num, suffix, _ in FILES]

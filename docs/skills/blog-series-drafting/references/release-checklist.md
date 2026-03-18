@@ -22,4 +22,4 @@
 
 - [ ] 文件路径清晰且命名规范
 - [ ] README 已列出完整系列
-- [ ] 总目录（如 `explore/Temporary/blog/README.md`）已登记新系列（如需要）
+- [ ] 总目录（如 `docs/temporary/blog/README.md`）已登记新系列（如需要）

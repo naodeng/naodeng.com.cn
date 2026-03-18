@@ -24,4 +24,4 @@
 
 ## 工具与自动化
 - `wiki:clean` / `wiki:toc:refresh` / `wiki:style:check`。
-- 发布前自动输出问题报告到 `explore/Temporary/issue`。
+- 发布前自动输出问题报告到 `docs/temporary/issue`。

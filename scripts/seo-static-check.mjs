@@ -4,7 +4,7 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const STRICT = process.argv.includes("--strict");
-const OUT_DIR = path.join(ROOT, "explore/Temporary/seo");
+const OUT_DIR = path.join(ROOT, "docs/temporary/seo");
 const REPORT_MD = path.join(OUT_DIR, "SEO-baseline-report-v1.md");
 const REPORT_JSON = path.join(OUT_DIR, "seo-baseline-report-v1.json");
 const INTERNAL_LINK_MD = path.join(OUT_DIR, "internal-link-optimization-report.md");

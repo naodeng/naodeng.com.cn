@@ -60,6 +60,15 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 - 📱 **移动端友好 | Mobile Friendly** - 完全响应式设计 | Fully responsive design
 - 🎯 **SEO 优化 | SEO Optimized** - 内置 SEO 最佳实践 | Built-in SEO best practices
 
+## 📁 项目目录 | Project Structure
+
+- `src/`：站点源码（页面、组件、内容）
+- `public/`：静态资源
+- `tests/`：测试项目（unit + e2e）
+- `scripts/`：自动化脚本
+- `docs/`：长期文档（requirements/design/tasks/architecture/standards）
+- `docs/temporary/`：临时探索与脚本输出
+
 ## 🤝 贡献 | Contributing
 
 我非常重视读者的反馈和贡献。如果您在我的博客文章中发现任何错误或遗漏，或者如果您有额外的内容建议，请不要犹豫，直接在 GitHub 上提交 Pull Request（PR）。

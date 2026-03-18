@@ -1,7 +1,7 @@
 # Content Optimization Tasks v2
 
 ## Phase 1: Standards
-- [ ] 固化中英文词条模板并发布到 `explore/Templates`。
+- [ ] 固化中英文词条模板并发布到 `docs/architecture`。
 - [ ] 建立术语风格规范（不翻译项、缩写、标点）。
 
 ## Phase 2: Cleanup
