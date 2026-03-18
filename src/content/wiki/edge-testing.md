@@ -1,6 +1,6 @@
 ---
-title: "边界测试 ｜ Edge Testing"
-description: "边界测试 (Edge Testing) 专注于软件应用的极致边界，确保系统在极限状态下表现正确。它针对输入参数的最外层，通常与边界值分析 (Boundary Value Analysis) 等技术结合，以验证应用的稳健性。 其核心在于识别系统极限（如最大容量或边界条件），并设计将软件推向这些极限的测试用例…"
+title: "边缘测试 ｜ Edge Testing"
+description: "边缘测试 (Edge Testing) 专注于软件应用的极致边界，确保系统在极限状态下表现正确。它针对输入参数的最外层，通常与边界值分析 (Boundary Value Analysis) 等技术结合，以验证应用的稳健性。其核心在于识别系统极限（如最大容量或边界条件），并设计将软件推向这些极限的测试用例…"
 section: "E"
 related:
   - boundary-testing
@@ -11,11 +11,11 @@ related:
 order: 0
 ---
 
-# 边界测试 ｜ Edge Testing
+# 边缘测试 ｜ Edge Testing
 
 <!-- TOC START -->
 
-- [边界测试 ｜ Edge Testing](#边界测试--edge-testing)
+- [边缘测试 ｜ Edge Testing](#边缘测试--edge-testing)
   - [相关术语](#相关术语)
   - [有关边缘测试的问题吗？](#有关边缘测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
@@ -37,7 +37,7 @@ order: 0
       - [边缘测试如何实现自动化？](#边缘测试如何实现自动化)
       - [有效边缘测试的最佳实践有哪些？](#有效边缘测试的最佳实践有哪些)
 <!-- TOC END -->
-（又名边界测试） 边缘测试，经常与“ 边界测试，”是一种测试技术，用于识别极端操作参数下可能发生的问题，通常称为软件功能或限制的“边缘”。它侧重于测试系统在其容量限制或操作极限或接近其性能或行为的情况下的性能或行为。例如，如果软件声称支持最多 1,000 个并发用户， 边缘测试将涉及对接近 1,000 位用户（如果不是精确的话）的系统进行测试，以观察其行为。目标是确保系统在其边界可靠运行，并发现仅在极端条件下出现的潜在问题。
+（又名边界测试）边缘测试，经常与“边界测试，”是一种测试技术，用于识别极端操作参数下可能发生的问题，通常称为软件功能或限制的“边缘”。它侧重于测试系统在其容量限制或操作极限或接近其性能或行为的情况下的性能或行为。例如，如果软件声称支持最多 1,000 个并发用户，边缘测试将涉及对接近 1,000 位用户（如果不是精确的话）的系统进行测试，以观察其行为。目标是确保系统在其边界可靠运行，并发现仅在极端条件下出现的潜在问题。
 
 ## 相关术语
 
@@ -66,7 +66,7 @@ order: 0
 
 - **设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**将软件推向极限。
 
-- **执行这些测试**观察系统行为。 可以使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 或 JUnit 等工具将自动化 [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 集成到 CI/CD 管道中，并使用专门设计的脚本来挑战应用程序的边界。这种自动化允许在整个开发生命周期中持续验证边缘情况。 忽视[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/)可能会导致软件脆弱并且在野外容易发生故障，而现实世界的使用通常包括意外和极端的条件。通过整合[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/)，开发人员可以先发制人地解决潜在的故障点，从而产生更具弹性和用户友好的应用程序。
+- **执行这些测试**观察系统行为。可以使用 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 或 JUnit 等工具将自动化 [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 集成到 CI/CD 管道中，并使用专门设计的脚本来挑战应用程序的边界。这种自动化允许在整个开发生命周期中持续验证边缘情况。忽视[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/)可能会导致软件脆弱并且在野外容易发生故障，而现实世界的使用通常包括意外和极端的条件。通过整合[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/)，开发人员可以先发制人地解决潜在的故障点，从而产生更具弹性和用户友好的应用程序。
 
 - **确定关键边界**通过要求和规范。
 
@@ -91,7 +91,7 @@ order: 0
 - **风险缓解**：测试输入和输出范围的极端值有助于防止生产中潜在的系统故障，从而降低代价高昂的停机或数据丢失的风险。
 - **用户满意度**：边缘测试有助于确保应用程序可以处理意外的用户行为，从而带来更好的用户体验并提高用户满意度。
 - **合规性和安全性**：对于受监管的行业或安全关键型应用，边缘测试对于确保符合标准和维护安全至关重要。
-- **面向未来**：通过验证软件在其边界的行为，边缘测试可以使其更适应未来的变化或功能扩展。 将[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 纳入[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略可以带来更全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和更具弹性的应用程序，最终有助于该软件在市场上的成功。
+- **面向未来**：通过验证软件在其边界的行为，边缘测试可以使其更适应未来的变化或功能扩展。将[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 纳入[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 策略可以带来更全面的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 和更具弹性的应用程序，最终有助于该软件在市场上的成功。
 
 #### 不执行边缘测试的潜在后果是什么？
 
@@ -109,7 +109,7 @@ order: 0
 
 - **法律和合规风险**如果软件无法处理法规或标准要求的边缘情况。
 
-- **维护成本较高**由于需要修复在开发周期早期未发现的问题。 为了减轻这些风险，请确保 [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 是您的 [测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 的一部分。尽可能自动化边缘情况场景，并根据风险评估确定优先级。
+- **维护成本较高**由于需要修复在开发周期早期未发现的问题。为了减轻这些风险，请确保 [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) 是您的 [测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 的一部分。尽可能自动化边缘情况场景，并根据风险评估确定优先级。
 
 - **缺陷风险增加**在生产中，特别是在应用程序经常失败的边界条件下。
 
@@ -184,7 +184,7 @@ order: 0
 - **成对测试（全对测试）**：使用所有可能的离散参数组合进行测试，以确保覆盖各种边缘情况。
 - **组合测试**：与成对类似，但涉及组合两个以上参数来测试交互和边缘情况。
 - **基于模型的测试**：使用模型来模拟可能出现边缘条件的现实场景，然后基于这些模型开发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
-- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：在没有预定义[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的情况下积极探索软件，通过临时测试和学习来查找边缘情况。 自动化这些技术通常涉及使用针对边缘条件的参数编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 脚本并将其集成到[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具可用于自动执行边界值和[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) 测试，而组合或基于模型的测试可能需要更复杂的工具或框架。
+- **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：在没有预定义[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的情况下积极探索软件，通过临时测试和学习来查找边缘情况。自动化这些技术通常涉及使用针对边缘条件的参数编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 脚本并将其集成到[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中。 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、JUnit 或 TestNG 等工具可用于自动执行边界值和[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) 测试，而组合或基于模型的测试可能需要更复杂的工具或框架。
 
 #### 边缘测试常用哪些工具？
 
@@ -262,7 +262,7 @@ order: 0
 - **并发**：模拟许多用户或进程同时访问同一资源。
 - **网络条件**：模拟低带宽、高延迟或间歇性连接。
 - **硬件限制**：在支持的最低规格硬件上运行测试。
-- **权限**：检查具有受限用户权限或只读文件的系统行为。 可以使用支持参数化和边界值分析的测试框架和工具编写这些情况的自动化测试。包含专门验证系统在这些边缘条件下的行为的断言至关重要。
+- **权限**：检查具有受限用户权限或只读文件的系统行为。可以使用支持参数化和边界值分析的测试框架和工具编写这些情况的自动化测试。包含专门验证系统在这些边缘条件下的行为的断言至关重要。
 
 ### 挑战和解决方案
 
@@ -277,7 +277,7 @@ order: 0
 - **资源分配**：边缘测试可能需要额外的资源，例如专用工具或硬件，而这些资源可能不容易获得。
 - **间歇性问题**：一些边缘情况会导致间歇性故障，这些故障非常难以跟踪和修复。
 - **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** ：对于非常大或复杂的应用程序来说，实现包括所有潜在边缘情况的高测试覆盖率几乎是不可能的。
-- **自动化复杂性**：由于其独特且通常复杂的性质，自动化边缘情况测试可能具有挑战性。 缓解策略包括根据风险对边缘情况进行优先级排序，使用**[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**来发现意外行为，以及使用**监控工具**来捕获生产中的边缘情况。此外，**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计技术**（例如边界值分析）可以帮助系统地识别边缘条件。
+- **自动化复杂性**：由于其独特且通常复杂的性质，自动化边缘情况测试可能具有挑战性。缓解策略包括根据风险对边缘情况进行优先级排序，使用**[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**来发现意外行为，以及使用**监控工具**来捕获生产中的边缘情况。此外，**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 设计技术**（例如边界值分析）可以帮助系统地识别边缘条件。
 
 #### 如何减轻或克服这些挑战？
 
@@ -307,7 +307,7 @@ order: 0
 
 - **进行[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 会话**创造性地发现和测试自动化测试可能无法覆盖的边缘条件。
 
-- **审查和完善**定期进行边缘测试策略，以适应新功能、用户行为的变化或可能引入新边缘情况的新兴技术。 By adopting these strategies, [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) engineers can effectively manage the complexities of [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) and ensure a robust and reliable software product.
+- **审查和完善**定期进行边缘测试策略，以适应新功能、用户行为的变化或可能引入新边缘情况的新兴技术。By adopting these strategies, [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) engineers can effectively manage the complexities of [边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/) and ensure a robust and reliable software product.
 
 - **Prioritize [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于风险和影响。重点关注可能影响应用程序稳定性或安全性的最关键的边缘情况。
 
@@ -339,7 +339,7 @@ order: 0
 自动化[边缘测试](https://inaodeng.com/zh-cn/wiki/edge-testing/)涉及针对边界条件和极端操作能力的脚本场景。使用 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**（例如 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/) 或 Playwright）来创建这些脚本。专注于自动化：
 
 - **边界值分析**：测试输入字段和数据处理例程的限制。
-- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：自动化交互，将系统推向性能极限。 利用**参数化测试**将一系列边缘值输入到您的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)中。例如，在 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中：
+- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：自动化交互，将系统推向性能极限。利用**参数化测试**将一系列边缘值输入到您的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)中。例如，在 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 这样的 JavaScript 测试框架中：
 
 ```
   describe.each([
@@ -352,7 +352,7 @@ order: 0
     });
   });
 ```
-合并 **[模糊测试](https://inaodeng.com/zh-cn/wiki/fuzz-testing/)** 工具来生成和自动执行随机、意外或无效的输入。 AFL 或 Peach Fuzzer 等工具可以集成到您的 CI/CD 管道中。
+合并 **[模糊测试](https://inaodeng.com/zh-cn/wiki/fuzz-testing/)** 工具来生成和自动执行随机、意外或无效的输入。AFL 或 Peach Fuzzer 等工具可以集成到您的 CI/CD 管道中。
   自动执行**状态转换测试**，以确保系统正确处理其边缘的状态更改。基于模型的测试工具可以帮助定义和自动化这些场景。
   使用**自定义脚本**来模拟环境中的边缘情况，例如网络延迟或磁盘空间短缺。
   **持续集成 (CI) 工具**（例如 Jenkins 或 GitHub Actions）可以定期安排和运行这些自动化边缘测试。确保您的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 包含全面的**日志记录**和**报告**，以便快速识别问题。
