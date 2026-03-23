@@ -134,7 +134,7 @@ order: 0
 
 - **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**更多关于 **什么** ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
 
-- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**专注于 **如何** ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。 本质上，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)可以在没有自动化的情况下存在，作为[手工测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)的指南，而[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)本质上与自动化相关，并且是[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)在自动化框架中的实际执行。
+- **[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**专注于 **如何** ——它们关心如何以编程方式执行测试步骤，并用于自动执行测试用例。本质上，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)可以在没有自动化的情况下存在，作为[手工测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)的指南，而[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)本质上与自动化相关，并且是[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)在自动化框架中的实际执行。
 
 - **[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**更多关于 **什么** ——它们描述了要测试的内容、要采取的步骤以及预期结果，但没有指定如何执行测试。
 
@@ -261,7 +261,7 @@ order: 0
         pm.response.to.have.status(200);
     });
 ```
-- **机器人框架**：用于[acceptance testing](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) 和接受[test-driven development](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架。
+- **机器人框架**：用于[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架。
 
 ```
     *** Test Cases ***
@@ -295,7 +295,7 @@ order: 0
     cy.visit('https://example.com');
     cy.get('.element').click();
 ```
-- **JUnit**/**TestNG**：Java 中[unit testing](https://inaodeng.com/zh-cn/wiki/unit-testing/) 的框架，通常与[Selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 一起用于自动化。
+- **JUnit**/**TestNG**：Java 中[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 的框架，通常与[Selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 一起用于自动化。
 
 ```
     @Test
@@ -319,7 +319,7 @@ order: 0
         pm.response.to.have.status(200);
     });
 ```
-- **机器人框架**：用于[acceptance testing](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) 和接受[test-driven development](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架。
+- **机器人框架**：用于[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/) 和接受[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (ATDD) 的关键字驱动[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架。
 
 ```
     *** Test Cases ***
@@ -483,7 +483,7 @@ order: 0
 
 - **简化调试**因为可以快速识别和隔离导致故障的数据。
 
-- **加强协作**允许非技术利益相关者参与测试数据的创建和审查。 当测试处理各种输入并需要针对不同数据组合进行验证的应用程序（例如表单提交、数据处理系统和 [API](https://inaodeng.com/zh-cn/wiki/api/) 端点）时，DDT 特别有用。
+- **加强协作**允许非技术利益相关者参与测试数据的创建和审查。当测试处理各种输入并需要针对不同数据组合进行验证的应用程序（例如表单提交、数据处理系统和 [API](https://inaodeng.com/zh-cn/wiki/api/) 端点）时，DDT 特别有用。
 
 - **减少冗余**在测试脚本中，导致更干净、更易于管理的代码。
 
