@@ -9,7 +9,7 @@
 这个技能用于帮助测试团队更高效地完成 test-strategy-plus 相关任务，并产出可复用结果。
 
 ## 输出预览
-- 适用于 \ 的清晰执行步骤
+- 适用于 test-strategy-plus 的清晰执行步骤
 - 可直接复用的结果格式
 - 完成后可落地的下一步建议
 
@@ -27,4 +27,4 @@
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## 一键安装
-\
+npx @skill-hub/cli install test-strategy-plus

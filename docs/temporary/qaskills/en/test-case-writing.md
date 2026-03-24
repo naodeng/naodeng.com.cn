@@ -6,7 +6,7 @@ by naodeng • Testing Skill
 This skill helps QA teams handle test-case-writing tasks with practical steps and reusable outputs.
 
 ## Output Preview
-- Clear task breakdown for \
+- Clear task breakdown for test-case-writing
 - Reusable result format that can be copied into daily work
 - Actionable next steps after execution
 
@@ -24,4 +24,4 @@ QA engineers, test leads, and product teams who need faster and more consistent 
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## One-Click Install
-\
+npx @skill-hub/cli install test-case-writing
