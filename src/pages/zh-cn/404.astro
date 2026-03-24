@@ -1,16 +1,8 @@
 ---
-import { LOCALES, localeParams, useTranslations, type Lang } from "@/i18n";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { LOCALES } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
-const locale = Astro.currentLocale as Lang;
-const t = useTranslations(locale);
-const homeUrl = getRelativeLocaleUrl(locale, "/");
-
-const title = t({
-  en: "Page Not Found",
-  "zh-cn": "页面未找到",
-});
-export const getStaticPaths = () => localeParams;
+const title = "页面未找到";
+const homeUrl = "/zh-cn/";
 ---
 
 <Layout {title} robots="noindex, nofollow, noarchive">
@@ -20,24 +12,13 @@ export const getStaticPaths = () => localeParams;
       {title}
     </h1>
 
-    <p>
-      {
-        t({
-          en: "The page you are looking for could not be found. Please return to the top or try another language.",
-          "zh-cn": "您要查找的页面不存在。请返回顶部或尝试其他语言。",
-        })
-      }
-    </p>
-    <p class="redirect-hint" id="redirect-hint" aria-live="polite">
-      {locale === "zh-cn" ? "10 秒后自动返回首页…" : "Redirecting to home in 10 seconds…"}
-    </p>
+    <p>您要查找的页面不存在。请返回首页或尝试其他语言。</p>
+    <p class="redirect-hint" id="redirect-hint" aria-live="polite">10 秒后自动返回首页…</p>
 
-    <a href={homeUrl} class="gotop">
-      {t({ en: "Top Page", "zh-cn": "首页" })}
-    </a>
+    <a href={homeUrl} class="gotop">首页</a>
 
     <section class="langList">
-      <h2>{t({ en: "View in other languages", "zh-cn": "用其他语言查看" })}</h2>
+      <h2>用其他语言查看</h2>
       <ul>
         {
           Object.entries(LOCALES).map(([lang, { label }]) => (
@@ -82,9 +63,7 @@ export const getStaticPaths = () => localeParams;
         return;
       }
       if (el) {
-        el.textContent = (document.documentElement.lang === "zh-CN" || document.documentElement.getAttribute("data-locale") === "zh-cn")
-          ? sec + " 秒后自动返回首页…"
-          : "Redirecting to home in " + sec + " seconds…";
+        el.textContent = sec + " 秒后自动返回首页…";
       }
     }, 1000);
   })();

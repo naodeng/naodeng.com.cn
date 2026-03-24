@@ -90,7 +90,7 @@ const breadcrumbs = [
               {post.data.tags && (
                 <div class="post-tags">
                   {post.data.tags.slice(0, 3).map((tag) => (
-                    <a href={`/${locale}/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
+                    <a href={`/${locale}/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}/`} class="tag-link">
                       #{tag}
                     </a>
                   ))}
