@@ -7,7 +7,7 @@ import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_TAGS } from "@/consts";
 import { getCollection } from "astro:content";
 
-/** 与 getStaticPaths 一致：含 "/" 或空格时编码路径段，避免 /en/tags/Data Driven/ 与 Data%20Driven 不一致导致 404 */
+/** 标签链接统一使用编码；getStaticPaths 传原始值，让 Astro 负责路由编码与匹配。 */
 function tagToSlug(t: string) {
   return t.includes("/") || t.includes(" ") ? encodeURIComponent(t) : t;
 }
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
     const tags = [...new Set(langPosts.flatMap((post) => post.data.tags || []))];
     
     for (const tag of tags) {
-      const tagSegment = tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
+      const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
       paths.push({
         params: { lang, tag: tagSegment },
         props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },

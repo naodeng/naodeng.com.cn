@@ -92,7 +92,7 @@ export const getStaticPaths = () =>
         <h2 class="section-title">{locale === "zh-cn" ? "按标签浏览" : "Browse by Tag"}</h2>
         <div class="tags-wrap">
           {tags.map((tag) => (
-            <a href={getRelativeLocaleUrl(locale, `/tags/${tag.includes("/") ? encodeURIComponent(tag) : tag}`)} class="tag-pill">#{tag}</a>
+            <a href={getRelativeLocaleUrl(locale, `/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}`)} class="tag-pill">#{tag}</a>
           ))}
         </div>
       </section>

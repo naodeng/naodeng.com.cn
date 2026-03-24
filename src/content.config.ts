@@ -1,5 +1,6 @@
 // 博客 collection：支持 tags、categories、series（与 Hugo 对应）
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const blog = defineCollection({
@@ -105,9 +106,9 @@ const guild = defineCollection({
       /** 排序权重 */
       order: z.number(),
       /** GitHub Demo 链接 */
-      githubDemo: z.string().url().optional(),
+      githubDemo: z.url().optional(),
       /** 官方文档链接 */
-      officialDocs: z.string().url().optional(),
+      officialDocs: z.url().optional(),
       /** 发布日期 */
       date: z.coerce.date().optional(),
       /** 更新日期 */

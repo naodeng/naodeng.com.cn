@@ -1,0 +1,126 @@
+---
+import { LOCALES } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+const title = "Page Not Found";
+const homeUrl = "/en/";
+---
+
+<Layout {title} robots="noindex, nofollow, noarchive">
+  <section class="container">
+    <h1>
+      <b>404</b>
+      {title}
+    </h1>
+
+    <p>
+      The page you are looking for could not be found. Please return to the top or try another language.
+    </p>
+    <p class="redirect-hint" id="redirect-hint" aria-live="polite">
+      Redirecting to home in 10 seconds…
+    </p>
+
+    <a href={homeUrl} class="gotop">Top Page</a>
+
+    <section class="langList">
+      <h2>View in other languages</h2>
+      <ul>
+        {
+          Object.entries(LOCALES).map(([lang, { label }]) => (
+            <li>
+              <a
+                href={`/${lang}/`}
+                data-lang-path={lang}
+                onclick={`localStorage.selectedLang = "${lang}"`}
+                dir={LOCALES[lang].dir || null}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </section>
+</Layout>
+
+<script is:inline>
+  if (localStorage.userAccessPath) {
+    history.replaceState("", "", localStorage.userAccessPath);
+    document.querySelectorAll("a[data-lang-path]").forEach((a) => {
+      const pathnames = localStorage.userAccessPath.split("/");
+      const lang = a.getAttribute("data-lang-path");
+      pathnames[1] = lang;
+      a.href = pathnames.join("/");
+    });
+    localStorage.removeItem("userAccessPath");
+  }
+</script>
+<script is:inline define:vars={{ homeUrl }}>
+  (function () {
+    var sec = 10;
+    var el = document.getElementById("redirect-hint");
+    var t = setInterval(function () {
+      sec--;
+      if (sec <= 0) {
+        clearInterval(t);
+        window.location.href = homeUrl;
+        return;
+      }
+      if (el) {
+        el.textContent = "Redirecting to home in " + sec + " seconds…";
+      }
+    }, 1000);
+  })();
+</script>
+
+<style>
+  .container {
+    text-align: center;
+    border: 4px dotted color-mix(in srgb, var(--color-caution) 40%, transparent);
+    padding: var(--sp-l);
+    border-radius: 16px;
+  }
+  .container > h1 {
+    color: var(--color-caution);
+    font-size: 2rem;
+  }
+  .container > h1 b {
+    display: block;
+    font-size: 4em;
+    font-weight: 900;
+    letter-spacing: -0.1em;
+    opacity: 0.6;
+  }
+  .container > p {
+    margin-block-start: var(--sp-s);
+  }
+  .redirect-hint {
+    margin-block-start: var(--sp-s);
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+  .gotop {
+    display: inline-block;
+    margin-inline: auto;
+    margin-block-start: var(--sp-s);
+    padding: 0.5em 1.5em;
+    border-radius: 999px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--color-theme);
+    color: var(--color-base);
+  }
+  .langList {
+    margin-block-start: var(--sp-l);
+  }
+  .langList ul {
+    margin-block-start: var(--sp-s);
+    display: flex;
+    gap: var(--sp-s);
+    justify-content: center;
+  }
+  .langList a {
+    color: var(--color-theme);
+    text-decoration: underline;
+  }
+</style>

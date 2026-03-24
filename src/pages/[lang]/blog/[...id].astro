@@ -212,7 +212,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
           post.data.tags && post.data.tags.length > 0 && (
             <div class="tags">
               {post.data.tags.slice(0, 3).map((tag) => {
-                const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
+                const tagSegment = tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
                 const tagUrl = `/${lang}/tags/${tagSegment}/`;
                 return (
                   <a href={tagUrl} class="tag">{tag}</a>
