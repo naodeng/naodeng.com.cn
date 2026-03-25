@@ -1,27 +1,79 @@
 # test-case-reviewer-plus
 
-by naodeng • Testing Skill
+by naodeng • Senior QA / Test Automation / AI Prompt & Skill Specialist
 
-## Overview
-This skill helps QA teams handle test-case-reviewer-plus tasks with practical steps and reusable outputs.
+## When
+- When many existing test cases are inconsistent in quality.
+- When onboarding new members who need clear executable test assets.
+- When leakage increases and case quality must be re-evaluated.
 
-## Output Preview
-- Clear task breakdown for test-case-reviewer-plus
-- Reusable result format that can be copied into daily work
-- Actionable next steps after execution
+## What
+- Deliver structured, executable, reproducible high-quality test cases.
+- Identify redundant/ambiguous/non-executable cases and provide replacements.
+- Improve edge and high-risk scenario coverage quality.
 
-## Target Audience
-QA engineers, test leads, and product teams who need faster and more consistent testing outcomes.
+## How
+1. Align scope first: define in-scope/out-of-scope and success criteria.
+2. Rank risk: prioritize by business impact and failure likelihood.
+3. Execute by priority: cover critical paths before edge/negative paths.
+4. Capture evidence continuously: input, steps, result, and impact per finding.
+5. Triage and regress: classify issues immediately and plan re-verification.
+6. Publish final decision summary: current status, residual risk, and next actions.
 
-## Skill Card
-- Skill Name: test-case-reviewer-plus
-- Display Name: test-case-reviewer-plus
-- Language: English
-- Last Synced: 2026-03-24
+## Reference
+### Positive Example (Input -> Output)
+Input:
+- Clear objective, scope, timeline, and risk preference
+
+Output:
+- Prioritized execution plan
+- Evidence-backed result log
+- Decision-ready summary with next actions
+
+### Negative Example (Input -> Output)
+Input:
+- "Test this feature quickly"
+
+Output (problem):
+- Subjective conclusion only, no scope, no evidence, no actionable guidance
+
+## Limits
+- Do not execute without explicit scope, priority, and acceptance criteria.
+- Do not output conclusion-only reports without evidence.
+- Do not replace product/business ownership for final business tradeoffs.
+- Do not promise exhaustive low-value long-tail coverage.
+- Do not provide deterministic conclusions when critical inputs are missing.
+
+## Install
+### macOS / Linux
+```bash
+SKILL_DIR="explore/skills-en/test-case-reviewer-plus"
+DEST="$HOME/.codex/skills/naodeng-test-case-reviewer-plus"
+TMP_DIR="$(mktemp -d)"
+git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
+cd "$TMP_DIR/repo"
+git sparse-checkout set "$SKILL_DIR"
+mkdir -p "$(dirname "$DEST")"
+cp -R "$SKILL_DIR" "$DEST"
+echo "Installed to $DEST"
+```
+
+### Windows (PowerShell)
+```powershell
+$SkillDir = "explore/skills-en/test-case-reviewer-plus"
+$Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-test-case-reviewer-plus"
+$Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
+git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
+Set-Location (Join-Path $Tmp "repo")
+git sparse-checkout set $SkillDir
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Dest) | Out-Null
+Copy-Item -Recurse -Force $SkillDir $Dest
+Write-Host "Installed to $Dest"
+```
 
 ## Source
-- Original Skill: [test-case-reviewer-plus](|)
+- Original Skill: [test-case-reviewer-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-en/test-case-reviewer-plus/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## One-Click Install
-npx @skill-hub/cli install test-case-reviewer-plus
+## Last Synced
+2026-03-25

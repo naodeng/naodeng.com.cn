@@ -1,27 +1,82 @@
 # api-testing
 
-by naodeng • Testing Skill
+by naodeng • Senior QA / Test Automation / AI Prompt & Skill Specialist
 
-## Overview
-This skill helps QA teams handle api-testing tasks with practical steps and reusable outputs.
+## When
+- When API contracts change and backward compatibility must be verified.
+- When integration issues appear and contract drift is suspected.
+- Before release, to quickly validate critical API regression paths.
 
-## Output Preview
-- Clear task breakdown for api-testing
-- Reusable result format that can be copied into daily work
-- Actionable next steps after execution
+## What
+- Deliver a risk-ranked API verification checklist (happy, error, compatibility paths).
+- Provide explicit release advice: go / conditional go / no-go.
+- Build a closed loop from change -> risk -> evidence -> conclusion.
 
-## Target Audience
-QA engineers, test leads, and product teams who need faster and more consistent testing outcomes.
+## How
+1. Align scope first: define in-scope/out-of-scope and success criteria.
+2. Rank risk: prioritize by business impact and failure likelihood.
+3. Execute by priority: cover critical paths before edge/negative paths.
+4. Capture evidence continuously: input, steps, result, and impact per finding.
+5. Triage and regress: classify issues immediately and plan re-verification.
+6. Publish final decision summary: current status, residual risk, and next actions.
 
-## Skill Card
-- Skill Name: api-testing
-- Display Name: api-testing
-- Language: English
-- Last Synced: 2026-03-24
+## Reference
+### Positive Example (Input -> Output)
+Input:
+- Changed endpoint: `POST /orders`
+- Change details: add `couponCode`, update status-code policy
+- Risk preference: payment failure rate must not increase
+
+Output:
+- Checklist: order happy path, valid/invalid coupon, idempotent retries, timeout handling
+- Evidence: request/response diffs and error semantics table
+- Conclusion: conditional go (add one 429 retry regression check)
+
+### Negative Example (Input -> Output)
+Input:
+- "Please test the order API"
+
+Output (problem):
+- Only "tested and passed" with no scenario list, no evidence, no risk context
+- Not usable for release decision
+
+## Limits
+- Do not execute without explicit scope, priority, and acceptance criteria.
+- Do not output conclusion-only reports without evidence.
+- Do not replace product/business ownership for final business tradeoffs.
+- Do not promise exhaustive low-value long-tail coverage.
+- Do not provide deterministic conclusions when critical inputs are missing.
+
+## Install
+### macOS / Linux
+```bash
+SKILL_DIR="skills/skills-en/testing-types/api-testing"
+DEST="$HOME/.codex/skills/naodeng-api-testing"
+TMP_DIR="$(mktemp -d)"
+git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
+cd "$TMP_DIR/repo"
+git sparse-checkout set "$SKILL_DIR"
+mkdir -p "$(dirname "$DEST")"
+cp -R "$SKILL_DIR" "$DEST"
+echo "Installed to $DEST"
+```
+
+### Windows (PowerShell)
+```powershell
+$SkillDir = "skills/skills-en/testing-types/api-testing"
+$Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-api-testing"
+$Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
+git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
+Set-Location (Join-Path $Tmp "repo")
+git sparse-checkout set $SkillDir
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Dest) | Out-Null
+Copy-Item -Recurse -Force $SkillDir $Dest
+Write-Host "Installed to $Dest"
+```
 
 ## Source
-- Original Skill: [api-testing](|)
+- Original Skill: [api-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/skills-en/testing-types/api-testing)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## One-Click Install
-npx @skill-hub/cli install api-testing
+## Last Synced
+2026-03-25
