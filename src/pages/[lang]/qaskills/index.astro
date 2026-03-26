@@ -16,8 +16,8 @@ const lang = Astro.params.lang as Lang;
 const grouped = await getQASkillsGrouped(lang);
 
 const text = lang === "zh-cn" ? {
-  title: "QA Skills",
-  description: "软件测试技能库",
+  title: "软件测试技能库",
+  description: "覆盖测试类型、工作流与增强技能的 QA Skills Library",
   intro: "收录测试类型、测试工作流程和加强版技能，帮助你快速找到合适技能并直接上手。",
   quickStart: "快速开始",
   categories: "Skills 分类",
@@ -50,8 +50,8 @@ const text = lang === "zh-cn" ? {
     },
   ],
 } : {
-  title: "QA Skills",
-  description: "Software Testing Skill Library",
+  title: "QA Skill Library",
+  description: "Software testing skill library for testing types, workflows, and enhanced QA skills",
   intro: "Browse testing types, testing workflows, and plus skills to quickly find the right skill and start using it.",
   quickStart: "Quick Start",
   categories: "Skill Categories",
@@ -86,6 +86,38 @@ const text = lang === "zh-cn" ? {
 };
 
 const totalCount = grouped.testingTypes.length + grouped.testingWorkflows.length + grouped.plus.length;
+const allSkills = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const pageUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, "/qaskills/")}`;
+const pageKeywords =
+  lang === "zh-cn"
+    ? "软件测试技能库,QA Skills,测试提示词,测试工作流,自动化测试,AI测试,质量保障"
+    : "QA skill library,software testing skills,test workflows,testing prompts,automation testing,AI testing,quality assurance";
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: text.title,
+  description: text.description,
+  url: pageUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  about: [
+    lang === "zh-cn" ? "软件测试技能" : "Software testing skills",
+    lang === "zh-cn" ? "测试工作流" : "Testing workflows",
+    lang === "zh-cn" ? "AI 测试" : "AI testing",
+  ],
+};
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: text.title,
+  numberOfItems: totalCount,
+  itemListElement: allSkills.slice(0, 20).map((skill, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title,
+    url: `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`,
+  })),
+};
 
 const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
@@ -96,7 +128,9 @@ const breadcrumbs = [
 <Base
   title={text.title}
   description={text.description}
+  keywords={pageKeywords}
   breadcrumbs={breadcrumbs}
+  extraStructuredData={[collectionSchema, itemListSchema]}
 >
   <div class="qaskills-page">
     <header class="hero">

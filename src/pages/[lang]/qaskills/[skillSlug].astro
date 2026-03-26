@@ -105,12 +105,48 @@ const installers = {
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
 const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
+const pageTitle = lang === "zh-cn"
+  ? `${skill.chineseName || skill.title} - 软件测试技能库`
+  : `${skill.title} - QA Skill Library`;
+const pageDescription = (skill.intro || skill.whenToUse || skill.title || "").trim();
+const pageKeywords = [
+  skill.title,
+  skill.chineseName,
+  lang === "zh-cn" ? "软件测试技能库" : "QA skill library",
+  lang === "zh-cn" ? "测试技能" : "testing skills",
+  lang === "zh-cn" ? "自动化测试" : "automation testing",
+  lang === "zh-cn" ? "AI测试" : "AI testing",
+].filter(Boolean).join(", ");
+const skillSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title,
+  description: pageDescription,
+  url: canonicalUrl,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  dateModified: skill.updatedAt || undefined,
+  author: skill.author
+    ? { "@type": "Person", name: skill.author }
+    : { "@type": "Organization", name: "naodeng" },
+  publisher: {
+    "@type": "Organization",
+    name: "naodeng",
+    url: siteOrigin,
+  },
+  mainEntityOfPage: canonicalUrl,
+  about: [
+    lang === "zh-cn" ? "软件测试技能" : "Software testing skills",
+    skill.whenToUse || "",
+  ].filter(Boolean),
+};
 ---
 
 <Base
-  title={lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}
-  description={skill.intro || skill.title}
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
   breadcrumbs={breadcrumbs}
+  extraStructuredData={[skillSchema]}
 >
   <article class="qaskill-detail">
     <header class="detail-header">

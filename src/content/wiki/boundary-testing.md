@@ -192,11 +192,11 @@ order: 0
 
 边界值分析 (BVA) 和[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP) 都是用于设计[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的黑盒测试技术。
 
-**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)** 将软件模块的输入数据划分为等效数据的分区，从中可以导出[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。在 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP)  中，假设一个分区中的所有值的行为方式相同。如果某个分区中的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 通过，则同一分区中的其他 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 也应通过。
+**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)** 将软件模块的输入数据划分为等效数据的分区，从中可以导出[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。在 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP) 中，假设一个分区中的所有值的行为方式相同。如果某个分区中的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 通过，则同一分区中的其他 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 也应通过。
 
 另一方面，**边界值分析**重点关注这些分区边缘的值。BVA 基于这样的原理：错误往往发生在输入范围的边界处。它涉及在分区之间的边界进行测试，包括最小值和最大值、内部/外部边界、典型值和误差值。
 
-虽然 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP)  通过仅考虑每个分区的一个代表来减少 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的数量，但 边界值分析 (BVA) 可确保系统正确处理边界。BVA 通常通过测试 EP 代表值未涵盖的边缘情况来补充 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP) 。
+虽然 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP) 通过仅考虑每个分区的一个代表来减少 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的数量，但边界值分析 (BVA) 可确保系统正确处理边界。BVA 通常通过测试 EP 代表值未涵盖的边缘情况来补充 [等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/) (EP)。
 
 总之，**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)** 是将输入分组为逻辑上相似的类，而 **边界值分析** 是关于识别和测试这些类的极端值的特定值。结合这两种技术可以提供更全面的测试方法，涵盖更广泛的输入场景。
 
