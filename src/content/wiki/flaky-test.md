@@ -338,7 +338,7 @@ order: 0
 - **测试隔离**：暂时将[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)移出主[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，以避免在调试它们时阻塞开发过程。
 - **记录和重播**：使用允许您重播场景的工具捕获[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。这可以深入了解测试期间出现的问题。
 - **并行执行分析**：如果在并行[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间发生不稳定，请按顺序运行测试以检查相互依赖性。
-- **清洁状态强制**：通过重置[数据库](https://inaodeng.com/zh-cn/wiki/database/)、清除缓存或刷新环境，确保每次测试运行都以干净状态开始。
+- **清洁状态强制**：通过重置[数据库](https://inaodeng.com/zh-cn/wiki/database/)、清除缓存或刷新环境，确保每次测试运行都以从零开始开始。
 - **视觉差异**：对于 UI 测试，使用屏幕截图比较工具来检测测试输出中可能不明显的视觉差异。
 - **网络流量分析**：在测试运行期间监控和分析网络流量，以识别任何外部依赖性或数据不一致。
 - **模拟外部服务**：用模拟或存根替换外部服务，以排除第三方服务导致不稳定的情况。

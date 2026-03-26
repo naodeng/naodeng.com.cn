@@ -80,7 +80,9 @@ test.describe("导航与首页内容", () => {
   test("en 从首页点击「Guides > Guild」进入指南页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     await page.locator("header nav [data-nav-group='guides'] summary").click();
-    await page.locator("header nav a[data-nav-item='guild']").click();
+    const guildLink = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']").first();
+    await expect(guildLink).toHaveAttribute("href", /\/en\/guild\/?$/);
+    await guildLink.click();
     await expect(page).toHaveURL(/\/(en)\/guild\/?/);
     await expect(page.locator(".guild-hero__title")).toBeVisible();
   });
@@ -99,6 +101,38 @@ test.describe("导航与首页内容", () => {
     await page.locator("header nav a[data-nav-item='qa-prompts']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/prompts\/?/);
     await expect(page.locator("main")).toBeVisible();
+  });
+
+  test("zh-cn 从首页点击「AI测试 > 软件测试技能库」进入技能库", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.locator("header nav [data-nav-group='ai-testing'] summary").click();
+    await page.locator("header nav a[data-nav-item='qa-skills']").click();
+    await expect(page).toHaveURL(/\/(zh-cn)\/qaskills\/?/);
+    await expect(page.locator("main")).toBeVisible();
+  });
+
+  test("en 从首页点击「AI Testing > QA Skill Library」进入技能库", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.locator("header nav [data-nav-group='ai-testing'] summary").click();
+    await page.locator("header nav a[data-nav-item='qa-skills']").click();
+    await expect(page).toHaveURL(/\/(en)\/qaskills\/?/);
+    await expect(page.locator("main")).toBeVisible();
+  });
+
+  test("zh-cn 页脚包含「软件测试技能库」并跳转到 qaskills", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    const footerLink = page.locator("footer .footer-nav a[href*='/zh-cn/qaskills']").first();
+    await expect(footerLink).toBeVisible();
+    await footerLink.click();
+    await expect(page).toHaveURL(/\/(zh-cn)\/qaskills\/?/);
+  });
+
+  test("en 页脚包含「QA Skill Library」并跳转到 qaskills", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    const footerLink = page.locator("footer .footer-nav a[href*='/en/qaskills']").first();
+    await expect(footerLink).toBeVisible();
+    await footerLink.click();
+    await expect(page).toHaveURL(/\/(en)\/qaskills\/?/);
   });
 
   test("zh-cn 从首页点击「更多 > 项目」进入项目页", async ({ page, baseURL }) => {

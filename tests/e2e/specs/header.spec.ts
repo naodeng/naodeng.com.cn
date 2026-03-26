@@ -21,10 +21,10 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header .site-logo")).toBeVisible();
   });
 
-  test("en 首页：site slogan 不显示", async ({ page, baseURL }) => {
+  test("en 首页：site slogan 可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const slogan = page.locator(".site-slogan");
-    await expect(slogan).toHaveCount(0);
+    await expect(slogan).toBeVisible();
   });
 
   test("zh-cn 首页：site slogan 可见", async ({ page, baseURL }) => {
@@ -105,6 +105,20 @@ test.describe("Header 导航", () => {
     await page.locator("[data-nav-group='more'] summary").click();
     await expect(page.locator("header nav a[data-nav-item='projects']")).toBeVisible();
     await expect(page.locator("header nav a[data-nav-item='sponsor']")).toBeVisible();
+  });
+
+  test("zh-cn 首页：AI测试菜单下提示词库和技能库都可见", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+    await page.locator("[data-nav-group='ai-testing'] summary").click();
+    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("软件测试提示词库");
+    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("软件测试技能库");
+  });
+
+  test("en 首页：AI Testing 菜单下 Prompt/Skill 两个入口都可见", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
+    await page.locator("[data-nav-group='ai-testing'] summary").click();
+    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("QA Prompt Library");
+    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("QA Skill Library");
   });
 
   test("en 首页：搜索按钮可见", async ({ page, baseURL }) => {

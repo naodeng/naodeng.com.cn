@@ -92,7 +92,7 @@ order: 0
 5. **结果分析**：查看测试运行的结果。确定失败是否是由于代码缺陷、[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 问题或环境问题造成的。
 6. **缺陷记录**：在缺陷跟踪系统中记录 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间发现的任何缺陷，并提供足够的详细信息，以便开发人员理解和重现问题。
 7. **结果报告**：生成[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告，总结测试结果，包括通过/失败率、覆盖率和已识别的缺陷。
-8. **清理**：重置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，清除[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，并释放资源，以确保后续测试运行处于干净状态。
+8. **清理**：重置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，清除[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，并释放资源，以确保后续测试运行处于从零开始。
 9. **审查和调整**：评估[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的有效性，并对[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、脚本或未来测试周期的环境进行必要的调整。
 1. **环境[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**：配置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)以匹配软件预期运行的条件。这包括硬件、软件、网络配置和应用程序设置。
 2. **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 准备**：创建或获取反映实际场景的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。如果使用生产数据，请确保数据是匿名的。
@@ -107,7 +107,7 @@ order: 0
 5. **结果分析**：查看测试运行的结果。确定失败是否是由于代码缺陷、[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 问题或环境问题造成的。
 6. **缺陷记录**：在缺陷跟踪系统中记录 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间发现的任何缺陷，并提供足够的详细信息，以便开发人员理解和重现问题。
 7. **结果报告**：生成[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告，总结测试结果，包括通过/失败率、覆盖率和已识别的缺陷。
-8. **清理**：重置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，清除[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，并释放资源，以确保后续测试运行处于干净状态。
+8. **清理**：重置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，清除[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，并释放资源，以确保后续测试运行处于从零开始。
 9. **审查和调整**：评估[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的有效性，并对[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、脚本或未来测试周期的环境进行必要的调整。
 
 #### 测试执行如何影响软件产品的整体质量？

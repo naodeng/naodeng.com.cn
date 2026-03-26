@@ -200,7 +200,7 @@ order: 0
 4. **监控执行**：实时或通过查看日志来观察[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 进程，以确保其按预期进行。
 5. **查看结果**：执行后，分析结果，根据预期结果确定[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是通过还是失败。
 6. **报告**：在 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具或缺陷跟踪系统中记录结果，包括任何屏幕截图、日志或错误消息。
-7. **清理**：如有必要，将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，为下一个[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)做好准备。 请记住根据被测应用程序的最新版本验证[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保测试结果的准确性和相关性。
+7. **清理**：如有必要，将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，为下一个[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)做好准备。 请记住根据被测应用程序的最新版本验证[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以确保测试结果的准确性和相关性。
 
 1. **选择 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：识别您想要从 [测试管理](https://inaodeng.com/zh-cn/wiki/test-management/) 工具或存储库执行的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
 2. **设置[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**：确保为[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 准备好必要的配置、数据和资源。

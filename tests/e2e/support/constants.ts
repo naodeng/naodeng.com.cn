@@ -7,6 +7,7 @@ const LOCALES = ["en", "zh-cn"] as const;
 export const MAIN_PATHS = [
   "/",
   "/blog/",
+  "/qaskills/",
   "/archive/",
   "/sponsor/",
   "/series/",
@@ -64,6 +65,7 @@ export function getMainPageUrls(_baseUrl: string): { locale: string; path: strin
   const names: Record<string, string> = {
     "/": "home",
     "/blog/": "blog",
+    "/qaskills/": "qaskills",
     "/archive/": "archive",
     "/sponsor/": "sponsor",
     "/series/": "series",

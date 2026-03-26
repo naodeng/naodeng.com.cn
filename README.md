@@ -69,6 +69,19 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 - `docs/`：长期文档（requirements/design/tasks/architecture/standards）
 - `docs/temporary/`：临时探索与脚本输出
 
+## 🛠️ 环境要求 | Requirements
+
+- Node.js `22.12.0` 或更高版本
+- npm `10` 或更高版本
+
+## ▶️ 本地运行 | Local Development
+
+```bash
+npm install
+npm run build
+npm test
+```
+
 ## 🤝 贡献 | Contributing
 
 我非常重视读者的反馈和贡献。如果您在我的博客文章中发现任何错误或遗漏，或者如果您有额外的内容建议，请不要犹豫，直接在 GitHub 上提交 Pull Request（PR）。

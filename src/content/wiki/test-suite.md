@@ -314,7 +314,7 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 6. **性能分析**：如果适用，根据基准或之前的运行检查性能指标。
 7. **传达结果**：与利益相关者分享测试结果摘要，包括通过/失败率、覆盖范围和已知问题。
 8. **存档结果**：存储测试结果和日志以供将来参考、审核或合规性需求。
-9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态以供下一次测试运行。
+9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始以供下一次测试运行。
 10. **改进[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：根据结果，细化[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)以获得更好的覆盖范围、效率或[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
 11. **更新文档**：反映相关文档中对 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 所做的任何更改。
 12. **计划后续步骤**：确定是否需要额外的测试周期或者软件是否已为下一阶段做好准备。
@@ -339,7 +339,7 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 6. **性能分析**：如果适用，根据基准或之前的运行检查性能指标。
 7. **传达结果**：与利益相关者分享测试结果摘要，包括通过/失败率、覆盖范围和已知问题。
 8. **存档结果**：存储测试结果和日志以供将来参考、审核或合规性需求。
-9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态以供下一次测试运行。
+9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始以供下一次测试运行。
 10. **改进[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：根据结果，改进[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)以获得更好的覆盖范围、效率或[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
 11. **更新文档**：反映对相关文档中的 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 所做的任何更改。
 12. **计划后续步骤**：确定是否需要额外的测试周期或者软件是否已为下一阶段做好准备。

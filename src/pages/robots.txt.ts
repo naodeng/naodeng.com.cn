@@ -14,6 +14,7 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: ${sitemapURL.href}
+# Algolia-Crawler-Verif: B0319275B670BBB0
 `;
 
 export const GET: APIRoute = ({ site }) => {

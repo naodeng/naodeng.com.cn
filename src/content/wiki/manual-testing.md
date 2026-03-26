@@ -252,7 +252,7 @@ order: 0
 6. **结果分析**：查看测试运行的输出，包括每个 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的通过/失败状态、日志、屏幕截图和其他工件。
 7. **缺陷记录**：将 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 期间发现的任何故障或问题记录到缺陷跟踪系统中，并提供足够的详细信息以进行调试。
 8. **结果报告**：生成总结 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 结果的报告，包括通过率、覆盖率和缺陷计数等指标。
-9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试运行或其他活动做好准备。 在整个这些步骤中，保持清晰的文档并确保任何与 [预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 的偏差都得到及时调查和解决至关重要。
+9. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，为后续测试运行或其他活动做好准备。 在整个这些步骤中，保持清晰的文档并确保任何与 [预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 的偏差都得到及时调查和解决至关重要。
 
 #### 什么是测试收敛以及它涉及什么？
 
