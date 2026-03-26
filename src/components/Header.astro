@@ -2,155 +2,300 @@
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { SITE_TITLE, SITE_SLOGAN, NAV_HOME, NAV_ABOUT, NAV_PROJECTS, NAV_QA_WIKI, NAV_AI_WIKI, NAV_GUILD, NAV_QA_PROMPTS, NAV_SPONSOR, NAV_SEARCH } from "@/consts";
+import {
+  SITE_TITLE,
+  SITE_SLOGAN,
+  NAV_HOME,
+  NAV_ABOUT,
+  NAV_PROJECTS,
+  NAV_QA_WIKI,
+  NAV_AI_WIKI,
+  NAV_ENCYCLOPEDIA,
+  NAV_GUILD,
+  NAV_GUIDES,
+  NAV_AI_TESTING,
+  NAV_MORE,
+  NAV_SPONSOR,
+  NAV_SEARCH,
+} from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const locale = Astro.currentLocale as Lang;
 
-const isActive = (path: string) =>
-  getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
-const isWikiSection = () => pathWithoutLang === "/wiki" || pathWithoutLang.startsWith("/wiki/");
-const isAiWikiSection = () => pathWithoutLang === "/AIWiki" || pathWithoutLang.startsWith("/AIWiki/");
-const isGuildSection = () => pathWithoutLang === "/guild" || pathWithoutLang.startsWith("/guild/");
-const isPromptsSection = () => pathWithoutLang === "/prompts" || pathWithoutLang.startsWith("/prompts/");
+
+const isExactPath = (path: string) => {
+  const localizedPath = getRelativeLocaleUrl(locale, path);
+  return Astro.url.pathname === localizedPath || Astro.url.pathname === `${localizedPath}/`;
+};
+
+const isSectionPath = (path: string) => pathWithoutLang === path || pathWithoutLang.startsWith(`${path}/`);
+const isWikiSection = () => isSectionPath("/wiki");
+const isAiWikiSection = () => isSectionPath("/AIWiki");
+const isGuildSection = () => isSectionPath("/guild");
+const isPromptsSection = () => isSectionPath("/prompts");
+const isQASkillsSection = () => isSectionPath("/qaskills");
+const isProjectsSection = () => isSectionPath("/projects");
+const isSponsorSection = () => isSectionPath("/sponsor");
 const siteTitle = t(SITE_TITLE);
+
+const navGroups = [
+  {
+    key: "encyclopedia",
+    label: t(NAV_ENCYCLOPEDIA),
+    active: isWikiSection() || isAiWikiSection(),
+    items: [
+      {
+        key: "qa-wiki",
+        href: locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki") : "https://ray.run/wiki",
+        label: t(NAV_QA_WIKI),
+        icon: "menu_book",
+        active: isWikiSection(),
+        external: locale !== "zh-cn",
+      },
+      {
+        key: "ai-wiki",
+        href: getRelativeLocaleUrl(locale, "/AIWiki"),
+        label: t(NAV_AI_WIKI),
+        icon: "psychology",
+        active: isAiWikiSection(),
+      },
+    ],
+  },
+  {
+    key: "guides",
+    label: t(NAV_GUIDES),
+    active: isGuildSection(),
+    items: [
+      {
+        key: "guild",
+        href: getRelativeLocaleUrl(locale, "/guild"),
+        label: t(NAV_GUILD),
+        icon: "route",
+        active: isGuildSection(),
+      },
+    ],
+  },
+  {
+    key: "ai-testing",
+    label: t(NAV_AI_TESTING),
+    active: isPromptsSection() || isQASkillsSection(),
+    items: [
+      {
+        key: "qa-prompts",
+        href: getRelativeLocaleUrl(locale, "/prompts"),
+        label: locale === "zh-cn" ? "软件测试提示词库" : "QA Prompt Library",
+        icon: "tips_and_updates",
+        active: isPromptsSection(),
+      },
+      {
+        key: "qa-skills",
+        href: getRelativeLocaleUrl(locale, "/qaskills"),
+        label: locale === "zh-cn" ? "软件测试技能库" : "QA Skill Library",
+        icon: "build",
+        active: isQASkillsSection(),
+      },
+    ],
+  },
+  {
+    key: "more",
+    label: t(NAV_MORE),
+    active: isProjectsSection() || isSponsorSection(),
+    items: [
+      {
+        key: "projects",
+        href: getRelativeLocaleUrl(locale, "/projects"),
+        label: t(NAV_PROJECTS),
+        icon: "folder",
+        active: isProjectsSection(),
+      },
+      {
+        key: "sponsor",
+        href: getRelativeLocaleUrl(locale, "/sponsor"),
+        label: t(NAV_SPONSOR),
+        icon: "favorite",
+        active: isSponsorSection(),
+      },
+    ],
+  },
+];
 ---
 
 <header class="l-header">
-  <div class:list={["site-brand", { "site-brand--en": locale === "en" }]}>
-    <div class="site-brand-row">
-      <h1>
-        <a href={getRelativeLocaleUrl(locale, "/")}>
-          <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" />
-          {locale === "zh-cn" ? (
-            <span class="site-title-cobrand" aria-label={siteTitle}>
-              <span>软件测试同学</span>
-              <span class="site-title-cobrand-x" aria-hidden="true">X</span>
-              <span>naodeng</span>
-            </span>
-          ) : (
-            <span>{siteTitle}</span>
-          )}
-        </a>
-      </h1>
-      {locale !== "en" && <p class="site-slogan">{t(SITE_SLOGAN)}</p>}
+  <div class:list={["header-shell l-content", { "header-shell--en": locale === "en" }]}>
+    <div class:list={["site-brand", { "site-brand--en": locale === "en" }]}>
+      <div class="site-brand-row">
+        <h1>
+          <a href={getRelativeLocaleUrl(locale, "/")}>
+            <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" />
+            {locale === "zh-cn" ? (
+              <span class="site-title-cobrand" aria-label={siteTitle}>
+                <span>软件测试同学</span>
+                <span class="site-title-cobrand-x" aria-hidden="true">X</span>
+                <span>naodeng</span>
+              </span>
+            ) : (
+              <span>{siteTitle}</span>
+            )}
+          </a>
+        </h1>
+        <p class="site-slogan">{t(SITE_SLOGAN)}</p>
+      </div>
     </div>
-  </div>
 
-  <nav class="l-content">
-    <ul>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/")}
-          class={isActive("/") ? "active" : null}
-        >
-          {t(NAV_HOME)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/blog")}
-          class={isActive("/blog") ? "active" : null}
-        >
-          {t({ en: "Blog", "zh-cn": "博客" })}
-        </a>
-      </li>
-      <li>
-        {locale === "zh-cn" ? (
+    <nav class="site-nav">
+      <ul>
+        <li>
           <a
-            href={getRelativeLocaleUrl(locale, "/wiki")}
-            class={isWikiSection() ? "active" : null}
+            href={getRelativeLocaleUrl(locale, "/")}
+            class={isExactPath("/") ? "active" : null}
+            data-nav-item="home"
           >
-            {t(NAV_QA_WIKI)}
+            {t(NAV_HOME)}
           </a>
-        ) : (
+        </li>
+        <li>
           <a
-            href="https://ray.run/wiki"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={getRelativeLocaleUrl(locale, "/blog")}
+            class={isSectionPath("/blog") ? "active" : null}
+            data-nav-item="blog"
           >
-            {t(NAV_QA_WIKI)}
+            {t({ en: "Blog", "zh-cn": "博客" })}
           </a>
-        )}
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/AIWiki")}
-          class={isAiWikiSection() ? "active" : null}
-        >
-          {t(NAV_AI_WIKI)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/guild")}
-          class={isGuildSection() ? "active" : null}
-        >
-          {t(NAV_GUILD)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/prompts")}
-          class={isPromptsSection() ? "active" : null}
-        >
-          {t(NAV_QA_PROMPTS)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/projects")}
-          class={isActive("/projects") ? "active" : null}
-        >
-          {t(NAV_PROJECTS)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/sponsor")}
-          class={isActive("/sponsor") ? "active" : null}
-        >
-          {t(NAV_SPONSOR)}
-        </a>
-      </li>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/about")}
-          class={isActive("/about") ? "active" : null}
-        >
-          {t(NAV_ABOUT)}
-        </a>
-      </li>
-      <li class="nav-tool">
-        <LocaleSelect compact />
-      </li>
-      <li class="nav-tool">
-        <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
-          <span class="material-icons-sharp" aria-hidden="true">search</span>
-        </button>
-      </li>
-    </ul>
-  </nav>
+        </li>
+        {
+          navGroups.map((group) => (
+            <li class="nav-group" data-nav-group={group.key}>
+              <details open={group.active || undefined} data-nav-details>
+                <summary class:list={["nav-group-trigger", { active: group.active }]}>
+                  <span>{group.label}</span>
+                  <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
+                </summary>
+                <ul class="nav-submenu">
+                  {group.items.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        class={item.active ? "active" : null}
+                        data-nav-item={item.key}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
+                      >
+                        <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
+                        <span class="nav-submenu-text">{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, "/about")}
+            class={isExactPath("/about") ? "active" : null}
+            data-nav-item="about"
+          >
+            {t(NAV_ABOUT)}
+          </a>
+        </li>
+        <li class="nav-tool">
+          <LocaleSelect compact />
+        </li>
+        <li class="nav-tool">
+          <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
+            <span class="material-icons-sharp" aria-hidden="true">search</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const initHeaderNav = () => {
+    const detailNodes = Array.from(document.querySelectorAll("[data-nav-details]"));
+    detailNodes.forEach((detail) => {
+      detail.addEventListener("toggle", () => {
+        if (!(detail instanceof HTMLDetailsElement) || !detail.open) return;
+        detailNodes.forEach((other) => {
+          if (other !== detail && other instanceof HTMLDetailsElement) {
+            other.open = false;
+          }
+        });
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (detailNodes.some((detail) => detail.contains(target))) return;
+      detailNodes.forEach((detail) => {
+        if (detail instanceof HTMLDetailsElement) {
+          detail.open = false;
+        }
+      });
+    });
+  };
+
+  initHeaderNav();
+  document.addEventListener("astro:after-swap", initHeaderNav);
+</script>
 
 <style>
   .l-header {
-    display: grid;
-    place-items: center;
-    gap: 0.5rem;
-    padding-block: 0.7rem 0.55rem;
-    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+    position: relative;
+    z-index: 40;
+    padding: 0.95rem 0 0.9rem;
+    border-block-end: 1px solid color-mix(in srgb, white 5%, transparent);
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 28%, #3a1577 72%) 0%, transparent 32%),
+      linear-gradient(90deg, #170f35 0%, #241249 46%, #1d1037 100%);
+    box-shadow:
+      inset 0 -1px 0 color-mix(in srgb, white 8%, transparent),
+      0 14px 40px color-mix(in srgb, black 20%, transparent);
+  }
+  .l-header::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
     background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-theme) 3%, var(--color-base)) 0%,
-      var(--color-base) 100%
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--color-theme) 30%, white 8%) 18%,
+      color-mix(in srgb, var(--color-theme) 20%, white 5%) 82%,
+      transparent 100%
     );
   }
-  .site-brand {
-    width: 100%;
+  .header-shell {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.9rem, 2vw, 1.7rem);
+    padding-inline: 0;
+  }
+  .header-shell--en {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+  .header-shell--en .site-brand,
+  .header-shell--en .site-brand-row,
+  .header-shell--en .site-nav {
     justify-content: center;
+  }
+  .header-shell--en .site-brand {
+    transform: none;
+    margin-inline-start: 0;
+  }
+  .site-brand {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 0;
+    margin-inline-start: -1.8rem;
+    transform: translateX(-30%);
   }
   .site-brand--en .site-brand-row {
     column-gap: 0.8rem;
@@ -160,25 +305,27 @@ const siteTitle = t(SITE_TITLE);
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    justify-content: center;
-    column-gap: 1.1rem;
-    row-gap: 0.28rem;
-    max-width: min(100%, 76rem);
+    justify-content: flex-start;
+    column-gap: 1rem;
+    row-gap: 0.2rem;
+    max-width: min(100%, 26rem);
   }
   .site-slogan {
     margin: 0;
-    display: inline-block;
+    display: block;
+    width: 100%;
+    flex-basis: 100%;
     max-width: min(100%, 34rem);
     white-space: nowrap;
     padding: 0;
-    font-size: 0.76rem;
-    font-weight: 560;
+    font-size: 0.72rem;
+    font-weight: 540;
     font-family: var(--english-font);
-    color: color-mix(in srgb, var(--color-theme) 74%, white 12%);
-    letter-spacing: 0.035em;
-    line-height: 1.4;
+    color: color-mix(in srgb, white 68%, var(--color-theme) 32%);
+    letter-spacing: 0.04em;
+    line-height: 1.35;
     text-align: center;
-    opacity: 0.76;
+    opacity: 0.78;
     overflow-wrap: break-word;
   }
   h1 {
@@ -194,32 +341,47 @@ const siteTitle = t(SITE_TITLE);
       font-size: 24px;
     }
   }
-  @media (width < 900px) {
-    .site-brand-row {
-      flex-wrap: wrap;
+  @media (width < 1460px) {
+    .header-shell {
       flex-direction: column;
-      column-gap: 0;
+      align-items: stretch;
+      gap: 0.9rem;
+    }
+    .site-brand,
+    .site-brand-row,
+    .site-nav {
+      justify-content: center;
     }
     .site-slogan {
-      max-width: min(100%, 34rem);
-      white-space: normal;
       text-align: center;
+      white-space: normal;
     }
   }
   h1 a {
     display: inline-flex;
     align-items: center;
     gap: 0.55em;
-    color: var(--color-main);
+    color: #fff;
     text-decoration: none;
     transition: color 0.2s ease, opacity 0.2s ease;
   }
   .site-brand--en h1 {
     font-size: 30px;
     letter-spacing: -0.03em;
+    width: 100%;
+    text-align: center;
   }
   .site-brand--en h1 a {
     gap: 0.48em;
+    white-space: nowrap;
+  }
+  .site-brand--en .site-brand-row {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .site-brand--en .site-slogan {
+    text-align: center;
   }
   .site-title-cobrand {
     display: inline-flex;
@@ -240,28 +402,28 @@ const siteTitle = t(SITE_TITLE);
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 7%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent);
+    color: #ffb6ff;
+    background: color-mix(in srgb, #f973ff 16%, transparent);
+    border: 1px solid color-mix(in srgb, #f973ff 26%, white 4%);
     border-radius: 999px;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, white 10%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 18%, transparent);
     transform: translateY(-0.12em);
   }
   h1 a:hover {
-    opacity: 0.9;
-    color: var(--color-theme);
+    opacity: 0.95;
+    color: color-mix(in srgb, white 86%, #f3a8ff 14%);
   }
   h1 a .site-logo {
     flex-shrink: 0;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     margin-top: 0.08em;
     transition: transform 0.2s ease, filter 0.2s ease;
   }
   h1 a:hover .site-logo {
     transform: scale(1.05);
-    filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--color-theme) 18%, transparent));
+    filter: drop-shadow(0 8px 16px color-mix(in srgb, #f973ff 20%, transparent));
   }
   @media (width < 480px) {
     h1 a .site-logo {
@@ -269,111 +431,354 @@ const siteTitle = t(SITE_TITLE);
       height: 30px;
     }
   }
-  nav {
+  .site-nav {
     display: flex;
-    align-items: center;
-    gap: 0;
+    justify-content: flex-end;
+    min-width: 0;
+    flex: 1 1 auto;
   }
-  nav ul {
+  .site-nav > ul {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 0.65rem;
-    margin-block-start: 0;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.35rem;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, white 7%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, #090b16 78%, #1d1037 22%);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 8%, transparent),
+      0 16px 32px color-mix(in srgb, black 26%, transparent);
+    backdrop-filter: blur(18px);
+    width: max-content;
+    max-width: none;
+  }
+  @media (max-width: 1460px) {
+    .site-nav {
+      justify-content: center;
+    }
+    .site-brand {
+      transform: none;
+    }
   }
   @media (max-width: 880px) {
-    nav ul {
+    .site-nav > ul {
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.45rem 0.55rem;
+      border-radius: 1.1rem;
+      width: 100%;
+      max-width: 100%;
     }
   }
-  nav a {
-    font-size: 0.98rem;
-    font-weight: 580;
-    letter-spacing: 0.04em;
-    padding: 0.35em 0;
-    border-radius: 0;
-    white-space: nowrap;
-    text-decoration: none;
-    color: color-mix(in srgb, var(--color-main) 72%, transparent);
-    transition: color 0.2s ease, opacity 0.2s ease;
-    position: relative;
-  }
-  nav a:hover,
-  nav a:active,
-  nav a:focus-visible {
-    color: var(--color-theme);
-    opacity: 1;
-  }
-  nav a:focus-visible {
-    outline: 2px solid var(--color-theme);
-    outline-offset: 2px;
-  }
-  nav a.active {
-    pointer-events: none;
-    color: var(--color-theme);
-    font-weight: 700;
-  }
-  nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -0.32rem;
-    left: 0;
-    right: 0;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--color-theme);
-  }
-  nav li {
+  .site-nav > ul > li {
     display: flex;
     align-items: center;
     flex-shrink: 0;
   }
+  .site-nav > ul > li > a,
+  .nav-group-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    min-height: 2.5rem;
+    padding: 0.56rem 0.92rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 0.96rem;
+    font-weight: 540;
+    letter-spacing: -0.01em;
+    color: color-mix(in srgb, white 78%, #b6b4cb 22%);
+    transition:
+      color 0.18s ease,
+      background-color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.18s ease;
+    position: relative;
+  }
+  .site-nav > ul > li > a:hover,
+  .site-nav > ul > li > a:active,
+  .site-nav > ul > li > a:focus-visible,
+  .nav-group-trigger:hover,
+  .nav-group-trigger:focus-visible {
+    color: #fff;
+    background: color-mix(in srgb, white 9%, transparent);
+  }
+  .site-nav > ul > li > a:focus-visible,
+  .nav-group-trigger:focus-visible {
+    outline: 2px solid color-mix(in srgb, white 75%, var(--color-theme) 25%);
+    outline-offset: 2px;
+  }
+  .site-nav > ul > li > a.active,
+  .nav-group-trigger.active {
+    color: #fff;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, white 10%, transparent) 0%,
+        color-mix(in srgb, var(--color-theme) 18%, transparent) 100%
+      );
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 14%, transparent),
+      0 0 0 1px color-mix(in srgb, white 8%, transparent);
+  }
+  .site-nav > ul > li > a.active::after,
+  .nav-group-trigger.active::after {
+    content: "";
+    position: absolute;
+    inset: auto 0.92rem 0.35rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #fff 0%, color-mix(in srgb, #fff 50%, var(--color-theme) 50%) 100%);
+  }
+  .nav-group {
+    position: relative;
+  }
+  .nav-group details {
+    position: relative;
+  }
+  .nav-group summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.14rem;
+    list-style: none;
+    cursor: pointer;
+  }
+  .nav-group summary::-webkit-details-marker {
+    display: none;
+  }
+  .nav-group-chevron {
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+  .nav-group details[open] .nav-group-chevron,
+  .nav-group summary:hover .nav-group-chevron {
+    opacity: 1;
+  }
+  .nav-group details[open] .nav-group-chevron {
+    transform: rotate(180deg);
+  }
+  .nav-submenu {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    z-index: 120;
+    display: grid;
+    gap: 0.15rem;
+    width: max-content;
+    min-width: 0;
+    max-width: calc(100vw - 2rem);
+    margin: 0;
+    padding: 0.56rem;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, #2e3d56 38%, transparent);
+    border-radius: 1.15rem;
+    background: #040b16;
+    box-shadow:
+      0 18px 34px color-mix(in srgb, #02050c 50%, transparent),
+      inset 0 1px 0 color-mix(in srgb, white 8%, transparent);
+    transform: none;
+  }
+  .nav-group[data-nav-group="more"] .nav-submenu {
+    left: auto;
+    right: 0;
+  }
+  .nav-submenu::before {
+    display: none;
+  }
+  .nav-submenu li {
+    display: block;
+  }
+  .nav-submenu a {
+    display: flex;
+    align-items: center;
+    gap: 0.72rem;
+    align-items: center;
+    min-height: 2.7rem;
+    width: auto;
+    min-width: max-content;
+    padding: 0.68rem 0.86rem;
+    border-radius: 0.8rem;
+    color: color-mix(in srgb, #d7dde7 92%, #8b93a6 8%);
+    background: transparent;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+  }
+  .nav-submenu a:hover,
+  .nav-submenu a:focus-visible,
+  .nav-submenu a.active {
+    background: color-mix(in srgb, #93a4be 13%, transparent);
+    border-color: color-mix(in srgb, #90a5bf 18%, transparent);
+  }
+  .nav-submenu a.active::after {
+    display: none;
+  }
+  .nav-submenu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    flex: 0 0 1.2rem;
+    font-size: 1.04rem;
+    color: color-mix(in srgb, #c4ccd8 90%, #7f8999 10%);
+  }
+  .nav-submenu-text {
+    line-height: 1.25;
+    font-size: 0.87rem;
+    font-weight: 530;
+    flex: 1 1 auto;
+  }
+  @media (max-width: 880px) {
+    .nav-group details {
+      width: 100%;
+    }
+    .nav-submenu {
+      position: static;
+      margin-top: 0.5rem;
+      transform: none;
+      min-width: 100%;
+      width: 100%;
+    }
+    .nav-submenu::before {
+      display: none;
+    }
+  }
   .nav-tool {
     display: flex;
     align-items: center;
-    margin-inline-start: 0.2rem;
-    padding-inline-start: 0.8rem;
-    border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+    margin-inline-start: 0.15rem;
+    padding-inline-start: 0.45rem;
+    border-inline-start: 1px solid color-mix(in srgb, white 10%, transparent);
   }
   .btn-icon {
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    height: 34px;
-    min-width: 34px;
-    padding-inline: 0.45rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 0.65rem;
     white-space: nowrap;
     font: inherit;
     font-size: 0.95rem;
     font-weight: 600;
-    color: color-mix(in srgb, var(--color-main) 78%, transparent);
+    color: color-mix(in srgb, white 76%, #b6b4cb 24%);
     background: transparent;
     border: 1px solid transparent;
     border-radius: 999px;
     cursor: pointer;
-    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
   }
   .btn-icon:hover,
   .btn-icon:focus-visible {
-    color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 7%, transparent);
-    border-color: color-mix(in srgb, var(--color-theme) 14%, transparent);
+    color: #fff;
+    background: color-mix(in srgb, white 8%, transparent);
+    border-color: color-mix(in srgb, white 8%, transparent);
   }
   .btn-icon:focus-visible {
     outline: none;
   }
   .btn-icon .material-icons-sharp {
     font-size: 20px;
-    color: var(--color-theme);
-    opacity: 0.9;
+    color: currentColor;
+    opacity: 0.95;
     flex-shrink: 0;
   }
-  nav a .material-icons-sharp {
-    opacity: 0.7;
-    margin-inline-start: -0.15em;
-    font-size: 0.95em;
+
+  @media (prefers-color-scheme: light) {
+    .l-header {
+      border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 14%, #f7ecff 86%) 0%, transparent 36%),
+        linear-gradient(90deg, #f7f1ff 0%, #fdf7ff 46%, #f6efff 100%);
+      box-shadow:
+        inset 0 -1px 0 color-mix(in srgb, var(--color-theme) 10%, transparent),
+        0 12px 30px color-mix(in srgb, #a76cc9 12%, transparent);
+    }
+    .site-slogan {
+      color: color-mix(in srgb, var(--color-main) 72%, var(--color-theme) 28%);
+      opacity: 0.9;
+    }
+    h1 a {
+      color: color-mix(in srgb, var(--color-main) 92%, #2b1b4a 8%);
+    }
+    h1 a:hover {
+      color: color-mix(in srgb, var(--color-main) 86%, var(--color-theme) 14%);
+    }
+    .site-nav > ul {
+      border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+      background: color-mix(in srgb, #ffffff 90%, #f2e8ff 10%);
+      box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 72%, transparent),
+        0 12px 26px color-mix(in srgb, #a76cc9 14%, transparent);
+    }
+    .site-nav > ul > li > a,
+    .nav-group-trigger {
+      color: color-mix(in srgb, var(--color-main) 78%, #5a4a73 22%);
+    }
+    .site-nav > ul > li > a:hover,
+    .site-nav > ul > li > a:active,
+    .site-nav > ul > li > a:focus-visible,
+    .nav-group-trigger:hover,
+    .nav-group-trigger:focus-visible {
+      color: color-mix(in srgb, var(--color-main) 88%, #2f2343 12%);
+      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    }
+    .site-nav > ul > li > a.active,
+    .nav-group-trigger.active {
+      color: color-mix(in srgb, var(--color-main) 92%, #221a35 8%);
+      background:
+        linear-gradient(
+          180deg,
+          color-mix(in srgb, white 82%, transparent) 0%,
+          color-mix(in srgb, var(--color-theme) 14%, transparent) 100%
+        );
+      box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 72%, transparent),
+        0 0 0 1px color-mix(in srgb, var(--color-theme) 20%, transparent);
+    }
+    .site-nav > ul > li > a.active::after,
+    .nav-group-trigger.active::after {
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-main) 80%, var(--color-theme) 20%) 0%,
+        color-mix(in srgb, var(--color-main) 62%, var(--color-theme) 38%) 100%
+      );
+    }
+    .nav-submenu {
+      border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+      background: color-mix(in srgb, #ffffff 94%, #f3ebff 6%);
+      box-shadow:
+        0 16px 30px color-mix(in srgb, #a76cc9 14%, transparent),
+        inset 0 1px 0 color-mix(in srgb, white 70%, transparent);
+    }
+    .nav-submenu a {
+      color: color-mix(in srgb, var(--color-main) 84%, #5c5670 16%);
+    }
+    .nav-submenu a:hover,
+    .nav-submenu a:focus-visible,
+    .nav-submenu a.active {
+      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+      border-color: color-mix(in srgb, var(--color-theme) 22%, transparent);
+    }
+    .nav-submenu-icon {
+      color: color-mix(in srgb, var(--color-main) 70%, #6d6a84 30%);
+    }
+    .nav-tool {
+      border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent);
+    }
+    .btn-icon {
+      color: color-mix(in srgb, var(--color-main) 76%, #5e5775 24%);
+    }
+    .btn-icon:hover,
+    .btn-icon:focus-visible {
+      color: color-mix(in srgb, var(--color-main) 90%, #2f2445 10%);
+      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+      border-color: color-mix(in srgb, var(--color-theme) 18%, transparent);
+    }
   }
 </style>

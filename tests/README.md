@@ -41,6 +41,8 @@ tests/
 
 ## Setup
 
+Requires Node.js `22.12.0` or later.
+
 ```bash
 cd tests
 npm install

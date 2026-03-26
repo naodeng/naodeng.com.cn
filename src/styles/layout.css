@@ -5,6 +5,12 @@
   margin-block-start: var(--sp-l);
   /* 留出页脚社交图标上浮空间，避免与「查看全部」等按钮重叠 */
   padding-block-end: 4rem;
+  animation: page-fade-in 420ms ease-out both;
+}
+
+/* 主页面内容区宽度调到 1400px */
+.l-main.l-content {
+  max-inline-size: 1400px;
 }
 
 /* 全站主内容区宽度（1000px） */
@@ -21,4 +27,21 @@
 
 .l-footer {
   margin-block-start: var(--sp-m);
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l-main {
+    animation: none;
+  }
 }

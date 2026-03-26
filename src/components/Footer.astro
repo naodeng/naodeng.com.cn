@@ -12,6 +12,7 @@ import {
   FOOTER_NAV_AI_WIKI,
   FOOTER_NAV_GUILD,
   FOOTER_NAV_PROMPTS,
+  FOOTER_NAV_QASKILLS,
   NAV_STATUS,
   NAV_COPYRIGHT,
   NAV_PRIVACY,
@@ -82,6 +83,7 @@ const t = {
       <a href={getRelativeLocaleUrl(locale, "/AIWiki")}>{typeof FOOTER_NAV_AI_WIKI === 'string' ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/guild")}>{typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/prompts")}>{typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale]}</a>
+      <a href={getRelativeLocaleUrl(locale, "/qaskills")}>{typeof FOOTER_NAV_QASKILLS === 'string' ? FOOTER_NAV_QASKILLS : FOOTER_NAV_QASKILLS[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/copyright")}>{typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale]}</a>
       <a href={getRelativeLocaleUrl(locale, "/privacy")}>{typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale]}</a>
@@ -126,11 +128,16 @@ const t = {
 <style>
   .l-footer {
     padding-block: calc(var(--sp-l) * 1.5) var(--sp-l);
-    background-color: var(--color-theme);
-    color: var(--color-base);
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 28%, #3a1577 72%) 0%, transparent 32%),
+      linear-gradient(90deg, #170f35 0%, #241249 46%, #1d1037 100%);
+    color: color-mix(in srgb, white 90%, #b2b8d8 10%);
     border-radius: 24px 24px 0 0;
     margin-block-start: var(--sp-m);
     position: relative;
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 8%, transparent),
+      0 -18px 36px color-mix(in srgb, black 24%, transparent);
   }
   
   .footer-container {
@@ -160,10 +167,11 @@ const t = {
     justify-content: center;
     width: 72px;
     height: 72px;
-    background: var(--color-accent);
-    color: var(--color-main);
+    background: linear-gradient(90deg, #170f35 0%, #241249 46%, #1d1037 100%);
+    color: color-mix(in srgb, white 92%, #c8d0e8 8%);
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
     border-radius: 50%;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.28);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     position: relative;
@@ -176,13 +184,14 @@ const t = {
 
   .social-icon:hover {
     transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    background-color: var(--color-main);
-    color: var(--color-accent);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.34);
+    background: linear-gradient(90deg, #20124b 0%, #2c1761 46%, #25124f 100%);
+    color: white;
+    border-color: color-mix(in srgb, white 24%, transparent);
   }
 
   .lang-toggle {
-    background: color-mix(in srgb, var(--color-main) 20%, var(--color-accent));
+    background: linear-gradient(90deg, #20124b 0%, #2c1761 46%, #25124f 100%);
   }
   
   .lang-label {
@@ -190,8 +199,8 @@ const t = {
     bottom: 10px;
     font-size: 0.7rem;
     font-weight: 900;
-    background: var(--color-main);
-    color: var(--color-accent);
+    background: color-mix(in srgb, white 90%, #d4dbf0 10%);
+    color: #22124a;
     padding: 2px 4px;
     border-radius: 4px;
     line-height: 1;
@@ -207,7 +216,7 @@ const t = {
   }
 
   .footer-nav a {
-    color: var(--color-base);
+    color: color-mix(in srgb, white 88%, #b6bfdc 12%);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -227,7 +236,7 @@ const t = {
     align-items: center;
     gap: 0.75rem;
     padding-block-start: var(--sp-m);
-    border-block-start: 1px solid color-mix(in srgb, var(--color-base) 20%, transparent);
+    border-block-start: 1px solid color-mix(in srgb, white 20%, transparent);
     width: 100%;
     max-inline-size: 600px;
     text-align: center;
@@ -300,7 +309,7 @@ const t = {
     justify-content: center;
     width: 28px;
     height: 28px;
-    color: var(--color-base);
+    color: color-mix(in srgb, white 86%, #b6bfdc 14%);
     opacity: 0.85;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
@@ -317,6 +326,47 @@ const t = {
 
   .tech-icon-ai {
     cursor: default;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .l-footer {
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 14%, #f8eeff 86%) 0%, transparent 36%),
+        linear-gradient(90deg, #f7f1ff 0%, #fdf7ff 46%, #f6efff 100%);
+      color: color-mix(in srgb, var(--color-main) 88%, #3e3256 12%);
+      box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 70%, transparent),
+        0 -14px 28px color-mix(in srgb, #a76cc9 12%, transparent);
+    }
+    .social-icon {
+      background: linear-gradient(90deg, #f2e7ff 0%, #f7efff 46%, #efe3ff 100%);
+      color: color-mix(in srgb, var(--color-main) 86%, #4b3f63 14%);
+      border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
+      box-shadow: 0 8px 22px color-mix(in srgb, #a76cc9 12%, transparent);
+    }
+    .social-icon:hover {
+      background: linear-gradient(90deg, #ead8ff 0%, #f1e3ff 46%, #e8d5ff 100%);
+      color: color-mix(in srgb, var(--color-main) 90%, #33294a 10%);
+      border-color: color-mix(in srgb, var(--color-theme) 34%, transparent);
+      box-shadow: 0 10px 26px color-mix(in srgb, #a76cc9 18%, transparent);
+    }
+    .lang-toggle {
+      background: linear-gradient(90deg, #ebdbff 0%, #f0e2ff 46%, #e9d8ff 100%);
+    }
+    .lang-label {
+      background: color-mix(in srgb, var(--color-main) 92%, #3b2c57 8%);
+      color: color-mix(in srgb, white 92%, #efe6ff 8%);
+    }
+    .footer-nav a {
+      color: color-mix(in srgb, var(--color-main) 82%, #514a66 18%);
+      opacity: 0.92;
+    }
+    .footer-info {
+      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
+    }
+    .tech-icon {
+      color: color-mix(in srgb, var(--color-main) 76%, #5e5874 24%);
+    }
   }
 
   @media (max-width: 600px) {

@@ -144,7 +144,7 @@ order: 0
 ```
     report.logResults(testCaseId, executionOutcome);
 ```
-8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
+8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
 9. **分析故障**：如果[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
 10. **报告**：编制[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
 11. **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。
@@ -160,7 +160,7 @@ order: 0
 ```
     report.logResults(testCaseId, executionOutcome);
 ```
-8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
+8. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，删除[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间所做的任何数据或更改。
 9. **分析故障**：如果[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 失败，请分析根本原因并根据需要记录缺陷。
 10. **报告**：编制[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 报告并与利益相关者共享，突出显示任何问题或疑虑。
 11. **更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：根据结果和反馈，完善和更新[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，以提高未来运行的覆盖范围和有效性。

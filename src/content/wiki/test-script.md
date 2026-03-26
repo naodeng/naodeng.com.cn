@@ -197,7 +197,7 @@ order: 0
   7. **结果收集**：收集测试运行的结果，其中可能包括日志、屏幕截图和输出文件。
   8. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：根据[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
   9. **报告**：生成总结[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的报告，提供有关成功、失败和其他相关指标的详细信息。
-  10. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试做好准备。
+  10. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，为后续测试做好准备。
   11. **分析**：查看测试结果和日志，以确定 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 或被测应用程序中的任何缺陷或需要改进的地方。
   12. **[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告**：如果发现问题，请根据项目的[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 流程记录并报告它们。
   13. **脚本维护**：根据需要更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，以反映应用程序中的更改或增强脚本的性能和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
@@ -210,7 +210,7 @@ order: 0
   7. **结果收集**：收集测试运行的结果，其中可能包括日志、屏幕截图和输出文件。
   8. **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)**：根据[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 评估测试结果，以确定测试是否通过。
   9. **报告**：生成总结[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)的报告，提供有关成功、失败和其他相关指标的详细信息。
-  10. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为干净状态，为后续测试做好准备。
+  10. **清理**：将[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)重置为从零开始，为后续测试做好准备。
   11. **分析**：查看测试结果和日志，以确定 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 或被测应用程序中的任何缺陷或需要改进的地方。
   12. **[Bug](https://inaodeng.com/zh-cn/wiki/bug/) 报告**：如果发现问题，请根据项目的[缺陷管理](https://inaodeng.com/zh-cn/wiki/defect-management/) 流程记录并报告它们。
   13. **脚本维护**：根据需要更新[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，以反映应用程序中的更改或增强脚本的性能和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
