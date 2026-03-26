@@ -104,6 +104,7 @@ const installers = {
 };
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
+const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
 ---
 
 <Base
@@ -249,7 +250,7 @@ const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${ski
     <ArticleShare
       title={lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}
       url={canonicalUrl}
-      locale={lang}
+      locale={pageLocale}
     />
     <div class="ad-slot-250">
       <GoogleAd />
@@ -277,7 +278,7 @@ const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${ski
     const copyFullBtn = document.getElementById("copy-full-btn");
     if (!quickCodeEl || !fullCodeEl || !copyQuickBtn || !copyFullBtn) return;
 
-    let currentOS = /win/i.test(navigator.platform) ? "windows" : "mac";
+    let currentOS = /windows/i.test(navigator.userAgent) ? "windows" : "mac";
     let currentTool = "codex";
     const cache = new Map();
     const text = {
