@@ -50,7 +50,7 @@ Output (problem):
 ## Install
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-en/api-test-bruno"
+SKILL_DIR="skills/en/testing-types/api-test-bruno"
 DEST="$HOME/.codex/skills/naodeng-api-test-bruno"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -63,7 +63,7 @@ echo "Installed to $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-en/api-test-bruno"
+$SkillDir = "skills/en/testing-types/api-test-bruno"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-api-test-bruno"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -75,7 +75,7 @@ Write-Host "Installed to $Dest"
 ```
 
 ## Source
-- Original Skill: [api-test-bruno](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-en/api-test-bruno/SKILL.md)
+- Original Skill: [api-test-bruno](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-bruno/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## Last Synced

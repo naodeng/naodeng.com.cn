@@ -53,7 +53,7 @@ api-test-supertest
 ## 安装
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-zh/api-test-supertest"
+SKILL_DIR="skills/zh/testing-types/api-test-supertest"
 DEST="$HOME/.codex/skills/naodeng-api-test-supertest"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -66,7 +66,7 @@ echo "已安装到 $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-zh/api-test-supertest"
+$SkillDir = "skills/zh/testing-types/api-test-supertest"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-api-test-supertest"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -78,7 +78,7 @@ Write-Host "已安装到 $Dest"
 ```
 
 ## 来源
-- 原始技能：[api-test-supertest](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-zh/api-test-supertest/SKILL.md)
+- 原始技能：[api-test-supertest](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-test-supertest/SKILL.md)
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## 同步日期

@@ -47,7 +47,7 @@ Output (problem):
 ## Install
 ### macOS / Linux
 ```bash
-SKILL_DIR="skills/skills-en/testing-types/manual-testing"
+SKILL_DIR="skills/en/testing-types/manual-testing"
 DEST="$HOME/.codex/skills/naodeng-manual-testing"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -60,7 +60,7 @@ echo "Installed to $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "skills/skills-en/testing-types/manual-testing"
+$SkillDir = "skills/en/testing-types/manual-testing"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-manual-testing"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -72,7 +72,7 @@ Write-Host "Installed to $Dest"
 ```
 
 ## Source
-- Original Skill: [manual-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/skills-en/testing-types/manual-testing)
+- Original Skill: [manual-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/manual-testing/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## Last Synced

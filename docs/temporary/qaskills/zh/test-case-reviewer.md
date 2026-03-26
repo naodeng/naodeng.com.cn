@@ -50,7 +50,7 @@
 ## 安装
 ### macOS / Linux
 ```bash
-SKILL_DIR="skills/skills-zh/testing-types/test-case-reviewer"
+SKILL_DIR="skills/zh/testing-types/test-case-reviewer"
 DEST="$HOME/.codex/skills/naodeng-test-case-reviewer"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -63,7 +63,7 @@ echo "已安装到 $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "skills/skills-zh/testing-types/test-case-reviewer"
+$SkillDir = "skills/zh/testing-types/test-case-reviewer"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-test-case-reviewer"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -75,7 +75,7 @@ Write-Host "已安装到 $Dest"
 ```
 
 ## 来源
-- 原始技能：[test-case-reviewer](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/skills-zh/testing-types/test-case-reviewer)
+- 原始技能：[test-case-reviewer](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-case-reviewer/SKILL.md)
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## 同步日期

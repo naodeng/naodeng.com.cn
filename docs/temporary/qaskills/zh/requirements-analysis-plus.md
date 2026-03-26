@@ -50,7 +50,7 @@ requirements-analysis-plus
 ## 安装
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-zh/requirements-analysis-plus"
+SKILL_DIR="skills/zh/testing-types/requirements-analysis-plus"
 DEST="$HOME/.codex/skills/naodeng-requirements-analysis-plus"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -63,7 +63,7 @@ echo "已安装到 $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-zh/requirements-analysis-plus"
+$SkillDir = "skills/zh/testing-types/requirements-analysis-plus"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-requirements-analysis-plus"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -75,7 +75,7 @@ Write-Host "已安装到 $Dest"
 ```
 
 ## 来源
-- 原始技能：[requirements-analysis-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-zh/requirements-analysis-plus/SKILL.md)
+- 原始技能：[requirements-analysis-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/requirements-analysis-plus/SKILL.md)
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## 同步日期

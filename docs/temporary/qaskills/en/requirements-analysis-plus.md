@@ -47,7 +47,7 @@ Output (problem):
 ## Install
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-en/requirements-analysis-plus"
+SKILL_DIR="skills/en/testing-types/requirements-analysis-plus"
 DEST="$HOME/.codex/skills/naodeng-requirements-analysis-plus"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -60,7 +60,7 @@ echo "Installed to $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-en/requirements-analysis-plus"
+$SkillDir = "skills/en/testing-types/requirements-analysis-plus"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-requirements-analysis-plus"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -72,7 +72,7 @@ Write-Host "Installed to $Dest"
 ```
 
 ## Source
-- Original Skill: [requirements-analysis-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-en/requirements-analysis-plus/SKILL.md)
+- Original Skill: [requirements-analysis-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirements-analysis-plus/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## Last Synced

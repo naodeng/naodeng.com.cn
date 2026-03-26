@@ -50,7 +50,7 @@
 ## 安装
 ### macOS / Linux
 ```bash
-SKILL_DIR="skills/skills-zh/testing-types/test-reporting"
+SKILL_DIR="skills/zh/testing-types/test-reporting"
 DEST="$HOME/.codex/skills/naodeng-test-reporting"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -63,7 +63,7 @@ echo "已安装到 $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "skills/skills-zh/testing-types/test-reporting"
+$SkillDir = "skills/zh/testing-types/test-reporting"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-test-reporting"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -75,7 +75,7 @@ Write-Host "已安装到 $Dest"
 ```
 
 ## 来源
-- 原始技能：[test-reporting](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/skills-zh/testing-types/test-reporting)
+- 原始技能：[test-reporting](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-reporting/SKILL.md)
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## 同步日期

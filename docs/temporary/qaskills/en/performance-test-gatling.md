@@ -50,7 +50,7 @@ Output (problem):
 ## Install
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-en/performance-test-gatling"
+SKILL_DIR="skills/en/testing-types/performance-test-gatling"
 DEST="$HOME/.codex/skills/naodeng-performance-test-gatling"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -63,7 +63,7 @@ echo "Installed to $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-en/performance-test-gatling"
+$SkillDir = "skills/en/testing-types/performance-test-gatling"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-performance-test-gatling"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -75,7 +75,7 @@ Write-Host "Installed to $Dest"
 ```
 
 ## Source
-- Original Skill: [performance-test-gatling](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-en/performance-test-gatling/SKILL.md)
+- Original Skill: [performance-test-gatling](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-gatling/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## Last Synced

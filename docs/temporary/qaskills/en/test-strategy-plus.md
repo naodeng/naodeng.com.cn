@@ -47,7 +47,7 @@ Output (problem):
 ## Install
 ### macOS / Linux
 ```bash
-SKILL_DIR="explore/skills-en/test-strategy-plus"
+SKILL_DIR="skills/en/testing-types/test-strategy-plus"
 DEST="$HOME/.codex/skills/naodeng-test-strategy-plus"
 TMP_DIR="$(mktemp -d)"
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills "$TMP_DIR/repo"
@@ -60,7 +60,7 @@ echo "Installed to $DEST"
 
 ### Windows (PowerShell)
 ```powershell
-$SkillDir = "explore/skills-en/test-strategy-plus"
+$SkillDir = "skills/en/testing-types/test-strategy-plus"
 $Dest = "$env:USERPROFILE\\.codex\\skills\\naodeng-test-strategy-plus"
 $Tmp = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString())
 git clone --depth 1 --filter=blob:none --sparse https://github.com/naodeng/awesome-qa-skills (Join-Path $Tmp "repo")
@@ -72,7 +72,7 @@ Write-Host "Installed to $Dest"
 ```
 
 ## Source
-- Original Skill: [test-strategy-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/explore/skills-en/test-strategy-plus/SKILL.md)
+- Original Skill: [test-strategy-plus](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-plus/SKILL.md)
 - Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 ## Last Synced
