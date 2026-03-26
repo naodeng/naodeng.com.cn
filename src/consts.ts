@@ -108,10 +108,34 @@ export const NAV_AI_WIKI: Multilingual = {
   "zh-cn": "AI 百科",
 };
 
+/** 顶部导航：百科分组 */
+export const NAV_ENCYCLOPEDIA: Multilingual = {
+  en: "Wiki",
+  "zh-cn": "百科",
+};
+
 /** 顶部导航：指南 / Guild */
 export const NAV_GUILD: Multilingual = {
   en: "Guild",
   "zh-cn": "自动化测试指南",
+};
+
+/** 顶部导航：指南分组 */
+export const NAV_GUIDES: Multilingual = {
+  en: "Guides",
+  "zh-cn": "指南",
+};
+
+/** 顶部导航：AI 测试分组 */
+export const NAV_AI_TESTING: Multilingual = {
+  en: "AI Testing",
+  "zh-cn": "AI测试",
+};
+
+/** 顶部导航：更多分组 */
+export const NAV_MORE: Multilingual = {
+  en: "More",
+  "zh-cn": "更多",
 };
 
 /** 底部导航：软件测试百科 */
@@ -136,6 +160,12 @@ export const FOOTER_NAV_GUILD: Multilingual = {
 export const FOOTER_NAV_PROMPTS: Multilingual = {
   en: "QA Prompt Library",
   "zh-cn": "软件测试提示词库",
+};
+
+/** 底部导航：技能库 */
+export const FOOTER_NAV_QASKILLS: Multilingual = {
+  en: "QA Skill Library",
+  "zh-cn": "软件测试技能库",
 };
 
 // 顶部导航：支持

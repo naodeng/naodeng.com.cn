@@ -1,0 +1,850 @@
+---
+import Base from "@/layouts/Base.astro";
+import { type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getQASkills, getQASkillBySlug } from "@/utils/qaskills";
+import GoogleAd from "@/components/GoogleAd.astro";
+import ArticleShare from "@/components/ArticleShare.astro";
+import Giscus from "@/components/Giscus.astro";
+
+export async function getStaticPaths() {
+  const langs: Lang[] = ["en", "zh-cn"];
+  const routes: Array<{ params: { lang: string; skillSlug: string } }> = [];
+
+  for (const lang of langs) {
+    const skills = await getQASkills(lang);
+    for (const skill of skills) {
+      routes.push({
+        params: {
+          lang,
+          skillSlug: skill.slug,
+        },
+      });
+    }
+  }
+
+  return routes;
+}
+
+const lang = Astro.params.lang as Lang;
+const skillSlug = Astro.params.skillSlug as string;
+const skill = await getQASkillBySlug(lang, skillSlug);
+
+if (!skill) {
+  throw new Error(`QASkill not found: ${lang}/${skillSlug}`);
+}
+
+const text = lang === "zh-cn" ? {
+  home: "首页",
+  list: "QA Skills",
+  basicInfo: "基础信息",
+  name: "Skill 名称",
+  chineseName: "中文名称",
+  author: "作者",
+  updated: "更新时间",
+  intro: "简单介绍",
+  scene: "适用场景",
+  audience: "适用人群",
+  sourceLinks: "相关链接",
+  sourceSkill: "Skill 链接",
+  usageGuide: "使用说明",
+  usageSection: "使用说明",
+  installNow: "立即安装",
+  fullIntro: "Skill 完整介绍",
+  install: "安装说明",
+} : {
+  home: "Home",
+  list: "QA Skills",
+  basicInfo: "Basic Information",
+  name: "Skill Name",
+  chineseName: "Chinese Name",
+  author: "Author",
+  updated: "Updated",
+  intro: "Summary",
+  scene: "Use Scenario",
+  audience: "Target Users",
+  sourceLinks: "Links",
+  sourceSkill: "Skill Link",
+  usageGuide: "Usage Guide",
+  usageSection: "Usage Guide",
+  installNow: "Install Now",
+  fullIntro: "Full Skill Guide",
+  install: "Installation",
+};
+
+const breadcrumbs = [
+  { name: text.home, url: getRelativeLocaleUrl(lang, "/") },
+  { name: text.list, url: getRelativeLocaleUrl(lang, "/qaskills/") },
+  { name: (lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title), url: getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`) },
+];
+
+const installerLang = lang === "zh-cn" ? "zh" : "en";
+const aiTools = ["codex", "cursor", "claudecode", "kiro", "opencode", "trae"] as const;
+const toolMeta = {
+  codex: { icon: "code", label: "codex" },
+  cursor: { icon: "ads_click", label: "cursor" },
+  claudecode: { icon: "auto_awesome", label: "claudecode" },
+  kiro: { icon: "psychology_alt", label: "kiro" },
+  opencode: { icon: "integration_instructions", label: "opencode" },
+  trae: { icon: "bolt", label: "trae" },
+} as const;
+const installers = {
+  mac: Object.fromEntries(
+    aiTools.map((tool) => [
+      tool,
+      `https://raw.githubusercontent.com/naodeng/awesome-qa-skills/main/installers/${installerLang}/${skill.slug}/mac/${tool}.sh`,
+    ])
+  ),
+  windows: Object.fromEntries(
+    aiTools.map((tool) => [
+      tool,
+      `https://raw.githubusercontent.com/naodeng/awesome-qa-skills/main/installers/${installerLang}/${skill.slug}/windows/${tool}.ps1`,
+    ])
+  ),
+};
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
+---
+
+<Base
+  title={lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}
+  description={skill.intro || skill.title}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="qaskill-detail">
+    <header class="detail-header">
+      <div class="detail-header-main">
+        <p class="updated-badge">
+          {lang === "zh-cn" ? "更新时间" : "Updated"}: {skill.updatedAt || "-"}
+        </p>
+        <h1>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h1>
+      </div>
+      <div class="actions header-actions">
+        <a href="#install-section" class="btn btn-primary">{text.installNow}</a>
+        <a href="#usage-guide-section" class="btn btn-outline">{text.usageGuide}</a>
+        {skill.sourceSkillUrl && (
+          <a href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.sourceSkill}</a>
+        )}
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>{text.basicInfo}</h2>
+      <dl class="meta-grid">
+        <div>
+          <dt>{text.name}</dt>
+          <dd>{skill.title}</dd>
+        </div>
+        {lang === "zh-cn" && skill.chineseName && (
+          <div>
+            <dt>{text.chineseName}</dt>
+            <dd>{skill.chineseName}</dd>
+          </div>
+        )}
+        <div>
+          <dt>{text.author}</dt>
+          <dd>{skill.author || "-"}</dd>
+        </div>
+        <div>
+          <dt>{text.scene}</dt>
+          <dd>{skill.whenToUse || "-"}</dd>
+        </div>
+        <div>
+          <dt>{text.audience}</dt>
+          <dd>{skill.whoShouldUse || "-"}</dd>
+        </div>
+        <div class="full">
+          <dt>{text.intro}</dt>
+          <dd>{skill.intro || "-"}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="detail-section" id="usage-section">
+      <h2>{text.fullIntro}</h2>
+      {skill.summaryCards.length > 0 ? (
+        <div class="summary-cards">
+          {skill.summaryCards
+            .filter((card) => {
+              const normalized = card.title.replace(/\s+/g, "");
+              return normalized !== "Reference给示例:正反例,输入->输出"
+                && normalized !== "Reference给示例：正反例，输入->输出";
+            })
+            .map((card) => {
+              let displayTitle = card.title;
+              if (/^正例（输入\s*->\s*输出）$/.test(card.title)) {
+                displayTitle = "Reference 给示例：正例（输入 -> 输出）";
+              } else if (/^反例（输入\s*->\s*输出）$/.test(card.title)) {
+                displayTitle = "Reference 给示例：反例（输入 -> 输出）";
+              }
+              return (
+            <article class:list={["summary-card", !card.html && "summary-card--title"]}>
+              <h3>{displayTitle}</h3>
+              {card.html && <div class="prose" set:html={card.html} />}
+            </article>
+              );
+            })}
+        </div>
+      ) : (
+        <div class="prose" set:html={skill.fullIntroHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, "")} />
+      )}
+    </section>
+
+    <div class="ad-slot-250">
+      <GoogleAd />
+    </div>
+
+    <section class="detail-section" id="usage-guide-section">
+      <h2>{text.usageSection}</h2>
+      <div class="prose" set:html={skill.usageHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, "")} />
+    </section>
+
+    <section class="detail-section" id="install-section">
+      <h2>{text.install}</h2>
+      <div class="installer-panel" id="installer-panel" data-default-lang={installerLang}>
+        <div class="installer-row">
+          <p class="installer-label">{lang === "zh-cn" ? "平台" : "Platform"}</p>
+          <div class="tab-group platform-tabs" role="tablist" aria-label={lang === "zh-cn" ? "系统选择" : "OS selector"}>
+            <button type="button" class="tab-btn is-active" data-os="mac">
+              <span class="material-icons-sharp tab-icon" aria-hidden="true">terminal</span>
+              <span>{lang === "zh-cn" ? "macOS / Linux" : "macOS / Linux"}</span>
+            </button>
+            <button type="button" class="tab-btn" data-os="windows">
+              <span class="material-icons-sharp tab-icon" aria-hidden="true">desktop_windows</span>
+              <span>{lang === "zh-cn" ? "Windows (PowerShell)" : "Windows (PowerShell)"}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="installer-row">
+          <p class="installer-label">{lang === "zh-cn" ? "AI 工具" : "AI Tool"}</p>
+          <div class="tab-group tools-tabs" role="tablist" aria-label={lang === "zh-cn" ? "AI 工具选择" : "AI tool selector"}>
+            {aiTools.map((tool, i) => (
+              <button type="button" class:list={["tab-btn", i === 0 && "is-active"]} data-tool={tool}>
+                <span class="material-icons-sharp tab-icon" aria-hidden="true">{toolMeta[tool].icon}</span>
+                <span>{toolMeta[tool].label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="installer-snippet">
+          <p class="installer-label">{lang === "zh-cn" ? "快速安装（一行命令）" : "Quick install (one line)"}</p>
+          <div class="code-card">
+            <pre data-lang="shell"><code id="quick-install-code" class="language-bash">{lang === "zh-cn" ? "正在生成命令..." : "Generating command..."}</code></pre>
+            <button type="button" id="copy-quick-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
+          </div>
+        </div>
+
+        <div class="installer-snippet">
+          <p class="installer-label">{lang === "zh-cn" ? "完整脚本" : "Full script"}</p>
+          <div class="code-card">
+            <pre data-lang="shell"><code id="full-install-code" class="language-bash">{lang === "zh-cn" ? "正在加载脚本..." : "Loading script..."}</code></pre>
+            <button type="button" id="copy-full-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ArticleShare
+      title={lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}
+      url={canonicalUrl}
+      locale={lang}
+    />
+    <div class="ad-slot-250">
+      <GoogleAd />
+    </div>
+    <Giscus
+      lang={lang === "zh-cn" ? "zh-CN" : "en"}
+      theme="preferred_color_scheme"
+      inputPosition="bottom"
+      reactionsEnabled={true}
+      loading="lazy"
+    />
+  </article>
+</Base>
+
+<script is:inline define:vars={{ installers, lang }}>
+  (() => {
+    const panel = document.getElementById("installer-panel");
+    if (!panel) return;
+
+    const osButtons = Array.from(panel.querySelectorAll("[data-os]"));
+    const toolButtons = Array.from(panel.querySelectorAll("[data-tool]"));
+    const quickCodeEl = document.getElementById("quick-install-code");
+    const fullCodeEl = document.getElementById("full-install-code");
+    const copyQuickBtn = document.getElementById("copy-quick-btn");
+    const copyFullBtn = document.getElementById("copy-full-btn");
+    if (!quickCodeEl || !fullCodeEl || !copyQuickBtn || !copyFullBtn) return;
+
+    let currentOS = /win/i.test(navigator.platform) ? "windows" : "mac";
+    let currentTool = "codex";
+    const cache = new Map();
+    const text = {
+      copied: lang === "zh-cn" ? "已复制" : "Copied",
+      copyCode: lang === "zh-cn" ? "复制" : "Copy",
+      loading: lang === "zh-cn" ? "正在加载脚本..." : "Loading script...",
+      failed: lang === "zh-cn" ? "脚本加载失败，请点击上方安装链接。" : "Failed to load script. Use the installer link above.",
+    };
+
+    const renderActive = () => {
+      osButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.os === currentOS));
+      toolButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.tool === currentTool));
+    };
+    const escapeHTML = (value) =>
+      value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    const highlightCode = (source, langKey) => {
+      if (!source) return "";
+      let html = escapeHTML(source);
+      const slots = [];
+      const stash = (pattern, cls) => {
+        html = html.replace(pattern, (m) => {
+          const id = slots.push(`<span class="${cls}">${m}</span>`) - 1;
+          return `@@CODE_SLOT_${id}@@`;
+        });
+      };
+
+      stash(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g, "tok-string");
+      stash(/\$\{[^}]+\}|\$[A-Za-z_][A-Za-z0-9_:]*/g, "tok-var");
+      stash(/(^|\n)\s*#.*$/gm, "tok-comment");
+      stash(/\b(?:if|then|fi|for|do|done|while|case|esac)\b/g, "tok-keyword");
+      stash(/\b(?:curl|irm|iex|exec|set|mkdir|cd|git|cp|echo|Join-Path|Set-Location|Copy-Item|Write-Host|New-Item)\b/g, "tok-fn");
+      stash(/\|\||&&|\||=>|->/g, "tok-op");
+      if (langKey === "powershell") {
+        stash(/\b(?:param|function|foreach|switch|where|select)\b/g, "tok-keyword");
+      }
+
+      return html.replace(/@@CODE_SLOT_(\d+)@@/g, (_, i) => slots[Number(i)] || "");
+    };
+    const renderCode = (el, source, langKey) => {
+      el.innerHTML = highlightCode(source, langKey);
+    };
+    const updateCodeLanguage = () => {
+      const langKey = currentOS === "windows" ? "powershell" : "shell";
+      const codeClass = currentOS === "windows" ? "language-powershell" : "language-bash";
+      [quickCodeEl, fullCodeEl].forEach((el) => {
+        el.className = codeClass;
+        const pre = el.closest("pre");
+        if (pre) pre.setAttribute("data-lang", langKey);
+        renderCode(el, el.textContent || "", langKey);
+      });
+    };
+
+    const getUrl = () => installers[currentOS]?.[currentTool] || "";
+
+    const getQuickCommand = () => {
+      const url = getUrl();
+      if (!url) return "";
+      if (currentOS === "windows") {
+        return `irm "${url}" | iex`;
+      }
+      return `curl -fsSL "${url}" | bash`;
+    };
+
+    const loadFullScript = async () => {
+      const url = getUrl();
+      const langKey = currentOS === "windows" ? "powershell" : "shell";
+      renderCode(quickCodeEl, getQuickCommand() || text.failed, langKey);
+      renderCode(fullCodeEl, text.loading, langKey);
+      if (!url) {
+        renderCode(fullCodeEl, text.failed, langKey);
+        return;
+      }
+      if (cache.has(url)) {
+        renderCode(fullCodeEl, cache.get(url), langKey);
+        return;
+      }
+      try {
+        const resp = await fetch(url, { cache: "force-cache" });
+        if (!resp.ok) throw new Error("load failed");
+        const script = await resp.text();
+        cache.set(url, script);
+        renderCode(fullCodeEl, script, langKey);
+      } catch {
+        renderCode(fullCodeEl, text.failed, langKey);
+      }
+    };
+
+    osButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentOS = btn.dataset.os || "mac";
+        renderActive();
+        updateCodeLanguage();
+        loadFullScript();
+      });
+    });
+
+    toolButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentTool = btn.dataset.tool || "codex";
+        renderActive();
+        loadFullScript();
+      });
+    });
+
+    copyQuickBtn.addEventListener("click", async () => {
+      const content = quickCodeEl.textContent || "";
+      if (!content || content === text.failed) return;
+      try {
+        await navigator.clipboard.writeText(content);
+        copyQuickBtn.textContent = text.copied;
+        setTimeout(() => {
+          copyQuickBtn.textContent = text.copyCode;
+        }, 1200);
+      } catch {
+        // Ignore copy errors.
+      }
+    });
+
+    copyFullBtn.addEventListener("click", async () => {
+      const content = fullCodeEl.textContent || "";
+      if (!content || content === text.loading || content === text.failed) return;
+      try {
+        await navigator.clipboard.writeText(content);
+        copyFullBtn.textContent = text.copied;
+        setTimeout(() => {
+          copyFullBtn.textContent = text.copyCode;
+        }, 1200);
+      } catch {
+        // Ignore copy errors.
+      }
+    });
+
+    renderActive();
+    updateCodeLanguage();
+    loadFullScript();
+  })();
+</script>
+
+<style>
+  .qaskill-detail {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .detail-header {
+    position: relative;
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-base));
+    padding: 0.85rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .detail-header-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .detail-header h1 {
+    margin: 0.2rem 0 0;
+    line-height: 1.25;
+    font-size: clamp(1.6rem, 2.5vw, 1.95rem);
+  }
+  .updated-badge {
+    position: absolute;
+    top: -16px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 34px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: color-mix(in srgb, #b1472a 72%, #f3d3bd 28%);
+    border: 2px solid color-mix(in srgb, #b1472a 68%, #d36f52 32%);
+    background: color-mix(in srgb, #2a1a16 84%, transparent);
+    border-radius: 999px;
+    transform: rotate(7deg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, #2f1812 65%, transparent) inset;
+  }
+  .detail-section {
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    padding: 0.8rem;
+  }
+  .ad-slot-250 {
+    margin-top: 0.25rem;
+  }
+  .ad-slot-250 :global(.ad-wrap) {
+    margin-block: 0;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  .ad-slot-250 :global(.adsbygoogle) {
+    height: 250px !important;
+  }
+  .detail-section h2 {
+    margin-top: 0;
+    margin-bottom: 0.65rem;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+  }
+  .meta-grid {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .meta-grid div {
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+    border: 1px solid color-mix(in srgb, var(--color-main) 10%, transparent);
+    padding: 0.55rem 0.65rem;
+  }
+  .meta-grid div.full {
+    grid-column: 1 / -1;
+  }
+  .meta-grid dt {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-theme);
+    margin: 0;
+  }
+  .meta-grid dd {
+    margin: 0.26rem 0 0;
+    line-height: 1.5;
+  }
+  .summary-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    align-items: start;
+  }
+  .summary-card {
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    padding: 0.65rem 0.72rem;
+    height: fit-content;
+  }
+  .summary-card--title {
+    grid-column: 1 / -1;
+    padding-top: 0.56rem;
+    padding-bottom: 0.56rem;
+  }
+  .summary-card h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+  .summary-card--title h3 {
+    margin-bottom: 0;
+  }
+  .summary-card :global(.prose) {
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+  .header-actions {
+    justify-content: flex-end;
+    align-self: center;
+    flex-shrink: 0;
+    margin-top: 1.35rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 9px;
+    padding: 0.4rem 0.75rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+  .btn-primary {
+    background: var(--color-theme);
+    color: white;
+  }
+  .btn-outline {
+    color: var(--color-theme);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+  }
+  .btn-outline:hover {
+    color: white;
+    background: var(--color-theme);
+    border-color: var(--color-theme);
+  }
+  .installer-panel {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .installer-row {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .installer-label {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--color-main) 82%, white 18%);
+  }
+  .tab-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
+  }
+  .platform-tabs .tab-btn {
+    min-height: 36px;
+    min-width: 120px;
+    font-size: 0.85rem;
+    border-radius: 0;
+  }
+  .tools-tabs {
+    border-bottom: 2px solid color-mix(in srgb, var(--color-main) 25%, transparent);
+    padding-bottom: 0.65rem;
+  }
+  .tools-tabs .tab-btn {
+    border-radius: 0;
+    min-height: 34px;
+    padding-inline: 0.6rem;
+  }
+  .tab-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    border: 1px solid color-mix(in srgb, var(--color-main) 34%, transparent);
+    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+    color: var(--color-main);
+    border-radius: 0;
+    padding: 0.34rem 0.55rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1.2;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+  }
+  .tab-icon {
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.9;
+  }
+  .tab-btn:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
+    outline-offset: 1px;
+  }
+  .tab-btn.is-active {
+    color: white;
+    border-color: var(--color-theme);
+    background: var(--color-theme);
+  }
+  .tab-btn:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 55%, transparent);
+  }
+  .installer-snippet {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .code-card {
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
+    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+  }
+  .code-card pre {
+    position: relative;
+    margin: 0;
+    padding: 1.7rem 0.72rem 0.72rem;
+    overflow: auto;
+    max-height: 150px;
+  }
+  .code-card pre::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0.36rem;
+    left: 0.72rem;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--color-theme) 78%, white 22%);
+    opacity: 0.85;
+    font-weight: 700;
+  }
+  .code-card code {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    white-space: pre;
+    display: block;
+    min-width: fit-content;
+    color: color-mix(in srgb, var(--color-main) 84%, white 16%);
+  }
+  :global(.qaskill-detail .code-card code .tok-comment) {
+    color: #7b879b;
+  }
+  :global(.qaskill-detail .code-card code .tok-string) {
+    color: #9be38f;
+  }
+  :global(.qaskill-detail .code-card code .tok-var) {
+    color: #7bd4ff;
+  }
+  :global(.qaskill-detail .code-card code .tok-keyword) {
+    color: #ffae70;
+    font-weight: 700;
+  }
+  :global(.qaskill-detail .code-card code .tok-fn) {
+    color: #ffd479;
+  }
+  :global(.qaskill-detail .code-card code .tok-op) {
+    color: #f58c66;
+  }
+  .copy-mini {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 38%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    color: var(--color-theme);
+    border-radius: 8px;
+    min-height: 28px;
+    min-width: 52px;
+    padding: 0.2rem 0.46rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .copy-mini:hover {
+    border-color: var(--color-theme);
+    color: white;
+    background: var(--color-theme);
+  }
+  :global(.qaskill-detail .prose) {
+    line-height: 1.75;
+  }
+  :global(.qaskill-detail .prose h2) {
+    margin-top: 1.35rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.28rem;
+    line-height: 1.35;
+  }
+  :global(.qaskill-detail .prose h3) {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.08rem;
+    line-height: 1.45;
+  }
+  :global(.qaskill-detail .prose p) {
+    margin: 0.6rem 0;
+  }
+  :global(.qaskill-detail .prose ul),
+  :global(.qaskill-detail .prose ol) {
+    margin: 0.65rem 0;
+    padding-inline-start: 1.3rem;
+  }
+  :global(.qaskill-detail .prose ul) {
+    list-style: disc;
+  }
+  :global(.qaskill-detail .prose ol) {
+    list-style: decimal;
+  }
+  :global(.qaskill-detail .prose li) {
+    margin: 0.34rem 0;
+  }
+  :global(.qaskill-detail .prose li::marker) {
+    color: color-mix(in srgb, var(--color-theme) 78%, var(--color-main));
+    font-weight: 700;
+  }
+  :global(.qaskill-detail .prose table) {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+    margin: 0.8rem 0;
+    border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
+    border-radius: 8px;
+  }
+  :global(.qaskill-detail .prose th),
+  :global(.qaskill-detail .prose td) {
+    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+    padding: 0.5rem 0.65rem;
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  :global(.qaskill-detail .prose th) {
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    font-weight: 700;
+  }
+  :global(.qaskill-detail .prose code) {
+    font-size: 0.9em;
+    padding: 0.08em 0.32em;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--color-main) 9%, var(--color-base));
+  }
+  :global(.qaskill-detail .prose pre) {
+    overflow: auto;
+    border-radius: 10px;
+    padding: 0.85rem;
+    background: color-mix(in srgb, var(--color-main) 10%, var(--color-base));
+    border: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
+    line-height: 1.55;
+  }
+  :global(.qaskill-detail .prose pre code) {
+    background: transparent;
+    padding: 0;
+  }
+  :global(.qaskill-detail .prose a) {
+    color: color-mix(in srgb, var(--color-theme) 88%, var(--color-main));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    word-break: break-all;
+  }
+  :global(.qaskill-detail .prose a:hover) {
+    color: var(--color-theme);
+  }
+  @media (max-width: 1024px) {
+    .meta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 720px) {
+    .detail-header {
+      flex-direction: column;
+    }
+    .header-actions {
+      width: 100%;
+      justify-content: flex-start;
+      margin-top: 0.35rem;
+    }
+    .meta-grid {
+      grid-template-columns: 1fr;
+    }
+    .summary-cards {
+      grid-template-columns: 1fr;
+    }
+    .platform-tabs .tab-btn {
+      min-width: 0;
+      width: 100%;
+    }
+    .platform-tabs {
+      display: grid;
+      width: 100%;
+    }
+    .tools-tabs .tab-btn {
+      flex: 1 1 calc(50% - 0.65rem);
+    }
+  }
+</style>

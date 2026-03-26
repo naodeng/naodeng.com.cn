@@ -37,20 +37,26 @@ test.describe("Header 导航", () => {
   test("en 首页：所有主导航链接可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const nav = page.locator("header nav");
-    await expect(nav.locator("a[href*='/en/blog']")).toBeVisible();
-    await expect(nav.locator("a[href*='/en/guild']")).toBeVisible();
-    await expect(nav.locator("a[href*='/en/about']")).toBeVisible();
-    await expect(nav.locator("a[href*='/en/sponsor']")).toBeVisible();
+    await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
+    await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='guides'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='more'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
     await expect(nav.locator("a[href*='/en/archive']")).toHaveCount(0);
   });
 
   test("zh-cn 首页：所有主导航链接可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const nav = page.locator("header nav");
-    await expect(nav.locator("a[href*='/zh-cn/blog']")).toBeVisible();
-    await expect(nav.locator("a[href*='/zh-cn/guild']")).toBeVisible();
-    await expect(nav.locator("a[href*='/zh-cn/wiki']")).toBeVisible();
-    await expect(nav.locator("a[href*='/zh-cn/about']")).toBeVisible();
+    await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
+    await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toContainText("百科");
+    await expect(nav.locator("[data-nav-group='guides'] summary")).toContainText("指南");
+    await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toContainText("AI测试");
+    await expect(nav.locator("[data-nav-group='more'] summary")).toContainText("更多");
+    await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
     await expect(nav.locator("a[href*='/zh-cn/archive']")).toHaveCount(0);
   });
 
@@ -69,28 +75,36 @@ test.describe("Header 导航", () => {
 
   test("zh-cn Guild 页：指南导航链接有 active 样式", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
-    const guildLink = page.locator("header nav a[href*='/zh-cn/guild']:not([data-locale-option])");
-    await expect(guildLink).toHaveClass(/active/);
+    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] summary");
+    await expect(guidesTrigger).toHaveClass(/active/);
   });
 
   test("en Guild 文章页：Guild 导航链接有 active 样式（section 匹配）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
-    const guildLink = page.locator("header nav a[href*='/en/guild']:not([data-locale-option])");
-    await expect(guildLink).toHaveClass(/active/);
+    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] summary");
+    await expect(guidesTrigger).toHaveClass(/active/);
   });
 
   test("zh-cn Wiki 页：百科导航链接有 active 样式（section 匹配）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
-    const wikiLink = page.locator("header nav a[href*='/zh-cn/wiki']:not([data-locale-option])");
-    await expect(wikiLink).toHaveClass(/active/);
+    const encyclopediaTrigger = page.locator("header nav [data-nav-group='encyclopedia'] summary");
+    await expect(encyclopediaTrigger).toHaveClass(/active/);
   });
 
-  test("en 首页：QA wiki 链接指向 ray.run（外链）", async ({ page, baseURL }) => {
+  test("en 首页：百科菜单下 QA wiki 链接指向 ray.run（外链）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
-    const wikiLink = page.locator("header nav a[href='https://ray.run/wiki']");
+    await page.locator("[data-nav-group='encyclopedia'] summary").click();
+    const wikiLink = page.locator("header nav a[data-nav-item='qa-wiki']");
     await expect(wikiLink).toBeVisible();
     await expect(wikiLink).toHaveAttribute("target", "_blank");
     await expect(wikiLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  test("zh-cn 首页：更多菜单下项目和支持可见", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+    await page.locator("[data-nav-group='more'] summary").click();
+    await expect(page.locator("header nav a[data-nav-item='projects']")).toBeVisible();
+    await expect(page.locator("header nav a[data-nav-item='sponsor']")).toBeVisible();
   });
 
   test("en 首页：搜索按钮可见", async ({ page, baseURL }) => {

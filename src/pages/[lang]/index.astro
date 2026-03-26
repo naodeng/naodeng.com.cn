@@ -36,7 +36,7 @@ const allPosts = (await getCollection("blog"))
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
-const heroLatestPosts = latestPosts.slice(0, 4);
+const heroLatestPosts = latestPosts.slice(0, 6);
 
 const allWorkflows = await getCollection("workflows");
 const tagCounts = allPosts.flatMap((post) => post.data.tags || []).reduce((acc, tag) => {
@@ -66,7 +66,7 @@ for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
 }
 const promptTypeCards = Array.from(promptTypeMap.values())
   .sort((a, b) => TESTING_TYPE_ORDER.indexOf(a.data.testingType) - TESTING_TYPE_ORDER.indexOf(b.data.testingType));
-const heroPromptCards = shuffle(promptTypeCards).slice(0, 4);
+const heroPromptCards = shuffle(promptTypeCards).slice(0, 6);
 
 const localeWorkflows = allWorkflows
   .filter((w) => w.data.lang === locale)
@@ -74,7 +74,7 @@ const localeWorkflows = allWorkflows
   .slice(0, 3);
 const allGuildEntries = await getCollection("guild");
 const localeGuildEntries = allGuildEntries.filter((entry) => entry.id.split("/")[0] === locale);
-const heroGuildArticles = shuffle(localeGuildEntries).slice(0, 4);
+const heroGuildArticles = shuffle(localeGuildEntries).slice(0, 6);
 
 const wikiEntries =
   locale === "zh-cn"
@@ -746,6 +746,15 @@ const homePageSchema = {
     opacity: 0.4;
     pointer-events: none;
   }
+  .hero-switcher-shell::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -84px;
+    right: -84px;
+    z-index: 0;
+  }
   .hero-switcher-arrow {
     position: absolute;
     top: 50%;
@@ -766,7 +775,7 @@ const homePageSchema = {
     box-shadow: 0 6px 14px color-mix(in srgb, var(--color-theme) 8%, transparent);
     opacity: 0.8;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .hero-switcher-arrow:hover,
   .hero-switcher-arrow:focus-visible {
@@ -786,6 +795,27 @@ const homePageSchema = {
   }
   .hero-switcher-arrow--next {
     right: -60px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .hero-switcher-arrow {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-50%) scale(0.92);
+    }
+    .home-hero-switcher:hover .hero-switcher-arrow,
+    .hero-switcher-shell:hover .hero-switcher-arrow,
+    .hero-switcher-shell:focus-within .hero-switcher-arrow {
+      opacity: 0.82;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(-50%) scale(1);
+    }
+    .home-hero-switcher:hover .hero-switcher-arrow:hover,
+    .hero-switcher-shell:hover .hero-switcher-arrow:hover,
+    .hero-switcher-shell:focus-within .hero-switcher-arrow:focus-visible {
+      opacity: 1;
+    }
   }
   .hero-switcher-panels {
     position: relative;

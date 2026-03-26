@@ -1,0 +1,396 @@
+---
+import Base from "@/layouts/Base.astro";
+import GoogleAd from "@/components/GoogleAd.astro";
+import { type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getQASkillsGrouped } from "@/utils/qaskills";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "zh-cn" } },
+  ];
+}
+
+const lang = Astro.params.lang as Lang;
+const grouped = await getQASkillsGrouped(lang);
+
+const text = lang === "zh-cn" ? {
+  title: "QA Skills",
+  description: "软件测试技能库",
+  intro: "收录测试类型、测试工作流程和加强版技能，帮助你快速找到合适技能并直接上手。",
+  quickStart: "快速开始",
+  categories: "Skills 分类",
+  startBtn: "快速开始",
+  githubBtn: "查看 GitHub",
+  skillCountLabel: "个 Skills",
+  typeTitle: "测试类型",
+  workflowTitle: "测试工作流程",
+  plusTitle: "加强版",
+  typeDesc: "按测试能力方向查看技能。",
+  workflowDesc: "按日常、迭代、发布流程查看技能。",
+  plusDesc: "更深度、结构更完整的增强版本技能。",
+  viewDetail: "查看详情",
+  subGroup: "细分",
+  quickSteps: [
+    {
+      title: "选择技能",
+      desc: "先按分类找到你当前任务最匹配的 Skill。",
+      tips: ["按测试类型选通用技能", "按工作流程选阶段技能", "复杂任务优先看加强版"],
+    },
+    {
+      title: "准备输入",
+      desc: "准备任务上下文，再让 Skill 输出可执行结果。",
+      tips: ["补齐需求、环境、时间信息", "说明输出格式要求", "提前标注风险和优先级"],
+    },
+    {
+      title: "开始使用",
+      desc: "打开详情页，按说明直接试用并安装到你的工具。",
+      tips: ["先看适用场景和人群", "使用技能链接快速跳转", "按安装说明一步步执行"],
+    },
+  ],
+} : {
+  title: "QA Skills",
+  description: "Software Testing Skill Library",
+  intro: "Browse testing types, testing workflows, and plus skills to quickly find the right skill and start using it.",
+  quickStart: "Quick Start",
+  categories: "Skill Categories",
+  startBtn: "Quick Start",
+  githubBtn: "View GitHub",
+  skillCountLabel: "skills",
+  typeTitle: "Testing Types",
+  workflowTitle: "Testing Workflows",
+  plusTitle: "Plus",
+  typeDesc: "Browse by testing capability.",
+  workflowDesc: "Browse by daily, sprint, and release workflows.",
+  plusDesc: "Enhanced skills with deeper and more complete structure.",
+  viewDetail: "View Details",
+  subGroup: "Subgroups",
+  quickSteps: [
+    {
+      title: "Pick a skill",
+      desc: "Choose the skill that best matches your current QA task.",
+      tips: ["Use testing types for common tasks", "Use workflows for phase-based tasks", "Use plus skills for complex tasks"],
+    },
+    {
+      title: "Prepare input",
+      desc: "Provide context so the skill can generate actionable output.",
+      tips: ["Include scope, environment, and timeline", "State expected output format", "Mark risk and priority in advance"],
+    },
+    {
+      title: "Start using",
+      desc: "Open the detail page and follow the guide and install section.",
+      tips: ["Check scenario and audience first", "Use source links for quick jump", "Follow install steps directly"],
+    },
+  ],
+};
+
+const totalCount = grouped.testingTypes.length + grouped.testingWorkflows.length + grouped.plus.length;
+
+const breadcrumbs = [
+  { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: text.title, url: getRelativeLocaleUrl(lang, "/qaskills") },
+];
+---
+
+<Base
+  title={text.title}
+  description={text.description}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="qaskills-page">
+    <header class="hero">
+      <h1>{text.title}</h1>
+      <p class="hero-sub">{text.description}</p>
+      <p class="hero-intro">{text.intro}</p>
+      <p class="hero-count">{totalCount} {text.skillCountLabel}</p>
+      <div class="hero-actions">
+        <a href="#quickstart" class="btn btn-primary">{text.startBtn}</a>
+        <a href="https://github.com/naodeng/awesome-qa-skills" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.githubBtn}</a>
+      </div>
+    </header>
+
+    <section id="quickstart" class="section">
+      <h2>{text.quickStart}</h2>
+      <ol class="quick-grid">
+        {text.quickSteps.map((step, index) => (
+          <li class="quick-card">
+            <span class="num">{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+            <ul>
+              {step.tips.map((tip) => <li>{tip}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="section" id="categories">
+      <h2>{text.categories}</h2>
+
+      <div class="category-block">
+        <h3>{text.typeTitle}</h3>
+        <p>{text.typeDesc}</p>
+        {grouped.testingTypeSubgroups.map((group) => (
+          <div class="subgroup">
+            <h4>{group.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h4>
+            <ul class="cards" role="list">
+              {group.skills.map((skill) => (
+                <li>
+                  <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                    <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
+                    <p>{skill.intro}</p>
+                    <span>{text.viewDetail} →</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="ad-slot-250">
+        <GoogleAd />
+      </div>
+
+      <div class="category-block">
+        <h3>{text.workflowTitle}</h3>
+        <p>{text.workflowDesc}</p>
+        <ul class="cards" role="list">
+          {grouped.testingWorkflows.map((skill) => (
+            <li>
+              <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
+                <p>{skill.intro}</p>
+                <span>{text.viewDetail} →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="category-block">
+        <h3>{text.plusTitle}</h3>
+        <p>{text.plusDesc}</p>
+        <ul class="cards" role="list">
+          {grouped.plus.map((skill) => (
+            <li>
+              <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
+                <p>{skill.intro}</p>
+                <span>{text.viewDetail} →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="ad-slot-250">
+        <GoogleAd />
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .qaskills-page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--sp-l) var(--sp-m);
+    display: grid;
+    gap: 1.2rem;
+  }
+  .hero {
+    padding: 1.25rem;
+    border-radius: 14px;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-theme) 10%, var(--color-base)) 0%, color-mix(in srgb, var(--color-base) 92%, var(--color-main)) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 26%, transparent);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+  .hero-sub {
+    margin: 0.4rem 0 0;
+    font-weight: 700;
+    color: var(--color-theme);
+  }
+  .hero-intro {
+    margin-top: 0.75rem;
+  }
+  .hero-count {
+    margin-top: 0.5rem;
+    font-weight: 700;
+  }
+  .hero-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn {
+    display: inline-flex;
+    padding: 0.55rem 0.95rem;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .btn-primary {
+    color: white;
+    background: var(--color-theme);
+  }
+  .btn-outline {
+    color: var(--color-main);
+    border: 1px solid color-mix(in srgb, var(--color-main) 26%, transparent);
+  }
+  .section h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  }
+  .quick-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+  .quick-card {
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    padding: 1rem;
+  }
+  .quick-card .num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-theme) 20%, transparent);
+    color: var(--color-theme);
+    font-weight: 800;
+  }
+  .quick-card h3 {
+    margin: 0.55rem 0 0.45rem;
+  }
+  .quick-card p {
+    margin: 0 0 0.5rem;
+  }
+  .quick-card ul {
+    margin: 0;
+    padding-inline-start: 1.1rem;
+  }
+  .category-block {
+    margin-top: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    padding: 0.95rem;
+  }
+  .category-block h3 {
+    margin-bottom: 0.2rem;
+  }
+  .category-block > p {
+    margin-top: 0;
+    opacity: 0.85;
+  }
+  .subgroup {
+    margin-top: 0.85rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed color-mix(in srgb, var(--color-main) 14%, transparent);
+  }
+  .subgroup:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .subgroup h4 {
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+    color: var(--color-theme);
+  }
+  .ad-slot-250 {
+    margin-top: 1rem;
+  }
+  .ad-slot-250 :global(.ad-wrap) {
+    margin-block: 0;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  .ad-slot-250 :global(.adsbygoogle) {
+    height: 250px !important;
+  }
+  .cards {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .card {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 11px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
+    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+    padding: 0.85rem;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-main) 12%, transparent);
+  }
+  .card h5 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+  }
+  .card p {
+    margin: 0;
+    font-size: 0.92rem;
+    opacity: 0.88;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.55;
+  }
+  .card span {
+    display: inline-block;
+    margin-top: 0.7rem;
+    color: var(--color-theme);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 920px) {
+    .quick-grid,
+    .cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .qaskills-page {
+      gap: 1rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .qaskills-page {
+      padding: var(--sp-m);
+    }
+    .hero {
+      padding: var(--sp-m);
+    }
+    .category-block {
+      padding: 0.8rem;
+    }
+    .quick-grid,
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

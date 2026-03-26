@@ -20,7 +20,9 @@ const { title, compact = false } = Astro.props;
     text-align: center;
     border-radius: 20px;
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 8%, transparent), transparent 42%),
+      color-mix(in srgb, var(--color-base) 96%, var(--color-main));
     border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
   }
   @media (width < 768px) {
