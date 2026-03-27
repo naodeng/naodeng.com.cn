@@ -26,6 +26,7 @@ import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
+import { getQASkillsGrouped } from "@/utils/qaskills";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -72,9 +73,21 @@ const localeWorkflows = allWorkflows
   .filter((w) => w.data.lang === locale)
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
+const qaSkillsGrouped = await getQASkillsGrouped(locale);
+const homeQASkillTypes = qaSkillsGrouped.testingTypes.slice(0, 5);
+const homeQASkillWorkflows = qaSkillsGrouped.testingWorkflows.slice(0, 3);
+const homeQASkillPlus = qaSkillsGrouped.plus.slice(0, 3);
 const allGuildEntries = await getCollection("guild");
 const localeGuildEntries = allGuildEntries.filter((entry) => entry.id.split("/")[0] === locale);
 const heroGuildArticles = shuffle(localeGuildEntries).slice(0, 6);
+
+function toHomeSkillSnippet(input: string, locale: Lang): string {
+  const text = (input || "").replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  const maxLen = locale === "zh-cn" ? 46 : 92;
+  if (text.length <= maxLen) return text;
+  return `${text.slice(0, maxLen).trimEnd()}…`;
+}
 
 const wikiEntries =
   locale === "zh-cn"
@@ -340,6 +353,79 @@ const homePageSchema = {
     <div class="section-footer">
       <a href={getRelativeLocaleUrl(locale, "/prompts/")} class="cta-button">
         {locale === "zh-cn" ? "查看全部提示词" : "View all prompts"}
+        <span class="material-icons-sharp">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-section qaskills-showcase">
+    <div class="section-header">
+      <h2 class="section-title">{locale === "zh-cn" ? "专业质量保证技能库" : "Professional QA Skill Library"}</h2>
+    </div>
+
+    <p class="qaskills-showcase-sub">
+      {locale === "zh-cn" ? "测试类型技能" : "Testing Type Skills"}
+    </p>
+    <ul class="qaskills-type-grid" role="list">
+      {homeQASkillTypes.map((skill) => (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, `/qaskills/${skill.slug}/`)}
+            class="qaskills-type-card"
+          >
+            <span class="qaskills-type-title">{locale === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</span>
+            <span class="qaskills-type-desc">{toHomeSkillSnippet(skill.intro, locale)}</span>
+            <span class="qaskills-type-cta" aria-hidden="true">
+              {locale === "zh-cn" ? "查看技能 →" : "View skill →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="qaskills-showcase-sub" style="margin-block-start: var(--sp-m)">
+      {locale === "zh-cn" ? "测试工作流技能" : "Workflow Skills"}
+    </p>
+    <ul class="qaskills-workflow-grid" role="list">
+      {homeQASkillWorkflows.map((skill) => (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, `/qaskills/${skill.slug}/`)}
+            class="qaskills-workflow-card"
+          >
+            <span class="qaskills-type-title">{locale === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</span>
+            <span class="qaskills-type-desc">{toHomeSkillSnippet(skill.intro, locale)}</span>
+            <span class="qaskills-type-cta" aria-hidden="true">
+              {locale === "zh-cn" ? "查看工作流技能 →" : "View workflow skill →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="qaskills-showcase-sub" style="margin-block-start: var(--sp-m)">
+      {locale === "zh-cn" ? "加强版技能" : "Plus Skills"}
+    </p>
+    <ul class="qaskills-workflow-grid" role="list">
+      {homeQASkillPlus.map((skill) => (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(locale, `/qaskills/${skill.slug}/`)}
+            class="qaskills-workflow-card"
+          >
+            <span class="qaskills-type-title">{locale === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</span>
+            <span class="qaskills-type-desc">{toHomeSkillSnippet(skill.intro, locale)}</span>
+            <span class="qaskills-type-cta" aria-hidden="true">
+              {locale === "zh-cn" ? "查看加强版技能 →" : "View plus skill →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="section-footer">
+      <a href={getRelativeLocaleUrl(locale, "/qaskills/")} class="cta-button">
+        {locale === "zh-cn" ? "查看全部技能库" : "View all skills"}
         <span class="material-icons-sharp">arrow_forward</span>
       </a>
     </div>
@@ -1346,7 +1432,8 @@ const homePageSchema = {
   }
 
   /* ── Prompts Showcase ── */
-  .prompts-showcase-sub {
+  .prompts-showcase-sub,
+  .qaskills-showcase-sub {
     font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -1354,7 +1441,8 @@ const homePageSchema = {
     color: color-mix(in srgb, var(--color-main) 70%, transparent);
     margin: 0 0 0.6rem;
   }
-  .prompts-type-grid {
+  .prompts-type-grid,
+  .qaskills-type-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.75rem;
@@ -1362,7 +1450,8 @@ const homePageSchema = {
     padding: 0;
     margin: 0;
   }
-  .prompts-workflow-grid {
+  .prompts-workflow-grid,
+  .qaskills-workflow-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 0.75rem;
@@ -1371,7 +1460,9 @@ const homePageSchema = {
     margin: 0;
   }
   .prompts-type-card,
-  .prompts-workflow-card {
+  .prompts-workflow-card,
+  .qaskills-type-card,
+  .qaskills-workflow-card {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -1384,25 +1475,44 @@ const homePageSchema = {
     height: 100%;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
+  .qaskills-type-card,
+  .qaskills-workflow-card {
+    background: color-mix(in srgb, var(--card-bg) 92%, var(--color-theme) 8%);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 26%, transparent);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
   .prompts-type-card:hover,
-  .prompts-workflow-card:hover {
+  .prompts-workflow-card:hover,
+  .qaskills-type-card:hover,
+  .qaskills-workflow-card:hover {
     border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
     box-shadow: 0 4px 16px color-mix(in srgb, var(--color-theme) 12%, transparent);
     transform: translateY(-2px);
   }
-  .prompts-type-title {
+  .prompts-type-title,
+  .qaskills-type-title {
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--color-theme);
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .prompts-type-desc {
+  .prompts-type-desc,
+  .qaskills-type-desc {
     font-size: 0.8rem;
     color: color-mix(in srgb, var(--color-main) 65%, transparent);
     line-height: 1.45;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .prompts-type-cta {
+  .prompts-type-cta,
+  .qaskills-type-cta {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-theme);
@@ -1410,7 +1520,9 @@ const homePageSchema = {
   }
   @media (prefers-reduced-motion: reduce) {
     .prompts-type-card,
-    .prompts-workflow-card {
+    .prompts-workflow-card,
+    .qaskills-type-card,
+    .qaskills-workflow-card {
       transition: none;
       transform: none !important;
     }

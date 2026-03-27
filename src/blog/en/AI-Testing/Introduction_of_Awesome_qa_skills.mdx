@@ -1,0 +1,163 @@
+---
+title: "Awesome QA Skills: Using AI to Make Testing Work Better"
+description: "Awesome QA Skills is a practical QA skill library for AI tools. It captures testing knowledge into reusable skills so teams can deliver faster and more consistently."
+date: 2026-03-27T00:00:00.000Z
+author: "nao.deng"
+tags: ["AI in Testing"]
+categories: ["AI","QA Skills"]
+series: ["AI Testing"]
+
+---
+
+# QA Skills: Turning Testing Experience into Team Capacity
+
+Most QA teams hit the same wall: too much work, too little time, and output quality that depends too much on who is doing the task.
+
+`QA Skills` addresses that directly.  
+It packages common QA work into reusable skill modules, so AI assistants can produce more consistent and practical outputs in real delivery workflows.
+
+## Two entry points, two clear jobs
+
+- **QA Skills Library page**  
+  Best for discovery and daily usage: browse by category, read practical guidance, and open skill details directly.  
+  <https://inaodeng.com/en/qaskills/>
+- **GitHub repository (`awesome-qa-skills`)**  
+  Best for setup and governance: source content, documentation, and installation guides.  
+  <https://github.com/naodeng/awesome-qa-skills>
+
+In short, the site helps you pick and use skills, while GitHub helps you install and manage them.
+
+## One-click install across different tools
+
+The skill detail pages now support one-click installation with platform and tool switching.  
+You select your OS and tool, copy one command, and install directly without manual setup steps.
+
+Current supported tools include:
+
+- `codex`
+- `cursor`
+- `claudecode`
+- `kiro`
+- `opencode`
+- `trae`
+
+This matters a lot for team adoption: onboarding becomes faster because people can install and start using skills immediately.
+
+## GitHub project directory guide
+
+If you open the repository for the first time, this quick map helps you find the right place fast (based on the current public structure):
+
+- **skills/**: the core folder. All directly usable skills live here.  
+  `testing-types` holds testing-type skills, and `testing-workflows` holds workflow skills.
+- **prompts/**: prompt-related content. Useful when you want to understand or customize prompt structures.  
+- **scripts/**: utility scripts for organizing, checking, or generating related content.  
+- **Reference/**: background and reference material.  
+- **explore/**: exploratory content for experiments and extension ideas.  
+- **README.md / README_EN.md**: best project entry point for a full overview.  
+- **FAQ.md / FAQ_EN.md**: common questions and setup troubleshooting.  
+- **CONTRIBUTING.md / CONTRIBUTING_EN.md**: collaboration rules for contributors.
+
+If you only want the fastest path, follow this order:  
+read `README` -> pick a target skill in `skills/` -> install and run with the provided guide.
+
+## What the project includes
+
+On the site, skills are structured in three layers:
+
+1. **Testing Types**  
+   Functional, API, automation, performance, security, accessibility, and more.
+2. **Testing Workflows**  
+   Daily testing, sprint testing, and release testing.
+3. **Plus Skills**  
+   Expanded versions for complex, high-context tasks.
+
+You may notice a scope difference at first glance. The GitHub README highlights the core 18 skills (15 testing types + 3 workflows), while the site currently shows a broader collection including plus skills. This is a layering model, not a mismatch: the core remains stable, and the site extends practical coverage.
+
+## Quick intro to different skills
+
+Here is a simple map of the core skills so you can pick fast:
+
+- **requirements-analysis**: break requirements into testable scope and surface ambiguity early.  
+- **test-strategy**: define testing goals, scope, and priorities in one executable plan.  
+- **test-case-writing**: turn test points into clear and runnable test cases.  
+- **test-case-reviewer**: review case quality, find gaps, and remove duplication.  
+- **functional-testing**: design scenario coverage around real business flows.  
+- **manual-testing**: support exploratory testing for risks not fully captured in docs.  
+- **mobile-testing**: focus on device differences, compatibility, and key mobile interactions.  
+- **api-testing**: design API requests, checks, and exception paths with structure.  
+- **api-test-bruno / api-test-pytest / api-test-restassure / api-test-supertest**: tool-specific API testing guidance for practical execution.  
+- **automation-testing**: plan automation rollout with focus on value, not script count.  
+- **performance-testing**: define load goals, metrics, and bottleneck investigation paths.  
+- **performance-test-k6 / performance-test-gatling**: direct guidance tailored to concrete performance tools.  
+- **security-testing**: identify high-risk entry points and structure security checks.  
+- **accessibility-testing**: catch key accessibility issues and improve inclusive usability.  
+- **bug-reporting**: produce actionable defect reports that speed up fixing.  
+- **test-reporting**: convert test outcomes into report formats that support decisions.  
+- **ai-assisted-testing**: apply AI in daily QA work with better stability and control.
+
+Workflow skills cover end-to-end delivery stages:
+
+- **daily-testing-workflow**: for day-to-day QA rhythm and recurring verification.  
+- **sprint-testing-workflow**: for sprint-level collaboration and risk tracking.  
+- **release-testing-workflow**: for pre-release validation and go/no-go decisions.
+
+## Who should use it
+
+- QA engineers who need faster and steadier output
+- Project contributors who need practical deliverables under tight timelines
+- Team leads who want repeatable QA practices across projects
+- Bilingual teams working in both Chinese and English contexts
+
+## A practical rollout path
+
+1. Start with one skill that matches a real task today.  
+2. Read the scenario and usage guide before prompting.  
+3. Run it on a live task and evaluate output usefulness.  
+4. If it works, install from GitHub and scale across team workflows.
+
+This sequence keeps adoption low-risk and outcome-focused.
+
+## A minimum viable rollout example
+
+If you want to start today, use this lightweight path:
+
+1. Pick one real requirement from current sprint work.  
+2. Use **requirements-analysis** to surface risks and ambiguities.  
+3. Use **test-case-writing** to generate the first runnable case set.  
+4. Use **test-case-reviewer** for a fast quality pass.  
+5. Use **bug-reporting** and **test-reporting** to standardize outputs.
+
+This simple sequence solves two immediate problems:  
+slow test preparation and unstable output quality across team members.
+
+## Common adoption mistakes
+
+- **Optimizing only for generation speed**  
+  Fast output is useful, but execution quality is what creates value.
+- **Treating skills as final answers**  
+  Skills are strong starting points, not replacements for project judgment.
+- **No shared output format across the team**  
+  Without a common format, collaboration and reviews quickly become messy.
+- **Skipping retro feedback loops**  
+  Without periodic review, the same issues return in every cycle.
+
+## A short checklist for team leads
+
+- Start with 1-2 high-frequency scenarios before broad rollout  
+- Align report and case output format across contributors  
+- Define which decisions always require human review  
+- Collect frontline feedback and adjust usage patterns regularly  
+- Keep bilingual collaboration standards aligned
+
+If these five points are in place, adoption usually becomes self-reinforcing.
+
+## Why this matters long term
+
+Most teams do not lack testing knowledge. They lack a reliable way to reuse it.
+
+`QA Skills` turns individual know-how into shared, repeatable team capability. It keeps people focused on decisions, risk judgment, and quality ownership, while repetitive drafting work is handled more efficiently.
+
+## Closing note
+
+The best evaluation method is simple: run one real task this week.  
+If preparation gets faster, output becomes steadier, and team communication becomes easier, you already have enough evidence to scale.
