@@ -3,12 +3,14 @@ import { test, expect } from "@playwright/test";
 test.describe("Code Block Enhancements", () => {
   async function getArticleWithCode(page: any, baseURL: string | undefined, locale: string) {
     await page.goto((baseURL || "") + `/${locale}/blog/`, { waitUntil: "networkidle" });
-    const posts = page.locator(`main a[href*='/${locale}/blog/']`);
-    const count = await posts.count();
+    const hrefs = await page.locator(`main a[href*='/${locale}/blog/']`).evaluateAll((anchors) =>
+      anchors
+        .map((a) => a.getAttribute("href"))
+        .filter((href): href is string => Boolean(href))
+    );
 
-    for (let i = 0; i < Math.min(count, 5); i++) {
-      const href = await posts.nth(i).getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "networkidle" });
+    for (const href of hrefs.slice(0, 5)) {
+      await page.goto(new URL(href, baseURL).href, { waitUntil: "networkidle" });
       const codeBlock = page.locator("pre").first();
       if (await codeBlock.isVisible({ timeout: 3000 })) return true;
     }
