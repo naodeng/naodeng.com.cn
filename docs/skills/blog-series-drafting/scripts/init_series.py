@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize a 6-article testing blog series scaffold.
+"""Initialize a bilingual 6-article testing blog series scaffold.
 
 Usage example:
   python3 scripts/init_series.py \
@@ -15,16 +15,16 @@ import argparse
 from pathlib import Path
 
 FILES = [
-    ("00", "introduction", "介绍"),
-    ("01", "getting-started", "入门"),
-    ("02", "from-0-to-1", "从 0 到 1"),
-    ("03", "advanced", "进阶"),
-    ("04", "in-ci-cd", "CI/CD"),
-    ("05", "more-use-cases", "更多用法"),
+    ("00", "introduction", "介绍", "Introduction"),
+    ("01", "getting-started", "入门", "Getting Started"),
+    ("02", "from-0-to-1", "从 0 到 1", "From 0 to 1"),
+    ("03", "advanced", "进阶", "Advanced"),
+    ("04", "in-ci-cd", "CI/CD", "In CI/CD"),
+    ("05", "more-use-cases", "更多用法", "More Use Cases"),
 ]
 
 
-def article_template(series_title: str, status: str, topic: str, prev_file: str | None, next_file: str | None) -> str:
+def article_template_zh(series_title: str, status: str, topic: str, prev_file: str | None, next_file: str | None) -> str:
     nav_lines = []
     if prev_file:
         nav_lines.append(f"- 上一篇：`{prev_file}`")
@@ -77,6 +77,59 @@ def article_template(series_title: str, status: str, topic: str, prev_file: str 
 '''
 
 
+def article_template_en(series_title: str, status: str, topic: str, prev_file: str | None, next_file: str | None) -> str:
+    nav_lines = []
+    if prev_file:
+        nav_lines.append(f"- Previous: `{prev_file}`")
+    if next_file:
+        nav_lines.append(f"- Next: `{next_file}`")
+    if not nav_lines:
+        nav_lines.append("- Series start: `00-*.md`")
+
+    nav = "\n".join(nav_lines)
+    return f'''# {series_title}: {topic}
+
+## Article Positioning
+
+- Series: {series_title}
+- Status: {status}
+- Topic: {topic}
+
+## Overview
+
+This article focuses on the "{topic}" stage, explaining the goal, practical approach, and implementation boundaries.
+
+## One. What teams usually do before this tool
+
+(Add the current workflow and pain points)
+
+## Two. What changes after introducing this tool
+
+(Add capability changes, process changes, and collaboration changes)
+
+## Three. Good practices
+
+(Add repeatable methods and practical steps)
+
+## Four. Possible problems
+
+(Add risks, boundaries, and fit conditions)
+
+## Five. Summary
+
+(Add the conclusion and next-step suggestions)
+
+## Series Navigation
+
+{nav}
+
+## References
+
+- Official documentation link 1
+- Official documentation link 2
+'''
+
+
 def readme_template(series_title: str, slug: str) -> str:
     return f'''# {series_title} Series
 
@@ -85,7 +138,8 @@ def readme_template(series_title: str, slug: str) -> str:
 ## 目录说明
 
 - 系列 slug：`{slug}`
-- 建议结构：00~05 六篇
+- 语言目录：`zh-cn/` 与 `en/`
+- 每种语言建议结构：00~05 六篇
 
 ## 规划主题
 
@@ -99,27 +153,35 @@ def readme_template(series_title: str, slug: str) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Initialize 6-part testing blog series scaffold")
+    parser = argparse.ArgumentParser(description="Initialize bilingual 6-part testing blog series scaffold")
     parser.add_argument("--root", required=True, help="Project root path")
     parser.add_argument("--slug", required=True, help="Series folder slug under docs/temporary/blog")
     parser.add_argument("--series-title", required=True, help="Series title in Chinese")
+    parser.add_argument("--series-title-en", help="Series title in English; defaults to --series-title")
     parser.add_argument("--status", default="草稿", help="Article status, e.g. 草稿/发布版")
     parser.add_argument("--force", action="store_true", help="Overwrite existing files")
     args = parser.parse_args()
 
-    base = Path(args.root) / "explore" / "temporary" / "blog" / args.slug
-    base.mkdir(parents=True, exist_ok=True)
+    en_series_title = args.series_title_en or args.series_title
 
-    file_names = [f"{num}-{args.slug.replace('-testing', '').replace(' ', '-')}-{suffix}.md" for num, suffix, _ in FILES]
+    base = Path(args.root) / "docs" / "temporary" / "blog" / args.slug
+    zh_base = base / "zh-cn"
+    en_base = base / "en"
+    zh_base.mkdir(parents=True, exist_ok=True)
+    en_base.mkdir(parents=True, exist_ok=True)
 
-    for idx, (num, suffix, topic) in enumerate(FILES):
+    file_names = [f"{num}-{args.slug.replace('-testing', '').replace(' ', '-')}-{suffix}.md" for num, suffix, _, _ in FILES]
+
+    for idx, (num, suffix, zh_topic, en_topic) in enumerate(FILES):
         name = file_names[idx]
         prev_file = file_names[idx - 1] if idx > 0 else None
         next_file = file_names[idx + 1] if idx < len(FILES) - 1 else None
-        path = base / name
-        if path.exists() and not args.force:
-            continue
-        path.write_text(article_template(args.series_title, args.status, topic, prev_file, next_file), encoding="utf-8")
+        zh_path = zh_base / name
+        en_path = en_base / name
+        if not zh_path.exists() or args.force:
+            zh_path.write_text(article_template_zh(args.series_title, args.status, zh_topic, prev_file, next_file), encoding="utf-8")
+        if not en_path.exists() or args.force:
+            en_path.write_text(article_template_en(en_series_title, args.status, en_topic, prev_file, next_file), encoding="utf-8")
 
     readme = base / "README.md"
     if not readme.exists() or args.force:

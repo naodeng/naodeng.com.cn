@@ -8,6 +8,9 @@
 - Midscene.js 在软件测试中的应用系列
 - Page Agent 在软件测试中的应用系列
 - browser-use 在软件测试中的应用系列
+- Playwright 在软件测试中的应用系列
+- Cypress 在软件测试中的应用系列
+- Selenium 在软件测试中的应用系列
 
 系列建议写法：
 
