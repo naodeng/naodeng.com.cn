@@ -1,7 +1,7 @@
 // 站点常量：Nao's Blog / 软件测试同学
 // 可在项目中通过 import 使用
 
-import type { Multilingual } from "@/i18n";
+import type { Lang, Multilingual } from "@/i18n";
 
 export const SITE_TITLE: string | Multilingual = {
   en: "Nao's Blog",
@@ -364,6 +364,99 @@ export const HOME_EXPLORE_TITLE: Multilingual = {
 export const HOME_EXPLORE_SUBTITLE: Multilingual = {
   en: "Enter by topic instead of one overloaded page.",
   "zh-cn": "按主题进入，而不是一次塞满整页列表",
+};
+
+export const HOME_EXPLORE_MORE: Multilingual = {
+  en: "Learn more",
+  "zh-cn": "了解更多",
+};
+
+/** 首页探索卡片：中英各 6 张，路径相对 locale */
+export const HOME_EXPLORE_CARDS: Record<
+  Lang,
+  ReadonlyArray<{
+    key: string;
+    path: string;
+    title: string;
+    desc: string;
+  }>
+> = {
+  "zh-cn": [
+    {
+      key: "wiki",
+      path: "/wiki",
+      title: "测试百科",
+      desc: "系统化测试百科",
+    },
+    {
+      key: "aiwiki",
+      path: "/AIWiki",
+      title: "AI Wiki",
+      desc: "AI 测试与工程知识",
+    },
+    {
+      key: "guild",
+      path: "/guild/",
+      title: "Guild",
+      desc: "框架与实践指南",
+    },
+    {
+      key: "prompts",
+      path: "/prompts/",
+      title: "Prompts",
+      desc: "测试提示词合集",
+    },
+    {
+      key: "qaskills",
+      path: "/qaskills/",
+      title: "QA Skills",
+      desc: "可复用技能卡片",
+    },
+    {
+      key: "projects",
+      path: "/projects/",
+      title: "Projects",
+      desc: "开源与作品",
+    },
+  ],
+  en: [
+    {
+      key: "aiwiki",
+      path: "/AIWiki",
+      title: "AI Wiki",
+      desc: "AI testing & engineering",
+    },
+    {
+      key: "guild",
+      path: "/guild/",
+      title: "Guild",
+      desc: "Guides and playbooks",
+    },
+    {
+      key: "prompts",
+      path: "/prompts/",
+      title: "Prompts",
+      desc: "Testing prompts",
+    },
+    {
+      key: "qaskills",
+      path: "/qaskills/",
+      title: "QA Skills",
+      desc: "Reusable QA skills",
+    },
+    {
+      key: "projects",
+      path: "/projects/",
+      title: "Projects",
+      desc: "Open source & work",
+    },
+    {
+      key: "blog",
+      path: "/blog",
+      title: "Blog",
+      desc: "Essays and practice notes",
+    },
+  ],
 };
 
 export const HOME_LATEST_POSTS: Multilingual = {

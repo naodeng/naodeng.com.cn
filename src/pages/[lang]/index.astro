@@ -11,6 +11,8 @@ import {
   HOME_CTA_WIKI,
   HOME_EXPLORE_TITLE,
   HOME_EXPLORE_SUBTITLE,
+  HOME_EXPLORE_MORE,
+  HOME_EXPLORE_CARDS,
   HOME_LATEST_POSTS,
   HOME_VIEW_ALL,
   HOME_PAGE_DESCRIPTION,
@@ -30,84 +32,10 @@ const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
 
-const exploreCards =
-  locale === "zh-cn"
-    ? [
-        {
-          key: "wiki",
-          href: getRelativeLocaleUrl(locale, "/wiki"),
-          title: "测试百科",
-          desc: "系统化测试百科",
-        },
-        {
-          key: "aiwiki",
-          href: getRelativeLocaleUrl(locale, "/AIWiki"),
-          title: "AI Wiki",
-          desc: "AI 测试与工程知识",
-        },
-        {
-          key: "guild",
-          href: getRelativeLocaleUrl(locale, "/guild/"),
-          title: "Guild",
-          desc: "框架与实践指南",
-        },
-        {
-          key: "prompts",
-          href: getRelativeLocaleUrl(locale, "/prompts/"),
-          title: "Prompts",
-          desc: "测试提示词合集",
-        },
-        {
-          key: "qaskills",
-          href: getRelativeLocaleUrl(locale, "/qaskills/"),
-          title: "QA Skills",
-          desc: "可复用技能卡片",
-        },
-        {
-          key: "projects",
-          href: getRelativeLocaleUrl(locale, "/projects/"),
-          title: "Projects",
-          desc: "开源与作品",
-        },
-      ]
-    : [
-        {
-          key: "aiwiki",
-          href: getRelativeLocaleUrl(locale, "/AIWiki"),
-          title: "AI Wiki",
-          desc: "AI testing & engineering",
-        },
-        {
-          key: "guild",
-          href: getRelativeLocaleUrl(locale, "/guild/"),
-          title: "Guild",
-          desc: "Guides and playbooks",
-        },
-        {
-          key: "prompts",
-          href: getRelativeLocaleUrl(locale, "/prompts/"),
-          title: "Prompts",
-          desc: "Testing prompts",
-        },
-        {
-          key: "qaskills",
-          href: getRelativeLocaleUrl(locale, "/qaskills/"),
-          title: "QA Skills",
-          desc: "Reusable QA skills",
-        },
-        {
-          key: "projects",
-          href: getRelativeLocaleUrl(locale, "/projects/"),
-          title: "Projects",
-          desc: "Open source & work",
-        },
-        {
-          key: "blog",
-          href: getRelativeLocaleUrl(locale, "/blog"),
-          title: "Blog",
-          desc: "Essays and practice notes",
-        },
-      ];
+const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
+  ...card,
+  href: getRelativeLocaleUrl(locale, card.path),
+}));
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -181,28 +109,12 @@ const homePageSchema = {
           <a class="home-explore-card" href={card.href}>
             <h3>{card.title}</h3>
             <p>{card.desc}</p>
-            <span class="home-explore-card__more">
-              {locale === "zh-cn" ? "了解更多" : "Learn more"}
-            </span>
+            <span class="home-explore-card__more">{t(HOME_EXPLORE_MORE)}</span>
           </a>
         </li>
       ))}
     </ul>
   </section>
-
-  {!import.meta.env.DEV && (
-    <div class="home-ad-wrap" aria-hidden="true">
-      <ins
-        class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-ad-client="ca-pub-7249159446737834"
-        data-ad-slot="5247439587"
-      />
-      <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  )}
 
   <GoogleAd />
 
@@ -212,13 +124,15 @@ const homePageSchema = {
       {latestPosts.map((post) => {
         const idParts = post.id.split("/").slice(1);
         const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
+        const dateStr = post.data.date.toLocaleDateString(
+          locale === "zh-cn" ? "zh-CN" : "en-US",
+          { year: "numeric", month: "short", day: "numeric" },
+        );
         return (
           <li>
             <a href={postUrl}>
               <span>{post.data.title}</span>
-              <time datetime={post.data.date.toISOString()}>
-                {post.data.date.toISOString().slice(0, 10)}
-              </time>
+              <time datetime={post.data.date.toISOString()}>{dateStr}</time>
             </a>
           </li>
         );
@@ -353,12 +267,6 @@ const homePageSchema = {
   .home-explore-card__more {
     color: var(--color-theme);
     font-size: 14px;
-  }
-
-  .home-ad-wrap {
-    margin: 24px auto;
-    max-width: 720px;
-    min-height: 1px;
   }
 
   .home-latest-posts {
