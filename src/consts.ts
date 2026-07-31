@@ -336,6 +336,36 @@ export const PROJECTS_TECH_STACK_LABEL: Multilingual = {
 };
 
 // 首页区块文案
+export const HOME_HERO_TITLE: Multilingual = {
+  en: "Make complex knowledge clear",
+  "zh-cn": "把复杂知识讲清楚",
+};
+
+export const HOME_HERO_SUBTITLE: Multilingual = {
+  en: "Testing wiki, essays, prompts, and workflows — a readable knowledge base.",
+  "zh-cn": "测试百科、实践文章、提示词与工作流——一个可读、可引用的知识库。",
+};
+
+export const HOME_CTA_START: Multilingual = {
+  en: "Start reading",
+  "zh-cn": "开始阅读",
+};
+
+export const HOME_CTA_WIKI: Multilingual = {
+  en: "Browse wiki",
+  "zh-cn": "浏览百科",
+};
+
+export const HOME_EXPLORE_TITLE: Multilingual = {
+  en: "Explore",
+  "zh-cn": "探索内容",
+};
+
+export const HOME_EXPLORE_SUBTITLE: Multilingual = {
+  en: "Enter by topic instead of one overloaded page.",
+  "zh-cn": "按主题进入，而不是一次塞满整页列表",
+};
+
 export const HOME_LATEST_POSTS: Multilingual = {
   en: "Latest posts",
   "zh-cn": "最新文章",
