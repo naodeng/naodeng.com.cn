@@ -33,7 +33,8 @@
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.3125rem;
-  --text-xl: 2.5rem;
+  --text-xl: 1.25rem;
+  --text-display: 2.5rem;
 
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Noto Sans", sans-serif;
 

@@ -19,7 +19,18 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    {
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        // Local fallback when Playwright's bundled chromium is missing
+        ...(process.env.PLAYWRIGHT_CHANNEL
+          ? { channel: process.env.PLAYWRIGHT_CHANNEL as "chrome" | "chrome-beta" | "msedge" | "msedge-beta" | "msedge-dev" }
+          : {}),
+      },
+    },
+  ],
   webServer: process.env.CI
     ? {
         command: "env -u NO_COLOR npm run preview",

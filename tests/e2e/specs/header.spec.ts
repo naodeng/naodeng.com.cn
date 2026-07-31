@@ -1,10 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-// 覆盖 Header 最近改动：
-// - 渐变背景（linear-gradient with --color-theme）
-// - nav 链接 hover 使用 var(--color-theme)
-// - active 链接有下划线指示器 + font-weight: 700
-// - 搜索按钮 ⌘K 快捷键提示
+// 覆盖 Header（Apple 探索改版）：
+// - 黑色顶栏（无渐变背景）
+// - slogan 隐藏（display: none）
+// - active 链接样式 + 搜索按钮
 
 test.describe("Header 导航", () => {
   test("en 首页：header 可见且包含 logo 和导航", async ({ page, baseURL }) => {
@@ -21,17 +20,14 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header .site-logo")).toBeVisible();
   });
 
-  test("en 首页：site slogan 可见", async ({ page, baseURL }) => {
+  test("en 首页：site slogan 已隐藏", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
-    const slogan = page.locator(".site-slogan");
-    await expect(slogan).toBeVisible();
+    await expect(page.locator(".site-slogan")).toBeHidden();
   });
 
-  test("zh-cn 首页：site slogan 可见", async ({ page, baseURL }) => {
+  test("zh-cn 首页：site slogan 已隐藏", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
-    const slogan = page.locator(".site-slogan");
-    await expect(slogan).toBeVisible();
-    await expect(slogan).toContainText("质量分析师");
+    await expect(page.locator(".site-slogan")).toBeHidden();
   });
 
   test("en 首页：所有主导航链接可见", async ({ page, baseURL }) => {
@@ -133,12 +129,19 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header button[data-search-open]")).toBeVisible();
   });
 
-  test("en 首页：header 有渐变背景（background 样式存在）", async ({ page, baseURL }) => {
+  test("en 首页：header 为黑色顶栏（无渐变）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const header = page.locator("header.l-header");
-    const bg = await header.evaluate((el) => getComputedStyle(el).background || getComputedStyle(el).backgroundImage);
-    // 渐变背景应包含 gradient 关键字
-    expect(bg).toMatch(/gradient/i);
+    const styles = await header.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return {
+        backgroundColor: cs.backgroundColor,
+        backgroundImage: cs.backgroundImage,
+      };
+    });
+    expect(styles.backgroundImage === "none" || !/gradient/i.test(styles.backgroundImage)).toBeTruthy();
+    // rgb(0, 0, 0) or #000
+    expect(styles.backgroundColor).toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
   });
 
   test("响应式：移动端 header 正常显示", async ({ page, baseURL }) => {
