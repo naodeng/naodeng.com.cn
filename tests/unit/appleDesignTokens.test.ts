@@ -11,6 +11,7 @@ const baseCss = readFileSync(
 describe("apple design tokens in base.css", () => {
   it("uses Action Blue as theme / interactive color", () => {
     expect(baseCss).toMatch(/--color-theme:\s*#0066cc/i);
+    expect(baseCss).not.toMatch(/--color-theme:\s*#ef4d1a/i);
   });
 
   it("keeps brand orange only as a dedicated mark token", () => {
@@ -24,6 +25,9 @@ describe("apple design tokens in base.css", () => {
   it("does not use prefers-color-scheme dark for canvas tokens", () => {
     expect(baseCss).not.toMatch(
       /prefers-color-scheme:\s*dark[\s\S]{0,200}--color-base:/,
+    );
+    expect(baseCss).not.toMatch(
+      /@media\s*\(\s*prefers-color-scheme:\s*dark\s*\)/,
     );
   });
 

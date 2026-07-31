@@ -1,55 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-
 :root {
-  @media (prefers-color-scheme: dark) {
-    --color-theme: #ef4d1a;
-    --color-accent: #943e0d;
-    --color-base: #13151a;
-    --color-main: #e8e8e8;
-    --color-surface: rgba(255, 255, 255, 0.06);
-    --color-border: rgba(255, 255, 255, 0.1);
-    --color-caution: #ffaa2b;
-  }
-  @media (prefers-color-scheme: light) {
-    --color-theme: #ef4d1a;
-    --color-accent: #ffcc21;
-    --color-base: #faf9f6;
-    --color-main: #342c28;
-    --color-surface: rgba(0, 0, 0, 0.03);
-    --color-border: rgba(0, 0, 0, 0.1);
-    --color-caution: #a80a00;
-  }
+  --color-theme: #0066cc;
+  --color-theme-focus: #0071e3;
+  --color-theme-on-dark: #2997ff;
+  --color-brand-mark: #ef4d1a;
+  --color-accent: #0066cc;
+  --color-base: #f5f5f7;
+  --color-canvas: #ffffff;
+  --color-main: #1d1d1f;
+  --color-surface: #ffffff;
+  --color-border: #e0e0e0;
+  --color-caution: #a80a00;
 
   --color-warn: #f59e0b;
   --color-text-primary: var(--color-main);
-  --color-text-secondary: color-mix(in srgb, var(--color-main) 72%, transparent);
-  --color-text-tertiary: color-mix(in srgb, var(--color-main) 50%, transparent);
-  --color-surface-muted: color-mix(in srgb, var(--color-base) 92%, var(--color-main));
-  --color-surface-elevated: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
-  --color-border-strong: color-mix(in srgb, var(--color-theme) 24%, var(--color-border));
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #7a7a7a;
+  --color-surface-muted: #f5f5f7;
+  --color-surface-elevated: #ffffff;
+  --color-border-strong: rgba(0, 0, 0, 0.08);
   --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, transparent);
   --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, transparent);
 
-  /* Glow & gradient tokens */
-  --glow-theme: color-mix(in srgb, var(--color-theme) 20%, transparent);
-  --gradient-hero: radial-gradient(ellipse at top, color-mix(in srgb, var(--color-theme) 12%, transparent), transparent 70%);
+  --glow-theme: transparent;
+  --gradient-hero: none;
 
-  /* Shadow tokens */
-  --shadow-sm: 0 1px 3px color-mix(in srgb, var(--color-main) 10%, transparent);
-  --shadow-md: 0 4px 12px color-mix(in srgb, var(--color-main) 12%, transparent);
-  --shadow-lg: 0 8px 24px color-mix(in srgb, var(--color-main) 15%, transparent);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-product: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
 
-  /* Font size tokens */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 2.5rem;
 
-  /* Font family tokens */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Noto Sans", sans-serif;
 
-  /* Spacing tokens */
   --sp-l: 64px;
   --sp-m: 32px;
   --sp-s: 16px;
@@ -67,17 +54,16 @@
     --sp-s: 8px;
   }
 
-  /* Border radius tokens */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 18px;
+  --radius-xl: 9999px;
 
-  /* Transition token */
+  --spacing-section: 80px;
+
   --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 160ms ease;
 
-  /* Density tokens */
   --control-height: 2.875rem;
   --control-padding-inline: 1rem;
   --card-padding: 1rem;
@@ -93,21 +79,12 @@
   color: var(--color-main);
   background-color: var(--color-base);
   accent-color: var(--color-theme);
+  background-image: none;
 
-  background-image: radial-gradient(
-    color-mix(in srgb, var(--color-main) 10%, transparent) 1px,
-    var(--color-base) 1px
-  );
-  background-size: 16px 16px;
-
-  line-height: 1.6;
-  font-weight: 500;
-  font-size: 18px;
-  font-family: "Noto Sans", system-ui, "SF Pro Text", -apple-system,
-    BlinkMacSystemFont, sans-serif;
-  @media (width < 480px) {
-    font-size: 16px;
-  }
+  line-height: 1.47;
+  font-weight: 400;
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
 }
 
 :root[data-density="compact"] {
@@ -201,14 +178,13 @@ textarea {
   gap: 0.5rem;
   min-height: var(--control-height);
   padding-inline: var(--control-padding-inline);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--color-border-strong);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
-:where(.cta-button:hover, .cta-button:focus-visible) {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+:where(.cta-button:active) {
+  transform: scale(0.95);
 }
 
 :where(.tag-pill, .tag-link, .tag, .blog-related-terms-pill, .aiwiki-related-pill, .guild-related-terms-pill) {
@@ -265,7 +241,7 @@ textarea {
   border-radius: var(--radius-lg);
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 svg,
