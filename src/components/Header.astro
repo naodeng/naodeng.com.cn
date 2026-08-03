@@ -121,7 +121,7 @@ const navGroups = [
 ];
 ---
 
-<header class="l-header">
+<header class="l-header" data-header>
   <div class:list={["header-shell l-content", { "header-shell--en": locale === "en" }]}>
     <div class:list={["site-brand", { "site-brand--en": locale === "en" }]}>
       <div class="site-brand-row">
@@ -144,7 +144,7 @@ const navGroups = [
       </div>
     </div>
 
-    <nav class="site-nav">
+    <nav class="site-nav" id="site-primary-nav" data-site-nav>
       <ul>
         <li>
           <a
@@ -165,32 +165,46 @@ const navGroups = [
           </a>
         </li>
         {
-          navGroups.map((group) => (
-            <li class="nav-group" data-nav-group={group.key}>
-              <details open={group.active || undefined} data-nav-details>
-                <summary class:list={["nav-group-trigger", { active: group.active }]}>
-                  <span>{group.label}</span>
-                  <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
-                </summary>
-                <ul class="nav-submenu">
-                  {group.items.map((item) => (
-                    <li>
-                      <a
-                        href={item.href}
-                        class={item.active ? "active" : null}
-                        data-nav-item={item.key}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
-                      >
-                        <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
-                        <span class="nav-submenu-text">{item.label}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </li>
-          ))
+          navGroups.map((group) =>
+            group.items.length === 1 ? (
+              <li class="nav-group nav-group--link" data-nav-group={group.key}>
+                <a
+                  href={group.items[0].href}
+                  class={group.active ? "active" : null}
+                  data-nav-item={group.items[0].key}
+                  target={group.items[0].external ? "_blank" : undefined}
+                  rel={group.items[0].external ? "noopener noreferrer" : undefined}
+                >
+                  {group.label}
+                </a>
+              </li>
+            ) : (
+              <li class="nav-group" data-nav-group={group.key}>
+                <details data-nav-details>
+                  <summary class:list={["nav-group-trigger", { active: group.active }]}>
+                    <span>{group.label}</span>
+                    <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
+                  </summary>
+                  <ul class="nav-submenu">
+                    {group.items.map((item) => (
+                      <li>
+                        <a
+                          href={item.href}
+                          class={item.active ? "active" : null}
+                          data-nav-item={item.key}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
+                        >
+                          <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
+                          <span class="nav-submenu-text">{item.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ),
+          )
         }
         <li>
           <a
@@ -201,43 +215,206 @@ const navGroups = [
             {t(NAV_ABOUT)}
           </a>
         </li>
-        <li class="nav-tool">
-          <LocaleSelect compact />
-        </li>
-        <li class="nav-tool">
-          <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
-            <span class="material-icons-sharp" aria-hidden="true">search</span>
-          </button>
-        </li>
       </ul>
     </nav>
+
+    <div class="header-utils">
+      <div class="nav-tool nav-tool--bar">
+        <LocaleSelect compact />
+      </div>
+      <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
+        <span class="material-icons-sharp" aria-hidden="true">search</span>
+      </button>
+      <button
+        type="button"
+        class="btn-icon nav-toggle"
+        data-nav-toggle
+        aria-controls="site-primary-nav"
+        aria-expanded="false"
+        aria-label={locale === "zh-cn" ? "打开导航菜单" : "Open navigation menu"}
+      >
+        <span class="material-icons-sharp nav-toggle__open" aria-hidden="true">menu</span>
+        <span class="material-icons-sharp nav-toggle__close" aria-hidden="true">close</span>
+      </button>
+    </div>
   </div>
+  <button
+    type="button"
+    class="nav-backdrop"
+    data-nav-backdrop
+    tabindex="-1"
+    aria-hidden="true"
+    aria-label={locale === "zh-cn" ? "关闭导航菜单" : "Close navigation menu"}
+  ></button>
 </header>
 
 <script>
+  const HOVER_CLOSE_MS = 120;
+  const DESKTOP_MQ = "(min-width: 834px)";
+  const HOVER_MQ = "(hover: hover) and (pointer: fine)";
+
+  const isDesktopNav = () => window.matchMedia(DESKTOP_MQ).matches;
+  const canHoverNav = () => window.matchMedia(HOVER_MQ).matches;
+
+  const closeAllDetails = (except?: HTMLDetailsElement | null) => {
+    document.querySelectorAll("[data-nav-details]").forEach((node) => {
+      if (!(node instanceof HTMLDetailsElement)) return;
+      if (except && node === except) return;
+      node.open = false;
+    });
+  };
+
+  const syncToggleA11y = (toggle: HTMLButtonElement, open: boolean) => {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    const openLabel = toggle.getAttribute("data-label-open") || "Open navigation menu";
+    const closeLabel = toggle.getAttribute("data-label-close") || "Close navigation menu";
+    toggle.setAttribute("aria-label", open ? closeLabel : openLabel);
+  };
+
+  const setNavOpen = (open: boolean) => {
+    const header = document.querySelector("[data-header]");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    if (!(header instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return;
+
+    header.toggleAttribute("data-nav-open", open);
+    syncToggleA11y(toggle, open);
+    document.documentElement.classList.toggle("nav-drawer-open", open);
+
+    if (!open) {
+      closeAllDetails();
+      return;
+    }
+
+    if (!isDesktopNav()) {
+      const firstLink = header.querySelector<HTMLElement>("[data-site-nav] a");
+      firstLink?.focus({ preventScroll: true });
+    }
+  };
+
+  const bindHoverMenus = (detail: HTMLDetailsElement) => {
+    if (detail.dataset.hoverBound) return;
+    detail.dataset.hoverBound = "1";
+
+    let openTimer = 0;
+    let closeTimer = 0;
+    const clearTimers = () => {
+      if (openTimer) {
+        window.clearTimeout(openTimer);
+        openTimer = 0;
+      }
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+        closeTimer = 0;
+      }
+    };
+
+    detail.addEventListener("pointerenter", () => {
+      if (!isDesktopNav() || !canHoverNav()) return;
+      clearTimers();
+      // 短延迟，避免与点击打开打架（pointerenter 后立刻 click 会先 toggle）
+      openTimer = window.setTimeout(() => {
+        closeAllDetails(detail);
+        detail.open = true;
+      }, 80);
+    });
+
+    detail.addEventListener("pointerleave", () => {
+      if (!isDesktopNav() || !canHoverNav()) return;
+      clearTimers();
+      closeTimer = window.setTimeout(() => {
+        detail.open = false;
+      }, HOVER_CLOSE_MS);
+    });
+  };
+
   const initHeaderNav = () => {
+    const header = document.querySelector("[data-header]");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    const backdrop = document.querySelector("[data-nav-backdrop]");
+    const nav = document.querySelector("[data-site-nav]");
     const detailNodes = Array.from(document.querySelectorAll("[data-nav-details]"));
+
+    if (toggle instanceof HTMLButtonElement && !toggle.dataset.bound) {
+      toggle.dataset.bound = "1";
+      const isZh = document.documentElement.lang?.toLowerCase().startsWith("zh");
+      toggle.setAttribute("data-label-open", isZh ? "打开导航菜单" : "Open navigation menu");
+      toggle.setAttribute("data-label-close", isZh ? "关闭导航菜单" : "Close navigation menu");
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const open = !(header instanceof HTMLElement && header.hasAttribute("data-nav-open"));
+        setNavOpen(open);
+      });
+    }
+
+    if (backdrop instanceof HTMLElement && !backdrop.dataset.bound) {
+      backdrop.dataset.bound = "1";
+      backdrop.addEventListener("click", () => setNavOpen(false));
+    }
+
     detailNodes.forEach((detail) => {
+      if (!(detail instanceof HTMLDetailsElement)) return;
+      bindHoverMenus(detail);
+
+      if (detail.dataset.toggleBound) return;
+      detail.dataset.toggleBound = "1";
       detail.addEventListener("toggle", () => {
-        if (!(detail instanceof HTMLDetailsElement) || !detail.open) return;
-        detailNodes.forEach((other) => {
-          if (other !== detail && other instanceof HTMLDetailsElement) {
-            other.open = false;
-          }
-        });
+        if (!detail.open) return;
+        closeAllDetails(detail);
       });
     });
 
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof Node)) return;
-      if (detailNodes.some((detail) => detail.contains(target))) return;
-      detailNodes.forEach((detail) => {
-        if (detail instanceof HTMLDetailsElement) {
-          detail.open = false;
-        }
+    nav?.querySelectorAll("a").forEach((link) => {
+      if (link.dataset.navCloseBound) return;
+      link.dataset.navCloseBound = "1";
+      link.addEventListener("click", () => {
+        if (!isDesktopNav()) setNavOpen(false);
       });
     });
+
+    if (!document.documentElement.dataset.appleHeaderDocBound) {
+      document.documentElement.dataset.appleHeaderDocBound = "1";
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) return;
+
+        const currentHeader = document.querySelector("[data-header]");
+        const inHeader = currentHeader instanceof HTMLElement && currentHeader.contains(target);
+
+        // 桌面：点空白关闭下拉
+        if (isDesktopNav()) {
+          const details = Array.from(document.querySelectorAll("[data-nav-details]"));
+          if (!details.some((detail) => detail.contains(target))) {
+            closeAllDetails();
+          }
+          return;
+        }
+
+        // 移动：点顶栏外关闭抽屉
+        if (
+          currentHeader instanceof HTMLElement &&
+          currentHeader.hasAttribute("data-nav-open") &&
+          !inHeader
+        ) {
+          setNavOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        closeAllDetails();
+        setNavOpen(false);
+        const currentToggle = document.querySelector("[data-nav-toggle]");
+        if (currentToggle instanceof HTMLButtonElement && !isDesktopNav()) {
+          currentToggle.focus();
+        }
+      });
+
+      window.matchMedia(DESKTOP_MQ).addEventListener("change", (event) => {
+        if (event.matches) setNavOpen(false);
+        else closeAllDetails();
+      });
+    }
   };
 
   initHeaderNav();
@@ -420,7 +597,13 @@ const navGroups = [
   }
   .site-nav > ul > li > a.active::after,
   .nav-group-trigger.active::after {
-    display: none;
+    content: "";
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: 7px;
+    height: 1px;
+    background: color-mix(in srgb, white 72%, transparent);
   }
   .nav-group {
     position: relative;
@@ -452,13 +635,13 @@ const navGroups = [
   }
   .nav-submenu {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 2px);
     left: 0;
     z-index: 120;
     display: grid;
     gap: 0.1rem;
     width: max-content;
-    min-width: 0;
+    min-width: 11.5rem;
     max-width: calc(100vw - 2rem);
     margin: 0;
     padding: 0.4rem;
@@ -467,7 +650,23 @@ const navGroups = [
     border-radius: 0.75rem;
     background: #1d1d1f;
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
-    transform: none;
+    transform-origin: top center;
+    animation: nav-submenu-in 0.16s ease-out;
+  }
+  @keyframes nav-submenu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-submenu {
+      animation: none;
+    }
   }
   .nav-group[data-nav-group="more"] .nav-submenu {
     left: auto;
@@ -500,6 +699,7 @@ const navGroups = [
     box-sizing: border-box;
     text-decoration: none;
     opacity: 0.88;
+    transition: background 0.15s ease, opacity 0.15s ease;
   }
   .nav-submenu a:hover,
   .nav-submenu a:focus-visible,
@@ -528,6 +728,9 @@ const navGroups = [
     flex: 1 1 auto;
     color: #fff;
   }
+  .nav-backdrop {
+    display: none;
+  }
   .nav-tool {
     display: flex;
     align-items: center;
@@ -535,6 +738,30 @@ const navGroups = [
     padding-inline-start: 0.35rem;
     border-inline-start: 1px solid color-mix(in srgb, white 16%, transparent);
     color: #fff;
+  }
+  .header-utils {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    flex-shrink: 0;
+    margin-inline-start: 0.25rem;
+  }
+  .header-utils .nav-tool--bar {
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+    border-inline-start: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-toggle__close {
+    display: none;
+  }
+  .l-header[data-nav-open] .nav-toggle__open {
+    display: none;
+  }
+  .l-header[data-nav-open] .nav-toggle__close {
+    display: inline-flex;
   }
   .nav-tool :global(.locale-trigger) {
     height: 32px;
@@ -617,59 +844,149 @@ const navGroups = [
     .header-shell {
       height: auto;
       min-height: 44px;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.35rem;
       padding-block: 0;
+      position: relative;
+      z-index: 2;
     }
     .site-brand,
-    .site-brand-row,
-    .site-nav {
-      justify-content: center;
+    .site-brand-row {
+      justify-content: flex-start;
+      min-width: 0;
     }
     .site-brand {
       min-height: 44px;
       align-items: center;
     }
+    .header-utils {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .nav-toggle {
+      display: inline-flex;
+    }
     .site-nav {
-      padding-block-end: 0.35rem;
+      display: block;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      width: 100%;
+      max-height: 0;
+      padding-block: 0;
+      border-top: 0 solid transparent;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        max-height 0.22s ease,
+        opacity 0.18s ease,
+        padding-block 0.18s ease,
+        border-color 0.18s ease,
+        visibility 0s linear 0.22s;
+    }
+    .l-header[data-nav-open] .site-nav {
+      max-height: min(70vh, 32rem);
+      padding-block: 0.35rem 0.85rem;
+      border-top: 1px solid color-mix(in srgb, white 12%, transparent);
+      overflow: auto;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition:
+        max-height 0.28s ease,
+        opacity 0.18s ease,
+        padding-block 0.18s ease,
+        border-color 0.18s ease,
+        visibility 0s;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 44px 0 0;
+      z-index: 1;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: color-mix(in srgb, black 42%, transparent);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+    .l-header[data-nav-open] .nav-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 0.2s ease, visibility 0s;
+    }
+    :global(html.nav-drawer-open) {
+      overflow: hidden;
     }
     .site-nav > ul {
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
       gap: 0;
       width: 100%;
       max-width: 100%;
     }
+    .site-nav > ul > li {
+      width: 100%;
+    }
     .site-nav > ul > li > a,
     .nav-group-trigger {
-      min-height: 40px;
-      padding-inline: 0.55rem;
+      min-height: 44px;
+      width: 100%;
+      justify-content: flex-start;
+      padding-inline: 0.75rem;
+    }
+    .site-nav > ul > li > a.active::after,
+    .nav-group-trigger.active::after {
+      left: 0.75rem;
+      right: auto;
+      width: 1.25rem;
+      bottom: 10px;
     }
     .nav-group details {
-      width: auto;
+      width: 100%;
     }
     .nav-submenu {
-      position: absolute;
-      top: calc(100% + 0.2rem);
-      left: 0;
-      z-index: 130;
-      margin-top: 0;
-      transform: none;
-      min-width: min(240px, calc(100vw - 2rem));
-      width: max-content;
-      max-width: calc(100vw - 2rem);
-    }
-    .nav-group[data-nav-group="more"] .nav-submenu {
+      position: static;
+      top: auto;
       left: auto;
-      right: 0;
+      right: auto;
+      z-index: auto;
+      margin-top: 0.15rem;
+      min-width: 0;
+      width: 100%;
+      max-width: none;
+      box-shadow: none;
+      border: none;
+      background: color-mix(in srgb, white 6%, transparent);
+      animation: none;
     }
+    .nav-group[data-nav-group="more"] .nav-submenu,
     .nav-group[data-nav-group="ai-testing"] .nav-submenu {
       left: auto;
-      right: 0;
+      right: auto;
     }
     .nav-submenu::before {
-      display: block;
+      display: none;
+    }
+  }
+
+  @media (width < 834px) and (prefers-reduced-motion: reduce) {
+    .site-nav,
+    .l-header[data-nav-open] .site-nav,
+    .nav-backdrop,
+    .l-header[data-nav-open] .nav-backdrop {
+      transition: none;
     }
   }
 </style>

@@ -3,6 +3,7 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getCollection } from "astro:content";
+import { PROJECTS_LIST } from "@/data/projects";
 import {
   SITE_TITLE,
   HOME_HERO_TITLE,
@@ -15,11 +16,21 @@ import {
   HOME_EXPLORE_CARDS,
   HOME_LATEST_POSTS,
   HOME_VIEW_ALL,
+  HOME_PROJECTS_TITLE,
+  HOME_TAGS_TITLE,
+  HOME_VIEW_ALL_PROJECTS,
+  HOME_WIKI_SECTION_TITLE,
+  HOME_WIKI_INTRO,
+  PROMPTS_PAGE_TITLE,
+  PROMPTS_WORKFLOWS_SECTION_TITLE,
   HOME_PAGE_DESCRIPTION,
   HOME_PAGE_KEYWORDS,
 } from "@/consts";
+import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
+import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
+import { getQASkillsGrouped } from "@/utils/qaskills";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -32,10 +43,119 @@ const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
 
+const tagCounts = allPosts
+  .flatMap((post) => post.data.tags || [])
+  .reduce(
+    (acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+const popularTags = Object.entries(tagCounts)
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 30)
+  .map(([tag]) => tag);
+
+const featuredProjects = PROJECTS_LIST.slice(0, 6);
+
+const TESTING_TYPE_ORDER = [
+  "requirements-analysis",
+  "test-case-writing",
+  "functional-testing",
+  "performance-testing",
+  "automation-testing",
+  "mobile-testing",
+  "bug-reporting",
+  "test-reporting",
+  "test-strategy",
+  "ai-assisted-testing",
+  "manual-testing",
+  "security-testing",
+  "api-testing",
+  "accessibility-testing",
+  "test-case-reviewer",
+];
+
+const allPrompts = await getCollection("prompts");
+const localePrompts = allPrompts.filter((p) => p.data.lang === locale);
+const promptTypeMap = new Map<string, (typeof localePrompts)[0]>();
+for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
+  if (!promptTypeMap.has(p.data.testingType)) {
+    promptTypeMap.set(p.data.testingType, p);
+  }
+}
+const promptTypeCards = Array.from(promptTypeMap.values())
+  .sort(
+    (a, b) =>
+      TESTING_TYPE_ORDER.indexOf(a.data.testingType) -
+      TESTING_TYPE_ORDER.indexOf(b.data.testingType),
+  )
+  .slice(0, 6);
+
+const localeWorkflows = (await getCollection("workflows"))
+  .filter((w) => w.data.lang === locale)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const qaSkillsGrouped = await getQASkillsGrouped(locale);
+const homeQASkills = [
+  ...qaSkillsGrouped.testingTypes.slice(0, 3),
+  ...qaSkillsGrouped.testingWorkflows.slice(0, 3),
+];
+
+function toHomeSkillSnippet(input: string, lang: Lang): string {
+  const text = (input || "").replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  const maxLen = lang === "zh-cn" ? 46 : 92;
+  if (text.length <= maxLen) return text;
+  return `${text.slice(0, maxLen).trimEnd()}…`;
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const wikiEntries =
+  locale === "zh-cn"
+    ? (await getCollection("wiki")).map((e) => {
+        const slug = wikiIdToSlug(e.id);
+        const labelZh =
+          getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slug;
+        return { slug, labelZh };
+      })
+    : [];
+const wikiShowcaseItems =
+  wikiEntries.length > 0 ? shuffle(wikiEntries).slice(0, 24) : [];
+const showWiki = locale === "zh-cn" && wikiShowcaseItems.length > 0;
+
+const aiWikiShowcaseItems = shuffle(
+  (await getCollection("aiwiki"))
+    .filter((e) => (e.data.lang ?? "en") === locale)
+    .map((e) => {
+      const slug =
+        e.data.slug ?? e.id.split("/").pop()?.replace(/\.md$/, "") ?? e.id;
+      const label = e.data.title || e.data.titleZh || e.data.titleEn || slug;
+      return { slug, label };
+    }),
+).slice(0, 18);
+
 const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   ...card,
   href: getRelativeLocaleUrl(locale, card.path),
 }));
+
+/* …projects 羊皮纸 → guild 白 → wiki 羊皮纸 → aiwiki 白 → tags 羊皮纸
+   若无 wiki：guild 白 → aiwiki 羊皮纸 → tags 白 */
+const bandWiki = "parchment" as const;
+const bandAiWiki = showWiki ? ("white" as const) : ("parchment" as const);
+const bandTags = showWiki ? ("parchment" as const) : ("white" as const);
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -77,97 +197,389 @@ const homePageSchema = {
   keywords={t(HOME_PAGE_KEYWORDS)}
   extraStructuredData={[homePageSchema]}
 >
-  <section class="home-apple-hero">
-    <h1 class="home-apple-hero__title">{t(HOME_HERO_TITLE)}</h1>
-    <p class="home-apple-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
-    <div class="home-apple-hero__ctas">
-      <a
-        class="pill-cta pill-cta--primary"
-        href={getRelativeLocaleUrl(locale, "/blog")}
-      >
-        {t(HOME_CTA_START)}
-      </a>
-      <a
-        class="pill-cta pill-cta--ghost"
-        href={locale === "zh-cn"
-          ? getRelativeLocaleUrl(locale, "/wiki")
-          : getRelativeLocaleUrl(locale, "/AIWiki")}
-      >
-        {t(HOME_CTA_WIKI)}
-      </a>
-    </div>
-  </section>
-
-  <section class="home-explore" aria-labelledby="home-explore-title">
-    <h2 id="home-explore-title" class="home-explore__title">
-      {t(HOME_EXPLORE_TITLE)}
-    </h2>
-    <p class="home-explore__subtitle">{t(HOME_EXPLORE_SUBTITLE)}</p>
-    <ul class="home-explore-grid" role="list">
-      {exploreCards.map((card) => (
-        <li>
-          <a class="home-explore-card" href={card.href}>
-            <h3>{card.title}</h3>
-            <p>{card.desc}</p>
-            <span class="home-explore-card__more">{t(HOME_EXPLORE_MORE)}</span>
+  <div class="home-page">
+    <section class="home-band home-band--white home-apple-hero">
+      <div class="home-inner">
+        <h1 class="home-hero__title">{t(HOME_HERO_TITLE)}</h1>
+        <p class="home-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
+        <div class="home-hero__ctas">
+          <a
+            class="pill-cta pill-cta--primary"
+            href={getRelativeLocaleUrl(locale, "/blog")}
+          >
+            {t(HOME_CTA_START)}
           </a>
-        </li>
-      ))}
-    </ul>
-  </section>
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={locale === "zh-cn"
+              ? getRelativeLocaleUrl(locale, "/wiki")
+              : getRelativeLocaleUrl(locale, "/AIWiki")}
+          >
+            {t(HOME_CTA_WIKI)}
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <GoogleAd />
+    <section class="home-band home-band--parchment" aria-labelledby="home-explore-title">
+      <div class="home-inner">
+        <h2 id="home-explore-title" class="home-band__title">{t(HOME_EXPLORE_TITLE)}</h2>
+        <p class="home-band__subtitle">{t(HOME_EXPLORE_SUBTITLE)}</p>
+        <ul class="home-grid home-explore-grid" role="list">
+          {exploreCards.map((card) => (
+            <li>
+              <a class="home-card" href={card.href}>
+                <h3 class="home-card__title">{card.title}</h3>
+                <p class="home-card__desc">{card.desc}</p>
+                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
 
-  <section class="home-latest-posts" aria-labelledby="home-latest-title">
-    <h2 id="home-latest-title">{t(HOME_LATEST_POSTS)}</h2>
-    <ul class="home-latest-list" role="list">
-      {latestPosts.map((post) => {
-        const idParts = post.id.split("/").slice(1);
-        const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
-        const dateStr = post.data.date.toLocaleDateString(
-          locale === "zh-cn" ? "zh-CN" : "en-US",
-          { year: "numeric", month: "short", day: "numeric" },
-        );
-        return (
-          <li>
-            <a href={postUrl}>
-              <span>{post.data.title}</span>
-              <time datetime={post.data.date.toISOString()}>{dateStr}</time>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-    <p class="home-latest-more">
-      <a
-        class="pill-cta pill-cta--ghost"
-        href={getRelativeLocaleUrl(locale, "/blog")}
-      >
-        {t(HOME_VIEW_ALL)}
-      </a>
-    </p>
-  </section>
+    <section
+      class="home-band home-band--white home-latest-posts"
+      aria-labelledby="home-latest-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-latest-title" class="home-band__title">{t(HOME_LATEST_POSTS)}</h2>
+        <ul class="home-grid" role="list">
+          {latestPosts.map((post) => {
+            const idParts = post.id.split("/").slice(1);
+            const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
+            const dateStr = post.data.date.toLocaleDateString(
+              locale === "zh-cn" ? "zh-CN" : "en-US",
+              { year: "numeric", month: "short", day: "numeric" },
+            );
+            return (
+              <li>
+                <a class="home-card" href={postUrl}>
+                  <time
+                    class="home-card__meta"
+                    datetime={post.data.date.toISOString()}
+                  >
+                    {dateStr}
+                  </time>
+                  <h3 class="home-card__title">{post.data.title}</h3>
+                  {post.data.description && (
+                    <p class="home-card__desc">{post.data.description}</p>
+                  )}
+                  <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <p class="home-band__footer">
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={getRelativeLocaleUrl(locale, "/blog")}
+          >
+            {t(HOME_VIEW_ALL)}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <GoogleAd variant="band" />
+
+    <section
+      class="home-band home-band--parchment home-prompts"
+      aria-labelledby="home-prompts-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-prompts-title" class="home-band__title">{t(PROMPTS_PAGE_TITLE)}</h2>
+        <p class="home-band__subtitle">
+          {locale === "zh-cn" ? "按测试类型精选提示词" : "Prompts by testing type"}
+        </p>
+        <ul class="home-grid" role="list">
+          {promptTypeCards.map((entry) => (
+            <li>
+              <a
+                class="home-card"
+                href={getRelativeLocaleUrl(
+                  locale,
+                  `/prompts/${entry.data.testingType}/`,
+                )}
+              >
+                <h3 class="home-card__title">
+                  {entry.data.title.replace(/^[^-]+ - /, "")}
+                </h3>
+                <p class="home-card__desc">{entry.data.description}</p>
+                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {localeWorkflows.length > 0 && (
+          <>
+            <p class="home-band__subtitle home-band__subtitle--spaced">
+              {t(PROMPTS_WORKFLOWS_SECTION_TITLE)}
+            </p>
+            <ul class="home-grid" role="list">
+              {localeWorkflows.map((wf) => (
+                <li>
+                  <a
+                    class="home-card"
+                    href={getRelativeLocaleUrl(
+                      locale,
+                      `/prompts/workflows/${wf.data.workflowType}/`,
+                    )}
+                  >
+                    <h3 class="home-card__title">{wf.data.title}</h3>
+                    <p class="home-card__desc">{wf.data.description}</p>
+                    <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        <p class="home-band__footer">
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={getRelativeLocaleUrl(locale, "/prompts/")}
+          >
+            {locale === "zh-cn" ? "查看全部提示词" : "View all prompts"}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="home-band home-band--white home-qaskills"
+      aria-labelledby="home-qaskills-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-qaskills-title" class="home-band__title">
+          {locale === "zh-cn"
+            ? "专业质量保证技能库"
+            : "Professional QA Skill Library"}
+        </h2>
+        <p class="home-band__subtitle">
+          {locale === "zh-cn"
+            ? "测试类型与工作流技能精选"
+            : "Selected testing and workflow skills"}
+        </p>
+        <ul class="home-grid" role="list">
+          {homeQASkills.map((skill) => (
+            <li>
+              <a
+                class="home-card"
+                href={getRelativeLocaleUrl(locale, `/qaskills/${skill.slug}/`)}
+              >
+                <h3 class="home-card__title">
+                  {locale === "zh-cn"
+                    ? skill.chineseName || skill.title
+                    : skill.title}
+                </h3>
+                <p class="home-card__desc">
+                  {toHomeSkillSnippet(skill.intro, locale)}
+                </p>
+                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="home-band__footer">
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={getRelativeLocaleUrl(locale, "/qaskills/")}
+          >
+            {locale === "zh-cn" ? "查看全部技能库" : "View all skills"}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="home-band home-band--parchment home-projects"
+      aria-labelledby="home-projects-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-projects-title" class="home-band__title">
+          {t(HOME_PROJECTS_TITLE)}
+        </h2>
+        <ul class="home-grid" role="list">
+          {featuredProjects.map((proj) => (
+            <li>
+              <a
+                class="home-card"
+                href={proj.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h3 class="home-card__title">{t(proj.name)}</h3>
+                <p class="home-card__desc">{t(proj.description)}</p>
+                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="home-band__footer">
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={getRelativeLocaleUrl(locale, "/projects")}
+          >
+            {t(HOME_VIEW_ALL_PROJECTS)}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="home-band home-band--white home-guild">
+      <div class="home-inner">
+        <GuildShowcase locale={locale} />
+      </div>
+    </section>
+
+    {
+      showWiki && (
+        <section
+          class={`home-band home-band--${bandWiki} home-wiki`}
+          aria-labelledby="home-wiki-title"
+        >
+          <div class="home-inner">
+            <h2 id="home-wiki-title" class="home-band__title">
+              {HOME_WIKI_SECTION_TITLE}
+            </h2>
+            <p class="home-band__subtitle">{HOME_WIKI_INTRO}</p>
+            <ul class="home-chip-cloud" role="list">
+              {wikiShowcaseItems.map((item) => (
+                <li>
+                  <a
+                    class="home-chip"
+                    href={getRelativeLocaleUrl("zh-cn", `/wiki/${item.slug}`)}
+                    title={item.labelZh}
+                  >
+                    {item.labelZh}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p class="home-band__footer">
+              <a
+                class="pill-cta pill-cta--ghost"
+                href={getRelativeLocaleUrl(locale, "/wiki")}
+              >
+                进入百科
+              </a>
+            </p>
+          </div>
+        </section>
+      )
+    }
+
+    <section
+      class={`home-band home-band--${bandAiWiki} home-aiwiki`}
+      aria-labelledby="home-aiwiki-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-aiwiki-title" class="home-band__title">
+          {locale === "zh-cn" ? "AI 百科" : "AI Wiki"}
+        </h2>
+        <p class="home-band__subtitle">
+          {locale === "zh-cn"
+            ? "精选 AI 与工程实践词条"
+            : "Selected AI and engineering terms"}
+        </p>
+        <ul class="home-chip-cloud" role="list">
+          {aiWikiShowcaseItems.map((item) => (
+            <li>
+              <a
+                class="home-chip"
+                href={getRelativeLocaleUrl(locale, `/AIWiki/${item.slug}`)}
+                title={item.label}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="home-band__footer">
+          <a
+            class="pill-cta pill-cta--ghost"
+            href={getRelativeLocaleUrl(locale, "/AIWiki")}
+          >
+            {locale === "zh-cn" ? "进入 AI 百科" : "Browse AI Wiki"}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section
+      class={`home-band home-band--${bandTags} home-tags`}
+      aria-labelledby="home-tags-title"
+    >
+      <div class="home-inner">
+        <h2 id="home-tags-title" class="home-band__title">{t(HOME_TAGS_TITLE)}</h2>
+        <ul class="home-chip-cloud tags-container" role="list">
+          {popularTags.map((tag) => (
+            <li>
+              <a
+                class="home-chip"
+                href={getRelativeLocaleUrl(
+                  locale,
+                  `/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}`,
+                )}
+              >
+                #{tag}
+                <span class="home-chip__count">{tagCounts[tag]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </div>
 </Layout>
 
 <TrackingEvents mode="home" locale={locale} />
 
 <style>
-  .home-apple-hero {
-    background: #fff;
-    text-align: center;
-    padding: 80px 24px 56px;
+  /* 首页挣脱 .l-content 窄栏，色带全宽铺开 */
+  :global(main.l-main:has(.home-page)) {
+    max-inline-size: none;
+    padding-inline: 0;
+    margin-block-start: 0;
+    padding-block-end: 0;
   }
 
-  .home-apple-hero__title {
+  .home-page {
+    background: #f5f5f7;
+  }
+
+  .home-band {
+    width: 100%;
+    padding-block: 72px;
+  }
+
+  .home-band--white {
+    background: #ffffff;
+  }
+
+  .home-band--parchment {
+    background: #f5f5f7;
+  }
+
+  .home-inner {
+    width: min(980px, calc(100% - 48px));
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .home-hero__title {
     margin: 0;
-    font-size: 48px;
+    font-size: clamp(34px, 5vw, 48px);
     font-weight: 600;
     letter-spacing: -0.4px;
     line-height: 1.08;
     color: #1d1d1f;
   }
 
-  .home-apple-hero__subtitle {
+  .home-hero__subtitle {
     margin: 14px auto 0;
     max-width: 28em;
     font-size: 21px;
@@ -175,7 +587,7 @@ const homePageSchema = {
     color: #1d1d1f;
   }
 
-  .home-apple-hero__ctas {
+  .home-hero__ctas {
     margin-top: 22px;
     display: flex;
     gap: 12px;
@@ -183,15 +595,40 @@ const homePageSchema = {
     flex-wrap: wrap;
   }
 
+  .home-band__title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    line-height: 1.2;
+    color: #1d1d1f;
+  }
+
+  .home-band__subtitle {
+    margin: 10px auto 0;
+    max-width: 36em;
+    font-size: 17px;
+    line-height: 1.45;
+    color: #7a7a7a;
+  }
+
+  .home-band__subtitle--spaced {
+    margin-top: 40px;
+  }
+
+  .home-band__footer {
+    margin: 32px 0 0;
+  }
+
   .pill-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 9999px;
+    min-height: 44px;
     padding: 11px 22px;
+    border-radius: 9999px;
     font-size: 17px;
     text-decoration: none;
-    min-height: 44px;
   }
 
   .pill-cta--primary {
@@ -200,123 +637,128 @@ const homePageSchema = {
   }
 
   .pill-cta--ghost {
+    background: transparent;
     color: var(--color-theme);
     border: 1px solid var(--color-theme);
-    background: transparent;
   }
 
   .pill-cta:active {
     transform: scale(0.95);
   }
 
-  .home-explore {
-    background: #f5f5f7;
-    padding: 48px 24px 56px;
-    text-align: center;
-  }
-
-  .home-explore__title {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 600;
-    color: #1d1d1f;
-  }
-
-  .home-explore__subtitle {
-    margin: 8px auto 0;
-    max-width: 32em;
-    font-size: 17px;
-    color: #7a7a7a;
-  }
-
-  .home-explore-grid {
+  /* 所有内容卡统一三列 */
+  .home-grid {
     list-style: none;
-    margin: 28px auto 0;
+    margin: 28px 0 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
-    max-width: 900px;
     text-align: start;
   }
 
-  .home-explore-card {
-    display: block;
-    background: #fff;
+  .home-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 168px;
+    height: 100%;
+    padding: 24px;
     border: 1px solid #e0e0e0;
     border-radius: 18px;
-    padding: 24px;
-    min-height: 140px;
-    text-decoration: none;
+    background: #ffffff;
     color: inherit;
+    text-decoration: none;
     box-shadow: none;
   }
 
-  .home-explore-card h3 {
-    margin: 0 0 6px;
-    font-size: 17px;
-    font-weight: 600;
+  .home-band--white .home-card {
+    background: #fafafc;
   }
 
-  .home-explore-card p {
-    margin: 0 0 14px;
-    font-size: 14px;
+  .home-card__meta {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.3;
     color: #7a7a7a;
   }
 
-  .home-explore-card__more {
-    color: var(--color-theme);
-    font-size: 14px;
-  }
-
-  .home-latest-posts {
-    background: #fff;
-    padding: 48px 24px 56px;
-    max-width: 720px;
-    margin-inline: auto;
-  }
-
-  .home-latest-posts h2 {
-    margin: 0 0 16px;
-    font-size: 28px;
+  .home-card__title {
+    margin: 0 0 8px;
+    font-size: 17px;
     font-weight: 600;
+    letter-spacing: -0.37px;
+    line-height: 1.3;
     color: #1d1d1f;
   }
 
-  .home-latest-list {
-    list-style: none;
+  .home-card__desc {
     margin: 0;
-    padding: 0;
-  }
-
-  .home-latest-list a {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid #f0f0f0;
-    text-decoration: none;
-    color: #1d1d1f;
-    font-size: 17px;
-  }
-
-  .home-latest-list time {
-    color: #7a7a7a;
+    flex: 1;
     font-size: 14px;
-    white-space: nowrap;
+    line-height: 1.45;
+    color: #7a7a7a;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .home-latest-more {
+  .home-card__more {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--color-theme);
+  }
+
+  .home-chip-cloud {
+    list-style: none;
     margin: 28px 0 0;
-    text-align: center;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
-  @media (width < 720px) {
-    .home-apple-hero__title {
-      font-size: 34px;
+  .home-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 16rem;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 9999px;
+    background: #ffffff;
+    color: #1d1d1f;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .home-band--white .home-chip {
+    background: #fafafc;
+  }
+
+  .home-chip__count {
+    color: #7a7a7a;
+    font-size: 12px;
+  }
+
+  @media (width < 900px) {
+    .home-band {
+      padding-block: 48px;
     }
 
-    .home-explore-grid {
+    .home-inner {
+      width: min(980px, calc(100% - 32px));
+    }
+
+    .home-grid {
       grid-template-columns: 1fr;
     }
   }

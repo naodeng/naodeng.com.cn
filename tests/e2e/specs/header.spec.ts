@@ -36,7 +36,7 @@ test.describe("Header 导航", () => {
     await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
     await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
     await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toBeVisible();
-    await expect(nav.locator("[data-nav-group='guides'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='guides'] a[data-nav-item='guild']")).toBeVisible();
     await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toBeVisible();
     await expect(nav.locator("[data-nav-group='more'] summary")).toBeVisible();
     await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
@@ -49,7 +49,7 @@ test.describe("Header 导航", () => {
     await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
     await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
     await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toContainText("百科");
-    await expect(nav.locator("[data-nav-group='guides'] summary")).toContainText("指南");
+    await expect(nav.locator("[data-nav-group='guides'] a[data-nav-item='guild']")).toContainText("指南");
     await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toContainText("AI测试");
     await expect(nav.locator("[data-nav-group='more'] summary")).toContainText("更多");
     await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
@@ -71,13 +71,13 @@ test.describe("Header 导航", () => {
 
   test("zh-cn Guild 页：指南导航链接有 active 样式", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
-    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] summary");
+    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']");
     await expect(guidesTrigger).toHaveClass(/active/);
   });
 
   test("en Guild 文章页：Guild 导航链接有 active 样式（section 匹配）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
-    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] summary");
+    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']");
     await expect(guidesTrigger).toHaveClass(/active/);
   });
 
@@ -144,19 +144,27 @@ test.describe("Header 导航", () => {
     expect(styles.backgroundColor).toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
   });
 
-  test("响应式：移动端 header 正常显示", async ({ page, baseURL }) => {
+  test("响应式：移动端 header 为品牌 + 搜索 + 汉堡", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header.l-header")).toBeVisible();
     await expect(page.locator("header .site-logo")).toBeVisible();
-    // 导航在移动端应换行但仍可见
-    await expect(page.locator("header nav")).toBeVisible();
+    await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
+    await expect(page.locator("header button[data-search-open]")).toBeVisible();
+    await expect(page.locator("header [data-site-nav]")).toBeHidden();
+
+    await page.locator("header [data-nav-toggle]").click();
+    await expect(page.locator("header.l-header")).toHaveAttribute("data-nav-open", "");
+    await expect(page.locator("header [data-site-nav]")).toBeVisible();
+    await expect(page.locator("header nav a[data-nav-item='blog']")).toBeVisible();
   });
 
   test("响应式：平板端 header 正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header.l-header")).toBeVisible();
+    await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
+    await page.locator("header [data-nav-toggle]").click();
     await expect(page.locator("header nav")).toBeVisible();
   });
 });

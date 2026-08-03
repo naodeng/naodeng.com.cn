@@ -10,6 +10,7 @@ import {
   PROMPTS_QUICKSTART_TITLE,
   PROMPTS_FLOW_TITLE,
 } from "@/consts";
+import GoogleAd from "@/components/GoogleAd.astro";
 
 export function getStaticPaths() {
   return [
@@ -218,14 +219,7 @@ const itemListSchema = {
       </ul>
     </section>
 
-    {!import.meta.env.DEV && (
-      <div class="prompts-ad-wrap" aria-hidden="true">
-        <ins class="adsbygoogle" style="display:block; text-align:center;"
-          data-ad-layout="in-article" data-ad-format="fluid"
-          data-ad-client="ca-pub-7249159446737834" data-ad-slot="5247439587" />
-        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    )}
+    <GoogleAd />
 
     <!-- Full Testing Flow -->
     <section class="prompts-section" aria-labelledby="flow-heading">
@@ -325,14 +319,7 @@ const itemListSchema = {
       </ul>
     </section>
 
-    {!import.meta.env.DEV && (
-      <div class="prompts-ad-wrap" aria-hidden="true">
-        <ins class="adsbygoogle" style="display:block; text-align:center;"
-          data-ad-layout="in-article" data-ad-format="fluid"
-          data-ad-client="ca-pub-7249159446737834" data-ad-slot="5247439587" />
-        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    )}
+    <GoogleAd />
   </div>
 </Base>
 
@@ -341,14 +328,6 @@ const itemListSchema = {
     padding-block: var(--sp-m);
     max-inline-size: 1400px;
     margin-inline: auto;
-  }
-
-  /* ── Ad wrap ── */
-  .prompts-ad-wrap {
-    max-height: 200px;
-    overflow: hidden;
-    width: 100%;
-    margin-block: var(--sp-m);
   }
 
   /* ── Hero header ── */

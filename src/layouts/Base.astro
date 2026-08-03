@@ -154,8 +154,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content={robots} />
     <meta name="author" content={articleAuthor || "Nao Deng"} />
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#f5f5f7" />
     <link rel="canonical" href={canonicalUrl} />
     {prevUrl && <link rel="prev" href={prevUrl} />}
     {nextUrl && <link rel="next" href={nextUrl} />}
@@ -176,7 +175,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <meta name="baidu-site-verification" content="codeva-8dOodMKv9l" />
 
     <meta property="og:type" content={ogType} />
@@ -345,6 +344,67 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
 
     <SearchModal />
 
+    {import.meta.env.PROD && (
+      <script is:inline>
+        (() => {
+          const roots = Array.from(
+            document.querySelectorAll("[data-ad-collapse]"),
+          );
+          if (!roots.length) return;
+
+          const isFilled = (ins) => {
+            const status = ins.getAttribute("data-ad-status");
+            if (status === "unfilled") return false;
+            if (status === "filled") return true;
+            if (ins.querySelector("iframe")) return true;
+            return ins.offsetHeight > 40;
+          };
+
+          const watch = (root) => {
+            const ins = root.querySelector("ins.adsbygoogle");
+            if (!ins) {
+              root.hidden = true;
+              return;
+            }
+
+            const reveal = () => {
+              if (!isFilled(ins)) return false;
+              root.hidden = false;
+              root.setAttribute("aria-hidden", "false");
+              return true;
+            };
+
+            if (reveal()) return;
+
+            const observer = new MutationObserver(() => {
+              if (reveal()) observer.disconnect();
+            });
+            observer.observe(ins, {
+              attributes: true,
+              attributeFilter: ["data-ad-status", "style", "class"],
+              childList: true,
+              subtree: true,
+            });
+
+            let tries = 0;
+            const timer = window.setInterval(() => {
+              tries += 1;
+              if (reveal() || tries >= 20) {
+                window.clearInterval(timer);
+                observer.disconnect();
+                if (!isFilled(ins)) {
+                  root.hidden = true;
+                  root.setAttribute("aria-hidden", "true");
+                }
+              }
+            }, 500);
+          };
+
+          roots.forEach(watch);
+        })();
+      </script>
+    )}
+
     {import.meta.env.DEV && (
       <style>
         :root {
@@ -367,6 +427,15 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       .skip-link:focus {
         left: 0;
         top: 0;
+      }
+      /* 固定高度广告槽：子广告未展开时整槽不占位 */
+      .ad-slot-250:has([data-ad-collapse][hidden]) {
+        display: none !important;
+        margin: 0 !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        overflow: hidden;
+        padding: 0 !important;
       }
     </style>
   </body>

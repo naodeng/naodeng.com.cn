@@ -1,12 +1,12 @@
 ---
 /**
- * 20px 高度页面广告（参数与 GoogleAd 保持一致）
- * 仅在生产环境渲染，开发环境跳过
+ * 紧凑型页面广告
+ * 仅在生产环境渲染；默认隐藏，广告填充后再展开
  */
 ---
 
 {!import.meta.env.DEV && (
-  <div class="ad-thin-wrap" aria-hidden="true">
+  <div class="ad-thin-wrap ad-collapse" data-ad-collapse hidden aria-hidden="true">
     <ins
       class="adsbygoogle"
       style="display:block; text-align:center;"
@@ -23,7 +23,13 @@
   .ad-thin-wrap {
     margin-block: 1rem;
     width: 100%;
-    height: 20px;
+    max-height: 90px;
     overflow: hidden;
+  }
+
+  .ad-thin-wrap[hidden] {
+    display: none !important;
+    margin: 0 !important;
+    max-height: 0 !important;
   }
 </style>

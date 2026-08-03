@@ -10,7 +10,12 @@ test.describe("apple homepage exploration", () => {
       await expect(page.locator(".home-apple-hero")).toBeVisible();
       await expect(page.locator(".home-explore-grid")).toBeVisible();
       await expect(page.locator(".home-latest-posts")).toBeVisible();
-      await expect(page.locator(".home-explore-card")).toHaveCount(6);
+      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(6);
+      await expect(page.locator(".home-prompts")).toBeVisible();
+      await expect(page.locator(".home-projects")).toBeVisible();
+      await expect(page.locator(".home-tags .tags-container")).toBeVisible();
+      await expect(page.locator(".home-tags .home-chip").first()).toBeVisible();
+      await expect(page.locator(".home-grid").first()).toBeVisible();
     });
   }
 });
