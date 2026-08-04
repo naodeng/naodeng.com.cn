@@ -11,8 +11,8 @@ const samples: Sample[] = [
   {
     name: "home",
     path: "/zh-cn/",
-    selectors: [".cta-button", ".prompts-type-card", ".project-card"],
-    textSelectors: [".intro-card", ".prompts-type-desc", ".project-desc"],
+    selectors: [".pill-cta", ".home-card", ".home-explore-grid .home-card"],
+    textSelectors: [".home-hero__subtitle", ".home-card__desc", ".home-band__subtitle"],
   },
   {
     name: "wiki-index",

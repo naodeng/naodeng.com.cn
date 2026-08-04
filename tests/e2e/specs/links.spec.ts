@@ -16,6 +16,37 @@ function assertLinkStatus(link: string, status: number): void {
   expect(status, `链接 ${link} 应返回 2xx 或 3xx，实际 ${status}`).toBeLessThan(400);
 }
 
+/** 去掉 hash，避免 #main 等同页锚点被当成独立请求；重试瞬时断连 */
+async function fetchSameOriginLink(
+  request: import("@playwright/test").APIRequestContext,
+  link: string,
+) {
+  const normalized = (() => {
+    try {
+      const u = new URL(link);
+      u.hash = "";
+      return u.toString();
+    } catch {
+      return link;
+    }
+  })();
+
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      return await request.get(normalized, { timeout: 15000 });
+    } catch (error) {
+      lastError = error;
+      const message = String(error);
+      if (!/socket hang up|ECONNRESET|ECONNREFUSED|Timeout/i.test(message)) {
+        throw error;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 400 * (attempt + 1)));
+    }
+  }
+  throw lastError;
+}
+
 test.describe("各页面链接跳转正确", () => {
   const mainPages = getMainPageUrls("");
   const extraPages = getExtraPageUrls();
@@ -42,7 +73,7 @@ test.describe("各页面链接跳转正确", () => {
 
       for (const link of sameOriginLinks) {
         if (isTagUrlWithEncodedSegment(link)) continue;
-        const res = await page.request.get(link, { timeout: 15000 });
+        const res = await fetchSameOriginLink(page.request, link);
         assertLinkStatus(link, res.status());
       }
     });
@@ -67,7 +98,7 @@ test.describe("各页面链接跳转正确", () => {
 
     for (const link of sameOrigin) {
       if (isTagUrlWithEncodedSegment(link)) continue;
-      const res = await page.request.get(link, { timeout: 15000 });
+      const res = await fetchSameOriginLink(page.request, link);
       assertLinkStatus(link, res.status());
     }
   });
@@ -91,7 +122,7 @@ test.describe("各页面链接跳转正确", () => {
 
     for (const link of sameOrigin) {
       if (isTagUrlWithEncodedSegment(link)) continue;
-      const res = await page.request.get(link, { timeout: 15000 });
+      const res = await fetchSameOriginLink(page.request, link);
       assertLinkStatus(link, res.status());
     }
   });
@@ -111,7 +142,7 @@ test.describe("各页面链接跳转正确", () => {
 
       for (const link of sameOriginLinks) {
         if (isTagUrlWithEncodedSegment(link)) continue;
-        const res = await page.request.get(link, { timeout: 15000 });
+        const res = await fetchSameOriginLink(page.request, link);
         assertLinkStatus(link, res.status());
       }
     });

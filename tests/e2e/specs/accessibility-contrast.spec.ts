@@ -11,11 +11,11 @@ const samples: ContrastSample[] = [
     name: "home-zh",
     path: "/zh-cn/",
     selectors: [
-      ".intro-summary",
-      ".prompts-type-desc",
-      ".project-desc",
-      ".post-title",
-      ".post-excerpt",
+      ".home-hero__subtitle",
+      ".home-band__subtitle",
+      ".home-card__title",
+      ".home-card__desc",
+      ".home-chip",
     ],
   },
   {
