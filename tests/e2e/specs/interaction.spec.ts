@@ -72,43 +72,29 @@ test.describe("用户交互", () => {
   });
 
   test("en 标签云：标签可点击", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    
-    const tagsCloud = page.locator('[class*="tags-cloud"]').first();
-    if (await tagsCloud.isVisible({ timeout: 5000 })) {
-      const tagLink = tagsCloud.locator("a").first();
-      if (await tagLink.isVisible()) {
-        await tagLink.click();
-        await page.waitForLoadState("networkidle");
-        
-        // 检查是否跳转到了有效页面（不是 404）
-        const currentUrl = page.url();
-        if (!currentUrl.includes("/404")) {
-          await expect(page).toHaveURL(/\/en\/(tags|series)\//);
-          await expect(page.locator("main")).toBeVisible();
-        }
-      }
-    }
+    await page.goto((baseURL || "") + "/en/tags/", { waitUntil: "networkidle" });
+
+    const tagsCloud = page.locator(".tags-cloud").first();
+    await expect(tagsCloud).toBeVisible({ timeout: 10000 });
+    const tagLink = tagsCloud.locator("a").first();
+    await expect(tagLink).toBeVisible();
+    await tagLink.click();
+    await page.waitForLoadState("networkidle");
+    await expect(page).toHaveURL(/\/en\/tags\//);
+    await expect(page.locator("main")).toBeVisible();
   });
 
   test("zh-cn 标签云：标签可点击", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    
-    const tagsCloud = page.locator('[class*="tags-cloud"]').first();
-    if (await tagsCloud.isVisible({ timeout: 5000 })) {
-      const tagLink = tagsCloud.locator("a").first();
-      if (await tagLink.isVisible()) {
-        await tagLink.click();
-        await page.waitForLoadState("networkidle");
-        
-        // 检查是否跳转到了有效页面（不是 404）
-        const currentUrl = page.url();
-        if (!currentUrl.includes("/404")) {
-          await expect(page).toHaveURL(/\/zh-cn\/(tags|series)\//);
-          await expect(page.locator("main")).toBeVisible();
-        }
-      }
-    }
+    await page.goto((baseURL || "") + "/zh-cn/tags/", { waitUntil: "networkidle" });
+
+    const tagsCloud = page.locator(".tags-cloud").first();
+    await expect(tagsCloud).toBeVisible({ timeout: 10000 });
+    const tagLink = tagsCloud.locator("a").first();
+    await expect(tagLink).toBeVisible();
+    await tagLink.click();
+    await page.waitForLoadState("networkidle");
+    await expect(page).toHaveURL(/\/zh-cn\/tags\//);
+    await expect(page.locator("main")).toBeVisible();
   });
 
   test("en 博客详情页：代码块复制按钮", async ({ page, baseURL }) => {

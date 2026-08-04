@@ -1,21 +1,23 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("导航与首页内容", () => {
-  test("en 首页：简介区、项目展示、标签云、最新文章区可见", async ({ page, baseURL }) => {
+  test("en 首页：Hero、探索区、标签与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    await expect(page.locator("main .intro-section").first()).toBeVisible();
-    await expect(page.locator("main .projects-showcase").first()).toBeVisible();
-    await expect(page.locator("main .tags-cloud").first()).toBeVisible();
-    await expect(page.locator("main .latest").first()).toBeVisible();
+    await expect(page.locator("main .home-apple-hero").first()).toBeVisible();
+    await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
+    await expect(page.locator("main .home-projects").first()).toBeVisible();
+    await expect(page.locator("main .home-tags .tags-container").first()).toBeVisible();
+    await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 
-  test("zh-cn 首页：简介区、项目展示、Guild展示、标签云、最新文章区可见", async ({ page, baseURL }) => {
+  test("zh-cn 首页：Hero、探索区、Guild、标签与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    await expect(page.locator("main .intro-section").first()).toBeVisible();
-    await expect(page.locator("main .projects-showcase").first()).toBeVisible();
+    await expect(page.locator("main .home-apple-hero").first()).toBeVisible();
+    await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
+    await expect(page.locator("main .home-projects").first()).toBeVisible();
     await expect(page.locator("main .guild-showcase").first()).toBeVisible();
-    await expect(page.locator("main .tags-cloud").first()).toBeVisible();
-    await expect(page.locator("main .latest").first()).toBeVisible();
+    await expect(page.locator("main .home-tags .tags-container").first()).toBeVisible();
+    await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 
   test("en 从首页点击「博客」进入博客列表", async ({ page, baseURL }) => {
@@ -69,17 +71,15 @@ test.describe("导航与首页内容", () => {
     await expect(page.getByRole("heading", { name: "测试百科", level: 1 }).first()).toBeVisible();
   });
 
-  test("zh-cn 从首页点击「指南 > 自动化测试指南」进入指南页", async ({ page, baseURL }) => {
+  test("zh-cn 从首页点击「指南」进入指南页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    await page.locator("header nav [data-nav-group='guides'] summary").click();
-    await page.locator("header nav a[data-nav-item='guild']").click();
+    await page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/guild\/?/);
     await expect(page.locator(".guild-hero__title")).toBeVisible();
   });
 
-  test("en 从首页点击「Guides > Guild」进入指南页", async ({ page, baseURL }) => {
+  test("en 从首页点击「Guides」进入指南页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    await page.locator("header nav [data-nav-group='guides'] summary").click();
     const guildLink = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']").first();
     await expect(guildLink).toHaveAttribute("href", /\/en\/guild\/?$/);
     await guildLink.click();

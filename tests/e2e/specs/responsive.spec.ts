@@ -48,41 +48,31 @@ test.describe("响应式布局", () => {
   test("en 移动端：导航菜单可展开收起", async ({ page, baseURL }) => {
     await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    
-    const menuToggle = page.locator('button[aria-label*="menu" i], button[aria-label*="navigation" i], [class*="menu-toggle"], [class*="hamburger"]').first();
-    
-    if (await menuToggle.isVisible()) {
-      await menuToggle.click();
-      await page.waitForTimeout(500);
-      
-      const nav = page.locator('nav[class*="mobile"], [class*="mobile-menu"], [class*="nav-menu"]').first();
-      if (await nav.isVisible({ timeout: 2000 })) {
-        await expect(nav).toBeVisible();
-        
-        await menuToggle.click();
-        await page.waitForTimeout(500);
-      }
-    }
+
+    const menuToggle = page.locator("header [data-nav-toggle]");
+    await expect(menuToggle).toBeVisible();
+    await expect(page.locator("header [data-site-nav]")).toBeHidden();
+
+    await menuToggle.click();
+    await expect(page.locator("header [data-site-nav]")).toBeVisible();
+
+    await menuToggle.click();
+    await expect(page.locator("header [data-site-nav]")).toBeHidden();
   });
 
   test("zh-cn 移动端：导航菜单可展开收起", async ({ page, baseURL }) => {
     await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    
-    const menuToggle = page.locator('button[aria-label*="菜单"], button[aria-label*="导航"], [class*="menu-toggle"], [class*="hamburger"]').first();
-    
-    if (await menuToggle.isVisible()) {
-      await menuToggle.click();
-      await page.waitForTimeout(500);
-      
-      const nav = page.locator('nav[class*="mobile"], [class*="mobile-menu"], [class*="nav-menu"]').first();
-      if (await nav.isVisible({ timeout: 2000 })) {
-        await expect(nav).toBeVisible();
-        
-        await menuToggle.click();
-        await page.waitForTimeout(500);
-      }
-    }
+
+    const menuToggle = page.locator("header [data-nav-toggle]");
+    await expect(menuToggle).toBeVisible();
+    await expect(page.locator("header [data-site-nav]")).toBeHidden();
+
+    await menuToggle.click();
+    await expect(page.locator("header [data-site-nav]")).toBeVisible();
+
+    await menuToggle.click();
+    await expect(page.locator("header [data-site-nav]")).toBeHidden();
   });
 
   test("en 博客列表在移动端正常显示", async ({ page, baseURL }) => {

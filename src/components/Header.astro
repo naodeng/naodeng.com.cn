@@ -121,13 +121,14 @@ const navGroups = [
 ];
 ---
 
-<header class="l-header">
+<header class="l-header" data-header>
   <div class:list={["header-shell l-content", { "header-shell--en": locale === "en" }]}>
     <div class:list={["site-brand", { "site-brand--en": locale === "en" }]}>
       <div class="site-brand-row">
         <h1>
-          <a href={getRelativeLocaleUrl(locale, "/")}>
-            <img src="/favicon.svg" alt="" class="site-logo" width="36" height="36" />
+          <a href={getRelativeLocaleUrl(locale, "/")} class="site-brand-link">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <img src="/favicon.svg" alt="" class="site-logo" width="18" height="18" />
             {locale === "zh-cn" ? (
               <span class="site-title-cobrand" aria-label={siteTitle}>
                 <span>软件测试同学</span>
@@ -143,7 +144,7 @@ const navGroups = [
       </div>
     </div>
 
-    <nav class="site-nav">
+    <nav class="site-nav" id="site-primary-nav" data-site-nav>
       <ul>
         <li>
           <a
@@ -164,32 +165,46 @@ const navGroups = [
           </a>
         </li>
         {
-          navGroups.map((group) => (
-            <li class="nav-group" data-nav-group={group.key}>
-              <details open={group.active || undefined} data-nav-details>
-                <summary class:list={["nav-group-trigger", { active: group.active }]}>
-                  <span>{group.label}</span>
-                  <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
-                </summary>
-                <ul class="nav-submenu">
-                  {group.items.map((item) => (
-                    <li>
-                      <a
-                        href={item.href}
-                        class={item.active ? "active" : null}
-                        data-nav-item={item.key}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
-                      >
-                        <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
-                        <span class="nav-submenu-text">{item.label}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </li>
-          ))
+          navGroups.map((group) =>
+            group.items.length === 1 ? (
+              <li class="nav-group nav-group--link" data-nav-group={group.key}>
+                <a
+                  href={group.items[0].href}
+                  class={group.active ? "active" : null}
+                  data-nav-item={group.items[0].key}
+                  target={group.items[0].external ? "_blank" : undefined}
+                  rel={group.items[0].external ? "noopener noreferrer" : undefined}
+                >
+                  {group.label}
+                </a>
+              </li>
+            ) : (
+              <li class="nav-group" data-nav-group={group.key}>
+                <details data-nav-details>
+                  <summary class:list={["nav-group-trigger", { active: group.active }]}>
+                    <span>{group.label}</span>
+                    <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
+                  </summary>
+                  <ul class="nav-submenu">
+                    {group.items.map((item) => (
+                      <li>
+                        <a
+                          href={item.href}
+                          class={item.active ? "active" : null}
+                          data-nav-item={item.key}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
+                        >
+                          <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
+                          <span class="nav-submenu-text">{item.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ),
+          )
         }
         <li>
           <a
@@ -200,43 +215,206 @@ const navGroups = [
             {t(NAV_ABOUT)}
           </a>
         </li>
-        <li class="nav-tool">
-          <LocaleSelect compact />
-        </li>
-        <li class="nav-tool">
-          <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
-            <span class="material-icons-sharp" aria-hidden="true">search</span>
-          </button>
-        </li>
       </ul>
     </nav>
+
+    <div class="header-utils">
+      <div class="nav-tool nav-tool--bar">
+        <LocaleSelect compact />
+      </div>
+      <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
+        <span class="material-icons-sharp" aria-hidden="true">search</span>
+      </button>
+      <button
+        type="button"
+        class="btn-icon nav-toggle"
+        data-nav-toggle
+        aria-controls="site-primary-nav"
+        aria-expanded="false"
+        aria-label={locale === "zh-cn" ? "打开导航菜单" : "Open navigation menu"}
+      >
+        <span class="material-icons-sharp nav-toggle__open" aria-hidden="true">menu</span>
+        <span class="material-icons-sharp nav-toggle__close" aria-hidden="true">close</span>
+      </button>
+    </div>
   </div>
+  <button
+    type="button"
+    class="nav-backdrop"
+    data-nav-backdrop
+    tabindex="-1"
+    aria-hidden="true"
+    aria-label={locale === "zh-cn" ? "关闭导航菜单" : "Close navigation menu"}
+  ></button>
 </header>
 
 <script>
+  const HOVER_CLOSE_MS = 120;
+  const DESKTOP_MQ = "(min-width: 834px)";
+  const HOVER_MQ = "(hover: hover) and (pointer: fine)";
+
+  const isDesktopNav = () => window.matchMedia(DESKTOP_MQ).matches;
+  const canHoverNav = () => window.matchMedia(HOVER_MQ).matches;
+
+  const closeAllDetails = (except?: HTMLDetailsElement | null) => {
+    document.querySelectorAll("[data-nav-details]").forEach((node) => {
+      if (!(node instanceof HTMLDetailsElement)) return;
+      if (except && node === except) return;
+      node.open = false;
+    });
+  };
+
+  const syncToggleA11y = (toggle: HTMLButtonElement, open: boolean) => {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    const openLabel = toggle.getAttribute("data-label-open") || "Open navigation menu";
+    const closeLabel = toggle.getAttribute("data-label-close") || "Close navigation menu";
+    toggle.setAttribute("aria-label", open ? closeLabel : openLabel);
+  };
+
+  const setNavOpen = (open: boolean) => {
+    const header = document.querySelector("[data-header]");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    if (!(header instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return;
+
+    header.toggleAttribute("data-nav-open", open);
+    syncToggleA11y(toggle, open);
+    document.documentElement.classList.toggle("nav-drawer-open", open);
+
+    if (!open) {
+      closeAllDetails();
+      return;
+    }
+
+    if (!isDesktopNav()) {
+      const firstLink = header.querySelector<HTMLElement>("[data-site-nav] a");
+      firstLink?.focus({ preventScroll: true });
+    }
+  };
+
+  const bindHoverMenus = (detail: HTMLDetailsElement) => {
+    if (detail.dataset.hoverBound) return;
+    detail.dataset.hoverBound = "1";
+
+    let openTimer = 0;
+    let closeTimer = 0;
+    const clearTimers = () => {
+      if (openTimer) {
+        window.clearTimeout(openTimer);
+        openTimer = 0;
+      }
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+        closeTimer = 0;
+      }
+    };
+
+    detail.addEventListener("pointerenter", () => {
+      if (!isDesktopNav() || !canHoverNav()) return;
+      clearTimers();
+      // 短延迟，避免与点击打开打架（pointerenter 后立刻 click 会先 toggle）
+      openTimer = window.setTimeout(() => {
+        closeAllDetails(detail);
+        detail.open = true;
+      }, 80);
+    });
+
+    detail.addEventListener("pointerleave", () => {
+      if (!isDesktopNav() || !canHoverNav()) return;
+      clearTimers();
+      closeTimer = window.setTimeout(() => {
+        detail.open = false;
+      }, HOVER_CLOSE_MS);
+    });
+  };
+
   const initHeaderNav = () => {
+    const header = document.querySelector("[data-header]");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    const backdrop = document.querySelector("[data-nav-backdrop]");
+    const nav = document.querySelector("[data-site-nav]");
     const detailNodes = Array.from(document.querySelectorAll("[data-nav-details]"));
+
+    if (toggle instanceof HTMLButtonElement && !toggle.dataset.bound) {
+      toggle.dataset.bound = "1";
+      const isZh = document.documentElement.lang?.toLowerCase().startsWith("zh");
+      toggle.setAttribute("data-label-open", isZh ? "打开导航菜单" : "Open navigation menu");
+      toggle.setAttribute("data-label-close", isZh ? "关闭导航菜单" : "Close navigation menu");
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const open = !(header instanceof HTMLElement && header.hasAttribute("data-nav-open"));
+        setNavOpen(open);
+      });
+    }
+
+    if (backdrop instanceof HTMLElement && !backdrop.dataset.bound) {
+      backdrop.dataset.bound = "1";
+      backdrop.addEventListener("click", () => setNavOpen(false));
+    }
+
     detailNodes.forEach((detail) => {
+      if (!(detail instanceof HTMLDetailsElement)) return;
+      bindHoverMenus(detail);
+
+      if (detail.dataset.toggleBound) return;
+      detail.dataset.toggleBound = "1";
       detail.addEventListener("toggle", () => {
-        if (!(detail instanceof HTMLDetailsElement) || !detail.open) return;
-        detailNodes.forEach((other) => {
-          if (other !== detail && other instanceof HTMLDetailsElement) {
-            other.open = false;
-          }
-        });
+        if (!detail.open) return;
+        closeAllDetails(detail);
       });
     });
 
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof Node)) return;
-      if (detailNodes.some((detail) => detail.contains(target))) return;
-      detailNodes.forEach((detail) => {
-        if (detail instanceof HTMLDetailsElement) {
-          detail.open = false;
-        }
+    nav?.querySelectorAll("a").forEach((link) => {
+      if (link.dataset.navCloseBound) return;
+      link.dataset.navCloseBound = "1";
+      link.addEventListener("click", () => {
+        if (!isDesktopNav()) setNavOpen(false);
       });
     });
+
+    if (!document.documentElement.dataset.appleHeaderDocBound) {
+      document.documentElement.dataset.appleHeaderDocBound = "1";
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) return;
+
+        const currentHeader = document.querySelector("[data-header]");
+        const inHeader = currentHeader instanceof HTMLElement && currentHeader.contains(target);
+
+        // 桌面：点空白关闭下拉
+        if (isDesktopNav()) {
+          const details = Array.from(document.querySelectorAll("[data-nav-details]"));
+          if (!details.some((detail) => detail.contains(target))) {
+            closeAllDetails();
+          }
+          return;
+        }
+
+        // 移动：点顶栏外关闭抽屉
+        if (
+          currentHeader instanceof HTMLElement &&
+          currentHeader.hasAttribute("data-nav-open") &&
+          !inHeader
+        ) {
+          setNavOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        closeAllDetails();
+        setNavOpen(false);
+        const currentToggle = document.querySelector("[data-nav-toggle]");
+        if (currentToggle instanceof HTMLButtonElement && !isDesktopNav()) {
+          currentToggle.focus();
+        }
+      });
+
+      window.matchMedia(DESKTOP_MQ).addEventListener("change", (event) => {
+        if (event.matches) setNavOpen(false);
+        else closeAllDetails();
+      });
+    }
   };
 
   initHeaderNav();
@@ -245,191 +423,109 @@ const navGroups = [
 
 <style>
   .l-header {
-    position: relative;
-    z-index: 40;
-    padding: 0.95rem 0 0.9rem;
-    border-block-end: 1px solid color-mix(in srgb, white 5%, transparent);
-    background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 28%, #3a1577 72%) 0%, transparent 32%),
-      linear-gradient(90deg, #170f35 0%, #241249 46%, #1d1037 100%);
-    box-shadow:
-      inset 0 -1px 0 color-mix(in srgb, white 8%, transparent),
-      0 14px 40px color-mix(in srgb, black 20%, transparent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 44px;
+    background: #000;
+    color: #fff;
+    border: none;
+    box-shadow: none;
   }
   .l-header::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--color-theme) 30%, white 8%) 18%,
-      color-mix(in srgb, var(--color-theme) 20%, white 5%) 82%,
-      transparent 100%
-    );
+    display: none;
   }
   .header-shell {
+    max-inline-size: 1400px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(0.9rem, 2vw, 1.7rem);
-    padding-inline: 0;
+    gap: 1rem;
+    padding-inline: 20px;
+    margin-inline: auto;
   }
   .header-shell--en {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.9rem;
-  }
-  .header-shell--en .site-brand,
-  .header-shell--en .site-brand-row,
-  .header-shell--en .site-nav {
-    justify-content: center;
-  }
-  .header-shell--en .site-brand {
-    transform: none;
-    margin-inline-start: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
   }
   .site-brand {
     display: flex;
     justify-content: flex-start;
     min-width: 0;
-    margin-inline-start: -1.8rem;
-    transform: translateX(-30%);
-  }
-  .site-brand--en .site-brand-row {
-    column-gap: 0.8rem;
-    row-gap: 0.18rem;
+    flex-shrink: 0;
   }
   .site-brand-row {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     justify-content: flex-start;
-    column-gap: 1rem;
-    row-gap: 0.2rem;
-    max-width: min(100%, 26rem);
+    max-width: none;
   }
   .site-slogan {
-    margin: 0;
-    display: block;
-    width: 100%;
-    flex-basis: 100%;
-    max-width: min(100%, 34rem);
-    white-space: nowrap;
-    padding: 0;
-    font-size: 0.72rem;
-    font-weight: 540;
-    font-family: var(--english-font);
-    color: color-mix(in srgb, white 68%, var(--color-theme) 32%);
-    letter-spacing: 0.04em;
-    line-height: 1.35;
-    text-align: center;
-    opacity: 0.78;
-    overflow-wrap: break-word;
+    display: none;
   }
   h1 {
     margin: 0;
-    font-size: 31px;
+    font-size: 14px;
     font-family: var(--english-font);
-    font-weight: 880;
-    letter-spacing: -0.04em;
+    font-weight: 600;
+    letter-spacing: -0.12px;
     line-height: 1;
   }
-  @media (width < 480px) {
-    h1 {
-      font-size: 24px;
-    }
-  }
-  @media (width < 1460px) {
-    .header-shell {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.9rem;
-    }
-    .site-brand,
-    .site-brand-row,
-    .site-nav {
-      justify-content: center;
-    }
-    .site-slogan {
-      text-align: center;
-      white-space: normal;
-    }
-  }
-  h1 a {
+  .site-brand-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.55em;
+    gap: 0;
     color: #fff;
     text-decoration: none;
-    transition: color 0.2s ease, opacity 0.2s ease;
-  }
-  .site-brand--en h1 {
-    font-size: 30px;
-    letter-spacing: -0.03em;
-    width: 100%;
-    text-align: center;
-  }
-  .site-brand--en h1 a {
-    gap: 0.48em;
     white-space: nowrap;
+    transition: opacity 0.18s ease;
   }
-  .site-brand--en .site-brand-row {
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: nowrap;
+  .site-brand-link:hover {
+    opacity: 0.8;
+    color: #fff;
   }
-  .site-brand--en .site-slogan {
-    text-align: center;
+  .brand-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-brand-mark);
+    margin-inline-end: 8px;
+    vertical-align: middle;
+    flex-shrink: 0;
   }
   .site-title-cobrand {
     display: inline-flex;
     align-items: center;
-    gap: 0.32em;
+    gap: 0.28em;
     white-space: nowrap;
-    line-height: 0.96;
+    line-height: 1;
   }
   .site-title-cobrand-x {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 1.24em;
-    height: 1.24em;
-    padding-inline: 0.16em;
-    margin-inline: 0.08em 0.12em;
-    font-size: 0.46em;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    min-width: 1em;
+    height: 1em;
+    padding-inline: 0.12em;
+    margin-inline: 0.04em 0.08em;
+    font-size: 0.55em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #ffb6ff;
-    background: color-mix(in srgb, #f973ff 16%, transparent);
-    border: 1px solid color-mix(in srgb, #f973ff 26%, white 4%);
+    color: color-mix(in srgb, white 70%, transparent);
+    background: color-mix(in srgb, white 10%, transparent);
+    border: 1px solid color-mix(in srgb, white 14%, transparent);
     border-radius: 999px;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, white 18%, transparent);
-    transform: translateY(-0.12em);
   }
-  h1 a:hover {
-    opacity: 0.95;
-    color: color-mix(in srgb, white 86%, #f3a8ff 14%);
-  }
-  h1 a .site-logo {
+  .site-brand-link .site-logo {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: 18px;
+    height: 18px;
+    margin-inline-end: 0.4em;
     object-fit: contain;
-    margin-top: 0.08em;
-    transition: transform 0.2s ease, filter 0.2s ease;
-  }
-  h1 a:hover .site-logo {
-    transform: scale(1.05);
-    filter: drop-shadow(0 8px 16px color-mix(in srgb, #f973ff 20%, transparent));
-  }
-  @media (width < 480px) {
-    h1 a .site-logo {
-      width: 30px;
-      height: 30px;
-    }
   }
   .site-nav {
     display: flex;
@@ -441,37 +537,17 @@ const navGroups = [
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0;
     margin: 0;
-    padding: 0.35rem;
+    padding: 0;
     list-style: none;
-    border: 1px solid color-mix(in srgb, white 7%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, #090b16 78%, #1d1037 22%);
-    box-shadow:
-      inset 0 1px 0 color-mix(in srgb, white 8%, transparent),
-      0 16px 32px color-mix(in srgb, black 26%, transparent);
-    backdrop-filter: blur(18px);
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
     width: max-content;
     max-width: none;
-  }
-  @media (max-width: 1460px) {
-    .site-nav {
-      justify-content: center;
-    }
-    .site-brand {
-      transform: none;
-    }
-  }
-  @media (max-width: 880px) {
-    .site-nav > ul {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.45rem 0.55rem;
-      border-radius: 1.1rem;
-      width: 100%;
-      max-width: 100%;
-    }
   }
   .site-nav > ul > li {
     display: flex;
@@ -482,21 +558,20 @@ const navGroups = [
   .nav-group-trigger {
     display: inline-flex;
     align-items: center;
-    gap: 0.28rem;
-    min-height: 2.5rem;
-    padding: 0.56rem 0.92rem;
-    border-radius: 999px;
+    gap: 0.15rem;
+    min-height: 44px;
+    padding: 0 0.7rem;
+    border-radius: 0;
     white-space: nowrap;
     text-decoration: none;
-    font-size: 0.96rem;
-    font-weight: 540;
-    letter-spacing: -0.01em;
-    color: color-mix(in srgb, white 78%, #b6b4cb 22%);
-    transition:
-      color 0.18s ease,
-      background-color 0.18s ease,
-      box-shadow 0.18s ease,
-      transform 0.18s ease;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    color: #fff;
+    opacity: 0.8;
+    background: transparent;
+    box-shadow: none;
+    transition: opacity 0.18s ease, background-color 0.18s ease;
     position: relative;
   }
   .site-nav > ul > li > a:hover,
@@ -505,34 +580,30 @@ const navGroups = [
   .nav-group-trigger:hover,
   .nav-group-trigger:focus-visible {
     color: #fff;
-    background: color-mix(in srgb, white 9%, transparent);
+    opacity: 1;
+    background: transparent;
   }
   .site-nav > ul > li > a:focus-visible,
   .nav-group-trigger:focus-visible {
-    outline: 2px solid color-mix(in srgb, white 75%, var(--color-theme) 25%);
-    outline-offset: 2px;
+    outline: 2px solid color-mix(in srgb, white 70%, transparent);
+    outline-offset: -2px;
   }
   .site-nav > ul > li > a.active,
   .nav-group-trigger.active {
     color: #fff;
-    background:
-      linear-gradient(
-        180deg,
-        color-mix(in srgb, white 10%, transparent) 0%,
-        color-mix(in srgb, var(--color-theme) 18%, transparent) 100%
-      );
-    box-shadow:
-      inset 0 1px 0 color-mix(in srgb, white 14%, transparent),
-      0 0 0 1px color-mix(in srgb, white 8%, transparent);
+    opacity: 1;
+    background: transparent;
+    box-shadow: none;
   }
   .site-nav > ul > li > a.active::after,
   .nav-group-trigger.active::after {
     content: "";
     position: absolute;
-    inset: auto 0.92rem 0.35rem;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #fff 0%, color-mix(in srgb, #fff 50%, var(--color-theme) 50%) 100%);
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: 7px;
+    height: 1px;
+    background: color-mix(in srgb, white 72%, transparent);
   }
   .nav-group {
     position: relative;
@@ -543,7 +614,7 @@ const navGroups = [
   .nav-group summary {
     display: inline-flex;
     align-items: center;
-    gap: 0.14rem;
+    gap: 0.1rem;
     list-style: none;
     cursor: pointer;
   }
@@ -551,8 +622,8 @@ const navGroups = [
     display: none;
   }
   .nav-group-chevron {
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 14px;
+    opacity: 0.7;
     transition: transform 0.18s ease, opacity 0.18s ease;
   }
   .nav-group details[open] .nav-group-chevron,
@@ -564,24 +635,38 @@ const navGroups = [
   }
   .nav-submenu {
     position: absolute;
-    top: calc(100% + 0.08rem);
+    top: calc(100% - 2px);
     left: 0;
     z-index: 120;
     display: grid;
-    gap: 0.15rem;
+    gap: 0.1rem;
     width: max-content;
-    min-width: 0;
+    min-width: 11.5rem;
     max-width: calc(100vw - 2rem);
     margin: 0;
-    padding: 0.56rem;
+    padding: 0.4rem;
     list-style: none;
-    border: 1px solid color-mix(in srgb, #2e3d56 38%, transparent);
-    border-radius: 1.15rem;
-    background: #040b16;
-    box-shadow:
-      0 18px 34px color-mix(in srgb, #02050c 50%, transparent),
-      inset 0 1px 0 color-mix(in srgb, white 8%, transparent);
-    transform: none;
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+    border-radius: 0.75rem;
+    background: #1d1d1f;
+    box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
+    transform-origin: top center;
+    animation: nav-submenu-in 0.16s ease-out;
+  }
+  @keyframes nav-submenu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-submenu {
+      animation: none;
+    }
   }
   .nav-group[data-nav-group="more"] .nav-submenu {
     left: auto;
@@ -602,23 +687,26 @@ const navGroups = [
   .nav-submenu a {
     display: flex;
     align-items: center;
-    gap: 0.72rem;
-    align-items: center;
-    min-height: 2.7rem;
+    gap: 0.55rem;
+    min-height: 2.25rem;
     width: auto;
     min-width: max-content;
-    padding: 0.68rem 0.86rem;
-    border-radius: 0.8rem;
-    color: color-mix(in srgb, #d7dde7 92%, #8b93a6 8%);
+    padding: 0.45rem 0.7rem;
+    border-radius: 0.5rem;
+    color: #fff;
     background: transparent;
     border: 1px solid transparent;
     box-sizing: border-box;
+    text-decoration: none;
+    opacity: 0.88;
+    transition: background 0.15s ease, opacity 0.15s ease;
   }
   .nav-submenu a:hover,
   .nav-submenu a:focus-visible,
   .nav-submenu a.active {
-    background: color-mix(in srgb, #93a4be 13%, transparent);
-    border-color: color-mix(in srgb, #90a5bf 18%, transparent);
+    opacity: 1;
+    background: color-mix(in srgb, white 10%, transparent);
+    border-color: transparent;
   }
   .nav-submenu a.active::after {
     display: none;
@@ -627,176 +715,278 @@ const navGroups = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.2rem;
-    flex: 0 0 1.2rem;
-    font-size: 1.04rem;
-    color: color-mix(in srgb, #c4ccd8 90%, #7f8999 10%);
+    width: 1.1rem;
+    flex: 0 0 1.1rem;
+    font-size: 1rem;
+    color: color-mix(in srgb, white 72%, transparent);
   }
   .nav-submenu-text {
     line-height: 1.25;
-    font-size: 0.87rem;
-    font-weight: 530;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
     flex: 1 1 auto;
+    color: #fff;
   }
-  @media (max-width: 880px) {
-    .nav-group details {
-      width: auto;
-    }
-    .nav-submenu {
-      position: absolute;
-      top: calc(100% + 0.35rem);
-      left: 0;
-      z-index: 130;
-      margin-top: 0;
-      transform: none;
-      min-width: min(260px, calc(100vw - 2rem));
-      width: max-content;
-      max-width: calc(100vw - 2rem);
-    }
-    .nav-group[data-nav-group="more"] .nav-submenu {
-      left: auto;
-      right: 0;
-    }
-    .nav-group[data-nav-group="ai-testing"] .nav-submenu {
-      left: auto;
-      right: 0;
-    }
-    .nav-submenu::before {
-      display: block;
-    }
+  .nav-backdrop {
+    display: none;
   }
   .nav-tool {
     display: flex;
     align-items: center;
-    margin-inline-start: 0.15rem;
-    padding-inline-start: 0.45rem;
-    border-inline-start: 1px solid color-mix(in srgb, white 10%, transparent);
+    margin-inline-start: 0.1rem;
+    padding-inline-start: 0.35rem;
+    border-inline-start: 1px solid color-mix(in srgb, white 16%, transparent);
+    color: #fff;
+  }
+  .header-utils {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    flex-shrink: 0;
+    margin-inline-start: 0.25rem;
+  }
+  .header-utils .nav-tool--bar {
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+    border-inline-start: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-toggle__close {
+    display: none;
+  }
+  .l-header[data-nav-open] .nav-toggle__open {
+    display: none;
+  }
+  .l-header[data-nav-open] .nav-toggle__close {
+    display: inline-flex;
+  }
+  .nav-tool :global(.locale-trigger) {
+    height: 32px;
+    min-height: 32px;
+    min-width: 44px;
+    padding-inline: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+  .nav-tool :global(.locale-trigger:hover),
+  .nav-tool :global(.locale-trigger:focus-visible) {
+    color: #fff;
+    background: color-mix(in srgb, white 10%, transparent);
+    border-color: transparent;
+  }
+  .nav-tool :global(.icon-lang),
+  .nav-tool :global(.icon-expand) {
+    color: #fff;
+    opacity: 0.85;
+    font-size: 16px;
+  }
+  .nav-tool :global(.locale-panel) {
+    background: #1d1d1f;
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+    box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
+  }
+  .nav-tool :global(.locale-panel a) {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .nav-tool :global(.locale-panel a:hover) {
+    background: color-mix(in srgb, white 10%, transparent);
+    color: #fff;
   }
   .btn-icon {
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    height: 2.5rem;
-    min-width: 2.5rem;
-    padding-inline: 0.65rem;
+    height: 32px;
+    min-width: 32px;
+    padding-inline: 0.4rem;
     white-space: nowrap;
     font: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: color-mix(in srgb, white 76%, #b6b4cb 24%);
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
     background: transparent;
     border: 1px solid transparent;
-    border-radius: 999px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    transition: background 0.18s ease, opacity 0.18s ease;
   }
   .btn-icon:hover,
   .btn-icon:focus-visible {
     color: #fff;
-    background: color-mix(in srgb, white 8%, transparent);
-    border-color: color-mix(in srgb, white 8%, transparent);
+    background: color-mix(in srgb, white 10%, transparent);
+    border-color: transparent;
   }
   .btn-icon:focus-visible {
-    outline: none;
+    outline: 2px solid color-mix(in srgb, white 70%, transparent);
+    outline-offset: 1px;
   }
   .btn-icon .material-icons-sharp {
-    font-size: 20px;
+    font-size: 18px;
     color: currentColor;
     opacity: 0.95;
     flex-shrink: 0;
   }
 
-  @media (prefers-color-scheme: light) {
+  @media (width < 834px) {
     .l-header {
-      border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
-      background:
-        radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 14%, #f7ecff 86%) 0%, transparent 36%),
-        linear-gradient(90deg, #f7f1ff 0%, #fdf7ff 46%, #f6efff 100%);
-      box-shadow:
-        inset 0 -1px 0 color-mix(in srgb, var(--color-theme) 10%, transparent),
-        0 12px 30px color-mix(in srgb, #a76cc9 12%, transparent);
+      height: auto;
+      min-height: 44px;
     }
-    .site-slogan {
-      color: color-mix(in srgb, var(--color-main) 72%, var(--color-theme) 28%);
-      opacity: 0.9;
+    .header-shell {
+      height: auto;
+      min-height: 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.35rem;
+      padding-block: 0;
+      position: relative;
+      z-index: 2;
     }
-    h1 a {
-      color: color-mix(in srgb, var(--color-main) 92%, #2b1b4a 8%);
+    .site-brand,
+    .site-brand-row {
+      justify-content: flex-start;
+      min-width: 0;
     }
-    h1 a:hover {
-      color: color-mix(in srgb, var(--color-main) 86%, var(--color-theme) 14%);
+    .site-brand {
+      min-height: 44px;
+      align-items: center;
+    }
+    .header-utils {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .nav-toggle {
+      display: inline-flex;
+    }
+    .site-nav {
+      display: block;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      width: 100%;
+      max-height: 0;
+      padding-block: 0;
+      border-top: 0 solid transparent;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        max-height 0.22s ease,
+        opacity 0.18s ease,
+        padding-block 0.18s ease,
+        border-color 0.18s ease,
+        visibility 0s linear 0.22s;
+    }
+    .l-header[data-nav-open] .site-nav {
+      max-height: min(70vh, 32rem);
+      padding-block: 0.35rem 0.85rem;
+      border-top: 1px solid color-mix(in srgb, white 12%, transparent);
+      overflow: auto;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition:
+        max-height 0.28s ease,
+        opacity 0.18s ease,
+        padding-block 0.18s ease,
+        border-color 0.18s ease,
+        visibility 0s;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 44px 0 0;
+      z-index: 1;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: color-mix(in srgb, black 42%, transparent);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+    .l-header[data-nav-open] .nav-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 0.2s ease, visibility 0s;
+    }
+    :global(html.nav-drawer-open) {
+      overflow: hidden;
     }
     .site-nav > ul {
-      border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
-      background: color-mix(in srgb, #ffffff 90%, #f2e8ff 10%);
-      box-shadow:
-        inset 0 1px 0 color-mix(in srgb, white 72%, transparent),
-        0 12px 26px color-mix(in srgb, #a76cc9 14%, transparent);
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    .site-nav > ul > li {
+      width: 100%;
     }
     .site-nav > ul > li > a,
     .nav-group-trigger {
-      color: color-mix(in srgb, var(--color-main) 78%, #5a4a73 22%);
-    }
-    .site-nav > ul > li > a:hover,
-    .site-nav > ul > li > a:active,
-    .site-nav > ul > li > a:focus-visible,
-    .nav-group-trigger:hover,
-    .nav-group-trigger:focus-visible {
-      color: color-mix(in srgb, var(--color-main) 88%, #2f2343 12%);
-      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    }
-    .site-nav > ul > li > a.active,
-    .nav-group-trigger.active {
-      color: color-mix(in srgb, var(--color-main) 92%, #221a35 8%);
-      background:
-        linear-gradient(
-          180deg,
-          color-mix(in srgb, white 82%, transparent) 0%,
-          color-mix(in srgb, var(--color-theme) 14%, transparent) 100%
-        );
-      box-shadow:
-        inset 0 1px 0 color-mix(in srgb, white 72%, transparent),
-        0 0 0 1px color-mix(in srgb, var(--color-theme) 20%, transparent);
+      min-height: 44px;
+      width: 100%;
+      justify-content: flex-start;
+      padding-inline: 0.75rem;
     }
     .site-nav > ul > li > a.active::after,
     .nav-group-trigger.active::after {
-      background: linear-gradient(
-        90deg,
-        color-mix(in srgb, var(--color-main) 80%, var(--color-theme) 20%) 0%,
-        color-mix(in srgb, var(--color-main) 62%, var(--color-theme) 38%) 100%
-      );
+      left: 0.75rem;
+      right: auto;
+      width: 1.25rem;
+      bottom: 10px;
+    }
+    .nav-group details {
+      width: 100%;
     }
     .nav-submenu {
-      border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-      background: color-mix(in srgb, #ffffff 94%, #f3ebff 6%);
-      box-shadow:
-        0 16px 30px color-mix(in srgb, #a76cc9 14%, transparent),
-        inset 0 1px 0 color-mix(in srgb, white 70%, transparent);
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      z-index: auto;
+      margin-top: 0.15rem;
+      min-width: 0;
+      width: 100%;
+      max-width: none;
+      box-shadow: none;
+      border: none;
+      background: color-mix(in srgb, white 6%, transparent);
+      animation: none;
     }
-    .nav-submenu a {
-      color: color-mix(in srgb, var(--color-main) 84%, #5c5670 16%);
+    .nav-group[data-nav-group="more"] .nav-submenu,
+    .nav-group[data-nav-group="ai-testing"] .nav-submenu {
+      left: auto;
+      right: auto;
     }
-    .nav-submenu a:hover,
-    .nav-submenu a:focus-visible,
-    .nav-submenu a.active {
-      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-      border-color: color-mix(in srgb, var(--color-theme) 22%, transparent);
+    .nav-submenu::before {
+      display: none;
     }
-    .nav-submenu-icon {
-      color: color-mix(in srgb, var(--color-main) 70%, #6d6a84 30%);
-    }
-    .nav-tool {
-      border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent);
-    }
-    .btn-icon {
-      color: color-mix(in srgb, var(--color-main) 76%, #5e5775 24%);
-    }
-    .btn-icon:hover,
-    .btn-icon:focus-visible {
-      color: color-mix(in srgb, var(--color-main) 90%, #2f2445 10%);
-      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-      border-color: color-mix(in srgb, var(--color-theme) 18%, transparent);
+  }
+
+  @media (width < 834px) and (prefers-reduced-motion: reduce) {
+    .site-nav,
+    .l-header[data-nav-open] .site-nav,
+    .nav-backdrop,
+    .l-header[data-nav-open] .nav-backdrop {
+      transition: none;
     }
   }
 </style>
