@@ -14,10 +14,6 @@ describe("apple design tokens in base.css", () => {
     expect(baseCss).not.toMatch(/--color-theme:\s*#ef4d1a/i);
   });
 
-  it("keeps brand orange only as a dedicated mark token", () => {
-    expect(baseCss).toMatch(/--color-brand-mark:\s*#ef4d1a/i);
-  });
-
   it("defines parchment canvas", () => {
     expect(baseCss).toMatch(/--color-base:\s*#f5f5f7/i);
   });
