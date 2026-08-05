@@ -548,6 +548,7 @@ const tocHeadings = [
     padding: 0;
     display: grid;
     gap: 0.85rem;
+    min-width: 0;
   }
   .detail-header {
     border-radius: 14px;
@@ -558,6 +559,11 @@ const tocHeadings = [
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
+    min-width: 0;
+  }
+  .detail-header-main {
+    min-width: 0;
+    flex: 1 1 auto;
   }
   .detail-header h1 {
     margin: 0.35rem 0 0;
@@ -587,12 +593,17 @@ const tocHeadings = [
     grid-template-columns: minmax(0, 1fr) minmax(160px, 200px);
     gap: 0.85rem;
     align-items: start;
+    min-width: 0;
+  }
+  .detail-main {
+    min-width: 0;
   }
   .detail-aside {
     position: sticky;
     top: 0.75rem;
     display: grid;
     gap: 0.75rem;
+    min-width: 0;
   }
   .elevator {
     border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
@@ -639,6 +650,7 @@ const tocHeadings = [
   }
   .detail-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
     border-bottom: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
@@ -662,6 +674,7 @@ const tocHeadings = [
     padding: 0.8rem;
     margin-bottom: 0.75rem;
     scroll-margin-top: 1rem;
+    min-width: 0;
   }
   .detail-section h2 {
     margin-top: 0;
@@ -733,6 +746,8 @@ const tocHeadings = [
     padding: 0.85rem;
     margin: 0.85rem 0;
     scroll-margin-top: 1rem;
+    min-width: 0;
+    max-width: 100%;
   }
   .install-block > h2 {
     margin: 0 0 0.75rem;
@@ -772,8 +787,8 @@ const tocHeadings = [
     border: 1px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
     background: color-mix(in srgb, var(--color-theme) 8%, transparent);
   }
-  .installer-panel { display: grid; gap: 0.8rem; }
-  .installer-row, .installer-snippet { display: grid; gap: 0.5rem; }
+  .installer-panel { display: grid; gap: 0.8rem; min-width: 0; max-width: 100%; }
+  .installer-row, .installer-snippet { display: grid; gap: 0.5rem; min-width: 0; max-width: 100%; }
   .installer-label {
     margin: 0;
     font-size: 0.92rem;
@@ -805,12 +820,16 @@ const tocHeadings = [
     position: relative;
     border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
     background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
   .code-card pre {
     margin: 0;
     padding: 1.7rem 0.72rem 0.72rem;
     overflow: auto;
     max-height: 220px;
+    max-width: 100%;
   }
   .code-card pre::before {
     content: attr(data-lang);
@@ -828,7 +847,9 @@ const tocHeadings = [
     line-height: 1.4;
     white-space: pre;
     display: block;
-    min-width: fit-content;
+    width: max-content;
+    max-width: none;
+    min-width: 0;
   }
   .copy-mini {
     position: absolute;
@@ -867,7 +888,7 @@ const tocHeadings = [
   :global(.qaskill-detail .code-card code .tok-fn) { color: #ffd479; }
   :global(.qaskill-detail .code-card code .tok-op) { color: #f58c66; }
   @media (max-width: 900px) {
-    .detail-layout { grid-template-columns: 1fr; }
+    .detail-layout { grid-template-columns: minmax(0, 1fr); }
     .detail-aside { position: static; order: -1; }
     .elevator {
       max-height: none;

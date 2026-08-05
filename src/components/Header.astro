@@ -130,9 +130,9 @@ const navGroups = [
             <img src="/favicon.svg" alt="" class="site-logo" width="24" height="24" />
             {locale === "zh-cn" ? (
               <span class="site-title-cobrand" aria-label={siteTitle}>
-                <span>软件测试同学</span>
+                <span class="site-title-primary">软件测试同学</span>
                 <span class="site-title-cobrand-x" aria-hidden="true">X</span>
-                <span>naodeng</span>
+                <span class="site-title-secondary">naodeng</span>
               </span>
             ) : (
               <span>{siteTitle}</span>
@@ -836,8 +836,9 @@ const navGroups = [
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.35rem;
       padding-block: 0;
+      padding-inline: 1rem;
       position: relative;
       z-index: 2;
     }
@@ -849,10 +850,34 @@ const navGroups = [
     .site-brand {
       min-height: 60px;
       align-items: center;
+      overflow: hidden;
+    }
+    .site-brand h1 {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .site-brand-link {
+      max-width: 100%;
+      min-width: 0;
+    }
+    .site-title-cobrand {
+      min-width: 0;
+    }
+    /* Keep brand readable; hide cobrand suffix that collided with utils */
+    .site-title-cobrand-x,
+    .site-title-secondary {
+      display: none;
     }
     .header-utils {
       grid-column: 2;
       grid-row: 1;
+      position: relative;
+      z-index: 3;
+      gap: 0;
+    }
+    .nav-tool :global(.locale-trigger) {
+      min-width: 44px;
+      padding-inline: 6px;
     }
     .nav-toggle {
       display: inline-flex;

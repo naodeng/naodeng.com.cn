@@ -21,4 +21,20 @@ test.describe("QA Skills", () => {
     await expect(page.locator("#installer-panel")).toBeVisible();
     await expect(page.locator("#copy-quick-btn")).toBeVisible();
   });
+
+  test("detail page does not overflow horizontally on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/zh-cn/qaskills/requirements-analysis/");
+    await expect(page.locator("#install-section")).toBeVisible();
+    const metrics = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+      codeCardWidth: Math.round(
+        (document.querySelector(".code-card") as HTMLElement | null)?.getBoundingClientRect().width || 0,
+      ),
+    }));
+    expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
+    expect(metrics.codeCardWidth).toBeGreaterThan(0);
+    expect(metrics.codeCardWidth).toBeLessThanOrEqual(metrics.clientWidth);
+  });
 });
