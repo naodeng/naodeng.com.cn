@@ -27,6 +27,18 @@ description: Use this skill when you need API tests.
 ---
 
 # API 测试（中文版）
+
+## 何时使用
+
+- 需要 API 测试方案。
+
+## 执行流程
+
+1. 读主提示词。
+
+## 常见误区
+
+- 不要编造细节。
 \`\`\`
 
 ## 安装
@@ -45,5 +57,15 @@ describe("parseQASkillMarkdown", () => {
     expect(skill.sections.whenToUse).toContain("API 测试方案");
     expect(skill.rawSkillMarkdown).toContain("name: api-testing");
     expect(skill.intro).toContain("API tests");
+  });
+
+  it("keeps full raw SKILL.md even when fenced content has ## headings", () => {
+    const skill = parseQASkillMarkdown("zh-cn", "api-testing", SITE_MD);
+    expect(skill.rawSkillMarkdown).toContain("## 何时使用");
+    expect(skill.rawSkillMarkdown).toContain("## 执行流程");
+    expect(skill.rawSkillMarkdown).toContain("## 常见误区");
+    expect(skill.rawSkillMarkdown).toContain("不要编造细节");
+    expect(skill.rawSkillMarkdown).not.toContain("## 安装");
+    expect(skill.sections.whenToUse).toBe("- 需要 API 测试方案。");
   });
 });

@@ -119,19 +119,13 @@ const toolMeta = {
   opencode: { icon: "integration_instructions", label: "opencode" },
   trae: { icon: "bolt", label: "trae" },
 } as const;
-const installers = {
-  mac: Object.fromEntries(
-    aiTools.map((tool) => [
-      tool,
-      `https://raw.githubusercontent.com/naodeng/awesome-qa-skills/main/installers/${installerLang}/${skill.slug}/mac/${tool}.sh`,
-    ])
-  ),
-  windows: Object.fromEntries(
-    aiTools.map((tool) => [
-      tool,
-      `https://raw.githubusercontent.com/naodeng/awesome-qa-skills/main/installers/${installerLang}/${skill.slug}/windows/${tool}.ps1`,
-    ])
-  ),
+
+const skillKindMatch = skill.sourceSkillUrl.match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows)\//);
+const skillKind = skillKindMatch?.[1] || (skill.category === "workflow" ? "testing-workflows" : "testing-types");
+const installContext = {
+  slug: skill.slug,
+  lang: installerLang,
+  kind: skillKind,
 };
 
 const callExample =
@@ -325,7 +319,7 @@ const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]
   </article>
 </Base>
 
-<script is:inline define:vars={{ installers, lang, copiedLabel: text.copied, copyLabel: lang === "zh-cn" ? "复制" : "Copy", copyRawLabel: text.copyRaw }}>
+<script is:inline define:vars={{ installContext, lang, copiedLabel: text.copied, copyLabel: lang === "zh-cn" ? "复制" : "Copy", copyRawLabel: text.copyRaw }}>
   (() => {
     const tabButtons = Array.from(document.querySelectorAll(".detail-tab[data-tab]"));
     const panelGuide = document.getElementById("panel-guide");
@@ -369,11 +363,6 @@ const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]
 
     let currentOS = /windows/i.test(navigator.userAgent) ? "windows" : "mac";
     let currentTool = "codex";
-    const cache = new Map();
-    const messages = {
-      loading: lang === "zh-cn" ? "正在加载脚本..." : "Loading script...",
-      failed: lang === "zh-cn" ? "脚本加载失败，请打开源码链接。" : "Failed to load script. Use the source link.",
-    };
 
     const escapeHTML = (value) =>
       value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -392,7 +381,7 @@ const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]
       stash(/\$\{[^}]+\}|\$[A-Za-z_][A-Za-z0-9_:]*/g, "tok-var");
       stash(/(^|\n)\s*#.*$/gm, "tok-comment");
       stash(/\b(?:if|then|fi|for|do|done|while|case|esac)\b/g, "tok-keyword");
-      stash(/\b(?:curl|irm|iex|exec|set|mkdir|cd|git|cp|echo|Join-Path|Set-Location|Copy-Item|Write-Host|New-Item)\b/g, "tok-fn");
+      stash(/\b(?:curl|irm|iex|exec|set|mkdir|cd|git|cp|echo|bash|trap|Join-Path|Set-Location|Copy-Item|Write-Host|New-Item|Remove-Item)\b/g, "tok-fn");
       stash(/\|\||&&|\||=>|->/g, "tok-op");
       if (langKey === "powershell") {
         stash(/\b(?:param|function|foreach|switch|where|select)\b/g, "tok-keyword");
@@ -409,46 +398,66 @@ const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]
       toolButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.tool === currentTool));
     };
 
-    const getUrl = () => installers[currentOS]?.[currentTool] || "";
+    // Per-skill shortcut installers under installers/ are not portable for website visitors.
+    // Use the official scripts/install-skills-* after a shallow clone instead.
     const getQuickCommand = () => {
-      const url = getUrl();
-      if (!url) return "";
-      return currentOS === "windows" ? `irm "${url}" | iex` : `curl -fsSL "${url}" | bash`;
+      if (currentOS === "windows") {
+        return [
+          `$repo = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString("N"));`,
+          `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git $repo;`,
+          `& (Join-Path $repo "scripts\\install-skills-windows.ps1") -Tool ${currentTool} -Lang ${installContext.lang} -Skill ${installContext.slug};`,
+          `Remove-Item -Recurse -Force $repo`,
+        ].join(" ");
+      }
+      return [
+        `REPO="$(mktemp -d)"`,
+        `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git "$REPO"`,
+        `bash "$REPO/scripts/install-skills-mac.sh" --tool ${currentTool} --lang ${installContext.lang} --skill ${installContext.slug}`,
+        `rm -rf "$REPO"`,
+      ].join(" && ");
     };
 
-    const loadFullScript = async () => {
-      const url = getUrl();
+    const getFullScript = () => {
+      if (currentOS === "windows") {
+        return [
+          `# Install ${installContext.slug} for ${currentTool}`,
+          `$ErrorActionPreference = "Stop"`,
+          `$repo = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString("N"))`,
+          `try {`,
+          `  git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git $repo`,
+          `  & (Join-Path $repo "scripts\\install-skills-windows.ps1") -Tool ${currentTool} -Lang ${installContext.lang} -Skill ${installContext.slug}`,
+          `}`,
+          `finally {`,
+          `  if (Test-Path $repo) { Remove-Item -Recurse -Force $repo }`,
+          `}`,
+        ].join("\n");
+      }
+      return [
+        `#!/usr/bin/env bash`,
+        `set -euo pipefail`,
+        `# Install ${installContext.slug} for ${currentTool}`,
+        `REPO="$(mktemp -d)"`,
+        `trap 'rm -rf "$REPO"' EXIT`,
+        `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git "$REPO"`,
+        `bash "$REPO/scripts/install-skills-mac.sh" --tool ${currentTool} --lang ${installContext.lang} --skill ${installContext.slug}`,
+      ].join("\n");
+    };
+
+    const refreshCommands = () => {
       const langKey = currentOS === "windows" ? "powershell" : "shell";
       const codeClass = currentOS === "windows" ? "language-powershell" : "language-bash";
       [quickCodeEl, fullCodeEl].forEach((el) => {
         el.className = codeClass;
         el.closest("pre")?.setAttribute("data-lang", langKey);
       });
-      renderCode(quickCodeEl, getQuickCommand() || messages.failed, langKey);
-      renderCode(fullCodeEl, messages.loading, langKey);
-      if (!url) {
-        renderCode(fullCodeEl, messages.failed, langKey);
-        return;
-      }
-      if (cache.has(url)) {
-        renderCode(fullCodeEl, cache.get(url), langKey);
-        return;
-      }
-      try {
-        const resp = await fetch(url, { cache: "force-cache" });
-        if (!resp.ok) throw new Error("load failed");
-        const script = await resp.text();
-        cache.set(url, script);
-        renderCode(fullCodeEl, script, langKey);
-      } catch {
-        renderCode(fullCodeEl, messages.failed, langKey);
-      }
+      renderCode(quickCodeEl, getQuickCommand(), langKey);
+      renderCode(fullCodeEl, getFullScript(), langKey);
     };
 
-    const bindCopy = (btn, el, ignoreValues = []) => {
+    const bindCopy = (btn, el) => {
       btn.addEventListener("click", async () => {
         const content = el.textContent || "";
-        if (!content || ignoreValues.includes(content)) return;
+        if (!content) return;
         try {
           await navigator.clipboard.writeText(content);
           btn.textContent = copiedLabel;
@@ -461,23 +470,23 @@ const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]
       btn.addEventListener("click", () => {
         currentOS = btn.dataset.os || "mac";
         renderActive();
-        loadFullScript();
+        refreshCommands();
       });
     });
     toolButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         currentTool = btn.dataset.tool || "codex";
         renderActive();
-        loadFullScript();
+        refreshCommands();
       });
     });
 
-    bindCopy(copyQuickBtn, quickCodeEl, [messages.failed]);
-    bindCopy(copyFullBtn, fullCodeEl, [messages.loading, messages.failed]);
+    bindCopy(copyQuickBtn, quickCodeEl);
+    bindCopy(copyFullBtn, fullCodeEl);
     if (copyCallBtn && callCodeEl) bindCopy(copyCallBtn, callCodeEl);
 
     renderActive();
-    loadFullScript();
+    refreshCommands();
   })();
 </script>
 

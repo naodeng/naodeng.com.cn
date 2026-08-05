@@ -127,6 +127,72 @@ function sectionContent(body: string, heading: string) {
   return body.slice(start, end).trim();
 }
 
+/** Extract fenced raw SKILL.md without treating headings inside the fence as section boundaries. */
+function extractRawSkillMarkdown(body: string) {
+  const headingMatch = /^##\s+(?:原始 SKILL\.md|Raw SKILL\.md)\s*$/m.exec(body);
+  if (!headingMatch) return "";
+
+  const afterHeading = body.slice(headingMatch.index + headingMatch[0].length);
+  const open = /^(?:\s*)(`{3,})(?:markdown|md)?\s*\n/m.exec(afterHeading);
+  if (!open) return afterHeading.trim();
+
+  const ticks = open[1];
+  const contentStart = (open.index || 0) + open[0].length;
+  const afterOpen = afterHeading.slice(contentStart);
+  const closeMarker = `\n${ticks}`;
+  const closeAt = afterOpen.indexOf(closeMarker);
+  if (closeAt < 0) return afterOpen.replace(/\n$/, "").trimEnd();
+
+  const afterClose = afterOpen.slice(closeAt + closeMarker.length);
+  if (afterClose && !/^\s*(\n|$)/.test(afterClose)) {
+    // Same tick run appears mid-content; take last exact line fence.
+    const lines = afterOpen.split("\n");
+    let endLine = -1;
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (lines[i] === ticks) {
+        endLine = i;
+        break;
+      }
+    }
+    if (endLine >= 0) return lines.slice(0, endLine).join("\n");
+  }
+
+  return afterOpen.slice(0, closeAt);
+}
+
+function stripRawSkillSection(body: string) {
+  const headingMatch = /^##\s+(?:原始 SKILL\.md|Raw SKILL\.md)\s*$/m.exec(body);
+  if (!headingMatch) return body;
+
+  const start = headingMatch.index;
+  const afterHeading = body.slice(start + headingMatch[0].length);
+  const open = /^(?:\s*)(`{3,})(?:markdown|md)?\s*\n/m.exec(afterHeading);
+  if (!open) {
+    const next = /^##\s+/m.exec(afterHeading);
+    const end = next ? start + headingMatch[0].length + next.index : body.length;
+    return `${body.slice(0, start)}${body.slice(end)}`;
+  }
+
+  const ticks = open[1];
+  const contentStart = (open.index || 0) + open[0].length;
+  const afterOpen = afterHeading.slice(contentStart);
+  const closeMarker = `\n${ticks}`;
+  let closeAt = afterOpen.indexOf(closeMarker);
+  if (closeAt < 0) {
+    const lines = afterOpen.split("\n");
+    const endLine = lines.findIndex((line) => line === ticks);
+    if (endLine < 0) return body.slice(0, start);
+    closeAt = lines.slice(0, endLine).join("\n").length;
+  }
+
+  let closeEnd = contentStart + closeAt + closeMarker.length;
+  const rest = afterHeading.slice(closeEnd);
+  const trailing = rest.match(/^[ \t]*\n/);
+  if (trailing) closeEnd += trailing[0].length;
+
+  return `${body.slice(0, start)}${body.slice(start + headingMatch[0].length + closeEnd)}`;
+}
+
 function parseTitle(body: string) {
   const match = body.match(/^#\s+(.+)$/m);
   return (match?.[1] ?? "").trim();
@@ -161,25 +227,6 @@ function parseMetadata(body: string) {
   };
 }
 
-function extractRawSkillMarkdown(body: string) {
-  const section =
-    sectionContent(body, "原始 SKILL.md") || sectionContent(body, "Raw SKILL.md");
-  if (!section) return "";
-
-  const fence = section.match(/^(`{3,})(?:markdown|md)?\s*\n([\s\S]*?)\n\1\s*$/m);
-  if (fence) return fence[2].replace(/\n$/, "");
-
-  const loose = section.match(/^(`{3,})(?:markdown|md)?\s*\n([\s\S]*)/m);
-  if (loose) {
-    const ticks = loose[1];
-    const rest = loose[2];
-    const end = rest.lastIndexOf(`\n${ticks}`);
-    if (end >= 0) return rest.slice(0, end);
-    return rest.replace(new RegExp(`\n${ticks}\\s*$`), "");
-  }
-  return section.trim();
-}
-
 function inferCategory(slug: string, declared: QASkillCategory): QASkillCategory {
   if (declared) return declared;
   if (WORKFLOW_SLUGS.has(slug)) return "workflow";
@@ -208,9 +255,7 @@ export function parseQASkillMarkdown(lang: "en" | "zh-cn", slug: string, body: s
   const author = parseAuthor(body) || "naodeng";
   const rawSkillMarkdown = extractRawSkillMarkdown(body);
   // Avoid ## headings inside the raw fence overwriting structured sections.
-  const bodyWithoutRaw = body
-    .replace(/^##\s+原始 SKILL\.md\s*$[\s\S]*?(?=^##\s+|\Z)/m, "")
-    .replace(/^##\s+Raw SKILL\.md\s*$[\s\S]*?(?=^##\s+|\Z)/m, "");
+  const bodyWithoutRaw = stripRawSkillSection(body);
   const sections = extractCanonicalSections(bodyWithoutRaw);
   const sectionHtml = Object.fromEntries(
     SECTION_KEYS.map((key) => [key, toHtml(sections[key])])
