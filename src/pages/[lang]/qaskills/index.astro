@@ -377,6 +377,8 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       document.querySelector(".chip[data-evals-toggle]")?.classList.remove("is-active");
       apply();
     });
+
+    apply();
   })();
 </script>
 
@@ -479,6 +481,9 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     padding: 0.9rem;
     border-radius: 12px;
     border: 1px dashed color-mix(in srgb, var(--color-main) 24%, transparent);
+  }
+  .empty-state[hidden] {
+    display: none;
   }
   .quick-grid {
     list-style: none;

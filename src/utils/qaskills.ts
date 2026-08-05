@@ -261,7 +261,8 @@ export function parseQASkillMarkdown(lang: "en" | "zh-cn", slug: string, body: s
     SECTION_KEYS.map((key) => [key, toHtml(sections[key])])
   ) as Record<SectionKey, string>;
   const description = meta.description;
-  const intro = description || firstBulletText(sections.whenToUse) || title;
+  // Card intros should match page language. YAML description is often English (agent triggers).
+  const intro = firstBulletText(sections.whenToUse) || description || title;
   const category = inferCategory(meta.slug || slug, meta.category);
   const installMarkdown =
     sectionContent(body, "安装") || sectionContent(body, "Install") || "";

@@ -56,7 +56,8 @@ describe("parseQASkillMarkdown", () => {
     expect(skill.updatedAt).toBe("2026-08-05");
     expect(skill.sections.whenToUse).toContain("API 测试方案");
     expect(skill.rawSkillMarkdown).toContain("name: api-testing");
-    expect(skill.intro).toContain("API tests");
+    expect(skill.description).toContain("API tests");
+    expect(skill.intro).toContain("需要 API 测试方案");
   });
 
   it("keeps full raw SKILL.md even when fenced content has ## headings", () => {
