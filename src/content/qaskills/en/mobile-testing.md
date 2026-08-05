@@ -1,103 +1,146 @@
-# mobile-testing
+# Mobile Testing
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: mobile-testing
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mobile-testing/SKILL.md
+- description: Use this skill when you need to design mobile test plans for iOS or Android covering functionality, compatibility, performance, network, and security; triggers include mobile testing and app testing.
 
-## Quick Intro
-- Who should use: Mobile QAs validating behavior across devices and OS versions.
-- Best used when: Compatibility, lifecycle, network, and interaction risks must be checked on mobile.
-- How to use: Build a device matrix, run key journeys under mobile-specific conditions, then report by device tier.
+## When to Use
 
+- Need help with mobile testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
 
-## Usage Guide
-1. Install and enable `mobile-testing` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with device matrix, for example: "Use `mobile-testing` on iOS17 + Android13 payment flow."
-4. Ask for outputs by device tier: scenario list, risk map, and reporting format.
-5. Re-run for newly added devices or OS versions only.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- Mobile app/web feature must be validated across devices and OS versions.
-- Crash, layout break, or gesture-related issues are reported.
-- Team needs confidence in network, lifecycle, and permission behavior.
+## Core Constraints
 
-### What
-- Validate mobile behavior across device capability and usage context.
-- Detect issues in compatibility, performance, and interaction consistency.
-- Provide release risk view specific to mobile platform constraints.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Define device matrix by user share, OS version, and hardware class.
-2. Cover install/update, login, key journeys, and background/foreground transitions.
-3. Test network switches, offline/weak network, and interruption events.
-4. Validate gesture, orientation, and permission flows.
-5. Capture device-specific defects with reproducible context.
-6. Report compatibility coverage and residual risk by device tier.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Scope: checkout on Android 12/13 and iOS 17 under weak network
+- Before producing output, read and follow `prompts/mobile-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Found duplicate submission on reconnect scenario (Android)
-- Found keyboard overlap in coupon input (iOS)
-- Device-tier risk summary and fix priority
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Test app on one phone"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope, device and OS coverage, install or upgrade checks, core flows, permission handling, network and interruption behavior, push or deep link behavior if relevant, performance or battery concerns, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Single-device result used as global conclusion
-- Major compatibility risks remain hidden
+## Common Pitfalls
 
-### Limits
-- Do not generalize from one device result.
-- Do not skip lifecycle/interruption scenarios.
-- Do not ignore permission and system-setting impacts.
-- Do not report mobile quality without device matrix context.
-- Do not close verification before high-share devices pass.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: mobile-testing
+description: Use this skill when you need to design mobile test plans for iOS or Android covering functionality, compatibility, performance, network, and security; triggers include mobile testing and app testing.
+---
+
+# Mobile Testing (English)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need help with mobile testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/mobile-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope, device and OS coverage, install or upgrade checks, core flows, permission handling, network and interruption behavior, push or deep link behavior if relevant, performance or battery concerns, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/mobile-testing/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [mobile-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mobile-testing/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill mobile-testing
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[mobile-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mobile-testing/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

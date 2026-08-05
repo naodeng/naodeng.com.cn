@@ -1,103 +1,140 @@
-# discover-testing
+# Testing Skill Discovery
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: discover-testing
+- category: workflow
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/discover-testing/SKILL.md
+- description: Use this skill when you need to route a request to the right testing skill before execution; triggers include discover testing, testing skill router, and which testing skill.
 
-## Quick Intro
-- Who should use: QA leads, PMs, and engineers who need to choose the right testing skill quickly.
-- Best used when: A request is vague and you need a fast decision on which QA skill to run first.
-- How to use: Describe the problem and constraints, let this skill route to the best next skill, then execute that selected skill.
+## When to Use
 
+- Need to decide which testing skill should be used before execution.
+- The request mixes multiple testing directions or phases.
 
-## Usage Guide
-1. Install and enable `discover-testing` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with a direct instruction, for example: "Use `discover-testing` to build my testing workflow for this release/sprint/day."
-4. Ask for deliverables explicitly: phase plan, owners, blockers, and decision checklist.
-5. Run one feedback round: update changed constraints and ask the skill to regenerate only affected sections.
+## Workflow
 
-## Skill Breakdown
+1. Read the user request and identify the primary testing goal and stage.
+2. Follow the routing prompt under `prompts/`: pick 1 primary skill; add at most 1 helper only when needed.
+3. Hand the request to the target skill; do not execute the full testing work inside this router skill.
 
-### When
-- You receive a vague request like "help me test this" and must pick the right testing approach quickly.
-- A PM or developer asks which QA skill should be used first under tight time.
-- A new QA member needs a routing guide from problem type to executable skill.
+## Core Constraints
 
-### What
-- Identify the best-fit next skill for the current problem and context.
-- Produce a clear decision path (why this skill, why now, what next).
-- Reduce trial-and-error and avoid starting with the wrong testing method.
+- Recommend few skills — avoid menu dumping.
+- If the target skill is already obvious, say so directly.
+- Make the route actionable: name the skill and the reason.
 
-### How
-1. Classify request type: requirement quality, feature correctness, API, performance, security, release risk, or reporting.
-2. Extract constraints: deadline, environment, data availability, automation maturity, and business criticality.
-3. Match constraints to candidate skills and rank by impact vs. effort.
-4. Pick one primary skill and one fallback skill with trigger conditions.
-5. Define expected output from selected skill before execution.
-6. Re-route only when evidence shows mismatch.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- "Login API changed, release in 2 days, no regression report yet."
+- Before producing output, read and follow `prompts/discover-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+- For step ↔ prompt mapping: read `reference.md`.
 
-Output:
-- First: `api-testing` for contract and regression scope
-- Second: `test-reporting` for release-readiness evidence
-- Reason: highest risk is integration break before release
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Checkout flow fails intermittently on mobile"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: main goal, best-fit primary skill, optional supporting skill, why this choice fits, next step to continue work (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Route directly to `test-case-writing` without reproducing failure context
-- Misses `mobile-testing` as the first diagnostic step
+## Common Pitfalls
 
-### Limits
-- Do not replace deep execution skills; this skill is for routing and prioritization.
-- Do not provide random skill lists without decision logic.
-- Do not ignore business priority and release window.
-- Do not lock to one route when new evidence conflicts.
-- Do not claim final quality status without downstream execution evidence.
+- Do not recommend many skills at once.
+- Do not turn skill selection into full test execution.
+- Do not pretend a route is complete when information is insufficient.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: discover-testing
+description: Use this skill when you need to route a request to the right testing skill before execution; triggers include discover testing, testing skill router, and which testing skill.
+---
+
+# Testing Skill Discovery (English)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need to decide which testing skill should be used before execution.
+- The request mixes multiple testing directions or phases.
+
+## Workflow
+
+1. Read the user request and identify the primary testing goal and stage.
+2. Follow the routing prompt under `prompts/`: pick 1 primary skill; add at most 1 helper only when needed.
+3. Hand the request to the target skill; do not execute the full testing work inside this router skill.
+
+## Core Constraints
+
+- Recommend few skills — avoid menu dumping.
+- If the target skill is already obvious, say so directly.
+- Make the route actionable: name the skill and the reason.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/discover-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+- For step ↔ prompt mapping: read `reference.md`.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: main goal, best-fit primary skill, optional supporting skill, why this choice fits, next step to continue work (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not recommend many skills at once.
+- Do not turn skill selection into full test execution.
+- Do not pretend a route is complete when information is insufficient.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/discover-testing/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [discover-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/discover-testing/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill discover-testing
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[discover-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/discover-testing/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

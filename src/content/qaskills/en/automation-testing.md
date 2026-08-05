@@ -1,102 +1,146 @@
-# automation-testing
+# Automation Testing
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: automation-testing
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/automation-testing/SKILL.md
+- description: Use this skill when you need to design automation testing approaches using patterns like POM, data-driven testing, or BDD; triggers include automation testing and test automation strategy.
 
-## Quick Intro
-- Who should use: Automation QAs and teams running CI/CD quality gates.
-- Best used when: Manual regression is too costly and key flows need repeatable checks.
-- How to use: Select stable high-value scenarios, automate in layers, and maintain suite health continuously.
+## When to Use
 
+- Need help with automation testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
 
-## Usage Guide
-1. Install and enable `automation-testing` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with candidate scope, for example: "Use `automation-testing` to select top 20 automation candidates."
-4. Ask for outputs: ROI ranking, layer recommendation (API/UI), and CI gate proposal.
-5. Re-run monthly to refresh candidates and retire low-value scripts.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- Regression scope is large and repetitive manual runs are costly.
-- Team needs stable quality checks in CI/CD.
-- Critical flows require fast feedback on each build.
+## Core Constraints
 
-### What
-- Build reliable automated checks for high-value regression paths.
-- Reduce release risk through continuous verification.
-- Improve feedback speed while controlling maintenance cost.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Select automation candidates by business criticality and stability.
-2. Design layered checks (API/service/UI) for best ROI.
-3. Implement robust data handling and environment isolation.
-4. Add deterministic assertions and failure diagnostics.
-5. Integrate into pipeline with clear quality gates.
-6. Maintain suite health by removing flaky/obsolete tests.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Weekly regressions: login, payment, refund, invoice
+- Before producing output, read and follow `prompts/automation-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Automated suite with build-level smoke + nightly full run
-- Flakiness dashboard and owner-based fix workflow
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Automate everything"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope and objective, automation candidates, manual-only areas, priority by risk and ROI, framework alignment, data and environment needs, flaky-test risks, CI or execution strategy, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Low-value unstable UI scripts dominate effort
-- Slow pipeline and poor trust in failures
+## Common Pitfalls
 
-### Limits
-- Do not automate volatile low-value scenarios first.
-- Do not ignore test maintainability and ownership.
-- Do not merge flaky tests into release gate.
-- Do not treat automation coverage as total quality coverage.
-- Do not skip manual exploratory testing for unknown risks.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: automation-testing
+description: Use this skill when you need to design automation testing approaches using patterns like POM, data-driven testing, or BDD; triggers include automation testing and test automation strategy.
+---
+
+# Automation Testing (English)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need help with automation testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/automation-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope and objective, automation candidates, manual-only areas, priority by risk and ROI, framework alignment, data and environment needs, flaky-test risks, CI or execution strategy, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/automation-testing/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [automation-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/automation-testing/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill automation-testing
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[automation-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/automation-testing/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

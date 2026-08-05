@@ -1,105 +1,140 @@
-# daily-testing-workflow
+# Daily Testing Workflow
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: daily-testing-workflow
+- category: workflow
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/daily-testing-workflow/SKILL.md
+- description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include daily testing workflow and daily QA routine.
 
-## Quick Intro
-- Who should use: QA coordinators, test leads, and cross-functional delivery teams.
-- Best used when: You need daily task orchestration and blocker tracking rather than ad-hoc test execution.
-- How to use: Set scope and timeline, run the workflow by phase, then output status, risks, and next actions.
+## When to Use
 
+- Need a one-day QA cadence: morning plan, execution, defects, EOD wrap-up.
+- Need stage gates and handoffs to type skills—not a single isolated testing task.
 
-## Usage Guide
-1. Install and enable `daily-testing-workflow` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with a direct instruction, for example: "Use `daily-testing-workflow` to build my testing workflow for this release/sprint/day."
-4. Ask for deliverables explicitly: phase plan, owners, blockers, and decision checklist.
-5. Run one feedback round: update changed constraints and ask the skill to regenerate only affected sections.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow `prompts/daily-testing-workflow.md` (stages, gates, handoffs, output structure).
+2. Add only context that changes the result: day scope, environment, constraints, risks, carryover defects.
+3. After locating the stage, hand off by skill name per `reference.md`; no relative-path links to other skill internals.
+4. If input is incomplete, draft a usable day plan and mark assumptions and gaps.
 
-### When
-- You need a structured QA workflow for daily delivery rhythm.
-- Multiple testing activities must be orchestrated, not run ad hoc.
-- Team needs transparent status, dependency handling, and risk escalation.
+## Core Constraints
 
-### What
-- Build an execution sequence from analysis to verification to reporting.
-- Deliver day-level risk control with traceable evidence.
-- Expose daily blockers and regression drift early, with owner and due date.
+- Own phases and gates; hand full cases/strategy/reports to type skills.
+- Prioritize by risk; gates must be checkable.
+- Separate confirmed facts from assumptions.
+- Do not invent missing details; no relative-path links to other skill files.
 
-### How
-1. Confirm objective, scope, entry criteria, and exit criteria.
-2. Split work into phases: preparation, execution, consolidation, sign-off.
-3. Assign owner, deadline, and dependency for each phase task.
-4. Run critical-path tests first, then supporting and edge checks.
-5. Summarize findings by severity, business impact, and fix readiness.
-6. Publish workflow result: pass/fail status, residual risk, next action.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Scope: payment + coupon + order split
-- Time: 3 days
-- Goal: release confidence
+- Before producing output, read and follow `prompts/daily-testing-workflow.md`.
+- For step ↔ handoff skill mapping: read `reference.md`.
+- When deep-diving a stage: invoke the matching type skill (e.g. `bug-reporting`); do not expand full artifacts here.
+- When a template fits: use matching files under `output-templates/`.
 
-Output:
-- Workflow board with owner and schedule
-- Priority execution order and risk log
-- Final decision note with blocking and non-blocking issues
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Please test core flows before launch"
+- [ ] Followed the main prompt’s output structure
+- [ ] Includes today’s scope/won’t-do, gate status, priority queue, next skill
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- No phase split, no owners, no completion criteria
-- Team cannot judge progress or release readiness
+## Common Pitfalls
 
-### Limits
-- Do not run workflow without explicit entry/exit criteria.
-- Do not hide blockers in summary-level status updates.
-- Do not skip evidence collection for key decisions.
-- Do not convert workflow into a static checklist without reprioritization.
-- Do not output go/no-go recommendation when critical data is missing.
+- Do not turn the daily workflow into a functional-testing encyclopedia.
+- Do not leave work forever “in progress” without exit criteria.
+- Do not hand off multiple equal primary skills at once.
+- Do not pretend execution succeeded on a red environment.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: daily-testing-workflow
+description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include daily testing workflow and daily QA routine.
+---
+
+# Daily Testing Workflow
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need a one-day QA cadence: morning plan, execution, defects, EOD wrap-up.
+- Need stage gates and handoffs to type skills—not a single isolated testing task.
+
+## Workflow
+
+1. Read and follow `prompts/daily-testing-workflow.md` (stages, gates, handoffs, output structure).
+2. Add only context that changes the result: day scope, environment, constraints, risks, carryover defects.
+3. After locating the stage, hand off by skill name per `reference.md`; no relative-path links to other skill internals.
+4. If input is incomplete, draft a usable day plan and mark assumptions and gaps.
+
+## Core Constraints
+
+- Own phases and gates; hand full cases/strategy/reports to type skills.
+- Prioritize by risk; gates must be checkable.
+- Separate confirmed facts from assumptions.
+- Do not invent missing details; no relative-path links to other skill files.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/daily-testing-workflow.md`.
+- For step ↔ handoff skill mapping: read `reference.md`.
+- When deep-diving a stage: invoke the matching type skill (e.g. `bug-reporting`); do not expand full artifacts here.
+- When a template fits: use matching files under `output-templates/`.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt’s output structure
+- [ ] Includes today’s scope/won’t-do, gate status, priority queue, next skill
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not turn the daily workflow into a functional-testing encyclopedia.
+- Do not leave work forever “in progress” without exit criteria.
+- Do not hand off multiple equal primary skills at once.
+- Do not pretend execution succeeded on a red environment.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/daily-testing-workflow/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [daily-testing-workflow](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/daily-testing-workflow/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill daily-testing-workflow
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[daily-testing-workflow](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/daily-testing-workflow/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

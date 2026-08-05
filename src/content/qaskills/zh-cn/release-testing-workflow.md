@@ -1,85 +1,112 @@
-# release-testing-workflow
+# 发布测试工作流程
 
 作者：naodeng
 
-## 中文名称
-发布测试工作流程
+## 元数据
+- slug: release-testing-workflow
+- category: workflow
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/release-testing-workflow/SKILL.md
+- description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include 发布测试工作流程 and release testing workflow.
 
-## 目录
-- [中文名称](#中文名称)
-- [快速介绍](#快速介绍)
-- [使用说明](#使用说明)
-- [说明汇总](#说明汇总)
-  - [When 定场景：触发场景，用户何时使用](#when-定场景触发场景用户何时使用)
-  - [What 立目标：具体成果，解决什么问题](#what-立目标具体成果解决什么问题)
-  - [How 理规则：步骤逻辑，怎么执行](#how-理规则步骤逻辑怎么执行)
-  - [Reference 给示例：正反例，输入---输出](#reference-给示例正反例输入---输出)
-  - [Limits 画边界：明确限制，什么不做](#limits-画边界明确限制什么不做)
-- [安装](#安装)
-- [来源](#来源)
-- [同步日期](#同步日期)
+## 何时使用
 
-## 快速介绍
-- 适合谁：测试负责人、项目协同角色、跨团队交付成员。
-- 何时使用：你需要做 发布前质量把关与 go/no-go 协同，而不是零散执行测试。
-- 怎么使用：先定范围和时间，再按阶段推进，最后输出状态、风险和下一步动作。
+- 需要按发布窗口推进：T-N 规划 → 专项 → RC → Go/No-Go → 发布后观察。
+- 需要发布门禁与放行证据包，并向类型 skill 交接专项执行。
 
+## 执行流程
 
-## 使用说明
-1. 先完成 `release-testing-workflow` 的安装和启用（直接用本页安装命令）。
-2. 提需求时先给必要上下文：范围、环境、时间、期望输出格式。
-3. 用明确指令触发，例如：“使用 `release-testing-workflow` 给我生成这次版本/迭代/日常测试流程。”
-4. 明确要交付的结果：阶段计划、负责人、阻塞项、决策清单。
-5. 约束变化后只让 skill 重算受影响部分，不整份重写。
+1. 阅读并遵循 `prompts/release-testing-workflow.md`（时间线、门禁、Go/No-Go、交接）。
+2. 补充发布日、范围、冻结规则、候选版本、已知缺陷等上下文。
+3. 定位 T 窗口后按 `reference.md` 点名交接类型 skill；专项执行只点名 skill 名。
+4. 信息不全时仍给门禁看板初版，并标假设；**禁止编造测试通过结果**。
 
-## 说明汇总
+## 核心约束
 
-### When 定场景：触发场景，用户何时使用
-- 你需要面向发版窗口的一套完整测试流程，而不是零散执行。
-- 多个测试活动要协同推进，需要统一节奏与状态透明。
-- 团队希望提前暴露阻塞项，避免最后一刻集中爆雷。
+- 管发布时间线与放行决策；专项报告交给 `performance-testing` / `security-testing` 等。
+- 门禁可压缩时间，不可删除判据。
+- Go/No-Go 必须基于证据；条件放行必须可验证。
+- 禁止相对路径链到其他 skill 文件。
 
-### What 立目标：具体成果，解决什么问题
-- 把分析、执行、复核、汇总串成可落地流程。
-- 交付可用于发版 go/no-go 决策的过程证据和结论。
-- 提前识别跨模块发布风险并明确责任人和时限。
+## 按需加载
 
-### How 理规则：步骤逻辑，怎么执行
-1. 明确目标、范围、准入条件和完成条件。
-2. 拆分阶段：准备、执行、汇总、签出。
-3. 每项任务绑定负责人、时间和依赖关系。
-4. 先跑关键路径，再跑支撑路径和边界场景。
-5. 按严重级别和业务影响汇总问题。
-6. 输出最终状态：可发布性、剩余风险、下一步动作。
+- 产出前必须阅读并遵循 `prompts/release-testing-workflow.md`。
+- 步骤与交接对照：读 `reference.md`。
+- 阶段/专项深做：调用对应类型 skill，不要在本 skill 内展开完整专项报告。
+- 模板：`output-templates/`。
 
-### Reference 给示例：正反例，输入 -> 输出
-### 正例（输入 -> 输出）
-输入：
-- 范围：支付 + 优惠券 + 拆单
-- 时间：3 天
-- 目标：支持发版决策
+## 交付前自检
 
-输出：
-- 分阶段执行看板（含负责人和排期）
-- 风险优先级执行顺序与阻塞清单
-- 最终决策摘要（阻塞/非阻塞问题）
+- [ ] 已遵循主提示词的输出结构
+- [ ] 含范围/排除项、T 窗口、门禁看板、证据缺口、下一跳 skill
+- [ ] 若到决策点：Go / No-Go / 条件放行有依据
+- [ ] 未编造通过结果或未提供的缺陷状态
+- [ ] 假设与开放问题已标明
 
-### 反例（输入 -> 输出）
-输入：
-- “上线前把核心流程测一下”
+## 常见误区
 
-输出（问题）：
-- 没有阶段拆分、责任归属和完成标准
-- 团队无法判断真实进度和发布准备度
+- 不要删门禁只压缩日程。
+- 不要在未冻结时宣称 RC 完成。
+- 不要在本 skill 内代写完整专项长报告。
+- 不要用空泛「继续观察」代替条件放行条款。
 
-### Limits 画边界：明确限制，什么不做
-- 不在缺少准入/完成标准时启动流程。
-- 不把关键阻塞隐藏在汇总口径里。
-- 不在无证据情况下给结论。
-- 不把流程降级成静态清单、缺少动态调优。
-- 不在关键信息缺失时输出 go/no-go 建议。
+## 原始 SKILL.md
+
+```markdown
+---
+name: release-testing-workflow
+description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include 发布测试工作流程 and release testing workflow.
+---
+
+# 发布测试工作流程（中文版）
+
+**英文版：** 见对应英文技能。
+
+## 何时使用
+
+- 需要按发布窗口推进：T-N 规划 → 专项 → RC → Go/No-Go → 发布后观察。
+- 需要发布门禁与放行证据包，并向类型 skill 交接专项执行。
+
+## 执行流程
+
+1. 阅读并遵循 `prompts/release-testing-workflow.md`（时间线、门禁、Go/No-Go、交接）。
+2. 补充发布日、范围、冻结规则、候选版本、已知缺陷等上下文。
+3. 定位 T 窗口后按 `reference.md` 点名交接类型 skill；专项执行只点名 skill 名。
+4. 信息不全时仍给门禁看板初版，并标假设；**禁止编造测试通过结果**。
+
+## 核心约束
+
+- 管发布时间线与放行决策；专项报告交给 `performance-testing` / `security-testing` 等。
+- 门禁可压缩时间，不可删除判据。
+- Go/No-Go 必须基于证据；条件放行必须可验证。
+- 禁止相对路径链到其他 skill 文件。
+
+## 按需加载
+
+- 产出前必须阅读并遵循 `prompts/release-testing-workflow.md`。
+- 步骤与交接对照：读 `reference.md`。
+- 阶段/专项深做：调用对应类型 skill，不要在本 skill 内展开完整专项报告。
+- 模板：`output-templates/`。
+
+## 交付前自检
+
+- [ ] 已遵循主提示词的输出结构
+- [ ] 含范围/排除项、T 窗口、门禁看板、证据缺口、下一跳 skill
+- [ ] 若到决策点：Go / No-Go / 条件放行有依据
+- [ ] 未编造通过结果或未提供的缺陷状态
+- [ ] 假设与开放问题已标明
+
+## 常见误区
+
+- 不要删门禁只压缩日程。
+- 不要在未冻结时宣称 RC 完成。
+- 不要在本 skill 内代写完整专项长报告。
+- 不要用空泛「继续观察」代替条件放行条款。
+```
 
 ## 安装
+
 ### 按系统与 AI 工具选择安装脚本
 
 #### macOS / Linux
@@ -100,10 +127,14 @@
 
 ### 说明
 - 根据你使用的系统和 AI 工具，选择对应脚本。
-- 打开链接后复制脚本执行即可。
+
+## 调用示例
+
+```text
+@skill release-testing-workflow
+结合当前项目上下文，按该技能的要求给出可执行结果。
+```
+
 ## 来源
 - 原始技能：[release-testing-workflow](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/release-testing-workflow/SKILL.md)
 - 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-## 同步日期
-2026-03-25

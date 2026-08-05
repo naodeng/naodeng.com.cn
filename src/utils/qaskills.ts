@@ -2,6 +2,19 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { marked } from "marked";
 import type { Lang } from "@/i18n";
+import type { QASkillCategory } from "@/utils/qaskillsFilter";
+import { getRelatedQASkills } from "@/utils/qaskillsRelated";
+import {
+  SECTION_KEYS,
+  SECTION_LABELS,
+  extractCanonicalSections,
+  firstBulletText,
+  type CanonicalSections,
+  type SectionKey,
+} from "@/utils/qaskillsSections";
+
+export type { QASkillCategory };
+export { SECTION_KEYS, SECTION_LABELS };
 
 export type QASkill = {
   lang: "en" | "zh-cn";
@@ -10,16 +23,16 @@ export type QASkill = {
   chineseName: string;
   author: string;
   updatedAt: string;
+  description: string;
   intro: string;
-  whoShouldUse: string;
-  whenToUse: string;
+  category: QASkillCategory;
+  subgroup: string;
+  hasEvals: boolean;
   sourceSkillUrl: string;
   sourceRepoUrl: string;
-  usageMarkdown: string;
-  usageHtml: string;
-  summaryCards: Array<{ title: string; html: string }>;
-  fullIntroMarkdown: string;
-  fullIntroHtml: string;
+  sections: CanonicalSections;
+  sectionHtml: Record<SectionKey, string>;
+  rawSkillMarkdown: string;
   installMarkdown: string;
   installHtml: string;
 };
@@ -87,8 +100,8 @@ const TESTING_TYPE_SUBGROUPS: Array<{
   },
   {
     key: "defect-reporting",
-    title: { "zh-cn": "缺陷与报告", en: "Defect & Reporting" },
-    slugs: ["bug-reporting", "test-reporting", "ai-assisted-testing"],
+    title: { "zh-cn": "缺陷、报告与审查", en: "Defect, Reporting & Review" },
+    slugs: ["bug-reporting", "test-reporting", "ai-assisted-testing", "code-review"],
   },
 ];
 
@@ -114,51 +127,70 @@ function sectionContent(body: string, heading: string) {
   return body.slice(start, end).trim();
 }
 
-function parseQuickIntro(body: string, lang: "en" | "zh-cn") {
-  const section = lang === "zh-cn" ? sectionContent(body, "快速介绍") : sectionContent(body, "Quick Intro");
-  const lines = section
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith("-"));
+/** Extract fenced raw SKILL.md without treating headings inside the fence as section boundaries. */
+function extractRawSkillMarkdown(body: string) {
+  const headingMatch = /^##\s+(?:原始 SKILL\.md|Raw SKILL\.md)\s*$/m.exec(body);
+  if (!headingMatch) return "";
 
-  const whoPrefix = lang === "zh-cn" ? /^-\s*适合谁[:：]\s*/ : /^-\s*Who should use[:：]\s*/i;
-  const whenPrefix = lang === "zh-cn" ? /^-\s*何时使用[:：]\s*/ : /^-\s*Best used when[:：]\s*/i;
+  const afterHeading = body.slice(headingMatch.index + headingMatch[0].length);
+  const open = /^(?:\s*)(`{3,})(?:markdown|md)?\s*\n/m.exec(afterHeading);
+  if (!open) return afterHeading.trim();
 
-  const whoLine = lines.find((line) => whoPrefix.test(line)) ?? "";
-  const whenLine = lines.find((line) => whenPrefix.test(line)) ?? "";
+  const ticks = open[1];
+  const contentStart = (open.index || 0) + open[0].length;
+  const afterOpen = afterHeading.slice(contentStart);
+  const closeMarker = `\n${ticks}`;
+  const closeAt = afterOpen.indexOf(closeMarker);
+  if (closeAt < 0) return afterOpen.replace(/\n$/, "").trimEnd();
 
-  const whoShouldUse = normalizeInline(whoLine.replace(whoPrefix, ""));
-  const whenToUse = normalizeInline(whenLine.replace(whenPrefix, ""));
+  const afterClose = afterOpen.slice(closeAt + closeMarker.length);
+  if (afterClose && !/^\s*(\n|$)/.test(afterClose)) {
+    // Same tick run appears mid-content; take last exact line fence.
+    const lines = afterOpen.split("\n");
+    let endLine = -1;
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (lines[i] === ticks) {
+        endLine = i;
+        break;
+      }
+    }
+    if (endLine >= 0) return lines.slice(0, endLine).join("\n");
+  }
 
-  const intro = lines
-    .map((line) => line.replace(/^-\s*/, "").trim())
-    .join(" ")
-    .trim();
-
-  return { intro, whoShouldUse, whenToUse };
+  return afterOpen.slice(0, closeAt);
 }
 
-function parseUpdatedAt(body: string, lang: "en" | "zh-cn") {
-  const heading = lang === "zh-cn" ? "同步日期" : "Last Synced";
-  const section = sectionContent(body, heading);
-  return section.split("\n")[0]?.trim() ?? "";
-}
+function stripRawSkillSection(body: string) {
+  const headingMatch = /^##\s+(?:原始 SKILL\.md|Raw SKILL\.md)\s*$/m.exec(body);
+  if (!headingMatch) return body;
 
-function parseSourceLinks(body: string) {
-  const sourceSection = sectionContent(body, "来源") || sectionContent(body, "Source");
-  const skillMatch = sourceSection.match(/\[[^\]]+\]\((https?:\/\/[^)]+)\)/);
-  const repoMatch = sourceSection.match(/Repository[:：]\s*\[([^\]]+)\]\((https?:\/\/[^)]+)\)/i);
-  const fallbackRepo = sourceSection.match(/https?:\/\/github\.com\/naodeng\/awesome-qa-skills[^\s)]*/i);
+  const start = headingMatch.index;
+  const afterHeading = body.slice(start + headingMatch[0].length);
+  const open = /^(?:\s*)(`{3,})(?:markdown|md)?\s*\n/m.exec(afterHeading);
+  if (!open) {
+    const next = /^##\s+/m.exec(afterHeading);
+    const end = next ? start + headingMatch[0].length + next.index : body.length;
+    return `${body.slice(0, start)}${body.slice(end)}`;
+  }
 
-  return {
-    sourceSkillUrl: skillMatch?.[1] ?? "",
-    sourceRepoUrl: repoMatch?.[2] ?? fallbackRepo?.[0] ?? "https://github.com/naodeng/awesome-qa-skills",
-  };
-}
+  const ticks = open[1];
+  const contentStart = (open.index || 0) + open[0].length;
+  const afterOpen = afterHeading.slice(contentStart);
+  const closeMarker = `\n${ticks}`;
+  let closeAt = afterOpen.indexOf(closeMarker);
+  if (closeAt < 0) {
+    const lines = afterOpen.split("\n");
+    const endLine = lines.findIndex((line) => line === ticks);
+    if (endLine < 0) return body.slice(0, start);
+    closeAt = lines.slice(0, endLine).join("\n").length;
+  }
 
-function parseAuthor(body: string) {
-  const match = body.match(/^作者[:：]\s*(.+)$/m);
-  return (match?.[1] ?? "").trim();
+  let closeEnd = contentStart + closeAt + closeMarker.length;
+  const rest = afterHeading.slice(closeEnd);
+  const trailing = rest.match(/^[ \t]*\n/);
+  if (trailing) closeEnd += trailing[0].length;
+
+  return `${body.slice(0, start)}${body.slice(start + headingMatch[0].length + closeEnd)}`;
 }
 
 function parseTitle(body: string) {
@@ -166,67 +198,45 @@ function parseTitle(body: string) {
   return (match?.[1] ?? "").trim();
 }
 
-function parseChineseName(body: string, lang: "en" | "zh-cn") {
-  if (lang !== "zh-cn") return "";
-  const section = sectionContent(body, "中文名称");
-  return section.split("\n")[0]?.trim() ?? "";
+function parseAuthor(body: string) {
+  const match = body.match(/^(?:作者|Author)[:：]\s*(.+)$/m);
+  return (match?.[1] ?? "").trim();
 }
 
-function splitDetailSections(body: string, lang: "en" | "zh-cn") {
-  const usageHeading = lang === "zh-cn" ? "使用说明" : "Usage Guide";
-  const installHeading = lang === "zh-cn" ? "安装" : "Install";
-  const sourceHeading = lang === "zh-cn" ? "来源" : "Source";
+function parseMetadata(body: string) {
+  const section = sectionContent(body, "元数据") || sectionContent(body, "Metadata");
+  const get = (key: string) => {
+    const re = new RegExp(`^-\\s*${key}:\\s*(.+)$`, "im");
+    const m = section.match(re);
+    return m ? normalizeInline(m[1]) : "";
+  };
 
-  const usageSection = sectionContent(body, usageHeading);
-  const summarySection = lang === "zh-cn"
-    ? sectionContent(body, "说明汇总")
-    : sectionContent(body, "Skill Breakdown");
-  const installSection = sectionContent(body, installHeading);
-
-  const usageMarkdown = usageSection ? `## ${usageHeading}\n\n${usageSection}` : "";
-  const fullIntroMarkdown = summarySection
-    ? `## ${lang === "zh-cn" ? "说明汇总" : "Skill Breakdown"}\n\n${summarySection}`
-    : "";
-
-  const installMarkdown = installSection
-    ? `## ${installHeading}\n\n${installSection}`
-    : "";
-
-  const sourceSection = sectionContent(body, sourceHeading);
-  const sourceMarkdown = sourceSection
-    ? `## ${sourceHeading}\n\n${sourceSection}`
-    : "";
+  const categoryRaw = get("category");
+  const category: QASkillCategory =
+    categoryRaw === "workflow" || categoryRaw === "plus" || categoryRaw === "type"
+      ? categoryRaw
+      : "type";
 
   return {
-    usageMarkdown: usageMarkdown.trim(),
-    fullIntroMarkdown: fullIntroMarkdown.trim(),
-    installMarkdown: [installMarkdown, sourceMarkdown].filter(Boolean).join("\n\n").trim(),
+    slug: get("slug"),
+    category,
+    hasEvals: /^(true|1|yes)$/i.test(get("hasEvals")),
+    syncedAt: get("syncedAt"),
+    sourceSkillUrl: get("sourceSkillUrl"),
+    description: get("description"),
   };
 }
 
-function buildSummaryCards(summaryMarkdown: string) {
-  const normalized = summaryMarkdown
-    .replace(/^##[^\n]*\n*/m, "")
-    .trim();
-  if (!normalized) return [] as Array<{ title: string; html: string }>;
+function inferCategory(slug: string, declared: QASkillCategory): QASkillCategory {
+  if (declared) return declared;
+  if (WORKFLOW_SLUGS.has(slug)) return "workflow";
+  if (slug.endsWith("-plus")) return "plus";
+  return "type";
+}
 
-  const headingRegex = /^###\s+(.+)$/gm;
-  const matches = Array.from(normalized.matchAll(headingRegex));
-  if (matches.length === 0) return [] as Array<{ title: string; html: string }>;
-
-  return matches
-    .map((match, index) => {
-      const title = (match[1] ?? "").trim();
-      const bodyStart = (match.index ?? 0) + match[0].length;
-      const nextIndex = matches[index + 1]?.index ?? normalized.length;
-      const body = normalized.slice(bodyStart, nextIndex).trim();
-      if (!title) return null;
-      return {
-        title,
-        html: toHtml(body),
-      };
-    })
-    .filter((item): item is { title: string; html: string } => Boolean(item));
+function subgroupForSlug(slug: string) {
+  const group = TESTING_TYPE_SUBGROUPS.find((g) => g.slugs.includes(slug));
+  return group?.key ?? "";
 }
 
 function sortBySlugOrder(skills: QASkill[], slugOrder: string[]) {
@@ -239,6 +249,47 @@ function sortBySlugOrder(skills: QASkill[], slugOrder: string[]) {
   });
 }
 
+export function parseQASkillMarkdown(lang: "en" | "zh-cn", slug: string, body: string): QASkill {
+  const meta = parseMetadata(body);
+  const title = parseTitle(body) || meta.slug || slug;
+  const author = parseAuthor(body) || "naodeng";
+  const rawSkillMarkdown = extractRawSkillMarkdown(body);
+  // Avoid ## headings inside the raw fence overwriting structured sections.
+  const bodyWithoutRaw = stripRawSkillSection(body);
+  const sections = extractCanonicalSections(bodyWithoutRaw);
+  const sectionHtml = Object.fromEntries(
+    SECTION_KEYS.map((key) => [key, toHtml(sections[key])])
+  ) as Record<SectionKey, string>;
+  const description = meta.description;
+  const intro = description || firstBulletText(sections.whenToUse) || title;
+  const category = inferCategory(meta.slug || slug, meta.category);
+  const installMarkdown =
+    sectionContent(body, "安装") || sectionContent(body, "Install") || "";
+  const sourceSection = sectionContent(body, "来源") || sectionContent(body, "Source");
+  const repoMatch = sourceSection.match(/https?:\/\/github\.com\/naodeng\/awesome-qa-skills[^\s)]*/i);
+
+  return {
+    lang,
+    slug: meta.slug || slug,
+    title,
+    chineseName: lang === "zh-cn" ? title : "",
+    author,
+    updatedAt: meta.syncedAt,
+    description,
+    intro,
+    category,
+    subgroup: subgroupForSlug(meta.slug || slug),
+    hasEvals: meta.hasEvals,
+    sourceSkillUrl: meta.sourceSkillUrl,
+    sourceRepoUrl: repoMatch?.[0] ?? "https://github.com/naodeng/awesome-qa-skills",
+    sections,
+    sectionHtml,
+    rawSkillMarkdown,
+    installMarkdown: installMarkdown ? `## Install\n\n${installMarkdown}` : "",
+    installHtml: toHtml(installMarkdown),
+  };
+}
+
 export async function getQASkills(lang: Lang) {
   if (lang !== "en" && lang !== "zh-cn") return [];
 
@@ -247,51 +298,20 @@ export async function getQASkills(lang: Lang) {
     .filter((name) => name.endsWith(".md") && name !== "README.md")
     .sort((a, b) => a.localeCompare(b));
 
-  const skills = await Promise.all(
+  return Promise.all(
     files.map(async (file) => {
       const slug = file.replace(/\.md$/, "");
-      const fullPath = path.join(dir, file);
-      const body = await readFile(fullPath, "utf-8");
-      const title = parseTitle(body) || slug;
-      const chineseName = parseChineseName(body, lang);
-      const author = parseAuthor(body);
-      const updatedAt = parseUpdatedAt(body, lang);
-      const { intro, whoShouldUse, whenToUse } = parseQuickIntro(body, lang);
-      const { sourceSkillUrl, sourceRepoUrl } = parseSourceLinks(body);
-      const { usageMarkdown, fullIntroMarkdown, installMarkdown } = splitDetailSections(body, lang);
-      const summaryCards = buildSummaryCards(fullIntroMarkdown);
-
-      return {
-        lang,
-        slug,
-        title,
-        chineseName,
-        author,
-        updatedAt,
-        intro,
-        whoShouldUse,
-        whenToUse,
-        sourceSkillUrl,
-        sourceRepoUrl,
-        usageMarkdown,
-        usageHtml: toHtml(usageMarkdown),
-        summaryCards,
-        fullIntroMarkdown,
-        fullIntroHtml: toHtml(fullIntroMarkdown),
-        installMarkdown,
-        installHtml: toHtml(installMarkdown),
-      } satisfies QASkill;
+      const body = await readFile(path.join(dir, file), "utf-8");
+      return parseQASkillMarkdown(lang, slug, body);
     })
   );
-
-  return skills;
 }
 
 export async function getQASkillsGrouped(lang: Lang): Promise<QASkillsGrouped> {
   const skills = await getQASkills(lang);
 
   const testingWorkflows = sortBySlugOrder(
-    skills.filter((skill) => WORKFLOW_SLUGS.has(skill.slug)),
+    skills.filter((skill) => skill.category === "workflow" || WORKFLOW_SLUGS.has(skill.slug)),
     [
       "daily-testing-workflow",
       "discover-testing",
@@ -301,11 +321,17 @@ export async function getQASkillsGrouped(lang: Lang): Promise<QASkillsGrouped> {
   );
 
   const plus = skills
-    .filter((skill) => skill.slug.endsWith("-plus"))
+    .filter((skill) => skill.category === "plus" || skill.slug.endsWith("-plus"))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   const testingTypes = skills
-    .filter((skill) => !WORKFLOW_SLUGS.has(skill.slug) && !skill.slug.endsWith("-plus"))
+    .filter(
+      (skill) =>
+        !WORKFLOW_SLUGS.has(skill.slug) &&
+        skill.category !== "workflow" &&
+        !skill.slug.endsWith("-plus") &&
+        skill.category !== "plus"
+    )
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   const testingTypeSubgroups = TESTING_TYPE_SUBGROUPS.map((group) => ({
@@ -328,4 +354,9 @@ export async function getQASkillsGrouped(lang: Lang): Promise<QASkillsGrouped> {
 export async function getQASkillBySlug(lang: Lang, slug: string) {
   const skills = await getQASkills(lang);
   return skills.find((skill) => skill.slug === slug) ?? null;
+}
+
+export async function getRelatedForSkill(lang: Lang, slug: string, limit = 5) {
+  const skills = await getQASkills(lang);
+  return getRelatedQASkills(skills, slug, limit);
 }

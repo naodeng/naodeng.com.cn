@@ -1,103 +1,146 @@
-# security-testing
+# Security Testing
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: security-testing
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/security-testing/SKILL.md
+- description: Use this skill when you need to design security testing around OWASP risks, vulnerability scanning, and penetration scenarios; triggers include security testing and vulnerability testing.
 
-## Quick Intro
-- Who should use: Security-minded QAs and teams validating sensitive flows.
-- Best used when: Authentication, data protection, and abuse risks need verification.
-- How to use: Map attack surface, test high-risk vectors, and provide risk-ranked findings with retest criteria.
+## When to Use
 
+- Need help with security testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
 
-## Usage Guide
-1. Install and enable `security-testing` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with approved scope, for example: "Use `security-testing` for auth and sensitive-data APIs."
-4. Ask for outputs: threat checklist, test plan, finding severity rules, and evidence format.
-5. After remediation, request focused revalidation steps for each high-risk finding.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- Sensitive data, auth, or transaction flows are introduced/changed.
-- Compliance or internal policy requires security validation.
-- Potential abuse vectors are identified in design review.
+## Core Constraints
 
-### What
-- Identify exploitable weaknesses in auth, input handling, and data protection.
-- Assess security risk impact and remediation priority.
-- Support secure-release decisions with evidence.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Define threat scope and high-value assets.
-2. Build attack surface map across endpoints, roles, and trust boundaries.
-3. Execute checks for auth bypass, injection, data exposure, and misconfiguration.
-4. Validate logging, rate limits, and defensive controls.
-5. Reproduce vulnerabilities and estimate exploitability.
-6. Deliver risk-ranked findings with fix and revalidation guidance.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Feature: admin export API with role-based access
+- Before producing output, read and follow `prompts/security-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Found horizontal privilege escalation via parameter tampering
-- Risk: high (sensitive data exposure)
-- Fix: enforce server-side ownership check + add audit rule
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Do a security scan"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope and assets, high-risk attack surfaces, auth and authorization checks, input and output handling risks, sensitive data protection, session or token handling, configuration and dependency concerns, priority and business impact, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Scanner results copied without exploit verification
-- False positives mixed with real risks
+## Common Pitfalls
 
-### Limits
-- Do not treat scanner output as final verdict.
-- Do not test production attack scenarios without authorization.
-- Do not understate exploitability of data exposure issues.
-- Do not omit reproduction details for confirmed findings.
-- Do not sign off security status without remediation retest.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: security-testing
+description: Use this skill when you need to design security testing around OWASP risks, vulnerability scanning, and penetration scenarios; triggers include security testing and vulnerability testing.
+---
+
+# Security Testing (English)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need help with security testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/security-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope and assets, high-risk attack surfaces, auth and authorization checks, input and output handling risks, sensitive data protection, session or token handling, configuration and dependency concerns, priority and business impact, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/security-testing/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [security-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/security-testing/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill security-testing
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[security-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/security-testing/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
