@@ -1,102 +1,144 @@
-# test-reporting
+# Test Reporting
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: test-reporting
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-reporting/SKILL.md
+- description: Use this skill when you need to generate test reports with summary, metrics, defect analysis, and risk assessment; triggers include test reporting and QA status report.
 
-## Quick Intro
-- Who should use: QAs and leads responsible for quality communication.
-- Best used when: Stakeholders need a decision-ready summary of test results and risks.
-- How to use: Aggregate execution evidence, highlight blockers and trends, then provide clear next-step recommendations.
+## When to Use
 
+- Need help with test reporting in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
 
-## Usage Guide
-1. Install and enable `test-reporting` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with execution data, for example: "Use `test-reporting` to summarize this week's test results."
-4. Ask for decision-oriented output: blocker list, trend, residual risk, and release recommendation.
-5. Reuse the same report template each cycle for easy comparison.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- Stakeholders need a clear quality status for decision-making.
-- Testing has progressed and results must be consolidated.
-- Team needs transparent evidence for release or rollback decisions.
+## Core Constraints
 
-### What
-- Produce concise but evidence-based test reports.
-- Translate test execution data into business-relevant risk status.
-- Align teams on current quality, unresolved issues, and next actions.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Collect execution data: scope, pass/fail, defect distribution, blocked items.
-2. Normalize metrics and remove noise from unstable runs.
-3. Highlight critical findings and unresolved decision blockers.
-4. Map defects to business impact and release risk.
-5. Summarize trend vs. previous cycle.
-6. Publish decision-oriented report with recommended actions.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- 420 cases executed, 12 open defects, 2 critical unresolved
+- Before producing output, read and follow `prompts/test-reporting.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Report with risk summary, blocker ownership, and ETA confidence
-- Recommendation: no-go until payment rollback defect resolved
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Share testing progress"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope tested, scope not tested, overall status, critical defects or blockers, risk summary, coverage confidence, environment or data issues, recommended release position, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Only pass rate shown, no risk context or blocker analysis
-- Leadership cannot make release decision
+## Common Pitfalls
 
-### Limits
-- Do not report metrics without context and scope.
-- Do not hide blockers behind aggregate pass rate.
-- Do not mix verified facts with assumptions.
-- Do not omit trend and change explanation.
-- Do not provide go/no-go recommendation without clear evidence.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: test-reporting
+description: Use this skill when you need to generate test reports with summary, metrics, defect analysis, and risk assessment; triggers include test reporting and QA status report.
+---
+
+# Test Reporting
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need help with test reporting in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/test-reporting.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: scope tested, scope not tested, overall status, critical defects or blockers, risk summary, coverage confidence, environment or data issues, recommended release position, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/test-reporting/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [test-reporting](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-reporting/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill test-reporting
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[test-reporting](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-reporting/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

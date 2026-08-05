@@ -28,6 +28,7 @@
     "wiki:integrity:check:strict": "node scripts/wiki-aiwiki-integrity-check.mjs --strict",
     "seo:check": "node scripts/seo-static-check.mjs",
     "seo:check:strict": "node scripts/seo-static-check.mjs --strict",
+    "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs",
     "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {

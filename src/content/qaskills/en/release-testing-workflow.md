@@ -1,105 +1,140 @@
-# release-testing-workflow
+# Release Testing Workflow
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: release-testing-workflow
+- category: workflow
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/release-testing-workflow/SKILL.md
+- description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include release testing workflow and go/no-go QA.
 
-## Quick Intro
-- Who should use: QA coordinators, test leads, and cross-functional delivery teams.
-- Best used when: You need release readiness checks and go/no-go coordination rather than ad-hoc test execution.
-- How to use: Set scope and timeline, run the workflow by phase, then output status, risks, and next actions.
+## When to Use
 
+- Need a release-window cadence: T-N planning → specialties → RC → Go/No-Go → post-release watch.
+- Need release gates and a ship evidence pack, with specialty execution handed to type skills.
 
-## Usage Guide
-1. Install and enable `release-testing-workflow` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with a direct instruction, for example: "Use `release-testing-workflow` to build my testing workflow for this release/sprint/day."
-4. Ask for deliverables explicitly: phase plan, owners, blockers, and decision checklist.
-5. Run one feedback round: update changed constraints and ask the skill to regenerate only affected sections.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow `prompts/release-testing-workflow.md` (timeline, gates, Go/No-Go, handoffs).
+2. Add release date, scope, freeze rules, candidate build, and known defects that change decisions.
+3. After locating the T window, hand off by skill name per `reference.md`; invoke specialty type skills by name only.
+4. If input is incomplete, still draft a gate board and mark assumptions—**never invent pass results**.
 
-### When
-- You need a structured QA workflow for release window.
-- Multiple testing activities must be orchestrated, not run ad hoc.
-- Team needs transparent status, dependency handling, and risk escalation.
+## Core Constraints
 
-### What
-- Build an execution sequence from analysis to verification to reporting.
-- Deliver go/no-go release decision with traceable evidence.
-- Expose cross-module release risk early, with owner and due date.
+- Own release timeline and ship decision; hand specialty reports to `performance-testing` / `security-testing` / etc.
+- Timelines may compress; gate criteria may not be deleted.
+- Go/No-Go requires evidence; conditional Go must be verifiable.
+- No relative-path links to other skill files.
 
-### How
-1. Confirm objective, scope, entry criteria, and exit criteria.
-2. Split work into phases: preparation, execution, consolidation, sign-off.
-3. Assign owner, deadline, and dependency for each phase task.
-4. Run critical-path tests first, then supporting and edge checks.
-5. Summarize findings by severity, business impact, and fix readiness.
-6. Publish workflow result: pass/fail status, residual risk, next action.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Scope: payment + coupon + order split
-- Time: 3 days
-- Goal: release confidence
+- Before producing output, read and follow `prompts/release-testing-workflow.md`.
+- For step ↔ handoff mapping: read `reference.md`.
+- For stage/specialty deep-dives: invoke the matching type skill; do not expand full specialty reports here.
+- Templates: `output-templates/`.
 
-Output:
-- Workflow board with owner and schedule
-- Priority execution order and risk log
-- Final decision note with blocking and non-blocking issues
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Please test core flows before launch"
+- [ ] Followed the main prompt’s output structure
+- [ ] Includes scope/exclusions, T window, gate board, evidence gaps, next skill
+- [ ] At decision point: Go / No-Go / conditional with rationale
+- [ ] Did not invent pass results or unknown defect states
+- [ ] Assumptions and open questions are marked
 
-Output (problem):
-- No phase split, no owners, no completion criteria
-- Team cannot judge progress or release readiness
+## Common Pitfalls
 
-### Limits
-- Do not run workflow without explicit entry/exit criteria.
-- Do not hide blockers in summary-level status updates.
-- Do not skip evidence collection for key decisions.
-- Do not convert workflow into a static checklist without reprioritization.
-- Do not output go/no-go recommendation when critical data is missing.
+- Do not delete gates just to compress the calendar.
+- Do not declare RC done before freeze.
+- Do not write full specialty long-reports inside this skill.
+- Do not replace conditional-Go terms with vague “keep watching”.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: release-testing-workflow
+description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include release testing workflow and go/no-go QA.
+---
+
+# Release Testing Workflow
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need a release-window cadence: T-N planning → specialties → RC → Go/No-Go → post-release watch.
+- Need release gates and a ship evidence pack, with specialty execution handed to type skills.
+
+## Workflow
+
+1. Read and follow `prompts/release-testing-workflow.md` (timeline, gates, Go/No-Go, handoffs).
+2. Add release date, scope, freeze rules, candidate build, and known defects that change decisions.
+3. After locating the T window, hand off by skill name per `reference.md`; invoke specialty type skills by name only.
+4. If input is incomplete, still draft a gate board and mark assumptions—**never invent pass results**.
+
+## Core Constraints
+
+- Own release timeline and ship decision; hand specialty reports to `performance-testing` / `security-testing` / etc.
+- Timelines may compress; gate criteria may not be deleted.
+- Go/No-Go requires evidence; conditional Go must be verifiable.
+- No relative-path links to other skill files.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/release-testing-workflow.md`.
+- For step ↔ handoff mapping: read `reference.md`.
+- For stage/specialty deep-dives: invoke the matching type skill; do not expand full specialty reports here.
+- Templates: `output-templates/`.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt’s output structure
+- [ ] Includes scope/exclusions, T window, gate board, evidence gaps, next skill
+- [ ] At decision point: Go / No-Go / conditional with rationale
+- [ ] Did not invent pass results or unknown defect states
+- [ ] Assumptions and open questions are marked
+
+## Common Pitfalls
+
+- Do not delete gates just to compress the calendar.
+- Do not declare RC done before freeze.
+- Do not write full specialty long-reports inside this skill.
+- Do not replace conditional-Go terms with vague “keep watching”.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/release-testing-workflow/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [release-testing-workflow](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/release-testing-workflow/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill release-testing-workflow
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[release-testing-workflow](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/release-testing-workflow/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

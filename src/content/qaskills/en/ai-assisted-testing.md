@@ -1,102 +1,144 @@
-# ai-assisted-testing
+# AI-Assisted Testing
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: ai-assisted-testing
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-assisted-testing/SKILL.md
+- description: Use this skill when you need AI-assisted testing workflows such as test data generation, root-cause analysis, and prioritization; triggers include AI-assisted testing and AI for QA.
 
-## Quick Intro
-- Who should use: QAs who use AI to accelerate analysis and test design.
-- Best used when: You need faster QA drafts while preserving human quality control.
-- How to use: Feed structured context, generate targeted outputs, then validate and refine before adoption.
+## When to Use
 
+- Need help with ai assisted testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
 
-## Usage Guide
-1. Install and enable `ai-assisted-testing` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with task type, for example: "Use `ai-assisted-testing` to draft test points from this requirement."
-4. Ask the skill to separate draft content vs. assumptions needing human confirmation.
-5. Keep an approved prompt template and reuse it for the next similar task.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- QA team wants to accelerate analysis, case generation, and defect triage using AI.
-- Test scope changes rapidly and manual drafting is too slow.
-- Team needs consistent prompt patterns for repeatable QA outputs.
+## Core Constraints
 
-### What
-- Use AI to boost QA productivity while keeping human quality control.
-- Produce faster drafts for test points, risks, and bug analysis.
-- Establish a safe AI usage pattern with validation checkpoints.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Define task objective and non-negotiable quality constraints.
-2. Provide structured input context (requirement, data, boundaries).
-3. Use focused prompts by task stage (analysis, cases, review, reporting).
-4. Validate AI output against requirement and risk model.
-5. Correct hallucination, ambiguity, and missing edge conditions.
-6. Save validated prompt patterns for reuse.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Requirement excerpt + known risks + output format template
+- Before producing output, read and follow `prompts/ai-assisted-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Draft test points with traceability and risk ranking
-- Reviewer notes on unclear assumptions requiring human confirmation
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Generate all tests for this feature"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: task scope, best AI-assisted opportunities, human verification points, high-risk areas that need manual judgment, draft artifacts to generate, review and approval steps, quality gates, time-saving opportunities, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Overconfident generic list, missing system-specific edge conditions
-- No human validation checkpoint
+## Common Pitfalls
 
-### Limits
-- Do not treat AI draft as final QA deliverable.
-- Do not input sensitive production data without policy approval.
-- Do not skip human review for high-impact decisions.
-- Do not use one prompt for all task types.
-- Do not hide uncertainty in AI-generated conclusions.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: ai-assisted-testing
+description: Use this skill when you need AI-assisted testing workflows such as test data generation, root-cause analysis, and prioritization; triggers include AI-assisted testing and AI for QA.
+---
+
+# AI-Assisted Testing
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need help with ai assisted testing in a real project context.
+- Need an output that can be used directly for execution, review, or follow-up.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/ai-assisted-testing.md` (minimum coverage, output structure, quality bar).
+- When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
+- When a ready-made template fits: use matching files under `output-templates/`.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: task scope, best AI-assisted opportunities, human verification points, high-risk areas that need manual judgment, draft artifacts to generate, review and approval steps, quality gates, time-saving opportunities, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/ai-assisted-testing/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [ai-assisted-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-assisted-testing/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill ai-assisted-testing
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[ai-assisted-testing](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-assisted-testing/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

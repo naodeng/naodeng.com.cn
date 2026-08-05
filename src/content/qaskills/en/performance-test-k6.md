@@ -1,103 +1,148 @@
-# performance-test-k6
+# performance-test-k6 (EN)
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: performance-test-k6
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-k6/SKILL.md
+- description: Use this skill when you need k6 load/stress/spike/soak scope, scripts, or runnable entry points; triggers include k6, k6 scripts, and k6 performance testing.
 
-## Quick Intro
-- Who should use: Performance engineers and QAs handling capacity validation.
-- Best used when: You need data-backed answers for latency, throughput, and bottleneck risk.
-- How to use: Define SLO and workload model, execute phased load tests, then report bottlenecks and capacity thresholds.
+## When to Use
 
+- Need performance outputs that should land in k6 structure.
+- The project already uses k6 or wants k6-ready scenarios.
 
-## Usage Guide
-1. Install and enable `performance-test-k6` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with load targets, for example: "Use `performance-test-k6` with p95<300ms and peak 1200 RPS."
-4. Require outputs: workload model, thresholds, bottleneck analysis, and tuning recommendations.
-5. Repeat after tuning and ask for before/after comparison summary.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- Traffic is expected to grow and capacity limits are unknown.
-- Latency, error rate, or saturation symptoms appear in production-like traffic.
-- Team needs data-backed scaling and optimization decisions.
+## Core Constraints
 
-### What
-- Measure system behavior through k6 workload scripting and metric analysis.
-- Identify bottlenecks across application, database, and dependency layers.
-- Deliver capacity baseline and optimization priorities.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions; with no SLA/traffic, label every number as Assumption and list Open Questions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide; secrets are placeholders / `__ENV` only — never real tokens.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+- Default to only the most critical 1–2 scenario types — do not run baseline/load/stress/spike/soak all by default.
 
-### How
-1. Define SLO targets and workload model (normal, peak, spike).
-2. Prepare realistic traffic mix and representative test data.
-3. Run baseline, ramp-up, and steady-state test phases.
-4. Correlate response metrics with infrastructure signals.
-5. Isolate bottleneck component and validate hypothesis.
-6. Report capacity threshold, failure mode, and remediation plan.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- SLO: P95 < 300ms, peak 1200 RPS, checkout + search path
+- Before producing output, read and follow `prompts/performance-test-k6.md` (minimum coverage, output structure, quality bar).
+- When a ready-made template fits: use matching files under `output-templates/`.
+- When the user wants examples or alignment with existing assets: read relevant `examples/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- At 1050 RPS DB pool saturation starts; P95 reaches 340ms
-- CPU stable, DB wait time spikes
-- Recommendation: increase pool + optimize hot query before release
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Run a stress test"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: target scenarios, load model, data setup needs, VU or duration profile, thresholds, environment and monitoring, priority bottlenecks, reporting needs, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- No SLO target, no workload shape, no bottleneck evidence
-- Results cannot support scale decision
+## Common Pitfalls
 
-### Limits
-- Do not run synthetic tests that ignore real traffic pattern.
-- Do not conclude from average latency only.
-- Do not skip dependency-level diagnostics.
-- Do not compare runs with inconsistent environment baselines.
-- Do not approve capacity without threshold evidence.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: performance-test-k6
+description: Use this skill when you need k6 load/stress/spike/soak scope, scripts, or runnable entry points; triggers include k6, k6 scripts, and k6 performance testing.
+---
+
+# performance-test-k6 (EN)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need performance outputs that should land in k6 structure.
+- The project already uses k6 or wants k6-ready scenarios.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions; with no SLA/traffic, label every number as Assumption and list Open Questions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide; secrets are placeholders / `__ENV` only — never real tokens.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+- Default to only the most critical 1–2 scenario types — do not run baseline/load/stress/spike/soak all by default.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/performance-test-k6.md` (minimum coverage, output structure, quality bar).
+- When a ready-made template fits: use matching files under `output-templates/`.
+- When the user wants examples or alignment with existing assets: read relevant `examples/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: target scenarios, load model, data setup needs, VU or duration profile, thresholds, environment and monitoring, priority bottlenecks, reporting needs, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/performance-test-k6/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [performance-test-k6](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-k6/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill performance-test-k6
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[performance-test-k6](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-k6/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

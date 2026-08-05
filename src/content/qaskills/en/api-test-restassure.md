@@ -1,104 +1,148 @@
-# api-test-restassure
+# api-test-restassure (EN)
 
-作者：naodeng
+Author: naodeng
 
-## TOC
-- [Quick Intro](#quick-intro)
-- [Usage Guide](#usage-guide)
-- [Skill Breakdown](#skill-breakdown)
-  - [When](#when)
-  - [What](#what)
-  - [How](#how)
-  - [Reference](#reference)
-  - [Limits](#limits)
-- [Install](#install)
-- [Source](#source)
-- [Last Synced](#last-synced)
+## Metadata
+- slug: api-test-restassure
+- category: type
+- hasEvals: true
+- syncedAt: 2026-08-05
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-restassure/SKILL.md
+- description: Use this skill when you need to parse multi-format API definitions and generate Rest Assured Java test classes; triggers include Rest Assured, RestAssured, and Java API automation.
 
-## Quick Intro
-- Who should use: API testers and backend-focused automation engineers.
-- Best used when: API changes may impact contract, auth, payload, or integration behavior.
-- How to use: Define API matrix, run contract and behavior checks, then report defects with reproducible evidence.
+## When to Use
 
+- Need API outputs that should land in REST Assured based automation.
+- The project is Java-based or already uses REST Assured.
 
-## Usage Guide
-1. Install and enable `api-test-restassure` first (use the install commands in this page).
-2. In your request, provide required context: scope, environment, timeline, and expected output format.
-3. Trigger with API context, for example: "Use `api-test-restassure` on /orders and /payments in staging."
-4. Provide auth/data details and ask for outputs: test matrix, assertions, and defect evidence format.
-5. Execute in two rounds: smoke first, then negative/boundary regression.
+## Workflow
 
-## Skill Breakdown
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
 
-### When
-- API changes may break contract, data shape, auth, or error handling.
-- Backend is ready before UI and API needs early verification.
-- Regression confidence is needed for integration and release.
+## Core Constraints
 
-### What
-- Validate request/response behavior using RestAssured-based Java API validation.
-- Detect contract mismatch, status-code drift, and data integrity issues.
-- Provide evidence for API readiness and downstream integration safety.
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Use placeholders or env-var semantics for auth/secrets; never hardcode real credentials.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
 
-### How
-1. Define API scope by endpoint criticality and business flow dependency.
-2. Prepare test matrix: happy path, validation errors, auth, idempotency, and boundary data.
-3. Execute with deterministic fixtures and environment isolation.
-4. Verify status, schema, key fields, and side effects.
-5. Log failures with reproducible request payload and correlation id.
-6. Summarize API quality with pass rate, top risks, and follow-up tests.
+## Progressive Disclosure
 
-### Reference
-### Positive Example (Input -> Output)
-Input:
-- Endpoint: `POST /orders`
-- Rules: member coupon + stock lock + timeout rollback
+- Before producing output, read and follow `prompts/api-test-restassure.md` (minimum coverage, output structure, quality bar).
+- When a ready-made template fits: use matching files under `output-templates/`.
+- When the user wants examples or alignment with existing assets: read relevant `examples/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
 
-Output:
-- Cases covering valid order, invalid coupon, insufficient stock, replay protection
-- Defect found: rollback missing when payment timeout occurs
-- Recommendation: block release until compensation path is fixed
+## Pre-delivery Checklist
 
-### Negative Example (Input -> Output)
-Input:
-- "Test all order APIs"
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: suite structure, common setup, auth handling, priority endpoints, positive scenarios, negative and boundary scenarios, assertion focus, test data strategy, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
 
-Output (problem):
-- Only 200-response checks, no schema validation or negative path
-- Misses contract-breaking field type change
+## Common Pitfalls
 
-### Limits
-- Do not test APIs without environment/data setup clarity.
-- Do not rely on status code alone for correctness.
-- Do not ignore side-effect validation for write APIs.
-- Do not hide flaky assertions caused by unstable test data.
-- Do not claim integration safety without contract verification.
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: api-test-restassure
+description: Use this skill when you need to parse multi-format API definitions and generate Rest Assured Java test classes; triggers include Rest Assured, RestAssured, and Java API automation.
+---
+
+# api-test-restassure (EN)
+
+**中文版：** See the corresponding Chinese skill.
+
+## When to Use
+
+- Need API outputs that should land in REST Assured based automation.
+- The project is Java-based or already uses REST Assured.
+
+## Workflow
+
+1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
+2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+4. Default to Markdown; switch formats only when the user asks.
+
+## Core Constraints
+
+- Prioritize by risk / business impact — do not treat everything equally.
+- Separate confirmed facts from current assumptions.
+- Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Use placeholders or env-var semantics for auth/secrets; never hardcode real credentials.
+- Keep output executable: concrete scenarios, clear priority, clear next steps.
+
+## Progressive Disclosure
+
+- Before producing output, read and follow `prompts/api-test-restassure.md` (minimum coverage, output structure, quality bar).
+- When a ready-made template fits: use matching files under `output-templates/`.
+- When the user wants examples or alignment with existing assets: read relevant `examples/`.
+- For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
+- For format conversion or helper checks: prefer existing `scripts/` over reinventing.
+- For evaluating/regressing this skill: use `evals/` with skill-up.
+
+## Pre-delivery Checklist
+
+- [ ] Followed the main prompt's output structure
+- [ ] Minimum coverage focus: suite structure, common setup, auth handling, priority endpoints, positive scenarios, negative and boundary scenarios, assertion focus, test data strategy, ... (details in main prompt)
+- [ ] Covered the minimum checklist, or explained omissions
+- [ ] High-risk items have explicit priority
+- [ ] Did not invent details the user did not provide
+- [ ] Assumptions and gaps are marked
+
+## Common Pitfalls
+
+- Do not pretend completeness when scope/context is missing.
+- Do not treat every item as equally important.
+- Do not skip assumptions and information gaps.
+- Do not dump generic theory unrelated to the current toolchain.
+```
 
 ## Install
+
 ### Choose installer by OS and AI tool
 
 #### macOS / Linux
-- `codex`: [codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/codex.sh)
-- `cursor`: [cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/cursor.sh)
-- `claudecode`: [claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/claudecode.sh)
-- `kiro`: [kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/kiro.sh)
-- `opencode`: [opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/opencode.sh)
-- `trae`: [trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/trae.sh)
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/mac/trae.sh)
 
 #### Windows (PowerShell)
-- `codex`: [codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/codex.ps1)
-- `cursor`: [cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/cursor.ps1)
-- `claudecode`: [claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/claudecode.ps1)
-- `kiro`: [kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/kiro.ps1)
-- `opencode`: [opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/opencode.ps1)
-- `trae`: [trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/trae.ps1)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/api-test-restassure/windows/trae.ps1)
 
 ### Notes
 - Pick the script that matches your OS and AI tool.
-- Open the link and run the script content directly.
-## Source
-- Original Skill: [api-test-restassure](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-restassure/SKILL.md)
-- Repository: [https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-## Last Synced
-2026-03-25
+## Call Example
+
+```text
+@skill api-test-restassure
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[api-test-restassure](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-restassure/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

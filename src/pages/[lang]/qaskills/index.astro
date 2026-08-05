@@ -14,6 +14,11 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const grouped = await getQASkillsGrouped(lang);
+const allSkills = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+const totalCount = allSkills.length;
+const evalsCount = allSkills.filter((s) => s.hasEvals).length;
+const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
+const toolCount = 6;
 
 const text = lang === "zh-cn" ? {
   title: "软件测试技能库",
@@ -24,6 +29,15 @@ const text = lang === "zh-cn" ? {
   startBtn: "快速开始",
   githubBtn: "查看 GitHub",
   skillCountLabel: "个 Skills",
+  toolsLabel: "个 AI 工具",
+  syncedLabel: "最近同步",
+  evalsLabel: "含 Evals",
+  searchPlaceholder: "搜索 skill 名称 / 场景关键词…",
+  filterAll: "全部",
+  filterType: "测试类型",
+  filterWorkflow: "工作流",
+  filterPlus: "Plus",
+  filterEvals: "有 Evals",
   typeTitle: "测试类型",
   workflowTitle: "测试工作流程",
   plusTitle: "加强版",
@@ -31,23 +45,17 @@ const text = lang === "zh-cn" ? {
   workflowDesc: "按日常、迭代、发布流程查看技能。",
   plusDesc: "更深度、结构更完整的增强版本技能。",
   viewDetail: "查看详情",
-  subGroup: "细分",
+  empty: "没有匹配的技能。试试 discover-testing，或清空筛选。",
+  clearFilters: "清空筛选",
+  hasEvals: "Evals",
+  noEvals: "No Evals",
+  catType: "类型",
+  catWorkflow: "工作流",
+  catPlus: "Plus",
   quickSteps: [
-    {
-      title: "选择技能",
-      desc: "先按分类找到你当前任务最匹配的 Skill。",
-      tips: ["按测试类型选通用技能", "按工作流程选阶段技能", "复杂任务优先看加强版"],
-    },
-    {
-      title: "准备输入",
-      desc: "准备任务上下文，再让 Skill 输出可执行结果。",
-      tips: ["补齐需求、环境、时间信息", "说明输出格式要求", "提前标注风险和优先级"],
-    },
-    {
-      title: "开始使用",
-      desc: "打开详情页，按说明直接试用并安装到你的工具。",
-      tips: ["先看适用场景和人群", "使用技能链接快速跳转", "按安装说明一步步执行"],
-    },
+    { title: "选择技能", desc: "用搜索或分类找到当前任务最匹配的 Skill。" },
+    { title: "准备输入", desc: "补齐范围、环境、时间与期望输出格式。" },
+    { title: "安装调用", desc: "打开详情页，一键安装后按示例触发。" },
   ],
 } : {
   title: "QA Skill Library",
@@ -58,6 +66,15 @@ const text = lang === "zh-cn" ? {
   startBtn: "Quick Start",
   githubBtn: "View GitHub",
   skillCountLabel: "skills",
+  toolsLabel: "AI tools",
+  syncedLabel: "Synced",
+  evalsLabel: "with Evals",
+  searchPlaceholder: "Search by skill name or scenario…",
+  filterAll: "All",
+  filterType: "Types",
+  filterWorkflow: "Workflows",
+  filterPlus: "Plus",
+  filterEvals: "Has Evals",
   typeTitle: "Testing Types",
   workflowTitle: "Testing Workflows",
   plusTitle: "Plus",
@@ -65,28 +82,26 @@ const text = lang === "zh-cn" ? {
   workflowDesc: "Browse by daily, sprint, and release workflows.",
   plusDesc: "Enhanced skills with deeper and more complete structure.",
   viewDetail: "View Details",
-  subGroup: "Subgroups",
+  empty: "No matching skills. Try discover-testing, or clear filters.",
+  clearFilters: "Clear filters",
+  hasEvals: "Evals",
+  noEvals: "No Evals",
+  catType: "Type",
+  catWorkflow: "Workflow",
+  catPlus: "Plus",
   quickSteps: [
-    {
-      title: "Pick a skill",
-      desc: "Choose the skill that best matches your current QA task.",
-      tips: ["Use testing types for common tasks", "Use workflows for phase-based tasks", "Use plus skills for complex tasks"],
-    },
-    {
-      title: "Prepare input",
-      desc: "Provide context so the skill can generate actionable output.",
-      tips: ["Include scope, environment, and timeline", "State expected output format", "Mark risk and priority in advance"],
-    },
-    {
-      title: "Start using",
-      desc: "Open the detail page and follow the guide and install section.",
-      tips: ["Check scenario and audience first", "Use source links for quick jump", "Follow install steps directly"],
-    },
+    { title: "Pick a skill", desc: "Search or browse to match your QA task." },
+    { title: "Prepare input", desc: "Provide scope, environment, timeline, and output format." },
+    { title: "Install & run", desc: "Open the detail page, install, then trigger with the example." },
   ],
 };
 
-const totalCount = grouped.testingTypes.length + grouped.testingWorkflows.length + grouped.plus.length;
-const allSkills = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+const categoryLabel = (category: string) => {
+  if (category === "workflow") return text.catWorkflow;
+  if (category === "plus") return text.catPlus;
+  return text.catType;
+};
+
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const pageUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, "/qaskills/")}`;
 const pageKeywords =
@@ -100,11 +115,6 @@ const collectionSchema = {
   description: text.description,
   url: pageUrl,
   inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
-  about: [
-    lang === "zh-cn" ? "软件测试技能" : "Software testing skills",
-    lang === "zh-cn" ? "测试工作流" : "Testing workflows",
-    lang === "zh-cn" ? "AI 测试" : "AI testing",
-  ],
 };
 const itemListSchema = {
   "@context": "https://schema.org",
@@ -123,6 +133,9 @@ const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
   { name: text.title, url: getRelativeLocaleUrl(lang, "/qaskills") },
 ];
+
+const displayNameOf = (skill: (typeof allSkills)[number]) =>
+  lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title;
 ---
 
 <Base
@@ -137,12 +150,34 @@ const breadcrumbs = [
       <h1>{text.title}</h1>
       <p class="hero-sub">{text.description}</p>
       <p class="hero-intro">{text.intro}</p>
-      <p class="hero-count">{totalCount} {text.skillCountLabel}</p>
+      <p class="hero-stats">
+        <span>{totalCount} {text.skillCountLabel}</span>
+        <span>{toolCount} {text.toolsLabel}</span>
+        <span>{text.syncedLabel}: {latestSync}</span>
+        <span>{evalsCount} {text.evalsLabel}</span>
+      </p>
       <div class="hero-actions">
         <a href="#quickstart" class="btn btn-primary">{text.startBtn}</a>
         <a href="https://github.com/naodeng/awesome-qa-skills" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.githubBtn}</a>
       </div>
     </header>
+
+    <section class="section discovery" aria-label={lang === "zh-cn" ? "搜索与筛选" : "Search and filters"}>
+      <input
+        id="qaskills-search"
+        class="search-input"
+        type="search"
+        placeholder={text.searchPlaceholder}
+        autocomplete="off"
+      />
+      <div class="chips" role="group">
+        <button type="button" class="chip is-active" data-filter="all">{text.filterAll}</button>
+        <button type="button" class="chip" data-filter="type">{text.filterType}</button>
+        <button type="button" class="chip" data-filter="workflow">{text.filterWorkflow}</button>
+        <button type="button" class="chip" data-filter="plus">{text.filterPlus}</button>
+        <button type="button" class="chip" data-evals-toggle="1">{text.filterEvals}</button>
+      </div>
+    </section>
 
     <section id="quickstart" class="section">
       <h2>{text.quickStart}</h2>
@@ -152,9 +187,6 @@ const breadcrumbs = [
             <span class="num">{index + 1}</span>
             <h3>{step.title}</h3>
             <p>{step.desc}</p>
-            <ul>
-              {step.tips.map((tip) => <li>{tip}</li>)}
-            </ul>
           </li>
         ))}
       </ol>
@@ -162,8 +194,12 @@ const breadcrumbs = [
 
     <section class="section" id="categories">
       <h2>{text.categories}</h2>
+      <p id="qaskills-empty" class="empty-state" hidden>
+        {text.empty}
+        <button type="button" id="qaskills-clear" class="btn btn-outline">{text.clearFilters}</button>
+      </p>
 
-      <div class="category-block">
+      <div class="category-block" data-block="type">
         <h3>{text.typeTitle}</h3>
         <p>{text.typeDesc}</p>
         {grouped.testingTypeSubgroups.map((group) => (
@@ -172,9 +208,22 @@ const breadcrumbs = [
             <ul class="cards" role="list">
               {group.skills.map((skill) => (
                 <li>
-                  <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
-                    <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
-                    <p>{skill.intro}</p>
+                  <a
+                    class="card"
+                    data-slug={skill.slug}
+                    data-category={skill.category}
+                    data-evals={skill.hasEvals ? "true" : "false"}
+                    data-title={displayNameOf(skill)}
+                    data-intro={skill.intro}
+                    href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
+                  >
+                    <h5>{displayNameOf(skill)}</h5>
+                    <p class="card-meta">
+                      <span class="tag">{categoryLabel(skill.category)}</span>
+                      <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
+                      <span class="tag">{skill.updatedAt || "-"}</span>
+                    </p>
+                    <p class="card-intro">{skill.intro}</p>
                     <span>{text.viewDetail} →</span>
                   </a>
                 </li>
@@ -188,15 +237,28 @@ const breadcrumbs = [
         <GoogleAd />
       </div>
 
-      <div class="category-block">
+      <div class="category-block" data-block="workflow">
         <h3>{text.workflowTitle}</h3>
         <p>{text.workflowDesc}</p>
         <ul class="cards" role="list">
           {grouped.testingWorkflows.map((skill) => (
             <li>
-              <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
-                <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
-                <p>{skill.intro}</p>
+              <a
+                class="card"
+                data-slug={skill.slug}
+                data-category={skill.category}
+                data-evals={skill.hasEvals ? "true" : "false"}
+                data-title={displayNameOf(skill)}
+                data-intro={skill.intro}
+                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
+              >
+                <h5>{displayNameOf(skill)}</h5>
+                <p class="card-meta">
+                  <span class="tag">{categoryLabel(skill.category)}</span>
+                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
+                  <span class="tag">{skill.updatedAt || "-"}</span>
+                </p>
+                <p class="card-intro">{skill.intro}</p>
                 <span>{text.viewDetail} →</span>
               </a>
             </li>
@@ -204,15 +266,28 @@ const breadcrumbs = [
         </ul>
       </div>
 
-      <div class="category-block">
+      <div class="category-block" data-block="plus">
         <h3>{text.plusTitle}</h3>
         <p>{text.plusDesc}</p>
         <ul class="cards" role="list">
           {grouped.plus.map((skill) => (
             <li>
-              <a class="card" href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
-                <h5>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h5>
-                <p>{skill.intro}</p>
+              <a
+                class="card"
+                data-slug={skill.slug}
+                data-category={skill.category}
+                data-evals={skill.hasEvals ? "true" : "false"}
+                data-title={displayNameOf(skill)}
+                data-intro={skill.intro}
+                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
+              >
+                <h5>{displayNameOf(skill)}</h5>
+                <p class="card-meta">
+                  <span class="tag">{categoryLabel(skill.category)}</span>
+                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
+                  <span class="tag">{skill.updatedAt || "-"}</span>
+                </p>
+                <p class="card-intro">{skill.intro}</p>
                 <span>{text.viewDetail} →</span>
               </a>
             </li>
@@ -226,6 +301,84 @@ const breadcrumbs = [
     </section>
   </div>
 </Base>
+
+<script is:inline>
+  (() => {
+    const search = document.getElementById("qaskills-search");
+    const empty = document.getElementById("qaskills-empty");
+    const clearBtn = document.getElementById("qaskills-clear");
+    const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
+    const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
+    const blocks = Array.from(document.querySelectorAll(".category-block"));
+    if (!search || !empty || !cards.length) return;
+
+    let category = "all";
+    let evalsOnly = false;
+
+    const apply = () => {
+      const q = (search.value || "").trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const cat = card.getAttribute("data-category") || "type";
+        const hasEvals = card.getAttribute("data-evals") === "true";
+        const haystack = [
+          card.getAttribute("data-slug") || "",
+          card.getAttribute("data-title") || "",
+          card.getAttribute("data-intro") || "",
+        ]
+          .join(" ")
+          .toLowerCase();
+        const okCat = category === "all" || cat === category;
+        const okEvals = !evalsOnly || hasEvals;
+        const okQuery = !q || haystack.includes(q);
+        const show = okCat && okEvals && okQuery;
+        card.closest("li")?.toggleAttribute("hidden", !show);
+        if (show) visible += 1;
+      });
+
+      document.querySelectorAll(".subgroup").forEach((sub) => {
+        const hasVisible = Array.from(sub.querySelectorAll("li")).some((li) => !li.hasAttribute("hidden"));
+        sub.toggleAttribute("hidden", !hasVisible);
+      });
+
+      blocks.forEach((block) => {
+        const blockCat = block.getAttribute("data-block");
+        const relevant = category === "all" || category === blockCat;
+        const hasVisible = Array.from(block.querySelectorAll("li")).some((li) => !li.hasAttribute("hidden"));
+        block.toggleAttribute("hidden", !relevant || !hasVisible);
+      });
+
+      empty.hidden = visible > 0;
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        if (chip.hasAttribute("data-evals-toggle")) {
+          evalsOnly = !evalsOnly;
+          chip.classList.toggle("is-active", evalsOnly);
+        } else {
+          category = chip.getAttribute("data-filter") || "all";
+          document.querySelectorAll(".chip[data-filter]").forEach((c) => {
+            c.classList.toggle("is-active", c === chip);
+          });
+        }
+        apply();
+      });
+    });
+
+    search.addEventListener("input", apply);
+    clearBtn?.addEventListener("click", () => {
+      search.value = "";
+      category = "all";
+      evalsOnly = false;
+      document.querySelectorAll(".chip[data-filter]").forEach((c) => {
+        c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
+      });
+      document.querySelector(".chip[data-evals-toggle]")?.classList.remove("is-active");
+      apply();
+    });
+  })();
+</script>
 
 <style>
   .qaskills-page {
@@ -251,12 +404,14 @@ const breadcrumbs = [
     font-weight: 700;
     color: var(--color-theme);
   }
-  .hero-intro {
-    margin-top: 0.75rem;
-  }
-  .hero-count {
-    margin-top: 0.5rem;
+  .hero-intro { margin-top: 0.75rem; }
+  .hero-stats {
+    margin-top: 0.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
     font-weight: 700;
+    font-size: 0.92rem;
   }
   .hero-actions {
     margin-top: 1rem;
@@ -270,19 +425,60 @@ const breadcrumbs = [
     border-radius: 10px;
     font-weight: 700;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
   }
-  .btn-primary {
-    color: white;
-    background: var(--color-theme);
-  }
+  .btn-primary { color: white; background: var(--color-theme); }
   .btn-outline {
     color: var(--color-main);
     border: 1px solid color-mix(in srgb, var(--color-main) 26%, transparent);
+    background: transparent;
+  }
+  .discovery { display: grid; gap: 0.75rem; }
+  .search-input {
+    width: 100%;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
+    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
+    padding: 0.55rem 0.85rem;
+    font: inherit;
+    color: inherit;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    appearance: none;
+    border: 1px solid color-mix(in srgb, var(--color-main) 22%, transparent);
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    color: inherit;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .chip.is-active {
+    background: var(--color-theme);
+    border-color: var(--color-theme);
+    color: white;
   }
   .section h2 {
     margin-top: 0;
     margin-bottom: 0.75rem;
     font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  }
+  .empty-state {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: 1px dashed color-mix(in srgb, var(--color-main) 24%, transparent);
   }
   .quick-grid {
     list-style: none;
@@ -308,16 +504,8 @@ const breadcrumbs = [
     color: var(--color-theme);
     font-weight: 800;
   }
-  .quick-card h3 {
-    margin: 0.55rem 0 0.45rem;
-  }
-  .quick-card p {
-    margin: 0 0 0.5rem;
-  }
-  .quick-card ul {
-    margin: 0;
-    padding-inline-start: 1.1rem;
-  }
+  .quick-card h3 { margin: 0.55rem 0 0.45rem; }
+  .quick-card p { margin: 0; }
   .category-block {
     margin-top: 1rem;
     border: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
@@ -325,39 +513,27 @@ const breadcrumbs = [
     background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
     padding: 0.95rem;
   }
-  .category-block h3 {
-    margin-bottom: 0.2rem;
-  }
-  .category-block > p {
-    margin-top: 0;
-    opacity: 0.85;
-  }
+  .category-block h3 { margin-bottom: 0.2rem; }
+  .category-block > p { margin-top: 0; opacity: 0.85; }
   .subgroup {
     margin-top: 0.85rem;
     padding-top: 0.7rem;
     border-top: 1px dashed color-mix(in srgb, var(--color-main) 14%, transparent);
   }
-  .subgroup:first-of-type {
-    border-top: 0;
-    padding-top: 0;
-  }
+  .subgroup:first-of-type { border-top: 0; padding-top: 0; }
   .subgroup h4 {
     margin: 0 0 0.55rem;
     font-size: 1rem;
     color: var(--color-theme);
   }
-  .ad-slot-250 {
-    margin-top: 1rem;
-  }
+  .ad-slot-250 { margin-top: 1rem; }
   .ad-slot-250 :global(.ad-collapse) {
     margin-block: 0;
     width: 100%;
     height: 250px;
     overflow: hidden;
   }
-  .ad-slot-250 :global(.adsbygoogle) {
-    height: 250px !important;
-  }
+  .ad-slot-250 :global(.adsbygoogle) { height: 250px !important; }
   .cards {
     margin: 0;
     padding: 0;
@@ -382,21 +558,35 @@ const breadcrumbs = [
     border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
     box-shadow: 0 6px 16px color-mix(in srgb, var(--color-main) 12%, transparent);
   }
-  .card h5 {
-    margin: 0 0 0.4rem;
-    font-size: 1rem;
+  .card h5 { margin: 0 0 0.4rem; font-size: 1rem; }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0 0 0.5rem;
   }
-  .card p {
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    color: var(--color-theme);
+  }
+  .card-intro {
     margin: 0;
     font-size: 0.92rem;
     opacity: 0.88;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.55;
   }
-  .card span {
+  .card > span {
     display: inline-block;
     margin-top: 0.7rem;
     color: var(--color-theme);
@@ -404,27 +594,11 @@ const breadcrumbs = [
     font-size: 0.9rem;
   }
   @media (max-width: 920px) {
-    .quick-grid,
-    .cards {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .qaskills-page {
-      gap: 1rem;
-    }
+    .quick-grid, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .qaskills-page {
-      padding: var(--sp-m);
-    }
-    .hero {
-      padding: var(--sp-m);
-    }
-    .category-block {
-      padding: 0.8rem;
-    }
-    .quick-grid,
-    .cards {
-      grid-template-columns: 1fr;
-    }
+    .qaskills-page { padding: var(--sp-m); }
+    .quick-grid, .cards { grid-template-columns: 1fr; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; }
   }
 </style>
