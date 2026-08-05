@@ -604,6 +604,6 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   @media (max-width: 640px) {
     .qaskills-page { padding: var(--sp-m); }
     .quick-grid, .cards { grid-template-columns: 1fr; }
-    .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; -webkit-overflow-scrolling: touch; }
   }
 </style>

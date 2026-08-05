@@ -27,10 +27,14 @@ const { title, compact = false } = Astro.props;
   }
   @media (width < 768px) {
     header {
-      margin-inline: calc(50% - 50vw);
+      /* Cancel .l-content padding without 100vw (avoids scrollbar-induced overflow) */
+      margin-inline: calc(-1 * var(--sp-m));
+      width: auto;
+      max-width: none;
       border-radius: 0;
       border-inline: none;
       padding-inline: var(--sp-m);
+      box-sizing: border-box;
     }
   }
   h1 {

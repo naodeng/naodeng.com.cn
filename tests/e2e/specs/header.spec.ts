@@ -153,6 +153,34 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header button[data-search-open]")).toBeVisible();
     await expect(page.locator("header [data-site-nav]")).toBeHidden();
 
+    const layout = await page.evaluate(() => {
+      const brand = document.querySelector(".site-brand-link");
+      const utils = document.querySelector(".header-utils");
+      if (!(brand instanceof HTMLElement) || !(utils instanceof HTMLElement)) {
+        return { ok: false };
+      }
+      const br = brand.getBoundingClientRect();
+      const ur = utils.getBoundingClientRect();
+      const overlapX = Math.max(0, Math.min(br.right, ur.right) - Math.max(br.left, ur.left));
+      const overlapY = Math.max(0, Math.min(br.bottom, ur.bottom) - Math.max(br.top, ur.top));
+      return {
+        ok: true,
+        gap: ur.left - br.right,
+        overlapArea: overlapX * overlapY,
+        primaryVisible: getComputedStyle(
+          document.querySelector(".site-title-primary") as Element,
+        ).display !== "none",
+        secondaryHidden: getComputedStyle(
+          document.querySelector(".site-title-secondary") as Element,
+        ).display === "none",
+      };
+    });
+    expect(layout.ok).toBeTruthy();
+    expect(layout.overlapArea).toBeLessThanOrEqual(1);
+    expect(layout.gap).toBeGreaterThanOrEqual(4);
+    expect(layout.primaryVisible).toBeTruthy();
+    expect(layout.secondaryHidden).toBeTruthy();
+
     await page.locator("header [data-nav-toggle]").click();
     await expect(page.locator("header.l-header")).toHaveAttribute("data-nav-open", "");
     await expect(page.locator("header [data-site-nav]")).toBeVisible();
