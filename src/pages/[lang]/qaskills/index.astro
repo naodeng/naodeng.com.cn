@@ -3,7 +3,7 @@ import Base from "@/layouts/Base.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getQASkillsGrouped } from "@/utils/qaskills";
+import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
 
 export function getStaticPaths() {
   return [
@@ -15,6 +15,10 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const grouped = await getQASkillsGrouped(lang);
 const allSkills = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+const lifecycleStages = resolveLifecyclePath(
+  allSkills,
+  lang === "zh-cn" ? "zh-cn" : "en"
+);
 const totalCount = allSkills.length;
 const evalsCount = allSkills.filter((s) => s.hasEvals).length;
 const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
@@ -52,6 +56,9 @@ const text = lang === "zh-cn" ? {
   catType: "类型",
   catWorkflow: "工作流",
   catPlus: "Plus",
+  lifecycleTitle: "软件测试生命周期路径",
+  lifecycleIntro: "按生命周期阶段查看会用到的 Skills，点击进入详情。",
+  lifecyclePlusLabel: "Plus",
   quickSteps: [
     { title: "选择技能", desc: "用搜索或分类找到当前任务最匹配的 Skill。" },
     { title: "准备输入", desc: "补齐范围、环境、时间与期望输出格式。" },
@@ -89,6 +96,9 @@ const text = lang === "zh-cn" ? {
   catType: "Type",
   catWorkflow: "Workflow",
   catPlus: "Plus",
+  lifecycleTitle: "Software Testing Lifecycle Path",
+  lifecycleIntro: "Browse skills by lifecycle stage. Click any skill to open its detail page.",
+  lifecyclePlusLabel: "Plus",
   quickSteps: [
     { title: "Pick a skill", desc: "Search or browse to match your QA task." },
     { title: "Prepare input", desc: "Provide scope, environment, timeline, and output format." },
@@ -161,6 +171,43 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         <a href="https://github.com/naodeng/awesome-qa-skills" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.githubBtn}</a>
       </div>
     </header>
+
+    <section id="lifecycle-path" class="section lifecycle-path" aria-labelledby="lifecycle-path-title">
+      <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
+      <p class="lifecycle-intro">{text.lifecycleIntro}</p>
+      <div class="lifecycle-track">
+        {lifecycleStages.map((stage, index) => (
+          <div class="lifecycle-cell">
+            <div class="lifecycle-stage" data-stage={stage.key}>
+              <p class="lifecycle-stage-title">
+                <span class="lifecycle-stage-num" aria-hidden="true">{index + 1}</span>
+                {stage.title}
+              </p>
+              <ul class="lifecycle-skills" role="list">
+                {stage.nodes.map((node) => (
+                  <li>
+                    <a
+                      class:list={["lifecycle-skill", node.kind === "plus" && "lifecycle-skill--plus"]}
+                      href={getRelativeLocaleUrl(lang, `/qaskills/${node.slug}/`)}
+                      data-slug={node.slug}
+                      data-kind={node.kind}
+                    >
+                      <span>{node.label}</span>
+                      {node.kind === "plus" && (
+                        <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {index < lifecycleStages.length - 1 && (
+              <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
 
     <section class="section discovery" aria-label={lang === "zh-cn" ? "搜索与筛选" : "Search and filters"}>
       <input
@@ -598,8 +645,118 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     font-weight: 700;
     font-size: 0.9rem;
   }
+  .lifecycle-intro {
+    margin: 0 0 0.85rem;
+    opacity: 0.88;
+  }
+  .lifecycle-track {
+    display: flex;
+    align-items: stretch;
+    gap: 0.35rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+  .lifecycle-cell {
+    display: flex;
+    align-items: stretch;
+    gap: 0.35rem;
+    flex: 1 1 0;
+    min-width: 9.5rem;
+  }
+  .lifecycle-stage {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
+    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
+    padding: 0.75rem;
+  }
+  .lifecycle-stage-title {
+    margin: 0 0 0.55rem;
+    font-weight: 800;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    line-height: 1.35;
+  }
+  .lifecycle-stage-num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+    background: color-mix(in srgb, var(--color-theme) 18%, transparent);
+    color: var(--color-theme);
+    font-size: 0.75rem;
+  }
+  .lifecycle-skills {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .lifecycle-skill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    padding: 0.4rem 0.55rem;
+    font-size: 0.86rem;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+  .lifecycle-skill:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 45%, transparent);
+  }
+  .lifecycle-skill:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .lifecycle-skill--plus {
+    background: transparent;
+    border-style: dashed;
+    opacity: 0.92;
+    font-weight: 600;
+  }
+  .lifecycle-plus-tag {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.1rem 0.35rem;
+    border-radius: 999px;
+    border: 1px dashed color-mix(in srgb, var(--color-main) 28%, transparent);
+    color: var(--color-theme);
+  }
+  .lifecycle-arrow {
+    align-self: center;
+    flex-shrink: 0;
+    color: color-mix(in srgb, var(--color-main) 45%, transparent);
+    font-weight: 700;
+    padding: 0 0.1rem;
+  }
   @media (max-width: 920px) {
     .quick-grid, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lifecycle-track {
+      flex-direction: column;
+      overflow-x: visible;
+    }
+    .lifecycle-cell {
+      min-width: 0;
+      flex-direction: column;
+    }
+    .lifecycle-arrow {
+      transform: rotate(90deg);
+      align-self: center;
+      padding: 0.15rem 0;
+    }
   }
   @media (max-width: 640px) {
     .qaskills-page { padding: var(--sp-m); }
