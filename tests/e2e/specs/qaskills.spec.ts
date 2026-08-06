@@ -37,4 +37,27 @@ test.describe("QA Skills", () => {
     expect(metrics.codeCardWidth).toBeGreaterThan(0);
     expect(metrics.codeCardWidth).toBeLessThanOrEqual(metrics.clientWidth);
   });
+
+  test("index lifecycle path links to skill detail", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+    const section = page.locator("#lifecycle-path");
+    await expect(section).toBeVisible();
+    await expect(section.getByRole("heading", { name: "软件测试生命周期路径" })).toBeVisible();
+    const link = section.locator('a.lifecycle-skill[data-slug="requirements-analysis"]');
+    await expect(link).toBeVisible();
+    await link.click();
+    await expect(page).toHaveURL(/\/zh-cn\/qaskills\/requirements-analysis\/?/);
+  });
+
+  test("en index shows lifecycle path", async ({ page }) => {
+    await page.goto("/en/qaskills/");
+    const section = page.locator("#lifecycle-path");
+    await expect(section).toBeVisible();
+    await expect(
+      section.getByRole("heading", { name: "Software Testing Lifecycle Path" })
+    ).toBeVisible();
+    await expect(
+      section.locator('a.lifecycle-skill[data-slug="api-testing"]')
+    ).toBeVisible();
+  });
 });
