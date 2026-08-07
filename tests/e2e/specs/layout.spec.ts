@@ -49,6 +49,17 @@ test.describe("主页面样式与布局正常展示", () => {
     await expect(page.locator("main").first()).toBeVisible();
   });
 
+  test("zh-cn 页脚按内容类型分组", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+
+    await expect(page.locator("footer [data-footer-group]")).toHaveCount(4);
+    await expect(page.locator("footer [data-footer-group='explore']")).toContainText("探索");
+    await expect(page.locator("footer [data-footer-group='knowledge']")).toContainText("知识库");
+    await expect(page.locator("footer [data-footer-group='tools']")).toContainText("工具内容");
+    await expect(page.locator("footer [data-footer-group='site']")).toContainText("站点");
+    await expect(page.locator("footer .footer-nav a[href*='/zh-cn/qaskills']").first()).toBeVisible();
+  });
+
   for (const { locale, path, name } of extraPages) {
     test(`${locale} ${name} 页：头部、主体、底部可见`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;
