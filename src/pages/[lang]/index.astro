@@ -151,6 +151,42 @@ const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   href: getRelativeLocaleUrl(locale, card.path),
 }));
 
+const primaryEntries = [
+  {
+    key: "blog",
+    href: getRelativeLocaleUrl(locale, "/blog"),
+    eyebrow: locale === "zh-cn" ? "长期文章" : "Long-form writing",
+    title: locale === "zh-cn" ? "博客" : "Blog",
+    desc:
+      locale === "zh-cn"
+        ? "阅读软件测试、自动化、AI 工程和个人实践总结。"
+        : "Read software testing, automation, AI engineering, and personal practice notes.",
+  },
+  {
+    key: "wiki",
+    href:
+      locale === "zh-cn"
+        ? getRelativeLocaleUrl(locale, "/wiki")
+        : getRelativeLocaleUrl(locale, "/AIWiki"),
+    eyebrow: locale === "zh-cn" ? "系统知识" : "Reference",
+    title: locale === "zh-cn" ? "Wiki / AI 百科" : "Wiki / AI Wiki",
+    desc:
+      locale === "zh-cn"
+        ? "查询测试概念、AI 术语和工程实践词条。"
+        : "Look up testing concepts, AI terms, and engineering references.",
+  },
+  {
+    key: "qa-tools",
+    href: getRelativeLocaleUrl(locale, "/prompts"),
+    eyebrow: locale === "zh-cn" ? "QA 工具内容" : "QA tools",
+    title: locale === "zh-cn" ? "提示词、工作流与技能库" : "Prompts, workflows, and skills",
+    desc:
+      locale === "zh-cn"
+        ? "进入可复用的测试提示词、流程和 QA Skills。"
+        : "Use reusable testing prompts, workflows, and QA skills.",
+  },
+];
+
 /* …projects 羊皮纸 → guild 白 → wiki 羊皮纸 → aiwiki 白 → tags 羊皮纸
    若无 wiki：guild 白 → aiwiki 羊皮纸 → tags 白 */
 const bandWiki = "parchment" as const;
@@ -218,6 +254,24 @@ const homePageSchema = {
             {t(HOME_CTA_WIKI)}
           </a>
         </div>
+        <ul
+          class="home-primary-entries"
+          role="list"
+          aria-label={locale === "zh-cn" ? "主要内容入口" : "Primary content entries"}
+        >
+          {primaryEntries.map((entry) => (
+            <li>
+              <a
+                class={`home-primary-entry home-primary-entry--${entry.key}`}
+                href={entry.href}
+              >
+                <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
+                <span class="home-primary-entry__title">{entry.title}</span>
+                <span class="home-primary-entry__desc">{entry.desc}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 
@@ -595,6 +649,53 @@ const homePageSchema = {
     flex-wrap: wrap;
   }
 
+  .home-primary-entries {
+    list-style: none;
+    margin: 36px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    text-align: start;
+  }
+
+  .home-primary-entry {
+    display: grid;
+    gap: 8px;
+    min-height: 156px;
+    padding: 22px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 16%, #d8d8dc);
+    border-radius: 16px;
+    color: #1d1d1f;
+    background: #fafafc;
+    text-decoration: none;
+  }
+
+  .home-primary-entry:hover,
+  .home-primary-entry:focus-visible {
+    border-color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 6%, #ffffff);
+  }
+
+  .home-primary-entry__eyebrow {
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--color-theme);
+    font-weight: 700;
+  }
+
+  .home-primary-entry__title {
+    font-size: 19px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  .home-primary-entry__desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6e6e73;
+  }
+
   .home-band__title {
     margin: 0;
     font-size: 28px;
@@ -711,6 +812,15 @@ const homePageSchema = {
     color: var(--color-theme);
   }
 
+  .home-latest-posts .home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-latest-posts .home-card {
+    min-height: 136px;
+    padding: 20px;
+  }
+
   .home-chip-cloud {
     list-style: none;
     margin: 28px 0 0;
@@ -758,6 +868,8 @@ const homePageSchema = {
       width: min(980px, calc(100% - 32px));
     }
 
+    .home-primary-entries,
+    .home-latest-posts .home-grid,
     .home-grid {
       grid-template-columns: 1fr;
     }
