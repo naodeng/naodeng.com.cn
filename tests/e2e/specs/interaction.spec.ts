@@ -164,4 +164,25 @@ test.describe("用户交互", () => {
       }
     }
   });
+
+  test("zh-cn 分享复制按钮显示成功状态", async ({ page, baseURL }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, "clipboard", {
+        configurable: true,
+        value: {
+          writeText: () => Promise.resolve(),
+        },
+      });
+    });
+
+    await page.goto((baseURL || "") + "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/", { waitUntil: "networkidle" });
+
+    const copyButton = page.locator(".article-share-copy");
+    await expect(copyButton).toBeVisible({ timeout: 10000 });
+    await copyButton.click();
+
+    await expect(copyButton).toHaveAttribute("data-state", "copied");
+    await expect(copyButton.locator(".article-share-btn-text")).toHaveText("已复制");
+    await expect(page.locator("#article-share-copy-feedback")).toHaveText("已复制");
+  });
 });
