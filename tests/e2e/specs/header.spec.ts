@@ -103,6 +103,19 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header nav a[data-nav-item='sponsor']")).toBeVisible();
   });
 
+  test("zh-cn 首页：更多菜单包含英语学习外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+
+    const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
+    await page.locator("[data-nav-group='more'] summary").click();
+    const menuLink = page.locator("header nav a[data-nav-item='english-learning']");
+    await expect(menuLink).toBeVisible();
+    await expect(menuLink).toContainText("英语学习");
+    await expect(menuLink).toHaveAttribute("href", englishLearningUrl);
+    await expect(menuLink).toHaveAttribute("target", "_blank");
+    await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 首页：AI测试菜单下提示词库和技能库都可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='ai-testing'] summary").click();

@@ -38,6 +38,7 @@ const isQASkillsSection = () => isSectionPath("/qaskills");
 const isProjectsSection = () => isSectionPath("/projects");
 const isSponsorSection = () => isSectionPath("/sponsor");
 const siteTitle = t(SITE_TITLE);
+const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
 
 const navGroups = [
   {
@@ -102,6 +103,18 @@ const navGroups = [
     label: t(NAV_MORE),
     active: isProjectsSection() || isSponsorSection(),
     items: [
+      ...(locale === "zh-cn"
+        ? [
+            {
+              key: "english-learning",
+              href: englishLearningUrl,
+              label: "英语学习",
+              icon: "school",
+              active: false,
+              external: true,
+            },
+          ]
+        : []),
       {
         key: "projects",
         href: getRelativeLocaleUrl(locale, "/projects"),
