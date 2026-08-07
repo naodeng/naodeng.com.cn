@@ -184,6 +184,10 @@ test.describe("Header 导航", () => {
     await page.locator("header [data-nav-toggle]").click();
     await expect(page.locator("header.l-header")).toHaveAttribute("data-nav-open", "");
     await expect(page.locator("header [data-site-nav]")).toBeVisible();
+    await expect(page.locator("header [data-nav-priority]")).toHaveCount(3);
+    await expect(page.locator("header [data-nav-priority='blog']")).toContainText("博客");
+    await expect(page.locator("header [data-nav-priority='wiki']")).toContainText("Wiki");
+    await expect(page.locator("header [data-nav-priority='prompts']")).toContainText("提示词");
     await expect(page.locator("header nav a[data-nav-item='blog']")).toBeVisible();
   });
 
@@ -194,5 +198,13 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
     await page.locator("header [data-nav-toggle]").click();
     await expect(page.locator("header nav")).toBeVisible();
+    await expect(page.locator("header [data-nav-priority]")).toHaveCount(3);
+    await expect(page.locator("header [data-nav-priority='wiki']")).toContainText("AI Wiki");
+  });
+
+  test("桌面端不显示移动快捷入口", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("header [data-nav-priority]").first()).toBeHidden();
   });
 });

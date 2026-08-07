@@ -119,6 +119,27 @@ const navGroups = [
     ],
   },
 ];
+
+const mobilePriorityItems = [
+  {
+    key: "blog",
+    href: getRelativeLocaleUrl(locale, "/blog"),
+    label: t({ en: "Blog", "zh-cn": "博客" }),
+    icon: "article",
+  },
+  {
+    key: "wiki",
+    href: locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki") : getRelativeLocaleUrl(locale, "/AIWiki"),
+    label: locale === "zh-cn" ? "Wiki" : "AI Wiki",
+    icon: locale === "zh-cn" ? "menu_book" : "psychology",
+  },
+  {
+    key: "prompts",
+    href: getRelativeLocaleUrl(locale, "/prompts"),
+    label: locale === "zh-cn" ? "提示词" : "Prompts",
+    icon: "tips_and_updates",
+  },
+];
 ---
 
 <header class="l-header" data-header>
@@ -145,6 +166,16 @@ const navGroups = [
 
     <nav class="site-nav" id="site-primary-nav" data-site-nav>
       <ul>
+        <li class="mobile-priority-nav" aria-label={locale === "zh-cn" ? "推荐入口" : "Featured entries"}>
+          {mobilePriorityItems.map((item) => (
+            <a href={item.href} data-nav-priority={item.key}>
+              <span class="material-icons-sharp mobile-priority-nav__icon" aria-hidden="true">
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+            </a>
+          ))}
+        </li>
         <li>
           <a
             href={getRelativeLocaleUrl(locale, "/")}
@@ -746,6 +777,9 @@ const navGroups = [
   .nav-toggle__close {
     display: none;
   }
+  .site-nav > ul > li.mobile-priority-nav {
+    display: none;
+  }
   .l-header[data-nav-open] .nav-toggle__open {
     display: none;
   }
@@ -952,6 +986,34 @@ const navGroups = [
     }
     .site-nav > ul > li {
       width: 100%;
+    }
+    .site-nav > ul > li.mobile-priority-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.45rem;
+      padding: 0.65rem 0 0.75rem;
+      border-bottom: 1px solid color-mix(in srgb, white 12%, transparent);
+    }
+    .mobile-priority-nav a {
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 0.25rem;
+      min-height: 74px;
+      padding: 0.6rem 0.35rem;
+      border-radius: 0.5rem;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      background: color-mix(in srgb, white 8%, transparent);
+    }
+    .mobile-priority-nav a:hover,
+    .mobile-priority-nav a:focus-visible {
+      background: color-mix(in srgb, white 14%, transparent);
+    }
+    .mobile-priority-nav__icon {
+      font-size: 24px;
+      color: color-mix(in srgb, white 78%, transparent);
     }
     .site-nav > ul > li > a,
     .nav-group-trigger {
