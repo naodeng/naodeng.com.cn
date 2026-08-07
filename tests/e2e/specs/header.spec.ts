@@ -58,14 +58,13 @@ test.describe("Header 导航", () => {
 
   test("en 博客页：博客导航链接有 active 样式", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
-    // Use :not([data-locale-option]) to exclude LocaleSelect links that share the same href
-    const blogLink = page.locator("header nav a[href*='/en/blog']:not([data-locale-option])");
+    const blogLink = page.locator("header nav a[data-nav-item='blog']");
     await expect(blogLink).toHaveClass(/active/);
   });
 
   test("zh-cn 博客页：博客导航链接有 active 样式", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
-    const blogLink = page.locator("header nav a[href*='/zh-cn/blog']:not([data-locale-option])");
+    const blogLink = page.locator("header nav a[data-nav-item='blog']");
     await expect(blogLink).toHaveClass(/active/);
   });
 
