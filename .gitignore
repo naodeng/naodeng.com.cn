@@ -41,6 +41,7 @@ lerna-debug.log*
 *.tsbuildinfo
 .turbo
 .superpowers/
+.worktrees/
 
 # # Explore folder (development/testing)
 # explore/
