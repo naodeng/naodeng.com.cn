@@ -143,6 +143,14 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
+  test("zh-cn 项目页展示推荐的 Awesome QA Skills 项目", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/projects/", { waitUntil: "networkidle" });
+
+    const projectCard = page.locator(".project-card", { hasText: "Awesome QA Skills" });
+    await expect(projectCard).toHaveAttribute("href", "https://github.com/naodeng/awesome-qa-skills");
+    await expect(projectCard.locator(".project-badge")).toHaveText("推荐");
+  });
+
   test("zh-cn 从首页点击「更多 > 支持」进入支持页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await page.locator("header nav [data-nav-group='more'] summary").click();
