@@ -18,12 +18,15 @@ const { title, compact = false } = Astro.props;
     padding-block: var(--sp-l) calc(var(--sp-l) + var(--sp-s));
     padding-inline: var(--sp-m);
     text-align: center;
-    border-radius: 20px;
-    color: var(--color-theme);
+    border-radius: 24px;
+    color: var(--color-main);
     background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--color-theme) 8%, transparent), transparent 42%),
-      color-mix(in srgb, var(--color-base) 96%, var(--color-main));
-    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+      linear-gradient(135deg, color-mix(in srgb, var(--color-theme) 10%, white), transparent 42%),
+      linear-gradient(315deg, color-mix(in srgb, var(--color-accent) 12%, white), transparent 38%),
+      rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(18px);
   }
   @media (width < 768px) {
     header {
@@ -38,11 +41,16 @@ const { title, compact = false } = Astro.props;
     }
   }
   h1 {
-    font-size: 1.65rem;
+    font-family: var(--font-heading);
+    font-size: 2rem;
     font-weight: 800;
-    letter-spacing: 0.04em;
+    letter-spacing: 0;
     margin: 0;
     line-height: 1.25;
+    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 58%, var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   header :global(.headline-intro) {
     padding-inline: var(--sp-s);

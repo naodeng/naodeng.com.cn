@@ -8,14 +8,16 @@ const baseCss = readFileSync(
   "utf8",
 );
 
-describe("apple design tokens in base.css", () => {
-  it("uses Action Blue as theme / interactive color", () => {
-    expect(baseCss).toMatch(/--color-theme:\s*#0066cc/i);
+describe("Zenix-inspired design tokens in base.css", () => {
+  it("uses indigo and teal as theme / accent colors", () => {
+    expect(baseCss).toMatch(/--color-theme:\s*#4f46e5/i);
+    expect(baseCss).toMatch(/--color-accent:\s*#14b8a6/i);
     expect(baseCss).not.toMatch(/--color-theme:\s*#ef4d1a/i);
   });
 
-  it("defines parchment canvas", () => {
-    expect(baseCss).toMatch(/--color-base:\s*#f5f5f7/i);
+  it("defines a cool SaaS canvas", () => {
+    expect(baseCss).toMatch(/--color-base:\s*#f8fafc/i);
+    expect(baseCss).toMatch(/--gradient-theme:\s*linear-gradient/i);
   });
 
   it("does not use prefers-color-scheme dark for canvas tokens", () => {

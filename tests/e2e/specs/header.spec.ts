@@ -142,7 +142,7 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header button[data-search-open]")).toBeVisible();
   });
 
-  test("en 首页：header 为黑色顶栏（无渐变）", async ({ page, baseURL }) => {
+  test("en 首页：header 为浅色玻璃顶栏（无渐变）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const header = page.locator("header.l-header");
     const styles = await header.evaluate((el) => {
@@ -150,11 +150,12 @@ test.describe("Header 导航", () => {
       return {
         backgroundColor: cs.backgroundColor,
         backgroundImage: cs.backgroundImage,
+        borderBottomColor: cs.borderBottomColor,
       };
     });
     expect(styles.backgroundImage === "none" || !/gradient/i.test(styles.backgroundImage)).toBeTruthy();
-    // rgb(0, 0, 0) or #000
-    expect(styles.backgroundColor).toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
+    expect(styles.backgroundColor).not.toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
+    expect(styles.borderBottomColor).not.toBe("rgba(0, 0, 0, 0)");
   });
 
   test("响应式：移动端 header 为品牌 + 搜索 + 汉堡", async ({ page, baseURL }) => {
