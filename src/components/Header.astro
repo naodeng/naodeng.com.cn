@@ -1016,4 +1016,191 @@ const navGroups = [
       transition: none;
     }
   }
+
+  /* Zenix-inspired SaaS navigation skin. Keep behavior intact, replace the visual system. */
+  .l-header {
+    height: 72px;
+    color: var(--color-main);
+    background: color-mix(in srgb, var(--color-canvas) 78%, transparent);
+    border-block-end: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(22px);
+  }
+
+  .header-shell {
+    height: 72px;
+    max-inline-size: 1440px;
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .site-brand-link,
+  .site-brand-link:hover {
+    color: var(--color-main);
+  }
+
+  .site-title-cobrand {
+    gap: 0.34em;
+  }
+
+  .site-title-primary,
+  .site-title-secondary,
+  .site-brand-link > span:not(.site-title-cobrand) {
+    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 55%, var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .site-title-cobrand-x {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, white);
+    border-color: color-mix(in srgb, var(--color-theme) 22%, transparent);
+  }
+
+  .site-nav > ul {
+    gap: 0.18rem;
+    padding: 0.28rem;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(20px);
+  }
+
+  .site-nav > ul > li > a,
+  .nav-group-trigger {
+    min-height: 42px;
+    padding: 0 0.9rem;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    opacity: 1;
+  }
+
+  .site-nav > ul > li > a:hover,
+  .site-nav > ul > li > a:active,
+  .site-nav > ul > li > a:focus-visible,
+  .nav-group-trigger:hover,
+  .nav-group-trigger:focus-visible,
+  .site-nav > ul > li > a.active,
+  .nav-group-trigger.active {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 9%, white);
+  }
+
+  .site-nav > ul > li > a.active::after,
+  .nav-group-trigger.active::after {
+    display: none;
+  }
+
+  .nav-group-chevron {
+    color: currentColor;
+  }
+
+  .nav-submenu,
+  .nav-tool :global(.locale-panel) {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(24px);
+  }
+
+  .nav-submenu a,
+  .nav-submenu-text,
+  .nav-tool :global(.locale-panel a) {
+    color: var(--color-main);
+  }
+
+  .nav-submenu-icon {
+    color: var(--color-theme);
+  }
+
+  .nav-submenu a:hover,
+  .nav-submenu a:focus-visible,
+  .nav-submenu a.active,
+  .nav-tool :global(.locale-panel a:hover) {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 9%, white);
+  }
+
+  .header-utils {
+    gap: 0.35rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-tool :global(.locale-trigger),
+  .btn-icon {
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 999px;
+  }
+
+  .nav-tool :global(.locale-trigger:hover),
+  .nav-tool :global(.locale-trigger:focus-visible),
+  .btn-icon:hover,
+  .btn-icon:focus-visible {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 9%, white);
+    border-color: color-mix(in srgb, var(--color-theme) 22%, transparent);
+  }
+
+  .nav-tool :global(.icon-lang),
+  .nav-tool :global(.icon-expand) {
+    color: currentColor;
+    opacity: 1;
+  }
+
+  @media (width < 834px) {
+    .l-header,
+    .header-shell {
+      min-height: 64px;
+      height: auto;
+    }
+
+    .site-brand {
+      min-height: 64px;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+    }
+
+    .l-header[data-nav-open] .site-nav {
+      border-top-color: rgba(148, 163, 184, 0.22);
+    }
+
+    .site-nav > ul {
+      border-radius: 18px;
+      align-items: stretch;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .site-nav > ul > li > a,
+    .nav-group-trigger {
+      min-height: 52px;
+    }
+
+    .nav-submenu {
+      background: color-mix(in srgb, var(--color-theme) 5%, white);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-backdrop {
+      inset: 64px 0 0;
+      background: rgba(15, 23, 42, 0.28);
+      backdrop-filter: blur(4px);
+    }
+  }
 </style>
