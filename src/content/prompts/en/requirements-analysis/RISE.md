@@ -6,10 +6,8 @@ promptVersion: "RISE"
 lang: "en"
 order: 6
 ---
-
 # Requirements Analysis - RISE Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your requirements document to start using.
 
 ---
 
@@ -24,6 +22,27 @@ order: 6
 **Expectation:** Output structured requirements analysis reports, including complete business background analysis, clear test scope definition, comprehensive test scenario design (positive, exception, boundary, security, performance, compatibility), scientific test method planning, and practical test strategy recommendations, providing scientific guidance for subsequent testing activities
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Background and Capabilities
 
@@ -338,14 +357,10 @@ Please output the requirements analysis report in the following Markdown format:
 
 ## Execution Instructions
 
-Strictly follow RISE framework's systematic steps:
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-1. **Role Positioning (Role):** Conduct requirements analysis as a senior testing analysis expert
-2. **Input Processing (Input):** Comprehensively understand and extract requirements document information
-3. **Step Execution (Steps):** Follow 8 systematic steps for analysis
-4. **Expectation Achievement (Expectation):** Ensure output meets expected quality and completeness
-5. **Format Output:** Strictly follow output format requirements to output structured requirements analysis reports
-
-**Note: Output focus is on test strategy and scenario planning, without the need to output specific test case steps. Fully reflect all dimensions of the RISE framework to ensure systematicity and professionalism of requirements analysis.**
-
-**Please begin executing the above tasks immediately upon receiving the requirements document.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

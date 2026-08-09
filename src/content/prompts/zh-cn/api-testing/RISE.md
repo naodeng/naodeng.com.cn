@@ -1,15 +1,13 @@
 ---
-title: "RISE - API 测试"
-description: "API 测试 RISE 框架提示词"
+title: "RISE - API测试 (API Testing)"
+description: "API测试 (API Testing) RISE 框架提示词"
 testingType: "api-testing"
 promptVersion: "RISE"
 lang: "zh-cn"
 order: 6
 ---
-
 # API测试 - RISE框架 (完整版)
 
-> 💡 **使用说明**：请复制下方虚线以下的所有内容到 AI 助手（如 ChatGPT、Claude、Cursor AI 等），然后附加你的API文档即可开始使用。
 
 ---
 
@@ -83,6 +81,28 @@ order: 6
 - **速率限制：** API调用频率限制的测试
 - **数据泄露：** API响应中敏感数据泄露的测试
 
+## 使用约束与降级规则
+
+### 输入完整性检查
+在开始正式输出前，请先执行输入审计：
+- 列出“已知信息”“缺失信息”“关键假设”“主要风险”
+- 如果缺少关键信息且会显著影响结论，请先提出 3-5 个关键澄清问题
+- 如果用户不补充信息，请基于最少必要假设继续，并明确标注“以下内容基于假设”
+
+### 禁止编造
+- 模板中的数字、覆盖率、通过率、耗时若未由用户提供，一律视为示例或待确认，不得写成既定目标
+- 不要编造不存在的需求、接口、字段、流程、环境、用户量、并发量、团队配置、审批信息、版本号、日期、预算、缺陷数据、覆盖率、SLA/SLO 或合规结论
+- 对于未提供的指标、阈值和比例，使用“待确认/建议值/示例值”标注，而不是当作既定事实
+- 对于无法从输入中确认的工具链、框架或实现方式，不要强行指定唯一方案，应给出条件化建议
+
+### 输出策略
+- 优先输出最小可执行版本，再补充增强版建议
+- 所有优先级、风险和建议必须给出简短依据
+- 如果用户要求的是策略/分析，不要默认展开为大段实现代码；只有在用户明确需要或输入足够时，才提供脚本、配置或示例代码
+- 若输出模板中的字段缺失，请填写“待补充”或在该项后注明“未提供”，不要伪造内容
+
+---
+
 ## Output Format (输出格式规范)
 
 请按以下 Markdown 格式输出API测试方案：
@@ -137,7 +157,6 @@ order: 6
 - **认证方式：** [Bearer Token/API Key/OAuth2/Basic Auth]
 
 **测试类型：** [功能测试/性能测试/安全测试/兼容性测试]
-
 **测试优先级：** [P0/P1/P2/P3]
 
 **请求参数：**
@@ -161,7 +180,7 @@ order: 6
     "age": 25
   }
 }
-```markdown
+```
 
 **测试数据设计：**
 | 数据类型 | 测试数据 | 预期结果 | 测试目的 |
@@ -235,7 +254,7 @@ pm.test("Response has required fields", function () {
 pm.test("Response time is less than 2000ms", function () {
     pm.expect(pm.response.responseTime).to.be.below(2000);
 });
-```markdown
+```
 
 **预期响应：**
 ```json
@@ -254,7 +273,7 @@ pm.test("Response time is less than 2000ms", function () {
     "updated_at": "2024-01-15T10:30:00Z"
   }
 }
-```markdown
+```
 
 **验证点：**
 - **状态码验证：** HTTP状态码符合API规范
@@ -264,10 +283,10 @@ pm.test("Response time is less than 2000ms", function () {
 - **错误处理：** 错误情况下的响应格式和信息
 
 **性能要求：**
-- 响应时间：≤ 500ms (95%请求)
-- 吞吐量：≥ 1000 RPS
-- 并发用户：≥ 100
-- 错误率：≤ 0.1%
+- 响应时间：[目标值，未提供则标注待确认]
+- 吞吐量：[目标值，未提供则标注待确认]
+- 并发用户：[目标值，未提供则标注待确认]
+- 错误率：[目标值，未提供则标注待确认]
 
 ---
 
@@ -277,7 +296,7 @@ pm.test("Response time is less than 2000ms", function () {
 
 **负载测试场景：**
 ```yaml
-## JMeter测试计划示例
+# JMeter测试计划示例
 TestPlan:
   name: "API Load Test"
   threads: 100
@@ -308,7 +327,7 @@ TestPlan:
       assertions:
         - response_code: 201
         - response_time: < 1000ms
-```markdown
+```
 
 **性能监控指标：**
 - **响应时间分布：** P50、P90、P95、P99响应时间
@@ -320,44 +339,44 @@ TestPlan:
 
 **认证授权测试：**
 ```bash
-## 无认证访问测试
+# 无认证访问测试
 curl -X GET "https://api.example.com/users" \
   -H "Content-Type: application/json"
-## 预期：401 Unauthorized
+# 预期：401 Unauthorized
 
-## 无效Token测试
+# 无效Token测试
 curl -X GET "https://api.example.com/users" \
   -H "Authorization: Bearer invalid_token" \
   -H "Content-Type: application/json"
-## 预期：401 Unauthorized
+# 预期：401 Unauthorized
 
-## 过期Token测试
+# 过期Token测试
 curl -X GET "https://api.example.com/users" \
   -H "Authorization: Bearer expired_token" \
   -H "Content-Type: application/json"
-## 预期：401 Unauthorized
-```markdown
+# 预期：401 Unauthorized
+```
 
 **输入验证测试：**
 ```bash
-## SQL注入测试
+# SQL注入测试
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "test'\'' OR 1=1--", "email": "test@example.com"}'
 
-## XSS测试
+# XSS测试
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "<script>alert(\"XSS\")</script>", "email": "test@example.com"}'
 
-## 大数据量测试
+# 大数据量测试
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "'$(python -c "print('A' * 10000)")'", "email": "test@example.com"}'
-```markdown
+```
 
 #### 3. API契约测试
 
@@ -414,7 +433,7 @@ describe('User API Contract', () => {
     });
   });
 });
-```markdown
+```
 
 #### 4. GraphQL API测试
 
@@ -453,7 +472,7 @@ fetch('/graphql', {
   expect(data.data.user.id).toBe("123");
   expect(data.data.user.posts).toBeInstanceOf(Array);
 });
-```markdown
+```
 
 **GraphQL变更测试：**
 ```javascript
@@ -475,7 +494,7 @@ const variables = {
 };
 
 // 执行变更并验证结果
-```text
+```
 
 ---
 
@@ -489,7 +508,7 @@ const variables = {
 
 #### CI/CD集成
 ```yaml
-## GitHub Actions示例
+# GitHub Actions示例
 name: API Tests
 on: [push, pull_request]
 
@@ -521,7 +540,7 @@ jobs:
           name: API Test Results
           path: results.xml
           reporter: java-junit
-```markdown
+```
 
 #### 测试数据管理
 - **测试数据生成：** 自动生成测试所需的各种数据
@@ -616,11 +635,10 @@ jobs:
 
 ## Execution Instructions (执行指令)
 
-1. **API分析：** 深入分析API文档和系统架构
-2. **策略制定：** 制定全面的API测试策略和计划
-3. **工具选择：** 选择合适的API测试工具和框架
-4. **脚本开发：** 开发高质量的API测试脚本
-5. **自动化集成：** 将API测试集成到CI/CD流程
-6. **持续优化：** 持续优化API测试的效率和质量
+1. 先进行输入完整性检查，输出已知信息、缺失信息、关键假设和主要风险。
+2. 若关键信息不足，优先提出少量高价值澄清问题；如果无法补充，再基于最少必要假设继续。
+3. 严格按照输出格式生成结果，但不得编造指标、数据、角色、日期、环境、结论或实现细节。
+4. 对所有建议给出简短依据，并优先给出最小可执行方案。
+5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
-**请在收到API文档、系统架构或测试需求后，立即开始执行上述任务。**
+**请在收到输入后，先完成输入审计，再输出正式结果。**

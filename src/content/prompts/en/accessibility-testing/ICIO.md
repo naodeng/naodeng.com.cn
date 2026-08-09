@@ -6,10 +6,8 @@ promptVersion: "ICIO"
 lang: "en"
 order: 4
 ---
-
 # Accessibility Testing - ICIO Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your application information to start using.
 
 ---
 
@@ -24,6 +22,27 @@ order: 4
 **Output Indicator:** Detailed accessibility testing plan documentation, including testing overview, user needs analysis, accessibility testing strategy, detailed testing plans, specialized accessibility testing, accessibility testing toolchain, accessibility testing reports, and other complete content, formatted in Markdown with executable accessibility test cases and test script examples
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Capability System
 
@@ -130,11 +149,8 @@ Please output accessibility testing plans in the following Markdown format:
 #### AT-[Number] - [Accessibility Test Scenario]
 
 **Test Type:** [Automated Testing/Manual Testing/Assistive Technology Testing/User Testing]
-
 **WCAG Principle:** [Perceivable/Operable/Understandable/Robust]
-
 **Compliance Level:** [A Level/AA Level/AAA Level]
-
 **Disability Type:** [Visual/Auditory/Motor/Cognitive]
 
 **Testing Objectives:**
@@ -210,7 +226,7 @@ describe('Accessibility Tests', () => {
     expect(headingViolations).toHaveLength(0);
   });
 });
-```markdown
+```
 
 **Manual Testing Checklist:**
 - [ ] All images have appropriate alt text
@@ -225,7 +241,7 @@ describe('Accessibility Tests', () => {
 - [ ] Page language is correctly identified
 
 **Screen Reader Testing:**
-```text
+```
 Test Scenario: Browse product homepage using NVDA
 1. Start NVDA screen reader
 2. Navigate to product homepage
@@ -241,7 +257,7 @@ Expected Results:
 - All content can be read correctly
 - Interactive element states are clear
 - Form operations are smooth and barrier-free
-```markdown
+```
 
 **Keyboard Navigation Testing:**
 ```
@@ -260,7 +276,7 @@ Keyboard Shortcut Verification:
 - Space: Select checkbox or radio button
 - Arrow keys: Navigate within option groups
 - Esc: Close modal dialog
-```markdown
+```
 
 **Expected Results:**
 - **Compliance Verification:** Meets WCAG 2.1 AA level standard requirements
@@ -448,11 +464,10 @@ Keyboard Shortcut Verification:
 
 ## Execution Instructions
 
-1. **Requirement Analysis:** Deeply analyze product accessibility requirements and user groups
-2. **Standard Selection:** Determine applicable accessibility standards and compliance requirements
-3. **Strategy Formulation:** Formulate comprehensive accessibility testing strategies and plans
-4. **Tool Configuration:** Configure and use various accessibility testing tools
-5. **Test Execution:** Execute automated, manual, and user testing
-6. **Result Analysis:** Analyze test results and provide improvement recommendations
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving product requirements, user groups, or compliance requirements.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

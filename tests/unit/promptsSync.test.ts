@@ -8,7 +8,8 @@ import {
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import {
   buildPromptDocument,
   buildWorkflowDocument,
@@ -93,6 +94,13 @@ describe("prompt source selection", () => {
     )).toBe("APITestingPrompt.md");
   });
 
+  it("does not treat a testing-type name as a platform suffix", () => {
+    expect(selectFullPrompt(
+      ["MobileTestingPrompt.md", "MobileTestingPrompt_Lite.md", "MobileTestingPrompt-Mobile.md"],
+      "Standard",
+    )).toBe("MobileTestingPrompt.md");
+  });
+
   it("throws instead of guessing when two canonical candidates remain", () => {
     expect(() => selectFullPrompt(["A-Full.md", "B-Full.md"], "ROSES"))
       .toThrow(/expected exactly one canonical full prompt/i);
@@ -174,5 +182,31 @@ describe("repository synchronization", () => {
     expect(warn).toHaveBeenCalledWith(expect.stringMatching(/language mismatch/i));
     expect(() => syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true }))
       .toThrow(/language mismatch/i);
+  });
+
+  it("runs through the public npm prompts:sync command", () => {
+    const repoRoot = createUpstreamFixture();
+    const siteRoot = makeTemporaryDirectory("qa-site-output-");
+    const projectRoot = resolve(process.cwd(), "..");
+    const result = spawnSync(
+      "npm",
+      [
+        "run",
+        "prompts:sync",
+        "--",
+        "--repo-dir",
+        repoRoot,
+        "--out-root",
+        siteRoot,
+        "--fail-on-lang-mismatch",
+      ],
+      { cwd: projectRoot, encoding: "utf8" },
+    );
+
+    expect(result.status, result.stderr || result.stdout).toBe(0);
+    expect(readFileSync(
+      join(siteRoot, "src/content/prompts/en/api-testing/Standard.md"),
+      "utf8",
+    )).toContain("en canonical Standard.");
   });
 });

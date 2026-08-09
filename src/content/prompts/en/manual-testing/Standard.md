@@ -6,10 +6,8 @@ promptVersion: "Standard"
 lang: "en"
 order: 1
 ---
-
 # Manual Testing Prompt
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your testing requirements to start using.
 
 ---
 
@@ -20,6 +18,26 @@ order: 1
 **Task:** Based on the provided testing requirements, product features, or user scenarios, design comprehensive manual testing strategies and testing plans. Ensure that manual testing can fully leverage the advantages of human testing, effectively complement the shortcomings of automated testing, and provide high-quality test coverage and user experience validation.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Manual Testing Methodology
 
@@ -144,7 +162,7 @@ Please output the manual testing plan in the following Markdown format:
 - **Boundary Techniques:** Maximum values, minimum values, null values, special characters
 
 **Recording Template:**
-```text
+```
 Exploration Session Record
 Time: [Start Time] - [End Time]
 Explorer: [Tester Name]
@@ -166,7 +184,7 @@ Improvement Suggestions:
 Unexplored Areas:
 - [Area 1] - Reason: [Time insufficient/Special permissions needed, etc.]
 - [Area 2] - Reason: [...]
-```text
+```
 
 ---
 
@@ -385,12 +403,17 @@ Unexplored Areas:
 
 ## Execution Instructions
 
-1. **Requirements Understanding:** Deeply understand product features and user requirements
-2. **Strategy Formulation:** Formulate appropriate manual testing strategies and methods
-3. **Plan Design:** Design detailed manual testing plans and schedules
-4. **Execution Management:** Effectively manage manual testing execution process
-5. **Result Analysis:** Deeply analyze test results and discovered issues
-6. **Value Demonstration:** Fully demonstrate the unique value of manual testing
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving testing requirements, product features, or user scenarios.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**
 
+---
+
+## 📋 Change Log
+
+### v0.1 (2025-01-14)
+- Initial version

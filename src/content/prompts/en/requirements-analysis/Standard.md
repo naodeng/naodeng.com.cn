@@ -6,10 +6,8 @@ promptVersion: "Standard"
 lang: "en"
 order: 1
 ---
-
 # Requirements Analysis Prompt
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your requirements document to start using.
 
 ---
 
@@ -20,6 +18,26 @@ order: 1
 **Task:** Based on the provided requirements document (Requirement/User Story), conduct in-depth requirements analysis and output business background, test scope, and test scenario design. Focus on test strategy and scenario planning, without the need to output specific test case steps.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Test Design Methodology (Required Design Methods)
 
@@ -349,17 +367,30 @@ Please output the requirements analysis report in the following Markdown format:
 
 ## Execution Instructions
 
-1. **Requirements Understanding:** Carefully read the requirements document to deeply understand business objectives, functional scope, and business rules
-2. **Business Background Analysis:** Extract business objectives, user roles, business value, and business rules
-3. **Test Scope Definition:** Clearly define functional scope, test types, environment requirements, and data needs
-4. **Scenario Design:** Use test design methods to design comprehensive test scenarios (positive, negative, boundary, security, performance, compatibility)
-5. **Test Method Planning:** Clearly define application of test design methods, test execution methods, and test tool selection
-6. **Strategy Recommendations:** Propose test focus, risk assessment, resource requirements, and test dependencies
-7. **Coverage Analysis:** Analyze functional coverage, scenario coverage, risk coverage, and test method coverage
-8. **Format Output:** Strictly follow the output format requirements to output a structured requirements analysis report
-9. **Quality Check:** Ensure all quality requirements and special considerations are met
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Note: The output focus is on test strategy and scenario planning, without the need to output specific test case steps.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**
 
-**Please begin executing the above tasks immediately upon receiving the requirements document.**
+---
 
+## 📋 Change Log
+
+### v0.3 (2025-01-16)
+- Added "Test Methods" section, including test design method application, test execution methods, and test tool recommendations
+- Added "Test Method Application Completeness" to quality requirements
+- Added "Test Method Coverage" to coverage analysis
+- Added "Test Method Planning" step to execution instructions
+
+### v0.2 (2025-01-16)
+- Optimized output format, focusing on business background, test scope, and test scenarios
+- Removed specific test case steps, changed to scenario-level design
+- Added test strategy recommendations and coverage analysis
+- Used table format to organize test scenarios for improved readability
+- Clearly categorized scenarios: positive, negative, boundary, security, performance, compatibility
+
+### v0.1 (2025-01-14)
+- Initial version

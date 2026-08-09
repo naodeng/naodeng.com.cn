@@ -6,10 +6,8 @@ promptVersion: "CRISPE"
 lang: "en"
 order: 5
 ---
-
 # AI-Assisted Testing - CRISPE Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your testing requirements to start using.
 
 ---
 
@@ -28,6 +26,27 @@ order: 5
 **Experiment:** Through application across multiple AI application scenarios and technologies, design comprehensive AI-assisted testing solutions (intelligent test generation, intelligent defect prediction, intelligent test selection, self-healing test scripts, etc.), provide multiple AI-assisted testing examples and best practices for different scenarios
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Capability System
 
@@ -139,7 +158,7 @@ Please output AI-assisted testing solutions in the following Markdown format:
 
 **Implementation Plan:**
 ```python
-## Intelligent test generation example code
+# Intelligent test generation example code
 class IntelligentTestGenerator:
     def __init__(self):
         self.nlp_model = load_nlp_model()
@@ -159,7 +178,7 @@ class IntelligentTestGenerator:
             test_cases.extend(cases)
 
         return test_cases
-```markdown
+```
 
 **Evaluation Metrics:**
 - Generated test case count: Target increase of 300%
@@ -180,7 +199,7 @@ class IntelligentTestGenerator:
 
 **Model Implementation:**
 ```python
-## Defect prediction model example
+# Defect prediction model example
 class DefectPredictionModel:
     def __init__(self):
         self.model = RandomForestClassifier()
@@ -198,7 +217,7 @@ class DefectPredictionModel:
         features = self.feature_extractor.extract(code_modules)
         probabilities = self.model.predict_proba(features)
         return probabilities
-```markdown
+```
 
 **Prediction Accuracy Targets:**
 - Precision: ≥ 80%
@@ -219,7 +238,7 @@ class DefectPredictionModel:
 
 **Selection Strategy:**
 ```python
-## Intelligent test selection algorithm
+# Intelligent test selection algorithm
 class IntelligentTestSelector:
     def __init__(self):
         self.risk_model = RiskAssessmentModel()
@@ -241,7 +260,7 @@ class IntelligentTestSelector:
         )
 
         return selected_tests
-```markdown
+```
 
 #### Scenario 4: Self-Healing Test Scripts
 
@@ -256,7 +275,7 @@ class IntelligentTestSelector:
 
 **Self-Healing Mechanism:**
 ```python
-## Self-healing test script example
+# Self-healing test script example
 class SelfHealingTestScript:
     def __init__(self):
         self.locator_strategies = [
@@ -285,7 +304,7 @@ class SelfHealingTestScript:
         # 3. Use visual AI location
         element = self.visual_ai.find_similar_element(original_locator)
         return element
-```text
+```
 
 ---
 
@@ -501,11 +520,10 @@ class SelfHealingTestScript:
 
 ## Execution Instructions
 
-1. **Requirement Analysis:** Deeply analyze testing pain points and AI application requirements, clarify the value of AI technology
-2. **Technology Selection:** Select appropriate AI technologies and tools based on problem characteristics
-3. **Solution Design:** Design complete AI-assisted testing solutions and implementation plans
-4. **Risk Assessment:** Assess technical risks, business risks, and implementation risks
-5. **Effect Estimation:** Estimate AI application effects and return on investment
-6. **Implementation Planning:** Develop detailed implementation roadmap and milestones
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving project requirements, testing challenges, or AI application scenarios.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

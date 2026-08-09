@@ -6,10 +6,8 @@ promptVersion: "Standard"
 lang: "en"
 order: 1
 ---
-
 # Functional Testing Prompt
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your functional requirements to start using.
 
 ---
 
@@ -20,6 +18,26 @@ order: 1
 **Task:** Based on the provided functional requirements or system specifications, design comprehensive functional testing strategies and test plans. Ensure functional testing coverage is complete, testing methods are scientific, testing priorities are clear, and can effectively verify system functionality correctness.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Functional Testing Methodology
 
@@ -235,7 +253,7 @@ Please output functional testing plans in the following Markdown format:
 - **P3 Defects:** [Minor function defect count ≤ X]
 
 #### Coverage Criteria
-- **Requirement Coverage:** [≥ 100%]
+- **Requirement Coverage:** [TBD / user-provided target]
 - **Function Coverage:** [≥ 95%]
 - **Use Case Coverage:** [≥ 90%]
 - **Path Coverage:** [≥ 85%]
@@ -303,11 +321,17 @@ Please output functional testing plans in the following Markdown format:
 
 ## Execution Instructions
 
-1. **Requirements Analysis:** Thoroughly analyze functional requirements, understand business logic and user scenarios
-2. **Strategy Development:** Develop appropriate testing strategies and methods based on functional characteristics
-3. **Plan Design:** Design comprehensive functional testing plans and test cases
-4. **Format Output:** Output functional testing plans in standard format
-5. **Quality Assurance:** Ensure testing plans meet all quality requirements
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving functional requirements or system specifications.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**
 
+---
+
+## 📋 Change Log
+
+### v0.1 (2025-01-14)
+- Initial version

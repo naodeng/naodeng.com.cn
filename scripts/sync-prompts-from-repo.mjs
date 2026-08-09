@@ -78,8 +78,8 @@ function objectiveDescription(markdown) {
 export function selectFullPrompt(files, version, context = "prompt directory") {
   const markdownFiles = files.filter((file) => file.endsWith(".md") && basename(file) !== "README.md");
   const candidates = markdownFiles.filter((file) => {
-    const lower = file.toLowerCase();
-    if (/(?:lite|lean|mobile|web|all_round)/i.test(lower)) return false;
+    if (/(?:_|-)(?:lite|lean)(?:[-_.]|$)/i.test(file)) return false;
+    if (/(?:-|_)(?:mobile|web|all_round)\.md$/i.test(file)) return false;
     if (version === "Standard") return /prompt\.md$/i.test(file);
     return /-full\.md$/i.test(file);
   });
