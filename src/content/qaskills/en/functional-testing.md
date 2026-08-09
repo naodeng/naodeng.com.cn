@@ -6,7 +6,7 @@ Author: naodeng
 - slug: functional-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-05
+- syncedAt: 2026-08-09
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/functional-testing/SKILL.md
 - description: Use this skill when you need to design functional test plans or cases for business flows, UI, data, and integrations; triggers include functional testing and functional test cases.
 

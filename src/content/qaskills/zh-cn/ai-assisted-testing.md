@@ -6,7 +6,7 @@
 - slug: ai-assisted-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-05
+- syncedAt: 2026-08-09
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-assisted-testing/SKILL.md
 - description: Use this skill when you need AI-assisted testing workflows such as test data generation, root-cause analysis, and prioritization; triggers include AI 辅助测试 and AI-assisted testing.
 

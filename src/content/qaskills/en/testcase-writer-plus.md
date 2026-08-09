@@ -6,7 +6,7 @@ Author: naodeng
 - slug: testcase-writer-plus
 - category: plus
 - hasEvals: true
-- syncedAt: 2026-08-05
+- syncedAt: 2026-08-09
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/testcase-writer-plus/SKILL.md
 - description: Use this skill when you need high-quality test cases from requirements and analysis artifacts; triggers include testcase writer plus and advanced test case writing.
 
