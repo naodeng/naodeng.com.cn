@@ -44,6 +44,56 @@ const t = {
   license: locale === 'zh-cn' ? '遵循 CC BY-NC-SA 4.0 许可协议' : 'Licensed under CC BY-NC-SA 4.0',
   builtWith: locale === 'zh-cn' ? '由 Astro & Cloudflare & Github & AI 驱动' : 'Built with Astro & Cloudflare & Github & AI',
 };
+
+const footerGroups = [
+  {
+    key: "explore",
+    title: locale === "zh-cn" ? "探索" : "Explore",
+    links: [
+      { href: getRelativeLocaleUrl(locale, "/about"), label: typeof NAV_ABOUT === 'string' ? NAV_ABOUT : NAV_ABOUT[locale] },
+      { href: getRelativeLocaleUrl(locale, "/archive"), label: typeof NAV_ARCHIVE === 'string' ? NAV_ARCHIVE : NAV_ARCHIVE[locale] },
+      { href: getRelativeLocaleUrl(locale, "/projects"), label: typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale] },
+      { href: getRelativeLocaleUrl(locale, "/series"), label: typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale] },
+      { href: getRelativeLocaleUrl(locale, "/tags"), label: typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale] },
+    ],
+  },
+  {
+    key: "knowledge",
+    title: locale === "zh-cn" ? "知识库" : "Knowledge",
+    links: [
+      locale === 'zh-cn'
+        ? { href: getRelativeLocaleUrl(locale, "/wiki"), label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale] }
+        : { href: "https://ray.run/wiki", label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale], external: true },
+      { href: getRelativeLocaleUrl(locale, "/AIWiki"), label: typeof FOOTER_NAV_AI_WIKI === 'string' ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale] },
+      { href: getRelativeLocaleUrl(locale, "/guild"), label: typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale] },
+    ],
+  },
+  {
+    key: "tools",
+    title: locale === "zh-cn" ? "工具内容" : "Tools",
+    links: [
+      { href: getRelativeLocaleUrl(locale, "/prompts"), label: typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale] },
+      { href: getRelativeLocaleUrl(locale, "/qaskills"), label: typeof FOOTER_NAV_QASKILLS === 'string' ? FOOTER_NAV_QASKILLS : FOOTER_NAV_QASKILLS[locale] },
+      ...(locale === "zh-cn"
+        ? [{ href: englishLearningUrl, label: "英语学习", external: true }]
+        : []),
+      { href: getRelativeLocaleUrl(locale, "/sponsor"), label: typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale] },
+    ],
+  },
+  {
+    key: "site",
+    title: locale === "zh-cn" ? "站点" : "Site",
+    links: [
+      { href: getRelativeLocaleUrl(locale, "/copyright"), label: typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale] },
+      { href: getRelativeLocaleUrl(locale, "/privacy"), label: typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale] },
+      { href: getRelativeLocaleUrl(locale, "/links"), label: typeof NAV_LINKS === 'string' ? NAV_LINKS : NAV_LINKS[locale] },
+      { href: "https://status.inaodeng.com", label: typeof NAV_STATUS === 'string' ? NAV_STATUS : NAV_STATUS[locale], external: true },
+      { href: "https://analytics.inaodeng.com/dashboard?site=inaodeng.com", label: typeof NAV_ANALYTICS === 'string' ? NAV_ANALYTICS : NAV_ANALYTICS[locale], external: true },
+      { href: getRelativeLocaleUrl(locale, "/rss.xml"), label: t.rss, external: true },
+      { href: getRelativeLocaleUrl(locale, "/sitemap"), label: t.sitemap },
+    ],
+  },
+];
 ---
 
 <footer class="l-footer">
@@ -70,32 +120,25 @@ const t = {
     </div>
 
     <!-- 底部次级导航 -->
-    <nav class="footer-nav">
-      <a href={getRelativeLocaleUrl(locale, "/about")}>{typeof NAV_ABOUT === 'string' ? NAV_ABOUT : NAV_ABOUT[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/archive")}>{typeof NAV_ARCHIVE === 'string' ? NAV_ARCHIVE : NAV_ARCHIVE[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/projects")}>{typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/series")}>{typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/tags")}>{typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale]}</a>
-      {locale === 'zh-cn' ? (
-        <a href={getRelativeLocaleUrl(locale, "/wiki")}>{typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale]}</a>
-      ) : (
-        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">{typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale]}</a>
-      )}
-      <a href={getRelativeLocaleUrl(locale, "/AIWiki")}>{typeof FOOTER_NAV_AI_WIKI === 'string' ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/guild")}>{typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/prompts")}>{typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/qaskills")}>{typeof FOOTER_NAV_QASKILLS === 'string' ? FOOTER_NAV_QASKILLS : FOOTER_NAV_QASKILLS[locale]}</a>
-      {locale === 'zh-cn' && (
-        <a href={englishLearningUrl} target="_blank" rel="noopener noreferrer">英语学习</a>
-      )}
-      <a href={getRelativeLocaleUrl(locale, "/sponsor")}>{typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/copyright")}>{typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/privacy")}>{typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/links")}>{typeof NAV_LINKS === 'string' ? NAV_LINKS : NAV_LINKS[locale]}</a>
-      <a href="https://status.inaodeng.com" target="_blank" rel="noopener noreferrer">{typeof NAV_STATUS === 'string' ? NAV_STATUS : NAV_STATUS[locale]}</a>
-      <a href="https://analytics.inaodeng.com/dashboard?site=inaodeng.com" target="_blank" rel="noopener noreferrer">{typeof NAV_ANALYTICS === 'string' ? NAV_ANALYTICS : NAV_ANALYTICS[locale]}</a>
-      <a href={getRelativeLocaleUrl(locale, "/rss.xml")} target="_blank">{t.rss}</a>
-      <a href={getRelativeLocaleUrl(locale, "/sitemap")}>{t.sitemap}</a>
+    <nav class="footer-nav" aria-label={locale === "zh-cn" ? "页脚导航" : "Footer navigation"}>
+      {footerGroups.map((group) => (
+        <section class="footer-nav-group" data-footer-group={group.key}>
+          <h2>{group.title}</h2>
+          <ul>
+            {group.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </nav>
 
     <!-- 版权与许可区域 -->
@@ -204,11 +247,32 @@ const t = {
 
   /* 底部次级导航 */
   .footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: clamp(1.25rem, 4vw, 3rem);
+    width: min(960px, 100%);
     margin-block-start: var(--sp-m);
+  }
+
+  .footer-nav-group {
+    min-width: 0;
+  }
+
+  .footer-nav-group h2 {
+    margin: 0 0 0.65rem;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+
+  .footer-nav-group ul {
+    list-style: none;
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
   }
 
   .footer-nav a,
@@ -339,8 +403,9 @@ const t = {
       height: 24px;
     }
     .footer-nav {
-      gap: 1rem;
-      font-size: 0.85rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem 1rem;
+      text-align: start;
     }
   }
 

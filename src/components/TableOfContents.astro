@@ -20,15 +20,26 @@ const { headings, label = "目录", placement = "right" } = Astro.props;
 const tocItems = headings.filter((h) =>
   placement === "right" ? h.depth === 2 : h.depth === 2 || h.depth === 3
 );
+const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 ---
 
 {tocItems.length > 0 ? (
   <aside class={`toc-sidebar toc-sidebar--${placement}`} aria-label={label}>
     <nav class="toc-nav">
       <h2 class="toc-title">{label}</h2>
+      <p class="toc-current" aria-live="polite">
+        <span>{currentLabel}</span>
+        <span data-current-section>{tocItems[0].text}</span>
+      </p>
+      <div class="toc-progress" aria-hidden="true">
+        <span class="toc-progress-bar"></span>
+      </div>
       {/* 7.3: 移动端 <details> 折叠组件 */}
       <details class="toc-details-mobile">
-        <summary class="toc-summary">{label}</summary>
+        <summary class="toc-summary">
+          <span>{label}</span>
+          <span class="toc-summary-current" data-current-section>{tocItems[0].text}</span>
+        </summary>
         <ul class="toc-list toc-list--mobile">
           {tocItems.map((item) => (
             <li
@@ -136,6 +147,10 @@ const tocItems = headings.filter((h) =>
   .toc-sidebar--below .toc-link[aria-current="true"] {
     background: color-mix(in srgb, var(--color-theme) 12%, transparent);
   }
+  .toc-sidebar--below .toc-current,
+  .toc-sidebar--below .toc-progress {
+    display: none;
+  }
 
   .toc-nav {
     padding: var(--sp-m);
@@ -154,6 +169,39 @@ const tocItems = headings.filter((h) =>
     opacity: 0.9;
   }
 
+  .toc-current {
+    display: grid;
+    gap: 0.15rem;
+    margin: -0.25rem 0 0.7rem;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: var(--color-main);
+    opacity: 0.7;
+  }
+
+  .toc-current [data-current-section] {
+    font-weight: 600;
+    color: var(--color-theme);
+    opacity: 1;
+  }
+
+  .toc-progress {
+    height: 3px;
+    margin-block-end: 0.85rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-main) 10%, transparent);
+    overflow: hidden;
+  }
+
+  .toc-progress-bar {
+    display: block;
+    width: calc(var(--toc-progress, 0) * 1%);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--color-theme);
+    transition: width 0.18s ease;
+  }
+
   .toc-list {
     list-style: none;
     margin: 0;
@@ -164,6 +212,20 @@ const tocItems = headings.filter((h) =>
     margin: 0;
     padding: 0;
     margin-block-end: 0.35rem;
+  }
+
+  .toc-item.is-active {
+    position: relative;
+  }
+
+  .toc-item.is-active::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.18rem;
+    inset-inline-start: -0.5rem;
+    width: 3px;
+    border-radius: 999px;
+    background: var(--color-theme);
   }
 
   /* 7.2: h3 项缩进 0.75rem */
@@ -219,6 +281,10 @@ const tocItems = headings.filter((h) =>
     .toc-title {
       display: none;
     }
+    .toc-current,
+    .toc-progress {
+      display: none;
+    }
     .toc-list--desktop {
       display: none;
     }
@@ -261,6 +327,19 @@ const tocItems = headings.filter((h) =>
     padding-block: 0.25rem;
     user-select: none;
   }
+  .toc-summary-current {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-align: end;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: none;
+    color: var(--color-main);
+    opacity: 0.68;
+  }
   .toc-summary::-webkit-details-marker {
     display: none;
   }
@@ -286,6 +365,9 @@ const tocItems = headings.filter((h) =>
       transition: none;
     }
     .toc-summary::after {
+      transition: none;
+    }
+    .toc-progress-bar {
       transition: none;
     }
   }
@@ -384,7 +466,16 @@ const tocItems = headings.filter((h) =>
       links.forEach((a) => {
         const isActive = a.getAttribute("href") === activeHref;
         a.setAttribute("aria-current", isActive ? "true" : "false");
+        a.closest(".toc-item")?.classList.toggle("is-active", isActive);
       });
+      if (activeLink) {
+        toc.querySelectorAll<HTMLElement>("[data-current-section]").forEach((el) => {
+          el.textContent = activeLink.textContent?.trim() || "";
+        });
+        const index = Math.max(0, Array.from(links).indexOf(activeLink));
+        const progress = links.length <= 1 ? 100 : Math.round((index / (links.length - 1)) * 100);
+        toc.style.setProperty("--toc-progress", String(progress));
+      }
       // Keep active link visible in its nearest scroll container.
       const footer = document.querySelector(".l-footer");
       const footerInView = footer && footer.getBoundingClientRect().top < window.innerHeight;

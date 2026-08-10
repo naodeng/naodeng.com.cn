@@ -4,6 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
+const externalBaseURL = process.env.PLAYWRIGHT_BASE_URL;
 
 export default defineConfig({
   testDir: "e2e/specs",
@@ -15,7 +16,7 @@ export default defineConfig({
     ? [["github"], ["html", { open: "never", outputFolder: "e2e/playwright-report" }]]
     : [["html", { outputFolder: "e2e/playwright-report" }]],
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://localhost:4321",
+    baseURL: externalBaseURL || "http://localhost:4321",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
@@ -31,7 +32,9 @@ export default defineConfig({
       },
     },
   ],
-  webServer: process.env.CI
+  webServer: externalBaseURL
+    ? undefined
+    : process.env.CI
     ? {
         command: "env -u NO_COLOR npm run preview",
         url: "http://localhost:4321",

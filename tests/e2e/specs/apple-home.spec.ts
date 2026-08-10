@@ -19,3 +19,23 @@ test.describe("apple homepage exploration", () => {
     });
   }
 });
+
+test.describe("home information architecture", () => {
+  test("zh-cn home exposes three primary entry cards", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/zh-cn/`, { waitUntil: "networkidle" });
+    const primaryEntries = page.locator(".home-primary-entry");
+    await expect(primaryEntries).toHaveCount(3);
+    await expect(primaryEntries.nth(0)).toContainText(/博客|Blog/);
+    await expect(primaryEntries.nth(1)).toContainText(/Wiki|百科/);
+    await expect(primaryEntries.nth(2)).toContainText(/QA|提示词|技能/);
+  });
+
+  test("en home exposes three primary entry cards", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/en/`, { waitUntil: "networkidle" });
+    const primaryEntries = page.locator(".home-primary-entry");
+    await expect(primaryEntries).toHaveCount(3);
+    await expect(primaryEntries.nth(0)).toContainText(/Blog/);
+    await expect(primaryEntries.nth(1)).toContainText(/Wiki/);
+    await expect(primaryEntries.nth(2)).toContainText(/QA|Prompt|Skill/);
+  });
+});
