@@ -164,4 +164,38 @@ test.describe("用户交互", () => {
       }
     }
   });
+
+  test("zh-cn 分享复制按钮显示成功状态", async ({ page, baseURL }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, "clipboard", {
+        configurable: true,
+        value: {
+          writeText: () => Promise.resolve(),
+        },
+      });
+    });
+
+    await page.goto((baseURL || "") + "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/", { waitUntil: "networkidle" });
+
+    const copyButton = page.locator(".article-share-copy");
+    await expect(copyButton).toBeVisible({ timeout: 10000 });
+    await copyButton.click();
+
+    await expect(copyButton).toHaveAttribute("data-state", "copied");
+    await expect(copyButton.locator(".article-share-btn-text")).toHaveText("已复制");
+    await expect(page.locator("#article-share-copy-feedback")).toHaveText("已复制");
+  });
+
+  test("zh-cn 分享入口移除无网页分享能力的平台", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/", { waitUntil: "networkidle" });
+
+    const share = page.locator(".article-share");
+    await expect(share).toBeVisible({ timeout: 10000 });
+    await expect(share.getByRole("button", { name: "复制链接" })).toBeVisible();
+    await expect(share.getByRole("link", { name: "X (Twitter)" })).toBeVisible();
+    await expect(share.getByRole("link", { name: "微博" })).toBeVisible();
+    await expect(share.getByRole("link", { name: "LinkedIn" })).toBeVisible();
+    await expect(share.getByRole("link", { name: "Facebook" })).toBeVisible();
+    await expect(share.getByRole("link", { name: "Instagram" })).toHaveCount(0);
+  });
 });

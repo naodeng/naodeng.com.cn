@@ -43,6 +43,32 @@ test.describe("TOC 边界与滚动稳定性", () => {
     }
   });
 
+  test("TOC 展示当前章节与阅读位置", async ({ page }) => {
+    const targetHref = await page.locator(".toc-list--desktop .toc-link").nth(1).getAttribute("href");
+    expect(targetHref).toBeTruthy();
+
+    await page.evaluate((href) => {
+      const target = document.getElementById(href!.slice(1)) as HTMLElement | null;
+      if (!target) return;
+      const top = window.scrollY + target.getBoundingClientRect().top - 140;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    }, targetHref);
+
+    await expect
+      .poll(
+        async () => page.locator(".toc-list--desktop .toc-link[aria-current='true']").first().getAttribute("href"),
+        { timeout: 3000 }
+      )
+      .toBe(targetHref);
+    await expect(page.locator(".toc-list--desktop .toc-item.is-active").first()).toBeVisible();
+    await expect(page.locator(".toc-current [data-current-section]").first()).not.toHaveText("");
+
+    const progress = await page.locator(".toc-sidebar").first().evaluate((el) =>
+      getComputedStyle(el as HTMLElement).getPropertyValue("--toc-progress")
+    );
+    expect(Number(progress)).toBeGreaterThanOrEqual(0);
+  });
+
   test("滚动到页尾附近时，侧栏不侵入页脚区域", async ({ page }) => {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(800);

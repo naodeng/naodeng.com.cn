@@ -146,4 +146,31 @@ test.describe("搜索功能", () => {
       await expect(searchInput).toHaveValue("");
     }
   });
+
+  test("en 搜索打开后显示入口建议并支持方向键选择", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+
+    await page.locator('button[aria-label*="search" i], button[class*="search"]').first().click();
+
+    const searchInput = page.locator("#search-input");
+    await expect(searchInput).toBeFocused();
+    await expect(page.locator(".search-result-item")).toHaveCount(3);
+    await expect(page.locator(".search-result-type").first()).toContainText(/Blog|AI Wiki|Prompts/);
+
+    await searchInput.press("ArrowDown");
+    await expect(page.locator(".search-result-item.is-active")).toHaveCount(1);
+    await expect(page.locator(".search-result-item.is-active")).toHaveAttribute("aria-selected", "true");
+  });
+
+  test("zh-cn 搜索结果显示类型徽标", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+
+    await page.locator('button[aria-label*="搜索"], button[class*="search"]').first().click();
+
+    const searchInput = page.locator("#search-input");
+    await expect(searchInput).toBeFocused();
+    await searchInput.fill("API");
+    await expect(page.locator(".search-result-item").first()).toBeVisible();
+    await expect(page.locator(".search-result-type").first()).toContainText(/博客|Wiki|AI 百科|提示词|工作流|Guild|内容/);
+  });
 });

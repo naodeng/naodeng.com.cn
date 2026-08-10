@@ -23,7 +23,12 @@ const t = useTranslations(locale);
       <span class="search-hint" data-hint>{t(SEARCH_OPEN_HINT)}</span>
     </div>
   </div>
-  <div class="search-results" id="search-results" role="list"></div>
+  <div
+    class="search-results"
+    id="search-results"
+    role="listbox"
+    aria-label={locale === "zh-cn" ? "搜索结果" : "Search results"}
+  ></div>
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
 </dialog>
 
@@ -38,6 +43,7 @@ const t = useTranslations(locale);
 
   let index = [];
   let locale = "en";
+  let activeIndex = -1;
 
   function getLocale() {
     const el = document.documentElement.getAttribute("data-locale");
@@ -76,6 +82,83 @@ const t = useTranslations(locale);
     const maxLength = locale === "zh-cn" ? 72 : 120;
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength).trimEnd() + "…";
+  }
+
+  function getTypeLabel(type, url) {
+    const labels = {
+      blog: locale === "zh-cn" ? "博客" : "Blog",
+      guild: "Guild",
+      wiki: "Wiki",
+      aiwiki: locale === "zh-cn" ? "AI 百科" : "AI Wiki",
+      prompts: locale === "zh-cn" ? "提示词" : "Prompts",
+      workflows: locale === "zh-cn" ? "工作流" : "Workflows",
+    };
+    const inferredType =
+      type ||
+      (url && url.includes("/blog/")
+        ? "blog"
+        : url && url.includes("/guild/")
+          ? "guild"
+          : url && url.includes("/wiki/")
+            ? "wiki"
+            : url && url.includes("/AIWiki/")
+              ? "aiwiki"
+              : url && url.includes("/prompts/workflows/")
+                ? "workflows"
+                : url && url.includes("/prompts/")
+                  ? "prompts"
+                  : "");
+    return labels[inferredType] || (locale === "zh-cn" ? "内容" : "Content");
+  }
+
+  function getStarterItems() {
+    const starterTargets =
+      locale === "zh-cn"
+        ? [
+            {
+              type: "blog",
+              url: `/${locale}/blog/`,
+              title: "博客",
+              description: "从最新文章进入软件测试、自动化与 AI 工程实践。",
+            },
+            {
+              type: "wiki",
+              url: `/${locale}/wiki/`,
+              title: "测试 Wiki",
+              description: "按概念查找测试术语、方法和工具说明。",
+            },
+            {
+              type: "prompts",
+              url: `/${locale}/prompts/`,
+              title: "测试提示词库",
+              description: "查找提示词、工作流和 QA Skills 入口。",
+            },
+          ]
+        : [
+            {
+              type: "blog",
+              url: `/${locale}/blog/`,
+              title: "Blog",
+              description: "Read software testing, automation, and AI engineering notes.",
+            },
+            {
+              type: "aiwiki",
+              url: `/${locale}/AIWiki/`,
+              title: "AI Wiki",
+              description: "Look up AI engineering concepts and references.",
+            },
+            {
+              type: "prompts",
+              url: `/${locale}/prompts/`,
+              title: "QA Prompts Library",
+              description: "Open reusable prompts, workflows, and QA skills.",
+            },
+          ];
+
+    return starterTargets.map((target) => {
+      const indexed = index.find((item) => item.url === target.url);
+      return indexed ? { ...target, ...indexed, type: target.type } : target;
+    });
   }
 
   function parseDateFromText(text) {
@@ -123,7 +206,35 @@ const t = useTranslations(locale);
       description: description || "",
       date: safeDate,
       tags: mergedTags,
+      typeLabel: getTypeLabel(item.type, item.url),
     };
+  }
+
+  function setActiveResult(nextIndex) {
+    const resultItems = Array.from(resultsEl.querySelectorAll(".search-result-item"));
+    activeIndex = resultItems.length ? Math.max(0, Math.min(nextIndex, resultItems.length - 1)) : -1;
+    resultItems.forEach((item, index) => {
+      const active = index === activeIndex;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-selected", active ? "true" : "false");
+      if (active) {
+        item.focus({ preventScroll: true });
+        item.scrollIntoView({ block: "nearest" });
+      }
+    });
+  }
+
+  function moveActiveResult(delta) {
+    const resultItems = resultsEl.querySelectorAll(".search-result-item");
+    if (!resultItems.length) return false;
+    const nextIndex =
+      activeIndex < 0
+        ? delta > 0
+          ? 0
+          : resultItems.length - 1
+        : (activeIndex + delta + resultItems.length) % resultItems.length;
+    setActiveResult(nextIndex);
+    return true;
   }
 
   /**
@@ -133,6 +244,7 @@ const t = useTranslations(locale);
    */
   function renderItems(items, hasQuery) {
     resultsEl.innerHTML = "";
+    activeIndex = -1;
     resultsEl.hidden = items.length === 0;
     emptyEl.hidden = items.length > 0 || !hasQuery;
     resultsEl.setAttribute("data-search-source", "local");
@@ -142,7 +254,9 @@ const t = useTranslations(locale);
       const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "").replace(/^\//, "");
       a.href = url;
       a.className = "search-result-item";
-      a.setAttribute("role", "listitem");
+      a.setAttribute("role", "option");
+      a.setAttribute("aria-selected", "false");
+      a.setAttribute("tabindex", "-1");
       const normalized = normalizeItem(item);
       const dateStr = normalized.date;
       const snippet = buildSnippet({ description: normalized.description });
@@ -153,7 +267,10 @@ const t = useTranslations(locale);
         metaParts.push(`<span class="search-result-tag">#${escapeHtml(tag)}</span>`);
       });
       a.innerHTML = `
-        <span class="search-result-title">${escapeHtml(normalized.title || "")}</span>
+        <span class="search-result-head">
+          <span class="search-result-type">${escapeHtml(normalized.typeLabel)}</span>
+          <span class="search-result-title">${escapeHtml(normalized.title || "")}</span>
+        </span>
         ${snippet ? `<span class="search-result-desc">${escapeHtml(snippet)}</span>` : ""}
         ${metaParts.length ? `<span class="search-result-meta">${metaParts.join("")}</span>` : ""}
       `;
@@ -195,6 +312,10 @@ const t = useTranslations(locale);
       emptyEl.hidden = true;
       return;
     }
+    if (!hasQuery) {
+      renderItems(getStarterItems(), false);
+      return;
+    }
     const items = filter(q);
     renderItems(items, hasQuery);
   }
@@ -205,7 +326,7 @@ const t = useTranslations(locale);
       dialog.showModal();
       input.value = "";
       input.focus();
-      resultsEl.hidden = true;
+      renderItems(getStarterItems(), false);
       emptyEl.hidden = true;
       if (hintEl) hintEl.style.display = "block";
     });
@@ -230,10 +351,35 @@ const t = useTranslations(locale);
       closeSearch();
       e.preventDefault();
     }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      if (moveActiveResult(e.key === "ArrowDown" ? 1 : -1)) {
+        e.preventDefault();
+      }
+    }
     if (e.key === "Enter") {
-      const first = resultsEl.querySelector(".search-result-item");
-      if (first) {
-        first.click();
+      const active = resultsEl.querySelector(".search-result-item.is-active");
+      const target = active || resultsEl.querySelector(".search-result-item");
+      if (target) {
+        target.click();
+        e.preventDefault();
+      }
+    }
+  });
+
+  resultsEl.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeSearch();
+      e.preventDefault();
+    }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      if (moveActiveResult(e.key === "ArrowDown" ? 1 : -1)) {
+        e.preventDefault();
+      }
+    }
+    if (e.key === "Enter") {
+      const active = resultsEl.querySelector(".search-result-item.is-active");
+      if (active) {
+        active.click();
         e.preventDefault();
       }
     }
@@ -374,7 +520,8 @@ const t = useTranslations(locale);
   }
 
   .search-result-item:hover,
-  .search-result-item:focus-visible {
+  .search-result-item:focus-visible,
+  .search-result-item.is-active {
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
     border-color: color-mix(in srgb, var(--color-theme) 28%, transparent);
   }
@@ -383,7 +530,28 @@ const t = useTranslations(locale);
     margin-top: 0.2rem;
   }
 
+  .search-result-head {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+  }
+
+  .search-result-type {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    padding: 0.16rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+  }
+
   .search-result-title {
+    min-width: 0;
     font-weight: 700;
     color: var(--color-main);
     font-size: 1rem;
@@ -454,6 +622,11 @@ const t = useTranslations(locale);
     }
     .search-result-title {
       font-size: 0.95rem;
+    }
+    .search-result-head {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.35rem;
     }
   }
 
