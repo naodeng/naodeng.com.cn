@@ -5,7 +5,6 @@ workflowType: "daily"
 lang: "en"
 order: 1
 ---
-
 # Daily Testing Workflow
 
 ## 📋 Metadata
@@ -53,12 +52,12 @@ A practical workflow guide for QA engineers to efficiently use the QA Prompt Lib
 4. Review with [Functional Testing](/en/prompts/functional-testing/) checklist
 
 **Example Prompt Flow**:
-```text
+```
 1. Generate functional tests → Review → Refine
 2. Add edge cases → Review → Refine
 3. Create test data → Validate
 4. Document in test management tool
-```markdown
+```
 
 ### For Bug Fixes
 **Workflow**:
@@ -106,7 +105,7 @@ A practical workflow guide for QA engineers to efficiently use the QA Prompt Lib
 5. Log bugs
 
 **Charter Template**:
-```text
+```
 Mission: [What to explore]
 Duration: [Time limit]
 Areas: [Specific features/flows]
@@ -276,8 +275,8 @@ Heuristics: [SFDPOT, FEW HICCUPS, etc.]
 
 ## 📚 Related Workflows
 
-- [Sprint Testing Workflow](/en/prompts/workflows/sprint/) - Sprint-specific activities
-- [Release Testing Workflow](/en/prompts/workflows/release/) - Pre-release checklist
+- [Sprint Testing Workflow](sprint-testing-workflow_EN.md) - Sprint-specific activities
+- [Release Testing Workflow](release-testing-workflow_EN.md) - Pre-release checklist
 
 ---
 

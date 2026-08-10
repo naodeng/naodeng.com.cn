@@ -6,10 +6,8 @@ promptVersion: "ROSES"
 lang: "en"
 order: 2
 ---
-
 # Test Automation - ROSES Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your automation requirements to start using.
 
 ---
 
@@ -26,6 +24,27 @@ order: 2
 **Steps:** Requirements Analysis → Technology Selection → Architecture Design → Framework Setup → Test Case Design → CI/CD Integration → Reporting & Monitoring → Maintenance & Optimization
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Background and Capabilities
 
@@ -159,7 +178,7 @@ Please output test automation plans in the following Markdown format:
 ### Framework Design Details
 
 #### Project Structure Design
-```text
+```
 automation-framework/
 ├── src/
 │   ├── main/
@@ -185,7 +204,7 @@ automation-framework/
 ├── logs/                       # Log files
 ├── pom.xml                     # Maven configuration
 └── README.md                   # Project documentation
-```markdown
+```
 
 #### Core Component Design
 
@@ -242,7 +261,7 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 }
-```markdown
+```
 
 ##### 3. Test Data Components
 ```java
@@ -267,7 +286,7 @@ public class TestDataProvider {
         };
     }
 }
-```markdown
+```
 
 ##### 4. API Test Components
 ```java
@@ -306,7 +325,7 @@ public class UserAPITest extends BaseAPITest {
             .body("username", equalTo(user.getUsername()));
     }
 }
-```text
+```
 
 ---
 
@@ -315,11 +334,8 @@ public class UserAPITest extends BaseAPITest {
 #### AT-[Number] - [Automation Test Case Title]
 
 **Test Type:** [Web UI Test/API Test/Mobile Test/Database Test]
-
 **Test Level:** [Unit Test/Integration Test/System Test/End-to-End Test]
-
 **Priority:** [P0/P1/P2/P3]
-
 **Automation Tool:** [Selenium/Playwright/REST Assured/Appium]
 
 **Test Objectives:**
@@ -346,7 +362,7 @@ public void testUserLogin() {
     Assert.assertTrue(homePage.isUserLoggedIn());
     Assert.assertEquals(homePage.getWelcomeMessage(), "Welcome, testuser!");
 }
-```markdown
+```
 
 **Verification Points:**
 - [Functional verification points]
@@ -366,7 +382,7 @@ public void testUserLogin() {
     "password": "wrongpassword"
   }
 }
-```markdown
+```
 
 **Expected Results:**
 - [Expected results of test execution]
@@ -379,7 +395,7 @@ public void testUserLogin() {
 
 #### Continuous Integration Pipeline
 ```yaml
-## Jenkins Pipeline Example
+# Jenkins Pipeline Example
 pipeline {
     agent any
 
@@ -451,7 +467,7 @@ pipeline {
         }
     }
 }
-```markdown
+```
 
 #### Test Execution Strategy
 - **Commit Trigger:** [Execute unit tests and API tests on code commit]
@@ -568,10 +584,10 @@ pipeline {
 
 ## Execution Instructions
 
-1. **Requirements Analysis:** Deeply analyze project requirements and technical characteristics, understand automation testing objectives
-2. **Technology Selection:** Select appropriate automation testing technology stack based on project characteristics
-3. **Architecture Design:** Design scalable, maintainable automation testing framework architecture
-4. **Plan Output:** Output detailed automation testing plan according to standard format
-5. **Quality Assurance:** Ensure the plan meets all quality requirements and special considerations
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving project requirements, technology stack, or testing objectives.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

@@ -30,7 +30,10 @@ export const getStaticPaths = () =>
       {PROJECTS_LIST.map((proj) => (
         <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-header">
-            <h2 class="project-name">{t(proj.name)}</h2>
+            <div class="project-title-row">
+              <h2 class="project-name">{t(proj.name)}</h2>
+              {proj.badge ? <span class="project-badge">{t(proj.badge)}</span> : null}
+            </div>
             <span class="external-icon">
                <span class="material-icons-sharp">open_in_new</span>
             </span>
@@ -91,8 +94,31 @@ export const getStaticPaths = () =>
   }
 
   .project-name {
+    margin: 0;
     font-size: 1.35rem;
     color: var(--color-theme);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .project-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: 0.16rem 0.55rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-theme) 12%, transparent);
+    color: var(--color-theme);
+    font-size: 0.72rem;
     font-weight: 800;
     line-height: 1.2;
   }

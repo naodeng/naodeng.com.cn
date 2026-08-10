@@ -6,10 +6,8 @@ promptVersion: "RISE"
 lang: "en"
 order: 6
 ---
-
 # Mobile Testing - RISE Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your mobile app requirements to start using.
 
 ---
 
@@ -24,6 +22,27 @@ order: 6
 **Expectation:** Output detailed mobile testing plan documentation, including complete application analysis, clear device and platform strategies, comprehensive mobile test case design (including mobile characteristic verification), complete specialized testing plans (performance, compatibility, network, security), detailed automation testing implementation, systematic test execution plans and management strategies, providing executable mobile testing implementation plans for teams
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Background and Capabilities
 
@@ -225,11 +244,8 @@ Please output mobile testing plans in the following Markdown format:
 #### MT-[Number] - [Mobile Test Title]
 
 **Test Type:** [Functional Testing/Compatibility Testing/Performance Testing/User Experience Testing/Security Testing]
-
 **Test Platform:** [iOS/Android/Cross-platform]
-
 **Device Requirements:** [Specific device model and system version requirements]
-
 **Priority:** [P0/P1/P2/P3]
 
 **Test Objectives:**
@@ -385,7 +401,7 @@ public void testLoginFunctionality() {
     // Verify login success
     onView(withText("Welcome")).check(matches(isDisplayed()));
 }
-```text
+```
 
 ---
 
@@ -436,7 +452,7 @@ public void testLoginFunctionality() {
 ### 3. User Experience Focus
 - **Interaction Experience Verification:** Focus on verifying mobile touch interaction experience
 - **Performance Experience Assurance:** Ensure application launch speed and response performance
-- **Visual Effect [检查](https://inaodeng.com/zh-cn/wiki/inspection/):** Verify visual effects and adaptation on different devices
+- **Visual Effect Inspection:** Verify visual effects and adaptation on different devices
 - **Usability Assessment:** Evaluate application usability and user-friendliness
 
 ### 4. Technical Implementation Feasibility
@@ -477,10 +493,10 @@ public void testLoginFunctionality() {
 
 ## Execution Instructions
 
-1. **Requirements Analysis:** Deeply analyze mobile application characteristics and testing requirements, understand user scenarios
-2. **Strategy Development:** Develop testing strategies based on application type and platform characteristics
-3. **Plan Design:** Design comprehensive mobile testing plans and test cases
-4. **Format Output:** Output mobile testing plan according to standard format
-5. **Quality Assurance:** Ensure testing plan meets all quality requirements and special considerations
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving mobile application requirements, platform characteristics, or testing objectives.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

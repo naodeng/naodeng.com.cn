@@ -8,6 +8,7 @@ export interface ProjectItem {
   name: Multilingual;
   techStack: Multilingual;
   description: Multilingual;
+  badge?: Multilingual;
 }
 
 export const PROJECTS_LIST: ProjectItem[] = [
@@ -22,6 +23,19 @@ export const PROJECTS_LIST: ProjectItem[] = [
       en: "A curated AI prompt collection for QA and software testing, covering the full testing lifecycle with 15+ test types, 3 workflows, and 225+ documents. Bilingual (EN/CN), supports ROSES, LangGPT, ICIO, CRISPE, RISE frameworks.",
       "zh-cn": "专业的 QA AI 提示词集合，涵盖从需求分析到测试报告的完整测试生命周期，提供 15 个测试类型模块、3 个工作流程和 225+ 文档。中英文双语，支持 ROSES、LangGPT、ICIO、CRISPE、RISE 等框架。",
     },
+  },
+  {
+    url: "https://github.com/naodeng/awesome-qa-skills",
+    name: { en: "Awesome QA Skills", "zh-cn": "Awesome QA Skills" },
+    techStack: {
+      en: "Markdown, QA Skills, AI Agents",
+      "zh-cn": "Markdown、QA Skills、AI Agents",
+    },
+    description: {
+      en: "A curated QA skills library for AI coding agents and testing workflows, turning reusable QA practices into structured, executable skills for software testing work.",
+      "zh-cn": "面向 AI 编码 Agent 与测试工作流的 QA 技能库，将可复用的软件测试实践整理成结构化、可执行的技能内容。",
+    },
+    badge: { en: "Recommended", "zh-cn": "推荐" },
   },
   {
     url: "https://github.com/naodeng/QA-Glossary-Wiki",

@@ -1,32 +1,36 @@
 :root {
-  --color-theme: #0066cc;
-  --color-theme-focus: #0071e3;
-  --color-theme-on-dark: #2997ff;
-  --color-accent: #0066cc;
-  --color-base: #f5f5f7;
+  --color-theme: #4f46e5;
+  --color-theme-focus: #4338ca;
+  --color-theme-on-dark: #a5b4fc;
+  --color-accent: #14b8a6;
+  --color-base: #f8fafc;
   --color-canvas: #ffffff;
-  --color-main: #1d1d1f;
+  --color-main: #0f172a;
   --color-surface: #ffffff;
-  --color-border: #e0e0e0;
-  --color-caution: #a80a00;
+  --color-border: #e2e8f0;
+  --color-caution: #be123c;
 
   --color-warn: #f59e0b;
   --color-text-primary: var(--color-main);
-  --color-text-secondary: #333333;
-  --color-text-tertiary: #7a7a7a;
-  --color-surface-muted: #f5f5f7;
-  --color-surface-elevated: #ffffff;
-  --color-border-strong: rgba(0, 0, 0, 0.08);
-  --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, transparent);
-  --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, transparent);
+  --color-text-secondary: #334155;
+  --color-text-tertiary: #64748b;
+  --color-surface-muted: #f1f5f9;
+  --color-surface-elevated: rgba(255, 255, 255, 0.86);
+  --color-border-strong: rgba(79, 70, 229, 0.16);
+  --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, white);
+  --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, white);
 
-  --glow-theme: transparent;
-  --gradient-hero: none;
+  --glow-theme: rgba(79, 70, 229, 0.22);
+  --gradient-hero:
+    linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, transparent 38%),
+    linear-gradient(315deg, rgba(20, 184, 166, 0.14) 0%, transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-theme: linear-gradient(135deg, var(--color-theme) 0%, var(--color-accent) 100%);
 
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-product: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 14px 35px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --shadow-product: 0 18px 48px rgba(79, 70, 229, 0.16);
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -35,7 +39,8 @@
   --text-xl: 1.25rem;
   --text-display: 2.5rem;
 
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Noto Sans", sans-serif;
+  --font-sans: "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: "Sora", "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
 
   --sp-l: 64px;
   --sp-m: 32px;
@@ -55,7 +60,7 @@
   }
 
   --radius-sm: 8px;
-  --radius-md: 11px;
+  --radius-md: 12px;
   --radius-lg: 18px;
   --radius-xl: 9999px;
 
@@ -72,14 +77,15 @@
   --pill-padding-inline: 0.75rem;
   --section-gap: var(--sp-m);
 
-  --english-font: "Noto Sans", "Robot", "Avenir Next", "Avenir",
-    "Century Gothic", "SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  --english-font: var(--font-heading);
 
   color: var(--color-main);
   background-color: var(--color-base);
   accent-color: var(--color-theme);
-  background-image: none;
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
 
   line-height: 1.47;
   font-weight: 400;
@@ -123,6 +129,14 @@ label {
   line-height: 1.4;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  letter-spacing: 0;
+}
+
 p {
   margin-block-start: 0.8em;
 }
@@ -136,6 +150,13 @@ a,
 button {
   transition: var(--transition-fast);
 }
+
+:is(.site-brand-link, .site-nav a, .nav-submenu a, .footer-nav a, .cta-button, .pill-cta, .headline-btn, .home-card, .home-chip, .post-link, .tag-pill, .tag-link) {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: manual;
+}
+
 a:hover,
 a:active,
 button:hover,
@@ -180,7 +201,7 @@ textarea {
   padding-inline: var(--control-padding-inline);
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border-strong);
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
 }
 
 :where(.cta-button:active) {
@@ -199,6 +220,7 @@ textarea {
   color: var(--color-theme);
   text-decoration: none;
   line-height: 1.3;
+  box-shadow: var(--shadow-sm);
 }
 
 :where(.tag-pill:hover, .tag-pill:focus-visible, .tag-link:hover, .tag-link:focus-visible, .tag:hover, .tag:focus-visible, .blog-related-terms-pill:hover, .blog-related-terms-pill:focus-visible, .aiwiki-related-pill:hover, .aiwiki-related-pill:focus-visible, .guild-related-terms-pill:hover, .guild-related-terms-pill:focus-visible) {
@@ -241,7 +263,7 @@ textarea {
   border-radius: var(--radius-lg);
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  box-shadow: none;
+  box-shadow: var(--shadow-md);
 }
 
 svg,

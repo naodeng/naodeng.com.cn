@@ -1,11 +1,10 @@
 ---
 title: "日常测试工作流程"
-description: "QA 工程师日常测试活动的实用工作流程指南，帮助高效使用 QA 提示词库。"
+description: "为 QA 工程师提供实用的工作流程指南，帮助他们在日常测试活动中高效使用 QA 提示词库。"
 workflowType: "daily"
 lang: "zh-cn"
 order: 1
 ---
-
 # 日常测试工作流程
 
 ## 📋 元数据
@@ -53,12 +52,12 @@ order: 1
 4. 使用 [功能测试](/zh-cn/prompts/functional-testing/) 检查清单审查
 
 **示例提示词流程**：
-```text
+```
 1. 生成功能测试 → 审查 → 优化
 2. 添加边界值用例 → 审查 → 优化
 3. 创建测试数据 → 验证
 4. 在测试管理工具中记录
-```markdown
+```
 
 ### 针对缺陷修复
 **工作流程**：
@@ -106,7 +105,7 @@ order: 1
 5. 记录缺陷
 
 **章程模板**：
-```text
+```
 任务：[要探索的内容]
 持续时间：[时间限制]
 区域：[特定功能/流程]
@@ -276,8 +275,8 @@ order: 1
 
 ## 📚 相关工作流程
 
-- [迭代测试工作流程](/zh-cn/prompts/workflows/sprint/) - 迭代特定活动
-- [发布测试工作流程](/zh-cn/prompts/workflows/release/) - 发布前检查清单
+- [迭代测试工作流程](sprint-testing-workflow_CN.md) - 迭代特定活动
+- [发布测试工作流程](release-testing-workflow_CN.md) - 发布前检查清单
 
 ---
 

@@ -1,11 +1,10 @@
 ---
 title: "迭代测试工作流程"
-description: "2周迭代周期的完整测试工作流程，从规划到回顾，帮助 QA 工程师和 Scrum 团队高效完成测试。"
+description: "2周迭代周期的完整测试工作流程，从规划到回顾。"
 workflowType: "sprint"
 lang: "zh-cn"
 order: 2
 ---
-
 # 迭代测试工作流程
 
 ## 📋 元数据
@@ -45,7 +44,7 @@ order: 2
 - [ ] 识别自动化候选项
 
 **模板**：
-```text
+```
 迭代：[迭代编号]
 故事：[列出用户故事]
 测试重点：[要测试的区域]
@@ -362,8 +361,8 @@ order: 2
 
 ## 📚 相关工作流程
 
-- [日常测试工作流程](/zh-cn/prompts/workflows/daily/) - 日常活动
-- [发布测试工作流程](/zh-cn/prompts/workflows/release/) - 发布前流程
+- [日常测试工作流程](daily-testing-workflow_CN.md) - 日常活动
+- [发布测试工作流程](release-testing-workflow_CN.md) - 发布前流程
 
 ---
 

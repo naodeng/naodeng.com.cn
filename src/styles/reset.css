@@ -48,7 +48,8 @@ a {
   text-decoration-skip-ink: none;
   color: currentColor;
   text-decoration: none;
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 p a {

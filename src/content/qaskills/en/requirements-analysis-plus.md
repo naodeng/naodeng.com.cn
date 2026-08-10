@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirements-analysis-plus
 - category: plus
 - hasEvals: true
-- syncedAt: 2026-08-05
+- syncedAt: 2026-08-10
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirements-analysis-plus/SKILL.md
 - description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include requirements analysis plus and requirement document parsing.
 

@@ -272,6 +272,27 @@ const homePageSchema = {
             </li>
           ))}
         </ul>
+        <div class="home-hero-console" aria-hidden="true">
+          <div class="console-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="console-grid">
+            <div class="console-card console-card--primary">
+              <span>{locale === "zh-cn" ? "知识库" : "Knowledge"}</span>
+              <strong>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</strong>
+            </div>
+            <div class="console-card">
+              <span>{locale === "zh-cn" ? "自动化" : "Automation"}</span>
+              <strong>{locale === "zh-cn" ? "技能路径" : "Skill Paths"}</strong>
+            </div>
+            <div class="console-card">
+              <span>{locale === "zh-cn" ? "AI 测试" : "AI Testing"}</span>
+              <strong>{locale === "zh-cn" ? "提示词库" : "Prompt Library"}</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -872,6 +893,313 @@ const homePageSchema = {
     .home-latest-posts .home-grid,
     .home-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* Zenix-inspired product surface for the bilingual knowledge platform. */
+  .home-page {
+    background:
+      linear-gradient(rgba(79, 70, 229, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.035) 1px, transparent 1px),
+      #f8fafc;
+    background-size: 42px 42px, 42px 42px, auto;
+  }
+
+  .home-band {
+    position: relative;
+    padding-block: 88px;
+    overflow: hidden;
+  }
+
+  .home-band--white,
+  .home-band--parchment {
+    background: transparent;
+  }
+
+  .home-band:nth-of-type(even)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(241, 245, 249, 0.64));
+    pointer-events: none;
+  }
+
+  .home-inner {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, calc(100% - 48px));
+  }
+
+  .home-apple-hero {
+    min-height: 640px;
+    display: grid;
+    align-items: center;
+    padding-block: 96px 72px;
+    background: var(--gradient-hero);
+  }
+
+  .home-hero__title {
+    max-width: 920px;
+    margin-inline: auto;
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.04;
+    color: var(--color-main);
+  }
+
+  .home-hero__title::after {
+    content: "";
+    display: block;
+    width: 92px;
+    height: 5px;
+    margin: 22px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-theme), var(--color-accent));
+  }
+
+  .home-hero__subtitle {
+    max-width: 720px;
+    margin-top: 22px;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .home-hero__ctas {
+    margin-top: 30px;
+  }
+
+  .pill-cta {
+    min-height: 48px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .pill-cta--primary {
+    background: linear-gradient(135deg, var(--color-theme), color-mix(in srgb, var(--color-theme) 76%, var(--color-accent)));
+    color: white;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
+    box-shadow: 0 18px 40px rgba(79, 70, 229, 0.22);
+  }
+
+  .pill-cta--ghost {
+    background: rgba(255, 255, 255, 0.76);
+    color: var(--color-theme);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .pill-cta:hover,
+  .pill-cta:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .home-hero-console {
+    max-width: 780px;
+    margin: 42px auto 0;
+    padding: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(22px);
+    text-align: start;
+  }
+
+  .console-topbar {
+    display: flex;
+    gap: 7px;
+    padding: 6px 8px 14px;
+  }
+
+  .console-topbar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #cbd5e1;
+  }
+
+  .console-topbar span:nth-child(1) {
+    background: #fb7185;
+  }
+
+  .console-topbar span:nth-child(2) {
+    background: #fbbf24;
+  }
+
+  .console-topbar span:nth-child(3) {
+    background: #34d399;
+  }
+
+  .console-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .console-card {
+    min-height: 120px;
+    padding: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+  }
+
+  .console-card span {
+    display: block;
+    margin-bottom: 22px;
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .console-card strong {
+    display: block;
+    color: var(--color-main);
+    font-family: var(--font-heading);
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .console-card--primary {
+    background:
+      linear-gradient(135deg, rgba(79, 70, 229, 0.95), rgba(20, 184, 166, 0.88));
+    color: white;
+    border-color: transparent;
+  }
+
+  .console-card--primary span,
+  .console-card--primary strong {
+    color: white;
+  }
+
+  .home-band__title {
+    font-family: var(--font-heading);
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0;
+    color: var(--color-main);
+  }
+
+  .home-band__subtitle {
+    color: var(--color-text-secondary);
+  }
+
+  .home-grid {
+    gap: 18px;
+  }
+
+  .home-card {
+    min-height: 190px;
+    padding: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .home-band--white .home-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.88));
+  }
+
+  .home-card:hover,
+  .home-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .home-card__meta,
+  .home-card__desc,
+  .home-chip__count {
+    color: var(--color-text-tertiary);
+  }
+
+  .home-card__title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0;
+    color: var(--color-main);
+  }
+
+  .home-card__more {
+    color: var(--color-theme);
+    font-weight: 800;
+  }
+
+  .home-chip {
+    border-color: rgba(148, 163, 184, 0.24);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--color-text-secondary);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(14px);
+  }
+
+  .home-chip:hover,
+  .home-chip:focus-visible {
+    color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 26%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, white);
+  }
+
+  @media (width < 900px) {
+    .home-band {
+      padding-block: 58px;
+    }
+
+    .home-apple-hero {
+      min-height: 0;
+      padding-block: 72px 52px;
+    }
+
+    .home-hero__title {
+      font-size: 38px;
+    }
+
+    .home-hero__subtitle {
+      font-size: 17px;
+    }
+
+    .home-inner {
+      width: min(980px, calc(100% - 32px));
+    }
+
+    .console-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .console-card {
+      min-height: 98px;
+    }
+
+    .console-card span {
+      margin-bottom: 12px;
+    }
+
+    .home-band__title {
+      font-size: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill-cta:hover,
+    .pill-cta:focus-visible,
+    .home-card:hover,
+    .home-card:focus-visible {
+      transform: none;
     }
   }
 </style>

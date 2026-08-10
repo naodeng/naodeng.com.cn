@@ -102,6 +102,19 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header nav a[data-nav-item='sponsor']")).toBeVisible();
   });
 
+  test("zh-cn 首页：更多菜单包含英语学习外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+
+    const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
+    await page.locator("[data-nav-group='more'] summary").click();
+    const menuLink = page.locator("header nav a[data-nav-item='english-learning']");
+    await expect(menuLink).toBeVisible();
+    await expect(menuLink).toContainText("英语学习");
+    await expect(menuLink).toHaveAttribute("href", englishLearningUrl);
+    await expect(menuLink).toHaveAttribute("target", "_blank");
+    await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 首页：AI测试菜单下提示词库和技能库都可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='ai-testing'] summary").click();
@@ -128,7 +141,7 @@ test.describe("Header 导航", () => {
     await expect(page.locator("header button[data-search-open]")).toBeVisible();
   });
 
-  test("en 首页：header 为黑色顶栏（无渐变）", async ({ page, baseURL }) => {
+  test("en 首页：header 为浅色玻璃顶栏（无渐变）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const header = page.locator("header.l-header");
     const styles = await header.evaluate((el) => {
@@ -136,11 +149,12 @@ test.describe("Header 导航", () => {
       return {
         backgroundColor: cs.backgroundColor,
         backgroundImage: cs.backgroundImage,
+        borderBottomColor: cs.borderBottomColor,
       };
     });
     expect(styles.backgroundImage === "none" || !/gradient/i.test(styles.backgroundImage)).toBeTruthy();
-    // rgb(0, 0, 0) or #000
-    expect(styles.backgroundColor).toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
+    expect(styles.backgroundColor).not.toMatch(/rgba?\(0,\s*0,\s*0(?:,\s*1)?\)|#000/i);
+    expect(styles.borderBottomColor).not.toBe("rgba(0, 0, 0, 0)");
   });
 
   test("响应式：移动端 header 为品牌 + 搜索 + 汉堡", async ({ page, baseURL }) => {

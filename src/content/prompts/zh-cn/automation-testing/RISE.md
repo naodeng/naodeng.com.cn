@@ -1,15 +1,13 @@
 ---
-title: "RISE - 自动化测试"
-description: "自动化测试 RISE 框架提示词"
+title: "RISE - 自动化测试 (Automation Testing)"
+description: "自动化测试 (Automation Testing) RISE 框架提示词"
 testingType: "automation-testing"
 promptVersion: "RISE"
 lang: "zh-cn"
 order: 6
 ---
-
 # 自动化测试 - RISE框架 (完整版)
 
-> 💡 **使用说明**：请复制下方虚线以下的所有内容到 AI 助手（如 ChatGPT、Claude、Cursor AI 等），然后附加你的自动化需求即可开始使用。
 
 ---
 
@@ -157,6 +155,28 @@ order: 6
 - 确保内容完整、结构清晰、可执行性强
 - 提供详细的代码示例和配置示例
 
+## 使用约束与降级规则
+
+### 输入完整性检查
+在开始正式输出前，请先执行输入审计：
+- 列出“已知信息”“缺失信息”“关键假设”“主要风险”
+- 如果缺少关键信息且会显著影响结论，请先提出 3-5 个关键澄清问题
+- 如果用户不补充信息，请基于最少必要假设继续，并明确标注“以下内容基于假设”
+
+### 禁止编造
+- 模板中的数字、覆盖率、通过率、耗时若未由用户提供，一律视为示例或待确认，不得写成既定目标
+- 不要编造不存在的需求、接口、字段、流程、环境、用户量、并发量、团队配置、审批信息、版本号、日期、预算、缺陷数据、覆盖率、SLA/SLO 或合规结论
+- 对于未提供的指标、阈值和比例，使用“待确认/建议值/示例值”标注，而不是当作既定事实
+- 对于无法从输入中确认的工具链、框架或实现方式，不要强行指定唯一方案，应给出条件化建议
+
+### 输出策略
+- 优先输出最小可执行版本，再补充增强版建议
+- 所有优先级、风险和建议必须给出简短依据
+- 如果用户要求的是策略/分析，不要默认展开为大段实现代码；只有在用户明确需要或输入足够时，才提供脚本、配置或示例代码
+- 若输出模板中的字段缺失，请填写“待补充”或在该项后注明“未提供”，不要伪造内容
+
+---
+
 ## Output Format (输出格式规范)
 
 请按以下 Markdown 格式输出自动化测试方案：
@@ -207,7 +227,7 @@ order: 6
 ### 框架设计详情
 
 #### 项目结构设计
-```text
+```
 automation-framework/
 ├── src/
 │   ├── main/
@@ -233,7 +253,7 @@ automation-framework/
 ├── logs/                       # 日志文件
 ├── pom.xml                     # Maven 配置
 └── README.md                   # 项目说明
-```markdown
+```
 
 #### 核心组件设计
 
@@ -290,7 +310,7 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 }
-```markdown
+```
 
 ##### 3. 测试数据组件
 ```java
@@ -315,7 +335,7 @@ public class TestDataProvider {
         };
     }
 }
-```markdown
+```
 
 ##### 4. API 测试组件
 ```java
@@ -354,7 +374,7 @@ public class UserAPITest extends BaseAPITest {
             .body("username", equalTo(user.getUsername()));
     }
 }
-```text
+```
 
 ---
 
@@ -363,11 +383,8 @@ public class UserAPITest extends BaseAPITest {
 #### AT-[编号] - [自动化测试用例标题]
 
 **测试类型：** [Web UI 测试/API 测试/移动端测试/数据库测试]
-
 **测试级别：** [单元测试/集成测试/系统测试/端到端测试]
-
 **优先级：** [P0/P1/P2/P3]
-
 **自动化工具：** [Selenium/Playwright/REST Assured/Appium]
 
 **测试目标：**
@@ -394,7 +411,7 @@ public void testUserLogin() {
     Assert.assertTrue(homePage.isUserLoggedIn());
     Assert.assertEquals(homePage.getWelcomeMessage(), "Welcome, testuser!");
 }
-```markdown
+```
 
 **验证点：**
 - [功能验证点]
@@ -414,7 +431,7 @@ public void testUserLogin() {
     "password": "wrongpassword"
   }
 }
-```markdown
+```
 
 **预期结果：**
 - [测试执行的预期结果]
@@ -427,7 +444,7 @@ public void testUserLogin() {
 
 #### 持续集成流水线
 ```yaml
-## Jenkins Pipeline 示例
+# Jenkins Pipeline 示例
 pipeline {
     agent any
 
@@ -499,7 +516,7 @@ pipeline {
         }
     }
 }
-```markdown
+```
 
 #### 测试执行策略
 - **提交触发：** [代码提交时执行单元测试和 API 测试]
@@ -616,10 +633,10 @@ pipeline {
 
 ## Execution Instructions (执行指令)
 
-1. **需求分析：** 深入分析项目需求和技术特点，理解自动化测试目标
-2. **技术选型：** 根据项目特点选择合适的自动化测试技术栈
-3. **架构设计：** 设计可扩展、可维护的自动化测试框架架构
-4. **方案输出：** 按照标准格式输出详细的自动化测试方案
-5. **质量保证：** 确保方案满足所有质量要求和特殊注意事项
+1. 先进行输入完整性检查，输出已知信息、缺失信息、关键假设和主要风险。
+2. 若关键信息不足，优先提出少量高价值澄清问题；如果无法补充，再基于最少必要假设继续。
+3. 严格按照输出格式生成结果，但不得编造指标、数据、角色、日期、环境、结论或实现细节。
+4. 对所有建议给出简短依据，并优先给出最小可执行方案。
+5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
-**请在收到项目需求、技术栈或测试目标后，立即开始执行上述任务。**
+**请在收到输入后，先完成输入审计，再输出正式结果。**

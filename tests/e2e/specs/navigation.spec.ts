@@ -135,12 +135,32 @@ test.describe("导航与首页内容", () => {
     await expect(page).toHaveURL(/\/(en)\/qaskills\/?/);
   });
 
+  test("zh-cn 页脚包含「英语学习」外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    const footerLink = page.locator("footer .footer-nav a", { hasText: "英语学习" }).first();
+    await expect(footerLink).toBeVisible();
+    await expect(footerLink).toHaveAttribute(
+      "href",
+      "https://30-day-qa-english-learning-plan.inaodeng.com/",
+    );
+    await expect(footerLink).toHaveAttribute("target", "_blank");
+    await expect(footerLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 从首页点击「更多 > 项目」进入项目页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await page.locator("header nav [data-nav-group='more'] summary").click();
     await page.locator("header nav a[data-nav-item='projects']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/projects\/?/);
     await expect(page.locator("main")).toBeVisible();
+  });
+
+  test("zh-cn 项目页展示推荐的 Awesome QA Skills 项目", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/projects/", { waitUntil: "networkidle" });
+
+    const projectCard = page.locator(".project-card", { hasText: "Awesome QA Skills" });
+    await expect(projectCard).toHaveAttribute("href", "https://github.com/naodeng/awesome-qa-skills");
+    await expect(projectCard.locator(".project-badge")).toHaveText("推荐");
   });
 
   test("zh-cn 从首页点击「更多 > 支持」进入支持页", async ({ page, baseURL }) => {

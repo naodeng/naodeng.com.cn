@@ -6,10 +6,8 @@ promptVersion: "CRISPE"
 lang: "en"
 order: 5
 ---
-
 # API Testing - CRISPE Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your API documentation to start using.
 
 ---
 
@@ -28,6 +26,27 @@ order: 5
 **Experiment:** Through testing application across multiple API types and scenarios, design comprehensive API testing plans (REST API, GraphQL API, SOAP API, gRPC API, microservices API, etc.), provide multiple API testing examples and best practices for different scenarios
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Capability System
 
@@ -152,7 +171,6 @@ Please output the API testing plan in the following Markdown format:
 - **Authentication Method:** [Bearer Token/API Key/OAuth2/Basic Auth]
 
 **Test Type:** [Functional Testing/Performance Testing/Security Testing/Compatibility Testing]
-
 **Test Priority:** [P0/P1/P2/P3]
 
 **Request Parameters:**
@@ -176,7 +194,7 @@ Please output the API testing plan in the following Markdown format:
     "age": 25
   }
 }
-```markdown
+```
 
 **Test Data Design:**
 | Data Type | Test Data | Expected Result | Test Purpose |
@@ -250,7 +268,7 @@ pm.test("Response has required fields", function () {
 pm.test("Response time is less than 2000ms", function () {
     pm.expect(pm.response.responseTime).to.be.below(2000);
 });
-```markdown
+```
 
 **Expected Response:**
 ```json
@@ -269,7 +287,7 @@ pm.test("Response time is less than 2000ms", function () {
     "updated_at": "2024-01-15T10:30:00Z"
   }
 }
-```markdown
+```
 
 **Validation Points:**
 - **Status Code Validation:** HTTP status code complies with API specification
@@ -280,7 +298,7 @@ pm.test("Response time is less than 2000ms", function () {
 
 **Performance Requirements:**
 - Response Time: ≤ 500ms (95% requests)
-- Throughput: ≥ 1000 RPS
+- Throughput: [Target value, mark as TBD if not provided]
 - Concurrent Users: ≥ 100
 - Error Rate: ≤ 0.1%
 
@@ -292,7 +310,7 @@ pm.test("Response time is less than 2000ms", function () {
 
 **Load Testing Scenarios:**
 ```yaml
-## JMeter Test Plan Example
+# JMeter Test Plan Example
 TestPlan:
   name: "API Load Test"
   threads: 100
@@ -323,7 +341,7 @@ TestPlan:
       assertions:
         - response_code: 201
         - response_time: < 1000ms
-```markdown
+```
 
 **Performance Monitoring Metrics:**
 - **Response Time Distribution:** P50, P90, P95, P99 response times
@@ -335,44 +353,44 @@ TestPlan:
 
 **Authentication Authorization Testing:**
 ```bash
-## No authentication access test
+# No authentication access test
 curl -X GET "https://api.example.com/users" \
   -H "Content-Type: application/json"
-## Expected: 401 Unauthorized
+# Expected: 401 Unauthorized
 
-## Invalid token test
+# Invalid token test
 curl -X GET "https://api.example.com/users" \
   -H "Authorization: Bearer invalid_token" \
   -H "Content-Type: application/json"
-## Expected: 401 Unauthorized
+# Expected: 401 Unauthorized
 
-## Expired token test
+# Expired token test
 curl -X GET "https://api.example.com/users" \
   -H "Authorization: Bearer expired_token" \
   -H "Content-Type: application/json"
-## Expected: 401 Unauthorized
-```markdown
+# Expected: 401 Unauthorized
+```
 
 **Input Validation Testing:**
 ```bash
-## SQL injection test
+# SQL injection test
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "test'\'' OR 1=1--", "email": "test@example.com"}'
 
-## XSS test
+# XSS test
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "<script>alert(\"XSS\")</script>", "email": "test@example.com"}'
 
-## Large data volume test
+# Large data volume test
 curl -X POST "https://api.example.com/users" \
   -H "Authorization: Bearer valid_token" \
   -H "Content-Type: application/json" \
   -d '{"name": "'$(python -c "print('A' * 10000)")'", "email": "test@example.com"}'
-```markdown
+```
 
 #### 3. API Contract Testing
 
@@ -429,7 +447,7 @@ describe('User API Contract', () => {
     });
   });
 });
-```markdown
+```
 
 #### 4. GraphQL API Testing
 
@@ -468,7 +486,7 @@ fetch('/graphql', {
   expect(data.data.user.id).toBe("123");
   expect(data.data.user.posts).toBeInstanceOf(Array);
 });
-```markdown
+```
 
 **GraphQL Mutation Testing:**
 ```javascript
@@ -490,7 +508,7 @@ const variables = {
 };
 
 // Execute mutation and verify results
-```text
+```
 
 ---
 
@@ -504,7 +522,7 @@ const variables = {
 
 #### CI/CD Integration
 ```yaml
-## GitHub Actions Example
+# GitHub Actions Example
 name: API Tests
 on: [push, pull_request]
 
@@ -536,7 +554,7 @@ jobs:
           name: API Test Results
           path: results.xml
           reporter: java-junit
-```markdown
+```
 
 #### Test Data Management
 - **Test Data Generation:** Automatically generate various data needed for testing
@@ -631,11 +649,10 @@ jobs:
 
 ## Execution Instructions
 
-1. **API Analysis:** Deep analysis of API documentation and system architecture
-2. **Strategy Formulation:** Formulate comprehensive API testing strategies and plans
-3. **Tool Selection:** Select appropriate API testing tools and frameworks
-4. **Script Development:** Develop high-quality API testing scripts
-5. **Automation Integration:** Integrate API testing into CI/CD processes
-6. **Continuous Optimization:** Continuously optimize API testing efficiency and quality
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving API documentation, system architecture, or testing requirements.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

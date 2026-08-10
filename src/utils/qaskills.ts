@@ -105,6 +105,96 @@ const TESTING_TYPE_SUBGROUPS: Array<{
   },
 ];
 
+export type LifecyclePathNodeKind = "type" | "plus";
+
+export type LifecyclePathStageConfig = {
+  key: string;
+  title: { "zh-cn": string; en: string };
+  typeSlugs: string[];
+  plusSlugs: string[];
+};
+
+export type LifecyclePathNode = {
+  slug: string;
+  label: string;
+  kind: LifecyclePathNodeKind;
+};
+
+export type LifecyclePathStage = {
+  key: string;
+  title: string;
+  nodes: LifecyclePathNode[];
+};
+
+export const LIFECYCLE_PATH_STAGES: LifecyclePathStageConfig[] = [
+  {
+    key: "requirements-strategy",
+    title: { "zh-cn": "需求与策略", en: "Requirements & Strategy" },
+    typeSlugs: ["requirements-analysis", "test-strategy"],
+    plusSlugs: ["requirements-analysis-plus", "test-strategy-plus"],
+  },
+  {
+    key: "case-design-review",
+    title: { "zh-cn": "用例与评审", en: "Case Design & Review" },
+    typeSlugs: ["test-case-writing", "test-case-reviewer"],
+    plusSlugs: ["testcase-writer-plus", "test-case-reviewer-plus"],
+  },
+  {
+    key: "functional-compatibility",
+    title: { "zh-cn": "功能与兼容", en: "Functional & Compatibility" },
+    typeSlugs: ["functional-testing", "manual-testing", "mobile-testing"],
+    plusSlugs: [],
+  },
+  {
+    key: "api-automation",
+    title: { "zh-cn": "接口与自动化", en: "API & Automation" },
+    typeSlugs: ["api-testing", "automation-testing"],
+    plusSlugs: [],
+  },
+  {
+    key: "quality-specialties",
+    title: { "zh-cn": "质量专项", en: "Quality Specialties" },
+    typeSlugs: ["performance-testing", "security-testing", "accessibility-testing"],
+    plusSlugs: [],
+  },
+  {
+    key: "defect-reporting",
+    title: { "zh-cn": "缺陷、报告与审查", en: "Defect, Reporting & Review" },
+    typeSlugs: ["bug-reporting", "test-reporting", "code-review", "ai-assisted-testing"],
+    plusSlugs: [],
+  },
+];
+
+function displayLabel(skill: QASkill, lang: "en" | "zh-cn") {
+  return lang === "zh-cn" ? skill.chineseName || skill.title : skill.title;
+}
+
+export function resolveLifecyclePath(
+  skills: QASkill[],
+  lang: "en" | "zh-cn"
+): LifecyclePathStage[] {
+  const bySlug = new Map(skills.map((skill) => [skill.slug, skill]));
+
+  return LIFECYCLE_PATH_STAGES.map((stage) => {
+    const nodes: LifecyclePathNode[] = [];
+    for (const slug of stage.typeSlugs) {
+      const skill = bySlug.get(slug);
+      if (!skill) continue;
+      nodes.push({ slug, label: displayLabel(skill, lang), kind: "type" });
+    }
+    for (const slug of stage.plusSlugs) {
+      const skill = bySlug.get(slug);
+      if (!skill) continue;
+      nodes.push({ slug, label: displayLabel(skill, lang), kind: "plus" });
+    }
+    return {
+      key: stage.key,
+      title: stage.title[lang],
+      nodes,
+    };
+  });
+}
+
 function toHtml(markdown: string) {
   if (!markdown.trim()) return "";
   return marked.parse(markdown, { gfm: true }) as string;

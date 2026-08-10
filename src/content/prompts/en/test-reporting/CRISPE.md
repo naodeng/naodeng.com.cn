@@ -6,10 +6,8 @@ promptVersion: "CRISPE"
 lang: "en"
 order: 5
 ---
-
 # Test Reporting - CRISPE Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your test data to start using.
 
 ---
 
@@ -28,6 +26,27 @@ order: 5
 **Experiment:** Through the analysis and application of various report types and scenarios, write comprehensive test reports (daily reports, phase reports, release reports, specialized reports, etc.), providing multiple test report examples and best practices for different scenarios
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Capability System
 
@@ -152,7 +171,6 @@ Please output test reports in the following Markdown format:
 ## Test Execution Status
 
 ### Test Case Execution Statistics
-
 #### Overall Execution Status
 - **Planned Execution Cases:** [Total number of planned test cases]
 - **Actual Execution Cases:** [Actual number of executed test cases]
@@ -187,7 +205,6 @@ Please output test reports in the following Markdown format:
 ## Defect Analysis
 
 ### Overall Defect Status
-
 #### Defect Quantity Statistics
 - **Total Defects:** [Total number of defects discovered]
 - **New Defects:** [Number of new defects in this period]
@@ -213,7 +230,6 @@ Please output test reports in the following Markdown format:
 | Compatibility Defects | 2 | 8.3% | Browser compatibility, device adaptation |
 
 ### Defect Distribution Analysis
-
 #### Module Defect Distribution
 | Functional Module | Defect Count | Defect Density | Main Issues |
 |-------------------|--------------|-----------------|-------------|
@@ -223,7 +239,6 @@ Please output test reports in the following Markdown format:
 | Report System | 2 | 0.05/case | Data calculation precision |
 
 ### Defect Trend Analysis
-
 #### Defect Discovery and Fix Trends
 - **New Defect Trend:** [Trend of new defect quantities]
 - **Fixed Defect Trend:** [Trend of fixed defect quantities]
@@ -241,7 +256,6 @@ Please output test reports in the following Markdown format:
 ## Quality Assessment
 
 ### Quality Metrics Assessment
-
 #### Functional Quality Assessment
 - **Functional Completeness:** [Assessment of functional implementation completeness]
 - **Functional Correctness:** [Assessment of functional implementation correctness]
@@ -251,7 +265,6 @@ Please output test reports in the following Markdown format:
 - **Usability Quality:** [Assessment of system usability]
 
 ### Risk Assessment
-
 #### Quality Risk Identification
 | Risk Level | Risk Description | Impact Degree | Probability | Response Measures |
 |------------|------------------|---------------|-------------|-------------------|
@@ -308,7 +321,6 @@ Please output test reports in the following Markdown format:
 ## Improvement Recommendations
 
 ### Quality Improvement Recommendations
-
 #### Short-term Improvement Measures (1-2 weeks)
 1. **Prioritize Critical Defect Fixes**
    - Immediately fix all P0 defects
@@ -359,7 +371,6 @@ Please output test reports in the following Markdown format:
 - **Follow-up Work:** [Follow-up testing work that needs to continue]
 
 ### Decision Recommendations
-
 #### Release Decision Recommendations
 - **Recommend Release:** [When release conditions are met]
   - All P0 defects fixed
@@ -475,10 +486,10 @@ Please output test reports in the following Markdown format:
 
 ## Execution Instructions
 
-1. **Data Collection:** Collect complete and accurate test execution data and defect information
-2. **Data Analysis:** Deeply analyze test data, identify trends and issues
-3. **Report Writing:** Write comprehensive and professional test reports according to standard format, providing multiple examples for different scenarios
-4. **Quality Check:** Ensure report data is accurate, analysis is in-depth, conclusions are objective
-5. **Format Output:** Output test report according to standard format
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving test execution data, defect information, or project background.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

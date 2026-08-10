@@ -24,6 +24,7 @@ import {
 
 const locale = Astro.currentLocale as Lang;
 const paths = getLocalePaths(Astro.url);
+const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
 
 // 找到另一种语言的路径
 const otherLocalePath = paths.find(p => p.lang !== locale)?.path || (locale === 'zh-cn' ? '/en/' : '/zh-cn/');
@@ -73,6 +74,9 @@ const footerGroups = [
     links: [
       { href: getRelativeLocaleUrl(locale, "/prompts"), label: typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale] },
       { href: getRelativeLocaleUrl(locale, "/qaskills"), label: typeof FOOTER_NAV_QASKILLS === 'string' ? FOOTER_NAV_QASKILLS : FOOTER_NAV_QASKILLS[locale] },
+      ...(locale === "zh-cn"
+        ? [{ href: englishLearningUrl, label: "英语学习", external: true }]
+        : []),
       { href: getRelativeLocaleUrl(locale, "/sponsor"), label: typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale] },
     ],
   },
@@ -402,6 +406,118 @@ const footerGroups = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.4rem 1rem;
       text-align: start;
+    }
+  }
+
+  /* Zenix-inspired footer panel. */
+  .l-footer {
+    margin-block-start: 0;
+    padding-block: 78px 56px;
+    color: var(--color-text-secondary);
+    background:
+      linear-gradient(180deg, rgba(248, 250, 252, 0), rgba(79, 70, 229, 0.055)),
+      var(--color-base);
+  }
+
+  .footer-container {
+    max-inline-size: 1120px;
+    gap: 1.5rem;
+    padding: 34px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.74);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(22px);
+  }
+
+  .social-links {
+    gap: 0.8rem;
+  }
+
+  .social-icon {
+    width: 52px;
+    height: 52px;
+    color: var(--color-text-secondary);
+    border-color: rgba(148, 163, 184, 0.28);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .social-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .social-icon:hover,
+  .social-icon:focus-visible {
+    color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 26%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, white);
+    transform: translateY(-2px);
+  }
+
+  .lang-label {
+    background: linear-gradient(135deg, var(--color-theme), var(--color-accent));
+    color: white;
+  }
+
+  .footer-nav {
+    max-width: 920px;
+    gap: 0.65rem 1rem;
+    margin-block-start: 1.2rem;
+  }
+
+  .footer-nav a,
+  .social-links a {
+    color: var(--color-text-secondary);
+  }
+
+  .footer-nav a {
+    padding: 0.18rem 0.35rem;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.8;
+  }
+
+  .footer-nav a:hover,
+  .footer-nav a:focus-visible {
+    color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 8%, white);
+  }
+
+  .footer-info {
+    max-inline-size: 760px;
+    border-block-start-color: rgba(148, 163, 184, 0.28);
+  }
+
+  .footer-slogan,
+  .built-with {
+    color: var(--color-text-tertiary);
+  }
+
+  .copy-link {
+    color: var(--color-main);
+  }
+
+  .tech-icon {
+    color: var(--color-text-tertiary);
+  }
+
+  @media (max-width: 600px) {
+    .l-footer {
+      padding-block: 64px 40px;
+    }
+
+    .footer-container {
+      width: calc(100% - 32px);
+      padding: 28px 18px;
+      border-radius: 22px;
+    }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
     }
   }
 </style>

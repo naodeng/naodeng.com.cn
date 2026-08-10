@@ -1,11 +1,10 @@
 ---
 title: "Sprint Testing Workflow"
-description: "Complete testing workflow for a 2-week sprint cycle, from planning to retrospective, for QA engineers and Scrum teams."
+description: "Complete testing workflow for a 2-week sprint cycle, from planning to retrospective."
 workflowType: "sprint"
 lang: "en"
 order: 2
 ---
-
 # Sprint Testing Workflow
 
 ## 📋 Metadata
@@ -45,7 +44,7 @@ Complete testing workflow for a 2-week sprint cycle, from planning to retrospect
 - [ ] Automation candidates identified
 
 **Template**:
-```text
+```
 Sprint: [Sprint Number]
 Stories: [List user stories]
 Testing Focus: [Areas to test]
@@ -362,8 +361,8 @@ Risks: [Identified risks]
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](/en/prompts/workflows/daily/) - Day-to-day activities
-- [Release Testing Workflow](/en/prompts/workflows/release/) - Pre-release process
+- [Daily Testing Workflow](daily-testing-workflow_EN.md) - Day-to-day activities
+- [Release Testing Workflow](release-testing-workflow_EN.md) - Pre-release process
 
 ---
 
