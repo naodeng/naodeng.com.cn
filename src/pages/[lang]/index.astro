@@ -30,6 +30,9 @@ import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
+import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
+import CoreCapabilities from "@/components/home/CoreCapabilities.astro";
+import HomeProofAndCases from "@/components/home/HomeProofAndCases.astro";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 
 const locale = Astro.currentLocale as Lang;
@@ -200,6 +203,9 @@ export const getStaticPaths = () =>
 
 const siteOrigin = "https://inaodeng.com";
 const homeUrl = `${siteOrigin}/${locale}/`;
+const homeSeoTitle = locale === "zh-cn"
+  ? "软件测试同学 X naodeng｜AI 测试知识、Skills 与 Prompts"
+  : "Nao Deng | QA Skills, Prompts and AI Testing Knowledge";
 
 const homePageSchema = {
   "@context": "https://schema.org",
@@ -228,7 +234,8 @@ const homePageSchema = {
 ---
 
 <Layout
-  title={t(SITE_TITLE)}
+  title={homeSeoTitle}
+  titleMode="absolute"
   description={t(HOME_PAGE_DESCRIPTION)}
   keywords={t(HOME_PAGE_KEYWORDS)}
   extraStructuredData={[homePageSchema]}
@@ -261,14 +268,23 @@ const homePageSchema = {
         >
           {primaryEntries.map((entry) => (
             <li>
-              <a
-                class={`home-primary-entry home-primary-entry--${entry.key}`}
-                href={entry.href}
-              >
-                <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
-                <span class="home-primary-entry__title">{entry.title}</span>
-                <span class="home-primary-entry__desc">{entry.desc}</span>
-              </a>
+              {entry.key === "qa-tools" ? (
+                <div class="home-primary-entry home-primary-entry--act">
+                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
+                  <span class="home-primary-entry__title">{entry.title}</span>
+                  <span class="home-primary-entry__desc">{entry.desc}</span>
+                  <span class="home-primary-entry__actions">
+                    <a href={getRelativeLocaleUrl(locale, "/qaskills/")}>Skills →</a>
+                    <a href={getRelativeLocaleUrl(locale, "/prompts/")}>Prompts →</a>
+                  </span>
+                </div>
+              ) : (
+                <a class={`home-primary-entry home-primary-entry--${entry.key}`} href={entry.href}>
+                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
+                  <span class="home-primary-entry__title">{entry.title}</span>
+                  <span class="home-primary-entry__desc">{entry.desc}</span>
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -295,6 +311,10 @@ const homePageSchema = {
         </div>
       </div>
     </section>
+
+    <HomeTaskNavigator locale={locale} />
+    <CoreCapabilities locale={locale} />
+    <HomeProofAndCases locale={locale} />
 
     <section class="home-band home-band--parchment" aria-labelledby="home-explore-title">
       <div class="home-inner">
@@ -715,6 +735,19 @@ const homePageSchema = {
     font-size: 14px;
     line-height: 1.5;
     color: #6e6e73;
+  }
+
+  .home-primary-entry__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-self: end;
+  }
+
+  .home-primary-entry__actions a {
+    color: var(--color-theme);
+    font-weight: 700;
+    text-decoration: none;
   }
 
   .home-band__title {

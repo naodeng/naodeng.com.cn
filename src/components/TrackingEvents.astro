@@ -46,6 +46,8 @@ const { mode, locale, channel = "", slug = "", detailLinkSelector = "a" } = Astr
         if (p.startsWith(`${prefix}wiki`)) return "wiki";
         if (p.startsWith(`${prefix}aiwiki`)) return "aiwiki";
         if (p.startsWith(`${prefix}guild`)) return "guild";
+        if (p.startsWith(`${prefix}prompts`)) return "prompts";
+        if (p.startsWith(`${prefix}qaskills`)) return "qaskills";
         return "";
       };
 

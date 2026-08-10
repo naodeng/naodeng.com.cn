@@ -1,0 +1,24 @@
+---
+import type { Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { HOME_TASK_ENTRIES } from "@/data/homeTaskEntries";
+interface Props { locale: Lang }
+const { locale } = Astro.props;
+---
+<section class="home-band home-band--parchment home-task-navigator" aria-labelledby="home-task-title">
+  <div class="home-inner">
+    <h2 id="home-task-title" class="home-band__title">{locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}</h2>
+    <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发，直接进入对应 Skill；也可在详情页获取输入模板和执行方式。" : "Start with the task, open the matching Skill, and use its input template and execution guide."}</p>
+    <ul class="task-grid" role="list">
+      {HOME_TASK_ENTRIES[locale].map((entry) => (
+        <li><a data-home-task={entry.slug} href={getRelativeLocaleUrl(locale, `/qaskills/${entry.slug}/`)}><h3>{entry.title}</h3><p>{entry.description}</p><span>{locale === "zh-cn" ? "开始任务" : "Start task"} →</span></a></li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+  a { display:block; height:100%; padding:1.2rem; border-radius:22px; background:#fff; border:1px solid rgba(148,163,184,.18); color:inherit; text-decoration:none; box-shadow:var(--shadow-sm); }
+  h3 { margin:0 0 .45rem; } p { color:var(--color-text-secondary); line-height:1.6; } span { color:var(--color-theme); font-weight:800; }
+  @media(max-width:800px){.task-grid{grid-template-columns:repeat(2,minmax(0,1fr));}} @media(max-width:520px){.task-grid{grid-template-columns:1fr;}}
+</style>

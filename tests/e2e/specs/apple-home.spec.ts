@@ -8,6 +8,9 @@ test.describe("apple homepage exploration", () => {
     }) => {
       await page.goto(`${baseURL}/${lang}/`);
       await expect(page.locator(".home-apple-hero")).toBeVisible();
+      await expect(page.locator("[data-home-task]")).toHaveCount(6);
+      await expect(page.locator("[data-home-capability]")).toHaveCount(3);
+      await expect(page.locator("[data-home-example]")).toHaveCount(3);
       await expect(page.locator(".home-explore-grid")).toBeVisible();
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(6);
@@ -37,5 +40,12 @@ test.describe("home information architecture", () => {
     await expect(primaryEntries.nth(0)).toContainText(/Blog/);
     await expect(primaryEntries.nth(1)).toContainText(/Wiki/);
     await expect(primaryEntries.nth(2)).toContainText(/QA|Prompt|Skill/);
+  });
+
+  test("task entry offers both skills and prompts without nested links", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const actionEntry = page.locator(".home-primary-entry--act");
+    await expect(actionEntry.getByRole("link", { name: /Skills/ })).toBeVisible();
+    await expect(actionEntry.getByRole("link", { name: /Prompts/ })).toBeVisible();
   });
 });
