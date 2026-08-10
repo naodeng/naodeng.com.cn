@@ -6,7 +6,7 @@ Author: naodeng
 - slug: sprint-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-08-09
+- syncedAt: 2026-08-10
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/sprint-testing-workflow/SKILL.md
 - description: Use this skill when you need a sprint-based QA workflow from planning through review and retrospective; triggers include sprint testing workflow and iteration QA workflow.
 

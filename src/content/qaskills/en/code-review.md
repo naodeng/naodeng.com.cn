@@ -6,7 +6,7 @@ Author: naodeng
 - slug: code-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-09
+- syncedAt: 2026-08-10
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/code-review/SKILL.md
 - description: Use this skill when you need a risk-driven code review of a PR/diff with severity-ranked findings and actionable fixes; triggers include code review, PR review, and 代码审查.
 

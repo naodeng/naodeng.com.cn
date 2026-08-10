@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-test-pytest
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-09
+- syncedAt: 2026-08-10
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-pytest/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate Pytest API automation; triggers include Pytest API tests and API automation with Pytest.
 

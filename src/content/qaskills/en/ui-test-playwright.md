@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-playwright
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-09
+- syncedAt: 2026-08-10
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-playwright/SKILL.md
 - description: Use this skill when you need to design Playwright Test suites with fixtures, projects, traces, screenshots, API plus UI coverage, and CI reporting; triggers include Playwright UI testing, UI automation testing, and ui-test-playwright.
 
