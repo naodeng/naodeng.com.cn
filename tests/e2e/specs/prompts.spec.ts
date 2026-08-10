@@ -16,6 +16,28 @@ test.describe("Prompts selection and review flow", () => {
     expect(boxes[3].width).toBeGreaterThan(boxes[0].width);
   });
 
+  test("content sections keep visible separation without overlap", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL}/zh-cn/prompts/`);
+    const gaps = await page.evaluate(() => {
+      const rect = (selector: string) => document.querySelector(selector)?.getBoundingClientRect();
+      const version = rect(".version-guide");
+      const quick = rect("#quickstart-heading");
+      const examples = rect(".examples");
+      const notice = rect("#ai-output-notice");
+      const flow = rect("#flow-heading");
+      return {
+        versionToQuick: version && quick ? Math.round(quick.top - version.bottom) : -999,
+        examplesToNotice: examples && notice ? Math.round(notice.top - examples.bottom) : -999,
+        noticeToFlow: notice && flow ? Math.round(flow.top - notice.bottom) : -999,
+      };
+    });
+    expect(gaps.versionToQuick).toBeGreaterThanOrEqual(24);
+    expect(gaps.examplesToNotice).toBeGreaterThanOrEqual(24);
+    expect(gaps.noticeToFlow).toBeGreaterThanOrEqual(24);
+  });
+
+
   for (const lang of ["zh-cn", "en"] as const) {
     test(`${lang} explains versions, usage, examples, and review limits`, async ({
       page,
