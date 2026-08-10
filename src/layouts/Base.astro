@@ -9,12 +9,15 @@ import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, X_ACCOUNT } from "@/consts";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations, LOCALES, getLocalePaths, DEFAULT_LOCALE, type Lang } from "@/i18n";
+import { buildPageTitle, type PageTitleMode } from "@/utils/pageTitle";
 import "@/styles/global.css";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 
 interface Props {
   title?: string;
+  /** 页面标题模式：首页可使用 absolute 避免重复拼接站点名 */
+  titleMode?: PageTitleMode;
   description?: string;
   /** 页面级关键词，覆盖全局 SITE_KEYWORDS */
   keywords?: string;
@@ -46,6 +49,7 @@ interface Props {
 
 const {
   title,
+  titleMode = "append-site",
   description,
   keywords,
   type: ogType = "website",
@@ -63,7 +67,7 @@ const {
 } = Astro.props.frontmatter || Astro.props;
 
 const locale = Astro.currentLocale as Lang;
-const localeTitle = title ? `${title} | ${t(SITE_TITLE)}` : t(SITE_TITLE);
+const localeTitle = buildPageTitle(title, t(SITE_TITLE), titleMode);
 const rawDescription = description || t(SITE_DESCRIPTION);
 /** 控制在 155 字内，避免搜索结果中被截断 */
 const localeDescription =

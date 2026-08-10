@@ -4,6 +4,7 @@ import GoogleAd from "@/components/GoogleAd.astro";
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
+import { QA_SKILL_TOOLS } from "@/data/qaSkillLibrary";
 
 export function getStaticPaths() {
   return [
@@ -22,7 +23,7 @@ const lifecycleStages = resolveLifecyclePath(
 const totalCount = allSkills.length;
 const evalsCount = allSkills.filter((s) => s.hasEvals).length;
 const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
-const toolCount = 6;
+const toolCount = QA_SKILL_TOOLS.length;
 
 const text = lang === "zh-cn" ? {
   title: "软件测试技能库",

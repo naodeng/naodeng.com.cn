@@ -60,6 +60,9 @@ const allWorkflows = await getCollection("workflows");
 const localeWorkflows = allWorkflows
   .filter((w) => w.data.lang === lang)
   .sort((a, b) => a.data.order - b.data.order);
+const promptCount = localePrompts.length;
+const testingTypeCount = typeCards.length;
+const workflowCount = localeWorkflows.length;
 
 const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
@@ -106,8 +109,8 @@ const itemListSchema = {
           </p>
           <p class="prompts-intro">
             {lang === "zh-cn"
-              ? "覆盖 15 个测试类型、3 个工作流程与 60+ 专业提示词的 AI 测试资源库"
-              : "An AI testing resource library covering 15 testing types, 3 workflows, and 60+ professional prompts"
+              ? `覆盖 ${testingTypeCount} 个测试类型、${workflowCount} 个工作流程与 ${promptCount} 个专业提示词的 AI 测试资源库`
+              : `An AI testing resource library covering ${testingTypeCount} testing types, ${workflowCount} workflows, and ${promptCount} professional prompts`
             }
           </p>
           <div class="prompts-hero-actions">
@@ -156,15 +159,15 @@ const itemListSchema = {
           <ul class="qs-list">
             {lang === "zh-cn" ? (
               <>
-                <li>中文项目使用中文提示词</li>
-                <li>英文项目使用英文提示词（_EN.md 结尾）</li>
-                <li>快速上手使用精简版（_Lite.md）</li>
+                <li>根据当前测试任务选择对应类型</li>
+                <li>默认使用 Standard 版本</li>
+                <li>需要特定结构时再选择其他版本</li>
               </>
             ) : (
               <>
-                <li>Chinese projects → Chinese prompts</li>
-                <li>English projects → English prompts (_EN.md)</li>
-                <li>Quick start → use Lite version (_Lite.md)</li>
+                <li>Choose the type that matches the testing task</li>
+                <li>Use the Standard version by default</li>
+                <li>Choose another version only for a specific structure</li>
               </>
             )}
           </ul>
