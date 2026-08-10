@@ -25,6 +25,7 @@
 
 - 首页 `<title>` 不再重复站点名称。
 - 首页首屏包含 Skills 与 Prompts 两个明确的任务型入口。
+- 保留 main 已有的 Blog、Wiki、QA 工具三张主入口及 `home_entry_click` 埋点契约，并扩展对 Prompts 与 QA Skills 的识别。
 - 首页主要内容收敛为五个一级区块，不再为每个频道保留一个大面积独立区块。
 - QA Skills 的新手入口、搜索与快速开始出现在生命周期完整列表之前。
 - QA Skills 页面不再使用不自然的“38 含 Evals”表达。
@@ -79,6 +80,8 @@ QA Skills 和 Prompts 都先提供默认路径：
 
 首页从当前多个频道依次展开的长页面，重组为五个一级区块。
 
+main 已经新增 Blog、Wiki、QA 工具三张 `.home-primary-entry` 主入口卡、`home_entry_click` 事件以及对应 E2E。本方案保留这些能力，不将它们作为旧内容删除。三张主入口和六个 QA 任务入口共同组成第一个“开始使用”一级区块：前者帮助用户选择阅读、查询或执行模式，后者帮助已经选择执行模式的用户直达具体测试任务。
+
 ### 5.1 Hero：专业定位与主入口
 
 中文建议：
@@ -101,9 +104,17 @@ QA Skills 和 Prompts 都先提供默认路径：
 - 中文：`软件测试同学 X naodeng｜AI 测试知识、Skills 与 Prompts`
 - 英文：`Nao Deng | QA Skills, Prompts and AI Testing Knowledge`
 
-### 5.2 按任务开始
+### 5.2 内容模式与按任务开始
 
-使用六张任务卡替代当前泛化的“探索内容”卡片：
+保留 main 已有三张主入口，但将内容和目标调整为：
+
+| 模式 | 内容 | 链接与行为 |
+| --- | --- | --- |
+| 阅读实践 | Blog | 链接当前语言 Blog，继续触发 `home_entry_click: blog`。 |
+| 查询知识 | Wiki / AI Wiki | 中文链接 Wiki，英文链接 AI Wiki，继续触发现有 wiki / aiwiki 事件。 |
+| 完成测试任务 | Skills 与 Prompts | 卡片内部提供 Skills、Prompts 两个明确入口，不再只链接 Prompts。 |
+
+在同一个“开始使用”一级区块内，使用六张任务卡替代当前泛化的“探索内容”卡片：
 
 | 任务 | 首选链接 |
 | --- | --- |
@@ -115,6 +126,8 @@ QA Skills 和 Prompts 都先提供默认路径：
 | 输出测试报告 | `/qaskills/test-reporting/` |
 
 每张卡说明预期产出，而不是只描述频道名称。英文使用相同 slug 和对应文案。
+
+`TrackingEvents.astro` 的首页入口识别范围扩展为 Blog、Wiki、AI Wiki、Guild、Prompts 和 QA Skills。Prompts 使用 `entry_name: prompts`，QA Skills 使用 `entry_name: qaskills`；保留 10 秒去重、语言、session ID、位置和路径字段。埋点绑定继续基于站内链接目标，不将 CSS 类名作为唯一业务接口。
 
 ### 5.3 Skills 与 Prompts 核心能力区
 
@@ -143,6 +156,7 @@ QA Skills 和 Prompts 都先提供默认路径：
 - Wiki、AI Wiki、Guild 和 Projects 合并为四个紧凑入口。
 - Tags 不再使用独立一级区块，可作为“浏览全部主题”入口或移至博客相关区域。
 - 中文 Wiki 仍指向站内 Wiki；英文保持现有外部 QA Wiki 策略。
+- 保留 main 新增的移动端 Header 快捷入口，不在首页重构中修改其 Blog、Wiki、Prompts 三项结构。
 
 ## 6. QA Skills 页面设计
 
@@ -328,7 +342,9 @@ QA Skills 和 Prompts 都先提供默认路径：
 中文和英文分别验证：
 
 - 首页两个主 CTA 指向当前语言的 Skills 和 Prompts。
+- 首页保留 Blog、Wiki、QA 工具三种内容模式，QA 工具卡能分别到达 Skills 与 Prompts。
 - 首页六个任务入口可访问。
+- `home_entry_click` 对 Blog、Wiki / AI Wiki、Prompts、QA Skills 生成正确的 `entry_name`，并包含 `lang` 与 `session_id`。
 - Skills 三个新手入口可以到达搜索、`discover-testing` 和生命周期。
 - 搜索、分类、Evals 筛选、清空筛选继续工作。
 - Prompts 版本指南包含六种版本，Standard 被标记为默认。
@@ -343,7 +359,7 @@ QA Skills 和 Prompts 都先提供默认路径：
 npm test
 npm run build
 cd tests && npm run test:unit
-cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/specs/content-entry-pages.spec.ts e2e/specs/qaskills.spec.ts e2e/specs/responsive.spec.ts e2e/specs/seo.spec.ts
+cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/specs/apple-home.spec.ts e2e/specs/tracking-contract.spec.ts e2e/specs/header.spec.ts e2e/specs/qaskills.spec.ts e2e/specs/responsive.spec.ts e2e/specs/seo.spec.ts
 ```
 
 E2E 必须使用当前工作区构建和独立预览端口，不能依赖可能过期的默认 localhost 服务。
@@ -354,14 +370,16 @@ E2E 必须使用当前工作区构建和独立预览端口，不能依赖可能�
 2. 修复 title、过期文案和硬编码统计等正确性问题。
 3. 重构 Prompts 页面，优先解决使用说明和版本选择。
 4. 重构 QA Skills 页面，优先建立新手路径和推荐区。
-5. 重构首页，将内容收敛为五个一级区块。
-6. 补充双语 E2E、移动端验证和 SEO 检查。
+5. 重构首页，将内容收敛为五个一级区块，同时保留并调整 main 的三张主入口卡。
+6. 扩展首页埋点并更新现有 `apple-home.spec.ts`、`tracking-contract.spec.ts` 和相关双语 E2E。
+7. 完成移动端验证和 SEO 检查，确认 Header 快捷入口、搜索和 Footer 未被首页改动影响。
 
 每一步必须独立可构建、可测试，并避免同时修改无关页面。
 
 ## 12. 风险与控制
 
 - **首页收敛导致旧入口曝光下降：** 所有频道仍保留在“继续探索”、主导航或 Footer，不删除路由。
+- **覆盖 main 新增交互：** 三张主入口、首页埋点和移动端 Header 快捷入口均作为现有行为契约保留，修改对应结构时必须同步更新现有测试，而不是删除断言。
 - **静态映射与内容源再次漂移：** slug 存在性和统计一致性由单元测试约束。
 - **中英文文案不同步：** 数据配置必须使用显式 `en` / `zh-cn` 对象，测试验证两个键均存在。
 - **页面组件拆分过度：** 只拆独立、可命名、可测试的区块，不建立通用万能卡片系统。
