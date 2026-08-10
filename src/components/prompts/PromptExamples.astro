@@ -1,0 +1,30 @@
+---
+import type { Lang } from "@/i18n";
+import type { PromptExample } from "@/data/promptLibrary";
+
+interface Props { lang: Lang; examples: PromptExample[]; }
+const { lang, examples } = Astro.props;
+---
+
+<section class="prompts-section examples" aria-labelledby="prompt-examples-heading">
+  <h2 id="prompt-examples-heading">{lang === "zh-cn" ? "从输入到测试产物" : "From input to testing artifact"}</h2>
+  <p>{lang === "zh-cn" ? "以下为结构示例，实际结果需要结合项目上下文复核。" : "These are structural examples; review real results against project context."}</p>
+  <ul role="list">
+    {examples.map((example) => (
+      <li data-prompt-example>
+        <span>{lang === "zh-cn" ? "输入" : "Input"}</span><strong>{example.input}</strong>
+        <span>{lang === "zh-cn" ? "使用" : "Use"}</span><strong>{example.capability}</strong>
+        <span>{lang === "zh-cn" ? "产出" : "Output"}</span><strong>{example.output}</strong>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .examples > p { color: var(--color-text-secondary); line-height: 1.7; }
+  ul { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  li { display: grid; grid-template-columns: auto 1fr; gap: .5rem .8rem; padding: 1.2rem; border: 1px solid rgba(148,163,184,.24); border-radius: 18px; background: rgba(255,255,255,.78); }
+  span { color: var(--color-theme); font-size: .8rem; font-weight: 800; }
+  strong { font-size: .92rem; }
+  @media (max-width: 800px) { ul { grid-template-columns: 1fr; } }
+</style>

@@ -11,6 +11,16 @@ import {
   PROMPTS_FLOW_TITLE,
 } from "@/consts";
 import GoogleAd from "@/components/GoogleAd.astro";
+import PromptVersionGuide from "@/components/prompts/PromptVersionGuide.astro";
+import PromptExamples from "@/components/prompts/PromptExamples.astro";
+import AIOutputNotice from "@/components/prompts/AIOutputNotice.astro";
+import {
+  PROMPT_EXAMPLES,
+  PROMPT_QUICK_STEPS,
+  PROMPT_TYPE_COPY,
+  PROMPT_VERSION_GUIDE,
+  type PromptTestingType,
+} from "@/data/promptLibrary";
 
 export function getStaticPaths() {
   return [
@@ -60,6 +70,9 @@ const allWorkflows = await getCollection("workflows");
 const localeWorkflows = allWorkflows
   .filter((w) => w.data.lang === lang)
   .sort((a, b) => a.data.order - b.data.order);
+const promptCount = localePrompts.length;
+const testingTypeCount = typeCards.length;
+const workflowCount = localeWorkflows.length;
 
 const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
@@ -100,14 +113,14 @@ const itemListSchema = {
     <header class="prompts-header">
       <div class="prompts-hero">
         <div class="prompts-hero-text">
-          <h1>{t(PROMPTS_PAGE_TITLE)}</h1>
+          <h1>{lang === "zh-cn" ? "软件测试提示词库" : "QA Prompt Library"}</h1>
           <p class="prompts-hero-sub">
             {lang === "zh-cn" ? "专业的质量保证 AI 提示词库" : "Professional QA AI Prompt Library"}
           </p>
           <p class="prompts-intro">
             {lang === "zh-cn"
-              ? "覆盖 15 个测试类型、3 个工作流程与 60+ 专业提示词的 AI 测试资源库"
-              : "An AI testing resource library covering 15 testing types, 3 workflows, and 60+ professional prompts"
+              ? `覆盖 ${testingTypeCount} 个测试类型、${workflowCount} 个工作流程与 ${promptCount} 个专业提示词的 AI 测试资源库`
+              : `An AI testing resource library covering ${testingTypeCount} testing types, ${workflowCount} workflows, and ${promptCount} professional prompts`
             }
           </p>
           <div class="prompts-hero-actions">
@@ -145,73 +158,6 @@ const itemListSchema = {
       </div>
     </header>
 
-    <!-- Quick Start -->
-    <section class="prompts-section" aria-labelledby="quickstart-heading">
-      <h2 id="quickstart-heading">{t(PROMPTS_QUICKSTART_TITLE)}</h2>
-      <ol class="qs-grid">
-        <li class="qs-card">
-          <span class="qs-num">1</span>
-          <h3 class="qs-title">{lang === "zh-cn" ? "选择提示词" : "Pick a prompt"}</h3>
-          <p class="qs-desc">{lang === "zh-cn" ? "根据你的测试任务，选择对应的提示词文件" : "Choose the prompt file that matches your testing task"}</p>
-          <ul class="qs-list">
-            {lang === "zh-cn" ? (
-              <>
-                <li>中文项目使用中文提示词</li>
-                <li>英文项目使用英文提示词（_EN.md 结尾）</li>
-                <li>快速上手使用精简版（_Lite.md）</li>
-              </>
-            ) : (
-              <>
-                <li>Chinese projects → Chinese prompts</li>
-                <li>English projects → English prompts (_EN.md)</li>
-                <li>Quick start → use Lite version (_Lite.md)</li>
-              </>
-            )}
-          </ul>
-        </li>
-        <li class="qs-card">
-          <span class="qs-num">2</span>
-          <h3 class="qs-title">{lang === "zh-cn" ? "准备输入材料" : "Prepare your input"}</h3>
-          <p class="qs-desc">{lang === "zh-cn" ? "根据提示词要求，准备相应的输入文档" : "Prepare the relevant documents as required by the prompt"}</p>
-          <ul class="qs-list">
-            {lang === "zh-cn" ? (
-              <>
-                <li>需求分析需要提供需求文档或 User Story</li>
-                <li>测试用例编写需要提供测试场景</li>
-                <li>其他测试类型按需准备对应材料</li>
-              </>
-            ) : (
-              <>
-                <li>Requirements analysis → requirements doc or User Story</li>
-                <li>Test case writing → test scenarios</li>
-                <li>Other types → prepare relevant materials</li>
-              </>
-            )}
-          </ul>
-        </li>
-        <li class="qs-card">
-          <span class="qs-num">3</span>
-          <h3 class="qs-title">{lang === "zh-cn" ? "使用 AI 助手" : "Use your AI assistant"}</h3>
-          <p class="qs-desc">{lang === "zh-cn" ? "将提示词内容复制到 AI 助手中" : "Paste the prompt content into your AI assistant"}</p>
-          <ul class="qs-list">
-            {lang === "zh-cn" ? (
-              <>
-                <li>支持 ChatGPT、Claude、Cursor AI 等</li>
-                <li>附加你的输入材料</li>
-                <li>AI 将生成结构化的测试文档</li>
-              </>
-            ) : (
-              <>
-                <li>Works with ChatGPT, Claude, Cursor AI, etc.</li>
-                <li>Attach your input materials</li>
-                <li>AI generates structured test documents</li>
-              </>
-            )}
-          </ul>
-        </li>
-      </ol>
-    </section>
-
     <!-- Testing Type Cards -->
     <section class="prompts-section" aria-labelledby="testing-types-heading">
       <h2 id="testing-types-heading">
@@ -223,9 +169,10 @@ const itemListSchema = {
             <a
               href={getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}
               class="prompt-card"
+              data-prompt-type={entry.data.testingType}
             >
               <h3 class="prompt-card-title">{entry.data.title.replace(/^[^-]+ - /, "")}</h3>
-              <p class="prompt-card-desc">{entry.data.description}</p>
+              <p class="prompt-card-desc">{PROMPT_TYPE_COPY[lang][entry.data.testingType as PromptTestingType].description}</p>
               <span class="prompt-card-cta" aria-hidden="true">
                 {lang === "zh-cn" ? "查看提示词 →" : "View prompts →"}
               </span>
@@ -234,6 +181,24 @@ const itemListSchema = {
         ))}
       </ul>
     </section>
+
+    <PromptVersionGuide lang={lang} items={PROMPT_VERSION_GUIDE[lang]} />
+
+    <section class="prompts-section" aria-labelledby="quickstart-heading">
+      <h2 id="quickstart-heading">{t(PROMPTS_QUICKSTART_TITLE)}</h2>
+      <ol class="qs-grid">
+        {PROMPT_QUICK_STEPS[lang].map((step, index) => (
+          <li class="qs-card" data-prompt-quick-step>
+            <span class="qs-num">{index + 1}</span>
+            <h3 class="qs-title">{step.title}</h3>
+            <p class="qs-desc">{step.description}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <PromptExamples lang={lang} examples={PROMPT_EXAMPLES[lang]} />
+    <AIOutputNotice lang={lang} />
 
     <GoogleAd />
 
@@ -539,11 +504,11 @@ const itemListSchema = {
   }
 
   /* ── Sections ── */
-  .prompts-section {
+  :global(.prompts-section) {
     margin-block-end: 2.5rem;
   }
 
-  .prompts-section h2 {
+  :global(.prompts-section h2) {
     font-size: 1.35rem;
     font-weight: 800;
     margin-block-end: 1rem;
@@ -638,11 +603,12 @@ const itemListSchema = {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--sp-m);
   }
 
   .qs-card {
+    grid-column: span 2;
     padding: var(--sp-m);
     border-radius: 18px;
     border: 1px solid rgba(148, 163, 184, 0.2);
@@ -651,6 +617,10 @@ const itemListSchema = {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .qs-card:nth-last-child(-n + 2) {
+    grid-column: span 3;
   }
 
   .qs-num {
@@ -765,6 +735,10 @@ const itemListSchema = {
   @media (width < 900px) {
     .qs-grid {
       grid-template-columns: 1fr;
+    }
+    .qs-card,
+    .qs-card:nth-last-child(-n + 2) {
+      grid-column: auto;
     }
     .flow-node {
       width: min(100%, 220px);

@@ -13,6 +13,21 @@ test.describe("响应式布局", () => {
     { name: "Desktop", ...DESKTOP_VIEWPORT },
   ];
 
+  for (const locale of ["zh-cn", "en"] as const) {
+    for (const route of ["", "qaskills/", "prompts/"] as const) {
+      test(`${locale}/${route || "home"} 在 390px 下无横向溢出`, async ({ page, baseURL }) => {
+        await page.setViewportSize(MOBILE_VIEWPORT);
+        await page.goto(`${baseURL || ""}/${locale}/${route}`, { waitUntil: "domcontentloaded" });
+        const width = await page.evaluate(() => ({
+          scroll: document.documentElement.scrollWidth,
+          client: document.documentElement.clientWidth,
+        }));
+        expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+        await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
+      });
+    }
+  }
+
   for (const viewport of viewports) {
     test(`en 首页在 ${viewport.name} 视口下正常显示`, async ({ page, baseURL }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });

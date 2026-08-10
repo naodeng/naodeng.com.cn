@@ -1,0 +1,39 @@
+---
+import type { Lang } from "@/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const paths = lang === "zh-cn" ? [
+  { key: "search", title: "我知道要做什么", desc: "直接搜索任务或场景，快速缩小候选范围。", href: "#qaskills-search" },
+  { key: "discover", title: "我不确定选哪个", desc: "从 discover-testing 开始，让 Skill 帮你判断下一步。", href: "#recommended-skills" },
+  { key: "lifecycle", title: "按测试阶段查找", desc: "沿需求、设计、执行到发布的生命周期选择。", href: "#lifecycle-path" },
+] : [
+  { key: "search", title: "I know the task", desc: "Search by task or scenario to narrow the catalog quickly.", href: "#qaskills-search" },
+  { key: "discover", title: "I need guidance", desc: "Start with discover-testing and let the Skill choose the next step.", href: "#recommended-skills" },
+  { key: "lifecycle", title: "Browse by lifecycle", desc: "Choose along requirements, design, execution, and release.", href: "#lifecycle-path" },
+];
+---
+
+<section class="starter-paths" aria-labelledby="starter-paths-title">
+  <h2 id="starter-paths-title">{lang === "zh-cn" ? "从你的当前任务开始" : "Start from your current task"}</h2>
+  <div class="starter-grid">
+    {paths.map((path, index) => (
+      <a class="starter-card" href={path.href} data-starter-path={path.key}>
+        <span aria-hidden="true">0{index + 1}</span>
+        <h3>{path.title}</h3>
+        <p>{path.desc}</p>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .starter-paths h2 { margin: 0 0 .75rem; font-size: 1.55rem; }
+  .starter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
+  .starter-card { padding: 1rem; border: 1px solid rgba(148,163,184,.2); border-radius: 18px; background: rgba(255,255,255,.76); color: inherit; text-decoration: none; box-shadow: var(--shadow-sm); }
+  .starter-card > span { color: var(--color-theme); font-weight: 900; }
+  .starter-card h3 { margin: .4rem 0; font-size: 1.08rem; }
+  .starter-card p { margin: 0; color: var(--color-text-secondary); line-height: 1.6; }
+  .starter-card:hover { transform: translateY(-2px); border-color: rgba(79,70,229,.35); }
+  @media (max-width: 720px) { .starter-grid { grid-template-columns: 1fr; } }
+</style>

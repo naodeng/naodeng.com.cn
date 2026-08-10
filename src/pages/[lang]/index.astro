@@ -30,6 +30,9 @@ import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
+import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
+import CoreCapabilities from "@/components/home/CoreCapabilities.astro";
+import HomeProofAndCases from "@/components/home/HomeProofAndCases.astro";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 
 const locale = Astro.currentLocale as Lang;
@@ -200,6 +203,9 @@ export const getStaticPaths = () =>
 
 const siteOrigin = "https://inaodeng.com";
 const homeUrl = `${siteOrigin}/${locale}/`;
+const homeSeoTitle = locale === "zh-cn"
+  ? "软件测试同学 X naodeng｜AI 测试知识、Skills 与 Prompts"
+  : "Nao Deng | QA Skills, Prompts and AI Testing Knowledge";
 
 const homePageSchema = {
   "@context": "https://schema.org",
@@ -228,7 +234,8 @@ const homePageSchema = {
 ---
 
 <Layout
-  title={t(SITE_TITLE)}
+  title={homeSeoTitle}
+  titleMode="absolute"
   description={t(HOME_PAGE_DESCRIPTION)}
   keywords={t(HOME_PAGE_KEYWORDS)}
   extraStructuredData={[homePageSchema]}
@@ -261,40 +268,53 @@ const homePageSchema = {
         >
           {primaryEntries.map((entry) => (
             <li>
-              <a
-                class={`home-primary-entry home-primary-entry--${entry.key}`}
-                href={entry.href}
-              >
-                <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
-                <span class="home-primary-entry__title">{entry.title}</span>
-                <span class="home-primary-entry__desc">{entry.desc}</span>
-              </a>
+              {entry.key === "qa-tools" ? (
+                <div class="home-primary-entry home-primary-entry--act">
+                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
+                  <span class="home-primary-entry__title">{entry.title}</span>
+                  <span class="home-primary-entry__desc">{entry.desc}</span>
+                  <span class="home-primary-entry__actions">
+                    <a href={getRelativeLocaleUrl(locale, "/qaskills/")}>Skills →</a>
+                    <a href={getRelativeLocaleUrl(locale, "/prompts/")}>Prompts →</a>
+                  </span>
+                </div>
+              ) : (
+                <a class={`home-primary-entry home-primary-entry--${entry.key}`} href={entry.href}>
+                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
+                  <span class="home-primary-entry__title">{entry.title}</span>
+                  <span class="home-primary-entry__desc">{entry.desc}</span>
+                </a>
+              )}
             </li>
           ))}
         </ul>
-        <div class="home-hero-console" aria-hidden="true">
+        <div class="home-hero-console" aria-label={locale === "zh-cn" ? "推荐资源入口" : "Featured resource entries"}>
           <div class="console-topbar">
             <span></span>
             <span></span>
             <span></span>
           </div>
           <div class="console-grid">
-            <div class="console-card console-card--primary">
+            <a class="console-card console-card--primary" href={locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki/") : getRelativeLocaleUrl(locale, "/AIWiki/")}>
               <span>{locale === "zh-cn" ? "知识库" : "Knowledge"}</span>
               <strong>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</strong>
-            </div>
-            <div class="console-card">
+            </a>
+            <a class="console-card" href={getRelativeLocaleUrl(locale, "/qaskills/")}>
               <span>{locale === "zh-cn" ? "自动化" : "Automation"}</span>
               <strong>{locale === "zh-cn" ? "技能路径" : "Skill Paths"}</strong>
-            </div>
-            <div class="console-card">
+            </a>
+            <a class="console-card" href={getRelativeLocaleUrl(locale, "/prompts/")}>
               <span>{locale === "zh-cn" ? "AI 测试" : "AI Testing"}</span>
               <strong>{locale === "zh-cn" ? "提示词库" : "Prompt Library"}</strong>
-            </div>
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+    <HomeTaskNavigator locale={locale} />
+    <CoreCapabilities locale={locale} />
+    <HomeProofAndCases locale={locale} />
 
     <section class="home-band home-band--parchment" aria-labelledby="home-explore-title">
       <div class="home-inner">
@@ -626,20 +646,20 @@ const homePageSchema = {
     background: #f5f5f7;
   }
 
-  .home-band {
+  :global(.home-band) {
     width: 100%;
     padding-block: 72px;
   }
 
-  .home-band--white {
+  :global(.home-band--white) {
     background: #ffffff;
   }
 
-  .home-band--parchment {
+  :global(.home-band--parchment) {
     background: #f5f5f7;
   }
 
-  .home-inner {
+  :global(.home-inner) {
     width: min(980px, calc(100% - 48px));
     margin-inline: auto;
     text-align: center;
@@ -717,7 +737,20 @@ const homePageSchema = {
     color: #6e6e73;
   }
 
-  .home-band__title {
+  .home-primary-entry__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-self: end;
+  }
+
+  .home-primary-entry__actions a {
+    color: var(--color-theme);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  :global(.home-band__title) {
     margin: 0;
     font-size: 28px;
     font-weight: 600;
@@ -726,7 +759,7 @@ const homePageSchema = {
     color: #1d1d1f;
   }
 
-  .home-band__subtitle {
+  :global(.home-band__subtitle) {
     margin: 10px auto 0;
     max-width: 36em;
     font-size: 17px;
@@ -734,7 +767,7 @@ const homePageSchema = {
     color: #6e6e73;
   }
 
-  .home-band__subtitle--spaced {
+  :global(.home-band__subtitle--spaced) {
     margin-top: 40px;
   }
 
@@ -881,11 +914,11 @@ const homePageSchema = {
   }
 
   @media (width < 900px) {
-    .home-band {
+    :global(.home-band) {
       padding-block: 48px;
     }
 
-    .home-inner {
+    :global(.home-inner) {
       width: min(980px, calc(100% - 32px));
     }
 
@@ -905,18 +938,18 @@ const homePageSchema = {
     background-size: 42px 42px, 42px 42px, auto;
   }
 
-  .home-band {
+  :global(.home-band) {
     position: relative;
     padding-block: 88px;
     overflow: hidden;
   }
 
-  .home-band--white,
-  .home-band--parchment {
+  :global(.home-band--white),
+  :global(.home-band--parchment) {
     background: transparent;
   }
 
-  .home-band:nth-of-type(even)::before {
+  :global(.home-band:nth-of-type(even))::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -925,7 +958,7 @@ const homePageSchema = {
     pointer-events: none;
   }
 
-  .home-inner {
+  :global(.home-inner) {
     position: relative;
     z-index: 1;
     width: min(1120px, calc(100% - 48px));
@@ -1044,11 +1077,22 @@ const homePageSchema = {
   }
 
   .console-card {
+    display: block;
     min-height: 120px;
     padding: 18px;
     border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+    color: inherit;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .console-card:hover,
+  .console-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-theme) 42%, transparent);
+    box-shadow: var(--shadow-md);
   }
 
   .console-card span {
@@ -1079,7 +1123,7 @@ const homePageSchema = {
     color: white;
   }
 
-  .home-band__title {
+  :global(.home-band__title) {
     font-family: var(--font-heading);
     font-size: 34px;
     font-weight: 800;
@@ -1087,7 +1131,7 @@ const homePageSchema = {
     color: var(--color-main);
   }
 
-  .home-band__subtitle {
+  :global(.home-band__subtitle) {
     color: var(--color-text-secondary);
   }
 
@@ -1173,7 +1217,7 @@ const homePageSchema = {
       font-size: 17px;
     }
 
-    .home-inner {
+    :global(.home-inner) {
       width: min(980px, calc(100% - 32px));
     }
 
@@ -1189,7 +1233,7 @@ const homePageSchema = {
       margin-bottom: 12px;
     }
 
-    .home-band__title {
+    :global(.home-band__title) {
       font-size: 28px;
     }
   }

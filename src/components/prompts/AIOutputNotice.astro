@@ -1,0 +1,19 @@
+---
+import type { Lang } from "@/i18n";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const items = lang === "zh-cn"
+  ? ["AI 输出不是最终测试结论。", "缺失信息和假设必须显式标注。", "不得编造接口、环境、数据、覆盖率、SLA 或合规结论。", "安全、生产发布和合规判断必须由人员复核。"]
+  : ["AI output is not a final testing conclusion.", "Missing information and assumptions must be explicit.", "Do not invent APIs, environments, data, coverage, SLAs, or compliance conclusions.", "People must review security, production-release, and compliance decisions."];
+---
+
+<aside id="ai-output-notice" class="ai-notice" aria-labelledby="ai-output-notice-title">
+  <h2 id="ai-output-notice-title">{lang === "zh-cn" ? "使用 AI 输出前请复核" : "Review before using AI output"}</h2>
+  <ul>{items.map((item) => <li>{item}</li>)}</ul>
+</aside>
+
+<style>
+  .ai-notice { margin-block-end: 2.5rem; padding: 1.35rem 1.5rem; border: 1px solid color-mix(in srgb, var(--color-theme) 28%, transparent); border-radius: 20px; background: color-mix(in srgb, var(--color-theme) 5%, white); }
+  h2 { margin: 0; font-size: 1.3rem; }
+  ul { margin: .8rem 0 0; padding-left: 1.25rem; color: var(--color-text-secondary); line-height: 1.7; }
+</style>
