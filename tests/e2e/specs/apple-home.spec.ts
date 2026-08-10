@@ -24,6 +24,26 @@ test.describe("apple homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
+  test("new homepage sections keep the shared centered content layout", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+
+    const layout = await page.locator(".home-task-navigator .home-inner").evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      const title = element.querySelector(".home-band__title");
+      return {
+        width: Math.round(rect.width),
+        left: Math.round(rect.left),
+        right: Math.round(window.innerWidth - rect.right),
+        titleSize: title ? getComputedStyle(title).fontSize : "",
+      };
+    });
+
+    expect(layout.width).toBeLessThanOrEqual(1120);
+    expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
+    expect(layout.titleSize).toBe("34px");
+  });
+
   test("zh-cn home exposes three primary entry cards", async ({ page, baseURL }) => {
     await page.goto(`${baseURL || ""}/zh-cn/`, { waitUntil: "networkidle" });
     const primaryEntries = page.locator(".home-primary-entry");
