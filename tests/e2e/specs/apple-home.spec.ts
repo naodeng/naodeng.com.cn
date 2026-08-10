@@ -33,6 +33,25 @@ test.describe("home information architecture", () => {
     await expect(links.nth(2)).toHaveAttribute("href", "/zh-cn/prompts/");
   });
 
+  test("proof section keeps readable spacing between title and introduction", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const spacing = await page.locator("[data-home-example]").first().evaluate((example) => {
+      const section = example.closest("section");
+      const title = section?.querySelector(".home-band__title")?.getBoundingClientRect();
+      const intro = section?.querySelector(".home-band__subtitle")?.getBoundingClientRect();
+      return title && intro
+        ? {
+            gap: Math.round(intro.top - title.bottom),
+            centerOffset: Math.round(Math.abs((intro.left + intro.right) / 2 - window.innerWidth / 2)),
+          }
+        : { gap: 0, centerOffset: 999 };
+    });
+    expect(spacing.gap).toBeGreaterThanOrEqual(18);
+    expect(spacing.centerOffset).toBeLessThanOrEqual(2);
+  });
+
+
   test("new homepage sections keep the shared centered content layout", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL || ""}/zh-cn/`);
