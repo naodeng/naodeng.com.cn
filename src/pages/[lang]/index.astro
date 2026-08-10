@@ -288,25 +288,25 @@ const homePageSchema = {
             </li>
           ))}
         </ul>
-        <div class="home-hero-console" aria-hidden="true">
+        <div class="home-hero-console" aria-label={locale === "zh-cn" ? "推荐资源入口" : "Featured resource entries"}>
           <div class="console-topbar">
             <span></span>
             <span></span>
             <span></span>
           </div>
           <div class="console-grid">
-            <div class="console-card console-card--primary">
+            <a class="console-card console-card--primary" href={locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki/") : getRelativeLocaleUrl(locale, "/AIWiki/")}>
               <span>{locale === "zh-cn" ? "知识库" : "Knowledge"}</span>
               <strong>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</strong>
-            </div>
-            <div class="console-card">
+            </a>
+            <a class="console-card" href={getRelativeLocaleUrl(locale, "/qaskills/")}>
               <span>{locale === "zh-cn" ? "自动化" : "Automation"}</span>
               <strong>{locale === "zh-cn" ? "技能路径" : "Skill Paths"}</strong>
-            </div>
-            <div class="console-card">
+            </a>
+            <a class="console-card" href={getRelativeLocaleUrl(locale, "/prompts/")}>
               <span>{locale === "zh-cn" ? "AI 测试" : "AI Testing"}</span>
               <strong>{locale === "zh-cn" ? "提示词库" : "Prompt Library"}</strong>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -1077,11 +1077,22 @@ const homePageSchema = {
   }
 
   .console-card {
+    display: block;
     min-height: 120px;
     padding: 18px;
     border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+    color: inherit;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .console-card:hover,
+  .console-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-theme) 42%, transparent);
+    box-shadow: var(--shadow-md);
   }
 
   .console-card span {

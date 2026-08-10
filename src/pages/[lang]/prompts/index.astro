@@ -603,11 +603,12 @@ const itemListSchema = {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--sp-m);
   }
 
   .qs-card {
+    grid-column: span 2;
     padding: var(--sp-m);
     border-radius: 18px;
     border: 1px solid rgba(148, 163, 184, 0.2);
@@ -616,6 +617,10 @@ const itemListSchema = {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .qs-card:nth-last-child(-n + 2) {
+    grid-column: span 3;
   }
 
   .qs-num {
@@ -730,6 +735,10 @@ const itemListSchema = {
   @media (width < 900px) {
     .qs-grid {
       grid-template-columns: 1fr;
+    }
+    .qs-card,
+    .qs-card:nth-last-child(-n + 2) {
+      grid-column: auto;
     }
     .flow-node {
       width: min(100%, 220px);

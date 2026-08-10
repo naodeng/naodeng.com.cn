@@ -24,6 +24,15 @@ test.describe("apple homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
+  test("hero console cards link to wiki, skills, and prompts", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const links = page.locator(".home-hero-console .console-card");
+    await expect(links).toHaveCount(3);
+    await expect(links.nth(0)).toHaveAttribute("href", "/zh-cn/wiki/");
+    await expect(links.nth(1)).toHaveAttribute("href", "/zh-cn/qaskills/");
+    await expect(links.nth(2)).toHaveAttribute("href", "/zh-cn/prompts/");
+  });
+
   test("new homepage sections keep the shared centered content layout", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL || ""}/zh-cn/`);
