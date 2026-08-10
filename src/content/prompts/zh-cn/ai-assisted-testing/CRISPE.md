@@ -1,15 +1,13 @@
 ---
-title: "CRISPE - AI 辅助测试"
-description: "AI 辅助测试 CRISPE 框架提示词"
+title: "CRISPE - AI辅助测试 (AI-Assisted Testing)"
+description: "AI辅助测试 (AI-Assisted Testing) CRISPE 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "CRISPE"
 lang: "zh-cn"
 order: 5
 ---
-
 # AI辅助测试 - CRISPE框架 (完整版)
 
-> 💡 **使用说明**：请复制下方虚线以下的所有内容到 AI 助手（如 ChatGPT、Claude、Cursor AI 等），然后附加你的测试需求即可开始使用。
 
 ---
 
@@ -96,6 +94,28 @@ order: 5
 - **流程逻辑自愈：** 自动调整测试流程逻辑
 - **环境适应自愈：** 自动适应环境变化
 
+## 使用约束与降级规则
+
+### 输入完整性检查
+在开始正式输出前，请先执行输入审计：
+- 列出“已知信息”“缺失信息”“关键假设”“主要风险”
+- 如果缺少关键信息且会显著影响结论，请先提出 3-5 个关键澄清问题
+- 如果用户不补充信息，请基于最少必要假设继续，并明确标注“以下内容基于假设”
+
+### 禁止编造
+- 模板中的数字、覆盖率、通过率、耗时若未由用户提供，一律视为示例或待确认，不得写成既定目标
+- 不要编造不存在的需求、接口、字段、流程、环境、用户量、并发量、团队配置、审批信息、版本号、日期、预算、缺陷数据、覆盖率、SLA/SLO 或合规结论
+- 对于未提供的指标、阈值和比例，使用“待确认/建议值/示例值”标注，而不是当作既定事实
+- 对于无法从输入中确认的工具链、框架或实现方式，不要强行指定唯一方案，应给出条件化建议
+
+### 输出策略
+- 优先输出最小可执行版本，再补充增强版建议
+- 所有优先级、风险和建议必须给出简短依据
+- 如果用户要求的是策略/分析，不要默认展开为大段实现代码；只有在用户明确需要或输入足够时，才提供脚本、配置或示例代码
+- 若输出模板中的字段缺失，请填写“待补充”或在该项后注明“未提供”，不要伪造内容
+
+---
+
 ## Output Format (输出格式规范)
 
 请按以下 Markdown 格式输出AI辅助测试方案：
@@ -139,7 +159,7 @@ order: 5
 
 **实现方案：**
 ```python
-## 智能测试生成示例代码
+# 智能测试生成示例代码
 class IntelligentTestGenerator:
     def __init__(self):
         self.nlp_model = load_nlp_model()
@@ -159,7 +179,7 @@ class IntelligentTestGenerator:
             test_cases.extend(cases)
 
         return test_cases
-```markdown
+```
 
 **评估指标：**
 - 生成用例数量：目标提升 300%
@@ -180,7 +200,7 @@ class IntelligentTestGenerator:
 
 **模型实现：**
 ```python
-## 缺陷预测模型示例
+# 缺陷预测模型示例
 class DefectPredictionModel:
     def __init__(self):
         self.model = RandomForestClassifier()
@@ -198,7 +218,7 @@ class DefectPredictionModel:
         features = self.feature_extractor.extract(code_modules)
         probabilities = self.model.predict_proba(features)
         return probabilities
-```markdown
+```
 
 **预测准确率目标：**
 - 精确率 (Precision)：≥ 80%
@@ -219,7 +239,7 @@ class DefectPredictionModel:
 
 **选择策略：**
 ```python
-## 智能测试选择算法
+# 智能测试选择算法
 class IntelligentTestSelector:
     def __init__(self):
         self.risk_model = RiskAssessmentModel()
@@ -241,7 +261,7 @@ class IntelligentTestSelector:
         )
 
         return selected_tests
-```markdown
+```
 
 #### 场景四：自愈测试脚本
 
@@ -256,7 +276,7 @@ class IntelligentTestSelector:
 
 **自愈机制：**
 ```python
-## 自愈测试脚本示例
+# 自愈测试脚本示例
 class SelfHealingTestScript:
     def __init__(self):
         self.locator_strategies = [
@@ -285,7 +305,7 @@ class SelfHealingTestScript:
         # 3. 使用视觉AI定位
         element = self.visual_ai.find_similar_element(original_locator)
         return element
-```text
+```
 
 ---
 
@@ -501,11 +521,10 @@ class SelfHealingTestScript:
 
 ## Execution Instructions (执行指令)
 
-1. **需求分析：** 深入分析测试痛点和AI应用需求，明确AI技术的价值
-2. **技术选型：** 根据问题特点选择合适的AI技术和工具
-3. **方案设计：** 设计完整的AI辅助测试方案和实施计划
-4. **风险评估：** 评估技术风险、业务风险和实施风险
-5. **效果预估：** 预估AI应用的效果和投资回报率
-6. **实施规划：** 制定详细的实施路线图和里程碑
+1. 先进行输入完整性检查，输出已知信息、缺失信息、关键假设和主要风险。
+2. 若关键信息不足，优先提出少量高价值澄清问题；如果无法补充，再基于最少必要假设继续。
+3. 严格按照输出格式生成结果，但不得编造指标、数据、角色、日期、环境、结论或实现细节。
+4. 对所有建议给出简短依据，并优先给出最小可执行方案。
+5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
-**请在收到项目需求、测试挑战或AI应用场景后，立即开始执行上述任务。**
+**请在收到输入后，先完成输入审计，再输出正式结果。**

@@ -1,11 +1,10 @@
 ---
 title: "发布测试工作流程"
-description: "发布前1-2周的完整测试工作流程，帮助 QA 工程师、发布经理和 DevOps 团队确保发布质量。"
+description: "全面的测试工作流程，确保发布质量和生产部署就绪。"
 workflowType: "release"
 lang: "zh-cn"
 order: 3
 ---
-
 # 发布测试工作流程
 
 ## 📋 元数据
@@ -22,13 +21,9 @@ order: 3
 ## 📅 发布时间线
 
 ### T-14天：发布规划
-
 ### T-7天：功能冻结和测试加速
-
 ### T-3天：候选版本和最终测试
-
 ### T-1天：Go/No-Go 决策
-
 ### T日：发布日
 
 ---
@@ -209,7 +204,7 @@ order: 3
 - **中/低**：移至下一版本
 
 **决策矩阵**：
-```text
+```
 严重缺陷 → 立即修复 → 重新测试 → 新 RC
 高优先级缺陷 → 评估风险 → 修复或推迟
 中/低优先级 → 推迟到下一版本
@@ -427,8 +422,8 @@ order: 3
 
 ## 📚 相关工作流程
 
-- [日常测试工作流程](/zh-cn/prompts/workflows/daily/) - 日常活动
-- [迭代测试工作流程](/zh-cn/prompts/workflows/sprint/) - 迭代周期
+- [日常测试工作流程](daily-testing-workflow_CN.md) - 日常活动
+- [迭代测试工作流程](sprint-testing-workflow_CN.md) - 迭代周期
 
 ---
 

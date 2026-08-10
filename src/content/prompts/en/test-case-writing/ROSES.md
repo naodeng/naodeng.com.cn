@@ -6,10 +6,8 @@ promptVersion: "ROSES"
 lang: "en"
 order: 2
 ---
-
 # Test Case Writing - ROSES Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your test scenario description to start using.
 
 ---
 
@@ -26,6 +24,27 @@ order: 2
 **Steps:** Adopt systematic steps for test case design, including scenario analysis, test case design, data preparation, environment configuration, execution verification, etc.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Background and Capabilities
 
@@ -227,10 +246,10 @@ Please output test cases in the following Markdown format:
 
 ## Execution Instructions
 
-1. **Requirements Analysis:** Carefully analyze test scenarios or requirements documents, understand test objectives and scope
-2. **Test Case Design:** Design complete test cases according to test design principles
-3. **Format Output:** Strictly follow output format requirements, output standardized test cases
-4. **Quality Check:** Ensure test cases meet all quality requirements and special considerations
-5. **Review and Optimization:** Support test case review and continuous optimization
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving test scenarios or requirements documents.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

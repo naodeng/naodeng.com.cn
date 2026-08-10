@@ -6,10 +6,8 @@ promptVersion: "Standard"
 lang: "en"
 order: 1
 ---
-
 # Performance Testing Prompt
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your performance requirements to start using.
 
 ---
 
@@ -20,6 +18,26 @@ order: 1
 **Task:** Based on the provided system architecture, business requirements, or performance objectives, design comprehensive performance testing strategies and test plans. Ensure performance testing coverage is complete, test scenarios are realistic, performance metrics are clear, and can effectively identify system performance bottlenecks.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Performance Testing Methodology
 
@@ -137,9 +155,9 @@ Please output performance testing plans in the following Markdown format:
 #### Performance Target Setting
 | Performance Metric | Target Value | Acceptable Value | Test Conditions |
 |-------------------|--------------|------------------|-----------------|
-| Page Response Time | ≤ 2s | ≤ 3s | Under normal load |
+| Page Response Time | [TBD] | [TBD] | Under normal load |
 | API Response Time | ≤ 500ms | ≤ 1s | Under normal load |
-| Concurrent Users | ≥ 1000 | ≥ 800 | Under peak load |
+| Concurrent Users | [TBD] | [TBD] | Under peak load |
 | TPS | ≥ 500 | ≥ 400 | Under peak load |
 | CPU Utilization | ≤ 70% | ≤ 80% | Under peak load |
 | Memory Utilization | ≤ 80% | ≤ 90% | Under peak load |
@@ -352,11 +370,17 @@ Please output performance testing plans in the following Markdown format:
 
 ## Execution Instructions
 
-1. **Requirements Analysis:** Thoroughly analyze system architecture and performance requirements, understand business scenarios and user behavior
-2. **Strategy Development:** Develop appropriate performance testing strategies and methods based on system characteristics
-3. **Plan Design:** Design comprehensive performance testing plans and test scenarios
-4. **Format Output:** Output performance testing plans in standard format
-5. **Quality Assurance:** Ensure testing plans meet all quality requirements and special considerations
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving system architecture, business requirements, or performance objectives.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**
 
+---
+
+## 📋 Change Log
+
+### v0.1 (2025-01-14)
+- Initial version

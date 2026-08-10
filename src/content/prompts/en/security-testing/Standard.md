@@ -6,10 +6,8 @@ promptVersion: "Standard"
 lang: "en"
 order: 1
 ---
-
 # Security Testing Prompt
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your application information to start using.
 
 ---
 
@@ -20,6 +18,26 @@ order: 1
 **Task:** Based on the provided system architecture, security requirements, or compliance requirements, design comprehensive security testing strategies and testing plans. Ensure security testing coverage is complete, methods are scientific, risk assessment is accurate, and can effectively identify and validate system security risks.
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Security Testing Methodology
 
@@ -122,11 +140,8 @@ Please output the security testing plan in the following Markdown format:
 #### ST-[Number] - [Security Testing Scenario]
 
 **Test Type:** [Vulnerability Scanning/Penetration Testing/Code Audit/Configuration Audit]
-
 **Threat Type:** [Injection Attack/XSS/CSRF/Privilege Escalation/Information Disclosure]
-
 **OWASP Classification:** [A01-A10 corresponding OWASP Top 10 classification]
-
 **Risk Level:** [High/Medium/Low]
 
 **Testing Objectives:**
@@ -175,18 +190,18 @@ Please output the security testing plan in the following Markdown format:
 
 **Validation Methods:**
 ```bash
-## SQL Injection Testing Example
-## 1. Basic injection testing
+# SQL Injection Testing Example
+# 1. Basic injection testing
 curl -X POST "http://target.com/login" \
   -d "username=admin' OR '1'='1&password=anything"
 
-## 2. Time-based blind injection testing
+# 2. Time-based blind injection testing
 curl -X POST "http://target.com/search" \
   -d "query=test' AND (SELECT SLEEP(5))--"
 
-## 3. Union-based injection
+# 3. Union-based injection
 curl -X GET "http://target.com/user?id=1 UNION SELECT 1,username,password FROM users--"
-```markdown
+```
 
 **Expected Results:**
 - **Security Controls Effective:** [Security control measures correctly block attacks]
@@ -410,12 +425,17 @@ curl -X GET "http://target.com/user?id=1 UNION SELECT 1,username,password FROM u
 
 ## Execution Instructions
 
-1. **Threat Modeling:** Analyze system architecture, identify security threats and attack surfaces
-2. **Strategy Formulation:** Formulate comprehensive security testing strategies and plans
-3. **Tool Preparation:** Prepare and configure security testing tools and environments
-4. **Test Execution:** Execute various security testing activities according to plan
-5. **Result Analysis:** Deep analysis of security testing results and discovered vulnerabilities
-6. **Report Writing:** Write professional security testing reports and remediation recommendations
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please start executing the above tasks immediately after receiving system architecture, security requirements, or compliance requirements.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**
 
+---
+
+## 📋 Change Log
+
+### v0.1 (2025-01-14)
+- Initial version

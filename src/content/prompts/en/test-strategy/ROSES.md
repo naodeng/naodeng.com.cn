@@ -6,10 +6,8 @@ promptVersion: "ROSES"
 lang: "en"
 order: 2
 ---
-
 # Test Strategy - ROSES Framework (Full Version)
 
-> 💡 **Usage Instructions**: Please copy all content below the divider line to your AI assistant (such as ChatGPT, Claude, Cursor AI, etc.), then attach your project information to start using.
 
 ---
 
@@ -26,6 +24,27 @@ order: 2
 **Steps:** Background Analysis → Objective Setting → Strategy Design → Resource Planning → Risk Management → Continuous Improvement
 
 ---
+
+
+## Usage Constraints and Degradation Rules
+
+### Input Completeness Check
+Before producing the main output, run an input audit:
+- List Known / Missing / Key assumptions / Main risks
+- If missing information would significantly change the result, ask 3-5 high-value clarifying questions first
+- If the user does not provide more information, continue with the minimum necessary assumptions and explicitly mark content that depends on them
+
+### Do Not Fabricate
+- Do not invent requirements, APIs, fields, flows, environments, traffic/concurrency numbers, team setup, approvers, version numbers, dates, budgets, defect counts, coverage figures, SLA/SLO targets, or compliance conclusions
+- Numbers, coverage, pass rates, and timings in templates that are not user-provided are examples or TBD — never treat them as committed targets
+- For metrics not provided, mark them as TBD / recommended / example values instead of treating them as facts
+- Do not force a single toolchain or framework when the input does not justify it; give conditional recommendations
+
+### Output Strategy
+- Prefer a minimum executable result first; add optional enhancements only when useful
+- Give a short rationale for priorities, risks, and recommendations
+- If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
+- If a template field is missing, write "TBD" or "not provided" — never invent values
 
 ## Professional Background and Capabilities
 
@@ -133,18 +152,17 @@ Please output test strategies in the following Markdown format:
 ## Test Objectives and Scope
 
 ### Test Objectives
-
 #### Primary Quality Objectives
 - **Functional Quality Objectives:** [Functional correctness and completeness objectives]
-  - Functional requirement coverage: 100%
-  - Core function availability: 99.9%
-  - Business process completeness: 100%
+  - Functional requirement coverage: [Target value, mark as TBD if not provided]
+  - Core function availability: [Target value, mark as TBD if not provided]
+  - Business process completeness: [Target value, mark as TBD if not provided]
 
 - **Non-Functional Quality Objectives:** [Performance, security, usability objectives]
-  - System response time: ≤ 2 seconds (95% requests)
-  - System concurrent users: ≥ 1000 users
-  - System availability: ≥ 99.5%
-  - Security vulnerabilities: 0 high-risk vulnerabilities
+  - System response time: [Target value, mark as TBD if not provided]
+  - System concurrent users: [Target value, mark as TBD if not provided]
+  - System availability: [Target value, mark as TBD if not provided]
+  - Security vulnerabilities: [Target value, mark as TBD if not provided]
 
 #### Test Efficiency Objectives
 - **Test Automation Rate:** [Proportion of automated test coverage objectives]
@@ -153,7 +171,6 @@ Please output test strategies in the following Markdown format:
 - **Quality Cost Control:** [Test cost control objectives]
 
 ### Test Scope
-
 #### Functional Test Scope
 | Functional Module | Test Depth | Priority | Test Method | Automation Level |
 |-------------------|------------|----------|-------------|------------------|
@@ -180,9 +197,8 @@ Please output test strategies in the following Markdown format:
 ## Test Methods and Strategies
 
 ### Test Layering Strategy
-
 #### Test Pyramid Model
-```text
+```
         /\
        /UI\     10% - UI Automation Testing
       /____\
@@ -192,12 +208,12 @@ Please output test strategies in the following Markdown format:
   /            \
  /  Unit Testing \  60% - Unit Testing
 /________________\
-```markdown
+```
 
 #### Layer-Specific Test Strategies
 - **Unit Test Layer (60%):**
   - Developers responsible for writing and maintenance
-  - Coverage target: ≥ 80%
+  - Coverage target: [TBD]
   - Execution frequency: Every code commit
   - Tools: JUnit, pytest, Jest
 
@@ -214,12 +230,11 @@ Please output test strategies in the following Markdown format:
   - Tools: Selenium, Playwright, Cypress
 
 ### Test Type Strategies
-
 #### Functional Test Strategy
 - **Smoke Testing:** [Quick verification after daily builds]
   - Execution time: ≤ 30 minutes
   - Coverage scope: Core function paths
-  - Automation level: 100%
+  - Automation level: [TBD]
   - Failure criteria: Any test case failure
 
 - **Regression Testing:** [Comprehensive verification before version release]
@@ -248,7 +263,6 @@ Please output test strategies in the following Markdown format:
   - Compliance checking: Security standard compliance verification
 
 ### Test Data Strategy
-
 #### Test Data Classification
 - **Production Data Desensitization:** [Desensitized production data]
   - Applicable scenarios: Integration testing, performance testing
@@ -273,9 +287,8 @@ Please output test strategies in the following Markdown format:
 ## Test Organization and Roles
 
 ### Test Team Structure
-
 #### Team Organizational Architecture
-```text
+```
 Test Manager
 ├── Functional Test Team
 │   ├── Senior Test Engineers × 2
@@ -317,7 +330,6 @@ Test Manager
   - Automation test optimization
 
 ### Collaboration Models
-
 #### Cross-Team Collaboration
 - **Development Team Collaboration:**
   - Requirement clarification and test case review
@@ -348,7 +360,6 @@ Test Manager
 ## Test Environment and Tools
 
 ### Test Environment Strategy
-
 #### Environment Planning
 | Environment Type | Purpose | Configuration | Data | Maintenance Responsibility |
 |------------------|---------|---------------|------|---------------------------|
@@ -365,7 +376,6 @@ Test Manager
 - **Environment Maintenance:** [Environment maintenance and issue handling]
 
 ### Test Tool Chain
-
 #### Test Management Tools
 - **Test Management:** [Jira, TestRail, qTest]
   - Test plan and case management
@@ -396,7 +406,6 @@ Test Manager
 ## Risk Management and Quality Control
 
 ### Risk Identification and Assessment
-
 #### Quality Risk Matrix
 | Risk Category | Risk Description | Impact Level | Occurrence Probability | Risk Level | Response Strategy |
 |---------------|------------------|--------------|----------------------|------------|-------------------|
@@ -413,7 +422,6 @@ Test Manager
 - **Risk Acceptance:** [Accept risks and develop contingency plans]
 
 ### Quality Control Mechanisms
-
 #### Process Quality Control
 - **Test Plan Review:** [Test plan review and approval mechanisms]
 - **Test Case Review:** [Test case review and optimization mechanisms]
@@ -427,7 +435,6 @@ Test Manager
 - **Release Quality Assurance:** [Quality assurance measures before release]
 
 ### Quality Metrics and Improvement
-
 #### Key Quality Indicators (KQI)
 - **Defect-Related Metrics:**
   - Defect discovery rate: Number of defects found in test phases
@@ -452,7 +459,6 @@ Test Manager
 ## Implementation Plan and Milestones
 
 ### Implementation Phase Planning
-
 #### Phase 1: Foundation Building (1-2 months)
 - **Team Formation:** [Test team formation and training]
 - **Process Establishment:** [Test process and specification establishment]
@@ -475,7 +481,7 @@ Test Manager
 | Milestone | Time Point | Deliverables | Acceptance Criteria |
 |-----------|------------|--------------|-------------------|
 | Strategy Development Complete | Week 1 | Test strategy document | Strategy review passed |
-| Team Formation Complete | Week 4 | Team structure and responsibilities | 100% personnel in place |
+| Team Formation Complete | Week 4 | Team structure and responsibilities | personnel readiness: [TBD] |
 | Tools and Environment Ready | Week 8 | Tool chain and environment | Environment availability ≥95% |
 | Framework Development Complete | Week 12 | Automation framework | Framework functionality verification passed |
 | First Round Testing Complete | Week 16 | Test report | Quality objectives achieved |
@@ -491,7 +497,6 @@ Test Manager
 ## Budget and Resource Planning
 
 ### Human Resource Planning
-
 #### Personnel Configuration Plan
 | Role | Number | Skill Requirements | Budget |
 |------|--------|-------------------|--------|
@@ -508,7 +513,6 @@ Test Manager
 - **Internal Sharing:** [Internal technical sharing and experience exchange]
 
 ### Tool and Environment Budget
-
 #### Tool Procurement Budget
 | Tool Category | Tool Name | License Fee | Maintenance Fee |
 |---------------|-----------|-------------|----------------|
@@ -524,7 +528,6 @@ Test Manager
 - **Upgrade Fees:** [Equipment and software upgrade fees]
 
 ### ROI Analysis
-
 #### Input-Output Analysis
 - **Total Investment:** [Personnel cost + Tool cost + Environment cost]
 - **Expected Benefits:** [Quality improvement + Efficiency improvement + Risk reduction]
@@ -542,7 +545,6 @@ Test Manager
 - **Success Factors:** [Key factors for successful strategy implementation]
 
 ### Implementation Recommendations
-
 #### Short-term Recommendations (1-3 months)
 - **Priority Ranking:** [Implement key measures by priority]
 - **Quick Wins:** [Choose improvement measures that can show quick results]
@@ -566,6 +568,9 @@ Test Manager
 - **Technical Risks:** [Risks in technology selection and implementation]
 - **Organizational Risks:** [Risks in organizational change and culture]
 - **External Risks:** [Risks from external environment changes]
+
+---
+```
 
 ---
 
@@ -659,11 +664,10 @@ Test Manager
 
 ## Execution Instructions
 
-1. **Background Analysis:** Thoroughly analyze project background, business requirements, and technical architecture
-2. **Objective Setting:** Set clear and specific test objectives and success criteria
-3. **Strategy Design:** Design comprehensive and scientific test strategies and implementation plans
-4. **Resource Planning:** Reasonably plan personnel, tools, environment and other resources
-5. **Risk Management:** Identify risks and develop effective response measures
-6. **Continuous Improvement:** Establish continuous improvement and optimization mechanisms
+1. Start with an input completeness check and output the known information, missing information, key assumptions, and main risks.
+2. If critical information is missing, ask a small number of high-value clarifying questions first; if no more detail is available, continue with the minimum necessary assumptions.
+3. Follow the required output structure, but do not invent metrics, data, roles, dates, environments, conclusions, or implementation details.
+4. Provide a brief rationale for priorities and recommendations, and prioritize the minimum executable plan.
+5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
-**Please begin executing the above tasks immediately upon receiving project background, business requirements, technical architecture, or organizational situation.**
+**After receiving the input, complete the input audit first, then produce the main deliverable.**

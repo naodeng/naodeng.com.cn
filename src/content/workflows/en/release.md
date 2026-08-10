@@ -1,11 +1,10 @@
 ---
 title: "Release Testing Workflow"
-description: "Complete testing workflow for 1-2 weeks before release, helping QA engineers, release managers, and DevOps teams ensure release quality."
+description: "Comprehensive testing workflow to ensure release quality and readiness for production deployment."
 workflowType: "release"
 lang: "en"
 order: 3
 ---
-
 # Release Testing Workflow
 
 ## 📋 Metadata
@@ -22,13 +21,9 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 📅 Release Timeline
 
 ### T-14 Days: Release Planning
-
 ### T-7 Days: Feature Freeze & Testing Ramp-Up
-
 ### T-3 Days: Release Candidate & Final Testing
-
 ### T-1 Day: Go/No-Go Decision
-
 ### T-Day: Release Day
 
 ---
@@ -209,7 +204,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - **Medium/Low**: Move to next release
 
 **Decision Matrix**:
-```text
+```
 Critical Bug → Fix immediately → Retest → New RC
 High Bug → Assess risk → Fix or defer
 Medium/Low → Defer to next release
@@ -427,8 +422,8 @@ Medium/Low → Defer to next release
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](/en/prompts/workflows/daily/) - Day-to-day activities
-- [Sprint Testing Workflow](/en/prompts/workflows/sprint/) - Sprint cycle
+- [Daily Testing Workflow](daily-testing-workflow_EN.md) - Day-to-day activities
+- [Sprint Testing Workflow](sprint-testing-workflow_EN.md) - Sprint cycle
 
 ---
 

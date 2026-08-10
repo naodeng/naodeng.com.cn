@@ -6,7 +6,7 @@ Author: naodeng
 - slug: mobile-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-05
+- syncedAt: 2026-08-09
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mobile-testing/SKILL.md
 - description: Use this skill when you need to design mobile test plans for iOS or Android covering functionality, compatibility, performance, network, and security; triggers include mobile testing and app testing.
 

@@ -29,6 +29,8 @@
     "seo:check": "node scripts/seo-static-check.mjs",
     "seo:check:strict": "node scripts/seo-static-check.mjs --strict",
     "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs",
+    "prompts:sync": "node scripts/sync-prompts-from-repo.mjs",
+    "content:sync": "npm run qaskills:sync && npm run prompts:sync",
     "test": "cd tests && npm run test:unit"
   },
   "devDependencies": {
