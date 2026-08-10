@@ -66,4 +66,3 @@ jobs:
         working-directory: tests
         env:
           CI: true
-          PLAYWRIGHT_BASE_URL: "http://localhost:4321"
