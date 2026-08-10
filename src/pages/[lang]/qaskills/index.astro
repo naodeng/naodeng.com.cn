@@ -1,10 +1,12 @@
 ---
 import Base from "@/layouts/Base.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
+import QASkillStarterPaths from "@/components/qaskills/QASkillStarterPaths.astro";
+import RecommendedQASkills from "@/components/qaskills/RecommendedQASkills.astro";
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
-import { QA_SKILL_TOOLS } from "@/data/qaSkillLibrary";
+import { QA_SKILL_TOOLS, RECOMMENDED_QA_SKILL_SLUGS } from "@/data/qaSkillLibrary";
 
 export function getStaticPaths() {
   return [
@@ -24,6 +26,9 @@ const totalCount = allSkills.length;
 const evalsCount = allSkills.filter((s) => s.hasEvals).length;
 const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
 const toolCount = QA_SKILL_TOOLS.length;
+const recommendedSkills = RECOMMENDED_QA_SKILL_SLUGS
+  .map((slug) => allSkills.find((skill) => skill.slug === slug))
+  .filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
 
 const text = lang === "zh-cn" ? {
   title: "软件测试技能库",
@@ -36,7 +41,8 @@ const text = lang === "zh-cn" ? {
   skillCountLabel: "个 Skills",
   toolsLabel: "个 AI 工具",
   syncedLabel: "最近同步",
-  evalsLabel: "含 Evals",
+  evalsLabel: "提供自动化评测用例",
+  resultsLabel: "个匹配结果",
   searchPlaceholder: "搜索 skill 名称 / 场景关键词…",
   filterAll: "全部",
   filterType: "测试类型",
@@ -52,8 +58,8 @@ const text = lang === "zh-cn" ? {
   viewDetail: "查看详情",
   empty: "没有匹配的技能。试试 discover-testing，或清空筛选。",
   clearFilters: "清空筛选",
-  hasEvals: "Evals",
-  noEvals: "No Evals",
+  hasEvals: "含评测用例",
+  noEvals: "暂无评测用例",
   catType: "类型",
   catWorkflow: "工作流",
   catPlus: "Plus",
@@ -76,7 +82,8 @@ const text = lang === "zh-cn" ? {
   skillCountLabel: "skills",
   toolsLabel: "AI tools",
   syncedLabel: "Synced",
-  evalsLabel: "with Evals",
+  evalsLabel: "with automated evaluation cases",
+  resultsLabel: "matching results",
   searchPlaceholder: "Search by skill name or scenario…",
   filterAll: "All",
   filterType: "Types",
@@ -92,8 +99,8 @@ const text = lang === "zh-cn" ? {
   viewDetail: "View Details",
   empty: "No matching skills. Try discover-testing, or clear filters.",
   clearFilters: "Clear filters",
-  hasEvals: "Evals",
-  noEvals: "No Evals",
+  hasEvals: "Evaluation cases included",
+  noEvals: "No evaluation cases yet",
   catType: "Type",
   catWorkflow: "Workflow",
   catPlus: "Plus",
@@ -173,6 +180,41 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       </div>
     </header>
 
+    <QASkillStarterPaths lang={lang} />
+
+    <section class="section discovery" aria-label={lang === "zh-cn" ? "搜索与筛选" : "Search and filters"}>
+      <input
+        id="qaskills-search"
+        class="search-input"
+        type="search"
+        placeholder={text.searchPlaceholder}
+        autocomplete="off"
+      />
+      <div class="chips" role="group">
+        <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">{text.filterAll}</button>
+        <button type="button" class="chip" data-filter="type" aria-pressed="false">{text.filterType}</button>
+        <button type="button" class="chip" data-filter="workflow" aria-pressed="false">{text.filterWorkflow}</button>
+        <button type="button" class="chip" data-filter="plus" aria-pressed="false">{text.filterPlus}</button>
+        <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
+      </div>
+      <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
+    </section>
+
+    <RecommendedQASkills lang={lang} skills={recommendedSkills} />
+
+    <section id="quickstart" class="section">
+      <h2>{text.quickStart}</h2>
+      <ol class="quick-grid">
+        {text.quickSteps.map((step, index) => (
+          <li class="quick-card">
+            <span class="num">{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     <section id="lifecycle-path" class="section lifecycle-path" aria-labelledby="lifecycle-path-title">
       <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
       <p class="lifecycle-intro">{text.lifecycleIntro}</p>
@@ -194,50 +236,16 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
                       data-kind={node.kind}
                     >
                       <span>{node.label}</span>
-                      {node.kind === "plus" && (
-                        <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>
-                      )}
+                      {node.kind === "plus" && <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            {index < lifecycleStages.length - 1 && (
-              <span class="lifecycle-arrow" aria-hidden="true">→</span>
-            )}
+            {index < lifecycleStages.length - 1 && <span class="lifecycle-arrow" aria-hidden="true">→</span>}
           </div>
         ))}
       </div>
-    </section>
-
-    <section class="section discovery" aria-label={lang === "zh-cn" ? "搜索与筛选" : "Search and filters"}>
-      <input
-        id="qaskills-search"
-        class="search-input"
-        type="search"
-        placeholder={text.searchPlaceholder}
-        autocomplete="off"
-      />
-      <div class="chips" role="group">
-        <button type="button" class="chip is-active" data-filter="all">{text.filterAll}</button>
-        <button type="button" class="chip" data-filter="type">{text.filterType}</button>
-        <button type="button" class="chip" data-filter="workflow">{text.filterWorkflow}</button>
-        <button type="button" class="chip" data-filter="plus">{text.filterPlus}</button>
-        <button type="button" class="chip" data-evals-toggle="1">{text.filterEvals}</button>
-      </div>
-    </section>
-
-    <section id="quickstart" class="section">
-      <h2>{text.quickStart}</h2>
-      <ol class="quick-grid">
-        {text.quickSteps.map((step, index) => (
-          <li class="quick-card">
-            <span class="num">{index + 1}</span>
-            <h3>{step.title}</h3>
-            <p>{step.desc}</p>
-          </li>
-        ))}
-      </ol>
     </section>
 
     <section class="section" id="categories">
@@ -354,6 +362,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   (() => {
     const search = document.getElementById("qaskills-search");
     const empty = document.getElementById("qaskills-empty");
+    const results = document.getElementById("qaskills-results");
     const clearBtn = document.getElementById("qaskills-clear");
     const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
@@ -397,6 +406,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       });
 
       empty.hidden = visible > 0;
+      if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
     };
 
     chips.forEach((chip) => {
@@ -404,10 +414,12 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         if (chip.hasAttribute("data-evals-toggle")) {
           evalsOnly = !evalsOnly;
           chip.classList.toggle("is-active", evalsOnly);
+          chip.setAttribute("aria-pressed", String(evalsOnly));
         } else {
           category = chip.getAttribute("data-filter") || "all";
           document.querySelectorAll(".chip[data-filter]").forEach((c) => {
             c.classList.toggle("is-active", c === chip);
+            c.setAttribute("aria-pressed", String(c === chip));
           });
         }
         apply();
@@ -421,8 +433,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       evalsOnly = false;
       document.querySelectorAll(".chip[data-filter]").forEach((c) => {
         c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
+        c.setAttribute("aria-pressed", String(c.getAttribute("data-filter") === "all"));
       });
-      document.querySelector(".chip[data-evals-toggle]")?.classList.remove("is-active");
+      const evalsChip = document.querySelector(".chip[data-evals-toggle]");
+      evalsChip?.classList.remove("is-active");
+      evalsChip?.setAttribute("aria-pressed", "false");
       apply();
     });
 

@@ -1,0 +1,37 @@
+---
+import type { Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getQASkillCardIntro } from "@/data/qaSkillLibrary";
+
+interface Skill { slug: string; title: string; chineseName?: string | null; intro: string }
+interface Props { lang: Lang; skills: Skill[] }
+const { lang, skills } = Astro.props;
+---
+
+<section id="recommended-skills" aria-labelledby="recommended-skills-title">
+  <h2 id="recommended-skills-title">{lang === "zh-cn" ? "推荐从这些 Skills 开始" : "Recommended Skills to start with"}</h2>
+  <p>{lang === "zh-cn" ? "覆盖选择、分析、设计、策略、缺陷和日常执行六类高频任务。" : "Six practical starting points for discovery, analysis, design, strategy, defects, and daily execution."}</p>
+  <ul class="recommended-grid" role="list">
+    {skills.map((skill) => (
+      <li>
+        <a data-recommended-skill={skill.slug} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+          <h3>{lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title}</h3>
+          <p>{getQASkillCardIntro(skill, lang)}</p>
+          <span>{lang === "zh-cn" ? "查看使用指南" : "View usage guide"} →</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  h2 { margin: 0 0 .35rem; font-size: 1.55rem; }
+  section > p { margin: 0 0 .75rem; color: var(--color-text-secondary); }
+  .recommended-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
+  li a { display: block; height: 100%; padding: 1rem; border: 1px solid rgba(148,163,184,.2); border-radius: 18px; background: rgba(255,255,255,.76); color: inherit; text-decoration: none; box-shadow: var(--shadow-sm); }
+  h3 { margin: 0 0 .45rem; font-size: 1.05rem; }
+  li p { color: var(--color-text-secondary); line-height: 1.6; }
+  li span { color: var(--color-theme); font-weight: 800; }
+  @media (max-width: 860px) { .recommended-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .recommended-grid { grid-template-columns: 1fr; } }
+</style>

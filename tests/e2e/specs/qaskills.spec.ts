@@ -1,6 +1,22 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("QA Skills", () => {
+  for (const locale of ["zh-cn", "en"] as const) {
+    test(`${locale} index guides selection before the full catalog`, async ({ page }) => {
+      await page.goto(`/${locale}/qaskills/`);
+
+      await expect(page.locator("[data-starter-path]")).toHaveCount(3);
+      await expect(page.locator("[data-recommended-skill]")).toHaveCount(6);
+      await expect(page.locator("#qaskills-results")).toContainText(/\d+/);
+
+      const evalsFilter = page.locator('[data-evals-toggle="1"]');
+      await expect(evalsFilter).toHaveAttribute("aria-pressed", "false");
+      await evalsFilter.click();
+      await expect(evalsFilter).toHaveAttribute("aria-pressed", "true");
+      await expect(page.locator("#qaskills-results")).toContainText(/\d+/);
+    });
+  }
+
   test("zh-cn index shows search and code-review card metadata", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
     await expect(page.locator("#qaskills-search")).toBeVisible();
