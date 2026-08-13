@@ -28,7 +28,7 @@ import {
 } from "@/consts";
 import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import GuildShowcase from "@/components/guild/GuildShowcase.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
 import CoreCapabilities from "@/components/home/CoreCapabilities.astro";
@@ -378,7 +378,7 @@ const homePageSchema = {
       </div>
     </section>
 
-    <GoogleAd variant="band" />
+    <GoogleAdThin />
 
     <section
       class="home-band home-band--parchment home-prompts"

@@ -3,45 +3,19 @@
  * Google AdSense 文章内广告（in-article fluid 格式）
  * 仅在生产环境渲染；默认隐藏，广告填充后再展开（见 Base 中 data-ad-collapse 脚本）
  */
-interface Props {
-  /** band：首页全宽色带；default：普通段落间距 */
-  variant?: "default" | "band";
-}
-const { variant = "default" } = Astro.props;
 ---
 
 {!import.meta.env.DEV && (
-  <div
-    class:list={["ad-collapse", variant === "band" && "ad-collapse--band"]}
-    data-ad-collapse
-    hidden
-    aria-hidden="true"
-  >
-    {variant === "band" ? (
-      <div class="ad-collapse__inner">
-        <ins
-          class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-7249159446737834"
-          data-ad-slot="5247439587"
-        />
-        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    ) : (
-      <>
-        <ins
-          class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-7249159446737834"
-          data-ad-slot="5247439587"
-        />
-        <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </>
-    )}
+  <div class="ad-collapse" data-ad-collapse hidden aria-hidden="true">
+    <ins
+      class="adsbygoogle"
+      style="display:block; text-align:center;"
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
+      data-ad-client="ca-pub-7249159446737834"
+      data-ad-slot="5247439587"
+    />
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 )}
 
@@ -49,17 +23,6 @@ const { variant = "default" } = Astro.props;
   .ad-collapse {
     margin-block: 2rem;
     width: 100%;
-  }
-
-  .ad-collapse--band {
-    margin-block: 0;
-    padding-block: 48px;
-    background: #f5f5f7;
-  }
-
-  .ad-collapse__inner {
-    width: min(980px, calc(100% - 48px));
-    margin-inline: auto;
   }
 
   .ad-collapse[hidden] {

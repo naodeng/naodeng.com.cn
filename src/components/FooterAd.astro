@@ -1,0 +1,35 @@
+---
+/**
+ * 全站常驻页脚广告（正文与页脚之间的弱化横条）
+ * 仅在生产环境渲染；默认隐藏，广告填充后再展开（见 Base 中 data-ad-collapse 脚本）
+ */
+---
+
+{!import.meta.env.DEV && (
+  <div class="footer-ad ad-collapse" data-ad-collapse hidden aria-hidden="true">
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7249159446737834"
+      data-ad-slot="9931752640"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    />
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+)}
+
+<style>
+  .footer-ad {
+    max-inline-size: min(1120px, calc(100% - 48px));
+    margin-inline: auto;
+    padding-block: 0 var(--sp-m);
+    overflow: hidden;
+  }
+
+  .footer-ad[hidden] {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>
