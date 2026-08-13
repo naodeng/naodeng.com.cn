@@ -40,6 +40,7 @@ export const getStaticPaths = () =>
     <h2>{locale === "zh-cn" ? "第三方服务" : "Third-Party Services"}</h2>
     <ul>
       <li>{locale === "zh-cn" ? "访问统计：我们使用自部署的 Counterscale（analytics.inaodeng.com）进行访问统计，数据存储在自有服务器，不向广告商或第三方出售。" : "Analytics: We use self-hosted Counterscale (analytics.inaodeng.com) for traffic analytics. Data is stored on our own infrastructure and is not sold to advertisers or third parties."}</li>
+      <li>{locale === "zh-cn" ? "广告：本站通过 Google AdSense 展示广告，Google 可能使用 Cookie 或类似技术来展示广告并衡量效果，详见 Google 的隐私政策。" : "Advertising: This site displays ads via Google AdSense. Google may use cookies or similar technologies to serve and measure ads; see Google's privacy policy for details."}</li>
       <li>{locale === "zh-cn" ? "字体与资源：本站可能通过 CDN 加载字体（如 Google Fonts）或图标，这些服务可能有其自身的隐私政策。" : "Fonts and assets: This site may load fonts (e.g. Google Fonts) or icons via CDN; those services may have their own privacy policies."}</li>
     </ul>
 

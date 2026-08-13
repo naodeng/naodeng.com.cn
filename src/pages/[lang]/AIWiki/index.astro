@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import { LOCALES, type Lang } from "@/i18n";
 import { NAV_HOME } from "@/consts";
 import { aiwikiIdToLang, buildAiWikiSidebar } from "@/data/aiwiki";
@@ -89,7 +88,6 @@ const letterGroupCount = letterSections.length;
         </a>
       ))}
     </nav>
-    <GoogleAdThin />
 
     {letterSections.map((section) => (
       <article

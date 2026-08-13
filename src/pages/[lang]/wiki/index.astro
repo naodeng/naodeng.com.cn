@@ -9,7 +9,6 @@ import { LOCALES } from "@/i18n";
 import Base from "@/layouts/Base.astro";
 import DocsLayout from "@/layouts/Docs.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import { buildWikiSidebar } from "@/data/wiki";
 import { NAV_HOME, WIKI_PAGE_DESCRIPTION, WIKI_PAGE_KEYWORDS } from "@/consts";
 import type { Lang } from "@/i18n";
@@ -115,7 +114,6 @@ const definedTermSetSchema = !isEn ? {
           <a href={`#letter-${section.title}`} class="wiki-letter-index-link" data-letter={section.title}>{section.title}</a>
         ))}
       </nav>
-      <GoogleAdThin />
       {letterSections.map((section) => (
         <article class="wiki-letter-group" id={`letter-${section.title}`} data-letter-group={section.title}>
           <h3 class="wiki-letter-title">{section.title}</h3>

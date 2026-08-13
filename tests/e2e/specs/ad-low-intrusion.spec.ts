@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const AD_WRAPPER_SELECTOR = ".ad-wrap, .ad-thin-wrap, .home-ad-wrap";
+const AD_WRAPPER_SELECTOR = ".ad-collapse, .ad-thin-wrap, .sidebar-ad, .footer-ad";
 const AD_INNER_SELECTOR = "ins.adsbygoogle";
 
 test.describe("广告低干扰专项检查", () => {
@@ -59,6 +59,15 @@ test.describe("广告低干扰专项检查", () => {
       }, `${AD_WRAPPER_SELECTOR}, ${AD_INNER_SELECTOR}`);
 
       expect(isBetween, `route=${route}`).toBeFalsy();
+    }
+  });
+
+  test("常驻页脚广告位在主要页面存在", async ({ page, baseURL }) => {
+    const routes = ["/zh-cn/", "/en/blog/"];
+    for (const route of routes) {
+      await page.goto((baseURL || "") + route, { waitUntil: "networkidle" });
+      const count = await page.locator(".footer-ad").count();
+      expect(count, `route=${route}`).toBeGreaterThanOrEqual(1);
     }
   });
 
