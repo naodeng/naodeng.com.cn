@@ -11,7 +11,7 @@ const { locale } = Astro.props;
 
 const content = {
   'zh-cn': {
-    title: '🔄 学习工作流程',
+    title: '学习工作流程',
     subtitle: '三步开始你的自动化测试之旅',
     steps: [
       {
@@ -47,7 +47,7 @@ const content = {
     ],
   },
   'en': {
-    title: '🔄 Learning Workflow',
+    title: 'Learning Workflow',
     subtitle: 'Start your test automation journey in three steps',
     steps: [
       {
@@ -89,7 +89,10 @@ const text = content[locale as keyof typeof content] || content['en'];
 
 <section class="learning-workflow">
   <div class="learning-workflow__header">
-    <h2 class="learning-workflow__title">{text.title}</h2>
+    <h2 class="learning-workflow__title">
+      <span class="material-icons-sharp" aria-hidden="true">sync_alt</span>
+      {text.title}
+    </h2>
     <p class="learning-workflow__subtitle">{text.subtitle}</p>
   </div>
 
@@ -122,7 +125,7 @@ const text = content[locale as keyof typeof content] || content['en'];
   .learning-workflow {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.75rem 1.5rem;
   }
 
@@ -154,7 +157,7 @@ const text = content[locale as keyof typeof content] || content['en'];
     position: relative;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.5rem;
     transition: var(--transition-base);
   }
@@ -246,7 +249,7 @@ const text = content[locale as keyof typeof content] || content['en'];
     .learning-workflow {
       margin: 3rem 0;
       padding: 2rem 1rem;
-      border-radius: 16px;
+      border-radius: var(--radius-md);
     }
 
     .learning-workflow__header {

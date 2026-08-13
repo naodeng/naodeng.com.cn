@@ -1,7 +1,9 @@
 # Apple Design 改版规范（后期参考）
 
-**状态：** 探索已完成（分支 `explore-apple-design`）；合并 `main` / 正式上线前需另审  
-**日期：** 2026-07-31（探索落地） / 2026-08-03（本文整理）  
+> **⚠️ 本文已废弃，仅供追溯。** 站点实际采用 Zenix 视觉语言，现行规范见 `docs/standards/zenix-design.md`（2026-08-13 起生效）。本文描述的 Action Blue / 品牌橙 token 与代码现状不符，请勿按本文实施。
+
+**状态：** 已废弃（被 `zenix-design.md` 取代）；原探索分支 `explore-apple-design` 未合并  
+**日期：** 2026-07-31（探索落地） / 2026-08-03（本文整理） / 2026-08-13（标注废弃）  
 **外部参考：** [VoltAgent awesome-design-md · Apple DESIGN.md](https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/apple/DESIGN.md)  
 **关联文档：** `docs/superpowers/specs/2026-07-31-apple-design-exploration-design.md`、`docs/superpowers/plans/2026-07-31-apple-design-exploration.md`
 

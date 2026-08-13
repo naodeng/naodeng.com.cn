@@ -95,7 +95,8 @@ const steps = isZh
 <div class="fw-workflow">
   <div class="fw-workflow__header">
     <h2 class="fw-workflow__title">
-      {isZh ? '📋 学习工作流程' : '📋 Learning Workflow'}
+      <span class="material-icons-sharp" aria-hidden="true">assignment</span>
+      {isZh ? '学习工作流程' : 'Learning Workflow'}
     </h2>
     <p class="fw-workflow__subtitle">
       {isZh ? '三步完成你的学习之旅' : 'Three steps to complete your learning journey'}
@@ -132,7 +133,7 @@ const steps = isZh
   .fw-workflow {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.25rem 1.5rem;
   }
 
@@ -252,7 +253,7 @@ const steps = isZh
     color: var(--color-theme);
     text-decoration: none;
     padding: 0.3em 0.75em;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
     background: color-mix(in srgb, var(--color-theme) 6%, transparent);
     transition: var(--transition-base);

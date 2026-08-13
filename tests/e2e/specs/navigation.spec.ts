@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("导航与首页内容", () => {
   test("en 首页：Hero、探索区、标签与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
-    await expect(page.locator("main .home-apple-hero").first()).toBeVisible();
+    await expect(page.locator("main .home-hero").first()).toBeVisible();
     await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-projects").first()).toBeVisible();
     await expect(page.locator("main .home-tags .tags-container").first()).toBeVisible();
@@ -12,7 +12,7 @@ test.describe("导航与首页内容", () => {
 
   test("zh-cn 首页：Hero、探索区、Guild、标签与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
-    await expect(page.locator("main .home-apple-hero").first()).toBeVisible();
+    await expect(page.locator("main .home-hero").first()).toBeVisible();
     await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-projects").first()).toBeVisible();
     await expect(page.locator("main .guild-showcase").first()).toBeVisible();

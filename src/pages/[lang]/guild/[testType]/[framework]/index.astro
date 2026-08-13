@@ -91,7 +91,7 @@ const diffLabel = locale === "zh-cn"
 
 const richDesc = locale === "zh-cn"
   ? `${frameworkConfig.description}。本专区提供 ${frameworkEntries.length} 篇系统化教程，覆盖从环境搭建到 CI/CD 集成的完整学习路径，适合${diffLabel}开发者和测试工程师快速上手 ${testTypeConfig.title}。`
-  : `${frameworkConfig.description}. This section offers ${frameworkEntries.length} structured tutorials covering environment setup through CI/CD integration — a complete ${diffLabel} learning path for ${testTypeConfig.title}.`;
+  : `${frameworkConfig.description}. This section offers ${frameworkEntries.length} structured tutorials covering environment setup through CI/CD integration, a complete ${diffLabel} learning path for ${testTypeConfig.title}.`;
 ---
 
 <Base title={pageTitle} description={metaDescription} contentWide={true}>
@@ -106,7 +106,10 @@ const richDesc = locale === "zh-cn"
         )}
         <div class="fw-hero__info">
           <div class="fw-hero__badges">
-            <span class="fw-badge fw-badge--type">{testTypeConfig.icon} {testTypeConfig.title}</span>
+            <span class="fw-badge fw-badge--type">
+              <span class="material-icons-sharp" aria-hidden="true">{testTypeConfig.icon}</span>
+              {testTypeConfig.title}
+            </span>
             {frameworkConfig.difficulty && (
               <span class={`fw-badge fw-badge--diff fw-badge--${frameworkConfig.difficulty}`}>
                 {locale === "zh-cn"
@@ -176,7 +179,8 @@ const richDesc = locale === "zh-cn"
       <div class="lp-header">
         <div class="lp-header__left">
           <h2 class="learning-path-title">
-            {locale === "zh-cn" ? "📖 学习路径" : "📖 Learning Path"}
+            <span class="material-icons-sharp" aria-hidden="true">menu_book</span>
+            {locale === "zh-cn" ? "学习路径" : "Learning Path"}
           </h2>
           <span class="lp-count">{frameworkEntries.length} {locale === "zh-cn" ? "篇" : "articles"}</span>
         </div>
@@ -266,7 +270,7 @@ const richDesc = locale === "zh-cn"
   .fw-hero {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
@@ -625,7 +629,7 @@ const richDesc = locale === "zh-cn"
 
   .article-difficulty {
     padding: 0.18em 0.6em;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 0.72rem;
   }

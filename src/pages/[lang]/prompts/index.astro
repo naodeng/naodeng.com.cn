@@ -206,55 +206,55 @@ const itemListSchema = {
       <div class="flow-wrap">
         {([
           {
-            icon: "📝",
+            icon: "edit_note",
             slug: "requirements-analysis",
             label: lang === "zh-cn" ? "需求分析" : "Requirements Analysis",
             desc: lang === "zh-cn" ? "深度分析需求文档，设计全维度测试场景" : "Analyze requirements and design comprehensive test scenarios",
           },
           {
-            icon: "🎯",
+            icon: "track_changes",
             slug: "test-strategy",
             label: lang === "zh-cn" ? "测试策略" : "Test Strategy",
             desc: lang === "zh-cn" ? "制定整体测试策略和测试计划" : "Define overall test strategy and test plan",
           },
           {
-            icon: "✍️",
+            icon: "edit",
             slug: "test-case-writing",
             label: lang === "zh-cn" ? "测试用例编写" : "Test Case Writing",
             desc: lang === "zh-cn" ? "基于测试场景生成详细测试用例" : "Generate detailed test cases from test scenarios",
           },
           {
-            icon: "🔍",
+            icon: "search",
             slug: "functional-testing",
             label: lang === "zh-cn" ? "功能测试" : "Functional Testing",
             desc: lang === "zh-cn" ? "执行功能测试，确保功能完整性" : "Execute functional tests to ensure completeness",
           },
           {
-            icon: "🤖",
+            icon: "smart_toy",
             slug: "automation-testing",
             label: lang === "zh-cn" ? "自动化测试" : "Automation Testing",
             desc: lang === "zh-cn" ? "设计自动化测试脚本和框架" : "Design automation test scripts and frameworks",
           },
           {
-            icon: "⚡",
+            icon: "bolt",
             slug: "performance-testing",
             label: lang === "zh-cn" ? "性能测试" : "Performance Testing",
             desc: lang === "zh-cn" ? "设计性能测试场景和指标分析" : "Design performance test scenarios and metrics",
           },
           {
-            icon: "🔒",
+            icon: "lock",
             slug: "security-testing",
             label: lang === "zh-cn" ? "安全测试" : "Security Testing",
             desc: lang === "zh-cn" ? "检测安全漏洞和安全测试策略" : "Detect vulnerabilities and define security strategy",
           },
           {
-            icon: "🐛",
+            icon: "bug_report",
             slug: "bug-reporting",
             label: lang === "zh-cn" ? "缺陷上报" : "Bug Reporting",
             desc: lang === "zh-cn" ? "标准化缺陷报告和根因分析" : "Standardized bug reports and root cause analysis",
           },
           {
-            icon: "📊",
+            icon: "bar_chart",
             slug: "test-reporting",
             label: lang === "zh-cn" ? "测试报告" : "Test Reporting",
             desc: lang === "zh-cn" ? "生成测试执行报告和质量分析" : "Generate test execution reports and quality analysis",
@@ -265,7 +265,7 @@ const itemListSchema = {
               href={getRelativeLocaleUrl(lang, `/prompts/${step.slug}/`)}
               class="flow-node"
             >
-              <span class="flow-icon" aria-hidden="true">{step.icon}</span>
+              <span class="flow-icon material-icons-sharp" aria-hidden="true">{step.icon}</span>
               <span class="flow-label">{step.label}</span>
               <span class="flow-desc">{step.desc}</span>
             </a>
@@ -321,10 +321,10 @@ const itemListSchema = {
     gap: 2rem;
     padding: 2rem;
     border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 28px;
+    border-radius: var(--radius-lg);
     background:
       radial-gradient(circle at 18% 12%, rgba(79, 70, 229, 0.16), transparent 34%),
-      radial-gradient(circle at 92% 18%, rgba(20, 184, 166, 0.16), transparent 30%),
+      radial-gradient(circle at 92% 18%, rgba(67, 56, 202, 0.16), transparent 30%),
       rgba(255, 255, 255, 0.78);
     box-shadow: var(--shadow-md);
     overflow: hidden;
@@ -424,7 +424,7 @@ const itemListSchema = {
 
   .prompt-console {
     border: 1px solid rgba(148, 163, 184, 0.24);
-    border-radius: 22px;
+    border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.86);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
@@ -446,7 +446,7 @@ const itemListSchema = {
   }
 
   .prompt-console-bar span:nth-child(2) {
-    background: rgba(20, 184, 166, 0.42);
+    background: rgba(129, 140, 248, 0.42);
   }
 
   .prompt-console-bar span:nth-child(3) {
@@ -463,8 +463,8 @@ const itemListSchema = {
     width: fit-content;
     border-radius: 999px;
     padding: 0.28rem 0.65rem;
-    background: rgba(20, 184, 166, 0.12);
-    color: var(--color-accent);
+    background: rgba(79, 70, 229, 0.12);
+    color: var(--color-theme);
     font-size: 0.78rem;
     font-weight: 800;
   }
@@ -490,7 +490,7 @@ const itemListSchema = {
   .prompt-lines span {
     height: 0.62rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(79, 70, 229, 0.18), rgba(20, 184, 166, 0.12));
+    background: linear-gradient(90deg, rgba(79, 70, 229, 0.18), rgba(129, 140, 248, 0.12));
   }
 
   .prompt-lines span:nth-child(2) {
@@ -668,7 +668,7 @@ const itemListSchema = {
     align-items: center;
     gap: var(--sp-s);
     padding: var(--sp-m);
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.2);
     background: rgba(255, 255, 255, 0.76);
   }
@@ -684,7 +684,7 @@ const itemListSchema = {
     align-items: flex-start;
     gap: 0.4rem;
     padding: var(--sp-s) var(--sp-m);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     border: 1px solid rgba(148, 163, 184, 0.2);
     background: rgba(255, 255, 255, 0.78);
     text-decoration: none;
@@ -709,6 +709,7 @@ const itemListSchema = {
   .flow-icon {
     font-size: 1.75rem;
     line-height: 1;
+    color: var(--color-theme);
   }
 
   .flow-label {

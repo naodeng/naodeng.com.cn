@@ -52,7 +52,10 @@ const visibleTestTypes = guildConfig.testTypes.filter((t) => t.id !== "ui-testin
     <GuildHero locale={locale} />
 
     <div class="filter-card">
-      <div class="filter-card__label">{isZh ? "📚 学习路径" : "📚 Learning Paths"}</div>
+      <div class="filter-card__label">
+        <span class="material-icons-sharp" aria-hidden="true">menu_book</span>
+        {isZh ? "学习路径" : "Learning Paths"}
+      </div>
       <div class="filter-bar" role="group" aria-label={isZh ? "按测试类型筛选" : "Filter by test type"}>
         <button class="filter-pill filter-pill--active" data-filter="all">{isZh ? "全部" : "All"}</button>
         {
@@ -102,7 +105,7 @@ const visibleTestTypes = guildConfig.testTypes.filter((t) => t.id !== "ui-testin
   .filter-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.25rem 1.5rem;
     display: flex;
     align-items: center;

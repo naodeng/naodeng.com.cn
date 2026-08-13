@@ -1,19 +1,22 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("apple homepage exploration", () => {
+test.describe("zenix homepage exploration", () => {
   for (const lang of ["zh-cn", "en"] as const) {
     test(`${lang} home shows hero, explore grid, latest posts`, async ({
       page,
       baseURL,
     }) => {
       await page.goto(`${baseURL}/${lang}/`);
-      await expect(page.locator(".home-apple-hero")).toBeVisible();
+      await expect(page.locator(".home-hero")).toBeVisible();
       await expect(page.locator("[data-home-task]")).toHaveCount(6);
       await expect(page.locator("[data-home-capability]")).toHaveCount(3);
       await expect(page.locator("[data-home-example]")).toHaveCount(3);
       await expect(page.locator(".home-explore-grid")).toBeVisible();
       await expect(page.locator(".home-latest-posts")).toBeVisible();
-      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(6);
+      // zh 比 en 多一张 blog 卡（en 的 wiki 语义由 AIWiki 卡覆盖）
+      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
+        lang === "zh-cn" ? 7 : 6,
+      );
       await expect(page.locator(".home-prompts")).toBeVisible();
       await expect(page.locator(".home-projects")).toBeVisible();
       await expect(page.locator(".home-tags .tags-container")).toBeVisible();
@@ -24,13 +27,14 @@ test.describe("apple homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
-  test("hero console cards link to wiki, skills, and prompts", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL || ""}/zh-cn/`);
-    const links = page.locator(".home-hero-console .console-card");
-    await expect(links).toHaveCount(3);
-    await expect(links.nth(0)).toHaveAttribute("href", "/zh-cn/wiki/");
-    await expect(links.nth(1)).toHaveAttribute("href", "/zh-cn/qaskills/");
-    await expect(links.nth(2)).toHaveAttribute("href", "/zh-cn/prompts/");
+  test("hero CTAs link to blog and wiki entries", async ({ page, baseURL }) => {
+    for (const [lang, wikiPath] of [["zh-cn", "/zh-cn/wiki/"], ["en", "/en/AIWiki/"]] as const) {
+      await page.goto(`${baseURL || ""}/${lang}/`);
+      const ctas = page.locator(".home-hero__ctas a");
+      await expect(ctas).toHaveCount(2);
+      await expect(ctas.nth(0)).toHaveAttribute("href", `/${lang}/blog/`);
+      await expect(ctas.nth(1)).toHaveAttribute("href", wikiPath);
+    }
   });
 
   test("proof section keeps readable spacing between title and introduction", async ({ page, baseURL }) => {
@@ -70,30 +74,5 @@ test.describe("home information architecture", () => {
     expect(layout.width).toBeLessThanOrEqual(1120);
     expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
     expect(layout.titleSize).toBe("34px");
-  });
-
-  test("zh-cn home exposes three primary entry cards", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL || ""}/zh-cn/`, { waitUntil: "networkidle" });
-    const primaryEntries = page.locator(".home-primary-entry");
-    await expect(primaryEntries).toHaveCount(3);
-    await expect(primaryEntries.nth(0)).toContainText(/博客|Blog/);
-    await expect(primaryEntries.nth(1)).toContainText(/Wiki|百科/);
-    await expect(primaryEntries.nth(2)).toContainText(/QA|提示词|技能/);
-  });
-
-  test("en home exposes three primary entry cards", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL || ""}/en/`, { waitUntil: "networkidle" });
-    const primaryEntries = page.locator(".home-primary-entry");
-    await expect(primaryEntries).toHaveCount(3);
-    await expect(primaryEntries.nth(0)).toContainText(/Blog/);
-    await expect(primaryEntries.nth(1)).toContainText(/Wiki/);
-    await expect(primaryEntries.nth(2)).toContainText(/QA|Prompt|Skill/);
-  });
-
-  test("task entry offers both skills and prompts without nested links", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL || ""}/zh-cn/`);
-    const actionEntry = page.locator(".home-primary-entry--act");
-    await expect(actionEntry.getByRole("link", { name: /Skills/ })).toBeVisible();
-    await expect(actionEntry.getByRole("link", { name: /Prompts/ })).toBeVisible();
   });
 });

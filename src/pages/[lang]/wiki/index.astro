@@ -136,19 +136,19 @@ const definedTermSetSchema = !isEn ? {
 
 <style>
   :global(.docs-sidebar-wrap) {
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     overflow: hidden;
   }
 
   :global(.docs-sidebar) {
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     overflow: hidden;
   }
 
   :global(.docs-sidebar-inner) {
     border-inline-start: none !important;
     border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
-    border-radius: 14px !important;
+    border-radius: var(--radius-md) !important;
     overflow: hidden;
     box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
   }
@@ -265,7 +265,7 @@ const definedTermSetSchema = !isEn ? {
     padding: var(--sp-m);
     padding-inline-start: var(--sp-m);
     border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: color-mix(in srgb, var(--color-main) 4%, var(--color-base));
     scroll-margin-block-start: 1.5rem;
   }

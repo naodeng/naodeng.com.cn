@@ -469,11 +469,7 @@ const mobilePriorityItems = [
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 60px;
-    background: #000;
-    color: #fff;
-    border: none;
-    box-shadow: none;
+    /* 视觉样式见下方 Zenix skin 块（白玻璃顶栏） */
   }
   .l-header::after {
     display: none;
@@ -680,8 +676,8 @@ const mobilePriorityItems = [
     padding: 0.55rem;
     list-style: none;
     border: 1px solid color-mix(in srgb, white 12%, transparent);
-    border-radius: 0.75rem;
-    background: #1d1d1f;
+    border-radius: var(--radius-md);
+    background: var(--color-main);
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
     transform-origin: top center;
     animation: nav-submenu-in 0.16s ease-out;
@@ -725,7 +721,7 @@ const mobilePriorityItems = [
     width: auto;
     min-width: max-content;
     padding: 0.6rem 0.95rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     color: #fff;
     background: transparent;
     border: 1px solid transparent;
@@ -808,7 +804,7 @@ const mobilePriorityItems = [
     font-weight: 400;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
   .nav-tool :global(.locale-trigger:hover),
   .nav-tool :global(.locale-trigger:focus-visible) {
@@ -823,7 +819,7 @@ const mobilePriorityItems = [
     font-size: 22px;
   }
   .nav-tool :global(.locale-panel) {
-    background: #1d1d1f;
+    background: var(--color-main);
     border: 1px solid color-mix(in srgb, white 12%, transparent);
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
   }
@@ -851,7 +847,7 @@ const mobilePriorityItems = [
     color: #fff;
     background: transparent;
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background 0.18s ease, opacity 0.18s ease;
   }
@@ -1014,7 +1010,7 @@ const mobilePriorityItems = [
       gap: 0.25rem;
       min-height: 74px;
       padding: 0.6rem 0.35rem;
-      border-radius: 0.5rem;
+      border-radius: var(--radius-sm);
       color: #fff;
       text-align: center;
       text-decoration: none;
@@ -1113,7 +1109,7 @@ const mobilePriorityItems = [
   .site-title-primary,
   .site-title-secondary,
   .site-brand-link > span:not(.site-title-cobrand) {
-    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 55%, var(--color-accent));
+    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 55%, var(--color-theme-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

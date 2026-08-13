@@ -518,7 +518,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     color: var(--color-main);
     background: color-mix(in srgb, var(--color-main) 8%, var(--color-base));
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-    border-radius: 7px;
+    border-radius: var(--radius-sm);
     outline: none;
     box-sizing: border-box;
   }
@@ -564,7 +564,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     font-weight: 500;
     color: color-mix(in srgb, var(--color-main) 85%, transparent);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     transition: background 0.15s ease, color 0.15s ease;
     line-height: 1.4;
   }
@@ -591,7 +591,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
   .prompt-detail-header {
     margin-block-end: var(--sp-m);
     padding: var(--sp-m);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
     background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
     border-inline-start: 4px solid var(--color-theme);
@@ -764,7 +764,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
     font-size: 0.9em; color: var(--color-theme);
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    padding: 0.15em 0.4em; border-radius: 4px;
+    padding: 0.15em 0.4em; border-radius: var(--radius-sm);
   }
   .prompt-content :global(pre) {
     direction: ltr; padding: 1em 1.25em; border-radius: 8px;
