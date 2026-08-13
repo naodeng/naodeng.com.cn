@@ -9,9 +9,10 @@ const baseCss = readFileSync(
 );
 
 describe("Zenix-inspired design tokens in base.css", () => {
-  it("uses indigo and teal as theme / accent colors", () => {
+  it("uses indigo as the single theme color", () => {
     expect(baseCss).toMatch(/--color-theme:\s*#4f46e5/i);
-    expect(baseCss).toMatch(/--color-accent:\s*#14b8a6/i);
+    // teal accent 已移除，indigo 为唯一主色
+    expect(baseCss).not.toMatch(/--color-accent:/i);
     expect(baseCss).not.toMatch(/--color-theme:\s*#ef4d1a/i);
   });
 

@@ -18,11 +18,11 @@ const { title, compact = false } = Astro.props;
     padding-block: var(--sp-l) calc(var(--sp-l) + var(--sp-s));
     padding-inline: var(--sp-m);
     text-align: center;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     color: var(--color-main);
     background:
       linear-gradient(135deg, color-mix(in srgb, var(--color-theme) 10%, white), transparent 42%),
-      linear-gradient(315deg, color-mix(in srgb, var(--color-accent) 12%, white), transparent 38%),
+      linear-gradient(315deg, color-mix(in srgb, var(--color-theme-light) 12%, white), transparent 38%),
       rgba(255, 255, 255, 0.82);
     border: 1px solid rgba(148, 163, 184, 0.24);
     box-shadow: var(--shadow-md);
@@ -47,7 +47,7 @@ const { title, compact = false } = Astro.props;
     letter-spacing: 0;
     margin: 0;
     line-height: 1.25;
-    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 58%, var(--color-accent));
+    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 58%, var(--color-theme-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

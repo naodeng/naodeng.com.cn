@@ -35,15 +35,15 @@ export const getStaticPaths = () =>
 
     <h2>{locale === "zh-cn" ? "许可协议概要" : "License Summary"}</h2>
     <ul class="license-list">
-      <li><strong>{locale === "zh-cn" ? "署名" : "Attribution"}</strong> — {locale === "zh-cn" ? "您必须给出适当的署名，提供指向本许可协议的链接，同时说明是否对原始作品作了修改。" : "You must give appropriate credit, provide a link to the license, and indicate if changes were made."}</li>
-      <li><strong>{locale === "zh-cn" ? "非商业性使用" : "NonCommercial"}</strong> — {locale === "zh-cn" ? "您不得将本作品用于商业目的。" : "You may not use the material for commercial purposes."}</li>
-      <li><strong>{locale === "zh-cn" ? "相同方式共享" : "ShareAlike"}</strong> — {locale === "zh-cn" ? "如果您基于本作品进行了演绎，您必须基于与原先许可协议相同的许可协议分发您的作品。" : "If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original."}</li>
+      <li><strong>{locale === "zh-cn" ? "署名" : "Attribution"}</strong>: {locale === "zh-cn" ? "您必须给出适当的署名，提供指向本许可协议的链接，同时说明是否对原始作品作了修改。" : "You must give appropriate credit, provide a link to the license, and indicate if changes were made."}</li>
+      <li><strong>{locale === "zh-cn" ? "非商业性使用" : "NonCommercial"}</strong>: {locale === "zh-cn" ? "您不得将本作品用于商业目的。" : "You may not use the material for commercial purposes."}</li>
+      <li><strong>{locale === "zh-cn" ? "相同方式共享" : "ShareAlike"}</strong>: {locale === "zh-cn" ? "如果您基于本作品进行了演绎，您必须基于与原先许可协议相同的许可协议分发您的作品。" : "If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original."}</li>
     </ul>
 
     <h2>{locale === "zh-cn" ? freeToZh : freeToEn}</h2>
     <ul>
-      <li><strong>{locale === "zh-cn" ? "共享" : "Share"}</strong> — {locale === "zh-cn" ? "在任何媒介以任何形式复制、发行本作品" : "copy and redistribute the material in any medium or format"}</li>
-      <li><strong>{locale === "zh-cn" ? "演绎" : "Adapt"}</strong> — {locale === "zh-cn" ? "修改、转换或以本作品为基础进行创作" : "remix, transform, and build upon the material"}</li>
+      <li><strong>{locale === "zh-cn" ? "共享" : "Share"}</strong>: {locale === "zh-cn" ? "在任何媒介以任何形式复制、发行本作品" : "copy and redistribute the material in any medium or format"}</li>
+      <li><strong>{locale === "zh-cn" ? "演绎" : "Adapt"}</strong>: {locale === "zh-cn" ? "修改、转换或以本作品为基础进行创作" : "remix, transform, and build upon the material"}</li>
       <li>{locale === "zh-cn" ? "只要您遵守许可协议条款，许可人就无法收回您的这些权利。" : "The licensor cannot revoke these freedoms as long as you follow the license terms."}</li>
     </ul>
 

@@ -212,8 +212,8 @@ const difficultyText = framework.difficulty
   }
 
   .difficulty-badge--intermediate {
-    background: color-mix(in srgb, var(--color-accent) 15%, transparent);
-    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    color: var(--color-theme);
   }
 
   .difficulty-badge--advanced {
@@ -234,7 +234,7 @@ const difficultyText = framework.difficulty
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
     font-weight: 500;
     text-decoration: none;

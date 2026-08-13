@@ -2,7 +2,7 @@
   --color-theme: #4f46e5;
   --color-theme-focus: #4338ca;
   --color-theme-on-dark: #a5b4fc;
-  --color-accent: #14b8a6;
+  --color-theme-light: #818cf8;
   --color-base: #f8fafc;
   --color-canvas: #ffffff;
   --color-main: #0f172a;
@@ -23,9 +23,9 @@
   --glow-theme: rgba(79, 70, 229, 0.22);
   --gradient-hero:
     linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, transparent 38%),
-    linear-gradient(315deg, rgba(20, 184, 166, 0.14) 0%, transparent 34%),
+    linear-gradient(315deg, rgba(67, 56, 202, 0.14) 0%, transparent 34%),
     linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  --gradient-theme: linear-gradient(135deg, var(--color-theme) 0%, var(--color-accent) 100%);
+  --gradient-theme: linear-gradient(135deg, var(--color-theme) 0%, var(--color-theme-light) 100%);
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 14px 35px rgba(15, 23, 42, 0.08);
@@ -84,7 +84,7 @@
   accent-color: var(--color-theme);
   background-image:
     linear-gradient(rgba(79, 70, 229, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 184, 166, 0.035) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(79, 70, 229, 0.035) 1px, transparent 1px);
   background-size: 42px 42px;
 
   line-height: 1.47;

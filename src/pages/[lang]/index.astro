@@ -44,7 +44,7 @@ const allPosts = (await getCollection("blog")).filter(
 
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 6);
+  .slice(0, 5);
 
 const tagCounts = allPosts
   .flatMap((post) => post.data.tags || [])
@@ -154,47 +154,11 @@ const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   href: getRelativeLocaleUrl(locale, card.path),
 }));
 
-const primaryEntries = [
-  {
-    key: "blog",
-    href: getRelativeLocaleUrl(locale, "/blog"),
-    eyebrow: locale === "zh-cn" ? "长期文章" : "Long-form writing",
-    title: locale === "zh-cn" ? "博客" : "Blog",
-    desc:
-      locale === "zh-cn"
-        ? "阅读软件测试、自动化、AI 工程和个人实践总结。"
-        : "Read software testing, automation, AI engineering, and personal practice notes.",
-  },
-  {
-    key: "wiki",
-    href:
-      locale === "zh-cn"
-        ? getRelativeLocaleUrl(locale, "/wiki")
-        : getRelativeLocaleUrl(locale, "/AIWiki"),
-    eyebrow: locale === "zh-cn" ? "系统知识" : "Reference",
-    title: locale === "zh-cn" ? "Wiki / AI 百科" : "Wiki / AI Wiki",
-    desc:
-      locale === "zh-cn"
-        ? "查询测试概念、AI 术语和工程实践词条。"
-        : "Look up testing concepts, AI terms, and engineering references.",
-  },
-  {
-    key: "qa-tools",
-    href: getRelativeLocaleUrl(locale, "/prompts"),
-    eyebrow: locale === "zh-cn" ? "QA 工具内容" : "QA tools",
-    title: locale === "zh-cn" ? "提示词、工作流与技能库" : "Prompts, workflows, and skills",
-    desc:
-      locale === "zh-cn"
-        ? "进入可复用的测试提示词、流程和 QA Skills。"
-        : "Use reusable testing prompts, workflows, and QA skills.",
-  },
-];
-
-/* …projects 羊皮纸 → guild 白 → wiki 羊皮纸 → aiwiki 白 → tags 羊皮纸
-   若无 wiki：guild 白 → aiwiki 羊皮纸 → tags 白 */
-const bandWiki = "parchment" as const;
-const bandAiWiki = showWiki ? ("white" as const) : ("parchment" as const);
-const bandTags = showWiki ? ("parchment" as const) : ("white" as const);
+/* …projects 冷灰 → guild 白 → wiki 冷灰 → aiwiki 白 → tags 冷灰
+   若无 wiki：guild 白 → aiwiki 冷灰 → tags 白 */
+const bandWiki = "muted" as const;
+const bandAiWiki = showWiki ? ("white" as const) : ("muted" as const);
+const bandTags = showWiki ? ("muted" as const) : ("white" as const);
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -241,7 +205,7 @@ const homePageSchema = {
   extraStructuredData={[homePageSchema]}
 >
   <div class="home-page">
-    <section class="home-band home-band--white home-apple-hero">
+    <section class="home-band home-band--white home-hero">
       <div class="home-inner">
         <h1 class="home-hero__title">{t(HOME_HERO_TITLE)}</h1>
         <p class="home-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
@@ -261,54 +225,6 @@ const homePageSchema = {
             {t(HOME_CTA_WIKI)}
           </a>
         </div>
-        <ul
-          class="home-primary-entries"
-          role="list"
-          aria-label={locale === "zh-cn" ? "主要内容入口" : "Primary content entries"}
-        >
-          {primaryEntries.map((entry) => (
-            <li>
-              {entry.key === "qa-tools" ? (
-                <div class="home-primary-entry home-primary-entry--act">
-                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
-                  <span class="home-primary-entry__title">{entry.title}</span>
-                  <span class="home-primary-entry__desc">{entry.desc}</span>
-                  <span class="home-primary-entry__actions">
-                    <a href={getRelativeLocaleUrl(locale, "/qaskills/")}>Skills →</a>
-                    <a href={getRelativeLocaleUrl(locale, "/prompts/")}>Prompts →</a>
-                  </span>
-                </div>
-              ) : (
-                <a class={`home-primary-entry home-primary-entry--${entry.key}`} href={entry.href}>
-                  <span class="home-primary-entry__eyebrow">{entry.eyebrow}</span>
-                  <span class="home-primary-entry__title">{entry.title}</span>
-                  <span class="home-primary-entry__desc">{entry.desc}</span>
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
-        <div class="home-hero-console" aria-label={locale === "zh-cn" ? "推荐资源入口" : "Featured resource entries"}>
-          <div class="console-topbar">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="console-grid">
-            <a class="console-card console-card--primary" href={locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki/") : getRelativeLocaleUrl(locale, "/AIWiki/")}>
-              <span>{locale === "zh-cn" ? "知识库" : "Knowledge"}</span>
-              <strong>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</strong>
-            </a>
-            <a class="console-card" href={getRelativeLocaleUrl(locale, "/qaskills/")}>
-              <span>{locale === "zh-cn" ? "自动化" : "Automation"}</span>
-              <strong>{locale === "zh-cn" ? "技能路径" : "Skill Paths"}</strong>
-            </a>
-            <a class="console-card" href={getRelativeLocaleUrl(locale, "/prompts/")}>
-              <span>{locale === "zh-cn" ? "AI 测试" : "AI Testing"}</span>
-              <strong>{locale === "zh-cn" ? "提示词库" : "Prompt Library"}</strong>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -316,7 +232,7 @@ const homePageSchema = {
     <CoreCapabilities locale={locale} />
     <HomeProofAndCases locale={locale} />
 
-    <section class="home-band home-band--parchment" aria-labelledby="home-explore-title">
+    <section class="home-band home-band--muted" aria-labelledby="home-explore-title">
       <div class="home-inner">
         <h2 id="home-explore-title" class="home-band__title">{t(HOME_EXPLORE_TITLE)}</h2>
         <p class="home-band__subtitle">{t(HOME_EXPLORE_SUBTITLE)}</p>
@@ -340,7 +256,7 @@ const homePageSchema = {
     >
       <div class="home-inner">
         <h2 id="home-latest-title" class="home-band__title">{t(HOME_LATEST_POSTS)}</h2>
-        <ul class="home-grid" role="list">
+        <ul class="home-post-list" role="list">
           {latestPosts.map((post) => {
             const idParts = post.id.split("/").slice(1);
             const postUrl = `/${locale}/blog/${idParts.join("/").toLowerCase()}/`;
@@ -350,18 +266,20 @@ const homePageSchema = {
             );
             return (
               <li>
-                <a class="home-card" href={postUrl}>
+                <a class="home-post-item" href={postUrl}>
                   <time
-                    class="home-card__meta"
+                    class="home-post-item__date"
                     datetime={post.data.date.toISOString()}
                   >
                     {dateStr}
                   </time>
-                  <h3 class="home-card__title">{post.data.title}</h3>
-                  {post.data.description && (
-                    <p class="home-card__desc">{post.data.description}</p>
-                  )}
-                  <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+                  <div class="home-post-item__body">
+                    <h3 class="home-post-item__title">{post.data.title}</h3>
+                    {post.data.description && (
+                      <p class="home-post-item__desc">{post.data.description}</p>
+                    )}
+                  </div>
+                  <span class="home-post-item__arrow" aria-hidden="true">→</span>
                 </a>
               </li>
             );
@@ -381,7 +299,7 @@ const homePageSchema = {
     <GoogleAdThin />
 
     <section
-      class="home-band home-band--parchment home-prompts"
+      class="home-band home-band--muted home-prompts"
       aria-labelledby="home-prompts-title"
     >
       <div class="home-inner">
@@ -490,25 +408,24 @@ const homePageSchema = {
     </section>
 
     <section
-      class="home-band home-band--parchment home-projects"
+      class="home-band home-band--muted home-projects"
       aria-labelledby="home-projects-title"
     >
       <div class="home-inner">
         <h2 id="home-projects-title" class="home-band__title">
           {t(HOME_PROJECTS_TITLE)}
         </h2>
-        <ul class="home-grid" role="list">
+        <ul class="home-project-list" role="list">
           {featuredProjects.map((proj) => (
             <li>
               <a
-                class="home-card"
+                class="home-project-item"
                 href={proj.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <h3 class="home-card__title">{t(proj.name)}</h3>
-                <p class="home-card__desc">{t(proj.description)}</p>
-                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
+                <h3 class="home-project-item__title">{t(proj.name)}</h3>
+                <p class="home-project-item__desc">{t(proj.description)}</p>
               </a>
             </li>
           ))}
@@ -642,21 +559,9 @@ const homePageSchema = {
     padding-block-end: 0;
   }
 
-  .home-page {
-    background: #f5f5f7;
-  }
-
   :global(.home-band) {
     width: 100%;
     padding-block: 72px;
-  }
-
-  :global(.home-band--white) {
-    background: #ffffff;
-  }
-
-  :global(.home-band--parchment) {
-    background: #f5f5f7;
   }
 
   :global(.home-inner) {
@@ -688,66 +593,6 @@ const homePageSchema = {
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-  }
-
-  .home-primary-entries {
-    list-style: none;
-    margin: 36px 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    text-align: start;
-  }
-
-  .home-primary-entry {
-    display: grid;
-    gap: 8px;
-    min-height: 156px;
-    padding: 22px;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 16%, #d8d8dc);
-    border-radius: 16px;
-    color: #1d1d1f;
-    background: #fafafc;
-    text-decoration: none;
-  }
-
-  .home-primary-entry:hover,
-  .home-primary-entry:focus-visible {
-    border-color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 6%, #ffffff);
-  }
-
-  .home-primary-entry__eyebrow {
-    font-size: 12px;
-    line-height: 1.3;
-    color: var(--color-theme);
-    font-weight: 700;
-  }
-
-  .home-primary-entry__title {
-    font-size: 19px;
-    line-height: 1.25;
-    font-weight: 700;
-  }
-
-  .home-primary-entry__desc {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #6e6e73;
-  }
-
-  .home-primary-entry__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-self: end;
-  }
-
-  .home-primary-entry__actions a {
-    color: var(--color-theme);
-    font-weight: 700;
-    text-decoration: none;
   }
 
   :global(.home-band__title) {
@@ -866,15 +711,6 @@ const homePageSchema = {
     color: var(--color-theme);
   }
 
-  .home-latest-posts .home-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .home-latest-posts .home-card {
-    min-height: 136px;
-    padding: 20px;
-  }
-
   .home-chip-cloud {
     list-style: none;
     margin: 28px 0 0;
@@ -922,8 +758,6 @@ const homePageSchema = {
       width: min(980px, calc(100% - 32px));
     }
 
-    .home-primary-entries,
-    .home-latest-posts .home-grid,
     .home-grid {
       grid-template-columns: 1fr;
     }
@@ -933,7 +767,7 @@ const homePageSchema = {
   .home-page {
     background:
       linear-gradient(rgba(79, 70, 229, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20, 184, 166, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79, 70, 229, 0.035) 1px, transparent 1px),
       #f8fafc;
     background-size: 42px 42px, 42px 42px, auto;
   }
@@ -945,7 +779,7 @@ const homePageSchema = {
   }
 
   :global(.home-band--white),
-  :global(.home-band--parchment) {
+  :global(.home-band--muted) {
     background: transparent;
   }
 
@@ -964,11 +798,11 @@ const homePageSchema = {
     width: min(1120px, calc(100% - 48px));
   }
 
-  .home-apple-hero {
-    min-height: 640px;
+  .home-hero {
+    min-height: 380px;
     display: grid;
     align-items: center;
-    padding-block: 96px 72px;
+    padding-block: 80px 64px;
     background: var(--gradient-hero);
   }
 
@@ -990,7 +824,7 @@ const homePageSchema = {
     height: 5px;
     margin: 22px auto 0;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--color-theme), var(--color-accent));
+    background: linear-gradient(90deg, var(--color-theme), var(--color-theme-light));
   }
 
   .home-hero__subtitle {
@@ -1015,7 +849,7 @@ const homePageSchema = {
   }
 
   .pill-cta--primary {
-    background: linear-gradient(135deg, var(--color-theme), color-mix(in srgb, var(--color-theme) 76%, var(--color-accent)));
+    background: linear-gradient(135deg, var(--color-theme), color-mix(in srgb, var(--color-theme) 76%, var(--color-theme-light)));
     color: white;
     border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
     box-shadow: 0 18px 40px rgba(79, 70, 229, 0.22);
@@ -1031,96 +865,6 @@ const homePageSchema = {
   .pill-cta:hover,
   .pill-cta:focus-visible {
     transform: translateY(-2px);
-  }
-
-  .home-hero-console {
-    max-width: 780px;
-    margin: 42px auto 0;
-    padding: 14px;
-    border: 1px solid rgba(148, 163, 184, 0.24);
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(22px);
-    text-align: start;
-  }
-
-  .console-topbar {
-    display: flex;
-    gap: 7px;
-    padding: 6px 8px 14px;
-  }
-
-  .console-topbar span {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: #cbd5e1;
-  }
-
-  .console-topbar span:nth-child(1) {
-    background: #fb7185;
-  }
-
-  .console-topbar span:nth-child(2) {
-    background: #fbbf24;
-  }
-
-  .console-topbar span:nth-child(3) {
-    background: #34d399;
-  }
-
-  .console-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 12px;
-  }
-
-  .console-card {
-    display: block;
-    min-height: 120px;
-    padding: 18px;
-    border: 1px solid rgba(148, 163, 184, 0.24);
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
-    color: inherit;
-    text-decoration: none;
-    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-  }
-
-  .console-card:hover,
-  .console-card:focus-visible {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--color-theme) 42%, transparent);
-    box-shadow: var(--shadow-md);
-  }
-
-  .console-card span {
-    display: block;
-    margin-bottom: 22px;
-    color: var(--color-text-tertiary);
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  .console-card strong {
-    display: block;
-    color: var(--color-main);
-    font-family: var(--font-heading);
-    font-size: 20px;
-    line-height: 1.2;
-  }
-
-  .console-card--primary {
-    background:
-      linear-gradient(135deg, rgba(79, 70, 229, 0.95), rgba(20, 184, 166, 0.88));
-    color: white;
-    border-color: transparent;
-  }
-
-  .console-card--primary span,
-  .console-card--primary strong {
-    color: white;
   }
 
   :global(.home-band__title) {
@@ -1143,7 +887,7 @@ const homePageSchema = {
     min-height: 190px;
     padding: 24px;
     border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
     box-shadow: var(--shadow-sm);
@@ -1184,6 +928,132 @@ const homePageSchema = {
     font-weight: 800;
   }
 
+  /* 最新文章：纵向行列表，与卡片阵列错开布局 */
+  .home-post-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: start;
+  }
+
+  .home-post-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .home-post-item:hover,
+  .home-post-item:focus-visible {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .home-post-item__date {
+    flex: 0 0 auto;
+    min-width: 92px;
+    color: var(--color-text-tertiary);
+    font-size: 13px;
+  }
+
+  .home-post-item__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .home-post-item__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--color-main);
+  }
+
+  .home-post-item__desc {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--color-text-tertiary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .home-post-item__arrow {
+    flex: 0 0 auto;
+    color: var(--color-theme);
+    font-weight: 800;
+  }
+
+  /* 精选项目：紧凑行列表 */
+  .home-project-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    text-align: start;
+  }
+
+  .home-project-item {
+    display: block;
+    padding: 16px 20px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .home-project-item:hover,
+  .home-project-item:focus-visible {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .home-project-item__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--color-main);
+  }
+
+  .home-project-item__desc {
+    margin: 4px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-tertiary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .home-chip {
     border-color: rgba(148, 163, 184, 0.24);
     background: rgba(255, 255, 255, 0.78);
@@ -1204,7 +1074,7 @@ const homePageSchema = {
       padding-block: 58px;
     }
 
-    .home-apple-hero {
+    .home-hero {
       min-height: 0;
       padding-block: 72px 52px;
     }
@@ -1221,16 +1091,8 @@ const homePageSchema = {
       width: min(980px, calc(100% - 32px));
     }
 
-    .console-grid {
+    .home-project-list {
       grid-template-columns: 1fr;
-    }
-
-    .console-card {
-      min-height: 98px;
-    }
-
-    .console-card span {
-      margin-bottom: 12px;
     }
 
     :global(.home-band__title) {

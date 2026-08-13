@@ -386,7 +386,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     width: 100%;
     aspect-ratio: 16 / 7.2;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     margin-block-end: var(--sp-m);
     box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   }
@@ -451,7 +451,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     background-color: var(--color-theme);
     color: white;
     padding: 0.35rem 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -472,7 +472,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     margin: 1.25rem 0 1rem;
     padding: 0.9rem 1rem;
     border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-theme) 8%, transparent);
   }
   .blog-related-terms h2 {
@@ -574,7 +574,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
     font-size: 0.9em;
     padding: 0.15em 0.4em;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: color-mix(in srgb, var(--color-main) 12%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
   }

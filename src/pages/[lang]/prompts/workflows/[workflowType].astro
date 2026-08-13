@@ -187,7 +187,7 @@ const howToSchema = {
   }
   .workflow-sidebar-inner {
     border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
   }
   .workflow-sidebar-toggle {
@@ -245,7 +245,7 @@ const howToSchema = {
     font-weight: 500;
     color: color-mix(in srgb, var(--color-main) 85%, transparent);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     transition: background 0.15s ease, color 0.15s ease;
     line-height: 1.4;
   }
@@ -273,7 +273,7 @@ const howToSchema = {
     font-weight: 500;
     color: color-mix(in srgb, var(--color-main) 60%, transparent);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     transition: color 0.15s ease;
   }
   .workflow-sidebar-back:hover {
@@ -323,7 +323,7 @@ const howToSchema = {
     font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
     font-size: 0.9em; color: var(--color-theme);
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    padding: 0.15em 0.4em; border-radius: 4px;
+    padding: 0.15em 0.4em; border-radius: var(--radius-sm);
   }
   .workflow-content :global(pre) {
     direction: ltr; padding: 1em 1.25em; border-radius: 8px;

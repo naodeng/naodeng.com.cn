@@ -4,7 +4,7 @@ import { HOME_EXAMPLES } from "@/data/homeTaskEntries";
 interface Props { locale: Lang }
 const { locale } = Astro.props;
 ---
-<section class="home-band home-band--parchment" aria-labelledby="home-proof-title"><div class="home-inner home-proof-inner">
+<section class="home-band home-band--muted" aria-labelledby="home-proof-title"><div class="home-inner home-proof-inner">
   <h2 id="home-proof-title" class="home-band__title">{locale === "zh-cn" ? "从输入到可评审交付物" : "From input to reviewable deliverable"}</h2>
   <p class="home-band__subtitle">{locale === "zh-cn" ? "这些能力用于加速分析与整理，最终结论仍应结合项目上下文和人工评审。" : "These capabilities accelerate analysis and structuring; final decisions still require project context and human review."}</p>
   <ol class="example-grid">{HOME_EXAMPLES[locale].map(example => <li data-home-example={example.key}><p><strong>{locale === "zh-cn" ? "输入" : "Input"}</strong>{example.input}</p><span>→</span><p><strong>{locale === "zh-cn" ? "能力" : "Capability"}</strong>{example.capability}</p><span>→</span><p><strong>{locale === "zh-cn" ? "输出" : "Output"}</strong>{example.output}</p></li>)}</ol>

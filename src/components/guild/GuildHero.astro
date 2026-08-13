@@ -15,13 +15,13 @@ const isZh = locale === 'zh-cn';
 
 const content = {
   'zh-cn': {
-    badge: '🚀 测试自动化指南',
+    badge: '测试自动化指南',
     title: '让自动化测试成为你的超能力',
     description: '系统化的学习路径，从入门到进阶，涵盖接口测试、UI 测试和性能测试。选择你感兴趣的框架，开始你的自动化测试之旅。',
     stats: { testTypes: '测试类型', frameworks: '测试框架', learningPaths: '学习路径' },
   },
   'en': {
-    badge: '🚀 Test Automation Guild',
+    badge: 'Test Automation Guild',
     title: 'Make Test Automation Your Superpower',
     description: 'Systematic learning paths from beginner to advanced, covering API testing, UI testing, and performance testing. Choose your framework and start your journey.',
     stats: { testTypes: 'Test Types', frameworks: 'Frameworks', learningPaths: 'Learning Paths' },
@@ -36,7 +36,10 @@ const totalTestTypes = guildConfig.testTypes.length;
 
 <div class="guild-hero">
   <div class="guild-hero__inner">
-    <div class="guild-hero__badge">{text.badge}</div>
+    <div class="guild-hero__badge">
+      <span class="material-icons-sharp" aria-hidden="true">rocket_launch</span>
+      {text.badge}
+    </div>
     <h1 class="guild-hero__title">{text.title}</h1>
     <p class="guild-hero__description">{text.description}</p>
 
@@ -62,7 +65,7 @@ const totalTestTypes = guildConfig.testTypes.length;
 <style>
   .guild-hero {
     padding: 3rem 2rem 2.5rem;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--color-theme) 3%, var(--color-base));
     border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
     position: relative;

@@ -34,7 +34,7 @@ export const guildConfigZhCn: GuildConfig = {
       id: 'api-testing',
       title: '接口自动化测试',
       description: '学习如何使用各种框架进行 API 自动化测试',
-      icon: '🔌',
+      icon: 'power',
       frameworks: [
         {
           id: 'postman',
@@ -92,7 +92,7 @@ export const guildConfigZhCn: GuildConfig = {
       id: 'ui-testing',
       title: 'UI 自动化测试',
       description: '学习如何进行 Web UI 自动化测试',
-      icon: '🖥️',
+      icon: 'desktop_windows',
       frameworks: [
         {
           id: 'playwright',
@@ -120,7 +120,7 @@ export const guildConfigZhCn: GuildConfig = {
       id: 'performance-testing',
       title: '性能测试',
       description: '学习如何进行性能测试和压力测试',
-      icon: '⚡',
+      icon: 'bolt',
       frameworks: [
         {
           id: 'k6',
@@ -154,7 +154,7 @@ export const guildConfigEn: GuildConfig = {
       id: 'api-testing',
       title: 'API Automation Testing',
       description: 'Learn how to perform API automation testing with various frameworks',
-      icon: '🔌',
+      icon: 'power',
       frameworks: [
         {
           id: 'postman',
@@ -212,7 +212,7 @@ export const guildConfigEn: GuildConfig = {
       id: 'ui-testing',
       title: 'UI Automation Testing',
       description: 'Learn how to perform Web UI automation testing',
-      icon: '🖥️',
+      icon: 'desktop_windows',
       frameworks: [
         {
           id: 'playwright',
@@ -240,7 +240,7 @@ export const guildConfigEn: GuildConfig = {
       id: 'performance-testing',
       title: 'Performance Testing',
       description: 'Learn how to perform performance and load testing',
-      icon: '⚡',
+      icon: 'bolt',
       frameworks: [
         {
           id: 'k6',

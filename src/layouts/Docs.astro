@@ -163,14 +163,14 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   .docs-content :global(code) {
     font-size: 0.9em;
     padding: 0.15em 0.4em;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
   }
   .docs-content :global(pre) {
     overflow-x: auto;
     padding: var(--sp-m);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     background: color-mix(in srgb, var(--color-main) 8%, var(--color-base));
     border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
     margin-block: 1em 0;

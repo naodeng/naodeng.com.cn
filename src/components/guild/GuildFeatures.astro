@@ -10,27 +10,27 @@ const { locale } = Astro.props;
 
 const content = {
   'zh-cn': {
-    badge: '🎯 核心特性',
+    badge: '核心特性',
     title: '为什么选择这里',
     features: [
-      { icon: '📚', title: '全生命周期覆盖', description: '从环境搭建到 CI/CD 集成的完整学习路径' },
-      { icon: '🌐', title: '多语言支持', description: '支持 JavaScript、Python、Java 等主流编程语言' },
-      { icon: '📖', title: '完整版 + 精简版', description: '每个框架都提供详细教程和快速入门指南' },
-      { icon: '💡', title: '实战导向', description: '提供 GitHub Demo 项目和最佳实践指导' },
-      { icon: '🚀', title: '持续更新', description: '跟随技术发展，持续更新内容和示例' },
-      { icon: '🔧', title: '可扩展性好', description: '模块化设计，便于学习和实践应用' },
+      { icon: 'menu_book', title: '全生命周期覆盖', description: '从环境搭建到 CI/CD 集成的完整学习路径' },
+      { icon: 'public', title: '多语言支持', description: '支持 JavaScript、Python、Java 等主流编程语言' },
+      { icon: 'auto_stories', title: '完整版 + 精简版', description: '每个框架都提供详细教程和快速入门指南' },
+      { icon: 'lightbulb', title: '实战导向', description: '提供 GitHub Demo 项目和最佳实践指导' },
+      { icon: 'rocket_launch', title: '持续更新', description: '跟随技术发展，持续更新内容和示例' },
+      { icon: 'build', title: '可扩展性好', description: '模块化设计，便于学习和实践应用' },
     ],
   },
   'en': {
-    badge: '🎯 Core Features',
+    badge: 'Core Features',
     title: 'Why Learn Here',
     features: [
-      { icon: '📚', title: 'Full Lifecycle Coverage', description: 'Complete learning paths from setup to CI/CD integration' },
-      { icon: '🌐', title: 'Multi-Language Support', description: 'Support for JavaScript, Python, Java and more' },
-      { icon: '📖', title: 'Complete + Quick Start', description: 'Detailed tutorials and quick start guides for each framework' },
-      { icon: '💡', title: 'Practice-Oriented', description: 'GitHub demo projects and best practice guidance' },
-      { icon: '🚀', title: 'Continuously Updated', description: 'Content and examples updated with technology evolution' },
-      { icon: '🔧', title: 'Highly Extensible', description: 'Modular design for easy learning and practical application' },
+      { icon: 'menu_book', title: 'Full Lifecycle Coverage', description: 'Complete learning paths from setup to CI/CD integration' },
+      { icon: 'public', title: 'Multi-Language Support', description: 'Support for JavaScript, Python, Java and more' },
+      { icon: 'auto_stories', title: 'Complete + Quick Start', description: 'Detailed tutorials and quick start guides for each framework' },
+      { icon: 'lightbulb', title: 'Practice-Oriented', description: 'GitHub demo projects and best practice guidance' },
+      { icon: 'rocket_launch', title: 'Continuously Updated', description: 'Content and examples updated with technology evolution' },
+      { icon: 'build', title: 'Highly Extensible', description: 'Modular design for easy learning and practical application' },
     ],
   },
 };
@@ -40,14 +40,17 @@ const text = content[locale as keyof typeof content] ?? content['en'];
 
 <section class="gf-section">
   <div class="gf-heading">
-    <div class="gf-badge">{text.badge}</div>
+    <div class="gf-badge">
+      <span class="material-icons-sharp" aria-hidden="true">track_changes</span>
+      {text.badge}
+    </div>
     <h2 class="gf-title">{text.title}</h2>
   </div>
 
   <div class="gf-grid">
     {text.features.map((f) => (
       <div class="gf-card">
-        <span class="gf-card__icon" aria-hidden="true">{f.icon}</span>
+        <span class="gf-card__icon material-icons-sharp" aria-hidden="true">{f.icon}</span>
         <h3 class="gf-card__title">{f.title}</h3>
         <p class="gf-card__desc">{f.description}</p>
       </div>
@@ -59,7 +62,7 @@ const text = content[locale as keyof typeof content] ?? content['en'];
   .gf-section {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1.75rem 1.5rem;
   }
 

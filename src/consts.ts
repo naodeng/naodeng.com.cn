@@ -418,6 +418,12 @@ export const HOME_EXPLORE_CARDS: Record<
       title: "Projects",
       desc: "开源与作品",
     },
+    {
+      key: "blog",
+      path: "/blog",
+      title: "博客",
+      desc: "文章与实践笔记",
+    },
   ],
   en: [
     {
