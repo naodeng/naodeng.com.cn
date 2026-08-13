@@ -668,6 +668,26 @@ export const ABOUT_CONNECT_BODY: Multilingual = {
   en: "**Email:** dengnao@gmail.com · **Twitter:** [@inaodeng](https://twitter.com/inaodeng)",
   "zh-cn": "**邮箱：** dengnao@gmail.com · **Twitter：** [@inaodeng](https://twitter.com/inaodeng)",
 };
+export const ABOUT_HERO_NAME: Multilingual = {
+  en: "Nao Deng",
+  "zh-cn": "naodeng",
+};
+export const ABOUT_HERO_TAGLINE: Multilingual = {
+  en: "Software testing & QA. I write about test automation, quality, and AI-assisted testing.",
+  "zh-cn": "软件测试与质量。持续输出测试自动化、质量保障与 AI 辅助测试的内容。",
+};
+export const ABOUT_STAT_ARTICLES: Multilingual = {
+  en: "articles",
+  "zh-cn": "篇文章",
+};
+export const ABOUT_STAT_PROJECTS: Multilingual = {
+  en: "featured projects",
+  "zh-cn": "精选项目",
+};
+export const ABOUT_STAT_TOPICS: Multilingual = {
+  en: "content pillars",
+  "zh-cn": "内容栏目",
+};
 
 // 精选项目（关于页）
 export const FEATURED_PROJECTS: Array<{

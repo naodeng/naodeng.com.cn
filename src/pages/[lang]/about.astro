@@ -2,11 +2,16 @@
 import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { getCollection } from "astro:content";
 import { marked } from "marked";
-import PageHeadline from "@/components/PageHeadline.astro";
 import {
   ABOUT_PAGE_TITLE,
   ABOUT_PAGE_DESCRIPTION,
+  ABOUT_HERO_NAME,
+  ABOUT_HERO_TAGLINE,
+  ABOUT_STAT_ARTICLES,
+  ABOUT_STAT_PROJECTS,
+  ABOUT_STAT_TOPICS,
   ABOUT_ME_TITLE,
   ABOUT_ME_BODY,
   ABOUT_TECH_TITLE,
@@ -34,30 +39,18 @@ const breadcrumbs = [
   { name: title, url: `/${locale}/about/` },
 ];
 
-// 技术栈徽章（与 GitHub https://github.com/naodeng 及本站项目、博客内容一致）
-const testingBadges = [
-  { alt: "Playwright", src: "https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" },
-  { alt: "Selenium", src: "https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" },
-  { alt: "Cypress", src: "https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" },
-  { alt: "Postman", src: "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" },
-  { alt: "K6", src: "https://img.shields.io/badge/K6-7D64FF?style=for-the-badge&logo=k6&logoColor=white" },
-];
-const apiPerfBadges = [
-  { alt: "RestAssured", src: "https://img.shields.io/badge/RestAssured-00A67E?style=for-the-badge" },
-  { alt: "SuperTest", src: "https://img.shields.io/badge/SuperTest-339933?style=for-the-badge&logo=node.js&logoColor=white" },
-  { alt: "Gatling", src: "https://img.shields.io/badge/Gatling-ED2B2B?style=for-the-badge" },
-  { alt: "Pytest", src: "https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" },
-];
-const languageBadges = [
-  { alt: "Python", src: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" },
-  { alt: "JavaScript", src: "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" },
-  { alt: "TypeScript", src: "https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" },
-  { alt: "Java", src: "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" },
-  { alt: "Scala", src: "https://img.shields.io/badge/Scala-DC322F?style=for-the-badge&logo=scala&logoColor=white" },
-];
-const devOpsBadges = [
-  { alt: "GitHub Actions", src: "https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" },
-  { alt: "Docker", src: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" },
+// 真实数据：当前语言的文章数、精选项目数、内容栏目数
+const allPosts = await getCollection("blog");
+const articleCount = allPosts.filter((p) => p.id.split("/")[0] === locale).length;
+const projectCount = FEATURED_PROJECTS.length;
+const topicCount = 8; // Blog / Docs / Wiki / AI Wiki / Guild / Prompts / Workflows / QA Skills
+
+// 技术栈（原生 chip，替代外链 shields 徽章）
+const techGroups = [
+  { icon: "devices", title: ABOUT_TECH_TESTING, items: ["Playwright", "Selenium", "Cypress", "Postman", "K6"] },
+  { icon: "speed", title: ABOUT_TECH_API_PERF, items: ["RestAssured", "SuperTest", "Gatling", "Pytest"] },
+  { icon: "code", title: ABOUT_TECH_LANGUAGES, items: ["Python", "JavaScript", "TypeScript", "Java", "Scala"] },
+  { icon: "build", title: ABOUT_TECH_DEVOPS, items: ["GitHub Actions", "Docker"] },
 ];
 
 const aboutMeHtml = marked(t(ABOUT_ME_BODY), { gfm: true }) as string;
@@ -74,7 +67,25 @@ export const getStaticPaths = () =>
 ---
 
 <Layout {title} description={description} breadcrumbs={breadcrumbs}>
-  <PageHeadline {title} />
+  <section class="about-hero">
+    <div class="about-hero__mark" aria-hidden="true">N</div>
+    <h1 class="about-hero__name">{t(ABOUT_HERO_NAME)}</h1>
+    <p class="about-hero__tagline">{t(ABOUT_HERO_TAGLINE)}</p>
+    <ul class="about-hero__stats" role="list">
+      <li class="about-stat">
+        <strong>{articleCount}</strong>
+        <span>{t(ABOUT_STAT_ARTICLES)}</span>
+      </li>
+      <li class="about-stat">
+        <strong>{projectCount}</strong>
+        <span>{t(ABOUT_STAT_PROJECTS)}</span>
+      </li>
+      <li class="about-stat">
+        <strong>{topicCount}</strong>
+        <span>{t(ABOUT_STAT_TOPICS)}</span>
+      </li>
+    </ul>
+  </section>
 
   <section class="about-section">
     <h2 class="section-title">{t(ABOUT_ME_TITLE)}</h2>
@@ -89,41 +100,34 @@ export const getStaticPaths = () =>
         : "Aligned with GitHub profile and site projects & blog: UI/E2E, API, performance testing, languages, and DevOps."}
       <a href="https://github.com/naodeng" target="_blank" rel="noopener noreferrer" class="tech-github-link">GitHub @naodeng</a>
     </p>
-    <h3 class="subsection-title">{t(ABOUT_TECH_TESTING)}</h3>
-    <div class="badges">
-      {testingBadges.map((b) => (
-        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
-      ))}
-    </div>
-    <h3 class="subsection-title">{t(ABOUT_TECH_API_PERF)}</h3>
-    <div class="badges">
-      {apiPerfBadges.map((b) => (
-        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
-      ))}
-    </div>
-    <h3 class="subsection-title">{t(ABOUT_TECH_LANGUAGES)}</h3>
-    <div class="badges">
-      {languageBadges.map((b) => (
-        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
-      ))}
-    </div>
-    <h3 class="subsection-title">{t(ABOUT_TECH_DEVOPS)}</h3>
-    <div class="badges">
-      {devOpsBadges.map((b) => (
-        <img src={b.src} alt={b.alt} width="128" height="28" loading="lazy" />
+    <div class="tech-grid">
+      {techGroups.map((g) => (
+        <article class="tech-card">
+          <div class="tech-card__head">
+            <span class="tech-card__icon material-icons-sharp" aria-hidden="true">{g.icon}</span>
+            <h3 class="tech-card__title">{t(g.title)}</h3>
+          </div>
+          <ul class="tech-chips" role="list">
+            {g.items.map((item) => (
+              <li class="tech-chip">{item}</li>
+            ))}
+          </ul>
+        </article>
       ))}
     </div>
   </section>
 
   <section class="about-section">
     <h2 class="section-title">{t(ABOUT_PROJECTS_TITLE)}</h2>
-    <ul class="project-list">
+    <ul class="project-grid" role="list">
       {FEATURED_PROJECTS.map((proj) => (
         <li>
           <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
-            <strong>{t(proj.title)}</strong>
+            <span class="project-card__title-row">
+              <strong class="project-card__title">{t(proj.title)}</strong>
+              <span class="material-icons-sharp dir" aria-hidden="true">open_in_new</span>
+            </span>
             <span class="project-desc">{t(proj.description)}</span>
-            <span class="material-icons-sharp dir">open_in_new</span>
           </a>
         </li>
       ))}
@@ -131,55 +135,108 @@ export const getStaticPaths = () =>
   </section>
 
   <section class="about-section">
-    <h2 class="section-title">{t(ABOUT_SUPPORT_TITLE)}</h2>
-    <div class="prose" set:html={supportHtml} />
-  </section>
-
-  <section class="about-section">
-    <h2 class="section-title">{t(ABOUT_CONNECT_TITLE)}</h2>
-    <div class="prose" set:html={connectHtml} />
+    <div class="about-two-col">
+      <div class="about-panel">
+        <span class="about-panel__icon material-icons-sharp" aria-hidden="true">favorite</span>
+        <h2 class="section-title">{t(ABOUT_SUPPORT_TITLE)}</h2>
+        <div class="prose" set:html={supportHtml} />
+      </div>
+      <div class="about-panel">
+        <span class="about-panel__icon material-icons-sharp" aria-hidden="true">alternate_email</span>
+        <h2 class="section-title">{t(ABOUT_CONNECT_TITLE)}</h2>
+        <div class="prose" set:html={connectHtml} />
+      </div>
+    </div>
   </section>
 </Layout>
 
 <style>
+  /* ── Hero ── */
+  .about-hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: var(--sp-s);
+    padding-block: var(--sp-l) var(--sp-m);
+  }
+  .about-hero__mark {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--gradient-theme);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    box-shadow: var(--shadow-product);
+  }
+  .about-hero__name {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.1;
+    color: var(--color-main);
+  }
+  .about-hero__tagline {
+    margin: 0;
+    max-width: 36em;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+  .about-hero__stats {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-s);
+    margin: var(--sp-m) 0 0;
+    padding: 0;
+  }
+  .about-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15em;
+    min-width: 120px;
+    padding: var(--sp-s) var(--sp-m);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: var(--shadow-sm);
+  }
+  .about-stat strong {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-theme);
+  }
+  .about-stat span {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+  }
+
+  /* ── Sections ── */
   .about-section {
     margin-block-start: var(--sp-l);
     padding-block-start: var(--sp-m);
-    border-block-start: 1px solid color-mix(
-      in srgb,
-      var(--color-theme) 20%,
-      transparent
-    );
+    border-block-start: 1px solid rgba(148, 163, 184, 0.22);
   }
   .section-title {
-    font-size: 1.35rem;
-    letter-spacing: 0.05em;
-    color: var(--color-theme);
-    margin-block-end: var(--sp-m);
-  }
-  .tech-intro {
     margin: 0 0 var(--sp-m);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.88;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    color: var(--color-main);
   }
-  .tech-github-link {
-    display: inline-block;
-    margin-block-start: 0.35em;
-    color: var(--color-theme);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px dashed var(--color-theme);
-    transition: border-color 0.2s ease;
-  }
-  .tech-github-link:hover {
-    border-bottom-style: solid;
-  }
-  .subsection-title {
-    font-size: 1.1rem;
-    margin-block: var(--sp-s) var(--sp-s);
-    font-weight: 600;
-  }
+
+  /* ── Prose ── */
   .prose :global(ul) {
     padding-inline-start: 1.2em;
   }
@@ -193,45 +250,157 @@ export const getStaticPaths = () =>
   .prose :global(strong) {
     font-weight: 800;
   }
-  .badges {
+
+  /* ── Tech stack ── */
+  .tech-intro {
+    margin: 0 0 var(--sp-m);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+  .tech-github-link {
+    display: inline-block;
+    margin-block-start: 0.35em;
+    color: var(--color-theme);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color-theme);
+    transition: border-color 0.2s ease;
+  }
+  .tech-github-link:hover {
+    border-bottom-style: solid;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-s);
+  }
+  .tech-card {
+    padding: var(--sp-m);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: var(--shadow-sm);
+  }
+  .tech-card__head {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-s);
+    margin-block-end: var(--sp-s);
+  }
+  .tech-card__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    font-size: 22px;
+  }
+  .tech-card__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-main);
+  }
+  .tech-chips {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-s);
-    margin-block-end: var(--sp-m);
-  }
-  .badges img {
-    height: 28px;
-    width: auto;
-    display: block;
-  }
-  .project-list {
-    list-style: none;
-    padding: 0;
+    gap: var(--space-8);
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+  }
+  .tech-chip {
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* ── Projects ── */
+  .project-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--sp-s);
+    margin: 0;
+    padding: 0;
   }
   .project-card {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.25em 0.5em;
+    flex-direction: column;
+    gap: var(--space-8);
+    height: 100%;
     padding: var(--sp-m);
-    border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    transition: background 0.2s ease;
+    border-radius: var(--radius-md);
+    background: var(--color-theme-soft);
+    border: 1px solid transparent;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .project-card:hover {
-    background: color-mix(in srgb, var(--color-theme) 14%, transparent);
+  .project-card:hover,
+  .project-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--color-theme);
+    box-shadow: var(--shadow-sm);
   }
-  .project-desc {
-    width: 100%;
-    font-size: 0.95rem;
-    opacity: 0.9;
+  .project-card__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+  .project-card__title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--color-main);
   }
   .project-card .material-icons-sharp {
-    margin-inline-start: auto;
-    opacity: 0.6;
+    color: var(--color-theme);
+    opacity: 0.7;
+  }
+  .project-desc {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  /* ── Support & Connect ── */
+  .about-two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-s);
+  }
+  .about-panel {
+    padding: var(--sp-m);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: var(--shadow-sm);
+  }
+  .about-panel__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    font-size: 22px;
+    margin-block-end: var(--sp-s);
+  }
+
+  @media (max-width: 700px) {
+    .tech-grid,
+    .project-grid,
+    .about-two-col {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
