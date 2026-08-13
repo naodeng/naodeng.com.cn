@@ -267,10 +267,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
           )}
           {docsUrl && (
             <a href={docsUrl} target="_blank" rel="noopener noreferrer" class="guild-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-              </svg>
+              <span class="material-icons-sharp" aria-hidden="true">menu_book</span>
               {locale === "zh-cn" ? "官方文档" : "Official Docs"}
             </a>
           )}
@@ -396,7 +393,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     font-weight: 600;
     color: #fff !important;
     background: var(--color-theme);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     text-decoration: none !important;
     transition: all 0.2s ease;
   }
@@ -502,7 +499,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .guild-pagination-link:hover {
     background: var(--color-surface);
     border-color: var(--color-theme);
-    box-shadow: 0 0 12px var(--glow-theme);
+    box-shadow: var(--shadow-sm);
   }
 
   .guild-pagination-prev:hover {

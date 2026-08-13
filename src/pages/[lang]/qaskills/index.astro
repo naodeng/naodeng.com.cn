@@ -505,7 +505,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   .btn-primary {
     color: white;
     background: var(--gradient-theme);
-    box-shadow: 0 14px 28px rgba(79, 70, 229, 0.2);
+    box-shadow: var(--shadow-product);
   }
   .btn-outline {
     color: var(--color-text-primary);
@@ -563,7 +563,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     gap: 0.75rem;
     justify-items: start;
     padding: 0.9rem;
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     border: 1px dashed rgba(148, 163, 184, 0.34);
     background: rgba(255, 255, 255, 0.72);
   }
@@ -579,7 +579,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     gap: 0.9rem;
   }
   .quick-card {
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.2);
     background: rgba(255, 255, 255, 0.78);
     padding: 1rem;
@@ -660,7 +660,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   .tag {
     display: inline-flex;
     align-items: center;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     padding: 0.15rem 0.45rem;
     border-radius: 999px;
@@ -706,7 +706,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   }
   .lifecycle-stage {
     flex: 1;
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.2);
     background: rgba(255, 255, 255, 0.78);
     padding: 0.75rem;
@@ -746,7 +746,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     gap: 0.35rem;
     text-decoration: none;
     color: inherit;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     border: 1px solid rgba(79, 70, 229, 0.14);
     background: rgba(79, 70, 229, 0.07);
     padding: 0.4rem 0.55rem;
@@ -769,7 +769,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   }
   .lifecycle-plus-tag {
     flex-shrink: 0;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 800;
     padding: 0.1rem 0.35rem;
     border-radius: 999px;

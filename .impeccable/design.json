@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-13T17:35:00+08:00",
+  "title": "Design System: Nao's Blog — Zenix",
+  "extensions": {
+    "colorMeta": {
+      "indigo": { "role": "primary", "displayName": "Zenix Indigo", "canonical": "#4f46e5", "tonalRamp": ["#0a0836", "#151070", "#2018aa", "#2a1fe0", "#665ee8", "#a19df1", "#ccc9f7", "#eeedfc"] },
+      "indigo-deep": { "role": "primary", "displayName": "Deep Indigo", "canonical": "#4338ca", "tonalRamp": ["#100d30", "#201b65", "#312999", "#4136c9", "#766ed8", "#aba6e7", "#d1cff2", "#f0effb"] },
+      "indigo-light": { "role": "primary", "displayName": "Light Indigo", "canonical": "#818cf8", "tonalRamp": ["#03083a", "#071179", "#0a1ab8", "#0d23f2", "#5160f5", "#959ef9", "#c5cafc", "#ecedfe"] },
+      "indigo-on-dark": { "role": "primary", "displayName": "Indigo On Dark", "canonical": "#a5b4fc" },
+      "indigo-soft": { "role": "primary", "displayName": "Indigo Soft", "canonical": "color-mix(in srgb, #4f46e5 10%, white)" },
+      "canvas": { "role": "neutral", "displayName": "Cool Canvas", "canonical": "#f8fafc" },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#ffffff" },
+      "surface-elevated": { "role": "neutral", "displayName": "Surface Elevated", "canonical": "rgba(255, 255, 255, 0.86)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0f172a", "tonalRamp": ["#10192d", "#22335e", "#334e8f", "#4367bc", "#7891cf", "#acbce1", "#d2daef", "#f0f3fa"] },
+      "slate": { "role": "neutral", "displayName": "Slate", "canonical": "#334155", "tonalRamp": ["#171d26", "#303d50", "#495d79", "#607a9f", "#8c9fba", "#b9c4d5", "#d9dfe8", "#f2f4f7"] },
+      "slate-soft": { "role": "neutral", "displayName": "Slate Soft", "canonical": "#64748b", "tonalRamp": ["#1a1e24", "#353e4a", "#515e71", "#6b7c94", "#94a1b2", "#bec5d0", "#dbe0e5", "#f3f5f6"] },
+      "surface-muted": { "role": "neutral", "displayName": "Surface Muted", "canonical": "#f1f5f9", "tonalRamp": ["#121f2b", "#264059", "#3a6188", "#4c80b3", "#7ea3c8", "#b0c7dd", "#d4e0ed", "#f1f5f9"] },
+      "border": { "role": "neutral", "displayName": "Border", "canonical": "#e2e8f0", "tonalRamp": ["#151d28", "#2b3d54", "#425c80", "#577aa8", "#869fc0", "#b5c4d9", "#d7dfea", "#f2f4f8"] },
+      "border-strong": { "role": "neutral", "displayName": "Border Strong", "canonical": "rgba(79, 70, 229, 0.16)" },
+      "caution": { "role": "semantic", "displayName": "Caution", "canonical": "#be123c" },
+      "warn": { "role": "semantic", "displayName": "Warn", "canonical": "#f59e0b" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero 与超大标题，Sora 800。" },
+      "body": { "displayName": "Body", "purpose": "正文与阅读内容，Noto Sans 400。" },
+      "label": { "displayName": "Label", "purpose": "导航、页脚、元信息、徽章，Sora 700。" }
+    },
+    "shadows": [
+      { "name": "sm", "value": "0 1px 2px rgba(15, 23, 42, 0.06)", "purpose": "药丸控件、社交图标。" },
+      { "name": "md", "value": "0 14px 35px rgba(15, 23, 42, 0.08)", "purpose": "常规卡片、玻璃卡。" },
+      { "name": "lg", "value": "0 24px 70px rgba(15, 23, 42, 0.12)", "purpose": "大面板、下拉菜单。" },
+      { "name": "product", "value": "0 18px 48px rgba(79, 70, 229, 0.16)", "purpose": "indigo 色调的产品光晕。" }
+    ],
+    "motion": [
+      { "name": "ease-base", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "默认状态过渡（0.25s）。" },
+      { "name": "ease-fast", "value": "160ms ease", "purpose": "hover / focus 微过渡。" }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "480px" },
+      { "name": "md", "value": "600px" },
+      { "name": "lg", "value": "834px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-pill",
+      "description": "药丸形主 CTA，白底 + indigo 文字 + indigo hairline 描边。",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><span>探索知识库</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;transition:background 160ms ease,color 160ms ease,border-color 160ms ease,transform 160ms ease}.ds-btn svg{width:16px;height:16px;flex-shrink:0}.ds-btn-primary{min-height:44px;padding:0 1rem;border-radius:9999px;background:var(--color-canvas,#ffffff);color:var(--color-theme,#4f46e5);border-color:var(--color-border-strong,rgba(79,70,229,0.16));box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06))}.ds-btn-primary:hover,.ds-btn-primary:focus-visible{background:var(--color-theme-soft-hover,#e3e1fb);border-color:var(--color-theme,#4f46e5)}.ds-btn-primary:active{transform:scale(0.95)}"
+    },
+    {
+      "name": "Tag / Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "药丸标签，indigo-soft 底 + indigo 文字 + indigo hairline 描边。",
+      "html": "<a class=\"ds-chip\" href=\"#\">软件测试</a>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;min-height:44px;padding:0.35rem 0.75rem;border-radius:9999px;border:1px solid var(--color-border-strong,rgba(79,70,229,0.16));background:var(--color-theme-soft,#edecfc);color:var(--color-theme,#4f46e5);font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:600;line-height:1.3;text-decoration:none;box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));transition:background 160ms ease,border-color 160ms ease}.ds-chip:hover,.ds-chip:focus-visible{background:var(--color-theme-soft-hover,#e3e1fb);border-color:var(--color-theme,#4f46e5)}"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "白玻璃搜索框，indigo 描边，聚焦转 indigo 光环。",
+      "html": "<div class=\"ds-input\"><svg class=\"ds-input__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"text\" placeholder=\"搜索知识库…\" aria-label=\"搜索\"/></div>",
+      "css": ".ds-input{display:flex;align-items:center;gap:0.5rem;min-height:44px;padding:0 0.875rem;border-radius:var(--radius-md,12px);border:1px solid var(--color-border-strong,rgba(79,70,229,0.16));background:var(--color-surface-elevated,rgba(255,255,255,0.86));transition:border-color 160ms ease,box-shadow 160ms ease}.ds-input__icon{width:18px;height:18px;flex-shrink:0;color:var(--color-text-tertiary,#64748b)}.ds-input input{flex:1;border:none;outline:none;background:transparent;font-family:\"Noto Sans\",\"Noto Sans SC\",ui-sans-serif,system-ui,sans-serif;font-size:1rem;color:var(--color-main,#0f172a)}.ds-input input::placeholder{color:var(--color-text-tertiary,#64748b)}.ds-input:focus-within{border-color:var(--color-theme,#4f46e5);box-shadow:0 0 0 3px rgba(79,70,229,0.18)}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "白玻璃卡片，18px 圆角 + hairline 边框 + 淡阴影，hover 上浮 3px 转 indigo 边框。",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card__title\">测试策略</h3><p class=\"ds-card__body\">从单元测试到端到端测试的完整实践，长期沉淀为可检索的知识。</p></div>",
+      "css": ".ds-card{padding:1rem;border-radius:var(--radius-lg,18px);background:var(--color-surface-elevated,rgba(255,255,255,0.86));border:1px solid var(--color-border,#e2e8f0);box-shadow:var(--shadow-md,0 14px 35px rgba(15,23,42,0.08));font-family:\"Noto Sans\",\"Noto Sans SC\",ui-sans-serif,system-ui,sans-serif;color:var(--color-main,#0f172a);transition:transform 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s cubic-bezier(0.4,0,0.2,1)}.ds-card:hover{transform:translateY(-3px);border-color:var(--color-border-strong,rgba(79,70,229,0.16))}.ds-card__title{margin:0 0 0.4rem;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:1.0625rem;font-weight:700;color:var(--color-main,#0f172a)}.ds-card__body{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--color-text-secondary,#334155)}"
+    },
+    {
+      "name": "Navigation Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "顶栏药丸导航胶囊，白玻璃底 + hairline 描边，激活项 indigo。",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__item\" href=\"#\">首页</a><a class=\"ds-nav__item is-active\" href=\"#\">博客</a><a class=\"ds-nav__item\" href=\"#\">Wiki</a></nav>",
+      "css": ".ds-nav{display:inline-flex;align-items:center;gap:0.18rem;padding:0.28rem;border-radius:9999px;border:1px solid rgba(148,163,184,0.22);background:rgba(255,255,255,0.72);box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));backdrop-filter:blur(20px)}.ds-nav__item{display:inline-flex;align-items:center;min-height:42px;padding:0 0.9rem;border-radius:9999px;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--color-text-secondary,#334155);text-decoration:none;transition:color 160ms ease,background-color 160ms ease}.ds-nav__item:hover,.ds-nav__item.is-active{color:var(--color-theme,#4f46e5);background:rgba(79,70,229,0.09)}"
+    },
+    {
+      "name": "Glass Panel",
+      "kind": "card",
+      "refersTo": "glass-panel",
+      "description": "页脚磨砂玻璃卡，18px 圆角 + blur 22px + hairline 边框 + 淡阴影。",
+      "html": "<div class=\"ds-panel\"><p class=\"ds-panel__title\">关于本站</p><p class=\"ds-panel__meta\">© 2026 · CC BY-NC-SA 4.0</p></div>",
+      "css": ".ds-panel{padding:34px;border-radius:var(--radius-lg,18px);border:1px solid rgba(148,163,184,0.22);background:rgba(255,255,255,0.74);box-shadow:var(--shadow-md,0 14px 35px rgba(15,23,42,0.08));backdrop-filter:blur(22px);font-family:\"Noto Sans\",\"Noto Sans SC\",ui-sans-serif,system-ui,sans-serif;color:var(--color-text-secondary,#334155)}.ds-panel__title{margin:0 0 0.4rem;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:1.0625rem;font-weight:700;color:var(--color-main,#0f172a)}.ds-panel__meta{margin:0;font-size:0.875rem;color:var(--color-text-tertiary,#64748b)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Frosted Lab",
+    "overview": "Zenix 是一套为双语技术知识库打造的冷色 SaaS 设计体系：冷静、清晰、高效、工具感。它像一间磨砂玻璃隔出的实验室——白色磨砂玻璃顶栏与玻璃页脚界定出壳层，内部是接近无色的冷灰画布（#f8fafc）和一张淡淡的 indigo 细网格，所有注意力都留给内容本身。视觉权威在壳层（顶栏 / 页脚）与首页，内容页（博客 / Wiki / Guild / Docs 阅读页）保持克制、不卡片化，只继承 token。indigo（#4f46e5）是全站唯一的主色，承担链接、主 CTA、焦点环与强调的全部职责；其余都是 slate 中性灰。系统浅色唯一，无暗色模式。",
+    "keyCharacteristics": [
+      "indigo 单一主色 + slate 冷灰中性色，无第二个 accent",
+      "磨砂玻璃（backdrop-filter blur 22px）作为壳层标志材质",
+      "冷灰画布 + 42px indigo 细网格背景",
+      "四档圆角（8 / 12 / 18 / 药丸），交互元素一律药丸形",
+      "内容优先、低噪、克制；hairline 边框 + 克制阴影，不重阴影",
+      "已确认的视觉反例：苹果风（已废弃）、16px 点阵背景、emoji 当图标、重阴影、内容页卡片化"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "indigo 是唯一主色。禁止新增第二个 accent 色（原 teal --color-accent 已删除）；所有渐变一律 indigo 系（theme → theme-focus 或 theme → theme-light）。", "section": "colors" },
+      { "name": "The Flat-By-Default Rule", "body": "表面静止时是平的。阴影只响应状态（hover / 悬浮 / 焦点）与层级，且一律 slate 色相——禁用纯黑阴影。", "section": "elevation" },
+      { "name": "The Four-Radius Rule", "body": "新增界面不得出现 8/12/18/药丸 之外的散值，一律写 var(--radius-*)。", "section": "shapes" }
+    ],
+    "dos": [
+      "使用四档圆角 var(--radius-sm/md/lg/xl)，交互元素一律药丸。",
+      "用 indigo 单一主色承担强调；渐变只走 indigo 系。",
+      "用 hairline 边框（1px，slate 22% / indigo 16%）区分表面，阴影保持克制（slate 色相）。",
+      "图标统一 Material Icons Sharp，禁止 emoji 当图标。",
+      "内容页保持克制排版，不卡片化，只继承 token。"
+    ],
+    "donts": [
+      "新增第二个 accent 色。",
+      "使用纯黑阴影（阴影一律 slate 色相）。",
+      "把背景改回 16px 点阵（42px indigo 网格有契约测试守护）。",
+      "在四档圆角之外散布新散值。",
+      "做暗色模式（浅色唯一，契约测试锁定）。",
+      "在英文 UI 与英文文案中用 em-dash / en-dash 作分隔符。",
+      "在卡片上堆重阴影或夸张渐变。"
+    ]
+  }
+}

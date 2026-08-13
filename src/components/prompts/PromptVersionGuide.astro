@@ -33,7 +33,7 @@ const { lang, items } = Astro.props;
 <style>
   .section-intro { color: var(--color-text-secondary); line-height: 1.7; }
   .version-grid { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .version-grid li { padding: 1.2rem; border: 1px solid rgba(148, 163, 184, .24); border-radius: 18px; background: rgba(255,255,255,.78); }
+  .version-grid li { padding: 1.2rem; border: 1px solid rgba(148, 163, 184, .24); border-radius: var(--radius-lg); background: rgba(255,255,255,.78); }
   .version-grid li[data-recommended="true"] { border-color: color-mix(in srgb, var(--color-theme) 45%, transparent); background: color-mix(in srgb, var(--color-theme) 6%, white); }
   .version-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
   h3, p { margin: 0; }

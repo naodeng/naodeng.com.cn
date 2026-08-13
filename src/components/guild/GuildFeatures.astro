@@ -103,7 +103,7 @@ const text = content[locale as keyof typeof content] ?? content['en'];
   .gf-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -113,7 +113,7 @@ const text = content[locale as keyof typeof content] ?? content['en'];
 
   .gf-card:hover {
     border-color: var(--color-theme);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
     transform: translateY(-4px);
   }
 

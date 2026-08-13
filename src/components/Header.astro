@@ -516,14 +516,12 @@ const mobilePriorityItems = [
     display: inline-flex;
     align-items: center;
     gap: 0;
-    color: #fff;
     text-decoration: none;
     white-space: nowrap;
     transition: opacity 0.18s ease;
   }
   .site-brand-link:hover {
     opacity: 0.8;
-    color: #fff;
   }
   .site-title-cobrand {
     display: inline-flex;
@@ -544,7 +542,6 @@ const mobilePriorityItems = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: color-mix(in srgb, white 70%, transparent);
     background: color-mix(in srgb, white 10%, transparent);
     border: 1px solid color-mix(in srgb, white 14%, transparent);
     border-radius: 999px;
@@ -596,7 +593,6 @@ const mobilePriorityItems = [
     font-size: 16px;
     font-weight: 400;
     letter-spacing: -0.16px;
-    color: #fff;
     opacity: 0.8;
     background: transparent;
     box-shadow: none;
@@ -608,7 +604,6 @@ const mobilePriorityItems = [
   .site-nav > ul > li > a:focus-visible,
   .nav-group-trigger:hover,
   .nav-group-trigger:focus-visible {
-    color: #fff;
     opacity: 1;
     background: transparent;
   }
@@ -619,7 +614,6 @@ const mobilePriorityItems = [
   }
   .site-nav > ul > li > a.active,
   .nav-group-trigger.active {
-    color: #fff;
     opacity: 1;
     background: transparent;
     box-shadow: none;
@@ -677,7 +671,6 @@ const mobilePriorityItems = [
     list-style: none;
     border: 1px solid color-mix(in srgb, white 12%, transparent);
     border-radius: var(--radius-md);
-    background: var(--color-main);
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
     transform-origin: top center;
     animation: nav-submenu-in 0.16s ease-out;
@@ -722,7 +715,6 @@ const mobilePriorityItems = [
     min-width: max-content;
     padding: 0.6rem 0.95rem;
     border-radius: var(--radius-sm);
-    color: #fff;
     background: transparent;
     border: 1px solid transparent;
     box-sizing: border-box;
@@ -747,7 +739,6 @@ const mobilePriorityItems = [
     width: 1.5rem;
     flex: 0 0 1.5rem;
     font-size: 1.35rem;
-    color: color-mix(in srgb, white 72%, transparent);
   }
   .nav-submenu-text {
     line-height: 1.25;
@@ -755,7 +746,6 @@ const mobilePriorityItems = [
     font-weight: 400;
     letter-spacing: -0.16px;
     flex: 1 1 auto;
-    color: #fff;
   }
   .nav-backdrop {
     display: none;
@@ -766,7 +756,6 @@ const mobilePriorityItems = [
     margin-inline-start: 0.1rem;
     padding-inline-start: 0.35rem;
     border-inline-start: 1px solid color-mix(in srgb, white 16%, transparent);
-    color: #fff;
   }
   .header-utils {
     display: flex;
@@ -802,35 +791,29 @@ const mobilePriorityItems = [
     padding-inline: 8px;
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
     border: none;
     border-radius: var(--radius-sm);
   }
   .nav-tool :global(.locale-trigger:hover),
   .nav-tool :global(.locale-trigger:focus-visible) {
-    color: #fff;
     background: color-mix(in srgb, white 10%, transparent);
     border-color: transparent;
   }
   .nav-tool :global(.icon-lang),
   .nav-tool :global(.icon-expand) {
-    color: #fff;
     opacity: 0.85;
     font-size: 22px;
   }
   .nav-tool :global(.locale-panel) {
-    background: var(--color-main);
     border: 1px solid color-mix(in srgb, white 12%, transparent);
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
   }
   .nav-tool :global(.locale-panel a) {
-    color: #fff;
     font-size: 16px;
     font-weight: 400;
   }
   .nav-tool :global(.locale-panel a:hover) {
     background: color-mix(in srgb, white 10%, transparent);
-    color: #fff;
   }
   .btn-icon {
     display: inline-flex;
@@ -844,7 +827,6 @@ const mobilePriorityItems = [
     font: inherit;
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
     background: transparent;
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
@@ -853,7 +835,6 @@ const mobilePriorityItems = [
   }
   .btn-icon:hover,
   .btn-icon:focus-visible {
-    color: #fff;
     background: color-mix(in srgb, white 10%, transparent);
     border-color: transparent;
   }
@@ -968,7 +949,6 @@ const mobilePriorityItems = [
       border: 0;
       padding: 0;
       margin: 0;
-      background: color-mix(in srgb, black 42%, transparent);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -1011,7 +991,6 @@ const mobilePriorityItems = [
       min-height: 74px;
       padding: 0.6rem 0.35rem;
       border-radius: var(--radius-sm);
-      color: #fff;
       text-align: center;
       text-decoration: none;
       background: color-mix(in srgb, white 8%, transparent);
@@ -1022,7 +1001,6 @@ const mobilePriorityItems = [
     }
     .mobile-priority-nav__icon {
       font-size: 24px;
-      color: color-mix(in srgb, white 78%, transparent);
     }
     .site-nav > ul > li > a,
     .nav-group-trigger {
@@ -1165,7 +1143,7 @@ const mobilePriorityItems = [
   .nav-submenu,
   .nav-tool :global(.locale-panel) {
     border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.94);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(24px);
@@ -1240,9 +1218,25 @@ const mobilePriorityItems = [
     }
 
     .site-nav > ul {
-      border-radius: 18px;
+      border-radius: var(--radius-lg);
       align-items: stretch;
       background: rgba(255, 255, 255, 0.82);
+    }
+
+    .mobile-priority-nav {
+      border-bottom-color: rgba(148, 163, 184, 0.22);
+    }
+    .mobile-priority-nav a {
+      color: var(--color-text-secondary);
+      background: color-mix(in srgb, var(--color-theme) 6%, white);
+    }
+    .mobile-priority-nav a:hover,
+    .mobile-priority-nav a:focus-visible {
+      color: var(--color-theme);
+      background: color-mix(in srgb, var(--color-theme) 10%, white);
+    }
+    .mobile-priority-nav__icon {
+      color: var(--color-theme);
     }
 
     .site-nav > ul > li > a,

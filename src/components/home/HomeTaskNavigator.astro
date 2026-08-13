@@ -18,7 +18,7 @@ const { locale } = Astro.props;
 </section>
 <style>
   .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-  a { display:block; height:100%; padding:1.2rem; border-radius:22px; background:#fff; border:1px solid rgba(148,163,184,.18); color:inherit; text-decoration:none; box-shadow:var(--shadow-sm); }
+  a { display:block; height:100%; padding:1.2rem; border-radius:var(--radius-lg); background:#fff; border:1px solid rgba(148,163,184,.18); color:inherit; text-decoration:none; box-shadow:var(--shadow-sm); }
   h3 { margin:0 0 .45rem; } p { color:var(--color-text-secondary); line-height:1.6; } span { color:var(--color-theme); font-weight:800; }
   @media(max-width:800px){.task-grid{grid-template-columns:repeat(2,minmax(0,1fr));}} @media(max-width:520px){.task-grid{grid-template-columns:1fr;}}
 </style>

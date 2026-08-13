@@ -156,9 +156,7 @@ const richDesc = locale === "zh-cn"
           )}
           {frameworkConfig.officialDocs && (
             <a href={frameworkConfig.officialDocs} target="_blank" rel="noopener noreferrer" class="fw-link fw-link--ghost">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-              </svg>
+              <span class="material-icons-sharp" aria-hidden="true">menu_book</span>
               {locale === "zh-cn" ? "官方文档" : "Official Docs"}
             </a>
           )}
@@ -218,10 +216,7 @@ const richDesc = locale === "zh-cn"
                     )}
                     <div class="article-meta">
                       <span class="article-meta-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <circle cx="12" cy="12" r="10"/>
-                          <polyline points="12 6 12 12 16 14"/>
-                        </svg>
+                        <span class="material-icons-sharp" aria-hidden="true">schedule</span>
                         {entry.data.duration ? `${entry.data.duration} ${locale === "zh-cn" ? "分钟" : "min"}` : "-"}
                       </span>
                       <span class="article-meta-item article-difficulty" data-difficulty={entry.data.difficulty}>
@@ -298,7 +293,7 @@ const richDesc = locale === "zh-cn"
     width: 56px;
     height: 56px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     flex-shrink: 0;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -323,7 +318,7 @@ const richDesc = locale === "zh-cn"
     gap: 0.3rem;
     padding: 0.2em 0.7em;
     border-radius: 999px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
   }
@@ -392,7 +387,7 @@ const richDesc = locale === "zh-cn"
   }
 
   .fw-stat__label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: color-mix(in srgb, var(--color-main) 55%, transparent);
     font-weight: 500;
     text-transform: uppercase;
@@ -418,7 +413,7 @@ const richDesc = locale === "zh-cn"
     align-items: center;
     gap: 0.45rem;
     padding: 0.55em 1.1em;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
@@ -435,7 +430,7 @@ const richDesc = locale === "zh-cn"
   .fw-link--start:hover {
     opacity: 0.88;
     transform: translateY(-2px);
-    box-shadow: 0 0 16px var(--glow-theme);
+    box-shadow: var(--shadow-sm);
   }
 
   .fw-link--primary {
@@ -477,7 +472,7 @@ const richDesc = locale === "zh-cn"
     flex-wrap: wrap;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
   }
 
@@ -492,14 +487,10 @@ const richDesc = locale === "zh-cn"
     font-weight: 800;
     color: var(--color-main);
     margin: 0;
-    background: linear-gradient(135deg, var(--color-main) 20%, var(--color-theme));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   .lp-count {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-theme);
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
@@ -574,7 +565,7 @@ const richDesc = locale === "zh-cn"
     padding: 1rem 1.1rem;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     text-decoration: none;
     transition: var(--transition-base);
   }
@@ -582,7 +573,7 @@ const richDesc = locale === "zh-cn"
   .article-card:hover {
     border-color: var(--color-theme);
     transform: translateY(-4px);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
 
   .article-title {
@@ -631,7 +622,7 @@ const richDesc = locale === "zh-cn"
     padding: 0.18em 0.6em;
     border-radius: var(--radius-sm);
     font-weight: 600;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
 
   .article-difficulty[data-difficulty="beginner"]    { background: rgba(16,185,129,.12); color: #10b981; }

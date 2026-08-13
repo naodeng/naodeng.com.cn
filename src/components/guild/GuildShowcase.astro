@@ -194,7 +194,7 @@ const isZh = locale === 'zh-cn';
     flex-direction: column;
     gap: 6px;
     padding: 16px;
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     background: rgba(248, 250, 252, 0.82);
     border: 1px solid rgba(148, 163, 184, 0.18);
     text-decoration: none;
@@ -275,7 +275,7 @@ const isZh = locale === 'zh-cn';
     color: #fff;
     background: var(--gradient-theme);
     border: 1px solid transparent;
-    box-shadow: 0 14px 28px rgba(79, 70, 229, 0.2);
+    box-shadow: var(--shadow-product);
   }
 
   .gs-cta:active {

@@ -61,7 +61,7 @@ const visibleTestTypes = guildConfig.testTypes.filter((t) => t.id !== "ui-testin
         {
           visibleTestTypes.map((t) => (
             <button class="filter-pill" data-filter={t.id}>
-              {t.icon && <span aria-hidden="true">{t.icon}</span>}
+              {t.icon && <span class="material-icons-sharp" aria-hidden="true">{t.icon}</span>}
               {t.title}
             </button>
           ))

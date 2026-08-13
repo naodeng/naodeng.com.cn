@@ -170,7 +170,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
           id="prompts-sidebar-toggle"
         >
           <span>{sidebarLabel}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
         </button>
         <nav id="prompts-sidebar-nav" class="prompts-sidebar-nav">
           <div class="prompts-sidebar-search">
@@ -228,7 +228,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
         </div>
         {rendered[0]?.usageTip && (
           <div class="prompt-detail-tip">
-            <span class="prompt-detail-tip-label" aria-hidden="true">💡 {lang === "zh-cn" ? "使用说明" : "Usage Tip"}</span>
+            <span class="prompt-detail-tip-label"><span class="material-icons-sharp" aria-hidden="true">lightbulb</span> {lang === "zh-cn" ? "使用说明" : "Usage Tip"}</span>
             <span class="prompt-usage-tip-text" set:html={rendered[0].usageTip.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")} />
           </div>
         )}
@@ -275,10 +275,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
               data-version={entry.data.promptVersion}
               aria-label={copyLabel}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
+              <span class="material-icons-sharp" aria-hidden="true">content_copy</span>
               <span class="prompt-copy-btn-text">{copyLabel}</span>
             </button>
           </div>
@@ -470,7 +467,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
   }
   .prompts-sidebar-inner {
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
   }
   .sidebar-ad-wrap {
@@ -594,7 +591,6 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     border-radius: var(--radius-md);
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
     background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
-    border-inline-start: 4px solid var(--color-theme);
     display: flex;
     flex-direction: column;
     gap: var(--sp-s);
@@ -614,7 +610,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     display: inline-flex;
     align-items: center;
     padding: 0.15em 0.65em;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -647,7 +643,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     padding: 0.5em 0.75em;
     background: color-mix(in srgb, var(--color-theme) 8%, var(--color-base));
     border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     line-height: 1.55;
     color: color-mix(in srgb, var(--color-main) 85%, transparent);
@@ -681,7 +677,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     font-family: inherit;
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
     border-block-end: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
     color: color-mix(in srgb, var(--color-main) 70%, transparent);
     cursor: pointer;
@@ -722,7 +718,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     color: var(--color-main);
     background: color-mix(in srgb, var(--color-main) 8%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
@@ -767,7 +763,7 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     padding: 0.15em 0.4em; border-radius: var(--radius-sm);
   }
   .prompt-content :global(pre) {
-    direction: ltr; padding: 1em 1.25em; border-radius: 8px;
+    direction: ltr; padding: 1em 1.25em; border-radius: var(--radius-sm);
     border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
     border-inline-start: 3px solid var(--color-theme);
     overflow-x: auto; margin-block: 1em 0;

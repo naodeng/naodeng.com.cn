@@ -1,6 +1,6 @@
 # Zenix 设计规范（现行）
 
-**状态：** 现行规范，取代 `docs/standards/apple-design-redesign.md`（该文档已标注废弃，仅供追溯）
+**状态：** 现行规范（2026-08-13 起生效）
 **日期：** 2026-08-13（`design-zenix-consolidation` 分支收敛落定）
 **源文件：** `src/styles/base.css`（token 契约）、`tests/unit/zenixDesignTokens.test.ts`（契约测试）
 
@@ -100,5 +100,4 @@
 
 关联文档：
 - 实施记录：`docs/tasks/zenix-design-consolidation-v1.md`
-- 废弃规范：`docs/standards/apple-design-redesign.md`（仅供追溯）
 - 广告位规范：`docs/standards/ads-inventory.md`

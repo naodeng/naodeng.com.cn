@@ -111,9 +111,7 @@ const text = content[locale as keyof typeof content] || content['en'];
         </div>
         {index < text.steps.length - 1 && (
           <div class="workflow-step__arrow" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
           </div>
         )}
       </div>
@@ -165,7 +163,7 @@ const text = content[locale as keyof typeof content] || content['en'];
   .workflow-step:hover {
     border-color: var(--color-theme);
     transform: translateY(-4px);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
 
   .workflow-step__number {
