@@ -25,7 +25,7 @@ const difficultyText = framework.difficulty
   : null;
 ---
 
-<div class="framework-card" style={`--framework-color: ${framework.color || '#6366f1'}`}>
+<div class="framework-card">
   <a href={guildPath} class="framework-card__main">
     <div class="framework-card__header">
       <div class="framework-card__icon">
@@ -82,18 +82,13 @@ const difficultyText = framework.difficulty
         class="framework-card__link"
         title="Official Docs"
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-11zM5 3v10h6V3H5z"/>
-          <path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z"/>
-        </svg>
+        <span class="material-icons-sharp" aria-hidden="true">description</span>
         Docs
       </a>
     )}
     <a href={guildPath} class="framework-card__link framework-card__link--primary">
       {locale === 'zh-cn' ? '开始学习' : 'Start Learning'}
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-        <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
+      <span class="material-icons-sharp" aria-hidden="true">chevron_right</span>
     </a>
   </div>
 </div>
@@ -112,7 +107,7 @@ const difficultyText = framework.difficulty
 
   .framework-card:hover {
     border-color: var(--color-theme);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
     transform: translateY(-4px);
   }
 
@@ -135,12 +130,12 @@ const difficultyText = framework.difficulty
   .framework-card__icon {
     width: 48px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
-    color: var(--framework-color);
+    color: var(--color-theme);
     flex-shrink: 0;
     padding: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -246,14 +241,14 @@ const difficultyText = framework.difficulty
 
   .framework-card__link:hover {
     background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    border-color: var(--framework-color);
+    border-color: var(--color-theme);
     color: var(--color-main);
   }
 
   .framework-card__link--primary {
-    background: var(--framework-color);
+    background: var(--color-theme);
     color: #ffffff !important;
-    border-color: var(--framework-color);
+    border-color: var(--color-theme);
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
@@ -261,7 +256,7 @@ const difficultyText = framework.difficulty
   .framework-card__link--primary:hover {
     opacity: 0.9;
     transform: translateX(2px);
-    background: var(--framework-color);
+    background: var(--color-theme);
     color: #ffffff !important;
   }
 

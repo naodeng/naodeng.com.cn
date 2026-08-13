@@ -37,7 +37,7 @@ const isZh = locale === 'zh-cn';
       aria-label={isZh ? `查看${testType.title}全部内容` : `View all ${testType.title}`}
     >
       {isZh ? '查看全部' : 'View all'}
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
     </a>
   </div>
 
@@ -50,7 +50,6 @@ const isZh = locale === 'zh-cn';
         <a
           href={path}
           class="fw-card"
-          style={`--fw-color: ${fw.color ?? 'var(--color-theme)'}`}
           title={fw.description}
         >
           <div class="fw-card__top">
@@ -67,7 +66,7 @@ const isZh = locale === 'zh-cn';
             <span class="fw-card__count">{count} {isZh ? '篇' : 'articles'}</span>
           )}
           <span class="fw-card__arrow" aria-hidden="true">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
           </span>
         </a>
       );
@@ -86,7 +85,7 @@ const isZh = locale === 'zh-cn';
 
   .tts:hover {
     border-color: var(--color-theme);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
 
   /* ── Header ── */
@@ -134,7 +133,7 @@ const isZh = locale === 'zh-cn';
     text-decoration: none;
     white-space: nowrap;
     padding: 0.3em 0.75em;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
     background: color-mix(in srgb, var(--color-theme) 6%, transparent);
     transition: var(--transition-base);
@@ -160,7 +159,7 @@ const isZh = locale === 'zh-cn';
     flex-direction: column;
     gap: 0.35rem;
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     text-decoration: none;
@@ -176,7 +175,7 @@ const isZh = locale === 'zh-cn';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: var(--fw-color, var(--color-theme));
+    background: var(--color-theme);
     opacity: 0;
     transition: var(--transition-base);
   }
@@ -184,7 +183,7 @@ const isZh = locale === 'zh-cn';
   .fw-card:hover {
     border-color: var(--color-theme);
     transform: translateY(-4px);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
 
   .fw-card:hover::before {
@@ -213,7 +212,7 @@ const isZh = locale === 'zh-cn';
   }
 
   .fw-card__lang {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: color-mix(in srgb, var(--color-main) 48%, transparent);
     background: color-mix(in srgb, var(--color-main) 7%, transparent);
@@ -233,7 +232,7 @@ const isZh = locale === 'zh-cn';
   }
 
   .fw-card__desc {
-    font-size: 0.73rem;
+    font-size: 0.75rem;
     color: color-mix(in srgb, var(--color-main) 52%, transparent);
     line-height: 1.4;
     display: -webkit-box;
@@ -244,7 +243,7 @@ const isZh = locale === 'zh-cn';
   }
 
   .fw-card__count {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     color: color-mix(in srgb, var(--color-main) 42%, transparent);
     margin-top: auto;
   }

@@ -248,7 +248,7 @@ const definedTermSetSchema = !isEn ? {
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     transition: var(--transition-base);
   }
@@ -307,7 +307,7 @@ const definedTermSetSchema = !isEn ? {
     color: var(--color-theme);
     border-color: var(--color-theme);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
   .wiki-letter-list .wiki-letter-link:focus-visible {
     outline: 2px solid var(--color-theme);

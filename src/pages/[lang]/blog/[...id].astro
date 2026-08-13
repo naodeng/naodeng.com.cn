@@ -173,7 +173,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
         <p class="article-meta">
           <span class="meta-item">
             <span class="meta-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span class="material-icons-sharp" aria-hidden="true">calendar_today</span>
             </span>
             <time datetime={post.data.date.toISOString()}>
               {post.data.date.toLocaleDateString(lang)}
@@ -182,14 +182,14 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
           <span class="meta-sep" aria-hidden="true">•</span>
           <span class="meta-item">
             <span class="meta-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span class="material-icons-sharp" aria-hidden="true">schedule</span>
             </span>
             <span>{readMinutes} {readingTimeLabel}</span>
           </span>
           <span class="meta-sep" aria-hidden="true">•</span>
           <span class="meta-item">
             <span class="meta-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1-5.66-5.66"/><path d="M12 12h.01"/></svg>
+              <span class="material-icons-sharp" aria-hidden="true">visibility</span>
             </span>
             <span>{ARTICLE_LICENSE}</span>
           </span>
@@ -198,7 +198,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
               <span class="meta-sep" aria-hidden="true">•</span>
               <span class="meta-item">
                 <span class="meta-icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                  <span class="material-icons-sharp" aria-hidden="true">refresh</span>
                 </span>
                 <time datetime={dateModified}>
                   {locale === "zh-cn" ? "更新于 " : "Updated "}
@@ -237,7 +237,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
       <div class="article-main">
         <div class="prose">
-          <Content class="material-icons" />
+          <Content />
         </div>
         {relatedTerms.length > 0 && (
           <section class="blog-related-terms" aria-labelledby="blog-related-terms-heading">
@@ -565,7 +565,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     margin-block: 1em 0;
     padding: 1rem 1.25rem;
     overflow-x: auto;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background: color-mix(in srgb, var(--color-main) 8%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
     font-size: 0.9rem;
@@ -598,7 +598,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .prose :global(img) {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: block;
     margin-block: 1em 0;
   }

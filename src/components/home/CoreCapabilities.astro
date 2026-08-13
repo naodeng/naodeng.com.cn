@@ -18,5 +18,5 @@ const items = locale === "zh-cn" ? [
   <ul class="capability-grid" role="list">{items.map(item => <li><a data-home-capability={item.key} href={getRelativeLocaleUrl(locale,item.path)}><span>{item.key}</span><h3>{item.title}</h3><p>{item.desc}</p></a></li>)}</ul>
 </div></section>
 <style>
-  .capability-grid{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem} a{display:block;height:100%;padding:1.4rem;border-radius:24px;border:1px solid rgba(148,163,184,.2);color:inherit;text-decoration:none} a>span{color:var(--color-theme);font-weight:900;text-transform:uppercase;font-size:.78rem} h3{font-size:1.3rem;margin:.55rem 0} p{color:var(--color-text-secondary);line-height:1.65}@media(max-width:700px){.capability-grid{grid-template-columns:1fr}}
+  .capability-grid{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem} a{display:block;height:100%;padding:1.4rem;border-radius:var(--radius-lg);border:1px solid rgba(148,163,184,.2);color:inherit;text-decoration:none} a>span{color:var(--color-theme);font-weight:900;text-transform:uppercase;font-size:.78rem} h3{font-size:1.3rem;margin:.55rem 0} p{color:var(--color-text-secondary);line-height:1.65}@media(max-width:700px){.capability-grid{grid-template-columns:1fr}}
 </style>

@@ -83,7 +83,6 @@ const metaDescription = testTypeConfig.description;
           <a
             href={`/${locale}/guild/${testType}/${fw.id}/`}
             class="fw-card"
-            style={`--fw-color: ${fw.color ?? 'var(--color-theme)'}`}
           >
             <div class="fw-card__top">
               {fw.icon ? (
@@ -100,9 +99,7 @@ const metaDescription = testTypeConfig.description;
                 <span class="fw-card__count">{count} {isZh ? "篇" : "articles"}</span>
               )}
               <span class="fw-card__arrow" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                </svg>
+                <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
               </span>
             </div>
           </a>
@@ -171,7 +168,7 @@ const metaDescription = testTypeConfig.description;
     flex-direction: column;
     gap: 0.4rem;
     padding: 1.25rem;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     text-decoration: none;
@@ -186,7 +183,7 @@ const metaDescription = testTypeConfig.description;
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: var(--fw-color, var(--color-theme));
+    background: var(--color-theme);
     opacity: 0;
     transition: var(--transition-base);
   }
@@ -194,7 +191,7 @@ const metaDescription = testTypeConfig.description;
   .fw-card:hover {
     border-color: var(--color-theme);
     transform: translateY(-4px);
-    box-shadow: 0 0 20px var(--glow-theme);
+    box-shadow: var(--shadow-md);
   }
 
   .fw-card:hover::before {
@@ -222,7 +219,7 @@ const metaDescription = testTypeConfig.description;
   }
 
   .fw-card__lang {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: color-mix(in srgb, var(--color-main) 50%, transparent);
     background: color-mix(in srgb, var(--color-main) 8%, transparent);
@@ -258,7 +255,7 @@ const metaDescription = testTypeConfig.description;
   }
 
   .fw-card__count {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: color-mix(in srgb, var(--color-main) 45%, transparent);
   }
 

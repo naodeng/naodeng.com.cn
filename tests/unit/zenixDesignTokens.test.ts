@@ -33,4 +33,8 @@ describe("Zenix-inspired design tokens in base.css", () => {
   it("removes dotted page background", () => {
     expect(baseCss).not.toMatch(/background-size:\s*16px\s+16px/);
   });
+
+  it("does not define glow shadows (slate shadows only)", () => {
+    expect(baseCss).not.toMatch(/--glow-theme:/i);
+  });
 });

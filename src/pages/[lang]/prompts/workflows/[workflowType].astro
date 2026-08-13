@@ -82,7 +82,7 @@ const howToSchema = {
           id="workflow-sidebar-toggle"
         >
           <span>{sidebarLabel}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
         </button>
         <nav id="workflow-sidebar-nav" class="workflow-sidebar-nav">
           <p class="workflow-sidebar-section-title">{sidebarLabel}</p>
@@ -326,7 +326,7 @@ const howToSchema = {
     padding: 0.15em 0.4em; border-radius: var(--radius-sm);
   }
   .workflow-content :global(pre) {
-    direction: ltr; padding: 1em 1.25em; border-radius: 8px;
+    direction: ltr; padding: 1em 1.25em; border-radius: var(--radius-sm);
     border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
     border-inline-start: 3px solid var(--color-theme);
     overflow-x: auto; margin-block: 1em 0;

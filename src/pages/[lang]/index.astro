@@ -19,6 +19,14 @@ import {
   HOME_PROJECTS_TITLE,
   HOME_TAGS_TITLE,
   HOME_VIEW_ALL_PROJECTS,
+  HOME_PROMPTS_SUBTITLE,
+  HOME_VIEW_ALL_PROMPTS,
+  HOME_QASKILLS_TITLE,
+  HOME_QASKILLS_SUBTITLE,
+  HOME_VIEW_ALL_SKILLS,
+  HOME_AIWIKI_TITLE,
+  HOME_AIWIKI_SUBTITLE,
+  HOME_VIEW_AIWIKI,
   HOME_WIKI_SECTION_TITLE,
   HOME_WIKI_INTRO,
   PROMPTS_PAGE_TITLE,
@@ -305,7 +313,7 @@ const homePageSchema = {
       <div class="home-inner">
         <h2 id="home-prompts-title" class="home-band__title">{t(PROMPTS_PAGE_TITLE)}</h2>
         <p class="home-band__subtitle">
-          {locale === "zh-cn" ? "按测试类型精选提示词" : "Prompts by testing type"}
+          {t(HOME_PROMPTS_SUBTITLE)}
         </p>
         <ul class="home-grid" role="list">
           {promptTypeCards.map((entry) => (
@@ -355,7 +363,7 @@ const homePageSchema = {
             class="pill-cta pill-cta--ghost"
             href={getRelativeLocaleUrl(locale, "/prompts/")}
           >
-            {locale === "zh-cn" ? "查看全部提示词" : "View all prompts"}
+            {t(HOME_VIEW_ALL_PROMPTS)}
           </a>
         </p>
       </div>
@@ -367,14 +375,10 @@ const homePageSchema = {
     >
       <div class="home-inner">
         <h2 id="home-qaskills-title" class="home-band__title">
-          {locale === "zh-cn"
-            ? "专业质量保证技能库"
-            : "Professional QA Skill Library"}
+          {t(HOME_QASKILLS_TITLE)}
         </h2>
         <p class="home-band__subtitle">
-          {locale === "zh-cn"
-            ? "测试类型与工作流技能精选"
-            : "Selected testing and workflow skills"}
+          {t(HOME_QASKILLS_SUBTITLE)}
         </p>
         <ul class="home-grid" role="list">
           {homeQASkills.map((skill) => (
@@ -401,7 +405,7 @@ const homePageSchema = {
             class="pill-cta pill-cta--ghost"
             href={getRelativeLocaleUrl(locale, "/qaskills/")}
           >
-            {locale === "zh-cn" ? "查看全部技能库" : "View all skills"}
+            {t(HOME_VIEW_ALL_SKILLS)}
           </a>
         </p>
       </div>
@@ -490,12 +494,10 @@ const homePageSchema = {
     >
       <div class="home-inner">
         <h2 id="home-aiwiki-title" class="home-band__title">
-          {locale === "zh-cn" ? "AI 百科" : "AI Wiki"}
+          {t(HOME_AIWIKI_TITLE)}
         </h2>
         <p class="home-band__subtitle">
-          {locale === "zh-cn"
-            ? "精选 AI 与工程实践词条"
-            : "Selected AI and engineering terms"}
+          {t(HOME_AIWIKI_SUBTITLE)}
         </p>
         <ul class="home-chip-cloud" role="list">
           {aiWikiShowcaseItems.map((item) => (
@@ -515,7 +517,7 @@ const homePageSchema = {
             class="pill-cta pill-cta--ghost"
             href={getRelativeLocaleUrl(locale, "/AIWiki")}
           >
-            {locale === "zh-cn" ? "进入 AI 百科" : "Browse AI Wiki"}
+            {t(HOME_VIEW_AIWIKI)}
           </a>
         </p>
       </div>
@@ -665,7 +667,7 @@ const homePageSchema = {
     height: 100%;
     padding: 24px;
     border: 1px solid #e0e0e0;
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     background: #ffffff;
     color: inherit;
     text-decoration: none;

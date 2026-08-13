@@ -342,7 +342,7 @@ export const HOME_HERO_TITLE: Multilingual = {
 };
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
-  en: "Testing wiki, essays, prompts, and workflows — a readable knowledge base.",
+  en: "Testing wiki, essays, prompts, and workflows: a readable knowledge base.",
   "zh-cn": "测试百科、实践文章、提示词与工作流——一个可读、可引用的知识库。",
 };
 
@@ -484,6 +484,38 @@ export const HOME_VIEW_ALL: Multilingual = {
 export const HOME_VIEW_ALL_PROJECTS: Multilingual = {
   en: "View all projects",
   "zh-cn": "查看全部项目",
+};
+export const HOME_PROMPTS_SUBTITLE: Multilingual = {
+  en: "Prompts by testing type",
+  "zh-cn": "按测试类型精选提示词",
+};
+export const HOME_VIEW_ALL_PROMPTS: Multilingual = {
+  en: "View all prompts",
+  "zh-cn": "查看全部提示词",
+};
+export const HOME_QASKILLS_TITLE: Multilingual = {
+  en: "Professional QA Skill Library",
+  "zh-cn": "专业质量保证技能库",
+};
+export const HOME_QASKILLS_SUBTITLE: Multilingual = {
+  en: "Selected testing and workflow skills",
+  "zh-cn": "测试类型与工作流技能精选",
+};
+export const HOME_VIEW_ALL_SKILLS: Multilingual = {
+  en: "View all skills",
+  "zh-cn": "查看全部技能库",
+};
+export const HOME_AIWIKI_TITLE: Multilingual = {
+  en: "AI Wiki",
+  "zh-cn": "AI 百科",
+};
+export const HOME_AIWIKI_SUBTITLE: Multilingual = {
+  en: "Selected AI and engineering terms",
+  "zh-cn": "精选 AI 与工程实践词条",
+};
+export const HOME_VIEW_AIWIKI: Multilingual = {
+  en: "Browse AI Wiki",
+  "zh-cn": "进入 AI 百科",
 };
 
 /** 首页软件测试百科区块：标题（仅中文首页展示） */
@@ -685,7 +717,7 @@ export const PROMPTS_PAGE_TITLE: Multilingual = {
 
 /** 提示词列表页 SEO 描述 */
 export const PROMPTS_PAGE_DESCRIPTION: Multilingual = {
-  en: "A curated collection of AI prompts for QA and software testing — covering 15 testing types and 6 prompt frameworks in English and Chinese.",
+  en: "A curated collection of AI prompts for QA and software testing: covering 15 testing types and 6 prompt frameworks in English and Chinese.",
   "zh-cn": "专为 QA 和软件测试设计的 AI 提示词精选集合，涵盖 15 种测试类型和 6 种提示词框架，支持中英双语。",
 };
 
@@ -741,8 +773,8 @@ export const HOME_PAGE_KEYWORDS: Multilingual = {
 
 /** Wiki 页 SEO 描述 */
 export const WIKI_PAGE_DESCRIPTION: Multilingual = {
-  en: "QA Wiki — a comprehensive glossary of software testing terms and definitions, covering functional testing, automation, performance, security, and agile testing.",
-  "zh-cn": "软件测试百科 — 收录 200+ 软件测试与质量领域术语，涵盖功能测试、自动化测试、性能测试、安全测试、敏捷测试等方向，中英文对照，供测试与开发同学查阅。",
+  en: "QA Wiki: a comprehensive glossary of software testing terms and definitions, covering functional testing, automation, performance, security, and agile testing.",
+  "zh-cn": "软件测试百科: 收录 200+ 软件测试与质量领域术语，涵盖功能测试、自动化测试、性能测试、安全测试、敏捷测试等方向，中英文对照，供测试与开发同学查阅。",
 };
 
 /** Wiki 页 SEO 关键词 */
@@ -753,8 +785,8 @@ export const WIKI_PAGE_KEYWORDS: Multilingual = {
 
 /** Guild 页 SEO 描述 */
 export const GUILD_PAGE_DESCRIPTION: Multilingual = {
-  en: "Test Automation Guild — structured learning paths for test automation, from beginner to advanced. Covers API testing (REST Assured, SuperTest, pytest), UI testing (Playwright, Cypress), and performance testing (k6, Gatling).",
-  "zh-cn": "测试自动化指南 — 系统化的测试自动化学习路径，从入门到进阶。涵盖接口测试（REST Assured、SuperTest、pytest）、UI 测试（Playwright、Cypress）和性能测试（k6、Gatling）等框架教程。",
+  en: "Test Automation Guild: structured learning paths for test automation, from beginner to advanced. Covers API testing (REST Assured, SuperTest, pytest), UI testing (Playwright, Cypress), and performance testing (k6, Gatling).",
+  "zh-cn": "测试自动化指南: 系统化的测试自动化学习路径，从入门到进阶。涵盖接口测试（REST Assured、SuperTest、pytest）、UI 测试（Playwright、Cypress）和性能测试（k6、Gatling）等框架教程。",
 };
 
 /** Guild 页 SEO 关键词 */

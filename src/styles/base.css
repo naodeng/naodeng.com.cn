@@ -20,7 +20,6 @@
   --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, white);
   --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, white);
 
-  --glow-theme: rgba(79, 70, 229, 0.22);
   --gradient-hero:
     linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, transparent 38%),
     linear-gradient(315deg, rgba(67, 56, 202, 0.14) 0%, transparent 34%),

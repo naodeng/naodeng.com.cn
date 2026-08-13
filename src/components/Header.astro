@@ -1165,7 +1165,7 @@ const mobilePriorityItems = [
   .nav-submenu,
   .nav-tool :global(.locale-panel) {
     border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.94);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(24px);
@@ -1240,9 +1240,25 @@ const mobilePriorityItems = [
     }
 
     .site-nav > ul {
-      border-radius: 18px;
+      border-radius: var(--radius-lg);
       align-items: stretch;
       background: rgba(255, 255, 255, 0.82);
+    }
+
+    .mobile-priority-nav {
+      border-bottom-color: rgba(148, 163, 184, 0.22);
+    }
+    .mobile-priority-nav a {
+      color: var(--color-text-secondary);
+      background: color-mix(in srgb, var(--color-theme) 6%, white);
+    }
+    .mobile-priority-nav a:hover,
+    .mobile-priority-nav a:focus-visible {
+      color: var(--color-theme);
+      background: color-mix(in srgb, var(--color-theme) 10%, white);
+    }
+    .mobile-priority-nav__icon {
+      color: var(--color-theme);
     }
 
     .site-nav > ul > li > a,
