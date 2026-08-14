@@ -138,6 +138,27 @@ export const NAV_MORE: Multilingual = {
   "zh-cn": "更多",
 };
 
+/** 站外学习计划站点（30 天系列）。目前仅在中文站的导航「更多」与页脚展示 */
+export const LEARNING_SITES: ReadonlyArray<{
+  key: string;
+  label: { en: string; "zh-cn": string };
+  url: string;
+  icon: string;
+}> = [
+  {
+    key: "agent-learning",
+    label: { en: "Agent Learning", "zh-cn": "Agent学习" },
+    url: "https://ai-agent-30-day-learning-plan.inaodeng.com/",
+    icon: "smart_toy",
+  },
+  {
+    key: "english-learning",
+    label: { en: "English Learning", "zh-cn": "英语学习" },
+    url: "https://30-day-qa-english-learning-plan.inaodeng.com/",
+    icon: "school",
+  },
+];
+
 /** 底部导航：软件测试百科 */
 export const FOOTER_NAV_QA_WIKI: Multilingual = {
   en: "QA Wiki",
@@ -727,6 +748,12 @@ export const FEATURED_PROJECTS: Array<{
 export const NAV_QA_PROMPTS: Multilingual = {
   en: "QA Prompts",
   "zh-cn": "提示词库",
+};
+
+/** 顶部导航：QA 技能库 */
+export const NAV_QA_SKILLS: Multilingual = {
+  en: "QA Skills",
+  "zh-cn": "技能库",
 };
 
 /** 提示词列表页 SEO 标题 */
