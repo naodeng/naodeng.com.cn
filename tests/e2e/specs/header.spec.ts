@@ -115,18 +115,31 @@ test.describe("Header 导航", () => {
     await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
+  test("zh-cn 首页：更多菜单包含 Agent学习 外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+
+    const agentLearningUrl = "https://ai-agent-30-day-learning-plan.inaodeng.com/";
+    await page.locator("[data-nav-group='more'] summary").click();
+    const menuLink = page.locator("header nav a[data-nav-item='agent-learning']");
+    await expect(menuLink).toBeVisible();
+    await expect(menuLink).toContainText("Agent学习");
+    await expect(menuLink).toHaveAttribute("href", agentLearningUrl);
+    await expect(menuLink).toHaveAttribute("target", "_blank");
+    await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 首页：AI测试菜单下提示词库和技能库都可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='ai-testing'] summary").click();
-    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("软件测试提示词库");
-    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("软件测试技能库");
+    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("提示词库");
+    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("技能库");
   });
 
   test("en 首页：AI Testing 菜单下 Prompt/Skill 两个入口都可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='ai-testing'] summary").click();
-    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("QA Prompt Library");
-    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("QA Skill Library");
+    await expect(page.locator("header nav a[data-nav-item='qa-prompts']")).toContainText("QA Prompts");
+    await expect(page.locator("header nav a[data-nav-item='qa-skills']")).toContainText("QA Skills");
   });
 
   test("en 首页：搜索按钮可见", async ({ page, baseURL }) => {

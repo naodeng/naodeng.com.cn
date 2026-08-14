@@ -15,8 +15,11 @@ import {
   NAV_GUIDES,
   NAV_AI_TESTING,
   NAV_MORE,
+  NAV_QA_PROMPTS,
+  NAV_QA_SKILLS,
   NAV_SPONSOR,
   NAV_SEARCH,
+  LEARNING_SITES,
 } from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -38,9 +41,24 @@ const isQASkillsSection = () => isSectionPath("/qaskills");
 const isProjectsSection = () => isSectionPath("/projects");
 const isSponsorSection = () => isSectionPath("/sponsor");
 const siteTitle = t(SITE_TITLE);
-const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
 
-const navGroups = [
+type NavItem = {
+  key: string;
+  href: string;
+  label: string;
+  icon: string;
+  active: boolean;
+  external?: boolean;
+};
+
+type NavGroup = {
+  key: string;
+  label: string;
+  active: boolean;
+  items: NavItem[];
+};
+
+const navGroups: NavGroup[] = [
   {
     key: "encyclopedia",
     label: t(NAV_ENCYCLOPEDIA),
@@ -85,14 +103,14 @@ const navGroups = [
       {
         key: "qa-prompts",
         href: getRelativeLocaleUrl(locale, "/prompts"),
-        label: locale === "zh-cn" ? "软件测试提示词库" : "QA Prompt Library",
+        label: t(NAV_QA_PROMPTS),
         icon: "tips_and_updates",
         active: isPromptsSection(),
       },
       {
         key: "qa-skills",
         href: getRelativeLocaleUrl(locale, "/qaskills"),
-        label: locale === "zh-cn" ? "软件测试技能库" : "QA Skill Library",
+        label: t(NAV_QA_SKILLS),
         icon: "build",
         active: isQASkillsSection(),
       },
@@ -104,16 +122,14 @@ const navGroups = [
     active: isProjectsSection() || isSponsorSection(),
     items: [
       ...(locale === "zh-cn"
-        ? [
-            {
-              key: "english-learning",
-              href: englishLearningUrl,
-              label: "英语学习",
-              icon: "school",
-              active: false,
-              external: true,
-            },
-          ]
+        ? LEARNING_SITES.map((site) => ({
+            key: site.key,
+            href: site.url,
+            label: site.label["zh-cn"],
+            icon: site.icon,
+            active: false,
+            external: true,
+          }))
         : []),
       {
         key: "projects",
@@ -506,7 +522,7 @@ const mobilePriorityItems = [
   }
   h1 {
     margin: 0;
-    font-size: 19px;
+    font-size: var(--text-xl);
     font-family: var(--english-font);
     font-weight: 600;
     letter-spacing: -0.16px;
@@ -590,7 +606,7 @@ const mobilePriorityItems = [
     border-radius: 0;
     white-space: nowrap;
     text-decoration: none;
-    font-size: 16px;
+    font-size: var(--text-sm);
     font-weight: 400;
     letter-spacing: -0.16px;
     opacity: 0.8;
@@ -645,7 +661,7 @@ const mobilePriorityItems = [
     display: none;
   }
   .nav-group-chevron {
-    font-size: 19px;
+    font-size: var(--text-xl);
     opacity: 0.7;
     transition: transform 0.18s ease, opacity 0.18s ease;
   }
@@ -738,11 +754,11 @@ const mobilePriorityItems = [
     justify-content: center;
     width: 1.5rem;
     flex: 0 0 1.5rem;
-    font-size: 1.35rem;
+    font-size: var(--text-lg);
   }
   .nav-submenu-text {
     line-height: 1.25;
-    font-size: 16px;
+    font-size: var(--text-sm);
     font-weight: 400;
     letter-spacing: -0.16px;
     flex: 1 1 auto;
@@ -789,7 +805,7 @@ const mobilePriorityItems = [
     min-height: 44px;
     min-width: 60px;
     padding-inline: 8px;
-    font-size: 16px;
+    font-size: var(--text-sm);
     font-weight: 400;
     border: none;
     border-radius: var(--radius-sm);
@@ -802,14 +818,14 @@ const mobilePriorityItems = [
   .nav-tool :global(.icon-lang),
   .nav-tool :global(.icon-expand) {
     opacity: 0.85;
-    font-size: 22px;
+    font-size: var(--text-lg);
   }
   .nav-tool :global(.locale-panel) {
     border: 1px solid color-mix(in srgb, white 12%, transparent);
     box-shadow: 0 12px 28px color-mix(in srgb, black 45%, transparent);
   }
   .nav-tool :global(.locale-panel a) {
-    font-size: 16px;
+    font-size: var(--text-sm);
     font-weight: 400;
   }
   .nav-tool :global(.locale-panel a:hover) {
@@ -825,7 +841,7 @@ const mobilePriorityItems = [
     padding-inline: 0.55rem;
     white-space: nowrap;
     font: inherit;
-    font-size: 16px;
+    font-size: var(--text-sm);
     font-weight: 400;
     background: transparent;
     border: 1px solid transparent;
@@ -843,7 +859,7 @@ const mobilePriorityItems = [
     outline-offset: 1px;
   }
   .btn-icon .material-icons-sharp {
-    font-size: 24px;
+    font-size: var(--text-lg);
     color: currentColor;
     opacity: 0.95;
     flex-shrink: 0;
@@ -1000,7 +1016,7 @@ const mobilePriorityItems = [
       background: color-mix(in srgb, white 14%, transparent);
     }
     .mobile-priority-nav__icon {
-      font-size: 24px;
+      font-size: var(--text-lg);
     }
     .site-nav > ul > li > a,
     .nav-group-trigger {
@@ -1071,7 +1087,7 @@ const mobilePriorityItems = [
 
   h1 {
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: var(--text-xl);
     font-weight: 800;
   }
 
@@ -1087,10 +1103,7 @@ const mobilePriorityItems = [
   .site-title-primary,
   .site-title-secondary,
   .site-brand-link > span:not(.site-title-cobrand) {
-    background: linear-gradient(90deg, var(--color-main), var(--color-theme) 55%, var(--color-theme-light));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-theme);
   }
 
   .site-title-cobrand-x {
@@ -1114,7 +1127,7 @@ const mobilePriorityItems = [
     min-height: 42px;
     padding: 0 0.9rem;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: var(--text-sm);
     font-weight: 700;
     color: var(--color-text-secondary);
     opacity: 1;
