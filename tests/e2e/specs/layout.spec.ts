@@ -55,7 +55,7 @@ test.describe("主页面样式与布局正常展示", () => {
     await expect(page.locator("footer [data-footer-group]")).toHaveCount(4);
     await expect(page.locator("footer [data-footer-group='explore']")).toContainText("探索");
     await expect(page.locator("footer [data-footer-group='knowledge']")).toContainText("知识库");
-    await expect(page.locator("footer [data-footer-group='tools']")).toContainText("工具内容");
+    await expect(page.locator("footer [data-footer-group='tools']")).toContainText("工具与学习");
     await expect(page.locator("footer [data-footer-group='site']")).toContainText("站点");
     await expect(page.locator("footer .footer-nav a[href*='/zh-cn/qaskills']").first()).toBeVisible();
   });
