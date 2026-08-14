@@ -157,6 +157,12 @@ export const LEARNING_SITES: ReadonlyArray<{
     url: "https://30-day-qa-english-learning-plan.inaodeng.com/",
     icon: "school",
   },
+  {
+    key: "playwright-learning",
+    label: { en: "Playwright Learning", "zh-cn": "Playwright学习" },
+    url: "https://30-day-qa-playwright-learning-plan.inaodeng.com/",
+    icon: "science",
+  },
 ];
 
 /** 底部导航：软件测试百科 */

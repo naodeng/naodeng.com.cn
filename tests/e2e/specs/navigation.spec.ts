@@ -159,6 +159,18 @@ test.describe("导航与首页内容", () => {
     await expect(footerLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
+  test("zh-cn 页脚包含「Playwright学习」外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    const footerLink = page.locator("footer .footer-nav a", { hasText: "Playwright学习" }).first();
+    await expect(footerLink).toBeVisible();
+    await expect(footerLink).toHaveAttribute(
+      "href",
+      "https://30-day-qa-playwright-learning-plan.inaodeng.com/",
+    );
+    await expect(footerLink).toHaveAttribute("target", "_blank");
+    await expect(footerLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 从首页点击「更多 > 项目」进入项目页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await page.locator("header nav [data-nav-group='more'] summary").click();
