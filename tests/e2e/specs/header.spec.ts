@@ -128,6 +128,19 @@ test.describe("Header 导航", () => {
     await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
+  test("zh-cn 首页：更多菜单包含 Playwright学习 外链", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+
+    const playwrightLearningUrl = "https://30-day-qa-playwright-learning-plan.inaodeng.com/";
+    await page.locator("[data-nav-group='more'] summary").click();
+    const menuLink = page.locator("header nav a[data-nav-item='playwright-learning']");
+    await expect(menuLink).toBeVisible();
+    await expect(menuLink).toContainText("Playwright学习");
+    await expect(menuLink).toHaveAttribute("href", playwrightLearningUrl);
+    await expect(menuLink).toHaveAttribute("target", "_blank");
+    await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   test("zh-cn 首页：AI测试菜单下提示词库和技能库都可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='ai-testing'] summary").click();
