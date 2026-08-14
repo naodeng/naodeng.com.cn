@@ -96,12 +96,6 @@ I value feedback and contributions from my readers. If you notice any errors or 
 4. 推送到分支 | Push to the branch (`git push origin feature/amazing-feature`)
 5. 开启 Pull Request | Open a Pull Request
 
-## 📄 许可证 | License
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 📧 联系方式 | Contact
 
 - 网站 | Website: [inaodeng.com](https://inaodeng.com)

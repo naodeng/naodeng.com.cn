@@ -37,7 +37,7 @@ web
 - 双语：en 与 zh-cn 路径、内容、导航保持一致。
 - 许可：CC BY-NC-SA 4.0（署名 - 非商业 - 相同方式共享）。
 - 技术约束：Node.js ≥ 22.12、npm 10+、包管理用 npm（不换 pnpm / yarn）。
-- 未决事项：README 中残留一处 "MIT 许可证" 字样，与 CC BY-NC-SA 4.0 矛盾，待确认后清理。
+- 已确认：网站与项目统一采用 CC BY-NC-SA 4.0（README 中残留的 "MIT 许可证" 字样已清理）。
 
 ## Brand Commitments
 
