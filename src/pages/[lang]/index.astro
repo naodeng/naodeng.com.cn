@@ -41,6 +41,7 @@ import TrackingEvents from "@/components/TrackingEvents.astro";
 import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
 import CoreCapabilities from "@/components/home/CoreCapabilities.astro";
 import HomeProofAndCases from "@/components/home/HomeProofAndCases.astro";
+import { HOME_PRIMARY_MODES } from "@/data/homeTaskEntries";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 
 const locale = Astro.currentLocale as Lang;
@@ -232,6 +233,41 @@ const homePageSchema = {
           >
             {t(HOME_CTA_WIKI)}
           </a>
+        </div>
+        <div class="home-primary-modes" role="list">
+          {HOME_PRIMARY_MODES[locale].map((mode) => {
+            if (mode.key === "act") {
+              return (
+                <div class="home-primary-entry" data-home-mode="act" role="listitem">
+                  <p class="home-primary-entry__eyebrow">{mode.eyebrow}</p>
+                  <h3 class="home-primary-entry__title">{mode.title}</h3>
+                  <p class="home-primary-entry__desc">{mode.description}</p>
+                  <div class="home-primary-entry__links">
+                    <a href={getRelativeLocaleUrl(locale, "/qaskills")}>
+                      {locale === "zh-cn" ? "进入 QA Skills" : "Browse QA Skills"}
+                    </a>
+                    <a href={getRelativeLocaleUrl(locale, "/prompts")}>
+                      {locale === "zh-cn" ? "进入提示词库" : "Browse Prompts"}
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+            const href =
+              mode.key === "read"
+                ? getRelativeLocaleUrl(locale, "/blog")
+                : locale === "zh-cn"
+                  ? getRelativeLocaleUrl(locale, "/wiki")
+                  : getRelativeLocaleUrl(locale, "/AIWiki");
+            return (
+              <a class="home-primary-entry" data-home-mode={mode.key} href={href} role="listitem">
+                <p class="home-primary-entry__eyebrow">{mode.eyebrow}</p>
+                <h3 class="home-primary-entry__title">{mode.title}</h3>
+                <p class="home-primary-entry__desc">{mode.description}</p>
+                <span class="home-primary-entry__go">{locale === "zh-cn" ? "进入" : "Open"} →</span>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -593,6 +629,79 @@ const homePageSchema = {
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .home-primary-modes {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    text-align: left;
+  }
+
+  .home-primary-entry {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .home-primary-entry__eyebrow {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-theme);
+  }
+
+  .home-primary-entry__title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .home-primary-entry__desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  .home-primary-entry__go {
+    margin-top: auto;
+    padding-top: 10px;
+    font-weight: 800;
+    color: var(--color-theme);
+  }
+
+  .home-primary-entry__links {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .home-primary-entry__links a {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-theme);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .home-primary-modes {
+      grid-template-columns: 1fr;
+    }
   }
 
   :global(.home-band__title) {

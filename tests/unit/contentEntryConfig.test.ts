@@ -24,7 +24,7 @@ describe("content entry configuration", () => {
     expect(HOME_PRIMARY_MODES[lang]).toHaveLength(3);
     expect(HOME_TASK_ENTRIES[lang]).toHaveLength(6);
     expect(HOME_EXAMPLES[lang]).toHaveLength(3);
-    expect(new Set(HOME_TASK_ENTRIES[lang].map((item) => item.slug)).size).toBe(6);
+    expect(new Set(HOME_TASK_ENTRIES[lang].map((item) => item.key)).size).toBe(6);
   });
 
   it.each(languages)("defines the full Prompt selection flow for %s", (lang) => {
