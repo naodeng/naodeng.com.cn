@@ -13,7 +13,7 @@ test.describe("埋点契约", () => {
   });
 
   test("首页入口点击事件包含 session_id", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const entry = page.locator(".home-hero__ctas a[href='/zh-cn/blog/']");
     await expect(entry).toBeVisible({ timeout: 10000 });
@@ -41,7 +41,7 @@ test.describe("埋点契约", () => {
   });
 
   test("详情页滚动事件包含 session_id", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "domcontentloaded" });
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(1200);
 
@@ -57,7 +57,7 @@ test.describe("埋点契约", () => {
   });
 
   test("详情页相关词条点击事件包含 session_id", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "domcontentloaded" });
 
     const term = page.locator(".wiki-related-pill").first();
     await expect(term).toBeVisible({ timeout: 10000 });

@@ -2,63 +2,63 @@ import { test, expect } from "@playwright/test";
 
 test.describe("导航与首页内容", () => {
   test("en 首页：Hero、探索中心与最新文章可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("main .home-hero").first()).toBeVisible();
     await expect(page.locator("main .home-explore-hub .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 
   test("zh-cn 首页：Hero、探索中心与最新文章可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("main .home-hero").first()).toBeVisible();
     await expect(page.locator("main .home-explore-hub .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 
   test("en 从首页点击「博客」进入博客列表", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav a[data-nav-item='blog']").click();
     await expect(page).toHaveURL(/\/(en)\/blog\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("zh-cn 从首页点击「博客」进入博客列表", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav a[data-nav-item='blog']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/blog\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("en 从博客首页点击「归档」按钮进入归档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     await page.locator(".headline-actions a[href*='/en/archive']").first().click();
     await expect(page).toHaveURL(/\/(en)\/archive\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("zh-cn 从博客首页点击「归档」按钮进入归档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     await page.locator(".headline-actions a[href*='/zh-cn/archive']").first().click();
     await expect(page).toHaveURL(/\/(zh-cn)\/archive\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("en 从首页点击「关于」进入关于页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav a[data-nav-item='about']").click();
     await expect(page).toHaveURL(/\/(en)\/about\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("zh-cn 从首页点击「关于」进入关于页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav a[data-nav-item='about']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/about\/?/);
     await expect(page.locator("main")).toBeVisible();
   });
 
   test("zh-cn 从首页点击「百科 > 软件测试百科」进入百科首页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='encyclopedia'] summary").click();
     await page.locator("header nav a[data-nav-item='qa-wiki']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/wiki\/?/);
@@ -67,14 +67,14 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 从首页点击「指南」进入指南页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/guild\/?/);
     await expect(page.locator(".guild-hero__title")).toBeVisible();
   });
 
   test("en 从首页点击「Guides」进入指南页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const guildLink = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']").first();
     await expect(guildLink).toHaveAttribute("href", /\/en\/guild\/?$/);
     await guildLink.click();
@@ -83,7 +83,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("en 首页「Encyclopedia > QA wiki」链接指向外站 ray.run", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='encyclopedia'] summary").click();
     const wikiLink = page.locator("header nav a[data-nav-item='qa-wiki']").first();
     await expect(wikiLink).toBeVisible();
@@ -91,7 +91,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 从首页点击「AI测试 > 软件测试提示词库」进入提示词库", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='ai-testing'] summary").click();
     await page.locator("header nav a[data-nav-item='qa-prompts']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/prompts\/?/);
@@ -99,7 +99,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 从首页点击「AI测试 > 软件测试技能库」进入技能库", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='ai-testing'] summary").click();
     await page.locator("header nav a[data-nav-item='qa-skills']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/qaskills\/?/);
@@ -107,7 +107,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("en 从首页点击「AI Testing > QA Skill Library」进入技能库", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='ai-testing'] summary").click();
     await page.locator("header nav a[data-nav-item='qa-skills']").click();
     await expect(page).toHaveURL(/\/(en)\/qaskills\/?/);
@@ -115,7 +115,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 页脚包含「软件测试技能库」并跳转到 qaskills", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const footerLink = page.locator("footer .footer-nav a[href*='/zh-cn/qaskills']").first();
     await expect(footerLink).toBeVisible();
     await footerLink.click();
@@ -123,7 +123,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("en 页脚包含「QA Skill Library」并跳转到 qaskills", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const footerLink = page.locator("footer .footer-nav a[href*='/en/qaskills']").first();
     await expect(footerLink).toBeVisible();
     await footerLink.click();
@@ -131,7 +131,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 页脚包含「英语学习」外链", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const footerLink = page.locator("footer .footer-nav a", { hasText: "英语学习" }).first();
     await expect(footerLink).toBeVisible();
     await expect(footerLink).toHaveAttribute(
@@ -143,7 +143,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 页脚包含「Agent学习」外链", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const footerLink = page.locator("footer .footer-nav a", { hasText: "Agent学习" }).first();
     await expect(footerLink).toBeVisible();
     await expect(footerLink).toHaveAttribute(
@@ -155,7 +155,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 页脚包含「Playwright学习」外链", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const footerLink = page.locator("footer .footer-nav a", { hasText: "Playwright学习" }).first();
     await expect(footerLink).toBeVisible();
     await expect(footerLink).toHaveAttribute(
@@ -167,7 +167,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 从首页点击「更多 > 项目」进入项目页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='more'] summary").click();
     await page.locator("header nav a[data-nav-item='projects']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/projects\/?/);
@@ -175,7 +175,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 项目页展示推荐的 Awesome QA Skills 项目", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/projects/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/projects/", { waitUntil: "domcontentloaded" });
 
     const projectCard = page.locator(".project-card", { hasText: "Awesome QA Skills" });
     await expect(projectCard).toHaveAttribute("href", "https://github.com/naodeng/awesome-qa-skills");
@@ -183,7 +183,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 从首页点击「更多 > 支持」进入支持页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='more'] summary").click();
     await page.locator("header nav a[data-nav-item='sponsor']").click();
     await expect(page).toHaveURL(/\/(zh-cn)\/sponsor\/?/);
@@ -191,7 +191,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("en 博客列表页：文章卡片可点击进入详情", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     const firstLink = page.locator("main a[href*='/en/blog/']").first();
     await expect(firstLink).toBeVisible({ timeout: 10000 });
     await firstLink.click();
@@ -200,7 +200,7 @@ test.describe("导航与首页内容", () => {
   });
 
   test("zh-cn 博客列表页：文章卡片可点击进入详情", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     const firstLink = page.locator("main a[href*='/zh-cn/blog/']").first();
     await expect(firstLink).toBeVisible({ timeout: 10000 });
     await firstLink.click();

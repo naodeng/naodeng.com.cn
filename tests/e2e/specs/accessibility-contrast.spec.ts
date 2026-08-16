@@ -37,7 +37,7 @@ const samples: ContrastSample[] = [
 test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
   for (const sample of samples) {
     test(`${sample.name} 关键文本对比度满足 WCAG AA`, async ({ page }) => {
-      await page.goto(sample.path, { waitUntil: "networkidle" });
+      await page.goto(sample.path, { waitUntil: "domcontentloaded" });
 
       for (const selector of sample.selectors) {
         const result = await page.evaluate((sel) => {

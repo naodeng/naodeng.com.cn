@@ -54,7 +54,7 @@ test.describe("各页面链接跳转正确", () => {
   for (const { locale, path, name } of mainPages) {
     test(`${locale} ${name} 页内所有同站链接可正常跳转`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;
-      await page.goto(url, { waitUntil: "networkidle" });
+      await page.goto(url, { waitUntil: "domcontentloaded" });
 
       const links = await page.locator("a[href]").evaluateAll((anchors) =>
         anchors
@@ -80,13 +80,13 @@ test.describe("各页面链接跳转正确", () => {
   }
 
   test("en 博客详情页内同站链接可跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/en/blog/']").first();
     await expect(firstPost).toBeVisible({ timeout: 10000 });
     const href = await firstPost.getAttribute("href");
     expect(href).toBeTruthy();
     const detailUrl = new URL(href!, baseURL).href;
-    await page.goto(detailUrl, { waitUntil: "networkidle" });
+    await page.goto(detailUrl, { waitUntil: "domcontentloaded" });
 
     const links = await page.locator("a[href]").evaluateAll((anchors) =>
       anchors
@@ -104,13 +104,13 @@ test.describe("各页面链接跳转正确", () => {
   });
 
   test("zh-cn 博客详情页内同站链接可跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/zh-cn/blog/']").first();
     await expect(firstPost).toBeVisible({ timeout: 10000 });
     const href = await firstPost.getAttribute("href");
     expect(href).toBeTruthy();
     const detailUrl = new URL(href!, baseURL).href;
-    await page.goto(detailUrl, { waitUntil: "networkidle" });
+    await page.goto(detailUrl, { waitUntil: "domcontentloaded" });
 
     const links = await page.locator("a[href]").evaluateAll((anchors) =>
       anchors
@@ -130,7 +130,7 @@ test.describe("各页面链接跳转正确", () => {
   for (const { locale, path, name } of extraPages) {
     test(`${locale} ${name} 页内所有同站链接可正常跳转`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;
-      await page.goto(url, { waitUntil: "networkidle" });
+      await page.goto(url, { waitUntil: "domcontentloaded" });
 
       const links = await page.locator("a[href]").evaluateAll((anchors) =>
         anchors

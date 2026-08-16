@@ -27,7 +27,7 @@ test.describe("Guild 概览页", () => {
   });
 
   test("zh-cn：特性卡片存在且包含图标/标题/描述", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     const cards = page.locator(".guild-features__card");
     const count = await cards.count();
     if (count > 0) {
@@ -39,7 +39,7 @@ test.describe("Guild 概览页", () => {
   });
 
   test("zh-cn：学习流程显示 3 步", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     const steps = page.locator(".workflow-step");
     await expect(steps).toHaveCount(3);
     await expect(steps.first().locator(".workflow-step__number")).toBeVisible();
@@ -48,7 +48,7 @@ test.describe("Guild 概览页", () => {
   });
 
   test("zh-cn：框架卡片包含图标/名称/语言/描述", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     const card = page.locator(".fw-card").first();
     await expect(card).toBeVisible();
     await expect(card.locator(".fw-card__top")).toBeVisible();
@@ -57,7 +57,7 @@ test.describe("Guild 概览页", () => {
   });
 
   test("zh-cn：点击框架卡片跳转到框架概述页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     const postmanCard = page.locator(".fw-card").filter({ hasText: "Postman" }).first();
     await expect(postmanCard).toBeVisible();
     await postmanCard.click();
@@ -75,14 +75,14 @@ test.describe("Guild 概览页", () => {
 
   test("响应式：移动端 Guild 概览页正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-hero__title")).toBeVisible();
     await expect(page.locator(".fw-card").first()).toBeVisible();
   });
 
   test("响应式：平板端 Guild 概览页正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 768, height: 1024 });
-    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-hero__title")).toBeVisible();
     await expect(page.locator(".tts").first()).toBeVisible();
   });
@@ -93,14 +93,14 @@ test.describe("Guild 概览页", () => {
 // ─────────────────────────────────────────────
 test.describe("框架概述页", () => {
   test("zh-cn Postman：fw-hero 标题/描述/徽章可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".fw-hero__title")).toContainText("Postman");
     await expect(page.locator(".fw-hero__desc")).toBeVisible();
     await expect(page.locator(".fw-badge--type")).toBeVisible();
   });
 
   test("zh-cn Postman：Hero 统计数据（教程数/语言/阶段）可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const stats = page.locator(".fw-stat");
     await expect(stats).toHaveCount(3);
     for (let i = 0; i < 3; i++) {
@@ -110,7 +110,7 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：「立即开始」按钮存在且 href 指向 #learning-path", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const btn = page.locator(".fw-link--start");
     await expect(btn).toBeVisible();
     await expect(btn).toHaveAttribute("href", "#learning-path");
@@ -118,20 +118,20 @@ test.describe("框架概述页", () => {
   });
 
   test("en Postman：「Start Learning」按钮存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const btn = page.locator(".fw-link--start");
     await expect(btn).toBeVisible();
     await expect(btn).toContainText("Start Learning");
   });
 
   test("zh-cn Postman：「立即开始」点击后滚动到学习路径区域", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await page.locator(".fw-link--start").click();
     await expect(page).toHaveURL(/#learning-path/);
   });
 
   test("zh-cn Postman：示例代码按钮指向 Automation-Test-Starter 仓库", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const demoBtn = page.locator(".fw-link--primary");
     if (await demoBtn.isVisible()) {
       const href = await demoBtn.getAttribute("href");
@@ -141,7 +141,7 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：官方文档按钮存在且在新标签打开", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const docsBtn = page.locator(".fw-link--ghost");
     if (await docsBtn.isVisible()) {
       await expect(docsBtn).toHaveAttribute("target", "_blank");
@@ -150,7 +150,7 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：学习工作流程显示 3 步", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const steps = page.locator(".fw-step");
     await expect(steps).toHaveCount(3);
     await expect(steps.first()).toHaveClass(/fw-step--done/);
@@ -159,7 +159,7 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：工作流程第三步包含 Demo 链接", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const thirdStep = page.locator(".fw-step").nth(2);
     const demoLink = thirdStep.locator(".fw-step__link");
     if (await demoLink.isVisible()) {
@@ -170,20 +170,20 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：学习路径区域存在且有文章卡片", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("#learning-path")).toBeVisible();
     await expect(page.locator(".article-card").first()).toBeVisible();
   });
 
   test("zh-cn Postman：阶段筛选 pills 存在，「全部」默认激活", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const allPill = page.locator(".lp-pill").filter({ hasText: "全部" });
     await expect(allPill).toBeVisible();
     await expect(allPill).toHaveClass(/lp-pill--active/);
   });
 
   test("zh-cn Postman：点击阶段 pill 过滤文章", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const pills = page.locator(".lp-pill");
     const count = await pills.count();
     if (count > 1) {
@@ -194,39 +194,39 @@ test.describe("框架概述页", () => {
   });
 
   test("zh-cn Postman：文章卡片包含标题/描述/时长/难度", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     const card = page.locator(".article-card").first();
     await expect(card.locator(".article-title")).toBeVisible();
     await expect(card.locator(".article-meta")).toBeVisible();
   });
 
   test("zh-cn Postman：文章卡片可点击跳转到文章详情页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await page.locator(".article-card").first().click();
     await expect(page).toHaveURL(/\/zh-cn\/guild\/api-testing\/postman\/.+\//);
   });
 
   test("en Postman：框架概述页正常加载", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".fw-hero__title")).toContainText("Postman");
     await expect(page.locator("#learning-path")).toBeVisible();
     await expect(page.locator(".article-card").first()).toBeVisible();
   });
 
   test("zh-cn K6：性能测试框架概述页正常加载", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/performance-testing/k6/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/performance-testing/k6/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".fw-hero__title")).toContainText("K6");
     await expect(page.locator("#learning-path")).toBeVisible();
   });
 
   test("en K6：性能测试框架概述页正常加载", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/guild/performance-testing/k6/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/guild/performance-testing/k6/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".fw-hero__title")).toContainText("K6");
     await expect(page.locator("#learning-path")).toBeVisible();
   });
 
   test("zh-cn Postman：面包屑导航显示正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("nav.breadcrumb").first()).toBeVisible();
   });
 
@@ -240,7 +240,7 @@ test.describe("框架概述页", () => {
 
   test("响应式：移动端框架概述页正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".fw-hero__title")).toBeVisible();
     await expect(page.locator(".article-card").first()).toBeVisible();
   });
@@ -254,12 +254,12 @@ test.describe("Guild 文章详情页", () => {
   const articleUrlEn = "/en/guild/api-testing/postman/getting-started/";
 
   test("zh-cn：页面加载，h1 可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     await expect(page.locator("h1").first()).toBeVisible({ timeout: 10000 });
   });
 
   test("zh-cn：元信息区域（类型/框架/阶段/难度/阅读时长）可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     const meta = page.locator(".guild-meta");
     await expect(meta).toBeVisible();
     await expect(meta.filter({ hasText: "类型" })).toBeVisible();
@@ -268,7 +268,7 @@ test.describe("Guild 文章详情页", () => {
   });
 
   test("zh-cn：示例代码按钮文字可见（白色文字，非透明）", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     const demoBtn = page.locator(".guild-link").first();
     if (await demoBtn.isVisible()) {
       await expect(demoBtn).toBeVisible();
@@ -280,7 +280,7 @@ test.describe("Guild 文章详情页", () => {
   });
 
   test("zh-cn：官方文档按钮存在且在新标签打开", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     const links = page.locator(".guild-link");
     const count = await links.count();
     for (let i = 0; i < count; i++) {
@@ -290,22 +290,22 @@ test.describe("Guild 文章详情页", () => {
   });
 
   test("zh-cn：文章内容区域可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-content")).toBeVisible();
   });
 
   test("zh-cn：侧边栏导航可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar")).toBeVisible();
   });
 
   test("zh-cn：面包屑导航显示正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     await expect(page.locator("nav.breadcrumb").first()).toBeVisible();
   });
 
   test("zh-cn：前后导航（pagination）存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrl, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrl, { waitUntil: "domcontentloaded" });
     const pagination = page.locator(".guild-pagination");
     const hasPagination = await pagination.isVisible();
     if (hasPagination) {
@@ -323,12 +323,12 @@ test.describe("Guild 文章详情页", () => {
   });
 
   test("en：页面加载，h1 可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrlEn, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrlEn, { waitUntil: "domcontentloaded" });
     await expect(page.locator("h1").first()).toBeVisible({ timeout: 10000 });
   });
 
   test("en：元信息区域可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + articleUrlEn, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + articleUrlEn, { waitUntil: "domcontentloaded" });
     const meta = page.locator(".guild-meta");
     if (await meta.isVisible()) {
       await expect(meta.filter({ hasText: "Read" })).toBeVisible();
@@ -341,34 +341,34 @@ test.describe("Guild 文章详情页", () => {
 // ─────────────────────────────────────────────
 test.describe("首页 Guild 展示区", () => {
   test("zh-cn：展示区可见，标题/副标题正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-showcase")).toBeVisible();
     await expect(page.locator(".gs-title")).toContainText("测试自动化指南");
     await expect(page.locator(".gs-subtitle")).toBeVisible();
   });
 
   test("en：展示区可见，标题正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-showcase")).toBeVisible();
     await expect(page.locator(".gs-title")).toContainText("Test Automation Guild");
   });
 
   test("zh-cn：接口/性能测试区域可见，UI 测试已隐藏", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator('.gs-type-block[data-type="api-testing"]')).toBeVisible();
     await expect(page.locator('.gs-type-block[data-type="performance-testing"]')).toBeVisible();
     await expect(page.locator('.gs-type-block[data-type="ui-testing"]')).toHaveCount(0);
   });
 
   test("en：接口/性能测试区域可见，UI 测试已隐藏", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator('.gs-type-block[data-type="api-testing"]')).toBeVisible();
     await expect(page.locator('.gs-type-block[data-type="performance-testing"]')).toBeVisible();
     await expect(page.locator('.gs-type-block[data-type="ui-testing"]')).toHaveCount(0);
   });
 
   test("zh-cn：接口测试框架卡片存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const apiBlock = page.locator('.gs-type-block[data-type="api-testing"]');
     const cards = apiBlock.locator(".gs-fw-card");
     const count = await cards.count();
@@ -376,7 +376,7 @@ test.describe("首页 Guild 展示区", () => {
   });
 
   test("zh-cn：点击 Postman 框架卡片跳转到框架概述页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const card = page.locator(".gs-fw-card").filter({ hasText: "Postman" }).first();
     await expect(card).toBeVisible();
     await card.click();
@@ -384,7 +384,7 @@ test.describe("首页 Guild 展示区", () => {
   });
 
   test("en：点击 Postman 框架卡片跳转到框架概述页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const card = page.locator(".gs-fw-card").filter({ hasText: "Postman" }).first();
     await expect(card).toBeVisible();
     await card.click();
@@ -392,7 +392,7 @@ test.describe("首页 Guild 展示区", () => {
   });
 
   test("zh-cn：「查看完整指南」按钮跳转到 Guild 页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const cta = page.locator(".gs-cta");
     await expect(cta).toBeVisible();
     await expect(cta).toContainText("查看完整指南");
@@ -401,7 +401,7 @@ test.describe("首页 Guild 展示区", () => {
   });
 
   test("en：「View Full Guide」按钮跳转到 Guild 页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const cta = page.locator(".gs-cta");
     await expect(cta).toBeVisible();
     await expect(cta).toContainText("View Full Guide");
@@ -411,7 +411,7 @@ test.describe("首页 Guild 展示区", () => {
 
   test("响应式：移动端首页 Guild 展示区正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-showcase")).toBeVisible();
     await expect(page.locator(".gs-fw-card").first()).toBeVisible();
     await expect(page.locator(".gs-cta")).toBeVisible();

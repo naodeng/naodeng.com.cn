@@ -5,7 +5,7 @@ const ARTICLE_PATH = "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/"
 test.describe("TOC 边界与滚动稳定性", () => {
   test.beforeEach(async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto((baseURL || "") + ARTICLE_PATH, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + ARTICLE_PATH, { waitUntil: "domcontentloaded" });
     await expect(page.locator(".article-sidebar-inner")).toBeVisible({ timeout: 10000 });
     await expect(page.locator(".toc-nav")).toBeVisible({ timeout: 10000 });
   });

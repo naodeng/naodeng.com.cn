@@ -12,7 +12,7 @@ test.describe.skip("文档页（Docs）", () => {
   }
 
   test("en 文档首页：侧栏、主内容区、面包屑可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar").first()).toBeVisible();
     await expect(page.locator(".docs-content").first()).toBeVisible();
     await expect(page.locator("nav.breadcrumb").first()).toBeVisible();
@@ -20,7 +20,7 @@ test.describe.skip("文档页（Docs）", () => {
   });
 
   test("zh-cn 文档首页：侧栏、主内容区、面包屑可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar").first()).toBeVisible();
     await expect(page.locator(".docs-content").first()).toBeVisible();
     await expect(page.locator("nav.breadcrumb").first()).toBeVisible();
@@ -28,7 +28,7 @@ test.describe.skip("文档页（Docs）", () => {
   });
 
   test("en 文档子页 why-astro：侧栏、正文区、h1 可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar").first()).toBeVisible();
     await expect(page.locator(".docs-content").first()).toBeVisible();
     await expect(page.locator(".docs-content h1").first()).toBeVisible();
@@ -36,7 +36,7 @@ test.describe.skip("文档页（Docs）", () => {
   });
 
   test("zh-cn 文档子页 why-astro：侧栏、正文区、h1 可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar").first()).toBeVisible();
     await expect(page.locator(".docs-content").first()).toBeVisible();
     await expect(page.locator(".docs-content h1").first()).toBeVisible();
@@ -44,42 +44,42 @@ test.describe.skip("文档页（Docs）", () => {
   });
 
   test("en 从文档首页点击侧栏「Why Astro?」进入子页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "domcontentloaded" });
     await page.locator(".docs-sidebar a[href*='/en/docs/why-astro']").first().click();
     await expect(page).toHaveURL(/\/en\/docs\/why-astro\/?/);
     await expect(page.locator(".docs-content")).toBeVisible();
   });
 
   test("zh-cn 从文档首页点击侧栏「为什么选择 Astro？」进入子页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "domcontentloaded" });
     await page.locator(".docs-sidebar a[href*='/zh-cn/docs/why-astro']").first().click();
     await expect(page).toHaveURL(/\/zh-cn\/docs\/why-astro\/?/);
     await expect(page.locator(".docs-content")).toBeVisible();
   });
 
   test("en 文档子页侧栏当前项有 active 样式", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/configuration/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/docs/configuration/", { waitUntil: "domcontentloaded" });
     const activeLink = page.locator(".docs-sidebar-link--active").first();
     await expect(activeLink).toBeVisible();
     await expect(activeLink).toHaveAttribute("aria-current", "page");
   });
 
   test("zh-cn 文档子页侧栏当前项有 active 样式", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/configuration/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/configuration/", { waitUntil: "domcontentloaded" });
     const activeLink = page.locator(".docs-sidebar-link--active").first();
     await expect(activeLink).toBeVisible();
     await expect(activeLink).toHaveAttribute("aria-current", "page");
   });
 
   test("en 文档页：头部、主体、底部可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header").first()).toBeVisible();
     await expect(page.locator("main").first()).toBeVisible();
     await expect(page.locator("footer").first()).toBeVisible();
   });
 
   test("zh-cn 文档页：头部、主体、底部可见", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header").first()).toBeVisible();
     await expect(page.locator("main").first()).toBeVisible();
     await expect(page.locator("footer").first()).toBeVisible();
