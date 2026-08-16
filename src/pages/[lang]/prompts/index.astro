@@ -15,6 +15,7 @@ import PromptVersionGuide from "@/components/prompts/PromptVersionGuide.astro";
 import PromptExamples from "@/components/prompts/PromptExamples.astro";
 import AIOutputNotice from "@/components/prompts/AIOutputNotice.astro";
 import {
+  PROMPT_ASSISTED_FLOW,
   PROMPT_EXAMPLES,
   PROMPT_QUICK_STEPS,
   PROMPT_TYPE_COPY,
@@ -113,9 +114,11 @@ const itemListSchema = {
     <header class="prompts-header">
       <div class="prompts-hero">
         <div class="prompts-hero-text">
-          <h1>{lang === "zh-cn" ? "软件测试提示词库" : "QA Prompt Library"}</h1>
+          <h1>{lang === "zh-cn" ? "软件测试提示词库" : "Software Testing Prompt Library"}</h1>
           <p class="prompts-hero-sub">
-            {lang === "zh-cn" ? "专业的质量保证 AI 提示词库" : "Professional QA AI Prompt Library"}
+            {lang === "zh-cn"
+              ? "辅助测试分析、设计与复核的 AI 提示词库"
+              : "AI prompts that assist testing analysis, design, and review"}
           </p>
           <p class="prompts-intro">
             {lang === "zh-cn"
@@ -145,7 +148,7 @@ const itemListSchema = {
             </div>
             <div class="prompt-console-body">
               <span class="prompt-label">{lang === "zh-cn" ? "测试提示词" : "QA Prompt"}</span>
-              <strong>{lang === "zh-cn" ? "生成高覆盖率测试用例" : "Generate high-coverage test cases"}</strong>
+              <strong>{lang === "zh-cn" ? "辅助设计更完整的测试用例" : "Help design more complete test cases"}</strong>
               <p>{lang === "zh-cn" ? "输入需求、接口或用户故事，输出结构化测试策略。" : "Turn requirements, APIs, or user stories into a structured testing strategy."}</p>
               <div class="prompt-lines">
                 <span></span>
@@ -204,62 +207,7 @@ const itemListSchema = {
     <section class="prompts-section" aria-labelledby="flow-heading">
       <h2 id="flow-heading">{t(PROMPTS_FLOW_TITLE)}</h2>
       <div class="flow-wrap">
-        {([
-          {
-            icon: "edit_note",
-            slug: "requirements-analysis",
-            label: lang === "zh-cn" ? "需求分析" : "Requirements Analysis",
-            desc: lang === "zh-cn" ? "深度分析需求文档，设计全维度测试场景" : "Analyze requirements and design comprehensive test scenarios",
-          },
-          {
-            icon: "track_changes",
-            slug: "test-strategy",
-            label: lang === "zh-cn" ? "测试策略" : "Test Strategy",
-            desc: lang === "zh-cn" ? "制定整体测试策略和测试计划" : "Define overall test strategy and test plan",
-          },
-          {
-            icon: "edit",
-            slug: "test-case-writing",
-            label: lang === "zh-cn" ? "测试用例编写" : "Test Case Writing",
-            desc: lang === "zh-cn" ? "基于测试场景生成详细测试用例" : "Generate detailed test cases from test scenarios",
-          },
-          {
-            icon: "search",
-            slug: "functional-testing",
-            label: lang === "zh-cn" ? "功能测试" : "Functional Testing",
-            desc: lang === "zh-cn" ? "执行功能测试，确保功能完整性" : "Execute functional tests to ensure completeness",
-          },
-          {
-            icon: "smart_toy",
-            slug: "automation-testing",
-            label: lang === "zh-cn" ? "自动化测试" : "Automation Testing",
-            desc: lang === "zh-cn" ? "设计自动化测试脚本和框架" : "Design automation test scripts and frameworks",
-          },
-          {
-            icon: "bolt",
-            slug: "performance-testing",
-            label: lang === "zh-cn" ? "性能测试" : "Performance Testing",
-            desc: lang === "zh-cn" ? "设计性能测试场景和指标分析" : "Design performance test scenarios and metrics",
-          },
-          {
-            icon: "lock",
-            slug: "security-testing",
-            label: lang === "zh-cn" ? "安全测试" : "Security Testing",
-            desc: lang === "zh-cn" ? "检测安全漏洞和安全测试策略" : "Detect vulnerabilities and define security strategy",
-          },
-          {
-            icon: "bug_report",
-            slug: "bug-reporting",
-            label: lang === "zh-cn" ? "缺陷上报" : "Bug Reporting",
-            desc: lang === "zh-cn" ? "标准化缺陷报告和根因分析" : "Standardized bug reports and root cause analysis",
-          },
-          {
-            icon: "bar_chart",
-            slug: "test-reporting",
-            label: lang === "zh-cn" ? "测试报告" : "Test Reporting",
-            desc: lang === "zh-cn" ? "生成测试执行报告和质量分析" : "Generate test execution reports and quality analysis",
-          },
-        ] as const).map((step, i, arr) => (
+        {PROMPT_ASSISTED_FLOW[lang].map((step, i, arr) => (
           <>
             <a
               href={getRelativeLocaleUrl(lang, `/prompts/${step.slug}/`)}

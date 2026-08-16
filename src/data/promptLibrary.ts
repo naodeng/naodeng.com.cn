@@ -136,6 +136,39 @@ export const PROMPT_QUICK_STEPS: Record<Lang, PromptQuickStep[]> = {
   ],
 };
 
+export type PromptAssistedFlowStep = {
+  icon: string;
+  slug: PromptTestingType;
+  label: string;
+  desc: string;
+};
+
+/** AI 辅助测试流程参考：只描述分析与设计环节，不声称真实执行或检测。 */
+export const PROMPT_ASSISTED_FLOW: Record<Lang, PromptAssistedFlowStep[]> = {
+  "zh-cn": [
+    { icon: "edit_note", slug: "requirements-analysis", label: "需求分析", desc: "深度分析需求文档，设计全维度测试场景" },
+    { icon: "track_changes", slug: "test-strategy", label: "测试策略", desc: "制定整体测试策略和测试计划" },
+    { icon: "edit", slug: "test-case-writing", label: "测试用例编写", desc: "基于测试场景生成详细测试用例" },
+    { icon: "search", slug: "functional-testing", label: "功能测试", desc: "设计功能测试步骤与检查清单" },
+    { icon: "smart_toy", slug: "automation-testing", label: "自动化测试", desc: "设计自动化测试脚本和框架" },
+    { icon: "bolt", slug: "performance-testing", label: "性能测试", desc: "设计性能测试场景和指标分析" },
+    { icon: "lock", slug: "security-testing", label: "安全测试", desc: "识别潜在安全风险与验证点" },
+    { icon: "bug_report", slug: "bug-reporting", label: "缺陷上报", desc: "标准化缺陷报告和根因分析" },
+    { icon: "bar_chart", slug: "test-reporting", label: "测试报告", desc: "基于真实执行数据整理测试报告" },
+  ],
+  en: [
+    { icon: "edit_note", slug: "requirements-analysis", label: "Requirements Analysis", desc: "Analyze requirements and design comprehensive test scenarios" },
+    { icon: "track_changes", slug: "test-strategy", label: "Test Strategy", desc: "Define overall test strategy and test plan" },
+    { icon: "edit", slug: "test-case-writing", label: "Test Case Writing", desc: "Generate detailed test cases from test scenarios" },
+    { icon: "search", slug: "functional-testing", label: "Functional Testing", desc: "Design functional test steps and checklists" },
+    { icon: "smart_toy", slug: "automation-testing", label: "Automation Testing", desc: "Design automation test scripts and frameworks" },
+    { icon: "bolt", slug: "performance-testing", label: "Performance Testing", desc: "Design performance test scenarios and metrics" },
+    { icon: "lock", slug: "security-testing", label: "Security Testing", desc: "Identify potential security risks and verification points" },
+    { icon: "bug_report", slug: "bug-reporting", label: "Bug Reporting", desc: "Standardized bug reports and root cause analysis" },
+    { icon: "bar_chart", slug: "test-reporting", label: "Test Reporting", desc: "Turn real execution data into test reports" },
+  ],
+};
+
 export const PROMPT_EXAMPLES: Record<Lang, PromptExample[]> = {
   "zh-cn": [
     { key: "requirements", input: "需求文档摘要", capability: "需求分析 Prompt", output: "风险清单与测试场景" },

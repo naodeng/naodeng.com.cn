@@ -209,4 +209,25 @@ describe("repository synchronization", () => {
       "utf8",
     )).toContain("en canonical Standard.");
   });
+
+  it("keeps corrected upstream wording free of overreaching claims after sync", () => {
+    const repoRoot = createUpstreamFixture();
+    const corrected =
+      "能够辅助设计功能测试步骤，并根据真实执行结果整理定位线索。";
+    writeFixtureFile(
+      repoRoot,
+      "testing-types/zh/api-testing/CRISPE-version/APITesting-CRISPE-Full.md",
+      `# API 测试 CRISPE\n\n${corrected}\n`,
+    );
+    const siteRoot = makeTemporaryDirectory("qa-site-output-");
+
+    syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true });
+
+    const generated = readFileSync(
+      join(siteRoot, "src/content/prompts/zh-cn/api-testing/CRISPE.md"),
+      "utf8",
+    );
+    expect(generated).toContain(corrected);
+    expect(generated).not.toMatch(/高效执行功能测试|执行功能测试|生成高覆盖率|检测安全漏洞|生成测试执行报告/);
+  });
 });

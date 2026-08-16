@@ -764,8 +764,8 @@ export const NAV_QA_SKILLS: Multilingual = {
 
 /** 提示词列表页 SEO 标题 */
 export const PROMPTS_PAGE_TITLE: Multilingual = {
-  en: "Professional QA Prompt Library",
-  "zh-cn": "专业质量保证提示词库",
+  en: "Software Testing Prompt Library",
+  "zh-cn": "软件测试提示词库",
 };
 
 /** 提示词列表页 SEO 描述 */
@@ -804,10 +804,10 @@ export const PROMPTS_QUICKSTART_TITLE: Multilingual = {
   "zh-cn": "快速开始",
 };
 
-/** 完整测试流程示例区块标题 */
+/** AI 辅助测试流程参考区块标题 */
 export const PROMPTS_FLOW_TITLE: Multilingual = {
-  en: "Full Testing Flow Example",
-  "zh-cn": "完整测试流程示例",
+  en: "AI-assisted Testing Flow Reference",
+  "zh-cn": "AI 辅助测试流程参考",
 };
 
 // ── 页面级 SEO 描述 ────────────────────────────────────────────────────────
