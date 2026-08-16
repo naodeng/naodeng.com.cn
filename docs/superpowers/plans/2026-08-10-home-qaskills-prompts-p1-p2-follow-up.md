@@ -299,25 +299,25 @@ git commit -m "content(home): align hero positioning and actions"
 - 页面当前顺序为：hero → starter paths → discovery（搜索/筛选/结果数）→ recommended → quickstart → lifecycle → categories。本任务把 `#categories` 区块移到 discovery 之后（DOM 顺序变为 hero → starter → discovery → categories → recommended → quickstart → lifecycle），使搜索态下结果紧跟筛选区；默认态仍按 DOM 顺序自然展示。
 - 当前 38 个 skill 全部 `hasEvals: true`，`shouldShowEvalsFilter` 返回 false → 现有 `[data-evals-toggle]` chip 不渲染；`qaskills.spec.ts` 中"点击 eval chip 并断言 aria-pressed"的用例替换为"无区分度时不渲染 chip"的断言。
 
-- [ ] **Step 1: 写搜索状态单元测试和页面行为 E2E**
+- [x] **Step 1: 写搜索状态单元测试和页面行为 E2E**
 
 单测覆盖：`isQASkillSearchActive` 的空查询默认态、文本查询、分类筛选、eval 筛选组合；`shouldShowEvalsFilter` 在混合 fixture 返回 true、全量一致 fixture 返回 false。E2E：输入 `API` 后断言辅助区（`[data-qaskills-default-only]`）隐藏、第一张可见卡包含 API、结果区位于搜索框之后；清空后辅助区恢复；输入无匹配词后出现空状态和清空按钮。现有 qaskills.spec.ts 中"点击 eval chip"的用例替换为"当前数据无区分度时不渲染 chip"的断言。
 
-- [ ] **Step 2: 运行测试并确认当前布局失败**
+- [x] **Step 2: 运行测试并确认当前布局失败**
 
 Run: `cd tests && npm run test:unit -- qaskillsFilter.test.ts`
 
 Run: `cd tests && npm run test:e2e -- qaskills.spec.ts`
 
-- [ ] **Step 3: 提取搜索状态判断并重组 DOM**
+- [x] **Step 3: 提取搜索状态判断并重组 DOM**
 
 把目录 `#categories` 移到筛选区之后；给 starter paths、recommended、quickstart、lifecycle 辅助模块统一增加 `data-qaskills-default-only`。`apply()` 用搜索态判断切换这些模块的 `hidden`，并同步更新结果数量与空状态；eval chip 的渲染由 `shouldShowEvalsFilter` 决定（构建期）。
 
-- [ ] **Step 4: 实现可访问的清空恢复行为**
+- [x] **Step 4: 实现可访问的清空恢复行为**
 
 清空按钮重置 query、category、eval 状态、chip 的 `aria-pressed`，恢复辅助区，并把焦点放回 `#qaskills-search`。
 
-- [ ] **Step 5: 运行单元与 E2E 并提交**
+- [x] **Step 5: 运行单元与 E2E 并提交**
 
 Run: `cd tests && npm run test:unit -- qaskillsFilter.test.ts`
 
@@ -329,6 +329,10 @@ Expected: PASS；当前数据下 eval chip 不渲染。
 git add src/utils/qaskillsFilter.ts src/pages/'[lang]'/qaskills/index.astro src/components/qaskills/RecommendedQASkills.astro src/components/qaskills/QASkillStarterPaths.astro tests/unit/qaskillsFilter.test.ts tests/e2e/specs/qaskills.spec.ts
 git commit -m "fix(qaskills): surface filtered results immediately"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 提交 `b78100879`：`qaskillsFilter.ts` 新增 `isQASkillSearchActive` / `shouldShowEvalsFilter`；`#categories` 移到筛选区之后；starter/recommended/quickstart/lifecycle 统一加 `data-qaskills-default-only`；搜索态隐藏辅助区，清空恢复默认模块并把焦点放回搜索框；当前 38 个 skill 全部 `hasEvals: true`，eval chip 不渲染。验证：qaskillsFilter 单测 14 个、qaskills E2E 9 个全过。
 
 ---
 
@@ -353,23 +357,23 @@ git commit -m "fix(qaskills): surface filtered results immediately"
 - 单测写法的关键点：`getQASkillsGrouped` 内部用 `process.cwd()` 解析 `src/content/`，而 Vitest 在 `tests/` 下运行时 cwd 是 `tests/`。测试开头必须 `process.chdir()` 到仓库根（可用 `path.resolve(__dirname, "../..")` 计算），结束时在 `afterAll` 恢复。
 - 现状目录卡展示 `skill.intro`（即 whenToUse 首条 bullet）；本任务扩展为"适用场景、输入、输出"三行 + 人工复核信息，字段从结构化 sections 提取（方案不变）。
 
-- [ ] **Step 1: 写失败的数据覆盖测试**
+- [x] **Step 1: 写失败的数据覆盖测试**
 
 通过 `getQASkillsGrouped`（直接读内容文件、不依赖 astro:content，可在 Vitest 中导入，注意先 chdir 到仓库根）遍历两种语言的所有目录 Skill，断言摘要的四个字段非空；并断言所有摘要均不包含"处理相关任务"一类通用句。
 
-- [ ] **Step 2: 运行失败测试**
+- [x] **Step 2: 运行失败测试**
 
 Run: `cd tests && npm run test:unit -- contentEntryConfig.test.ts qaskillsFilter.test.ts`
 
-- [ ] **Step 3: 建立完整目录摘要来源**
+- [x] **Step 3: 建立完整目录摘要来源**
 
 只复用已有结构化章节，不解析自由文案 `intro`：适用场景取 `skill.sections.whenToUse` 的首条有效 bullet；输入线索取 `skill.sections.workflow` 中首条输入或准备步骤；输出线索取 `skill.sections.checklist` 中首条交付物或完成条件；人工复核取 `skill.sections.coreConstraints` 或 `skill.sections.pitfalls` 的首条约束。某个字段无法从对应 section 稳定取得时，在 `qaSkillLibrary.ts` 中按 slug 显式维护双语 fallback（延续现有 `INTRO_FALLBACKS` 的集中配置方式，覆盖全部目录 slug 而不是只覆盖推荐列表）。不得从 `intro` 猜测输入输出，也不得用"处理相关任务"一类通用句作为最终卡片描述。
 
-- [ ] **Step 4: 更新卡片展示与 eval 筛选**
+- [x] **Step 4: 更新卡片展示与 eval 筛选**
 
 目录卡展示"适用场景、输入、输出"三行；人工复核信息通过可访问说明或详情链接提供。eval chip 渲染维持 Task 4 的"有区分度才渲染"行为，无需重复实现。
 
-- [ ] **Step 5: 运行测试并提交**
+- [x] **Step 5: 运行测试并提交**
 
 Run: `cd tests && npm run test:unit -- contentEntryConfig.test.ts qaskillsFilter.test.ts`
 
@@ -381,6 +385,10 @@ Expected: PASS；当前全量 Skill 均 hasEvals=true，页面不显示无区分
 git add src/data/qaSkillLibrary.ts src/pages/'[lang]'/qaskills/index.astro tests/unit/contentEntryConfig.test.ts tests/unit/qaskillsFilter.test.ts tests/e2e/specs/qaskills.spec.ts
 git commit -m "content(qaskills): clarify summaries and eval status"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 提交 `ee5898a04`：`getQASkillCardSummary` 只从结构化章节提取适用场景/输入/输出/人工复核（whenToUse 跳过“处理相关任务”类通用句，workflow 取输入线索，checklist 取交付物线索并排除引用主提示词的自检句，coreConstraints/pitfalls 取复核约束）；8 个工具类 skill（postman / jmeter / ui-test-*）缺少执行流程与交付自检章节，按 slug 维护双语 fallback（`buildToolSummaryFallbacks`）；目录卡改四行摘要。验证：双语 76 个 skill 摘要覆盖测试全部通过、qaskills E2E 10 个通过、build 875 页。
 
 ---
 
@@ -419,33 +427,33 @@ git commit -m "content(qaskills): clarify summaries and eval status"
 - 上游仓库 `awesome-qa-prompt` 的 8 个文件均有 `能够高效执行功能测试并快速定位问题`（CRISPE/LangGPT × Full/Mobile/Web/all_round），需先改上游再重新同步。
 - `scripts/sync-prompts-from-repo.mjs` 支持 `--repo-dir` 与 `--fail-on-lang-mismatch`，命令不变。
 
-- [ ] **Step 1: 写失败的能力边界测试**
+- [x] **Step 1: 写失败的能力边界测试**
 
 `promptClaims.test.ts` 读取 Prompts 页面源、`src/data/promptLibrary.ts`、`src/consts.ts` 与 `src/content/prompts/`，断言禁用表达不存在，并断言流程标题包含"辅助/assisted"。E2E 精确断言 H1 和浏览器标题。`promptsSync.test.ts` 增加同步回归，确保从修正后的本地上游生成的内容也不含禁用表达。
 
-- [ ] **Step 2: 运行测试并确认现有越界文案失败**
+- [x] **Step 2: 运行测试并确认现有越界文案失败**
 
 Run: `cd tests && npm run test:unit -- promptClaims.test.ts`
 
-- [ ] **Step 3: 迁移并修正流程文案**
+- [x] **Step 3: 迁移并修正流程文案**
 
 功能测试改为"设计功能测试步骤与检查清单"；安全测试改为"识别潜在安全风险与验证点"；报告改为"基于真实执行数据整理测试报告"；hero console 文案与 Hero 改为"辅助设计更完整的测试用例"一类表述（不声称生成覆盖率或执行结果）。
 
-- [ ] **Step 4: 在上游修正同步内容的越界表述**
+- [x] **Step 4: 在上游修正同步内容的越界表述**
 
 在 `awesome-qa-prompt` 的 CRISPE、LangGPT 中文 Full 与三个变体中，把"能够高效执行功能测试并快速定位问题"改为"能够辅助设计功能测试步骤，并根据真实执行结果整理定位线索"。先在上游仓库运行 `npm run check:all`。如果当前执行环境没有上游写权限，本任务在此处明确阻塞；不得直接编辑本站生成 Markdown 冒充永久修复。
 
-- [ ] **Step 5: 从已修正的本地上游重新同步**
+- [x] **Step 5: 从已修正的本地上游重新同步**
 
 Run: `npm run prompts:sync -- --repo-dir /Users/nao.deng/awsomeCode/awesome-qa-prompt --fail-on-lang-mismatch`
 
 Expected: `src/content/prompts/zh-cn/functional-testing/CRISPE.md` 与 `LangGPT.md` 重新生成，禁用表达消失，语言完整性检查通过。
 
-- [ ] **Step 6: 统一 title、H1、description 和流程标题**
+- [x] **Step 6: 统一 title、H1、description 和流程标题**
 
 在 `src/consts.ts` 中收敛 `PROMPTS_PAGE_TITLE`、`PROMPTS_PAGE_DESCRIPTION`、`PROMPTS_FLOW_TITLE` 三处文案；页面 H1 与 hero 副文案按 Interfaces 统一；详情页面包屑引用 `PROMPTS_PAGE_TITLE`，会自动跟随，无需额外改动。保留统计数字动态计算，不改 URL 和结构化数据类型。中文和英文 title 均使用统一主名称，站点后缀仍由 Base 负责。
 
-- [ ] **Step 7: 运行测试并分别提交两个仓库**
+- [x] **Step 7: 运行测试并分别提交两个仓库**
 
 Run: `cd tests && npm run test:unit -- promptClaims.test.ts promptsListPage.test.ts promptsSync.test.ts`
 
@@ -459,6 +467,13 @@ git -C /Users/nao.deng/awsomeCode/awesome-qa-prompt commit -m "content(functiona
 git add src/consts.ts src/data/promptLibrary.ts src/pages/'[lang]'/prompts/index.astro src/content/prompts/zh-cn/functional-testing/CRISPE.md src/content/prompts/zh-cn/functional-testing/LangGPT.md tests/unit/promptClaims.test.ts tests/unit/promptsSync.test.ts tests/e2e/specs/prompts.spec.ts tests/e2e/specs/seo.spec.ts
 git commit -m "content(prompts): clarify assisted testing boundaries"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 上游 `awesome-qa-prompt` 提交 `1b10497`（zh 8 文件）与 `4ddeb2c`（en 8 文件）：功能测试能力句改为“能够辅助设计功能测试步骤，并根据真实执行结果整理定位线索”及对应英文，`check:all` 通过；站点 `npm run prompts:sync -- --fail-on-lang-mismatch` 重新生成 zh/en 的 CRISPE 与 LangGPT。
+- 站点提交 `28e27c2c3`：`PROMPTS_PAGE_TITLE` 统一为「软件测试提示词库 / Software Testing Prompt Library」；`PROMPTS_FLOW_TITLE` 改为「AI 辅助测试流程参考 / AI-assisted Testing Flow Reference」；九步流程迁入 `PROMPT_ASSISTED_FLOW`，修正功能/安全/报告三处越界表述；hero console 收敛为“辅助设计更完整的测试用例”；新增 `promptClaims.test.ts` 守护发布层禁用表达，`promptsSync.test.ts` 增加同步回归。
+- 上游现有 34 个测试类型，站点维持 15 个支持类型：同步脚本镜像全部上游类型，本次仅提交 functional-testing 的 CRISPE/LangGPT 重生成文件，其余新类型目录不纳入（采纳新类型需另行规划文案、顺序与测试）。
+- 验证：promptClaims / promptsSync / promptsListPage 单测 17 个、prompts + seo E2E 30 个全过。注意 E2E `reuseExistingServer: true` 曾复用旧 preview 构建导致断言误报，杀掉 4321 端口进程后全绿。
 
 ---
 
@@ -482,23 +497,23 @@ git commit -m "content(prompts): clarify assisted testing boundaries"
 - 现状 `PROMPT_EXAMPLES` 为 3 项 × `{ key, input, capability, output }`；`prompts.spec.ts` 断言 `[data-prompt-example]` 数量为 3，本任务需同步改为 6。
 - 六类示例 href 指向 prompts 集合真实 slug：`requirements-analysis`、`api-testing`、`automation-testing`、`bug-reporting`、`test-reporting`、`security-testing`（15 个 testingType 目录均已有内容）。
 
-- [ ] **Step 1: 写六个示例的数据契约测试**
+- [x] **Step 1: 写六个示例的数据契约测试**
 
 断言中英文 key 一致、每种语言正好六项、Standard 是默认版本、输出行数为 3～5、人工检查项不少于 2、详情 href 指向真实 Prompt slug。
 
-- [ ] **Step 2: 运行测试并确认旧三字段示例失败**
+- [x] **Step 2: 运行测试并确认旧三字段示例失败**
 
 Run: `cd tests && npm run test:unit -- contentEntryConfig.test.ts`
 
-- [ ] **Step 3: 编写六组双语代表性示例**
+- [x] **Step 3: 编写六组双语代表性示例**
 
 输入使用短小但真实的需求/API/缺陷上下文；输出片段必须包含结构和具体内容，不使用"这里是结果"式占位文本；人工检查点明确指出业务规则、真实日志、权限模型、环境数据或执行证据。
 
-- [ ] **Step 4: 更新示例组件**
+- [x] **Step 4: 更新示例组件**
 
 每张卡依次展示场景、输入、推荐版本与理由、输出片段、人工检查项和详情链接。输出使用列表或 `pre`，保证移动端可换行且不产生横向滚动。
 
-- [ ] **Step 5: 运行单元和 E2E 并提交**
+- [x] **Step 5: 运行单元和 E2E 并提交**
 
 Run: `cd tests && npm run test:unit -- contentEntryConfig.test.ts promptClaims.test.ts`
 
@@ -510,6 +525,10 @@ Expected: PASS。
 git add src/data/promptLibrary.ts src/components/prompts/PromptExamples.astro tests/unit/contentEntryConfig.test.ts tests/e2e/specs/prompts.spec.ts tests/e2e/specs/responsive.spec.ts
 git commit -m "feat(prompts): add reviewable bilingual examples"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 提交 `c9cfe14c6`：`PROMPT_EXAMPLES` 扩为六组双语示例（需求分析/API 测试/UI 自动化/缺陷报告/测试报告/安全检查清单），每组含 scenario/input/version/versionReason/outputLines(3-5)/reviewPoints(≥2)/href 指向真实 slug；`PromptExamples` 组件按新结构渲染，移动端用 `overflow-wrap: anywhere` 防横向滚动。验证：contentEntryConfig 单测 13 个、prompts + responsive E2E 28 个全过。
 
 ---
 
@@ -523,13 +542,13 @@ git commit -m "feat(prompts): add reviewable bilingual examples"
 
 - 自动化 E2E 使用 Playwright 默认 webServer；人工验收使用当前 build 的独立 4327 preview，禁止复用可能过期的 localhost 服务。
 
-- [ ] **Step 1: 运行完整单元测试**
+- [x] **Step 1: 运行完整单元测试**
 
 Run: `npm test`
 
 Expected: 所有 Vitest 测试通过。
 
-- [ ] **Step 2: 运行构建和 SEO 检查**
+- [x] **Step 2: 运行构建和 SEO 检查**
 
 Run: `npm run build`
 
@@ -539,29 +558,29 @@ Run: `npm run seo:check`
 
 Expected: SEO 静态检查通过。
 
-- [ ] **Step 3: 运行全量 E2E（CI 同范围）**
+- [x] **Step 3: 运行全量 E2E（CI 同范围）**
 
 Run: `cd tests && npm run test:e2e`
 
 Expected: 全量 E2E 通过；Playwright 自动以当前源码 build 并启动默认 preview。首页结构收缩会波及 navigation、tracking、accessibility 等既有契约，因此不能只跑目标 spec。
 
-- [ ] **Step 4: 为人工验收启动独立预览**
+- [x] **Step 4: 为人工验收启动独立预览**
 
 Run（单独终端）: `npm run preview -- --host 127.0.0.1 --port 4327`
 
 Expected: 预览服务监听 `http://127.0.0.1:4327`，页面内容来自 Step 2 的当前 build。
 
-- [ ] **Step 5: 人工检查六个页面**
+- [x] **Step 5: 人工检查六个页面**
 
 检查 `/zh-cn/`、`/en/`、`/zh-cn/qaskills/`、`/en/qaskills/`、`/zh-cn/prompts/`、`/en/prompts/`。每页分别检查 1440×900 与 390×844；验证标题、模块顺序、任务跳转、搜索/清空、空状态、Prompt 示例、键盘焦点和横向溢出。
 
-- [ ] **Step 6: 检查工作区范围**
+- [x] **Step 6: 检查工作区范围**
 
 Run: `git status --short`
 
 Expected: 仅包含本计划文件和 Tasks 1–7 的相关源码/测试改动，无 `dist/`、报告、截图或无关文件。
 
-- [ ] **Step 7: 提交仅由回归发现的修正**
+- [x] **Step 7: 提交仅由回归发现的修正**
 
 若步骤 1～6 没有产生额外代码改动，则跳过本步骤；如有范围内修正，使用：
 
@@ -569,6 +588,13 @@ Expected: 仅包含本计划文件和 Tasks 1–7 的相关源码/测试改动�
 git add src/consts.ts src/data/homeTaskEntries.ts src/data/promptLibrary.ts src/data/qaSkillLibrary.ts src/utils/qaskillsFilter.ts src/pages/'[lang]'/index.astro src/pages/'[lang]'/qaskills/index.astro src/pages/'[lang]'/prompts/index.astro src/components/home src/components/qaskills src/components/prompts tests/unit tests/e2e/specs/apple-home.spec.ts tests/e2e/specs/qaskills.spec.ts tests/e2e/specs/prompts.spec.ts tests/e2e/specs/responsive.spec.ts tests/e2e/specs/seo.spec.ts tests/e2e/specs/navigation.spec.ts tests/e2e/specs/tracking-contract.spec.ts tests/e2e/specs/accessibility-contrast.spec.ts tests/e2e/specs/accessibility-hard-metrics.spec.ts
 git commit -m "test(site): close homepage library regression gaps"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 全量单测 107 个通过；build 875 页成功；seo:check 计数无变化（仅基线时间戳刷新）。
+- 全量 E2E：390 passed / 0 failed / 26 skipped（跳过均为既有条件跳过）。
+- 独立 4327 preview + 脚本化页面验收：六个页面 × (1440×900 / 390×844) 共 12 项检查全部通过（标题、H1、横向溢出、首页五段顺序、qaskills 搜索态/清空/焦点恢复、prompts 六示例与辅助流程标题）。原计划 Step 5 为人工检查，本次以脚本等价验证替代，建议发布前人工抽检首页与两个列表页。
+- Step 6 git status 仅剩 seo 基线时间戳，无 dist/报告/截图等杂项；无回归修正，Step 7 跳过。
 
 ---
 

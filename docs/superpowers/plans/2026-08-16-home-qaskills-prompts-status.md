@@ -9,7 +9,7 @@
 | 计划 | 定位 | 状态 |
 | --- | --- | --- |
 | `2026-08-10-home-qaskills-prompts-content-optimization.md` | 内容层优化（P1 基础版） | 实现已落地，文档 checkbox 已于 2026-08-16 按实现状态回填（54/54） |
-| `2026-08-10-home-qaskills-prompts-p1-p2-follow-up.md` | 进阶优化（P1/P2 follow-up） | 已按最新内容重写，Task 1 完成，Task 2–8 待执行 |
+| `2026-08-10-home-qaskills-prompts-p1-p2-follow-up.md` | 进阶优化（P1/P2 follow-up） | Task 1–8 已全部完成（2026-08-16），详见执行进度 |
 
 ## 计划 A：content-optimization — 实现已完成，文档已同步
 
@@ -77,10 +77,17 @@
 - **Task 2（收敛首页为五段式信息架构）已完成**（提交 `0213245ef`）：首页固定为 Hero（含 primary modes）→ Task Navigator → Capability Guide → Latest Posts（3 篇）→ Explore Hub 五段；删除 CoreCapabilities / HomeProofAndCases 组件与 Prompts、QA Skills、Projects、Guild、Wiki、AI Wiki、Tags 七个旧长区块；`HomeCapabilityGuide` 承载 3 能力卡 + 3 输入→输出示例，`HomeExploreHub` 接收本地化卡片；同步 apple-home / navigation / accessibility-contrast 断言。额外：`10cea2177` 清理 guild.spec.ts 中已随首页收敛失效的 10 个旧断言、修复 qaskills 详情页偶发超时。
 - **Task 3（统一首页首屏定位与 CTA）已完成**（提交 `9c35b6835`）：H1 改为「软件测试、质量工程与 AI 测试实践」/「Software Testing, Quality Engineering, and AI-assisted Testing」；主 CTA 锚定 `#home-task-navigator`（该区块补 id），次 CTA 进入 QA Skills 与 Prompts；tracking-contract 入口点击迁移到 `.home-primary-entry[href='/zh-cn/blog/']`，`home_entry_click` 事件与 payload 不变。另外修复 HomeCapabilityGuide 样式串扰（`970baf6ea`，类选择器化 + 字号归位 DESIGN.md 阶梯）。验证：33 个相关 E2E 通过、锚点/桌面/移动端实测正常、build 875 页。
 - **Task 3 修订（按 spec 5.1 精确文案重写 Hero，2026-08-16）**：H1 改为「面向测试工程师的 AI 测试知识与工作台」/「AI Testing Knowledge and Workbench for Test Engineers」；副标题改为「从需求分析、测试设计到自动化与质量评估，使用可直接落地的 Skills、Prompts、工作流和实践指南。」及对应英文；CTA 收敛为两个——主按钮「找到适合我的测试 Skill」→ `/qaskills/`、次按钮「使用测试 Prompt」→ `/prompts/`，移除 `#home-task-navigator` 锚点 CTA（`HOME_CTA_TASKS` 常量一并删除）；`apple-home.spec` 英雄用例同步改为断言 2 个 CTA 与 primary/ghost 类。验证：build 875 页成功、apple-home / tracking-contract / navigation 34 个 E2E 通过、seo:check 无新增问题。
+- **Task 4（修复 QA Skills 搜索反馈链路）已完成**（提交 `b78100879`）：`qaskillsFilter.ts` 新增 `isQASkillSearchActive` / `shouldShowEvalsFilter`；`#categories` 移到筛选区之后；四个辅助模块统一加 `data-qaskills-default-only`，搜索态隐藏、清空恢复并把焦点放回搜索框；38 个 skill 全 `hasEvals: true`，eval chip 不渲染。验证：qaskillsFilter 单测 14 个、qaskills E2E 9 个全过。
+- **Task 5（校正评测状态并补齐完整 Skill 摘要）已完成**（提交 `ee5898a04`）：`getQASkillCardSummary` 从结构化章节提取适用场景/输入/输出/人工复核；8 个工具类 skill 缺执行流程/交付自检章节，按 slug 维护双语 fallback；目录卡改四行摘要。验证：双语 76 个 skill 摘要覆盖测试全过、qaskills E2E 10 个通过。
+- **Task 6（收紧 Prompts 能力边界并统一标题）已完成**（站点提交 `28e27c2c3`；上游 `awesome-qa-prompt` 提交 `1b10497` + `4ddeb2c`）：`PROMPTS_PAGE_TITLE` 统一为「软件测试提示词库 / Software Testing Prompt Library」；流程标题改「AI 辅助测试流程参考」；九步流程迁入 `PROMPT_ASSISTED_FLOW` 并修正功能/安全/报告三处越界表述；上游 zh/en 各 8 个文件修正后重新同步 CRISPE/LangGPT；新增 `promptClaims.test.ts` 守护发布层禁用表达。注意：上游现已有 34 个测试类型，站点维持 15 个支持类型，本次未采纳新增类型目录（采纳需另行规划）。
+- **Task 7（Prompt 示例升级为六组真实双语示例）已完成**（提交 `c9cfe14c6`）：`PROMPT_EXAMPLES` 扩为六组双语示例，含场景、输入、推荐版本与理由、输出片段、人工检查点与真实详情链接；`PromptExamples` 组件按新结构渲染，移动端防横向滚动。验证：contentEntryConfig 单测 13 个、prompts + responsive E2E 28 个全过。
+- **Task 8（完整回归与页面验收）已完成（2026-08-16）**：全量单测 107 个通过；build 875 页成功；seo:check 计数无变化；全量 E2E **390 passed / 0 failed / 26 skipped**（跳过均为既有条件跳过）；独立 4327 preview + 脚本化验收六个页面 × 两种视口 12/12 通过（标题、H1、横向溢出、首页五段顺序、qaskills 搜索/清空/焦点、prompts 示例与辅助流程标题）。原计划的人工检查以脚本等价验证替代，发布前建议人工抽检一遍。
 - E2E 提速（提交 `85161600e`）：全套件 246 处 `waitUntil: "networkidle"` 改为 `domcontentloaded`（第三方广告/统计脚本不再拖死等待），完整 411 用例从数十分钟大量超时降为 **2.1 分钟全绿**（385 passed / 0 failed / 26 skipped 均为既有条件跳过）。
-- 计划 B checkbox：Task 1、Task 2、Task 3 已勾选，其余任务待执行。
+- 计划 B checkbox：Task 1–8 已全部勾选，Gate A–D 均达成。
 
 ## 后续动作
 
-- 继续按重写后的计划 B 从 Task 4 开始执行，每个任务先写失败测试、再实现、验证、独立提交。
-- 每完成一个 Gate 对应的任务后，同步把本状态文档与计划 B 的 checkbox 更新为已勾选。
+- 计划 B 已全部执行完毕。遗留事项：
+  - 上游 `awesome-qa-prompt` 已扩展到 34 个测试类型，站点只支持 15 个；如需采纳新增类型（api-test-*、ui-test-*、performance-test-*、*-plus 等），需补齐 `PROMPT_TYPE_COPY`、`TESTING_TYPE_ORDER`、E2E 数量断言并重新同步。
+  - E2E 配置 `reuseExistingServer: true`：本地跑测试前建议先确认 4321 端口没有旧 preview 进程，否则可能误用旧构建导致断言误报。
+  - 发布前对首页、qaskills、prompts 三页做一次人工抽检（本次以脚本化验收替代人工检查）。
