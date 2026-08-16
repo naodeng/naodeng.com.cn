@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { filterQASkills, type QASkillFilterInput } from "@/utils/qaskillsFilter";
+import {
+  filterQASkills,
+  isQASkillSearchActive,
+  shouldShowEvalsFilter,
+  type QASkillFilterInput,
+} from "@/utils/qaskillsFilter";
 
 const skills: QASkillFilterInput[] = [
   {
@@ -52,5 +57,51 @@ describe("filterQASkills", () => {
     expect(
       filterQASkills(skills, { query: "SMOKE", category: "all", evalsOnly: false }).map((s) => s.slug)
     ).toEqual(["daily-testing-workflow"]);
+  });
+});
+
+describe("isQASkillSearchActive", () => {
+  it("returns false for the default state", () => {
+    expect(isQASkillSearchActive({ query: "", category: "all", evalsOnly: false })).toBe(false);
+  });
+
+  it("treats whitespace-only query as empty", () => {
+    expect(isQASkillSearchActive({ query: "   ", category: "all", evalsOnly: false })).toBe(false);
+  });
+
+  it("returns true for a text query", () => {
+    expect(isQASkillSearchActive({ query: "api", category: "all", evalsOnly: false })).toBe(true);
+  });
+
+  it("returns true for a category filter", () => {
+    expect(isQASkillSearchActive({ query: "", category: "type", evalsOnly: false })).toBe(true);
+  });
+
+  it("returns true for the evals filter", () => {
+    expect(isQASkillSearchActive({ query: "", category: "all", evalsOnly: true })).toBe(true);
+  });
+
+  it("returns true for any combination of filters", () => {
+    expect(isQASkillSearchActive({ query: "api", category: "workflow", evalsOnly: true })).toBe(true);
+  });
+});
+
+describe("shouldShowEvalsFilter", () => {
+  it("returns true when skills mix evals and no-evals", () => {
+    expect(shouldShowEvalsFilter(skills)).toBe(true);
+  });
+
+  it("returns false when all skills have evals", () => {
+    const allWithEvals = skills.map((s) => ({ ...s, hasEvals: true }));
+    expect(shouldShowEvalsFilter(allWithEvals)).toBe(false);
+  });
+
+  it("returns false when no skill has evals", () => {
+    const noneWithEvals = skills.map((s) => ({ ...s, hasEvals: false }));
+    expect(shouldShowEvalsFilter(noneWithEvals)).toBe(false);
+  });
+
+  it("returns false for an empty list", () => {
+    expect(shouldShowEvalsFilter([])).toBe(false);
   });
 });

@@ -9,11 +9,58 @@ test.describe("QA Skills", () => {
       await expect(page.locator("[data-recommended-skill]")).toHaveCount(6);
       await expect(page.locator("#qaskills-results")).toContainText(/\d+/);
 
-      const evalsFilter = page.locator('[data-evals-toggle="1"]');
-      await expect(evalsFilter).toHaveAttribute("aria-pressed", "false");
-      await evalsFilter.click();
-      await expect(evalsFilter).toHaveAttribute("aria-pressed", "true");
+      // 当前全量 skill 均含评测用例，筛选无区分度时不渲染 chip
+      await expect(page.locator('[data-evals-toggle="1"]')).toHaveCount(0);
+    });
+  }
+
+  for (const locale of ["zh-cn", "en"] as const) {
+    test(`${locale} search state hides helper sections and surfaces results next to filters`, async ({ page }) => {
+      await page.goto(`/${locale}/qaskills/`);
+
+      const helpers = page.locator("[data-qaskills-default-only]");
+      const assertHelpersVisible = async () => {
+        const els = await helpers.all();
+        expect(els.length).toBeGreaterThan(0);
+        for (const el of els) await expect(el).toBeVisible();
+      };
+      const assertHelpersHidden = async () => {
+        const els = await helpers.all();
+        expect(els.length).toBeGreaterThan(0);
+        for (const el of els) await expect(el).toBeHidden();
+      };
+
+      // 默认态：辅助区可见，目录紧跟筛选区
+      await assertHelpersVisible();
+      const domOrder = await page.evaluate(() => {
+        const discovery = document.querySelector(".discovery");
+        const categories = document.getElementById("categories");
+        return discovery && categories ? discovery.nextElementSibling === categories : false;
+      });
+      expect(domOrder).toBe(true);
+
+      // 搜索态：辅助区隐藏，可见结果紧邻搜索框
+      const search = page.locator("#qaskills-search");
+      await search.fill("API");
+      await assertHelpersHidden();
+      const firstCard = page.locator("a.card[data-slug]:visible").first();
+      await expect(firstCard).toContainText(/api/i);
       await expect(page.locator("#qaskills-results")).toContainText(/\d+/);
+
+      // 清空后辅助区恢复，焦点回到搜索框
+      await search.fill("");
+      await assertHelpersVisible();
+
+      // 无匹配词：出现空状态与清空按钮，点击后恢复
+      await search.fill("zzzz-no-match-qq");
+      await expect(page.locator("#qaskills-empty")).toBeVisible();
+      const clearBtn = page.locator("#qaskills-clear");
+      await expect(clearBtn).toBeVisible();
+      await clearBtn.click();
+      await expect(search).toHaveValue("");
+      await assertHelpersVisible();
+      await expect(page.locator("#qaskills-empty")).toBeHidden();
+      await expect(search).toBeFocused();
     });
   }
 

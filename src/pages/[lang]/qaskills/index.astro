@@ -6,6 +6,7 @@ import RecommendedQASkills from "@/components/qaskills/RecommendedQASkills.astro
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
+import { shouldShowEvalsFilter } from "@/utils/qaskillsFilter";
 import { QA_SKILL_TOOLS, RECOMMENDED_QA_SKILL_SLUGS } from "@/data/qaSkillLibrary";
 
 export function getStaticPaths() {
@@ -29,6 +30,9 @@ const toolCount = QA_SKILL_TOOLS.length;
 const recommendedSkills = RECOMMENDED_QA_SKILL_SLUGS
   .map((slug) => allSkills.find((skill) => skill.slug === slug))
   .filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
+
+// 构建期判断：数据无区分度时不渲染 eval 筛选 chip（当前 38 个 skill 均含评测用例）
+const showEvalsFilter = shouldShowEvalsFilter(allSkills);
 
 const text = lang === "zh-cn" ? {
   title: "软件测试技能库",
@@ -195,57 +199,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         <button type="button" class="chip" data-filter="type" aria-pressed="false">{text.filterType}</button>
         <button type="button" class="chip" data-filter="workflow" aria-pressed="false">{text.filterWorkflow}</button>
         <button type="button" class="chip" data-filter="plus" aria-pressed="false">{text.filterPlus}</button>
-        <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
+        {showEvalsFilter && (
+          <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
+        )}
       </div>
       <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
-    </section>
-
-    <RecommendedQASkills lang={lang} skills={recommendedSkills} />
-
-    <section id="quickstart" class="section">
-      <h2>{text.quickStart}</h2>
-      <ol class="quick-grid">
-        {text.quickSteps.map((step, index) => (
-          <li class="quick-card">
-            <span class="num">{index + 1}</span>
-            <h3>{step.title}</h3>
-            <p>{step.desc}</p>
-          </li>
-        ))}
-      </ol>
-    </section>
-
-    <section id="lifecycle-path" class="section lifecycle-path" aria-labelledby="lifecycle-path-title">
-      <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
-      <p class="lifecycle-intro">{text.lifecycleIntro}</p>
-      <div class="lifecycle-track">
-        {lifecycleStages.map((stage, index) => (
-          <div class="lifecycle-cell">
-            <div class="lifecycle-stage" data-stage={stage.key}>
-              <p class="lifecycle-stage-title">
-                <span class="lifecycle-stage-num" aria-hidden="true">{index + 1}</span>
-                {stage.title}
-              </p>
-              <ul class="lifecycle-skills" role="list">
-                {stage.nodes.map((node) => (
-                  <li>
-                    <a
-                      class:list={["lifecycle-skill", node.kind === "plus" && "lifecycle-skill--plus"]}
-                      href={getRelativeLocaleUrl(lang, `/qaskills/${node.slug}/`)}
-                      data-slug={node.slug}
-                      data-kind={node.kind}
-                    >
-                      <span>{node.label}</span>
-                      {node.kind === "plus" && <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {index < lifecycleStages.length - 1 && <span class="lifecycle-arrow" aria-hidden="true">→</span>}
-          </div>
-        ))}
-      </div>
     </section>
 
     <section class="section" id="categories">
@@ -351,6 +309,54 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         <GoogleAd />
       </div>
     </section>
+
+    <RecommendedQASkills lang={lang} skills={recommendedSkills} />
+
+    <section id="quickstart" class="section" data-qaskills-default-only>
+      <h2>{text.quickStart}</h2>
+      <ol class="quick-grid">
+        {text.quickSteps.map((step, index) => (
+          <li class="quick-card">
+            <span class="num">{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="lifecycle-path" class="section lifecycle-path" data-qaskills-default-only aria-labelledby="lifecycle-path-title">
+      <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
+      <p class="lifecycle-intro">{text.lifecycleIntro}</p>
+      <div class="lifecycle-track">
+        {lifecycleStages.map((stage, index) => (
+          <div class="lifecycle-cell">
+            <div class="lifecycle-stage" data-stage={stage.key}>
+              <p class="lifecycle-stage-title">
+                <span class="lifecycle-stage-num" aria-hidden="true">{index + 1}</span>
+                {stage.title}
+              </p>
+              <ul class="lifecycle-skills" role="list">
+                {stage.nodes.map((node) => (
+                  <li>
+                    <a
+                      class:list={["lifecycle-skill", node.kind === "plus" && "lifecycle-skill--plus"]}
+                      href={getRelativeLocaleUrl(lang, `/qaskills/${node.slug}/`)}
+                      data-slug={node.slug}
+                      data-kind={node.kind}
+                    >
+                      <span>{node.label}</span>
+                      {node.kind === "plus" && <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {index < lifecycleStages.length - 1 && <span class="lifecycle-arrow" aria-hidden="true">→</span>}
+          </div>
+        ))}
+      </div>
+    </section>
   </div>
 </Base>
 
@@ -363,10 +369,16 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
     const blocks = Array.from(document.querySelectorAll(".category-block"));
+    const defaultOnly = Array.from(document.querySelectorAll("[data-qaskills-default-only]"));
     if (!search || !empty || !cards.length) return;
 
     let category = "all";
     let evalsOnly = false;
+
+    // 与 src/utils/qaskillsFilter.ts 的 isQASkillSearchActive 保持等价
+    // （is:inline 脚本无法 import 模块，两处需同步维护）
+    const searchActive = () =>
+      (search.value || "").trim().length > 0 || category !== "all" || evalsOnly;
 
     const apply = () => {
       const q = (search.value || "").trim().toLowerCase();
@@ -400,6 +412,9 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         const hasVisible = Array.from(block.querySelectorAll("li")).some((li) => !li.hasAttribute("hidden"));
         block.toggleAttribute("hidden", !relevant || !hasVisible);
       });
+
+      // 搜索态下隐藏默认辅助区，让目录结果紧邻筛选区
+      defaultOnly.forEach((el) => el.toggleAttribute("hidden", searchActive()));
 
       empty.hidden = visible > 0;
       if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
@@ -435,6 +450,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       evalsChip?.classList.remove("is-active");
       evalsChip?.setAttribute("aria-pressed", "false");
       apply();
+      search?.focus();
     });
 
     apply();

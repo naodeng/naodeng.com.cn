@@ -8,7 +8,7 @@ interface Props { lang: Lang; skills: Skill[] }
 const { lang, skills } = Astro.props;
 ---
 
-<section id="recommended-skills" aria-labelledby="recommended-skills-title">
+<section id="recommended-skills" data-qaskills-default-only aria-labelledby="recommended-skills-title">
   <h2 id="recommended-skills-title">{lang === "zh-cn" ? "推荐从这些 Skills 开始" : "Recommended Skills to start with"}</h2>
   <p>{lang === "zh-cn" ? "覆盖选择、分析、设计、策略、缺陷和日常执行六类高频任务。" : "Six practical starting points for discovery, analysis, design, strategy, defects, and daily execution."}</p>
   <ul class="recommended-grid" role="list">
