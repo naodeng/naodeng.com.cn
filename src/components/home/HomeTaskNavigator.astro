@@ -12,7 +12,7 @@ function targetHref(target: HomeTaskTarget) {
   );
 }
 ---
-<section class="home-band home-band--muted home-task-navigator" aria-labelledby="home-task-title">
+<section class="home-band home-band--muted home-task-navigator" id="home-task-navigator" aria-labelledby="home-task-title">
   <div class="home-inner">
     <h2 id="home-task-title" class="home-band__title">{locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}</h2>
     <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发，直接进入对应的 Skill 或 Prompt；也可在详情页获取输入模板和执行方式。" : "Start with the task, open the matching Skill or Prompt, and use its input template and execution guide."}</p>

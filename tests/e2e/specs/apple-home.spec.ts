@@ -35,13 +35,19 @@ test.describe("zenix homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
-  test("hero CTAs link to blog and wiki entries", async ({ page, baseURL }) => {
-    for (const [lang, wikiPath] of [["zh-cn", "/zh-cn/wiki/"], ["en", "/en/AIWiki/"]] as const) {
+  test("hero positions the site around testing tasks with task-first CTAs", async ({ page, baseURL }) => {
+    const expectations = [
+      { lang: "zh-cn", h1: "软件测试、质量工程与 AI 测试实践" },
+      { lang: "en", h1: "Software Testing, Quality Engineering, and AI-assisted Testing" },
+    ] as const;
+    for (const { lang, h1 } of expectations) {
       await page.goto(`${baseURL || ""}/${lang}/`);
+      await expect(page.locator("main .home-hero h1")).toHaveText(h1);
       const ctas = page.locator(".home-hero__ctas a");
-      await expect(ctas).toHaveCount(2);
-      await expect(ctas.nth(0)).toHaveAttribute("href", `/${lang}/blog/`);
-      await expect(ctas.nth(1)).toHaveAttribute("href", wikiPath);
+      await expect(ctas).toHaveCount(3);
+      await expect(ctas.nth(0)).toHaveAttribute("href", "#home-task-navigator");
+      await expect(ctas.nth(1)).toHaveAttribute("href", `/${lang}/qaskills/`);
+      await expect(ctas.nth(2)).toHaveAttribute("href", `/${lang}/prompts/`);
     }
   });
 

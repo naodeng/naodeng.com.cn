@@ -15,7 +15,7 @@ test.describe("埋点契约", () => {
   test("首页入口点击事件包含 session_id", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
-    const entry = page.locator(".home-hero__ctas a[href='/zh-cn/blog/']");
+    const entry = page.locator(".home-primary-entry[href='/zh-cn/blog/']");
     await expect(entry).toBeVisible({ timeout: 10000 });
     await entry.evaluate((node) => {
       node.addEventListener(

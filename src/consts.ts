@@ -364,23 +364,28 @@ export const PROJECTS_TECH_STACK_LABEL: Multilingual = {
 
 // 首页区块文案
 export const HOME_HERO_TITLE: Multilingual = {
-  en: "Make complex knowledge clear",
-  "zh-cn": "把复杂知识讲清楚",
+  en: "Software Testing, Quality Engineering, and AI-assisted Testing",
+  "zh-cn": "软件测试、质量工程与 AI 测试实践",
 };
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
-  en: "Testing wiki, essays, prompts, and workflows: a readable knowledge base.",
-  "zh-cn": "测试百科、实践文章、提示词与工作流——一个可读、可引用的知识库。",
+  en: "Practice essays, reusable QA Skills, testing Prompts, and a knowledge base — from task to reviewable deliverable.",
+  "zh-cn": "实践文章、可复用 QA Skills、测试 Prompts 与知识库——从任务出发，直达可评审的交付物。",
 };
 
-export const HOME_CTA_START: Multilingual = {
-  en: "Start reading",
-  "zh-cn": "开始阅读",
+export const HOME_CTA_TASKS: Multilingual = {
+  en: "Start with a task",
+  "zh-cn": "从测试任务开始",
 };
 
-export const HOME_CTA_WIKI: Multilingual = {
-  en: "Browse wiki",
-  "zh-cn": "浏览百科",
+export const HOME_CTA_SKILLS: Multilingual = {
+  en: "Browse QA Skills",
+  "zh-cn": "进入 QA Skills",
+};
+
+export const HOME_CTA_PROMPTS: Multilingual = {
+  en: "Browse Prompts",
+  "zh-cn": "进入提示词库",
 };
 
 export const HOME_EXPLORE_TITLE: Multilingual = {
