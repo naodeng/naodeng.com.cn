@@ -27,7 +27,7 @@ test.describe("QA Skills", () => {
   });
 
   test("detail shows Guide section, raw SKILL tab, and install panel", async ({ page }) => {
-    await page.goto("/zh-cn/qaskills/api-testing/");
+    await page.goto("/zh-cn/qaskills/api-testing/", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /何时使用|When to Use/ })).toBeVisible();
     await expect(page.locator("#skill-elevator")).toBeVisible();
     await page.getByRole("tab", { name: /SKILL\.md/i }).click();
