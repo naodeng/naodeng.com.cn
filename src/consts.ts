@@ -242,7 +242,7 @@ export const NAV_ANALYTICS: Multilingual = {
 };
 
 /** 博文版权/许可（展示在日期行） */
-export const ARTICLE_LICENSE = "CC BY-SA 4.0";
+export const ARTICLE_LICENSE = "PolyForm Noncommercial 1.0.0";
 
 /** 博文阅读时长文案：X 分钟阅读 / X min read */
 export const READING_TIME_LABEL: Multilingual = {
