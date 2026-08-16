@@ -7,7 +7,6 @@ import {
   SITE_TITLE,
   HOME_HERO_TITLE,
   HOME_HERO_SUBTITLE,
-  HOME_CTA_TASKS,
   HOME_CTA_SKILLS,
   HOME_CTA_PROMPTS,
   HOME_EXPLORE_TITLE,
@@ -104,11 +103,8 @@ const homePageSchema = {
         <h1 class="home-hero__title">{t(HOME_HERO_TITLE)}</h1>
         <p class="home-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
         <div class="home-hero__ctas">
-          <a class="pill-cta pill-cta--primary" href="#home-task-navigator">
-            {t(HOME_CTA_TASKS)}
-          </a>
           <a
-            class="pill-cta pill-cta--ghost"
+            class="pill-cta pill-cta--primary"
             href={getRelativeLocaleUrl(locale, "/qaskills")}
           >
             {t(HOME_CTA_SKILLS)}
