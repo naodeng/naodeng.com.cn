@@ -1,20 +1,57 @@
 ---
 import type { Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import type { PromptExample } from "@/data/promptLibrary";
 
 interface Props { lang: Lang; examples: PromptExample[]; }
 const { lang, examples } = Astro.props;
+
+const labels = lang === "zh-cn" ? {
+  input: "输入",
+  versionReason: "为什么用这个版本",
+  output: "输出片段",
+  review: "人工检查点",
+  detail: "查看详情",
+} : {
+  input: "Input",
+  versionReason: "Why this version",
+  output: "Output excerpt",
+  review: "Human review points",
+  detail: "View details",
+};
 ---
 
 <section class="prompts-section examples" aria-labelledby="prompt-examples-heading">
   <h2 id="prompt-examples-heading">{lang === "zh-cn" ? "从输入到测试产物" : "From input to testing artifact"}</h2>
   <p>{lang === "zh-cn" ? "以下为结构示例，实际结果需要结合项目上下文复核。" : "These are structural examples; review real results against project context."}</p>
-  <ul role="list">
+  <ul class="example-grid" role="list">
     {examples.map((example) => (
       <li data-prompt-example>
-        <span>{lang === "zh-cn" ? "输入" : "Input"}</span><strong>{example.input}</strong>
-        <span>{lang === "zh-cn" ? "使用" : "Use"}</span><strong>{example.capability}</strong>
-        <span>{lang === "zh-cn" ? "产出" : "Output"}</span><strong>{example.output}</strong>
+        <div class="example-head">
+          <h3>{example.scenario}</h3>
+          <span class="example-version">{example.version}</span>
+        </div>
+        <p class="example-row"><span class="example-label">{labels.input}</span><span>{example.input}</span></p>
+        <p class="example-row"><span class="example-label">{labels.versionReason}</span><span>{example.versionReason}</span></p>
+        <div class="example-block">
+          <p class="example-label">{labels.output}</p>
+          <ul class="example-list">
+            {example.outputLines.map((line) => (
+              <li>{line}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="example-block">
+          <p class="example-label">{labels.review}</p>
+          <ul class="example-list">
+            {example.reviewPoints.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </div>
+        <a class="example-link" href={getRelativeLocaleUrl(lang, example.href)}>
+          {labels.detail} →
+        </a>
       </li>
     ))}
   </ul>
@@ -22,9 +59,74 @@ const { lang, examples } = Astro.props;
 
 <style>
   .examples > p { color: var(--color-text-secondary); line-height: 1.7; }
-  ul { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  li { display: grid; grid-template-columns: auto 1fr; gap: .5rem .8rem; padding: 1.2rem; border: 1px solid rgba(148,163,184,.24); border-radius: var(--radius-lg); background: rgba(255,255,255,.78); }
-  span { color: var(--color-theme); font-size: .8rem; font-weight: 800; }
-  strong { font-size: .92rem; }
-  @media (max-width: 800px) { ul { grid-template-columns: 1fr; } }
+  .example-grid {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .example-grid > li {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(148,163,184,.24);
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.78);
+  }
+  .example-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  .example-head h3 { margin: 0; font-size: 1.02rem; }
+  .example-version {
+    flex-shrink: 0;
+    font-size: .72rem;
+    font-weight: 800;
+    padding: .14rem .5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(79,70,229,.2);
+    background: rgba(79,70,229,.08);
+    color: var(--color-theme);
+  }
+  .example-row {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .25rem .6rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    overflow-wrap: anywhere;
+  }
+  .example-label {
+    color: var(--color-theme);
+    font-size: .8rem;
+    font-weight: 800;
+  }
+  .example-block { display: grid; gap: .3rem; }
+  .example-list {
+    margin: 0;
+    padding-inline-start: 1.15em;
+    display: grid;
+    gap: .25rem;
+    font-size: .88rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    overflow-wrap: anywhere;
+  }
+  .example-link {
+    margin-top: auto;
+    padding-top: .4rem;
+    color: var(--color-theme);
+    font-size: .9rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .example-link:hover { text-decoration: underline; }
+  @media (max-width: 860px) { .example-grid { grid-template-columns: 1fr; } }
 </style>

@@ -50,7 +50,7 @@ test.describe("Prompts selection and review flow", () => {
         page.locator('[data-prompt-version="Standard"][data-recommended="true"]'),
       ).toBeVisible();
       await expect(page.locator("[data-prompt-quick-step]")).toHaveCount(5);
-      await expect(page.locator("[data-prompt-example]")).toHaveCount(3);
+      await expect(page.locator("[data-prompt-example]")).toHaveCount(6);
       await expect(page.locator("#ai-output-notice")).toBeVisible();
       await expect(page.locator("[data-prompt-type]")).toHaveCount(15);
 

@@ -1,5 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
 import path from "node:path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   HOME_EXAMPLES,
@@ -48,7 +50,7 @@ describe("content entry configuration", () => {
     ]);
     expect(Object.keys(PROMPT_TYPE_COPY[lang])).toHaveLength(15);
     expect(PROMPT_QUICK_STEPS[lang]).toHaveLength(5);
-    expect(PROMPT_EXAMPLES[lang]).toHaveLength(3);
+    expect(PROMPT_EXAMPLES[lang]).toHaveLength(6);
   });
 
   it("keeps supported tools, starter paths, and recommendations unique", () => {
@@ -101,6 +103,44 @@ describe("catalog skill summaries", () => {
       expect(summary.output, `${skill.slug}.output`).not.toBe("");
       expect(summary.humanReview, `${skill.slug}.humanReview`).not.toBe("");
       expect(summary.whenToUse).not.toMatch(/处理相关任务|related task/i);
+    }
+  });
+});
+
+describe("prompt examples data contract", () => {
+  beforeAll(() => process.chdir(REPO_ROOT));
+  afterAll(() => process.chdir(REPO_ROOT));
+
+  it("keeps identical keys and order across languages", () => {
+    expect(PROMPT_EXAMPLES["zh-cn"].map((item) => item.key)).toEqual(
+      PROMPT_EXAMPLES.en.map((item) => item.key),
+    );
+  });
+
+  it.each(languages)("defines six reviewable bilingual examples for %s", (lang) => {
+    const examples = PROMPT_EXAMPLES[lang];
+    expect(examples).toHaveLength(6);
+    for (const example of examples) {
+      expect(example.scenario).not.toBe("");
+      expect(example.input).not.toBe("");
+      expect(example.version).toBe("Standard");
+      expect(example.versionReason).not.toBe("");
+      expect(example.outputLines.length, `${example.key}.outputLines`).toBeGreaterThanOrEqual(3);
+      expect(example.outputLines.length, `${example.key}.outputLines`).toBeLessThanOrEqual(5);
+      expect(example.reviewPoints.length, `${example.key}.reviewPoints`).toBeGreaterThanOrEqual(2);
+      expect(example.href).toMatch(/^\/prompts\/[a-z0-9-]+\/$/);
+    }
+  });
+
+  it.each(languages)("links every example to a real Prompt slug for %s", (lang) => {
+    for (const example of PROMPT_EXAMPLES[lang]) {
+      const testingType = example.href.replace(/^\/prompts\//, "").replace(/\/$/, "");
+      for (const locale of languages) {
+        expect(
+          existsSync(join(REPO_ROOT, "src", "content", "prompts", locale, testingType)),
+          `${testingType} @ ${locale}`,
+        ).toBe(true);
+      }
     }
   });
 });
