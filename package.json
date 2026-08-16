@@ -2,7 +2,7 @@
   "name": "inaodeng-com",
   "description": "Nao's Blog - https://inaodeng.com",
   "version": "1.0.0",
-  "license": "CC-BY-NC-SA-4.0",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "private": true,
   "type": "module",
   "engines": {

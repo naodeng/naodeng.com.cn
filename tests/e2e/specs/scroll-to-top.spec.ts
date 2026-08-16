@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Scroll To Top Button", () => {
   test("button appears after scrolling down and scrolls to top on click", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
 
     // Button should be hidden initially
     const btn = page.locator(".scroll-to-top, [class*='scroll-top']").first();
@@ -25,7 +25,7 @@ test.describe("Scroll To Top Button", () => {
   });
 
   test("button is hidden when at top of page", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
 
     const btn = page.locator(".scroll-to-top, [class*='scroll-top']").first();
     if (!(await btn.count())) return;

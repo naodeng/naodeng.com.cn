@@ -34,7 +34,7 @@ test.describe("SEO 元数据", () => {
   for (const { locale, path, name } of mainPages.slice(0, 4)) {
     test(`${locale} ${name} 页：title 标签存在且非空`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;
-      await page.goto(url, { waitUntil: "networkidle" });
+      await page.goto(url, { waitUntil: "domcontentloaded" });
       
       const title = await page.title();
       expect(title).toBeTruthy();
@@ -43,7 +43,7 @@ test.describe("SEO 元数据", () => {
 
     test(`${locale} ${name} 页：meta description 存在`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;
-      await page.goto(url, { waitUntil: "networkidle" });
+      await page.goto(url, { waitUntil: "domcontentloaded" });
       
       const description = await page.locator('meta[name="description"]').getAttribute("content");
       expect(description).toBeTruthy();
@@ -54,7 +54,7 @@ test.describe("SEO 元数据", () => {
   }
 
   test("en 首页：Open Graph 标签存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     const ogTitle = await page.locator('meta[property="og:title"]').getAttribute("content");
     const ogDescription = await page.locator('meta[property="og:description"]').getAttribute("content");
@@ -66,7 +66,7 @@ test.describe("SEO 元数据", () => {
   });
 
   test("zh-cn 首页：Open Graph 标签存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     const ogTitle = await page.locator('meta[property="og:title"]').getAttribute("content");
     const ogDescription = await page.locator('meta[property="og:description"]').getAttribute("content");
@@ -78,12 +78,12 @@ test.describe("SEO 元数据", () => {
   });
 
   test("en 博客详情页：结构化数据存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/en/blog/']").first();
     
     if (await firstPost.isVisible({ timeout: 10000 })) {
       const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "networkidle" });
+      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
       
       const jsonLd = page.locator('script[type="application/ld+json"]');
       const count = await jsonLd.count();
@@ -92,12 +92,12 @@ test.describe("SEO 元数据", () => {
   });
 
   test("zh-cn 博客详情页：结构化数据存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/zh-cn/blog/']").first();
     
     if (await firstPost.isVisible({ timeout: 10000 })) {
       const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "networkidle" });
+      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
       
       const jsonLd = page.locator('script[type="application/ld+json"]');
       const count = await jsonLd.count();
@@ -107,28 +107,28 @@ test.describe("SEO 元数据", () => {
 
   test("en 首页：canonical 链接存在", async ({ page, baseURL }) => {
     const url = normalizeBase(baseURL) + "/en/";
-    await page.goto(url, { waitUntil: "networkidle" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
     await expectCanonicalEquals(page, url);
   });
 
   test("zh-cn 首页：canonical 链接存在", async ({ page, baseURL }) => {
     const url = normalizeBase(baseURL) + "/zh-cn/";
-    await page.goto(url, { waitUntil: "networkidle" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
     await expectCanonicalEquals(page, url);
   });
 
   test("en 页面：lang 属性正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("lang", /en/);
   });
 
   test("zh-cn 页面：lang 属性正确", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("lang", /zh/);
   });
 
   test("en 首页：Twitter Card 标签存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     const twitterCard = await page.locator('meta[name="twitter:card"]').getAttribute("content");
     const twitterTitle = await page.locator('meta[name="twitter:title"]').getAttribute("content");
@@ -138,7 +138,7 @@ test.describe("SEO 元数据", () => {
   });
 
   test("zh-cn 首页：Twitter Card 标签存在", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     const twitterCard = await page.locator('meta[name="twitter:card"]').getAttribute("content");
     const twitterTitle = await page.locator('meta[name="twitter:title"]').getAttribute("content");
@@ -149,7 +149,7 @@ test.describe("SEO 元数据", () => {
 
   test("首页：hreflang 互链完整", async ({ page, baseURL }) => {
     const url = normalizeBase(baseURL) + "/zh-cn/";
-    await page.goto(url, { waitUntil: "networkidle" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
     const alternates = page.locator('link[rel="alternate"][hreflang]');
     const count = await alternates.count();
     expect(count).toBeGreaterThan(1);
@@ -160,32 +160,32 @@ test.describe("SEO 元数据", () => {
 
   test("en 博客详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
-    await page.goto(base + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto(base + "/en/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/en/blog/']").first();
     await expect(firstPost).toBeVisible({ timeout: 10000 });
     const href = await firstPost.getAttribute("href");
     expect(href).toBeTruthy();
     const url = new URL(String(href), base).href;
-    await page.goto(url, { waitUntil: "networkidle" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
     await expectCanonicalEquals(page, url);
     await expectAlternateSet(page);
   });
 
   test("zh-cn AIWiki 详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
-    await page.goto(base + "/zh-cn/AIWiki/", { waitUntil: "networkidle" });
+    await page.goto(base + "/zh-cn/AIWiki/", { waitUntil: "domcontentloaded" });
     const firstTerm = page.locator("main a[href*='/zh-cn/AIWiki/']").first();
     await expect(firstTerm).toBeVisible({ timeout: 10000 });
     const href = await firstTerm.getAttribute("href");
     expect(href).toBeTruthy();
     const url = new URL(String(href), base).href;
-    await page.goto(url, { waitUntil: "networkidle" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
     await expectCanonicalEquals(page, url);
     await expectAlternateSet(page);
   });
 
   test("Counterscale：localhost 不加载，且仅白名单域名可通过", async ({ page, baseURL }) => {
-    await page.goto(normalizeBase(baseURL) + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto(normalizeBase(baseURL) + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     await expect(page.locator("#counterscale-script")).toHaveCount(0);
     const counterscaleInlineScript = await page
@@ -250,7 +250,7 @@ test.describe("SEO 元数据", () => {
   });
 
   test("首页：JSON-LD 可解析且包含 WebSite", async ({ page, baseURL }) => {
-    await page.goto(normalizeBase(baseURL) + "/en/", { waitUntil: "networkidle" });
+    await page.goto(normalizeBase(baseURL) + "/en/", { waitUntil: "domcontentloaded" });
     const scripts = page.locator('script[type="application/ld+json"]');
     const count = await scripts.count();
     expect(count).toBeGreaterThan(0);

@@ -35,15 +35,15 @@ web
 
 - 内容支柱（用户确认的必保约束）：Blog / Docs / Wiki（测试百科）/ AI Wiki / Guild / Prompts / Workflows / QA Skills 都要保持可达。
 - 双语：en 与 zh-cn 路径、内容、导航保持一致。
-- 许可：CC BY-NC-SA 4.0（署名 - 非商业 - 相同方式共享）。
+- 许可：PolyForm Noncommercial License 1.0.0（非商业使用免费，商业使用需单独授权）。
 - 技术约束：Node.js ≥ 22.12、npm 10+、包管理用 npm（不换 pnpm / yarn）。
-- 已确认：网站与项目统一采用 CC BY-NC-SA 4.0（README 中残留的 "MIT 许可证" 字样已清理）。
+- 已确认（2026-08-16）：网站与项目统一改为 PolyForm Noncommercial License 1.0.0（原 CC BY-NC-SA 4.0 已全面替换，含 LICENSE、README、页脚与版权页）。
 
 ## Brand Commitments
 
 - 名称："Nao's Blog"，主站 https://inaodeng.com。
 - 作者署名：Nao Deng（GitHub @naodeng）。
-- 许可与署名要求：CC BY-NC-SA 4.0（需署名、非商业、相同方式共享；商业使用需单独授权）。
+- 许可与署名要求：PolyForm Noncommercial License 1.0.0（分发需保留 Required Notice；商业使用需单独授权）。
 
 ## Evidence on Hand
 

@@ -242,7 +242,7 @@ export const NAV_ANALYTICS: Multilingual = {
 };
 
 /** 博文版权/许可（展示在日期行） */
-export const ARTICLE_LICENSE = "CC BY-SA 4.0";
+export const ARTICLE_LICENSE = "PolyForm Noncommercial 1.0.0";
 
 /** 博文阅读时长文案：X 分钟阅读 / X min read */
 export const READING_TIME_LABEL: Multilingual = {
@@ -364,23 +364,23 @@ export const PROJECTS_TECH_STACK_LABEL: Multilingual = {
 
 // 首页区块文案
 export const HOME_HERO_TITLE: Multilingual = {
-  en: "Make complex knowledge clear",
-  "zh-cn": "把复杂知识讲清楚",
+  en: "AI Testing Knowledge and Workbench for Test Engineers",
+  "zh-cn": "面向测试工程师的 AI 测试知识与工作台",
 };
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
-  en: "Testing wiki, essays, prompts, and workflows: a readable knowledge base.",
-  "zh-cn": "测试百科、实践文章、提示词与工作流——一个可读、可引用的知识库。",
+  en: "From requirements analysis and test design to automation and quality assessment — Skills, Prompts, workflows, and practical guides you can put to work right away.",
+  "zh-cn": "从需求分析、测试设计到自动化与质量评估，使用可直接落地的 Skills、Prompts、工作流和实践指南。",
 };
 
-export const HOME_CTA_START: Multilingual = {
-  en: "Start reading",
-  "zh-cn": "开始阅读",
+export const HOME_CTA_SKILLS: Multilingual = {
+  en: "Find the right testing Skill",
+  "zh-cn": "找到适合我的测试 Skill",
 };
 
-export const HOME_CTA_WIKI: Multilingual = {
-  en: "Browse wiki",
-  "zh-cn": "浏览百科",
+export const HOME_CTA_PROMPTS: Multilingual = {
+  en: "Use testing Prompts",
+  "zh-cn": "使用测试 Prompt",
 };
 
 export const HOME_EXPLORE_TITLE: Multilingual = {
@@ -764,8 +764,8 @@ export const NAV_QA_SKILLS: Multilingual = {
 
 /** 提示词列表页 SEO 标题 */
 export const PROMPTS_PAGE_TITLE: Multilingual = {
-  en: "Professional QA Prompt Library",
-  "zh-cn": "专业质量保证提示词库",
+  en: "Software Testing Prompt Library",
+  "zh-cn": "软件测试提示词库",
 };
 
 /** 提示词列表页 SEO 描述 */
@@ -804,10 +804,10 @@ export const PROMPTS_QUICKSTART_TITLE: Multilingual = {
   "zh-cn": "快速开始",
 };
 
-/** 完整测试流程示例区块标题 */
+/** AI 辅助测试流程参考区块标题 */
 export const PROMPTS_FLOW_TITLE: Multilingual = {
-  en: "Full Testing Flow Example",
-  "zh-cn": "完整测试流程示例",
+  en: "AI-assisted Testing Flow Reference",
+  "zh-cn": "AI 辅助测试流程参考",
 };
 
 // ── 页面级 SEO 描述 ────────────────────────────────────────────────────────

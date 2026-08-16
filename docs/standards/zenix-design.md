@@ -99,5 +99,5 @@
 ---
 
 关联文档：
-- 实施记录：`docs/tasks/zenix-design-consolidation-v1.md`
+- 实施记录：`docs/archive/ui-redesign/zenix-design-consolidation-v1.md`
 - 广告位规范：`docs/standards/ads-inventory.md`

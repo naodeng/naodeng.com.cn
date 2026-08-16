@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("搜索功能", () => {
   test("en 首页：搜索框可见且可输入", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="search" i], button[class*="search"]').first();
@@ -18,7 +18,7 @@ test.describe("搜索功能", () => {
   });
 
   test("zh-cn 首页：搜索框可见且可输入", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="搜索"], button[class*="search"]').first();
@@ -34,7 +34,7 @@ test.describe("搜索功能", () => {
   });
 
   test("en 搜索后显示结果", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="search" i], button[class*="search"]').first();
@@ -58,7 +58,7 @@ test.describe("搜索功能", () => {
   });
 
   test("zh-cn 搜索后显示结果", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="搜索"], button[class*="search"]').first();
@@ -82,7 +82,7 @@ test.describe("搜索功能", () => {
   });
 
   test("en 搜索框支持键盘快捷键", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     await page.keyboard.press("Control+K");
     await page.waitForTimeout(500);
@@ -94,7 +94,7 @@ test.describe("搜索功能", () => {
   });
 
   test("zh-cn 搜索框支持键盘快捷键", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     await page.keyboard.press("Control+K");
     await page.waitForTimeout(500);
@@ -106,7 +106,7 @@ test.describe("搜索功能", () => {
   });
 
   test("en 清空搜索内容", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="search" i], button[class*="search"]').first();
@@ -127,7 +127,7 @@ test.describe("搜索功能", () => {
   });
 
   test("zh-cn 清空搜索内容", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     // 先点击搜索按钮打开搜索框
     const searchButton = page.locator('button[aria-label*="搜索"], button[class*="search"]').first();
@@ -148,7 +148,7 @@ test.describe("搜索功能", () => {
   });
 
   test("en 搜索打开后显示入口建议并支持方向键选择", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
 
     await page.locator('button[aria-label*="search" i], button[class*="search"]').first().click();
 
@@ -163,7 +163,7 @@ test.describe("搜索功能", () => {
   });
 
   test("zh-cn 搜索结果显示类型徽标", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     await page.locator('button[aria-label*="搜索"], button[class*="search"]').first().click();
 

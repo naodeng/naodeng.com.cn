@@ -6,7 +6,7 @@
 [![E2E Tests](https://github.com/naodeng/naodeng.com.cn/actions/workflows/e2e.yml/badge.svg)](https://github.com/naodeng/naodeng.com.cn/actions/workflows/e2e.yml)
 [![Github Pages Deployment](https://github.com/naodeng/naodeng.com.cn/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/naodeng/naodeng.com.cn/actions/workflows/gh-pages.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/naodeng/naodeng.com.cn)](https://github.com/naodeng/naodeng.com.cn/commits/main)
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-blue.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
 
 🌐 [inaodeng.com](https://inaodeng.com) | 📝 [Blog](https://inaodeng.com/zh-cn/blog/) | 📚 [Wiki](https://inaodeng.com/zh-cn/wiki/)
 
@@ -113,24 +113,26 @@ Made with ❤️ by [Nao Deng](https://github.com/naodeng)
 
 <div align="center">
 
-[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-blue.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
 
 </div>
 
-本项目采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 进行许可。
+本项目采用 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/) 进行许可（中文摘要见 [LICENSE.zh-CN.md](LICENSE.zh-CN.md)）。
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+This work is licensed under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/).
 
 ### 许可说明 | License Summary
 
-**您可以自由地 | You are free to:**
-- ✅ **分享** — 在任何媒介以任何形式复制、发行本作品 | **Share** — copy and redistribute the material in any medium or format
-- ✅ **演绎** — 修改、转换或以本作品为基础进行创作 | **Adapt** — remix, transform, and build upon the material
+**允许的用途 | Permitted purposes:**
+- ✅ **非商业目的** — 任何非商业目的 | **Noncommercial purposes** — any noncommercial purpose
+- ✅ **个人使用** — 研究、实验、个人学习、爱好项目等无商业应用预期的使用 | **Personal uses** — research, experiment, personal study, hobby projects, and similar uses without anticipated commercial application
+- ✅ **非商业组织** — 慈善、教育、公共研究、公共安全或健康、环保组织及政府机构 | **Noncommercial organizations** — charitable, educational, public research, public safety or health, environmental, and government institutions
+- ✅ **合理使用** — 法律赋予的合理使用权利不受限制 | **Fair use** — rights under the law are not limited by these terms
 
-**惟须遵守下列条件 | Under the following terms:**
-- 📝 **署名** — 您必须给出适当的署名，提供指向本许可协议的链接，同时标明是否（对原始作品）作了修改 | **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
-- 🚫 **非商业性使用** — 您不得将本作品用于商业目的 | **NonCommercial** — You may not use the material for commercial purposes
-- 🔄 **相同方式共享** — 如果您再混合、转换或者基于本作品进行创作，您必须基于与原先许可协议相同的许可协议分发您贡献的作品 | **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original
+**要求与限制 | Requirements and limits:**
+- 📝 **保留通知** — 分发副本时必须附上许可条款或其 URL，以及 `Required Notice:` 声明行 | **Notices** — anyone receiving a copy must also receive these terms (or their URL) and all `Required Notice:` lines
+- 🚫 **不许可商业使用** — 商业使用需单独授权 | **No commercial use** — commercial use requires separate authorization
+- ⚠️ **无担保** — 软件按"现状"提供 | **No Liability** — the software comes as is, without warranty
 
 ### 商业使用 | Commercial Use
 

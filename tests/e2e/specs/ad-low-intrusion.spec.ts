@@ -14,7 +14,7 @@ test.describe("广告低干扰专项检查", () => {
     for (const vp of viewports) {
       await page.setViewportSize(vp);
       for (const route of routes) {
-        await page.goto((baseURL || "") + route, { waitUntil: "networkidle" });
+        await page.goto((baseURL || "") + route, { waitUntil: "domcontentloaded" });
         const visibleInViewport = await page.evaluate(({ wrapperSelector, innerSelector, viewportHeight }) => {
           const wrappers = Array.from(document.querySelectorAll(wrapperSelector));
           const visibleWrappers = wrappers.filter((node) => {
@@ -44,7 +44,7 @@ test.describe("广告低干扰专项检查", () => {
     const routes = ["/zh-cn/wiki/acceptance-testing/", "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/"];
 
     for (const route of routes) {
-      await page.goto((baseURL || "") + route, { waitUntil: "networkidle" });
+      await page.goto((baseURL || "") + route, { waitUntil: "domcontentloaded" });
       const isBetween = await page.evaluate((selector) => {
         const h1 = document.querySelector("main h1");
         const firstParagraph = document.querySelector("main article p, main .prose p, main p");
@@ -65,7 +65,7 @@ test.describe("广告低干扰专项检查", () => {
   test("常驻页脚广告位在主要页面存在", async ({ page, baseURL }) => {
     const routes = ["/zh-cn/", "/en/blog/"];
     for (const route of routes) {
-      await page.goto((baseURL || "") + route, { waitUntil: "networkidle" });
+      await page.goto((baseURL || "") + route, { waitUntil: "domcontentloaded" });
       const count = await page.locator(".footer-ad").count();
       expect(count, `route=${route}`).toBeGreaterThanOrEqual(1);
     }

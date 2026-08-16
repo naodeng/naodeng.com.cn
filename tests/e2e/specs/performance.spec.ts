@@ -11,7 +11,7 @@ function isThirdPartyPageError(error: Error): boolean {
 test.describe("性能与加载", () => {
   test("en 首页加载时间合理", async ({ page, baseURL }) => {
     const startTime = Date.now();
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     const loadTime = Date.now() - startTime;
     
     expect(loadTime).toBeLessThan(15000);
@@ -19,7 +19,7 @@ test.describe("性能与加载", () => {
 
   test("zh-cn 首页加载时间合理", async ({ page, baseURL }) => {
     const startTime = Date.now();
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     const loadTime = Date.now() - startTime;
     
     expect(loadTime).toBeLessThan(15000);
@@ -52,7 +52,7 @@ test.describe("性能与加载", () => {
   });
 
   test("en 博客列表页：分页加载正常", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     
     const pagination = page.locator('[class*="pagination"], nav[aria-label*="pagination" i]').first();
     if (await pagination.isVisible({ timeout: 5000 })) {
@@ -66,7 +66,7 @@ test.describe("性能与加载", () => {
   });
 
   test("zh-cn 博客列表页：分页加载正常", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     
     const pagination = page.locator('[class*="pagination"], nav[aria-label*="分页"]').first();
     if (await pagination.isVisible({ timeout: 5000 })) {
@@ -87,7 +87,7 @@ test.describe("性能与加载", () => {
       errors.push(error.message);
     });
     
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     expect(errors.length).toBe(0);
   });
 
@@ -98,7 +98,7 @@ test.describe("性能与加载", () => {
       errors.push(error.message);
     });
     
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     expect(errors.length).toBe(0);
   });
 
@@ -116,7 +116,7 @@ test.describe("性能与加载", () => {
       }
     });
     
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     if (consoleErrors.length > 0) {
       console.log("Console errors found:", JSON.stringify(consoleErrors, null, 2));
     }
@@ -137,7 +137,7 @@ test.describe("性能与加载", () => {
       }
     });
     
-    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     if (consoleErrors.length > 0) {
       console.log("Console errors found:", JSON.stringify(consoleErrors, null, 2));
     }

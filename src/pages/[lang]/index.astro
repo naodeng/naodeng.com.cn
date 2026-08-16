@@ -3,45 +3,28 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getCollection } from "astro:content";
-import { PROJECTS_LIST } from "@/data/projects";
 import {
   SITE_TITLE,
   HOME_HERO_TITLE,
   HOME_HERO_SUBTITLE,
-  HOME_CTA_START,
-  HOME_CTA_WIKI,
+  HOME_CTA_SKILLS,
+  HOME_CTA_PROMPTS,
   HOME_EXPLORE_TITLE,
   HOME_EXPLORE_SUBTITLE,
   HOME_EXPLORE_MORE,
   HOME_EXPLORE_CARDS,
   HOME_LATEST_POSTS,
   HOME_VIEW_ALL,
-  HOME_PROJECTS_TITLE,
   HOME_TAGS_TITLE,
-  HOME_VIEW_ALL_PROJECTS,
-  HOME_PROMPTS_SUBTITLE,
-  HOME_VIEW_ALL_PROMPTS,
-  HOME_QASKILLS_TITLE,
-  HOME_QASKILLS_SUBTITLE,
-  HOME_VIEW_ALL_SKILLS,
-  HOME_AIWIKI_TITLE,
-  HOME_AIWIKI_SUBTITLE,
-  HOME_VIEW_AIWIKI,
-  HOME_WIKI_SECTION_TITLE,
-  HOME_WIKI_INTRO,
-  PROMPTS_PAGE_TITLE,
-  PROMPTS_WORKFLOWS_SECTION_TITLE,
   HOME_PAGE_DESCRIPTION,
   HOME_PAGE_KEYWORDS,
 } from "@/consts";
-import { getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
-import GuildShowcase from "@/components/guild/GuildShowcase.astro";
 import GoogleAdThin from "@/components/GoogleAdThin.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
-import CoreCapabilities from "@/components/home/CoreCapabilities.astro";
-import HomeProofAndCases from "@/components/home/HomeProofAndCases.astro";
-import { getQASkillsGrouped } from "@/utils/qaskills";
+import HomeCapabilityGuide from "@/components/home/HomeCapabilityGuide.astro";
+import HomeExploreHub from "@/components/home/HomeExploreHub.astro";
+import { HOME_PRIMARY_MODES } from "@/data/homeTaskEntries";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -52,121 +35,23 @@ const allPosts = (await getCollection("blog")).filter(
 
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
-
-const tagCounts = allPosts
-  .flatMap((post) => post.data.tags || [])
-  .reduce(
-    (acc, tag) => {
-      acc[tag] = (acc[tag] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
-const popularTags = Object.entries(tagCounts)
-  .sort(([, a], [, b]) => b - a)
-  .slice(0, 30)
-  .map(([tag]) => tag);
-
-const featuredProjects = PROJECTS_LIST.slice(0, 6);
-
-const TESTING_TYPE_ORDER = [
-  "requirements-analysis",
-  "test-case-writing",
-  "functional-testing",
-  "performance-testing",
-  "automation-testing",
-  "mobile-testing",
-  "bug-reporting",
-  "test-reporting",
-  "test-strategy",
-  "ai-assisted-testing",
-  "manual-testing",
-  "security-testing",
-  "api-testing",
-  "accessibility-testing",
-  "test-case-reviewer",
-];
-
-const allPrompts = await getCollection("prompts");
-const localePrompts = allPrompts.filter((p) => p.data.lang === locale);
-const promptTypeMap = new Map<string, (typeof localePrompts)[0]>();
-for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
-  if (!promptTypeMap.has(p.data.testingType)) {
-    promptTypeMap.set(p.data.testingType, p);
-  }
-}
-const promptTypeCards = Array.from(promptTypeMap.values())
-  .sort(
-    (a, b) =>
-      TESTING_TYPE_ORDER.indexOf(a.data.testingType) -
-      TESTING_TYPE_ORDER.indexOf(b.data.testingType),
-  )
-  .slice(0, 6);
-
-const localeWorkflows = (await getCollection("workflows"))
-  .filter((w) => w.data.lang === locale)
-  .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
-
-const qaSkillsGrouped = await getQASkillsGrouped(locale);
-const homeQASkills = [
-  ...qaSkillsGrouped.testingTypes.slice(0, 3),
-  ...qaSkillsGrouped.testingWorkflows.slice(0, 3),
-];
-
-function toHomeSkillSnippet(input: string, lang: Lang): string {
-  const text = (input || "").replace(/\s+/g, " ").trim();
-  if (!text) return "";
-  const maxLen = lang === "zh-cn" ? 46 : 92;
-  if (text.length <= maxLen) return text;
-  return `${text.slice(0, maxLen).trimEnd()}…`;
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const wikiEntries =
-  locale === "zh-cn"
-    ? (await getCollection("wiki")).map((e) => {
-        const slug = wikiIdToSlug(e.id);
-        const labelZh =
-          getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slug;
-        return { slug, labelZh };
-      })
-    : [];
-const wikiShowcaseItems =
-  wikiEntries.length > 0 ? shuffle(wikiEntries).slice(0, 24) : [];
-const showWiki = locale === "zh-cn" && wikiShowcaseItems.length > 0;
-
-const aiWikiShowcaseItems = shuffle(
-  (await getCollection("aiwiki"))
-    .filter((e) => (e.data.lang ?? "en") === locale)
-    .map((e) => {
-      const slug =
-        e.data.slug ?? e.id.split("/").pop()?.replace(/\.md$/, "") ?? e.id;
-      const label = e.data.title || e.data.titleZh || e.data.titleEn || slug;
-      return { slug, label };
-    }),
-).slice(0, 18);
 
 const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   ...card,
   href: getRelativeLocaleUrl(locale, card.path),
 }));
 
-/* …projects 冷灰 → guild 白 → wiki 冷灰 → aiwiki 白 → tags 冷灰
-   若无 wiki：guild 白 → aiwiki 冷灰 → tags 白 */
-const bandWiki = "muted" as const;
-const bandAiWiki = showWiki ? ("white" as const) : ("muted" as const);
-const bandTags = showWiki ? ("muted" as const) : ("white" as const);
+const exploreHubCards = [
+  ...exploreCards,
+  {
+    key: "tags",
+    href: getRelativeLocaleUrl(locale, "/tags"),
+    title: t(HOME_TAGS_TITLE),
+    desc:
+      locale === "zh-cn" ? "按标签浏览全部文章" : "Browse all posts by tag",
+  },
+];
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -220,46 +105,60 @@ const homePageSchema = {
         <div class="home-hero__ctas">
           <a
             class="pill-cta pill-cta--primary"
-            href={getRelativeLocaleUrl(locale, "/blog")}
+            href={getRelativeLocaleUrl(locale, "/qaskills")}
           >
-            {t(HOME_CTA_START)}
+            {t(HOME_CTA_SKILLS)}
           </a>
           <a
             class="pill-cta pill-cta--ghost"
-            href={locale === "zh-cn"
-              ? getRelativeLocaleUrl(locale, "/wiki")
-              : getRelativeLocaleUrl(locale, "/AIWiki")}
+            href={getRelativeLocaleUrl(locale, "/prompts")}
           >
-            {t(HOME_CTA_WIKI)}
+            {t(HOME_CTA_PROMPTS)}
           </a>
+        </div>
+        <div class="home-primary-modes" role="list">
+          {HOME_PRIMARY_MODES[locale].map((mode) => {
+            if (mode.key === "act") {
+              return (
+                <div class="home-primary-entry" data-home-mode="act" role="listitem">
+                  <p class="home-primary-entry__eyebrow">{mode.eyebrow}</p>
+                  <h3 class="home-primary-entry__title">{mode.title}</h3>
+                  <p class="home-primary-entry__desc">{mode.description}</p>
+                  <div class="home-primary-entry__links">
+                    <a href={getRelativeLocaleUrl(locale, "/qaskills")}>
+                      {locale === "zh-cn" ? "进入 QA Skills" : "Browse QA Skills"}
+                    </a>
+                    <a href={getRelativeLocaleUrl(locale, "/prompts")}>
+                      {locale === "zh-cn" ? "进入提示词库" : "Browse Prompts"}
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+            const href =
+              mode.key === "read"
+                ? getRelativeLocaleUrl(locale, "/blog")
+                : locale === "zh-cn"
+                  ? getRelativeLocaleUrl(locale, "/wiki")
+                  : getRelativeLocaleUrl(locale, "/AIWiki");
+            return (
+              <a class="home-primary-entry" data-home-mode={mode.key} href={href} role="listitem">
+                <p class="home-primary-entry__eyebrow">{mode.eyebrow}</p>
+                <h3 class="home-primary-entry__title">{mode.title}</h3>
+                <p class="home-primary-entry__desc">{mode.description}</p>
+                <span class="home-primary-entry__go">{locale === "zh-cn" ? "进入" : "Open"} →</span>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
 
     <HomeTaskNavigator locale={locale} />
-    <CoreCapabilities locale={locale} />
-    <HomeProofAndCases locale={locale} />
-
-    <section class="home-band home-band--muted" aria-labelledby="home-explore-title">
-      <div class="home-inner">
-        <h2 id="home-explore-title" class="home-band__title">{t(HOME_EXPLORE_TITLE)}</h2>
-        <p class="home-band__subtitle">{t(HOME_EXPLORE_SUBTITLE)}</p>
-        <ul class="home-grid home-explore-grid" role="list">
-          {exploreCards.map((card) => (
-            <li>
-              <a class="home-card" href={card.href}>
-                <h3 class="home-card__title">{card.title}</h3>
-                <p class="home-card__desc">{card.desc}</p>
-                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <HomeCapabilityGuide locale={locale} />
 
     <section
-      class="home-band home-band--white home-latest-posts"
+      class="home-band home-band--muted home-latest-posts"
       aria-labelledby="home-latest-title"
     >
       <div class="home-inner">
@@ -306,247 +205,13 @@ const homePageSchema = {
 
     <GoogleAdThin />
 
-    <section
-      class="home-band home-band--muted home-prompts"
-      aria-labelledby="home-prompts-title"
-    >
-      <div class="home-inner">
-        <h2 id="home-prompts-title" class="home-band__title">{t(PROMPTS_PAGE_TITLE)}</h2>
-        <p class="home-band__subtitle">
-          {t(HOME_PROMPTS_SUBTITLE)}
-        </p>
-        <ul class="home-grid" role="list">
-          {promptTypeCards.map((entry) => (
-            <li>
-              <a
-                class="home-card"
-                href={getRelativeLocaleUrl(
-                  locale,
-                  `/prompts/${entry.data.testingType}/`,
-                )}
-              >
-                <h3 class="home-card__title">
-                  {entry.data.title.replace(/^[^-]+ - /, "")}
-                </h3>
-                <p class="home-card__desc">{entry.data.description}</p>
-                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        {localeWorkflows.length > 0 && (
-          <>
-            <p class="home-band__subtitle home-band__subtitle--spaced">
-              {t(PROMPTS_WORKFLOWS_SECTION_TITLE)}
-            </p>
-            <ul class="home-grid" role="list">
-              {localeWorkflows.map((wf) => (
-                <li>
-                  <a
-                    class="home-card"
-                    href={getRelativeLocaleUrl(
-                      locale,
-                      `/prompts/workflows/${wf.data.workflowType}/`,
-                    )}
-                  >
-                    <h3 class="home-card__title">{wf.data.title}</h3>
-                    <p class="home-card__desc">{wf.data.description}</p>
-                    <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-        <p class="home-band__footer">
-          <a
-            class="pill-cta pill-cta--ghost"
-            href={getRelativeLocaleUrl(locale, "/prompts/")}
-          >
-            {t(HOME_VIEW_ALL_PROMPTS)}
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section
-      class="home-band home-band--white home-qaskills"
-      aria-labelledby="home-qaskills-title"
-    >
-      <div class="home-inner">
-        <h2 id="home-qaskills-title" class="home-band__title">
-          {t(HOME_QASKILLS_TITLE)}
-        </h2>
-        <p class="home-band__subtitle">
-          {t(HOME_QASKILLS_SUBTITLE)}
-        </p>
-        <ul class="home-grid" role="list">
-          {homeQASkills.map((skill) => (
-            <li>
-              <a
-                class="home-card"
-                href={getRelativeLocaleUrl(locale, `/qaskills/${skill.slug}/`)}
-              >
-                <h3 class="home-card__title">
-                  {locale === "zh-cn"
-                    ? skill.chineseName || skill.title
-                    : skill.title}
-                </h3>
-                <p class="home-card__desc">
-                  {toHomeSkillSnippet(skill.intro, locale)}
-                </p>
-                <span class="home-card__more">{t(HOME_EXPLORE_MORE)}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p class="home-band__footer">
-          <a
-            class="pill-cta pill-cta--ghost"
-            href={getRelativeLocaleUrl(locale, "/qaskills/")}
-          >
-            {t(HOME_VIEW_ALL_SKILLS)}
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section
-      class="home-band home-band--muted home-projects"
-      aria-labelledby="home-projects-title"
-    >
-      <div class="home-inner">
-        <h2 id="home-projects-title" class="home-band__title">
-          {t(HOME_PROJECTS_TITLE)}
-        </h2>
-        <ul class="home-project-list" role="list">
-          {featuredProjects.map((proj) => (
-            <li>
-              <a
-                class="home-project-item"
-                href={proj.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3 class="home-project-item__title">{t(proj.name)}</h3>
-                <p class="home-project-item__desc">{t(proj.description)}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p class="home-band__footer">
-          <a
-            class="pill-cta pill-cta--ghost"
-            href={getRelativeLocaleUrl(locale, "/projects")}
-          >
-            {t(HOME_VIEW_ALL_PROJECTS)}
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section class="home-band home-band--white home-guild">
-      <div class="home-inner">
-        <GuildShowcase locale={locale} />
-      </div>
-    </section>
-
-    {
-      showWiki && (
-        <section
-          class={`home-band home-band--${bandWiki} home-wiki`}
-          aria-labelledby="home-wiki-title"
-        >
-          <div class="home-inner">
-            <h2 id="home-wiki-title" class="home-band__title">
-              {HOME_WIKI_SECTION_TITLE}
-            </h2>
-            <p class="home-band__subtitle">{HOME_WIKI_INTRO}</p>
-            <ul class="home-chip-cloud" role="list">
-              {wikiShowcaseItems.map((item) => (
-                <li>
-                  <a
-                    class="home-chip"
-                    href={getRelativeLocaleUrl("zh-cn", `/wiki/${item.slug}`)}
-                    title={item.labelZh}
-                  >
-                    {item.labelZh}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p class="home-band__footer">
-              <a
-                class="pill-cta pill-cta--ghost"
-                href={getRelativeLocaleUrl(locale, "/wiki")}
-              >
-                进入百科
-              </a>
-            </p>
-          </div>
-        </section>
-      )
-    }
-
-    <section
-      class={`home-band home-band--${bandAiWiki} home-aiwiki`}
-      aria-labelledby="home-aiwiki-title"
-    >
-      <div class="home-inner">
-        <h2 id="home-aiwiki-title" class="home-band__title">
-          {t(HOME_AIWIKI_TITLE)}
-        </h2>
-        <p class="home-band__subtitle">
-          {t(HOME_AIWIKI_SUBTITLE)}
-        </p>
-        <ul class="home-chip-cloud" role="list">
-          {aiWikiShowcaseItems.map((item) => (
-            <li>
-              <a
-                class="home-chip"
-                href={getRelativeLocaleUrl(locale, `/AIWiki/${item.slug}`)}
-                title={item.label}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p class="home-band__footer">
-          <a
-            class="pill-cta pill-cta--ghost"
-            href={getRelativeLocaleUrl(locale, "/AIWiki")}
-          >
-            {t(HOME_VIEW_AIWIKI)}
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section
-      class={`home-band home-band--${bandTags} home-tags`}
-      aria-labelledby="home-tags-title"
-    >
-      <div class="home-inner">
-        <h2 id="home-tags-title" class="home-band__title">{t(HOME_TAGS_TITLE)}</h2>
-        <ul class="home-chip-cloud tags-container" role="list">
-          {popularTags.map((tag) => (
-            <li>
-              <a
-                class="home-chip"
-                href={getRelativeLocaleUrl(
-                  locale,
-                  `/tags/${tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag}`,
-                )}
-              >
-                #{tag}
-                <span class="home-chip__count">{tagCounts[tag]}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <HomeExploreHub
+      locale={locale}
+      title={t(HOME_EXPLORE_TITLE)}
+      subtitle={t(HOME_EXPLORE_SUBTITLE)}
+      moreLabel={t(HOME_EXPLORE_MORE)}
+      cards={exploreHubCards}
+    />
   </div>
 </Layout>
 
@@ -574,7 +239,7 @@ const homePageSchema = {
 
   .home-hero__title {
     margin: 0;
-    font-size: clamp(34px, 5vw, 48px);
+    font-size: 2.5rem;
     font-weight: 600;
     letter-spacing: -0.4px;
     line-height: 1.08;
@@ -595,9 +260,82 @@ const homePageSchema = {
     flex-wrap: wrap;
   }
 
+  .home-primary-modes {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    text-align: left;
+  }
+
+  .home-primary-entry {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .home-primary-entry__eyebrow {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-theme);
+  }
+
+  .home-primary-entry__title {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .home-primary-entry__desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  .home-primary-entry__go {
+    margin-top: auto;
+    padding-top: 10px;
+    font-weight: 800;
+    color: var(--color-theme);
+  }
+
+  .home-primary-entry__links {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .home-primary-entry__links a {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-theme);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .home-primary-modes {
+      grid-template-columns: 1fr;
+    }
+  }
+
   :global(.home-band__title) {
     margin: 0;
-    font-size: 28px;
+    font-size: 1.3rem;
     font-weight: 600;
     letter-spacing: -0.2px;
     line-height: 1.2;
@@ -644,98 +382,6 @@ const homePageSchema = {
     transform: scale(0.95);
   }
 
-  /* 所有内容卡统一三列 */
-  .home-grid {
-    list-style: none;
-    margin: 28px 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    text-align: start;
-  }
-
-  .home-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    min-height: 168px;
-    height: 100%;
-    padding: 24px;
-    border-radius: var(--radius-lg);
-    color: inherit;
-    text-decoration: none;
-    box-shadow: none;
-  }
-
-
-  .home-card__meta {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 12px;
-    line-height: 1.3;
-  }
-
-  .home-card__title {
-    margin: 0 0 8px;
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: -0.37px;
-    line-height: 1.3;
-  }
-
-  .home-card__desc {
-    margin: 0;
-    flex: 1;
-    font-size: 14px;
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .home-card__more {
-    margin-top: 14px;
-    font-size: 14px;
-    color: var(--color-theme);
-  }
-
-  .home-chip-cloud {
-    list-style: none;
-    margin: 28px 0 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .home-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    max-width: 16rem;
-    min-height: 40px;
-    padding: 8px 14px;
-    border: 1px solid #e0e0e0;
-    border-radius: 9999px;
-    font-size: 14px;
-    line-height: 1.2;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .home-band--white .home-chip {
-    background: #fafafc;
-  }
-
-  .home-chip__count {
-    font-size: 12px;
-  }
-
   @media (width < 900px) {
     :global(.home-band) {
       padding-block: 48px;
@@ -743,10 +389,6 @@ const homePageSchema = {
 
     :global(.home-inner) {
       width: min(980px, calc(100% - 32px));
-    }
-
-    .home-grid {
-      grid-template-columns: 1fr;
     }
   }
 
@@ -797,7 +439,7 @@ const homePageSchema = {
     max-width: 920px;
     margin-inline: auto;
     font-family: var(--font-heading);
-    font-size: 56px;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: 0;
     line-height: 1.04;
@@ -830,7 +472,7 @@ const homePageSchema = {
     min-height: 48px;
     padding: 12px 22px;
     border-radius: 999px;
-    font-size: 15px;
+    font-size: 0.875rem;
     font-weight: 800;
     box-shadow: var(--shadow-sm);
   }
@@ -856,7 +498,7 @@ const homePageSchema = {
 
   :global(.home-band__title) {
     font-family: var(--font-heading);
-    font-size: 34px;
+    font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: 0;
     color: var(--color-main);
@@ -864,55 +506,6 @@ const homePageSchema = {
 
   :global(.home-band__subtitle) {
     color: var(--color-text-secondary);
-  }
-
-  .home-grid {
-    gap: 18px;
-  }
-
-  .home-card {
-    min-height: 190px;
-    padding: 24px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: var(--radius-lg);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
-    box-shadow: var(--shadow-sm);
-    transition:
-      transform 220ms ease,
-      border-color 220ms ease,
-      box-shadow 220ms ease;
-  }
-
-  .home-band--white .home-card {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.88));
-  }
-
-  .home-card:hover,
-  .home-card:focus-visible {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
-    box-shadow: var(--shadow-md);
-  }
-
-  .home-card__meta,
-  .home-card__desc,
-  .home-chip__count {
-    color: var(--color-text-tertiary);
-  }
-
-  .home-card__title {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 0;
-    color: var(--color-main);
-  }
-
-  .home-card__more {
-    color: var(--color-theme);
-    font-weight: 800;
   }
 
   /* 最新文章：纵向行列表，与卡片阵列错开布局 */
@@ -954,7 +547,7 @@ const homePageSchema = {
     flex: 0 0 auto;
     min-width: 92px;
     color: var(--color-text-tertiary);
-    font-size: 13px;
+    font-size: 0.75rem;
   }
 
   .home-post-item__body {
@@ -965,7 +558,7 @@ const homePageSchema = {
   .home-post-item__title {
     margin: 0;
     font-family: var(--font-heading);
-    font-size: 16px;
+    font-size: 1.0625rem;
     font-weight: 800;
     line-height: 1.35;
     color: var(--color-main);
@@ -988,74 +581,6 @@ const homePageSchema = {
     font-weight: 800;
   }
 
-  /* 精选项目：紧凑行列表 */
-  .home-project-list {
-    list-style: none;
-    margin: 28px 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    text-align: start;
-  }
-
-  .home-project-item {
-    display: block;
-    padding: 16px 20px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.86);
-    box-shadow: var(--shadow-sm);
-    color: inherit;
-    text-decoration: none;
-    transition:
-      transform 220ms ease,
-      border-color 220ms ease,
-      box-shadow 220ms ease;
-  }
-
-  .home-project-item:hover,
-  .home-project-item:focus-visible {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
-    box-shadow: var(--shadow-md);
-  }
-
-  .home-project-item__title {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 1.35;
-    color: var(--color-main);
-  }
-
-  .home-project-item__desc {
-    margin: 4px 0 0;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--color-text-tertiary);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .home-chip {
-    border-color: rgba(148, 163, 184, 0.24);
-    background: rgba(255, 255, 255, 0.78);
-    color: var(--color-text-secondary);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(14px);
-  }
-
-  .home-chip:hover,
-  .home-chip:focus-visible {
-    color: var(--color-theme);
-    border-color: color-mix(in srgb, var(--color-theme) 26%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, white);
-  }
-
   @media (width < 900px) {
     .home-band {
       padding-block: 58px;
@@ -1067,7 +592,7 @@ const homePageSchema = {
     }
 
     .home-hero__title {
-      font-size: 38px;
+      font-size: 2.5rem;
     }
 
     .home-hero__subtitle {
@@ -1078,20 +603,14 @@ const homePageSchema = {
       width: min(980px, calc(100% - 32px));
     }
 
-    .home-project-list {
-      grid-template-columns: 1fr;
-    }
-
     :global(.home-band__title) {
-      font-size: 28px;
+      font-size: 1.3rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .pill-cta:hover,
-    .pill-cta:focus-visible,
-    .home-card:hover,
-    .home-card:focus-visible {
+    .pill-cta:focus-visible {
       transform: none;
     }
   }

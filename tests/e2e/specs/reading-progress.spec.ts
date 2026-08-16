@@ -3,12 +3,12 @@ import { test, expect } from "@playwright/test";
 test.describe("Reading Progress Bar", () => {
   test("progress bar exists on article pages", async ({ page, baseURL }) => {
     // Navigate to blog list and find first article
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
     const firstPost = page.locator("main a[href*='/en/blog/']").first();
     if (!(await firstPost.isVisible({ timeout: 10000 }))) return;
 
     const href = await firstPost.getAttribute("href");
-    await page.goto(new URL(href!, baseURL).href, { waitUntil: "networkidle" });
+    await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
 
     // Check progress bar exists
     const bar = page.locator(".reading-progress-bar, [class*='progress-bar']").first();
@@ -36,7 +36,7 @@ test.describe("Reading Progress Bar", () => {
   });
 
   test("progress bar is not visible on non-article pages", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     // Progress bar should not be present on homepage (it's only in Article layout)
     const bar = page.locator(".reading-progress-bar").first();
     // Either not present or has 0 width — both are acceptable

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Wiki Search Filter", () => {
   test("search input filters wiki entries", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
 
     const searchInput = page.locator("#wiki-search, .wiki-search-input").first();
     if (!(await searchInput.isVisible({ timeout: 5000 }))) return;
@@ -24,7 +24,7 @@ test.describe("Wiki Search Filter", () => {
   });
 
   test("clearing search restores all entries", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
 
     const searchInput = page.locator("#wiki-search, .wiki-search-input").first();
     if (!(await searchInput.isVisible({ timeout: 5000 }))) return;
@@ -48,7 +48,7 @@ test.describe("Wiki Search Filter", () => {
   });
 
   test("empty letter groups are hidden during search", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
 
     const searchInput = page.locator("#wiki-search, .wiki-search-input").first();
     if (!(await searchInput.isVisible({ timeout: 5000 }))) return;

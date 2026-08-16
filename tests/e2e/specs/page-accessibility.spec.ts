@@ -23,7 +23,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("en 博客详情页可访问（从列表取第一篇链接）", async ({ page }) => {
-    await page.goto("/en/blog/", { waitUntil: "networkidle" });
+    await page.goto("/en/blog/", { waitUntil: "domcontentloaded" });
     const firstPostLink = page.locator("main a[href*='/en/blog/']").first();
     await expect(firstPostLink).toBeVisible({ timeout: 10000 });
     const href = await firstPostLink.getAttribute("href");
@@ -35,7 +35,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("zh-cn 博客详情页可访问（从列表取第一篇链接）", async ({ page }) => {
-    await page.goto("/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto("/zh-cn/blog/", { waitUntil: "domcontentloaded" });
     const firstPostLink = page.locator("main a[href*='/zh-cn/blog/']").first();
     await expect(firstPostLink).toBeVisible({ timeout: 10000 });
     const href = await firstPostLink.getAttribute("href");
@@ -47,7 +47,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("en 博文分类（series）子页可访问", async ({ page }) => {
-    await page.goto("/en/series/", { waitUntil: "networkidle" });
+    await page.goto("/en/series/", { waitUntil: "domcontentloaded" });
     const firstLink = page.locator("main a[href*='/en/series/']").first();
     await expect(firstLink).toBeVisible({ timeout: 10000 });
     const href = await firstLink.getAttribute("href");
@@ -59,7 +59,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("zh-cn 博文分类（series）子页可访问", async ({ page }) => {
-    await page.goto("/zh-cn/series/", { waitUntil: "networkidle" });
+    await page.goto("/zh-cn/series/", { waitUntil: "domcontentloaded" });
     const firstLink = page.locator("main a[href*='/zh-cn/series/']").first();
     await expect(firstLink).toBeVisible({ timeout: 10000 });
     const href = await firstLink.getAttribute("href");
@@ -71,7 +71,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("en 博文标签（tags）子页可访问", async ({ page }) => {
-    await page.goto("/en/tags/", { waitUntil: "networkidle" });
+    await page.goto("/en/tags/", { waitUntil: "domcontentloaded" });
     const tagLinks = await page.locator("main a[href*='/en/tags/']").evaluateAll((anchors) =>
       anchors.map((a) => (a as HTMLAnchorElement).href).filter((h) => h && !/\/tags\/[^/]*%/.test(new URL(h).pathname))
     );
@@ -82,7 +82,7 @@ test.describe("页面可访问性（中英文）", () => {
   });
 
   test("zh-cn 博文标签（tags）子页可访问", async ({ page }) => {
-    await page.goto("/zh-cn/tags/", { waitUntil: "networkidle" });
+    await page.goto("/zh-cn/tags/", { waitUntil: "domcontentloaded" });
     const tagLinks = await page.locator("main a[href*='/zh-cn/tags/']").evaluateAll((anchors) =>
       anchors.map((a) => (a as HTMLAnchorElement).href).filter((h) => h && !/\/tags\/[^/]*%/.test(new URL(h).pathname))
     );

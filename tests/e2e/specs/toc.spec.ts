@@ -2,13 +2,13 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Table of Contents", () => {
   async function getArticleWithToc(page: any, baseURL: string | undefined, locale: string) {
-    await page.goto((baseURL || "") + `/${locale}/blog/`, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + `/${locale}/blog/`, { waitUntil: "domcontentloaded" });
     const posts = page.locator(`main a[href*='/${locale}/blog/']`);
     const count = await posts.count();
 
     for (let i = 0; i < Math.min(count, 5); i++) {
       const href = await posts.nth(i).getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "networkidle" });
+      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
       const toc = page.locator(".toc-nav, [class*='table-of-contents'], aside nav").first();
       if (await toc.isVisible({ timeout: 3000 })) return true;
     }

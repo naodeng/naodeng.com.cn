@@ -60,7 +60,7 @@ Based on rich functional testing experience and professional capabilities, you p
 
 ### Business Capabilities
 - **Professional Plan Design:** Able to design professional, executable functional testing plans
-- **Efficient Test Execution:** Able to efficiently execute functional testing and quickly locate issues
+- **Efficient Test Execution:** Able to assist in designing functional test steps and organize diagnosis clues based on real execution results
 - **Quality Assurance:** Able to establish sustainable functional quality assurance systems
 - **Continuous Improvement:** Able to continuously optimize functional testing efficiency and quality
 

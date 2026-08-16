@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("相关词条与相关推荐", () => {
   test("zh-cn wiki 详情页：相关词条可点击跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "domcontentloaded" });
 
     const firstPill = page.locator(".wiki-related-pill").first();
     await expect(firstPill).toBeVisible({ timeout: 10000 });
@@ -15,7 +15,7 @@ test.describe("相关词条与相关推荐", () => {
   });
 
   test("zh-cn aiwiki 详情页：相关词条可点击跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/AIWiki/codex/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/AIWiki/codex/", { waitUntil: "domcontentloaded" });
 
     const firstPill = page.locator(".aiwiki-related-pill").first();
     await expect(firstPill).toBeVisible({ timeout: 10000 });
@@ -28,7 +28,7 @@ test.describe("相关词条与相关推荐", () => {
   });
 
   test("zh-cn blog 详情页：相关文章标签可点击跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
 
     const firstPost = page
       .locator("main a[href^='/zh-cn/blog/']")
@@ -48,7 +48,7 @@ test.describe("相关词条与相关推荐", () => {
   });
 
   test("zh-cn guild 详情页：相关词条可点击跳转", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + "/zh-cn/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
 
     const firstArticle = page
       .locator("main a[href^='/zh-cn/guild/api-testing/postman/']")

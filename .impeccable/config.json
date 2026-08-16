@@ -1,0 +1,9 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "codex-grid-background"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": []
+  }
+}

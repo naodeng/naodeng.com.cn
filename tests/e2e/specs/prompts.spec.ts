@@ -50,13 +50,24 @@ test.describe("Prompts selection and review flow", () => {
         page.locator('[data-prompt-version="Standard"][data-recommended="true"]'),
       ).toBeVisible();
       await expect(page.locator("[data-prompt-quick-step]")).toHaveCount(5);
-      await expect(page.locator("[data-prompt-example]")).toHaveCount(3);
+      await expect(page.locator("[data-prompt-example]")).toHaveCount(6);
       await expect(page.locator("#ai-output-notice")).toBeVisible();
       await expect(page.locator("[data-prompt-type]")).toHaveCount(15);
 
       const text = await page.locator("main").innerText();
       expect(text).not.toContain("_EN.md");
       expect(text).not.toContain("_Lite.md");
+    });
+
+    test(`${lang} unifies the page name and frames the flow as assisted`, async ({
+      page,
+      baseURL,
+    }) => {
+      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
+      const h1 = lang === "zh-cn" ? "软件测试提示词库" : "Software Testing Prompt Library";
+      await expect(page.locator("main h1")).toHaveText(h1);
+      await expect(page).toHaveTitle(new RegExp(h1));
+      await expect(page.locator("#flow-heading")).toContainText(lang === "zh-cn" ? "辅助" : /assisted/i);
     });
   }
 });

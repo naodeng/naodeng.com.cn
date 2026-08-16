@@ -1,4 +1,8 @@
-import { describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   HOME_EXAMPLES,
   HOME_PRIMARY_MODES,
@@ -12,19 +16,24 @@ import {
 } from "../../src/data/promptLibrary";
 import {
   getQASkillCardIntro,
+  getQASkillCardSummary,
   QA_SKILL_STARTER_PATHS,
   QA_SKILL_TOOLS,
   RECOMMENDED_QA_SKILL_SLUGS,
 } from "../../src/data/qaSkillLibrary";
+import { getQASkillsGrouped } from "../../src/utils/qaskills";
 
 const languages = ["en", "zh-cn"] as const;
+
+// getQASkillsGrouped resolves content paths from process.cwd(); Vitest runs from tests/.
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
 describe("content entry configuration", () => {
   it.each(languages)("defines complete homepage entries for %s", (lang) => {
     expect(HOME_PRIMARY_MODES[lang]).toHaveLength(3);
     expect(HOME_TASK_ENTRIES[lang]).toHaveLength(6);
     expect(HOME_EXAMPLES[lang]).toHaveLength(3);
-    expect(new Set(HOME_TASK_ENTRIES[lang].map((item) => item.slug)).size).toBe(6);
+    expect(new Set(HOME_TASK_ENTRIES[lang].map((item) => item.key)).size).toBe(6);
   });
 
   it.each(languages)("defines the full Prompt selection flow for %s", (lang) => {
@@ -41,7 +50,7 @@ describe("content entry configuration", () => {
     ]);
     expect(Object.keys(PROMPT_TYPE_COPY[lang])).toHaveLength(15);
     expect(PROMPT_QUICK_STEPS[lang]).toHaveLength(5);
-    expect(PROMPT_EXAMPLES[lang]).toHaveLength(3);
+    expect(PROMPT_EXAMPLES[lang]).toHaveLength(6);
   });
 
   it("keeps supported tools, starter paths, and recommendations unique", () => {
@@ -76,5 +85,62 @@ describe("content entry configuration", () => {
         "zh-cn",
       ),
     ).toBe("需要 API 测试方案、API 用例或 API 风险分析。");
+  });
+});
+
+describe("catalog skill summaries", () => {
+  beforeAll(() => process.chdir(REPO_ROOT));
+  afterAll(() => process.chdir(REPO_ROOT));
+
+  it.each(languages)("provides complete summaries for every catalog skill (%s)", async (lang) => {
+    const grouped = await getQASkillsGrouped(lang);
+    const all = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+    expect(all.length).toBeGreaterThan(0);
+    for (const skill of all) {
+      const summary = getQASkillCardSummary(skill, lang);
+      expect(summary.whenToUse, `${skill.slug}.whenToUse`).not.toBe("");
+      expect(summary.input, `${skill.slug}.input`).not.toBe("");
+      expect(summary.output, `${skill.slug}.output`).not.toBe("");
+      expect(summary.humanReview, `${skill.slug}.humanReview`).not.toBe("");
+      expect(summary.whenToUse).not.toMatch(/处理相关任务|related task/i);
+    }
+  });
+});
+
+describe("prompt examples data contract", () => {
+  beforeAll(() => process.chdir(REPO_ROOT));
+  afterAll(() => process.chdir(REPO_ROOT));
+
+  it("keeps identical keys and order across languages", () => {
+    expect(PROMPT_EXAMPLES["zh-cn"].map((item) => item.key)).toEqual(
+      PROMPT_EXAMPLES.en.map((item) => item.key),
+    );
+  });
+
+  it.each(languages)("defines six reviewable bilingual examples for %s", (lang) => {
+    const examples = PROMPT_EXAMPLES[lang];
+    expect(examples).toHaveLength(6);
+    for (const example of examples) {
+      expect(example.scenario).not.toBe("");
+      expect(example.input).not.toBe("");
+      expect(example.version).toBe("Standard");
+      expect(example.versionReason).not.toBe("");
+      expect(example.outputLines.length, `${example.key}.outputLines`).toBeGreaterThanOrEqual(3);
+      expect(example.outputLines.length, `${example.key}.outputLines`).toBeLessThanOrEqual(5);
+      expect(example.reviewPoints.length, `${example.key}.reviewPoints`).toBeGreaterThanOrEqual(2);
+      expect(example.href).toMatch(/^\/prompts\/[a-z0-9-]+\/$/);
+    }
+  });
+
+  it.each(languages)("links every example to a real Prompt slug for %s", (lang) => {
+    for (const example of PROMPT_EXAMPLES[lang]) {
+      const testingType = example.href.replace(/^\/prompts\//, "").replace(/\/$/, "");
+      for (const locale of languages) {
+        expect(
+          existsSync(join(REPO_ROOT, "src", "content", "prompts", locale, testingType)),
+          `${testingType} @ ${locale}`,
+        ).toBe(true);
+      }
+    }
   });
 });

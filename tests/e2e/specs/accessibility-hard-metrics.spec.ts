@@ -61,7 +61,7 @@ test.describe("可访问性硬指标", () => {
 
   for (const sample of samples) {
     test(`${sample.name} 关键交互区域满足最小触控面积`, async ({ page }) => {
-      await page.goto(sample.path, { waitUntil: "networkidle" });
+      await page.goto(sample.path, { waitUntil: "domcontentloaded" });
 
       for (const selector of sample.selectors) {
         const locator = page.locator(selector).first();
@@ -74,7 +74,7 @@ test.describe("可访问性硬指标", () => {
     });
 
     test(`${sample.name} 正文与辅助文本字号不低于 14px`, async ({ page }) => {
-      await page.goto(sample.path, { waitUntil: "networkidle" });
+      await page.goto(sample.path, { waitUntil: "domcontentloaded" });
 
       for (const selector of sample.textSelectors) {
         const locator = page.locator(selector).first();

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Code Block Enhancements", () => {
   async function getArticleWithCode(page: any, baseURL: string | undefined, locale: string) {
-    await page.goto((baseURL || "") + `/${locale}/blog/`, { waitUntil: "networkidle" });
+    await page.goto((baseURL || "") + `/${locale}/blog/`, { waitUntil: "domcontentloaded" });
     const hrefs = await page.locator(`main a[href*='/${locale}/blog/']`).evaluateAll((anchors) =>
       anchors
         .map((a) => a.getAttribute("href"))
@@ -10,7 +10,7 @@ test.describe("Code Block Enhancements", () => {
     );
 
     for (const href of hrefs.slice(0, 5)) {
-      await page.goto(new URL(href, baseURL).href, { waitUntil: "networkidle" });
+      await page.goto(new URL(href, baseURL).href, { waitUntil: "domcontentloaded" });
       const codeBlock = page.locator("pre").first();
       if (await codeBlock.isVisible({ timeout: 3000 })) return true;
     }
