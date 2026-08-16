@@ -8,14 +8,14 @@
 
 | 计划 | 定位 | 状态 |
 | --- | --- | --- |
-| `2026-08-10-home-qaskills-prompts-content-optimization.md` | 内容层优化（P1 基础版） | 实现已落地，文档 checkbox 未同步 |
-| `2026-08-10-home-qaskills-prompts-p1-p2-follow-up.md` | 进阶优化（P1/P2 follow-up） | 未开始 |
+| `2026-08-10-home-qaskills-prompts-content-optimization.md` | 内容层优化（P1 基础版） | 实现已落地，文档 checkbox 已于 2026-08-16 按实现状态回填（54/54） |
+| `2026-08-10-home-qaskills-prompts-p1-p2-follow-up.md` | 进阶优化（P1/P2 follow-up） | 已按最新内容重写，Task 1 完成，Task 2–8 待执行 |
 
-## 计划 A：content-optimization — 实现已完成，文档未同步
+## 计划 A：content-optimization — 实现已完成，文档已同步
 
 ### 状态
 
-代码与 git 历史均显示实现已落地，但计划文档内 55 个 checkbox 全部保持未勾选（`- [ ]`）。
+代码与 git 历史显示实现已落地；2026-08-16 已按实现状态回填全部 checkbox（54/54），文档头部新增同步记录，列出产物与提交证据。同批处理的已落地计划：`2026-08-05-qaskills-pages-redesign.md`（41/41）、`2026-08-06-qaskills-lifecycle-path.md`（21/21）、`2026-08-09-upstream-content-sync.md`（28/28）。
 
 ### 落地证据
 
@@ -35,8 +35,8 @@
 
 ### 遗留事项
 
-- 计划文档 checkbox 未勾选；要么按实现补勾，要么在文档中标注"实现已完成、文档待同步"。
-- 本次未重跑构建与 E2E，文档级的"完成"只建立在代码与提交证据上。
+- 已解决：checkbox 于 2026-08-16 按实现状态回填并加同步记录。
+- 本次未重跑构建与 E2E，文档级的"完成"建立在代码与提交证据上（页面本身由后续计划 B 的重构持续覆盖）。
 
 ## 计划 B：p1-p2-follow-up — 已按最新内容重新梳理（2026-08-16），尚未执行
 

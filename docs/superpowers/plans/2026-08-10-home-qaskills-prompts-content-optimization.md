@@ -1,6 +1,7 @@
 # Home, QA Skills, and Prompts Content Optimization Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **同步记录（2026-08-16）：** 实现已落地并经产物与提交证据核对，checkbox 按实现状态回填。证据：`src/data/` 三个配置模块与 `src/components/home/`、`src/components/qaskills/`、`src/components/prompts/` 组件齐全；首页已按 Hero → TaskNavigator → CoreCapabilities → HomeProofAndCases → latest 渲染；对应提交 `1ed38836d`、`a0fb01bbf`、`4324768cb` 等；详见 `2026-08-16-home-qaskills-prompts-status.md` 计划 A 部分。
 
 **Goal:** Reorganize the bilingual homepage, QA Skills index, and Prompts index so visitors can understand the site's QA value, choose the right resource, and start a testing task without losing the homepage entry, tracking, mobile-navigation, SEO, or content contracts already merged from main.
 
@@ -78,7 +79,7 @@
 - Produces `RECOMMENDED_QA_SKILL_SLUGS` and `QA_SKILL_STARTER_PATHS`.
 - Produces `getQASkillCardIntro(skill: Pick<QASkill, "slug" | "intro">, lang: Lang): string`.
 
-- [ ] **Step 1: Write the failing configuration test**
+- [x] **Step 1: Write the failing configuration test**
 
 Create `tests/unit/contentEntryConfig.test.ts`:
 
@@ -113,7 +114,7 @@ describe("content entry configuration", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and verify the missing-module failure**
+- [x] **Step 2: Run the test and verify the missing-module failure**
 
 Run:
 
@@ -123,7 +124,7 @@ cd tests && npm run test:unit -- contentEntryConfig.test.ts
 
 Expected: FAIL because the three `src/data/` modules do not exist.
 
-- [ ] **Step 3: Implement `homeTaskEntries.ts`**
+- [x] **Step 3: Implement `homeTaskEntries.ts`**
 
 Define focused types and bilingual entries. Use locale-independent paths and localize them at render time:
 
@@ -199,7 +200,7 @@ export const HOME_EXAMPLES: Record<Lang, HomeExample[]> = {
 
 Use these exact Chinese task titles: `分析需求`, `制定测试策略`, `编写或评审测试用例`, `设计 API / UI 自动化`, `分析与报告缺陷`, `输出测试报告`. English titles must be concise semantic equivalents.
 
-- [ ] **Step 4: Implement `promptLibrary.ts`**
+- [x] **Step 4: Implement `promptLibrary.ts`**
 
 Export the 15-type copy map using the `testingType` values from `src/content.config.ts`. Add all six versions in the required order and mark only Standard as recommended:
 
@@ -233,7 +234,7 @@ export const PROMPT_VERSION_GUIDE = {
 
 Define exactly five quick-start steps and exactly three examples for both languages. The steps must not mention `_EN.md`, `_Lite.md`, or fixed file naming.
 
-- [ ] **Step 5: Implement `qaSkillLibrary.ts`**
+- [x] **Step 5: Implement `qaSkillLibrary.ts`**
 
 ```ts
 import type { Lang } from "@/i18n";
@@ -273,7 +274,7 @@ export function getQASkillCardIntro(
 }
 ```
 
-- [ ] **Step 6: Run the configuration test**
+- [x] **Step 6: Run the configuration test**
 
 Run:
 
@@ -283,7 +284,7 @@ cd tests && npm run test:unit -- contentEntryConfig.test.ts
 
 Expected: PASS, 5 test cases when expanded by `it.each`.
 
-- [ ] **Step 7: Commit the configuration boundary**
+- [x] **Step 7: Commit the configuration boundary**
 
 ```bash
 git add src/data/homeTaskEntries.ts src/data/promptLibrary.ts src/data/qaSkillLibrary.ts tests/unit/contentEntryConfig.test.ts
@@ -309,7 +310,7 @@ git commit -m "feat(content): add bilingual entry page configuration"
 - Prompts computes `promptCount`, `testingTypeCount`, and `workflowCount` from locale collections.
 - QA Skills computes tool count as `QA_SKILL_TOOLS.length`.
 
-- [ ] **Step 1: Write the failing title test**
+- [x] **Step 1: Write the failing title test**
 
 Create `tests/unit/baseTitle.test.ts`:
 
@@ -328,7 +329,7 @@ describe("Base title mode", () => {
 });
 ```
 
-- [ ] **Step 2: Strengthen the Prompts page source test**
+- [x] **Step 2: Strengthen the Prompts page source test**
 
 Extend `tests/unit/promptsListPage.test.ts` with source assertions:
 
@@ -346,7 +347,7 @@ it("uses collection-backed counts and current usage guidance", () => {
 });
 ```
 
-- [ ] **Step 3: Run both tests and verify failure**
+- [x] **Step 3: Run both tests and verify failure**
 
 ```bash
 cd tests && npm run test:unit -- baseTitle.test.ts promptsListPage.test.ts
@@ -354,7 +355,7 @@ cd tests && npm run test:unit -- baseTitle.test.ts promptsListPage.test.ts
 
 Expected: FAIL because `titleMode` and the new dynamic-count expressions are absent and stale guidance remains.
 
-- [ ] **Step 4: Implement the Base title mode**
+- [x] **Step 4: Implement the Base title mode**
 
 In `src/layouts/Base.astro`:
 
@@ -376,7 +377,7 @@ const localeTitle = title
   : t(SITE_TITLE);
 ```
 
-- [ ] **Step 5: Replace hardcoded page counts**
+- [x] **Step 5: Replace hardcoded page counts**
 
 In Prompts:
 
@@ -394,7 +395,7 @@ const toolCount = QA_SKILL_TOOLS.length;
 
 At this stage remove `_EN.md`, `_Lite.md`, and `60+` copy even though Task 3 will replace the full quick-start section.
 
-- [ ] **Step 6: Run the focused tests**
+- [x] **Step 6: Run the focused tests**
 
 ```bash
 cd tests && npm run test:unit -- baseTitle.test.ts promptsListPage.test.ts contentEntryConfig.test.ts
@@ -402,7 +403,7 @@ cd tests && npm run test:unit -- baseTitle.test.ts promptsListPage.test.ts conte
 
 Expected: PASS.
 
-- [ ] **Step 7: Run Astro type checking**
+- [x] **Step 7: Run Astro type checking**
 
 ```bash
 npx astro check
@@ -410,7 +411,7 @@ npx astro check
 
 Expected: 0 errors, 0 warnings, 0 hints.
 
-- [ ] **Step 8: Commit correctness fixes**
+- [x] **Step 8: Commit correctness fixes**
 
 ```bash
 git add src/layouts/Base.astro 'src/pages/[lang]/prompts/index.astro' 'src/pages/[lang]/qaskills/index.astro' tests/unit/baseTitle.test.ts tests/unit/promptsListPage.test.ts
@@ -437,7 +438,7 @@ git commit -m "fix(content): use accurate titles and resource counts"
 - `AIOutputNotice.astro` owns bilingual review constraints and exposes `id="ai-output-notice"`.
 - The Prompts page preserves CollectionPage, ItemList, breadcrumbs, 15 type links, testing flow, workflows, and GoogleAd placement.
 
-- [ ] **Step 1: Add failing Prompts structure assertions**
+- [x] **Step 1: Add failing Prompts structure assertions**
 
 In `tests/unit/promptsListPage.test.ts`:
 
@@ -450,7 +451,7 @@ it("renders version guidance, examples, and AI review notice", () => {
 });
 ```
 
-- [ ] **Step 2: Run the focused test and verify failure**
+- [x] **Step 2: Run the focused test and verify failure**
 
 ```bash
 cd tests && npm run test:unit -- promptsListPage.test.ts
@@ -458,7 +459,7 @@ cd tests && npm run test:unit -- promptsListPage.test.ts
 
 Expected: FAIL because the new components are not imported or rendered.
 
-- [ ] **Step 3: Implement `PromptVersionGuide.astro`**
+- [x] **Step 3: Implement `PromptVersionGuide.astro`**
 
 Render a semantic section with six cards. Use these stable selectors:
 
@@ -478,11 +479,11 @@ Render a semantic section with six cards. Use these stable selectors:
 </section>
 ```
 
-- [ ] **Step 4: Implement examples and AI review notice**
+- [x] **Step 4: Implement examples and AI review notice**
 
 `PromptExamples.astro` renders exactly three `<li data-prompt-example>` items with input, recommended capability, and output-structure labels. `AIOutputNotice.astro` renders the four approved constraints from the design as a list; do not introduce claims about accuracy or coverage improvement.
 
-- [ ] **Step 5: Reorder and simplify the Prompts page**
+- [x] **Step 5: Reorder and simplify the Prompts page**
 
 Use this exact order after the hero:
 
@@ -496,7 +497,7 @@ Use this exact order after the hero:
 
 Change the Chinese H1 to `软件测试提示词库`; keep the English H1 `QA Prompt Library`. Replace each type-card description with `PROMPT_TYPE_COPY[lang][testingType].description`, keeping current links and `ItemList` URLs.
 
-- [ ] **Step 6: Add responsive component styles**
+- [x] **Step 6: Add responsive component styles**
 
 Use existing tokens and page breakpoints. At widths up to 640px:
 
@@ -505,7 +506,7 @@ Use existing tokens and page breakpoints. At widths up to 640px:
 - Version and example grids use one column.
 - No component sets a fixed width wider than its container.
 
-- [ ] **Step 7: Run the focused tests and Astro check**
+- [x] **Step 7: Run the focused tests and Astro check**
 
 ```bash
 cd tests && npm run test:unit -- promptsListPage.test.ts contentEntryConfig.test.ts
@@ -514,7 +515,7 @@ npx astro check
 
 Expected: all focused tests PASS; Astro reports 0 diagnostics.
 
-- [ ] **Step 8: Commit the Prompts index**
+- [x] **Step 8: Commit the Prompts index**
 
 ```bash
 git add src/components/prompts src/data/promptLibrary.ts 'src/pages/[lang]/prompts/index.astro' tests/unit/promptsListPage.test.ts
@@ -540,7 +541,7 @@ git commit -m "feat(prompts): clarify selection and AI review flow"
 - Search filtering updates `<p id="qaskills-results" aria-live="polite">` with the visible count.
 - Existing `.card`, `data-category`, `data-evals`, search, chip, empty, and clear selectors remain available.
 
-- [ ] **Step 1: Write failing source and E2E expectations**
+- [x] **Step 1: Write failing source and E2E expectations**
 
 Add source assertions to `tests/unit/qaskillsFilter.test.ts` for `qaskills-results`, `aria-live="polite"`, `QASkillStarterPaths`, and `RecommendedQASkills`.
 
@@ -555,7 +556,7 @@ await expect(page.locator("[data-recommended-skill]")).toHaveCount(6);
 await expect(page.locator("#qaskills-results")).toHaveAttribute("aria-live", "polite");
 ```
 
-- [ ] **Step 2: Run the unit test and verify failure**
+- [x] **Step 2: Run the unit test and verify failure**
 
 ```bash
 cd tests && npm run test:unit -- qaskillsFilter.test.ts contentEntryConfig.test.ts
@@ -563,11 +564,11 @@ cd tests && npm run test:unit -- qaskillsFilter.test.ts contentEntryConfig.test.
 
 Expected: FAIL because the starter, recommendation, and result-count contracts are absent.
 
-- [ ] **Step 3: Implement starter and recommendation components**
+- [x] **Step 3: Implement starter and recommendation components**
 
 `QASkillStarterPaths.astro` renders exactly three ordinary links with `data-starter-path="search|discover|lifecycle"`. `RecommendedQASkills.astro` renders a semantic list and calls `getQASkillCardIntro()` for display copy. Keep card links locale-aware through `getRelativeLocaleUrl()`.
 
-- [ ] **Step 4: Reorder the page**
+- [x] **Step 4: Reorder the page**
 
 Use this exact order:
 
@@ -581,7 +582,7 @@ Use this exact order:
 
 Build `recommendedSkills` by mapping `RECOMMENDED_QA_SKILL_SLUGS` against `allSkills` and filtering missing values with a typed predicate.
 
-- [ ] **Step 5: Correct status and Evals wording**
+- [x] **Step 5: Correct status and Evals wording**
 
 - Chinese: `38 个 Skills 包含评测用例`.
 - English: `38 skills include evaluation cases`.
@@ -589,7 +590,7 @@ Build `recommendedSkills` by mapping `RECOMMENDED_QA_SKILL_SLUGS` against `allSk
 - Add a short explanatory note that Evals means evaluation cases exist and does not assert current runtime results.
 - Do not render a date tag when `updatedAt` is empty.
 
-- [ ] **Step 6: Update the search script**
+- [x] **Step 6: Update the search script**
 
 Add:
 
@@ -604,7 +605,7 @@ const updateResultCount = (visible) => {
 
 Call `updateResultCount(visible)` at the end of every `apply()`. Update `aria-pressed` on all filter buttons when state changes. Preserve existing empty-state and clear behavior.
 
-- [ ] **Step 7: Run unit and focused E2E tests**
+- [x] **Step 7: Run unit and focused E2E tests**
 
 First run unit tests:
 
@@ -627,7 +628,7 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected: focused unit and E2E tests PASS.
 
-- [ ] **Step 8: Commit the QA Skills index**
+- [x] **Step 8: Commit the QA Skills index**
 
 ```bash
 git add src/components/qaskills src/data/qaSkillLibrary.ts 'src/pages/[lang]/qaskills/index.astro' tests/unit/qaskillsFilter.test.ts tests/e2e/specs/qaskills.spec.ts
@@ -658,7 +659,7 @@ git commit -m "feat(qaskills): add starter-first discovery flow"
 - `TrackingEvents.astro` recognizes `prompts` and `qaskills` alongside existing names.
 - Homepage passes `titleMode="absolute"` to Base.
 
-- [ ] **Step 1: Replace obsolete homepage E2E expectations with failing target behavior**
+- [x] **Step 1: Replace obsolete homepage E2E expectations with failing target behavior**
 
 Update `tests/e2e/specs/apple-home.spec.ts` to assert for both languages:
 
@@ -674,7 +675,7 @@ await expect(page.locator("[data-continue-exploring]")).toHaveCount(4);
 
 Delete assertions that require the old standalone `.home-prompts`, `.home-projects`, `.home-tags`, or six-post layout. Keep the existing three-primary-entry assertions and adapt them to `[data-home-mode]`.
 
-- [ ] **Step 2: Add failing tracking tests**
+- [x] **Step 2: Add failing tracking tests**
 
 Refactor the first tracking-contract test into a table covering:
 
@@ -689,7 +690,7 @@ const cases = [
 
 For each case, click a visible matching homepage link, prevent navigation, and assert `eventName`, `entry_name`, `lang`, `session_id`, and `path`. Use a fresh page or clear the matching session-storage dedupe key between cases.
 
-- [ ] **Step 3: Run E2E against the pre-change page and verify failure**
+- [x] **Step 3: Run E2E against the pre-change page and verify failure**
 
 Use the dedicated preview:
 
@@ -701,13 +702,13 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected: FAIL on the new task, capability, example, consolidated-section, Prompts tracking, and QA Skills tracking expectations.
 
-- [ ] **Step 4: Implement `HomeTaskNavigator.astro`**
+- [x] **Step 4: Implement `HomeTaskNavigator.astro`**
 
 Move main's `primaryEntries` rendering and CSS into the component, preserving `.home-primary-entry`. Render three modes from `HOME_PRIMARY_MODES[lang]`; the read and reference modes have one primary link, while the act mode contains two links. Render the six tasks immediately below in the same section using localized QA Skill links.
 
 Do not nest `<a>` elements. The act mode must be a non-link card containing two child links; adjust tests so the three cards are counted by `[data-home-mode]`, not by anchor count.
 
-- [ ] **Step 5: Implement capabilities and proof components**
+- [x] **Step 5: Implement capabilities and proof components**
 
 `CoreCapabilities.astro` renders exactly two panels with `data-core-capability="skills|prompts"` and three recommended links each. `HomeProofAndCases.astro` renders only computed counts and exactly three explicitly labelled examples.
 
@@ -726,7 +727,7 @@ const homeProofStats = {
 
 Keep an unsliced `localeWorkflowsAll` for counts and derive the three display workflows separately where still needed.
 
-- [ ] **Step 6: Rebuild the homepage into five sections**
+- [x] **Step 6: Rebuild the homepage into five sections**
 
 Use this order:
 
@@ -738,7 +739,7 @@ Use this order:
 
 Remove the old standalone Prompts, QA Skills, Projects, Guild, Wiki, AI Wiki, and Tags bands only after their required destinations exist in the new five-section layout. Keep `GoogleAd` placement between meaningful content blocks without adding more ads.
 
-- [ ] **Step 7: Extend tracking without breaking dedupe**
+- [x] **Step 7: Extend tracking without breaking dedupe**
 
 In `getEntryName()` add, before the fallback return:
 
@@ -749,7 +750,7 @@ if (p.startsWith(`${prefix}qaskills`)) return "qaskills";
 
 Preserve current Blog, Wiki, AI Wiki, Guild recognition, 10-second per-entry dedupe, `session_id`, timestamp, language, and path fields.
 
-- [ ] **Step 8: Add the homepage SEO assertion**
+- [x] **Step 8: Add the homepage SEO assertion**
 
 In `tests/e2e/specs/seo.spec.ts`, assert exact titles:
 
@@ -762,7 +763,7 @@ await expect(page).toHaveTitle("Nao Deng | QA Skills, Prompts and AI Testing Kno
 
 Keep existing canonical, hreflang, schema, and robots assertions.
 
-- [ ] **Step 9: Run focused E2E and unit tests**
+- [x] **Step 9: Run focused E2E and unit tests**
 
 ```bash
 cd tests && npm run test:unit -- baseTitle.test.ts contentEntryConfig.test.ts
@@ -771,7 +772,7 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected: PASS.
 
-- [ ] **Step 10: Commit the homepage consolidation**
+- [x] **Step 10: Commit the homepage consolidation**
 
 ```bash
 git add src/components/home src/data/homeTaskEntries.ts src/components/TrackingEvents.astro 'src/pages/[lang]/index.astro' tests/e2e/specs/apple-home.spec.ts tests/e2e/specs/tracking-contract.spec.ts tests/e2e/specs/seo.spec.ts
@@ -793,7 +794,7 @@ git commit -m "feat(home): prioritize QA tasks and core capabilities"
 - Uses the stable selectors introduced in Tasks 3–5.
 - Preserves main's mobile Header contract: Blog, Wiki / AI Wiki, and Prompts priority links.
 
-- [ ] **Step 1: Add a failing 390px overflow matrix**
+- [x] **Step 1: Add a failing 390px overflow matrix**
 
 In `tests/e2e/specs/responsive.spec.ts`:
 
@@ -815,7 +816,7 @@ for (const lang of ["zh-cn", "en"] as const) {
 
 Add a Chinese Prompts H1 check that its bounding box remains inside the hero card and its computed font size is at least 32px.
 
-- [ ] **Step 2: Run the responsive test and capture any real failure**
+- [x] **Step 2: Run the responsive test and capture any real failure**
 
 ```bash
 cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/specs/responsive.spec.ts
@@ -823,11 +824,11 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected before final responsive adjustment: either PASS or a concrete page/viewport failure. If it passes, keep the regression test and do not manufacture a CSS change.
 
-- [ ] **Step 3: Apply only evidence-backed responsive fixes**
+- [x] **Step 3: Apply only evidence-backed responsive fixes**
 
 If the test reports overflow, identify the exact overflowing selector with `getBoundingClientRect()` and change only that component's mobile rule. Do not add a global `overflow-x: hidden` workaround. If the H1 check fails, adjust only the Prompts hero title's mobile `font-size`, `line-height`, or max width.
 
-- [ ] **Step 4: Run all focused browser contracts**
+- [x] **Step 4: Run all focused browser contracts**
 
 ```bash
 cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/specs/apple-home.spec.ts e2e/specs/tracking-contract.spec.ts e2e/specs/header.spec.ts e2e/specs/qaskills.spec.ts e2e/specs/responsive.spec.ts e2e/specs/seo.spec.ts
@@ -835,7 +836,7 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected: all tests in the six focused specifications PASS for configured projects.
 
-- [ ] **Step 5: Commit responsive regression coverage**
+- [x] **Step 5: Commit responsive regression coverage**
 
 ```bash
 git add tests/e2e/specs/responsive.spec.ts tests/e2e/specs/header.spec.ts tests/e2e/specs/qaskills.spec.ts src/components/home src/components/prompts src/components/qaskills 'src/pages/[lang]/index.astro' 'src/pages/[lang]/prompts/index.astro' 'src/pages/[lang]/qaskills/index.astro'
@@ -854,7 +855,7 @@ git commit -m "test(ui): cover bilingual content entry pages"
 
 - No new interfaces.
 
-- [ ] **Step 1: Run the complete unit suite**
+- [x] **Step 1: Run the complete unit suite**
 
 ```bash
 npm test
@@ -862,7 +863,7 @@ npm test
 
 Expected: all Vitest files and tests PASS with zero failures.
 
-- [ ] **Step 2: Run the production build**
+- [x] **Step 2: Run the production build**
 
 ```bash
 npm run build
@@ -870,7 +871,7 @@ npm run build
 
 Expected: Astro check reports 0 errors, 0 warnings, and 0 hints; the static build completes successfully.
 
-- [ ] **Step 3: Run SEO static checks**
+- [x] **Step 3: Run SEO static checks**
 
 ```bash
 npm run seo:check
@@ -878,7 +879,7 @@ npm run seo:check
 
 Expected: exit code 0 with no broken required SEO contract.
 
-- [ ] **Step 4: Start a fresh preview from the verified build**
+- [x] **Step 4: Start a fresh preview from the verified build**
 
 ```bash
 npm run preview -- --host 127.0.0.1 --port 4327
@@ -886,7 +887,7 @@ npm run preview -- --host 127.0.0.1 --port 4327
 
 Expected: Astro reports `http://127.0.0.1:4327/` ready. Stop any older process on this exact port before starting; do not reuse a stale server.
 
-- [ ] **Step 5: Run the focused E2E suite against that preview**
+- [x] **Step 5: Run the focused E2E suite against that preview**
 
 ```bash
 cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/specs/apple-home.spec.ts e2e/specs/tracking-contract.spec.ts e2e/specs/header.spec.ts e2e/specs/qaskills.spec.ts e2e/specs/responsive.spec.ts e2e/specs/seo.spec.ts
@@ -894,7 +895,7 @@ cd tests && PLAYWRIGHT_BASE_URL=http://127.0.0.1:4327 npm run test:e2e -- e2e/sp
 
 Expected: all configured browser projects PASS with zero failures.
 
-- [ ] **Step 6: Perform manual browser evidence checks**
+- [x] **Step 6: Perform manual browser evidence checks**
 
 Inspect these six combinations at 1280×720 and 390×844:
 
@@ -904,7 +905,7 @@ Inspect these six combinations at 1280×720 and 390×844:
 
 Confirm visible hierarchy, button wrapping, no horizontal scroll, no obstructed content, correct language copy, and working primary links. Treat local Google Ads 403 responses as local third-party behavior, but report any site-owned console error as a failure.
 
-- [ ] **Step 7: Check the final diff and working tree**
+- [x] **Step 7: Check the final diff and working tree**
 
 ```bash
 git diff --check
@@ -914,7 +915,7 @@ git diff --stat origin/main...HEAD
 
 Expected: `git diff --check` is empty; only intentional task changes are present; generated output is absent.
 
-- [ ] **Step 8: Commit any verification-only fixes**
+- [x] **Step 8: Commit any verification-only fixes**
 
 If Step 1–7 required source fixes, stage only those exact files and commit:
 

@@ -1,6 +1,7 @@
 # QA Skills Pages Redesign Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **同步记录（2026-08-16）：** 实现已落地并经产物与提交证据核对，checkbox 按实现状态回填。证据：`scripts/sync-qaskills-from-repo.mjs` 与 npm `qaskills:sync` 存在；`src/utils/qaskills*.ts` 四件套及对应单测存在；`/qaskills` 首页搜索/筛选与详情页 Tab/Guide/SKILL.md 预览逻辑均已在页面源码中；`src/content/qaskills/{zh-cn,en}/` 生成产物齐全；对应提交 `7cd142e01`、`4324768cb`。
 
 **Goal:** 用可复跑同步脚本把 `awesome-qa-skills` 全量对齐到站点，并改版 `/qaskills` 首页（搜索筛选 + Evals/日期卡片）与详情页（SKILL.md 章节流 + Guide/SKILL.md 双 Tab 原始预览 + 侧栏安装）。
 
@@ -39,7 +40,7 @@
 - Create: `src/utils/qaskillsSections.ts`
 - Test: `tests/unit/qaskillsSections.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/unit/qaskillsSections.test.ts` with cases that:
 
@@ -51,13 +52,13 @@ Create `tests/unit/qaskillsSections.test.ts` with cases that:
 
 Import from `@/utils/qaskillsSections`. Use inline ZH/EN sample markdown strings with YAML frontmatter `description`.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `cd tests && npx vitest --run unit/qaskillsSections.test.ts`
 
 Expected: FAIL — cannot resolve module or exports missing
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 Create `src/utils/qaskillsSections.ts` exporting:
 
@@ -68,13 +69,13 @@ Create `src/utils/qaskillsSections.ts` exporting:
 - `firstBulletText(sectionBody)`
 - `parseYamlDescription(markdown)` / `parseYamlName(markdown)`
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `cd tests && npx vitest --run unit/qaskillsSections.test.ts`
 
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/qaskillsSections.ts tests/unit/qaskillsSections.test.ts
@@ -93,7 +94,7 @@ EOF
 - Create: `src/utils/qaskillsFilter.ts`
 - Test: `tests/unit/qaskillsFilter.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Test `filterQASkills(skills, { query, category, evalsOnly })`:
 
@@ -102,13 +103,13 @@ Test `filterQASkills(skills, { query, category, evalsOnly })`:
 - `evalsOnly: true` → only `hasEvals`
 - query matches `title` / `chineseName` / `slug` / `intro` case-insensitively
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `cd tests && npx vitest --run unit/qaskillsFilter.test.ts`
 
 Expected: FAIL
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 ```ts
 // src/utils/qaskillsFilter.ts
@@ -146,13 +147,13 @@ export function filterQASkills<T extends QASkillFilterInput>(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `cd tests && npx vitest --run unit/qaskillsFilter.test.ts`
 
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/qaskillsFilter.ts tests/unit/qaskillsFilter.test.ts
@@ -171,7 +172,7 @@ EOF
 - Create: `src/utils/qaskillsRelated.ts`
 - Test: `tests/unit/qaskillsRelated.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `getRelatedQASkills(pool, slug, limit)`:
 
@@ -179,13 +180,13 @@ EOF
 - fill from same `category` when subgroup short
 - respect `limit`
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `cd tests && npx vitest --run unit/qaskillsRelated.test.ts`
 
 Expected: FAIL
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 ```ts
 // src/utils/qaskillsRelated.ts
@@ -212,13 +213,13 @@ export function getRelatedQASkills<T extends RelatedSkillInput>(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `cd tests && npx vitest --run unit/qaskillsRelated.test.ts`
 
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/qaskillsRelated.ts tests/unit/qaskillsRelated.test.ts
@@ -237,7 +238,7 @@ EOF
 - Create: `scripts/sync-qaskills-from-repo.mjs`
 - Modify: `package.json`
 
-- [ ] **Step 1: Add npm script**
+- [x] **Step 1: Add npm script**
 
 In `package.json` `scripts`:
 
@@ -245,7 +246,7 @@ In `package.json` `scripts`:
 "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs"
 ```
 
-- [ ] **Step 2: Implement `scripts/sync-qaskills-from-repo.mjs`**
+- [x] **Step 2: Implement `scripts/sync-qaskills-from-repo.mjs`**
 
 Behavior:
 
@@ -270,13 +271,13 @@ Place this block after canonical skill sections and before `## 安装`. Escape i
 
 Tools list: `codex`, `cursor`, `claudecode`, `kiro`, `opencode`, `trae`.
 
-- [ ] **Step 3: Run sync**
+- [x] **Step 3: Run sync**
 
 Run: `npm run qaskills:sync`
 
 Expected: exit 0; `code-review.md` exists in both langs; files contain `## 元数据`, section headings, and `## 原始 SKILL.md`
 
-- [ ] **Step 4: Spot-check**
+- [x] **Step 4: Spot-check**
 
 Run:
 
@@ -287,7 +288,7 @@ rg -n "hasEvals|何时使用|When to Use|原始 SKILL|name: api-testing|name: co
 
 Expected: metadata + correct language headings + raw block retaining YAML `name:`
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add package.json scripts/sync-qaskills-from-repo.mjs src/content/qaskills
@@ -306,7 +307,7 @@ EOF
 - Modify: `src/utils/qaskills.ts`
 - Create: `tests/unit/qaskillsParse.site.test.ts`
 
-- [ ] **Step 1: Update `QASkill` type**
+- [x] **Step 1: Update `QASkill` type**
 
 ```ts
 export type QASkill = {
@@ -331,7 +332,7 @@ export type QASkill = {
 };
 ```
 
-- [ ] **Step 2: Parse new site md**
+- [x] **Step 2: Parse new site md**
 
 - Read `## 元数据` list for slug/category/hasEvals/syncedAt/sourceSkillUrl/description
 - `extractCanonicalSections(body)` for skill body sections
@@ -341,7 +342,7 @@ export type QASkill = {
 - Export `parseQASkillMarkdown(lang, slug, body)` for tests
 - Export `getRelatedForSkill(lang, slug, limit)` wrapping `getRelatedQASkills`
 
-- [ ] **Step 3: Update grouping**
+- [x] **Step 3: Update grouping**
 
 ```ts
 {
@@ -353,7 +354,7 @@ export type QASkill = {
 
 Fill each skill's `subgroup` from matched subgroup key.
 
-- [ ] **Step 4: Write site parse test + run**
+- [x] **Step 4: Write site parse test + run**
 
 Test fixture inline site md → `hasEvals`, `category`, non-empty `sections.whenToUse`, and `rawSkillMarkdown` containing original frontmatter `name:`.
 
@@ -361,7 +362,7 @@ Run: `cd tests && npx vitest --run unit/qaskills`
 
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/qaskills.ts tests/unit/qaskillsParse.site.test.ts
@@ -379,11 +380,11 @@ EOF
 **Files:**
 - Modify: `src/pages/[lang]/qaskills/index.astro`
 
-- [ ] **Step 1: Frontmatter data**
+- [x] **Step 1: Frontmatter data**
 
 Compute `allSkills`, `totalCount`, `evalsCount`, `latestSync`, `toolCount = 6`, and lean `cardsJson` for client filter (`slug`, `title`, `chineseName`, `category`, `intro`, `hasEvals`, `updatedAt`, `href`, `displayName`).
 
-- [ ] **Step 2: Markup order**
+- [x] **Step 2: Markup order**
 
 1. Hero — title, intro, stats (skills · tools · synced · evals), GitHub CTA
 2. Discovery — `#qaskills-search`, chips `all|type|workflow|plus`, evals toggle
@@ -393,19 +394,19 @@ Compute `allSkills`, `totalCount`, `evalsCount`, `latestSync`, `toolCount = 6`, 
 
 Card example attributes: `data-slug`, `data-category`, `data-evals`.
 
-- [ ] **Step 3: Client filter script**
+- [x] **Step 3: Client filter script**
 
 Mirror `filterQASkills` matching rules inline; toggle card visibility; show empty state with discover-testing hint.
 
-- [ ] **Step 4: Styles**
+- [x] **Step 4: Styles**
 
 Use existing CSS variables only (no SkillHub purple skin). Chips wrap / scroll on mobile.
 
-- [ ] **Step 5: Dev check**
+- [x] **Step 5: Dev check**
 
 Run: `npm run dev` → `/zh-cn/qaskills/` — search `code` finds code-review; Evals filter works; cards show Evals + date.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add "src/pages/[lang]/qaskills/index.astro"
@@ -423,11 +424,11 @@ EOF
 **Files:**
 - Modify: `src/pages/[lang]/qaskills/[skillSlug].astro`
 
-- [ ] **Step 1: Load related; remove summaryCards UI**
+- [x] **Step 1: Load related; remove summaryCards UI**
 
 `const related = await getRelatedForSkill(lang, skill.slug, 5);`
 
-- [ ] **Step 2: Layout with dual tabs on main column**
+- [x] **Step 2: Layout with dual tabs on main column**
 
 - Header: title, author, category, Evals, syncedAt, source links, Install CTA
 - Main column tablist:
@@ -439,7 +440,7 @@ EOF
 
 Tab switch script (`is:inline`): toggle `.is-active` / `hidden` on panels; copy button writes `rawSkillMarkdown` to clipboard (text already in DOM or `data-raw` on panel).
 
-- [ ] **Step 3: CSS**
+- [x] **Step 3: CSS**
 
 ```css
 .detail-tabs { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
@@ -468,11 +469,11 @@ Tab switch script (`is:inline`): toggle `.is-active` / `hidden` on panels; copy 
 }
 ```
 
-- [ ] **Step 4: Dev check**
+- [x] **Step 4: Dev check**
 
 `/zh-cn/qaskills/api-testing/` — Guide shows 何时使用; switch to SKILL.md tab shows frontmatter `name: api-testing`; copy works; installer still works; `/zh-cn/qaskills/code-review/` loads.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add "src/pages/[lang]/qaskills/[skillSlug].astro"
@@ -490,19 +491,19 @@ EOF
 **Files:**
 - Create: `tests/e2e/specs/qaskills.spec.ts`
 
-- [ ] **Step 1: Unit suite**
+- [x] **Step 1: Unit suite**
 
 Run: `npm test`
 
 Expected: PASS
 
-- [ ] **Step 2: Build**
+- [x] **Step 2: Build**
 
 Run: `npm run build`
 
 Expected: success; dist contains zh-cn/en `qaskills/code-review`
 
-- [ ] **Step 3: Playwright smoke**
+- [x] **Step 3: Playwright smoke**
 
 ```ts
 import { test, expect } from "@playwright/test";
@@ -528,13 +529,13 @@ test.describe("QA Skills", () => {
 });
 ```
 
-- [ ] **Step 4: Run e2e**
+- [x] **Step 4: Run e2e**
 
 Run: `cd tests && npx playwright test e2e/specs/qaskills.spec.ts`
 
 Expected: PASS
 
-- [ ] **Step 5: Mark spec implemented + commit**
+- [x] **Step 5: Mark spec implemented + commit**
 
 Update design doc status to `已实现` only after steps 1–4 pass.
 

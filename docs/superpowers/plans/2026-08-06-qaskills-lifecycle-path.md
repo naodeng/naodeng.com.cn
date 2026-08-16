@@ -1,6 +1,7 @@
 # QA Skills Lifecycle Path Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **同步记录（2026-08-16）：** 实现与人工验收已完成（文档 Step 3 的 6 项验收在核对前已勾选），TDD 步骤 checkbox 按实现状态回填。证据：`LIFECYCLE_PATH_STAGES`/`resolveLifecyclePath` 在 `src/utils/qaskills.ts`；路径图已在 `/qaskills` 页渲染；`tests/unit/qaskillsLifecyclePath.test.ts` 与 qaskills.spec 的 lifecycle 用例存在；提交 `49b091f64`。
 
 **Goal:** 在 `/[lang]/qaskills/` 首页 Hero 与搜索之间新增「软件测试生命周期路径」区块：6 个阶段列、父级 type + 对应 plus 可点进详情页。
 
@@ -29,7 +30,7 @@
 - Modify: `src/utils/qaskills.ts`
 - Create: `tests/unit/qaskillsLifecyclePath.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/unit/qaskillsLifecyclePath.test.ts`:
 
@@ -132,13 +133,13 @@ describe("resolveLifecyclePath", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `cd tests && npx vitest --run unit/qaskillsLifecyclePath.test.ts`
 
 Expected: FAIL — `LIFECYCLE_PATH_STAGES` / `resolveLifecyclePath` not exported
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 In `src/utils/qaskills.ts`, after `TESTING_TYPE_SUBGROUPS` (near line 106), add:
 
@@ -234,13 +235,13 @@ export function resolveLifecyclePath(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `cd tests && npx vitest --run unit/qaskillsLifecyclePath.test.ts`
 
 Expected: PASS
 
-- [ ] **Step 5: Commit**（仅在用户要求提交时执行）
+- [x] **Step 5: Commit**（仅在用户要求提交时执行）
 
 ```bash
 git add src/utils/qaskills.ts tests/unit/qaskillsLifecyclePath.test.ts
@@ -258,7 +259,7 @@ EOF
 **Files:**
 - Modify: `src/pages/[lang]/qaskills/index.astro`
 
-- [ ] **Step 1: Import resolver and compute stages**
+- [x] **Step 1: Import resolver and compute stages**
 
 Near top imports / data prep in `src/pages/[lang]/qaskills/index.astro`, change:
 
@@ -275,7 +276,7 @@ const lifecycleStages = resolveLifecyclePath(
 );
 ```
 
-- [ ] **Step 2: Add bilingual copy to `text`**
+- [x] **Step 2: Add bilingual copy to `text`**
 
 In the zh-cn `text` object add:
 
@@ -293,7 +294,7 @@ lifecycleIntro: "Browse skills by lifecycle stage. Click any skill to open its d
 lifecyclePlusLabel: "Plus",
 ```
 
-- [ ] **Step 3: Insert section between Hero and discovery**
+- [x] **Step 3: Insert section between Hero and discovery**
 
 Immediately after `</header>` (hero) and before `<section class="section discovery" ...>`, insert:
 
@@ -394,7 +395,7 @@ Use the **div fallback** in implementation to avoid Astro fragment/`ol` + arrow-
     </section>
 ```
 
-- [ ] **Step 4: Add CSS before existing `@media (max-width: 920px)` block**
+- [x] **Step 4: Add CSS before existing `@media (max-width: 920px)` block**
 
 ```css
   .lifecycle-intro {
@@ -514,13 +515,13 @@ Inside existing `@media (max-width: 920px)` add:
     }
 ```
 
-- [ ] **Step 5: Smoke-check pages compile**
+- [x] **Step 5: Smoke-check pages compile**
 
 Run: `npm run build`
 
 Expected: build succeeds; no Astro/TS errors about `resolveLifecyclePath` or `lifecycleStages`
 
-- [ ] **Step 6: Commit**（仅在用户要求提交时执行）
+- [x] **Step 6: Commit**（仅在用户要求提交时执行）
 
 ```bash
 git add src/pages/[lang]/qaskills/index.astro
@@ -538,7 +539,7 @@ EOF
 **Files:**
 - Modify: `tests/e2e/specs/qaskills.spec.ts`
 
-- [ ] **Step 1: Add e2e coverage**
+- [x] **Step 1: Add e2e coverage**
 
 Append inside `test.describe("QA Skills", ...)`:
 
@@ -567,7 +568,7 @@ Append inside `test.describe("QA Skills", ...)`:
   });
 ```
 
-- [ ] **Step 2: Run unit + e2e**
+- [x] **Step 2: Run unit + e2e**
 
 Run:
 
@@ -588,7 +589,7 @@ Expected: all PASS（e2e 需按仓库惯例先有 preview/`PLAYWRIGHT_BASE_URL`�
 - [x] `/en/qaskills/` 英文标题与标签正常（e2e + dist）
 - [x] 窄视口（≤920px）阶段竖叠，箭头旋转，无横向整页撑破（CSS `@media (max-width: 920px)`：`flex-direction: column` + `rotate(90deg)`）
 
-- [ ] **Step 4: Commit**（仅在用户要求提交时执行）
+- [x] **Step 4: Commit**（仅在用户要求提交时执行）
 
 ```bash
 git add tests/e2e/specs/qaskills.spec.ts tests/unit/qaskillsLifecyclePath.test.ts
@@ -599,7 +600,7 @@ EOF
 )"
 ```
 
-- [ ] **Step 5: Update spec status**
+- [x] **Step 5: Update spec status**
 
 In `docs/superpowers/specs/2026-08-06-qaskills-lifecycle-path-design.md`, change status line to:
 

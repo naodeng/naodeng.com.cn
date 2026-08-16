@@ -1,6 +1,7 @@
 # Skills and Prompts Upstream Content Sync Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **同步记录（2026-08-16）：** 实现已落地并经产物与提交证据核对，checkbox 按实现状态回填。证据：`scripts/sync-prompts-from-repo.mjs`、`tests/unit/promptsSync.test.ts` 存在；npm `prompts:sync`/`qaskills:sync`/`content:sync` 命令齐全；生成产物齐备（prompts 180 篇、workflows 中英各 3 篇、qaskills 各 39 篇）；对应提交 `3a413bcfe`、`1f4a55aa5`、`6522e0e81`。
 
 **Goal:** Sync bilingual QA Skills, full QA prompts, and testing workflows from their two GitHub source repositories through repeatable, validated npm commands.
 
@@ -46,7 +47,7 @@
 - Produces: `parseArgs(argv)`, `selectFullPrompt(versionDir)`, `buildPromptDocument(input)`, `buildWorkflowDocument(input)`, `rewriteWorkflowLinks(markdown, lang)`, and `syncFromRepo(repoRoot, outRoot, options)` as named ESM exports for unit testing.
 - CLI: `node scripts/sync-prompts-from-repo.mjs [--repo-dir PATH] [--out-root PATH] [--fail-on-lang-mismatch]`.
 
-- [ ] **Step 1: Write the failing tests for deterministic prompt selection and document mapping**
+- [x] **Step 1: Write the failing tests for deterministic prompt selection and document mapping**
 
 Create `tests/unit/promptsSync.test.ts` with temporary synthetic upstream directories. The core cases must assert:
 
@@ -115,13 +116,13 @@ describe("site document mapping", () => {
 
 Add integration cases that construct a fixture with one test type, all six framework directories, three workflows, and both languages; assert that `syncFromRepo()` writes 12 prompt files plus 6 workflows, removes a planted orphan, warns on language mismatch, fails in strict mode, and produces identical bytes on a second run.
 
-- [ ] **Step 2: Run the new test and verify it fails for the missing module**
+- [x] **Step 2: Run the new test and verify it fails for the missing module**
 
 Run: `cd tests && npx vitest --run unit/promptsSync.test.ts`
 
 Expected: FAIL because `scripts/sync-prompts-from-repo.mjs` does not exist or its exports are missing.
 
-- [ ] **Step 3: Implement constants, parsing, and deterministic file selection**
+- [x] **Step 3: Implement constants, parsing, and deterministic file selection**
 
 In `scripts/sync-prompts-from-repo.mjs`, define the site-supported mappings exactly:
 
@@ -144,7 +145,7 @@ export const WORKFLOWS = {
 
 `selectFullPrompt(files, version)` must exclude README, Lite, Lean, Mobile, Web, and `all_round` variants. For Standard it selects the remaining canonical `*Prompt.md`; for other frameworks it selects the remaining canonical `*-Full.md`. It must throw with the directory and candidates unless exactly one file remains.
 
-- [ ] **Step 4: Implement frontmatter generation and workflow-link rewriting**
+- [x] **Step 4: Implement frontmatter generation and workflow-link rewriting**
 
 Generate YAML-safe quoted values with an internal `quoteYaml()` that escapes backslash, double quote, CR, and LF. Prompt titles/descriptions follow the current site convention:
 
@@ -157,7 +158,7 @@ const description = lang === "zh-cn"
 
 Derive `testingTypeTitle` from the upstream README `#` heading, not a duplicated 15-item title table. Convert upstream workflow links that point anywhere below `testing-types/<slug>/...` to `/{lang}/prompts/<slug>/`; preserve external links, anchors, and unrelated relative links.
 
-- [ ] **Step 5: Implement complete temporary generation, validation, and replacement**
+- [x] **Step 5: Implement complete temporary generation, validation, and replacement**
 
 `syncFromRepo(repoRoot, outRoot, options)` must:
 
@@ -177,13 +178,13 @@ const isDirectRun = process.argv[1] &&
 if (isDirectRun) main();
 ```
 
-- [ ] **Step 6: Run focused tests and verify they pass**
+- [x] **Step 6: Run focused tests and verify they pass**
 
 Run: `cd tests && npx vitest --run unit/promptsSync.test.ts`
 
 Expected: PASS, including deterministic selection, exact frontmatter, link rewriting, orphan cleanup, strict parity failure, and idempotence.
 
-- [ ] **Step 7: Commit the synchronizer and tests**
+- [x] **Step 7: Commit the synchronizer and tests**
 
 ```bash
 git add scripts/sync-prompts-from-repo.mjs tests/unit/promptsSync.test.ts
@@ -203,7 +204,7 @@ git commit -m "feat(prompts): add upstream content synchronizer"
 - Consumes: `scripts/sync-prompts-from-repo.mjs` CLI from Task 1.
 - Produces: npm scripts `prompts:sync` and `content:sync`; refreshed site content matching `awesome-qa-prompt` main.
 
-- [ ] **Step 1: Add the npm command assertions**
+- [x] **Step 1: Add the npm command assertions**
 
 Extend `tests/unit/promptsSync.test.ts`:
 
@@ -215,13 +216,13 @@ it("exposes focused and composed sync commands", () => {
 });
 ```
 
-- [ ] **Step 2: Run the assertion and verify it fails**
+- [x] **Step 2: Run the assertion and verify it fails**
 
 Run: `cd tests && npx vitest --run unit/promptsSync.test.ts -t "exposes focused"`
 
 Expected: FAIL because the two package scripts do not exist.
 
-- [ ] **Step 3: Add the two npm scripts**
+- [x] **Step 3: Add the two npm scripts**
 
 Modify `package.json` scripts:
 
@@ -231,13 +232,13 @@ Modify `package.json` scripts:
 "content:sync": "npm run qaskills:sync && npm run prompts:sync"
 ```
 
-- [ ] **Step 4: Run the command assertion**
+- [x] **Step 4: Run the command assertion**
 
 Run: `cd tests && npx vitest --run unit/promptsSync.test.ts -t "exposes focused"`
 
 Expected: PASS.
 
-- [ ] **Step 5: Sync from the already inspected local upstream clone**
+- [x] **Step 5: Sync from the already inspected local upstream clone**
 
 Run:
 
@@ -247,7 +248,7 @@ npm run prompts:sync -- --repo-dir /tmp/qa-content-plan.x1Pvct/awesome-qa-prompt
 
 Expected: 90 English and 90 Chinese full prompts, plus 3 English and 3 Chinese workflows; no language mismatch. The script may report replaced files, but must not leave obsolete workflow names such as `daily-testing-workflow.md` because site routes require `daily.md`.
 
-- [ ] **Step 6: Verify counts, frontmatter, bodies, and link targets**
+- [x] **Step 6: Verify counts, frontmatter, bodies, and link targets**
 
 Run:
 
@@ -261,11 +262,11 @@ rg -n "\.\./testing-types/|Prompt_EN\.md|Prompt\.md\)" src/content/workflows
 
 Expected: `90`, `90`, `3`, `3`; the final `rg` returns no matches. Compare one file from each language and content family with its upstream source using `diff` after removing generated frontmatter.
 
-- [ ] **Step 7: Re-run sync and verify idempotence**
+- [x] **Step 7: Re-run sync and verify idempotence**
 
 Run the same `npm run prompts:sync -- --repo-dir ... --fail-on-lang-mismatch`, then run `git diff --exit-code -- src/content/prompts src/content/workflows` only after recording the first-run diff hash or file checksums. Expected: the second run creates no additional content difference.
 
-- [ ] **Step 8: Commit command and generated content changes**
+- [x] **Step 8: Commit command and generated content changes**
 
 ```bash
 git add package.json src/content/prompts src/content/workflows
@@ -285,7 +286,7 @@ git commit -m "content(prompts): sync prompts and workflows upstream"
 - Consumes: existing `npm run qaskills:sync -- --repo-dir PATH --fail-on-lang-mismatch`.
 - Produces: current bilingual Skills content from `awesome-qa-skills` main.
 
-- [ ] **Step 1: Run the existing Skills synchronizer against the inspected local clone**
+- [x] **Step 1: Run the existing Skills synchronizer against the inspected local clone**
 
 Run:
 
@@ -295,7 +296,7 @@ npm run qaskills:sync -- --repo-dir /tmp/qa-content-plan.x1Pvct/awesome-qa-skill
 
 Expected: 30 English and 30 Chinese skills, all with Evals according to the current upstream README, and no language mismatch.
 
-- [ ] **Step 2: Inspect the diff before changing synchronizer code**
+- [x] **Step 2: Inspect the diff before changing synchronizer code**
 
 Run:
 
@@ -306,11 +307,11 @@ rg -L "syncedAt: 2026-08-09" src/content/qaskills/{en,zh-cn}/*.md
 
 Expected: content-only upstream changes are acceptable; `rg -L` returns no generated skill file. Do not alter the synchronizer unless this run exposes a real parse, mapping, or current-upstream compatibility defect.
 
-- [ ] **Step 3: If a compatibility defect exists, reproduce it with a failing unit test**
+- [x] **Step 3: If a compatibility defect exists, reproduce it with a failing unit test**
 
 Add the smallest fixture matching the exact upstream construct to a focused qaskills sync test. Run that test and verify the failure message demonstrates the defect before editing the script.
 
-- [ ] **Step 4: If needed, implement only the compatibility fix and rerun focused tests**
+- [x] **Step 4: If needed, implement only the compatibility fix and rerun focused tests**
 
 Expected: the new regression test passes and existing qaskills tests remain green:
 
@@ -318,7 +319,7 @@ Expected: the new regression test passes and existing qaskills tests remain gree
 cd tests && npx vitest --run unit/qaskillsSections.test.ts unit/qaskillsParse.site.test.ts unit/qaskillsLifecyclePath.test.ts
 ```
 
-- [ ] **Step 5: Verify Skills counts and idempotence**
+- [x] **Step 5: Verify Skills counts and idempotence**
 
 Run:
 
@@ -330,7 +331,7 @@ npm run qaskills:sync -- --repo-dir /tmp/qa-content-plan.x1Pvct/awesome-qa-skill
 
 Expected: `30`, `30`; the second run introduces no additional diff.
 
-- [ ] **Step 6: Commit refreshed Skills content and any proven compatibility fix**
+- [x] **Step 6: Commit refreshed Skills content and any proven compatibility fix**
 
 ```bash
 git add src/content/qaskills scripts/sync-qaskills-from-repo.mjs tests/unit
@@ -353,7 +354,7 @@ Omit unchanged paths from the commit. If upstream content is already identical, 
 - Consumes: all synchronized content from Tasks 2 and 3.
 - Produces: evidence that schemas, bilingual routes, SEO checks, and representative pages remain valid.
 
-- [ ] **Step 1: Run all content-adjacent unit tests**
+- [x] **Step 1: Run all content-adjacent unit tests**
 
 Run:
 
@@ -372,19 +373,19 @@ cd tests && npx vitest --run \
 
 Expected: PASS. If a failure is caused by synchronized content, add a regression assertion before changing production code; do not weaken an existing invariant simply to make it green.
 
-- [ ] **Step 2: Run the Astro type check and production build**
+- [x] **Step 2: Run the Astro type check and production build**
 
 Run: `npm run build`
 
 Expected: exit code 0; Astro accepts all prompt/workflow/skill frontmatter and generates both locales.
 
-- [ ] **Step 3: Run the SEO static check**
+- [x] **Step 3: Run the SEO static check**
 
 Run: `npm run seo:check`
 
 Expected: exit code 0. Separate any pre-existing warning from a new synchronization regression.
 
-- [ ] **Step 4: Verify representative built routes and content markers**
+- [x] **Step 4: Verify representative built routes and content markers**
 
 Run:
 
@@ -401,7 +402,7 @@ rg -n "API 测试|日常测试工作" dist/zh-cn/prompts
 
 Expected: all files exist and each language contains its expected synchronized marker.
 
-- [ ] **Step 5: Review the final workspace diff**
+- [x] **Step 5: Review the final workspace diff**
 
 Run:
 
@@ -414,7 +415,7 @@ git diff -- package.json scripts src/content tests/unit
 
 Expected: only the planned synchronizer, commands, tests, and generated content are changed; no `dist`, deployment, license, or unrelated files are included.
 
-- [ ] **Step 6: Commit any final regression tests or minimal compatibility changes**
+- [x] **Step 6: Commit any final regression tests or minimal compatibility changes**
 
 ```bash
 git add tests/unit scripts src/content.config.ts src/pages
@@ -423,7 +424,7 @@ git commit -m "test(content): verify synchronized QA content"
 
 Omit unchanged paths and do not create an empty commit. Do not commit build output.
 
-- [ ] **Step 7: Record final delivery evidence**
+- [x] **Step 7: Record final delivery evidence**
 
 Report exact synchronized counts, upstream commit IDs from both temporary clones, test/build/SEO exit results, representative bilingual routes checked, and any residual warning or deliberate exclusion.
 
