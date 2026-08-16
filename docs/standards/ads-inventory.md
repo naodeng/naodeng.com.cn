@@ -1,7 +1,7 @@
 # 网站广告位清单（参考文档）
 
 > 维护约定：新增、移动、删除广告位后，同步更新本文档与 `tests/e2e/specs/ad-low-intrusion.spec.ts`。
-> 最近一次全面调整见 `docs/tasks/ads-optimization-tasks-v1.md`（2026-08-13，分支 `ads-entry-optimization`）。
+> 最近一次全面调整见 `docs/archive/ads/ads-optimization-tasks-v1.md`（2026-08-13，分支 `ads-entry-optimization`）。
 
 ## 一、全局基础设施
 
@@ -69,6 +69,6 @@
   5. 同步更新本文档与 `tests/e2e/specs/ad-low-intrusion.spec.ts` 的选择器/断言。
 - **测试覆盖**：`tests/e2e/specs/ad-low-intrusion.spec.ts` 断言：列表页首屏广告密度每屏 ≤1（390×844 与 1440×900 两个视口）、详情页广告不插入 H1 与首段之间、详情页 CLS ≤0.1、页脚常驻位在主要页面存在。`tests/e2e/specs/performance.spec.ts` 会把广告域名请求排除在性能断言之外。
 - **相关文档**：
-  - 优化记录：`docs/tasks/ads-optimization-tasks-v1.md`
+  - 优化记录：`docs/archive/ads/ads-optimization-tasks-v1.md`
   - 组件实现：`src/components/{GoogleAd,GoogleAdThin,SidebarAd,FooterAd}.astro`
   - 加载与展开脚本：`src/layouts/Base.astro`

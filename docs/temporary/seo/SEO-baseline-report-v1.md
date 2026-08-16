@@ -1,6 +1,6 @@
 # SEO Baseline Report v1
 
-- Scanned at: 2026-08-16T05:26:24.373Z
+- Scanned at: 2026-08-16T05:48:47.225Z
 - Scope: Wiki (226), AIWiki (134), Blog (178)
 
 ## Summary

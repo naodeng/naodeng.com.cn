@@ -1,6 +1,6 @@
 ---
 name: qa-wiki-term-research
-description: Research and enrich QA wiki term entries from an English term list using Google, Wikipedia, Medium, and QA engineering sources. Use when building or refining term pages from docs/requirements/qa-wiki-term-plan-v1.md and outputting structured drafts to docs/temporary/qa-wiki-temp.
+description: Research and enrich QA wiki term entries from an English term list using Google, Wikipedia, Medium, and QA engineering sources. Use when building or refining term pages from docs/archive/wiki/qa-wiki-term-plan-v1.md and outputting structured drafts to docs/temporary/qa-wiki-temp.
 ---
 
 # QA Wiki Term Research
@@ -12,7 +12,7 @@ Run this skill when you need to turn planned QA terms into evidence-based wiki d
 ### 1) Load scope and template
 
 1. Read term scope from:
-- `docs/requirements/qa-wiki-term-plan-v1.md`
+- `docs/archive/wiki/qa-wiki-term-plan-v1.md`
 
 2. Read writing template from:
 - `docs/architecture/qa-wiki-term-template-zh-cn.md`
