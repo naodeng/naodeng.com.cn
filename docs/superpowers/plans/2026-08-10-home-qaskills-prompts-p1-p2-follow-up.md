@@ -245,19 +245,19 @@ git commit -m "refactor(home): consolidate homepage into five sections"
 - 现有 hero CTA 为 `.home-hero__ctas a`×2（blog + wiki），本任务替换为 3 个 CTA（`#home-task-navigator` + `/qaskills/` + `/prompts/`）。
 - 替换后 `apple-home.spec` 的 "hero CTAs link to blog and wiki entries" 用例改为断言新 CTA；`tracking-contract.spec` 的 `home_entry_click` 用例从 `.home-hero__ctas a[href='/zh-cn/blog/']` 迁移到 `.home-primary-entry[href='/zh-cn/blog/']`（Task 1 已建立该锚点），并保持 `home_entry_click` 事件名与 payload 契约不变。
 
-- [ ] **Step 1: 写中英文 Hero 与 CTA 失败断言**
+^- [x] **Step 1: 写中英文 Hero 与 CTA 失败断言**
 
 断言 H1 精确匹配、主 CTA href 为 `#home-task-navigator`、Skills 与 Prompts CTA 均存在；同时迁移 tracking-contract 的入口点击断言到 `.home-primary-entry[href='/zh-cn/blog/']`。
 
-- [ ] **Step 2: 运行相关 E2E 并确认旧文案失败**
+^- [x] **Step 2: 运行相关 E2E 并确认旧文案失败**
 
 Run: `cd tests && npm run test:e2e -- apple-home.spec.ts tracking-contract.spec.ts seo.spec.ts`
 
-- [ ] **Step 3: 更新双语可见文案和 CTA**
+^- [x] **Step 3: 更新双语可见文案和 CTA**
 
 副标题明确说明内容包括实践文章、可复用 QA Skills、测试 Prompts 与知识库；不使用"高覆盖率""自动完成"等不可证实词语。
 
-- [ ] **Step 4: 运行相关 E2E 并提交**
+^- [x] **Step 4: 运行相关 E2E 并提交**
 
 Run: `cd tests && npm run test:e2e -- apple-home.spec.ts tracking-contract.spec.ts seo.spec.ts`
 
@@ -267,6 +267,11 @@ Expected: PASS。
 git add src/consts.ts src/pages/'[lang]'/index.astro tests/e2e/specs/apple-home.spec.ts tests/e2e/specs/tracking-contract.spec.ts tests/e2e/specs/seo.spec.ts
 git commit -m "content(home): align hero positioning and actions"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 提交 `9c35b6835`；顺带修复 HomeCapabilityGuide 样式串扰（提交 `970baf6ea`）：capability-grid 的 li 被 example-grid 裸元素选择器污染，全部类选择器化，字号归位 DESIGN.md 阶梯。
+- 验证：apple-home / tracking-contract / seo 33 个用例通过；锚点跳转（`#home-task-navigator`）、桌面 3 CTA 并排、移动端 flex 换行无溢出均实测确认；build 875 页成功。
 
 ---
 
