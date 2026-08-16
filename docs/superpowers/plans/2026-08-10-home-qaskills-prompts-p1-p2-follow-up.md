@@ -94,7 +94,7 @@
 - 任务目标全部使用 qaskills 已有 skill（`test-case-reviewer`、`api-testing` 现已存在完整 skill，不再指向 prompts）。`kind: "prompt"` 保留在类型中，当前映射暂不使用。
 - 首页当前没有本地 `primaryEntries`（`HOME_PRIMARY_MODES` 定义后无人消费），本任务在 hero 内新增 primary modes 渲染；现有 hero pill CTA 保持不动，避免破坏现有 E2E。
 
-- [ ] **Step 1: 写失败的任务路由测试**
+- [x] **Step 1: 写失败的任务路由测试**
 
 在 `tests/unit/homeTaskRouting.test.ts` 中验证：两种语言 task key 完全一致；"编写或评审测试用例"（key `test-cases`）同时包含 `test-case-writing` 与 `test-case-reviewer`；自动化任务（key `automation`）分别包含 `api-testing` 与 `automation-testing`；所有 target slug 存在于 qaskills 集合允许列表。
 
@@ -107,13 +107,13 @@ expect(HOME_TASK_ENTRIES.en.find((item) => item.key === "automation")?.targets.m
 
 允许列表断言：用 `getQASkillsGrouped` 读取实际集合（注意先 `process.chdir()` 到仓库根），断言每个 target.slug 都能在该语言集合中找到，且 `kind === "skill"` 时同时断言该 slug 存在于 qaskills。
 
-- [ ] **Step 2: 运行测试并确认旧数据结构失败**
+- [x] **Step 2: 运行测试并确认旧数据结构失败**
 
 Run: `cd tests && npm run test:unit -- homeTaskRouting.test.ts contentEntryConfig.test.ts`
 
 Expected: FAIL，原因是 `HomeTaskEntry` 尚无 `key` 与 `targets`。
 
-- [ ] **Step 3: 实现统一数据结构**
+- [x] **Step 3: 实现统一数据结构**
 
 在 `homeTaskEntries.ts` 中使用稳定 key：`requirements`、`strategy`、`test-cases`、`automation`、`bugs`、`reporting`。映射（全部 `kind: "skill"`）：
 
@@ -126,7 +126,7 @@ Expected: FAIL，原因是 `HomeTaskEntry` 尚无 `key` 与 `targets`。
 
 每个目标同时提供中英文可见标签和一句适用场景（可从现有 qaskills 卡片文案提炼，不照抄 skill intro）。
 
-- [ ] **Step 4: 渲染 primary modes 并消费统一配置**
+- [x] **Step 4: 渲染 primary modes 并消费统一配置**
 
 在 `index.astro` 中导入 `HOME_PRIMARY_MODES`，在 hero 区块内（现有 `.home-hero__ctas` 下方）渲染三张入口卡，只在渲染层补充本地化 URL：
 
@@ -136,17 +136,17 @@ Expected: FAIL，原因是 `HomeTaskEntry` 尚无 `key` 与 `targets`。
 
 现有 hero pill CTA（blog + wiki）本任务保留不动，避免破坏 `apple-home.spec` 与 `tracking-contract.spec` 的现有断言；Task 3 再统一 CTA。
 
-- [ ] **Step 5: 更新任务导航的单目标与多目标渲染**
+- [x] **Step 5: 更新任务导航的单目标与多目标渲染**
 
 单目标卡直接链接详情；多目标卡显示两个清晰子链接，不增加弹窗。每个链接使用 `getRelativeLocaleUrl(locale, `/${target.kind === "skill" ? "qaskills" : "prompts"}/${target.slug}/`)`。同步更新任务导航副标题：把"直接进入对应 Skill"改为覆盖 Skill 与 Prompt 两种去向的表述（如"从任务出发，直接进入对应的 Skill 或 Prompt"）。`data-home-task` 属性值从 `entry.slug` 改为 `entry.key`（现有 E2E 只断言数量 6，不受影响）。
 
-- [ ] **Step 6: 运行单元测试**
+- [x] **Step 6: 运行单元测试**
 
 Run: `cd tests && npm run test:unit -- homeTaskRouting.test.ts contentEntryConfig.test.ts`
 
 Expected: PASS。
 
-- [ ] **Step 7: 提交数据与路由修复**
+- [x] **Step 7: 提交数据与路由修复**
 
 ```bash
 git add src/data/homeTaskEntries.ts src/pages/'[lang]'/index.astro src/components/home/HomeTaskNavigator.astro tests/unit/homeTaskRouting.test.ts tests/unit/contentEntryConfig.test.ts

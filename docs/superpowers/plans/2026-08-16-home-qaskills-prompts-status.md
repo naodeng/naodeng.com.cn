@@ -71,7 +71,12 @@
 - 计划 B 的 Task 1 基于计划 A 已落地的数据结构扩展（`HomeTaskEntry.slug` → `key` + `targets`），因此 B 必须在 A 之后执行。
 - Gate 结构：Gate A（数据准确性，Task 1/6 后）→ Gate B（页面结构，Task 2/3/4 后）→ Gate C（内容深度，Task 5/7 后）→ Gate D（交付，Task 8 全量 E2E）。
 
+## 执行进度
+
+- **Task 1（统一首页任务数据与目标映射）已完成**（提交 `5da4e4721`）：`HomeTaskEntry` 由单一 `slug` 改为 `key` + `targets`，6 个任务目标全部映射到已有 qaskills skill；`HOME_PRIMARY_MODES` 在首页 hero 渲染（read→/blog、reference→/wiki|/AIWiki、act→qaskills+prompts 两个子链接）；`HomeTaskNavigator` 支持单/多目标渲染；新增 `tests/unit/homeTaskRouting.test.ts`（9 个用例，含真实 qaskills 集合的 slug 允许列表校验）。验证：86 个单元测试全过、build 成功（875 页）、首页相关 E2E 19 个全过。
+- 计划 B checkbox：Task 1 的 7 项已勾选，其余任务待执行。
+
 ## 后续动作
 
-- 2026-08-16 起按重写后的计划 B 从 Task 1 开始执行，每个任务先写失败测试、再实现、验证、独立提交。
+- 继续按重写后的计划 B 从 Task 2 开始执行，每个任务先写失败测试、再实现、验证、独立提交。
 - 每完成一个 Gate 对应的任务后，同步把本状态文档与计划 B 的 checkbox 更新为已勾选。
