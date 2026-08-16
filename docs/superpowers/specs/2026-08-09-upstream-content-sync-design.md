@@ -1,7 +1,7 @@
 # Skills 与 Prompts 上游内容同步设计
 
 > 日期：2026-08-09  
-> 状态：待书面规格复核  
+> 状态：已实现（2026-08-09，计划 checkbox 28/28 已回填；2026-08-16 补充同步回归测试）  
 > 上游：[awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)、[awesome-qa-prompt](https://github.com/naodeng/awesome-qa-prompt)
 
 ## 目标

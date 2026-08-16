@@ -3,7 +3,7 @@
 **日期：** 2026-07-31  
 **分支：** `explore-apple-design`（基于最新 `main`）  
 **参考规范：** [VoltAgent awesome-design-md · Apple DESIGN.md](https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/apple/DESIGN.md)  
-**状态：** 待实现（探索分支，非正式上线承诺）
+**状态：** 已实现（2026-08-16，探索分支；非正式上线承诺）
 
 ## 1. 目标与成功标准
 

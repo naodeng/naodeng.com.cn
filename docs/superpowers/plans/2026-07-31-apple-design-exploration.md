@@ -33,7 +33,7 @@
 - Create: `tests/unit/appleDesignTokens.test.ts`
 - Modify later: `src/styles/base.css`
 
-- [ ] **Step 1: 写失败的 token 契约测试**
+- [x] **Step 1: 写失败的 token 契约测试**
 
 ```ts
 import { readFileSync } from "node:fs";
@@ -71,7 +71,7 @@ describe("apple design tokens in base.css", () => {
 });
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run：
 
@@ -81,7 +81,7 @@ cd tests && npm run test:unit -- appleDesignTokens
 
 Expected: FAIL（当前 `--color-theme` 仍是 `#ef4d1a`，且仍有 dark media / 点阵底）
 
-- [ ] **Step 3: Commit（仅测试）**
+- [x] **Step 3: Commit（仅测试）**
 
 ```bash
 git add tests/unit/appleDesignTokens.test.ts
@@ -100,7 +100,7 @@ EOF
 - Modify: `src/styles/base.css`
 - Modify: `src/styles/layout.css`（仅当顶栏高度变化需要）
 
-- [ ] **Step 1: 替换 `:root` 色板与强制浅色**
+- [x] **Step 1: 替换 `:root` 色板与强制浅色**
 
 在 `src/styles/base.css` 中：
 
@@ -170,7 +170,7 @@ EOF
 4. `.cta-button`：改为 pill（`border-radius: 9999px`），去掉 `box-shadow`，active 用 `transform: scale(0.95)`，hover 不要 `translateY` + 阴影。
 5. `.ui-card`：`border: 1px solid var(--color-border)`，`box-shadow: none`，`border-radius: var(--radius-lg)`。
 
-- [ ] **Step 2: 重跑 token 测试**
+- [x] **Step 2: 重跑 token 测试**
 
 ```bash
 cd tests && npm run test:unit -- appleDesignTokens
@@ -178,7 +178,7 @@ cd tests && npm run test:unit -- appleDesignTokens
 
 Expected: PASS
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/styles/base.css src/styles/layout.css
@@ -196,7 +196,7 @@ EOF
 **Files:**
 - Modify: `src/components/Header.astro`（markup 微调 + `<style>` 重写视觉）
 
-- [ ] **Step 1: 品牌点缀 markup**
+- [x] **Step 1: 品牌点缀 markup**
 
 在品牌标题旁加入橙点（不改 IA）。示例：
 
@@ -220,7 +220,7 @@ EOF
 }
 ```
 
-- [ ] **Step 2: 顶栏视觉对齐 Apple global-nav**
+- [x] **Step 2: 顶栏视觉对齐 Apple global-nav**
 
 在 `Header.astro` 的 `<style>` 中将 `.l-header` 改为：
 
@@ -268,7 +268,7 @@ EOF
 保留现有 `details` 子菜单逻辑；子菜单面板可用深色/近黑背景 + 白字，避免浅色弹出破坏黑顶栏。  
 `@media (width < 834px)`：保持现有折叠行为，确保汉堡/搜索仍可用（若当前断点是其他值，统一到 834px 或保留现有断点但保证窄屏可点）。
 
-- [ ] **Step 3: 本地目视检查**
+- [x] **Step 3: 本地目视检查**
 
 ```bash
 npm run dev
@@ -276,7 +276,7 @@ npm run dev
 
 打开 `/zh-cn/` 与 `/en/`：顶栏应为黑底白字，品牌旁有橙点，搜索与语言仍可用。
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/components/Header.astro
@@ -294,7 +294,7 @@ EOF
 **Files:**
 - Modify: `src/components/Footer.astro`
 
-- [ ] **Step 1: 更新 footer 样式**
+- [x] **Step 1: 更新 footer 样式**
 
 在 `Footer.astro` 的 `<style>` 中对齐：
 
@@ -319,11 +319,11 @@ EOF
 
 不删链接、社交、版权节点；只改视觉与间距。
 
-- [ ] **Step 2: 目视 `/zh-cn/` 页脚**
+- [x] **Step 2: 目视 `/zh-cn/` 页脚**
 
 确认羊皮纸底、链接可读、无重阴影。
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/Footer.astro
@@ -341,7 +341,7 @@ EOF
 **Files:**
 - Modify: `src/consts.ts`
 
-- [ ] **Step 1: 新增首页 Explore / CTA 常量**
+- [x] **Step 1: 新增首页 Explore / CTA 常量**
 
 在 `src/consts.ts` 中追加（可放在现有 `HOME_*` 附近）：
 
@@ -379,7 +379,7 @@ export const HOME_EXPLORE_SUBTITLE: Multilingual = {
 
 Hero 主 CTA 链到博客列表（`/blog`）；次 CTA：中文链 `/wiki`，英文链 AI Wiki 或既有 wiki 策略（与 Header 外链规则一致：英文 QA Wiki 若仍外链 ray.run，则次 CTA 用 `/AIWiki`）。
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src/consts.ts
@@ -398,7 +398,7 @@ EOF
 - Modify: `src/pages/[lang]/index.astro`
 - Create（可选，若样式过长）: 不强制拆文件；样式可留在同文件 `<style>`，与现有首页模式一致
 
-- [ ] **Step 1: 写失败的 e2e（结构契约）**
+- [x] **Step 1: 写失败的 e2e（结构契约）**
 
 Create `tests/e2e/specs/apple-home.spec.ts`:
 
@@ -421,7 +421,7 @@ test.describe("apple homepage exploration", () => {
 });
 ```
 
-- [ ] **Step 2: 跑 e2e 确认失败**
+- [x] **Step 2: 跑 e2e 确认失败**
 
 ```bash
 cd tests && npx playwright test e2e/specs/apple-home.spec.ts
@@ -429,7 +429,7 @@ cd tests && npx playwright test e2e/specs/apple-home.spec.ts
 
 Expected: FAIL（找不到新 class）
 
-- [ ] **Step 3: 替换首页主体 markup**
+- [x] **Step 3: 替换首页主体 markup**
 
 保留 frontmatter 数据获取中「最新文章」逻辑（`latestPosts`）。可删除/不再渲染：
 
@@ -538,7 +538,7 @@ const exploreCards = [
 
 广告组件（`GoogleAd` / `TrackingEvents`）：保留在 Layout 或页底，不要插进 Hero 第一屏中央。
 
-- [ ] **Step 4: 首页样式**
+- [x] **Step 4: 首页样式**
 
 在同文件 `<style>` 中（可删旧 switcher/showcase 大段 CSS）加入：
 
@@ -666,7 +666,7 @@ const exploreCards = [
 
 中文首页 6 张卡避免两张都叫「AI Wiki」：zh-cn 第一张 title 用「测试百科」或「QA Wiki」，第二张「AI Wiki」。
 
-- [ ] **Step 5: 重跑 e2e**
+- [x] **Step 5: 重跑 e2e**
 
 ```bash
 cd tests && npx playwright test e2e/specs/apple-home.spec.ts
@@ -674,7 +674,7 @@ cd tests && npx playwright test e2e/specs/apple-home.spec.ts
 
 Expected: PASS（需预览服务或配置里的 webServer；沿用现有 e2e 启动方式）
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/pages/[lang]/index.astro src/consts.ts tests/e2e/specs/apple-home.spec.ts
@@ -693,7 +693,7 @@ EOF
 - Modify only if blocked: 个别组件里写死的橙色/深色背景（搜索时用 `rg "#ef4d1a|prefers-color-scheme: dark|gradient-hero"`）
 - Do not: 重排 Article/Docs/Wiki 布局
 
-- [ ] **Step 1: 搜索残留硬编码**
+- [x] **Step 1: 搜索残留硬编码**
 
 ```bash
 rg -n "#ef4d1a|gradient-hero|background-size:\\s*16px" src/components src/layouts src/styles src/pages
@@ -701,7 +701,7 @@ rg -n "#ef4d1a|gradient-hero|background-size:\\s*16px" src/components src/layout
 
 对阻塞可读性的硬编码（例如按钮仍强制橙底且对比失败）做最小替换为 `var(--color-theme)` 或 `var(--color-brand-mark)`（仅品牌）。不要批量「美化」内容页。
 
-- [ ] **Step 2: 构建**
+- [x] **Step 2: 构建**
 
 ```bash
 npm run build
@@ -709,13 +709,13 @@ npm run build
 
 Expected: 成功退出（exit 0）
 
-- [ ] **Step 3: 手动抽样清单**
+- [x] **Step 3: 手动抽样清单**
 
 - `/zh-cn/`、`/en/`：Hero、6 卡、最新文章、黑顶栏、羊皮纸页脚  
 - 一篇博客、一页中文 Wiki：可打开、链接为蓝、无明显遮挡  
 - 窄屏：顶栏可导航、卡片单列、CTA ≥44px
 
-- [ ] **Step 4: 跑相关自动化**
+- [x] **Step 4: 跑相关自动化**
 
 ```bash
 cd tests && npm run test:unit -- appleDesignTokens
@@ -724,7 +724,7 @@ cd tests && npx playwright test e2e/specs/apple-home.spec.ts e2e/specs/layout.sp
 
 Expected: PASS（`layout.spec.ts` 仅断言 `header` 可见，应仍绿）
 
-- [ ] **Step 5: Commit 扫尾（若有文件变更）**
+- [x] **Step 5: Commit 扫尾（若有文件变更）**
 
 ```bash
 git add -u

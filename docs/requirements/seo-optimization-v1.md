@@ -136,9 +136,9 @@
 
 ## 6. QA 验收清单（发布门禁）
 
-- [ ] 可索引页面 metadata 完整。
-- [ ] canonical/route/语言版本映射正确。
-- [ ] sitemap 与 robots 策略一致。
-- [ ] 结构化数据无致命错误。
-- [ ] 死链与重定向链在阈值内。
-- [ ] 关键页面手工抽检通过（首页、Blog、Wiki、AIWiki、Guild）。
+- [x] 可索引页面 metadata 完整。
+- [x] canonical/route/语言版本映射正确。
+- [x] sitemap 与 robots 策略一致。
+- [x] 结构化数据无致命错误。
+- [x] 死链与重定向链在阈值内。
+- [x] 关键页面手工抽检通过（首页、Blog、Wiki、AIWiki、Guild）。
