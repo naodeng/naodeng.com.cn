@@ -73,6 +73,16 @@ test.describe("QA Skills", () => {
     await expect(card.locator(".tag-evals")).toBeVisible();
   });
 
+  test("catalog cards show when-to-use, input, output, and human review rows", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+    const card = page.locator('a.card[data-slug="requirements-analysis"]').first();
+    await expect(card).toBeVisible();
+    await expect(card.locator("[data-summary-when]")).not.toBeEmpty();
+    await expect(card.locator("[data-summary-input]")).not.toBeEmpty();
+    await expect(card.locator("[data-summary-output]")).not.toBeEmpty();
+    await expect(card.locator("[data-summary-review]")).not.toBeEmpty();
+  });
+
   test("detail shows Guide section, raw SKILL tab, and install panel", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/api-testing/", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /何时使用|When to Use/ })).toBeVisible();

@@ -1,4 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   HOME_EXAMPLES,
   HOME_PRIMARY_MODES,
@@ -12,12 +14,17 @@ import {
 } from "../../src/data/promptLibrary";
 import {
   getQASkillCardIntro,
+  getQASkillCardSummary,
   QA_SKILL_STARTER_PATHS,
   QA_SKILL_TOOLS,
   RECOMMENDED_QA_SKILL_SLUGS,
 } from "../../src/data/qaSkillLibrary";
+import { getQASkillsGrouped } from "../../src/utils/qaskills";
 
 const languages = ["en", "zh-cn"] as const;
+
+// getQASkillsGrouped resolves content paths from process.cwd(); Vitest runs from tests/.
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
 describe("content entry configuration", () => {
   it.each(languages)("defines complete homepage entries for %s", (lang) => {
@@ -76,5 +83,24 @@ describe("content entry configuration", () => {
         "zh-cn",
       ),
     ).toBe("需要 API 测试方案、API 用例或 API 风险分析。");
+  });
+});
+
+describe("catalog skill summaries", () => {
+  beforeAll(() => process.chdir(REPO_ROOT));
+  afterAll(() => process.chdir(REPO_ROOT));
+
+  it.each(languages)("provides complete summaries for every catalog skill (%s)", async (lang) => {
+    const grouped = await getQASkillsGrouped(lang);
+    const all = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus];
+    expect(all.length).toBeGreaterThan(0);
+    for (const skill of all) {
+      const summary = getQASkillCardSummary(skill, lang);
+      expect(summary.whenToUse, `${skill.slug}.whenToUse`).not.toBe("");
+      expect(summary.input, `${skill.slug}.input`).not.toBe("");
+      expect(summary.output, `${skill.slug}.output`).not.toBe("");
+      expect(summary.humanReview, `${skill.slug}.humanReview`).not.toBe("");
+      expect(summary.whenToUse).not.toMatch(/处理相关任务|related task/i);
+    }
   });
 });
