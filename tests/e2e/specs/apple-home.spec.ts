@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("zenix homepage exploration", () => {
   for (const lang of ["zh-cn", "en"] as const) {
-    test(`${lang} home shows hero, explore grid, latest posts`, async ({
+    test(`${lang} home shows five sections, explore hub, latest posts`, async ({
       page,
       baseURL,
     }) => {
@@ -11,17 +11,25 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator("[data-home-task]")).toHaveCount(6);
       await expect(page.locator("[data-home-capability]")).toHaveCount(3);
       await expect(page.locator("[data-home-example]")).toHaveCount(3);
-      await expect(page.locator(".home-explore-grid")).toBeVisible();
       await expect(page.locator(".home-latest-posts")).toBeVisible();
-      // zh 比 en 多一张 blog 卡（en 的 wiki 语义由 AIWiki 卡覆盖）
+      await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
+      // zh 比 en 多一张 wiki 卡；ExploreHub 在两类中一致补一张 tags 卡
       await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
-        lang === "zh-cn" ? 7 : 6,
+        lang === "zh-cn" ? 8 : 7,
       );
-      await expect(page.locator(".home-prompts")).toBeVisible();
-      await expect(page.locator(".home-projects")).toBeVisible();
-      await expect(page.locator(".home-tags .tags-container")).toBeVisible();
-      await expect(page.locator(".home-tags .home-chip").first()).toBeVisible();
       await expect(page.locator(".home-grid").first()).toBeVisible();
+      // 五段式收敛后，旧独立长区块不再存在
+      for (const gone of [
+        ".home-prompts",
+        ".home-qaskills",
+        ".home-projects",
+        ".home-guild",
+        ".home-wiki",
+        ".home-aiwiki",
+        ".home-tags",
+      ]) {
+        await expect(page.locator(gone)).toHaveCount(0);
+      }
     });
   }
 });
@@ -35,6 +43,19 @@ test.describe("home information architecture", () => {
       await expect(ctas.nth(0)).toHaveAttribute("href", `/${lang}/blog/`);
       await expect(ctas.nth(1)).toHaveAttribute("href", wikiPath);
     }
+  });
+
+  test("five top-level sections appear in expected order", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const classes = await page
+      .locator(".home-page > section")
+      .evaluateAll((els) => els.map((el) => [...el.classList]));
+    const find = (cls: string) => classes.findIndex((list) => list.includes(cls));
+    expect(find("home-hero")).toBeGreaterThanOrEqual(0);
+    expect(find("home-task-navigator")).toBeGreaterThan(find("home-hero"));
+    expect(find("home-capability-guide")).toBeGreaterThan(find("home-task-navigator"));
+    expect(find("home-latest-posts")).toBeGreaterThan(find("home-capability-guide"));
+    expect(find("home-explore-hub")).toBeGreaterThan(find("home-latest-posts"));
   });
 
   test("proof section keeps readable spacing between title and introduction", async ({ page, baseURL }) => {

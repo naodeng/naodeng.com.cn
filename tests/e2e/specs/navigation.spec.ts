@@ -1,22 +1,17 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("导航与首页内容", () => {
-  test("en 首页：Hero、探索区、标签与最新文章可见", async ({ page, baseURL }) => {
+  test("en 首页：Hero、探索中心与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "networkidle" });
     await expect(page.locator("main .home-hero").first()).toBeVisible();
-    await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
-    await expect(page.locator("main .home-projects").first()).toBeVisible();
-    await expect(page.locator("main .home-tags .tags-container").first()).toBeVisible();
+    await expect(page.locator("main .home-explore-hub .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 
-  test("zh-cn 首页：Hero、探索区、Guild、标签与最新文章可见", async ({ page, baseURL }) => {
+  test("zh-cn 首页：Hero、探索中心与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "networkidle" });
     await expect(page.locator("main .home-hero").first()).toBeVisible();
-    await expect(page.locator("main .home-explore-grid").first()).toBeVisible();
-    await expect(page.locator("main .home-projects").first()).toBeVisible();
-    await expect(page.locator("main .guild-showcase").first()).toBeVisible();
-    await expect(page.locator("main .home-tags .tags-container").first()).toBeVisible();
+    await expect(page.locator("main .home-explore-hub .home-explore-grid").first()).toBeVisible();
     await expect(page.locator("main .home-latest-posts").first()).toBeVisible();
   });
 

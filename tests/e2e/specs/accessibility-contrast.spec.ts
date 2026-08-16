@@ -15,7 +15,6 @@ const samples: ContrastSample[] = [
       ".home-band__subtitle",
       ".home-card__title",
       ".home-card__desc",
-      ".home-chip",
     ],
   },
   {
