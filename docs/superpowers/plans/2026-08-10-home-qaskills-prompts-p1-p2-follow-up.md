@@ -180,40 +180,45 @@ git commit -m "fix(home): unify task data and target routing"
 - 首页当前无 hero console，删除原计划中"删除 Hero console 三张资源卡"与"console cards 链接用例"表述（apple-home.spec 中不存在该用例）。
 - `apple-home.spec` 当前实际断言：`.home-hero`、`[data-home-task]`×6、`[data-home-capability]`×3、`[data-home-example]`×3、`.home-explore-grid`、`.home-latest-posts`、`.home-explore-grid .home-card`×7/6、`.home-prompts`、`.home-projects`、`.home-tags .tags-container`、hero CTAs×2。五段式后 `.home-prompts`/`.home-projects`/`.home-tags` 断言删除，探索卡计数改为新 ExploreHub 的实际数量。
 
-- [ ] **Step 1: 将五段式结构写入失败的 E2E 测试**
+^- [x] **Step 1: 将五段式结构写入失败的 E2E 测试**
 
 在 `apple-home.spec.ts` 中按 DOM 顺序断言五个顶级区块（`home-hero`、`home-task-navigator`、`home-capability-guide`、`home-latest`、`home-explore-hub`），并断言旧的独立首页区块类名 `.home-prompts`、`.home-qaskills`、`.home-projects`、`.home-guild`、`.home-wiki`、`.home-aiwiki`、`.home-tags` 不再存在（注意：现状的 Skills 区块类名是 `home-qaskills`）。同步更新 `navigation.spec.ts` 中依赖 `.home-projects`、`.home-tags .tags-container` 的断言。
 
-- [ ] **Step 2: 运行首页 E2E 并确认结构测试失败**
+^- [x] **Step 2: 运行首页 E2E 并确认结构测试失败**
 
 Run: `cd tests && npm run test:e2e -- apple-home.spec.ts navigation.spec.ts`
 
 Expected: FAIL，当前首页尚无五段式结构，且既有 spec 仍在断言将被移除的旧长区块。
 
-- [ ] **Step 3: 创建合并后的能力指南**
+^- [x] **Step 3: 创建合并后的能力指南**
 
 `HomeCapabilityGuide.astro` 只保留三类信息：什么时候使用 Skill、什么时候使用 Prompt、三个输入到输出的代表例。统计数据必须由页面传入，不在组件中写死数量。现状 `CoreCapabilities`（3 张能力卡）与 `HomeProofAndCases`（3 个输入→输出示例）的语义合并进本组件，`data-home-capability`/`data-home-example` 契约在 apple-home.spec 中同步调整（示例仍为 3 个，能力卡数量由组件形态决定）。
 
-- [ ] **Step 4: 创建探索中心并迁移二级入口**
+^- [x] **Step 4: 创建探索中心并迁移二级入口**
 
 `HomeExploreHub.astro` 用紧凑卡片承载 Projects、Guild、Wiki、AI Wiki、Tags；每项保留标题、一句话和 CTA，不再在首页展开列表内容。沿用 `.home-explore-grid`、`.home-card` 等既有类名契约。Tags 不再以 `.home-chip` 呈现后，必须同步更新 accessibility-contrast spec 的首页样本（移除 `.home-chip`）。
 
-- [ ] **Step 5: 重排首页并删除重复长区块**
+^- [x] **Step 5: 重排首页并删除重复长区块**
 
 首页顺序固定为 Hero（含 primary modes）→ Task Navigator → Capability Guide → Latest Posts（保留最多 3 篇，当前为 5 篇）→ Explore Hub。删除 Prompts、QA Skills、Projects、Guild、Wiki、AI Wiki、Tags 独立长区块，其目标页均已在 ExploreHub 或已有导航可达。删除 `GuildShowcase` 区块（navigation.spec 无对应断言，无需改）。保留 `GoogleAdThin` 与 GoogleAd 的合理位置，不增加广告位。
 
-- [ ] **Step 6: 删除已替代组件并运行首页 E2E**
+^- [x] **Step 6: 删除已替代组件并运行首页 E2E**
 
 Run: `cd tests && npm run test:e2e -- apple-home.spec.ts navigation.spec.ts tracking-contract.spec.ts accessibility-contrast.spec.ts accessibility-hard-metrics.spec.ts`
 
 Expected: PASS，中英文均只有五个主区块且入口仍可访问。若 Task 3 前 `.home-hero__ctas a[href='/zh-cn/blog/']` 仍存在，`tracking-contract.spec.ts` 无需改动；若本任务已改变该契约，必须同步更新该 spec（read 卡保持指向 `/blog` 的单链接锚点），而不是让它静默挂掉。
 
-- [ ] **Step 7: 提交首页结构收敛**
+^- [x] **Step 7: 提交首页结构收敛**
 
 ```bash
 git add src/pages/'[lang]'/index.astro src/components/home tests/e2e/specs/apple-home.spec.ts tests/e2e/specs/navigation.spec.ts tests/e2e/specs/tracking-contract.spec.ts tests/e2e/specs/accessibility-contrast.spec.ts tests/e2e/specs/accessibility-hard-metrics.spec.ts
 git commit -m "refactor(home): consolidate homepage into five sections"
 ```
+
+**执行记录（2026-08-16）：**
+
+- 提交 `0213245ef`（Task 2 本体）、`85161600e`（E2E 提速：`networkidle` → `domcontentloaded`，全量 411 用例 2.1 分钟通过）、`10cea2177`（清理 `guild.spec.ts` 首页 Guild 展示区 10 个旧断言，qaskills 详情页测试消除偶发 30s 超时）。
+- 全套件验证：385 passed / 0 failed / 26 skipped（跳过均为既有条件跳过）。
 
 ---
 

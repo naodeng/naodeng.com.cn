@@ -74,9 +74,11 @@
 ## 执行进度
 
 - **Task 1（统一首页任务数据与目标映射）已完成**（提交 `5da4e4721`）：`HomeTaskEntry` 由单一 `slug` 改为 `key` + `targets`，6 个任务目标全部映射到已有 qaskills skill；`HOME_PRIMARY_MODES` 在首页 hero 渲染（read→/blog、reference→/wiki|/AIWiki、act→qaskills+prompts 两个子链接）；`HomeTaskNavigator` 支持单/多目标渲染；新增 `tests/unit/homeTaskRouting.test.ts`（9 个用例，含真实 qaskills 集合的 slug 允许列表校验）。验证：86 个单元测试全过、build 成功（875 页）、首页相关 E2E 19 个全过。
-- 计划 B checkbox：Task 1 的 7 项已勾选，其余任务待执行。
+- **Task 2（收敛首页为五段式信息架构）已完成**（提交 `0213245ef`）：首页固定为 Hero（含 primary modes）→ Task Navigator → Capability Guide → Latest Posts（3 篇）→ Explore Hub 五段；删除 CoreCapabilities / HomeProofAndCases 组件与 Prompts、QA Skills、Projects、Guild、Wiki、AI Wiki、Tags 七个旧长区块；`HomeCapabilityGuide` 承载 3 能力卡 + 3 输入→输出示例，`HomeExploreHub` 接收本地化卡片；同步 apple-home / navigation / accessibility-contrast 断言。额外：`10cea2177` 清理 guild.spec.ts 中已随首页收敛失效的 10 个旧断言、修复 qaskills 详情页偶发超时。
+- E2E 提速（提交 `85161600e`）：全套件 246 处 `waitUntil: "networkidle"` 改为 `domcontentloaded`（第三方广告/统计脚本不再拖死等待），完整 411 用例从数十分钟大量超时降为 **2.1 分钟全绿**（385 passed / 0 failed / 26 skipped 均为既有条件跳过）。
+- 计划 B checkbox：Task 1、Task 2 已勾选，其余任务待执行。
 
 ## 后续动作
 
-- 继续按重写后的计划 B 从 Task 2 开始执行，每个任务先写失败测试、再实现、验证、独立提交。
+- 继续按重写后的计划 B 从 Task 3 开始执行，每个任务先写失败测试、再实现、验证、独立提交。
 - 每完成一个 Gate 对应的任务后，同步把本状态文档与计划 B 的 checkbox 更新为已勾选。
