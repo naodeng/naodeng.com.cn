@@ -19,6 +19,13 @@ colors:
   caution: "#be123c"
   warn: "#f59e0b"
 typography:
+  scale:
+    display: "2.5rem"
+    headline: "1.3rem"
+    title: "1.25rem"
+    body: "1.0625rem"
+    label: "0.875rem"
+    labelSmall: "0.75rem"
   display:
     fontFamily: '"Sora", "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif'
     fontSize: "2.5rem"

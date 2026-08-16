@@ -96,11 +96,14 @@ test.describe("home information architecture", () => {
         left: Math.round(rect.left),
         right: Math.round(window.innerWidth - rect.right),
         titleSize: title ? getComputedStyle(title).fontSize : "",
+        rootSize: getComputedStyle(document.documentElement).fontSize,
       };
     });
 
     expect(layout.width).toBeLessThanOrEqual(1120);
     expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
-    expect(layout.titleSize).toBe("34px");
+    // 区块标题归位 DESIGN.md 阶梯：headline = 1.3 × 根字号
+    const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);
+    expect(titleRatio).toBeCloseTo(1.3, 1);
   });
 });
