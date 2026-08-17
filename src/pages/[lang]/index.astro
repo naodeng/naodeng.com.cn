@@ -34,7 +34,7 @@ const allPosts = (await getCollection("blog")).filter(
 
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+  .slice(0, 4);
 
 // 探索卡数量徽标：从内容集合动态统计，避免硬编码过时
 const wikiCount = (await getCollection("wiki")).length;

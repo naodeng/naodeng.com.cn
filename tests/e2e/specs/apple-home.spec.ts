@@ -17,7 +17,7 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
         lang === "zh-cn" ? 4 : 3,
       );
-      await expect(page.locator(".home-post-list > li")).toHaveCount(3);
+      await expect(page.locator(".home-post-list > li")).toHaveCount(4);
       await expect(page.locator(".home-grid").first()).toBeVisible();
       // 五段式收敛后，旧独立长区块不再存在
       for (const gone of [
