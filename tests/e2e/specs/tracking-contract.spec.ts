@@ -15,7 +15,8 @@ test.describe("埋点契约", () => {
   test("首页入口点击事件包含 session_id", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
-    const entry = page.locator(".home-primary-entry[href='/zh-cn/blog/']");
+    // 首页重构后：探索卡是真实入口，wiki 卡指向 /zh-cn/wiki/，触发 home_entry_click
+    const entry = page.locator(".home-explore-grid .home-card[href='/zh-cn/wiki/']");
     await expect(entry).toBeVisible({ timeout: 10000 });
     await entry.evaluate((node) => {
       node.addEventListener(
