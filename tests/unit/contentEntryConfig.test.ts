@@ -5,7 +5,6 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   HOME_EXAMPLES,
-  HOME_PRIMARY_MODES,
   HOME_TASK_ENTRIES,
 } from "../../src/data/homeTaskEntries";
 import {
@@ -30,7 +29,6 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..
 
 describe("content entry configuration", () => {
   it.each(languages)("defines complete homepage entries for %s", (lang) => {
-    expect(HOME_PRIMARY_MODES[lang]).toHaveLength(3);
     expect(HOME_TASK_ENTRIES[lang]).toHaveLength(6);
     expect(HOME_EXAMPLES[lang]).toHaveLength(3);
     expect(new Set(HOME_TASK_ENTRIES[lang].map((item) => item.key)).size).toBe(6);

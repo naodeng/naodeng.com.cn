@@ -10,13 +10,14 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator(".home-hero")).toBeVisible();
       await expect(page.locator("[data-home-task]")).toHaveCount(6);
       await expect(page.locator("[data-home-capability]")).toHaveCount(3);
-      await expect(page.locator("[data-home-example]")).toHaveCount(3);
+      await expect(page.locator("[data-home-example]")).toHaveCount(1);
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
-      // zh 比 en 多一张 wiki 卡；ExploreHub 在两类中一致补一张 tags 卡
+      // zh 比 en 多一张 wiki 卡（wiki 为中文专属内容）
       await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
-        lang === "zh-cn" ? 8 : 7,
+        lang === "zh-cn" ? 4 : 3,
       );
+      await expect(page.locator(".home-post-list > li")).toHaveCount(4);
       await expect(page.locator(".home-grid").first()).toBeVisible();
       // 五段式收敛后，旧独立长区块不再存在
       for (const gone of [
@@ -35,20 +36,21 @@ test.describe("zenix homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
-  test("hero states professional positioning with Skills and Prompts as main entries", async ({ page, baseURL }) => {
+  test("hero directs visitors to one task entry and one resource-library entry", async ({ page, baseURL }) => {
     const expectations = [
-      { lang: "zh-cn", h1: "面向测试工程师的 AI 测试知识与工作台" },
-      { lang: "en", h1: "AI Testing Knowledge and Workbench for Test Engineers" },
+      { lang: "zh-cn", h1: "把测试任务变成可执行的下一步" },
+      { lang: "en", h1: "Turn testing tasks into actionable next steps" },
     ] as const;
     for (const { lang, h1 } of expectations) {
       await page.goto(`${baseURL || ""}/${lang}/`);
       await expect(page.locator("main .home-hero h1")).toHaveText(h1);
       const ctas = page.locator(".home-hero__ctas a");
       await expect(ctas).toHaveCount(2);
-      await expect(ctas.nth(0)).toHaveAttribute("href", `/${lang}/qaskills/`);
+      await expect(ctas.nth(0)).toHaveAttribute("href", "#home-task-navigator");
       await expect(ctas.nth(0)).toHaveClass(/pill-cta--primary/);
-      await expect(ctas.nth(1)).toHaveAttribute("href", `/${lang}/prompts/`);
+      await expect(ctas.nth(1)).toHaveAttribute("href", `/${lang}/qaskills/`);
       await expect(ctas.nth(1)).toHaveClass(/pill-cta--ghost/);
+      await expect(page.locator(".home-primary-modes")).toHaveCount(0);
     }
   });
 
@@ -105,5 +107,21 @@ test.describe("home information architecture", () => {
     // 区块标题归位 DESIGN.md 阶梯：headline = 1.3 × 根字号
     const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);
     expect(titleRatio).toBeCloseTo(1.3, 1);
+  });
+
+  test("task navigator uses a compact two-column desktop list and one mobile column", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const desktopColumns = await page.locator(".task-grid").evaluate((element) =>
+      getComputedStyle(element).gridTemplateColumns.split(" ").length,
+    );
+    expect(desktopColumns).toBe(2);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.locator(".task-grid")).toHaveCSS("grid-template-columns", /.+/);
+    const columns = await page.locator(".task-grid").evaluate((element) =>
+      getComputedStyle(element).gridTemplateColumns.split(" ").length,
+    );
+    expect(columns).toBe(1);
   });
 });

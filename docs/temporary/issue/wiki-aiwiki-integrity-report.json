@@ -1,0 +1,60 @@
+{
+  "scannedAt": "2026-08-16T05:48:47.485Z",
+  "totals": {
+    "wikiFiles": 226,
+    "aiwikiFiles": 134,
+    "totalIssues": 8,
+    "errorCount": 0,
+    "warnCount": 8
+  },
+  "issues": [
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #相关术语",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #参见",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #基础知识与重要性",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #流程与技术",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #角色与职责",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #工具与技术",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/agile-testing.md",
+      "detail": "TOC 锚点找不到标题: #挑战与解决方案",
+      "severity": "warn"
+    },
+    {
+      "type": "toc_anchor_missing_heading",
+      "file": "src/content/wiki/inspection.md",
+      "detail": "TOC 锚点找不到标题: #检查--检查zh-cnwikiinspection",
+      "severity": "warn"
+    }
+  ]
+}

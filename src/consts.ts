@@ -364,23 +364,23 @@ export const PROJECTS_TECH_STACK_LABEL: Multilingual = {
 
 // 首页区块文案
 export const HOME_HERO_TITLE: Multilingual = {
-  en: "AI Testing Knowledge and Workbench for Test Engineers",
-  "zh-cn": "面向测试工程师的 AI 测试知识与工作台",
+  en: "Turn testing tasks into actionable next steps",
+  "zh-cn": "把测试任务变成可执行的下一步",
 };
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
-  en: "From requirements analysis and test design to automation and quality assessment — Skills, Prompts, workflows, and practical guides you can put to work right away.",
-  "zh-cn": "从需求分析、测试设计到自动化与质量评估，使用可直接落地的 Skills、Prompts、工作流和实践指南。",
+  en: "Start from the work at hand, then use reusable QA Skills, Prompts, workflows, and practical guides to move it forward.",
+  "zh-cn": "从手头的测试任务开始，再用可复用的 QA Skills、Prompts、工作流和实践指南推动下一步。",
+};
+
+export const HOME_CTA_TASK: Multilingual = {
+  en: "Start with a testing task",
+  "zh-cn": "从当前测试任务开始",
 };
 
 export const HOME_CTA_SKILLS: Multilingual = {
-  en: "Find the right testing Skill",
-  "zh-cn": "找到适合我的测试 Skill",
-};
-
-export const HOME_CTA_PROMPTS: Multilingual = {
-  en: "Use testing Prompts",
-  "zh-cn": "使用测试 Prompt",
+  en: "Browse QA Skills",
+  "zh-cn": "浏览 QA Skills",
 };
 
 export const HOME_EXPLORE_TITLE: Multilingual = {
@@ -398,7 +398,7 @@ export const HOME_EXPLORE_MORE: Multilingual = {
   "zh-cn": "了解更多",
 };
 
-/** 首页探索卡片：中英各 6 张，路径相对 locale */
+/** 首页探索卡片：中英各 4 张，避免与首页主入口重复。路径相对 locale。 */
 export const HOME_EXPLORE_CARDS: Record<
   Lang,
   ReadonlyArray<{
@@ -406,6 +406,7 @@ export const HOME_EXPLORE_CARDS: Record<
     path: string;
     title: string;
     desc: string;
+    icon: string;
   }>
 > = {
   "zh-cn": [
@@ -414,42 +415,28 @@ export const HOME_EXPLORE_CARDS: Record<
       path: "/wiki",
       title: "测试百科",
       desc: "从测试基础到专项测试的系统化知识，按主题持续积累与更新。",
+      icon: "menu_book",
     },
     {
       key: "aiwiki",
       path: "/AIWiki",
       title: "AI Wiki",
       desc: "AI 测试与智能体工程的知识沉淀，紧跟技术演进持续更新。",
+      icon: "smart_toy",
     },
     {
       key: "guild",
       path: "/guild/",
       title: "Guild",
       desc: "测试流程与质量策略的框架化指南，可直接落地到项目。",
-    },
-    {
-      key: "prompts",
-      path: "/prompts/",
-      title: "Prompts",
-      desc: "可复制的测试提示词，覆盖用例生成、评审与缺陷分析。",
-    },
-    {
-      key: "qaskills",
-      path: "/qaskills/",
-      title: "QA Skills",
-      desc: "面向完整测试任务的可复用技能包，包含步骤、输入与输出结构。",
+      icon: "groups",
     },
     {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "开源项目与作品集，代码与文档一并公开。",
-    },
-    {
-      key: "blog",
-      path: "/blog",
-      title: "博客",
-      desc: "测试、AI 与工程实践的文章和笔记，记录真实踩坑与思考。",
+      icon: "code",
     },
   ],
   en: [
@@ -458,36 +445,21 @@ export const HOME_EXPLORE_CARDS: Record<
       path: "/AIWiki",
       title: "AI Wiki",
       desc: "A living knowledge base for AI testing and agent engineering, updated as the field evolves.",
+      icon: "smart_toy",
     },
     {
       key: "guild",
       path: "/guild/",
       title: "Guild",
       desc: "Frameworks and playbooks for test processes and quality strategy, ready to apply to real projects.",
-    },
-    {
-      key: "prompts",
-      path: "/prompts/",
-      title: "Prompts",
-      desc: "Ready-to-copy prompts for test case generation, review, and bug analysis.",
-    },
-    {
-      key: "qaskills",
-      path: "/qaskills/",
-      title: "QA Skills",
-      desc: "Reusable skill cards for complete QA tasks, with steps, inputs, and output structures.",
+      icon: "groups",
     },
     {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "Open source projects and a portfolio, with code and docs in the open.",
-    },
-    {
-      key: "blog",
-      path: "/blog",
-      title: "Blog",
-      desc: "Articles and notes on testing, AI, and engineering practice — real lessons from the field.",
+      icon: "code",
     },
   ],
 };

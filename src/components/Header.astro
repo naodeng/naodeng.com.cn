@@ -175,7 +175,7 @@ const mobilePriorityItems = [
   <div class:list={["header-shell l-content", { "header-shell--en": locale === "en" }]}>
     <div class:list={["site-brand", { "site-brand--en": locale === "en" }]}>
       <div class="site-brand-row">
-        <h1>
+        <p class="site-brand-heading">
           <a href={getRelativeLocaleUrl(locale, "/")} class="site-brand-link">
             <img src="/favicon.svg" alt="" class="site-logo" width="24" height="24" />
             {locale === "zh-cn" ? (
@@ -188,7 +188,7 @@ const mobilePriorityItems = [
               <span>{siteTitle}</span>
             )}
           </a>
-        </h1>
+        </p>
         <p class="site-slogan">{t(SITE_SLOGAN)}</p>
       </div>
     </div>
@@ -520,7 +520,7 @@ const mobilePriorityItems = [
   .site-slogan {
     display: none;
   }
-  h1 {
+  .site-brand-heading {
     margin: 0;
     font-size: var(--text-xl);
     font-family: var(--english-font);
@@ -625,7 +625,7 @@ const mobilePriorityItems = [
   }
   .site-nav > ul > li > a:focus-visible,
   .nav-group-trigger:focus-visible {
-    outline: 2px solid color-mix(in srgb, white 70%, transparent);
+    outline: 2px solid var(--color-theme);
     outline-offset: -2px;
   }
   .site-nav > ul > li > a.active,
@@ -855,7 +855,7 @@ const mobilePriorityItems = [
     border-color: transparent;
   }
   .btn-icon:focus-visible {
-    outline: 2px solid color-mix(in srgb, white 70%, transparent);
+    outline: 2px solid var(--color-theme);
     outline-offset: 1px;
   }
   .btn-icon .material-icons-sharp {
@@ -892,7 +892,7 @@ const mobilePriorityItems = [
       align-items: center;
       overflow: hidden;
     }
-    .site-brand h1 {
+    .site-brand .site-brand-heading {
       min-width: 0;
       max-width: 100%;
     }
@@ -1085,7 +1085,7 @@ const mobilePriorityItems = [
     padding-inline: clamp(1rem, 3vw, 2rem);
   }
 
-  h1 {
+  .site-brand-heading {
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     font-weight: 800;
