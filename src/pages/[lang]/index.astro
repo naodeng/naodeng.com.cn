@@ -15,7 +15,6 @@ import {
   HOME_EXPLORE_CARDS,
   HOME_LATEST_POSTS,
   HOME_VIEW_ALL,
-  HOME_TAGS_TITLE,
   HOME_PAGE_DESCRIPTION,
   HOME_PAGE_KEYWORDS,
 } from "@/consts";
@@ -34,25 +33,12 @@ const allPosts = (await getCollection("blog")).filter(
 
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 6);
+  .slice(0, 3);
 
 const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   ...card,
   href: getRelativeLocaleUrl(locale, card.path),
 }));
-
-const exploreHubCards = [
-  ...exploreCards,
-  {
-    key: "tags",
-    href: getRelativeLocaleUrl(locale, "/tags"),
-    title: t(HOME_TAGS_TITLE),
-    desc:
-      locale === "zh-cn"
-        ? "按标签快速找到相关文章，按主题分类浏览"
-        : "Find related posts by topic, grouped and browsable",
-  },
-];
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
@@ -176,7 +162,7 @@ const homePageSchema = {
       title={t(HOME_EXPLORE_TITLE)}
       subtitle={t(HOME_EXPLORE_SUBTITLE)}
       moreLabel={t(HOME_EXPLORE_MORE)}
-      cards={exploreHubCards}
+      cards={exploreCards}
     />
   </div>
 </Layout>

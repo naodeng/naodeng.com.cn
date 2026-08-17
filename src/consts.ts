@@ -398,7 +398,7 @@ export const HOME_EXPLORE_MORE: Multilingual = {
   "zh-cn": "了解更多",
 };
 
-/** 首页探索卡片：中英各 6 张，路径相对 locale */
+/** 首页探索卡片：中英各 4 张，避免与首页主入口重复。路径相对 locale。 */
 export const HOME_EXPLORE_CARDS: Record<
   Lang,
   ReadonlyArray<{
@@ -428,28 +428,10 @@ export const HOME_EXPLORE_CARDS: Record<
       desc: "测试流程与质量策略的框架化指南，可直接落地到项目。",
     },
     {
-      key: "prompts",
-      path: "/prompts/",
-      title: "Prompts",
-      desc: "可复制的测试提示词，覆盖用例生成、评审与缺陷分析。",
-    },
-    {
-      key: "qaskills",
-      path: "/qaskills/",
-      title: "QA Skills",
-      desc: "面向完整测试任务的可复用技能包，包含步骤、输入与输出结构。",
-    },
-    {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "开源项目与作品集，代码与文档一并公开。",
-    },
-    {
-      key: "blog",
-      path: "/blog",
-      title: "博客",
-      desc: "测试、AI 与工程实践的文章和笔记，记录真实踩坑与思考。",
     },
   ],
   en: [
@@ -466,28 +448,10 @@ export const HOME_EXPLORE_CARDS: Record<
       desc: "Frameworks and playbooks for test processes and quality strategy, ready to apply to real projects.",
     },
     {
-      key: "prompts",
-      path: "/prompts/",
-      title: "Prompts",
-      desc: "Ready-to-copy prompts for test case generation, review, and bug analysis.",
-    },
-    {
-      key: "qaskills",
-      path: "/qaskills/",
-      title: "QA Skills",
-      desc: "Reusable skill cards for complete QA tasks, with steps, inputs, and output structures.",
-    },
-    {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "Open source projects and a portfolio, with code and docs in the open.",
-    },
-    {
-      key: "blog",
-      path: "/blog",
-      title: "Blog",
-      desc: "Articles and notes on testing, AI, and engineering practice — real lessons from the field.",
     },
   ],
 };
