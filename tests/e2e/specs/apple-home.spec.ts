@@ -107,4 +107,20 @@ test.describe("home information architecture", () => {
     const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);
     expect(titleRatio).toBeCloseTo(1.3, 1);
   });
+
+  test("task navigator uses a compact two-column desktop list and one mobile column", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL || ""}/zh-cn/`);
+    const desktopColumns = await page.locator(".task-grid").evaluate((element) =>
+      getComputedStyle(element).gridTemplateColumns.split(" ").length,
+    );
+    expect(desktopColumns).toBe(2);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.locator(".task-grid")).toHaveCSS("grid-template-columns", /.+/);
+    const columns = await page.locator(".task-grid").evaluate((element) =>
+      getComputedStyle(element).gridTemplateColumns.split(" ").length,
+    );
+    expect(columns).toBe(1);
+  });
 });

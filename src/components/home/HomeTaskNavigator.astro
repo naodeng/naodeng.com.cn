@@ -42,12 +42,12 @@ function targetHref(target: HomeTaskTarget) {
   </div>
 </section>
 <style>
-  .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-  .task-card { display:flex; flex-direction:column; height:100%; padding:1.2rem; border-radius:var(--radius-lg); background:#fff; border:1px solid rgba(148,163,184,.18); box-shadow:var(--shadow-sm); }
-  h3 { margin:0 0 .45rem; } .task-card__desc { margin:0 0 1rem; color:var(--color-text-secondary); line-height:1.6; }
-  .task-card__link { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:var(--color-theme); text-decoration:none; font-weight:800; }
+  .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; text-align:start; }
+  .task-card { display:flex; flex-direction:column; min-height:0; padding:1rem 1.1rem; border-left:3px solid color-mix(in srgb, var(--color-theme) 62%, transparent); border-radius:var(--radius-md); background:rgba(255,255,255,.82); box-shadow:var(--shadow-sm); }
+  h3 { margin:0 0 .3rem; font-family:var(--font-heading); font-size:1rem; line-height:1.35; } .task-card__desc { margin:0 0 .7rem; font-size:.875rem; color:var(--color-text-secondary); line-height:1.5; }
+  .task-card__link { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:var(--color-theme); text-decoration:none; font-size:.875rem; font-weight:800; }
   .task-card__links { list-style:none; margin:auto 0 0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
   .task-card__links a { color:var(--color-theme); text-decoration:none; font-weight:800; }
   .task-card__links small { display:block; margin-top:2px; font-size:12px; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
-  @media(max-width:800px){.task-grid{grid-template-columns:repeat(2,minmax(0,1fr));}} @media(max-width:520px){.task-grid{grid-template-columns:1fr;}}
+  @media(max-width:700px){.task-grid{grid-template-columns:1fr;}}
 </style>
