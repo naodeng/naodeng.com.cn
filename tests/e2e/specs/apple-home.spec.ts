@@ -35,20 +35,21 @@ test.describe("zenix homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
-  test("hero states professional positioning with Skills and Prompts as main entries", async ({ page, baseURL }) => {
+  test("hero directs visitors to one task entry and one resource-library entry", async ({ page, baseURL }) => {
     const expectations = [
-      { lang: "zh-cn", h1: "面向测试工程师的 AI 测试知识与工作台" },
-      { lang: "en", h1: "AI Testing Knowledge and Workbench for Test Engineers" },
+      { lang: "zh-cn", h1: "把测试任务变成可执行的下一步" },
+      { lang: "en", h1: "Turn testing tasks into actionable next steps" },
     ] as const;
     for (const { lang, h1 } of expectations) {
       await page.goto(`${baseURL || ""}/${lang}/`);
       await expect(page.locator("main .home-hero h1")).toHaveText(h1);
       const ctas = page.locator(".home-hero__ctas a");
       await expect(ctas).toHaveCount(2);
-      await expect(ctas.nth(0)).toHaveAttribute("href", `/${lang}/qaskills/`);
+      await expect(ctas.nth(0)).toHaveAttribute("href", "#home-task-navigator");
       await expect(ctas.nth(0)).toHaveClass(/pill-cta--primary/);
-      await expect(ctas.nth(1)).toHaveAttribute("href", `/${lang}/prompts/`);
+      await expect(ctas.nth(1)).toHaveAttribute("href", `/${lang}/qaskills/`);
       await expect(ctas.nth(1)).toHaveClass(/pill-cta--ghost/);
+      await expect(page.locator(".home-primary-modes")).toHaveCount(0);
     }
   });
 

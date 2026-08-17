@@ -1,12 +1,5 @@
 import type { Lang } from "@/i18n";
 
-export type HomePrimaryMode = {
-  key: "read" | "reference" | "act";
-  eyebrow: string;
-  title: string;
-  description: string;
-};
-
 export type HomeTaskTarget = {
   kind: "skill" | "prompt";
   slug: string;
@@ -32,49 +25,6 @@ export type HomeExample = {
   input: string;
   capability: string;
   output: string;
-};
-
-export const HOME_PRIMARY_MODES: Record<Lang, HomePrimaryMode[]> = {
-  "zh-cn": [
-    {
-      key: "read",
-      eyebrow: "阅读实践",
-      title: "博客",
-      description: "阅读软件测试、自动化、AI 工程和个人实践总结。",
-    },
-    {
-      key: "reference",
-      eyebrow: "查询知识",
-      title: "Wiki / AI 百科",
-      description: "查询测试概念、AI 术语和工程实践词条。",
-    },
-    {
-      key: "act",
-      eyebrow: "完成任务",
-      title: "Skills 与 Prompts",
-      description: "选择可复用的测试能力，直接开始当前 QA 任务。",
-    },
-  ],
-  en: [
-    {
-      key: "read",
-      eyebrow: "Read practices",
-      title: "Blog",
-      description: "Read software testing, automation, AI engineering, and practice notes.",
-    },
-    {
-      key: "reference",
-      eyebrow: "Look up knowledge",
-      title: "Wiki / AI Wiki",
-      description: "Look up testing concepts, AI terms, and engineering references.",
-    },
-    {
-      key: "act",
-      eyebrow: "Complete a task",
-      title: "Skills and Prompts",
-      description: "Choose a reusable testing capability and start the QA task at hand.",
-    },
-  ],
 };
 
 export const HOME_TASK_ENTRIES: Record<Lang, HomeTaskEntry[]> = {

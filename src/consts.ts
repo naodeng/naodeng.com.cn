@@ -364,23 +364,23 @@ export const PROJECTS_TECH_STACK_LABEL: Multilingual = {
 
 // 首页区块文案
 export const HOME_HERO_TITLE: Multilingual = {
-  en: "AI Testing Knowledge and Workbench for Test Engineers",
-  "zh-cn": "面向测试工程师的 AI 测试知识与工作台",
+  en: "Turn testing tasks into actionable next steps",
+  "zh-cn": "把测试任务变成可执行的下一步",
 };
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
-  en: "From requirements analysis and test design to automation and quality assessment — Skills, Prompts, workflows, and practical guides you can put to work right away.",
-  "zh-cn": "从需求分析、测试设计到自动化与质量评估，使用可直接落地的 Skills、Prompts、工作流和实践指南。",
+  en: "Start from the work at hand, then use reusable QA Skills, Prompts, workflows, and practical guides to move it forward.",
+  "zh-cn": "从手头的测试任务开始，再用可复用的 QA Skills、Prompts、工作流和实践指南推动下一步。",
+};
+
+export const HOME_CTA_TASK: Multilingual = {
+  en: "Start with a testing task",
+  "zh-cn": "从当前测试任务开始",
 };
 
 export const HOME_CTA_SKILLS: Multilingual = {
-  en: "Find the right testing Skill",
-  "zh-cn": "找到适合我的测试 Skill",
-};
-
-export const HOME_CTA_PROMPTS: Multilingual = {
-  en: "Use testing Prompts",
-  "zh-cn": "使用测试 Prompt",
+  en: "Browse QA Skills",
+  "zh-cn": "浏览 QA Skills",
 };
 
 export const HOME_EXPLORE_TITLE: Multilingual = {
