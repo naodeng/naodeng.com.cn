@@ -18,15 +18,21 @@ function targetHref(target: HomeTaskTarget) {
     <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发，直接进入对应的 Skill 或 Prompt；也可在详情页获取输入模板和执行方式。" : "Start with the task, open the matching Skill or Prompt, and use its input template and execution guide."}</p>
     <ul class="task-grid" role="list">
       {HOME_TASK_ENTRIES[locale].map((entry) => (
-        <li class="task-card" data-home-task={entry.key}>
-          <h3>{entry.title}</h3>
-          <p class="task-card__desc">{entry.description}</p>
-          {entry.targets.length === 1 ? (
+        entry.targets.length === 1 ? (
+          <li class="task-card task-card--link" data-home-task={entry.key}>
             <a class="task-card__link" href={targetHref(entry.targets[0])}>
-              <span>{entry.targets[0].label}</span>
-              <span>{locale === "zh-cn" ? "开始任务" : "Start task"} →</span>
+              <h3>{entry.title}</h3>
+              <p class="task-card__desc">{entry.description}</p>
+              <span class="task-card__link-row">
+                <span>{entry.targets[0].label}</span>
+                <span>{locale === "zh-cn" ? "开始任务" : "Start task"} →</span>
+              </span>
             </a>
-          ) : (
+          </li>
+        ) : (
+          <li class="task-card" data-home-task={entry.key}>
+            <h3>{entry.title}</h3>
+            <p class="task-card__desc">{entry.description}</p>
             <ul class="task-card__links" role="list">
               {entry.targets.map((target) => (
                 <li>
@@ -35,19 +41,34 @@ function targetHref(target: HomeTaskTarget) {
                 </li>
               ))}
             </ul>
-          )}
-        </li>
+          </li>
+        )
       ))}
     </ul>
   </div>
 </section>
 <style>
   .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; text-align:start; }
-  .task-card { display:flex; flex-direction:column; min-height:0; padding:1rem 1.1rem; border-left:3px solid color-mix(in srgb, var(--color-theme) 62%, transparent); border-radius:var(--radius-md); background:rgba(255,255,255,.82); box-shadow:var(--shadow-sm); }
-  h3 { margin:0 0 .3rem; font-family:var(--font-heading); font-size:1rem; line-height:1.35; } .task-card__desc { margin:0 0 .7rem; font-size:.875rem; color:var(--color-text-secondary); line-height:1.5; }
-  .task-card__link { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:var(--color-theme); text-decoration:none; font-size:.875rem; font-weight:800; }
+  .task-card { display:flex; flex-direction:column; min-height:0; padding:1rem 1.1rem; border-left:3px solid color-mix(in srgb, var(--color-theme) 62%, transparent); border-radius:var(--radius-md); background:rgba(255,255,255,.82); box-shadow:var(--shadow-sm); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+  h3 { margin:0 0 .3rem; font-family:var(--font-heading); font-size:1.0625rem; line-height:1.35; } .task-card__desc { margin:0 0 .7rem; font-size:.875rem; color:var(--color-text-secondary); line-height:1.5; }
+  /* 单目标任务：整卡作为链接，卡体任意位置可点（padding 移到链接上，覆盖整卡） */
+  .task-card--link { padding: 0; }
+  .task-card--link .task-card__link { display:flex; flex:1; flex-direction:column; gap:0; padding:1rem 1.1rem; color:inherit; text-decoration:none; }
+  .task-card--link .task-card__link-row { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:var(--color-theme); font-size:.875rem; font-weight:800; }
   .task-card__links { list-style:none; margin:auto 0 0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
   .task-card__links a { color:var(--color-theme); text-decoration:none; font-weight:800; }
   .task-card__links small { display:block; margin-top:2px; font-size:12px; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
+  /* 统一的卡片交互反馈：与最新文章卡/探索卡保持一致 */
+  .task-card:hover,
+  .task-card:focus-within {
+    transform: translateY(-4px);
+    border-left-color: var(--color-theme);
+    box-shadow: var(--shadow-md);
+  }
+  .task-card--link .task-card__link:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 2px; border-radius: var(--radius-md); }
+  @media (prefers-reduced-motion: reduce) {
+    .task-card { transition: none; }
+    .task-card:hover, .task-card:focus-within { transform: none; }
+  }
   @media(max-width:700px){.task-grid{grid-template-columns:1fr;}}
 </style>

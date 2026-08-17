@@ -5,7 +5,7 @@ interface Props {
   title: string;
   subtitle: string;
   moreLabel: string;
-  cards: Array<{ key: string; href: string; title: string; desc: string }>;
+  cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
 }
 const { locale, title, subtitle, moreLabel, cards } = Astro.props;
 ---
@@ -17,7 +17,11 @@ const { locale, title, subtitle, moreLabel, cards } = Astro.props;
       {cards.map((card) => (
         <li>
           <a class="home-card" href={card.href}>
-            <h3 class="home-card__title">{card.title}</h3>
+            <span class="home-card__icon material-icons-sharp" aria-hidden="true">{card.icon}</span>
+            <span class="home-card__topline">
+              <h3 class="home-card__title">{card.title}</h3>
+              {card.meta && <span class="home-card__meta">{card.meta}</span>}
+            </span>
             <p class="home-card__desc">{card.desc}</p>
             <span class="home-card__more">{moreLabel}</span>
           </a>
@@ -69,14 +73,46 @@ const { locale, title, subtitle, moreLabel, cards } = Astro.props;
     box-shadow: var(--shadow-md);
   }
 
+  .home-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    font-size: 22px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .home-card__topline {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
   .home-card__title {
     margin: 0 0 8px;
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 1.0625rem;
     font-weight: 800;
     letter-spacing: 0;
     line-height: 1.3;
     color: var(--color-main);
+  }
+
+  .home-card__meta {
+    flex: none;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-xl);
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   .home-card__desc {
@@ -84,7 +120,7 @@ const { locale, title, subtitle, moreLabel, cards } = Astro.props;
     flex: 1;
     font-size: 14px;
     line-height: 1.45;
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

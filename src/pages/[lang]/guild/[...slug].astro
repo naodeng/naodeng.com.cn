@@ -217,6 +217,13 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
 >
   <article class="guild-article">
+    <!-- 文章标题 -->
+    <header class="guild-article-header">
+      <h1 class="guild-article-title">{entry.data.title}</h1>
+      {entry.data.description && (
+        <p class="guild-article-desc">{entry.data.description}</p>
+      )}
+    </header>
     <!-- 文章元信息 -->
     <div class="guild-meta">
       <span class="guild-meta-item">
@@ -325,6 +332,34 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 <style>
   .guild-article {
     width: 100%;
+  }
+
+  .guild-article-header {
+    margin-block-end: var(--sp-m);
+  }
+
+  .guild-article-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-display);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.15;
+    color: var(--color-main);
+  }
+
+  .guild-article-desc {
+    margin: var(--sp-xs) 0 0;
+    max-width: 42rem;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  @media (width < 900px) {
+    .guild-article-title {
+      font-size: clamp(1.75rem, 6vw, 2.25rem);
+    }
   }
 
   .guild-meta {

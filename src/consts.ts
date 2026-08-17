@@ -406,6 +406,7 @@ export const HOME_EXPLORE_CARDS: Record<
     path: string;
     title: string;
     desc: string;
+    icon: string;
   }>
 > = {
   "zh-cn": [
@@ -414,24 +415,28 @@ export const HOME_EXPLORE_CARDS: Record<
       path: "/wiki",
       title: "测试百科",
       desc: "从测试基础到专项测试的系统化知识，按主题持续积累与更新。",
+      icon: "menu_book",
     },
     {
       key: "aiwiki",
       path: "/AIWiki",
       title: "AI Wiki",
       desc: "AI 测试与智能体工程的知识沉淀，紧跟技术演进持续更新。",
+      icon: "smart_toy",
     },
     {
       key: "guild",
       path: "/guild/",
       title: "Guild",
       desc: "测试流程与质量策略的框架化指南，可直接落地到项目。",
+      icon: "groups",
     },
     {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "开源项目与作品集，代码与文档一并公开。",
+      icon: "code",
     },
   ],
   en: [
@@ -440,18 +445,21 @@ export const HOME_EXPLORE_CARDS: Record<
       path: "/AIWiki",
       title: "AI Wiki",
       desc: "A living knowledge base for AI testing and agent engineering, updated as the field evolves.",
+      icon: "smart_toy",
     },
     {
       key: "guild",
       path: "/guild/",
       title: "Guild",
       desc: "Frameworks and playbooks for test processes and quality strategy, ready to apply to real projects.",
+      icon: "groups",
     },
     {
       key: "projects",
       path: "/projects/",
       title: "Projects",
       desc: "Open source projects and a portfolio, with code and docs in the open.",
+      icon: "code",
     },
   ],
 };

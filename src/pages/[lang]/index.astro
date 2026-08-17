@@ -23,6 +23,7 @@ import TrackingEvents from "@/components/TrackingEvents.astro";
 import HomeTaskNavigator from "@/components/home/HomeTaskNavigator.astro";
 import HomeCapabilityGuide from "@/components/home/HomeCapabilityGuide.astro";
 import HomeExploreHub from "@/components/home/HomeExploreHub.astro";
+import { PROJECTS_LIST } from "@/data/projects";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -35,9 +36,32 @@ const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
+// 探索卡数量徽标：从内容集合动态统计，避免硬编码过时
+const wikiCount = (await getCollection("wiki")).length;
+const aiwikiEntries = await getCollection("aiwiki");
+const aiwikiCount = aiwikiEntries.filter((e) =>
+  e.data.lang ? e.data.lang === locale : e.id.startsWith(`${locale}/`),
+).length;
+const guildEntries = await getCollection("guild");
+const guildCount = guildEntries.filter((e) => e.id.startsWith(`${locale}/`)).length;
+const projectsCount = PROJECTS_LIST.length;
+
 const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   ...card,
   href: getRelativeLocaleUrl(locale, card.path),
+  meta:
+    locale === "zh-cn"
+      ? {
+          wiki: `${wikiCount} 篇`,
+          aiwiki: `${aiwikiCount} 篇`,
+          guild: `${guildCount} 篇`,
+          projects: `${projectsCount} 个项目`,
+        }[card.key]
+      : {
+          aiwiki: `${aiwikiCount} entries`,
+          guild: `${guildCount} guides`,
+          projects: `${projectsCount} projects`,
+        }[card.key] ?? "",
 }));
 
 export const getStaticPaths = () =>
@@ -426,7 +450,7 @@ const homePageSchema = {
   }
 
   .home-post-item__date {
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     font-size: 0.75rem;
     font-weight: 700;
   }
@@ -449,7 +473,7 @@ const homePageSchema = {
     margin: 4px 0 0;
     font-size: 14px;
     line-height: 1.45;
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -480,7 +504,7 @@ const homePageSchema = {
     }
 
     .home-hero__title {
-      font-size: 2.5rem;
+      font-size: clamp(1.75rem, 6.2vw, 2.5rem);
     }
 
     .home-hero__subtitle {

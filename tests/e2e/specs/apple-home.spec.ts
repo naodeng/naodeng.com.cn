@@ -13,7 +13,10 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator("[data-home-example]")).toHaveCount(1);
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
-      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(4);
+      // zh 比 en 多一张 wiki 卡（wiki 为中文专属内容）
+      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
+        lang === "zh-cn" ? 4 : 3,
+      );
       await expect(page.locator(".home-post-list > li")).toHaveCount(3);
       await expect(page.locator(".home-grid").first()).toBeVisible();
       // 五段式收敛后，旧独立长区块不再存在

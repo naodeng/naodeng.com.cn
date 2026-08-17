@@ -149,7 +149,8 @@ const getFallbackPath = (lang: string) => {
     border-color: color-mix(in srgb, var(--color-theme) 20%, transparent);
   }
   .locale-trigger:focus-visible {
-    outline: none;
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
   }
   .locale-trigger .icon-lang {
     font-size: 20px;
