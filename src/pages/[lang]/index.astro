@@ -35,7 +35,7 @@ const allPosts = (await getCollection("blog")).filter(
 
 const latestPosts = [...allPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+  .slice(0, 6);
 
 const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
   ...card,
@@ -49,7 +49,9 @@ const exploreHubCards = [
     href: getRelativeLocaleUrl(locale, "/tags"),
     title: t(HOME_TAGS_TITLE),
     desc:
-      locale === "zh-cn" ? "按标签浏览全部文章" : "Browse all posts by tag",
+      locale === "zh-cn"
+        ? "按标签快速找到相关文章，按主题分类浏览"
+        : "Find related posts by topic, grouped and browsable",
   },
 ];
 
@@ -508,22 +510,25 @@ const homePageSchema = {
     color: var(--color-text-secondary);
   }
 
-  /* 最新文章：纵向行列表，与卡片阵列错开布局 */
+  /* 最新文章：6 张卡片，每排 2 张 */
   .home-post-list {
     list-style: none;
     margin: 28px 0 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
     text-align: start;
   }
 
   .home-post-item {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    height: 100%;
+    min-height: 170px;
+    padding: 22px 24px;
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: var(--radius-md);
     background: rgba(255, 255, 255, 0.86);
@@ -538,16 +543,15 @@ const homePageSchema = {
 
   .home-post-item:hover,
   .home-post-item:focus-visible {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
     box-shadow: var(--shadow-md);
   }
 
   .home-post-item__date {
-    flex: 0 0 auto;
-    min-width: 92px;
     color: var(--color-text-tertiary);
     font-size: 0.75rem;
+    font-weight: 700;
   }
 
   .home-post-item__body {
@@ -576,9 +580,16 @@ const homePageSchema = {
   }
 
   .home-post-item__arrow {
-    flex: 0 0 auto;
+    margin-top: auto;
+    align-self: flex-end;
     color: var(--color-theme);
     font-weight: 800;
+  }
+
+  @media (width < 800px) {
+    .home-post-list {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (width < 900px) {
@@ -610,7 +621,9 @@ const homePageSchema = {
 
   @media (prefers-reduced-motion: reduce) {
     .pill-cta:hover,
-    .pill-cta:focus-visible {
+    .pill-cta:focus-visible,
+    .home-post-item:hover,
+    .home-post-item:focus-visible {
       transform: none;
     }
   }
