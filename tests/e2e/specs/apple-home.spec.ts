@@ -10,7 +10,7 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator(".home-hero")).toBeVisible();
       await expect(page.locator("[data-home-task]")).toHaveCount(6);
       await expect(page.locator("[data-home-capability]")).toHaveCount(3);
-      await expect(page.locator("[data-home-example]")).toHaveCount(3);
+      await expect(page.locator("[data-home-example]")).toHaveCount(1);
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
       // zh 比 en 多一张 wiki 卡；ExploreHub 在两类中一致补一张 tags 卡

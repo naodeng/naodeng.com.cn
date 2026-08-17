@@ -18,20 +18,20 @@ const items = locale === "zh-cn" ? [
   <div class="home-inner home-capability-inner">
     <h2 id="home-capability-title" class="home-band__title">{locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}</h2>
     <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发选择可复用的 QA 能力；所有产出都需要结合项目上下文和人工评审。" : "Pick a reusable QA capability from the task at hand; every output still needs project context and human review."}</p>
-    <ul class="capability-grid" role="list">
+    <ul class="capability-list" role="list">
       {items.map(item => (
         <li>
-          <a class="capability-card" data-home-capability={item.key} href={getRelativeLocaleUrl(locale, item.path)}>
+          <a class="capability-item" data-home-capability={item.key} href={getRelativeLocaleUrl(locale, item.path)}>
             <span class="capability-card__key">{item.key}</span>
-            <h3 class="capability-card__title">{item.title}</h3>
+            <h3 class="capability-item__title">{item.title}</h3>
             <p class="capability-card__desc">{item.desc}</p>
           </a>
         </li>
       ))}
     </ul>
-    <p class="home-band__subtitle home-band__subtitle--spaced">{locale === "zh-cn" ? "从输入到可评审交付物" : "From input to reviewable deliverable"}</p>
+    <p class="home-band__subtitle home-band__subtitle--spaced">{locale === "zh-cn" ? "一个从输入到可评审交付物的示例" : "One example from input to a reviewable deliverable"}</p>
     <ol class="example-grid">
-      {HOME_EXAMPLES[locale].map(example => (
+      {HOME_EXAMPLES[locale].slice(0, 1).map(example => (
         <li class="example-step" data-home-example={example.key}>
           <p><strong>{locale === "zh-cn" ? "输入" : "Input"}</strong>{example.input}</p>
           <span class="example-arrow" aria-hidden="true">→</span>
@@ -48,24 +48,27 @@ const items = locale === "zh-cn" ? [
   .home-capability-inner > .home-band__title { margin: 0; }
   .home-capability-inner > .home-band__subtitle { width: min(100%, 42rem); margin: 0 auto; text-align: center; }
 
-  .capability-grid {
+  .capability-list {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    gap: .75rem;
+    text-align: start;
   }
 
-  .capability-grid > li { display: block; }
+  .capability-list > li { display: block; }
 
-  .capability-card {
-    display: block;
+  .capability-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .55rem;
     height: 100%;
-    padding: 1.4rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    background: #fff;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border-left: 3px solid color-mix(in srgb, var(--color-theme) 62%, transparent);
+    background: rgba(255,255,255,.82);
     color: inherit;
     text-decoration: none;
   }
@@ -77,14 +80,17 @@ const items = locale === "zh-cn" ? [
     font-size: 0.75rem;
   }
 
-  .capability-card__title {
+  .capability-item__title {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin: 0.55rem 0;
+    margin: 0;
   }
 
   .capability-card__desc {
+    grid-column: 1 / -1;
+    margin: .45rem 0 0;
+    font-size: .875rem;
     color: var(--color-text-secondary);
     line-height: 1.65;
   }
@@ -128,7 +134,7 @@ const items = locale === "zh-cn" ? [
   }
 
   @media (max-width: 700px) {
-    .capability-grid { grid-template-columns: 1fr; }
+    .capability-list { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 650px) {
