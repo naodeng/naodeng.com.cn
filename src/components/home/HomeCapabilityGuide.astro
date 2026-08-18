@@ -4,6 +4,14 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { HOME_EXAMPLES } from "@/data/homeTaskEntries";
 interface Props { locale: Lang }
 const { locale } = Astro.props;
+
+// 三类能力的语义图标（Material Icons Sharp 连字名）
+const CAPABILITY_ICONS: Record<string, string> = {
+  skills: "bolt",
+  prompts: "chat",
+  knowledge: "menu_book",
+};
+
 const items = locale === "zh-cn" ? [
   { key:"skills", title:"QA Skills", desc:"面向完整测试任务的可复用能力包，包含步骤、输入要求与输出结构。", path:"/qaskills/" },
   { key:"prompts", title:"Prompts", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/" },
@@ -13,16 +21,25 @@ const items = locale === "zh-cn" ? [
   { key:"prompts", title:"Prompts", desc:"Prompts for focused generation and analysis tasks, ready to copy, adapt, and review.", path:"/prompts/" },
   { key:"knowledge", title:"Knowledge and practice", desc:"Learn methods, concepts, and field experience through the blog and wikis.", path:"/blog/" },
 ];
+
+const example = HOME_EXAMPLES[locale][0];
+const stepLabels = locale === "zh-cn"
+  ? ["输入", "能力", "输出"]
+  : ["Input", "Capability", "Output"];
+const exampleValues = [example.input, example.capability, example.output];
 ---
 <section class="home-band home-band--white home-capability-guide" aria-labelledby="home-capability-title">
   <div class="home-inner home-capability-inner">
     <h2 id="home-capability-title" class="home-band__title">{locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}</h2>
     <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发选择可复用的 QA 能力；所有产出都需要结合项目上下文和人工评审。" : "Pick a reusable QA capability from the task at hand; every output still needs project context and human review."}</p>
     <ul class="capability-list" role="list">
-      {items.map(item => (
+      {items.map((item, i) => (
         <li>
           <a class="capability-item" data-home-capability={item.key} href={getRelativeLocaleUrl(locale, item.path)}>
-            <span class="capability-card__key">{item.key}</span>
+            <span class="capability-item__top">
+              <span class="capability-item__icon material-icons-sharp" aria-hidden="true">{CAPABILITY_ICONS[item.key] ?? "bolt"}</span>
+              <span class="capability-item__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+            </span>
             <h3 class="capability-item__title">{item.title}</h3>
             <p class="capability-card__desc">{item.desc}</p>
           </a>
@@ -30,14 +47,14 @@ const items = locale === "zh-cn" ? [
       ))}
     </ul>
     <p class="home-band__subtitle home-band__subtitle--spaced">{locale === "zh-cn" ? "一个从输入到可评审交付物的示例" : "One example from input to a reviewable deliverable"}</p>
-    <ol class="example-grid">
-      {HOME_EXAMPLES[locale].slice(0, 1).map(example => (
-        <li class="example-step" data-home-example={example.key}>
-          <p><strong>{locale === "zh-cn" ? "输入" : "Input"}</strong>{example.input}</p>
-          <span class="example-arrow" aria-hidden="true">→</span>
-          <p><strong>{locale === "zh-cn" ? "能力" : "Capability"}</strong>{example.capability}</p>
-          <span class="example-arrow" aria-hidden="true">→</span>
-          <p><strong>{locale === "zh-cn" ? "输出" : "Output"}</strong>{example.output}</p>
+    <ol class="example-flow" role="list" data-home-example={example.key}>
+      {exampleValues.map((value, i) => (
+        <li class="example-node">
+          <span class="example-node__badge" aria-hidden="true">{i + 1}</span>
+          <div class="example-node__body">
+            <strong>{stepLabels[i]}</strong>
+            <p>{value}</p>
+          </div>
         </li>
       ))}
     </ol>
@@ -61,93 +78,125 @@ const items = locale === "zh-cn" ? [
   .capability-list > li { display: block; }
 
   .capability-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: .55rem;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    border-left: 3px solid color-mix(in srgb, var(--color-theme) 62%, transparent);
+    padding: 1.15rem 1.2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.18);
     background: rgba(255,255,255,.82);
     color: inherit;
     text-decoration: none;
+    box-shadow: var(--shadow-sm);
     transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
   }
 
   .capability-item:hover,
   .capability-item:focus-visible {
     transform: translateY(-4px);
-    border-left-color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
     box-shadow: var(--shadow-md);
   }
 
-  .capability-card__key {
+  .capability-item__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+
+  .capability-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-md);
+    background: var(--color-theme-soft);
     color: var(--color-theme);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 1.45rem;
+  }
+
+  .capability-item__num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: color-mix(in srgb, var(--color-text-tertiary) 38%, transparent);
+    letter-spacing: -0.02em;
   }
 
   .capability-item__title {
     font-family: var(--font-heading);
     font-size: 1.0625rem;
-    font-weight: 600;
-    margin: 0;
+    font-weight: 800;
+    margin: .9rem 0 0;
   }
 
   .capability-card__desc {
-    grid-column: 1 / -1;
     margin: .45rem 0 0;
     font-size: .875rem;
     color: var(--color-text-secondary);
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
-  .example-grid {
+  /* 编号步骤流：输入 → 能力 → 输出 */
+  .example-flow {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .75rem;
   }
 
-  .example-step {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.1rem 1.3rem;
-    background: #fff;
+  .example-node {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    padding: 1.1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(148, 163, 184, 0.18);
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
   }
 
-  .example-step p {
+  .example-node__badge {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--gradient-theme);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: .85rem;
+    font-weight: 800;
+  }
+
+  .example-node__body strong {
+    display: block;
+    margin-bottom: .25rem;
+    color: var(--color-theme);
+    font-size: .75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .example-node__body p {
     margin: 0;
     line-height: 1.5;
     color: var(--color-text-secondary);
-  }
-
-  .example-step strong {
-    display: block;
-    margin-bottom: 0.25rem;
-    color: var(--color-theme);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-  }
-
-  .example-arrow {
-    color: var(--color-text-tertiary);
-    font-weight: 700;
+    font-size: .9rem;
   }
 
   @media (max-width: 700px) {
     .capability-list { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 650px) {
-    .example-step { grid-template-columns: 1fr; }
-    .example-arrow { transform: rotate(90deg); justify-self: start; }
+    .example-flow { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {

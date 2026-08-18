@@ -11,27 +11,60 @@ function targetHref(target: HomeTaskTarget) {
     `/${target.kind === "skill" ? "qaskills" : "prompts"}/${target.slug}/`,
   );
 }
+
+// 每个任务入口的语义图标（Material Icons Sharp 连字名）
+const TASK_ICONS: Record<string, string> = {
+  requirements: "fact_check",
+  strategy: "flag",
+  "test-cases": "checklist",
+  automation: "code",
+  bugs: "bug_report",
+  reporting: "assessment",
+};
+
+const startLabel = locale === "zh-cn" ? "开始任务" : "Start task";
+
+// 入口类型 chip 文案：skill / prompt
+function kindLabel(kind: HomeTaskTarget["kind"]) {
+  return kind === "skill" ? "Skill" : "Prompt";
+}
+
+const entries = HOME_TASK_ENTRIES[locale];
 ---
 <section class="home-band home-band--muted home-task-navigator" id="home-task-navigator" aria-labelledby="home-task-title">
   <div class="home-inner">
     <h2 id="home-task-title" class="home-band__title">{locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}</h2>
     <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发，直接进入对应的 Skill 或 Prompt；也可在详情页获取输入模板和执行方式。" : "Start with the task, open the matching Skill or Prompt, and use its input template and execution guide."}</p>
     <ul class="task-grid" role="list">
-      {HOME_TASK_ENTRIES[locale].map((entry) => (
-        entry.targets.length === 1 ? (
+      {entries.map((entry, i) => {
+        const icon = TASK_ICONS[entry.key] ?? "bolt";
+        const num = String(i + 1).padStart(2, "0");
+        const chip = entry.targets.length === 1 ? kindLabel(entry.targets[0].kind) : "Skill";
+        return entry.targets.length === 1 ? (
           <li class="task-card task-card--link" data-home-task={entry.key}>
             <a class="task-card__link" href={targetHref(entry.targets[0])}>
-              <h3>{entry.title}</h3>
-              <p class="task-card__desc">{entry.description}</p>
-              <span class="task-card__link-row">
-                <span>{entry.targets[0].label}</span>
-                <span>{locale === "zh-cn" ? "开始任务" : "Start task"} →</span>
+              <span class="task-card__top">
+                <span class="task-card__icon material-icons-sharp" aria-hidden="true">{icon}</span>
+                <span class="task-card__num" aria-hidden="true">{num}</span>
               </span>
+              <span class="task-card__head">
+                <h3>{entry.title}</h3>
+                <span class="task-card__chip">{chip}</span>
+              </span>
+              <p class="task-card__desc">{entry.description}</p>
+              <span class="task-card__cta">{startLabel}<span class="task-card__cta-arrow" aria-hidden="true">→</span></span>
             </a>
           </li>
         ) : (
           <li class="task-card" data-home-task={entry.key}>
-            <h3>{entry.title}</h3>
+            <span class="task-card__top">
+              <span class="task-card__icon material-icons-sharp" aria-hidden="true">{icon}</span>
+              <span class="task-card__num" aria-hidden="true">{num}</span>
+            </span>
+            <span class="task-card__head">
+              <h3>{entry.title}</h3>
+              <span class="task-card__chip">{chip}</span>
+            </span>
             <p class="task-card__desc">{entry.description}</p>
             <ul class="task-card__links" role="list">
               {entry.targets.map((target) => (
@@ -42,30 +75,144 @@ function targetHref(target: HomeTaskTarget) {
               ))}
             </ul>
           </li>
-        )
-      ))}
+        );
+      })}
     </ul>
   </div>
 </section>
 <style>
   .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; text-align:start; }
-  .task-card { display:flex; flex-direction:column; min-height:0; padding:1rem 1.1rem; border-left:3px solid color-mix(in srgb, var(--color-theme) 62%, transparent); border-radius:var(--radius-md); background:rgba(255,255,255,.82); box-shadow:var(--shadow-sm); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
-  h3 { margin:0 0 .3rem; font-family:var(--font-heading); font-size:1.0625rem; line-height:1.35; } .task-card__desc { margin:0 0 .7rem; font-size:.875rem; color:var(--color-text-secondary); line-height:1.5; }
-  /* 单目标任务：整卡作为链接，卡体任意位置可点（padding 移到链接上，覆盖整卡） */
+
+  .task-card {
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+    padding:1.15rem 1.2rem;
+    border:1px solid rgba(148, 163, 184, 0.18);
+    border-radius:var(--radius-lg);
+    background:rgba(255,255,255,.82);
+    box-shadow:var(--shadow-sm);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    overflow:hidden;
+  }
+
+  /* 单目标任务：整卡作为链接，卡体任意位置可点 */
   .task-card--link { padding: 0; }
-  .task-card--link .task-card__link { display:flex; flex:1; flex-direction:column; gap:0; padding:1rem 1.1rem; color:inherit; text-decoration:none; }
-  .task-card--link .task-card__link-row { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:var(--color-theme); font-size:.875rem; font-weight:800; }
-  .task-card__links { list-style:none; margin:auto 0 0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
-  .task-card__links a { color:var(--color-theme); text-decoration:none; font-weight:800; }
-  .task-card__links small { display:block; margin-top:2px; font-size:12px; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
+  .task-card--link .task-card__link {
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    gap:0;
+    padding:1.15rem 1.2rem;
+    color:inherit;
+    text-decoration:none;
+  }
+
+  .task-card__top {
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.75rem;
+  }
+
+  .task-card__icon {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:2.75rem;
+    height:2.75rem;
+    border-radius:var(--radius-md);
+    background:var(--color-theme-soft);
+    color:var(--color-theme);
+    font-size:1.45rem;
+  }
+
+  .task-card__num {
+    font-family:var(--font-heading);
+    font-size:2rem;
+    font-weight:800;
+    line-height:1;
+    color:color-mix(in srgb, var(--color-text-tertiary) 38%, transparent);
+    letter-spacing:-0.02em;
+  }
+
+  .task-card__head {
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    margin-top:.9rem;
+  }
+
+  h3 { margin:0; font-family:var(--font-heading); font-size:1.0625rem; font-weight:800; line-height:1.35; }
+
+  .task-card__chip {
+    display:inline-flex;
+    align-items:center;
+    padding:.18rem .55rem;
+    border-radius:var(--radius-xl);
+    background:var(--color-theme-soft);
+    color:var(--color-theme);
+    font-size:.7rem;
+    font-weight:800;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+
+  .task-card__desc { margin:.45rem 0 1rem; font-size:.875rem; color:var(--color-text-secondary); line-height:1.55; }
+
+  /* 底部药丸 CTA（单目标任务） */
+  .task-card__cta {
+    margin-top:auto;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    min-height:2.5rem;
+    padding:.4rem 1rem;
+    border-radius:var(--radius-xl);
+    border:1px solid var(--color-border-strong);
+    background:var(--color-theme-soft);
+    color:var(--color-theme);
+    font-size:.8rem;
+    font-weight:800;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+  .task-card__cta-arrow { font-weight:800; }
+
+  /* 多目标任务的内链列表 */
+  .task-card__links { list-style:none; margin:auto 0 0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+  .task-card__links a {
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    color:var(--color-theme);
+    text-decoration:none;
+    font-weight:800;
+    font-size:.875rem;
+  }
+  .task-card__links a::before {
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--color-theme);
+  }
+  .task-card__links small { display:block; margin-top:3px; padding-left:.85rem; font-size:12px; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
+
   /* 统一的卡片交互反馈：与最新文章卡/探索卡保持一致 */
   .task-card:hover,
   .task-card:focus-within {
     transform: translateY(-4px);
-    border-left-color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
     box-shadow: var(--shadow-md);
   }
-  .task-card--link .task-card__link:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 2px; border-radius: var(--radius-md); }
+  .task-card:hover .task-card__cta {
+    background: var(--color-theme-soft-hover);
+    border-color: var(--color-theme);
+  }
+  .task-card--link .task-card__link:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 2px; border-radius: var(--radius-lg); }
+
   @media (prefers-reduced-motion: reduce) {
     .task-card { transition: none; }
     .task-card:hover, .task-card:focus-within { transform: none; }
