@@ -93,7 +93,7 @@
 
 1. 先改本文件与 `base.css` token，再改壳层/页面
 2. 同步 `tests/unit/zenixDesignTokens.test.ts`
-3. 涉及首页结构时同步 `tests/e2e/specs/apple-home.spec.ts`、`tracking-contract.spec.ts`、`navigation.spec.ts`
+3. 涉及首页结构时同步 `tests/e2e/specs/home.spec.ts`、`tracking-contract.spec.ts`、`navigation.spec.ts`
 4. `npm run build` + 相关 e2e 通过后方可合入
 
 ---
