@@ -1,0 +1,110 @@
+---
+title: "From Requirements to Release: Running a Full Test Project with dsh-qa"
+description: "Follow a test project end to end with dsh-qa: requirements, test design, review gates, execution, defect regression, milestones, reporting, and release."
+date: 2026-08-19T00:00:00.000Z
+author: "nao.deng"
+cover: "./dsh-qa-test-project-full-lifecycle-cover.png"
+tags: ["AI in Testing"]
+categories: ["AI","QA Tools"]
+series: ["AI Testing"]
+
+---
+
+# From Requirements to Release: Running a Full Test Project with dsh-qa
+
+The previous post covered what dsh-qa is.  
+This one walks a test project from zero to release: what happens at each step, where the AI helps, and where a human decides.
+
+## Step 1: Create the project, folders appear automatically
+
+Create a new test project in dsh-qa and choose the **project** or **iteration** shape.  
+On creation it can auto-generate an eight-level local workspace:
+
+```
+01_需求与范围 / 02_测试计划 / 03_测试用例 / 04_测试数据与脚本 /
+05_测试执行 / 06_缺陷 / 07_测试报告 / 08_发布与归档
+```
+
+The folder layout is the convention — project files land in the right stage from day one.  
+Deleting the project record never deletes the folders, so archives survive.
+
+## Requirements analysis: the AI boards the requirements first
+
+Hand the requirements document to the project's DSH session and let the AI break it down.  
+It registers the requirements on the board, links test cases with verification purposes, and flags scope and risks.
+
+You see requirement cards on the kanban immediately — not something lost in a chat transcript.
+
+## Test design: executable, judgeable, traceable
+
+Ask the AI to draft test cases from the requirements. The quality principles are baked into Test Mode (preset id: `qa`):
+
+- Test cases must be executable and judgeable
+- Cover positive, exception, and boundary scenarios
+- Organized by requirement-trace `trace` and risk tags
+
+Each case carries a priority and one of three states, and appears on the board as soon as it is registered.  
+Combine this with [awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills) — `/test-case-writing`, `/test-case-reviewer` — for steadier output.
+
+## Case review: the gate that keeps quality honest
+
+Cases don't go straight to execution.  
+The AI submits a case review request, and the **test owner approves it manually**. On approval the card moves to "In Execution"; otherwise it goes back for revision.
+
+The same applies to requirements review, strategy review, report review, release, and closure — the AI requests and organizes, people approve.
+
+## Execution & defect regression: live board + automation results
+
+During execution, results can be imported directly:
+
+- Playwright / Pytest results land on the board via the `testrun_import` tool
+- Manual results move cards between columns with drag-and-drop
+
+For defects, the AI sets severity based on business impact, records reproduction frequency and impact scope, and separates "observed facts" from "cause guesses" — no fabricated data, no guesses dressed up as conclusions.  
+Fixed defects move to "Defect Regression" and only enter "Released" after passing regression.
+
+## Milestones: due dates computed, reminders built in
+
+Milestones get their due dates computed automatically, with overdue marked red and due-within-7-days in yellow.  
+The dashboard and calendar show them together — no digging through email for the schedule.
+
+## Test reports: versioned and accumulated
+
+The AI can draft test reports and save them as versions, distinguishing:
+
+- Executed facts
+- Unexecuted scope
+- Evidence gaps
+
+Released reports join requirements, cases, defects, milestones, knowledge, and minutes in the project archive — a knowledge base that grows with the project.
+
+## Project archive: nine sections, one workspace
+
+The wide project detail centralizes nine sections:
+
+```
+Overview / Requirements / Test Cases / Defects / Milestones / Reports / Knowledge / Minutes / Gates
+```
+
+Plus progress, AI strategy, members, file directory, and a stage timeline.  
+Where the project stands, what is blocked, who owns what — one workspace shows it all.
+
+## Who decides, who does the work
+
+dsh-qa keeps the split clear:
+
+- **The AI does the work**: breaking down requirements, writing cases, registering defects, computing milestones, drafting reports, submitting gates
+- **People decide**: approving gates, confirming severity, making the release call
+
+That is a pragmatic way to bring AI into testing: AI increases speed, people protect quality.
+
+## Start today
+
+The fastest path:
+
+1. Install the plugin: `dsh plugin --profile web add github:naodeng/dsh-qa`
+2. Install Test Mode: `scripts/install-qa-preset.sh`
+3. Restart `dsh web` and open **QA Workbench** from the sidebar
+4. Create a project — or explore the two samples created on first launch
+
+Repository: https://github.com/naodeng/dsh-qa

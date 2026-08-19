@@ -1,0 +1,112 @@
+---
+title: "dsh-qa: An AI Testing Workbench Inside DeepSeek Harness"
+description: "dsh-qa is a local testing workbench plugin for DeepSeek Harness: dashboard, calendar, kanban, gates, and AI collaboration on one screen, with a DSH session per project."
+date: 2026-08-19T00:00:00.000Z
+author: "nao.deng"
+cover: "./dsh-qa-ai-testing-workbench-cover.png"
+tags: ["AI in Testing"]
+categories: ["AI","QA Tools"]
+series: ["AI Testing"]
+
+---
+
+# dsh-qa: An AI Testing Workbench Inside DeepSeek Harness
+
+A QA team's daily work is scattered across too many places.
+
+Requirements live in a doc, test cases in a spreadsheet, defects in a tracker, milestones in a calendar, and test reports in email.  
+AI chat is yet another silo: promising discussions get forgotten, nothing the AI produces gets reviewed, and process artifacts never accumulate.
+
+dsh-qa (QA Workbench) is built for exactly this problem.  
+It is a local testing workbench plugin for DeepSeek Harness: to-dos, calendar scheduling, project overviews, a six-column kanban, and AI collaboration on one screen. Each test project binds its own native DSH session that automatically uses Test Mode (preset id: `qa`).
+
+## One screen for the whole daily routine
+
+The first screen you see is the test dashboard:
+
+- Active projects, due-soon/overdue milestones, pending gates, open defects, and recent activity, all in real time
+- Calendar with year/month/day navigation; click a date to add a milestone or event
+- Overdue milestones in red, due-within-7-days in yellow, pending gates in purple — live counts in the top bar
+
+Project management comes in two shapes — **project or iteration** — where an iteration can hang off a parent project. Both bind their own DSH session, and the filter bar separates them.
+
+## Six-column kanban, drag and drop
+
+The board is a standard six-column pipeline:
+
+```
+Requirements → Test Design → Case Review → In Execution → Defect Regression → Released
+```
+
+Cards move between columns by drag-and-drop, pushed over SSE in real time and synced across windows.  
+Every requirement, test case, defect, or milestone the AI registers appears on kanban cards and in the material feed instantly — no manual copying.
+
+## AI collaboration: full, on-demand, or off
+
+dsh-qa keeps AI collaboration controllable, with three modes per project:
+
+- **Full assistance**: the AI extracts and registers content from the conversation automatically
+- **On-demand**: register only when you explicitly ask
+- **Off**: use the workbench purely for project management
+
+Auto-extraction and dashboard reminders can be toggled independently.  
+The AI registers requirements linkable to test cases with verification purposes; test cases with priority, requirement-trace `trace`, and risk tags; defects with business-impact-based severity plus reproduction frequency and impact scope; milestones with auto-computed due dates; and versioned test reports. Playwright / Pytest automation results can be imported directly.
+
+## Gate governance: the AI requests, humans approve
+
+Requirements review, strategy review, case review, report review, release, and closure — the AI submits the request, and the **test owner approves manually**.  
+Quality decisions stay with people; the AI keeps the process moving.
+
+## Every project is its own DSH session
+
+dsh-qa does not maintain a second set of API keys or model configs:
+
+- Each test project binds a native DSH session whose working directory is the project folder
+- It automatically uses Test Mode (preset id: `qa`); the model list, model switching, skills, commands, tools, and permission policies all come from DSH
+- Type `/` in the chat for instant suggestions; the skills & commands panel supports categories, search, and click-to-insert
+
+## Installation & quick start
+
+```bash
+# Install as a DSH plugin (recommended)
+dsh plugin --profile web add github:naodeng/dsh-qa
+```
+
+Restart `dsh web` after installing, and a **QA Workbench** entry appears in the GUI sidebar.  
+Before first use, install the Test Mode preset:
+
+```bash
+scripts/install-qa-preset.sh
+```
+
+Want to try it without installing? Run it standalone:
+
+```bash
+git clone https://github.com/naodeng/dsh-qa.git
+cd dsh-qa
+npm start        # → http://127.0.0.1:8899
+```
+
+On first launch it creates two sample workspaces (one project + one iteration) with requirements, test cases, defects, milestones, reports, and a pending approval gate — explore them right away.
+
+## Ecosystem
+
+- [awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills): 92 Chinese + English testing skills, installable into the DSH skills directory with one command
+- [awesome-qa-prompt](https://github.com/naodeng/awesome-qa-prompt): multi-role QA workflows
+- The UI supports one-click zh/en switching, four QA themes, adjustable workspace layouts, and DSH Remote pairing for mobile access
+
+## All data stays local
+
+Plugin mode stores data in `~/.dsh/dsh-qa/`; standalone mode keeps it in the project's `data/` folder.  
+Zero npm dependencies, no build step, and both the workbench and DSH listen only on `127.0.0.1`.  
+Your test projects' business data and chat history stay on your own machine.
+
+## Who is it for
+
+- QA engineers who want one entry point for their testing work
+- Test leads who need to unify processes and output standards across projects
+- Teams introducing AI into testing without being led around by a black box
+- Developers using DeepSeek Harness who want to extend its capabilities
+
+If you already run DeepSeek Harness, installing dsh-qa takes one command.  
+Repository: https://github.com/naodeng/dsh-qa
