@@ -12,6 +12,12 @@ series: ["AI Testing"]
 
 # dsh-qa: An AI Testing Workbench Inside DeepSeek Harness
 
+Before getting into dsh-qa, it helps to understand the host it extends. [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — usually shortened to `dsh` — is an open-source agent harness from DeepSeek AI built around a plugin architecture: **everything is a plugin**. It runs a local Web UI, gives plugins access to the host's agent capabilities, and uses Cordis as the underlying composability layer.
+
+The project has attracted serious attention unusually quickly. As of **August 20, 2026**, its GitHub repository displayed approximately **167.3k stars and 17.9k forks**. That is the useful meaning of “hot” here: there is a large public audience experimenting with the project, building plugins, and finding the edges of the platform. It is not a promise that every integration is stable.
+
+DeepSeek Harness is still in **developer preview**, and the official repository explicitly warns that compatibility-breaking changes will happen. That matters for dsh-qa. The workbench follows the host's plugin and session APIs, so users should expect to update both projects together while the ecosystem is moving this quickly.
+
 A QA team's daily work is scattered across too many places.
 
 Requirements live in a doc, test cases in a spreadsheet, defects in a tracker, milestones in a calendar, and test reports in email.  

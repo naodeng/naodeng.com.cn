@@ -12,6 +12,12 @@ series: ["AI 辅助测试"]
 
 # 质量工作台 dsh-qa：把 AI 测试工作台装进 DeepSeek Harness
 
+在进入 dsh-qa 之前，先说明它所依托的平台。[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)，通常简称 `dsh`，是 DeepSeek AI 开源的 agent harness，核心架构是插件化——**Everything is a Plugin**。它提供本地 Web UI，让插件复用宿主的智能体能力，底层使用 Cordis 作为可组合运行时。
+
+这个项目在很短时间内吸引了大量关注。截至 **2026 年 8 月 20 日**，官方 GitHub 仓库页面显示约 **16.73 万 stars、1.79 万 forks**。所谓“火爆”在这里有一个更具体的含义：大量开发者正在试用、扩展插件，也在快速暴露平台的边界。它不等于所有集成现在都已经稳定。
+
+DeepSeek Harness 目前仍处于 **developer preview（开发者预览）** 阶段，官方仓库明确提醒后续会出现不兼容变更。这对 dsh-qa 很重要：工作台依赖宿主的插件和会话 API，平台快速演进时，用户需要把两个项目放在一起更新和验证。
+
 测试团队的日常工作，散落得太开了。
 
 需求在文档里，用例在表格里，缺陷在系统里，里程碑在日历里，测试报告在邮件里。  
