@@ -12,8 +12,15 @@ series: ["AI Testing"]
 
 # From Requirements to Release: Running a Full Test Project with dsh-qa
 
-The previous post covered what dsh-qa is.  
-This one walks a test project from zero to release: what happens at each step, where the AI helps, and where a human decides.
+The previous post introduced dsh-qa as a testing workbench inside DeepSeek Harness. This article follows the records that workbench creates, from the first requirement to release and archive.
+
+If you want the shorter product tour first, read [dsh-qa: An AI Testing Workbench Inside DeepSeek Harness](/en/blog/ai-testing/dsh-qa-ai-testing-workbench/).
+
+Before following the lifecycle, one sentence about the platform underneath it: [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness), or `dsh`, is DeepSeek AI's open-source, plugin-first agent harness. Its official description is simple — everything is a plugin — and that is why dsh-qa can add a testing workbench without becoming a separate agent stack.
+
+The platform is also moving fast. On **August 20, 2026**, the official GitHub repository displayed approximately **167.3k stars and 17.9k forks**, a strong public signal that developers are actively trying it and extending it. The same repository labels the software **developer preview** and warns about compatibility-breaking changes. So the workflow in this article is practical, but the integration should be treated as a moving target.
+
+The result is a workflow that starts in a DSH project session but does not end in chat: what happens at each step, where the AI helps, and where a human decides all remain visible in the project records.
 
 The example below is a workflow walkthrough, not a claim that dsh-qa can approve a release by itself. The point is to follow the records as they move: a requirement becomes a testable scope, test cases gain traceability, execution creates evidence, defects return to regression, and the report preserves what was actually done.
 

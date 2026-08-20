@@ -1,6 +1,6 @@
 ---
 title: "从需求分析到发布归档：一个测试项目如何用 dsh-qa 走完全流程"
-description: "用一个真实项目走一遍 dsh-qa 的完整测试流程：需求分析、用例设计、评审门禁、执行回归、里程碑、测试报告到发布归档，看 AI 协作与人工审批如何配合。"
+description: "用一个测试项目走一遍 dsh-qa 的完整测试流程：需求分析、用例设计、评审门禁、执行回归、里程碑、测试报告到发布归档，看 AI 协作与人工审批如何配合。"
 date: 2026-08-19T00:00:00.000Z
 author: "nao.deng"
 cover: "./dsh-qa-test-project-full-lifecycle-cover.png"
@@ -12,8 +12,15 @@ series: ["AI 辅助测试"]
 
 # 从需求分析到发布归档：一个测试项目如何用 dsh-qa 走完全流程
 
-上一篇介绍了 dsh-qa 是什么。  
-这篇我们跟着一个测试项目，从零到发布走一遍：每一步做什么、AI 在哪里帮忙、人在哪里把关。
+上一篇介绍了 dsh-qa 如何作为 DeepSeek Harness 里的测试工作台。这篇继续往下走，跟着工作台产生的记录，从第一条需求一直走到发布和归档。
+
+如果想先看产品概览，可以先阅读[《质量工作台 dsh-qa：把 AI 测试工作台装进 DeepSeek Harness》](/zh-cn/blog/ai-testing/dsh-qa-ai-testing-workbench/)。
+
+在开始生命周期 walkthrough 之前，先说清楚底层平台：[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)，简称 `dsh`，是 DeepSeek AI 开源的插件优先 agent harness。官方项目的核心描述很直接——一切都是插件——所以 dsh-qa 可以增加测试工作台，而不必再造一套独立的智能体系统。
+
+这个平台也在快速变化。截至 **2026 年 8 月 20 日**，官方 GitHub 仓库页面显示约 **16.73 万 stars、1.79 万 forks**，说明开发者正在密集试用和扩展它。与此同时，官方仓库把项目标记为 **developer preview（开发者预览）**，并提醒会出现不兼容变更。因此，本文的流程可以实际体验，但集成应当被视为一个持续变化的目标。
+
+最后要看的不是聊天内容本身，而是一条从 DSH 项目会话开始、却不会停在聊天里的工作流：每一步做什么、AI 在哪里帮忙、人在哪里把关，都留在项目记录中。
 
 下面是一个工作流 walkthrough，不代表 dsh-qa 可以自己批准发布。重点是跟着记录走：需求变成可测试范围，用例获得可追踪关系，执行产生证据，缺陷回到回归，报告保留实际完成的事情。
 
