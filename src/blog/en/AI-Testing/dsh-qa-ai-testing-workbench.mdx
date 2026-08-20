@@ -18,7 +18,7 @@ The project has attracted serious attention unusually quickly. As of **August 20
 
 DeepSeek Harness is still in **developer preview**, and the official repository explicitly warns that compatibility-breaking changes will happen. That matters for dsh-qa. The workbench follows the host's plugin and session APIs, so users should expect to update both projects together while the ecosystem is moving this quickly.
 
-A QA team's daily work is scattered across too many places.
+For a QA engineer, the plugin architecture has a practical implication: testing workflows can live inside the same agent environment as the conversation that drives them. That is the opening dsh-qa uses. The problem it starts with is ordinary and painfully familiar — a QA team's daily work is scattered across too many places.
 
 Requirements live in a doc, test cases in a spreadsheet, defects in a tracker, milestones in a calendar, and test reports in email.  
 AI chat is yet another silo: promising discussions get forgotten, nothing the AI produces gets reviewed, and process artifacts never accumulate.
@@ -146,6 +146,8 @@ If you already run DeepSeek Harness, installing dsh-qa takes one command.
 Repository: https://github.com/naodeng/dsh-qa
 
 The shortest evaluation path is: install the plugin, install the `qa` preset, open the seeded project, and ask the project session to register one requirement. Then inspect the resulting board card, material entry, and gate state. That small loop tells you more about the workbench than another feature list.
+
+For the record-by-record walkthrough, continue with [From Requirements to Release: Running a Full Test Project with dsh-qa](/en/blog/ai-testing/dsh-qa-test-project-full-lifecycle/).
 
 ## Project status and how to help
 
