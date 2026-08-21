@@ -736,8 +736,8 @@ export const NAV_QA_SKILLS: Multilingual = {
 
 /** 提示词列表页 SEO 标题 */
 export const PROMPTS_PAGE_TITLE: Multilingual = {
-  en: "QA Prompts & Software Testing Prompt Library",
-  "zh-cn": "QA 提示词与软件测试提示词库",
+  en: "Software Testing Prompt Library",
+  "zh-cn": "软件测试提示词库",
 };
 
 /** 提示词列表页 SEO 描述 */
