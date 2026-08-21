@@ -163,6 +163,12 @@ export const LEARNING_SITES: ReadonlyArray<{
     url: "https://30-day-qa-playwright-learning-plan.inaodeng.com/",
     icon: "science",
   },
+  {
+    key: "deepseek-learning",
+    label: { en: "DeepSeek Learning Plan", "zh-cn": "DeepSeek 学习计划" },
+    url: "https://30-day-qa-deepseek-learning-plan.inaodeng.com/",
+    icon: "psychology",
+  },
 ];
 
 /** 底部导航：软件测试百科 */
