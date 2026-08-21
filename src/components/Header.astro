@@ -39,6 +39,7 @@ const isGuildSection = () => isSectionPath("/guild");
 const isPromptsSection = () => isSectionPath("/prompts");
 const isQASkillsSection = () => isSectionPath("/qaskills");
 const isProjectsSection = () => isSectionPath("/projects");
+const isResourcesSection = () => isSectionPath("/resources");
 const isSponsorSection = () => isSectionPath("/sponsor");
 const siteTitle = t(SITE_TITLE);
 
@@ -119,7 +120,7 @@ const navGroups: NavGroup[] = [
   {
     key: "more",
     label: t(NAV_MORE),
-    active: isProjectsSection() || isSponsorSection(),
+    active: isProjectsSection() || isSponsorSection() || isResourcesSection(),
     items: [
       ...(locale === "zh-cn"
         ? LEARNING_SITES.map((site) => ({
@@ -137,6 +138,13 @@ const navGroups: NavGroup[] = [
         label: t(NAV_PROJECTS),
         icon: "folder",
         active: isProjectsSection(),
+      },
+      {
+        key: "resources",
+        href: getRelativeLocaleUrl(locale, "/resources"),
+        label: locale === "zh-cn" ? "资源导航" : "Resources",
+        icon: "apps",
+        active: isResourcesSection(),
       },
       {
         key: "sponsor",
