@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Base from "@/layouts/Base.astro";
+import { LOCALES, type Lang } from "@/i18n";
+import { PROJECTS_LIST } from "@/data/projects";
+import { LEARNING_SITES } from "@/consts";
+import { getQASkillsGrouped } from "@/utils/qaskills";
+import { aiwikiIdToLang, aiwikiIdToSlug, getAiWikiDisplayTitle } from "@/data/aiwiki";
+
+export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+
+const locale = Astro.params.lang as Lang;
+const isZh = locale === "zh-cn";
+const text = isZh ? {
+  title: "资源导航", description: "集中浏览软件测试、AI、学习与项目资源。", intro: "从可直接使用的 QA Skills 和提示词，到 Wiki、指南、项目、博客与 30 天学习计划，一站找到下一步。", viewAll: "查看全部", open: "打开资源", items: "项资源", external: "外部资源", tags: "标签", updated: "持续更新",
+  sections: { skills: "测试技能", prompts: "测试提示词", aiwiki: "AI Wiki", wiki: "测试 Wiki", guides: "指南资源", projects: "项目列表", blog: "博客列表", plans: "30 天学习计划" },
+  descriptions: { skills: "面向 AI Agent 与测试工作流的可执行 QA 技能。", prompts: "覆盖测试生命周期的可复用 AI 提示词。", aiwiki: "解释 AI、Agent 与质量工程概念的词条。", wiki: "软件测试术语与实践知识库。", guides: "按测试类型、框架和学习阶段组织的自动化测试指南。", projects: "可参考、运行和继续学习的开源 QA 项目。", blog: "软件测试、自动化、AI 与质量实践文章。", plans: "按不同主题循序学习，每天完成一个小目标。" }
+} : {
+  title: "Resource Hub", description: "Browse software testing, AI, learning, and project resources in one place.", intro: "Find your next step across reusable QA Skills and prompts, wikis, guides, projects, blog posts, and 30-day learning plans.", viewAll: "View all", open: "Open resource", items: "resources", external: "External resource", tags: "Tags", updated: "Updated continuously",
+  sections: { skills: "Testing Skills", prompts: "Testing Prompts", aiwiki: "AI Wiki", wiki: "Testing Wiki", guides: "Guide Resources", projects: "Projects", blog: "Blog", plans: "30-Day Learning Plans" },
+  descriptions: { skills: "Executable QA skills for AI agents and testing workflows.", prompts: "Reusable AI prompts covering the software testing lifecycle.", aiwiki: "Entries explaining AI, agents, and quality engineering concepts.", wiki: "A practical glossary and knowledge base for software testing.", guides: "Automation testing guides organized by type, framework, and stage.", projects: "Open QA projects to reference, run, and learn from.", blog: "Writing on software testing, automation, AI, and quality practice.", plans: "Learn progressively with one focused goal each day." }
+};
+
+const grouped = await getQASkillsGrouped(locale);
+const skills = [...grouped.testingTypes, ...grouped.testingWorkflows, ...grouped.plus].map((item) => ({ title: locale === "zh-cn" ? (item.chineseName || item.title) : item.title, description: item.description || (isZh ? "可复用的软件测试技能。" : "A reusable software testing skill."), href: getRelativeLocaleUrl(locale, `/qaskills/${item.slug}/`), tags: [item.category || "QA Skill"] }));
+const prompts = (await getCollection("prompts")).filter((item) => item.data.lang === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/prompts/${item.data.testingType}/`), tags: [item.data.testingType, item.data.promptVersion] }));
+const aiwiki = (await getCollection("aiwiki")).filter((item) => (item.data.lang || aiwikiIdToLang(item.id)) === locale).map((item) => ({ title: getAiWikiDisplayTitle(item, locale), description: item.data.summary || item.data.description || "", href: getRelativeLocaleUrl(locale, `/AIWiki/${item.data.slug || aiwikiIdToSlug(item.id)}/`), tags: item.data.topic ? [item.data.topic] : [] }));
+const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${item.id}/`), tags: item.data.section ? [item.data.section] : [] })) : [];
+const guides = (await getCollection("guild")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/guild/${item.data.testType}/${item.data.framework}/`), tags: [item.data.framework, item.data.stage] }));
+const projects = PROJECTS_LIST.map((item) => ({ title: item.name[locale] || item.name.en || "Project", description: item.description[locale] || item.description.en || "", href: item.url, tags: (item.techStack[locale] || item.techStack.en || "").split(/[、,，]/).slice(0, 3) }));
+const posts = (await getCollection("blog")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((item) => { const [, ...parts] = item.id.split("/"); return { title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/blog/${parts.join("/").toLowerCase()}/`), tags: item.data.tags || [] }; });
+const plans = LEARNING_SITES.map((item) => ({ title: item.label[locale as "en" | "zh-cn"], description: text.descriptions.plans, href: item.url, tags: [isZh ? "30 天" : "30 days", isZh ? "学习计划" : "learning plan"] }));
+
+const sections = [
+  { key: "skills", data: skills, href: "/qaskills/" }, { key: "prompts", data: prompts, href: "/prompts/" }, { key: "aiwiki", data: aiwiki, href: "/AIWiki/" }, { key: "wiki", data: wiki, href: "/wiki/" }, { key: "guides", data: guides, href: "/guild/" }, { key: "projects", data: projects, href: "/projects/" }, { key: "blog", data: posts, href: "/blog/" }, { key: "plans", data: plans, href: "#plans" },
+];
+const breadcrumbs = [{ name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl(locale, "/") }, { name: text.title, url: getRelativeLocaleUrl(locale, "/resources/") }];
+---
+
+<Base title={text.title} description={text.description} breadcrumbs={breadcrumbs}>
+  <div class="resource-page">
+    <header class="resource-hero"><p class="eyebrow">{isZh ? "NAODENG / QA" : "NAODENG / QA"}</p><h1>{text.title}</h1><p>{text.intro}</p><nav class="resource-index" aria-label={isZh ? "资源分类" : "Resource categories"}>{sections.map((section) => <a href={`#${section.key}`}>{text.sections[section.key as keyof typeof text.sections]}</a>)}</nav></header>
+    {sections.map((section) => <section class="resource-section" id={section.key} aria-labelledby={`${section.key}-title`}><div class="section-heading"><div><p class="section-kicker">{String(section.data.length).padStart(2, "0")} {text.items}</p><h2 id={`${section.key}-title`}>{text.sections[section.key as keyof typeof text.sections]}</h2><p>{text.descriptions[section.key as keyof typeof text.descriptions]}</p></div>{section.href.startsWith("#") ? null : <a class="view-all" href={getRelativeLocaleUrl(locale, section.href)}>{text.viewAll} <span aria-hidden="true">→</span></a>}</div><div class="resource-grid">{section.data.map((item) => <a class="resource-card" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}><div class="card-top"><span class="card-mark" aria-hidden="true">✦</span><span class="card-arrow" aria-hidden="true">↗</span></div><h3>{item.title}</h3><p>{item.description}</p>{item.tags.length > 0 && <div class="card-tags">{item.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}</div>}<span class="card-link">{text.open}</span></a>)}</div></section>)}
+  </div>
+</Base>
+
+<style>
+  .resource-page { max-width: 72rem; margin: 0 auto; padding: 2rem var(--sp-m) 5rem; }
+  .resource-hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); }
+  .eyebrow, .section-kicker { margin: 0 0 .65rem; color: var(--color-theme); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .resource-hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; color: var(--color-main); }
+  .resource-hero > p:not(.eyebrow) { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.08rem; line-height: 1.7; opacity: .78; }
+  .resource-index { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+  .resource-index a, .card-tags span { padding: .38rem .7rem; border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: 999px; color: var(--color-main); text-decoration: none; font-size: .82rem; }
+  .resource-index a:hover, .resource-index a:focus-visible { background: var(--color-theme); color: var(--color-base); }
+  .resource-section { padding: 3.5rem 0 0; scroll-margin-top: 5rem; }
+  .section-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1.25rem; }
+  .section-heading h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--color-main); }
+  .section-heading p:not(.section-kicker) { max-width: 42rem; margin: .55rem 0 0; line-height: 1.55; opacity: .7; }
+  .view-all { flex: 0 0 auto; color: var(--color-theme); font-weight: 700; text-decoration: none; }
+  .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; }
+  .resource-card { display: flex; min-height: 14rem; flex-direction: column; padding: 1.15rem; border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); color: inherit; text-decoration: none; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .resource-card:hover { transform: translateY(-4px); border-color: var(--color-theme); box-shadow: 0 12px 30px color-mix(in srgb, var(--color-theme) 13%, transparent); }
+  .card-top { display: flex; justify-content: space-between; color: var(--color-theme); }
+  .card-mark { font-size: 1.2rem; }.card-arrow { opacity: .6; }
+  .resource-card h3 { margin: 1.2rem 0 .55rem; font-size: 1.05rem; line-height: 1.35; color: var(--color-main); }
+  .resource-card p { flex: 1; margin: 0 0 1rem; font-size: .88rem; line-height: 1.55; opacity: .72; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }.card-tags span { padding: .2rem .5rem; font-size: .7rem; opacity: .75; }
+  .card-link { color: var(--color-theme); font-size: .8rem; font-weight: 800; }
+  @media (max-width: 640px) { .resource-page { padding-top: 1rem; }.resource-hero { padding-top: 1.5rem; }.section-heading { align-items: start; flex-direction: column; gap: .7rem; }.resource-grid { grid-template-columns: 1fr; } }
+</style>

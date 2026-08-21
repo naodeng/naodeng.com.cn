@@ -1,6 +1,6 @@
 ---
 title: "K6 Performance Testing Tutorial - Advanced Usage: HTML Report Output and CI/CD Integration"
-description: "This blog post explores advanced K6 performance testing usage, focusing on generating HTML reports and integrating K6 into CI/CD pipelines, particularly with GitHub Actions. Readers will learn how to generate detailed HTML test reports and integrate K6 into CI/CD workflows through GitHub Actions for automated performance testing. These advanced techniques not only provide more intuitive performance test result visualization but also ensure timely execution of performance tests, helping to identify and resolve potential performance issues during development."
+description: "Learn how to generate HTML reports from K6 performance tests and publish them in a GitHub Actions CI/CD pipeline for repeatable performance feedback."
 testType: performance-testing
 framework: k6
 language: JavaScript

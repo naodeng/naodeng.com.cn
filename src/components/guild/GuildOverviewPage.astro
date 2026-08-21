@@ -45,9 +45,27 @@ const guildSchema = {
 };
 
 const visibleTestTypes = guildConfig.testTypes.filter((t) => t.id !== "ui-testing");
+const learningPathListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: isZh ? "测试类型学习路径" : "Testing Type Learning Paths",
+  numberOfItems: visibleTestTypes.length,
+  itemListElement: visibleTestTypes.map((testType, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: testType.title,
+    url: `${siteOrigin}/${locale}/guild/${testType.id}/`,
+  })),
+};
 ---
 
-<Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs} extraStructuredData={[guildSchema]}>
+<Base
+  title={title}
+  description={description}
+  keywords={keywords}
+  breadcrumbs={breadcrumbs}
+  extraStructuredData={[guildSchema, learningPathListSchema]}
+>
   <div class="l-content guild-page">
     <GuildHero locale={locale} />
 

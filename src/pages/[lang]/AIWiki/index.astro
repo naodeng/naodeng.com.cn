@@ -34,12 +34,40 @@ const letterSections = sidebarSections.filter((s) => s.title);
 const basePath = `/${locale}/AIWiki`;
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: `${siteOrigin}${basePath}/`,
+  inLanguage: locale === "zh-cn" ? "zh-CN" : "en",
+};
+const itemListItems = letterSections.flatMap((section) =>
+  section.items.map((item) => ({
+    name: item.label,
+    url: `${siteOrigin}${basePath}/${item.href}/`,
+  })),
+);
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: title,
+  numberOfItems: totalCount,
+  itemListElement: itemListItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+  })),
+};
 ---
 
 <DocsLayout
   title={title}
   description={description}
   keywords={keywords}
+  structuredData={[collectionSchema, itemListSchema]}
   breadcrumbs={breadcrumbs}
   sidebarSections={sidebarSections}
   currentPath=""

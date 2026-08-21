@@ -1,6 +1,6 @@
 ---
 title: "Bruno API Automation Testing Tutorial: Building a Bruno API Automation Test project from 0 to 1"
-description: "This blog post serves as a tutorial on Bruno API automation testing, guiding readers on constructing a Bruno API automation test project from scratch. The article provides detailed instructions on establishing the foundational structure of a test project, configuring the environment, and writing the first API test case. Through this tutorial, readers will progressively grasp the usage of the Bruno framework, building a comprehensive API automation test project from inception to completion. This process aims to enhance testing efficiency and maintainability."
+description: "Build a Bruno API automation project from scratch: set up the project structure, configure the environment, write your first API test, and keep the suite maintainable."
 testType: api-testing
 framework: bruno
 language: JavaScript
@@ -273,4 +273,3 @@ For Bruno installation and basic usage, please refer to: [Introduction to using 
 
 - Bruno Official Documentation [https://docs.usebruno.com/](https://docs.usebruno.com/)
 - Introduction to using Bruno as a postman replacement [https://naodeng.com.cn/en/posts/api-automation-testing/introduction_of_bruno/](https://naodeng.com.cn/en/posts/api-automation-testing/introduction_of_bruno/)
-

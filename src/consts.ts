@@ -163,6 +163,12 @@ export const LEARNING_SITES: ReadonlyArray<{
     url: "https://30-day-qa-playwright-learning-plan.inaodeng.com/",
     icon: "science",
   },
+  {
+    key: "deepseek-learning",
+    label: { en: "DeepSeek Learning Plan", "zh-cn": "DeepSeek 学习计划" },
+    url: "https://30-day-qa-deepseek-learning-plan.inaodeng.com/",
+    icon: "psychology",
+  },
 ];
 
 /** 底部导航：软件测试百科 */
@@ -742,8 +748,8 @@ export const PROMPTS_PAGE_TITLE: Multilingual = {
 
 /** 提示词列表页 SEO 描述 */
 export const PROMPTS_PAGE_DESCRIPTION: Multilingual = {
-  en: "A curated collection of AI prompts for QA and software testing: covering 15 testing types and 6 prompt frameworks in English and Chinese.",
-  "zh-cn": "专为 QA 和软件测试设计的 AI 提示词精选集合，涵盖 15 种测试类型和 6 种提示词框架，支持中英双语。",
+  en: "A curated QA prompt library for software testing, covering 15 testing types and 6 prompt frameworks in English and Chinese.",
+  "zh-cn": "面向 QA 与软件测试的提示词库，涵盖 15 种测试类型和 6 种提示词框架，支持中英双语。",
 };
 
 /** 工作流程区块标题 */

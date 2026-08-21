@@ -3,7 +3,7 @@ title: "Codex"
 titleZh: "Codex"
 slug: "codex"
 lang: "en"
-summary: "OpenAI’s coding-focused model/product line, evolving from early code generation models to modern agentic coding systems."
+summary: "Codex explained: its origins, evolution, practical use cases, and engineering boundaries for teams evaluating AI coding systems."
 topic: "ai-vibe-coding"
 aliases:
   - "OpenAI Codex"

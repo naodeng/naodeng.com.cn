@@ -29,6 +29,7 @@
     "wiki:integrity:check:strict": "node scripts/wiki-aiwiki-integrity-check.mjs --strict",
     "seo:check": "node scripts/seo-static-check.mjs",
     "seo:check:strict": "node scripts/seo-static-check.mjs --strict",
+    "seo:build:check": "node scripts/seo-build-check.mjs",
     "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs",
     "prompts:sync": "node scripts/sync-prompts-from-repo.mjs",
     "content:sync": "npm run qaskills:sync && npm run prompts:sync",
