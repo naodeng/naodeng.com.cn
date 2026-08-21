@@ -3,7 +3,7 @@ title: "Codex"
 titleEn: "Codex"
 slug: "codex"
 lang: "zh-cn"
-summary: "OpenAI 面向编程任务的模型/产品线，从早期代码生成模型演进到近年常见的智能体式编码系统。"
+summary: "Codex 详解：从早期代码生成模型的起源，到现代 AI 编程系统的演进、实际使用场景与团队需要关注的工程边界。"
 topic: "ai-vibe-coding"
 aliases:
   - "OpenAI Codex"

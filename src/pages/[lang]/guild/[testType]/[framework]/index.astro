@@ -92,9 +92,36 @@ const diffLabel = locale === "zh-cn"
 const richDesc = locale === "zh-cn"
   ? `${frameworkConfig.description}。本专区提供 ${frameworkEntries.length} 篇系统化教程，覆盖从环境搭建到 CI/CD 集成的完整学习路径，适合${diffLabel}开发者和测试工程师快速上手 ${testTypeConfig.title}。`
   : `${frameworkConfig.description}. This section offers ${frameworkEntries.length} structured tutorials covering environment setup through CI/CD integration, a complete ${diffLabel} learning path for ${testTypeConfig.title}.`;
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const frameworkUrl = `${siteOrigin}/${locale}/guild/${testType}/${framework}/`;
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageTitle,
+  description: richDesc,
+  url: frameworkUrl,
+  inLanguage: locale === "zh-cn" ? "zh-CN" : "en",
+};
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${frameworkConfig.name} ${locale === "zh-cn" ? "教程" : "Tutorials"}`,
+  numberOfItems: frameworkEntries.length,
+  itemListElement: frameworkEntries.map((entry, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: entry.data.title,
+    url: `${siteOrigin}/${locale}/guild/${guildIdToSlug(entry.id)}/`,
+  })),
+};
 ---
 
-<Base title={pageTitle} description={metaDescription} contentWide={true}>
+<Base
+  title={pageTitle}
+  description={richDesc}
+  contentWide={true}
+  extraStructuredData={[collectionSchema, itemListSchema]}
+>
   <Breadcrumb items={breadcrumbs} />
   
   <div class="framework-overview">

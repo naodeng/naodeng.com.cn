@@ -39,6 +39,10 @@ const letterSections = sidebarSections.filter((s) => s.title);
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
 
+if (isEn) {
+  return Astro.redirect("https://ray.run/wiki");
+}
+
 const siteOrigin = "https://inaodeng.com";
 // DefinedTermSet JSON-LD for zh-cn wiki (en redirects to ray.run)
 const definedTermSetSchema = !isEn ? {

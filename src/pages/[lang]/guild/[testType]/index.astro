@@ -57,9 +57,35 @@ const breadcrumbs = [
 
 const pageTitle = testTypeConfig.title;
 const metaDescription = testTypeConfig.description;
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const testTypeUrl = `${siteOrigin}/${locale}/guild/${testType}/`;
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageTitle,
+  description: metaDescription,
+  url: testTypeUrl,
+  inLanguage: isZh ? "zh-CN" : "en",
+};
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${pageTitle} ${isZh ? "框架" : "Frameworks"}`,
+  numberOfItems: testTypeConfig.frameworks.length,
+  itemListElement: testTypeConfig.frameworks.map((framework, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: framework.name,
+    url: `${siteOrigin}/${locale}/guild/${testType}/${framework.id}/`,
+  })),
+};
 ---
 
-<Base title={pageTitle} description={metaDescription}>
+<Base
+  title={pageTitle}
+  description={metaDescription}
+  extraStructuredData={[collectionSchema, itemListSchema]}
+>
   <Breadcrumb items={breadcrumbs} />
 
   <div class="tt-page">

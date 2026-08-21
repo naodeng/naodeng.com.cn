@@ -141,7 +141,12 @@ const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
 const pageTitle = lang === "zh-cn"
   ? `${displayName} - 软件测试技能库`
   : `${displayName} - QA Skill Library`;
-const pageDescription = (skill.intro || skill.description || skill.title || "").trim();
+const rawPageDescription = (skill.intro || skill.description || skill.title || "").trim();
+const pageDescription = rawPageDescription.length < 80
+  ? lang === "zh-cn"
+    ? `${rawPageDescription} 提供可直接使用的安装、调用、输入输出与人工复核说明。`
+    : `${rawPageDescription} Includes practical installation, calling, input/output, and human-review guidance.`
+  : rawPageDescription;
 const pageKeywords = [
   skill.title,
   skill.chineseName,

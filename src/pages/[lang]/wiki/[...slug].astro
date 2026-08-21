@@ -25,6 +25,13 @@ export async function getStaticPaths() {
     };
   });
 
+  // Keep legacy English Wiki URLs alive as redirects. These URLs are no longer
+  // published in this site, but Google still knows many of them.
+  const legacyEnglishPaths = entries.map((entry) => ({
+    params: { lang: "en", slug: wikiIdToSlug(entry.id) },
+    props: { entry },
+  }));
+
   // Keep compatibility with legacy wiki URLs that use original filename casing,
   // e.g. /zh-cn/wiki/A-B-Testing/
   const wikiDir = path.resolve(process.cwd(), "src/content/wiki");
@@ -44,10 +51,9 @@ export async function getStaticPaths() {
     existingExact.add(fileSlug);
   }
 
-  return basePaths;
+  return [...basePaths, ...legacyEnglishPaths];
 }
 
-const { entry } = Astro.props;
 const locale = (Astro.params.lang ?? "zh-cn") as Lang;
 const slugParam = (Astro.params.slug ?? "") as string;
 
@@ -56,6 +62,8 @@ if (locale === "en") {
   if (slugParam) url.hash = slugParam;
   return Astro.redirect(url.toString());
 }
+
+const { entry } = Astro.props;
 
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
 const wikiTitle = "测试百科";

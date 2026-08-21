@@ -1,6 +1,6 @@
 ---
 title: "Bruno 接口自动化测试教程：从 0 到 1 搭建 Bruno 接口自动化测试项目"
-description: "这篇博文是 Bruno 接口自动化测试教程，从零开始搭建 Bruno 接口自动化测试项目。文章详细指导读者如何建立测试项目的基础结构，配置环境，以及编写第一个接口测试用例。通过这个教程，读者能够逐步了解 Bruno 框架的使用方法，从零到一地构建起完整的接口自动化测试项目，提高测试效率和可维护性。"
+description: "从零搭建 Bruno 接口自动化测试项目：配置项目结构和环境，编写第一个接口测试，并建立便于维护的测试套件。"
 testType: api-testing
 framework: bruno
 language: JavaScript
@@ -281,4 +281,3 @@ Bruno 程序的安装和基本使用请参考：[postman 替换工具 bruno 使�
 <div style="text-align: center">
   <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
 </div>
-
