@@ -33,9 +33,15 @@ for (const slug of ["software-testing", "decision-table-testing", "test-case"]) 
 
 const englishWikiIndex = path.join(DIST, "en", "wiki", "index.html");
 if (!fs.existsSync(englishWikiIndex)) {
-  failures.push("missing generated English Wiki index redirect: /en/wiki/");
-} else if (!fs.readFileSync(englishWikiIndex, "utf8").includes("https://ray.run/wiki")) {
-  failures.push("English Wiki index does not redirect to ray.run");
+  failures.push("missing generated English Wiki index: /en/wiki/");
+} else {
+  const englishWikiIndexHtml = fs.readFileSync(englishWikiIndex, "utf8");
+  if (!englishWikiIndexHtml.includes('content="noindex, follow"')) {
+    failures.push("English Wiki index is not noindex");
+  }
+  if (!englishWikiIndexHtml.includes("https://ray.run/wiki")) {
+    failures.push("English Wiki index is missing the ray.run/wiki link");
+  }
 }
 
 const legacyRss = path.join(DIST, "index.xml");

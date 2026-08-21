@@ -39,10 +39,6 @@ const letterSections = sidebarSections.filter((s) => s.title);
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
 
-if (isEn) {
-  return Astro.redirect("https://ray.run/wiki");
-}
-
 const siteOrigin = "https://inaodeng.com";
 // DefinedTermSet JSON-LD for zh-cn wiki (en redirects to ray.run)
 const definedTermSetSchema = !isEn ? {
@@ -61,7 +57,7 @@ const definedTermSetSchema = !isEn ? {
 ---
 
 {isEn ? (
-  <Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs}>
+  <Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs} robots="noindex, follow">
     <div class="l-content wiki-index">
       <h1>{title}</h1>
       <p class="wiki-intro">Software testing terms &amp; definitions. For the full QA Wiki, visit:</p>
