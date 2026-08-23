@@ -5,6 +5,9 @@ interface Props {
   compact?: boolean;
 }
 const { compact = false } = Astro.props;
+const currentLocale = Astro.currentLocale || "en";
+const targetLocaleLabel = currentLocale === "zh-cn" ? "EN" : "中";
+const triggerLabel = currentLocale === "zh-cn" ? "切换语言，当前中文" : "Switch language, currently English";
 
 const localePaths = getLocalePaths(Astro.url);
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
@@ -33,8 +36,9 @@ const getFallbackPath = (lang: string) => {
 ---
 
 <div class:list={["locale-dropdown", { compact }]} data-locale-dropdown data-current-path={Astro.url.pathname}>
-  <button type="button" class="locale-trigger" aria-label="Language" aria-expanded="false" aria-haspopup="true" data-locale-trigger>
+  <button type="button" class="locale-trigger" aria-label={triggerLabel} aria-expanded="false" aria-haspopup="true" data-locale-trigger>
     <span class="material-icons-sharp icon-lang" aria-hidden="true">translate</span>
+    {compact && <span class="locale-target" aria-hidden="true">{targetLocaleLabel}</span>}
     {!compact && <span class="material-icons-sharp icon-expand" aria-hidden="true">expand_more</span>}
   </button>
   <div class="locale-panel" hidden data-locale-panel>
@@ -157,6 +161,23 @@ const getFallbackPath = (lang: string) => {
     color: var(--color-theme);
     opacity: 0.85;
   }
+  .locale-target {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: 3px;
+    transform: translateX(-50%);
+    min-width: 1.35rem;
+    padding: 1px 4px;
+    border-radius: 999px;
+    background: var(--gradient-theme);
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    text-align: center;
+    box-shadow: 0 2px 6px color-mix(in srgb, var(--color-theme) 24%, transparent);
+  }
   .locale-trigger .icon-expand {
     font-size: 22px;
     color: var(--color-theme);
@@ -196,6 +217,10 @@ const getFallbackPath = (lang: string) => {
   }
   .locale-dropdown.compact .locale-trigger {
     min-width: 56px;
+    position: relative;
+    justify-content: center;
+    padding-inline: 8px;
+    padding-block-end: 10px;
   }
   .locale-dropdown:not(.compact) .locale-trigger {
     min-width: 100px;

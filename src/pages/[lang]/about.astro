@@ -205,9 +205,10 @@ export const getStaticPaths = () =>
     min-width: 120px;
     padding: var(--sp-s) var(--sp-m);
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--color-glass-weak);
     border: 1px solid rgba(148, 163, 184, 0.22);
     box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(10px) saturate(112%);
   }
   .about-stat strong {
     font-family: var(--font-heading);
@@ -278,9 +279,10 @@ export const getStaticPaths = () =>
   .tech-card {
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.86);
+    background: var(--color-glass-medium);
     border: 1px solid rgba(148, 163, 184, 0.22);
     box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px) saturate(114%);
   }
   .tech-card__head {
     display: flex;
@@ -380,9 +382,10 @@ export const getStaticPaths = () =>
   .about-panel {
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.86);
+    background: var(--color-glass-medium);
     border: 1px solid rgba(148, 163, 184, 0.22);
     box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px) saturate(114%);
   }
   .about-panel__icon {
     display: grid;

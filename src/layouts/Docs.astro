@@ -111,6 +111,12 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   .docs-content {
     min-inline-size: 0;
     max-inline-size: 900px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-glass-weak);
+    box-shadow: var(--shadow-glass-sm);
+    backdrop-filter: blur(10px) saturate(112%);
   }
   .l-docs[data-has-toc="true"] .docs-content {
     max-inline-size: none;
@@ -122,6 +128,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+  @supports not (backdrop-filter: blur(1px)) {
+    .docs-content { background: var(--color-glass-solid); }
   }
   .docs-content :global(h1) {
     font-size: 2rem;
