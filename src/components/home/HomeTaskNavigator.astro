@@ -12,7 +12,6 @@ function targetHref(target: HomeTaskTarget) {
   );
 }
 
-// 每个任务入口的语义图标（Material Icons Sharp 连字名）
 const TASK_ICONS: Record<string, string> = {
   requirements: "fact_check",
   strategy: "flag",
@@ -89,10 +88,11 @@ const entries = HOME_TASK_ENTRIES[locale];
     flex-direction:column;
     min-height:0;
     padding:1.15rem 1.2rem;
-    border:1px solid rgba(148, 163, 184, 0.18);
+    border:1px solid var(--color-glass-border);
     border-radius:var(--radius-lg);
-    background:rgba(255,255,255,.82);
-    box-shadow:var(--shadow-sm);
+    background:var(--color-glass-medium);
+    box-shadow:var(--shadow-glass-sm);
+    backdrop-filter: blur(14px) saturate(118%);
     transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
     overflow:hidden;
   }

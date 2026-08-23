@@ -294,6 +294,18 @@ const mobilePriorityItems = [
       </button>
       <button
         type="button"
+        class="btn-icon theme-toggle"
+        aria-label={locale === "zh-cn" ? "切换主题" : "Change theme"}
+        title={locale === "zh-cn" ? "切换主题" : "Change theme"}
+        data-theme-toggle
+        data-label-light={locale === "zh-cn" ? "切换到浅色主题" : "Switch to light theme"}
+        data-label-dark={locale === "zh-cn" ? "切换到深色主题" : "Switch to dark theme"}
+      >
+        <span class="material-icons-sharp theme-toggle__light" aria-hidden="true">light_mode</span>
+        <span class="material-icons-sharp theme-toggle__dark" aria-hidden="true">dark_mode</span>
+      </button>
+      <button
+        type="button"
         class="btn-icon nav-toggle"
         data-nav-toggle
         aria-controls="site-primary-nav"
@@ -486,6 +498,31 @@ const mobilePriorityItems = [
 
   initHeaderNav();
   document.addEventListener("astro:after-swap", initHeaderNav);
+
+  const initThemeToggle = () => {
+    document.querySelectorAll("[data-theme-toggle]").forEach((node) => {
+      if (!(node instanceof HTMLButtonElement) || node.dataset.bound) return;
+      node.dataset.bound = "1";
+
+      const syncLabel = () => {
+        const current = document.documentElement.dataset.theme || "light";
+        const label = (current === "dark" ? node.dataset.labelLight : node.dataset.labelDark) || "Change theme";
+        node.setAttribute("aria-label", label);
+        node.setAttribute("title", label);
+      };
+
+      node.addEventListener("click", () => {
+        const current = document.documentElement.dataset.theme || "light";
+        const next = current === "dark" ? "light" : "dark";
+        (window as Window & { setThemePreference?: (preference: string) => void }).setThemePreference?.(next);
+        syncLabel();
+      });
+      window.addEventListener("themechange", syncLabel);
+      syncLabel();
+    });
+  };
+  initThemeToggle();
+  document.addEventListener("astro:after-swap", initThemeToggle);
 </script>
 
 <style>
@@ -714,6 +751,17 @@ const mobilePriorityItems = [
       animation: none;
     }
   }
+
+  :global(html[data-theme="dark"]) .l-header { background: var(--color-glass-strong); border-color: var(--color-glass-border); box-shadow: var(--shadow-glass-sm); }
+  :global(html[data-theme="dark"]) .site-nav > ul,
+  :global(html[data-theme="dark"]) .nav-tool :global(.locale-trigger),
+  :global(html[data-theme="dark"]) .btn-icon { background: var(--color-glass-medium); border-color: var(--color-glass-border); }
+  :global(html[data-theme="dark"]) .nav-submenu,
+  :global(html[data-theme="dark"]) .nav-tool :global(.locale-panel) { background: var(--color-glass-solid); border-color: var(--color-glass-border); }
+  :global(html[data-theme="dark"]) .site-nav > ul > li > a:hover,
+  :global(html[data-theme="dark"]) .site-nav > ul > li > a.active,
+  :global(html[data-theme="dark"]) .nav-group-trigger:hover,
+  :global(html[data-theme="dark"]) .nav-group-trigger.active { background: var(--color-theme-soft); }
   .nav-group[data-nav-group="more"] .nav-submenu {
     left: auto;
     right: 0;
@@ -872,6 +920,9 @@ const mobilePriorityItems = [
     opacity: 0.95;
     flex-shrink: 0;
   }
+  .theme-toggle__dark { display: none; }
+  :global(html[data-theme="dark"]) .theme-toggle__light { display: none; }
+  :global(html[data-theme="dark"]) .theme-toggle__dark { display: inline-block; }
 
   @media (width < 834px) {
     .l-header {
@@ -1081,10 +1132,10 @@ const mobilePriorityItems = [
   .l-header {
     height: 72px;
     color: var(--color-main);
-    background: color-mix(in srgb, var(--color-canvas) 78%, transparent);
-    border-block-end: 1px solid rgba(148, 163, 184, 0.22);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
-    backdrop-filter: blur(22px);
+    background: var(--color-glass-strong);
+    border-block-end: 1px solid var(--color-glass-border);
+    box-shadow: var(--shadow-glass-sm);
+    backdrop-filter: blur(22px) saturate(120%);
   }
 
   .header-shell {
@@ -1125,7 +1176,7 @@ const mobilePriorityItems = [
     padding: 0.28rem;
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--color-glass-medium);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(20px);
   }
@@ -1165,7 +1216,7 @@ const mobilePriorityItems = [
   .nav-tool :global(.locale-panel) {
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.94);
+    background: var(--color-glass-strong);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(24px);
   }
@@ -1199,7 +1250,7 @@ const mobilePriorityItems = [
   .nav-tool :global(.locale-trigger),
   .btn-icon {
     color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.66);
+    background: var(--color-glass-medium);
     border: 1px solid rgba(148, 163, 184, 0.25);
     border-radius: 999px;
   }
@@ -1241,7 +1292,7 @@ const mobilePriorityItems = [
     .site-nav > ul {
       border-radius: var(--radius-lg);
       align-items: stretch;
-      background: rgba(255, 255, 255, 0.82);
+      background: var(--color-glass-strong);
     }
 
     .mobile-priority-nav {

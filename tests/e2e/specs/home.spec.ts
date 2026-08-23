@@ -32,6 +32,25 @@ test.describe("zenix homepage exploration", () => {
         await expect(page.locator(gone)).toHaveCount(0);
       }
     });
+
+    test(`${lang} home cards use semantic Material Icons`, async ({
+      page,
+      baseURL,
+    }) => {
+      await page.goto(`${baseURL}/${lang}/`);
+
+      const cardGroups = [
+        page.locator("[data-home-task]"),
+        page.locator("[data-home-capability]"),
+        page.locator(".home-explore-grid .home-card"),
+      ];
+
+      for (const cards of cardGroups) {
+        const count = await cards.count();
+        expect(count).toBeGreaterThan(0);
+        await expect(cards.locator(".material-icons-sharp")).toHaveCount(count);
+      }
+    });
   }
 });
 

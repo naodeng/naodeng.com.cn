@@ -66,7 +66,10 @@ const totalTestTypes = guildConfig.testTypes.length;
   .guild-hero {
     padding: 3rem 2rem 2.5rem;
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--color-theme) 3%, var(--color-base));
+    background: var(--color-glass-medium);
+    border: 1px solid var(--color-glass-border);
+    box-shadow: var(--shadow-glass-md);
+    backdrop-filter: blur(16px) saturate(118%);
     border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
     position: relative;
     overflow: hidden;
