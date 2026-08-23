@@ -12,7 +12,7 @@ const t = useTranslations(locale);
   <div class="glass-hero__panel">
     <span class="glass-hero__accent" aria-hidden="true"></span>
     <h1 id="glass-hero-title">{t(HOME_HERO_TITLE)}</h1>
-    <p class="glass-hero__summary">{t(HOME_HERO_SUBTITLE)}</p>
+    <p class="glass-hero__summary home-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
     <div class="glass-hero__actions home-hero__ctas">
       <a class="pill-cta pill-cta--primary" href="#home-task-navigator">{t(HOME_CTA_TASK)} <span aria-hidden="true">→</span></a>
       <a class="pill-cta pill-cta--ghost" href={getRelativeLocaleUrl(locale, "/qaskills")}>{t(HOME_CTA_SKILLS)} <span aria-hidden="true">↗</span></a>
