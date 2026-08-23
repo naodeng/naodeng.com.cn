@@ -76,11 +76,29 @@ const isZh = locale === 'zh-cn';
 
 <style>
   .tts {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--color-glass-medium);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     transition: var(--transition-base);
+    box-shadow: var(--shadow-glass-sm);
+    backdrop-filter: blur(14px) saturate(116%);
+  }
+
+  .tts::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 18rem;
+    height: 18rem;
+    inset: auto -5rem -9rem auto;
+    border-radius: 50%;
+    background: var(--color-mist-secondary);
+    filter: blur(38px);
+    pointer-events: none;
   }
 
   .tts:hover {
@@ -150,8 +168,9 @@ const isZh = locale === 'zh-cn';
   /* ── Framework card grid ── */
   .tts__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 240px));
     gap: 0.75rem;
+    justify-content: start;
   }
 
   .fw-card {
@@ -160,13 +179,15 @@ const isZh = locale === 'zh-cn';
     gap: 0.35rem;
     padding: 1rem;
     border-radius: var(--radius-md);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--color-glass-weak);
+    border: 1px solid var(--color-glass-border);
     text-decoration: none;
     color: inherit;
     position: relative;
     overflow: hidden;
     transition: var(--transition-base);
+    box-shadow: inset 0 1px 0 var(--color-glass-highlight);
+    backdrop-filter: blur(10px) saturate(112%);
   }
 
   /* colored top accent */
@@ -264,8 +285,12 @@ const isZh = locale === 'zh-cn';
 
   @media (max-width: 480px) {
     .tts__grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
     }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    .tts, .fw-card { background: var(--color-glass-solid); }
   }
 
   @media (prefers-reduced-motion: reduce) {

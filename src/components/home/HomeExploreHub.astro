@@ -7,7 +7,8 @@ interface Props {
   moreLabel: string;
   cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
 }
-const { locale, title, subtitle, moreLabel, cards } = Astro.props;
+const { title, subtitle, moreLabel, cards } = Astro.props;
+
 ---
 <section class="home-band home-band--white home-explore-hub" aria-labelledby="home-explore-title">
   <div class="home-inner">
@@ -48,11 +49,11 @@ const { locale, title, subtitle, moreLabel, cards } = Astro.props;
     min-height: 240px;
     height: 100%;
     padding: 28px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
+    border: 1px solid var(--color-glass-border);
     border-radius: var(--radius-lg);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
-    box-shadow: var(--shadow-sm);
+    background: var(--color-glass-medium);
+    box-shadow: var(--shadow-glass-sm);
+    backdrop-filter: blur(14px) saturate(118%);
     color: inherit;
     text-decoration: none;
     transition:
@@ -61,10 +62,7 @@ const { locale, title, subtitle, moreLabel, cards } = Astro.props;
       box-shadow 220ms ease;
   }
 
-  .home-band--white .home-card {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.88));
-  }
+  .home-band--white .home-card { background: var(--color-glass-medium); }
 
   .home-card:hover,
   .home-card:focus-visible {

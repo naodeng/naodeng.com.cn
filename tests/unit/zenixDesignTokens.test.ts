@@ -21,20 +21,24 @@ describe("Zenix-inspired design tokens in base.css", () => {
     expect(baseCss).toMatch(/--gradient-theme:\s*linear-gradient/i);
   });
 
-  it("does not use prefers-color-scheme dark for canvas tokens", () => {
-    expect(baseCss).not.toMatch(
-      /prefers-color-scheme:\s*dark[\s\S]{0,200}--color-base:/,
-    );
-    expect(baseCss).not.toMatch(
-      /@media\s*\(\s*prefers-color-scheme:\s*dark\s*\)/,
-    );
+  it("defines explicit light and dark diffuse-glass tokens", () => {
+    expect(baseCss).toMatch(/:root\[data-theme="dark"\]/i);
+    ["strong", "medium", "weak"].forEach((level) => {
+      expect(baseCss).toMatch(new RegExp(`--color-glass-${level}:`, "i"));
+    });
+    expect(baseCss).toMatch(/--color-glass-highlight:/i);
+    expect(baseCss).toMatch(/--color-mist-primary:/i);
+    expect(baseCss).toMatch(/--color-mist-secondary:/i);
   });
 
   it("removes dotted page background", () => {
     expect(baseCss).not.toMatch(/background-size:\s*16px\s+16px/);
   });
 
-  it("does not define glow shadows (slate shadows only)", () => {
+  it("defines restrained glass elevation levels", () => {
     expect(baseCss).not.toMatch(/--glow-theme:/i);
+    ["sm", "md", "lg"].forEach((level) => {
+      expect(baseCss).toMatch(new RegExp(`--shadow-glass-${level}:`, "i"));
+    });
   });
 });

@@ -159,7 +159,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content={robots} />
     <meta name="author" content={articleAuthor || "Nao Deng"} />
-    <meta name="theme-color" content="#f8fafc" />
+    <meta name="theme-color" content="#f8fafc" data-theme-color />
     <link rel="canonical" href={canonicalUrl} />
     {prevUrl && <link rel="prev" href={prevUrl} />}
     {nextUrl && <link rel="next" href={nextUrl} />}
@@ -180,7 +180,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="baidu-site-verification" content="codeva-8dOodMKv9l" />
 
     <meta property="og:type" content={ogType} />
@@ -246,6 +246,19 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
     ))}
     <LocaleHtmlHead />
+    <script is:inline>
+      (() => {
+        const key = "themePreference";
+        const preference = localStorage.getItem(key);
+        const valid = preference === "light" || preference === "dark" || preference === "system";
+        const selected = valid ? preference : "system";
+        const resolved = selected === "system"
+          ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          : selected;
+        document.documentElement.dataset.theme = resolved;
+        document.documentElement.dataset.themePreference = selected;
+      })();
+    </script>
     <Analytics />
     {import.meta.env.PROD && (
       <>
@@ -334,7 +347,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     )}
   </head>
 
-  <body>
+  <body class="diffuse-canvas">
     <a href="#main" class="skip-link">{locale === "zh-cn" ? "跳到主内容" : "Skip to main content"}</a>
     <LocaleSuggest />
     <Header />
@@ -350,6 +363,30 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <ScrollToTop lang={locale} />
 
     <SearchModal />
+
+    <script is:inline>
+      (() => {
+        const key = "themePreference";
+        const resolve = (preference) => preference === "system"
+          ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          : preference;
+        window.setThemePreference = (preference) => {
+          const next = ["system", "light", "dark"].includes(preference) ? preference : "system";
+          localStorage.setItem(key, next);
+          const resolvedTheme = resolve(next);
+          document.documentElement.dataset.theme = resolvedTheme;
+          document.documentElement.dataset.themePreference = next;
+          document.querySelector("[data-theme-color]")?.setAttribute("content", resolvedTheme === "dark" ? "#0b1020" : "#f8fafc");
+          window.dispatchEvent(new CustomEvent("themechange", { detail: { preference: next, resolvedTheme } }));
+        };
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        media.addEventListener?.("change", () => {
+          if (document.documentElement.dataset.themePreference === "system") {
+            window.setThemePreference("system");
+          }
+        });
+      })();
+    </script>
 
     {import.meta.env.PROD && (
       <script is:inline>

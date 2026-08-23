@@ -1,6 +1,6 @@
 ---
 name: "Nao's Blog — Zenix"
-description: "双语技术知识库的冷色 SaaS 设计体系：indigo 单一主色 + 冷灰画布 + 磨砂玻璃"
+description: "双语技术知识库的克制弥散玻璃设计体系"
 colors:
   indigo: "#4f46e5"
   indigo-deep: "#4338ca"
@@ -82,15 +82,16 @@ components:
 
 **Creative North Star: "The Frosted Lab"**
 
-Zenix 是一套为**双语技术知识库**打造的冷色 SaaS 设计体系：冷静、清晰、高效、工具感。它像一间磨砂玻璃隔出的实验室——白色磨砂玻璃顶栏与玻璃页脚界定出壳层，内部是接近无色的冷灰画布（#f8fafc）和一张淡淡的 indigo 细网格，所有注意力都留给内容本身。
+Diffuse Glass 是一套为**双语技术知识库**打造的克制弥散玻璃设计体系：冷静、清晰、高效、具有轻盈的空间层级。柔和色雾建立画布氛围，半透明表面区分信息层级，内容页始终保持阅读优先。
 
-视觉权威在壳层（顶栏 / 页脚）与首页，内容页（博客 / Wiki / Guild / Docs 阅读页）保持克制、不卡片化，只继承 token。indigo（#4f46e5）是全站唯一的主色，承担链接、主 CTA、焦点环与强调的全部职责；其余都是 slate 中性灰。系统浅色唯一，无暗色模式。
+视觉权威在弥散画布、壳层（顶栏 / 页脚）与首页重点表面；内容页（博客 / Wiki / Guild / Docs 阅读页）使用更弱的玻璃层级，避免过度卡片化。indigo（#4f46e5）是全站唯一主色，承担链接、主 CTA、焦点环与强调；Light / Dark / System 只改变画布、文字、边框和玻璃对比度。
 
 **Key Characteristics:**
 
 - indigo 单一主色 + slate 冷灰中性色，无第二个 accent
 - 磨砂玻璃（backdrop-filter blur 22px）作为壳层标志材质
-- 冷灰画布 + 42px indigo 细网格背景
+- Strong / Medium / Weak 三级玻璃建立清晰的空间层级
+- Light / Dark / System 三种主题选择
 - 四档圆角（8 / 12 / 18 / 药丸），交互元素一律药丸形
 - 内容优先、低噪、克制；hairline 边框 + 克制阴影，不重阴影
 - 已确认的视觉反例：苹果风（已废弃）、16px 点阵背景、emoji 当图标、重阴影、内容页卡片化
@@ -124,7 +125,20 @@ Zenix 是一套为**双语技术知识库**打造的冷色 SaaS 设计体系：�
 
 ### Named Rules
 
-**The One Accent Rule.** indigo 是唯一主色。禁止新增第二个 accent 色（原 teal `--color-accent` 已删除）；所有渐变一律 indigo 系（theme → theme-focus 或 theme → theme-light）。
+**The One Accent Rule.** indigo 是唯一主色。禁止新增第二个 accent 色；主题切换只改变画布、文字、边框、玻璃透明度与对比度。
+
+## Diffuse Glass Language
+
+- Strong Glass 用于 Header、Footer 和需要稳定承载交互的浮层。
+- Medium Glass 用于 Hero、首页卡片、侧栏与目录。
+- Weak Glass 用于正文承载和大面积弱分区，保证阅读舒适。
+- 色雾只存在于画布层，不压在文字上；模糊、透明度和阴影必须克制。
+
+## Theme Modes
+
+- Light：冷白画布、低饱和 indigo 色雾与半透明白玻璃。
+- Dark：炭黑/深蓝画布、低亮度 indigo 色雾与半透明深色玻璃。
+- System：首次访问跟随系统；手动选择写入 `localStorage.themePreference`。
 
 ## Typography
 
@@ -146,7 +160,7 @@ Zenix 是一套为**双语技术知识库**打造的冷色 SaaS 设计体系：�
 
 单一居中内容列，宽度随场景收紧：正文 `max-width: 1000px`，带侧栏页面 `1280px`，首页内容区 `1400px`，顶栏壳 `1440px`，页脚容器 `1120px`。水平内边距 `32px`（顶栏用 `clamp(1rem, 3vw, 2rem)`）。
 
-间距节奏：区块间距 `80px`（`--spacing-section`）；四级 `64 / 32 / 16 / 8px`，在 `<480px` 收窄为 `48 / 16 / 8px`。背景是 42px 的 indigo 双向细网格（rgba(79,70,229,0.035)），不是 16px 点阵。
+间距节奏：区块间距 `80px`（`--spacing-section`）；四级 `64 / 32 / 16 / 8px`，在 `<480px` 收窄为 `48 / 16 / 8px`。全站背景由低对比度弥散色雾建立氛围，不使用固定点阵、字符纹理或大面积装饰网格。
 
 响应断点：`834px`（导航桌面/移动切换）、`600px`（页脚两列）、`480px`（间距收紧）。移动端导航折叠为抽屉，桌面端为药丸导航胶囊。
 
@@ -223,8 +237,8 @@ Zenix 是一套为**双语技术知识库**打造的冷色 SaaS 设计体系：�
 
 - **Don't** 新增第二个 accent 色。
 - **Don't** 使用纯黑阴影（阴影一律 slate 色相）。
-- **Don't** 把背景改回 16px 点阵（42px indigo 网格有契约测试守护）。
+- **Don't** 用固定点阵替代字符主视觉。
 - **Don't** 在四档圆角之外散布新散值。
-- **Don't** 做暗色模式（浅色唯一，契约测试锁定）。
+- **Don't** 让玻璃覆盖所有内容区域或牺牲正文对比度。
 - **Don't** 在英文 UI 与英文文案中用 em-dash / en-dash 作分隔符（用冒号、逗号或句号；中文正文「——」保留）。
 - **Don't** 在卡片上堆重阴影或夸张渐变。
