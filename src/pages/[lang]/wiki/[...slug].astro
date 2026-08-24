@@ -4,7 +4,7 @@
  * - 中文：Docs 布局，侧栏高亮当前词条，主区渲染正文
  * - 英文：重定向 https://ray.run/wiki
  */
-import { getCollection, render } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import fs from "node:fs";
 import path from "node:path";
 import DocsLayout from "@/layouts/Docs.astro";
@@ -17,7 +17,7 @@ import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
   const entries = await getCollection("wiki");
-  const basePaths = entries.map((entry) => {
+  const basePaths: { params: { lang: string; slug: string }; props: { entry: CollectionEntry<"wiki">; legacyCanonical?: string } }[] = entries.map((entry) => {
     const slug = wikiIdToSlug(entry.id);
     return {
       params: { lang: "zh-cn", slug },
@@ -39,6 +39,20 @@ export async function getStaticPaths() {
   const entryByLowerSlug = new Map(entries.map((entry) => [wikiIdToSlug(entry.id).toLowerCase(), entry]));
   const existingExact = new Set(basePaths.map((p) => String(p.params.slug)));
 
+  // Older versions of the site exposed the source filename below an extra
+  // `wiki/` segment and sometimes kept the `.md` suffix. Keep those known
+  // URLs routable so search engines can discover the canonical page instead
+  // of receiving a 404.
+  for (const entry of entries) {
+    const canonical = wikiIdToSlug(entry.id);
+    for (const legacySlug of [`wiki/${canonical}`, `wiki/${canonical}.md`, `${canonical}.md`]) {
+      basePaths.push({
+        params: { lang: "zh-cn", slug: legacySlug },
+        props: { entry, legacyCanonical: canonical } as typeof basePaths[number]["props"],
+      });
+    }
+  }
+
   for (const fileName of fileNames) {
     const fileSlug = fileName.replace(/\.md$/, "");
     const lower = fileSlug.toLowerCase();
@@ -56,6 +70,11 @@ export async function getStaticPaths() {
 
 const locale = (Astro.params.lang ?? "zh-cn") as Lang;
 const slugParam = (Astro.params.slug ?? "") as string;
+const legacyCanonical = (Astro.props as { legacyCanonical?: string }).legacyCanonical;
+
+if (legacyCanonical) {
+  return Astro.redirect(`/${locale}/wiki/${legacyCanonical}/`, 301);
+}
 
 if (locale === "en") {
   const url = new URL("https://ray.run/wiki");

@@ -177,7 +177,7 @@ order: 0
 - **[用例测试](https://inaodeng.com/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
 - **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：通过探索性会话补充结构化测试，以发现可能未预料到的场景。
 - **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
-- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
+- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
 - **自动测试生成**：利用基于模型或代码分析生成测试用例的工具来查找可能被手动忽略的场景。 通过应用这些技术，您可以系统地确保您的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是全面的并涵盖所有可能的场景。
 
 - **需求可追溯性**：将每个测试用例映射到特定需求或用户故事，以确保所有功能都经过测试。
@@ -188,7 +188,7 @@ order: 0
 - **[用例测试](https://inaodeng.com/zh-cn/wiki/use-case-testing/)** ：根据实际用例开发测试用例，以涵盖用户可能执行的场景。
 - **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)** ：通过探索性会议补充结构化测试，以发现可能未预料到的场景。
 - **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/)** ：根据故障风险及其影响确定测试的优先级，首先关注最关键的领域。
-- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
+- **测试审查和[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)**：定期与同行和利益相关者一起审查测试用例，以找出差距或缺失的场景。
 - **自动测试生成**：利用基于模型或代码分析生成测试用例的工具来查找可能被手动忽略的场景。
 
 #### 自动化在测试用例执行中的作用是什么？

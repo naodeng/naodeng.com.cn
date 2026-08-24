@@ -48,7 +48,7 @@ order: 0
 
 在敏捷测试中，测试人员从项目一开始就积极参与，确保持续反馈和逐渐的改进。测试与开发同时进行，在被称为冲刺的**短小的[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)**中进行，以实现**持续集成**和频繁验证功能。
 
-敏捷团队的测试人员与开发人员、业务分析师以及其他团队成员密切合作，基于用户故事和验收标准创建**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**并进行**自动化测试**。他们专注于**[探索性测试](../wiki/exploratory-testing.md)**、**[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**，以及**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**，以确保软件满足业务需求并且质量高。
+敏捷团队的测试人员与开发人员、业务分析师以及其他团队成员密切合作，基于用户故事和验收标准创建**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**并进行**自动化测试**。他们专注于**[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**、**[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**，以及**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**，以确保软件满足业务需求并且质量高。
 
 敏捷测试强调了需要有**灵活的[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)**，可以适应需求变化，并鼓励**面对面的沟通**而非文档。其目标是快速提供有关产品质量的反馈，并确保及时解决任何问题。
 
@@ -121,7 +121,7 @@ order: 0
 - **测试设计**：一旦用户故事被定义，测试人员开始设计测试。他们创建[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并确定必要的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。
 
 ```typescript
-// 示例：[测试用例](../wiki/test-case.md) 伪代码，用于登录功能
+// 示例：[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 伪代码，用于登录功能
 describe("登录功能", () => { it("应使用有效凭据对用户进行身份验证", () =>
 {
 expect(authenticate('validUser', 'validPass')).toBeTruthy(); });

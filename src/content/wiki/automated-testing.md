@@ -67,11 +67,11 @@ order: 0
 
 ### 什么是自动化测试？
 
-自动化测试是使用软件工具执行预先编写的[测试脚本](../wiki/test-script.md)来验证软件应用功能、性能和可靠性的过程。与[手动测试](../wiki/manual-testing.md)不同，自动化测试一旦设置完成，就可以在最小的人工监督下重复执行。
+自动化测试是使用软件工具执行预先编写的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)来验证软件应用功能、性能和可靠性的过程。与[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)不同，自动化测试一旦设置完成，就可以在最小的人工监督下重复执行。
 
 这些测试通常使用与应用代码相同或不同的语言编写，旨在具有可重用性和可维护性。测试的范围可以从验证各个组件的简单单元测试到验证应用程序内整个工作流程的复杂端到端测试。
 
-自动化测试是持续集成/持续部署（CI/CD）流水线的一部分，确保新的代码更改不会引入回归问题。这在快节奏的开发环境中保持[软件质量](../wiki/software-quality.md)至关重要。
+自动化测试是持续集成/持续部署（CI/CD）流水线的一部分，确保新的代码更改不会引入回归问题。这在快节奏的开发环境中保持[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)至关重要。
 
 ```javascript
 // Example of a simple automated test script in TypeScript
@@ -86,15 +86,15 @@ describe('Calculator', () => {
 });
 ```
 
-有效的自动化测试取决于选择适当的工具和框架、开发健壮的[测试用例](../wiki/test-case.md)并随着应用程序演变进行维护。同时，必须确保全面的[测试覆盖](../wiki/test-coverage.md)，以在部署之前捕获尽可能多的问题。随着人工智能和机器学习的进步，自动化测试变得更加智能，能够以更少的手动输入预测和适应软件的变化。
+有效的自动化测试取决于选择适当的工具和框架、开发健壮的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)并随着应用程序演变进行维护。同时，必须确保全面的[测试覆盖](https://inaodeng.com/zh-cn/wiki/test-coverage/)，以在部署之前捕获尽可能多的问题。随着人工智能和机器学习的进步，自动化测试变得更加智能，能够以更少的手动输入预测和适应软件的变化。
 
 ### 为什么自动化测试很重要？
 
-自动化测试对于以无法匹敌的速度和规模**确保[软件质量](../wiki/software-quality.md)**至关重要。它使团队能够在较短的时间内执行更多的测试，对代码变更提供**快速反馈**。这在现代开发实践中至关重要，例如敏捷和 DevOps，其中持续集成和交付是关键。自动化通过允许频繁而一致的测试来支持这些方法，从而早期发现缺陷，降低了修复[缺陷](../wiki/bug.md)的成本和工作量。
+自动化测试对于以无法匹敌的速度和规模**确保[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)**至关重要。它使团队能够在较短的时间内执行更多的测试，对代码变更提供**快速反馈**。这在现代开发实践中至关重要，例如敏捷和 DevOps，其中持续集成和交付是关键。自动化通过允许频繁而一致的测试来支持这些方法，从而早期发现缺陷，降低了修复[缺陷](https://inaodeng.com/zh-cn/wiki/bug/)的成本和工作量。
 
-此外，自动化测试可以**重复运行**，几乎没有额外成本，确保在新变更后之前开发的功能仍然可用（[回归测试](../wiki/regression-testing.md)）。它们还允许在各种环境和设备上进行**并行执行**，提高了[测试覆盖](../wiki/test-coverage.md)和效率。自动化测试以较少的人为错误生成**可靠的结果**，并提供详细的日志，有助于调试。
+此外，自动化测试可以**重复运行**，几乎没有额外成本，确保在新变更后之前开发的功能仍然可用（[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)）。它们还允许在各种环境和设备上进行**并行执行**，提高了[测试覆盖](https://inaodeng.com/zh-cn/wiki/test-coverage/)和效率。自动化测试以较少的人为错误生成**可靠的结果**，并提供详细的日志，有助于调试。
 
-实质上，自动化测试是**[质量保证](../wiki/quality-assurance.md)战略**的基石，旨在及时交付健壮的软件。它通过处理重复且耗时的任务来补充[手动测试](../wiki/manual-testing.md)工作，使人工测试人员能够专注于更复杂和[探索性测试](../wiki/exploratory-testing.md)场景。
+实质上，自动化测试是**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)战略**的基石，旨在及时交付健壮的软件。它通过处理重复且耗时的任务来补充[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)工作，使人工测试人员能够专注于更复杂和[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)场景。
 
 ### 自动化测试的优点和缺点是什么？
 
@@ -105,8 +105,8 @@ describe('Calculator', () => {
 - **一致性**：确保每次执行测试时都是相同的，消除了人为错误。
 - **覆盖范围**：能够执行手动情况下难以实现的全面测试，包括复杂的场景和大型数据集。
 - **持续集成**：通过允许在进行更改时自动运行测试，有助于 CI/CD，是现代开发实践的关键。
-- **早期[缺陷](../wiki/bug.md)检测**：能够在开发过程中迅速识别问题，降低修复成本。
-- **[非功能性测试](../wiki/non-functional-testing.md)**：非常适合性能、负载和压力测试，这些测试在手动情况下难以执行。
+- **早期[缺陷](https://inaodeng.com/zh-cn/wiki/bug/)检测**：能够在开发过程中迅速识别问题，降低修复成本。
+- **[非功能性测试](https://inaodeng.com/zh-cn/wiki/non-functional-testing/)**：非常适合性能、负载和压力测试，这些测试在手动情况下难以执行。
 
 自动化测试的劣势：
 
@@ -114,8 +114,8 @@ describe('Calculator', () => {
 - **维护**：测试脚本需要定期更新以适应应用程序的变化。
 - **学习曲线**：团队需要时间学习工具并开发有效的测试。
 - **有限范围**：无法像人类一样处理视觉参考或 UX 评估。
-- **[误报](../wiki/false-positive.md)/漏报**：自动化测试可能报告不是缺陷的失败（误报）或错过缺陷（漏报）。
-- **复杂的[设置](../wiki/setup.md)**：有些测试场景很难自动化，可能不值得付出努力。
+- **[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)/漏报**：自动化测试可能报告不是缺陷的失败（误报）或错过缺陷（漏报）。
+- **复杂的[设置](https://inaodeng.com/zh-cn/wiki/setup/)**：有些测试场景很难自动化，可能不值得付出努力。
 - **工具限制**：工具可能不支持每种技术或应用程序类型，限制了它们的使用。
 
 ### 自动化测试如何融入软件开发生命周期？
@@ -141,7 +141,7 @@ describe('add function', () => {
 
 ### 手动测试和自动化测试有什么区别？
 
-[手动测试](../wiki/manual-testing.md)涉及到测试人员在没有工具或脚本的帮助下执行[测试用例](../wiki/test-case.md)。相反，自动化测试使用软件工具自动运行测试，同时管理测试的执行和实际结果与预期结果的比较。
+[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)涉及到测试人员在没有工具或脚本的帮助下执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。相反，自动化测试使用软件工具自动运行测试，同时管理测试的执行和实际结果与预期结果的比较。
 
 主要区别包括：
 
@@ -153,7 +153,7 @@ describe('add function', () => {
 - **可扩展性**：自动化测试能够处理大量测试并具有可扩展性，而手动测试在这方面具有挑战性。
 - **复杂性**：一些复杂的用户交互可能难以自动化，手动评估可能更为合适。
 - **反馈**：手动测试能够提供即时的定性反馈，而自动化测试则无法做到这一点。
-- **[用例](../wiki/use-case.md)**：手动测试通常更适用于探索性、可用性和临时测试。而自动化测试则非常适用于回归、负载和性能测试等场景。
+- **[用例](https://inaodeng.com/zh-cn/wiki/use-case/)**：手动测试通常更适用于探索性、可用性和临时测试。而自动化测试则非常适用于回归、负载和性能测试等场景。
 
 在实践中，通常采用平衡的方法，充分发挥两种方法的优势，是最有效的策略。
 
@@ -187,7 +187,7 @@ public void testMethod() {
 }
 ```
 
-- **[Cypress](../wiki/cypress.md)**：一个基于 JavaScript 的端到端测试框架，可在浏览器中运行，实现对在浏览器中运行的任何内容的快速、简便和可靠的测试。
+- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**：一个基于 JavaScript 的端到端测试框架，可在浏览器中运行，实现对在浏览器中运行的任何内容的快速、简便和可靠的测试。
 
 ```Typescript
 describe('My First Test', () => {
@@ -208,7 +208,7 @@ Valid Login
     Submit Credentials
 ```
 
-- **[Postman](../wiki/postman.md)**：一个用于 API 测试的工具，允许用户发送 HTTP 请求和分析响应，创建自动化测试，并与 CI/CD 流水线集成。
+- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**：一个用于 API 测试的工具，允许用户发送 HTTP 请求和分析响应，创建自动化测试，并与 CI/CD 流水线集成。
 
 ```Typescript
 {
@@ -309,33 +309,33 @@ Login Test
 
 自动化测试 中的一些常见技术包括：
 
-- **[页面对象模型](../wiki/page-object-model) (POM)**：在类中封装页面元素和交互，以促进代码重用和[可维护性](../wiki/maintainability)。
+- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：在类中封装页面元素和交互，以促进代码重用和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
 
-- **模块化测试**：将测试分解成较小、可管理的模块，具有独立的[测试脚本](../wiki/test-script.md)，增强[可维护性](../wiki/maintainability)和可扩展性。
+- **模块化测试**：将测试分解成较小、可管理的模块，具有独立的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)，增强[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)和可扩展性。
 
 - **混合测试框架**：结合各种测试方法，如关键字驱动和数据驱动，以发挥它们的优势。
 
-- **行为驱动开发 ([BDD](../wiki/bdd))**：使用自然语言描述定义应用程序的行为，促进各方之间的沟通。
+- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：使用自然语言描述定义应用程序的行为，促进各方之间的沟通。
 
-- **[测试驱动开发](../wiki/test-driven-development) (TDD)**：在实际编码之前编写[测试用例](../wiki/test-case.md)，确保软件在测试方面构建。
+- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：在实际编码之前编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，确保软件在测试方面构建。
 
-- **数据驱动测试**：使用外部数据源将多个数据集输入到[测试用例](../wiki/test-case.md)中，提高覆盖范围和效率。
+- **数据驱动测试**：使用外部数据源将多个数据集输入到[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)中，提高覆盖范围和效率。
 
 - **关键字驱动测试**：使用代表操作和数据的关键字定义测试，使测试更易于理解和维护。
 
 - **持续测试**：将测试集成到持续集成和交付流水线中，实时提供有关构建健康状况的反馈。
 
-- **并行测试**：在不同环境中同时执行多个测试，减少[测试执行](../wiki/test-execution)所需的时间。
+- **并行测试**：在不同环境中同时执行多个测试，减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)所需的时间。
 
-- **[API 测试](../wiki/api-testing)**：专注于直接测试[API](../wiki/api.md)的功能、可靠性、性能和安全性，通常比 UI 测试更低级别。
+- **[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)**：专注于直接测试[API](https://inaodeng.com/zh-cn/wiki/api/)的功能、可靠性、性能和安全性，通常比 UI 测试更低级别。
 
 - **模拟和插桩**：使用模拟对象和插桩来模拟真实组件的行为，允许对系统的部分进行隔离测试。
 
-- **[视觉回归测试](../wiki/visual-regression-testing)**：通过将当前屏幕截图与基准图像进行比较，检测意外的视觉变化。
+- **[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)**：通过将当前屏幕截图与基准图像进行比较，检测意外的视觉变化。
 
-- **负载和[性能测试](../wiki/performance-testing)**：模拟用户对软件的负载，检查在不同条件下的性能和可扩展性。
+- **负载和[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：模拟用户对软件的负载，检查在不同条件下的性能和可扩展性。
 
-- **[安全测试](../wiki/security-testing)**：用于探测应用程序漏洞的自动化脚本，确保软件受到潜在攻击的保护。
+- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：用于探测应用程序漏洞的自动化脚本，确保软件受到潜在攻击的保护。
 
 这些技术可以结合和定制以满足特定项目要求，确保自动化测试过程的稳健和高效。
 

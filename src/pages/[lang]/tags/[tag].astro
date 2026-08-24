@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_TAGS } from "@/consts";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 /** 标签链接统一使用编码；getStaticPaths 传原始值，让 Astro 负责路由编码与匹配。 */
 function tagToSlug(t: string) {
@@ -17,7 +17,7 @@ function slugToTag(slug: string) {
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
-  const paths = [];
+  const paths: { params: { lang: string; tag: string }; props: { posts: CollectionEntry<"blog">[]; redirectTo?: string } }[] = [];
 
   for (const lang of Object.keys(LOCALES)) {
     const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
@@ -32,10 +32,27 @@ export async function getStaticPaths() {
     }
   }
 
+  // Preserve old cross-language tag URLs and move them to the owning locale.
+  for (const lang of Object.keys(LOCALES)) {
+    const otherLang = lang === "en" ? "zh-cn" : "en";
+    const existing: Set<string | undefined> = new Set(paths.filter((p) => p.params.lang === lang).map((p) => p.params.tag));
+    const otherPosts = allPosts.filter((post) => post.id.startsWith(`${otherLang}/`));
+    for (const tag of new Set(otherPosts.flatMap((post) => post.data.tags || []))) {
+      const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
+      if (existing.has(tagSegment)) continue;
+      paths.push({
+        params: { lang, tag: tagSegment },
+        props: { posts: [], redirectTo: `/${otherLang}/tags/${encodeURIComponent(tag)}/` },
+      });
+    }
+  }
+
   return paths;
 }
 
 const { lang, tag: tagSlug } = Astro.params;
+const redirectTo = (Astro.props as { redirectTo?: string }).redirectTo;
+if (redirectTo) return Astro.redirect(redirectTo, 301);
 const tag = tagSlug ? slugToTag(tagSlug) : "";
 const { posts } = Astro.props;
 const locale = lang as Lang;

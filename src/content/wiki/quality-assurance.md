@@ -71,7 +71,7 @@ order: 0
 
 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 和质量控制 (QC) 是两个不同的过程，通常可以互换使用，但它们在软件开发生命周期中具有不同的目的。
   **QA** 是一个主动的流程，重点是通过确保用于管理和创建可交付成果的流程是充分的来防止缺陷。它是面向过程的，涵盖了从过程的角度来看旨在提高软件质量的所有活动。 QA 旨在加强开发和测试流程，以便在产品开发过程中不会出现缺陷。
-  另一方面，**QC** 是一个反应过程，涉及识别实际生产的产品中的缺陷。它以产品为导向，包括涉及产品本身检查的所有活动，例如测试、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和评审。 QC 的目的是识别并修复成品中的缺陷。
+  另一方面，**QC** 是一个反应过程，涉及识别实际生产的产品中的缺陷。它以产品为导向，包括涉及产品本身检查的所有活动，例如测试、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/) 和评审。 QC 的目的是识别并修复成品中的缺陷。
   从本质上讲，质量保证是通过流程改进**建立质量**，本质上是预防性的，而质量控制是关于**验证质量**已经融入到产品中，并通过识别和修复缺陷进行纠正。 QA 的目的是确保采用正确的流程来生产优质产品，而 QC 的目的是确保这些流程的结果是优质的产品。
   对于 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说，理解这种区别至关重要，因为它有助于确定是专注于改进测试流程 (QA) 还是增强实际 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和结果验证 (QC)。
 

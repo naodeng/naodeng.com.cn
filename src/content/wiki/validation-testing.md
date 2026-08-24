@@ -73,10 +73,10 @@ order: 0
 
 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试和[验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/) 是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的两个不同阶段，具有不同的目标：
 
-- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)、演练和案头检查。
+- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/)、演练和案头检查。
 - **[验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](https://inaodeng.com/zh-cn/wiki/verification/) 完成后进行。 主要区别在于它们的重点：[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 是关于开发过程中指定要求的一致性和遵守，而验证是关于产品的功能及其在现实场景中预期用途的适用性。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 回答了设计的一致性问题，而验证则解决了产品在解决问题或满足需求方面的有效性。
 
-- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)、演练和案头检查。
+- **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/)、演练和案头检查。
 - **[验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](https://inaodeng.com/zh-cn/wiki/verification/) 完成后进行。
 
 #### 验证测试在软件开发生命周期 (SDLC) 中的作用是什么？
@@ -136,7 +136,7 @@ order: 0
 
 #### 静态验证测试和动态验证测试有什么区别？
 
-静态[验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
+静态[验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
   另一方面，动态 [验证测试](https://inaodeng.com/zh-cn/wiki/validation-testing/) 需要在实时环境中运行软件以验证其行为是否符合预期。它包括各种类型的测试，例如单元、集成、系统和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)。此方法检查应用程序的运行时行为，包括内存使用情况、CPU 消耗和整体性能。
   从本质上讲，**静态验证**是关于预防，在代码运行之前确保质量，而**动态验证**是关于检测，在执行期间或之后识别问题。静态方法通常在资源方面成本较低，因为它们不需要正在运行的系统，但它们可能会错过运行时特定的缺陷。动态方法可以揭示仅在软件运行时发生的复杂交互和故障，但需要更多 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和执行时间。两者是互补的，对于彻底的验证过程至关重要。
 

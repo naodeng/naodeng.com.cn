@@ -526,7 +526,7 @@ Puppeteer 和[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 通过提�
 - **资源效率**：它们消耗更少的内存和CPU，这在并行运行多个测试时特别有益。
 - **持续集成 (CI) 兼容性**：无头浏览器非常适合 CI 管道，因为它们可以在没有显示环境的服务器上运行。
 - **跨平台**：它们可以在各种操作系统上运行，而无需担心 GUI 差异。
-- **屏幕捕获和 DOM [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** ：尽管缺少 GUI，无头浏览器可以捕获屏幕截图并提供用于调试的 DOM 访问。 **Puppeteer 示例**：
+- **屏幕捕获和 DOM [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)** ：尽管缺少 GUI，无头浏览器可以捕获屏幕截图并提供用于调试的 DOM 访问。 **Puppeteer 示例**：
 
 ```
   const puppeteer = require('puppeteer');
@@ -544,7 +544,7 @@ Puppeteer 和[WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 通过提�
 - **资源效率**：它们消耗更少的内存和CPU，这在并行运行多个测试时特别有益。
 - **持续集成 (CI) 兼容性**：无头浏览器非常适合 CI 管道，因为它们可以在没有显示环境的服务器上运行。
 - **跨平台**：它们可以在各种操作系统上运行，而无需担心 GUI 差异。
-- **屏幕捕获和 DOM [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** ：尽管缺乏 GUI，无头浏览器可以捕获屏幕截图并提供 DOM 访问以进行调试。
+- **屏幕捕获和 DOM [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)** ：尽管缺乏 GUI，无头浏览器可以捕获屏幕截图并提供 DOM 访问以进行调试。
 
 #### 如何确保您的 Web 自动化测试可靠且稳健？
 

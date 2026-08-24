@@ -49,7 +49,7 @@ order: 0
 
 #### FAT 在软件测试中代表什么？
 
-[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 代表**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**。这是一种预交付[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)，其中软件在受控环境（通常是在开发人员的站点）中进行测试，以确保其在运送到客户所在地之前满足商定的规范和要求。此阶段对于根据定义的标准验证软件的功能和性能至关重要，并且通常是合同义务。
+[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 代表**工厂[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)**。这是一种预交付[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)，其中软件在受控环境（通常是在开发人员的站点）中进行测试，以确保其在运送到客户所在地之前满足商定的规范和要求。此阶段对于根据定义的标准验证软件的功能和性能至关重要，并且通常是合同义务。
   在[FAT](https://inaodeng.com/zh-cn/wiki/fat/)期间，将验证软件与硬件的集成（如果适用）以及与其他系统的交互。记录和跟踪缺陷，并在软件被认为可以交付之前确认其解决方案。测试环境尽可能反映生产环境，以确保结果准确。
   [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 在[FAT](https://inaodeng.com/zh-cn/wiki/fat/) 中发挥核心作用，指导测试过程以涵盖所有必要的功能和场景。自动化可以通过执行重复且耗时的测试来提高[FAT](https://inaodeng.com/zh-cn/wiki/fat/)的效率，从而允许在更短的时间内进行更严格的测试。
   包括项目经理、测试工程师、客户和最终用户在内的利益相关者进行协作，以确保软件做好部署准备。客户或最终用户的参与对于验证软件的可用性以及与实际操作的相关性尤其重要。

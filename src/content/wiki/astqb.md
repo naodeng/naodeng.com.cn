@@ -106,7 +106,7 @@ ASTQB，或美国[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing
 
 对于在美国工作或计划在美国工作的专业人士来说，ASTQB 认证可能更受美国雇主的认可。然而，对于寻求国际机会的人来说，由于其全球认可，[ISTQB](https://inaodeng.com/zh-cn/wiki/istqb/) 认证可能更有益处。
 
-两个机构都制定了大致相同的教学大纲，确保[软件测试](../wiki/software-testing.md)的核心原则和实践是一致的。ASTQB 和 [ISTQB](https://inaodeng.com/zh-cn/wiki/istqb/) 的认证在许多情况下是互通的，也就是说，其中一个机构的认证通常会被另一个机构认可。
+两个机构都制定了大致相同的教学大纲，确保[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/)的核心原则和实践是一致的。ASTQB 和 [ISTQB](https://inaodeng.com/zh-cn/wiki/istqb/) 的认证在许多情况下是互通的，也就是说，其中一个机构的认证通常会被另一个机构认可。
 
 总的来说，虽然 ASTQB 和 [ISTQB](https://inaodeng.com/zh-cn/wiki/istqb/) 共同致力于标准化软件测试人员的知识和技能，ASTQB 更专注于美国市场，而[ISTQB](https://inaodeng.com/zh-cn/wiki/istqb/) 具有更广泛的国际影响。
 
