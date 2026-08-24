@@ -35,8 +35,6 @@ export default defineConfig({
   redirects: {
     "/zh/blog/event/30-days-of-ai-in-testing-day-31-bonus-visualise-the-future-of-ai-in-testing/":
       "/zh-cn/blog/event/30-days-of-ai-in-testing-day-31-bonus-visualise-the-future-of-ai-in-testing/",
-    "/en/rss.xml/": "/en/rss.xml",
-    "/zh-cn/rss.xml/": "/zh-cn/rss.xml",
   },
   integrations: [
     mdx(),
