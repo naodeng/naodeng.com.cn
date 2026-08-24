@@ -23,9 +23,9 @@ const astroConfig = readFileSync(
 
 describe("RSS redirects", () => {
   it.each(["en", "zh-cn"])(
-    "does not redirect the canonical %s RSS path back to its non-canonical path",
+    "redirects the legacy %s RSS path without shadowing the RSS route",
     (lang) => {
-      expect(redirects).not.toContain(
+      expect(redirects).toContain(
         `/${lang}/rss.xml/ /${lang}/rss.xml 301`,
       );
       expect(astroConfig).not.toContain(
