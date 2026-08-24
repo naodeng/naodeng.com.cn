@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("zh-cn RSS 主地址可读取，旧尾斜杠地址单向跳转", async ({
+test("zh-cn RSS 主地址和旧尾斜杠地址均可读取", async ({
   request,
   baseURL,
 }) => {
@@ -9,16 +9,18 @@ test("zh-cn RSS 主地址可读取，旧尾斜杠地址单向跳转", async ({
 
   const rssResponse = await request.get(base + rssPath);
   expect(rssResponse.status()).toBe(200);
-  expect(rssResponse.headers()["content-type"]).toContain(
-    "application/rss+xml",
-  );
+  const contentType = rssResponse.headers()["content-type"].split(";", 1)[0];
+  expect(["application/rss+xml", "text/xml"]).toContain(contentType);
   expect(await rssResponse.text()).toMatch(
     /^<\?xml version="1\.0" encoding="UTF-8"\?><rss version="2\.0">/,
   );
 
-  const legacyResponse = await request.get(base + rssPath + "/", {
-    maxRedirects: 0,
-  });
-  expect(legacyResponse.status()).toBe(301);
-  expect(legacyResponse.headers().location).toBe(rssPath);
+  // `astro preview` does not apply the hosting-layer rules in public/_redirects.
+  // It serves both spellings from the same static XML file; the unit test for
+  // public/_redirects separately verifies the production 301 contract.
+  const legacyResponse = await request.get(base + rssPath + "/");
+  expect(legacyResponse.status()).toBe(200);
+  expect(await legacyResponse.text()).toMatch(
+    /^<\?xml version="1\.0" encoding="UTF-8"\?><rss version="2\.0">/,
+  );
 });

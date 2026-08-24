@@ -230,7 +230,7 @@ Scrum 是一个迭代和增量敏捷框架，可促进跨职能团队之间的�
 - **用户故事**或 **产品待办事项 (PBI)**：为 Sprint 选择的功能或需求。
 
 - **任务**：交付 PBI 所需的详细工作，通常分为更小的、可管理的组件。
-- **估计**：每项任务所需的工作量，通常以小时或故事点为单位。 Sprint Backlog 是[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 中**透明度**和**[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)** 的关键工具，允许整个[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 团队查看进度并根据需要调整计划。它使开发团队能够管理自己的工作并调整他们的方法以实现 Sprint 目标。
+- **估计**：每项任务所需的工作量，通常以小时或故事点为单位。 Sprint Backlog 是[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 中**透明度**和**[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)** 的关键工具，允许整个[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 团队查看进度并根据需要调整计划。它使开发团队能够管理自己的工作并调整他们的方法以实现 Sprint 目标。
 
 - 的 **冲刺目标**：对冲刺目标要实现的目标的简洁陈述。
 
@@ -247,7 +247,7 @@ Scrum 是一个迭代和增量敏捷框架，可促进跨职能团队之间的�
 
 #### Scrum 中有哪些不同的事件？
 
-在[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 中，**事件** 是结构化的限时活动，可实现透明度、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和适应。主要事件有：
+在[Scrum](https://inaodeng.com/zh-cn/wiki/scrum/) 中，**事件** 是结构化的限时活动，可实现透明度、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/) 和适应。主要事件有：
 
 - **冲刺**：持续固定持续时间（通常为 2-4 周）的核心容器事件，在此期间创建潜在的可交付产品增量。
 - **冲刺计划**：每个冲刺开始时的会议，团队从产品待办事项列表中选择工作以提交给冲刺待办事项列表，重点关注冲刺目标。

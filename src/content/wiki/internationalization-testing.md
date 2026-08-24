@@ -58,7 +58,7 @@ order: 0
 
 - 实施 **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
 
-- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。 **挑战**包括：
+- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)**确保正确使用国际化库和 API。 **挑战**包括：
 
 - 确保字符串和区域设置数据的完全外部化。
 - 处理复杂的脚本和双向文本。
@@ -71,7 +71,7 @@ order: 0
 
 - 实施 **自动化[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**切换区域设置并验证正确的行为。
 
-- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)**确保正确使用国际化库和 API。
+- **代码[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)**确保正确使用国际化库和 API。
 
 #### 为什么国际化测试在软件开发中很重要？
 

@@ -72,7 +72,7 @@ order: 0
 
 #### 静态测试和动态测试之间的主要区别是什么？
 
-[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 涉及检查代码、需求或文档**而不执行**程序。它主要是关于**预防**，可以包括审查、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和静态分析工具等活动，这些工具可在不运行代码的情况下查找编码标准、安全漏洞或代码质量。
+[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 涉及检查代码、需求或文档**而不执行**程序。它主要是关于**预防**，可以包括审查、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/) 和静态分析工具等活动，这些工具可在不运行代码的情况下查找编码标准、安全漏洞或代码质量。
   另一方面，[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 需要**执行**软件来验证其针对[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 的行为。它与**检测**有关，包括单元测试、集成测试、系统测试和验收测试。
   主要区别：
 

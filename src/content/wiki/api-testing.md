@@ -263,7 +263,7 @@ API 测试 中的安全测试专注于验证 [APIs](https://inaodeng.com/zh-cn/w
 
 SoapUI 与其他 API 测试工具的主要区别在于它主要专注于**SOAP（Simple Object Access Protocol）**服务，尽管它也支持 RESTful 服务和其他 Web 协议。它提供了一个专门用于 SOAP 特定验证的环境，例如 WS-Security、WS-Addressing 和 MTOM（Message Transmission Optimization Mechanism），这在其他更偏向 REST 的工具中较为罕见。
 
-另一个不同之处是 SoapUI 对**数据驱动测试**的广泛支持。它允许测试人员轻松地从外部来源，如[数据库](../wiki/database.md)和 Excel 文件，读取数据以创建动态请求并验证响应。这与其使用**Groovy 脚本编写复杂场景**的能力结合使用。
+另一个不同之处是 SoapUI 对**数据驱动测试**的广泛支持。它允许测试人员轻松地从外部来源，如[数据库](https://inaodeng.com/zh-cn/wiki/database/)和 Excel 文件，读取数据以创建动态请求并验证响应。这与其使用**Groovy 脚本编写复杂场景**的能力结合使用。
 
 SoapUI 还提供了**模拟功能**，使用户能够在实际实施之前模拟 Web 服务的行为。这在**面向服务的体系结构（SOA）**中特别有用，因为服务是并行开发的。
 
@@ -495,7 +495,7 @@ API 测试在持续集成/持续部署（CI/CD）流水线中发挥着至关重�
 
 API 测试在性能优化方面发挥着重要作用，它允许工程师在服务层次上发现并解决**性能瓶颈**。通过对[API](https://inaodeng.com/zh-cn/wiki/api/)端点执行性能测试，团队可以评估在不同负载条件下的响应时间、吞吐量和资源利用率，从而找出需要优化的地方。
 
-例如，使用[JMeter](../wiki/jmeter.md)或 LoadRunner 等工具，测试人员可以模拟高并发场景，了解[API](https://inaodeng.com/zh-cn/wiki/api/)在压力下的表现。如果[API](https://inaodeng.com/zh-cn/wiki/api/)表现出**长时间的响应**或**高错误率**，这表明需要进行性能调优。这可能包括优化[数据库](https://inaodeng.com/zh-cn/wiki/database/)查询、缓存响应或扩展基础架构。
+例如，使用[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)或 LoadRunner 等工具，测试人员可以模拟高并发场景，了解[API](https://inaodeng.com/zh-cn/wiki/api/)在压力下的表现。如果[API](https://inaodeng.com/zh-cn/wiki/api/)表现出**长时间的响应**或**高错误率**，这表明需要进行性能调优。这可能包括优化[数据库](https://inaodeng.com/zh-cn/wiki/database/)查询、缓存响应或扩展基础架构。
 
 此外，[API](https://inaodeng.com/zh-cn/wiki/api/)性能测试可以自动化，并纳入 CI/CD 流水线，确保在部署之前验证任何代码更改对性能的影响。这种积极的方法防止性能下降进入生产环境。
 

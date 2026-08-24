@@ -72,7 +72,7 @@ IV&V 在软件开发中对于**确保客观性**和**公正的质量评估**至�
 #### 验证和确认有什么区别？
 
 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的两个不同过程。
-  **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常通过审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和静态分析方法进行。
+  **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常通过审查、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/) 和静态分析方法进行。
 
 ```
   // Example of verification: Static code analysis to ensure coding standards

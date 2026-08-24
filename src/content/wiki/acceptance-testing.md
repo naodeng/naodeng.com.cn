@@ -143,7 +143,7 @@ Feature: 用户登录
 - **[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)**：测试人员在没有预定义[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)的情况下探索软件，发现意外行为或[缺陷](https://inaodeng.com/zh-cn/wiki/bug/)。
 - **基于会话的测试**：具有特定重点或目标以及设定时间框架的结构化[探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/)会话。
 - **基于清单的测试**：使用功能或需求列表作为指南，确保验证所有功能。
-- **Alpha/[Beta 测试](../UB/beta-testing.md)**：将软件释放给组织外的有限受众（Alpha）或实际用户（beta）以收集反馈。
+- **Alpha/[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/)**：将软件释放给组织外的有限受众（Alpha）或实际用户（beta）以收集反馈。
 - **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：运行自动化测试，确认最近的更改没有对现有功能产生不良影响。
 - **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：评估系统在负载下的性能，确保其满足速度和响应性的验收标准。
 - **合规性测试**：验证软件是否符合行业标准、法规或合同协议。

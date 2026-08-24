@@ -63,7 +63,7 @@ order: 0
 
 测试预言机在 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中至关重要，因为它是验证测试结果正确性的**真相来源**。它确定被测系统的行为是否符合[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/)，这对于评估软件的可靠性和功能至关重要。
   如果没有测试预言机，测试人员将缺乏系统的方法来**验证测试结果**，从而导致主观判断和不一致的测试结果。这可能会导致未检测到的缺陷，增加生产失败的风险，并最终损害用户满意度和商业声誉。
-  在[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 的自动化，减少对手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
+  在[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 中，测试预言机可以实现结果[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 的自动化，减少对手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/) 的需求，并允许进行更广泛和严格的测试。它通过提供有关变更影响的即时反馈，有助于**持续集成**和**交付管道**。
   此外，明确定义的测试预言机可以改进测试[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)并减少[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)或否定的可能性，这是[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中的常见挑战。通过明确指定预期行为，它有助于创建更“稳健”和“可靠”的自动化测试。
   综上所述，测试预言机对于确保自动化测试准确反映软件的预期行为是必不可少的，从而在高质量软件产品的交付中发挥着关键作用。
 
@@ -185,7 +185,7 @@ order: 0
 - **派生预言**基于现有系统状态或以前的版本。它们启用**[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**，并且在正式规范不完整时很有用，但如果参考版本也有缺陷，则可能会错过新的缺陷。
 - **统计预言**依赖于概率模型，并在确切结果不可预测时使用。他们在测试中引入了**统计分析**，可以处理具有不确定性行为的复杂系统，但可能并不总能查明特定错误。
 - **共识预言机**使用多个来源或系统之间的协议来验证结果。当单一事实来源不可用时，它们可以有效地**检测异常**，但如果所有来源都具有相同的错误，则可能会**误导**。
-- **人类预言**涉及手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。 这些预言机的影响也体现在**测试设计**中，其中预言机的选择塑造了 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和 **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。此外，预言机的**维护**至关重要，因为过时或不正确的预言机可能会导致[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)或负面结果，影响测试结果的**信任**。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师必须平衡每种预言机类型的优点和缺点，以优化测试过程。
+- **人类预言**涉及手动[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](https://inaodeng.com/zh-cn/wiki/inspection/)，并且在自动判断不可行时是必要的。它们**灵活**，可以捕捉微妙的问题，但**主观**且**可扩展性**有限。 这些预言机的影响也体现在**测试设计**中，其中预言机的选择塑造了 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和 **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**。此外，预言机的**维护**至关重要，因为过时或不正确的预言机可能会导致[误报](https://inaodeng.com/zh-cn/wiki/false-positive/)或负面结果，影响测试结果的**信任**。 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师必须平衡每种预言机类型的优点和缺点，以优化测试过程。
 
 #### Test Oracle 使用的一些实际示例有哪些？
 

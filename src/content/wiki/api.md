@@ -303,7 +303,7 @@ API 网关可以处理**横切关注点**，如：
 - **Karate DSL**: 一个开源工具，将 API 测试自动化、模拟、性能测试甚至 UI 自动化集成到一个统一的框架中。
 - **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**: 主要用于端到端测试 Web 应用程序，但也可通过在测试中直接发送 HTTP 请求进行 API 测试。
 
-这些工具提供各种功能，如[测试自动化](../wTiki/test-automation.md)、请求链接、环境变量和与 CI/CD 管道的集成，以简化和增强[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)过程。
+这些工具提供各种功能，如[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)、请求链接、环境变量和与 CI/CD 管道的集成，以简化和增强[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)过程。
 
 ### API 测试的关键步骤是什么？
 

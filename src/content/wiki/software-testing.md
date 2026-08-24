@@ -122,7 +122,7 @@ order: 0
 #### 什么是静态测试和动态测试？
 
 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 和[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 是用于检测软件应用程序中的缺陷的两种方法。
-  **[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/[检查](https://inaodeng.com/zh-cn/wiki/inspection/)/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，并确保符合最佳实践。
+  **[静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/)** 涉及检查代码、需求或文档，但不执行程序。它通常在开发生命周期的早期阶段完成。技术包括审查、演练、[[检查](https://inaodeng.com/zh-cn/wiki/inspection/)s](https://inaodeng.com/zh-cn/wiki/inspection/) 和案头检查。静态分析工具还可用于根据编码标准自动评估代码，发现潜在的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)，并确保符合最佳实践。
   另一方面，**[动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/)** 需要**执行**。它通过在各种条件下运行软件来验证软件的功能行为。此类测试检查给定输入的正确输出，并在模拟实际使用的环境中执行。 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 可以进一步分为[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)、[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)、[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)。
   两种测试类型是互补的。 [静态测试](https://inaodeng.com/zh-cn/wiki/static-testing/) 有助于及早发现问题，从而更具成本效益地修复问题，而 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 则可验证软件在压力下的操作行为和性能。结合这两种方法可以确保对软件质量进行更彻底的评估。
 

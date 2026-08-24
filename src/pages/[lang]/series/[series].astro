@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_SERIES } from "@/consts";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 function slugToSeries(slug: string) {
   return decodeURIComponent(slug);
@@ -13,7 +13,7 @@ function slugToSeries(slug: string) {
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
-  const paths: { params: { lang: string; series: string }; props: { posts: typeof allPosts } }[] = [];
+  const paths: { params: { lang: string; series: string }; props: { posts: CollectionEntry<"blog">[]; redirectTo?: string } }[] = [];
 
   for (const lang of Object.keys(LOCALES)) {
     const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
@@ -28,10 +28,27 @@ export async function getStaticPaths() {
     }
   }
 
+  // Preserve old cross-language URLs that were created before series were
+  // separated by locale. Redirect them to the language that owns the series.
+  for (const lang of Object.keys(LOCALES)) {
+    const otherLang = lang === "en" ? "zh-cn" : "en";
+    const existing = new Set(paths.filter((p) => p.params.lang === lang).map((p) => p.params.series));
+    const otherPosts = allPosts.filter((post) => post.id.startsWith(`${otherLang}/`));
+    for (const series of new Set(otherPosts.flatMap((post) => post.data.series || []))) {
+      if (existing.has(series)) continue;
+      paths.push({
+        params: { lang, series },
+        props: { posts: [], redirectTo: `/${otherLang}/series/${encodeURIComponent(series)}/` },
+      });
+    }
+  }
+
   return paths;
 }
 
 const { lang, series: seriesSlug } = Astro.params;
+const redirectTo = (Astro.props as { redirectTo?: string }).redirectTo;
+if (redirectTo) return Astro.redirect(redirectTo, 301);
 const seriesName = seriesSlug ? slugToSeries(seriesSlug) : "";
 const { posts } = Astro.props;
 const locale = lang as Lang;
