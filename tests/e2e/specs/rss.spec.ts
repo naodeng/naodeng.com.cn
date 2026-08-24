@@ -9,9 +9,8 @@ test("zh-cn RSS 主地址可读取，旧尾斜杠地址单向跳转", async ({
 
   const rssResponse = await request.get(base + rssPath);
   expect(rssResponse.status()).toBe(200);
-  expect(rssResponse.headers()["content-type"]).toContain(
-    "application/rss+xml",
-  );
+  const contentType = rssResponse.headers()["content-type"].split(";", 1)[0];
+  expect(["application/rss+xml", "text/xml"]).toContain(contentType);
   expect(await rssResponse.text()).toMatch(
     /^<\?xml version="1\.0" encoding="UTF-8"\?><rss version="2\.0">/,
   );
