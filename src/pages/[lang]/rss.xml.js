@@ -22,7 +22,7 @@ export async function GET(context) {
 
   const siteOrigin = context.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 
-  return rss({
+  const response = await rss({
     title: localeTitle,
     description: localeDescription,
     site: context.site,
@@ -37,4 +37,9 @@ export async function GET(context) {
       };
     }),
   });
+
+  // Astro's RSS helper currently emits `text/xml`. Advertise the standard
+  // RSS media type while preserving the existing URL, body, and redirects.
+  response.headers.set("content-type", "application/rss+xml; charset=utf-8");
+  return response;
 }
