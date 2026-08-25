@@ -617,16 +617,16 @@ export const ABOUT_ME_TITLE: Multilingual = {
 export const ABOUT_ME_BODY: Multilingual = {
   en: `Hi, I'm Nao Deng.
 
-- Currently working on [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
-- Currently learning **AI-assisted Testing**
-- I regularly write articles on this site [Nao's Blog](https://inaodeng.com)
+- Building bilingual QA resources, AI testing tools, and learning sites around [awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills), [dsh-qa](https://github.com/naodeng/dsh-qa), [awesome-qa-prompt](https://github.com/naodeng/awesome-qa-prompt), and [naodeng.com.cn](https://github.com/naodeng/naodeng.com.cn)
+- Focused on **AI-assisted Testing**, QA workbenches, prompt design, and practical testing knowledge sharing
+- I regularly write articles on [Nao's Blog](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
 - Support me by [supporting this blog](https://inaodeng.com/sponsor)`,
   "zh-cn": `你好，我是 naodeng。
 
-- 当前工作在 [Awesome QA Prompt](https://github.com/naodeng/awesome-qa-prompt)
-- 正在学习 **AI 辅助测试**
+- 围绕 [awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)、[dsh-qa](https://github.com/naodeng/dsh-qa)、[awesome-qa-prompt](https://github.com/naodeng/awesome-qa-prompt) 和 [naodeng.com.cn](https://github.com/naodeng/naodeng.com.cn)，持续建设双语 QA 资源、AI 测试工具和学习站点
+- 关注 **AI 辅助测试**、QA 工作台、提示词设计与实用测试知识分享
 - 定期在本站 [软件测试同学](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
@@ -678,8 +678,8 @@ export const ABOUT_HERO_NAME: Multilingual = {
   "zh-cn": "naodeng",
 };
 export const ABOUT_HERO_TAGLINE: Multilingual = {
-  en: "Software testing & QA. I write about test automation, quality, and AI-assisted testing.",
-  "zh-cn": "软件测试与质量。持续输出测试自动化、质量保障与 AI 辅助测试的内容。",
+  en: "Quality Analyst, not Quality Assurance. Building practical tools, skills, and learning paths for AI-assisted testing.",
+  "zh-cn": "质量分析师，而非质量保证师。持续建设面向 AI 辅助测试的实用工具、技能与学习路径。",
 };
 export const ABOUT_STAT_ARTICLES: Multilingual = {
   en: "articles",
@@ -701,19 +701,19 @@ export const FEATURED_PROJECTS: Array<{
   description: Multilingual;
 }> = [
     {
-      url: "https://github.com/orgs/Automation-Test-Starter/repositories",
-      title: { en: "Automation-Test-Starter", "zh-cn": "Automation-Test-Starter" },
+      url: "https://github.com/naodeng/dsh-qa",
+      title: { en: "dsh-qa", "zh-cn": "dsh-qa" },
       description: {
-        en: "Collection of automation testing starter projects with various frameworks and languages.",
-        "zh-cn": "包含各种框架和语言的自动化测试启动项目集合。",
+        en: "A local QA workbench plugin for DeepSeek Harness, covering AI-assisted requirements, cases, defects, milestones, reports, kanban, and calendar views.",
+        "zh-cn": "面向 DeepSeek Harness 的本地 QA 工作台插件，覆盖 AI 辅助需求、用例、缺陷、里程碑、报告、看板和日历。",
       },
     },
     {
-      url: "https://github.com/naodeng/QAWiki",
-      title: { en: "QA Wiki", "zh-cn": "QA Wiki" },
+      url: "https://github.com/naodeng/awesome-qa-skills",
+      title: { en: "Awesome QA Skills", "zh-cn": "Awesome QA Skills" },
       description: {
-        en: "Comprehensive quality assurance knowledge base covering testing methodologies and best practices.",
-        "zh-cn": "全面的质量保证知识库，涵盖测试方法论和最佳实践。",
+        en: "A bilingual AI testing skills library with reusable workflows, testing-type skills, install scripts, and eval-ready checks.",
+        "zh-cn": "面向 AI 测试的双语技能库，包含可复用工作流、测试类型技能、安装脚本和可用于评估的检查。",
       },
     },
     {
