@@ -22,12 +22,20 @@
 <style>
   .sidebar-ad {
     width: 100%;
+    max-height: 180px;
     overflow: hidden;
+  }
+
+  @media (max-width: 959px) {
+    .sidebar-ad {
+      display: none !important;
+    }
   }
 
   .sidebar-ad[hidden] {
     display: none !important;
     margin: 0 !important;
     min-height: 0 !important;
+    max-height: 0 !important;
   }
 </style>
