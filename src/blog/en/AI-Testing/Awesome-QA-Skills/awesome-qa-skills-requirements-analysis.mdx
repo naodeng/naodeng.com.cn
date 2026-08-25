@@ -1,0 +1,136 @@
+---
+title: "Requirements Analysis Skill: A Practical Guide from Installation to Real Testing"
+description: "A detailed guide to the Requirements Analysis Skill in Awesome QA Skills, covering the project, use cases, installation, usage, practical workflow, best practices, and Q&A."
+date: 2026-08-24T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Requirements Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills in Practice"]
+---
+
+Testing work often stalls for a mundane reason: the input is scattered, the scope is vague, and nobody can tell whether the output is trustworthy. The Requirements Analysis Skill addresses that specific problem.
+
+This guide treats the Skill as an executable working contract, not a magic prompt. Its inputs, process, output boundaries, and verification rules are what make it useful in a real project.
+
+## Start with Awesome QA Skills
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) is a bilingual library of AI-assisted testing Skills. Each Skill is a self-contained installable directory with at least a YAML-frontmatter `SKILL.md`, plus optional prompts, references, examples, scripts, and evaluation cases. The structure follows progressive disclosure: the entry point stays compact while deeper material is loaded only when the task needs it.
+
+The project covers three layers. Testing types perform focused analysis and design, testing workflows coordinate activities across a stage, and Skill Engineering checks the contracts and evidence of the Skills themselves. Requirements Analysis lives at `testing-types/requirements-analysis` and owns one explicit part of that system.
+
+The Agent Skills specification requires a directory with `SKILL.md`, using `name` and `description` for discovery and triggering. See the [Agent Skills Specification](https://agentskills.io/specification).
+
+## What Requirements Analysis does
+
+Use this skill when you need to analyze requirements, identify test points, boundaries, dependencies, and risks before test design; triggers include requirements analysis and test point analysis.
+
+A representative task is this: Identify business rules, boundaries, dependencies, conflicts, unknowns, and testability gaps before writing test cases.
+
+The Skill instructions focus on “Role”, “Input”, “What to do”, “Execution Rules”, “Minimum Coverage Checklist”, “Output”. The directory also includes `references`, `scripts`, `evals`, `output-formats.md`, loaded only when deeper references or output contracts are needed.
+
+The expected result is an artifact another person can execute or review, not a polished paragraph of generic advice. When inputs are incomplete, the Skill should say what is missing, which assumptions it used, and which conclusions those assumptions affect.
+
+## When to use it
+
+- You have real requirements, code, interfaces, test material, or stage artifacts that need structured analysis.
+- Your team needs a consistent process and output contract instead of a growing pile of personal prompts.
+- Developers, product managers, testers, or release owners will act on the result.
+- You want the AI to expose unknowns, evidence gaps, and risk boundaries.
+
+It is a poor fit when no project context exists but a “complete conclusion” is expected, when runtime or production evidence is required but only static inference is available, or when someone wants to treat model output as human approval.
+
+## Installation
+
+Install only the English Skill into Codex:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis -g -a codex -y
+```
+
+You can also use the repository installer:
+
+```bash
+git clone https://github.com/naodeng/awesome-qa-skills.git
+cd awesome-qa-skills
+bash scripts/install-skills-mac.sh --tool codex --lang en
+```
+
+The Chinese and English trees contain Skills with identical names. Choose one language tree for a global install, or install one Skill as shown above, to avoid discovery collisions.
+
+## How to use it
+
+Invoke the Skill by name and provide a concrete task:
+
+```text
+Use the requirements-analysis Skill.
+
+Task: Identify business rules, boundaries, dependencies, conflicts, unknowns, and testability gaps before writing test cases.
+Inputs: requirements, relevant interfaces or pages, and current test material
+Constraints: do not invent missing facts; list assumptions, unknowns, and blockers separately
+Output: an actionable result with risk priority, coverage rationale, and next verification steps
+```
+
+You do not need a clever prompt for the first run. Real artifacts, a clear goal, scope, and constraints matter more. If you provide many files, identify authoritative sources and background references so an old report is not mistaken for current state.
+
+## A progressive workflow
+
+### 1. Establish the boundary
+
+Answer four questions first: what is being tested, which stage the work is in, what evidence exists, and who will consume the output. If the boundary is unclear, the Skill should ask questions or mark assumptions.
+
+### 2. Build an evidence and risk inventory
+
+Separate requirements, code, interfaces, runtime records, and historical defects. Facts should be traceable to sources. Inferences should be labeled. Unverified material cannot support “passed” or “ready to release.”
+
+### 3. Execute the core process
+
+Work through Role, Input, What to do, Execution Rules, Minimum Coverage Checklist. Address high-risk paths first and ordinary coverage second. If sources conflict, preserve the conflict and its impact instead of silently choosing a side.
+
+### 4. Review the output
+
+Check that important conclusions have sources, risks include impact, recommendations are executable, and unknowns remain visible. Then decide whether to proceed to runtime execution, human review, or another Skill.
+
+## Best practices
+
+1. **Provide facts before expectations.** Requirements, interface definitions, and real errors beat “make it professional.”
+2. **Keep one primary objective per run.** Analysis, generation, execution, and approval can form a chain, but one static answer cannot prove all four happened.
+3. **Preserve traceability.** Requirement IDs, paths, endpoints, screenshots, and log timestamps make results reviewable.
+4. **Ask the model to expose uncertainty.** A useful unknowns list is worth more than ten generic recommendations.
+5. **Keep human review.** Security, release, compliance, and high-risk business decisions still need accountable owners.
+6. **Use evals to control drift.** After changing a Skill, test success, incomplete-input, and risk-boundary cases. Longer instructions do not automatically produce better behavior.
+
+## Combining it with other Skills
+
+Requirements Analysis owns a focused testing activity. It can follow requirements-analysis or test-strategy and feed test-case-reviewer, test-reporting, or a daily, sprint, or release workflow.
+
+The goal is not to invoke the most Skills. Each transition needs a clear input, output, and approval boundary.
+
+## Q&A
+
+### Does the Skill execute every test automatically?
+
+No. It first provides structured analysis and execution guidance. Real commands or browser actions require an available environment, tools, permissions, and explicit authorization.
+
+### Can I use it with incomplete inputs?
+
+Yes. The reliable output is a set of clarification questions, assumptions, and a degraded result. Quietly inventing business rules produces a complete-looking answer that cannot support a real decision.
+
+### Why not copy a prompt instead?
+
+A prompt contains instructions. A Skill directory can also carry references, examples, scripts, output contracts, tool metadata, and evaluation cases, loading them progressively.
+
+### How do I judge whether the output is trustworthy?
+
+Look at evidence, not tone. Check sources, execution records, coverage links, failure details, and unresolved items. Static analysis proves only that static analysis occurred.
+
+### Should I install Chinese or English?
+
+Choose the primary working language. Both trees use the same Skill names, so avoid installing both into one global directory. For bilingual delivery, switch language scope deliberately.
+
+## Closing thought
+
+The value of Requirements Analysis comes from a repeatable way of working: sourced inputs, bounded execution, actionable outputs, and reviewable conclusions. Try it on one real task, then adjust the material and output contract from team feedback. That beats collecting prompts nobody has run.
+
+- [View the Requirements Analysis source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis)
+- [Explore Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [Browse QA Skills online](https://inaodeng.com/en/qaskills/)
