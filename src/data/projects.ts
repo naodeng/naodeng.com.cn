@@ -13,6 +13,19 @@ export interface ProjectItem {
 
 export const PROJECTS_LIST: ProjectItem[] = [
   {
+    url: "https://github.com/naodeng/dsh-qa",
+    name: { en: "DSH-QA · QA Workbench", "zh-cn": "DSH-QA · 质量工作台" },
+    techStack: {
+      en: "JavaScript, DeepSeek Harness, DSH Plugin",
+      "zh-cn": "JavaScript、DeepSeek Harness、DSH 插件",
+    },
+    description: {
+      en: "A local software testing workbench plugin for DeepSeek Harness. It brings test projects, iterations, boards, calendars, milestones, QA materials, and AI-assisted workflows into one workspace, with zero npm dependencies and local-first data.",
+      "zh-cn": "面向 DeepSeek Harness 的本地软件测试工作台插件，将测试项目、迭代、看板、日历、里程碑、QA 测试材料和 AI 协作工作流集中到一个工作区，零 npm 依赖，数据本机保存。",
+    },
+    badge: { en: "Latest", "zh-cn": "最新项目" },
+  },
+  {
     url: "https://github.com/naodeng/awesome-qa-prompt",
     name: { en: "Awesome QA Prompt", "zh-cn": "Awesome QA Prompt" },
     techStack: {
