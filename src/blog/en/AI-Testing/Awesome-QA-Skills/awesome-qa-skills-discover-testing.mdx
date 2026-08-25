@@ -1,136 +1,131 @@
 ---
-title: "Testing Skill Discovery Skill: A Practical Guide from Installation to Real Testing"
-description: "A detailed guide to the Testing Skill Discovery Skill in Awesome QA Skills, covering the project, use cases, installation, usage, practical workflow, best practices, and Q&A."
+title: "Testing Skill Discovery, putting testing into the delivery rhythm"
+description: "Testing Skill Discovery field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
 date: 2026-08-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Testing Skill Discovery"]
 categories: ["AI Testing", "QA Skills"]
-series: ["Awesome QA Skills in Practice"]
+series: ["Awesome QA Skills Field Guides"]
 ---
 
-Testing work often stalls for a mundane reason: the input is scattered, the scope is vague, and nobody can tell whether the output is trustworthy. The Testing Skill Discovery Skill addresses that specific problem.
+Map entry points, dependencies, environments, risks, existing tests, and questions in an unfamiliar project. The task sounds familiar, yet evidence and boundaries are easy to lose. Testing Skill Discovery starts there.
 
-This guide treats the Skill as an executable working contract, not a magic prompt. Its inputs, process, output boundaries, and verification rules are what make it useful in a real project.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Testing Skill Discovery.
 
-## Start with Awesome QA Skills
+## Read the source Skill first
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) is a bilingual library of AI-assisted testing Skills. Each Skill is a self-contained installable directory with at least a YAML-frontmatter `SKILL.md`, plus optional prompts, references, examples, scripts, and evaluation cases. The structure follows progressive disclosure: the entry point stays compact while deeper material is loaded only when the task needs it.
+The main prompt covers Routing decision rules (apply in order), Quality Bar, Gotchas, Pre-delivery checklist, Workflow. Those headings are navigation; the project artifacts still provide the facts.
 
-The project covers three layers. Testing types perform focused analysis and design, testing workflows coordinate activities across a stage, and Skill Engineering checks the contracts and evidence of the Skills themselves. Testing Skill Discovery lives at `testing-workflows/discover-testing` and owns one explicit part of that system.
+The source directory contains 17 script entries. Start with [scripts/batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/discover-testing/scripts/batch_convert_templates.py).
 
-The Agent Skills specification requires a directory with `SKILL.md`, using `name` and `description` for discovery and triggering. See the [Agent Skills Specification](https://agentskills.io/specification).
+- [Open the Testing Skill Discovery source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/discover-testing)
 
-## What Testing Skill Discovery does
+## Put the task on a timeline
 
-Use this skill when you need to route a request to the right testing skill before execution; triggers include discover testing, testing skill router, and which testing skill.
+Map entry points, dependencies, environments, risks, existing tests, and questions in an unfamiliar project
 
-A representative task is this: When a user only says “test this feature,” first route the request to requirements, functional, API, UI, performance, or security Skills.
+Workflow Skills become useful at handoffs. This is a planning sample; dates, owners, and evidence must come from the project.
 
-The Skill instructions focus on “Role”, “Input”, “Routing decision rules (apply in order)”, “1. Workflow vs type first”, “2. Type skill selection (exactly one primary)”, “3. When a supporting skill is allowed (optional, ≤1)”. The directory also includes `scripts`, `evals`, `output-formats.md`, `reference.md`, loaded only when deeper references or output contracts are needed.
+| Stage | Action | Evidence | Owner |
+| --- | --- | --- | --- |
+| Entry | Confirm scope and environment | Requirement version, build ID | QA |
+| Execution | Run high-risk journeys first | Run record, defect links | QA and engineering |
+| Decision | Check exit criteria | Residual risk list | Release owner |
+| Handoff | Record unfinished work | Owner and due date | Project lead |
 
-The expected result is an artifact another person can execute or review, not a polished paragraph of generic advice. When inputs are incomplete, the Skill should say what is missing, which assumptions it used, and which conclusions those assumptions affect.
+If approval ownership or evidence is blank, the plan is not ready for a decision meeting.
 
-## When to use it
+## Give the workflow a normal path and interruption paths
 
-- You have real requirements, code, interfaces, test material, or stage artifacts that need structured analysis.
-- Your team needs a consistent process and output contract instead of a growing pile of personal prompts.
-- Developers, product managers, testers, or release owners will act on the result.
-- You want the AI to expose unknowns, evidence gaps, and risk boundaries.
+The working task is Map entry points, dependencies, environments, risks, existing tests, and questions in an unfamiliar project. Put it into the actual delivery cadence.
 
-It is a poor fit when no project context exists but a “complete conclusion” is expected, when runtime or production evidence is required but only static inference is available, or when someone wants to treat model output as human approval.
+| Moment | Team action | Artifact | Exit condition |
+| --- | --- | --- | --- |
+| Before entry | Lock requirement version, build, and owner | Scope note | High-risk unknowns have owners |
+| During execution | Run delivery-blocking journeys first | Run record and defects | P0 results are reviewed |
+| Before decision | Collect omissions and residual risks | Decision packet | Approver has read the risks |
+| After handoff | Track deferred work | Owner, date, link | Follow-up exists in the work system |
 
-## Installation
+When an environment arrives late, finish static review and data preparation. Repeated build failures are blockers with duration, not failed product tests. A late scope addition triggers a new look at Routing decision rules (apply in order) and Quality Bar; it does not silently stretch the old plan.
 
-Install only the English Skill into Codex:
+A clean handoff names the tested build, evidence-backed journeys, accepted risks, and the owner of the next action.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the discover-testing Skill.
+
+Task: Map entry points, dependencies, environments, risks, existing tests, and questions in an unfamiliar project
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+List entry criteria, actions, evidence, owners, and exit criteria on a timeline. Track environment and build blockers separately from product failures.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Assign a workflow_run_id and connect scope, build, owners, and handoff. The next Testing Skill Discovery run should load unfinished work instead of rediscovering it.
+
+### A three-Skill chain
+
+`discover-testing` → `requirements-analysis` → `test-strategy`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to discover-testing | Source versions, scope, risks, open questions | Testing Skill Discovery staleness and conflicts |
+| discover-testing to downstream | Primary artifact, evidence index, unfinished work | Testing Skill Discovery executability and owners |
+| Feedback to discover-testing | Runs, defects, new risks | Testing Skill Discovery baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Testing Skill Discovery a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| discover-testing input | Version, environment, owner, accessible sources | Stop Testing Skill Discovery and list gaps |
+| discover-testing artifact | Material claims carry basis and status | Return Testing Skill Discovery for evidence |
+| discover-testing execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| discover-testing decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Testing Skill Discovery adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Keep the workflow out of ceremony land
+
+Testing Skill Discovery should say who acts, when they act, which evidence they produce, and what allows the next stage to begin. Meeting names matter less than Routing decision rules (apply in order), ownership, due dates, and exit criteria. Every unfinished item needs an owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/discover-testing -g -a codex -y
 ```
 
-You can also use the repository installer:
+Invoke it with “Use the discover-testing Skill,” then attach the real artifacts.
 
-```bash
-git clone https://github.com/naodeng/awesome-qa-skills.git
-cd awesome-qa-skills
-bash scripts/install-skills-mac.sh --tool codex --lang en
-```
+## Two practical questions
 
-The Chinese and English trees contain Skills with identical names. Choose one language tree for a global install, or install one Skill as shown above, to avoid discovery collisions.
+### When does Testing Skill Discovery begin?
 
-## How to use it
+Begin when entry criteria are met. At minimum, know the scope, build, environment, owner, and target date.
 
-Invoke the Skill by name and provide a concrete task:
+### Can the Skill make a Go/No-Go decision?
 
-```text
-Use the discover-testing Skill.
+No. It organizes evidence, risk, and unfinished work. The accountable project owner decides.
 
-Task: When a user only says “test this feature,” first route the request to requirements, functional, API, UI, performance, or security Skills.
-Inputs: requirements, relevant interfaces or pages, and current test material
-Constraints: do not invent missing facts; list assumptions, unknowns, and blockers separately
-Output: an actionable result with risk priority, coverage rationale, and next verification steps
-```
+### What if the plan becomes stale halfway through?
 
-You do not need a clever prompt for the first run. Real artifacts, a clear goal, scope, and constraints matter more. If you provide many files, identify authoritative sources and background references so an old report is not mistaken for current state.
+Record when it changed, affected scope, and the new owner. Keep the old plan for the retrospective.
 
-## A progressive workflow
+### Who maintains the workflow artifacts?
 
-### 1. Establish the boundary
+Stage owners update their evidence; the handoff owner checks links and unfinished items.
 
-Answer four questions first: what is being tested, which stage the work is in, what evidence exists, and who will consume the output. If the boundary is unclear, the Skill should ask questions or mark assumptions.
-
-### 2. Build an evidence and risk inventory
-
-Separate requirements, code, interfaces, runtime records, and historical defects. Facts should be traceable to sources. Inferences should be labeled. Unverified material cannot support “passed” or “ready to release.”
-
-### 3. Execute the core process
-
-Work through Role, Input, Routing decision rules (apply in order), 1. Workflow vs type first, 2. Type skill selection (exactly one primary). Address high-risk paths first and ordinary coverage second. If sources conflict, preserve the conflict and its impact instead of silently choosing a side.
-
-### 4. Review the output
-
-Check that important conclusions have sources, risks include impact, recommendations are executable, and unknowns remain visible. Then decide whether to proceed to runtime execution, human review, or another Skill.
-
-## Best practices
-
-1. **Provide facts before expectations.** Requirements, interface definitions, and real errors beat “make it professional.”
-2. **Keep one primary objective per run.** Analysis, generation, execution, and approval can form a chain, but one static answer cannot prove all four happened.
-3. **Preserve traceability.** Requirement IDs, paths, endpoints, screenshots, and log timestamps make results reviewable.
-4. **Ask the model to expose uncertainty.** A useful unknowns list is worth more than ten generic recommendations.
-5. **Keep human review.** Security, release, compliance, and high-risk business decisions still need accountable owners.
-6. **Use evals to control drift.** After changing a Skill, test success, incomplete-input, and risk-boundary cases. Longer instructions do not automatically produce better behavior.
-
-## Combining it with other Skills
-
-Testing Skill Discovery coordinates a workflow. Route focused work to testing-type Skills such as requirements-analysis, functional-testing, api-testing, test-case-writing, or test-reporting.
-
-The goal is not to invoke the most Skills. Each transition needs a clear input, output, and approval boundary.
-
-## Q&A
-
-### Does the Skill execute every test automatically?
-
-No. It first provides structured analysis and execution guidance. Real commands or browser actions require an available environment, tools, permissions, and explicit authorization.
-
-### Can I use it with incomplete inputs?
-
-Yes. The reliable output is a set of clarification questions, assumptions, and a degraded result. Quietly inventing business rules produces a complete-looking answer that cannot support a real decision.
-
-### Why not copy a prompt instead?
-
-A prompt contains instructions. A Skill directory can also carry references, examples, scripts, output contracts, tool metadata, and evaluation cases, loading them progressively.
-
-### How do I judge whether the output is trustworthy?
-
-Look at evidence, not tone. Check sources, execution records, coverage links, failure details, and unresolved items. Static analysis proves only that static analysis occurred.
-
-### Should I install Chinese or English?
-
-Choose the primary working language. Both trees use the same Skill names, so avoid installing both into one global directory. For bilingual delivery, switch language scope deliberately.
-
-## Closing thought
-
-The value of Testing Skill Discovery comes from a repeatable way of working: sourced inputs, bounded execution, actionable outputs, and reviewable conclusions. Try it on one real task, then adjust the material and output contract from team feedback. That beats collecting prompts nobody has run.
-
-- [View the Testing Skill Discovery source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/discover-testing)
-- [Explore Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
-- [Browse QA Skills online](https://inaodeng.com/en/qaskills/)
+Run Testing Skill Discovery against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.

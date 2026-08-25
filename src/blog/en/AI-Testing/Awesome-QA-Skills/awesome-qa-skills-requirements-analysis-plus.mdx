@@ -1,136 +1,129 @@
 ---
-title: "Requirements Analysis Plus Skill: A Practical Guide from Installation to Real Testing"
-description: "A detailed guide to the Requirements Analysis Plus Skill in Awesome QA Skills, covering the project, use cases, installation, usage, practical workflow, best practices, and Q&A."
+title: "Requirements Analysis Plus, keeping traceability across multiple inputs"
+description: "Requirements Analysis Plus field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
 date: 2026-08-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Requirements Analysis Plus"]
 categories: ["AI Testing", "QA Skills"]
-series: ["Awesome QA Skills in Practice"]
+series: ["Awesome QA Skills Field Guides"]
 ---
 
-Testing work often stalls for a mundane reason: the input is scattered, the scope is vague, and nobody can tell whether the output is trustworthy. The Requirements Analysis Plus Skill addresses that specific problem.
+Requirements Analysis Plus is easiest to understand with imperfect project material. The working task is simple: Analyze membership rules across requirements, prototypes, and API definitions with source traceability.
 
-This guide treats the Skill as an executable working contract, not a magic prompt. Its inputs, process, output boundaries, and verification rules are what make it useful in a real project.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Requirements Analysis Plus.
 
-## Start with Awesome QA Skills
+## Read the source Skill first
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) is a bilingual library of AI-assisted testing Skills. Each Skill is a self-contained installable directory with at least a YAML-frontmatter `SKILL.md`, plus optional prompts, references, examples, scripts, and evaluation cases. The structure follows progressive disclosure: the entry point stays compact while deeper material is loaded only when the task needs it.
+The main prompt covers Diff vs baseline (requirements-analysis), Input processing order (default), Optional Role Report Inputs, Structured conclusion fields (use on each high-priority item), Quality Bar. Those headings are navigation; the project artifacts still provide the facts.
 
-The project covers three layers. Testing types perform focused analysis and design, testing workflows coordinate activities across a stage, and Skill Engineering checks the contracts and evidence of the Skills themselves. Requirements Analysis Plus lives at `testing-types/requirements-analysis-plus` and owns one explicit part of that system.
+The source directory contains 3 example files, 1 references, 8 script entries. Start with [examples/requirements-sample.analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus/examples/requirements-sample.analysis.md), [references/local](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus/references/local), [scripts/__pycache__](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus/scripts/__pycache__).
 
-The Agent Skills specification requires a directory with `SKILL.md`, using `name` and `description` for discovery and triggering. See the [Agent Skills Specification](https://agentskills.io/specification).
+- [Open the Requirements Analysis Plus source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus)
 
-## What Requirements Analysis Plus does
+## Start multiple inputs with a source ledger
 
-Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include requirements analysis plus and requirement document parsing.
+Analyze membership rules across requirements, prototypes, and API definitions with source traceability
 
-A representative task is this: Extract structured rules from Word, Excel, HTML, JSON, and Markdown requirements while preserving source traceability.
+The plus Skills often read requirements, analysis, and planning files together. Record their authority first.
 
-The Skill instructions focus on “Diff vs baseline (requirements-analysis)”, “Role”, “Input processing order (default)”, “Optional Role Report Inputs”, “What to do”, “Execution Rules”. The directory also includes `examples`, `references`, `scripts`, `evals`, loaded only when deeper references or output contracts are needed.
+| source_id | File | Purpose | Conflict rule |
+| --- | --- | --- | --- |
+| RQ-01 | requirements.md | Business rules | Highest authority |
+| AN-02 | analysis.xlsx | Risks and boundaries | Flag conflicts with requirements |
+| PL-03 | release-plan.md | Dates and owners | Cannot override business rules |
 
-The expected result is an artifact another person can execute or review, not a polished paragraph of generic advice. When inputs are incomplete, the Skill should say what is missing, which assumptions it used, and which conclusions those assumptions affect.
+Each strategy item or case should carry a source ID. Mark unsupported conclusions as assumptions.
 
-## When to use it
+## Resolve version conflicts before combining files
 
-- You have real requirements, code, interfaces, test material, or stage artifacts that need structured analysis.
-- Your team needs a consistent process and output contract instead of a growing pile of personal prompts.
-- Developers, product managers, testers, or release owners will act on the result.
-- You want the AI to expose unknowns, evidence gaps, and risk boundaries.
+The task is Analyze membership rules across requirements, prototypes, and API definitions with source traceability. Parsing is the easy part; the same fact may appear in three incompatible versions.
 
-It is a poor fit when no project context exists but a “complete conclusion” is expected, when runtime or production evidence is required but only static inference is available, or when someone wants to treat model output as human approval.
+| Conflict | Treatment | Output status |
+| --- | --- | --- |
+| Requirement supports refunds, plan has no work | Keep the rule and expose the delivery gap | blocked |
+| Analysis and interface use different fields | Use the current interface version and request review | needs-review |
+| Test data predates the requirement | Do not use it as evidence for new behavior | stale-source |
 
-## Installation
+Store a source ID and version or update time. After generation, sample three strategy items or cases and trace them back. One unsupported item is enough to repair the source chain before handoff.
 
-Install only the English Skill into Codex:
+The deliverable includes a source ledger, conflict list, source-linked primary artifact, and a visible list of unparsed items.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the requirements-analysis-plus Skill.
+
+Task: Analyze membership rules across requirements, prototypes, and API definitions with source traceability
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Build a source ledger and conflict order first. Add source_id to material outputs and label anything unsupported as an assumption.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Add a checksum or version to the source ledger. Recompute affected conclusions and emit changed, unchanged, and needs-review states.
+
+### A three-Skill chain
+
+`requirements-analysis-plus` → `test-strategy-plus` → `testcase-writer-plus`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to requirements-analysis-plus | Source versions, scope, risks, open questions | Requirements Analysis Plus staleness and conflicts |
+| requirements-analysis-plus to downstream | Primary artifact, evidence index, unfinished work | Requirements Analysis Plus executability and owners |
+| Feedback to requirements-analysis-plus | Runs, defects, new risks | Requirements Analysis Plus baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Requirements Analysis Plus a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| requirements-analysis-plus input | Version, environment, owner, accessible sources | Stop Requirements Analysis Plus and list gaps |
+| requirements-analysis-plus artifact | Material claims carry basis and status | Return Requirements Analysis Plus for evidence |
+| requirements-analysis-plus execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| requirements-analysis-plus decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Requirements Analysis Plus adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## “Plus” does not mean “load every file”
+
+Multi-format parsing expands context and creates version conflicts. Establish authoritative sources first. Every conclusion related to Diff vs baseline (requirements-analysis) should resolve to a source ID.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus -g -a codex -y
 ```
 
-You can also use the repository installer:
+Invoke it with “Use the requirements-analysis-plus Skill,” then attach the real artifacts.
 
-```bash
-git clone https://github.com/naodeng/awesome-qa-skills.git
-cd awesome-qa-skills
-bash scripts/install-skills-mac.sh --tool codex --lang en
-```
+## Two practical questions
 
-The Chinese and English trees contain Skills with identical names. Choose one language tree for a global install, or install one Skill as shown above, to avoid discovery collisions.
+### When should I choose the plus version?
 
-## How to use it
+Use the basic Skill for one clear input. Choose plus when multiple files need parsing and traceability.
 
-Invoke the Skill by name and provide a concrete task:
+### What if sources conflict?
 
-```text
-Use the requirements-analysis-plus Skill.
+Preserve the conflict, apply source authority, and mark affected conclusions.
 
-Task: Extract structured rules from Word, Excel, HTML, JSON, and Markdown requirements while preserving source traceability.
-Inputs: requirements, relevant interfaces or pages, and current test material
-Constraints: do not invent missing facts; list assumptions, unknowns, and blockers separately
-Output: an actionable result with risk priority, coverage rationale, and next verification steps
-```
+### When is human review mandatory?
 
-You do not need a clever prompt for the first run. Real artifacts, a clear goal, scope, and constraints matter more. If you provide many files, identify authoritative sources and background references so an old report is not mistaken for current state.
+Require an accountable person for scope trade-offs, risk acceptance, release decisions, and source conflicts.
 
-## A progressive workflow
+### What should be archived?
 
-### 1. Establish the boundary
+Keep the input version, Skill output, human edits, and final evidence so the conclusion can be reconstructed.
 
-Answer four questions first: what is being tested, which stage the work is in, what evidence exists, and who will consume the output. If the boundary is unclear, the Skill should ask questions or mark assumptions.
-
-### 2. Build an evidence and risk inventory
-
-Separate requirements, code, interfaces, runtime records, and historical defects. Facts should be traceable to sources. Inferences should be labeled. Unverified material cannot support “passed” or “ready to release.”
-
-### 3. Execute the core process
-
-Work through Diff vs baseline (requirements-analysis), Role, Input processing order (default), Optional Role Report Inputs, What to do. Address high-risk paths first and ordinary coverage second. If sources conflict, preserve the conflict and its impact instead of silently choosing a side.
-
-### 4. Review the output
-
-Check that important conclusions have sources, risks include impact, recommendations are executable, and unknowns remain visible. Then decide whether to proceed to runtime execution, human review, or another Skill.
-
-## Best practices
-
-1. **Provide facts before expectations.** Requirements, interface definitions, and real errors beat “make it professional.”
-2. **Keep one primary objective per run.** Analysis, generation, execution, and approval can form a chain, but one static answer cannot prove all four happened.
-3. **Preserve traceability.** Requirement IDs, paths, endpoints, screenshots, and log timestamps make results reviewable.
-4. **Ask the model to expose uncertainty.** A useful unknowns list is worth more than ten generic recommendations.
-5. **Keep human review.** Security, release, compliance, and high-risk business decisions still need accountable owners.
-6. **Use evals to control drift.** After changing a Skill, test success, incomplete-input, and risk-boundary cases. Longer instructions do not automatically produce better behavior.
-
-## Combining it with other Skills
-
-Requirements Analysis Plus owns a focused testing activity. It can follow requirements-analysis or test-strategy and feed test-case-reviewer, test-reporting, or a daily, sprint, or release workflow.
-
-The goal is not to invoke the most Skills. Each transition needs a clear input, output, and approval boundary.
-
-## Q&A
-
-### Does the Skill execute every test automatically?
-
-No. It first provides structured analysis and execution guidance. Real commands or browser actions require an available environment, tools, permissions, and explicit authorization.
-
-### Can I use it with incomplete inputs?
-
-Yes. The reliable output is a set of clarification questions, assumptions, and a degraded result. Quietly inventing business rules produces a complete-looking answer that cannot support a real decision.
-
-### Why not copy a prompt instead?
-
-A prompt contains instructions. A Skill directory can also carry references, examples, scripts, output contracts, tool metadata, and evaluation cases, loading them progressively.
-
-### How do I judge whether the output is trustworthy?
-
-Look at evidence, not tone. Check sources, execution records, coverage links, failure details, and unresolved items. Static analysis proves only that static analysis occurred.
-
-### Should I install Chinese or English?
-
-Choose the primary working language. Both trees use the same Skill names, so avoid installing both into one global directory. For bilingual delivery, switch language scope deliberately.
-
-## Closing thought
-
-The value of Requirements Analysis Plus comes from a repeatable way of working: sourced inputs, bounded execution, actionable outputs, and reviewable conclusions. Try it on one real task, then adjust the material and output contract from team feedback. That beats collecting prompts nobody has run.
-
-- [View the Requirements Analysis Plus source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirements-analysis-plus)
-- [Explore Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
-- [Browse QA Skills online](https://inaodeng.com/en/qaskills/)
+Run Requirements Analysis Plus against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.

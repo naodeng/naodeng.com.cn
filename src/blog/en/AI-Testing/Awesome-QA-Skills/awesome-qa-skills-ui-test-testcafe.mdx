@@ -1,136 +1,161 @@
 ---
-title: "TestCafe UI Testing Skill: A Practical Guide from Installation to Real Testing"
-description: "A detailed guide to the TestCafe UI Testing Skill in Awesome QA Skills, covering the project, use cases, installation, usage, practical workflow, best practices, and Q&A."
+title: "TestCafe UI automation starts with locators and controlled data"
+description: "TestCafe UI Testing field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
 date: 2026-08-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "TestCafe UI Testing"]
 categories: ["AI Testing", "QA Skills"]
-series: ["Awesome QA Skills in Practice"]
+series: ["Awesome QA Skills Field Guides"]
 ---
 
-Testing work often stalls for a mundane reason: the input is scattered, the scope is vague, and nobody can tell whether the output is trustworthy. The TestCafe UI Testing Skill addresses that specific problem.
+TestCafe UI Testing is easiest to understand with imperfect project material. The working task is simple: Automate the checkout journey with TestCafe, including stable locators, waits, isolated data, and failure evidence.
 
-This guide treats the Skill as an executable working contract, not a magic prompt. Its inputs, process, output boundaries, and verification rules are what make it useful in a real project.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with TestCafe UI Testing.
 
-## Start with Awesome QA Skills
+## Read the source Skill first
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) is a bilingual library of AI-assisted testing Skills. Each Skill is a self-contained installable directory with at least a YAML-frontmatter `SKILL.md`, plus optional prompts, references, examples, scripts, and evaluation cases. The structure follows progressive disclosure: the entry point stays compact while deeper material is loaded only when the task needs it.
+The main prompt covers Quality Bar, Output Format Options, How to Use, Reference Files, Common Pitfalls. Those headings are navigation; the project artifacts still provide the facts.
 
-The project covers three layers. Testing types perform focused analysis and design, testing workflows coordinate activities across a stage, and Skill Engineering checks the contracts and evidence of the Skills themselves. TestCafe UI Testing lives at `testing-types/ui-test-testcafe` and owns one explicit part of that system.
+The source directory contains 1 example files, 2 references, 1 script entries. Start with [examples/sample-context.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe/examples/sample-context.md), [references/framework-spec.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe/references/framework-spec.md), [scripts/run-tests.sh](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe/scripts/run-tests.sh).
 
-The Agent Skills specification requires a directory with `SKILL.md`, using `name` and `description` for discovery and triggering. See the [Agent Skills Specification](https://agentskills.io/specification).
+- [Open the TestCafe UI Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe)
 
-## What TestCafe UI Testing does
+## From artifacts to a runnable entry point
 
-Use this skill when you need to design TestCafe UI automation with fixtures, selectors, roles, browser matrix execution, and reports; triggers include TestCafe UI testing, UI automation testing, and ui-test-testcafe.
+The task is concrete: Automate the checkout journey with TestCafe, including stable locators, waits, isolated data, and failure evidence
 
-A representative task is this: Design maintainable TestCafe automation for critical user journeys, covering locators, waits, data isolation, failure evidence, and CI.
+The input can stay short, but it needs facts.
 
-The Skill instructions focus on “Role”, “Input”, “What to do”, “Execution Rules”, “Minimum Coverage Checklist”, “Output”. The directory also includes `examples`, `references`, `scripts`, `evals`, loaded only when deeper references or output contracts are needed.
+```text
+Journey: sign in → create order → pay → read result
+Environment: staging
+Available artifacts: interface definition, test account, CI command
+Deliverable: tests/e2e/checkout.test.ts, plus the local command and failure evidence
+```
 
-The expected result is an artifact another person can execute or review, not a polished paragraph of generic advice. When inputs are incomplete, the Skill should say what is missing, which assumptions it used, and which conclusions those assumptions affect.
+The Skill should confirm versions, authentication, and data cleanup before generating files. This output fragment demonstrates structure; it does not claim a run occurred.
 
-## When to use it
+```yaml
+tool: TestCafe
+entry: tests/e2e/checkout.test.ts
+checks: user-facing locators, isolated data, trace or screenshot evidence
+run_evidence: pending
+```
 
-- You have real requirements, code, interfaces, test material, or stage artifacts that need structured analysis.
-- Your team needs a consistent process and output contract instead of a growing pile of personal prompts.
-- Developers, product managers, testers, or release owners will act on the result.
-- You want the AI to expose unknowns, evidence gaps, and risk boundaries.
+Keep run_evidence pending until a command, report, or trace exists. The source prompt also calls out Quality Bar, Output Format Options, How to Use.
 
-It is a poor fit when no project context exists but a “complete conclusion” is expected, when runtime or production evidence is required but only static inference is available, or when someone wants to treat model output as human approval.
+## Turn the fragment into a project skeleton
 
-## Installation
+A code fragment becomes useful when its path, command, and artifacts are explicit. Start with one journey.
 
-Install only the English Skill into Codex:
+```text
+tests/e2e/checkout.test.ts
+├── scenario and assertions
+├── data or feeder
+├── environment configuration
+└── failure artifacts written to artifacts/
+```
+
+Use one reproducible local and CI command.
+
+```bash
+npx testcafe chromium tests/e2e/checkout.test.ts --reporter spec,junit:artifacts/ui.xml
+```
+
+Keep Selector construction readable and isolate role-based authentication from test data.
+
+### Definition of integrated
+
+| Check | Minimum bar | If it fails |
+| --- | --- | --- |
+| Repeatability | A run does not depend on leftover data | Rework setup and cleanup |
+| Diagnosis | TestCafe output, JUnit report, and screenshots identifies the same run | Add a run ID and build ID |
+| CI decision | Process exit status matches the quality gate | Fix reporter or threshold configuration |
+| Maintenance | Shared authentication and setup have one edit point | Extract a fixture, specification, or user action |
+
+Expand into errors, boundaries, and concurrency only after this journey behaves the same locally and in CI.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the ui-test-testcafe Skill.
+
+Task: Automate the checkout journey with TestCafe, including stable locators, waits, isolated data, and failure evidence
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Check framework version, paths, and authentication first. Generate the smallest runnable entry, command, and artifact list. Mark unexecuted code as not verified.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Remove shared accounts and fixed data before increasing concurrency. Treat quarantine mode as diagnosis; persistent instability still needs an owned defect.
+
+Keep a baseline for duration, pass rate, flaky cases, failure classes, and evidence completeness. Pass rate alone hides too much.
+
+### A three-Skill chain
+
+`requirements-analysis` → `ui-test-testcafe` → `test-reporting`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to ui-test-testcafe | Source versions, scope, risks, open questions | TestCafe UI Testing staleness and conflicts |
+| ui-test-testcafe to downstream | Primary artifact, evidence index, unfinished work | TestCafe UI Testing executability and owners |
+| Feedback to ui-test-testcafe | Runs, defects, new risks | TestCafe UI Testing baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give TestCafe UI Testing a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| ui-test-testcafe input | Version, environment, owner, accessible sources | Stop TestCafe UI Testing and list gaps |
+| ui-test-testcafe artifact | Material claims carry basis and status | Return TestCafe UI Testing for evidence |
+| ui-test-testcafe execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| ui-test-testcafe decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review TestCafe UI Testing adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Common failure modes for this tool family
+
+1. Code is generated without a run command, leaving the next person unable to verify it.
+2. Versions and dependencies are omitted even though TestCafe configuration and reporters change.
+3. Tests share dirty data. API, UI, and performance suites all suffer from leftovers.
+4. One green run is described as long-term stability. Keep reports, logs, and retry evidence.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe -g -a codex -y
 ```
 
-You can also use the repository installer:
+Invoke it with “Use the ui-test-testcafe Skill,” then attach the real artifacts.
 
-```bash
-git clone https://github.com/naodeng/awesome-qa-skills.git
-cd awesome-qa-skills
-bash scripts/install-skills-mac.sh --tool codex --lang en
-```
+## Two practical questions
 
-The Chinese and English trees contain Skills with identical names. Choose one language tree for a global install, or install one Skill as shown above, to avoid discovery collisions.
+### Will TestCafe UI Testing hand me a runnable project?
 
-## How to use it
+With complete definitions, versions, paths, and dependencies, it can generate a strong starting point. You still need to install dependencies, run it in your repository, and fix environment differences.
 
-Invoke the Skill by name and provide a concrete task:
+### When should generation stop?
 
-```text
-Use the ui-test-testcafe Skill.
+Stop when authentication, test data, or the target version is unknown. More generation would only produce a polished guess.
 
-Task: Design maintainable TestCafe automation for critical user journeys, covering locators, waits, data isolation, failure evidence, and CI.
-Inputs: requirements, relevant interfaces or pages, and current test material
-Constraints: do not invent missing facts; list assumptions, unknowns, and blockers separately
-Output: an actionable result with risk priority, coverage rationale, and next verification steps
-```
+### What should be checked first after generation?
 
-You do not need a clever prompt for the first run. Real artifacts, a clear goal, scope, and constraints matter more. If you provide many files, identify authoritative sources and background references so an old report is not mistaken for current state.
+Confirm that the entry command discovers the target file and writes failure artifacts to the agreed path. Expand coverage after that works.
 
-## A progressive workflow
+### Can it enter a release gate immediately?
 
-### 1. Establish the boundary
+Wait until local and CI runs use the same command, data resets cleanly, and evidence is traceable.
 
-Answer four questions first: what is being tested, which stage the work is in, what evidence exists, and who will consume the output. If the boundary is unclear, the Skill should ask questions or mark assumptions.
-
-### 2. Build an evidence and risk inventory
-
-Separate requirements, code, interfaces, runtime records, and historical defects. Facts should be traceable to sources. Inferences should be labeled. Unverified material cannot support “passed” or “ready to release.”
-
-### 3. Execute the core process
-
-Work through Role, Input, What to do, Execution Rules, Minimum Coverage Checklist. Address high-risk paths first and ordinary coverage second. If the Skill generates code or configuration, confirm versions, directories, commands, and dependencies. Pseudocode is not runtime evidence.
-
-### 4. Review the output
-
-Check that important conclusions have sources, risks include impact, recommendations are executable, and unknowns remain visible. Then decide whether to proceed to runtime execution, human review, or another Skill.
-
-## Best practices
-
-1. **Provide facts before expectations.** Requirements, interface definitions, and real errors beat “make it professional.”
-2. **Keep one primary objective per run.** Analysis, generation, execution, and approval can form a chain, but one static answer cannot prove all four happened.
-3. **Preserve traceability.** Requirement IDs, paths, endpoints, screenshots, and log timestamps make results reviewable.
-4. **Ask the model to expose uncertainty.** A useful unknowns list is worth more than ten generic recommendations.
-5. **Keep human review.** Security, release, compliance, and high-risk business decisions still need accountable owners.
-6. **Use evals to control drift.** After changing a Skill, test success, incomplete-input, and risk-boundary cases. Longer instructions do not automatically produce better behavior.
-
-## Combining it with other Skills
-
-TestCafe UI Testing owns a focused testing activity. It can follow requirements-analysis or test-strategy and feed test-case-reviewer, test-reporting, or a daily, sprint, or release workflow.
-
-The goal is not to invoke the most Skills. Each transition needs a clear input, output, and approval boundary.
-
-## Q&A
-
-### Does the Skill execute every test automatically?
-
-No. It first provides structured analysis and execution guidance. Real commands or browser actions require an available environment, tools, permissions, and explicit authorization.
-
-### Can I use it with incomplete inputs?
-
-Yes. The reliable output is a set of clarification questions, assumptions, and a degraded result. Quietly inventing business rules produces a complete-looking answer that cannot support a real decision.
-
-### Why not copy a prompt instead?
-
-A prompt contains instructions. A Skill directory can also carry references, examples, scripts, output contracts, tool metadata, and evaluation cases, loading them progressively.
-
-### How do I judge whether the output is trustworthy?
-
-Look at evidence, not tone. Check sources, execution records, coverage links, failure details, and unresolved items. Static analysis proves only that static analysis occurred.
-
-### Should I install Chinese or English?
-
-Choose the primary working language. Both trees use the same Skill names, so avoid installing both into one global directory. For bilingual delivery, switch language scope deliberately.
-
-## Closing thought
-
-The value of TestCafe UI Testing comes from a repeatable way of working: sourced inputs, bounded execution, actionable outputs, and reviewable conclusions. Try it on one real task, then adjust the material and output contract from team feedback. That beats collecting prompts nobody has run.
-
-- [View the TestCafe UI Testing source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-testcafe)
-- [Explore Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
-- [Browse QA Skills online](https://inaodeng.com/en/qaskills/)
+Run TestCafe UI Testing against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.

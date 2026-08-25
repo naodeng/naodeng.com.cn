@@ -1,136 +1,128 @@
 ---
-title: "Multi-Role Quality Synthesis Skill: A Practical Guide from Installation to Real Testing"
-description: "A detailed guide to the Multi-Role Quality Synthesis Skill in Awesome QA Skills, covering the project, use cases, installation, usage, practical workflow, best practices, and Q&A."
+title: "Multi-Role Quality Synthesis, keeping disagreement visible in quality decisions"
+description: "Multi-Role Quality Synthesis field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
 date: 2026-08-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Multi-Role Quality Synthesis"]
 categories: ["AI Testing", "QA Skills"]
-series: ["Awesome QA Skills in Practice"]
+series: ["Awesome QA Skills Field Guides"]
 ---
 
-Testing work often stalls for a mundane reason: the input is scattered, the scope is vague, and nobody can tell whether the output is trustworthy. The Multi-Role Quality Synthesis Skill addresses that specific problem.
+This guide uses one concrete task to explain Multi-Role Quality Synthesis: Combine product, QA, engineering, and UX evidence without erasing disagreement.
 
-This guide treats the Skill as an executable working contract, not a magic prompt. Its inputs, process, output boundaries, and verification rules are what make it useful in a real project.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Multi-Role Quality Synthesis.
 
-## Start with Awesome QA Skills
+## Read the source Skill first
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) is a bilingual library of AI-assisted testing Skills. Each Skill is a self-contained installable directory with at least a YAML-frontmatter `SKILL.md`, plus optional prompts, references, examples, scripts, and evaluation cases. The structure follows progressive disclosure: the entry point stays compact while deeper material is loaded only when the task needs it.
+The main prompt covers Input contract, Input validation, Classification rules, Deterministic merge rules, Severity rules. Those headings are navigation; the project artifacts still provide the facts.
 
-The project covers three layers. Testing types perform focused analysis and design, testing workflows coordinate activities across a stage, and Skill Engineering checks the contracts and evidence of the Skills themselves. Multi-Role Quality Synthesis lives at `testing-workflows/multi-role-quality-synthesis` and owns one explicit part of that system.
+This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-The Agent Skills specification requires a directory with `SKILL.md`, using `name` and `description` for discovery and triggering. See the [Agent Skills Specification](https://agentskills.io/specification).
+- [Open the Multi-Role Quality Synthesis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/multi-role-quality-synthesis)
 
-## What Multi-Role Quality Synthesis does
+## A review fragment that keeps disagreement visible
 
-Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary, 多角色质量汇总 and 角色报告合并.
+Combine product, QA, engineering, and UX evidence without erasing disagreement
 
-A representative task is this: Combine product, QA, technical, delivery, and UX stage reports into a traceable conclusion without hiding disagreements.
+Different roles can read the same artifact and find different risks.
 
-The Skill instructions focus on “Input contract”, “Input validation”, “Classification rules”, “Deterministic merge rules”, “Severity rules”, “No-new-facts rule”. The directory also includes `evals`, loaded only when deeper references or output contracts are needed.
+| Observation | Evidence | Impact | Recommendation |
+| --- | --- | --- | --- |
+| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
+| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
 
-The expected result is an artifact another person can execute or review, not a polished paragraph of generic advice. When inputs are incomplete, the Skill should say what is missing, which assumptions it used, and which conclusions those assumptions affect.
+Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
 
-## When to use it
+## Merge evidence without flattening disagreement
 
-- You have real requirements, code, interfaces, test material, or stage artifacts that need structured analysis.
-- Your team needs a consistent process and output contract instead of a growing pile of personal prompts.
-- Developers, product managers, testers, or release owners will act on the result.
-- You want the AI to expose unknowns, evidence gaps, and risk boundaries.
+For Combine product, QA, engineering, and UX evidence without erasing disagreement, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
 
-It is a poor fit when no project context exists but a “complete conclusion” is expected, when runtime or production evidence is required but only static inference is available, or when someone wants to treat model output as human approval.
+| Role | Observation | Evidence needed | Decision ownership |
+| --- | --- | --- | --- |
+| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
+| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
+| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
 
-## Installation
+Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Input contract and Input validation need source links because paraphrasing can change their meaning.
 
-Install only the English Skill into Codex:
+The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the multi-role-quality-synthesis Skill.
+
+Task: Combine product, QA, engineering, and UX evidence without erasing disagreement
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+
+### A three-Skill chain
+
+`requirements-analysis` → `multi-role-quality-synthesis` → `multi-role-quality-synthesis`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to multi-role-quality-synthesis | Source versions, scope, risks, open questions | Multi-Role Quality Synthesis staleness and conflicts |
+| multi-role-quality-synthesis to downstream | Primary artifact, evidence index, unfinished work | Multi-Role Quality Synthesis executability and owners |
+| Feedback to multi-role-quality-synthesis | Runs, defects, new risks | Multi-Role Quality Synthesis baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Multi-Role Quality Synthesis a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| multi-role-quality-synthesis input | Version, environment, owner, accessible sources | Stop Multi-Role Quality Synthesis and list gaps |
+| multi-role-quality-synthesis artifact | Material claims carry basis and status | Return Multi-Role Quality Synthesis for evidence |
+| multi-role-quality-synthesis execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| multi-role-quality-synthesis decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Multi-Role Quality Synthesis adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## A perspective Skill is not role-play
+
+Do not invent what product, QA, or engineering would say. Multi-Role Quality Synthesis can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/multi-role-quality-synthesis -g -a codex -y
 ```
 
-You can also use the repository installer:
+Invoke it with “Use the multi-role-quality-synthesis Skill,” then attach the real artifacts.
 
-```bash
-git clone https://github.com/naodeng/awesome-qa-skills.git
-cd awesome-qa-skills
-bash scripts/install-skills-mac.sh --tool codex --lang en
-```
+## Two practical questions
 
-The Chinese and English trees contain Skills with identical names. Choose one language tree for a global install, or install one Skill as shown above, to avoid discovery collisions.
+### Can one perspective overrule the others?
 
-## How to use it
+No. It adds observations. Keep disagreement and supporting evidence visible.
 
-Invoke the Skill by name and provide a concrete task:
+### What if that role is absent?
 
-```text
-Use the multi-role-quality-synthesis Skill.
+Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
 
-Task: Combine product, QA, technical, delivery, and UX stage reports into a traceable conclusion without hiding disagreements.
-Inputs: requirements, relevant interfaces or pages, and current test material
-Constraints: do not invent missing facts; list assumptions, unknowns, and blockers separately
-Output: an actionable result with risk priority, coverage rationale, and next verification steps
-```
+### What if roles reach opposite conclusions?
 
-You do not need a clever prompt for the first run. Real artifacts, a clear goal, scope, and constraints matter more. If you provide many files, identify authoritative sources and background references so an old report is not mistaken for current state.
+Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
 
-## A progressive workflow
+### Can a perspective be written without data?
 
-### 1. Establish the boundary
+It can be an observation or assumption if the missing source and next evidence request stay visible.
 
-Answer four questions first: what is being tested, which stage the work is in, what evidence exists, and who will consume the output. If the boundary is unclear, the Skill should ask questions or mark assumptions.
-
-### 2. Build an evidence and risk inventory
-
-Separate requirements, code, interfaces, runtime records, and historical defects. Facts should be traceable to sources. Inferences should be labeled. Unverified material cannot support “passed” or “ready to release.”
-
-### 3. Execute the core process
-
-Work through Input contract, Input validation, Classification rules, Deterministic merge rules, Severity rules. Address high-risk paths first and ordinary coverage second. If sources conflict, preserve the conflict and its impact instead of silently choosing a side.
-
-### 4. Review the output
-
-Check that important conclusions have sources, risks include impact, recommendations are executable, and unknowns remain visible. Then decide whether to proceed to runtime execution, human review, or another Skill.
-
-## Best practices
-
-1. **Provide facts before expectations.** Requirements, interface definitions, and real errors beat “make it professional.”
-2. **Keep one primary objective per run.** Analysis, generation, execution, and approval can form a chain, but one static answer cannot prove all four happened.
-3. **Preserve traceability.** Requirement IDs, paths, endpoints, screenshots, and log timestamps make results reviewable.
-4. **Ask the model to expose uncertainty.** A useful unknowns list is worth more than ten generic recommendations.
-5. **Keep human review.** Security, release, compliance, and high-risk business decisions still need accountable owners.
-6. **Use evals to control drift.** After changing a Skill, test success, incomplete-input, and risk-boundary cases. Longer instructions do not automatically produce better behavior.
-
-## Combining it with other Skills
-
-Multi-Role Quality Synthesis coordinates a workflow. Route focused work to testing-type Skills such as requirements-analysis, functional-testing, api-testing, test-case-writing, or test-reporting.
-
-The goal is not to invoke the most Skills. Each transition needs a clear input, output, and approval boundary.
-
-## Q&A
-
-### Does the Skill execute every test automatically?
-
-No. It first provides structured analysis and execution guidance. Real commands or browser actions require an available environment, tools, permissions, and explicit authorization.
-
-### Can I use it with incomplete inputs?
-
-Yes. The reliable output is a set of clarification questions, assumptions, and a degraded result. Quietly inventing business rules produces a complete-looking answer that cannot support a real decision.
-
-### Why not copy a prompt instead?
-
-A prompt contains instructions. A Skill directory can also carry references, examples, scripts, output contracts, tool metadata, and evaluation cases, loading them progressively.
-
-### How do I judge whether the output is trustworthy?
-
-Look at evidence, not tone. Check sources, execution records, coverage links, failure details, and unresolved items. Static analysis proves only that static analysis occurred.
-
-### Should I install Chinese or English?
-
-Choose the primary working language. Both trees use the same Skill names, so avoid installing both into one global directory. For bilingual delivery, switch language scope deliberately.
-
-## Closing thought
-
-The value of Multi-Role Quality Synthesis comes from a repeatable way of working: sourced inputs, bounded execution, actionable outputs, and reviewable conclusions. Try it on one real task, then adjust the material and output contract from team feedback. That beats collecting prompts nobody has run.
-
-- [View the Multi-Role Quality Synthesis source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/multi-role-quality-synthesis)
-- [Explore Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
-- [Browse QA Skills online](https://inaodeng.com/en/qaskills/)
+Run Multi-Role Quality Synthesis against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
