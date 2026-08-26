@@ -1,5 +1,6 @@
 ---
 import type { Lang } from "@/i18n";
+import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { HOME_TASK_ENTRIES, type HomeTaskTarget } from "@/data/homeTaskEntries";
 interface Props { locale: Lang }
@@ -32,19 +33,21 @@ const entries = HOME_TASK_ENTRIES[locale];
 ---
 <section class="home-band home-band--muted home-task-navigator" id="home-task-navigator" aria-labelledby="home-task-title">
   <div class="home-inner">
-    <h2 id="home-task-title" class="home-band__title">{locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}</h2>
-    <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发，直接进入对应的 Skill 或 Prompt；也可在详情页获取输入模板和执行方式。" : "Start with the task, open the matching Skill or Prompt, and use its input template and execution guide."}</p>
+    <HomeSectionHeading
+      id="home-task-title"
+      watermark={locale === "zh-cn" ? "测试任务" : "QA TASKS"}
+      title={locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}
+      subtitle={locale === "zh-cn" ? "先选择要完成的测试任务，再进入对应的 Skill 或 Prompt 获取输入模板和执行方式。" : "Choose the QA task first, then open the matching Skill or Prompt for its input template and execution guide."}
+    />
     <ul class="task-grid" role="list">
-      {entries.map((entry, i) => {
+      {entries.map((entry) => {
         const icon = TASK_ICONS[entry.key] ?? "bolt";
-        const num = String(i + 1).padStart(2, "0");
         const chip = entry.targets.length === 1 ? kindLabel(entry.targets[0].kind) : "Skill";
         return entry.targets.length === 1 ? (
           <li class="task-card task-card--link" data-home-task={entry.key}>
             <a class="task-card__link" href={targetHref(entry.targets[0])}>
               <span class="task-card__top">
                 <span class="task-card__icon material-icons-sharp" aria-hidden="true">{icon}</span>
-                <span class="task-card__num" aria-hidden="true">{num}</span>
               </span>
               <span class="task-card__head">
                 <h3>{entry.title}</h3>
@@ -58,7 +61,6 @@ const entries = HOME_TASK_ENTRIES[locale];
           <li class="task-card" data-home-task={entry.key}>
             <span class="task-card__top">
               <span class="task-card__icon material-icons-sharp" aria-hidden="true">{icon}</span>
-              <span class="task-card__num" aria-hidden="true">{num}</span>
             </span>
             <span class="task-card__head">
               <h3>{entry.title}</h3>
@@ -80,7 +82,7 @@ const entries = HOME_TASK_ENTRIES[locale];
   </div>
 </section>
 <style>
-  .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; text-align:start; }
+  .task-grid { list-style:none; margin:2rem 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; text-align:start; }
 
   .task-card {
     position: relative;
@@ -88,12 +90,10 @@ const entries = HOME_TASK_ENTRIES[locale];
     flex-direction:column;
     min-height:0;
     padding:1.15rem 1.2rem;
-    border:1px solid var(--color-glass-border);
-    border-radius:var(--radius-lg);
-    background:var(--color-glass-medium);
-    box-shadow:var(--shadow-glass-sm);
-    backdrop-filter: blur(14px) saturate(118%);
-    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    border:1px solid var(--color-border-strong);
+    border-radius:var(--radius-md);
+    background:var(--color-surface-elevated);
+    transition: transform 220ms cubic-bezier(.22,1,.36,1), border-color 220ms ease;
     overflow:hidden;
   }
 
@@ -112,7 +112,7 @@ const entries = HOME_TASK_ENTRIES[locale];
   .task-card__top {
     display:flex;
     align-items:flex-start;
-    justify-content:space-between;
+    justify-content:flex-start;
     gap:.75rem;
   }
 
@@ -128,15 +128,6 @@ const entries = HOME_TASK_ENTRIES[locale];
     font-size:1.45rem;
   }
 
-  .task-card__num {
-    font-family:var(--font-heading);
-    font-size:2rem;
-    font-weight:800;
-    line-height:1;
-    color:color-mix(in srgb, var(--color-text-tertiary) 38%, transparent);
-    letter-spacing:-0.02em;
-  }
-
   .task-card__head {
     display:flex;
     align-items:center;
@@ -144,7 +135,7 @@ const entries = HOME_TASK_ENTRIES[locale];
     margin-top:.9rem;
   }
 
-  h3 { margin:0; font-family:var(--font-heading); font-size:1.0625rem; font-weight:800; line-height:1.35; }
+  h3 { margin:0; font-family:var(--font-heading); font-size:1.0625rem; font-weight:750; line-height:1.35; text-wrap:balance; }
 
   .task-card__chip {
     display:inline-flex;
@@ -166,17 +157,14 @@ const entries = HOME_TASK_ENTRIES[locale];
     margin-top:auto;
     display:inline-flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     gap:.4rem;
-    min-height:2.5rem;
-    padding:.4rem 1rem;
-    border-radius:var(--radius-xl);
-    border:1px solid var(--color-border-strong);
-    background:var(--color-theme-soft);
+    min-height:2.75rem;
+    padding:.4rem 0;
     color:var(--color-theme);
     font-size:.8rem;
     font-weight:800;
-    transition: background 180ms ease, border-color 180ms ease;
+    transition: color 180ms ease;
   }
   .task-card__cta-arrow { font-weight:800; }
 
@@ -205,17 +193,26 @@ const entries = HOME_TASK_ENTRIES[locale];
   .task-card:focus-within {
     transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
-    box-shadow: var(--shadow-md);
   }
   .task-card:hover .task-card__cta {
-    background: var(--color-theme-soft-hover);
-    border-color: var(--color-theme);
+    color: var(--color-theme-focus);
   }
+  .task-card:hover .task-card__cta-arrow { transform: translateX(3px); }
+  .task-card__cta-arrow { transition: transform 180ms cubic-bezier(.22,1,.36,1); }
   .task-card--link .task-card__link:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 2px; border-radius: var(--radius-lg); }
 
   @media (prefers-reduced-motion: reduce) {
     .task-card { transition: none; }
     .task-card:hover, .task-card:focus-within { transform: none; }
+    .task-card__cta-arrow { transition: none; }
+    .task-card:hover .task-card__cta-arrow { transform: none; }
   }
-  @media(max-width:700px){.task-grid{grid-template-columns:1fr;}}
+  @media(max-width:760px){
+    .task-grid{grid-template-columns:1fr; margin-top:1.35rem; gap:.65rem;}
+    .task-card{padding:.95rem 1rem;}
+    .task-card--link{padding:0;}
+    .task-card--link .task-card__link{padding:.95rem 1rem;}
+    .task-card__head{margin-top:.7rem;}
+    .task-card__desc{margin:.35rem 0 .7rem;}
+  }
 </style>

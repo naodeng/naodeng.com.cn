@@ -1,7 +1,7 @@
 ---
 import type { Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { HOME_EXAMPLES } from "@/data/homeTaskEntries";
+import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 interface Props { locale: Lang }
 const { locale } = Astro.props;
 
@@ -12,57 +12,61 @@ const CAPABILITY_ICONS: Record<string, string> = {
 };
 
 const items = locale === "zh-cn" ? [
-  { key:"skills", title:"QA Skills", desc:"面向完整测试任务的可复用能力包，包含步骤、输入要求与输出结构。", path:"/qaskills/" },
-  { key:"prompts", title:"Prompts", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/" },
-  { key:"knowledge", title:"知识与实践", desc:"通过博客、测试百科和 AI 百科理解方法、概念与真实实践。", path:"/blog/" },
+  { key:"skills", title:"QA Skills", desc:"面向完整测试任务的可复用能力包，包含步骤、输入要求与输出结构。", path:"/qaskills/", recommendations:[
+    ["需求分析", "/qaskills/requirements-analysis/"], ["测试用例评审", "/qaskills/test-case-reviewer/"], ["测试用例编写", "/qaskills/test-case-writing/"], ["代码评审", "/qaskills/code-review/"]
+  ] },
+  { key:"prompts", title:"Prompts", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/", recommendations:[
+    ["需求分析", "/prompts/requirements-analysis/"], ["测试用例评审", "/prompts/test-case-reviewer/"], ["测试用例编写", "/prompts/test-case-writing/"], ["代码评审", "/prompts/security-testing/"]
+  ] },
+  { key:"knowledge", title:"知识与实践", desc:"通过博客、测试百科和 AI 百科理解方法、概念与真实实践。", path:"/blog/", recommendations:[
+    ["AI 测试质量工作台", "/blog/ai-testing/dsh-qa-ai-testing-workbench/"], ["自动化测试实践", "/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/"]
+  ] },
 ] : [
-  { key:"skills", title:"QA Skills", desc:"Reusable capability packages for complete QA tasks, with steps, inputs, and output structures.", path:"/qaskills/" },
-  { key:"prompts", title:"Prompts", desc:"Prompts for focused generation and analysis tasks, ready to copy, adapt, and review.", path:"/prompts/" },
-  { key:"knowledge", title:"Knowledge and practice", desc:"Learn methods, concepts, and field experience through the blog and wikis.", path:"/blog/" },
+  { key:"skills", title:"QA Skills", desc:"Reusable capability packages for complete QA tasks, with steps, inputs, and output structures.", path:"/qaskills/", recommendations:[
+    ["Requirements analysis", "/qaskills/requirements-analysis/"], ["Test case review", "/qaskills/test-case-reviewer/"], ["Test case writing", "/qaskills/test-case-writing/"], ["Code review", "/qaskills/code-review/"]
+  ] },
+  { key:"prompts", title:"Prompts", desc:"Prompts for focused generation and analysis tasks, ready to copy, adapt, and review.", path:"/prompts/", recommendations:[
+    ["Requirements analysis", "/prompts/requirements-analysis/"], ["Test case review", "/prompts/test-case-reviewer/"], ["Test case writing", "/prompts/test-case-writing/"], ["Code review", "/prompts/security-testing/"]
+  ] },
+  { key:"knowledge", title:"Knowledge and practice", desc:"Learn methods, concepts, and field experience through the blog and wikis.", path:"/blog/", recommendations:[
+    ["AI testing quality workbench", "/blog/ai-testing/dsh-qa-ai-testing-workbench/"], ["Automation testing practice", "/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/"]
+  ] },
 ];
 
-const example = HOME_EXAMPLES[locale][0];
-const stepLabels = locale === "zh-cn"
-  ? ["输入", "能力", "输出"]
-  : ["Input", "Capability", "Output"];
-const exampleValues = [example.input, example.capability, example.output];
 ---
 <section class="home-band home-band--white home-capability-guide" aria-labelledby="home-capability-title">
   <div class="home-inner home-capability-inner">
-    <h2 id="home-capability-title" class="home-band__title">{locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}</h2>
-    <p class="home-band__subtitle">{locale === "zh-cn" ? "从任务出发选择可复用的 QA 能力；所有产出都需要结合项目上下文和人工评审。" : "Pick a reusable QA capability from the task at hand; every output still needs project context and human review."}</p>
+    <HomeSectionHeading
+      id="home-capability-title"
+      watermark={locale === "zh-cn" ? "核心能力" : "CORE CAPABILITIES"}
+      title={locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}
+      subtitle={locale === "zh-cn" ? "如果已经知道需要哪类资源，可以按 QA Skills、Prompts 或知识实践直接浏览。" : "If you already know the resource type, browse directly by QA Skills, Prompts, or practical knowledge."}
+    />
     <ul class="capability-list" role="list">
-      {items.map((item, i) => (
+      {items.map((item) => (
         <li>
-          <a class="capability-item" data-home-capability={item.key} href={getRelativeLocaleUrl(locale, item.path)}>
+          <div class="capability-item" data-home-capability={item.key}>
+            <a class="capability-item__main" href={getRelativeLocaleUrl(locale, item.path)}>
             <span class="capability-item__top">
               <span class="capability-item__icon material-icons-sharp" aria-hidden="true">{CAPABILITY_ICONS[item.key] ?? "bolt"}</span>
-              <span class="capability-item__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
             </span>
             <h3 class="capability-item__title">{item.title}</h3>
             <p class="capability-card__desc">{item.desc}</p>
-          </a>
-        </li>
-      ))}
-    </ul>
-    <p class="home-band__subtitle home-band__subtitle--spaced">{locale === "zh-cn" ? "一个从输入到可评审交付物的示例" : "One example from input to a reviewable deliverable"}</p>
-    <ol class="example-flow" role="list" data-home-example={example.key}>
-      {exampleValues.map((value, i) => (
-        <li class="example-node">
-          <span class="example-node__badge" aria-hidden="true">{i + 1}</span>
-          <div class="example-node__body">
-            <strong>{stepLabels[i]}</strong>
-            <p>{value}</p>
+            </a>
+            <div class="capability-recommendations" aria-label={locale === "zh-cn" ? "推荐内容" : "Recommended content"}>
+              <span class="capability-recommendations__label">{locale === "zh-cn" ? "推荐阅读" : "Explore next"}</span>
+              <ul role="list">
+                {item.recommendations.map(([label, path]) => <li><a href={getRelativeLocaleUrl(locale, path)}>{label}</a></li>)}
+              </ul>
+            </div>
           </div>
         </li>
       ))}
-    </ol>
+    </ul>
   </div>
 </section>
 <style>
   .home-capability-inner { display: grid; row-gap: 20px; }
-  .home-capability-inner > .home-band__title { margin: 0; }
-  .home-capability-inner > .home-band__subtitle { width: min(100%, 42rem); margin: 0 auto; text-align: center; }
 
   .capability-list {
     list-style: none;
@@ -70,7 +74,7 @@ const exampleValues = [example.input, example.capability, example.output];
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: .75rem;
+    gap: 1rem;
     text-align: start;
   }
 
@@ -80,22 +84,28 @@ const exampleValues = [example.input, example.capability, example.output];
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 1.15rem 1.2rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-glass-border);
-    background: var(--color-glass-medium);
+    padding: 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface-elevated);
     color: inherit;
     text-decoration: none;
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(14px) saturate(118%);
-    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    transition: transform 220ms cubic-bezier(.22,1,.36,1), border-color 220ms ease;
   }
 
   .capability-item:hover,
-  .capability-item:focus-visible {
+  .capability-item:focus-within {
     transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
-    box-shadow: var(--shadow-md);
+  }
+
+  .capability-item__main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.5rem 1.55rem 1.2rem;
+    color: inherit;
+    text-decoration: none;
   }
 
   .capability-item__top {
@@ -109,99 +119,84 @@ const exampleValues = [example.input, example.capability, example.output];
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3.15rem;
+    height: 3.15rem;
     border-radius: var(--radius-md);
     background: var(--color-theme-soft);
     color: var(--color-theme);
-    font-size: 1.45rem;
-  }
-
-  .capability-item__num {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1;
-    color: color-mix(in srgb, var(--color-text-tertiary) 38%, transparent);
-    letter-spacing: -0.02em;
+    font-size: 1.65rem;
   }
 
   .capability-item__title {
     font-family: var(--font-heading);
-    font-size: 1.0625rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    margin: .9rem 0 0;
+    margin: 1.15rem 0 0;
   }
 
   .capability-card__desc {
-    margin: .45rem 0 0;
-    font-size: .875rem;
+    margin: .65rem 0 0;
+    font-size: .95rem;
     color: var(--color-text-secondary);
     line-height: 1.6;
   }
 
-  /* 编号步骤流：输入 → 能力 → 输出 */
-  .example-flow {
-    list-style: none;
+  .capability-recommendations {
+    padding: .85rem 1.55rem 1.2rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-glass-border) 70%, transparent);
+  }
+
+  .capability-recommendations__label {
+    display: block;
+    margin-bottom: .45rem;
+    color: var(--color-text-tertiary);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .01em;
+  }
+
+  .capability-recommendations ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem .75rem;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: .75rem;
+    list-style: none;
   }
 
-  .example-node {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: .8rem;
-    padding: 1.1rem 1.2rem;
-    background: var(--color-glass-weak);
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-glass-sm);
-  }
-
-  .example-node__badge {
-    flex: none;
+  .capability-recommendations a {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 50%;
-    background: var(--gradient-theme);
-    color: #fff;
-    font-family: var(--font-heading);
-    font-size: .85rem;
-    font-weight: 800;
-  }
-
-  .example-node__body strong {
-    display: block;
-    margin-bottom: .25rem;
-    color: var(--color-theme);
-    font-size: .75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-  }
-
-  .example-node__body p {
-    margin: 0;
-    line-height: 1.5;
+    min-height: 2rem;
+    padding: .15rem .2rem;
     color: var(--color-text-secondary);
-    font-size: .9rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 180ms ease;
   }
+
+  .capability-recommendations a::before { content: "↗"; margin-right: .2rem; color: var(--color-theme); }
+  .capability-recommendations a:hover,
+  .capability-recommendations a:focus-visible { color: var(--color-theme); text-decoration: underline; }
 
   @media (max-width: 700px) {
-    .capability-list { grid-template-columns: 1fr; }
-    .example-flow { grid-template-columns: 1fr; }
+    .home-capability-inner { row-gap: 14px; }
+    .capability-list { grid-template-columns: 1fr; gap: .65rem; }
+    .capability-item__main { padding: 1.1rem 1.15rem .85rem; }
+    .capability-item__title { margin-top: .8rem; }
+    .capability-recommendations { padding: .7rem 1.15rem .85rem; }
+  }
+
+  @media (min-width: 701px) and (max-width: 960px) {
+    .capability-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .capability-list > li:last-child { grid-column: 1 / -1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .capability-item { transition: none; }
     .capability-item:hover,
-    .capability-item:focus-visible { transform: none; }
+    .capability-item:focus-within { transform: none; }
+    .capability-recommendations a { transition: none; }
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import type { Lang } from "@/i18n";
+import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 interface Props {
   locale: Lang;
   title: string;
@@ -12,8 +13,13 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
 ---
 <section class="home-band home-band--white home-explore-hub" aria-labelledby="home-explore-title">
   <div class="home-inner">
-    <h2 id="home-explore-title" class="home-band__title">{title}</h2>
-    <p class="home-band__subtitle">{subtitle}</p>
+    <HomeSectionHeading
+      id="home-explore-title"
+      watermark={title.includes("资源") ? "资源探索" : "EXPLORE"}
+      title={title}
+      subtitle={subtitle}
+      showWatermark={false}
+    />
     <ul class="home-grid home-explore-grid" role="list">
       {cards.map((card) => (
         <li>
@@ -36,53 +42,57 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     list-style: none;
     margin: 28px 0 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     text-align: start;
+  }
+
+  .home-grid > li {
+    width: min(68%, 720px);
+  }
+
+  .home-grid > li:nth-child(even) {
+    align-self: flex-end;
   }
 
   .home-card {
     display: flex;
     flex-direction: column;
     gap: 0;
-    min-height: 240px;
+    min-height: 0;
     height: 100%;
-    padding: 28px;
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-glass-medium);
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(14px) saturate(118%);
+    padding: 22px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
     color: inherit;
     text-decoration: none;
     transition:
       transform 220ms ease,
-      border-color 220ms ease,
-      box-shadow 220ms ease;
+      color 220ms ease;
   }
 
-  .home-band--white .home-card { background: var(--color-glass-medium); }
+
+  .home-band--white .home-card { background: transparent; }
 
   .home-card:hover,
   .home-card:focus-visible {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--color-theme) 32%, transparent);
-    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
   }
 
   .home-card__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 16px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+    border-radius: var(--radius-md);
     background: var(--color-theme-soft);
     color: var(--color-theme);
-    font-size: 26px;
-    box-shadow: var(--shadow-sm);
+    font-size: 22px;
   }
 
   .home-card__topline {
@@ -96,7 +106,7 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     margin: 0 0 10px;
     font-family: var(--font-heading);
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 750;
     letter-spacing: 0;
     line-height: 1.3;
     color: var(--color-main);
@@ -133,9 +143,10 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
   }
 
   @media (width < 900px) {
-    .home-grid {
-      grid-template-columns: 1fr;
-    }
+    .home-grid { margin-top: 20px; gap: 0; }
+    .home-grid > li { width: 100%; }
+    .home-grid > li:nth-child(even) { align-self: stretch; }
+    .home-card { padding: 17px 2px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
