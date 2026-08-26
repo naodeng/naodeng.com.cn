@@ -1,0 +1,77 @@
+---
+interface Props {
+  id: string;
+  watermark: string;
+  title: string;
+  subtitle?: string;
+  showWatermark?: boolean;
+}
+
+const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
+---
+
+<header class:list={["home-section-heading", { "home-section-heading--plain": !showWatermark }]}>
+  {showWatermark && <span class="home-section-heading__watermark" aria-hidden="true">{watermark}</span>}
+  <h2 id={id} class="home-band__title">{title}</h2>
+  {subtitle && <p class="home-band__subtitle">{subtitle}</p>}
+</header>
+
+<style>
+  .home-section-heading {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 7.75rem;
+    padding-top: 3.8rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .home-section-heading__watermark {
+    position: absolute;
+    z-index: 0;
+    top: .25rem;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    color: var(--color-theme);
+    opacity: .035;
+    font-family: var(--font-heading);
+    font-size: clamp(3.75rem, 7vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -.03em;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .home-section-heading--plain {
+    min-height: 0;
+    padding-top: 0;
+  }
+
+  .home-band__title {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .home-band__subtitle {
+    position: relative;
+    z-index: 1;
+    margin: 10px auto 0;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 700px) {
+    .home-section-heading { min-height: 5.6rem; padding-top: 2.65rem; }
+    .home-section-heading__watermark { top: .25rem; font-size: clamp(2.35rem, 9vw, 4rem); }
+    .home-section-heading--plain { min-height: 0; padding-top: 0; }
+  }
+</style>
