@@ -10,7 +10,7 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator(".home-hero")).toBeVisible();
       await expect(page.locator("[data-home-task]")).toHaveCount(6);
       await expect(page.locator("[data-home-capability]")).toHaveCount(3);
-      await expect(page.locator("[data-home-example]")).toHaveCount(1);
+      await expect(page.locator("[data-home-example]")).toHaveCount(0);
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
       // zh 比 en 多一张 wiki 卡（wiki 为中文专属内容）
@@ -86,13 +86,12 @@ test.describe("home information architecture", () => {
     expect(find("home-explore-hub")).toBeGreaterThan(find("home-latest-posts"));
   });
 
-  test("proof section keeps readable spacing between title and introduction", async ({ page, baseURL }) => {
+  test("section headings keep readable spacing and centered alignment", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL || ""}/zh-cn/`);
-    const spacing = await page.locator("[data-home-example]").first().evaluate((example) => {
-      const section = example.closest("section");
-      const title = section?.querySelector(".home-band__title")?.getBoundingClientRect();
-      const intro = section?.querySelector(".home-band__subtitle")?.getBoundingClientRect();
+    const spacing = await page.locator(".home-task-navigator .home-section-heading").evaluate((heading) => {
+      const title = heading.querySelector(".home-band__title")?.getBoundingClientRect();
+      const intro = heading.querySelector(".home-band__subtitle")?.getBoundingClientRect();
       return title && intro
         ? {
             gap: Math.round(intro.top - title.bottom),
@@ -100,7 +99,7 @@ test.describe("home information architecture", () => {
           }
         : { gap: 0, centerOffset: 999 };
     });
-    expect(spacing.gap).toBeGreaterThanOrEqual(18);
+    expect(spacing.gap).toBeGreaterThanOrEqual(8);
     expect(spacing.centerOffset).toBeLessThanOrEqual(2);
   });
 

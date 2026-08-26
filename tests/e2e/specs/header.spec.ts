@@ -17,7 +17,7 @@ test.describe("Header 导航", () => {
   test("zh-cn 首页：header 可见且包含 logo 和导航", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header.l-header")).toBeVisible();
-    await expect(page.locator("header .site-logo")).toBeVisible();
+    await expect(page.locator("header .site-title-logo--students")).toBeVisible();
   });
 
   test("en 首页：site slogan 已隐藏", async ({ page, baseURL }) => {
@@ -187,7 +187,7 @@ test.describe("Header 导航", () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("header.l-header")).toBeVisible();
-    await expect(page.locator("header .site-logo")).toBeVisible();
+    await expect(page.locator("header .site-title-logo--students")).toBeVisible();
     await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
     await expect(page.locator("header button[data-search-open]")).toBeVisible();
     await expect(page.locator("header [data-site-nav]")).toBeHidden();
@@ -209,16 +209,16 @@ test.describe("Header 导航", () => {
         primaryVisible: getComputedStyle(
           document.querySelector(".site-title-primary") as Element,
         ).display !== "none",
-        secondaryHidden: getComputedStyle(
+        secondaryVisible: getComputedStyle(
           document.querySelector(".site-title-secondary") as Element,
-        ).display === "none",
+        ).display !== "none",
       };
     });
     expect(layout.ok).toBeTruthy();
     expect(layout.overlapArea).toBeLessThanOrEqual(1);
     expect(layout.gap).toBeGreaterThanOrEqual(4);
     expect(layout.primaryVisible).toBeTruthy();
-    expect(layout.secondaryHidden).toBeTruthy();
+    expect(layout.secondaryVisible).toBeTruthy();
 
     await page.locator("header [data-nav-toggle]").click();
     await expect(page.locator("header.l-header")).toHaveAttribute("data-nav-open", "");
