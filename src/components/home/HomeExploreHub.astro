@@ -8,7 +8,14 @@ interface Props {
   moreLabel: string;
   cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
 }
-const { title, subtitle, moreLabel, cards } = Astro.props;
+const { locale, title, subtitle, moreLabel, cards } = Astro.props;
+
+const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
+  wiki: { "zh-cn": ["QA WIKI", "测试知识"], en: ["QA WIKI", "TEST KNOWLEDGE"] },
+  aiwiki: { "zh-cn": ["AI · AGENTS", "智能体"], en: ["AI · AGENTS", "INTELLIGENCE"] },
+  guild: { "zh-cn": ["PLAYBOOKS", "实践指南"], en: ["PLAYBOOKS", "FIELD GUIDES"] },
+  projects: { "zh-cn": ["OPEN SOURCE", "开源项目"], en: ["OPEN SOURCE", "PROJECTS"] },
+};
 
 ---
 <section class="home-band home-band--white home-explore-hub" aria-labelledby="home-explore-title">
@@ -32,6 +39,13 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
             <p class="home-card__desc">{card.desc}</p>
             <span class="home-card__more">{moreLabel}</span>
           </a>
+          {DECOR_LABELS[card.key] && (
+            <span class="explore-ornament" aria-hidden="true">
+              <span class="explore-ornament__icon material-icons-sharp">{card.icon}</span>
+              <span class="explore-ornament__primary">{DECOR_LABELS[card.key][locale][0]}</span>
+              <span class="explore-ornament__secondary">{DECOR_LABELS[card.key][locale][1]}</span>
+            </span>
+          )}
         </li>
       ))}
     </ul>
@@ -49,11 +63,56 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
   }
 
   .home-grid > li {
+    position: relative;
     width: min(68%, 720px);
   }
 
   .home-grid > li:nth-child(even) {
     align-self: flex-end;
+  }
+
+  .explore-ornament {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 3rem);
+    width: min(26vw, 18rem);
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-theme);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .home-grid > li:nth-child(even) .explore-ornament {
+    right: calc(100% + 3rem);
+    left: auto;
+  }
+
+  .explore-ornament__icon {
+    font-size: clamp(4.8rem, 7vw, 7rem);
+    line-height: 1;
+    opacity: .07;
+  }
+
+  .explore-ornament__primary {
+    margin-top: .35rem;
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 3.8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -.03em;
+    line-height: 1;
+    opacity: .04;
+    white-space: nowrap;
+  }
+
+  .explore-ornament__secondary {
+    margin-top: .35rem;
+    font-size: .95rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    opacity: .06;
   }
 
   .home-card {
@@ -147,6 +206,7 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     .home-grid > li { width: 100%; }
     .home-grid > li:nth-child(even) { align-self: stretch; }
     .home-card { padding: 17px 2px; }
+    .explore-ornament { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
