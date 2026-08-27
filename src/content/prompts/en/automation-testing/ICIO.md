@@ -8,7 +8,6 @@ order: 4
 ---
 # Test Automation - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed automation testing plan documentation, including technical architecture design, test layering strategy, framework design details, test case design, CI/CD integration plan, test reporting and monitoring, maintenance and optimization strategies, formatted in Markdown with code examples and configuration examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

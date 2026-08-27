@@ -8,7 +8,6 @@ order: 1
 ---
 # Test Case Writing Prompt
 
-
 ---
 
 **Role:** Senior Test Case Design Expert
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided test scenarios or requirements document, write detailed, executable test cases. Ensure test cases have standard format, clear steps, explicit expected results, and include necessary test data and environment requirements.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -241,10 +239,3 @@ Please output test cases in the following Markdown format:
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

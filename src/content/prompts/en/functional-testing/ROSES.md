@@ -8,7 +8,6 @@ order: 2
 ---
 # Functional Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirement Analysis → Strategy Formulation → Test Case Design → Test Planning → Execution Verification → Continuous Optimization
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

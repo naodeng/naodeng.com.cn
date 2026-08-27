@@ -8,7 +8,6 @@ order: 4
 ---
 # Security Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed security testing plan documentation, including testing overview, threat modeling analysis, security testing strategy, detailed testing plans, specialized security testing, security testing toolchain, compliance testing, security testing reports, and other complete content, formatted in Markdown with executable security test cases and test script examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

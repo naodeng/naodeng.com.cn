@@ -8,7 +8,6 @@ order: 2
 ---
 # Security Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Threat Modeling → Strategy Formulation → Tool Preparation → Test Execution → Result Analysis → Report Writing → Continuous Improvement
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

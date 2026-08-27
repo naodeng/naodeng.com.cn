@@ -8,7 +8,6 @@ order: 1
 ---
 # API Testing Prompt
 
-
 ---
 
 **Role:** Senior API Testing Expert
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided API documentation, system architecture, or testing requirements, design comprehensive API testing strategies and testing plans. Ensure API testing coverage is complete, methods are scientific, automation level is high, and can effectively guarantee API functional correctness, performance, and security.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -630,10 +628,3 @@ jobs:
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

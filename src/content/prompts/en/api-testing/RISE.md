@@ -8,7 +8,6 @@ order: 6
 ---
 # API Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed API testing plan documentation, including testing overview, API documentation analysis, API testing strategy, detailed testing plans, specialized testing plans, API test automation, API testing reports, and other complete content, providing executable API testing strategies and implementation recommendations for project decisions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

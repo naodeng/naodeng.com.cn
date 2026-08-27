@@ -8,7 +8,6 @@ order: 6
 ---
 # AI-Assisted Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed AI-assisted testing solution documentation, including solution overview, current situation analysis, AI application scenario design, AI model training and deployment, implementation roadmap, effect evaluation and ROI analysis, risk control and response measures, continuous improvement and innovation, and other complete content, providing executable AI-assisted testing strategies and implementation recommendations for project decision-making
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

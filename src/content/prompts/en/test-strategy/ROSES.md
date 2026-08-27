@@ -8,7 +8,6 @@ order: 2
 ---
 # Test Strategy - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Background Analysis → Objective Setting → Strategy Design → Resource Planning → Risk Management → Continuous Improvement
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

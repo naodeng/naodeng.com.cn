@@ -8,7 +8,6 @@ order: 6
 ---
 # Security Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed security testing plan documentation, including testing overview, threat modeling analysis, security testing strategy, detailed testing plans, specialized security testing, security testing toolchain, compliance testing, security testing reports, and other complete content, providing executable security testing strategies and implementation recommendations for project decision-making
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

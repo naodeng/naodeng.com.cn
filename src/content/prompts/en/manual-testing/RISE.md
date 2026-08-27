@@ -8,7 +8,6 @@ order: 6
 ---
 # Manual Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed manual testing plan documents, including testing overview, user persona analysis, exploratory testing plans, usability testing plans, compatibility testing plans, business process testing plans, test execution management, and other complete content, providing executable manual testing strategies and implementation recommendations for project decision-making.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

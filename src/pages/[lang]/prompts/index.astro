@@ -273,7 +273,7 @@ const itemListSchema = {
     background:
       radial-gradient(circle at 18% 12%, rgba(79, 70, 229, 0.16), transparent 34%),
       radial-gradient(circle at 92% 18%, rgba(67, 56, 202, 0.16), transparent 30%),
-      rgba(255, 255, 255, 0.78);
+      var(--color-surface-elevated);
     box-shadow: var(--shadow-md);
     overflow: hidden;
   }
@@ -352,16 +352,16 @@ const itemListSchema = {
   }
 
   .hero-btn--github {
-    background: rgba(15, 23, 42, 0.04);
+    background: var(--color-surface-muted);
     color: var(--color-text-primary);
-    border: 1px solid rgba(15, 23, 42, 0.1);
+    border: 1px solid var(--color-border);
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
   }
 
   .hero-btn--github:hover {
-    border-color: rgba(15, 23, 42, 0.22);
+    border-color: var(--color-border-strong);
     color: var(--color-main);
     transform: translateY(-1px);
   }
@@ -383,7 +383,7 @@ const itemListSchema = {
     gap: 0.45rem;
     padding: 0.85rem 1rem;
     border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    background: rgba(248, 250, 252, 0.9);
+    background: var(--color-surface-muted);
   }
 
   .prompt-console-bar span {

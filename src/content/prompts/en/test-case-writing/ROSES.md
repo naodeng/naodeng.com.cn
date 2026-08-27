@@ -8,7 +8,6 @@ order: 2
 ---
 # Test Case Writing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Adopt systematic steps for test case design, including scenario analysis, test case design, data preparation, environment configuration, execution verification, etc.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

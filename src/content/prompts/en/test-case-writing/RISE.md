@@ -8,7 +8,6 @@ order: 6
 ---
 # Test Case Writing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output structured test case documents, ensuring test case executability, traceability, maintainability, and completeness, providing a solid foundation for software quality assurance
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

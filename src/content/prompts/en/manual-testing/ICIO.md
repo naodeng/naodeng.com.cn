@@ -8,7 +8,6 @@ order: 4
 ---
 # Manual Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed manual testing plan documentation, including testing overview, user persona analysis, exploratory testing plans, usability testing plans, compatibility testing plans, business process testing plans, test execution management, and other complete content, formatted in Markdown with executable manual testing strategies and implementation recommendations
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

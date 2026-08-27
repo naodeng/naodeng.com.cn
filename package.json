@@ -32,6 +32,7 @@
     "seo:build:check": "node scripts/seo-build-check.mjs",
     "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs",
     "prompts:sync": "node scripts/sync-prompts-from-repo.mjs",
+    "prompts:format:check": "node scripts/prompts-markdown-check.mjs",
     "content:sync": "npm run qaskills:sync && npm run prompts:sync",
     "test": "cd tests && npm run test:unit"
   },

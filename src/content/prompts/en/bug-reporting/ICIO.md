@@ -8,7 +8,6 @@ order: 4
 ---
 # Bug Reporting - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed bug report documentation, including basic information, test environment, bug description, reproduction steps, expected vs actual results comparison, error information and logs, root cause analysis, solution recommendations, bug tracking records, and other complete content, formatted in Markdown with error log examples and screenshot descriptions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

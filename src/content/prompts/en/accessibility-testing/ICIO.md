@@ -8,7 +8,6 @@ order: 4
 ---
 # Accessibility Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed accessibility testing plan documentation, including testing overview, user needs analysis, accessibility testing strategy, detailed testing plans, specialized accessibility testing, accessibility testing toolchain, accessibility testing reports, and other complete content, formatted in Markdown with executable accessibility test cases and test script examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -8,7 +8,6 @@ order: 2
 ---
 # Bug Reporting - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Problem Analysis → Information Collection → Reproduction Verification → Report Writing → Quality Check → Format Output
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

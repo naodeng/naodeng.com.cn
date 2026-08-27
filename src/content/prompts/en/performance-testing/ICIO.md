@@ -8,7 +8,6 @@ order: 4
 ---
 # Performance Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed performance testing plan documentation, including testing overview, system architecture analysis, performance requirement analysis, performance test scenario design, performance testing execution plan, performance bottleneck analysis framework, performance testing reports, and other complete content, formatted in Markdown with executable performance test scenarios and test script examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -8,7 +8,6 @@ order: 1
 ---
 # Test Case Review Prompt
 
-
 ---
 
 **Role:** Senior Business & Testing Expert
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided test cases, conduct an in-depth review and output detailed review comments, missing test scenarios, test scope recommendations, and other content. Ensure the completeness, accuracy, and effectiveness of test cases.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -377,13 +375,3 @@ Please output the review report in the following Markdown format:
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-16)
-- Initial version
-- Defined review dimensions and focus areas
-- Designed review report output format
-- Provided review checklist

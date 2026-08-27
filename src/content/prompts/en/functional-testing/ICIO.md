@@ -8,7 +8,6 @@ order: 4
 ---
 # Functional Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed functional testing plan documentation, including testing overview, functional module analysis, functional testing strategy, detailed test cases, integration functional testing, functional testing execution plan, functional testing acceptance criteria, and other complete content, formatted in Markdown with executable functional test cases and test plan examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -8,7 +8,6 @@ order: 5
 ---
 # Bug Reporting - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the analysis and application of various bug types and scenarios, write comprehensive bug reports (functional bugs, performance bugs, security bugs, compatibility bugs, etc.), providing multiple bug report examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

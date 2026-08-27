@@ -8,7 +8,6 @@ order: 6
 ---
 # Accessibility Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed accessibility testing plan documentation, including testing overview, user needs analysis, accessibility testing strategy, detailed testing plans, specialized accessibility testing, accessibility testing toolchain, accessibility testing reports, and other complete content, providing executable accessibility testing strategies and implementation recommendations for project decision-making
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

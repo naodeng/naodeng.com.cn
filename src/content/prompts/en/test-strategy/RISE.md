@@ -8,7 +8,6 @@ order: 6
 ---
 # Test Strategy - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed test strategy documentation, including strategy overview, project background analysis, test objectives and scope, test methods and strategies, test organization and roles, test environment and tools, risk management and quality control, implementation plan and milestones, budget and resource planning, summary and recommendations, and other complete content, providing executable test strategies and implementation recommendations for project decisions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

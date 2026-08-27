@@ -8,7 +8,6 @@ order: 1
 ---
 # Accessibility Testing Prompt
 
-
 ---
 
 **Role:** Senior Accessibility Testing Expert
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided product requirements, user groups, or compliance requirements, design comprehensive accessibility testing strategies and testing plans. Ensure accessibility testing coverage is complete, methods are scientific, standards are compliant, and can effectively guarantee product usability and inclusivity for all users.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -505,10 +503,3 @@ Scenario 3: Multimedia content control
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

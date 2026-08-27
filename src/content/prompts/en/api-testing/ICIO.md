@@ -8,7 +8,6 @@ order: 4
 ---
 # API Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed API testing plan documentation, including testing overview, API documentation analysis, API testing strategy, detailed testing plans, specialized testing plans, API test automation, API testing reports, and other complete content, formatted in Markdown with executable API test cases and automation script examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

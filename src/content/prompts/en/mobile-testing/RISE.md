@@ -8,7 +8,6 @@ order: 6
 ---
 # Mobile Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed mobile testing plan documentation, including complete application analysis, clear device and platform strategies, comprehensive mobile test case design (including mobile characteristic verification), complete specialized testing plans (performance, compatibility, network, security), detailed automation testing implementation, systematic test execution plans and management strategies, providing executable mobile testing implementation plans for teams
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

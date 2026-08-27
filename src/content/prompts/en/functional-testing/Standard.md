@@ -8,7 +8,6 @@ order: 1
 ---
 # Functional Testing Prompt
 
-
 ---
 
 **Role:** Senior Functional Testing Expert
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided functional requirements or system specifications, design comprehensive functional testing strategies and test plans. Ensure functional testing coverage is complete, testing methods are scientific, testing priorities are clear, and can effectively verify system functionality correctness.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -328,10 +326,3 @@ Please output functional testing plans in the following Markdown format:
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

@@ -8,7 +8,6 @@ order: 2
 ---
 # Test Automation - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirements Analysis → Technology Selection → Architecture Design → Framework Setup → Test Case Design → CI/CD Integration → Reporting & Monitoring → Maintenance & Optimization
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

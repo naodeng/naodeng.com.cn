@@ -8,7 +8,6 @@ order: 5
 ---
 # Test Reporting - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the analysis and application of various report types and scenarios, write comprehensive test reports (daily reports, phase reports, release reports, specialized reports, etc.), providing multiple test report examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

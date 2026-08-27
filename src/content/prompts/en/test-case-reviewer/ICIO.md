@@ -8,7 +8,6 @@ order: 4
 ---
 # Test Case Review - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Clearly define output indicators and evaluation standards for review reports, including multi-dimensional evaluation indicators such as issue severity, risk level, coverage assessment, and improvement priority
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

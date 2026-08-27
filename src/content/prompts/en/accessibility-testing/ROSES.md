@@ -8,7 +8,6 @@ order: 2
 ---
 # Accessibility Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirement Analysis → Standard Selection → Strategy Formulation → Tool Configuration → Test Execution → Result Analysis → Continuous Improvement
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

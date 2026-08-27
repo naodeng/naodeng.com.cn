@@ -8,7 +8,6 @@ order: 2
 ---
 # Manual Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirement Understanding → Strategy Formulation → Plan Design → Execution Management → Result Analysis → Value Demonstration
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -8,7 +8,6 @@ order: 5
 ---
 # AI-Assisted Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through application across multiple AI application scenarios and technologies, design comprehensive AI-assisted testing solutions (intelligent test generation, intelligent defect prediction, intelligent test selection, self-healing test scripts, etc.), provide multiple AI-assisted testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

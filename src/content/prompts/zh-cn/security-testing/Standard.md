@@ -8,7 +8,6 @@ order: 1
 ---
 # 安全测试 Prompt
 
-
 ---
 
 **Role:** 资深安全测试专家 (Senior Security Testing Expert)
@@ -434,10 +433,3 @@ curl -X GET "http://target.com/user?id=1 UNION SELECT 1,username,password FROM u
 5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
 **请在收到输入后，先完成输入审计，再输出正式结果。**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- 初始化版本

@@ -8,7 +8,6 @@ order: 6
 ---
 # Test Reporting - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed test report documents, including report information, executive summary, test execution status, defect analysis, quality assessment, test coverage analysis, test efficiency analysis, improvement recommendations, conclusions and recommendations, and other complete content, providing actionable quality assessment and release recommendations for project decisions.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
