@@ -1,5 +1,5 @@
 ---
-title: "RISE - 安全测试 (Security Testing)"
+title: "RISE - 安全测试"
 description: "安全测试 (Security Testing) RISE 框架提示词"
 testingType: "security-testing"
 promptVersion: "RISE"

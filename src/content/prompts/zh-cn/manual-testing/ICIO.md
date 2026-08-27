@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 手动测试 (Manual Testing)"
+title: "ICIO - 手动测试"
 description: "手动测试 (Manual Testing) ICIO 框架提示词"
 testingType: "manual-testing"
 promptVersion: "ICIO"

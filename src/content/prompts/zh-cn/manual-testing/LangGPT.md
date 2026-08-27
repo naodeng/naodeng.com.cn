@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 手动测试 (Manual Testing)"
+title: "LangGPT - 手动测试"
 description: "手动测试 (Manual Testing) LangGPT 框架提示词"
 testingType: "manual-testing"
 promptVersion: "LangGPT"

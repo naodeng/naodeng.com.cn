@@ -1,5 +1,5 @@
 ---
-title: "Standard - 功能测试 (Functional Testing)"
+title: "Standard - 功能测试"
 description: "功能测试 (Functional Testing)标准提示词"
 testingType: "functional-testing"
 promptVersion: "Standard"

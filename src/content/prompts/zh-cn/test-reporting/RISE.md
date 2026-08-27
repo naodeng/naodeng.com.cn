@@ -1,5 +1,5 @@
 ---
-title: "RISE - 测试报告 (Test Reporting)"
+title: "RISE - 测试报告"
 description: "测试报告 (Test Reporting) RISE 框架提示词"
 testingType: "test-reporting"
 promptVersion: "RISE"

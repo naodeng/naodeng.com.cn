@@ -1,5 +1,5 @@
 ---
-title: "RISE - AI辅助测试 (AI-Assisted Testing)"
+title: "RISE - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing) RISE 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "RISE"

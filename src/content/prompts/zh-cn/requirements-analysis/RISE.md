@@ -1,5 +1,5 @@
 ---
-title: "RISE - 需求分析 (Requirements Analysis)"
+title: "RISE - 需求分析"
 description: "需求分析 (Requirements Analysis) RISE 框架提示词"
 testingType: "requirements-analysis"
 promptVersion: "RISE"

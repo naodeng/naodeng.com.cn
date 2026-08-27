@@ -1,5 +1,5 @@
 ---
-title: "Standard - 可访问性测试 (Accessibility Testing)"
+title: "Standard - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing)标准提示词"
 testingType: "accessibility-testing"
 promptVersion: "Standard"

@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - AI辅助测试 (AI-Assisted Testing)"
+title: "CRISPE - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing) CRISPE 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "CRISPE"

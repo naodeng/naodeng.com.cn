@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 功能测试 (Functional Testing)"
+title: "CRISPE - 功能测试"
 description: "功能测试 (Functional Testing) CRISPE 框架提示词"
 testingType: "functional-testing"
 promptVersion: "CRISPE"

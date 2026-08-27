@@ -1,5 +1,5 @@
 ---
-title: "Standard - 测试报告 (Test Reporting)"
+title: "Standard - 测试报告"
 description: "测试报告 (Test Reporting)标准提示词"
 testingType: "test-reporting"
 promptVersion: "Standard"

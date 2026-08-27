@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 自动化测试 (Automation Testing)"
+title: "LangGPT - 自动化测试"
 description: "自动化测试 (Automation Testing) LangGPT 框架提示词"
 testingType: "automation-testing"
 promptVersion: "LangGPT"

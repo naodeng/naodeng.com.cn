@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - API测试 (API Testing)"
+title: "LangGPT - API测试"
 description: "API测试 (API Testing) LangGPT 框架提示词"
 testingType: "api-testing"
 promptVersion: "LangGPT"

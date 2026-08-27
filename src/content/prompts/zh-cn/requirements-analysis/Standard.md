@@ -1,5 +1,5 @@
 ---
-title: "Standard - 需求分析 (Requirements Analysis)"
+title: "Standard - 需求分析"
 description: "需求分析 (Requirements Analysis)标准提示词"
 testingType: "requirements-analysis"
 promptVersion: "Standard"

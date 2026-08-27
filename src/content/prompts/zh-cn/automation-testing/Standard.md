@@ -1,5 +1,5 @@
 ---
-title: "Standard - 自动化测试 (Automation Testing)"
+title: "Standard - 自动化测试"
 description: "自动化测试 (Automation Testing)标准提示词"
 testingType: "automation-testing"
 promptVersion: "Standard"

@@ -1,5 +1,5 @@
 ---
-title: "RISE - 移动端测试 (Mobile Testing)"
+title: "RISE - 移动端测试"
 description: "移动端测试 (Mobile Testing) RISE 框架提示词"
 testingType: "mobile-testing"
 promptVersion: "RISE"

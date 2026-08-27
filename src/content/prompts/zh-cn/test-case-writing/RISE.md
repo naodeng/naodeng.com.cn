@@ -1,5 +1,5 @@
 ---
-title: "RISE - 测试用例编写 (Test Case Writing)"
+title: "RISE - 测试用例编写"
 description: "测试用例编写 (Test Case Writing) RISE 框架提示词"
 testingType: "test-case-writing"
 promptVersion: "RISE"

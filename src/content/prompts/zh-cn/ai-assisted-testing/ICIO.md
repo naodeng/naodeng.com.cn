@@ -1,5 +1,5 @@
 ---
-title: "ICIO - AI辅助测试 (AI-Assisted Testing)"
+title: "ICIO - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing) ICIO 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "ICIO"

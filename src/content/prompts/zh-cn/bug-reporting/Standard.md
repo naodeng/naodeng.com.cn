@@ -1,5 +1,5 @@
 ---
-title: "Standard - 缺陷上报 (Bug Reporting)"
+title: "Standard - 缺陷上报"
 description: "缺陷上报 (Bug Reporting)标准提示词"
 testingType: "bug-reporting"
 promptVersion: "Standard"

@@ -1,5 +1,5 @@
 ---
-title: "RISE - 可访问性测试 (Accessibility Testing)"
+title: "RISE - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) RISE 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "RISE"

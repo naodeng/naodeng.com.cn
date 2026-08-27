@@ -1,5 +1,5 @@
 ---
-title: "RISE - API测试 (API Testing)"
+title: "RISE - API测试"
 description: "API测试 (API Testing) RISE 框架提示词"
 testingType: "api-testing"
 promptVersion: "RISE"

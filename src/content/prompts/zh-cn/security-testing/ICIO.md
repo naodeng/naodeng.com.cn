@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 安全测试 (Security Testing)"
+title: "ICIO - 安全测试"
 description: "安全测试 (Security Testing) ICIO 框架提示词"
 testingType: "security-testing"
 promptVersion: "ICIO"

@@ -1,5 +1,5 @@
 ---
-title: "Standard - AI辅助测试 (AI-Assisted Testing)"
+title: "Standard - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing)标准提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "Standard"

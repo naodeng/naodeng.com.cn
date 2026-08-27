@@ -1,5 +1,5 @@
 ---
-title: "Standard - 移动端测试 (Mobile Testing)"
+title: "Standard - 移动端测试"
 description: "移动端测试 (Mobile Testing)标准提示词"
 testingType: "mobile-testing"
 promptVersion: "Standard"

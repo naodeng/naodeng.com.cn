@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 移动端测试 (Mobile Testing)"
+title: "ICIO - 移动端测试"
 description: "移动端测试 (Mobile Testing) ICIO 框架提示词"
 testingType: "mobile-testing"
 promptVersion: "ICIO"

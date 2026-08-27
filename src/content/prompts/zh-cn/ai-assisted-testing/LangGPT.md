@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - AI辅助测试 (AI-Assisted Testing)"
+title: "LangGPT - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing) LangGPT 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "LangGPT"

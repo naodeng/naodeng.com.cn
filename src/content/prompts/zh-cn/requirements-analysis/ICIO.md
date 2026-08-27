@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 需求分析 (Requirements Analysis)"
+title: "ICIO - 需求分析"
 description: "需求分析 (Requirements Analysis) ICIO 框架提示词"
 testingType: "requirements-analysis"
 promptVersion: "ICIO"

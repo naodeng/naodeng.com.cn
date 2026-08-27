@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 功能测试 (Functional Testing)"
+title: "ROSES - 功能测试"
 description: "功能测试 (Functional Testing) ROSES 框架提示词"
 testingType: "functional-testing"
 promptVersion: "ROSES"

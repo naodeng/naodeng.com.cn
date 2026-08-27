@@ -1,5 +1,5 @@
 ---
-title: "Standard - 性能测试 (Performance Testing)"
+title: "Standard - 性能测试"
 description: "性能测试 (Performance Testing)标准提示词"
 testingType: "performance-testing"
 promptVersion: "Standard"

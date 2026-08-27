@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 可访问性测试 (Accessibility Testing)"
+title: "ROSES - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) ROSES 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "ROSES"

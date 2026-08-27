@@ -1,5 +1,5 @@
 ---
-title: "Standard - 手动测试 (Manual Testing)"
+title: "Standard - 手动测试"
 description: "手动测试 (Manual Testing)标准提示词"
 testingType: "manual-testing"
 promptVersion: "Standard"

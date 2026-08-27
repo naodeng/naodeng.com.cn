@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 移动端测试 (Mobile Testing)"
+title: "LangGPT - 移动端测试"
 description: "移动端测试 (Mobile Testing) LangGPT 框架提示词"
 testingType: "mobile-testing"
 promptVersion: "LangGPT"

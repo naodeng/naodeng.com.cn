@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 可访问性测试 (Accessibility Testing)"
+title: "LangGPT - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) LangGPT 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "LangGPT"

@@ -1,5 +1,5 @@
 ---
-title: "Standard - 测试用例编写 (Test Case Writing)"
+title: "Standard - 测试用例编写"
 description: "测试用例编写 (Test Case Writing)标准提示词"
 testingType: "test-case-writing"
 promptVersion: "Standard"

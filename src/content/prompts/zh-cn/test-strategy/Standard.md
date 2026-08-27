@@ -1,5 +1,5 @@
 ---
-title: "Standard - 测试策略 (Test Strategy)"
+title: "Standard - 测试策略"
 description: "测试策略 (Test Strategy)标准提示词"
 testingType: "test-strategy"
 promptVersion: "Standard"

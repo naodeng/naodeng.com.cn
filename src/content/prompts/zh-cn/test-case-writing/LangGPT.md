@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 测试用例编写 (Test Case Writing)"
+title: "LangGPT - 测试用例编写"
 description: "测试用例编写 (Test Case Writing) LangGPT 框架提示词"
 testingType: "test-case-writing"
 promptVersion: "LangGPT"

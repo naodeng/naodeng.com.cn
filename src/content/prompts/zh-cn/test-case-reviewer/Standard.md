@@ -1,5 +1,5 @@
 ---
-title: "Standard - 测试用例评审 (Test Case Review)"
+title: "Standard - 测试用例评审"
 description: "测试用例评审 (Test Case Review)标准提示词"
 testingType: "test-case-reviewer"
 promptVersion: "Standard"

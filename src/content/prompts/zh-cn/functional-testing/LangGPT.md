@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 功能测试 (Functional Testing)"
+title: "LangGPT - 功能测试"
 description: "功能测试 (Functional Testing) LangGPT 框架提示词"
 testingType: "functional-testing"
 promptVersion: "LangGPT"

@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 手动测试 (Manual Testing)"
+title: "CRISPE - 手动测试"
 description: "手动测试 (Manual Testing) CRISPE 框架提示词"
 testingType: "manual-testing"
 promptVersion: "CRISPE"

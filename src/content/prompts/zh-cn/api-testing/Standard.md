@@ -1,5 +1,5 @@
 ---
-title: "Standard - API测试 (API Testing)"
+title: "Standard - API测试"
 description: "API测试 (API Testing)标准提示词"
 testingType: "api-testing"
 promptVersion: "Standard"

@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 缺陷上报 (Bug Reporting)"
+title: "CRISPE - 缺陷上报"
 description: "缺陷上报 (Bug Reporting) CRISPE 框架提示词"
 testingType: "bug-reporting"
 promptVersion: "CRISPE"

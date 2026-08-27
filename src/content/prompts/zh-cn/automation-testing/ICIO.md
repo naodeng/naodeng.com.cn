@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 自动化测试 (Automation Testing)"
+title: "ICIO - 自动化测试"
 description: "自动化测试 (Automation Testing) ICIO 框架提示词"
 testingType: "automation-testing"
 promptVersion: "ICIO"

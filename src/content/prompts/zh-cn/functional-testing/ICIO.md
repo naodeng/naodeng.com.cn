@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 功能测试 (Functional Testing)"
+title: "ICIO - 功能测试"
 description: "功能测试 (Functional Testing) ICIO 框架提示词"
 testingType: "functional-testing"
 promptVersion: "ICIO"

@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 性能测试 (Performance Testing)"
+title: "LangGPT - 性能测试"
 description: "性能测试 (Performance Testing) LangGPT 框架提示词"
 testingType: "performance-testing"
 promptVersion: "LangGPT"

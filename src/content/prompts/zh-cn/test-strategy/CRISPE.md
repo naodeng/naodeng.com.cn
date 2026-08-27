@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 测试策略 (Test Strategy)"
+title: "CRISPE - 测试策略"
 description: "测试策略 (Test Strategy) CRISPE 框架提示词"
 testingType: "test-strategy"
 promptVersion: "CRISPE"

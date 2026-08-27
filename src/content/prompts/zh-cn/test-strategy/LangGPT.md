@@ -1,5 +1,5 @@
 ---
-title: "LangGPT - 测试策略 (Test Strategy)"
+title: "LangGPT - 测试策略"
 description: "测试策略 (Test Strategy) LangGPT 框架提示词"
 testingType: "test-strategy"
 promptVersion: "LangGPT"

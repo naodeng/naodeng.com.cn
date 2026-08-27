@@ -1,5 +1,5 @@
 ---
-title: "RISE - 缺陷上报 (Bug Reporting)"
+title: "RISE - 缺陷上报"
 description: "缺陷上报 (Bug Reporting) RISE 框架提示词"
 testingType: "bug-reporting"
 promptVersion: "RISE"

@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 测试报告 (Test Reporting)"
+title: "ROSES - 测试报告"
 description: "测试报告 (Test Reporting) ROSES 框架提示词"
 testingType: "test-reporting"
 promptVersion: "ROSES"

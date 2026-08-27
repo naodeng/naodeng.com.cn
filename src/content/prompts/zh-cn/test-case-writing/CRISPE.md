@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 测试用例编写 (Test Case Writing)"
+title: "CRISPE - 测试用例编写"
 description: "测试用例编写 (Test Case Writing) CRISPE 框架提示词"
 testingType: "test-case-writing"
 promptVersion: "CRISPE"

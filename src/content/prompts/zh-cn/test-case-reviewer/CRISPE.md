@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 测试用例评审 (Test Case Review)"
+title: "CRISPE - 测试用例评审"
 description: "测试用例评审 (Test Case Review) CRISPE 框架提示词"
 testingType: "test-case-reviewer"
 promptVersion: "CRISPE"

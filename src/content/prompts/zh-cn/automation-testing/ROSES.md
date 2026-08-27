@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 自动化测试 (Automation Testing)"
+title: "ROSES - 自动化测试"
 description: "自动化测试 (Automation Testing) ROSES 框架提示词"
 testingType: "automation-testing"
 promptVersion: "ROSES"

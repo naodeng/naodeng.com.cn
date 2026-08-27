@@ -1,5 +1,5 @@
 ---
-title: "ROSES - AI辅助测试 (AI-Assisted Testing)"
+title: "ROSES - AI辅助测试"
 description: "AI辅助测试 (AI-Assisted Testing) ROSES 框架提示词"
 testingType: "ai-assisted-testing"
 promptVersion: "ROSES"

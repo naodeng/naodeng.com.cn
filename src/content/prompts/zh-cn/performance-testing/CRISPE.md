@@ -1,6 +1,6 @@
 ---
-title: "CRISPE - 性能测试 (Performance Testing)"
-description: "性能测试 (Performance Testing) CRISPE 框架提示词"
+title: "CRISPE - 性能测试"
+description: "性能测试 CRISPE 框架提示词"
 testingType: "performance-testing"
 promptVersion: "CRISPE"
 lang: "zh-cn"
