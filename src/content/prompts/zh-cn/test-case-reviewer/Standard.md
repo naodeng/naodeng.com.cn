@@ -1,5 +1,5 @@
 ---
-title: "Standard - 测试用例评审 (Test Case Review)"
+title: "Standard - 测试用例评审"
 description: "测试用例评审 (Test Case Review)标准提示词"
 testingType: "test-case-reviewer"
 promptVersion: "Standard"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 1
 ---
 # 测试用例评审 Prompt
-
 
 ---
 
@@ -379,13 +378,3 @@ order: 1
 5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
 **请在收到输入后，先完成输入审计，再输出正式结果。**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-16)
-- 初始化版本
-- 定义评审维度和评审重点
-- 设计评审报告输出格式
-- 提供评审检查清单

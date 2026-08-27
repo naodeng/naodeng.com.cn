@@ -8,7 +8,6 @@ order: 4
 ---
 # AI-Assisted Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed AI-assisted testing solution documentation, including solution overview, current situation analysis, AI application scenario design, AI model training and deployment, implementation roadmap, effect evaluation and ROI analysis, risk control and response measures, continuous improvement and innovation, and other complete content, formatted in Markdown with executable AI model code examples and implementation recommendations
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

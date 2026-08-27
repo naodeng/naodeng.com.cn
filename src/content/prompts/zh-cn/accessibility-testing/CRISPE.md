@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 可访问性测试 (Accessibility Testing)"
+title: "CRISPE - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) CRISPE 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 可访问性测试 - CRISPE框架 (完整版)
-
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 自动化测试 (Automation Testing)"
+title: "CRISPE - 自动化测试"
 description: "自动化测试 (Automation Testing) CRISPE 框架提示词"
 testingType: "automation-testing"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 自动化测试 - CRISPE框架 (完整版)
-
 
 ---
 

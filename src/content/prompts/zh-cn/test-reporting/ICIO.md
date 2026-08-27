@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 测试报告 (Test Reporting)"
+title: "ICIO - 测试报告"
 description: "测试报告 (Test Reporting) ICIO 框架提示词"
 testingType: "test-reporting"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # 测试报告 - ICIO框架 (完整版)
-
 
 ---
 

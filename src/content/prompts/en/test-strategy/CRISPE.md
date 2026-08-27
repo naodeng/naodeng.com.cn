@@ -8,7 +8,6 @@ order: 5
 ---
 # Test Strategy - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through strategy application across multiple project types and scenarios, develop comprehensive test strategies (agile projects, traditional projects, DevOps projects, cloud-native projects, etc.), provide multiple test strategy examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

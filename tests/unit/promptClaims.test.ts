@@ -43,6 +43,22 @@ function collectSourcePaths(): string[] {
 }
 
 describe("prompts capability boundaries", () => {
+  it("keeps every Prompt Markdown structurally renderable", () => {
+    const promptFiles = readAllFiles(join(REPO_ROOT, "src", "content", "prompts"));
+    expect(promptFiles.filter((file) => file.endsWith(".md"))).toHaveLength(180);
+
+    const offenders: string[] = [];
+    for (const file of promptFiles.filter((candidate) => candidate.endsWith(".md"))) {
+      const content = readFileSync(file, "utf8");
+      const fences = content.match(/^\s*```/gm) ?? [];
+      if (fences.length % 2 !== 0) offenders.push(`${file}: unbalanced fenced code block`);
+      if (/^\s*#{2,6}\s+#{1,6}\s+/m.test(content)) offenders.push(`${file}: nested Markdown heading`);
+      if (/^##\s+📋\s*Change Log\s*$/im.test(content)) offenders.push(`${file}: Change Log section`);
+    }
+
+    expect(offenders, offenders.join("\n")).toEqual([]);
+  });
+
   it("uses no overreaching claims in published Prompt sources", () => {
     const offenders: string[] = [];
     for (const file of collectSourcePaths()) {

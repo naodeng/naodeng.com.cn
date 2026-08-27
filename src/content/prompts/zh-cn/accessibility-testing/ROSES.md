@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 可访问性测试 (Accessibility Testing)"
+title: "ROSES - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) ROSES 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 可访问性测试 - ROSES框架 (完整版)
-
 
 ---
 

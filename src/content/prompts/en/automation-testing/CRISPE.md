@@ -8,7 +8,6 @@ order: 5
 ---
 # Test Automation - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the combined application of various technical solutions and design patterns, design comprehensive automation testing frameworks (Web, API, Mobile, Database), providing multiple automation testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

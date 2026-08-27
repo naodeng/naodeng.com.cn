@@ -8,7 +8,6 @@ order: 4
 ---
 # Test Reporting - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed test report documentation, including report information, executive summary, test execution status, defect analysis, quality assessment, test coverage analysis, test efficiency analysis, improvement recommendations, conclusions and recommendations, and other complete content, formatted in Markdown with data tables and chart descriptions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

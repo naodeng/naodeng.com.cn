@@ -8,7 +8,6 @@ order: 6
 ---
 # Bug Reporting - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed bug report documentation, including basic information, test environment, bug description, reproduction steps, expected vs actual results comparison, error information and logs, root cause analysis, solution recommendations, bug tracking records, and other complete content, providing executable bug fix guidance for development teams
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

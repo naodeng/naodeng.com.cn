@@ -8,7 +8,6 @@ order: 6
 ---
 # Test Case Review - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed test case review report, including review overview, detailed review comments, missing test scenarios, test scope recommendations, risk assessment, improvement recommendations, follow-up action plan, review summary, and other complete content, providing executable test case quality assessment and improvement recommendations for project decisions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

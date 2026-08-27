@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 缺陷上报 (Bug Reporting)"
+title: "ICIO - 缺陷上报"
 description: "缺陷上报 (Bug Reporting) ICIO 框架提示词"
 testingType: "bug-reporting"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # 缺陷上报 - ICIO框架 (完整版)
-
 
 ---
 

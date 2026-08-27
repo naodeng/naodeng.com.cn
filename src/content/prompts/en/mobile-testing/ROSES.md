@@ -8,7 +8,6 @@ order: 2
 ---
 # Mobile Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirements Analysis → Application Analysis → Device and Platform Strategy Development → Test Case Design → Specialized Testing Plan Design → Automation Testing Implementation → Test Execution Planning → Format Output
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -8,7 +8,6 @@ order: 4
 ---
 # Test Case Writing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Clearly define output indicators and verification standards for test cases, including multi-dimensional verification indicators such as functional verification, interface verification, data verification, and performance verification
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

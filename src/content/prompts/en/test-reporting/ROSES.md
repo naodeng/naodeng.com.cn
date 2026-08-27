@@ -8,7 +8,6 @@ order: 2
 ---
 # Test Reporting - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Data Collection → Data Analysis → Report Writing → Quality Check → Format Output
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

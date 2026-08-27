@@ -8,7 +8,6 @@ order: 5
 ---
 # Accessibility Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through application across multiple accessibility testing types and scenarios, design comprehensive accessibility testing plans (visual accessibility, auditory accessibility, motor accessibility, cognitive accessibility, etc.), provide multiple accessibility testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

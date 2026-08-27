@@ -8,7 +8,6 @@ order: 6
 ---
 # Functional Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed functional testing plan documentation, including testing overview, functional module analysis, functional testing strategy, detailed test cases, integration functional testing, functional testing execution plan, functional testing acceptance criteria, and other complete content, providing executable functional testing strategies and implementation recommendations for project decisions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

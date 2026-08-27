@@ -8,7 +8,6 @@ order: 4
 ---
 # Test Strategy - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed test strategy documentation, including strategy overview, project background analysis, test objectives and scope, test methods and strategies, test organization and roles, test environment and tools, risk management and quality control, implementation plan and milestones, budget and resource planning, summary and recommendations, and other complete content, formatted in Markdown with test strategy examples and best practice recommendations
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

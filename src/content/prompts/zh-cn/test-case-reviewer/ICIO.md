@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 测试用例评审 (Test Case Review)"
+title: "ICIO - 测试用例评审"
 description: "测试用例评审 (Test Case Review) ICIO 框架提示词"
 testingType: "test-case-reviewer"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # 测试用例评审 - ICIO框架 (完整版)
-
 
 ---
 

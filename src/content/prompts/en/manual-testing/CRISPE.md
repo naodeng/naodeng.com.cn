@@ -8,7 +8,6 @@ order: 5
 ---
 # Manual Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the application of various manual testing types and scenarios, design comprehensive manual testing plans (exploratory testing, usability testing, compatibility testing, business process testing, etc.), providing multiple manual testing examples and best practices for different scenarios.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

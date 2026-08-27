@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 手动测试 (Manual Testing)"
+title: "ROSES - 手动测试"
 description: "手动测试 (Manual Testing) ROSES 框架提示词"
 testingType: "manual-testing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 手动测试 - ROSES框架 (完整版)
-
 
 ---
 

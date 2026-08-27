@@ -1,5 +1,5 @@
 ---
-title: "RISE - 测试策略 (Test Strategy)"
+title: "RISE - 测试策略"
 description: "测试策略 (Test Strategy) RISE 框架提示词"
 testingType: "test-strategy"
 promptVersion: "RISE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 6
 ---
 # 测试策略 - RISE框架 (完整版)
-
 
 ---
 

@@ -8,7 +8,6 @@ order: 1
 ---
 # Test Reporting Prompt
 
-
 ---
 
 **Role:** Senior Test Reporting Analyst
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided test execution data, defect information, or project background, write comprehensive and professional test reports. Ensure report data is accurate, analysis is in-depth, conclusions are objective, and can effectively support project quality decisions and risk assessments.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -506,10 +504,3 @@ Defect Trend Chart (recommend using charting tools)
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

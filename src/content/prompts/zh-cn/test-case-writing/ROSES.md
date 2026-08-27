@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 测试用例编写 (Test Case Writing)"
+title: "ROSES - 测试用例编写"
 description: "测试用例编写 (Test Case Writing) ROSES 框架提示词"
 testingType: "test-case-writing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 测试用例编写 - ROSES框架 (完整版)
-
 
 ---
 

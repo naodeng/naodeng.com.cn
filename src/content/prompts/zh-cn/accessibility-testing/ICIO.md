@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 可访问性测试 (Accessibility Testing)"
+title: "ICIO - 可访问性测试"
 description: "可访问性测试 (Accessibility Testing) ICIO 框架提示词"
 testingType: "accessibility-testing"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # 可访问性测试 - ICIO框架 (完整版)
-
 
 ---
 

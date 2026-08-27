@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 需求分析 (Requirements Analysis)"
+title: "CRISPE - 需求分析"
 description: "需求分析 (Requirements Analysis) CRISPE 框架提示词"
 testingType: "requirements-analysis"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 需求分析 - CRISPE框架 (完整版)
-
 
 ---
 

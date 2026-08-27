@@ -8,7 +8,6 @@ order: 5
 ---
 # Security Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through application across multiple security testing types and scenarios, design comprehensive security testing plans (Web application security, API security, mobile application security, network security, etc.), provide multiple security testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

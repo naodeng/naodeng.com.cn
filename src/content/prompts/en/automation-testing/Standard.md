@@ -8,7 +8,6 @@ order: 1
 ---
 # Test Automation Prompt
 
-
 ---
 
 **Role:** Senior Test Automation Architect
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided project requirements, technology stack, or testing objectives, design comprehensive test automation strategies and implementation plans. Ensure automation testing solutions are technically advanced, architecturally sound, practically feasible, and can effectively improve testing efficiency and quality.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -433,10 +431,3 @@ pipeline {
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

@@ -1,5 +1,5 @@
 ---
-title: "ROSES - API测试 (API Testing)"
+title: "ROSES - API测试"
 description: "API测试 (API Testing) ROSES 框架提示词"
 testingType: "api-testing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # API测试 - ROSES框架 (完整版)
-
 
 ---
 

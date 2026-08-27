@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 测试报告 (Test Reporting)"
+title: "ROSES - 测试报告"
 description: "测试报告 (Test Reporting) ROSES 框架提示词"
 testingType: "test-reporting"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 测试报告 - ROSES框架 (完整版)
-
 
 ---
 

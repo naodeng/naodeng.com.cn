@@ -8,7 +8,6 @@ order: 5
 ---
 # Test Case Review - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the application of various review dimensions and focus areas, conduct comprehensive test case review (business dimension, technical dimension, user experience dimension, quality dimension, etc.), providing multiple review examples and best practices for different scenarios.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

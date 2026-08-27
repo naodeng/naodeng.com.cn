@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 测试报告 (Test Reporting)"
+title: "CRISPE - 测试报告"
 description: "测试报告 (Test Reporting) CRISPE 框架提示词"
 testingType: "test-reporting"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 测试报告 - CRISPE框架 (完整版)
-
 
 ---
 

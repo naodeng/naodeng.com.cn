@@ -1,5 +1,5 @@
 ---
-title: "RISE - 测试用例评审 (Test Case Review)"
+title: "RISE - 测试用例评审"
 description: "测试用例评审 (Test Case Review) RISE 框架提示词"
 testingType: "test-case-reviewer"
 promptVersion: "RISE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 6
 ---
 # 测试用例评审 - RISE框架 (完整版)
-
 
 ---
 

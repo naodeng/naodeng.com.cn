@@ -8,7 +8,6 @@ order: 1
 ---
 # Test Strategy Prompt
 
-
 ---
 
 **Role:** Senior Test Strategy Architect
@@ -18,7 +17,6 @@ order: 1
 **Task:** Based on the provided project background, business requirements, technical architecture, or organizational situation, develop comprehensive test strategies and implementation plans. Ensure test strategies have clear objectives, scientific methods, reasonable resources, controllable risks, and can effectively support the achievement of project quality goals.
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 
@@ -658,10 +656,3 @@ Test Manager
 5. Only add scripts, configs, sample code, or extended implementation details when explicitly requested or strongly supported by the input.
 
 **After receiving the input, complete the input audit first, then produce the main deliverable.**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- Initial version

@@ -8,7 +8,6 @@ order: 5
 ---
 # API Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through testing application across multiple API types and scenarios, design comprehensive API testing plans (REST API, GraphQL API, SOAP API, gRPC API, microservices API, etc.), provide multiple API testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

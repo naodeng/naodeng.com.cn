@@ -1,5 +1,5 @@
 ---
-title: "Standard - 功能测试 (Functional Testing)"
+title: "Standard - 功能测试"
 description: "功能测试 (Functional Testing)标准提示词"
 testingType: "functional-testing"
 promptVersion: "Standard"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 1
 ---
 # 功能测试 Prompt
-
 
 ---
 
@@ -330,10 +329,3 @@ order: 1
 5. 仅在用户明确要求或上下文足够时，补充脚本、配置、示例代码或扩展方案。
 
 **请在收到输入后，先完成输入审计，再输出正式结果。**
-
----
-
-## 📋 Change Log
-
-### v0.1 (2025-01-14)
-- 初始化版本

@@ -8,7 +8,6 @@ order: 6
 ---
 # Performance Testing - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed performance testing plan documentation, including testing overview, system architecture analysis, performance requirement analysis, performance test scenario design, performance testing execution plan, performance bottleneck analysis framework, performance testing reports, and other complete content, providing executable performance testing strategies and implementation recommendations for project decisions
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - API测试 (API Testing)"
+title: "CRISPE - API测试"
 description: "API测试 (API Testing) CRISPE 框架提示词"
 testingType: "api-testing"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # API测试 - CRISPE框架 (完整版)
-
 
 ---
 

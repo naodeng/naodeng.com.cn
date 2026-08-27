@@ -1,5 +1,5 @@
 ---
-title: "RISE - 功能测试 (Functional Testing)"
+title: "RISE - 功能测试"
 description: "功能测试 (Functional Testing) RISE 框架提示词"
 testingType: "functional-testing"
 promptVersion: "RISE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 6
 ---
 # 功能测试 - RISE框架 (完整版)
-
 
 ---
 

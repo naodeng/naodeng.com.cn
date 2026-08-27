@@ -1,5 +1,5 @@
 ---
-title: "RISE - 性能测试 (Performance Testing)"
+title: "RISE - 性能测试"
 description: "性能测试 (Performance Testing) RISE 框架提示词"
 testingType: "performance-testing"
 promptVersion: "RISE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 6
 ---
 # 性能测试 - RISE框架 (完整版)
-
 
 ---
 

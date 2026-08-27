@@ -8,7 +8,6 @@ order: 5
 ---
 # Functional Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through testing application across multiple functional types and scenarios, design comprehensive functional testing plans (core business functions, user interface functions, data management functions, system integration functions, etc.), provide multiple functional testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

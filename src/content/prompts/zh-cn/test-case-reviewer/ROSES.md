@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 测试用例评审 (Test Case Review)"
+title: "ROSES - 测试用例评审"
 description: "测试用例评审 (Test Case Review) ROSES 框架提示词"
 testingType: "test-case-reviewer"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 测试用例评审 - ROSES框架 (完整版)
-
 
 ---
 

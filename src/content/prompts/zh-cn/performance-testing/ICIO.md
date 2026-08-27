@@ -1,5 +1,5 @@
 ---
-title: "ICIO - 性能测试 (Performance Testing)"
+title: "ICIO - 性能测试"
 description: "性能测试 (Performance Testing) ICIO 框架提示词"
 testingType: "performance-testing"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # 性能测试 - ICIO框架 (完整版)
-
 
 ---
 

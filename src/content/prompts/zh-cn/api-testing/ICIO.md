@@ -1,5 +1,5 @@
 ---
-title: "ICIO - API测试 (API Testing)"
+title: "ICIO - API测试"
 description: "API测试 (API Testing) ICIO 框架提示词"
 testingType: "api-testing"
 promptVersion: "ICIO"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 4
 ---
 # API测试 - ICIO框架 (完整版)
-
 
 ---
 

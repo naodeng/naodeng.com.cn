@@ -1,5 +1,5 @@
 ---
-title: "RISE - 自动化测试 (Automation Testing)"
+title: "RISE - 自动化测试"
 description: "自动化测试 (Automation Testing) RISE 框架提示词"
 testingType: "automation-testing"
 promptVersion: "RISE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 6
 ---
 # 自动化测试 - RISE框架 (完整版)
-
 
 ---
 

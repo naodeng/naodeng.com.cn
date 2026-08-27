@@ -8,7 +8,6 @@ order: 5
 ---
 # Test Case Writing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through systematic test case design and execution, verify software functionality correctness, stability, and user experience, continuously optimize testing methods and quality standards
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

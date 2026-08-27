@@ -8,7 +8,6 @@ order: 4
 ---
 # Mobile Testing - ICIO Framework (Full Version)
 
-
 ---
 
 ## ICIO Framework Structure
@@ -22,7 +21,6 @@ order: 4
 **Output Indicator:** Detailed mobile testing plan documentation, including complete application analysis, device and platform strategies, mobile test case design, specialized testing plans, automation testing implementation, test execution and management, formatted in Markdown with code examples and test scenario examples
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

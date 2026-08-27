@@ -8,7 +8,6 @@ order: 5
 ---
 # Mobile Testing - CRISPE Framework (Full Version)
 
-
 ---
 
 ## CRISPE Framework Structure
@@ -26,7 +25,6 @@ order: 5
 **Experiment:** Through the combined application of various testing methods and scenarios, design comprehensive mobile testing plans (iOS, Android, cross-platform), providing multiple mobile testing examples and best practices for different scenarios
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

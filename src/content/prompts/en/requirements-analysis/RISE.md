@@ -8,7 +8,6 @@ order: 6
 ---
 # Requirements Analysis - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output structured requirements analysis reports, including complete business background analysis, clear test scope definition, comprehensive test scenario design (positive, exception, boundary, security, performance, compatibility), scientific test method planning, and practical test strategy recommendations, providing scientific guidance for subsequent testing activities
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

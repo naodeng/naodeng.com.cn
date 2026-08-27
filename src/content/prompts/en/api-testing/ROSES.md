@@ -8,7 +8,6 @@ order: 2
 ---
 # API Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** API Analysis → Strategy Formulation → Test Case Design → Script Development → Automation Integration → Continuous Optimization
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

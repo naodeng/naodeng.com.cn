@@ -8,7 +8,6 @@ order: 6
 ---
 # Test Automation - RISE Framework (Full Version)
 
-
 ---
 
 ## RISE Framework Structure
@@ -22,7 +21,6 @@ order: 6
 **Expectation:** Output detailed automation testing plan documentation, including complete technical architecture design, clear test layering strategy, comprehensive framework design details, detailed test case design (including code examples), complete CI/CD integration plan, comprehensive test reporting and monitoring mechanisms, systematic maintenance and optimization strategies, providing executable automation testing implementation plans for teams
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

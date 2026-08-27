@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 手动测试 (Manual Testing)"
+title: "CRISPE - 手动测试"
 description: "手动测试 (Manual Testing) CRISPE 框架提示词"
 testingType: "manual-testing"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 手动测试 - CRISPE框架 (完整版)
-
 
 ---
 

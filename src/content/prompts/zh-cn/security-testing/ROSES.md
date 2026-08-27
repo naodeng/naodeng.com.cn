@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 安全测试 (Security Testing)"
+title: "ROSES - 安全测试"
 description: "安全测试 (Security Testing) ROSES 框架提示词"
 testingType: "security-testing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 安全测试 - ROSES框架 (完整版)
-
 
 ---
 

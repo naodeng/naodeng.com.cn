@@ -8,7 +8,6 @@ order: 2
 ---
 # AI-Assisted Testing - ROSES Framework (Full Version)
 
-
 ---
 
 ## ROSES Framework Structure
@@ -24,7 +23,6 @@ order: 2
 **Steps:** Requirement Analysis → Technology Selection → Solution Design → Risk Assessment → Effect Estimation → Implementation Planning → Continuous Optimization
 
 ---
-
 
 ## Usage Constraints and Degradation Rules
 

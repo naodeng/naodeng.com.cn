@@ -1,5 +1,5 @@
 ---
-title: "ROSES - 性能测试 (Performance Testing)"
+title: "ROSES - 性能测试"
 description: "性能测试 (Performance Testing) ROSES 框架提示词"
 testingType: "performance-testing"
 promptVersion: "ROSES"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 2
 ---
 # 性能测试 - ROSES框架 (完整版)
-
 
 ---
 

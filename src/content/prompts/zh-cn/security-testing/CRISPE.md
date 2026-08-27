@@ -1,5 +1,5 @@
 ---
-title: "CRISPE - 安全测试 (Security Testing)"
+title: "CRISPE - 安全测试"
 description: "安全测试 (Security Testing) CRISPE 框架提示词"
 testingType: "security-testing"
 promptVersion: "CRISPE"
@@ -7,7 +7,6 @@ lang: "zh-cn"
 order: 5
 ---
 # 安全测试 - CRISPE框架 (完整版)
-
 
 ---
 
