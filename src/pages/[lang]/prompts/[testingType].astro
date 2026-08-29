@@ -69,7 +69,7 @@ const rendered = await Promise.all(
 );
 
 // Page title from first entry
-const pageTitle = entries[0]?.data.title.replace(/^[^-]+ - /, "") ?? testingType;
+const pageTitle = entries[0]?.data.title ?? testingType;
 const pageDescription = entries[0]?.data.description ?? "";
 
 // TOC headings from the first (default active) tab
@@ -122,6 +122,28 @@ for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
   }
 }
 const sidebarItems = Array.from(typeMap.values()).sort((a, b) => a.label.localeCompare(b.label, lang));
+
+const currentPrompt = entries[0];
+const currentTerms = new Set(
+  `${currentPrompt?.data.testingType ?? ""} ${currentPrompt?.data.title ?? ""}`
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((term) => term.length > 2),
+);
+const relatedPrompts = localePrompts
+  .filter((prompt) => prompt.data.testingType !== testingType)
+  .map((prompt) => {
+    const candidateTerms = `${prompt.data.testingType} ${prompt.data.title}`
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((term) => term.length > 2);
+    const sharedTerms = candidateTerms.filter((term) => currentTerms.has(term)).length;
+    const categoryScore = prompt.data.category === currentPrompt?.data.category ? 100 : 0;
+    return { prompt, score: categoryScore + sharedTerms };
+  })
+  .sort((a, b) => b.score - a.score || a.prompt.data.title.localeCompare(b.prompt.data.title, lang))
+  .slice(0, 5)
+  .map(({ prompt }) => prompt);
 
 const tocLabel = lang === "zh-cn" ? "本页目录" : "On this page";
 const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
@@ -248,6 +270,26 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
         url={canonicalUrl}
         locale={lang as "en" | "zh-cn"}
       />
+
+      {relatedPrompts.length > 0 && (
+        <section class="prompt-related-prompts" aria-labelledby="related-prompts-heading">
+          <div class="prompt-related-prompts-heading">
+            <h2 id="related-prompts-heading">{lang === "zh-cn" ? "关联提示词" : "Related Prompts"}</h2>
+          </div>
+          <div class="prompt-related-prompts-grid">
+            {relatedPrompts.map((prompt) => (
+              <a
+                href={getRelativeLocaleUrl(lang, `/prompts/${prompt.data.testingType}/`)}
+                class="prompt-related-prompt"
+                data-related-prompt
+              >
+                <span class="prompt-related-prompt-title">{prompt.data.title}</span>
+                <span class="prompt-related-prompt-arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       <Giscus
         lang={lang === "zh-cn" ? "zh-CN" : "en"}
@@ -698,6 +740,65 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     background: var(--color-theme-soft); font-weight: 600;
   }
   .prompt-content :global(a) { color: var(--color-theme); text-decoration: underline; }
+
+  /* ── Related prompts ── */
+  .prompt-related-prompts {
+    margin-block: 1.5rem 2rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
+  }
+  .prompt-related-prompts-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-s);
+    margin-block-end: 0.8rem;
+  }
+  .prompt-related-prompts h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+  }
+  .prompt-related-prompts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.65rem;
+  }
+  .prompt-related-prompt {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+    min-block-size: 3.5rem;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-decoration: none;
+    background: color-mix(in srgb, var(--color-base) 80%, transparent);
+    transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+  }
+  .prompt-related-prompt:hover {
+    border-color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, var(--color-base));
+    transform: translateY(-2px);
+  }
+  .prompt-related-prompt:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 3px;
+  }
+  .prompt-related-prompt-title {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .prompt-related-prompt-arrow {
+    color: var(--color-theme);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
 
   /* ── Right TOC ── */
   .prompts-toc-wrap {

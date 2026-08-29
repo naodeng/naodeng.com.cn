@@ -45,6 +45,26 @@ test.describe("Prompts selection and review flow", () => {
     await expect(page.locator(".prompt-content > h1")).toBeHidden();
   });
 
+  test("prompt details keep the prompt name before a platform version", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".prompt-detail-header h1")).toHaveText("测试策略 Prompt - 移动端版");
+  });
+
+  test("prompt details show five linked related prompts below sharing", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
+
+    const related = page.locator(".prompt-related-prompts");
+    await expect(related).toBeVisible();
+    await expect(related.locator("[data-related-prompt]")).toHaveCount(5);
+    const firstRelated = related.locator("[data-related-prompt]").first();
+    const href = await firstRelated.getAttribute("href");
+    expect(href).toMatch(/^\/zh-cn\/prompts\/.+\/$/);
+    await expect(related.locator(".prompt-related-prompt-description")).toHaveCount(0);
+    await firstRelated.click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+  });
+
 
   for (const lang of ["zh-cn", "en"] as const) {
     test(`${lang} lists every prompt category without version choices`, async ({
