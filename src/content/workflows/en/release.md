@@ -7,13 +7,17 @@ order: 3
 ---
 # Release Testing Workflow
 
+<div align="right"><a href="../zh/release-testing-workflow.md">简体中文</a> · <strong>English</strong></div>
+
 ## 📋 Metadata
+
 - **Audience**: QA Engineers, Release Managers, DevOps
 - **Timeline**: 1-2 weeks before release
 - **Last Updated**: 2026-01-01
 - **Version**: 1.0
 
 ## 🎯 Objective
+
 Comprehensive testing workflow to ensure release quality and readiness for production deployment.
 
 ---
@@ -21,9 +25,13 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 📅 Release Timeline
 
 ### T-14 Days: Release Planning
+
 ### T-7 Days: Feature Freeze & Testing Ramp-Up
+
 ### T-3 Days: Release Candidate & Final Testing
+
 ### T-1 Day: Go/No-Go Decision
+
 ### T-Day: Release Day
 
 ---
@@ -31,6 +39,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 🎬 T-14 Days: Release Planning
 
 ### Release Kickoff Meeting
+
 **Attendees**: Product, Engineering, QA, DevOps
 
 **Agenda**:
@@ -40,8 +49,8 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Plan testing strategy
 
 **Prompts to Use**:
-- [Test Strategy](/en/prompts/test-strategy/)
-- [Requirements Analysis](/en/prompts/requirements-analysis/) - Risk analysis
+- [Test Strategy](/en/prompts/en/)
+- [Requirements Analysis](/en/prompts/en/) - Risk analysis
 
 **Deliverables**:
 - [ ] Release test plan
@@ -55,6 +64,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 🏗️ T-10 to T-8 Days: Test Preparation
 
 ### Environment Setup
+
 **Actions**:
 - Set up staging environment
 - Configure production-like data
@@ -62,10 +72,11 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Prepare test accounts
 
 **Prompts to Use**:
-- [Automation Testing](/en/prompts/automation-testing/) - CI/CD integration
-- [Test Strategy](/en/prompts/test-strategy/) - Test data generation
+- [Automation Testing](/en/prompts/en/) - CI/CD integration
+- [Test Strategy](/en/prompts/en/) - Test data generation
 
 ### Test Suite Preparation
+
 **Update**:
 - Regression test suite
 - Performance test scripts
@@ -83,6 +94,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 🚀 T-7 Days: Feature Freeze & Testing Ramp-Up
 
 ### Feature Freeze
+
 **Actions**:
 - No new features after this point
 - Only bug fixes allowed
@@ -91,9 +103,10 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ### Comprehensive Testing Begins
 
 #### 1. Functional Testing
+
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/functional-testing/)
-- [Test Case Writing](/en/prompts/test-case-writing/)
+- [Functional Testing](/en/prompts/en/)
+- [Test Case Writing](/en/prompts/en/)
 
 **Execute**:
 - All new features
@@ -102,6 +115,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Integration points
 
 #### 2. Regression Testing
+
 **Full Regression Suite**:
 - Automated regression tests
 - Manual regression for critical paths
@@ -109,11 +123,12 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Mobile testing
 
 **Prompts to Use**:
-- [AI-Assisted Testing](/en/prompts/ai-assisted-testing/) - Intelligent test selection
+- [AI-Assisted Testing](/en/prompts/en/) - Intelligent test selection
 
 #### 3. End-to-End Testing
+
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/functional-testing/) - E2E scenarios
+- [Functional Testing](/en/prompts/en/) - E2E scenarios
 
 **Test**:
 - Complete user journeys
@@ -126,8 +141,9 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## 🔍 T-5 to T-4 Days: Specialized Testing
 
 ### Performance Testing
+
 **Prompts to Use**:
-- [Performance Testing](/en/prompts/performance-testing/)
+- [Performance Testing](/en/prompts/en/)
 
 **Execute**:
 - Load testing (expected load)
@@ -142,8 +158,9 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Resource utilization
 
 ### Security Testing
+
 **Prompts to Use**:
-- [Security Testing](/en/prompts/security-testing/)
+- [Security Testing](/en/prompts/en/)
 
 **Execute**:
 - Vulnerability scanning
@@ -153,8 +170,9 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Security headers check
 
 ### Accessibility Testing
+
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/accessibility-testing/)
+- [Accessibility Testing](/en/prompts/en/)
 
 **Execute**:
 - Screen reader testing
@@ -163,8 +181,9 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - ARIA labels verification
 
 ### Visual Testing
+
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/accessibility-testing/) - Visual testing
+- [Accessibility Testing](/en/prompts/en/) - Visual testing
 
 **Execute**:
 - Visual regression tests
@@ -177,34 +196,38 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ## ✅ T-3 Days: Release Candidate Testing
 
 ### Release Candidate (RC) Build
+
 **Actions**:
 - Deploy RC to staging
 - Freeze all code changes
 - Tag release in version control
 
 ### Smoke Testing
+
 **Quick validation** (1-2 hours):
 - Critical functionality works
 - No showstopper bugs
 - Deployment successful
 
 ### Final Regression
+
 **Complete regression suite**:
 - Automated tests (full suite)
 - Manual critical path testing
 - Exploratory testing sessions
 
 **Prompts to Use**:
-- [Manual Testing](/en/prompts/manual-testing/) - Exploratory testing
+- [Manual Testing](/en/prompts/en/) - Exploratory testing
 
 ### Bug Triage
+
 **Priority**:
 - **Critical**: Must fix before release
 - **High**: Fix if possible
 - **Medium/Low**: Move to next release
 
 **Decision Matrix**:
-```
+```text
 Critical Bug → Fix immediately → Retest → New RC
 High Bug → Assess risk → Fix or defer
 Medium/Low → Defer to next release
@@ -215,9 +238,10 @@ Medium/Low → Defer to next release
 ## 📊 T-2 Days: Quality Assessment
 
 ### Test Metrics Review
+
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/test-reporting/)
-- [Test Strategy](/en/prompts/test-strategy/) - Quality assessment
+- [Test Reporting](/en/prompts/en/)
+- [Test Strategy](/en/prompts/en/) - Quality assessment
 
 **Metrics to Review**:
 - Test execution rate: ___%
@@ -228,6 +252,7 @@ Medium/Low → Defer to next release
 - Performance benchmarks: ___
 
 ### Quality Gates
+
 **Must Pass**:
 - [ ] All critical bugs fixed
 - [ ] Regression suite 100% passed
@@ -237,6 +262,7 @@ Medium/Low → Defer to next release
 - [ ] Accessibility compliance met
 
 ### Risk Assessment
+
 **Evaluate**:
 - Known issues and workarounds
 - Performance under load
@@ -248,6 +274,7 @@ Medium/Low → Defer to next release
 ## 🎯 T-1 Day: Go/No-Go Decision
 
 ### Go/No-Go Meeting
+
 **Attendees**: Product, Engineering, QA, DevOps, Leadership
 
 **Review**:
@@ -275,6 +302,7 @@ Medium/Low → Defer to next release
 - ❌ Team not confident
 
 ### Pre-Release Checklist
+
 - [ ] Release notes prepared
 - [ ] Deployment runbook ready
 - [ ] Monitoring configured
@@ -287,6 +315,7 @@ Medium/Low → Defer to next release
 ## 🚀 T-Day: Release Day
 
 ### Pre-Deployment
+
 **Actions** (2-4 hours before):
 - Final smoke test on RC
 - Verify deployment checklist
@@ -294,6 +323,7 @@ Medium/Low → Defer to next release
 - Communication channels ready
 
 ### Deployment
+
 **Monitor**:
 - Deployment progress
 - Error logs
@@ -301,6 +331,7 @@ Medium/Low → Defer to next release
 - User feedback
 
 ### Post-Deployment Validation
+
 **Smoke Testing in Production** (30-60 min):
 - [ ] Critical user journeys work
 - [ ] Authentication/authorization
@@ -315,6 +346,7 @@ Medium/Low → Defer to next release
 - Support tickets
 
 ### Rollback Decision
+
 **Rollback if**:
 - Critical functionality broken
 - Severe performance degradation
@@ -326,18 +358,21 @@ Medium/Low → Defer to next release
 ## 📈 Post-Release (T+1 to T+7)
 
 ### Day 1: Intensive Monitoring
+
 - Monitor all metrics
 - Respond to incidents quickly
 - Track user feedback
 - Log any issues
 
 ### Week 1: Stabilization
+
 - Fix any post-release bugs
 - Monitor performance trends
 - Gather user feedback
 - Plan hotfixes if needed
 
 ### Release Retrospective
+
 **Discuss**:
 - What went well?
 - What could be improved?
@@ -345,25 +380,28 @@ Medium/Low → Defer to next release
 - Process improvements?
 
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/test-reporting/)
+- [Test Reporting](/en/prompts/en/)
 
 ---
 
 ## 🚨 Emergency Procedures
 
 ### Critical Bug Found
+
 1. Assess severity and impact
 2. Decide: Hotfix or Rollback
 3. If hotfix: Fast-track testing
 4. If rollback: Execute rollback plan
 
 ### Performance Issues
+
 1. Identify bottleneck
 2. Assess user impact
 3. Implement quick fix or rollback
 4. Plan permanent solution
 
 ### Security Incident
+
 1. Immediate assessment
 2. Contain the issue
 3. Rollback if necessary
@@ -374,6 +412,7 @@ Medium/Low → Defer to next release
 ## 📋 Release Testing Checklist
 
 ### Pre-Release
+
 - [ ] Test plan approved
 - [ ] Environments ready
 - [ ] Test data prepared
@@ -381,6 +420,7 @@ Medium/Low → Defer to next release
 - [ ] Team trained
 
 ### Testing Phase
+
 - [ ] Functional testing complete
 - [ ] Regression passed
 - [ ] Performance validated
@@ -389,6 +429,7 @@ Medium/Low → Defer to next release
 - [ ] Visual testing done
 
 ### Pre-Deployment
+
 - [ ] RC tested
 - [ ] Quality gates passed
 - [ ] Go/No-Go decision made
@@ -396,6 +437,7 @@ Medium/Low → Defer to next release
 - [ ] Rollback plan tested
 
 ### Post-Deployment
+
 - [ ] Smoke tests passed
 - [ ] Monitoring active
 - [ ] Team on standby
@@ -406,24 +448,27 @@ Medium/Low → Defer to next release
 ## 🔧 Recommended Prompts by Phase
 
 ### Planning
-- [Test Strategy](/en/prompts/test-strategy/)
-- [Requirements Analysis](/en/prompts/requirements-analysis/)
+
+- [Test Strategy](/en/prompts/en/)
+- [Requirements Analysis](/en/prompts/en/)
 
 ### Testing
-- [Functional Testing](/en/prompts/functional-testing/)
-- [Performance Testing](/en/prompts/performance-testing/)
-- [Security Testing](/en/prompts/security-testing/)
-- [Accessibility Testing](/en/prompts/accessibility-testing/)
+
+- [Functional Testing](/en/prompts/en/)
+- [Performance Testing](/en/prompts/en/)
+- [Security Testing](/en/prompts/en/)
+- [Accessibility Testing](/en/prompts/en/)
 
 ### Assessment
-- [Test Reporting](/en/prompts/test-reporting/)
+
+- [Test Reporting](/en/prompts/en/)
 
 ---
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](daily-testing-workflow_EN.md) - Day-to-day activities
-- [Sprint Testing Workflow](sprint-testing-workflow_EN.md) - Sprint cycle
+- [Daily Testing Workflow](daily-testing-workflow.md) - Day-to-day activities
+- [Sprint Testing Workflow](sprint-testing-workflow.md) - Sprint cycle
 
 ---
 
