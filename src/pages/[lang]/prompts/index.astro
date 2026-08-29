@@ -582,6 +582,7 @@ const itemListSchema = {
 
   .prompt-category-heading h3 {
     margin: 0;
+    min-width: 0;
   }
 
   .prompt-category-toggle {
@@ -597,6 +598,12 @@ const itemListSchema = {
     font-weight: 700;
     text-align: start;
     cursor: pointer;
+    min-width: 0;
+  }
+
+  .prompt-category-toggle > span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .prompt-category-toggle .material-icons-sharp {
