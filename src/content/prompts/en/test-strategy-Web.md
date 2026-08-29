@@ -1,6 +1,6 @@
 ---
 title: "Test Strategy Prompt - Web Version"
-description: "Supports Test Strategy Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Test Strategy Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "test-strategy-Web"
 category: "AI And LLM Testing"
 categoryOrder: 10
@@ -10,7 +10,7 @@ order: 222
 ---
 # Test Strategy Prompt - Web Version
 
-<!-- Prompt purpose: Supports Test Strategy Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Test Strategy Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Web`

@@ -1,6 +1,6 @@
 ---
 title: "Functional Testing Prompt - Mobile Version"
-description: "Supports Functional Testing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Functional Testing Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "functional-testing-Mobile"
 category: "Test Analysis And Design"
 categoryOrder: 2
@@ -10,7 +10,7 @@ order: 87
 ---
 # Functional Testing Prompt - Mobile Version
 
-<!-- Prompt purpose: Supports Functional Testing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Functional Testing Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Mobile`

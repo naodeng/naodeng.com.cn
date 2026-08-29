@@ -1,6 +1,6 @@
 ---
 title: "测试用例编写 Prompt - Web端版"
-description: "用于测试用例编写端版的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于测试用例编写 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "test-case-writing-Web"
 category: "测试分析与测试设计"
 categoryOrder: 2
@@ -10,7 +10,7 @@ order: 202
 ---
 # 测试用例编写 Prompt - Web端版
 
-<!-- Prompt purpose: 用于测试用例编写端版的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于测试用例编写 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。 -->
 ## 平台场景说明
 
 - **当前版本：** `Web`

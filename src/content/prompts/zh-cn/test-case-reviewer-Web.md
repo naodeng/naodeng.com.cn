@@ -1,6 +1,6 @@
 ---
 title: "测试用例评审 Prompt - Web端版"
-description: "用于测试用例评审端版的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于测试用例评审 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "test-case-reviewer-Web"
 category: "AI 与 LLM 测试"
 categoryOrder: 10
@@ -10,7 +10,7 @@ order: 198
 ---
 # 测试用例评审 Prompt - Web端版
 
-<!-- Prompt purpose: 用于测试用例评审端版的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于测试用例评审 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。 -->
 ## 平台场景说明
 
 - **当前版本：** `Web`

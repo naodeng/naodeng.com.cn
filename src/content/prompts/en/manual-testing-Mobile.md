@@ -1,6 +1,6 @@
 ---
 title: "Manual Testing Prompt - Mobile Version"
-description: "Supports Manual Testing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Manual Testing Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "manual-testing-Mobile"
 category: "Test Analysis And Design"
 categoryOrder: 2
@@ -10,7 +10,7 @@ order: 107
 ---
 # Manual Testing Prompt - Mobile Version
 
-<!-- Prompt purpose: Supports Manual Testing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Manual Testing Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Mobile`

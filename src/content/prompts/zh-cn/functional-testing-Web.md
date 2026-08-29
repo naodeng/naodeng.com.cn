@@ -1,6 +1,6 @@
 ---
 title: "功能测试 Prompt - Web端版"
-description: "用于功能测试端版的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于功能测试 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "functional-testing-Web"
 category: "测试分析与测试设计"
 categoryOrder: 2
@@ -10,7 +10,7 @@ order: 88
 ---
 # 功能测试 Prompt - Web端版
 
-<!-- Prompt purpose: 用于功能测试端版的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于功能测试 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。 -->
 ## 平台场景说明
 
 - **当前版本：** `Web`

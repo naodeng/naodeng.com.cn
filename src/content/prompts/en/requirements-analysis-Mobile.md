@@ -1,6 +1,6 @@
 ---
 title: "Requirements Analysis Prompt - Mobile Version"
-description: "Supports Requirements Analysis Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Requirements Analysis Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "requirements-analysis-Mobile"
 category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
@@ -10,7 +10,7 @@ order: 168
 ---
 # Requirements Analysis Prompt - Mobile Version
 
-<!-- Prompt purpose: Supports Requirements Analysis Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Requirements Analysis Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Mobile`

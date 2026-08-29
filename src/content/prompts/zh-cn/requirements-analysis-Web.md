@@ -1,6 +1,6 @@
 ---
 title: "需求分析 Prompt - Web端版"
-description: "用于需求分析端版的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于需求分析 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "requirements-analysis-Web"
 category: "需求、规划与测试策略"
 categoryOrder: 1
@@ -10,7 +10,7 @@ order: 169
 ---
 # 需求分析 Prompt - Web端版
 
-<!-- Prompt purpose: 用于需求分析端版的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于需求分析 Prompt - Web端版的风险识别、证据梳理与可执行测试建议输出。 -->
 ## 平台场景说明
 
 - **当前版本：** `Web`

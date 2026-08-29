@@ -1,6 +1,6 @@
 ---
 title: "Test Case Review Prompt - Web Version"
-description: "Supports Test Case Review Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Test Case Review Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "test-case-reviewer-Web"
 category: "AI And LLM Testing"
 categoryOrder: 10
@@ -10,7 +10,7 @@ order: 198
 ---
 # Test Case Review Prompt - Web Version
 
-<!-- Prompt purpose: Supports Test Case Review Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Test Case Review Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Web`

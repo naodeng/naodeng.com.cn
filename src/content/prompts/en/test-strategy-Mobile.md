@@ -1,6 +1,6 @@
 ---
 title: "Test Strategy Prompt - Mobile Version"
-description: "Supports Test Strategy Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Test Strategy Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "test-strategy-Mobile"
 category: "AI And LLM Testing"
 categoryOrder: 10
@@ -10,7 +10,7 @@ order: 221
 ---
 # Test Strategy Prompt - Mobile Version
 
-<!-- Prompt purpose: Supports Test Strategy Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Test Strategy Prompt - Mobile Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Mobile`

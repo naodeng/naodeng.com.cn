@@ -1,6 +1,6 @@
 ---
 title: "Test Case Writing Prompt - Web Version"
-description: "Supports Test Case Writing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
+description: "Supports Test Case Writing Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts."
 testingType: "test-case-writing-Web"
 category: "Test Analysis And Design"
 categoryOrder: 2
@@ -10,7 +10,7 @@ order: 202
 ---
 # Test Case Writing Prompt - Web Version
 
-<!-- Prompt purpose: Supports Test Case Writing Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
+<!-- Prompt purpose: Supports Test Case Writing Prompt - Web Version by organizing input evidence, constraints, risks, validation priorities, decision criteria, and actionable QA next steps without inventing facts. -->
 ## Platform Scenario Notes
 
 - **Current Variant:** `Web`
