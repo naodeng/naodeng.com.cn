@@ -69,7 +69,7 @@ const rendered = await Promise.all(
 );
 
 // Page title from first entry
-const pageTitle = entries[0]?.data.title.replace(/^[^-]+ - /, "") ?? testingType;
+const pageTitle = entries[0]?.data.title ?? testingType;
 const pageDescription = entries[0]?.data.description ?? "";
 
 // TOC headings from the first (default active) tab
@@ -87,6 +87,8 @@ const breadcrumbs = [
 
 const copyLabel = t(PROMPTS_COPY_BUTTON);
 const copiedLabel = t(PROMPTS_COPY_SUCCESS);
+const sourceRepositoryUrl = "https://github.com/naodeng/awesome-qa-prompt/blob/main/";
+const sourceUrl = `${sourceRepositoryUrl}${entries[0]?.data.sourcePath ?? ""}`;
 
 // Page-specific keywords
 const pageKeywords = `${PROMPTS_DETAIL_KEYWORDS[lang]}, ${testingType.replace(/-/g, " ")}, ${pageTitle}`;
@@ -102,30 +104,12 @@ const howToSchema = {
   step: entries.map((entry, i) => ({
     "@type": "HowToStep",
     position: i + 1,
-    name: entry.data.promptVersion,
+    name: entry.data.title,
     text: entry.data.description,
   })),
 };
 
-const TESTING_TYPE_ORDER = [
-  "requirements-analysis",
-  "test-case-writing",
-  "functional-testing",
-  "performance-testing",
-  "automation-testing",
-  "mobile-testing",
-  "bug-reporting",
-  "test-reporting",
-  "test-strategy",
-  "ai-assisted-testing",
-  "manual-testing",
-  "security-testing",
-  "api-testing",
-  "accessibility-testing",
-  "test-case-reviewer",
-];
-
-// Build left sidebar nav: all testing types for this locale, sorted by custom order
+// Build left sidebar nav from upstream categories.
 const allPrompts = await getCollection("prompts");
 const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
 const typeMap = new Map<string, { testingType: string; label: string }>();
@@ -133,13 +117,33 @@ for (const p of localePrompts.sort((a, b) => a.data.order - b.data.order)) {
   if (!typeMap.has(p.data.testingType)) {
     typeMap.set(p.data.testingType, {
       testingType: p.data.testingType,
-      label: p.data.title.replace(/^[^-]+ - /, ""),
+      label: p.data.title,
     });
   }
 }
-const sidebarItems = Array.from(typeMap.values()).sort(
-  (a, b) => TESTING_TYPE_ORDER.indexOf(a.testingType) - TESTING_TYPE_ORDER.indexOf(b.testingType)
+const sidebarItems = Array.from(typeMap.values()).sort((a, b) => a.label.localeCompare(b.label, lang));
+
+const currentPrompt = entries[0];
+const currentTerms = new Set(
+  `${currentPrompt?.data.testingType ?? ""} ${currentPrompt?.data.title ?? ""}`
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((term) => term.length > 2),
 );
+const relatedPrompts = localePrompts
+  .filter((prompt) => prompt.data.testingType !== testingType)
+  .map((prompt) => {
+    const candidateTerms = `${prompt.data.testingType} ${prompt.data.title}`
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((term) => term.length > 2);
+    const sharedTerms = candidateTerms.filter((term) => currentTerms.has(term)).length;
+    const categoryScore = prompt.data.category === currentPrompt?.data.category ? 100 : 0;
+    return { prompt, score: categoryScore + sharedTerms };
+  })
+  .sort((a, b) => b.score - a.score || a.prompt.data.title.localeCompare(b.prompt.data.title, lang))
+  .slice(0, 5)
+  .map(({ prompt }) => prompt);
 
 const tocLabel = lang === "zh-cn" ? "本页目录" : "On this page";
 const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
@@ -215,9 +219,6 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
             <span class="prompt-detail-badge">
               {lang === "zh-cn" ? "提示词" : "Prompt"}
             </span>
-            <span class="prompt-detail-count">
-              {entries.length} {lang === "zh-cn" ? "个版本" : entries.length === 1 ? "version" : "versions"}
-            </span>
           </div>
           <h1>{pageTitle}</h1>
           <p class="prompt-detail-desc">{pageDescription}</p>
@@ -228,54 +229,34 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
             <span class="prompt-usage-tip-text" set:html={rendered[0].usageTip.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")} />
           </div>
         )}
-      </header>
-
-      <!-- Tab navigation -->
-      <div class="prompt-tabs" role="tablist" aria-label={lang === "zh-cn" ? "提示词版本" : "Prompt versions"}>
-        {rendered.map(({ entry }, i) => (
+        <div class="prompt-detail-actions">
           <button
             type="button"
-            role="tab"
-            class="prompt-tab"
-            aria-selected={i === 0 ? "true" : "false"}
-            aria-controls={`tab-panel-${entry.data.promptVersion}`}
-            id={`tab-${entry.data.promptVersion}`}
-            data-version={entry.data.promptVersion}
-            data-raw-content={entry.body ?? ""}
+            class="prompt-copy-btn"
+            data-copy-label={copyLabel}
+            data-copied-label={copiedLabel}
+            data-raw-content={rendered[0]?.entry.body ?? ""}
+            aria-label={copyLabel}
           >
-            {entry.data.promptVersion}
+            <span class="material-icons-sharp" aria-hidden="true">content_copy</span>
+            <span class="prompt-copy-btn-text">{copyLabel}</span>
           </button>
-        ))}
-      </div>
+          <a class="prompt-source-link" href={sourceUrl} target="_blank" rel="noopener noreferrer">
+            <span class="material-icons-sharp" aria-hidden="true">open_in_new</span>
+            {lang === "zh-cn" ? "GitHub 源提示词" : "GitHub source"}
+          </a>
+        </div>
+      </header>
 
-      <!-- Tab panels -->
-      {rendered.map(({ entry, Content, headings }, i) => (
+      {rendered.map(({ entry, Content, headings }) => (
         <div
-          role="tabpanel"
-          id={`tab-panel-${entry.data.promptVersion}`}
-          aria-labelledby={`tab-${entry.data.promptVersion}`}
           class="prompt-panel"
-          hidden={i !== 0 ? true : undefined}
           data-headings={JSON.stringify(
             headings
               .filter((h) => h.depth === 2 || h.depth === 3)
               .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }))
           )}
         >
-          <div class="prompt-copy-bar">
-            <button
-              type="button"
-              class="prompt-copy-btn"
-              data-copy-label={copyLabel}
-              data-copied-label={copiedLabel}
-              data-version={entry.data.promptVersion}
-              aria-label={copyLabel}
-            >
-              <span class="material-icons-sharp" aria-hidden="true">content_copy</span>
-              <span class="prompt-copy-btn-text">{copyLabel}</span>
-            </button>
-          </div>
-
           <div class="prompt-content prose">
             <Content />
           </div>
@@ -289,6 +270,26 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
         url={canonicalUrl}
         locale={lang as "en" | "zh-cn"}
       />
+
+      {relatedPrompts.length > 0 && (
+        <section class="prompt-related-prompts" aria-labelledby="related-prompts-heading">
+          <div class="prompt-related-prompts-heading">
+            <h2 id="related-prompts-heading">{lang === "zh-cn" ? "关联提示词" : "Related Prompts"}</h2>
+          </div>
+          <div class="prompt-related-prompts-grid">
+            {relatedPrompts.map((prompt) => (
+              <a
+                href={getRelativeLocaleUrl(lang, `/prompts/${prompt.data.testingType}/`)}
+                class="prompt-related-prompt"
+                data-related-prompt
+              >
+                <span class="prompt-related-prompt-title">{prompt.data.title}</span>
+                <span class="prompt-related-prompt-arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       <Giscus
         lang={lang === "zh-cn" ? "zh-CN" : "en"}
@@ -308,92 +309,10 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
 </Base>
 
 <script>
-  // Tab switching + dynamic TOC update
-  const tablist = document.querySelector('[role="tablist"]');
-  if (tablist) {
-    const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-
-    tabs.forEach((tab, idx) => {
-      tab.addEventListener("click", () => {
-        const targetId = tab.getAttribute("aria-controls");
-        if (!targetId) return;
-
-        tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
-        tab.setAttribute("aria-selected", "true");
-
-        const panels = document.querySelectorAll<HTMLElement>('.prompt-panel[role="tabpanel"]');
-        panels.forEach((panel) => {
-          panel.hidden = panel.id !== targetId;
-        });
-
-        // Update usage tip inside merged header
-        const headerEl = document.getElementById("prompt-usage-tip");
-        if (headerEl) {
-          try {
-            const tips: string[] = JSON.parse(headerEl.dataset.tips ?? "[]");
-            const tip = tips[idx] ?? "";
-            const textEl = headerEl.querySelector(".prompt-usage-tip-text");
-            if (textEl) textEl.innerHTML = tip.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-            const tipBox = headerEl.querySelector<HTMLElement>(".prompt-detail-tip");
-            if (tipBox) tipBox.style.display = tip ? "" : "none";
-          } catch {}
-        }
-
-        // Update right TOC for the newly active panel
-        const activePanel = document.getElementById(targetId);
-        if (activePanel) {
-          updateToc(activePanel);
-        }
-      });
-    });
-  }
-
-  function updateToc(panel: HTMLElement) {
-    const tocWrap = document.getElementById("prompts-toc-wrap");
-    if (!tocWrap) return;
-
-    let headings: { depth: number; slug: string; text: string }[] = [];
-    try {
-      headings = JSON.parse(panel.dataset.headings ?? "[]");
-    } catch {
-      headings = [];
-    }
-
-    const tocNav = tocWrap.querySelector(".toc-nav");
-    if (!tocNav) return;
-
-    // Rebuild the desktop list
-    const desktopList = tocNav.querySelector<HTMLUListElement>(".toc-list--desktop");
-    const mobileList = tocNav.querySelector<HTMLUListElement>(".toc-list--mobile");
-
-    const buildItems = (list: HTMLUListElement | null) => {
-      if (!list) return;
-      list.innerHTML = "";
-      headings.forEach((h) => {
-        const li = document.createElement("li");
-        li.className = `toc-item${h.depth === 3 ? " toc-item--h3" : ""}`;
-        const a = document.createElement("a");
-        a.href = `#${h.slug}`;
-        a.className = "toc-link";
-        a.textContent = h.text;
-        li.appendChild(a);
-        list.appendChild(li);
-      });
-    };
-
-    buildItems(desktopList);
-    buildItems(mobileList);
-
-    // Show/hide TOC wrap based on whether there are headings
-    tocWrap.style.display = headings.length > 0 ? "" : "none";
-  }
-
   // Copy button
   document.querySelectorAll<HTMLButtonElement>(".prompt-copy-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const version = btn.dataset.version;
-      const tabBtn = document.querySelector<HTMLButtonElement>(`[data-version="${version}"][role="tab"]`);
-      const rawContent = tabBtn?.dataset.rawContent ?? "";
+      const rawContent = btn.dataset.rawContent ?? "";
 
       const copyLabel = btn.dataset.copyLabel ?? "Copy";
       const copiedLabel = btn.dataset.copiedLabel ?? "Copied!";
@@ -652,9 +571,23 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     margin-block-end: 0.1rem;
   }
 
+  .prompt-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
   /* Hide the first blockquote inside prompt content (it's the usage tip shown above) */
   .prompt-content :global(blockquote:first-of-type) {
     display: none !important;
+  }
+
+  /* The detail card is the canonical page title; hide the source H1 to avoid
+     repeating source-only version labels such as "Default版". */
+  .prompt-content :global(h1:first-child) {
+    display: none;
   }
 
   /* ── Tabs ── */
@@ -704,18 +637,12 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     outline-offset: 2px;
   }
 
-  /* ── Copy bar ── */
-  .prompt-copy-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin-block-end: var(--sp-s);
-  }
   .prompt-copy-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.45em 0.9em;
-    font-size: 0.85rem;
+    padding: 0.35em 0.65em;
+    font-size: 0.8rem;
     font-weight: 600;
     font-family: inherit;
     color: var(--color-text-primary);
@@ -735,6 +662,26 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     border-color: var(--color-theme);
   }
   .prompt-copy-btn:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .prompt-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35em 0.65em;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .prompt-source-link:hover {
+    color: var(--color-theme);
+    border-color: var(--color-theme);
+  }
+  .prompt-source-link:focus-visible {
     outline: 2px solid var(--color-theme);
     outline-offset: 2px;
   }
@@ -793,6 +740,65 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     background: var(--color-theme-soft); font-weight: 600;
   }
   .prompt-content :global(a) { color: var(--color-theme); text-decoration: underline; }
+
+  /* ── Related prompts ── */
+  .prompt-related-prompts {
+    margin-block: 1.5rem 2rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-base));
+  }
+  .prompt-related-prompts-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-s);
+    margin-block-end: 0.8rem;
+  }
+  .prompt-related-prompts h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+  }
+  .prompt-related-prompts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.65rem;
+  }
+  .prompt-related-prompt {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+    min-block-size: 3.5rem;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-decoration: none;
+    background: color-mix(in srgb, var(--color-base) 80%, transparent);
+    transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+  }
+  .prompt-related-prompt:hover {
+    border-color: var(--color-theme);
+    background: color-mix(in srgb, var(--color-theme) 10%, var(--color-base));
+    transform: translateY(-2px);
+  }
+  .prompt-related-prompt:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 3px;
+  }
+  .prompt-related-prompt-title {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .prompt-related-prompt-arrow {
+    color: var(--color-theme);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
 
   /* ── Right TOC ── */
   .prompts-toc-wrap {

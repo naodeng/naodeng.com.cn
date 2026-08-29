@@ -19,14 +19,7 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const REPO_URL = "https://github.com/naodeng/awesome-qa-prompt.git";
 
-export const PROMPT_VERSIONS = [
-  { dir: "Standard-version", value: "Standard", order: 1 },
-  { dir: "ROSES-version", value: "ROSES", order: 2 },
-  { dir: "LangGPT-version", value: "LangGPT", order: 3 },
-  { dir: "ICIO-version", value: "ICIO", order: 4 },
-  { dir: "CRISPE-version", value: "CRISPE", order: 5 },
-  { dir: "RISE-version", value: "RISE", order: 6 },
-];
+const CANONICAL_PROMPT = { dir: "Standard-version", value: "Standard" };
 
 export const WORKFLOWS = {
   "daily-testing-workflow.md": { type: "daily", order: 1 },
@@ -63,6 +56,12 @@ function firstHeading(markdown) {
   return match?.[1]?.trim() || "";
 }
 
+export function displayPromptTitle(title) {
+  return title
+    .replace(/\s*[-–—:：]\s*(?:default\s*(?:version|版)?|默认版?|标准版?)\s*$/i, "")
+    .trim();
+}
+
 function objectiveDescription(markdown) {
   const lines = markdown.split("\n");
   const headingIndex = lines.findIndex((line) => /^##\s+(?:🎯\s*)?(?:Objective|目标)\s*$/.test(line.trim()));
@@ -73,6 +72,48 @@ function objectiveDescription(markdown) {
     if (value) return value;
   }
   return "";
+}
+
+function openingDescription(markdown) {
+  const lines = markdown.split("\n");
+  const titleIndex = lines.findIndex((line) => /^#\s+/.test(line.trim()));
+  if (titleIndex === -1) return "";
+  for (const line of lines.slice(titleIndex + 1)) {
+    const value = line.trim();
+    if (/^#{1,6}\s|^---$/.test(value)) break;
+    if (value && !value.startsWith("<!--")) return value;
+  }
+  return "";
+}
+
+export function promptDescription(markdown, fallback) {
+  const purpose = markdown.match(/<!--\s*Prompt purpose:\s*([\s\S]*?)\s*-->/i)?.[1]?.trim();
+  if (purpose) return purpose;
+  const objective = objectiveDescription(markdown);
+  if (objective) return objective;
+  const task = markdown.match(/^\*\*(?:Task|任务)[:：]\*\*\s*(.+)$/mi)?.[1]?.trim();
+  if (task) return task;
+  const context = markdown.match(/^\*\*(?:Context|背景)[:：]\*\*\s*(.+)$/mi)?.[1]?.trim();
+  return context || openingDescription(markdown) || fallback;
+}
+
+export function parsePromptCategories(readmePath, sourceLang) {
+  const categories = new Map();
+  let activeCategory = null;
+  const linkPattern = new RegExp(`\\]\\(\\./testing-types/${sourceLang}/([^/]+)/README\\.md\\)`, "g");
+
+  for (const line of readFileSync(readmePath, "utf8").split("\n")) {
+    const heading = line.match(/^###\s+(\d+)\.\s+(.+?)\s*$/);
+    if (heading) {
+      activeCategory = { title: heading[2], order: Number(heading[1]) };
+      continue;
+    }
+    if (!activeCategory) continue;
+    for (const match of line.matchAll(linkPattern)) {
+      categories.set(match[1], activeCategory);
+    }
+  }
+  return categories;
 }
 
 export function selectFullPrompt(files, version, context = "prompt directory") {
@@ -92,17 +133,17 @@ export function selectFullPrompt(files, version, context = "prompt directory") {
   return candidates[0];
 }
 
-export function buildPromptDocument({ body, lang, testingType, promptVersion, title, order }) {
-  if (!body.trim()) throw new Error(`Empty prompt body: ${lang}/${testingType}/${promptVersion}`);
-  const description = lang === "zh-cn"
-    ? `${title}${promptVersion === "Standard" ? "标准" : ` ${promptVersion} 框架`}提示词`
-    : `${promptVersion === "Standard" ? "Standard" : `${promptVersion} framework`} prompt for ${title}`;
+export function buildPromptDocument({ body, category, categoryOrder, lang, testingType, sourcePath, title, order }) {
+  if (!body.trim()) throw new Error(`Empty prompt body: ${lang}/${testingType}`);
+  const description = promptDescription(body, title);
   const frontmatter = [
     "---",
-    `title: ${quoteYaml(`${promptVersion} - ${title}`)}`,
+    `title: ${quoteYaml(title)}`,
     `description: ${quoteYaml(description)}`,
     `testingType: ${quoteYaml(testingType)}`,
-    `promptVersion: ${quoteYaml(promptVersion)}`,
+    `category: ${quoteYaml(category)}`,
+    `categoryOrder: ${categoryOrder}`,
+    `sourcePath: ${quoteYaml(sourcePath)}`,
     `lang: ${quoteYaml(lang)}`,
     `order: ${order}`,
     "---",
@@ -205,39 +246,38 @@ export function syncFromRepo(repoRoot, outRoot = ROOT, options = {}) {
     for (const [sourceLang, siteLang] of Object.entries(LANGUAGE_MAP)) {
       const testingRoot = join(repoRoot, "testing-types", sourceLang);
       const workflowRoot = join(repoRoot, "Workflows", sourceLang);
+      const categoryReadme = join(repoRoot, sourceLang === "zh" ? "README.md" : "README_EN.md");
       if (!existsSync(testingRoot)) throw new Error(`Missing upstream directory: ${testingRoot}`);
       if (!existsSync(workflowRoot)) throw new Error(`Missing upstream directory: ${workflowRoot}`);
+      if (!existsSync(categoryReadme)) throw new Error(`Missing upstream prompt catalog: ${categoryReadme}`);
+      const categoryMap = parsePromptCategories(categoryReadme, sourceLang);
 
       for (const testingType of directoriesAt(testingRoot)) {
         const typeRoot = join(testingRoot, testingType);
-        const readmePath = join(typeRoot, "README.md");
-        if (!existsSync(readmePath)) throw new Error(`Missing testing type README: ${readmePath}`);
-        const title = firstHeading(readFileSync(readmePath, "utf8"));
-        if (!title) throw new Error(`Missing testing type title: ${readmePath}`);
-
-        const discoveredVersionDirs = directoriesAt(typeRoot).filter((name) => name.endsWith("-version"));
-        const knownVersionDirs = new Set(PROMPT_VERSIONS.map(({ dir }) => dir));
-        const unknownVersionDirs = discoveredVersionDirs.filter((name) => !knownVersionDirs.has(name));
-        if (unknownVersionDirs.length) {
-          throw new Error(`Unknown prompt framework directories in ${typeRoot}: ${unknownVersionDirs.join(", ")}`);
-        }
-
-        for (const version of PROMPT_VERSIONS) {
-          const versionRoot = join(typeRoot, version.dir);
-          if (!existsSync(versionRoot)) continue;
-          const sourceFile = selectFullPrompt(filesAt(versionRoot), version.value, versionRoot);
-          const body = readFileSync(join(versionRoot, sourceFile), "utf8");
-          const destination = join(generatedRoot, "prompts", siteLang, testingType, `${version.value}.md`);
-          writeUnique(outputs, destination, buildPromptDocument({
-            body,
-            lang: siteLang,
-            testingType,
-            promptVersion: version.value,
-            title,
-            order: version.order,
-          }));
-          promptKeys[siteLang].push(`${testingType}/${version.value}`);
-        }
+        const versionRoot = join(typeRoot, CANONICAL_PROMPT.dir);
+        if (!existsSync(versionRoot)) continue;
+        const sourceFiles = filesAt(versionRoot);
+        if (!sourceFiles.some((file) => file.endsWith(".md") && file !== "README.md")) continue;
+        const sourceFile = selectFullPrompt(sourceFiles, CANONICAL_PROMPT.value, versionRoot);
+        const sourceFilePath = join(versionRoot, sourceFile);
+        const body = readFileSync(sourceFilePath, "utf8");
+        const title = displayPromptTitle(firstHeading(body) || testingType);
+        const category = categoryMap.get(testingType) ?? {
+          title: siteLang === "zh-cn" ? "其他提示词" : "Other Prompts",
+          order: Number.MAX_SAFE_INTEGER,
+        };
+        const destination = join(generatedRoot, "prompts", siteLang, `${testingType}.md`);
+        writeUnique(outputs, destination, buildPromptDocument({
+          body,
+          category: category.title,
+          categoryOrder: category.order,
+          lang: siteLang,
+          testingType,
+          sourcePath: relative(repoRoot, sourceFilePath).replaceAll("\\\\", "/"),
+          title,
+          order: promptKeys[siteLang].length + 1,
+        }));
+        promptKeys[siteLang].push(testingType);
       }
 
       for (const [sourceName, workflow] of Object.entries(WORKFLOWS)) {

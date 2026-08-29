@@ -135,7 +135,7 @@ describe("prompt examples data contract", () => {
       const testingType = example.href.replace(/^\/prompts\//, "").replace(/\/$/, "");
       for (const locale of languages) {
         expect(
-          existsSync(join(REPO_ROOT, "src", "content", "prompts", locale, testingType)),
+          existsSync(join(REPO_ROOT, "src", "content", "prompts", locale, `${testingType}.md`)),
           `${testingType} @ ${locale}`,
         ).toBe(true);
       }

@@ -21,42 +21,90 @@ test.describe("Prompts selection and review flow", () => {
     await page.goto(`${baseURL}/zh-cn/prompts/`);
     const gaps = await page.evaluate(() => {
       const rect = (selector: string) => document.querySelector(selector)?.getBoundingClientRect();
-      const version = rect(".version-guide");
+      const categories = rect("#testing-types-heading");
       const quick = rect("#quickstart-heading");
       const examples = rect(".examples");
       const notice = rect("#ai-output-notice");
       const flow = rect("#flow-heading");
       return {
-        versionToQuick: version && quick ? Math.round(quick.top - version.bottom) : -999,
+        categoriesToQuick: categories && quick ? Math.round(quick.top - categories.bottom) : -999,
         examplesToNotice: examples && notice ? Math.round(notice.top - examples.bottom) : -999,
         noticeToFlow: notice && flow ? Math.round(flow.top - notice.bottom) : -999,
       };
     });
-    expect(gaps.versionToQuick).toBeGreaterThanOrEqual(24);
+    expect(gaps.categoriesToQuick).toBeGreaterThanOrEqual(24);
     expect(gaps.examplesToNotice).toBeGreaterThanOrEqual(24);
     expect(gaps.noticeToFlow).toBeGreaterThanOrEqual(24);
   });
 
+  test("prompt details show the prompt name without a Default version label", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".prompt-detail-header h1")).toHaveText("测试策略 Prompt");
+    await expect(page.locator(".prompt-detail-header h1")).not.toContainText("Default");
+    await expect(page.locator(".prompt-content > h1")).toBeHidden();
+  });
+
+  test("prompt details keep the prompt name before a platform version", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".prompt-detail-header h1")).toHaveText("测试策略 Prompt - 移动端版");
+  });
+
+  test("prompt details show five linked related prompts below sharing", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
+
+    const related = page.locator(".prompt-related-prompts");
+    await expect(related).toBeVisible();
+    await expect(related.locator("[data-related-prompt]")).toHaveCount(5);
+    const firstRelated = related.locator("[data-related-prompt]").first();
+    const href = await firstRelated.getAttribute("href");
+    expect(href).toMatch(/^\/zh-cn\/prompts\/.+\/$/);
+    await expect(related.locator(".prompt-related-prompt-description")).toHaveCount(0);
+    await firstRelated.click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+  });
+
 
   for (const lang of ["zh-cn", "en"] as const) {
-    test(`${lang} explains versions, usage, examples, and review limits`, async ({
+    test(`${lang} lists every prompt category without version choices`, async ({
       page,
       baseURL,
     }) => {
       await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
 
-      await expect(page.locator("[data-prompt-version]")).toHaveCount(6);
-      await expect(
-        page.locator('[data-prompt-version="Standard"][data-recommended="true"]'),
-      ).toBeVisible();
+      await expect(page.locator("[data-prompt-version]")).toHaveCount(0);
+      await expect(page.locator(".prompt-category")).toHaveCount(11);
+      await expect(page.locator("main")).not.toContainText("9007199254740991");
       await expect(page.locator("[data-prompt-quick-step]")).toHaveCount(5);
       await expect(page.locator("[data-prompt-example]")).toHaveCount(6);
       await expect(page.locator("#ai-output-notice")).toBeVisible();
-      await expect(page.locator("[data-prompt-type]")).toHaveCount(15);
+      expect(await page.locator("[data-prompt-type]").count()).toBeGreaterThanOrEqual(200);
 
       const text = await page.locator("main").innerText();
       expect(text).not.toContain("_EN.md");
       expect(text).not.toContain("_Lite.md");
+    });
+
+    test(`${lang} searches prompts and keeps categories expanded after refresh`, async ({ page, baseURL }) => {
+      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
+      const category = page.locator(".prompt-category").first();
+      const toggle = category.locator(".prompt-category-toggle");
+      const list = category.locator(".prompts-grid");
+
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      await expect(list).toBeVisible();
+      await toggle.click();
+      await expect(toggle).toHaveAttribute("aria-expanded", "false");
+      await expect(list).toBeHidden();
+
+      await page.reload({ waitUntil: "domcontentloaded" });
+      await expect(page.locator(".prompt-category").first().locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "true");
+
+      const search = page.locator("#prompt-search-input");
+      await search.fill(lang === "zh-cn" ? "API测试" : "API Testing");
+      await expect(page.locator('[data-prompt-type="api-testing"]')).toBeVisible();
+      await expect(page.locator(".prompt-search-empty")).toBeHidden();
     });
 
     test(`${lang} unifies the page name and frames the flow as assisted`, async ({
@@ -68,6 +116,18 @@ test.describe("Prompts selection and review flow", () => {
       await expect(page.locator("main h1")).toHaveText(h1);
       await expect(page).toHaveTitle(new RegExp(h1));
       await expect(page.locator("#flow-heading")).toContainText(lang === "zh-cn" ? "辅助" : /assisted/i);
+    });
+
+    test(`${lang} opens a category with one prompt and its GitHub source link`, async ({ page, baseURL }) => {
+      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
+      const href = await page.locator("[data-prompt-type]").first().getAttribute("href");
+      await page.goto(`${baseURL}${href}`, { waitUntil: "domcontentloaded" });
+
+      await expect(page.locator('[role="tablist"]')).toHaveCount(0);
+      await expect(page.locator(".prompt-source-link")).toHaveAttribute(
+        "href",
+        /github\.com\/naodeng\/awesome-qa-prompt\/blob\/main\/testing-types\//,
+      );
     });
   }
 });

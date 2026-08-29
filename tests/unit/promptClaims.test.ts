@@ -45,7 +45,7 @@ function collectSourcePaths(): string[] {
 describe("prompts capability boundaries", () => {
   it("keeps every Prompt Markdown structurally renderable", () => {
     const promptFiles = readAllFiles(join(REPO_ROOT, "src", "content", "prompts"));
-    expect(promptFiles.filter((file) => file.endsWith(".md"))).toHaveLength(180);
+    expect(promptFiles.filter((file) => file.endsWith(".md"))).toHaveLength(482);
 
     const offenders: string[] = [];
     for (const file of promptFiles.filter((candidate) => candidate.endsWith(".md"))) {
