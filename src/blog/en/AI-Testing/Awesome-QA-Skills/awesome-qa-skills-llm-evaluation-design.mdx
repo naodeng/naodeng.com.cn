@@ -1,0 +1,104 @@
+---
+title: "LLM Evaluation Design: from “Design task sets, rubrics, references, review flow, and regression gates for a support-summary model” to a reviewable conclusion"
+description: "LLM Evaluation Design field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+date: 2026-08-30T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "LLM Evaluation Design"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Design task sets, rubrics, references, review flow, and regression gates for a support-summary model. This kind of work often becomes a broad checklist with no ordering, evidence, or handoff. LLM Evaluation Design brings the task back to scope, evidence, and the next action.
+
+## Start with the source Skill
+
+The complete execution contract lives in [prompts/llm-evaluation-design.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-evaluation-design/prompts/llm-evaluation-design.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+
+The entry point calls out these constraints:
+
+- map metrics to real tasks
+- calibrate and audit LLM judges
+- separate offline quality from online business metrics
+
+- [Open the LLM Evaluation Design source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-evaluation-design)
+
+## Begin with project facts
+
+You do not need every document before the first pass, but the facts below determine whether the conclusion can be trusted.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and scope | Design task sets, rubrics, references, review flow, and regression gates for a support-summary model | Name journeys outside this pass |
+| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
+| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
+| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+
+Use a request like this:
+
+```text
+Use the llm-evaluation-design Skill.
+
+Task: Design task sets, rubrics, references, review flow, and regression gates for a support-summary model
+Inputs: [versions, links, log paths, or reports]
+Scope: [included and excluded objects]
+Constraints: [time, data, permissions, compliance]
+
+Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
+| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
+| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
+| Next action | Names verification work and an owner | Owner, date, expected evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+
+## Advanced use: turn one analysis into a maintained mechanism
+
+The evaluation set must cover high-value tasks, risky samples, and failure boundaries with reviewable scoring.
+
+Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
+
+### A three-Skill chain
+
+`prompt-testing` → `llm-evaluation-design` → `llm-testing`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to llm-evaluation-design | Source versions, scope, risk, open items | Staleness and conflicts |
+| llm-evaluation-design to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
+| Feedback to llm-evaluation-design | Runs, defects, changed facts | Baseline and regression scope |
+
+Do not paste three complete outputs into one prompt. Pass a summary and accessible source artifacts so the chain stays small and traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| llm-evaluation-design input | Version, environment, sources, and owner | Stop and list gaps |
+| llm-evaluation-design artifact | Material claims have basis, status, and impact | Return for evidence |
+| llm-evaluation-design execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
+| llm-evaluation-design decision | Residual risk has an accepter and date | Do not enter the next stage |
+
+## Common traps
+
+1. Listing checks without input conditions, expected results, or evidence.
+2. Marking every finding high priority and removing the team’s ability to choose.
+3. Refusing to produce a bounded first pass, or presenting guesses as facts.
+4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
+
+## Two practical questions
+
+### Can I start with incomplete input?
+
+Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
+
+### When is human confirmation required?
+
+The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
+
+Run LLM Evaluation Design with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.

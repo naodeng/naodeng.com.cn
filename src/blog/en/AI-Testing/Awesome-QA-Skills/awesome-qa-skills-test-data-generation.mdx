@@ -1,0 +1,104 @@
+---
+title: "Test Data Generation: from “Generate order test data for happy, boundary, error, and authorization scenarios without real sensitive data” to a reviewable conclusion"
+description: "Test Data Generation field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+date: 2026-08-30T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Data Generation"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Generate order test data for happy, boundary, error, and authorization scenarios without real sensitive data. This kind of work often becomes a broad checklist with no ordering, evidence, or handoff. Test Data Generation brings the task back to scope, evidence, and the next action.
+
+## Start with the source Skill
+
+The complete execution contract lives in [prompts/test-data-generation.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-generation/prompts/test-data-generation.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+
+The entry point calls out these constraints:
+
+- never use real personal sensitive data
+- distinguish synthetic, masked, and production-like data
+- generated data must be reproducible and cleanable
+
+- [Open the Test Data Generation source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-generation)
+
+## Begin with project facts
+
+You do not need every document before the first pass, but the facts below determine whether the conclusion can be trusted.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and scope | Generate order test data for happy, boundary, error, and authorization scenarios without real sensitive data | Name journeys outside this pass |
+| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
+| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
+| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+
+Use a request like this:
+
+```text
+Use the test-data-generation Skill.
+
+Task: Generate order test data for happy, boundary, error, and authorization scenarios without real sensitive data
+Inputs: [versions, links, log paths, or reports]
+Scope: [included and excluded objects]
+Constraints: [time, data, permissions, compliance]
+
+Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
+| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
+| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
+| Next action | Names verification work and an owner | Owner, date, expected evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+
+## Advanced use: turn one analysis into a maintained mechanism
+
+Data rules must be reproducible, cleanable, and traceable; use synthetic or masked sensitive values.
+
+Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
+
+### A three-Skill chain
+
+`test-data-generation` → `test-case-writing` → `regression-test-selection`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to test-data-generation | Source versions, scope, risk, open items | Staleness and conflicts |
+| test-data-generation to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
+| Feedback to test-data-generation | Runs, defects, changed facts | Baseline and regression scope |
+
+Do not paste three complete outputs into one prompt. Pass a summary and accessible source artifacts so the chain stays small and traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| test-data-generation input | Version, environment, sources, and owner | Stop and list gaps |
+| test-data-generation artifact | Material claims have basis, status, and impact | Return for evidence |
+| test-data-generation execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
+| test-data-generation decision | Residual risk has an accepter and date | Do not enter the next stage |
+
+## Common traps
+
+1. Listing checks without input conditions, expected results, or evidence.
+2. Marking every finding high priority and removing the team’s ability to choose.
+3. Refusing to produce a bounded first pass, or presenting guesses as facts.
+4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
+
+## Two practical questions
+
+### Can I start with incomplete input?
+
+Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
+
+### When is human confirmation required?
+
+The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
+
+Run Test Data Generation with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.

@@ -1,0 +1,104 @@
+---
+title: "Flaky Test Analysis: from “Analyze intermittent UI regression failures and separate product defects, synchronization faults, unstable environments, and dirty data” to a reviewable conclusion"
+description: "Flaky Test Analysis field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+date: 2026-08-30T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Flaky Test Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Analyze intermittent UI regression failures and separate product defects, synchronization faults, unstable environments, and dirty data. This kind of work often becomes a broad checklist with no ordering, evidence, or handoff. Flaky Test Analysis brings the task back to scope, evidence, and the next action.
+
+## Start with the source Skill
+
+The complete execution contract lives in [prompts/flaky-test-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/flaky-test-analysis/prompts/flaky-test-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+
+The entry point calls out these constraints:
+
+- do not hide failures with blind retries
+- quarantine needs an owner and exit criteria
+- root-cause claims require reproducible evidence
+
+- [Open the Flaky Test Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/flaky-test-analysis)
+
+## Begin with project facts
+
+You do not need every document before the first pass, but the facts below determine whether the conclusion can be trusted.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and scope | Analyze intermittent UI regression failures and separate product defects, synchronization faults, unstable environments, and dirty data | Name journeys outside this pass |
+| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
+| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
+| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+
+Use a request like this:
+
+```text
+Use the flaky-test-analysis Skill.
+
+Task: Analyze intermittent UI regression failures and separate product defects, synchronization faults, unstable environments, and dirty data
+Inputs: [versions, links, log paths, or reports]
+Scope: [included and excluded objects]
+Constraints: [time, data, permissions, compliance]
+
+Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
+| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
+| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
+| Next action | Names verification work and an owner | Owner, date, expected evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+
+## Advanced use: turn one analysis into a maintained mechanism
+
+Preserve first-failure evidence on each rerun; retry rate does not replace root-cause classification.
+
+Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
+
+### A three-Skill chain
+
+`flaky-test-analysis` → `change-impact-analysis` → `regression-test-selection`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to flaky-test-analysis | Source versions, scope, risk, open items | Staleness and conflicts |
+| flaky-test-analysis to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
+| Feedback to flaky-test-analysis | Runs, defects, changed facts | Baseline and regression scope |
+
+Do not paste three complete outputs into one prompt. Pass a summary and accessible source artifacts so the chain stays small and traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| flaky-test-analysis input | Version, environment, sources, and owner | Stop and list gaps |
+| flaky-test-analysis artifact | Material claims have basis, status, and impact | Return for evidence |
+| flaky-test-analysis execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
+| flaky-test-analysis decision | Residual risk has an accepter and date | Do not enter the next stage |
+
+## Common traps
+
+1. Listing checks without input conditions, expected results, or evidence.
+2. Marking every finding high priority and removing the team’s ability to choose.
+3. Refusing to produce a bounded first pass, or presenting guesses as facts.
+4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
+
+## Two practical questions
+
+### Can I start with incomplete input?
+
+Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
+
+### When is human confirmation required?
+
+The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
+
+Run Flaky Test Analysis with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.
