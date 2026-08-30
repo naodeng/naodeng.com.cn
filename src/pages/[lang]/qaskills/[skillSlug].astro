@@ -190,9 +190,12 @@ const tocHeadings = [
   <article class="qaskill-detail">
     <header class="detail-header">
       <div class="detail-header-main">
-        <div class="detail-status-tags" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
-          <span class="tag">{categoryLabel}</span>
-          <span class="tag">{skill.hasEvals ? text.evals : text.noEvals}</span>
+        <div class="detail-status-panel" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
+          <div class="detail-status-tags">
+            <span class="tag">{categoryLabel}</span>
+            <span class="tag">{skill.hasEvals ? text.evals : text.noEvals}</span>
+          </div>
+          <p class="detail-updated">{text.updated}: {skill.updatedAt || "-"}</p>
         </div>
         <h1>{displayName}</h1>
         <p class="detail-intro">{skill.intro}</p>
@@ -204,7 +207,6 @@ const tocHeadings = [
         </div>
         <div class="detail-header-footer">
           <p class="detail-author">{text.author}: {skill.author || "-"}</p>
-          <p class="detail-updated">{text.updated}: {skill.updatedAt || "-"}</p>
         </div>
       </div>
     </header>
@@ -578,10 +580,18 @@ const tocHeadings = [
   }
   .detail-header-main {
     display: grid;
-    gap: 0.7rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title status"
+      "intro status"
+      "actions status"
+      "footer status";
+    column-gap: clamp(1rem, 4vw, 3rem);
+    row-gap: 0.7rem;
     min-width: 0;
   }
   .detail-header h1 {
+    grid-area: title;
     margin: 0;
     line-height: 1.12;
     letter-spacing: -0.035em;
@@ -594,6 +604,17 @@ const tocHeadings = [
     margin: 0;
   }
   .sub-meta { margin: 0.25rem 0 0; opacity: 0.72; font-size: 0.9rem; }
+  .detail-status-panel {
+    grid-area: status;
+    align-self: stretch;
+    display: grid;
+    align-content: space-between;
+    justify-items: end;
+    gap: 0.8rem;
+    min-width: max-content;
+    padding-left: clamp(0.9rem, 2vw, 1.4rem);
+    border-left: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
+  }
   .detail-status-tags {
     display: flex;
     flex-wrap: wrap;
@@ -601,6 +622,7 @@ const tocHeadings = [
     margin: 0;
   }
   .detail-intro {
+    grid-area: intro;
     margin: -0.18rem 0 0;
     max-width: 68ch;
     color: var(--color-text-secondary);
@@ -816,12 +838,9 @@ const tocHeadings = [
   .related-card-title { color: var(--color-theme); font-size: 0.9rem; font-weight: 750; line-height: 1.35; }
   .related-card-meta { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 650; }
   .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-  .detail-header-actions { justify-content: flex-start; }
+  .detail-header-actions { grid-area: actions; justify-content: flex-start; }
   .detail-header-footer {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
+    grid-area: footer;
     padding-top: 0.7rem;
     border-top: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
   }
@@ -966,10 +985,11 @@ const tocHeadings = [
     .elevator-link.is-active {
       border-color: var(--color-theme);
     }
+    .detail-header-main { grid-template-columns: minmax(0, 1fr); grid-template-areas: "status" "title" "intro" "actions" "footer"; }
+    .detail-status-panel { justify-items: start; align-self: auto; border-left: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent); padding: 0 0 0.65rem; }
     .detail-header-actions { width: 100%; }
   }
   @media (max-width: 520px) {
-    .detail-header-footer { align-items: flex-start; flex-direction: column; gap: 0.2rem; }
     .detail-updated { text-align: left; }
   }
 </style>
